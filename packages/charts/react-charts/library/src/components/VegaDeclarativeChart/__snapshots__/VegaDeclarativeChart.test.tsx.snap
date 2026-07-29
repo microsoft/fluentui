@@ -512,7 +512,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="North"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -532,7 +532,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="South"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -552,7 +552,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -988,7 +988,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="A"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1008,7 +1008,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1444,7 +1444,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Bar"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1464,7 +1464,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2140,7 +2140,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Bar"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2160,7 +2160,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2270,7 +2270,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <button
                 aria-label="A"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2290,7 +2290,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <button
                 aria-label="B"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2543,7 +2543,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <button
                 aria-label="North"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2563,7 +2563,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <button
                 aria-label="South"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3684,7 +3684,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               <button
                 aria-label="Bar"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3704,7 +3704,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5177,7 +5177,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <button
                 aria-label="Normal"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5208,7 +5208,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <button
                 aria-label="Overweight"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5239,7 +5239,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <button
                 aria-label="Underweight"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5507,7 +5507,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <button
                 aria-label="A"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5538,7 +5538,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <button
                 aria-label="B"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5569,7 +5569,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <button
                 aria-label="C"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5852,7 +5852,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <button
                 aria-label="Normal"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5883,7 +5883,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <button
                 aria-label="Overweight"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"

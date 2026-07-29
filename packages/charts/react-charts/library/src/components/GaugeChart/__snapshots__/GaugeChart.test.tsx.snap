@@ -3,7 +3,7 @@
 exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider_r_24_"
+    class="fui-FluentProvider_r_24_ group/fui-fluent-provider"
     dir="ltr"
   >
     <div
@@ -136,7 +136,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             <button
               aria-label="Low Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -156,7 +156,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             <button
               aria-label="Medium Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -176,7 +176,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             <button
               aria-label="High Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -206,7 +206,7 @@ Array [
   <button
     aria-label="Low Risk"
     aria-selected="false"
-    class="fui-Button group/fui-button fui-legend__legend"
+    class="group/fui-button fui-legend__legend"
     data-overflow-item=""
     data-overflowing=""
     data-size="small"
@@ -227,7 +227,7 @@ Array [
   <button
     aria-label="Medium Risk"
     aria-selected="false"
-    class="fui-Button group/fui-button fui-legend__legend"
+    class="group/fui-button fui-legend__legend"
     data-overflow-item=""
     data-overflowing=""
     data-size="small"
@@ -248,7 +248,7 @@ Array [
   <button
     aria-label="High Risk"
     aria-selected="false"
-    class="fui-Button group/fui-button fui-legend__legend"
+    class="group/fui-button fui-legend__legend"
     data-overflow-item=""
     data-overflowing=""
     data-size="small"
@@ -269,7 +269,7 @@ Array [
   <button
     aria-expanded="false"
     aria-haspopup="menu"
-    class="fui-Button group/fui-button fui-MenuButton group/fui-menu-button"
+    class="group/fui-button group/fui-menu-button"
     data-overflow-menu=""
     data-size="medium"
     id="menu_r_23_"
@@ -277,7 +277,7 @@ Array [
   >
     +3 more
     <span
-      class="fui-MenuButton__menuIcon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -428,7 +428,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <button
             aria-label="Low Risk"
             aria-selected="true"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -448,7 +448,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -469,7 +469,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -624,7 +624,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -644,7 +644,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -665,7 +665,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -822,7 +822,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -842,7 +842,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -862,7 +862,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1125,7 +1125,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1145,7 +1145,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1165,7 +1165,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1321,7 +1321,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1341,7 +1341,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1361,7 +1361,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1517,7 +1517,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1537,7 +1537,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1557,7 +1557,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1820,7 +1820,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1840,7 +1840,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1860,7 +1860,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2145,7 +2145,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2165,7 +2165,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2185,7 +2185,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2341,7 +2341,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2361,7 +2361,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2381,7 +2381,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2537,7 +2537,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2557,7 +2557,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2577,7 +2577,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2733,7 +2733,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2753,7 +2753,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2773,7 +2773,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2914,7 +2914,7 @@ Object {
               <button
                 aria-label="Low Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2934,7 +2934,7 @@ Object {
               <button
                 aria-label="Medium Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2954,7 +2954,7 @@ Object {
               <button
                 aria-label="High Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2982,7 +2982,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_2f_"
         role="tooltip"
       >
@@ -3105,7 +3105,7 @@ Object {
             <button
               aria-label="Low Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -3125,7 +3125,7 @@ Object {
             <button
               aria-label="Medium Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -3145,7 +3145,7 @@ Object {
             <button
               aria-label="High Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -3349,7 +3349,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_2s_"
         role="tooltip"
       >
@@ -3668,7 +3668,7 @@ Object {
               <button
                 aria-label="Low Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3688,7 +3688,7 @@ Object {
               <button
                 aria-label="Medium Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3708,7 +3708,7 @@ Object {
               <button
                 aria-label="High Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3736,7 +3736,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_2c_"
         role="tooltip"
       >
@@ -3879,7 +3879,7 @@ Object {
             <button
               aria-label="Low Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -3899,7 +3899,7 @@ Object {
             <button
               aria-label="Medium Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -3919,7 +3919,7 @@ Object {
             <button
               aria-label="High Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -4120,7 +4120,7 @@ Object {
               <button
                 aria-label="Used"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4140,7 +4140,7 @@ Object {
               <button
                 aria-label="Unknown"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4168,7 +4168,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_31_"
         role="tooltip"
       >
@@ -4299,7 +4299,7 @@ Object {
             <button
               aria-label="Used"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -4319,7 +4319,7 @@ Object {
             <button
               aria-label="Unknown"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -4554,7 +4554,7 @@ Object {
               <button
                 aria-label="Low Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4574,7 +4574,7 @@ Object {
               <button
                 aria-label="Medium Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4594,7 +4594,7 @@ Object {
               <button
                 aria-label="High Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4622,7 +4622,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_2i_"
         role="tooltip"
       >
@@ -4639,7 +4639,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_2k_"
         role="tooltip"
       >
@@ -4804,7 +4804,7 @@ Object {
             <button
               aria-label="Low Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -4824,7 +4824,7 @@ Object {
             <button
               aria-label="Medium Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -4844,7 +4844,7 @@ Object {
             <button
               aria-label="High Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5057,7 +5057,7 @@ Object {
               <button
                 aria-label="Low Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5077,7 +5077,7 @@ Object {
               <button
                 aria-label="Medium Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5097,7 +5097,7 @@ Object {
               <button
                 aria-label="High Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5125,7 +5125,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_2u_"
         role="tooltip"
       >
@@ -5268,7 +5268,7 @@ Object {
             <button
               aria-label="Low Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5288,7 +5288,7 @@ Object {
             <button
               aria-label="Medium Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5308,7 +5308,7 @@ Object {
             <button
               aria-label="High Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5535,7 +5535,7 @@ Object {
               <button
                 aria-label="Low Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5555,7 +5555,7 @@ Object {
               <button
                 aria-label="Medium Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5575,7 +5575,7 @@ Object {
               <button
                 aria-label="High Risk"
                 aria-selected="false"
-                class="fui-Button group/fui-button fui-legend__legend"
+                class="group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5603,7 +5603,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_2n_"
         role="tooltip"
       >
@@ -5620,7 +5620,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content group/fui-tooltip"
+        class="group/fui-tooltip"
         id="tooltip-_r_2p_"
         role="tooltip"
       >
@@ -5777,7 +5777,7 @@ Object {
             <button
               aria-label="Low Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5797,7 +5797,7 @@ Object {
             <button
               aria-label="Medium Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5817,7 +5817,7 @@ Object {
             <button
               aria-label="High Risk"
               aria-selected="false"
-              class="fui-Button group/fui-button fui-legend__legend"
+              class="group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -6025,7 +6025,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -6045,7 +6045,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -6065,7 +6065,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -6221,7 +6221,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="Low Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -6241,7 +6241,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="Medium Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -6261,7 +6261,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="High Risk"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"

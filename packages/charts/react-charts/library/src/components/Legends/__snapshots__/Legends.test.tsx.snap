@@ -19,7 +19,7 @@ Object {
           <button
             aria-label="Legend 1"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -39,7 +39,7 @@ Object {
           <button
             aria-label="Legend 2"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -59,7 +59,7 @@ Object {
           <button
             aria-label="Legend 3"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -79,7 +79,7 @@ Object {
           <button
             aria-label="Legend 4"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -99,7 +99,7 @@ Object {
           <button
             aria-label="Legend 5"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -119,7 +119,7 @@ Object {
           <button
             aria-label="Legend 6"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -139,7 +139,7 @@ Object {
           <button
             aria-label="Legend 7"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -159,7 +159,7 @@ Object {
           <button
             aria-label="Legend 8"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -179,7 +179,7 @@ Object {
           <button
             aria-label="Legend 9"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -199,7 +199,7 @@ Object {
           <button
             aria-label="Legend 10"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -219,7 +219,7 @@ Object {
           <button
             aria-label="Legend 11"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -239,7 +239,7 @@ Object {
           <button
             aria-label="Legend 12"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -259,7 +259,7 @@ Object {
           <button
             aria-label="Legend 13"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -279,7 +279,7 @@ Object {
           <button
             aria-label="Legend 14"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -299,7 +299,7 @@ Object {
           <button
             aria-label="Legend 15"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -319,7 +319,7 @@ Object {
           <button
             aria-label="Legend 16"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -339,7 +339,7 @@ Object {
           <button
             aria-label="Legend 17"
             aria-selected="false"
-            class="fui-Button group/fui-button fui-legend__legend"
+            class="group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -375,7 +375,7 @@ Object {
         <button
           aria-label="Legend 1"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -395,7 +395,7 @@ Object {
         <button
           aria-label="Legend 2"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -415,7 +415,7 @@ Object {
         <button
           aria-label="Legend 3"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -435,7 +435,7 @@ Object {
         <button
           aria-label="Legend 4"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -455,7 +455,7 @@ Object {
         <button
           aria-label="Legend 5"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -475,7 +475,7 @@ Object {
         <button
           aria-label="Legend 6"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -495,7 +495,7 @@ Object {
         <button
           aria-label="Legend 7"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -515,7 +515,7 @@ Object {
         <button
           aria-label="Legend 8"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -535,7 +535,7 @@ Object {
         <button
           aria-label="Legend 9"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -555,7 +555,7 @@ Object {
         <button
           aria-label="Legend 10"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -575,7 +575,7 @@ Object {
         <button
           aria-label="Legend 11"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -595,7 +595,7 @@ Object {
         <button
           aria-label="Legend 12"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -615,7 +615,7 @@ Object {
         <button
           aria-label="Legend 13"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -635,7 +635,7 @@ Object {
         <button
           aria-label="Legend 14"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -655,7 +655,7 @@ Object {
         <button
           aria-label="Legend 15"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -675,7 +675,7 @@ Object {
         <button
           aria-label="Legend 16"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -695,7 +695,7 @@ Object {
         <button
           aria-label="Legend 17"
           aria-selected="false"
-          class="fui-Button group/fui-button fui-legend__legend"
+          class="group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -784,7 +784,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 1"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -804,7 +804,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 2"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -824,7 +824,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 3"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -844,7 +844,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 4"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -864,7 +864,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 5"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -884,7 +884,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 6"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -904,7 +904,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 7"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -924,7 +924,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 8"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -944,7 +944,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 9"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -964,7 +964,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 10"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -984,7 +984,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 11"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1004,7 +1004,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 12"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1024,7 +1024,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 13"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1044,7 +1044,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 14"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1064,7 +1064,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 15"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1084,7 +1084,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 16"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1104,7 +1104,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     <button
       aria-label="Legend 17"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1140,7 +1140,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 1"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1160,7 +1160,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 2"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1180,7 +1180,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 3"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1200,7 +1200,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 4"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1220,7 +1220,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 5"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1240,7 +1240,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 6"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1260,7 +1260,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 7"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1280,7 +1280,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 8"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1300,7 +1300,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 9"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1320,7 +1320,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 10"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1340,7 +1340,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 11"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1360,7 +1360,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 12"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1380,7 +1380,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 13"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1400,7 +1400,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 14"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1420,7 +1420,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 15"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1440,7 +1440,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 16"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1460,7 +1460,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     <button
       aria-label="Legend 17"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1496,7 +1496,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 1"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1516,7 +1516,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 2"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1536,7 +1536,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 3"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1556,7 +1556,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 4"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1576,7 +1576,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 5"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1596,7 +1596,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 6"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1616,7 +1616,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 7"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1636,7 +1636,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 8"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1656,7 +1656,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 9"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1676,7 +1676,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 10"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1696,7 +1696,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 11"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1716,7 +1716,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 12"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1736,7 +1736,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 13"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1756,7 +1756,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 14"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1776,7 +1776,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 15"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1796,7 +1796,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 16"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1816,7 +1816,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     <button
       aria-label="Legend 17"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1852,7 +1852,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 1"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1872,7 +1872,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 2"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1892,7 +1892,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 3"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1912,7 +1912,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 4"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1932,7 +1932,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 5"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1952,7 +1952,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 6"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1972,7 +1972,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 7"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -1992,7 +1992,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 8"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2012,7 +2012,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 9"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2032,7 +2032,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 10"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2052,7 +2052,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 11"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2072,7 +2072,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 12"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2092,7 +2092,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 13"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2112,7 +2112,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 14"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2132,7 +2132,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 15"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2152,7 +2152,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 16"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
@@ -2172,7 +2172,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     <button
       aria-label="Legend 17"
       aria-selected="false"
-      class="fui-Button group/fui-button fui-legend__legend"
+      class="group/fui-button fui-legend__legend"
       data-overflow-item=""
       data-size="small"
       role="option"
