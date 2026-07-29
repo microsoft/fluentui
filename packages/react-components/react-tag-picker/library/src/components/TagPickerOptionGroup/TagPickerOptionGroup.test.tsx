@@ -13,17 +13,25 @@ describe('TagPickerOptionGroup', () => {
     },
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind), D9
     // delegation seam. `useTagPickerOptionGroupStyles` calls react-combobox's
-    // `useOptionGroupStyles_unstable` FIRST and then wraps the result with its own
-    // `mergeClasses`. Now that the delegate composes with clsx, the consumer className is
-    // already concatenated into `state.root.className` by the time this package's
-    // `mergeClasses` sees it, so `make-styles-overrides-win` — which looks for the class as
-    // a standalone ARGUMENT — can no longer observe the contract. The guarantee is unchanged:
-    // the consumer className is still last in the emitted string, and unlayered consumer CSS
-    // still beats every `@layer fui.*` rule. `classname-overrides-win` is its cascade-native
-    // replacement (DECISIONS.md D9). This package is otherwise untouched by the conversion.
+    // `useOptionGroupStyles_unstable` FIRST and then prepends its own classes with clsx, so
+    // `make-styles-overrides-win` — which jest-mocks mergeClasses and looks for the consumer
+    // className as a standalone ARGUMENT — can no longer observe the contract. The guarantee is
+    // unchanged: the consumer className is still last in the emitted string, and unlayered
+    // consumer CSS still beats every `@layer fui.*` rule. `classname-overrides-win` is its
+    // cascade-native replacement (DECISIONS.md D9).
     disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
+    testOptions: {
+      // A TagPickerOptionGroup IS an OptionGroup — the delegation above stamps its marker on
+      // this same element, so this root legitimately carries both (DECISIONS.md D16.3).
+      // Declaring the whole set keeps `component-has-group-marker` running: it is an exact set
+      // comparison, so an undeclared marker still fails, and its `classList[0]` half — the
+      // D16.2 invariant nwsapi's jsdom `:scope` polyfill depends on — is asserted here.
+      'has-group-marker': {
+        markers: ['group/fui-option-group', 'group/fui-tag-picker-option-group'],
+      },
     },
   });
 

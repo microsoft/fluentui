@@ -36,6 +36,11 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     activeParentRef,
     listboxRef,
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
+    // `optionClassNames.root` is react-combobox's retained identity constant, now valued at its
+    // group marker `group/fui-option` (DECISIONS.md D16.5). It is `@deprecated for styling`, but
+    // this is not styling — it is identity matching, and `classList.contains` takes a class
+    // TOKEN, so the `/` needs no escaping and the call works unchanged.
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 

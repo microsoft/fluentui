@@ -1,0 +1,57 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * TagPickerOptionGroup has no styles of its own: its Griffel hook only ever applied
+ * `tagPickerOptionGroupClassNames.root` / `.label` (there was no `makeStyles` call in the file
+ * at all) on top of react-combobox's `useOptionGroupStyles_unstable`, and D16.1 removes both
+ * statics.
+ *
+ * `root` slot                                   `label` slot
+ *   1 optionGroupClassNames.root + OptionGroup's  1 OptionGroup's own label class (its hook)
+ *     own slices                    (its hook)    2 tagPickerOptionGroupClassNames.label
+ *   2 tagPickerOptionGroupClassNames.root                              → REMOVED (D16.1)
+ *                                  → marker (JS)  3 consumer className → unlayered
+ *   3 consumer className            → unlayered
+ *
+ * The `label` assignment is deleted outright rather than converted: its only library token was
+ * the static, so what would be left is `clsx(state.label.className)` — an identity on the
+ * consumer's own string, implying this hook styles a slot it does not (CONVERSION_GUIDE,
+ * "a slot whose only library token is the static").
+ *
+ * This is the "root with no unconditional module class" case (CONVERSION_GUIDE §3b,
+ * DECISIONS.md D16.2). react-combobox's OptionGroup hook does prepend its own unconditional
+ * class to this element, so in practice the marker would not land at `classList[0]` — but
+ * relying on that would make this root's D15.1 safety a property of another package's hook, so
+ * the identity-only local below is minted and led with.
+ */
+
+/*
+ * WHY IT IS NOT A LITERALLY EMPTY RULE. `@tailwindcss/postcss` runs BEFORE `postcss-modules`
+ * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
+ * every declaration-less rule, so `.root {}` would never reach the class map and
+ * `styles.root` would be `undefined` — silently putting the marker back at index 0.
+ * `--fui-tag-picker-option-group-identity: initial` is the minimal body that survives: a custom
+ * property set to `initial` is guaranteed-invalid, so it renders nothing and any
+ * `var(--fui-tag-picker-option-group-identity, X)` still resolves to `X`. Same shape as
+ * react-menu's MenuGroup and react-menu-grid-preview's MenuGridGroup.
+ *
+ * ALTITUDE IS IRRELEVANT HERE, and l1 is deliberate: this rule declares nothing that can
+ * compete with anything, so it has no reason to sit at the composition altitude.
+ */
+@layer fui.components.l1 {
+  .root {
+    --fui-tag-picker-option-group-identity: initial;
+  }
+}

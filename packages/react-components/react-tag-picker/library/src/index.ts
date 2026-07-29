@@ -18,6 +18,7 @@ export type {
 } from './TagPicker';
 export {
   TagPickerInput,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagPickerInputClassNames,
   renderTagPickerInput_unstable,
   useTagPickerInputStyles_unstable,
@@ -33,6 +34,7 @@ export type {
 } from './TagPickerInput';
 export {
   TagPickerList,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagPickerListClassNames,
   renderTagPickerList_unstable,
   useTagPickerListStyles_unstable,
@@ -41,6 +43,7 @@ export {
 export type { TagPickerListProps, TagPickerListSlots, TagPickerListState } from './TagPickerList';
 export {
   TagPickerButton,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagPickerButtonClassNames,
   renderTagPickerButton_unstable,
   useTagPickerButtonStyles_unstable,
@@ -56,6 +59,7 @@ export type {
 } from './TagPickerButton';
 export {
   TagPickerControl,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagPickerControlClassNames,
   renderTagPickerControl_unstable,
   useTagPickerControlStyles_unstable,
@@ -71,6 +75,7 @@ export type {
 } from './TagPickerControl';
 export {
   TagPickerOption,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagPickerOptionClassNames,
   renderTagPickerOption_unstable,
   useTagPickerOptionStyles_unstable,
@@ -79,6 +84,7 @@ export {
 export type { TagPickerOptionProps, TagPickerOptionSlots, TagPickerOptionState } from './TagPickerOption';
 export {
   TagPickerGroup,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagPickerGroupClassNames,
   renderTagPickerGroup_unstable,
   useTagPickerGroupStyles_unstable,
@@ -88,6 +94,7 @@ export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } fr
 
 export {
   TagPickerOptionGroup,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagPickerOptionGroupClassNames,
   renderTagPickerOptionGroup,
   useTagPickerOptionGroupStyles,

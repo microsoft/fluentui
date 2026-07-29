@@ -1,0 +1,150 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTagPickerInputStyles_unstable,
+ * not source declaration order.
+ *
+ *   #  mergeClasses argument       bucket → target
+ *   ---------------------------------------------------------------------------------
+ *   1  tagPickerInputClassNames.root  —   → group marker (JS, D16.5)
+ *   2  useBaseStyle  (makeResetStyles) r  → fui.base   (levelless — loses to every level)
+ *   3  styles[size]                   d   → fui.components.l1  (data-size)
+ *   4  styles.disabled  (disabled)    d   → fui.components.l1
+ *   5  consumer className             —   → unlayered (always wins)
+ *
+ * The root IS the `<input>` — this component has exactly one element and styles nothing it
+ * does not own, so nothing sits at `fui.components.l2` and no `:global()` selector appears.
+ * `fui.base` reproduces makeResetStyles' `r` bucket, which Griffel sorts before every other
+ * bucket and which therefore lost to `[size]` and `disabled` on every shared property. The two
+ * that ARE shared — `background-color` and `color`, both re-declared by `disabled` — resolve
+ * the same way here, because `fui.base` is levelless and loses to `fui.components.l1`.
+ *
+ * ── The runtime width variable ──────────────────────────────────────────────────────
+ * `--fluent-TagPickerInput__width` is written on this same element by
+ * `setTagPickerInputStretchStyle` in useTagPickerInput.tsx (`input.style.setProperty(...)`,
+ * `'100%'` when the text overflows, removed otherwise). Its name comes from
+ * `utils/tokens.ts` and is reproduced verbatim from the compiled reset
+ * (`width:var(--fluent-TagPickerInput__width, 0)`) — note the `--fluent-` prefix and the
+ * bare `0` fallback, neither of which this conversion touches. The JS mechanism is unchanged.
+ *
+ * ── RTL ─────────────────────────────────────────────────────────────────────────────
+ * Every compiled atomic in this file is a single class with no `[ltr, rtl]` pair: the size
+ * paddings are `<vertical> 0 <vertical> 0`, symmetric on the inline axis, so Griffel emitted
+ * one `padding` shorthand each (`.fa2pw7h` / `.ft37c3` / `.f3abo53`). Nothing flips.
+ */
+
+@layer fui.base {
+  /* from useBaseStyle (makeResetStyles) — arg #2 */
+  .root {
+    @apply box-border grow min-w-24 max-w-full;
+
+    background-color: var(--colorTransparentBackground);
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+
+    /* compiled `border:none`; the field's border is drawn by TagPickerControl */
+    border-style: none;
+
+    /*
+     * By default the width is 0; it is recalculated to `100%` when the typed text needs the
+     * input to occupy a whole new line — see `setTagPickerInputStretchStyle` in
+     * useTagPickerInput.tsx. Reproduced verbatim, fallback included.
+     */
+    width: var(--fluent-TagPickerInput__width, 0);
+
+    /* disable the default browser outline */
+    @variant focus {
+      outline-style: none;
+    }
+
+    /*
+     * Griffel autoprefixes to `::-webkit-input-placeholder` / `::-moz-placeholder` and emits
+     * those alongside the standard form. Only the unprefixed form is emitted here — the legacy
+     * aliases predate the repo's baseline browsers, and an unsupported pseudo-element would
+     * invalidate the whole rule if they were merged into one selector list. Same call as
+     * react-combobox's `input` slot.
+     */
+    &::placeholder {
+      color: var(--colorNeutralForeground4);
+      opacity: 1; /* browser style override */
+    }
+
+    &::after {
+      visibility: hidden;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.medium / .large / .['extra-large'] — arg #3. `size` is a small ENUM scale →
+   * `data-size` (D3). All three spread `typographyStyles.body1`, so only the block padding
+   * actually differs; the four type declarations are repeated per variant because that is what
+   * the compiled atomics do (one shared set of classes, applied by each size slice).
+   *
+   * `padding: '<vertical> 0 <vertical> 0'` expands to the block/inline logical pair.
+   */
+  .root {
+    @variant size-medium {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
+
+      @apply py-vertical-s-nudge px-horizontal-none;
+    }
+
+    @variant size-large {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
+
+      @apply py-vertical-m-nudge px-horizontal-none;
+    }
+
+    @variant size-extra-large {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
+
+      @apply py-vertical-m px-horizontal-none;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.disabled — arg #4, the last style argument.
+   *
+   * Driven by the shared `disabled` variant, which matches the element's own native
+   * `[disabled]` / `:disabled`. `useTagPickerInputBase_unstable` passes the picker context's
+   * `disabled` straight to the `<input>`, so the native attribute is always present when this
+   * slice applied — no `data-*` mirror is minted (DECISIONS.md D15.6).
+   */
+  .root {
+    @variant disabled {
+      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--colorTransparentBackground);
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+  }
+}

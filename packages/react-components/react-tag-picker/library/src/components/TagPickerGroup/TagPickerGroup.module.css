@@ -1,0 +1,94 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTagPickerGroupStyles_unstable.
+ * A TagPickerGroup IS a TagGroup: it renders no element of its own, it decorates the root
+ * react-tags' `useTagGroupStyles_unstable` already styled.
+ *
+ *   #  mergeClasses argument                     bucket → target
+ *   ---------------------------------------------------------------------------------
+ *   1  tagPickerGroupClassNames.root             —      → group marker (JS, D16.5)
+ *   2  styles[tagSizeToTagPickerSize(size)]      d      → l1  (block 2)
+ *   3  styles.root                               d      → l1  (block 1)
+ *   4  state.root.className                      —      → TagGroup's own classes, then consumer
+ *
+ * ── ALTITUDE: fui.components.l1, NOT l2 — and that is deliberate ─────────────────────
+ * The cookbook's default for "styles applied over another component's hook output" is
+ * `fui.components.l2` (D2 amendment 2). That rule exists because in the usual composition the
+ * decorating component's classes are the LAST mergeClasses arguments and therefore WIN
+ * (Combobox over Listbox, CounterBadge over Badge, ToggleButton over Button).
+ *
+ * Here the delegation runs the other way. `useTagPickerGroupStyles_unstable` calls
+ * `useTagGroupStyles_unstable(state)` FIRST, so TagGroup's classes are already inside
+ * `state.root.className` by the time this component composes — and `state.root.className` is
+ * the LAST argument. Under Griffel that made TAGGROUP the winner of every shared property key,
+ * not TagPickerGroup. Putting these rules in l2 would invert exactly the relationship
+ * DECISIONS.md D12 was written to preserve.
+ *
+ * There is no shared property to arbitrate, which is what makes l1 safe. TagGroup.module.css
+ * declares `display: inline-flex` on `.root` plus `column-gap` per `data-size`, and nothing
+ * else. This file declares `flex-wrap`, `box-sizing`, `cursor`, the block/inline padding and
+ * `row-gap`. The two sets are disjoint, so no cascade decision is ever taken between them and
+ * the l1/l2 choice is unobservable. If a future edit here declares `display` or `column-gap`,
+ * the correct fix is to remove the collision — NOT to promote this file to l2.
+ *
+ * `row-gap`, not `gap` (DECISIONS.md D12): the column axis has always belonged to TagGroup.
+ * Under Griffel TagGroup's `columnGap` atomic beat the columnGap half of a `gap` shorthand
+ * written here on every size, so only the row axis from here ever rendered. Setting only
+ * `row-gap` is what keeps the computed styles identical in both worlds.
+ *
+ * ── Why the size steps are LOCAL CLASSES and not `data-size` ─────────────────────────
+ * `data-size` on this root is already written by `useTagGroupStyles_unstable`, and it carries
+ * the TAG scale (`extra-small` / `small` / `medium`). These three slices are keyed by the
+ * PICKER scale (`medium` / `large` / `extra-large`), which the hook derives with
+ * `tagSizeToTagPickerSize`. Reusing the shared `size-*` variants here would silently read the
+ * wrong vocabulary — `size-medium` would match a picker `extra-large`. Conditional module
+ * classes reproduce the source exactly and mint no second attribute (D15.6).
+ *
+ * ── RTL ─────────────────────────────────────────────────────────────────────────────
+ * Every compiled atomic here is a single class with no `[ltr, rtl]` pair (the paddings are
+ * `<vertical> 0 <vertical> 0`, symmetric on the inline axis). Nothing flips.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #3 */
+  .root {
+    @apply flex-wrap box-border;
+
+    cursor: text;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.medium / .large / .['extra-large'] — arg #2, keyed by the PICKER size.
+   *
+   * `padding: '<vertical> 0 <vertical> 0'` expands to the block/inline logical pair. The
+   * `row-gap` values name HORIZONTAL tokens in the source; reproduced verbatim (the
+   * `--spacing-*` namespace is axis-agnostic, so `gap-y-horizontal-xs` emits the token's
+   * length on the block axis).
+   */
+  .medium {
+    @apply py-vertical-s-nudge px-horizontal-none gap-y-horizontal-xs;
+  }
+
+  .large {
+    @apply py-vertical-s px-horizontal-none gap-y-horizontal-s-nudge;
+  }
+
+  .extra-large {
+    @apply py-vertical-s px-horizontal-none gap-y-horizontal-s-nudge;
+  }
+}

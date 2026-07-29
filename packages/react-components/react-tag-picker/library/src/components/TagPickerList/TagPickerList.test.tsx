@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { TagPickerList } from './TagPickerList';
 import { TagPickerContextProvider, tagPickerContextDefaultValue } from '../../contexts/TagPickerContext';
@@ -21,6 +22,28 @@ describe('TagPickerList', () => {
     displayName: 'TagPickerList',
     renderOptions: { wrapper: Wrapper },
     requiredProps: { children: 'Default TagPickerList' },
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+    // it was called with the consumer className last; this component now composes with
+    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+    // The guarantee itself is unchanged — clsx puts `state.root.className` last, and the
+    // `<Listbox>` this slot renders as carries that whole string through as ITS last argument
+    // (DECISIONS.md D2/D9). `classname-overrides-win` below is its cascade-native replacement.
+    disabledTests: ['make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
+    testOptions: {
+      // A TagPickerList IS a Listbox — the `root` slot's elementType is react-combobox's
+      // `<Listbox>`, whose hook stamps its marker on this same element, so this root
+      // legitimately carries both (DECISIONS.md D16.3). Declaring the whole set keeps
+      // `component-has-group-marker` running: it is an exact set comparison, so an undeclared
+      // marker still fails, and its `classList[0]` half — the D16.2 invariant nwsapi's jsdom
+      // `:scope` polyfill depends on — is asserted here rather than locally.
+      'has-group-marker': {
+        markers: ['group/fui-listbox', 'group/fui-tag-picker-list'],
+      },
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

@@ -4,8 +4,8 @@ exports[`TagPickerOption renders a default state 1`] = `
 <div>
   <div
     aria-selected="false"
-    class="fuicm-root group/fui-option fui-TagPickerOption"
-    id="fluent-option_r_7_"
+    class="group/fui-option group/fui-tag-picker-option"
+    id="fluent-option_r_9_"
     role="option"
   >
     Default TagPickerOption

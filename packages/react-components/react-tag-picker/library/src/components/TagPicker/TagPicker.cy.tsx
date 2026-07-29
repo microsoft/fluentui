@@ -14,12 +14,38 @@ import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
 
 import 'cypress-real-events';
-import { tagPickerControlClassNames } from '../TagPickerControl/useTagPickerControlStyles.styles';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
+
+/*
+ * ── Selecting TagPickerControl's expand icon after the D16 statics removal ───────────────
+ *
+ * This file used to reach the expand icon through the `expandIcon` key of the package's static
+ * class-name object. That key no longer exists: `tagPickerControlClassNames` holds ONE key now — `root`, valued at
+ * TagPickerControl's group marker — and the per-slot `expandIcon` / `secondaryAction` / `aside`
+ * keys were removed with every other BEM static (DECISIONS.md D16.1 / D16.5). The class the slot
+ * actually carries is a hashed CSS-module token, unaddressable from here.
+ *
+ * So the fixture stamps a probe class through the slot's `className` prop, the same way
+ * TimePicker.cy.tsx and Card.cy.tsx do. That is not a workaround — per-slot `className` IS the
+ * supported handle on a slot under the new contract, so this targets the internal the way a
+ * consumer must. (A `data-testid` would read more conventionally but is not assignable: Fluent's
+ * slot-props types have no index signature, so an object literal rejects `data-*`.)
+ *
+ * Passing `expandIcon` is behaviour-neutral for the assertions below EXCEPT in the `noPopover`
+ * case, which is why the fixture passes `undefined` there. `useTagPickerControlBase_unstable`
+ * builds the slot with `slot.optional(props.expandIcon, { renderByDefault: !noPopover, defaultProps: … })`:
+ * a supplied object renders REGARDLESS of `renderByDefault`, so handing it one under `noPopover`
+ * would resurrect the very element that test asserts is absent. With `undefined` the slot behaves
+ * exactly as before; with `{ className }` the `defaultProps` still supply `role`, `aria-expanded`
+ * and the `<ChevronDownRegular />` children, and `useExpandLabel` still writes `aria-labelledby`
+ * through the slot's ref.
+ */
+const EXPAND_ICON_PROBE = 'tag-picker-expand-icon-probe';
+const expandIconSelector = `.${EXPAND_ICON_PROBE}`;
 
 const options = [
   'John Doe',
@@ -58,6 +84,7 @@ const TagPickerControlled = ({
       >
         <TagPickerControl
           data-testid="tag-picker-control"
+          expandIcon={noPopover ? undefined : { className: EXPAND_ICON_PROBE }}
           secondaryAction={
             <Button
               data-testid="tag-picker-control__secondaryAction"
@@ -141,10 +168,10 @@ describe('TagPicker', () => {
       mount(<TagPickerControlled />);
 
       cy.get('[data-testid="tag-picker-list"]').should('not.exist');
-      cy.get(`.${tagPickerControlClassNames.expandIcon}`).realClick();
+      cy.get(expandIconSelector).realClick();
       cy.get('[data-testid="tag-picker-list"]').should('be.visible');
       cy.get('[data-testid="tag-picker-input"]').should('be.focused');
-      cy.get(`.${tagPickerControlClassNames.expandIcon}`).realClick();
+      cy.get(expandIconSelector).realClick();
       cy.get('[data-testid="tag-picker-list"]').should('not.be.visible');
     });
 
@@ -419,18 +446,14 @@ describe('TagPicker', () => {
     it('should update aria-label and aria-labelledby on input change', () => {
       mount(<TagPickerControlled />);
 
-      cy.get(`.${tagPickerControlClassNames.expandIcon}`).should('exist');
+      cy.get(expandIconSelector).should('exist');
       cy.get('[data-testid="tag-picker-input"]').should('have.attr', 'aria-labelledby', 'Selected Employees');
-      cy.get(`.${tagPickerControlClassNames.expandIcon}`)
-        .should('have.attr', 'aria-labelledby')
-        .and('contain', 'Selected Employees');
+      cy.get(expandIconSelector).should('have.attr', 'aria-labelledby').and('contain', 'Selected Employees');
 
       cy.get('[data-testid="tag-picker-input"]')
         .invoke('attr', 'aria-labelledby', 'New Labelled By')
         .should('have.attr', 'aria-labelledby', 'New Labelled By');
-      cy.get(`.${tagPickerControlClassNames.expandIcon}`)
-        .should('have.attr', 'aria-labelledby')
-        .and('contain', 'New Labelled By');
+      cy.get(expandIconSelector).should('have.attr', 'aria-labelledby').and('contain', 'New Labelled By');
     });
   });
 
@@ -438,7 +461,7 @@ describe('TagPicker', () => {
     mount(<TagPickerControlled noPopover />);
 
     cy.get('[data-testid="tag-picker-control"]').should('exist');
-    cy.get(`.${tagPickerControlClassNames.expandIcon}`).should('not.exist');
+    cy.get(expandIconSelector).should('not.exist');
     cy.get('[data-testid="tag-picker-list"]').should('not.exist');
     cy.get('[data-testid="tag-picker-input"]').realClick();
     cy.get('[data-testid="tag-picker-list"]').should('not.exist');

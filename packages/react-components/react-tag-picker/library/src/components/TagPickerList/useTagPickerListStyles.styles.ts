@@ -1,41 +1,68 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TagPickerListSlots, TagPickerListState } from './TagPickerList.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const tagPickerListClassNames: SlotClassNames<TagPickerListSlots> = {
-  root: 'fui-TagPickerList',
-};
+import { clsx } from 'clsx';
+import type { TagPickerListState } from './TagPickerList.types';
+
+import styles from './TagPickerList.module.css';
 
 /**
- * Styles for the root slot
+ * Public identity class for TagPickerList.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
+ * `group-*` variant target.
+ *
+ * Note this root ALSO carries `listboxClassNames.root` (`group/fui-listbox`), because a
+ * TagPickerList IS a Listbox — the `root` slot's elementType is react-combobox's `<Listbox>`,
+ * whose own hook stamps that marker on this same element. `group/fui-tag-picker-list` narrows
+ * to this subtype.
+ *
+ * The value is a class TOKEN, not a selector — `'.' + tagPickerListClassNames.root` is invalid
+ * CSS, because the `/` must be escaped in a selector. Use
+ * `fuiSelector(tagPickerListClassNames.root)` from `@fluentui/react-utilities`.
  */
-const useStyles = makeStyles({
-  root: {
-    boxShadow: `${tokens.shadow16}`,
-    borderRadius: tokens.borderRadiusMedium,
-    maxHeight: '80vh',
-    boxSizing: 'border-box',
-  },
-
-  collapsed: {
-    display: 'none',
-  },
-});
+export const tagPickerListClassNames: { root: string } = {
+  root: 'group/fui-tag-picker-list',
+};
 
 /**
  * Apply styling to the TagPickerList slots based on the state
  */
 export const useTagPickerListStyles_unstable = (state: TagPickerListState): TagPickerListState => {
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    tagPickerListClassNames.root,
+  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
+  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `<Listbox>` this
+  // slot renders as prepends its OWN unconditional class ahead of all of this, so index 0 is
+  // doubly safe; leading with `styles.root` keeps that a property of this file rather than of
+  // another package's hook.
+  //
+  // Both module classes live in `@layer fui.components.l2` so they keep beating Listbox's l1
+  // rules — in particular `collapsed`'s `display: none` over Listbox's `display: flex` — without
+  // depending on stylesheet load order. See TagPickerList.module.css.
+  //
+  // No `data-*` mirror is minted: `open` drives one unconditional-vs-absent module class and no
+  // descendant selector needs to read it (DECISIONS.md D15.6).
+
+  state.root.className = clsx(
     styles.root,
+    'group/fui-tag-picker-list',
     !state.open && styles.collapsed,
     state.root.className,
   );
+
   return state;
 };

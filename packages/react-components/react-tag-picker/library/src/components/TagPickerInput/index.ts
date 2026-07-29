@@ -8,4 +8,5 @@ export type {
 } from './TagPickerInput.types';
 export { renderTagPickerInput_unstable } from './renderTagPickerInput';
 export { useTagPickerInput_unstable, useTagPickerInputBase_unstable } from './useTagPickerInput';
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
 export { tagPickerInputClassNames, useTagPickerInputStyles_unstable } from './useTagPickerInputStyles.styles';

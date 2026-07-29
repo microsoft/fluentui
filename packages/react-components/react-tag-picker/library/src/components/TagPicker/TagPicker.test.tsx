@@ -16,7 +16,13 @@ describe('TagPicker', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classnames-object',
+      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+      // `component-has-static-classnames-object` left the default set with DECISIONS.md D16.6
+      // and this package no longer opts into it, so the entry is dropped rather than kept as a
+      // no-op. Its replacement, `component-has-group-marker`, is disabled for the same reason
+      // the three above are: TagPicker is a context provider with no styles hook and no root
+      // element, so there is nothing to stamp a marker on.
+      'component-has-group-marker',
       // TagPicker does not have own styles
       'make-styles-overrides-win',
     ],

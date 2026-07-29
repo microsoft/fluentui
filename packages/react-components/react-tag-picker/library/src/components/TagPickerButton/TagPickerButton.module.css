@@ -1,0 +1,140 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTagPickerButtonStyles_unstable,
+ * not source declaration order. TagPickerButton has NO `makeResetStyles` and exactly one
+ * element, so every block lands in `fui.components.l1`; nothing sits at l2 and no `:global()`
+ * selector appears.
+ *
+ *   #  mergeClasses argument                       bucket → target
+ *   ---------------------------------------------------------------------------------
+ *   1  tagPickerButtonClassNames.root              —      → group marker (JS, D16.5)
+ *   2  styles.button                               d + f  → l1  (block 1)
+ *   3  styles[size]                                d      → l1  (block 2, data-size)
+ *   4  styles.visuallyHidden  (hasSelectedOption)  d      → l1  (block 3)
+ *   5  consumer className                          —      → unlayered (always wins)
+ *
+ * Block 3 is written AFTER block 2 on purpose: `visuallyHidden`'s `margin` and `padding`
+ * SHORTHANDS have to cancel the size block's inline padding, which is exactly what Griffel did
+ * by resetting those property keys. It is also the later mergeClasses argument, so file order
+ * and argument order agree. `position: absolute` likewise has nothing to compete with.
+ *
+ * ── Slices that are NOT here ────────────────────────────────────────────────────────
+ * `useStyles` also declares `placeholder`, `outline`, `outlineInteractive`, `underline`,
+ * `filled-lighter`, `filled-darker`, `invalid`, `invalidUnderline`, `disabled`, `disabledText`
+ * and `hidden`. NONE of them is referenced by `useTagPickerButtonStyles_unstable` — the hook
+ * composes `button`, `[size]` and `visuallyHidden` only. They are a copy of
+ * TagPickerControl's appearance/validation set that was never wired up, so they are dropped
+ * rather than transcribed: a module class nothing composes would be unreachable.
+ *
+ * ── RTL ─────────────────────────────────────────────────────────────────────────────
+ * Two flips, both handled by logical properties: `textAlign: 'left'` compiles to the
+ * `[ltr, rtl]` pair `.f1o700av`/`.fes3tcz` (`left`/`right`) → `text-align: start`, and each
+ * size's `padding` shorthand compiles to a `[ltr, rtl]` pair → the block/inline logical set.
+ * No value-level flip, so no `@variant rtl` twin is required.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.button — arg #2 */
+  .root {
+    @apply flex items-center box-border grow min-h-32;
+
+    background-color: var(--colorTransparentBackground);
+
+    /* compiled `border:none` — TagPickerControl draws the field's border */
+    border-style: none;
+
+    color: var(--colorNeutralForeground1);
+    cursor: pointer;
+
+    /*
+     * `fontFamily: tokens.fontFamilyBase` is declared here AND by every size slice's
+     * `typographyStyles.*` spread; all four are the same token, so Griffel deduplicated them
+     * onto one atomic (`.fk6fouc`). Declared once here for the same reason.
+     */
+    font-family: var(--fontFamilyBase);
+
+    /* `columnGap: tokens.spacingHorizontalXXS` — `extra-large` overrides it below */
+    @apply gap-x-horizontal-xxs;
+
+    /* compiled `[ltr, rtl]` pair `left`/`right` → logical */
+    text-align: start;
+
+    /* disable the default browser outline */
+    @variant focus {
+      outline-style: none;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.medium / .large / .['extra-large'] — arg #3. `size` is a small ENUM scale →
+   * `data-size` (D3).
+   *
+   * Each `padding` is `<block>px <inline-end> <block>px calc(<inline-end> + <nudge>)`, a
+   * `[ltr, rtl]` shorthand flip → block/inline logical set. The block halves are plain px
+   * literals (3/5/7) and take the numeric utilities, which ride `--base-scale` exactly as the
+   * named steps do (`--spacing` is `calc(1px * var(--base-scale))`).
+   */
+  .root {
+    @variant size-medium {
+      /* typographyStyles.caption1 */
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase200);
+
+      /* SNudge (6) + XXS (2) = 8px, exactly the S step */
+      @apply py-3 pe-horizontal-s-nudge ps-horizontal-s;
+    }
+
+    @variant size-large {
+      /* typographyStyles.body1 */
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
+
+      /* MNudge (10) + XXS (2) = 12px, exactly the M step */
+      @apply py-5 pe-horizontal-m-nudge ps-horizontal-m;
+    }
+
+    @variant size-extra-large {
+      /* `columnGap: tokens.spacingHorizontalSNudge` overrides the root's XXS */
+      @apply gap-x-horizontal-s-nudge;
+
+      /* typographyStyles.body2 */
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase400);
+
+      /* M (12) + SNudge (6) = 18px, which matches NO spacing step, so the numeric utility is
+         the sanctioned fallback (D4 amendment) — same scale, `ps-18` === `calc(18px * var(--base-scale))`. */
+      @apply py-7 pe-horizontal-m ps-18;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.visuallyHidden — arg #4, applied once an option has been selected (the
+   * TagPickerGroup then renders the selection and this button is taken out of the layout but
+   * left in the accessibility tree).
+   */
+  .visually-hidden {
+    @apply absolute h-1 w-1 -m-1 p-0 overflow-hidden;
+
+    clip: rect(0px, 0px, 0px, 0px);
+  }
+}

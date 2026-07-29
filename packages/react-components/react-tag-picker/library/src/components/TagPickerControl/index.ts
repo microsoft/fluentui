@@ -12,6 +12,7 @@ export { useTagPickerControl_unstable, useTagPickerControlBase_unstable } from '
 export {
   iconSizes,
   tagPickerControlAsideWidthToken,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagPickerControlClassNames,
   useTagPickerControlStyles_unstable,
 } from './useTagPickerControlStyles.styles';

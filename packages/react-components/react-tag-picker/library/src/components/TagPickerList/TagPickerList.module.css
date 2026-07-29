@@ -1,0 +1,61 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ALTITUDE: fui.components.l2, not l1 (DECISIONS.md D2 amendment 2).
+ *
+ * TagPickerList's `root` slot IS a `<Listbox>` (`Slot<typeof Listbox>` in
+ * TagPickerList.types.ts), so its base styles come from react-combobox's
+ * `useListboxStyles_unstable`. That hook runs AFTER this one and composes its own classes
+ * AHEAD of the string this file contributes:
+ *
+ *   1 listboxClassNames.root + Listbox's own slices            (Listbox hook, fui.components.l1)
+ *   2 tagPickerListClassNames.root  → group marker (JS, D16.5)
+ *   3 styles.root                                              → fui.components.l2
+ *   4 styles.collapsed              (!open)                    → fui.components.l2
+ *   5 consumer className                                       → unlayered (always wins)
+ *
+ * i.e. these two slices are applied OVER another component's hook output, so they belong to
+ * the composition altitude. This is load-bearing, not bookkeeping: `useListboxStyles_unstable`
+ * sets `display: flex` on this same element (`.root { @apply … flex flex-col … }` in
+ * Listbox.module.css, compiled `.f22iagw`), and `collapsed`'s `display: none` HAS to beat it or
+ * a closed TagPickerList stays visible. In l1 the winner would depend on which module's rules
+ * happen to be emitted first; in l2 it is guaranteed, because a cascade-layer comparison
+ * resolves at the highest differing level. `box-shadow`, `border-radius` and `max-height` are
+ * declared by neither Listbox nor anything else, so those three are altitude-indifferent — they
+ * ride along in the same block because they are the same mergeClasses argument.
+ *
+ * Within l2 the two blocks stay in argument order — `collapsed` is the later argument, which is
+ * also the order that makes `display: none` win the tie against nothing here.
+ *
+ * The listbox is portalled unless the popover is suppressed, so it is NOT reliably a
+ * descendant of TagPickerControl's root; the classes stay FLAT (0-1-0, no ancestor selector),
+ * exactly as Combobox's `listbox` slot does.
+ */
+
+@layer fui.components.l2 {
+  /* from useStyles.root */
+  .root {
+    @apply box-border;
+
+    box-shadow: var(--shadow16);
+    border-radius: var(--borderRadiusMedium);
+    max-height: 80vh;
+  }
+
+  /* from useStyles.collapsed — applied while the picker is closed */
+  .collapsed {
+    display: none;
+  }
+}

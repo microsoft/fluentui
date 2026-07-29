@@ -8,7 +8,6 @@ import {
   TagPickerOption,
   TagPickerGroup,
   makeStyles,
-  tagPickerGroupClassNames,
   useOverflowCount,
   useTagPickerContext_unstable,
   Tag,
@@ -27,12 +26,18 @@ const useStyles = makeStyles({
     flexGrow: 1,
     minWidth: 0,
     overflow: 'hidden',
-    [`& > .${tagPickerGroupClassNames.root}`]: {
+    // TagPickerGroup's public identity class is its Tailwind named-group marker,
+    // `group/fui-tag-picker-group` (DECISIONS.md D16.1/D16.5 — the `fui-TagPickerGroup` BEM
+    // static no longer exists). Written as a literal escaped selector rather than
+    // `` `& > .${tagPickerGroupClassNames.root}` ``: the `/` is legal in a class TOKEN but
+    // terminates the name in SELECTOR position, and Griffel's build-time extraction needs a
+    // statically analysable key, so `fuiSelector()` cannot be called here.
+    ['& > .group\\/fui-tag-picker-group']: {
       flexWrap: 'nowrap',
     },
     ':focus-within': {
       flexWrap: 'wrap',
-      [`& > .${tagPickerGroupClassNames.root}`]: {
+      ['& > .group\\/fui-tag-picker-group']: {
         flexWrap: 'wrap',
       },
     },
