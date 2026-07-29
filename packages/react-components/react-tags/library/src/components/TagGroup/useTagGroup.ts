@@ -118,6 +118,13 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
       }
 
       // if there is no next focusable, focus on the previous focusable
+      //
+      // This reads InteractionTagSecondary's public IDENTITY class, which is exactly what
+      // `*ClassNames.root` is retained for after DECISIONS.md D16.1 removed the BEM statics
+      // (D16.5). The value is now the group marker `group/fui-interaction-tag-secondary`;
+      // `className.includes()` is a substring test on the class STRING, not a selector, so
+      // the `/` needs no escaping here — `fuiSelector()` is only for selector positions.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
       if (activeElement?.className.includes(interactionTagSecondaryClassNames.root)) {
         const prev = findPrevFocusable(activeElement.parentElement as HTMLElement, { container });
         prev?.focus();

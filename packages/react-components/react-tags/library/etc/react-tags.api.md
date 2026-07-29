@@ -15,7 +15,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
@@ -26,8 +25,10 @@ export type InteractionTagBaseProps<Value = TagValue> = Omit<InteractionTagProps
 // @public
 export type InteractionTagBaseState<Value = TagValue> = Omit<InteractionTagState<Value>, 'appearance' | 'size' | 'shape'>;
 
-// @public (undocumented)
-export const interactionTagClassNames: SlotClassNames<InteractionTagSlots>;
+// @public @deprecated
+export const interactionTagClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const InteractionTagContextProvider: React_2.Provider<InteractionTagContextValue<string> | undefined>;
@@ -50,8 +51,10 @@ export type InteractionTagPrimaryBaseProps = InteractionTagPrimaryProps;
 // @public
 export type InteractionTagPrimaryBaseState = Omit<InteractionTagPrimaryState, 'appearance' | 'size' | 'shape' | 'avatarShape' | 'avatarSize'>;
 
-// @public (undocumented)
-export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots>;
+// @public @deprecated
+export const interactionTagPrimaryClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type InteractionTagPrimaryContextValues = TagAvatarContextValues;
@@ -92,8 +95,10 @@ export type InteractionTagSecondaryBaseProps = InteractionTagSecondaryProps;
 // @public
 export type InteractionTagSecondaryBaseState = Omit<InteractionTagSecondaryState, 'appearance' | 'size' | 'shape'>;
 
-// @public (undocumented)
-export const interactionTagSecondaryClassNames: SlotClassNames<InteractionTagSecondarySlots>;
+// @public @deprecated
+export const interactionTagSecondaryClassNames: {
+    root: string;
+};
 
 // @public
 export type InteractionTagSecondaryProps = ComponentProps<InteractionTagSecondarySlots>;
@@ -146,8 +151,10 @@ export type TagBaseProps = DistributiveOmit<TagProps, 'appearance' | 'size' | 's
 // @public
 export type TagBaseState = DistributiveOmit<TagState, 'appearance' | 'size' | 'shape' | 'avatarShape' | 'avatarSize'>;
 
-// @public (undocumented)
-export const tagClassNames: SlotClassNames<TagSlots>;
+// @public @deprecated
+export const tagClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TagContextValues = TagAvatarContextValues;
@@ -172,8 +179,10 @@ export type TagGroupBaseProps<Value = TagValue> = Omit<TagGroupProps<Value>, 'ap
 // @public
 export type TagGroupBaseState<Value = TagValue> = Omit<TagGroupState<Value>, 'appearance' | 'size'>;
 
-// @public (undocumented)
-export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
+// @public @deprecated
+export const tagGroupClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const TagGroupContextProvider: React_2.Provider<TagGroupContextValue | undefined>;

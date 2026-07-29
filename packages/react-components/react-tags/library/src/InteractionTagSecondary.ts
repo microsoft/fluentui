@@ -7,6 +7,7 @@ export type {
 } from './components/InteractionTagSecondary/index';
 export {
   InteractionTagSecondary,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   interactionTagSecondaryClassNames,
   renderInteractionTagSecondary_unstable,
   useInteractionTagSecondaryStyles_unstable,

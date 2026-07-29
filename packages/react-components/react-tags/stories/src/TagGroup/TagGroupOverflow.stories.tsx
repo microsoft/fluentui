@@ -3,7 +3,6 @@ import type { JSXElement, TagProps, InteractionTagPrimaryProps } from '@fluentui
 import {
   TagGroup,
   Tag,
-  tagClassNames,
   InteractionTag,
   InteractionTagPrimary,
   makeStyles,
@@ -60,7 +59,13 @@ const useMenuItemStyles = makeStyles({
   menuItem: {
     padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalXS}`,
     ':hover': {
-      [`& .${tagClassNames.root}`]: {
+      // Tag's public identity class is its Tailwind named-group marker, `group/fui-tag`
+      // (DECISIONS.md D16.1/D16.5 — the `fui-Tag` BEM static no longer exists). Written as a
+      // literal escaped selector rather than `` `& .${tagClassNames.root}` ``: the `/` is
+      // legal in a class TOKEN but terminates the name in SELECTOR position, and Griffel's
+      // build-time extraction needs a statically analysable key, so `fuiSelector()` cannot be
+      // called here.
+      ['& .group\\/fui-tag']: {
         color: tokens.colorNeutralForeground2Hover,
       },
     },

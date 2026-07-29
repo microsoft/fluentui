@@ -8,6 +8,7 @@ export type {
 } from './components/InteractionTag/index';
 export {
   InteractionTag,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   interactionTagClassNames,
   renderInteractionTag_unstable,
   useInteractionTagContextValues_unstable,

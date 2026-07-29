@@ -3,6 +3,7 @@ export type { TagBaseProps, TagBaseState, TagContextValues, TagProps, TagSlots, 
 export { renderTag_unstable } from './renderTag';
 export { useTagBase_unstable, useTag_unstable } from './useTag';
 export {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagClassNames,
   useIconStyles,
   useMediaStyles,

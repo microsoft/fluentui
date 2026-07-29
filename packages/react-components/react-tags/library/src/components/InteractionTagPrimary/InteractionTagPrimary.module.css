@@ -478,7 +478,10 @@
  * Griffel's own compiled output for this component was unlayered at 0-2-0 and won on
  * specificity (`.ft1hn21:hover .fui-Icon-filled{display:inline}`); reproducing that requires
  * these rules to be unlayered too. Everything that styles THIS component's own root, and
- * everything on its own `fui-InteractionTagPrimary__*` slots, stays layered above.
+ * everything on its own slots, stays layered above. (The `fui-InteractionTagPrimary__*`
+ * BEM statics those slots used to carry were removed by DECISIONS.md D16.1; the slots are
+ * now addressed only by their hashed module classes. `fui-Icon-filled` / `fui-Icon-regular`
+ * are unaffected — they belong to `@fluentui/react-icons`, not to a converted package.)
  *
  * The same DOM evidence collected for react-infolabel's InfoButton and react-button applies
  * verbatim here — same two atomics, same element pair, same 0-2-0 vs 0-1-0 comparison; see

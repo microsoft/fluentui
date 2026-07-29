@@ -22,8 +22,14 @@ describe('InteractionTag', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts the `fui-<Component>__<slot>` BEM
+    // format DECISIONS.md D16.1 removed. `component-has-group-marker` (now a default test) replaces it: it
+    // asserts the group marker IS stamped and is never `classList[0]` (D16.2 / D16.6).
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   it('should set aria-labelledby with ids of InteractionTagPrimary and InteractionTagSecondary', () => {
@@ -35,11 +41,16 @@ describe('InteractionTag', () => {
     );
     // The two ids are React `useId` values, so their suffixes count the renders that
     // happened earlier in this FILE, not anything about styling. They shifted f/g → h/i
-    // when the `classname-overrides-win` conformance test above was added (it renders the
-    // component twice); the assertion still checks exactly what it checked before — that
-    // aria-labelledby is "<primary id> <secondary id>".
+    // when the `classname-overrides-win` conformance test above was added, and h/i → j/k
+    // when `component-has-group-marker` was added (each renders the component twice); the
+    // assertion still checks exactly what it checked before — that aria-labelledby is
+    // "<primary id> <secondary id>".
+    //
+    // These `fui-InteractionTag*-` strings are `useId` PREFIXES, not BEM statics: they name
+    // an element id, never a class, so DECISIONS.md D16.1 leaves them exactly as it leaves
+    // react-provider's `fui-FluentProvider<n>` (D16.1's named exception).
     expect(getByTestId('secondary').getAttribute('aria-labelledby')).toMatchInlineSnapshot(
-      `"fui-InteractionTagPrimary-_r_h_ fui-InteractionTagSecondary-_r_i_"`,
+      `"fui-InteractionTagPrimary-_r_j_ fui-InteractionTagSecondary-_r_k_"`,
     );
   });
 });

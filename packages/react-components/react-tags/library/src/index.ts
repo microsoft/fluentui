@@ -1,6 +1,7 @@
 export {
   Tag,
   renderTag_unstable,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagClassNames,
   useTagStyles_unstable,
   useTagBase_unstable,
@@ -11,6 +12,7 @@ export type { TagBaseProps, TagBaseState, TagContextValues, TagProps, TagSlots, 
 export {
   InteractionTag,
   renderInteractionTag_unstable,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   interactionTagClassNames,
   useInteractionTagStyles_unstable,
   useInteractionTagBase_unstable,
@@ -26,6 +28,7 @@ export type {
 } from './InteractionTag';
 export {
   InteractionTagPrimary,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   interactionTagPrimaryClassNames,
   renderInteractionTagPrimary_unstable,
   useInteractionTagPrimaryStyles_unstable,
@@ -43,6 +46,7 @@ export type {
 export {
   InteractionTagSecondary,
   renderInteractionTagSecondary_unstable,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   interactionTagSecondaryClassNames,
   useInteractionTagSecondaryStyles_unstable,
   useInteractionTagSecondaryBase_unstable,
@@ -59,6 +63,7 @@ export type {
 export {
   TagGroup,
   renderTagGroup_unstable,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   tagGroupClassNames,
   useTagGroupStyles_unstable,
   useTagGroupBase_unstable,
