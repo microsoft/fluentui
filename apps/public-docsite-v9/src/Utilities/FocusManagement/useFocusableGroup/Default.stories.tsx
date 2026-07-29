@@ -1,42 +1,10 @@
 import * as React from 'react';
 import { CopyRegular, DeleteRegular } from '@fluentui/react-icons';
-import {
-  Button,
-  useFocusableGroup,
-  makeStyles,
-  tokens,
-  createFocusOutlineStyle,
-  useId,
-} from '@fluentui/react-components';
+import { Button, useFocusableGroup, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    padding: '10px',
-    display: 'flex',
-    gap: '5px',
-    position: 'relative',
-    backgroundColor: tokens.colorBrandBackground2,
-    borderRadius: tokens.borderRadiusMedium,
-
-    ...createFocusOutlineStyle(),
-  },
-  body: {
-    flexGrow: 1,
-    alignSelf: 'center',
-  },
-  actions: {
-    display: 'flex',
-    gap: '5px',
-  },
-  pane: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-});
+import styles from './focusableGroup.module.css';
 
 export const Default = () => {
-  const styles = useStyles();
   const attributes = useFocusableGroup();
   const labelId1 = useId('chat1');
   const labelId2 = useId('chat2');

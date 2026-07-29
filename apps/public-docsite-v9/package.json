@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "Fluent UI React v9 documentation",
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
+  },
   "scripts": {
     "build-storybook": "yarn run -T cross-env NODE_OPTIONS=--max_old_space_size=3072 DEPLOY_PATH=/react/ storybook build -o ./dist/react --docs",
     "postbuild-storybook": "yarn rewrite-title && yarn generate-llms-docs",
@@ -42,5 +45,8 @@
     "react-hook-form": "^5.7.2",
     "react-window": "^1.8.6",
     "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*"
   }
 }

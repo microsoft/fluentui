@@ -1,51 +1,16 @@
 import * as React from 'react';
 import { CopyRegular, DeleteRegular } from '@fluentui/react-icons';
-import {
-  Button,
-  useFocusableGroup,
-  makeStyles,
-  tokens,
-  createFocusOutlineStyle,
-  useId,
-} from '@fluentui/react-components';
+import { Button, useFocusableGroup, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    padding: '10px',
-    display: 'flex',
-    gap: '5px',
-    position: 'relative',
-    backgroundColor: tokens.colorBrandBackground2,
-    borderRadius: tokens.borderRadiusMedium,
-
-    ...createFocusOutlineStyle(),
-  },
-  body: {
-    flexGrow: 1,
-    alignSelf: 'center',
-  },
-  actions: {
-    display: 'flex',
-    gap: '5px',
-  },
-  pane: {
-    display: 'flex',
-    flexDirection: 'column',
-    listStyleType: 'none',
-    gap: '10px',
-    margin: '0',
-    padding: '0',
-  },
-});
+import styles from './focusableGroup.module.css';
 
 export const LimitedTrapFocus = () => {
-  const styles = useStyles();
   const attributes = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
   const labelId1 = useId('chat1');
   const labelId2 = useId('chat2');
 
   return (
-    <ul className={styles.pane}>
+    <ul className={styles['pane-trap']}>
       <li tabIndex={0} aria-labelledby={labelId1} {...attributes} className={styles.container}>
         <div className={styles.body} id={labelId1}>
           Hello world!

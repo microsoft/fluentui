@@ -1,0 +1,91 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2 amendments 3/4).
+ *
+ * Repeated at the top of every module on purpose: `@reference` emits nothing, so without
+ * this statement first-appearance order would decide the layer ranking per document.
+ * Re-declaring the identical order is a no-op (CSS Cascade 5 never re-orders an existing
+ * layer), so the repetition is safe and makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Shared by Default / Limited / LimitedTrapFocus — the three `useFocusableGroup` stories
+ * differ only in the hook option they pass, and all three previously carried a byte-identical
+ * `makeStyles` block. Replaces those blocks (specials-triage seam #3, closed by
+ * s5-docs-projects-decision.md §A.5.6).
+ *
+ * ALTITUDE `fui.components.l4` — D2 amendment 2's "application implementation /
+ * page / feature-specific styling". Every subject below is an element these stories render
+ * themselves (`<ul>`, `<li>`, `<div>`); nothing here decorates a Fluent component's hook
+ * output, which is what would have made it l2.
+ *
+ * These three files were `@fluentui/react-tabster`'s last docsite callers. `createFocusOutlineStyle()`
+ * — a Griffel style FACTORY, which has no CSS-Modules equivalent — is replaced by the shared
+ * `fui-focus-outline` utility (DECISIONS.md D6), and this is that utility's first real consumer.
+ */
+@layer fui.components.l4 {
+  /* from useStyles.container */
+  .container {
+    @apply relative flex gap-5 p-10;
+
+    background-color: var(--colorBrandBackground2);
+    border-radius: var(--borderRadiusMedium);
+
+    /*
+     * from `...createFocusOutlineStyle()`.
+     *
+     * The factory emits three things at the default options. Two of them sit OUTSIDE the
+     * keyborg selector and therefore stay here with the caller:
+     *
+     *   ':focus'         → { outlineStyle: 'none' }
+     *   ':focus-visible' → { outlineStyle: 'none' }
+     *
+     * …and the third is the indicator itself, scoped to `[data-fui-focus-visible]`, whose
+     * body is exactly what `@apply fui-focus-outline` expands to. `focus-visible-fui` is the
+     * keyborg attribute variant (`&:where([data-fui-focus-visible])`); the NATIVE
+     * `:focus-visible` pseudo-class is a deliberately separate variant (D6), which is why
+     * both appear below and mean different things.
+     *
+     * `position: relative` is already on this rule via `@apply relative` above — the
+     * indicator is an absolutely-positioned `::after`, and createFocusOutlineStyle's own
+     * doc comment makes that a precondition.
+     */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+  }
+
+  /* from useStyles.body */
+  .body {
+    @apply grow self-center;
+  }
+
+  /* from useStyles.actions */
+  .actions {
+    @apply flex gap-5;
+  }
+
+  /* from useStyles.pane */
+  .pane {
+    @apply flex flex-col gap-10;
+  }
+
+  /*
+   * from LimitedTrapFocus's useStyles.pane, which additionally reset the list defaults.
+   * Written as a complete local rather than a modifier composed onto `.pane`, so each story
+   * still emits exactly ONE class on its `<ul>` and needs no composition helper.
+   */
+  .pane-trap {
+    @apply flex flex-col gap-10 list-none m-0 p-0;
+  }
+}
