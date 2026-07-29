@@ -13,7 +13,16 @@ describe('ToolbarRadioGroup', () => {
     // ToolbarRadioGroup renders through `useToolbarGroupStyles_unstable`, which is
     // converted, so it no longer calls mergeClasses either — same swap as ToolbarGroup.
     disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
+    testOptions: {
+      // ToolbarRadioGroup renders through `useToolbarGroupStyles_unstable` and stamps no
+      // marker of its own, so the marker on its root is ToolbarGroup's — not the
+      // `group/fui-toolbar-radio-group` the test would derive from `displayName`. Exactly the
+      // case the escape hatch exists for (DECISIONS.md D16.2).
+      'has-group-marker': { marker: 'group/fui-toolbar-group' },
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

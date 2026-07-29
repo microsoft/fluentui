@@ -53,9 +53,13 @@ export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): To
   // `data-orientation` is already stamped on this very element above (DECISIONS.md D15,
   // Tier 0 — no state mirrors needed).
   //
-  // Unlike the converted leaf hooks there is no static `fui-ToolbarDivider` class to sit
-  // beside: this root IS react-divider's root, so the element carries both this marker and
-  // react-divider's `group/fui-divider`. That is correct — it genuinely is both.
+  // This root IS react-divider's root, so the element carries both this marker and
+  // react-divider's `group/fui-divider`. That is correct — it genuinely is both, and it is
+  // why this component declares BOTH markers to react-conformance's
+  // `component-has-group-marker` through `testOptions['has-group-marker'].markers` (D16.3),
+  // which keeps that test running here as an exact set comparison. `styles.root` is unconditional and leads this call, so `classList[0]` is a
+  // hashed, selector-safe token even though react-divider's `fui-Divider` static is gone
+  // (D16.1).
   //
   // Cascade priority is decided by the `@layer fui.*`
   // order in ToolbarDivider.module.css — `fui.components.l2` for the rules that must beat

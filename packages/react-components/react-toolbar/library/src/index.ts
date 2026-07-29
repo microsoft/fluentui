@@ -1,6 +1,7 @@
 export {
   Toolbar,
   renderToolbar_unstable,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   toolbarClassNames,
   useToolbarStyles_unstable,
   useToolbar_unstable,
@@ -70,6 +71,7 @@ export {
   useToolbarGroupStyles_unstable,
   useToolbarGroup_unstable,
   renderToolbarGroup_unstable,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   toolbarGroupClassNames,
 } from './ToolbarGroup';
 export type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup';

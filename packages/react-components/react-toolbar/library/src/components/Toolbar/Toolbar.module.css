@@ -18,13 +18,16 @@
  *
  *   #  mergeClasses argument                              → target
  *   ---------------------------------------------------------------------------------
- *   1  toolbarClassNames.root                             → static class (JS)
- *   2  useStyles.root                                     → fui.components.l1
- *   3  vertical && useStyles.vertical                     → fui.components.l1  (data-orientation)
- *   4  size === 'small'  && !vertical && useStyles.small  → fui.components.l1  (data-size + data-orientation)
- *   5  size === 'medium' && !vertical && useStyles.medium → fui.components.l1
- *   6  size === 'large'  && !vertical && useStyles.large  → fui.components.l1
- *   7  consumer className                                 → unlayered (always wins)
+ *   1  useStyles.root                                     → fui.components.l1
+ *   2  vertical && useStyles.vertical                     → fui.components.l1  (data-orientation)
+ *   3  size === 'small'  && !vertical && useStyles.small  → fui.components.l1  (data-size + data-orientation)
+ *   4  size === 'medium' && !vertical && useStyles.medium → fui.components.l1
+ *   5  size === 'large'  && !vertical && useStyles.large  → fui.components.l1
+ *   6  consumer className                                 → unlayered (always wins)
+ *
+ * The `fui-Toolbar` static that used to lead that list was removed with the rest of the BEM
+ * statics (DECISIONS.md D16.1); `group/fui-toolbar` is the root's sole public identity class
+ * now, and it carries no declarations of its own.
  *
  * Toolbar's root is its OWN element — nothing else writes to it — so every block is l1.
  * There is no makeResetStyles, so `fui.base` is unused, and nothing here styles another

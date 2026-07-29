@@ -18,10 +18,10 @@ import styles from './ToolbarButton.module.css';
  * Data attribute rendered on the root slot and matched by the shared `@custom-variant`
  * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
  *
- * It sits on the ROOT only, even though one of the two slices styles the `icon` slot: the
- * icon is the root's child and is selected through its owner's static class,
- * `:global(.fui-Button__icon)` (same approach react-button uses for its own size-scoped
- * icon rules). That keeps the icon slot free of both a data attribute and a class of ours.
+ * It sits on the ROOT only, even though one of the two slices styles the `icon` slot. The
+ * icon reads it from there through a `group-*` variant on the root's marker — see the
+ * `state.icon` assignment below and ToolbarButton.module.css — so the icon slot needs no
+ * data attribute of its own.
  */
 type ToolbarButtonRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';
@@ -47,16 +47,21 @@ export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void
   // outside this file. `data-orientation` is already stamped on this very element above
   // (DECISIONS.md D15, Tier 0 — no state mirrors needed).
   //
-  // Unlike the converted leaf hooks there is no static `fui-ToolbarButton` class to sit
-  // beside: this root IS react-button's root, and `useButtonStyles_unstable` (called below)
-  // contributes `fui-Button` plus its own `group/fui-button` marker to the same element.
-  // Both markers therefore land on it, which is correct — the element genuinely is both a
-  // Button and a ToolbarButton, and a descendant can address whichever identity it means.
+  // This root IS react-button's root, and `useButtonStyles_unstable` (called below)
+  // contributes its own `group/fui-button` marker to the same element. TWO markers therefore
+  // land on it, which is correct — the element genuinely is both a Button and a
+  // ToolbarButton, and a descendant can address whichever identity it means. The component
+  // declares BOTH markers to react-conformance's `component-has-group-marker` through
+  // `testOptions['has-group-marker'].markers` (D16.3), so that test still runs here — as an
+  // exact set comparison, an undeclared marker still fails, and its `classList[0]` half is
+  // asserted along with it.
+  //
   // Ordering here is per-argument within THIS clsx; because the Button hook runs afterwards
   // and prepends its own arguments, the marker sits further right still in the final class
   // string. That is fine in both directions — class order within the attribute has no
   // effect on CSS matching, and the D15.1 invariant only requires that the marker never be
-  // the first token.
+  // the first token, which Button's own unconditional `styles.root` guarantees now that its
+  // `fui-Button` static is gone (D16.1).
   //
   // Cascade priority is decided by the `@layer fui.*` order in
   // ToolbarButton.module.css — everything here is `fui.components.l2`, because both slices
@@ -64,6 +69,23 @@ export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void
   // header for the mapping back to the mergeClasses() argument order this replaces.
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(styles.root, 'group/fui-toolbar-button', state.root.className);
+
+  // JS slot composition, the D16.3 mechanism for styling a sub-slot of a component this
+  // package RENDERS ITSELF (M2 in reports/statics-removal-design.md §2.3). ToolbarButton
+  // renders react-button's <Button> and therefore HOLDS `state.icon` — the very slot object
+  // `useButtonStyles_unstable` will decorate on the next line — so it can hand the icon its
+  // own hashed class instead of reaching for `:global(.fui-Button__icon)`, which D16.1
+  // deletes. Nothing in this package names a react-button class any more.
+  //
+  // The rule this class carries is scoped by the ROOT's orientation, which the icon reads
+  // through `@variant group-vertical/fui-toolbar-button` — the ancestor-state capability
+  // D15.1's marker exists for. Written BEFORE `useButtonStyles_unstable`, whose own `clsx`
+  // puts the incoming className last, so this class still beats Button's icon rules in a
+  // tie exactly as the descendant selector did. `state.icon` is optional, hence the guard.
+  if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.icon.className = clsx(styles.icon, state.icon.className);
+  }
 
   // Called LAST, exactly as before: `useButtonStyles_unstable` composes its own classes
   // ahead of the incoming className, which is what made ToolbarButton win under Griffel.

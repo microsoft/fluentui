@@ -15,7 +15,9 @@ describe('ToolbarGroup', () => {
     // clsx and never calls mergeClasses, so the test can no longer observe the contract.
     // `classname-overrides-win` is its cascade-native replacement (DECISIONS.md D9).
     disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

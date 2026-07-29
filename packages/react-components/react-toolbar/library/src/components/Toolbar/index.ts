@@ -16,4 +16,8 @@ export type {
 export { renderToolbar_unstable } from './renderToolbar';
 export { useToolbar_unstable, useToolbarBase_unstable } from './useToolbar';
 export { useToolbarContextValues_unstable } from './useToolbarContextValues';
-export { toolbarClassNames, useToolbarStyles_unstable } from './useToolbarStyles.styles';
+export {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  toolbarClassNames,
+  useToolbarStyles_unstable,
+} from './useToolbarStyles.styles';

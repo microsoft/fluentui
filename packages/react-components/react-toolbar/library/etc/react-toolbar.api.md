@@ -18,7 +18,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ToggleButtonProps } from '@fluentui/react-button';
 import type { ToggleButtonState } from '@fluentui/react-button';
 
@@ -56,8 +55,10 @@ export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<Butt
 // @public
 export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonState & Required<Pick<ToolbarButtonProps, 'vertical'>>;
 
-// @public (undocumented)
-export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
+// @public @deprecated
+export const toolbarClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical' | 'checkedValues'> & {
@@ -90,8 +91,10 @@ export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & Divide
 // @public
 export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
 
-// @public (undocumented)
-export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots>;
+// @public @deprecated
+export const toolbarGroupClassNames: {
+    root: string;
+};
 
 // @public
 export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;

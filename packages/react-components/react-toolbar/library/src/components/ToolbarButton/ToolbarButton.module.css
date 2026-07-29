@@ -20,7 +20,7 @@
  *   1  vertical && useBaseStyles.vertical      → fui.components.l2  ← altitude, below
  *   2  consumer className                      → unlayered (always wins)
  *
- * `icon` slot (= Button's `fui-Button__icon` span)
+ * `icon` slot (= @fluentui/react-button's icon span)
  *   1  vertical && useBaseStyles.verticalIcon  → fui.components.l2  ← altitude, below
  *   2  consumer className                      → unlayered
  *
@@ -41,18 +41,46 @@
  *           `margin: 0` over `useIconStyles.before/after`'s `margin-inline-*` gap.
  * l2 over l1/fui.base reproduces both deterministically.
  *
- * ── Reaching the icon slot ───────────────────────────────────────────────────────────
- * The icon rules hang off the root's `data-orientation` and select the icon by its OWNER's
- * static class, `:global(.fui-Button__icon)` — the same shape react-button itself uses for
- * its size-scoped icon rules. That keeps the whole conversion to ONE module class and ONE
- * data attribute, and needs no class of ours on the icon slot at all.
+ * ── Reaching the icon slot (DECISIONS.md D16.3 — the M2 reference case) ──────────────
+ * The icon rule used to select its owner's static class,
+ * `.root[data-orientation='vertical'] :global(.fui-Button__icon)`. D16.1 deletes that
+ * class, and D16.3 says a sub-slot of a component we RENDER OURSELVES is reached by JS slot
+ * composition rather than by renaming the coupling to a marker:
+ * `useToolbarButtonStyles_unstable` writes `.icon` onto `state.icon` before handing the
+ * state to `useButtonStyles_unstable`.
  *
- * `.fui-Button__icon` is another package's static class, but the rule stays LAYERED: D2
- * amendment 5's unlayered rule applies to elements owned by an EXTERNAL or UNCONVERTED
- * Griffel package, and react-button is converted (its icon slot is styled from
- * `fui.base`/`fui.components.l1`, both of which l2 outranks). There is no
- * `fui-Icon-filled` / `fui-Icon-regular` rule anywhere in react-toolbar — grep-verified —
- * so no unlayered block is needed in this package.
+ * The rule's SCOPE still comes from the root — `data-orientation` lives there, not on the
+ * icon — so `.icon` reads it through `@variant group-vertical/fui-toolbar-button`, which
+ * compiles to `.icon:is(:where(.group\/fui-toolbar-button):where([data-orientation='vertical']) *)`.
+ * That composition works because `vertical` is authored in the shared catalog as
+ * `&:where([data-orientation='vertical'])`, the `&:where(…)` shape D15.5 requires
+ * (react-tailwind-theme/css/variants.css:45), and `scripts/css-modules/globalize-group-markers.js`
+ * keeps the marker segment out of CSS-Modules hashing.
+ *
+ * The swap DOES lower specificity, and that is safe for exactly one reason — worth spelling
+ * out, because "same specificity" would have been the easier claim to make and it is false.
+ * Measured from the emitted `dist/styles.css`:
+ *
+ *   before  .fuicm-…-root:where([data-orientation='vertical']) .fui-Button__icon   (0,2,0)
+ *   after   .fuicm-…-icon:is(:where(.group\/fui-toolbar-button):where([data-…]) *)  (0,1,0)
+ *
+ * `:is()` takes the specificity of its most specific argument, and every branch of that
+ * argument is inside `:where()`, which contributes zero — so the whole `:is(…)` scores
+ * nothing and only `.icon` counts.
+ *
+ * It does not matter because ALTITUDE is unchanged at l2 and the cascade consults layer
+ * order BEFORE specificity: every rule this one has to beat — react-button's icon reset
+ * (`fui.base`) and its `data-icon-position` / `data-size` icon rules (`fui.components.l1`,
+ * themselves (0,2,0)) — sits in a lower layer, so l2 wins them at any specificity. The only
+ * other l2 rules on this element belong to ToolbarToggleButton/ToolbarRadioButton, which set
+ * `color` alone and never render alongside a ToolbarButton root. Consumer CSS is unlayered
+ * and still wins, as always.
+ *
+ * This is the only structural selector change in react-toolbar's sweep (D16.8 names the
+ * react-button equivalent as the one to watch).
+ *
+ * There is no `fui-Icon-filled` / `fui-Icon-regular` rule anywhere in react-toolbar —
+ * grep-verified — so no unlayered block is needed in this package.
  *
  * ── Pixel literal (DECISIONS.md D4) ──────────────────────────────────────────────────
  * `fontSize: '24px'` is a px literal, so it rides `--base-scale` as
@@ -74,18 +102,26 @@
     @variant vertical {
       /* from useBaseStyles.vertical — root arg #1 */
       @apply flex-col;
+    }
+  }
 
-      /* from useBaseStyles.verticalIcon — icon arg #1 */
-      & :global(.fui-Button__icon) {
-        font-size: calc(24px * var(--base-scale));
+  /*
+   * from useBaseStyles.verticalIcon — icon arg #1.
+   *
+   * Applied to Button's `icon` slot from JS (see the styles hook); the vertical gate is read
+   * off THIS component's root marker, because `data-orientation` is stamped there. See
+   * "Reaching the icon slot" in the header.
+   */
+  .icon {
+    @variant group-vertical/fui-toolbar-button {
+      font-size: calc(24px * var(--base-scale));
 
-        /* `margin: '0'` expanded to longhands (cookbook §2). Literal `0`, not
-           `mt-vertical-none`: zero has nothing for `--base-scale` to scale. */
-        margin-top: 0;
-        margin-right: 0;
-        margin-bottom: 0;
-        margin-left: 0;
-      }
+      /* `margin: '0'` expanded to longhands (cookbook §2). Literal `0`, not
+         `mt-vertical-none`: zero has nothing for `--base-scale` to scale. */
+      margin-top: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+      margin-left: 0;
     }
   }
 }

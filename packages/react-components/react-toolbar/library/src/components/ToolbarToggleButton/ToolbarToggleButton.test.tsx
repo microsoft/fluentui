@@ -16,6 +16,16 @@ describe('ToolbarToggleButton', () => {
     // here because `useToggleButtonStyles_unstable`, called last, composes with clsx and
     // keeps the incoming className (which carries the consumer's) last (DECISIONS.md D9).
     disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    testOptions: {
+      // renders react-button’s ToggleButton, which renders Button — each hook stamps its own marker on the one element, so this root
+      // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set
+      // keeps `component-has-group-marker` running: it is an exact set comparison, so an
+      // undeclared marker still fails, and its `classList[0]` half — the D16.2 invariant that
+      // nwsapi's jsdom `:scope` polyfill depends on — is asserted here rather than locally.
+      'has-group-marker': {
+        markers: ['group/fui-button', 'group/fui-toggle-button', 'group/fui-toolbar-toggle-button'],
+      },
+    },
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 

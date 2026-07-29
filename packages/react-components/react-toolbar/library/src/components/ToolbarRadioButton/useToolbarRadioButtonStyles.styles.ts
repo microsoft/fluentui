@@ -20,11 +20,17 @@ import styles from './ToolbarRadioButton.module.css';
  * Apply styling to the ToolbarRadioButton slots based on the state
  */
 export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonState): ToolbarRadioButtonState => {
-  // Named group marker, then the module class, consumer className last. `clsx` order here
-  // is per-argument within THIS call; the ToggleButton hook runs afterwards and PREPENDS
-  // `fui-ToggleButton`, so the rendered `classList[0]` is a selector-safe token and the
-  // D15.1 invariant holds on the string that reaches the DOM. Cascade priority is decided
-  // by the `@layer fui.*` order in ToolbarRadioButton.module.css.
+  // Named group marker, then the (conditional) module class, consumer className last. `clsx`
+  // order here is per-argument within THIS call; the ToggleButton hook runs afterwards and
+  // PREPENDS its own arguments, and react-button's Button hook prepends an unconditional
+  // hashed `styles.root` after that — so the rendered `classList[0]` is selector-safe and the
+  // D15.1 invariant holds on the string that reaches the DOM. That is now guaranteed by the
+  // module class rather than by the `fui-ToggleButton` static, which D16.1 removed; it is
+  // asserted by the shared `component-has-group-marker` test, to which ToolbarRadioButton.test.tsx
+  // declares all THREE markers (button, toggle-button, toolbar-radio-button) through
+  // `testOptions['has-group-marker'].markers` (D16.3).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in ToolbarRadioButton.module.css.
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx('group/fui-toolbar-radio-button', state.checked && styles.selected, state.root.className);
 

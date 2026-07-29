@@ -15,6 +15,16 @@ describe('ToolbarDivider', () => {
     // conversion, from the react-divider side alone. `classname-overrides-win` is its
     // cascade-native replacement (DECISIONS.md D9).
     disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    testOptions: {
+      // renders react-divider’s Divider, whose hook stamps its marker on this same element, so this root
+      // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set
+      // keeps `component-has-group-marker` running: it is an exact set comparison, so an
+      // undeclared marker still fails, and its `classList[0]` half — the D16.2 invariant that
+      // nwsapi's jsdom `:scope` polyfill depends on — is asserted here rather than locally.
+      'has-group-marker': {
+        markers: ['group/fui-divider', 'group/fui-toolbar-divider'],
+      },
+    },
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 

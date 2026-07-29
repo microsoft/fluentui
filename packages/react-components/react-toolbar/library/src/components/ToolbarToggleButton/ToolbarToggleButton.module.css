@@ -59,9 +59,9 @@
  *
  * The `icon` slice needs neither: its value (`colorNeutralForeground2BrandSelected`) is
  * identical to the `useIconCheckedStyles.subtleOrTransparent` rule it ties with, and the
- * only other competitors are react-button's root-anchored `:global(.fui-Button__icon)`
- * colour rules in `fui.components.l1`, which l2 outranks — which is what the unlayered
- * Griffel atomic it replaces did too.
+ * only other competitors are react-button's own root-anchored icon colour rules in
+ * `fui.components.l1`, which l2 outranks — which is what the unlayered Griffel atomic it
+ * replaces did too.
  *
  * ── Fidelity note ────────────────────────────────────────────────────────────────────
  * `color` is unaffected by any of the above: `colorNeutralForeground2Hover`,
