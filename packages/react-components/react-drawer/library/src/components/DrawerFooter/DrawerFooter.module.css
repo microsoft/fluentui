@@ -1,0 +1,108 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useDrawerFooterStyles_unstable:
+ *
+ *   #  mergeClasses argument                                → target
+ *   -----------------------------------------------------------------------------------
+ *   1  drawerFooterClassNames.root                          → REMOVED (D16.1); the root's
+ *                                                             identity is now the
+ *                                                             `group/fui-drawer-footer`
+ *                                                             marker, and `.root` leads
+ *                                                             the clsx
+ *   2  useStyles                     (makeReset)            → fui.base          .root
+ *   3  scrollState !== 'none' && .separator                 → fui.components.l1 .root::before
+ *                                                             + data-scroll-state
+ *   4  ['middle','top'].includes(scrollState)
+ *      && .separatorVisible                                 → fui.components.l1 .root::before
+ *                                                             + data-scroll-state
+ *   5  consumer className                                   → unlayered (always wins)
+ *
+ * Args #3 and #4 both target `::before` and #4 overrides #3's `opacity`, so #4 is written
+ * after #3 — both selectors flatten to 0-1-0 under `:where()`, so file position is the
+ * tiebreak that reproduces the mergeClasses winner.
+ *
+ * DrawerFooter's separator sits at the TOP of the element (`::before` + `top: 0`) and shows
+ * for `middle` / `top`; DrawerHeader's sits at the bottom (`::after` + `bottom: 0`) and
+ * shows for `middle` / `bottom`. The two are mirror images, not copies.
+ *
+ * ── data attributes ──────────────────────────────────────────────────────────────────
+ * `data-scroll-state` is one of the headless preview's 25 attribute names and is stamped on
+ * exactly this element there (react-headless-components-preview
+ * `DrawerFooter/useDrawerFooter.ts:14`), so the name is precedent, not invention. There is
+ * no native selector for "the DrawerBody is scrolled to the middle", so this is the
+ * fallback case D15.6 sanctions rather than a mirror of something CSS could already see.
+ * Written as RAW attribute selectors: the shared `@custom-variant` catalog lives in another
+ * package (@fluentui/react-tailwind-theme) and this conversion does not edit it; the
+ * cookbook bans variant DEFINITIONS in component modules, not attribute selectors
+ * (CONVERSION_GUIDE §2, scale-prop rule). `scroll-state-*` catalog entries are requested in
+ * the conversion report.
+ *
+ * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
+ * The three-value `padding` shorthand becomes `pt-vertical-l` / `px-horizontal-xxl` /
+ * `pb-vertical-xxl`; `columnGap: spacingHorizontalS` becomes `gap-x-horizontal-s`. Raw
+ * `var(--spacingVertical*)` / `var(--spacingHorizontal*)` is the one authoring form that
+ * does not scale with `--base-scale`. The separator's `height: '1px'` is a px literal that
+ * matches the `thin` step, and `height` IS spacing-powered, so it takes `h-thin`.
+ *
+ * ── RTL (DECISIONS.md D5) ────────────────────────────────────────────────────────────
+ * The separator's `right: 0` / `left: 0` are BOTH set to the same value and Griffel emitted
+ * them as two unpaired atomics (no `[ltr, rtl]` tuple), so they become
+ * `inset-inline-start` / `inset-inline-end` with no `@variant rtl` twin. Nothing else in
+ * this component is direction-sensitive.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/DrawerFooter/useDrawerFooterStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* arg #2 — from useStyles (makeResetStyles) */
+  .root {
+    @apply relative box-border flex items-center justify-start w-full max-w-full;
+    @apply pt-vertical-l px-horizontal-xxl pb-vertical-xxl gap-x-horizontal-s;
+
+    z-index: 2;
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #3 — from useDrawerFooterStyles.separator, whose `::before` body is the shared
+     drawerSeparatorStyles object plus `top: 0` */
+  .root {
+    &:where(:not([data-scroll-state='none']))::before {
+      @apply absolute h-thin;
+
+      content: '';
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+      top: 0;
+      opacity: 0;
+      background-color: var(--colorNeutralStroke1);
+      transition-duration: var(--durationNormal);
+      transition-property: opacity;
+      transition-timing-function: var(--curveEasyEase);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #4 — from useDrawerFooterStyles.separatorVisible */
+  .root {
+    &:where([data-scroll-state='middle'], [data-scroll-state='top'])::before {
+      opacity: 1;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 
 import { isConformant } from '../../testing/isConformant';
 import { OverlayDrawer } from './OverlayDrawer';
@@ -8,8 +9,14 @@ import type { OverlayDrawerProps } from './OverlayDrawer.types';
 
 describe('OverlayDrawer', () => {
   const testid = 'test';
+  // `open` is part of requiredProps because OverlayDrawer defaults to `open: false` +
+  // `unmountOnClose: true`, i.e. it renders NOTHING by default — and the conformance tests
+  // that resolve the root through `getTargetElement` below (including
+  // `component-has-group-marker`, a default test since DECISIONS.md D16.6) need an element
+  // to inspect.
   const props = {
     'data-testid': testid,
+    open: true,
   } as OverlayDrawerProps;
 
   beforeEach(() => resetIdsForTests());
@@ -25,15 +32,24 @@ describe('OverlayDrawer', () => {
   isConformant<OverlayDrawerProps>({
     Component: OverlayDrawer,
     displayName: 'OverlayDrawer',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
+    // was called with the consumer className last; this component now composes with clsx and
+    // never calls mergeClasses, so the test can no longer observe the contract. The guarantee
+    // itself is unchanged — clsx puts `state.root.className` last and the `@layer fui.*`
+    // sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
     disabledTests: [
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classnames-object',
       'consistent-callback-args',
+      'make-styles-overrides-win',
     ],
     requiredProps: props,
     getTargetElement: result => result.getByTestId(testid),
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   it('renders a default state', () => {

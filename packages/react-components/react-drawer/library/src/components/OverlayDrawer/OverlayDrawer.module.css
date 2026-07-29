@@ -1,0 +1,254 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useOverlayDrawerStyles_unstable, not source declaration order.
+ *
+ * `root` slot (the OverlayDrawerSurface / DialogSurface element):
+ *
+ *   #  mergeClasses argument                      → target
+ *   -----------------------------------------------------------------------------------
+ *   1  overlayDrawerClassNames.root               → REMOVED (D16.1); the root's identity
+ *                                                   is now the `group/fui-overlay-drawer`
+ *                                                   marker, and `.root` leads the clsx
+ *   2a useDrawerStyles[position]  (shared)        → fui.components.l1 .root + data-position
+ *   2b useDrawerStyles[size] /
+ *      useDrawerBottomBaseStyles[size] (shared)   → fui.components.l1 .root + data-size
+ *   3  useDrawerResetStyles       (makeReset)     → fui.base          .root
+ *                                                   …EXCEPT its focus-visible block,
+ *                                                   hoisted to fui.components.l1 — see
+ *                                                   "ALTITUDE" below
+ *   4  useDrawerRootStyles[position]              → fui.components.l1 .root + data-position
+ *   5  hasMountNodeElement && .absolute           → fui.components.l1 .absolute
+ *   6  consumer className                         → unlayered (always wins)
+ *
+ * `backdrop` slot (OverlayDrawerSurface's element — see OverlayDrawerSurface.module.css):
+ *   1 overlayDrawerClassNames.backdrop            → REMOVED (D16.1) — sub-slots have no
+ *                                                   public class-name handle
+ *   2 hasMountNodeElement && .absolute            → fui.components.l2 .backdrop-absolute
+ *   3 consumer className                          → unlayered
+ *
+ * Arg #3 sits BETWEEN #2 and #4 in the argument list but lands in `fui.base`, which loses
+ * to every level. That is not an inversion: `makeResetStyles` output always lost to
+ * `makeStyles` atomics in Griffel too (separate injection buckets, `r` before `d`), so the
+ * base/level split reproduces the same winner regardless of argument position.
+ *
+ * ── ALTITUDE: the focus ring is hoisted OUT of fui.base ───────────────────────────────
+ * `useDrawerResetStyles` spreads `createFocusOutlineStyle()`, whose focus-visible half
+ * compiles to `.r7dfyj8[data-fui-focus-visible]{border-*-color:transparent}` — 0-2-0. It
+ * beat arg #2a's `.f1xteiwb{border-right:var(--strokeWidthThin) solid
+ * var(--colorTransparentStroke)}` (0-1-0) on SPECIFICITY even though the reset bucket sorts
+ * first. `:where()`-flat selectors erase that, so leaving the focus block in `fui.base`
+ * would let the position border colour survive a focus ring. That is observable: in the
+ * high-contrast theme `colorTransparentStroke` is `CanvasText`, not `transparent`
+ * (packages/tokens/src/alias/highContrastColor.ts:187). Hoisting the focus-visible block to
+ * `fui.components.l1`, written last in the file, restores the Griffel winner. Same
+ * reasoning as Card's `> .group\/fui-card-header` reset rule and react-switch's `& ~ .label`
+ * hoist. It introduces no new inversion: nothing in that block sets `top`, `height`,
+ * `width` or `position`, the only properties args #4/#5 touch.
+ *
+ * The two `outline-style: none` rules stay in `fui.base` with the rest of the reset —
+ * `createFocusOutlineStyle` emits them OUTSIDE the focus-visible selector, and nothing else
+ * in this component sets `outline-style`.
+ *
+ * ── ALTITUDE: `.backdrop-absolute` is l2, not l1 ──────────────────────────────────────
+ * That class lands on the backdrop element, whose base styles come from ANOTHER hook —
+ * `useOverlayDrawerSurfaceStyles_unstable` (OverlayDrawerSurface.module.css). D2 amendment 2:
+ * styles a component writes onto an element another component's hook owns are library
+ * COMPOSITION and go to l2. It also has to win: in Griffel the drawer's `.f1euv43f`
+ * (`position: absolute`) arrived as the LAST mergeClasses argument on that element and beat
+ * the surface's `position: fixed` reset.
+ *
+ * ── data attributes ──────────────────────────────────────────────────────────────────
+ * `data-position` is one of the headless preview's 25 attribute names, stamped on exactly
+ * this element there (react-headless-components-preview `useOverlayDrawer.ts:27`). Both it
+ * and `data-size` are written as RAW attribute selectors / existing catalog variants; the
+ * shared `@custom-variant` catalog lives in another package and this conversion does not
+ * edit it (CONVERSION_GUIDE §2, scale-prop rule). `position-*` and `size-full` catalog
+ * entries are requested in the conversion report.
+ *
+ * These attributes ride the `root` SLOT, which is an `OverlayDrawerSurface` element type,
+ * not an intrinsic. They survive the hop because `useDialogSurface_unstable` funnels
+ * `...props` through `getIntrinsicElementProps`, and `getNativeElementProps` allows every
+ * `data-`-prefixed key through (react-utilities/src/utils/properties.ts:476).
+ *
+ * ── Pixel literals and tokens (DECISIONS.md D4) ──────────────────────────────────────
+ * `--fui-Drawer--size` is a custom PROPERTY, so no utility can set it and the three px
+ * widths take the D4 literal form `calc(<n>px * var(--base-scale))`. `strokeWidthThin`
+ * becomes `var(--spacing-thin)` (D4 addendum: `border-*-width` is not spacing-powered).
+ *
+ * ── RTL (DECISIONS.md D5) ────────────────────────────────────────────────────────────
+ * The compiled `[ltr, rtl]` pairs are pure PROPERTY flips, so they become logical
+ * properties and no `@variant rtl` twin is needed. The reset's own ltr/rtl pair differs
+ * only in the ORDER of the `::after` inset and border-colour longhands — identical values —
+ * so it needs no twin either.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/OverlayDrawer/useOverlayDrawerStyles.styles.js and
+ * lib-commonjs/shared/useDrawerBaseStyles.styles.js.
+ */
+
+@layer fui.base {
+  /*
+   * arg #3 — from useDrawerResetStyles (makeResetStyles) =
+   * { ...createFocusOutlineStyle(), ...drawerDefaultStyles, position: 'fixed', top: 0, bottom: 0 }
+   *
+   * `createFocusOutlineStyle()` contributes no top-level declarations; its focus-visible
+   * half is hoisted to fui.components.l1 at the bottom of this file.
+   */
+  .root {
+    @apply fixed box-border flex flex-col items-start justify-start overflow-hidden;
+
+    width: var(--fui-Drawer--size);
+    max-width: 100vw;
+    height: auto;
+    max-height: 100vh;
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+    top: 0;
+    bottom: 0;
+
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #2a — from the shared useDrawerStyles.start / .end / .bottom */
+  .root {
+    &:where([data-position='start']) {
+      border-inline-end-width: var(--spacing-thin);
+      border-inline-end-style: solid;
+      border-inline-end-color: var(--colorTransparentStroke);
+
+      inset-inline-start: 0;
+      inset-inline-end: auto;
+    }
+
+    &:where([data-position='end']) {
+      border-inline-start-width: var(--spacing-thin);
+      border-inline-start-style: solid;
+      border-inline-start-color: var(--colorTransparentStroke);
+
+      inset-inline-end: 0;
+      inset-inline-start: auto;
+    }
+
+    &:where([data-position='bottom']) {
+      bottom: 0;
+      top: auto;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #2b — from the shared useDrawerStyles[size] (non-bottom) and
+   * useDrawerBottomBaseStyles[size] (bottom). Identical for small / medium / large; only
+   * `full` differs (100vw vs 100%), so the bottom+full pair is one override written AFTER
+   * the plain `full` rule — both flatten to 0-1-0, so file position is the tiebreak.
+   */
+  .root {
+    @variant size-small {
+      --fui-Drawer--size: calc(320px * var(--base-scale));
+    }
+
+    @variant size-medium {
+      --fui-Drawer--size: calc(592px * var(--base-scale));
+    }
+
+    @variant size-large {
+      --fui-Drawer--size: calc(940px * var(--base-scale));
+    }
+
+    &:where([data-size='full']) {
+      --fui-Drawer--size: 100vw;
+    }
+
+    &:where([data-position='bottom'][data-size='full']) {
+      --fui-Drawer--size: 100%;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #4 — from useDrawerRootStyles.bottom. `.start` and `.end` are `{}` in the Griffel
+   * source and emit no rule here either.
+   */
+  .root {
+    &:where([data-position='bottom']) {
+      top: auto;
+      height: var(--fui-Drawer--size);
+      width: 100vw;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #5 — from useDrawerRootStyles.absolute, applied when the drawer is portalled into a
+   * consumer-supplied `mountNode` rather than into `document.body`.
+   */
+  .absolute {
+    @apply absolute;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #3, focus-visible half — from createFocusOutlineStyle() inside useDrawerResetStyles,
+   * hoisted out of fui.base (see "ALTITUDE" in the header) and written LAST so its
+   * `border-*-color: transparent` beats arg #2a's position border colour, exactly as the
+   * compiled 0-2-0 reset selector beat the 0-1-0 atomic.
+   *
+   * Default options, so the selector is keyborg's `[data-fui-focus-visible]` and the
+   * declarations are the shared `fui-focus-outline` utility (react-tailwind-theme
+   * css/utilities.css), byte-compared here against this component's own AOT output:
+   *
+   *   .r7dfyj8[data-fui-focus-visible]{border-{top,right,bottom,left}-color:transparent}
+   *   .r7dfyj8[data-fui-focus-visible]::after{content:"";position:absolute;
+   *     pointer-events:none;z-index:1;border:2px solid var(--colorStrokeFocus2);
+   *     border-radius:var(--borderRadiusMedium);
+   *     top|right|bottom|left:calc(2px * -1)}
+   *   @media (forced-colors: active){…::after{border-*-color:Highlight}}
+   *
+   * with every knob unset. The utility writes the offsets as `calc(0px - <width> -
+   * <offset>)`, which computes to the same -2px as `calc(2px * -1)`. The hardcoded 2px is
+   * react-tabster's own FIXME and is reproduced, not "fixed" to a stroke width (D6).
+   */
+  .root {
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * backdrop arg #2 — from useDrawerRootStyles.absolute, applied to the BACKDROP element.
+   * l2 because that element's base styles come from useOverlayDrawerSurfaceStyles_unstable
+   * (D2 amendment 2), and because it has to beat that hook's `position: fixed` reset the way
+   * the Griffel class did as the last mergeClasses argument on the element.
+   */
+  .backdrop-absolute {
+    @apply absolute;
+  }
+}

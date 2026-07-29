@@ -6,8 +6,30 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { OverlayDrawer } from './OverlayDrawer';
 import type { OverlayDrawerProps } from './OverlayDrawer.types';
-import { overlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
 import type { JSXElement } from '@fluentui/react-utilities';
+
+/*
+ * ── Selecting the backdrop after the D16 statics removal ────────────────────────────────
+ *
+ * `overlayDrawerClassNames` still exists, but it now holds ONE key — `root`, valued at the
+ * component's group marker — so the `fui-OverlayDrawer__backdrop` selector these tests used
+ * to build no longer exists, by design: sub-slots have no public class-name handle
+ * (DECISIONS.md D16.1 / D16.5).
+ *
+ * The backdrop gets a probe class stamped by the fixture through the slot's `className`
+ * prop. That is not a workaround — per-slot `className` IS the supported handle on a slot
+ * under the new contract, so these tests now target the backdrop the same way a consumer
+ * must. (A `data-testid` is not assignable: Fluent's slot-props types have no index
+ * signature.)
+ *
+ * Stamping a `className` is behaviour-neutral for the assertions below. `useOverlayDrawer_unstable`
+ * derives `hasCustomBackdrop` from `modalType !== 'non-modal' && slot.resolveShorthand(props.backdrop) !== null`,
+ * and `{ className }` resolves to a non-null shorthand exactly as the default `undefined`
+ * does — so a probe class changes nothing about WHEN the backdrop renders, which is what
+ * three of these four assertions are about.
+ */
+const BACKDROP_PROBE = 'overlay-drawer-backdrop-probe';
+const backdropSelector = `.${BACKDROP_PROBE}`;
 
 const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -38,7 +60,13 @@ describe('OverlayDrawer', () => {
       const [open, setOpen] = React.useState(true);
 
       return (
-        <OverlayDrawer id="drawer" open={open} onOpenChange={(_, { open: isOpen }) => setOpen(isOpen)} {...props} />
+        <OverlayDrawer
+          id="drawer"
+          open={open}
+          onOpenChange={(_, { open: isOpen }) => setOpen(isOpen)}
+          backdrop={{ className: BACKDROP_PROBE }}
+          {...props}
+        />
       );
     };
 
@@ -46,14 +74,14 @@ describe('OverlayDrawer', () => {
       it('should render backdrop', () => {
         mountFluent(<ExampleDrawer />);
 
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('exist');
+        cy.get(backdropSelector).should('exist');
       });
 
       it('should close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).click({ force: true });
+        cy.get(backdropSelector).click({ force: true });
         cy.get('#drawer').should('not.exist');
       });
     });
@@ -62,14 +90,14 @@ describe('OverlayDrawer', () => {
       it('should render backdrop', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('exist');
+        cy.get(backdropSelector).should('exist');
       });
 
       it('should not close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).click({ force: true });
+        cy.get(backdropSelector).click({ force: true });
         cy.get('#drawer').should('exist');
       });
     });
@@ -78,7 +106,7 @@ describe('OverlayDrawer', () => {
       it('should not render backdrop when modalType is default', () => {
         mountFluent(<ExampleDrawer modalType="non-modal" />);
 
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('not.exist');
+        cy.get(backdropSelector).should('not.exist');
       });
     });
   });

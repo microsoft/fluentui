@@ -1,0 +1,88 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useDrawerHeaderTitleStyles_unstable.
+ *
+ * `root` slot:
+ *   1 drawerHeaderTitleClassNames.root     → REMOVED (D16.1); the root's identity is now
+ *                                            the `group/fui-drawer-header-title` marker,
+ *                                            and `.root` leads the clsx
+ *   2 useStyles.root                       → fui.components.l1 .root
+ *   3 consumer className                   → unlayered
+ *
+ * `heading` slot:
+ *   1 drawerHeaderTitleClassNames.heading  → REMOVED (D16.1)
+ *   2 (nothing — the hook never styled it)
+ *   → the whole assignment is DELETED. What was left after removing the static is
+ *     `clsx(state.heading.className)`, an identity on the consumer's own string, i.e. dead
+ *     code implying this hook styles a slot it does not (CONVERSION_GUIDE, "A slot whose
+ *     only library token is the static").
+ *
+ * `action` slot:
+ *   1 drawerHeaderTitleClassNames.action   → REMOVED (D16.1)
+ *   2 useStyles.action                     → fui.components.l2 .action
+ *   3 consumer className                   → unlayered
+ *
+ * ── ALTITUDE: `.action` is l2, not l1 ────────────────────────────────────────────────
+ * `useDrawerHeaderTitleStyles_unstable` calls `useDialogTitleStyles_unstable` on this
+ * component's `heading` and `action` slots BEFORE composing its own classes, so the
+ * action element's base styles come from ANOTHER component's hook. D2 amendment 2 puts
+ * that at l2. `.root` is not in that position — DialogTitle is handed `heading` as its
+ * root, never DrawerHeaderTitle's root — so `.root` stays at l1.
+ *
+ * ── D2 amendment 5 (UNLAYERED rules) does NOT apply ──────────────────────────────────
+ * `@fluentui/react-dialog` converted in this same batch, so `useDialogTitleStyles_unstable`
+ * now composes with clsx and its declarations sit in `@layer fui.base` (its `.action` /
+ * `.root` resets) and `@layer fui.components.l1` (`.root-without-action`). Nothing it emits
+ * is unlayered, so nothing here has to be lifted out of a layer to survive it, and `.action`
+ * at l2 outranks DialogTitle's `fui.base` `.action` — which is also the Griffel winner, since
+ * a `makeStyles` atomic always beat a `makeResetStyles` rule regardless of mergeClasses
+ * order.
+ *
+ * The two property sets are disjoint in any case: DialogTitle's `.action` sets grid
+ * placement plus `justify-self` / `align-self`, and `.action` below sets only
+ * `margin-inline-end`.
+ *
+ * (Had react-dialog still been on Griffel, its atomics would have been UNLAYERED and would
+ * have beaten every `@layer` before specificity was consulted — that is the shape this block
+ * would have had to take.)
+ *
+ * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
+ *
+ * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
+ * `columnGap: spacingHorizontalS` becomes `gap-x-horizontal-s`; the action's
+ * `marginRight: calc(spacingHorizontalS * -1)` becomes the NEGATED named utility
+ * `-me-horizontal-s`, which is also the RTL fix: the compiled atomics are an `[ltr, rtl]`
+ * pair (`margin-right` / `margin-left`), i.e. a pure PROPERTY flip, so the logical longhand
+ * replaces both and no `@variant rtl` twin is needed.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/DrawerHeaderTitle/useDrawerHeaderTitleStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* root arg #2 — from useStyles.root */
+  .root {
+    @apply flex items-center justify-between gap-x-horizontal-s;
+  }
+}
+
+@layer fui.components.l2 {
+  /* action arg #2 — from useStyles.action */
+  .action {
+    @apply -me-horizontal-s;
+  }
+}

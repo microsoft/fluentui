@@ -16,7 +16,6 @@ import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Drawer: ForwardRefComponent<DrawerProps>;
@@ -24,8 +23,10 @@ export const Drawer: ForwardRefComponent<DrawerProps>;
 // @public
 export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
 
-// @public (undocumented)
-export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots>;
+// @public
+export const drawerBodyClassNames: {
+    root: string;
+};
 
 // @public
 export type DrawerBodyProps = ComponentProps<DrawerBodySlots>;
@@ -47,8 +48,10 @@ export type DrawerContextValue = {
 // @public
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
 
-// @public (undocumented)
-export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots>;
+// @public
+export const drawerFooterClassNames: {
+    root: string;
+};
 
 // @public
 export type DrawerFooterProps = ComponentProps<DrawerFooterSlots>;
@@ -66,14 +69,18 @@ export type DrawerFooterState = ComponentState<DrawerFooterSlots> & {
 // @public
 export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
 
-// @public (undocumented)
-export const drawerHeaderClassNames: SlotClassNames<DrawerHeaderSlots>;
+// @public
+export const drawerHeaderClassNames: {
+    root: string;
+};
 
 // @public
 export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps>;
 
-// @public (undocumented)
-export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNavigationSlots>;
+// @public
+export const drawerHeaderNavigationClassNames: {
+    root: string;
+};
 
 // @public
 export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots>;
@@ -102,8 +109,10 @@ export type DrawerHeaderState = ComponentState<DrawerHeaderSlots> & {
 // @public
 export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
 
-// @public (undocumented)
-export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots>;
+// @public
+export const drawerHeaderTitleClassNames: {
+    root: string;
+};
 
 // @public
 export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots>;
@@ -141,8 +150,10 @@ export type InlineDrawerBaseProps = ComponentProps<InlineDrawerBaseSlots> & Omit
 // @public (undocumented)
 export type InlineDrawerBaseState = Required<ComponentState<InlineDrawerBaseSlots> & Omit<DrawerBaseState, 'size' | 'motion'>>;
 
-// @public (undocumented)
-export const inlineDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>>;
+// @public
+export const inlineDrawerClassNames: {
+    root: string;
+};
 
 // @public
 export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> & DrawerBaseProps & {
@@ -163,8 +174,10 @@ export type InlineDrawerState = Required<ComponentState<NonNullable<InlineDrawer
 // @public
 export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
 
-// @public (undocumented)
-export const overlayDrawerClassNames: SlotClassNames<Omit<OverlayDrawerSurfaceSlots, 'backdropMotion'>>;
+// @public
+export const overlayDrawerClassNames: {
+    root: string;
+};
 
 // @public
 export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'> & DrawerBaseProps & {
