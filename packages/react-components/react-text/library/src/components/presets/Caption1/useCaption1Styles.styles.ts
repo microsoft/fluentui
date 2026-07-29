@@ -1,5 +1,3 @@
-'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- kept per CONVERSION_GUIDE §3; see ../../Text/useTextStyles.styles.ts for the full note
-
 import styles from '../presets.module.css';
 
 /**
