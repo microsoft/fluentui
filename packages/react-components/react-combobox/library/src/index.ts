@@ -7,7 +7,7 @@ export { useComboboxContextValues } from './contexts/useComboboxContextValues';
 export { useListboxContextValues } from './contexts/useListboxContextValues';
 export {
   Listbox,
-  listboxClassNames,
+  listboxClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderListbox_unstable,
   useListboxStyles_unstable,
   useListbox_unstable,
@@ -15,7 +15,7 @@ export {
 export type { ListboxContextValues, ListboxProps, ListboxSlots, ListboxState } from './Listbox';
 export {
   Option,
-  optionClassNames,
+  optionClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderOption_unstable,
   useOptionStyles_unstable,
   useOption_unstable,
@@ -24,7 +24,7 @@ export {
 export type { OptionProps, OptionSlots, OptionState } from './Option';
 export {
   Combobox,
-  comboboxClassNames,
+  comboboxClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderCombobox_unstable,
   useComboboxStyles_unstable,
   useComboboxBase_unstable,
@@ -42,7 +42,7 @@ export type {
 } from './Combobox';
 export {
   Dropdown,
-  dropdownClassNames,
+  dropdownClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderDropdown_unstable,
   useDropdownStyles_unstable,
   useDropdownBase_unstable,
@@ -60,7 +60,7 @@ export type {
 } from './Dropdown';
 export {
   OptionGroup,
-  optionGroupClassNames,
+  optionGroupClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderOptionGroup_unstable,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,

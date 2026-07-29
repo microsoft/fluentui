@@ -4,13 +4,13 @@ exports[`Option renders a default multi-select state 1`] = `
 <div>
   <div
     aria-checked="false"
-    class="fui-Option"
-    id="fluent-option_r_9_"
+    class="group/fui-option"
+    id="fluent-option_r_b_"
     role="menuitemcheckbox"
   >
     <span
       aria-hidden="true"
-      class="fui-Option__checkIcon"
+      class=""
     />
     Default Option
   </div>
@@ -21,13 +21,13 @@ exports[`Option renders a default single-select state 1`] = `
 <div>
   <div
     aria-selected="false"
-    class="fui-Option"
-    id="fluent-option_r_7_"
+    class="group/fui-option"
+    id="fluent-option_r_9_"
     role="option"
   >
     <span
       aria-hidden="true"
-      class="fui-Option__checkIcon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -53,13 +53,13 @@ exports[`Option renders a selected multi-select state 1`] = `
 <div>
   <div
     aria-checked="true"
-    class="fui-Option"
-    id="fluent-option_r_a_"
+    class="group/fui-option"
+    id="fluent-option_r_c_"
     role="menuitemcheckbox"
   >
     <span
       aria-hidden="true"
-      class="fui-Option__checkIcon"
+      class=""
     >
       <svg
         aria-hidden="true"

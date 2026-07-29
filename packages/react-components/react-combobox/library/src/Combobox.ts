@@ -11,7 +11,7 @@ export type {
 } from './components/Combobox/index';
 export {
   Combobox,
-  comboboxClassNames,
+  comboboxClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderCombobox_unstable,
   useComboboxStyles_unstable,
   useComboboxBase_unstable,

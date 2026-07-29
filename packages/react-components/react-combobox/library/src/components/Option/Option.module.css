@@ -1,0 +1,292 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useOptionStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot:
+ *
+ *   #  mergeClasses argument              bucket   → target
+ *   ---------------------------------------------------------------------------------
+ *   1  optionClassNames.root              —        → group marker (JS, D16.5)
+ *   2  styles.root                        d        → l1
+ *   3  styles.interactive   (!disabled)   h + a    → l1  (.root, trailing block)
+ *   4  styles.active                      d        → l1  ([data-activedescendant-…])
+ *   5  styles.disabled                    d + m    → l1  (aria-disabled)
+ *   6  styles.selected      (selected)    —        → DELETED: the compiled slice is `{}`
+ *   7  consumer className                 —        → unlayered (always wins)
+ *
+ * `checkIcon` slot:
+ *
+ *   1  optionClassNames.checkIcon         —        → removed (D16.1)
+ *   2  styles.checkIcon                   d        → l1  .check-icon
+ *   3  styles.multiselectCheck            d        → l1  .multiselect-check
+ *   4  styles.selectedCheck               d        → l1  .selected-check
+ *   5  styles.selectedMultiselectCheck    d        → l1  .selected-multiselect-check
+ *   6  styles.checkDisabled               d        → l1  .check-disabled
+ *   7  styles.multiselectCheckDisabled    d        → l1  .multiselect-check-disabled
+ *   8  consumer className                 —        → unlayered
+ *
+ * ── INVERSION (reports/risk-analysis.md, the react-combobox entry) ──────────────────
+ * `multiselectCheck` is applied BEFORE `selectedCheck` but declared AFTER it, and the two
+ * share the `visibility` property. It is inert: both set `visibility: visible`, and under
+ * Griffel they share a property KEY so mergeClasses simply drops the earlier class. The
+ * blocks below are nevertheless written in ARGUMENT order (`.multiselect-check` before
+ * `.selected-check`), which is the order the guide mandates and which reproduces the
+ * winner either way.
+ *
+ * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
+ * • `.selected-multiselect-check` (arg #5) sets four `border-*-color`s and must LOSE to
+ *   `.multiselect-check-disabled` (arg #7), so it is written first — same argument order,
+ *   same file order, equal 0-1-0 specificity.
+ * • `.check-disabled`'s `color` (arg #6) must beat `.selected-multiselect-check`'s
+ *   `color: colorNeutralForegroundInverted` (arg #5) — same rule.
+ * • The `interactive` hover/active rules that reach INTO the check icon are written last
+ *   and deliberately carry one class more than the `.check-*` blocks (`.root … .check-icon`
+ *   = 0-2-0 vs 0-1-0). That reproduces Griffel exactly: the compiled
+ *   `.fo79ri9:hover .fui-Option__checkIcon` scores 0-3-0 against `.f3xi7mh`'s 0-1-0, so
+ *   hovering a selected multiselect Option shows `colorNeutralForeground1Hover`, not the
+ *   brand border. The win is by SPECIFICITY here, so those blocks are order-independent.
+ *
+ * Every element styled here is Option's own — the `<div>` root and the `<span>` check icon
+ * that `useOptionBase_unstable` builds with `slot.optional`. The `& .${optionClassNames.checkIcon}`
+ * selectors of the Griffel source therefore become plain module-local classes, not a
+ * `:global()` handle (DECISIONS.md D16.3: own sub-slot → JS slot composition). Nothing here
+ * sits on top of another component's styles hook, so no block belongs in `fui.components.l2`.
+ *
+ * `data-activedescendant-focusvisible` is written by `@fluentui/react-aria`'s
+ * activedescendant controller (`ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE`). It has no entry in
+ * the shared `@custom-variant` catalog and gets none — D15.5 admits no additions — so it is
+ * matched with a bare zero-specificity attribute selector, which the catalog rule explicitly
+ * permits (it bans variant DEFINITIONS in modules, not attribute selectors).
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2 */
+  .root {
+    @apply flex items-center relative;
+
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground1);
+    cursor: pointer;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+
+    /* `columnGap: tokens.spacingHorizontalXS` */
+    @apply gap-x-horizontal-xs;
+
+    /* `padding: spacingVerticalSNudge spacingHorizontalS` */
+    @apply py-vertical-s-nudge px-horizontal-s;
+
+    /*
+     * from useStyles.active — arg #4, applied unconditionally. The focus ring an
+     * activedescendant Option draws for itself; the 2px literals are react-tabster's
+     * documented FIXME value and are reproduced verbatim (DECISIONS.md D6).
+     *
+     * The compiled `left`/`right` pair carries equal values
+     * (`Bmau3bo: ["ftjv2f4","f1flhb1f"]`), so `inset-inline` is an exact translation and
+     * no `@variant rtl` twin is required.
+     */
+    &:where([data-activedescendant-focusvisible])::after {
+      @apply absolute pointer-events-none;
+
+      content: '';
+      z-index: 1;
+
+      border-width: 2px;
+      border-style: solid;
+      border-color: var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+
+      top: -2px;
+      bottom: -2px;
+      inset-inline: -2px;
+    }
+
+    /*
+     * from useStyles.disabled — arg #5. The `disabled &&` guard becomes `disabled-control`,
+     * the variant whose selector list includes `[aria-disabled='true']` — which is exactly
+     * what `useOptionBase_unstable` puts on the root for a disabled Option. No `data-disabled`
+     * mirror is minted: the native/ARIA state already sits on the element that needs it
+     * (DECISIONS.md D15.6).
+     */
+    @variant disabled-control {
+      color: var(--colorNeutralForegroundDisabled);
+      cursor: default;
+
+      @variant forced-colors {
+        color: GrayText;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── `checkIcon` slot ────────────────────────────────────────────────────────────────
+   * Flat 0-1-0 classes in mergeClasses ARGUMENT order, the same way Griffel handed the
+   * atomics over: within this group file position alone decides every tie.
+   */
+
+  /* from useStyles.checkIcon — arg #2 */
+  .check-icon {
+    @apply shrink-0;
+
+    font-size: var(--fontSizeBase400);
+
+    /*
+     * Shift icon(s) to the left to give text content extra spacing without needing an extra
+     * node. This is done instead of gap since the extra space only exists between
+     * icon > content, not icon > icon.
+     *
+     * Both margins are `[ltr, rtl]` property flips in the compiled atomics
+     * (`Frg6f3: ["f18b9hdq","fn6qj8t"]`, `t21cq0: ["f1xk557c","f1h9en5y"]`) → logical
+     * inline properties, negated named utility for the pull-left.
+     */
+    @apply -ms-horizontal-xxs me-horizontal-xxs;
+
+    visibility: hidden;
+  }
+
+  /* from useStyles.multiselectCheck — arg #3 */
+  .multiselect-check {
+    @apply flex items-center justify-center box-border h-16 w-16;
+
+    /* `border: strokeWidthThin solid colorNeutralStrokeAccessible` expanded to longhands —
+       args #5/#7 each override the four colors alone. `border-*-width` is not a
+       spacing-powered utility family, so the stroke width is referenced through the emitted
+       `--spacing-thin` custom property (D4 addendum). */
+    border-top-width: var(--spacing-thin);
+    border-right-width: var(--spacing-thin);
+    border-bottom-width: var(--spacing-thin);
+    border-left-width: var(--spacing-thin);
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: var(--colorNeutralStrokeAccessible);
+    border-right-color: var(--colorNeutralStrokeAccessible);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-left-color: var(--colorNeutralStrokeAccessible);
+
+    border-radius: var(--borderRadiusSmall);
+
+    fill: currentColor;
+    font-size: calc(12px * var(--base-scale));
+
+    visibility: visible;
+  }
+
+  /* from useStyles.selectedCheck — arg #4 */
+  .selected-check {
+    visibility: visible;
+  }
+
+  /* from useStyles.selectedMultiselectCheck — arg #5 */
+  .selected-multiselect-check {
+    background-color: var(--colorCompoundBrandBackground);
+    color: var(--colorNeutralForegroundInverted);
+
+    border-top-color: var(--colorCompoundBrandBackground);
+    border-right-color: var(--colorCompoundBrandBackground);
+    border-bottom-color: var(--colorCompoundBrandBackground);
+    border-left-color: var(--colorCompoundBrandBackground);
+  }
+
+  /* from useStyles.checkDisabled — arg #6 */
+  .check-disabled {
+    color: var(--colorNeutralForegroundDisabled);
+
+    @variant forced-colors {
+      color: GrayText;
+    }
+  }
+
+  /* from useStyles.multiselectCheckDisabled — arg #7, the last style argument */
+  .multiselect-check-disabled {
+    border-top-color: var(--colorNeutralForegroundDisabled);
+    border-right-color: var(--colorNeutralForegroundDisabled);
+    border-bottom-color: var(--colorNeutralForegroundDisabled);
+    border-left-color: var(--colorNeutralForegroundDisabled);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── from useStyles.interactive — arg #3, Griffel buckets `h` and `a` ─────────────────
+   * An EARLIER mergeClasses argument than #4/#5, but Griffel emits `h`/`a` after `d`
+   * (`styleBucketOrdering` = r,d,l,v,w,f,i,h,a,s,k,t,m), so these are written last.
+   *
+   * The `!disabled &&` guard becomes `enabled-control` — the complement of the
+   * `disabled-control` variant used above, so the two can never both match.
+   *
+   * `:active` is authored AFTER `:hover` because Griffel's `a` bucket follows `h`; a
+   * pressed Option therefore keeps `colorNeutralBackground1Pressed` while it is also
+   * hovered. The check-icon border color is the SAME token in both states
+   * (`colorNeutralForeground1Hover` — the Griffel source says so twice), reproduced
+   * verbatim rather than "fixed" to a Pressed token.
+   */
+  .root {
+    @variant enabled-control {
+      @variant hover {
+        background-color: var(--colorNeutralBackground1Hover);
+        color: var(--colorNeutralForeground1Hover);
+
+        & .check-icon {
+          border-top-color: var(--colorNeutralForeground1Hover);
+          border-right-color: var(--colorNeutralForeground1Hover);
+          border-bottom-color: var(--colorNeutralForeground1Hover);
+          border-left-color: var(--colorNeutralForeground1Hover);
+        }
+      }
+
+      @variant active {
+        background-color: var(--colorNeutralBackground1Pressed);
+        color: var(--colorNeutralForeground1Pressed);
+
+        & .check-icon {
+          border-top-color: var(--colorNeutralForeground1Hover);
+          border-right-color: var(--colorNeutralForeground1Hover);
+          border-bottom-color: var(--colorNeutralForeground1Hover);
+          border-left-color: var(--colorNeutralForeground1Hover);
+        }
+      }
+    }
+  }
+}
+
+/*
+ * ── UNLAYERED: the check icon's <svg> display (D2 amendment) ────────────────────────
+ * `@fluentui/react-icons` is and stays a Griffel package (DECISIONS.md D11). Every glyph it
+ * renders carries `.f1w7gpdv { display: inline }` from
+ * `node_modules/@fluentui/react-icons/lib/utils/useIconStyles.styles.js`, injected with NO
+ * `@layer`. In the CSS cascade an unlayered normal author declaration beats EVERY layer, and
+ * that comparison happens before specificity is consulted — so this rule would lose from
+ * inside `fui.components.l1` no matter how specific it is, and the glyph would keep the
+ * inline layout box the Griffel source removed.
+ *
+ * Under Griffel both rules were unlayered and the compiled `.fvc9v3g svg { display: block }`
+ * won at 0-1-1 against `.f1w7gpdv`'s 0-1-0. Unlayered here restores exactly that comparison.
+ * Nothing else in this file competes for `display` on the glyph, so the block holds one rule
+ * and its position is not load-bearing.
+ *
+ * (Grepped this package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — Option renders
+ * plain `CheckmarkFilled` / `Checkmark12Filled`, never a `bundleIcon()` pair, so there is no
+ * icon-swap rule to lift out alongside it.)
+ */
+.check-icon svg {
+  display: block;
+}

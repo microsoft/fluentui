@@ -1,153 +1,80 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { tokens } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from '@fluentui/react-aria';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { OptionSlots, OptionState } from './Option.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const optionClassNames: SlotClassNames<OptionSlots> = {
-  root: 'fui-Option',
-  checkIcon: 'fui-Option__checkIcon',
-};
+import { clsx } from 'clsx';
+import type { OptionState } from './Option.types';
+
+import styles from './Option.module.css';
 
 /**
- * Styles for the root slot
+ * Public identity class for Option.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
+ * `group-*` variant target. The `checkIcon` key was removed together with the
+ * `fui-Option__checkIcon` BEM static (DECISIONS.md D16.1/D16.5): there is no public
+ * class-name handle on component internals.
+ *
+ * The value is a class TOKEN, not a selector — `'.' + optionClassNames.root` is invalid CSS,
+ * because the `/` must be escaped in a selector. Use `fuiSelector(optionClassNames.root)` from
+ * `@fluentui/react-utilities` (DECISIONS.md D16.5). Token-taking DOM APIs need no escaping,
+ * which is why `react-tag-picker`'s `el.classList.contains(optionClassNames.root)` keeps
+ * working unchanged.
  */
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'center',
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground1,
-    columnGap: tokens.spacingHorizontalXS,
-    cursor: 'pointer',
-    display: 'flex',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalS}`,
-    position: 'relative',
-  },
-
-  interactive: {
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      color: tokens.colorNeutralForeground1Hover,
-      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
-    },
-
-    ':active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-      color: tokens.colorNeutralForeground1Pressed,
-      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
-    },
-  },
-
-  active: {
-    [`[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}]::after`]: {
-      content: '""',
-      position: 'absolute',
-      pointerEvents: 'none',
-      zIndex: 1,
-
-      border: `2px solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
-
-      top: '-2px',
-      bottom: '-2px',
-      left: '-2px',
-      right: '-2px',
-    },
-  },
-
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    cursor: 'default',
-
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-    },
-  },
-
-  selected: {},
-
-  checkIcon: {
-    flexShrink: 0,
-    fontSize: tokens.fontSizeBase400,
-    // Shift icon(s) to the left to give text content extra spacing without needing an extra node
-    // This is done instead of gap since the extra space only exists between icon > content, not icon > icon
-    marginLeft: `calc(${tokens.spacingHorizontalXXS} * -1)`,
-    marginRight: tokens.spacingHorizontalXXS,
-    visibility: 'hidden',
-
-    '& svg': {
-      display: 'block',
-    },
-  },
-
-  selectedCheck: {
-    visibility: 'visible',
-  },
-
-  multiselectCheck: {
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
-    borderRadius: tokens.borderRadiusSmall,
-    boxSizing: 'border-box',
-
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    fill: 'currentColor',
-    fontSize: '12px',
-    height: '16px',
-    width: '16px',
-    visibility: 'visible',
-  },
-
-  selectedMultiselectCheck: {
-    backgroundColor: tokens.colorCompoundBrandBackground,
-    color: tokens.colorNeutralForegroundInverted,
-    ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
-  },
-
-  checkDisabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-    },
-  },
-  multiselectCheckDisabled: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
-});
+export const optionClassNames: { root: string } = {
+  root: 'group/fui-option',
+};
 
 /**
  * Apply styling to the Option slots based on the state
  */
 export const useOptionStyles_unstable = (state: OptionState): OptionState => {
   const { disabled, multiselect, selected } = state;
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    optionClassNames.root,
-    styles.root,
-    !disabled && styles.interactive,
-    styles.active,
-    disabled && styles.disabled,
-    selected && styles.selected,
-    state.root.className,
-  );
+
+  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
+  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The invariant also
+  // holds when `react-tag-picker`'s `useTagPickerOptionStyles_unstable` calls this hook after
+  // composing its own class list: this call re-leads the string with `styles.root`.
+  //
+  // No `data-*` mirror is minted. Every state the module reads is already expressed on this
+  // element natively: `aria-disabled` (matched by the shared `disabled-control` /
+  // `enabled-control` variants) and `data-activedescendant-focusvisible` (written by
+  // `@fluentui/react-aria`). DECISIONS.md D15.6 — mirror only what a native selector cannot
+  // reach. `multiselect` / `selected` drive the check icon's own classes below, and the
+  // check icon is a child this hook holds the slot object for, so it needs no group variant.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order and by block order inside
+  // Option.module.css, not by the order of these arguments — see that file's header for the
+  // mapping back to the mergeClasses() argument order this replaces.
+  //
+  // `!disabled && styles.interactive` and `disabled && styles.disabled` are now the
+  // `enabled-control` / `disabled-control` variants on `.root`; `selected && styles.selected`
+  // is deleted outright because the compiled `selected` slice is `{}` — it applied nothing
+  // before and applies nothing now.
+  state.root.className = clsx(styles.root, 'group/fui-option', state.root.className);
 
   if (state.checkIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.checkIcon.className = mergeClasses(
-      optionClassNames.checkIcon,
-      styles.checkIcon,
-      multiselect && styles.multiselectCheck,
-      selected && styles.selectedCheck,
-      selected && multiselect && styles.selectedMultiselectCheck,
-      disabled && styles.checkDisabled,
-      disabled && multiselect && styles.multiselectCheckDisabled,
+    state.checkIcon.className = clsx(
+      styles['check-icon'],
+      multiselect && styles['multiselect-check'],
+      selected && styles['selected-check'],
+      selected && multiselect && styles['selected-multiselect-check'],
+      disabled && styles['check-disabled'],
+      disabled && multiselect && styles['multiselect-check-disabled'],
       state.checkIcon.className,
     );
   }

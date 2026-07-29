@@ -5,7 +5,7 @@ import { ListboxContext } from '../../contexts/ListboxContext';
 import { Option } from './Option';
 import type { OptionProps } from './Option.types';
 import { isConformant } from '../../testing/isConformant';
-import { optionClassNames } from './useOptionStyles.styles';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 
@@ -13,6 +13,14 @@ describe('Option', () => {
   isConformant<OptionProps>({
     Component: Option,
     displayName: 'Option',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` can no longer observe the contract — this component
+    // composes with clsx and never calls mergeClasses. `classname-overrides-win` is its
+    // cascade-native replacement (DECISIONS.md D9).
+    disabledTests: ['make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   afterEach(() => {
@@ -259,7 +267,10 @@ describe('Option', () => {
         </Option>,
       );
 
-      expect(document.querySelector(`.${optionClassNames.checkIcon}`)).toBeTruthy();
+      // The `fui-Option__checkIcon` static this used to query is gone (DECISIONS.md D16.1:
+      // no public class-name handle on component internals). The slot is the only
+      // `aria-hidden` <span> an Option renders, so the attribute identifies it exactly.
+      expect(document.querySelector('span[aria-hidden="true"]')).toBeTruthy();
     });
 
     it('should not render the `checkIcon` slot when passed `null`', () => {
@@ -269,7 +280,7 @@ describe('Option', () => {
         </Option>,
       );
 
-      expect(document.querySelector(`.${optionClassNames.checkIcon}`)).toBeFalsy();
+      expect(document.querySelector('span[aria-hidden="true"]')).toBeFalsy();
     });
   });
 });

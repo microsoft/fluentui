@@ -11,7 +11,7 @@ export type {
 } from './components/Dropdown/index';
 export {
   Dropdown,
-  dropdownClassNames,
+  dropdownClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderDropdown_unstable,
   useDropdownStyles_unstable,
   useDropdownBase_unstable,

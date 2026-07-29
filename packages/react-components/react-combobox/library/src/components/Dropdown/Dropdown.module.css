@@ -1,0 +1,649 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useDropdownStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot:
+ *
+ *   #  mergeClasses argument                            bucket     → target
+ *   ---------------------------------------------------------------------------------
+ *   1  dropdownClassNames.root                          —          → group marker (JS, D16.5)
+ *   2  styles.root                                      d+w+t+m    → l1  (block 1)
+ *   3  styles[appearance]                               d          → l1  (block 2)
+ *   4  styles.outlineInteractive   (!disabled, outline) w + h + a  → l1  (block 5)
+ *   5  styles.invalid              (invalid, !underline) d         → l1  (blocks 4b + 6)
+ *   6  styles.invalidUnderline     (invalid, underline)  d         → l1  (blocks 4b + 6)
+ *   7  styles.disabled                                  d + m      → l1  (block 4a)
+ *   8  consumer className                               —          → unlayered (always wins)
+ *
+ * `button` slot:                              `expandIcon` slot:
+ *   1  static → removed                        1  static → removed
+ *   2  styles.button           d               2  iconStyles.icon        d
+ *   3  styles[size]            d               3  iconStyles[size]       d
+ *   4  styles.placeholder      d               4  iconStyles.disabled    d
+ *   5  styles.disabledText     d               5  styles.hidden          d
+ *   6  consumer className      —               6  consumer className     —
+ *
+ * `clearButton` slot:                         `listbox` slot (→ fui.components.l2):
+ *   1  static → removed                        1  static → removed
+ *   2  useBaseClearButtonStyle  r + s → fui.base 2  styles.listbox
+ *   3  iconStyles.icon         d               3  styles.inlineListbox
+ *   4  iconStyles[size]        d               4  styles.listboxCollapsed
+ *   5  iconStyles.disabled     d
+ *   6  styles.hidden           d
+ *   7  consumer className      —
+ *
+ * ── The ORDER RULE for the root is Griffel's BUCKET order, not argument order ────────
+ * `styleBucketOrdering` (@griffel/core/renderer/getStyleSheetForBucket) is
+ * ['r','d','l','v','w','f','i','h','a','s','k','t','m']. Every root conflict below is between
+ * DIFFERENT property keys — the same property reached through different selectors — which
+ * mergeClasses cannot arbitrate, so the compiled stylesheet order decides. Read off
+ * lib-commonjs/components/Dropdown/useDropdownStyles.styles.js, whose bucket arrays ARE the
+ * emission order.
+ *
+ * INVERSION 1 (bucket order): #4 `outlineInteractive` is an EARLIER argument than #5/#6/#7 yet
+ * its `w`/`h`/`a` rules are emitted after their `d` rules, so it is collected into one trailing
+ * block (block 5).
+ *
+ * INVERSION 2 (bucket order, inside #4): the slice authors `:hover`, `:active` and
+ * `:focus-within` as THREE separate selectors, filed in three buckets that sort `w` < `h` < `a`.
+ * A hovered-AND-focused Dropdown therefore shows `colorNeutralStroke1Hover`, not the pressed
+ * border. Block 5 is written focus-within → hover → active for exactly that reason; collapsing
+ * hover and focus-within into one `active-or-focus-within` variant (react-input's shape, whose
+ * source combines the selectors) would silently flip that case.
+ *
+ * INVERSION 3 (specificity): #5 `invalid` is authored with TWO selector branches
+ * (`':not(:focus-within),:hover:not(:focus-within)'`) that land on opposite sides of the
+ * interactive block — `.fs4k3qj:hover:not(:focus-within)` scores 0-3-0 and beats the hover
+ * bucket, while the plain branch scores 0-2-0 and loses to `:active` on bucket order. `:where()`
+ * erases both, so the slice is SPLIT into blocks 4b and 6.
+ *
+ * #5/#6 carry NO `!disabled` guard, so under Griffel the red border also outranks `disabled`'s
+ * 0-1-0 colors (forced-colors ones included — a media query adds no weight). Block 4b is written
+ * after block 4a to reproduce that.
+ *
+ * ── Slot rules and specificity ──────────────────────────────────────────────────────
+ * `data-size` and `data-disabled` live on the ROOT, so every rule for the `button`,
+ * `expandIcon` and `clearButton` slots is written as `.root … & .<slot>` — a uniform 0-2-0 in
+ * which file order alone decides, exactly as it did between Griffel's atomics. The `listbox`
+ * slot is the exception: it is portalled unless `inlinePopup` is set, so it is not a descendant
+ * of the root and its classes stay flat at 0-1-0 in l2.
+ */
+
+@layer fui.base {
+  /*
+   * from useBaseClearButtonStyle (makeResetStyles) — `clearButton` arg #2.
+   *
+   * `createFocusOutlineStyle()` is replaced by the shared `fui-focus-outline` utility
+   * (DECISIONS.md D6). This is the FIRST conversion to exercise it, so it was byte-compared
+   * against this package's own AOT output before being trusted — the compiled reset
+   * (`__resetStyles("rticfuj", "r1vp6jef", …)`) emits, in order:
+   *
+   *   .rticfuj:focus{outline-style:none}
+   *   .rticfuj:focus-visible{outline-style:none}
+   *   .rticfuj[data-fui-focus-visible]{border-{top,right,bottom,left}-color:transparent}
+   *   .rticfuj[data-fui-focus-visible]::after{content:"";position:absolute;pointer-events:none;
+   *       z-index:1;border:2px solid var(--colorStrokeFocus2);
+   *       border-radius:var(--borderRadiusMedium);
+   *       top:calc(2px * -1);right:…;bottom:…;left:…}
+   *   @media (forced-colors: active){…::after{border-*-color:Highlight}}
+   *
+   * The utility reproduces every one of those declarations with all four knobs unset; the two
+   * `outline-style: none` rules sit OUTSIDE the focus-visible selector and therefore stay with
+   * the caller, which is why they are written out here.
+   *
+   * The RTL twin (`.r1vp6jef`) differs only in `margin-right` → `margin-left`, so
+   * `margin-inline-end` is exact and no `@variant rtl` twin is required.
+   */
+  .clear-button {
+    @apply self-center relative h-fit m-0 p-0;
+
+    background-color: var(--colorTransparentBackground);
+    border-style: none;
+    cursor: pointer;
+
+    /* `marginRight: tokens.spacingHorizontalMNudge`, after the `margin: 0` shorthand */
+    @apply me-horizontal-m-nudge;
+
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.root — arg #2.
+   *
+   * The compiled RTL twin swaps only declarations whose two values are equal
+   * (`Eqx8gd`/`B1piin3` are both `-1px`), so this slot has NO value-level flip — logical
+   * properties are exact.
+   */
+  .root {
+    @apply inline-flex relative box-border align-middle min-w-250;
+
+    border-radius: var(--borderRadiusMedium);
+
+    /*
+     * The bottom focus underline, shared with Input, Select and SpinButton. Unlike Combobox,
+     * this component's `max()` floor reads `strokeWidthThick`, so it takes the
+     * `--spacing-thick` form (D4 addendum); the `clip-path` inset stays the literal `2px` the
+     * source uses, because it has to agree with `--borderRadiusMedium`, an unscaled token.
+     */
+    &::after {
+      @apply absolute box-border;
+
+      content: '';
+
+      /* compiled: ltr `left:-1px;right:-1px`, rtl `right:-1px;left:-1px` — equal values */
+      inset-inline: -1px;
+      bottom: -1px;
+
+      /* Use the whole border-radius as the height and only put radii on the bottom
+         corners, otherwise the radius is auto-reduced to fit the available space. */
+      height: max(var(--spacing-thick), var(--borderRadiusMedium));
+      border-end-start-radius: var(--borderRadiusMedium);
+      border-end-end-radius: var(--borderRadiusMedium);
+
+      /* longhands: `:focus-within:active` and the `:has()` rule below each override the
+         color alone */
+      border-bottom-width: var(--spacing-thick);
+      border-bottom-style: solid;
+      border-bottom-color: var(--colorCompoundBrandStroke);
+
+      clip-path: inset(calc(100% - 2px) 0 0 0);
+
+      /* Animation for focus OUT */
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--durationUltraFast);
+
+      /* Curve token used as a delay — reproduced from the compiled output verbatim. */
+      transition-delay: var(--curveAccelerateMid);
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+        transition-delay: 0.01ms;
+      }
+    }
+
+    @variant focus-within {
+      /* windows high contrast mode focus indicator */
+      outline-width: 2px;
+      outline-style: solid;
+      outline-color: transparent;
+
+      /* Animation for focus IN */
+      &::after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--durationNormal);
+        transition-delay: var(--curveDecelerateMid);
+
+        @media screen and (prefers-reduced-motion: reduce) {
+          transition-duration: 0.01ms;
+          transition-delay: 0.01ms;
+        }
+      }
+
+      /* clicking the field again while it is already focused */
+      @variant active {
+        &::after {
+          border-bottom-color: var(--colorCompoundBrandStrokePressed);
+        }
+      }
+    }
+
+    /*
+     * Suppress the focus underline while the CLEAR BUTTON holds focus — the field itself is
+     * not what the user is editing.
+     *
+     * Griffel filed this in the `t` bucket (`@supports`), which sorts after `a`, and the
+     * compiled selector `.f18qfb8s:has(.fui-Dropdown__clearButton:focus)::after` also carries
+     * 0-3-0 against the focus-within rules' 0-2-0 — so it won on both counts. The static is
+     * gone (D16.1); the target is a sub-slot this hook renders itself, so it becomes a plain
+     * module-local class (DECISIONS.md D16.3: own sub-slot → JS slot composition, never a
+     * `:global()` handle). `:has()` takes the specificity of its most specific argument, so
+     * `.root:has(.clear-button:focus)` is still 0-3-0 and still wins by specificity alone —
+     * its position after the focus-within block is belt-and-braces.
+     */
+    @supports selector(:has(*)) {
+      &:has(.clear-button:focus)::after {
+        border-bottom-color: initial;
+        transform: scaleX(0);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * Appearance look classes — arg #3, the `d`-bucket half. The four are mutually exclusive.
+   * Every `border` shorthand is expanded to longhands because args #5/#6/#7 each override a
+   * subset of the colors. `border-*-width` is not a spacing-powered Tailwind family, so
+   * `strokeWidthThin` is referenced through the emitted `--spacing-thin` custom property
+   * (D4 addendum); `border-thin` does not exist.
+   */
+
+  /* from useStyles.outline (the default appearance) */
+  .outline {
+    background-color: var(--colorNeutralBackground1);
+
+    border-top-width: var(--spacing-thin);
+    border-right-width: var(--spacing-thin);
+    border-bottom-width: var(--spacing-thin);
+    border-left-width: var(--spacing-thin);
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: var(--colorNeutralStroke1);
+    border-right-color: var(--colorNeutralStroke1);
+    border-left-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+  }
+
+  /* from useStyles.underline — only the bottom border is drawn; the other three sides keep
+     the initial `border-style: none`, so they render nothing. */
+  .underline {
+    background-color: var(--colorTransparentBackground);
+
+    border-bottom-width: var(--spacing-thin);
+    border-bottom-style: solid;
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+
+    /* corners look strange if rounded */
+    border-radius: 0;
+  }
+
+  /*
+   * from useStyles['filled-lighter'] / ['filled-darker']. NOTE the literal `transparent`
+   * border color — Dropdown's source says `solid transparent` where Combobox's says
+   * `solid ${tokens.colorTransparentStroke}`. Reproduced as written; do not "harmonise" them.
+   */
+  .filled-lighter {
+    background-color: var(--colorNeutralBackground1);
+
+    border-top-width: var(--spacing-thin);
+    border-right-width: var(--spacing-thin);
+    border-bottom-width: var(--spacing-thin);
+    border-left-width: var(--spacing-thin);
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  .filled-darker {
+    background-color: var(--colorNeutralBackground3);
+
+    border-top-width: var(--spacing-thin);
+    border-right-width: var(--spacing-thin);
+    border-bottom-width: var(--spacing-thin);
+    border-left-width: var(--spacing-thin);
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * Block 4a — from useStyles.disabled, arg #7, the last root style argument.
+   *
+   * `data-disabled` mirrors `state.button.disabled`, which the ROOT cannot express natively:
+   * the root is a `<div>` and only the inner `<button>` carries the real `disabled` attribute.
+   */
+  .root {
+    @variant disabled {
+      cursor: not-allowed;
+      background-color: var(--colorTransparentBackground);
+
+      border-top-color: var(--colorNeutralStrokeDisabled);
+      border-right-color: var(--colorNeutralStrokeDisabled);
+      border-bottom-color: var(--colorNeutralStrokeDisabled);
+      border-left-color: var(--colorNeutralStrokeDisabled);
+
+      @variant forced-colors {
+        border-top-color: GrayText;
+        border-right-color: GrayText;
+        border-bottom-color: GrayText;
+        border-left-color: GrayText;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * Block 4b — from useStyles.invalid / .invalidUnderline, args #5/#6, FIRST of their two
+   * selector branches (`:not(:focus-within)`). After `disabled`, before the interactive block —
+   * see INVERSION 3 in the header.
+   */
+  .outline,
+  .filled-lighter,
+  .filled-darker {
+    @variant invalid {
+      @variant not-focus-within {
+        border-top-color: var(--colorPaletteRedBorder2);
+        border-right-color: var(--colorPaletteRedBorder2);
+        border-bottom-color: var(--colorPaletteRedBorder2);
+        border-left-color: var(--colorPaletteRedBorder2);
+      }
+    }
+  }
+
+  .underline {
+    @variant invalid {
+      @variant not-focus-within {
+        border-bottom-color: var(--colorPaletteRedBorder2);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * Block 5 — from useStyles.outlineInteractive, arg #4, Griffel buckets `w`, `h` and `a`,
+   * written in that order. See INVERSION 1 and 2.
+   */
+  .outline {
+    @variant enabled {
+      @variant focus-within {
+        border-top-color: var(--colorNeutralStroke1Pressed);
+        border-right-color: var(--colorNeutralStroke1Pressed);
+        border-left-color: var(--colorNeutralStroke1Pressed);
+        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+      }
+
+      @variant hover {
+        border-top-color: var(--colorNeutralStroke1Hover);
+        border-right-color: var(--colorNeutralStroke1Hover);
+        border-left-color: var(--colorNeutralStroke1Hover);
+        border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+      }
+
+      @variant active {
+        border-top-color: var(--colorNeutralStroke1Pressed);
+        border-right-color: var(--colorNeutralStroke1Pressed);
+        border-left-color: var(--colorNeutralStroke1Pressed);
+        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * Block 6 — useStyles.invalid / .invalidUnderline, SECOND branch, split from block 4b.
+   * The doubled `:hover:not(:focus-within)` term is a SPECIFICITY HACK in the Griffel source
+   * (0-3-0 vs the hover bucket's 0-2-0); `:where()` erases it, so file order after the
+   * interactive block reproduces the same winner.
+   */
+  .outline,
+  .filled-lighter,
+  .filled-darker {
+    @variant invalid {
+      @variant hover {
+        @variant not-focus-within {
+          border-top-color: var(--colorPaletteRedBorder2);
+          border-right-color: var(--colorPaletteRedBorder2);
+          border-bottom-color: var(--colorPaletteRedBorder2);
+          border-left-color: var(--colorPaletteRedBorder2);
+        }
+      }
+    }
+  }
+
+  .underline {
+    @variant invalid {
+      @variant hover {
+        @variant not-focus-within {
+          border-bottom-color: var(--colorPaletteRedBorder2);
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── `button` slot ──────────────────────────────────────────────────────────────────
+   */
+  .root {
+    /* from useStyles.button — arg #2 */
+    & .button {
+      @apply grid items-center box-border w-full justify-between;
+
+      background-color: var(--colorTransparentBackground);
+      border-style: none;
+      color: var(--colorNeutralForeground1);
+      cursor: pointer;
+      font-family: var(--fontFamilyBase);
+      grid-template-columns: [content] 1fr [icon] auto [end];
+
+      /* `columnGap: tokens.spacingHorizontalXXS` */
+      @apply gap-x-horizontal-xxs;
+
+      /* `textAlign: 'left'` is a `[ltr, rtl]` value flip in the compiled atomics
+         (`fsow6f: ["f1o700av","fes3tcz"]`) → the logical keyword */
+      text-align: start;
+
+      @variant focus {
+        outline-style: none;
+      }
+    }
+
+    /*
+     * from useStyles.small / .medium / .large — arg #3: `typographyStyles.caption1` /
+     * `.body1` / `.body2` plus a four-value `padding`. The compiled shorthand is an
+     * `[ltr, rtl]` pair, so it becomes `padding-block` + a logical inline pair. The block
+     * values (3/5/7px) match no spacing step, so the numeric utilities are the sanctioned
+     * fallback; they ride `--base-scale` like everything else.
+     */
+    @variant size-small {
+      & .button {
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase200);
+        font-weight: var(--fontWeightRegular);
+        line-height: var(--lineHeightBase200);
+
+        /* SNudge (6) + XXS (2) = 8px, exactly the S step */
+        @apply py-3 pe-horizontal-s-nudge ps-horizontal-s;
+      }
+    }
+
+    @variant size-medium {
+      & .button {
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase300);
+        font-weight: var(--fontWeightRegular);
+        line-height: var(--lineHeightBase300);
+
+        /* MNudge (10) + XXS (2) = 12px, exactly the M step */
+        @apply py-5 pe-horizontal-m-nudge ps-horizontal-m;
+      }
+    }
+
+    @variant size-large {
+      & .button {
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase400);
+        font-weight: var(--fontWeightRegular);
+        line-height: var(--lineHeightBase400);
+
+        /* `columnGap: spacingHorizontalSNudge` overrides the button's XXS.
+           M (12) + SNudge (6) = 18px matches NO spacing step → numeric fallback. */
+        @apply py-7 pe-horizontal-m ps-18 gap-x-horizontal-s-nudge;
+      }
+    }
+
+    /* from useStyles.placeholder — arg #4, applied while the trigger shows the placeholder */
+    & .placeholder {
+      color: var(--colorNeutralForeground4);
+    }
+
+    /* from useStyles.disabledText — arg #5, the last `button` style argument */
+    @variant disabled {
+      & .button {
+        color: var(--colorNeutralForegroundDisabled);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── `expandIcon` / `clearButton` slots ─────────────────────────────────────────────
+   * Both take `iconStyles.icon` + `iconStyles[size]` + `iconStyles.disabled` + `styles.hidden`,
+   * so one `.icon` class covers both. `clearButton` additionally carries the reset above
+   * (`fui.base`), which every rule here outranks by layer — exactly as Griffel's `d` bucket
+   * outranked its `r` bucket.
+   *
+   * `grid-column-start/end` only bite on the `expandIcon`, which lives inside the `<button>`'s
+   * named grid; the `clearButton` is a flex child of the root and ignores them. That is what
+   * the Griffel version did too — the same class was on both elements.
+   */
+  .root {
+    /* from useIconStyles.icon — arg #2/#3 */
+    & .icon {
+      @apply box-border block;
+
+      color: var(--colorNeutralStrokeAccessible);
+      font-size: var(--fontSizeBase500);
+      grid-column-start: icon;
+      grid-column-end: end;
+    }
+
+    /*
+     * from useIconStyles.small / .medium / .large. `iconSizes` are px literals in
+     * `utils/internalTokens.ts`; `--base-scale` keeps the glyph scaling with the root font
+     * size (D4). `marginLeft` is a `[ltr, rtl]` property flip → `margin-inline-start`.
+     */
+    @variant size-small {
+      & .icon {
+        font-size: calc(16px * var(--base-scale));
+
+        @apply ms-horizontal-xxs;
+      }
+    }
+
+    @variant size-medium {
+      & .icon {
+        font-size: calc(20px * var(--base-scale));
+
+        @apply ms-horizontal-xxs;
+      }
+    }
+
+    @variant size-large {
+      & .icon {
+        font-size: calc(24px * var(--base-scale));
+
+        @apply ms-horizontal-s-nudge;
+      }
+    }
+
+    /* from useIconStyles.disabled — colour only; unlike Combobox this slice sets no cursor */
+    @variant disabled {
+      & .icon {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+
+    /*
+     * from useStyles.hidden — the LAST style argument on both icon slots, so it wins the
+     * `display` tie against `.icon`'s `block`. It hides the expand icon while the clear
+     * button is showing, and the clear button while it is not.
+     */
+    & .hidden {
+      display: none;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * ── `listbox` slot — DECISIONS.md D2 amendment 2 ───────────────────────────────────
+   * The slot's elementType is this package's own `<Listbox>`, whose base styles come from
+   * `useListboxStyles_unstable`. Styling another component's output is `fui.components.l2`,
+   * never l1 — that is what reproduces mergeClasses handing Dropdown's classes to the Listbox
+   * hook as its LAST argument.
+   *
+   * These classes stay FLAT (0-1-0, no `.root` ancestor): the listbox is rendered through a
+   * `<Portal>` unless `inlinePopup` is set, so it is not reliably a descendant of the root.
+   */
+
+  /* from useStyles.listbox */
+  .listbox {
+    @apply box-border;
+
+    box-shadow: var(--shadow16);
+    border-radius: var(--borderRadiusMedium);
+    max-height: 80vh;
+  }
+
+  /* from useStyles.inlineListbox — when rendering inline, the popup surface would otherwise
+     land under relatively positioned siblings such as Input, because it is absolutely
+     positioned. */
+  .inline-listbox {
+    z-index: 1;
+  }
+
+  /* from useStyles.listboxCollapsed — last argument, so it wins the `display` tie */
+  .listbox-collapsed {
+    display: none;
+  }
+}
+
+/*
+ * ── UNLAYERED: the icon glyphs' <svg> display (D2 amendment) ────────────────────────
+ * `@fluentui/react-icons` is and stays a Griffel package (DECISIONS.md D11). Every glyph it
+ * renders carries `.f1w7gpdv { display: inline }` from
+ * `node_modules/@fluentui/react-icons/lib/utils/useIconStyles.styles.js`, injected with NO
+ * `@layer`. In the CSS cascade an unlayered normal author declaration beats EVERY layer, and
+ * that comparison happens before specificity is consulted — so this rule would lose from
+ * inside `fui.components.l1` no matter how specific it is, and the glyph would keep the inline
+ * layout box the Griffel source removed ("the SVG must have display: block for accurate
+ * positioning, otherwise an extra inline space is inserted after the svg element").
+ *
+ * Under Griffel both rules were unlayered and the compiled `.fvc9v3g svg { display: block }`
+ * won at 0-1-1 against `.f1w7gpdv`'s 0-1-0. Unlayered here restores exactly that comparison.
+ *
+ * (Grepped this package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — Dropdown
+ * renders plain `ChevronDownRegular` / `DismissRegular`, never a `bundleIcon()` pair.)
+ */
+.icon svg {
+  display: block;
+}

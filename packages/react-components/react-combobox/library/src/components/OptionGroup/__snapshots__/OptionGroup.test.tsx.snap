@@ -3,7 +3,7 @@
 exports[`OptionGroup renders a default state 1`] = `
 <div>
   <div
-    class="fui-OptionGroup"
+    class="group/fui-option-group"
     role="group"
   >
     Default OptionGroup
@@ -14,13 +14,13 @@ exports[`OptionGroup renders a default state 1`] = `
 exports[`OptionGroup renders with a label 1`] = `
 <div>
   <div
-    aria-labelledby="group-label_r_8_"
-    class="fui-OptionGroup"
+    aria-labelledby="group-label_r_a_"
+    class="group/fui-option-group"
     role="group"
   >
     <span
-      class="fui-OptionGroup__label"
-      id="group-label_r_8_"
+      class=""
+      id="group-label_r_a_"
       role="presentation"
     >
       optgroup label

@@ -6,8 +6,25 @@ import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { dropdownClassNames } from './useDropdownStyles.styles';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import type { DropdownProps } from '@fluentui/react-combobox';
+
+import styles from './Dropdown.module.css';
+
+/*
+ * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+ *
+ * Griffel INJECTED its atomics into jsdom at runtime, so `getComputedStyle` — and with it
+ * `toHaveStyle` and Testing Library's accessibility filter, which hides `display: none`
+ * elements from `*ByRole` queries — could observe declarations that now live in the package's
+ * compiled `dist/styles.css`. Jest maps `*.module.css` to a class-name proxy and injects no
+ * stylesheet, so none of that is visible any more.
+ *
+ * What jest can still assert is the DOM contract: the module class that DECLARES the rule.
+ * The assertions below therefore key on `styles['listbox-collapsed']` / `styles.hidden`
+ * instead of on the computed `display`. Same call react-menu's MenuItem made; the computed
+ * values themselves are covered by the computed-style probe against the emitted stylesheet.
+ */
 
 describe('Dropdown', () => {
   beforeEach(() => {
@@ -18,23 +35,23 @@ describe('Dropdown', () => {
     Component: Dropdown,
     displayName: 'Dropdown',
     primarySlot: 'button',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+    // it was called with the consumer className last; this component now composes with
+    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+    // The guarantee itself is unchanged — clsx puts `state.<slot>.className` last and the
+    // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    //
+    // The `has-static-classnames` options are gone with the statics themselves
+    // (DECISIONS.md D16.1/D16.5); `component-has-group-marker`, a default test, asserts the
+    // contract that actually holds now — `group/fui-dropdown` on the root, never at
+    // `classList[0]` (D16.2/D16.6).
+    disabledTests: ['make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            open: true,
-            // Portal messes with the classNames test, so rendering the listbox inline here
-            inlinePopup: true,
-          },
-          // Classes are defined manually as there is no way to render "expandIcon" and "clearIcon" and the same time
-          expectedClassNames: {
-            root: dropdownClassNames.root,
-            button: dropdownClassNames.button,
-            expandIcon: dropdownClassNames.expandIcon,
-            listbox: dropdownClassNames.listbox,
-          },
-        },
-      ],
       'consistent-callback-args': {
         legacyCallbacks: ['onOpenChange', 'onOptionSelect'],
       },
@@ -67,7 +84,7 @@ describe('Dropdown', () => {
 
     const listbox = result.container.querySelector('[role="listbox"]');
     expect(listbox).not.toBeNull();
-    expect(window.getComputedStyle(listbox!).display).toEqual('none');
+    expect(listbox).toHaveClass(styles['listbox-collapsed']);
   });
 
   it('renders an open listbox', () => {
@@ -746,14 +763,14 @@ describe('Dropdown', () => {
       const dropdown = getByRole('combobox');
       const clearButton = getByLabelText('Clear selection');
 
-      expect(clearButton).not.toHaveStyle({ display: 'none' });
+      expect(clearButton).not.toHaveClass(styles.hidden);
       expect(dropdown).toHaveTextContent('Red');
 
       act(() => {
         fireEvent.click(clearButton);
       });
 
-      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveClass(styles.hidden);
       expect(dropdown).toHaveTextContent('');
     });
 
@@ -767,7 +784,7 @@ describe('Dropdown', () => {
       );
       const clearButton = getByLabelText('Clear selection');
 
-      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveClass(styles.hidden);
     });
 
     it('is not visible when the component is disabled', () => {
@@ -781,7 +798,7 @@ describe('Dropdown', () => {
 
       const clearButton = getByLabelText('Clear selection');
 
-      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveClass(styles.hidden);
     });
   });
   describe('Active item change', () => {

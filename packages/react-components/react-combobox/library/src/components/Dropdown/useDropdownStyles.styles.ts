@@ -1,324 +1,121 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { iconSizes } from '../../utils/internalTokens';
-import type { DropdownSlots, DropdownState } from './Dropdown.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
-  root: 'fui-Dropdown',
-  button: 'fui-Dropdown__button',
-  clearButton: 'fui-Dropdown__clearButton',
-  expandIcon: 'fui-Dropdown__expandIcon',
-  listbox: 'fui-Dropdown__listbox',
+import { clsx } from 'clsx';
+import type { DropdownState } from './Dropdown.types';
+
+import styles from './Dropdown.module.css';
+
+/**
+ * Public identity class for Dropdown.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
+ * `group-*` variant target. The per-slot keys (`button`, `clearButton`, `expandIcon`,
+ * `listbox`) were removed together with the `fui-Dropdown__*` BEM statics
+ * (DECISIONS.md D16.1/D16.5): there is no public class-name handle on component internals.
+ *
+ * The value is a class TOKEN, not a selector — `'.' + dropdownClassNames.root` is invalid CSS,
+ * because the `/` must be escaped in a selector. Use `fuiSelector(dropdownClassNames.root)`
+ * from `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ */
+export const dropdownClassNames: { root: string } = {
+  root: 'group/fui-dropdown',
 };
 
 /**
- * Styles for Dropdown
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * All three live on the ROOT even though most of the rules they drive target the `button` and
+ * icon slots: that is the headless preview's convention (every `data-*` it stamps is on the
+ * root — reports/headless-precedent.md), and it is what lets Dropdown.module.css reach the
+ * inner slots with `& .button` / `& .icon` descendant selectors instead of duplicating the
+ * attributes onto every slot.
+ *
+ * Presence flags are written `flag || undefined`: React omits an attribute whose value is
+ * `undefined`, whereas `false` would render `data-invalid="false"` and still match
+ * `[data-invalid]`.
+ *
+ * `data-disabled` and `data-invalid` mirror `state.button.disabled` / the button's
+ * `aria-invalid`, neither of which the ROOT can express natively — the root is a `<div>` and
+ * only the inner `<button>` carries those. That is precisely the case DECISIONS.md D15.6
+ * reserves mirroring for.
  */
-const useStyles = makeStyles({
-  root: {
-    borderRadius: tokens.borderRadiusMedium,
-    boxSizing: 'border-box',
-    display: 'inline-flex',
-    minWidth: '250px',
-    position: 'relative',
-    verticalAlign: 'middle',
-
-    // windows high contrast mode focus indicator
-    ':focus-within': {
-      outlineWidth: '2px',
-      outlineStyle: 'solid',
-      outlineColor: 'transparent',
-    },
-
-    // bottom focus border, shared with Input, Select, and SpinButton
-    '::after': {
-      boxSizing: 'border-box',
-      content: '""',
-      position: 'absolute',
-      left: '-1px',
-      bottom: '-1px',
-      right: '-1px',
-      height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
-      borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
-      clipPath: 'inset(calc(100% - 2px) 0 0 0)',
-      transform: 'scaleX(0)',
-      transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
-    },
-    ':focus-within::after': {
-      transform: 'scaleX(1)',
-      transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
-    },
-    ':focus-within:active::after': {
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
-    },
-
-    '@supports selector(:has(*))': {
-      [`:has(.${dropdownClassNames.clearButton}:focus)::after`]: {
-        borderBottomColor: 'initial',
-        transform: 'scaleX(0)',
-      },
-    },
-  },
-
-  listbox: {
-    boxSizing: 'border-box',
-    boxShadow: `${tokens.shadow16}`,
-    borderRadius: tokens.borderRadiusMedium,
-    maxHeight: '80vh',
-  },
-
-  listboxCollapsed: {
-    display: 'none',
-  },
-
-  // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
-  // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
-  inlineListbox: {
-    zIndex: 1,
-  },
-
-  button: {
-    alignItems: 'center',
-    backgroundColor: tokens.colorTransparentBackground,
-    border: 'none',
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
-    columnGap: tokens.spacingHorizontalXXS,
-    cursor: 'pointer',
-    display: 'grid',
-    fontFamily: tokens.fontFamilyBase,
-    gridTemplateColumns: '[content] 1fr [icon] auto [end]',
-    justifyContent: 'space-between',
-    textAlign: 'left',
-    width: '100%',
-
-    '&:focus': {
-      outlineStyle: 'none',
-    },
-  },
-
-  placeholder: {
-    color: tokens.colorNeutralForeground4,
-  },
-
-  // size variants
-  small: {
-    ...typographyStyles.caption1,
-    padding: `3px ${
-      tokens.spacingHorizontalSNudge
-    } 3px ${`calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`}`,
-  },
-  medium: {
-    ...typographyStyles.body1,
-    padding: `5px ${
-      tokens.spacingHorizontalMNudge
-    } 5px ${`calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`}`,
-  },
-  large: {
-    columnGap: tokens.spacingHorizontalSNudge,
-    ...typographyStyles.body2,
-    padding: `7px ${
-      tokens.spacingHorizontalM
-    } 7px ${`calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`}`,
-  },
-
-  // appearance variants
-  outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
-  },
-  outlineInteractive: {
-    '&:hover': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-    },
-
-    '&:active': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    },
-
-    '&:focus-within': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    },
-  },
-  underline: {
-    backgroundColor: tokens.colorTransparentBackground,
-    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
-    borderRadius: '0',
-  },
-  'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid transparent`,
-  },
-  'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid transparent`,
-  },
-  invalid: {
-    ':not(:focus-within),:hover:not(:focus-within)': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-    },
-  },
-  invalidUnderline: {
-    ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
-    },
-  },
-  disabled: {
-    cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    '@media (forced-colors: active)': {
-      ...shorthands.borderColor('GrayText'),
-    },
-  },
-
-  disabledText: {
-    color: tokens.colorNeutralForegroundDisabled,
-    cursor: 'not-allowed',
-  },
-
-  hidden: {
-    display: 'none',
-  },
-});
-
-const useIconStyles = makeStyles({
-  icon: {
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
-    display: 'block',
-    fontSize: tokens.fontSizeBase500,
-    gridColumnStart: 'icon',
-    gridColumnEnd: 'end',
-
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
-      display: 'block',
-    },
-  },
-
-  // icon size variants
-  small: {
-    fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
-  },
-  medium: {
-    fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
-  },
-  large: {
-    fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
-  },
-
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-  },
-});
-
-const useBaseClearButtonStyle = makeResetStyles({
-  alignSelf: 'center',
-  backgroundColor: tokens.colorTransparentBackground,
-  border: 'none',
-  cursor: 'pointer',
-  height: 'fit-content',
-  margin: 0,
-  marginRight: tokens.spacingHorizontalMNudge,
-  padding: 0,
-  position: 'relative',
-
-  ...createFocusOutlineStyle(),
-});
+type DropdownRootDataAttributes = {
+  'data-size': DropdownState['size'];
+  'data-disabled'?: true;
+  'data-invalid'?: true;
+};
 
 /**
  * Apply styling to the Dropdown slots based on the state
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
-  const { appearance, open, placeholderVisible, showClearButton, size } = state;
+  const { appearance, open, placeholderVisible, showClearButton } = state;
   const invalid = `${state.button['aria-invalid']}` === 'true';
   const disabled = state.button.disabled;
-  const styles = useStyles();
-  const iconStyles = useIconStyles();
-  const clearButtonStyle = useBaseClearButtonStyle();
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    dropdownClassNames.root,
-    styles.root,
-    styles[appearance],
-    !disabled && appearance === 'outline' && styles.outlineInteractive,
-    invalid && appearance !== 'underline' && styles.invalid,
-    invalid && appearance === 'underline' && styles.invalidUnderline,
-    disabled && styles.disabled,
-    state.root.className,
-  );
+  const root = state.root as DropdownState['root'] & DropdownRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.button.className = mergeClasses(
-    dropdownClassNames.button,
-    styles.button,
-    styles[size],
-    placeholderVisible && styles.placeholder,
-    disabled && styles.disabledText,
-    state.button.className,
-  );
+  root['data-size'] = state.size;
+  root['data-disabled'] = disabled || undefined;
+  root['data-invalid'] = invalid || undefined;
+
+  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
+  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Dropdown*`
+  // BEM statics that used to lead this list are gone (D16.1); the marker is Dropdown's sole
+  // public identity class now.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order and by block order inside
+  // Dropdown.module.css, not by the order of these arguments — see that file's header for the
+  // mapping back to the mergeClasses() argument order this replaces, including the three
+  // inversions.
+  //
+  // The `!disabled &&` guard on `outlineInteractive` is now an `@variant enabled` block inside
+  // `.outline`; `appearance === 'outline' | 'underline'` is the appearance class itself; and
+  // `invalid && appearance !== 'underline'` is `@variant invalid` on the three non-underline
+  // appearance classes.
+  state.root.className = clsx(styles.root, 'group/fui-dropdown', styles[appearance], state.root.className);
+
+  state.button.className = clsx(styles.button, placeholderVisible && styles.placeholder, state.button.className);
 
   if (state.listbox) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.listbox.className = mergeClasses(
-      dropdownClassNames.listbox,
+    // The listbox slot is a `<Listbox>`; these rules sit in `fui.components.l2` so they beat
+    // that component's own `fui.components.l1` rules (DECISIONS.md D2 amendment 2).
+    state.listbox.className = clsx(
       styles.listbox,
-      state.inlinePopup && styles.inlineListbox,
-      !open && styles.listboxCollapsed,
+      state.inlinePopup && styles['inline-listbox'],
+      !open && styles['listbox-collapsed'],
       state.listbox.className,
     );
   }
 
   if (state.expandIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.expandIcon.className = mergeClasses(
-      dropdownClassNames.expandIcon,
-      iconStyles.icon,
-      iconStyles[size],
-      disabled && iconStyles.disabled,
-      showClearButton && styles.hidden,
-      state.expandIcon.className,
-    );
+    state.expandIcon.className = clsx(styles.icon, showClearButton && styles.hidden, state.expandIcon.className);
   }
 
   if (state.clearButton) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.clearButton.className = mergeClasses(
-      dropdownClassNames.clearButton,
-      clearButtonStyle,
-      iconStyles.icon,
-      iconStyles[size],
-      disabled && iconStyles.disabled,
+    // `styles['clear-button']` is the makeResetStyles replacement (`@layer fui.base`) and is
+    // also the class the root's `:has(.clear-button:focus)` rule keys on — an OWN sub-slot,
+    // composed in JS rather than exposed as a global handle (DECISIONS.md D16.3).
+    state.clearButton.className = clsx(
+      styles['clear-button'],
+      styles.icon,
       !showClearButton && styles.hidden,
       state.clearButton.className,
     );

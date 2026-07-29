@@ -1,0 +1,87 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useOptionGroupStyles_unstable.
+ *
+ * `root` slot:
+ *   1  optionGroupClassNames.root   —  → group marker (JS, D16.5)
+ *   2  styles.root                  d  → l1
+ *   3  consumer className           —  → unlayered
+ *
+ * `label` slot:
+ *   1  optionGroupClassNames.label  —  → removed (D16.1: no public handle on internals)
+ *   2  styles.label                 d  → l1
+ *   3  consumer className           —  → unlayered
+ *
+ * One slice per slot, one bucket each, no inversions and nothing order-sensitive.
+ * Every element styled here is OptionGroup's own (`<div>` root + `<div>` label built by
+ * `useOptionGroup_unstable`), so D2 amendment 2 does not apply and no block belongs in
+ * `fui.components.l2`. Grepped for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`:
+ * zero hits — D2 amendment 5 does not apply either.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2 */
+  .root {
+    @apply flex flex-col;
+
+    /* `rowGap: tokens.spacingHorizontalXXS` — the source named the horizontal token for a
+       block-axis property; reproduced verbatim (the axis word names the TOKEN, not the
+       axis it is applied to — `--spacing-*` is axis-agnostic). */
+    @apply gap-y-horizontal-xxs;
+
+    /*
+     * The group separator. `:not(:last-child)` is element-relative, so it survives the
+     * statics removal unchanged. Compiled atomics carry no `[ltr, rtl]` pair for any of
+     * these declarations (the `margin` shorthand's two inline values are equal), so no
+     * `@variant rtl` twin is required.
+     */
+    &:not(:last-child)::after {
+      @apply block;
+
+      content: '';
+
+      /* `borderBottom: strokeWidthThin solid colorNeutralStroke2` expanded to longhands.
+         `border-*-width` is NOT a spacing-powered Tailwind family, so the stroke width is
+         referenced through the emitted `--spacing-thin` custom property, never
+         `var(--strokeWidthThin)` (D4 addendum). */
+      border-bottom-width: var(--spacing-thin);
+      border-bottom-style: solid;
+      border-bottom-color: var(--colorNeutralStroke2);
+
+      @apply pb-horizontal-xs;
+
+      /* `margin: 0 calc(spacingHorizontalXS * -1) spacingVerticalXS` — block-start 0,
+         inline ±XS pulled outward, block-end verticalXS. The block axis never flips, so
+         the physical `mt-`/`mb-` utilities are exact. */
+      @apply mt-vertical-none -mx-horizontal-xs mb-vertical-xs;
+    }
+  }
+
+  /* from useStyles.label — label slot arg #2 */
+  .label {
+    @apply block;
+
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground3);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+
+    /* `padding: spacingHorizontalS spacingHorizontalSNudge` — the source named horizontal
+       tokens on both axes; reproduced verbatim. */
+    @apply py-horizontal-s px-horizontal-s-nudge;
+  }
+}

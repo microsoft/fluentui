@@ -4,20 +4,20 @@ exports[`Listbox renders a default state 1`] = `
 <div>
   <div
     aria-activedescendant="fluent-option_r_0_"
-    class="fui-Listbox"
+    class="group/fui-listbox"
     role="listbox"
     tabindex="0"
   >
     <div
       aria-selected="false"
-      class="fui-Option"
+      class="group/fui-option"
       data-activedescendant=""
       id="fluent-option_r_0_"
       role="option"
     >
       <span
         aria-hidden="true"
-        class="fui-Option__checkIcon"
+        class=""
       >
         <svg
           aria-hidden="true"
@@ -38,13 +38,13 @@ exports[`Listbox renders a default state 1`] = `
     </div>
     <div
       aria-selected="false"
-      class="fui-Option"
+      class="group/fui-option"
       id="fluent-option_r_1_"
       role="option"
     >
       <span
         aria-hidden="true"
-        class="fui-Option__checkIcon"
+        class=""
       >
         <svg
           aria-hidden="true"
@@ -65,13 +65,13 @@ exports[`Listbox renders a default state 1`] = `
     </div>
     <div
       aria-selected="false"
-      class="fui-Option"
+      class="group/fui-option"
       id="fluent-option_r_2_"
       role="option"
     >
       <span
         aria-hidden="true"
-        class="fui-Option__checkIcon"
+        class=""
       >
         <svg
           aria-hidden="true"
@@ -98,20 +98,20 @@ exports[`Listbox renders with a selected option 1`] = `
 <div>
   <div
     aria-activedescendant="fluent-option_r_3_"
-    class="fui-Listbox"
+    class="group/fui-listbox"
     role="listbox"
     tabindex="0"
   >
     <div
       aria-selected="true"
-      class="fui-Option"
+      class="group/fui-option"
       data-activedescendant=""
       id="fluent-option_r_3_"
       role="option"
     >
       <span
         aria-hidden="true"
-        class="fui-Option__checkIcon"
+        class=""
       >
         <svg
           aria-hidden="true"
@@ -132,13 +132,13 @@ exports[`Listbox renders with a selected option 1`] = `
     </div>
     <div
       aria-selected="false"
-      class="fui-Option"
+      class="group/fui-option"
       id="fluent-option_r_4_"
       role="option"
     >
       <span
         aria-hidden="true"
-        class="fui-Option__checkIcon"
+        class=""
       >
         <svg
           aria-hidden="true"
@@ -159,13 +159,13 @@ exports[`Listbox renders with a selected option 1`] = `
     </div>
     <div
       aria-selected="false"
-      class="fui-Option"
+      class="group/fui-option"
       id="fluent-option_r_5_"
       role="option"
     >
       <span
         aria-hidden="true"
-        class="fui-Option__checkIcon"
+        class=""
       >
         <svg
           aria-hidden="true"

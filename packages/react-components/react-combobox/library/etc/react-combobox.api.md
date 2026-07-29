@@ -23,7 +23,6 @@ import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotComponentType } from '@fluentui/react-utilities';
 
 // @public
@@ -68,8 +67,10 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     onActiveDescendantChange: (event: ActiveDescendantChangeEvent) => void;
 };
 
-// @public (undocumented)
-export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
+// @public @deprecated
+export const comboboxClassNames: {
+    root: string;
+};
 
 // @public
 export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appearance' | 'focusVisible' | 'open' | 'registerOption' | 'setActiveOption' | 'setOpen' | 'size'> & {
@@ -119,8 +120,10 @@ export type DropdownBaseHookProps = DistributiveOmit<DropdownProps, 'appearance'
 // @public
 export type DropdownBaseHookState = DistributiveOmit<DropdownState, 'appearance' | 'size'>;
 
-// @public (undocumented)
-export const dropdownClassNames: SlotClassNames<DropdownSlots>;
+// @public @deprecated
+export const dropdownClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type DropdownContextValues = ComboboxBaseContextValues;
@@ -156,8 +159,10 @@ export function isComboboxOptionElement(element: HTMLElement): boolean;
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
 
-// @public (undocumented)
-export const listboxClassNames: SlotClassNames<ListboxSlots>;
+// @public @deprecated
+export const listboxClassNames: {
+    root: string;
+};
 
 // @public
 export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'getOptionById' | 'getOptionsMatchingValue' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
@@ -199,14 +204,18 @@ export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState 
 const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
 
-// @public (undocumented)
-export const optionClassNames: SlotClassNames<OptionSlots>;
+// @public @deprecated
+export const optionClassNames: {
+    root: string;
+};
 
 // @public
 export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
 
-// @public (undocumented)
-export const optionGroupClassNames: SlotClassNames<OptionGroupSlots>;
+// @public @deprecated
+export const optionGroupClassNames: {
+    root: string;
+};
 
 // @public
 export type OptionGroupProps = ComponentProps<Partial<OptionGroupSlots>>;

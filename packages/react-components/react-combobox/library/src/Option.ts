@@ -1,7 +1,7 @@
 export type { OptionProps, OptionSlots, OptionState } from './components/Option/index';
 export {
   Option,
-  optionClassNames,
+  optionClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderOption_unstable,
   useOptionStyles_unstable,
   useOption_unstable,

@@ -3,11 +3,20 @@ import { fireEvent, render } from '@testing-library/react';
 import { Listbox } from './Listbox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 
 describe('Listbox', () => {
   isConformant({
     Component: Listbox,
     displayName: 'Listbox',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` can no longer observe the contract — this component
+    // composes with clsx and never calls mergeClasses. `classname-overrides-win` is its
+    // cascade-native replacement (DECISIONS.md D9).
+    disabledTests: ['make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
     testOptions: {
       'consistent-callback-args': {
         legacyCallbacks: ['onOptionSelect'],

@@ -6,9 +6,26 @@ import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { comboboxClassNames } from './useComboboxStyles.styles';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import type { ComboboxProps } from '@fluentui/react-combobox';
 import { getTabsterAttribute } from 'tabster';
+
+import styles from './Combobox.module.css';
+
+/*
+ * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+ *
+ * Griffel INJECTED its atomics into jsdom at runtime, so `getComputedStyle` — and with it
+ * `toHaveStyle` and Testing Library's accessibility filter, which hides `display: none`
+ * elements from `*ByRole` queries — could observe declarations that now live in the package's
+ * compiled `dist/styles.css`. Jest maps `*.module.css` to a class-name proxy and injects no
+ * stylesheet, so none of that is visible any more.
+ *
+ * What jest can still assert is the DOM contract: the module class that DECLARES the rule.
+ * The assertions below therefore key on `styles['listbox-collapsed']` / `styles.hidden`
+ * instead of on the computed `display`. Same call react-menu's MenuItem made; the computed
+ * values themselves are covered by the computed-style probe against the emitted stylesheet.
+ */
 
 describe('Combobox', () => {
   beforeEach(() => {
@@ -19,23 +36,23 @@ describe('Combobox', () => {
     Component: Combobox,
     displayName: 'Combobox',
     primarySlot: 'input',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+    // it was called with the consumer className last; this component now composes with
+    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+    // The guarantee itself is unchanged — clsx puts `state.<slot>.className` last and the
+    // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    //
+    // The `has-static-classnames` options are gone with the statics themselves
+    // (DECISIONS.md D16.1/D16.5); `component-has-group-marker`, a default test, asserts the
+    // contract that actually holds now — `group/fui-combobox` on the root, never at
+    // `classList[0]` (D16.2/D16.6).
+    disabledTests: ['make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            open: true,
-            // Portal messes with the classNames test, so rendering the listbox inline here
-            inlinePopup: true,
-          },
-          // Classes are defined manually as there is no way to render "expandIcon" and "clearIcon" and the same time
-          expectedClassNames: {
-            root: comboboxClassNames.root,
-            expandIcon: comboboxClassNames.expandIcon,
-            listbox: comboboxClassNames.listbox,
-            input: comboboxClassNames.input,
-          },
-        },
-      ],
       'consistent-callback-args': {
         legacyCallbacks: ['onOpenChange', 'onOptionSelect'],
       },
@@ -79,7 +96,7 @@ describe('Combobox', () => {
 
     const listbox = result.container.querySelector('[role="listbox"]');
     expect(listbox).not.toBeNull();
-    expect(window.getComputedStyle(listbox!).display).toEqual('none');
+    expect(listbox).toHaveClass(styles['listbox-collapsed']);
   });
 
   it('renders the popup under document.body by default', () => {
@@ -193,7 +210,9 @@ describe('Combobox', () => {
 
     userEvent.click(combobox);
 
-    expect(queryByRole('listbox')).toBeNull();
+    // The listbox stays mounted while the trigger keeps focus; `listbox-collapsed` is what
+    // hides it (see the note at the top of this file).
+    expect(queryByRole('listbox')).toHaveClass(styles['listbox-collapsed']);
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
@@ -261,7 +280,9 @@ describe('Combobox', () => {
 
     userEvent.keyboard('{Alt>}{ArrowUp}{/Alt}');
 
-    expect(queryByRole('listbox')).toBeNull();
+    // The listbox stays mounted while the trigger keeps focus; `listbox-collapsed` is what
+    // hides it (see the note at the top of this file).
+    expect(queryByRole('listbox')).toHaveClass(styles['listbox-collapsed']);
   });
 
   it('closes the popup with escape', () => {
@@ -276,7 +297,7 @@ describe('Combobox', () => {
     userEvent.tab();
     userEvent.keyboard('{Escape}');
 
-    expect(queryByRole('listbox')).toBeNull();
+    expect(queryByRole('listbox')).toHaveClass(styles['listbox-collapsed']);
   });
 
   it('fires onOpen callback', () => {
@@ -1080,14 +1101,14 @@ describe('Combobox', () => {
       const combobox = getByRole('combobox');
       const clearButton = getByText('CLEAR BUTTON');
 
-      expect(clearButton).not.toHaveStyle({ display: 'none' });
+      expect(clearButton).not.toHaveClass(styles.hidden);
       expect(combobox).toHaveValue('Red');
 
       act(() => {
         fireEvent.click(clearButton);
       });
 
-      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveClass(styles.hidden);
       expect(combobox).toHaveValue('');
     });
 
@@ -1101,7 +1122,7 @@ describe('Combobox', () => {
       );
       const clearButton = getByText('CLEAR BUTTON');
 
-      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveClass(styles.hidden);
       expect(clearButton).toHaveAttribute('aria-hidden', 'true');
     });
 
@@ -1121,7 +1142,7 @@ describe('Combobox', () => {
       );
       const clearButton = getByText('CLEAR BUTTON');
 
-      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveClass(styles.hidden);
       expect(clearButton).toHaveAttribute('aria-hidden', 'true');
     });
   });
@@ -1201,7 +1222,9 @@ describe('Combobox', () => {
       userEvent.tab();
       userEvent.click(getByTestId('icon'));
 
-      expect(queryByRole('listbox')).toBeNull();
+      // The listbox stays mounted while the trigger keeps focus; `listbox-collapsed` is what
+      // hides it (see the note at the top of this file).
+      expect(queryByRole('listbox')).toHaveClass(styles['listbox-collapsed']);
     });
 
     it('closes the popup on blur/outside click after clicking on the expand icon', () => {
@@ -1224,13 +1247,17 @@ describe('Combobox', () => {
     });
 
     it('allows to pass "null"', () => {
-      const { container } = render(
+      // The `fui-Combobox__expandIcon` static this used to query is gone (DECISIONS.md
+      // D16.1: there is no public class-name handle on component internals). The slot's
+      // `role="button"` + `aria-label="Open"` — set by `useCombobox_unstable` — identify it
+      // just as precisely and survive any future class-name change.
+      const { queryByRole } = render(
         <Combobox expandIcon={null}>
           <Option>Red</Option>
         </Combobox>,
       );
 
-      expect(container.querySelector(`.${comboboxClassNames.expandIcon}`)).not.toBeInTheDocument();
+      expect(queryByRole('button', { name: 'Open' })).not.toBeInTheDocument();
     });
   });
 });

@@ -1,285 +1,65 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { iconSizes } from '../../utils/internalTokens';
-import type { ComboboxSlots, ComboboxState } from './Combobox.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
-  root: 'fui-Combobox',
-  input: 'fui-Combobox__input',
-  expandIcon: 'fui-Combobox__expandIcon',
-  clearIcon: 'fui-Combobox__clearIcon',
-  listbox: 'fui-Combobox__listbox',
-};
+import { clsx } from 'clsx';
+import type { ComboboxState } from './Combobox.types';
 
-// Matches internal heights for Select and Input, but there are no theme variables for these
-const fieldHeights = {
-  small: '24px',
-  medium: '32px',
-  large: '40px',
+import styles from './Combobox.module.css';
+
+/**
+ * Public identity class for Combobox.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
+ * `group-*` variant target. The per-slot keys (`input`, `expandIcon`, `clearIcon`, `listbox`)
+ * were removed together with the `fui-Combobox__*` BEM statics (DECISIONS.md D16.1/D16.5):
+ * there is no public class-name handle on component internals.
+ *
+ * The value is a class TOKEN, not a selector — `'.' + comboboxClassNames.root` is invalid CSS,
+ * because the `/` must be escaped in a selector. Use `fuiSelector(comboboxClassNames.root)`
+ * from `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ */
+export const comboboxClassNames: { root: string } = {
+  root: 'group/fui-combobox',
 };
 
 /**
- * Styles for Combobox
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * All three live on the ROOT even though most of the rules they drive target the `input` and
+ * icon slots: that is the headless preview's convention (every `data-*` it stamps is on the
+ * root — reports/headless-precedent.md), and it is what lets Combobox.module.css reach the
+ * inner slots with `& .input` / `& .icon` descendant selectors instead of duplicating the
+ * attributes onto every slot.
+ *
+ * Presence flags are written `flag || undefined`: React omits an attribute whose value is
+ * `undefined`, whereas `false` would render `data-invalid="false"` and still match
+ * `[data-invalid]`.
+ *
+ * `data-disabled` and `data-invalid` mirror `state.input.disabled` / the input's
+ * `aria-invalid`, neither of which the ROOT can express natively — the root is a `<div>` and
+ * only the inner `<input>` carries those. That is precisely the case DECISIONS.md D15.6
+ * reserves mirroring for.
  */
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'center',
-    borderRadius: tokens.borderRadiusMedium,
-    boxSizing: 'border-box',
-    columnGap: tokens.spacingHorizontalXXS,
-    display: 'inline-grid',
-    gridTemplateColumns: '1fr auto',
-    justifyContent: 'space-between',
-    minWidth: '250px',
-    position: 'relative',
-    verticalAlign: 'middle',
-
-    // windows high contrast mode focus indicator
-    ':focus-within': {
-      outlineWidth: '2px',
-      outlineStyle: 'solid',
-      outlineColor: 'transparent',
-    },
-
-    // bottom focus border, shared with Input, Select, and SpinButton
-    '::after': {
-      boxSizing: 'border-box',
-      content: '""',
-      position: 'absolute',
-      left: '-1px',
-      bottom: '-1px',
-      right: '-1px',
-      height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
-      borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
-      clipPath: 'inset(calc(100% - 2px) 0 0 0)',
-      transform: 'scaleX(0)',
-      transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
-    },
-    ':focus-within::after': {
-      transform: 'scaleX(1)',
-      transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
-    },
-    ':focus-within:active::after': {
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
-    },
-  },
-
-  listbox: {
-    boxShadow: `${tokens.shadow16}`,
-    borderRadius: tokens.borderRadiusMedium,
-    maxHeight: '80vh',
-    boxSizing: 'border-box',
-  },
-
-  listboxCollapsed: {
-    display: 'none',
-  },
-
-  // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
-  // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
-  inlineListbox: {
-    zIndex: 1,
-  },
-
-  // size variants
-  small: {
-    height: fieldHeights.small,
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
-  medium: {
-    height: fieldHeights.medium,
-    paddingRight: tokens.spacingHorizontalMNudge,
-  },
-  large: {
-    columnGap: tokens.spacingHorizontalSNudge,
-    height: fieldHeights.large,
-    paddingRight: tokens.spacingHorizontalM,
-  },
-
-  // appearance variants
-  outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
-  },
-  outlineInteractive: {
-    '&:hover': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-    },
-
-    '&:active': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    },
-
-    '&:focus-within': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    },
-  },
-  underline: {
-    backgroundColor: tokens.colorTransparentBackground,
-    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
-    borderRadius: '0',
-  },
-  'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
-  },
-  'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
-  },
-  invalid: {
-    ':not(:focus-within),:hover:not(:focus-within)': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-    },
-  },
-  invalidUnderline: {
-    ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
-    },
-  },
-
-  disabled: {
-    cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    '@media (forced-colors: active)': {
-      ...shorthands.borderColor('GrayText'),
-    },
-  },
-});
-
-const useInputStyles = makeStyles({
-  input: {
-    alignSelf: 'stretch',
-    backgroundColor: tokens.colorTransparentBackground,
-    border: 'none',
-    color: tokens.colorNeutralForeground1,
-    fontFamily: tokens.fontFamilyBase,
-
-    '&:focus': {
-      outlineStyle: 'none',
-    },
-
-    '&::placeholder': {
-      color: tokens.colorNeutralForeground4,
-      opacity: 1,
-    },
-  },
-
-  // size variants
-  small: {
-    ...typographyStyles.caption1,
-    padding: `0 0 0 ${`calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`}`,
-  },
-  medium: {
-    ...typographyStyles.body1,
-    padding: `0 0 0 ${`calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`}`,
-  },
-  large: {
-    ...typographyStyles.body2,
-    padding: `0 0 0 ${`calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`}`,
-  },
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    backgroundColor: tokens.colorTransparentBackground,
-    cursor: 'not-allowed',
-    '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-  },
-});
-
-const useIconStyles = makeStyles({
-  icon: {
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
-    cursor: 'pointer',
-    display: 'block',
-    fontSize: tokens.fontSizeBase500,
-    // position: relative provides the containing block for the ::after clickable-area extension below.
-    position: 'relative',
-
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
-      display: 'block',
-    },
-
-    // Extend the clickable area to cover the root's right paddingRight "dead zone".
-    // Without this, clicking between the icon and the right border does not trigger the icon's handler.
-    // The negative `right` is overridden per size variant below to match the root's paddingRight.
-    '::after': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
-  },
-  hidden: {
-    display: 'none',
-  },
-  visuallyHidden: {
-    clip: 'rect(0px, 0px, 0px, 0px)',
-    height: '1px',
-    margin: '-1px',
-    overflow: 'hidden',
-    padding: '0px',
-    width: '1px',
-    position: 'absolute',
-  },
-
-  // icon size variants
-  small: {
-    fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
-    '::after': {
-      right: `calc(-1 * ${tokens.spacingHorizontalSNudge})`,
-    },
-  },
-  medium: {
-    fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
-    '::after': {
-      right: `calc(-1 * ${tokens.spacingHorizontalMNudge})`,
-    },
-  },
-  large: {
-    fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
-    '::after': {
-      right: `calc(-1 * ${tokens.spacingHorizontalM})`,
-    },
-  },
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    cursor: 'not-allowed',
-  },
-});
+type ComboboxRootDataAttributes = {
+  'data-size': ComboboxState['size'];
+  'data-disabled'?: true;
+  'data-invalid'?: true;
+};
 
 /**
  * Apply styling to the Combobox slots based on the state
@@ -288,65 +68,58 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   const { appearance, open, size, showClearIcon } = state;
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const disabled = state.input.disabled;
-  const styles = useStyles();
-  const iconStyles = useIconStyles();
-  const inputStyles = useInputStyles();
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    comboboxClassNames.root,
-    styles.root,
-    styles[appearance],
-    styles[size],
-    !disabled && appearance === 'outline' && styles.outlineInteractive,
-    invalid && appearance !== 'underline' && styles.invalid,
-    invalid && appearance === 'underline' && styles.invalidUnderline,
-    disabled && styles.disabled,
-    state.root.className,
-  );
+  const root = state.root as ComboboxState['root'] & ComboboxRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.input.className = mergeClasses(
-    comboboxClassNames.input,
-    inputStyles.input,
-    inputStyles[size],
-    disabled && inputStyles.disabled,
-    state.input.className,
-  );
+  root['data-size'] = size;
+  root['data-disabled'] = disabled || undefined;
+  root['data-invalid'] = invalid || undefined;
+
+  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
+  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Combobox*`
+  // BEM statics that used to lead this list are gone (D16.1); the marker is Combobox's sole
+  // public identity class now, and the only handle by which another module can style an
+  // element from this Combobox's state, because `styles.root` is hashed and unaddressable
+  // from outside this file.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order and by block order inside
+  // Combobox.module.css, not by the order of these arguments — see that file's header for the
+  // mapping back to the mergeClasses() argument order this replaces, including the three
+  // inversions (`outlineInteractive`'s bucket order, its focus-within/hover/active ordering,
+  // and the split `invalid` specificity hack).
+  //
+  // The `!disabled &&` guard on `outlineInteractive` is now an `@variant enabled` block inside
+  // `.outline`; `appearance === 'outline' | 'underline'` is the appearance class itself; and
+  // `invalid && appearance !== 'underline'` is `@variant invalid` on the three non-underline
+  // appearance classes.
+  state.root.className = clsx(styles.root, 'group/fui-combobox', styles[appearance], state.root.className);
+
+  state.input.className = clsx(styles.input, state.input.className);
 
   if (state.listbox) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.listbox.className = mergeClasses(
-      comboboxClassNames.listbox,
+    // The listbox slot is a `<Listbox>`; these rules sit in `fui.components.l2` so they beat
+    // that component's own `fui.components.l1` rules (DECISIONS.md D2 amendment 2).
+    state.listbox.className = clsx(
       styles.listbox,
-      state.inlinePopup && styles.inlineListbox,
-      !open && styles.listboxCollapsed,
+      state.inlinePopup && styles['inline-listbox'],
+      !open && styles['listbox-collapsed'],
       state.listbox.className,
     );
   }
 
+  // Both icon slots take the identical class list but for the trailing state class, the way
+  // mergeClasses handed them the identical atomics — one `.icon` class covers both.
   if (state.expandIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.expandIcon.className = mergeClasses(
-      comboboxClassNames.expandIcon,
-      iconStyles.icon,
-      iconStyles[size],
-      disabled && iconStyles.disabled,
-      showClearIcon && iconStyles.visuallyHidden,
+    state.expandIcon.className = clsx(
+      styles.icon,
+      showClearIcon && styles['visually-hidden'],
       state.expandIcon.className,
     );
   }
 
   if (state.clearIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.clearIcon.className = mergeClasses(
-      comboboxClassNames.clearIcon,
-      iconStyles.icon,
-      iconStyles[size],
-      disabled && iconStyles.disabled,
-      !showClearIcon && iconStyles.hidden,
-      state.clearIcon.className,
-    );
+    state.clearIcon.className = clsx(styles.icon, !showClearIcon && styles.hidden, state.clearIcon.className);
   }
 
   return state;

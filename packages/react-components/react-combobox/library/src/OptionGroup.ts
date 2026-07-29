@@ -1,7 +1,7 @@
 export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './components/OptionGroup/index';
 export {
   OptionGroup,
-  optionGroupClassNames,
+  optionGroupClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderOptionGroup_unstable,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
