@@ -1,0 +1,208 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useMenuItemSwitchStyles_unstable, not source declaration order.
+ *
+ * `root` slot (= MenuItem's root)
+ *   1  menuItemSwitchClassNames.root                  → REMOVED (D16.1); only the
+ *                                                       `group/fui-menu-item-switch` marker
+ *                                                       remains, and it is not `classList[0]`
+ *                                                       because `useMenuItemStyles_unstable`
+ *                                                       runs afterwards and prepends its own
+ *                                                       unconditional hashed `.root`
+ *   2  consumer className                             → unlayered
+ *
+ * `switchIndicator` slot (MenuItemSwitch's OWN element)
+ *   1  menuItemSwitchClassNames.switchIndicator       → REMOVED (D16.1)
+ *   2  useSwitchIndicatorBaseClassName  (makeReset)   → fui.base           .switch-indicator
+ *   3  checked && useSwitchIndicatorStyles.checked    → fui.components.l1  .switch-indicator-checked
+ *   4  consumer className                             → unlayered
+ *   5  multiline && useMultilineStyles.switch         → fui.components.l1  .switch-indicator-multiline
+ *
+ * The `icon` / `content` / `secondaryContent` / `subText` assignments are GONE: each one
+ * only ever carried this component's BEM static, so after D16.1 what was left was
+ * `clsx(state.x.className)` — an identity on the consumer's own string, i.e. dead code
+ * implying the hook styles a slot it does not (CONVERSION_GUIDE, "known special cases").
+ * MenuItem's hook styles those slots.
+ *
+ * ── ALTITUDE: fui.base + l1, because the indicator is this component's OWN slot ──────
+ * MenuItemSwitch adds nothing to any slot MenuItem's hook styles (its root contribution is
+ * the identity marker alone, which carries no declarations), so no l2 block is needed here.
+ * Contrast MenuItemLink.module.css, which does decorate the shared root and is therefore l2.
+ *
+ * ── Reaching the thumb (DECISIONS.md D16.3 — mechanism M2) ──────────────────────────
+ * `.circle-filled` is a module local, applied by `useMenuItemSwitch.tsx` through the
+ * re-pointed `circleFilledClassName` export. That element is created BY THIS PACKAGE
+ * (`state.switchIndicator.children ??= <CircleFilled className={circleFilledClassName} />`),
+ * so the class is composed in JS rather than exposed as a public handle — the old
+ * `fui-MenuItemSwitch__switchIndicator__circleFilled` string is gone with every other
+ * `fui-` static (D16.1). A consumer who supplies their own `switchIndicator.children` never
+ * matched the old selector either, so nothing changes for them.
+ *
+ * ── No unlayered block ──────────────────────────────────────────────────────────────
+ * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule exists in this module, so
+ * nothing here contends with @fluentui/react-icons' unlayered atomics (D2 amendment 5). The
+ * `<CircleFilled />` thumb is a single icon, not a `bundleIcon()` pair.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Two `[ltr, rtl]` pairs in the compiled atomics:
+ *   reset    `margin-right` → `margin-left`, same value  → PROPERTY flip → `me-horizontal-xs`
+ *   checked  `translateX(20px)` → `translateX(-20px)`    → VALUE flip → explicit `@variant rtl`
+ *
+ * ── Geometry / spacing (DECISIONS.md D4 + amendment) ────────────────────────────────
+ * Track/thumb geometry is computed in the source from `trackWidth: 40`, `trackHeight: 20`,
+ * `spaceBetweenThumbAndTrack: 2` and `thumbSize = 20 - 2 = 18`; the thumb travel is
+ * `40 - 18 - 2 = 20`. Those are px literals, so they ride `--base-scale`: numeric utilities
+ * where one exists (`h-20`, `w-40`), `calc(<n>px * var(--base-scale))` inside `font-size` and
+ * `translateX()` where none does. `spacingHorizontalXS` takes the named utility;
+ * `strokeWidthThin` becomes `var(--spacing-thin)` — the raw token var() is the one authoring
+ * form that does NOT scale with `--base-scale` and is forbidden in modules (D4 addendum).
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/MenuItemSwitch/useMenuItemSwitchStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useSwitchIndicatorBaseClassName (makeResetStyles) */
+  .switch-indicator {
+    @apply box-border h-20 w-40 shrink-0 me-horizontal-xs;
+
+    border-radius: var(--borderRadiusCircular);
+    border: var(--spacing-thin) solid var(--colorNeutralStrokeAccessible);
+    line-height: 0;
+    fill: currentColor;
+    font-size: calc(18px * var(--base-scale));
+
+    transition-duration: var(--durationNormal);
+    transition-timing-function: var(--curveEasyEase);
+    /*
+     * Longhands only. `background, border, color` is not 3 properties: per CSS Transitions
+     * L1 a shorthand in `transition-property` expands to every longhand it covers, so that
+     * list is 21 (8 `background-*` + 12 `border-*` + 1). Only these 6 ever change — the
+     * `.switch-indicator-checked` block and the `:hover` / `:hover:active` rules below set
+     * `background-color` / the four `border-*-color` longhands / `color` and nothing else,
+     * and the reset's `border` shorthand is never re-declared.
+     *
+     * Safe to expand here because `transition-duration` and `transition-timing-function` are
+     * SINGLE-valued, so they apply to every entry — no positional-list realignment.
+     * Same shape as react-switch's indicator; see reports/transition-audit.md §2.3.
+     */
+    transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
+      color;
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition-duration: 0.01ms;
+    }
+
+    color: var(--colorNeutralStrokeAccessible);
+
+    @variant hover {
+      color: var(--colorNeutralStrokeAccessibleHover);
+      border-color: var(--colorNeutralStrokeAccessibleHover);
+    }
+
+    /*
+     * `:hover:active` — the selector the Griffel source authored verbatim. NOT the shared
+     * `hover-active` variant (Button's `:hover:active, :active:focus-visible` compound).
+     * Written AFTER the `hover` block: `:where()` flattens both to the same specificity, so
+     * file position is the only tiebreak and the narrower condition has to come later.
+     */
+    @variant hover {
+      @variant active {
+        color: var(--colorNeutralStrokeAccessiblePressed);
+        border-color: var(--colorNeutralStrokeAccessiblePressed);
+      }
+    }
+
+    /* the thumb — `<CircleFilled />` by default, see "Reaching the thumb" in the header */
+    & .circle-filled {
+      transition-duration: var(--durationNormal);
+      transition-timing-function: var(--curveEasyEase);
+      transition-property: transform;
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * Identity-only local. `.circle-filled` carries no declarations of its own — every rule
+   * that targets it is scoped under `.switch-indicator` above — but it must exist in the
+   * exported class map, because `circleFilledClassName`
+   * (useMenuItemSwitchStyles.styles.ts) is what puts the class on the thumb element.
+   *
+   * NOT written as a literally empty rule: `@tailwindcss/postcss` runs BEFORE
+   * `postcss-modules` and Tailwind v4 prunes every declaration-less rule, so `.circle-filled {}`
+   * would be gone before CSS Modules ever saw it. A custom property set to `initial` is
+   * guaranteed-invalid, so it survives the prune, renders nothing, and any
+   * `var(--fui-menu-item-switch-thumb-identity, X)` still resolves to `X`. Same shape as
+   * react-breadcrumb's and react-accordion's identity locals (DECISIONS.md D16.2).
+   */
+  .circle-filled {
+    --fui-menu-item-switch-thumb-identity: initial;
+  }
+
+  /* from useSwitchIndicatorStyles.checked — switchIndicator arg #3 */
+  .switch-indicator-checked {
+    & .circle-filled {
+      transform: translateX(calc(20px * var(--base-scale)));
+    }
+
+    /* value-level RTL twin of the thumb travel */
+    @variant rtl {
+      & .circle-filled {
+        transform: translateX(calc(-20px * var(--base-scale)));
+      }
+    }
+
+    background-color: var(--colorCompoundBrandBackground);
+    color: var(--colorNeutralForegroundInverted);
+
+    /* `shorthands.borderColor(...)` expanded to the four longhands it compiled to */
+    border-top-color: var(--colorTransparentStroke);
+    border-right-color: var(--colorTransparentStroke);
+    border-bottom-color: var(--colorTransparentStroke);
+    border-left-color: var(--colorTransparentStroke);
+
+    @variant hover {
+      color: var(--colorNeutralForegroundInverted);
+      background-color: var(--colorCompoundBrandBackgroundHover);
+      border-top-color: var(--colorTransparentStrokeInteractive);
+      border-right-color: var(--colorTransparentStrokeInteractive);
+      border-bottom-color: var(--colorTransparentStrokeInteractive);
+      border-left-color: var(--colorTransparentStrokeInteractive);
+    }
+
+    @variant hover {
+      @variant active {
+        color: var(--colorNeutralForegroundInverted);
+        background-color: var(--colorCompoundBrandBackgroundPressed);
+        border-top-color: var(--colorTransparentStrokeInteractive);
+        border-right-color: var(--colorTransparentStrokeInteractive);
+        border-bottom-color: var(--colorTransparentStrokeInteractive);
+        border-left-color: var(--colorTransparentStrokeInteractive);
+      }
+    }
+  }
+
+  /* from useMultilineStyles.switch — switchIndicator arg #5 */
+  .switch-indicator-multiline {
+    @apply self-center;
+  }
+}

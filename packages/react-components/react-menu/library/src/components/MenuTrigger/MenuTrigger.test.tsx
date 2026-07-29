@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { MenuTrigger } from './MenuTrigger';
 import { createEvent, fireEvent, render } from '@testing-library/react';
+import { COMPONENT_HAS_GROUP_MARKER_TEST_NAME } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { mockUseMenuContext } from '../../testing/mockUseMenuContext';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
@@ -18,6 +19,10 @@ describe('MenuTrigger', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classnames-object',
+      // …and therefore stamps no Tailwind named-group marker either. `component-has-group-marker`
+      // is a default test since DECISIONS.md D16.6; a component with no DOM element of its own
+      // has nothing to stamp it on (Griffel → Tailwind migration).
+      COMPONENT_HAS_GROUP_MARKER_TEST_NAME,
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
     ],

@@ -1,0 +1,47 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * MenuGroup has no styles: its Griffel hook only ever applied `menuGroupClassNames.root`
+ * (there was no `makeStyles` call in the file at all), and D16.1 removes that static.
+ *
+ * `root` slot
+ *   1 menuGroupClassNames.root → REMOVED (D16.1)
+ *   2 consumer className       → unlayered (always wins)
+ *
+ * This is the "root with no unconditional module class" case (CONVERSION_GUIDE §3b,
+ * DECISIONS.md D16.2 — the same shape as Accordion, AccordionItem, Breadcrumb,
+ * MessageBarGroup, CounterBadge and Skeleton). Nothing else prepends a class to this root,
+ * so without the identity-only local below the `group/fui-menu-group` marker would land at
+ * `classList[0]`, where nwsapi's jsdom `:scope` polyfill splices the `/` into an invalid
+ * selector and every `:scope` query against the element throws at render time.
+ */
+
+/*
+ * WHY IT IS NOT A LITERALLY EMPTY RULE. `@tailwindcss/postcss` runs BEFORE `postcss-modules`
+ * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
+ * every declaration-less rule, so `.root {}` would never reach the class map and
+ * `styles.root` would be `undefined` — silently putting the marker back at index 0.
+ * Re-measured on Tailwind v4.3.3 during this conversion: the empty form emitted
+ * `const classes = {}` and left a dangling, block-less `@layer fui.components.l1` in
+ * `dist/styles.css`. `--fui-menu-group-identity: initial` is the minimal body that survives:
+ * a custom property set to `initial` is guaranteed-invalid, so it renders nothing and any
+ * `var(--fui-menu-group-identity, X)` still resolves to `X`. Same shape as react-breadcrumb's
+ * and react-accordion's identity locals.
+ */
+@layer fui.components.l1 {
+  .root {
+    --fui-menu-group-identity: initial;
+  }
+}

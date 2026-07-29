@@ -19,7 +19,6 @@ import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
@@ -62,8 +61,10 @@ export type MenuContextValues = {
 // @public
 export const MenuDivider: ForwardRefComponent<MenuDividerProps>;
 
-// @public (undocumented)
-export const menuDividerClassNames: SlotClassNames<MenuDividerSlots>;
+// @public @deprecated
+export const menuDividerClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
@@ -79,8 +80,10 @@ export type MenuDividerState = ComponentState<MenuDividerSlots>;
 // @public
 export const MenuGroup: ForwardRefComponent<MenuGroupProps>;
 
-// @public (undocumented)
-export const menuGroupClassNames: SlotClassNames<MenuGroupSlots>;
+// @public @deprecated
+export const menuGroupClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const MenuGroupContextProvider: React_2.Provider<MenuGroupContextValue>;
@@ -98,8 +101,10 @@ export type MenuGroupContextValues = {
 // @public
 export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps>;
 
-// @public (undocumented)
-export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots>;
+// @public @deprecated
+export const menuGroupHeaderClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
@@ -131,8 +136,10 @@ export const MenuItem: ForwardRefComponent<MenuItemProps>;
 // @public
 export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
 
-// @public (undocumented)
-export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
+// @public @deprecated
+export const menuItemCheckboxClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
@@ -140,14 +147,18 @@ export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
 // @public (undocumented)
 export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
 
-// @public (undocumented)
-export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
+// @public @deprecated
+export const menuItemClassNames: {
+    root: string;
+};
 
 // @public
 export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps>;
 
-// @public (undocumented)
-export const menuItemLinkClassNames: SlotClassNames<MenuItemLinkSlots>;
+// @public @deprecated
+export const menuItemLinkClassNames: {
+    root: string;
+};
 
 // @public
 export type MenuItemLinkProps = ComponentProps<MenuItemLinkSlots> & Pick<MenuItemProps, 'disabled'> & {
@@ -179,8 +190,10 @@ export type MenuItemRadioBaseProps = MenuItemRadioProps;
 // @public
 export type MenuItemRadioBaseState = MenuItemRadioState;
 
-// @public (undocumented)
-export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
+// @public @deprecated
+export const menuItemRadioClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuItemRadioProps = MenuItemProps & MenuItemSelectableProps;
@@ -218,8 +231,10 @@ export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuIt
 // @public (undocumented)
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
 
-// @public (undocumented)
-export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots>;
+// @public @deprecated
+export const menuItemSwitchClassNames: {
+    root: string;
+};
 
 // @public
 export type MenuItemSwitchProps = ComponentProps<MenuItemSwitchSlots> & Pick<MenuItemCheckboxProps, 'disabled' | 'persistOnClick' | 'name' | 'value'>;
@@ -235,8 +250,10 @@ export type MenuItemSwitchState = ComponentState<MenuItemSwitchSlots> & MenuItem
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
 
-// @public (undocumented)
-export const menuListClassNames: SlotClassNames<MenuListSlots>;
+// @public @deprecated
+export const menuListClassNames: {
+    root: string;
+};
 
 // @public
 export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIcons' | 'hasCheckmarks'> & {
@@ -336,8 +353,10 @@ export type MenuOpenEvents = MenuOpenEvent;
 // @public
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
 
-// @public (undocumented)
-export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots>;
+// @public @deprecated
+export const menuPopoverClassNames: {
+    root: string;
+};
 
 // @public
 export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
@@ -379,8 +398,10 @@ export type MenuSlots = {
 // @public
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
 
-// @public (undocumented)
-export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots>;
+// @public @deprecated
+export const menuSplitGroupClassNames: {
+    root: string;
+};
 
 // @public
 export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots>;

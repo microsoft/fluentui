@@ -2,12 +2,12 @@
 
 exports[`MenuItem renders a default state 1`] = `
 <div
-  class="fui-MenuItem"
+  class="group/fui-menu-item"
   role="menuitem"
   tabindex="0"
 >
   <span
-    class="fui-MenuItem__content"
+    class=""
   >
     Default MenuItem
   </span>

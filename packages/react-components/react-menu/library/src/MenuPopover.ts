@@ -1,7 +1,7 @@
 export type { MenuPopoverProps, MenuPopoverSlots, MenuPopoverState } from './components/MenuPopover/index';
 export {
   MenuPopover,
-  menuPopoverClassNames,
+  menuPopoverClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuPopover_unstable,
   useMenuPopoverBase_unstable,
   useMenuPopoverStyles_unstable,

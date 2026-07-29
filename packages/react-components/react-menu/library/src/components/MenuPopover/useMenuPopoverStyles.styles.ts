@@ -1,37 +1,50 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { mergeClasses, makeStyles } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {
-  root: 'fui-MenuPopover',
+import { clsx } from 'clsx';
+import type { MenuPopoverState } from './MenuPopover.types';
+
+import styles from './MenuPopover.module.css';
+
+/**
+ * Public identity class for MenuPopover.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target.
+ *
+ * `'.' + menuPopoverClassNames.root` is an invalid *selector* — the `/` terminates the class
+ * name. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const menuPopoverClassNames: { root: string } = {
+  root: 'group/fui-menu-popover',
 };
-
-const useStyles = makeStyles({
-  root: {
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
-    boxSizing: 'border-box',
-    minWidth: '138px',
-    maxWidth: '300px',
-    overflowX: 'hidden',
-    width: 'max-content',
-    boxShadow: `${tokens.shadow16}`,
-    padding: '4px',
-    border: `1px solid ${tokens.colorTransparentStroke}`,
-    ...typographyStyles.body1,
-  },
-});
 
 /**
  * Apply styling to the Menu slots based on the state
  */
 export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopoverState => {
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(menuPopoverClassNames.root, styles.root, state.root.className);
+  // Unconditional module class FIRST, then the named group marker, consumer className last
+  // (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's `:scope`
+  // polyfill throws on it under jsdom (DECISIONS.md D15.1). The BEM static that used to hold
+  // that position is gone (DECISIONS.md D16.1).
+  //
+  // This slot is PORTALLED and positioned by @fluentui/react-positioning; its classes still
+  // arrive through this hook exactly like any other slot, and the package's compiled
+  // `dist/styles.css` is document-level so it reaches the portal wherever it mounts.
+  state.root.className = clsx(styles.root, 'group/fui-menu-popover', state.root.className);
   return state;
 };

@@ -1,0 +1,124 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useMenuSplitGroupStyles_unstable, not source declaration order.
+ *
+ * `root` slot
+ *   1 menuSplitGroupClassNames.root → REMOVED (D16.1); `.root` is now the leading token,
+ *                                     followed by the `group/fui-menu-split-group` marker
+ *   2 useStyles.root                → SPLIT by altitude:
+ *                                       `display: flex`  → fui.components.l1  (own element)
+ *                                       the `> MenuItem` → fui.components.l2  (see below)
+ *   3 consumer className            → unlayered (always wins)
+ *
+ * ── ALTITUDE: the child rules are l2, not l1 (DECISIONS.md D2 amendment 2) ──────────
+ * Everything under `& >` styles a MenuItem ROOT, whose base rules come from
+ * `useMenuItemStyles_unstable` (`fui.base` + `fui.components.l1`). Anything a component
+ * applies over another component's hook output belongs in `fui.components.l2` — in l1 the
+ * winner would be decided by stylesheet load order between MenuItem.module.css and this
+ * file. Load-bearing here, not bookkeeping: every one of these declarations exists to
+ * OVERRIDE a MenuItem rule (`border-radius`, `padding-inline-start`, `flex-shrink`), which
+ * is precisely what Griffel's `d`-bucket-over-`r`-bucket ordering did.
+ *
+ * ── Reaching the children (DECISIONS.md D16.3 — mechanism M1) ──────────────────────
+ * The selectors used to key on `.fui-MenuItem`. MenuSplitGroup does NOT render its items —
+ * the consumer composes them as children — so this hook never holds their slot objects and
+ * JS slot composition (M2) is unavailable. That is exactly the case D16.3 resolves with the
+ * group marker: `:global(.group\/fui-menu-item)`. It is a class-for-class substitution, so
+ * specificity is preserved (0,2,0 before and after) and `:nth-of-type()` is element-relative
+ * and unaffected.
+ *
+ * The substitution keeps the SAME match set: every menu item variant routes through
+ * `useMenuItemStyles_unstable`, so MenuItemLink / MenuItemCheckbox / MenuItemRadio /
+ * MenuItemSwitch all carry `group/fui-menu-item` alongside their own marker — precisely how
+ * they all carried `fui-MenuItem` before (see useMenuItemStyles.styles.ts).
+ *
+ * `scripts/css-modules/globalize-group-markers.js` keeps the marker segment out of
+ * CSS-Modules hashing; the explicit `:global()` written here is idempotent with it.
+ *
+ * ── `data-multiline` ────────────────────────────────────────────────────────────────
+ * Set imperatively on this root by `useMenuSplitGroup.ts` (`toggleAttribute`) when a child
+ * MenuItem reports multiline layout; the constant lives in the styles file as
+ * `menuSplitGroupMultilineAttr`. Read here through the shared `multiline` custom variant
+ * (react-tailwind-theme/css/variants.css) rather than a hand-written attribute selector, so
+ * the catalog stays the single definition of each selector. The compiled Griffel selector
+ * put the attribute on the same element as the class (`.root[data-multiline] > …`), and the
+ * `&:where([data-multiline])` variant reproduces that compound exactly.
+ *
+ * ── No unlayered block ──────────────────────────────────────────────────────────────
+ * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule here (D2 amendment 5).
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Three `[ltr, rtl]` PROPERTY flips in the compiled atomics, all covered by logical
+ * properties: `border-top-left-radius` → `border-start-start-radius`,
+ * `border-bottom-left-radius` → `border-end-start-radius`, `padding-left` →
+ * `padding-inline-start`. No value-level flip, so no `@variant rtl` twin.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/MenuSplitGroup/useMenuSplitGroupStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — the one declaration that styles MenuSplitGroup's own element */
+  .root {
+    @apply flex;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.root — the `> MenuItem` halves. Block order follows the compiled `d`
+   * bucket, which is the source's declaration order; no two of these rules set the same
+   * property, so the order is inert, but it is preserved so the diff against the Griffel
+   * file stays readable.
+   */
+  .root {
+    @variant multiline {
+      & > :global(.group\/fui-menu-item):nth-of-type(2) {
+        @apply self-center;
+      }
+    }
+
+    & > :global(.group\/fui-menu-item):nth-of-type(1) {
+      /*
+       * `flex: 1` expanded to its three longhands (cookbook §2). The expansion has to be
+       * COMPLETE: MenuItem's own reset sets `flex-shrink: 0`, and `flex: 1` resets it to 1.
+       * Writing `flex-grow: 1` alone would silently leave the item unshrinkable.
+       */
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0%;
+    }
+
+    & > :global(.group\/fui-menu-item):nth-of-type(2) {
+      /* literal `0`, not `ps-horizontal-none`: the Griffel source wrote `paddingLeft: 0`,
+         and zero has nothing for `--base-scale` to scale. */
+      padding-inline-start: 0;
+
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+
+      &::before {
+        /* `strokeWidthThin` on a `width`: that IS a spacing-powered Tailwind family, so it
+           takes the utility rather than a `var(--spacing-thin)` reference (D4 addendum). */
+        @apply w-thin h-20;
+
+        content: '';
+        background-color: var(--colorNeutralStroke1);
+      }
+    }
+  }
+}

@@ -28,7 +28,7 @@ export type {
 } from './Menu';
 export {
   MenuDivider,
-  menuDividerClassNames,
+  menuDividerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuDivider_unstable,
   useMenuDividerStyles_unstable,
   useMenuDivider_unstable,
@@ -36,7 +36,7 @@ export {
 export type { MenuDividerProps, MenuDividerSlots, MenuDividerState } from './MenuDivider';
 export {
   MenuGroup,
-  menuGroupClassNames,
+  menuGroupClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGroup_unstable,
   useMenuGroupContextValues_unstable,
   useMenuGroupStyles_unstable,
@@ -45,7 +45,7 @@ export {
 export type { MenuGroupContextValues, MenuGroupProps, MenuGroupSlots, MenuGroupState } from './MenuGroup';
 export {
   MenuGroupHeader,
-  menuGroupHeaderClassNames,
+  menuGroupHeaderClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGroupHeader_unstable,
   useMenuGroupHeaderStyles_unstable,
   useMenuGroupHeader_unstable,
@@ -53,7 +53,7 @@ export {
 export type { MenuGroupHeaderProps, MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader';
 export {
   MenuItem,
-  menuItemClassNames,
+  menuItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItem_unstable,
   useMenuItemBase_unstable,
   useMenuItemStyles_unstable,
@@ -62,7 +62,7 @@ export {
 export type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem';
 export {
   MenuItemCheckbox,
-  menuItemCheckboxClassNames,
+  menuItemCheckboxClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItemCheckbox_unstable,
   useMenuItemCheckboxBase_unstable,
   useMenuItemCheckboxStyles_unstable,
@@ -71,7 +71,7 @@ export {
 export type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox';
 export {
   MenuItemRadio,
-  menuItemRadioClassNames,
+  menuItemRadioClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItemRadio_unstable,
   useMenuItemRadioBase_unstable,
   useMenuItemRadioStyles_unstable,
@@ -85,7 +85,7 @@ export type {
 } from './MenuItemRadio';
 export {
   MenuList,
-  menuListClassNames,
+  menuListClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuList_unstable,
   useMenuListBase_unstable,
   useMenuListContextValues_unstable,
@@ -105,7 +105,7 @@ export type {
 } from './MenuList';
 export {
   MenuPopover,
-  menuPopoverClassNames,
+  menuPopoverClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuPopover_unstable,
   useMenuPopoverBase_unstable,
   useMenuPopoverStyles_unstable,
@@ -114,7 +114,7 @@ export {
 export type { MenuPopoverProps, MenuPopoverSlots, MenuPopoverState } from './MenuPopover';
 export {
   MenuSplitGroup,
-  menuSplitGroupClassNames,
+  menuSplitGroupClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuSplitGroup_unstable,
   useMenuSplitGroupStyles_unstable,
   useMenuSplitGroup_unstable,
@@ -133,7 +133,7 @@ export type { MenuItemSelectableProps, MenuItemSelectableState, SelectableHandle
 
 export {
   MenuItemLink,
-  menuItemLinkClassNames,
+  menuItemLinkClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItemLink_unstable,
   useMenuItemLinkBase_unstable,
   useMenuItemLinkStyles_unstable,
@@ -144,7 +144,7 @@ export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './
 export { MENU_ENTER_EVENT, dispatchMenuEnterEvent, useOnMenuMouseEnter } from './utils';
 export {
   MenuItemSwitch,
-  menuItemSwitchClassNames,
+  menuItemSwitchClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItemSwitch_unstable,
   useMenuItemSwitchBase_unstable,
   useMenuItemSwitchStyles_unstable,

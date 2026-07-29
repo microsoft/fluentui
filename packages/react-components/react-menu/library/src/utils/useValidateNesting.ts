@@ -5,6 +5,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 
 import type { MenuContextValue } from '../contexts/menuContext';
 import { useMenuContext_unstable } from '../contexts/menuContext';
+import { menuListClassNames } from '../components/MenuList/useMenuListStyles.styles';
 
 type NestingComponentName = 'MenuList' | 'MenuItem' | 'MenuItemCheckbox' | 'MenuItemRadio';
 
@@ -23,7 +24,16 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
       let ancestorComponentName = '';
       do {
         ancestor = ancestor?.parentElement ?? null;
-        if (ancestor?.classList.contains('fui-MenuList')) {
+        // `menuListClassNames.root` is the group marker after DECISIONS.md D16.1/D16.5.
+        // `classList.contains` takes a class TOKEN, so the `/` needs no escaping (only a
+        // SELECTOR would — that is what `fuiSelector()` is for).
+        //
+        // The `fui-MenuGrid*` literals below are @fluentui/react-menu-grid-preview's statics,
+        // NOT this package's: that package is `needs-conversion` in the migration ledger and
+        // still renders them. They stay verbatim until it converts — the same
+        // reach-into-an-unconverted-package exception the `:global(.fui-Icon-*)` rules take.
+        // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+        if (ancestor?.classList.contains(menuListClassNames.root)) {
           break;
         } else if (ancestor?.classList.contains('fui-MenuGrid')) {
           ancestorComponentName = 'MenuGrid';

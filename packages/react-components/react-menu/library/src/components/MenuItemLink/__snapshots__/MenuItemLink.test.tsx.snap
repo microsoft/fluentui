@@ -3,12 +3,12 @@
 exports[`MenuItemLink renders a default state 1`] = `
 <div>
   <a
-    class="fui-MenuItemLink fui-MenuItem"
+    class="group/fui-menu-item-link group/fui-menu-item"
     href="#"
     role="menuitem"
   >
     <span
-      class="fui-MenuItemLink__content fui-MenuItem__content"
+      class=""
     >
       Default MenuItemLink
     </span>

@@ -1,7 +1,7 @@
 export type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem/index';
 export {
   MenuItem,
-  menuItemClassNames,
+  menuItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItem_unstable,
   useMenuItemStyles_unstable,
   useMenuItem_unstable,
@@ -18,7 +18,7 @@ export type {
 } from './MenuList/index';
 export {
   MenuList,
-  menuListClassNames,
+  menuListClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuList_unstable,
   useMenuListContextValues_unstable,
   useMenuListStyles_unstable,

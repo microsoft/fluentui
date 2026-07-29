@@ -178,6 +178,10 @@ export const useMenuBase_unstable = (
           safeZoneDescriptorRef.current.mouseCoordinates.y,
         );
         const menuItemEl = elementsInPoint.find(el => {
+          // `menuItemClassNames.root` is the group marker after DECISIONS.md D16.1/D16.5.
+          // `classList.contains` takes a class TOKEN, so the `/` needs no escaping (only a
+          // SELECTOR would — that is what `fuiSelector()` is for).
+          // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
           return el.classList.contains(menuItemClassNames.root);
         }) as HTMLElement | null;
 

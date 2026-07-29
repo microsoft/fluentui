@@ -13,7 +13,6 @@ import {
   MenuGroupHeader,
   MenuSplitGroup,
   type MenuProps,
-  menuItemClassNames,
 } from '@fluentui/react-menu';
 import { FluentProvider } from '@fluentui/react-provider';
 import { Portal } from '@fluentui/react-portal';
@@ -1184,7 +1183,14 @@ const MenuWithSafeZoneExample = () => {
           <MenuItem>item 1</MenuItem>
           <Menu {...menuProps}>
             <MenuTrigger>
-              <MenuItem id="item-2">item 2</MenuItem>
+              {/* `submenuIndicator` is targeted by the "another submenu could be opened once a
+                  safe zone timeouts" test below. `menuItemClassNames.submenuIndicator` was
+                  removed with the BEM statics (DECISIONS.md D16.1/D16.5); the supported
+                  replacement for reaching a component's internals is the per-slot `className`
+                  prop, which is what this fixture uses. */}
+              <MenuItem id="item-2" submenuIndicator={{ className: 'submenu-indicator' }}>
+                item 2
+              </MenuItem>
             </MenuTrigger>
             <MenuPopover>
               <MenuList>
@@ -1196,7 +1202,9 @@ const MenuWithSafeZoneExample = () => {
           </Menu>
           <Menu {...menuProps}>
             <MenuTrigger>
-              <MenuItem id="item-3">item 3</MenuItem>
+              <MenuItem id="item-3" submenuIndicator={{ className: 'submenu-indicator' }}>
+                item 3
+              </MenuItem>
             </MenuTrigger>
             <MenuPopover>
               <MenuList>
@@ -1275,10 +1283,10 @@ describe('safeZone', () => {
 
     cy.get('#item-2').should('be.visible');
 
-    cy.get(`#item-2 .${menuItemClassNames.submenuIndicator}`).realHover();
+    cy.get('#item-2 .submenu-indicator').realHover();
     cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
 
-    cy.get(`#item-3 .${menuItemClassNames.submenuIndicator}`).realHover();
+    cy.get('#item-3 .submenu-indicator').realHover();
     cy.get('#secondary-item-2a').should('be.visible');
     cy.get('#secondary-item-3a').should('not.exist');
 

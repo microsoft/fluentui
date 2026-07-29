@@ -2,7 +2,7 @@ export type { MenuItemSwitchProps, MenuItemSwitchSlots, MenuItemSwitchState } fr
 export {
   MenuItemSwitch,
   circleFilledClassName,
-  menuItemSwitchClassNames,
+  menuItemSwitchClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItemSwitch_unstable,
   useMenuItemSwitchStyles_unstable,
   useMenuItemSwitch_unstable,

@@ -1,330 +1,113 @@
 'use client';
 
-import { mergeClasses, makeStyles, makeResetStyles } from '@griffel/react';
-import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * unlike the converted leaf hooks this file needs NO `enforce-use-client` suppression —
+ * it still calls `useCheckmarkStyles_unstable`, so the rule agrees the directive is
+ * required. Converted hooks that call nothing carry a trailing `eslint-disable-line`
+ * instead; see useMenuListStyles.styles.ts.
+ */
+
+import { clsx } from 'clsx';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
-import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { MenuItemState } from './MenuItem.types';
 
-export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
-  root: 'fui-MenuItem',
-  icon: 'fui-MenuItem__icon',
-  checkmark: 'fui-MenuItem__checkmark',
-  submenuIndicator: 'fui-MenuItem__submenuIndicator',
-  content: 'fui-MenuItem__content',
-  secondaryContent: 'fui-MenuItem__secondaryContent',
-  subText: 'fui-MenuItem__subText',
+import styles from './MenuItem.module.css';
+
+/**
+ * Public identity class for MenuItem.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The `icon` / `checkmark` / `submenuIndicator` / `content` /
+ * `secondaryContent` / `subText` keys were removed with the BEM statics (DECISIONS.md D16.1 /
+ * D16.5): there is no public class-name handle on component internals.
+ *
+ * Every menu item variant — MenuItemLink, MenuItemCheckbox, MenuItemRadio, MenuItemSwitch —
+ * routes through `useMenuItemStyles_unstable`, so all of them carry this marker alongside
+ * their own. That is what keeps `MenuSplitGroup`'s child selectors matching every variant,
+ * exactly as `fui-MenuItem` did (D16.3).
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + menuItemClassNames.root` is an invalid selector. Use
+ * `fuiSelector(menuItemClassNames.root)` from `@fluentui/react-utilities` at every selector
+ * site (DECISIONS.md D16.5).
+ */
+export const menuItemClassNames: { root: string } = {
+  root: 'group/fui-menu-item',
 };
-
-const useRootBaseStyles = makeResetStyles({
-  borderRadius: tokens.borderRadiusMedium,
-  position: 'relative',
-  color: tokens.colorNeutralForeground2,
-  backgroundColor: tokens.colorNeutralBackground1,
-  paddingRight: tokens.spacingVerticalSNudge, // 6px
-  paddingLeft: tokens.spacingVerticalSNudge,
-  paddingTop: tokens.spacingVerticalSNudge,
-  paddingBottom: tokens.spacingVerticalSNudge,
-  boxSizing: 'border-box',
-  maxWidth: '290px',
-  minHeight: '32px',
-  flexShrink: 0,
-  display: 'flex',
-  alignItems: 'start',
-  fontSize: tokens.fontSizeBase300,
-  cursor: 'pointer',
-  gap: '4px',
-
-  ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    color: tokens.colorNeutralForeground2Hover,
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'inline',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
-    [`& .${menuItemClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2BrandSelected,
-    },
-
-    [`& .${menuItemClassNames.subText}`]: {
-      color: tokens.colorNeutralForeground3Hover,
-    },
-  },
-
-  ':hover:active': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-    color: tokens.colorNeutralForeground2Pressed,
-
-    [`& .${menuItemClassNames.subText}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
-    },
-  },
-
-  // High contrast styles
-  '@media (forced-colors: active)': {
-    ':hover': {
-      backgroundColor: 'Canvas',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-    },
-    ...createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } }),
-  },
-
-  userSelect: 'none',
-  ...createFocusOutlineStyle(),
-});
-
-const useContentBaseStyles = makeResetStyles({
-  paddingLeft: '2px',
-  paddingRight: '2px',
-  backgroundColor: 'transparent',
-  flexGrow: 1,
-});
-
-const useSecondaryContentBaseStyles = makeResetStyles({
-  paddingLeft: '2px',
-  paddingRight: '2px',
-  ...typographyStyles.caption1,
-  lineHeight: tokens.lineHeightBase300,
-  color: tokens.colorNeutralForeground3,
-  ':hover': {
-    color: tokens.colorNeutralForeground3Hover,
-  },
-  ':focus': {
-    color: tokens.colorNeutralForeground3Hover,
-  },
-});
-
-const useIconBaseStyles = makeResetStyles({
-  width: '20px',
-  height: '20px',
-  fontSize: '20px',
-  lineHeight: 0,
-  alignItems: 'center',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  flexShrink: 0,
-});
-
-const useSubmenuIndicatorBaseStyles = makeResetStyles({
-  width: '20px',
-  height: '20px',
-  fontSize: '20px',
-  lineHeight: 0,
-  alignItems: 'center',
-  display: 'inline-flex',
-  justifyContent: 'center',
-});
-
-const useSubtextBaseStyles = makeResetStyles({
-  ...typographyStyles.caption2,
-  color: tokens.colorNeutralForeground3,
-});
-
-const useStyles = makeStyles({
-  checkmark: {
-    marginTop: '2px',
-  },
-
-  splitItemMain: {
-    flexGrow: 1,
-  },
-
-  splitItemTrigger: {
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-    paddingLeft: 0,
-    '::before': {
-      content: '""',
-      width: tokens.strokeWidthThin,
-      height: '24px',
-      backgroundColor: tokens.colorNeutralStroke1,
-    },
-  },
-  submenuOpen: {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    color: tokens.colorNeutralForeground2Hover,
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'inline',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
-    [`& .${menuItemClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2BrandSelected,
-    },
-
-    [`& .${menuItemClassNames.subText}`]: {
-      color: tokens.colorNeutralForeground3Hover,
-    },
-
-    '@media (forced-colors: active)': {
-      backgroundColor: 'Canvas',
-      color: 'Highlight',
-    },
-  },
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    ':hover': {
-      color: tokens.colorNeutralForegroundDisabled,
-      backgroundColor: tokens.colorNeutralBackground1,
-      cursor: 'not-allowed',
-      [`& .${iconFilledClassName}`]: {
-        display: 'none',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${menuItemClassNames.icon}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-      [`& .${menuItemClassNames.subText}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-    },
-
-    ':hover:active': {
-      color: tokens.colorNeutralForegroundDisabled,
-      backgroundColor: tokens.colorNeutralBackground1,
-
-      [`& .${menuItemClassNames.subText}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-    },
-
-    ':focus': {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-      ':hover': {
-        color: 'GrayText',
-        backgroundColor: 'Canvas',
-        [`& .${menuItemClassNames.icon}`]: {
-          color: 'GrayText',
-          backgroundColor: 'Canvas',
-        },
-        [`& .${menuItemClassNames.subText}`]: {
-          color: 'GrayText',
-        },
-      },
-      ':hover:active': {
-        color: 'GrayText',
-        backgroundColor: 'Canvas',
-        [`& .${menuItemClassNames.subText}`]: {
-          color: 'GrayText',
-        },
-      },
-      ':focus': {
-        color: 'GrayText',
-        backgroundColor: 'Canvas',
-      },
-    },
-  },
-});
-
-const useSubTextStyles = makeStyles({
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-    },
-  },
-});
-
-const useMultilineStyles = makeStyles({
-  content: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  secondaryContent: {
-    alignSelf: 'center',
-  },
-
-  submenuIndicator: {
-    alignSelf: 'center',
-  },
-});
 
 /** Applies style classnames to slots */
 export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
-  const styles = useStyles();
-  const rootBaseStyles = useRootBaseStyles();
-  const contentBaseStyles = useContentBaseStyles();
-  const secondaryContentBaseStyles = useSecondaryContentBaseStyles();
-  const iconBaseStyles = useIconBaseStyles();
-  const submenuIndicatorBaseStyles = useSubmenuIndicatorBaseStyles();
-  const multilineStyles = useMultilineStyles();
-  const subtextBaseStyles = useSubtextBaseStyles();
-  const subTextStyles = useSubTextStyles();
   const multiline = !!state.subText;
+
+  // Unconditional module class FIRST, then the named group marker, then the conditional
+  // module classes, with the consumer className last (DECISIONS.md D16.2). The marker must
+  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom
+  // (DECISIONS.md D15.1) — and `styles.root` is the token that guarantees it, since clsx
+  // never drops an unconditional argument. The BEM static that used to hold that position
+  // is gone (DECISIONS.md D16.1).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in MenuItem.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // Griffel mergeClasses argument list.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    menuItemClassNames.root,
-    rootBaseStyles,
-    state.submenuOpen && styles.submenuOpen,
+  state.root.className = clsx(
+    styles.root,
+    'group/fui-menu-item',
+    state.submenuOpen && styles['submenu-open'],
     state.disabled && styles.disabled,
     state.root.className,
   );
 
   if (state.content) {
+    // The Griffel source put `multiline && multilineStyles.content` AFTER the consumer
+    // className. Class-attribute position carries no cascade meaning here (mergeClasses
+    // only ever reordered ATOMICS, and a consumer string was passed through untouched), so
+    // the conditional class moves ahead of the consumer's — which is what
+    // `classname-overrides-win` asserts and what unlayered-beats-layered guarantees
+    // (DECISIONS.md D7 revision / D9). Same move on every slot below.
     // eslint-disable-next-line react-hooks/immutability
-    state.content.className = mergeClasses(
-      menuItemClassNames.content,
-      contentBaseStyles,
-      state.content.className,
-      multiline && multilineStyles.content,
-    );
+    state.content.className = clsx(styles.content, multiline && styles['content-multiline'], state.content.className);
   }
 
   if (state.checkmark) {
     // eslint-disable-next-line react-hooks/immutability
-    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
+    state.checkmark.className = clsx(styles.checkmark, state.checkmark.className);
   }
 
   if (state.secondaryContent) {
     // eslint-disable-next-line react-hooks/immutability
-    state.secondaryContent.className = mergeClasses(
-      menuItemClassNames.secondaryContent,
-      secondaryContentBaseStyles,
+    state.secondaryContent.className = clsx(
+      styles['secondary-content'],
       state.disabled && styles.disabled,
+      multiline && styles['secondary-content-multiline'],
       state.secondaryContent.className,
-      multiline && multilineStyles.secondaryContent,
     );
   }
 
   if (state.icon) {
     // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(menuItemClassNames.icon, iconBaseStyles, state.icon.className);
+    state.icon.className = clsx(styles.icon, state.icon.className);
   }
 
   if (state.submenuIndicator) {
     // eslint-disable-next-line react-hooks/immutability
-    state.submenuIndicator.className = mergeClasses(
-      menuItemClassNames.submenuIndicator,
-      submenuIndicatorBaseStyles,
+    state.submenuIndicator.className = clsx(
+      styles['submenu-indicator'],
+      multiline && styles['submenu-indicator-multiline'],
       state.submenuIndicator.className,
-      multiline && multilineStyles.submenuIndicator,
     );
   }
 
   if (state.subText) {
     // eslint-disable-next-line react-hooks/immutability
-    state.subText.className = mergeClasses(
-      menuItemClassNames.subText,
-      state.disabled && subTextStyles.disabled,
+    state.subText.className = clsx(
+      styles['sub-text'],
+      state.disabled && styles['sub-text-disabled'],
       state.subText.className,
-      subtextBaseStyles,
     );
   }
 

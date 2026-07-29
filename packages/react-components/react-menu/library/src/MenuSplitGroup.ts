@@ -1,7 +1,7 @@
 export type { MenuSplitGroupProps, MenuSplitGroupSlots, MenuSplitGroupState } from './components/MenuSplitGroup/index';
 export {
   MenuSplitGroup,
-  menuSplitGroupClassNames,
+  menuSplitGroupClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuSplitGroup_unstable,
   useMenuSplitGroupStyles_unstable,
   useMenuSplitGroup_unstable,

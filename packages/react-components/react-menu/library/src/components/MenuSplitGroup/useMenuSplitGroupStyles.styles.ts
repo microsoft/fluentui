@@ -1,51 +1,59 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
-import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
+import { clsx } from 'clsx';
+import type { MenuSplitGroupState } from './MenuSplitGroup.types';
+
+import styles from './MenuSplitGroup.module.css';
+
+/**
+ * Presence attribute this component's root carries while a child MenuItem reports multiline
+ * layout. Written imperatively by `useMenuSplitGroup.ts` (`toggleAttribute`), because the
+ * child that knows can mount before the parent that renders it; read from CSS through the
+ * shared `multiline` custom variant. Package-internal — not exported from the package index.
+ */
 export const menuSplitGroupMultilineAttr = 'data-multiline';
 
-export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
-  root: 'fui-MenuSplitGroup',
-};
 /**
- * Styles for the root slot
- * TODO - remove the use of nested combinators to style child menu items
+ * Public identity class for MenuSplitGroup.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target.
+ *
+ * `'.' + menuSplitGroupClassNames.root` is an invalid *selector* — the `/` terminates the
+ * class name. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5).
  */
-const useStyles = makeStyles({
-  root: {
-    [`[${menuSplitGroupMultilineAttr}]`]: {
-      [`& > .${menuItemClassNames.root}:nth-of-type(2)`]: {
-        alignSelf: 'center',
-      },
-    },
-    display: 'flex',
-    [`& > .${menuItemClassNames.root}:nth-of-type(1)`]: {
-      flex: 1,
-    },
-    [`& > .${menuItemClassNames.root}:nth-of-type(2)`]: {
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
-      paddingLeft: 0,
-      '::before': {
-        content: '""',
-        width: tokens.strokeWidthThin,
-        height: '20px',
-        backgroundColor: tokens.colorNeutralStroke1,
-      },
-    },
-  },
-});
+export const menuSplitGroupClassNames: { root: string } = {
+  root: 'group/fui-menu-split-group',
+};
 
 /**
  * Apply styling to the MenuSplitGroup slots based on the state
+ *
+ * The `> MenuItem` rules this component owns live at `fui.components.l2` and select the
+ * children through `:global(.group\/fui-menu-item)` — MenuSplitGroup does not render its
+ * items, so it never holds their slot objects and the marker is the only handle (D16.3).
+ * See MenuSplitGroup.module.css for the full mapping.
  */
 export const useMenuSplitGroupStyles_unstable = (state: MenuSplitGroupState): MenuSplitGroupState => {
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(menuSplitGroupClassNames.root, styles.root, state.root.className);
+  // Unconditional module class FIRST, then the named group marker, consumer className last
+  // (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's `:scope`
+  // polyfill throws on it under jsdom (DECISIONS.md D15.1). The BEM static that used to hold
+  // that position is gone (DECISIONS.md D16.1).
+  state.root.className = clsx(styles.root, 'group/fui-menu-split-group', state.root.className);
   return state;
 };

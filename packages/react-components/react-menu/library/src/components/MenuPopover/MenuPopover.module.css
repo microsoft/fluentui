@@ -1,0 +1,69 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuPopoverStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   1 menuPopoverClassNames.root → REMOVED (D16.1); `.root` is now the leading token,
+ *                                  followed by the `group/fui-menu-popover` marker
+ *   2 useStyles.root             → fui.components.l1  .root
+ *   3 consumer className         → unlayered (always wins)
+ *
+ * ── PORTAL ──────────────────────────────────────────────────────────────────────────
+ * This element is portalled and POSITIONED by `@fluentui/react-positioning`, which is
+ * `special` in the conversion ledger and still on Griffel. Nothing here styles a
+ * positioning-owned element — react-positioning writes `position` / `top` / `left` and its
+ * `--fui-*` custom properties directly onto this same node via inline `style`, and inline
+ * styles beat every stylesheet rule regardless of layer, so there is no contention to
+ * arbitrate and no unlayered block is needed for it. Portal-rendered surfaces get their
+ * classes through this hook exactly like any other slot; the compiled `dist/styles.css` is a
+ * document-level stylesheet and reaches them wherever the portal mounts.
+ *
+ * ── No unlayered block ──────────────────────────────────────────────────────────────
+ * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule here (D2 amendment 5).
+ *
+ * ── Spacing / literals (DECISIONS.md D4 + amendment) ────────────────────────────────
+ * `padding: '4px'` matches the XS spacing step, so it takes the named utilities on both
+ * axes. `138px` / `300px` match no step and ride the numeric utilities. The `1px` border is
+ * a px LITERAL in the source (not `strokeWidthThin`), so it stays literal — the same call
+ * react-switch's indicator makes; `var(--spacing-thin)` would silently retune a value the
+ * component never expressed as a token.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/MenuPopover/useMenuPopoverStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2, incl. typographyStyles.body1 */
+  .root {
+    @apply box-border w-max min-w-138 max-w-300 overflow-x-hidden;
+    @apply px-horizontal-xs py-vertical-xs;
+
+    border-radius: var(--borderRadiusMedium);
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+    box-shadow: var(--shadow16);
+
+    /* kept as the compiled shorthand (`border:1px solid var(--colorTransparentStroke)`) —
+       nothing in this package re-declares any border longhand on this element. */
+    border: 1px solid var(--colorTransparentStroke);
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+}

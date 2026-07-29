@@ -4,6 +4,6 @@ export { renderMenuItemSwitch_unstable } from './renderMenuItemSwitch';
 export { useMenuItemSwitch_unstable, useMenuItemSwitchBase_unstable } from './useMenuItemSwitch';
 export {
   circleFilledClassName,
-  menuItemSwitchClassNames,
+  menuItemSwitchClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useMenuItemSwitchStyles_unstable,
 } from './useMenuItemSwitchStyles.styles';

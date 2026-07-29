@@ -10,7 +10,7 @@ export type {
 } from './components/MenuList/index';
 export {
   MenuList,
-  menuListClassNames,
+  menuListClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuList_unstable,
   useMenuListBase_unstable,
   useMenuListContextValues_unstable,

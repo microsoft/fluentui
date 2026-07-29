@@ -6,7 +6,7 @@ export type {
 } from './components/MenuItemRadio/index';
 export {
   MenuItemRadio,
-  menuItemRadioClassNames,
+  menuItemRadioClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItemRadio_unstable,
   useMenuItemRadioBase_unstable,
   useMenuItemRadioStyles_unstable,

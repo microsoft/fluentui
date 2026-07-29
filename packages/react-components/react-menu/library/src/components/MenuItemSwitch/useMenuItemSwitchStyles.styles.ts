@@ -1,97 +1,47 @@
 'use client';
 
-import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import { type SlotClassNames } from '@fluentui/react-utilities';
-import type { MenuItemSwitchSlots, MenuItemSwitchState } from './MenuItemSwitch.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * unlike the converted leaf hooks this file needs NO `enforce-use-client` suppression —
+ * it still calls `useMenuItemStyles_unstable`, so the rule agrees the directive is
+ * required. Converted hooks that call nothing carry a trailing `eslint-disable-line`
+ * instead; see useMenuListStyles.styles.ts.
+ */
+
+import { clsx } from 'clsx';
+import type { MenuItemSwitchState } from './MenuItemSwitch.types';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles.styles';
 
-export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots> = {
-  root: 'fui-MenuItemSwitch',
-  icon: 'fui-MenuItemSwitch__icon',
-  content: 'fui-MenuItemSwitch__content',
-  secondaryContent: 'fui-MenuItemSwitch__secondaryContent',
-  switchIndicator: 'fui-MenuItemSwitch__switchIndicator',
-  subText: 'fui-MenuItemSwitch__subText',
+import styles from './MenuItemSwitch.module.css';
+
+/**
+ * Public identity class for MenuItemSwitch.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1). The per-slot `icon` / `content` /
+ * `secondaryContent` / `switchIndicator` / `subText` keys were removed with the BEM statics
+ * (DECISIONS.md D16.1 / D16.5); there is no public class-name handle on component internals.
+ *
+ * `'.' + menuItemSwitchClassNames.root` is an invalid *selector* — the `/` terminates the
+ * class name. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const menuItemSwitchClassNames: { root: string } = {
+  root: 'group/fui-menu-item-switch',
 };
 
-export const circleFilledClassName = 'fui-MenuItemSwitch__switchIndicator__circleFilled';
-
-// Thumb and track sizes used by the component.
-const spaceBetweenThumbAndTrack = 2;
-const trackHeight = 20;
-const trackWidth = 40;
-const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
-
-const useSwitchIndicatorBaseClassName = makeResetStyles({
-  borderRadius: tokens.borderRadiusCircular,
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
-  lineHeight: 0,
-  boxSizing: 'border-box',
-  fill: 'currentColor',
-  flexShrink: 0,
-  fontSize: `${thumbSize}px`,
-  height: `${trackHeight}px`,
-  transitionDuration: tokens.durationNormal,
-  transitionTimingFunction: tokens.curveEasyEase,
-  transitionProperty: 'background, border, color',
-  width: `${trackWidth}px`,
-  marginRight: tokens.spacingHorizontalXS,
-
-  '@media screen and (prefers-reduced-motion: reduce)': {
-    transitionDuration: '0.01ms',
-  },
-
-  color: tokens.colorNeutralStrokeAccessible,
-  ':hover': {
-    color: tokens.colorNeutralStrokeAccessibleHover,
-    borderColor: tokens.colorNeutralStrokeAccessibleHover,
-  },
-
-  ':hover:active': {
-    color: tokens.colorNeutralStrokeAccessiblePressed,
-    borderColor: tokens.colorNeutralStrokeAccessiblePressed,
-  },
-  [`& .${circleFilledClassName}`]: {
-    transitionDuration: tokens.durationNormal,
-    transitionTimingFunction: tokens.curveEasyEase,
-    transitionProperty: 'transform',
-
-    '@media screen and (prefers-reduced-motion: reduce)': {
-      transitionDuration: '0.01ms',
-    },
-  },
-});
-
-const useSwitchIndicatorStyles = makeStyles({
-  checked: {
-    [`& .${circleFilledClassName}`]: {
-      transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack}px)`,
-    },
-
-    backgroundColor: tokens.colorCompoundBrandBackground,
-    color: tokens.colorNeutralForegroundInverted,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
-
-    ':hover': {
-      color: tokens.colorNeutralForegroundInverted,
-      backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
-
-    ':hover:active': {
-      color: tokens.colorNeutralForegroundInverted,
-      backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
-  },
-});
-
-const useMultilineStyles = makeStyles({
-  switch: {
-    alignSelf: 'center',
-  },
-});
+/**
+ * Class applied to the switch thumb that `useMenuItemSwitch_unstable` renders by default
+ * (`<CircleFilled />`).
+ *
+ * RE-POINTED by the statics removal (DECISIONS.md D16.1 / D16.3): this used to be the string
+ * `'fui-MenuItemSwitch__switchIndicator__circleFilled'`, a `fui-`-prefixed class that was NOT
+ * a public identity — exactly the shape D16.1 abolishes. The element is created by this
+ * package, so the coupling is removed rather than renamed: the class is now the hashed
+ * CSS-Modules local that `MenuItemSwitch.module.css` scopes its thumb rules under
+ * (mechanism M2, D16.3). The export name and its role are unchanged; only the value is.
+ */
+export const circleFilledClassName: string = styles['circle-filled'];
 
 /**
  * Apply styling to the MenuItemSwitch slots based on the state
@@ -99,45 +49,37 @@ const useMultilineStyles = makeStyles({
 export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): MenuItemSwitchState => {
   const { checked, subText } = state;
   const multiline = !!subText;
-  const switchIndicatorStyles = useSwitchIndicatorStyles();
-  const switchIndicatorBaseStyles = useSwitchIndicatorBaseClassName();
-  const multilineStyles = useMultilineStyles();
+
+  // Named group marker, consumer className last. There is no unconditional module class on
+  // THIS root to lead with — the root is a MenuItem root and this component contributes only
+  // its identity to it — and it does not need one: `useMenuItemStyles_unstable` runs LAST and
+  // PREPENDS its own unconditional hashed `styles.root`, so the token that actually reaches
+  // `classList[0]` is that hashed class and the D15.1 invariant holds on the rendered string.
+  // Before D16.1 the `fui-MenuItemSwitch` static held that position instead.
+  //
+  // The element legitimately carries TWO markers — `group/fui-menu-item-switch` and
+  // MenuItem's `group/fui-menu-item` — because it genuinely is both. Both are declared to
+  // react-conformance's `component-has-group-marker` through
+  // `testOptions['has-group-marker'].markers` in MenuItemSwitch.test.tsx (D16.3).
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(menuItemSwitchClassNames.root, state.root.className);
-  if (state.content) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.content.className = mergeClasses(menuItemSwitchClassNames.content, state.content.className);
-  }
-
-  if (state.secondaryContent) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.secondaryContent.className = mergeClasses(
-      menuItemSwitchClassNames.secondaryContent,
-      state.secondaryContent.className,
-    );
-  }
-
-  if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(menuItemSwitchClassNames.icon, state.icon.className);
-  }
-
-  if (state.subText) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.subText.className = mergeClasses(menuItemSwitchClassNames.subText, state.subText.className);
-  }
+  state.root.className = clsx('group/fui-menu-item-switch', state.root.className);
 
   if (state.switchIndicator) {
+    // The Griffel source put `multiline && multilineStyles.switch` AFTER the consumer
+    // className; class-attribute position carries no cascade meaning, so the conditional
+    // class moves ahead of the consumer's — `classname-overrides-win` (DECISIONS.md D9).
     // eslint-disable-next-line react-hooks/immutability
-    state.switchIndicator.className = mergeClasses(
-      menuItemSwitchClassNames.switchIndicator,
-      switchIndicatorBaseStyles,
-      checked && switchIndicatorStyles.checked,
+    state.switchIndicator.className = clsx(
+      styles['switch-indicator'],
+      checked && styles['switch-indicator-checked'],
+      multiline && styles['switch-indicator-multiline'],
       state.switchIndicator.className,
-      multiline && multilineStyles.switch,
     );
   }
 
+  // Called LAST, exactly as before. The spread is a SHALLOW copy, so `state.root` and every
+  // other slot object handed over is still the one this component renders; only the
+  // checkmark/submenuIndicator/submenu flags are neutralised for the MenuItem styling pass.
   useMenuItemStyles_unstable({
     ...state,
     components: {

@@ -5,7 +5,7 @@ export type {
 } from './components/MenuGroupHeader/index';
 export {
   MenuGroupHeader,
-  menuGroupHeaderClassNames,
+  menuGroupHeaderClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGroupHeader_unstable,
   useMenuGroupHeaderStyles_unstable,
   useMenuGroupHeader_unstable,

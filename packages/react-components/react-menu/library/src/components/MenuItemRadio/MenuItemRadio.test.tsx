@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { render, fireEvent } from '@testing-library/react';
 import { MenuItemRadio } from './MenuItemRadio';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
@@ -15,20 +16,31 @@ describe('MenuItemRadio', () => {
       value: '1',
     },
     displayName: 'MenuItemRadio',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
+    // was called with the consumer className last; this component composes with clsx and
+    // never calls mergeClasses, so the test can no longer observe the contract. The
+    // guarantee itself is unchanged — clsx puts `state.root.className` last and the
+    // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // `classname-overrides-win` below is its cascade-native replacement.
+    //
+    // `component-has-static-classnames-object` asserts the `fui-<Component>__<slot>` BEM
+    // format DECISIONS.md D16.1 removed. `component-has-group-marker` (a default test since
+    // D16.6) replaces it: it asserts the group marker IS stamped and is never
+    // `classList[0]` (D16.2). The `has-static-classnames` testOptions that fed the deleted
+    // test went with it.
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            icon: 'Test Icon',
-            checkmark: 'Test Checkmark',
-            submenuIndicator: 'Test Submenu Indicator',
-            content: 'Test Content',
-            secondaryContent: 'Test Secondary Content',
-            subText: 'Sub text',
-          },
-        },
-      ],
+      // This root IS a MenuItem root — `useMenuItemStyles_unstable` stamps its marker on the
+      // same element — so it legitimately carries both markers below (DECISIONS.md D16.3).
+      // Declaring the whole set keeps `component-has-group-marker` running as an exact set
+      // comparison, so an undeclared marker still fails, and its `classList[0]` half — the
+      // D16.2 invariant nwsapi's jsdom `:scope` polyfill depends on — is asserted here.
+      'has-group-marker': {
+        markers: ['group/fui-menu-item', 'group/fui-menu-item-radio'],
+      },
     },
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   /**

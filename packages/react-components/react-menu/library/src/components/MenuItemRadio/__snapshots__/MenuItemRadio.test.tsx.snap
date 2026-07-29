@@ -3,13 +3,13 @@
 exports[`MenuItemRadio renders a default state 1`] = `
 <div
   aria-checked="false"
-  class="fui-MenuItem fui-MenuItemRadio"
+  class="group/fui-menu-item group/fui-menu-item-radio"
   name="radio"
   role="menuitemradio"
   tabindex="0"
 >
   <span
-    class="fui-MenuItem__checkmark fui-MenuItemRadio__checkmark"
+    class=""
   >
     <svg
       aria-hidden="true"
@@ -27,7 +27,7 @@ exports[`MenuItemRadio renders a default state 1`] = `
     </svg>
   </span>
   <span
-    class="fui-MenuItem__content fui-MenuItemRadio__content"
+    class=""
   >
     Default MenuItemRadio
   </span>

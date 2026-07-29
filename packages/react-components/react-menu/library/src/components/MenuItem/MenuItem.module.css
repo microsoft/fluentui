@@ -1,0 +1,475 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuItemStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   1  menuItemClassNames.root                   → REMOVED (D16.1); the root's leading token
+ *                                                  is now `.root` itself, followed by the
+ *                                                  `group/fui-menu-item` marker
+ *   2  useRootBaseStyles          (makeReset)    → fui.base           .root
+ *   3  submenuOpen && useStyles.submenuOpen      → fui.components.l1  .submenu-open
+ *   4  disabled   && useStyles.disabled          → fui.components.l1  .disabled
+ *   5  consumer className                        → unlayered (always wins)
+ *
+ * `content` slot
+ *   1  menuItemClassNames.content                → REMOVED (D16.1)
+ *   2  useContentBaseStyles       (makeReset)    → fui.base           .content
+ *   3  consumer className                        → unlayered
+ *   4  multiline && useMultilineStyles.content   → fui.components.l1  .content-multiline
+ *
+ * `checkmark` slot
+ *   1  menuItemClassNames.checkmark              → REMOVED (D16.1)
+ *   2  useStyles.checkmark                       → fui.components.l1  .checkmark
+ *   3  consumer className                        → unlayered
+ *   (useCheckmarkStyles_unstable then PREPENDS its own two classes — see
+ *    ../../selectable/Checkmark.module.css; no property collides with `.checkmark`.)
+ *
+ * `secondaryContent` slot
+ *   1  menuItemClassNames.secondaryContent       → REMOVED (D16.1)
+ *   2  useSecondaryContentBaseStyles (makeReset) → fui.base           .secondary-content
+ *   3  disabled && useStyles.disabled            → fui.components.l1  .disabled  ← SHARED
+ *   4  consumer className                        → unlayered
+ *   5  multiline && …secondaryContent            → fui.components.l1  .secondary-content-multiline
+ *
+ * `icon` slot
+ *   1  menuItemClassNames.icon                   → REMOVED (D16.1)
+ *   2  useIconBaseStyles          (makeReset)    → fui.base           .icon
+ *   3  consumer className                        → unlayered
+ *
+ * `submenuIndicator` slot
+ *   1  menuItemClassNames.submenuIndicator       → REMOVED (D16.1)
+ *   2  useSubmenuIndicatorBaseStyles (makeReset) → fui.base           .submenu-indicator
+ *   3  consumer className                        → unlayered
+ *   4  multiline && …submenuIndicator            → fui.components.l1  .submenu-indicator-multiline
+ *
+ * `subText` slot
+ *   1  menuItemClassNames.subText                → REMOVED (D16.1)
+ *   2  disabled && useSubTextStyles.disabled     → fui.components.l1  .sub-text-disabled
+ *   3  consumer className                        → unlayered
+ *   4  useSubtextBaseStyles       (makeReset)    → fui.base           .sub-text
+ *
+ * ── `.disabled` is ONE class on TWO slots, exactly as Griffel had it ─────────────────
+ * `useStyles.disabled` is passed to both the root and the `secondaryContent` slot. Its
+ * descendant halves (`& .icon`, `& .sub-text`) are inert from `secondaryContent`, which
+ * contains neither element — identical to the compiled atomics, which were the same
+ * classes on both elements. Kept as ONE local rather than split, so the 1:1 mapping back
+ * to the Griffel slice survives.
+ *
+ * ── State stays on module CLASSES, no `data-*` mirrors were added (D15.6, settled) ───
+ * `disabled` and `submenuOpen` gate slices that are applied to the ELEMENT that needs
+ * them, so a data attribute would only restate what a class already says. The root does
+ * render `aria-disabled="true"` when disabled (`useARIAButtonProps` with
+ * `disabledFocusable: disabled` — useMenuItemBase.tsx), so `@variant disabled-control`
+ * would match it, but `secondaryContent` carries no such attribute and the slice is
+ * shared; one class serves both. D15.6: data attributes are a FALLBACK, never added for
+ * symmetry.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * Everything here is fui.base / fui.components.l1: MenuItem owns every slot it styles.
+ * The components that DELEGATE to this hook (MenuItemLink, MenuItemCheckbox,
+ * MenuItemRadio, MenuItemSwitch) author their own additions at l2 — see
+ * MenuItemLink.module.css.
+ *
+ * ── UNLAYERED: the react-icons glyph swap (DECISIONS.md D2 amendment 5) ─────────────
+ * Three of the four slices above also toggle `:global(.fui-Icon-filled)` /
+ * `:global(.fui-Icon-regular)`. Those elements belong to `@fluentui/react-icons`, which
+ * stays on Griffel PERMANENTLY (D11) and injects `.fjseox{display:none}` /
+ * `.f1w7gpdv{display:inline}` UNLAYERED. An unlayered declaration beats every `@layer`
+ * before specificity is even consulted, so a swap rule left inside `fui.base` or
+ * `fui.components.l1` can never win and the glyph would never change. They are lifted
+ * into the unlayered block at the BOTTOM of this file; pointer comments mark the blocks
+ * they came out of. MenuItem is a `bundleIcon()` consumer itself — its default submenu
+ * chevron is `bundleIcon(ChevronRightFilled, ChevronRightRegular)` (useMenuItem.tsx).
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Every `[ltr, rtl]` pair in the compiled atomics is a pure PROPERTY flip with identical
+ * values (`padding-left`/`padding-right` on the root and on `.content`/`.secondary-content`
+ * are the same length on both sides), so logical properties cover all of them and no
+ * `@variant rtl` twin is needed anywhere in this module. `useIconBaseStyles`,
+ * `useSubmenuIndicatorBaseStyles` and `useSubtextBaseStyles` compile with a `null` rtl
+ * class: nothing to flip.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
+ * The root's four paddings all read `tokens.spacingVerticalSNudge` in the Griffel source
+ * (including the two inline sides, with a `// 6px` comment). Both spacing scales register
+ * SNudge as `calc(6px * var(--base-scale))`, so the axis-correct pair
+ * `px-horizontal-s-nudge` / `py-vertical-s-nudge` is byte-identical to what the source
+ * asked for while following the cookbook's axis rule. Px literals that match a spacing
+ * step take the named utility too (`gap: 4px` → `gap-horizontal-xs`, `margin-top: 2px` →
+ * `mt-vertical-xxs`, `padding: 2px` → `px-horizontal-xxs`); the ones that match no step
+ * (290 / 32 / 20 / 16 px) ride the numeric utilities, which compute through the same
+ * `--base-scale`.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/MenuItem/useMenuItemStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseStyles (makeResetStyles) */
+  .root {
+    @apply relative box-border flex max-w-290 min-h-32 shrink-0 cursor-pointer select-none;
+    @apply px-horizontal-s-nudge py-vertical-s-nudge gap-horizontal-xs;
+
+    /* the compiled atomic is `align-items:start`, NOT `flex-start` — `items-start` would
+       emit the latter. Identical rendering for a flex container, written longhand so the
+       byte comparison against the compiled output stays exact. */
+    align-items: start;
+
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground2);
+    background-color: var(--colorNeutralBackground1);
+    font-size: var(--fontSizeBase300);
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground1Hover);
+      color: var(--colorNeutralForeground2Hover);
+
+      /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
+         block — see the UNLAYERED section at the bottom of this file. */
+
+      & .icon {
+        color: var(--colorNeutralForeground2BrandSelected);
+      }
+
+      & .sub-text {
+        color: var(--colorNeutralForeground3Hover);
+      }
+    }
+
+    /*
+     * `:hover:active` — the selector the Griffel source authored verbatim. NOT the shared
+     * `hover-active` variant, which is Button's `:hover:active, :active:focus-visible`
+     * compound and would newly match a keyboard-activated item.
+     *
+     * Written AFTER the `hover` block above: `:where()` flattens both to the same
+     * specificity, so file position is the only tiebreak and the narrower condition has
+     * to come later (Griffel resolved it by specificity instead).
+     */
+    @variant hover {
+      @variant active {
+        background-color: var(--colorNeutralBackground1Pressed);
+        color: var(--colorNeutralForeground2Pressed);
+
+        & .sub-text {
+          color: var(--colorNeutralForeground3Pressed);
+        }
+      }
+    }
+
+    /* from createFocusOutlineStyle() — the default ring. `fui-focus-outline` carries the
+       compiled declarations; the selector stays here (D6). */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+
+    /*
+     * High contrast. The compiled `s` bucket holds, in this order: the `:hover` colours,
+     * then `createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } })`'s
+     * `:focus`/`:focus-visible`/`[data-fui-focus-visible]` rules. That second factory call
+     * is REDUNDANT in the compiled sheet — `fui-focus-outline` already re-colours its
+     * `::after` border to `Highlight` inside its own `@media (forced-colors: active)`
+     * block — but it is reproduced rather than pruned, because the compiled output is the
+     * contract.
+     */
+    @variant forced-colors {
+      @variant hover {
+        background-color: Canvas;
+        /* compiled as the `border-color` shorthand; expanded to longhands per cookbook §2 */
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+        color: Highlight;
+      }
+
+      @variant focus {
+        outline-style: none;
+      }
+
+      @variant focus-visible {
+        outline-style: none;
+      }
+
+      @variant focus-visible-fui {
+        @apply fui-focus-outline;
+      }
+    }
+  }
+
+  /* from useContentBaseStyles (makeResetStyles) */
+  .content {
+    @apply px-horizontal-xxs grow bg-transparent;
+  }
+
+  /* from useSecondaryContentBaseStyles (makeResetStyles) — typographyStyles.caption1 with
+     an explicit lineHeightBase300 override */
+  .secondary-content {
+    @apply px-horizontal-xxs;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    color: var(--colorNeutralForeground3);
+
+    @variant hover {
+      color: var(--colorNeutralForeground3Hover);
+    }
+
+    @variant focus {
+      color: var(--colorNeutralForeground3Hover);
+    }
+  }
+
+  /* from useIconBaseStyles (makeResetStyles) */
+  .icon {
+    @apply inline-flex h-20 w-20 shrink-0 items-center justify-center;
+
+    /* `font-size` has no spacing-namespace utility (`--text-*` is a different namespace),
+       so the px literal rides `--base-scale` directly (D4). */
+    font-size: calc(20px * var(--base-scale));
+    line-height: 0;
+  }
+
+  /* from useSubmenuIndicatorBaseStyles (makeResetStyles) — identical to `.icon` minus
+     `flex-shrink: 0`; kept as its own local so the two slices stay 1:1 with the source. */
+  .submenu-indicator {
+    @apply inline-flex h-20 w-20 items-center justify-center;
+
+    font-size: calc(20px * var(--base-scale));
+    line-height: 0;
+  }
+
+  /* from useSubtextBaseStyles (makeResetStyles) — typographyStyles.caption2 */
+  .sub-text {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase100);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase100);
+    color: var(--colorNeutralForeground3);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.checkmark — root arg n/a, `checkmark` slot arg #2 */
+  .checkmark {
+    @apply mt-vertical-xxs;
+  }
+
+  /* from useStyles.submenuOpen — root arg #3 */
+  .submenu-open {
+    background-color: var(--colorNeutralBackground1Hover);
+    color: var(--colorNeutralForeground2Hover);
+
+    /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
+       block — see the UNLAYERED section at the bottom of this file. */
+
+    & .icon {
+      color: var(--colorNeutralForeground2BrandSelected);
+    }
+
+    & .sub-text {
+      color: var(--colorNeutralForeground3Hover);
+    }
+
+    @variant forced-colors {
+      background-color: Canvas;
+      color: Highlight;
+    }
+  }
+
+  /*
+   * from useStyles.disabled — root arg #4, and `secondaryContent` arg #3 (same class on
+   * both elements, see the header).
+   */
+  .disabled {
+    color: var(--colorNeutralForegroundDisabled);
+
+    @variant hover {
+      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--colorNeutralBackground1);
+      cursor: not-allowed;
+
+      /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap-BACK that belongs here is NOT in
+         this block — see the UNLAYERED section at the bottom of this file. */
+
+      & .icon {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+
+      & .sub-text {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+
+    @variant hover {
+      @variant active {
+        color: var(--colorNeutralForegroundDisabled);
+        background-color: var(--colorNeutralBackground1);
+
+        & .sub-text {
+          color: var(--colorNeutralForegroundDisabled);
+        }
+      }
+    }
+
+    @variant focus {
+      color: var(--colorNeutralForegroundDisabled);
+    }
+
+    /* compiled `m`-bucket order: bare, then :hover (+ its two descendants), then
+       :hover:active (+ its descendant), then :focus. Preserved verbatim. */
+    @variant forced-colors {
+      color: GrayText;
+
+      @variant hover {
+        color: GrayText;
+        background-color: Canvas;
+
+        & .icon {
+          color: GrayText;
+          background-color: Canvas;
+        }
+
+        & .sub-text {
+          color: GrayText;
+        }
+      }
+
+      @variant hover {
+        @variant active {
+          color: GrayText;
+          background-color: Canvas;
+
+          & .sub-text {
+            color: GrayText;
+          }
+        }
+      }
+
+      @variant focus {
+        color: GrayText;
+        background-color: Canvas;
+      }
+    }
+  }
+
+  /* from useSubTextStyles.disabled — `subText` arg #2 */
+  .sub-text-disabled {
+    color: var(--colorNeutralForegroundDisabled);
+
+    @variant forced-colors {
+      color: GrayText;
+    }
+  }
+
+  /* from useMultilineStyles.content — `content` arg #4 */
+  .content-multiline {
+    @apply flex flex-col;
+  }
+
+  /* from useMultilineStyles.secondaryContent — `secondaryContent` arg #5 */
+  .secondary-content-multiline {
+    @apply self-center;
+  }
+
+  /* from useMultilineStyles.submenuIndicator — `submenuIndicator` arg #4 */
+  .submenu-indicator-multiline {
+    @apply self-center;
+  }
+}
+
+/*
+ * ─────────────────────────────────────────────────────────────────────────────────────
+ * The icon swap must be UNLAYERED (DECISIONS.md D2 amendment 5).
+ *
+ * `bundleIcon()` renders both glyphs and toggles them with Griffel atomics that carry NO
+ * cascade layer — `node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js`
+ * compiles to `.fjseox{display:none}` / `.f1w7gpdv{display:inline}`, and `bundleIcon.js`
+ * hands the filled `<svg>` `root + (filled && visible)` and the regular one
+ * `root + (!filled && visible)`.
+ *
+ * In the CSS cascade an unlayered normal author declaration beats EVERY `@layer`, and
+ * that comparison happens before specificity — so these rules at 0-2-0 inside
+ * `@layer fui.base` / `@layer fui.components.l1` would lose to `.fjseox` at 0-1-0 and the
+ * glyph would never swap. Unlayered they win at 0-2-0, exactly as the compiled Griffel
+ * atomics did. `@fluentui/react-icons` is out of conversion scope permanently (D11), so
+ * this is permanent, not transitional.
+ *
+ * ── Order inside this block reproduces mergeClasses ARGUMENT order ──────────────────
+ * Every selector here is `:where()`-flat at 0-2-0 and `.root`, `.submenu-open` and
+ * `.disabled` are three CSS-module classes on the SAME element, so file position is the
+ * only tiebreak:
+ *
+ *   1. `.root` :hover swap                 ← arg #2 (useRootBaseStyles, `r` bucket)
+ *   2. `.submenu-open` swap                ← arg #3 (useStyles.submenuOpen, `d` bucket)
+ *   3. `.disabled` :hover swap-BACK        ← arg #4 (useStyles.disabled, `h` bucket)
+ *
+ * which is also the Griffel bucket order (r < d < h), so a hovered *disabled* item keeps
+ * the outline glyph — the same winner the compiled sheet produced.
+ *
+ * Everything that styles MenuItem's OWN elements stays layered above, including the
+ * `.icon` / `.sub-text` colour rules that were lifted out of the same source blocks:
+ * those locals sit on this package's slots and nothing unlayered competes for them.
+ * ─────────────────────────────────────────────────────────────────────────────────────
+ */
+
+/* from useRootBaseStyles — root arg #2, the `:hover` half */
+.root {
+  @variant hover {
+    & :global(.fui-Icon-filled) {
+      display: inline;
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
+  }
+}
+
+/* from useStyles.submenuOpen — root arg #3 */
+.submenu-open {
+  & :global(.fui-Icon-filled) {
+    display: inline;
+  }
+
+  & :global(.fui-Icon-regular) {
+    display: none;
+  }
+}
+
+/* from useStyles.disabled — root arg #4, the `:hover` swap-BACK. LAST in the file because
+   arg #4 outranks args #2/#3 above. */
+.disabled {
+  @variant hover {
+    & :global(.fui-Icon-filled) {
+      display: none;
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: inline;
+    }
+  }
+}

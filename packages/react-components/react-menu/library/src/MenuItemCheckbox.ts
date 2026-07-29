@@ -1,7 +1,7 @@
 export type { MenuItemCheckboxProps, MenuItemCheckboxState } from './components/MenuItemCheckbox/index';
 export {
   MenuItemCheckbox,
-  menuItemCheckboxClassNames,
+  menuItemCheckboxClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuItemCheckbox_unstable,
   useMenuItemCheckboxStyles_unstable,
   useMenuItemCheckbox_unstable,
