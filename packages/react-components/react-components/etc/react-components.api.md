@@ -99,13 +99,9 @@ import { BadgeProps } from '@fluentui/react-badge';
 import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
 import { Body1 } from '@fluentui/react-text';
-import { body1ClassNames } from '@fluentui/react-text';
 import { Body1Strong } from '@fluentui/react-text';
-import { body1StrongClassNames } from '@fluentui/react-text';
 import { Body1Stronger } from '@fluentui/react-text';
-import { body1StrongerClassNames } from '@fluentui/react-text';
 import { Body2 } from '@fluentui/react-text';
-import { body2ClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
 import { Breadcrumb } from '@fluentui/react-breadcrumb';
@@ -136,15 +132,10 @@ import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { Caption1 } from '@fluentui/react-text';
-import { caption1ClassNames } from '@fluentui/react-text';
 import { Caption1Strong } from '@fluentui/react-text';
-import { caption1StrongClassNames } from '@fluentui/react-text';
 import { Caption1Stronger } from '@fluentui/react-text';
-import { caption1StrongerClassNames } from '@fluentui/react-text';
 import { Caption2 } from '@fluentui/react-text';
-import { caption2ClassNames } from '@fluentui/react-text';
 import { Caption2Strong } from '@fluentui/react-text';
-import { caption2StrongClassNames } from '@fluentui/react-text';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
 import { cardCSSVars } from '@fluentui/react-card';
@@ -379,7 +370,6 @@ import { DialogTriggerChildProps } from '@fluentui/react-dialog';
 import { DialogTriggerProps } from '@fluentui/react-dialog';
 import { DialogTriggerState } from '@fluentui/react-dialog';
 import { Display } from '@fluentui/react-text';
-import { displayClassNames } from '@fluentui/react-text';
 import { Divider } from '@fluentui/react-divider';
 import { dividerClassNames } from '@fluentui/react-divider';
 import { DividerProps } from '@fluentui/react-divider';
@@ -537,7 +527,6 @@ import { LabelProps } from '@fluentui/react-label';
 import { LabelSlots } from '@fluentui/react-label';
 import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
-import { largeTitleClassNames } from '@fluentui/react-text';
 import { LineHeightTokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
 import { linkClassNames } from '@fluentui/react-link';
@@ -1154,11 +1143,8 @@ import { SplitNavItemState } from '@fluentui/react-nav';
 import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subtitle1 } from '@fluentui/react-text';
-import { subtitle1ClassNames } from '@fluentui/react-text';
 import { Subtitle2 } from '@fluentui/react-text';
-import { subtitle2ClassNames } from '@fluentui/react-text';
 import { Subtitle2Stronger } from '@fluentui/react-text';
-import { subtitle2StrongerClassNames } from '@fluentui/react-text';
 import { SubtreeContextValue } from '@fluentui/react-tree';
 import { swatchCSSVars } from '@fluentui/react-swatch-picker';
 import { SwatchPicker } from '@fluentui/react-swatch-picker';
@@ -1410,11 +1396,8 @@ import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
 import { themeToTokensObject } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
-import { title1ClassNames } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
-import { title2ClassNames } from '@fluentui/react-text';
 import { Title3 } from '@fluentui/react-text';
-import { title3ClassNames } from '@fluentui/react-text';
 import { Toast } from '@fluentui/react-toast';
 import { ToastBody } from '@fluentui/react-toast';
 import { toastBodyClassNames } from '@fluentui/react-toast';
@@ -2223,19 +2206,11 @@ export { BadgeState }
 
 export { Body1 }
 
-export { body1ClassNames }
-
 export { Body1Strong }
-
-export { body1StrongClassNames }
 
 export { Body1Stronger }
 
-export { body1StrongerClassNames }
-
 export { Body2 }
-
-export { body2ClassNames }
 
 export { BorderRadiusTokens }
 
@@ -2297,23 +2272,13 @@ export { ButtonState }
 
 export { Caption1 }
 
-export { caption1ClassNames }
-
 export { Caption1Strong }
-
-export { caption1StrongClassNames }
 
 export { Caption1Stronger }
 
-export { caption1StrongerClassNames }
-
 export { Caption2 }
 
-export { caption2ClassNames }
-
 export { Caption2Strong }
-
-export { caption2StrongClassNames }
 
 export { Card }
 
@@ -2783,8 +2748,6 @@ export { DialogTriggerState }
 
 export { Display }
 
-export { displayClassNames }
-
 export { Divider }
 
 export { dividerClassNames }
@@ -3098,8 +3061,6 @@ export { LabelSlots }
 export { LabelState }
 
 export { LargeTitle }
-
-export { largeTitleClassNames }
 
 export { LineHeightTokens }
 
@@ -4333,15 +4294,9 @@ export { StrokeWidthTokens }
 
 export { Subtitle1 }
 
-export { subtitle1ClassNames }
-
 export { Subtitle2 }
 
-export { subtitle2ClassNames }
-
 export { Subtitle2Stronger }
-
-export { subtitle2StrongerClassNames }
 
 export { SubtreeContextValue }
 
@@ -4845,15 +4800,9 @@ export { themeToTokensObject }
 
 export { Title1 }
 
-export { title1ClassNames }
-
 export { Title2 }
 
-export { title2ClassNames }
-
 export { Title3 }
-
-export { title3ClassNames }
 
 export { Toast }
 
