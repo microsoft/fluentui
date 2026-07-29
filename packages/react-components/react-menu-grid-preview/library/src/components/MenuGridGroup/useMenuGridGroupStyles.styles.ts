@@ -1,15 +1,3 @@
-'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
-
-/*
- * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * this file never carried `'use client'` before the conversion — it had no `makeStyles`
- * call to require it. It is added now for the same reason every other converted styles
- * file keeps its own: the CSS-Modules import is a side-effecting client asset, and the
- * directive placement is the repo-wide convention for `*.styles.ts`. `enforce-use-client`
- * flags it as unnecessary (correctly — nothing here is RSC-unsafe), hence the trailing
- * suppression; dropping directives is a Phase 3 sweep across all 180 style hooks.
- */
-
 import { clsx } from 'clsx';
 import type { MenuGridGroupState } from './MenuGridGroup.types';
 
