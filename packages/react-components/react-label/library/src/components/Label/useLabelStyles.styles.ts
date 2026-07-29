@@ -14,14 +14,25 @@
  */
 
 import { clsx } from 'clsx';
-import type { LabelSlots, LabelState } from './Label.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { LabelState } from './Label.types';
 
 import styles from './Label.module.css';
 
-export const labelClassNames: SlotClassNames<LabelSlots> = {
-  root: 'fui-Label',
-  required: 'fui-Label__required',
+/**
+ * Public identity class for Label.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The `required` key was removed along with the BEM statics
+ * (DECISIONS.md D16.1 / D16.5): there is no public class-name handle on component internals.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + labelClassNames.root` is an invalid selector. Use `fuiSelector(labelClassNames.root)`
+ * from `@fluentui/react-utilities` at every selector site (DECISIONS.md D16.5).
+ */
+export const labelClassNames: { root: string } = {
+  root: 'group/fui-label',
 };
 
 /**
@@ -61,13 +72,18 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   root['data-size'] = size;
   root['data-disabled'] = disabled || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Label's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Label needs no state mirrors:
-  // `data-size` and `data-disabled` are already stamped on this very element above, so
+  // Unconditional module class FIRST, then the named group marker, then the conditional
+  // module classes, with the consumer className last (DECISIONS.md D16.2). The marker must
+  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom
+  // (DECISIONS.md D15.1) — and `styles.root` is the token that guarantees it, since clsx
+  // never drops an unconditional argument. The BEM static that used to hold that position
+  // is gone (DECISIONS.md D16.1).
+  //
+  // The marker is a literal, unhashed, GLOBAL token and now the component's SOLE public
+  // identity class: it is the only handle by which another module — in this package or any
+  // other — can style an element from this Label's state, because `styles.root` is hashed
+  // and unaddressable from outside this file. Label needs no state mirrors: `data-size` and
+  // `data-disabled` are already stamped on this very element above, so
   // `@variant group-disabled/fui-label` works as-is (DECISIONS.md D15, Tier 0).
   //
   // Only the root carries a marker. The `required` slot gets none: a group cannot style
@@ -77,9 +93,8 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
-    labelClassNames.root,
-    'group/fui-label',
     styles.root,
+    'group/fui-label',
     weight === 'semibold' && styles.semibold,
     state.root.className,
   );
@@ -89,7 +104,9 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
 
     required['data-disabled'] = disabled || undefined;
 
-    state.required.className = clsx(labelClassNames.required, styles.required, state.required.className);
+    // Sub-slot: the static is gone, the hashed module class leads. No marker rides a
+    // sub-slot, so D15.1 is not in play here (statics-removal design §4c).
+    state.required.className = clsx(styles.required, state.required.className);
   }
 
   return state;

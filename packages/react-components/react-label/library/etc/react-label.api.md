@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
@@ -21,8 +20,10 @@ export type LabelBaseProps = Omit<LabelProps, 'size' | 'weight'>;
 // @public
 export type LabelBaseState = Omit<LabelState, 'size' | 'weight'>;
 
-// @public (undocumented)
-export const labelClassNames: SlotClassNames<LabelSlots>;
+// @public @deprecated
+export const labelClassNames: {
+    root: string;
+};
 
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {

@@ -1,6 +1,6 @@
 export {
   Label,
-  labelClassNames,
+  labelClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderLabel_unstable,
   useLabelStyles_unstable,
   useLabel_unstable,
