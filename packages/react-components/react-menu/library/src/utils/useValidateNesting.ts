@@ -28,20 +28,29 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
         // `classList.contains` takes a class TOKEN, so the `/` needs no escaping (only a
         // SELECTOR would — that is what `fuiSelector()` is for).
         //
-        // The `fui-MenuGrid*` literals below are @fluentui/react-menu-grid-preview's statics,
-        // NOT this package's: that package is `needs-conversion` in the migration ledger and
-        // still renders them. They stay verbatim until it converts — the same
-        // reach-into-an-unconverted-package exception the `:global(.fui-Icon-*)` rules take.
+        // The `group/fui-menu-grid*` literals below are @fluentui/react-menu-grid-preview's
+        // markers, NOT this package's. They are written as LITERALS rather than imported
+        // because that package depends on this one — importing its `menuGrid*ClassNames`
+        // here would close a package cycle. They were the BEM statics `fui-MenuGrid*` until
+        // menu-grid-preview converted in BATCH-5; re-pointing them is the design-sanctioned
+        // cross-package half of that conversion.
+        //
+        // Marker tokens are compared whole, so `group/fui-menu-grid` does NOT match a
+        // `group/fui-menu-grid-row` element — the same non-prefix semantics the old
+        // `fui-MenuGrid` / `fui-MenuGridRow` statics had. The branch ORDER is load-bearing
+        // and unchanged: a MenuGridItem root IS a MenuGridRow root and carries both markers,
+        // so `MenuGridItem` must be tested before `MenuGridRow` to keep winning, exactly as
+        // it did when the element carried both statics.
         // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
         if (ancestor?.classList.contains(menuListClassNames.root)) {
           break;
-        } else if (ancestor?.classList.contains('fui-MenuGrid')) {
+        } else if (ancestor?.classList.contains('group/fui-menu-grid')) {
           ancestorComponentName = 'MenuGrid';
-        } else if (ancestor?.classList.contains('fui-MenuGridItem')) {
+        } else if (ancestor?.classList.contains('group/fui-menu-grid-item')) {
           ancestorComponentName = 'MenuGridItem';
-        } else if (ancestor?.classList.contains('fui-MenuGridRow')) {
+        } else if (ancestor?.classList.contains('group/fui-menu-grid-row')) {
           ancestorComponentName = 'MenuGridRow';
-        } else if (ancestor?.classList.contains('fui-MenuGridCell')) {
+        } else if (ancestor?.classList.contains('group/fui-menu-grid-cell')) {
           ancestorComponentName = 'MenuGridCell';
         }
         if (['MenuItem', 'MenuItemCheckbox', 'MenuItemRadio'].includes(componentName)) {
@@ -69,7 +78,9 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
 const getCellOfTrigger = (trigger: HTMLElement | null, targetDocument?: Document): HTMLElement | null => {
   let ancestor = trigger?.parentElement;
   while (ancestor && ancestor !== targetDocument?.body) {
-    if (ancestor?.classList.contains('fui-MenuGridCell')) {
+    // @fluentui/react-menu-grid-preview's marker (D16.1/D16.5), a literal for the same
+    // package-cycle reason as the chain above.
+    if (ancestor?.classList.contains('group/fui-menu-grid-cell')) {
       return ancestor;
     }
     ancestor = ancestor?.parentElement ?? null;
