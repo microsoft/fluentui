@@ -1,0 +1,65 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * The two scroll-lock classes `useDisableBodyScroll` toggles on `documentElement` and `body`
+ * while a modal DialogSurface is open. Neither is a slot: `useDisableBodyScroll.ts` adds and
+ * removes them with `classList.add` / `.remove`, so nothing here goes through `clsx`, no
+ * marker applies (a marker is a component's identity, and these elements are the consumer's),
+ * and there is no mergeClasses argument order to mirror — each class was a standalone
+ * `makeResetStyles`.
+ *
+ * ── ALTITUDE: `fui.base`, and what that changes ─────────────────────────────────────
+ * Both slices are `makeResetStyles`, so the cookbook maps them to the levelless `fui.base`
+ * (CONVERSION_GUIDE §1). Nothing else in the fui family competes for these properties, so the
+ * choice is only visible against CONSUMER css on `<html>` / `<body>`:
+ *
+ *   • Against a LAYERED consumer rule — including an app preflight in `fui.base`, the
+ *     sanctioned slot for one — the class still wins on specificity: `.html-no-scroll` is
+ *     0-1-0 against `html`/`body`'s 0-0-1, exactly as it was under Griffel.
+ *   • Against an UNLAYERED consumer rule (`body { overflow: visible }` in a plain
+ *     stylesheet) the class now LOSES, where the Griffel atomic used to win on specificity —
+ *     unlayered beats layered before specificity is consulted.
+ *
+ * That second case is a real semantic change and it is the accepted half of D2, not an
+ * oversight: "consumer CSS wins" is the contract this migration is buying, and D2 lists
+ * "unlayered third-party resets now beat Fluent styles" among the failure modes it prices in.
+ * Deliberately NOT routed to the D2-amendment-5 unlayered block — that escape hatch exists
+ * for elements owned by an EXTERNAL or unconverted GRIFFEL package, whose unlayered atomics a
+ * layered rule can never beat. `<html>` and `<body>` are owned by the consumer, and the
+ * cascade is supposed to hand them the win.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/utils/useDisableBodyScroll.styles.js.
+ */
+
+@layer fui.base {
+  /* from useHTMLNoScrollStyles (makeResetStyles) */
+  .html-no-scroll {
+    /* `overflowY: ['hidden', 'clip']` — compiled as two declarations, a progressive
+       enhancement pair rather than a Griffel invention: `clip` wins where it parses (it also
+       suppresses programmatic scrolling), `hidden` is the floor everywhere else. */
+    overflow-y: hidden;
+    overflow-y: clip;
+
+    /* Reserve the scrollbar's width while it is hidden, so locking the scroll does not
+       reflow the page sideways. */
+    scrollbar-gutter: stable;
+  }
+
+  /* from useBodyNoScrollStyles (makeResetStyles) */
+  .body-no-scroll {
+    overflow-y: hidden;
+  }
+}

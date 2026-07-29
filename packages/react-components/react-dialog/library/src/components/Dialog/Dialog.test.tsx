@@ -18,6 +18,12 @@ describe('Dialog', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classnames-object',
+      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+      // Dialog owns no element and no styles hook, so it stamps no named-group marker and
+      // there is nothing for `component-has-group-marker` (a default test since
+      // DECISIONS.md D16.6) to target. Its child components carry the markers —
+      // `group/fui-dialog-surface`, `group/fui-dialog-body`, and so on.
+      'component-has-group-marker',
       // TODO:
       // onOpenChange: A second (data) argument cannot be a union
       'consistent-callback-args',

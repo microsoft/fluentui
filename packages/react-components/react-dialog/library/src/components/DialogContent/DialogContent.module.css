@@ -1,0 +1,81 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useDialogContentStyles_unstable.
+ *
+ *   `root` slot
+ *     1 dialogContentClassNames.root   → REMOVED (D16.1). The root's identity is now the
+ *                                        `group/fui-dialog-content` marker, written by the
+ *                                        hook as clsx argument 2; `styles.root` leads so the
+ *                                        marker is never `classList[0]` (D15.1 / D16.2). The
+ *                                        EXPORT is retained, re-pointed at the marker and
+ *                                        narrowed to `{ root: string }` (D16.5).
+ *     2 useStyles        (makeReset)   → fui.base   .root
+ *     3 consumer className             → unlayered (always wins)
+ *
+ * The whole component is a single `makeResetStyles`, so `fui.components.l1` is empty and no
+ * data-attributes are needed. Every declaration styles DialogContent's own element, so
+ * nothing is l2. The compiled reset has a `null` rtl class — nothing flips, so no logical
+ * properties and no `@variant rtl` twin are required. Grepped this package for
+ * `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits, so D2 amendment 5 does not
+ * apply.
+ *
+ * ── Stroke widths (DECISIONS.md D4 addendum) ────────────────────────────────────────
+ * The Griffel source reads `tokens.strokeWidthThick` for BOTH the padding and the negative
+ * margin that cancels it — the pair exists so a focus ring drawn just outside a child is not
+ * clipped by this element's `overflow-y: auto`, and it only nets to zero if both halves are
+ * the same length. `padding` and `margin` are spacing-powered families (probe-measured), so
+ * both take the utility: `p-thick` / `-m-thick`. Raw `var(--strokeWidthThick)` is forbidden
+ * in component modules — it is the one form that does not ride `--base-scale`, which would
+ * break exactly the cancellation this rule depends on under user zoom.
+ *
+ * `min-height: 32px` is a dimensional px literal, so it takes the NUMERIC utility
+ * `min-h-32`, which computes through the same `--base-scale` (the precedent set by
+ * react-accordion's `min-h-44` / `min-h-32` button heights).
+ *
+ * Verified against the compiled Griffel atomic in
+ * lib-commonjs/components/DialogContent/useDialogContentStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useStyles (makeResetStyles) — root arg #2 */
+  .root {
+    /* `padding: tokens.strokeWidthThick` / `margin: calc(tokens.strokeWidthThick * -1)` */
+    @apply p-thick -m-thick;
+
+    /* from typographyStyles.body1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    @apply overflow-y-auto min-h-32 box-border;
+
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+    /* DIALOG_MEDIA_QUERY_SHORT_SCREEN — a raw at-rule, not a catalog variant: the shared
+       catalog lives in another package and holds no Fluent breakpoints, and the cookbook
+       bans variant DEFINITIONS in component modules, not at-rules. On a short screen the
+       SURFACE scrolls (DialogSurface.module.css sets `overflow-y: auto` there), so the
+       content must not open a second scroll container inside it. */
+    @media screen and (max-height: 359px) {
+      overflow-y: unset;
+    }
+  }
+}

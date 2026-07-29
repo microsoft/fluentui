@@ -3,7 +3,7 @@
 exports[`DialogBody renders a default state 1`] = `
 <div>
   <div
-    class="fui-DialogBody"
+    class="group/fui-dialog-body"
   >
     Default DialogBody
   </div>

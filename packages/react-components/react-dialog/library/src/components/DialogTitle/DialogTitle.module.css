@@ -1,0 +1,161 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useDialogTitleStyles_unstable.
+ *
+ *   `root` slot
+ *     1 dialogTitleClassNames.root       → REMOVED (D16.1). The root's identity is now the
+ *                                          `group/fui-dialog-title` marker, written by the
+ *                                          hook as clsx argument 2; `styles.root` leads so
+ *                                          the marker is never `classList[0]` (D15.1 /
+ *                                          D16.2). The EXPORT is retained, re-pointed at the
+ *                                          marker and narrowed to `{ root: string }` (D16.5).
+ *     2 useRootResetStyles  (makeReset)  → fui.base            .root
+ *     3 useStyles.rootWithoutAction      → fui.components.l1   .root-without-action
+ *     4 consumer className               → unlayered (always wins)
+ *
+ *   `action` slot
+ *     1 dialogTitleClassNames.action     → REMOVED (D16.1) — sub-slots have no public handle
+ *     2 useActionResetStyles (makeReset) → fui.base            .action
+ *     3 consumer className               → unlayered
+ *
+ *   internal close <button> (not a slot; `useDialogTitle.tsx` renders it as the default
+ *   `action` children on a non-modal Dialog and applies the class directly)
+ *     1 useDialogTitleInternalStyles (makeReset) → fui.base    .action-button
+ *
+ * ── The one real conflict ───────────────────────────────────────────────────────────
+ * `.root-without-action` re-sets `grid-column-end` (4) over the root reset's 3 — the title
+ * spans the action column when there is no action to put in it. Griffel resolved this by
+ * bucket (`d` beats `r`); here the altitude does it: `fui.components.l1` beats the levelless
+ * `fui.base` unconditionally, independent of file position and specificity.
+ *
+ * `!state.action` stays a CONDITIONAL MODULE CLASS rather than becoming a `data-*`
+ * attribute. D15.6 (as resolved) makes `data-*` a FALLBACK for state that CSS cannot
+ * otherwise reach: the styling target here is the root itself, no descendant or sibling
+ * module reads "has an action", and adding an attribute would be new public DOM surface for
+ * nothing.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * All three elements are DialogTitle's own, so nothing is l2. The `<svg>` inside the close
+ * button comes from `@fluentui/react-icons` (still Griffel, D11) but no rule here targets
+ * it — grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero
+ * hits — so the D2-amendment-5 unlayered block does not apply to this module.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * `.rxjm636` (root), `.fsyjsko` (rootWithoutAction) and `.r13kcrze` (action) all have a
+ * `null` rtl twin: grid placement follows the grid's own inline axis and `justify-self: end`
+ * / `align-self: start` are logical keywords. The internal button DOES compile to an
+ * `[ltr, rtl]` pair (`.r2avt6e` / `.roj2bbc`), but diffing them the only difference is
+ * DECLARATION ORDER inside the `[data-fui-focus-visible]` rules (`top/right/bottom/left` vs
+ * `top/left/bottom/right`) with identical values on every side — nothing to express, and the
+ * offsets live in the shared `fui-focus-outline` utility anyway. No `@variant rtl` twin.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/DialogTitle/useDialogTitleStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootResetStyles (makeResetStyles) — root arg #2 */
+  .root {
+    /* from typographyStyles.subtitle1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase500);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase500);
+
+    @apply m-0;
+
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  /* from useActionResetStyles (makeResetStyles) — action arg #2 */
+  .action {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 3;
+    justify-self: end;
+    align-self: start;
+  }
+
+  /*
+   * from useDialogTitleInternalStyles (makeResetStyles).
+   *
+   * Not a slot: `useDialogTitle.tsx` builds the default close <button> for a non-modal
+   * Dialog and hands this class straight to its `className`. The export stays a zero-arg
+   * function so that call site is unchanged (see useDialogTitleStyles.styles.ts).
+   */
+  .action-button {
+    overflow: visible;
+
+    @apply p-0;
+
+    border-style: none;
+
+    @apply relative;
+
+    box-sizing: content-box;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+
+    @apply cursor-pointer;
+
+    /* `lineHeight: 0` — a unitless number, not a length, so no spacing utility applies
+       (`leading-0` would emit `line-height: calc(var(--spacing) * 0)`, a LENGTH). The button
+       is a bare icon wrapper and this collapses the line box around it. */
+    line-height: 0;
+
+    /* compiled: `-webkit-appearance:button` only — the Griffel source writes the prefixed
+       property by hand (`WebkitAppearance`), so there is no `-moz-` alias to drop and the
+       unprefixed `appearance` was never emitted. Reproduced exactly. */
+    -webkit-appearance: button;
+
+    text-align: unset;
+
+    /*
+     * from `...createFocusOutlineStyle()` spread into the same reset — default options, so
+     * the selector is keyborg's `[data-fui-focus-visible]` and the declarations are the
+     * shared `fui-focus-outline` utility (react-tailwind-theme/css/utilities.css). The
+     * compiled atomics for this button match it declaration for declaration, including the
+     * `@media (forced-colors: active)` Highlight block the utility carries. The `::after`
+     * ring is positioned against the `position: relative` set above.
+     *
+     * `createFocusOutlineStyle` also emits the two `outline-style: none` rules, which sit
+     * OUTSIDE the focus-visible selector and therefore stay here with the caller.
+     */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.rootWithoutAction — root arg #3 */
+  .root-without-action {
+    grid-column-end: 4;
+  }
+}

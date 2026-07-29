@@ -1,0 +1,143 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useDialogActionsStyles_unstable.
+ *
+ *   `root` slot
+ *     1 dialogActionsClassNames.root   → REMOVED (D16.1). The root's identity is now the
+ *                                        `group/fui-dialog-actions` marker, written by the
+ *                                        hook as clsx argument 2; `styles.root` leads so the
+ *                                        marker is never `classList[0]` (D15.1 / D16.2). The
+ *                                        EXPORT is retained, re-pointed at the marker and
+ *                                        narrowed to `{ root: string }` (D16.5).
+ *     2 useResetStyles        (makeReset)  → fui.base            .root
+ *     3 useStyles.gridPositionStart        → fui.components.l1   .grid-position-start
+ *     4 useStyles.gridPositionEnd          → fui.components.l1   .grid-position-end
+ *     5 useStyles.fluidStart               → fui.components.l1   .fluid-start
+ *     6 useStyles.fluidEnd                 → fui.components.l1   .fluid-end
+ *     7 consumer className                 → unlayered (always wins)
+ *
+ * ── ORDER IS LOAD-BEARING HERE (CONVERSION_GUIDE §1, order rule) ────────────────────
+ * Two things about the order below are deliberate and must not be "tidied":
+ *
+ * 1. SOURCE-ORDER INVERSION. `makeStyles` DECLARES `gridPositionEnd` before
+ *    `gridPositionStart`, but `mergeClasses` passes start (#3) before end (#4). The blocks
+ *    are written in ARGUMENT order, i.e. start first. Nothing actually turns on it — the two
+ *    are mutually exclusive (`position === 'start'` vs `'end'`) — but the rule is to encode
+ *    argument order, not declaration order, and a future reader must not "restore" the
+ *    source ordering.
+ * 2. REAL CONFLICTS. `.fluid-start` (#5) re-sets `grid-column-end` over `.grid-position-start`
+ *    (#3), and `.fluid-end` (#6) re-sets `grid-column-start` over `.grid-position-end` (#4).
+ *    Both fluid classes are applied ALONGSIDE the position class they override (the hook
+ *    guards them with `state.fluid && state.position === …`), so both pairs land on the same
+ *    element at the same `:where()`-flat specificity and file position is the only tiebreak.
+ *    Griffel resolved these by deleting the earlier atomic for the same property key; here
+ *    the fluid blocks must simply be written LAST.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * Every rule styles DialogActions' own element, so everything is l1 (or the levelless
+ * `fui.base` for the `makeResetStyles` slice). The action BUTTONS are consumer-supplied
+ * children and this component styles none of them, so there is no `fui.components.l2` block.
+ *
+ * The `justify-self: stretch` the reset sets at the narrow breakpoint is overridden by
+ * `.grid-position-start` / `.grid-position-end`, which have no media query at all. That is
+ * an altitude win, not a source-order one: `fui.base` loses to `fui.components.l1`
+ * unconditionally, which is exactly how Griffel's reset bucket lost to the `d`/`m` buckets.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Every compiled class here has a `null` rtl twin: the grid placement is expressed in
+ * `grid-column-start` / `grid-column-end`, which follow the grid's own inline axis and are
+ * already direction-aware, and `justify-self: start`/`end` are logical keywords. Nothing to
+ * flip, no `@variant rtl` twin. Grepped this package for `fui-Icon-filled` /
+ * `fui-Icon-regular` / `:global(`: zero hits, so D2 amendment 5 does not apply.
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * DIALOG_GAP = '8px' lands exactly on the S spacing step → the named utility. The root is a
+ * flex ROW (it becomes a column only at the narrow breakpoint), so `horizontal` is the axis
+ * that matches; the compiled atomic is the `gap` shorthand, so the utility is applied in its
+ * shorthand form too.
+ *
+ * ── `position` / `fluid` stay module classes, not data-attributes ───────────────────
+ * D15.6 (as resolved) makes `data-*` a FALLBACK for state CSS cannot otherwise reach. These
+ * two are enum/boolean look props on the element being styled, no descendant or sibling
+ * module reads them, and the catalog has no `position` variant — so a conditional module
+ * class is the direct translation and adds no public DOM surface.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/DialogActions/useDialogActionsStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useResetStyles (makeResetStyles) — root arg #2 */
+  .root {
+    /* DIALOG_GAP = '8px' → the S spacing step (D4 amendment) */
+    @apply gap-horizontal-s;
+
+    @apply h-fit box-border flex;
+
+    grid-row-start: 3;
+    grid-row-end: 3;
+
+    /* DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR — a raw at-rule, not a catalog variant: the
+       shared catalog lives in another package and holds no Fluent breakpoints, and the
+       cookbook bans variant DEFINITIONS in component modules, not at-rules. */
+    @media screen and (max-width: 480px) {
+      @apply flex-col;
+
+      justify-self: stretch;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.gridPositionStart — root arg #3 */
+  .grid-position-start {
+    justify-self: start;
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    @media screen and (max-width: 480px) {
+      grid-column-end: 4;
+      grid-row-start: 3;
+      grid-row-end: auto;
+    }
+  }
+
+  /* from useStyles.gridPositionEnd — root arg #4 */
+  .grid-position-end {
+    justify-self: end;
+    grid-column-start: 2;
+    grid-column-end: 4;
+
+    @media screen and (max-width: 480px) {
+      grid-column-start: 1;
+      grid-row-start: 4;
+      grid-row-end: auto;
+    }
+  }
+
+  /* from useStyles.fluidStart — root arg #5. Overrides `.grid-position-start`'s
+     `grid-column-end: 2`; must stay AFTER it (see the ORDER note in the header). */
+  .fluid-start {
+    grid-column-end: 4;
+  }
+
+  /* from useStyles.fluidEnd — root arg #6. Overrides `.grid-position-end`'s
+     `grid-column-start: 2`; must stay AFTER it (see the ORDER note in the header). */
+  .fluid-end {
+    grid-column-start: 1;
+  }
+}

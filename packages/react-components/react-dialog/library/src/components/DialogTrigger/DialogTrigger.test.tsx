@@ -18,6 +18,11 @@ describe('DialogTrigger', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classnames-object',
+      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+      // DialogTrigger clones its single child and owns no element or styles hook of its
+      // own, so it stamps no named-group marker and there is nothing for
+      // `component-has-group-marker` (a default test since DECISIONS.md D16.6) to target.
+      'component-has-group-marker',
       // DialogTrigger does not have own styles
       'make-styles-overrides-win',
     ],

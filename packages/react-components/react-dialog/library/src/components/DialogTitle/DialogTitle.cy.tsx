@@ -15,7 +15,11 @@ import {
   DialogTrigger,
 } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-button';
-import { dialogActionSelector, dialogTriggerOpenId, dialogTriggerOpenSelector } from '../../testing/selectors';
+import {
+  dialogTitleCloseButtonSelector,
+  dialogTriggerOpenId,
+  dialogTriggerOpenSelector,
+} from '../../testing/selectors';
 
 const mount = (element: JSXElement) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
@@ -46,7 +50,7 @@ describe('DialogTitle', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get(dialogActionSelector).should('not.exist');
+      cy.get(dialogTitleCloseButtonSelector).should('not.exist');
     });
   });
   describe('modalType = non-modal', () => {
@@ -75,7 +79,7 @@ describe('DialogTitle', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get(dialogActionSelector).should('exist');
+      cy.get(dialogTitleCloseButtonSelector).should('exist');
     });
   });
   describe('modalType = alert', () => {
@@ -104,7 +108,7 @@ describe('DialogTitle', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get(dialogActionSelector).should('not.exist');
+      cy.get(dialogTitleCloseButtonSelector).should('not.exist');
     });
   });
 });

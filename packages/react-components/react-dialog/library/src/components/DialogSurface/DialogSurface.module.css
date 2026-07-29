@@ -1,0 +1,228 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useDialogSurfaceStyles_unstable. Argument order and source-declaration order agree, and
+ * no two slices set the same property on the same slot.
+ *
+ *   `root` slot
+ *     1 dialogSurfaceClassNames.root      → REMOVED (D16.1). The root's identity is now the
+ *                                           `group/fui-dialog-surface` marker, written by the
+ *                                           hook as clsx argument 2; `styles.root` leads so the
+ *                                           marker is never `classList[0]` (D15.1 / D16.2).
+ *                                           The EXPORT is retained, re-pointed at the marker
+ *                                           and narrowed to `{ root: string }` (D16.5).
+ *     2 useRootBaseStyle    (makeReset)   → fui.base            .root
+ *     3 useStyles.dialogHidden            → fui.components.l1   .dialog-hidden
+ *     4 consumer className                → unlayered (always wins)
+ *
+ *   `backdrop` slot
+ *     1 dialogSurfaceClassNames.backdrop  → REMOVED (D16.1) — sub-slots have no public handle
+ *     2 useBackdropBaseStyle (makeReset)  → fui.base            .backdrop
+ *     3 useStyles.dialogHidden            → fui.components.l1   .dialog-hidden
+ *     4 useStyles.nestedDialogBackdrop    → fui.components.l1   .nested-dialog-backdrop
+ *     5 consumer className                → unlayered
+ *
+ * `.dialog-hidden` is ONE local applied to two different elements, exactly as the single
+ * Griffel `dialogHidden` slice was. `.dialog-hidden` (arg #3) is written before
+ * `.nested-dialog-backdrop` (arg #4) so file position mirrors argument order; they set
+ * disjoint properties, so nothing actually turns on it.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * Every rule here styles DialogSurface's OWN two elements, so everything is l1 (or the
+ * levelless `fui.base` for the two `makeResetStyles` slices). Nothing is applied over
+ * another component's hook output, so there is no `fui.components.l2` block.
+ *
+ * ── D2 amendment 5 (UNLAYERED) deliberately NOT applied ─────────────────────────────
+ * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
+ * The Griffel source contains no `[& .${xClassNames.slot}]` selector of any kind, so no rule
+ * here has a foreign element as its subject and nothing needs to leave the layer system.
+ *
+ * The root is PORTALLED (renderDialogSurface_unstable wraps it in `<Portal>`), which changes
+ * where the element lands in the DOM but not how it is classed: the classes still arrive
+ * through this hook on `state.root` / `state.backdrop`, and every selector below is
+ * self-scoped, so portalling is invisible to the CSS.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The root reset compiles to an `[ltr, rtl]` pair (`.r1u3t6p6` / `.r5coedp`). Diffing them,
+ * exactly two declarations flip and both are pure PROPERTY flips inside the short-screen
+ * media query — `padding-right`/`padding-left` and `border-right-width`/`border-left-width`
+ * — so both become logical properties and no `@variant rtl` twin is needed. The remaining
+ * difference between the two compiled classes is DECLARATION ORDER inside the
+ * `[data-fui-focus-visible]` rules (`top/right/bottom/left` vs `top/left/bottom/right`) with
+ * identical values on every side: nothing to express. `border-top-width` /
+ * `border-bottom-width` are block-axis and identical in both, so they stay physical.
+ * The backdrop reset has a `null` rtl class — nothing to flip.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
+ * The Griffel source reads plain string constants from `../../contexts`, not spacing tokens,
+ * but the D4 amendment routes a px literal to the named utility whenever it lands on a
+ * spacing step:
+ *   SURFACE_PADDING            '24px' → XXL step → `p-horizontal-xxl`
+ *   SURFACE_PADDING − OFFSET   calc(24px - 4px) = 20px → XL step → `pe-horizontal-xl`
+ * The two that land on no step and sit on properties Tailwind spacing does NOT power
+ * (border widths — probe-measured, D4 addendum: `border-*` is a fixed bare-number px
+ * progression, not a theme lookup) are written `calc(Npx * var(--base-scale))` so they ride
+ * the same scale as everything above:
+ *   SURFACE_BORDER_WIDTH                        '1px'
+ *   DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET   '4px'
+ * That lockstep is load-bearing here rather than cosmetic: the short-screen block trades
+ * 4px of padding for 4px of transparent border to keep the scrollbar clear of the border
+ * radius, and the trade only nets to zero if both halves scale together.
+ * `max-width: 600px` takes the numeric utility `max-w-600` (`max-w-` IS spacing-powered).
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/DialogSurface/useDialogSurfaceStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseStyle (makeResetStyles) — root arg #2 */
+  .root {
+    @apply inset-0;
+
+    /* SURFACE_PADDING = '24px', exactly the XXL spacing step (D4 amendment).
+       Kept as the `padding` shorthand, matching the compiled `padding:24px`: the only
+       longhand that competes is `padding-inline-end` in the short-screen block, which is
+       written LATER in this same rule and therefore wins. */
+    @apply p-horizontal-xxl;
+
+    @apply m-auto;
+
+    /* `borderStyle: 'none'` — kept verbatim for the source trail. It is immediately
+       re-set to `solid` by the `border` shorthand that follows it in the Griffel source
+       (and by the expanded longhands below), exactly as in the compiled atomic. */
+    border-style: none;
+
+    overflow: unset;
+
+    /*
+     * `border: 1px solid var(--colorTransparentStroke)` expanded to longhands
+     * (CONVERSION_GUIDE §2): the short-screen block below overrides three widths
+     * individually, and the focus-visible ring overrides all four colors, so the
+     * shorthand has competing longhands on two of its three sub-properties.
+     */
+    border-top-width: calc(1px * var(--base-scale));
+    border-right-width: calc(1px * var(--base-scale));
+    border-bottom-width: calc(1px * var(--base-scale));
+    border-left-width: calc(1px * var(--base-scale));
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: var(--colorTransparentStroke);
+    border-right-color: var(--colorTransparentStroke);
+    border-bottom-color: var(--colorTransparentStroke);
+    border-left-color: var(--colorTransparentStroke);
+
+    border-radius: var(--borderRadiusXLarge);
+
+    @apply block;
+
+    /* compiled: `-webkit-user-select:unset;-moz-user-select:unset;user-select:unset`. The
+       `-moz-` alias is dropped — Firefox has supported the unprefixed property since 69
+       (2019), well below this repo's baseline; `-webkit-` is kept because Safari needed it
+       until 16.4 (same call as react-select's `appearance`). */
+    -webkit-user-select: unset;
+    user-select: unset;
+
+    visibility: unset;
+
+    @apply fixed h-fit max-w-600;
+
+    /* Compiled as two declarations, not a fallback list Griffel invented: `100dvh` wins
+       where it parses and `100vh` is the floor everywhere else. Both are viewport units,
+       so neither rides `--base-scale`. */
+    max-height: 100vh;
+    max-height: 100dvh;
+
+    @apply box-border;
+
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+
+    /* Same value as DialogSurfaceMotion's last keyframe, so an opted-out surfaceMotion
+       still renders correctly (comment carried over from the Griffel source). */
+    box-shadow: var(--shadow64);
+
+    /*
+     * from `...createFocusOutlineStyle()` spread into the same reset — default options, so
+     * the selector is keyborg's `[data-fui-focus-visible]` and the declarations are the
+     * shared `fui-focus-outline` utility (react-tailwind-theme/css/utilities.css), which was
+     * byte-compared against a `createFocusOutlineStyle()` AOT consumer when it was written.
+     * The compiled atomics for THIS component match it declaration for declaration,
+     * including the `@media (forced-colors: active)` Highlight block the utility carries.
+     *
+     * `createFocusOutlineStyle` also emits the two `outline-style: none` rules, which sit
+     * OUTSIDE the focus-visible selector and therefore stay here with the caller.
+     */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+
+    /* DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR — a raw at-rule, not a catalog variant: the
+       shared catalog lives in another package and holds no Fluent breakpoints, and the
+       cookbook bans variant DEFINITIONS in component modules, not at-rules. */
+    @media screen and (max-width: 480px) {
+      max-width: 100vw;
+    }
+
+    /* DIALOG_MEDIA_QUERY_SHORT_SCREEN */
+    @media screen and (max-height: 359px) {
+      overflow-y: auto;
+
+      /*
+       * Offset the scrollbar with transparent border so it does not collide with the
+       * border radius (comment carried over from the Griffel source). The inline-end
+       * padding gives up exactly what the inline-end border takes:
+       * `calc(24px - 4px)` = 20px = the XL spacing step.
+       */
+      @apply pe-horizontal-xl;
+
+      border-inline-end-width: calc(4px * var(--base-scale));
+      border-top-width: calc(4px * var(--base-scale));
+      border-bottom-width: calc(4px * var(--base-scale));
+    }
+  }
+
+  /* from useBackdropBaseStyle (makeResetStyles) — backdrop arg #2 */
+  .backdrop {
+    @apply inset-0 fixed;
+
+    background-color: var(--colorBackgroundOverlay);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.dialogHidden — root arg #3 AND backdrop arg #3.
+   * One local on two elements, exactly as the one Griffel slice was.
+   */
+  .dialog-hidden {
+    @apply pointer-events-none;
+  }
+
+  /* from useStyles.nestedDialogBackdrop — backdrop arg #4 */
+  .nested-dialog-backdrop {
+    background-color: var(--colorTransparentBackground);
+  }
+}

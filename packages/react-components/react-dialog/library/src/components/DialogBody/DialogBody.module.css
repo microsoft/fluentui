@@ -1,0 +1,86 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useDialogBodyStyles_unstable.
+ *
+ *   `root` slot
+ *     1 dialogBodyClassNames.root      → REMOVED (D16.1). The root's identity is now the
+ *                                        `group/fui-dialog-body` marker, written by the hook
+ *                                        as clsx argument 2; `styles.root` leads so the marker
+ *                                        is never `classList[0]` (D15.1 / D16.2). The EXPORT is
+ *                                        retained, re-pointed at the marker and narrowed to
+ *                                        `{ root: string }` (D16.5).
+ *     2 useResetStyles   (makeReset)   → fui.base   .root
+ *     3 consumer className             → unlayered (always wins)
+ *
+ * The whole component is a single `makeResetStyles`, so `fui.components.l1` is empty and no
+ * data-attributes are needed. Every declaration styles DialogBody's own element, so nothing
+ * is l2. The compiled reset has a `null` rtl class — nothing flips, no logical properties
+ * and no `@variant rtl` twin are required. Grepped this package for `fui-Icon-filled` /
+ * `fui-Icon-regular` / `:global(`: zero hits, so D2 amendment 5 does not apply.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
+ * DIALOG_GAP = '8px' lands exactly on the S spacing step → the named utility. DialogBody is
+ * a GRID and the compiled atomic is the `gap` shorthand (both axes), so the utility is
+ * applied in its shorthand form too; the axis word in `gap-horizontal-s` names the token, not
+ * the axis it is applied to (`--spacing-*` is axis-agnostic — CONVERSION_GUIDE §2).
+ *
+ * `SURFACE_PADDING` ('24px') appears here only inside a `calc()` against a viewport unit, so
+ * no utility can express it and it is written `calc(24px * var(--base-scale))` — the same
+ * scaled length `p-horizontal-xxl` compiles to in DialogSurface.module.css, which is what
+ * keeps "the body may be as tall as the surface minus its padding" true at any root font
+ * size rather than only at 16px.
+ *
+ * Verified against the compiled Griffel atomic in
+ * lib-commonjs/components/DialogBody/useDialogBodyStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useResetStyles (makeResetStyles) — root arg #2 */
+  .root {
+    overflow: unset;
+
+    /* DIALOG_GAP = '8px' → the S spacing step (D4 amendment) */
+    @apply gap-horizontal-s;
+
+    @apply grid;
+
+    /* Compiled as two declarations: `100dvh` wins where it parses, `100vh` is the floor
+       everywhere else. The viewport unit does not scale; the `24px` inside it does, so it
+       stays in lockstep with DialogSurface's `p-horizontal-xxl`. */
+    max-height: calc(100vh - 2 * calc(24px * var(--base-scale)));
+    max-height: calc(100dvh - 2 * calc(24px * var(--base-scale)));
+
+    @apply box-border;
+
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr auto;
+
+    /* DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR — a raw at-rule, not a catalog variant: the
+       shared catalog lives in another package and holds no Fluent breakpoints, and the
+       cookbook bans variant DEFINITIONS in component modules, not at-rules. */
+    @media screen and (max-width: 480px) {
+      max-width: 100vw;
+
+      /* The actions row moves onto its own line, so the grid grows a third row. */
+      grid-template-rows: auto 1fr auto;
+    }
+
+    /* DIALOG_MEDIA_QUERY_SHORT_SCREEN */
+    @media screen and (max-height: 359px) {
+      max-height: unset;
+    }
+  }
+}

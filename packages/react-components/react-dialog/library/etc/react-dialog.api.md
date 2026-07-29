@@ -18,7 +18,6 @@ import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { ScaleParams } from '@fluentui/react-motion-components-preview';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import type { useModalAttributes } from '@fluentui/react-tabster';
 
@@ -37,8 +36,10 @@ export const DIALOG_MEDIA_QUERY_SHORT_SCREEN = "@media screen and (max-height: 3
 // @public
 export const DialogActions: ForwardRefComponent<DialogActionsProps>;
 
-// @public (undocumented)
-export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots>;
+// @public
+export const dialogActionsClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type DialogActionsPosition = 'start' | 'end';
@@ -71,8 +72,10 @@ export type DialogBackdropSlotProps = ExtractSlotProps<Slot<'div'> & {
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
 
-// @public (undocumented)
-export const dialogBodyClassNames: SlotClassNames<DialogBodySlots>;
+// @public
+export const dialogBodyClassNames: {
+    root: string;
+};
 
 // @public
 export type DialogBodyProps = ComponentProps<DialogBodySlots> & {};
@@ -88,8 +91,10 @@ export type DialogBodyState = ComponentState<DialogBodySlots>;
 // @public
 export const DialogContent: ForwardRefComponent<DialogContentProps>;
 
-// @public (undocumented)
-export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
+// @public
+export const dialogContentClassNames: {
+    root: string;
+};
 
 // @public
 export type DialogContentProps = ComponentProps<DialogContentSlots>;
@@ -172,8 +177,10 @@ export type DialogState = ComponentState<InternalDialogSlots> & DialogContextVal
 // @public
 export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 
-// @public (undocumented)
-export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'backdropMotion'>>;
+// @public
+export const dialogSurfaceClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type DialogSurfaceContextValue = boolean;
@@ -211,8 +218,10 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<Dialo
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
 
-// @public (undocumented)
-export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots>;
+// @public
+export const dialogTitleClassNames: {
+    root: string;
+};
 
 // @public
 export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
