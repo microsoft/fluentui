@@ -11,6 +11,7 @@ import {
   Tooltip,
   FluentProvider,
   tooltipClassNames,
+  fuiSelector,
 } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-utilities';
 
@@ -39,6 +40,8 @@ describe('Tooltip visibility with strict mode', () => {
     cy.realPress('Tab');
     cy.get('button').focus().realPress('Enter');
     cy.get('[role="menuitem"]').should('be.focused');
-    cy.get(`.${tooltipClassNames.content}`).should('be.visible');
+    // `tooltipClassNames.root` is the group marker riding Tooltip's `content` element
+    // (DECISIONS.md D16.5); `fuiSelector` escapes its `/` so the string is a valid selector.
+    cy.get(fuiSelector(tooltipClassNames.root)).should('be.visible');
   });
 });
