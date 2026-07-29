@@ -25,14 +25,19 @@ describe('Checkbox', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` is disabled because Checkbox no longer
+    // publishes BEM statics (DECISIONS.md D16.1). All three of its sub-tests hard-code the
+    // `fui-Checkbox` / `fui-Checkbox__<slot>` format (defaultTests.tsx:244-245, 277), so it
+    // fails under the retained-constant policy just as it would under outright deletion
+    // (D16.6). `component-has-group-marker` (now a default test) is its replacement: it asserts the marker
+    // is stamped and — the machine-checkable form of D15.1/D16.2 — that it is never
+    // `classList[0]`.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: { label: 'Test Label' },
-        },
-      ],
       'consistent-callback-args': {
         legacyCallbacks: ['onChange'],
       },
