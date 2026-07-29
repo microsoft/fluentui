@@ -1,0 +1,384 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useAvatarGroupPopoverStyles_unstable, not source declaration order.
+ *
+ * TRIGGERBUTTON slot  (`<button>` — this component's own element, and its OUTERMOST
+ *                      rendered node, so it is the slot that carries the group marker)
+ *   1  useGroupChildClassName(layout, size)      → fui.components.l1  (AvatarGroupItem.module.css)
+ *   2  useSizeStyles[size]                       → fui.components.l1  (Avatar.module.css)
+ *   3  useTriggerButtonStyles.base               → fui.components.l1  `.trigger-button`
+ *   4  .pie                  (layout === 'pie')  → fui.components.l1  `.trigger-button-pie`
+ *   5  .focusIndicator                           → fui.components.l1  `.trigger-button` @variant focus-visible-fui
+ *   6  .states               (layout !== 'pie')  → fui.components.l1  `.trigger-button-interactive`
+ *   7  .selected  (!pie && popoverOpen)          → fui.components.l1  `.trigger-button-selected`
+ *   8a .borderThin|Thick|Thicker|Thickest        → fui.components.l1  `.trigger-button` [data-size]
+ *   8b .caption2Strong…title3 | .icon12…icon48   → fui.components.l1  `.indicator-count` / `.indicator-icon`
+ *   9  consumer className                        → unlayered (always wins)
+ *
+ * CONTENT slot (`<ul>` — own element)
+ *   1  useContentStyles.base                     → fui.components.l1  `.content`
+ *   2  consumer className                        → unlayered
+ *
+ * POPOVERSURFACE slot (a `<PopoverSurface>` root — ANOTHER component's element)
+ *   1  usePopoverSurfaceStyles.base              → fui.components.l2  `.popover-surface`
+ *   2  consumer className                        → unlayered
+ *
+ * ── ALTITUDE: why popoverSurface is l2, and why it is LAYERED ─────────────────────────
+ * `popoverSurface`'s elementType is `PopoverSurface`, so the class this hook assigns
+ * arrives at `usePopoverSurfaceStyles_unstable` as that component's CONSUMER className —
+ * which is exactly where mergeClasses used to give it the win. `fui.components.l2` makes
+ * that win guaranteed rather than argument-order-dependent (D2 amendment 2); the collision
+ * that matters is `padding`, which PopoverSurface sets per size at l1.
+ *
+ * It stays LAYERED because `@fluentui/react-popover` is CONVERTED (ledger: validated,
+ * batch 4) — every rule in `PopoverSurface.module.css` sits in `fui.components.l1`, so l2
+ * outranks it. The D2-amendment "must be UNLAYERED" rule applies only when the target is
+ * still Griffel (or external): an unlayered author declaration beats EVERY layer, which is
+ * what would silently invert this override. Nothing unlayered competes here.
+ *
+ * ── ORDER that is load-bearing ────────────────────────────────────────────────────────
+ * Every catalog variant is `:where()`-flat, so within a layer EVERY rule below is 0-1-0
+ * and file position is the only tiebreak. Griffel decided the same collisions by
+ * specificity (`[data-fui-focus-visible]` and `:hover`/`:active` are 0-2-0) plus bucket
+ * order (`d` < `h` < `a` < `m`), so the blocks are laid out to reproduce those winners:
+ *
+ *   base / border widths  <  pie | selected  <  forced-colors  <  focus-visible  <  hover  <  active
+ *
+ *   • focus-visible after the `[data-size]` border-width buckets and after `.trigger-button`'s
+ *     border colours/styles: its `border` SHORTHAND was 0-2-0 and beat every 0-1-0 longhand,
+ *     so on focus the ring's width AND colour replace the size bucket's and the base's.
+ *   • forced-colors before focus-visible: `@media` adds no specificity, so Griffel's
+ *     `.fx5js7k` (0-1-0, `m` bucket) lost to `.f1j9b7x8[data-fui-focus-visible]` (0-2-0).
+ *   • hover/active after focus-visible: at a 0-2-0 tie Griffel's `h`/`a` buckets are emitted
+ *     after `d`, so a hovered focus-visible button shows the HOVER border colour over the
+ *     focus colour — while keeping the focus ring's WIDTH, which hover never sets.
+ * Never reorder these blocks without re-deriving the table above.
+ *
+ * ── RTL ───────────────────────────────────────────────────────────────────────────────
+ * Property-level only. The compiled AOT carries 12 `[ltr, rtl]` atomic pairs, all of them
+ * border-side longhands (`h3c5rm: ['f1akhkt','f1lxtadh']` = border-right/left-color, and so
+ * on for style, width and the forced-colors colours) → logical properties. There is no
+ * value-level flip anywhere in this component, so this file needs no `@variant rtl` block.
+ *
+ * Values reproduced from the compiled AOT output in
+ * lib-commonjs/components/AvatarGroupPopover/useAvatarGroupPopoverStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /*
+   * arg 3 — from useTriggerButtonStyles.base. `shorthands.borderColor` /
+   * `shorthands.borderStyle` compiled to four longhands each, with the inline sides as
+   * [ltr, rtl] pairs → logical. `border-radius` and `padding: 0` compiled as shorthands
+   * and stay shorthands: no rule in this file sets any of their longhands.
+   */
+  .trigger-button {
+    @apply relative inline-flex shrink-0 items-center justify-center p-0;
+
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+    border-radius: var(--borderRadiusCircular);
+
+    border-block-start-color: var(--colorNeutralStroke1);
+    border-inline-end-color: var(--colorNeutralStroke1);
+    border-block-end-color: var(--colorNeutralStroke1);
+    border-inline-start-color: var(--colorNeutralStroke1);
+
+    border-block-start-style: solid;
+    border-inline-end-style: solid;
+    border-block-end-style: solid;
+    border-inline-start-style: solid;
+
+    /*
+     * arg 8a — from the unconditional `size < 36 / < 56 / < 72 / else` border-width chain.
+     * A dense NUMERIC scale, so it rides `data-size` with in-module attribute selectors
+     * rather than catalog variants (CONVERSION_GUIDE scale-prop rule); `data-size` is
+     * already this package's established attribute name (Avatar, AvatarGroupItem).
+     *
+     * `border-*-width` is NOT a spacing-powered Tailwind family, so the four stroke widths
+     * are referenced directly as `var(--spacing-thin …)` — the emitted custom properties —
+     * never as raw `var(--strokeWidth*)`, which is the one form that does not scale with
+     * `--base-scale` (D4 amendment addendum).
+     */
+    &:where([data-size='16'], [data-size='20'], [data-size='24'], [data-size='28'], [data-size='32']) {
+      border-block-start-width: var(--spacing-thin);
+      border-inline-end-width: var(--spacing-thin);
+      border-block-end-width: var(--spacing-thin);
+      border-inline-start-width: var(--spacing-thin);
+    }
+
+    &:where([data-size='36'], [data-size='40'], [data-size='48']) {
+      border-block-start-width: var(--spacing-thick);
+      border-inline-end-width: var(--spacing-thick);
+      border-block-end-width: var(--spacing-thick);
+      border-inline-start-width: var(--spacing-thick);
+    }
+
+    &:where([data-size='56'], [data-size='64']) {
+      border-block-start-width: var(--spacing-thicker);
+      border-inline-end-width: var(--spacing-thicker);
+      border-block-end-width: var(--spacing-thicker);
+      border-inline-start-width: var(--spacing-thicker);
+    }
+
+    &:where([data-size='72'], [data-size='96'], [data-size='120'], [data-size='128']) {
+      border-block-start-width: var(--spacing-thickest);
+      border-inline-end-width: var(--spacing-thickest);
+      border-block-end-width: var(--spacing-thickest);
+      border-inline-start-width: var(--spacing-thickest);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 4 — from useTriggerButtonStyles.pie. Mutually exclusive with `.trigger-button-selected`
+   * below (`layout === 'pie'` vs `layout !== 'pie'`), so their relative order is inert.
+   */
+  .trigger-button-pie {
+    color: transparent;
+    background-color: var(--colorTransparentBackground);
+
+    border-block-start-color: var(--colorTransparentStroke);
+    border-inline-end-color: var(--colorTransparentStroke);
+    border-block-end-color: var(--colorTransparentStroke);
+    border-inline-start-color: var(--colorTransparentStroke);
+  }
+
+  /* arg 7 — from useTriggerButtonStyles.selected */
+  .trigger-button-selected {
+    color: var(--colorNeutralForeground1Selected);
+    background-color: var(--colorNeutralBackground1Selected);
+
+    border-block-start-color: var(--colorNeutralStroke1Selected);
+    border-inline-end-color: var(--colorNeutralStroke1Selected);
+    border-block-end-color: var(--colorNeutralStroke1Selected);
+    border-inline-start-color: var(--colorNeutralStroke1Selected);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 3 (continued) — the `@media (forced-colors: active)` half of
+   * useTriggerButtonStyles.base: "Match color to Avatar's outline color."
+   *
+   * Written in its own block AFTER `.trigger-button-pie` / `.trigger-button-selected`
+   * because Griffel emitted it into the `m` bucket, which is serialised after `d` — so at
+   * the 0-1-0 tie it beat both. It still loses to focus-visible and hover/active below.
+   */
+  .trigger-button {
+    @variant forced-colors {
+      border-block-start-color: CanvasText;
+      border-inline-end-color: CanvasText;
+      border-block-end-color: CanvasText;
+      border-inline-start-color: CanvasText;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 5 — from `createCustomFocusIndicatorStyle({ border: …, outlineStyle: 'none' })`.
+   *
+   * This is the tabster CUSTOM focus indicator, not `createFocusOutlineStyle`, so it does
+   * NOT become the shared `fui-focus-outline` utility (D6 covers the default ring only).
+   * The compiled atomics are reproduced verbatim: a single `border` SHORTHAND plus
+   * `outline-style: none`, both keyed on `[data-fui-focus-visible]` — which is precisely
+   * what the shared `focus-visible-fui` variant selects.
+   *
+   * The shorthand is deliberate and is the reason this block sits where it does: at 0-2-0 it
+   * beat every 0-1-0 border longhand above, so a focused trigger button takes the ring's
+   * width, style AND colour over the size bucket's width and the base's colour.
+   *
+   * `var(--spacing-thick)` replaces the source's `tokens.strokeWidthThick`: raw
+   * `var(--strokeWidth*)` is forbidden in component modules because it is the one authoring
+   * form that does not scale with `--base-scale` (D4 amendment addendum). `border-width` is
+   * not spacing-powered, so the direct custom-property reference is the legal form.
+   */
+  .trigger-button {
+    @variant focus-visible-fui {
+      border: var(--spacing-thick) solid var(--colorStrokeFocus2);
+      outline-style: none;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 6 — from useTriggerButtonStyles.states, applied only when `layout !== 'pie'`.
+   *
+   * Last of the border-colour contenders, in `hover` → `active` order, mirroring Griffel's
+   * `h` and `a` buckets. Both were 0-2-0 there and both are emitted after `d`, so hover
+   * beats the focus-visible ring's COLOUR while the ring keeps its width — the one
+   * cross-state interaction in this component that file position has to carry.
+   */
+  .trigger-button-interactive {
+    @variant hover {
+      color: var(--colorNeutralForeground1Hover);
+      background-color: var(--colorNeutralBackground1Hover);
+
+      border-block-start-color: var(--colorNeutralStroke1Hover);
+      border-inline-end-color: var(--colorNeutralStroke1Hover);
+      border-block-end-color: var(--colorNeutralStroke1Hover);
+      border-inline-start-color: var(--colorNeutralStroke1Hover);
+    }
+
+    @variant active {
+      color: var(--colorNeutralForeground1Pressed);
+      background-color: var(--colorNeutralBackground1Pressed);
+
+      border-block-start-color: var(--colorNeutralStroke1Pressed);
+      border-inline-end-color: var(--colorNeutralStroke1Pressed);
+      border-block-end-color: var(--colorNeutralStroke1Pressed);
+      border-inline-start-color: var(--colorNeutralStroke1Pressed);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 8b — the `indicator` × `size` type ramp.
+   *
+   * `indicator` is a look prop (D3) and stays a module class; the size bucket inside it is
+   * the scale prop and rides `data-size`, the same split Avatar's own module uses. The two
+   * classes are mutually exclusive and every declaration here is a type property, disjoint
+   * from every rule above — so this block's file position carries no cascade meaning and is
+   * placed last purely for readability.
+   *
+   * `typographyStyles.*` expands to its four compiled atomics; every preset in this ramp
+   * shares `fontFamilyBase` + `fontWeightSemibold` (`fk6fouc` / `fl43uef`), so those two are
+   * hoisted onto the class itself and only size/line-height vary per bucket.
+   */
+  .indicator-count {
+    font-family: var(--fontFamilyBase);
+    font-weight: var(--fontWeightSemibold);
+
+    /* size <= 24 — typographyStyles.caption2Strong */
+    &:where([data-size='16'], [data-size='20'], [data-size='24']) {
+      font-size: var(--fontSizeBase100);
+      line-height: var(--lineHeightBase100);
+    }
+
+    /* size <= 28 — typographyStyles.caption1Strong */
+    &:where([data-size='28']) {
+      font-size: var(--fontSizeBase200);
+      line-height: var(--lineHeightBase200);
+    }
+
+    /* size <= 40 — typographyStyles.body1Strong */
+    &:where([data-size='32'], [data-size='36'], [data-size='40']) {
+      font-size: var(--fontSizeBase300);
+      line-height: var(--lineHeightBase300);
+    }
+
+    /* size <= 56 — typographyStyles.subtitle2 */
+    &:where([data-size='48'], [data-size='56']) {
+      font-size: var(--fontSizeBase400);
+      line-height: var(--lineHeightBase400);
+    }
+
+    /* size <= 96 — typographyStyles.subtitle1 */
+    &:where([data-size='64'], [data-size='72'], [data-size='96']) {
+      font-size: var(--fontSizeBase500);
+      line-height: var(--lineHeightBase500);
+    }
+
+    /* else — typographyStyles.title3 */
+    &:where([data-size='120'], [data-size='128']) {
+      font-size: var(--fontSizeBase600);
+      line-height: var(--lineHeightBase600);
+    }
+  }
+
+  /*
+   * The icon branch sets `font-size` on the BUTTON, not on a child: `MoreHorizontalRegular`
+   * renders `<svg width="1em" height="1em">`, so the button's own font-size is what scales
+   * the glyph. Px literals ride `--base-scale`, matching Avatar's identical icon ramp.
+   */
+  .indicator-icon {
+    /* size <= 16 */
+    &:where([data-size='16']) {
+      font-size: calc(12px * var(--base-scale));
+    }
+
+    /* size <= 24 */
+    &:where([data-size='20'], [data-size='24']) {
+      font-size: calc(16px * var(--base-scale));
+    }
+
+    /* size <= 40 */
+    &:where([data-size='28'], [data-size='32'], [data-size='36'], [data-size='40']) {
+      font-size: calc(20px * var(--base-scale));
+    }
+
+    /* size <= 48 */
+    &:where([data-size='48']) {
+      font-size: calc(24px * var(--base-scale));
+    }
+
+    /* size <= 56 */
+    &:where([data-size='56']) {
+      font-size: calc(28px * var(--base-scale));
+    }
+
+    /* size <= 72 */
+    &:where([data-size='64'], [data-size='72']) {
+      font-size: calc(32px * var(--base-scale));
+    }
+
+    /* else */
+    &:where([data-size='96'], [data-size='120'], [data-size='128']) {
+      font-size: calc(48px * var(--base-scale));
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * content arg 1 — from useContentStyles.base. `margin: 0` / `padding: 0` compiled as
+   * shorthands; `m-0` / `p-0` are the numeric utilities for the zero step.
+   */
+  .content {
+    @apply m-0 flex flex-col p-0;
+
+    list-style-type: none;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * popoverSurface arg 1 — from usePopoverSurfaceStyles.base, over PopoverSurface's own l1
+   * rules (see the ALTITUDE note in the header).
+   *
+   * `padding` compiled to the `var(--spacingVerticalS) var(--spacingHorizontalS)` shorthand
+   * → the two named axis utilities (D4 amendment; raw `var(--spacing*)` does not scale with
+   * `--base-scale`). These are the two-value LOGICAL pairs, so the inline sides still cannot
+   * drift in RTL, and the axis↔token pairing matches the shorthand's vertical-then-horizontal
+   * order. This is the only rule that sets padding on the class, so collapsing the four
+   * longhands into two axis pairs cannot change a within-rule winner — and it is the
+   * declaration that has to beat PopoverSurface's own `p-horizontal-m|l|xl`.
+   *
+   * The three dimensional px literals match no spacing step, so they take the NUMERIC
+   * utilities, which compute through the same `--base-scale`. `overflow: hidden scroll` is
+   * kept as the compiled two-value shorthand; nothing in either module sets an overflow axis
+   * on its own.
+   */
+  .popover-surface {
+    @apply max-h-220 min-h-80 w-220 px-horizontal-s py-vertical-s;
+
+    overflow: hidden scroll;
+  }
+}

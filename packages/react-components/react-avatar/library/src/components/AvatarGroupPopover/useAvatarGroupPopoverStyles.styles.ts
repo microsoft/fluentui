@@ -1,11 +1,26 @@
 'use client';
 
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file needs NO
+ * `enforce-use-client` suppression and KEEPS its `react-hooks/immutability` disables — it
+ * still calls `useSizeStyles()` / `useGroupChildClassName()`, so eslint still treats the
+ * styles hook as a React hook and both rules apply to it exactly as before (the same split
+ * AvatarGroupItem landed on). The state-mutation contract itself is deliberately preserved
+ * (DECISIONS.md D14).
+ *
+ * This hook converted AFTER its three siblings: the statics-removal sweep re-pointed
+ * `avatarGroupPopoverClassNames.root` at the marker while the hook was still Griffel, so
+ * `root` named a class nothing rendered. It now names the class the trigger button actually
+ * carries — see the marker note on the `clsx` call below.
+ */
+
+import { clsx } from 'clsx';
 import { useGroupChildClassName } from '../AvatarGroupItem/useAvatarGroupItemStyles.styles';
 import { useSizeStyles } from '../Avatar/useAvatarStyles.styles';
+import type { AvatarSize } from '../Avatar/Avatar.types';
 import type { AvatarGroupPopoverState } from './AvatarGroupPopover.types';
+
+import styles from './AvatarGroupPopover.module.css';
 
 /**
  * AvatarGroupPopover's public identity class — the Tailwind named-group marker
@@ -18,14 +33,15 @@ import type { AvatarGroupPopoverState } from './AvatarGroupPopover.types';
  * `content`, `popoverSurface`, `tooltip` or `triggerButton` is a compile error on the exact
  * line that would otherwise have silently stopped matching.
  *
- * CAVEAT — `root` is not rendered, and was not rendered before D16 either. This component's
- * `root` slot is a `<Popover>`, which emits no DOM element of its own, so the old
- * `fui-AvatarGroupPopover` static never reached the DOM (its own conformance options said so
- * in as many words: _"root shouldn't be expected since the root is a Popover"_). D16.5
- * re-points `root` to the component's marker everywhere; this hook is still Griffel and so
- * stamps no marker yet (D15.1, unconverted siblings). The value below is therefore the name
- * the marker WILL take when the hook converts — until then `root` selects nothing, exactly as
- * it did before this phase.
+ * CAVEAT — `root` names the marker, but the marker is NOT on the `root` slot, because that
+ * slot renders no DOM. This component's `root` is a `<Popover>`, which emits no element of
+ * its own (nor does the `<PopoverTrigger>` / `<Tooltip>` pair nested inside it), so the old
+ * `fui-AvatarGroupPopover` static never reached the DOM either — its own conformance options
+ * said so in as many words: _"root shouldn't be expected since the root is a Popover"_. The
+ * marker therefore sits on `triggerButton`, this component's OUTERMOST RENDERED node, which
+ * is the placement rule D15.1 actually states and the same resolution `react-tooltip` (no
+ * `root` at all) and `react-popover` (marker on `PopoverSurface`) reached. Unlike before the
+ * conversion, `root` now selects a real element.
  *
  * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
  * it in selector position, so `'.' + avatarGroupPopoverClassNames.root` is invalid CSS. Use
@@ -41,176 +57,88 @@ export const avatarGroupPopoverClassNames: { root: string } = {
 };
 
 /**
- * Styles for the content slot.
+ * Data attributes rendered on the trigger button and matched by in-module attribute selectors
+ * in `AvatarGroupPopover.module.css`.
+ *
+ * `data-size` carries a dense NUMERIC scale (16…128), so its buckets are selected with
+ * `&:where([data-size='…'])` inside the module rather than through the shared variant catalog
+ * (CONVERSION_GUIDE scale-prop rule). It drives two chains that used to be JS if/else ladders:
+ * the border-width ramp and the `indicator` type/icon ramp.
+ *
+ * It is stamped on the trigger button rather than mirrored from a root because the trigger
+ * button IS the outermost rendered element — the selector and the attribute are on the same
+ * node, so no mirroring is in play (D15.6, Tier 0). `layout` and `popoverOpen` stay module
+ * classes: they are look/boolean conditions, nothing below them needs to read them, and
+ * `data-*` is fallback-only under D15.6.
  */
-const useContentStyles = makeStyles({
-  base: {
-    listStyleType: 'none',
-    margin: '0',
-    padding: '0',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
-
-/**
- * Styles for the popoverSurface slot.
- */
-const usePopoverSurfaceStyles = makeStyles({
-  base: {
-    maxHeight: '220px',
-    minHeight: '80px',
-    overflow: 'hidden scroll',
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
-    width: '220px',
-  },
-});
-
-/**
- * Styles for the triggerButton slot.
- */
-const useTriggerButtonStyles = makeStyles({
-  base: {
-    display: 'inline-flex',
-    position: 'relative',
-    flexShrink: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    borderRadius: tokens.borderRadiusCircular,
-    ...shorthands.borderStyle('solid'),
-    padding: '0',
-
-    // Match color to Avatar's outline color.
-    '@media (forced-colors: active)': {
-      ...shorthands.borderColor('CanvasText'),
-    },
-  },
-
-  pie: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
-    color: 'transparent',
-  },
-
-  focusIndicator: createCustomFocusIndicatorStyle({
-    border: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-    outlineStyle: 'none',
-  }),
-
-  states: {
-    '&:hover': {
-      color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-    },
-    '&:active': {
-      color: tokens.colorNeutralForeground1Pressed,
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-    },
-  },
-
-  selected: {
-    color: tokens.colorNeutralForeground1Selected,
-    backgroundColor: tokens.colorNeutralBackground1Selected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-  },
-
-  icon12: { fontSize: '12px' },
-  icon16: { fontSize: '16px' },
-  icon20: { fontSize: '20px' },
-  icon24: { fontSize: '24px' },
-  icon28: { fontSize: '28px' },
-  icon32: { fontSize: '32px' },
-  icon48: { fontSize: '48px' },
-  caption2Strong: { ...typographyStyles.caption2Strong },
-  caption1Strong: { ...typographyStyles.caption1Strong },
-  body1Strong: { ...typographyStyles.body1Strong },
-  subtitle2: { ...typographyStyles.subtitle2 },
-  subtitle1: { ...typographyStyles.subtitle1 },
-  title3: { ...typographyStyles.title3 },
-  borderThin: { ...shorthands.borderWidth(tokens.strokeWidthThin) },
-  borderThick: { ...shorthands.borderWidth(tokens.strokeWidthThick) },
-  borderThicker: { ...shorthands.borderWidth(tokens.strokeWidthThicker) },
-  borderThickest: { ...shorthands.borderWidth(tokens.strokeWidthThickest) },
-});
+type AvatarGroupPopoverTriggerButtonDataAttributes = {
+  'data-size': AvatarSize;
+};
 
 /**
  * Apply styling to the AvatarGroupPopover slots based on the state
  */
 export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverState): AvatarGroupPopoverState => {
   const { indicator, size, layout, popoverOpen } = state;
+
   const sizeStyles = useSizeStyles();
-  const triggerButtonStyles = useTriggerButtonStyles();
-  const contentStyles = useContentStyles();
-  const popoverSurfaceStyles = usePopoverSurfaceStyles();
   const groupChildClassName = useGroupChildClassName(layout, size);
 
-  const triggerButtonClasses = [];
+  const triggerButton = state.triggerButton as AvatarGroupPopoverState['triggerButton'] &
+    AvatarGroupPopoverTriggerButtonDataAttributes;
 
-  if (size < 36) {
-    triggerButtonClasses.push(triggerButtonStyles.borderThin);
-  } else if (size < 56) {
-    triggerButtonClasses.push(triggerButtonStyles.borderThick);
-  } else if (size < 72) {
-    triggerButtonClasses.push(triggerButtonStyles.borderThicker);
-  } else {
-    triggerButtonClasses.push(triggerButtonStyles.borderThickest);
-  }
+  // eslint-disable-next-line react-hooks/immutability -- state-mutation builder, preserved per D14
+  triggerButton['data-size'] = size;
 
-  if (indicator === 'count') {
-    if (size <= 24) {
-      triggerButtonClasses.push(triggerButtonStyles.caption2Strong);
-    } else if (size <= 28) {
-      triggerButtonClasses.push(triggerButtonStyles.caption1Strong);
-    } else if (size <= 40) {
-      triggerButtonClasses.push(triggerButtonStyles.body1Strong);
-    } else if (size <= 56) {
-      triggerButtonClasses.push(triggerButtonStyles.subtitle2);
-    } else if (size <= 96) {
-      triggerButtonClasses.push(triggerButtonStyles.subtitle1);
-    } else {
-      triggerButtonClasses.push(triggerButtonStyles.title3);
-    }
-  } else {
-    if (size <= 16) {
-      triggerButtonClasses.push(triggerButtonStyles.icon12);
-    } else if (size <= 24) {
-      triggerButtonClasses.push(triggerButtonStyles.icon16);
-    } else if (size <= 40) {
-      triggerButtonClasses.push(triggerButtonStyles.icon20);
-    } else if (size <= 48) {
-      triggerButtonClasses.push(triggerButtonStyles.icon24);
-    } else if (size <= 56) {
-      triggerButtonClasses.push(triggerButtonStyles.icon28);
-    } else if (size <= 72) {
-      triggerButtonClasses.push(triggerButtonStyles.icon32);
-    } else {
-      triggerButtonClasses.push(triggerButtonStyles.icon48);
-    }
-  }
-
+  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
+  // D16.2). `styles['trigger-button']` is unconditional, so index 0 is always the hashed,
+  // selector-safe `fuicm-*` token — which is what keeps the marker off `classList[0]`, where
+  // nwsapi's `:scope` polyfill would throw on its `/` under jsdom (D15.1). The BEM statics
+  // that used to lead this call are gone (D16.1): the marker is now AvatarGroupPopover's SOLE
+  // public identity class, and the only handle by which another module can style an element
+  // from this component's state, because every `styles.*` here is hashed and unaddressable
+  // from outside this file (DECISIONS.md D15).
+  //
+  // The marker is on THIS slot, not on `root`, because `root` is a `<Popover>` that renders
+  // no DOM element — see the note on `avatarGroupPopoverClassNames` above. `triggerButton` is
+  // the outermost node this component actually renders, which is also what `getTargetElement`
+  // resolves to, so `component-has-group-marker` checks exactly this class list.
+  //
+  // `groupChildClassName` and `sizeStyles[size]` are classes owned by AvatarGroupItem's and
+  // Avatar's modules and led this list under mergeClasses. They no longer need to: argument
+  // order carries no cascade meaning here, and they collide with nothing in this module
+  // (they set only `box-shadow` / `margin-inline-start` and `width`/`height` respectively),
+  // so both stay at `fui.components.l1` alongside it with no cross-module tie to break.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in AvatarGroupPopover.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, and for the block ordering that reproduces
+  // Griffel's specificity/bucket winners among base, forced-colors, focus-visible and
+  // hover/active. Every condition below is byte-for-byte the one the Griffel builder used;
+  // the two size ladders (border width, indicator type ramp) moved out of JS onto `data-size`.
+  //
   // eslint-disable-next-line react-hooks/immutability
-  state.triggerButton.className = mergeClasses(
+  state.triggerButton.className = clsx(
+    styles['trigger-button'],
+    'group/fui-avatar-group-popover',
     groupChildClassName,
     sizeStyles[size],
-    triggerButtonStyles.base,
-    layout === 'pie' && triggerButtonStyles.pie,
-    triggerButtonStyles.focusIndicator,
-    layout !== 'pie' && triggerButtonStyles.states,
-    layout !== 'pie' && popoverOpen && triggerButtonStyles.selected,
-    ...triggerButtonClasses,
+    layout === 'pie' && styles['trigger-button-pie'],
+    layout !== 'pie' && styles['trigger-button-interactive'],
+    layout !== 'pie' && popoverOpen && styles['trigger-button-selected'],
+    indicator === 'count' ? styles['indicator-count'] : styles['indicator-icon'],
     state.triggerButton.className,
   );
 
   // eslint-disable-next-line react-hooks/immutability
-  state.content.className = mergeClasses(contentStyles.base, state.content.className);
+  state.content.className = clsx(styles.content, state.content.className);
 
+  // `popoverSurface` is a `<PopoverSurface>` root, so this class reaches that component's hook
+  // as its CONSUMER className. It lives at `fui.components.l2` for that reason (D2 amendment
+  // 2) — and stays LAYERED, because react-popover is converted and writes only at l1.
+  //
   // eslint-disable-next-line react-hooks/immutability
-  state.popoverSurface.className = mergeClasses(popoverSurfaceStyles.base, state.popoverSurface.className);
+  state.popoverSurface.className = clsx(styles['popover-surface'], state.popoverSurface.className);
 
   return state;
 };

@@ -38,12 +38,13 @@ module.exports = {
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
    * as `@griffel/jest-serializer` does for Griffel atomics (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is KEPT alongside it, for two independent reasons:
-   *   1. Avatar's default icon is a `@fluentui/react-icons` glyph, and that package is an
-   *      external Griffel consumer explicitly out of scope for this migration (D11);
-   *   2. `useAvatarGroupPopoverStyles.styles.ts` is still Griffel on purpose — its
-   *      `popoverSurface` slice overrides the unconverted `PopoverSurface`, whose own
-   *      styles are unlayered Griffel and would beat a layered replacement.
+   * `@griffel/jest-serializer` is KEPT alongside it for ONE remaining reason: Avatar's
+   * default icon and AvatarGroupPopover's `MoreHorizontalRegular` indicator are
+   * `@fluentui/react-icons` glyphs, and that package is an external Griffel consumer
+   * explicitly out of scope for this migration (D11), so its atomics still reach these
+   * snapshots. The second reason this comment used to give — "AvatarGroupPopover is still
+   * Griffel" — is discharged: that hook converted with the rest of the package, and no file
+   * under `src/` imports `@griffel/react` any more.
    */
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,

@@ -55,8 +55,9 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   // unaddressable from outside this file (DECISIONS.md D15).
   //
   // AvatarGroup stamps no attributes (its `layout`/`size` conditions stay resolved class
-  // names, because `useGroupChildClassName` also serves AvatarGroupPopover's still-Griffel
-  // trigger), so the marker's value here is structural: it is the ancestor handle an
+  // names — `useGroupChildClassName` is shared with AvatarGroupItem and AvatarGroupPopover
+  // and hands out class names to both), so the marker's value here is structural: it is the
+  // ancestor handle an
   // AvatarGroupItem or a consumer's overflow surface can hang pseudo-class reads off
   // (`group-hover/fui-avatar-group`, `group-focus-within/fui-avatar-group`), none of which
   // need mirroring (D15.6).

@@ -47,11 +47,12 @@ export const avatarClassNames: { root: string } = {
  *
  * This stays a record of module CLASS names rather than moving onto `data-size` like every
  * other size-derived rule in `Avatar.module.css`: `useSizeStyles` is an existing export
- * consumed by AvatarGroup, AvatarGroupItem and AvatarGroupPopover, and the last of those is
- * still a Griffel file (its overrides target the unconverted PopoverSurface). A hook that
- * hands out class names keeps all four call sites working unchanged and defines the scale
- * exactly once; the size BUCKETS (typography, radius, ring width, shadow, icon size) do ride
- * `data-size`, per the cookbook's scale-prop rule.
+ * consumed by AvatarGroup, AvatarGroupItem and AvatarGroupPopover, and each applies it to a
+ * DIFFERENT element (an Avatar root, an item root, a trigger button), so a `data-size`-keyed
+ * rule in this module could not reach three of them. A hook that hands out class names keeps
+ * all four call sites working unchanged and defines the scale exactly once; the size BUCKETS
+ * (typography, radius, ring width, shadow, icon size) do ride `data-size`, per the cookbook's
+ * scale-prop rule.
  */
 const sizeClassNames: Record<AvatarSize, string> = {
   16: styles.size16,
@@ -118,8 +119,9 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   //
   // Avatar needs no state mirrors: `data-size`, `data-active` and `data-active-appearance`
   // are stamped on this very element above, so `@variant group-*/fui-avatar` reads them
-  // as-is (D15.6, Tier 0). AvatarGroupPopover is still Griffel and gets no marker until it
-  // converts (D15.1, unconverted siblings).
+  // as-is (D15.6, Tier 0). Every sibling in this package now carries its own marker —
+  // AvatarGroupPopover stamps `group/fui-avatar-group-popover` on its trigger button, the
+  // outermost element it renders (D15.1).
   //
   // Cascade priority is decided by the `@layer fui.*` order in Avatar.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the

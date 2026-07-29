@@ -15,11 +15,24 @@ describe('AvatarGroupPopover', () => {
     // (D16.6). The `has-static-classnames` variant options that drove it are removed with
     // it, along with the portal helper they needed.
     //
-    // `component-has-group-marker` is deliberately NOT opted in here. This hook is still
-    // Griffel, so it stamps no marker yet (D15.1, unconverted siblings), and the component's
-    // `root` slot is a `<Popover>` that renders no DOM element of its own — there is nothing
-    // for the test to target. It opts in when the hook converts.
+    // `component-has-group-marker` (a default test since D16.6) is now LIVE: the hook is
+    // converted and stamps `group/fui-avatar-group-popover` on the trigger button, which is
+    // the outermost element this component renders and therefore what `getTargetElement`
+    // resolves to. No `testOptions['has-group-marker']` override is needed — the marker is
+    // derivable from the displayName.
+    //
+    // `make-styles-overrides-win` is disabled because the hook composes with clsx and never
+    // calls mergeClasses, so the mock that test installs is never hit. Its cascade-native
+    // replacement `classname-overrides-win` is NOT applicable to this component either, for
+    // exactly the reason `component-handles-classname` is disabled two lines above it: the
+    // consumer's `className` lands on the `root` slot, which is a `<Popover>` that renders no
+    // DOM element, so no rendered element ever carries it. Both halves of that test — "the
+    // consumer's className reaches the root slot" and "nothing follows it" — are unassertable
+    // here rather than violated. Consumer overrides still win by cascade on every slot that
+    // DOES render: `state.<slot>.className` is the last `clsx` argument on all three, and
+    // unlayered consumer CSS beats every `@layer fui.*` rule (DECISIONS.md D2/D9).
     disabledTests: [
+      // `root` is a `<Popover>`, which renders no DOM element of its own.
       'component-handles-ref',
 
       'component-has-root-ref',
@@ -29,10 +42,6 @@ describe('AvatarGroupPopover', () => {
       'make-styles-overrides-win',
 
       'component-has-static-classnames-object',
-      // Stamps no named-group marker, so it opts out of `component-has-group-marker` (a
-      // default test since DECISIONS.md D16.6).
-
-      'component-has-group-marker',
     ],
     testOptions: {
       'consistent-callback-args': {
