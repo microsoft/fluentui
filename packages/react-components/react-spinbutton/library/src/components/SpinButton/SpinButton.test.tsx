@@ -23,8 +23,20 @@ describe('SpinButton', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    disabledTests: [
+      'make-styles-overrides-win',
+      // Statics removal (DECISIONS.md D16.1/D16.6). SpinButton no longer renders
+      // `fui-SpinButton` / `fui-SpinButton__<slot>`, and `spinButtonClassNames` is now
+      // `{ root: 'group/fui-spin-button' }`, so all three assertions in
+      // `component-has-static-classnames-object` — the export shape, the
+      // `fui-<Component>__<slot>` format and the rendered classes — no longer describe this
+      // component. `component-has-group-marker` (now a default test) is its replacement: the group marker
+      // is the sole public identity class now (D16.5).
+      'component-has-static-classnames-object',
+    ],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
     testOptions: {
       'consistent-callback-args': {
         legacyCallbacks: ['onChange'],

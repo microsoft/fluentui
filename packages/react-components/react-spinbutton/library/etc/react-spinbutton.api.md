@@ -11,7 +11,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSpinButton_unstable: (state: SpinButtonBaseState) => JSXElement;
@@ -31,8 +30,10 @@ export type SpinButtonBounds = 'none' | 'min' | 'max' | 'both';
 // @public (undocumented)
 export type SpinButtonChangeEvent = React_2.MouseEvent<HTMLButtonElement> | React_2.ChangeEvent<HTMLElement> | React_2.FocusEvent<HTMLInputElement> | React_2.KeyboardEvent<HTMLInputElement>;
 
-// @public (undocumented)
-export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
+// @public @deprecated
+export const spinButtonClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type SpinButtonOnChangeData = {

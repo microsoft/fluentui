@@ -14,26 +14,45 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { SpinButtonSlots, SpinButtonState } from './SpinButton.types';
+import type { SpinButtonState } from './SpinButton.types';
 
 import styles from './SpinButton.module.css';
 
-export const spinButtonClassNames: SlotClassNames<SpinButtonSlots> = {
-  root: 'fui-SpinButton',
-  input: 'fui-SpinButton__input',
-  incrementButton: 'fui-SpinButton__incrementButton',
-  decrementButton: 'fui-SpinButton__decrementButton',
+/**
+ * Public identity classes for SpinButton.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (`migration/griffel-to-tailwind/reports/DECISIONS.md`,
+ * D15.1 / D16.5) — usable as a selector and as a `group-*` variant target. The per-slot keys
+ * (`input`, `incrementButton`, `decrementButton`) were removed: there is no public class-name
+ * handle on component internals any more.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + spinButtonClassNames.root` is invalid. Use `fuiSelector()` from
+ * `@fluentui/react-utilities` (or `@fluentui/react-components`) at every selector site.
+ */
+export const spinButtonClassNames: { root: string } = {
+  root: 'group/fui-spin-button',
 };
 
 /**
- * Marks the increment/decrement button that is currently spinning. Not part of the public
- * `spinButtonClassNames` API, but it IS in the rendered DOM and SpinButton.module.css
- * selects it with `:global(.fui-SpinButton__button_active)` — kept as a class rather than
- * converted to a data-attribute so the conversion stays a pure styling change.
+ * Data attribute rendered on whichever of the two button slots is currently spinning, and
+ * matched by `&:where([data-spin-active])` in SpinButton.module.css.
+ *
+ * This replaces the internal `fui-SpinButton__button_active` class (DECISIONS.md D16.3).
+ * That class was never exported — it was a JS-driven state marker that deliberately outlives
+ * `:active`, so it is not expressible natively and D15.6's "data attributes as a fallback
+ * where native cannot reach" applies exactly. It could not stay a class either: after D16 a
+ * `fui-`-prefixed class in rendered DOM means "public identity", and an internal one would
+ * have been the only counterexample in the repo.
+ *
+ * Written `flag || undefined` for the same reason as the root's presence flags: React omits
+ * an attribute whose value is `undefined`, whereas `false` would render
+ * `data-spin-active="false"` and still match `[data-spin-active]`.
  */
-const spinButtonExtraClassNames = {
-  buttonActive: 'fui-SpinButton__button_active',
+type SpinButtonButtonDataAttributes = {
+  'data-spin-active'?: true;
 };
 
 /**
@@ -76,12 +95,14 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   root['data-disabled'] = disabled || undefined;
   root['data-invalid'] = invalid || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this SpinButton's state, because `styles.root`
-  // is hashed and unaddressable from outside this file. No state mirrors are needed:
+  // `styles.root` first, then the named group marker — the marker must never be
+  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // `clsx` never drops it, so index 0 is always the hashed, selector-safe module class; the
+  // BEM static that used to hold that position was removed in D16.1. The marker is a
+  // literal, unhashed, GLOBAL token: it is the only handle by which another module — in
+  // this package or any other — can style an element from this SpinButton's state, because
+  // `styles.root` is hashed and unaddressable from outside this file. No state mirrors are needed:
   // `data-size`, `data-disabled` and `data-invalid` are already stamped on this very
   // element above, so `@variant group-disabled/fui-spin-button { … }` works as-is
   // (DECISIONS.md D15, Tier 0). `:focus-within` likewise needs no mirror — it is true of
@@ -98,9 +119,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   // itself. `styles.medium` and (for the root) `styles.outline`'s rest state are the
   // compiled `{}` slices — nothing to apply, exactly as before.
   state.root.className = clsx(
-    spinButtonClassNames.root,
-    'group/fui-spin-button',
     styles.root,
+    'group/fui-spin-button',
     styles[appearance],
     filled && styles.filled,
     state.root.className,
@@ -109,23 +129,17 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   // Both buttons share the `.button` reset the way mergeClasses handed them the identical
   // reset class; `buttonStyles[appearance]` and the `size === 'small'` padding now reach
   // them from the root (appearance look class + `data-size`).
-  state.incrementButton.className = clsx(
-    spinButtonClassNames.incrementButton,
-    spinState === 'up' && spinButtonExtraClassNames.buttonActive,
-    styles.button,
-    styles.increment,
-    state.incrementButton.className,
-  );
+  const incrementButton = state.incrementButton as SpinButtonState['incrementButton'] & SpinButtonButtonDataAttributes;
+  const decrementButton = state.decrementButton as SpinButtonState['decrementButton'] & SpinButtonButtonDataAttributes;
 
-  state.decrementButton.className = clsx(
-    spinButtonClassNames.decrementButton,
-    spinState === 'down' && spinButtonExtraClassNames.buttonActive,
-    styles.button,
-    styles.decrement,
-    state.decrementButton.className,
-  );
+  incrementButton['data-spin-active'] = spinState === 'up' || undefined;
+  decrementButton['data-spin-active'] = spinState === 'down' || undefined;
 
-  state.input.className = clsx(spinButtonClassNames.input, styles.input, state.input.className);
+  state.incrementButton.className = clsx(styles.button, styles.increment, state.incrementButton.className);
+
+  state.decrementButton.className = clsx(styles.button, styles.decrement, state.decrementButton.className);
+
+  state.input.className = clsx(styles.input, state.input.className);
 
   return state;
 };

@@ -20,7 +20,7 @@
  *
  *   #  mergeClasses argument                             bucket  → target
  *   ---------------------------------------------------------------------------------
- *   1  spinButtonClassNames.root                          —      → static class (JS)
+ *   1  spinButtonClassNames.root                          —      → REMOVED (D16.1)
  *   2  useRootClassName                    (makeReset)    r      → fui.base           .root
  *   3  rootStyles[size]                                   d      → l1  (data-size)
  *   4  rootStyles[appearance]                             d      → l1  (.underline/.filled-…)
@@ -34,15 +34,15 @@
  *
  * `input` slot:
  *
- *   1  spinButtonClassNames.input                         —      → static class (JS)
+ *   1  spinButtonClassNames.input                         —      → REMOVED (D16.1)
  *   2  useInputClassName                   (makeReset)    r      → fui.base           .input
  *   3  inputStyles.disabled                               d      → l1  (data-disabled on root)
  *   4  consumer className                                 —      → unlayered
  *
  * `incrementButton` / `decrementButton` slots (identical shape, one shared `.button` reset):
  *
- *   1  spinButtonClassNames.{in,de}crementButton          —      → static class (JS)
- *   2  'fui-SpinButton__button_active'  (spinState)       —      → static class (JS)
+ *   1  spinButtonClassNames.{in,de}crementButton          —      → REMOVED (D16.1)
+ *   2  'fui-SpinButton__button_active'  (spinState)       —      → data-spin-active (D16.3)
  *   3  useBaseButtonClassName            (makeReset)      r      → fui.base           .button
  *   4  buttonStyles.increment | .decrement               d      → l1  (.increment/.decrement)
  *   5  buttonStyles[appearance]                          d      → l1  (.underline … & .button)
@@ -97,8 +97,9 @@
  * `:global()` selector reaching into another package's elements. The buttons render
  * `<ChevronUp16Regular />` / `<ChevronDown16Regular />` — PLAIN icons, not `bundleIcon()`
  * pairs — and SpinButton sets no rule on them at all (they inherit `color` from the
- * button). The one `:global()` in this file, `.fui-SpinButton__button_active`, is this
- * package's OWN static class, so it stays layered: nothing unlayered competes for it.
+ * button). This file now contains NO `:global()` selector at all: the one it used to have,
+ * `.fui-SpinButton__button_active`, became the `data-spin-active` attribute in D16.3, so
+ * every selector here is either a local or a shared `@variant`.
  *
  * ── RTL (DECISIONS.md D5) ────────────────────────────────────────────────────────────
  * The compiled output has exactly ONE reset with an rtl twin (`r109xulx` / `r1h2jnch`, the
@@ -355,12 +356,19 @@
       }
 
       /*
-       * `spinState`'s "this button is currently spinning" flag. Kept as the static class
-       * the hook has always rendered (`spinButtonExtraClassNames.buttonActive`) rather
-       * than converted to a data-attribute: it is this package's own class, it is already
-       * in the DOM, and keeping it makes the conversion a pure styling change.
+       * `spinState`'s "this button is currently spinning" flag, stamped by the hook as
+       * `data-spin-active`. It was the internal `fui-SpinButton__button_active` class until
+       * DECISIONS.md D16.3 — never exported, and a JS-driven state that deliberately
+       * outlives `:active`, so it is not expressible natively (D15.6).
+       *
+       * Specificity note: this dropped from 0-2-0 (unwrapped `:global()` class) to 0-1-0
+       * (`:where()`-wrapped attribute), which changes nothing. Its declarations are
+       * identical to the `@variant active` block above and it still follows that block in
+       * source order, so it wins the same ties on position instead of on weight; and the
+       * `@variant disabled` block below is mutually exclusive with the enclosing
+       * `@variant enabled`.
        */
-      &:global(.fui-SpinButton__button_active) {
+      &:where([data-spin-active]) {
         color: var(--colorNeutralForeground3Pressed);
         background-color: var(--colorSubtleBackgroundPressed);
       }
@@ -674,7 +682,7 @@
           background-color: var(--colorSubtleBackgroundPressed);
         }
 
-        &:global(.fui-SpinButton__button_active) {
+        &:where([data-spin-active]) {
           color: var(--colorNeutralForeground3Pressed);
           background-color: var(--colorSubtleBackgroundPressed);
         }
@@ -703,7 +711,7 @@
           background-color: var(--colorNeutralBackground3Pressed);
         }
 
-        &:global(.fui-SpinButton__button_active) {
+        &:where([data-spin-active]) {
           color: var(--colorNeutralForeground3Pressed);
           background-color: var(--colorNeutralBackground3Pressed);
         }
@@ -720,7 +728,8 @@
    * the two slices above: `.fzaa11h` / `.f4fpmm9` carry
    * `:enabled:active,:enabled.fui-SpinButton__button_active` in ONE rule (the source spells
    * the selector as a list), where darker/underline emit two. Split back into two blocks
-   * here — identical declarations, identical outcome.
+   * here — identical declarations, identical outcome. (That Griffel-era class is now the
+   * `data-spin-active` attribute — DECISIONS.md D16.3.)
    */
   .filled-lighter {
     & .button {
@@ -738,7 +747,7 @@
           background-color: var(--colorNeutralBackground1Pressed);
         }
 
-        &:global(.fui-SpinButton__button_active) {
+        &:where([data-spin-active]) {
           color: var(--colorNeutralForeground3Pressed);
           background-color: var(--colorNeutralBackground1Pressed);
         }
