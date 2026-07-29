@@ -1,5 +1,6 @@
 export {
   Overflow,
+  overflowClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useOverflow_unstable,
   renderOverflow_unstable,
   useOverflowStyles_unstable,

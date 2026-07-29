@@ -40,6 +40,11 @@ export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<OverflowOp
     onOverflowChange?: (ev: null, data: OverflowState) => void;
 } & React_2.RefAttributes<unknown>>;
 
+// @public @deprecated
+export const overflowClassNames: {
+    root: string;
+};
+
 // @public
 export type OverflowComponentState = UseOverflowContainerReturn<HTMLElement> & {
     ref: React_2.Ref<HTMLElement>;
