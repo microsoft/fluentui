@@ -14,15 +14,27 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { SelectSlots, SelectState } from './Select.types';
+import type { SelectState } from './Select.types';
 
 import styles from './Select.module.css';
 
-export const selectClassNames: SlotClassNames<SelectSlots> = {
-  root: 'fui-Select',
-  select: 'fui-Select__select',
-  icon: 'fui-Select__icon',
+/**
+ * Public identity classes for Select.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as this component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a
+ * selector and as a `group-*` variant target. The BEM statics (`fui-Select`,
+ * `fui-Select__select`, `fui-Select__icon`) are no longer rendered and the per-slot keys are
+ * gone; there is no public class-name handle on component internals.
+ *
+ * The marker token contains a `/`. That is legal inside a class TOKEN but terminates the
+ * name inside a SELECTOR, so `'.' + selectClassNames.root` is an invalid selector even
+ * though it type-checks. Use `fuiSelector(selectClassNames.root)` from
+ * `@fluentui/react-utilities`.
+ */
+export const selectClassNames: { root: string } = {
+  root: 'group/fui-select',
 };
 
 /**
@@ -64,9 +76,11 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   root['data-disabled'] = disabled || undefined;
   root['data-invalid'] = invalid || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // Unconditional module class FIRST, then the named group marker — the marker must never be
+  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
+  // D16.2) — with the consumer className last. `styles.root` is unconditional and clsx never
+  // drops it, so index 0 is always the hashed, selector-safe module class; it is what keeps
+  // the marker safe now that the `fui-Select` static is gone. The marker is a literal,
   // unhashed, GLOBAL token: it is the only handle by which another module — in this package
   // or any other — can style an element from this Select's state, because `styles.root` is
   // hashed and unaddressable from outside this file. Select needs no state mirrors:
@@ -86,12 +100,12 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   // `invalidUnderline` are now `@variant enabled` blocks on the root, `disabled` /
   // `disabledUnderline` are `@variant disabled` blocks, and
   // `appearance === 'outline' | 'underline'` is the appearance class itself.
-  state.root.className = clsx(selectClassNames.root, 'group/fui-select', styles.root, state.root.className);
+  state.root.className = clsx(styles.root, 'group/fui-select', state.root.className);
 
-  state.select.className = clsx(selectClassNames.select, styles.select, styles[appearance], state.select.className);
+  state.select.className = clsx(styles.select, styles[appearance], state.select.className);
 
   if (state.icon) {
-    state.icon.className = clsx(selectClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = clsx(styles.icon, state.icon.className);
   }
 
   return state;

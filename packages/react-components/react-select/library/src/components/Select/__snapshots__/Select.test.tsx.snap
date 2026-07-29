@@ -3,14 +3,14 @@
 exports[`Select renders a custom icon slot 1`] = `
 <div>
   <span
-    class="fui-Select group/fui-select"
+    class="group/fui-select"
     data-size="medium"
   >
     <select
-      class="fui-Select__select"
+      class=""
     />
     <span
-      class="fui-Select__icon"
+      class=""
     >
       x
     </span>
@@ -21,11 +21,11 @@ exports[`Select renders a custom icon slot 1`] = `
 exports[`Select renders option children 1`] = `
 <div>
   <span
-    class="fui-Select group/fui-select"
+    class="group/fui-select"
     data-size="medium"
   >
     <select
-      class="fui-Select__select"
+      class=""
     >
       <option>
         A
@@ -38,7 +38,7 @@ exports[`Select renders option children 1`] = `
       </option>
     </select>
     <span
-      class="fui-Select__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -62,14 +62,14 @@ exports[`Select renders option children 1`] = `
 exports[`Select renders the default state 1`] = `
 <div>
   <span
-    class="fui-Select group/fui-select"
+    class="group/fui-select"
     data-size="medium"
   >
     <select
-      class="fui-Select__select"
+      class=""
     />
     <span
-      class="fui-Select__icon"
+      class=""
     >
       <svg
         aria-hidden="true"

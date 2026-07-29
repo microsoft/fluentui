@@ -11,7 +11,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSelect_unstable: (state: SelectBaseState) => JSXElement;
@@ -25,8 +24,10 @@ export type SelectBaseProps = DistributiveOmit<SelectProps, 'appearance' | 'size
 // @public (undocumented)
 export type SelectBaseState = DistributiveOmit<SelectState, 'appearance' | 'size'>;
 
-// @public (undocumented)
-export const selectClassNames: SlotClassNames<SelectSlots>;
+// @public @deprecated
+export const selectClassNames: {
+    root: string;
+};
 
 // @public
 export type SelectOnChangeData = {

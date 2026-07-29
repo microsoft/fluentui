@@ -9,7 +9,7 @@ export type {
 export {
   Select,
   renderSelect_unstable,
-  selectClassNames,
+  selectClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSelectStyles_unstable,
   useSelectBase_unstable,
   useSelect_unstable,

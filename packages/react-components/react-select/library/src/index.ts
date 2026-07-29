@@ -1,6 +1,6 @@
 export {
   Select,
-  selectClassNames,
+  selectClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderSelect_unstable,
   useSelectStyles_unstable,
   useSelectBase_unstable,
