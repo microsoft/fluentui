@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 
 import {
   useAccordion_unstable,
@@ -117,7 +117,7 @@ describe('useAccordionBase', () => {
       // Extend context to include appearance
       Object.assign(contextValues.accordion, { appearance });
 
-      state.root.className = mergeClasses('accordion', `accordion--${appearance}`, state.root.className);
+      state.root.className = clsx('accordion', `accordion--${appearance}`, state.root.className);
 
       return renderAccordion_unstable(state as AccordionState, contextValues);
     },
@@ -127,7 +127,7 @@ describe('useAccordionBase', () => {
     const state = useAccordionItem_unstable(props, ref);
     const appearance = useAccordionContext_unstable((ctx: unknown) => (ctx as CustomAccordionContextValue).appearance);
 
-    state.root.className = mergeClasses('accordion-item', `accordion-item--${appearance}`, state.root.className);
+    state.root.className = clsx('accordion-item', `accordion-item--${appearance}`, state.root.className);
 
     const contextValues = useAccordionItemContextValues_unstable(state);
     return renderAccordionItem_unstable(state as AccordionItemState, contextValues);
@@ -137,7 +137,7 @@ describe('useAccordionBase', () => {
     const state = useAccordionHeaderBase_unstable(props, ref);
     const appearance = useAccordionContext_unstable((ctx: unknown) => (ctx as CustomAccordionContextValue).appearance);
 
-    state.root.className = mergeClasses(
+    state.root.className = clsx(
       'accordion-header',
       `accordion-header--${appearance}`,
       state.open && 'accordion-header-open',
@@ -152,7 +152,7 @@ describe('useAccordionBase', () => {
     const state = useAccordionPanelBase_unstable(props, ref);
     const appearance = useAccordionContext_unstable((ctx: unknown) => (ctx as CustomAccordionContextValue).appearance);
 
-    state.root.className = mergeClasses('accordion-panel', `accordion-panel--${appearance}`, state.root.className);
+    state.root.className = clsx('accordion-panel', `accordion-panel--${appearance}`, state.root.className);
 
     // Don't render if not open (simulating unmountOnExit behavior)
     if (!state.open) {
