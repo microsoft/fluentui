@@ -122,11 +122,26 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForegroundInvertedLinkPressed,
     },
   },
+  bold: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  appearanceInverted: {
+    color: tokens.colorNeutralForegroundInvertedLink,
+    ':hover': {
+      color: tokens.colorNeutralForegroundInvertedLinkHover,
+    },
+    ':hover:active': {
+      color: tokens.colorNeutralForegroundInvertedLinkPressed,
+    },
+    ':focus': {
+      textDecorationColor: tokens.colorNeutralForegroundInvertedLink,
+    },
+  },
 });
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
-  const { appearance, disabled, inline, root, backgroundAppearance } = state;
+  const { appearance, bold, disabled, inline, root, backgroundAppearance } = state;
 
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
@@ -136,9 +151,11 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
     root.as === 'a' && root.href && styles.href,
     root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,
+    appearance === 'inverted' && styles.appearanceInverted,
     backgroundAppearance === 'inverted' && styles.inverted,
     backgroundAppearance === 'brand' && styles.brand,
     inline && styles.inline,
+    bold && styles.bold,
     disabled && styles.disabled,
     state.root.className,
   );
