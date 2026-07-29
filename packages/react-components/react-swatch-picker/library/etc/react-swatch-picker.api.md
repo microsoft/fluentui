@@ -13,13 +13,14 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
 
-// @public (undocumented)
-export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
+// @public @deprecated
+export const colorSwatchClassNames: {
+    root: string;
+};
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
@@ -44,8 +45,10 @@ export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwat
 // @public
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
 
-// @public (undocumented)
-export const emptySwatchClassNames: SlotClassNames<EmptySwatchSlots>;
+// @public @deprecated
+export const emptySwatchClassNames: {
+    root: string;
+};
 
 // @public
 export type EmptySwatchProps = ComponentProps<EmptySwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'>;
@@ -61,8 +64,10 @@ export type EmptySwatchState = ComponentState<EmptySwatchSlots> & Pick<EmptySwat
 // @public
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
 
-// @public (undocumented)
-export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots>;
+// @public @deprecated
+export const imageSwatchClassNames: {
+    root: string;
+};
 
 // @public
 export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
@@ -98,7 +103,7 @@ export const renderSwatchPickerGrid: (props: SwatchPickerGridProps) => JSXElemen
 // @public
 export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JSXElement;
 
-// @public (undocumented)
+// @public
 export const swatchCSSVars: {
     color: string;
     borderColor: string;
@@ -107,8 +112,10 @@ export const swatchCSSVars: {
 // @public
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
 
-// @public (undocumented)
-export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
+// @public @deprecated
+export const swatchPickerClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const swatchPickerContextDefaultValue: SwatchPickerContextValue;
@@ -165,8 +172,10 @@ export const SwatchPickerProvider: React_2.Provider<SwatchPickerContextValue> & 
 // @public
 export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps>;
 
-// @public (undocumented)
-export const swatchPickerRowClassNames: SlotClassNames<SwatchPickerRowSlots>;
+// @public @deprecated
+export const swatchPickerRowClassNames: {
+    root: string;
+};
 
 // @public
 export type SwatchPickerRowProps = ComponentProps<SwatchPickerRowSlots>;

@@ -8,7 +8,7 @@ export type {
 export {
   SwatchPicker,
   renderSwatchPicker_unstable,
-  swatchPickerClassNames,
+  swatchPickerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSwatchPickerStyles_unstable,
   useSwatchPicker_unstable,
 } from './components/SwatchPicker/index';

@@ -1,0 +1,238 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useImageSwatchStyles_unstable, not source declaration order:
+ *
+ *   1 imageSwatchClassNames.root      → static class (JS) — REMOVED in the statics sweep
+ *                                       (DECISIONS.md D16.1); the root now leads with
+ *                                       `.root` below and carries `group/fui-image-swatch`
+ *                                       second
+ *   2 useStyles (makeResetStyles)     → fui.base — EXCEPT its forced-colors block, hoisted
+ *                                       to the LAST fui.components.l1 block (see below)
+ *   3 useSizeStyles[size]             → fui.components.l1   (data-size)
+ *   4 useShapeStyles[shape]           → fui.components.l1
+ *   5 selected && useStylesSelected   → fui.components.l1
+ *   6 consumer className              → unlayered (always wins)
+ *
+ * ── The one hoist, and why it is not an argument-order violation ─────────────────────
+ * Griffel's `styleBucketOrdering` is `r, d, l, v, w, f, i, h, a, s, k, t, m, c` — the `s`
+ * bucket is "at rules for RESET styles" and it sorts AFTER every plain makeStyles bucket
+ * (`d`/`h`/`a`) and BEFORE the makeStyles media bucket (`m`). So the reset's
+ * `@media (forced-colors: active)` hover rules do NOT behave like the rest of the reset:
+ * they BEAT the `selected` slice's `:hover` / `:hover:active` box-shadows (both 0-2-0 and
+ * 0-3-0, `h`/`a` buckets) instead of losing to them.
+ *
+ * Concretely, for a selected + hovered swatch in forced colors Griffel resolves
+ *   `.r18b5q7m:hover` (r, 0-2-0) < `.f106r15f:hover` (h, 0-2-0)
+ *     < `@media hc { .r18b5q7m:hover }` (s, 0-2-0)   ← winner, colorBrandStroke2Hover
+ * Leaving that rule in `fui.base` would hand the win to `.selected`'s
+ * colorCompoundBrandStrokeHover — a silent high-contrast regression. Hoisting the reset's
+ * forced-colors block to the END of `fui.components.l1` reproduces the `s` bucket's rank
+ * exactly. (Same class of fix as the batch-1 ProgressBar/Link splits and the batch-2
+ * Checkbox interleave.)
+ *
+ * ── Ordering inside `.selected` ──────────────────────────────────────────────────────
+ * Griffel decided that slice by bucket + specificity, both of which `:where()` flattens,
+ * so the block is written in BUCKET order rather than source order:
+ *   rest (d, 0-1-0) → forced-colors rest (m, 0-1-0, beats the rest rule)
+ *     → [data-fui-focus-visible] (d, 0-2-0, beats both on specificity)
+ *     → :hover (h, 0-2-0) → :hover:active (a, 0-3-0)
+ *
+ * ── Pixel literals (D4) ──────────────────────────────────────────────────────────────
+ * The 20/24/28/32px box sizes and the 5px/6px/7px box-shadow spreads are literals in the
+ * Griffel source, not token reads. Sizes take the numeric utility `size-N`; the shadow
+ * spreads take `calc(Npx * var(--base-scale))` (box-shadow is NOT a spacing-powered
+ * property, so no utility exists) — both are exactly Npx at the default 16px root and both
+ * scale with the stroke widths they are paired with. `1px` border width and every
+ * `strokeWidth*` read become `var(--spacing-*)` per the D4 addendum.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ImageSwatch/useImageSwatchStyles.styles.js.
+ *
+ * D2 amendment 5 does not apply: no `fui-Icon-filled` / `fui-Icon-regular` anywhere in
+ * this module, and it contains no `:global()` at all.
+ */
+
+@layer fui.base {
+  /*
+   * from useStyles (makeResetStyles), minus its `@media (forced-colors: active)` block —
+   * that one is the Griffel `s` bucket and lives at the bottom of this file.
+   */
+  .root {
+    @apply inline-flex box-border bg-cover bg-no-repeat p-0;
+
+    /* Kept as the `border` shorthand the source wrote; every other border declaration in
+       this component is also a shorthand (`border: none`), so no longhand competes. */
+    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+
+    @variant hover {
+      @apply cursor-pointer;
+
+      border: none;
+      box-shadow: inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke1),
+        inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+
+      /* `:hover:active` — NOT the shared `hover-active` variant, which is Griffel's
+         authored `:hover:active, :active:focus-visible` compound (Button family). This
+         source wrote plain `':hover:active'`, and the compiled selector is
+         `.r18b5q7m:hover:active`; nesting `hover` + `active` reproduces it exactly. */
+      @variant active {
+        border: none;
+        box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorCompoundBrandStrokePressed),
+          inset 0 0 0 var(--spacing-thickest) var(--colorStrokeFocus1);
+      }
+    }
+
+    @variant focus {
+      outline: none;
+    }
+
+    /* The NATIVE `:focus-visible` pseudo-class the source authored, distinct from
+       keyborg's `[data-fui-focus-visible]` below. */
+    @variant focus-visible {
+      outline: none;
+    }
+
+    /* from createCustomFocusIndicatorStyle({ border, outline, boxShadow }) — a bespoke
+       indicator, not `createFocusOutlineStyle`/Button's ring, so it is authored here
+       rather than `@apply`-ing a shared focus utility. */
+    @variant focus-visible-fui {
+      border: none;
+      outline: none;
+      box-shadow: inset 0 0 0 var(--spacing-thick) var(--colorStrokeFocus2),
+        inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #3 — from useSizeStyles, selected by the root's own `data-size` */
+  .root {
+    @variant size-extra-small {
+      @apply size-20;
+    }
+
+    @variant size-small {
+      @apply size-24;
+    }
+
+    @variant size-medium {
+      @apply size-28;
+    }
+
+    @variant size-large {
+      @apply size-32;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #4 — from useShapeStyles. Each slice is `{ borderRadius }` plus a
+   * `createCustomFocusIndicatorStyle({ borderRadius })` restatement of the same value; the
+   * restatement is reproduced so the slice mapping stays 1:1.
+   */
+
+  /* from useShapeStyles.rounded */
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+
+    @variant focus-visible-fui {
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+
+  /* from useShapeStyles.circular */
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+
+    @variant focus-visible-fui {
+      border-radius: var(--borderRadiusCircular);
+    }
+  }
+
+  /* from useShapeStyles.square */
+  .square {
+    border-radius: var(--borderRadiusNone);
+
+    @variant focus-visible-fui {
+      border-radius: var(--borderRadiusNone);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #5 — from useStylesSelected.selected; written in Griffel BUCKET order (see header) */
+  .selected {
+    border: none;
+    box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke1),
+      inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
+
+    /* `m` bucket, same 0-1-0 as the rest rule above — so it wins at rest in forced colors,
+       but still loses to the 0-2-0 focus/hover rules below exactly as Griffel had it. */
+    @variant forced-colors {
+      box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke2Pressed),
+        inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
+    }
+
+    @variant focus-visible-fui {
+      box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus2),
+        inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
+    }
+
+    @variant hover {
+      box-shadow: inset 0 0 0 var(--spacing-thickest) var(--colorCompoundBrandStrokeHover),
+        inset 0 0 0 calc(6px * var(--base-scale)) var(--colorStrokeFocus1);
+
+      @variant active {
+        box-shadow: inset 0 0 0 var(--spacing-thickest) var(--colorCompoundBrandStrokePressed),
+          inset 0 0 0 calc(7px * var(--base-scale)) var(--colorStrokeFocus1);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── HOISTED: the reset's `@media (forced-colors: active)` block ──────────────────────
+   *
+   * These four declarations come from `useStyles` (makeResetStyles) and would naturally
+   * sit in `fui.base` with the rest of it. They are here instead because Griffel puts
+   * reset at-rules in the `s` bucket, which sorts after every plain makeStyles bucket —
+   * see the header. Written LAST in the file so it beats `.selected`'s `:hover` /
+   * `:hover:active` shadows (args #5) in forced colors, which is the winner Griffel
+   * produced.
+   *
+   * `forced-color-adjust` rides along rather than staying behind in `fui.base`: nothing
+   * else in the component sets it, so its layer is inert and keeping the reset's HC block
+   * intact keeps the mapping legible.
+   */
+  .root {
+    @variant forced-colors {
+      forced-color-adjust: none;
+
+      @variant hover {
+        box-shadow: inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke2Hover),
+          inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+
+        @variant active {
+          box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke2Pressed),
+            inset 0 0 0 var(--spacing-thickest) var(--colorStrokeFocus1);
+        }
+      }
+    }
+  }
+}

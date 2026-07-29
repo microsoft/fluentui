@@ -1,0 +1,60 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useSwatchPickerRowStyles_unstable, not source declaration order:
+ *
+ *   1 swatchPickerRowClassNames.root → static class (JS) — REMOVED in the statics sweep
+ *                                      (DECISIONS.md D16.1); the root now leads with
+ *                                      `.root` below and carries
+ *                                      `group/fui-swatch-picker-row` second
+ *   2 useResetStyles                 → fui.base
+ *   3 useStyles.spacing{Small,Medium} → fui.components.l1
+ *   4 consumer className             → unlayered (always wins)
+ *
+ * No inversions: the only two l1 slices are mutually exclusive (the hook picks exactly
+ * one) and share no property with the reset. Verified against the compiled Griffel
+ * atomics in lib-commonjs/components/SwatchPickerRow/useSwatchPickerRowStyles.styles.js
+ * (`.r1xhj18k{display:flex;flex-direction:row}`, `.f16mnhsx{column-gap:2px}`,
+ * `.f1q8lukm{column-gap:4px}`).
+ *
+ * D2 amendment 5 does not apply: no `fui-Icon-filled` / `fui-Icon-regular` anywhere in
+ * this module, and it contains no `:global()` at all.
+ */
+
+@layer fui.base {
+  /* from useResetStyles (makeResetStyles) */
+  .root {
+    @apply flex flex-row;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #3 — from useStyles. `column-gap` is an inline-axis property, so the 2px / 4px
+   * literals take the HORIZONTAL spacing steps (XXS = 2px, XS = 4px) per the D4
+   * amendment; `gap-x-*` is the utility family that compiles to `column-gap`.
+   */
+
+  /* from useStyles.spacingSmall */
+  .spacing-small {
+    @apply gap-x-horizontal-xxs;
+  }
+
+  /* from useStyles.spacingMedium */
+  .spacing-medium {
+    @apply gap-x-horizontal-xs;
+  }
+}

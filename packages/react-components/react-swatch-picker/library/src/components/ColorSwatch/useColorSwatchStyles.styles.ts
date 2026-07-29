@@ -1,178 +1,74 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
-import { tokens } from '@fluentui/react-theme';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
-  root: 'fui-ColorSwatch',
-  icon: 'fui-ColorSwatch__icon',
-  disabledIcon: 'fui-ColorSwatch__disabledIcon',
+import { clsx } from 'clsx';
+import type { ColorSwatchState } from './ColorSwatch.types';
+
+import styles from './ColorSwatch.module.css';
+
+/**
+ * Public identity class for ColorSwatch.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as this component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a
+ * selector and as a `group-*` variant target. The BEM statics (`fui-ColorSwatch`,
+ * `fui-ColorSwatch__icon`, `fui-ColorSwatch__disabledIcon`) are no longer rendered and the
+ * per-slot keys are gone (DECISIONS.md D16.1); there is no public class-name handle on
+ * component internals.
+ *
+ * The marker token contains a `/`. That is legal inside a class TOKEN but terminates the
+ * name inside a SELECTOR, so `'.' + colorSwatchClassNames.root` is an invalid selector even
+ * though it type-checks. Use `fuiSelector(colorSwatchClassNames.root)` from
+ * `@fluentui/react-utilities`.
+ */
+export const colorSwatchClassNames: { root: string } = {
+  root: 'group/fui-color-swatch',
 };
 
+/**
+ * CSS custom properties the swatch colour rides on. Set as inline styles by
+ * `useColorSwatch_unstable`; the runtime-value mechanism ports unchanged from Griffel
+ * (CONVERSION_GUIDE "Known special cases"), so these names are still public API.
+ */
 export const swatchCSSVars = {
   color: `--fui-SwatchPicker--color`,
   borderColor: `--fui-SwatchPicker--borderColor`,
 };
 
-const { color, borderColor } = swatchCSSVars;
-
 /**
- * Styles for the root slot
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `data-size` carries the SCALE prop (DECISIONS.md D3) and is the ONLY attribute this
+ * component stamps. Three states deliberately do NOT get one:
+ *
+ * - `disabled` — the root is a `<button>` and `useColorSwatch_unstable` passes `disabled`
+ *   straight through, so `@variant disabled` reads the native attribute at the element that
+ *   needs it (D15.6).
+ * - `shape` and `selected` — each gates a whole makeStyles slice and stays a module class;
+ *   no descendant reads either. (Selection is NOT expressible natively here: the root
+ *   renders `aria-selected` in grid layout but `aria-checked` in row layout, which is
+ *   exactly why a class carries it rather than an `aria-*` selector.)
+ *
+ * The icon slots carry no attributes either: their per-size font-size is selected from this
+ * root's `data-size` through a descendant selector inside ColorSwatch.module.css.
  */
-const useResetStyles = makeResetStyles({
-  display: 'inline-flex',
-  flexShrink: 0,
-  alignItems: 'center',
-  justifyContent: 'center',
-  boxSizing: 'border-box',
-  border: `1px solid var(${borderColor})`,
-  background: `var(${color})`,
-  overflow: 'hidden',
-  padding: '0',
-  ':hover': {
-    cursor: 'pointer',
-    border: 'none',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
-  },
-  ':hover:active': {
-    border: 'none',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
-  },
-  ':focus': {
-    outline: 'none',
-  },
-  ':focus-visible': {
-    outline: 'none',
-  },
-  ...createCustomFocusIndicatorStyle({
-    border: 'none',
-    outline: 'none',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
-  }),
-
-  // High contrast styles
-
-  '@media (forced-colors: active)': {
-    forcedColorAdjust: 'none',
-    ':hover': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke2Hover}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
-    },
-    ':hover:active': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke2Pressed}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
-    },
-  },
-});
-
-const useStyles = makeStyles({
-  disabled: {
-    ':hover': {
-      cursor: 'not-allowed',
-      boxShadow: 'none',
-    },
-    '@media (forced-colors: active)': {
-      ':hover': {
-        boxShadow: 'none',
-      },
-    },
-  },
-  selected: {
-    border: 'none',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
-    ':hover': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorCompoundBrandStrokeHover}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
-    },
-    ':hover:active': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 7px ${tokens.colorStrokeFocus1}`,
-    },
-    ...createCustomFocusIndicatorStyle({
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus2}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
-    }),
-    '@media (forced-colors: active)': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke2Pressed}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
-    },
-  },
-  selectedSmall: {
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
-    ':hover': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorCompoundBrandStrokeHover}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
-    },
-    ':hover:active': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
-    },
-  },
-});
-
-const useSizeStyles = makeStyles({
-  'extra-small': {
-    width: '20px',
-    height: '20px',
-    ':hover': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
-    },
-    ':hover:active': {
-      border: 'none',
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
-    },
-  },
-  small: {
-    width: '24px',
-    height: '24px',
-    ':hover:active': {
-      border: 'none',
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
-    },
-  },
-  medium: {
-    width: '28px',
-    height: '28px',
-  },
-  large: {
-    width: '32px',
-    height: '32px',
-  },
-});
-
-const useShapeStyles = makeStyles({
-  rounded: {
-    borderRadius: tokens.borderRadiusMedium,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusMedium }),
-  },
-  circular: {
-    borderRadius: tokens.borderRadiusCircular,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusCircular }),
-  },
-  square: {
-    borderRadius: tokens.borderRadiusNone,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusNone }),
-  },
-});
-
-const useIconStyles = makeStyles({
-  disabledIcon: {
-    color: tokens.colorNeutralForegroundInverted,
-    filter: 'drop-shadow(0 1px 1px rgb(0 0 0 / 1))',
-  },
-  icon: {
-    position: 'absolute',
-    display: 'flex',
-    alignSelf: 'center',
-  },
-  'extra-small': {
-    fontSize: '16px',
-  },
-  small: {
-    fontSize: '16px',
-  },
-  medium: {
-    fontSize: '20px',
-  },
-  large: {
-    fontSize: '24px',
-  },
-});
+type ColorSwatchRootDataAttributes = {
+  'data-size': NonNullable<ColorSwatchState['size']>;
+};
 
 /**
  * Apply styling to the ColorSwatch slots based on the state
@@ -180,38 +76,47 @@ const useIconStyles = makeStyles({
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
   const { size = 'medium', shape = 'square' } = state;
 
-  const resetStyles = useResetStyles();
-  const styles = useStyles();
-  const sizeStyles = useSizeStyles();
-  const shapeStyles = useShapeStyles();
-  const iconStyles = useIconStyles();
-  const smallerSelectedStyles = size === 'small' || size === 'extra-small' ? styles.selectedSmall : '';
+  const root = state.root as ColorSwatchState['root'] & ColorSwatchRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    colorSwatchClassNames.root,
-    resetStyles,
-    sizeStyles[size],
-    shapeStyles[shape],
+  root['data-size'] = size;
+
+  // Unconditional module class FIRST, then the named group marker — the marker must never
+  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // clsx never drops it, so index 0 is always the hashed, selector-safe module class; it is
+  // what keeps the marker safe now that the `fui-ColorSwatch` static is gone.
+  //
+  // The marker is a literal, unhashed, GLOBAL token and this component's SOLE public
+  // identity class: it is the only handle by which another module — in this package or any
+  // other — can style an element from this swatch's state, because `styles.root` is hashed
+  // and unaddressable from outside this file. `data-size` is stamped on this very element
+  // above, so `@variant group-size-large/fui-color-swatch` works as-is (DECISIONS.md D15,
+  // Tier 0).
+  //
+  // `smallerSelectedStyles` is gone from JS: the `size === 'small' || 'extra-small'` gate on
+  // the `selectedSmall` slice is now the shared `size-small-or-below` variant reading the
+  // `data-size` attribute above, nested inside `.selected` in the module.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in ColorSwatch.module.css, not
+  // by the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, and for the one reset block that is
+  // deliberately hoisted out of `fui.base`.
+  state.root.className = clsx(
+    styles.root,
+    'group/fui-color-swatch',
+    styles[shape],
     state.selected && styles.selected,
-    state.selected && smallerSelectedStyles,
-    state.disabled && styles.disabled,
     state.root.className,
   );
 
   if (state.disabled && state.disabledIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.disabledIcon.className = mergeClasses(
-      iconStyles.icon,
-      iconStyles[size],
-      iconStyles.disabledIcon,
-      state.disabledIcon.className,
-    );
+    // `iconStyles[size]` is not applied here any more — the module selects the icon's
+    // font-size from the ROOT's `data-size` (see the module's icon block).
+    state.disabledIcon.className = clsx(styles.icon, styles['disabled-icon'], state.disabledIcon.className);
   }
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(iconStyles.icon, iconStyles[size], state.icon.className);
+    state.icon.className = clsx(styles.icon, state.icon.className);
   }
 
   return state;

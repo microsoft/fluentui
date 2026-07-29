@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { ImageSwatch } from './ImageSwatch';
 import { SwatchPickerProvider, swatchPickerContextDefaultValue } from '../../contexts/swatchPicker';
@@ -8,6 +9,15 @@ describe('ImageSwatch', () => {
   isConformant({
     Component: ImageSwatch,
     displayName: 'ImageSwatch',
+    // Griffel → Tailwind + CSS Modules migration — see ColorSwatch.test.tsx for the full
+    // rationale. `make-styles-overrides-win` can no longer observe a clsx-composed hook;
+    // `classname-overrides-win` is its cascade-native replacement (DECISIONS.md D9), and
+    // `component-has-group-marker` (a default test) replaces the BEM-static assertion
+    // (D16.1 / D16.6).
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   it('renders a default state', () => {
@@ -16,7 +26,8 @@ describe('ImageSwatch', () => {
       <div>
         <button
           aria-checked="false"
-          class="fui-ImageSwatch"
+          class="group/fui-image-swatch"
+          data-size="medium"
           role="radio"
           style="background-image: url(\\"path/img.png\\");"
         />

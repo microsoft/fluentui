@@ -1,7 +1,7 @@
 export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './components/ImageSwatch/index';
 export {
   ImageSwatch,
-  imageSwatchClassNames,
+  imageSwatchClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderImageSwatch_unstable,
   useImageSwatchStyles_unstable,
   useImageSwatch_unstable,

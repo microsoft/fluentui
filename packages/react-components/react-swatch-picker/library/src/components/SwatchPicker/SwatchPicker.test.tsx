@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { SwatchPicker } from './SwatchPicker';
 import { ColorSwatch } from '../ColorSwatch/ColorSwatch';
@@ -10,6 +11,15 @@ describe('SwatchPicker', () => {
   isConformant({
     Component: SwatchPicker,
     displayName: 'SwatchPicker',
+    // Griffel → Tailwind + CSS Modules migration — see ColorSwatch.test.tsx for the full
+    // rationale. `make-styles-overrides-win` can no longer observe a clsx-composed hook;
+    // `classname-overrides-win` is its cascade-native replacement (DECISIONS.md D9), and
+    // `component-has-group-marker` (a default test) replaces the BEM-static assertion
+    // (D16.1 / D16.6).
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   it('renders with swatches', () => {
@@ -24,20 +34,22 @@ describe('SwatchPicker', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <div
-          class="fui-SwatchPicker"
+          class="group/fui-swatch-picker"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true}}"
           role="radiogroup"
         >
           <button
             aria-checked="false"
-            class="fui-ColorSwatch"
+            class="group/fui-color-swatch"
+            data-size="medium"
             role="radio"
             style="--fui-SwatchPicker--color: #f09; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
             type="button"
           />
           <button
             aria-checked="false"
-            class="fui-ColorSwatch"
+            class="group/fui-color-swatch"
+            data-size="medium"
             disabled=""
             role="radio"
             style="--fui-SwatchPicker--color: #0f0; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
@@ -64,13 +76,15 @@ describe('SwatchPicker', () => {
           </button>
           <button
             aria-checked="false"
-            class="fui-ImageSwatch"
+            class="group/fui-image-swatch"
+            data-size="medium"
             role="radio"
             style="background-image: url(\\"path/img.png\\");"
           />
           <button
             aria-checked="false"
-            class="fui-EmptySwatch"
+            class="group/fui-empty-swatch"
+            data-size="medium"
             role="radio"
           />
         </div>
