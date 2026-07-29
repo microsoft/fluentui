@@ -32,6 +32,42 @@ This recipe focuses on other uses of this patterns and will show you how to crea
 > **\*\*Note:\*\*** This recipe is meant to provide a way to use custom media. If you want to use
 > `Avatar` or `PresenceBadge` as media, please refer to our <LinkTo story="components-persona" kind="Components/Persona" name="docs">Persona component</LinkTo>.
 
+### **How the styles are authored**
+
+Styles in Fluent UI React v9 are written as **Tailwind-flavored CSS Modules**. A recipe is two files: a
+`.module.css` sitting next to the component, and the component itself, which imports the generated class
+map and composes class names with [`clsx`](https://www.npmjs.com/package/clsx).
+
+Every module opens the same way — a reference to the shared theme, then the cascade layer order:
+
+```css
+/* MediaObject.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+```
+
+`@reference` makes the theme's tokens, utilities and variants available to `@apply` and `@variant` without
+emitting a single byte of CSS. That is also why the `@layer` statement has to be repeated in every module:
+with nothing emitted, the order in which the layers happen to _first appear_ would decide their ranking,
+and that order changes with load order. Re-declaring the identical order is a no-op, so repeating it is
+free and makes each module self-sufficient.
+
+Your rules belong in **`fui.components.l4`**. The levels are altitudes — who is doing the styling:
+
+| Layer               | Who authors it                                                      |
+| ------------------- | ------------------------------------------------------------------- |
+| `fui.components.l1` | the library — one component's own cascade                           |
+| `fui.components.l2` | the library — a component styling another component's output        |
+| `fui.components.l3` | you — an application-wide design layer on top of Fluent             |
+| `fui.components.l4` | you — page- and feature-specific styling, which is what a recipe is |
+| `fui.components.l5` | you — headroom for one-off depth                                    |
+
+The cascade compares layers before it looks at specificity, so anything you write in `l4` wins over the
+library's own rules without a specificity war and without `!important`. The same mechanism is how you style
+a Fluent component: pass your class through its **slot `className` props** — `<Text className={styles.text} />` —
+and your `l4` rule outranks the `l1` rule Text wrote for itself.
+
 ## Steps
 
 There are two ways to build a Media Object, you can use a grid layout or a flex layout. We will cover both in this
@@ -52,43 +88,48 @@ To achieve this layout, we will follow these steps:
 #### **Step 1: Creating our parent and text container styles.**
 
 As seen above, we will first need to create our parent div and our text containers. These containers will need to have
-the `display: flex` css property and a `row` direction for the parent and a `column` direction for the text container, as shown in the `makeStyles` call below:
+the `display: flex` css property and a `row` direction for the parent and a `column` direction for the text container, as shown in the module below:
 
-```jsx
-const useStyles = makeStyles({
-  parent: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  textContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
+```css
+/* MediaObject.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .parent {
+    @apply flex flex-row;
+  }
+
+  .text-container {
+    @apply flex flex-col;
+  }
+}
 ```
 
 #### **Step 2: Putting everything together.**
 
 After we have our styles, we just have to put our styles to work! Since we are using flex box we don't need to worry about dynamically placing items. Do take into account that using this approach will be heavier on the DOM than the grid approach.
 
-```jsx
-import { Text, makeStyles } from '@fluentui/react-components';
+```tsx
+import * as React from 'react';
+import { Text } from '@fluentui/react-components';
 
-// Our makeStyles call from above
+import styles from './MediaObject.module.css';
 
-const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
-  const styles = useStyles();
-
-  return (
-    <div className={styles.parent}>
-      {children}
-      <div className={styles.textContainer}>
-        <Text>{text}</Text>
-      </div>
+const MediaObject: React.FC<{ children?: React.ReactNode; text?: string }> = ({ children, text }) => (
+  <div className={styles.parent}>
+    {children}
+    <div className={styles['text-container']}>
+      <Text>{text}</Text>
     </div>
-  );
-};
+  </div>
+);
 ```
+
+Module class names are lowercase-kebab, so a multi-word local is read off the class map with bracket access —
+`styles['text-container']`. The class map itself is generated at build time; nothing in the module is a public
+name you or anyone else can select on from outside the file.
 
 After these steps you should be able to build something like the example below.
 
@@ -111,99 +152,110 @@ To get the initial layout, we need to add these css properties to our parent div
 - `display: grid`: This will create our grid layout and allow us to use the grid properties.
 - `grid-auto-flow: column`: This will make the grid flow as a column and allow our media to be on the left and our text on the right.
 
-Resulting in a `makeStyles` call like this:
+Resulting in a module like this:
 
-```jsx
-const useStyles = makeStyles({
-  parent: {
-    display: 'grid',
-    gridAutoFlow: 'column',
-  },
-});
+```css
+/* MediaObject.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .parent {
+    @apply grid;
+
+    grid-auto-flow: column;
+  }
+}
 ```
+
+`@apply grid` and a literal `grid-auto-flow` declaration sit side by side on purpose: reach for a utility when one
+maps 1:1, and write plain CSS when it does not. A module is ordinary CSS — there is no expression it cannot hold.
 
 #### **Step 2: Adding our media styles.**
 
-Our next step is to add our media styles. Unlike the flex layout, we will need to add some css properties to our media because we are using `grid-auto-flow: column`. To make our media take all the rows on the left, we will need to make our media span the number of rows the text will take. If we have 4 lines of text, we will need to add `grid-row-start: span 4`. While this could be done dynamically using line names, this is the simplest way to achieve a media object with grid. This will give us the following `makeStyles` call:
+Our next step is to add our media styles. Unlike the flex layout, we will need to add some css properties to our media because we are using `grid-auto-flow: column`. To make our media take all the rows on the left, we will need to make our media span the number of rows the text will take. If we have 4 lines of text, we will need to add `grid-row-start: span 4`. While this could be done dynamically using line names, this is the simplest way to achieve a media object with grid. This will give us the following block:
 
-```jsx
-const useStyles = makeStyles({
-  // parent styles
-  media: {
-    gridRowStart: 'span 4',
-  },
-});
+```css
+@layer fui.components.l4 {
+  /* parent styles */
+
+  .media {
+    grid-row-start: span 4;
+  }
+}
 ```
 
 #### **Step 3: Putting everything together.**
 
 After these steps we should be able to add our media and text, and get the desired layout shown above. We should have a component that looks like this:
 
-```jsx
-import { Text, makeStyles } from '@fluentui/react-components';
+```tsx
+import * as React from 'react';
+import { Text } from '@fluentui/react-components';
 
-// Our makeStyles call from above
+import styles from './MediaObject.module.css';
 
-const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
-  const styles = useStyles();
-
-  return (
-    <div className={styles.parent}>
-      <div className={styles.media}>{children}</div>
-      <Text className={styles.text}>{text}</Text>
-    </div>
-  );
-};
+const MediaObject: React.FC<{ children?: React.ReactNode; text?: string }> = ({ children, text }) => (
+  <div className={styles.parent}>
+    <div className={styles.media}>{children}</div>
+    <Text className={styles.text}>{text}</Text>
+  </div>
+);
 ```
+
+`<Text className={styles.text}>` is the whole story for styling a Fluent component: `className` is a slot prop, Text
+appends your class to the ones it composed for itself, and because your rule lives in `fui.components.l4` and Text's
+live in `fui.components.l1`, yours wins.
 
 #### **Step 3 (_optional_): Dynamically place media and text.**
 
-If you want to dynamically place your media and text, you can use `grid-template-columns` to achieve this. For the basic layout, we need to add the css property `grid-template-columns: max-content [middle] auto`. This will create two columns and a line name called middle. The max-content column will be the media which will help only use the space needed for the media and the auto column will be the text so we can wrap it when there is not enough space in our container. This will give us the following `makeStyles` call:
+If you want to dynamically place your media and text, you can use `grid-template-columns` to achieve this. For the basic layout, we need to add the css property `grid-template-columns: max-content [middle] auto`. This will create two columns and a line name called middle. The max-content column will be the media which will help only use the space needed for the media and the auto column will be the text so we can wrap it when there is not enough space in our container. This will give us the following block:
 
-```jsx
-const useStyles = makeStyles({
-  parent: {
-    display: 'grid',
-    gridTemplateColumns: 'max-content [middle] auto',
-  },
-});
+```css
+@layer fui.components.l4 {
+  .parent {
+    @apply grid;
+
+    grid-template-columns: max-content [middle] auto;
+  }
+}
 ```
 
 #### **Step 4 (_optional_): Let your media and text know where to start and end.**
 
-Now that we have our template columns, we need to let our text know where to start and our media where to end. The media must end at the middle line and the text must start at the middle line. This has the pro of not having to know how many rows of text we will have, but the downside is that we have to let the media and text know where to start or end. We should a `makeStyles` call like this:
+Now that we have our template columns, we need to let our text know where to start and our media where to end. The media must end at the middle line and the text must start at the middle line. This has the pro of not having to know how many rows of text we will have, but the downside is that we have to let the media and text know where to start or end. We should have a block like this:
 
-```jsx
-const useStyles = makeStyles({
-  // parent styles
-  media: {
-    gridColumnEnd: 'middle',
-  },
-  text: {
-    gridColumnStart: 'middle',
-  },
-});
+```css
+@layer fui.components.l4 {
+  /* parent styles */
+
+  .media {
+    grid-column-end: middle;
+  }
+
+  .text {
+    grid-column-start: middle;
+  }
+}
 ```
 
 #### **Step 5 (_optional_): Putting everything together.**
 
 After our styles are ready to be used, we can put everything together and get the desired layout shown above. We should have a component that looks like this:
 
-```jsx
-import { Text, makeStyles } from '@fluentui/react-components';
+```tsx
+import * as React from 'react';
+import { Text } from '@fluentui/react-components';
 
-// Our makeStyles call from above
+import styles from './MediaObject.module.css';
 
-const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
-  const styles = useStyles();
-
-  return (
-    <div className={styles.parent}>
-      <div className={styles.media}>{children}</div>
-      <Text className={styles.text}>{text}</Text>
-    </div>
-  );
-};
+const MediaObject: React.FC<{ children?: React.ReactNode; text?: string }> = ({ children, text }) => (
+  <div className={styles.parent}>
+    <div className={styles.media}>{children}</div>
+    <Text className={styles.text}>{text}</Text>
+  </div>
+);
 ```
 
 ## Variants
@@ -226,6 +278,49 @@ There are also vertical alignment variations, these include start and center as 
 <TemplateExample centered>
   <TextAlignmentVariations />
 </TemplateExample>
+
+### **Authoring those variants**
+
+A recipe with more than one shape picks its classes with `clsx`. There is no runtime merge or de-duplication step to
+reason about — class names are inert identifiers, and every conflict between the rules behind them is settled by the
+cascade:
+
+```tsx
+const mainClassName = clsx(
+  styles.parent,
+  textPosition === 'below' && styles['vertical-media-object'],
+  textAlignment === 'center' && styles['center-media'],
+);
+```
+
+When a variant is a piece of _state_ rather than a look — something another element may need to react to — put it on a
+`data-*` attribute instead of a class, and target the attribute from the module. This is the convention Fluent's own
+components follow: `<Text size={400} />` renders `data-size="400"` on its root, and Text's module selects it directly.
+
+```tsx
+<div className={styles.parent} data-text-position={textPosition}>
+```
+
+```css
+@layer fui.components.l4 {
+  .parent:where([data-text-position='below']) {
+    @apply flex-col items-center;
+  }
+}
+```
+
+A Fluent component's root also carries a **named group marker** — `group/fui-text`, `group/fui-button`, and so on —
+published as that component's `<component>ClassNames.root`. It is the only public class handle the component exposes;
+the classes on its internals are hashed and are not addressable from outside their module. Because the `/` is legal in a
+class _token_ but terminates the name in a _selector_, build selectors with `fuiSelector()` rather than string
+concatenation:
+
+```tsx
+import { fuiSelector, textClassNames } from '@fluentui/react-components';
+
+// textClassNames.root === 'group/fui-text'
+document.querySelectorAll(fuiSelector(textClassNames.root));
+```
 
 ## Best practices
 

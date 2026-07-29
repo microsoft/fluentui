@@ -1,0 +1,103 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2 amendments 3/4).
+ *
+ * Repeated at the top of every module on purpose: `@reference` emits nothing, so without
+ * this statement first-appearance order would decide the layer ranking per document.
+ * Re-declaring the identical order is a no-op (CSS Cascade 5 never re-orders an existing
+ * layer), so the repetition is safe and makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces MediaObjectStyles.styles.ts (deleted) — all three of its `makeStyles` hooks
+ * (`useExampleStyles`, `useSkeletonStyles`, `useMediaObjectStyles`) collapse into this one
+ * module, since a module is a namespace and no longer needs a hook per group.
+ *
+ * ALTITUDE `fui.components.l4` — D2 amendment 2's "application implementation /
+ * page / feature-specific styling" (s5-docs-projects-decision.md §A.5.2). These are the
+ * recipe's own elements: plain `div`s the recipe composes itself, plus `<Text>` children
+ * that receive their class through Text's per-slot `className` prop (which lands
+ * UNLAYERED and therefore outranks every `fui.*` layer, l4 included).
+ *
+ * Locals are lowercase-kebab (D15.3) — the generated ident alphabet is all-lowercase.
+ * Griffel's paired `rowGap`/`columnGap` (six pairs in the source) collapse to a single
+ * `gap-*` utility each; the pairing only existed because Griffel could not emit the
+ * `gap` shorthand.
+ */
+@layer fui.components.l4 {
+  /* from useExampleStyles.multiExample */
+  .multi-example {
+    @apply flex justify-center gap-60;
+  }
+
+  /* from useSkeletonStyles.blue */
+  .blue {
+    background-color: #4f5e8f;
+  }
+
+  /* from useSkeletonStyles.purple */
+  .purple {
+    background-color: #e1c7fc;
+  }
+
+  /* from useSkeletonStyles.legendContainer */
+  .legend-container {
+    @apply flex flex-col-reverse gap-10 p-4;
+  }
+
+  /* from useSkeletonStyles.legend */
+  .legend {
+    @apply flex gap-5;
+  }
+
+  /* from useSkeletonStyles.legendColor */
+  .legend-color {
+    @apply self-center w-10 h-10;
+  }
+
+  /* from useMediaObjectStyles.main */
+  .main {
+    @apply flex flex-row gap-4;
+  }
+
+  /* from useMediaObjectStyles.text */
+  .text {
+    @apply flex flex-col gap-4;
+  }
+
+  /*
+   * from useMediaObjectStyles.emptyMedia — `padding: '20px 20px 20px 80px'` is the one
+   * asymmetric box in this file. Griffel would have RTL-flipped the physical `padding-left`,
+   * so it is authored logically (`ps-80`) rather than as a physical longhand.
+   */
+  .empty-media {
+    @apply py-20 pe-20 ps-80;
+  }
+
+  /* from useMediaObjectStyles.emptyText */
+  .empty-text {
+    @apply w-100 h-50;
+  }
+
+  /* from useMediaObjectStyles.centerMedia */
+  .center-media {
+    @apply items-center;
+  }
+
+  /* from useMediaObjectStyles.verticalMediaObject */
+  .vertical-media-object {
+    @apply flex flex-col gap-4 items-center;
+  }
+
+  /* from useMediaObjectStyles.centerTextPosition */
+  .center-text-position {
+    @apply items-center;
+  }
+
+  /* from useMediaObjectStyles.beforeTextPosition */
+  .before-text-position {
+    @apply items-end;
+  }
+}

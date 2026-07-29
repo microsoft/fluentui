@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { clsx } from 'clsx';
 import { Attach24Regular } from '@fluentui/react-icons';
-import { mergeClasses } from '@griffel/react';
 import { Text } from '@fluentui/react-text';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { useMediaObjectStyles, useSkeletonStyles, useExampleStyles } from './MediaObjectStyles.styles';
+
+import styles from './MediaObject.module.css';
 
 type MediaObjectTypes = {
   media?: React.ReactElement;
@@ -18,18 +19,16 @@ const MediaObject: React.FunctionComponent<MediaObjectTypes> = ({
   textPosition = 'after',
   textAlignment = 'start',
 }) => {
-  const mediaObjectStyles = useMediaObjectStyles();
-
-  const mainClassName = mergeClasses(
-    mediaObjectStyles.main,
-    textPosition === 'below' && mediaObjectStyles.verticalMediaObject,
-    textAlignment === 'center' && mediaObjectStyles.centerMedia,
+  const mainClassName = clsx(
+    styles.main,
+    textPosition === 'below' && styles['vertical-media-object'],
+    textAlignment === 'center' && styles['center-media'],
   );
 
-  const textClassName = mergeClasses(
-    mediaObjectStyles.text,
-    textPosition === 'below' && mediaObjectStyles.centerTextPosition,
-    textPosition === 'before' && mediaObjectStyles.beforeTextPosition,
+  const textClassName = clsx(
+    styles.text,
+    textPosition === 'below' && styles['center-text-position'],
+    textPosition === 'before' && styles['before-text-position'],
   );
 
   return (
@@ -41,33 +40,24 @@ const MediaObject: React.FunctionComponent<MediaObjectTypes> = ({
   );
 };
 
-const Legend: React.FC<{ children?: React.ReactNode; colorClassName: string }> = ({ children, colorClassName }) => {
-  const skeletonStyles = useSkeletonStyles();
-  return (
-    <div className={skeletonStyles.legend}>
-      <div className={mergeClasses(skeletonStyles.legendColor, colorClassName)} />
-      {children}
-    </div>
-  );
-};
+const Legend: React.FC<{ children?: React.ReactNode; colorClassName: string }> = ({ children, colorClassName }) => (
+  <div className={styles.legend}>
+    <div className={clsx(styles['legend-color'], colorClassName)} />
+    {children}
+  </div>
+);
 
-export const FlexSkeleton = (): JSXElement => {
-  const exampleStyles = useExampleStyles();
-  const skeletonStyles = useSkeletonStyles();
-  const mediaObjectStyles = useMediaObjectStyles();
-
-  return (
-    <div className={exampleStyles.multiExample}>
-      <div className={mergeClasses(mediaObjectStyles.main, skeletonStyles.blue, mediaObjectStyles.emptyMedia)}>
-        <div className={mergeClasses(mediaObjectStyles.text, skeletonStyles.purple, mediaObjectStyles.emptyText)} />
-      </div>
-      <div className={skeletonStyles.legendContainer}>
-        <Legend colorClassName={skeletonStyles.blue}>Parent div</Legend>
-        <Legend colorClassName={skeletonStyles.purple}>Text div</Legend>
-      </div>
+export const FlexSkeleton = (): JSXElement => (
+  <div className={styles['multi-example']}>
+    <div className={clsx(styles.main, styles.blue, styles['empty-media'])}>
+      <div className={clsx(styles.text, styles.purple, styles['empty-text'])} />
     </div>
-  );
-};
+    <div className={styles['legend-container']}>
+      <Legend colorClassName={styles.blue}>Parent div</Legend>
+      <Legend colorClassName={styles.purple}>Text div</Legend>
+    </div>
+  </div>
+);
 
 export const IconMediaObject = (): JSXElement => (
   <MediaObject
@@ -84,11 +74,10 @@ export const IconMediaObject = (): JSXElement => (
 );
 
 export const TextPositionVariations = (): JSXElement => {
-  const exampleStyles = useExampleStyles();
   const positions: MediaObjectTypes['textPosition'][] = ['after', 'below', 'before'];
 
   return (
-    <div className={exampleStyles.multiExample}>
+    <div className={styles['multi-example']}>
       {positions.map(textPosition => (
         <MediaObject
           textPosition={textPosition}
@@ -109,11 +98,10 @@ export const TextPositionVariations = (): JSXElement => {
 };
 
 export const TextAlignmentVariations = (): JSXElement => {
-  const exampleStyles = useExampleStyles();
   const alignments: MediaObjectTypes['textAlignment'][] = ['start', 'center'];
 
   return (
-    <div className={exampleStyles.multiExample}>
+    <div className={styles['multi-example']}>
       {alignments.map(alignment => (
         <MediaObject
           textAlignment={alignment}

@@ -1,20 +1,19 @@
 import * as React from 'react';
+import { clsx } from 'clsx';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
-import { mergeClasses } from '@griffel/react';
-import { useExampleStyles } from './Example.styles';
+
+import styles from './Example.module.css';
 
 export const TemplateExample: React.FC<{ children?: React.ReactNode; centered?: boolean }> = ({
   children,
   centered,
 }) => {
-  const exampleStyles = useExampleStyles();
-
-  const innerContainerClassName = mergeClasses(exampleStyles.innerContainer, centered && exampleStyles.centered);
+  const innerContainerClassName = clsx(styles['inner-container'], centered && styles.centered);
 
   return (
     <FluentProvider theme={webLightTheme}>
-      <div className={exampleStyles.root}>
+      <div className={styles.root}>
         <div className={innerContainerClassName}>{children}</div>
       </div>
     </FluentProvider>
