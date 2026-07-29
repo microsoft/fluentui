@@ -3,7 +3,7 @@
 exports[`TagPickerList renders a default state 1`] = `
 <div>
   <div
-    class="fui-Listbox fui-TagPickerList"
+    class="fuicm-root group/fui-listbox fui-TagPickerList"
     id=""
     role="listbox"
   >

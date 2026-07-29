@@ -3,7 +3,7 @@
 exports[`TagPickerOptionGroup renders a default state 1`] = `
 <div>
   <div
-    class="fui-TagPickerOptionGroup fui-OptionGroup"
+    class="fui-TagPickerOptionGroup fuicm-root group/fui-option-group"
     role="group"
   >
     Default TagPickerOptionGroup
