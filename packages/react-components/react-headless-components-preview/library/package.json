@@ -87,6 +87,12 @@
       "import": "./lib/avatar.js",
       "require": "./lib-commonjs/avatar.js"
     },
+    "./avatar-group": {
+      "types": "./dist/avatar-group.d.ts",
+      "node": "./lib-commonjs/avatar-group.js",
+      "import": "./lib/avatar-group.js",
+      "require": "./lib-commonjs/avatar-group.js"
+    },
     "./badge": {
       "types": "./dist/badge.d.ts",
       "node": "./lib-commonjs/badge.js",
