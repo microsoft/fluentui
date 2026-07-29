@@ -15,7 +15,7 @@ To this point, build "firefighting" tends to de facto fall to one or two particu
 - Build-related knowledge stays concentrated with a very limited number of people
 - Harder to recognize patterns of failures
 
-Having build shield as a desginated, rotating responsibility will help address all of these issues. It will also help more people gain experience with build troubleshooting.
+Having build shield as a designated, rotating responsibility will help address all of these issues. It will also help more people gain experience with build troubleshooting.
 
 (Longer-term, we'd like to start scheduling ongoing efforts for build improvements/upgrades, but this is an incremental step in the meantime. And even if we get the build in a better state overall, random "fires" will still happen sometimes, and someone needs to be on point to investigate.)
 

@@ -55,7 +55,7 @@ Base accessibility information is included in the design document. After the spe
 - Decide whether to use **native element** or follow **ARIA** and provide reasons
 - Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
 - Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
+- Describe the **keyboard navigation**: Tab Order and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
 - Specify texts for **state change announcements** - [ARIA live regions
   ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
 - Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
