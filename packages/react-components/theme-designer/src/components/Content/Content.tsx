@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Divider, FluentProvider, makeStyles, mergeClasses, tokens, Text, Caption1 } from '@fluentui/react-components';
+import { clsx } from 'clsx';
+import { Divider, FluentProvider, Text, Caption1 } from '@fluentui/react-components';
+import styles from './Content.module.css';
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
@@ -10,32 +12,14 @@ export interface ContentProps {
   className?: string;
 }
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'stretch',
-    flexDirection: 'column',
-    minWidth: '750px',
-    padding: '40px 10%',
-    margin: '0 auto',
-    gridRowGap: tokens.spacingVerticalXXXL,
-  },
-  sickerSheet: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridRowGap: tokens.spacingVerticalM,
-  },
-});
-
 export const Content: React.FC<ContentProps> = props => {
-  const styles = useStyles();
   const {
     state: { themeWithOverrides },
   } = useThemeDesigner();
   return (
     <FluentProvider theme={themeWithOverrides}>
       <ExportPanel />
-      <div className={mergeClasses(styles.root, props.className)}>
+      <div className={clsx(styles.root, props.className)}>
         <h1 style={{ marginBottom: 0 }}>Fluent Theme Designer</h1>
         <Text>
           Welcome to the Fluent Theme Designer tool. This tool offers a step-by-step process to help you implement your
@@ -44,7 +28,7 @@ export const Content: React.FC<ContentProps> = props => {
           2 components.
         </Text>
         <Palette />
-        <div className={styles.sickerSheet}>
+        <div className={styles['sicker-sheet']}>
           <Divider />
           <Caption1>Sticker sheet</Caption1>
         </div>

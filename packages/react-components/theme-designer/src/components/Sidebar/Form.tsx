@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import {
   Accordion,
@@ -10,7 +9,6 @@ import {
   Button,
   Input,
   Slider,
-  tokens,
   useId,
   Caption1Stronger,
   Field,
@@ -18,72 +16,10 @@ import {
 import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext';
 // import { AccessibilityPanel } from './AccessibilityPanel';
 import { useDebounce } from '../../utils/useDebounce';
-
-const useStyles = makeStyles({
-  root: {
-    backgroundColor: tokens.colorNeutralBackground3,
-  },
-  inputs: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  accordionContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: tokens.spacingVerticalL,
-    minWidth: '200px',
-  },
-  keyColor: {
-    paddingLeft: '0px',
-  },
-  labels: {
-    display: 'grid',
-    gridTemplateColumns: '135px 30px',
-    columnGap: tokens.spacingVerticalL,
-  },
-  colorPicker: {
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: '25px',
-    height: '30px',
-    width: '30px',
-    overflow: 'hidden',
-  },
-  color: {
-    padding: '0px',
-    border: 'none',
-    opacity: '0',
-  },
-  slider: {
-    display: 'grid',
-    gridTemplateColumns: '115px 50px',
-    columnGap: '15px',
-  },
-  element: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  labelName: {
-    // Stack the label above the field
-    display: 'flex',
-    flexDirection: 'column',
-    // Use 2px gap below the label (per the design system)
-    gap: '2px',
-    // Prevent the example from taking the full width of the page (optional)
-    maxWidth: '400px',
-  },
-  export: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    paddingRight: '20px',
-  },
-});
+import styles from './Form.module.css';
 
 const DELAY_INPUT = 20;
 export const Form: React.FC = () => {
-  const styles = useStyles();
   const sidebarId = useId();
 
   const {
@@ -166,12 +102,12 @@ export const Form: React.FC = () => {
             <Caption1Stronger>Step 1 - Color settings</Caption1Stronger>
           </AccordionHeader>
 
-          <AccordionPanel className={styles.accordionContainer}>
+          <AccordionPanel className={styles['accordion-container']}>
             <div className={styles.inputs}>
               <div className={styles.labels}>
                 <Field label="Key color value">
                   <Input
-                    className={styles.keyColor}
+                    className={styles['key-color']}
                     size="large"
                     appearance="underline"
                     value={keyColor}
@@ -180,7 +116,7 @@ export const Form: React.FC = () => {
                     onBlur={handleKeyColorBlur}
                   />
                 </Field>
-                <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
+                <div className={styles['color-picker']} style={{ backgroundColor: keyColor }}>
                   <input
                     className={styles.color}
                     type="color"
@@ -231,7 +167,7 @@ export const Form: React.FC = () => {
           <AccordionHeader>
             <Caption1Stronger>Step 2 - Accessibility checks</Caption1Stronger>
           </AccordionHeader>
-          <AccordionPanel className={styles.accordionContainer}>
+          <AccordionPanel className={styles['accordion-container']}>
             <Switch checked={isDark} onChange={handleIsDarkChange} label={'Dark theme'} />
             <AccessibilityPanel
               darkThemeOverrides={darkThemeOverrides}
@@ -244,8 +180,8 @@ export const Form: React.FC = () => {
           <AccordionHeader>
             <Caption1Stronger>Step 2 - Export</Caption1Stronger>
           </AccordionHeader>
-          <AccordionPanel className={styles.accordionContainer}>
-            <div className={styles.labelName}>
+          <AccordionPanel className={styles['accordion-container']}>
+            <div className={styles['label-name']}>
               <Field label={'Theme name'}>
                 <Input
                   appearance="outline"

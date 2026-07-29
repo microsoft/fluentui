@@ -1,0 +1,39 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/* Replaces TokenBoxes.tsx's inline `makeStyles`. App altitude: fui.components.l4. */
+
+@layer fui.components.l4 {
+  /* from useStyles.root — gridGap (both axes): spacingVerticalXXL */
+  .root {
+    @apply grid gap-vertical-xxl;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  /* from useStyles.topbar — paddingBottom: spacingVerticalS */
+  .topbar {
+    @apply flex justify-between pb-vertical-s;
+  }
+
+  /* from useStyles.boxes — `border: '2px solid'` expanded; paddingBottom 10px is a literal */
+  .boxes {
+    @apply flex flex-col overflow-hidden pb-10;
+
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0.5em;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 1.5px 5px 0 rgb(0 0 0 / 19%);
+  }
+
+  /* from useStyles.colors */
+  .colors {
+    height: 100px;
+  }
+
+  /* from useStyles.text — paddingLeft uses a VERTICAL token in the source; kept verbatim */
+  .text {
+    @apply ps-vertical-s;
+  }
+}

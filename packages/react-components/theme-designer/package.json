@@ -6,7 +6,9 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -19,10 +21,16 @@
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.3.0",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.5",
-    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
+    "clsx": "^2.1.1",
     "codesandbox-import-utils": "^2.2.3",
     "dedent": "^1.2.0"
+  },
+  "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*"
+  },
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

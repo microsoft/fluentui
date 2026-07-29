@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { tokens, useId, Button, Caption1, Input } from '@fluentui/react-components';
+import { useId, Button, Caption1, Input } from '@fluentui/react-components';
+import styles from './TokenBoxes.module.css';
 import type { InputOnChangeData } from '@fluentui/react-components';
 import type { Theme } from '@fluentui/react-theme';
 import { SearchRegular } from '@fluentui/react-icons';
@@ -15,36 +15,7 @@ export interface TokenBoxProps {
   themeColor: string;
 }
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gridGap: tokens.spacingVerticalXXL,
-  },
-  topbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    paddingBottom: tokens.spacingVerticalS,
-  },
-  boxes: {
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius: '0.5em',
-    border: '2px solid',
-    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19)',
-    paddingBottom: '10px',
-    overflow: 'hidden',
-  },
-  colors: {
-    height: '100px',
-  },
-  text: {
-    paddingLeft: tokens.spacingVerticalS,
-  },
-});
-
 export const TokenBox: React.FC<TokenBoxProps> = props => {
-  const styles = useStyles();
   return (
     <>
       <div className={styles.colors} style={{ backgroundColor: props.themeColor }} />
@@ -58,7 +29,6 @@ export const TokenBox: React.FC<TokenBoxProps> = props => {
 };
 
 export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
-  const styles = useStyles();
   const [filter, setFilter] = React.useState<string>('');
 
   const theme = props.theme;

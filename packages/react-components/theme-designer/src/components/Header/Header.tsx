@@ -1,13 +1,7 @@
 import * as React from 'react';
-import {
-  FluentProvider,
-  makeStyles,
-  mergeClasses,
-  Text,
-  tokens,
-  webDarkTheme,
-  Button,
-} from '@fluentui/react-components';
+import { clsx } from 'clsx';
+import { FluentProvider, Text, webDarkTheme, Button } from '@fluentui/react-components';
+import styles from './Header.module.css';
 
 const MFSTLogo = () => {
   return (
@@ -24,44 +18,14 @@ export interface HeaderProps {
   className?: string;
 }
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    height: '40px',
-  },
-  logo: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'start',
-    paddingLeft: tokens.spacingHorizontalL,
-    gap: tokens.spacingHorizontalS,
-  },
-  text: {
-    width: '300px',
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
-  link: {
-    paddingRight: tokens.spacingHorizontalL,
-  },
-});
-
 export const Header: React.FC<HeaderProps> = props => {
-  const styles = useStyles();
-
   const handleClick = () => {
     const url = 'https://github.com/microsoft/fluentui/discussions';
     window.open(url, '_blank');
   };
 
   return (
-    <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
+    <FluentProvider theme={webDarkTheme} className={clsx(styles.root, props.className)}>
       <div className={styles.header}>
         <div className={styles.logo}>
           <MFSTLogo />

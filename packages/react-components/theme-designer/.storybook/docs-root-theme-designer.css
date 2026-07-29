@@ -6,3 +6,13 @@
   max-width: none;
   font-family: none;
 }
+
+/*
+ * Moved here from ThemeDesigner.styles.ts's `makeStaticStyles`
+ * (s5-docs-projects-decision.md §B.4.3). The subject is Storybook's OWN DOM, which ships
+ * as external unlayered CSS, so this rule stays UNLAYERED too — D2 amendment 5's authoring
+ * rule. It sits beside the two rules above, which target the same chrome.
+ */
+#storybook-docs .sbdocs-content > div:last-child {
+  margin-bottom: 0;
+}

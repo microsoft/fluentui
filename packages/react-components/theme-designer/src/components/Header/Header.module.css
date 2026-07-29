@@ -1,0 +1,54 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces Header.tsx's inline `makeStyles`.
+ *
+ * ALTITUDE SPLIT (s5-docs-projects-decision.md §B.4.2 — one of the two l2 exceptions in
+ * this package):
+ *
+ *   .root  -> fui.components.l2  — it is applied to <FluentProvider className={…}>, i.e.
+ *                                  it styles ANOTHER converted component's root output.
+ *                                  Styling over a component's own hook output is l2 by
+ *                                  definition (D2 amendment 2). react-provider is
+ *                                  `validated` in the ledger, so this is
+ *                                  converted-over-converted and needs no unlayered block.
+ *   everything else -> fui.components.l4 — plain app chrome on the app's own elements.
+ */
+
+@layer fui.components.l2 {
+  /* from useStyles.root — lands on FluentProvider's root element */
+  .root {
+    @apply flex items-center;
+
+    width: 100%;
+    height: 40px;
+  }
+}
+
+@layer fui.components.l4 {
+  /* from useStyles.logo — paddingLeft: spacingHorizontalL, gap: spacingHorizontalS */
+  .logo {
+    @apply flex items-center ps-horizontal-l gap-horizontal-s;
+
+    justify-content: start;
+  }
+
+  /* from useStyles.text */
+  .text {
+    width: 300px;
+  }
+
+  /* from useStyles.header */
+  .header {
+    @apply flex items-center justify-between;
+
+    width: 100%;
+  }
+
+  /* from useStyles.link — paddingRight: spacingHorizontalL (RTL-flippable -> logical) */
+  .link {
+    @apply pe-horizontal-l;
+  }
+}

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { Button, Caption1, Text } from '@fluentui/react-components';
+import styles from './Palette.module.css';
 import type { Brands, BrandVariants } from '@fluentui/react-theme';
 import { contrast, hex_to_sRGB } from '../../colors';
 import { bundleIcon, CopyFilled, CopyRegular } from '@fluentui/react-icons';
@@ -10,49 +11,11 @@ export interface PaletteProps {
   className?: string;
 }
 
-const hexCopyClassName = 'hexCopy';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    height: '150px',
-    justifyContent: 'space-evenly',
-  },
-  block: {
-    display: 'grid',
-    gridTemplateColumns: '0.5em auto',
-    gridTemplateRows: '0.5em 1fr 1fr 0.5em',
-    flexGrow: 1,
-    flexShrink: 0,
-    ':hover': {
-      flexShrink: 1,
-    },
-    [`:hover .${hexCopyClassName}`]: {
-      display: 'flex',
-    },
-  },
-  hexCopy: {
-    display: 'none',
-    justifyContent: 'space-between',
-    gridColumnStart: 2,
-    gridRowStart: 2,
-  },
-  brandKey: {
-    justifyContent: 'left',
-    display: 'flex',
-    alignItems: 'flex-end',
-    gridColumnStart: 2,
-    gridRowStart: 3,
-  },
-});
-
 const getBrands = (colors: BrandVariants): Brands[] => {
   return Object.keys(colors).map(color => parseInt(color, 10) as Brands);
 };
 
 export const Palette: React.FC<PaletteProps> = props => {
-  const styles = useStyles();
-
   const {
     state: { brand },
   } = useThemeDesigner();
@@ -62,7 +25,7 @@ export const Palette: React.FC<PaletteProps> = props => {
   return (
     <div>
       <Caption1>Generated palette</Caption1>
-      <div className={mergeClasses(styles.root, props.className)}>
+      <div className={clsx(styles.root, props.className)}>
         {getBrands(brand).map(brandKey => {
           const brandColor = brand[brandKey].toUpperCase();
           const textColor = contrast(hex_to_sRGB(brandColor), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white';
@@ -78,7 +41,7 @@ export const Palette: React.FC<PaletteProps> = props => {
                 navigator.clipboard.writeText(brandColor);
               }}
             >
-              <div className={`${styles.hexCopy} ${hexCopyClassName}`}>
+              <div className={styles['hex-copy']}>
                 <Text>{brandColor}</Text>
                 <Button
                   size="small"
@@ -87,7 +50,7 @@ export const Palette: React.FC<PaletteProps> = props => {
                   onClick={() => navigator.clipboard.writeText(brandColor)} // eslint-disable-line react/jsx-no-bind
                 />
               </div>
-              <Text className={styles.brandKey}>{brandKey}</Text>
+              <Text className={styles['brand-key']}>{brandKey}</Text>
             </div>
           );
         })}

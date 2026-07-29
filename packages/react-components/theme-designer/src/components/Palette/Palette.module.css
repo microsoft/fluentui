@@ -1,0 +1,55 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces Palette.tsx's inline `makeStyles`. App altitude: fui.components.l4.
+ *
+ * The Griffel version needed a hand-written GLOBAL marker class (`const hexCopyClassName =
+ * 'hexCopy'`) because the atomic class for `.hexCopy` is unknowable from inside another
+ * slice's selector. CSS Modules removes that need: `.block:hover .hex-copy` is resolved by
+ * the module compiler, so the JSX no longer stamps a second, unhashed class name.
+ */
+
+@layer fui.components.l4 {
+  /* from useStyles.root */
+  .root {
+    @apply flex justify-evenly;
+
+    height: 150px;
+  }
+
+  /* from useStyles.block */
+  .block {
+    @apply grid grow shrink-0;
+
+    grid-template-columns: 0.5em auto;
+    grid-template-rows: 0.5em 1fr 1fr 0.5em;
+
+    @variant hover {
+      @apply shrink;
+    }
+
+    /* from useStyles.block[':hover .hexCopy'] — was a global marker class, now a local */
+    &:hover .hex-copy {
+      @apply flex;
+    }
+  }
+
+  /* from useStyles.hexCopy */
+  .hex-copy {
+    @apply hidden justify-between;
+
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+
+  /* from useStyles.brandKey */
+  .brand-key {
+    @apply flex items-end;
+
+    grid-column-start: 2;
+    grid-row-start: 3;
+    justify-content: left;
+  }
+}

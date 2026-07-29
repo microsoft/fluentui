@@ -1,0 +1,52 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated in every module on purpose:
+ * `@reference` emits nothing, so without this statement first-appearance order would
+ * decide the layer ranking per-document. Re-declaring the identical order is a no-op.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * theme-designer is an APPLICATION, not a component library
+ * (s5-docs-projects-decision.md §B.4.2). Every local below styles this app's own page
+ * chrome, so the altitude is `fui.components.l4` — D2 amendment 2's "application
+ * implementation/page/feature-specific styling". Nothing here decorates another
+ * component's slot output, which is what would make it l2.
+ *
+ * Replaces ThemeDesigner.styles.ts `useStyles` (deleted). That file's `makeStaticStyles`
+ * moved to .storybook/docs-root-theme-designer.css — see §B.4.3.
+ */
+
+@layer fui.components.l4 {
+  /* from useStyles.root */
+  .root {
+    @apply grid;
+
+    grid-template-columns: 250px auto;
+    grid-template-rows: 40px auto;
+    min-height: 100vh;
+  }
+
+  /* from useStyles.nav */
+  .nav {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  /* from useStyles.sidebar */
+  .sidebar {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  /* from useStyles.content */
+  .content {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+}

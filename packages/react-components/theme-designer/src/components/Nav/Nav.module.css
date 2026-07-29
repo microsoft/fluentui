@@ -1,0 +1,42 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces Nav.tsx's inline `makeStyles`.
+ *
+ * ALTITUDE SPLIT — the SECOND of this package's two l2 exceptions
+ * (s5-docs-projects-decision.md §B.4.2). `.root` is applied to
+ * <FluentProvider theme={webDarkTheme} className={…}>, so it styles another converted
+ * component's root output: l2, not l4. Everything else is app chrome: l4.
+ */
+
+@layer fui.components.l2 {
+  /* from useStyles.root — lands on FluentProvider's root element */
+  .root {
+    @apply grid items-center;
+
+    grid-template-columns: 1fr 2fr 3fr 3fr;
+    height: 40px;
+  }
+}
+
+@layer fui.components.l4 {
+  /* from useStyles.logo */
+  .logo {
+    @apply flex items-center justify-evenly;
+  }
+
+  /* from useStyles.element */
+  .element {
+    @apply flex items-center justify-center;
+  }
+
+  /*
+   * from useStyles.export — already unreferenced in the Griffel hook; carried over
+   * verbatim rather than dropped. paddingRight 20px matches no spacing step.
+   */
+  .export {
+    @apply flex items-center justify-end pe-20;
+  }
+}

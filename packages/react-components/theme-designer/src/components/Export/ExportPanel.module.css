@@ -1,0 +1,48 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces ExportPanel.tsx's inline `makeStyles`. App altitude: fui.components.l4.
+ *
+ * `.root` and `.popover` were already unreferenced in the Griffel hook; they are carried
+ * over verbatim rather than dropped, because a conversion should not silently change the
+ * declared surface. (Removing dead locals is a separate cleanup call.)
+ *
+ * NOTE: ExportLink.tsx is deliberately NOT converted — its `makeStyles`/`makeStaticStyles`
+ * text lives inside a `dedent` template literal that is shipped to CodeSandbox pinned to
+ * the PUBLISHED `@fluentui/react-components@^9`. See §B.4.4: leave that string byte-identical.
+ */
+
+@layer fui.components.l4 {
+  /* from useStyles.root — paddingRight 20px matches no spacing step (RTL-flippable -> logical) */
+  .root {
+    @apply flex items-center justify-end pe-20;
+  }
+
+  /* from useStyles.exportHeader */
+  .export-header {
+    @apply grid items-center;
+
+    grid-template-columns: 350px 50px;
+  }
+
+  /* from useStyles.popover */
+  .popover {
+    width: 300px;
+  }
+
+  /* from useStyles.text */
+  .text {
+    @apply flex;
+
+    height: 50vh;
+  }
+
+  /* from useStyles.textarea */
+  .textarea {
+    @apply box-border;
+
+    height: 100%;
+  }
+}

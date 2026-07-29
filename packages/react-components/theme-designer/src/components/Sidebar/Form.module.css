@@ -1,0 +1,86 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/* Replaces Form.tsx's inline `makeStyles`. App altitude: fui.components.l4. */
+
+@layer fui.components.l4 {
+  /* from useStyles.root */
+  .root {
+    background-color: var(--colorNeutralBackground3);
+  }
+
+  /* from useStyles.inputs */
+  .inputs {
+    @apply flex flex-col items-start;
+  }
+
+  /* from useStyles.accordionContainer — rowGap: spacingVerticalL */
+  .accordion-container {
+    @apply flex flex-col gap-y-vertical-l;
+
+    min-width: 200px;
+  }
+
+  /* from useStyles.keyColor — paddingLeft 0 (RTL-flippable -> logical) */
+  .key-color {
+    @apply ps-0;
+  }
+
+  /* from useStyles.labels — columnGap uses a VERTICAL token in the source; kept verbatim */
+  .labels {
+    @apply grid gap-x-vertical-l;
+
+    grid-template-columns: 135px 30px;
+  }
+
+  /* from useStyles.colorPicker — `border` shorthand expanded to longhands */
+  .color-picker {
+    @apply overflow-hidden;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--colorNeutralStroke1);
+    border-radius: 25px;
+    height: 30px;
+    width: 30px;
+  }
+
+  /* from useStyles.color */
+  .color {
+    @apply p-0;
+
+    /* `border: 'none'` — style:none is what makes the border render at zero width */
+    border-style: none;
+    opacity: 0;
+  }
+
+  /* from useStyles.slider — columnGap 15px matches no spacing step */
+  .slider {
+    @apply grid gap-x-15;
+
+    grid-template-columns: 115px 50px;
+  }
+
+  /* from useStyles.element */
+  .element {
+    @apply flex items-center justify-center;
+  }
+
+  /* from useStyles.labelName — 2px gap matches the XXS spacing step */
+  .label-name {
+    /* Stack the label above the field */
+    @apply flex flex-col gap-vertical-xxs;
+
+    /* Prevent the example from taking the full width of the page (optional) */
+    max-width: 400px;
+  }
+
+  /*
+   * from useStyles.export — already unreferenced in the Griffel hook; carried over
+   * verbatim rather than dropped. paddingRight 20px matches no spacing step.
+   */
+  .export {
+    @apply flex items-center justify-end pe-20;
+  }
+}

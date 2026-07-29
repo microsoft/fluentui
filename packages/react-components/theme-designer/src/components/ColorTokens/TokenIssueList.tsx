@@ -29,7 +29,7 @@ import type { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { contrast, hex_to_sRGB } from '../../colors';
 import { accessiblePairs } from './AccessiblePairs';
-import { useStyles } from './TokenList.styles';
+import styles from './TokenList.module.css';
 
 export interface TokenIssueListProps {
   brand: BrandVariants;
@@ -54,7 +54,6 @@ export interface ColorTokenRowProps {
 }
 
 const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
-  const styles = useStyles();
   const { brand, brandValue, brandValueString, selected, token, showContrast } = props;
 
   const {
@@ -138,8 +137,6 @@ export const constructRowParameters = (
 };
 
 export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = props => {
-  const styles = useStyles();
-
   const [columns] = React.useState<TableColumnDefinition<string>[]>(columnsDef);
 
   const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
@@ -190,14 +187,14 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
 
             return (
               <TableRow key={token}>
-                <TableCell className={styles.cellRow}>
+                <TableCell className={styles['cell-row']}>
                   <div>
                     {overridenTokens.includes(token) ? (
                       <Badge className={styles.badge} appearance="filled" color="success" size="tiny" />
                     ) : (
                       <> </>
                     )}
-                    <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
+                    <Subtitle2 className={styles['color-label']}>{token}</Subtitle2>
                   </div>
                   <div className={styles.menu}>
                     <Menu>
@@ -233,7 +230,7 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
                     </Menu>
                   </div>
                 </TableCell>
-                <TableCell className={styles.cellRow}>
+                <TableCell className={styles['cell-row']}>
                   {tests
                     .filter(o => o.testInfo!.currToken === token)
                     .map((testResult: TestResult) => {
@@ -258,7 +255,7 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
                         <div key={token + ' ' + hex}>
                           {compToken} &nbsp;
                           <div
-                            className={styles.colorPreview}
+                            className={styles['color-preview']}
                             style={{
                               backgroundColor: brand[colorValue],
                               color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
@@ -272,7 +269,7 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
                       );
                     })}
                 </TableCell>
-                <TableCell className={styles.cellRow}>
+                <TableCell className={styles['cell-row']}>
                   <div>{usage}</div>
                 </TableCell>
               </TableRow>

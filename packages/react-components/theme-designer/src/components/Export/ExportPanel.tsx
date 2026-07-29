@@ -1,6 +1,5 @@
 import * as React from 'react';
 import dedent from 'dedent';
-import { makeStyles } from '@griffel/react';
 import type { SelectTabData, SelectTabEvent, TabValue } from '@fluentui/react-components';
 import {
   Body1,
@@ -21,31 +20,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportLink } from '../Export/ExportLink';
-
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    paddingRight: '20px',
-  },
-  exportHeader: {
-    display: 'grid',
-    gridTemplateColumns: '350px 50px',
-    alignItems: 'center',
-  },
-  popover: {
-    width: '300px',
-  },
-  text: {
-    display: 'flex',
-    height: '50vh',
-  },
-  textarea: {
-    height: '100%',
-    boxSizing: 'border-box',
-  },
-});
+import styles from './ExportPanel.module.css';
 
 export const ExportPanel = (): JSXElement => {
   const {
@@ -56,8 +31,6 @@ export const ExportPanel = (): JSXElement => {
   const onCloseExportPanel = () => {
     dispatch({ type: 'showExportPanel', payload: false });
   };
-
-  const styles = useStyles();
 
   const [selectedValue, setSelectedValue] = React.useState<TabValue>('Code');
 
@@ -129,7 +102,7 @@ export const ExportPanel = (): JSXElement => {
             }}
           >
             <div style={{ margin: '16px' }}>
-              <div className={styles.exportHeader}>
+              <div className={styles['export-header']}>
                 <Text as="h1" id="headingID" size={500}>
                   Export Theme
                 </Text>

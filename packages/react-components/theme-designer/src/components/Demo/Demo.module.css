@@ -1,0 +1,62 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/* Replaces Demo.tsx's inline `makeStyles`. App altitude: fui.components.l4. */
+
+@layer fui.components.l4 {
+  /* from useStyles.root */
+  .root {
+    @apply flex justify-between;
+  }
+
+  /* from useStyles.column — gap: spacingVerticalL */
+  .column {
+    @apply flex flex-col box-border gap-vertical-l;
+
+    /* source value is the `start` keyword, not `flex-start` — kept verbatim */
+    justify-content: start;
+  }
+
+  /* from useStyles.controlRow — gap: spacingHorizontalL */
+  .control-row {
+    @apply flex flex-row justify-center gap-horizontal-l;
+
+    align-items: start;
+  }
+
+  /* from useStyles.controlColumn */
+  .control-column {
+    @apply flex flex-col justify-center;
+
+    align-items: start;
+  }
+
+  /* from useStyles.inputLabel — gap: spacingVerticalS */
+  .input-label {
+    @apply flex flex-col gap-vertical-s;
+
+    align-items: start;
+  }
+
+  /* from useStyles.icons — rowGap: spacingVerticalS, columnGap: spacingHorizontalS */
+  .icons {
+    @apply grid justify-center gap-y-vertical-s gap-x-horizontal-s;
+
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
+
+  /* from useStyles.avatar — gap: spacingVerticalL (vertical token on an unaxed gap; verbatim) */
+  .avatar {
+    @apply flex gap-vertical-l;
+  }
+
+  /* from useStyles.avatarText */
+  .avatar-text {
+    @apply flex flex-col;
+
+    /* `left` is a valid justify-content value with no Tailwind utility — kept literal */
+    justify-content: left;
+  }
+}

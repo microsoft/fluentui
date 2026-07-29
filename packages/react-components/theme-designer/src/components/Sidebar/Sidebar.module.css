@@ -1,0 +1,27 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces Sidebar.tsx's inline `makeStyles`. App altitude: fui.components.l4 — the class
+ * lands on a plain <div>, not on a Fluent component's root.
+ */
+
+@layer fui.components.l4 {
+  /*
+   * from useStyles.root.
+   *   - `borderRight` is RTL-flipped by Griffel, so it becomes `border-inline-end-*`,
+   *     with the `1px solid <color>` shorthand expanded to longhands.
+   *   - `gap: '<vertical> <horizontal>'` is a two-value shorthand: row gap first,
+   *     column gap second.
+   */
+  .root {
+    @apply flex flex-col items-center justify-start;
+    @apply gap-y-vertical-xxl gap-x-horizontal-xxl;
+
+    border-inline-end-width: 1px;
+    border-inline-end-style: solid;
+    border-inline-end-color: var(--colorNeutralStroke1);
+    background-color: var(--colorNeutralBackground3);
+  }
+}

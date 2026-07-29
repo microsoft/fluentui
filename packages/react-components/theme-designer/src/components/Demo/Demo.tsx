@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import {
-  tokens,
   TabList,
   Tab,
   Input,
@@ -28,60 +27,11 @@ import {
   CalendarLtrRegular,
 } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
+import styles from './Demo.module.css';
 
 export interface ContentProps {
   className?: string;
 }
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  column: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'start',
-    boxSizing: 'border-box',
-    gap: tokens.spacingVerticalL,
-  },
-  controlRow: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'start',
-    justifyContent: 'center',
-    gap: tokens.spacingHorizontalL,
-  },
-  controlColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'start',
-    justifyContent: 'center',
-  },
-  inputLabel: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'start',
-    gap: tokens.spacingVerticalS,
-  },
-  icons: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto auto',
-    rowGap: tokens.spacingVerticalS,
-    columnGap: tokens.spacingHorizontalS,
-    justifyContent: 'center',
-  },
-  avatar: {
-    display: 'flex',
-    gap: tokens.spacingVerticalL,
-  },
-  avatarText: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'left',
-  },
-});
 
 /*
 	Note the state of the stickersheet is that we need consensus on the following post Build 2023:
@@ -92,7 +42,6 @@ const useStyles = makeStyles({
 */
 
 export const Column1 = (): JSXElement => {
-  const styles = useStyles();
   const dropdownId = useId('dropdown-default');
   return (
     <div className={styles.column}>
@@ -124,23 +73,22 @@ export const Column1 = (): JSXElement => {
 };
 
 export const Column2 = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.column}>
-      <div className={styles.controlRow}>
+      <div className={styles['control-row']}>
         <Button appearance="primary">Text</Button>
-        <div className={styles.controlColumn}>
+        <div className={styles['control-column']}>
           <Switch defaultChecked={true} label="On" />
           <Switch label="Off" />
         </div>
       </div>
       <Slider defaultValue={50} />
-      <div className={styles.controlRow}>
-        <div className={styles.controlColumn}>
+      <div className={styles['control-row']}>
+        <div className={styles['control-column']}>
           <Checkbox defaultChecked={true} label="Option 1" />
           <Checkbox label="Option 2" />
         </div>
-        <div className={styles.controlColumn}>
+        <div className={styles['control-column']}>
           <RadioGroup>
             <Radio defaultChecked={true} label="Option 1" />
             <Radio label="Option 2" />
@@ -156,7 +104,6 @@ const CalendarLtrIcon = bundleIcon(CalendarLtrFilled, CalendarLtrRegular);
 
 // We may use these later.
 export const DemoIcons = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.icons}>
       <Badge size="medium" appearance="filled" icon={<CalendarLtrIcon />} />
@@ -168,11 +115,9 @@ export const DemoIcons = (): JSXElement => {
 };
 
 export const Column3 = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.column}>
-      <div className={styles.inputLabel}>
+      <div className={styles['input-label']}>
         <Field label="Description" required>
           <Input placeholder="Example Text" appearance="filled-darker" />
         </Field>
@@ -183,10 +128,9 @@ export const Column3 = (): JSXElement => {
 };
 
 export const Demo: React.FC<ContentProps> = props => {
-  const styles = useStyles();
   return (
     <div>
-      <div className={mergeClasses(styles.root, props.className)}>
+      <div className={clsx(styles.root, props.className)}>
         <Column1 />
         <Column2 />
         <Column3 />

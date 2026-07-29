@@ -1,14 +1,7 @@
 import * as React from 'react';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
-  Badge,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
+import { Accordion, AccordionHeader, AccordionItem, AccordionPanel, Badge, tokens } from '@fluentui/react-components';
+import styles from './AccessibilityList.module.css';
 import { getAccessibilityChecker, TestType } from '../../utils/getAccessibilityChecker';
 import { TokenIssueList } from './TokenIssueList';
 import { TokenList } from './TokenList';
@@ -26,19 +19,12 @@ export interface AccessibilityListProps {
   themeName: string;
 }
 
-const useStyles = makeStyles({
-  icon: {
-    marginRight: '0.5em',
-  },
-});
-
 export interface AccessibilityContrastChipProps {
   failKeys: string[];
   testType: TestType;
 }
 
 export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityContrastChipProps> = props => {
-  const styles = useStyles();
   const { failKeys, testType } = props;
 
   const detailText = () => {

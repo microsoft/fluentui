@@ -1,0 +1,79 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces TokenList.styles.ts (deleted). Shared by TokenList.tsx and TokenIssueList.tsx,
+ * exactly as the Griffel hook was. App altitude: fui.components.l4.
+ *
+ * ── KNOWN, MEASURED: Storybook's docs reset beats three declarations below ──────────────
+ *
+ * This package renders only inside Storybook's DOCS view, whose emotion stylesheet injects
+ * an UNLAYERED reset over the docs container:
+ *
+ *   .css-x28zkw :where(div:not(.sb-anchor, .sb-unstyled, .sb-unstyled div)) { margin: 0 }
+ *   #storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) td { padding: 6px 13px }
+ *
+ * Effects, all confirmed by CDP matched-rules against the built storybook:
+ *
+ *   .cell-row  padding-block  -> loses to the `td` rule (1-1-1). PRE-EXISTING: a
+ *              late-appended unlayered 0-1-0 rule (the Griffel model) measures 6px too, so
+ *              Griffel never won this either. Nothing changed here.
+ *   .badge     margin-inline-end -> 0.  REGRESSION vs Griffel.
+ *   .menu      margin-top        -> 0.  REGRESSION vs Griffel.
+ *
+ * For the two margins the cause is NOT the layer and cannot be fixed by removing it.
+ * Measured, in this order:
+ *   - Griffel model (unlayered 0-1-0, appended to <head> at render time) -> 4px / 8px. Won,
+ *     because Griffel injects AFTER the docs container's emotion styles.
+ *   - `@layer fui.components.l4`                                        -> 0px / 0px.
+ *   - UNLAYERED here in the module                                      -> STILL 0px / 0px,
+ *     because style-loader injects this stylesheet at import time, i.e. BEFORE emotion's.
+ *     Equal specificity, equal (lack of) layer, earlier in document order = loses.
+ *
+ * So winning it back needs a specificity bump (e.g. compounding the local on itself) — a
+ * mechanism the conversion cookbook does not sanction, invented for one private app on one
+ * docs page. Deliberately NOT done. The declarations stay at `fui.components.l4` exactly as
+ * s5-docs-projects-decision.md §B.4.2 specifies, and the divergence is reported instead.
+ * It is a migration-wide class of issue (any converted package rendered in Storybook docs
+ * mode loses div margins), not a theme-designer decision.
+ */
+
+@layer fui.components.l4 {
+  /* from useStyles.colorLabel */
+  .color-label {
+    color: var(--colorBrandForeground1);
+  }
+
+  /* from useStyles.selected */
+  .selected {
+    font-weight: bold;
+  }
+
+  /* from useStyles.cellRow — paddingTop/paddingBottom: spacingVerticalS (see header note) */
+  .cell-row {
+    @apply py-vertical-s;
+  }
+
+  /* from useStyles.badge — marginRight: spacingHorizontalS (see header note) */
+  .badge {
+    @apply me-horizontal-s;
+  }
+
+  /* from useStyles.colorPreview — paddingLeft/Right 5px match no spacing step */
+  .color-preview {
+    @apply inline px-5;
+
+    border-radius: 10px;
+  }
+
+  /* from useStyles.menu — marginTop: spacingVerticalXS (see header note) */
+  .menu {
+    @apply mt-vertical-xs;
+  }
+
+  /* from useStyles.output */
+  .output {
+    font-size: var(--fontSizeBase200);
+  }
+}

@@ -24,7 +24,7 @@ import type { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 import type { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
-import { useStyles } from './TokenList.styles';
+import styles from './TokenList.module.css';
 import { constructRowParameters } from './TokenIssueList';
 
 export interface TokenIssueListProps {
@@ -45,7 +45,6 @@ export interface ColorTokenRowProps {
 }
 
 const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
-  const styles = useStyles();
   const { brand, brandValue, brandValueString, selected } = props;
 
   const {
@@ -77,8 +76,6 @@ const columnsDef: TableColumnDefinition<string>[] = [
 ];
 
 export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => {
-  const styles = useStyles();
-
   const [columns] = React.useState<TableColumnDefinition<string>[]>(columnsDef);
 
   const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
@@ -128,14 +125,14 @@ export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => 
 
             return (
               <TableRow key={token}>
-                <TableCell className={styles.cellRow}>
+                <TableCell className={styles['cell-row']}>
                   <div>
                     {overridenTokens.includes(token) ? (
                       <Badge className={styles.badge} appearance="filled" color="success" size="tiny" />
                     ) : (
                       <> </>
                     )}
-                    <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
+                    <Subtitle2 className={styles['color-label']}>{token}</Subtitle2>
                   </div>
                   <div className={styles.menu}>
                     <Menu>
@@ -170,7 +167,7 @@ export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => 
                     </Menu>
                   </div>
                 </TableCell>
-                <TableCell className={styles.cellRow}>
+                <TableCell className={styles['cell-row']}>
                   <div>{usage}</div>
                 </TableCell>
               </TableRow>
