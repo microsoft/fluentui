@@ -547,16 +547,16 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "recipes": {
-      "status": "needs-conversion",
+      "status": "special",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Reclassified from needs-conversion (batch 5): type:stories docs project, no library/ root, no build target — dist/styles.css impossible. Docsite storybook lacks CSS-modules/Tailwind wiring (migration-wide item, Phase 3/specials)."
     },
     "theme-designer": {
-      "status": "needs-conversion",
+      "status": "special",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Reclassified from needs-conversion (batch 5): legacy shape, no library/ subfolder; app-like. Handle with specials."
     },
     "react-tailwind-theme": {
       "status": "validated",
