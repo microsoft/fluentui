@@ -12,7 +12,13 @@ describe('RatingItem', () => {
     Component: RatingItem,
     displayName: 'RatingItem',
     disabledTests: [
-      // Need to disable this test because certain slots are not rendered without specific context values
+      // Originally disabled because certain slots are not rendered without specific context
+      // values. It stays disabled for a second, now permanent reason: statics removal
+      // (DECISIONS.md D16.1/D16.6). RatingItem no longer renders `fui-RatingItem` /
+      // `fui-RatingItem__<slot>`, and `ratingItemClassNames` is now
+      // `{ root: 'group/fui-rating-item' }`, so this test's export-shape, format and
+      // rendered-class assertions no longer describe this component.
+      // `component-has-group-marker` (now a default test) is its replacement (D16.5).
       'component-has-static-classnames-object',
       // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
       // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
@@ -23,7 +29,9 @@ describe('RatingItem', () => {
       // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
       'make-styles-overrides-win',
     ],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
   it('does not render input elements when interactive is false', () => {
     const contextValues: RatingItemContextValue = {

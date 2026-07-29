@@ -12,7 +12,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
@@ -23,8 +22,10 @@ export type RatingBaseProps = Omit<RatingProps, 'color' | 'size'>;
 // @public
 export type RatingBaseState = Omit<RatingState, 'color' | 'size'>;
 
-// @public (undocumented)
-export const ratingClassNames: SlotClassNames<RatingSlots>;
+// @public @deprecated
+export const ratingClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type RatingContextValues = {
@@ -40,8 +41,10 @@ export type RatingDisplayBaseProps = Omit<RatingDisplayProps, 'color' | 'size'>;
 // @public
 export type RatingDisplayBaseState = Omit<RatingDisplayState, 'color' | 'size' | 'icon'> & Pick<RatingDisplayProps, 'icon'>;
 
-// @public (undocumented)
-export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots>;
+// @public @deprecated
+export const ratingDisplayClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type RatingDisplayContextValues = {
@@ -78,8 +81,10 @@ export type RatingItemBaseProps = RatingItemProps;
 // @public
 export type RatingItemBaseState = Omit<RatingItemState, 'color' | 'size'>;
 
-// @public (undocumented)
-export const ratingItemClassNames: SlotClassNames<RatingItemSlots>;
+// @public @deprecated
+export const ratingItemClassNames: {
+    root: string;
+};
 
 // @public
 export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>> & {
