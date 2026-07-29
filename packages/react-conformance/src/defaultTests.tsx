@@ -7,6 +7,7 @@ import { IsConformantOptions, DefaultTestObject } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getPackagePath, getCallbackArguments, getTargetElement, validateCallbackArguments } from './utils/index';
+import { COMPONENT_HAS_GROUP_MARKER_TEST_NAME, componentHasGroupMarker } from './componentHasGroupMarker';
 
 /**
  * TODO - TS 4.5 introduces strict catch `err` callback handling - opting out for sake of smoother ts 4.5 upgrade
@@ -236,105 +237,26 @@ export const defaultTests: DefaultTestObject = {
     });
   },
 
-  /** Component file has assigned and exported static classnames object */
-  'component-has-static-classnames-object': (testInfo: IsConformantOptions) => {
-    const { componentPath, Component, testOptions = {}, requiredProps, renderOptions } = testInfo;
-
-    const componentName = testInfo.displayName;
-    const classNamePrefix = testOptions?.['component-has-static-classname']?.prefix ?? 'fui';
-    const componentClassName = `${classNamePrefix}-${componentName}`;
-    const exportName = `${componentName[0].toLowerCase()}${componentName.slice(1)}ClassNames`;
-    const indexPath = path.join(getPackagePath(componentPath), 'src', 'index');
-    let handledClassNamesObjectExport = false;
-
-    it('has static classnames exported at top-level (component-has-static-classnames-object)', () => {
-      if (testInfo.isInternal) {
-        return;
-      }
-
-      try {
-        const indexFile = require(indexPath);
-        const classNamesFromFile = indexFile[exportName];
-        expect(classNamesFromFile).toBeTruthy();
-        handledClassNamesObjectExport = true;
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(
-          defaultErrorMessages['component-has-static-classnames-object-exported'](testInfo, e, exportName),
-        );
-      }
-    });
-
-    it('has static classnames in correct format (component-has-static-classnames-object)', () => {
-      if (!handledClassNamesObjectExport) {
-        return;
-      }
-
-      const indexFile = require(indexPath);
-      const classNamesFromFile = indexFile[exportName];
-
-      const expectedClassNames = Object.keys(classNamesFromFile).reduce(
-        (obj: { [key: string]: string }, key: string) => {
-          obj[key] = key === 'root' ? componentClassName : `${componentClassName}__${key}`;
-          return obj;
-        },
-        {},
-      );
-
-      try {
-        expect(classNamesFromFile).toEqual(expectedClassNames);
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(
-          defaultErrorMessages['component-has-static-classnames-in-correct-format'](testInfo, e, exportName),
-        );
-      }
-    });
-
-    it(`has static classnames in rendered component (component-has-static-classnames-object)`, () => {
-      if (!handledClassNamesObjectExport) {
-        return;
-      }
-
-      const staticClassNameVariants = testOptions['has-static-classnames'] ?? [{ props: {} }];
-
-      for (const staticClassNames of staticClassNameVariants) {
-        const mergedProps = {
-          ...requiredProps,
-          ...staticClassNames.props,
-        };
-        const result = render(<Component {...mergedProps} />, renderOptions);
-        const rootEl = getTargetElement(testInfo, result, 'className');
-        const portalEl = staticClassNames.getPortalElement && staticClassNames.getPortalElement(result);
-
-        const indexFile = require(indexPath);
-        const classNamesFromFile = indexFile[exportName];
-
-        const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
-        let missingClassNames = Object.values(expectedClassNames).filter(
-          className => !rootEl.classList.contains(className) && !rootEl.querySelector(`.${className}`),
-        );
-
-        if (missingClassNames.length && portalEl) {
-          missingClassNames = missingClassNames.filter(
-            className => !portalEl.classList.contains(className) && !portalEl.querySelector(`.${className}`),
-          );
-        }
-
-        try {
-          expect(missingClassNames).toHaveLength(0);
-        } catch (e: OptOutStrictCatchTypes) {
-          throw new Error(
-            defaultErrorMessages['component-has-static-classnames'](
-              testInfo,
-              e,
-              componentName,
-              missingClassNames.join(', '),
-              rootEl,
-            ),
-          );
-        }
-      }
-    });
-  },
+  /**
+   * Component's outermost slot carries exactly one unhashed `group/fui-<kebab>` marker, and
+   * that marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2).
+   *
+   * This replaced `component-has-static-classnames-object` in the default set when the BEM
+   * statics were removed (D16.6). The marker is now the sole public identity class, so every
+   * converted component must carry one; the `classList[0]` half guards a jsdom-only
+   * render-time `AggregateError` that neither the build nor visual regression can see.
+   *
+   * Packages that still publish BEM statics stamp no marker and opt out with
+   * `disabledTests: ['component-has-group-marker']`, normally once per package in
+   * `src/testing/isConformant.ts`, where they also take the `hasStaticClassNames` opt-in that
+   * carries their side of the contract.
+   *
+   * Components whose marker is not derivable from `displayName` — the typography presets, which
+   * share `group/fui-text` (D16.7) — override it via `testOptions['has-group-marker'].marker`.
+   * Components that render another package's root and so legitimately carry two or three
+   * markers cannot satisfy the "exactly one" half and opt out per component.
+   */
+  [COMPONENT_HAS_GROUP_MARKER_TEST_NAME]: componentHasGroupMarker,
 
   /** Constructor/component name matches filename */
   'name-matches-filename': (testInfo: IsConformantOptions) => {

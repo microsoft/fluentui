@@ -124,11 +124,19 @@ export function assertConsumerClassNameWins(params: {
  * `mergeClasses()` accumulates non-atomic strings (static `fui-*` classes AND the
  * consumer's `className`) in argument order, then appends the merged ATOMIC classes after
  * all of them (`@griffel/core`'s `mergeClasses` returns `resultClassName + newClassName`).
- * So an unconverted component renders the consumer's class in the MIDDLE — verified by
- * rendering `<Badge className="…" />`:
+ * So a Griffel component renders the consumer's class in the MIDDLE. This is the shape
+ * `<Badge className="…" />` rendered before Badge was converted:
  *
  * ```txt
  * class="fui-Badge r1iycov <consumer-classname> ___g1d9dq0_1moluvk ffp7eso f1phragk"
+ * ```
+ *
+ * and this is the shape it renders now — the BEM static gone (DECISIONS.md D16.1), the hashed
+ * module class leading, the group marker second so it is never `classList[0]` (D16.2), and the
+ * consumer's class last, which is the contract this test pins:
+ *
+ * ```txt
+ * class="fuicm-badge-root-<hash> group/fui-badge <conditional module classes> <consumer-classname>"
  * ```
  *
  * Griffel does not need it to be last, because it resolves conflicts by deleting losing
@@ -138,14 +146,13 @@ export function assertConsumerClassNameWins(params: {
  * A converted component has no such runtime machinery: class names are inert identifiers
  * and every property conflict is settled by the `@layer fui.*` cascade
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D7 revision). The observable
- * contract left in the DOM is composition order — the static class first and
+ * contract left in the DOM is composition order — the component's own classes first and
  * `state.root.className` last — which is what this test pins.
  *
  * Note this also rules out enabling the test package-wide in a `src/testing/isConformant.ts`
- * wrapper while a package is only partly converted: `react-button`'s Button is converted
- * but ToggleButton/CompoundButton/MenuButton/SplitButton still call `mergeClasses` before
- * delegating to `useButtonStyles_unstable`, so they render atomics past the consumer class.
- * Enable it per component.
+ * wrapper while a package is only PARTLY converted: a component whose hook still calls
+ * `mergeClasses` before delegating to a converted one renders atomics past the consumer's
+ * class, and fails. Enable it per component until the whole package is off Griffel.
  *
  * ## What it deliberately does not assert
  *

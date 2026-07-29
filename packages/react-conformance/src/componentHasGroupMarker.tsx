@@ -39,13 +39,28 @@ export function toKebabCase(displayName: string): string {
 }
 
 /**
- * The marker a component is expected to stamp: `group/fui-<displayName in lowercase-kebab>`,
- * unless `testOptions['has-group-marker'].marker` overrides it.
+ * The complete set of markers a component is expected to stamp on its outermost slot.
+ *
+ * Defaults to the single `group/fui-<displayName in lowercase-kebab>`. Two overrides, both on
+ * `testOptions['has-group-marker']`:
+ *
+ * - `marker` — one marker under a different name. The typography presets use this: they share
+ *   `group/fui-text`, because a `<Body1>` IS a `<Text>` (DECISIONS.md D16.7).
+ * - `markers` — the whole set, for a component that renders ANOTHER component's root and so
+ *   legitimately carries that component's marker alongside its own. `<ToolbarToggleButton>` is
+ *   a `<ToggleButton>` is a `<Button>`, and each hook stamps its own marker on the one element,
+ *   so a descendant can address whichever identity it means (D16.3).
  *
  * @internal
  */
-export function getExpectedGroupMarker<TProps = {}>(testInfo: IsConformantOptions<TProps>): string {
-  return testInfo.testOptions?.['has-group-marker']?.marker ?? `group/fui-${toKebabCase(testInfo.displayName)}`;
+export function getExpectedGroupMarkers<TProps = {}>(testInfo: IsConformantOptions<TProps>): string[] {
+  const options = testInfo.testOptions?.['has-group-marker'];
+
+  if (options?.markers) {
+    return options.markers;
+  }
+
+  return [options?.marker ?? `group/fui-${toKebabCase(testInfo.displayName)}`];
 }
 
 function renderedClassListDetails(classNames: string[], domSnapshot?: string): string[] {
@@ -60,7 +75,13 @@ function renderedClassListDetails(classNames: string[], domSnapshot?: string): s
 
 /**
  * The first pure half of {@link componentHasGroupMarker}: the outermost slot carries exactly
- * one named-group marker, and it is the one named for this component.
+ * the named-group markers this component is expected to stamp — no more, no fewer.
+ *
+ * For the overwhelming majority that is the single marker named for the component. A component
+ * that renders another component's root carries that component's marker too, and declares the
+ * whole set via `testOptions['has-group-marker'].markers` (DECISIONS.md D16.3). Either way the
+ * assertion is an exact set comparison, so an unexpected EXTRA marker still fails — which is
+ * the half that catches an accidental second `group/` literal.
  *
  * Split out of the `it()` body so the failure paths are unit testable. Not exported from the
  * package index — internal to this module and its test.
@@ -71,35 +92,43 @@ export function assertGroupMarkerIsStamped(params: {
   displayName: string;
   /** Class names rendered on the outermost slot, in `classList` order. */
   classNames: string[];
-  /** The marker this component is expected to stamp. */
-  expectedMarker: string;
+  /** Every marker this component is expected to stamp, in any order. */
+  expectedMarkers: string[];
   /** Optional rendered DOM, appended to error output. */
   domSnapshot?: string;
 }): void {
-  const { classNames, displayName, domSnapshot, expectedMarker } = params;
+  const { classNames, displayName, domSnapshot, expectedMarkers } = params;
   const { resolveInfo, testErrorInfo } = errorMessageColors;
 
   const groupMarkers = classNames.filter(className => className.startsWith('group/'));
 
-  if (!classNames.includes(expectedMarker)) {
+  const missing = expectedMarkers.filter(marker => !groupMarkers.includes(marker));
+  const unexpected = groupMarkers.filter(marker => !expectedMarkers.includes(marker));
+
+  if (missing.length) {
     throw new Error(
       getErrorMessage({
         displayName,
-        overview: `does not stamp its named group marker on its outermost slot.`,
+        overview: `does not stamp its named group marker${
+          expectedMarkers.length > 1 ? 's' : ''
+        } on its outermost slot.`,
         details: [
-          `Expected to find ${testErrorInfo(expectedMarker)}.`,
+          `Expected to find ${testErrorInfo(missing.join(', '))}.`,
           ...(groupMarkers.length
-            ? ['', `It stamped a DIFFERENT marker instead:`, groupMarkers.map(m => `    ${m}`).join(EOL)]
+            ? ['', `It stamped these instead:`, groupMarkers.map(m => `    ${m}`).join(EOL)]
             : []),
           '',
           ...renderedClassListDetails(classNames, domSnapshot),
         ],
         suggestions: [
-          `Add the literal ${resolveInfo(`'${expectedMarker}'`)} to the outermost slot's ${resolveInfo(
+          `Add the literal ${resolveInfo(`'${missing[0]}'`)} to the outermost slot's ${resolveInfo(
             'clsx(...)',
           )} — written as a literal, never a template (DECISIONS.md D15.1).`,
           `If this component's marker is legitimately named something else, set ${resolveInfo(
             "testOptions['has-group-marker'].marker",
+          )}.`,
+          `If this component renders another component's root and so carries its marker too, declare the whole set with ${resolveInfo(
+            "testOptions['has-group-marker'].markers",
           )}.`,
           `If the class list lives on an element other than the container's first child, provide ${resolveInfo(
             'getTargetElement',
@@ -109,14 +138,16 @@ export function assertGroupMarkerIsStamped(params: {
     );
   }
 
-  if (groupMarkers.length > 1) {
+  if (unexpected.length) {
     throw new Error(
       getErrorMessage({
         displayName,
-        overview: `stamps more than one named group marker on its outermost slot.`,
+        overview: `stamps a named group marker it did not declare on its outermost slot.`,
         details: [
-          `Found:`,
-          groupMarkers.map(marker => `    ${marker}`).join(EOL),
+          `Undeclared:`,
+          unexpected.map(marker => `    ${marker}`).join(EOL),
+          '',
+          `Declared: ${expectedMarkers.join(', ')}`,
           '',
           ...renderedClassListDetails(classNames, domSnapshot),
         ],
@@ -125,6 +156,9 @@ export function assertGroupMarkerIsStamped(params: {
           `A group cannot style itself — the compiled selector is ${resolveInfo(
             '.child:is(:where(.group…) *)',
           )} and the descendant combinator excludes the group element — so a second marker buys nothing.`,
+          `If the extra marker is legitimate because this component renders another component's root, declare the whole set with ${resolveInfo(
+            "testOptions['has-group-marker'].markers",
+          )} (D16.3).`,
         ],
       }),
     );
@@ -210,32 +244,34 @@ export function assertMarkerIsNotLeadingToken(params: {
  * failure it guards is a jsdom-only render-time throw: visual regression cannot see it, and
  * the build cannot see it either.
  *
- * ## Why this is opt-in for now
+ * ## Where it runs
  *
- * Registered here rather than in `defaultTests` because, while the BEM statics are still
- * published, only converted packages stamp a marker at all. It moves into `defaultTests`
- * with the statics-removal sweep (DECISIONS.md D16.6), at which point the marker is the sole
- * public identity class and every converted component must carry one.
+ * Registered in `defaultTests` under {@link COMPONENT_HAS_GROUP_MARKER_TEST_NAME}, so it runs
+ * on every `isConformant()` call site without opt-in. It moved there with the statics-removal
+ * sweep (DECISIONS.md D16.6), at which point the marker became the sole public identity class
+ * and every converted component had to carry one.
  *
- * ## Usage
+ * Packages that still publish BEM statics stamp no marker and opt out, normally once per
+ * package in `src/testing/isConformant.ts`:
  *
  * ```ts
- * isConformant({
- *   Component: Divider,
- *   displayName: 'Divider',
- *   extraTests: { [COMPONENT_HAS_GROUP_MARKER_TEST_NAME]: componentHasGroupMarker },
- * });
+ * disabledTests: [COMPONENT_HAS_GROUP_MARKER_TEST_NAME],
  * ```
  *
  * Components whose marker is not derivable from `displayName` override it:
  *
  * ```ts
- * testOptions: { 'has-group-marker': { marker: 'group/fui-tooltip' } },
+ * testOptions: { 'has-group-marker': { marker: 'group/fui-text' } },
  * ```
+ *
+ * Components that render another package's root carry that component's marker alongside their
+ * own and cannot satisfy the "exactly one" half — `testOptions['has-group-marker'].marker`
+ * changes the EXPECTED marker, not the permitted count. Those opt out per component and assert
+ * the `classList[0]` half locally.
  */
 export function componentHasGroupMarker<TProps = {}>(testInfo: IsConformantOptions<TProps>): void {
   const { Component, displayName, renderOptions, requiredProps } = testInfo;
-  const expectedMarker = getExpectedGroupMarker(testInfo);
+  const expectedMarkers = getExpectedGroupMarkers(testInfo);
 
   const renderClassNames = (): { classNames: string[]; domSnapshot: string } => {
     const { resolveInfo } = errorMessageColors;
@@ -266,9 +302,9 @@ export function componentHasGroupMarker<TProps = {}>(testInfo: IsConformantOptio
     return { classNames: classListToStrings(rootEl.classList), domSnapshot: String(prettyDOM(rootEl) || '') };
   };
 
-  it(`stamps its named group marker (${COMPONENT_HAS_GROUP_MARKER_TEST_NAME})`, () => {
+  it(`stamps its named group marker(s) (${COMPONENT_HAS_GROUP_MARKER_TEST_NAME})`, () => {
     const { classNames, domSnapshot } = renderClassNames();
-    assertGroupMarkerIsStamped({ displayName, classNames, expectedMarker, domSnapshot });
+    assertGroupMarkerIsStamped({ displayName, classNames, expectedMarkers, domSnapshot });
   });
 
   it(`never emits the marker as classList[0] (${COMPONENT_HAS_GROUP_MARKER_TEST_NAME})`, () => {

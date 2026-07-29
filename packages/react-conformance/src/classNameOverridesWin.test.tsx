@@ -32,13 +32,23 @@ describe('assertConsumerClassNameWins', () => {
   });
 
   it('throws when class names follow the consumer className', () => {
-    // The shape an unconverted, Griffel-composed component renders: mergeClasses appends
-    // its atomic classes after every non-atomic string, including the consumer's.
+    // The shape a component renders while it still composes with Griffel: mergeClasses appends
+    // its atomic classes after every non-atomic string, including the consumer's. The leading
+    // tokens are the post-D16 converted shape (hashed module class, then the marker), because
+    // that is what a partly-converted delegation renders — a converted hook composing with clsx
+    // and an unconverted one appending atomics behind it.
     expect(() =>
       assertConsumerClassNameWins({
         displayName,
         consumerClassName,
-        classNames: ['fui-Badge', 'r1iycov', consumerClassName, '___g1d9dq0_1moluvk', 'ffp7eso', 'f1phragk'],
+        classNames: [
+          'fuicm-badge-root-a1b2c3',
+          'group/fui-badge',
+          consumerClassName,
+          '___g1d9dq0_1moluvk',
+          'ffp7eso',
+          'f1phragk',
+        ],
       }),
     ).toThrow(/renders class names AFTER the consumer's "className"/);
   });

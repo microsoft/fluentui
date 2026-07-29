@@ -18,8 +18,20 @@ export const CLASSNAME_OVERRIDES_WIN_TEST_NAME = "classname-overrides-win";
 // @public
 export function classNameOverridesWin<TProps = {}>(testInfo: IsConformantOptions<TProps>): void;
 
+// @public
+export const COMPONENT_HAS_GROUP_MARKER_TEST_NAME = "component-has-group-marker";
+
+// @public
+export function componentHasGroupMarker<TProps = {}>(testInfo: IsConformantOptions<TProps>): void;
+
 // @public (undocumented)
 export type ConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc, tsProgram: ts.Program) => void;
+
+// @public
+export const HAS_STATIC_CLASSNAMES_TEST_NAME = "component-has-static-classnames-object";
+
+// @public
+export function hasStaticClassNames<TProps = {}>(genericTestInfo: IsConformantOptions<TProps>): void;
 
 // @public (undocumented)
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]): void;
@@ -69,6 +81,10 @@ export interface TestOptions {
         ignoreProps?: string[];
     };
     // (undocumented)
+    'has-group-marker'?: {
+        marker?: string;
+        markers?: string[];
+    };
     'has-static-classnames'?: {
         props: {
             [key: string]: string | {};

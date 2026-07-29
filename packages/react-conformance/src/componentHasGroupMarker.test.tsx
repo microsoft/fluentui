@@ -5,7 +5,7 @@ import {
   assertGroupMarkerIsStamped,
   assertMarkerIsNotLeadingToken,
   componentHasGroupMarker,
-  getExpectedGroupMarker,
+  getExpectedGroupMarkers,
   toKebabCase,
 } from './componentHasGroupMarker';
 import type { IsConformantOptions } from './types';
@@ -36,22 +36,37 @@ describe('toKebabCase', () => {
   });
 });
 
-describe('getExpectedGroupMarker', () => {
+describe('getExpectedGroupMarkers', () => {
   it('derives the marker from displayName', () => {
-    expect(getExpectedGroupMarker({ displayName: 'MessageBarGroup' } as IsConformantOptions)).toBe(
+    expect(getExpectedGroupMarkers({ displayName: 'MessageBarGroup' } as IsConformantOptions)).toEqual([
       'group/fui-message-bar-group',
-    );
+    ]);
   });
 
   it('prefers an explicit testOptions override', () => {
     // react-tooltip declares no `root` slot at all — it portals, and its `content` element is
     // its outermost node — so its marker rides `content` while staying named for the component.
     expect(
-      getExpectedGroupMarker({
+      getExpectedGroupMarkers({
         displayName: 'Tooltip',
         testOptions: { 'has-group-marker': { marker: 'group/fui-tooltip' } },
       } as IsConformantOptions),
-    ).toBe('group/fui-tooltip');
+    ).toEqual(['group/fui-tooltip']);
+  });
+
+  it('returns the whole declared set for a delegating component', () => {
+    // ToolbarToggleButton renders react-button's ToggleButton, which renders Button, and each
+    // hook stamps its own marker on the one element (DECISIONS.md D16.3).
+    expect(
+      getExpectedGroupMarkers({
+        displayName: 'ToolbarToggleButton',
+        testOptions: {
+          'has-group-marker': {
+            markers: ['group/fui-button', 'group/fui-toggle-button', 'group/fui-toolbar-toggle-button'],
+          },
+        },
+      } as IsConformantOptions),
+    ).toEqual(['group/fui-button', 'group/fui-toggle-button', 'group/fui-toolbar-toggle-button']);
   });
 });
 
@@ -60,7 +75,7 @@ describe('assertGroupMarkerIsStamped', () => {
     expect(() =>
       assertGroupMarkerIsStamped({
         displayName,
-        expectedMarker,
+        expectedMarkers: [expectedMarker],
         classNames: ['fuicm-test-component-root-a3f2c1', expectedMarker, 'consumer-classname'],
       }),
     ).not.toThrow();
@@ -70,7 +85,7 @@ describe('assertGroupMarkerIsStamped', () => {
     expect(() =>
       assertGroupMarkerIsStamped({
         displayName,
-        expectedMarker,
+        expectedMarkers: [expectedMarker],
         classNames: ['fui-TestComponent', 'fuicm-test-component-root-a3f2c1'],
       }),
     ).toThrow(/does not stamp its named group marker/);
@@ -80,7 +95,7 @@ describe('assertGroupMarkerIsStamped', () => {
     expect(() =>
       assertGroupMarkerIsStamped({
         displayName,
-        expectedMarker,
+        expectedMarkers: [expectedMarker],
         classNames: ['fuicm-test-component-root-a3f2c1', 'group/fui-testcomponent'],
       }),
     ).toThrow(/group\/fui-testcomponent/);
@@ -90,10 +105,30 @@ describe('assertGroupMarkerIsStamped', () => {
     expect(() =>
       assertGroupMarkerIsStamped({
         displayName,
-        expectedMarker,
+        expectedMarkers: [expectedMarker],
         classNames: ['fuicm-test-component-root-a3f2c1', expectedMarker, 'group/fui-something-else'],
       }),
-    ).toThrow(/stamps more than one named group marker/);
+    ).toThrow(/stamps a named group marker it did not declare/);
+  });
+
+  it('passes when a delegating component stamps exactly the set it declared', () => {
+    expect(() =>
+      assertGroupMarkerIsStamped({
+        displayName,
+        expectedMarkers: ['group/fui-button', expectedMarker],
+        classNames: ['fuicm-root-a3f2c1', 'group/fui-button', expectedMarker, 'consumer-classname'],
+      }),
+    ).not.toThrow();
+  });
+
+  it('still throws for a delegating component when one of the declared markers is missing', () => {
+    expect(() =>
+      assertGroupMarkerIsStamped({
+        displayName,
+        expectedMarkers: ['group/fui-button', expectedMarker],
+        classNames: ['fuicm-root-a3f2c1', 'group/fui-button'],
+      }),
+    ).toThrow(/does not stamp its named group markers/);
   });
 });
 

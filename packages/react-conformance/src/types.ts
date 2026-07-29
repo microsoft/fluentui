@@ -14,6 +14,10 @@ export interface TestOptions {
   'consistent-callback-args'?: {
     legacyCallbacks?: string[];
   };
+  /**
+   * Options for the `hasStaticClassNames` opt-in test. Only meaningful in packages that still
+   * publish BEM statics — converted packages removed theirs (DECISIONS.md D16.1).
+   */
   'has-static-classnames'?: {
     props: {
       [key: string]: string | {};
@@ -33,6 +37,15 @@ export interface TestOptions {
      * if not `group/fui-<displayName in lowercase-kebab>` (DECISIONS.md D15.1).
      */
     marker?: string;
+    /**
+     * EVERY marker the component's outermost slot is expected to stamp, in any order — for a
+     * component that renders another component's root and so legitimately carries that
+     * component's marker alongside its own (DECISIONS.md D16.3).
+     *
+     * The assertion stays an exact set comparison, so an undeclared marker still fails. Takes
+     * precedence over `marker`.
+     */
+    markers?: string[];
   };
 }
 
@@ -138,7 +151,12 @@ export interface DefaultTestObject<TProps = {}> {
   'component-has-root-ref': BaseConformanceTest<TProps>;
   'omits-size-prop': ConformanceTest<TProps>;
   'component-handles-classname': BaseConformanceTest<TProps>;
-  'component-has-static-classnames-object': ConformanceTest<TProps>;
+  /**
+   * Replaced `component-has-static-classnames-object` in the default set when the BEM statics
+   * were removed (DECISIONS.md D16.6). That test still ships, as the `hasStaticClassNames`
+   * opt-in, for the packages that still publish statics.
+   */
+  'component-has-group-marker': BaseConformanceTest<TProps>;
   'name-matches-filename': BaseConformanceTest<TProps>;
   'exported-top-level': BaseConformanceTest<TProps>;
   'has-top-level-file': BaseConformanceTest<TProps>;
