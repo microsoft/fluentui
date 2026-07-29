@@ -6,7 +6,7 @@ export type {
 } from './components/CounterBadge/index';
 export {
   CounterBadge,
-  counterBadgeClassNames,
+  counterBadgeClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useCounterBadgeStyles_unstable,
   useCounterBadge_unstable,
   useCounterBadgeBase_unstable,

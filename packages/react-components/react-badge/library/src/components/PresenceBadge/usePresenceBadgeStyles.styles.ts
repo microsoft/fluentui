@@ -14,15 +14,27 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { BadgeSlots } from '../Badge/Badge.types';
 import type { PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
 
 import styles from './PresenceBadge.module.css';
 
-export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
-  root: 'fui-PresenceBadge',
-  icon: 'fui-PresenceBadge__icon',
+/**
+ * Public identity classes for PresenceBadge.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as this component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a
+ * selector and as a `group-*` variant target. The BEM statics (`fui-PresenceBadge`,
+ * `fui-PresenceBadge__icon`) are no longer rendered and the per-slot keys are gone; there is
+ * no public class-name handle on component internals.
+ *
+ * The marker token contains a `/`. That is legal inside a class TOKEN but terminates the
+ * name inside a SELECTOR, so `'.' + presenceBadgeClassNames.root` is an invalid selector even
+ * though it type-checks. Use `fuiSelector(presenceBadgeClassNames.root)` from
+ * `@fluentui/react-utilities`.
+ */
+export const presenceBadgeClassNames: { root: string } = {
+  root: 'group/fui-presence-badge',
 };
 
 const getIsBusy = (status: PresenceBadgeStatus): boolean => {
@@ -60,9 +72,12 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // Unconditional module class FIRST, then the named group marker — the marker must never
+  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // clsx never drops it, so index 0 is always the hashed, selector-safe module class; it is
+  // what keeps the marker safe now that the `fui-PresenceBadge` static is gone. The marker
+  // is a literal,
   // unhashed, GLOBAL token: it is the only handle by which another module — in this package
   // or any other — can style an element from this PresenceBadge's state, because
   // `styles.root` is hashed and unaddressable from outside this file. No state mirror is
@@ -80,9 +95,8 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
   // ident alphabet is all-lowercase, see scripts/css-modules/ident.js — so they are read
   // with bracket access rather than dot access.
   state.root.className = clsx(
-    presenceBadgeClassNames.root,
-    'group/fui-presence-badge',
     styles.root,
+    'group/fui-presence-badge',
     isBusy && styles['status-busy'],
     status === 'away' && styles['status-away'],
     status === 'available' && styles['status-available'],
@@ -100,7 +114,7 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
   );
 
   if (state.icon) {
-    state.icon.className = clsx(presenceBadgeClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = clsx(styles.icon, state.icon.className);
   }
 
   return state;

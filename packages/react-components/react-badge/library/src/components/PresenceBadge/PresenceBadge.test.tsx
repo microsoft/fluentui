@@ -20,8 +20,18 @@ describe('PresenceBadge', () => {
     // component used to emit have been removed, so consumer CSS no longer has to escalate
     // to `!important` to resize the presence icon (see PresenceBadge.module.css).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts `presenceBadgeClassNames` still holds
+    // `fui-PresenceBadge` / `fui-PresenceBadge__<slot>` strings AND that they are rendered.
+    // Both are false by design: DECISIONS.md D16.1 removed the BEM statics, D16.5 narrowed
+    // the export to `{ root }` and re-pointed it at the group marker.
+    // `component-has-group-marker` (now a default test) is its replacement and asserts the contract that
+    // actually holds now — including the D15.1 `classList[0]` invariant the static used to
+    // satisfy incidentally (D16.2/D16.6).
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   it('renders a default state', () => {

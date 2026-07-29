@@ -3,12 +3,12 @@
 exports[`PresenceBadge renders a default state 1`] = `
 <div
   aria-label="available"
-  class="fui-PresenceBadge group/fui-presence-badge"
+  class="group/fui-presence-badge"
   data-size="medium"
   role="img"
 >
   <span
-    class="fui-PresenceBadge__icon"
+    class=""
   >
     <svg
       aria-hidden="true"

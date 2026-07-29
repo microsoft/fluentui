@@ -11,7 +11,7 @@ export {
   presenceAvailableRegular,
   presenceAwayFilled,
   presenceAwayRegular,
-  presenceBadgeClassNames,
+  presenceBadgeClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   presenceBlockedRegular,
   presenceBusyFilled,
   presenceDndFilled,

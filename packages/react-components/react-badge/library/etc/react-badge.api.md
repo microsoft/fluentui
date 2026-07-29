@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
@@ -21,8 +20,10 @@ export type BadgeBaseProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape' |
 // @public (undocumented)
 export type BadgeBaseState = Omit<BadgeState, 'appearance' | 'color' | 'shape' | 'size'>;
 
-// @public (undocumented)
-export const badgeClassNames: SlotClassNames<BadgeSlots>;
+// @public @deprecated
+export const badgeClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & {
@@ -51,8 +52,10 @@ export type CounterBadgeBaseProps = Omit<CounterBadgeProps, 'appearance' | 'colo
 // @public (undocumented)
 export type CounterBadgeBaseState = Omit<CounterBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;
 
-// @public (undocumented)
-export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
+// @public @deprecated
+export const counterBadgeClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape'> & {
@@ -89,8 +92,10 @@ export type PresenceBadgeBaseProps = Omit<PresenceBadgeProps, 'size'>;
 // @public (undocumented)
 export type PresenceBadgeBaseState = Omit<PresenceBadgeState, 'appearance' | 'color' | 'shape' | 'size'>;
 
-// @public (undocumented)
-export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
+// @public @deprecated
+export const presenceBadgeClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | 'icon'>>, 'color'> & Pick<BadgeProps, 'size'> & {

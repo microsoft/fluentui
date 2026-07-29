@@ -1,6 +1,6 @@
 export {
   Badge,
-  badgeClassNames,
+  badgeClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderBadge_unstable,
   useBadgeStyles_unstable,
   useBadge_unstable,
@@ -9,7 +9,7 @@ export {
 export type { BadgeProps, BadgeSlots, BadgeState, BadgeBaseProps, BadgeBaseState } from './Badge';
 export {
   PresenceBadge,
-  presenceBadgeClassNames,
+  presenceBadgeClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   usePresenceBadgeStyles_unstable,
   usePresenceBadge_unstable,
   usePresenceBadgeBase_unstable,
@@ -34,7 +34,7 @@ export type {
 } from './PresenceBadge';
 export {
   CounterBadge,
-  counterBadgeClassNames,
+  counterBadgeClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useCounterBadgeStyles_unstable,
   useCounterBadge_unstable,
   useCounterBadgeBase_unstable,

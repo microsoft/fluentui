@@ -1,7 +1,7 @@
 export type { BadgeBaseProps, BadgeProps, BadgeSlots, BadgeBaseState, BadgeState } from './components/Badge/index';
 export {
   Badge,
-  badgeClassNames,
+  badgeClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderBadge_unstable,
   useBadgeStyles_unstable,
   useBadge_unstable,
