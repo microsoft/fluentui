@@ -1,28 +1,9 @@
 import * as React from 'react';
-import type { RenderResult } from '@testing-library/react';
 import { fireEvent, render } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { DatePicker } from './DatePicker';
 import { isConformant } from '../../testing/isConformant';
-import { datePickerClassNames } from './useDatePickerStyles.styles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-
-// testing-library's queryByRole function doesn't look inside portals
-function queryByRoleDialog(result: RenderResult) {
-  const dialogs = result.baseElement.querySelectorAll('*[role="dialog"]');
-  if (!dialogs?.length) {
-    return null;
-  } else {
-    expect(dialogs.length).toBe(1);
-    return dialogs.item(0) as HTMLElement;
-  }
-}
-
-const getDatepickerPopupElement = (result: RenderResult) => {
-  fireEvent.click(result.getByRole('combobox'));
-  const dialog = queryByRoleDialog(result);
-  expect(dialog).not.toBeNull();
-  return dialog!;
-};
 
 const ControlledDatePicker = (props: Partial<React.ComponentProps<typeof DatePicker>>) => {
   const [value, setValue] = React.useState<Date | null>(null);
@@ -53,19 +34,32 @@ describe('DatePicker', () => {
     displayName: 'DatePicker',
     // component-has-root-ref is disabled because the root is an Input component, the conformance test thinks the
     // wrapper is the root, not the input itself. This is a bug in the conformance test.
-    disabledTests: ['consistent-callback-args', 'component-has-root-ref'],
+    //
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+    // it was called with the consumer className last; this component now composes with
+    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+    // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
+    // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    //
+    // The `has-static-classnames` testOptions entry went with the BEM statics it named:
+    // DECISIONS.md D16.1 stopped rendering `fui-DatePicker` / `fui-DatePicker__calendar` /
+    // `fui-DatePicker__popupSurface`, and D16.5 narrowed `datePickerClassNames` to
+    // `{ root }` pointing at the group marker. `component-has-static-classnames-object` is
+    // no longer a default test, so it needs no `disabledTests` entry.
+    disabledTests: ['consistent-callback-args', 'component-has-root-ref', 'make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {},
-          expectedClassNames: {
-            root: datePickerClassNames.root,
-            popupSurface: datePickerClassNames.popupSurface,
-            calendar: datePickerClassNames.calendar,
-          },
-          getPortalElement: getDatepickerPopupElement,
-        },
-      ],
+      // a DatePicker's root slot IS an Input (`DatePickerSlots['root'] = Slot<typeof Input>`),
+      // and `useInputStyles_unstable` stamps Input's marker on this same element, so this root
+      // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set
+      // keeps `component-has-group-marker` running: it is an exact set comparison, so an
+      // undeclared marker still fails, and its `classList[0]` half — the D16.2 invariant that
+      // nwsapi's jsdom `:scope` polyfill depends on — is asserted here rather than locally.
+      'has-group-marker': {
+        markers: ['group/fui-input', 'group/fui-date-picker'],
+      },
     },
   });
 

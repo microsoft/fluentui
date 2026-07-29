@@ -1,6 +1,6 @@
 export {
   DatePicker,
-  datePickerClassNames,
+  datePickerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   defaultDatePickerErrorStrings,
   defaultDatePickerStrings,
   renderDatePicker_unstable,

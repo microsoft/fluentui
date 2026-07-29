@@ -18,15 +18,16 @@ import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export { CalendarStrings }
 
 // @public (undocumented)
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
 
-// @public (undocumented)
-export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
+// @public @deprecated
+export const datePickerClassNames: {
+    root: string;
+};
 
 // @public
 export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';

@@ -7,7 +7,7 @@ export type {
 } from './components/DatePicker/index';
 export {
   DatePicker,
-  datePickerClassNames,
+  datePickerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   defaultDatePickerErrorStrings,
   defaultDatePickerStrings,
   renderDatePicker_unstable,

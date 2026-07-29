@@ -1,0 +1,212 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ── ALTITUDE ───────────────────────────────────────────────────────────────────────────
+ *
+ * DatePicker has two style-bearing slots and they sit at DIFFERENT altitudes, because they
+ * are owned by different packages:
+ *
+ *   `root`         is an `<Input>` (`DatePickerSlots['root'] = Slot<typeof Input>`), so the
+ *                  element these rules land on is react-input's root `<span>` and the
+ *                  `& input` descendant is react-input's `input` slot. Both are ANOTHER
+ *                  converted component's elements   → fui.components.l2
+ *                  (DECISIONS.md D2 amendment 2)
+ *
+ *   `popupSurface` is DatePicker's own `<div>` — react-input never sees it, react-popover is
+ *                  not involved (this package portals with `@fluentui/react-portal` and
+ *                  positions with `@fluentui/react-positioning`, neither of which injects CSS
+ *                  for this element)                → fui.base (reset) + fui.components.l1
+ *
+ * react-datepicker-compat and react-input each ship their own `dist/styles.css` and nothing
+ * guarantees which one a consumer's bundler loads first. Authoring the root rules in `l2`
+ * makes them beat every `fui.components.l1` rule of Input's regardless of that load order,
+ * which is exactly the winner Griffel produced (see the argument order below). Authoring
+ * them in `l1` alongside Input's own would hand the decision to stylesheet order — the
+ * nondeterminism `l2` exists to remove.
+ *
+ * `calendar` is a `<Calendar>` from the still-Griffel `@fluentui/react-calendar-compat`, and
+ * this module contains NO rule that targets it: the only library token that slot ever
+ * carried was the `fui-DatePicker__calendar` BEM static, which D16.1 removed. Nothing here
+ * reaches into unconverted-Griffel DOM, so this module needs no UNLAYERED block (the
+ * D2 amendment 5 case). Grepped for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — the
+ * `CalendarMonthRegular` glyph in `contentAfter` is a plain single icon, not a
+ * `bundleIcon()` pair, so there is no unlayered display-swap to compete with.
+ *
+ * ── mergeClasses ARGUMENT order, per slot ──────────────────────────────────────────────
+ *
+ * `useDatePickerStyles_unstable` writes each slot's className and hands the root's string to
+ * `<Input>` as a plain `className` prop; `useInputStyles_unstable` then runs during Input's
+ * own render and PREPENDS its composition to the same element. Verified against the
+ * committed snapshot (`class="… group/fui-input … group/fui-date-picker"` on the root).
+ *
+ * HISTORICAL, and deliberately kept: the `→ static class (JS)` rows below record the Griffel
+ * mergeClasses argument order this file's layer assignment was derived FROM. Those BEM
+ * statics (`fui-DatePicker`, `fui-DatePicker__*`) are no longer rendered — DECISIONS.md
+ * D16.1 removed them and the public identity class is now the `group/fui-date-picker`
+ * marker. The relative ORDER of everything else is unchanged.
+ *
+ * `root` slot (react-input's root `<span>`):
+ *    1  inputClassNames.root                       → static class (JS)
+ *    2  Input useRootClassName        (makeReset)  → fui.base            (react-input)
+ *   3–12 Input rootStyles.*                        → fui.components.l1   (react-input)
+ *   13  datePickerClassNames.root                  → static class (JS)
+ *   14  useStyles.base                             → fui.components.l2
+ *   15  useStyles.disabled                         → fui.components.l2   (conditional)
+ *   16  consumer className                         → unlayered (always wins)
+ *
+ * `popupSurface` slot (DatePicker's own `<div>`):
+ *    1  datePickerClassNames.popupSurface          → static class (JS)
+ *    2  usePopupSurfaceClassName      (makeReset)  → fui.base
+ *    3  consumer className                         → unlayered
+ *    4  useStyles.inline                           → fui.components.l1   (conditional)
+ *
+ * `calendar` slot: was the static class only, and DatePicker adds no styles to it — so
+ *   post-D16 the hook writes NOTHING to this slot at all (statics-removal design §4d).
+ *
+ * ── The one ordering the conversion deliberately changes ───────────────────────────────
+ *
+ * On `popupSurface`, Griffel put `inlinePopup && styles.inline` AFTER the consumer's
+ * className (arg #4 vs #3), so `z-index: 1` beat a consumer's own `z-index`. Under the layer
+ * system consumer CSS is unlayered and beats every `fui.*` layer regardless of class order,
+ * so `state.popupSurface.className` moves to LAST in the `clsx()` call — the D9 /
+ * `classname-overrides-win` contract. The only behaviour this changes is that a consumer
+ * className setting `z-index` on the inline popup now wins, which is the intended direction.
+ *
+ * ── Property conflicts this ordering decides (verified against the compiled atomics in
+ *    lib-commonjs/components/DatePicker/useDatePickerStyles.styles.js) ──────────────────
+ *
+ * 1. Root `cursor` (`.f1k6fduh{cursor:pointer}` / `.f158kwzp{cursor:default}`) vs Input's
+ *    `useRootStyles.disabled` `cursor: not-allowed`. Griffel resolved this by mergeClasses
+ *    position — DatePicker's atomic is a LATER argument than Input's, so it won; `l2` over
+ *    `l1` reproduces it. `base` and `disabled` collide on the same property inside this
+ *    module too, and that tie is resolved by FILE ORDER: the `.disabled` block is authored
+ *    after the `.root` block. Do not reorder them.
+ * 2. Input `<input>` `cursor` (`.faxec97 input{cursor:pointer}` /
+ *    `.f19qwlmg input{cursor:default}`) vs Input's `useInputElementStyles.disabled`
+ *    `cursor: not-allowed`. Griffel gave DatePicker a 0-1-1 descendant selector against
+ *    Input's 0-1-0 atomic, so DatePicker won; `l2` over `l1` reproduces that too.
+ *    Reproduced as a plain element descendant selector, exactly as Griffel compiled it —
+ *    `input` is an element TYPE, not a class handle, so the D16.3 mechanism table (marker
+ *    for roots, JS slot composition for sub-slots) does not apply: nothing here needs a
+ *    class-name handle on another package's internals.
+ *
+ * ── Spacing / stroke widths (DECISIONS.md D4 amendment) ────────────────────────────────
+ * This module has no spacing values at all. The reset's `border-width: 1px` is a px LITERAL
+ * in the Griffel source (`borderWidth: '1px'`, not `tokens.strokeWidthThin`) and stays one —
+ * same treatment as react-tooltip's and react-popover's surface borders. Promoting it to
+ * `var(--spacing-thin)` would start scaling a border the v8-shaped design never scaled.
+ *
+ * ── RTL ────────────────────────────────────────────────────────────────────────────────
+ * The compiled output contains ZERO `[ltr, rtl]` class pairs — every declaration in this
+ * module is axis-neutral (`position`, `cursor`, `z-index`, colours, shadow, radius, border,
+ * display, type). No `@variant rtl` block and no keyframes.
+ */
+
+@layer fui.base {
+  /*
+   * from usePopupSurfaceClassName (makeResetStyles) — compiled:
+   * `.r1ytv1z8{background-color:var(--colorNeutralBackground1);box-shadow:var(--shadow16);
+   *   border-radius:var(--borderRadiusMedium);border-width:1px;border-style:solid;
+   *   border-color:var(--colorTransparentStroke);display:inline-flex;
+   *   color:var(--colorNeutralForeground1);font-family:var(--fontFamilyBase);
+   *   font-size:var(--fontSizeBase300);font-weight:var(--fontWeightRegular);
+   *   line-height:var(--lineHeightBase300);}`
+   *
+   * `border-radius` and `border-width` are kept as the compiled shorthands: no rule in this
+   * module sets any of their longhands, so none of Griffel's shorthand/longhand priority
+   * machinery survives to get wrong (react-tooltip / react-popover precedent).
+   *
+   * The last four declarations are `...typographyStyles.body1` spread into the reset.
+   */
+  .popup-surface {
+    @apply inline-flex;
+
+    background-color: var(--colorNeutralBackground1);
+    box-shadow: var(--shadow16);
+    border-radius: var(--borderRadiusMedium);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--colorTransparentStroke);
+    color: var(--colorNeutralForeground1);
+
+    /* typographyStyles.body1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.inline — the `popupSurface` slot's arg #4, applied when `inlinePopup`.
+   *
+   * When rendering inline the popupSurface is NOT portalled, so it sits under relatively
+   * positioned siblings such as the Input it belongs to. The surface is absolutely
+   * positioned by react-positioning, so `z-index: 1` is what keeps it on top. DatePicker's
+   * OWN element, hence `l1` — nothing from another package styles it.
+   */
+  .popup-surface-inline {
+    z-index: 1;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.base — the `root` slot's arg #14. Compiled:
+   * `.f10pi13n{position:relative;}` + `.f1k6fduh{cursor:pointer;}` +
+   * `.faxec97 input{cursor:pointer;}`
+   *
+   * `position: relative` is the anchor react-positioning measures the popup against; the
+   * `cursor` pair makes the whole field read as the click target that opens the calendar,
+   * including the inner `<input>` (which would otherwise show the UA text caret cursor).
+   */
+  .root {
+    position: relative;
+    cursor: pointer;
+
+    & input {
+      cursor: pointer;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.disabled — the `root` slot's arg #15, applied when `state.disabled`.
+   * Compiled: `.f158kwzp{cursor:default;}` + `.f19qwlmg input{cursor:default;}`
+   *
+   * Authored as a conditional module class driven by `state.disabled`, NOT as a
+   * `@variant disabled` reading the `data-disabled` that `useInputStyles_unstable` stamps on
+   * this same element. The two agree for every render reachable today (DatePicker's
+   * `disabled` prop is the only source of both), but the shared `disabled` variant is a
+   * UNION — `&:where([disabled], [data-disabled], :disabled)` — that grows as packages
+   * convert, and this slice branched on exactly one boolean. A conditional class is also the
+   * literal translation of `disabled && styles.disabled` in the mergeClasses call, so it
+   * carries no assumption about another package's attribute contract (DECISIONS.md D15.6:
+   * data attributes are a fallback, not a requirement).
+   *
+   * This block MUST stay after `.root` above: both set `cursor` at equal specificity inside
+   * the same layer, so file order is the tiebreak that reproduces mergeClasses arg #15
+   * beating arg #14.
+   */
+  .disabled {
+    cursor: default;
+
+    & input {
+      cursor: default;
+    }
+  }
+}
