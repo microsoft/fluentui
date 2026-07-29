@@ -443,3 +443,4 @@ Recommended, but **not applied** — this pass was read-only.
 | `react-avatar`              | `validated`, 4 styles files                       | Only 3 `.module.css`; `AvatarGroupPopover` still Griffel — reopen as a seam                                  |
 
 INFRA-1c: docsite full build blocked by 7 story files with '/\*_ @jsxRuntime automatic _/' + pragma conflict (react-motion x6, react-tree x1) — bisected independent of S0 config; NOT yet A/B'd against master. Fix or A/B in Phase 3.
+TRIAGE CORRECTION (S2): the 'VR coverage: none' checks for react-tabs and react-tag-picker looked for story DIRECTORIES; coverage exists as FLAT FILES (Tabs.stories.tsx ~30 stories 'TabList and Tab Converged'; TagPicker.stories.tsx 'TagPicker'). Baselines recovered post-conversion from the pre-S2 bundle via capture.mjs --baseline-from-current-bundle (new explicit mode, manifest-recorded). Lesson: coverage checks must grep story TITLES, not directory names.

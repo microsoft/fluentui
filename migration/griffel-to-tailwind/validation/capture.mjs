@@ -77,7 +77,7 @@ if (bundleMtime && fs.existsSync(componentsRoot)) {
   };
   walk(componentsRoot);
 }
-if (newerSources.length > 0) {
+if (newerSources.length > 0 && !args['baseline-from-current-bundle']) {
   console.error(`[capture] FAIL: ${newerSources.length} component source(s) are newer than ${url}.`);
   console.error('[capture] The built storybook does not contain your changes — capturing now would');
   console.error('[capture] compare the PREVIOUS build against the baseline and PASS for the wrong reason.');
@@ -87,7 +87,16 @@ if (newerSources.length > 0) {
   console.error('[capture]   "> nx run vr-tests-react-components:build-storybook"');
   console.error('[capture] with NO "[existing outputs match the cache]" / "[local cache]" suffix:');
   console.error('[capture]   yarn nx run vr-tests-react-components:build-storybook --skip-nx-cache');
+  console.error('[capture] EXCEPTION — capturing a BASELINE from the pre-change bundle (the one case');
+  console.error('[capture] where an older bundle is the CORRECT source, e.g. VR coverage discovered');
+  console.error('[capture] after conversion): pass --baseline-from-current-bundle true. The flag is');
+  console.error('[capture] recorded in the manifest; NEVER use it for candidate captures.');
   process.exit(2);
+}
+if (newerSources.length > 0) {
+  console.error(`[capture] BASELINE MODE: capturing from the current bundle although ${newerSources.length}`);
+  console.error('[capture] source(s) are newer — this bundle deliberately predates those changes and is');
+  console.error('[capture] being used as the pre-change BASELINE. Do not use this flag for candidates.');
 }
 
 fs.rmSync(out, { recursive: true, force: true });
@@ -149,6 +158,7 @@ const manifest = {
   elapsedMs: Date.now() - started,
   count: files.length,
   files,
+  ...(args['baseline-from-current-bundle'] ? { baselineFromCurrentBundle: true } : {}),
 };
 fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify(manifest, null, 2));
 
