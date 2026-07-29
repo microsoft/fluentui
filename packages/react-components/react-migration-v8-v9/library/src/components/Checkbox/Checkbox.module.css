@@ -1,0 +1,37 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l2 {
+  /*
+   * from useCheckboxStyles.root (Checkbox.styles.ts:6-8), CheckboxShim.tsx:52 argument #1.
+   *
+   * `l2`, NOT `l1` (s4-v8-layering-decision.md §2.3). The subject is `@fluentui/react-checkbox`'s
+   * root — another converted component's hook output — so D2 amendment 2 applies: "anything
+   * applied over another component's hook output → l2". It has to beat react-checkbox's own
+   * `@apply relative inline-flex max-w-fit …` in `@layer fui.base`
+   * (react-checkbox/library/src/components/Checkbox/Checkbox.module.css:124-127), which is the
+   * tie mergeClasses resolves today by per-property atomic deletion. Any component level beats
+   * `fui.base`. react-checkbox already ships an `l2` block of its own for the same reason
+   * (that file, :332), so this is a precedent-following assignment, not a new pattern.
+   *
+   * The OTHER direction needs no work: the consumer's v8 `styles.root`
+   * (CheckboxShim.tsx:19 → :52, built by `classNamesFunction` from the consumer's
+   * `ICheckboxStyles`) is unlayered merge-styles injected at runtime, and unlayered beats
+   * every layer before specificity is consulted — so it keeps winning over this rule, which
+   * is exactly the shim's intent. Same for the `label` (:43) and `indicator` (:53) slots.
+   */
+  .root {
+    @apply flex;
+  }
+}

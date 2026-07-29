@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import type { ICheckboxProps, ICheckboxStyles, ICheckboxStyleProps } from '@fluentui/react';
 import { classNamesFunction } from '@fluentui/react';
-import { Checkbox, mergeClasses } from '@fluentui/react-components';
+import { clsx } from 'clsx';
+import { Checkbox } from '@fluentui/react-components';
 import { useCheckboxProps } from './shimCheckboxProps';
 import { useCheckboxStyles } from './Checkbox.styles';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -38,9 +39,23 @@ export const CheckboxShim = React.forwardRef((props, _ref) => {
     ) : null;
   };
 
+  // `mergeClasses` → `clsx`, ARGUMENT ORDER UNCHANGED. Per DECISIONS.md D7-revision that order
+  // no longer carries cascade meaning: `stylesV9.root` is a hashed CSS-Modules class in
+  // `@layer fui.components.l2` (Checkbox.module.css), while `styles.*` are the consumer's v8
+  // merge-styles classes, injected UNLAYERED at runtime — and unlayered beats every layer before
+  // specificity is consulted. So the consumer's `ICheckboxStyles` keeps winning over the shim,
+  // which is the shim's whole intent, at zero cost and with no unlayered block needed here
+  // (s4-v8-layering-decision.md §1.4).
+  //
+  // No named-group marker is stamped: this component renders no DOM element of its own — the
+  // outermost node is `@fluentui/react-checkbox`'s root, which already carries
+  // `group/fui-checkbox`, and D15.1 allows exactly one marker per element.
+  //
+  // `ms-Checkbox` / `ms-Checkbox-text` / `ms-Checkbox-checkbox` are v8 interop classes, RETAINED
+  // (they are not `fui`-prefixed BEM statics, so D16.1's sweep does not cover them).
   if (label || onRenderLabel) {
     shimProps.label = {
-      className: mergeClasses('ms-Checkbox-text', styles.label, styles.text),
+      className: clsx('ms-Checkbox-text', styles.label, styles.text),
       children: onRenderLabel ? onRenderLabel(props, defaultLabelRenderer) : label,
     };
   }
@@ -49,8 +64,8 @@ export const CheckboxShim = React.forwardRef((props, _ref) => {
     <Checkbox
       {...shimProps}
       ref={checkboxRef}
-      className={mergeClasses(stylesV9.root, 'ms-Checkbox', className, styles.root)}
-      indicator={{ className: mergeClasses('ms-Checkbox-checkbox', styles.checkbox) }}
+      className={clsx(stylesV9.root, 'ms-Checkbox', className, styles.root)}
+      indicator={{ className: clsx('ms-Checkbox-checkbox', styles.checkbox) }}
     />
   );
   // NOTE: cast is necessary as `ICheckboxProps` extends React.Ref<HTMLDivElement> which is not compatible with our defined  React.Ref<HTMLInputElement>

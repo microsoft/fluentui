@@ -1,0 +1,258 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of StackShim.tsx, not source
+ * declaration order. Adjudicated in
+ * migration/griffel-to-tailwind/reports/s4-v8-layering-decision.md §2.1.
+ *
+ * `root` element — StackShim.tsx:152-157
+ *    1 stackClassNames.root ('ms-Stack')       → static class (JS) — RETAINED, v8 interop
+ *    2 'group/fui-stack-shim'                  → named group marker (JS), never index 0
+ *    3 wrap ? .wrap : .root                    → fui.components.l1
+ *    4 horizontal      → .horizontal           → fui.components.l1
+ *    5 verticalFill    → .vertical-fill        → fui.components.l1
+ *    6 reversed        → .reversed-horizontal | .reversed-vertical
+ *    7 grow            → .grow-<value>         → fui.components.l1
+ *    8 disableShrink   → .disable-shrink       → fui.components.l1 (+ UNLAYERED rule below)
+ *    9 horizontalAlign → .justify-content-<v> (horizontal) | .align-items-<v> (vertical)
+ *   10 verticalAlign   → .align-items-<v> (horizontal) | .justify-content-<v> (vertical)
+ *   11 childrenGapClassName.root                → v8 merge-styles, UNLAYERED at runtime
+ *   12 consumer className                       → unlayered (always wins)
+ *
+ * `inner` element — StackShim.tsx:159-163
+ *    1 stackClassNames.inner ('ms-Stack-inner') → static class (JS) — RETAINED, v8 interop
+ *    2 .inner                                   → fui.components.l1
+ *    3 horizontal → .horizontal, 4 .inner-width, 5 reversed, 6/7 align — as above
+ *    8 childrenGapClassName.inner               → v8 merge-styles, UNLAYERED at runtime
+ *
+ * Args 11/12 are unlayered and therefore beat every rule in this file — which is the
+ * intent and matches Griffel's behaviour today (D2's core contract). The only same-element
+ * property the v8 side could have collided on is `width` on `inner`, and it cannot occur:
+ * `.inner-width` is pushed only under `(!tokens || !tokens.childrenGap)` (StackShim.tsx:78)
+ * while `childrenGapClassName` exists only under `if (tokens.childrenGap)` (:60-66) — an
+ * explicit JS guard, not cascade luck (decision doc §1.2).
+ *
+ * The four DESCENDANT rules are the exception and live UNLAYERED at the bottom of this
+ * file. See that block's comment; do not move them.
+ */
+
+@layer fui.components.l1 {
+  /* from useStackStyles.root (:6-12) — its two `> *` rules moved to the unlayered block */
+  .root {
+    @apply box-border flex h-auto w-auto flex-col flex-nowrap;
+  }
+
+  /* from useStackStyles.horizontal (:22-24) */
+  .horizontal {
+    @apply flex-row;
+  }
+
+  /* from useStackStyles.verticalFill (:25-27) */
+  .vertical-fill {
+    @apply h-full;
+  }
+
+  /* from useStackStyles.reversedVertical (:28-30) */
+  .reversed-vertical {
+    @apply flex-col-reverse;
+  }
+
+  /* from useStackStyles.reversedHorizontal (:31-33) */
+  .reversed-horizontal {
+    @apply flex-row-reverse;
+  }
+
+  /*
+   * from useStackStyles.disableShrink (:34-40).
+   *
+   * Identity-only local, deliberately empty: this slice's ONLY declaration is a descendant
+   * rule, which is unlayered at the bottom of this file. The class still has to exist in
+   * the exported class map so `styles.disableShrink` is a real token — do not delete it
+   * because it looks empty (decision doc §2.1).
+   *
+   * Tailwind drops the empty ruleset from the COMPILED output, which is correct and harmless:
+   * postcss-modules registers the local from the unlayered rule below, so the class map keeps
+   * its `disable-shrink` entry either way (verified against the emitted dist/styles.css).
+   */
+  .disable-shrink {
+  }
+
+  /* from useStackStyles.wrap (:41-45) */
+  .wrap {
+    @apply flex h-full flex-wrap;
+  }
+
+  /* from useStackStyles.inner (:46-51) — its `> *` rule moved to the unlayered block */
+  .inner {
+    @apply box-border flex flex-col flex-wrap;
+
+    max-width: 100vw;
+  }
+
+  /* from useStackStyles.innerWidth (:58-60) */
+  .inner-width {
+    @apply w-full;
+  }
+}
+
+/*
+ * from useFlexGrowStyles (:63-85).
+ *
+ * The JS keys stay `inherit`/`initial`/`revert`/`unset`/`1`/`2`/`3` — StackShim.tsx:124
+ * indexes this catalog by the raw `grow` prop value. The locals are prefixed because a CSS
+ * class cannot be named `1`; StackShim.styles.ts maps key → local. Declarations are literal
+ * rather than `@apply`, because the four CSS-wide keywords have no utility and a split
+ * authoring style inside one catalog is exactly how a value drifts.
+ */
+@layer fui.components.l1 {
+  .grow-inherit {
+    flex-grow: inherit;
+  }
+
+  .grow-initial {
+    flex-grow: initial;
+  }
+
+  .grow-revert {
+    flex-grow: revert;
+  }
+
+  .grow-unset {
+    flex-grow: unset;
+  }
+
+  .grow-1 {
+    flex-grow: 1;
+  }
+
+  .grow-2 {
+    flex-grow: 2;
+  }
+
+  .grow-3 {
+    flex-grow: 3;
+  }
+}
+
+/*
+ * from useFlexAlignItemsStyles (:87-113).
+ *
+ * `space-between` / `space-around` / `space-evenly` are NOT valid `align-items` values and
+ * every browser drops those three declarations at parse time. They are reproduced verbatim
+ * because that is what the Griffel source emits today and this conversion is pixel-inert by
+ * contract — do not "fix" them.
+ */
+@layer fui.components.l1 {
+  .align-items-baseline {
+    align-items: baseline;
+  }
+
+  .align-items-center {
+    align-items: center;
+  }
+
+  .align-items-start {
+    align-items: flex-start;
+  }
+
+  .align-items-end {
+    align-items: flex-end;
+  }
+
+  .align-items-stretch {
+    align-items: stretch;
+  }
+
+  .align-items-space-between {
+    align-items: space-between;
+  }
+
+  .align-items-space-around {
+    align-items: space-around;
+  }
+
+  .align-items-space-evenly {
+    align-items: space-evenly;
+  }
+}
+
+/*
+ * from useFlexJustifyContentStyles (:115-141). `baseline` is likewise not a valid
+ * `justify-content` value; same reasoning as the block above.
+ */
+@layer fui.components.l1 {
+  .justify-content-baseline {
+    justify-content: baseline;
+  }
+
+  .justify-content-center {
+    justify-content: center;
+  }
+
+  .justify-content-start {
+    justify-content: flex-start;
+  }
+
+  .justify-content-end {
+    justify-content: flex-end;
+  }
+
+  .justify-content-stretch {
+    justify-content: stretch;
+  }
+
+  .justify-content-space-between {
+    justify-content: space-between;
+  }
+
+  .justify-content-space-around {
+    justify-content: space-around;
+  }
+
+  .justify-content-space-evenly {
+    justify-content: space-evenly;
+  }
+}
+
+/* UNLAYERED — D2 amendment 5.
+   Subjects are arbitrary consumer children. In a hybrid v8/v9 tree those are routinely
+   v8 components whose merge-styles CSS is unlayered; a layered rule here would lose the
+   flex-shrink / text-overflow ties it wins today on specificity (0-2-0 vs 0-1-0).
+   Permanent, not transitional: v8 will never convert.
+   ORDERING: .disable-shrink must come last — StackShim.tsx pushes styles.root at :70 and
+   styles.disableShrink at :129, and unlayered blocks have only file position to encode that.
+   DO NOT WRAP IN :where() — the 0-2-0 specificity is the whole mechanism.
+
+   Measured against the installed @fluentui/react: 13 component style files declare
+   `flexShrink` and 20 declare `textOverflow`, so the collision is routine, not theoretical
+   (s4-v8-layering-decision.md §1.3). Guarded by the compile-time assertions in
+   tools/workspace-plugin/src/executors/build/lib/css-modules.spec.ts, because every way of
+   breaking this block is silent at runtime and there are no VR baselines for this package. */
+
+.root > * {
+  text-overflow: ellipsis;
+} /* was useStackStyles.root :13-15 */
+
+.root > *:not(:global(.ms-StackItem)) {
+  flex-shrink: 1;
+} /* was useStackStyles.root :18-20 */
+
+.inner > *:not(:global(.ms-StackItem)) {
+  flex-shrink: 1;
+} /* was useStackStyles.inner :54-56 */
+
+.disable-shrink > *:not(:global(.ms-StackItem)) {
+  flex-shrink: 0;
+} /* was useStackStyles.disableShrink :37-39 */
