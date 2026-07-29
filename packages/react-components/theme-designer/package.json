@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-components": "^9.74.3",
+    "@fluentui/react-components": "^9.74.4",
     "@fluentui/react-context-selector": "^9.2.18",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.3.0",
@@ -21,8 +21,8 @@
     "@fluentui/react-utilities": "^9.26.5",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
-    "dedent": "^1.2.0",
-    "codesandbox-import-utils": "^2.2.3"
+    "codesandbox-import-utils": "^2.2.3",
+    "dedent": "^1.2.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

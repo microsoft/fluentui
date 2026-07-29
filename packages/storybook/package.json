@@ -11,17 +11,17 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "just": "yarn run -T just-scripts",
+    "lint": "yarn run -T just-scripts lint"
   },
   "dependencies": {
-    "@fluentui/react": "^8.125.6",
+    "@fluentui/azure-themes": "^8.6.150",
+    "@fluentui/react": "^8.125.7",
     "@fluentui/theme": "^2.7.2",
-    "@fluentui/azure-themes": "^8.6.149",
-    "@fluentui/theme-samples": "^8.7.225",
+    "@fluentui/theme-samples": "^8.7.226",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

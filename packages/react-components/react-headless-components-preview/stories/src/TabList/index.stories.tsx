@@ -1,6 +1,9 @@
 import { TabList } from '@fluentui/react-headless-components-preview/tab-list';
 
 import descriptionMd from './TabListDescription.md';
+
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './TabListDefault.stories';
 
 export default {
@@ -9,7 +12,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('TabList')].join('\n'),
       },
     },
   },

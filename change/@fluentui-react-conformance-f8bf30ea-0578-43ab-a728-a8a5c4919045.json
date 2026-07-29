@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: security dependency remediation for S360 CVEs",
+  "packageName": "@fluentui/react-conformance",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "none"
+}

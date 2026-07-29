@@ -42,7 +42,7 @@
 /typings @microsoft/fluentui-react-build
 
 #### Root Build files
-/.yarnrc @microsoft/fluentui-react-build
+/.yarnrc.yml @microsoft/fluentui-react-build
 /.gitattributes @microsoft/fluentui-react-build
 /.gitignore @microsoft/fluentui-react-build
 /.npmrc @microsoft/fluentui-react-build

@@ -150,6 +150,73 @@ test.describe('Tablist', () => {
   });
 
   test.describe('active tab', () => {
+    test('should select a tab when it’s clicked', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
+
+      const secondTab = tabs.nth(1);
+      const secondTabId = (await secondTab.getAttribute('id')) as string;
+
+      await secondTab.click();
+
+      await expect(tabs.nth(0)).not.toHaveAttribute('aria-selected', 'true');
+      await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+      await expect(element).toHaveAttribute('activeid', secondTabId);
+    });
+
+    test('should select a tab when it’s focused', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
+
+      const secondTab = tabs.nth(1);
+      const secondTabId = (await secondTab.getAttribute('id')) as string;
+
+      await secondTab.focus();
+
+      await expect(tabs.nth(0)).not.toHaveAttribute('aria-selected', 'true');
+      await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+      await expect(element).toHaveAttribute('activeid', secondTabId);
+    });
+
+    test('should select a tab when the focus is moved onto it', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
+
+      const firstTab = tabs.nth(0);
+      const secondTabId = (await tabs.nth(1).getAttribute('id')) as string;
+
+      await firstTab.focus();
+      await firstTab.press('ArrowRight');
+
+      await expect(firstTab).not.toHaveAttribute('aria-selected', 'true');
+      await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'true');
+      await expect(element).toHaveAttribute('activeid', secondTabId);
+    });
+
+    test('should select a tab when `click()` is called on it', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator(TabTagName);
+
+      await fastPage.setTemplate();
+
+      const secondTab = tabs.nth(1);
+      const secondTabId = (await secondTab.getAttribute('id')) as string;
+
+      await secondTab.evaluate((node: Tab) => {
+        node.click();
+      });
+
+      await expect(tabs.nth(0)).not.toHaveAttribute('aria-selected', 'true');
+      await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+      await expect(element).toHaveAttribute('activeid', secondTabId);
+    });
+
     test('should set an `aria-selected` attribute on the active tab when `activeid` is provided', async ({
       fastPage,
     }) => {

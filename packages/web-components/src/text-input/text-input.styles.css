@@ -122,13 +122,13 @@
 :host(:focus-within) .control {
   color: var(--colorNeutralForeground1);
 }
-:host([disabled]) .root {
+:host(:is([disabled], :disabled)) .root {
   background: var(--colorTransparentBackground);
   border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
 }
-:host([disabled]) .control::placeholder,
-:host([disabled]) ::slotted([slot='start']),
-:host([disabled]) ::slotted([slot='end']) {
+:host(:is([disabled], :disabled)) .control::placeholder,
+:host(:is([disabled], :disabled)) ::slotted([slot='start']),
+:host(:is([disabled], :disabled)) ::slotted([slot='end']) {
   color: var(--colorNeutralForegroundDisabled);
 }
 ::selection {
@@ -179,7 +179,7 @@
   border: 0;
   border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
 }
-:host([appearance='underline'][disabled]) .root {
+:host([appearance='underline']:is([disabled], :disabled)) .root {
   border-bottom-color: var(--colorNeutralStrokeDisabled);
 }
 :host([appearance='filled-lighter']) .root,

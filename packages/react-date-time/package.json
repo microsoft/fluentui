@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-date-time",
-  "version": "8.8.6",
+  "version": "8.8.7",
   "description": "Date and time related React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,14 +14,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style"
+    "build": "yarn run -T just-scripts build",
+    "lint": "yarn run -T just-scripts lint",
+    "just": "yarn run -T just-scripts",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style"
   },
   "dependencies": {
-    "@fluentui/react": "^8.125.6",
+    "@fluentui/react": "^8.125.7",
     "@fluentui/set-version": "^8.2.24",
     "tslib": "^2.1.0"
   },

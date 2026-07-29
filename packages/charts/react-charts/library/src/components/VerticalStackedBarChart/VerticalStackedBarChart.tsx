@@ -561,15 +561,16 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     yScaleSecondary?: NumericScale,
   ): JSXElement {
     const lineObject: LineObject = _getFormattedLineData(props.data);
-    const lines: React.ReactNode[] = [];
-    const borderForLines: React.ReactNode[] = [];
-    const dots: React.ReactNode[] = [];
+    const lineSeriesGroups: React.ReactNode[] = [];
     //const { theme } = props;
     const lineBorderWidth = props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(props.lineOptions!.lineBorderWidth!.toString())
       : 0;
     const xScaleBandwidthTranslate = _xAxisType !== XAxisTypes.StringAxis ? 0 : xScale.bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
+      const lines: React.ReactNode[] = [];
+      const borderForLines: React.ReactNode[] = [];
+      const dots: React.ReactNode[] = [];
       const shouldHighlight = _isLegendHighlighted(item) || _noLegendHighlighted();
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = xScale(lineObject[item][i - 1].xItem.xAxisPoint);
@@ -623,8 +624,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           />,
         );
       }
-    });
-    Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
         const yScaleBandwidthTranslate =
@@ -658,19 +657,25 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             onFocus={event => _lineFocus(event, circlePoint, circleRef)}
             onBlur={_handleMouseOut}
-            role="img"
+            role="option"
             aria-label={_getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint, true)}
           />,
         );
       });
+
+      lineSeriesGroups.push(
+        <g
+          role="listbox"
+          aria-label={`${item}, line with ${lineObject[item].length} data points.`}
+          key={`${item}-${index}-lineSeries`}
+        >
+          {borderForLines}
+          {lines}
+          {dots}
+        </g>,
+      );
     });
-    return (
-      <>
-        {borderForLines}
-        {lines}
-        {dots}
-      </>
-    );
+    return <>{lineSeriesGroups}</>;
   }
 
   function _getCircleOpacityAndRadius(
@@ -1042,7 +1047,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
             onBlur: _handleMouseOut,
             onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
-            role: 'img',
+            role: 'option',
             tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
           };
 
@@ -1145,7 +1150,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           onFocus: () => _onStackFocus(singleChartData, groupRef),
           onBlur: _handleMouseOut,
           onClick: (event: any) => _onClick(singleChartData, event),
-          role: 'img',
           tabIndex: !props.hideTooltip ? 0 : undefined,
         };
       let showLabel = false;
@@ -1183,6 +1187,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             ref={e => {
               groupRef.refElement = e;
             }}
+            role="listbox"
+            aria-label={_getAriaLabel(singleChartData)}
             {...stackFocusProps}
           >
             {singleBar}
@@ -1337,7 +1343,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
     const shouldFocusWholeStack = _toFocusWholeStack();
     _dataset = _createDataSetLayer();
-    const legendBars: JSXElement = _getLegendData(_points, _createLegendsForLine(props.data));
+    const lineLegends = _createLegendsForLine(props.data);
+    const legendBars: JSXElement = _getLegendData(_points, lineLegends);
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
       color,
       legend: calloutLegend,
