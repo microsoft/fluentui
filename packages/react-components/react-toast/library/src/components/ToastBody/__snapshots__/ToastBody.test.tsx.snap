@@ -3,7 +3,7 @@
 exports[`ToastBody renders a default state 1`] = `
 <div>
   <div
-    class="fui-ToastBody"
+    class="group/fui-toast-body"
     id=""
   >
     Default ToastBody

@@ -3,9 +3,9 @@
 exports[`ToastContainer renders a default state 1`] = `
 <div>
   <div
-    aria-describedby="toast-body_r_d_"
-    aria-labelledby="toast-title_r_c_"
-    class="fui-ToastContainer"
+    aria-describedby="toast-body_r_j_"
+    aria-labelledby="toast-title_r_i_"
+    class="group/fui-toast-container"
     data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Tab\\":true,\\"Escape\\":true,\\"Enter\\":true}}}"
     role="listitem"
     tabindex="0"

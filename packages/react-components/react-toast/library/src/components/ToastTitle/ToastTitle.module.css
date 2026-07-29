@@ -1,0 +1,186 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useToastTitleStyles_unstable.
+ *
+ *   `root` slot
+ *     1 toastTitleClassNames.root       → REMOVED (D16.1) — `group/fui-toast-title` is the
+ *                                         identity now, written as clsx argument 2
+ *     2 useRootBaseClassName            → fui.base           .root
+ *     3 useInvertedStyles.root          → fui.components.l1  .root-inverted
+ *     4 consumer className              → unlayered (always wins)
+ *
+ *   `media` slot
+ *     1 toastTitleClassNames.media      → REMOVED (D16.1) — sub-slots have no public handle
+ *     2 useMediaBaseClassName           → fui.base           .media
+ *     3 useInvertedStyles.media         → fui.components.l1  .media-inverted
+ *     4 useIntentIconStyles[intent]     → fui.components.l1  .media-<intent>
+ *     5 useIntentIconStylesInverted[…]  → fui.components.l1  .media-inverted-<intent>
+ *     6 consumer className              → unlayered
+ *
+ *   `action` slot
+ *     1 toastTitleClassNames.action     → REMOVED (D16.1)
+ *     2 useActionBaseClassName          → fui.base           .action
+ *     3 useInvertedStyles.action        → fui.components.l1  .action-inverted
+ *     4 consumer className              → unlayered
+ *
+ * ── ORDER IS LOAD-BEARING ON THE MEDIA SLOT ─────────────────────────────────────────
+ * Args #3, #4 and #5 all set `color`, all sit in `fui.components.l1`, and all compile to
+ * flat 0-1-0 class selectors — so the winner is decided by FILE POSITION alone. The three
+ * blocks below are therefore written in mergeClasses ARGUMENT order:
+ *
+ *   inverted only            → .media-inverted            (colorNeutralForegroundInverted)
+ *   intent only              → .media-<intent>            (colorStatus…Foreground1)
+ *   inverted AND intent      → .media-inverted-<intent>   (colorStatus…ForegroundInverted)
+ *
+ * Reordering these blocks silently changes the icon colour of every inverted intent toast.
+ * There is no inversion between argument order and declaration order in the source.
+ *
+ * ── ALTITUDE: everything here is base/l1 ────────────────────────────────────────────
+ * All three slots are ToastTitle's OWN `<div>`s. `media` is a wrapper this component
+ * renders itself; the glyph inside it is consumer-supplied and inherits `color`/`font-size`
+ * from the wrapper — this module declares no rule whose SUBJECT is an icons-owned element,
+ * so neither `fui.components.l2` (D2 amendment 2) nor the UNLAYERED rule (D2 amendment 5)
+ * applies. Grepped the whole package for `fui-Icon-filled` / `fui-Icon-regular` and for
+ * `:global(`: zero hits. Nothing here calls `bundleIcon()` or styles its `display` swap.
+ *
+ * ── Slot geometry, and why intent is a MODULE CLASS ─────────────────────────────────
+ * `renderToastTitle` returns a FRAGMENT in the order `media`, `root`, `action`, so all
+ * three are SIBLINGS and grid items of the enclosing Toast's `auto 1fr auto` template.
+ * `media` is therefore NOT a descendant of `root`, so it cannot be reached from the root's
+ * `group/fui-toast-title` marker (the compiled group selector is `:is(:where(.group…) *)`,
+ * a descendant combinator) and it cannot be reached by a descendant selector either.
+ *
+ * That rules out react-message-bar's shape, where a single `data-intent` on the root drives
+ * the icon through `& .icon`. The remaining options are a `data-intent` stamped on the media
+ * element itself, or a module class. This conversion takes the module class: `intent` and
+ * `backgroundAppearance` are consumed only by the very element that carries them, no
+ * descendant or cross-component read exists, and DECISIONS.md D15.6 keeps `data-*` a
+ * FALLBACK for state a selector cannot otherwise reach. Adding one here would mint public
+ * DOM surface that D16.1 exists to remove, in exchange for nothing.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Two compiled resets carry [ltr, rtl] pairs, both pure PROPERTY flips → logical
+ * properties, no `@variant rtl` twin needed:
+ *   useMediaBaseClassName   padding-right: 8px  ⇄ padding-left: 8px   → padding-inline-end
+ *   useActionBaseClassName  padding-left: 12px  ⇄ padding-right: 12px → padding-inline-start
+ * `useRootBaseClassName` has a `null` RTL class, and every `makeStyles` slice is
+ * colour-only.
+ *
+ * ── Spacing / typography (DECISIONS.md D4 amendment) ────────────────────────────────
+ * `2px`, `8px` and `12px` land exactly on the XXS, S and M steps and take the named
+ * utilities; the axis follows the property (`padding-top` → vertical, `padding-inline-end`
+ * / `padding-inline-start` → horizontal). `fontSize: '16px'` is a TYPOGRAPHY literal and
+ * takes `calc(16px * var(--base-scale))`, matching the react-badge precedent
+ * (Badge.module.css:146) rather than the coincidentally-equal L spacing step.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ToastTitle/useToastTitleStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
+  .root {
+    @apply flex;
+
+    grid-column-end: 3;
+
+    color: var(--colorNeutralForeground1);
+
+    /* Tailwind's `break-words` is `overflow-wrap: break-word`, a DIFFERENT property —
+       the compiled atomic sets `word-break`, so this stays a literal declaration. */
+    word-break: break-word;
+  }
+
+  /* from useMediaBaseClassName (makeResetStyles) — media arg #2 */
+  .media {
+    @apply flex pt-vertical-xxs pe-horizontal-s;
+
+    grid-column-end: 2;
+
+    font-size: calc(16px * var(--base-scale));
+    color: var(--colorNeutralForeground1);
+  }
+
+  /* from useActionBaseClassName (makeResetStyles) — action arg #2 */
+  .action {
+    @apply flex ps-horizontal-m;
+
+    /* `alignItems: 'start'` compiled to the Box-Alignment keyword `start`, NOT `flex-start` —
+       Tailwind's `items-start` emits the latter. Identical here (a default-direction flex row
+       aligns its cross axis to the block start either way), but the compiled value is what the
+       cookbook says to reproduce, and the two diverge under `flex-direction: *-reverse`. */
+    align-items: start;
+
+    grid-column-end: -1;
+
+    color: var(--colorBrandForeground1);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useInvertedStyles.root — root arg #3 */
+  .root-inverted {
+    color: var(--colorNeutralForegroundInverted2);
+  }
+
+  /* from useInvertedStyles.media — media arg #3 */
+  .media-inverted {
+    color: var(--colorNeutralForegroundInverted);
+  }
+
+  /* from useIntentIconStyles[intent] — media arg #4. MUST stay after `.media-inverted`. */
+  .media-success {
+    color: var(--colorStatusSuccessForeground1);
+  }
+
+  .media-error {
+    color: var(--colorStatusDangerForeground1);
+  }
+
+  .media-warning {
+    color: var(--colorStatusWarningForeground1);
+  }
+
+  .media-info {
+    color: var(--colorNeutralForeground2);
+  }
+
+  /*
+   * from useIntentIconStylesInverted[intent] — media arg #5. MUST stay after the
+   * `.media-<intent>` block above: same layer, same 0-1-0 specificity, same element, and
+   * both classes are present whenever a toast is inverted AND carries an intent.
+   */
+  .media-inverted-success {
+    color: var(--colorStatusSuccessForegroundInverted);
+  }
+
+  .media-inverted-error {
+    color: var(--colorStatusDangerForegroundInverted);
+  }
+
+  .media-inverted-warning {
+    color: var(--colorStatusWarningForegroundInverted);
+  }
+
+  .media-inverted-info {
+    color: var(--colorNeutralForegroundInverted2);
+  }
+
+  /* from useInvertedStyles.action — action arg #3 */
+  .action-inverted {
+    color: var(--colorBrandForegroundInverted);
+  }
+}

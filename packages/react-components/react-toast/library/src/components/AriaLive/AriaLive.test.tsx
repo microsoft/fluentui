@@ -13,6 +13,16 @@ describe('AriaLive', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
+      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+      // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
+      // was called with the consumer className last; this hook now composes with clsx and
+      // never calls mergeClasses. Its cascade-native replacement `classname-overrides-win` is
+      // NOT added here, because the contract it checks is `component-handles-classname`,
+      // already disabled above: `AriaLive` takes no root `className` prop.
+      //
+      // `component-has-group-marker` (a default test) still runs and is satisfied — it reads
+      // the container's first child, which is the `assertive` live region, and both regions
+      // carry `group/fui-aria-live` after the hashed module class (D15.1 / D16.2).
       'make-styles-overrides-win',
     ],
   });

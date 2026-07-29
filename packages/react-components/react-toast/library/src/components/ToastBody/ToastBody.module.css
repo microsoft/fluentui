@@ -1,0 +1,116 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useToastBodyStyles_unstable.
+ * Argument order and source-declaration order are identical; there are no inversions.
+ *
+ *   `root` slot
+ *     1 toastBodyClassNames.root      → REMOVED (D16.1) — the `group/fui-toast-body` marker
+ *                                       is the identity now, written as clsx argument 2
+ *     2 useRootBaseClassName          → fui.base           .root
+ *     3 useInvertedStyles.root        → fui.components.l1  .root-inverted
+ *     4 consumer className            → unlayered (always wins)
+ *
+ *   `subtitle` slot
+ *     1 toastBodyClassNames.subtitle  → REMOVED (D16.1) — sub-slots have no public handle
+ *     2 useSubtitleBaseClassName      → fui.base           .subtitle
+ *     3 useInvertedStyles.subtitle    → fui.components.l1  .subtitle-inverted
+ *     4 consumer className            → unlayered
+ *
+ * ── ALTITUDE: everything here is base/l1 ────────────────────────────────────────────
+ * Both slots are ToastBody's OWN `<div>`s — `subtitle` is a plain element this component
+ * renders itself, not another component's hook output — so nothing qualifies for
+ * `fui.components.l2` (D2 amendment 2). No `:global(…)` selector appears in this module and
+ * no rule has a foreign element as its subject, so D2 amendment 5 (UNLAYERED) does not
+ * apply either. Grepped the package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits.
+ *
+ * ── Slot geometry ───────────────────────────────────────────────────────────────────
+ * `renderToastBody` returns a FRAGMENT (`root` then `subtitle`), so the two elements are
+ * SIBLINGS, both grid items of the enclosing Toast's `grid-template-columns: auto 1fr auto`.
+ * That is why each carries its own `grid-column-*` pair, and why the inverted colour is
+ * applied to each independently instead of being inherited or selected as a descendant.
+ * It is also why `backgroundAppearance` cannot be read from the root by a `group-*` variant:
+ * the subtitle is not inside the root. Module classes (below) are the correct mechanism.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Both compiled resets have a `null` RTL class and the `inverted` atomic is colour-only, so
+ * there is no direction-dependent declaration: no logical-property rewrite, no `@variant
+ * rtl` twin. (`padding-top` is block-axis and never flips.)
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * `paddingTop: '6px'` and `'4px'` are px literals landing exactly on the SNudge and XS
+ * steps, so they take the named utilities. `padding-top` is a BLOCK-axis property, hence
+ * the `vertical` axis.
+ *
+ * ── Reproduced verbatim, including one oddity ───────────────────────────────────────
+ * The subtitle's `line-height` reads `--fontSizeBase200`, NOT `--lineHeightBase200`. That is
+ * what the source declares and what the compiled atomic emits
+ * (`.rzjw1xk{…line-height:var(--fontSizeBase200);…}`); it is reproduced rather than
+ * "corrected", per the cookbook's rule to reproduce the COMPILED values.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ToastBody/useToastBodyStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
+  .root {
+    @apply pt-vertical-s-nudge;
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    color: var(--colorNeutralForeground1);
+
+    /* Tailwind's `break-words` is `overflow-wrap: break-word`, a DIFFERENT property —
+       the compiled atomic sets `word-break`, so this stays a literal declaration. */
+    word-break: break-word;
+  }
+
+  /* from useSubtitleBaseClassName (makeResetStyles) — subtitle arg #2 */
+  .subtitle {
+    @apply pt-vertical-xs;
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    /* see the header note — the source really does use the FONT SIZE token here */
+    line-height: var(--fontSizeBase200);
+    color: var(--colorNeutralForeground2);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useInvertedStyles.root / .subtitle — arg #3 on each slot, both gated on
+   * `backgroundAppearance === 'inverted'`. `backgroundAppearance` is a LOOK prop, so it stays
+   * a module class lookup rather than a data attribute (DECISIONS.md D3); nothing reads it
+   * through a descendant or `group-*` selector, and D15.6 keeps data attributes to the cases
+   * a class cannot express. Two locals rather than one shared class, mirroring the two
+   * separate Griffel slices (which happen to carry the same colour).
+   */
+  .root-inverted {
+    color: var(--colorNeutralForegroundInverted2);
+  }
+
+  .subtitle-inverted {
+    color: var(--colorNeutralForegroundInverted2);
+  }
+}

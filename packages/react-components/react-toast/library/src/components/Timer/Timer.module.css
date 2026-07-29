@@ -1,0 +1,68 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors `useBaseAnimationStyles` (a bare `makeResetStyles`, no
+ * mergeClasses call anywhere): one class, `fui.base`.
+ *
+ * ── What this animation is FOR ──────────────────────────────────────────────────────
+ * Nothing visual. `Timer` renders a zero-size `<span>` whose only job is to fire
+ * `onAnimationEnd` after `props.timeout`, with `animation-duration` and
+ * `animation-play-state` set as INLINE STYLE from JS (Timer.tsx) — that is what makes the
+ * toast dismissal timer pausable by the browser rather than by a `setTimeout` that keeps
+ * running in a background tab. The keyframes therefore animate `opacity` from 0 to 0: a
+ * deliberate no-op body, reproduced verbatim.
+ *
+ * Because `animation-duration` / `animation-play-state` arrive as inline style, they are not
+ * in this module and must not be added to it (the cookbook's runtime-value rule).
+ *
+ * ── No group marker, on purpose ─────────────────────────────────────────────────────
+ * `Timer` is not a v9 component: no `use<X>_unstable` state hook, no slots object, no
+ * `isConformant` registration, and no `*ClassNames` export. It is ToastContainer's `timer`
+ * slot, i.e. a component internal — and D16.1 removes public class handles on internals, so
+ * stamping `group/fui-timer` would mint exactly the public DOM surface that phase exists to
+ * delete. (The `fui-ToastContainer__timer` static that once named this element was declared
+ * but never applied to anything; it is removed with the rest.)
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Griffel emitted an [ltr, rtl] class PAIR here (`__resetStyles("r16zaflb", "r75casi", …)`)
+ * because it flips every reset that contains keyframes, but both classes resolve to the SAME
+ * `animation-name` and the keyframe body — `opacity: 0` at both ends — has nothing to flip.
+ * So there is no `@variant rtl` twin, unlike react-spinner's and react-skeleton's genuinely
+ * mirrored keyframes.
+ *
+ * Keyframes are intentionally NOT wrapped in a layer: they declare no cascade rules, so a
+ * layer would be meaningless, and CSS Modules already scopes the name.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/Timer/useTimerStyles.styles.js.
+ */
+
+/* from useBaseAnimationStyles.animationName */
+@keyframes timer-noop {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@layer fui.base {
+  /* from useBaseAnimationStyles (makeResetStyles) */
+  .root {
+    animation-name: timer-noop;
+  }
+}

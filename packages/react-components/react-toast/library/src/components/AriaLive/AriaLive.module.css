@@ -1,0 +1,74 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useAriaLiveStyles_unstable.
+ *
+ *   `assertive` and `polite` slots (identical composition on both)
+ *     1 useResetStyles                  → fui.base  .live-region  (makeResetStyles)
+ *     2 ariaLiveClassNames.<slot>       → REMOVED (D16.1) — the `group/fui-aria-live` marker
+ *                                         is the identity now, written as clsx argument 2
+ *     3 consumer className              → unlayered (always wins)
+ *
+ *   NOTE the source order: this is the ONE hook in the package whose static class was the
+ *   SECOND mergeClasses argument, not the first. Argument order carries no cascade meaning
+ *   (D15.1), so the converted call uses the standard shape — module class, then marker.
+ *
+ * ── ONE local for two slots, on purpose ─────────────────────────────────────────────
+ * The Griffel source applies the SAME `makeResetStyles` class to both live regions; there is
+ * no per-slot declaration anywhere in the hook. Minting two identical locals would emit two
+ * identical rules for no gain, so both slots share `.live-region`.
+ *
+ * The two elements stay distinguishable without any class: they are `aria-live="assertive"`
+ * and `aria-live="polite"`, a NATIVE attribute already in the DOM and already what this
+ * package's own tests select on. DECISIONS.md D15.6 is explicit that a `data-*` mirror must
+ * not be added where a native selector already expresses the state at the element that needs
+ * it — and by the same reasoning the removed `fui-AriaLive__assertive` /
+ * `fui-AriaLive__polite` statics need no class-shaped replacement.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * The only subject is AriaLive's own live-region `<div>`s. Nothing is nested inside them but
+ * text, and no other package's element is referenced, so nothing qualifies for
+ * `fui.components.l2` (D2 amendment 2) and D2 amendment 5 (UNLAYERED) does not apply. No
+ * `:global(…)` selector appears in this module; grepped the package for `fui-Icon-filled` /
+ * `fui-Icon-regular`: zero hits.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled reset has a `null` RTL class (`__resetStyles("rrd10u0", null, …)`): every
+ * declaration is symmetric or direction-neutral, and `clip`'s four values describe a zero
+ * rectangle. No logical-property rewrite and no `@variant rtl` twin.
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * The `1px` / `-1px` / `0px` values here are a visually-hidden CLIP geometry, not a spacing
+ * or stroke measurement, so they take numeric utilities and literals rather than the named
+ * steps or `var(--spacing-thin)` — the react-card precedent for the same idiom
+ * (`Card.module.css` `.checkbox`: `@apply absolute h-1 w-1 overflow-hidden` + literal
+ * `clip`). `h-1` / `w-1` are the same 1px through `--base-scale`.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/AriaLive/useAriaLiveStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useResetStyles (makeResetStyles) — applied to BOTH the assertive and polite slots */
+  .live-region {
+    @apply absolute h-1 w-1 overflow-hidden;
+
+    /* the deprecated-but-still-required half of the visually-hidden idiom; reproduced
+       verbatim from the compiled atomic, commas and `px` units included */
+    clip: rect(0px, 0px, 0px, 0px);
+    margin: -1px;
+    padding: 0px;
+  }
+}

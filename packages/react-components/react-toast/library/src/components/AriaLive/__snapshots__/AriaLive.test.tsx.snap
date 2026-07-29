@@ -4,11 +4,11 @@ exports[`AriaLive renders a default state 1`] = `
 <div>
   <div
     aria-live="assertive"
-    class="fui-AriaLive__assertive"
+    class="group/fui-aria-live"
   />
   <div
     aria-live="polite"
-    class="fui-AriaLive__polite"
+    class="group/fui-aria-live"
   />
 </div>
 `;

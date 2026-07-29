@@ -1,68 +1,81 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import type { ToastBodySlots, ToastBodyState } from './ToastBody.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const toastBodyClassNames: SlotClassNames<ToastBodySlots> = {
-  root: 'fui-ToastBody',
-  subtitle: 'fui-ToastBody__subtitle',
+import { clsx } from 'clsx';
+import type { ToastBodyState } from './ToastBody.types';
+
+import styles from './ToastBody.module.css';
+
+/**
+ * ToastBody's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-ToastBody` / `fui-ToastBody__subtitle` BEM statics are gone (D16.1), and the type has
+ * narrowed from `SlotClassNames<ToastBodySlots>` to `{ root: string }` so that a read of
+ * `subtitle` is a compile error on the exact line that would otherwise have silently stopped
+ * matching.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + toastBodyClassNames.root` is invalid CSS. Use
+ * `fuiSelector(toastBodyClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's two, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ */
+export const toastBodyClassNames: { root: string } = {
+  root: 'group/fui-toast-body',
 };
-
-const useRootBaseClassName = makeResetStyles({
-  gridColumnStart: 2,
-  gridColumnEnd: 3,
-  paddingTop: '6px',
-  fontSize: tokens.fontSizeBase300,
-  lineHeight: tokens.lineHeightBase300,
-  fontWeight: tokens.fontWeightRegular,
-  color: tokens.colorNeutralForeground1,
-  wordBreak: 'break-word',
-});
-
-const useSubtitleBaseClassName = makeResetStyles({
-  paddingTop: '4px',
-  gridColumnStart: 2,
-  gridColumnEnd: 3,
-  fontSize: tokens.fontSizeBase200,
-  lineHeight: tokens.fontSizeBase200,
-  fontWeight: tokens.fontWeightRegular,
-  color: tokens.colorNeutralForeground2,
-});
-
-const useInvertedStyles = makeStyles({
-  root: {
-    color: tokens.colorNeutralForegroundInverted2,
-  },
-  subtitle: {
-    color: tokens.colorNeutralForegroundInverted2,
-  },
-});
 
 /**
  * Apply styling to the ToastBody slots based on the state
  */
 export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodyState => {
-  const rootBaseClassName = useRootBaseClassName();
-  const subtitleBaseClassName = useSubtitleBaseClassName();
-  const invertedStyles = useInvertedStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    toastBodyClassNames.root,
-    rootBaseClassName,
-    state.backgroundAppearance === 'inverted' && invertedStyles.root,
+  const inverted = state.backgroundAppearance === 'inverted';
+
+  // Module class FIRST, named group marker SECOND, consumer className LAST (DECISIONS.md
+  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
+  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
+  // `:scope` polyfill would splice its `/` into an invalid selector and throw a render-time
+  // `AggregateError` under jsdom (D15.1). The `fui-ToastBody` static that used to hold index 0
+  // is gone (D16.1).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in ToastBody.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces.
+  //
+  // The state mutation below is preserved deliberately: DECISIONS.md D14 defers the
+  // pure-builder rewrite to a single Phase 3 sweep.
+  state.root.className = clsx(
+    styles.root,
+    'group/fui-toast-body',
+    inverted && styles['root-inverted'],
     state.root.className,
   );
 
   if (state.subtitle) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.subtitle.className = mergeClasses(
-      toastBodyClassNames.subtitle,
-      subtitleBaseClassName,
-      state.backgroundAppearance === 'inverted' && invertedStyles.subtitle,
-      state.subtitle.className,
-    );
+    // Sub-slots carry no marker, so D15.1 is not in play here: the hashed module class simply
+    // leads and the consumer className stays last (D16.1 — no public class-name handle on
+    // component internals). `subtitle` is a SIBLING of `root`, not a descendant, which is why
+    // the inverted colour is applied to it directly rather than inherited or selected from the
+    // root's group marker.
+    state.subtitle.className = clsx(styles.subtitle, inverted && styles['subtitle-inverted'], state.subtitle.className);
   }
 
   return state;

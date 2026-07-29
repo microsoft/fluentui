@@ -5,6 +5,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { Toaster, ToastTitle, Toast, useToastController, toastClassNames } from '../..';
 import { toastContainerClassNames } from '../ToastContainer/useToastContainerStyles.styles';
+import { fuiSelector } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
@@ -34,7 +35,7 @@ describe('Toast', () => {
     };
 
     mount(<Example />);
-    cy.get('button').click().get(`.${toastClassNames.root}`).should('exist');
+    cy.get('button').click().get(fuiSelector(toastClassNames.root)).should('exist');
   });
 
   it('should dismiss toast', () => {
@@ -70,11 +71,11 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('exist')
       .get('#dismiss')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('not.exist');
   });
 
@@ -112,11 +113,11 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('have.length', 5)
       .get('#dismiss')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('not.exist');
   });
 
@@ -160,16 +161,16 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('exist')
       .get('#pause')
       .click()
       .wait(1000)
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('exist')
       .get('#play')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('not.exist');
   });
 
@@ -215,7 +216,7 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('exist')
       .get('#update')
       .click()
@@ -248,10 +249,10 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .trigger('mouseenter')
       .wait(700)
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('exist');
   });
 
@@ -287,7 +288,13 @@ describe('Toast', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(`#action`).focus().wait(700).get(`.${toastClassNames.root}`).should('have.length', 5);
+    cy.get('#make')
+      .click()
+      .get(`#action`)
+      .focus()
+      .wait(700)
+      .get(fuiSelector(toastClassNames.root))
+      .should('have.length', 5);
   });
 
   it('should follow lifecycle', () => {
@@ -413,7 +420,7 @@ describe('Toast', () => {
       .get('#most-recent')
       .should('be.focused')
       .wait(500)
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('have.length', 2);
   });
 
@@ -442,13 +449,13 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('exist')
       .get('body')
       .type('{ctrl+m}')
       .focused()
       .type('{del}')
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('not.exist')
       .get('#make')
       .should('be.focused');
@@ -479,13 +486,13 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make')
       .click()
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('exist')
       .get('body')
       .type('{ctrl+m}')
       .focused()
       .type('{esc}')
-      .get(`.${toastClassNames.root}`)
+      .get(fuiSelector(toastClassNames.root))
       .should('not.exist')
       .get('#make')
       .should('be.focused');
@@ -519,7 +526,7 @@ describe('Toast', () => {
       .click()
       .click()
       .click()
-      .get(`.${toastContainerClassNames.root}`)
+      .get(fuiSelector(toastContainerClassNames.root))
       .should('have.length', 3)
       .get('body')
       .type('{ctrl+m}')
@@ -574,7 +581,7 @@ describe('Toast', () => {
       .click()
       .click()
       .click()
-      .get(`.${toastContainerClassNames.root}`)
+      .get(fuiSelector(toastContainerClassNames.root))
       .should('have.length', 3)
       .get('body')
       .type('{ctrl+m}')
@@ -622,7 +629,7 @@ describe('Toast', () => {
       .click()
       .click()
       .click()
-      .get(`.${toastContainerClassNames.root}`)
+      .get(fuiSelector(toastContainerClassNames.root))
       .should('have.length', 3)
       .get('body')
       .type('{ctrl+m}')
@@ -671,7 +678,7 @@ describe('Toast', () => {
       .click()
       .click()
       .click()
-      .get(`.${toastContainerClassNames.root}`)
+      .get(fuiSelector(toastContainerClassNames.root))
       .should('have.length', 3)
       .get('body')
       .type('{ctrl+m}')
@@ -679,7 +686,7 @@ describe('Toast', () => {
       .should('be.focused')
       .focused()
       .realPress('Escape');
-    cy.get(`.${toastContainerClassNames.root}`).should('not.exist').get('#make').should('be.focused');
+    cy.get(fuiSelector(toastContainerClassNames.root)).should('not.exist').get('#make').should('be.focused');
   });
 
   it('should dismiss toasts with Delete and restore focus to next visible toast', () => {
@@ -713,7 +720,7 @@ describe('Toast', () => {
       .click()
       .click()
       .click()
-      .get(`.${toastContainerClassNames.root}`)
+      .get(fuiSelector(toastContainerClassNames.root))
       .should('have.length', 3)
       .get('body')
       .type('{ctrl+m}')
@@ -721,19 +728,19 @@ describe('Toast', () => {
       .should('be.focused')
       .focused()
       .realPress('Delete');
-    cy.get(`.${toastContainerClassNames.root}`)
+    cy.get(fuiSelector(toastContainerClassNames.root))
       .should('have.length', 2)
       .get('#toast-1')
       .should('be.focused')
       .realPress('Delete');
 
-    cy.get(`.${toastContainerClassNames.root}`)
+    cy.get(fuiSelector(toastContainerClassNames.root))
       .should('have.length', 1)
       .get('#toast-0')
       .should('be.focused')
       .realPress('Delete');
 
-    cy.get(`.${toastContainerClassNames.root}`).should('not.exist').get('#make').should('be.focused');
+    cy.get(fuiSelector(toastContainerClassNames.root)).should('not.exist').get('#make').should('be.focused');
   });
 
   it('should render toasts in DOM order', () => {
@@ -762,9 +769,9 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('button')
       .click()
-      .get(`#container .${toastClassNames.root}`)
+      .get(`#container ${fuiSelector(toastClassNames.root)}`)
       .should('exist')
-      .get(`[data-portal-node] .${toastClassNames.root}`)
+      .get(`[data-portal-node] ${fuiSelector(toastClassNames.root)}`)
       .should('not.exist');
   });
 });

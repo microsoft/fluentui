@@ -1,9 +1,4 @@
-import {
-  COMPONENT_HAS_GROUP_MARKER_TEST_NAME,
-  HAS_STATIC_CLASSNAMES_TEST_NAME,
-  hasStaticClassNames,
-  isConformant as baseIsConformant,
-} from '@fluentui/react-conformance';
+import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
 import griffelTests from '@fluentui/react-conformance-griffel';
 
@@ -13,15 +8,19 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     tsConfig: { configName: 'tsconfig.spec.json' },
     componentPath: require.main?.filename.replace('.test', ''),
-    // This package still publishes BEM statics and stamps no Tailwind named-group marker,
-    // so it opts out of `component-has-group-marker` (a default test since DECISIONS.md
-    // D16.6) and takes `hasStaticClassNames` — the test that moved out of the default set
-    // to make room for it — explicitly, so its coverage is preserved.
-    disabledTests: [COMPONENT_HAS_GROUP_MARKER_TEST_NAME],
-    extraTests: {
-      ...griffelTests,
-      [HAS_STATIC_CLASSNAMES_TEST_NAME]: hasStaticClassNames,
-    } as TestObject<TProps>,
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // This package is converted, so every component stamps a `group/fui-*` marker and takes
+    // `component-has-group-marker` from the DEFAULT set (DECISIONS.md D16.6). The package-wide
+    // opt-out that used to sit here is gone, along with the `hasStaticClassNames` opt-in that
+    // stood in for it while the BEM statics were still published — those statics are removed
+    // (D16.1) and `component-has-static-classnames-object` asserts a format that no longer
+    // exists.
+    //
+    // `griffelTests` (i.e. `make-styles-overrides-win`) stays REGISTERED but is disabled per
+    // component in the individual `.test.tsx` files, where `classname-overrides-win` — its
+    // cascade-native replacement (D9) — is added alongside. Registering it here and disabling
+    // it there keeps the rationale next to the component it applies to.
+    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

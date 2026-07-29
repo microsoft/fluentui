@@ -3,7 +3,7 @@
 exports[`ToastFooter renders a default state 1`] = `
 <div>
   <div
-    class="fui-ToastFooter"
+    class="group/fui-toast-footer"
   >
     Default ToastFooter
   </div>

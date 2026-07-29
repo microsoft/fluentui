@@ -1,0 +1,89 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useToasterStyles_unstable.
+ * Argument order and source-declaration order are identical; there are no inversions.
+ *
+ *   the one class string, applied to EVERY position slot (see below)
+ *     1 toasterClassNames.root  → REMOVED (D16.1). Toaster's identity is now the
+ *                                 `group/fui-toaster` marker, written as clsx argument 2;
+ *                                 `styles.root` leads. The EXPORT is retained, re-pointed to
+ *                                 the marker and narrowed to `{ root: string }` (D16.5).
+ *     2 useRootBaseClassName    → fui.base           .root  (makeResetStyles)
+ *     3 useToasterStyles.inline → fui.components.l1  .inline
+ *     4 consumer className      → unlayered (always wins)
+ *
+ * ── THE ONE ORDERING THAT MATTERS ───────────────────────────────────────────────────
+ * `.root` sets `position: fixed` and `.inline` sets `position: absolute` on the SAME
+ * element. The reset is levelless `fui.base`, `.inline` is `fui.components.l1`, so the
+ * layer order alone decides it — `absolute` wins whenever the class is present, exactly as
+ * the later mergeClasses argument did. This is the only cross-slice property collision in
+ * the file.
+ *
+ * ── One class string, up to six elements ────────────────────────────────────────────
+ * `ToasterSlots` declares a single `root`, but `renderToaster` renders one `<div>` per
+ * OCCUPIED toast position (`top`, `bottom`, `topStart`, `topEnd`, `bottomStart`,
+ * `bottomEnd`) and the hook assigns the same computed class string to each — the slot type's
+ * own comment says the root "maps in exactly the same way to the containers rendered for
+ * each toast position". Each of those divs is an outermost node of this component, so each
+ * carries the marker; they are siblings, never nested, so no group ever contains another.
+ * Per-position placement is INLINE STYLE from `getPositionStyles(position, dir, offset)` —
+ * runtime values that the cookbook's "runtime-value styles port unchanged" rule keeps in JS.
+ * Nothing about it is expressible here, and this module deliberately contains no
+ * position/offset rule.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * Both rules' subject is a Toaster-owned `<div>`. The `ToastContainer`s inside are styled by
+ * their own hook and this module declares no rule about them, so nothing qualifies for
+ * `fui.components.l2` (D2 amendment 2). No `:global(…)` selector appears here and no rule
+ * targets an element owned by another package, so D2 amendment 5 (UNLAYERED) does not apply.
+ * Grepped the package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits.
+ *
+ * `@fluentui/react-portal` wraps these divs in a portal host but does not style them; the
+ * portal's own element is not this component's subject.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled reset has a `null` RTL class and the `inline` atomic is `position` only, so
+ * there is no direction-dependent declaration here. Toaster's real RTL behaviour lives in
+ * `getPositionStyles`, which already branches on `dir` to pick `left`/`right` — unchanged
+ * JS, not CSS.
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * `width: '292px'` matches NO spacing step, so it takes the numeric fallback `w-292` — same
+ * scaling system, since both compute through `--base-scale`.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/Toaster/useToasterStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) — arg #2 */
+  .root {
+    @apply fixed w-292 pointer-events-none;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useToasterStyles.inline — arg #3, gated on `state.inline`. `inline` is a behaviour
+   * flag consumed only by this element, so it stays a module class rather than a data
+   * attribute (DECISIONS.md D15.6 keeps `data-*` a fallback for state a selector cannot
+   * otherwise reach). The local is named for the Griffel slice; it is hashed, so it does not
+   * collide with Tailwind's `inline` display utility.
+   */
+  .inline {
+    @apply absolute;
+  }
+}

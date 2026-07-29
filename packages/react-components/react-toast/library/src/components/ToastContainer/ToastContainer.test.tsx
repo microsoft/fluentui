@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { ToastContainer } from './ToastContainer';
 import { isConformant } from '../../testing/isConformant';
 import type { ToastContainerProps } from './ToastContainer.types';
 import { toastContainerClassNames } from './useToastContainerStyles.styles';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+// `fuiSelector` is required, not cosmetic: `toastContainerClassNames.root` is now the
+// `group/fui-toast-container` marker (DECISIONS.md D16.5) and the `/` in it terminates a class
+// name in SELECTOR position, so `'.' + …` is a SyntaxError rather than a non-match.
+import { fuiSelector, resetIdsForTests } from '@fluentui/react-utilities';
 import { type PresenceComponentProps } from '@fluentui/react-motion';
 
 const defaultToastContainerProps: ToastContainerProps = {
@@ -68,8 +72,19 @@ describe('ToastContainer', () => {
     disabledTests: [
       'consistent-callback-args',
       // There are conflicts between ToastContainerMotion mock and React
+      //
+      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind): this hook
+      // also no longer calls mergeClasses at all, so `make-styles-overrides-win` could not
+      // observe its contract even without the mock conflict. `classname-overrides-win` — the
+      // cascade-native replacement (DECISIONS.md D9) — is added below.
+      //
+      // `component-has-group-marker` runs from the DEFAULT set and asserts
+      // `group/fui-toast-container` is stamped and never `classList[0]` (D15.1 / D16.2).
       'make-styles-overrides-win',
     ],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   it('renders a default state', () => {
@@ -135,7 +150,7 @@ describe('ToastContainer', () => {
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1 };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
-    const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
+    const toastElement = container.querySelector(fuiSelector(toastContainerClassNames.root));
     expect(toastElement).not.toBeNull();
     act(() => {
       jest.advanceTimersToNextTimer(FAKE_MOTION_DURATION);
@@ -151,7 +166,7 @@ describe('ToastContainer', () => {
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 500, close };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
-    const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
+    const toastElement = container.querySelector(fuiSelector(toastContainerClassNames.root));
     expect(toastElement).not.toBeNull();
 
     act(() => {
@@ -176,7 +191,7 @@ describe('ToastContainer', () => {
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, pauseOnHover: true };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
-    const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
+    const toastElement = container.querySelector(fuiSelector(toastContainerClassNames.root));
     expect(toastElement).not.toBeNull();
 
     act(() => {
@@ -208,7 +223,7 @@ describe('ToastContainer', () => {
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, pauseOnWindowBlur: true };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
-    const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
+    const toastElement = container.querySelector(fuiSelector(toastContainerClassNames.root));
     expect(toastElement).not.toBeNull();
 
     act(() => {

@@ -1,0 +1,94 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useToastStyles_unstable.
+ * Argument order and source-declaration order are identical; there are no inversions.
+ *
+ *   `root` slot
+ *     1 toastClassNames.root      → REMOVED (D16.1). Toast's identity is now the
+ *                                   `group/fui-toast` marker, written as clsx argument 2;
+ *                                   `styles.root` leads. The EXPORT is retained, re-pointed
+ *                                   to the marker and narrowed to `{ root: string }` (D16.5).
+ *     2 useRootBaseClassName      → fui.base           .root   (makeResetStyles)
+ *     3 useStyles.inverted        → fui.components.l1  .inverted
+ *     4 consumer className        → unlayered (always wins)
+ *
+ * ── ALTITUDE: everything here is base/l1 ────────────────────────────────────────────
+ * Both rules have Toast's OWN root `<div>` as their subject. Toast renders no other
+ * component's element and reaches into none, so nothing qualifies for `fui.components.l2`
+ * (D2 amendment 2). ToastTitle / ToastBody / ToastFooter are separate components nested
+ * inside this root and are styled by their own hooks; Toast declares no rule about them.
+ *
+ * ── D2 amendment 5 (UNLAYERED) not applicable ───────────────────────────────────────
+ * This module contains no `:global(…)` selector and no rule whose subject is an element
+ * owned by another package. Grepped the whole package for `fui-Icon-filled` /
+ * `fui-Icon-regular`: zero hits (the intent glyphs are consumer-supplied into
+ * ToastTitle's `media` slot, and nothing here styles them).
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled reset has a `null` RTL class (`__resetStyles("rhf7k35", null, …)`) and the
+ * `inverted` atomics are colour-only, so this component has NO direction-dependent
+ * declaration: no logical-property rewrite and no `@variant rtl` twin are needed. The
+ * `padding` shorthand is symmetric, so it does not flip either.
+ *
+ * ── Spacing / stroke widths (DECISIONS.md D4 amendment + addendum) ───────────────────
+ * `padding: '12px'` is a px literal that lands exactly on the M spacing step, so it takes
+ * the named utility. `border: '1px solid …'` keeps the `border` shorthand the compiled
+ * atomic emitted (one declaration, nothing else in the component touches a border side),
+ * and its `1px` becomes the scaling `var(--spacing-thin)` per D4's addendum — identical at
+ * the default root, and it now rides `--base-scale` like every other length here. Border
+ * widths are NOT spacing-utility-powered in Tailwind v4, so this is the direct-variable
+ * form, not a utility (`border-thin` does not exist).
+ *
+ * `line-height: '20px'` is a TYPOGRAPHY literal, not a spacing one: it takes
+ * `calc(20px * var(--base-scale))`, matching the react-badge precedent
+ * (Badge.module.css:146) rather than borrowing the coincidentally-equal XL spacing step.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/Toast/useToastStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
+  .root {
+    @apply grid p-horizontal-m;
+
+    grid-template-columns: auto 1fr auto;
+
+    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusMedium);
+    box-shadow: var(--shadow8);
+
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: calc(20px * var(--base-scale));
+
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.inverted — root arg #3, gated on `backgroundAppearance === 'inverted'`.
+   * `backgroundAppearance` is a LOOK prop, so it stays a module class lookup rather than a
+   * data attribute (DECISIONS.md D3); no descendant or `group-*` read needs it, and D15.6
+   * keeps data attributes to the cases a class cannot express.
+   */
+  .inverted {
+    color: var(--colorNeutralForegroundInverted2);
+    background-color: var(--colorNeutralBackgroundInverted);
+  }
+}

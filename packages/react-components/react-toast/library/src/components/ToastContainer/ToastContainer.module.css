@@ -1,0 +1,94 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useToastContainerStyles_unstable. The hook has one styled slot and one style slice, so
+ * there is nothing to invert.
+ *
+ *   `root` slot
+ *     1 toastContainerClassNames.root  → REMOVED (D16.1). The identity is now the
+ *                                        `group/fui-toast-container` marker, written as
+ *                                        clsx argument 2; `styles.root` leads. The EXPORT is
+ *                                        retained, re-pointed to the marker and narrowed to
+ *                                        `{ root: string }` (D16.5).
+ *     2 useRootBaseClassName           → fui.base  .root  (makeResetStyles, INCLUDING the
+ *                                        focus indicator — it is part of the same reset)
+ *     3 consumer className             → unlayered (always wins)
+ *
+ *   `timer` slot — the hook never assigned it a className, and the `fui-ToastContainer__timer`
+ *     static it declared was never rendered anywhere (grepped: the key was read by nothing).
+ *     D16.5 removes the slot keys, so the dead entry goes with them; `Timer` styles its own
+ *     `<span>` from Timer.module.css.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * The only subject is ToastContainer's OWN root `<div>`. The `<Toast>` inside it is a
+ * consumer-supplied child styled by its own hook, and this module declares no rule about it,
+ * so nothing qualifies for `fui.components.l2` (D2 amendment 2). No `:global(…)` selector
+ * appears here and no rule targets an element owned by another package, so D2 amendment 5
+ * (UNLAYERED) does not apply. Grepped the package for `fui-Icon-filled` / `fui-Icon-regular`:
+ * zero hits.
+ *
+ * The wrapping `CollapseDelayed` from `@fluentui/react-motion-components-preview` sets its
+ * animation through inline styles / its own atomics on this same element; nothing here
+ * competes with it (disjoint property sets), which is why the motion package's conversion
+ * status does not matter to this file.
+ *
+ * ── Focus indicator (DECISIONS.md D6) ───────────────────────────────────────────────
+ * The source spreads `createCustomFocusIndicatorStyle({ outline: … })` into the reset. That
+ * helper compiles to a plain `[data-fui-focus-visible]` rule — the AOT output is literally
+ *
+ *     .r98b696[data-fui-focus-visible]{outline:var(--strokeWidthThick) solid var(--colorStrokeFocus2);}
+ *
+ * — i.e. a bespoke one-declaration outline, NOT `createFocusOutlineStyle` and NOT the
+ * Button-family ring. So neither shared utility (`fui-focus-outline`, `fui-focus-ring`)
+ * applies; the correct conversion is the keyborg-attribute variant plus the same single
+ * declaration. `@variant focus-visible-fui` is the shared catalog entry for
+ * `[data-fui-focus-visible]` — the attribute react-tabster's keyborg still writes — so no
+ * raw attribute selector is authored here.
+ *
+ * The `outline` shorthand is kept exactly as the atomic emitted it (one declaration, nothing
+ * else in the component touches an outline side); its `strokeWidthThick` token becomes
+ * `var(--spacing-thick)` per D4's addendum. Outline widths are NOT spacing-utility-powered in
+ * Tailwind v4, so this is the direct-variable form.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled reset has a `null` RTL class: `margin-top` is block-axis and the remaining
+ * declarations are direction-neutral. No logical-property rewrite, no `@variant rtl` twin.
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * `marginTop: '16px'` lands exactly on the L step → named utility, `vertical` axis because
+ * `margin-top` is block-axis.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ToastContainer/useToastContainerStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
+  .root {
+    @apply box-border mt-vertical-l;
+
+    border-radius: var(--borderRadiusMedium);
+
+    /* Tailwind's `pointer-events-auto` emits `auto`, not `all` — the compiled atomic says
+       `all`, so this stays a literal declaration. */
+    pointer-events: all;
+
+    /* from the createCustomFocusIndicatorStyle spread inside the same reset — see header */
+    @variant focus-visible-fui {
+      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+    }
+  }
+}

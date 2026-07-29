@@ -14,7 +14,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
@@ -64,8 +63,10 @@ export type ToastBodyBaseProps = ToastBodyProps;
 // @public
 export type ToastBodyBaseState = Omit<ToastBodyState, 'backgroundAppearance'>;
 
-// @public (undocumented)
-export const toastBodyClassNames: SlotClassNames<ToastBodySlots>;
+// @public
+export const toastBodyClassNames: {
+    root: string;
+};
 
 // @public
 export type ToastBodyProps = ComponentProps<ToastBodySlots> & {};
@@ -90,11 +91,15 @@ export interface ToastChangeData extends ToastOptions, Pick<ToastData, 'updateId
 // @public (undocumented)
 export type ToastChangeHandler = (event: null, data: ToastChangeData) => void;
 
-// @public (undocumented)
-export const toastClassNames: SlotClassNames<ToastSlots>;
+// @public
+export const toastClassNames: {
+    root: string;
+};
 
-// @public (undocumented)
-export const toastContainerClassNames: SlotClassNames<ToastContainerSlots>;
+// @public
+export const toastContainerClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const ToastContainerContextProvider: React_2.Provider<ToastContainerContextValue | undefined>;
@@ -152,8 +157,10 @@ export interface ToastDispatchOptions extends Partial<Omit<ToastOptions, 'toaste
 // @public
 export const Toaster: React_2.FC<ToasterProps>;
 
-// @public (undocumented)
-export const toasterClassNames: SlotClassNames<ToasterSlots>;
+// @public
+export const toasterClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type ToasterId = string;
@@ -197,8 +204,10 @@ export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveP
 // @public
 export const ToastFooter: ForwardRefComponent<ToastFooterProps>;
 
-// @public (undocumented)
-export const toastFooterClassNames: SlotClassNames<ToastFooterSlots>;
+// @public
+export const toastFooterClassNames: {
+    root: string;
+};
 
 // @public
 export type ToastFooterProps = ComponentProps<ToastFooterSlots> & {};
@@ -284,8 +293,10 @@ export type ToastTitleBaseProps = ToastTitleProps;
 // @public
 export type ToastTitleBaseState = Omit<ToastTitleState, 'backgroundAppearance'>;
 
-// @public (undocumented)
-export const toastTitleClassNames: SlotClassNames<ToastTitleSlots>;
+// @public
+export const toastTitleClassNames: {
+    root: string;
+};
 
 // @public
 export type ToastTitleProps = ComponentProps<ToastTitleSlots> & {};

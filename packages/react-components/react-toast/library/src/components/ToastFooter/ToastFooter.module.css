@@ -1,0 +1,59 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useToastFooterStyles_unstable.
+ * The hook has a single slot and a single style slice, so there is nothing to invert.
+ *
+ *   `root` slot
+ *     1 toastFooterClassNames.root  → REMOVED (D16.1). ToastFooter's identity is now the
+ *                                     `group/fui-toast-footer` marker, written as clsx
+ *                                     argument 2; `styles.root` leads. The EXPORT is
+ *                                     retained, re-pointed to the marker and narrowed to
+ *                                     `{ root: string }` (D16.5).
+ *     2 useRootBaseClassName        → fui.base  .root  (makeResetStyles)
+ *     3 consumer className          → unlayered (always wins)
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * The only rule's subject is ToastFooter's OWN root `<div>`. The footer's action buttons
+ * are CHILDREN the consumer composes, and this component declares no rule about them (the
+ * `gap` is the flex container's own property), so nothing qualifies for `fui.components.l2`
+ * (D2 amendment 2) and there is no foreign-owned subject to trigger D2 amendment 5. No
+ * `:global(…)` selector appears in this module; grepped the package for `fui-Icon-filled` /
+ * `fui-Icon-regular`: zero hits.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled reset has a `null` RTL class (`__resetStyles("r56x6h2", null, …)`): every
+ * declaration is direction-neutral (`padding-top` is block-axis, `gap` is symmetric). No
+ * logical-property rewrite and no `@variant rtl` twin.
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * `paddingTop: '16px'` lands exactly on the L step → the named utility, `vertical` axis
+ * because `padding-top` is block-axis. `gap: '14px'` matches NO spacing step (M is 12, L is
+ * 16), so it takes the numeric fallback `gap-14` — the same scaling system, since both
+ * compute through `--base-scale`.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ToastFooter/useToastFooterStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
+  .root {
+    @apply flex items-center pt-vertical-l gap-14;
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+}

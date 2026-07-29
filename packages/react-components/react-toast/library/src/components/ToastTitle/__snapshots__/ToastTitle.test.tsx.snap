@@ -3,7 +3,7 @@
 exports[`ToastTitle renders a default state 1`] = `
 <div>
   <div
-    class="fui-ToastTitle"
+    class="group/fui-toast-title"
     id=""
   >
     Default ToastTitle
