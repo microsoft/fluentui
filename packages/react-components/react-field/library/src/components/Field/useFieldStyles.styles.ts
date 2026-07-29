@@ -14,17 +14,40 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { FieldSlots, FieldState } from './Field.types';
+import type { FieldState } from './Field.types';
 
 import styles from './Field.module.css';
 
-export const fieldClassNames: SlotClassNames<FieldSlots> = {
-  root: `fui-Field`,
-  label: `fui-Field__label`,
-  validationMessage: `fui-Field__validationMessage`,
-  validationMessageIcon: `fui-Field__validationMessageIcon`,
-  hint: `fui-Field__hint`,
+/**
+ * Field's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target — the
+ * one Field cares most about, since it wraps an arbitrary control whose own module reads
+ * Field's `data-orientation` / `data-size` through `@variant group-size-small/fui-field`.
+ *
+ * The `label` / `validationMessage` / `validationMessageIcon` / `hint` keys are gone along
+ * with the `fui-Field*` BEM statics (D16.1), and the type has narrowed from
+ * `SlotClassNames<FieldSlots>` to `{ root: string }` so that any read of a per-slot key is a
+ * compile error on the exact line that would otherwise have silently stopped matching.
+ *
+ * NOTE FOR SWEEPS AND CODEMODS: the five removed statics were declared as backtick template
+ * literals rather than single-quoted strings, so a scan keyed on a single quote followed by
+ * fui- reported this file as having no statics at all. Match all three quote characters.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + fieldClassNames.root` is invalid CSS. Use
+ * `fuiSelector(fieldClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ */
+export const fieldClassNames: { root: string } = {
+  root: 'group/fui-field',
 };
 
 /**
@@ -73,14 +96,20 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   root['data-orientation'] = state.orientation;
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Field's state, because `styles.root` is
+  // ARGUMENT ORDER — `styles.root`, marker, conditional module classes, consumer className
+  // (DECISIONS.md D16.2). The unconditional hashed module class leads so the marker is never
+  // `classList[0]`: nwsapi's `:scope` polyfill builds its anchor from
+  // `escape(element.classList[0])`, and the `/` in `group/fui-field` survives that escaping
+  // into an invalid selector, throwing a render-time `AggregateError` under jsdom
+  // (DECISIONS.md D15.1). Before D16 the `fui-Field` static held that position; `styles.root`
+  // holds it now. `styles['horizontal-no-label']` cannot: it is conditional.
+  //
+  // The marker is a literal, unhashed, GLOBAL token — written literally rather than read back
+  // out of `fieldClassNames` — and is the only handle by which another module, in this package
+  // or any other, can style an element from this Field's state, because `styles.root` is
   // hashed and unaddressable from outside this file. Field is the natural consumer of this
   // capability: it wraps an ARBITRARY control from another package, and that control's own
-  // module can now read Field's `data-orientation` / `data-size` as
+  // module can read Field's `data-orientation` / `data-size` as
   // `@variant group-size-small/fui-field { … }` rather than needing the value threaded
   // through props (DECISIONS.md D15).
   //
@@ -90,20 +119,21 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
   // own hook output).
   state.root.className = clsx(
-    fieldClassNames.root,
-    'group/fui-field',
     styles.root,
+    'group/fui-field',
     horizontal && !state.label && styles['horizontal-no-label'],
     state.root.className,
   );
 
+  // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
+  // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle
+  // on component internals).
   if (state.label) {
-    state.label.className = clsx(fieldClassNames.label, styles.label, state.label.className);
+    state.label.className = clsx(styles.label, state.label.className);
   }
 
   if (state.validationMessageIcon) {
     state.validationMessageIcon.className = clsx(
-      fieldClassNames.validationMessageIcon,
       styles['validation-message-icon'],
       validationMessageIconStyles[validationState],
       state.validationMessageIcon.className,
@@ -112,7 +142,6 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
 
   if (state.validationMessage) {
     state.validationMessage.className = clsx(
-      fieldClassNames.validationMessage,
       styles['secondary-text'],
       validationState === 'error' && styles['secondary-text-error'],
       !!state.validationMessageIcon && styles['secondary-text-with-icon'],
@@ -121,7 +150,7 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   }
 
   if (state.hint) {
-    state.hint.className = clsx(fieldClassNames.hint, styles['secondary-text'], state.hint.className);
+    state.hint.className = clsx(styles['secondary-text'], state.hint.className);
   }
 
   return state;

@@ -12,7 +12,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Field: ForwardRefComponent<FieldProps>;
@@ -23,8 +22,10 @@ export type FieldBaseProps = DistributiveOmit<FieldProps, 'orientation' | 'size'
 // @public (undocumented)
 export type FieldBaseState = DistributiveOmit<FieldState, 'orientation' | 'size'>;
 
-// @public (undocumented)
-export const fieldClassNames: SlotClassNames<FieldSlots>;
+// @public
+export const fieldClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
