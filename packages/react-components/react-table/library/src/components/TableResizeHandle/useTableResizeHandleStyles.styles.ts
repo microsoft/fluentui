@@ -1,63 +1,53 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots> = {
-  root: 'fui-TableResizeHandle',
-  // TODO: add class names for all slots on TableResizeHandleSlots.
-  // Should be of the form `<slotName>: 'fui-TableResizeHandle__<slotName>`
-};
+import { clsx } from 'clsx';
+import type { TableResizeHandleState } from './TableResizeHandle.types';
+
+import styles from './TableResizeHandle.module.css';
 
 /**
- * Styles for the root slot
+ * TableResizeHandle's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-TableResizeHandle` BEM static is gone (D16.1) and the type has narrowed from
+ * `SlotClassNames<TableResizeHandleSlots>` to `{ root: string }`. The pre-existing TODO
+ * about adding `fui-TableResizeHandle__<slotName>` keys is resolved by D16.1 deleting the
+ * format entirely, and has been removed rather than left pointing at a retired convention.
+ *
+ * The value is a class TOKEN, not a selector: use
+ * `fuiSelector(tableResizeHandleClassNames.root)` from `@fluentui/react-utilities` (D16.5).
  */
-const useStyles = makeStyles({
-  root: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    bottom: 0,
-    width: '16px',
-    margin: '0 -8px',
-    cursor: 'col-resize',
-    opacity: 0,
-    transitionProperty: 'opacity',
-    transitionDuration: '.2s',
-    zIndex: 1,
-
-    // If mouse users focus on the resize handle through a context menu, we want the handle
-    // to be visible because the mouse might not be hovering over the handle
-    ':focus': {
-      opacity: 1,
-      outlineStyle: 'none',
-    },
-
-    ':hover': {
-      opacity: 1,
-    },
-
-    '::after': {
-      content: '" "',
-      display: 'block',
-      width: '1px',
-      position: 'absolute',
-      left: '50%',
-      top: 0,
-      bottom: 0,
-      backgroundColor: tokens.colorNeutralStroke1,
-    },
-  },
-});
+export const tableResizeHandleClassNames: { root: string } = {
+  root: 'group/fui-table-resize-handle',
+};
 
 /**
  * Apply styling to the TableResizeHandle slots based on the state
  */
 export const useTableResizeHandleStyles_unstable = (state: TableResizeHandleState): TableResizeHandleState => {
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(tableResizeHandleClassNames.root, styles.root, state.root.className);
+  // Module class first, named group marker second, consumer className last. `styles.root`
+  // is unconditional, so the marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2;
+  // asserted by `component-has-group-marker`).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in TableResizeHandle.module.css.
+  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  state.root.className = clsx(styles.root, 'group/fui-table-resize-handle', state.root.className);
+
   return state;
 };

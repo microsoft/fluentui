@@ -3,13 +3,13 @@
 exports[`TableCellLayout renders a default state 1`] = `
 <div>
   <div
-    class="fui-TableCellLayout"
+    class="group/fui-table-cell-layout"
   >
     <div
-      class="fui-TableCellLayout__content"
+      class=""
     >
       <span
-        class="fui-TableCellLayout__main"
+        class=""
       >
         Default TableCellLayout
       </span>

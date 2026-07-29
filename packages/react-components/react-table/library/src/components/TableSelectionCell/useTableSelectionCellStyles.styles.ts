@@ -1,105 +1,86 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSelectionCell.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
+import type { TableSelectionCellState } from './TableSelectionCell.types';
+
+import styles from './TableSelectionCell.module.css';
 
 export const CELL_WIDTH = 44;
 
-export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots> = {
-  root: 'fui-TableSelectionCell',
-  checkboxIndicator: 'fui-TableSelectionCell__checkboxIndicator',
-  radioIndicator: 'fui-TableSelectionCell__radioIndicator',
-};
-
-const useTableLayoutStyles = makeStyles({
-  root: {
-    display: 'table-cell',
-    width: `${CELL_WIDTH}px`,
-  },
-});
-
-const useFlexLayoutStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flex: '1 1 0px',
-    minWidth: `${CELL_WIDTH}px`,
-    maxWidth: `${CELL_WIDTH}px`,
-    justifyContent: 'center',
-  },
-});
-
 /**
- * Styles for the root slot
+ * TableSelectionCell's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target, and
+ * it is the handle TableRow / DataGridRow use to reveal a subtle selection cell on row
+ * interaction (D16.3, M1 — see TableSelectionCell.module.css). The `fui-TableSelectionCell`
+ * / `fui-TableSelectionCell__<slot>` BEM statics are gone (D16.1) and the type has narrowed
+ * from `SlotClassNames<TableSelectionCellSlots>` to `{ root: string }`, so a read of
+ * `checkboxIndicator` or `radioIndicator` is a compile error on the exact line that would
+ * otherwise have silently stopped matching.
+ *
+ * The value is a class TOKEN, not a selector: use
+ * `fuiSelector(tableSelectionCellClassNames.root)` from `@fluentui/react-utilities` (D16.5).
  */
-const useStyles = makeStyles({
-  root: {
-    textAlign: 'center',
-    whiteSpace: 'nowrap',
-    padding: '0',
-    ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: tokens.borderRadiusMedium },
-      { selector: 'focus' },
-    ),
-  },
-
-  radioIndicator: {
-    display: 'flex',
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  subtle: {
-    opacity: 0,
-    ...createCustomFocusIndicatorStyle(
-      {
-        opacity: 1,
-      },
-      { selector: 'focus-within' },
-    ),
-  },
-
-  hidden: {
-    opacity: 0,
-  },
-});
+export const tableSelectionCellClassNames: { root: string } = {
+  root: 'group/fui-table-selection-cell',
+};
 
 /**
  * Apply styling to the TableSelectionCell slots based on the state
  */
 export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellState): TableSelectionCellState => {
-  const styles = useStyles();
-  const layoutStyles = {
-    table: useTableLayoutStyles(),
-    flex: useFlexLayoutStyles(),
-  };
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    tableSelectionCellClassNames.root,
+  // Same 2-branch box model as TableCell — picked in JS exactly as the two Griffel class
+  // maps were, with no `data-*` mirror, because nothing outside this hook reads it
+  // (DECISIONS.md D15.6).
+  const layout = state.noNativeElements ? 'flex' : 'table';
+
+  // Module class first, named group marker second, consumer className last. `styles.root`
+  // is unconditional, so the marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2;
+  // asserted by `component-has-group-marker`).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in
+  // TableSelectionCell.module.css and by BLOCK order within it — that file is authored
+  // bucket-major because arg #4's focus-within rule has to keep outranking arg #5's flat
+  // `opacity: 0`, which `:where()` flattening would otherwise reverse.
+  //
+  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  state.root.className = clsx(
     styles.root,
-    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    'group/fui-table-selection-cell',
+    styles[`${layout}-root`],
     state.subtle && state.checked === false && styles.subtle,
     state.hidden && styles.hidden,
     state.root.className,
   );
-  if (state.checkboxIndicator) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.checkboxIndicator.className = mergeClasses(
-      tableSelectionCellClassNames.checkboxIndicator,
-      state.checkboxIndicator.className,
-    );
-  }
+
+  // NOTE: there is deliberately no `state.checkboxIndicator` assignment. Its only library
+  // token was the `fui-TableSelectionCell__checkboxIndicator` static (D16.1 removed it) —
+  // the Griffel source attached no declarations to that slot — so what remained,
+  // `clsx(state.checkboxIndicator.className)`, was an identity on the consumer's own
+  // string: dead code implying this hook styles a slot it does not
+  // (CONVERSION_GUIDE "a slot whose only library token is the static").
 
   if (state.radioIndicator) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.radioIndicator.className = mergeClasses(
-      tableSelectionCellClassNames.radioIndicator,
-      styles.radioIndicator,
-      state.radioIndicator.className,
-    );
+    // This class lands on react-radio's ROOT, so its rule sits at `fui.components.l2`
+    // (D2 amendment 2). No marker here: a group cannot style itself, and Radio stamps its
+    // own `group/fui-radio` on this same element.
+    state.radioIndicator.className = clsx(styles['radio-indicator'], state.radioIndicator.className);
   }
 
   return state;

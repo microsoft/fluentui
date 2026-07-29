@@ -1,0 +1,50 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTableBodyStyles_unstable:
+ *
+ *   1 tableBodyClassName                            → REMOVED (D16.1); the root's public
+ *                                                     identity is the `group/fui-table-body`
+ *                                                     marker
+ *   2 noNativeElements ? flexLayout : tableLayout   → fui.components.l1  .flex-root /
+ *                                                     .table-root
+ *   3 state.root.className                          → unlayered (always wins)
+ *
+ * TableBody has NO `useStyles` slice of its own — the layout pair below is the whole
+ * component. That pair is therefore also the token that keeps the marker off
+ * `classList[0]` (D16.2), which it can do because the hook picks between the two with a
+ * TERNARY: one of them is emitted on every render, unlike a `cond && styles.x` argument.
+ * No identity-only `.root` local is needed or wanted here.
+ *
+ * No pseudo-class or media rule exists in this component, so plain argument order is
+ * exact and the "bucket-major" ordering TableRow needs does not apply. Nothing styles
+ * another component's element, so `fui.components.l2` is unused. The compiled atomics
+ * carry no `[ltr, rtl]` pair (DECISIONS.md D5).
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/TableBody/useTableBodyStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useTableLayoutStyles.root — arg #2, native-table branch */
+  .table-root {
+    @apply table-row-group;
+  }
+
+  /* from useFlexLayoutStyles.root — arg #2, flex branch */
+  .flex-root {
+    @apply block;
+  }
+}

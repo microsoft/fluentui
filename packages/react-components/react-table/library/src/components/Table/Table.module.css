@@ -1,0 +1,68 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTableStyles_unstable:
+ *
+ *   1 tableClassNames.root                          → REMOVED (D16.1). The root's public
+ *                                                     identity is now the
+ *                                                     `group/fui-table` marker, which the
+ *                                                     hook threads in as clsx argument 2
+ *                                                     so it is never `classList[0]`
+ *                                                     (D16.2).
+ *   2 useStyles.root                                → fui.components.l1  .root
+ *   3 noNativeElements ? flexLayout : tableLayout   → fui.components.l1  .flex-root /
+ *                                                     .table-root (written AFTER .root)
+ *   4 state.root.className                          → unlayered (always wins)
+ *
+ * Nothing here styles another component's element, so `fui.components.l2` is unused.
+ * No pseudo-class or media rule exists in this component, so the "bucket-major" ordering
+ * the Button/TableRow modules need does not apply: plain argument order is exact.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled atomics carry no `[ltr, rtl]` pair and no direction-sensitive property,
+ * so no `@variant rtl` twin is needed.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/Table/useTableStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2 */
+  .root {
+    @apply border-collapse;
+
+    background-color: var(--colorSubtleBackground);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useTableLayoutStyles.root / useFlexLayoutStyles.root — arg #3.
+   *
+   * The two box models are mutually exclusive and the hook picks between them with a
+   * TERNARY, so one of the pair is ALWAYS emitted. That is what makes `.table-root` /
+   * `.flex-root` a legal leading token ahead of the group marker (D16.2): unlike a
+   * `cond && styles.x` argument there is no render on which clsx drops it. This root
+   * additionally leads with the unconditional `.root` above, so the point is moot here —
+   * it is load-bearing in TableBody / TableHeader, which have no `.root`.
+   */
+  .table-root {
+    @apply table align-middle w-full table-fixed;
+  }
+
+  .flex-root {
+    @apply block;
+  }
+}

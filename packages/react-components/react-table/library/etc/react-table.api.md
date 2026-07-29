@@ -21,7 +21,6 @@ import * as React_2 from 'react';
 import type { SelectionHookParams } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public (undocumented)
@@ -50,8 +49,10 @@ export const DataGrid: ForwardRefComponent<DataGridProps>;
 // @public
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSXElement);
 
-// @public (undocumented)
-export const dataGridBodyClassNames: SlotClassNames<DataGridBodySlots>;
+// @public
+export const dataGridBodyClassNames: {
+    root: string;
+};
 
 // @public
 export type DataGridBodyProps<TItem = unknown> = Omit<TableBodyProps, 'children'> & {
@@ -70,8 +71,10 @@ export type DataGridBodyState = TableBodyState & {
 // @public
 export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
 
-// @public (undocumented)
-export const dataGridCellClassNames: SlotClassNames<DataGridCellSlots>;
+// @public
+export const dataGridCellClassNames: {
+    root: string;
+};
 
 // @public
 export type DataGridCellFocusMode = 'group' | 'none' | 'cell';
@@ -87,8 +90,10 @@ export type DataGridCellSlots = TableCellSlots;
 // @public
 export type DataGridCellState = TableCellState;
 
-// @public (undocumented)
-export const dataGridClassNames: SlotClassNames<DataGridSlots>;
+// @public
+export const dataGridClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const DataGridContextProvider: Provider<DataGridContextValue | undefined> & FC<ProviderProps<DataGridContextValue | undefined>>;
@@ -117,8 +122,10 @@ export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
 // @public
 export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
 
-// @public (undocumented)
-export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
+// @public
+export const dataGridHeaderCellClassNames: {
+    root: string;
+};
 
 // @public
 export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'> & Pick<DataGridCellProps, 'focusMode'>;
@@ -129,8 +136,10 @@ export type DataGridHeaderCellSlots = TableHeaderCellSlots;
 // @public
 export type DataGridHeaderCellState = TableHeaderCellState;
 
-// @public (undocumented)
-export const dataGridHeaderClassNames: SlotClassNames<DataGridHeaderSlots>;
+// @public
+export const dataGridHeaderClassNames: {
+    root: string;
+};
 
 // @public
 export type DataGridHeaderProps = TableHeaderProps;
@@ -160,8 +169,10 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSXElement);
 
-// @public (undocumented)
-export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
+// @public
+export const dataGridRowClassNames: {
+    root: string;
+};
 
 // @public
 export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
@@ -183,8 +194,10 @@ export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> 
 // @public
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
 
-// @public (undocumented)
-export const dataGridSelectionCellClassNames: SlotClassNames<DataGridSelectionCellSlots>;
+// @public
+export const dataGridSelectionCellClassNames: {
+    root: string;
+};
 
 // @public
 export type DataGridSelectionCellProps = TableSelectionCellProps;
@@ -269,11 +282,13 @@ export const TABLE_SELECTION_CELL_WIDTH = 44;
 // @public
 export const TableBody: ForwardRefComponent<TableBodyProps>;
 
-// @public (undocumented)
-export const tableBodyClassName = "fui-TableBody";
+// @public
+export const tableBodyClassName: string;
 
-// @public (undocumented)
-export const tableBodyClassNames: SlotClassNames<TableBodySlots>;
+// @public
+export const tableBodyClassNames: {
+    root: string;
+};
 
 // @public
 export type TableBodyProps = ComponentProps<TableBodySlots>;
@@ -292,8 +307,10 @@ export const TableCell: ForwardRefComponent<TableCellProps>;
 // @public
 export const TableCellActions: ForwardRefComponent<TableCellActionsProps>;
 
-// @public (undocumented)
-export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots>;
+// @public
+export const tableCellActionsClassNames: {
+    root: string;
+};
 
 // @public
 export type TableCellActionsProps = ComponentProps<TableCellActionsSlots> & {
@@ -308,17 +325,21 @@ export type TableCellActionsSlots = {
 // @public
 export type TableCellActionsState = ComponentState<TableCellActionsSlots> & Pick<Required<TableCellActionsProps>, 'visible'>;
 
-// @public (undocumented)
-export const tableCellClassName = "fui-TableCell";
+// @public
+export const tableCellClassName: string;
 
-// @public (undocumented)
-export const tableCellClassNames: SlotClassNames<TableCellSlots>;
+// @public
+export const tableCellClassNames: {
+    root: string;
+};
 
 // @public
 export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
 
-// @public (undocumented)
-export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
+// @public
+export const tableCellLayoutClassNames: {
+    root: string;
+};
 
 // @public
 export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSlots>>, 'content'> & Pick<Partial<TableCellLayoutSlots>, 'content'> & {
@@ -351,11 +372,13 @@ export type TableCellSlots = {
 // @public
 export type TableCellState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'size'>;
 
-// @public (undocumented)
-export const tableClassName = "fui-Table";
+// @public
+export const tableClassName: string;
 
-// @public (undocumented)
-export const tableClassNames: SlotClassNames<TableSlots>;
+// @public
+export const tableClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export interface TableColumnDefinition<TItem> {
@@ -412,11 +435,13 @@ export const TableHeader: ForwardRefComponent<TableHeaderProps>;
 // @public
 export const TableHeaderCell: ForwardRefComponent<TableHeaderCellProps>;
 
-// @public (undocumented)
-export const tableHeaderCellClassName = "fui-TableHeaderCell";
+// @public
+export const tableHeaderCellClassName: string;
 
-// @public (undocumented)
-export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
+// @public
+export const tableHeaderCellClassNames: {
+    root: string;
+};
 
 // @public
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
@@ -435,11 +460,13 @@ export type TableHeaderCellSlots = {
 // @public
 export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements'> & Pick<TableHeaderCellProps, 'sortable'>;
 
-// @public (undocumented)
-export const tableHeaderClassName = "fui-TableHeader";
+// @public
+export const tableHeaderClassName: string;
 
-// @public (undocumented)
-export const tableHeaderClassNames: SlotClassNames<TableHeaderSlots>;
+// @public
+export const tableHeaderClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const TableHeaderContextProvider: React_2.Provider<string | undefined>;
@@ -461,8 +488,10 @@ export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>
 // @public
 export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps>;
 
-// @public (undocumented)
-export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots>;
+// @public
+export const tableResizeHandleClassNames: {
+    root: string;
+};
 
 // @public
 export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {};
@@ -478,11 +507,13 @@ export type TableResizeHandleState = ComponentState<TableResizeHandleSlots>;
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
 
-// @public (undocumented)
-export const tableRowClassName = "fui-TableRow";
+// @public
+export const tableRowClassName: string;
 
-// @public (undocumented)
-export const tableRowClassNames: SlotClassNames<TableRowSlots>;
+// @public
+export const tableRowClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export interface TableRowData<TItem> {
@@ -514,8 +545,10 @@ export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextVal
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
 
-// @public (undocumented)
-export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots>;
+// @public
+export const tableSelectionCellClassNames: {
+    root: string;
+};
 
 // @public
 export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellSlots>> & {

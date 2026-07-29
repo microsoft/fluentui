@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { DataGridSelectionCell } from './DataGridSelectionCell';
 import { isConformant } from '../../testing/isConformant';
 import type { DataGridSelectionCellProps } from '../../../dist/index';
-import { dataGridSelectionCellClassNames } from './useDataGridSelectionCellStyles.styles';
 import { mockDataGridContext } from '../../testing/mockDataGridContext';
 import { DataGridContextProvider } from '../../contexts/dataGridContext';
 import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
@@ -12,28 +12,23 @@ describe('DataGridSelectionCell', () => {
   isConformant<DataGridSelectionCellProps>({
     Component: DataGridSelectionCell,
     displayName: 'DataGridSelectionCell',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+    // it was called with the consumer className last; this component now composes with
+    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    disabledTests: ['make-styles-overrides-win'],
+    // This component renders another component's ROOT — a DataGridSelectionCell IS a TableSelectionCell — so the
+    // element legitimately carries BOTH markers (DECISIONS.md D16.3). Declaring the whole set
+    // keeps `component-has-group-marker` running as an exact set comparison, and keeps its
+    // `classList[0]` half — the D16.2 invariant nwsapi's jsdom `:scope` polyfill depends on —
+    // asserted here.
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            type: 'checkbox',
-          },
-          expectedClassNames: {
-            root: dataGridSelectionCellClassNames.root,
-            checkboxIndicator: dataGridSelectionCellClassNames.checkboxIndicator,
-          },
-        },
-        {
-          props: {
-            type: 'radio',
-          },
-          expectedClassNames: {
-            root: dataGridSelectionCellClassNames.root,
-            radioIndicator: dataGridSelectionCellClassNames.radioIndicator,
-          },
-        },
-      ],
+      'has-group-marker': {
+        markers: ['group/fui-table-selection-cell', 'group/fui-data-grid-selection-cell'],
+      },
     },
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   it('should render radio selection indicator if selection mode is single select', () => {

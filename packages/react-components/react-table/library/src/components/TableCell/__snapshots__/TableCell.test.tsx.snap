@@ -3,7 +3,7 @@
 exports[`TableCell renders a default state 1`] = `
 <tr>
   <td
-    class="fui-TableCell"
+    class="group/fui-table-cell"
   >
     Default TableCell
   </td>

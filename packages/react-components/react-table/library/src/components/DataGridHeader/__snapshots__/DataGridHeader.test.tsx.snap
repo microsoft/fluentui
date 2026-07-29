@@ -3,7 +3,7 @@
 exports[`DataGridHeader renders a default state 1`] = `
 <div>
   <div
-    class="fui-DataGridHeader fui-TableHeader"
+    class="group/fui-table-header group/fui-data-grid-header"
     role="rowgroup"
   >
     Default DataGridHeader

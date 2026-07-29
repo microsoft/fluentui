@@ -3,7 +3,7 @@
 exports[`Table renders a default state 1`] = `
 <div>
   <table
-    class="fui-Table"
+    class="group/fui-table"
   >
     <tbody>
       <tr>
@@ -19,19 +19,19 @@ exports[`Table renders a default state 1`] = `
 exports[`Table renders as div if \`noNativeElements\` is set 1`] = `
 <div>
   <div
-    class="fui-Table"
+    class="group/fui-table"
     role="table"
   >
     <div
-      class="fui-TableBody"
+      class="group/fui-table-body"
       role="rowgroup"
     >
       <div
-        class="fui-TableRow"
+        class="group/fui-table-row"
         role="row"
       >
         <div
-          class="fui-TableCell"
+          class="group/fui-table-cell"
           role="cell"
         >
           Cell

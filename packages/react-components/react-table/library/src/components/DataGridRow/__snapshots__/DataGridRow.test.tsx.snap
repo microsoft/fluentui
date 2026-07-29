@@ -3,7 +3,7 @@
 exports[`DataGridRow renders a default state 1`] = `
 <div>
   <div
-    class="fui-DataGridRow fui-TableRow"
+    class="group/fui-table-row group/fui-data-grid-row"
     role="row"
   />
 </div>

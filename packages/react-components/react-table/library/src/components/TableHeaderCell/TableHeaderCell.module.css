@@ -1,0 +1,195 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * mergeClasses ARGUMENT order of useTableHeaderCellStyles_unstable.
+ *
+ * `root` slot:
+ *   1 tableHeaderCellClassNames.root               → REMOVED (D16.1); the root's public
+ *                                                    identity is the
+ *                                                    `group/fui-table-header-cell` marker,
+ *                                                    threaded in as clsx argument 2 so it is
+ *                                                    never `classList[0]` (D16.2)
+ *   2 useStyles.root                               → blocks 1 / 2
+ *   3 sortable && useStyles.rootInteractive        → blocks 3 / 4
+ *   4 noNativeElements ? flex.root : table.root    → block 1  `.flex-root` / `.table-root`
+ *   5 state.root.className                         → unlayered (always wins)
+ *
+ * `button` slot (no marker — a group cannot style itself and sub-slots get none, D15.1):
+ *   1 tableHeaderCellClassNames.button             → REMOVED (D16.1)
+ *   2 useStyles.resetButton                        → block 5  `.reset-button`
+ *   3 useStyles.button                             → block 5  `.button` (written AFTER)
+ *   4 sortable && useStyles.sortable               → block 5  `.sortable` (written AFTER)
+ *   5 state.button.className                       → unlayered
+ *
+ * `sortIcon` slot:
+ *   1 tableHeaderCellClassNames.sortIcon           → REMOVED (D16.1)
+ *   2 useStyles.sortIcon                           → block 5  `.sort-icon`
+ *   3 state.sortIcon.className                     → unlayered
+ *
+ * `aside` slot: its two library tokens were the static and `useStyles.resizeHandle`, which
+ * is `{}` in the Griffel source and compiled to no class at all — so the whole assignment
+ * is gone from the hook (CONVERSION_GUIDE "a slot whose only library token is the static").
+ * The TableResizeHandle that normally fills this slot styles itself.
+ *
+ * ── ORDERING: bucket-major, argument-minor ──────────────────────────────────────────
+ * `@variant hover` / `@variant active` compile to `&:where(:hover)` / `&:where(:active)` —
+ * 0-1-0, the same as a flat rule — so Griffel's `h`-after-`d`-after-`a` bucket order has to
+ * be re-encoded as FILE order. Nothing in arg #4 currently collides with arg #3's hover
+ * colours, so this is defensive here rather than load-bearing (it IS load-bearing in
+ * TableRow), but the structure is kept identical across the two so a reviewer diffing them
+ * sees one shape:
+ *
+ *   1. `d` bucket — flat declarations, in argument order
+ *   2. `[data-fui-focus-within]` — Griffel's `d` bucket too, but at 0-2-0
+ *   3. `h` bucket — `@variant hover`
+ *   4. `a` bucket — `@variant active`
+ *   5. the `button` / `sortIcon` slots — different ELEMENTS, so they cannot collide with
+ *      blocks 1–4 and are grouped last, in slot then argument order
+ *
+ * Nothing here styles another component's element, so `fui.components.l2` is unused.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
+ * `tokens.spacingHorizontalS` / `spacingHorizontalXS` / `spacingVerticalXXS` take the NAMED
+ * utilities (`ps-horizontal-s`, `gap-horizontal-xs`, `pt-vertical-xxs`); raw
+ * `var(--spacing*)` is forbidden in modules because it is the one form that does not ride
+ * `--base-scale`. `min-height: 32px` is a pixel LITERAL, so it takes the numeric utility
+ * `min-h-32`, which computes through the same `--base-scale`.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * No `[ltr, rtl]` pair in the compiled output. `text-align: unset` is direction-agnostic
+ * and stays verbatim; the `padding` shorthand is expanded to block/inline longhands anyway.
+ *
+ * ── Focus indicator ─────────────────────────────────────────────────────────────────
+ * `createCustomFocusIndicatorStyle({ outline, borderRadius }, { selector: 'focus-within' })`
+ * is a bespoke two-declaration payload, not a ring, so neither `fui-focus-outline` nor
+ * `fui-focus-ring` (D6) applies. The `2px` is a LITERAL in this package's source and D6
+ * keeps a hardcoded focus width verbatim. `focus-within-fui` carries react-tabster's
+ * asymmetric selector — `[data-fui-focus-within]:focus-within`, not the attribute alone.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/TableHeaderCell/useTableHeaderCellStyles.styles.js.
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 1 — `d` bucket: flat declarations, in mergeClasses argument order.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2, flat half */
+  .root {
+    @apply relative pt-0 pb-0 ps-horizontal-s pe-horizontal-s;
+
+    font-weight: var(--fontWeightRegular);
+  }
+
+  /* from useTableLayoutStyles.root — arg #4, native-table branch */
+  .table-root {
+    @apply table-cell align-middle;
+  }
+
+  /* from useFlexLayoutStyles.root — arg #4, flex branch */
+  .flex-root {
+    @apply flex min-w-0;
+
+    /* `flex: '1 1 0px'` — kept as the compiled shorthand (`.f1izfyrr`); Tailwind's
+       `flex-1` is `flex: 1 1 0%`, a different basis. */
+    flex: 1 1 0px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 2 — keyborg focus indicator. Griffel's `d` bucket, but at 0-2-0.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2, focus half */
+  .root {
+    @variant focus-within-fui {
+      outline: 2px solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 3 — `h` bucket.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l1 {
+  /* from useStyles.rootInteractive[':hover'] — arg #3 */
+  .root-interactive {
+    @variant hover {
+      color: var(--colorNeutralForeground1Hover);
+      background-color: var(--colorSubtleBackgroundHover);
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 4 — `a` bucket.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l1 {
+  /* from useStyles.rootInteractive[':active'] — arg #3 */
+  .root-interactive {
+    @variant active {
+      color: var(--colorNeutralForeground1Pressed);
+      background-color: var(--colorSubtleBackgroundPressed);
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 5 — the `button` and `sortIcon` slots. Different elements from the root, so no
+ * bucket interleaving is possible; written in slot then mergeClasses argument order.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l1 {
+  /* from useStyles.resetButton — `button` arg #2 */
+  .reset-button {
+    @apply resize-x box-content overflow-visible p-0;
+
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: normal;
+    text-align: unset;
+
+    /* `border: 'none'` kept as the compiled shorthand (`.f3bhgqh`): the `none` keyword also
+       resets width and colour, nothing on this element declares a border longhand, and
+       there is therefore no Griffel shorthand/longhand priority to unwind. */
+    border: none;
+  }
+
+  /* from useStyles.button — `button` arg #3 */
+  .button {
+    @apply relative flex w-full h-full items-center gap-horizontal-xs min-h-32;
+
+    /*
+     * The Griffel source also sets `flexGrow: 1` here, but the LATER `flex: '1 1 0px'`
+     * shorthand in the same slice shadows it — the compiled atomic map nulls the flex-grow
+     * entry (`Bh6795r: 0`) and emits only `.f1izfyrr{flex:1 1 0px}`. Reproducing the
+     * compiled output, not the source, means NOT writing `flex-grow: 1` here.
+     */
+    flex: 1 1 0px;
+    outline-style: none;
+  }
+
+  /* from useStyles.sortable — `button` arg #4 */
+  .sortable {
+    @apply cursor-pointer;
+  }
+
+  /* from useStyles.sortIcon — `sortIcon` arg #2 */
+  .sort-icon {
+    @apply flex items-center pt-vertical-xxs;
+  }
+}

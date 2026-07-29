@@ -3,34 +3,34 @@
 exports[`DataGrid renders a default state 1`] = `
 <div>
   <div
-    class="fui-DataGrid fui-Table"
+    class="group/fui-table group/fui-data-grid"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     role="grid"
   >
     <div
-      class="fui-DataGridHeader fui-TableHeader"
+      class="group/fui-table-header group/fui-data-grid-header"
       role="rowgroup"
     >
       <div
-        class="fui-DataGridRow fui-TableRow"
+        class="group/fui-table-row group/fui-data-grid-row"
         role="row"
       >
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
           first
         </div>
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
           second
         </div>
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
@@ -39,29 +39,29 @@ exports[`DataGrid renders a default state 1`] = `
       </div>
     </div>
     <div
-      class="fui-DataGridBody fui-TableBody"
+      class="group/fui-table-body group/fui-data-grid-body"
       role="rowgroup"
     >
       <div
-        class="fui-DataGridRow fui-TableRow"
+        class="group/fui-table-row group/fui-data-grid-row"
         role="row"
       >
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
           first
         </div>
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
           second
         </div>
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
@@ -69,25 +69,25 @@ exports[`DataGrid renders a default state 1`] = `
         </div>
       </div>
       <div
-        class="fui-DataGridRow fui-TableRow"
+        class="group/fui-table-row group/fui-data-grid-row"
         role="row"
       >
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
           first
         </div>
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
           second
         </div>
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
@@ -95,25 +95,25 @@ exports[`DataGrid renders a default state 1`] = `
         </div>
       </div>
       <div
-        class="fui-DataGridRow fui-TableRow"
+        class="group/fui-table-row group/fui-data-grid-row"
         role="row"
       >
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
           first
         </div>
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >
           second
         </div>
         <div
-          class="fui-DataGridCell fui-TableCell"
+          class="group/fui-table-cell group/fui-data-grid-cell"
           role="gridcell"
           tabindex="0"
         >

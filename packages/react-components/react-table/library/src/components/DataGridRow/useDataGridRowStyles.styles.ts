@@ -1,55 +1,76 @@
 'use client';
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import type { DataGridRowSlots, DataGridRowState } from './DataGridRow.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * unlike the converted leaf hooks this file needs NO `enforce-use-client` suppression —
+ * it calls `useDataGridContext_unstable` and `useTableRowStyles_unstable`, so the rule
+ * agrees the directive is required. Converted hooks that call nothing carry a trailing
+ * `eslint-disable-line` instead; see useTableRowStyles.styles.ts.
+ */
+
+import { clsx } from 'clsx';
+import type { DataGridRowState } from './DataGridRow.types';
 import { useTableRowStyles_unstable } from '../TableRow/useTableRowStyles.styles';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
-import { tableSelectionCellClassNames } from '../TableSelectionCell/useTableSelectionCellStyles.styles';
 
-export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots> = {
-  root: 'fui-DataGridRow',
-  selectionCell: 'fui-DataGridRow__selectionCell',
+import styles from './DataGridRow.module.css';
+
+/**
+ * DataGridRow's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity. The `fui-DataGridRow` / `fui-DataGridRow__selectionCell` BEM
+ * statics are gone (D16.1) and the type has narrowed from `SlotClassNames<DataGridRowSlots>`
+ * to `{ root: string }`, so a read of `selectionCell` is a compile error on the exact line
+ * that would otherwise have silently stopped matching.
+ *
+ * A DataGridRow IS a TableRow, so this element ALSO carries `group/fui-table-row` from
+ * `useTableRowStyles_unstable` — two markers by design (D16.3), declared to
+ * react-conformance through `testOptions['has-group-marker'].markers`.
+ *
+ * The value is a class TOKEN, not a selector: use `fuiSelector(dataGridRowClassNames.root)`
+ * from `@fluentui/react-utilities` (D16.5). `apps/vr-tests-react-components`'s two
+ * `DataGrid/DataGridSubtle*.stories.tsx` build a StoryWright hover selector from the literal
+ * `.fui-DataGridHeader > .fui-DataGridRow` and have to move to the marker form.
+ */
+export const dataGridRowClassNames: { root: string } = {
+  root: 'group/fui-data-grid-row',
 };
-
-const useStyles = makeStyles({
-  subtleSelection: {
-    ...createCustomFocusIndicatorStyle(
-      {
-        [`& .${tableSelectionCellClassNames.root}`]: {
-          opacity: 1,
-        },
-      },
-      { selector: 'focus-within' },
-    ),
-
-    ':hover': {
-      [`& .${tableSelectionCellClassNames.root}`]: {
-        opacity: 1,
-      },
-    },
-  },
-});
 
 /**
  * Apply styling to the DataGridRow slots based on the state
  */
 export const useDataGridRowStyles_unstable = (state: DataGridRowState): DataGridRowState => {
   const isSubtle = useDataGridContext_unstable(ctx => ctx.subtleSelection);
-  const styles = useStyles();
+
+  // `useTableRowStyles_unstable` is called LAST (it ran first under Griffel) so that its
+  // unconditional `styles.root` is PREPENDED and `group/fui-data-grid-row` can never be
+  // `classList[0]`, where nwsapi's jsdom `:scope` polyfill throws on the `/` (D15.1 /
+  // D16.2). `styles['subtle-selection']` is conditional and so cannot hold that position
+  // itself, which is exactly the case D16.2 warns about.
+  //
+  // The consumer className also moves to LAST, where the Griffel call had it SECOND — see
+  // DataGridRow.module.css for why that is the migration's stated contract rather than a
+  // regression: `subtle-selection` lives in `fui.components.l2` and an unlayered consumer
+  // rule beats every `fui.*` layer (D2 / D9).
+  //
+  // No `data-subtle-selection` mirror is minted: `isSubtle` gates one module class on this
+  // very element and nothing reads it from CSS across an element boundary (D15.6).
+  //
+  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.className = clsx('group/fui-data-grid-row', isSubtle && styles['subtle-selection'], state.root.className);
+
+  // NOTE: there is deliberately no `state.selectionCell` assignment. Its only library token
+  // was the `fui-DataGridRow__selectionCell` static (D16.1 removed it), so what remained,
+  // `clsx(state.selectionCell.className)`, was an identity on the consumer's own string:
+  // dead code implying this hook styles a slot it does not (CONVERSION_GUIDE "a slot whose
+  // only library token is the static"). The TableSelectionCell that fills the slot styles
+  // itself, and this row reaches it through its marker — see DataGridRow.module.css.
 
   useTableRowStyles_unstable(state);
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    dataGridRowClassNames.root,
-    state.root.className,
-    isSubtle && styles.subtleSelection,
-  );
-  if (state.selectionCell) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.selectionCell.className = mergeClasses(dataGridRowClassNames.selectionCell, state.selectionCell.className);
-  }
 
   return state;
 };

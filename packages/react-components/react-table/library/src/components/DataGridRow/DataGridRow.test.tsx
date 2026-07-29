@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, createEvent } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { DataGridRow } from './DataGridRow';
 import { isConformant } from '../../testing/isConformant';
 import type { DataGridRowProps } from './DataGridRow.types';
@@ -17,6 +18,23 @@ describe('DataGridRow', () => {
   isConformant<DataGridRowProps>({
     Component: DataGridRow,
     displayName: 'DataGridRow',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+    // it was called with the consumer className last; this component now composes with
+    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    disabledTests: ['make-styles-overrides-win'],
+    // This component renders another component's ROOT — a DataGridRow IS a TableRow — so the
+    // element legitimately carries BOTH markers (DECISIONS.md D16.3). Declaring the whole set
+    // keeps `component-has-group-marker` running as an exact set comparison, and keeps its
+    // `classList[0]` half — the D16.2 invariant nwsapi's jsdom `:scope` polyfill depends on —
+    // asserted here.
+    testOptions: {
+      'has-group-marker': {
+        markers: ['group/fui-table-row', 'group/fui-data-grid-row'],
+      },
+    },
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     requiredProps: {
       children: () => null,
     },

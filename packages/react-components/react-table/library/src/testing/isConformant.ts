@@ -1,9 +1,4 @@
-import {
-  COMPONENT_HAS_GROUP_MARKER_TEST_NAME,
-  HAS_STATIC_CLASSNAMES_TEST_NAME,
-  hasStaticClassNames,
-  isConformant as baseIsConformant,
-} from '@fluentui/react-conformance';
+import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
 import griffelTests from '@fluentui/react-conformance-griffel';
 
@@ -13,15 +8,17 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     tsConfig: { configName: 'tsconfig.spec.json' },
     componentPath: require.main?.filename.replace('.test', ''),
-    // This package still publishes BEM statics and stamps no Tailwind named-group marker,
-    // so it opts out of `component-has-group-marker` (a default test since DECISIONS.md
-    // D16.6) and takes `hasStaticClassNames` — the test that moved out of the default set
-    // to make room for it — explicitly, so its coverage is preserved.
-    disabledTests: [COMPONENT_HAS_GROUP_MARKER_TEST_NAME],
-    extraTests: {
-      ...griffelTests,
-      [HAS_STATIC_CLASSNAMES_TEST_NAME]: hasStaticClassNames,
-    } as TestObject<TProps>,
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // This package is now converted, so the package-wide opt-out of
+    // `component-has-group-marker` (a default test since DECISIONS.md D16.6) is gone and it
+    // no longer takes the opt-in `hasStaticClassNames`: the `fui-Table*` / `fui-DataGrid*`
+    // BEM statics that test asserted were removed by D16.1, and every component here stamps
+    // a `group/fui-*` marker instead.
+    //
+    // `make-styles-overrides-win` is disabled and `classname-overrides-win` added per
+    // component, and the seven DataGrid* components declare their marker SET, because both
+    // are per-component facts. See any *.test.tsx in this package.
+    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

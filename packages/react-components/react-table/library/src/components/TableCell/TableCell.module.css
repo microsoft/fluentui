@@ -1,0 +1,132 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTableCellStyles_unstable:
+ *
+ *   1 tableCellClassNames.root                        → REMOVED (D16.1); the root's public
+ *                                                       identity is the `group/fui-table-cell`
+ *                                                       marker, threaded in as clsx argument 2
+ *                                                       so it is never `classList[0]` (D16.2)
+ *   2 useStyles.root                                  → fui.components.l1  .root
+ *   3 noNativeElements ? flex.root : table.root       → fui.components.l1  .flex-root /
+ *                                                       .table-root
+ *   4 noNativeElements ? flex[size] : table[size]     → fui.components.l1  .flex-<size> /
+ *                                                       .table-<size>  (written AFTER #3)
+ *   5 state.root.className                            → unlayered (always wins)
+ *
+ * ── Why `size` is a module class here and not `data-size` ───────────────────────────
+ * The size slice is selected by the SAME ternary as the box model — the two Griffel maps
+ * `useTableLayoutStyles` / `useFlexLayoutStyles` each carry their own `medium` / `small` /
+ * `extra-small` entries, and the pair differs in PROPERTY (`height` vs `min-height`), not
+ * just value. Riding the shared `size-*` variants would need the box model to be readable
+ * from CSS too, i.e. a second `data-*` attribute mirroring `noNativeElements`, which D15.6
+ * forbids where nothing outside the hook needs to read it. So the four-way product stays
+ * what it already was: classes the hook picks between.
+ *
+ * ── Ordering ────────────────────────────────────────────────────────────────────────
+ * `[data-fui-focus-visible]` is Griffel's `d` bucket, but at 0-2-0 it beat every flat
+ * rule; `@variant focus-visible-fui` flattens to 0-1-0, so it is written LAST (after the
+ * layout and size blocks) to reproduce that. Nothing else in this component declares
+ * `outline` or `border-radius`, so this is belt-and-braces rather than load-bearing —
+ * it keeps the file honest if a flat rule is ever added.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
+ * `padding: '0px ' + tokens.spacingHorizontalS` is the only token-derived value and takes
+ * the NAMED utilities (`ps-horizontal-s` / `pe-horizontal-s`); raw
+ * `var(--spacingHorizontalS)` is forbidden in modules because it is the one form that does
+ * not ride `--base-scale`. The row heights (44 / 34 / 24 px) are pixel LITERALS in the
+ * Griffel source, so they take the NUMERIC utilities `h-44` / `min-h-44` &c., which
+ * compute through the same `--base-scale`.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * No `[ltr, rtl]` pair in the compiled output. The `padding` shorthand is expanded to
+ * block/inline longhands anyway, per the cookbook's shorthand rule.
+ *
+ * ── Focus indicator ─────────────────────────────────────────────────────────────────
+ * `createCustomFocusIndicatorStyle({ outline, borderRadius }, { selector: 'focus' })` is a
+ * bespoke two-declaration payload, not a ring, so neither `fui-focus-outline` nor
+ * `fui-focus-ring` (D6) applies and the declarations are transcribed directly — same call
+ * as react-list's ListItem. The `2px` is a LITERAL in this package's source (react-list's
+ * was `tokens.strokeWidthThick`, which is why its conversion reads `var(--spacing-thick)`),
+ * and D6 is explicit that a hardcoded focus-ring width is reproduced verbatim rather than
+ * "fixed" to a stroke width. `outline` stays a shorthand because the compiled atomic emits
+ * it as one and no outline longhand competes.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/TableCell/useTableCellStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2, flat half */
+  .root {
+    @apply relative pt-0 pb-0 ps-horizontal-s pe-horizontal-s;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useTableLayoutStyles.root — arg #3, native-table branch */
+  .table-root {
+    @apply table-cell align-middle;
+  }
+
+  /* from useFlexLayoutStyles.root — arg #3, flex branch */
+  .flex-root {
+    @apply flex min-w-0 items-center;
+
+    /* `flex: '1 1 0px'` — kept as the compiled shorthand (`.f1izfyrr`); Tailwind's
+       `flex-1` is `flex: 1 1 0%`, a different basis, and nothing here sets a flex
+       longhand that the shorthand would have to be unwound against. */
+    flex: 1 1 0px;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useTableLayoutStyles[size] — arg #4, native-table branch */
+  .table-medium {
+    @apply h-44;
+  }
+
+  .table-small {
+    @apply h-34;
+  }
+
+  .table-extra-small {
+    @apply h-24;
+  }
+
+  /* from useFlexLayoutStyles[size] — arg #4, flex branch */
+  .flex-medium {
+    @apply min-h-44;
+  }
+
+  .flex-small {
+    @apply min-h-34;
+  }
+
+  .flex-extra-small {
+    @apply min-h-24;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2, keyborg focus-indicator half. See the header for why
+     this sits after the layout/size blocks and why the `2px` stays literal. */
+  .root {
+    @variant focus-visible-fui {
+      outline: 2px solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+}

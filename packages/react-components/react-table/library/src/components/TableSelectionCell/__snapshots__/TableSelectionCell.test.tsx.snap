@@ -3,21 +3,21 @@
 exports[`TableSelectionCell renders a default state 1`] = `
 <tr>
   <td
-    class="fui-TableSelectionCell"
+    class="group/fui-table-selection-cell"
   >
     <span
-      class="fuicm-root group/fui-checkbox fui-TableSelectionCell__checkboxIndicator"
+      class="group/fui-checkbox"
       data-label-position="after"
       data-size="medium"
     >
       <input
-        class="fuicm-input"
-        id="checkbox-_r_g_"
+        class=""
+        id="checkbox-_r_j_"
         type="checkbox"
       />
       <div
         aria-hidden="true"
-        class="fuicm-indicator"
+        class=""
       />
     </span>
   </td>

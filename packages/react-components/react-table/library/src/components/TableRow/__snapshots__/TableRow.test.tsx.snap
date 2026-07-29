@@ -3,7 +3,7 @@
 exports[`TableRow renders a default state 1`] = `
 <tbody>
   <tr
-    class="fui-TableRow"
+    class="group/fui-table-row"
   >
     <td>
       Table Cell

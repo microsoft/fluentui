@@ -2,8 +2,12 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "isolatedModules": false,
-    "types": ["node", "cypress", "cypress-real-events"],
-    "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"],
+    // "static-assets" declares `*.module.css` (typings/static-assets/index.d.ts); the cy
+    // program reaches the styles hooks transitively through `DataGrid`. This tsconfig
+    // replaces the base `typeRoots` (which includes `./typings`), so the repo's typings
+    // directory has to be re-listed here for the name to resolve.
+    "types": ["node", "cypress", "cypress-real-events", "static-assets"],
+    "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types", "../../../../typings"],
     "lib": ["ES2019", "dom"]
   },
   "include": ["**/*.cy.ts", "**/*.cy.tsx"]

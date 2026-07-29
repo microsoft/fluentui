@@ -1,139 +1,100 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import type { TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const tableHeaderCellClassName = 'fui-TableHeaderCell';
-export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
-  root: 'fui-TableHeaderCell',
-  button: 'fui-TableHeaderCell__button',
-  sortIcon: 'fui-TableHeaderCell__sortIcon',
-  aside: 'fui-TableHeaderCell__aside',
-};
+import { clsx } from 'clsx';
+import type { TableHeaderCellState } from './TableHeaderCell.types';
 
-const useTableLayoutStyles = makeStyles({
-  root: {
-    display: 'table-cell',
-    verticalAlign: 'middle',
-  },
-});
-
-const useFlexLayoutStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flex: '1 1 0px',
-    minWidth: '0px',
-  },
-});
+import styles from './TableHeaderCell.module.css';
 
 /**
- * Styles for the root slot
+ * TableHeaderCell's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-TableHeaderCell` / `fui-TableHeaderCell__<slot>` BEM statics are gone (D16.1) and the
+ * type has narrowed from `SlotClassNames<TableHeaderCellSlots>` to `{ root: string }`, so a
+ * read of `button`, `sortIcon` or `aside` is a compile error on the exact line that would
+ * otherwise have silently stopped matching.
+ *
+ * The value is a class TOKEN, not a selector: use
+ * `fuiSelector(tableHeaderCellClassNames.root)` from `@fluentui/react-utilities` (D16.5).
  */
-const useStyles = makeStyles({
-  root: {
-    fontWeight: tokens.fontWeightRegular,
-    padding: `0px ${tokens.spacingHorizontalS}`,
-    ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: tokens.borderRadiusMedium },
-      { selector: 'focus-within' },
-    ),
-    position: 'relative',
-  },
+export const tableHeaderCellClassNames: { root: string } = {
+  root: 'group/fui-table-header-cell',
+};
 
-  rootInteractive: {
-    ':hover': {
-      color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-    },
-    ':active': {
-      color: tokens.colorNeutralForeground1Pressed,
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-    },
-  },
-
-  resetButton: {
-    resize: 'horizontal',
-    boxSizing: 'content-box',
-    backgroundColor: 'inherit',
-    color: 'inherit',
-    fontFamily: 'inherit',
-    fontSize: 'inherit',
-    lineHeight: 'normal',
-    overflow: 'visible',
-    padding: '0',
-    border: 'none',
-    textAlign: 'unset',
-  },
-
-  button: {
-    position: 'relative',
-    width: '100%',
-    display: 'flex',
-    flexGrow: 1,
-    height: '100%',
-    alignItems: 'center',
-    gap: tokens.spacingHorizontalXS,
-    minHeight: '32px',
-    flex: '1 1 0px',
-    outlineStyle: 'none',
-  },
-
-  sortable: {
-    cursor: 'pointer',
-  },
-
-  sortIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingTop: tokens.spacingVerticalXXS,
-  },
-
-  resizeHandle: {},
-});
+/**
+ * Legacy alias for `tableHeaderCellClassNames.root`, retained and RE-POINTED at the group marker rather
+ * than deleted or left holding the old `fui-TableHeaderCell` string (D16.5): deleting a published
+ * constant breaks consumers at build time, while a stub carrying the retired static would
+ * leave them compiling and silently selecting nothing.
+ *
+ * Deliberately NOT tagged `@deprecated`, for the same reason the `*ClassNames` objects are
+ * not (see react-card's CardHeader): the tag propagates to every barrel that re-exports the
+ * symbol — three in this package plus the `@fluentui/react-components` umbrella, which this
+ * conversion does not own — and `@typescript-eslint/no-deprecated` then errors on each of
+ * those re-export specifiers. Prefer `tableHeaderCellClassNames.root`.
+ */
+export const tableHeaderCellClassName = tableHeaderCellClassNames.root;
 
 /**
  * Apply styling to the TableHeaderCell slots based on the state
  */
 export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): TableHeaderCellState => {
-  const styles = useStyles();
-  const layoutStyles = {
-    table: useTableLayoutStyles(),
-    flex: useFlexLayoutStyles(),
-  };
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    tableHeaderCellClassNames.root,
+  // Module class first, named group marker second, consumer className last. `styles.root`
+  // is unconditional, so the marker is never `classList[0]` (DECISIONS.md D15.1 / D16.2;
+  // asserted by `component-has-group-marker`).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in TableHeaderCell.module.css
+  // and by BLOCK order within it — see that file's header for the mapping back to the
+  // mergeClasses() argument order, including why it is authored bucket-major.
+  //
+  // No `data-sortable` mirror is minted: `sortable` gates two module classes on two
+  // elements this hook already holds, and nothing reads it from CSS across an element
+  // boundary (DECISIONS.md D15.6).
+  //
+  // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
+  state.root.className = clsx(
     styles.root,
-    state.sortable && styles.rootInteractive,
-    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    'group/fui-table-header-cell',
+    state.sortable && styles['root-interactive'],
+    state.noNativeElements ? styles['flex-root'] : styles['table-root'],
     state.root.className,
   );
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.button.className = mergeClasses(
-    tableHeaderCellClassNames.button,
-    styles.resetButton,
+  // Sub-slots carry NO marker (D15.1: a group cannot style itself, and every sub-component
+  // has its own root), so the unconditional `styles['reset-button']` simply leads here.
+  state.button.className = clsx(
+    styles['reset-button'],
     styles.button,
     state.sortable && styles.sortable,
     state.button.className,
   );
 
   if (state.sortIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.sortIcon.className = mergeClasses(
-      tableHeaderCellClassNames.sortIcon,
-      styles.sortIcon,
-      state.sortIcon.className,
-    );
+    state.sortIcon.className = clsx(styles['sort-icon'], state.sortIcon.className);
   }
 
-  if (state.aside) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.aside.className = mergeClasses(tableHeaderCellClassNames.aside, styles.resizeHandle, state.aside.className);
-  }
+  // NOTE: there is deliberately no `state.aside` assignment. Its two library tokens were
+  // the `fui-TableHeaderCell__aside` static (D16.1 removed it) and `useStyles.resizeHandle`,
+  // which is `{}` in the Griffel source and compiled to no class — so what remained,
+  // `clsx(state.aside.className)`, was an identity on the consumer's own string: dead code
+  // implying this hook styles a slot it does not (CONVERSION_GUIDE "a slot whose only
+  // library token is the static"). The TableResizeHandle that fills this slot styles itself.
 
   return state;
 };

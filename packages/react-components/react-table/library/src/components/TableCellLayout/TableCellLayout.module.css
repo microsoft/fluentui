@@ -1,0 +1,150 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * mergeClasses ARGUMENT order of useTableCellLayoutStyles_unstable. Every slot's arg #1 was
+ * the `fui-TableCellLayout` / `fui-TableCellLayout__<slot>` static, all REMOVED (D16.1); the
+ * root's public identity is the `group/fui-table-cell-layout` marker, threaded in as clsx
+ * argument 2 so it is never `classList[0]` (D16.2). Sub-slots get NO marker (D15.1).
+ *
+ *   root         2 useStyles.root                    → `.root`
+ *                3 truncate && rootTruncate          → `.root-truncate`
+ *                4 consumer className                → unlayered
+ *   media        2 useStyles.media                   → `.media`
+ *                3 mediaSizedStyles[size]            → `.media-extra-small` /
+ *                                                      `.media-small-and-medium`
+ *                4 primary && mediaPrimary           → `.media-primary`
+ *                5 consumer className                → unlayered
+ *   main         2 truncate && mainTruncate          → `.main-truncate`
+ *                3 primary && mainPrimary            → `.main-primary`
+ *                4 consumer className                → unlayered
+ *   description  2 useStyles.description             → `.description`
+ *                3 consumer className                → unlayered
+ *   content      2 useStyles.content                 → `.content`
+ *                3 truncate && contentTruncate       → `.content-truncate`
+ *                4 consumer className                → unlayered
+ *
+ * The `main` slot has NO unconditional module class — both of its arguments are gated. That
+ * is safe because it carries no marker: D15.1's `classList[0]` invariant only binds slots
+ * that emit a `group/…` token, so no identity-only local is minted here (contrast the six
+ * ROOTS D16.2 names). On a plain `<span>` with neither `truncate` nor `primary`, clsx
+ * yields the consumer's className alone — exactly the string Griffel produced once its
+ * static is removed.
+ *
+ * ── ORDERING ────────────────────────────────────────────────────────────────────────
+ * Not one slice in this component declares a pseudo-class, media query or attribute
+ * selector: the compiled output is a single `d` bucket. So plain mergeClasses argument
+ * order is exact and the bucket-major structure TableRow needs does not apply. Blocks are
+ * grouped per SLOT, and within a slot the later argument is written later.
+ *
+ * Every slot is one of this component's own intrinsic elements (`div` / `span`, see
+ * renderTableCellLayout), so nothing sits over another component's hook output and
+ * `fui.components.l2` is unused. The `media` slot wraps an `AvatarContextProvider`, but the
+ * class lands on TableCellLayout's own `<span>`, not on the Avatar — the Avatar is sized
+ * through `contextValues.avatar`, a JS prop, which this conversion does not touch.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
+ * `tokens.spacingHorizontalS` takes the NAMED utility `gap-horizontal-s`; raw
+ * `var(--spacingHorizontalS)` is forbidden in modules because it is the one form that does
+ * not ride `--base-scale`. The three media font sizes (16 / 20 / 24 px) are pixel LITERALS,
+ * written `calc(<n>px * var(--base-scale))` — `font-size` reads Tailwind's `--text-*`
+ * namespace, not `--spacing-*`, so there is no numeric utility for it and this is the form
+ * react-avatar / react-badge / react-breadcrumb already use.
+ *
+ * ── Typography (DECISIONS.md D4) ────────────────────────────────────────────────────
+ * `typographyStyles.caption1` is spread into the `description` slice; the compiler expanded
+ * it to the four `font-*` / `line-height` longhands reproduced below. They are transcribed
+ * from the compiled atomics rather than re-derived from the token bundle.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * No `[ltr, rtl]` pair in the compiled output and no direction-sensitive property
+ * (`text-overflow` and `overflow-x` are axis-symmetric).
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/TableCellLayout/useTableCellLayoutStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — `root` arg #2 */
+  .root {
+    @apply flex items-center gap-horizontal-s;
+
+    /* `flex: '1 1 0px'` — kept as the compiled shorthand (`.f1izfyrr`); Tailwind's
+       `flex-1` is `flex: 1 1 0%`, a different basis. */
+    flex: 1 1 0px;
+  }
+
+  /* from useStyles.rootTruncate — `root` arg #3 */
+  .root-truncate {
+    @apply overflow-x-hidden;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.media — `media` arg #2 */
+  .media {
+    @apply flex items-center;
+  }
+
+  /* from useStyles.mediaExtraSmall — `media` arg #3, size === 'extra-small' */
+  .media-extra-small {
+    font-size: calc(16px * var(--base-scale));
+  }
+
+  /* from useStyles.mediaSmallAndMedium — `media` arg #3, size === 'small' | 'medium' */
+  .media-small-and-medium {
+    font-size: calc(20px * var(--base-scale));
+  }
+
+  /* from useStyles.mediaPrimary — `media` arg #4 */
+  .media-primary {
+    font-size: calc(24px * var(--base-scale));
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.mainTruncate — `main` arg #2 */
+  .main-truncate {
+    @apply overflow-x-hidden whitespace-nowrap text-ellipsis;
+  }
+
+  /* from useStyles.mainPrimary — `main` arg #3 */
+  .main-primary {
+    font-weight: var(--fontWeightSemibold);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.description — `description` arg #2. `...typographyStyles.caption1`
+     expanded exactly as the compiler emitted it. */
+  .description {
+    color: var(--colorNeutralForeground2);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.content — `content` arg #2 */
+  .content {
+    @apply flex flex-col;
+  }
+
+  /* from useStyles.contentTruncate — `content` arg #3 */
+  .content-truncate {
+    @apply overflow-x-hidden;
+  }
+}

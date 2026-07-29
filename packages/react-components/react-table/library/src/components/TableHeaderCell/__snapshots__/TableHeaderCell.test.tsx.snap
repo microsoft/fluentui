@@ -3,10 +3,10 @@
 exports[`TableHeaderCell renders a default state 1`] = `
 <tr>
   <th
-    class="fui-TableHeaderCell"
+    class="group/fui-table-header-cell"
   >
     <div
-      class="fui-TableHeaderCell__button"
+      class=""
     >
       Default TableHeaderCell
     </div>

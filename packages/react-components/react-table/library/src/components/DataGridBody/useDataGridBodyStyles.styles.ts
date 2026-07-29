@@ -1,21 +1,50 @@
 'use client';
 
-import { mergeClasses } from '@griffel/react';
-import type { DataGridBodySlots, DataGridBodyState } from './DataGridBody.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * unlike the converted leaf hooks this file needs NO `enforce-use-client` suppression —
+ * it still calls `useTableBodyStyles_unstable`, so the rule agrees the directive is
+ * required. Converted hooks that call nothing carry a trailing `eslint-disable-line`
+ * instead; see useTableBodyStyles.styles.ts.
+ */
+
+import { clsx } from 'clsx';
+import type { DataGridBodyState } from './DataGridBody.types';
 import { useTableBodyStyles_unstable } from '../TableBody/useTableBodyStyles.styles';
 
-export const dataGridBodyClassNames: SlotClassNames<DataGridBodySlots> = {
-  root: 'fui-DataGridBody',
+/**
+ * DataGridBody's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity. The `fui-DataGridBody` BEM static is gone (D16.1) and the
+ * type has narrowed from `SlotClassNames<DataGridBodySlots>` to `{ root: string }`.
+ *
+ * A DataGridBody IS a TableBody, so this element ALSO carries `group/fui-table-body` from
+ * `useTableBodyStyles_unstable` — two markers by design (D16.3), declared to
+ * react-conformance through `testOptions['has-group-marker'].markers`.
+ *
+ * The value is a class TOKEN, not a selector: use `fuiSelector(dataGridBodyClassNames.root)`
+ * from `@fluentui/react-utilities` (D16.5).
+ */
+export const dataGridBodyClassNames: { root: string } = {
+  root: 'group/fui-data-grid-body',
 };
 
 /**
  * Apply styling to the DataGridBody slots based on the state
  */
 export const useDataGridBodyStyles_unstable = (state: DataGridBodyState): DataGridBodyState => {
-  useTableBodyStyles_unstable(state);
+  // `useTableBodyStyles_unstable` is called LAST (it ran first under Griffel) so that its
+  // unconditional layout class is PREPENDED and `group/fui-data-grid-body` can never be
+  // `classList[0]`, where nwsapi's jsdom `:scope` polyfill throws on the `/` (D15.1 /
+  // D16.2). It also keeps the consumer className last. The swap is cascade-inert: this
+  // component contributes no declarations, and `@layer fui.*` decides every tie (D2).
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(dataGridBodyClassNames.root, state.root.className);
+  state.root.className = clsx('group/fui-data-grid-body', state.root.className);
+
+  useTableBodyStyles_unstable(state);
 
   return state;
 };

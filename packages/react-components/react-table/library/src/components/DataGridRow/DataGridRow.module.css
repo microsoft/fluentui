@@ -1,0 +1,77 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useDataGridRowStyles_unstable — `root` slot:
+ *
+ *   1 dataGridRowClassNames.root        → REMOVED (D16.1); the root's public identity is the
+ *                                         `group/fui-data-grid-row` marker. This element also
+ *                                         carries `group/fui-table-row` (a DataGridRow IS a
+ *                                         TableRow), which is by design (D16.3)
+ *   2 state.root.className              → unlayered (always wins)
+ *   3 isSubtle && useStyles.subtleSelection → fui.components.l2  `.subtle-selection`
+ *
+ * `selectionCell` slot: its only library token was the
+ * `fui-DataGridRow__selectionCell` static, so the whole assignment is gone from the hook.
+ *
+ * ── The one behaviour change, and it is the migration's stated contract ─────────────
+ * Note argument #3 sat AFTER the consumer className in the Griffel call. mergeClasses gave
+ * `subtleSelection`'s atomics priority over a consumer's Griffel atomics because of it;
+ * under `@layer` the consumer's unlayered CSS beats every `fui.*` layer regardless of token
+ * order (D2 / D9, and what `classname-overrides-win` asserts). The hook therefore composes
+ * in the normal order — module classes, then consumer className last.
+ *
+ * ── ALTITUDE: l2 (D2 amendment 2, D16.3 M1) ─────────────────────────────────────────
+ * The subject is TableSelectionCell's ROOT, whose own hook writes `opacity: 0` in
+ * `fui.components.l1`. Griffel won that on specificity (`.f1jazu75… .fui-TableSelectionCell`
+ * 0-2-0 / 0-3-0 vs 0-1-0); `:where()` flattens the row half, so the altitude carries the win
+ * now. The static became the MARKER `:global(.group\/fui-table-selection-cell)` — mechanism
+ * M1, because the selection cell is a component ROOT the consumer composes as a descendant
+ * and this hook never holds its slot object. Marker-for-static is class-for-class, so the
+ * flattened specificity is unchanged.
+ *
+ * D2 amendment 5 (UNLAYERED) does not apply: the owner is converted in this same package.
+ * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits.
+ *
+ * ── What this slice is FOR ──────────────────────────────────────────────────────────
+ * TableRow already reveals the selection cell on hover / active / focus-within, but only
+ * through `rootInteractive`, which is gated on `!isHeaderRow`. This slice re-states the
+ * hover and focus-within halves without that gate, so a DataGrid HEADER row in
+ * `subtleSelection` mode reveals its select-all cell too. Both halves set the same
+ * `opacity: 1` as TableRow's, so the two never disagree and their relative order carries no
+ * meaning.
+ *
+ * The compiled output has no `[ltr, rtl]` pair and no media query.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/DataGridRow/useDataGridRowStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /* from useStyles.subtleSelection — arg #3 */
+  .subtle-selection {
+    @variant focus-within-fui {
+      & :global(.group\/fui-table-selection-cell) {
+        opacity: 1;
+      }
+    }
+
+    @variant hover {
+      & :global(.group\/fui-table-selection-cell) {
+        opacity: 1;
+      }
+    }
+  }
+}

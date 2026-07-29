@@ -3,7 +3,7 @@
 exports[`TableCellActions renders a default state 1`] = `
 <div>
   <div
-    class="fui-TableCellActions"
+    class="group/fui-table-cell-actions"
   >
     Default TableCellActions
   </div>

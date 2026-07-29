@@ -3,12 +3,12 @@
 exports[`DataGridHeaderCell renders a default state 1`] = `
 <div>
   <div
-    class="fui-DataGridHeaderCell fui-TableHeaderCell"
+    class="group/fui-table-header-cell group/fui-data-grid-header-cell"
     role="columnheader"
     tabindex="0"
   >
     <div
-      class="fui-DataGridHeaderCell__button fui-TableHeaderCell__button"
+      class=""
     >
       Default DataGridHeaderCell
     </div>
