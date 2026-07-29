@@ -14,7 +14,6 @@ import type { InputState } from '@fluentui/react-input';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSearchBox_unstable: (state: SearchBoxBaseState) => JSXElement;
@@ -31,8 +30,10 @@ export type SearchBoxBaseState = Omit<SearchBoxState, 'appearance' | 'size'>;
 // @public
 export type SearchBoxChangeEvent = React_2.ChangeEvent<HTMLInputElement> | React_2.MouseEvent<HTMLSpanElement>;
 
-// @public (undocumented)
-export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
+// @public @deprecated
+export const searchBoxClassNames: {
+    root: string;
+};
 
 // @public
 export type SearchBoxProps = Omit<ComponentProps<Partial<SearchBoxSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & Omit<InputProps, 'onChange'> & {

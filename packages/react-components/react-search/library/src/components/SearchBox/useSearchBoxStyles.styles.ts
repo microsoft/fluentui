@@ -14,18 +14,32 @@
  */
 
 import { clsx } from 'clsx';
-import type { SearchBoxSlots, SearchBoxState } from './SearchBox.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { SearchBoxState } from './SearchBox.types';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 
 import styles from './SearchBox.module.css';
 
-export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
-  root: 'fui-SearchBox',
-  dismiss: 'fui-SearchBox__dismiss',
-  contentAfter: 'fui-SearchBox__contentAfter',
-  contentBefore: 'fui-SearchBox__contentBefore',
-  input: 'fui-SearchBox__input',
+/**
+ * Public identity classes for SearchBox.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as this component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a
+ * selector and as a `group-*` variant target. The BEM statics (`fui-SearchBox`,
+ * `fui-SearchBox__*`) are no longer rendered and the per-slot keys are gone; there is no
+ * public class-name handle on component internals.
+ *
+ * Note this root ALSO carries `inputClassNames.root` (`group/fui-input`), because a SearchBox
+ * IS an Input — the delegation to `useInputStyles_unstable` below stamps it on this same
+ * element. `group/fui-search-box` narrows to this subtype.
+ *
+ * The marker token contains a `/`. That is legal inside a class TOKEN but terminates the
+ * name inside a SELECTOR, so `'.' + searchBoxClassNames.root` is an invalid selector even
+ * though it type-checks. Use `fuiSelector(searchBoxClassNames.root)` from
+ * `@fluentui/react-utilities`.
+ */
+export const searchBoxClassNames: { root: string } = {
+  root: 'group/fui-search-box',
 };
 
 /**
@@ -70,9 +84,13 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // eslint-disable-next-line react-hooks/immutability
   root['data-focused'] = focused || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // Unconditional module class FIRST, then the named group marker — the marker must never be
+  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
+  // D16.2) — with the consumer className last. `styles.root` is unconditional and clsx never
+  // drops it, so this hook's own contribution always leads with a hashed, selector-safe token
+  // now that the `fui-SearchBox` static is gone. (`useInputStyles_unstable` then PREPENDS
+  // Input's own composition to the same element, so the rendered `classList[0]` is Input's
+  // leading token — but this hook does not rely on that.) The marker is a literal,
   // unhashed, GLOBAL token: it is the only handle by which another module — in this package
   // or any other — can style an element from this SearchBox's state, because `styles.root` is
   // hashed and unaddressable from outside this file (DECISIONS.md D15).
@@ -82,8 +100,9 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // the end of this hook, so `@variant group-focused/fui-search-box`,
   // `group-disabled/fui-search-box` and the size variants all work as-is (D15.6, Tier 0).
   //
-  // The name is the COMPONENT's, kebab-cased — `fui-search-box`, not the root static class
-  // `fui-SearchBox` (D15.1).
+  // The name is the COMPONENT's, kebab-cased — `fui-search-box`. It was NOT derived from the
+  // (now removed) `fui-SearchBox` root static, which was PascalCase; D15.1 fixes the marker
+  // alphabet independently of what the statics used to be.
   //
   // Cascade priority is decided by the `@layer fui.*` order in SearchBox.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
@@ -97,10 +116,10 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // keyed off the `data-size` Input's hook stamps.
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(searchBoxClassNames.root, 'group/fui-search-box', styles.root, state.root.className);
+  state.root.className = clsx(styles.root, 'group/fui-search-box', state.root.className);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.input.className = clsx(searchBoxClassNames.input, styles.input, state.input.className);
+  state.input.className = clsx(styles.input, state.input.className);
 
   if (state.dismiss) {
     const dismiss = state.dismiss as NonNullable<SearchBoxState['dismiss']> & SearchBoxDismissDataAttributes;
@@ -109,21 +128,18 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
     dismiss['data-disabled'] = disabled || undefined;
 
     // eslint-disable-next-line react-hooks/immutability
-    state.dismiss.className = clsx(searchBoxClassNames.dismiss, styles.dismiss, state.dismiss.className);
+    state.dismiss.className = clsx(styles.dismiss, state.dismiss.className);
   }
 
-  if (state.contentBefore) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.contentBefore.className = clsx(searchBoxClassNames.contentBefore, state.contentBefore.className);
-  }
+  // The `contentBefore` slot deliberately gets NO assignment. Its only library token was the
+  // `fui-SearchBox__contentBefore` static; SearchBox has no module class for it (Input's hook
+  // is what styles it). Keeping `clsx(state.contentBefore.className)` would be an identity on
+  // the consumer's own string and would imply this hook styles a slot it does not
+  // (statics-removal design §4d).
 
   if (state.contentAfter) {
     // eslint-disable-next-line react-hooks/immutability
-    state.contentAfter.className = clsx(
-      searchBoxClassNames.contentAfter,
-      styles['content-after'],
-      state.contentAfter.className,
-    );
+    state.contentAfter.className = clsx(styles['content-after'], state.contentAfter.className);
   } else if (state.dismiss) {
     // Preserved verbatim from the Griffel hook. `renderSearchBox_unstable` only renders the
     // dismiss INSIDE contentAfter, so this branch (contentAfter explicitly nulled out, e.g.

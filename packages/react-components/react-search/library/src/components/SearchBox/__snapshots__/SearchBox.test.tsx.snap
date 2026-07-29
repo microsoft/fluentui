@@ -3,13 +3,13 @@
 exports[`SearchBox renders a default state 1`] = `
 <div>
   <span
-    class="fui-Input group/fui-input fui-SearchBox group/fui-search-box"
+    class="group/fui-input group/fui-search-box"
     data-content-after="true"
     data-content-before="true"
     data-size="medium"
   >
     <span
-      class="fui-Input__contentBefore fui-SearchBox__contentBefore"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -27,16 +27,16 @@ exports[`SearchBox renders a default state 1`] = `
       </svg>
     </span>
     <input
-      class="fui-Input__input fui-SearchBox__input"
+      class=""
       type="search"
       value=""
     />
     <span
-      class="fui-Input__contentAfter fui-SearchBox__contentAfter"
+      class=""
     >
       <span
         aria-label="clear"
-        class="fui-SearchBox__dismiss"
+        class=""
         role="button"
         tabindex="-1"
       >

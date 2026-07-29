@@ -37,7 +37,14 @@
  * `useSearchBoxStyles_unstable` writes each slot's className FIRST and calls
  * `useInputStyles_unstable(state)` LAST, so Input's classes are PREPENDED and SearchBox's
  * sit between them and the consumer's className. Verified against the committed snapshot
- * (`class="fui-Input fui-SearchBox"`, `class="fui-Input__input fui-SearchBox__input"`).
+ * (`class="… group/fui-input … group/fui-search-box"` on the root).
+ *
+ * HISTORICAL, and deliberately kept: the `→ static class (JS)` rows below record the Griffel
+ * mergeClasses argument order this file's layer assignment was derived FROM. Those BEM
+ * statics (`fui-SearchBox`, `fui-SearchBox__*`) are no longer rendered — DECISIONS.md D16.1
+ * removed them and the public identity class is now the `group/fui-search-box` marker. The
+ * relative ORDER of everything else, which is what decides the conflicts documented further
+ * down, is unchanged.
  *
  * `root` slot:
  *    1  inputClassNames.root                       → static class (JS)
@@ -66,7 +73,8 @@
  *    7  useContentAfterStyles.rest                 → fui.components.l2   (not-focused)
  *    8  consumer className                         → unlayered
  *
- * `contentBefore` slot: static class only — SearchBox adds no styles to it.
+ * `contentBefore` slot: was the static class only, and SearchBox adds no styles to it — so
+ *   post-D16 the hook writes NOTHING to this slot at all (statics-removal design §4d).
  *
  * `dismiss` slot (SearchBox's own; Input never sees it):
  *    1  searchBoxClassNames.dismiss                → static class (JS)

@@ -6,7 +6,6 @@ import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluen
 import { SearchBox } from './SearchBox';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { searchBoxClassNames } from './useSearchBoxStyles.styles';
 
 function getSearchBox(): HTMLInputElement {
   return screen.getByRole('searchbox') as HTMLInputElement;
@@ -37,23 +36,24 @@ describe('SearchBox', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
+    //
+    // `component-has-static-classnames-object` asserts `searchBoxClassNames` still holds
+    // `fui-SearchBox` / `fui-SearchBox__<slot>` strings AND that they are rendered. Both are
+    // false by design: DECISIONS.md D16.1 removed the BEM statics, D16.5 narrowed the export
+    // to `{ root }` and re-pointed it at the group marker. Its `has-static-classnames`
+    // testOptions entry — which existed only to name the three sub-slot statics that the
+    // default render does not produce — goes with it.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            contentBefore: 'Test ContentBefore',
-            contentAfter: 'Test ContentAfter',
-            dismiss: 'Test Dismiss',
-          },
-          expectedClassNames: {
-            root: searchBoxClassNames.root,
-            contentAfter: searchBoxClassNames.contentAfter,
-            dismiss: searchBoxClassNames.dismiss,
-          },
-        },
-      ],
+      // a SearchBox IS an Input — `useInputStyles_unstable` stamps its marker on this same element, so this root
+      // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set
+      // keeps `component-has-group-marker` running: it is an exact set comparison, so an
+      // undeclared marker still fails, and its `classList[0]` half — the D16.2 invariant that
+      // nwsapi's jsdom `:scope` polyfill depends on — is asserted here rather than locally.
+      'has-group-marker': {
+        markers: ['group/fui-input', 'group/fui-search-box'],
+      },
       'consistent-callback-args': {
         legacyCallbacks: ['onChange'],
       },
@@ -63,6 +63,30 @@ describe('SearchBox', () => {
   it('renders a default state', () => {
     const result = render(<SearchBox />);
     expect(result.container).toMatchSnapshot();
+  });
+
+  /**
+   * The `classList[0]` half of `component-has-group-marker`, asserted locally.
+   *
+   * Belt-and-braces alongside the shared `component-has-group-marker` default test, which
+   * SearchBox takes by declaring its marker SET (`testOptions['has-group-marker'].markers`,
+   * DECISIONS.md D16.3) because this root legitimately carries two — `group/fui-input` (a SearchBox IS an Input; `useInputStyles_unstable`
+   * stamps it on this same element) and `group/fui-search-box`, which narrows to the subtype.
+   *
+   * The SECOND assertion — the D15.1 / D16.2 invariant that a marker is never `classList[0]`,
+   * because nwsapi's jsdom `:scope` polyfill builds its anchor from
+   * `escape(element.classList[0])` and the `/` survives that escaping into an invalid
+   * selector — still applies and is not optional. It holds because `useInputStyles_unstable`
+   * runs LAST and prepends Input's own composition, which leads with an unconditional module
+   * class; this test exists so a change on either side of that delegation cannot break it
+   * silently.
+   */
+  it('never emits a group marker as classList[0]', () => {
+    const { container } = render(<SearchBox />);
+    const root = container.firstElementChild as HTMLElement;
+
+    expect(root.classList.length).toBeGreaterThan(0);
+    expect(root.classList[0]).not.toMatch(/^(group|peer)\//);
   });
 
   // Tests from Input, added here since they were reimplemented for SearchBox

@@ -1,7 +1,7 @@
 export {
   SearchBox,
   renderSearchBox_unstable,
-  searchBoxClassNames,
+  searchBoxClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSearchBoxStyles_unstable,
   useSearchBox_unstable,
   useSearchBoxBase_unstable,
