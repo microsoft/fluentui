@@ -14,13 +14,37 @@
  */
 
 import { clsx } from 'clsx';
-import type { TooltipSlots, TooltipState } from './Tooltip.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TooltipState } from './Tooltip.types';
 
 import styles from './Tooltip.module.css';
 
-export const tooltipClassNames: SlotClassNames<TooltipSlots> = {
-  content: 'fui-Tooltip__content',
+/**
+ * Tooltip's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-Tooltip__content` BEM static is gone (D16.1), and the type has narrowed from
+ * `SlotClassNames<TooltipSlots>` to `{ root: string }`.
+ *
+ * The key is `root` even though `TooltipSlots` declares no `root` slot. Tooltip renders into
+ * a portal and its `content` element is its outermost node, so that is where the marker rides
+ * (D15.1) and `root` names the element the identity class actually lands on. Migration is a
+ * rename plus an escape: a template selector built from `tooltipClassNames.content` becomes
+ * `fuiSelector(tooltipClassNames.root)`, resolving to the same element.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + tooltipClassNames.root` is invalid CSS. Use
+ * `fuiSelector(tooltipClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's three, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ */
+export const tooltipClassNames: { root: string } = {
+  root: 'group/fui-tooltip',
 };
 
 /**
@@ -49,26 +73,27 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
 
   content['data-open'] = state.visible || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token — the only handle by which another module can style an element
-  // from this Tooltip's state, because `styles.content` is hashed and unaddressable from
-  // outside this file (DECISIONS.md D15).
+  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
+  // D16.2). `styles.content` is unconditional, so index 0 is always the hashed,
+  // selector-safe `fuicm-*` token — which is what keeps the marker off `classList[0]`, where
+  // nwsapi's `:scope` polyfill would throw on its `/` under jsdom (D15.1). The BEM static
+  // that used to lead this call is gone (D16.1): the marker is now Tooltip's SOLE public
+  // identity class, and the only handle by which another module can style an element from
+  // this Tooltip's state, because `styles.content` is hashed and unaddressable from outside
+  // this file (DECISIONS.md D15).
   //
-  // It goes on `content` rather than a root because Tooltip HAS no root slot:
-  // `tooltipClassNames` declares `content` alone, the tooltip renders into a portal, and the
-  // content element is therefore its outermost node — it is also the element that carries
-  // `data-open`, which is the state a descendant would want to read. The marker still uses
-  // the component's own name (`group/fui-tooltip`), not the slot's static class.
+  // It goes on `content` rather than a root because Tooltip HAS no root slot: `TooltipSlots`
+  // declares `content` alone, the tooltip renders into a portal, and the content element is
+  // therefore its outermost node — it is also the element that carries `data-open`, which is
+  // the state a descendant would want to read. The marker uses the component's own name
+  // (`group/fui-tooltip`), not a slot name, and `tooltipClassNames.root` resolves to it.
   //
   // Cascade priority is decided by the `@layer fui.*` order in Tooltip.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
   state.content.className = clsx(
-    tooltipClassNames.content,
-    'group/fui-tooltip',
     styles.content,
+    'group/fui-tooltip',
     state.appearance === 'inverted' && styles.inverted,
     state.content.className,
   );

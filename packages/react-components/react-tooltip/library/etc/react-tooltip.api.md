@@ -11,7 +11,6 @@ import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
@@ -32,8 +31,10 @@ export type TooltipBaseProps = Omit<TooltipProps, 'appearance'>;
 // @public (undocumented)
 export type TooltipBaseState = Omit<TooltipState, 'appearance'>;
 
-// @public (undocumented)
-export const tooltipClassNames: SlotClassNames<TooltipSlots>;
+// @public
+export const tooltipClassNames: {
+    root: string;
+};
 
 // @public
 export type TooltipProps = ComponentProps<TooltipSlots> & TriggerProps<TooltipTriggerProps> & Pick<PortalProps, 'mountNode'> & {

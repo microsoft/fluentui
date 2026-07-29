@@ -50,15 +50,22 @@ describe('Tooltip', () => {
     //    only a `content` slot and no `root`, so `className` is not part of `TooltipProps`
     //    and never reaches the DOM. Wiring it produced
     //    `does not apply the consumer's "className" to its root slot` against the rendered
-    //    `class="fui-Tooltip__content …"`. The cascade contract it exists to pin is
-    //    unaffected: `clsx` still puts `state.content.className` (the `content` slot's own
-    //    consumer className) last, and unlayered consumer CSS still beats every `fui.*`
-    //    layer (DECISIONS.md D2/D9).
+    //    content element. The cascade contract it exists to pin is unaffected: `clsx` still
+    //    puts `state.content.className` (the `content` slot's own consumer className) last,
+    //    and unlayered consumer CSS still beats every `fui.*` layer (DECISIONS.md D2/D9).
+    //
+    // 3. `component-has-static-classnames-object` IS disabled, because Tooltip no longer
+    //    publishes a BEM static (DECISIONS.md D16.1). Its sub-tests hard-code the
+    //    `fui-Tooltip__<slot>` format (defaultTests.tsx:244-245, 277), so they fail under the
+    //    retained-constant policy exactly as they would under deletion (D16.6).
+    //    `component-has-group-marker` (now a default test) is the replacement; `getTargetElement` already
+    //    resolves the portalled content element, which is where the marker rides (D15.1).
     disabledTests: [
       // Tooltip renders into a Portal, which confuses these tests
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
+      'component-has-static-classnames-object',
     ],
     testOptions: {
       'consistent-callback-args': {
