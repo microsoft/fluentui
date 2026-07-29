@@ -1,0 +1,565 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ══ Slider — Griffel → Tailwind + CSS Modules ═════════════════════════════════════════
+ *
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useSliderStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   1 sliderClassNames.root                              → REMOVED (D16.1); the group
+ *                                                          marker `group/fui-slider` now
+ *                                                          rides at clsx index 1
+ *   2 rootStyles.root                                    → fui.components.l1  .root
+ *   3 focusIndicatorVertical | focusIndicatorHorizontal  → fui.components.l1  (data-orientation)
+ *   4 rootStyles[size]                                   → fui.components.l1  (data-size)
+ *   5 rootStyles.vertical | .horizontal                  → fui.components.l1  (data-orientation)
+ *   6 rootStyles.disabled | .enabled                     → fui.components.l1  (data-disabled)
+ *   7 consumer className                                 → unlayered (always wins)
+ *
+ * `rail` slot
+ *   1 sliderClassNames.rail   → REMOVED (D16.1 — no public handle on internals)
+ *   2 railStyles.rail                                    → fui.components.l1  .rail
+ *   3 railStyles.vertical | .horizontal                  → fui.components.l1  (root data-orientation)
+ *   4 consumer className                                 → unlayered
+ *
+ * `thumb` slot
+ *   1 sliderClassNames.thumb  → REMOVED (D16.1)
+ *   2 thumbStyles.thumb                                  → fui.components.l1  .thumb
+ *   3 thumbStyles.vertical | .horizontal                 → fui.components.l1  (root data-orientation)
+ *   4 thumbStyles.disabled    (state.disabled)           → fui.components.l1  (root data-disabled)
+ *   5 consumer className                                 → unlayered
+ *
+ * `input` slot
+ *   1 sliderClassNames.input  → REMOVED (D16.1)
+ *   2 inputStyles.input                                  → fui.components.l1  .input
+ *   3 inputStyles.vertical | .horizontal                 → fui.components.l1  (root data-orientation)
+ *   4 inputStyles.disabled    (state.disabled)           → fui.components.l1  (root data-disabled)
+ *   5 consumer className                                 → unlayered
+ *
+ * ── ALTITUDE: everything is l1, nothing is l2 (DECISIONS.md D2 amendment 2) ───────────
+ * `rail`, `thumb` and `input` are Slider's OWN slots — plain `<div>` / `<input>` elements
+ * whose base rules are authored in this very file. No rule here decorates another
+ * component's hook output (Slider renders no sub-component; `<Field>` decorates Slider,
+ * not the reverse), so there is no l2 content. There is no `makeResetStyles` in this
+ * component either, so `fui.base` stays empty.
+ *
+ * ── RUNTIME CSS VARIABLES ARE UNCHANGED (specials-triage A1) ─────────────────────────
+ * `--fui-Slider--direction`, `--fui-Slider--progress` and `--fui-Slider--steps-percent`
+ * are written by JS as an inline `style` attribute on the root
+ * (useSliderState.tsx → `state.root.style`), exactly as before. CSS only ever READS them
+ * with `var()`. That mechanism is untouched by this conversion; only the `makeStyles`
+ * surface moved. The names in `Slider.constants.ts` are a frozen cross-package contract —
+ * `@fluentui/react-color-picker`'s ColorSlider re-declares them verbatim and its ColorArea
+ * reads `--fui-Slider__thumb--size` — so nothing here may be renamed.
+ *
+ * `--fui-Slider__thumb--position` is INTERNAL (it was a file-local const in the Griffel
+ * source, not part of `sliderCSSVars`) and stays internal: it is declared and consumed on
+ * `.thumb` only.
+ *
+ * ── STATE → DATA ATTRIBUTES ─────────────────────────────────────────────────────────
+ * Three attributes are stamped on the ROOT, all matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`):
+ *
+ *   data-orientation="horizontal|vertical"  ← `state.vertical`   (headless vocabulary,
+ *                                              reports/headless-precedent.md)
+ *   data-size="small|medium"                ← `state.size`
+ *   data-disabled                           ← `state.disabled`, presence-only
+ *
+ * They live on the root even though they gate rules on `rail` / `thumb` / `input`, because
+ * those three are the root's CHILDREN — one stamp drives every descendant rule (the same
+ * approach react-button uses for `data-size` → `.root … & .icon`, and react-switch for
+ * `data-label-position`).
+ *
+ * `data-disabled` is a genuine fallback, not decoration (D15.6): the root is a `<div>`, so
+ * `:disabled` can never match it, yet arguments #6 (root), thumb #4 and input #4 are all
+ * gated on the same `state.disabled` boolean. Note that the `disabled` catalog variant is
+ * `:where([disabled], [data-disabled], :disabled)`, so the `.input` rules below COULD have
+ * keyed on the input's own native `:disabled` instead — that is deliberately NOT done. It
+ * would make a Slider disabled by an ancestor `<fieldset disabled>` render a
+ * `cursor: default` input inside an otherwise enabled-looking track, a split state Griffel
+ * never produced. One attribute, one source of truth.
+ *
+ * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
+ * • root arg #4 `[size]` sets `min-height: 24px/32px` and arg #5 `vertical` sets
+ *   `min-height: 120px` — the SAME Griffel atomic key (`sshi5w`), so the later argument
+ *   wins and a vertical Slider is 120px tall. Both compile to `.root:where([data-…])`,
+ *   i.e. equal specificity, so the winner is now file position: the orientation block is
+ *   written AFTER the size block and must stay there.
+ * • `.thumb`'s `::before` border colour: base (arg #2) → `--colorNeutralStroke1`,
+ *   disabled (arg #4) → `--colorNeutralForegroundDisabled`. The disabled rule is reached
+ *   through the root (`.root:where([data-disabled]) .thumb::before`, 0-2-0) so it beats
+ *   the 0-1-0 base rule on specificity, not only on order.
+ * • Inside the root's `enabled` block the order is base vars → `:hover` → `:active`.
+ *   Griffel resolved these by specificity (`.x:active` 0-2-0 beats `.x` 0-1-0, and the
+ *   `a` bucket is emitted after the `h` bucket); `:where()` flattens all three to 0-1-0,
+ *   so the narrower condition must come LATER in the file. Source order already does that.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Every `[ltr, rtl]` pair in the compiled atomics
+ * (lib-commonjs/components/Slider/useSliderStyles.styles.js) is a pure PROPERTY flip with
+ * IDENTICAL values — `left`↔`right` on the focus ring, the rail's `::before` bleed and the
+ * thumb's `::before` inset — and becomes a logical property, EXCEPT two real VALUE flips:
+ *   thumbStyles.horizontal  `transform: translateX(-50%)` / `translateX(50%)`
+ *   inputStyles.vertical    `direction: rtl` / `direction: ltr` (inside `@supports`)
+ * Both get an explicit `@variant rtl` twin. `:dir()` matches the element's HTML-level
+ * directionality, not its own `direction` declaration, so the input rule is not circular.
+ *
+ * ── Pixel literals (DECISIONS.md D4) ────────────────────────────────────────────────
+ * Track/thumb geometry (16/20/24/32/120 px, the 5/6 px inner-thumb radii, the 2/4 px rail)
+ * is a pixel literal, so it rides `--base-scale`: Tailwind numeric utilities
+ * (`min-h-24`, `min-w-120`, …) where one exists, `calc(<n>px * var(--base-scale))` inside a
+ * custom-property assignment or a calc() where none does. At the default 16px root every
+ * one of these computes to the value in the compiled atomics. The rail's hairline
+ * `outline-width: 1px`, its `::before` −1px bleed and the step gradient's 1px stop follow
+ * the same rule (precedent: react-calendar-compat's `calc(1px * var(--base-scale))`).
+ *
+ * The focus ring's `2px` and its −2px / ∓4px offsets are the documented D6 exception —
+ * react-tabster hardcodes the width with an upstream FIXME and "fixing" it to a stroke
+ * width changes rendering — so those stay literal, matching react-card's conversion.
+ *
+ * No `tokens.spacing*` is read anywhere in this component, so no named spacing utility
+ * appears below.
+ */
+
+@layer fui.components.l1 {
+  /* ═══ root ═══════════════════════════════════════════════════════════════════════ */
+
+  /* from useRootStyles.root — root arg #2 */
+  .root {
+    @apply relative inline-grid touch-none items-center justify-items-center;
+
+    /*
+     * from useRootStyles.focusIndicatorHorizontal / .focusIndicatorVertical — root arg #3,
+     * both `createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: … } })`.
+     * `fui-focus-outline` carries the compiled declarations; the selector stays here
+     * (CONVERSION_GUIDE §2, "Focus rings").
+     *
+     * The two `outline-style: none` rules are emitted OUTSIDE the focus-within selector by
+     * `createFocusOutlineStyle`, so they stay with the caller; `:focus-visible` is a strict
+     * subset of `:focus` and the redundant second rule is reproduced rather than pruned
+     * because the compiled output contains it (`.ftqa4ok:focus` / `.f2hkw1w:focus-visible`).
+     */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-within-fui {
+      @apply fui-focus-outline;
+
+      &::after {
+        /*
+         * The knob is set on `&::after`, not on the element: it is registered
+         * `@property … inherits: false`, and a pseudo-element takes the INITIAL value of
+         * every non-inherited property, so a knob on the root would not reach `::after`,
+         * where it is consumed. Custom properties resolve at computed-value time, so
+         * declaring it in a second `::after` rule works regardless of rule order.
+         *
+         * Only the BLOCK axis can ride the knob — `outlineOffset` was passed per side and
+         * the inline sides differ per orientation, so they are written out below. Byte-check
+         * against the compiled atomics:
+         *   .f1pffoy2[…]::after{top:calc(0px - 2px - -2px)}
+         *   .fs6b7xr […]::after{bottom:calc(0px - 2px - -2px)}
+         * which is exactly what the utility's
+         * `calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px))`
+         * substitutes to at `-2px`.
+         */
+        --fui-focus-outline-offset: -2px;
+      }
+    }
+
+    /*
+     * Inline-axis ring offset — the ONLY difference between focusIndicatorHorizontal and
+     * focusIndicatorVertical. Written as PHYSICAL `left`/`right` on purpose: the compiled
+     * `[ltr, rtl]` pairs (`f1dfga45`/`f63jj3o`, `fm5xmfm`/`femsgmt`) carry the identical
+     * value on both sides, and the utility being overridden declares physical longhands —
+     * matching it avoids relying on logical-vs-physical declaration-order resolution for a
+     * flip that does not exist.
+     *
+     * Equal specificity with the block-axis rule above (`:where()` everywhere), so these
+     * must stay AFTER it.
+     */
+    @variant horizontal {
+      @variant focus-within-fui {
+        &::after {
+          right: calc(0px - 2px - -4px);
+          left: calc(0px - 2px - -4px);
+        }
+      }
+    }
+
+    @variant vertical {
+      @variant focus-within-fui {
+        &::after {
+          right: calc(0px - 2px - 4px);
+          left: calc(0px - 2px - 4px);
+        }
+      }
+    }
+
+    /* from useRootStyles.small / .medium — root arg #4 */
+    @variant size-small {
+      --fui-Slider__thumb--size: calc(16px * var(--base-scale));
+      --fui-Slider__inner-thumb--radius: calc(5px * var(--base-scale));
+      --fui-Slider__rail--size: calc(2px * var(--base-scale));
+
+      @apply min-h-24;
+    }
+
+    @variant size-medium {
+      --fui-Slider__thumb--size: calc(20px * var(--base-scale));
+      --fui-Slider__inner-thumb--radius: calc(6px * var(--base-scale));
+      --fui-Slider__rail--size: calc(4px * var(--base-scale));
+
+      @apply min-h-32;
+    }
+
+    /*
+     * from useRootStyles.horizontal / .vertical — root arg #5.
+     * MUST stay after the size block: `vertical`'s `min-height` overrides the size one
+     * (see "Ordering that IS load-bearing" above).
+     *
+     * 3x3 grid with the rail and thumb in the centre cell [2,2] and the hidden input
+     * stretching across all cells.
+     */
+    @variant horizontal {
+      @apply min-w-120;
+
+      grid-template-rows: 1fr var(--fui-Slider__thumb--size) 1fr;
+      grid-template-columns: 1fr calc(100% - var(--fui-Slider__thumb--size)) 1fr;
+    }
+
+    @variant vertical {
+      @apply min-h-120;
+
+      grid-template-rows: 1fr calc(100% - var(--fui-Slider__thumb--size)) 1fr;
+      grid-template-columns: 1fr var(--fui-Slider__thumb--size) 1fr;
+    }
+
+    /*
+     * from useRootStyles.enabled / .disabled — root arg #6.
+     * These assign the colour custom properties that `.rail` and `.thumb` read; they are
+     * declared on the root so ordinary custom-property inheritance carries them down.
+     */
+    @variant enabled {
+      --fui-Slider__rail--color: var(--colorNeutralStrokeAccessible);
+      --fui-Slider__progress--color: var(--colorCompoundBrandBackground);
+      --fui-Slider__thumb--color: var(--colorCompoundBrandBackground);
+
+      @variant hover {
+        --fui-Slider__thumb--color: var(--colorCompoundBrandBackgroundHover);
+        --fui-Slider__progress--color: var(--colorCompoundBrandBackgroundHover);
+      }
+
+      @variant active {
+        --fui-Slider__thumb--color: var(--colorCompoundBrandBackgroundPressed);
+        --fui-Slider__progress--color: var(--colorCompoundBrandBackgroundPressed);
+      }
+    }
+
+    @variant disabled {
+      --fui-Slider__thumb--color: var(--colorNeutralForegroundDisabled);
+      --fui-Slider__rail--color: var(--colorNeutralBackgroundDisabled);
+      --fui-Slider__progress--color: var(--colorNeutralForegroundDisabled);
+    }
+
+    /*
+     * `@variant forced-colors` is the OUTER wrapper (CONVERSION_GUIDE §3b, rule 2 — it is
+     * an at-rule variant), matching the react-switch conversion. The `:hover` pair inside
+     * `enabled` is redundant in the compiled output too (same `Highlight` value as the
+     * unhovered rule) and is reproduced verbatim rather than pruned.
+     */
+    @variant forced-colors {
+      @variant enabled {
+        --fui-Slider__rail--color: CanvasText;
+        --fui-Slider__thumb--color: Highlight;
+        --fui-Slider__progress--color: Highlight;
+
+        @variant hover {
+          --fui-Slider__thumb--color: Highlight;
+          --fui-Slider__progress--color: Highlight;
+        }
+      }
+
+      @variant disabled {
+        --fui-Slider__rail--color: GrayText;
+        --fui-Slider__thumb--color: GrayText;
+        --fui-Slider__progress--color: GrayText;
+      }
+    }
+  }
+
+  /* ═══ rail ═══════════════════════════════════════════════════════════════════════ */
+
+  /* from useRailStyles.rail — rail arg #2 */
+  .rail {
+    @apply pointer-events-none relative;
+
+    border-radius: var(--borderRadiusXLarge);
+
+    /* grid line NUMBERS, not design values — written literally, as in every other
+       converted module (react-card, react-dialog). */
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+
+    forced-color-adjust: none;
+
+    /* Background gradient represents the progress of the slider. Every var() here is
+       written by JS as an inline style on the root, or by the root's enabled/disabled
+       block above — CSS only reads them. */
+    background-image: linear-gradient(
+      var(--fui-Slider--direction),
+      var(--fui-Slider__progress--color) 0%,
+      var(--fui-Slider__progress--color) var(--fui-Slider--progress),
+      var(--fui-Slider__rail--color) var(--fui-Slider--progress)
+    );
+
+    outline-width: calc(1px * var(--base-scale));
+    outline-style: solid;
+    outline-color: var(--colorTransparentStroke);
+
+    &::before {
+      @apply absolute;
+
+      content: '';
+
+      /* Repeating gradient represents the steps if provided. `--fui-Slider--steps-percent`
+         is only written when a `step` prop is present, so with no step the gradient
+         resolves to nothing paintable — same as the Griffel original. */
+      background-image: repeating-linear-gradient(
+        var(--fui-Slider--direction),
+        #0000 0%,
+        #0000 calc(var(--fui-Slider--steps-percent) - 1px * var(--base-scale)),
+        var(--colorNeutralBackground1) calc(var(--fui-Slider--steps-percent) - 1px * var(--base-scale)),
+        var(--colorNeutralBackground1) var(--fui-Slider--steps-percent)
+      );
+
+      /* force steps to use HighlightText for high contrast mode */
+      @variant forced-colors {
+        background-image: repeating-linear-gradient(
+          var(--fui-Slider--direction),
+          #0000 0%,
+          #0000 calc(var(--fui-Slider--steps-percent) - 1px * var(--base-scale)),
+          HighlightText calc(var(--fui-Slider--steps-percent) - 1px * var(--base-scale)),
+          HighlightText var(--fui-Slider--steps-percent)
+        );
+      }
+    }
+  }
+
+  /*
+   * from useRailStyles.horizontal / .vertical — rail arg #3.
+   * Reached through the root's `data-orientation` because the rail is the root's child and
+   * carries no state of its own (react-switch's `.root { @variant … { & .indicator } }`
+   * shape). 0-2-0 vs the 0-1-0 base rule above; nothing they both set, so the extra
+   * specificity is inert.
+   */
+  .root {
+    @variant horizontal {
+      & .rail {
+        @apply w-full;
+
+        height: var(--fui-Slider__rail--size);
+
+        &::before {
+          /* compiled `[left:-1px, right:-1px]` — property flip, identical value */
+          inset-inline: calc(-1px * var(--base-scale));
+
+          height: var(--fui-Slider__rail--size);
+        }
+      }
+    }
+
+    @variant vertical {
+      & .rail {
+        @apply h-full;
+
+        width: var(--fui-Slider__rail--size);
+
+        &::before {
+          width: var(--fui-Slider__rail--size);
+          top: calc(-1px * var(--base-scale));
+          bottom: calc(-1px * var(--base-scale));
+        }
+      }
+    }
+  }
+
+  /* ═══ thumb ══════════════════════════════════════════════════════════════════════ */
+
+  /* from useThumbStyles.thumb — thumb arg #2 */
+  .thumb {
+    /*
+     * Internal, thumb-local custom property (was `thumbPositionVar` in the Griffel source).
+     * Ensures the thumb stays within the track boundaries: when the value is at 0% or 100%,
+     * the distance from the track edge to the thumb centre equals the inner thumb radius.
+     */
+    --fui-Slider__thumb--position: clamp(
+      var(--fui-Slider__inner-thumb--radius),
+      var(--fui-Slider--progress),
+      calc(100% - var(--fui-Slider__inner-thumb--radius))
+    );
+
+    @apply pointer-events-none absolute;
+
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+
+    width: var(--fui-Slider__thumb--size);
+    height: var(--fui-Slider__thumb--size);
+
+    outline-style: none;
+    forced-color-adjust: none;
+    border-radius: var(--borderRadiusCircular);
+    box-shadow: 0 0 0 calc(var(--fui-Slider__thumb--size) * 0.2) var(--colorNeutralBackground1) inset;
+    background-color: var(--fui-Slider__thumb--color);
+
+    &::before {
+      @apply absolute box-border;
+
+      content: '';
+
+      top: 0px;
+      bottom: 0px;
+      /* compiled `[left:0px, right:0px]` — property flip, identical value */
+      inset-inline-start: 0px;
+      inset-inline-end: 0px;
+
+      border-radius: var(--borderRadiusCircular);
+
+      /* Kept as the `border` shorthand because that is what Griffel compiled
+         (`.f1fsco4d::before{border:calc(…) solid var(--colorNeutralStroke1)}`) and because
+         the only other rule that touches this pseudo-element's border — the disabled one
+         below — is the same shorthand, so no shorthand/longhand priority can go wrong. */
+      border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--colorNeutralStroke1);
+    }
+  }
+
+  .root {
+    /* from useThumbStyles.horizontal / .vertical — thumb arg #3 */
+    @variant horizontal {
+      & .thumb {
+        /* VALUE flip: compiled `[translateX(-50%), translateX(50%)]` */
+        transform: translateX(-50%);
+
+        /* compiled `[left, right]` — property flip, identical value */
+        inset-inline-start: var(--fui-Slider__thumb--position);
+
+        /* Declared LAST on purpose: "declarations after a nested rule" (CSSNestedDeclarations)
+           is a much newer part of CSS Nesting than the nesting itself, and the emitted
+           dist/styles.css preserves nesting verbatim — so every nested rule in this file stays
+           after the plain declarations of its block. */
+        @variant rtl {
+          transform: translateX(50%);
+        }
+      }
+    }
+
+    @variant vertical {
+      & .thumb {
+        transform: translateY(50%);
+
+        /* compiled with no rtl twin — the block axis never flips */
+        bottom: var(--fui-Slider__thumb--position);
+      }
+    }
+
+    /* from useThumbStyles.disabled — thumb arg #4 */
+    @variant disabled {
+      & .thumb::before {
+        border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--colorNeutralForegroundDisabled);
+      }
+    }
+  }
+
+  /* ═══ input ══════════════════════════════════════════════════════════════════════ */
+
+  /* from useInputStyles.input — input arg #2 */
+  .input {
+    @apply cursor-pointer;
+
+    /* literal, not `opacity-0`: that utility compiles to `opacity: 0%`, while the compiled
+       atomic is `opacity:0` (precedent: react-checkbox). */
+    opacity: 0;
+
+    /* the hidden input stretches across all 9 cells */
+    grid-row-start: 1;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+    /* Griffel compiled these as shorthands (`.f1mk8lai{padding:0}`, `.f1s184ao{margin:0}`)
+       and nothing in this component sets a padding/margin longhand, so there is no
+       shorthand-vs-longhand priority for the cascade to get wrong. */
+    padding: 0;
+    margin: 0;
+  }
+
+  .root {
+    /* from useInputStyles.horizontal / .vertical — input arg #3 */
+    @variant horizontal {
+      & .input {
+        @apply w-full;
+
+        height: var(--fui-Slider__thumb--size);
+      }
+    }
+
+    @variant vertical {
+      & .input {
+        @apply h-full;
+
+        width: var(--fui-Slider__thumb--size);
+
+        /* Workaround to check if the browser supports `writing-mode: vertical-lr` for inputs
+           and input[type=range] specifically. We check if `writing-mode: sideways-lr` is
+           supported as it's a newer feature and it means that vertical controls should also
+           support `writing-mode: vertical-lr`. */
+        @supports (writing-mode: sideways-lr) {
+          writing-mode: vertical-lr;
+
+          /* VALUE flip: compiled `[direction:rtl, direction:ltr]`. `:dir()` matches the
+             element's HTML-level directionality, not this declaration, so it is not
+             circular. */
+          direction: rtl;
+
+          @variant rtl {
+            direction: ltr;
+          }
+        }
+
+        /* Fallback for browsers that don't support `writing-mode: vertical-lr` for inputs */
+        @supports not (writing-mode: sideways-lr) {
+          -webkit-appearance: slider-vertical;
+        }
+      }
+    }
+
+    /* from useInputStyles.disabled — input arg #4 */
+    @variant disabled {
+      & .input {
+        @apply cursor-default;
+      }
+    }
+  }
+}

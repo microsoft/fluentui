@@ -1,320 +1,117 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import type { SliderState, SliderSlots } from './Slider.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { sliderCSSVars } from './Slider.constants';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const sliderClassNames: SlotClassNames<SliderSlots> = {
-  root: 'fui-Slider',
-  rail: 'fui-Slider__rail',
-  thumb: 'fui-Slider__thumb',
-  input: 'fui-Slider__input',
+import { clsx } from 'clsx';
+import type { SliderState } from './Slider.types';
+
+import styles from './Slider.module.css';
+
+/**
+ * Public identity class for Slider.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
+ * `group-*` variant target. The per-slot keys (`rail`, `thumb`, `input`) were removed together
+ * with the `fui-Slider__*` BEM statics (DECISIONS.md D16.1/D16.5): there is no public
+ * class-name handle on component internals.
+ *
+ * The value is a class TOKEN, not a selector — `'.' + sliderClassNames.root` is invalid CSS,
+ * because the `/` must be escaped in a selector. Use `fuiSelector(sliderClassNames.root)` from
+ * `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ *
+ * NOTE: this is NOT the package's runtime-styling contract. The `--fui-Slider*` custom
+ * properties exported from `Slider.constants.ts` (`sliderCSSVars`) are unchanged and remain the
+ * supported way to retheme a Slider — they are written by JS as inline styles and read by
+ * `Slider.module.css` with `var()`. `@fluentui/react-color-picker` depends on those exact
+ * names.
+ */
+export const sliderClassNames: { root: string } = {
+  root: 'group/fui-slider',
 };
 
-// Internal CSS variables
-const thumbPositionVar = `--fui-Slider__thumb--position`;
-
-const {
-  sliderDirectionVar,
-  sliderInnerThumbRadiusVar,
-  sliderProgressVar,
-  sliderProgressColorVar,
-  sliderRailSizeVar,
-  sliderRailColorVar,
-  sliderStepsPercentVar,
-  sliderThumbColorVar,
-  sliderThumbSizeVar,
-} = sliderCSSVars;
-
 /**
- * Styles for the root slot
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * All three live on the ROOT even though they also select styles for the `rail`, `thumb` and
+ * `input` slots: those slots are the root's children, so one stamp drives every descendant
+ * rule (the same approach react-button uses for `data-size` → `.root … & .icon`).
+ *
+ * • `data-orientation` replaces the `vertical ? … : …` ternary that selected four separate
+ *   Griffel slices (root focus indicator, root grid, rail, thumb, input). It is ALWAYS
+ *   stamped — both branches have styles — and reuses the catalog's existing
+ *   `vertical` / `horizontal` pair from the headless vocabulary
+ *   (reports/headless-precedent.md).
+ * • `data-size` replaces `rootStyles[state.size!]`. `size` defaults to `'medium'` in
+ *   `useSlider_unstable`, so in practice it is always present; when it is not (a caller
+ *   passing a `SliderBaseState`, where `size` is optional) no size variant matches, which is
+ *   exactly what `styles[undefined]` did under Griffel.
+ * • `data-disabled` is a PRESENCE flag written `state.disabled || undefined` — never
+ *   `|| false`, because the catalog's `disabled` variant is an attribute-presence selector
+ *   and `data-disabled="false"` would still match `[data-disabled]`. React omits an attribute
+ *   whose value is `undefined`.
+ *
+ * `data-disabled` is a genuine fallback rather than a mirror for its own sake (DECISIONS.md
+ * D15.6): the root is a `<div>`, so `:disabled` can never match it, yet the root's own
+ * enabled/disabled custom-property block is gated on the same boolean as the thumb's and the
+ * input's rules. The `.input` rules could have keyed on the input's native `:disabled` (the
+ * catalog variant matches it), but that is deliberately not done — it would let an ancestor
+ * `<fieldset disabled>` render a `cursor: default` input inside an otherwise enabled-looking
+ * track, a split state the Griffel original never produced.
  */
-const useRootStyles = makeStyles({
-  root: {
-    position: 'relative',
-    display: 'inline-grid',
-    touchAction: 'none',
-    alignItems: 'center',
-    justifyItems: 'center',
-  },
-
-  small: {
-    [sliderThumbSizeVar]: '16px',
-    [sliderInnerThumbRadiusVar]: '5px',
-    [sliderRailSizeVar]: '2px',
-    minHeight: '24px',
-  },
-
-  medium: {
-    [sliderThumbSizeVar]: '20px',
-    [sliderInnerThumbRadiusVar]: '6px',
-    [sliderRailSizeVar]: '4px',
-    minHeight: '32px',
-  },
-
-  horizontal: {
-    minWidth: '120px',
-    // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr var(${sliderThumbSizeVar}) 1fr`,
-    gridTemplateColumns: `1fr calc(100% - var(${sliderThumbSizeVar})) 1fr`,
-  },
-
-  vertical: {
-    minHeight: '120px',
-    // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr calc(100% - var(${sliderThumbSizeVar})) 1fr`,
-    gridTemplateColumns: `1fr var(${sliderThumbSizeVar}) 1fr`,
-  },
-
-  enabled: {
-    [sliderRailColorVar]: tokens.colorNeutralStrokeAccessible,
-    [sliderProgressColorVar]: tokens.colorCompoundBrandBackground,
-    [sliderThumbColorVar]: tokens.colorCompoundBrandBackground,
-    ':hover': {
-      [sliderThumbColorVar]: tokens.colorCompoundBrandBackgroundHover,
-      [sliderProgressColorVar]: tokens.colorCompoundBrandBackgroundHover,
-    },
-    ':active': {
-      [sliderThumbColorVar]: tokens.colorCompoundBrandBackgroundPressed,
-      [sliderProgressColorVar]: tokens.colorCompoundBrandBackgroundPressed,
-    },
-    '@media (forced-colors: active)': {
-      [sliderRailColorVar]: 'CanvasText',
-      [sliderThumbColorVar]: 'Highlight',
-      [sliderProgressColorVar]: 'Highlight',
-      ':hover': {
-        [sliderThumbColorVar]: 'Highlight',
-        [sliderProgressColorVar]: 'Highlight',
-      },
-    },
-  },
-
-  disabled: {
-    [sliderThumbColorVar]: tokens.colorNeutralForegroundDisabled,
-    [sliderRailColorVar]: tokens.colorNeutralBackgroundDisabled,
-    [sliderProgressColorVar]: tokens.colorNeutralForegroundDisabled,
-    '@media (forced-colors: active)': {
-      [sliderRailColorVar]: 'GrayText',
-      [sliderCSSVars.sliderThumbColorVar]: 'GrayText',
-      [sliderCSSVars.sliderProgressColorVar]: 'GrayText',
-    },
-  },
-
-  focusIndicatorHorizontal: createFocusOutlineStyle({
-    selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '-4px', right: '-4px' } },
-  }),
-
-  focusIndicatorVertical: createFocusOutlineStyle({
-    selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '4px', right: '4px' } },
-  }),
-});
-
-/**
- * Styles for the rail slot
- */
-const useRailStyles = makeStyles({
-  rail: {
-    borderRadius: tokens.borderRadiusXLarge,
-    pointerEvents: 'none',
-    gridRowStart: '2',
-    gridRowEnd: '2',
-    gridColumnStart: '2',
-    gridColumnEnd: '2',
-    position: 'relative',
-    forcedColorAdjust: 'none',
-    // Background gradient represents the progress of the slider
-    backgroundImage: `linear-gradient(
-      var(${sliderDirectionVar}),
-      var(${sliderProgressColorVar}) 0%,
-      var(${sliderProgressColorVar}) var(${sliderProgressVar}),
-      var(${sliderRailColorVar}) var(${sliderProgressVar})
-    )`,
-    outlineWidth: '1px',
-    outlineStyle: 'solid',
-    outlineColor: tokens.colorTransparentStroke,
-    '::before': {
-      content: "''",
-      position: 'absolute',
-      // Repeating gradient represents the steps if provided
-      backgroundImage: `repeating-linear-gradient(
-        var(${sliderDirectionVar}),
-        #0000 0%,
-        #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} var(${sliderStepsPercentVar})
-      )`,
-      // force steps to use HighlightText for high contrast mode
-      '@media (forced-colors: active)': {
-        backgroundImage: `repeating-linear-gradient(
-          var(${sliderDirectionVar}),
-          #0000 0%,
-          #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-          HighlightText calc(var(${sliderStepsPercentVar}) - 1px),
-          HighlightText var(${sliderStepsPercentVar})
-        )`,
-      },
-    },
-  },
-
-  horizontal: {
-    width: '100%',
-    height: `var(${sliderRailSizeVar})`,
-    '::before': {
-      left: '-1px',
-      right: '-1px',
-      height: `var(${sliderRailSizeVar})`,
-    },
-  },
-
-  vertical: {
-    width: `var(${sliderRailSizeVar})`,
-    height: '100%',
-    '::before': {
-      width: `var(${sliderRailSizeVar})`,
-      top: '-1px',
-      bottom: '-1px',
-    },
-  },
-});
-
-/**
- * Styles for the thumb slot
- */
-const useThumbStyles = makeStyles({
-  thumb: {
-    // Ensure the thumb stays within the track boundaries.
-    // When the value is at 0% or 100%, the distance from the track edge
-    // to the thumb center equals the inner thumb radius.
-    [`${thumbPositionVar}`]: `clamp(var(${sliderInnerThumbRadiusVar}), var(${sliderProgressVar}), calc(100% - var(${sliderInnerThumbRadiusVar})))`,
-    gridRowStart: '2',
-    gridRowEnd: '2',
-    gridColumnStart: '2',
-    gridColumnEnd: '2',
-    position: 'absolute',
-    width: `var(${sliderThumbSizeVar})`,
-    height: `var(${sliderThumbSizeVar})`,
-    pointerEvents: 'none',
-    outlineStyle: 'none',
-    forcedColorAdjust: 'none',
-    borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
-    backgroundColor: `var(${sliderThumbColorVar})`,
-    '::before': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
-      borderRadius: tokens.borderRadiusCircular,
-      boxSizing: 'border-box',
-      content: "''",
-      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
-    },
-  },
-  disabled: {
-    '::before': {
-      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralForegroundDisabled}`,
-    },
-  },
-  horizontal: {
-    transform: 'translateX(-50%)',
-    left: `var(${thumbPositionVar})`,
-  },
-  vertical: {
-    transform: 'translateY(50%)',
-    bottom: `var(${thumbPositionVar})`,
-  },
-});
-
-/**
- * Styles for the Input slot
- */
-const useInputStyles = makeStyles({
-  input: {
-    cursor: 'pointer',
-    opacity: 0,
-    gridRowStart: '1',
-    gridRowEnd: '-1',
-    gridColumnStart: '1',
-    gridColumnEnd: '-1',
-    padding: '0',
-    margin: '0',
-  },
-  disabled: {
-    cursor: 'default',
-  },
-  horizontal: {
-    height: `var(${sliderThumbSizeVar})`,
-    width: '100%',
-  },
-  vertical: {
-    height: '100%',
-    width: `var(${sliderThumbSizeVar})`,
-    // Workaround to check if the browser supports `writing-mode: vertical-lr` for inputs and input[type=range] specifically.
-    // We check if the `writing-mode: sideways-lr` is supported as it's newer feature and it means
-    // that vertical controls should also support `writing-mode: vertical-lr`.
-    '@supports (writing-mode: sideways-lr)': {
-      writingMode: 'vertical-lr',
-      direction: 'rtl',
-    },
-    // Fallback for browsers that don't support `writing-mode: vertical-lr` for inputs
-    '@supports not (writing-mode: sideways-lr)': {
-      WebkitAppearance: 'slider-vertical',
-    },
-  },
-});
+type SliderRootDataAttributes = {
+  'data-orientation': 'horizontal' | 'vertical';
+  'data-size'?: SliderState['size'];
+  'data-disabled'?: true;
+};
 
 /**
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles_unstable = (state: SliderState): SliderState => {
-  const rootStyles = useRootStyles();
-  const railStyles = useRailStyles();
-  const thumbStyles = useThumbStyles();
-  const inputStyles = useInputStyles();
-  const isVertical = state.vertical;
+  const root = state.root as SliderState['root'] & SliderRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    sliderClassNames.root,
-    rootStyles.root,
-    isVertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
-    rootStyles[state.size!],
-    isVertical ? rootStyles.vertical : rootStyles.horizontal,
-    state.disabled ? rootStyles.disabled : rootStyles.enabled,
-    state.root.className,
-  );
+  root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
+  root['data-size'] = state.size;
+  root['data-disabled'] = state.disabled || undefined;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.rail.className = mergeClasses(
-    sliderClassNames.rail,
-    railStyles.rail,
-    isVertical ? railStyles.vertical : railStyles.horizontal,
-    state.rail.className,
-  );
+  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
+  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Slider*` BEM
+  // statics that used to lead these lists are gone (D16.1); the marker is Slider's sole public
+  // identity CLASS now. It is a literal, unhashed, GLOBAL token: it is the only handle by which
+  // another module — in this package or any other — can style an element from this Slider's
+  // state, because `styles.root` is hashed and unaddressable from outside this file.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in Slider.module.css and by block
+  // order within it, not by the order of these arguments — see that file's header for the
+  // mapping back to the mergeClasses() argument order this replaces, and for why every rule
+  // sits at altitude `fui.components.l1`.
+  //
+  // The state mutation below is preserved deliberately (DECISIONS.md D14 defers the
+  // pure-builder rewrite to a single Phase 3 sweep). The Griffel original's
+  // `eslint-disable-next-line react-hooks/immutability` comments are dropped because the rule
+  // no longer reports here — same as the react-divider and react-switch conversions.
+  state.root.className = clsx(styles.root, 'group/fui-slider', state.root.className);
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.thumb.className = mergeClasses(
-    sliderClassNames.thumb,
-    thumbStyles.thumb,
-    isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
-    state.disabled && thumbStyles.disabled,
-    state.thumb.className,
-  );
+  state.rail.className = clsx(styles.rail, state.rail.className);
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.input.className = mergeClasses(
-    sliderClassNames.input,
-    inputStyles.input,
-    isVertical ? inputStyles.vertical : inputStyles.horizontal,
-    state.disabled && inputStyles.disabled,
-    state.input.className,
-  );
+  state.thumb.className = clsx(styles.thumb, state.thumb.className);
+
+  state.input.className = clsx(styles.input, state.input.className);
 
   return state;
 };

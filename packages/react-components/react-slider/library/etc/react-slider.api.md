@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSlider_unstable: (state: SliderBaseState) => JSXElement;
@@ -24,8 +23,10 @@ export type SliderBaseProps = Omit<SliderProps, 'size'>;
 // @public
 export type SliderBaseState = Omit<SliderState, 'size'>;
 
-// @public (undocumented)
-export const sliderClassNames: SlotClassNames<SliderSlots>;
+// @public @deprecated
+export const sliderClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const sliderCSSVars: {

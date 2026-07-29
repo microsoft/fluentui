@@ -3,23 +3,26 @@
 exports[`Slider renders disabled Slider correctly 1`] = `
 <div>
   <div
-    class="fui-Slider"
+    class="group/fui-slider"
+    data-disabled="true"
+    data-orientation="horizontal"
+    data-size="medium"
     style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%;"
   >
     <input
-      class="fui-Slider__input"
+      class=""
       disabled=""
-      id="slider-_r_a_"
+      id="slider-_r_c_"
       max="10"
       min="0"
       type="range"
       value="5"
     />
     <div
-      class="fui-Slider__rail"
+      class=""
     />
     <div
-      class="fui-Slider__thumb"
+      class=""
     />
   </div>
 </div>
@@ -28,22 +31,24 @@ exports[`Slider renders disabled Slider correctly 1`] = `
 exports[`Slider renders horizontal Slider correctly 1`] = `
 <div>
   <div
-    class="fui-Slider"
+    class="group/fui-slider"
+    data-orientation="horizontal"
+    data-size="medium"
     style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%;"
   >
     <input
-      class="fui-Slider__input"
-      id="slider-_r_8_"
+      class=""
+      id="slider-_r_a_"
       max="10"
       min="0"
       type="range"
       value="5"
     />
     <div
-      class="fui-Slider__rail"
+      class=""
     />
     <div
-      class="fui-Slider__thumb"
+      class=""
     />
   </div>
 </div>
@@ -52,12 +57,14 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
 exports[`Slider renders vertical Slider correctly 1`] = `
 <div>
   <div
-    class="fui-Slider"
+    class="group/fui-slider"
+    data-orientation="vertical"
+    data-size="medium"
     style="--fui-Slider--direction: 0deg; --fui-Slider--progress: 50%;"
   >
     <input
-      class="fui-Slider__input"
-      id="slider-_r_9_"
+      class=""
+      id="slider-_r_b_"
       max="10"
       min="0"
       orient="vertical"
@@ -65,10 +72,10 @@ exports[`Slider renders vertical Slider correctly 1`] = `
       value="5"
     />
     <div
-      class="fui-Slider__rail"
+      class=""
     />
     <div
-      class="fui-Slider__thumb"
+      class=""
     />
   </div>
 </div>

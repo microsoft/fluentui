@@ -10,7 +10,7 @@ export {
   Slider,
   renderSlider_unstable,
   sliderCSSVars,
-  sliderClassNames,
+  sliderClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSliderState_unstable,
   useSliderStyles_unstable,
   useSlider_unstable,

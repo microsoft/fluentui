@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,23 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (specials batch S1).
+   * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
+   * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
+   * as `@griffel/jest-serializer` did for Griffel atomics.
+   *
+   * `@griffel/jest-serializer` is DROPPED: nothing this suite renders authors Griffel any
+   * more. Slider's own styles are converted, `@fluentui/react-field` (the only styled
+   * component the suite mounts, in the surrounding-Field test) is converted, and
+   * `@fluentui/react-tabster` contributes only the `useFocusWithin` ref — no classes.
+   *
+   * Note Jest MERGES `moduleNameMapper` from the preset but a project-level
+   * `snapshotSerializers` REPLACES the preset's array, which is why this file has to list
+   * the serializer itself.
+   */
+  moduleNameMapper: {
+    '\\.module\\.css$': cssModules.moduleNameMapperTarget,
+  },
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };
