@@ -12,7 +12,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const MessageBar: ForwardRefComponent<MessageBarProps>;
@@ -20,8 +19,10 @@ export const MessageBar: ForwardRefComponent<MessageBarProps>;
 // @public
 export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
 
-// @public (undocumented)
-export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>;
+// @public
+export const messageBarActionsClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MessageBarActionsContextValues = {
@@ -51,8 +52,10 @@ export type MessageBarBaseState = DistributiveOmit<MessageBarState, 'shape'>;
 // @public
 export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
 
-// @public (undocumented)
-export const messageBarBodyClassNames: SlotClassNames<MessageBarBodySlots>;
+// @public
+export const messageBarBodyClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MessageBarBodyContextValues = {
@@ -72,8 +75,10 @@ export type MessageBarBodySlots = {
 // @public
 export type MessageBarBodyState = ComponentState<MessageBarBodySlots>;
 
-// @public (undocumented)
-export const messageBarClassNames: SlotClassNames<MessageBarSlots>;
+// @public
+export const messageBarClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const messageBarContextDefaultValue: MessageBarContextValue;
@@ -97,8 +102,10 @@ export type MessageBarContextValues = {
 // @public
 export const MessageBarGroup: ForwardRefComponent<MessageBarGroupProps>;
 
-// @public (undocumented)
-export const messageBarGroupClassNames: SlotClassNames<MessageBarGroupSlots>;
+// @public
+export const messageBarGroupClassNames: {
+    root: string;
+};
 
 // @public
 export type MessageBarGroupProps = ComponentProps<MessageBarGroupSlots> & {
@@ -143,8 +150,10 @@ export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<Me
 // @public
 export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
 
-// @public (undocumented)
-export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots>;
+// @public
+export const messageBarTitleClassNames: {
+    root: string;
+};
 
 // @public
 export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots>;

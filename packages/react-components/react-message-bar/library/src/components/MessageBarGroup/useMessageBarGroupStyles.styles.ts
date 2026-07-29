@@ -12,40 +12,45 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { MessageBarGroupSlots, MessageBarGroupState } from './MessageBarGroup.types';
+import type { MessageBarGroupState } from './MessageBarGroup.types';
 
 import styles from './MessageBarGroup.module.css';
 
-export const messageBarGroupClassNames: SlotClassNames<MessageBarGroupSlots> = {
-  root: 'fui-MessageBarGroup',
+/**
+ * MessageBarGroup's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. See `messageBarClassNames` in
+ * `../MessageBar/useMessageBarStyles.styles.ts` for the full rationale, including why this is
+ * not tagged `@deprecated`. In short: the `fui-MessageBarGroup` BEM static is gone (D16.1),
+ * the type narrowed to `{ root: string }` so per-slot reads are compile errors, and the value
+ * is a class TOKEN — use `fuiSelector(messageBarGroupClassNames.root)` from
+ * `@fluentui/react-utilities` to build a selector from it.
+ */
+export const messageBarGroupClassNames: { root: string } = {
+  root: 'group/fui-message-bar-group',
 };
 
 /**
  * Apply styling to the MessageBarGroup slots based on the state
  */
 export const useMessageBarGroupStyles_unstable = (state: MessageBarGroupState): MessageBarGroupState => {
-  // ARGUMENT ORDER — `styles.root`, static, marker, consumer className. Order carries no
-  // cascade meaning (the `@layer fui.*` order decides every tie, DECISIONS.md D2), so the
-  // only thing position buys is the D15.1 invariant: the marker must never be `classList[0]`,
-  // because nwsapi's `:scope` polyfill builds its anchor from `escape(element.classList[0])`
-  // and the `/` in `group/fui-message-bar-group` survives that escaping into an invalid
-  // selector, throwing a render-time `AggregateError` under jsdom.
+  // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). Order
+  // carries no cascade meaning (the `@layer fui.*` order decides every tie, DECISIONS.md D2),
+  // so the only thing position buys is the D15.1 invariant: the marker must never be
+  // `classList[0]`, because nwsapi's `:scope` polyfill builds its anchor from
+  // `escape(element.classList[0])` and the `/` in `group/fui-message-bar-group` survives that
+  // escaping into an invalid selector, throwing a render-time `AggregateError` under jsdom.
   //
-  // MessageBarGroup's root is a "Class B" slot in the statics-removal design (§4b): it
-  // carries the marker but had NO unconditional module class, so `fui-MessageBarGroup` was
-  // the only thing holding index 0 — and that static is scheduled for removal. `styles.root`
-  // is the token that keeps the invariant satisfied afterwards, and leading with it NOW
-  // (statics still present, so this change is inert) makes that removal a pure deletion of
-  // one argument. Do not reorder.
+  // MessageBarGroup's root is one of the six "Class B" slots (D16.2): it carries the marker
+  // but has NO unconditional module class of its own, so before D16 the `fui-MessageBarGroup`
+  // static was the only thing holding index 0. `styles.root` — the identity-only local minted
+  // for exactly this purpose — is what keeps the invariant satisfied now that the static is
+  // gone. Do not reorder, and do not delete that local because it looks empty.
   //
-  // The marker itself is a literal, unhashed, GLOBAL token — the handle by which a descendant
-  // module can style itself from this group's state (DECISIONS.md D15).
-  state.root.className = clsx(
-    styles.root,
-    messageBarGroupClassNames.root,
-    'group/fui-message-bar-group',
-    state.root.className,
-  );
+  // The marker itself is a literal, unhashed, GLOBAL token, written literally here rather than
+  // read back out of `messageBarGroupClassNames` — the handle by which a descendant module can
+  // style itself from this group's state (DECISIONS.md D15).
+  state.root.className = clsx(styles.root, 'group/fui-message-bar-group', state.root.className);
   return state;
 };

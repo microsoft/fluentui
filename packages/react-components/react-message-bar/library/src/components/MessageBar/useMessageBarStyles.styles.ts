@@ -14,15 +14,33 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
+import type { MessageBarState } from './MessageBar.types';
 
 import styles from './MessageBar.module.css';
 
-export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
-  root: 'fui-MessageBar',
-  icon: 'fui-MessageBar__icon',
-  bottomReflowSpacer: 'fui-MessageBar__bottomReflowSpacer',
+/**
+ * MessageBar's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `icon` / `bottomReflowSpacer` keys are gone along with the `fui-MessageBar*` BEM statics
+ * (D16.1), and the type has narrowed from `SlotClassNames<MessageBarSlots>` to
+ * `{ root: string }` so that any read of a per-slot key is a compile error on the exact line
+ * that would otherwise have silently stopped matching.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + messageBarClassNames.root` is invalid CSS. Use
+ * `fuiSelector(messageBarClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ */
+export const messageBarClassNames: { root: string } = {
+  root: 'group/fui-message-bar',
 };
 
 /**
@@ -60,13 +78,19 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   root['data-layout'] = layout;
   root['data-intent'] = intent;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this MessageBar's state, because `styles.root`
-  // is hashed and unaddressable from outside this file. MessageBarBody / MessageBarTitle /
-  // MessageBarActions are separate components nested inside this root, so
+  // ARGUMENT ORDER — `styles.root`, marker, conditional module classes, consumer className
+  // (DECISIONS.md D16.2). The unconditional hashed module class leads so the marker is never
+  // `classList[0]`: nwsapi's `:scope` polyfill builds its anchor from
+  // `escape(element.classList[0])`, and the `/` in `group/fui-message-bar` survives that
+  // escaping into an invalid selector, throwing a render-time `AggregateError` under jsdom
+  // (DECISIONS.md D15.1). Before D16 the `fui-MessageBar` static held that position;
+  // `styles.root` holds it now. `styles.square` cannot: it is conditional on `shape`.
+  //
+  // The marker is a literal, unhashed, GLOBAL token — written literally rather than read back
+  // out of `messageBarClassNames` — and is the only handle by which another module, in this
+  // package or any other, can style an element from this MessageBar's state, because
+  // `styles.root` is hashed and unaddressable from outside this file. MessageBarBody /
+  // MessageBarTitle / MessageBarActions are separate components nested inside this root, so
   // `@variant group-…/fui-message-bar { … }` in one of THEIR modules is exactly the
   // cross-component read this exists for: `data-intent` and `data-layout` are already
   // stamped here and are otherwise invisible to them (DECISIONS.md D15).
@@ -78,21 +102,23 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   // The `info` intent has no class here because both of its Griffel slices are `{}`
   // ("already in base reset styles"); the module emits no rule for it.
   state.root.className = clsx(
-    messageBarClassNames.root,
-    'group/fui-message-bar',
     styles.root,
+    'group/fui-message-bar',
     shape === 'square' && styles.square,
     state.root.className,
   );
 
+  // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
+  // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle
+  // on component internals).
   if (state.icon) {
-    state.icon.className = clsx(messageBarClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = clsx(styles.icon, state.icon.className);
   }
 
   if (state.bottomReflowSpacer) {
     // No consumer className is merged here — reproduced verbatim from the Griffel hook,
     // which also omitted it.
-    state.bottomReflowSpacer.className = clsx(messageBarClassNames.bottomReflowSpacer, styles['bottom-reflow-spacer']);
+    state.bottomReflowSpacer.className = clsx(styles['bottom-reflow-spacer']);
   }
 
   return state;

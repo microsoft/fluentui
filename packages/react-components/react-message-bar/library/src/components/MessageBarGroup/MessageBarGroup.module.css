@@ -21,18 +21,16 @@
  *
  * WHY IT EXISTS (statics-removal design §4b, DECISIONS.md D15.1 / D16.2). MessageBarGroup's
  * root is one of the six "Class B" slots: it carries the `group/fui-message-bar-group`
- * marker but has NO unconditional module class, so today only the `fui-MessageBarGroup`
- * static keeps the marker off `classList[0]`. That position is load-bearing: jsdom polyfills
- * `:scope` through nwsapi, whose `makeref()` builds its anchor from
+ * marker but has NO unconditional module class of its own. Until D16 the `fui-MessageBarGroup`
+ * static was the only thing keeping the marker off `classList[0]`; that static is now gone and
+ * THIS LOCAL IS THE ONLY REMAINING LEADING TOKEN. That position is load-bearing: jsdom
+ * polyfills `:scope` through nwsapi, whose `makeref()` builds its anchor from
  * `escape(element.classList[0])`, and the `/` in `group/fui-message-bar-group` survives that
  * escaping and produces an invalid selector — a render-time `AggregateError` for any test or
- * app that evaluates a `:scope` selector against a converted component. When the statics are
- * removed the marker would become `classList[0]` here unless something selector-safe already
- * leads.
+ * app that evaluates a `:scope` selector against a converted component.
  *
- * This local is that leading token. It is minted NOW, while the static is still present, so
- * the statics-removal sweep is a pure deletion in this file's hook rather than a change that
- * has to add a class and delete one in the same step.
+ * The `component-has-group-marker` conformance test in `MessageBarGroup.test.tsx` asserts
+ * exactly this, so a regression here fails a test rather than an end user's app.
  *
  * DO NOT DELETE BECAUSE IT LOOKS EMPTY. If MessageBarGroup's root ever gains a declaration,
  * it belongs in this block — and the placeholder declaration below goes away with it.

@@ -7,7 +7,7 @@ import { AnnounceProvider } from '@fluentui/react-shared-contexts';
 import { MessageBarBody } from '../MessageBarBody/MessageBarBody';
 import { MessageBarTitle } from '../MessageBarTitle/MessageBarTitle';
 import { MessageBarActions } from '../MessageBarActions/MessageBarActions';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { fuiSelector, resetIdsForTests } from '@fluentui/react-utilities';
 import type { MessageBarProps } from './MessageBar.types';
 import { messageBarClassNames } from './useMessageBarStyles.styles';
 
@@ -41,17 +41,24 @@ describe('MessageBar', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            icon: 'Icon',
-            layout: 'multiline',
-          },
-        },
-      ],
+    disabledTests: [
+      'make-styles-overrides-win',
+      // Statics removal (DECISIONS.md D16.1 / D16.6). MessageBar no longer renders
+      // `fui-MessageBar*` BEM statics, and `messageBarClassNames` is now `{ root: <marker> }`,
+      // so all three sub-tests of this rule — the export shape, the hard-coded
+      // `fui-<Component>__<slot>` format, and the rendered-class assertion — are testing a
+      // contract the component is deliberately no longer under. It is replaced by
+      // `component-has-group-marker` (now a default test). The `has-static-classnames` testOptions entry that
+      // used to render this component with `icon` + `layout: 'multiline'` (so the `icon` and
+      // `bottomReflowSpacer` statics appeared in the DOM) went with it: there are no sub-slot
+      // statics left to find.
+      'component-has-static-classnames-object',
+    ],
+    // `component-has-group-marker` asserts the D16 public contract: exactly one
+    // `group/fui-message-bar` marker on the outermost slot, and never at `classList[0]`
+    // (DECISIONS.md D15.1 / D16.2).
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
   });
 
@@ -152,8 +159,17 @@ describe('MessageBar', () => {
         </MessageBar>,
       );
 
+    // Statics removal (DECISIONS.md D16.1/D16.5): `messageBarClassNames.bottomReflowSpacer` no
+    // longer exists — sub-slots have no public class-name handle, and that slot's only class is
+    // now a hashed `fuicm-*` this test cannot name. Reflow is instead read off the root's
+    // `data-layout`, which is public contract surface (D16.1) and is the *same* signal: the
+    // spacer's `renderByDefault` in `useMessageBar.ts` is literally
+    // `computedLayout === 'multiline'`.
+    //
+    // `fuiSelector` is required rather than `'.' + …`: the marker's `/` is legal in a class
+    // token but terminates the name in selector position (D16.5).
     const isReflowing = (container: HTMLElement) =>
-      container.querySelector(`.${messageBarClassNames.bottomReflowSpacer}`) !== null;
+      container.querySelector(`${fuiSelector(messageBarClassNames.root)}[data-layout='multiline']`) !== null;
 
     // Simulate the container being resized (e.g. dragging the window / page) to a given width.
     const resizeTo = (inlineSize: number) =>
