@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.types';
+import type {
+  TagPickerInputBaseProps,
+  TagPickerInputBaseState,
+  TagPickerInputProps,
+  TagPickerInputState,
+} from './TagPickerInput.types';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import {
@@ -18,27 +23,24 @@ import { tagPickerInputCSSRules } from '../../utils/tokens';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 /**
- * Create the state required to render TagPickerInput.
+ * Create the base state required to render TagPickerInput, without design-only props.
+ * The Base hook omits Tabster-driven focus management; consumers can re-add it via the
+ * styled wrapper {@link useTagPickerInput_unstable} or by composing their own keydown handler.
  *
- * The returned state can be modified with hooks such as useTagPickerInputStyles_unstable,
- * before being passed to renderTagPickerInput_unstable.
- *
- * @param props - props from this instance of TagPickerInput
- * @param ref - reference to root HTMLDivElement of TagPickerInput
+ * @param props - props from this instance of TagPickerInput (without appearance)
+ * @param ref - reference to root HTMLInputElement of TagPickerInput
  */
-export const useTagPickerInput_unstable = (
-  propsArg: TagPickerInputProps,
+export const useTagPickerInputBase_unstable = (
+  props: TagPickerInputBaseProps,
   ref: React.Ref<HTMLInputElement>,
-): TagPickerInputState => {
-  const props = useFieldControlProps_unstable(propsArg, {
+): TagPickerInputBaseState => {
+  const fieldProps = useFieldControlProps_unstable(props, {
     supportsLabelFor: true,
     supportsRequired: true,
     supportsSize: true,
   });
   const { controller: activeDescendantController } = useActiveDescendantContext();
-  const size = useTagPickerContext_unstable(ctx => ctx.size);
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
-  const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
 
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef as React.RefObject<HTMLInputElement>);
   const selectedOptions = useTagPickerContext_unstable(ctx => ctx.selectedOptions);
@@ -70,8 +72,7 @@ export const useTagPickerInput_unstable = (
     }
   }, [triggerRef]);
 
-  const { value = contextValue, disabled = contextDisabled } = props;
-  const { findLastFocusable } = useFocusFinders();
+  const { value = contextValue, disabled = contextDisabled } = fieldProps;
 
   const isTypingRef = React.useRef(false);
 
@@ -81,17 +82,10 @@ export const useTagPickerInput_unstable = (
       value: value ?? '',
       'aria-controls': open ? popoverId : undefined,
       disabled,
-      ...getIntrinsicElementProps('input', props),
+      ...getIntrinsicElementProps('input', fieldProps),
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
-        props.onKeyDown?.(event);
-        if (
-          (event.key === ArrowLeft || event.key === Backspace) &&
-          event.currentTarget.selectionStart === 0 &&
-          event.currentTarget.selectionEnd === 0 &&
-          tagPickerGroupRef.current
-        ) {
-          findLastFocusable(tagPickerGroupRef.current)?.focus();
-        } else if (event.key === Space) {
+        fieldProps.onKeyDown?.(event);
+        if (event.key === Space) {
           if (open && !isTypingRef.current) {
             setOpen(event, false);
           }
@@ -123,21 +117,55 @@ export const useTagPickerInput_unstable = (
         setOpen,
         setValue,
         multiselect: true,
-        value: props.value,
+        value: fieldProps.value,
       },
     },
   );
 
-  const state: TagPickerInputState = {
+  return {
     components: {
       root: 'input',
     },
     root,
     disabled,
+  };
+};
+
+/**
+ * Create the state required to render TagPickerInput.
+ *
+ * The returned state can be modified with hooks such as useTagPickerInputStyles_unstable,
+ * before being passed to renderTagPickerInput_unstable.
+ *
+ * @param props - props from this instance of TagPickerInput
+ * @param ref - reference to root HTMLInputElement of TagPickerInput
+ */
+export const useTagPickerInput_unstable = (
+  props: TagPickerInputProps,
+  ref: React.Ref<HTMLInputElement>,
+): TagPickerInputState => {
+  const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
+  const { findLastFocusable } = useFocusFinders();
+
+  const onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+    props.onKeyDown?.(event);
+    if (
+      (event.key === ArrowLeft || event.key === Backspace) &&
+      event.currentTarget.selectionStart === 0 &&
+      event.currentTarget.selectionEnd === 0 &&
+      tagPickerGroupRef.current
+    ) {
+      findLastFocusable(tagPickerGroupRef.current)?.focus();
+    }
+  });
+
+  const baseState = useTagPickerInputBase_unstable({ ...props, onKeyDown }, ref);
+  const size = useTagPickerContext_unstable(ctx => ctx.size);
+
+  return {
+    ...baseState,
     size,
   };
-
-  return state;
 };
 
 /**

@@ -1,0 +1,12 @@
+<f-template name="fluent-dialog-body" shadowrootmode="open">
+  <template>
+    {{styles}}
+    <div class="title" part="title">
+      <slot name="title"></slot>
+      <slot name="title-action"></slot>
+      <slot name="close" @click="{clickHandler($e)}"></slot>
+    </div>
+    <div class="content" part="content"><slot></slot></div>
+    <div class="actions" part="actions"><slot name="action"></slot></div>
+  </template>
+</f-template>

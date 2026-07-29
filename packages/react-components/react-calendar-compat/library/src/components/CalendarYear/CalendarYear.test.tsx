@@ -96,4 +96,17 @@ describe('CalendarYear', () => {
       expect(onNavigateDate).not.toHaveBeenCalled();
     });
   });
+
+  describe('motion wrappers preserve grid structure', () => {
+    it('renders all year rows under the grid with role="row"', () => {
+      const { getByRole, getAllByRole } = render(<CalendarYear {...requiredProps} navigatedYear={2025} />);
+      const grid = getByRole('grid');
+      const rows = getAllByRole('row');
+      // CalendarYear lays out CELL_COUNT (12) cells across rows of 4 — expect 3 rows.
+      expect(rows.length).toBe(3);
+      rows.forEach(row => {
+        expect(grid.contains(row)).toBe(true);
+      });
+    });
+  });
 });

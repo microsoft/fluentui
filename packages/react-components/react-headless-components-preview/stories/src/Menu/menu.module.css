@@ -1,0 +1,282 @@
+/*
+ * Story-level styles for the headless Menu. Headless components do not ship
+ * their own CSS; consumers compose visuals using design tokens. The classes
+ * below mirror the patterns established by Popover's story module so that
+ * every Menu story has a coherent look without one-off Tailwind utilities.
+ */
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 var(--space-4);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.trigger:hover,
+.trigger[aria-expanded='true'] {
+  background: var(--accent-strong);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.triggerSecondary {
+  height: 28px;
+  padding: 0 var(--space-3);
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.triggerSecondary:hover {
+  background: var(--surface-muted);
+}
+
+.contextTarget {
+  display: inline-block;
+  width: 288px;
+  height: 128px;
+  border-radius: var(--radius-md);
+  border: var(--stroke-thin) dashed var(--border-stronger);
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  cursor: context-menu;
+  user-select: none;
+}
+
+.surface {
+  background: var(--bg-elev);
+  border-radius: var(--radius-md);
+  border: var(--stroke-thin) solid var(--border);
+  box-shadow: var(--shadow-3);
+  padding: var(--space-1) 0;
+  min-width: 180px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+/* Base item — sized to match the styled Menu's item height (~32px) so the headless
+   demo reads as the same affordance, while still using headless tokens. */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 6px var(--space-3);
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 13.5px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.item:hover,
+.item:focus-visible {
+  background: var(--surface-muted);
+}
+
+.item:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.item[aria-disabled='true'] {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+.item[aria-disabled='true']:hover {
+  background: transparent;
+}
+
+/* Item layouts */
+.itemSpread {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.itemLink {
+  display: block;
+  text-decoration: none;
+}
+
+/* Decoration slots */
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+}
+
+.shortcut {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-inline-start: var(--space-4);
+}
+
+.subText {
+  display: block;
+  font-size: 11.5px;
+  color: var(--text-faint);
+  margin-top: 2px;
+}
+
+.chevron {
+  margin-inline-start: auto;
+  color: var(--text-faint);
+}
+
+/* Divider */
+.divider {
+  height: var(--stroke-thin);
+  margin: var(--space-1) var(--space-2);
+  background: var(--border);
+}
+
+/* Group + header */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.groupHeader {
+  padding: var(--space-2) var(--space-3) var(--space-1);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Selectable indicators (checkmark / radio dot) */
+.checkmark {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-pill);
+  border: var(--stroke-thin) solid var(--border-strong);
+  background: transparent;
+  color: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.item[aria-checked='true'] .checkmark {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* Radio override — the `●` glyph reads as the inner dot, so we keep the ring
+   hollow and tint the glyph instead of filling the whole circle. Mirrors the
+   thick-border ring style used by the standalone RadioGroup. */
+.item[role='menuitemradio'][aria-checked='true'] .checkmark {
+  background: var(--bg-elev);
+  color: var(--accent);
+  font-size: 10px;
+}
+
+/* Switch indicator — slider track + knob */
+.switchTrack {
+  position: relative;
+  flex-shrink: 0;
+  width: 28px;
+  height: 16px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+  border: var(--stroke-thin) solid var(--border);
+  transition: background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.switchTrack::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+  transition: transform var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.item[aria-checked='true'] .switchTrack {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.item[aria-checked='true'] .switchTrack::after {
+  transform: translateX(12px);
+  background: var(--accent-contrast);
+}
+
+/* Composite layouts */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+/* SplitGroup layout — two items side by side that share a row */
+.splitGroup {
+  display: flex;
+  align-items: stretch;
+  gap: var(--stroke-thin);
+}
+
+.splitPrimary {
+  flex: 1 1 auto;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.splitSecondary {
+  flex: 0 0 auto;
+  max-width: 50px;
+  justify-content: center;
+  padding-inline: var(--space-2);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

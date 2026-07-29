@@ -11,8 +11,8 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
  *
  * @slot checked-indicator - The checked indicator
  * @slot indeterminate-indicator - The indeterminate indicator
- * @fires change - Emits a custom change event when the checked state changes
- * @fires input - Emits a custom input event when the checked state changes
+ * @fires { Event } change - Emits a custom change event when the checked state changes
+ * @fires { Event } input - Emits a custom input event when the checked state changes
  *
  * @public
  */

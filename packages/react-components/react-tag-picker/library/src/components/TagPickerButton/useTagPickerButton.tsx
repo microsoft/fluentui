@@ -2,23 +2,25 @@
 
 import type * as React from 'react';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
-import type { TagPickerButtonProps, TagPickerButtonState } from './TagPickerButton.types';
+import type {
+  TagPickerButtonBaseProps,
+  TagPickerButtonBaseState,
+  TagPickerButtonProps,
+  TagPickerButtonState,
+} from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useButtonTriggerSlot } from '@fluentui/react-combobox';
 
 /**
- * Create the state required to render PickerButton.
+ * Create the base state required to render TagPickerButton, without design-only props.
  *
- * The returned state can be modified with hooks such as usePickerButtonStyles_unstable,
- * before being passed to renderPickerButton_unstable.
- *
- * @param props - props from this instance of PickerButton
- * @param ref - reference to root HTMLDivElement of PickerButton
+ * @param props - props from this instance of TagPickerButton (without size, appearance)
+ * @param ref - reference to root HTMLButtonElement of TagPickerButton
  */
-export const useTagPickerButton_unstable = (
-  props: TagPickerButtonProps,
+export const useTagPickerButtonBase_unstable = (
+  props: TagPickerButtonBaseProps,
   ref: React.Ref<HTMLButtonElement>,
-): TagPickerButtonState => {
+): TagPickerButtonBaseState => {
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
@@ -39,7 +41,7 @@ export const useTagPickerButton_unstable = (
       tabIndex: 0,
       children:
         value ||
-        // @ts-expect-error - FIXME: TS2339: Property 'placeholder' does not exist on type 'TagPickerButtonProps'
+        // @ts-expect-error - FIXME: TS2339: Property 'placeholder' does not exist on type 'TagPickerButtonBaseProps'
         props.placeholder,
       'aria-controls': open ? popoverId : undefined,
       ref,
@@ -54,16 +56,33 @@ export const useTagPickerButton_unstable = (
     },
   });
 
-  const size = useTagPickerContext_unstable(ctx => ctx.size);
-
-  const state: TagPickerButtonState = {
+  return {
     components: {
       root: 'button',
     },
     root,
-    size,
     hasSelectedOption,
   };
+};
 
-  return state;
+/**
+ * Create the state required to render TagPickerButton.
+ *
+ * The returned state can be modified with hooks such as useTagPickerButtonStyles_unstable,
+ * before being passed to renderTagPickerButton_unstable.
+ *
+ * @param props - props from this instance of TagPickerButton
+ * @param ref - reference to root HTMLButtonElement of TagPickerButton
+ */
+export const useTagPickerButton_unstable = (
+  props: TagPickerButtonProps,
+  ref: React.Ref<HTMLButtonElement>,
+): TagPickerButtonState => {
+  const baseState = useTagPickerButtonBase_unstable(props, ref);
+  const size = useTagPickerContext_unstable(ctx => ctx.size);
+
+  return {
+    ...baseState,
+    size,
+  };
 };

@@ -1,9 +1,5 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition as radioDefinition } from '../radio/radio.definition.js';
-import { definition as radioGroupDefinition } from './radio-group.definition.js';
-
-radioGroupDefinition.define(FluentDesignSystem.registry);
-radioDefinition.define(FluentDesignSystem.registry);
+import '../radio/define.js';
+import './define.js';
 
 const itemRenderer = () => {
   const radioGroup = document.createElement('fluent-radio-group');

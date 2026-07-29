@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: export base hook types",
-  "packageName": "@fluentui/react-tabs",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

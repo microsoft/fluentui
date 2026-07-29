@@ -38,7 +38,6 @@ import {
   calcTotalBandUnits,
   calcRequiredWidth,
   getColorFromToken,
-  isSafeUrl,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -60,7 +59,7 @@ import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
 import type { JSXElement } from '@fluentui/utilities';
-import { isInvalidValue } from '@fluentui/chart-utilities';
+import { isInvalidValue, isSafeUrl } from '@fluentui/chart-utilities';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();

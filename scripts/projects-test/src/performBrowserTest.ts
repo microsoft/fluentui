@@ -95,7 +95,7 @@ export async function performBrowserTest(publicDirectory: string) {
     }
   });
   page.on('pageerror', pageError => {
-    error = pageError;
+    error = pageError as Error;
   });
 
   await visitUrl(page, url);

@@ -1,5 +1,12 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, EventData, EventHandler, JSXElement } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  DistributiveOmit,
+  EventData,
+  EventHandler,
+  JSXElement,
+} from '@fluentui/react-utilities';
 import type { ComboboxProps, ComboboxState, ListboxContextValue } from '@fluentui/react-combobox';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
@@ -106,3 +113,18 @@ export type TagPickerContextValues = {
   activeDescendant: ActiveDescendantContextValue;
   listbox: ListboxContextValue;
 };
+
+/**
+ * TagPicker Base Props - omits the presentation-related props that the base hook does not handle:
+ * the floating-ui `positioning` prop (the styled {@link TagPickerProps} re-introduces it via
+ * `usePositioning`) as well as `size`, `appearance` and `inline` (layered on by the styled
+ * {@link useTagPicker_unstable} hook).
+ */
+export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning' | 'size' | 'appearance' | 'inline'>;
+
+/**
+ * TagPicker Base State - the state produced by the base hook, which does not interact with the
+ * `size`, `appearance` and `inline` props. These are layered on by the styled
+ * {@link useTagPicker_unstable} hook.
+ */
+export type TagPickerBaseState = Omit<TagPickerState, 'size' | 'appearance' | 'inline'>;

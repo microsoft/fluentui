@@ -26,7 +26,6 @@ import {
   colorTransparentBackgroundSelected,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { pressedState } from '../styles/states/index.js';
 
 /**
@@ -116,14 +115,17 @@ export const styles = css`
   :host(${pressedState}[appearance='transparent']:active) {
     color: ${colorNeutralForeground2BrandPressed};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host(${pressedState}),
     :host(
         ${pressedState}:is([appearance='primary'], [appearance='subtle'], [appearance='outline'], [appearance='transparent'])
       ) {
       background: SelectedItem;
+    }
+
+    :host(${pressedState}[appearance='primary']) {
       color: SelectedItemText;
     }
-  `),
-);
+  }
+`;

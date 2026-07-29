@@ -24,7 +24,7 @@ export interface CalendarGridDayCellProps extends CalendarGridRowProps {
  * @internal
  */
 export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellProps> = props => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize unknown function — manual opt-out to preserve runtime behavior
 
   const {
     navigatedDate,

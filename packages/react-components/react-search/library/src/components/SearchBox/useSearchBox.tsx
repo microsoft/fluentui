@@ -108,6 +108,7 @@ export const useSearchBoxBase_unstable = (
           ...rootProps,
           ref: useMergedRefs(rootProps?.ref, searchBoxRootRef),
           onFocus: mergeCallbacks(rootProps?.onFocus, onFocus),
+          // eslint-disable-next-line react-hooks/refs
           onBlur: mergeCallbacks(rootProps?.onBlur, onBlur),
         },
         {

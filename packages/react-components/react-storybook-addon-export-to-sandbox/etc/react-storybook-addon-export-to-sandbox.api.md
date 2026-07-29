@@ -15,6 +15,7 @@ import { TransformOptions } from '@babel/core';
 interface Parameters_2 {
     // (undocumented)
     exportToSandbox?: ParametersConfig;
+    openInNewTab?: boolean;
 }
 export { Parameters_2 as Parameters }
 
@@ -22,8 +23,9 @@ export { Parameters_2 as Parameters }
 export interface PresetConfig {
     // (undocumented)
     babelLoaderOptionsUpdater?: (value: TransformOptions) => typeof value;
+    cssModules?: BabelPluginOptions['cssModules'];
     // (undocumented)
-    importMappings: BabelPluginOptions;
+    importMappings: BabelPluginOptions['importMappings'];
     // (undocumented)
     webpackRule?: RuleSetRule;
 }

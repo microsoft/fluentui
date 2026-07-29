@@ -23,8 +23,6 @@ export const defaultTableSelectionState: TableSelectionState = {
 export function useTableSelection<TItem>(
   options: SelectionHookParams,
 ): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem> {
-  'use no memo';
-
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return (tableState: TableFeaturesState<TItem>) => useTableSelectionState(tableState, options);

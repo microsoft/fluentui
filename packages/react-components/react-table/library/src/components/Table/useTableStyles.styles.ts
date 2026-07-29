@@ -39,13 +39,12 @@ const useStyles = makeStyles({
  * Apply styling to the Table slots based on the state
  */
 export const useTableStyles_unstable = (state: TableState): TableState => {
-  'use no memo';
-
   const styles = useStyles();
   const layoutStyles = {
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableClassName,
     styles.root,

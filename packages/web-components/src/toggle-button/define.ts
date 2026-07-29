@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './toggle-button.definition.js';
+import { ToggleButton } from './toggle-button.js';
 
-definition.define(FluentDesignSystem.registry);
+ToggleButton.define(definition);

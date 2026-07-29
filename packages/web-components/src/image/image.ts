@@ -6,6 +6,8 @@ import { ImageFit, ImageShape } from './image.options.js';
  *
  * @tag fluent-image
  *
+ * @slot - The default slot. Accepts any `<img>`, `<picture>`, `<video>`, or `<canvas>` element.
+ *
  * @public
  */
 export class Image extends FASTElement {

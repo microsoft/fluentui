@@ -1,0 +1,226 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-flex;
+}
+
+:host {
+  --icon-spacing: var(--spacingHorizontalSNudge);
+  position: relative;
+  contain: layout style;
+  vertical-align: middle;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  text-align: center;
+  text-decoration-line: none;
+  margin: 0;
+  min-height: 32px;
+  outline-style: none;
+  background-color: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForeground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  padding: 0 var(--spacingHorizontalM);
+  min-width: 96px;
+  border-radius: var(--borderRadiusMedium);
+  font-size: var(--fontSizeBase300);
+  font-family: var(--fontFamilyBase);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase300);
+  transition-duration: var(--durationFaster);
+  transition-property: background, border, color;
+  transition-timing-function: var(--curveEasyEase);
+  cursor: pointer;
+  user-select: none;
+}
+
+.content {
+  display: inherit;
+}
+
+:host(:hover) {
+  background-color: var(--colorNeutralBackground1Hover);
+  color: var(--colorNeutralForeground1Hover);
+  border-color: var(--colorNeutralStroke1Hover);
+}
+
+:host(:hover:active) {
+  background-color: var(--colorNeutralBackground1Pressed);
+  border-color: var(--colorNeutralStroke1Pressed);
+  color: var(--colorNeutralForeground1Pressed);
+  outline-style: none;
+}
+
+:host(:focus-visible) {
+  border-color: var(--colorTransparentStroke);
+  outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+  box-shadow: var(--shadow4), 0 0 0 2px var(--colorStrokeFocus2);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  :host {
+    transition-duration: 0.01ms;
+  }
+}
+
+::slotted(svg) {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  fill: currentColor;
+}
+
+::slotted([slot='start']) {
+  margin-inline-end: var(--icon-spacing);
+}
+
+::slotted([slot='end']),
+[slot='end'] {
+  flex-shrink: 0;
+  margin-inline-start: var(--icon-spacing);
+}
+
+:host([icon-only]) {
+  min-width: 32px;
+  max-width: 32px;
+}
+
+:host([size='small']) {
+  --icon-spacing: var(--spacingHorizontalXS);
+  min-height: 24px;
+  min-width: 64px;
+  padding: 0 var(--spacingHorizontalS);
+  border-radius: var(--borderRadiusSmall);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  font-weight: var(--fontWeightRegular);
+}
+
+:host([size='small'][icon-only]) {
+  min-width: 24px;
+  max-width: 24px;
+}
+
+:host([size='large']) {
+  min-height: 40px;
+  border-radius: var(--borderRadiusLarge);
+  padding: 0 var(--spacingHorizontalL);
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+
+:host([size='large'][icon-only]) {
+  min-width: 40px;
+  max-width: 40px;
+}
+
+:host([size='large']) ::slotted(svg) {
+  font-size: 24px;
+  height: 24px;
+  width: 24px;
+}
+
+:host(:is([shape='circular'], [shape='circular']:focus-visible)) {
+  border-radius: var(--borderRadiusCircular);
+}
+
+:host(:is([shape='square'], [shape='square']:focus-visible)) {
+  border-radius: var(--borderRadiusNone);
+}
+
+:host([appearance='primary']) {
+  background-color: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+  border-color: transparent;
+}
+
+:host([appearance='primary']:hover) {
+  background-color: var(--colorBrandBackgroundHover);
+}
+
+:host([appearance='primary']:is(:hover, :hover:active):not(:focus-visible)) {
+  border-color: transparent;
+}
+
+:host([appearance='primary']:is(:hover, :hover:active)) {
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+:host([appearance='primary']:hover:active) {
+  background-color: var(--colorBrandBackgroundPressed);
+}
+
+:host([appearance='primary']:focus-visible) {
+  border-color: var(--colorNeutralForegroundOnBrand);
+  box-shadow: var(--shadow2), 0 0 0 2px var(--colorStrokeFocus2);
+}
+
+:host([appearance='outline']) {
+  background-color: var(--colorTransparentBackground);
+}
+
+:host([appearance='outline']:hover) {
+  background-color: var(--colorTransparentBackgroundHover);
+}
+
+:host([appearance='outline']:hover:active) {
+  background-color: var(--colorTransparentBackgroundPressed);
+}
+
+:host([appearance='subtle']) {
+  background-color: var(--colorSubtleBackground);
+  color: var(--colorNeutralForeground2);
+  border-color: transparent;
+}
+
+:host([appearance='subtle']:hover) {
+  background-color: var(--colorSubtleBackgroundHover);
+  color: var(--colorNeutralForeground2Hover);
+  border-color: transparent;
+}
+
+:host([appearance='subtle']:hover:active) {
+  background-color: var(--colorSubtleBackgroundPressed);
+  color: var(--colorNeutralForeground2Pressed);
+  border-color: transparent;
+}
+
+:host([appearance='subtle']:hover) ::slotted(svg) {
+  fill: var(--colorNeutralForeground2BrandHover);
+}
+
+:host([appearance='subtle']:hover:active) ::slotted(svg) {
+  fill: var(--colorNeutralForeground2BrandPressed);
+}
+
+:host([appearance='transparent']) {
+  background-color: var(--colorTransparentBackground);
+  color: var(--colorNeutralForeground2);
+}
+
+:host([appearance='transparent']:hover) {
+  background-color: var(--colorTransparentBackgroundHover);
+  color: var(--colorNeutralForeground2BrandHover);
+}
+
+:host([appearance='transparent']:hover:active) {
+  background-color: var(--colorTransparentBackgroundPressed);
+  color: var(--colorNeutralForeground2BrandPressed);
+}
+
+:host(:is([appearance='transparent'], [appearance='transparent']:is(:hover, :active))) {
+  border-color: transparent;
+}
+
+::slotted(a) {
+  position: absolute;
+  inset: 0;
+}
+
+@media (forced-colors: active) {
+  :host {
+    border-color: LinkText;
+    color: LinkText;
+  }
+}

@@ -6,6 +6,9 @@ import { StoryContext } from './types';
 
 const defaultFileToPreview = encodeURIComponent('src/example.tsx');
 
+// SVG icon: external link (box with arrow pointing upper-right), similar to Storybook's native "open in new tab" icon
+const externalLinkIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M11 8.5v3a1 1 0 0 1-1 1H2.5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1H6"/><path d="M8.5 1.5H13v4.5"/><path d="M13 1.5 6.5 8"/></svg>`;
+
 const actionConfig = {
   'codesandbox-cloud': {
     label: 'CodeSandbox',
@@ -21,30 +24,57 @@ const actionConfig = {
   },
 };
 
-export function addDemoActionButton(context: StoryContext) {
+export function addDemoActionButtons(context: StoryContext) {
   const config = prepareData(context);
   if (!config) {
     throw new Error('issues with data');
   }
 
   prepareSandboxContainers(context).forEach(({ container, cssClasses }) => {
-    addActionButton(container, config, cssClasses);
+    const files = scaffold[config.bundler](config);
+    const action = actionConfig[config.provider];
+
+    if (context.parameters.openInNewTab !== false) {
+      addButton({
+        container,
+        classList: cssClasses,
+        markerClass: 'with-open-in-new-tab-button',
+        content: `${externalLinkIconSvg} Open in new tab`,
+        onClick: () => {
+          window.open(`./iframe.html?id=${encodeURIComponent(context.id)}&viewMode=story`, '_blank');
+        },
+      });
+    }
+
+    addButton({
+      container,
+      classList: cssClasses,
+      markerClass: 'with-code-sandbox-button',
+      content: `${externalLinkIconSvg} Open in ${action.label}`,
+      onClick: () => {
+        action.factory(files, config);
+      },
+    });
   });
 }
 
-function addActionButton(container: HTMLElement, config: Data, classList: string[]) {
-  const files = scaffold[config.bundler](config);
-  const action = actionConfig[config.provider];
+function addButton(options: {
+  container: HTMLElement;
+  classList: string[];
+  markerClass: string;
+  content: string;
+  onClick: () => void;
+}) {
+  const { container, classList, markerClass, content, onClick } = options;
+  const buttonClassList = classList.map(cls => (cls === 'with-code-sandbox-button' ? markerClass : cls));
 
   const button = document.createElement('button');
-  button.classList.add(...classList);
-  button.textContent = `Open in ${action.label}`;
+  button.classList.add(...buttonClassList);
+  button.innerHTML = content;
 
-  container?.prepend(button);
+  container.prepend(button);
 
-  button.addEventListener('click', _ev => {
-    action.factory(files, config);
-  });
+  button.addEventListener('click', onClick);
 }
 
 /**

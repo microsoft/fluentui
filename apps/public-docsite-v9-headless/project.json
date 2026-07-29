@@ -19,7 +19,8 @@
           "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
           "target": "build"
         }
-      ]
+      ],
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"]
     }
   }
 }

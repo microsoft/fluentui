@@ -21,13 +21,13 @@ const useBaseStyles = makeStyles({
  * Apply styling to the ToolbarRadioButton slots based on the state
  */
 export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonState): ToolbarRadioButtonState => {
-  'use no memo';
-
   const toggleButtonStyles = useBaseStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(state.checked && toggleButtonStyles.selected, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(state.checked && toggleButtonStyles.iconSelected, state.icon.className);
   }
 

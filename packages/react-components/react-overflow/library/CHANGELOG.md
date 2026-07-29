@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Wed, 25 Feb 2026 13:32:24 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2026 14:10:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.9.1)
+
+Wed, 15 Jul 2026 14:10:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.9.0..@fluentui/react-overflow_v9.9.1)
+
+### Patches
+
+- Bump @fluentui/priority-overflow to v9.4.1 ([PR #36401](https://github.com/microsoft/fluentui/pull/36401) by beachball)
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.9.0)
+
+Wed, 24 Jun 2026 11:09:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.8.0..@fluentui/react-overflow_v9.9.0)
+
+### Minor changes
+
+- Expose Overflow use/render/styles hooks, provider and context types for headless consumers ([PR #36304](https://github.com/microsoft/fluentui/pull/36304) by vgenaev@gmail.com)
+- feat: produce a correct overflow snapshot before the first paint ([PR #36264](https://github.com/microsoft/fluentui/pull/36264) by bsunderhus@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.4.0 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- fix: make Overflow container strict-mode safe ([PR #36262](https://github.com/microsoft/fluentui/pull/36262) by bsunderhus@microsoft.com)
+- fix: subscribe overflow hooks directly to the manager snapshot ([PR #36263](https://github.com/microsoft/fluentui/pull/36263) by bsunderhus@microsoft.com)
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.8.0)
+
+Tue, 26 May 2026 09:39:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.7.2..@fluentui/react-overflow_v9.8.0)
+
+### Minor changes
+
+- feat: add OverflowReorderObserver to recompute overflow when items are reordered via React state without a container resize ([PR #36231](https://github.com/microsoft/fluentui/pull/36231) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.17 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.7.2)
+
+Thu, 23 Apr 2026 14:21:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.7.1..@fluentui/react-overflow_v9.7.2)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.2.16 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.7.1)
 

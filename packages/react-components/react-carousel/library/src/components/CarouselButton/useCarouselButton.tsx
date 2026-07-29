@@ -116,6 +116,7 @@ export const useCarouselButton_unstable = (
         'aria-disabled': isTrailing,
         appearance: 'subtle',
         ...buttonProps,
+        // eslint-disable-next-line react-hooks/refs
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
       useMergedRefs(ref, buttonRef) as React.Ref<HTMLButtonElement>,

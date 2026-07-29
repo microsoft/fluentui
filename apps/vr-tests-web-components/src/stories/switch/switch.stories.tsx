@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
 import { Steps } from 'storywright';
-import { SwitchDefinition, FluentDesignSystem } from '@fluentui/web-components';
+import '@fluentui/web-components/switch/define.js';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
-
-SwitchDefinition.define(FluentDesignSystem.registry);
 
 const controlId = 'switch-id';
 

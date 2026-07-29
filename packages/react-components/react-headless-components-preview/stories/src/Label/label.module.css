@@ -1,0 +1,24 @@
+.label {
+  display: inline-flex;
+  gap: var(--space-1);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.label[data-disabled] {
+  color: var(--text-faint);
+  cursor: not-allowed;
+  text-decoration-color: var(--text-faint);
+}
+
+.required {
+  color: var(--danger);
+}
+
+/* Demo helpers (used by Storybook examples) */
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

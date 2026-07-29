@@ -1,16 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { Badge } from './badge.js';
+import { tagName } from './badge.options.js';
 import { styles } from './badge.styles.js';
 import { template } from './badge.template.js';
 
 /**
+ * The definition for the `<fluent-badge>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-badge\>
  */
-export const definition = Badge.compose({
-  name: `${FluentDesignSystem.prefix}-badge`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

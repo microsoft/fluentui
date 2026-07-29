@@ -9,8 +9,6 @@ import { useMenuContext_unstable } from '../contexts/menuContext';
 type NestingComponentName = 'MenuList' | 'MenuItem' | 'MenuItemCheckbox' | 'MenuItemRadio';
 
 export const useValidateNesting = (componentName: NestingComponentName): React.RefObject<HTMLElement | null> => {
-  'use no memo';
-
   const { targetDocument } = useFluent();
   const triggerRef = useMenuContext_unstable((context: MenuContextValue) => context.triggerRef);
   const inline = useMenuContext_unstable((context: MenuContextValue) => context.inline);

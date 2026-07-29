@@ -1,0 +1,49 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-flex;
+}
+
+:host {
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusMedium);
+  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  box-shadow: var(--shadow16);
+  box-sizing: border-box;
+  flex-direction: column;
+  margin: 0;
+  min-inline-size: 160px;
+  padding: var(--spacingHorizontalXS);
+  row-gap: var(--spacingHorizontalXXS);
+  width: auto;
+}
+
+:host([popover]) {
+  inset: unset;
+  overflow: auto;
+}
+
+@supports (anchor-name: --anchor) {
+  :host([popover]) {
+    position: fixed;
+    max-block-size: var(--listbox-max-height, calc(50vh - anchor-size(self-block)));
+    min-inline-size: anchor-size(inline);
+    inset-block-start: anchor(outside);
+    inset-inline-start: anchor(inside);
+    position-try-fallbacks: flip-block, flip-inline, flip-inline flip-block;
+  }
+}
+
+@supports not (anchor-name: --anchor) {
+  :host([popover]) {
+    margin-block-start: var(--margin-offset, 0);
+    max-block-size: var(--listbox-max-height, 50vh);
+    position: absolute;
+  }
+
+  :host([popover]:state(flip-block)) {
+    margin-block-start: revert;
+    translate: 0 -100%;
+  }
+}

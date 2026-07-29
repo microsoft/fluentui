@@ -21,11 +21,10 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useFluentProviderStyles_unstable = (state: FluentProviderState): FluentProviderState => {
-  'use no memo';
-
   const renderer = useRenderer_unstable();
   const styles = useStyles({ dir: state.dir, renderer });
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     fluentProviderClassNames.root,
     state.themeClassName,

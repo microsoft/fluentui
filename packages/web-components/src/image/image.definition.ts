@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { Image } from './image.js';
-import { template } from './image.template.js';
+import { tagName } from './image.options.js';
 import { styles } from './image.styles.js';
+import { template } from './image.template.js';
 
 /**
- * The Fluent Image Element
+ * The definition for the `<fluent-image>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-image\>
  */
-export const definition = Image.compose({
-  name: `${FluentDesignSystem.prefix}-image`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

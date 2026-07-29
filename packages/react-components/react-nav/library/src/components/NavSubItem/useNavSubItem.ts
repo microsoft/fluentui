@@ -7,7 +7,7 @@ import { useNavContext_unstable } from '../NavContext';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import type { NavSubItemProps, NavSubItemState } from './NavSubItem.types';
+import type { NavSubItemBaseProps, NavSubItemBaseState, NavSubItemProps, NavSubItemState } from './NavSubItem.types';
 
 /**
  * Create the state required to render NavSubItem.
@@ -22,9 +22,29 @@ export const useNavSubItem_unstable = (
   props: NavSubItemProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): NavSubItemState => {
+  const { density = 'medium' } = useNavContext_unstable();
+  const state = useNavSubItemBase_unstable(props, ref);
+
+  return {
+    ...state,
+    density,
+  };
+};
+
+/**
+ * Base state used in rendering NavSubItem, excluding any design-related properties such as `density`.
+ *
+ * @param props - props from this instance of NavSubItem
+ * @param ref - reference to root HTMLButtonElement of NavSubItem
+ * @returns - The base state of NavSubItem
+ */
+export const useNavSubItemBase_unstable = (
+  props: NavSubItemBaseProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): NavSubItemBaseState => {
   const { onClick, value: subItemValue, as, href } = props;
 
-  const { selectedValue, onRegister, onUnregister, onSelect, density = 'medium' } = useNavContext_unstable();
+  const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
   const { value: parentCategoryValue } = useNavCategoryContext_unstable();
 
@@ -79,6 +99,5 @@ export const useNavSubItem_unstable = (
     root,
     selected,
     value: subItemValue,
-    density,
   };
 };

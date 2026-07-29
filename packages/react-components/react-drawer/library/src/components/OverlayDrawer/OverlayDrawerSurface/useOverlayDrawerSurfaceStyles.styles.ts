@@ -27,8 +27,6 @@ const useBackdropStyles = makeStyles({
  * Apply styling to the OverlayDrawerSurface slots based on the state
  */
 export const useOverlayDrawerSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
-  'use no memo';
-
   const { treatBackdropAsNested, backdrop, open, unmountOnClose } = state;
 
   const backdropResetStyles = useBackdropResetStyles();
@@ -37,6 +35,7 @@ export const useOverlayDrawerSurfaceStyles_unstable = (state: DialogSurfaceState
   const mountedAndClosed = !unmountOnClose && !open;
 
   if (backdrop) {
+    // eslint-disable-next-line react-hooks/immutability
     backdrop.className = mergeClasses(
       backdropResetStyles,
       treatBackdropAsNested && backdropStyles.nested,

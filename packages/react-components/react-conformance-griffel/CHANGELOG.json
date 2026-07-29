@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2026 18:28:48 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.1.3",
+      "version": "9.1.3",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 13:16:23 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.1.3",
       "version": "9.1.3",

@@ -29,6 +29,13 @@ export enum FileIconType {
   album = 21,
   listForm = 22,
   campaign = 23,
+  shortcutsdefaultfolder = 24,
+  pbiApp = 25,
+  pbiDashboard = 26,
+  pbiPaginatedReport = 27,
+  pbiScorecard = 28,
+  pbiSemanticModel = 29,
+  pbiReport = 30,
 }
 
 export type FileIconTypeInput =
@@ -54,4 +61,11 @@ export type FileIconTypeInput =
   | 20
   | 21
   | 22
-  | 23;
+  | 23
+  | 24
+  | 25
+  | 26
+  | 27
+  | 28
+  | 29
+  | 30;

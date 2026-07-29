@@ -76,3 +76,4 @@ export { useButtonTriggerSlot } from './components/Dropdown/useButtonTriggerSlot
 export { useInputTriggerSlot } from './components/Combobox/useInputTriggerSlot';
 export { useListboxSlot } from './utils/useListboxSlot';
 export type { ComboboxBaseState, ComboboxBaseProps } from './utils/ComboboxBase.types';
+export { isComboboxOptionElement } from './utils/isComboboxOptionElement';

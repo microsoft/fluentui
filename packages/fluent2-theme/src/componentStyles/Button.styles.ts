@@ -69,6 +69,12 @@ export function getPrimaryButtonStyles(theme: ITheme): Partial<IButtonStyles> {
       borderColor: semanticColors.primaryButtonBorder,
       color: semanticColors.primaryButtonText,
       ...getFocusStyle(palette.white, effects.roundedCorner2, semanticColors.focusBorder),
+      '@media (forced-colors: active)': {
+        '.ms-Fabric--isFocusVisible &:focus::after': {
+          outline: `1px solid ButtonFace`,
+          inset: '2px',
+        },
+      },
     },
     rootHovered: {
       backgroundColor: semanticColors.primaryButtonBackgroundHovered,

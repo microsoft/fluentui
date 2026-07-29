@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { Dialog } from './dialog.js';
-import { template } from './dialog.template.js';
+import { tagName } from './dialog.options.js';
 import { styles } from './dialog.styles.js';
+import { template } from './dialog.template.js';
 
 /**
- * The Fluent Dialog Element
+ * The definition for the `<fluent-dialog>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-dialog\>
  */
-export const definition = Dialog.compose({
-  name: `${FluentDesignSystem.prefix}-dialog`,
-  template,
+export const definition: PartialFASTElementDefinition = {
+  name: tagName,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

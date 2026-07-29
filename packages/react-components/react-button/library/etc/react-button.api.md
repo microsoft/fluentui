@@ -77,6 +77,12 @@ export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<But
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
+// @public
+export type MenuButtonBaseProps = ComponentProps<MenuButtonSlots> & Pick<ButtonBaseProps, 'disabled' | 'disabledFocusable'>;
+
+// @public
+export type MenuButtonBaseState = ComponentState<MenuButtonSlots> & Omit<ButtonBaseState, keyof ButtonSlots | 'components' | 'iconPosition'>;
+
 // @public (undocumented)
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
 
@@ -100,7 +106,7 @@ export { renderButton_unstable as renderToggleButton_unstable }
 export const renderCompoundButton_unstable: (state: CompoundButtonState) => JSXElement;
 
 // @public
-export const renderMenuButton_unstable: (state: MenuButtonState) => JSXElement;
+export const renderMenuButton_unstable: (state: MenuButtonBaseState) => JSXElement;
 
 // @public
 export const renderSplitButton_unstable: (state: SplitButtonState) => JSXElement;
@@ -166,6 +172,9 @@ export const useCompoundButtonStyles_unstable: (state: CompoundButtonState) => C
 
 // @public
 export const useMenuButton_unstable: (props: MenuButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonState;
+
+// @public
+export const useMenuButtonBase_unstable: (props: MenuButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonBaseState;
 
 // @public (undocumented)
 export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;

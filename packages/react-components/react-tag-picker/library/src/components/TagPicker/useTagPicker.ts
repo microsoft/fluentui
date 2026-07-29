@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type {
+  TagPickerBaseProps,
+  TagPickerBaseState,
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
   TagPickerProps,
@@ -18,28 +20,16 @@ import { useComboboxBaseState } from '@fluentui/react-combobox';
 const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
 
 /**
- * Create the state required to render Picker.
- *
- * The returned state can be modified with hooks such as usePickerStyles_unstable,
- * before being passed to renderPicker_unstable.
- *
- * @param props - props from this instance of Picker
+ * Create the base state required to render TagPicker, without floating-ui positioning.
+ * @param props - props from this instance of TagPicker (without `positioning`)
  */
-export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
+export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerBaseState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
-  const { positioning, size = 'medium', inline = false, noPopover = false, disableAutoFocus } = props;
-
-  const { targetRef, containerRef } = usePositioning({
-    position: 'below' as const,
-    align: 'start' as const,
-    offset: { crossAxis: 0, mainAxis: 2 },
-    fallbackPositions,
-    matchTargetSize: 'width' as const,
-    ...resolvePositioningShorthand(positioning),
-  });
+  const passiveTargetRef = React.useRef<HTMLDivElement>(null);
+  const { noPopover = false, disableAutoFocus } = props;
 
   const {
     controller: activeDescendantController,
@@ -70,7 +60,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     disableAutoFocus,
     editable: true,
     multiselect: true,
-    size: 'medium',
   });
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
@@ -83,19 +72,16 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     noPopover,
     disabled: comboboxState.disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
-    popoverRef: useMergedRefs(listboxRef, containerRef),
+    popoverRef: useMergedRefs(listboxRef),
     secondaryActionRef,
     tagPickerGroupRef,
-    targetRef,
-    size,
-    inline,
+    targetRef: passiveTargetRef,
     open: comboboxState.open,
     mountNode: comboboxState.mountNode,
     onOptionClick: useEventCallback(event => {
       comboboxState.onOptionClick(event);
       comboboxState.setOpen(event, false);
     }),
-    appearance: comboboxState.appearance,
     clearSelection: comboboxState.clearSelection,
     getOptionById: comboboxState.getOptionById,
     getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
@@ -122,6 +108,38 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     setOpen: comboboxState.setOpen,
     setValue: comboboxState.setValue,
     value: comboboxState.value,
+  };
+};
+
+/**
+ * Create the state required to render Picker.
+ *
+ * The returned state can be modified with hooks such as usePickerStyles_unstable,
+ * before being passed to renderPicker_unstable.
+ *
+ * @param props - props from this instance of Picker
+ */
+export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
+  const { positioning, size = 'medium', appearance = 'outline', inline = false } = props;
+
+  const { targetRef, containerRef } = usePositioning({
+    position: 'below' as const,
+    align: 'start' as const,
+    offset: { crossAxis: 0, mainAxis: 2 },
+    fallbackPositions,
+    matchTargetSize: 'width' as const,
+    ...resolvePositioningShorthand(positioning),
+  });
+
+  const baseState = useTagPickerBase_unstable(props);
+
+  return {
+    ...baseState,
+    size,
+    appearance,
+    inline,
+    targetRef,
+    popoverRef: useMergedRefs(baseState.popoverRef, containerRef),
   };
 };
 

@@ -1,27 +1,47 @@
 /* eslint-disable no-undef */
 
-import { execSync } from 'child_process';
+import { execSync } from 'node:child_process';
+import { cp, glob, mkdir } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
+
 import chalk from 'chalk';
 
-main();
+const SRC = 'src';
+const OUT = 'dist/esm';
 
-function compile() {
-  try {
-    console.log(chalk.bold(`🎬 compile:start`));
+async function copySsrAssets() {
+  const patterns = ['**/*.template.html', '**/*.styles.css'];
+  let count = 0;
 
-    console.log(chalk.blueBright(`compile: generating design tokens`));
-    execSync(`node ./scripts/generate-tokens`, { stdio: 'inherit' });
-
-    console.log(chalk.blueBright(`compile: running tsc`));
-    execSync(`tsc -p tsconfig.lib.json --rootDir ./src --baseUrl .`, { stdio: 'inherit' });
-
-    console.log(chalk.bold(`🏁 compile:end`));
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
+  for (const pattern of patterns) {
+    for await (const file of glob(pattern, { cwd: SRC })) {
+      const from = join(SRC, file);
+      const to = join(OUT, file);
+      await mkdir(dirname(to), { recursive: true });
+      await cp(from, to);
+      count++;
+    }
   }
+
+  console.log(chalk.dim(`compile: copied ${count} SSR asset${count === 1 ? '' : 's'} from ${SRC}/ → ${OUT}/`));
 }
 
-function main() {
-  compile();
+async function compile() {
+  console.log(chalk.bold(`🎬 compile:start`));
+
+  console.log(chalk.blueBright(`compile: generating design tokens`));
+  execSync(`node ./scripts/generate-tokens`, { stdio: 'inherit' });
+
+  console.log(chalk.blueBright(`compile: running tsc`));
+  execSync(`tsc -p tsconfig.lib.json --rootDir ./src --baseUrl .`, { stdio: 'inherit' });
+
+  console.log(chalk.blueBright(`compile: copying SSR assets`));
+  await copySsrAssets();
+
+  console.log(chalk.bold(`🏁 compile:end`));
 }
+
+compile().catch(err => {
+  console.error(err);
+  process.exit(1);
+});

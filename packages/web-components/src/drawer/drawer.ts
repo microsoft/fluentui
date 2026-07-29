@@ -1,4 +1,4 @@
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, Updates, volatile } from '@microsoft/fast-element';
 import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 /**
@@ -8,18 +8,19 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  *
  * @extends FASTElement
  *
- * @attr {DrawerType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
- * @attr {DrawerPosition} position - Sets the position of the drawer (start/end).
- * @attr {DrawerSize} size - Sets the size of the drawer (small/medium/large).
- * @attr {string} ariaDescribedby - The ID of the element that describes the drawer.
- * @attr {string} ariaLabelledby - The ID of the element that labels the drawer.
+ * @attr type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
+ * @attr position - Sets the position of the drawer (start/end).
+ * @attr size - Sets the size of the drawer (small/medium/large).
+ * @attr ariaDescribedby - The ID of the element that describes the drawer.
+ * @attr ariaLabelledby - The ID of the element that labels the drawer.
  *
  * @csspart dialog - The dialog element of the drawer.
+ * @cssprop --drawer-width - Sets the width of the drawer to a custom value (e.g., 300px).
  *
  * @slot - Default slot for the content of the drawer.
  *
- * @fires toggle - Event emitted after the dialog's open state changes.
- * @fires beforetoggle - Event emitted before the dialog's open state changes.
+ * @fires { ToggleEvent } toggle - Event emitted after the dialog's open state changes.
+ * @fires { ToggleEvent } beforetoggle - Event emitted before the dialog's open state changes.
  *
  * @method show - Method to show the drawer.
  * @method hide - Method to hide the drawer.
@@ -29,12 +30,8 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @method emitBeforeToggle - Emits an event before the dialog's open state changes.
  *
  * @summary A component that provides a drawer for displaying content in a side panel.
- *
- * @tag fluent-drawer
  */
 export class Drawer extends FASTElement {
-  protected roleAttrObserver!: MutationObserver;
-
   /**
    * Determines whether the drawer should be displayed as modal or non-modal
    * When rendered as a modal, an overlay is applied over the rest of the view.
@@ -42,20 +39,7 @@ export class Drawer extends FASTElement {
    * @public
    */
   @attr
-  public type: DrawerType = DrawerType.modal;
-  protected typeChanged() {
-    if (!this.dialog) {
-      return;
-    }
-
-    this.updateDialogRole();
-
-    if (this.type === DrawerType.modal) {
-      this.dialog.setAttribute('aria-modal', 'true');
-    } else {
-      this.dialog.removeAttribute('aria-modal');
-    }
-  }
+  public type!: DrawerType;
 
   /**
    * The ID of the element that labels the drawer.
@@ -73,13 +57,17 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
-  /**""
+  /**
+   * Sets the position of the drawer (start/end).
+   *
    * @public
    * @defaultValue start
-   * Sets the position of the drawer (start/end).
    */
   @attr
   public position: DrawerPosition = DrawerPosition.start;
+
+  @observable
+  public role!: string | null;
 
   /**
    * @public
@@ -97,17 +85,79 @@ export class Drawer extends FASTElement {
   @observable
   public dialog!: HTMLDialogElement;
 
-  /** @internal */
-  connectedCallback() {
-    super.connectedCallback();
-    this.typeChanged();
-    this.observeRoleAttr();
+  /**
+   * The `aria-describedby` attribute value for the dialog, which is determined by the `ariaDescribedby` property. This
+   * is used to ensure that the dialog's accessible description is properly announced by assistive technologies.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogDescribedby(): string | undefined {
+    if (this.dialog) {
+      return this.ariaDescribedby;
+    }
   }
 
-  /** @internal */
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.roleAttrObserver.disconnect();
+  /**
+   * The `aria-label` attribute value for the dialog, which is determined by the `ariaLabel` property. This is used to
+   * ensure that the dialog's accessible name is properly announced by assistive technologies.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogLabel(): string | null | undefined {
+    if (this.dialog) {
+      return this.ariaLabel;
+    }
+  }
+
+  /**
+   * The `aria-labelledby` attribute value for the dialog, which is determined by the `ariaLabelledby` property. This is
+   * used to ensure that the dialog's accessible name is properly announced by assistive technologies.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogLabelledby(): string | undefined {
+    if (this.dialog) {
+      return this.ariaLabelledby;
+    }
+  }
+
+  /**
+   * The modal state of the dialog, which is determined by the `type` property. If the dialog is not a non-modal dialog,
+   * the modal state will be true, otherwise it will be undefined.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogModal(): boolean | undefined {
+    if (this.dialog && this.type === DrawerType.modal) {
+      return true;
+    }
+  }
+
+  /**
+   * The role of the dialog, which is determined by the `type` property. If the dialog is an alert dialog, the role will
+   * be 'alertdialog', otherwise it will be undefined.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogRole(): string | null {
+    if (this.dialog && this.type === DrawerType.modal) {
+      return 'dialog';
+    }
+
+    return this.role;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    Updates.enqueue(() => {
+      this.type = this.type ?? DrawerType.modal;
+    });
   }
 
   /**
@@ -149,6 +199,10 @@ export class Drawer extends FASTElement {
       } else {
         this.dialog.showModal();
       }
+      // Using `autofocus` inside a `<dialog>` is implemented inconsistently
+      // across browsers, so artificially focusing here. See details:
+      // https://codepen.io/marchbox/pen/PwbRmXE
+      (this.querySelector('[autofocus]') as HTMLElement)?.focus?.();
       this.emitToggle();
     });
   }
@@ -184,26 +238,5 @@ export class Drawer extends FASTElement {
    */
   public cancelHandler() {
     this.hide();
-  }
-
-  protected observeRoleAttr() {
-    if (this.roleAttrObserver) {
-      return;
-    }
-
-    this.roleAttrObserver = new MutationObserver(() => {
-      this.updateDialogRole();
-    });
-    this.roleAttrObserver.observe(this, {
-      attributes: true,
-      attributeFilter: ['role'],
-    });
-  }
-
-  protected updateDialogRole() {
-    if (!this.dialog) {
-      return;
-    }
-    this.dialog.role = this.type === DrawerType.modal ? 'dialog' : this.role;
   }
 }

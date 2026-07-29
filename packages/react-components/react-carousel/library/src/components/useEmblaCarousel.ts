@@ -230,6 +230,7 @@ export function useEmblaCarousel(
     };
 
     // Get plugins using autoplayRef to prevent state change recreating EmblaCarousel
+    // eslint-disable-next-line react-hooks/refs
     const plugins = getPlugins();
 
     return {

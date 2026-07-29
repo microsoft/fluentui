@@ -13,8 +13,6 @@ import type { ResizeCallbackWithRef } from './hooks.types';
 export const useResizeObserverRef_unstable = (
   resizeCallback: ResizeCallbackWithRef,
 ): ((instance: HTMLElement | HTMLDivElement | null) => void) => {
-  'use no memo';
-
   const { targetDocument } = useFluent();
   const container = React.useRef<HTMLElement | null>(null);
   const containerHeightRef = React.useRef<number>(0);
@@ -22,6 +20,7 @@ export const useResizeObserverRef_unstable = (
   // the handler for resize observer
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
+  // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
   const handleResize = debounce((entries: ResizeObserverEntry[], observer: ResizeObserver) => {
     const containerHeight = container.current?.clientHeight;
     const containerWidth = container.current?.clientWidth;
@@ -42,6 +41,7 @@ export const useResizeObserverRef_unstable = (
     // Update our state when resizeCallback changes
     container.current = null;
     resizeObserver?.disconnect();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- deprecated package, not worth refactoring
     setResizeObserver(() => createResizeObserverFromDocument(targetDocument, handleResize));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resizeCallback, targetDocument]);

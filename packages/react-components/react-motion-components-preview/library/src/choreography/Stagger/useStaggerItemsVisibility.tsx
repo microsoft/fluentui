@@ -88,6 +88,7 @@ export function useStaggerItemsVisibility({
 
   // Update visibility mapping when childMapping changes
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setItemsVisibility(prev => {
       const next: Record<string, boolean> = {};
       const targetState = direction === 'enter';

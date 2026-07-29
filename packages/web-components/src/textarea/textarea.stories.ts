@@ -1,16 +1,17 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorNeutralBackground1, colorNeutralBackground3 } from '../theme/design-tokens.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { TextArea as FluentTextArea } from './textarea.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 
 type Story = StoryObj<FluentTextArea>;
+const { argTypes } = getStorybookHelpers<FluentTextArea>('fluent-text-area');
 
 const storyTemplate = html<StoryArgs<FluentTextArea>>`
   <fluent-textarea
     appearance="${x => x.appearance}"
     autocomplete="${x => x.autocomplete}"
-    ?autofocus="${x => x.autofocus}"
     ?auto-resize="${x => x.autoResize}"
     ?block="${x => x.block}"
     dirname="${x => x.dirName}"
@@ -35,156 +36,7 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
 export default {
   title: 'Components/TextArea',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    appearance: {
-      description: 'Indicates the styled appearance of the input.',
-      control: 'select',
-      options: ['', ...Object.values(TextAreaAppearance)],
-      mapping: { '': null, ...TextAreaAppearance },
-      table: {
-        category: 'attributes',
-        type: {
-          summary: Object.values(TextAreaAppearance).join('|'),
-        },
-      },
-    },
-    autocomplete: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: "Indicates the element's autocomplete state.",
-      type: 'string',
-    },
-    autofocus: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Indicates that this element should get focus after the page finishes loading.',
-      type: 'boolean',
-    },
-    autoResize: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Whether the element’s height should be automatically changed based on the content.',
-      type: 'boolean',
-    },
-    block: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Whether the element should be a block-level element.',
-      type: 'boolean',
-    },
-    dirname: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'Sets the directionality of the element to be submitted with form data.',
-      type: 'string',
-    },
-    disabled: {
-      description: 'Sets the disabled state',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-      },
-      control: 'boolean',
-      type: 'boolean',
-    },
-    displayShadow: {
-      description: 'Whether the element displays a visual box shadow',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-      },
-      control: 'boolean',
-      type: 'boolean',
-    },
-    form: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'The id of a form to associate the element to.',
-      type: 'string',
-    },
-    maxlength: {
-      control: 'number',
-      table: { category: 'attributes' },
-      description: 'Sets the maximum number of characters allowed in the input',
-      type: 'number',
-    },
-    minlength: {
-      control: 'number',
-      table: { category: 'attributes' },
-      description: 'Sets the minimum number of characters allowed in the input',
-      type: 'number',
-    },
-    name: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'Sets the name of the input',
-      type: 'string',
-    },
-    placeholder: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'Sets the placeholder text',
-      type: 'string',
-    },
-    readOnly: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Sets the readonly state',
-      type: 'boolean',
-    },
-    required: {
-      control: 'boolean',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-      },
-      description: 'Sets the required state',
-      type: 'boolean',
-    },
-    resize: {
-      description: 'Whether and how a user can resize the element.',
-      control: 'select',
-      options: ['', ...Object.values(TextAreaResize)],
-      mapping: { '': null, ...TextAreaResize },
-      table: {
-        category: 'attributes',
-        type: {
-          summary: Object.values(TextAreaResize).join('|'),
-        },
-      },
-    },
-    size: {
-      description: 'Sets the size of the control.',
-      control: 'select',
-      options: ['', ...Object.values(TextAreaSize)],
-      mapping: { '': null, ...TextAreaSize },
-      table: {
-        category: 'attributes',
-        type: {
-          summary: Object.values(TextAreaSize).join('|'),
-        },
-      },
-    },
-    spellcheck: {
-      control: 'boolean',
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: 'false' },
-      },
-      description: 'Controls whether to enable spell checking for the content.',
-      type: 'boolean',
-    },
-    slottedContent: {
-      name: '',
-      description: 'The default slot. Content in this slot is used as the `<label>` for the input.',
-      table: { category: 'slots', type: {} },
-    },
-    labelSlottedContent: {
-      name: '',
-      description: 'The label slot. Content in this slot is used as the `<label>` for the input.',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentTextArea>;
 
 export const Default: Story = {};

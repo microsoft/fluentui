@@ -147,6 +147,29 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralStroke1,
     },
   },
+  submenuOpen: {
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+    color: tokens.colorNeutralForeground2Hover,
+
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
+    [`& .${menuItemClassNames.icon}`]: {
+      color: tokens.colorNeutralForeground2BrandSelected,
+    },
+
+    [`& .${menuItemClassNames.subText}`]: {
+      color: tokens.colorNeutralForeground3Hover,
+    },
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'Canvas',
+      color: 'Highlight',
+    },
+  },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
@@ -235,8 +258,6 @@ const useMultilineStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
-  'use no memo';
-
   const styles = useStyles();
   const rootBaseStyles = useRootBaseStyles();
   const contentBaseStyles = useContentBaseStyles();
@@ -247,14 +268,17 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   const subtextBaseStyles = useSubtextBaseStyles();
   const subTextStyles = useSubTextStyles();
   const multiline = !!state.subText;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     menuItemClassNames.root,
     rootBaseStyles,
+    state.submenuOpen && styles.submenuOpen,
     state.disabled && styles.disabled,
     state.root.className,
   );
 
   if (state.content) {
+    // eslint-disable-next-line react-hooks/immutability
     state.content.className = mergeClasses(
       menuItemClassNames.content,
       contentBaseStyles,
@@ -264,10 +288,12 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   }
 
   if (state.checkmark) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       menuItemClassNames.secondaryContent,
       secondaryContentBaseStyles,
@@ -278,10 +304,12 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   }
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(menuItemClassNames.icon, iconBaseStyles, state.icon.className);
   }
 
   if (state.submenuIndicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.submenuIndicator.className = mergeClasses(
       menuItemClassNames.submenuIndicator,
       submenuIndicatorBaseStyles,
@@ -291,6 +319,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   }
 
   if (state.subText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.subText.className = mergeClasses(
       menuItemClassNames.subText,
       state.disabled && subTextStyles.disabled,

@@ -35,6 +35,7 @@ export function useFocusObserved(
     return {
       result: Promise.resolve(false),
       cancel: () => null,
+      diagnostics: {},
     };
   }, [observedAPIRef, name, timeout]);
 }

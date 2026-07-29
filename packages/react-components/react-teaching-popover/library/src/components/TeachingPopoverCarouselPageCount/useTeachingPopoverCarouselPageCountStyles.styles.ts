@@ -28,9 +28,8 @@ const useStyles = makeStyles({
 export const useTeachingPopoverCarouselPageCountStyles_unstable = (
   state: TeachingPopoverCarouselPageCountState,
 ): TeachingPopoverCarouselPageCountState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverCarouselPageCountClassNames.root,
     styles.root,

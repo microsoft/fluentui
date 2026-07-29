@@ -2,6 +2,138 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2026 14:10:41 GMT",
+      "tag": "@fluentui/react-overflow_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.4.1",
+            "commit": "cbee28ba42d268404e9b9663a6a3a33e205c66d1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jun 2026 11:09:49 GMT",
+      "tag": "@fluentui/react-overflow_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d7cec2eece3668834f65d8f60f60e9b8004664f1",
+            "comment": "fix: make Overflow container strict-mode safe"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "8db58cbadb1a5d54f56d21674cd49e0c449a0bed",
+            "comment": "fix: subscribe overflow hooks directly to the manager snapshot"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "7530c0c22d690b02ec26159b43437f3493d8ed90",
+            "comment": "Expose Overflow use/render/styles hooks, provider and context types for headless consumers"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "23c05d1de3c0bcb9e84e77d534cbc6df33a974a5",
+            "comment": "feat: produce a correct overflow snapshot before the first paint"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.4.0",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.26.5",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 May 2026 09:39:28 GMT",
+      "tag": "@fluentui/react-overflow_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "cbdc211171dd61a50ee2444609243a6c14a88191",
+            "comment": "feat: add OverflowReorderObserver to recompute overflow when items are reordered via React state without a container resize"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.17",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.26.4",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2026 14:21:14 GMT",
+      "tag": "@fluentui/react-overflow_v9.7.2",
+      "version": "9.7.2",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.16",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:42 GMT",
       "tag": "@fluentui/react-overflow_v9.7.1",
       "version": "9.7.1",

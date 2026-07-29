@@ -1,0 +1,97 @@
+:host {
+  display: grid;
+  box-sizing: border-box;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  width: 100%;
+  background: var(--colorNeutralBackground3);
+  border: 1px solid var(--colorNeutralStroke1);
+  padding-inline: var(--spacingHorizontalM);
+  border-radius: var(--borderRadiusMedium);
+  min-height: 36px;
+  align-items: center;
+  grid-template: 'icon body actions dismiss' / auto 1fr auto auto;
+  contain: layout style paint;
+}
+
+:host([shape='square']) {
+  border-radius: 0;
+}
+
+:host([intent='success']) {
+  background-color: var(--colorPaletteGreenBackground1);
+  border-color: var(--colorPaletteGreenBorder1);
+}
+
+:host([intent='warning']) {
+  background-color: var(--colorPaletteDarkOrangeBackground1);
+  border-color: var(--colorPaletteDarkOrangeBorder1);
+}
+
+:host([intent='error']) {
+  background-color: var(--colorPaletteRedBackground1);
+  border-color: var(--colorPaletteRedBorder1);
+}
+
+:host([layout='multiline']) {
+  grid-template-areas:
+    'icon body dismiss'
+    'actions actions actions';
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto 1fr;
+  padding-block: var(--spacingVerticalMNudge);
+  padding-inline: var(--spacingHorizontalM);
+}
+
+.content {
+  grid-area: body;
+  max-width: 520px;
+  padding-block: var(--spacingVerticalMNudge);
+  padding-inline: 0;
+}
+
+:host([layout='multiline']) .content {
+  padding: 0;
+}
+
+::slotted([slot='icon']) {
+  display: flex;
+  grid-area: icon;
+  flex-direction: column;
+  align-items: center;
+  color: var(--colorNeutralForeground3);
+  margin-inline-end: var(--spacingHorizontalS);
+}
+
+:host([layout='multiline']) ::slotted([slot='icon']) {
+  align-items: start;
+  height: 100%;
+}
+
+::slotted([slot='dismiss']) {
+  grid-area: dismiss;
+}
+
+.actions {
+  grid-area: actions;
+  display: flex;
+  justify-self: end;
+  margin-inline-end: var(--spacingHorizontalS);
+  gap: var(--spacingHorizontalS);
+}
+
+:host([layout='multiline']) .actions {
+  margin-block-start: var(--spacingVerticalMNudge);
+  margin-inline-end: 0;
+}
+
+:host([layout='multiline']) ::slotted([slot='dismiss']) {
+  align-items: start;
+  height: 100%;
+  padding-block-start: var(--spacingVerticalS);
+}
+
+::slotted(*) {
+  font-size: inherit;
+}

@@ -34,8 +34,10 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
   });
 
   if (layout === 'pie') {
+    // eslint-disable-next-line react-hooks/immutability
     state.triggerButton.children = null;
   } else if (indicator === 'icon') {
+    // eslint-disable-next-line react-hooks/immutability
     state.triggerButton.children = <MoreHorizontalRegular />;
   }
 

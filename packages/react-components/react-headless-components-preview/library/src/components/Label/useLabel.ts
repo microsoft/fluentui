@@ -11,11 +11,10 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderLabel`.
  */
 export const useLabel = (props: LabelProps, ref: React.Ref<HTMLLabelElement>): LabelState => {
-  'use no memo';
-
   const state: LabelState = useLabelBase_unstable(props, ref);
 
   // Set data attribute for disabled state to simplify styling.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
 
   return state;

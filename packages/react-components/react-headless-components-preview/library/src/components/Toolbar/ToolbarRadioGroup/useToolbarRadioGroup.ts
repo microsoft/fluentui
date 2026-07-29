@@ -13,7 +13,7 @@ export const useToolbarRadioGroup = (
   props: ToolbarRadioGroupProps,
   ref: React.Ref<HTMLDivElement>,
 ): ToolbarRadioGroupState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useToolbarRadioGroup — manual opt-out to preserve runtime behavior
 
   // ToolbarRadioGroup reuses ToolbarGroup logic with role='radiogroup'.
   return useToolbarGroup({ role: 'radiogroup', ...props }, ref) as unknown as ToolbarRadioGroupState;

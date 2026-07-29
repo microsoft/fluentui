@@ -156,3 +156,27 @@ export type {
   TeachingPopoverCarouselFooterButtonSlots,
   TeachingPopoverCarouselFooterButtonState,
 } from './TeachingPopoverCarouselFooterButton';
+
+export { useTeachingPopoverHeaderBase_unstable } from './TeachingPopoverHeader';
+export type { TeachingPopoverHeaderBaseProps, TeachingPopoverHeaderBaseState } from './TeachingPopoverHeader';
+export { useTeachingPopoverFooterBase_unstable } from './TeachingPopoverFooter';
+export type { TeachingPopoverFooterBaseProps, TeachingPopoverFooterBaseState } from './TeachingPopoverFooter';
+export { useTeachingPopoverTitleBase_unstable } from './TeachingPopoverTitle';
+export type { TeachingPopoverTitleBaseProps, TeachingPopoverTitleBaseState } from './TeachingPopoverTitle';
+export { useTeachingPopoverCarouselBase_unstable } from './TeachingPopoverCarousel';
+export type { TeachingPopoverCarouselBaseProps, TeachingPopoverCarouselBaseState } from './TeachingPopoverCarousel';
+export { useTeachingPopoverCarouselFooterButtonBase_unstable } from './TeachingPopoverCarouselFooterButton';
+export type {
+  TeachingPopoverCarouselFooterButtonBaseProps,
+  TeachingPopoverCarouselFooterButtonBaseState,
+} from './TeachingPopoverCarouselFooterButton';
+export { useTeachingPopoverCarouselNavBase_unstable } from './TeachingPopoverCarouselNav';
+export type {
+  TeachingPopoverCarouselNavBaseProps,
+  TeachingPopoverCarouselNavBaseState,
+} from './TeachingPopoverCarouselNav';
+export { useTeachingPopoverCarouselNavButtonBase_unstable } from './TeachingPopoverCarouselNavButton';
+export type {
+  TeachingPopoverCarouselNavButtonBaseProps,
+  TeachingPopoverCarouselNavButtonBaseState,
+} from './TeachingPopoverCarouselNavButton';

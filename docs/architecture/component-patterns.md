@@ -18,6 +18,9 @@ packages/react-components/react-<name>/library/src/
 ├── utils/                                # Optional: shared utilities
 ├── testing/
 │   └── isConformant.ts                   # Conformance tests
+├── stories/src/<Name>/
+│   ├── <Name>Accessibility.md            # Optional: concise accessibility guidance
+│   └── <Name>AccessibilitySpec.mdx       # Optional: full component accessibility spec
 ├── <Name>.ts                             # Root barrel per component
 └── index.ts                              # Package export
 ```
@@ -124,3 +127,11 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
   return renderComponent_unstable(state);
 });
 ```
+
+## Accessibility patterns
+
+Refer to `<Name>Accessibility.md` or `<Name>BestPractices.md` for high-importance accessibility requirements.
+
+Check `<Name>AccessibilitySpec.mdx` for the full description of accessibility behaviors, including keyboard interaction, assistive tech behaviors, high contrast and reduced motion styles, content restrictions, and guidance on extending the control without breaking accessibility.
+
+Most packages only have one `<Name>AccessibilitySpec.mdx` covering all components in the package -- for example, `MenuAccessibilitySpec.mdx` covers `Menu`, `MenuList`, `MenuItem`, `MenuItemCheckbox`, `MenuItemLink`, `MenuItemRadio`, `MenuItemSwitch`, etc.

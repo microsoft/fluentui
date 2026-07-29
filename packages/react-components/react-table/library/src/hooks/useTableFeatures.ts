@@ -52,5 +52,6 @@ export function useTableFeatures<TItem>(
     tableRef: React.createRef(),
   };
 
+  // eslint-disable-next-line react-hooks/refs
   return plugins.reduce((state, plugin) => plugin(state), initialState);
 }

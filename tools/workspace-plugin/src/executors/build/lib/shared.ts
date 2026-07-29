@@ -52,6 +52,7 @@ export function normalizeOptions(schema: BuildExecutorSchema, context: ExecutorC
   const absoluteSourceRoot = join(context.root, resolvedSourceRoot);
   const absoluteOutputPathRoot = join(context.root, schema.outputPathRoot);
   const enableGriffelRawStyles = schema.enableGriffelRawStyles ?? false;
+  const reactCompiler = schema.reactCompiler ?? false;
 
   return {
     ...defaults,
@@ -62,6 +63,7 @@ export function normalizeOptions(schema: BuildExecutorSchema, context: ExecutorC
     absoluteProjectRoot,
     absoluteOutputPathRoot,
     enableGriffelRawStyles,
+    reactCompiler,
 
     workspaceRoot: context.root,
   };

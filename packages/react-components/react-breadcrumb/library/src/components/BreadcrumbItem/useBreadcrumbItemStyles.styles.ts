@@ -21,10 +21,9 @@ const useBreadcrumbItemResetStyles = makeResetStyles({
  * Apply styling to the BreadcrumbItem slots based on the state
  */
 export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): BreadcrumbItemState => {
-  'use no memo';
-
   const resetStyles = useBreadcrumbItemResetStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(breadcrumbItemClassNames.root, resetStyles, state.root.className);
 
   return state;

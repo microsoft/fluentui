@@ -8,6 +8,7 @@ exports[`Combobox renders a default state 1`] = `
     <input
       aria-expanded="false"
       class="fui-Combobox__input"
+      data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"Escape\\":false}}}"
       role="combobox"
       type="text"
       value=""
@@ -66,6 +67,7 @@ exports[`Combobox renders an open listbox 1`] = `
       aria-controls="fluent-listbox_r_j_"
       aria-expanded="true"
       class="fui-Combobox__input"
+      data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"Escape\\":true}}}"
       role="combobox"
       type="text"
       value=""

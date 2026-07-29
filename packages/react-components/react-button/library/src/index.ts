@@ -21,8 +21,15 @@ export {
   renderMenuButton_unstable,
   useMenuButtonStyles_unstable,
   useMenuButton_unstable,
+  useMenuButtonBase_unstable,
 } from './MenuButton';
-export type { MenuButtonProps, MenuButtonSlots, MenuButtonState } from './MenuButton';
+export type {
+  MenuButtonProps,
+  MenuButtonSlots,
+  MenuButtonState,
+  MenuButtonBaseProps,
+  MenuButtonBaseState,
+} from './MenuButton';
 export {
   SplitButton,
   renderSplitButton_unstable,

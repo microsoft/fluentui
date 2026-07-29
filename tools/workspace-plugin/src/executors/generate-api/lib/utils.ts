@@ -76,9 +76,8 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
         configs.push(
           createSubpathEntryConfig({
             projectAbsolutePath: options.projectAbsolutePath,
-            declarationBase,
-            subPath: pathPrefixes.wildcardSubPath + dirName,
-            distRelativePath: pathPrefixes.distRelativePrefix + dirName,
+            mainEntryPointFilePath: join(declarationBase, pathPrefixes.wildcardSubPath + dirName, 'index.d.ts'),
+            dtsRollupPath: join(options.projectAbsolutePath, pathPrefixes.distRelativePrefix + dirName, 'index.d.ts'),
             reportFileName: dirName,
             apiReportEnabled,
           }),
@@ -99,9 +98,8 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
       configs.push(
         createSubpathEntryConfig({
           projectAbsolutePath: options.projectAbsolutePath,
-          declarationBase,
-          subPath: parsed.declarationSubPath,
-          distRelativePath: parsed.distRelativePath,
+          mainEntryPointFilePath: join(declarationBase, parsed.declarationSubPath),
+          dtsRollupPath: join(options.projectAbsolutePath, parsed.distRelativePath),
           reportFileName: subpathName,
           apiReportEnabled,
         }),
@@ -179,12 +177,12 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
   }
 
   /**
-   * Parses a named (non-wildcard) types pattern and derives the dist-relative path and
-   * the declaration sub-path (the portion after the first path segment, minus index.d.ts).
+   * Parses a named (non-wildcard) types pattern and derives the dts rollup path and
+   * the declaration-relative path (the portion after the first path segment).
    *
-   * Example: "./dist/utils/index.d.ts"
-   *  → distRelativePath: "dist/utils"
-   *  → declarationSubPath: "utils"
+   * Examples:
+   *   "./dist/Accordion.d.ts"  → dtsRollupRelativePath: "dist/Accordion.d.ts",  declarationRelativePath: "Accordion.d.ts"
+   *   "./dist/utils/index.d.ts" → dtsRollupRelativePath: "dist/utils/index.d.ts", declarationRelativePath: "utils/index.d.ts"
    *
    * @returns The path components, or `null` if the pattern cannot be parsed.
    */
@@ -192,18 +190,17 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
     distRelativePath: string;
     declarationSubPath: string;
   } | null {
-    const indexDtsSuffix = '/index.d.ts';
-    if (!typesPattern.endsWith(indexDtsSuffix)) {
+    if (!typesPattern.endsWith('.d.ts')) {
       return null;
     }
 
-    // Strip "./" prefix and trailing "/index.d.ts"
-    const distRelativePath = typesPattern.replace(/^\.\//, '').slice(0, -indexDtsSuffix.length);
-
-    // Strip the first path segment (the dist directory name)
+    const distRelativePath = typesPattern.replace(/^\.\//, '');
     const firstSlashIdx = distRelativePath.indexOf('/');
-    const declarationSubPath = firstSlashIdx === -1 ? '' : distRelativePath.slice(firstSlashIdx + 1);
+    if (firstSlashIdx === -1) {
+      return null;
+    }
 
+    const declarationSubPath = distRelativePath.slice(firstSlashIdx + 1);
     if (!declarationSubPath) {
       return null;
     }
@@ -236,14 +233,12 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
    */
   function createSubpathEntryConfig(params: {
     projectAbsolutePath: string;
-    declarationBase: string;
-    subPath: string;
-    distRelativePath: string;
+    mainEntryPointFilePath: string;
+    dtsRollupPath: string;
     reportFileName: string;
     apiReportEnabled: boolean;
   }): IConfigFile {
-    const mainEntryPointFilePath = join(params.declarationBase, params.subPath, 'index.d.ts');
-    const dtsRollupPath = join(params.projectAbsolutePath, params.distRelativePath, 'index.d.ts');
+    const { mainEntryPointFilePath, dtsRollupPath } = params;
 
     return {
       projectFolder: params.projectAbsolutePath,

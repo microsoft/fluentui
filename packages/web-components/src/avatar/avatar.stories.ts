@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Avatar as FluentAvatar } from './avatar.js';
 import { AvatarActive, AvatarAppearance, AvatarColor, AvatarShape, AvatarSize } from './avatar.options.js';
 
 type Story = StoryObj<FluentAvatar>;
+const { argTypes } = getStorybookHelpers<FluentAvatar>('fluent-avatar');
 
 const storyTemplate = html<StoryArgs<FluentAvatar>>`
   <fluent-avatar
@@ -22,81 +24,7 @@ const storyTemplate = html<StoryArgs<FluentAvatar>>`
 export default {
   title: 'Components/Avatar',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    active: {
-      control: 'select',
-      description: 'Optional activity indicator',
-      options: ['', ...Object.values(AvatarActive)],
-      mapping: { '': null, ...AvatarActive },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AvatarActive).join('|') },
-      },
-    },
-    appearance: {
-      control: 'select',
-      description: 'Indicates the styled appearance of the avatar.',
-      options: ['', ...Object.values(AvatarAppearance)],
-      mapping: { '': null, ...AvatarAppearance },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AvatarAppearance).join('|') },
-      },
-    },
-    color: {
-      control: 'select',
-      description: 'Indicates the color of the avatar.',
-      options: ['', ...Object.values(AvatarColor)],
-      mapping: { '': null, ...AvatarColor },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AvatarColor).join('|') },
-      },
-    },
-    initials: {
-      control: 'text',
-      description: 'Provide custom initials rather than one generated via the name',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    name: {
-      control: 'text',
-      description:
-        'The name of the person or entity represented by this Avatar. This should always be provided if it is available.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    shape: {
-      control: 'select',
-      description: 'Indicates the shape of the avatar.',
-      options: ['', ...Object.values(AvatarShape)],
-      mapping: { '': null, ...AvatarShape },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AvatarShape).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'Indicates the size of the avatar.',
-      options: ['', ...Object.values(AvatarSize)],
-      mapping: { '': null, ...AvatarSize },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AvatarSize).join('|') },
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot (usually for images or icons)',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    badgeSlottedContent: {
-      control: false,
-      description: 'Badges for the avatar',
-      name: 'badge',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentAvatar>;
 
 export const Default: Story = {};

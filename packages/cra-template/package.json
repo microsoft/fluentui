@@ -8,9 +8,9 @@
     "directory": "packages/cra-template"
   },
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint": "yarn run -T eslint --ext .js,.ts,.tsx .",
     "test-integration": "node -r @fluentui/scripts-babel/register scripts/test.ts",
-    "type-check": "tsc -p ."
+    "type-check": "yarn run -T tsc -p ."
   },
   "license": "MIT",
   "files": [

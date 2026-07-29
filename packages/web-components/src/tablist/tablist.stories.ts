@@ -1,9 +1,11 @@
 import { html, ref, when } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Tablist as FluentTablist } from './tablist.js';
 import { TablistAppearance as TablistAppearanceValues, TablistOrientation, TablistSize } from './tablist.options.js';
 
 type Story = StoryObj<FluentTablist>;
+const { argTypes } = getStorybookHelpers<FluentTablist>('fluent-tablist');
 
 const storyTemplate = html<StoryArgs<FluentTablist>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;">
@@ -18,8 +20,8 @@ const storyTemplate = html<StoryArgs<FluentTablist>>`
       }}"
       ${ref('tablist')}
     >
-      <fluent-tab id="first-tab">First Tab</fluent-tab>
-      <fluent-tab id="second-tab">
+      <fluent-tab id="${story => story.ids?.[0]}">First Tab</fluent-tab>
+      <fluent-tab id="${story => story.ids?.[1]}">
         ${when(
           story => story.hasStartSlot,
           html`<span slot="start">
@@ -40,10 +42,10 @@ const storyTemplate = html<StoryArgs<FluentTablist>>`
         )}
         Second Tab
       </fluent-tab>
-      <fluent-tab id="third-tab">Third Tab</fluent-tab>
-      <fluent-tab id="fourth-tab">Fourth Tab</fluent-tab>
+      <fluent-tab id="${story => story.ids?.[2]}">Third Tab</fluent-tab>
+      <fluent-tab id="${story => story.ids?.[3]}">Fourth Tab</fluent-tab>
     </fluent-tablist>
-    <div ${ref('panel')}></div>
+    <div ${ref('panel')} style="color: var(--colorNeutralForeground1)"></div>
   </div>
 `;
 
@@ -51,48 +53,9 @@ export default {
   title: 'Components/Tablist',
   render: renderComponent(storyTemplate),
   argTypes: {
-    activeid: {
-      control: 'text',
-      description: 'The id of the active tab',
-      name: 'active-id',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Disables the tablist',
-      name: 'disabled',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    orientation: {
-      control: 'select',
-      description: 'The orientation of the tablist.',
-      mapping: { '': null, ...TablistOrientation },
-      options: ['', ...Object.values(TablistOrientation)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TablistOrientation).join('|') },
-      },
-    },
-    appearance: {
-      control: 'select',
-      description: 'The appearance of the tablist.',
-      mapping: { '': null, ...TablistAppearanceValues },
-      options: ['', ...Object.values(TablistAppearanceValues)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TablistAppearanceValues).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the tablist.',
-      mapping: { '': null, ...TablistSize },
-      options: ['', ...Object.values(TablistSize)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TablistSize).join('|') },
-      },
-    },
+    ...argTypes,
+    ids: { table: { disable: true } },
+    hasStartSlot: { table: { disable: true } },
   },
 } as Meta<FluentTablist>;
 
@@ -140,6 +103,7 @@ export const Disabled: Story = {
 export const ActiveId: Story = {
   args: {
     activeid: 'third-tab',
+    ids: ['first-tab', 'second-tab', 'third-tab', 'fourth-tab'],
   },
 };
 
@@ -198,10 +162,10 @@ export const AutoPanelAssociation: Story = {
         <fluent-tab aria-controls="panel3">Third Tab</fluent-tab>
         <fluent-tab aria-controls="panel4">Fourth Tab</fluent-tab>
       </fluent-tablist>
-      <div id="panel1">First panel</div>
-      <div id="panel2">Second panel</div>
-      <div id="panel3">Third panel</div>
-      <div id="panel4">Fourth panel</div>
+      <div id="panel1" style="color: var(--colorNeutralForeground1)">First panel</div>
+      <div id="panel2" style="color: var(--colorNeutralForeground1)">Second panel</div>
+      <div id="panel3" style="color: var(--colorNeutralForeground1)">Third panel</div>
+      <div id="panel4" style="color: var(--colorNeutralForeground1)">Fourth panel</div>
     </div>
   `),
 };

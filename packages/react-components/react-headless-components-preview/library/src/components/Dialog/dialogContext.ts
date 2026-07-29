@@ -8,6 +8,7 @@ export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 export type DialogOpenChangeData =
   | { type: 'escapeKeyDown'; open: boolean; event: React.KeyboardEvent<HTMLDialogElement> }
   | { type: 'backdropClick'; open: boolean; event: React.MouseEvent<HTMLDialogElement> }
+  | { type: 'surfaceToggle'; open: boolean; event: Event }
   | { type: 'triggerClick'; open: boolean; event: React.MouseEvent };
 
 export type DialogContextValue = {

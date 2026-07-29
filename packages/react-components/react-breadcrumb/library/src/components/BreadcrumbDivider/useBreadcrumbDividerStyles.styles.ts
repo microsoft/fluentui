@@ -31,12 +31,11 @@ const useIconStyles = makeStyles({
  * Apply styling to the BreadcrumbDivider slots based on the state
  */
 export const useBreadcrumbDividerStyles_unstable = (state: BreadcrumbDividerState): BreadcrumbDividerState => {
-  'use no memo';
-
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const { size = 'medium' } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(breadcrumbDividerClassNames.root, styles, iconStyles[size], state.root.className);
 
   return state;

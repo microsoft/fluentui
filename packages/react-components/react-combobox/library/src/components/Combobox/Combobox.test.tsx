@@ -8,6 +8,7 @@ import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { comboboxClassNames } from './useComboboxStyles.styles';
 import type { ComboboxProps } from '@fluentui/react-combobox';
+import { getTabsterAttribute } from 'tabster';
 
 describe('Combobox', () => {
   beforeEach(() => {
@@ -1024,6 +1025,41 @@ describe('Combobox', () => {
 
     expect(listbox.getAttribute('aria-label')).toEqual('Test listbox label');
     expect(listbox.getAttribute('aria-labelledby')).toEqual(null);
+  });
+
+  it('should update the tabster escape ignore attribute based on open state', () => {
+    const tabsterOpenAttr = getTabsterAttribute(
+      {
+        focusable: {
+          ignoreKeydown: { Escape: true },
+        },
+      },
+      true,
+    );
+    const tabsterClosedAttr = getTabsterAttribute(
+      {
+        focusable: {
+          ignoreKeydown: { Escape: false },
+        },
+      },
+      true,
+    );
+
+    const { getByRole } = render(
+      <Combobox>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+    const combobox = getByRole('combobox');
+
+    expect(combobox.getAttribute('data-tabster')).toMatch(tabsterClosedAttr);
+
+    // open
+    userEvent.click(getByRole('combobox'));
+
+    expect(combobox.getAttribute('data-tabster')).toMatch(tabsterOpenAttr);
   });
 
   describe('clearable', () => {

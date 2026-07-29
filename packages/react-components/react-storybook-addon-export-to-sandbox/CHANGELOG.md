@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-storybook-addon-export-to-sandbox
 
-This log was last generated on Wed, 01 Apr 2026 14:06:15 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2026 18:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.0)
+
+Tue, 16 Jun 2026 18:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.2.1..@fluentui/react-storybook-addon-export-to-sandbox_v0.3.0)
+
+### Minor changes
+
+- feat: add open in new tab action button for canvas - enabled by default ([PR #36223](https://github.com/microsoft/fluentui/pull/36223) by martinhochel@microsoft.com)
+- feat: add template extension params ([PR #36031](https://github.com/microsoft/fluentui/pull/36031) by vgenaev@gmail.com)
+- Bump @fluentui/babel-preset-storybook-full-source to v0.1.2 ([PR #36254](https://github.com/microsoft/fluentui/pull/36254) by beachball)
+
+### Patches
+
+- feat: add css-modules support as opt in via 'cssModules' preset config ([PR #36088](https://github.com/microsoft/fluentui/pull/36088) by martinhochel@microsoft.com)
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.2.1)
 

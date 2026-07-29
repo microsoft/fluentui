@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './avatar.definition.js';
+import { Avatar } from './avatar.js';
 
-definition.define(FluentDesignSystem.registry);
+Avatar.define(definition);

@@ -1,5 +1,20 @@
-export { Nav, renderNav_unstable, useNav_unstable, useNavStyles_unstable, navClassNames } from './components/Nav/index';
-export type { NavProps, NavSlots, NavState, NavDensity, OnNavItemSelectData } from './components/Nav/index';
+export {
+  Nav,
+  renderNav_unstable,
+  useNav_unstable,
+  useNavBase_unstable,
+  useNavStyles_unstable,
+  navClassNames,
+} from './components/Nav/index';
+export type {
+  NavProps,
+  NavSlots,
+  NavState,
+  NavDensity,
+  OnNavItemSelectData,
+  NavBaseProps,
+  NavBaseState,
+} from './components/Nav/index';
 
 export { NavCategory, renderNavCategory_unstable, useNavCategory_unstable } from './components/NavCategory/index';
 export type { NavCategoryProps, NavCategoryState } from './components/NavCategory/index';
@@ -9,22 +24,33 @@ export {
   navCategoryItemClassNames,
   renderNavCategoryItem_unstable,
   useNavCategoryItem_unstable,
+  useNavCategoryItemBase_unstable,
   useNavCategoryItemStyles_unstable,
 } from './components/NavCategoryItem/index';
 export type {
   NavCategoryItemProps,
   NavCategoryItemSlots,
   NavCategoryItemState,
+  NavCategoryItemBaseProps,
+  NavCategoryItemBaseSlots,
+  NavCategoryItemBaseState,
 } from './components/NavCategoryItem/index';
 
 export {
   NavItem,
   renderNavItem_unstable,
   useNavItem_unstable,
+  useNavItemBase_unstable,
   useNavItemStyles_unstable,
   navItemClassNames,
 } from './components/NavItem/index';
-export type { NavItemSlots, NavItemProps, NavItemState } from './components/NavItem/index';
+export type {
+  NavItemSlots,
+  NavItemProps,
+  NavItemState,
+  NavItemBaseProps,
+  NavItemBaseState,
+} from './components/NavItem/index';
 
 export { NavProvider, useNavContext_unstable } from './components/NavContext';
 export type {
@@ -39,15 +65,23 @@ export {
   NavSubItem,
   renderNavSubItem_unstable,
   useNavSubItem_unstable,
+  useNavSubItemBase_unstable,
   useNavSubItemStyles_unstable,
   navSubItemClassNames,
 } from './components/NavSubItem/index';
-export type { NavSubItemSlots, NavSubItemProps, NavSubItemState } from './components/NavSubItem/index';
+export type {
+  NavSubItemSlots,
+  NavSubItemProps,
+  NavSubItemState,
+  NavSubItemBaseProps,
+  NavSubItemBaseState,
+} from './components/NavSubItem/index';
 
 export {
   NavSubItemGroup,
   renderNavSubItemGroup_unstable,
   useNavSubItemGroup_unstable,
+  useNavSubItemGroupBase_unstable,
   useNavSubItemGroupStyles_unstable,
   navSubItemGroupClassNames,
 } from './components/NavSubItemGroup/index';
@@ -55,6 +89,9 @@ export type {
   NavSubItemGroupSlots,
   NavSubItemGroupProps,
   NavSubItemGroupState,
+  NavSubItemGroupBaseSlots,
+  NavSubItemGroupBaseProps,
+  NavSubItemGroupBaseState,
 } from './components/NavSubItemGroup/index';
 export type { NavDrawerProps, NavDrawerSlots, NavDrawerState } from './NavDrawer';
 export {
@@ -97,21 +134,29 @@ export {
 } from './NavSectionHeader';
 export type { NavDividerProps, NavDividerState } from './NavDivider';
 export { NavDivider, navDividerClassNames, useNavDividerStyles_unstable, useNavDivider_unstable } from './NavDivider';
-export type { AppItemProps, AppItemSlots, AppItemState } from './AppItem';
+export type { AppItemProps, AppItemSlots, AppItemState, AppItemBaseProps, AppItemBaseState } from './AppItem';
 export {
   AppItem,
   appItemClassNames,
   renderAppItem_unstable,
   useAppItemStyles_unstable,
   useAppItem_unstable,
+  useAppItemBase_unstable,
 } from './AppItem';
-export type { AppItemStaticProps, AppItemStaticSlots, AppItemStaticState } from './AppItemStatic';
+export type {
+  AppItemStaticProps,
+  AppItemStaticSlots,
+  AppItemStaticState,
+  AppItemStaticBaseProps,
+  AppItemStaticBaseState,
+} from './AppItemStatic';
 export {
   AppItemStatic,
   appItemStaticClassNames,
   renderAppItemStatic_unstable,
   useAppItemStaticStyles_unstable,
   useAppItemStatic_unstable,
+  useAppItemStaticBase_unstable,
 } from './AppItemStatic';
 export type { SplitNavItemProps, SplitNavItemSlots, SplitNavItemState } from './SplitNavItem';
 export {

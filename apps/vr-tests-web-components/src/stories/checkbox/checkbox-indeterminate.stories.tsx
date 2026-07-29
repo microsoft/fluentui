@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
 import { Steps, type StoryParameters } from 'storywright';
-import { CheckboxDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { DARK_MODE, getStoryVariant } from '../../utilities/WCThemeDecorator.js';
 
-CheckboxDefinition.define(FluentDesignSystem.registry);
+import '@fluentui/web-components/checkbox/define.js';
 
 export default {
   title: 'Checkbox',

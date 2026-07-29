@@ -3,15 +3,14 @@ import {
   MessageBarActions,
   MessageBarBody,
   MessageBarTitle,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/message-bar';
 
 import descriptionMd from './MessageBarDescription.md';
-
 export { Default } from './MessageBarDefault.stories';
 export { Intent } from './MessageBarIntent.stories';
 
 export default {
-  title: 'Headless Components/MessageBar',
+  title: 'Components/MessageBar',
   component: MessageBar,
   subcomponents: {
     MessageBarBody,

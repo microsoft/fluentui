@@ -1,0 +1,36 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: grid;
+}
+:host {
+  box-sizing: border-box;
+  grid-template-rows: min-content auto min-content;
+  position: relative;
+  height: 100%;
+  padding: var(--spacingHorizontalXL);
+  max-height: 100svh;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase500);
+  line-height: var(--lineHeightBase500);
+  font-weight: var(--fontWeightSemibold);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--spacingHorizontalM);
+}
+
+::slotted([slot='title']) {
+  font: inherit;
+  padding: 0;
+  margin: 0;
+}

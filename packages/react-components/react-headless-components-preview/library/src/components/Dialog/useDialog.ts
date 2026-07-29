@@ -30,7 +30,15 @@ export const useDialog = (props: DialogProps): DialogState => {
 
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     onOpenChange?.(data.event, data);
-    if (!data.event.isDefaultPrevented()) {
+
+    const syntheticEvent = data.event as React.SyntheticEvent;
+
+    const isDefaultPrevented =
+      typeof syntheticEvent.isDefaultPrevented === 'function'
+        ? syntheticEvent.isDefaultPrevented()
+        : data.event.defaultPrevented;
+
+    if (!isDefaultPrevented) {
       setOpen(data.open);
     }
   });

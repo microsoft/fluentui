@@ -12,8 +12,6 @@ import { flushSync } from 'react-dom';
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
-  'use no memo';
-
   const {
     itemSize,
     numItems,
@@ -44,7 +42,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const actualIndex = _virtualizerContext.contextIndex;
 
   // Just in case our ref gets out of date vs the context during a re-render
+  // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
   if (_virtualizerContext.contextIndex !== actualIndexRef.current) {
+    // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
     actualIndexRef.current = _virtualizerContext.contextIndex;
   }
   const setActualIndex = React.useCallback(
@@ -68,6 +68,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   this helps us skip re-calculations unless children/size changes */
   const childProgressiveSizes = React.useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
   if (virtualizerContext?.childProgressiveSizes) {
+    // eslint-disable-next-line react-hooks/immutability, react-hooks/refs -- deprecated package, not worth refactoring
     virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
   }
 
@@ -87,6 +88,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     if (numItems !== childProgressiveSizes.current.length) {
       childProgressiveSizes.current = new Array<number>(numItems);
       if (virtualizerContext?.childProgressiveSizes) {
+        // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
         virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
       }
     }
@@ -134,6 +136,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }, [clearScrollTimer, setScrollTimer, enableScrollLoad]);
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- deprecated package, not worth refactoring
     initializeScrollingTimer();
   }, [actualIndex, initializeScrollingTimer]);
 
@@ -221,6 +224,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       }
 
       if (indexValue > scrollPos) {
+        // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
         return findIndexRecursive(scrollPos, lowIndex, midpoint - 1);
       } else {
         return findIndexRecursive(scrollPos, midpoint + 1, highIndex);
@@ -450,6 +454,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       ],
     ),
     {
+      // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
       root: scrollViewRef ? scrollViewRef?.current : null,
       rootMargin: '0px',
       threshold: 0,
@@ -542,6 +547,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild, isScrolling]);
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   React.useEffect(() => {
     // Ensure we repopulate if getItemSize callback changes
     populateSizeArrays();
@@ -562,6 +568,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }, [actualIndex, onRenderedFlaggedIndex, virtualizerLength]);
 
   // Ensure we have run through and updated the whole size list array at least once.
+  /* eslint-disable react-hooks/refs -- deprecated package, not worth refactoring */
   initializeSizeArray();
 
   if (getItemSize && (numItems !== childSizes.current.length || numItems !== childProgressiveSizes.current.length)) {
@@ -620,4 +627,5 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     childSizes,
     childProgressiveSizes,
   };
+  /* eslint-enable react-hooks/refs */
 }

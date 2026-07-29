@@ -34,6 +34,7 @@ export const styles: ElementStyles = css`
     line-height: ${lineHeightBase200};
     width: 100%;
     background: ${colorNeutralBackground3};
+    color: ${colorNeutralForeground3};
     border: 1px solid ${colorNeutralStroke1};
     padding-inline: ${spacingHorizontalM};
     border-radius: ${borderRadiusMedium};

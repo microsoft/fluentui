@@ -35,13 +35,12 @@ const useRootStyles = makeStyles({
  * Apply styling to the InteractionTag slots based on the state
  */
 export const useInteractionTagStyles_unstable = (state: InteractionTagState): InteractionTagState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
 
   const { shape, size } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     interactionTagClassNames.root,
     rootBaseClassName,

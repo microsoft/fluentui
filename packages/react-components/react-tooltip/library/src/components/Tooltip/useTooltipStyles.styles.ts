@@ -52,10 +52,9 @@ const useStyles = makeStyles({
  * Apply styling to the Tooltip slots based on the state
  */
 export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.content.className = mergeClasses(
     tooltipClassNames.content,
     styles.root,
@@ -64,6 +63,7 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
     state.content.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.arrowClassName = styles.arrow;
 
   return state;

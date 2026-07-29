@@ -49,8 +49,6 @@ const useStyles = makeStyles({
 export const useVirtualizerScrollViewDynamicStyles_unstable = (
   state: VirtualizerScrollViewDynamicState,
 ): VirtualizerScrollViewDynamicState => {
-  'use no memo';
-
   const styles = useStyles();
 
   // Default virtualizer styles base
@@ -66,6 +64,7 @@ export const useVirtualizerScrollViewDynamicStyles_unstable = (
       : styles.vertical;
 
   // Add container styles
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.container.className = mergeClasses(
     virtualizerScrollViewDynamicClassNames.container,
     styles.base,

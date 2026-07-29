@@ -151,6 +151,9 @@ export type DropdownState = ComponentState<DropdownSlots> & Omit<ComboboxBaseSta
 };
 
 // @public
+export function isComboboxOptionElement(element: HTMLElement): boolean;
+
+// @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
 
 // @public (undocumented)

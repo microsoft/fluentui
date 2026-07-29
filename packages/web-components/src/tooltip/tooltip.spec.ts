@@ -1,9 +1,13 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Tooltip } from './tooltip.js';
 import type { TooltipPositioningOption } from './tooltip.options.js';
+import { tagName } from './tooltip.options.js';
 
 test.describe('Tooltip', () => {
-  test.use({ tagName: 'fluent-tooltip' });
+  test.use({
+    tagName,
+    innerHTML: 'This is a tooltip',
+  });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
@@ -14,19 +18,13 @@ test.describe('Tooltip', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-tooltip');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
-  /**
-   * ARIA APG Tooltip Pattern {@link https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/ }
-   * ESC dismisses the tooltip.
-   * The element that serves as the tooltip container has role tooltip.
-   * The element that triggers the tooltip references the tooltip element with aria-describedby.
-   */
   test('escape key should hide the tooltip', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const button = page.locator('button');
@@ -34,7 +32,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target">This is a tooltip</${tagName}>
       </div>
     `);
 
@@ -50,6 +48,8 @@ test.describe('Tooltip', () => {
   test('should have the role set to `tooltip`', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'tooltip');
   });
 
@@ -60,7 +60,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target">This is a tooltip</${tagName}>
       </div>
     `);
 
@@ -71,8 +71,49 @@ test.describe('Tooltip', () => {
     await expect(button).toHaveAttribute('aria-describedby', id);
   });
 
+  test('should remove the tooltip id from `aria-describedby` attribute when tooltip is removed', async ({
+    fastPage,
+  }) => {
+    const { element, page } = fastPage;
+    const button = page.locator('button');
+
+    await fastPage.setTemplate(/* html */ `
+      <div style="position: absolute; inset: 200px">
+        <button id="target">Target</button>
+        <${tagName} anchor="target">This is a tooltip</${tagName}>
+        <${tagName} anchor="target">This is another tooltip</${tagName}>
+      </div>
+    `);
+
+    const id1 = await element.nth(0).evaluate((node: Tooltip) => node.id);
+    const id2 = await element.nth(1).evaluate((node: Tooltip) => node.id);
+
+    await expect(button).toHaveAttribute('aria-describedby', [id1, id2].join(' '));
+
+    await element.nth(0).evaluate(node => {
+      node.remove();
+    });
+
+    await expect(button).toHaveAttribute('aria-describedby', id2);
+
+    await button.evaluate(
+      (node, [tagName, id]) => {
+        const tooltip = document.createElement(tagName);
+        tooltip.id = id;
+        tooltip.setAttribute('anchor', 'target');
+        tooltip.textContent = 'New tooltip';
+        node.after(tooltip);
+      },
+      [tagName, id1],
+    );
+
+    await expect(button).toHaveAttribute('aria-describedby', [id2, id1].join(' '));
+  });
+
   test('should not be visible by default', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toBeHidden();
   });
@@ -84,7 +125,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target">This is a tooltip</${tagName}>
       </div>
     `);
 
@@ -102,7 +143,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target">This is a tooltip</${tagName}>
       </div>
     `);
 
@@ -124,7 +165,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target">This is a tooltip</${tagName}>
       </div>
     `);
 
@@ -146,7 +187,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target">This is a tooltip</${tagName}>
       </div>
     `);
 
@@ -172,7 +213,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target" positioning="below">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target" positioning="below">This is a tooltip</${tagName}>
       </div>
     `);
 
@@ -193,7 +234,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target" positioning="before">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target" positioning="before">This is a tooltip</${tagName}>
       </div>
     `);
 
@@ -214,7 +255,7 @@ test.describe('Tooltip', () => {
     await fastPage.setTemplate(/* html */ `
       <div style="position: absolute; inset: 200px">
         <button id="target">Target</button>
-        <fluent-tooltip anchor="target" positioning="after">This is a tooltip</fluent-tooltip>
+        <${tagName} anchor="target" positioning="after">This is a tooltip</${tagName}>
       </div>
     `);
 

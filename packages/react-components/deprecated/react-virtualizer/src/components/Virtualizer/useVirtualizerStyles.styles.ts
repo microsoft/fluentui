@@ -36,12 +36,11 @@ const useStyles = makeStyles({
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useVirtualizerStyles_unstable = (state: VirtualizerState): VirtualizerState => {
-  'use no memo';
-
   const styles = useStyles();
   const { reversed, axis, beforeBufferHeight, afterBufferHeight, bufferSize } = state;
   const horizontal = axis === 'horizontal';
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.before.className = mergeClasses(
     virtualizerClassNames.before,
     styles.base,
@@ -50,6 +49,7 @@ export const useVirtualizerStyles_unstable = (state: VirtualizerState): Virtuali
     state.before.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.after.className = mergeClasses(
     virtualizerClassNames.after,
     styles.base,
@@ -58,6 +58,7 @@ export const useVirtualizerStyles_unstable = (state: VirtualizerState): Virtuali
     state.after.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.beforeContainer.className = mergeClasses(
     virtualizerClassNames.beforeContainer,
     styles.base,
@@ -65,6 +66,7 @@ export const useVirtualizerStyles_unstable = (state: VirtualizerState): Virtuali
     state.beforeContainer.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.afterContainer.className = mergeClasses(
     virtualizerClassNames.afterContainer,
     styles.base,
@@ -100,6 +102,7 @@ export const useVirtualizerStyles_unstable = (state: VirtualizerState): Virtuali
     ...(reversed && horizontal && { marginRight: `-${bufferPx}` }),
   };
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.before.style = {
     height: horizontal ? '100%' : beforeBufferHeightPx,
     width: horizontal ? beforeBufferHeightPx : '100%',
@@ -107,12 +110,14 @@ export const useVirtualizerStyles_unstable = (state: VirtualizerState): Virtuali
     ...state.before.style,
   };
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.beforeContainer.style = {
     height: horizontal ? 'auto' : beforeHeightPx,
     width: horizontal ? beforeHeightPx : 'auto',
     ...state.beforeContainer.style,
   };
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.after.style = {
     height: horizontal ? '100%' : afterBufferHeightPx,
     width: horizontal ? afterBufferHeightPx : '100%',
@@ -120,6 +125,7 @@ export const useVirtualizerStyles_unstable = (state: VirtualizerState): Virtuali
     ...state.after.style,
   };
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
   state.afterContainer.style = {
     height: horizontal ? 'auto' : afterHeightPx,
     width: horizontal ? afterHeightPx : 'auto',

@@ -33,14 +33,14 @@ const useStyles = makeStyles({
  * Apply styling to the Hamburger slots based on the state
  */
 export const useHamburgerStyles_unstable = (state: HamburgerState): HamburgerState => {
-  'use no memo';
-
   useButtonStyles_unstable(state);
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(hamburgerClassNames.root, styles.root, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(hamburgerClassNames.icon, state.icon.className);
   }
 

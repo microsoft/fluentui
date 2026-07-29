@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './label.definition.js';
+import { Label } from './label.js';
 
-definition.define(FluentDesignSystem.registry);
+Label.define(definition);

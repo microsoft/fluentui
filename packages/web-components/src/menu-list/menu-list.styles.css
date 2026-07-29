@@ -1,0 +1,20 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: flex;
+}
+
+:host {
+  flex-direction: column;
+  height: fit-content;
+  max-width: 300px;
+  min-width: 160px;
+  width: auto;
+  background-color: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorTransparentStroke);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 4px;
+  row-gap: 2px;
+}

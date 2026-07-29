@@ -300,13 +300,12 @@ const useIconStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
-  'use no memo';
-
   const rootClassName = useRootClassName();
   const rootStyles = useRootStyles();
 
   const smallToTiny = state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     badgeClassNames.root,
     rootClassName,
@@ -333,6 +332,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
       }
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       badgeClassNames.icon,
       iconRootClassName,

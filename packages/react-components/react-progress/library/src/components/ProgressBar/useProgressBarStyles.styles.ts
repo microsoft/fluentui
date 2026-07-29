@@ -97,12 +97,11 @@ const useBarStyles = makeStyles({
  * Apply styling to the ProgressBar slots based on the state
  */
 export const useProgressBarStyles_unstable = (state: ProgressBarState): ProgressBarState => {
-  'use no memo';
-
   const { color, max, shape, thickness, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     progressBarClassNames.root,
     rootStyles.root,
@@ -112,6 +111,7 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
   );
 
   if (state.bar) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bar.className = mergeClasses(
       progressBarClassNames.bar,
       barStyles.base,
@@ -124,6 +124,7 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
   }
 
   if (state.bar && value !== undefined) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bar.style = {
       width: Math.min(100, Math.max(0, (value / max) * 100)) + '%',
       ...state.bar.style,

@@ -117,13 +117,14 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
   const buttonStyles = useButtonStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
-  // eslint-disable-next-line react-compiler/react-compiler
+  // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
   state.info.className = mergeClasses(
     infoButtonClassNames.info,
     size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,
     state.info.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
   state.root.className = mergeClasses(
     infoButtonClassNames.root,
     buttonStyles.base,

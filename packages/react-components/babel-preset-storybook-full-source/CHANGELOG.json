@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-preset-storybook-full-source",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2026 18:28:49 GMT",
+      "tag": "@fluentui/babel-preset-storybook-full-source_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-storybook-full-source",
+            "commit": "70a3e37d2c78a209f6b01203b039fc81a386762f",
+            "comment": "feat: add css-modules support as opt in via 'cssModules' config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 13:16:20 GMT",
       "tag": "@fluentui/babel-preset-storybook-full-source_v0.1.1",
       "version": "0.1.1",

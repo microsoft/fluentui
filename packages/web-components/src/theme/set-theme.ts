@@ -1,5 +1,5 @@
 import { Updates } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 
 /**
  * Not using the `Theme` type from `@fluentui/tokens` package to allow custom
@@ -213,12 +213,4 @@ function forceRepaint(element: HTMLElement) {
   Updates.process();
 
   element.style.setProperty(name, currentValue);
-}
-
-/**
- * @internal
- * @deprecated Use `setTheme(theme, element)` instead.
- */
-export function setThemeFor(element: HTMLElement, theme: Theme | null) {
-  setThemePropertiesOnElement(theme, element);
 }

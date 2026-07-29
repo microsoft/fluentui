@@ -52,6 +52,7 @@ export const useOptionCollection = (): OptionCollectionState => {
 
   return {
     ...collectionAPI,
+    // eslint-disable-next-line react-hooks/refs
     options: Array.from(optionsById.current.values()),
     registerOption,
   };

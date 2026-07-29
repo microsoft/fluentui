@@ -1,7 +1,7 @@
-const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
 
 const { findGitRoot } = require('@fluentui/scripts-monorepo');
+
 const { getResolveAlias } = require('./getResolveAlias');
 
 /**
@@ -91,7 +91,7 @@ const createStorybookWebpackConfig = config => {
     },
   };
 
-  config.plugins = [...(config.plugins || []), new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] })];
+  config.plugins = config.plugins || [];
 
   if (process.env.TF_BUILD) {
     // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)

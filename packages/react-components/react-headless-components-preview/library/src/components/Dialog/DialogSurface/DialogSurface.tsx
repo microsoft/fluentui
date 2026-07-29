@@ -10,7 +10,7 @@ import type { DialogSurfaceProps } from './DialogSurface.types';
  * `DialogSurface` renders the native HTML `<dialog>` element.
  *
  * Place it as a direct child of `Dialog` (alongside an optional `DialogTrigger`).
- * It manages open/close via `showModal()` / `show()` / `close()` imperatively,
+ * It manages open/close via `showModal()` / `showPopover()` / `close()` imperatively,
  * keeping the native element in sync with the controlled `open` prop.
  *
  * The native `::backdrop` pseudo-element provides the modal backdrop.

@@ -1,18 +1,11 @@
 import type { ElementStyles } from '@microsoft/fast-element';
 import { attr, css, FASTElement, observable, Observable, Updates } from '@microsoft/fast-element';
-import {
-  Direction,
-  keyArrowDown,
-  keyArrowLeft,
-  keyArrowRight,
-  keyArrowUp,
-  keyEnd,
-  keyHome,
-  limit,
-  Orientation,
-} from '@microsoft/fast-web-utilities';
+import { Direction } from '../utils/direction.js';
+import { limit } from '../utils/numbers.js';
+import { Orientation } from '../utils/orientation.js';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 
@@ -24,7 +17,7 @@ import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } f
  * @slot thumb - The slot for a custom thumb element.
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
- * @fires change - Fires a custom 'change' event when the value changes.
+ * @fires { Event } change - Fires a custom 'change' event when the value changes.
  *
  * @public
  */
@@ -560,6 +553,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
       notifier.subscribe(this, 'min');
       notifier.subscribe(this, 'step');
     });
+
+    maybeSetAutoFocus(this);
   }
 
   /**
@@ -612,29 +607,29 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
 
     switch (event.key) {
-      case keyHome:
+      case 'Home':
         event.preventDefault();
         this.value =
           this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
             ? `${this.minAsNumber}`
             : `${this.maxAsNumber}`;
         break;
-      case keyEnd:
+      case 'End':
         event.preventDefault();
         this.value =
           this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
             ? `${this.maxAsNumber}`
             : `${this.minAsNumber}`;
         break;
-      case keyArrowRight:
-      case keyArrowUp:
+      case 'ArrowRight':
+      case 'ArrowUp':
         if (!event.shiftKey) {
           event.preventDefault();
           this.increment();
         }
         break;
-      case keyArrowLeft:
-      case keyArrowDown:
+      case 'ArrowLeft':
+      case 'ArrowDown':
         if (!event.shiftKey) {
           event.preventDefault();
           this.decrement();

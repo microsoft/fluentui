@@ -1,9 +1,5 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition as menuItemDefinition } from '../menu-item/menu-item.definition.js';
-import { definition as menuListDefinition } from './menu-list.definition.js';
-
-menuListDefinition.define(FluentDesignSystem.registry);
-menuItemDefinition.define(FluentDesignSystem.registry);
+import '../menu-item/define.js';
+import './define.js';
 
 const itemRenderer = () => {
   const menuList = document.createElement('fluent-menu-list');

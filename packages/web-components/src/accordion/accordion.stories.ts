@@ -1,9 +1,11 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
 type Story = StoryObj<FluentAccordion>;
+const { argTypes } = getStorybookHelpers<FluentAccordion>('fluent-accordion');
 
 const storyTemplate = html<StoryArgs<FluentAccordion>>`
   <fluent-accordion expand-mode="${story => story.expandmode}">
@@ -37,31 +39,7 @@ const storyTemplate = html<StoryArgs<FluentAccordion>>`
 export default {
   title: 'Components/Accordion/Accordion',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    expandmode: {
-      control: 'select',
-      description: 'Controls the expand mode of the Accordion, either allowing single or multiple item expansion.',
-      name: 'expand-mode',
-      options: ['', ...Object.values(AccordionExpandMode)],
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: AccordionExpandMode.multi },
-        type: { summary: Object.values(AccordionExpandMode).join('|') },
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    headingSlottedContent: {
-      control: false,
-      description: 'The slot for the heading content',
-      name: 'heading',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentAccordion>;
 
 export const Default: Story = {};

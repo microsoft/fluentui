@@ -1,0 +1,85 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  overflow: hidden;
+}
+
+.item {
+  border-bottom: 1px solid var(--border);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.header {
+  margin: 0;
+}
+
+.headerBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.headerBtn:hover {
+  background: var(--surface-muted);
+}
+
+.headerBtn:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.expandIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  transition: transform var(--duration-medium) var(--ease-emphasized);
+  flex-shrink: 0;
+}
+
+.item[data-open] .expandIcon {
+  transform: rotate(90deg);
+  color: var(--text);
+}
+
+.panel {
+  padding: 0 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-medium) var(--ease-emphasized),
+    padding var(--duration-medium) var(--ease-emphasized);
+}
+
+.item[data-open] .panel {
+  max-height: 320px;
+  padding: 0 18px 16px;
+}
+
+.label {
+  flex: 1;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  max-width: 480px;
+}

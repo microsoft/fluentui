@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './menu-list.definition.js';
+import { MenuList } from './menu-list.js';
 
-definition.define(FluentDesignSystem.registry);
+MenuList.define(definition);

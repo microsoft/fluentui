@@ -63,19 +63,30 @@ const useStyles = makeStyles({
  * Apply styling to the TreeItem slots based on the state
  */
 export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState => {
-  'use no memo';
-
   const baseStyles = useBaseStyles();
   const styles = useStyles();
 
   const { level } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     treeItemClassNames.root,
     baseStyles,
     isStaticallyDefinedLevel(level) && styles[`level${level}` as StaticLevelProperty],
     state.root.className,
   );
+
+  // For levels beyond the statically generated classes (> 10), fall back to an
+  // inline style that sets the indentation CSS variable dynamically. This avoids
+  // generating an unbounded number of atomic classes while still supporting
+  // arbitrarily deep trees. User-provided inline styles take precedence.
+  if (!isStaticallyDefinedLevel(level)) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.root.style = {
+      [treeItemLevelToken]: level,
+      ...state.root.style,
+    };
+  }
 
   return state;
 };

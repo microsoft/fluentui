@@ -32,8 +32,6 @@ const useStyles = makeStyles({
  * Apply styling to the List slots based on the state
  */
 export const useListStyles_unstable = (state: ListState): ListState => {
-  'use no memo';
-
   const rootStyles = useRootBaseStyles();
   const styles = useStyles();
 
@@ -43,6 +41,7 @@ export const useListStyles_unstable = (state: ListState): ListState => {
     ['vertical']: undefined, // no extra styles needed, keep it in for completeness and type safety
   };
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     listClassNames.root,
     rootStyles,

@@ -15,13 +15,14 @@ import { stringifyDataAttribute } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderAccordionHeader`.
  */
 export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
-  'use no memo';
-
   const state: AccordionHeaderState = useAccordionHeaderBase_unstable(props, ref);
 
   // Set data attributes for open, disabled, and expand icon position states to simplify styling.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-open'] = stringifyDataAttribute(state.open);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-expand-icon-position'] = state.expandIconPosition;
 
   return state;

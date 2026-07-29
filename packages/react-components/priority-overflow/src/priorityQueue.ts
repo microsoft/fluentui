@@ -1,7 +1,6 @@
 export type PriorityQueueCompareFn<T> = (a: T, b: T) => number;
 
-export interface PriorityQueue<T> {
-  all: () => T[];
+export interface PriorityQueue<T> extends Iterable<T> {
   clear: () => void;
   contains: (item: T) => boolean;
   dequeue: () => T;
@@ -107,12 +106,7 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
     size = 0;
   };
 
-  const all = () => {
-    return arr.slice(0, size);
-  };
-
   return {
-    all,
     clear,
     contains,
     dequeue,
@@ -120,5 +114,13 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
     peek,
     remove,
     size: () => size,
+    // Iterates items in heap order, without allocating an intermediate array. Bounded by `size`:
+    // `arr` keeps stale entries past `size` (dequeue/remove/clear shrink `size`, not `arr`), so the
+    // array's own iterator would yield removed items.
+    *[Symbol.iterator]() {
+      for (let index = 0; index < size; index++) {
+        yield arr[index];
+      }
+    },
   };
 }

@@ -27,8 +27,6 @@ const useAppItemStaticStyles = makeStyles({
  * Apply styling to the AppItemStatic slots based on the state
  */
 export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppItemStaticState => {
-  'use no memo';
-
   const rootDefaultClassName = useRootDefaultClassName();
   const iconStyles = useIconStyles();
   const appItemSpecificStyles = useAppItemStyles();
@@ -36,6 +34,7 @@ export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppI
 
   const { density, icon } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     rootDefaultClassName,
     appItemStaticClassNames.root,
@@ -47,6 +46,7 @@ export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppI
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(appItemStaticClassNames.icon, iconStyles.base, state.icon.className);
   }
 

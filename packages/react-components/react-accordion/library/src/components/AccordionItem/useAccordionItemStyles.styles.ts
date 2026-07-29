@@ -7,8 +7,6 @@ export const accordionItemClassNames: SlotClassNames<AccordionItemSlots> = {
 };
 
 export const useAccordionItemStyles_unstable = (state: AccordionItemState): AccordionItemState => {
-  'use no memo';
-
   state.root.className = mergeClasses(accordionItemClassNames.root, state.root.className);
 
   return state;

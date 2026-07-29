@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" fill="none">
+  <rect width="240" height="160" fill="#fff1f3"/>
+  <!-- Central node -->
+  <circle cx="120" cy="80" r="16" fill="#9b1f5a"/>
+  <!-- React logo hook shape suggestion -->
+  <circle cx="120" cy="80" r="5" fill="white"/>
+  <!-- Branch lines -->
+  <line x1="104" y1="80" x2="60" y2="48" stroke="#9b1f5a" stroke-width="2" stroke-dasharray="5 3"/>
+  <line x1="104" y1="80" x2="60" y2="112" stroke="#9b1f5a" stroke-width="2" stroke-dasharray="5 3"/>
+  <line x1="136" y1="80" x2="180" y2="48" stroke="#9b1f5a" stroke-width="2" stroke-dasharray="5 3"/>
+  <line x1="136" y1="80" x2="180" y2="112" stroke="#9b1f5a" stroke-width="2" stroke-dasharray="5 3"/>
+  <!-- Framework nodes -->
+  <circle cx="56" cy="44" r="14" fill="#fff1f3" stroke="#9b1f5a" stroke-width="2"/>
+  <text x="56" y="49" text-anchor="middle" font-family="monospace" font-size="10" fill="#9b1f5a">R</text>
+  <circle cx="56" cy="116" r="14" fill="#fff1f3" stroke="#9b1f5a" stroke-width="2"/>
+  <text x="56" y="121" text-anchor="middle" font-family="monospace" font-size="10" fill="#9b1f5a">V</text>
+  <circle cx="184" cy="44" r="14" fill="#fff1f3" stroke="#9b1f5a" stroke-width="2"/>
+  <text x="184" y="49" text-anchor="middle" font-family="monospace" font-size="9" fill="#9b1f5a">TS</text>
+  <circle cx="184" cy="116" r="14" fill="#fff1f3" stroke="#9b1f5a" stroke-width="2"/>
+  <text x="184" y="121" text-anchor="middle" font-family="monospace" font-size="9" fill="#9b1f5a">++</text>
+</svg>

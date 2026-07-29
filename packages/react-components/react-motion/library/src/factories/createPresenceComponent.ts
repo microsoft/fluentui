@@ -97,8 +97,6 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 ): PresenceComponent<MotionParams> {
   return Object.assign(
     (props: PresenceComponentProps & MotionParams) => {
-      'use no memo';
-
       const itemContext = React.useContext(PresenceGroupChildContext);
       const merged = { ...itemContext, ...props };
       const skipMotions = useMotionBehaviourContext() === 'skip';

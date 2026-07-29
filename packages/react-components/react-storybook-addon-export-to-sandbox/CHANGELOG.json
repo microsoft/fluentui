@@ -2,6 +2,41 @@
   "name": "@fluentui/react-storybook-addon-export-to-sandbox",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2026 18:28:46 GMT",
+      "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "70a3e37d2c78a209f6b01203b039fc81a386762f",
+            "comment": "feat: add css-modules support as opt in via 'cssModules' preset config"
+          }
+        ],
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "1031517ee91349057a25fecb81eaab5794651d87",
+            "comment": "feat: add open in new tab action button for canvas - enabled by default"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "96a53092ba17933cdd41563e41270624506b6616",
+            "comment": "feat: add template extension params"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "comment": "Bump @fluentui/babel-preset-storybook-full-source to v0.1.2",
+            "commit": "a90442996224b76904a73761ad77f9b1f68239a3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Apr 2026 14:06:15 GMT",
       "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.2.1",
       "version": "0.2.1",

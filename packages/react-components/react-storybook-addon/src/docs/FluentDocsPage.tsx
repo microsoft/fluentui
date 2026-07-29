@@ -19,8 +19,8 @@ import { makeStyles } from '@griffel/react';
 import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import { DIR_ID, THEME_ID } from '../constants';
-import { themes } from '../theme';
+import { DIR_ID, THEME_ID, THEMES } from '../constants';
+import { themes as defaultThemes, type Theme } from '../theme';
 
 import { getDocsPageConfig } from './utils';
 import { DirSwitch } from './DirSwitch';
@@ -248,7 +248,6 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
     </div>
   );
 };
-
 const RenderArgsTable = ({
   story,
   hideArgsTable,
@@ -269,6 +268,7 @@ const RenderArgsTable = ({
   return hideArgsTable ? null : (
     <>
       <div className={styles.additionalInfoWrapper}>
+        <ArgTypes of={component} />
         {hasArgAsProp && (
           <AdditionalApiDocs>
             <p>
@@ -304,7 +304,6 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgTypes of={component} />
     </>
   );
 };
@@ -328,7 +327,37 @@ const RenderPrimaryStory = ({
   );
 };
 
-export const FluentDocsPage = (): JSXElement => {
+const RenderStories = ({ skipPrimaryStory }: { stories: PrimaryStory[]; skipPrimaryStory?: boolean }) => (
+  <Stories includePrimary={!skipPrimaryStory} />
+);
+
+export type FluentDocsPageProps = {
+  /**
+   * Render the primary-story section (divider + h3 anchor heading + canvas).
+   * Defaults to the addon's built-in `RenderPrimaryStory`. Pass a custom
+   * component to swap the canvas/source rendering (e.g. wrap in `<Anchor>`,
+   * use a custom source panel) while keeping the rest of the docs page chrome.
+   */
+  renderPrimaryStory?: typeof RenderPrimaryStory;
+  /**
+   * Render the props table. Defaults to the addon's built-in `RenderArgsTable`,
+   * which runs `withSlotEnhancer` and adds the slot/native-props info cards.
+   */
+  renderArgsTable?: typeof RenderArgsTable;
+  /**
+   * Render the secondary-stories section. Defaults to Storybook's `<Stories />`
+   * block. When overridden, the page passes the non-primary stories so the
+   * consumer can iterate (e.g. to add per-story anchors and a custom source
+   * panel). The default ignores `stories` and lets `<Stories />` self-iterate.
+   */
+  renderStories?: typeof RenderStories;
+};
+
+export const FluentDocsPage = ({
+  renderPrimaryStory = RenderPrimaryStory,
+  renderArgsTable = RenderArgsTable,
+  renderStories = RenderStories,
+}: FluentDocsPageProps = {}): JSXElement => {
   const context = React.useContext(DocsContext);
 
   // Get the fluent docs page configuration from context
@@ -342,6 +371,8 @@ export const FluentDocsPage = (): JSXElement => {
   assertStoryMetaValues(primaryStory);
 
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
+  const themes: Theme[] =
+    primaryStoryContext.parameters?.fluentThemes ?? primaryStoryContext.globals?.[THEMES] ?? defaultThemes;
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
 
   const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
@@ -357,9 +388,9 @@ export const FluentDocsPage = (): JSXElement => {
         <Title />
         <Subtitle />
         <Description />
-        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
-        <Stories />
+        {renderPrimaryStory({ primaryStory: primaryStory, skipPrimaryStory })}
+        {renderArgsTable({ story: primaryStory, hideArgsTable })}
+        {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
       </div>
     );
   }
@@ -392,7 +423,7 @@ export const FluentDocsPage = (): JSXElement => {
         <div className={styles.container}>
           {(showThemePicker || showDirSwitcher || showCopyAsMarkdown) && (
             <div className={styles.globalTogglesContainer}>
-              {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} />}
+              {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} themes={themes} />}
               {showDirSwitcher && <DirSwitch dir={dir} />}
               {showCopyAsMarkdown && <CopyAsMarkdownButton storyId={primaryStory.id} />}
             </div>
@@ -402,17 +433,14 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory
-            primaryStory={primaryStory as unknown as PrimaryStory}
-            skipPrimaryStory={skipPrimaryStory}
-          />
-          <RenderArgsTable
-            story={primaryStory as unknown as PrimaryStory}
-            hideArgsTable={hideArgsTable}
-            showSlotsApi={argTable.slotsApi}
-            showNativePropsApi={argTable.nativePropsApi}
-          />
-          <Stories />
+          {renderPrimaryStory({ primaryStory, skipPrimaryStory })}
+          {renderArgsTable({
+            story: primaryStory,
+            hideArgsTable,
+            showSlotsApi: argTable.slotsApi,
+            showNativePropsApi: argTable.nativePropsApi,
+          })}
+          {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
         </div>
         {showTableOfContents && (
           <div className={styles.toc}>

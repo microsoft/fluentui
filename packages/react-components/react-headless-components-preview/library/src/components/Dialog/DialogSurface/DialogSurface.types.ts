@@ -4,7 +4,7 @@ import type { DialogModalType } from '../dialogContext';
 export type DialogSurfaceSlots = {
   /**
    * The native HTML `<dialog>` element.
-   * Opened as modal via `showModal()` or non-modal via `show()`.
+   * Opened as modal via `showModal()` or non-modal via `showPopover()`.
    * The `::backdrop` CSS pseudo-element provides the native backdrop for modal dialogs.
    */
   root: Slot<'dialog'>;
@@ -31,8 +31,8 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
   /**
    * Modality of the dialog. Mirrors DialogContext's `modalType`.
    * - `modal` / `alert`: opened via `showModal()`; rendered into the browser top layer.
-   * - `non-modal`: opened via `show()`; portalled into `document.body` to escape ancestor
-   *   stacking contexts (`overflow`, `clip-path`, `transform`).
+   * - `non-modal`: opened via `showPopover()` with `popover="manual"`, entering
+   *   the browser top layer while keeping open/close fully React-controlled.
    */
   modalType: DialogModalType;
   /**

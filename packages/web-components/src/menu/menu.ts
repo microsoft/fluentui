@@ -1,5 +1,4 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
 import { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
@@ -149,28 +148,28 @@ export class Menu extends FASTElement {
    * Defines whether the menu is open or not.
    * @internal
    */
-  private _open: boolean = false;
+  protected _open: boolean = false;
 
   /**
    * The trigger element of the menu.
    * @internal
    */
-  private _trigger?: HTMLElement;
+  protected _trigger?: HTMLElement;
   /**
    * The menu list element of the menu which has the popover behavior.
    * @internal
    */
-  private _menuList?: HTMLElement;
+  protected _menuList?: HTMLElement;
 
   /**
    * @internal
    */
-  private _triggerAbortController?: AbortController;
+  protected _triggerAbortController?: AbortController;
 
   /**
    * @internal
    */
-  private _menuListAbortController?: AbortController;
+  protected _menuListAbortController?: AbortController;
 
   /**
    * Called when the element is connected to the DOM.
@@ -279,9 +278,10 @@ export class Menu extends FASTElement {
     // @ts-expect-error - Baseline 2024
     if (e.type === 'toggle' && e.newState) {
       // @ts-expect-error - Baseline 2024
-      const newState = e.newState === 'open';
-      this._trigger?.setAttribute('aria-expanded', `${newState}`);
-      this._open = newState;
+      const open = e.newState === 'open';
+      this._trigger?.setAttribute('aria-expanded', `${open}`);
+      this._menuList?.setAttribute('focusgroup', open ? 'menu' : 'none');
+      this._open = open;
       if (this._open) {
         this.focusMenuList();
       }
@@ -356,7 +356,7 @@ export class Menu extends FASTElement {
    * Adds trigger-related event listeners.
    * @internal
    */
-  private addTriggerListeners(): void {
+  protected addTriggerListeners(): void {
     this._triggerAbortController = new AbortController();
     const { signal } = this._triggerAbortController;
 
@@ -376,7 +376,7 @@ export class Menu extends FASTElement {
    * Adds menu-list event listeners.
    * @internal
    */
-  private addMenuListListeners(): void {
+  protected addMenuListListeners(): void {
     this._menuListAbortController = new AbortController();
     const { signal } = this._menuListAbortController;
 
@@ -401,14 +401,14 @@ export class Menu extends FASTElement {
     const key = e.key;
 
     switch (key) {
-      case keyEscape:
+      case 'Escape':
         e.preventDefault();
         if (this._open) {
           this.closeMenu();
           this.focusTrigger();
         }
         break;
-      case keyTab:
+      case 'Tab':
         if (this._open) this.closeMenu();
         if (
           e.shiftKey &&
@@ -437,8 +437,8 @@ export class Menu extends FASTElement {
     }
     const key = e.key;
     switch (key) {
-      case keySpace:
-      case keyEnter:
+      case ' ':
+      case 'Enter':
         e.preventDefault();
         this.toggleMenu();
         break;
@@ -452,7 +452,7 @@ export class Menu extends FASTElement {
    * @internal
    * @param e - The event triggered on document click.
    */
-  private documentClickHandler = (e: any) => {
+  protected documentClickHandler = (e: any) => {
     if (!e.composedPath().some((el: any) => el === this._trigger || el === this._menuList)) {
       this.closeMenu();
     }

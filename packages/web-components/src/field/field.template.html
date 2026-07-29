@@ -1,0 +1,13 @@
+<f-template name="fluent-field" shadowrootmode="open" shadowrootdelegatesfocus>
+  <template
+    @click="{clickHandler($e)}"
+    @change="{changeHandler($e)}"
+    @focusin="{focusinHandler($e)}"
+    @focusout="{focusoutHandler($e)}"
+  >
+    {{styles}}
+    <slot name="label" part="label" f-slotted="{labelSlot}"></slot>
+    <slot name="input" part="input" f-slotted="{slottedInputs}"></slot>
+    <slot name="message" part="message" f-slotted="{messageSlot filter elements([flag])}"></slot>
+  </template>
+</f-template>

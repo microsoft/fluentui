@@ -21,7 +21,7 @@ export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree'): 
   treeRef: React.RefCallback<HTMLElement>;
   forceUpdateRovingTabIndex: () => void;
 } {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useTreeNavigation — manual opt-out to preserve runtime behavior
 
   const { rove, initialize: initializeRovingTabIndex, forceUpdate: forceUpdateRovingTabIndex } = useRovingTabIndex();
   const { findFirstFocusable } = useFocusFinders();

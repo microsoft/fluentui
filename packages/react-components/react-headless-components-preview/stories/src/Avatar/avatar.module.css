@@ -1,0 +1,126 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  user-select: none;
+  letter-spacing: 0;
+}
+
+.size32 {
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.size40 {
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.size56 {
+  width: 56px;
+  height: 56px;
+  font-size: 19px;
+}
+
+.size72 {
+  width: 72px;
+  height: 72px;
+  font-size: 24px;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tones — neutral grays + a single brand-pink accent so the group isn't monotonous */
+.tone1 {
+  background: #44403c;
+}
+
+.tone2 {
+  background: #525252;
+}
+
+.tone3 {
+  background: #57534e;
+}
+
+.tone4 {
+  background: var(--brand);
+}
+
+.stack {
+  display: inline-flex;
+}
+
+.stack > * {
+  margin-left: -8px;
+  border: 2px solid var(--bg-elev);
+}
+
+.stack > *:first-child {
+  margin-left: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.metaName {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 13.5px;
+}
+
+.metaSub {
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+.demoRow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}

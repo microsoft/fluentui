@@ -1,8 +1,11 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
+import { tagName, TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 test.describe('Text Component', () => {
-  test.use({ tagName: 'fluent-text' });
+  test.use({
+    tagName,
+    innerHTML: 'Text',
+  });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
@@ -13,9 +16,9 @@ test.describe('Text Component', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-text');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -28,7 +31,7 @@ test.describe('Text Component', () => {
     await expect(element).toHaveJSProperty('nowrap', true);
 
     await test.step('should set the `nowrap` property to false when the `nowrap` attribute is removed', async () => {
-      await fastPage.setTemplate({ attributes: {} });
+      await element.evaluate(node => node.removeAttribute('nowrap'));
 
       await expect(element).toHaveJSProperty('nowrap', false);
     });
@@ -44,7 +47,7 @@ test.describe('Text Component', () => {
     await expect(element).toHaveJSProperty('truncate', true);
 
     await test.step('should set the `truncate` property to false when the `truncate` attribute is removed', async () => {
-      await fastPage.setTemplate({ attributes: {} });
+      await element.evaluate(node => node.removeAttribute('truncate'));
 
       await expect(element).toHaveJSProperty('truncate', false);
     });
@@ -58,7 +61,7 @@ test.describe('Text Component', () => {
     await expect(element).toHaveJSProperty('italic', true);
 
     await test.step('should set the `italic` property to false when the `italic` attribute is removed', async () => {
-      await fastPage.setTemplate({ attributes: {} });
+      await element.evaluate(node => node.removeAttribute('italic'));
 
       await expect(element).toHaveJSProperty('italic', false);
     });
@@ -74,7 +77,7 @@ test.describe('Text Component', () => {
     await expect(element).toHaveJSProperty('underline', true);
 
     await test.step('should set the `underline` property to false when the `underline` attribute is removed', async () => {
-      await fastPage.setTemplate({ attributes: {} });
+      await element.evaluate(node => node.removeAttribute('underline'));
 
       await expect(element).toHaveJSProperty('underline', false);
     });
@@ -90,7 +93,7 @@ test.describe('Text Component', () => {
     await expect(element).toHaveJSProperty('strikethrough', true);
 
     await test.step('should set the `strikethrough` property to false when the `strikethrough` attribute is removed', async () => {
-      await fastPage.setTemplate({ attributes: {} });
+      await element.evaluate(node => node.removeAttribute('strikethrough'));
 
       await expect(element).toHaveJSProperty('strikethrough', false);
     });

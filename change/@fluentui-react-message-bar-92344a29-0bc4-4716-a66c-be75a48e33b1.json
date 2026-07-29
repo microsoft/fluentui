@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(MessageBar): v9 MessageBar Resize Flicker Fix",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}

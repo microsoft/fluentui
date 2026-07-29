@@ -33,7 +33,7 @@ export type OnOpenChangeData = {
 };
 
 // @public
-export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
+export type OpenPopoverEvents = MouseEvent | TouchEvent | FocusEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
 export const Popover: React_2.FC<PopoverProps>;

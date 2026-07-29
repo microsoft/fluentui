@@ -1,7 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
+import {
+  useSetKeyboardNavigation,
+  useTabsterAttributes,
+  useMergedTabsterAttributes_unstable,
+} from '@fluentui/react-tabster';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
@@ -48,12 +52,26 @@ export function useTriggerSlot(
     activeDescendantController,
   } = options;
 
+  // need to prevent tabster from also handling escape when the dropdown is open
+  // event.stopPropagation() isn't enough here, since tabster uses the capture phase
+  const ignoreEscapeKeyAttribute = useTabsterAttributes({
+    focusable: {
+      ignoreKeydown: { Escape: open },
+    },
+  });
+
+  const tabsterOverrides = useMergedTabsterAttributes_unstable(
+    ignoreEscapeKeyAttribute,
+    typeof defaultProps === 'object' ? defaultProps : {},
+  );
+
   const trigger = slot.always(triggerSlotFromProp, {
     defaultProps: {
       type: 'text',
       'aria-expanded': open,
       role: 'combobox',
       ...(typeof defaultProps === 'object' && defaultProps),
+      ...tabsterOverrides,
     },
     elementType,
   });

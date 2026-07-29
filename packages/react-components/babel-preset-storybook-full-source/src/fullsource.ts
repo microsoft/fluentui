@@ -1,9 +1,11 @@
 import * as Babel from '@babel/core';
 import * as prettier from 'prettier';
 import * as fs from 'fs';
+import * as nodePath from 'path';
 
 import { modifyImportsPlugin } from './modifyImports';
 import { removeStorybookParameters } from './removeStorybookParameters';
+import { sliceStorySource } from './sliceStory';
 import { BabelPluginOptions } from './types';
 
 export const PLUGIN_NAME = 'storybook-stories-fullsource';
@@ -23,31 +25,85 @@ export const PLUGIN_NAME = 'storybook-stories-fullsource';
  */
 export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj {
   const { types: t } = babel;
+  const cssModulesConfig = typeof options.cssModules === 'object' ? options.cssModules : undefined;
+  const cssModulesEnabled = Boolean(options.cssModules);
+  const granularity = options.storyGranularity ?? 'file';
 
   let storyName: string;
-  let parametersAssignment: Babel.NodePath<Babel.types.AssignmentExpression> | undefined;
+  // All component-like story exports in document order (used by 'story' mode).
+  let storyNames: string[] = [];
+  // Story names that already have a `<Story>.parameters = …` assignment.
+  const storiesWithParameters = new Set<string>();
 
-  const createStoryParametersAssignmentExpression = () => {
+  const createStoryParametersAssignmentExpression = (targetStoryName: string) => {
     const storyParameters = t.assignmentExpression(
       '=',
-      t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
+      t.memberExpression(t.identifier(targetStoryName), t.identifier('parameters')),
       t.objectExpression([]),
     );
 
     return t.expressionStatement(storyParameters);
   };
 
-  const createFullSourceAssignmentExpression = (fullSource: string) => {
+  const createFullSourceAssignmentExpression = (targetStoryName: string, fullSource: string) => {
     return t.expressionStatement(
       t.assignmentExpression(
         '=',
         t.memberExpression(
-          t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
+          t.memberExpression(t.identifier(targetStoryName), t.identifier('parameters')),
           t.identifier('fullSource'),
         ),
         t.stringLiteral(fullSource),
       ),
     );
+  };
+
+  /**
+   * Builds an AST expression that merges auto-detected CSS module data into
+   * `Story.parameters.cssModuleSources`:
+   *
+   *   Story.parameters.cssModuleSources = Object.assign({}, Story.parameters.cssModuleSources, {
+   *     cssModules: [{ name: '…', source: '…' }, …],
+   *     tokensSource: '…',
+   *   });
+   */
+  const createCssModuleSourcesAssignment = (
+    targetStoryName: string,
+    data: {
+      cssModules?: Array<{ name: string; source: string }>;
+      tokensSource?: string;
+    },
+  ) => {
+    const storyParametersCssModuleSources = t.memberExpression(
+      t.memberExpression(t.identifier(targetStoryName), t.identifier('parameters')),
+      t.identifier('cssModuleSources'),
+    );
+
+    const properties: Babel.types.ObjectProperty[] = [];
+
+    if (data.cssModules && data.cssModules.length > 0) {
+      const modulesArray = t.arrayExpression(
+        data.cssModules.map(m =>
+          t.objectExpression([
+            t.objectProperty(t.identifier('name'), t.stringLiteral(m.name)),
+            t.objectProperty(t.identifier('source'), t.stringLiteral(m.source)),
+          ]),
+        ),
+      );
+      properties.push(t.objectProperty(t.identifier('cssModules'), modulesArray));
+    }
+
+    if (data.tokensSource) {
+      properties.push(t.objectProperty(t.identifier('tokensSource'), t.stringLiteral(data.tokensSource)));
+    }
+
+    const mergedObject = t.callExpression(t.memberExpression(t.identifier('Object'), t.identifier('assign')), [
+      t.objectExpression([]),
+      storyParametersCssModuleSources,
+      t.objectExpression(properties),
+    ]);
+
+    return t.expressionStatement(t.assignmentExpression('=', storyParametersCssModuleSources, mergedObject));
   };
 
   return {
@@ -64,6 +120,7 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           isComponentLikeName(declaration.id.name)
         ) {
           storyName = declaration.id.name;
+          storyNames.push(declaration.id.name);
           return;
         }
 
@@ -75,6 +132,7 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           isComponentLikeName(declaration.declarations[0].id.name)
         ) {
           storyName = declaration.declarations[0].id.name;
+          storyNames.push(declaration.declarations[0].id.name);
           return;
         }
       },
@@ -83,39 +141,83 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
         if (
           t.isMemberExpression(path.node.left) &&
           t.isIdentifier(path.node.left.object) &&
-          path.node.left.object.name === storyName &&
           t.isIdentifier(path.node.left.property) &&
           path.node.left.property.name === 'parameters'
         ) {
-          parametersAssignment = path;
+          storiesWithParameters.add(path.node.left.object.name);
         }
       },
       Program: {
         enter() {
           storyName = '';
-          parametersAssignment = undefined;
+          storyNames = [];
+          storiesWithParameters.clear();
         },
         exit(path, state) {
-          if (!storyName || !state.filename) {
+          if (!state.filename || storyNames.length === 0) {
             return;
           }
 
           const fileContents = fs.readFileSync(state.filename, 'utf-8');
-          const transformedCode = babel.transformSync(fileContents, {
-            ...state.file.opts,
-            compact: false,
-            retainLines: true,
-            comments: false,
-            plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
-          })?.code;
+          const tokensSource =
+            cssModulesEnabled && cssModulesConfig?.tokensFilePath
+              ? fs.readFileSync(cssModulesConfig.tokensFilePath, 'utf-8')
+              : undefined;
+          // Auto-detected CSS module imports are file-level (identical for every
+          // story), so collect them once and reuse for each emitted story.
+          const cssModules = cssModulesEnabled ? collectCssModuleImports(path, t, state.filename) : [];
 
-          const code = prettier.format(transformedCode ?? '', { parser: 'babel-ts' });
+          // Runs the shared modify-imports + prettier pipeline over a source string.
+          const buildFullSource = (source: string): string => {
+            const transformed = babel.transformSync(source, {
+              ...state.file.opts,
+              compact: false,
+              retainLines: true,
+              comments: false,
+              plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
+            })?.code;
 
-          if (!parametersAssignment) {
-            path.pushContainer('body', createStoryParametersAssignmentExpression());
+            return prettier.format(transformed ?? '', { parser: 'babel-ts' });
+          };
+
+          // Emits `<Story>.parameters` (when missing), `.fullSource` and, when
+          // enabled, `.cssModuleSources` for a single story.
+          const emitStorySource = (currentStory: string, code: string): void => {
+            if (!storiesWithParameters.has(currentStory)) {
+              path.pushContainer('body', createStoryParametersAssignmentExpression(currentStory));
+              storiesWithParameters.add(currentStory);
+            }
+
+            path.pushContainer('body', createFullSourceAssignmentExpression(currentStory, code));
+
+            if (cssModulesEnabled && (cssModules.length > 0 || tokensSource)) {
+              path.pushContainer('body', createCssModuleSourcesAssignment(currentStory, { cssModules, tokensSource }));
+            }
+          };
+
+          if (granularity === 'story') {
+            for (const currentStory of storyNames) {
+              const sliced = sliceStorySource(babel, fileContents, {
+                targetStory: currentStory,
+                filename: state.filename,
+              });
+
+              if (!sliced) {
+                continue;
+              }
+
+              emitStorySource(currentStory, buildFullSource(sliced));
+            }
+
+            return;
           }
 
-          path.pushContainer('body', createFullSourceAssignmentExpression(code));
+          // 'file' granularity (default, legacy): the whole file on the last story.
+          if (!storyName) {
+            return;
+          }
+
+          emitStorySource(storyName, buildFullSource(fileContents));
         },
       },
     },
@@ -130,4 +232,43 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
  */
 function isComponentLikeName(name: string) {
   return name.charAt(0) === name.charAt(0).toUpperCase();
+}
+
+/**
+ * Walks the program's import declarations looking for `*.module.css` imports
+ * (excluding `?raw` query imports). For each match, resolves the file on disk
+ * and returns `{ name, source }` pairs.
+ */
+function collectCssModuleImports(
+  programPath: Babel.NodePath<Babel.types.Program>,
+  t: typeof Babel.types,
+  filename: string,
+): Array<{ name: string; source: string }> {
+  const dir = nodePath.dirname(filename);
+  const seen = new Set<string>();
+  const result: Array<{ name: string; source: string }> = [];
+
+  for (const node of programPath.node.body) {
+    if (!t.isImportDeclaration(node)) {
+      continue;
+    }
+    const src = node.source.value;
+    // Match relative *.module.css imports but skip ?raw query imports
+    if (!/\.module\.css$/.test(src) || src.includes('?')) {
+      continue;
+    }
+    const resolved = nodePath.resolve(dir, src);
+    if (seen.has(resolved)) {
+      continue;
+    }
+    seen.add(resolved);
+    try {
+      const source = fs.readFileSync(resolved, 'utf-8');
+      result.push({ name: nodePath.basename(resolved), source });
+    } catch {
+      // CSS file not found — skip silently (it may be handled by webpack aliases)
+    }
+  }
+
+  return result;
 }

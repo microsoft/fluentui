@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getWeekNumbersInMonth } from '../../utils';
 import { CalendarGridDayCell } from './CalendarGridDayCell';
@@ -28,7 +30,7 @@ export interface CalendarGridRowProps extends CalendarDayGridProps {
 /**
  * @internal
  */
-export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = props => {
+export const CalendarGridRow = React.forwardRef<HTMLTableRowElement, CalendarGridRowProps>((props, ref) => {
   const {
     ariaHidden,
     classNames,
@@ -52,15 +54,9 @@ export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = pr
     : '';
 
   return (
-    <tr role={ariaRole} aria-hidden={ariaHidden} className={rowClassName} key={weekIndex + '_' + week[0].key}>
+    <tr ref={ref} role={ariaRole} aria-hidden={ariaHidden} className={rowClassName}>
       {showWeekNumbers && weekNumbers && (
-        <th
-          className={classNames.weekNumberCell}
-          key={weekIndex}
-          title={titleString}
-          aria-label={titleString}
-          scope="row"
-        >
+        <th className={classNames.weekNumberCell} title={titleString} aria-label={titleString} scope="row">
           <span>{weekNumbers[weekIndex]}</span>
         </th>
       )}
@@ -69,4 +65,6 @@ export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = pr
       ))}
     </tr>
   );
-};
+});
+
+CalendarGridRow.displayName = 'CalendarGridRow';

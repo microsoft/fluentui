@@ -1,54 +1,90 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
-  Dialog,
-  tokens,
-  DialogTrigger,
-  DialogSurface,
-  makeStyles,
-  DialogTitle,
-  DialogBody,
-  DialogActions,
-  DialogContent,
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
   Button,
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogContent,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
   Field,
+  makeStyles,
   Slider,
   Text,
+  tokens,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    maxWidth: '600px',
+    gap: tokens.spacingVerticalL,
+    width: '100%',
+    maxWidth: '800px',
+    scrollbarGutter: 'stable',
   },
   controls: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
-    padding: '12px',
+    gap: tokens.spacingVerticalS,
+    padding: tokens.spacingVerticalM,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
   },
   row: {
     display: 'flex',
-    gap: '20px',
+    gap: tokens.spacingHorizontalL,
     alignItems: 'start',
   },
   column: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
+    gap: tokens.spacingVerticalS,
     flex: 1,
+    minWidth: 0,
+  },
+  section: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalS,
+    padding: tokens.spacingVerticalM,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    overflow: 'hidden',
+    overflowWrap: 'break-word',
+    wordBreak: 'break-word',
+    width: '100%',
+    boxSizing: 'border-box',
   },
   codeBlock: {
     fontFamily: tokens.fontFamilyMonospace,
     fontSize: tokens.fontSizeBase200,
     backgroundColor: tokens.colorNeutralBackground1Pressed,
     borderRadius: tokens.borderRadiusMedium,
-    padding: '8px 12px',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
     whiteSpace: 'pre',
+    overflow: 'auto',
+  },
+  accordionContainer: {
+    minWidth: 0,
+    overflow: 'hidden',
+    maxWidth: '100%',
+  },
+  constrainedText: {
+    minWidth: 0,
+    display: 'block',
+    overflow: 'hidden',
+    overflowWrap: 'break-word',
+    wordBreak: 'break-word',
   },
 });
 
@@ -56,94 +92,100 @@ const useStyles = makeStyles({
  * When a component's motion slot type includes generic parameters, those parameters
  * can be passed directly as props on the slot object — no `children` render function needed.
  *
- * Dialog's `surfaceMotion` slot is typed with `ScaleParams`, exposing parameters like
- * `duration`, `outScale`, and `easing` as direct overrides. This follows the same pattern
- * as regular Fluent UI slots: `badge=&#123;&#123; status: 'available' &#125;&#125;`.
+ * Dialog's `surfaceMotion` slot is typed with `ScaleParams`; Accordion's and Tree's
+ * `collapseMotion` slots are typed with `CollapseParams`. Each exposes its own set of
+ * direct props — all following the same pattern as any regular Fluent UI slot
+ * (`badge=&#123;&#123; status: 'available' &#125;&#125;`).
  */
 export const DirectParams = (): JSXElement => {
   const classes = useStyles();
+
   const [duration, setDuration] = React.useState(600);
   const [outScale, setOutScale] = React.useState(0.5);
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.controls}>
-        <Field label={`Enter duration: ${duration}ms`}>
+        <Field label={`Duration: ${duration}ms (shared)`}>
           <Slider min={100} max={2000} step={50} value={duration} onChange={(_, data) => setDuration(data.value)} />
         </Field>
-        <Field label={`Out scale: ${outScale.toFixed(2)}`}>
+        <Field label={`Dialog outScale: ${outScale.toFixed(2)}`}>
           <Slider min={0} max={1} step={0.05} value={outScale} onChange={(_, data) => setOutScale(data.value)} />
         </Field>
       </div>
 
-      <div className={classes.row}>
-        <div className={classes.column}>
-          <Text weight="semibold">Direct params (concise)</Text>
-          <Dialog
-            surfaceMotion={{
-              duration,
-              outScale,
-            }}
-          >
-            <DialogTrigger disableButtonEnhancement>
-              <Button>Open Dialog</Button>
-            </DialogTrigger>
-            <DialogSurface>
-              <DialogBody>
-                <DialogTitle>Direct param override</DialogTitle>
-                <DialogContent>
-                  The <code>duration</code> and <code>outScale</code> props are passed directly on the{' '}
-                  <code>surfaceMotion</code> slot object.
-                </DialogContent>
-                <DialogActions>
-                  <DialogTrigger disableButtonEnhancement>
-                    <Button appearance="secondary">Close</Button>
-                  </DialogTrigger>
-                </DialogActions>
-              </DialogBody>
-            </DialogSurface>
-          </Dialog>
-          <div className={classes.codeBlock}>
-            {`<Dialog
+      <div className={classes.section}>
+        <Text weight="semibold">
+          Dialog (<code>surfaceMotion</code>)
+        </Text>
+        <div className={classes.row}>
+          <div className={classes.column}>
+            <Text size={200}>Direct params (concise)</Text>
+            <Dialog
+              surfaceMotion={{
+                duration,
+                outScale,
+              }}
+            >
+              <DialogTrigger disableButtonEnhancement>
+                <Button>Open Dialog</Button>
+              </DialogTrigger>
+              <DialogSurface>
+                <DialogBody>
+                  <DialogTitle>Direct param override</DialogTitle>
+                  <DialogContent>
+                    The <code>duration</code> and <code>outScale</code> props are passed directly on the{' '}
+                    <code>surfaceMotion</code> slot object.
+                  </DialogContent>
+                  <DialogActions>
+                    <DialogTrigger disableButtonEnhancement>
+                      <Button appearance="secondary">Close</Button>
+                    </DialogTrigger>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+            <div className={classes.codeBlock}>
+              {`<Dialog
   surfaceMotion={{
     duration: ${duration},
     outScale: ${outScale.toFixed(2)},
   }}
 >`}
+            </div>
           </div>
-        </div>
 
-        <div className={classes.column}>
-          <Text weight="semibold">Children render function (verbose)</Text>
-          <Dialog
-            surfaceMotion={{
-              children: (Motion, props) => (
-                <Motion {...props} duration={duration} outScale={outScale}>
-                  {props.children}
-                </Motion>
-              ),
-            }}
-          >
-            <DialogTrigger disableButtonEnhancement>
-              <Button>Open Dialog</Button>
-            </DialogTrigger>
-            <DialogSurface>
-              <DialogBody>
-                <DialogTitle>Render function override</DialogTitle>
-                <DialogContent>
-                  The same override using a <code>children</code> render function — functionally identical but more
-                  verbose.
-                </DialogContent>
-                <DialogActions>
-                  <DialogTrigger disableButtonEnhancement>
-                    <Button appearance="secondary">Close</Button>
-                  </DialogTrigger>
-                </DialogActions>
-              </DialogBody>
-            </DialogSurface>
-          </Dialog>
-          <div className={classes.codeBlock}>
-            {`<Dialog
+          <div className={classes.column}>
+            <Text size={200}>Children render function (verbose)</Text>
+            <Dialog
+              surfaceMotion={{
+                children: (Motion, props) => (
+                  <Motion {...props} duration={duration} outScale={outScale}>
+                    {props.children}
+                  </Motion>
+                ),
+              }}
+            >
+              <DialogTrigger disableButtonEnhancement>
+                <Button>Open Dialog</Button>
+              </DialogTrigger>
+              <DialogSurface>
+                <DialogBody>
+                  <DialogTitle>Render function override</DialogTitle>
+                  <DialogContent>
+                    The same override using a <code>children</code> render function — functionally identical but more
+                    verbose.
+                  </DialogContent>
+                  <DialogActions>
+                    <DialogTrigger disableButtonEnhancement>
+                      <Button appearance="secondary">Close</Button>
+                    </DialogTrigger>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+            <div className={classes.codeBlock}>
+              {`<Dialog
   surfaceMotion={{
     children: (Motion, props) => (
       <Motion
@@ -156,14 +198,91 @@ export const DirectParams = (): JSXElement => {
     ),
   }}
 >`}
+            </div>
           </div>
+        </div>
+      </div>
+
+      <div className={classes.section}>
+        <Text weight="semibold">
+          Accordion (<code>collapseMotion</code>)
+        </Text>
+        <Text size={200}>Same pattern — different param shape:</Text>
+        <div className={classes.accordionContainer}>
+          <Accordion collapsible>
+            <AccordionItem value="1">
+              <AccordionHeader>Panel A — tweaks via direct params</AccordionHeader>
+              <AccordionPanel collapseMotion={{ duration }}>
+                <div className={classes.constrainedText}>
+                  <Text>
+                    Expand/collapse timing controlled by <code>duration</code>
+                  </Text>
+                </div>
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem value="2">
+              <AccordionHeader>Panel B</AccordionHeader>
+              <AccordionPanel collapseMotion={{ duration }}>
+                <Text>Panel B content — shares the same motion params.</Text>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </div>
+        <div className={classes.codeBlock}>
+          {`<AccordionPanel
+  collapseMotion={{
+    duration: ${duration},
+  }}
+>`}
+        </div>
+      </div>
+
+      <div className={classes.section}>
+        <Text weight="semibold">
+          Tree (<code>collapseMotion</code>)
+        </Text>
+        <Text size={200}>Same pattern, applied at subtree level:</Text>
+        <div className={classes.accordionContainer}>
+          <Tree aria-label="Direct params demo">
+            <TreeItem itemType="branch">
+              <TreeItemLayout>Team A</TreeItemLayout>
+              <Tree collapseMotion={{ duration }}>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Alice</TreeItemLayout>
+                </TreeItem>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Bob</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="branch">
+              <TreeItemLayout>Team B</TreeItemLayout>
+              <Tree collapseMotion={{ duration }}>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Carol</TreeItemLayout>
+                </TreeItem>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Dan</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        </div>
+        <div className={classes.codeBlock}>
+          {`<Tree
+  collapseMotion={{
+    duration: ${duration},
+  }}
+>`}
         </div>
       </div>
     </div>
   );
 };
 
+DirectParams.storyName = 'Direct params';
 DirectParams.parameters = {
+  layout: 'padded',
   docs: {
     description: {
       story:
@@ -171,8 +290,9 @@ DirectParams.parameters = {
         'without using the `children` render function. This works when the component ' +
         'declares its motion slot with typed parameters ' +
         '(e.g. `Slot<PresenceMotionSlotProps<ScaleParams>>`). ' +
-        'Compare the two approaches side by side — direct params for simple overrides, ' +
-        'render function for full motion replacement.',
+        'The sections below show the same pattern applied across three param shapes — ' +
+        "Dialog's `ScaleParams`, Accordion's and Tree's `CollapseParams` — all driven by " +
+        'one shared set of controls.',
     },
   },
 };

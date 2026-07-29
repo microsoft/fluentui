@@ -1,0 +1,50 @@
+.link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+  font-weight: 500;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard),
+    text-decoration-color var(--duration-fast) var(--ease-standard);
+}
+
+.link:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
+}
+
+.link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.link[data-disabled] {
+  color: var(--text-faint);
+  cursor: not-allowed;
+  text-decoration-color: var(--text-faint);
+}
+
+.inline {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.paragraph {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 56ch;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}

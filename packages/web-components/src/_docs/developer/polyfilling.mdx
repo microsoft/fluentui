@@ -94,3 +94,17 @@ if (!CSS.supports('anchor-name: --foo')) {
 import { default as applyPolyfill } from '@oddbird/css-anchor-positioning/fn';
 window.CSS_ANCHOR_POLYFILL = applyPolyfill;
 ```
+
+## HTML Focusgroup
+
+For components that require directional navigations (moving focus between focusable elements within a component with arrow keys instead of tab), Fluent Web Components have adopted [HTML Focusgroup](https://open-ui.org/components/scoped-focusgroup.explainer/). The components that currently use focusgroup include MenuList/MenuItem, RadioGroup/Radio, Tablist/Tab, and Tree/TreeItem.
+
+For browsers that don’t yet support focusgroup, we use [`@microsoft/focusgroup-polyfill`](https://github.com/microsoft/polyfills/tree/main/packages/focusgroup) and automatically polyfill the components when they are connected to the DOM.
+
+If you want to opt out of the polyfill, you can use the base classes of these components, e.g.
+
+```js
+import { BaseTablist } from '@fluentui/web-components/tablist/base.js';
+
+export class MyTablist extends BaseTablist {}
+```

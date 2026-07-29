@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   borderRadiusMedium,
   colorCompoundBrandForeground1Pressed,
@@ -144,22 +144,25 @@ export const styles = css`
       position: relative;
     }
 
+    @position-try --inline-inside {
+      inset-inline-start: unset;
+      inset-inline-end: anchor(inside);
+    }
+
     ::slotted([popover]) {
       margin: 0;
       max-height: var(--menu-max-height, auto);
-      position: absolute;
+      position: fixed;
       position-anchor: --menu-trigger;
-      position-area: inline-end span-block-end;
-      position-try-fallbacks: flip-inline, block-start, block-end;
+      inset: unset;
+      inset-block-start: anchor(inside);
+      inset-inline-start: anchor(outside);
+      position-try-fallbacks: --inline-inside, flip-block, flip-block --inline-inside;
       z-index: 1;
     }
 
     ::slotted([popover]:not(:popover-open)) {
       display: none;
-    }
-
-    ::slotted([popover]:popover-open) {
-      inset: unset;
     }
 
     /* Fallback for no anchor-positioning */
@@ -169,12 +172,12 @@ export const styles = css`
       }
     }
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host(${disabledState}),
     :host(${disabledState}) ::slotted([slot='start']),
     :host(${disabledState}) ::slotted([slot='end']) {
       color: GrayText;
     }
-  `),
-);
+  }
+`;

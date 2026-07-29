@@ -1,0 +1,1 @@
+The `replayKey` prop retriggers the animation each time its value changes, without remounting the component. Unlike changing a React `key`, which destroys and recreates the subtree, `replayKey` reruns only the animation while keeping the DOM, focus, and child state intact.

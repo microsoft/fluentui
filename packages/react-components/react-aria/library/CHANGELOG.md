@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:10:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.17.13)
+
+Wed, 24 Jun 2026 11:10:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.17.12..@fluentui/react-aria_v9.17.13)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+## [9.17.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.17.12)
+
+Tue, 26 May 2026 09:39:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.17.11..@fluentui/react-aria_v9.17.12)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-tabster to v9.26.15 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.17.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.17.11)
+
+Thu, 23 Apr 2026 14:21:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.17.10..@fluentui/react-aria_v9.17.11)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.17.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.17.10)
 

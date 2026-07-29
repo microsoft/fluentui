@@ -17,9 +17,6 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  * @param ref - reference to the `<select>` element in Select
  */
 export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
-  // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
-
   const overrides = useOverrides();
 
   const { appearance = overrides.inputDefaultAppearance ?? 'outline', size = 'medium', ...baseProps } = props;
@@ -40,6 +37,9 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
  * @param ref - reference to the `<select>` element in Select
  */
 export const useSelectBase_unstable = (props: SelectBaseProps, ref: React.Ref<HTMLSelectElement>): SelectBaseState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
   const { defaultValue, value, select, icon, root, onChange } = props;
 
   const nativeProps = getPartitionedNativeProps({
