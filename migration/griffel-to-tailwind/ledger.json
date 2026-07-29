@@ -80,7 +80,7 @@
       "status": "validated",
       "stylesFiles": 4,
       "storiesCovered": null,
-      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green AvatarGroupPopover straggler finished in S1 (batch-2 skip — module never existed in any commit; foundations report was wrong); set re-validated 49/49."
     },
     "react-badge": {
       "status": "validated",
@@ -129,10 +129,11 @@
       "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-color-picker": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 4,
       "storiesCovered": null,
-      "notes": "Runtime drag-position CSS vars port unchanged; static parts convert"
+      "notes": "Runtime drag-position CSS vars port unchanged; static parts convert",
+      "validated": "2026-07-29 specials S1 (full contract; scoped gate 51/51)"
     },
     "react-colorpicker-compat": {
       "status": "no-styles",
@@ -345,10 +346,11 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-positioning": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "Style factories (createArrowStyles/createSlideStyles, :global+@noflip) + runtime middlewares (port unchanged)"
+      "notes": "Style factories (createArrowStyles/createSlideStyles, :global+@noflip) + runtime middlewares (port unchanged)",
+      "validated": "2026-07-29 specials S1 (full contract; scoped gate 51/51)"
     },
     "react-progress": {
       "status": "validated",
@@ -400,10 +402,11 @@
       "notes": "Wave keyframes RTL-flipped by Griffel; needs @variant rtl keyframe twin | BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-slider": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "Runtime CSS vars (--fui-Slider--progress/direction) port unchanged; static parts convert"
+      "notes": "Runtime CSS vars (--fui-Slider--progress/direction) port unchanged; static parts convert",
+      "validated": "2026-07-29 specials S1 (full contract; scoped gate 51/51)"
     },
     "react-spinbutton": {
       "status": "validated",
