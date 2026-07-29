@@ -56,6 +56,23 @@
 @custom-variant checked (&:where([data-checked], :checked));
 @custom-variant not-checked (&:where(:not([data-checked], :checked)));
 @custom-variant selected (&:where([data-selected], [aria-selected='true']));
+
+/*
+ * Complement of `selected` above, in the same shape as `not-checked` / `not-focused` /
+ * `not-empty`. Added by the react-carousel conversion: `CarouselNavButton` and
+ * `CarouselNavImageButton` branch `selected ? rootSelected : rootUnselected` — a
+ * boolean-ish PAIR where BOTH halves carry declarations, so the complement has to be
+ * expressible as a selector rather than as an absent class.
+ *
+ * No `data-selected` mirror was added for either component (DECISIONS.md D15.6, resolved):
+ * both stamp `aria-selected={selected}` on the very element the rules key off
+ * (`useCarouselNavButton.ts` / `useCarouselNavImageButton.ts` `defaultProps`), so the
+ * native/ARIA half of `selected` already expresses the state where it is needed and a
+ * mirror would only widen invalidation. `aria-selected="false"` correctly fails
+ * `[aria-selected='true']` and therefore matches this complement.
+ */
+@custom-variant not-selected (&:where(:not([data-selected], [aria-selected='true'])));
+
 @custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));
 @custom-variant open (&:where([open], [data-open], :open));
 @custom-variant expanded (&:where([data-expanded], [aria-expanded='true']));
@@ -230,6 +247,21 @@
  * not collide, but Link.module.css writes `display: inline` longhand anyway for clarity.
  */
 @custom-variant inline (&:where([data-inline]));
+
+/*
+ * MenuSplitGroup's `data-multiline` — "a child menu item has wrapped onto more than one
+ * line", which re-centres the split trigger. Unlike every other presence attribute in this
+ * catalog it is written IMPERATIVELY (`useMenuSplitGroup.ts` calls `toggleAttribute` from a
+ * ref callback), because the child that knows the answer can mount before the parent that
+ * renders it; the constant lives in the styles file as `menuSplitGroupMultilineAttr`. The
+ * attribute name predates this migration and is unchanged.
+ *
+ * No headless-preview precedent exists for the name, so it follows the react-divider pilot's
+ * `data-inset` shape: a boolean styling opt-in as a presence attribute. It generalises to
+ * any wrap-aware row, which is why it is catalogued rather than written as a hand-rolled
+ * attribute selector in the module.
+ */
+@custom-variant multiline (&:where([data-multiline]));
 
 /*
  * Adornment-slot presence (Input contentBefore/contentAfter, and the same pair on
