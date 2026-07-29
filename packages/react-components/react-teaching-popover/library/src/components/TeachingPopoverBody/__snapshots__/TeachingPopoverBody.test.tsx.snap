@@ -3,7 +3,7 @@
 exports[`TeachingPopoverBody renders a default state 1`] = `
 <div>
   <div
-    class="fui-TeachingPopoverBody"
+    class="group/fui-teaching-popover-body"
   >
     Default TeachingPopoverBody
   </div>

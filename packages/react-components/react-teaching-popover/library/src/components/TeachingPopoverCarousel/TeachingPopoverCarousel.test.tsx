@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopoverCarousel } from './TeachingPopoverCarousel';
 
@@ -10,7 +11,18 @@ describe('TeachingPopoverCarousel', () => {
     requiredProps: {
       defaultValue: '',
     },
-    disabledTests: ['component-has-static-classnames-object'],
+    // Griffel → Tailwind + CSS Modules migration — same rationale as TeachingPopoverBody's
+    // wrapper: `make-styles-overrides-win` can no longer observe a clsx-composed component,
+    // `classname-overrides-win` is its cascade-native replacement (DECISIONS.md D9), and the
+    // BEM statics this package published are gone (D16.1).
+    //
+    // `classname-overrides-win` passes here even though this component has no styles of its
+    // own: the root carries the module's IDENTITY-ONLY local ahead of the marker (D16.2), so
+    // there really is a class of its own for the consumer's to come after.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

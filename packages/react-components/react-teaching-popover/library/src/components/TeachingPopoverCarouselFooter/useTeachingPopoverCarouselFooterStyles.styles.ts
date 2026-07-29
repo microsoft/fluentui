@@ -1,58 +1,75 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type {
-  TeachingPopoverCarouselFooterSlots,
-  TeachingPopoverCarouselFooterState,
-} from './TeachingPopoverCarouselFooter.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const teachingPopoverCarouselFooterClassNames: SlotClassNames<TeachingPopoverCarouselFooterSlots> = {
-  root: 'fui-TeachingPopoverCarouselFooter',
-  previous: 'fui-TeachingPopoverCarouselFooter__previous',
-  next: 'fui-TeachingPopoverCarouselFooter__next',
+import { clsx } from 'clsx';
+import type { TeachingPopoverCarouselFooterState } from './TeachingPopoverCarouselFooter.types';
+
+import styles from './TeachingPopoverCarouselFooter.module.css';
+
+/**
+ * TeachingPopoverCarouselFooter's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-TeachingPopoverCarouselFooter` root static and the `__previous` / `__next` slot statics
+ * are gone (D16.1), and the type has narrowed from
+ * `SlotClassNames<TeachingPopoverCarouselFooterSlots>` to `{ root: string }`.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + teachingPopoverCarouselFooterClassNames.root` is invalid
+ * CSS. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5);
+ * `element.classList.contains(...)` is token-taking and needs no escaping.
+ */
+export const teachingPopoverCarouselFooterClassNames: { root: string } = {
+  root: 'group/fui-teaching-popover-carousel-footer',
 };
-
-// Todo: Page change animation & styles
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  rootCentered: {
-    justifyContent: 'space-between',
-    gap: '8px',
-  },
-  rootRightAligned: {
-    gap: '8px',
-    '& :first-child': {
-      marginInlineEnd: 'auto',
-    },
-  },
-});
 
 /** Applies style classnames to slots */
 export const useTeachingPopoverCarouselFooterStyles_unstable = (
   state: TeachingPopoverCarouselFooterState,
 ): TeachingPopoverCarouselFooterState => {
-  const styles = useStyles();
   const { layout } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    teachingPopoverCarouselFooterClassNames.root,
+  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
+  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
+  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
+  // `:scope` polyfill would throw on its `/` under jsdom (D15.1).
+  //
+  // `layout` selects a module class rather than a `data-*` attribute: it picks between two
+  // mutually exclusive looks on the very element this hook composes, and nothing reads it from
+  // a selector (D3 / D15.6, resolved).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in
+  // TeachingPopoverCarouselFooter.module.css — including the l2 half of `.right-aligned`,
+  // which reaches into a react-button root — not by the order of these arguments.
+  state.root.className = clsx(
     styles.root,
-    layout === 'centered' ? styles.rootCentered : styles.rootRightAligned,
+    'group/fui-teaching-popover-carousel-footer',
+    layout === 'centered' ? styles.centered : styles['right-aligned'],
     state.root.className,
   );
 
-  if (state.previous) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.previous.className = mergeClasses(teachingPopoverCarouselFooterClassNames.previous, state.previous.className);
-  }
-
-  // eslint-disable-next-line react-hooks/immutability
-  state.next.className = mergeClasses(teachingPopoverCarouselFooterClassNames.next, state.next.className);
+  // The `previous` / `next` assignments are GONE (D16.1 + cookbook, "A slot whose only library
+  // token is the static"): the Griffel hook wrote nothing to either slot but
+  // `fui-TeachingPopoverCarouselFooter__previous` / `__next`, so with the statics removed what
+  // remained was `clsx(state.previous.className)` — an identity on the consumer's own string,
+  // i.e. dead code implying this hook styles slots it does not. Both slots keep rendering and
+  // are styled by `useTeachingPopoverCarouselFooterButtonStyles_unstable`; the
+  // `if (state.previous)` guard went with the assignment it protected.
 
   return state;
 };

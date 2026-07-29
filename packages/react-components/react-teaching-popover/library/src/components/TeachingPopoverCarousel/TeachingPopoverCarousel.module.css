@@ -1,0 +1,51 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated on purpose — see
+ * TeachingPopoverBody.module.css for the full rationale.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * `useTeachingPopoverCarouselStyles_unstable`.
+ *
+ * `root` slot — carries NO declarations; only the identity-only local below:
+ *   1  teachingPopoverCarouselClassNames.root   → REMOVED (D16.1)
+ *   2  useStyles.root                           → an EMPTY `makeStyles` slice in the Griffel
+ *                                                 source (`root: {}`, above a
+ *                                                 "Todo: Page change animation & styles"
+ *                                                 comment) → the identity-only local below
+ *   3  group/fui-teaching-popover-carousel      → identity marker (JS, unstyled)
+ *   4  consumer className                       → unlayered (always wins)
+ *
+ * Nothing here sits over another component's hook output, so `fui.components.l2` is unused;
+ * there is no `makeResetStyles` slice, so `fui.base` is unused too.
+ */
+
+/*
+ * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2; statics-removal design §4b). This root has
+ * no declarations of its own, so without this class it would emit the group marker ALONE.
+ * `useTeachingPopoverCarouselStyles_unstable` leads its `clsx()` with it so the root ALWAYS
+ * carries a hashed, selector-safe token at `classList[0]`: nwsapi's `:scope` polyfill builds
+ * its anchor from `escape(element.classList[0])`, and the `/` in
+ * `group/fui-teaching-popover-carousel` survives that escaping, yielding an invalid selector
+ * and a render-time AggregateError under jsdom. The `fui-TeachingPopoverCarousel` static used
+ * to keep the marker off index 0 incidentally; now that the statics are gone (D16.1) this
+ * local is the ONLY thing holding the invariant. Do not delete it because it looks like it
+ * does nothing.
+ *
+ * WHY IT IS NOT A LITERALLY EMPTY RULE (react-breadcrumb's finding, reproduced here):
+ * `@tailwindcss/postcss` runs BEFORE `postcss-modules`
+ * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes every
+ * declaration-less rule — layered, unlayered or comment-only — so the class would never reach
+ * the class map and `styles.root` would be `undefined`, silently putting the marker back at
+ * index 0. `--fui-teaching-popover-carousel-identity: initial` is the minimal body that
+ * survives: a custom property set to `initial` is guaranteed-invalid, so it renders nothing
+ * and any `var(--fui-teaching-popover-carousel-identity, X)` still resolves to `X`.
+ */
+@layer fui.components.l1 {
+  .root {
+    --fui-teaching-popover-carousel-identity: initial;
+  }
+}

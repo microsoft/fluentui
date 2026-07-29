@@ -1,0 +1,112 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated on purpose — see
+ * TeachingPopoverBody.module.css for the full rationale.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * `useTeachingPopoverCarouselFooterStyles_unstable`.
+ *
+ * `root` slot
+ *   #  mergeClasses argument                                → target
+ *   ---------------------------------------------------------------------------------------
+ *   1  teachingPopoverCarouselFooterClassNames.root         → REMOVED (D16.1)
+ *   2  useStyles.root                                       → fui.components.l1  .root
+ *   3  layout === 'centered' ? rootCentered
+ *                            : rootRightAligned             → fui.components.l1  .centered /
+ *                                                             .right-aligned  (+ the l2 half
+ *                                                             of .right-aligned, below)
+ *   4  consumer className                                   → unlayered (always wins)
+ *
+ * `previous` / `next` slots — the Griffel hook assigned NOTHING but the BEM statics
+ * (`fui-TeachingPopoverCarouselFooter__previous` / `__next`). With those removed the whole
+ * assignment collapses to `clsx(state.x.className)`, an identity on the consumer's own string,
+ * so both are DELETED outright and the `if (state.previous)` guard with them (cookbook,
+ * "A slot whose only library token is the static"). The slots are still rendered; they simply
+ * carry no class from this hook. Their own styling comes from
+ * `useTeachingPopoverCarouselFooterButtonStyles_unstable`.
+ *
+ * ── ALTITUDE: l1 for the root's own box, l2 for the `:first-child` reach-in ─────────────
+ * `.root` / `.centered` / `.right-aligned` style this component's own `div` → l1.
+ *
+ * `rootRightAligned`'s `'& :first-child'` slice does NOT: it is a DESCENDANT selector
+ * (Griffel compiled it to `.f1y65ohq :first-child`, space and all) whose first match in the
+ * rendered tree is a `<TeachingPopoverCarouselFooterButton>` root — i.e. a react-button
+ * `Button` root, whose base styles come from another package's hook. That is exactly D2
+ * amendment 2's "styles applied over ANOTHER component's hook output", so it is split out
+ * into `fui.components.l2`.
+ *
+ * Under Griffel the same winner came from SPECIFICITY rather than altitude: `.f1y65ohq
+ * :first-child` scored 0-2-0 against Button's flat 0-1-0 atomics, so the `margin-inline-end`
+ * landed. `:where()`-flattening would erase that margin at l1, which is why the split is
+ * load-bearing and not cosmetic. The selector is kept as the compiled DESCENDANT form — not
+ * narrowed to `> :first-child` — because narrowing it would change which elements match.
+ *
+ * ── ORDER inside l1 ─────────────────────────────────────────────────────────────────────
+ * `.root` (arg #2) sets `display` + `flex-direction`; `.centered` / `.right-aligned` (arg #3)
+ * set `justify-content` / `gap`. Disjoint, so nothing collides; blocks are written in
+ * argument order regardless. `.centered` and `.right-aligned` are mutually exclusive (`layout`
+ * is a single value), so their relative order is free.
+ *
+ * ── `layout` rides MODULE CLASSES, not a data attribute (D3 / D15.6, resolved) ───────────
+ * `layout: 'offset' | 'centered'` picks between two mutually exclusive looks on the element
+ * the hook already composes. Nothing else — in this module, this package or a consumer —
+ * reads the value from a selector, so there is no state a selector cannot otherwise reach and
+ * no `data-layout` is stamped. (TeachingPopoverFooter's own `footerLayout` is the same shape
+ * and makes the same call; see TeachingPopoverFooter.module.css.)
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * The compiled AOT output carries no `[ltr, rtl]` class pair: the one direction-sensitive
+ * declaration was already authored logically (`marginInlineEnd`), which Griffel does not
+ * flip. No `@variant rtl` block is needed.
+ *
+ * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ────────────────────────────────
+ * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
+ * The elements this module reaches into belong to react-button, which is CONVERTED — its
+ * rules are layered, so `@layer fui.components.l2` can arbitrate against them. The unlayered
+ * escape hatch is for UNCONVERTED Griffel owners only.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/TeachingPopoverCarouselFooter/useTeachingPopoverCarouselFooterStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — root arg #2 */
+  .root {
+    @apply flex flex-row;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.rootCentered / .rootRightAligned — root arg #3.
+   *
+   * `gap: 8px` lands exactly on the spacing S step, so it takes the NAMED utility (D4
+   * amendment: named tokens FIRST, numeric only as fallback). The root is `flex-direction:
+   * row`, so the gap that renders is the inline-axis one → `horizontal` namespace; the two
+   * scales compute through the same `--base-scale`, so the emitted length is identical either
+   * way.
+   */
+  .centered {
+    @apply justify-between;
+    @apply gap-horizontal-s;
+  }
+
+  .right-aligned {
+    @apply gap-horizontal-s;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.rootRightAligned's `'& :first-child'` slice — root arg #3, REACH-IN half.
+   * Sits at l2 because its match is a react-button root; see the header for why the split is
+   * load-bearing.
+   */
+  .right-aligned :first-child {
+    margin-inline-end: auto;
+  }
+}

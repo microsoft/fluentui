@@ -1,26 +1,41 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type {
-  TeachingPopoverCarouselPageCountSlots,
-  TeachingPopoverCarouselPageCountState,
-} from './TeachingPopoverCarouselPageCount.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const teachingPopoverCarouselPageCountClassNames: SlotClassNames<TeachingPopoverCarouselPageCountSlots> = {
-  root: 'fui-TeachingPopoverCarouselPageCount',
-};
+import { clsx } from 'clsx';
+import type { TeachingPopoverCarouselPageCountState } from './TeachingPopoverCarouselPageCount.types';
+
+import styles from './TeachingPopoverCarouselPageCount.module.css';
 
 /**
- * Styles for the root slot
+ * TeachingPopoverCarouselPageCount's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-TeachingPopoverCarouselPageCount` BEM static is gone (D16.1), and the type has narrowed
+ * from `SlotClassNames<TeachingPopoverCarouselPageCountSlots>` to `{ root: string }`.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + teachingPopoverCarouselPageCountClassNames.root` is
+ * invalid CSS. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5);
+ * `element.classList.contains(...)` is token-taking and needs no escaping.
  */
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export const teachingPopoverCarouselPageCountClassNames: { root: string } = {
+  root: 'group/fui-teaching-popover-carousel-page-count',
+};
 
 /**
  * Apply styling to the TeachingPopoverCarouselPageCount slots based on the state
@@ -28,13 +43,11 @@ const useStyles = makeStyles({
 export const useTeachingPopoverCarouselPageCountStyles_unstable = (
   state: TeachingPopoverCarouselPageCountState,
 ): TeachingPopoverCarouselPageCountState => {
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    teachingPopoverCarouselPageCountClassNames.root,
-    styles.root,
-    state.root.className,
-  );
+  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
+  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
+  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
+  // `:scope` polyfill would throw on its `/` under jsdom (D15.1).
+  state.root.className = clsx(styles.root, 'group/fui-teaching-popover-carousel-page-count', state.root.className);
 
   return state;
 };

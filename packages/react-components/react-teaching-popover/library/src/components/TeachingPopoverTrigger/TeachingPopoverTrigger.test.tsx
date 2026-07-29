@@ -14,6 +14,11 @@ describe('TeachingPopoverTrigger', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classnames-object',
+      // ...and therefore has no element to carry the Tailwind named-group marker either.
+      // `component-has-group-marker` became a default test with the statics-removal sweep
+      // (DECISIONS.md D16.6); this component clones its child, so `getTargetElement` would
+      // resolve to the consumer's own element (migration/griffel-to-tailwind).
+      'component-has-group-marker',
       // PopoverTrigger does not have own styles
       'make-styles-overrides-win',
     ],

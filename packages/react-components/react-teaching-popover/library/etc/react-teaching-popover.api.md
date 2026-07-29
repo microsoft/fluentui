@@ -26,7 +26,6 @@ import type { PopoverTriggerProps } from '@fluentui/react-popover';
 import type { PopoverTriggerState } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderTeachingPopover_unstable: (state: PopoverState, contextValues?: PopoverContextValues) => JSXElement;
@@ -76,8 +75,10 @@ export const TeachingPopover: React_2.FC<TeachingPopoverProps>;
 // @public
 export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps>;
 
-// @public (undocumented)
-export const teachingPopoverBodyClassNames: SlotClassNames<TeachingPopoverBodySlots>;
+// @public
+export const teachingPopoverBodyClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {
@@ -105,8 +106,10 @@ export type TeachingPopoverCarouselBaseState = Omit<TeachingPopoverCarouselState
 // @public
 export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCarouselCardProps>;
 
-// @public (undocumented)
-export const teachingPopoverCarouselCardClassNames: SlotClassNames<TeachingPopoverCarouselCardSlots>;
+// @public
+export const teachingPopoverCarouselCardClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TeachingPopoverCarouselCardProps = ComponentProps<TeachingPopoverCarouselCardSlots> & {
@@ -121,8 +124,10 @@ export type TeachingPopoverCarouselCardSlots = {
 // @public (undocumented)
 export type TeachingPopoverCarouselCardState = ComponentState<TeachingPopoverCarouselCardSlots> & Required<Pick<TeachingPopoverCarouselCardProps, 'value'>>;
 
-// @public (undocumented)
-export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCarouselSlots>;
+// @public
+export const teachingPopoverCarouselClassNames: {
+    root: string;
+};
 
 // @public
 export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverCarouselFooterProps>;
@@ -136,8 +141,10 @@ export type TeachingPopoverCarouselFooterButtonBaseProps = TeachingPopoverCarous
 // @public
 export type TeachingPopoverCarouselFooterButtonBaseState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> & Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'>;
 
-// @public (undocumented)
-export const teachingPopoverCarouselFooterButtonClassNames: SlotClassNames<TeachingPopoverCarouselFooterButtonSlots>;
+// @public
+export const teachingPopoverCarouselFooterButtonClassNames: {
+    root: string;
+};
 
 // @public
 export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPopoverCarouselFooterButtonSlots> & ButtonProps & {
@@ -155,8 +162,10 @@ export type TeachingPopoverCarouselFooterButtonState = ButtonState & ComponentSt
     popoverAppearance: PopoverContextValue['appearance'];
 };
 
-// @public (undocumented)
-export const teachingPopoverCarouselFooterClassNames: SlotClassNames<TeachingPopoverCarouselFooterSlots>;
+// @public
+export const teachingPopoverCarouselFooterClassNames: {
+    root: string;
+};
 
 // @public
 export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverCarouselFooterSlots> & {
@@ -193,8 +202,10 @@ export type TeachingPopoverCarouselNavButtonBaseProps = TeachingPopoverCarouselN
 // @public (undocumented)
 export type TeachingPopoverCarouselNavButtonBaseState = Omit<TeachingPopoverCarouselNavButtonState, 'appearance'>;
 
-// @public (undocumented)
-export const teachingPopoverCarouselNavButtonClassNames: SlotClassNames<TeachingPopoverCarouselNavButtonSlots>;
+// @public
+export const teachingPopoverCarouselNavButtonClassNames: {
+    root: string;
+};
 
 // @public
 export type TeachingPopoverCarouselNavButtonProps = ComponentProps<TeachingPopoverCarouselNavButtonSlots>;
@@ -209,8 +220,10 @@ export type TeachingPopoverCarouselNavButtonState = ComponentState<TeachingPopov
     isSelected?: boolean;
 } & Pick<PopoverContextValue, 'appearance'>;
 
-// @public (undocumented)
-export const teachingPopoverCarouselNavClassNames: SlotClassNames<TeachingPopoverCarouselNavSlots>;
+// @public
+export const teachingPopoverCarouselNavClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TeachingPopoverCarouselNavProps = Omit<ComponentProps<Partial<TeachingPopoverCarouselNavSlots>>, 'children'> & {
@@ -231,8 +244,10 @@ export type TeachingPopoverCarouselNavState = ComponentState<TeachingPopoverCaro
 // @public
 export const TeachingPopoverCarouselPageCount: ForwardRefComponent<TeachingPopoverCarouselPageCountProps>;
 
-// @public (undocumented)
-export const teachingPopoverCarouselPageCountClassNames: SlotClassNames<TeachingPopoverCarouselPageCountSlots>;
+// @public
+export const teachingPopoverCarouselPageCountClassNames: {
+    root: string;
+};
 
 // @public
 export type TeachingPopoverCarouselPageCountProps = Omit<ComponentProps<Partial<TeachingPopoverCarouselPageCountSlots>>, 'children'> & {
@@ -277,8 +292,10 @@ export type TeachingPopoverFooterBaseState = ComponentState<Pick<TeachingPopover
     handleButtonClick: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
 };
 
-// @public (undocumented)
-export const teachingPopoverFooterClassNames: SlotClassNames<TeachingPopoverFooterSlots>;
+// @public
+export const teachingPopoverFooterClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TeachingPopoverFooterProps = ComponentProps<TeachingPopoverFooterSlots> & Pick<TeachingPopoverFooterState, 'footerLayout'>;
@@ -297,8 +314,10 @@ export type TeachingPopoverHeaderBaseProps = TeachingPopoverHeaderProps;
 // @public (undocumented)
 export type TeachingPopoverHeaderBaseState = Omit<TeachingPopoverHeaderState, 'appearance'>;
 
-// @public (undocumented)
-export const teachingPopoverHeaderClassNames: SlotClassNames<TeachingPopoverHeaderSlots>;
+// @public
+export const teachingPopoverHeaderClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlots>;
@@ -322,8 +341,10 @@ export type TeachingPopoverState = PopoverState;
 // @public
 export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps>;
 
-// @public (undocumented)
-export const teachingPopoverSurfaceClassNames: SlotClassNames<TeachingPopoverSurfaceSlots>;
+// @public
+export const teachingPopoverSurfaceClassNames: {
+    root: string;
+};
 
 // @public
 export type TeachingPopoverSurfaceProps = ComponentProps<TeachingPopoverSurfaceSlots>;
@@ -343,8 +364,10 @@ export type TeachingPopoverTitleBaseProps = TeachingPopoverTitleProps;
 // @public (undocumented)
 export type TeachingPopoverTitleBaseState = Omit<TeachingPopoverTitleState, 'appearance'>;
 
-// @public (undocumented)
-export const teachingPopoverTitleClassNames: SlotClassNames<TeachingPopoverTitleSlots>;
+// @public
+export const teachingPopoverTitleClassNames: {
+    root: string;
+};
 
 // @public
 export type TeachingPopoverTitleProps = ComponentProps<TeachingPopoverTitleSlots>;

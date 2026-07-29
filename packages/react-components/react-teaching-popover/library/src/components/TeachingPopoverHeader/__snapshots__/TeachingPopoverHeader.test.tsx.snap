@@ -3,11 +3,11 @@
 exports[`TeachingPopoverHeader renders a default state 1`] = `
 <div>
   <div
-    class="fui-TeachingPopoverHeader"
+    class="group/fui-teaching-popover-header"
   >
     <div
       aria-hidden="true"
-      class="fui-TeachingPopoverHeader__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -27,7 +27,7 @@ exports[`TeachingPopoverHeader renders a default state 1`] = `
     Default TeachingPopoverHeader
     <button
       aria-label="dismiss"
-      class="fui-TeachingPopoverHeader__dismissButton"
+      class=""
       role="button"
     >
       <svg

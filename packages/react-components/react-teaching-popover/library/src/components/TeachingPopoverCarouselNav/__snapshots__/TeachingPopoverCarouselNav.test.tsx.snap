@@ -3,7 +3,7 @@
 exports[`TeachingPopoverCarouselNav renders a default state 1`] = `
 <div>
   <div
-    class="fui-TeachingPopoverCarouselNav"
+    class="group/fui-teaching-popover-carousel-nav"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":false,\\"hasDefault\\":true}}"
     role="tablist"
     tabindex="0"

@@ -3,7 +3,7 @@
 exports[`TeachingPopoverCarouselPageCount renders a default state 1`] = `
 <div>
   <div
-    class="fui-TeachingPopoverCarouselPageCount"
+    class="group/fui-teaching-popover-carousel-page-count"
   >
     <div>
       0 of 0

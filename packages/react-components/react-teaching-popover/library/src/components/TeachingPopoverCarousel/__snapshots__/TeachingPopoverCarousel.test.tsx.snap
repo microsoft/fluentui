@@ -3,7 +3,7 @@
 exports[`TeachingPopoverCarousel renders a default state 1`] = `
 <div>
   <div
-    class="fui-TeachingPopoverCarousel"
+    class="group/fui-teaching-popover-carousel"
   >
     Default TeachingPopoverCarousel
   </div>

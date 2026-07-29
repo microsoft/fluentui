@@ -1,0 +1,137 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * `useTeachingPopoverBodyStyles_unstable`, not source declaration order.
+ *
+ * `root` slot
+ *   #  mergeClasses argument                     → target
+ *   ---------------------------------------------------------------------------------
+ *   1  teachingPopoverBodyClassNames.root        → REMOVED (D16.1); `styles.root` now
+ *                                                  leads the clsx and the
+ *                                                  `group/fui-teaching-popover-body`
+ *                                                  marker follows it (D16.2)
+ *   2  useStyles.root                            → fui.components.l1  .root
+ *   3  consumer className                        → unlayered (always wins)
+ *
+ * `media` slot
+ *   1  teachingPopoverBodyClassNames.media       → REMOVED (D16.1). No marker replaces it:
+ *                                                  D15.1 puts exactly ONE marker on the
+ *                                                  outermost slot, and `media` is not it.
+ *   2  useMediaStyles.base                       → fui.components.l1  .media
+ *   3  useMediaStyles[mediaLength]               → fui.components.l1  .media-short /
+ *                                                  .media-medium / .media-tall
+ *   4  consumer className                        → unlayered
+ *
+ * ── ALTITUDE: l1 throughout ─────────────────────────────────────────────────────────
+ * Both slots are this component's OWN elements (`useTeachingPopoverBody.ts` builds the
+ * root as a `div` and the media slot as a `span`), so nothing here sits over another
+ * component's hook output and `fui.components.l2` is unused (DECISIONS.md D2
+ * amendment 2). No `makeResetStyles` slice → `fui.base` is unused too.
+ *
+ * ── `mediaLength` rides MODULE CLASSES, not a data attribute (D15.6, resolved) ───────
+ * The three length steps are selected by the styles hook and applied to the very element
+ * they style — `useTeachingPopoverBodyStyles_unstable` holds `state.media` and composes
+ * its className directly. Nothing else in this module, this package, or any consumer
+ * reads the value from a selector, so there is no state a selector cannot otherwise
+ * reach and D15.6's fallback rule keeps the DOM free of a `data-media-length` attribute
+ * that nothing would match. This is the same call react-popover's PopoverSurface makes
+ * for its arrow size classes, for the same reason.
+ *
+ * ── ORDER inside l1 ─────────────────────────────────────────────────────────────────
+ * `.media` (arg #2) and the three length classes (arg #3) set disjoint properties —
+ * the base slice never declares `aspect-ratio` or `height` — so the split is inert; the
+ * blocks are written in argument order regardless. The three length classes are mutually
+ * exclusive (`mediaLength` is a single value), so their relative order is free.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled AOT output
+ * (lib-commonjs/components/TeachingPopoverBody/useTeachingPopoverBodyStyles.styles.js)
+ * contains not one `[ltr, rtl]` class pair — every atomic is a single class string.
+ * Nothing here is direction-dependent, so there is no `@variant rtl` block.
+ *
+ * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ────────────────────────────
+ * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero
+ * hits. TeachingPopoverBody renders no icons and reaches into no other component's
+ * elements, so there is no unlayered Griffel atomic to compete with.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — root arg #2 */
+  .root {
+    @apply flex flex-col;
+
+    /* Griffel source writes the px literal `12px`, which lands exactly on the
+       spacingVerticalM step, so it takes the NAMED utility (D4 amendment: named tokens
+       FIRST, numeric only as fallback). Block-axis property → `vertical` namespace. */
+    @apply pb-vertical-m;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useMediaStyles.base — media arg #2 */
+  .media {
+    @apply flex justify-center;
+    @apply w-auto overflow-hidden;
+
+    /* 12px = spacingVerticalM, block axis — same call as `.root`'s padding above. */
+    @apply mb-vertical-m;
+
+    grid-area: media;
+    vertical-align: middle;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useMediaStyles.short / .medium / .tall — media arg #3.
+   *
+   * The ratios are reproduced as the COMPILED values, not as the source's
+   * `popoverBodyDimension / 117` division: Griffel evaluated the expression at build time
+   * and emitted the resulting double (`.f1taewuw{aspect-ratio:2.4615384615384617}`), so
+   * these are transcriptions, not re-derivations. Source expressions, for the reader:
+   * 288/117, 288/176, and a bare `1`.
+   *
+   * `@supports not (aspect-ratio)` is carried through verbatim from the compiled output
+   * (Griffel's `t` bucket). The fallback heights are raw px with no matching spacing step,
+   * so they take NUMERIC utilities — which compute through `--base-scale` exactly as every
+   * other length on the page does (D4 amendment: `h-117` and a named step emit the same
+   * kind of value).
+   */
+  .media-short {
+    aspect-ratio: 2.4615384615384617;
+
+    @supports not (aspect-ratio) {
+      @apply h-117;
+    }
+  }
+
+  .media-medium {
+    aspect-ratio: 1.6363636363636365;
+
+    @supports not (aspect-ratio) {
+      @apply h-176;
+    }
+  }
+
+  .media-tall {
+    aspect-ratio: 1;
+
+    @supports not (aspect-ratio) {
+      /* `popoverBodyDimension` = 288 in the Griffel source. */
+      @apply h-288;
+    }
+  }
+}

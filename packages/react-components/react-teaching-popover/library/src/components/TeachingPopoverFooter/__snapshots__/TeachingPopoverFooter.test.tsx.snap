@@ -3,17 +3,17 @@
 exports[`TeachingPopoverFooter renders a default state 1`] = `
 <div>
   <div
-    class="fui-TeachingPopoverFooter"
+    class="group/fui-teaching-popover-footer"
   >
     <button
-      class="fuicm-root group/fui-button fuicm-primary fuicm-rounded fui-TeachingPopoverFooter__primary"
+      class="group/fui-button"
       data-size="medium"
       type="button"
     >
       Primary
     </button>
     <button
-      class="fuicm-root group/fui-button fuicm-secondary fuicm-rounded fui-TeachingPopoverFooter__secondary"
+      class="group/fui-button"
       data-size="medium"
       type="button"
     >
