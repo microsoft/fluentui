@@ -455,10 +455,11 @@
       "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-tabs": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 3,
       "storiesCovered": null,
-      "notes": "Animated indicator uses measured rects (rAF) - runtime part ports unchanged"
+      "notes": "Animated indicator uses measured rects (rAF) - runtime part ports unchanged",
+      "validated": "2026-07-29 specials S2 (full contract; baselines recovered from pre-change bundle; gate 53/53)"
     },
     "react-tabster": {
       "status": "special",
@@ -467,10 +468,11 @@
       "notes": "Defines Griffel focus-ring factories (createFocusOutlineStyle/createCustomFocusIndicatorStyle) used by 46 styles files; convert to shared CSS utilities FIRST (D6)"
     },
     "react-tag-picker": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 7,
       "storiesCovered": null,
-      "notes": "ResizeObserver-driven widths port unchanged"
+      "notes": "ResizeObserver-driven widths port unchanged",
+      "validated": "2026-07-29 specials S2 (full contract; baselines recovered from pre-change bundle; gate 53/53)"
     },
     "react-tags": {
       "status": "validated",
