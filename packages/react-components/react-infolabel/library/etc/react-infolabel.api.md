@@ -13,13 +13,14 @@ import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 
-// @public (undocumented)
-export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
+// @public @deprecated
+export const infoButtonClassNames: {
+    root: string;
+};
 
 // @public
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled' | 'popover'> & {
@@ -41,8 +42,10 @@ export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<In
 // @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
 
-// @public (undocumented)
-export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
+// @public @deprecated
+export const infoLabelClassNames: {
+    root: string;
+};
 
 // @public
 export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {

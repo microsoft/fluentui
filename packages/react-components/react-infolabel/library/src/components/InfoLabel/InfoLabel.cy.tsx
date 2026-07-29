@@ -4,17 +4,27 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { InfoLabel } from '@fluentui/react-infolabel';
 import { infoButtonClassNames } from '../InfoButton/useInfoButtonStyles.styles';
+import { fuiSelector } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
+/**
+ * InfoButton's public identity class is its named-group marker after DECISIONS.md D16.1
+ * removed the BEM statics, which is what `infoButtonClassNames.root` resolves to.
+ * `'.' + 'group/fui-info-button'` is an invalid SELECTOR, so it goes through `fuiSelector()`,
+ * which escapes the `/` (D16.5).
+ */
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+const infoButtonSelector = `button${fuiSelector(infoButtonClassNames.root)}`;
+
 const surfaceSelector = '[role="note"]';
 
 describe('InfoLabel - close on tab-out', () => {
   const openInfoButton = () => {
-    return cy.get(`button.${infoButtonClassNames.root}`).focus().realPress('{enter}');
+    return cy.get(infoButtonSelector).focus().realPress('{enter}');
   };
 
   it('no focusable elements', () => {
@@ -103,7 +113,7 @@ describe('InfoLabel - close on tab-out', () => {
 
 describe('InfoLabel - toggle on click', () => {
   const clickInfoButton = () => {
-    return cy.get(`button.${infoButtonClassNames.root}`).click();
+    return cy.get(infoButtonSelector).click();
   };
 
   it('toggles on click', () => {

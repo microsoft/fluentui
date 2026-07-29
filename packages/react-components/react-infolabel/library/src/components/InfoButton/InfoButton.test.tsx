@@ -1,7 +1,6 @@
 import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
-import { infoButtonClassNames } from './useInfoButtonStyles.styles';
 import type { RenderResult } from '@testing-library/react';
 
 // testing-library's queryByRole function doesn't look inside portals
@@ -30,22 +29,15 @@ describe('InfoButton', () => {
     requiredProps: {
       info: "This is an InfoButton's information.",
     },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            info: "This is an InfoButton's information.",
-          },
-          expectedClassNames: {
-            root: infoButtonClassNames.root,
-            info: infoButtonClassNames.info,
-          },
-          getPortalElement: getPopoverSurfaceElement,
-        },
-      ],
-    },
     // InfoButton is not to be exported by the package nor added to react-components, therefore these tests
     // need to be disabled.
+    //
+    // `component-has-static-classnames-object` stays disabled, now for a stronger reason: it
+    // asserts the `fui-<Component>__<slot>` BEM format DECISIONS.md D16.1 removed.
+    // `component-has-group-marker` (now a default test) replaces it — it asserts the group marker IS stamped
+    // and is never `classList[0]` (D16.2 / D16.6). The `has-static-classnames` testOptions
+    // that fed the deleted test (including `getPortalElement`, which reached the still-Griffel
+    // PopoverSurface in the portal) went with it.
     //
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind):
     // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
@@ -58,6 +50,8 @@ describe('InfoButton', () => {
     // CSS winning (DECISIONS.md D2/D9). `classname-overrides-win` below is its
     // cascade-native replacement (DECISIONS.md D9).
     disabledTests: ['component-has-static-classnames-object', 'exported-top-level', 'make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 });

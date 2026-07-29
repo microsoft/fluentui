@@ -12,16 +12,27 @@
 import { clsx } from 'clsx';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { typographyStyles } from '@fluentui/react-theme';
-import type { InfoButtonSlots, InfoButtonState } from './InfoButton.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { InfoButtonState } from './InfoButton.types';
 
 import styles from './InfoButton.module.css';
 
-export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
-  root: 'fui-InfoButton',
-  // this className won't be used, but it's needed to satisfy the type checker
-  popover: 'fui-InfoButton__popover',
-  info: 'fui-InfoButton__info',
+/**
+ * Public identity class for InfoButton.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a selector
+ * and as a `group-*` variant target. The per-slot keys were removed together with the BEM
+ * statics (D16.1): there is no public class-name handle on component internals any more.
+ * That also retires the `popover` key, which never named a rendered class at all — it only
+ * existed to satisfy `SlotClassNames<InfoButtonSlots>`, a constraint the narrowed type drops.
+ *
+ * `'.' + infoButtonClassNames.root` is an INVALID selector — `/` is legal in a class TOKEN
+ * but terminates the name in selector position. Use `fuiSelector(infoButtonClassNames.root)`
+ * from `@fluentui/react-utilities`.
+ */
+export const infoButtonClassNames: { root: string } = {
+  root: 'group/fui-info-button',
 };
 
 /**
@@ -88,18 +99,22 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
 
   // eslint-disable-next-line react-hooks/immutability
   state.info.className = mergeClasses(
-    infoButtonClassNames.info,
     popoverSurfaceStyles.base,
     size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,
     state.info.className,
   );
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this InfoButton's state, because `styles.root`
-  // is hashed and unaddressable from outside this file (DECISIONS.md D15).
+  // Module class FIRST, then the named group marker — the marker must never be
+  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // clsx never drops it, so index 0 is always the hashed, selector-safe class; before D16
+  // the removed `fui-InfoButton` static was what held that position.
+  //
+  // The marker is a literal, unhashed, GLOBAL token and, since D16.1 retired the BEM
+  // statics, InfoButton's SOLE public identity class: it is the only handle by which another
+  // module — in this package or any other — can style an element from this InfoButton's
+  // state, because `styles.root` is hashed and unaddressable from outside this file
+  // (DECISIONS.md D15).
   //
   // InfoButton needs no state mirrors: `data-size` and `data-open` are stamped on this very
   // element above, so `@variant group-open/fui-info-button` etc. work as-is (D15.6, Tier 0).
@@ -110,7 +125,7 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
   // by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(infoButtonClassNames.root, 'group/fui-info-button', styles.root, state.root.className);
+  state.root.className = clsx(styles.root, 'group/fui-info-button', state.root.className);
 
   return state;
 };
