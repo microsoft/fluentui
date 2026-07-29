@@ -11,7 +11,6 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { SelectionEvents } from '@fluentui/react-combobox';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }?: TimeFormatOptions): string;
@@ -19,8 +18,10 @@ export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }?: 
 // @public
 export const TimePicker: ForwardRefComponent<TimePickerProps>;
 
-// @public (undocumented)
-export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
+// @public @deprecated
+export const timePickerClassNames: {
+    root: string;
+};
 
 // @public
 export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';

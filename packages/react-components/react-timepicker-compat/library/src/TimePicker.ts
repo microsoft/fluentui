@@ -13,7 +13,7 @@ export type {
 export {
   TimePicker,
   formatDateToTimeString,
-  timePickerClassNames,
+  timePickerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTimePickerStyles_unstable,
   useTimePicker_unstable,
 } from './components/TimePicker/index';

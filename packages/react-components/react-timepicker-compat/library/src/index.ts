@@ -1,6 +1,6 @@
 export {
   TimePicker,
-  timePickerClassNames,
+  timePickerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTimePickerStyles_unstable,
   useTimePicker_unstable,
   formatDateToTimeString,

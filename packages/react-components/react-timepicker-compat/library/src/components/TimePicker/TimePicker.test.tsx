@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-components';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { TimePicker } from './TimePicker';
 import type { TimePickerProps } from './TimePicker.types';
@@ -26,16 +27,33 @@ describe('TimePicker', () => {
     Component: TimePicker,
     displayName: 'TimePicker',
     primarySlot: 'input',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    //
+    // `component-has-static-classnames-object` asserted `timePickerClassNames` still holds
+    // `fui-TimePicker` / `fui-TimePicker__<slot>` strings AND that they are rendered. Both are
+    // false by design: DECISIONS.md D16.1 removed the BEM statics, D16.5 narrowed the export to
+    // `{ root }` and re-pointed it at the group marker. Its `has-static-classnames` testOptions
+    // entry — `{ open: true, inlinePopup: true }`, which existed only to get the listbox
+    // rendered inline so the portal did not hide its static from the query — goes with it.
+    //
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s `mergeClasses` and asserts it
+    // was called with the consumer className last; neither this component nor react-combobox
+    // calls mergeClasses any more, so the test can no longer observe the contract. The
+    // guarantee itself is unchanged — clsx puts `state.root.className` last and the
+    // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            open: true,
-            // Portal messes with the classNames test, so rendering the listbox inline here
-            inlinePopup: true,
-          },
-        },
-      ],
+      // a TimePicker IS a Combobox — `useComboboxStyles_unstable` stamps its marker on this same
+      // element, so this root legitimately carries both markers below (DECISIONS.md D16.3).
+      // Declaring the whole set keeps `component-has-group-marker` running: it is an exact set
+      // comparison, so an undeclared marker still fails, and its `classList[0]` half — the D16.2
+      // invariant that nwsapi's jsdom `:scope` polyfill depends on — is asserted here rather
+      // than opted out of.
+      'has-group-marker': {
+        markers: ['group/fui-combobox', 'group/fui-time-picker'],
+      },
       'consistent-callback-args': {
         legacyCallbacks: ['onOpenChange', 'onTimeChange'],
       },

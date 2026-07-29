@@ -5,10 +5,13 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/styles.css",
     "lib",
     "lib-commonjs"
   ],
@@ -25,8 +28,8 @@
     "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.5",
-    "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.1",
+    "clsx": "^2.1.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <20.0.0",
@@ -41,6 +44,7 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
+    "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
   },
   "beachball": {
@@ -48,5 +52,11 @@
       "major",
       "prerelease"
     ]
+  },
+  "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*"
+  },
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
   }
 }

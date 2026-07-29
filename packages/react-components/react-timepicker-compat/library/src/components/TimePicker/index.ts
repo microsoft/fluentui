@@ -12,5 +12,8 @@ export type {
   TimeStringValidationResult,
 } from './TimePicker.types';
 export { useTimePicker_unstable } from './useTimePicker';
-export { timePickerClassNames, useTimePickerStyles_unstable } from './useTimePickerStyles.styles';
+export {
+  timePickerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
+  useTimePickerStyles_unstable,
+} from './useTimePickerStyles.styles';
 export { formatDateToTimeString } from './timeMath';

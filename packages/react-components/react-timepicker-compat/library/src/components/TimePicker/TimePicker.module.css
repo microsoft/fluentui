@@ -1,0 +1,158 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ── What this component is ───────────────────────────────────────────────────────────
+ *
+ * A TimePicker IS a Combobox. `useTimePicker_unstable` builds its state by calling
+ * `useCombobox_unstable`, `TimePicker.tsx` renders it with `renderCombobox_unstable`, and
+ * `useTimePickerStyles_unstable` ends by delegating to `useComboboxStyles_unstable`. Every
+ * slot in this component — `root`, `input`, `expandIcon`, `clearIcon`, `listbox` — is
+ * react-combobox's; TimePicker owns no element of its own.
+ *
+ * TimePicker's entire Griffel surface was ONE declaration (`maxHeight` on `listbox`) plus
+ * five BEM statics. It is the smallest converted package in the repo.
+ *
+ * ── mergeClasses ARGUMENT order (the shape this file replaces) ───────────────────────
+ *
+ * `useTimePickerStyles_unstable` wrote each slot FIRST and called
+ * `useComboboxStyles_unstable(state)` LAST, so Combobox's classes were PREPENDED and
+ * TimePicker's sat between them and the consumer's className. That relative order is
+ * unchanged now that both packages compose with `clsx`.
+ *
+ *   `root` slot
+ *     1  comboboxClassNames.root                 → static class (JS) — REMOVED (D16.1);
+ *                                                  react-combobox now stamps
+ *                                                  `group/fui-combobox` on this element
+ *    2–8 Combobox useStyles.*                    → fui.components.l1  (react-combobox)
+ *     9  timePickerClassNames.root               → static class (JS) — REMOVED (D16.1);
+ *                                                  the element now carries `.root` below
+ *                                                  plus the `group/fui-time-picker` marker
+ *    10 consumer className                       → unlayered (always wins)
+ *
+ *   `input` / `expandIcon` / `clearIcon` slots
+ *        Combobox's own classes, then `timePickerClassNames.<slot>` — a static and NOTHING
+ *        else. Post-D16 the hook writes nothing at all to these three slots
+ *        (statics-removal design §4d): what would be left is `clsx(state.x.className)`, an
+ *        identity on the consumer's own string that implies this hook styles a slot it
+ *        does not.
+ *
+ *   `listbox` slot
+ *     1  comboboxClassNames.listbox              → static class (JS) — REMOVED (D16.1)
+ *    2–4 Combobox useStyles.listbox / .inlineListbox / .listboxCollapsed
+ *                                                → fui.components.l2  (react-combobox)
+ *     5  timePickerClassNames.listbox            → static class (JS) — REMOVED (D16.1)
+ *     6  useStyles.listbox  (max-height)         → the ONE rule in this file
+ *     7  consumer className                      → unlayered
+ *
+ * ── ALTITUDE: l2, and why it cannot be higher ────────────────────────────────────────
+ *
+ * There is no `fui.base` (TimePicker has no `makeResetStyles`) and no `fui.components.l1`
+ * except the identity-only `.root` below — TimePicker owns no element, so it has no own
+ * cascade to express. The `max-height` rule is a D2-amendment-2 composition: TimePicker
+ * styling over another component's hook output → `fui.components.l2`.
+ *
+ * The subtlety is that react-combobox's OWN `max-height: 80vh` is ALSO in
+ * `fui.components.l2` — for the same reason, since Combobox's `listbox` slot is a
+ * `<Listbox>` and Combobox is decorating that component's output
+ * (`react-combobox/…/Combobox.module.css`, `@layer fui.components.l2 { .listbox { … } }`).
+ * This element is styled three deep — Listbox l1, Combobox l2, TimePicker — and there is no
+ * l2.5:
+ *
+ *   • `fui.components.l3`–`l5` are CONSUMER space; library code never authors into them
+ *     (D2 amendment 3).
+ *   • A sublayer (`fui.components.l2.time-picker`) is worse than useless here: rules written
+ *     directly into a parent layer beat ALL of its sublayers (probe-verified, D2 amendment
+ *     3), so Combobox's parent-direct l2 rule would win.
+ *
+ * That leaves SPECIFICITY, which within one layer is exactly the right tool — and unlike
+ * stylesheet order it is deterministic. Hence the self-compound; see the block below.
+ *
+ * ── Why this is NOT the D2-amendment-5 unlayered case ────────────────────────────────
+ * react-combobox was still `needs-conversion` in ledger.json when this conversion started,
+ * and while that was true D2 amendment 5 DID apply: a rule whose subject element belongs to
+ * an unconverted Griffel package has to be unlayered, because unlayered outranks every
+ * `@layer` before specificity is even consulted, so nothing inside `fui.components.l2` could
+ * have beaten Combobox's `.fmmk62d{max-height:80vh}` atomic. react-combobox converted in the
+ * SAME batch, which retires that reading. Do not restore it: an unlayered LIBRARY rule also
+ * outranks a consumer's l3–l5 and ties with the consumer's own unlayered CSS, so it would
+ * break the D2 promise that consumer CSS wins — a worse bug than the one it fixes. The
+ * cross-package dependency is recorded in the batch-5 seam report.
+ */
+
+@layer fui.components.l1 {
+  /*
+   * Identity-only local. TimePicker's root has no declarations of its own — every root
+   * style comes from `useComboboxStyles_unstable`. This class exists so the root always
+   * emits a selector-safe leading token ahead of the `group/fui-time-picker` marker
+   * (DECISIONS.md D15.1 / D16.2): a marker at `classList[0]` makes nwsapi's jsdom `:scope`
+   * polyfill splice the `/` into an invalid selector and throw at render time.
+   *
+   * Do not delete because it looks empty.
+   *
+   * WHY IT IS NOT A LITERALLY EMPTY RULE. CONVERSION_GUIDE §3b still specifies `.root {}` on
+   * the premise that `postcss-modules` exports the name even with an empty body. It does not
+   * survive this pipeline: `@tailwindcss/postcss` runs BEFORE `postcss-modules`
+   * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
+   * every declaration-less rule, so the class never reaches the class map and `styles.root`
+   * comes back `undefined` — silently putting the marker at index 0. Reproduced here on
+   * Tailwind v4.3.3 before this body was added: `dist/styles.css` emitted a bare
+   * `@layer fui.components.l1;` statement and the generated class map held `listbox` only.
+   * `--fui-time-picker-identity: initial` is the same minimal surviving body react-breadcrumb
+   * uses: a custom property set to `initial` is guaranteed-invalid, so it renders nothing and
+   * any `var(--fui-time-picker-identity, X)` still resolves to `X`.
+   */
+  .root {
+    --fui-time-picker-identity: initial;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * ── Self-compounded on purpose — do not "simplify" to a single class ────────────────
+   *
+   * Subject element: the `<Listbox>` react-combobox renders as Combobox's `listbox` slot.
+   * The rule it has to beat is Combobox's own, and that rule is in THIS SAME LAYER:
+   *
+   *   react-combobox  Combobox.module.css, @layer fui.components.l2
+   *                   `.listbox { … max-height: 80vh; }`   → 0-1-0
+   *   this module     `.listbox`                            → 0-1-0
+   *
+   * Same layer, same specificity, two different stylesheets — the winner would be decided by
+   * which `dist/styles.css` a consumer's bundler happens to load last. Griffel's
+   * `mergeClasses` gave TimePicker the win (its class was the later argument, and `max-height`
+   * is a single atomic key so the earlier one was deleted outright), and losing it is visible:
+   * the listbox would cap at `80vh` instead of `416px` — 864px vs 416px in a 1080px-tall
+   * viewport, i.e. roughly double the intended popup.
+   *
+   * Repeating the local raises this rule to 0-2-0 and takes stylesheet order out of the
+   * question entirely. Both occurrences hash to the SAME generated ident, so the compiled
+   * selector is `.fuicm-time-picker-listbox-<hash>.fuicm-time-picker-listbox-<hash>` — one
+   * class listed twice, no second handle invented, nothing new on the public DOM surface.
+   * It is the same move BreadcrumbButton makes (compound to win a contest `@layer` cannot
+   * arbitrate), with the difference that the extra token here is this module's OWN local
+   * rather than a `fui-*` static: D16 leaves no static to compound, and D16.3's flat rule
+   * routes "sub-slot of a component this package renders itself" to M2 (JS slot composition),
+   * which is exactly how `styles.listbox` reaches the element.
+   *
+   * from useStyles.listbox — compiled to `.f1vfnyiv{max-height:min(80vh, 416px);}`
+   * (lib-commonjs/components/TimePicker/useTimePickerStyles.styles.js, the pre-conversion
+   * AOT output). The px literal rides `--base-scale` per D4, like every other raw pixel value
+   * in a converted module; `80vh` is a viewport unit and is left alone. Height for 12 items,
+   * or 80vh, whichever is smaller.
+   */
+  .listbox.listbox {
+    max-height: min(80vh, calc(416px * var(--base-scale)));
+  }
+}
