@@ -3,7 +3,6 @@ import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluen
 import { isConformant } from '../../testing/isConformant';
 import { Avatar } from './Avatar';
 import { render, screen } from '@testing-library/react';
-import { avatarClassNames } from './useAvatarStyles.styles';
 import { DEFAULT_STRINGS } from './useAvatar';
 
 describe('Avatar', () => {
@@ -17,33 +16,18 @@ describe('Avatar', () => {
     // itself is unchanged — clsx puts `state.root.className` last and the `@layer fui.*`
     // sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement.
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            image: { src: 'avatar.png', alt: 'test-image' },
-            initials: 'Test Initials',
-            badge: 'Test Badge',
-          },
-          expectedClassNames: {
-            root: avatarClassNames.root,
-            image: avatarClassNames.image,
-            initials: avatarClassNames.initials,
-            badge: avatarClassNames.badge,
-          },
-        },
-        {
-          props: {
-            icon: 'Test Icon',
-          },
-          expectedClassNames: {
-            root: avatarClassNames.root,
-            icon: avatarClassNames.icon,
-          },
-        },
-      ],
+    //
+    // `component-has-static-classnames-object` is disabled because Avatar no longer
+    // publishes BEM statics (DECISIONS.md D16.1). All three of its sub-tests hard-code the
+    // `fui-Avatar` / `fui-Avatar__<slot>` format (defaultTests.tsx:244-245, 277), so it
+    // fails under the retained-constant policy just as it would under outright deletion
+    // (D16.6). `component-has-group-marker` (now a default test) is its replacement: it asserts the marker
+    // is stamped and — the machine-checkable form of D15.1/D16.2 — that it is never
+    // `classList[0]`. The `has-static-classnames` variant options it consumed are removed
+    // with it; the sub-slot keys they referenced no longer exist.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
   });
 

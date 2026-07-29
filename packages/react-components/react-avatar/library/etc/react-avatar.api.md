@@ -17,7 +17,6 @@ import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public (undocumented)
@@ -29,8 +28,10 @@ export type AvatarBaseProps = ComponentProps<Omit<AvatarSlots, 'badge'>> & Pick<
 // @public (undocumented)
 export type AvatarBaseState = ComponentState<Omit<AvatarSlots, 'badge'>> & Pick<AvatarState, 'activeAriaLabelElement'>;
 
-// @public (undocumented)
-export const avatarClassNames: SlotClassNames<AvatarSlots>;
+// @public
+export const avatarClassNames: {
+    root: string;
+};
 
 // @internal (undocumented)
 export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefined>;
@@ -52,8 +53,10 @@ export type AvatarGroupBaseProps = Omit<AvatarGroupProps, 'size'>;
 // @public (undocumented)
 export type AvatarGroupBaseState = Omit<AvatarGroupState, 'size'>;
 
-// @public (undocumented)
-export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
+// @public
+export const avatarGroupClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
@@ -74,8 +77,10 @@ export type AvatarGroupItemBaseProps = AvatarGroupItemProps;
 // @public (undocumented)
 export type AvatarGroupItemBaseState = Omit<AvatarGroupItemState, 'size'>;
 
-// @public (undocumented)
-export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
+// @public
+export const avatarGroupItemClassNames: {
+    root: string;
+};
 
 // @public
 export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size' | 'shape'>;
@@ -103,8 +108,10 @@ export type AvatarGroupPopoverBaseProps = AvatarGroupPopoverProps;
 // @public (undocumented)
 export type AvatarGroupPopoverBaseState = Omit<AvatarGroupPopoverState, 'size'>;
 
-// @public (undocumented)
-export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlots>;
+// @public
+export const avatarGroupPopoverClassNames: {
+    root: string;
+};
 
 // @public
 export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & {

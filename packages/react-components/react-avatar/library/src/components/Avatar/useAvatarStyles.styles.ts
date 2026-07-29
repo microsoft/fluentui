@@ -13,17 +13,33 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { AvatarSize, AvatarSlots, AvatarState } from './Avatar.types';
+import type { AvatarSize, AvatarState } from './Avatar.types';
 
 import styles from './Avatar.module.css';
 
-export const avatarClassNames: SlotClassNames<AvatarSlots> = {
-  root: 'fui-Avatar',
-  image: 'fui-Avatar__image',
-  initials: 'fui-Avatar__initials',
-  icon: 'fui-Avatar__icon',
-  badge: 'fui-Avatar__badge',
+/**
+ * Avatar's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-Avatar` / `fui-Avatar__<slot>` BEM statics are gone (D16.1), and the type has narrowed
+ * from `SlotClassNames<AvatarSlots>` to `{ root: string }` so that a read of `image`,
+ * `initials`, `icon` or `badge` is a compile error on the exact line that would otherwise
+ * have silently stopped matching.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + avatarClassNames.root` is invalid CSS. Use
+ * `fuiSelector(avatarClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's three, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ */
+export const avatarClassNames: { root: string } = {
+  root: 'group/fui-avatar',
 };
 
 /**
@@ -91,12 +107,14 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   root['data-active-appearance'] = isActive ? activeAppearance : undefined;
   /* eslint-enable react-hooks/immutability */
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Avatar's state, because `styles.root` is
-  // hashed and unaddressable from outside this file (DECISIONS.md D15).
+  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
+  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
+  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
+  // `:scope` polyfill would throw on its `/` under jsdom (D15.1). The BEM static that used
+  // to lead this call is gone (D16.1): the marker is now Avatar's SOLE public identity
+  // class, and the only handle by which another module — in this package or any other — can
+  // style an element from this Avatar's state, because `styles.root` is hashed and
+  // unaddressable from outside this file (DECISIONS.md D15).
   //
   // Avatar needs no state mirrors: `data-size`, `data-active` and `data-active-appearance`
   // are stamped on this very element above, so `@variant group-*/fui-avatar` reads them
@@ -112,9 +130,8 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    avatarClassNames.root,
-    'group/fui-avatar',
     styles.root,
+    'group/fui-avatar',
     size !== 32 && sizeStyles[size],
     state.badge && styles['badge-align'],
     // `||`, not `??` — byte-for-byte the Griffel condition (`styles[state.badge.size || 'medium']`)
@@ -127,13 +144,12 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
   if (state.badge) {
     // eslint-disable-next-line react-hooks/immutability
-    state.badge.className = clsx(avatarClassNames.badge, styles.badge, state.badge.className);
+    state.badge.className = clsx(styles.badge, state.badge.className);
   }
 
   if (state.image) {
     // eslint-disable-next-line react-hooks/immutability
     state.image.className = clsx(
-      avatarClassNames.image,
       styles.image,
       styles[color],
       state.badge && styles['badge-cutout'],
@@ -144,7 +160,6 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   if (state.initials) {
     // eslint-disable-next-line react-hooks/immutability
     state.initials.className = clsx(
-      avatarClassNames.initials,
       styles['icon-initials'],
       styles[color],
       state.badge && styles['badge-cutout'],
@@ -159,7 +174,6 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     //
     // eslint-disable-next-line react-hooks/immutability
     state.icon.className = clsx(
-      avatarClassNames.icon,
       styles['icon-initials'],
       styles.icon,
       styles[color],

@@ -16,8 +16,16 @@ describe('AvatarGroup', () => {
     // installs is never hit. `classname-overrides-win` is its cascade-native replacement —
     // consumer `className` last on the root, with unlayered consumer CSS beating the
     // `@layer fui.*` rules (DECISIONS.md D2/D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` is disabled because AvatarGroup no longer
+    // publishes BEM statics (DECISIONS.md D16.1). Its sub-tests hard-code the
+    // `fui-AvatarGroup` format (defaultTests.tsx:244-245, 277), so it fails under the
+    // retained-constant policy just as it would under outright deletion (D16.6).
+    // `component-has-group-marker` (now a default test) is its replacement.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
     requiredProps: {
       children: (
         <>

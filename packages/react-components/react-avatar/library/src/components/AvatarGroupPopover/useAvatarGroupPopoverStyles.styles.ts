@@ -5,15 +5,39 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useGroupChildClassName } from '../AvatarGroupItem/useAvatarGroupItemStyles.styles';
 import { useSizeStyles } from '../Avatar/useAvatarStyles.styles';
-import type { AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 
-export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlots> = {
-  root: 'fui-AvatarGroupPopover',
-  content: 'fui-AvatarGroupPopover__content',
-  popoverSurface: 'fui-AvatarGroupPopover__popoverSurface',
-  tooltip: 'fui-AvatarGroupPopover__tooltip',
-  triggerButton: 'fui-AvatarGroupPopover__triggerButton',
+/**
+ * AvatarGroupPopover's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. The `fui-AvatarGroupPopover__<slot>` BEM
+ * statics are gone (D16.1), and the type has narrowed from
+ * `SlotClassNames<AvatarGroupPopoverSlots>` to `{ root: string }` so that a read of
+ * `content`, `popoverSurface`, `tooltip` or `triggerButton` is a compile error on the exact
+ * line that would otherwise have silently stopped matching.
+ *
+ * CAVEAT — `root` is not rendered, and was not rendered before D16 either. This component's
+ * `root` slot is a `<Popover>`, which emits no DOM element of its own, so the old
+ * `fui-AvatarGroupPopover` static never reached the DOM (its own conformance options said so
+ * in as many words: _"root shouldn't be expected since the root is a Popover"_). D16.5
+ * re-points `root` to the component's marker everywhere; this hook is still Griffel and so
+ * stamps no marker yet (D15.1, unconverted siblings). The value below is therefore the name
+ * the marker WILL take when the hook converts — until then `root` selects nothing, exactly as
+ * it did before this phase.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + avatarGroupPopoverClassNames.root` is invalid CSS. Use
+ * `fuiSelector(avatarGroupPopoverClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's three, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ */
+export const avatarGroupPopoverClassNames: { root: string } = {
+  root: 'group/fui-avatar-group-popover',
 };
 
 /**
@@ -171,7 +195,6 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
 
   // eslint-disable-next-line react-hooks/immutability
   state.triggerButton.className = mergeClasses(
-    avatarGroupPopoverClassNames.triggerButton,
     groupChildClassName,
     sizeStyles[size],
     triggerButtonStyles.base,
@@ -184,18 +207,10 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
   );
 
   // eslint-disable-next-line react-hooks/immutability
-  state.content.className = mergeClasses(
-    avatarGroupPopoverClassNames.content,
-    contentStyles.base,
-    state.content.className,
-  );
+  state.content.className = mergeClasses(contentStyles.base, state.content.className);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.popoverSurface.className = mergeClasses(
-    avatarGroupPopoverClassNames.popoverSurface,
-    popoverSurfaceStyles.base,
-    state.popoverSurface.className,
-  );
+  state.popoverSurface.className = mergeClasses(popoverSurfaceStyles.base, state.popoverSurface.className);
 
   return state;
 };

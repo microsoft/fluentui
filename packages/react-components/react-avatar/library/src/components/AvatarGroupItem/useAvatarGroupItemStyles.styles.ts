@@ -11,17 +11,36 @@
 
 import { clsx } from 'clsx';
 import { useSizeStyles } from '../../Avatar';
-import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
+import type { AvatarGroupItemState } from './AvatarGroupItem.types';
 import type { AvatarGroupProps } from '../../AvatarGroup';
 import type { AvatarSize } from '../../Avatar';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 import styles from './AvatarGroupItem.module.css';
 
-export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
-  root: 'fui-AvatarGroupItem',
-  avatar: 'fui-AvatarGroupItem__avatar',
-  overflowLabel: 'fui-AvatarGroupItem__overflowLabel',
+/**
+ * AvatarGroupItem's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-AvatarGroupItem` / `fui-AvatarGroupItem__<slot>` BEM statics are gone (D16.1), and the
+ * type has narrowed from `SlotClassNames<AvatarGroupItemSlots>` to `{ root: string }` so that
+ * a read of `avatar` or `overflowLabel` is a compile error on the exact line that would
+ * otherwise have silently stopped matching. The `avatar` slot is an `<Avatar>` root, so it
+ * remains addressable through `avatarClassNames.root` — its own component's marker.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + avatarGroupItemClassNames.root` is invalid CSS. Use
+ * `fuiSelector(avatarGroupItemClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's three, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ */
+export const avatarGroupItemClassNames: { root: string } = {
+  root: 'group/fui-avatar-group-item',
 };
 
 /**
@@ -52,12 +71,14 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   // eslint-disable-next-line react-hooks/immutability -- state-mutation builder, preserved per D14
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this AvatarGroupItem's state, because
-  // `styles.root` is hashed and unaddressable from outside this file (DECISIONS.md D15).
+  // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
+  // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
+  // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
+  // `:scope` polyfill would throw on its `/` under jsdom (D15.1). The BEM static that used
+  // to lead this call is gone (D16.1): the marker is now AvatarGroupItem's SOLE public
+  // identity class, and the only handle by which another module — in this package or any
+  // other — can style an element from this AvatarGroupItem's state, because `styles.root`
+  // is hashed and unaddressable from outside this file (DECISIONS.md D15).
   //
   // AvatarGroupItem needs no state mirrors: `data-size` is stamped on this very element
   // above, so `@variant group-*/fui-avatar-group-item` reads it as-is (D15.6, Tier 0). The
@@ -75,9 +96,8 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    avatarGroupItemClassNames.root,
-    'group/fui-avatar-group-item',
     styles.root,
+    'group/fui-avatar-group-item',
     !isOverflowItem && styles['non-overflow-item'],
     !isOverflowItem && groupChildClassName,
     !isOverflowItem && sizeStyles[size],
@@ -86,9 +106,13 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
     state.root.className,
   );
 
+  // Both module classes here are CONDITIONAL, so this slot can emit the consumer's class
+  // alone. That is harmless and deliberately NOT "fixed" (DECISIONS.md D16 / design §4c):
+  // the slot carries no marker, so the D15.1 leading-token invariant is not in play, and the
+  // element is an `<Avatar>` root that leads with Avatar's own unconditional `styles.root`.
+  //
   // eslint-disable-next-line react-hooks/immutability
   state.avatar.className = clsx(
-    avatarGroupItemClassNames.avatar,
     !isOverflowItem && styles['avatar-non-overflow-item'],
     layout === 'pie' && styles['avatar-pie'],
     state.avatar.className,
@@ -96,11 +120,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
 
   if (state.overflowLabel) {
     // eslint-disable-next-line react-hooks/immutability
-    state.overflowLabel.className = clsx(
-      avatarGroupItemClassNames.overflowLabel,
-      styles['overflow-label'],
-      state.overflowLabel.className,
-    );
+    state.overflowLabel.className = clsx(styles['overflow-label'], state.overflowLabel.className);
   }
 
   return state;

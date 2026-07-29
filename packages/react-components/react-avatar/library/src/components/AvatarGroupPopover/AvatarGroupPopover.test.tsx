@@ -1,54 +1,40 @@
 import * as React from 'react';
 import { AvatarGroupItem } from '../AvatarGroupItem/AvatarGroupItem';
 import { AvatarGroupPopover } from './AvatarGroupPopover';
-import { avatarGroupPopoverClassNames } from './useAvatarGroupPopoverStyles.styles';
 import { isConformant } from '../../testing/isConformant';
-import type { RenderResult } from '@testing-library/react';
-import { render, screen, fireEvent } from '@testing-library/react';
-
-// testing-library's queryByRole function doesn't look inside portals
-function queryByRoleDialog(result: RenderResult) {
-  const dialogs = result.baseElement.querySelectorAll('*[role="dialog"]');
-  if (!dialogs?.length) {
-    return null;
-  } else {
-    expect(dialogs.length).toBe(1);
-    return dialogs.item(0) as HTMLElement;
-  }
-}
-
-const getPopoverSurfaceElement = (result: RenderResult) => {
-  // triggerButton needs to be clicked otherwise content won't be rendered.
-  fireEvent.click(result.getByRole('button'));
-
-  const dialog = queryByRoleDialog(result);
-  expect(dialog).not.toBeNull();
-  return dialog!;
-};
+import { render, screen } from '@testing-library/react';
 
 describe('AvatarGroupPopover', () => {
   isConformant({
     Component: AvatarGroupPopover,
     displayName: 'AvatarGroupPopover',
+    // Statics removal (DECISIONS.md D16.1): AvatarGroupPopover no longer publishes BEM
+    // statics, so `component-has-static-classnames-object` is disabled — its sub-tests
+    // hard-code the `fui-AvatarGroupPopover__<slot>` format (defaultTests.tsx:244-245, 277)
+    // and fail under the retained-constant policy exactly as they would under deletion
+    // (D16.6). The `has-static-classnames` variant options that drove it are removed with
+    // it, along with the portal helper they needed.
+    //
+    // `component-has-group-marker` is deliberately NOT opted in here. This hook is still
+    // Griffel, so it stamps no marker yet (D15.1, unconverted siblings), and the component's
+    // `root` slot is a `<Popover>` that renders no DOM element of its own — there is nothing
+    // for the test to target. It opts in when the hook converts.
     disabledTests: [
       'component-handles-ref',
+
       'component-has-root-ref',
+
       'component-handles-classname',
+
       'make-styles-overrides-win',
+
+      'component-has-static-classnames-object',
+      // Stamps no named-group marker, so it opts out of `component-has-group-marker` (a
+      // default test since DECISIONS.md D16.6).
+
+      'component-has-group-marker',
     ],
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {},
-          expectedClassNames: {
-            // root shouldn't be expected since the root is a Popover
-            popoverButton: avatarGroupPopoverClassNames.triggerButton,
-            popoverContent: avatarGroupPopoverClassNames.content,
-            popoverSurface: avatarGroupPopoverClassNames.popoverSurface,
-          },
-          getPortalElement: getPopoverSurfaceElement,
-        },
-      ],
       'consistent-callback-args': {
         legacyCallbacks: ['onOpenChange'],
       },
