@@ -31,6 +31,9 @@
  *   .r15xhw3a[data-fui-focus-visible] > .fui-TreeItemLayout,
  *   .r15xhw3a[data-fui-focus-visible] > .fui-TreeItemPersonaLayout { … }
  *
+ * (that is the ORIGINAL Griffel output, quoted verbatim; the two layout statics no longer
+ * exist — see the `:global(…)` note further down for what selects those elements now)
+ *
  * Those two elements' base rules come from `useTreeItemLayoutStyles_unstable` /
  * `useTreeItemPersonaLayoutStyles_unstable` — a DIFFERENT component's hook, both now
  * converted — so the rules belong at `fui.components.l2`. In `fui.base` (or l1) the
@@ -43,8 +46,19 @@
  * sit on the root itself, outside `customizeSelector`'s reach, and only undo the browser
  * default.
  *
- * Both layout classes are the OTHER components' static `fui-*` names, so they are written
- * `:global(…)` (cookbook §2). They are NOT unlayered: D2 amendment 5 applies only when
+ * Both layout classes are the OTHER components' PUBLIC IDENTITY classes — their Tailwind
+ * named-group markers, `group/fui-tree-item-layout` and
+ * `group/fui-tree-item-persona-layout`. DECISIONS.md D16.1 removed the `fui-TreeItemLayout`
+ * / `fui-TreeItemPersonaLayout` BEM statics these rules used to select, and D16.3 makes the
+ * marker the replacement for exactly this shape: the ROOT of a component this package does
+ * not render (a consumer composes the layout as TreeItem's child), so JS slot composition is
+ * unavailable and the marker is the correct handle. Specificity is preserved class-for-class
+ * (both are single class selectors, so the rule stays 0-2-0), and the `\/` is the CSS escape
+ * the `/` requires in selector position. They are written `:global(…)` (cookbook §2) — note
+ * the build's `globalize-group-markers` PostCSS plugin would keep the marker global anyway,
+ * but the explicit wrapper keeps the intent readable.
+ *
+ * They are NOT unlayered: D2 amendment 5 applies only when
  * the styled element is owned by an EXTERNAL or still-Griffel package, and both layouts
  * convert in this same batch. Grepped for `fui-Icon-filled` / `fui-Icon-regular` across
  * the package — no hits: `TreeItemChevron` renders a plain `ChevronRight12Regular`, not a
@@ -163,8 +177,8 @@
    */
   .root {
     @variant focus-visible-fui {
-      & > :global(.fui-TreeItemLayout),
-      & > :global(.fui-TreeItemPersonaLayout) {
+      & > :global(.group\/fui-tree-item-layout),
+      & > :global(.group\/fui-tree-item-persona-layout) {
         border-radius: var(--borderRadiusMedium);
         outline-color: var(--colorStrokeFocus2);
 

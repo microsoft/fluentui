@@ -32,7 +32,6 @@ import type { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const flattenTree_unstable: <Props extends TreeItemProps>(items: FlattenTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
@@ -46,8 +45,10 @@ export type FlattenTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree'
 // @public
 export const FlatTree: ForwardRefComponent<FlatTreeProps>;
 
-// @public (undocumented)
-export const flatTreeClassNames: SlotClassNames<Omit<FlatTreeSlots, 'collapseMotion'>>;
+// @public @deprecated
+export const flatTreeClassNames: {
+    root: string;
+};
 
 // @public
 export const FlatTreeItem: ForwardRefComponent<FlatTreeItemProps>;
@@ -146,8 +147,10 @@ export type TreeCheckedChangeData = {
 // @public (undocumented)
 export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
 
-// @public (undocumented)
-export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>>;
+// @public @deprecated
+export const treeClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TreeContextValue = {
@@ -172,8 +175,10 @@ export type TreeContextValues = {
 // @public
 export const TreeItem: ForwardRefComponent<TreeItemProps>;
 
-// @public (undocumented)
-export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
+// @public @deprecated
+export const treeItemClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TreeItemContextValue = {
@@ -199,8 +204,10 @@ export type TreeItemCSSProperties = React_2.CSSProperties & {
 // @public
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
 
-// @public (undocumented)
-export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots>;
+// @public @deprecated
+export const treeItemLayoutClassNames: {
+    root: string;
+};
 
 // @public
 export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
@@ -253,8 +260,10 @@ export type TreeItemOpenChangeEvent = TreeItemOpenChangeData['event'];
 // @public
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
 
-// @public (undocumented)
-export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots>;
+// @public @deprecated
+export const treeItemPersonaLayoutClassNames: {
+    root: string;
+};
 
 // @public
 export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaLayoutSlots>>;

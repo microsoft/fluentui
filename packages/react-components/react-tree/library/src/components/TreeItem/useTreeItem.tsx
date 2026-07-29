@@ -10,6 +10,7 @@ import {
   elementContains,
   useMergedRefs,
   isHTMLElement,
+  fuiSelector,
 } from '@fluentui/react-utilities';
 import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
@@ -79,7 +80,10 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         return;
       }
 
-      if (treeItemRef.current?.querySelector(`.${treeClassNames.root}`)) {
+      // Tree's public identity class is its named-group marker after DECISIONS.md D16.1/D16.5;
+      // `'.' + 'group/fui-tree'` is an invalid SELECTOR, so it goes through `fuiSelector()`.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+      if (treeItemRef.current?.querySelector(fuiSelector(treeClassNames.root))) {
         // eslint-disable-next-line no-console
         console.error(/** #__DE-INDENT__ */ `
           @fluentui/react-tree [useTreeItem]:

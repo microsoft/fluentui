@@ -3,11 +3,11 @@
 exports[`TreeItemLayout renders a default state 1`] = `
 <div>
   <div
-    class="fui-TreeItemLayout group/fui-tree-item-layout"
+    class="group/fui-tree-item-layout"
     data-size="medium"
   >
     <div
-      class="fui-TreeItemLayout__main"
+      class=""
     >
       Default TreeItemLayout
     </div>

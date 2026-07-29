@@ -15,8 +15,14 @@ describe('FlatTree', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['consistent-callback-args', 'make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts the `fui-<Component>__<slot>` BEM
+    // format DECISIONS.md D16.1 removed. `component-has-group-marker` (now a default test) replaces it: it
+    // asserts the group marker IS stamped and is never `classList[0]` (D16.2 / D16.6).
+    disabledTests: ['component-has-static-classnames-object', 'consistent-callback-args', 'make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

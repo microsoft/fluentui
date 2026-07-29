@@ -8,6 +8,7 @@ export type {
 } from './useHeadlessFlatTree';
 export { useHeadlessFlatTree_unstable } from './useHeadlessFlatTree';
 export { useFlatTree_unstable } from './useFlatTree';
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
 export { flatTreeClassNames, useFlatTreeStyles_unstable } from './useFlatTreeStyles.styles';
 export { useFlatTreeContextValues_unstable } from './useFlatTreeContextValues';
 export { renderFlatTree_unstable } from './renderFlatTree';

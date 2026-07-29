@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
+import { fuiSelector } from '@fluentui/react-utilities';
 import { TreeItem } from './TreeItem';
 import { isConformant } from '../../testing/isConformant';
 import type { TreeItemProps } from './TreeItem.types';
@@ -14,7 +15,10 @@ describe('TreeItem', () => {
     displayName: 'TreeItem',
     renderOptions: { wrapper: ({ children }) => <Tree>{children}</Tree> },
     getTargetElement(renderResult, attr) {
-      return renderResult.container.querySelector(`.${treeItemClassNames.root}`) ?? renderResult.container;
+      // `treeItemClassNames.root` is the group marker after DECISIONS.md D16.1/D16.5, and
+      // `'.' + 'group/fui-tree-item'` is an invalid SELECTOR — `fuiSelector()` escapes the `/`.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+      return renderResult.container.querySelector(fuiSelector(treeItemClassNames.root)) ?? renderResult.container;
     },
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
     // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
@@ -23,17 +27,14 @@ describe('TreeItem', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    //
+    // `component-has-static-classnames-object` asserts the `fui-<Component>__<slot>` BEM
+    // format DECISIONS.md D16.1 removed. `component-has-group-marker` (now a default test) replaces it: it
+    // asserts the group marker IS stamped and is never `classList[0]` (D16.2 / D16.6). The
+    // `has-static-classnames` testOptions that fed the deleted test went with it.
     disabledTests: ['component-has-static-classnames-object', 'consistent-callback-args', 'make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            expandIcon: 'Test Expand Icon',
-            aside: 'test Aside',
-          },
-        },
-      ],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
   });
 
@@ -80,7 +81,10 @@ describe('TreeItem', () => {
 
     const result = render(<Tree defaultOpenItems={openItems}>{treeContent}</Tree>);
 
-    const treeItems = result.container.querySelectorAll<HTMLElement>(`.${treeItemClassNames.root}`);
+    // `treeItemClassNames.root` is the group marker after DECISIONS.md D16.1/D16.5, so the
+    // selector needs `fuiSelector()` to escape the `/` (see `getTargetElement` above).
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+    const treeItems = result.container.querySelectorAll<HTMLElement>(fuiSelector(treeItemClassNames.root));
     expect(treeItems).toHaveLength(depth);
 
     // Levels 1..10 are handled by static classes and should not set the inline CSS variable

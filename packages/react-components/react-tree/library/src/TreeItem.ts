@@ -12,6 +12,7 @@ export type {
 export {
   TreeItem,
   renderTreeItem_unstable,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   treeItemClassNames,
   useTreeItemContextValues_unstable,
   useTreeItemStyles_unstable,

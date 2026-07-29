@@ -7,8 +7,9 @@ import { useRovingTabIndex } from './useRovingTabIndexes';
 import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { fuiSelector, useMergedRefs } from '@fluentui/react-utilities';
 import { treeItemLayoutClassNames } from '../TreeItemLayout';
+import treeItemLayoutStyles from '../components/TreeItemLayout/TreeItemLayout.module.css';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 /***
@@ -101,7 +102,25 @@ function lastChildRecursive(walker: HTMLElementWalker) {
   return lastElement;
 }
 
+/**
+ * Finds the TreeItemLayout `actions` element belonging to `target` (a TreeItem root).
+ *
+ * DECISIONS.md D16 split what used to be one BEM-static selector into its two halves:
+ *
+ * - the layout ROOT keeps a public handle — its named-group marker, which is what
+ *   `treeItemLayoutClassNames.root` now resolves to. `fuiSelector()` escapes the `/`, which
+ *   is legal in a class TOKEN but terminates the name in SELECTOR position (D16.5).
+ * - the `actions` SUB-SLOT has no public handle any more: D16.1 removed
+ *   `fui-TreeItemLayout__actions` and D16.5 deleted the per-slot key with it. This hook ships
+ *   in the same package as the module that styles that slot, so it reads the hashed class
+ *   straight from the class map — a PRIVATE coupling, which is what D16.3 prescribes whenever
+ *   the owning package can reach the slot itself, instead of renaming a public one.
+ *
+ * The `:scope >` combinator is why D15.1 / D16.2 forbid the marker at `classList[0]`: jsdom
+ * polyfills `:scope` through nwsapi, which anchors on `escape(element.classList[0])`.
+ */
 const queryActions = (target: HTMLElement) =>
   target.querySelector<HTMLElement>(
-    `:scope > .${treeItemLayoutClassNames.root} > .${treeItemLayoutClassNames.actions}`,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+    `:scope > ${fuiSelector(treeItemLayoutClassNames.root)} > .${treeItemLayoutStyles.actions}`,
   );

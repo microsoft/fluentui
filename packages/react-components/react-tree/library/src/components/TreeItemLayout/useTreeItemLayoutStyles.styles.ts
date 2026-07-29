@@ -10,22 +10,27 @@
  */
 
 import { clsx } from 'clsx';
-import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TreeItemLayoutState } from './TreeItemLayout.types';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
 import styles from './TreeItemLayout.module.css';
 
-export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
-  root: 'fui-TreeItemLayout',
-  iconBefore: 'fui-TreeItemLayout__iconBefore',
-  main: 'fui-TreeItemLayout__main',
-  iconAfter: 'fui-TreeItemLayout__iconAfter',
-  expandIcon: 'fui-TreeItemLayout__expandIcon',
-  aside: 'fui-TreeItemLayout__aside',
-  actions: 'fui-TreeItemLayout__actions',
-  selector: 'fui-TreeItemLayout__selector',
+/**
+ * Public identity class for TreeItemLayout.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a selector
+ * and as a `group-*` variant target. The per-slot keys were removed together with the BEM
+ * statics (D16.1): there is no public class-name handle on component internals any more.
+ *
+ * `'.' + treeItemLayoutClassNames.root` is an INVALID selector — `/` is legal in a class
+ * TOKEN but terminates the name in selector position. Use
+ * `fuiSelector(treeItemLayoutClassNames.root)` from `@fluentui/react-utilities`.
+ */
+export const treeItemLayoutClassNames: { root: string } = {
+  root: 'group/fui-tree-item-layout',
 };
 
 /**
@@ -55,7 +60,9 @@ type TreeItemLayoutRootDataAttributes = {
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  const { main, iconAfter, iconBefore, expandIcon, root, aside, actions, selector } = state;
+  // `selector` is deliberately NOT destructured: this hook writes no class to that slot — see
+  // the note at the end of the function (DECISIONS.md D16.1 / design §4d).
+  const { main, iconAfter, iconBefore, expandIcon, root, aside, actions } = state;
 
   const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
@@ -66,14 +73,20 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   // eslint-disable-next-line react-hooks/immutability
   rootDataAttributes['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this TreeItemLayout's state, because
-  // `styles.root` is hashed and unaddressable from outside this file. `data-size` is
-  // already stamped on this very element above (DECISIONS.md D15, Tier 0 — no state mirrors
-  // needed).
+  // Module class FIRST, then the named group marker — the marker must never be
+  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // clsx never drops it, so index 0 is always the hashed, selector-safe class; before D16
+  // the removed `fui-TreeItemLayout` static was what held that position.
+  //
+  // The marker is a literal, unhashed, GLOBAL token and, since D16.1 retired the BEM
+  // statics, TreeItemLayout's SOLE public identity class: it is the only handle by which
+  // another module — in this package or any other — can style an element from this
+  // TreeItemLayout's state, because `styles.root` is hashed and unaddressable from outside
+  // this file. TreeItem.module.css selects it exactly that way (`& >
+  // :global(.group\/fui-tree-item-layout)`), and so do the package's own keyboard-navigation
+  // hooks. `data-size` is already stamped on this very element above (DECISIONS.md D15,
+  // Tier 0 — no state mirrors needed).
   //
   // Cascade priority is decided by the `@layer fui.*` order in TreeItemLayout.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
@@ -84,54 +97,45 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   // clsx drops the resulting `undefined`, matching the empty class string Griffel produces.
   // eslint-disable-next-line react-hooks/immutability
   root.className = clsx(
-    treeItemLayoutClassNames.root,
-    'group/fui-tree-item-layout',
     styles.root,
+    'group/fui-tree-item-layout',
     styles[appearance],
     styles[itemType],
     root.className,
   );
 
   // eslint-disable-next-line react-hooks/immutability
-  main.className = clsx(treeItemLayoutClassNames.main, styles.main, main.className);
+  main.className = clsx(styles.main, main.className);
 
   if (expandIcon) {
     // eslint-disable-next-line react-hooks/immutability
-    expandIcon.className = clsx(treeItemLayoutClassNames.expandIcon, styles['expand-icon'], expandIcon.className);
+    expandIcon.className = clsx(styles['expand-icon'], expandIcon.className);
   }
 
   if (iconBefore) {
     // eslint-disable-next-line react-hooks/immutability
-    iconBefore.className = clsx(
-      treeItemLayoutClassNames.iconBefore,
-      styles.icon,
-      styles['icon-before'],
-      iconBefore.className,
-    );
+    iconBefore.className = clsx(styles.icon, styles['icon-before'], iconBefore.className);
   }
 
   if (iconAfter) {
     // eslint-disable-next-line react-hooks/immutability
-    iconAfter.className = clsx(
-      treeItemLayoutClassNames.iconAfter,
-      styles.icon,
-      styles['icon-after'],
-      iconAfter.className,
-    );
+    iconAfter.className = clsx(styles.icon, styles['icon-after'], iconAfter.className);
   }
 
   if (actions) {
     // eslint-disable-next-line react-hooks/immutability
-    actions.className = clsx(treeItemLayoutClassNames.actions, styles.actions, actions.className);
+    actions.className = clsx(styles.actions, actions.className);
   }
   if (aside) {
     // eslint-disable-next-line react-hooks/immutability
-    aside.className = clsx(treeItemLayoutClassNames.aside, styles.aside, aside.className);
+    aside.className = clsx(styles.aside, aside.className);
   }
-  if (selector) {
-    // eslint-disable-next-line react-hooks/immutability
-    selector.className = clsx(treeItemLayoutClassNames.selector, selector.className);
-  }
+
+  // NOTE: `selector` gets NO assignment. Its only library token was the
+  // `fui-TreeItemLayout__selector` static, which DECISIONS.md D16.1 removed and D16 §4d
+  // rules must not be replaced by `clsx(selector.className)` — that is an identity on the
+  // consumer's own string, i.e. dead code implying this hook styles a slot it does not.
+  // The module declares no `.selector` local; if it ever gains one, restore the assignment.
 
   return state;
 };

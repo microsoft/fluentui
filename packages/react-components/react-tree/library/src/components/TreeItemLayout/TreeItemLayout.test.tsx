@@ -32,8 +32,11 @@ describe('TreeItemLayout', () => {
     renderOptions: { wrapper: Wrapper },
     displayName: 'TreeItemLayout',
     disabledTests: [
-      // This is disabled as aside and actions cannot be visible at the same time
-      'component-has-static-classnames',
+      // Was disabled because aside and actions cannot be visible at the same time; it is now
+      // disabled for a stronger reason — `component-has-static-classnames-object` asserts the
+      // `fui-<Component>__<slot>` BEM format DECISIONS.md D16.1 removed.
+      // `component-has-group-marker` (now a default test) replaces it: it asserts the group marker IS
+      // stamped and is never `classList[0]` (D16.2 / D16.6).
       'component-has-static-classnames-object',
       // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
       // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
@@ -44,7 +47,9 @@ describe('TreeItemLayout', () => {
       // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
       'make-styles-overrides-win',
     ],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
     requiredProps: {
       iconAfter: 'iconAfter',
       iconBefore: 'iconBefore',

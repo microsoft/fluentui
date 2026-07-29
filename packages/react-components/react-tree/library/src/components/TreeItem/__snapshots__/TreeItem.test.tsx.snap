@@ -2,12 +2,12 @@
 
 exports[`TreeItem renders a default state 1`] = `
 <div
-  class="fui-Tree group/fui-tree"
+  class="group/fui-tree"
   role="tree"
 >
   <div
     aria-level="1"
-    class="fui-TreeItem group/fui-tree-item"
+    class="group/fui-tree-item"
     data-fui-tree-item-value="1"
     role="treeitem"
     tabindex="0"

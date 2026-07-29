@@ -6,8 +6,26 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { TreeProps, TreeItemValue } from '@fluentui/react-tree';
 import { Tree, TreeItem, TreeItemLayout, TreeItemPersonaLayout, treeItemLayoutClassNames } from '@fluentui/react-tree';
+import { fuiSelector } from '@fluentui/react-utilities';
 import { Button } from '@fluentui/react-button';
 import { Avatar } from '@fluentui/react-avatar';
+
+/**
+ * TreeItemLayout's ROOT keeps a public handle after DECISIONS.md D16.1 removed the BEM
+ * statics: its named-group marker, which is what `treeItemLayoutClassNames.root` resolves to.
+ * `'.' + 'group/fui-tree-item-layout'` is an invalid SELECTOR, so it goes through
+ * `fuiSelector()`, which escapes the `/` (D16.5).
+ */
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+const treeItemLayoutSelector = fuiSelector(treeItemLayoutClassNames.root);
+
+/**
+ * The `expandIcon` SUB-SLOT has no public handle any more — D16.1 removed
+ * `fui-TreeItemLayout__expandIcon` and D16.5 deleted the per-slot key with it, deliberately:
+ * component internals are no longer addressable by class from outside the package. The fixture
+ * below stamps its own hook instead, which is exactly what a consumer would now do.
+ */
+const expandIconProbe = { expandIcon: { className: 'expand-icon-probe' } };
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -22,27 +40,27 @@ const TreeTest: React.FC<TreeProps> = props => {
         {props.children ?? (
           <>
             <TreeItem itemType="branch" value="item1" data-testid="item1">
-              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <TreeItemLayout {...expandIconProbe}>level 1, item 1</TreeItemLayout>
               <Tree>
                 <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
-                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                  <TreeItemLayout {...expandIconProbe}>level 2, item 1</TreeItemLayout>
                 </TreeItem>
                 <TreeItem itemType="leaf" value="item1__item2" data-testid="item1__item2">
-                  <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                  <TreeItemLayout {...expandIconProbe}>level 2, item 2</TreeItemLayout>
                 </TreeItem>
                 <TreeItem itemType="leaf" value="item1__item3" data-testid="item1__item3">
-                  <TreeItemLayout>level 2, item 3</TreeItemLayout>
+                  <TreeItemLayout {...expandIconProbe}>level 2, item 3</TreeItemLayout>
                 </TreeItem>
               </Tree>
             </TreeItem>
             <TreeItem itemType="branch" value="item2" data-testid="item2">
-              <TreeItemLayout>level 1, item 2</TreeItemLayout>
+              <TreeItemLayout {...expandIconProbe}>level 1, item 2</TreeItemLayout>
               <Tree>
                 <TreeItem itemType="branch" value="item2__item1" data-testid="item2__item1">
-                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                  <TreeItemLayout {...expandIconProbe}>level 2, item 1</TreeItemLayout>
                   <Tree>
                     <TreeItem itemType="leaf" value="item2__item1__item1" data-testid="item2__item1__item1">
-                      <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                      <TreeItemLayout {...expandIconProbe}>level 3, item 1</TreeItemLayout>
                     </TreeItem>
                   </Tree>
                 </TreeItem>
@@ -84,9 +102,9 @@ describe('Tree', () => {
       mount(<TreeTest />);
 
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realClick();
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realClick();
       cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realClick();
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realClick();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
 
@@ -110,12 +128,12 @@ describe('Tree', () => {
       mount(<ExpandIconTest />);
 
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.expandIcon}`).realClick();
+      cy.get('[data-testid="item1"] .expand-icon-probe').realClick();
       cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.expandIcon}`).realClick();
+      cy.get('[data-testid="item1"] .expand-icon-probe').realClick();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
 
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realClick();
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realClick();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
 
@@ -148,7 +166,7 @@ describe('Tree', () => {
       cy.get('#before-button').realClick().realPress('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{enter}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{enter}');
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
 
@@ -158,7 +176,7 @@ describe('Tree', () => {
       cy.get('#before-button').realClick().realPress('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{rightarrow}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{rightarrow}');
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
 
@@ -168,7 +186,7 @@ describe('Tree', () => {
       cy.get('#before-button').realClick().realPress('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress(['Alt', 'ArrowRight']);
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress(['Alt', 'ArrowRight']);
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
 
@@ -178,9 +196,9 @@ describe('Tree', () => {
       cy.get('#before-button').realClick().realPress('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{rightarrow}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{rightarrow}');
       cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{leftarrow}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{leftarrow}');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
 
@@ -190,9 +208,9 @@ describe('Tree', () => {
       cy.get('#before-button').realClick().realPress('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('ArrowRight');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('ArrowRight');
       cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress(['Alt', 'ArrowLeft']);
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress(['Alt', 'ArrowLeft']);
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
 

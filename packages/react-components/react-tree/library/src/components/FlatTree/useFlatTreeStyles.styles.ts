@@ -14,22 +14,39 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { FlatTreeSlots, FlatTreeState } from './FlatTree.types';
+import type { FlatTreeState } from './FlatTree.types';
 
 import styles from './FlatTree.module.css';
 
-export const flatTreeClassNames: SlotClassNames<Omit<FlatTreeSlots, 'collapseMotion'>> = {
-  root: 'fui-FlatTree',
+/**
+ * Public identity class for FlatTree.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a selector
+ * and as a `group-*` variant target. The per-slot keys were removed together with the BEM
+ * statics (D16.1): there is no public class-name handle on component internals any more.
+ *
+ * `'.' + flatTreeClassNames.root` is an INVALID selector — `/` is legal in a class TOKEN but
+ * terminates the name in selector position. Use `fuiSelector(flatTreeClassNames.root)` from
+ * `@fluentui/react-utilities`.
+ */
+export const flatTreeClassNames: { root: string } = {
+  root: 'group/fui-flat-tree',
 };
 
 export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState => {
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this FlatTree's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. FlatTree gets its own name rather than
+  // Module class FIRST, then the named group marker — the marker must never be
+  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // clsx never drops it, so index 0 is always the hashed, selector-safe class; before D16
+  // the removed `fui-FlatTree` static was what held that position.
+  //
+  // The marker is a literal, unhashed, GLOBAL token and, since D16.1 retired the BEM
+  // statics, FlatTree's SOLE public identity class: it is the only handle by which another
+  // module — in this package or any other — can style an element from this FlatTree's
+  // state, because `styles.root` is hashed and unaddressable from outside this file.
+  // FlatTree gets its own name rather than
   // sharing `fui-tree`: the two are distinct components with distinct roots, and a
   // descendant that means "only inside a flat tree" must be able to say so (DECISIONS.md
   // D15, Tier 0 — no state mirrors needed).
@@ -43,6 +60,6 @@ export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState 
   // and there are none left here. The state-mutation pattern itself is deliberately kept —
   // the mixed-mode sibling seam and the customStyleHooks contract depend on the shared
   // object, and its removal is a single Phase 3 sweep (DECISIONS.md D14).
-  state.root.className = clsx(flatTreeClassNames.root, 'group/fui-flat-tree', styles.root, state.root.className);
+  state.root.className = clsx(styles.root, 'group/fui-flat-tree', state.root.className);
   return state;
 };

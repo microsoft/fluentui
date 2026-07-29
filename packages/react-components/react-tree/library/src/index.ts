@@ -1,5 +1,6 @@
 export {
   Tree,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   treeClassNames,
   useTree_unstable,
   useTreeStyles_unstable,
@@ -25,6 +26,7 @@ export type {
 
 export {
   FlatTree,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   flatTreeClassNames,
   useFlatTree_unstable,
   useFlatTreeStyles_unstable,
@@ -56,6 +58,7 @@ export type {
 
 export {
   TreeItem,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   treeItemClassNames,
   renderTreeItem_unstable,
   useTreeItemStyles_unstable,
@@ -78,6 +81,7 @@ export type { FlatTreeItemProps } from './FlatTreeItem';
 
 export {
   TreeItemLayout,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   treeItemLayoutClassNames,
   renderTreeItemLayout_unstable,
   useTreeItemLayoutStyles_unstable,
@@ -87,6 +91,7 @@ export type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } fr
 
 export {
   TreeItemPersonaLayout,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
   treeItemPersonaLayoutClassNames,
   renderTreeItemPersonaLayout_unstable,
   useTreeItemPersonaLayoutStyles_unstable,

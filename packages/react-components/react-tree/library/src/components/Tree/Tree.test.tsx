@@ -6,6 +6,7 @@ import { Tree } from './Tree';
 import { TreeItem } from '../TreeItem/TreeItem';
 import { TreeItemLayout } from '../TreeItemLayout/TreeItemLayout';
 import { TreeItemPersonaLayout } from '../TreeItemPersonaLayout/TreeItemPersonaLayout';
+import { treeItemLayoutClassNames } from '../TreeItemLayout/useTreeItemLayoutStyles.styles';
 
 describe('Tree', () => {
   isConformant({
@@ -18,8 +19,14 @@ describe('Tree', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['consistent-callback-args', 'make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts the `fui-<Component>__<slot>` BEM
+    // format DECISIONS.md D16.1 removed. `component-has-group-marker` (now a default test) replaces it: it
+    // asserts the group marker IS stamped and is never `classList[0]` (D16.2 / D16.6).
+    disabledTests: ['component-has-static-classnames-object', 'consistent-callback-args', 'make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
@@ -126,9 +133,17 @@ describe('Tree', () => {
       const layout = document.getElementById('custom-layout');
       const main = document.getElementById('lower-priority-main-id');
 
-      expect(layout?.classList.contains('fui-TreeItemLayout')).toBe(true);
+      // The layout ROOT is still identifiable by class: its public identity class is the
+      // named-group marker (DECISIONS.md D16.1/D16.5). `classList.contains` takes a TOKEN,
+      // not a selector, so the `/` needs no escaping here — that is `fuiSelector`'s job.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+      expect(layout?.classList.contains(treeItemLayoutClassNames.root)).toBe(true);
       expect(mainId).toBe('lower-priority-main-id');
-      expect(main?.classList.contains('fui-TreeItemLayout__main')).toBe(true);
+      // The `main` SUB-SLOT has no public class handle any more — D16.1 removed
+      // `fui-TreeItemLayout__main` deliberately. What this assertion was really checking is
+      // that the consumer's id landed on the main slot rather than on some other element, so
+      // it now checks that element's defining property: it holds the layout's label text.
+      expect(main?.textContent).toBe('Item 1');
     });
 
     it('preserves a consumer-provided selector aria-label', () => {

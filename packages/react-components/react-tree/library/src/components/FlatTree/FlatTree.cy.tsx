@@ -18,6 +18,26 @@ import { Button } from '@fluentui/react-button';
 import { Avatar } from '@fluentui/react-avatar';
 import { flattenTreeFromElement } from '../../testing/flattenTreeFromElement';
 
+/**
+ * TreeItemLayout's ROOT keeps a public handle after DECISIONS.md D16.1 removed the BEM
+ * statics: its named-group marker, which is what `treeItemLayoutClassNames.root` resolves to.
+ * `'.' + 'group/fui-tree-item-layout'` is an invalid SELECTOR, so it goes through
+ * `fuiSelector()`, which escapes the `/` (D16.5).
+ */
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+const treeItemLayoutSelector = fuiSelector(treeItemLayoutClassNames.root);
+
+/**
+ * The `expandIcon` and `selector` SUB-SLOTS have no public handle any more — D16.1 removed
+ * `fui-TreeItemLayout__expandIcon` / `__selector` and D16.5 deleted the per-slot keys with
+ * them, deliberately: component internals are no longer addressable by class from outside the
+ * package. The fixture below stamps its own hooks instead, which is what a consumer would do.
+ */
+const slotProbes = {
+  expandIcon: { className: 'expand-icon-probe' },
+  selector: { className: 'selector-probe' },
+};
+
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
@@ -30,27 +50,27 @@ const TreeTest: React.FC<FlatTreeProps & HeadlessFlatTreeOptions> = props => {
       ) : (
         <>
           <TreeItem itemType="branch" value="item1" data-testid="item1">
-            <TreeItemLayout>level 1, item 1</TreeItemLayout>
+            <TreeItemLayout {...slotProbes}>level 1, item 1</TreeItemLayout>
             <Tree>
               <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
-                <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                <TreeItemLayout {...slotProbes}>level 2, item 1</TreeItemLayout>
               </TreeItem>
               <TreeItem itemType="leaf" value="item1__item2" data-testid="item1__item2">
-                <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                <TreeItemLayout {...slotProbes}>level 2, item 2</TreeItemLayout>
               </TreeItem>
               <TreeItem itemType="leaf" value="item1__item3" data-testid="item1__item3">
-                <TreeItemLayout>level 2, item 3</TreeItemLayout>
+                <TreeItemLayout {...slotProbes}>level 2, item 3</TreeItemLayout>
               </TreeItem>
             </Tree>
           </TreeItem>
           <TreeItem itemType="branch" value="item2" data-testid="item2">
-            <TreeItemLayout>level 1, item 2</TreeItemLayout>
+            <TreeItemLayout {...slotProbes}>level 1, item 2</TreeItemLayout>
             <Tree>
               <TreeItem itemType="branch" value="item2__item1" data-testid="item2__item1">
-                <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                <TreeItemLayout {...slotProbes}>level 2, item 1</TreeItemLayout>
                 <Tree>
                   <TreeItem itemType="leaf" value="item2__item1__item1" data-testid="item2__item1__item1">
-                    <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                    <TreeItemLayout {...slotProbes}>level 3, item 1</TreeItemLayout>
                   </TreeItem>
                 </Tree>
               </TreeItem>
@@ -94,9 +114,9 @@ describe('FlatTree', () => {
     it('should expand/collapse item on layout click', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realClick();
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realClick();
       cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realClick();
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realClick();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
     it('should expand/collapse item on expandIcon click only', () => {
@@ -117,12 +137,12 @@ describe('FlatTree', () => {
       };
       mount(<ExpandIconTest />);
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.expandIcon}`).realClick();
+      cy.get('[data-testid="item1"] .expand-icon-probe').realClick();
       cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.expandIcon}`).realClick();
+      cy.get('[data-testid="item1"] .expand-icon-probe').realClick();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
 
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realClick();
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realClick();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
     it('should not expand/collapse item on actions click', () => {
@@ -146,7 +166,7 @@ describe('FlatTree', () => {
     it('should select item on selector click', () => {
       mount(<TreeTest selectionMode="single" />);
       cy.get('[data-testid="item1"]').should('not.have.attr', 'aria-selected', 'true');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.selector}`).realClick();
+      cy.get('[data-testid="item1"] .selector-probe').realClick();
       cy.get('[data-testid="item1"]').should('have.attr', 'aria-selected', 'true');
     });
   });
@@ -155,39 +175,39 @@ describe('FlatTree', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1"]').focus();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{enter}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{enter}');
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
     it('should expand item on Right key', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1"]').focus();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{rightarrow}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{rightarrow}');
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
     it('should not expand item on Alt + Right key', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1"]').focus();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress(['Alt', '{rightarrow}']);
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress(['Alt', '{rightarrow}']);
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
     it('should collapse item on Left key', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1"]').focus();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{rightarrow}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{rightarrow}');
       cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{leftarrow}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{leftarrow}');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
     it('should not collapse item on Alt + Left key', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1"]').focus();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{rightarrow}');
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress('{rightarrow}');
       cy.get('[data-testid="item1__item1"]').should('exist');
-      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress(['Alt', '{leftarrow}']);
+      cy.get(`[data-testid="item1"] ${treeItemLayoutSelector}`).realPress(['Alt', '{leftarrow}']);
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
     it('should focus on actions when pressing tab key', () => {
