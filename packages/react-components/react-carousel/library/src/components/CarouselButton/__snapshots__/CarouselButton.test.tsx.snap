@@ -4,14 +4,14 @@ exports[`CarouselButton renders a default state 1`] = `
 <div>
   <button
     aria-disabled="false"
-    class="fui-CarouselButton fui-Button group/fui-button fuicm-root fuicm-subtle fuicm-rounded"
+    class="fui-CarouselButton fuicm-root group/fui-button fuicm-subtle fuicm-rounded"
     data-icon-position="before"
     data-size="medium"
     tabindex="0"
     type="button"
   >
     <span
-      class="fui-CarouselButton__icon fui-Button__icon fuicm-icon"
+      class="fui-CarouselButton__icon fuicm-icon"
     >
       <svg
         aria-hidden="true"

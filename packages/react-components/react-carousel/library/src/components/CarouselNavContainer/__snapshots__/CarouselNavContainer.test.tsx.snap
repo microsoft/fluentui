@@ -7,7 +7,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
   >
     <button
       aria-pressed="false"
-      class="fui-CarouselAutoplayButton fui-Button group/fui-button fuicm-root fuicm-secondary fuicm-rounded fui-ToggleButton group/fui-toggle-button fui-CarouselNavContainer__autoplay"
+      class="fui-CarouselAutoplayButton fuicm-root group/fui-button fuicm-secondary fuicm-rounded group/fui-toggle-button fui-CarouselNavContainer__autoplay"
       data-empty="true"
       data-icon-only="true"
       data-icon-position="before"
@@ -15,7 +15,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
       type="button"
     >
       <span
-        class="fui-CarouselAutoplayButton__icon fui-Button__icon fuicm-icon fui-ToggleButton__icon fuicm-icon"
+        class="fui-CarouselAutoplayButton__icon fuicm-icon fuicm-icon"
       >
         <svg
           aria-hidden="true"
@@ -35,7 +35,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
     </button>
     <button
       aria-disabled="true"
-      class="fui-CarouselButton fui-Button group/fui-button fuicm-root fuicm-subtle fuicm-rounded fui-CarouselNavContainer__prev"
+      class="fui-CarouselButton fuicm-root group/fui-button fuicm-subtle fuicm-rounded fui-CarouselNavContainer__prev"
       data-disabled="true"
       data-empty="true"
       data-icon-only="true"
@@ -46,7 +46,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
       type="button"
     >
       <span
-        class="fui-CarouselButton__icon fui-Button__icon fuicm-icon"
+        class="fui-CarouselButton__icon fuicm-icon"
       >
         <svg
           aria-hidden="true"
@@ -67,7 +67,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
     Default CarouselNavContainer
     <button
       aria-disabled="false"
-      class="fui-CarouselButton fui-Button group/fui-button fuicm-root fuicm-subtle fuicm-rounded fui-CarouselNavContainer__next"
+      class="fui-CarouselButton fuicm-root group/fui-button fuicm-subtle fuicm-rounded fui-CarouselNavContainer__next"
       data-empty="true"
       data-icon-only="true"
       data-icon-position="before"
@@ -76,7 +76,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
       type="button"
     >
       <span
-        class="fui-CarouselButton__icon fui-Button__icon fuicm-icon"
+        class="fui-CarouselButton__icon fuicm-icon"
       >
         <svg
           aria-hidden="true"
