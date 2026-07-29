@@ -1,6 +1,6 @@
 export {
   Link,
-  linkClassNames,
+  linkClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderLink_unstable,
   useLinkState_unstable,
   useLinkStyles_unstable,

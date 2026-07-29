@@ -14,13 +14,26 @@
  */
 
 import { clsx } from 'clsx';
-import type { LinkSlots, LinkState } from './Link.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { LinkState } from './Link.types';
 
 import styles from './Link.module.css';
 
-export const linkClassNames: SlotClassNames<LinkSlots> = {
-  root: 'fui-Link',
+/**
+ * Public identity classes for Link.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as this component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a
+ * selector and as a `group-*` variant target. The BEM statics (`fui-Link`, `fui-Link__*`)
+ * are no longer rendered and the per-slot keys are gone; there is no public class-name
+ * handle on component internals.
+ *
+ * The marker token contains a `/`. That is legal inside a class TOKEN but terminates the
+ * name inside a SELECTOR, so `'.' + linkClassNames.root` is an invalid selector even though
+ * it type-checks. Use `fuiSelector(linkClassNames.root)` from `@fluentui/react-utilities`.
+ */
+export const linkClassNames: { root: string } = {
+  root: 'group/fui-link',
 };
 
 /**
@@ -59,9 +72,11 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   rootWithData['data-disabled'] = disabled || undefined;
   rootWithData['data-inline'] = inline || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // Unconditional module class FIRST, then the named group marker — the marker must never
+  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // clsx never drops it, so index 0 is always the hashed, selector-safe module class; it is
+  // what keeps the marker safe now that the `fui-Link` static is gone. The marker is a literal,
   // unhashed, GLOBAL token: it is the only handle by which another module — in this package
   // or any other — can style an element from this Link's state, because `styles.root` is
   // hashed and unaddressable from outside this file. Link needs no state mirrors:
@@ -80,9 +95,8 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   // lookup: the Griffel source has no `default` slice at all (the base styles ARE the
   // default appearance), so there is no class to look up for it.
   state.root.className = clsx(
-    linkClassNames.root,
-    'group/fui-link',
     styles.root,
+    'group/fui-link',
     root.as === 'a' && root.href && styles.href,
     root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,

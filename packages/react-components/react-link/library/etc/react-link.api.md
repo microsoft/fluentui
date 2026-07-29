@@ -12,7 +12,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
@@ -23,8 +22,10 @@ export type LinkBaseProps = DistributiveOmit<LinkProps, 'appearance'>;
 // @public
 export type LinkBaseState = DistributiveOmit<LinkState, 'appearance' | 'backgroundAppearance'>;
 
-// @public (undocumented)
-export const linkClassNames: SlotClassNames<LinkSlots>;
+// @public @deprecated
+export const linkClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const linkContextDefaultValue: LinkContextValue;
