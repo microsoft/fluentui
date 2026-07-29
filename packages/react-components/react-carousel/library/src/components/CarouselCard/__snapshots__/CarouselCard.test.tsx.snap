@@ -3,8 +3,8 @@
 exports[`CarouselCard renders a default state 1`] = `
 <div>
   <div
-    class="fui-CarouselCard"
-    id="fui-CarouselCard_r_7_"
+    class="group/fui-carousel-card"
+    id="fui-CarouselCard_r_9_"
     role="tabpanel"
   >
     Default CarouselCard

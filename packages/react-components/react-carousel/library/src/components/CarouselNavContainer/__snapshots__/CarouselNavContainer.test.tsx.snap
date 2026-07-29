@@ -3,11 +3,11 @@
 exports[`CarouselNavContainer renders a default state 1`] = `
 <div>
   <div
-    class="fui-CarouselNavContainer"
+    class="group/fui-carousel-nav-container"
   >
     <button
       aria-pressed="false"
-      class="fui-CarouselAutoplayButton fuicm-root group/fui-button fuicm-secondary fuicm-rounded group/fui-toggle-button fui-CarouselNavContainer__autoplay"
+      class="group/fui-carousel-autoplay-button group/fui-button group/fui-toggle-button"
       data-empty="true"
       data-icon-only="true"
       data-icon-position="before"
@@ -15,7 +15,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
       type="button"
     >
       <span
-        class="fui-CarouselAutoplayButton__icon fuicm-icon fuicm-icon"
+        class=""
       >
         <svg
           aria-hidden="true"
@@ -35,7 +35,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
     </button>
     <button
       aria-disabled="true"
-      class="fui-CarouselButton fuicm-root group/fui-button fuicm-subtle fuicm-rounded fui-CarouselNavContainer__prev"
+      class="group/fui-carousel-button group/fui-button"
       data-disabled="true"
       data-empty="true"
       data-icon-only="true"
@@ -46,7 +46,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
       type="button"
     >
       <span
-        class="fui-CarouselButton__icon fuicm-icon"
+        class=""
       >
         <svg
           aria-hidden="true"
@@ -67,7 +67,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
     Default CarouselNavContainer
     <button
       aria-disabled="false"
-      class="fui-CarouselButton fuicm-root group/fui-button fuicm-subtle fuicm-rounded fui-CarouselNavContainer__next"
+      class="group/fui-carousel-button group/fui-button"
       data-empty="true"
       data-icon-only="true"
       data-icon-position="before"
@@ -76,7 +76,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
       type="button"
     >
       <span
-        class="fui-CarouselButton__icon fuicm-icon"
+        class=""
       >
         <svg
           aria-hidden="true"

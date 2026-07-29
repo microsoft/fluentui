@@ -1,6 +1,7 @@
 export type { CarouselButtonProps, CarouselButtonSlots, CarouselButtonState } from './CarouselButton';
 export {
   CarouselButton,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselButtonClassNames,
   renderCarouselButton_unstable,
   useCarouselButtonStyles_unstable,
@@ -9,6 +10,7 @@ export {
 export type { CarouselNavProps, CarouselNavSlots, CarouselNavState, NavButtonRenderFunction } from './CarouselNav';
 export {
   CarouselNav,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselNavClassNames,
   renderCarouselNav_unstable,
   useCarouselNavStyles_unstable,
@@ -17,6 +19,7 @@ export {
 export type { CarouselNavButtonProps, CarouselNavButtonSlots, CarouselNavButtonState } from './CarouselNavButton';
 export {
   CarouselNavButton,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselNavButtonClassNames,
   renderCarouselNavButton_unstable,
   useCarouselNavButtonStyles_unstable,
@@ -25,6 +28,7 @@ export {
 export type { CarouselProps, CarouselSlots, CarouselState, CarouselAnnouncerFunction } from './Carousel';
 export {
   Carousel,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselClassNames,
   renderCarousel_unstable,
   useCarouselStyles_unstable,
@@ -33,6 +37,7 @@ export {
 export type { CarouselCardProps, CarouselCardSlots, CarouselCardState } from './CarouselCard';
 export {
   CarouselCard,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselCardClassNames,
   renderCarouselCard_unstable,
   useCarouselCardStyles_unstable,
@@ -45,6 +50,7 @@ export type {
 } from './CarouselAutoplayButton';
 export {
   CarouselAutoplayButton,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselAutoplayButtonClassNames,
   renderCarouselAutoplayButton_unstable,
   useCarouselAutoplayButtonStyles_unstable,
@@ -57,6 +63,7 @@ export type {
 } from './CarouselNavImageButton';
 export {
   CarouselNavImageButton,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselNavImageButtonClassNames,
   renderCarouselNavImageButton_unstable,
   useCarouselNavImageButtonStyles_unstable,
@@ -64,6 +71,7 @@ export {
 } from './CarouselNavImageButton';
 export {
   CarouselSlider,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselSliderClassNames,
   renderCarouselSlider_unstable,
   useCarouselSliderStyles_unstable,
@@ -77,6 +85,7 @@ export type {
 } from './CarouselNavContainer';
 export {
   CarouselNavContainer,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselNavContainerClassNames,
   renderCarouselNavContainer_unstable,
   useCarouselNavContainerStyles_unstable,
@@ -92,6 +101,7 @@ export type {
 export type { CarouselViewportProps, CarouselViewportSlots, CarouselViewportState } from './CarouselViewport';
 export {
   CarouselViewport,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
   carouselViewportClassNames,
   renderCarouselViewport_unstable,
   useCarouselViewportStyles_unstable,

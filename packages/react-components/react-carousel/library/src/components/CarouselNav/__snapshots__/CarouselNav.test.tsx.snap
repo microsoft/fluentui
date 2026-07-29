@@ -3,7 +3,7 @@
 exports[`CarouselNav renders a default state 1`] = `
 <div>
   <div
-    class="fui-CarouselNav"
+    class="group/fui-carousel-nav"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":false,\\"hasDefault\\":true}}"
     role="tablist"
   />

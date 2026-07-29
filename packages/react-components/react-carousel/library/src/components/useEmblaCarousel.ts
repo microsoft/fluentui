@@ -1,6 +1,6 @@
 'use client';
 
-import { type EventHandler, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { type EventHandler, fuiSelector, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { EmblaPluginType } from 'embla-carousel';
 import EmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
@@ -15,7 +15,20 @@ import type { CarouselIndexChangeData } from './CarouselContext.types';
 
 type EmblaEventHandler = Parameters<EmblaCarouselType['on']>[1];
 
-const sliderClassname = `.${carouselSliderClassNames.root}`;
+/*
+ * Griffel → Tailwind + CSS Modules migration (DECISIONS.md D16.5).
+ *
+ * `<x>ClassNames.root` is now the Tailwind named-group marker (`group/fui-carousel-slider`),
+ * and the `/` in it is legal in a class TOKEN but terminates the class NAME inside a
+ * SELECTOR — so the old `` `.${…}` `` form would have silently selected `.group` (or thrown,
+ * depending on the consumer) rather than the slider. `fuiSelector` escapes it.
+ *
+ * These two strings are live embla options: the engine resolves `container` and `slides`
+ * against the carousel subtree, so both markers have to stay unconditional in their hooks'
+ * `clsx` calls — noted in each styles file.
+ */
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
+const sliderClassname = fuiSelector(carouselSliderClassNames.root);
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: 'trimSnaps',
@@ -24,7 +37,8 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   skipSnaps: true,
 
   container: sliderClassname,
-  slides: `.${carouselCardClassNames.root}`,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
+  slides: fuiSelector(carouselCardClassNames.root),
 };
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';

@@ -3,7 +3,7 @@
 exports[`CarouselViewport renders a default state 1`] = `
 <div>
   <div
-    class="fui-CarouselViewport"
+    class="group/fui-carousel-viewport"
     draggable="true"
     role="presentation"
   >

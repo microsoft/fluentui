@@ -1,0 +1,123 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated on purpose — see Carousel.module.css.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * `useCarouselNavImageButtonStyles_unstable`.
+ *
+ * `root` slot
+ *
+ *   #  mergeClasses argument                → target
+ *   -------------------------------------------------------------------------------
+ *   1  group/fui-carousel-nav-image-button  → identity marker (JS); no declarations,
+ *                                             but IS the handle the `image` rules read
+ *   2  styles.root                          → fui.components.l1  .root
+ *   3  selected && styles.selected          → fui.components.l1  .root under `selected`
+ *   4  state.root.className                 → unlayered (always wins)
+ *
+ * `image` slot
+ *
+ *   1  styles.image                         → fui.components.l1  .image
+ *   2  selected && styles.selected          → fui.components.l1  .image under
+ *                                             `group-selected/fui-carousel-nav-image-button`
+ *   3  state.image.className                → unlayered (always wins)
+ *
+ * ── ALTITUDE: l1 ────────────────────────────────────────────────────────────────────────
+ * Both slots are this component's own elements — a `<button>` and an `<img>` it builds
+ * itself in `useCarouselNavImageButton.ts` — so every block is one component's own cascade
+ * (DECISIONS.md D2 amendment 2).
+ *
+ * ── `selected` is read NATIVELY on BOTH slots ───────────────────────────────────────────
+ * `useCarouselNavImageButton.ts` renders `aria-selected={selected}` on the ROOT, so:
+ *   • the root's own rule uses the catalog `selected` variant, and
+ *   • the image's rule reads the same attribute off its ancestor through the named group,
+ *     `@variant group-selected/fui-carousel-nav-image-button` — which is exactly the
+ *     capability DECISIONS.md D15.1 introduces the marker for (a descendant reading an
+ *     ancestor's state across a hashed class boundary).
+ * No `data-selected` mirror is stamped and no JS conditional remains on either slot:
+ * DECISIONS.md D15.6 (resolved) makes data attributes a FALLBACK for state a selector
+ * cannot otherwise reach, and here one can.
+ *
+ * The group form is required for the image, not a preference: a group cannot style itself
+ * (the compiled selector is `.image:is(:where(.group\/…):where(…) *)`, whose descendant
+ * combinator excludes the marker element), which is also why the ROOT rule uses the plain
+ * `selected` variant instead.
+ *
+ * ACCEPTED WIDENING, same shape as CarouselNavButton and react-breadcrumb's `current`: a
+ * consumer who passes `aria-selected` directly now drives the styling where the Griffel hook
+ * followed `state.selected`.
+ *
+ * ── ORDERING ────────────────────────────────────────────────────────────────────────────
+ * `selected` re-sets `width` / `height` (40px → 48px) on both slots, so its blocks follow
+ * the base blocks — the same relation the mergeClasses argument order encoded.
+ *
+ * ── Shorthand expansion & spacing (DECISIONS.md D4) ─────────────────────────────────────
+ * `padding: 0px` (`.f1c5fvqg`) and `margin: 0 var(--spacingHorizontalXS)` (`.f186qr3g`,
+ * single class — a symmetric shorthand needs no RTL flip) are expanded to longhands per the
+ * cookbook; the inline margin takes the NAMED spacing utility. The 40/48 px box sizes match
+ * no spacing step, so they take NUMERIC utilities (`w-40`, `h-48`), which compile through
+ * `--base-scale` exactly as `p-12` does.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * Zero `[ltr, rtl]` pairs in the compiled atomics. `shorthands.borderColor(...)` compiled to
+ * four side longhands with no pair, but they are written logically here anyway
+ * (`border-inline-*`), which is what the cookbook asks for and is identical at 0 flip.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/CarouselNavImageButton/useCarouselNavImageButtonStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — root arg #2 */
+  .root {
+    @apply box-content overflow-hidden;
+    @apply pt-0 pb-0 ps-0 pe-0;
+    @apply mt-0 mb-0 ms-horizontal-xs me-horizontal-xs;
+    @apply w-40 h-40;
+
+    border-block-start-color: var(--colorTransparentStroke);
+    border-inline-end-color: var(--colorTransparentStroke);
+    border-inline-start-color: var(--colorTransparentStroke);
+    border-block-end-color: var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusSmall);
+
+    @variant hover {
+      @apply cursor-pointer;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.selected — root arg #3, keyed off the root's own `aria-selected` */
+  .root {
+    @variant selected {
+      @apply w-48 h-48;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.image — image arg #1 */
+  .image {
+    @apply w-40 h-40;
+
+    border-radius: var(--borderRadiusSmall);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.selected — image arg #2. Same slice as the root block above; here it is
+   * read off the ANCESTOR's `aria-selected` through the named group, because the image
+   * carries no state of its own.
+   */
+  .image {
+    @variant group-selected/fui-carousel-nav-image-button {
+      @apply w-48 h-48;
+    }
+  }
+}

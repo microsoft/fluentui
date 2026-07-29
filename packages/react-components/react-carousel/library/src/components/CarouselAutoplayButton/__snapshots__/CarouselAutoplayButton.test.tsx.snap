@@ -4,7 +4,7 @@ exports[`CarouselAutoplayButton renders a default state 1`] = `
 <div>
   <button
     aria-pressed="false"
-    class="fui-CarouselAutoplayButton fuicm-root group/fui-button fuicm-secondary fuicm-rounded group/fui-toggle-button"
+    class="group/fui-carousel-autoplay-button group/fui-button group/fui-toggle-button"
     data-empty="true"
     data-icon-only="true"
     data-icon-position="before"
@@ -12,7 +12,7 @@ exports[`CarouselAutoplayButton renders a default state 1`] = `
     type="button"
   >
     <span
-      class="fui-CarouselAutoplayButton__icon fuicm-icon fuicm-icon"
+      class=""
     >
       <svg
         aria-hidden="true"

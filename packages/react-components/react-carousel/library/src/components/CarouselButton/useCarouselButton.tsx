@@ -4,6 +4,7 @@ import { type ARIAButtonElement } from '@fluentui/react-aria';
 import { useButton_unstable } from '@fluentui/react-button';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import {
+  fuiSelector,
   mergeCallbacks,
   useEventCallback,
   slot,
@@ -72,9 +73,15 @@ export const useCarouselButton_unstable = (
     }
 
     if (!circular && _trailing && containerRef?.current) {
-      // Focus non-disabled element
+      // Focus non-disabled element.
+      //
+      // `carouselButtonClassNames.root` is the Tailwind named-group marker since the
+      // Griffel → Tailwind + CSS Modules migration (DECISIONS.md D16.5). The `/` in it is
+      // legal in a class TOKEN but terminates the class NAME inside a SELECTOR, so the old
+      // `` `.${…}` `` form is a `SyntaxError` here; `fuiSelector` escapes it.
       const buttonRefs: NodeListOf<HTMLButtonElement> = containerRef.current.querySelectorAll(
-        `.${carouselButtonClassNames.root}`,
+        // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
+        fuiSelector(carouselButtonClassNames.root),
       );
       buttonRefs.forEach(_buttonRef => {
         if (_buttonRef !== buttonRef.current) {

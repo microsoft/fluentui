@@ -4,7 +4,7 @@ exports[`CarouselNavButton renders a default state 1`] = `
 <div>
   <button
     aria-selected="true"
-    class="fui-CarouselNavButton"
+    class="group/fui-carousel-nav-button"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":true}}"
     role="tab"
     type="button"

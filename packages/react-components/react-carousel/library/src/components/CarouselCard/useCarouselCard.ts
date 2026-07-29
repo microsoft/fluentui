@@ -15,8 +15,23 @@ import { useCarouselContext_unstable as useCarouselContext } from '../CarouselCo
 import type { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
 import { EMBLA_VISIBILITY_EVENT } from '../useEmblaCarousel';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
-import { carouselCardClassNames } from './useCarouselCardStyles.styles';
 import { useCarouselSliderContext } from '../CarouselSlider/CarouselSliderContext';
+
+/**
+ * Prefix for the auto-generated card `id`, and NOT a class name.
+ *
+ * It used to be `carouselCardClassNames.root`. Since the Griffel → Tailwind + CSS Modules
+ * migration that constant is the Tailwind named-group marker `group/fui-carousel-card`
+ * (DECISIONS.md D16.5), and seeding an `id` with it would put a `/` into every rendered
+ * card id — which no `#id` selector can address, and which `aria-controls` consumers and
+ * embla's `slideNodes[i].id` reads would inherit.
+ *
+ * So the id prefix is decoupled and pinned to its historical value: rendered ids stay
+ * byte-identical to before the conversion. Same reasoning (and same shape) as
+ * `fluentProviderClassNames.root`, which DECISIONS.md D16.1 retains precisely because it is
+ * a `useId` seed rather than a rendered class.
+ */
+const CAROUSEL_CARD_ID_PREFIX = 'fui-CarouselCard';
 
 /**
  * Create the state required to render CarouselCard.
@@ -44,7 +59,7 @@ export const useCarouselCard_unstable = (
   const focusAttrProps = cardFocus ? { ...focusAttr, tabIndex: 0 } : {};
 
   // We attach a unique card id if user does not provide
-  const id = useId(carouselCardClassNames.root, props.id);
+  const id = useId(CAROUSEL_CARD_ID_PREFIX, props.id);
 
   React.useEffect(() => {
     const element = elementRef.current;

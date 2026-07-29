@@ -1,94 +1,45 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CarouselNavContainerSlots, CarouselNavContainerState } from './CarouselNavContainer.types';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const carouselNavContainerClassNames: SlotClassNames<CarouselNavContainerSlots> = {
-  root: 'fui-CarouselNavContainer',
-  next: 'fui-CarouselNavContainer__next',
-  prev: 'fui-CarouselNavContainer__prev',
-  autoplay: 'fui-CarouselNavContainer__autoplay',
-  /* Tooltip classNames are listed for type compatibility only (cannot assign root className to portal)
-   * Use 'content' slot to style Tooltip content instead
-   */
-  nextTooltip: 'fui-CarouselNavContainer__nextTooltip',
-  prevTooltip: 'fui-CarouselNavContainer__prevTooltip',
-  autoplayTooltip: 'fui-CarouselNavContainer__autoplayTooltip',
-};
+import { clsx } from 'clsx';
+
+import type { CarouselNavContainerState } from './CarouselNavContainer.types';
+
+import styles from './CarouselNavContainer.module.css';
 
 /**
- * Styles for the root slot
+ * Public identity class for CarouselNavContainer.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5).
+ *
+ * The `next` / `prev` / `autoplay` keys were removed with the rest of the BEM statics
+ * (DECISIONS.md D16.1): there is no public class-name handle on component internals any
+ * more, and reads of those keys are now a compile error instead of silently `undefined`.
+ * The three `*Tooltip` keys went with them, and they were never applied to the DOM in the
+ * first place — Tooltip portals its content, so it has no root to receive a className (the
+ * Griffel source declared them "for type compatibility only", a requirement that disappears
+ * with the `SlotClassNames<…>` type).
+ *
+ * `'.' + carouselNavContainerClassNames.root` is an invalid SELECTOR (the `/` terminates the
+ * class name); use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5).
  */
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    pointerEvents: 'none',
-  },
-  next: {},
-  prev: {},
-  autoplay: {},
-  inline: {
-    marginTop: tokens.spacingVerticalM,
-  },
-  overlay: {
-    position: 'absolute',
-    bottom: tokens.spacingVerticalM,
-    boxSizing: 'border-box',
-  },
-  overlayWide: {
-    bottom: tokens.spacingVerticalM,
-  },
-  nextWide: {
-    marginLeft: 'auto',
-  },
-  prevWide: {
-    marginRight: 'auto',
-  },
-  nextOverlayWide: {
-    marginRight: tokens.spacingHorizontalM,
-  },
-  prevOverlayWide: {
-    marginLeft: tokens.spacingHorizontalM,
-  },
-  autoplayOverlayWide: {
-    marginLeft: tokens.spacingHorizontalM,
-  },
-  expanded: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    bottom: 0,
-    '> div': {
-      position: 'relative',
-      bottom: tokens.spacingVerticalL,
-      marginBottom: 0,
-    },
-  },
-  nextOverlayExpanded: {
-    position: 'absolute',
-    right: tokens.spacingHorizontalM,
-    top: '50%',
-    transform: 'translateY(-50%)',
-  },
-  prevOverlayExpanded: {
-    position: 'absolute',
-    left: tokens.spacingHorizontalM,
-    top: '50%',
-    transform: 'translateY(-50%)',
-  },
-  autoplayExpanded: {
-    position: 'absolute',
-    bottom: `-${tokens.spacingHorizontalXS}`,
-    left: tokens.spacingHorizontalM,
-    marginBottom: tokens.spacingVerticalM,
-  },
-});
+export const carouselNavContainerClassNames: { root: string } = {
+  root: 'group/fui-carousel-nav-container',
+};
 
 /**
  * Apply styling to the CarouselNavContainer slots based on the state
@@ -97,48 +48,54 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   const { layout } = state;
   const isOverlay = layout === 'overlay' || layout === 'overlay-wide' || layout === 'overlay-expanded';
   const isWide = layout === 'inline-wide' || layout === 'overlay-wide';
+  const isExpanded = layout === 'overlay-expanded';
 
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    carouselNavContainerClassNames.root,
+  // Module class FIRST, then the named group marker — which must never be `classList[0]`
+  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
+  // the consumer className last. `styles.root` is unconditional, so it is always the
+  // selector-safe token at index 0 that the invariant requires.
+  //
+  // `layout` stays a JS-derived gate rather than a `data-layout` attribute: it feeds four
+  // different slots and nothing reads it back off the DOM, so an attribute would add public
+  // surface and widen invalidation for nothing (DECISIONS.md D15.6, resolved).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in
+  // CarouselNavContainer.module.css — see that file's header for why the three sub-slots sit
+  // at `fui.components.l2` (they are react-button roots) while this root is l1.
+  state.root.className = clsx(
     styles.root,
+    'group/fui-carousel-nav-container',
     isOverlay ? styles.overlay : styles.inline,
-    isOverlay && isWide && styles.overlayWide,
-    layout === 'overlay-expanded' && styles.expanded,
+    isOverlay && isWide && styles['overlay-wide'],
+    isExpanded && styles.expanded,
     state.root.className,
   );
 
   if (state.next) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.next.className = mergeClasses(
-      carouselNavContainerClassNames.next,
-      styles.next,
-      isWide && styles.nextWide,
-      isWide && isOverlay && styles.nextOverlayWide,
-      layout === 'overlay-expanded' && styles.nextOverlayExpanded,
+    // The Griffel `styles.next` slice was `{}` and emitted no class; it is not reproduced as
+    // an empty local (identity-only locals exist to keep a marker off `classList[0]`, and
+    // this slot carries no marker). Same for `prev` / `autoplay` below.
+    state.next.className = clsx(
+      isWide && styles['next-wide'],
+      isWide && isOverlay && styles['next-overlay-wide'],
+      isExpanded && styles['next-overlay-expanded'],
       state.next.className,
     );
   }
+
   if (state.prev) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.prev.className = mergeClasses(
-      carouselNavContainerClassNames.prev,
-      styles.prev,
-      isWide && styles.prevWide,
-      !state.autoplay && isWide && isOverlay && styles.prevOverlayWide,
-      layout === 'overlay-expanded' && styles.prevOverlayExpanded,
+    state.prev.className = clsx(
+      isWide && styles['prev-wide'],
+      !state.autoplay && isWide && isOverlay && styles['prev-overlay-wide'],
+      isExpanded && styles['prev-overlay-expanded'],
       state.prev.className,
     );
   }
 
   if (state.autoplay) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.autoplay.className = mergeClasses(
-      carouselNavContainerClassNames.autoplay,
-      styles.autoplay,
-      layout === 'overlay-expanded' && styles.autoplayExpanded,
-      isWide && isOverlay && styles.autoplayOverlayWide,
+    state.autoplay.className = clsx(
+      isExpanded && styles['autoplay-expanded'],
+      isWide && isOverlay && styles['autoplay-overlay-wide'],
       state.autoplay.className,
     );
   }

@@ -21,6 +21,7 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
     if (event.target) {
       const targetNode = event.target as Element;
 
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public identity constant; `@deprecated` targets STYLING use by consumers, and this is a re-export / non-styling read (DECISIONS.md D16.5)
       if (targetNode.classList.contains(carouselClassNames.root) || carouselListenerTarget?.contains(targetNode)) {
         pointerEvent = event;
       }

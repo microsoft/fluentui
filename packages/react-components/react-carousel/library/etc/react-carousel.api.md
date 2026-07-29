@@ -21,7 +21,6 @@ import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ToggleButtonProps } from '@fluentui/react-button';
 import type { ToggleButtonState } from '@fluentui/react-button';
 import type { TooltipProps } from '@fluentui/react-tooltip';
@@ -38,8 +37,10 @@ export type CarouselAppearance = 'flat' | 'elevated';
 // @public
 export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonProps>;
 
-// @public (undocumented)
-export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayButtonSlots>;
+// @public @deprecated
+export const carouselAutoplayButtonClassNames: {
+    root: string;
+};
 
 // @public
 export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
@@ -57,8 +58,10 @@ export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<Car
 // @public
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;
 
-// @public (undocumented)
-export const carouselButtonClassNames: SlotClassNames<CarouselButtonSlots>;
+// @public @deprecated
+export const carouselButtonClassNames: {
+    root: string;
+};
 
 // @public
 export type CarouselButtonProps = Partial<ButtonProps> & ComponentProps<CarouselButtonSlots> & {
@@ -76,8 +79,10 @@ export type CarouselButtonState = ButtonState & ComponentState<CarouselButtonSlo
 // @public
 export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
 
-// @public (undocumented)
-export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
+// @public @deprecated
+export const carouselCardClassNames: {
+    root: string;
+};
 
 // @public
 export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
@@ -92,8 +97,10 @@ export type CarouselCardSlots = {
 // @public
 export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<CarouselCardProps, 'autoSize'>;
 
-// @public (undocumented)
-export const carouselClassNames: SlotClassNames<CarouselSlots>;
+// @public @deprecated
+export const carouselClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const carouselContextDefaultValue: CarouselContextValue;
@@ -129,8 +136,10 @@ export const CarouselNav: ForwardRefComponent<CarouselNavProps>;
 // @public
 export const CarouselNavButton: ForwardRefComponent<CarouselNavButtonProps>;
 
-// @public (undocumented)
-export const carouselNavButtonClassNames: SlotClassNames<CarouselNavButtonSlots>;
+// @public @deprecated
+export const carouselNavButtonClassNames: {
+    root: string;
+};
 
 // @public
 export type CarouselNavButtonProps = ComponentProps<CarouselNavButtonSlots> & {};
@@ -145,14 +154,18 @@ export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots> & {
     selected?: boolean;
 } & Pick<CarouselNavState, 'appearance'>;
 
-// @public (undocumented)
-export const carouselNavClassNames: SlotClassNames<CarouselNavSlots>;
+// @public @deprecated
+export const carouselNavClassNames: {
+    root: string;
+};
 
 // @public
 export const CarouselNavContainer: ForwardRefComponent<CarouselNavContainerProps>;
 
-// @public (undocumented)
-export const carouselNavContainerClassNames: SlotClassNames<CarouselNavContainerSlots>;
+// @public @deprecated
+export const carouselNavContainerClassNames: {
+    root: string;
+};
 
 // @public
 export type CarouselNavContainerProps = ComponentProps<CarouselNavContainerSlots> & {
@@ -176,8 +189,10 @@ export type CarouselNavContainerState = ComponentState<CarouselNavContainerSlots
 // @public
 export const CarouselNavImageButton: ForwardRefComponent<CarouselNavImageButtonProps>;
 
-// @public (undocumented)
-export const carouselNavImageButtonClassNames: SlotClassNames<CarouselNavImageButtonSlots>;
+// @public @deprecated
+export const carouselNavImageButtonClassNames: {
+    root: string;
+};
 
 // @public
 export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonSlots> & {};
@@ -232,8 +247,10 @@ export const CarouselProvider: Provider<CarouselContextValue | undefined> & FC<P
 // @public
 export const CarouselSlider: ForwardRefComponent<CarouselSliderProps>;
 
-// @public (undocumented)
-export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots>;
+// @public @deprecated
+export const carouselSliderClassNames: {
+    root: string;
+};
 
 // @public
 export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> & {
@@ -259,8 +276,10 @@ export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue
 // @public
 export const CarouselViewport: ForwardRefComponent<CarouselViewportProps>;
 
-// @public (undocumented)
-export const carouselViewportClassNames: SlotClassNames<CarouselViewportSlots>;
+// @public @deprecated
+export const carouselViewportClassNames: {
+    root: string;
+};
 
 // @public
 export type CarouselViewportProps = ComponentProps<CarouselViewportSlots>;

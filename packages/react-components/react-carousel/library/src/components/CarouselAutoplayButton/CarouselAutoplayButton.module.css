@@ -1,0 +1,120 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated on purpose — see Carousel.module.css.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * `useCarouselAutoplayButtonStyles_unstable`.
+ *
+ * `root` slot
+ *
+ *   #  mergeClasses argument               → target
+ *   -----------------------------------------------------------------------------------
+ *   1  group/fui-carousel-autoplay-button  → identity marker (JS); no declarations
+ *   2  styles.root                         → fui.components.l2, SPLIT into two locals:
+ *                                              .root        (unconditional)
+ *                                              .rest-colors (JS-gated + `at-rest`)
+ *   3  state.root.className                → unlayered; this is react-button's and
+ *                                             ToggleButton's ENTIRE class string plus the
+ *                                             consumer's, and under Griffel it therefore
+ *                                             WON every property collision
+ *
+ * ── ALTITUDE: l2 ────────────────────────────────────────────────────────────────────────
+ * CarouselAutoplayButton has no elements of its own — `useCarouselAutoplayButton_unstable`
+ * returns `useToggleButton_unstable(...)`, so the root IS react-button's root. Anything
+ * layered over another component's hook output is `fui.components.l2` (DECISIONS.md D2
+ * amendment 2).
+ *
+ * ── Composition direction: the wrapped hook runs FIRST ──────────────────────────────────
+ * Like its sibling CarouselButton (and unlike BreadcrumbButton / ToolbarButton), this hook
+ * calls `useToggleButtonStyles_unstable(state)` and THEN prepends its own classes, so under
+ * Griffel react-button's atomics were the LAST mergeClasses argument and won every property
+ * collision. Probe: `.scratch/carousel-probe/merge-order.js` — a carousel-shaped slice
+ * merged ahead of a Button-shaped one loses both its atomics.
+ *
+ * ── Which of this slice's declarations actually reached the DOM ─────────────────────────
+ * Unlike CarouselButton (which hard-defaults `appearance: 'subtle'`, a NON-empty react-button
+ * slice), this component takes ToggleButton's default `appearance: 'secondary'`, whose
+ * react-button slice is EMPTY ("the secondary styles are exactly the same as the base
+ * styles" — and `styles.secondary` is intentionally undefined in Button.module.css). So in
+ * the default configuration NOTHING deletes these atomics and all of them applied. The
+ * competitors are:
+ *
+ *   • react-button's `makeResetStyles` base → `@layer fui.base`. It is an OPAQUE class that
+ *     never enters mergeClasses' property map (probed: `.scratch/carousel-probe/reset-order.js`
+ *     — the reset class survives alongside carousel's atomics), so bucket order decided:
+ *     `d` after `r`, carousel wins at rest. l2 over fui.base reproduces it.
+ *   • …but that same reset carries `:hover` / `:hover:active` colour rules at 0-2-0, which
+ *     BEAT carousel's flat 0-1-0 atomics on specificity. `:where()` flattens that away, so a
+ *     plain l2 rule would silently erase react-button's hover and pressed feedback.
+ *     `@variant at-rest` — the catalog entry added for exactly this shape by react-toolbar —
+ *     restores it: it is the precise negation of `hover` ∪ `hover-active`, the two variants
+ *     react-button's reset uses.
+ *   • ToggleButton's `.checked` and react-button's / ToggleButton's `.disabled` DO set
+ *     `background-color`, `border-*-color` and `color`, and were LATER mergeClasses
+ *     arguments, so they deleted carousel's atomics outright. Layers cannot express that
+ *     (their classes are hashed, with no attribute to select on), so it is reproduced as the
+ *     JS gate in the hook — `checked || disabled || disabledFocusable ||
+ *     appearance !== 'secondary'` is exactly the set of conditions under which a later
+ *     argument set one of these three properties.
+ *
+ * That gate is why the slice is split: `margin-block` and `pointer-events` have no competitor
+ * in any state or appearance, so they stay unconditional in `.root`.
+ *
+ * RESIDUAL, reported rather than engineered around: under a consumer-supplied `outline`
+ * appearance react-button sets `background-color` but not `color`, so Griffel would have kept
+ * carousel's `color` there. The gate is per-slice, not per-property, so that path now falls
+ * through to react-button's own colour. Splitting further would buy a corner of a corner.
+ *
+ * ── Stroke widths / spacing / RTL ───────────────────────────────────────────────────────
+ * No spacing or stroke-width tokens here. Zero `[ltr, rtl]` pairs in the compiled atomics:
+ * `margin-top` / `margin-bottom` are block-axis, and `shorthands.borderColor(...)` emitted
+ * four side longhands with no pair (identical value on all four). They are written
+ * logically below anyway, which the cookbook asks for and is identical at zero flip.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/CarouselAutoplayButton/useCarouselAutoplayButtonStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.root — arg #2, the declarations with no competitor anywhere in
+   * react-button. `pointer-events: all` re-enables hit-testing inside
+   * CarouselNavContainer's `pointer-events: none` overlay (not Tailwind's
+   * `pointer-events-auto`); `margin-block: auto` centres the button in the flex nav row and
+   * beats react-button's `margin: 0` reset in fui.base.
+   */
+  .root {
+    @apply mt-auto mb-auto;
+
+    pointer-events: all;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.root — arg #2, the three colour properties. Restricted to the rest state
+   * so react-button's reset keeps its hover and pressed feedback, and JS-gated to the
+   * configurations in which no later mergeClasses argument overwrote them. See the header:
+   * both restrictions reproduce a Griffel outcome, neither is a design choice.
+   *
+   * The `:hover { cursor: pointer }` half of the slice is NOT reproduced: react-button's own
+   * reset already sets an identical `cursor: pointer` under `@variant hover`, and its
+   * disabled slice overrides it with `cursor: not-allowed` — which, being a later argument on
+   * the same hover-bucket key, deleted carousel's atomic outright. Dropping it reproduces
+   * both states exactly; keeping it at l2 would show a pointer cursor on a disabled button.
+   */
+  .rest-colors {
+    @variant at-rest {
+      background-color: var(--colorNeutralBackgroundAlpha);
+      border-block-start-color: var(--colorTransparentStroke);
+      border-inline-end-color: var(--colorTransparentStroke);
+      border-inline-start-color: var(--colorTransparentStroke);
+      border-block-end-color: var(--colorTransparentStroke);
+      color: var(--colorNeutralForeground2);
+    }
+  }
+}
