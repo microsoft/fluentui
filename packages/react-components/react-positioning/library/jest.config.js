@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,20 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (Phase 2, specials batch S1).
+   * The repo-wide `jest.preset.js` already maps `*.module.css` to the deterministic
+   * class-name proxy, but a project-level `snapshotSerializers` REPLACES the preset's array
+   * rather than merging with it — so this package has to list `cssModules.snapshotSerializer`
+   * itself or `SafeZoneArea`'s snapshots would print the generated module class names
+   * (DECISIONS.md D9).
+   *
+   * `@griffel/jest-serializer` is kept alongside it: `createArrowStyles` / `createSlideStyles`
+   * stay type-only Griffel data functions (D7), and `useSafeZoneArea.test.tsx` renders inside
+   * hosts that may still emit Griffel atomics into the same `class=` attribute.
+   */
+  moduleNameMapper: {
+    '\\.module\\.css$': cssModules.moduleNameMapperTarget,
+  },
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
 };

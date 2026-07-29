@@ -3,6 +3,42 @@ import userEvent from '@testing-library/user-event';
 import { useSafeZoneArea, type UseSafeZoneOptions } from '@fluentui/react-positioning';
 import * as React from 'react';
 
+import styles from './SafeZoneArea.module.css';
+
+/*
+ * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+ *
+ * These tests used to assert `toBeVisible()` / `not.toBeVisible()` on the safe-zone wrapper.
+ * That worked only because Griffel injected its atomic CSS into jsdom at RUNTIME, so
+ * `display: none` was a resolvable computed style. A converted component ships static CSS
+ * compiled at BUILD time and jest maps `*.module.css` to a class-name proxy
+ * (jest.config.js) — no stylesheet reaches jsdom, `getComputedStyle` has nothing to resolve,
+ * and every element is unconditionally "visible".
+ *
+ * The contract splits in two and both halves stay covered:
+ *   - WHICH class the component applies for the active/inactive state → asserted here,
+ *     against the same `SafeZoneArea.module.css` key `SafeZoneArea.styles.ts` reads, so a
+ *     renamed or dropped slice fails.
+ *   - WHAT `.wrapper` / `.wrapper-active` declare (`display: none` vs `display: block`) →
+ *     covered by `useSafeZoneArea.cy.tsx`, which runs in a real browser against the built
+ *     stylesheet and already asserts the computed `display` on `[data-safe-zone]`.
+ *
+ * Same split, same reasoning as `react-portal`'s `Portal.test.tsx`.
+ */
+
+/** The safe zone is shown when the wrapper carries the `wrapper-active` slice. */
+function expectSafeZoneShown(element: Element | null | undefined) {
+  expect(element).toBeInTheDocument();
+  expect(element).toHaveClass(styles['wrapper-active']);
+}
+
+/** …and hidden when it does not — `.wrapper` alone is `display: none`. */
+function expectSafeZoneHidden(element: Element | null | undefined) {
+  expect(element).toBeInTheDocument();
+  expect(element).toHaveClass(styles.wrapper);
+  expect(element).not.toHaveClass(styles['wrapper-active']);
+}
+
 const Example = ({
   onSafeZoneLeave,
   onSafeZoneEnter,
@@ -64,7 +100,7 @@ describe('useSafeZoneArea', () => {
       const triggerEl = getByTestId('trigger');
       const safeZoneEl = container.querySelector('[data-safe-zone]');
 
-      expect(safeZoneEl).not.toBeVisible();
+      expectSafeZoneHidden(safeZoneEl);
 
       // Hover over the trigger element
 
@@ -75,7 +111,7 @@ describe('useSafeZoneArea', () => {
 
       const svgPathEl = safeZoneEl?.querySelector('svg path') as SVGPathElement;
 
-      expect(safeZoneEl).toBeVisible();
+      expectSafeZoneShown(safeZoneEl);
       expect(svgPathEl).toBeInstanceOf(SVGElement);
 
       // Hover over the SVG path element
@@ -93,7 +129,7 @@ describe('useSafeZoneArea', () => {
         jest.advanceTimersByTime(1000);
       });
 
-      expect(safeZoneEl).not.toBeVisible();
+      expectSafeZoneHidden(safeZoneEl);
       expect(onSafeZoneTimeout).toHaveBeenCalledTimes(1);
     });
 
@@ -108,7 +144,7 @@ describe('useSafeZoneArea', () => {
       const triggerEl = getByTestId('trigger');
       const safeZoneEl = container.querySelector('[data-safe-zone]');
 
-      expect(safeZoneEl).not.toBeVisible();
+      expectSafeZoneHidden(safeZoneEl);
 
       // Hover over the trigger element
 
@@ -119,7 +155,7 @@ describe('useSafeZoneArea', () => {
 
       const svgPathEl = safeZoneEl?.querySelector('svg path') as SVGPathElement;
 
-      expect(safeZoneEl).toBeVisible();
+      expectSafeZoneShown(safeZoneEl);
       expect(svgPathEl).toBeInstanceOf(SVGElement);
 
       // Hover over the SVG path element
@@ -138,7 +174,7 @@ describe('useSafeZoneArea', () => {
         userEvent.hover(triggerEl);
       });
 
-      expect(safeZoneEl).toBeVisible();
+      expectSafeZoneShown(safeZoneEl);
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
 
       // Check again
@@ -160,7 +196,7 @@ describe('useSafeZoneArea', () => {
       const containerEl = getByTestId('popover');
       const safeZoneEl = container.querySelector('[data-safe-zone]');
 
-      expect(safeZoneEl).not.toBeVisible();
+      expectSafeZoneHidden(safeZoneEl);
 
       // Hover over the trigger element
 
@@ -171,7 +207,7 @@ describe('useSafeZoneArea', () => {
 
       const svgPathEl = safeZoneEl?.querySelector('svg path') as SVGPathElement;
 
-      expect(safeZoneEl).toBeVisible();
+      expectSafeZoneShown(safeZoneEl);
       expect(svgPathEl).toBeInstanceOf(SVGElement);
 
       // Hover over the SVG path element
@@ -190,7 +226,7 @@ describe('useSafeZoneArea', () => {
         userEvent.hover(containerEl);
       });
 
-      expect(safeZoneEl).not.toBeVisible();
+      expectSafeZoneHidden(safeZoneEl);
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
 
       // Check again

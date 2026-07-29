@@ -1,6 +1,6 @@
 'use client';
 
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React from 'react';
@@ -168,7 +168,18 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps): JSXElement =>
   );
 
   return (
-    <div className={mergeClasses(styles.wrapper, active && styles.wrapperActive)} data-safe-zone="">
+    // ARGUMENT ORDER — `styles.wrapper`, marker, conditional module class (DECISIONS.md
+    // D16.2). The unconditional hashed module class leads so the marker is never
+    // `classList[0]`: nwsapi's jsdom `:scope` polyfill builds its anchor from
+    // `escape(element.classList[0])` and the `/` survives that escaping into an invalid
+    // selector, throwing a render-time `AggregateError` (D15.1). There is no consumer
+    // `className` to append — `SafeZoneAreaProps` has no such prop.
+    //
+    // `group/fui-safe-zone-area` is this component's named group marker (D15.1): the outermost
+    // node `useSafeZoneArea()` hands back to a consumer, exactly as react-portal marks the
+    // mount node it creates. `data-safe-zone` stays — it is what the tests and cypress specs
+    // select on, and it predates the marker.
+    <div className={clsx(styles.wrapper, 'group/fui-safe-zone-area', active && styles.wrapperActive)} data-safe-zone="">
       {active ? (
         <svg
           aria-hidden
@@ -182,7 +193,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps): JSXElement =>
           }}
         >
           <g
-            className={mergeClasses(styles.triangle, debug && styles.triangleDebug)}
+            className={clsx(styles.triangle, debug && styles.triangleDebug)}
             clipPath={`url(#${clipPathId})`}
             onMouseEnter={onMouseEnter}
             onMouseMove={onMouseMove}

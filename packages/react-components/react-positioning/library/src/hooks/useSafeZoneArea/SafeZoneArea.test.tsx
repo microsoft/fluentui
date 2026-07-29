@@ -81,4 +81,45 @@ describe('SafeZoneArea', () => {
       expect(container.querySelector('svg')).toMatchSnapshot();
     });
   });
+
+  /**
+   * The `classList[0]` half of the D15.1 / D16.2 invariant, asserted locally.
+   *
+   * react-positioning has no `isConformant` suite — `SafeZoneArea` is `@internal` and is not
+   * exported from the package barrel — so the shared `component-has-group-marker` test never
+   * runs against this element and this is its ONLY enforcement.
+   *
+   * A group marker must never be `classList[0]`: nwsapi's jsdom `:scope` polyfill builds its
+   * selector anchor from `escape(element.classList[0])`, the `/` in `group/fui-safe-zone-area`
+   * survives that escaping, and the spliced-in production is invalid — every `:scope` query
+   * evaluated against the element then throws at render time. Real browsers implement
+   * `:scope` natively and are unaffected, which is why VR cannot see this.
+   *
+   * Rendered INACTIVE on purpose (`isActive: () => false`): that is the wrapper's weakest
+   * case, the one where the conditional `wrapper-active` slice is absent and the
+   * unconditional `.wrapper` class is the only token standing between the marker and index 0.
+   *
+   * Declared LAST in the file on purpose: `SafeZoneArea` calls `useId()`, whose counter is
+   * per-module and monotonic, and the committed `updateSVGs` snapshots pin the emitted
+   * `fui-_r_N_` clip-path ids. Rendering anything ahead of them shifts every id by one and
+   * turns an unrelated addition into a four-snapshot diff.
+   */
+  it('never emits a group marker as classList[0] on the safe-zone wrapper', () => {
+    const { container } = render(
+      <SafeZoneArea
+        debug={false}
+        imperativeRef={React.createRef<SafeZoneAreaImperativeHandle>()}
+        onMouseEnter={noop}
+        onMouseMove={noop}
+        onMouseLeave={noop}
+        stateStore={{ ...createStoreMock(), isActive: () => false }}
+      />,
+    );
+
+    const wrapper = container.querySelector('[data-safe-zone]') as HTMLElement;
+
+    expect(wrapper.classList.length).toBeGreaterThan(0);
+    expect(wrapper.classList[0]).not.toMatch(/^(group|peer)\//);
+    expect(wrapper.classList).toContain('group/fui-safe-zone-area');
+  });
 });

@@ -1,0 +1,128 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `SafeZoneArea.tsx`. Four
+ * elements, four independent class strings — there is no single "root slot" cascade here:
+ *
+ *   element                     #  mergeClasses argument      → target
+ *   ---------------------------------------------------------------------------------------
+ *   <div data-safe-zone>        1  useStyles.wrapper          → fui.components.l1 .wrapper
+ *                               2  active && wrapperActive    → fui.components.l1 .wrapper-active
+ *                               —  (no consumer className — SafeZoneArea takes no className prop)
+ *   <svg>                       1  useStyles.svg              → fui.components.l1 .svg
+ *   <g>                         1  useStyles.triangle         → fui.components.l1 .triangle
+ *                               2  debug && triangleDebug     → fui.components.l1 .triangle-debug
+ *   <path> (debug only)         1  useStyles.rectDebug        → fui.components.l1 .rect-debug
+ *
+ * ── Order (CONVERSION_GUIDE "order rule") ────────────────────────────────────────────────
+ * `.wrapper` / `.wrapper-active` is the ONLY same-property collision in this file
+ * (`display: none` vs `display: block`), and `.wrapper-active` is the LATER mergeClasses
+ * argument, so its block must stay after `.wrapper`'s. Declaration order in the Griffel
+ * source already matched argument order — no inversion to unwind. Do not reorder these two.
+ * `.triangle` / `.triangle-debug` land on the same <g> but touch disjoint properties
+ * (`pointer-events` vs `cursor` + `fill`), so their relative position is not load-bearing;
+ * they are still authored in argument order for consistency.
+ *
+ * ── Altitude: l1, not l2 (D2 amendment 2) ────────────────────────────────────────────────
+ * Every element styled here is created by SafeZoneArea itself — the wrapper <div>, the <svg>
+ * and the SVG shapes inside it. No declaration reaches into another component's hook output,
+ * and nothing external styles these nodes, so this is one component's own cascade: l1.
+ *
+ * ── Unlayered rules: none needed (D2 amendment 5) ────────────────────────────────────────
+ * Nothing here targets an element owned by an external or unconverted Griffel package.
+ * Grepped for `fui-Icon-filled` / `fui-Icon-regular` / `:global(` across react-positioning:
+ * zero hits. SafeZoneArea renders raw SVG, not icons.
+ *
+ * ── Theming (D4) ─────────────────────────────────────────────────────────────────────────
+ * Two colour tokens, both literal `var(--tokenName)` inside `color-mix()`, reproduced from
+ * the compiled atomics rather than from the `tokens.*` source expressions. No spacing or
+ * stroke-width token is read, so the D4 prohibitions do not apply here; `w-0` / `h-0` are the
+ * numeric-fallback spacing form and compute to 0 at any `--base-scale`.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/hooks/useSafeZoneArea/SafeZoneArea.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* arg #1 (wrapper) — from useStyles.wrapper */
+  .wrapper {
+    /*
+     * Compiled AOT output:
+     *   .fjseox{display:none}   .fniina8{height:0}
+     *   .f3tsq5r{width:0}       .f1aehjj5{pointer-events:none}
+     * All four unpaired — nothing on this element is RTL-flipped.
+     */
+    @apply hidden h-0 w-0 pointer-events-none;
+  }
+
+  /*
+   * arg #2 (wrapper) — from useStyles.wrapperActive.
+   * MUST stay after `.wrapper`: same element, same property, later mergeClasses argument.
+   * Compiled AOT output: .ftgm304{display:block}
+   */
+  .wrapper-active {
+    @apply block;
+  }
+
+  /* arg #1 (svg) — from useStyles.svg */
+  .svg {
+    /*
+     * Compiled AOT output:
+     *   .f1au8mb3{fill:transparent}     .f1aehjj5{pointer-events:none}
+     *   .f19dog8a{position:fixed}       .f15twtuk{top:0}
+     *   left:0 → [.f1vgc2s3{left:0}, .f1e31b4d{right:0}]
+     *
+     * `left` IS an RTL pair in the compiled output, so it becomes the logical longhand
+     * (D5) — that reproduces Griffel's flip exactly. `top` was never flipped and stays
+     * physical, matching react-portal's Portal.module.css treatment of the same shape.
+     *
+     * Heads up: the JS that positions this <svg> writes a viewport-physical
+     * `transform: translate(leftOffset, topOffset)` inline (SafeZoneArea.tsx), so under
+     * `:dir(rtl)` the anchor edge flips while the translate does not. That asymmetry is
+     * PRE-EXISTING Griffel behaviour, reproduced deliberately rather than "fixed" — see the
+     * conversion report.
+     */
+    @apply fixed pointer-events-none;
+
+    fill: transparent;
+    top: 0;
+    inset-inline-start: 0;
+  }
+
+  /* arg #1 (g) — from useStyles.triangle. Compiled: .f1cguypg{pointer-events:auto} */
+  .triangle {
+    @apply pointer-events-auto;
+  }
+
+  /*
+   * arg #2 (g) — from useStyles.triangleDebug. Debug-only affordance.
+   * Compiled AOT output:
+   *   .f7116n6{cursor:crosshair}
+   *   .f1xab38x{fill:color-mix(in srgb, var(--colorPaletteGreenBackground3) 20%, transparent)}
+   */
+  .triangle-debug {
+    cursor: crosshair;
+    fill: color-mix(in srgb, var(--colorPaletteGreenBackground3) 20%, transparent);
+  }
+
+  /*
+   * arg #1 (path) — from useStyles.rectDebug. Debug-only affordance.
+   * Compiled AOT output:
+   *   .fyegryc{fill:color-mix(in srgb, var(--colorPaletteRedBackground3) 20%, transparent)}
+   */
+  .rect-debug {
+    fill: color-mix(in srgb, var(--colorPaletteRedBackground3) 20%, transparent);
+  }
+}
