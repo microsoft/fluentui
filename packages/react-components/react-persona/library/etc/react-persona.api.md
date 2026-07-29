@@ -12,7 +12,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceBadge } from '@fluentui/react-badge';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Persona: ForwardRefComponent<PersonaProps>;
@@ -23,8 +22,10 @@ export type PersonaBaseProps = ComponentProps<Omit<PersonaSlots, 'avatar' | 'pre
 // @public (undocumented)
 export type PersonaBaseState = ComponentState<Omit<PersonaSlots, 'avatar' | 'presence'>> & Pick<PersonaState, 'numTextLines'>;
 
-// @public (undocumented)
-export const personaClassNames: SlotClassNames<PersonaSlots>;
+// @public @deprecated
+export const personaClassNames: {
+    root: string;
+};
 
 // @public
 export type PersonaProps = ComponentProps<PersonaSlots> & {

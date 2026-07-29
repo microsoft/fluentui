@@ -14,19 +14,26 @@
  */
 
 import { clsx } from 'clsx';
-import type { PersonaSlots, PersonaState } from './Persona.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { PersonaState } from './Persona.types';
 
 import styles from './Persona.module.css';
 
-export const personaClassNames: SlotClassNames<PersonaSlots> = {
-  root: 'fui-Persona',
-  avatar: 'fui-Persona__avatar',
-  presence: 'fui-Persona__presence',
-  primaryText: 'fui-Persona__primaryText',
-  secondaryText: 'fui-Persona__secondaryText',
-  tertiaryText: 'fui-Persona__tertiaryText',
-  quaternaryText: 'fui-Persona__quaternaryText',
+/**
+ * Public identity classes for Persona.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (`migration/griffel-to-tailwind/reports/DECISIONS.md`,
+ * D15.1 / D16.5) — usable as a selector and as a `group-*` variant target. The per-slot keys
+ * (`avatar`, `presence`, `primaryText`, `secondaryText`, `tertiaryText`, `quaternaryText`)
+ * were removed: there is no public class-name handle on component internals any more.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + personaClassNames.root` is invalid. Use `fuiSelector()` from
+ * `@fluentui/react-utilities` (or `@fluentui/react-components`) at every selector site.
+ */
+export const personaClassNames: { root: string } = {
+  root: 'group/fui-persona',
 };
 
 /**
@@ -84,12 +91,14 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   root['data-size'] = size;
   root['data-text-position'] = textPosition;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Persona's state, because `styles.root` is
-  // hashed and unaddressable from outside this file (DECISIONS.md D15).
+  // `styles.root` first, then the named group marker — the marker must never be
+  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // `clsx` never drops it, so index 0 is always the hashed, selector-safe module class; the
+  // BEM static that used to hold that position was removed in D16.1. The marker is a
+  // literal, unhashed, GLOBAL token: it is the only handle by which another module — in
+  // this package or any other — can style an element from this Persona's state, because
+  // `styles.root` is hashed and unaddressable from outside this file (DECISIONS.md D15).
   //
   // It matters more here than for most components: Persona's `avatar` and `presence` slots
   // ARE other components' roots (an `<Avatar>`, a `<PresenceBadge>`), so `group/fui-persona`
@@ -102,16 +111,14 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   // mergeClasses() argument order this replaces, and for why the avatar/presence rules sit
   // in `fui.components.l2`.
   state.root.className = clsx(
-    personaClassNames.root,
-    'group/fui-persona',
     styles.root,
+    'group/fui-persona',
     alignBeforeAfterCenter && styles['before-after-center'],
     state.root.className,
   );
 
   if (state.avatar) {
     state.avatar.className = clsx(
-      personaClassNames.avatar,
       textPosition !== 'below' && styles.media,
       alignBeforeAfterCenter && styles['media-before-after-center'],
       styles[textAlignment],
@@ -122,7 +129,6 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
 
   if (state.presence) {
     state.presence.className = clsx(
-      personaClassNames.presence,
       textPosition !== 'below' && styles.media,
       alignBeforeAfterCenter && styles['media-before-after-center'],
       styles[textAlignment],
@@ -136,7 +142,6 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
 
   if (state.primaryText) {
     state.primaryText.className = clsx(
-      personaClassNames.primaryText,
       alignBeforeAfterCenter && styles.primary,
       primaryTextClassName,
       state.primaryText.className,
@@ -145,7 +150,6 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
 
   if (state.secondaryText) {
     state.secondaryText.className = clsx(
-      personaClassNames.secondaryText,
       alignBeforeAfterCenter && styles.secondary,
       optionalTextClassName,
       styles['second-line-spacing'],
@@ -155,7 +159,6 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
 
   if (state.tertiaryText) {
     state.tertiaryText.className = clsx(
-      personaClassNames.tertiaryText,
       alignBeforeAfterCenter && styles.tertiary,
       optionalTextClassName,
       state.tertiaryText.className,
@@ -164,7 +167,6 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
 
   if (state.quaternaryText) {
     state.quaternaryText.className = clsx(
-      personaClassNames.quaternaryText,
       alignBeforeAfterCenter && styles.quaternary,
       optionalTextClassName,
       state.quaternaryText.className,
