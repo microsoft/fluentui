@@ -14,16 +14,27 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { SpinnerSlots, SpinnerState } from './Spinner.types';
+import type { SpinnerState } from './Spinner.types';
 
 import styles from './Spinner.module.css';
 
-export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
-  root: 'fui-Spinner',
-  spinner: 'fui-Spinner__spinner',
-  spinnerTail: 'fui-Spinner__spinnerTail',
-  label: 'fui-Spinner__label',
+/**
+ * Public identity class for Spinner.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The `spinner`, `spinnerTail` and `label` keys were removed along
+ * with the BEM statics (DECISIONS.md D16.1 / D16.5): there is no public class-name handle on
+ * component internals.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + spinnerClassNames.root` is an invalid selector. Use
+ * `fuiSelector(spinnerClassNames.root)` from `@fluentui/react-utilities` at every selector
+ * site (DECISIONS.md D16.5).
+ */
+export const spinnerClassNames: { root: string } = {
+  root: 'group/fui-spinner',
 };
 
 /**
@@ -64,10 +75,14 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   root['data-orientation'] = labelPosition === 'above' || labelPosition === 'below' ? 'vertical' : 'horizontal';
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // Unconditional module class FIRST, then the named group marker, with the consumer
+  // className last (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's
+  // `:scope` polyfill throws on it under jsdom (DECISIONS.md D15.1) — and `styles.root` is
+  // the token that guarantees it, since clsx never drops an unconditional argument. The BEM
+  // static that used to hold that position is gone (DECISIONS.md D16.1).
+  //
+  // The marker is a literal, unhashed, GLOBAL token and now the component's SOLE public
+  // identity class: it is the only handle by which another module — in this package
   // or any other — can style an element from this Spinner's state, because `styles.root` is
   // hashed and unaddressable from outside this file. Spinner needs no state mirrors:
   // `data-orientation` and `data-size` are already stamped on this very element above, so
@@ -78,11 +93,12 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the label slot's rules
   // live in `fui.components.l2`.
-  state.root.className = clsx(spinnerClassNames.root, 'group/fui-spinner', styles.root, state.root.className);
+  state.root.className = clsx(styles.root, 'group/fui-spinner', state.root.className);
 
+  // Sub-slots: the statics are gone and the hashed module class leads each one. No marker
+  // rides a sub-slot, so D15.1 is not in play here (statics-removal design §4c).
   if (state.spinner) {
     state.spinner.className = clsx(
-      spinnerClassNames.spinner,
       styles.spinner,
       appearance === 'inverted' && styles['spinner-inverted'],
       state.spinner.className,
@@ -93,16 +109,11 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     // The `dir === 'rtl' && spinnerStyles.rtlTail` branch this replaces is now the
     // `@variant rtl` block in the module — the conic-gradient mirrors are value-level RTL
     // flips, so they stay explicit CSS rather than logical properties (DECISIONS.md D5).
-    state.spinnerTail.className = clsx(
-      spinnerClassNames.spinnerTail,
-      styles['spinner-tail'],
-      state.spinnerTail.className,
-    );
+    state.spinnerTail.className = clsx(styles['spinner-tail'], state.spinnerTail.className);
   }
 
   if (state.label) {
     state.label.className = clsx(
-      spinnerClassNames.label,
       styles.label,
       appearance === 'inverted' && styles['label-inverted'],
       state.label.className,

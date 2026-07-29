@@ -11,7 +11,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSpinner_unstable: (state: SpinnerBaseState) => JSXElement;
@@ -25,8 +24,10 @@ export type SpinnerBaseProps = Omit<SpinnerProps, 'appearance' | 'size'>;
 // @public
 export type SpinnerBaseState = Omit<SpinnerState, 'appearance' | 'size'>;
 
-// @public (undocumented)
-export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
+// @public @deprecated
+export const spinnerClassNames: {
+    root: string;
+};
 
 // @internal (undocumented)
 export const SpinnerContextProvider: React_2.Provider<SpinnerContextValue | undefined>;

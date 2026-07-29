@@ -1,6 +1,6 @@
 export {
   Spinner,
-  spinnerClassNames,
+  spinnerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderSpinner_unstable,
   useSpinner_unstable,
   useSpinnerStyles_unstable,

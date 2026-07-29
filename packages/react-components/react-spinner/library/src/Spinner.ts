@@ -8,7 +8,7 @@ export type {
 export {
   Spinner,
   renderSpinner_unstable,
-  spinnerClassNames,
+  spinnerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSpinnerStyles_unstable,
   useSpinner_unstable,
   useSpinnerBase_unstable,
