@@ -918,6 +918,7 @@ export {
   OverflowItem,
   OverflowDivider,
   OverflowReorderObserver,
+  overflowClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
   useOverflowCount,

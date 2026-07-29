@@ -11,6 +11,30 @@ const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
+/*
+ * ── Selecting TimePicker's clear icon after the D16 statics removal ──────────────────────
+ *
+ * TimePicker renders through Combobox, so this file used to reach the clear icon with
+ * `.fui-Combobox__clearIcon`. That static no longer exists: `comboboxClassNames` holds ONE key
+ * now — `root`, valued at Combobox's group marker — and the per-slot `input` / `expandIcon` /
+ * `clearIcon` keys were removed with every other BEM static (DECISIONS.md D16.1 / D16.5). The
+ * classes the slot actually carries are hashed CSS-module tokens, unaddressable from here.
+ *
+ * So the fixtures stamp a probe class through the slot's `className` prop, the same way
+ * Card.cy.tsx does. That is not a workaround — per-slot `className` IS the supported handle on
+ * a slot under the new contract, so this targets the internal the way a consumer must. (A
+ * `data-testid` would read more conventionally but is not assignable: Fluent's slot-props types
+ * have no index signature, so an object literal rejects `data-*`.)
+ *
+ * Passing `clearIcon` is behaviour-neutral for the assertions below. `useCombobox_unstable`
+ * builds the slot with `slot.optional(props.clearIcon, { renderByDefault: true, … })` and then
+ * defaults `children ??= <DismissIcon />`, so supplying only a `className` changes neither
+ * WHETHER the icon renders nor WHAT it renders — and `showClearIcon` (which drives the
+ * `display: none` state class) still derives solely from `selectedOptions` / `clearable` /
+ * `disabled` / `multiselect`.
+ */
+const CLEAR_ICON_PROBE = 'timepicker-clear-icon-probe';
+
 const Default = ({ freeform, clearable }: Pick<TimePickerProps, 'freeform' | 'clearable'>) => {
   const [selectedTimeText, setSelectedTimeText] = React.useState<string | undefined>(undefined);
   const onTimeChange: TimePickerProps['onTimeChange'] = (_ev, data) => {
@@ -26,6 +50,7 @@ const Default = ({ freeform, clearable }: Pick<TimePickerProps, 'freeform' | 'cl
         increment={60}
         onTimeChange={onTimeChange}
         hourCycle="h23"
+        clearIcon={{ className: CLEAR_ICON_PROBE }}
       />
       {<div id="selected-time-text">{selectedTimeText}</div>}
     </div>
@@ -59,6 +84,7 @@ const Controlled = ({ freeform, clearable }: Pick<TimePickerProps, 'freeform' | 
         onTimeChange={onTimeChange}
         value={value}
         onInput={onInput}
+        clearIcon={{ className: CLEAR_ICON_PROBE }}
       />
       {<div id="selected-time-text">{selectedTimeText}</div>}
     </div>
@@ -67,7 +93,7 @@ const Controlled = ({ freeform, clearable }: Pick<TimePickerProps, 'freeform' | 
 
 const inputSelector = '[role="combobox"]';
 const optionSelector = (index: number) => `[role="option"]:nth-of-type(${index + 1})`;
-const clearIconSelector = '.fui-Combobox__clearIcon';
+const clearIconSelector = `.${CLEAR_ICON_PROBE}`;
 
 describe('TimePicker', () => {
   [

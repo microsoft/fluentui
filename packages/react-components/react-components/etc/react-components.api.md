@@ -758,6 +758,7 @@ import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
 import { Overflow } from '@fluentui/react-overflow';
+import { overflowClassNames } from '@fluentui/react-overflow';
 import { OverflowDivider } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
@@ -3523,6 +3524,8 @@ export { OptionSlots }
 export { OptionState }
 
 export { Overflow }
+
+export { overflowClassNames }
 
 export { OverflowDivider }
 
