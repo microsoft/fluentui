@@ -565,5 +565,10 @@
     "date": "2026-07-28",
     "result": "34/34 sets PASS zero retries (845 new + 24 collateral)",
     "report": "reports/phase2-batch3.md"
+  },
+  "staticsRemoval": {
+    "date": "2026-07-29",
+    "result": "COMPLETE — 184 BEM statics removed across 33 packages; xClassNames narrowed to {root:marker}; conformance flipped (component-has-group-marker default, static-classnames opt-in); final sweep 34/34 zero retries",
+    "design": "reports/statics-removal-design.md"
   }
 }

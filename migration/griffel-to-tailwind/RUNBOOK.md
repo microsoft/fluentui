@@ -32,6 +32,15 @@ conversation memory).
   Commit batches in per-package chunks; never bypass hooks.
 - The button-family VR set (342 shots, ~4min) reliably outlives sonnet verify
   agents — it is an OVERSEER-owned step, not a workflow agent step.
+- **Batch-scoped validation (user-directed 2026-07-29):** every future batch
+  applies the FULL settled contract in one pass (conversion + group marker +
+  lowercase idents + NO statics + tightened transitions — the cookbook encodes
+  all of it). Per-batch validation = the batch's own VR sets + only the
+  dependents flagged by the delegation-seam audit. Full-suite sweeps are
+  reserved for phase boundaries and the final PR gate — bottom-up ordering
+  means completed components sit below the batch and cannot be affected.
+  Never schedule a standalone repo-wide retrofit phase; mid-migration contract
+  decisions go into the cookbook and ride the next batch's cycle.
 - Note: the ECC GateGuard hook fact-gates the first Bash call and every new-file Write in
   each session, including worker sessions. For mass-conversion sessions consider launching
   with `ECC_GATEGUARD=off` (user's call — ask once per session if unclear).
@@ -228,3 +237,16 @@ Repeat until no `needs-conversion` remain:
   ledger to match reality before continuing.
 - Baseline artifacts (screenshots/metrics) are large; if missing after a clean clone,
   re-run capture scripts against `master` (scripts record the exact baseline commit).
+
+### Statics-removal phase — COMPLETE 2026-07-29
+
+Full class-name contract (D15/D16) is live: no BEM statics in any converted
+package; group marker = sole public identity class; slot className props for
+internals; data-\* fallback-only (D15.6); lowercase everywhere. Final
+phase-boundary sweep 34/34 zero retries (incl. structurally-migrated Spinner
+VR selector). Conformance: component-has-group-marker is a DEFAULT test;
+unconverted packages carry transitional disabledTests wrappers (remove per
+package as they convert). Remaining work proceeds under BATCH-SCOPED
+validation (process rule above): 19 needs-conversion + 11 specials get the
+full contract in one pass each, batch+seam validation only; next full sweep =
+final PR gate.
