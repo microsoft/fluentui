@@ -101,7 +101,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     _totalValue = _computeTotalValue();
 
     return (
-      <g transform={translate}>
+      <g transform={translate} role="listbox" aria-label={`Donut chart with ${piechart.length} slices`}>
         {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
           <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>

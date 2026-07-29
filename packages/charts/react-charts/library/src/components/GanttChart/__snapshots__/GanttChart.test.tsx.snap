@@ -184,6 +184,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -201,6 +202,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -218,6 +220,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -235,6 +238,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -243,13 +247,16 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
@@ -261,7 +268,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
@@ -273,7 +280,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -285,7 +292,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -297,7 +304,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
@@ -309,7 +316,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
@@ -321,7 +328,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
@@ -333,7 +340,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
@@ -790,6 +797,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -807,6 +815,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -824,6 +833,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -841,6 +851,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -858,6 +869,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -875,6 +887,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -892,6 +905,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -909,6 +923,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -917,13 +932,16 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Site Preparation. No, May 01 - May 07."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.604395604395606"
@@ -935,7 +953,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285715"
@@ -947,7 +965,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="65.27472527472528"
@@ -959,7 +977,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.60439560439562"
@@ -971,7 +989,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
@@ -983,7 +1001,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="53.4065934065934"
@@ -995,7 +1013,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#f7630cff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
@@ -1007,7 +1025,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#57811bff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.60439560439568"
@@ -1289,6 +1307,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1306,6 +1325,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1323,6 +1343,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1340,6 +1361,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1348,13 +1370,16 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
@@ -1366,7 +1391,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
@@ -1378,7 +1403,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -1390,7 +1415,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -1402,7 +1427,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
@@ -1414,7 +1439,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
@@ -1426,7 +1451,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
@@ -1438,7 +1463,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
@@ -1724,6 +1749,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1741,6 +1767,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1758,6 +1785,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1775,6 +1803,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1783,13 +1812,16 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="8 bars"
+            role="listbox"
+          >
             <rect
               aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
               fill="#107c10"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="95.4696132596685"
@@ -1801,7 +1833,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#f7630c"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="83.53591160220995"
@@ -1813,7 +1845,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#107c10"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="92.48618784530387"
@@ -1825,7 +1857,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="92.48618784530387"
@@ -1837,7 +1869,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#107c10"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="176.0220994475138"
@@ -1849,7 +1881,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="29.834254143646376"
@@ -1861,7 +1893,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="56.685082872928206"
@@ -1873,7 +1905,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="92.48618784530385"
@@ -2162,6 +2194,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2179,6 +2212,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2196,6 +2230,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2213,6 +2248,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2221,13 +2257,16 @@ Object {
                   </text>
                 </g>
               </g>
-              <g>
+              <g
+                aria-label="8 bars"
+                role="listbox"
+              >
                 <rect
                   aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
                   fill="#107c10"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="95.4696132596685"
@@ -2239,7 +2278,7 @@ Object {
                   fill="#f7630c"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="83.53591160220995"
@@ -2251,7 +2290,7 @@ Object {
                   fill="#107c10"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530387"
@@ -2263,7 +2302,7 @@ Object {
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530387"
@@ -2275,7 +2314,7 @@ Object {
                   fill="#107c10"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="176.0220994475138"
@@ -2287,7 +2326,7 @@ Object {
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="29.834254143646376"
@@ -2299,7 +2338,7 @@ Object {
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="56.685082872928206"
@@ -2311,7 +2350,7 @@ Object {
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530385"
@@ -2595,6 +2634,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2612,6 +2652,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2629,6 +2670,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2646,6 +2688,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2654,13 +2697,16 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="8 bars"
+              role="listbox"
+            >
               <rect
                 aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
                 fill="#107c10"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="95.4696132596685"
@@ -2672,7 +2718,7 @@ Object {
                 fill="#f7630c"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="83.53591160220995"
@@ -2684,7 +2730,7 @@ Object {
                 fill="#107c10"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530387"
@@ -2696,7 +2742,7 @@ Object {
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530387"
@@ -2708,7 +2754,7 @@ Object {
                 fill="#107c10"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="176.0220994475138"
@@ -2720,7 +2766,7 @@ Object {
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="29.834254143646376"
@@ -2732,7 +2778,7 @@ Object {
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="56.685082872928206"
@@ -2744,7 +2790,7 @@ Object {
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530385"
@@ -3304,13 +3350,16 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="6 bars"
+          role="listbox"
+        >
           <rect
             aria-label="6. Legal, 03/05/2022 - 03/15/2022."
             fill="#3a96ddff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="11.868131868131854"
@@ -3322,7 +3371,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#ca5010ff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="10.681318681318658"
@@ -3334,7 +3383,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#9373c0ff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="11.868131868131854"
@@ -3346,7 +3395,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#57811bff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="8.307692307692207"
@@ -3358,7 +3407,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#f7630cff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="5.934065934065984"
@@ -3370,7 +3419,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#637cefff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="443.86813186813185"
@@ -3715,6 +3764,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3732,6 +3782,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3749,6 +3800,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3766,6 +3818,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3774,7 +3827,10 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <defs>
             <lineargradient
               id="gantt_legend_r_m__0_gradient"
@@ -3818,7 +3874,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_m__0_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
@@ -3830,7 +3886,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_m__1_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
@@ -3842,7 +3898,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_m__0_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -3854,7 +3910,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -3866,7 +3922,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_m__0_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
@@ -3878,7 +3934,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
@@ -3890,7 +3946,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
@@ -3902,7 +3958,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
@@ -4184,6 +4240,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4201,6 +4258,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4218,6 +4276,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4235,6 +4294,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4243,13 +4303,16 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="95.4696132596685"
@@ -4261,7 +4324,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="83.53591160220995"
@@ -4273,7 +4336,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="92.48618784530387"
@@ -4285,7 +4348,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="92.48618784530387"
@@ -4297,7 +4360,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="176.0220994475138"
@@ -4309,7 +4372,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="29.834254143646376"
@@ -4321,7 +4384,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="56.685082872928206"
@@ -4333,7 +4396,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="92.48618784530385"
@@ -4615,6 +4678,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4632,6 +4696,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4649,6 +4714,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4666,6 +4732,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4674,13 +4741,16 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
@@ -4692,7 +4762,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
@@ -4704,7 +4774,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -4716,7 +4786,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -4728,7 +4798,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
@@ -4740,7 +4810,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
@@ -4752,7 +4822,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
@@ -4764,7 +4834,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
@@ -5221,6 +5291,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Final Inspections"
               dy="0.32em"
               fill="currentColor"
@@ -5244,6 +5315,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Interior Finishing"
               dy="0.32em"
               fill="currentColor"
@@ -5267,6 +5339,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Exterior Finishing"
               dy="0.32em"
               fill="currentColor"
@@ -5290,6 +5363,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Plumbing/Electrical"
               dy="0.32em"
               fill="currentColor"
@@ -5313,6 +5387,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Roof Installation"
               dy="0.32em"
               fill="currentColor"
@@ -5336,6 +5411,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Framing"
               dy="0.32em"
               fill="currentColor"
@@ -5359,6 +5435,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Foundation Work"
               dy="0.32em"
               fill="currentColor"
@@ -5382,6 +5459,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Site Preparation"
               dy="0.32em"
               fill="currentColor"
@@ -5396,13 +5474,16 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Site Preparation. No, May 01 - May 07."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.604395604395606"
@@ -5414,7 +5495,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285715"
@@ -5426,7 +5507,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="65.27472527472528"
@@ -5438,7 +5519,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.60439560439562"
@@ -5450,7 +5531,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
@@ -5462,7 +5543,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="53.4065934065934"
@@ -5474,7 +5555,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#f7630cff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
@@ -5486,7 +5567,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#57811bff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.60439560439568"

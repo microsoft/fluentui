@@ -43,42 +43,47 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             >
               100
             </text>
-            <path
-              aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#107c10"
-              id="gauge-chart-arc-0"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#f7630c"
-              id="gauge-chart-arc-1"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#c50f1f"
-              id="gauge-chart-arc-2"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
+            <g
+              aria-label="3 segments"
+              role="listbox"
+            >
+              <path
+                aria-label="Low Risk, 0 to 33"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#107c10"
+                id="gauge-chart-arc-0"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="Medium Risk, 33 to 67"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#f7630c"
+                id="gauge-chart-arc-1"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="High Risk, 67 to 100"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#c50f1f"
+                id="gauge-chart-arc-2"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+            </g>
             <g
               transform="rotate(54, 0, 0)"
             >
@@ -346,40 +351,45 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="0.1"
-            role="img"
-            stroke-width="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="0.1"
-            role="img"
-            stroke-width="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="0.1"
+              role="option"
+              stroke-width="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="0.1"
+              role="option"
+              stroke-width="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -549,40 +559,45 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="0.1"
-            role="img"
-            stroke-width="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="0.1"
-            role="img"
-            stroke-width="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="0.1"
+              role="option"
+              stroke-width="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="0.1"
+              role="option"
+              stroke-width="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -752,42 +767,47 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -1062,42 +1082,47 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -1265,42 +1290,47 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -1468,42 +1498,47 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="2"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="2"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -1778,42 +1813,47 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -2110,42 +2150,47 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -2313,42 +2358,47 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -2516,42 +2566,47 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -2719,42 +2774,47 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M0,0Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M0,0Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(NaN, 0, 0)"
           >
@@ -2907,42 +2967,47 @@ Object {
             <g
               transform="translate(0, -48)"
             >
-              <path
-                aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#107c10"
-                id="gauge-chart-arc-0"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#f7630c"
-                id="gauge-chart-arc-1"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#c50f1f"
-                id="gauge-chart-arc-2"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
+              <g
+                aria-label="3 segments"
+                role="listbox"
+              >
+                <path
+                  aria-label="Low Risk, 0 to 33"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#107c10"
+                  id="gauge-chart-arc-0"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="Medium Risk, 33 to 67"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#f7630c"
+                  id="gauge-chart-arc-1"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="High Risk, 67 to 100"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#c50f1f"
+                  id="gauge-chart-arc-2"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+              </g>
               <g
                 transform="rotate(45, 0, 0)"
               >
@@ -3107,42 +3172,47 @@ Object {
           <g
             transform="translate(0, -48)"
           >
-            <path
-              aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#107c10"
-              id="gauge-chart-arc-0"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#f7630c"
-              id="gauge-chart-arc-1"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#c50f1f"
-              id="gauge-chart-arc-2"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
+            <g
+              aria-label="3 segments"
+              role="listbox"
+            >
+              <path
+                aria-label="Low Risk, 0 to 33"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#107c10"
+                id="gauge-chart-arc-0"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="Medium Risk, 33 to 67"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#f7630c"
+                id="gauge-chart-arc-1"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="High Risk, 67 to 100"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#c50f1f"
+                id="gauge-chart-arc-2"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+            </g>
             <g
               transform="rotate(45, 0, 0)"
             >
@@ -3367,42 +3437,47 @@ Object {
               >
                 100
               </text>
-              <path
-                aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#107c10"
-                id="gauge-chart-arc-0"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#f7630c"
-                id="gauge-chart-arc-1"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#c50f1f"
-                id="gauge-chart-arc-2"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
+              <g
+                aria-label="3 segments"
+                role="listbox"
+              >
+                <path
+                  aria-label="Low Risk, 0 to 33"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#107c10"
+                  id="gauge-chart-arc-0"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="Medium Risk, 33 to 67"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#f7630c"
+                  id="gauge-chart-arc-1"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="High Risk, 67 to 100"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#c50f1f"
+                  id="gauge-chart-arc-2"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+              </g>
               <g
                 transform="rotate(45, 0, 0)"
               >
@@ -3503,42 +3578,47 @@ Object {
             >
               100
             </text>
-            <path
-              aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#107c10"
-              id="gauge-chart-arc-0"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#f7630c"
-              id="gauge-chart-arc-1"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#c50f1f"
-              id="gauge-chart-arc-2"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
+            <g
+              aria-label="3 segments"
+              role="listbox"
+            >
+              <path
+                aria-label="Low Risk, 0 to 33"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#107c10"
+                id="gauge-chart-arc-0"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="Medium Risk, 33 to 67"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#f7630c"
+                id="gauge-chart-arc-1"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="High Risk, 67 to 100"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#c50f1f"
+                id="gauge-chart-arc-2"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+            </g>
             <g
               transform="rotate(45, 0, 0)"
             >
@@ -3679,42 +3759,47 @@ Object {
               >
                 100
               </text>
-              <path
-                aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#107c10"
-                id="gauge-chart-arc-0"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#f7630c"
-                id="gauge-chart-arc-1"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#c50f1f"
-                id="gauge-chart-arc-2"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
+              <g
+                aria-label="3 segments"
+                role="listbox"
+              >
+                <path
+                  aria-label="Low Risk, 0 to 33"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#107c10"
+                  id="gauge-chart-arc-0"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="Medium Risk, 33 to 67"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#f7630c"
+                  id="gauge-chart-arc-1"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="High Risk, 67 to 100"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#c50f1f"
+                  id="gauge-chart-arc-2"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+              </g>
               <g
                 transform="rotate(45, 0, 0)"
               >
@@ -3899,42 +3984,47 @@ Object {
             >
               100
             </text>
-            <path
-              aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#107c10"
-              id="gauge-chart-arc-0"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#f7630c"
-              id="gauge-chart-arc-1"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#c50f1f"
-              id="gauge-chart-arc-2"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
+            <g
+              aria-label="3 segments"
+              role="listbox"
+            >
+              <path
+                aria-label="Low Risk, 0 to 33"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#107c10"
+                id="gauge-chart-arc-0"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="Medium Risk, 33 to 67"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#f7630c"
+                id="gauge-chart-arc-1"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="High Risk, 67 to 100"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#c50f1f"
+                id="gauge-chart-arc-2"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+            </g>
             <g
               transform="rotate(45, 0, 0)"
             >
@@ -4159,30 +4249,35 @@ Object {
               >
                 100
               </text>
-              <path
-                aria-label="Used, 0 to 60"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="blue"
-                id="gauge-chart-arc-0"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="Unknown, 60 to 100"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="neutralLight"
-                id="gauge-chart-arc-1"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
+              <g
+                aria-label="2 segments"
+                role="listbox"
+              >
+                <path
+                  aria-label="Used, 0 to 60"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="blue"
+                  id="gauge-chart-arc-0"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="Unknown, 60 to 100"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="neutralLight"
+                  id="gauge-chart-arc-1"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+              </g>
               <g
                 transform="rotate(108, 0, 0)"
               >
@@ -4346,30 +4441,35 @@ Object {
             >
               100
             </text>
-            <path
-              aria-label="Used, 0 to 60"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="blue"
-              id="gauge-chart-arc-0"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Unknown, 60 to 100"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="neutralLight"
-              id="gauge-chart-arc-1"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
+            <g
+              aria-label="2 segments"
+              role="listbox"
+            >
+              <path
+                aria-label="Used, 0 to 60"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="blue"
+                id="gauge-chart-arc-0"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="Unknown, 60 to 100"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="neutralLight"
+                id="gauge-chart-arc-1"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+            </g>
             <g
               transform="rotate(108, 0, 0)"
             >
@@ -4595,42 +4695,47 @@ Object {
               >
                 100
               </text>
-              <path
-                aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#107c10"
-                id="gauge-chart-arc-0"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#f7630c"
-                id="gauge-chart-arc-1"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#c50f1f"
-                id="gauge-chart-arc-2"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
+              <g
+                aria-label="3 segments"
+                role="listbox"
+              >
+                <path
+                  aria-label="Low Risk, 0 to 33"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#107c10"
+                  id="gauge-chart-arc-0"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="Medium Risk, 33 to 67"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#f7630c"
+                  id="gauge-chart-arc-1"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="High Risk, 67 to 100"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#c50f1f"
+                  id="gauge-chart-arc-2"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+              </g>
               <g
                 transform="rotate(45, 0, 0)"
               >
@@ -4856,42 +4961,47 @@ Object {
             >
               100
             </text>
-            <path
-              aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#107c10"
-              id="gauge-chart-arc-0"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#f7630c"
-              id="gauge-chart-arc-1"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#c50f1f"
-              id="gauge-chart-arc-2"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
+            <g
+              aria-label="3 segments"
+              role="listbox"
+            >
+              <path
+                aria-label="Low Risk, 0 to 33"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#107c10"
+                id="gauge-chart-arc-0"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="Medium Risk, 33 to 67"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#f7630c"
+                id="gauge-chart-arc-1"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="High Risk, 67 to 100"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#c50f1f"
+                id="gauge-chart-arc-2"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+            </g>
             <g
               transform="rotate(45, 0, 0)"
             >
@@ -5116,42 +5226,47 @@ Object {
               >
                 100
               </text>
-              <path
-                aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#107c10"
-                id="gauge-chart-arc-0"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#f7630c"
-                id="gauge-chart-arc-1"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#c50f1f"
-                id="gauge-chart-arc-2"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
+              <g
+                aria-label="3 segments"
+                role="listbox"
+              >
+                <path
+                  aria-label="Low Risk, 0 to 33"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#107c10"
+                  id="gauge-chart-arc-0"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="Medium Risk, 33 to 67"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#f7630c"
+                  id="gauge-chart-arc-1"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="High Risk, 67 to 100"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#c50f1f"
+                  id="gauge-chart-arc-2"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+              </g>
               <g
                 transform="rotate(45, 0, 0)"
               >
@@ -5336,42 +5451,47 @@ Object {
             >
               100
             </text>
-            <path
-              aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#107c10"
-              id="gauge-chart-arc-0"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#f7630c"
-              id="gauge-chart-arc-1"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#c50f1f"
-              id="gauge-chart-arc-2"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
+            <g
+              aria-label="3 segments"
+              role="listbox"
+            >
+              <path
+                aria-label="Low Risk, 0 to 33"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#107c10"
+                id="gauge-chart-arc-0"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="Medium Risk, 33 to 67"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#f7630c"
+                id="gauge-chart-arc-1"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="High Risk, 67 to 100"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#c50f1f"
+                id="gauge-chart-arc-2"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+            </g>
             <g
               transform="rotate(45, 0, 0)"
             >
@@ -5596,42 +5716,47 @@ Object {
               >
                 100
               </text>
-              <path
-                aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#107c10"
-                id="gauge-chart-arc-0"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#f7630c"
-                id="gauge-chart-arc-1"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
-              <path
-                aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
-                d="M0,0Z"
-                data-is-focusable="true"
-                fill="#c50f1f"
-                id="gauge-chart-arc-2"
-                opacity="1"
-                role="img"
-                stroke-width="0"
-                tabindex="0"
-              />
+              <g
+                aria-label="3 segments"
+                role="listbox"
+              >
+                <path
+                  aria-label="Low Risk, 0 to 33"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#107c10"
+                  id="gauge-chart-arc-0"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="Medium Risk, 33 to 67"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#f7630c"
+                  id="gauge-chart-arc-1"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="High Risk, 67 to 100"
+                  class="fui-gc__segment"
+                  d="M0,0Z"
+                  data-is-focusable="true"
+                  fill="#c50f1f"
+                  id="gauge-chart-arc-2"
+                  opacity="1"
+                  role="option"
+                  stroke-width="0"
+                  tabindex="0"
+                />
+              </g>
               <g
                 transform="rotate(45, 0, 0)"
               >
@@ -5849,42 +5974,47 @@ Object {
             >
               100
             </text>
-            <path
-              aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#107c10"
-              id="gauge-chart-arc-0"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#f7630c"
-              id="gauge-chart-arc-1"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
-              d="M0,0Z"
-              data-is-focusable="true"
-              fill="#c50f1f"
-              id="gauge-chart-arc-2"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
+            <g
+              aria-label="3 segments"
+              role="listbox"
+            >
+              <path
+                aria-label="Low Risk, 0 to 33"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#107c10"
+                id="gauge-chart-arc-0"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="Medium Risk, 33 to 67"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#f7630c"
+                id="gauge-chart-arc-1"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+              <path
+                aria-label="High Risk, 67 to 100"
+                class="fui-gc__segment"
+                d="M0,0Z"
+                data-is-focusable="true"
+                fill="#c50f1f"
+                id="gauge-chart-arc-2"
+                opacity="1"
+                role="option"
+                stroke-width="0"
+                tabindex="0"
+              />
+            </g>
             <g
               transform="rotate(45, 0, 0)"
             >
@@ -6118,42 +6248,47 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
@@ -6321,42 +6456,47 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             100
           </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            id="gauge-chart-arc-0"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            id="gauge-chart-arc-1"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            id="gauge-chart-arc-2"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
+          <g
+            aria-label="3 segments"
+            role="listbox"
+          >
+            <path
+              aria-label="Low Risk, 0 to 33"
+              class="fui-gc__segment"
+              d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
+              data-is-focusable="true"
+              fill="#107c10"
+              id="gauge-chart-arc-0"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="Medium Risk, 33 to 67"
+              class="fui-gc__segment"
+              d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
+              data-is-focusable="true"
+              fill="#f7630c"
+              id="gauge-chart-arc-1"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+            <path
+              aria-label="High Risk, 67 to 100"
+              class="fui-gc__segment"
+              d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
+              data-is-focusable="true"
+              fill="#c50f1f"
+              id="gauge-chart-arc-2"
+              opacity="1"
+              role="option"
+              stroke-width="0"
+              tabindex="0"
+            />
+          </g>
           <g
             transform="rotate(54, 0, 0)"
           >
