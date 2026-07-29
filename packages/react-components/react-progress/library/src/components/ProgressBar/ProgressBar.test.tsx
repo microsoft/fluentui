@@ -16,17 +16,18 @@ describe('ProgressBar', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            label: 'Test Label',
-            description: 'Test Description',
-          },
-        },
-      ],
+    //
+    // `component-has-static-classnames-object` asserts `progressBarClassNames` still holds
+    // `fui-ProgressBar` / `fui-ProgressBar__<slot>` strings AND that they are rendered. Both
+    // are false by design: DECISIONS.md D16.1 removed the BEM statics, D16.5 narrowed the
+    // export to `{ root }` and re-pointed it at the group marker.
+    // `component-has-group-marker` (now a default test) is its replacement and asserts the contract that
+    // actually holds now — including the D15.1 `classList[0]` invariant the static used to
+    // satisfy incidentally (D16.2/D16.6). Its `has-static-classnames` testOptions entry
+    // (which rendered a label/description so the sub-slot statics could be found) goes with it.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
   });
   const originalConsoleError = console.error;

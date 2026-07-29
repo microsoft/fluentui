@@ -1,6 +1,6 @@
 export {
   ProgressBar,
-  progressBarClassNames,
+  progressBarClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderProgressBar_unstable,
   useProgressBar_unstable,
   useProgressBarStyles_unstable,

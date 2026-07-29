@@ -7,7 +7,7 @@ export type {
 } from './components/ProgressBar/index';
 export {
   ProgressBar,
-  progressBarClassNames,
+  progressBarClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderProgressBar_unstable,
   useProgressBarStyles_unstable,
   useProgressBar_unstable,
