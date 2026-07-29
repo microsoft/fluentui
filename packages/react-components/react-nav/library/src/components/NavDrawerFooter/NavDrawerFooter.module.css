@@ -1,0 +1,68 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useNavDrawerFooterStyles_unstable:
+ *
+ *   #  mergeClasses argument             → target
+ *   -----------------------------------------------------------------------------------
+ *   1  navDrawerFooterClassNames.root    → REMOVED (D16.1); the root's identity is now the
+ *                                          `group/fui-nav-drawer-footer` marker, and `.root`
+ *                                          leads the clsx
+ *   2  useStyles.root                    → fui.components.l2 .root
+ *   3  consumer className                → unlayered (always wins)
+ *
+ * ── Altitude: l2, not l1 (D2 amendment 2) ───────────────────────────────────────────
+ * `useNavDrawerFooterStyles_unstable` calls react-drawer's converted
+ * `useDrawerFooterStyles_unstable(state)` on the same state object, so every declaration
+ * here sits over ANOTHER component's hook output (DrawerFooter authors its root in
+ * `fui.base` plus a `::before` separator in `fui.components.l1`). `display` and
+ * `flex-direction` ARE collisions: DrawerFooter's reset sets `display: flex` with the
+ * default row direction and `align-items: center`.
+ *
+ * ── THE `padding` SLICE IS DELIBERATELY NOT REPRODUCED ──────────────────────────────
+ * The Griffel source writes a FIVE-value `padding` shorthand:
+ *
+ *   padding: `${spacingVerticalXXS} ${spacingHorizontalXS} ${spacingVerticalXXS}
+ *             ${spacingVerticalXS}  ${spacingHorizontalMNudge}`
+ *
+ * and Griffel compiled it verbatim —
+ * `.f1j1cbdv{padding:var(--spacingVerticalXXS) var(--spacingHorizontalXS)
+ * var(--spacingVerticalXXS) var(--spacingVerticalXS) var(--spacingHorizontalMNudge);}`.
+ * `padding` accepts one to four values, so five is a PARSE ERROR: every browser drops the
+ * declaration and NavDrawerFooter renders today with DrawerFooter's own
+ * `pt-vertical-l px-horizontal-xxl pb-vertical-xxl` and nothing from this slice.
+ *
+ * Expanding it to longhands — which is what CONVERSION_GUIDE §2 asks for every OTHER
+ * shorthand — would therefore CHANGE rendered pixels: an `l2` padding here would start
+ * beating DrawerFooter's `fui.base` padding for the first time. A conversion may not change
+ * pixels in either direction, so the slice is omitted and the upstream bug is reported
+ * rather than silently fixed. Restoring it is a one-line CSS change once someone decides
+ * what the four intended values are.
+ *
+ * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
+ * `rowGap: spacingVerticalXXS` becomes `gap-y-vertical-xxs`; raw `var(--spacingVertical*)`
+ * is the one authoring form that does not scale with `--base-scale`.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/NavDrawerFooter/useNavDrawerFooterStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /* arg #2 — from useStyles.root, minus the invalid `padding`; see the header */
+  .root {
+    @apply flex flex-col gap-y-vertical-xxs;
+  }
+}

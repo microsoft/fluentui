@@ -1,149 +1,100 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
-import { motionTokens } from '@fluentui/react-motion';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-import type { SplitNavItemSlots, SplitNavItemState } from './SplitNavItem.types';
-import { navItemTokens, useRootDefaultClassName } from '../sharedNavStyles.styles';
+import { clsx } from 'clsx';
 
-export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
-  root: 'fui-SplitNavItem',
-  navItem: 'fui-SplitNavItem__navItem',
-  actionButton: 'fui-SplitNavItem__actionButton',
-  toggleButton: 'fui-SplitNavItem__toggleButton',
-  menuButton: 'fui-SplitNavItem__menuButton',
-  /**
-   * Tooltips don't have a class name prop, so this is just to satisfy the linter.
-   */
-  actionButtonTooltip: 'fui-SplitNavItem__actionButtonTooltip',
-  toggleButtonTooltip: 'fui-SplitNavItem__toggleButtonTooltip',
-  menuButtonTooltip: 'fui-SplitNavItem__menuButtonTooltip',
-};
-// Don't use makeResetStyles here because the sub components call it once and
-// This links says that makeResetStyles should only be called once per element
-// https://griffel.js.org/react/api/make-reset-styles/#limitations
+import type { SplitNavItemState } from './SplitNavItem.types';
 
-const { actionButton, toggleButton, menuButton } = splitNavItemClassNames;
-const buttonHoverStyles = {
-  [`& .${actionButton}, & .${toggleButton}, & .${menuButton}`]: {
-    opacity: 1,
-    pointerEvents: 'auto',
-  },
-};
+import styles from './SplitNavItem.module.css';
 
 /**
- * Styles for the root slot
+ * SplitNavItem's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * type has narrowed from `SlotClassNames<SplitNavItemSlots>` to `{ root: string }` — the
+ * `navItem`, `actionButton`, `toggleButton`, `menuButton` and the three `*Tooltip` keys are
+ * gone (D16.5) — and the value is no longer the `fui-SplitNavItem` BEM static (D16.1).
+ *
+ * The marker is ALSO what the three button slots read their show/hide state from:
+ * `SplitNavItem.module.css`'s `.hover-action` composes `group-hover/fui-split-nav-item` and
+ * `group-focus-within/fui-split-nav-item`, replacing the `& .fui-SplitNavItem__*Button`
+ * descendant selectors the statics used to key (D16.3, mechanism M2).
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but
+ * terminates it in selector position, so `'.' + splitNavItemClassNames.root` is invalid CSS.
+ * Use `fuiSelector(splitNavItemClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
  */
-const useSplitNaveItemStyles = makeStyles({
-  baseRoot: {
-    display: 'flex',
-    gap: 'unset',
-    alignItems: 'stretch',
-    padding: 'unset',
-    textAlign: 'unset',
-    backgroundColor: navItemTokens.backgroundColor,
-    ...navItemTokens.transitionTokens,
-
-    ':hover': {
-      backgroundColor: navItemTokens.backgroundColorHover,
-      ...buttonHoverStyles,
-    },
-
-    ':focus-within': buttonHoverStyles,
-
-    ':active': {
-      backgroundColor: navItemTokens.backgroundColorPressed,
-    },
-  },
-  baseNavItem: {
-    // styles that we want to disagree with the default on
-    display: 'flex',
-    textTransform: 'none',
-    alignSelf: 'stretch',
-    textAlign: 'left',
-    position: 'relative',
-    justifyContent: 'start',
-    gap: tokens.spacingVerticalL,
-    backgroundColor: 'transparent',
-  },
-  baseSecondary: {
-    minWidth: '28px',
-    paddingInlineEnd: '12px',
-    paddingInlineStart: '5px',
-    paddingBlockStart: '5px',
-    alignItems: 'start',
-  },
-  baseMedium: {
-    paddingBlockStart: '9px',
-  },
-
-  baseLarge: {
-    paddingBlockStart: '12px',
-  },
-
-  hoverAction: {
-    opacity: 0,
-    pointerEvents: 'none',
-    transition: `opacity ${motionTokens.durationFast}ms ${motionTokens.curveEasyEase}`,
-    willChange: 'opacity',
-  },
-});
+export const splitNavItemClassNames: { root: string } = {
+  root: 'group/fui-split-nav-item',
+};
 
 /**
  * Apply styling to the SplitNavItem slots based on the state
  */
 export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitNavItemState => {
-  const splitNavItemStyles = useSplitNaveItemStyles();
-  const sharedRootClassNames = useRootDefaultClassName();
+  const isMediumDensity = state.density === 'medium';
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    splitNavItemClassNames.root,
-    sharedRootClassNames,
-    splitNavItemStyles.baseRoot,
-    state.root.className,
-  );
+  // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). The
+  // unconditional hashed module class leads so the marker is never `classList[0]`: nwsapi's
+  // jsdom `:scope` polyfill builds its anchor from `escape(element.classList[0])` and the
+  // `/` survives that escaping into an invalid selector, throwing a render-time
+  // `AggregateError` (D15.1). Before D16 the `fui-SplitNavItem` static held that position.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in SplitNavItem.module.css, not
+  // by the order of these arguments.
+  state.root.className = clsx(styles.root, 'group/fui-split-nav-item', state.root.className);
 
   if (state.navItem) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.navItem.className = mergeClasses(
-      splitNavItemClassNames.navItem,
-      splitNavItemStyles.baseNavItem,
-      state.navItem.className,
-    );
+    state.navItem.className = clsx(styles['nav-item'], state.navItem.className);
   }
 
+  // The three button slots are react-button roots this hook RENDERS, so it holds their slot
+  // objects and D16.3's M2 applies: the class it composes here is what the module's
+  // `group-*/fui-split-nav-item` variants attach to, replacing the
+  // `& .fui-SplitNavItem__actionButton, …` descendant selectors the statics used to key.
   if (state.actionButton) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.actionButton.className = mergeClasses(
-      splitNavItemClassNames.actionButton,
-      splitNavItemStyles.baseSecondary,
-      splitNavItemStyles.hoverAction,
-      state.density === 'medium' && splitNavItemStyles.baseMedium,
+    state.actionButton.className = clsx(
+      styles.secondary,
+      styles['hover-action'],
+      isMediumDensity && styles.medium,
       state.actionButton.className,
     );
   }
 
   if (state.toggleButton) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.toggleButton.className = mergeClasses(
-      splitNavItemClassNames.toggleButton,
-      splitNavItemStyles.baseSecondary,
-      splitNavItemStyles.hoverAction,
-      state.density === 'medium' && splitNavItemStyles.baseMedium,
+    state.toggleButton.className = clsx(
+      styles.secondary,
+      styles['hover-action'],
+      isMediumDensity && styles.medium,
       state.toggleButton.className,
     );
   }
 
   if (state.menuButton) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.menuButton.className = mergeClasses(
-      splitNavItemClassNames.menuButton,
-      splitNavItemStyles.baseSecondary,
-      splitNavItemStyles.hoverAction,
-      state.density === 'medium' && splitNavItemStyles.baseMedium,
+    state.menuButton.className = clsx(
+      styles.secondary,
+      styles['hover-action'],
+      isMediumDensity && styles.medium,
       state.menuButton.className,
     );
   }

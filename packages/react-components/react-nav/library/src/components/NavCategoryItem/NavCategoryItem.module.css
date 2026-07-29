@@ -1,0 +1,261 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useNavCategoryItemStyles_unstable:
+ *
+ *   #  mergeClasses argument                          → target
+ *   -----------------------------------------------------------------------------------
+ *   root slot
+ *   1  navCategoryItemClassNames.root                 → REMOVED (D16.1); the root's identity
+ *                                                       is now the
+ *                                                       `group/fui-nav-category-item` marker,
+ *                                                       and `.root` leads the clsx
+ *   2  useRootDefaultClassName       (makeReset)      → fui.base          .root
+ *   3  useRootStyles.base                             → fui.components.l1 .root
+ *   4  density === 'small' && useSmallStyles          → fui.components.l1 .small
+ *   5  selected && !open && useIndicatorStyles.base   → fui.components.l1 .indicator
+ *   6  selected && !open && useContentStyles.selected → fui.components.l1 .selected
+ *   7  consumer className                             → unlayered (always wins)
+ *
+ *   expandIcon slot
+ *   1  navCategoryItemClassNames.expandIcon           → REMOVED (D16.1/D16.5)
+ *   2  useExpandIconStyles.base                       → fui.components.l1 .expand-icon
+ *   3  consumer className                             → unlayered (always wins)
+ *
+ *   icon slot
+ *   1  navCategoryItemClassNames.icon                 → REMOVED (D16.1/D16.5)
+ *   2  useIconStyles.base                             → fui.components.l1 .icon (own box) +
+ *                                                       UNLAYERED (react-icons descendants)
+ *   3  selected && useIconStyles.selected             → UNLAYERED .icon-selected
+ *   4  consumer className                             → unlayered (always wins)
+ *
+ * `useExpandIconStyles.selected` (typographyStyles.body1Strong) exists in the Griffel source
+ * but is never passed to any mergeClasses call — dead code, so it is not reproduced here.
+ * Reported in the conversion report rather than silently kept.
+ *
+ * The shared slices (args #2, #4, #5, #6 and the icon slot) are DUPLICATED into this module
+ * rather than shared: two `@layer fui.components.l1` rules in two different files are ranked
+ * by their position in the aggregated `dist/styles.css`, which is emission order, not
+ * argument order. Same shape as react-drawer's duplicated `useDrawerBaseStyles` blocks. See
+ * NavItem.module.css's header for the full rationale, spacing/RTL/shorthand notes.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/sharedNavStyles.styles.js and
+ * lib-commonjs/components/NavCategoryItem/useNavCategoryItem.styles.js.
+ */
+
+/* from useIndicatorStyles.base.'::after'.animationName */
+@keyframes nav-category-item-indicator-enter {
+  0% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: var(--colorCompoundBrandForeground1);
+  }
+}
+
+/* from useIconStyles.selected.'& .fui-Icon-filled'.animationName */
+@keyframes nav-category-item-icon-filled-enter {
+  0% {
+    opacity: 0;
+    color: transparent;
+  }
+
+  100% {
+    opacity: 1;
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+}
+
+/* from useIconStyles.selected.'& .fui-Icon-regular'.animationName */
+@keyframes nav-category-item-icon-regular-exit {
+  0% {
+    opacity: 1;
+    color: var(--colorNeutralForeground2);
+  }
+
+  100% {
+    opacity: 0;
+    color: transparent;
+  }
+}
+
+@layer fui.base {
+  /* arg #2 — from the shared useRootDefaultClassName (makeResetStyles) */
+  .root {
+    @apply relative flex w-full box-border cursor-pointer items-start text-start normal-case no-underline;
+    @apply gap-vertical-l py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s;
+
+    /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
+    justify-content: start;
+
+    background-color: var(--colorNeutralBackground4);
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground2);
+
+    /* from `border: 'none'` */
+    border-block-start-style: none;
+    border-block-end-style: none;
+    border-inline-start-style: none;
+    border-inline-end-style: none;
+
+    transition-duration: var(--durationFaster);
+    transition-timing-function: var(--curveLinear);
+    transition-property: background-color;
+
+    /* typographyStyles.body1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground4Hover);
+    }
+
+    /* the component's own insert focus indicator — not the shared focus-ring utility */
+    @variant focus-visible {
+      outline-width: var(--spacing-thick);
+      outline-style: solid;
+      outline-color: var(--colorStrokeFocus2);
+      outline-offset: calc(var(--spacing-thick) * -1);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #3 — from useRootStyles.base. It re-states the reset's own `width: 100%`; kept
+   * because it is the slice that made `.root` an unconditional module class, and because
+   * omitting it would leave the mapping table above with a hole.
+   */
+  .root {
+    @apply w-full;
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #4 — from the shared useSmallStyles.root */
+  .small {
+    @apply py-vertical-xs ps-horizontal-m-nudge pe-horizontal-s;
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #5 — from the shared useIndicatorStyles.base (the "french fry") */
+  .indicator {
+    &::after {
+      @apply absolute h-vertical-xl w-horizontal-xs -ms-horizontal-l;
+
+      content: '';
+      background-color: var(--colorCompoundBrandForeground1);
+      border-radius: var(--borderRadiusCircular);
+
+      animation-name: nav-category-item-indicator-enter;
+      animation-duration: var(--durationFaster);
+      animation-fill-mode: both;
+      animation-timing-function: var(--curveLinear);
+    }
+
+    @variant forced-colors {
+      &::after {
+        /* D6: the hardcoded 2px is upstream's, not a stroke-width token */
+        outline-width: 2px;
+        outline-style: solid;
+        outline-color: var(--colorTransparentStroke);
+        outline-offset: -2px;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #6 — from the shared useContentStyles.selected (typographyStyles.body1Strong) */
+  .selected {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+  }
+}
+
+@layer fui.components.l1 {
+  /* expandIcon arg #2 — from useExpandIconStyles.base */
+  .expand-icon {
+    @apply ms-auto h-vertical-xl;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * icon arg #2, the half that styles THIS package's own <span> — from the shared
+   * useIconStyles.base. See NavItem.module.css for the invalid-declaration note; both are
+   * reproduced verbatim from the compiled atomics and render nothing in any browser.
+   */
+  .icon {
+    @apply grid justify-center overflow-hidden min-h-vertical-xl min-w-horizontal-xl;
+
+    grid-template-areas: overlay-area;
+    align-items: top;
+  }
+}
+
+/*
+ * ── The icon swap must be UNLAYERED (D2 amendment) ───────────────────────────────────
+ *
+ * These rules style `@fluentui/react-icons`' two `bundleIcon()` <svg>s. react-icons stays on
+ * Griffel (D11) and Griffel injects UNLAYERED atomics
+ * (`.fjseox{display:none}` / `.f1w7gpdv{display:inline}`); an unlayered normal author
+ * declaration outranks EVERY `@layer` before specificity is even consulted, so a layered
+ * 0-2-0 rule here would lose to `.fjseox`'s 0-1-0 and the glyph would never swap.
+ * See NavItem.module.css's copy of this note for the full DOM evidence.
+ *
+ * ORDER IS LOAD-BEARING: every selector flattens to 0-2-0, so file position is the only
+ * tiebreak — blocks are in the icon slot's mergeClasses ARGUMENT order (base #2, then
+ * selected #3).
+ */
+.icon {
+  & :global(.fui-Icon-filled) {
+    grid-area: overlay-area;
+    color: transparent;
+    display: none;
+  }
+
+  & :global(.fui-Icon-regular) {
+    grid-area: overlay-area;
+    display: inline;
+  }
+}
+
+/* icon arg #3 — from the shared useIconStyles.selected */
+.icon-selected {
+  & :global(.fui-Icon-filled) {
+    display: inline;
+
+    animation-name: nav-category-item-icon-filled-enter;
+    animation-duration: var(--durationFaster);
+    animation-fill-mode: both;
+    animation-timing-function: var(--curveLinear);
+  }
+
+  & :global(.fui-Icon-regular) {
+    animation-name: nav-category-item-icon-regular-exit;
+    animation-duration: var(--durationFaster);
+    animation-fill-mode: both;
+    animation-timing-function: var(--curveLinear);
+  }
+}

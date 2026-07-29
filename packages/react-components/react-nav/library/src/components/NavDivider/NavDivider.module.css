@@ -1,0 +1,56 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useNavDividerStyles_unstable:
+ *
+ *   #  mergeClasses argument           → target
+ *   -----------------------------------------------------------------------------------
+ *   1  navDividerClassNames.root       → REMOVED (D16.1); the root's identity is now the
+ *                                        `group/fui-nav-divider` marker, and `.root` leads
+ *                                        the clsx
+ *   2  useStyles.root                  → fui.components.l2 .root
+ *   3  consumer className              → unlayered (always wins)
+ *   —  navDividerClassNames.wrapper    → REMOVED; the wrapper slot's ONLY library token was
+ *                                        the static, so the whole assignment went with it
+ *                                        (CONVERSION_GUIDE "a slot whose only library token
+ *                                        is the static")
+ *
+ * ── Altitude: l2, not l1 (D2 amendment 2) ───────────────────────────────────────────
+ * NavDivider IS a `@fluentui/react-divider` Divider: `useNavDividerStyles_unstable` calls
+ * `useDividerStyles_unstable(state)` on the same state object, so every declaration here
+ * sits over ANOTHER component's hook output. react-divider is converted, and its root rules
+ * live in `fui.base` / `fui.components.l1`; ranking these at l1 too would hand the tie to
+ * stylesheet load order. `flex-grow` is the collision that makes this load-bearing —
+ * Divider's own root sets `flex-grow: 1`, this slice sets `0`.
+ *
+ * Argument order still reproduces the same winner: `useDividerStyles_unstable` runs LAST and
+ * appends its classes with NavDivider's string as its consumer `className`, i.e. NavDivider's
+ * classes end up last in the emitted `class` attribute. Under Griffel that (plus unlayered
+ * atomics) is what made this slice win; under the cascade it is the layer.
+ *
+ * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
+ * `marginTop` / `marginBottom` are physical in the compiled atomics (`.fvjh0tl` / `.fd1gkq`,
+ * unpaired) because the block axis is not RTL-flipped; 4px lands on the `xs` step.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/NavDivider/useNavDividerStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /* arg #2 — from useStyles.root */
+  .root {
+    @apply grow-0 mt-vertical-xs mb-vertical-xs;
+  }
+}

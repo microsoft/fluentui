@@ -1,0 +1,233 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useSplitNavItemStyles_unstable:
+ *
+ *   #  mergeClasses argument                    → target
+ *   -----------------------------------------------------------------------------------
+ *   root slot (a plain <div> this component owns)
+ *   1  splitNavItemClassNames.root              → REMOVED (D16.1); the root's identity is
+ *                                                 now the `group/fui-split-nav-item` marker,
+ *                                                 and `.root` leads the clsx
+ *   2  useRootDefaultClassName  (makeReset)     → fui.base          .root
+ *   3  .baseRoot                                → fui.components.l1 .root  (own declarations)
+ *                                                 + the two descendant halves, relocated —
+ *                                                 see "M2" below
+ *   4  consumer className                       → unlayered (always wins)
+ *
+ *   navItem slot (a NavItem or NavSubItem — another component's root)
+ *   1  splitNavItemClassNames.navItem           → REMOVED (D16.1/D16.5)
+ *   2  .baseNavItem                             → fui.components.l2 .nav-item
+ *   3  consumer className                       → unlayered (always wins)
+ *
+ *   actionButton / toggleButton / menuButton slots (react-button roots)
+ *   1  splitNavItemClassNames.<slot>            → REMOVED (D16.1/D16.5)
+ *   2  .baseSecondary                           → fui.components.l2 .secondary
+ *   3  .hoverAction                             → fui.components.l2 .hover-action
+ *   4  density === 'medium' && .baseMedium      → fui.components.l2 .medium
+ *   5  consumer className                       → unlayered (always wins)
+ *
+ * ── M2: the three `& .fui-SplitNavItem__*Button` selectors become slot composition ───
+ * `.baseRoot` reached into the three button slots by NAME:
+ *
+ *   ':hover':        { '& .fui-SplitNavItem__actionButton, …': { opacity: 1, pointerEvents: 'auto' } }
+ *   ':focus-within': { '& .fui-SplitNavItem__actionButton, …': { … } }
+ *
+ * D16 deletes the statics those selectors keyed on, and D16.3 says a SUB-SLOT of a component
+ * this package renders itself takes M2 (JS slot-className composition), not a data attribute
+ * and not a marker: `useSplitNavItemStyles_unstable` holds `state.actionButton` /
+ * `state.toggleButton` / `state.menuButton`, so the coupling can be REMOVED rather than
+ * renamed. The declarations now live on `.hover-action`, which those slots already carried,
+ * and read the root's state through the named group — `group-hover/fui-split-nav-item` and
+ * `group-focus-within/fui-split-nav-item`. Pseudo-class state needs no JS mirroring: `:hover`
+ * and `:focus-within` are true of the root whenever they are true of the subtree.
+ *
+ * Specificity note: Griffel's descendant form was 0-2-0 and beat `.hoverAction`'s 0-1-0
+ * outright. Composed group variants flatten to 0-1-0 (`:is(:where(…) *)` contributes
+ * nothing), so the tie is decided by FILE POSITION — which is why the two variant blocks are
+ * nested at the END of `.hover-action`, after `opacity: 0`. Do not hoist them.
+ *
+ * ── Altitude ────────────────────────────────────────────────────────────────────────
+ * The root is this component's own <div> → `fui.base` + `fui.components.l1`. Every other
+ * slot is ANOTHER component's root (NavItem/NavSubItem from this package, Button /
+ * ToggleButton / MenuButton from react-button), so those rules are `fui.components.l2` per
+ * D2 amendment 2. All four of those components are converted, so l2 is what reproduces the
+ * winner Griffel got from passing this className in as their LAST mergeClasses argument.
+ *
+ * ── Dead slice ──────────────────────────────────────────────────────────────────────
+ * `.baseLarge` (`paddingBlockStart: '12px'`) exists in the Griffel source but is never passed
+ * to any mergeClasses call — `density` is only ever `'small'` or `'medium'`. Not reproduced;
+ * flagged in the conversion report.
+ *
+ * ── Shorthands and keywords (CONVERSION_GUIDE §2) ───────────────────────────────────
+ * `gap: 'unset'` and `padding: 'unset'` are expanded to their longhands. `justify-content`
+ * and `align-items` keep the literal `start` keyword the compiled atomics carry —
+ * `justify-start` / `items-start` emit `flex-start`, a different keyword. The `transition`
+ * shorthand becomes its three longhands; `motionTokens.durationFast` / `curveEasyEase` are
+ * JS constants, not CSS custom properties, so they compile to literals exactly as Griffel
+ * emitted them.
+ *
+ * ── RTL (DECISIONS.md D5) ────────────────────────────────────────────────────────────
+ * The only [ltr, rtl] pair is `.baseNavItem`'s `text-align: left|right` — a pure property
+ * flip, reproduced by `text-align: start` with no `@variant rtl` twin. (`.fr12795` /
+ * `.fcl876f` are also emitted as a pair but differ only in whitespace inside the
+ * `cubic-bezier()`.) Every padding here is already logical in the compiled output.
+ *
+ * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
+ * 12px lands on the `m` step; 28px, 5px and 9px match no step and take the numeric fallback.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/sharedNavStyles.styles.js and
+ * lib-commonjs/components/SplitNavItem/useSplitNavItemStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* arg #2 — from the shared useRootDefaultClassName (makeResetStyles) */
+  .root {
+    @apply relative flex w-full box-border cursor-pointer items-start text-start normal-case no-underline;
+    @apply gap-vertical-l py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s;
+
+    /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
+    justify-content: start;
+
+    background-color: var(--colorNeutralBackground4);
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground2);
+
+    /* from `border: 'none'` */
+    border-block-start-style: none;
+    border-block-end-style: none;
+    border-inline-start-style: none;
+    border-inline-end-style: none;
+
+    transition-duration: var(--durationFaster);
+    transition-timing-function: var(--curveLinear);
+    transition-property: background-color;
+
+    /* typographyStyles.body1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground4Hover);
+    }
+
+    /* the component's own insert focus indicator — not the shared focus-ring utility */
+    @variant focus-visible {
+      outline-width: var(--spacing-thick);
+      outline-style: solid;
+      outline-color: var(--colorStrokeFocus2);
+      outline-offset: calc(var(--spacing-thick) * -1);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #3 — from useSplitNaveItemStyles.baseRoot, the half that styles this component's own
+   * <div>. Its two descendant halves moved to `.hover-action` below (see "M2" in the header).
+   */
+  .root {
+    @apply flex items-stretch;
+
+    /* from `gap: 'unset'` */
+    row-gap: unset;
+    column-gap: unset;
+
+    /* from `padding: 'unset'` */
+    padding-block-start: unset;
+    padding-block-end: unset;
+    padding-inline-start: unset;
+    padding-inline-end: unset;
+
+    text-align: unset;
+
+    background-color: var(--colorNeutralBackground4);
+    transition-duration: var(--durationFaster);
+    transition-timing-function: var(--curveLinear);
+    transition-property: background-color;
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground4Hover);
+    }
+
+    @variant active {
+      background-color: var(--colorNeutralBackground4Pressed);
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /* navItem arg #2 — from useSplitNaveItemStyles.baseNavItem */
+  .nav-item {
+    @apply relative flex self-stretch text-start normal-case gap-vertical-l;
+
+    /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
+    justify-content: start;
+
+    background-color: transparent;
+  }
+}
+
+@layer fui.components.l2 {
+  /* button arg #2 — from useSplitNaveItemStyles.baseSecondary */
+  .secondary {
+    @apply min-w-28 pt-5 ps-5 pe-horizontal-m;
+
+    /* `start`, not `flex-start`: `items-start` would emit the other keyword */
+    align-items: start;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * button arg #3 — from useSplitNaveItemStyles.hoverAction, PLUS the two descendant halves
+   * of `.baseRoot` that used to key on the `fui-SplitNavItem__*Button` statics. The variant
+   * blocks MUST stay last in this rule; see "M2" in the header.
+   */
+  .hover-action {
+    opacity: 0;
+    pointer-events: none;
+    will-change: opacity;
+
+    /* from `transition: 'opacity 150ms cubic-bezier(0.33,0,0.67,1)'` (motionTokens) */
+    transition-property: opacity;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+
+    @variant group-hover/fui-split-nav-item {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @variant group-focus-within/fui-split-nav-item {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * button arg #4 — from useSplitNaveItemStyles.baseMedium. Must stay AFTER `.secondary`,
+   * whose `padding-block-start: 5px` it replaces.
+   */
+  .medium {
+    @apply pt-9;
+  }
+}

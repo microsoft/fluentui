@@ -1,0 +1,63 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useNavDrawerBodyStyles_unstable:
+ *
+ *   #  mergeClasses argument             → target
+ *   -----------------------------------------------------------------------------------
+ *   1  navDrawerBodyClassNames.root      → REMOVED (D16.1); the root's identity is now the
+ *                                          `group/fui-nav-drawer-body` marker, and `.root`
+ *                                          leads the clsx
+ *   2  useStyles.root                    → fui.components.l2 .root
+ *   3  consumer className                → unlayered (always wins)
+ *
+ * ── Altitude: l2, not l1 (D2 amendment 2) ───────────────────────────────────────────
+ * `useNavDrawerBodyStyles_unstable` calls react-drawer's converted
+ * `useDrawerBodyStyles_unstable(state)` on the same state object, so every declaration here
+ * sits over ANOTHER component's hook output. DrawerBody authors its root entirely in
+ * `fui.base`, including two structural overrides (`:first-child { padding-top }` /
+ * `:last-child { padding-bottom }`) that are 0-2-0 to this rule's 0-1-0.
+ *
+ * That specificity gap does NOT decide the winner and must not: layer precedence is compared
+ * BEFORE specificity, so `fui.components.l2` beats `fui.base` outright and this slice's
+ * `padding-block: 0` suppresses both edge paddings. Griffel produced exactly the same
+ * outcome for the same reason from the other direction — this slice's `padding` shorthand
+ * was an UNLAYERED atomic and unlayered beats every layer.
+ *
+ * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
+ * The four-value `padding` shorthand becomes `py-0` / `ps-horizontal-m-nudge` /
+ * `pe-horizontal-xs`, and `rowGap: spacingVerticalXXS` becomes `gap-y-vertical-xxs`. Raw
+ * `var(--spacingHorizontal*)` / `var(--spacingVertical*)` is the one authoring form that does
+ * not scale with `--base-scale`.
+ *
+ * ── RTL (DECISIONS.md D5) ────────────────────────────────────────────────────────────
+ * The two `padding` atomics (`.fif7vu7` / `.f1htewbf`) are an [ltr, rtl] pair whose only
+ * delta is which horizontal edge gets which token — a pure property flip, reproduced by the
+ * logical longhands with no `@variant rtl` twin.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/NavDrawerBody/useNavDrawerBodyStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /* arg #2 — from useStyles.root */
+  .root {
+    @apply flex flex-col;
+    @apply py-0 ps-horizontal-m-nudge pe-horizontal-xs gap-y-vertical-xxs;
+
+    align-items: unset;
+  }
+}

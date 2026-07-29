@@ -1,0 +1,76 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useHamburgerStyles_unstable:
+ *
+ *   #  mergeClasses argument         → target
+ *   -----------------------------------------------------------------------------------
+ *   1  hamburgerClassNames.root      → REMOVED (D16.1); the root's identity is now the
+ *                                      `group/fui-hamburger` marker, and `.root` leads the
+ *                                      clsx
+ *   2  useStyles.root                → fui.components.l2 .root
+ *   3  consumer className            → unlayered (always wins)
+ *   —  hamburgerClassNames.icon      → REMOVED; the icon slot's ONLY library token was the
+ *                                      static, so the whole assignment (and its `if`) went
+ *                                      with it (CONVERSION_GUIDE, "a slot whose only library
+ *                                      token is the static")
+ *
+ * ── Altitude: l2, not l1 (D2 amendment 2) ───────────────────────────────────────────
+ * Hamburger IS a `@fluentui/react-button` Button: `useHamburgerStyles_unstable` calls
+ * `useButtonStyles_unstable(state)` on the same state object, so every declaration here sits
+ * over ANOTHER component's hook output. react-button is converted and authors its root in
+ * `fui.base` + `fui.components.l1`; every declaration below IS a collision — Button's root
+ * sets `background-color`, its four `border-*-style`s, `text-decoration-line: none` and its
+ * own `:hover` / `:active` background colours.
+ *
+ * Under Griffel this slice won because its atomics were unlayered and Button's are layered;
+ * l2 reproduces that winner from inside the layer system. Note that l2 also outranks
+ * Button's DISABLED background rules, which is the pre-existing behaviour, not a change.
+ *
+ * Button's own unlayered `.fui-Icon-*` swap blocks are untouched: nothing here styles the
+ * icon, so there is no unlayered block in this module.
+ *
+ * ── Shorthands (CONVERSION_GUIDE §2) ─────────────────────────────────────────────────
+ * `border: 'none'` compiled to the `border:none` SHORTHAND. `border-*-style: none` is the
+ * half that carries the rendering — a computed `border-*-width` is 0 whenever its style is
+ * `none` — so the four style longhands reproduce it exactly without re-declaring widths or
+ * colours that can never be seen. Same treatment react-drawer's `animation-exit` got.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/Hamburger/useHamburgerStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /* arg #2 — from useStyles.root */
+  .root {
+    @apply no-underline;
+
+    background-color: var(--colorNeutralBackground4);
+
+    /* from `border: 'none'` — see the header */
+    border-block-start-style: none;
+    border-block-end-style: none;
+    border-inline-start-style: none;
+    border-inline-end-style: none;
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground4Hover);
+    }
+
+    @variant active {
+      background-color: var(--colorNeutralBackground4Pressed);
+    }
+  }
+}

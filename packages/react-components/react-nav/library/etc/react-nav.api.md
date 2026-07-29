@@ -6,12 +6,10 @@
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ButtonProps } from '@fluentui/react-button';
-import type { ButtonSlots } from '@fluentui/react-button';
 import type { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DividerProps } from '@fluentui/react-divider';
-import { DividerSlots } from '@fluentui/react-divider';
 import type { DividerState } from '@fluentui/react-divider';
 import type { DrawerBodyProps } from '@fluentui/react-drawer';
 import type { DrawerBodySlots } from '@fluentui/react-drawer';
@@ -28,13 +26,11 @@ import type { DrawerState } from '@fluentui/react-drawer';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { MenuButtonProps } from '@fluentui/react-button';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ToggleButtonProps } from '@fluentui/react-button';
 import type { TooltipProps } from '@fluentui/react-tooltip';
 
@@ -47,8 +43,10 @@ export type AppItemBaseProps = AppItemProps;
 // @public (undocumented)
 export type AppItemBaseState = Omit<AppItemState, 'density'>;
 
-// @public (undocumented)
-export const appItemClassNames: SlotClassNames<AppItemSlots>;
+// @public
+export const appItemClassNames: {
+    root: string;
+};
 
 // @public
 export type AppItemProps = ComponentProps<AppItemSlots> & {
@@ -75,8 +73,10 @@ export type AppItemStaticBaseProps = AppItemStaticProps;
 // @public (undocumented)
 export type AppItemStaticBaseState = Omit<AppItemStaticState, 'density'>;
 
-// @public (undocumented)
-export const appItemStaticClassNames: SlotClassNames<AppItemStaticSlots>;
+// @public
+export const appItemStaticClassNames: {
+    root: string;
+};
 
 // @public
 export type AppItemStaticProps = ComponentProps<AppItemStaticSlots>;
@@ -95,8 +95,10 @@ export type AppItemStaticState = ComponentState<AppItemStaticSlots> & {
 // @public
 export const Hamburger: ForwardRefComponent<HamburgerProps>;
 
-// @public (undocumented)
-export const hamburgerClassNames: SlotClassNames<ButtonSlots>;
+// @public
+export const hamburgerClassNames: {
+    root: string;
+};
 
 // @public
 export type HamburgerProps = ButtonProps;
@@ -133,8 +135,10 @@ export type NavCategoryItemBaseSlots = Omit<NavCategoryItemSlots, 'expandIconMot
 // @public
 export type NavCategoryItemBaseState = ComponentState<NavCategoryItemBaseSlots> & Pick<NavCategoryItemState, 'open' | 'value' | 'selected'>;
 
-// @public (undocumented)
-export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots>;
+// @public
+export const navCategoryItemClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type NavCategoryItemContextValues = {
@@ -173,8 +177,10 @@ export const NavCategoryProvider: React_2.Provider<NavCategoryContextValue>;
 // @public
 export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryProps>;
 
-// @public (undocumented)
-export const navClassNames: SlotClassNames<NavSlots>;
+// @public
+export const navClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'density'> & {
@@ -204,8 +210,10 @@ export type NavDensity = 'small' | 'medium';
 // @public
 export const NavDivider: ForwardRefComponent<NavDividerProps>;
 
-// @public (undocumented)
-export const navDividerClassNames: SlotClassNames<DividerSlots>;
+// @public
+export const navDividerClassNames: {
+    root: string;
+};
 
 // @public
 export type NavDividerProps = DividerProps;
@@ -219,8 +227,10 @@ export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
 // @public
 export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps>;
 
-// @public (undocumented)
-export const navDrawerBodyClassNames: SlotClassNames<NavDrawerBodySlots>;
+// @public
+export const navDrawerBodyClassNames: {
+    root: string;
+};
 
 // @public
 export type NavDrawerBodyProps = DrawerBodyProps;
@@ -231,14 +241,18 @@ export type NavDrawerBodySlots = DrawerBodySlots;
 // @public
 export type NavDrawerBodyState = DrawerBodyState;
 
-// @public (undocumented)
-export const navDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>>;
+// @public
+export const navDrawerClassNames: {
+    root: string;
+};
 
 // @public
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
 
-// @public (undocumented)
-export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots>;
+// @public
+export const navDrawerFooterClassNames: {
+    root: string;
+};
 
 // @public
 export type NavDrawerFooterProps = DrawerFooterProps;
@@ -252,8 +266,10 @@ export type NavDrawerFooterState = DrawerFooterState;
 // @public
 export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps>;
 
-// @public (undocumented)
-export const navDrawerHeaderClassNames: SlotClassNames<NavDrawerHeaderSlots>;
+// @public
+export const navDrawerHeaderClassNames: {
+    root: string;
+};
 
 // @public
 export type NavDrawerHeaderProps = DrawerHeaderProps;
@@ -286,8 +302,10 @@ export type NavItemBaseProps = NavItemProps;
 // @public (undocumented)
 export type NavItemBaseState = Omit<NavItemState, 'density'>;
 
-// @public (undocumented)
-export const navItemClassNames: SlotClassNames<NavItemSlots>;
+// @public
+export const navItemClassNames: {
+    root: string;
+};
 
 // @public
 export type NavItemProps = ComponentProps<NavItemSlots> & {
@@ -336,8 +354,10 @@ export const NavProvider: React_2.Provider<NavContextValue | undefined>;
 // @public
 export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps>;
 
-// @public (undocumented)
-export const navSectionHeaderClassNames: SlotClassNames<NavSectionHeaderSlots>;
+// @public
+export const navSectionHeaderClassNames: {
+    root: string;
+};
 
 // @public
 export type NavSectionHeaderProps = ComponentProps<NavSectionHeaderSlots>;
@@ -367,8 +387,10 @@ export type NavSubItemBaseProps = NavSubItemProps;
 // @public (undocumented)
 export type NavSubItemBaseState = Omit<NavSubItemState, 'density'>;
 
-// @public (undocumented)
-export const navSubItemClassNames: SlotClassNames<NavSubItemSlots>;
+// @public
+export const navSubItemClassNames: {
+    root: string;
+};
 
 // @public
 export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps>;
@@ -382,8 +404,10 @@ export type NavSubItemGroupBaseSlots = Omit<NavSubItemGroupSlots, 'collapseMotio
 // @public (undocumented)
 export type NavSubItemGroupBaseState = ComponentState<NavSubItemGroupBaseSlots> & Pick<NavSubItemGroupState, 'open'>;
 
-// @public (undocumented)
-export const navSubItemGroupClassNames: SlotClassNames<Omit<NavSubItemGroupSlots, 'collapseMotion'>>;
+// @public
+export const navSubItemGroupClassNames: {
+    root: string;
+};
 
 // @public
 export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots>;
@@ -461,8 +485,10 @@ export const renderSplitNavItem_unstable: (state: SplitNavItemState) => JSXEleme
 // @public
 export const SplitNavItem: ForwardRefComponent<SplitNavItemProps>;
 
-// @public (undocumented)
-export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots>;
+// @public
+export const splitNavItemClassNames: {
+    root: string;
+};
 
 // @public
 export type SplitNavItemProps = ComponentProps<SplitNavItemSlots>;

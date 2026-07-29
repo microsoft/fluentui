@@ -1,0 +1,196 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useAppItemStaticStyles_unstable:
+ *
+ *   #  mergeClasses argument                       → target
+ *   -----------------------------------------------------------------------------------
+ *   root slot
+ *   1  useRootDefaultClassName     (makeReset)     → fui.base          .root
+ *   2  appItemStaticClassNames.root                → REMOVED (D16.1); the root's identity is
+ *                                                    now the `group/fui-app-item-static`
+ *                                                    marker, and `.root` leads the clsx
+ *   3  useAppItemStyles.root       (AppItem's)     → fui.components.l1 .root  (1st block)
+ *   4  useAppItemStaticStyles.root                 → fui.components.l1 .root  (2nd block)
+ *   5  density === 'small' && useAppItemStyles.small
+ *                                                  → fui.components.l1 .small
+ *   6  !icon && .absentIconRootAdjustment          → fui.components.l1 .absent-icon
+ *   7  consumer className                          → unlayered (always wins)
+ *
+ *   icon slot
+ *   1  appItemStaticClassNames.icon                → REMOVED (D16.1/D16.5)
+ *   2  useIconStyles.base                          → fui.components.l1 .icon (own box) +
+ *                                                    UNLAYERED (react-icons descendants)
+ *   3  consumer className                          → unlayered (always wins)
+ *
+ * ── Why AppItem's slices are COPIED here ────────────────────────────────────────────
+ * Args #3, #5 and #6 are AppItem's own makeStyles slices, imported across component folders.
+ * Griffel could share them because `mergeClasses` resolves the winner per-element at call
+ * time; CSS cannot — two `@layer fui.components.l1` rules in two different files are ranked
+ * by their position in the aggregated `dist/styles.css`, which is emission order, not
+ * argument order. Arg #4 overrides arg #3's `:hover` background on the very same element and
+ * arg #6 overrides arg #5's `padding-inline-start`, so both ties MUST be decided by file
+ * position inside ONE file. Same shape as react-drawer's duplicated `useDrawerBaseStyles`
+ * blocks; it is the faithful form, not a DRY regression.
+ *
+ * ── `background-color: unset` on hover is not a no-op ───────────────────────────────
+ * The reset paints `--colorNeutralBackground4` unconditionally, so arg #4's `unset` (=
+ * `initial` = transparent) makes a hovered AppItemStatic go TRANSPARENT rather than fall
+ * back to the rest colour. Griffel produced exactly that: `.fmaajru:hover` at 0-2-0 beat the
+ * reset's plain `.rdi7s9k` at 0-1-0. Here `fui.components.l1` beats `fui.base` before
+ * specificity is consulted, which reproduces the same winner.
+ *
+ * See AppItem.module.css and NavItem.module.css for the spacing / RTL / dead-`marginInline`
+ * notes, which apply identically.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/sharedNavStyles.styles.js,
+ * lib-commonjs/components/AppItem/useAppItemStyles.styles.js and
+ * lib-commonjs/components/AppItemStatic/useAppItemStaticStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* arg #1 — from the shared useRootDefaultClassName (makeResetStyles) */
+  .root {
+    @apply relative flex w-full box-border cursor-pointer items-start text-start normal-case no-underline;
+    @apply gap-vertical-l py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s;
+
+    /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
+    justify-content: start;
+
+    background-color: var(--colorNeutralBackground4);
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground2);
+
+    /* from `border: 'none'` */
+    border-block-start-style: none;
+    border-block-end-style: none;
+    border-inline-start-style: none;
+    border-inline-end-style: none;
+
+    transition-duration: var(--durationFaster);
+    transition-timing-function: var(--curveLinear);
+    transition-property: background-color;
+
+    /* typographyStyles.body1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground4Hover);
+    }
+
+    /* the component's own insert focus indicator — not the shared focus-ring utility */
+    @variant focus-visible {
+      outline-width: var(--spacing-thick);
+      outline-style: solid;
+      outline-color: var(--colorStrokeFocus2);
+      outline-offset: calc(var(--spacing-thick) * -1);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #3 — from AppItem's useAppItemStyles.root */
+  .root {
+    /* dead in Griffel too — overridden on both inline edges below */
+    @apply mx-horizontal-xs;
+
+    @apply items-center gap-horizontal-m-nudge;
+    @apply -ms-horizontal-s-nudge me-horizontal-none;
+    @apply py-vertical-s ps-horizontal-m-nudge pe-horizontal-s;
+
+    width: revert;
+
+    /* typographyStyles.subtitle2 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #4 — from useAppItemStaticStyles.root. Must stay AFTER arg #3 */
+  .root {
+    cursor: default;
+
+    @variant hover {
+      background-color: unset;
+    }
+
+    @variant active {
+      background-color: unset;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #5 — from AppItem's useAppItemStyles.small */
+  .small {
+    @apply gap-14;
+    @apply py-vertical-s ps-14 pe-horizontal-s;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #6 — from AppItem's useAppItemStyles.absentIconRootAdjustment. Must stay AFTER
+   * `.small`: in Griffel this longhand overwrote the small slice's `padding` shorthand key.
+   */
+  .absent-icon {
+    @apply ps-horizontal-l;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * icon arg #2, the half that styles THIS package's own <span> — from the shared
+   * useIconStyles.base. See NavItem.module.css for the invalid-declaration note; both are
+   * reproduced verbatim from the compiled atomics and render nothing in any browser.
+   */
+  .icon {
+    @apply grid justify-center overflow-hidden min-h-vertical-xl min-w-horizontal-xl;
+
+    grid-template-areas: overlay-area;
+    align-items: top;
+  }
+}
+
+/*
+ * ── The icon swap must be UNLAYERED (D2 amendment) ───────────────────────────────────
+ *
+ * These rules style `@fluentui/react-icons`' two `bundleIcon()` <svg>s. react-icons stays on
+ * Griffel (D11) and Griffel injects UNLAYERED atomics
+ * (`.fjseox{display:none}` / `.f1w7gpdv{display:inline}`); an unlayered normal author
+ * declaration outranks EVERY `@layer` before specificity is even consulted, so a layered
+ * 0-2-0 rule here would lose to `.fjseox`'s 0-1-0 and the glyph would never swap.
+ * See NavItem.module.css's copy of this note for the full DOM evidence.
+ */
+.icon {
+  & :global(.fui-Icon-filled) {
+    grid-area: overlay-area;
+    color: transparent;
+    display: none;
+  }
+
+  & :global(.fui-Icon-regular) {
+    grid-area: overlay-area;
+    display: inline;
+  }
+}
