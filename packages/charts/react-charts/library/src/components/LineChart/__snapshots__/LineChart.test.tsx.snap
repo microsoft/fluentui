@@ -548,7 +548,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1162,7 +1162,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1814,7 +1814,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1885,7 +1885,9 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       id="callout_r_bk_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -2492,7 +2494,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -2563,7 +2565,9 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       id="callout_r_cr_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -3142,7 +3146,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -3758,7 +3762,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -4433,7 +4437,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -5049,7 +5053,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -8172,7 +8176,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -8788,7 +8792,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -9540,7 +9544,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -10238,7 +10242,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -10918,7 +10922,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -11534,7 +11538,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -12109,7 +12113,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -12632,7 +12636,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -13254,7 +13258,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button

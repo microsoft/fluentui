@@ -416,7 +416,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button

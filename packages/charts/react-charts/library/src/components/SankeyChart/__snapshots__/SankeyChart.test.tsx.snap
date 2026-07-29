@@ -677,7 +677,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -1977,7 +1977,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -3675,7 +3675,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -5886,7 +5886,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -7225,7 +7225,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -9114,7 +9114,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -10091,7 +10091,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -11580,7 +11580,9 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       id="callout_r_4b_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -12703,7 +12705,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >

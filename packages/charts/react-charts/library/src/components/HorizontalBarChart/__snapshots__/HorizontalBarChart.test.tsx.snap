@@ -1503,7 +1503,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -1519,7 +1519,7 @@ Object {
       />
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -1535,7 +1535,7 @@ Object {
       />
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -1947,7 +1947,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -1963,7 +1963,7 @@ Object {
       />
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -1979,7 +1979,7 @@ Object {
       />
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >

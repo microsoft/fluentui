@@ -506,7 +506,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -982,7 +982,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -1438,7 +1438,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -2134,7 +2134,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -2264,7 +2264,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -2537,7 +2537,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -3678,7 +3678,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -5171,7 +5171,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -5501,7 +5501,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -5846,7 +5846,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button

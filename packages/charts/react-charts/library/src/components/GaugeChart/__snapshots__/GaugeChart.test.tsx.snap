@@ -130,7 +130,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -422,7 +422,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -618,7 +618,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -816,7 +816,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -887,7 +887,9 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
       id="callout_r_p_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -1119,7 +1121,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -1315,7 +1317,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -1511,7 +1513,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -1582,7 +1584,9 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
       id="callout_r_u_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -1814,7 +1818,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -1885,7 +1889,9 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
       id="callout_r_h_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -2139,7 +2145,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -2335,7 +2341,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -2531,7 +2537,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -2727,7 +2733,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -2908,7 +2914,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -2977,7 +2983,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -3099,7 +3105,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -3344,7 +3350,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -3662,7 +3668,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -3731,7 +3737,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -3873,7 +3879,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -4114,7 +4120,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -4163,7 +4169,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -4293,7 +4299,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -4548,7 +4554,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -4617,7 +4623,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -4634,7 +4640,7 @@ Object {
       />
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -4798,7 +4804,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -5051,7 +5057,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -5120,7 +5126,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -5262,7 +5268,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -5529,7 +5535,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -5598,7 +5604,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -5615,7 +5621,7 @@ Object {
       />
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -5771,7 +5777,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -6019,7 +6025,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -6215,7 +6221,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button

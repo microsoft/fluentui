@@ -13,7 +13,7 @@ Object {
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -369,7 +369,7 @@ Object {
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -778,7 +778,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
   role="listbox"
 >
   <div
-    class="fui-Overflow fui-legend__resizableArea"
+    class="group/fui-overflow fui-legend__resizableArea"
     style="text-align: unset;"
   >
     <button
@@ -1134,7 +1134,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
   role="listbox"
 >
   <div
-    class="fui-Overflow fui-legend__resizableArea"
+    class="group/fui-overflow fui-legend__resizableArea"
     style="text-align: unset;"
   >
     <button
@@ -1490,7 +1490,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
   role="listbox"
 >
   <div
-    class="fui-Overflow fui-legend__resizableArea"
+    class="group/fui-overflow fui-legend__resizableArea"
     style="text-align: unset;"
   >
     <button
@@ -1846,7 +1846,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
   role="listbox"
 >
   <div
-    class="fui-Overflow fui-legend__resizableArea"
+    class="group/fui-overflow fui-legend__resizableArea"
     style="text-align: unset;"
   >
     <button

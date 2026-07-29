@@ -7,8 +7,23 @@ import { FluentProvider } from '@fluentui/react-provider';
 import * as utils from '../../utilities/utilities';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
+import { popoverSurfaceClassNames } from '@fluentui/react-popover';
+import { fuiSelector } from '@fluentui/react-utilities';
 
 expect.extend(toHaveNoViolations);
+
+/*
+ * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5).
+ * react-popover is converted: `.fui-PopoverSurface` is no longer rendered and
+ * `popoverSurfaceClassNames.root` is now the Tailwind named-group marker
+ * `group/fui-popover-surface`. These assertions used `getByClass(container, /PopoverSurface/i)`,
+ * a regex over the class ATTRIBUTE, which silently stopped matching — the `toBeDefined` cases
+ * failed and, worse, the `not.toBeDefined` cases passed vacuously. Select on the marker
+ * instead; `fuiSelector()` escapes the `/`, which terminates a class name in selector position.
+ * ChartPopover renders a bare <PopoverSurface> with no className, so this is the only handle.
+ */
+const getPopoverSurfaces = (container: HTMLElement): Element[] =>
+  Array.from(container.querySelectorAll(fuiSelector(popoverSurfaceClassNames.root)));
 
 const chartTitle = 'Donut chart example';
 const pointsNoColors: ChartDataPoint[] = [
@@ -51,14 +66,13 @@ describe('Donut chart interactions', () => {
   test('Should hide callout on mouse leave', () => {
     // Arrange
     const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
-    const getByClass = queryAllByAttribute.bind(null, 'class');
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');
     fireEvent.mouseOver(getById(container, /Pie/i)[0]);
-    expect(getByClass(container, /PopoverSurface/i)[0]).toBeDefined();
+    expect(getPopoverSurfaces(container)[0]).toBeDefined();
     fireEvent.mouseLeave(getById(container, /Pie/i)[0]);
     // Assert
-    expect(getByClass(container, /PopoverSurface/i)[0]).not.toBeDefined();
+    expect(getPopoverSurfaces(container)[0]).not.toBeDefined();
     expect(container).toMatchSnapshot();
   });
 
@@ -167,17 +181,16 @@ describe('Donut chart interactions', () => {
   test('Should display correct callout data on mouse move', async () => {
     // Arrange
     const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
-    const getByClass = queryAllByAttribute.bind(null, 'class');
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');
     fireEvent.mouseOver(getById(container, /Pie/i)[0]);
-    expect(getByClass(container, /PopoverSurface/i)[0]).toHaveTextContent('20,000');
+    expect(getPopoverSurfaces(container)[0]).toHaveTextContent('20,000');
     fireEvent.mouseLeave(getById(container, /Pie/i)[0]);
     fireEvent.mouseOver(getById(container, /Pie/i)[1]);
 
     // Assert
     await (() => {
-      expect(getByClass(container, /PopoverSurface/i)[1]).toHaveTextContent('39,000');
+      expect(getPopoverSurfaces(container)[1]).toHaveTextContent('39,000');
     });
   });
 

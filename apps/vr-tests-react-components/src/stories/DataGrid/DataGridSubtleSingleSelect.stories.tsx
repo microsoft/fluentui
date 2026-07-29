@@ -8,8 +8,24 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridRow,
+  dataGridBodyClassNames,
+  dataGridHeaderClassNames,
+  dataGridRowClassNames,
 } from '@fluentui/react-table';
+import { fuiSelector } from '@fluentui/react-utilities';
 import { columns, items, type Item } from './utils';
+
+/*
+ * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5).
+ * `.fui-DataGridHeader` / `.fui-DataGridBody` / `.fui-DataGridRow` are no longer rendered; the
+ * public handles are the Tailwind named-group markers these constants now resolve to. Left as
+ * literals these selectors stayed VALID but matched nothing, so both hover steps silently
+ * captured the rest state instead of the hover state. `fuiSelector()` escapes the `/`, which
+ * terminates a class name in selector position. Structure (child combinator) is unchanged —
+ * the substitution is class-for-class.
+ */
+const headerRowSelector = `${fuiSelector(dataGridHeaderClassNames.root)} > ${fuiSelector(dataGridRowClassNames.root)}`;
+const bodyRowSelector = `${fuiSelector(dataGridBodyClassNames.root)} > ${fuiSelector(dataGridRowClassNames.root)}`;
 
 export default {
   title: 'DataGridConverged - subtle single select',
@@ -17,9 +33,9 @@ export default {
   parameters: {
     storyWright: {
       steps: new Steps()
-        .hover('.fui-DataGridHeader > .fui-DataGridRow')
+        .hover(headerRowSelector)
         .snapshot('hover header row')
-        .hover('.fui-DataGridBody > .fui-DataGridRow')
+        .hover(bodyRowSelector)
         .snapshot('hover row')
         .end(),
     },

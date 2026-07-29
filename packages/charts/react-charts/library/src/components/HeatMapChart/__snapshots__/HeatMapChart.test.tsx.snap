@@ -233,7 +233,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -509,7 +509,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -842,7 +842,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -1116,7 +1116,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -1948,7 +1948,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -2224,7 +2224,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -2559,7 +2559,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -2835,7 +2835,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -3174,7 +3174,7 @@ Object {
               role="listbox"
             >
               <div
-                class="fui-Overflow fui-legend__resizableArea"
+                class="group/fui-overflow fui-legend__resizableArea"
                 style="text-align: unset;"
               >
                 <button
@@ -3455,7 +3455,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -3794,7 +3794,7 @@ Object {
               role="listbox"
             >
               <div
-                class="fui-Overflow fui-legend__resizableArea"
+                class="group/fui-overflow fui-legend__resizableArea"
                 style="text-align: unset;"
               >
                 <button
@@ -4074,7 +4074,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -4395,7 +4395,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -4671,7 +4671,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button

@@ -354,7 +354,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -425,10 +425,12 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       id="callout_r_2p_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
         data-popper-escaped=""
         data-popper-placement="top"
         data-popper-reference-hidden=""
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px); --fui-positioning-slide-direction-x: 0px; --fui-positioning-slide-direction-y: 1px;"
@@ -1021,7 +1023,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1445,7 +1447,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1873,7 +1875,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -2304,7 +2306,7 @@ Object {
               role="listbox"
             >
               <div
-                class="fui-Overflow fui-legend__resizableArea"
+                class="group/fui-overflow fui-legend__resizableArea"
                 style="text-align: unset;"
               >
                 <button
@@ -2730,7 +2732,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
               <button
@@ -3349,7 +3351,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -3871,7 +3873,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -4295,7 +4297,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -4719,7 +4721,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -4790,10 +4792,12 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       id="callout_r_15_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
         data-popper-escaped=""
         data-popper-placement="top"
         data-popper-reference-hidden=""
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px); --fui-positioning-slide-direction-x: 0px; --fui-positioning-slide-direction-y: 1px;"
@@ -5434,7 +5438,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button

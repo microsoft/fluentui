@@ -466,7 +466,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1022,7 +1022,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1583,7 +1583,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -2162,7 +2162,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       id="callout_r_1v_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -2736,7 +2738,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       id="callout_r_27_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -3353,7 +3357,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       id="callout_r_2b_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -3844,7 +3850,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -4363,7 +4369,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -4882,7 +4888,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -5401,7 +5407,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -6904,7 +6910,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -7413,7 +7419,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -8009,7 +8015,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -8610,7 +8616,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -9136,7 +9142,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button

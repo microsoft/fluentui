@@ -95,7 +95,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
           <button
@@ -264,7 +264,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -424,7 +424,9 @@ Object {
           id="callout_r_41_"
         >
           <div
-            class="fui-PopoverSurface"
+            class="group/fui-popover-surface"
+            data-inline="true"
+            data-size="medium"
             data-tabster="{\\"restorer\\":{\\"type\\":0}}"
             role="group"
             style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -476,7 +478,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -545,7 +547,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -645,7 +647,9 @@ Object {
         id="callout_r_41_"
       >
         <div
-          class="fui-PopoverSurface"
+          class="group/fui-popover-surface"
+          data-inline="true"
+          data-size="medium"
           data-tabster="{\\"restorer\\":{\\"type\\":0}}"
           role="group"
           style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -697,7 +701,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -908,7 +912,9 @@ Object {
           id="callout_r_4e_"
         >
           <div
-            class="fui-PopoverSurface"
+            class="group/fui-popover-surface"
+            data-inline="true"
+            data-size="medium"
             data-tabster="{\\"restorer\\":{\\"type\\":0}}"
             role="group"
             style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -960,7 +966,7 @@ Object {
             role="listbox"
           >
             <div
-              class="fui-Overflow fui-legend__resizableArea"
+              class="group/fui-overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
               <button
@@ -1029,7 +1035,7 @@ Object {
       </div>
     </div>
     <div
-      class=""
+      class="group/fui-portal"
       data-portal-node="true"
       dir="ltr"
     >
@@ -1129,7 +1135,9 @@ Object {
         id="callout_r_4e_"
       >
         <div
-          class="fui-PopoverSurface"
+          class="group/fui-popover-surface"
+          data-inline="true"
+          data-size="medium"
           data-tabster="{\\"restorer\\":{\\"type\\":0}}"
           role="group"
           style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -1181,7 +1189,7 @@ Object {
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
             <button
@@ -1397,7 +1405,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: center;"
       >
         <button
@@ -1590,7 +1598,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: center;"
       >
         <button
@@ -1783,7 +1791,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: center;"
       >
         <button
@@ -1946,7 +1954,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: center;"
       >
         <button
@@ -2109,7 +2117,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: center;"
       >
         <button
@@ -2508,7 +2516,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: center;"
       >
         <button
@@ -2671,7 +2679,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: center;"
       >
         <button

@@ -1,14 +1,28 @@
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { render, screen, fireEvent, act, cleanup, queryAllByAttribute } from '@testing-library/react';
+import { render, screen, fireEvent, act, cleanup } from '@testing-library/react';
 import { webDarkTheme } from '@fluentui/react-theme';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resetIdsForTests, fuiSelector } from '@fluentui/react-utilities';
+import { popoverSurfaceClassNames } from '@fluentui/react-popover';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { GanttChart } from './index';
 import { ganttData, ganttDataWithLongY, ganttDataWithNumericY } from '../../utilities/test-data';
 import type { GanttChartDataPoint } from '../../types/index';
 
 expect.extend(toHaveNoViolations);
+
+/*
+ * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5).
+ * react-popover is converted: `.fui-PopoverSurface` is no longer rendered and
+ * `popoverSurfaceClassNames.root` is now the Tailwind named-group marker
+ * `group/fui-popover-surface`. These assertions used `getByClass(container, /PopoverSurface/i)`,
+ * a regex over the class ATTRIBUTE, which silently stopped matching — the `toBeDefined` cases
+ * failed and, worse, the `toBeUndefined` cases passed vacuously. Select on the marker instead;
+ * `fuiSelector()` escapes the `/`, which terminates a class name in selector position.
+ * ChartPopover renders a bare <PopoverSurface> with no className, so this is the only handle.
+ */
+const getPopoverSurfaces = (container: HTMLElement): Element[] =>
+  Array.from(container.querySelectorAll(fuiSelector(popoverSurfaceClassNames.root)));
 
 const originalRAF = window.requestAnimationFrame;
 const originalGetComputedStyle = window.getComputedStyle;
@@ -165,26 +179,24 @@ describe('GanttChart interaction and accessibility tests', () => {
   it(`should display callout on bar hover and hide it on mouse leave from the chart`, async () => {
     const { container } = render(<GanttChart data={ganttData} />);
     const bar = container.querySelector('rect')!;
-    const getByClass = queryAllByAttribute.bind(null, 'class');
     await act(() => {
       fireEvent.mouseOver(bar);
     });
-    expect(getByClass(container, /PopoverSurface/i)[0]).toBeDefined();
+    expect(getPopoverSurfaces(container)[0]).toBeDefined();
 
     await act(() => {
       fireEvent.mouseLeave(bar);
     });
-    expect(getByClass(container, /PopoverSurface/i)[0]).toBeUndefined();
+    expect(getPopoverSurfaces(container)[0]).toBeUndefined();
   });
 
   it('should display callout when a bar is focused', async () => {
     const { container } = render(<GanttChart data={ganttData} />);
     const bar = container.querySelector('rect')!;
-    const getByClass = queryAllByAttribute.bind(null, 'class');
     await act(() => {
       fireEvent.focus(bar);
     });
-    expect(getByClass(container, /PopoverSurface/i)[0]).toBeDefined();
+    expect(getPopoverSurfaces(container)[0]).toBeDefined();
   });
 
   it(`should highlight corresponding bars on legend hover and remove highlight on legend mouse out`, async () => {
@@ -225,7 +237,6 @@ describe('GanttChart interaction and accessibility tests', () => {
 
   it(`should display callouts only for highlighted bars`, async () => {
     const { container } = render(<GanttChart data={ganttData} />);
-    const getByClass = queryAllByAttribute.bind(null, 'class');
     await act(() => {
       fireEvent.click(screen.getByText('Complete'));
     });
@@ -235,12 +246,12 @@ describe('GanttChart interaction and accessibility tests', () => {
     await act(() => {
       fireEvent.mouseOver(bars[1]);
     });
-    expect(getByClass(container, /PopoverSurface/i)[0]).toBeUndefined();
+    expect(getPopoverSurfaces(container)[0]).toBeUndefined();
 
     await act(() => {
       fireEvent.mouseOver(bars[0]);
     });
-    expect(getByClass(container, /PopoverSurface/i)[0]).toBeDefined();
+    expect(getPopoverSurfaces(container)[0]).toBeDefined();
   });
 
   it(`should highlight corresponding bars for multiple selected legends`, async () => {

@@ -6,7 +6,19 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
 import { FluentProvider } from '@fluentui/react-provider';
+import { popoverSurfaceClassNames } from '@fluentui/react-popover';
+import { fuiSelector } from '@fluentui/react-utilities';
 const env = require('../../../config/tests');
+
+/*
+ * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5).
+ * react-popover is converted, so `.fui-PopoverSurface` is no longer rendered;
+ * `popoverSurfaceClassNames.root` is now the Tailwind named-group marker
+ * `group/fui-popover-surface`, whose `/` terminates the class name in selector position.
+ * `fuiSelector()` escapes it. ChartPopover renders a bare <PopoverSurface> with no className,
+ * so this marker is the only handle on that element.
+ */
+const popoverSurfaceSelector = fuiSelector(popoverSurfaceClassNames.root);
 
 expect.extend(toHaveNoViolations);
 
@@ -314,19 +326,19 @@ describe('HeatMapChart interaction and accessibility tests', () => {
       const rect = screen.getByText(HeatMapStringData[0].data[i].rectText!);
 
       fireEvent.mouseOver(rect);
-      expect(container.querySelector('.fui-PopoverSurface')).not.toBeNull();
+      expect(container.querySelector(popoverSurfaceSelector)).not.toBeNull();
 
       fireEvent.focus(rect);
-      expect(container.querySelector('.fui-PopoverSurface')).not.toBeNull();
+      expect(container.querySelector(popoverSurfaceSelector)).not.toBeNull();
     }
     for (let i = 0; i < HeatMapStringData[1].data.length; i++) {
       const rect = screen.getByText(HeatMapStringData[1].data[i].rectText!);
 
       fireEvent.mouseOver(rect);
-      expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+      expect(container.querySelector(popoverSurfaceSelector)).toBeNull();
 
       fireEvent.focus(rect);
-      expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+      expect(container.querySelector(popoverSurfaceSelector)).toBeNull();
     }
   });
 });

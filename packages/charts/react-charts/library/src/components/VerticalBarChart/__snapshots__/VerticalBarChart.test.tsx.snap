@@ -503,7 +503,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1076,7 +1076,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -1653,7 +1653,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
           role="listbox"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="group/fui-overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
             <button
@@ -2238,7 +2238,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -2811,7 +2811,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -3384,7 +3384,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -3800,7 +3800,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -4352,7 +4352,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
         role="listbox"
       >
         <div
-          class="fui-Overflow fui-legend__resizableArea"
+          class="group/fui-overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
           <button
@@ -5006,7 +5006,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       id="callout_r_5t_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -5635,7 +5637,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       id="callout_r_64_"
     >
       <div
-        class="fui-PopoverSurface"
+        class="group/fui-popover-surface"
+        data-inline="true"
+        data-size="medium"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
@@ -6130,7 +6134,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -6701,7 +6705,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -7272,7 +7276,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -7843,7 +7847,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -9486,7 +9490,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -10155,7 +10159,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -10829,7 +10833,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
@@ -11407,7 +11411,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       role="listbox"
     >
       <div
-        class="fui-Overflow fui-legend__resizableArea"
+        class="group/fui-overflow fui-legend__resizableArea"
         style="text-align: unset;"
       >
         <button
