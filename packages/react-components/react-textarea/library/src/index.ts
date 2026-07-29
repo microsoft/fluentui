@@ -1,7 +1,7 @@
 export {
   Textarea,
   renderTextarea_unstable,
-  textareaClassNames,
+  textareaClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTextareaStyles_unstable,
   useTextarea_unstable,
   useTextareaBase_unstable,

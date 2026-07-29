@@ -14,14 +14,27 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TextareaSlots, TextareaState } from './Textarea.types';
+import type { TextareaState } from './Textarea.types';
 
 import styles from './Textarea.module.css';
 
-export const textareaClassNames: SlotClassNames<TextareaSlots> = {
-  root: 'fui-Textarea',
-  textarea: 'fui-Textarea__textarea',
+/**
+ * Public identity classes for Textarea.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as this component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a
+ * selector and as a `group-*` variant target. The BEM statics (`fui-Textarea`,
+ * `fui-Textarea__textarea`) are no longer rendered and the per-slot keys are gone; there is
+ * no public class-name handle on component internals.
+ *
+ * The marker token contains a `/`. That is legal inside a class TOKEN but terminates the
+ * name inside a SELECTOR, so `'.' + textareaClassNames.root` is an invalid selector even
+ * though it type-checks. Use `fuiSelector(textareaClassNames.root)` from
+ * `@fluentui/react-utilities`.
+ */
+export const textareaClassNames: { root: string } = {
+  root: 'group/fui-textarea',
 };
 
 /**
@@ -70,9 +83,12 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
 
   textarea['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal, unhashed,
+  // Unconditional module class FIRST, then the named group marker — the marker must never be
+  // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
+  // D16.2) — with the consumer className last. `styles.root` is unconditional and clsx never
+  // drops it, so index 0 is always the hashed, selector-safe module class; it is what keeps
+  // the marker safe now that the `fui-Textarea` static is gone.
+  // The marker is a literal, unhashed,
   // GLOBAL token: it is the only handle by which another module — in this package or any other
   // — can style an element from this Textarea's state, because `styles.root` is hashed and
   // unaddressable from outside this file. Textarea needs no state mirrors: `data-disabled` and
@@ -88,20 +104,14 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
   // mergeClasses() argument order this replaces, including the `outlineInteractive`
   // bucket-order inversion.
   state.root.className = clsx(
-    textareaClassNames.root,
-    'group/fui-textarea',
     styles.root,
+    'group/fui-textarea',
     !disabled && filled && styles.filled,
     !disabled && styles[appearance],
     state.root.className,
   );
 
-  state.textarea.className = clsx(
-    textareaClassNames.textarea,
-    styles.textarea,
-    styles[resize],
-    state.textarea.className,
-  );
+  state.textarea.className = clsx(styles.textarea, styles[resize], state.textarea.className);
 
   return state;
 };

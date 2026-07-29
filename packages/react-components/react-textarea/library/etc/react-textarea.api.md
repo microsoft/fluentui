@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderTextarea_unstable: (state: TextareaBaseState) => JSXElement;
@@ -24,8 +23,10 @@ export type TextareaBaseProps = Omit<TextareaProps, 'appearance' | 'size'>;
 // @public
 export type TextareaBaseState = Omit<TextareaState, 'appearance' | 'size'>;
 
-// @public (undocumented)
-export const textareaClassNames: SlotClassNames<TextareaSlots>;
+// @public @deprecated
+export const textareaClassNames: {
+    root: string;
+};
 
 // @public
 export type TextareaOnChangeData = {
