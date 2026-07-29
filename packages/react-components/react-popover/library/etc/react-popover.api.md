@@ -21,7 +21,6 @@ import { ProviderProps } from 'react';
 import type * as React_2 from 'react';
 import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
@@ -91,8 +90,10 @@ export type PopoverState = ComponentState<InternalPopoverSlots> & Pick<PopoverPr
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
-// @public (undocumented)
-export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;
+// @public
+export const popoverSurfaceClassNames: {
+    root: string;
+};
 
 // @public
 export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;

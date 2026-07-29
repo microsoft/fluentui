@@ -1,0 +1,278 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * usePopoverSurfaceStyles_unstable, not source declaration order.
+ *
+ * `root` slot:
+ *
+ *   #  mergeClasses argument                                 → target
+ *   ---------------------------------------------------------------------------------
+ *   1  popoverSurfaceClassNames.root                         → REMOVED (D16.1); the root's
+ *                                                              identity is now the
+ *                                                              `group/fui-popover-surface`
+ *                                                              marker, and `styles.root`
+ *                                                              leads the clsx (D16.2)
+ *   2  useStyles.root                                        → fui.components.l1  .root
+ *   3  inline && useStyles.inline                            → fui.components.l1  .root
+ *                                                              @variant inline (data-inline)
+ *   4  size === 'small'  && useStyles.smallPadding           → fui.components.l1  .root
+ *                                                              @variant size-small
+ *   5  size === 'medium' && useStyles.mediumPadding          → fui.components.l1  .root
+ *                                                              @variant size-medium
+ *   6  size === 'large'  && useStyles.largePadding           → fui.components.l1  .root
+ *                                                              @variant size-large
+ *   7  appearance === 'inverted' && useStyles.inverted       → fui.components.l1  .inverted
+ *   8  appearance === 'brand'    && useStyles.brand          → fui.components.l1  .brand
+ *   9  consumer className                                    → unlayered (always wins)
+ *
+ * `state.arrowClassName` is NOT a slot — `renderPopoverSurface` builds the element itself
+ * (`<div ref={state.arrowRef} className={state.arrowClassName} />`), so it takes no consumer
+ * className and carries no marker (D15.1: one marker, on the outermost slot only). Its two
+ * mergeClasses arguments map to:
+ *
+ *   1  useStyles.arrow                                       → fui.components.l1  .arrow
+ *   2  size === 'small' ? smallArrow : mediumLargeArrow      → fui.components.l1
+ *                                                              .arrow-small /
+ *                                                              .arrow-medium-large
+ *
+ * The arrow is an element THIS component renders, so it belongs in fui.components.l1 — not
+ * l2, which is reserved for styles applied over ANOTHER component's hook output (DECISIONS.md
+ * D2 amendment 2). Nothing about it is owned by `@fluentui/react-positioning`: that package
+ * only writes the `data-popper-placement` ATTRIBUTE from JS and exports the GriffelStyle
+ * factory transcribed below — it injects no CSS for this element, so there is no unlayered
+ * Griffel atomic to compete with and D2 amendment 5 does not apply.
+ *
+ * ── Load-bearing order inside l1, checked against the compiled atomics in
+ *    lib-commonjs/components/PopoverSurface/usePopoverSurfaceStyles.styles.js ─────────────
+ *   • #7 `inverted` and #8 `brand` both override #2 `.root`'s `background-color` + `color`,
+ *     so both blocks are written AFTER `.root`. They are mutually exclusive with each other
+ *     (`appearance` is a single value), so their relative order is free; written in argument
+ *     order regardless.
+ *   • #3 `inline` (z-index), #4-#6 (padding) and #2 `.root` set disjoint properties, so the
+ *     variants are nested inside the `.root` block without changing any winner.
+ *   • #1 `.arrow` and #2 `.arrow-small` / `.arrow-medium-large` are disjoint too: the base
+ *     slice is `createArrowStyles({ arrowHeight: undefined })`, which deliberately OMITS the
+ *     two custom properties the size slices set.
+ * This component has NO inversions — argument order and source-declaration order agree.
+ *
+ * No `makeResetStyles` slice → `fui.base` is unused by this package.
+ *
+ * ── RTL (DECISIONS.md D5) ────────────────────────────────────────────────────────────────
+ * The compiled AOT output contains not one `[ltr, rtl]` class pair — every atomic is a single
+ * class string. Nothing here is direction-dependent, so there is no `@variant rtl` block. The
+ * physical `border-bottom-left-radius` / `left` / `right` / `transform` in the arrow blocks
+ * are `@noflip` at their source and MUST stay physical; see that block's header.
+ *
+ * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ─────────────────────────────────
+ * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero
+ * pre-existing hits. PopoverSurface renders no icons and reaches into no other component's
+ * elements. The only `:global()` below is `[data-popper-placement]`, an attribute selector on
+ * this component's OWN root — no class of another package's is named anywhere in this file.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — root arg #2 */
+  .root {
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+
+    /* Kept as the compiled shorthands (`.ft85np5{border-radius:…}`, `.f9ggezi{border:1px
+       solid …}`): no rule in this module sets any of their longhands, so there is no Griffel
+       shorthand-vs-longhand priority left for the cascade to get wrong. Same call as
+       react-tooltip, whose root slice is the same pair of declarations. */
+    border-radius: var(--borderRadiusMedium);
+    border: 1px solid var(--colorTransparentStroke);
+
+    /* ...typographyStyles.body1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    /* TODO carried verbatim from the Griffel source: need versions of
+       tokens.alias.shadow.shadow16 etc. that work with filter.
+       The px lengths stay literal — they are this filter's stand-in for the `--shadow16`
+       TOKEN, and tokens never ride `--base-scale` (D4), so rescaling them would make the two
+       forms of the same shadow drift apart at a non-default root font size. */
+    filter: drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 8px 16px var(--colorNeutralShadowKey));
+
+    /*
+     * from useStyles.inline — root arg #3.
+     * `inline` is STATE, so it rides a data-attribute (D3); the `inline` variant already
+     * exists in the shared catalog, so nothing is invented and the catalog does not grow.
+     *
+     * Griffel comment, carried: when rendered inline the surface is NOT portalled, so it
+     * would otherwise paint under relatively positioned siblings such as Input.
+     */
+    @variant inline {
+      z-index: 1;
+    }
+
+    /*
+     * from useStyles.smallPadding / .mediumPadding / .largePadding — root args #4-#6.
+     * `size` is a small ENUM scale, so it rides the catalog's `data-size` variants (cookbook
+     * scale-prop rule). The Griffel source writes px literals rather than token reads, but
+     * all three land exactly on a spacing step — 12/16/20px = spacing{Horizontal,Vertical}
+     * M/L/XL — so they take the named utility (D4 amendment: named tokens FIRST, numeric only
+     * as fallback). `p-*` is all-sides and therefore axis-neutral; the `horizontal` namespace
+     * is the arbitrary-but-consistent pick, matching CompoundButton and Link. Both scales
+     * compute through the same `--base-scale`, so the emitted length is unchanged.
+     */
+    @variant size-small {
+      @apply p-horizontal-m;
+    }
+
+    @variant size-medium {
+      @apply p-horizontal-l;
+    }
+
+    @variant size-large {
+      @apply p-horizontal-xl;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.inverted / .brand — root args #7 / #8.
+   * `appearance` is a LOOK prop, so it rides a module class (D3) — same call react-tooltip
+   * and react-button made for their own `appearance`.
+   */
+  .inverted {
+    background-color: var(--colorNeutralBackgroundStatic);
+    color: var(--colorNeutralForegroundStaticInverted);
+  }
+
+  .brand {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.arrow = createArrowStyles({ arrowHeight: undefined }) —
+   * @fluentui/react-positioning's GriffelStyle factory, resolved here to the CONCRETE rules
+   * it compiled to. `arrowHeight: undefined` makes the factory SKIP its
+   * `createArrowHeightStyles` spread, so the two `--fui-positioning-arrow-*` custom
+   * properties are absent from this block and come from the size blocks below instead.
+   * react-positioning keeps exporting the factory for its still-Griffel consumers
+   * (`apps/vr-tests-react-components/src/stories/Positioning/utils.tsx`); this module no
+   * longer calls it. Identical transcription to react-tooltip's `.arrow`, which converted
+   * the same factory ahead of this package.
+   *
+   * `@noflip` markers in the factory, each verified unpaired in the compiled AOT output (a
+   * flipped declaration would appear there as an `[ltr, rtl]` array): the two
+   * `border-bottom-left-radius` declarations, `transform: rotate(...)`, and the `left`/`right`
+   * offsets under the right/left placements. They stay PHYSICAL — rewriting them as logical
+   * properties would mirror the arrow in RTL, which is exactly what `@noflip` forbids.
+   */
+  .arrow {
+    @apply absolute box-border;
+
+    z-index: -1;
+
+    background-color: inherit;
+    background-clip: content-box;
+
+    border-bottom-left-radius: var(--borderRadiusSmall); /* @noflip */
+    transform: rotate(var(--fui-positioning-arrow-angle)); /* @noflip */
+
+    height: var(--fui-positioning-arrow-height);
+    width: var(--fui-positioning-arrow-height);
+
+    &::before {
+      @apply block h-full w-full;
+
+      content: '';
+      background-color: inherit;
+
+      /* The factory writes `margin: -${borderWidth}`, i.e. the margin and the border width
+         are the SAME length by construction (it is what hides the seam between the arrow and
+         the surface's own border). Tailwind's border-width utilities are literal px while its
+         spacing utilities are --base-scale rem, so both are written literally here to keep
+         them from drifting apart at a non-default root font size. */
+      margin: -1px;
+      border: 1px solid var(--colorTransparentStroke);
+
+      border-bottom-left-radius: var(--borderRadiusSmall); /* @noflip */
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    }
+
+    /*
+     * The positioning layer writes `data-popper-placement` on the POSITIONED container — the
+     * PopoverSurface root, which is `usePositioning`'s `containerRef` — so Griffel compiled
+     * `:global([data-popper-placement^="top"])` to the DESCENDANT selector
+     * `[data-popper-placement^="top"] .arrow`. Reproduced here with the ancestor in `:where()`
+     * so the rule stays specificity-flat like every other converted selector (Griffel's own
+     * was 0-2-0; the four blocks are mutually exclusive and nothing else in the module sets
+     * these properties, so the change is inert).
+     */
+    :where(:global([data-popper-placement^='top'])) & {
+      bottom: var(--fui-positioning-arrow-offset);
+
+      --fui-positioning-arrow-angle: -45deg;
+    }
+
+    :where(:global([data-popper-placement^='right'])) & {
+      left: var(--fui-positioning-arrow-offset); /* @noflip */
+
+      --fui-positioning-arrow-angle: 45deg;
+    }
+
+    :where(:global([data-popper-placement^='bottom'])) & {
+      top: var(--fui-positioning-arrow-offset);
+
+      --fui-positioning-arrow-angle: 135deg;
+    }
+
+    :where(:global([data-popper-placement^='left'])) & {
+      right: var(--fui-positioning-arrow-offset); /* @noflip */
+
+      --fui-positioning-arrow-angle: 225deg;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.smallArrow / .mediumLargeArrow = createArrowHeightStyles(6) /
+   * createArrowHeightStyles(8) — arrow arg #2.
+   *
+   * edge = 1.414 * height; offset = -(edge / 2):
+   *   small        (6) → 8.484px  / -4.242px
+   *   medium+large (8) → 11.312px / -5.656px
+   *
+   * These stay literal px on purpose — react-positioning's `mergeArrowOffset(offset,
+   * arrowHeights[size])` does the matching arithmetic in JS pixels (usePopover.ts), so they
+   * must NOT be rescaled through `--base-scale` or the CSS arrow and the JS offset would
+   * disagree at a non-default root font size.
+   *
+   * These are module classes rather than `data-size` variants because the arrow element has
+   * no props of its own — `renderPopoverSurface` builds it and the hook hands it a finished
+   * className — so there is no slot to stamp an attribute on, and the root's `data-size` is
+   * on an ANCESTOR, which a plain variant cannot read.
+   */
+  .arrow-small {
+    --fui-positioning-arrow-height: 8.484px;
+    --fui-positioning-arrow-offset: -4.242px;
+  }
+
+  .arrow-medium-large {
+    --fui-positioning-arrow-height: 11.312px;
+    --fui-positioning-arrow-offset: -5.656px;
+  }
+}
