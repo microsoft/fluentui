@@ -1,12 +1,20 @@
 import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { fuiSelector, resetIdsForTests } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
 import * as React from 'react';
 
 import { FluentProvider } from './FluentProvider';
-import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 import { isConformant } from '../../testing/isConformant';
+
+/**
+ * FluentProvider's public identity class after the statics removal (DECISIONS.md D16.1).
+ * `fluentProviderClassNames.root` is NOT usable here: it is retained only as the identity
+ * prefix that seeds the runtime theme class, and the bare `fui-FluentProvider` static it
+ * holds is no longer rendered. `fuiSelector` escapes the `/`, which is legal in a class
+ * token but terminates a class selector (D16.5).
+ */
+const PROVIDER_ROOT_SELECTOR = fuiSelector('group/fui-fluent-provider');
 
 jest.mock('@fluentui/react-utilities', () => ({
   ...jest.requireActual('@fluentui/react-utilities'),
@@ -24,7 +32,15 @@ describe('FluentProvider', () => {
   });
 
   isConformant({
-    disabledTests: ['component-handles-classname'],
+    disabledTests: [
+      'component-handles-classname',
+      // Statics removal (DECISIONS.md D16.1/D16.6). FluentProvider no longer renders the
+      // bare `fui-FluentProvider` static — only the runtime `fui-FluentProvider<useId>`
+      // theme class and the `group/fui-fluent-provider` marker — so this test's
+      // rendered-class assertion no longer describes the component.
+      // `component-has-group-marker` (now a default test) is its replacement (D16.5).
+      'component-has-static-classnames-object',
+    ],
     Component: FluentProvider,
     displayName: 'FluentProvider',
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
@@ -38,7 +54,9 @@ describe('FluentProvider', () => {
     // `state.themeClassName` embeds a `useId()` counter that differs per render.
     // `classname-overrides-win` renders once and only asserts ordering within that one
     // class attribute, so the unstable id is not a factor.
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   afterEach(() => {
@@ -63,13 +81,13 @@ describe('FluentProvider', () => {
     document.body.appendChild(containerB);
 
     render(<FluentProvider theme={teamsLightTheme} />, { container: containerA });
-    expect(document.body.querySelectorAll(`.${fluentProviderClassNames.root}`)).toHaveLength(1);
+    expect(document.body.querySelectorAll(PROVIDER_ROOT_SELECTOR)).toHaveLength(1);
 
     // This resets IDs, so the next FluentProvider will have the same IDs as the first one
     resetIdsForTests();
 
     render(<FluentProvider theme={teamsLightTheme} />, { container: containerB });
-    expect(document.body.querySelectorAll(`.${fluentProviderClassNames.root}`)).toHaveLength(2);
+    expect(document.body.querySelectorAll(PROVIDER_ROOT_SELECTOR)).toHaveLength(2);
 
     expect(logErrorSpy).toHaveBeenCalledTimes(1);
     expect(logErrorSpy).toHaveBeenCalledWith(

@@ -93,7 +93,7 @@ describe('FluentProvider (hydration)', () => {
           id="root"
         >
           <div
-            class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider1"
+            class="fui-FluentProvider1 group/fui-fluent-provider"
             dir="ltr"
           />
         </div>

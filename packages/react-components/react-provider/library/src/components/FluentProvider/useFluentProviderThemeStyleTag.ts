@@ -55,6 +55,7 @@ export const useFluentProviderThemeStyleTag = (
 
   const styleTag = React.useRef<HTMLStyleElement | undefined | null>(undefined);
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- the deprecation is about STYLING use. This is the constant's retained non-styling role: it seeds the runtime `fui-FluentProvider<useId>` theme class (DECISIONS.md D16.1/D16.5).
   const styleTagId = useId(fluentProviderClassNames.root);
   const styleElementAttributes = rendererAttributes;
 
@@ -69,7 +70,14 @@ export const useFluentProviderThemeStyleTag = (
       // of double render.
 
       if (targetDocument) {
-        const providerElementSelector = `.${fluentProviderClassNames.root}.${styleTagId}`;
+        // The runtime theme class alone identifies a provider root. This used to be
+        // `.${fluentProviderClassNames.root}.${styleTagId}`, but the bare
+        // `fui-FluentProvider` half stopped being rendered when the BEM statics were
+        // removed (DECISIONS.md D16.1) and would now match nothing. Dropping it is exact
+        // rather than a widening: `styleTagId` is `fui-FluentProvider<useId>` and is only
+        // ever written onto a FluentProvider root — which is precisely the duplication this
+        // check exists to find.
+        const providerElementSelector = `.${styleTagId}`;
         const providerElements = targetDocument.querySelectorAll(providerElementSelector);
 
         const styleElementSelector = `style[id="${styleTagId}"]`;

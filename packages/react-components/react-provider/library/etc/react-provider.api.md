@@ -15,7 +15,6 @@ import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
@@ -26,8 +25,10 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
 // @public (undocumented)
 export const FluentProvider: ForwardRefComponent<FluentProviderProps>;
 
-// @public (undocumented)
-export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
+// @public @deprecated
+export const fluentProviderClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyleHooks_unstable' | 'theme' | 'overrides_unstable'> & {

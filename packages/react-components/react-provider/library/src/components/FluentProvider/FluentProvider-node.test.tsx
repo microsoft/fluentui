@@ -32,9 +32,16 @@ const parseHTMLString = (html: string) => {
  *   "fui-FluentProvider fui-FluentProvider1 ___<seq> f19n0e5 fxugw4r f1o700av fk6fouc …"
  * (Griffel's atomics, ~110 chars → over printWidth → wrapped), and the serializer then
  * stripped the atomics out of the already-wrapped output. It is now
- *   "fui-FluentProvider fui-FluentProvider1 fuicm-root"
- * which fits on one line. The serialized DOM — `fui-FluentProvider fui-FluentProvider1` —
- * is byte-identical, as is the `<style>` theme rule this test actually asserts on.
+ *   "fui-FluentProvider1 fuicm-root group/fui-fluent-provider"
+ * which fits on one line.
+ *
+ * Statics removal (DECISIONS.md D16.1): the leading bare `fui-FluentProvider` is gone from
+ * the class attribute below. What remains is exactly the post-D16 contract — the runtime
+ * `fui-FluentProvider<useId>` theme class (kept, because it hosts the `--token` custom
+ * properties and portal-compat extracts it) followed by the `group/fui-fluent-provider`
+ * marker, which is now the sole public identity CLASS. `fuicm-root` is stripped by the
+ * CSS-Modules snapshot serializer. The `<style>` theme rule these tests actually assert on
+ * is untouched.
  */
 
 describe('FluentProvider (node)', () => {
@@ -51,10 +58,7 @@ describe('FluentProvider (node)', () => {
     const html = renderToStaticMarkup(<FluentProvider theme={testTheme} />);
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
-      "<div
-        dir="ltr"
-        class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider1"
-      >
+      "<div dir="ltr" class="fui-FluentProvider1 group/fui-fluent-provider">
         <style id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
@@ -78,10 +82,7 @@ describe('FluentProvider (node)', () => {
     );
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
-      "<div
-        dir="ltr"
-        class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider1"
-      >
+      "<div dir="ltr" class="fui-FluentProvider1 group/fui-fluent-provider">
         <style nonce="random" id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
