@@ -11,7 +11,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
@@ -22,8 +21,10 @@ export type RadioBaseProps = RadioProps;
 // @public (undocumented)
 export type RadioBaseState = RadioState;
 
-// @public (undocumented)
-export const radioClassNames: SlotClassNames<RadioSlots>;
+// @public @deprecated
+export const radioClassNames: {
+    root: string;
+};
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
@@ -34,8 +35,10 @@ export type RadioGroupBaseProps = Omit<RadioGroupProps, 'layout'>;
 // @public (undocumented)
 export type RadioGroupBaseState = Omit<RadioGroupState, 'layout'>;
 
-// @public (undocumented)
-export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
+// @public @deprecated
+export const radioGroupClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required' | 'aria-describedby'>;

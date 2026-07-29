@@ -8,7 +8,7 @@ export type {
 } from './components/Radio/index';
 export {
   Radio,
-  radioClassNames,
+  radioClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderRadio_unstable,
   useRadioStyles_unstable,
   useRadio_unstable,

@@ -14,16 +14,26 @@
  */
 
 import { clsx } from 'clsx';
-import type { RadioSlots, RadioState } from './Radio.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { RadioState } from './Radio.types';
 
 import styles from './Radio.module.css';
 
-export const radioClassNames: SlotClassNames<RadioSlots> = {
-  root: 'fui-Radio',
-  indicator: 'fui-Radio__indicator',
-  input: 'fui-Radio__input',
-  label: 'fui-Radio__label',
+/**
+ * Public identity class for Radio.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
+ * `group-*` variant target. The per-slot keys (`indicator`, `input`, `label`) were removed
+ * together with the `fui-Radio__*` BEM statics (DECISIONS.md D16.1/D16.5): there is no public
+ * class-name handle on component internals.
+ *
+ * The value is a class TOKEN, not a selector — `'.' + radioClassNames.root` is invalid CSS,
+ * because the `/` must be escaped in a selector. Use `fuiSelector(radioClassNames.root)` from
+ * `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ */
+export const radioClassNames: { root: string } = {
+  root: 'group/fui-radio',
 };
 
 /**
@@ -100,27 +110,28 @@ export const useRadioStyles_unstable = (state: RadioState): RadioState => {
 
   indicator['data-empty'] = !state.indicator.children || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Radio's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Read it as
-  // `@variant group-checked/fui-radio { … }` (DECISIONS.md D15).
+  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
+  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Radio*` BEM
+  // statics that used to lead this list are gone (D16.1); the marker is Radio's sole public
+  // identity class now. It is a literal, unhashed, GLOBAL token: it is the only handle by
+  // which another module — in this package or any other — can style an element from this
+  // Radio's state, because `styles.root` is hashed and unaddressable from outside this file.
+  // Read it as `@variant group-checked/fui-radio { … }` (DECISIONS.md D15).
   //
   // Cascade priority is decided by the `@layer fui.*` order in Radio.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
   // own hook output).
-  state.root.className = clsx(radioClassNames.root, 'group/fui-radio', styles.root, state.root.className);
+  state.root.className = clsx(styles.root, 'group/fui-radio', state.root.className);
 
-  state.input.className = clsx(radioClassNames.input, styles.input, state.input.className);
+  state.input.className = clsx(styles.input, state.input.className);
 
-  state.indicator.className = clsx(radioClassNames.indicator, styles.indicator, state.indicator.className);
+  state.indicator.className = clsx(styles.indicator, state.indicator.className);
 
   if (state.label) {
-    state.label.className = clsx(radioClassNames.label, styles.label, state.label.className);
+    state.label.className = clsx(styles.label, state.label.className);
   }
 
   return state;

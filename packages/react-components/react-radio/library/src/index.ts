@@ -1,6 +1,6 @@
 export {
   RadioGroup,
-  radioGroupClassNames,
+  radioGroupClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderRadioGroup_unstable,
   useRadioGroupStyles_unstable,
   useRadioGroup_unstable,
@@ -18,7 +18,7 @@ export type {
 } from './RadioGroup';
 export {
   Radio,
-  radioClassNames,
+  radioClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderRadio_unstable,
   useRadioStyles_unstable,
   useRadio_unstable,
