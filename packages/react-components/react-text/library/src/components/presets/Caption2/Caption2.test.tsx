@@ -7,6 +7,10 @@ describe('Caption2', () => {
   isConformant({
     Component: Caption2,
     displayName: 'Caption2',
+    // Presets share Text's marker deliberately — a `<Body1>` IS a `<Text>`, so
+    // `createPreset` mints none of its own (DECISIONS.md D16.7). Without this override
+    // `component-has-group-marker` would derive `group/fui-caption2` from the displayName.
+    testOptions: { 'has-group-marker': { marker: 'group/fui-text' } },
   });
 
   it('renders a default state', () => {
@@ -14,7 +18,7 @@ describe('Caption2', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="fui-Caption2 fui-Text group/fui-text"
+          class="group/fui-text"
           data-size="300"
         >
           Default Caption2

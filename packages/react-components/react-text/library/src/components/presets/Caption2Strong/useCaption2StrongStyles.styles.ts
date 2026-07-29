@@ -1,13 +1,6 @@
 'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- kept per CONVERSION_GUIDE §3; see ../../Text/useTextStyles.styles.ts for the full note
 
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TextSlots } from '../../Text/Text.types';
-
 import styles from '../presets.module.css';
-
-export const caption2StrongClassNames: SlotClassNames<TextSlots> = {
-  root: 'fui-Caption2Strong',
-};
 
 /**
  * Styles for the root slot
