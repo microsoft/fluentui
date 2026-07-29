@@ -1,13 +1,34 @@
 'use client';
 
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration, specials batch S2):
+ * this file used to hold BOTH a `makeStyles` factory and the runtime measurement logic that
+ * drives the sliding selection indicator. Only the first of those converted — the CSS moved
+ * into `./Tab.module.css` (see its header for why it landed in Tab's module rather than a
+ * second one) and everything below the import block is the ORIGINAL measurement code,
+ * unchanged: the `getBoundingClientRect()` deltas, the `useAnimationFrame` reset, and the
+ * inline-style write of `--fui-Tab__indicator--offset` / `--fui-Tab__indicator--scale`.
+ *
+ * That mechanism — JS measures, JS writes CSS custom properties as an inline `style`, CSS
+ * only ever READS them with `var()` — is the archetype the migration explicitly preserves
+ * (CONVERSION_GUIDE.md "Known special cases": Slider, ColorPicker sliders, Tab indicator).
+ * The two custom-property NAMES are byte-identical to the Griffel original and appear in this
+ * package's committed snapshots; nothing here may rename them.
+ *
+ * Unlike the other converted styles files this one keeps a bare `'use client'` with no
+ * suppression: it still calls React hooks (`useState`, `useTabListContext_unstable`,
+ * `useAnimationFrame`), so `enforce-use-client` does not flag it.
+ */
+
 import * as React from 'react';
 import type { TabState, TabValue } from './Tab.types';
 
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { useTabListContext_unstable } from '../TabList/TabListContext';
 import type { TabRegisterData } from '../TabList/TabList.types';
-import { tokens } from '@fluentui/react-theme';
 import { useAnimationFrame } from '@fluentui/react-utilities';
+
+import styles from './Tab.module.css';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const tabIndicatorCssVars_unstable = {
@@ -15,39 +36,17 @@ const tabIndicatorCssVars_unstable = {
   scaleVar: '--fui-Tab__indicator--scale',
 };
 
-const useActiveIndicatorStyles = makeStyles({
-  base: {
-    // overflow is required to allow the selection indicator to animate outside the tab area.
-    overflow: 'visible',
-  },
-  animated: {
-    '::after': {
-      transitionProperty: 'transform',
-      transitionDuration: `${tokens.durationSlow}`,
-      transitionTimingFunction: `${tokens.curveDecelerateMax}`,
-    },
-    '@media (prefers-reduced-motion: reduce)': {
-      '::after': {
-        transitionProperty: 'none',
-        transitionDuration: '0.01ms',
-      },
-    },
-  },
-  horizontal: {
-    '::after': {
-      transformOrigin: 'left',
-      transform: `translateX(var(${tabIndicatorCssVars_unstable.offsetVar}))
-    scaleX(var(${tabIndicatorCssVars_unstable.scaleVar}))`,
-    },
-  },
-  vertical: {
-    '::after': {
-      transformOrigin: 'top',
-      transform: `translateY(var(${tabIndicatorCssVars_unstable.offsetVar}))
-        scaleY(var(${tabIndicatorCssVars_unstable.scaleVar}))`,
-    },
-  },
-});
+/**
+ * `data-orientation` is what `.indicator-transform`'s two `@variant` arms read for the
+ * `transform` / `transform-origin` pair (DECISIONS.md D15.6 — a genuine fallback: no native
+ * selector expresses orientation).
+ *
+ * `useTabIndicatorStyles_unstable` already stamps it on the same element, but this hook is
+ * exported and independently callable, so it stamps its own — the write is idempotent.
+ */
+type TabAnimatedIndicatorDataAttributes = {
+  'data-orientation': 'horizontal' | 'vertical';
+};
 
 const calculateTabRect = (element: HTMLElement) => {
   if (element) {
@@ -78,7 +77,6 @@ const isValueDefined = (value: TabValue) => value != null;
 export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabState => {
   const { disabled, selected, vertical } = state;
 
-  const activeIndicatorStyles = useActiveIndicatorStyles();
   const [lastAnimatedFrom, setLastAnimatedFrom] = React.useState<TabValue>();
   const [animationValues, setAnimationValues] = React.useState({ offset: 0, scale: 1 });
   const getRegisteredTabs = useTabListContext_unstable(ctx => ctx.getRegisteredTabs);
@@ -123,12 +121,29 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   // original position and not when set at the previous tabs position.
   const animating = animationValues.offset === 0 && animationValues.scale === 1;
 
+  const root = state.root as TabState['root'] & TabAnimatedIndicatorDataAttributes;
+
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
+
+  // The Griffel original wrote `mergeClasses(state.root.className, …)` — its own atomics
+  // LAST, i.e. after the consumer's className, which mergeClasses does by design. The
+  // arguments are flipped here so the consumer's string (already inside
+  // `state.root.className` by the time this hook runs) stays last, which is the contract
+  // `classname-overrides-win` asserts and the one the `@layer` system implements
+  // (DECISIONS.md D2/D9: unlayered consumer CSS beats every `fui.*` layer regardless).
+  //
+  // Nothing about rendering changes: argument order carries no cascade meaning here — layer
+  // order and block position inside Tab.module.css decide every tie — and the leading token
+  // stays selector-safe either way, so `classList[0]` is never the group marker (D16.2).
+  //
+  // The `horizontal` / `vertical` slices this call used to carry are gone: they are
+  // `data-orientation` arms nested inside `.indicator-transform` now.
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.className = clsx(
+    selected && styles['indicator-transform'],
+    selected && animating && styles['indicator-animated'],
     state.root.className,
-    selected && activeIndicatorStyles.base,
-    selected && animating && activeIndicatorStyles.animated,
-    selected && (vertical ? activeIndicatorStyles.vertical : activeIndicatorStyles.horizontal),
   );
 
   const rootCssVars = {

@@ -8,7 +8,11 @@ import { renderTabList_unstable } from './renderTabList';
 import type { TabState } from '../Tab';
 import { renderTab_unstable, useTabBase_unstable } from '../Tab';
 import { useTabListContextValues_unstable } from './useTabListContextValues';
-import { mergeClasses } from '@griffel/react';
+// Griffel → Tailwind + CSS Modules migration: this is the package's "headless" example, and
+// the classes it composes are the consumer's own plain strings, so `clsx` is a drop-in for
+// `mergeClasses` here (there are no Griffel atomics left to deduplicate). Keeping it means
+// `@griffel/react` is gone from the package entirely.
+import { clsx } from 'clsx';
 import { useTabListContext_unstable } from './TabListContext';
 import type { TabListState } from './TabList.types';
 
@@ -21,12 +25,7 @@ describe('useTabListBase', () => {
     const state = useTabBase_unstable(props, ref);
     const appearance = useTabListContext_unstable(ctx => ctx.appearance as CustomTabAppearance);
 
-    state.root.className = mergeClasses(
-      'tab',
-      `tab--${appearance}`,
-      state.selected && 'tab-selected',
-      state.root.className,
-    );
+    state.root.className = clsx('tab', `tab--${appearance}`, state.selected && 'tab-selected', state.root.className);
 
     return renderTab_unstable(state as TabState);
   });
@@ -41,7 +40,7 @@ describe('useTabListBase', () => {
       Object.assign(state, { appearance });
       const contextValues = useTabListContextValues_unstable(state as TabListState);
 
-      state.root.className = mergeClasses('tab-list', `tab-list--${appearance}`, state.root.className);
+      state.root.className = clsx('tab-list', `tab-list--${appearance}`, state.root.className);
 
       // Use `focusgroup` proposal to for tab roving navigation
       // @ts-expect-error - `focusgroup` is not yet typed

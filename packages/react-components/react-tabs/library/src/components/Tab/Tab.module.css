@@ -1,0 +1,1141 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ══ Tab — Griffel → Tailwind + CSS Modules ═══════════════════════════════════════════
+ *
+ * This ONE module carries both Griffel files that styled Tab:
+ *   • useTabStyles.styles.ts        (6 makeStyles factories)
+ *   • useTabAnimatedIndicator.styles.ts (1 makeStyles factory, `useActiveIndicatorStyles`)
+ *
+ * The second file is the specials-triage A4 wrinkle: it mixes a `makeStyles` surface with
+ * the runtime MEASUREMENT hook (`getBoundingClientRect` on the previously-selected tab,
+ * `useAnimationFrame` to reset). The split the triage asked for is exactly this — the CSS
+ * moved here, the measurement logic and the inline-style writer stayed in TypeScript,
+ * untouched. It lands in THIS module rather than a second one because
+ * `.indicator-transform`'s `overflow: visible` has to beat `.button`'s `overflow: hidden`
+ * on the very same element, and inside one file that is a plain file-position guarantee
+ * instead of a cross-module aggregation-order assumption. `useTabAnimatedIndicator.styles.ts`
+ * imports this same module; two importers of one module is the established shape
+ * (react-combobox, react-text, react-spinner, react-portal).
+ *
+ * ── RUNTIME CSS VARIABLES ARE UNCHANGED (specials-triage A4, S2) ─────────────────────
+ * `--fui-Tab__indicator--offset` and `--fui-Tab__indicator--scale` are written by JS as an
+ * inline `style` attribute on the root (useTabAnimatedIndicator.styles.ts), computed from
+ * measured `getBoundingClientRect()` deltas between the previously-selected and the
+ * newly-selected tab. CSS only ever READS them with `var()`. Names are byte-identical to
+ * the Griffel original (they appear in this package's committed snapshots); nothing here
+ * may rename them, and no rule here may set them.
+ *
+ * ── Layer assignment mirrors the mergeClasses ARGUMENT order ─────────────────────────
+ * Three hooks write to the SAME element in the default composition — `useTab_unstable`
+ * renders one `<button>` and `useTabStyles_unstable` calls
+ * `useTabButtonStyles_unstable(state, state.root)` — so the effective priority order on the
+ * root, later-wins, is the concatenation Griffel produced:
+ *
+ *   BUTTON slot (useTabButtonStyles_unstable, `slot.className = mergeClasses(...)`)
+ *    b1  rootStyles.button                          → .button
+ *    b2  rootStyles.horizontal | .vertical          → .button (data-orientation)
+ *    b3  rootStyles[size][orientation]              → .button (data-size × data-orientation)
+ *    b4  circular: circularStyles.base              → .circular
+ *    b5  circular: focusStyles.circular             → .focus-circular   ← MOVED, see below
+ *    b6  circular: circularStyles[size]             → .circular-small|-medium|-large
+ *    b7  circular: subtle/subtleSelected/…          → .circular-subtle*
+ *    b8  circular: filled/filledSelected/…          → .circular-filled*
+ *    r5  regular: focusStyles.base                  → .focus-base       ← MOVED, see below
+ *    r6  regular: rootStyles.subtle                 → .subtle
+ *    r7  regular: rootStyles.transparent            → .transparent
+ *    r8  regular: rootStyles.selected               → .selected
+ *    r9  regular: rootStyles.disabled               → .disabled
+ *    b9  rootStyles.disabledCursor                  → .disabled-cursor
+ *   INDICATOR (useTabIndicatorStyles_unstable, `state.root.className = mergeClasses(...)`)
+ *    i1  tabClassNames.root                         → REMOVED (D16.1); the marker
+ *                                                     `group/fui-tab` rides at clsx index 1
+ *    i2  rootStyles.root                            → .root
+ *    i3  pendingIndicatorStyles.base                → .pending-indicator
+ *    i4  pendingIndicatorStyles[size][orientation]  → .pending-indicator (data-* variants)
+ *    i5  pendingIndicatorStyles.disabled            → .pending-indicator (disabled variant)
+ *    i6  activeIndicatorStyles.base                 → .active-indicator
+ *    i7  activeIndicatorStyles.selected             → .active-indicator (enabled variant)
+ *    i8  activeIndicatorStyles[size][orientation]   → .active-indicator (data-* variants)
+ *    i9  activeIndicatorStyles.disabled             → .active-indicator (disabled variant)
+ *   ANIMATED INDICATOR (useTabAnimatedIndicatorStyles_unstable)
+ *    a1  animated base (overflow: visible)          → .indicator-transform
+ *    a2  animated `animated` (::after transitions)  → .indicator-animated
+ *    a3  animated horizontal | vertical             → .indicator-transform (data-orientation)
+ *   CONSUMER className                              → unlayered (always wins)
+ *
+ * The animated group sits LAST among the library rules because that is where Griffel put it:
+ * `useTabAnimatedIndicatorStyles_unstable` ran `mergeClasses(state.root.className, …)`, its
+ * own atomics after everything already on the element. (Griffel also put them after the
+ * consumer's className, which mergeClasses does by design; the converted hook flips those two
+ * arguments so the consumer stays last — see that file's note. The `@layer` system makes the
+ * consumer win either way, so nothing about the rendering depends on it.)
+ *
+ * The block order below IS that list, which is why the button blocks come first and the
+ * `.root` / indicator blocks second even though `.root` reads like the "primary" local.
+ * Nothing is lost by it: `useRootStyles.root` is a strict SUBSET of `useRootStyles.button`
+ * with identical values (align-items, display, flex-shrink, grid-auto-flow,
+ * grid-template-*, outline-style, position), so the two never actually contend.
+ *
+ * Two moves against that order, both restoring a SPECIFICITY win that `:where()` flattening
+ * would otherwise lose (every catalog variant is `&:where(…)`, so everything here is 0-1-0):
+ *
+ *   1. THE FOCUS BLOCKS ARE WRITTEN LAST, not at b5/r5. Griffel emitted them as
+ *      `.fXXX[data-fui-focus-visible]` — 0-2-0 — which beat `.button`'s and `.root`'s
+ *      `outline-style: none` (0-1-0) and the circular `border` shorthands (0-1-0)
+ *      regardless of argument order. Flattened, only file position can express that.
+ *   2. …EXCEPT the circular hover/pressed BORDERS, which Griffel emitted as
+ *      `.fXXX:enabled:hover{border:…}` — 0-3-0 — and which therefore beat the focus
+ *      indicator's `border-*-color: transparent` at 0-2-0. Those four declarations are
+ *      RE-DECLARED after the focus blocks (see "specificity restoration" at the bottom of
+ *      the layered section). Without that, a keyboard-focused *and* hovered circular Tab
+ *      would lose its hover border colour.
+ *
+ * ── ALTITUDE: everything layered is l1, nothing is l2 (D2 amendment 2) ───────────────
+ * Tab styles only its own slots: the `<button>` root, and the `icon` / `content` /
+ * `contentReservedSpace` `<span>`s it renders itself. It decorates no other component's
+ * hook output — TabList is Tab's PARENT and styles nothing inside it — so there is no l2
+ * content. There is no `makeResetStyles` either, so `fui.base` stays empty.
+ *
+ * The one set of rules that reaches into ANOTHER package's elements is the
+ * `@fluentui/react-icons` glyph swap; it is UNLAYERED at the bottom of this file, with its
+ * own heading comment (D2 amendment 5).
+ *
+ * ── STATE → DATA ATTRIBUTES (D15.6: fallback only) ──────────────────────────────────
+ * Exactly TWO attributes are stamped, and only because no native selector expresses them:
+ *
+ *   data-size="small|medium|large"         ← `state.size`
+ *   data-orientation="horizontal|vertical" ← `state.vertical` (headless vocabulary,
+ *                                             reports/headless-precedent.md)
+ *
+ * Between them they replace TWENTY Griffel slices (6 button size×orientation, 6 pending
+ * indicator, 6 active indicator, 2 button orientation), which would otherwise have been 20
+ * module locals and a 20-arm conditional in the hook. Precedent for both: react-slider and
+ * react-button.
+ *
+ * Everything else keys on a NATIVE selector and gains no attribute, which is D15.6's rule
+ * read literally:
+ *   • `disabled`  → the root IS `<button disabled>`, so `:disabled` matches. The catalog's
+ *                   `disabled` / `enabled` variants are what Griffel's `:enabled:hover` and
+ *                   `:enabled:active` compiled to, unchanged.
+ *   • `selected`  → NOT an attribute. `aria-selected` is deliberately absent when the tab is
+ *                   disabled (useTab.ts:99 — a disabled tab is not selectable per WAI-ARIA),
+ *                   so the catalog's `selected` variant would silently miss the
+ *                   selected-AND-disabled case that `activeIndicatorStyles.disabled` exists
+ *                   to paint. Selection therefore stays a CONDITIONAL MODULE CLASS applied by
+ *                   the hook, exactly as Griffel applied a conditional atomic — no mirror
+ *                   attribute, no gap.
+ *   • `appearance` → conditional module classes (`.subtle`, `.transparent`, `.circular-*`),
+ *                    the shape react-button uses for its own appearance prop.
+ *   • `animating` → runtime state of the measured-rect animation; a conditional module class
+ *                   (`.indicator-animated`) on the element that consumes it.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Checked against the `[ltr, rtl]` class pairs in the compiled atomics
+ * (lib-commonjs/components/Tab/useTab*.styles.js). There are three groups and only one is a
+ * real VALUE flip:
+ *   1. Every `left` / `right` on the indicator pseudo-elements is a pure PROPERTY flip with
+ *      an IDENTICAL value (`Fbdkly: ["f1s6rxz5", "fo35v8s"]` → `left:6px` / `right:6px`), so
+ *      they become logical `inset-inline-start` / `inset-inline-end` (`start-*` / `end-*`).
+ *   2. `shorthands.borderColor('transparent')` in the focus indicators flips
+ *      `border-right-color` ↔ `border-left-color` with the identical `transparent` value —
+ *      written as PHYSICAL longhands, matching react-button's conversion of the same
+ *      `createCustomFocusIndicatorStyle` shape, because there is no flip to express.
+ *   3. `transform-origin: left` on the animated selection indicator IS a value flip
+ *      (`sjv3b2: ["fug4aj8", "f1i5xzg7"]` → `left` / `right`) and gets an explicit
+ *      `@variant rtl` twin. Its sibling `transform: translateX(var(--fui-Tab__indicator--offset))`
+ *      has NO rtl twin in the compiled output and gets none here: the offset is a measured
+ *      delta between two real rects, so it already carries the document direction.
+ *
+ * ── Pixel literals and stroke widths (DECISIONS.md D4) ──────────────────────────────
+ * The icon box (20/24 px) rides `--base-scale` through the numeric utilities `h-20`/`w-20`
+ * and `calc(20px * var(--base-scale))` for `font-size`, which has no numeric utility
+ * (precedent: react-avatar). `strokeWidth*` becomes `h-thick` / `w-thicker` where the
+ * property is spacing-powered and `var(--spacing-thin)` where it is not (`border-width`,
+ * `outline-width`, `box-shadow` spread) — raw `var(--strokeWidth*)` is forbidden because it
+ * is the one form that does not scale.
+ *
+ * The circular `padding-block: calc(<spacing token> - strokeWidthThin)` cannot use a spacing
+ * UTILITY (there is no subtracting form) and cannot use `var(--spacing-vertical-*)` (those
+ * are `@theme inline` registrations and emit no variable). It is written as
+ * `calc(<n>px * var(--base-scale) - var(--spacing-thin))`, which scales identically to the
+ * utility it replaces — `--spacing-thin` is one of the four registrations that DOES emit a
+ * real custom property.
+ */
+
+@layer fui.components.l1 {
+  /* ═══ button slot — useTabButtonStyles_unstable ══════════════════════════════════ */
+
+  /* from useRootStyles.button — arg b1 */
+  .button {
+    @apply relative grid shrink-0 items-center overflow-hidden normal-case;
+
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+
+    /* Kept as the `border` shorthand because that is what Griffel compiled
+       (`.f3bhgqh{border:none}`) and because the only rules that touch this element's border
+       are other full shorthands (`.circular*`) plus the focus indicator's four
+       `border-*-color` longhands, which are written after them. */
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+
+    cursor: pointer;
+    font-family: var(--fontFamilyBase);
+    line-height: var(--lineHeightBase300);
+    outline-style: none;
+
+    /* from useRootStyles.horizontal / .vertical — arg b2 */
+    @variant horizontal {
+      @apply justify-center;
+    }
+
+    @variant vertical {
+      /* literal, not `justify-start`: that utility compiles to `flex-start`, while the
+         compiled atomic is `justify-content:start` (`.f1s9ku6b`). */
+      justify-content: start;
+    }
+
+    /*
+     * from useRootStyles.{small,medium,large}{Horizontal,Vertical} — arg b3.
+     * The horizontal column-gap on the VERTICAL variants is deliberate in the source and is
+     * reproduced verbatim: it is the gap between the icon and the content, which sit in one
+     * grid row whichever way the TabList runs.
+     */
+    @variant size-small {
+      @variant horizontal {
+        @apply gap-x-horizontal-xxs py-vertical-s-nudge px-horizontal-s-nudge;
+      }
+
+      @variant vertical {
+        @apply gap-x-horizontal-xxs py-vertical-xxs px-horizontal-s-nudge;
+      }
+    }
+
+    @variant size-medium {
+      @variant horizontal {
+        @apply gap-x-horizontal-s-nudge py-vertical-m px-horizontal-m-nudge;
+      }
+
+      @variant vertical {
+        @apply gap-x-horizontal-s-nudge py-vertical-s-nudge px-horizontal-m-nudge;
+      }
+    }
+
+    @variant size-large {
+      @variant horizontal {
+        @apply gap-x-horizontal-s-nudge py-vertical-l px-horizontal-m-nudge;
+      }
+
+      @variant vertical {
+        @apply gap-x-horizontal-s-nudge py-vertical-s px-horizontal-m-nudge;
+      }
+    }
+  }
+
+  /* ── circular appearances (`subtle-circular`, `filled-circular`) ─────────────────── */
+
+  /* from useCircularAppearanceStyles.base — arg b4 */
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+    border: solid var(--spacing-thin) var(--colorTransparentStroke);
+
+    & .icon {
+      color: inherit;
+    }
+
+    & .content {
+      color: inherit;
+    }
+  }
+
+  /*
+   * from useCircularAppearanceStyles.small / .medium / .large — arg b6.
+   * `calc(<token> - strokeWidthThin)` compensates the 1px border the circular appearances
+   * add, so the outer box keeps the height of the non-circular sizes.
+   */
+  .circular-small {
+    padding-block: calc(2px * var(--base-scale) - var(--spacing-thin));
+  }
+
+  .circular-medium {
+    padding-block: calc(6px * var(--base-scale) - var(--spacing-thin));
+  }
+
+  .circular-large {
+    padding-block: calc(8px * var(--base-scale) - var(--spacing-thin));
+  }
+
+  /* from useCircularAppearanceStyles.subtle — arg b7 */
+  .circular-subtle {
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForeground2);
+
+    @variant enabled {
+      @variant hover {
+        background-color: var(--colorSubtleBackgroundHover);
+        border: solid var(--spacing-thin) var(--colorNeutralStroke1Hover);
+        color: var(--colorNeutralForeground2Hover);
+      }
+
+      @variant active {
+        background-color: var(--colorSubtleBackgroundPressed);
+        border: solid var(--spacing-thin) var(--colorNeutralStroke1Pressed);
+        color: var(--colorNeutralForeground2Pressed);
+      }
+    }
+
+    @variant forced-colors {
+      border: solid var(--spacing-thin) Canvas;
+    }
+  }
+
+  /* from useCircularAppearanceStyles.subtleSelected — arg b7 */
+  .circular-subtle-selected {
+    background-color: var(--colorBrandBackground2);
+    border: solid var(--spacing-thin) var(--colorCompoundBrandStroke);
+    color: var(--colorBrandForeground2);
+
+    @variant enabled {
+      @variant hover {
+        background-color: var(--colorBrandBackground2Hover);
+        border: solid var(--spacing-thin) var(--colorCompoundBrandStrokeHover);
+        color: var(--colorBrandForeground2Hover);
+      }
+
+      @variant active {
+        background-color: var(--colorBrandBackground2Pressed);
+        border: solid var(--spacing-thin) var(--colorCompoundBrandStrokePressed);
+        color: var(--colorBrandForeground2Pressed);
+      }
+    }
+
+    @variant forced-colors {
+      border: solid var(--spacing-thin) Highlight;
+    }
+  }
+
+  /* from useCircularAppearanceStyles.subtleDisabled — arg b7 */
+  .circular-subtle-disabled {
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* from useCircularAppearanceStyles.subtleDisabledSelected — arg b7 */
+  .circular-subtle-disabled-selected {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border: solid var(--spacing-thin) var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* from useCircularAppearanceStyles.filled — arg b8 */
+  .circular-filled {
+    background-color: var(--colorNeutralBackground3);
+    color: var(--colorNeutralForeground2);
+
+    @variant enabled {
+      @variant hover {
+        background-color: var(--colorNeutralBackground3Hover);
+        color: var(--colorNeutralForeground2Hover);
+      }
+
+      @variant active {
+        background-color: var(--colorNeutralBackground3Pressed);
+        color: var(--colorNeutralForeground2Pressed);
+      }
+    }
+
+    /*
+     * `@variant forced-colors` is the OUTER wrapper (CONVERSION_GUIDE §3b rule 2 — it is an
+     * at-rule variant). The `.fui-Icon-filled` / `.fui-Icon-regular` halves of this same
+     * slice are NOT here: they style `@fluentui/react-icons` elements and are unlayered at
+     * the bottom of this file.
+     */
+    @variant forced-colors {
+      @variant enabled {
+        @variant hover {
+          background-color: Highlight;
+          forced-color-adjust: none;
+
+          & .content {
+            color: HighlightText;
+          }
+        }
+      }
+    }
+  }
+
+  /* from useCircularAppearanceStyles.filledSelected — arg b8 */
+  .circular-filled-selected {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+
+    @variant enabled {
+      @variant hover {
+        background-color: var(--colorBrandBackgroundHover);
+        color: var(--colorNeutralForegroundOnBrand);
+      }
+
+      @variant active {
+        background-color: var(--colorBrandBackgroundPressed);
+        color: var(--colorNeutralForegroundOnBrand);
+      }
+    }
+
+    @variant forced-colors {
+      @variant enabled {
+        background-color: ButtonText;
+
+        & .content {
+          color: ButtonFace;
+          forced-color-adjust: none;
+        }
+
+        & .icon {
+          color: ButtonFace;
+        }
+      }
+    }
+  }
+
+  /* from useCircularAppearanceStyles.filledDisabled — arg b8 */
+  .circular-filled-disabled {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* from useCircularAppearanceStyles.filledDisabledSelected — arg b8 */
+  .circular-filled-disabled-selected {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border: solid var(--spacing-thin) var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* ── regular appearances (`transparent`, `subtle`) ───────────────────────────────── */
+
+  /*
+   * from useRootStyles.subtle — arg r6.
+   * Within each of the four blocks below the base `& .icon` / `& .content` rules are written
+   * BEFORE their hover/pressed counterparts: Griffel separated them by specificity
+   * (`.x:enabled:hover .fui-Tab__icon` 0-3-0 vs `.x .fui-Tab__icon` 0-2-0), `:where()` does
+   * not, so the narrower condition has to come later in the file.
+   */
+  .subtle {
+    background-color: var(--colorSubtleBackground);
+
+    & .icon {
+      color: var(--colorNeutralForeground2);
+    }
+
+    & .content {
+      color: var(--colorNeutralForeground2);
+    }
+
+    @variant enabled {
+      @variant hover {
+        background-color: var(--colorSubtleBackgroundHover);
+
+        & .icon {
+          color: var(--colorNeutralForeground2Hover);
+        }
+
+        & .content {
+          color: var(--colorNeutralForeground2Hover);
+        }
+      }
+
+      @variant active {
+        background-color: var(--colorSubtleBackgroundPressed);
+
+        & .icon {
+          color: var(--colorNeutralForeground2Pressed);
+        }
+
+        & .content {
+          color: var(--colorNeutralForeground2Pressed);
+        }
+      }
+    }
+  }
+
+  /* from useRootStyles.transparent — arg r7 */
+  .transparent {
+    background-color: var(--colorTransparentBackground);
+
+    & .icon {
+      color: var(--colorNeutralForeground2);
+    }
+
+    & .content {
+      color: var(--colorNeutralForeground2);
+    }
+
+    @variant enabled {
+      @variant hover {
+        background-color: var(--colorTransparentBackgroundHover);
+
+        & .icon {
+          color: var(--colorNeutralForeground2Hover);
+        }
+
+        & .content {
+          color: var(--colorNeutralForeground2Hover);
+        }
+      }
+
+      @variant active {
+        background-color: var(--colorTransparentBackgroundPressed);
+
+        & .icon {
+          color: var(--colorNeutralForeground2Pressed);
+        }
+
+        & .content {
+          color: var(--colorNeutralForeground2Pressed);
+        }
+      }
+    }
+  }
+
+  /*
+   * from useRootStyles.selected — arg r8. Applied only when `selected && !disabled`, so it
+   * is written AFTER `.subtle` / `.transparent` and wins the equal-specificity tie for the
+   * icon and content colours, exactly as mergeClasses arg r8 beat args r6/r7.
+   */
+  .selected {
+    & .icon {
+      color: var(--colorCompoundBrandForeground1);
+    }
+
+    & .content {
+      color: var(--colorNeutralForeground1);
+    }
+
+    @variant enabled {
+      @variant hover {
+        & .icon {
+          color: var(--colorCompoundBrandForeground1Hover);
+        }
+
+        & .content {
+          color: var(--colorNeutralForeground1Hover);
+        }
+      }
+
+      @variant active {
+        & .icon {
+          color: var(--colorCompoundBrandForeground1Pressed);
+        }
+
+        & .content {
+          color: var(--colorNeutralForeground1Pressed);
+        }
+      }
+    }
+  }
+
+  /* from useRootStyles.disabled — arg r9 (mutually exclusive with `.selected` above) */
+  .disabled {
+    background-color: var(--colorTransparentBackground);
+
+    & .icon {
+      color: var(--colorNeutralForegroundDisabled);
+    }
+
+    & .content {
+      color: var(--colorNeutralForegroundDisabled);
+    }
+  }
+
+  /* from useRootStyles.disabledCursor — arg b9 (beats `.button`'s `cursor: pointer`) */
+  .disabled-cursor {
+    @apply cursor-not-allowed;
+  }
+
+  /* ═══ root slot — useTabIndicatorStyles_unstable ═════════════════════════════════ */
+
+  /*
+   * from useRootStyles.root — arg i2.
+   * A strict subset of `.button` above, with identical values, so the two never contend on
+   * the default composition where both land on the same element. It is kept as its own local
+   * because `useTabButtonStyles_unstable(state, slot)` is public and a custom Tab may point
+   * `slot` at a different element than `state.root`.
+   */
+  .root {
+    @apply relative grid shrink-0 items-center;
+
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    outline-style: none;
+  }
+
+  /*
+   * from usePendingIndicatorStyles — args i3 / i4 / i5.
+   * The "pending" indicator is the hover/pressed hint on an UNSELECTED tab: a `::before`
+   * that only materialises under `:hover` / `:active` (that is where `content` is set), sized
+   * and positioned unconditionally by the size × orientation block.
+   *
+   * The hook applies this whole family only when the appearance is not circular, matching the
+   * Griffel `if (appearance !== 'subtle-circular' && appearance !== 'filled-circular')` guard.
+   */
+  .pending-indicator {
+    @variant hover {
+      &::before {
+        @apply absolute;
+
+        content: '';
+        background-color: var(--colorNeutralStroke1Hover);
+        border-radius: var(--borderRadiusCircular);
+      }
+    }
+
+    @variant active {
+      &::before {
+        @apply absolute;
+
+        content: '';
+        background-color: var(--colorNeutralStroke1Pressed);
+        border-radius: var(--borderRadiusCircular);
+      }
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        &::before {
+          background-color: Highlight;
+        }
+      }
+
+      @variant active {
+        &::before {
+          background-color: Highlight;
+        }
+      }
+    }
+
+    /* from usePendingIndicatorStyles[size][orientation] — arg i4 */
+    @variant size-small {
+      @variant horizontal {
+        &::before {
+          @apply bottom-0 h-thick start-horizontal-s-nudge end-horizontal-s-nudge;
+        }
+      }
+
+      @variant vertical {
+        &::before {
+          @apply bottom-vertical-xs start-0 top-vertical-xs w-thicker;
+        }
+      }
+    }
+
+    @variant size-medium {
+      @variant horizontal {
+        &::before {
+          @apply bottom-0 h-thicker start-horizontal-m end-horizontal-m;
+        }
+      }
+
+      @variant vertical {
+        &::before {
+          @apply bottom-vertical-s start-0 top-vertical-s w-thicker;
+        }
+      }
+    }
+
+    @variant size-large {
+      @variant horizontal {
+        &::before {
+          @apply bottom-0 h-thicker start-horizontal-m end-horizontal-m;
+        }
+      }
+
+      @variant vertical {
+        &::before {
+          @apply bottom-vertical-m-nudge start-0 top-vertical-m-nudge w-thicker;
+        }
+      }
+    }
+
+    /* from usePendingIndicatorStyles.disabled — arg i5 */
+    @variant disabled {
+      @variant hover {
+        &::before {
+          background-color: var(--colorTransparentStroke);
+        }
+      }
+
+      @variant active {
+        &::before {
+          background-color: var(--colorTransparentStroke);
+        }
+      }
+    }
+
+    @variant forced-colors {
+      @variant disabled {
+        @variant hover {
+          &::before {
+            background-color: transparent;
+          }
+        }
+
+        @variant active {
+          &::before {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  /*
+   * from useActiveIndicatorStyles — args i6 / i7 / i8 / i9.
+   * The selection indicator on a SELECTED tab: an `::after` that always paints. The hook
+   * applies this family only when `selected` (and, like the pending indicator, only for the
+   * non-circular appearances).
+   *
+   * `selected` is a conditional module class rather than the catalog's `selected` variant on
+   * purpose — see the STATE → DATA ATTRIBUTES note in the header: `aria-selected` is absent
+   * on a DISABLED tab, which is exactly the case arg i9 exists to paint.
+   */
+  .active-indicator {
+    &::after {
+      @apply absolute;
+
+      content: '';
+      background-color: var(--colorTransparentStroke);
+      border-radius: var(--borderRadiusCircular);
+    }
+
+    /* from useActiveIndicatorStyles.selected — arg i7 (applied when `selected && !disabled`) */
+    @variant enabled {
+      &::after {
+        background-color: var(--colorCompoundBrandStroke);
+      }
+
+      @variant hover {
+        &::after {
+          background-color: var(--colorCompoundBrandStrokeHover);
+        }
+      }
+
+      @variant active {
+        &::after {
+          background-color: var(--colorCompoundBrandStrokePressed);
+        }
+      }
+    }
+
+    @variant forced-colors {
+      @variant enabled {
+        &::after {
+          background-color: ButtonText;
+        }
+
+        @variant hover {
+          &::after {
+            background-color: ButtonText;
+          }
+        }
+
+        @variant active {
+          &::after {
+            background-color: ButtonText;
+          }
+        }
+      }
+    }
+
+    /* from useActiveIndicatorStyles[size][orientation] — arg i8 */
+    @variant size-small {
+      @variant horizontal {
+        &::after {
+          @apply bottom-0 h-thick start-horizontal-s-nudge end-horizontal-s-nudge;
+        }
+      }
+
+      @variant vertical {
+        &::after {
+          @apply bottom-vertical-xs start-0 top-vertical-xs w-thicker;
+        }
+      }
+    }
+
+    @variant size-medium {
+      @variant horizontal {
+        &::after {
+          @apply bottom-0 h-thicker start-horizontal-m end-horizontal-m;
+        }
+      }
+
+      @variant vertical {
+        &::after {
+          @apply bottom-vertical-s start-0 top-vertical-s w-thicker;
+        }
+      }
+    }
+
+    @variant size-large {
+      @variant horizontal {
+        &::after {
+          @apply bottom-0 h-thicker start-horizontal-m end-horizontal-m;
+        }
+      }
+
+      @variant vertical {
+        &::after {
+          @apply bottom-vertical-m-nudge start-0 top-vertical-m-nudge w-thicker;
+        }
+      }
+    }
+
+    /* from useActiveIndicatorStyles.disabled — arg i9 (applied when `selected && disabled`) */
+    @variant disabled {
+      &::after {
+        background-color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+  }
+
+  /* ═══ animated selection indicator — useTabAnimatedIndicatorStyles_unstable ═══════ */
+
+  /*
+   * from useActiveIndicatorStyles.base + .horizontal / .vertical — args a1 / a3.
+   * Both are gated on exactly the same condition (`selected`) in the source, so they are one
+   * local here. `overflow: visible` lets the indicator animate OUTSIDE the tab's own box; it
+   * has to beat `.button`'s `overflow: hidden`, which is why this block sits after it — and
+   * why this CSS lives in Tab.module.css rather than a second module (see the header).
+   *
+   * The two `var()`s are written by JS as inline styles on this element; CSS only reads them.
+   */
+  .indicator-transform {
+    @apply overflow-visible;
+
+    @variant horizontal {
+      &::after {
+        transform-origin: left;
+        transform: translateX(var(--fui-Tab__indicator--offset)) scaleX(var(--fui-Tab__indicator--scale));
+      }
+
+      /* VALUE flip: compiled `sjv3b2: ["fug4aj8", "f1i5xzg7"]` → `left` / `right`. The
+         `transform` above has no rtl twin in the compiled output and gets none here — its
+         offset is a measured rect delta and already carries the document direction. */
+      @variant rtl {
+        &::after {
+          transform-origin: right;
+        }
+      }
+    }
+
+    @variant vertical {
+      &::after {
+        transform-origin: top;
+        transform: translateY(var(--fui-Tab__indicator--offset)) scaleY(var(--fui-Tab__indicator--scale));
+      }
+    }
+  }
+
+  /*
+   * from useActiveIndicatorStyles.animated — arg a2. Applied when the indicator is travelling
+   * back to its resting position (`selected && animating`).
+   *
+   * Individual transition longhands, never the `transition` shorthand: the shorthand would
+   * also reset `transition-delay` and `transition-behavior`, and the compiled atomics are
+   * longhands (`.fhwpy7i::after{transition-property:transform}` …).
+   */
+  .indicator-animated {
+    &::after {
+      transition-property: transform;
+      transition-duration: var(--durationSlow);
+      transition-timing-function: var(--curveDecelerateMax);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      &::after {
+        transition-property: none;
+        transition-duration: 0.01ms;
+      }
+    }
+  }
+
+  /* ═══ focus indicators — useFocusStyles ══════════════════════════════════════════ */
+
+  /*
+   * from useFocusStyles.base / .circular — args r5 / b5, WRITTEN LAST (see move #1 in the
+   * header). Tab mints a CUSTOM focus indicator instead of `@apply fui-focus-outline`
+   * because the shared one paints an `::after` pseudo-element and Tab's selection indicator
+   * already owns `::after` — that conflict is the reason
+   * `createCustomFocusIndicatorStyle(..., { enableOutline: true })` is called here at all,
+   * and the source says so in a comment.
+   *
+   * `@variant focus-visible-fui` is the shared catalog selector for `[data-fui-focus-visible]`,
+   * the attribute `@fluentui/react-tabster` stamps; the raw attribute never appears in a
+   * component module.
+   *
+   * `outline-width` and the `box-shadow` spreads do NOT read the spacing namespace, so they
+   * take `var(--spacing-thick)` / `var(--spacing-thin)` directly (CONVERSION_GUIDE §2, stroke
+   * widths, case 2). The `border-*-color` longhands are physical because the compiled
+   * `[ltr, rtl]` pair carries the identical `transparent` on both sides.
+   */
+  .focus-base {
+    @variant focus-visible-fui {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      outline-width: var(--spacing-thick);
+      outline-color: transparent;
+      outline-style: solid;
+      box-shadow: var(--shadow4), 0 0 0 var(--spacing-thick) var(--colorStrokeFocus2);
+      z-index: 1;
+    }
+  }
+
+  .focus-circular {
+    @variant focus-visible-fui {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      outline-width: var(--spacing-thick);
+      outline-color: transparent;
+      outline-style: solid;
+      box-shadow: var(--shadow4), 0 0 0 var(--spacing-thick) var(--colorStrokeFocus2),
+        0 0 0 var(--spacing-thin) var(--colorNeutralStrokeOnBrand) inset;
+      z-index: 1;
+    }
+  }
+
+  /*
+   * ── SPECIFICITY RESTORATION (move #2 in the header) ────────────────────────────────
+   * Griffel emitted the circular hover/pressed borders as `.fXXX:enabled:hover{border:…}`
+   * (0-3-0) and the focus indicator's border colours as
+   * `.fYYY[data-fui-focus-visible]{border-right-color:transparent}` (0-2-0), so the hover
+   * border WON over the focus indicator. Every selector in this file is `:where()`-flat at
+   * 0-1-0, so that win can only be expressed as file position — and the focus blocks above
+   * have to come after the appearance blocks for their `outline-style` and at-rest border
+   * colours. These four declarations are therefore re-stated here, after the focus blocks.
+   *
+   * They are byte-identical to the ones inside `.circular-subtle` / `.circular-subtle-selected`
+   * above; re-declaring a rule at equal specificity is a no-op in every state EXCEPT the
+   * focus-visible one this exists for. `.circular-subtle-selected` follows
+   * `.circular-subtle` here for the same reason it does above (arg order).
+   *
+   * Only these two slices set a border on hover/press. `.circular-filled*` sets none, and the
+   * `*-disabled*` slices cannot be reached through `@variant enabled`.
+   */
+  .circular-subtle {
+    @variant enabled {
+      @variant hover {
+        border: solid var(--spacing-thin) var(--colorNeutralStroke1Hover);
+      }
+
+      @variant active {
+        border: solid var(--spacing-thin) var(--colorNeutralStroke1Pressed);
+      }
+    }
+  }
+
+  .circular-subtle-selected {
+    @variant enabled {
+      @variant hover {
+        border: solid var(--spacing-thin) var(--colorCompoundBrandStrokeHover);
+      }
+
+      @variant active {
+        border: solid var(--spacing-thin) var(--colorCompoundBrandStrokePressed);
+      }
+    }
+  }
+
+  /* ═══ icon slot — useTabContentStyles_unstable ═══════════════════════════════════ */
+
+  /*
+   * from useIconStyles.base / .small / .medium / .large / .selected.
+   * These stay DIRECT classes on the icon element rather than moving to
+   * `.root:where([data-size]) & .icon` descendant rules, because
+   * `useTabContentStyles_unstable` is exported and independently callable — a custom Tab may
+   * call it without ever stamping the root's attributes.
+   *
+   * The `.fui-Icon-filled` / `.fui-Icon-regular` halves of `base` and `selected` are NOT here:
+   * they style `@fluentui/react-icons` elements and are UNLAYERED at the bottom of this file.
+   */
+  .icon {
+    @apply inline-flex items-center justify-center overflow-hidden;
+
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  /* per design, the small and medium font sizes are the same — the size prop only affects
+     spacing. Reproduced as two locals so the mapping back to the source stays 1:1. */
+  .icon-small {
+    font-size: calc(20px * var(--base-scale));
+
+    @apply h-20 w-20;
+  }
+
+  .icon-medium {
+    font-size: calc(20px * var(--base-scale));
+
+    @apply h-20 w-20;
+  }
+
+  .icon-large {
+    font-size: calc(24px * var(--base-scale));
+
+    @apply h-24 w-24;
+  }
+
+  /* ═══ content slot — useTabContentStyles_unstable ════════════════════════════════ */
+
+  /*
+   * from useContentStyles.*. `.content` is shared by the `content` slot and by the
+   * `contentReservedSpace` slot (the hidden placeholder that reserves the SELECTED metrics so
+   * the tab does not resize on selection), exactly as `contentStyles.base` was in the source.
+   *
+   * NOTE this widens the appearance blocks' `& .content` colour rules to also match the
+   * reserved-space span, which the `fui-Tab__content` static did not. It cannot render: that
+   * span always carries `.content-placeholder` (`visibility: hidden`).
+   *
+   * The typography presets are expanded to the four longhands Griffel compiled
+   * (`typographyStyles.body1` → family/size/weight/line-height), because a `font` shorthand
+   * has no equivalent priority machinery in plain CSS.
+   */
+  .content {
+    @apply overflow-hidden py-vertical-none px-horizontal-xxs;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  /* from useContentStyles.large — typographyStyles.body2 */
+  .content-large {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase400);
+  }
+
+  /* from useContentStyles.selected — typographyStyles.body1Strong */
+  .content-selected {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+  }
+
+  /* from useContentStyles.largeSelected — typographyStyles.subtitle2 */
+  .content-large-selected {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  /* from useContentStyles.noIconBefore / .iconBefore — grid line NUMBERS, written literally */
+  .content-no-icon-before {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  .content-icon-before {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+
+  /* from useContentStyles.placeholder */
+  .content-placeholder {
+    @apply invisible;
+  }
+}
+
+/*
+ * ── The icon swap must be UNLAYERED ──────────────────────────────────────────────────
+ *
+ * Same defect, same fix and same evidence as react-button's Button.module.css (bottom of
+ * that file), react-button's ToggleButton/MenuButton and react-infolabel's InfoButton. The
+ * rules below style ANOTHER package's elements: the two <svg>s that
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. react-icons is not
+ * converted (D11 keeps it on Griffel) and Griffel injects UNLAYERED:
+ *
+ *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
+ *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
+ *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
+ *
+ * An unlayered normal author declaration outranks EVERY `@layer` — that comparison happens
+ * before specificity is consulted — so a `display` rule left in `@layer fui.components.l1`
+ * could never beat `.fjseox`, no matter that it is 0-2-0 against its 0-1-0, and a SELECTED
+ * Tab would keep the outline glyph instead of swapping to the filled one.
+ *
+ * The forced-colors COLOUR rules from `useCircularAppearanceStyles.filled` are here too.
+ * Nothing unlayered competes with them for `color` specifically, but they were unlayered
+ * under Griffel like every other atomic, and moving them into a layer would silently weaken
+ * them against any other unlayered author rule on the same element. Keeping the whole
+ * react-icons surface in one unlayered block is also what makes the D2-amendment-5 grep
+ * (`fui-Icon-filled`) land on a single, self-describing place.
+ *
+ * ── Order inside this block reproduces mergeClasses ARGUMENT order ───────────────────
+ * `.icon` and `.icon-selected` sit on the SAME element and both flatten to 0-2-0, so file
+ * position is the only tiebreak and it has to encode argument order: base first, the
+ * selected swap second, so a selected Tab shows the filled glyph.
+ * `.circular-filled` is on a different element (the button) and cannot contend with either.
+ *
+ * Everything that styles Tab's OWN elements — including the `.icon` / `.content` colour
+ * rules in the appearance blocks — stays layered above.
+ */
+
+/* from useIconStyles.base */
+.icon {
+  & :global(.fui-Icon-filled) {
+    display: none;
+  }
+
+  & :global(.fui-Icon-regular) {
+    display: inline;
+  }
+}
+
+/* from useIconStyles.selected */
+.icon-selected {
+  & :global(.fui-Icon-filled) {
+    display: inline;
+  }
+
+  & :global(.fui-Icon-regular) {
+    display: none;
+  }
+}
+
+/* from useCircularAppearanceStyles.filled — the forced-colors glyph colours */
+.circular-filled {
+  @variant forced-colors {
+    @variant enabled {
+      @variant hover {
+        & :global(.fui-Icon-filled) {
+          color: HighlightText;
+        }
+
+        & :global(.fui-Icon-regular) {
+          color: HighlightText;
+        }
+      }
+    }
+  }
+}

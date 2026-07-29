@@ -10,8 +10,7 @@ export type {
 export {
   Tab,
   renderTab_unstable,
-  tabClassNames,
-  tabReservedSpaceClassNames,
+  tabClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTabAnimatedIndicatorStyles_unstable,
   useTabButtonStyles_unstable,
   useTabContentStyles_unstable,

@@ -1,598 +1,71 @@
 'use client';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TabSlots, TabState } from './Tab.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * unlike most converted styles files this one keeps a BARE `'use client'` with no
+ * `enforce-use-client` suppression. `makeStyles` is gone, but the file still re-exports and
+ * calls `useTabAnimatedIndicatorStyles_unstable`, which is a real React hook, so the rule
+ * does not consider the directive unnecessary and a suppression here would be reported as an
+ * unused disable directive.
+ */
+
+import { clsx } from 'clsx';
+import type { TabState } from './Tab.types';
 import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator.styles';
 
-export const tabClassNames: SlotClassNames<TabSlots> = {
-  root: 'fui-Tab',
-  icon: 'fui-Tab__icon',
-  content: 'fui-Tab__content',
+import styles from './Tab.module.css';
+
+/**
+ * Public identity class for Tab.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
+ * `group-*` variant target. The per-slot keys (`icon`, `content`) were removed together with
+ * the `fui-Tab__*` BEM statics (DECISIONS.md D16.1/D16.5): there is no public class-name
+ * handle on component internals.
+ *
+ * The value is a class TOKEN, not a selector — `'.' + tabClassNames.root` is invalid CSS,
+ * because the `/` must be escaped in a selector. Use `fuiSelector(tabClassNames.root)` from
+ * `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ *
+ * NOTE: this is NOT the package's runtime-styling contract. The
+ * `--fui-Tab__indicator--offset` / `--fui-Tab__indicator--scale` custom properties written by
+ * `useTabAnimatedIndicatorStyles_unstable` as inline styles are unchanged, and remain the way
+ * the measured selection-indicator animation is driven.
+ */
+export const tabClassNames: { root: string } = {
+  root: 'group/fui-tab',
 };
 
-export const tabReservedSpaceClassNames = {
-  content: 'fui-Tab__content--reserved-space',
+/**
+ * Data attributes rendered on the element each style hook decorates, and matched by the shared
+ * `@custom-variant` catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * These two are the ONLY attributes this conversion adds, and both are genuine fallbacks under
+ * DECISIONS.md D15.6 — no native selector expresses either one:
+ *
+ * • `data-size` replaces `rootStyles[size + orientation]`, `pendingIndicatorStyles[…]`,
+ *   `activeIndicatorStyles[…]` and `circularStyles[size]`'s selection halves.
+ * • `data-orientation` replaces every `vertical ? … : …` ternary, and reuses the headless
+ *   vocabulary's existing `vertical` / `horizontal` pair (reports/headless-precedent.md).
+ *   It is ALWAYS stamped — both branches have styles.
+ *
+ * Together they collapse twenty Griffel slices into six nested `@variant` blocks. Everything
+ * else Tab styles on — `disabled`, `:hover`, `:active`, `[data-fui-focus-visible]` — already
+ * has a native or catalog selector, and `selected` / `appearance` / the animation's
+ * `animating` flag stay CONDITIONAL MODULE CLASSES (see Tab.module.css's header for why
+ * `selected` in particular must not become an attribute or read `aria-selected`).
+ *
+ * They are stamped by BOTH `useTabIndicatorStyles_unstable` (on `state.root`) and
+ * `useTabButtonStyles_unstable` (on the `slot` it is handed). In the default composition those
+ * are the same object and the second write is idempotent; when a custom Tab points the button
+ * hook at a different element, each hook stamps the element whose rules read the attribute.
+ */
+type TabRootDataAttributes = {
+  'data-size': TabState['size'];
+  'data-orientation': 'horizontal' | 'vertical';
 };
-
-// These should match the constants defined in @fluentui/react-icons
-// This package avoids taking a dependency on the icons package for only the constants.
-const iconClassNames = {
-  filled: 'fui-Icon-filled',
-  regular: 'fui-Icon-regular',
-};
-
-/**
- * Styles for the root slot
- */
-const useRootStyles = makeStyles({
-  root: {
-    alignItems: 'center',
-    display: 'grid',
-    flexShrink: 0,
-    gridAutoFlow: 'column',
-    gridTemplateColumns: 'auto',
-    gridTemplateRows: 'auto',
-    outlineStyle: 'none',
-    position: 'relative',
-  },
-  button: {
-    alignItems: 'center',
-    border: 'none',
-    borderRadius: tokens.borderRadiusMedium,
-    cursor: 'pointer',
-    display: 'grid',
-    flexShrink: 0,
-    gridAutoFlow: 'column',
-    gridTemplateColumns: 'auto',
-    gridTemplateRows: 'auto',
-    fontFamily: tokens.fontFamilyBase,
-    lineHeight: tokens.lineHeightBase300,
-    outlineStyle: 'none',
-    position: 'relative',
-    overflow: 'hidden',
-    textTransform: 'none',
-  },
-  horizontal: {
-    justifyContent: 'center',
-  },
-  vertical: {
-    justifyContent: 'start',
-  },
-  smallHorizontal: {
-    columnGap: tokens.spacingHorizontalXXS,
-    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalSNudge}`,
-  },
-  smallVertical: {
-    // horizontal spacing is deliberate. This is the gap between icon and content.
-    columnGap: tokens.spacingHorizontalXXS,
-    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalSNudge}`,
-  },
-  mediumHorizontal: {
-    columnGap: tokens.spacingHorizontalSNudge,
-    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalMNudge}`,
-  },
-  mediumVertical: {
-    // horizontal spacing is deliberate. This is the gap between icon and content.
-    columnGap: tokens.spacingHorizontalSNudge,
-    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalMNudge}`,
-  },
-  largeHorizontal: {
-    columnGap: tokens.spacingHorizontalSNudge,
-    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalMNudge}`,
-  },
-  largeVertical: {
-    // horizontal spacing is deliberate. This is the gap between icon and content.
-    columnGap: tokens.spacingHorizontalSNudge,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalMNudge}`,
-  },
-  transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ':enabled:hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-    },
-    ':enabled:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-    },
-    [`& .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2,
-    },
-    [`:enabled:hover .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2Hover,
-    },
-    [`:enabled:active .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2Pressed,
-    },
-    [`& .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2,
-    },
-    [`:enabled:hover .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2Hover,
-    },
-    [`:enabled:active .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2Pressed,
-    },
-  },
-  subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    ':enabled:hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-    },
-    ':enabled:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-    },
-    [`& .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2,
-    },
-    [`:enabled:hover .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2Hover,
-    },
-    [`:enabled:active .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2Pressed,
-    },
-    [`& .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2,
-    },
-    [`:enabled:hover .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2Hover,
-    },
-    [`:enabled:active .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2Pressed,
-    },
-  },
-  disabledCursor: {
-    cursor: 'not-allowed',
-  },
-  disabled: {
-    backgroundColor: tokens.colorTransparentBackground,
-
-    [`& .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-    [`& .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-  },
-  selected: {
-    [`& .${tabClassNames.icon}`]: {
-      color: tokens.colorCompoundBrandForeground1,
-    },
-    [`:enabled:hover .${tabClassNames.icon}`]: {
-      color: tokens.colorCompoundBrandForeground1Hover,
-    },
-    [`:enabled:active .${tabClassNames.icon}`]: {
-      color: tokens.colorCompoundBrandForeground1Pressed,
-    },
-    [`& .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground1,
-    },
-    [`:enabled:hover .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground1Hover,
-    },
-    [`:enabled:active .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground1Pressed,
-    },
-  },
-});
-
-const useCircularAppearanceStyles = makeStyles({
-  base: {
-    borderRadius: tokens.borderRadiusCircular,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
-    [`& .${tabClassNames.icon}`]: {
-      color: 'inherit',
-    },
-    [`& .${tabClassNames.content}`]: {
-      color: 'inherit',
-    },
-  },
-  small: {
-    paddingBlock: `calc(${tokens.spacingVerticalXXS} - ${tokens.strokeWidthThin})`,
-  },
-  medium: {
-    paddingBlock: `calc(${tokens.spacingVerticalSNudge} - ${tokens.strokeWidthThin})`,
-  },
-  large: {
-    paddingBlock: `calc(${tokens.spacingVerticalS} - ${tokens.strokeWidthThin})`,
-  },
-  subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForeground2,
-    ':enabled:hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Hover}`,
-      color: tokens.colorNeutralForeground2Hover,
-    },
-    ':enabled:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Pressed}`,
-      color: tokens.colorNeutralForeground2Pressed,
-    },
-    '@media (forced-colors: active)': {
-      border: `solid ${tokens.strokeWidthThin} Canvas`,
-    },
-  },
-  subtleSelected: {
-    backgroundColor: tokens.colorBrandBackground2,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStroke}`,
-    color: tokens.colorBrandForeground2,
-    ':enabled:hover': {
-      backgroundColor: tokens.colorBrandBackground2Hover,
-      border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokeHover}`,
-      color: tokens.colorBrandForeground2Hover,
-    },
-    ':enabled:active': {
-      backgroundColor: tokens.colorBrandBackground2Pressed,
-      border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokePressed}`,
-      color: tokens.colorBrandForeground2Pressed,
-    },
-    '@media (forced-colors: active)': {
-      border: `solid ${tokens.strokeWidthThin} Highlight`,
-    },
-  },
-  subtleDisabled: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
-  },
-  subtleDisabledSelected: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
-    color: tokens.colorNeutralForegroundDisabled,
-  },
-  filled: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
-    ':enabled:hover': {
-      backgroundColor: tokens.colorNeutralBackground3Hover,
-      color: tokens.colorNeutralForeground2Hover,
-    },
-    ':enabled:active': {
-      backgroundColor: tokens.colorNeutralBackground3Pressed,
-      color: tokens.colorNeutralForeground2Pressed,
-    },
-    '@media (forced-colors: active)': {
-      ':enabled:hover': {
-        backgroundColor: 'Highlight',
-        forcedColorAdjust: 'none',
-        [`& .${tabClassNames.content}`]: {
-          color: 'HighlightText',
-        },
-        [`& .${iconClassNames.filled}`]: {
-          color: 'HighlightText',
-        },
-        [`& .${iconClassNames.regular}`]: {
-          color: 'HighlightText',
-        },
-      },
-    },
-  },
-  filledSelected: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-    ':enabled:hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-    ':enabled:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-    '@media (forced-colors: active)': {
-      ':enabled': {
-        backgroundColor: 'ButtonText',
-        [`& .${tabClassNames.content}`]: {
-          color: 'ButtonFace',
-          forcedColorAdjust: 'none',
-        },
-      },
-      [`:enabled .${tabClassNames.icon}`]: {
-        color: 'ButtonFace',
-      },
-    },
-  },
-  filledDisabled: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
-  },
-  filledDisabledSelected: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
-    color: tokens.colorNeutralForegroundDisabled,
-  },
-});
-
-/**
- * Focus styles for the root slot
- */
-const useFocusStyles = makeStyles({
-  // Tab creates a custom focus indicator because the default focus indicator
-  // is applied using an ::after pseudo-element on the root. Since the selection
-  // indicator uses an ::after pseudo-element on the root, there is a conflict.
-  base: createCustomFocusIndicatorStyle(
-    {
-      ...shorthands.borderColor('transparent'),
-      outlineWidth: tokens.strokeWidthThick,
-      outlineColor: 'transparent',
-      outlineStyle: 'solid',
-      boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}
-    `,
-      zIndex: 1,
-    },
-    { enableOutline: true },
-  ),
-  circular: createCustomFocusIndicatorStyle(
-    {
-      ...shorthands.borderColor('transparent'),
-      outlineWidth: tokens.strokeWidthThick,
-      outlineColor: 'transparent',
-      outlineStyle: 'solid',
-      boxShadow: `
-        ${tokens.shadow4},
-        0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2},
-        0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeOnBrand} inset
-      `,
-      zIndex: 1,
-    },
-    { enableOutline: true },
-  ),
-});
-
-/** Indicator styles for when pending selection */
-const usePendingIndicatorStyles = makeStyles({
-  base: {
-    ':hover::before': {
-      backgroundColor: tokens.colorNeutralStroke1Hover,
-      borderRadius: tokens.borderRadiusCircular,
-      content: '""',
-      position: 'absolute',
-    },
-    ':active::before': {
-      backgroundColor: tokens.colorNeutralStroke1Pressed,
-      borderRadius: tokens.borderRadiusCircular,
-      content: '""',
-      position: 'absolute',
-    },
-    '@media (forced-colors: active)': {
-      ':hover::before': {
-        backgroundColor: 'Highlight',
-      },
-      ':active::before': {
-        backgroundColor: 'Highlight',
-      },
-    },
-  },
-  disabled: {
-    ':hover::before': {
-      backgroundColor: tokens.colorTransparentStroke,
-    },
-    ':active::before': {
-      backgroundColor: tokens.colorTransparentStroke,
-    },
-    '@media (forced-colors: active)': {
-      ':hover::before': {
-        backgroundColor: 'transparent',
-      },
-      ':active::before': {
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-  smallHorizontal: {
-    '::before': {
-      bottom: 0,
-      height: tokens.strokeWidthThick,
-      left: tokens.spacingHorizontalSNudge,
-      right: tokens.spacingHorizontalSNudge,
-    },
-  },
-  smallVertical: {
-    '::before': {
-      bottom: tokens.spacingVerticalXS,
-      left: 0,
-      top: tokens.spacingVerticalXS,
-      width: tokens.strokeWidthThicker,
-    },
-  },
-  mediumHorizontal: {
-    '::before': {
-      bottom: 0,
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
-    },
-  },
-  mediumVertical: {
-    '::before': {
-      bottom: tokens.spacingVerticalS,
-      left: 0,
-      top: tokens.spacingVerticalS,
-      width: tokens.strokeWidthThicker,
-    },
-  },
-  largeHorizontal: {
-    '::before': {
-      bottom: 0,
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
-    },
-  },
-  largeVertical: {
-    '::before': {
-      bottom: tokens.spacingVerticalMNudge,
-      left: 0,
-      top: tokens.spacingVerticalMNudge,
-      width: tokens.strokeWidthThicker,
-    },
-  },
-});
-
-const useActiveIndicatorStyles = makeStyles({
-  base: {
-    '::after': {
-      backgroundColor: tokens.colorTransparentStroke,
-      borderRadius: tokens.borderRadiusCircular,
-      content: '""',
-      position: 'absolute',
-    },
-  },
-  selected: {
-    '::after': {
-      backgroundColor: tokens.colorCompoundBrandStroke,
-    },
-    ':enabled:hover::after': {
-      backgroundColor: tokens.colorCompoundBrandStrokeHover,
-    },
-    ':enabled:active::after': {
-      backgroundColor: tokens.colorCompoundBrandStrokePressed,
-    },
-    '@media (forced-colors: active)': {
-      '::after': {
-        backgroundColor: 'ButtonText',
-      },
-      ':enabled:hover::after': {
-        backgroundColor: 'ButtonText',
-      },
-      ':enabled:active::after': {
-        backgroundColor: 'ButtonText',
-      },
-    },
-  },
-  disabled: {
-    '::after': {
-      backgroundColor: tokens.colorNeutralForegroundDisabled,
-    },
-  },
-  smallHorizontal: {
-    '::after': {
-      bottom: 0,
-      height: tokens.strokeWidthThick,
-      left: tokens.spacingHorizontalSNudge,
-      right: tokens.spacingHorizontalSNudge,
-    },
-  },
-  smallVertical: {
-    '::after': {
-      bottom: tokens.spacingVerticalXS,
-      left: '0',
-      top: tokens.spacingVerticalXS,
-      width: tokens.strokeWidthThicker,
-    },
-  },
-  mediumHorizontal: {
-    '::after': {
-      bottom: '0',
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
-    },
-  },
-  mediumVertical: {
-    '::after': {
-      bottom: tokens.spacingVerticalS,
-      left: 0,
-      top: tokens.spacingVerticalS,
-      width: tokens.strokeWidthThicker,
-    },
-  },
-  largeHorizontal: {
-    '::after': {
-      bottom: 0,
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
-    },
-  },
-  largeVertical: {
-    '::after': {
-      bottom: tokens.spacingVerticalMNudge,
-      left: 0,
-      top: tokens.spacingVerticalMNudge,
-      width: tokens.strokeWidthThicker,
-    },
-  },
-});
-
-/**
- * Styles for the icon slot.
- */
-const useIconStyles = makeStyles({
-  base: {
-    gridColumnStart: 1,
-    gridRowStart: 1,
-    alignItems: 'center',
-    display: 'inline-flex',
-    justifyContent: 'center',
-    overflow: 'hidden',
-    [`& .${iconClassNames.filled}`]: {
-      display: 'none',
-    },
-    [`& .${iconClassNames.regular}`]: {
-      display: 'inline',
-    },
-  },
-  // per design, the small and medium font sizes are the same.
-  // the size prop only affects spacing.
-  small: {
-    fontSize: '20px',
-    height: '20px',
-    width: '20px',
-  },
-  medium: {
-    fontSize: '20px',
-    height: '20px',
-    width: '20px',
-  },
-  large: {
-    fontSize: '24px',
-    height: '24px',
-    width: '24px',
-  },
-  selected: {
-    [`& .${iconClassNames.filled}`]: {
-      display: 'inline',
-    },
-    [`& .${iconClassNames.regular}`]: {
-      display: 'none',
-    },
-  },
-});
-
-/**
- * Styles for the content slot (children)
- */
-const useContentStyles = makeStyles({
-  base: {
-    ...typographyStyles.body1,
-    overflow: 'hidden',
-    // content padding is the same for medium & small, horizontal & vertical
-    padding: `${tokens.spacingVerticalNone} ${tokens.spacingHorizontalXXS}`,
-  },
-  selected: {
-    ...typographyStyles.body1Strong,
-  },
-  large: {
-    ...typographyStyles.body2,
-  },
-  largeSelected: {
-    ...typographyStyles.subtitle2,
-  },
-  noIconBefore: {
-    gridColumnStart: 1,
-    gridRowStart: 1,
-  },
-  iconBefore: {
-    gridColumnStart: 2,
-    gridRowStart: 1,
-  },
-  placeholder: {
-    visibility: 'hidden',
-  },
-});
 
 /**
  * Apply styling to the Tab slots based on the state
@@ -619,41 +92,44 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
  * @returns The state object with updated button styles
  */
 export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
-  const rootStyles = useRootStyles();
-  const pendingIndicatorStyles = usePendingIndicatorStyles();
-  const activeIndicatorStyles = useActiveIndicatorStyles();
+  const { appearance, selected, size, vertical } = state;
 
-  const { appearance, disabled, selected, size, vertical } = state;
-
-  const classes: Parameters<typeof mergeClasses> = [tabClassNames.root, rootStyles.root];
-
-  if (appearance !== 'subtle-circular' && appearance !== 'filled-circular') {
-    classes.push(
-      // pending indicator (before pseudo element)
-      pendingIndicatorStyles.base,
-      size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
-      size === 'medium' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
-      size === 'large' && (vertical ? pendingIndicatorStyles.largeVertical : pendingIndicatorStyles.largeHorizontal),
-      disabled && pendingIndicatorStyles.disabled,
-
-      // active indicator (after pseudo element)
-      selected && activeIndicatorStyles.base,
-      selected && !disabled && activeIndicatorStyles.selected,
-      selected &&
-        size === 'small' &&
-        (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
-      selected &&
-        size === 'medium' &&
-        (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
-      selected &&
-        size === 'large' &&
-        (vertical ? activeIndicatorStyles.largeVertical : activeIndicatorStyles.largeHorizontal),
-      selected && disabled && activeIndicatorStyles.disabled,
-    );
-  }
+  const root = state.root as TabState['root'] & TabRootDataAttributes;
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(...classes, state.root.className);
+  root['data-size'] = size;
+  // eslint-disable-next-line react-hooks/immutability
+  root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
+
+  // The two indicator pseudo-elements are suppressed entirely for the circular appearances,
+  // exactly as the Griffel original's `if (appearance !== 'subtle-circular' && …)` guard did.
+  const isCircular = appearance === 'subtle-circular' || appearance === 'filled-circular';
+
+  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
+  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Tab` BEM
+  // static that used to lead this list is gone (D16.1); the marker is Tab's sole public
+  // identity CLASS now.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in Tab.module.css and by block
+  // order within it, not by the order of these arguments — see that file's header for the
+  // mapping back to the mergeClasses() argument order this replaces, including the two places
+  // where block order restores a specificity win that `:where()` flattening would have lost.
+  //
+  // The state mutation is preserved deliberately (DECISIONS.md D14 defers the pure-builder
+  // rewrite to a single Phase 3 sweep), so the Griffel original's `react-hooks/immutability`
+  // suppressions are retained wherever the rule still reports — here and on the two data
+  // attributes above, which are the same kind of write. The equivalent writes in
+  // `useTabButtonStyles_unstable` and `useTabContentStyles_unstable` carry none because the
+  // rule does not report on them; an unused disable directive is itself a lint warning.
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.className = clsx(
+    styles.root,
+    'group/fui-tab',
+    !isCircular && styles['pending-indicator'],
+    !isCircular && selected && styles['active-indicator'],
+    state.root.className,
+  );
 
   useTabAnimatedIndicatorStyles_unstable(state);
 
@@ -671,54 +147,51 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
  * @returns The state object with updated button styles
  */
 export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['root']): TabState => {
-  const rootStyles = useRootStyles();
-  const focusStyles = useFocusStyles();
-  const circularStyles = useCircularAppearanceStyles();
-
   const { appearance, disabled, selected, size, vertical } = state;
 
   const isSubtleCircular = appearance === 'subtle-circular';
   const isFilledCircular = appearance === 'filled-circular';
   const isCircular = isSubtleCircular || isFilledCircular;
 
+  const button = slot as TabState['root'] & TabRootDataAttributes;
+
+  button['data-size'] = size;
+  button['data-orientation'] = vertical ? 'vertical' : 'horizontal';
+
   const circularAppearance = [
-    circularStyles.base,
-    focusStyles.circular,
+    styles.circular,
+    styles['focus-circular'],
     // sizes
-    size === 'small' && circularStyles.small,
-    size === 'medium' && circularStyles.medium,
-    size === 'large' && circularStyles.large,
+    size === 'small' && styles['circular-small'],
+    size === 'medium' && styles['circular-medium'],
+    size === 'large' && styles['circular-large'],
     // subtle-circular appearance
-    isSubtleCircular && circularStyles.subtle,
-    selected && isSubtleCircular && circularStyles.subtleSelected,
-    disabled && isSubtleCircular && circularStyles.subtleDisabled,
-    selected && disabled && isSubtleCircular && circularStyles.subtleDisabledSelected,
+    isSubtleCircular && styles['circular-subtle'],
+    selected && isSubtleCircular && styles['circular-subtle-selected'],
+    disabled && isSubtleCircular && styles['circular-subtle-disabled'],
+    selected && disabled && isSubtleCircular && styles['circular-subtle-disabled-selected'],
     // filled-circular appearance
-    isFilledCircular && circularStyles.filled,
-    selected && isFilledCircular && circularStyles.filledSelected,
-    disabled && isFilledCircular && circularStyles.filledDisabled,
-    selected && disabled && isFilledCircular && circularStyles.filledDisabledSelected,
+    isFilledCircular && styles['circular-filled'],
+    selected && isFilledCircular && styles['circular-filled-selected'],
+    disabled && isFilledCircular && styles['circular-filled-disabled'],
+    selected && disabled && isFilledCircular && styles['circular-filled-disabled-selected'],
   ];
 
   const regularAppearance = [
-    focusStyles.base,
-    !disabled && appearance === 'subtle' && rootStyles.subtle,
-    !disabled && appearance === 'transparent' && rootStyles.transparent,
-    !disabled && selected && rootStyles.selected,
-    disabled && rootStyles.disabled,
+    styles['focus-base'],
+    !disabled && appearance === 'subtle' && styles.subtle,
+    !disabled && appearance === 'transparent' && styles.transparent,
+    !disabled && selected && styles.selected,
+    disabled && styles.disabled,
   ];
 
-  // eslint-disable-next-line react-hooks/immutability
-  slot.className = mergeClasses(
-    rootStyles.button,
-    // orientation
-    vertical ? rootStyles.vertical : rootStyles.horizontal,
-    // size
-    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
-    size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
-    size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
+  // The orientation and size slices this call used to carry are gone: they are `data-size` /
+  // `data-orientation` variants nested inside `.button` now. See the header of
+  // Tab.module.css.
+  slot.className = clsx(
+    styles.button,
     ...(isCircular ? circularAppearance : regularAppearance),
-    disabled && rootStyles.disabledCursor,
+    disabled && styles['disabled-cursor'],
     slot.className,
   );
 
@@ -735,46 +208,46 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
  * @returns The state object with updated content styles
  */
 export const useTabContentStyles_unstable = (state: TabState): TabState => {
-  const iconStyles = useIconStyles();
-  const contentStyles = useContentStyles();
-
   const { selected, size } = state;
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(
-      tabClassNames.icon,
-      iconStyles.base,
-      iconStyles[size],
-      selected && iconStyles.selected,
+    // The icon's own size and glyph swap stay DIRECT classes rather than moving to the root's
+    // `data-size` — this hook is exported and independently callable, so it may run without
+    // `useTabIndicatorStyles_unstable` ever having stamped the root.
+    state.icon.className = clsx(
+      styles.icon,
+      size === 'small' && styles['icon-small'],
+      size === 'medium' && styles['icon-medium'],
+      size === 'large' && styles['icon-large'],
+      selected && styles['icon-selected'],
       state.icon.className,
     );
   }
 
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.contentReservedSpace.className = mergeClasses(
-      tabReservedSpaceClassNames.content,
-      contentStyles.base,
-      size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
-      state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
-      contentStyles.placeholder,
+    // The `fui-Tab__content--reserved-space` static this list used to lead with is gone
+    // (D16.1), and with it the `tabReservedSpaceClassNames` export that published it: the
+    // object held nothing but a slot key, and under D16.5 slot keys are removed rather than
+    // re-pointed. `styles.content` is the unconditional lead token now.
+    state.contentReservedSpace.className = clsx(
+      styles.content,
+      size === 'large' ? styles['content-large-selected'] : styles['content-selected'],
+      state.icon ? styles['content-icon-before'] : styles['content-no-icon-before'],
+      styles['content-placeholder'],
       state.content.className,
     );
     // FIXME: this is a deprecated API
     // should be removed in the next major version
-    // eslint-disable-next-line @typescript-eslint/no-deprecated, react-hooks/immutability
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     state.contentReservedSpaceClassName = state.contentReservedSpace.className;
   }
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.content.className = mergeClasses(
-    tabClassNames.content,
-    contentStyles.base,
-    size === 'large' && contentStyles.large,
-    selected && (size === 'large' ? contentStyles.largeSelected : contentStyles.selected),
-    state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
+  state.content.className = clsx(
+    styles.content,
+    size === 'large' && styles['content-large'],
+    selected && (size === 'large' ? styles['content-large-selected'] : styles['content-selected']),
+    state.icon ? styles['content-icon-before'] : styles['content-no-icon-before'],
     state.content.className,
   );
 

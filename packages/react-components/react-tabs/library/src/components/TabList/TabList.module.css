@@ -1,0 +1,75 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ══ TabList — Griffel → Tailwind + CSS Modules ═══════════════════════════════════════
+ *
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTabListStyles_unstable:
+ *
+ *   1 tabListClassNames.root                → REMOVED (D16.1); the group marker
+ *                                             `group/fui-tab-list` now rides at clsx index 1
+ *   2 styles.root                           → fui.components.l1  .root
+ *   3 styles.vertical | .horizontal         → fui.components.l1  .vertical / .horizontal
+ *   4 styles.roundedSmall | .rounded        → fui.components.l1  .rounded-small / .rounded
+ *   5 consumer className                    → unlayered (always wins)
+ *
+ * ── ALTITUDE: everything is l1, nothing is l2 (D2 amendment 2) ──────────────────────
+ * TabList styles ONE element, its own `<div role="tablist">`. It authors no rule that
+ * reaches into a Tab — the whole selected/hover/indicator surface belongs to Tab and is in
+ * Tab.module.css — so there is no l2 content and nothing here needs the child's marker.
+ * There is no `makeResetStyles`, so `fui.base` stays empty.
+ *
+ * ── STATE: module classes, no data attributes (DECISIONS.md D15.6) ──────────────────
+ * `vertical` and the two "rounded" gaps are CONDITIONAL MODULE CLASSES, the same shape
+ * Griffel's conditional atomics had. No `data-orientation` is stamped: nothing outside this
+ * one element reads the orientation (Tab stamps its own, from the same context value), and
+ * D15.6's rule is to add an attribute only where the styling target cannot otherwise reach
+ * the state. The root already publishes `aria-orientation` for assistive technology.
+ *
+ * ── RTL / spacing ───────────────────────────────────────────────────────────────────
+ * The compiled atomics (lib-commonjs/components/TabList/useTabListStyles.styles.js) contain
+ * no `[ltr, rtl]` pair — nothing here is directional. Both gaps read a spacing token and so
+ * take the named utility; raw `var(--spacingHorizontal*)` is forbidden because it is the one
+ * authoring form that does not scale with `--base-scale`.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2 */
+  .root {
+    @apply relative flex shrink-0 flex-row flex-nowrap;
+  }
+
+  /* from useStyles.horizontal — arg #3 */
+  .horizontal {
+    @apply flex-row items-stretch;
+  }
+
+  /* from useStyles.vertical — arg #3 */
+  .vertical {
+    @apply flex-col items-stretch;
+  }
+
+  /*
+   * from useStyles.roundedSmall / .rounded — arg #4. Applied only for the two circular
+   * appearances (`subtle-circular`, `filled-circular`), where the tabs are separate pills and
+   * need real space between them.
+   */
+  .rounded-small {
+    @apply gap-horizontal-s-nudge;
+  }
+
+  .rounded {
+    @apply gap-horizontal-s;
+  }
+}

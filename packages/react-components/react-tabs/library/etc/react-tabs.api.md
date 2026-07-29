@@ -14,7 +14,6 @@ import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public (undocumented)
@@ -46,8 +45,10 @@ export type TabBaseProps = Omit<TabProps, 'contentReservedSpace'>;
 // @public (undocumented)
 export type TabBaseState = Omit<TabState, 'appearance' | 'size' | 'contentReservedSpace'>;
 
-// @public (undocumented)
-export const tabClassNames: SlotClassNames<TabSlots>;
+// @public @deprecated
+export const tabClassNames: {
+    root: string;
+};
 
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
@@ -58,8 +59,10 @@ export type TabListBaseProps = Omit<TabListProps, 'appearance' | 'size' | 'reser
 // @public (undocumented)
 export type TabListBaseState = Omit<TabListState, 'appearance' | 'size' | 'reserveSelectedTabSpace'>;
 
-// @public (undocumented)
-export const tabListClassNames: SlotClassNames<TabListSlots>;
+// @public @deprecated
+export const tabListClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectTabOnFocus' | 'selectedValue' | 'reserveSelectedTabSpace'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
@@ -112,11 +115,6 @@ export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content' | 'valu
 export type TabRegisterData = {
     value: TabValue;
     ref: React_2.RefObject<HTMLElement | null>;
-};
-
-// @public (undocumented)
-export const tabReservedSpaceClassNames: {
-    content: string;
 };
 
 // @public (undocumented)

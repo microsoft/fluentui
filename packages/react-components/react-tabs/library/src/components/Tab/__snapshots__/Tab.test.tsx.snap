@@ -4,7 +4,9 @@ exports[`Tab renders correctly 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="horizontal"
+    data-size="medium"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -12,7 +14,7 @@ exports[`Tab renders correctly 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -23,7 +25,9 @@ exports[`Tab renders correctly 1`] = `
 exports[`Tab renders correctly when disabled 1`] = `
 <div>
   <button
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="horizontal"
+    data-size="medium"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     disabled=""
     role="tab"
@@ -31,7 +35,7 @@ exports[`Tab renders correctly when disabled 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -43,7 +47,9 @@ exports[`Tab renders default correctly with icon slotted 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="horizontal"
+    data-size="medium"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -51,7 +57,7 @@ exports[`Tab renders default correctly with icon slotted 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -69,7 +75,7 @@ exports[`Tab renders default correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -81,7 +87,9 @@ exports[`Tab renders large size and vertical correctly with icon slotted 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="vertical"
+    data-size="large"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -89,7 +97,7 @@ exports[`Tab renders large size and vertical correctly with icon slotted 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -107,7 +115,7 @@ exports[`Tab renders large size and vertical correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -119,7 +127,9 @@ exports[`Tab renders large size correctly with icon slotted 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="horizontal"
+    data-size="large"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -127,7 +137,7 @@ exports[`Tab renders large size correctly with icon slotted 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -145,7 +155,7 @@ exports[`Tab renders large size correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -157,7 +167,9 @@ exports[`Tab renders medium size and vertical correctly with icon slotted 1`] = 
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="vertical"
+    data-size="medium"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -165,7 +177,7 @@ exports[`Tab renders medium size and vertical correctly with icon slotted 1`] = 
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -183,7 +195,7 @@ exports[`Tab renders medium size and vertical correctly with icon slotted 1`] = 
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -195,7 +207,9 @@ exports[`Tab renders medium size correctly with icon slotted 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="horizontal"
+    data-size="medium"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -203,7 +217,7 @@ exports[`Tab renders medium size correctly with icon slotted 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -221,7 +235,7 @@ exports[`Tab renders medium size correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -233,7 +247,9 @@ exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="vertical"
+    data-size="small"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -241,7 +257,7 @@ exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -259,7 +275,7 @@ exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -271,7 +287,9 @@ exports[`Tab renders small size correctly with icon slotted 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="horizontal"
+    data-size="small"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -279,7 +297,7 @@ exports[`Tab renders small size correctly with icon slotted 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -297,7 +315,7 @@ exports[`Tab renders small size correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -309,7 +327,9 @@ exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="horizontal"
+    data-size="medium"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -317,7 +337,7 @@ exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -335,7 +355,7 @@ exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>
@@ -347,7 +367,9 @@ exports[`Tab renders vertical correctly with icon slotted 1`] = `
 <div>
   <button
     aria-selected="false"
-    class="fui-Tab"
+    class="group/fui-tab"
+    data-orientation="vertical"
+    data-size="medium"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
@@ -355,7 +377,7 @@ exports[`Tab renders vertical correctly with icon slotted 1`] = `
     value="1"
   >
     <span
-      class="fui-Tab__icon"
+      class=""
     >
       <svg
         aria-hidden="true"
@@ -373,7 +395,7 @@ exports[`Tab renders vertical correctly with icon slotted 1`] = `
       </svg>
     </span>
     <span
-      class="fui-Tab__content"
+      class=""
     >
       Default Tab
     </span>

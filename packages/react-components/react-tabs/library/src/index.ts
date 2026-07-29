@@ -2,8 +2,7 @@ export type { TabProps, TabSlots, TabState, TabValue, TabBaseProps, TabBaseState
 export {
   renderTab_unstable,
   Tab,
-  tabClassNames,
-  tabReservedSpaceClassNames,
+  tabClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTabAnimatedIndicatorStyles_unstable,
   useTabButtonStyles_unstable,
   useTabContentStyles_unstable,
@@ -30,7 +29,7 @@ export {
   renderTabList_unstable,
   TabList,
   TabListProvider,
-  tabListClassNames,
+  tabListClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTabListContext_unstable,
   useTabListContextValues_unstable,
   useTabListStyles_unstable,

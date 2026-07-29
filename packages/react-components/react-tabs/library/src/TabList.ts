@@ -17,7 +17,7 @@ export {
   TabListContext,
   TabListProvider,
   renderTabList_unstable,
-  tabListClassNames,
+  tabListClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTabListContextValues_unstable,
   useTabListContext_unstable,
   useTabListStyles_unstable,

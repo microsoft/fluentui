@@ -3,8 +3,7 @@ export type { TabInternalSlots, TabBaseProps, TabProps, TabSlots, TabBaseState, 
 export { renderTab_unstable } from './renderTab';
 export { useTab_unstable, useTabBase_unstable, useTabA11yBehavior_unstable } from './useTab';
 export {
-  tabClassNames,
-  tabReservedSpaceClassNames,
+  tabClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTabButtonStyles_unstable,
   useTabContentStyles_unstable,
   useTabIndicatorStyles_unstable,
