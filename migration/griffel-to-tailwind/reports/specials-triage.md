@@ -441,3 +441,5 @@ Recommended, but **not applied** — this pass was read-only.
 | `react-migration-v0-v9`     | "Attachment runtime width"                        | Plain React inline style (`Attachment.tsx:47`) — not a Griffel concern                                       |
 | `react-positioning`         | "Style factories + runtime middlewares"           | Factories are type-only and already transcribed; one real styles file (`SafeZoneArea`)                       |
 | `react-avatar`              | `validated`, 4 styles files                       | Only 3 `.module.css`; `AvatarGroupPopover` still Griffel — reopen as a seam                                  |
+
+INFRA-1c: docsite full build blocked by 7 story files with '/\*_ @jsxRuntime automatic _/' + pragma conflict (react-motion x6, react-tree x1) — bisected independent of S0 config; NOT yet A/B'd against master. Fix or A/B in Phase 3.
