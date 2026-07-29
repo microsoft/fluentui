@@ -6,7 +6,7 @@ import {
   useFluent_unstable as useFluent,
   usePortalMountNode as usePortalMountNodeContext,
 } from '@fluentui/react-shared-contexts';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { useFocusVisible } from '@fluentui/react-tabster';
 
 import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
@@ -252,7 +252,35 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     disabled: options.disabled,
     focusVisibleRef,
 
-    className: mergeClasses(themeClassName, classes.root, options.className),
+    /*
+     * Griffel → Tailwind + CSS Modules migration.
+     *
+     * `clsx` replaces `mergeClasses` (DECISIONS.md D7 revision). Nothing here relies on
+     * Griffel's atomic de-duplication: cascade priority for the two library contributors is
+     * decided by the `@layer fui.*` order (Portal.module.css / FluentProvider.module.css),
+     * and `options.className` — the consumer's `mountNode={{ className }}` — is unlayered, so
+     * it beats every layered library rule regardless of where it sits in this list.
+     *
+     * ORDER IS LOAD-BEARING FOR ONE REASON ONLY: `classes.root` must stay FIRST so that
+     * `group/fui-portal` is never `classList[0]` (DECISIONS.md D15.1 / D16.2 — nwsapi's
+     * jsdom `:scope` polyfill builds its anchor from `escape(element.classList[0])` and the
+     * `/` survives that escaping, throwing at render time). `classes.root` is the only
+     * unconditional, always-selector-safe token here: `themeClassName` is `''` outside a
+     * FluentProvider and `options.className` is optional.
+     *
+     * `group/fui-portal` is react-portal's named group marker (DECISIONS.md D15.1), written
+     * as a literal, and this mount node is the outermost element the package owns — every
+     * portalled surface in the library is a descendant of it. It is INERT until some module
+     * references it (no `group-<variant>` rule targets `fui-portal` today); it is stamped now
+     * because a portalled component asking "am I inside a portal?" is the plausible future
+     * need and this is the only element that can answer.
+     *
+     * `themeClassName` keeps its own position relative to `options.className`, and stays IN
+     * the string, because it carries FluentProvider's typography/colour base plus the runtime
+     * `fui-FluentProvider<useId>` custom-property class that portalled content inherits its
+     * tokens from.
+     */
+    className: clsx(classes.root, 'group/fui-portal', themeClassName, options.className),
     targetNode: mountNode ?? targetDocument?.body,
   };
 

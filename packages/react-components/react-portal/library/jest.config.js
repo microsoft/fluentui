@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,21 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (Phase 2, BATCH-4).
+   * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
+   * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
+   * as `@griffel/jest-serializer` does for Griffel atomics. The mapper already lives in
+   * the repo-wide `jest.preset.js` (DECISIONS.md D9), but a project-level
+   * `snapshotSerializers` REPLACES the preset's array, so this config must list the
+   * serializer itself.
+   *
+   * `@griffel/jest-serializer` is kept alongside it: react-portal renders whatever
+   * children a consumer portals, and `@fluentui/react-tabster` (still Griffel) is a
+   * dependency, so Griffel atomics can still reach these snapshots.
+   */
+  moduleNameMapper: {
+    '\\.module\\.css$': cssModules.moduleNameMapperTarget,
+  },
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
 };
