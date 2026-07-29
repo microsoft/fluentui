@@ -1,11 +1,25 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, StoryParameters } from 'storywright';
-import { SpinButton, spinButtonClassNames } from '@fluentui/react-spinbutton';
+import { SpinButton } from '@fluentui/react-spinbutton';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, DARK_MODE, RTL, HIGH_CONTRAST } from '../../utilities';
 
 const cropTo = '.testWrapper';
+
+/*
+ * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5).
+ * `spinButtonClassNames.incrementButton` / `.decrementButton` no longer exist — D16 leaves
+ * no public class-name handle on component internals, only the root's `group/fui-spin-button`
+ * marker, which cannot distinguish the two buttons.
+ *
+ * The buttons are addressed by their default `aria-label`s instead. That is a public,
+ * accessibility-backed handle these stories already rely on implicitly (none of them
+ * override the `incrementButton` / `decrementButton` slots), and it adds no DOM surface —
+ * which D16.3 requires a `data-*` fallback to justify, and this does not need.
+ */
+const incrementButton = '[aria-label="Increment value"]';
+const decrementButton = '[aria-label="Decrement value"]';
 
 export default {
   title: 'SpinButton Converged',
@@ -17,21 +31,21 @@ export default {
         .hover('input')
         .snapshot('hoverInput', { cropTo })
 
-        .hover(`.${spinButtonClassNames.incrementButton}`)
+        .hover(incrementButton)
         .snapshot('hoverIncrement', { cropTo })
 
-        .hover(`.${spinButtonClassNames.decrementButton}`)
+        .hover(decrementButton)
         .snapshot('hoverDecrement', { cropTo })
 
-        .mouseDown(`.${spinButtonClassNames.incrementButton}`)
+        .mouseDown(incrementButton)
         .wait(250)
         .snapshot('mouseDownIncrement', { cropTo })
-        .mouseUp(`.${spinButtonClassNames.incrementButton}`)
+        .mouseUp(incrementButton)
 
-        .mouseDown(`.${spinButtonClassNames.decrementButton}`)
+        .mouseDown(decrementButton)
         .wait(250)
         .snapshot('mouseDownDecrement', { cropTo })
-        .mouseUp(`.${spinButtonClassNames.decrementButton}`)
+        .mouseUp(decrementButton)
 
         .click('input')
         .wait(250) // let focus border animation finish

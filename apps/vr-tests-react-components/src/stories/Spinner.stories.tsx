@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Decorator, Meta } from '@storybook/react-webpack5';
-import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
+import { Spinner } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
 import { Steps, type StoryParameters } from 'storywright';
 import { makeResetStyles, mergeClasses } from '@griffel/react';
@@ -10,7 +10,20 @@ import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 const usePauseWrapperClass = makeResetStyles({
   minWidth: '300px',
   padding: '10px',
-  [`& .${spinnerClassNames.spinner}, & .${spinnerClassNames.spinnerTail}`]: {
+  /*
+   * Was `` [`& .${spinnerClassNames.spinner}, & .${spinnerClassNames.spinnerTail}`] ``.
+   * react-spinner's sub-slot statics were removed with the BEM statics sweep and the
+   * per-slot keys deleted from `spinnerClassNames`, which now holds only `root`
+   * (DECISIONS.md D16.1 / D16.5) — there is no public class-name handle on a component's
+   * internals any more.
+   *
+   * The replacement selects every descendant of the Spinner root through its public
+   * identity class, the named-group marker (`/` escaped, since it terminates a class name
+   * inside a selector). The `spinner` and `tail` spans are the only animated descendants,
+   * so this pauses exactly what the old two-class selector paused; the `label` element it
+   * additionally matches has no animation, making the three declarations inert there.
+   */
+  ['& .group\\/fui-spinner *']: {
     animationPlayState: 'paused !important',
     animationDelay: 'var(--test-animation-delay, -1s) !important',
     animationDuration: '1.5s !important',
