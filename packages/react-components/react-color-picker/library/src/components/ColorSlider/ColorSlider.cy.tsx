@@ -11,6 +11,21 @@ const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
+/*
+ * ── Selecting the hidden range input after the D16 statics removal ───────────────────────
+ *
+ * This file used to reach the input with `.fui-ColorSlider__input`. That static no longer
+ * exists: `colorSliderClassNames` holds ONE key now — `root`, valued at ColorSlider's group
+ * marker — and the per-slot `rail` / `thumb` / `input` keys were removed with every other BEM
+ * static (DECISIONS.md D16.1 / D16.5). The class the slot actually carries is a hashed CSS
+ * module token, unaddressable from here.
+ *
+ * No probe class is needed: `input` is ColorSlider's PRIMARY slot, so the fixture's own
+ * `id="color-slider"` already lands on exactly this element — it is the same node every
+ * `assertSliderValue` below already queries.
+ */
+const INPUT_SELECTOR = '#color-slider';
+
 const ColorSliderExample = (props: ColorSliderProps) => {
   const [color, setColor] = React.useState(props.color ?? INITIAL_COLOR_HSV);
   return (
@@ -48,7 +63,7 @@ describe('ColorSlider', () => {
 
     it('hue channel selected correctly', () => {
       mountFluent(<ColorSliderExample color={{ h: 106, s: 0.96, v: 0.1 }} />);
-      cy.get('.fui-ColorSlider__input').focus();
+      cy.get(INPUT_SELECTOR).focus();
 
       // decrements the value two times
       cy.realPress('ArrowLeft');
@@ -70,7 +85,7 @@ describe('ColorSlider', () => {
 
     it('hue channel selected on left edge correctly', () => {
       mountFluent(<ColorSliderExample color={{ h: 2, s: 1, v: 0.03 }} />);
-      cy.get('.fui-ColorSlider__input').focus();
+      cy.get(INPUT_SELECTOR).focus();
 
       // decrements the value two times
       cy.realPress('ArrowLeft');
@@ -88,7 +103,7 @@ describe('ColorSlider', () => {
 
     it('hue channel selected on right edge correctly', () => {
       mountFluent(<ColorSliderExample color={{ h: 358, s: 0.03, v: 0.45 }} />);
-      cy.get('.fui-ColorSlider__input').focus();
+      cy.get(INPUT_SELECTOR).focus();
 
       // increments the value
       cy.realPress('ArrowRight');

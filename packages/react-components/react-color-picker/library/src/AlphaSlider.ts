@@ -2,7 +2,7 @@ export type { AlphaSliderProps, AlphaSliderSlots, AlphaSliderState } from './com
 export {
   AlphaSlider,
   alphaSliderCSSVars,
-  alphaSliderClassNames,
+  alphaSliderClassNames, // eslint-disable-line @typescript-eslint/no-deprecated -- deprecated for STYLING (DECISIONS.md D16.5); re-exporting the identity constant is the point.
   renderAlphaSlider_unstable,
   useAlphaSliderStyles_unstable,
   useAlphaSlider_unstable,

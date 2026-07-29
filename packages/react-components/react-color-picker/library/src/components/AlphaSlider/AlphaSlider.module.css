@@ -1,0 +1,142 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ── EVERY rule in this file is `fui.components.l2`, not `l1` (D2 amendment 2) ─────────
+ *
+ * AlphaSlider does not render slots of its own: `useAlphaSliderStyles_unstable` decorates
+ * the four slots and then calls `useColorSliderStyles_unstable(state)`, so every element it
+ * styles already carries ColorSlider's base styles from ColorSlider.module.css. That is
+ * composition — one component styling over another component's output — and its altitude is
+ * `l2`. Griffel expressed the same precedence positionally: the AlphaSlider classes reached
+ * the ColorSlider merge as its LAST argument (`state.rail.className`), so they beat every
+ * ColorSlider atomic on the same property. `l2 > l1` reproduces that, and it does so without
+ * depending on stylesheet load order between the two modules.
+ *
+ * The overrides that actually collide, and would silently invert if this file were `l1`:
+ *   .rail  background-image  ← ColorSlider `.hue` (AlphaSlider never sets `channel`, so the
+ *                              default `hue` gradient is always applied underneath)
+ *   .thumb background-color  ← ColorSlider `.thumb`
+ *   .thumb transform / inset ← ColorSlider's orientation slices, which read
+ *                              `--fui-Slider--progress`; an AlphaSlider root never sets that
+ *                              var (it sets `--fui-AlphaSlider--progress`), so those
+ *                              declarations are invalid-at-computed-value-time and the ones
+ *                              below are what actually position the thumb.
+ *
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useAlphaSliderStyles_unstable:
+ *
+ * ROOT slot:
+ *   1 alphaSliderClassNames.root  → static class (JS) — REMOVED in the statics sweep
+ *                                   (DECISIONS.md D16.1); the root now leads with the
+ *                                   identity-only `.root` below and carries
+ *                                   `group/fui-alpha-slider` second
+ *   2 consumer className          → unlayered (always wins)
+ *   … then useColorSliderStyles_unstable appends ColorSlider's root class + marker
+ *
+ * INPUT slot:  static only → REMOVED; the slot is left entirely to ColorSlider
+ * RAIL slot:   1 static (REMOVED) · 2 useStyles.rail        → l2 (`.rail`)
+ * THUMB slot:  1 static (REMOVED) · 2 useThumbStyles.thumb  → l2 (`.thumb`)
+ *              3 useThumbStyles.vertical|horizontal         → l2 (data-orientation descendant)
+ *
+ * ── Reading orientation ──────────────────────────────────────────────────────────────
+ * `data-orientation` is stamped on the root by `useColorSliderStyles_unstable`, which this
+ * component's hook always calls. The orientation blocks below therefore use the same
+ * `.root:where([data-orientation='…']) .thumb` shape as ColorSlider.module.css — but with
+ * THIS module's own locals, which are the classes AlphaSlider's hook put on those elements.
+ *
+ * ── Runtime values (CONVERSION_GUIDE "Known special cases") ──────────────────────────
+ * `--fui-AlphaSlider--direction`, `--fui-AlphaSlider--progress`,
+ * `--fui-AlphaSlider__thumb--color` and `--fui-AlphaSlider__rail--color` are written as
+ * INLINE STYLES by `useAlphaSliderState_unstable` (`alphaSliderCSSVars`). JS writes, CSS only
+ * reads with `var()` — the mechanism ports unchanged and the names stay public API. The rail
+ * gradient's direction is one of them, which is why it needs no `@variant rtl` twin (and the
+ * compiled output confirms it: one class, `.f183gti0`, no pair).
+ *
+ * ── Pixel literals (D4) ──────────────────────────────────────────────────────────────
+ * The rail's `1px` border is a literal in the Griffel source, not a `strokeWidthThin` read;
+ * it becomes `var(--spacing-thin)` per the D4 addendum — same computed 1px, and it now
+ * scales with `--base-scale` like every other width in the package.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/AlphaSlider/useAlphaSliderStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /*
+   * Identity-only local. AlphaSlider's root has no declarations of its own — its layout comes
+   * entirely from ColorSlider's reset — but this class exists so the root always emits a
+   * selector-safe leading token ahead of `group/fui-alpha-slider` (DECISIONS.md D15.1 /
+   * D16.2), and so the orientation blocks below have a local of THIS module to hang off.
+   * Do not delete because it looks empty.
+   */
+  .root {
+  }
+
+  /*
+   * from useStyles.rail. Beats ColorSlider's `.hue` background-image because it is `l2`;
+   * `border` has no ColorSlider counterpart on the rail (that slot's only border-ish
+   * declaration is an `outline`), so it merely adds.
+   */
+  .rail {
+    border: var(--spacing-thin) solid var(--colorNeutralStroke1);
+    background-image: linear-gradient(
+        var(--fui-AlphaSlider--direction),
+        transparent,
+        var(--fui-AlphaSlider__rail--color)
+      ),
+      url(https://fabricweb.azureedge.net/fabric-website/assets/images/transparent-pattern.png);
+  }
+
+  /* from useThumbStyles.thumb — overrides ColorSlider's `--fui-Slider__thumb--color` fill
+     with the neutral background, and tints the inner ring instead. */
+  .thumb {
+    background-color: var(--colorNeutralBackground1);
+
+    &::before {
+      background-color: var(--fui-AlphaSlider__thumb--color);
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useThumbStyles.horizontal / .vertical — the same shape as ColorSlider's own thumb
+   * orientation block, but reading AlphaSlider's progress var.
+   *
+   * `translateX(-50%)` and `left` are value-level / physical RTL in the compiled output
+   * (`.f1nfknbn{transform:translateX(50%)}`, `.fh8h8tc{right:var(--fui-AlphaSlider--progress)}`),
+   * so the inset becomes logical and the transform gets an `@variant rtl` twin. The vertical
+   * pair (`translateY(50%)` + `bottom`) has no flip and stays physical.
+   */
+  .root {
+    @variant horizontal {
+      & .thumb {
+        transform: translateX(-50%);
+        inset-inline-start: var(--fui-AlphaSlider--progress);
+
+        @variant rtl {
+          transform: translateX(50%);
+        }
+      }
+    }
+
+    @variant vertical {
+      & .thumb {
+        transform: translateY(50%);
+        bottom: var(--fui-AlphaSlider--progress);
+      }
+    }
+  }
+}

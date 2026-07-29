@@ -14,7 +14,7 @@ describe('ColorPicker', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <div
-          class="fui-ColorPicker"
+          class="group/fui-color-picker"
         />
       </div>
     `);

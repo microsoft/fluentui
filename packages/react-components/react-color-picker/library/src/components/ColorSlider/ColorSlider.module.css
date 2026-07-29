@@ -1,0 +1,355 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useColorSliderStyles_unstable,
+ * not source declaration order.
+ *
+ * ROOT slot:
+ *   1 colorSliderClassNames.root       → static class (JS) — REMOVED in the statics sweep
+ *                                        (DECISIONS.md D16.1); the root now leads with
+ *                                        `.root` and carries `group/fui-color-slider` second
+ *   2 useRootStyles                    → fui.base (makeResetStyles)
+ *   3 useStyles.vertical|horizontal    → fui.components.l1 (data-orientation)
+ *   4 consumer className               → unlayered (always wins)
+ *
+ * RAIL slot:
+ *   1 colorSliderClassNames.rail       → REMOVED (D16.1)
+ *   2 useRailStyles.rail               → fui.components.l1  (`.rail`)
+ *   3 useChannelStyles[channel]        → fui.components.l1  (`.hue` / `.saturation` / `.value`)
+ *   4 useShapeStyles[shape]            → fui.components.l1  (`.rounded` / `.square`)
+ *   5 useRailStyles.vertical|horizontal→ fui.components.l1  (data-orientation descendant)
+ *   6 consumer className               → unlayered
+ *
+ * THUMB slot:
+ *   1 colorSliderClassNames.thumb      → REMOVED (D16.1)
+ *   2 useThumbStyles.thumb             → fui.components.l1  (`.thumb`)
+ *   3 useThumbStyles.vertical|horizontal→ fui.components.l1 (data-orientation descendant)
+ *   4 consumer className               → unlayered
+ *
+ * INPUT slot:
+ *   1 colorSliderClassNames.input      → REMOVED (D16.1)
+ *   2 useInputStyles.input             → fui.components.l1  (`.input`)
+ *   3 useInputStyles.vertical|horizontal→ fui.components.l1 (data-orientation descendant)
+ *   4 consumer className               → unlayered
+ *
+ * ── Why the orientation slices are descendant selectors, not per-slot classes ─────────
+ * `vertical` is ONE piece of React state that four different elements read. It is mirrored
+ * to the ROOT as `data-orientation` (the headless precedent name) and every slot's
+ * orientation block is selected through it — `.root:where([data-orientation='…']) & .rail`,
+ * two locals of THIS module, the react-badge shape reused by react-swatch-picker for its
+ * per-size icon rules. That keeps one attribute on one element instead of four (D15.6:
+ * every mirrored attribute widens invalidation), and it is what lets AlphaSlider read the
+ * same orientation from its own module without a second mirror.
+ *
+ * Specificity note: the descendant form is 0-2-0 against the base slot's 0-1-0, so the
+ * orientation slice wins on specificity where Griffel decided it on argument order. The
+ * two agree because the orientation slices are LATER arguments in every one of the four
+ * merges, and because nothing in the base slices sets a property an orientation slice also
+ * sets (checked property-by-property against the compiled atomics).
+ *
+ * ── Runtime values (CONVERSION_GUIDE "Known special cases") ──────────────────────────
+ * `--fui-Slider--direction`, `--fui-Slider--progress`, `--fui-Slider__thumb--color` and
+ * `--fui-Slider__rail--color` are written as INLINE STYLES by `useColorSlider_unstable`
+ * (`colorSliderCSSVars`). JS writes, CSS only reads with `var()` — the mechanism ports
+ * unchanged and the names stay public API.
+ *
+ * `--fui-Slider__thumb--size` / `--fui-Slider__rail--size` are declared HERE (in the reset)
+ * and shared, BY NAME, with react-slider and ColorArea. They are deliberately NOT renamed:
+ * the three packages agree on one namespace and react-slider is still on Griffel.
+ *
+ * The `hue` gradient needs no RTL twin — its direction is `var(--fui-Slider--direction)`,
+ * which `useColorSlider_unstable` already computes from `dir` (`-90deg` LTR / `90deg` RTL).
+ * `saturation` and `value` hardcode `to right`, and the compiled output does carry `to left`
+ * twins (`.f1onqon0`, `.fbtriqu`), so those two get `@variant rtl` blocks.
+ *
+ * ── Pixel literals (D4) ──────────────────────────────────────────────────────────────
+ * `20px` (thumb/rail size), `32px` / `200px` / `280px` (min box) and the `±1px` rail
+ * ::before bleed are literals in the Griffel source, not token reads. Box sizes take the
+ * numeric utilities; the custom properties and the ::before offsets take
+ * `calc(Npx * var(--base-scale))` — both are exactly the authored px at the default 16px
+ * root and both scale with `--base-scale`. The rail's literal `1px` outline width and every
+ * `strokeWidth*` read become `var(--spacing-*)` per the D4 addendum.
+ *
+ * The ONE literal that does NOT scale is the `2px` border in the input's focus rule: that is
+ * a hand-rolled focus ring mirroring react-tabster's hardcoded `2px`, which D6 keeps verbatim
+ * ("fixing" it to a stroke width changes rendering).
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ColorSlider/useColorSliderStyles.styles.js.
+ *
+ * D2 amendment 5 does not apply: this module contains no `:global()` at all.
+ */
+
+@layer fui.base {
+  /* from useRootStyles (makeResetStyles) — no RTL twin in the compiled output */
+  .root {
+    @apply relative inline-grid touch-none items-center justify-items-center min-h-32;
+
+    /* Shared with react-slider / ColorArea — do NOT rename (see header). */
+    --fui-Slider__thumb--size: calc(20px * var(--base-scale));
+    --fui-Slider__rail--size: calc(20px * var(--base-scale));
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * root arg #3 — from useStyles.horizontal / useStyles.vertical.
+   * 3x3 grid with the rail and thumb in the centre cell [2,2] and the hidden input
+   * stretching across all cells.
+   */
+  .root {
+    @variant horizontal {
+      @apply min-w-200;
+
+      grid-template-rows: 1fr var(--fui-Slider__thumb--size) 1fr;
+      grid-template-columns: 1fr 100% 1fr;
+    }
+
+    @variant vertical {
+      @apply min-h-280;
+
+      grid-template-rows: 1fr 100% 1fr;
+      grid-template-columns: 1fr var(--fui-Slider__thumb--size) 1fr;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* rail arg #2 — from useRailStyles.rail */
+  .rail {
+    @apply pointer-events-none relative;
+
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    forced-color-adjust: none;
+    outline-width: var(--spacing-thin);
+    outline-style: solid;
+    outline-color: var(--colorTransparentStroke);
+
+    &::before {
+      content: '';
+      position: absolute;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * rail arg #3 — from useChannelStyles. `hue` reads the runtime direction var so it needs
+   * no RTL twin; `saturation` and `value` hardcode `to right` and do.
+   */
+  .hue {
+    background-image: linear-gradient(var(--fui-Slider--direction), red, fuchsia, blue, aqua, lime, yellow, red);
+  }
+
+  .saturation {
+    background-image: linear-gradient(to right, #808080, var(--fui-Slider__rail--color));
+
+    @variant rtl {
+      background-image: linear-gradient(to left, #808080, var(--fui-Slider__rail--color));
+    }
+  }
+
+  .value {
+    background-image: linear-gradient(to right, #000, var(--fui-Slider__rail--color));
+
+    @variant rtl {
+      background-image: linear-gradient(to left, #000, var(--fui-Slider__rail--color));
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* rail arg #4 — from useShapeStyles, applied to the rail */
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .square {
+    border-radius: var(--borderRadiusNone);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * rail arg #5 — from useRailStyles.horizontal / .vertical, selected from the ROOT's
+   * `data-orientation` (see header).
+   *
+   * The horizontal `::before` sets BOTH `left: -1px` and `right: -1px`; Griffel's flip maps
+   * one onto the other, so the emitted pair is identical in both directions and the logical
+   * longhands below reproduce it exactly. The vertical `::before` is asymmetric by design in
+   * the source (`top: -1px`, `bottom: 1px`) and has no flip — it stays physical.
+   */
+  .root {
+    @variant horizontal {
+      & .rail {
+        @apply w-full;
+
+        height: var(--fui-Slider__rail--size);
+
+        &::before {
+          inset-inline-start: calc(-1px * var(--base-scale));
+          inset-inline-end: calc(-1px * var(--base-scale));
+          height: var(--fui-Slider__rail--size);
+        }
+      }
+    }
+
+    @variant vertical {
+      & .rail {
+        @apply h-full;
+
+        width: var(--fui-Slider__rail--size);
+
+        &::before {
+          width: var(--fui-Slider__rail--size);
+          top: calc(-1px * var(--base-scale));
+          bottom: calc(1px * var(--base-scale));
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* thumb arg #2 — from useThumbStyles.thumb */
+  .thumb {
+    @apply absolute pointer-events-none;
+
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    width: var(--fui-Slider__thumb--size);
+    height: var(--fui-Slider__thumb--size);
+    outline-style: none;
+    forced-color-adjust: none;
+    border-radius: var(--borderRadiusCircular);
+    border: var(--spacing-thin) solid var(--colorNeutralForeground4);
+    box-shadow: var(--shadow4);
+    background-color: var(--fui-Slider__thumb--color);
+
+    &::before {
+      position: absolute;
+      inset: 0px;
+      border-radius: var(--borderRadiusCircular);
+      box-sizing: border-box;
+      content: '';
+      border: var(--spacing-thick) solid var(--colorNeutralBackground1);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * thumb arg #3 — from useThumbStyles.horizontal / .vertical.
+   *
+   * `translateX(-50%)` and `left` are value-level / physical RTL in the compiled output
+   * (`.f1nfknbn{transform:translateX(50%)}`, `.fcf9u6w{right:var(--fui-Slider--progress)}`),
+   * so the inset becomes logical and the transform gets an `@variant rtl` twin. The vertical
+   * pair (`translateY(50%)` + `bottom`) has no flip and stays physical.
+   */
+  .root {
+    @variant horizontal {
+      & .thumb {
+        transform: translateX(-50%);
+        inset-inline-start: var(--fui-Slider--progress);
+
+        @variant rtl {
+          transform: translateX(50%);
+        }
+      }
+    }
+
+    @variant vertical {
+      & .thumb {
+        transform: translateY(50%);
+        bottom: var(--fui-Slider--progress);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * input arg #2 — from useInputStyles.input.
+   *
+   * The sibling focus rule used to reach the thumb through the BEM static
+   * (`` [`:focus-visible ~ .${colorSliderClassNames.thumb}`] ``). Under D16 that static is
+   * gone; both elements are slots of THIS component and both classes are locals of THIS
+   * module, so the selector becomes a plain sibling combinator between two locals — no
+   * `:global()`, no public DOM surface, and the same 0-2-0 shape once `:where()` flattens it
+   * (compiled: `.f1nq8t98:focus-visible~.fui-ColorSlider__thumb`).
+   *
+   * This block is authored AFTER `.thumb` so its `border` beats the thumb's own — which is
+   * how Griffel ranked them too (`i` bucket after `d`).
+   *
+   * `2px` stays a literal: it is a hand-rolled focus ring and D6 keeps react-tabster's
+   * hardcoded focus-ring width verbatim.
+   */
+  .input {
+    @apply cursor-pointer opacity-0 p-0 m-0;
+
+    grid-row-start: 1;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+    @variant focus-visible {
+      & ~ .thumb {
+        border: 2px solid var(--colorStrokeFocus2);
+        outline: var(--spacing-thick) solid var(--colorTransparentStroke);
+        border-radius: var(--borderRadiusCircular);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * input arg #3 — from useInputStyles.horizontal / .vertical.
+   *
+   * The vertical slice's `direction: rtl` is what makes a vertical range input run
+   * bottom-to-top; Griffel flips it to `direction: ltr` in an RTL document
+   * (`.f1va4sj6` / `.f1r2v9sp`), so the `@variant rtl` twin is required. `:dir()` reads the
+   * document/`dir`-attribute directionality, never the CSS `direction` property, so the
+   * declaration inside this rule cannot feed back into the selector that gates it.
+   */
+  .root {
+    @variant horizontal {
+      & .input {
+        @apply w-full;
+
+        height: var(--fui-Slider__thumb--size);
+      }
+    }
+
+    @variant vertical {
+      & .input {
+        @apply h-full;
+
+        width: var(--fui-Slider__thumb--size);
+        writing-mode: vertical-lr;
+        direction: rtl;
+
+        @variant rtl {
+          direction: ltr;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,212 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useColorAreaStyles_unstable,
+ * not source declaration order.
+ *
+ * ROOT slot:
+ *   1 colorAreaClassNames.root      → static class (JS) — REMOVED in the statics sweep
+ *                                     (DECISIONS.md D16.1); the root now leads with `.root`
+ *                                     below and carries `group/fui-color-area` second
+ *   2 useRootStyles                 → fui.base (makeResetStyles)
+ *   3 useShapeStyles[shape]         → fui.components.l1
+ *   4 consumer className            → unlayered (always wins)
+ *
+ * THUMB slot:
+ *   1 colorAreaClassNames.thumb     → REMOVED (D16.1)
+ *   2 useThumbStyles.thumb          → fui.components.l1
+ *   3 useThumbStyles.focusIndicator → fui.components.l1 (authored after `.thumb`)
+ *   4 consumer className            → unlayered
+ *
+ * INPUTX / INPUTY slots (identical three-argument merges):
+ *   1 colorAreaClassNames.inputX|inputY → REMOVED (D16.1)
+ *   2 useInputStyles.input              → fui.components.l1 (`.input`, shared by both)
+ *   3 consumer className                → unlayered
+ *
+ * ── Runtime values (CONVERSION_GUIDE "Known special cases") ──────────────────────────
+ * `--fui-AreaX--progress`, `--fui-AreaY--progress`, `--fui-Area__thumb--color` and
+ * `--fui-Area--main-color` are written as INLINE STYLES by `useColorArea_unstable`
+ * (`colorAreaCSSVars`). JS writes, CSS only reads with `var()` — the mechanism ports
+ * unchanged and the names stay public API.
+ *
+ * `--fui-Slider__thumb--size` is different: it is declared HERE (in the reset) and shared,
+ * by name, with react-slider and ColorSlider. It is deliberately NOT renamed — the three
+ * packages agree on one namespace and react-slider is still on Griffel (S1 scope note).
+ *
+ * ── State selectors ──────────────────────────────────────────────────────────────────
+ * This component stamps NO data attribute. `shape` gates a whole makeStyles slice and stays
+ * a module class; nothing else here is state-driven, and no descendant reads anything off
+ * the root — so there is nothing for a `data-*` fallback to express (D15.6).
+ *
+ * ── Pixel literals (D4) ──────────────────────────────────────────────────────────────
+ * `20px` (thumb size), `300px` (min box) and the `1px` root border are literals in the
+ * Griffel source, not token reads. The box sizes take the numeric utilities `min-w-300` /
+ * `min-h-300` and the custom property takes `calc(20px * var(--base-scale))` — both are
+ * exactly the authored px at the default 16px root and both scale with `--base-scale`, the
+ * same treatment react-swatch-picker gave its literals. `1px` border widths and every
+ * `strokeWidth*` read become `var(--spacing-*)` per the D4 addendum.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ColorArea/useColorAreaStyles.styles.js.
+ *
+ * D2 amendment 5 does not apply: this module contains no `:global()` at all and the
+ * component renders no `bundleIcon()` glyph, so there is no unlayered react-icons rule to
+ * compete with.
+ */
+
+@layer fui.base {
+  /*
+   * from useRootStyles (makeResetStyles).
+   *
+   * The compiled reset has an RTL twin (`.r9og4es`) that differs in exactly one place: the
+   * middle gradient stop flips `to right` → `to left`. Value-level RTL, so it is duplicated
+   * under `@variant rtl` rather than expressed logically.
+   */
+  .root {
+    @apply relative inline-grid touch-none justify-items-start box-border min-w-300 min-h-300 mb-vertical-s-nudge;
+
+    /* `align-items: start`, NOT Tailwind's `items-start` — that utility emits `flex-start`,
+       which the Box Alignment spec only *behaves as* `start` in a grid container. The
+       compiled Griffel atomic is a literal `align-items:start`; reproduce it exactly. */
+    align-items: start;
+    border: var(--spacing-thin) solid var(--colorNeutralStroke1);
+    background: linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent),
+      var(--fui-Area--main-color);
+    forced-color-adjust: none;
+
+    /* Shared with react-slider / ColorSlider — do NOT rename (see header). */
+    --fui-Slider__thumb--size: calc(20px * var(--base-scale));
+
+    @variant rtl {
+      background: linear-gradient(to bottom, transparent, #000), linear-gradient(to left, #fff, transparent),
+        var(--fui-Area--main-color);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #3 — from useShapeStyles, applied to the root */
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .square {
+    border-radius: var(--borderRadiusNone);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * thumb arg #2 — from useThumbStyles.thumb.
+   *
+   * `transform: translate(-50%, 50%)` and `left` are value-level / physical RTL in the
+   * compiled output (`.f11okln6{transform:translate(50%, 50%)}`,
+   * `.fwsk87b{right:var(--fui-AreaX--progress)}`), so the horizontal inset becomes logical
+   * and the transform gets an `@variant rtl` twin. `bottom` has no flip and stays physical.
+   */
+  .thumb {
+    @apply absolute pointer-events-none;
+
+    width: var(--fui-Slider__thumb--size);
+    height: var(--fui-Slider__thumb--size);
+    outline-style: none;
+    forced-color-adjust: none;
+    border-radius: var(--borderRadiusCircular);
+    border: var(--spacing-thin) solid var(--colorNeutralForeground4);
+    box-shadow: var(--shadow4);
+    background-color: var(--fui-Area__thumb--color);
+    transform: translate(-50%, 50%);
+    inset-inline-start: var(--fui-AreaX--progress);
+    bottom: var(--fui-AreaY--progress);
+
+    @variant rtl {
+      transform: translate(50%, 50%);
+    }
+
+    &::before {
+      position: absolute;
+      inset: 0px;
+      border-radius: var(--borderRadiusCircular);
+      box-sizing: border-box;
+      content: '';
+      border: var(--spacing-thick) solid var(--colorNeutralBackground1);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * thumb arg #3 — from useThumbStyles.focusIndicator, i.e.
+   * `createFocusOutlineStyle({ selector: 'focus-within', style: { outlineWidth:
+   * strokeWidthThick, ...shorthands.borderWidth(strokeWidthThick), outlineRadius:
+   * borderRadiusCircular } })`.
+   *
+   * Byte-check against the compiled atomics (…styles.js, `d` + `f` + `i` + `m` buckets):
+   *   .ftqa4ok:focus{outline-style:none}
+   *   .f2hkw1w:focus-visible{outline-style:none}
+   *   .f1b1k54r[data-fui-focus-within]:focus-within{border-top-color:transparent}   (×4 sides)
+   *   .f1i978nd[…]::after{border:var(--strokeWidthThick) solid var(--colorStrokeFocus2)}
+   *   .f16hcqkr[…]::after{border-radius:var(--borderRadiusCircular)}
+   *   .f1tye2sp[…]::after{top:calc(var(--strokeWidthThick) * -1)}                   (×4 sides)
+   *   @media (forced-colors: active){…::after{border-top-color:Highlight}}          (×4 sides)
+   * The shared `fui-focus-outline` utility emits exactly this set; its
+   * `calc(0px - var(--fui-focus-outline-width) - var(--fui-focus-outline-offset, 0px))`
+   * substitutes to `calc(0px - 2px - 0px)` — the same computed inset.
+   *
+   * The `...shorthands.borderWidth(strokeWidthThick)` spread in the source produces NOTHING:
+   * `createFocusOutlineStyle` reads only its own option keys, and the compiled output carries
+   * no `border-width` declaration. It is not reproduced.
+   *
+   * `focus-within-fui` is `[data-fui-focus-within]:focus-within` — keyborg's attribute AND
+   * the native pseudo-class, matching the compiled selector exactly. The two
+   * `outline-style: none` rules are emitted OUTSIDE that selector by the factory, so they
+   * stay with the caller; the redundant `:focus-visible` restatement is reproduced rather
+   * than pruned because the compiled output contains it.
+   */
+  .thumb {
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-within-fui {
+      @apply fui-focus-outline;
+
+      &::after {
+        --fui-focus-outline-width: var(--spacing-thick);
+        --fui-focus-outline-radius: var(--borderRadiusCircular);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * inputX / inputY arg #2 — from useInputStyles.input, one class shared by both slots
+   * exactly as the Griffel slice was.
+   *
+   * `left: 0` flips to `right: 0` in the compiled RTL output (`.f1e31b4d`), so it becomes
+   * `inset-inline-start`; `top: 0` has no flip and stays physical.
+   */
+  .input {
+    @apply overflow-hidden absolute pointer-events-none opacity-0 p-0 m-0 w-full h-full;
+
+    top: 0;
+    inset-inline-start: 0;
+  }
+}

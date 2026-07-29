@@ -12,6 +12,21 @@ const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
+/*
+ * ── Selecting the hidden range input after the D16 statics removal ───────────────────────
+ *
+ * This file used to reach the input with `.fui-AlphaSlider__input`. That static no longer
+ * exists: `alphaSliderClassNames` holds ONE key now — `root`, valued at AlphaSlider's group
+ * marker — and the per-slot `rail` / `thumb` / `input` keys were removed with every other BEM
+ * static (DECISIONS.md D16.1 / D16.5). The class the slot actually carries is a hashed CSS
+ * module token, unaddressable from here.
+ *
+ * No probe class is needed: `input` is AlphaSlider's PRIMARY slot, so the fixture's own
+ * `id="alpha-slider"` already lands on exactly this element — it is the same node every
+ * `assertSliderValue` below already queries.
+ */
+const INPUT_SELECTOR = '#alpha-slider';
+
 const AlphaSliderExample = (props: AlphaSliderProps) => {
   const { transparency = false } = props;
   const [color, setColor] = React.useState(props.color ?? INITIAL_COLOR_HSV);
@@ -52,7 +67,7 @@ describe('AlphaSlider', () => {
     describe('alpha channel', () => {
       it('selected correctly', () => {
         mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.5 }} />);
-        cy.get('.fui-AlphaSlider__input').focus();
+        cy.get(INPUT_SELECTOR).focus();
 
         // decrements the value two times
         cy.realPress('ArrowLeft');
@@ -74,7 +89,7 @@ describe('AlphaSlider', () => {
 
       it('selected on left edge correctly', () => {
         mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.02 }} />);
-        cy.get('.fui-AlphaSlider__input').focus();
+        cy.get(INPUT_SELECTOR).focus();
 
         // decrements the value two times
         cy.realPress('ArrowLeft');
@@ -92,7 +107,7 @@ describe('AlphaSlider', () => {
 
       it('selected on right edge correctly', () => {
         mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.98 }} />);
-        cy.get('.fui-AlphaSlider__input').focus();
+        cy.get(INPUT_SELECTOR).focus();
 
         // increments the value
         cy.realPress('ArrowRight');
@@ -116,7 +131,7 @@ describe('AlphaSlider', () => {
   describe('transparency', () => {
     it('selected correctly', () => {
       mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.7 }} transparency />);
-      cy.get('.fui-AlphaSlider__input').focus();
+      cy.get(INPUT_SELECTOR).focus();
 
       // decrements the value two times
       cy.realPress('ArrowLeft');
@@ -138,7 +153,7 @@ describe('AlphaSlider', () => {
 
     it('selected on left edge correctly', () => {
       mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.98 }} transparency />);
-      cy.get('.fui-AlphaSlider__input').focus();
+      cy.get(INPUT_SELECTOR).focus();
 
       // decrements the value two times
       cy.realPress('ArrowLeft');
@@ -156,7 +171,7 @@ describe('AlphaSlider', () => {
 
     it('selected on right edge correctly', () => {
       mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.02 }} transparency />);
-      cy.get('.fui-AlphaSlider__input').focus();
+      cy.get(INPUT_SELECTOR).focus();
 
       // increments the value
       cy.realPress('ArrowRight');

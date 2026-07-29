@@ -1,17 +1,56 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
-import type { ColorSliderSlots, ColorSliderState } from './ColorSlider.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const colorSliderClassNames: SlotClassNames<ColorSliderSlots> = {
-  root: 'fui-ColorSlider',
-  rail: 'fui-ColorSlider__rail',
-  thumb: 'fui-ColorSlider__thumb',
-  input: 'fui-ColorSlider__input',
+import { clsx } from 'clsx';
+import type { ColorSliderState } from './ColorSlider.types';
+
+import styles from './ColorSlider.module.css';
+
+/**
+ * Public identity class for ColorSlider.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as this component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a
+ * selector and as a `group-*` variant target. The BEM statics (`fui-ColorSlider`,
+ * `fui-ColorSlider__rail`, `fui-ColorSlider__thumb`, `fui-ColorSlider__input`) are no longer
+ * rendered and the per-slot keys are gone (DECISIONS.md D16.1); there is no public
+ * class-name handle on component internals.
+ *
+ * `AlphaSlider` renders this component's slots through `useColorSliderStyles_unstable`, so an
+ * AlphaSlider root carries THIS marker alongside its own `group/fui-alpha-slider` — exactly
+ * as it used to carry both `fui-ColorSlider` and `fui-AlphaSlider` (D16.3).
+ *
+ * The marker token contains a `/`. That is legal inside a class TOKEN but terminates the
+ * name inside a SELECTOR, so `'.' + colorSliderClassNames.root` is an invalid selector even
+ * though it type-checks. Use `fuiSelector(colorSliderClassNames.root)` from
+ * `@fluentui/react-utilities`.
+ */
+export const colorSliderClassNames: { root: string } = {
+  root: 'group/fui-color-slider',
 };
 
+/**
+ * CSS custom properties the slider position and colours ride on. Set as inline styles by
+ * `useColorSlider_unstable`; the runtime-value mechanism ports unchanged from Griffel
+ * (CONVERSION_GUIDE "Known special cases"), so these names are still public API.
+ *
+ * The four `--fui-Slider*` names are SHARED with `@fluentui/react-slider` and (for
+ * `thumbSizeVar`) with ColorArea. They are deliberately not renamed by this conversion —
+ * react-slider is still on Griffel and the namespace is a cross-package contract.
+ */
 export const colorSliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
   sliderProgressVar: `--fui-Slider--progress`,
@@ -21,224 +60,56 @@ export const colorSliderCSSVars = {
   railSizeVar: `--fui-Slider__rail--size`,
 };
 
-const hueBackground = `linear-gradient(${[
-  `var(${colorSliderCSSVars.sliderDirectionVar})`,
-  'red',
-  'fuchsia',
-  'blue',
-  'aqua',
-  'lime',
-  'yellow',
-  'red',
-].join(',')})`;
-
 /**
- * Styles for the root slot
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `data-orientation` is the ONLY attribute this component stamps, and it is a genuine
+ * D15.6 fallback rather than a convenience: `vertical` is one piece of React state that the
+ * root, rail, thumb AND input all style off, and no native selector expresses it at any of
+ * them. Mirroring it once on the root — where the `vertical` / `horizontal` catalog variants
+ * read it — lets every slot's orientation block be a descendant selector inside
+ * ColorSlider.module.css, and lets AlphaSlider read the same state from its own module with
+ * no second mirror.
+ *
+ * `shape` and `channel` each gate a whole makeStyles slice and stay module classes; nothing
+ * reads either across an element boundary.
  */
-const useRootStyles = makeResetStyles({
-  position: 'relative',
-  display: 'inline-grid',
-  touchAction: 'none',
-  alignItems: 'center',
-  justifyItems: 'center',
-  [colorSliderCSSVars.thumbSizeVar]: '20px',
-  [colorSliderCSSVars.railSizeVar]: '20px',
-  minHeight: '32px',
-});
-
-const useStyles = makeStyles({
-  horizontal: {
-    minWidth: '200px',
-    // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr var(${colorSliderCSSVars.thumbSizeVar}) 1fr`,
-    gridTemplateColumns: `1fr 100% 1fr`,
-  },
-
-  vertical: {
-    minHeight: '280px',
-    // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr 100% 1fr`,
-    gridTemplateColumns: `1fr var(${colorSliderCSSVars.thumbSizeVar}) 1fr`,
-  },
-});
-
-const useChannelStyles = makeStyles({
-  hue: {
-    backgroundImage: hueBackground,
-  },
-  saturation: {
-    backgroundImage: `linear-gradient(to right, #808080, var(${colorSliderCSSVars.railColorVar}))`,
-  },
-  value: {
-    backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}))`,
-  },
-});
-
-/**
- * Styles for the rail slot
- */
-const useRailStyles = makeStyles({
-  rail: {
-    pointerEvents: 'none',
-    gridRowStart: '2',
-    gridRowEnd: '2',
-    gridColumnStart: '2',
-    gridColumnEnd: '2',
-    position: 'relative',
-    forcedColorAdjust: 'none',
-    outlineWidth: '1px',
-    outlineStyle: 'solid',
-    outlineColor: tokens.colorTransparentStroke,
-    '::before': {
-      content: "''",
-      position: 'absolute',
-    },
-  },
-
-  horizontal: {
-    width: '100%',
-    height: `var(${colorSliderCSSVars.railSizeVar})`,
-    '::before': {
-      left: '-1px',
-      right: '-1px',
-      height: `var(${colorSliderCSSVars.railSizeVar})`,
-    },
-  },
-
-  vertical: {
-    width: `var(${colorSliderCSSVars.railSizeVar})`,
-    height: '100%',
-    '::before': {
-      width: `var(${colorSliderCSSVars.railSizeVar})`,
-      top: '-1px',
-      bottom: '1px',
-    },
-  },
-});
-
-/**
- * Styles for the thumb slot
- */
-const useThumbStyles = makeStyles({
-  thumb: {
-    gridRowStart: '2',
-    gridRowEnd: '2',
-    gridColumnStart: '2',
-    gridColumnEnd: '2',
-    position: 'absolute',
-    width: `var(${colorSliderCSSVars.thumbSizeVar})`,
-    height: `var(${colorSliderCSSVars.thumbSizeVar})`,
-    pointerEvents: 'none',
-    outlineStyle: 'none',
-    forcedColorAdjust: 'none',
-    borderRadius: tokens.borderRadiusCircular,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralForeground4}`,
-    boxShadow: tokens.shadow4,
-    backgroundColor: `var(${colorSliderCSSVars.thumbColorVar})`,
-    '::before': {
-      position: 'absolute',
-      inset: '0px',
-      borderRadius: tokens.borderRadiusCircular,
-      boxSizing: 'border-box',
-      content: "''",
-      border: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralBackground1}`,
-    },
-  },
-  horizontal: {
-    transform: 'translateX(-50%)',
-    left: `var(${colorSliderCSSVars.sliderProgressVar})`,
-  },
-  vertical: {
-    transform: 'translateY(50%)',
-    bottom: `var(${colorSliderCSSVars.sliderProgressVar})`,
-  },
-});
-
-const useShapeStyles = makeStyles({
-  rounded: {
-    borderRadius: tokens.borderRadiusMedium,
-  },
-  square: {
-    borderRadius: tokens.borderRadiusNone,
-  },
-});
-
-/**
- * Styles for the Input slot
- */
-const useInputStyles = makeStyles({
-  input: {
-    cursor: 'pointer',
-    opacity: 0,
-    gridRowStart: '1',
-    gridRowEnd: '-1',
-    gridColumnStart: '1',
-    gridColumnEnd: '-1',
-    padding: '0',
-    margin: '0',
-    [`:focus-visible ~ .${colorSliderClassNames.thumb}`]: {
-      border: `2px solid ${tokens.colorStrokeFocus2}`,
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-      borderRadius: tokens.borderRadiusCircular,
-    },
-  },
-  horizontal: {
-    height: `var(${colorSliderCSSVars.thumbSizeVar})`,
-    width: '100%',
-  },
-  vertical: {
-    height: '100%',
-    width: `var(${colorSliderCSSVars.thumbSizeVar})`,
-    'writing-mode': 'vertical-lr',
-    direction: 'rtl',
-  },
-});
+type ColorSliderRootDataAttributes = {
+  'data-orientation': 'horizontal' | 'vertical';
+};
 
 /**
  * Apply styling to the ColorSlider slots based on the state
  */
 export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSliderState => {
-  const rootStyles = useRootStyles();
-  const styles = useStyles();
-  const railStyles = useRailStyles();
-  const thumbStyles = useThumbStyles();
-  const inputStyles = useInputStyles();
-  const shapeStyles = useShapeStyles();
-  const channelStyles = useChannelStyles();
-  const isVertical = state.vertical;
+  const { channel = 'hue', shape = 'rounded' } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    colorSliderClassNames.root,
-    rootStyles,
-    isVertical ? styles.vertical : styles.horizontal,
-    state.root.className,
-  );
+  const root = state.root as ColorSliderState['root'] & ColorSliderRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.rail.className = mergeClasses(
-    colorSliderClassNames.rail,
-    railStyles.rail,
-    channelStyles[state.channel || 'hue'],
-    shapeStyles[state.shape || 'rounded'],
-    isVertical ? railStyles.vertical : railStyles.horizontal,
-    state.rail.className,
-  );
+  root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.thumb.className = mergeClasses(
-    colorSliderClassNames.thumb,
-    thumbStyles.thumb,
-    isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
-    state.thumb.className,
-  );
+  // Unconditional module class FIRST, then the named group marker — the marker must never
+  // be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+  // D15.1 / D16.2) — with the consumer className last. `styles.root` is unconditional and
+  // clsx never drops it, so index 0 is always the hashed, selector-safe module class; it is
+  // what keeps the marker safe now that the `fui-ColorSlider` static is gone.
+  //
+  // The `vertical ? styles.vertical : styles.horizontal` pair is gone from JS entirely: the
+  // orientation slices for ALL FOUR slots now hang off `data-orientation` above, inside the
+  // module (see its header for why they are descendant selectors rather than per-slot
+  // classes).
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in ColorSlider.module.css, not
+  // by the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces.
+  state.root.className = clsx(styles.root, 'group/fui-color-slider', state.root.className);
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.input.className = mergeClasses(
-    colorSliderClassNames.input,
-    inputStyles.input,
-    isVertical ? inputStyles.vertical : inputStyles.horizontal,
-    state.input.className,
-  );
+  state.rail.className = clsx(styles.rail, styles[channel], styles[shape], state.rail.className);
+
+  state.thumb.className = clsx(styles.thumb, state.thumb.className);
+
+  state.input.className = clsx(styles.input, state.input.className);
+
   return state;
 };

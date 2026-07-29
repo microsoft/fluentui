@@ -7,7 +7,7 @@ export type {
 export {
   ColorSlider,
   colorSliderCSSVars,
-  colorSliderClassNames,
+  colorSliderClassNames, // eslint-disable-line @typescript-eslint/no-deprecated -- deprecated for STYLING (DECISIONS.md D16.5); re-exporting the identity constant is the point.
   renderColorSlider_unstable,
   useColorSliderStyles_unstable,
   useColorSlider_unstable,

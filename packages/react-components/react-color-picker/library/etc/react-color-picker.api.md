@@ -12,13 +12,14 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
 
-// @public (undocumented)
-export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
+// @public @deprecated
+export const alphaSliderClassNames: {
+    root: string;
+};
 
 // @public
 export type AlphaSliderProps = Omit<ColorSliderProps, 'channel'> & {
@@ -34,8 +35,10 @@ export type AlphaSliderState = ComponentState<AlphaSliderSlots> & Pick<AlphaSlid
 // @public
 export const ColorArea: ForwardRefComponent<ColorAreaProps>;
 
-// @public (undocumented)
-export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
+// @public @deprecated
+export const colorAreaClassNames: {
+    root: string;
+};
 
 // @public
 export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'color' | 'onChange'> & Pick<ColorPickerProps, 'shape'> & {
@@ -58,8 +61,10 @@ export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<Col
 // @public
 export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
 
-// @public (undocumented)
-export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
+// @public @deprecated
+export const colorPickerClassNames: {
+    root: string;
+};
 
 // @public
 export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
@@ -79,8 +84,10 @@ export type ColorPickerState = ComponentState<ColorPickerSlots> & ColorPickerCon
 // @public
 export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
 
-// @public (undocumented)
-export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
+// @public @deprecated
+export const colorSliderClassNames: {
+    root: string;
+};
 
 // @public
 export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value' | 'color'> & Pick<ColorPickerProps, 'shape'> & {

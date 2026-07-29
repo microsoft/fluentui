@@ -1,0 +1,43 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useColorPickerStyles_unstable.
+ *
+ * ROOT slot:
+ *   1 colorPickerClassNames.root → static class (JS) — REMOVED in the statics sweep
+ *                                  (DECISIONS.md D16.1); the root now leads with `.root`
+ *                                  below and carries `group/fui-color-picker` second
+ *   2 useStyles.root             → fui.components.l1
+ *   3 consumer className         → unlayered (always wins)
+ *
+ * ColorPicker is a pure layout wrapper: it renders no state-driven styling and stamps no
+ * data attribute (D15.6 — attributes are a fallback for what nothing else can express, and
+ * nothing here needs one). `shape` reaches ColorArea / ColorSlider / AlphaSlider through the
+ * ColorPicker CONTEXT, not through CSS, so no descendant reads this root's group marker
+ * either — the marker is stamped because it is this component's public identity class
+ * (D15.1 / D16.5), not because a rule targets it.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ColorPicker/useColorPickerStyles.styles.js:
+ *   .f22iagw{display:flex}  .f1vx9l62{flex-direction:column}
+ *   .f7e3wsx{gap:var(--spacingVerticalXS)}
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root */
+  .root {
+    @apply flex flex-col gap-vertical-xs;
+  }
+}

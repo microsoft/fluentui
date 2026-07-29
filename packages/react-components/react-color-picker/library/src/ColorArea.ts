@@ -7,7 +7,7 @@ export type {
 export {
   ColorArea,
   colorAreaCSSVars,
-  colorAreaClassNames,
+  colorAreaClassNames, // eslint-disable-line @typescript-eslint/no-deprecated -- deprecated for STYLING (DECISIONS.md D16.5); re-exporting the identity constant is the point.
   renderColorArea_unstable,
   useColorAreaStyles_unstable,
   useColorArea_unstable,
