@@ -78,9 +78,17 @@ portals (`applyStylesToPortals` threads the theme class), and all 7 themes
 (theming-system report).
 
 Therefore: component CSS consumes tokens as literal `var(--colorNeutralForeground1)`
-(plain declarations or Tailwind arbitrary values). Tokens are **never** registered in
-Tailwind `@theme` — `@theme` writes to `:root` and cannot express nested-provider scoping
-(risk-analysis). The only Tailwind theme values:
+(plain declarations or Tailwind arbitrary values). Tokens are **never** registered with a
+plain (non-inline) Tailwind `@theme` — a plain `@theme` writes to `:root` and cannot express
+nested-provider scoping (risk-analysis).
+
+**Corrected to shipped reality:** all 467 Fluent tokens **are** registered, via
+`@theme inline` (`css/tokens.css`, generated). `inline` substitutes `var(--fluentToken)` into
+each utility instead of emitting a `:root` variable, so values still resolve per-element
+against the nearest FluentProvider — the scoping constraint above is honoured, not violated.
+Literal `var(--tokenName)` authoring stays valid and unchanged.
+
+The only Tailwind theme values that are _emitted_ rather than aliased:
 
 ```css
 @theme static {
@@ -211,7 +219,7 @@ zero Griffel — risk-analysis).
 ## D13 — Theme emission ownership: one root artifact, never per-package (settled with user 2026-07-27)
 
 The nyt-games consumption model applies verbatim: the **document root imports the theme
-CSS exactly once** (storybook: `.storybook/tailwind-theme.css`; consumers: the theme
+CSS exactly once** (storybook: `scripts/storybook/src/tailwind-theme.css`; consumers: the theme
 package's emitted CSS, or a suite-level convenience stylesheet that includes it);
 component packages' compiled `dist/styles.css` contain **only** component rules and
 must never embed the theme emission. Modules only ever `@reference` (compile-time,
@@ -642,7 +650,7 @@ Verified end to end, not reasoned (`.scratch/layer-probe/check-stroke-emission.m
 - **Emitted once per document.** `css/emit.css` → `build.js` → `dist/styles.css` declares all
   four (artifact grew 1,763 → 1,770 bytes; the two `@layer fui.theme` variable blocks are 377
   bytes of it). The VR storybook's `source(none)` path
-  (`apps/vr-tests-react-components/.storybook/tailwind-theme.css`) compiles to a byte-identical
+  (`scripts/storybook/src/tailwind-theme.css`) compiles to a byte-identical
   1,770-byte emission.
 - **Absent from component packages.** A module compiled through `@reference '#theme'` emits
   **zero** of the four declarations while still emitting `border-block-end-width:
