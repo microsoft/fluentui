@@ -8,7 +8,7 @@ export type {
 } from './components/Input/index';
 export {
   Input,
-  inputClassNames,
+  inputClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderInput_unstable,
   useInputStyles_unstable,
   useInput_unstable,

@@ -14,16 +14,26 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { InputSlots, InputState } from './Input.types';
+import type { InputState } from './Input.types';
 
 import styles from './Input.module.css';
 
-export const inputClassNames: SlotClassNames<InputSlots> = {
-  root: 'fui-Input',
-  input: 'fui-Input__input',
-  contentBefore: 'fui-Input__contentBefore',
-  contentAfter: 'fui-Input__contentAfter',
+/**
+ * Public identity class for Input.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable both as a selector and as a
+ * `group-*` variant target. The per-slot keys (`input`, `contentBefore`, `contentAfter`) were
+ * removed together with the `fui-Input__*` BEM statics (DECISIONS.md D16.1/D16.5): there is no
+ * public class-name handle on component internals.
+ *
+ * The value is a class TOKEN, not a selector — `'.' + inputClassNames.root` is invalid CSS,
+ * because the `/` must be escaped in a selector. Use `fuiSelector(inputClassNames.root)` from
+ * `@fluentui/react-utilities` (DECISIONS.md D16.5).
+ */
+export const inputClassNames: { root: string } = {
+  root: 'group/fui-input',
 };
 
 /**
@@ -70,12 +80,14 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   root['data-content-before'] = !!state.contentBefore || undefined;
   root['data-content-after'] = !!state.contentAfter || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Input's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Input needs no state mirrors:
+  // `styles.root` first — hashed, unconditional and selector-safe — then the named group
+  // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1/D16.2) — with the consumer className last. The `fui-Input*` BEM
+  // statics that used to lead this list are gone (D16.1); the marker is Input's sole public
+  // identity class now. It is a literal, unhashed, GLOBAL token: it is the only handle by
+  // which another module — in this package or any other — can style an element from this
+  // Input's state, because `styles.root` is hashed and unaddressable from outside this file.
+  // Input needs no state mirrors:
   // `data-size`, `data-disabled`, `data-invalid` and the two content flags are already
   // stamped on this very element above, so `@variant group-invalid/fui-input`,
   // `group-focus-within/fui-input` etc. work as-is (DECISIONS.md D15, Tier 0 — the optional
@@ -93,23 +105,22 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   // (for the root) `styles.outline`'s rest state are the compiled `{}` slices — nothing to
   // apply, exactly as before.
   state.root.className = clsx(
-    inputClassNames.root,
-    'group/fui-input',
     styles.root,
+    'group/fui-input',
     styles[appearance],
     filled && styles.filled,
     state.root.className,
   );
 
-  state.input.className = clsx(inputClassNames.input, styles.input, state.input.className);
+  state.input.className = clsx(styles.input, state.input.className);
 
   // Both content slots take the identical class list, the way mergeClasses handed them the
   // identical atomics — one `.content` class covers both.
   if (state.contentBefore) {
-    state.contentBefore.className = clsx(inputClassNames.contentBefore, styles.content, state.contentBefore.className);
+    state.contentBefore.className = clsx(styles.content, state.contentBefore.className);
   }
   if (state.contentAfter) {
-    state.contentAfter.className = clsx(inputClassNames.contentAfter, styles.content, state.contentAfter.className);
+    state.contentAfter.className = clsx(styles.content, state.contentAfter.className);
   }
 
   return state;

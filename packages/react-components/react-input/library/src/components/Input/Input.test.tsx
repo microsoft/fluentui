@@ -32,17 +32,19 @@ describe('Input', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts that `inputClassNames` holds
+    // `fui-Input` / `fui-Input__<slot>` and that those classes are rendered. Input publishes
+    // neither any more: the BEM statics are removed and `inputClassNames` is narrowed to
+    // `{ root: 'group/fui-input' }` (DECISIONS.md D16.1/D16.5). The test is disabled per
+    // package as each one is swept; it leaves `defaultTests` altogether once every converted
+    // package has been (D16.6). `component-has-group-marker` (now a default test) is its replacement — it
+    // asserts the marker is stamped AND that it is never `classList[0]` (D16.2).
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            contentBefore: 'Test Content Before',
-            contentAfter: 'Test Content After',
-          },
-        },
-      ],
       'consistent-callback-args': {
         legacyCallbacks: ['onChange'],
       },

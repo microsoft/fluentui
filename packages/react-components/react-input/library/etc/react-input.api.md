@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
@@ -21,8 +20,10 @@ export type InputBaseProps = Omit<InputProps, 'appearance' | 'size'>;
 // @public
 export type InputBaseState = Omit<InputState, 'appearance' | 'size'>;
 
-// @public (undocumented)
-export const inputClassNames: SlotClassNames<InputSlots>;
+// @public @deprecated
+export const inputClassNames: {
+    root: string;
+};
 
 // @public
 export type InputOnChangeData = {
