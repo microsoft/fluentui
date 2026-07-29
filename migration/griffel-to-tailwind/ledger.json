@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-07-28",
-  "phase": "2-mass-conversion-complete",
+  "phase": "3-integration",
   "branch": "styling/tailwind-css-modules",
   "statusValues": [
     "pending-triage",
@@ -149,16 +149,16 @@
       "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-components": {
-      "status": "special",
+      "status": "done",
       "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": "Suite package: 12 Griffel re-exports, 180 hooks re-exported; converts in Phase 3"
+      "notes": "Suite package: 12 Griffel re-exports, 180 hooks re-exported; converts in Phase 3 S6 retired: D7 settles it — deprecated xClassNames re-exports stay for compile-compat. Remaining: the no-deprecated lint decision (Phase 3)."
     },
     "react-conformance-griffel": {
-      "status": "special",
+      "status": "done",
       "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": "Test-infra package: mergeClasses conformance matchers; replacement test needed (D9)"
+      "notes": "Test-infra package: mergeClasses conformance matchers; replacement test needed (D9) S6 retired: replacement (classNameOverridesWin + componentHasGroupMarker in react-conformance) shipped; only deprecated packages consume this one."
     },
     "react-context-selector": {
       "status": "no-styles",
@@ -336,10 +336,10 @@
       "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-portal-compat": {
-      "status": "special",
+      "status": "done",
       "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": "v8 interop; regex-couples to provider className"
+      "notes": "v8 interop; regex-couples to provider className S6 retired: zero Griffel deps; regex already carries D16.1/D16.5 adaptations. Prior ledger note was stale (triage-verified)."
     },
     "react-portal-compat-context": {
       "status": "no-styles",
@@ -464,10 +464,10 @@
       "validated": "2026-07-29 specials S2 (full contract; baselines recovered from pre-change bundle; gate 53/53)"
     },
     "react-tabster": {
-      "status": "special",
+      "status": "done",
       "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": "Defines Griffel focus-ring factories (createFocusOutlineStyle/createCustomFocusIndicatorStyle) used by 46 styles files; convert to shared CSS utilities FIRST (D6)"
+      "notes": "Defines Griffel focus-ring factories (createFocusOutlineStyle/createCustomFocusIndicatorStyle) used by 46 styles files; convert to shared CSS utilities FIRST (D6) S6 retired: zero makeStyles of its own; D6 focus-factory blocker discharged (zero converted-package consumers remain — triage-verified). No code change needed."
     },
     "react-tag-picker": {
       "status": "validated",
