@@ -9,14 +9,25 @@ describe('AccordionItem', () => {
   isConformant({
     Component: AccordionItem,
     displayName: 'AccordionItem',
-    // Accordion does not have own styles
-    disabledTests: ['make-styles-overrides-win'],
+    disabledTests: [
+      // AccordionItem does not have own styles
+      'make-styles-overrides-win',
+      // Statics removal (DECISIONS.md D16.1 / D16.6) — see Accordion.test.tsx for the full
+      // rationale. Replaced by `component-has-group-marker` (now a default test).
+      'component-has-static-classnames-object',
+    ],
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
     // The hook now composes with clsx instead of mergeClasses; `classname-overrides-win`
     // is the cascade-native replacement for `make-styles-overrides-win` and DOES apply
-    // here — the static `fui-AccordionItem` class is a class of the component's own, so
-    // the assertion "consumer className is last" is non-vacuous (DECISIONS.md D9).
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    // here — the identity-only `.root` local is a class of the component's own, so the
+    // assertion "consumer className is last" is non-vacuous (DECISIONS.md D9).
+    //
+    // `component-has-group-marker` asserts the D16 public contract: exactly one
+    // `group/fui-accordion-item` marker on the outermost slot, and never at `classList[0]`
+    // (DECISIONS.md D15.1 / D16.2).
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   /**

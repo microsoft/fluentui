@@ -14,16 +14,23 @@
  */
 
 import { clsx } from 'clsx';
-import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { AccordionHeaderState } from './AccordionHeader.types';
 
 import styles from './AccordionHeader.module.css';
 
-export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
-  root: 'fui-AccordionHeader',
-  button: 'fui-AccordionHeader__button',
-  expandIcon: 'fui-AccordionHeader__expandIcon',
-  icon: 'fui-AccordionHeader__icon',
+/**
+ * AccordionHeader's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. See `accordionClassNames` in
+ * `../Accordion/useAccordionStyles.styles.ts` for the full rationale, including why this is
+ * not tagged `@deprecated`. The `button` / `expandIcon` / `icon` keys are gone along with the
+ * `fui-AccordionHeader*` BEM statics (D16.1): style those slots through their `className`
+ * props. The value is a class TOKEN — use `fuiSelector(accordionHeaderClassNames.root)` from
+ * `@fluentui/react-utilities` to build a selector from it.
+ */
+export const accordionHeaderClassNames: { root: string } = {
+  root: 'group/fui-accordion-header',
 };
 
 /**
@@ -70,12 +77,17 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
   root['data-disabled'] = disabled || undefined;
   root['data-icon'] = Boolean(state.icon) || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this header's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Read it as
+  // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). The
+  // unconditional hashed module class leads so the marker is never `classList[0]`: nwsapi's
+  // `:scope` polyfill builds its anchor from `escape(element.classList[0])`, and the `/` in
+  // `group/fui-accordion-header` survives that escaping into an invalid selector, throwing a
+  // render-time `AggregateError` under jsdom (DECISIONS.md D15.1). Before D16 the
+  // `fui-AccordionHeader` static held that position; `styles.root` holds it now.
+  //
+  // The marker is a literal, unhashed, GLOBAL token — written literally rather than read back
+  // out of `accordionHeaderClassNames` — and is the only handle by which another module, in
+  // this package or any other, can style an element from this header's state, because
+  // `styles.root` is hashed and unaddressable from outside this file. Read it as
   // `@variant group-disabled/fui-accordion-header { … }` (DECISIONS.md D15). Only the root
   // slot carries a marker: a group cannot style itself, so one on `button` or `expandIcon`
   // would only serve those slots' own descendants.
@@ -83,24 +95,18 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
   // Cascade priority is decided by the `@layer fui.*` order in AccordionHeader.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(
-    accordionHeaderClassNames.root,
-    'group/fui-accordion-header',
-    styles.root,
-    state.root.className,
-  );
+  state.root.className = clsx(styles.root, 'group/fui-accordion-header', state.root.className);
 
-  state.button.className = clsx(accordionHeaderClassNames.button, styles.button, state.button.className);
+  // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
+  // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle
+  // on component internals).
+  state.button.className = clsx(styles.button, state.button.className);
 
   if (state.expandIcon) {
-    state.expandIcon.className = clsx(
-      accordionHeaderClassNames.expandIcon,
-      styles['expand-icon'],
-      state.expandIcon.className,
-    );
+    state.expandIcon.className = clsx(styles['expand-icon'], state.expandIcon.className);
   }
   if (state.icon) {
-    state.icon.className = clsx(accordionHeaderClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = clsx(styles.icon, state.icon.className);
   }
   return state;
 };

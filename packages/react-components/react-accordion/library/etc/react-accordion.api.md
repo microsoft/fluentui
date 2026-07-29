@@ -17,7 +17,6 @@ import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSXElement);
@@ -28,8 +27,10 @@ export type AccordionBaseProps<Value = AccordionItemValue> = Omit<AccordionProps
 // @public (undocumented)
 export type AccordionBaseState<Value = AccordionItemValue> = Omit<AccordionState<Value>, 'navigation'>;
 
-// @public (undocumented)
-export const accordionClassNames: SlotClassNames<AccordionSlots>;
+// @public
+export const accordionClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type AccordionContextValue<Value = AccordionItemValue> = {
@@ -54,8 +55,10 @@ export type AccordionHeaderBaseProps = Omit<AccordionHeaderProps, 'inline' | 'si
 // @public (undocumented)
 export type AccordionHeaderBaseState = Omit<AccordionHeaderState, 'inline' | 'size'>;
 
-// @public (undocumented)
-export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
+// @public
+export const accordionHeaderClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type AccordionHeaderContextValue = {
@@ -103,8 +106,10 @@ export type AccordionIndex = number | number[];
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
-// @public (undocumented)
-export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
+// @public
+export const accordionItemClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type AccordionItemContextValue<Value = AccordionItemValue> = {
@@ -148,8 +153,10 @@ export type AccordionPanelBaseProps = ComponentProps<Omit<AccordionPanelSlots, '
 // @public (undocumented)
 export type AccordionPanelBaseState = ComponentState<Omit<AccordionPanelSlots, 'collapseMotion'>> & Pick<AccordionPanelState, 'open'>;
 
-// @public (undocumented)
-export const accordionPanelClassNames: SlotClassNames<Omit<AccordionPanelSlots, 'collapseMotion'>>;
+// @public
+export const accordionPanelClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;

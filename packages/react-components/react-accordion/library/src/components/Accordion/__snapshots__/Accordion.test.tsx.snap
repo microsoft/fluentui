@@ -3,7 +3,7 @@
 exports[`Accordion renders a default state 1`] = `
 <div>
   <div
-    class="fui-Accordion group/fui-accordion"
+    class="group/fui-accordion"
   >
     Default Accordion
   </div>

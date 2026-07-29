@@ -9,14 +9,30 @@ describe('Accordion', () => {
   isConformant({
     Component: Accordion,
     displayName: 'Accordion',
-    // Accordion does not have own styles
-    disabledTests: ['make-styles-overrides-win', 'consistent-callback-args'],
+    disabledTests: [
+      // Accordion does not have own styles
+      'make-styles-overrides-win',
+      'consistent-callback-args',
+      // Statics removal (DECISIONS.md D16.1 / D16.6). Accordion no longer renders a
+      // `fui-Accordion` BEM static, and `accordionClassNames` is now `{ root: <marker> }`,
+      // so all three sub-tests of this rule — the export shape, the hard-coded
+      // `fui-<Component>__<slot>` format, and the rendered-class assertion — are testing a
+      // contract the component is deliberately no longer under. It is replaced by
+      // `component-has-group-marker` (now a default test), which asserts the contract that DID replace it.
+      'component-has-static-classnames-object',
+    ],
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
     // The hook now composes with clsx instead of mergeClasses; `classname-overrides-win`
     // is the cascade-native replacement for `make-styles-overrides-win` and DOES apply
-    // here — the static `fui-Accordion` class is a class of the component's own, so the
+    // here — the identity-only `.root` local is a class of the component's own, so the
     // assertion "consumer className is last" is non-vacuous (DECISIONS.md D9).
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-group-marker` asserts the D16 public contract: exactly one
+    // `group/fui-accordion` marker on the outermost slot, and never at `classList[0]`
+    // (DECISIONS.md D15.1 / D16.2 — the nwsapi `:scope` invariant).
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   /**
