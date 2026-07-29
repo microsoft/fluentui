@@ -5,6 +5,17 @@ import { defineConfig } from 'cypress';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import type { Configuration } from 'webpack';
 
+/**
+ * Shared with the package build (`postcss-modules` `generateScopedName`), with every storybook
+ * (`css-loader` `modules.getLocalIdent`) and with jest — one scheme, now four pipelines.
+ * Required by relative path for the reasons in that file's header: it must stay free of
+ * workspace requires.
+ */
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+const { getLocalIdent } = require('../../css-modules/ident');
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+const globalizeGroupMarkers = require('../../css-modules/globalize-group-markers');
+
 const projectRoot = process.cwd();
 
 // Use a high port range unlikely to collide with other services: 20000-29999
@@ -33,15 +44,81 @@ export const baseWebpackConfig: Configuration = {
   },
 };
 
+/**
+ * Tailwind-flavoured CSS Modules for converted (Griffel-free) packages.
+ *
+ * `esbuild-loader` only ever sees `/\.(ts|tsx)$/` here, so CSS is untouched by it and this is an
+ * ordinary webpack loader chain — no esbuild plugin is involved or needed. What matters is that
+ * it is the SAME chain the storybooks use: identical `getLocalIdent`, identical PostCSS pass.
+ * A `.cy.tsx` that mounts a converted component asserts on real class names, and those only
+ * agree with `dist/styles.css` and with the jest serializer if all pipelines share the scheme
+ * (scripts/css-modules/ident.js).
+ *
+ * Without this rule there is no css rule at all in the cypress bundle, so any `.cy.tsx` that
+ * mounts a component importing a `*.module.css` fails to bundle outright.
+ *
+ * @see migration/griffel-to-tailwind/reports/specials-triage.md INFRA-2
+ */
+const cssModulesRule = {
+  test: /\.module\.css$/,
+  sideEffects: true,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1,
+        modules: {
+          getLocalIdent,
+          namedExport: false,
+        },
+      },
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          // no postcss.config.* exists in this repo — skip cosmiconfig's upward search
+          config: false,
+          plugins: [
+            // `@tailwindcss/postcss` is a plugin CREATOR: postcss-loader@4's string form would
+            // pass it through uninvoked, so it is instantiated here.
+            require('@tailwindcss/postcss')(),
+            // MUST run after Tailwind and before css-loader's CSS-Modules pass, or named-group
+            // markers get hashed and silently match nothing — DECISIONS.md D15.
+            globalizeGroupMarkers(),
+          ],
+        },
+      },
+    },
+  ],
+};
+
+/**
+ * Plain, non-module CSS still needs to load (unconverted packages, third-party stylesheets).
+ * `exclude` keeps it off `*.module.css`, which the rule above owns: webpack applies EVERY
+ * matching rule, so an unguarded `/\.css$/` here would double-process modules and hand back an
+ * empty class map.
+ */
+const cssRule = {
+  test: /\.css$/,
+  exclude: [/\.module\.css$/],
+  use: ['style-loader', 'css-loader'],
+};
+
 const cypressWebpackConfig = (): Configuration => {
   if (baseWebpackConfig.module) {
-    baseWebpackConfig.module.rules?.push({
-      test: /\.(ts|tsx)$/,
-      loader: 'esbuild-loader',
-      options: {
-        tsconfig: './tsconfig.cy.json',
+    baseWebpackConfig.module.rules?.push(
+      {
+        test: /\.(ts|tsx)$/,
+        loader: 'esbuild-loader',
+        options: {
+          tsconfig: './tsconfig.cy.json',
+        },
       },
-    });
+      cssModulesRule,
+      cssRule,
+    );
   }
 
   // TODO: remove this once esbuild-loader properly handles module loading https://github.com/privatenumber/esbuild-loader/issues/343#issuecomment-1845836603

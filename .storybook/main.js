@@ -47,11 +47,29 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
           test: /\.stories\.tsx$/,
           include: /stories/,
         },
+        /**
+         * Converted packages import `*.module.css`; without this the sandbox export drops
+         * those imports and every exported story opens unstyled. The addon side has supported
+         * this since the CSS-modules work landed — only the option was never passed.
+         */
+        cssModules: true,
       },
     }),
   ],
   webpackFinal: config => {
-    registerRules({ config, rules: [rules.swcRule] });
+    /**
+     * Narrow storybook's own implicit `/\.css$/` rule FIRST, then add ours — webpack applies
+     * every matching rule, so the builder's plain style-loader/css-loader pair has to stop
+     * matching `*.module.css` (it would hand back an empty class map) and the Tailwind theme
+     * entry (it would emit `@import … source(none)` verbatim) before these are registered.
+     *
+     * Every converted package's `*.module.css` opens with `@reference '#theme'` and uses
+     * `@apply`, which are not valid CSS until Tailwind's PostCSS pass has run. Without this
+     * wiring this storybook — and the ~76 package storybooks and the public docsite that
+     * compose it — render every converted package unstyled.
+     */
+    rules.excludeTailwindCssFromDefaultCssRule(config);
+    registerRules({ config, rules: [rules.swcRule, rules.cssModulesRule, rules.tailwindThemeRule] });
     registerTsPaths({ config, configFile: tsConfigPath });
 
     if ((process.env.CI || process.env.TF_BUILD) && config.plugins) {

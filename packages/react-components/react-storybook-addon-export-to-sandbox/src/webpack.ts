@@ -16,7 +16,18 @@ export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions
 }
 
 const identity = <T extends unknown>(value: T) => value;
-const addonFilePattern = /react-storybook-addon-export-to-sandbox\/[a-z/]+.[jt]s$/;
+/**
+ * Matches the preset entry inside `options.presetsList`.
+ *
+ * The separator class is `[\\/]`, not a bare `/`: in development the preset is registered by
+ * `loadWorkspaceAddon` (scripts/storybook/src/utils.js), which hands storybook a NATIVE
+ * absolute path — `path.join(packageRoot, 'temp', 'preset.ts')`. On Windows every separator in
+ * that string is a backslash, so a POSIX-only pattern never matched and `getAddonOptions` fell
+ * back to bare defaults, silently discarding `importMappings`, `webpackRule` and `cssModules`
+ * (DECISIONS.md D8). Production registrations use POSIX `node_modules/...` paths, which the
+ * same class still matches.
+ */
+const addonFilePattern = /react-storybook-addon-export-to-sandbox[\\/][a-z0-9\\/-]+\.[jt]s$/;
 const defaultOptions = {
   webpackRule: {},
   babelLoaderOptionsUpdater: identity,

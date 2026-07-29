@@ -77,6 +77,29 @@ describe(`webpack`, () => {
   });
 
   it.each([
+    [
+      'windows native path (loadWorkspaceAddon output)',
+      String.raw`C:\repo\packages\react-components\react-storybook-addon-export-to-sandbox\temp\preset.ts`,
+    ],
+    [
+      'posix native path (loadWorkspaceAddon output)',
+      '/repo/packages/react-components/react-storybook-addon-export-to-sandbox/temp/preset.ts',
+    ],
+    ['posix node_modules path', 'node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib/preset.js'],
+  ])(`should read addon options from a %s`, (_label, presetName) => {
+    const actual = webpack({ module: { rules: [] } }, {
+      presetsList: [{ name: presetName, preset: {}, options: { cssModules: true } as PresetConfig }],
+    } as WebpackFinalOptions);
+
+    const rule = actual.module?.rules?.[0] as import('webpack').RuleSetRule;
+    const use = rule.use as { options: { plugins: [[string, { cssModules: unknown }]] } };
+
+    // A separator the pattern cannot match makes getAddonOptions fall back to bare defaults and
+    // silently drop every user option (`cssModules: false`) — see DECISIONS.md D8.
+    expect(use.options.plugins[0][1].cssModules).toBe(true);
+  });
+
+  it.each([
     ['boolean true', true as const],
     ['object with tokensFilePath', { tokensFilePath: '/path/to/tokens.css' }],
   ])(`should propagate cssModules config (%s) to babel plugin`, (_label, cssModules) => {
