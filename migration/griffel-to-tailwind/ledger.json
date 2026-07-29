@@ -276,10 +276,11 @@
       "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-migration-v0-v9": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 14,
       "storiesCovered": null,
-      "notes": "14 styles files + v0 compat; Attachment runtime width"
+      "notes": "14 makeStyles/makeResetStyles files -> 15 .module.css (Primitive gains an identity-only local). The 7 *.mixins.ts files are NOT converted: they return plain GriffelStyle objects for CONSUMERS to spread into their own makeStyles (grid/flexItem/input/slider/spinner/v0Icon/v9*), only type-import Griffel, and have no CSS-Modules equivalent - same disposition as react-positioning's createArrowStyles (D7). @griffel/react dependency removed; clsx added. Statics: all flat *ClassName constants repointed to markers (gridClassName -> group/fui-grid-shim, displayName-derived); listClassNames/listItemClassNames narrowed to { root }; attachmentProgress{Bar,Container}ClassName DELETED (sub-slots). Altitude: AttachmentAction l2 (composes onto react-button's root), ListItem header/contentWrapper l2 (compose onto ItemLayout's slots; contentWrapperWithoutMedia genuinely overrides grid-column-end). SEAM REPORTED: group/fui-list and group/fui-list-item collide with the converted @fluentui/react-list (inherited - the fui-List statics collided too; zero CSS effect today, neither package authors group-* rules). ADJUDICATED: List/ListItem markers collide with @fluentui/react-list (group/fui-list, group/fui-list-item) — INHERITED (both always published identical fui-List statics), kept for fidelity, no CSS effect (grep-verified). Namespacing would change the public contract.",
+      "validated": "2026-07-29 specials S3 (full contract; no VR coverage — tests 230/230 + seams + probes)"
     },
     "react-migration-v8-v9": {
       "status": "special",
