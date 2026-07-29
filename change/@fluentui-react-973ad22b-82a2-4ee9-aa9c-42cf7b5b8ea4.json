@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: GroupedList sets correct focus attributes on List",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
