@@ -8,4 +8,8 @@ export type {
 } from './ListItem.types';
 export { renderListItem_unstable } from './renderListItem';
 export { useListItem_unstable } from './useListItem';
-export { listItemClassNames, useListItemStyles_unstable } from './useListItemStyles.styles';
+export {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  listItemClassNames,
+  useListItemStyles_unstable,
+} from './useListItemStyles.styles';

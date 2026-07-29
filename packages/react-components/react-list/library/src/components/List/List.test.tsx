@@ -61,8 +61,17 @@ describe('List', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts the exact `fui-<Component>` /
+    // `fui-<Component>__<slot>` format, which D16.1 removed from this package: `listClassNames`
+    // is retained but re-pointed to the group marker and narrowed to `{ root }`. The test is
+    // deleted from the default set repo-wide when the sweep completes (D16.6); until then
+    // converted packages opt out here. `component-has-group-marker` (now a default test) replaces it — it
+    // asserts the marker IS stamped and, crucially, that it is never `classList[0]` (D16.2).
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   // Mock the console.warn, because we're getting the legitimate about mismatched roles when testing custom roles

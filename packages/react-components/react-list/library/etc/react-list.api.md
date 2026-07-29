@@ -15,19 +15,22 @@ import * as React_2 from 'react';
 import type { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const List: ForwardRefComponent<ListProps>;
 
-// @public (undocumented)
-export const listClassNames: SlotClassNames<ListSlots>;
+// @public @deprecated
+export const listClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const ListItem: ForwardRefComponent<ListItemProps>;
 
-// @public (undocumented)
-export const listItemClassNames: SlotClassNames<ListItemSlots>;
+// @public @deprecated
+export const listItemClassNames: {
+    root: string;
+};
 
 // @public
 export type ListItemProps = ComponentProps<ListItemSlots> & {

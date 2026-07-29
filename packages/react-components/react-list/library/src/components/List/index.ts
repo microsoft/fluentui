@@ -10,4 +10,8 @@ export type {
 } from './List.types';
 export { renderList_unstable } from './renderList';
 export { useList_unstable } from './useList';
-export { listClassNames, useListStyles_unstable } from './useListStyles.styles';
+export {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  listClassNames,
+  useListStyles_unstable,
+} from './useListStyles.styles';

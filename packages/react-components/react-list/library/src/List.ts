@@ -9,6 +9,7 @@ export type {
 } from './components/List/index';
 export {
   List,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   listClassNames,
   renderList_unstable,
   useListStyles_unstable,

@@ -4,12 +4,29 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { List } from './List';
+import { listClassNames } from './useListStyles.styles';
 import { ListItem } from '../ListItem';
+import { fuiSelector } from '@fluentui/react-utilities';
 import type { JSXElement, SelectionItemId } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
+
+/**
+ * List's public identity class, as a valid CSS selector.
+ *
+ * The BEM statics are gone (DECISIONS.md D16.1), so `.fui-List` no longer exists — and note
+ * it would not have been safe to keep either: `@fluentui/react-migration-v0-v9` declares its
+ * own `fui-List` on an unrelated component, so post-removal a `.fui-List` rule matches that
+ * shim and nothing else. `listClassNames.root` is now `group/fui-list`, whose `/` is legal in
+ * a class token but not in a class selector, hence `fuiSelector` (D16.5).
+ *
+ * The constant is deprecated FOR STYLING; `root` is retained precisely as the public identity
+ * class a selector like this one targets, so the rule is suppressed rather than worked around.
+ */
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+const listSelector = fuiSelector(listClassNames.root);
 
 /**
  * Validates focus movement based on the sequence of keybaord commands
@@ -173,9 +190,14 @@ const validateSetOfListItems = (expectedStates: Array<boolean>) =>
     listItem.should('have.attr', 'aria-selected', checked.toString());
 
     cy.log('Validate checkbox state on item', index + 1);
-    cy.get(`[data-test="list-item-${index + 1}"] .fui-Checkbox__indicator > svg`).should(
-      checked ? 'exist' : 'not.exist',
-    );
+    // The checkmark icon renders inside react-checkbox's `indicator` sub-slot, which has no
+    // public class-name handle any more — that is the whole point of D16.1, and ListItem now
+    // reaches that element through JS slot composition rather than a selector (D16.3, and see
+    // useListItemStyles.styles.ts). The test follows: it anchors on Checkbox's public
+    // identity class — its group marker, the escaped `/` being why this is not `.` + token
+    // (D16.5) — and finds the icon under it. `svg` is unambiguous here: the only other
+    // descendants of the checkbox root are its (childless) input and its label.
+    cy.get(`[data-test="list-item-${index + 1}"] .group\\/fui-checkbox svg`).should(checked ? 'exist' : 'not.exist');
 
     cy.log('Validate that the item is present/not present in the parent state (or stringified state)');
     cy.get(`[data-test="selected-items"]`).should(checked ? 'contain' : 'not.contain', `list-item-${index + 1}`);
@@ -420,7 +442,7 @@ describe('List', () => {
     describe('without focusable children', () => {
       it('default list is list/listitem', () => {
         mountSimpleList();
-        cy.get('.fui-List').should('have.attr', 'role', 'list');
+        cy.get(listSelector).should('have.attr', 'role', 'list');
         cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'listitem');
       });
 
@@ -432,7 +454,7 @@ describe('List', () => {
             <ListItem data-test="list-item-3">List Item 3</ListItem>
           </List>,
         );
-        cy.get('.fui-List').should('have.attr', 'role', 'listbox');
+        cy.get(listSelector).should('have.attr', 'role', 'listbox');
         cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'option');
       });
 
@@ -446,8 +468,8 @@ describe('List', () => {
             </ListItem>
           </List>,
         );
-        cy.get('.fui-List').should('have.attr', 'aria-multiselectable', 'true');
-        cy.get('.fui-List').should('have.attr', 'role', 'listbox');
+        cy.get(listSelector).should('have.attr', 'aria-multiselectable', 'true');
+        cy.get(listSelector).should('have.attr', 'role', 'listbox');
         cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'option');
         cy.get('[data-test=list-item-3] input[type=checkbox]').should('be.disabled');
       });
@@ -486,7 +508,7 @@ describe('List', () => {
             </ListItem>
           </List>,
         );
-        cy.get('.fui-List').should('have.attr', 'role', 'grid');
+        cy.get(listSelector).should('have.attr', 'role', 'grid');
         cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'row');
       });
 
@@ -504,7 +526,7 @@ describe('List', () => {
             </ListItem>
           </List>,
         );
-        cy.get('.fui-List').should('have.attr', 'role', 'grid');
+        cy.get(listSelector).should('have.attr', 'role', 'grid');
         cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'row');
       });
 
@@ -522,8 +544,8 @@ describe('List', () => {
             </ListItem>
           </List>,
         );
-        cy.get('.fui-List').should('have.attr', 'aria-multiselectable', 'true');
-        cy.get('.fui-List').should('have.attr', 'role', 'grid');
+        cy.get(listSelector).should('have.attr', 'aria-multiselectable', 'true');
+        cy.get(listSelector).should('have.attr', 'role', 'grid');
         cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'row');
       });
     });

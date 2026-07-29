@@ -17,18 +17,20 @@
  * not source declaration order.
  *
  * root slot:
- *   1 listItemClassNames.root              → static class (JS)
- *   2 useRootBaseStyles                    → fui.base           (makeResetStyles)
- *   3 useStyles.rootClickableOrSelectable  → fui.components.l1  (data-interactive)
- *   4 useStyles.disabled                   → fui.components.l1  (data-disabled)
- *   5 consumer className                   → unlayered (always wins)
+ *   1 useRootBaseStyles                    → fui.base           (makeResetStyles)
+ *   2 useStyles.rootClickableOrSelectable  → fui.components.l1  (data-interactive)
+ *   3 useStyles.disabled                   → fui.components.l1  (data-disabled)
+ *   4 consumer className                   → unlayered (always wins)
  *
  * checkmark slot:
- *   1 listItemClassNames.checkmark         → static class (JS)
- *   2 useCheckmarkBaseStyles.root          → fui.components.l2  ← ALTITUDE, see below
- *   3 consumer className                   → unlayered
+ *   1 useCheckmarkBaseStyles.root          → fui.components.l2  ← ALTITUDE, see below
+ *   2 consumer className                   → unlayered
  *
- * Args 3 and 4 are the one ordered pair in this component: `disabled` overrides
+ * The `fui-ListItem` / `fui-ListItem__checkmark` statics that used to lead both lists were
+ * removed with the rest of the BEM statics (DECISIONS.md D16.1). `group/fui-list-item` is
+ * the root's sole public identity class now; the checkmark slot has none, by design.
+ *
+ * Args 2 and 3 are the one ordered pair in this component: `disabled` overrides
  * `rootClickableOrSelectable`'s `cursor: pointer` with `cursor: default`, and both are
  * `:where()`-flat, so the disabled block MUST stay after the interactive one in this
  * file. (Not one of the 23 inversions in reports/risk-analysis.md — argument order and
@@ -37,20 +39,28 @@
  * ALTITUDE (DECISIONS.md D2 amendment 2). The `checkmark` slot IS a `<Checkbox>`
  * (`slot.optional(props.checkmark, { elementType: Checkbox })` in useListItem.tsx), so
  * `align-self` lands on an element whose base styles come from useCheckboxStyles_unstable,
- * and the nested rule reaches further into Checkbox's own indicator slot — whose `margin`
- * comes from react-checkbox's `useIndicatorBaseClassName` reset. Both are "styles applied
- * over ANOTHER component's hook output", so the whole block is `fui.components.l2`, never
- * l1. Same shape as react-switch's and react-spinner's label blocks.
+ * and `.checkmark-indicator` lands on Checkbox's own indicator slot — whose `margin` comes
+ * from react-checkbox's `useIndicatorBaseClassName` reset. Both are "styles applied over
+ * ANOTHER component's hook output", so the whole block is `fui.components.l2`, never l1.
+ * Same shape as react-switch's and react-spinner's label blocks.
  *
  * Which of the two actually DEPENDS on the altitude was measured, not assumed
  * (.scratch/list-probe/falsification.js demotes this block to l1 and re-measures):
  *   - `align-self` DOES. ListItem's `.checkmark` and Checkbox's root class are both
  *     (0,1,0) — a genuine tie that only the layer order breaks. Demoted to l1, whichever
  *     stylesheet loads last wins, which is exactly the nondeterminism l2 exists to remove.
- *   - the indicator `margin` does NOT. ListItem emits `.checkmark .fui-Checkbox__indicator`
- *     at (0,2,0) against Checkbox's single indicator class at (0,1,0), so specificity
- *     settles it at any equal altitude. It stays here because the block is one slice, not
- *     because it needs the lift.
+ *   - the indicator `margin` DOES NOW, and did not before. Until the statics sweep this was
+ *     a descendant rule, `.checkmark .fui-Checkbox__indicator`, whose (0,2,0) beat
+ *     Checkbox's single indicator class at (0,1,0) at any altitude. `.checkmark-indicator`
+ *     is a flat (0,1,0) — a genuine tie with Checkbox's own indicator class — so the layer
+ *     order is the only thing deciding it. l2 over Checkbox's `fui.base` reset settles it.
+ *
+ * REACHING THE INDICATOR (DECISIONS.md D16.3, statics-removal-design.md §2.2 — the M2
+ * reference case). `.checkmark-indicator` is not selected from CSS at all: it is handed to
+ * Checkbox in JS, by `useListItemStyles_unstable` writing it onto the `indicator` slot props
+ * of the Checkbox it constructs. That is why the rule below is a flat local rather than a
+ * descendant of `.checkmark` — and why this package no longer names any react-checkbox
+ * class, in CSS or otherwise.
  *
  * Compiled AOT reference
  * (lib-commonjs/components/ListItem/useListItemStyles.styles.js:25-65):
@@ -126,18 +136,21 @@
   /* from useCheckmarkBaseStyles.root — see the ALTITUDE note in the header. */
   .checkmark {
     align-self: center;
+  }
 
-    /*
-     * Griffel authored `margin: '4px'` inside a nested selector, compiled verbatim as
-     * `.f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}` — a real pixel literal.
-     * 4px is the XS spacing step, so under the D4 amendment it takes the NAMED utilities
-     * rather than numeric `m-4`: `mx-` (inline axis → horizontal token) plus `my-` (block
-     * axis → vertical token). Both steps are 4px and both compile through `--base-scale`,
-     * so `margin-inline`/`margin-block` compute exactly what `margin: 4px` did.
-     * The four sides are equal and the compiled rule has no RTL twin, so nothing flips.
-     */
-    & :global(.fui-Checkbox__indicator) {
-      @apply mx-horizontal-xs my-vertical-xs;
-    }
+  /*
+   * Griffel authored `margin: '4px'` inside a nested selector, compiled verbatim as
+   * `.f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}` — a real pixel literal.
+   * 4px is the XS spacing step, so under the D4 amendment it takes the NAMED utilities
+   * rather than numeric `m-4`: `mx-` (inline axis → horizontal token) plus `my-` (block
+   * axis → vertical token). Both steps are 4px and both compile through `--base-scale`,
+   * so `margin-inline`/`margin-block` compute exactly what `margin: 4px` did.
+   * The four sides are equal and the compiled rule has no RTL twin, so nothing flips.
+   *
+   * Applied to Checkbox's `indicator` slot from JS, not selected from here — see the
+   * "REACHING THE INDICATOR" note in the header.
+   */
+  .checkmark-indicator {
+    @apply mx-horizontal-xs my-vertical-xs;
   }
 }

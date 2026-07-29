@@ -7,6 +7,7 @@ export type {
 } from './components/ListItem/index';
 export {
   ListItem,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   listItemClassNames,
   renderListItem_unstable,
   useListItemStyles_unstable,

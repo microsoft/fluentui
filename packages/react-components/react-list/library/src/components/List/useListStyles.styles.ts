@@ -14,13 +14,25 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { ListSlots, ListState } from './List.types';
+import type { ListState } from './List.types';
 
 import styles from './List.module.css';
 
-export const listClassNames: SlotClassNames<ListSlots> = {
-  root: 'fui-List',
+/**
+ * Public identity classes for List.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a selector
+ * and as a `group-*` variant target. The BEM statics (`fui-List`) were removed in D16.1;
+ * there is no public class-name handle on component internals.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + listClassNames.root` is a `SyntaxError`. Use `fuiSelector(listClassNames.root)`
+ * from `@fluentui/react-utilities` at every selector site (D16.5).
+ */
+export const listClassNames: { root: string } = {
+  root: 'group/fui-list',
 };
 
 /**
@@ -31,9 +43,11 @@ export const listClassNames: SlotClassNames<ListSlots> = {
  * stamped here.
  */
 export const useListStyles_unstable = (state: ListState): ListState => {
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // Module class FIRST, then the named group marker, consumer className last (DECISIONS.md
+  // D16.2). `styles.root` is unconditional, so it is always the leading token and the marker
+  // is never `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom
+  // (D15.1). Before the statics sweep the `fui-List` class held that position incidentally;
+  // now it is held explicitly by the hashed CSS-Modules class. The marker is a literal,
   // unhashed, GLOBAL token: it is the only handle by which another module — in this package
   // or any other — can style an element from this List's state, because `styles.root` is
   // hashed and unaddressable from outside this file (DECISIONS.md D15).
@@ -46,7 +60,7 @@ export const useListStyles_unstable = (state: ListState): ListState => {
   // Cascade priority is decided by the `@layer fui.*` order in List.module.css, not by the
   // order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  state.root.className = clsx(listClassNames.root, 'group/fui-list', styles.root, state.root.className);
+  state.root.className = clsx(styles.root, 'group/fui-list', state.root.className);
 
   return state;
 };
