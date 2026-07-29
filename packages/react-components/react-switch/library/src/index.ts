@@ -3,7 +3,7 @@ export {
   renderSwitch_unstable,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   switchClassName,
-  switchClassNames,
+  switchClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSwitchStyles_unstable,
   useSwitch_unstable,
   useSwitchBase_unstable,

@@ -12,6 +12,6 @@ export { useSwitch_unstable, useSwitchBase_unstable } from './useSwitch';
 export {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   switchClassName,
-  switchClassNames,
+  switchClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSwitchStyles_unstable,
 } from './useSwitchStyles.styles';
