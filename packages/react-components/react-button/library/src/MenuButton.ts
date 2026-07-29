@@ -7,6 +7,7 @@ export type {
 } from './components/MenuButton/index';
 export {
   MenuButton,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   menuButtonClassNames,
   renderMenuButton_unstable,
   useMenuButtonStyles_unstable,

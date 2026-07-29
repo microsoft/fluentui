@@ -18,7 +18,9 @@
  *
  *   #  mergeClasses argument                         → target
  *   ------------------------------------------------------------------------------
- *   1  buttonClassNames.root                         → static class (JS)
+ *   1  buttonClassNames.root                         → REMOVED (D16.1); the root's leading
+ *                                                      token is now `.root` itself, followed
+ *                                                      by the `group/fui-button` marker
  *   2  useRootBaseClassName            (makeReset)   → fui.base
  *   3  rootStyles[appearance]                        → fui.components.l1   (.outline/.primary/…)
  *   4  rootStyles[size]                              → fui.components.l1     (data-size)
@@ -36,7 +38,8 @@
  *
  * `icon` slot:
  *
- *   1  buttonClassNames.icon                         → static class (JS)
+ *   1  buttonClassNames.icon                         → REMOVED (D16.1); `.icon` is the only
+ *                                                      class this hook writes to the slot
  *   2  useIconBaseClassName            (makeReset)   → fui.base
  *   3  iconStyles[iconPosition], gated on children   → fui.components.l1
  *   4  iconStyles[size]                              → fui.components.l1
@@ -46,8 +49,17 @@
  * `subtle`/`transparent` and arg #8 `rootDisabledStyles.base`) are NOT in a layer — they
  * style `@fluentui/react-icons`' elements, which that unconverted package styles unlayered.
  * They live in one block at the BOTTOM of this file; see "The icon swap must be UNLAYERED"
- * there for the DOM evidence. `.fui-Button__icon` swaps stay layered: that class is
- * react-button's OWN icon slot, not another package's element.
+ * there for the DOM evidence. The icon COLOUR swaps stay layered: they now select `.icon`,
+ * this module's own local on react-button's icon slot, not another package's element.
+ *
+ * ── D16: the icon slot has no public handle ─────────────────────────────────────────
+ * Ten rules below used to select `:global(.fui-Button__icon)`. They select `.icon` instead
+ * — the hashed local `useButtonStyles_unstable` writes onto `state.icon` — which is the
+ * same element, the same descendant combinator and the same 0-2-0 specificity in the same
+ * layer, so the cascade is unchanged (D16.3: a sub-slot the styling package renders itself
+ * resolves in-module, never through a global class). The `--fui-Button__icon--spacing`
+ * custom property below keeps its name: it is a private custom property, never a class,
+ * and is read only inside this file.
  *
  * ── The two KNOWN inversions (risk-analysis.md §1a) ─────────────────────────────────
  * `circular`(L284)/`square`(L288) are DECLARED before `small`(L291)/`large`(L307), but
@@ -319,9 +331,10 @@
 
       /* The `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
          layer — it is UNLAYERED at the bottom of this file. See "The icon swap must be
-         UNLAYERED". `.fui-Button__icon` below is react-button's OWN slot class, so it stays. */
+         UNLAYERED". `.icon` below is this module's own local on react-button's icon slot,
+         so its colour rule stays layered. */
 
-      & :global(.fui-Button__icon) {
+      & .icon {
         color: var(--colorNeutralForeground2BrandHover);
       }
     }
@@ -335,9 +348,9 @@
       color: var(--colorNeutralForeground2Pressed);
 
       /* Icon swap UNLAYERED at the bottom of this file — see "The icon swap must be
-         UNLAYERED". `.fui-Button__icon` is this package's own slot class and stays here. */
+         UNLAYERED". `.icon` is this module's own local and its colour rule stays here. */
 
-      & :global(.fui-Button__icon) {
+      & .icon {
         color: var(--colorNeutralForeground2BrandPressed);
       }
     }
@@ -346,7 +359,7 @@
       @variant hover {
         color: Highlight;
 
-        & :global(.fui-Button__icon) {
+        & .icon {
           color: Highlight;
         }
       }
@@ -354,7 +367,7 @@
       @variant hover-active {
         color: Highlight;
 
-        & :global(.fui-Button__icon) {
+        & .icon {
           color: Highlight;
         }
       }
@@ -482,7 +495,7 @@
 
       cursor: not-allowed;
 
-      & :global(.fui-Button__icon) {
+      & .icon {
         color: var(--colorNeutralForegroundDisabled);
       }
 
@@ -500,7 +513,7 @@
            written LAST there so it still beats the appearance swaps — see "The icon swap must
            be UNLAYERED". */
 
-        & :global(.fui-Button__icon) {
+        & .icon {
           color: var(--colorNeutralForegroundDisabled);
         }
       }
@@ -519,7 +532,7 @@
            written LAST there so it still beats the appearance swaps — see "The icon swap must
            be UNLAYERED". */
 
-        & :global(.fui-Button__icon) {
+        & .icon {
           color: var(--colorNeutralForegroundDisabled);
         }
       }
@@ -533,7 +546,7 @@
         border-left-color: GrayText;
         color: GrayText;
 
-        & :global(.fui-Button__icon) {
+        & .icon {
           color: GrayText;
         }
 
@@ -552,7 +565,7 @@
           border-left-color: GrayText;
           color: GrayText;
 
-          & :global(.fui-Button__icon) {
+          & .icon {
             color: GrayText;
           }
         }
@@ -565,7 +578,7 @@
           border-left-color: GrayText;
           color: GrayText;
 
-          & :global(.fui-Button__icon) {
+          & .icon {
             color: GrayText;
           }
         }
@@ -814,8 +827,8 @@
  * requires these rules to be unlayered too.
  *
  * Everything that styles react-button's OWN elements stays layered above, INCLUDING the
- * `:global(.fui-Button__icon)` colour rules: that class is this package's icon slot, not
- * another package's element, and nothing unlayered competes for it.
+ * `.icon` colour rules: that local sits on this package's icon slot, not another package's
+ * element, and nothing unlayered competes for it.
  *
  * ── Order inside this block reproduces mergeClasses ARGUMENT order ───────────────────
  * Every selector here is `:where()`-flat at 0-2-0 (`disabled-any` and `hover-active` are

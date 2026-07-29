@@ -14,14 +14,24 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { ButtonSlots, ButtonState } from './Button.types';
+import type { ButtonState } from './Button.types';
 
 import styles from './Button.module.css';
 
-export const buttonClassNames: SlotClassNames<ButtonSlots> = {
-  root: 'fui-Button',
-  icon: 'fui-Button__icon',
+/**
+ * Public identity classes for Button.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * (the Tailwind named-group marker, DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The per-slot `icon` key was removed in D16.5; there is no public
+ * class-name handle on component internals.
+ *
+ * `'.' + buttonClassNames.root` is an invalid *selector* — the `/` terminates the class name.
+ * Use `fuiSelector(buttonClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const buttonClassNames: { root: string } = {
+  root: 'group/fui-button',
 };
 
 /**
@@ -67,18 +77,21 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   root['data-disabled-focusable'] = disabledFocusable || undefined;
   root['data-empty'] = !state.root.children || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Button's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Button needs no state mirrors:
-  // `data-disabled`, `data-icon-only`, `data-size` and the rest are already stamped on this
-  // very element above, so `@variant group-hover/fui-button`, `group-disabled/fui-button`
-  // etc. work as-is (DECISIONS.md D15, Tier 0).
+  // Module class FIRST, then the named group marker, consumer className LAST (D16.2).
+  // `styles.root` is unconditional and hashed, so it is always a selector-safe `classList[0]`:
+  // the marker must never hold that slot (nwsapi's `:scope` polyfill throws on it under jsdom;
+  // DECISIONS.md D15.1). The marker is a literal, unhashed, GLOBAL token and — since D16
+  // removed the BEM statics — Button's SOLE public identity class. It is the only handle by
+  // which another module, in this package or any other, can style an element from this
+  // Button's state, because `styles.root` is hashed and unaddressable from outside this file.
+  // Button needs no state mirrors: `data-disabled`, `data-icon-only`, `data-size` and the rest
+  // are already stamped on this very element above, so `@variant group-hover/fui-button`,
+  // `group-disabled/fui-button` etc. work as-is (DECISIONS.md D15, Tier 0).
   //
-  // Only `Button` carries a marker for now. ToggleButton / CompoundButton / MenuButton /
-  // SplitButton are still Griffel and get theirs when they convert.
+  // ToggleButton / CompoundButton / MenuButton each stamp their OWN marker on this same
+  // element before calling this hook, so those roots carry two markers by design — the
+  // component-specific one and `group/fui-button` — and a descendant can address whichever
+  // identity it means (react-toolbar's ToolbarToggleButton relies on exactly that).
   //
   // Cascade priority is decided by the `@layer fui.*` order in Button.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
@@ -86,21 +99,23 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   // `border-radius` inversions.
   //
   // `state.root.className` is also how ToggleButton/CompoundButton/MenuButton/SplitButton
-  // reach this slot: each of them runs its own `mergeClasses(...)` FIRST and calls
-  // `useButtonStyles_unstable` LAST, so their (unlayered) Griffel atomics arrive here as
+  // reach this slot: each of them composes its own `clsx(...)` FIRST and calls
+  // `useButtonStyles_unstable` LAST, so their `fui.components.l2` classes arrive here as
   // the trailing argument and keep beating these layered rules — the same winner
   // mergeClasses produced when their string was its last argument.
   state.root.className = clsx(
-    buttonClassNames.root,
-    'group/fui-button',
     styles.root,
+    'group/fui-button',
     appearance && styles[appearance],
     styles[shape],
     state.root.className,
   );
 
   if (state.icon) {
-    state.icon.className = clsx(buttonClassNames.icon, styles.icon, state.icon.className);
+    // `styles.icon` is this module's own local, and after D16 it is the ONLY class this hook
+    // writes here: the icon slot has no public handle, and every rule that used to select
+    // `:global(.fui-Button__icon)` now selects `.icon` from inside Button.module.css.
+    state.icon.className = clsx(styles.icon, state.icon.className);
   }
 
   return state;

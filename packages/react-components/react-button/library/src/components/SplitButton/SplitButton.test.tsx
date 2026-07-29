@@ -15,17 +15,15 @@ describe('SplitButton', () => {
     // it was called with the consumer className last; this component now composes with
     // clsx and never calls mergeClasses, so the test can no longer observe the contract.
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            icon: 'Test Icon',
-            menuIcon: 'Test MenuIcon',
-          },
-        },
-      ],
+    //
+    // `component-has-static-classnames-object` is disabled because D16.1 removed this
+    // package's BEM statics: `splitButtonClassNames` now holds only `root`, pointed at the
+    // group marker, and the default test hard-codes the `fui-<Component>__<slot>` format.
+    // `component-has-group-marker` (now a default test) is its replacement (DECISIONS.md D16.2 / D16.6).
+    // SplitButton's root is its own `<div>`, so it carries exactly one marker.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
   });
 

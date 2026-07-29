@@ -7,6 +7,7 @@ export type {
 export {
   ToggleButton,
   renderToggleButton_unstable,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   toggleButtonClassNames,
   useToggleButtonStyles_unstable,
   useToggleButton_unstable,

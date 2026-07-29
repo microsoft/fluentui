@@ -10,36 +10,48 @@
 
 import { clsx } from 'clsx';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { ButtonSlots } from '../Button/Button.types';
 import type { ToggleButtonState } from './ToggleButton.types';
 
 import styles from './ToggleButton.module.css';
 
-export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
-  root: 'fui-ToggleButton',
-  icon: 'fui-ToggleButton__icon',
+/**
+ * Public identity classes for ToggleButton.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * (the Tailwind named-group marker, DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target; react-toolbar's ToolbarToggleButton / ToolbarRadioButton compound
+ * it for specificity. The per-slot `icon` key was removed in D16.5; there is no public
+ * class-name handle on component internals.
+ *
+ * `'.' + toggleButtonClassNames.root` is an invalid *selector* — the `/` terminates the class
+ * name. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const toggleButtonClassNames: { root: string } = {
+  root: 'group/fui-toggle-button',
 };
 
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   const { appearance, checked, disabled, disabledFocusable, isAccessible } = state;
   const disabledAny = disabled || disabledFocusable;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. Every module class
-  // below is conditional, so `toggleButtonClassNames.root` is currently the ONLY thing
-  // satisfying that invariant here; see the note at the top of ToggleButton.module.css
-  // for what the statics-removal phase has to replace it with (§4b's empty `.root {}`
-  // does not survive this build).
+  // Named group marker first, consumer className last. Every module class here is
+  // conditional (`checked`, `disabled`, `appearance === 'primary'`), so this hook alone
+  // cannot put a selector-safe token ahead of the marker — and it does not have to:
+  // `useButtonStyles_unstable` is called LAST and prepends Button's own unconditional
+  // `styles.root`, so the token this string ultimately renders at `classList[0]` is
+  // Button's hashed root class, never a marker (DECISIONS.md D15.1 / D16.2; asserted by
+  // `component-has-group-marker`). §4b's empty `.root {}` is NOT usable here — a rule with
+  // no declarations is dropped before the class map is extracted; see the note at the top
+  // of ToggleButton.module.css.
   //
-  // The marker is a literal, unhashed, GLOBAL token and it is deliberately ToggleButton's
-  // OWN identity even though this element is also a Button: `useButtonStyles_unstable`
-  // (called last) adds `fui-Button` and `group/fui-button` to the same element, and a
-  // descendant — or a wrapping component such as react-toolbar's ToolbarToggleButton —
-  // can then address whichever identity it means. ToolbarToggleButton/ToolbarRadioButton
-  // compound `:global(.group\/fui-toggle-button)` for exactly that reason; see their
-  // modules.
+  // The marker is a literal, unhashed, GLOBAL token — after D16 the SOLE public identity
+  // class — and it is deliberately ToggleButton's OWN identity even though this element is
+  // also a Button: `useButtonStyles_unstable` adds `group/fui-button` to the same element,
+  // so this root carries two markers by design and a descendant — or a wrapping component
+  // such as react-toolbar's ToolbarToggleButton — can address whichever identity it means.
+  // ToolbarToggleButton/ToolbarRadioButton compound `:global(.group\/fui-toggle-button)`
+  // for exactly that reason; see their modules.
   //
   // No state mirrors are needed (DECISIONS.md D15, Tier 0): every condition below is a
   // JS-side gate that selects a module class, exactly as the mergeClasses arguments it
@@ -49,7 +61,6 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   // rather than slice-major.
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    toggleButtonClassNames.root,
     'group/fui-toggle-button',
 
     // Primary high contrast styles
@@ -79,7 +90,6 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
     // `.accessible-checked-subtle` hover rule in the module.
     // eslint-disable-next-line react-hooks/immutability
     state.icon.className = clsx(
-      toggleButtonClassNames.icon,
       checked && !isAccessible && (appearance === 'subtle' || appearance === 'transparent') && styles['checked-icon'],
       styles.icon,
       state.icon.className,

@@ -7,6 +7,7 @@ export type {
 } from './components/Button/index';
 export {
   Button,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   buttonClassNames,
   renderButton_unstable,
   useButtonStyles_unstable,

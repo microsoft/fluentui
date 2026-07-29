@@ -10,42 +10,48 @@
 
 import { clsx } from 'clsx';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
+import type { CompoundButtonState } from './CompoundButton.types';
 
 import styles from './CompoundButton.module.css';
 
-export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
-  root: 'fui-CompoundButton',
-  icon: 'fui-CompoundButton__icon',
-  contentContainer: 'fui-CompoundButton__contentContainer',
-  secondaryContent: 'fui-CompoundButton__secondaryContent',
+/**
+ * Public identity classes for CompoundButton.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * (the Tailwind named-group marker, DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The per-slot `icon` / `contentContainer` / `secondaryContent`
+ * keys were removed in D16.5; there is no public class-name handle on component internals.
+ *
+ * `'.' + compoundButtonClassNames.root` is an invalid *selector* — the `/` terminates the
+ * class name. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const compoundButtonClassNames: { root: string } = {
+  root: 'group/fui-compound-button',
 };
 
 export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
   const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
   const disabledAny = disabled || disabledFocusable;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. `styles.root` is
-  // unconditional, so it will keep a selector-safe token ahead of the marker once the
-  // statics are removed (statics-removal-design.md §4a).
+  // Module class FIRST, then the named group marker, consumer className LAST (D16.2).
+  // `styles.root` is unconditional, so it is always the selector-safe `classList[0]` the
+  // marker must never occupy (nwsapi's `:scope` polyfill throws on it under jsdom;
+  // DECISIONS.md D15.1). `useButtonStyles_unstable` (called last) prepends its own
+  // `styles.root` ahead of all of this, so the rendered leading token is Button's.
   //
   // The marker is CompoundButton's OWN identity on an element that is also a Button:
-  // `useButtonStyles_unstable` (called last) adds `fui-Button` and `group/fui-button` to
-  // the same element, and a descendant can address whichever identity it means.
+  // `useButtonStyles_unstable` adds `group/fui-button` to the same element, so this root
+  // carries two markers by design and a descendant can address whichever identity it means.
   //
   // Cascade priority is decided by the `@layer fui.*` order and by file position inside
   // CompoundButton.module.css — see that file's header for the mapping back to the
   // mergeClasses() argument order, including why its blocks are bucket-major.
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    compoundButtonClassNames.root,
-    'group/fui-compound-button',
-
     // Root styles
     styles.root,
+    'group/fui-compound-button',
     styles['high-contrast'],
     appearance && styles[appearance],
     styles[size],
@@ -62,16 +68,11 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   );
 
   // eslint-disable-next-line react-hooks/immutability
-  state.contentContainer.className = clsx(
-    compoundButtonClassNames.contentContainer,
-    styles['content-container'],
-    state.contentContainer.className,
-  );
+  state.contentContainer.className = clsx(styles['content-container'], state.contentContainer.className);
 
   if (state.icon) {
     // eslint-disable-next-line react-hooks/immutability
     state.icon.className = clsx(
-      compoundButtonClassNames.icon,
       styles.icon,
       state.root.children !== undefined && state.root.children !== null && styles[`icon-${iconPosition}`],
       state.icon.className,
@@ -81,7 +82,6 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   if (state.secondaryContent) {
     // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = clsx(
-      compoundButtonClassNames.secondaryContent,
       styles['secondary-content'],
       styles[`secondary-content-${size}`],
       state.secondaryContent.className,

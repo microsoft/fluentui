@@ -48,7 +48,11 @@
  *
  *   #  mergeClasses argument                                    → target
  *   ------------------------------------------------------------------------------------
- *   1  toggleButtonClassNames.root                              → static class (JS)
+ *   1  toggleButtonClassNames.root                              → REMOVED (D16.1); the root
+ *                                                                  now leads with
+ *                                                                  `group/fui-toggle-button`,
+ *                                                                  and Button's `.root` is
+ *                                                                  prepended ahead of it
  *   2  primaryHighContrastStyles.base        (appearance=primary)   → block 5
  *   3  primaryHighContrastStyles.disabled    (+ disabled-any)       → block 5
  *   4  rootCheckedStyles.base                (checked)              → blocks 1/3/4 + UNLAYERED
@@ -62,7 +66,7 @@
  *
  * `icon` slot:
  *
- *   1  toggleButtonClassNames.icon                              → static class (JS)
+ *   1  toggleButtonClassNames.icon                              → REMOVED (D16.1)
  *   2  iconCheckedStyles.subtleOrTransparent                    → `.checked-icon`
  *   3  iconCheckedStyles.highContrast       (UNCONDITIONAL)     → `.icon`
  *   4  consumer className                                       → unlayered
@@ -84,17 +88,20 @@
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
   /*
-   * NOTE for the statics-removal phase (statics-removal-design.md §4b): this root is a
-   * "Class B" site — EVERY class below is conditional (`checked`, `disabled`,
-   * `appearance === 'primary'`), so `toggleButtonClassNames.root` is the only thing
-   * keeping the `group/fui-toggle-button` marker off `classList[0]` (DECISIONS.md D15.1).
+   * NOTE (statics-removal phase, DECISIONS.md D16): EVERY class below is conditional
+   * (`checked`, `disabled`, `appearance === 'primary'`), so this module contributes NO
+   * unconditional leading token to the root. That is safe here, and only here, because
+   * `useToggleButtonStyles_unstable` calls `useButtonStyles_unstable` LAST, and that hook
+   * prepends Button's unconditional `.root` — so the rendered `classList[0]` is Button's
+   * hashed root class, never the `group/fui-toggle-button` marker (D15.1; asserted by
+   * `component-has-group-marker`).
    *
-   * §4b's prescribed fix — an empty `.root {}` identity local — does NOT work in this
-   * build pipeline: a rule with no declarations is dropped before the class map is
+   * §4b's generic fix — an empty `.root {}` identity local — does NOT work in this build
+   * pipeline anyway: a rule with no declarations is dropped before the class map is
    * extracted, so `styles.root` comes back `undefined` and clsx silently omits it
    * (measured on this file: `lib/components/ToggleButton/ToggleButton.module.css.js`
-   * contained no `root` key). Whatever leading token that phase chooses has to carry at
-   * least one declaration.
+   * contained no `root` key). If the call to `useButtonStyles_unstable` ever stops being
+   * last, this root needs a leading local carrying at least one declaration.
    */
 
   /* from useRootCheckedStyles.base — arg #4 */
@@ -325,8 +332,9 @@
   /*
    * from useCheckedAccessibleStyles.subtle — arg #8. Overrides the subtle-appearance icon
    * colour on hover. `.icon` is THIS module's own local on the icon slot (the slot always
-   * carries it, arg #3 of the icon merge), so the coupling stays private — no
-   * `:global(.fui-ToggleButton__icon)` handle is needed or wanted (D15.7 / D16.3).
+   * carries it, arg #3 of the icon merge), so the coupling stays private — no global
+   * `fui-ToggleButton__icon` handle was needed, which is why D16.1 removing that static
+   * changed nothing here (D15.7 / D16.3).
    */
   .accessible-checked-subtle {
     @variant hover {
@@ -502,7 +510,7 @@
  * Icon slot. Both slices land on react-button's `icon` slot, so l2 for the same reason
  * the root slices are (they arrived as the trailing className of Button's own icon merge
  * and therefore beat every rule Button writes there, including its 0-2-0 root-anchored
- * `:global(.fui-Button__icon)` colour rules).
+ * `.icon` colour rules).
  * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
   /*

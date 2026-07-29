@@ -32,7 +32,8 @@
  *
  *   #  mergeClasses argument                → target
  *   ---------------------------------------------------------------------------------
- *   1  compoundButtonClassNames.root        → static class (JS)
+ *   1  compoundButtonClassNames.root        → REMOVED (D16.1); the root now leads with
+ *                                            `.root`, then `group/fui-compound-button`
  *   2  rootStyles.base                      → `d` / `h` / `a` blocks
  *   3  rootStyles.highContrast              → `m` block
  *   4  rootStyles[appearance]               → `d` / `h` / `a` / `m` blocks
@@ -43,10 +44,11 @@
  *                                             must beat #5's)
  *   9  consumer className                   → unlayered (always wins)
  *
- * `contentContainer`: static, `contentContainerStyles.base` (l1), consumer className.
- * `icon`:             static, `iconStyles.base`, `iconStyles[iconPosition]` (gated on
+ * The sub-slot statics are gone too (D16.1); each slot now carries only its locals:
+ * `contentContainer`: `contentContainerStyles.base` (l1), consumer className.
+ * `icon`:             `iconStyles.base`, `iconStyles[iconPosition]` (gated on
  *                     `root.children != null`), consumer className — all l2.
- * `secondaryContent`: static, `secondaryContentStyles.base`, `…[size]` (l1), consumer.
+ * `secondaryContent`: `secondaryContentStyles.base`, `…[size]` (l1), consumer.
  *
  * `outline` and `secondary` are `{}` in the Griffel source, so `styles.outline` /
  * `styles.secondary` are intentionally undefined and clsx drops them.
@@ -54,7 +56,7 @@
  * ── Own sub-slot selectors go LOCAL ──────────────────────────────────────────────────
  * The Griffel source selected `& .${compoundButtonClassNames.secondaryContent}` — a
  * public BEM static. Here it is the module-local `.secondary-content` that this hook
- * already writes onto that slot, which keeps the coupling private and survives the
+ * already writes onto that slot, which keeps the coupling private and survived the
  * statics-removal phase unchanged (statics-removal-design.md §2.1 / D16.3). Same 0-2-0
  * specificity, same winners.
  *

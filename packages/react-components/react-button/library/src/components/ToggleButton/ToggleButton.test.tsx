@@ -23,17 +23,43 @@ describe('ToggleButton', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` is disabled because D16.1 removed this
+    // package's BEM statics: `toggleButtonClassNames` now holds only `root`, pointed at the
+    // group marker, and the default test hard-codes the `fui-<Component>__<slot>` format.
+    //
+    // Takes `component-has-group-marker` with a declared marker SET (unlike Button and SplitButton), and this
+    // is a gap in the shared assertion, not in this component. ToggleButton's root is also a
+    // Button, so it renders TWO markers by design — `group/fui-toggle-button` and, from
+    // `useButtonStyles_unstable`, `group/fui-button` — which is exactly what lets
+    // react-toolbar's ToolbarToggleButton compound `:global(.group\/fui-toggle-button)`.
+    // `assertGroupMarkerIsStamped` rejects `groupMarkers.length > 1` unconditionally, with
+    // no `testOptions` escape hatch, so opting in fails on a contract this family
+    // deliberately does not hold. The `classList[0]` half — the D16.2 invariant that
+    // actually matters — was verified green here before being backed out; it needs a
+    // composed-component allowance in `react-conformance` to stay. Same blocker applies to
+    // CompoundButton, MenuButton, react-toolbar's three Toolbar*Buttons and
+    // react-breadcrumb's BreadcrumbButton.
+    disabledTests: [
+      'make-styles-overrides-win',
+
+      'component-has-static-classnames-object',
+      // Renders another package's root, so it carries that component's marker alongside its
+      // own. `component-has-group-marker` became a default test with the statics removal
+      // (DECISIONS.md D16.6) and asserts EXACTLY ONE marker, which is false here by
+      // construction; the local assertion below keeps its load-bearing `classList[0]` half.
+    ],
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            icon: 'Test Icon',
-          },
-        },
-      ],
+      // a ToggleButton IS a Button — `useButtonStyles_unstable` stamps its marker on this same element, so this root
+      // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set
+      // keeps `component-has-group-marker` running: it is an exact set comparison, so an
+      // undeclared marker still fails, and its `classList[0]` half — the D16.2 invariant that
+      // nwsapi's jsdom `:scope` polyfill depends on — is asserted here rather than locally.
+      'has-group-marker': {
+        markers: ['group/fui-button', 'group/fui-toggle-button'],
+      },
     },
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   xdescribe('AccesibilityButtonBehavior', () => {

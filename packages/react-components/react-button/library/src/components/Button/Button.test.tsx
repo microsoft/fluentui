@@ -23,16 +23,16 @@ describe('Button', () => {
     // the identical pair in their own test files. Both entries stay per-component rather
     // than moving into src/testing/isConformant.ts, so that a future component added to
     // this package has to opt in deliberately.
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            icon: 'Test Icon',
-          },
-        },
-      ],
+    //
+    // `component-has-static-classnames-object` is disabled because D16.1 removed this
+    // package's BEM statics: `buttonClassNames` now holds only `root`, pointed at the
+    // group marker, and the default test hard-codes the `fui-<Component>__<slot>` format
+    // (react-conformance/src/defaultTests.tsx). `component-has-group-marker` (now a default test) is its
+    // replacement — it asserts the marker IS stamped and, crucially, that it is never
+    // `classList[0]` (DECISIONS.md D15.1 / D16.2 / D16.6).
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
   });
 

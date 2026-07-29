@@ -25,7 +25,7 @@
  * ── Own sub-slot selectors go LOCAL ──────────────────────────────────────────────────
  * The Griffel source selected `& .${splitButtonClassNames.primaryActionButton}` and
  * `…menuButton` — public BEM statics. Here both are the module locals this hook already
- * writes onto those slots, which keeps the coupling private and survives the
+ * writes onto those slots, which keeps the coupling private and survived the
  * statics-removal phase unchanged (statics-removal-design.md §2.1 / D16.3). Same 0-2-0
  * specificity, same winners. The locals double as the slots' own rule targets, so the two
  * `useFocusStyles` slices are folded into them rather than adding a second class each.
@@ -34,15 +34,16 @@
  *
  *   #  mergeClasses argument                    → target
  *   ---------------------------------------------------------------------------------
- *   1  splitButtonClassNames.root               → static class (JS)
+ *   1  splitButtonClassNames.root               → REMOVED (D16.1); the root now leads with
+ *                                                 `.root`, then `group/fui-split-button`
  *   2  rootStyles.base                          → l1 (own div) + l2 (`d` block)
  *   3  rootStyles[appearance]                   → l2 `d` / `h` / `a` / `m` blocks
  *   4  rootStyles.disabled       (disabled-any) → l2 `d` / `h` / `a` blocks
  *   5  rootStyles.disabledHighContrast (idem)   → l2 `m` block
  *   6  consumer className                       → unlayered (always wins)
  *
- * `menuButton`:          static, `focusStyles.menuButton`          → `.menu-button` (l2)
- * `primaryActionButton`: static, `focusStyles.primaryActionButton` → `.primary-action-button` (l2)
+ * `menuButton`:          `focusStyles.menuButton`          → `.menu-button` (l2)
+ * `primaryActionButton`: `focusStyles.primaryActionButton` → `.primary-action-button` (l2)
  *
  * `outline`, `secondary`, `circular`, `rounded` and `square` are `{}` in the Griffel
  * source, so those `styles[...]` lookups are intentionally undefined and clsx drops them.

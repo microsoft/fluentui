@@ -9,32 +9,43 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
-import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
+import type { MenuButtonState } from './MenuButton.types';
 
 import styles from './MenuButton.module.css';
 
-export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
-  root: 'fui-MenuButton',
-  icon: 'fui-MenuButton__icon',
-  menuIcon: 'fui-MenuButton__menuIcon',
+/**
+ * Public identity classes for MenuButton.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * (the Tailwind named-group marker, DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The per-slot `icon` / `menuIcon` keys were removed in D16.5;
+ * there is no public class-name handle on component internals.
+ *
+ * `'.' + menuButtonClassNames.root` is an invalid *selector* — the `/` terminates the class
+ * name. Use `fuiSelector(...)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const menuButtonClassNames: { root: string } = {
+  root: 'group/fui-menu-button',
 };
 
 export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButtonState => {
   const expanded = state.root['aria-expanded'];
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. Every module class
-  // below is conditional on `aria-expanded`, so `menuButtonClassNames.root` is currently
-  // the ONLY thing satisfying that invariant here; see the note at the top of
-  // MenuButton.module.css for what the statics-removal phase has to replace it with
-  // (§4b's empty `.root {}` does not survive this build).
+  // Named group marker first, consumer className last. Every module class here is
+  // conditional on `aria-expanded`, so this hook alone cannot put a selector-safe token
+  // ahead of the marker — and it does not have to: `useButtonStyles_unstable` is called
+  // LAST and prepends Button's own unconditional `styles.root`, so the token this string
+  // ultimately renders at `classList[0]` is Button's hashed root class, never a marker
+  // (DECISIONS.md D15.1 / D16.2; asserted by `component-has-group-marker`). §4b's empty
+  // `.root {}` is NOT usable here — a rule with no declarations is dropped before the
+  // class map is extracted, so `styles.root` would come back `undefined`; see the note at
+  // the top of MenuButton.module.css.
   //
   // The marker is MenuButton's OWN identity on an element that is also a Button:
-  // `useButtonStyles_unstable` (called last) adds `fui-Button` and `group/fui-button` to
-  // the same element, and a descendant can address whichever identity it means.
+  // `useButtonStyles_unstable` adds `group/fui-button` to the same element, so this root
+  // carries two markers by design and a descendant can address whichever identity it means.
   //
   // The `aria-expanded` gates stay in JS rather than moving to the shared `expanded`
   // variant: they are the Griffel source's own conditions, they select whole slices
@@ -43,7 +54,6 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   // MenuButton.module.css.
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    menuButtonClassNames.root,
     'group/fui-menu-button',
     expanded && styles.expanded,
     expanded && styles[`expanded-${state.appearance}`],
@@ -63,7 +73,6 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
     // styling: `appearance !== 'primary'` is the exact, readable form of the same guard.
     // eslint-disable-next-line react-hooks/immutability
     state.icon.className = clsx(
-      menuButtonClassNames.icon,
       expanded && state.appearance !== 'primary' && styles['icon-expanded-high-contrast'],
       state.icon.className,
     );
@@ -72,7 +81,6 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   if (state.menuIcon) {
     // eslint-disable-next-line react-hooks/immutability
     state.menuIcon.className = clsx(
-      menuButtonClassNames.menuIcon,
       styles['menu-icon'],
       styles[`menu-icon-${state.size}`],
       !state.iconOnly && styles['menu-icon-not-icon-only'],

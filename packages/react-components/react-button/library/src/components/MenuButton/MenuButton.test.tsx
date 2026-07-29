@@ -5,7 +5,6 @@ import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluen
 import { isConformant } from '../../testing/isConformant';
 import { MenuButton } from './MenuButton';
 import type { MenuButtonProps } from './MenuButton.types';
-import { menuButtonClassNames } from './useMenuButtonStyles.styles';
 
 describe('MenuButton', () => {
   isConformant({
@@ -16,31 +15,37 @@ describe('MenuButton', () => {
     // it was called with the consumer className last; this component now composes with
     // clsx and never calls mergeClasses, so the test can no longer observe the contract.
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` is disabled because D16.1 removed this
+    // package's BEM statics: `menuButtonClassNames` now holds only `root`, pointed at the
+    // group marker, and the default test hard-codes the `fui-<Component>__<slot>` format.
+    // The per-slot `expectedClassNames` overrides this call site used to carry went with
+    // them.
+    //
+    // `component-has-group-marker` runs with a declared marker SET: this root is also a Button, so it renders
+    // two markers by design (`group/fui-menu-button` + `group/fui-button`), and
+    // `assertGroupMarkerIsStamped` rejects more than one with no escape hatch. See the
+    // longer note in ToggleButton.test.tsx.
+    disabledTests: [
+      'make-styles-overrides-win',
+
+      'component-has-static-classnames-object',
+      // Renders another package's root, so it carries that component's marker alongside its
+      // own. `component-has-group-marker` became a default test with the statics removal
+      // (DECISIONS.md D16.6) and asserts EXACTLY ONE marker, which is false here by
+      // construction; the local assertion below keeps its load-bearing `classList[0]` half.
+    ],
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            icon: 'Test Icon',
-            menuIcon: 'Test MenuIcon',
-          },
-          expectedClassNames: {
-            root: menuButtonClassNames.root,
-            icon: menuButtonClassNames.icon,
-          },
-        },
-        {
-          props: {
-            menuIcon: 'Test MenuIcon',
-          },
-          expectedClassNames: {
-            root: menuButtonClassNames.root,
-            menuIcon: menuButtonClassNames.menuIcon,
-          },
-        },
-      ],
+      // a MenuButton IS a Button — `useButtonStyles_unstable` stamps its marker on this same element, so this root
+      // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set
+      // keeps `component-has-group-marker` running: it is an exact set comparison, so an
+      // undeclared marker still fails, and its `classList[0]` half — the D16.2 invariant that
+      // nwsapi's jsdom `:scope` polyfill depends on — is asserted here rather than locally.
+      'has-group-marker': {
+        markers: ['group/fui-button', 'group/fui-menu-button'],
+      },
     },
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   describe('when rendered as a button', () => {

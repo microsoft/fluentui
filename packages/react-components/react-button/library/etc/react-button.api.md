@@ -12,7 +12,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
@@ -23,8 +22,10 @@ export type ButtonBaseProps = DistributiveOmit<ButtonProps, 'appearance' | 'size
 // @public (undocumented)
 export type ButtonBaseState = DistributiveOmit<ButtonState, 'appearance' | 'size' | 'shape'>;
 
-// @public (undocumented)
-export const buttonClassNames: SlotClassNames<ButtonSlots>;
+// @public @deprecated
+export const buttonClassNames: {
+    root: string;
+};
 
 // @internal
 export const ButtonContextProvider: React_2.Provider<ButtonContextValue | undefined>;
@@ -59,8 +60,10 @@ export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProp
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
-// @public (undocumented)
-export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
+// @public @deprecated
+export const compoundButtonClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
@@ -83,8 +86,10 @@ export type MenuButtonBaseProps = ComponentProps<MenuButtonSlots> & Pick<ButtonB
 // @public
 export type MenuButtonBaseState = ComponentState<MenuButtonSlots> & Omit<ButtonBaseState, keyof ButtonSlots | 'components' | 'iconPosition'>;
 
-// @public (undocumented)
-export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
+// @public @deprecated
+export const menuButtonClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
@@ -114,8 +119,10 @@ export const renderSplitButton_unstable: (state: SplitButtonState) => JSXElement
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
-// @public (undocumented)
-export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
+// @public @deprecated
+export const splitButtonClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root' | 'as'> & Omit<MenuButtonProps, 'root' | 'as'>;
@@ -139,8 +146,10 @@ export type ToggleButtonBaseProps = ButtonBaseProps & Pick<ToggleButtonProps, 'd
 // @public (undocumented)
 export type ToggleButtonBaseState = ButtonBaseState & Required<Pick<ToggleButtonProps, 'checked' | 'isAccessible'>>;
 
-// @public (undocumented)
-export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
+// @public @deprecated
+export const toggleButtonClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type ToggleButtonProps = ButtonProps & {

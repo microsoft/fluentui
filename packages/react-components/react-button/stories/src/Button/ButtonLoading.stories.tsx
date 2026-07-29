@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { buttonClassNames, makeStyles, tokens, Button, Spinner } from '@fluentui/react-components';
+import { makeStyles, tokens, Button, Spinner } from '@fluentui/react-components';
 import { CheckmarkFilled } from '@fluentui/react-icons';
 // eslint-disable-next-line @fluentui/no-restricted-imports
 import { useTimeout } from '@fluentui/react-utilities';
@@ -16,10 +16,14 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     cursor: 'default',
     pointerEvents: 'none',
-
-    [`& .${buttonClassNames.icon}`]: {
-      color: tokens.colorStatusSuccessForeground1,
-    },
+  },
+  // There is no public class-name handle on a component's internals — the `icon` slot's
+  // own `className` prop is the supported way to style it. This used to be a
+  // `& .${buttonClassNames.icon}` descendant rule; the icon is only ever rendered in the
+  // same two states that applied `buttonNonInteractive`, so passing the class straight to
+  // the slot selects exactly the same elements.
+  icon: {
+    color: tokens.colorStatusSuccessForeground1,
   },
 });
 
@@ -54,7 +58,7 @@ export const Loading = (): JSXElement => {
       <Button
         className={buttonClassName}
         disabledFocusable={loadingState !== 'initial'}
-        icon={buttonIcon}
+        icon={buttonIcon && { children: buttonIcon, className: styles.icon }}
         onClick={onButtonClick}
       >
         {buttonContent}
