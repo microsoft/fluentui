@@ -1,0 +1,162 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of Flex.tsx:
+ *
+ *   1  flexClassName                → BEM static (JS) — REMOVED (DECISIONS.md D16.1); the
+ *                                     root now leads with `.flex` and carries
+ *                                     `group/fui-flex` second
+ *   2  useFlexStyles.flex           → fui.components.l1
+ *   3  .inline                      → fui.components.l1   (inline)
+ *   4  .column                      → fui.components.l1   (column)
+ *   5  hAlign → alignItems* | justifyContent*             (column ? align : justify)
+ *   6  vAlign → justifyContent* | alignItems*             (column ? justify : align)
+ *   7  space  → justifyContentSpace*
+ *   8  .wrap
+ *   9  .fill
+ *   10 gap    → gapForColumnFlex* | gapForRowFlex*
+ *   11 padding→ paddingMedium
+ *   12 consumer className           → unlayered (always wins)
+ *
+ * ORDER NOTE (a real inversion, and why it is harmless here). Griffel's declaration order in
+ * `useFlexStyles` is flex, inline, column, alignItems*, justifyContent*, wrap, fill, gap*,
+ * padding — i.e. `wrap`/`fill` are declared BEFORE the gaps but consumed at arguments 8/9,
+ * ahead of gap at 10. Argument order and declaration order therefore agree on every pair
+ * that could collide: `display` is set only by `.flex`/`.inline` (3 beats 2, and the blocks
+ * below are in that order), `align-items` only by the alignItems* family, `justify-content`
+ * only by the justifyContent* families, and each gap axis by exactly one slice. `.fill` sets
+ * `width`/`height`, which nothing else here touches. No property is written twice by two
+ * slices that can be applied together, so the file is authored in ARGUMENT order and no
+ * inversion is expressible.
+ *
+ * KNOWN UPSTREAM QUIRK, reproduced verbatim: `classMaps.alignItems.stretch` in Flex.tsx
+ * points at `classes.alignItemsCenter`, not `alignItemsStretch`. `.align-items-stretch`
+ * below is consequently unreachable from the public API today. It is kept because the
+ * conversion is a pure styling change — removing it would be a behaviour decision, and the
+ * `useFlexStyles` map is PUBLIC API (etc/react-migration-v0-v9.api.md) whose key set must
+ * not shrink.
+ */
+
+@layer fui.components.l1 {
+  /* from useFlexStyles.flex */
+  .flex {
+    @apply flex;
+  }
+
+  /* from useFlexStyles.inline */
+  .inline {
+    @apply inline-flex;
+  }
+
+  /* from useFlexStyles.column */
+  .column {
+    @apply flex-col;
+  }
+
+  /* from useFlexStyles.alignItemsFlexStart / …Center / …FlexEnd / …Stretch */
+  .align-items-flex-start {
+    @apply items-start;
+  }
+
+  .align-items-center {
+    @apply items-center;
+  }
+
+  .align-items-flex-end {
+    @apply items-end;
+  }
+
+  .align-items-stretch {
+    @apply items-stretch;
+  }
+
+  /* from useFlexStyles.justifyContentFlexStart / …Center / …FlexEnd / …Stretch */
+  .justify-content-flex-start {
+    @apply justify-start;
+  }
+
+  .justify-content-center {
+    @apply justify-center;
+  }
+
+  .justify-content-flex-end {
+    @apply justify-end;
+  }
+
+  /* Written as a literal declaration rather than a utility: `stretch` is the one value in
+     this family whose utility name is not stable across Tailwind majors, and the compiled
+     Griffel value is unambiguous. */
+  .justify-content-stretch {
+    justify-content: stretch;
+  }
+
+  /* from useFlexStyles.justifyContentSpaceAround / …Between / …Evenly */
+  .justify-content-space-around {
+    @apply justify-around;
+  }
+
+  .justify-content-space-between {
+    @apply justify-between;
+  }
+
+  .justify-content-space-evenly {
+    @apply justify-evenly;
+  }
+
+  /* from useFlexStyles.wrap */
+  .wrap {
+    @apply flex-wrap;
+  }
+
+  /* from useFlexStyles.fill */
+  .fill {
+    @apply h-full w-full;
+  }
+
+  /*
+   * from useFlexStyles.gapForColumnFlex* (row-gap, block axis → `gap-y-` + `vertical-`)
+   * and .gapForRowFlex* (column-gap, inline axis → `gap-x-` + `horizontal-`).
+   *
+   * The v0 gap scale is NOT the Fluent spacing scale: smaller=8px and small=10px land on
+   * steps S and MNudge and take named utilities; medium=15px and large=30px match no step
+   * and take the numeric fallback (D4 amendment — named FIRST, numeric only as fallback).
+   */
+  .gap-for-column-flex-smaller {
+    @apply gap-y-vertical-s;
+  }
+
+  .gap-for-column-flex-small {
+    @apply gap-y-vertical-m-nudge;
+  }
+
+  .gap-for-column-flex-medium {
+    @apply gap-y-15;
+  }
+
+  .gap-for-column-flex-large {
+    @apply gap-y-30;
+  }
+
+  .gap-for-row-flex-smaller {
+    @apply gap-x-horizontal-s;
+  }
+
+  .gap-for-row-flex-small {
+    @apply gap-x-horizontal-m-nudge;
+  }
+
+  .gap-for-row-flex-medium {
+    @apply gap-x-15;
+  }
+
+  .gap-for-row-flex-large {
+    @apply gap-x-30;
+  }
+
+  /* from useFlexStyles.paddingMedium — 10px on all four sides, spacing step MNudge */
+  .padding-medium {
+    @apply p-horizontal-m-nudge;
+  }
+}

@@ -3,12 +3,12 @@
 exports[`ListItem renders a default state 1`] = `
 <div>
   <li
-    class="fui-ListItem"
-    id="listItem_r_6_"
+    class="group/fui-list-item"
+    id="listItem_r_9_"
     role="listitem"
   >
     <div
-      class="fui-ItemLayout"
+      class="group/fui-item-layout"
     >
       <div
         class=""

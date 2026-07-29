@@ -1,0 +1,194 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of StyledText.tsx. Every slice is
+ * one level, and the file is authored in that order because three properties are written by
+ * more than one slice and the LATER argument must win:
+ *
+ *    1 styledTextClassName   → BEM static (JS) — REMOVED (DECISIONS.md D16.1)
+ *    2 sizeStyles[size]      → .base100 … .hero700     (font-size + line-height)
+ *    3 weightStyles[weight]  → .light … .bold          (font-weight)
+ *    4 .nowrap               (wrap === false)
+ *    5 .truncate             (truncate)
+ *    6 .align-center         (align === 'center')
+ *    7 .align-end            (align === 'end')
+ *    8 .align-justify        (align === 'justify')
+ *    9 .mention              (atMention)
+ *   10 .mention-me           (atMention === 'me')      → font-weight 700, color
+ *   11 .disabled             → color
+ *   12 .error                → color
+ *   13 .important            → font-weight 700, color
+ *   14 .success              → color
+ *   15 .temporary            → font-style
+ *   16 .timestamp            → color
+ *   17 consumer className    → unlayered (always wins)
+ *
+ * INVERSION (declared, and corrected here). The Griffel `useStyles` block DECLARES mention,
+ * mentionMe, disabled, error, important, success, temporary, timestamp BEFORE nowrap,
+ * truncate and the three align slices — the reverse of arguments 4–8 vs 9–16. Under Griffel
+ * that was invisible (each property lives in its own atomic and argument order decides). In a
+ * module, file position is the tiebreak, so the blocks below follow ARGUMENT order. It is
+ * behaviour-neutral in this case — {white-space, overflow, text-overflow, text-align} and
+ * {color, font-weight, font-style} are disjoint sets — but authoring it the other way would
+ * bake in a latent inversion the moment either group grew a shared property.
+ *
+ * REAL collisions the order does decide:
+ *   • font-weight: `.mention-me` (10) and `.important` (13) both set 700 and must beat
+ *     `weightStyles[weight]` (3). Both are written after the weight block.
+ *   • color: `.mention` (9) < `.mention-me` (10) < `.disabled` (11) < `.error` (12) <
+ *     `.important` (13) < `.success` (14) < `.timestamp` (16), reproduced exactly.
+ */
+
+@layer fui.components.l1 {
+  /*
+   * Identity-only local. StyledText's root has no unconditional slice of its own — every
+   * class in the composition above is conditional — so this class exists so the root always
+   * emits a selector-safe leading token ahead of the group marker (DECISIONS.md D15.1 /
+   * D16.2). Do not delete because it looks empty.
+   *
+   * The declaration below is load-bearing and is NOT a style. A literally empty `.root {}` DOES
+   * NOT SURVIVE this pipeline: `@tailwindcss/postcss` runs before postcss-modules in the package
+   * build's chain and prunes the empty rule, so the local name never reaches the class map,
+   * `styles.root` is `undefined` at runtime, and the group marker silently lands back at
+   * `classList[0]` — the exact failure this local exists to prevent. Reproduced here on
+   * tailwindcss v4.3.3; react-accordion's Accordion.module.css documents the measurement.
+   * A comment inside the braces does not help; only a declaration does.
+   *
+   * `--fui-styled-text-identity: initial` is the minimal body that survives with zero rendered
+   * effect: a custom property set to `initial` takes the guaranteed-invalid initial value,
+   * exactly equivalent to never having been declared, and nothing reads it.
+   */
+  .root {
+    --fui-styled-text-identity: initial;
+  }
+
+  /* from useSizeStyles.* */
+  .base100 {
+    font-size: var(--fontSizeBase100);
+    line-height: var(--lineHeightBase100);
+  }
+
+  .base200 {
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .base300 {
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .base400 {
+    font-size: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .base500 {
+    font-size: var(--fontSizeBase500);
+    line-height: var(--lineHeightBase500);
+  }
+
+  .base600 {
+    font-size: var(--fontSizeBase600);
+    line-height: var(--lineHeightBase600);
+  }
+
+  .hero700 {
+    font-size: var(--fontSizeHero700);
+    line-height: var(--lineHeightHero700);
+  }
+
+  /* from useWeightStyles.* — raw numeric weights, not the Fluent fontWeight* tokens, so
+     they stay literal (v0 parity). */
+  .light {
+    font-weight: 200;
+  }
+
+  .semilight {
+    font-weight: 300;
+  }
+
+  .regular {
+    font-weight: 400;
+  }
+
+  .medium {
+    font-weight: 500;
+  }
+
+  .semibold {
+    font-weight: 600;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+  /* from useStyles.nowrap */
+  .nowrap {
+    @apply overflow-hidden whitespace-nowrap;
+  }
+
+  /* from useStyles.truncate */
+  .truncate {
+    @apply text-ellipsis;
+  }
+
+  /* from useStyles.alignCenter / alignEnd / alignJustify. `end` and `justify` are already
+     writing-mode-relative; `center` is direction-agnostic. No RTL twin. */
+  .align-center {
+    @apply text-center;
+  }
+
+  .align-end {
+    @apply text-end;
+  }
+
+  .align-justify {
+    @apply text-justify;
+  }
+
+  /* from useStyles.mention */
+  .mention {
+    color: var(--colorBrandForegroundLink);
+  }
+
+  /* from useStyles.mentionMe */
+  .mention-me {
+    color: var(--colorPalettePumpkinBorderActive);
+    font-weight: 700;
+  }
+
+  /* from useStyles.disabled */
+  .disabled {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* from useStyles.error */
+  .error {
+    color: var(--colorPaletteRedForeground3);
+  }
+
+  /* from useStyles.important */
+  .important {
+    color: var(--colorPaletteDarkOrangeForeground3);
+    font-weight: 700;
+  }
+
+  /* from useStyles.success */
+  .success {
+    color: var(--colorPaletteGreenForeground3);
+  }
+
+  /* from useStyles.temporary */
+  .temporary {
+    @apply italic;
+  }
+
+  /* from useStyles.timestamp */
+  .timestamp {
+    color: var(--colorNeutralForeground3);
+  }
+}

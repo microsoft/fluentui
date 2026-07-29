@@ -1,6 +1,6 @@
 'use client';
 
-import { mergeClasses } from '@fluentui/react-components';
+import { clsx } from 'clsx';
 import * as React from 'react';
 
 import { useFlexStyles } from './Flex.styles';
@@ -34,7 +34,16 @@ export interface FlexProps {
   fill?: boolean;
 }
 
-export const flexClassName = 'fui-Flex';
+/**
+ * Public identity class for Flex.
+ *
+ * @deprecated for styling — see `attachmentClassName` in ../Attachment/Attachment.tsx for the
+ * full rationale. Retained as the component's public identity class, the Tailwind named-group
+ * marker (DECISIONS.md D15.1); the BEM static `fui-Flex` it used to hold was removed with
+ * every other static (D16.1). Use `fuiSelector(flexClassName)` from
+ * `@fluentui/react-utilities` at selector sites (D16.5).
+ */
+export const flexClassName = 'group/fui-flex';
 
 export const Flex = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLElement> & FlexProps>((props, ref) => {
   const { children, column, fill, gap, hAlign, inline, padding, space, vAlign, wrap, className, ...rest } = props;
@@ -78,9 +87,14 @@ export const Flex = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLEl
     [classes],
   );
 
-  const flexClasses = mergeClasses(
-    flexClassName,
+  // Unconditional module class FIRST (`classes.flex`), then the named group marker, then the
+  // conditional module classes, with the consumer className last (DECISIONS.md D16.2). The
+  // marker must never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom
+  // (D15.1). Cascade priority is decided by the `@layer fui.*` order in Flex.module.css, not
+  // by the order of these arguments.
+  const flexClasses = clsx(
     classes.flex,
+    'group/fui-flex',
     inline && classes.inline,
     column && classes.column,
     hAlign && (column ? classMaps.alignItems[hAlign] : classMaps.justifyContent[hAlign]),

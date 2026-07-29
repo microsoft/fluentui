@@ -1,0 +1,37 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Primitive has never had any styles — its Griffel-era composition was
+ * `mergeClasses(primitiveClassName, props.className)`, a static plus the consumer string.
+ *
+ * The static is gone (DECISIONS.md D16.1) and `group/fui-primitive` takes over as the
+ * component's public identity class, which is what creates the need for this file: the
+ * marker must never be `classList[0]` (D15.1 — nwsapi's `:scope` polyfill builds its anchor
+ * from `escape(element.classList[0])` and the `/` survives escaping, throwing a render-time
+ * AggregateError under jsdom). A conditional class is not a lead token, and Primitive has no
+ * class at all, so the cookbook's identity-only local is the mandated shape (D16.2; same
+ * treatment as Accordion, Breadcrumb, CounterBadge, Skeleton).
+ */
+
+@layer fui.components.l1 {
+  /*
+   * Identity-only local — see the file header. Do not delete because it looks empty.
+   *
+   * The declaration below is load-bearing and is NOT a style. A literally empty `.root {}` DOES
+   * NOT SURVIVE this pipeline: `@tailwindcss/postcss` runs before postcss-modules in the package
+   * build's chain and prunes the empty rule, so the local name never reaches the class map,
+   * `styles.root` is `undefined` at runtime, and the group marker silently lands back at
+   * `classList[0]` — the exact failure this local exists to prevent. Reproduced here on
+   * tailwindcss v4.3.3; react-accordion's Accordion.module.css documents the measurement.
+   * A comment inside the braces does not help; only a declaration does.
+   *
+   * `--fui-primitive-identity: initial` is the minimal body that survives with zero rendered
+   * effect: a custom property set to `initial` takes the guaranteed-invalid initial value,
+   * exactly equivalent to never having been declared, and nothing reads it.
+   */
+  .root {
+    --fui-primitive-identity: initial;
+  }
+}

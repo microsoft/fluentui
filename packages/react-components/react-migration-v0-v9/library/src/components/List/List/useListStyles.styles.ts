@@ -1,53 +1,66 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
-import type { ListSlots, ListState } from './List.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const listClassNames: SlotClassNames<ListSlots> = {
-  root: 'fui-List',
-};
+import { clsx } from 'clsx';
+import type { ListState } from './List.types';
 
-const useRootBaseStyles = makeResetStyles({
-  padding: 0,
-  margin: 0,
-  textIndent: 0,
-  listStyleType: 'none',
-});
+import styles from './List.module.css';
 
 /**
- * Styles for the root slot
+ * Public identity class for this package's v0-migration List.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The BEM static `fui-List` it used to hold was removed with every
+ * other static (D16.1), and the type narrows from `SlotClassNames<ListSlots>` to
+ * `{ root: string }` accordingly (statics-removal-design.md §3, option C).
+ *
+ * ⚠ The marker `group/fui-list` is ALSO stamped by `@fluentui/react-list`'s unrelated List.
+ * That collision is inherited, not introduced: both packages published the static `fui-List`
+ * before this conversion (statics-removal-design.md §1g). It has no CSS effect today —
+ * neither package authors a `group-<variant>/fui-list` rule — but a selector built from either
+ * package's constant matches both components. See List.module.css.
+ *
+ * The `/` is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + listClassNames.root` is an invalid selector. Use `fuiSelector(listClassNames.root)`
+ * from `@fluentui/react-utilities` at every selector site (D16.5).
  */
-const useStyles = makeStyles({
-  rootHorizontal: {
-    display: 'flex',
-  },
-
-  rootGrid: {
-    display: 'grid',
-  },
-});
+export const listClassNames: { root: string } = {
+  root: 'group/fui-list',
+};
 
 /**
  * Apply styling to the List slots based on the state
  */
 export const useListStyles_unstable = (state: ListState): ListState => {
-  const rootStyles = useRootBaseStyles();
-  const styles = useStyles();
-
   const layoutToStyles = {
-    ['horizontal']: styles.rootHorizontal,
-    ['grid']: styles.rootGrid,
+    ['horizontal']: styles['root-horizontal'],
+    ['grid']: styles['root-grid'],
     ['vertical']: undefined, // no extra styles needed, keep it in for completeness and type safety
   };
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    listClassNames.root,
-    rootStyles,
-    layoutToStyles[state.layout],
-    state.root.className,
-  );
+  // Unconditional module class FIRST, then the named group marker, then the conditional
+  // module class, with the consumer className last (DECISIONS.md D16.2). The marker must
+  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom (D15.1) —
+  // and `styles.root` is the token that guarantees it, since clsx never drops an
+  // unconditional argument. Cascade priority is decided by the `@layer fui.*` order in
+  // List.module.css, not by the order of these arguments.
+  //
+  // The state-mutation pattern is kept deliberately during conversion (DECISIONS.md D14).
+  state.root.className = clsx(styles.root, 'group/fui-list', layoutToStyles[state.layout], state.root.className);
 
   return state;
 };

@@ -20,7 +20,6 @@ import type { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-components';
 import type { Slot as Slot_2 } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Attachment: React_2.ForwardRefExoticComponent<AttachmentProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -28,8 +27,8 @@ export const Attachment: React_2.ForwardRefExoticComponent<AttachmentProps & Rea
 // @public (undocumented)
 export const AttachmentAction: React_2.ForwardRefExoticComponent<ButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
 
-// @public (undocumented)
-export const attachmentActionClassName = "fui-AttachmentAction";
+// @public @deprecated
+export const attachmentActionClassName = "group/fui-attachment-action";
 
 // @public (undocumented)
 export type AttachmentActionProps = ButtonProps;
@@ -37,21 +36,21 @@ export type AttachmentActionProps = ButtonProps;
 // @public (undocumented)
 export const AttachmentBody: React_2.FC<AttachmentBodyProps>;
 
-// @public (undocumented)
-export const attachmentBodyClassName = "fui-AttachmentBody";
+// @public @deprecated
+export const attachmentBodyClassName = "group/fui-attachment-body";
 
 // @public (undocumented)
 export interface AttachmentBodyProps extends React_2.HTMLAttributes<HTMLDivElement> {
 }
 
-// @public (undocumented)
-export const attachmentClassName = "fui-Attachment";
+// @public @deprecated
+export const attachmentClassName = "group/fui-attachment";
 
 // @public (undocumented)
 export const AttachmentDescription: React_2.FC<AttachmentDescriptionProps>;
 
-// @public (undocumented)
-export const attachmentDescriptionClassName = "fui-AttachmentDescription";
+// @public @deprecated
+export const attachmentDescriptionClassName = "group/fui-attachment-description";
 
 // @public (undocumented)
 export interface AttachmentDescriptionProps extends React_2.HTMLAttributes<HTMLSpanElement> {
@@ -60,8 +59,8 @@ export interface AttachmentDescriptionProps extends React_2.HTMLAttributes<HTMLS
 // @public (undocumented)
 export const AttachmentHeader: React_2.FC<AttachmentHeaderProps>;
 
-// @public (undocumented)
-export const attachmentHeaderClassName = "fui-AttachmentHeader";
+// @public @deprecated
+export const attachmentHeaderClassName = "group/fui-attachment-header";
 
 // @public (undocumented)
 export interface AttachmentHeaderProps extends React_2.HTMLAttributes<HTMLSpanElement> {
@@ -70,18 +69,12 @@ export interface AttachmentHeaderProps extends React_2.HTMLAttributes<HTMLSpanEl
 // @public (undocumented)
 export const AttachmentIcon: React_2.FC<AttachmentIconProps>;
 
-// @public (undocumented)
-export const attachmentIconClassName = "fui-AttachmentIcon";
+// @public @deprecated
+export const attachmentIconClassName = "group/fui-attachment-icon";
 
 // @public (undocumented)
 export interface AttachmentIconProps extends React_2.HTMLAttributes<HTMLSpanElement> {
 }
-
-// @public (undocumented)
-export const attachmentProgressBarClassName = "fui-Attachment__progress";
-
-// @public (undocumented)
-export const attachmentProgressContainerClassName = "fui-Attachment__progress-container";
 
 // @public (undocumented)
 export interface AttachmentProps extends React_2.HTMLAttributes<HTMLElement> {
@@ -98,8 +91,8 @@ export interface AttachmentProps extends React_2.HTMLAttributes<HTMLElement> {
 // @public (undocumented)
 export const Flex: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & FlexProps & React_2.RefAttributes<HTMLDivElement>>;
 
-// @public (undocumented)
-export const flexClassName = "fui-Flex";
+// @public @deprecated
+export const flexClassName = "group/fui-flex";
 
 // @public (undocumented)
 export const flexItem: {
@@ -131,8 +124,8 @@ export const grid: {
     rows: (template: string) => GriffelStyle;
 };
 
-// @public (undocumented)
-export const gridClassName = "fui-Grid";
+// @public @deprecated
+export const gridClassName = "group/fui-grid-shim";
 
 // @public (undocumented)
 export const GridShim: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & GridShimProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -158,20 +151,24 @@ export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots,
     children?: any;
 }, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
-// @public (undocumented)
-export const itemLayoutClassName = "fui-ItemLayout";
+// @public @deprecated
+export const itemLayoutClassName = "group/fui-item-layout";
 
 // @public (undocumented)
 export const List: ForwardRefComponent<ListProps>;
 
-// @public (undocumented)
-export const listClassNames: SlotClassNames<ListSlots>;
+// @public @deprecated
+export const listClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const ListItem: ForwardRefComponent<ListItemProps>;
 
-// @public (undocumented)
-export const listItemClassNames: SlotClassNames<ListItemSlots>;
+// @public @deprecated
+export const listItemClassNames: {
+    root: string;
+};
 
 // @public
 export type ListItemProps = ComponentProps_2<ListItemSlots> & {
@@ -226,8 +223,8 @@ export type ListState = ComponentState<ListSlots> & Required<Pick<ListProps, 'la
 // @public (undocumented)
 export const Primitive: PrimitiveComponent;
 
-// @public (undocumented)
-export const primitiveClassName = "fui-Primitive";
+// @public @deprecated
+export const primitiveClassName = "group/fui-primitive";
 
 // @public
 export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSXElement;
@@ -252,8 +249,8 @@ export const spinner: {
 // @public (undocumented)
 export const StyledText: React_2.ForwardRefExoticComponent<StyledTextProps & React_2.RefAttributes<HTMLSpanElement>>;
 
-// @public (undocumented)
-export const styledTextClassName = "fui-StyledText";
+// @public @deprecated
+export const styledTextClassName = "group/fui-styled-text";
 
 // @public (undocumented)
 export type StyledTextProps = ComponentProps<StyledTextSlots> & {
@@ -276,13 +273,13 @@ export type StyledTextSlots = {
     root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre' | 'time'>;
 };
 
-// @public (undocumented)
+// @public
 export const useFlexStyles: () => Record<"flex" | "fill" | "inline" | "column" | "wrap" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
 
-// @public (undocumented)
+// @public
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;
 
-// @public (undocumented)
+// @public
 export const useItemLayoutStyles: () => Record<"root" | "header" | "contentMedia" | "contentWrapper" | "headerMedia" | "startMedia" | "endMedia", string>;
 
 // @public
@@ -318,8 +315,8 @@ export const v9Icon: () => GriffelStyle;
 // @public (undocumented)
 export const Video: React_2.ForwardRefExoticComponent<VideoProps & React_2.RefAttributes<HTMLVideoElement>>;
 
-// @public (undocumented)
-export const videoClassName = "fui-Video";
+// @public @deprecated
+export const videoClassName = "group/fui-video";
 
 // @public
 export interface VideoProps extends React_2.VideoHTMLAttributes<HTMLVideoElement> {

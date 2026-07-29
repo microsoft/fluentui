@@ -1,0 +1,94 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useListItemStyles_unstable:
+ *
+ *   root slot
+ *     1 listItemClassNames.root → BEM static (JS) — REMOVED (DECISIONS.md D16.1); the root
+ *                                 now leads with `.root` and carries `group/fui-list-item`
+ *                                 second
+ *     2 useRootBaseStyles       → @layer fui.base   (makeResetStyles + focus indicator)
+ *     3 .rootClickable          → fui.components.l1   (selectable || navigable)
+ *     4 .rootSelected           → fui.components.l1   (selected)
+ *     5 consumer className      → unlayered
+ *
+ *   header slot
+ *     1 .truncate               → fui.components.l2   (truncateHeader)
+ *     2 consumer className      → unlayered
+ *
+ *   contentWrapper slot
+ *     1 .contentWrapper             → fui.components.l2
+ *     2 .truncate                   → fui.components.l2   (truncateContent)
+ *     3 .contentWrapperWithoutMedia → fui.components.l2   (!contentMedia)
+ *     4 consumer className          → unlayered
+ *
+ * ALTITUDE — why `header` / `contentWrapper` are l2 and the root is not (D2 amendment 2).
+ * `renderListItem_unstable` hands those two slot objects straight to `<ItemLayout>`, whose
+ * own hook then composes them as `mergeClasses(itemLayoutStyles.<slot>, <this string>)`.
+ * They land on elements whose base styles come from ANOTHER component's hook, and one of
+ * them genuinely overrides it: `.content-wrapper-without-media` sets `grid-column-end: 4`
+ * against ItemLayout's `.content-wrapper` `grid-column-end: 3`. At l1 that override would be
+ * decided by stylesheet load order between two sibling modules; at l2 it is decided by the
+ * layer system. This is the M2 mechanism from D16.3 — the coupling is JS slot composition,
+ * not a selector, so no public class-name handle is involved.
+ *
+ * MARKER-NAMESPACE COLLISION: `group/fui-list-item` is also stamped by the converted
+ * `@fluentui/react-list`. Same inherited situation as List.module.css — see the note there.
+ */
+
+@layer fui.base {
+  /* from useRootBaseStyles (makeResetStyles) */
+  .root {
+    /* `padding: '0 10px'` — block 0, inline 10px (spacing step MNudge). Symmetric on the
+       inline axis, so the logical utilities are a straight substitution. */
+    @apply list-none py-vertical-none px-horizontal-m-nudge;
+
+    margin: 0;
+    text-indent: 0;
+
+    /* from createCustomFocusIndicatorStyle(…, { selector: 'focus' }) — the keyborg
+       attribute, never the native :focus-visible (CONVERSION_GUIDE §2 pseudo-states). */
+    @variant focus-visible-fui {
+      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.rootClickable */
+  .root-clickable {
+    @apply cursor-pointer;
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground1Hover);
+    }
+  }
+
+  /* from useStyles.rootSelected */
+  .root-selected {
+    background-color: var(--colorNeutralBackground1Selected);
+  }
+}
+
+@layer fui.components.l2 {
+  /* from useStyles.contentWrapper — applied over ItemLayout's `.content-wrapper` */
+  .content-wrapper {
+    font-size: var(--fontSizeBase200);
+  }
+
+  /* from useStyles.truncate — applied over ItemLayout's `.header` and `.content-wrapper` */
+  .truncate {
+    @apply overflow-hidden text-ellipsis;
+
+    text-wrap: nowrap;
+  }
+
+  /* from useStyles.contentWrapperWithoutMedia — "the content should go all the way to the
+     end if the content media is not present". This is the override that forces l2. */
+  .content-wrapper-without-media {
+    grid-column-end: 4;
+  }
+}

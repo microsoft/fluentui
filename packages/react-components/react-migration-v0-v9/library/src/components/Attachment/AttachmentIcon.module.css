@@ -1,0 +1,32 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of AttachmentIcon.tsx:
+ *
+ *   1 attachmentIconClassName        → BEM static (JS) — REMOVED (DECISIONS.md D16.1)
+ *   2 useAttachmentIconStyles.root   → fui.components.l1
+ *   3 consumer className             → unlayered (always wins)
+ *
+ * The `& svg` descendant rule stays LAYERED. The D2-amendment "unlayered over external"
+ * carve-out exists because `@fluentui/react-icons` injects UNLAYERED Griffel atomics onto
+ * the glyph, and a layered rule can never beat them on a property they both set. They do
+ * not both set one here: react-icons' icon class carries only `display: inline` +
+ * `line-height: 0` (`useIconStyles.styles.js`) and bundleIcon's pair toggles only
+ * `display` (`bundleIcon.styles.js`), while this rule sets `height` / `width`. Disjoint
+ * property sets, so nothing unlayered competes and the layer is correct.
+ */
+
+@layer fui.components.l1 {
+  /* from useAttachmentIconStyles.root */
+  .root {
+    /* `marginRight` is RTL-flippable → logical, and 12px is spacing step M on the inline
+       axis, so it takes the NAMED utility (CONVERSION_GUIDE §2, D4 amendment). */
+    @apply inline-flex h-32 w-32 items-center justify-center me-horizontal-m;
+
+    & svg {
+      @apply h-full w-full;
+    }
+  }
+}

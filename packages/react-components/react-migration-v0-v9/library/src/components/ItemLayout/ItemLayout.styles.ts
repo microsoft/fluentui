@@ -1,63 +1,46 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles } from '@fluentui/react-components';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const useItemLayoutStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr auto auto',
-    minHeight: '48px',
-  },
-  contentMedia: {
-    alignSelf: 'start',
-    gridColumnStart: 3,
-    gridColumnEnd: 4,
-    gridRowStart: 2,
-    gridRowEnd: 3,
-    fontSize: '12px',
-    lineHeight: 1.3333,
-  },
-  contentWrapper: {
-    alignSelf: 'start',
-    gridColumnStart: 2,
-    gridColumnEnd: 3,
-    gridRowStart: 2,
-    gridRowEnd: 3,
-    marginRight: '8px',
-    fontSize: '12px',
-    lineHeight: 1.3333,
-  },
-  header: {
-    alignSelf: 'end',
-    gridColumnStart: 2,
-    gridColumnEnd: 3,
-    gridRowStart: 1,
-    gridRowEnd: 2,
-    fontSize: '14px',
-    marginRight: '8px',
-  },
-  headerMedia: {
-    alignSelf: 'end',
-    gridColumnStart: 3,
-    gridColumnEnd: 4,
-    gridRowStart: 1,
-    gridRowEnd: 2,
-    fontSize: '12px',
-    lineHeight: 1.3333,
-  },
-  startMedia: {
-    alignSelf: 'center',
-    gridColumnStart: 1,
-    gridColumnEnd: 2,
-    gridRowStart: 1,
-    gridRowEnd: 3,
-    marginRight: '8px',
-  },
-  endMedia: {
-    alignSelf: 'center',
-    gridColumnStart: 4,
-    gridColumnEnd: 5,
-    gridRowStart: 1,
-    gridRowEnd: 3,
-  },
-});
+import styles from './ItemLayout.module.css';
+
+/*
+ * The key set of the exported style maps is PUBLIC API — `useFlexStyles` / `useGridStyles` /
+ * `useItemLayoutStyles` are exported from the package root and their unions are recorded in
+ * `etc/react-migration-v0-v9.api.md`. The union is therefore spelled INLINE on each exported
+ * signature rather than behind a local alias: a local alias would appear in the api report as
+ * an unresolved name and hide the very key set the report exists to pin. The camelCase keys
+ * survive the conversion verbatim even though the module-local class names they point at are
+ * lowercase-kebab (DECISIONS.md D15.2).
+ */
+
+const itemLayoutStyles = {
+  root: styles.root,
+  contentMedia: styles['content-media'],
+  contentWrapper: styles['content-wrapper'],
+  header: styles.header,
+  headerMedia: styles['header-media'],
+  startMedia: styles['start-media'],
+  endMedia: styles['end-media'],
+};
+
+/**
+ * The class map for ItemLayout. Kept as a callable with the `use` prefix because that is its
+ * public shape; it is no longer a React hook and the object it returns is a stable module
+ * constant.
+ */
+export const useItemLayoutStyles = (): Record<
+  'root' | 'header' | 'contentMedia' | 'contentWrapper' | 'headerMedia' | 'startMedia' | 'endMedia',
+  string
+> => itemLayoutStyles;

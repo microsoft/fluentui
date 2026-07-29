@@ -5,8 +5,9 @@
 
 import * as React from 'react';
 import type { Slot, ComponentProps } from '@fluentui/react-components';
-import { getIntrinsicElementProps, mergeClasses, slot } from '@fluentui/react-components';
-import { useSizeStyles, useStyles, useWeightStyles } from './StyledText.styles';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-components';
+import { clsx } from 'clsx';
+import { styledTextRootClassName, useSizeStyles, useStyles, useWeightStyles } from './StyledText.styles';
 
 export type StyledTextSlots = {
   root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre' | 'time'>;
@@ -91,7 +92,16 @@ export type StyledTextProps = ComponentProps<StyledTextSlots> & {
   wrap?: boolean;
 };
 
-export const styledTextClassName = 'fui-StyledText';
+/**
+ * Public identity class for StyledText.
+ *
+ * @deprecated for styling — see `attachmentClassName` in ../Attachment/Attachment.tsx for the
+ * full rationale. Retained as the component's public identity class, the Tailwind named-group
+ * marker (DECISIONS.md D15.1); the BEM static `fui-StyledText` it used to hold was removed
+ * with every other static (D16.1). Use `fuiSelector(styledTextClassName)` from
+ * `@fluentui/react-utilities` at selector sites (D16.5).
+ */
+export const styledTextClassName = 'group/fui-styled-text';
 
 const sizeMap: Record<string, 'base100' | 'base200' | 'base300' | 'base400' | 'base500' | 'base600' | 'hero700'> = {
   '100': 'base100',
@@ -138,8 +148,15 @@ export const StyledText = React.forwardRef<HTMLSpanElement, StyledTextProps>((pr
       ref,
       ...props,
       dir,
-      className: mergeClasses(
-        styledTextClassName,
+      // Identity-only module class FIRST, marker second, conditional module classes next,
+      // consumer className last (DECISIONS.md D16.2). EVERY styling class below is
+      // conditional, so `styledTextRootClassName` is the empty local minted to keep the
+      // marker off `classList[0]` — nwsapi's `:scope` polyfill throws on a leading
+      // `group/…` token under jsdom (D15.1). Cascade priority is decided by the
+      // `@layer fui.*` order in StyledText.module.css, not by the order of these arguments.
+      className: clsx(
+        styledTextRootClassName,
+        'group/fui-styled-text',
         size && sizeStyles[size],
         weight && weightStyles[weight],
         wrap === false && styles.nowrap,

@@ -4,7 +4,7 @@
 'use client';
 
 import * as React from 'react';
-import { mergeClasses } from '@fluentui/react-components';
+import { clsx } from 'clsx';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps, slot, assertSlots } from '@fluentui/react-utilities';
 
@@ -27,7 +27,16 @@ type ItemLayoutProps = ComponentProps<ItemLayoutSlots>;
 
 type ItemLayoutState = ComponentState<ItemLayoutSlots>;
 
-export const itemLayoutClassName = 'fui-ItemLayout';
+/**
+ * Public identity class for ItemLayout.
+ *
+ * @deprecated for styling — see `attachmentClassName` in ../Attachment/Attachment.tsx for the
+ * full rationale. Retained as the component's public identity class, the Tailwind named-group
+ * marker (DECISIONS.md D15.1); the BEM static `fui-ItemLayout` it used to hold was removed
+ * with every other static (D16.1). Use `fuiSelector(itemLayoutClassName)` from
+ * `@fluentui/react-utilities` at selector sites (D16.5).
+ */
+export const itemLayoutClassName = 'group/fui-item-layout';
 
 export const ItemLayout = React.forwardRef<HTMLDivElement, ItemLayoutProps>((props, ref) => {
   const state: ItemLayoutState = {
@@ -50,29 +59,33 @@ export const ItemLayout = React.forwardRef<HTMLDivElement, ItemLayoutProps>((pro
   };
   const styles = useItemLayoutStyles();
 
-  state.root.className = mergeClasses(itemLayoutClassName, styles.root, state.root.className);
+  // Unconditional module class FIRST, marker second, consumer className last (DECISIONS.md
+  // D16.2). The marker must never be `classList[0]` — nwsapi's `:scope` polyfill throws on
+  // it under jsdom (D15.1). Cascade priority is decided by the `@layer fui.*` order in
+  // ItemLayout.module.css, not by the order of these arguments.
+  state.root.className = clsx(styles.root, 'group/fui-item-layout', state.root.className);
   if (state.contentWrapper) {
-    state.contentWrapper.className = mergeClasses(styles.contentWrapper, state.contentWrapper.className);
+    state.contentWrapper.className = clsx(styles.contentWrapper, state.contentWrapper.className);
   }
 
   if (state.contentMedia) {
-    state.contentMedia.className = mergeClasses(styles.contentMedia, state.contentMedia.className);
+    state.contentMedia.className = clsx(styles.contentMedia, state.contentMedia.className);
   }
 
   if (state.header) {
-    state.header.className = mergeClasses(styles.header, state.header.className);
+    state.header.className = clsx(styles.header, state.header.className);
   }
 
   if (state.headerMedia) {
-    state.headerMedia.className = mergeClasses(styles.headerMedia, state.headerMedia.className);
+    state.headerMedia.className = clsx(styles.headerMedia, state.headerMedia.className);
   }
 
   if (state.startMedia) {
-    state.startMedia.className = mergeClasses(styles.startMedia, state.startMedia.className);
+    state.startMedia.className = clsx(styles.startMedia, state.startMedia.className);
   }
 
   if (state.endMedia) {
-    state.endMedia.className = mergeClasses(styles.endMedia, state.endMedia.className);
+    state.endMedia.className = clsx(styles.endMedia, state.endMedia.className);
   }
 
   assertSlots<ItemLayoutSlots>(state);

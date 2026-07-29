@@ -1,10 +1,20 @@
 'use client';
 
-import { mergeClasses, useMergedRefs } from '@fluentui/react-components';
+import { useMergedRefs } from '@fluentui/react-components';
+import { clsx } from 'clsx';
 import * as React from 'react';
 import { useVideoStyles } from './Video.styles';
 
-export const videoClassName = 'fui-Video';
+/**
+ * Public identity class for Video.
+ *
+ * @deprecated for styling — see `attachmentClassName` in ../Attachment/Attachment.tsx for the
+ * full rationale. Retained as the component's public identity class, the Tailwind named-group
+ * marker (DECISIONS.md D15.1); the BEM static `fui-Video` it used to hold was removed with
+ * every other static (D16.1). Use `fuiSelector(videoClassName)` from
+ * `@fluentui/react-utilities` at selector sites (D16.5).
+ */
+export const videoClassName = 'group/fui-video';
 
 /**
  * Video component props
@@ -69,11 +79,16 @@ export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref)
     }
   }, [muted]);
 
+  // Unconditional module class FIRST, marker second, consumer className last (DECISIONS.md
+  // D16.2). The marker must never be `classList[0]` — nwsapi's `:scope` polyfill throws on
+  // it under jsdom (D15.1).
+  const videoClasses = clsx(classes.root, 'group/fui-video', className);
+
   return (
     <video
       ref={useMergedRefs(ref, videoRef) as React.Ref<HTMLVideoElement>}
       role="application"
-      className={mergeClasses(videoClassName, classes.root, className)}
+      className={videoClasses}
       controls={true}
       autoPlay={false}
       muted={muted}

@@ -1,18 +1,33 @@
+/*
+ * The `*ClassName` / `*ClassNames` exports below are all `@deprecated` FOR STYLING: each one
+ * now holds the component's Tailwind named-group marker instead of the BEM static it used to
+ * hold (DECISIONS.md D16.1 / D16.5). Re-exporting them is the whole point of retaining them —
+ * the deprecation is a message to CONSUMERS, not a signal that this barrel should stop
+ * forwarding — so every such line carries the documented suppression. Same shape as
+ * react-divider's `src/index.ts`.
+ */
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { GridShim, grid, gridClassName, useGridStyles } from './components/Grid/index';
 export type { GridShimProps } from './components/Grid/index';
 export { FormFieldShim } from './components/FormField';
 export { Segment } from './components/Segment';
 export { slider } from './components/Slider';
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { Video, videoClassName } from './components/Video';
 export { type VideoProps } from './components/Video';
 export { input } from './components/Input';
 export { v0Icon, v9CustomSizeIcon, v9DisabledCursor, v9HoverClasses, v9Icon } from './components/Button';
 export { spinner } from './components/Spinner';
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { StyledText, styledTextClassName } from './components/StyledText';
 export type { StyledTextProps, StyledTextSlots } from './components/StyledText';
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { Primitive, primitiveClassName } from './components/Primitive';
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { ItemLayout, itemLayoutClassName, useItemLayoutStyles } from './components/ItemLayout';
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { Flex, flexClassName, flexItem, useFlexStyles } from './components/Flex';
+/* eslint-disable @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity classes is the point. */
 export {
   List,
   ListItem,
@@ -26,7 +41,16 @@ export {
   useListStyles_unstable,
   useList_unstable,
 } from './components/List';
+/* eslint-enable @typescript-eslint/no-deprecated */
 export type { ListItemProps, ListItemSlots, ListItemState, ListProps, ListSlots, ListState } from './components/List';
+/*
+ * `attachmentProgressBarClassName` and `attachmentProgressContainerClassName` are gone. They
+ * named `fui-Attachment__progress` / `…__progress-container`, i.e. BEM statics on Attachment's
+ * INTERNALS, and D16 leaves no public class-name handle on a component's internals. Deleting
+ * the exports rather than repointing them makes a stale consumer fail at build time instead of
+ * silently selecting nothing (statics-removal-design.md §3, option C).
+ */
+/* eslint-disable @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity classes is the point. */
 export {
   Attachment,
   AttachmentAction,
@@ -40,9 +64,8 @@ export {
   attachmentDescriptionClassName,
   attachmentHeaderClassName,
   attachmentIconClassName,
-  attachmentProgressBarClassName,
-  attachmentProgressContainerClassName,
 } from './components/Attachment';
+/* eslint-enable @typescript-eslint/no-deprecated */
 
 export type {
   AttachmentProps,

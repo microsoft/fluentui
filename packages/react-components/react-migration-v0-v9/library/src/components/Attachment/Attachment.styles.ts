@@ -1,63 +1,41 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { createCustomFocusIndicatorStyle, makeResetStyles, makeStyles, tokens } from '@fluentui/react-components';
-import { attachmentActionClassName } from './AttachmentAction';
-import { attachmentIconClassName } from './AttachmentIcon';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const useAttachmentBaseStyles = makeResetStyles({
-  ...createCustomFocusIndicatorStyle(
-    {
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
-      backgroundColor: undefined,
-      color: undefined,
-      [`& .${attachmentActionClassName}`]: {
-        color: undefined,
-      },
+import styles from './Attachment.module.css';
 
-      [`& .${attachmentIconClassName}`]: {
-        color: undefined,
-      },
-    },
-    { selector: 'focus' },
-  ),
-  position: 'relative',
-  display: 'inline-flex',
-  alignItems: 'center',
-  width: '100%',
-  maxWidth: '424px',
-  minHeight: '32px',
-  padding: '7px 3px 7px 11px',
-  marginBottom: '2px',
-  marginRight: '2px',
-  backgroundColor: tokens.colorNeutralBackground6,
-  color: tokens.colorNeutralForeground1,
-  boxShadow: `0 .2rem .4rem -.075rem ${tokens.colorNeutralShadowAmbient}`,
-  border: `1px solid ${tokens.colorNeutralStroke3}`,
-  borderRadius: '4px',
-});
+/**
+ * Replaces the `makeResetStyles` base class. The declarations moved to
+ * `Attachment.module.css` at `@layer fui.base` — the layer equivalent of Griffel's reset
+ * bucket: levelless, so it loses to every `fui.components.l*` rule.
+ *
+ * The `createCustomFocusIndicatorStyle` spread that used to select
+ * `attachmentActionClassName` / `attachmentIconClassName` is gone with the statics; it set
+ * only `color: undefined` on those descendants and therefore emitted nothing. See the module
+ * header for the full accounting.
+ */
+export const useAttachmentBaseStyles = (): string => styles.root;
 
-export const useAttachmentStyles = makeStyles({
-  actionable: {
-    cursor: 'pointer',
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground4Hover,
-    },
-  },
-  progressContainer: {
-    borderBottomLeftRadius: '4px',
-    borderBottomRightRadius: '4px',
-    bottom: 0,
-    height: '4px',
-    left: 0,
-    overflow: 'hidden',
-    position: 'absolute',
-    right: 0,
-  },
-  progressBar: {
-    backgroundColor: tokens.colorPaletteLightGreenBackground3,
-    height: '100%',
-    maxWidth: '100%',
-    transition: 'width 0.2s',
-  },
-});
+/**
+ * Replaces the `makeStyles` slices. Hoisted to a module constant so the identity is stable
+ * across renders — `Attachment.tsx` reads it in the render body, and Griffel's hook returned
+ * a stable object too.
+ */
+const attachmentStyles = {
+  actionable: styles.actionable,
+  progressContainer: styles['progress-container'],
+  progressBar: styles['progress-bar'],
+};
+
+export const useAttachmentStyles = (): typeof attachmentStyles => attachmentStyles;

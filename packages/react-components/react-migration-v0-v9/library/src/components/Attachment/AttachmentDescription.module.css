@@ -1,0 +1,23 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of AttachmentDescription.tsx:
+ *
+ *   1 attachmentDescriptionClassName        → BEM static (JS) — REMOVED (DECISIONS.md D16.1)
+ *   2 useAttachmentDescriptionStyles.root   → fui.components.l1
+ *   3 consumer className                    → unlayered (always wins)
+ */
+
+@layer fui.components.l1 {
+  /* from useAttachmentDescriptionStyles.root */
+  .root {
+    @apply block;
+
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    /* unitless ratio, not a length — no base-scale product */
+    line-height: 1;
+  }
+}

@@ -1,0 +1,103 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5), so this is
+ * safe to repeat and makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of Attachment.tsx:
+ *
+ *   root slot
+ *     1 attachmentClassName          → BEM static (JS) — REMOVED in the statics sweep
+ *                                      (DECISIONS.md D16.1). The root now leads with
+ *                                      `.root` and carries `group/fui-attachment` second.
+ *     2 useAttachmentBaseStyles      → @layer fui.base   (makeResetStyles)
+ *     3 useAttachmentStyles.actionable → @layer fui.components.l1
+ *     4 consumer className           → unlayered (always wins)
+ *
+ *   progress-container slot
+ *     1 attachmentProgressContainerClassName → static, REMOVED (sub-slot: D16 leaves no
+ *                                              public class-name handle on internals)
+ *     2 useAttachmentStyles.progressContainer → @layer fui.components.l1
+ *
+ *   progress-bar slot
+ *     1 useAttachmentStyles.progressBar     → @layer fui.components.l1
+ *     2 attachmentProgressBarClassName      → static, REMOVED
+ *     (the runtime `style={{ width: `${progress}%` }}` in Attachment.tsx:47 is a plain
+ *      React inline style and is untouched by this conversion — specials-triage §3 A6)
+ *
+ * FOCUS INDICATOR — what did NOT survive, and why.
+ * `useAttachmentBaseStyles` spreads `createCustomFocusIndicatorStyle({…}, {selector:'focus'})`,
+ * which is `{ '&[data-fui-focus-visible]': style }`. Five of that style's seven entries have
+ * the value `undefined`: `backgroundColor`, `color`, and the two nested
+ * `` [`& .${attachmentActionClassName}`] `` / `` [`& .${attachmentIconClassName}`] `` blocks whose
+ * only entry is `color: undefined`. Griffel's `resolveStyleRules` bails on `value == null`
+ * (@griffel/core `runtime/resolveStyleRules.js`, `if (value == null) continue`), so those five
+ * emitted NOTHING. Transcribing them would ADD rules the Griffel build never shipped — and the
+ * two nested ones would additionally have needed the D16.3/M1 marker rewrite, since both target
+ * another component's root. Only `outline` and `border-radius` below are real.
+ */
+
+@layer fui.base {
+  /* from useAttachmentBaseStyles (makeResetStyles) */
+  .root {
+    @apply relative inline-flex w-full max-w-424 min-h-32 items-center pt-7 pe-3 pb-7 ps-11 mb-2 me-2;
+
+    background-color: var(--colorNeutralBackground6);
+    color: var(--colorNeutralForeground1);
+    box-shadow: 0 0.2rem 0.4rem -0.075rem var(--colorNeutralShadowAmbient);
+
+    /* Raw px literals, not `strokeWidthThin` / a radius token — written as the base-scale
+       product a numeric utility would emit, so they scale with every other length
+       (CONVERSION_GUIDE §2 "Pixel literals"; precedent: CarouselNavButton.module.css). */
+    border: calc(1px * var(--base-scale)) solid var(--colorNeutralStroke3);
+    border-radius: calc(4px * var(--base-scale));
+
+    /* from createCustomFocusIndicatorStyle(…, { selector: 'focus' }) — the keyborg
+       attribute pair, never the native :focus-visible (CONVERSION_GUIDE §2 pseudo-states). */
+    @variant focus-visible-fui {
+      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useAttachmentStyles.actionable */
+  .actionable {
+    @apply cursor-pointer;
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground4Hover);
+    }
+  }
+
+  /* from useAttachmentStyles.progressContainer.
+     `left` / `right` are RTL-flippable in Griffel, so both take logical utilities
+     (`start-0` / `end-0`); the values are equal, but the property flip is preserved. */
+  .progress-container {
+    @apply absolute bottom-0 start-0 end-0 h-4 overflow-hidden;
+
+    border-end-start-radius: calc(4px * var(--base-scale));
+    border-end-end-radius: calc(4px * var(--base-scale));
+  }
+
+  /* from useAttachmentStyles.progressBar */
+  .progress-bar {
+    @apply h-full max-w-full;
+
+    background-color: var(--colorPaletteLightGreenBackground3);
+
+    /* `transition: 'width 0.2s'` expanded to longhands. `width` is already a longhand
+       property name, so the transition set is exactly one property (transition-audit.md). */
+    transition-property: width;
+    transition-duration: 0.2s;
+  }
+}
