@@ -14,9 +14,9 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const Virtualizer: React.FC<VirtualizerProps> = (props: VirtualizerProps) => {
-  const state = useVirtualizer_unstable(props);
-  useVirtualizerStyles_unstable(state);
-  useCustomStyleHook_unstable('useVirtualizerStyles_unstable')(state);
+  let state = useVirtualizer_unstable(props);
+  state = useVirtualizerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useVirtualizerStyles_unstable')(state);
 
   return renderVirtualizer_unstable(state);
 };

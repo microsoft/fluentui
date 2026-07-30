@@ -17,10 +17,10 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export const Alert: ForwardRefComponent<AlertProps> = React.forwardRef((props, ref) => {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const state = useAlert_unstable(props, ref);
+  let state = useAlert_unstable(props, ref);
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  useAlertStyles_unstable(state);
+  state = useAlertStyles_unstable(state);
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   return renderAlert_unstable(state);
   // eslint-disable-next-line @typescript-eslint/no-deprecated

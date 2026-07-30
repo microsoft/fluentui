@@ -12,10 +12,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const VirtualizerScrollView: React.FC<VirtualizerScrollViewProps> = (props: VirtualizerScrollViewProps) => {
-  const state = useVirtualizerScrollView_unstable(props);
+  let state = useVirtualizerScrollView_unstable(props);
 
-  useVirtualizerScrollViewStyles_unstable(state);
-  useCustomStyleHook_unstable('useVirtualizerScrollViewStyles_unstable')(state);
+  state = useVirtualizerScrollViewStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useVirtualizerScrollViewStyles_unstable')(state);
 
   return renderVirtualizerScrollView_unstable(state);
 };

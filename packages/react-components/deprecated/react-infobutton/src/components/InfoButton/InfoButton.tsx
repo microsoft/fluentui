@@ -15,9 +15,9 @@ import type { InfoButtonProps } from './InfoButton.types';
  * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef((props, ref) => {
-  const state = useInfoButton_unstable(props, ref);
+  let state = useInfoButton_unstable(props, ref);
 
-  useInfoButtonStyles_unstable(state);
+  state = useInfoButtonStyles_unstable(state);
   return renderInfoButton_unstable(state);
 });
 

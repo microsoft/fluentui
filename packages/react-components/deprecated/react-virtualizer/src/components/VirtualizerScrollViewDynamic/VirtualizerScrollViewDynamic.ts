@@ -17,10 +17,10 @@ export const VirtualizerScrollViewDynamic = ((
   // NOTE: this second context parameter doesn't exists in React 19
   _context: React.Context<VirtualizerContextProps>,
 ) => {
-  const state = useVirtualizerScrollViewDynamic_unstable(props);
+  let state = useVirtualizerScrollViewDynamic_unstable(props);
 
-  useVirtualizerScrollViewDynamicStyles_unstable(state);
-  useCustomStyleHook_unstable('useVirtualizerScrollViewDynamicStyles_unstable')(state);
+  state = useVirtualizerScrollViewDynamicStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useVirtualizerScrollViewDynamicStyles_unstable')(state);
 
   return renderVirtualizerScrollViewDynamic_unstable(state);
   // NOTE: we need to assert the type to satisfy tsc (React 19 FC doesn't have 2nd context parameter anymore)

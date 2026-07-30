@@ -50,7 +50,15 @@ export const useVirtualizerScrollViewStyles_unstable = (
   const styles = useStyles();
 
   // Default virtualizer styles base
-  useVirtualizerStyles_unstable(state);
+  // Thread the composed result instead of discarding it (F1 of the D14 mutation removal).
+  // VirtualizerScrollViewState adds a `container` slot, so Virtualizer's `components` map is
+  // NARROWER than this one; it is dropped off the return so this component keeps its own.
+  //
+  // The merge is deferred to the RETURN rather than reassigning `state` here: the writes below
+  // are still mutations at F1, and `react-hooks/immutability` stops reporting them once `state`
+  // names a locally-created object — which would silently retire the disables F5 has to delete
+  // on evidence.
+  const { components: virtualizerComponents, ...composedVirtualizer } = useVirtualizerStyles_unstable(state);
 
   const containerStyle =
     state.axis === 'horizontal'
@@ -70,5 +78,5 @@ export const useVirtualizerScrollViewStyles_unstable = (
     state.container.className,
   );
 
-  return state;
+  return { ...state, ...composedVirtualizer };
 };
