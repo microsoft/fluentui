@@ -354,7 +354,7 @@
      * `active === 'active' | 'inactive'`, reproducing the JS guard exactly; `unset`
      * renders no attribute at all.
      */
-    &:where([data-active]) {
+    @variant with-active {
       /* work-around for text pixel snapping at the end of the animation */
       transform: perspective(1px);
       transition-property: transform, opacity;
@@ -367,12 +367,14 @@
     }
 
     /* arg 9 — from useStyles.ring: reveal the ring pseudo-element. */
-    &:where([data-active-appearance='ring'], [data-active-appearance='ring-shadow'])::before {
-      content: '';
+    @variant active-appearance-ring-or-ring-shadow {
+      &::before {
+        content: '';
+      }
     }
 
     /* arg 11 — from useStyles.ringThick / .ringThicker / .ringThickest. */
-    &:where([data-active-appearance='ring'], [data-active-appearance='ring-shadow']) {
+    @variant active-appearance-ring-or-ring-shadow {
       &:where(
           [data-size='16'],
           [data-size='20'],
@@ -396,12 +398,14 @@
     }
 
     /* arg 12 — from useStyles.shadow: reveal the shadow pseudo-element. */
-    &:where([data-active-appearance='shadow'], [data-active-appearance='ring-shadow'])::after {
-      content: '';
+    @variant active-appearance-shadow-or-ring-shadow {
+      &::after {
+        content: '';
+      }
     }
 
     /* arg 13 — from useStyles.shadow4 / .shadow8 / .shadow16 / .shadow28. */
-    &:where([data-active-appearance='shadow'], [data-active-appearance='ring-shadow']) {
+    @variant active-appearance-shadow-or-ring-shadow {
       &:where([data-size='16'], [data-size='20'], [data-size='24'], [data-size='28'])::after {
         box-shadow: var(--shadow4);
       }
@@ -578,16 +582,18 @@
    * after the activeAppearance slices on purpose: it overrides arg 8's `transform` and
    * `transition-timing-function`, and zeroes the reset's ring/shadow margin.
    */
-  .root:where([data-active='inactive']) {
-    opacity: 0.8;
-    transform: scale(0.875);
-    transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
-
-    &::before,
-    &::after {
-      margin: 0;
-      opacity: 0;
+  .root {
+    @variant active-inactive {
+      opacity: 0.8;
+      transform: scale(0.875);
       transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+
+      &::before,
+      &::after {
+        margin: 0;
+        opacity: 0;
+        transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+      }
     }
   }
 }
