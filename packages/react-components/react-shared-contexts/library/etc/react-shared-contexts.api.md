@@ -680,7 +680,7 @@ export { useAnnounce as useAnnounce_unstable }
 export function useBackgroundAppearance(): BackgroundAppearanceContextValue;
 
 // @public
-export const useCustomStyleHook_unstable: (hook: keyof CustomStyleHooksContextValue_unstable) => CustomStyleHook;
+export const useCustomStyleHook_unstable: (hook: keyof CustomStyleHooksContextValue_unstable) => (<TState>(state: TState) => TState);
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;

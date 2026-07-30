@@ -2,7 +2,18 @@
 
 import * as React from 'react';
 
-type CustomStyleHook = (state: unknown) => void;
+/**
+ * A consumer-supplied styles hook that participates in a component's style composition.
+ *
+ * D14 (state-mutation removal) redesigned this contract to a functional one: a custom hook
+ * SHOULD return the state it wants the component to render. The `| void` arm is deliberate
+ * dual-shape tolerance, not an oversight — the pre-D14 contract was `(state) => void` and
+ * consumers implemented it by mutating the state object they were handed. Those hooks keep
+ * working unchanged: `useCustomStyleHook` normalizes `undefined` back to the input state, so
+ * a void-returning consumer hook still gets its mutations rendered. New consumer hooks
+ * should return a new state object instead of mutating the argument.
+ */
+type CustomStyleHook<TState = unknown> = (state: TState) => TState | void;
 
 /* eslint-disable @typescript-eslint/naming-convention */
 // The list of hooks is built from the exports from react-components/src/index
@@ -215,19 +226,32 @@ export type CustomStyleHooksContextValue = Partial<{
  */
 export const CustomStyleHooksContext = React.createContext<CustomStyleHooksContextValue | undefined>(undefined);
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = () => {};
-
 /**
  * @internal
  */
 export const CustomStyleHooksProvider = CustomStyleHooksContext.Provider;
 
 /**
- * Gets a custom style hook
+ * Gets a custom style hook.
+ *
+ * The returned function is always safe to thread: it returns the state to render whether or not
+ * a custom hook is registered, and whether that hook follows the functional D14 contract or the
+ * pre-D14 void/mutating one.
+ *
  * @param hook - One of the hook properties in CustomStyleHooksContextValue
- * @returns The corresponding hook when defined, otherwise a no-op function.
+ * @returns A function that returns the custom hook's state, or the input state when no hook is
+ * registered (previously a no-op).
  */
-export const useCustomStyleHook = (hook: keyof CustomStyleHooksContextValue): CustomStyleHook => {
-  return React.useContext(CustomStyleHooksContext)?.[hook] ?? noop;
+export const useCustomStyleHook = (hook: keyof CustomStyleHooksContextValue): (<TState>(state: TState) => TState) => {
+  const customStyleHook = React.useContext(CustomStyleHooksContext)?.[hook];
+
+  // The type parameter belongs to the RETURNED function, not to `useCustomStyleHook`: the state
+  // type is only observable at `useCustomStyleHook_unstable('…')(state)`, so a parameter on the
+  // outer call would have no inference site and would resolve to its default (`unknown`),
+  // widening every threaded call site.
+  //
+  // `?? state` is the dual-shape tolerance described on `CustomStyleHook`: a consumer hook
+  // written against the pre-D14 contract mutates `state` and returns `undefined`, and its
+  // mutations are already visible on the object we hand back.
+  return <TState>(state: TState): TState => (customStyleHook as CustomStyleHook<TState> | undefined)?.(state) ?? state;
 };
