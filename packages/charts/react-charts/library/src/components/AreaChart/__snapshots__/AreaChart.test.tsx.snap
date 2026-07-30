@@ -3,17 +3,16 @@
 exports[`Area chart rendering Should render the Area Chart with negative y values 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart group/fui-area-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple negative y value example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -225,7 +224,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -782,23 +781,23 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="legend1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -806,11 +805,11 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend1
             </div>
@@ -818,7 +817,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           <button
             aria-label="legend2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -826,11 +825,11 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend2
             </div>
@@ -838,7 +837,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           <button
             aria-label="legend3"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -846,11 +845,11 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend3
             </div>
@@ -865,17 +864,16 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
 exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart group/fui-area-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -1087,7 +1085,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -1644,23 +1642,23 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="legend1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1668,11 +1666,11 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend1
             </div>
@@ -1680,7 +1678,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           <button
             aria-label="legend2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1688,11 +1686,11 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend2
             </div>
@@ -1700,7 +1698,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           <button
             aria-label="legend3"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1708,11 +1706,11 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend3
             </div>
@@ -1727,17 +1725,16 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
 exports[`Area chart rendering Should render the Area chart with secondary Y axis 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart group/fui-area-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. The secondary Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -1949,7 +1946,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -2060,7 +2057,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
         </g>
         <g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -2618,23 +2615,23 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="legend1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2642,11 +2639,11 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend1
             </div>
@@ -2654,7 +2651,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           <button
             aria-label="legend2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2662,11 +2659,11 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend2
             </div>
@@ -2674,7 +2671,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           <button
             aria-label="legend3"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2682,11 +2679,11 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend3
             </div>
@@ -2701,17 +2698,16 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
 exports[`Area chart rendering Should render the area chart with numeric x-axis data 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart group/fui-area-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -2923,7 +2919,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -3480,23 +3476,23 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="legend1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3504,11 +3500,11 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend1
             </div>
@@ -3516,7 +3512,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           <button
             aria-label="legend2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3524,11 +3520,11 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend2
             </div>
@@ -3536,7 +3532,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           <button
             aria-label="legend3"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3544,11 +3540,11 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend3
             </div>
@@ -4119,17 +4115,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -4341,7 +4336,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -4898,23 +4893,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4922,11 +4917,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -4934,7 +4929,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4942,11 +4937,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -4954,7 +4949,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4962,11 +4957,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -4979,17 +4974,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -5201,7 +5195,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -5758,23 +5752,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5782,11 +5776,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -5794,7 +5788,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5802,11 +5796,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -5814,7 +5808,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5822,11 +5816,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -5898,17 +5892,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -6120,7 +6113,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -6677,23 +6670,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -6701,11 +6694,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -6713,7 +6706,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -6721,11 +6714,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -6733,7 +6726,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -6741,11 +6734,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -6758,17 +6751,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -6980,7 +6972,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -7537,23 +7529,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -7561,11 +7553,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -7573,7 +7565,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -7581,11 +7573,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -7593,7 +7585,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -7601,11 +7593,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -7677,17 +7669,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -7899,7 +7890,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -8456,23 +8447,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -8480,11 +8471,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -8492,7 +8483,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -8500,11 +8491,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -8512,7 +8503,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -8520,11 +8511,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -8537,17 +8528,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -8759,7 +8749,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -9316,23 +9306,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -9340,11 +9330,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -9352,7 +9342,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -9360,11 +9350,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -9372,7 +9362,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -9380,11 +9370,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -9456,17 +9446,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -9678,7 +9667,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -9865,23 +9854,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -9889,11 +9878,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -9901,7 +9890,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -9909,11 +9898,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -9921,7 +9910,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -9929,11 +9918,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -9946,17 +9935,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -10168,7 +10156,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -10355,23 +10343,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -10379,11 +10367,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -10391,7 +10379,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -10399,11 +10387,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -10411,7 +10399,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -10419,11 +10407,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -10495,17 +10483,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="AreaChart. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -10717,7 +10704,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -11274,23 +11261,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -11298,11 +11285,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -11310,7 +11297,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -11318,11 +11305,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -11330,7 +11317,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -11338,11 +11325,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -11355,17 +11342,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="AreaChart. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -11577,7 +11563,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -12134,23 +12120,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -12158,11 +12144,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -12170,7 +12156,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -12178,11 +12164,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -12190,7 +12176,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -12198,11 +12184,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -12274,17 +12260,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -12496,7 +12481,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -13053,23 +13038,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -13077,11 +13062,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -13089,7 +13074,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -13097,11 +13082,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -13109,7 +13094,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -13117,11 +13102,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -13134,17 +13119,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -13356,7 +13340,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -13913,23 +13897,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -13937,11 +13921,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -13949,7 +13933,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -13957,11 +13941,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -13969,7 +13953,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -13977,11 +13961,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -14053,17 +14037,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -14104,7 +14087,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -14275,23 +14258,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="metaData1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -14299,11 +14282,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   metaData1
                 </div>
@@ -14316,17 +14299,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -14367,7 +14349,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -14538,23 +14520,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="metaData1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -14562,11 +14544,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 metaData1
               </div>
@@ -14638,17 +14620,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -14860,7 +14841,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -15417,84 +15398,84 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
             style="justify-content: unset; flex-wrap: wrap;"
           >
             <div
-              class="fui-legend__resizableArea"
+              class=""
               style="display: flex; flex-wrap: wrap; overflow: auto;"
             >
               <div
-                class="fui-legend__legendContainer"
+                class=""
               >
                 <button
                   aria-label="legend1"
                   aria-selected="false"
-                  class="group/fui-button fui-legend__legend"
+                  class="group/fui-button"
                   data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: green; --rect-borderColor: green;"
                   type="button"
                 >
                   <div
-                    class="fui-legend__rect"
+                    class=""
                     style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                   />
                   <div
-                    class="fui-legend__text"
+                    class=""
                   >
                     legend1
                   </div>
                 </button>
               </div>
               <div
-                class="fui-legend__legendContainer"
+                class=""
               >
                 <button
                   aria-label="legend2"
                   aria-selected="false"
-                  class="group/fui-button fui-legend__legend"
+                  class="group/fui-button"
                   data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
                   type="button"
                 >
                   <div
-                    class="fui-legend__rect"
+                    class=""
                     style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                   />
                   <div
-                    class="fui-legend__text"
+                    class=""
                   >
                     legend2
                   </div>
                 </button>
               </div>
               <div
-                class="fui-legend__legendContainer"
+                class=""
               >
                 <button
                   aria-label="legend3"
                   aria-selected="false"
-                  class="group/fui-button fui-legend__legend"
+                  class="group/fui-button"
                   data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
                   type="button"
                 >
                   <div
-                    class="fui-legend__rect"
+                    class=""
                     style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                   />
                   <div
-                    class="fui-legend__text"
+                    class=""
                   >
                     legend3
                   </div>
@@ -15508,17 +15489,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -15730,7 +15710,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -16287,84 +16267,84 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
           style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
-            class="fui-legend__resizableArea"
+            class=""
             style="display: flex; flex-wrap: wrap; overflow: auto;"
           >
             <div
-              class="fui-legend__legendContainer"
+              class=""
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: green; --rect-borderColor: green;"
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
               </button>
             </div>
             <div
-              class="fui-legend__legendContainer"
+              class=""
             >
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
               </button>
             </div>
             <div
-              class="fui-legend__legendContainer"
+              class=""
             >
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -16437,17 +16417,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="50"
             role="region"
             style="display: block;"
@@ -16659,7 +16638,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -17220,17 +17199,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="50"
           role="region"
           style="display: block;"
@@ -17442,7 +17420,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -18062,17 +18040,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -18284,7 +18261,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -18841,23 +18818,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -18865,11 +18842,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -18877,7 +18854,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -18885,11 +18862,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -18897,7 +18874,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -18905,11 +18882,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -18922,17 +18899,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -19144,7 +19120,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -19701,23 +19677,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -19725,11 +19701,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -19737,7 +19713,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -19745,11 +19721,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -19757,7 +19733,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -19765,11 +19741,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -19841,17 +19817,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -20133,7 +20108,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -20690,23 +20665,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -20714,11 +20689,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -20726,7 +20701,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -20734,11 +20709,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -20746,7 +20721,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -20754,11 +20729,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -20767,7 +20742,7 @@ Object {
           </div>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_4t_"
           style="opacity: 0;"
         />
@@ -20776,17 +20751,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -21068,7 +21042,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -21625,23 +21599,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -21649,11 +21623,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -21661,7 +21635,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -21669,11 +21643,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -21681,7 +21655,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -21689,11 +21663,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -21702,7 +21676,7 @@ Object {
         </div>
       </div>
       <div
-        class="fui-cart__tooltip"
+        class=""
         id="tooltip__r_4t_"
         style="opacity: 0;"
       />
@@ -21770,17 +21744,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -22062,7 +22035,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -22619,23 +22592,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -22643,11 +22616,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -22655,7 +22628,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -22663,11 +22636,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -22675,7 +22648,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -22683,11 +22656,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -22698,7 +22671,7 @@ Object {
         <span
           aria-hidden="true"
           id="fui_measurement_span"
-          style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-size: var(--fontSizeBase100); font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+          style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre;"
         >
           65
         </span>
@@ -22707,17 +22680,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -22999,7 +22971,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -23556,23 +23528,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -23580,11 +23552,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -23592,7 +23564,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -23600,11 +23572,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -23612,7 +23584,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -23620,11 +23592,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -23635,7 +23607,7 @@ Object {
       <span
         aria-hidden="true"
         id="fui_measurement_span"
-        style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-size: var(--fontSizeBase100); font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+        style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre;"
       >
         65
       </span>
@@ -23703,17 +23675,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart group/fui-area-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -23925,7 +23896,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -24482,23 +24453,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="legend1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -24506,11 +24477,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend1
                 </div>
@@ -24518,7 +24489,7 @@ Object {
               <button
                 aria-label="legend2"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -24526,11 +24497,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend2
                 </div>
@@ -24538,7 +24509,7 @@ Object {
               <button
                 aria-label="legend3"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -24546,11 +24517,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   legend3
                 </div>
@@ -24563,17 +24534,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart group/fui-area-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -24785,7 +24755,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -25342,23 +25312,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="legend1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -25366,11 +25336,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend1
               </div>
@@ -25378,7 +25348,7 @@ Object {
             <button
               aria-label="legend2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -25386,11 +25356,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend2
               </div>
@@ -25398,7 +25368,7 @@ Object {
             <button
               aria-label="legend3"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -25406,11 +25376,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 legend3
               </div>
@@ -25477,17 +25447,16 @@ Object {
 exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart group/fui-area-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -25604,7 +25573,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -26161,23 +26130,23 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="legend1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -26185,11 +26154,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend1
             </div>
@@ -26197,7 +26166,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="legend2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -26205,11 +26174,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend2
             </div>
@@ -26217,7 +26186,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="legend3"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -26225,11 +26194,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend3
             </div>
@@ -26244,17 +26213,16 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart group/fui-area-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -26371,7 +26339,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -26928,23 +26896,23 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="legend1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -26952,11 +26920,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend1
             </div>
@@ -26964,7 +26932,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="legend2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -26972,11 +26940,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend2
             </div>
@@ -26984,7 +26952,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="legend3"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -26992,11 +26960,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               legend3
             </div>

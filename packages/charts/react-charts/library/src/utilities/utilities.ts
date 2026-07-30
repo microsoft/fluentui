@@ -90,7 +90,20 @@ export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;
 export const DEFAULT_DATE_STRING = '2000-01-01';
 export const CARTESIAN_XAXIS_CLASSNAME = 'fui-cart__xAxis';
-const CARTESIAN_XAXIS_TEXT_SELECTOR = `.${CARTESIAN_XAXIS_CLASSNAME} text`;
+/**
+ * Selector for the x-axis tick labels, built from the single retained identity class
+ * `CARTESIAN_XAXIS_CLASSNAME` (see `useCartesianChartStyles.styles.ts`).
+ *
+ * Exported so `CartesianChart.tsx` measures against the SAME selector `createWrapOfXLabels`
+ * uses below. Both paths size x-axis tick text; before the CSS-Modules conversion the
+ * CartesianChart half built its selector from the multi-token `mergeClasses` string and so
+ * matched nothing, silently falling back to a hardcoded font while this half read the real
+ * one. Sharing the constant is also what lets `getTextSize`'s `${text}|${cssSelector}` cache
+ * be hit by both.
+ *
+ * @internal
+ */
+export const CARTESIAN_XAXIS_TEXT_SELECTOR = `.${CARTESIAN_XAXIS_CLASSNAME} text`;
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;

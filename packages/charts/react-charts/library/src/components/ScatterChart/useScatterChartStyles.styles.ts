@@ -1,50 +1,75 @@
-'use client';
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file no longer carries a
+ * `'use client'` directive. After conversion it calls no React hook — `makeStyles`'s
+ * `useStyles()` call is gone — so `enforce-use-client` reports the directive as
+ * unnecessary. Same split as react-badge's Badge (no directive) vs CounterBadge (kept it
+ * because it still calls a hook). `ScatterChart.tsx`, which does use hooks, keeps its own.
+ */
 
-import type { GriffelStyle } from '@griffel/react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import type { ScatterChartProps, ScatterChartStyles } from './ScatterChart.types';
-import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { getMarkerLabelStyle, getTooltipStyle } from '../../utilities/index';
+
+import styles from './ScatterChart.module.css';
 
 /**
+ * Public identity class for ScatterChart.
+ *
  * @internal
+ * @deprecated for styling. The only supported way to style a Fluent component's internals
+ * is the per-slot `styles` props. `root` is retained as the component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable as a
+ * selector and as a `group-*` variant target. The per-slot BEM statics were removed with
+ * the D16 sweep: there is no public class-name handle on component internals. Note that
+ * they were verbatim COPIES of LineChart's `fui-line__*` strings (this component published
+ * `fui-line__root`, not `fui-scatter__root`); nothing in the repo referenced either set.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + scatterChartClassNames.root` is an invalid selector. Use
+ * `fuiSelector(scatterChartClassNames.root)` from `@fluentui/react-utilities` at every
+ * selector site (DECISIONS.md D16.5).
  */
-export const scatterChartClassNames: SlotClassNames<ScatterChartStyles> = {
-  tooltip: 'fui-line__tooltip',
-  markerLabel: 'fui-line__markerLabel',
-  root: 'fui-line__root',
-  xAxis: 'fui-line__xAxis',
-  yAxis: 'fui-line__yAxis',
-  legendContainer: 'fui-line__legendContainer',
-  hover: 'fui-line__hover',
-  descriptionMessage: 'fui-line__descriptionMessage',
-  axisTitle: 'fui-line__axisTitle',
-  chartTitle: 'fui-line__chartTitle',
-  opacityChangeOnHover: 'fui-line__opacityChangeOnHover',
-  shapeStyles: 'fui-line__shapeStyles',
-  chartWrapper: 'fui-line__chartWrapper',
-  svgTooltip: '',
-  chart: '',
-  axisAnnotation: '',
-  plotContainer: '',
-  annotationLayer: '',
+export const scatterChartClassNames: { root: string } = {
+  root: 'group/fui-scatter-chart',
 };
 
 /**
- * Base Styles
- */
-const useStyles = makeStyles({
-  tooltip: getTooltipStyle() as GriffelStyle,
-  markerLabel: getMarkerLabelStyle() as GriffelStyle,
-});
-
-/**
- * Apply styling to the Carousel slots based on the state
+ * Apply styling to the ScatterChart slots based on the state.
+ *
+ * DELEGATION SEAM: ScatterChart renders no element of its own — its outermost node is the
+ * root `<div>` of `CartesianChart`, which ScatterChart renders itself and whose props it
+ * therefore owns. That makes the `root` composition below CONVERSION_GUIDE §3d **M2**
+ * (JS slot-className composition), not M3: no new public DOM surface is minted, the
+ * existing `CartesianChart.styles.root` prop is the channel. `ScatterChart.tsx` forwards
+ * the value as `styles={{ ...props.styles, root: classes.root }}`, placed AFTER its
+ * `{...props}` spread so it wins.
+ *
+ * Two markers end up on that one element once CartesianChart converts
+ * (`group/fui-cartesian-chart` alongside `group/fui-scatter-chart`). That is the sanctioned
+ * shape, not a collision — react-button's ToggleButton root carries both
+ * `group/fui-toggle-button` and `group/fui-button` for exactly this reason, so a descendant
+ * can address whichever identity it means.
+ *
+ * Ordering (DECISIONS.md D16.2): unconditional module class FIRST, named group marker
+ * SECOND, consumer override LAST. `styles.root` is what guarantees the marker is never
+ * `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom.
+ *
+ * KNOWN DEAD SLOT: `tooltip` has no render site — `ScatterChart.tsx` reads only
+ * `classes.markerLabel`, and the component draws its hover surface through `ChartPopover`.
+ * The slot is preserved verbatim rather than deleted because it is part of the
+ * `ScatterChartStyles` (→ `CartesianChartStyles`) contract and CONVERSION_GUIDE §3 forbids
+ * dropping exports mid-migration; retiring it belongs to the Phase 3 sweep.
+ *
+ * No data attributes are set: nothing in this component's styling is state-driven
+ * (D15.6 — data-* is fallback-only), and no `@variant` in the module reads one.
  */
 export const useScatterChartStyles = (props: ScatterChartProps): ScatterChartStyles => {
-  const baseStyles = useStyles();
   return {
-    tooltip: mergeClasses(scatterChartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
-    markerLabel: mergeClasses(scatterChartClassNames.markerLabel, baseStyles.markerLabel, props.styles?.markerLabel),
+    // The marker is written as a LITERAL, not `scatterChartClassNames.root`: greppable,
+    // sortable by prettier-plugin-tailwindcss, and it keeps the `@deprecated` constant from
+    // being self-referenced (which the `deprecation` lint rule reports as an error). Same
+    // form as react-divider and react-button's ToggleButton.
+    root: clsx(styles.root, 'group/fui-scatter-chart', props.styles?.root),
+    tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
+    markerLabel: clsx(styles['marker-label'], props.styles?.markerLabel),
   };
 };

@@ -36,6 +36,7 @@ import {
   createStringYAxis,
   findCalloutPoints,
 } from '../../utilities/index';
+import { useAreaChartStyles } from './useAreaChartStyles.styles';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { Legend } from '../Legends/index';
@@ -134,6 +135,12 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const prevPropsRef = React.useRef<AreaChartProps | null>(null);
+    // Griffel → Tailwind + CSS Modules: `useAreaChartStyles` was previously exported but
+    // never called — AreaChart had no styled element of its own, so nothing consumed it.
+    // It is called now because the conversion moved this component's identity class and
+    // named group marker (`group/fui-area-chart`) into it, matching LineChart /
+    // VerticalBarChart. The hook itself is pure `clsx` and calls no React hook.
+    const classes = useAreaChartStyles(props);
 
     React.useEffect(() => {
       if (prevPropsRef.current) {
@@ -1103,6 +1110,12 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       return (
         <CartesianChart
           {...props}
+          // Griffel → Tailwind + CSS Modules (CONVERSION_GUIDE §3d M2). AreaChart renders no
+          // element of its own, so its identity class + named group marker are composed in
+          // `useAreaChartStyles` and handed to CartesianChart's root through the `styles`
+          // prop it already accepts. Placed AFTER `{...props}` so it wins over the spread
+          // copy; `classes.root` already folds `props.styles?.root` in last.
+          styles={{ ...props.styles, root: classes.root }}
           chartTitle={_getChartTitle()}
           points={points}
           chartType={ChartTypes.AreaChart}

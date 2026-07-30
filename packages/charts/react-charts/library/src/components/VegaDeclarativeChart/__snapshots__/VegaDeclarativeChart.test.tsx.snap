@@ -7,18 +7,18 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -30,7 +30,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -96,7 +96,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -106,13 +106,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -137,7 +137,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -162,7 +162,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -187,7 +187,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -212,7 +212,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -249,7 +249,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="119.17190775681341"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -257,14 +257,14 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="37.14285714285714"
-                    y="NaN"
+                    y="155.82809224318657"
                   />
                   <rect
                     aria-label="Jan. South, 80."
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#e3008c"
-                    height="NaN"
+                    height="95.33752620545073"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -272,7 +272,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="37.14285714285714"
-                    y="NaN"
+                    y="58.490566037735846"
                   />
                 </g>
               </g>
@@ -287,7 +287,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="143.19676549865227"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -295,14 +295,14 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="4.571428571428569"
-                    y="NaN"
+                    y="131.80323450134773"
                   />
                   <rect
                     aria-label="Feb. South, 90."
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#e3008c"
-                    height="NaN"
+                    height="107.39757412398922"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -310,7 +310,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="4.571428571428569"
-                    y="NaN"
+                    y="22.405660377358515"
                   />
                 </g>
               </g>
@@ -325,7 +325,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="131.18311562651184"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -333,14 +333,14 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="-28"
-                    y="NaN"
+                    y="143.81688437348816"
                   />
                   <rect
                     aria-label="Mar. South, 85."
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#e3008c"
-                    height="NaN"
+                    height="101.36877116594097"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -348,7 +348,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="-28"
-                    y="NaN"
+                    y="40.448113207547195"
                   />
                 </g>
               </g>
@@ -366,8 +366,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="37.14285714285714"
                   x2="37.14285714285714"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="130.66037735849056"
+                  y2="130.66037735849056"
                 />
                 <line
                   opacity="1"
@@ -377,8 +377,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="37.14285714285714"
                   x2="4.571428571428569"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="130.66037735849056"
+                  y2="118.63207547169813"
                 />
                 <line
                   opacity="1"
@@ -388,8 +388,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="4.571428571428569"
                   x2="4.571428571428569"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="118.63207547169813"
+                  y2="118.63207547169813"
                 />
                 <line
                   opacity="1"
@@ -399,8 +399,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="4.571428571428569"
                   x2="-28"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="118.63207547169813"
+                  y2="124.64622641509433"
                 />
                 <line
                   opacity="1"
@@ -410,13 +410,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="-28"
                   x2="-28"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="124.64622641509433"
+                  y2="124.64622641509433"
                 />
                 <circle
                   aria-label="Jan. Line 1, 120."
                   cx="37.14285714285714"
-                  cy="NaN"
+                  cy="130.66037735849056"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -429,7 +429,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="Jan. Line 1, 120."
                   cx="37.14285714285714"
-                  cy="NaN"
+                  cy="130.66037735849056"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -442,7 +442,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="Feb. Line 1, 130."
                   cx="4.571428571428569"
-                  cy="NaN"
+                  cy="118.63207547169813"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -455,7 +455,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="Feb. Line 1, 130."
                   cx="4.571428571428569"
-                  cy="NaN"
+                  cy="118.63207547169813"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -468,7 +468,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="Mar. Line 1, 125."
                   cx="-28"
-                  cy="NaN"
+                  cy="124.64622641509433"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -481,7 +481,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="Mar. Line 1, 125."
                   cx="-28"
-                  cy="NaN"
+                  cy="124.64622641509433"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -496,23 +496,23 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="North"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -520,11 +520,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   North
                 </div>
@@ -532,7 +532,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="South"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -540,11 +540,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   South
                 </div>
@@ -552,7 +552,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -560,11 +560,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 4px; background-color: rgb(42, 160, 164); border-color: rgb(42, 160, 164); --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Line 1
                 </div>
@@ -573,17 +573,12 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           </div>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_1k_"
           style="opacity: 0;"
         />
         <div
-          class="fui-cart__tooltip"
-          id="tooltip__r_1k_"
-          style="opacity: 0;"
-        />
-        <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_1k_"
           style="opacity: 0;"
         />
@@ -600,18 +595,18 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -623,7 +618,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -689,7 +684,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -699,13 +694,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -730,7 +725,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -755,7 +750,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -780,7 +775,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -805,7 +800,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -842,7 +837,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="212.5"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -850,7 +845,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="37.14285714285714"
-                    y="NaN"
+                    y="62.5"
                   />
                 </g>
               </g>
@@ -865,7 +860,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="255"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -873,7 +868,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="4.571428571428569"
-                    y="NaN"
+                    y="20"
                   />
                 </g>
               </g>
@@ -888,7 +883,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="233.75"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -896,7 +891,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="-28"
-                    y="NaN"
+                    y="41.25"
                   />
                 </g>
               </g>
@@ -914,8 +909,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="37.14285714285714"
                   x2="4.571428571428569"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="211.25"
+                  y2="200.625"
                 />
                 <line
                   opacity="1"
@@ -925,13 +920,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="4.571428571428569"
                   x2="-28"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="200.625"
+                  y2="207.00000000000003"
                 />
                 <circle
                   aria-label="2024-01-01. Line 1, 30."
                   cx="37.14285714285714"
-                  cy="NaN"
+                  cy="211.25"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -944,7 +939,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="2024-01-02. Line 1, 35."
                   cx="4.571428571428569"
-                  cy="NaN"
+                  cy="200.625"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -957,7 +952,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="2024-01-03. Line 1, 32."
                   cx="-28"
-                  cy="NaN"
+                  cy="207.00000000000003"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -972,23 +967,23 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="A"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -996,11 +991,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   A
                 </div>
@@ -1008,7 +1003,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1016,11 +1011,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Line 1
                 </div>
@@ -1029,17 +1024,12 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           </div>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_1q_"
           style="opacity: 0;"
         />
         <div
-          class="fui-cart__tooltip"
-          id="tooltip__r_1q_"
-          style="opacity: 0;"
-        />
-        <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_1q_"
           style="opacity: 0;"
         />
@@ -1056,18 +1046,18 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -1079,7 +1069,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -1145,7 +1135,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -1155,13 +1145,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -1186,7 +1176,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -1211,7 +1201,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -1236,7 +1226,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -1261,7 +1251,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -1298,7 +1288,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="127.5"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1306,7 +1296,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="37.14285714285714"
-                    y="NaN"
+                    y="147.5"
                   />
                 </g>
               </g>
@@ -1321,7 +1311,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="255"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1329,7 +1319,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="4.571428571428569"
-                    y="NaN"
+                    y="20"
                   />
                 </g>
               </g>
@@ -1344,7 +1334,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="191.25"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1352,7 +1342,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="10.857142857142858"
                     x="-28"
-                    y="NaN"
+                    y="83.75"
                   />
                 </g>
               </g>
@@ -1370,8 +1360,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="37.14285714285714"
                   x2="4.571428571428569"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="83.75"
+                  y2="45.49999999999999"
                 />
                 <line
                   opacity="1"
@@ -1381,13 +1371,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(5.428571428571429, 0)"
                   x1="4.571428571428569"
                   x2="-28"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="45.49999999999999"
+                  y2="-5.500000000000025"
                 />
                 <circle
                   aria-label="A. Line 1, 15."
                   cx="37.14285714285714"
-                  cy="NaN"
+                  cy="83.75"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -1400,7 +1390,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="B. Line 1, 18."
                   cx="4.571428571428569"
-                  cy="NaN"
+                  cy="45.49999999999999"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -1413,7 +1403,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="C. Line 1, 22."
                   cx="-28"
-                  cy="NaN"
+                  cy="-5.500000000000025"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -1428,23 +1418,23 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Bar"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1452,11 +1442,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Bar
                 </div>
@@ -1464,7 +1454,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1472,11 +1462,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Line 1
                 </div>
@@ -1485,17 +1475,12 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           </div>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_1n_"
           style="opacity: 0;"
         />
         <div
-          class="fui-cart__tooltip"
-          id="tooltip__r_1n_"
-          style="opacity: 0;"
-        />
-        <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_1n_"
           style="opacity: 0;"
         />
@@ -1512,18 +1497,18 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sales and Profit Trend. Vertical bar chart with 6 stacked bars and 1 lines. The X axis displays Month. The Y axis displays Sales ($). "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -1535,7 +1520,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 255)"
             >
               <path
                 class="domain"
@@ -1658,19 +1643,19 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
               width="6"
               x="19"
-              y="NaN"
+              y="296"
             />
             <text
               aria-describedby="tooltip-_r_1v_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_1u_"
               text-anchor="middle"
               x="22"
-              y="NaN"
+              y="302"
             >
               ...
             </text>
@@ -1678,7 +1663,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               hidden=""
             />
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -1688,13 +1673,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,255.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,255.5)"
               >
                 <line
                   stroke="currentColor"
@@ -1719,7 +1704,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,196.75)"
               >
                 <line
                   stroke="currentColor"
@@ -1744,7 +1729,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,138)"
               >
                 <line
                   stroke="currentColor"
@@ -1769,7 +1754,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,79.25)"
               >
                 <line
                   stroke="currentColor"
@@ -1794,7 +1779,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -1831,7 +1816,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="lightblue"
-                    height="NaN"
+                    height="157.8358208955224"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1839,7 +1824,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="6.250000000000001"
                     x="65.75"
-                    y="NaN"
+                    y="97.1641791044776"
                   />
                 </g>
               </g>
@@ -1854,7 +1839,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="lightblue"
-                    height="NaN"
+                    height="182.38805970149255"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1862,7 +1847,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="6.250000000000001"
                     x="47"
-                    y="NaN"
+                    y="72.61194029850745"
                   />
                 </g>
               </g>
@@ -1877,7 +1862,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="lightblue"
-                    height="NaN"
+                    height="168.35820895522386"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1885,7 +1870,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="6.250000000000001"
                     x="28.25"
-                    y="NaN"
+                    y="86.64179104477614"
                   />
                 </g>
               </g>
@@ -1900,7 +1885,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="lightblue"
-                    height="NaN"
+                    height="213.955223880597"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1908,7 +1893,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="6.250000000000001"
                     x="9.5"
-                    y="NaN"
+                    y="41.044776119403"
                   />
                 </g>
               </g>
@@ -1923,7 +1908,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="lightblue"
-                    height="NaN"
+                    height="203.43283582089552"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1931,7 +1916,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="6.250000000000001"
                     x="-9.25"
-                    y="NaN"
+                    y="51.56716417910448"
                   />
                 </g>
               </g>
@@ -1946,7 +1931,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="lightblue"
-                    height="NaN"
+                    height="235"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -1954,7 +1939,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     transform="translate(0, 0)"
                     width="6.250000000000001"
                     x="-28"
-                    y="NaN"
+                    y="20"
                   />
                 </g>
               </g>
@@ -1972,8 +1957,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(3.1250000000000004, 0)"
                   x1="65.75"
                   x2="47"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="212.91044776119404"
+                  y2="202.38805970149255"
                 />
                 <line
                   opacity="1"
@@ -1983,8 +1968,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(3.1250000000000004, 0)"
                   x1="47"
                   x2="28.25"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="202.38805970149255"
+                  y2="207.6492537313433"
                 />
                 <line
                   opacity="1"
@@ -1994,8 +1979,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(3.1250000000000004, 0)"
                   x1="28.25"
                   x2="9.5"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="207.6492537313433"
+                  y2="191.86567164179107"
                 />
                 <line
                   opacity="1"
@@ -2005,8 +1990,8 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(3.1250000000000004, 0)"
                   x1="9.5"
                   x2="-9.25"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="191.86567164179107"
+                  y2="197.1268656716418"
                 />
                 <line
                   opacity="1"
@@ -2016,13 +2001,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   transform="translate(3.1250000000000004, 0)"
                   x1="-9.25"
                   x2="-28"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="197.1268656716418"
+                  y2="184.8507462686567"
                 />
                 <circle
                   aria-label="2024-01. Line 1, 12000."
                   cx="65.75"
-                  cy="NaN"
+                  cy="212.91044776119404"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -2035,7 +2020,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="2024-02. Line 1, 15000."
                   cx="47"
-                  cy="NaN"
+                  cy="202.38805970149255"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -2048,7 +2033,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="2024-03. Line 1, 13500."
                   cx="28.25"
-                  cy="NaN"
+                  cy="207.6492537313433"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -2061,7 +2046,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="2024-04. Line 1, 18000."
                   cx="9.5"
-                  cy="NaN"
+                  cy="191.86567164179107"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -2074,7 +2059,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="2024-05. Line 1, 16500."
                   cx="-9.25"
-                  cy="NaN"
+                  cy="197.1268656716418"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -2087,7 +2072,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 <circle
                   aria-label="2024-06. Line 1, 20000."
                   cx="-28"
-                  cy="NaN"
+                  cy="184.8507462686567"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -2100,21 +2085,21 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
-              transform="rotate(-90, 16, NaN)"
+              transform="rotate(-90, 16, 137.5)"
               width="6"
               x="13"
-              y="NaN"
+              y="131.5"
             />
             <text
               aria-describedby="tooltip-_r_21_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_20_"
               text-anchor="middle"
-              transform="rotate(-90, 16, NaN)"
+              transform="rotate(-90, 16, 137.5)"
               x="16"
-              y="NaN"
+              y="137.5"
             >
               Sales ($)
             </text>
@@ -2124,23 +2109,23 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Bar"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2148,11 +2133,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: lightblue; border-color: lightblue; --rect-content-high-contrast: linear-gradient(to right, lightblue, lightblue);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Bar
                 </div>
@@ -2160,7 +2145,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2168,11 +2153,11 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 4px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Line 1
                 </div>
@@ -2181,17 +2166,12 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           </div>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_1t_"
           style="opacity: 0;"
         />
         <div
-          class="fui-cart__tooltip"
-          id="tooltip__r_1t_"
-          style="opacity: 0;"
-        />
-        <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_1t_"
           style="opacity: 0;"
         />
@@ -2208,24 +2188,25 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fui-donut__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-donut-chart fui-charts-resp-child__root"
       >
         <div
-          class="fui-donut__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-donut__chart fui-charts-resp-child__chart"
+            class="fuicm-chart fui-charts-resp-child__chart"
             height="160"
             width="0"
           >
             <g
+              class="group/fui-donut-pie"
               transform="translate(0, 80)"
             >
               <g>
                 <path
                   aria-label="A, 28."
-                  class="fui-donut-arc__root"
+                  class="group/fui-donut-arc"
                   d="M0.5,-49.998A50,50,0,0,1,42.748,25.935L0,0Z"
                   id="_Pie__r_2s_A28"
                   opacity="1"
@@ -2237,7 +2218,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <g>
                 <path
                   aria-label="B, 55."
-                  class="fui-donut-arc__root"
+                  class="group/fui-donut-arc"
                   d="M42.22,26.785A50,50,0,1,1,-0.5,-49.998L0,0Z"
                   id="_Pie__r_2s_B55"
                   opacity="1"
@@ -2254,23 +2235,23 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
           id="callout_r_2t_"
         />
         <div
-          class="fui-donut__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: center;"
             >
               <button
                 aria-label="A"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2278,11 +2259,11 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   A
                 </div>
@@ -2290,7 +2271,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <button
                 aria-label="B"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2298,11 +2279,11 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   B
                 </div>
@@ -2323,18 +2304,18 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -2346,7 +2327,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -2355,7 +2336,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               />
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -2365,13 +2346,13 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -2390,7 +2371,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -2409,7 +2390,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -2428,7 +2409,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -2447,7 +2428,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -2480,27 +2461,27 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   aria-label="Q1. North, 45000."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#637cef"
-                  height="NaN"
+                  height="255"
                   opacity=""
                   role="option"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="NaN"
+                  y="20"
                 />
                 <rect
                   aria-label="Q1. South, 38000."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#e3008c"
-                  height="NaN"
+                  height="215.33333333333331"
                   opacity=""
                   role="option"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="NaN"
+                  y="59.666666666666686"
                 />
                 <text
                   aria-hidden="true"
@@ -2508,7 +2489,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
                   x="8"
-                  y="NaN"
+                  y="14"
                 >
                   45k
                 </text>
@@ -2518,7 +2499,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="NaN"
+                  y="53.666666666666686"
                 >
                   38k
                 </text>
@@ -2527,23 +2508,23 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="North"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2551,11 +2532,11 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   North
                 </div>
@@ -2563,7 +2544,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <button
                 aria-label="South"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2571,11 +2552,11 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   South
                 </div>
@@ -2596,17 +2577,17 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 2 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
+            class="fui-charts-resp-child__chart"
             height="350"
             role="region"
             style="display: block;"
@@ -2628,7 +2609,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               />
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -2716,7 +2697,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
           </svg>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_30_"
           style="opacity: 0;"
         />
@@ -2733,17 +2714,17 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Financial Ratios Heatmap. Heat map chart with 12 data points. The X axis displays Company. The Y axis displays Financial Ratio. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
+            class="fui-charts-resp-child__chart"
             height="350"
             role="region"
             style="display: block;"
@@ -2765,7 +2746,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               />
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
               width="6"
               x="19"
@@ -2773,7 +2754,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
             />
             <text
               aria-describedby="tooltip-_r_34_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_33_"
               text-anchor="middle"
               x="22"
@@ -2785,7 +2766,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               hidden=""
             />
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -3160,7 +3141,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               </g>
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
               transform="rotate(-90, 16, 157.5)"
               width="6"
@@ -3169,7 +3150,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
             />
             <text
               aria-describedby="tooltip-_r_36_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_35_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
@@ -3184,7 +3165,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
           </svg>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_32_"
           style="opacity: 0;"
         />
@@ -3201,17 +3182,17 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 2 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
+            class="fui-charts-resp-child__chart"
             height="350"
             role="region"
             style="display: block;"
@@ -3233,7 +3214,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
               />
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -3321,7 +3302,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
           </svg>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_3e_"
           style="opacity: 0;"
         />
@@ -3338,18 +3319,18 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -3361,7 +3342,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -3408,7 +3389,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -3418,13 +3399,13 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -3449,7 +3430,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -3474,7 +3455,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -3499,7 +3480,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -3524,7 +3505,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -3561,7 +3542,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="159.375"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -3569,7 +3550,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                     transform="translate(1.5, 0)"
                     width="16"
                     x="28.999999999999993"
-                    y="NaN"
+                    y="115.625"
                   />
                 </g>
                 <text
@@ -3580,7 +3561,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                   text-anchor="middle"
                   transform="translate(1.5, 0)"
                   x="36.99999999999999"
-                  y="NaN"
+                  y="109.625"
                 >
                   10
                 </text>
@@ -3596,7 +3577,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                     class="fui-vsbc__opacityChangeOnHover default"
                     cursor="default"
                     fill="#637cef"
-                    height="NaN"
+                    height="239.0625"
                     opacity="1"
                     role="option"
                     rx="3"
@@ -3604,7 +3585,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                     transform="translate(1.5, 0)"
                     width="16"
                     x="-28"
-                    y="NaN"
+                    y="35.9375"
                   />
                 </g>
                 <text
@@ -3615,7 +3596,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                   text-anchor="middle"
                   transform="translate(1.5, 0)"
                   x="-20"
-                  y="NaN"
+                  y="29.9375"
                 >
                   15
                 </text>
@@ -3634,13 +3615,13 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                   transform="translate(9.5, 0)"
                   x1="28.999999999999993"
                   x2="-28"
-                  y1="NaN"
-                  y2="NaN"
+                  y1="-43.75"
+                  y2="-123.4375"
                 />
                 <circle
                   aria-label="A. Line 1, 20."
                   cx="28.999999999999993"
-                  cy="NaN"
+                  cy="-43.75"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -3653,7 +3634,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 <circle
                   aria-label="B. Line 1, 25."
                   cx="-28"
-                  cy="NaN"
+                  cy="-123.4375"
                   fill="var(--colorNeutralBackground1)"
                   opacity="0"
                   r="8"
@@ -3668,23 +3649,23 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Bar"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3692,11 +3673,11 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Bar
                 </div>
@@ -3704,7 +3685,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               <button
                 aria-label="Line 1"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3712,11 +3693,11 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Line 1
                 </div>
@@ -3725,17 +3706,12 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
           </div>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_3n_"
           style="opacity: 0;"
         />
         <div
-          class="fui-cart__tooltip"
-          id="tooltip__r_3n_"
-          style="opacity: 0;"
-        />
-        <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_3n_"
           style="opacity: 0;"
         />
@@ -3752,17 +3728,17 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Air Quality Index Heatmap. Heat map chart with 12 data points. The X axis displays Time of Day. The Y axis displays City. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
+            class="fui-charts-resp-child__chart"
             height="350"
             role="region"
             style="display: block;"
@@ -3784,7 +3760,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               />
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
               width="6"
               x="19"
@@ -3792,7 +3768,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
             />
             <text
               aria-describedby="tooltip-_r_4s_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_4r_"
               text-anchor="middle"
               x="22"
@@ -3804,7 +3780,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               hidden=""
             />
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -4179,7 +4155,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
               transform="rotate(-90, 16, 157.5)"
               width="6"
@@ -4188,7 +4164,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
             />
             <text
               aria-describedby="tooltip-_r_4u_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_4t_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
@@ -4203,7 +4179,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
           </svg>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_4q_"
           style="opacity: 0;"
         />
@@ -4220,17 +4196,17 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Weekly Attendance Patterns. Heat map chart with 12 data points. The X axis displays Day of Week. The Y axis displays Class Period. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
+            class="fui-charts-resp-child__chart"
             height="350"
             role="region"
             style="display: block;"
@@ -4252,7 +4228,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               />
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
               width="6"
               x="19"
@@ -4260,7 +4236,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
             />
             <text
               aria-describedby="tooltip-_r_52_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_51_"
               text-anchor="middle"
               x="22"
@@ -4272,7 +4248,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               hidden=""
             />
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -4647,7 +4623,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
               transform="rotate(-90, 16, 157.5)"
               width="6"
@@ -4656,7 +4632,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
             />
             <text
               aria-describedby="tooltip-_r_54_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_53_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
@@ -4671,7 +4647,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
           </svg>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_50_"
           style="opacity: 0;"
         />
@@ -4688,17 +4664,17 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
+            class="fui-charts-resp-child__chart"
             height="350"
             role="region"
             style="display: block;"
@@ -4720,7 +4696,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               />
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -4875,7 +4851,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
           </svg>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_4o_"
           style="opacity: 0;"
         />
@@ -4892,18 +4868,18 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fuicm-root group/fui-scatter-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="BMI Distribution ScatterThe X axis displays Height (cm). The Y axis displays Weight (kg). "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -4915,7 +4891,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 255)"
             >
               <path
                 class="domain"
@@ -4981,19 +4957,19 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               </g>
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
               width="6"
               x="19"
-              y="NaN"
+              y="296"
             />
             <text
               aria-describedby="tooltip-_r_4d_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_4c_"
               text-anchor="middle"
               x="22"
-              y="NaN"
+              y="302"
             >
               ...
             </text>
@@ -5001,7 +4977,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               hidden=""
             />
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -5011,13 +4987,13 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,255.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,255.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5036,7 +5012,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,196.75)"
               >
                 <line
                   stroke="currentColor"
@@ -5055,7 +5031,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,138)"
               >
                 <line
                   stroke="currentColor"
@@ -5074,7 +5050,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,79.25)"
               >
                 <line
                   stroke="currentColor"
@@ -5093,7 +5069,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5119,39 +5095,182 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="Underweight, series 3 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <circle
+                    aria-label="158. Underweight, 45."
+                    cx="52.800000000000004"
+                    cy="149.25"
+                    data-is-focusable="true"
+                    fill="#d62728"
+                    id="circle_r_47__2_0"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#d62728"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="162. Underweight, 48."
+                    cx="41.6"
+                    cy="142.2"
+                    data-is-focusable="true"
+                    fill="#d62728"
+                    id="circle_r_47__2_1"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#d62728"
+                    tabindex="0"
+                  />
+                  ,
+                </g>
                 <g
                   aria-label="Overweight, series 2 of 3 with 5 data points."
                   role="region"
-                />
+                >
+                  <circle
+                    aria-label="165. Overweight, 68."
+                    cx="33.199999999999996"
+                    cy="95.19999999999999"
+                    data-is-focusable="true"
+                    fill="#2ca02c"
+                    id="circle_r_47__1_0"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#2ca02c"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="170. Overweight, 75."
+                    cx="19.200000000000003"
+                    cy="78.75"
+                    data-is-focusable="true"
+                    fill="#2ca02c"
+                    id="circle_r_47__1_1"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#2ca02c"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="180. Overweight, 95."
+                    cx="-8.800000000000004"
+                    cy="31.75000000000001"
+                    data-is-focusable="true"
+                    fill="#2ca02c"
+                    id="circle_r_47__1_2"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#2ca02c"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="172. Overweight, 82."
+                    cx="13.600000000000001"
+                    cy="62.30000000000001"
+                    data-is-focusable="true"
+                    fill="#2ca02c"
+                    id="circle_r_47__1_3"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#2ca02c"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="177. Overweight, 88."
+                    cx="-0.4000000000000039"
+                    cy="48.2"
+                    data-is-focusable="true"
+                    fill="#2ca02c"
+                    id="circle_r_47__1_4"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#2ca02c"
+                    tabindex="0"
+                  />
+                  ,
+                </g>
                 <g
                   aria-label="Normal, series 1 of 3 with 3 data points."
                   role="region"
-                />
+                >
+                  <circle
+                    aria-label="160. Normal, 52."
+                    cx="47.2"
+                    cy="132.79999999999998"
+                    data-is-focusable="true"
+                    fill="#ff7f0e"
+                    id="circle_r_47__0_0"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#ff7f0e"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="175. Normal, 70."
+                    cx="5.200000000000003"
+                    cy="90.50000000000001"
+                    data-is-focusable="true"
+                    fill="#ff7f0e"
+                    id="circle_r_47__0_1"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#ff7f0e"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="168. Normal, 58."
+                    cx="24.799999999999997"
+                    cy="118.7"
+                    data-is-focusable="true"
+                    fill="#ff7f0e"
+                    id="circle_r_47__0_2"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#ff7f0e"
+                    tabindex="0"
+                  />
+                  ,
+                </g>
               </g>
             </g>
             <rect
-              class="fui-cart_svgTooltip"
+              class=""
               height="3"
-              transform="rotate(-90, 16, NaN)"
+              transform="rotate(-90, 16, 137.5)"
               width="6"
               x="13"
-              y="NaN"
+              y="131.5"
             />
             <text
               aria-describedby="tooltip-_r_4f_"
-              class="fui-cart__axisTitle"
+              class=""
               id="tooltip-host_r_4e_"
               text-anchor="middle"
-              transform="rotate(-90, 16, NaN)"
+              transform="rotate(-90, 16, 137.5)"
               x="16"
-              y="NaN"
+              y="137.5"
             >
               Weight (kg)
             </text>
@@ -5161,23 +5280,23 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Normal"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5185,7 +5304,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                 type="button"
               >
                 <svg
-                  class="fui-legend__shape"
+                  class=""
                   height="14"
                   style="width: 14px; height: 14px;"
                   transform="rotate(0, 0, 0)"
@@ -5200,7 +5319,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                   />
                 </svg>
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Normal
                 </div>
@@ -5208,7 +5327,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <button
                 aria-label="Overweight"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5216,7 +5335,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                 type="button"
               >
                 <svg
-                  class="fui-legend__shape"
+                  class=""
                   height="14"
                   style="width: 14px; height: 14px;"
                   transform="rotate(0, 0, 0)"
@@ -5231,7 +5350,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                   />
                 </svg>
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Overweight
                 </div>
@@ -5239,7 +5358,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <button
                 aria-label="Underweight"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5247,7 +5366,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                 type="button"
               >
                 <svg
-                  class="fui-legend__shape"
+                  class=""
                   height="14"
                   style="width: 14px; height: 14px;"
                   transform="rotate(0, 0, 0)"
@@ -5262,7 +5381,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                   />
                 </svg>
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Underweight
                 </div>
@@ -5283,18 +5402,18 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fuicm-root group/fui-scatter-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Chart. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -5306,7 +5425,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -5353,7 +5472,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -5363,13 +5482,13 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5388,7 +5507,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -5407,7 +5526,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -5426,7 +5545,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -5445,7 +5564,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5471,43 +5590,116 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="C, series 3 of 3 with 1 data points."
                   role="region"
-                />
+                >
+                  <circle
+                    aria-label="50. C, 40."
+                    cx="-14"
+                    cy="43.18181818181819"
+                    data-is-focusable="true"
+                    fill="#2aa0a4"
+                    id="circle_r_3r__2_0"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#2aa0a4"
+                    tabindex="0"
+                  />
+                  ,
+                </g>
                 <g
                   aria-label="B, series 2 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <circle
+                    aria-label="20. B, 30."
+                    cx="22"
+                    cy="101.13636363636365"
+                    data-is-focusable="true"
+                    fill="#e3008c"
+                    id="circle_r_3r__1_0"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#e3008c"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="40. B, 35."
+                    cx="-1.9999999999999982"
+                    cy="72.15909090909092"
+                    data-is-focusable="true"
+                    fill="#e3008c"
+                    id="circle_r_3r__1_1"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#e3008c"
+                    tabindex="0"
+                  />
+                  ,
+                </g>
                 <g
                   aria-label="A, series 1 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <circle
+                    aria-label="10. A, 20."
+                    cx="34"
+                    cy="159.0909090909091"
+                    data-is-focusable="true"
+                    fill="#637cef"
+                    id="circle_r_3r__0_0"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#637cef"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="30. A, 25."
+                    cx="10"
+                    cy="130.11363636363635"
+                    data-is-focusable="true"
+                    fill="#637cef"
+                    id="circle_r_3r__0_1"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#637cef"
+                    tabindex="0"
+                  />
+                  ,
+                </g>
               </g>
             </g>
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="A"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5515,7 +5707,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 type="button"
               >
                 <svg
-                  class="fui-legend__shape"
+                  class=""
                   height="14"
                   style="width: 14px; height: 14px;"
                   transform="rotate(0, 0, 0)"
@@ -5530,7 +5722,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                   />
                 </svg>
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   A
                 </div>
@@ -5538,7 +5730,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <button
                 aria-label="B"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5546,7 +5738,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 type="button"
               >
                 <svg
-                  class="fui-legend__shape"
+                  class=""
                   height="14"
                   style="width: 14px; height: 14px;"
                   transform="rotate(0, 0, 0)"
@@ -5561,7 +5753,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                   />
                 </svg>
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   B
                 </div>
@@ -5569,7 +5761,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <button
                 aria-label="C"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5577,7 +5769,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 type="button"
               >
                 <svg
-                  class="fui-legend__shape"
+                  class=""
                   height="14"
                   style="width: 14px; height: 14px;"
                   transform="rotate(0, 0, 0)"
@@ -5592,7 +5784,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                   />
                 </svg>
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   C
                 </div>
@@ -5613,18 +5805,18 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fui-cart__root fui-charts-resp-child__root"
+        class="fuicm-root group/fui-cartesian-chart fuicm-root group/fui-scatter-chart fui-charts-resp-child__root"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Chart. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart fui-charts-resp-child__chart"
-            height="NaN"
+            class="fui-charts-resp-child__chart"
+            height="310"
             role="region"
             style="display: block;"
             width="0"
@@ -5636,7 +5828,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -5702,7 +5894,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -5712,13 +5904,13 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5737,7 +5929,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -5756,7 +5948,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -5775,7 +5967,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -5794,7 +5986,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5820,39 +6012,111 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="Overweight, series 2 of 2 with 3 data points."
                   role="region"
-                />
+                >
+                  <circle
+                    aria-label="165. Overweight, 68."
+                    cx="22.499999999999993"
+                    cy="101.6"
+                    data-is-focusable="true"
+                    fill="#e3008c"
+                    id="circle_r_41__1_0"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#e3008c"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="170. Overweight, 75."
+                    cx="10"
+                    cy="83.75"
+                    data-is-focusable="true"
+                    fill="#e3008c"
+                    id="circle_r_41__1_1"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#e3008c"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="180. Overweight, 95."
+                    cx="-14.999999999999996"
+                    cy="32.750000000000014"
+                    data-is-focusable="true"
+                    fill="#e3008c"
+                    id="circle_r_41__1_2"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#e3008c"
+                    tabindex="0"
+                  />
+                  ,
+                </g>
                 <g
                   aria-label="Normal, series 1 of 2 with 2 data points."
                   role="region"
-                />
+                >
+                  <circle
+                    aria-label="160. Normal, 52."
+                    cx="35"
+                    cy="142.4"
+                    data-is-focusable="true"
+                    fill="#637cef"
+                    id="circle_r_41__0_0"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#637cef"
+                    tabindex="0"
+                  />
+                  ,
+                  <circle
+                    aria-label="175. Normal, 70."
+                    cx="-2.5000000000000036"
+                    cy="96.50000000000001"
+                    data-is-focusable="true"
+                    fill="#637cef"
+                    id="circle_r_41__0_1"
+                    opacity="1"
+                    r="4"
+                    role="img"
+                    stroke="#637cef"
+                    tabindex="0"
+                  />
+                  ,
+                </g>
               </g>
             </g>
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="true"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Normal"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5860,7 +6124,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 type="button"
               >
                 <svg
-                  class="fui-legend__shape"
+                  class=""
                   height="14"
                   style="width: 14px; height: 14px;"
                   transform="rotate(0, 0, 0)"
@@ -5875,7 +6139,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                   />
                 </svg>
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Normal
                 </div>
@@ -5883,7 +6147,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <button
                 aria-label="Overweight"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5891,7 +6155,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 type="button"
               >
                 <svg
-                  class="fui-legend__shape"
+                  class=""
                   height="14"
                   style="width: 14px; height: 14px;"
                   transform="rotate(0, 0, 0)"
@@ -5906,7 +6170,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                   />
                 </svg>
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Overweight
                 </div>

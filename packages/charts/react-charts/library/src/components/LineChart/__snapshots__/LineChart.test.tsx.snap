@@ -3,17 +3,16 @@
 exports[`Line chart rendering Should render the Line chart with numeric x-axis data 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-line-chart"
+    class="group/fui-cartesian-chart group/fui-line-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -244,7 +243,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -538,7 +537,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -621,17 +620,16 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
 exports[`Line chart rendering Should render the Line chart with points in multiple shapes 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-line-chart"
+    class="group/fui-cartesian-chart group/fui-line-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -862,7 +860,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -1152,7 +1150,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -1268,17 +1266,16 @@ exports[`Line chart rendering Should render the Line chart with points in multip
 exports[`LineChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-line-chart"
+    class="group/fui-cartesian-chart group/fui-line-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -1509,7 +1506,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -1804,7 +1801,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -1948,17 +1945,16 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
 exports[`LineChart - mouse events Should render customized callout per stack on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-line-chart"
+    class="group/fui-cartesian-chart group/fui-line-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -2189,7 +2185,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -2484,7 +2480,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -2601,17 +2597,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root fuicm-root group/fui-line-chart"
+        class="group/fui-cartesian-chart group/fui-line-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -2842,7 +2837,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -3136,7 +3131,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -3217,17 +3212,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root fuicm-root group/fui-line-chart"
+      class="group/fui-cartesian-chart group/fui-line-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -3458,7 +3452,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -3752,7 +3746,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -3892,17 +3886,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root fuicm-root group/fui-line-chart"
+        class="group/fui-cartesian-chart group/fui-line-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -4133,7 +4126,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -4427,7 +4420,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -4508,17 +4501,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root fuicm-root group/fui-line-chart"
+      class="group/fui-cartesian-chart group/fui-line-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -4749,7 +4741,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -5043,7 +5035,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -5183,17 +5175,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root fuicm-root group/fui-line-chart"
+        class="group/fui-cartesian-chart group/fui-line-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -5424,7 +5415,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -5718,7 +5709,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -5809,17 +5800,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root fuicm-root group/fui-line-chart"
+      class="group/fui-cartesian-chart group/fui-line-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -6050,7 +6040,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -6344,7 +6334,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -6494,17 +6484,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root fuicm-root group/fui-line-chart"
+        class="group/fui-cartesian-chart group/fui-line-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="50"
             role="region"
             style="display: block;"
@@ -6735,7 +6724,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -7033,17 +7022,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root fuicm-root group/fui-line-chart"
+      class="group/fui-cartesian-chart group/fui-line-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="50"
           role="region"
           style="display: block;"
@@ -7274,7 +7262,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -7631,17 +7619,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root fuicm-root group/fui-line-chart"
+        class="group/fui-cartesian-chart group/fui-line-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -7872,7 +7859,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -8166,7 +8153,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -8247,17 +8234,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root fuicm-root group/fui-line-chart"
+      class="group/fui-cartesian-chart group/fui-line-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -8488,7 +8474,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -8782,7 +8768,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -8922,17 +8908,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root fuicm-root group/fui-line-chart"
+        class="group/fui-cartesian-chart group/fui-line-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -9240,7 +9225,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -9534,7 +9519,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -9611,7 +9596,7 @@ Object {
           </div>
         </div>
         <div
-          class="fui-cart__tooltip"
+          class=""
           id="tooltip__r_7s_"
           style="opacity: 0;"
         />
@@ -9620,17 +9605,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root fuicm-root group/fui-line-chart"
+      class="group/fui-cartesian-chart group/fui-line-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -9938,7 +9922,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -10232,7 +10216,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -10309,7 +10293,7 @@ Object {
         </div>
       </div>
       <div
-        class="fui-cart__tooltip"
+        class=""
         id="tooltip__r_7s_"
         style="opacity: 0;"
       />
@@ -10377,17 +10361,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root fuicm-root group/fui-line-chart"
+        class="group/fui-cartesian-chart group/fui-line-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -10618,7 +10601,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -10912,7 +10895,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -10993,17 +10976,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root fuicm-root group/fui-line-chart"
+      class="group/fui-cartesian-chart group/fui-line-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -11234,7 +11216,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -11528,7 +11510,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -11663,17 +11645,16 @@ Object {
 exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-line-chart"
+    class="group/fui-cartesian-chart group/fui-line-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -11809,7 +11790,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -12103,7 +12084,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -12186,17 +12167,16 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-line-chart"
+    class="group/fui-cartesian-chart group/fui-line-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -12332,7 +12312,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -12626,7 +12606,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -12713,17 +12693,16 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
     dir="ltr"
   >
     <div
-      class="fui-cart__root fuicm-root group/fui-line-chart"
+      class="group/fui-cartesian-chart group/fui-line-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -12954,7 +12933,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -13248,7 +13227,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"

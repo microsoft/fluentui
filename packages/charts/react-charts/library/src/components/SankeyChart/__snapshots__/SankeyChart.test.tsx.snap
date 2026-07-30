@@ -686,7 +686,9 @@ Object {
         id="tooltip-_r_32_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Sankey Chart
       </div>
       <span
@@ -1986,7 +1988,9 @@ Object {
         id="tooltip-_r_3a_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Sankey Chart
       </div>
       <span
@@ -3684,7 +3688,9 @@ Object {
         id="tooltip-_r_2a_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Sankey Chart
       </div>
       <span
@@ -5895,7 +5901,9 @@ Object {
         id="tooltip-_r_2i_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Sankey Chart
       </div>
       <span
@@ -7234,7 +7242,9 @@ Object {
         id="tooltip-_r_2q_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Sankey Chart
       </div>
       <span
@@ -9123,7 +9133,9 @@ Object {
         id="tooltip-_r_56_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Sankey Chart
       </div>
       <span
@@ -10100,7 +10112,9 @@ Object {
         id="tooltip-_r_5e_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Sankey Chart
       </div>
       <span
@@ -12714,7 +12728,9 @@ Object {
         id="tooltip-_r_42_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Sankey Chart
       </div>
       <span

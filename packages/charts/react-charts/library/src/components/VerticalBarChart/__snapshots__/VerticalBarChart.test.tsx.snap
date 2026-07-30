@@ -3,17 +3,16 @@
 exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -301,7 +300,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -493,7 +492,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -576,17 +575,16 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -874,7 +872,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -1066,7 +1064,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -1153,17 +1151,16 @@ exports[`Theme Change Should reflect theme change 1`] = `
     dir="ltr"
   >
     <div
-      class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+      class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -1451,7 +1448,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -1643,7 +1640,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -1738,17 +1735,16 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart with data 2`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -2036,7 +2032,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -2228,7 +2224,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -2311,17 +2307,16 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 exports[`Vertical bar chart rendering Should render the vertical bar chart with all negative y value bars correctly 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -2609,7 +2604,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -2801,7 +2796,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -2884,17 +2879,16 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 exports[`Vertical bar chart rendering Should render the vertical bar chart with numeric x-axis data 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -3182,7 +3176,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -3374,7 +3368,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -3457,17 +3451,16 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 exports[`Vertical bar chart rendering Should render the vertical bar chart with string x-axis data 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 4 bars. The X axis displays categories. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -3565,7 +3558,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -3790,7 +3783,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -3833,17 +3826,16 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 exports[`Vertical bar chart rendering should render the vertical bar chart with some positive and some negative y value bars correctly 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -4131,7 +4123,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -4342,7 +4334,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -4425,17 +4417,16 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
 exports[`VerticalBarChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -4723,7 +4714,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -4915,7 +4906,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -5056,17 +5047,16 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
 exports[`VerticalBarChart - mouse events Should render customized callout on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -5354,7 +5344,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -5546,7 +5536,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -5664,17 +5654,16 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
 
 exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -5962,7 +5951,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -6124,7 +6113,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
@@ -6205,17 +6194,16 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
 
 exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -6503,7 +6491,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -6695,7 +6683,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
@@ -6776,17 +6764,16 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
 
 exports[`VerticalBarChart snapShot testing Should render rounded corners on bars 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -7074,7 +7061,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -7266,7 +7253,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
@@ -7347,17 +7334,16 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
 
 exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -7645,7 +7631,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -7837,7 +7823,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
@@ -7918,17 +7904,16 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
 
 exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -8216,7 +8201,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -8408,7 +8393,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
@@ -8499,17 +8484,16 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
 
 exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="50"
       role="region"
       style="display: block;"
@@ -8797,7 +8781,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -8993,17 +8977,16 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
 
 exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -9291,7 +9274,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -9480,7 +9463,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
@@ -9561,17 +9544,16 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 
 exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -9957,7 +9939,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -10149,7 +10131,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
@@ -10226,7 +10208,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     </div>
   </div>
   <div
-    class="fui-cart__tooltip"
+    class=""
     id="tooltip__r_76_"
     style="opacity: 0;"
   />
@@ -10235,17 +10217,16 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
 
 exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -10631,7 +10612,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -10823,7 +10804,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
@@ -10902,7 +10883,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
   <span
     aria-hidden="true"
     id="fui_measurement_span"
-    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-size: var(--fontSizeBase100); font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre;"
   >
     26,000
   </span>
@@ -10911,17 +10892,16 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
 
 exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 <div
-  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -11209,7 +11189,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -11401,7 +11381,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"

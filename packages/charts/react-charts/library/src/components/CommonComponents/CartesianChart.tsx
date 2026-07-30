@@ -3,7 +3,7 @@
 import * as React from 'react';
 
 import type { ModifiedCartesianChartProps } from '../../index';
-import { useCartesianChartStyles } from './useCartesianChartStyles.styles';
+import { cartesianYAxisClassName, useCartesianChartStyles } from './useCartesianChartStyles.styles';
 import { select as d3Select } from 'd3-selection';
 import type { IAxisData, IMargins } from '../../utilities/index';
 import {
@@ -25,6 +25,7 @@ import {
   DEFAULT_WRAP_WIDTH,
   autoLayoutXAxisLabels,
   getChartTitleInlineStyles,
+  CARTESIAN_XAXIS_TEXT_SELECTOR,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -89,7 +90,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   React.useEffect(() => {
     _fitParentContainer();
     if (props.showYAxisLables) {
-      const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
+      const maxYAxisLabelLength = calculateMaxYAxisLabelLength();
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
       }
@@ -118,7 +119,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     prevHeightRef.current = props.height;
 
     if (props.showYAxisLables) {
-      const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
+      const maxYAxisLabelLength = calculateMaxYAxisLabelLength();
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
       }
@@ -147,7 +148,19 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     return <ChartPopover {...calloutProps} />;
   }
 
-  function calculateMaxYAxisLabelLength(className: string): number {
+  /**
+   * `calculateLongestLabelWidth` uses the selector ONLY to read the real axis font off a
+   * rendered tick label; when it matches nothing the measurement silently falls back to a
+   * hardcoded `600 10px "Segoe UI"` (utilities.ts).
+   *
+   * This used to take `classes.yAxis` — a `mergeClasses` composition — and interpolate it into
+   * `` `.${className} text` ``, which yields a descendant chain (`.fui-cart__yAxis .f1x… text`)
+   * that can never match. The measurement has therefore been running on the fallback font for
+   * the whole life of the v9 chart, and its result feeds `startFromX` → `margins.left`. The
+   * class is now the single hashed module local, so the selector matches and the y-axis margin
+   * is sized from the font the labels are actually painted with.
+   */
+  function calculateMaxYAxisLabelLength(): number {
     const formatTickLabel = (str: string) => {
       if (props.showYAxisLablesTooltip) {
         return truncateString(str, props.noOfCharsToTruncate || 4);
@@ -157,7 +170,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     };
     return calculateLongestLabelWidth(
       _yAxisTickText.current.map(label => formatTickLabel(label)),
-      `.${className} text`,
+      `.${cartesianYAxisClassName} text`,
     );
   }
 
@@ -573,10 +586,23 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     );
   }
 
+  /**
+   * Every branch measures x-axis tick text through `calculateLongestLabelWidth`, whose
+   * selector argument exists only to locate a rendered tick label and copy its font; an
+   * unmatched selector silently degrades to a hardcoded `600 10px "Segoe UI"`.
+   *
+   * These four sites used to interpolate `classes.xAxis` — a `mergeClasses` composition — into
+   * `` `.${classes.xAxis} text` ``, producing a descendant chain that matched nothing. They now
+   * use `CARTESIAN_XAXIS_TEXT_SELECTOR`, the constant `createWrapOfXLabels` already measures
+   * with (utilities.ts), built from the single retained identity class the `xAxis` slot still
+   * emits verbatim. The two halves of the wrapping feature therefore agree on the font for the
+   * first time; on a host where `fontFamilyBase` resolves to something other than Segoe UI the
+   * measured widths — and hence the reserved label space — change accordingly.
+   */
   function _calcMaxLabelWidthWithTransform(x: (string | number)[]) {
     // Case: rotated labels
     if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
-      const longestLabelWidth = calculateLongestLabelWidth(x, `.${classes.xAxis} text`);
+      const longestLabelWidth = calculateLongestLabelWidth(x, CARTESIAN_XAXIS_TEXT_SELECTOR);
       return Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
     }
 
@@ -587,7 +613,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
       });
 
-      const longestLabelWidth = calculateLongestLabelWidth(tickLabels, `.${classes.xAxis} text`);
+      const longestLabelWidth = calculateLongestLabelWidth(tickLabels, CARTESIAN_XAXIS_TEXT_SELECTOR);
       return Math.ceil(longestLabelWidth);
     }
 
@@ -602,12 +628,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
       // This approach works well in most cases, since overflow typically occurs only when
       // a single word exceeds the specified width — otherwise, the text will wrap as expected.
-      const longestLabelWidth = calculateLongestLabelWidth(words, `.${classes.xAxis} text`);
+      const longestLabelWidth = calculateLongestLabelWidth(words, CARTESIAN_XAXIS_TEXT_SELECTOR);
       return Math.max(Math.ceil(longestLabelWidth), DEFAULT_WRAP_WIDTH);
     }
 
     // Default case
-    const longestLabelWidth = calculateLongestLabelWidth(x, `.${classes.xAxis} text`);
+    const longestLabelWidth = calculateLongestLabelWidth(x, CARTESIAN_XAXIS_TEXT_SELECTOR);
     return Math.ceil(longestLabelWidth);
   }
 

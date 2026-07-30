@@ -3,17 +3,16 @@
 exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -92,7 +91,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -456,23 +455,23 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="Metadata1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -480,11 +479,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata1
             </div>
@@ -492,7 +491,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <button
             aria-label="Metadata2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -500,11 +499,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata2
             </div>
@@ -512,7 +511,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <button
             aria-label="Metadata3"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -520,11 +519,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata3
             </div>
@@ -532,7 +531,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <button
             aria-label="Supported Builds"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -540,11 +539,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Supported Builds
             </div>
@@ -559,17 +558,16 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
 exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -648,7 +646,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -1012,23 +1010,23 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="Metadata1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1036,11 +1034,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata1
             </div>
@@ -1048,7 +1046,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <button
             aria-label="Metadata2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1056,11 +1054,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata2
             </div>
@@ -1068,7 +1066,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <button
             aria-label="Metadata3"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1076,11 +1074,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata3
             </div>
@@ -1088,7 +1086,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <button
             aria-label="Supported Builds"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1096,11 +1094,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Supported Builds
             </div>
@@ -1115,17 +1113,16 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
 exports[`Vertical stacked bar chart rendering Should render the vertical stacked bar chart with numeric x-axis data 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -1356,7 +1353,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -1573,23 +1570,23 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="Metadata1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1597,11 +1594,11 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata1
             </div>
@@ -1609,7 +1606,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           <button
             aria-label="Metadata2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1617,11 +1614,11 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata2
             </div>
@@ -1636,17 +1633,16 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
 exports[`VerticalStackedBarChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -1877,7 +1873,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -2094,61 +2090,61 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: unset; flex-wrap: wrap;"
       >
         <div
-          class="fui-legend__resizableArea"
+          class=""
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Metadata1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Metadata1
               </div>
             </button>
           </div>
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Metadata2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Metadata2
               </div>
@@ -2212,17 +2208,16 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
 exports[`VerticalStackedBarChart - mouse events Should render customized callout on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -2453,7 +2448,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -2670,61 +2665,61 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: unset; flex-wrap: wrap;"
       >
         <div
-          class="fui-legend__resizableArea"
+          class=""
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Metadata1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Metadata1
               </div>
             </button>
           </div>
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Metadata2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Metadata2
               </div>
@@ -2765,17 +2760,16 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
 exports[`VerticalStackedBarChart - mouse events Should render customized callout per stack on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays values. The Y axis displays values. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -3006,7 +3000,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -3266,84 +3260,84 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: unset; flex-wrap: wrap;"
       >
         <div
-          class="fui-legend__resizableArea"
+          class=""
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Metadata1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Metadata1
               </div>
             </button>
           </div>
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Metadata2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Metadata2
               </div>
             </button>
           </div>
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Line1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 4px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 4px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Line1
               </div>
@@ -3406,17 +3400,16 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
 
 exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -3647,7 +3640,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -3840,23 +3833,23 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -3864,11 +3857,11 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -3876,7 +3869,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -3884,11 +3877,11 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>
@@ -3901,17 +3894,16 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
 
 exports[`VerticalStackedBarChart snapShot testing Should render gradients on bars 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -4142,7 +4134,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -4359,23 +4351,23 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -4383,11 +4375,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -4395,7 +4387,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -4403,11 +4395,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>
@@ -4420,17 +4412,16 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
 
 exports[`VerticalStackedBarChart snapShot testing Should render rounded corners on bars 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -4661,7 +4652,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -4878,23 +4869,23 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -4902,11 +4893,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -4914,7 +4905,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -4922,11 +4913,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>
@@ -4939,17 +4930,16 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
 
 exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChart correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -5180,7 +5170,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -5397,23 +5387,23 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -5421,11 +5411,11 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -5433,7 +5423,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -5441,11 +5431,11 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>
@@ -5458,17 +5448,16 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
 
 exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -5699,7 +5688,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -5916,61 +5905,61 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style="justify-content: unset; flex-wrap: wrap;"
     >
       <div
-        class="fui-legend__resizableArea"
+        class=""
         style="display: flex; flex-wrap: wrap; overflow: auto;"
       >
         <div
-          class="fui-legend__legendContainer"
+          class=""
         >
           <button
             aria-label="Metadata1"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata1
             </div>
           </button>
         </div>
         <div
-          class="fui-legend__legendContainer"
+          class=""
         >
           <button
             aria-label="Metadata2"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Metadata2
             </div>
@@ -5984,17 +5973,16 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
 
 exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="50"
       role="region"
       style="display: block;"
@@ -6225,7 +6213,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -6446,17 +6434,16 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
 
 exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -6687,7 +6674,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -6900,23 +6887,23 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6924,11 +6911,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -6936,7 +6923,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6944,11 +6931,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>
@@ -6961,17 +6948,16 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
 
 exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -7202,7 +7188,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -7409,23 +7395,23 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7433,11 +7419,11 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -7445,7 +7431,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7453,11 +7439,11 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>
@@ -7470,17 +7456,16 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
 
 exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -7788,7 +7773,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -8005,23 +7990,23 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -8029,11 +8014,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -8041,7 +8026,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -8049,11 +8034,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>
@@ -8062,7 +8047,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     </div>
   </div>
   <div
-    class="fui-cart__tooltip"
+    class=""
     id="tooltip__r_2o_"
     style="opacity: 0;"
   />
@@ -8071,17 +8056,16 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
 
 exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -8389,7 +8373,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -8606,23 +8590,23 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -8630,11 +8614,11 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -8642,7 +8626,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -8650,11 +8634,11 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>
@@ -8665,7 +8649,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
   <span
     aria-hidden="true"
     id="fui_measurement_span"
-    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-size: var(--fontSizeBase100); font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre;"
   >
     20
   </span>
@@ -8674,17 +8658,16 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
 
 exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="group/fui-cartesian-chart"
   id="chart_"
   role="presentation"
 >
   <div
-    class="fui-cart__chartWrapper"
+    class=""
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      class="fui-cart__chart"
       height="300"
       role="region"
       style="display: block;"
@@ -8915,7 +8898,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         </g>
       </g>
       <g
-        class="fui-cart__yAxis"
+        class=""
         fill="none"
         font-family="sans-serif"
         font-size="10"
@@ -9132,23 +9115,23 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
     </svg>
   </div>
   <div
-    class="fui-cart__legendContainer"
+    class=""
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="Metadata1"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -9156,11 +9139,11 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata1
           </div>
@@ -9168,7 +9151,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         <button
           aria-label="Metadata2"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -9176,11 +9159,11 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Metadata2
           </div>

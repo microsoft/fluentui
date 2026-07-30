@@ -1,164 +1,128 @@
-'use client';
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file no longer carries a
+ * `'use client'` directive. After conversion it calls no React hook — both `makeStyles`'s
+ * `useStyles()` and the `useRtl()` branch are gone (the RTL rule is now `@variant rtl` in
+ * the module) — so `enforce-use-client` reports the directive as unnecessary. Same split as
+ * react-badge's Badge (no directive) vs CounterBadge (kept it because it still calls a hook).
+ * `CartesianChart.tsx`, which does use hooks, keeps its own.
+ */
 
-import type { GriffelStyle } from '@griffel/react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import type { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
-import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { CARTESIAN_XAXIS_CLASSNAME, HighContrastSelector, useRtl } from '../../utilities/utilities';
-import { getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
+import { CARTESIAN_XAXIS_CLASSNAME } from '../../utilities/utilities';
+
+import styles from './CartesianChart.module.css';
 
 /**
+ * Public identity classes for CartesianChart.
+ *
+ * DEPRECATED FOR STYLING INTERNALS — deliberately NOT tagged `@deprecated`, matching
+ * react-popover and this package's DonutChart: the tag propagates to every re-export
+ * specifier and `@typescript-eslint/no-deprecated` then errors on each. The narrowed type is
+ * what enforces D16.5; the tag would only buy lint noise.
+ *
+ * The only supported way to style a Fluent component's internals is the per-slot `styles`
+ * prop. `root` is retained as the component's public identity class — the Tailwind named-group
+ * marker (DECISIONS.md D15.1) — usable as a selector and as a `group-*` variant target. The
+ * per-slot BEM statics (`fui-cart__chartWrapper`, `fui-cart__plotContainer`,
+ * `fui-cart__axisTitle`, `fui-cart__yAxis`, `fui-cart__opacityChangeOnHover`,
+ * `fui-cart__legendContainer`, `fui-cart_svgTooltip`, `fui-cart__shapeStyles`,
+ * `fui-cart__descriptionMessage`, `fui-cart__hover`, `fui-cart__tooltip`,
+ * `fui-cart__axisAnnotation`, `fui-cart__chartTitle`, `fui-cart__chart`,
+ * `fui-cart__annotationLayer`) were removed with the statics sweep (DECISIONS.md D16.1 /
+ * D16.5): there is no public class-name handle on component internals.
+ *
+ * `xAxis` is the ONE exception and is a RETAINED IDENTITY CONSTANT, not a leftover static.
+ * `CARTESIAN_XAXIS_CLASSNAME` (`utilities/utilities.ts`) is interpolated into two selectors
+ * that must keep matching real DOM:
+ *
+ *   - `CARTESIAN_XAXIS_TEXT_SELECTOR` = `` `.${CARTESIAN_XAXIS_CLASSNAME} text` ``, passed to
+ *     `getTextSize()` from `createWrapOfXLabels` (utilities.ts) to measure a candidate label
+ *     line against the real axis font, and
+ *   - `` `.${CARTESIAN_XAXIS_CLASSNAME} tspan` ``, queried in the same function to read the
+ *     rendered line height.
+ *
+ * Both are LIVE today because the constant is a single, selector-safe token that reaches the
+ * DOM verbatim. The conversion keeps it doing exactly that (see `xAxis` below); dropping it
+ * would silently disable x-axis label wrapping.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + cartesianchartClassNames.root` is an invalid selector. Use
+ * `fuiSelector(cartesianchartClassNames.root)` from `@fluentui/react-utilities` at every
+ * selector site (DECISIONS.md D16.5).
+ *
  * @internal
  */
-export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
-  root: 'fui-cart__root',
-  chartWrapper: 'fui-cart__chartWrapper',
-  plotContainer: 'fui-cart__plotContainer',
-  axisTitle: 'fui-cart__axisTitle',
+export const cartesianchartClassNames: { root: string; xAxis: string } = {
+  root: 'group/fui-cartesian-chart',
   xAxis: CARTESIAN_XAXIS_CLASSNAME,
-  yAxis: 'fui-cart__yAxis',
-  opacityChangeOnHover: 'fui-cart__opacityChangeOnHover',
-  legendContainer: 'fui-cart__legendContainer',
-  svgTooltip: 'fui-cart_svgTooltip',
-  shapeStyles: 'fui-cart__shapeStyles',
-  descriptionMessage: 'fui-cart__descriptionMessage',
-  hover: 'fui-cart__hover',
-  tooltip: 'fui-cart__tooltip',
-  axisAnnotation: 'fui-cart__axisAnnotation',
-  chartTitle: 'fui-cart__chartTitle',
-  chart: 'fui-cart__chart',
-  annotationLayer: 'fui-cart__annotationLayer',
 };
 
 /**
- * Base Styles
- */
-const useStyles = makeStyles({
-  root: {
-    ...typographyStyles.body1,
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-    flexDirection: 'column',
-    overflow: 'hidden',
-    textAlign: 'left',
-    position: 'relative',
-  },
-  chartWrapper: {
-    position: 'relative',
-  },
-  chartWrapperMinWidth: {
-    overflow: 'auto',
-  },
-  plotContainer: {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-  },
-  axisTitle: getAxisTitleStyle() as GriffelStyle,
-  axisAnnotation: getAxisTitleStyle() as GriffelStyle,
-  xAxis: {
-    '& text': {
-      fill: tokens.colorNeutralForeground1,
-      ...typographyStyles.caption2Strong,
-      forcedColorAdjust: 'auto',
-    },
-    '& line': {
-      opacity: 0.2,
-      stroke: tokens.colorNeutralForeground1,
-      width: '1px',
-      forcedColorAdjust: 'auto',
-    },
-    '& path': {
-      display: 'none',
-    },
-  },
-  yAxis: {
-    '& text': {
-      ...typographyStyles.caption2Strong,
-      fill: tokens.colorNeutralForeground1,
-      forcedColorAdjust: 'auto',
-    },
-    '& line': {
-      opacity: 0.2,
-      stroke: tokens.colorNeutralForeground1,
-      forcedColorAdjust: 'auto',
-    },
-    '& path': {
-      display: 'none',
-    },
-  },
-  rtl: {
-    '& g': {
-      textAnchor: 'end',
-    },
-  },
-  ltr: {},
-  opacityChangeOnHover: {
-    opacity: '0.1', //supports custom opacity ??
-    cursor: 'default', //supports custom cursor ??
-  },
-  legendContainer: {
-    marginTop: tokens.spacingVerticalS,
-    marginLeft: tokens.spacingHorizontalXL,
-  },
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground1,
-    [HighContrastSelector]: {
-      fill: 'Canvas',
-    },
-  },
-  annotationLayer: {
-    pointerEvents: 'none',
-  },
-  tooltip: getTooltipStyle() as GriffelStyle,
-});
-/**
+ * The single module-local token carried by the y-axis `<g>`, exposed on its own so
+ * `CartesianChart.tsx` can build a d3/`querySelector` selector from it.
  *
- * Apply styling to the Carousel slots based on the state
+ * WHY NOT `useCartesianChartStyles(props).yAxis`. That value is a `clsx` COMPOSITION, and
+ * `calculateMaxYAxisLabelLength` interpolates its argument into `` `.${className} text` ``.
+ * A multi-token string turns that interpolation into a descendant chain (`.a .b text`) which
+ * matches nothing — which is exactly what it did under Griffel, where the composition was
+ * `mergeClasses('fui-cart__yAxis', <atomics…>)`. See the note on
+ * `calculateMaxYAxisLabelLength` in `CartesianChart.tsx` for what that deadness cost.
+ *
+ * The x-axis equivalent is `CARTESIAN_XAXIS_TEXT_SELECTOR`, which already exists in
+ * `utilities/utilities.ts` and is shared with the wrapping code; the y axis has no such
+ * constant and needs no PUBLIC one, so the hashed module local is the right handle
+ * (CONVERSION_GUIDE §3d: no new public DOM surface unless nothing else works).
+ *
+ * @internal
+ */
+export const cartesianYAxisClassName: string = styles['y-axis'];
+
+/**
+ * Apply styling to the CartesianChart slots based on the props.
+ *
+ * Cascade priority is decided by the `@layer fui.*` order in CartesianChart.module.css, not
+ * by the order of the `clsx` arguments — see that file's header for the mapping back to the
+ * mergeClasses() argument order this replaces.
+ *
+ * No data attributes are set: the only state-driven slice is `chartWrapperMinWidth`, which
+ * stays a conditional class because it is a one-slot, one-property toggle with no descendant
+ * that needs to read it (D15.6 — data-* is fallback-only, for state a descendant must see).
  */
 export const useCartesianChartStyles = (props: CartesianChartProps): CartesianChartStyles => {
-  const _useRtl = useRtl();
-  const baseStyles = useStyles();
   return {
-    root: mergeClasses(cartesianchartClassNames.root, baseStyles.root, props.styles?.root),
-    chartWrapper: mergeClasses(
-      cartesianchartClassNames.chartWrapper,
-      baseStyles.chartWrapper,
-      props.reflowProps?.mode === 'min-width' ? baseStyles.chartWrapperMinWidth : undefined,
+    // Unconditional module class FIRST, then the named group marker, then the consumer's own
+    // string last (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's
+    // `:scope` polyfill throws on the `/` under jsdom — and `styles.root` is the token that
+    // guarantees it, since clsx never drops an unconditional argument. Written as a LITERAL
+    // rather than `cartesianchartClassNames.root`: greppable and sortable by
+    // prettier-plugin-tailwindcss.
+    root: clsx(styles.root, 'group/fui-cartesian-chart', props.styles?.root),
+    chartWrapper: clsx(
+      styles['chart-wrapper'],
+      props.reflowProps?.mode === 'min-width' && styles['chart-wrapper-min-width'],
       props.styles?.chartWrapper,
     ),
-    plotContainer: mergeClasses(
-      cartesianchartClassNames.plotContainer,
-      baseStyles.plotContainer /*props.styles?.plotContainer*/,
-    ),
-    axisTitle: mergeClasses(cartesianchartClassNames.axisTitle, baseStyles.axisTitle /*props.styles?.axisTitle*/),
-    xAxis: mergeClasses(cartesianchartClassNames.xAxis, baseStyles.xAxis /*props.styles?.xAxis*/),
-    yAxis: mergeClasses(
-      cartesianchartClassNames.yAxis,
-      baseStyles.yAxis,
-      _useRtl ? baseStyles.rtl : baseStyles.ltr /*props.styles?.yAxis*/,
-    ),
-    opacityChangeOnHover: mergeClasses(
-      cartesianchartClassNames.opacityChangeOnHover,
-      baseStyles.opacityChangeOnHover /*props.styles?.opacityChangeOnHover*/,
-    ),
-    legendContainer: mergeClasses(
-      cartesianchartClassNames.legendContainer,
-      baseStyles.legendContainer /*props.styles?.legendContainer*/,
-    ),
-    svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
-    annotationLayer: mergeClasses(
-      cartesianchartClassNames.annotationLayer,
-      baseStyles.annotationLayer /*props.styles?.annotationLayer*/,
-    ),
-    tooltip: mergeClasses(cartesianchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
-    axisAnnotation: mergeClasses(
-      cartesianchartClassNames.axisAnnotation,
-      baseStyles.axisAnnotation,
-      /*props.styles?.axisAnnotation,*/
-    ),
-    chart: mergeClasses(cartesianchartClassNames.chart, props.styles?.chart),
+    plotContainer: clsx(styles['plot-container'] /*props.styles?.plotContainer*/),
+    axisTitle: clsx(styles['axis-title'] /*props.styles?.axisTitle*/),
+    // The retained identity constant goes on LAST so the hashed module local stays the leading
+    // token, matching every other slot. Order carries no cascade meaning (the `@layer` order
+    // decides every tie) and both tokens are selector-safe, so the only constraint is that the
+    // literal reach the DOM unchanged — which it does.
+    xAxis: clsx(styles['x-axis'], CARTESIAN_XAXIS_CLASSNAME /*props.styles?.xAxis*/),
+    yAxis: clsx(styles['y-axis'] /*props.styles?.yAxis*/),
+    opacityChangeOnHover: clsx(styles['opacity-change-on-hover'] /*props.styles?.opacityChangeOnHover*/),
+    legendContainer: clsx(styles['legend-container'] /*props.styles?.legendContainer*/),
+    svgTooltip: clsx(styles['svg-tooltip'], props.styles?.svgTooltip),
+    annotationLayer: clsx(styles['annotation-layer'] /*props.styles?.annotationLayer*/),
+    tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
+    axisAnnotation: clsx(styles['axis-annotation'] /*props.styles?.axisAnnotation*/),
+    // `chart` carries NO class of its own. Its only library token was the `fui-cart__chart`
+    // static and CartesianChart.module.css declares no `.chart` local — the `<svg>` is styled
+    // entirely by its `width`/`height`/`style` attributes. With the static removed the
+    // assignment would be `clsx(props.styles?.chart)`, an identity on the consumer's own
+    // string, so it is passed straight through rather than left as dead code implying this
+    // hook styles a slot it does not (statics-removal design §4d / DECISIONS.md D16.1).
+    chart: props.styles?.chart,
   };
 };

@@ -8,17 +8,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -78,7 +77,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -223,23 +222,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -247,11 +246,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Execllent (0-200)
                 </div>
@@ -259,7 +258,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -267,11 +266,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Nasty
                 </div>
@@ -284,17 +283,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -354,7 +352,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -499,23 +497,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -523,11 +521,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Execllent (0-200)
               </div>
@@ -535,7 +533,7 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -543,11 +541,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Nasty
               </div>
@@ -619,17 +617,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -689,7 +686,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -832,23 +829,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Excellent"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -856,11 +853,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(255, 203, 169); border-color: rgb(255, 203, 169); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Excellent
                 </div>
@@ -868,7 +865,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -876,11 +873,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(255, 213, 135); border-color: rgb(255, 213, 135); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Nasty
                 </div>
@@ -893,17 +890,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -963,7 +959,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -1106,23 +1102,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="Excellent"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1130,11 +1126,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(255, 203, 169); border-color: rgb(255, 203, 169); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Excellent
               </div>
@@ -1142,7 +1138,7 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1150,11 +1146,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(255, 213, 135); border-color: rgb(255, 213, 135); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Nasty
               </div>
@@ -1226,17 +1222,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart"
             height="50"
             role="region"
             style="display: block;"
@@ -1296,7 +1291,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -1445,17 +1440,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-          class="fui-cart__chart"
           height="50"
           role="region"
           style="display: block;"
@@ -1515,7 +1509,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -1723,17 +1717,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -1793,7 +1786,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -1938,23 +1931,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1962,11 +1955,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Execllent (0-200)
                 </div>
@@ -1974,7 +1967,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1982,11 +1975,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Nasty
                 </div>
@@ -1999,17 +1992,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -2069,7 +2061,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -2214,23 +2206,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2238,11 +2230,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Execllent (0-200)
               </div>
@@ -2250,7 +2242,7 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2258,11 +2250,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Nasty
               </div>
@@ -2334,17 +2326,16 @@ Object {
   >
     <div>
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -2404,7 +2395,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -2549,23 +2540,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2573,11 +2564,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Execllent (0-200)
                 </div>
@@ -2585,7 +2576,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2593,11 +2584,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Nasty
                 </div>
@@ -2610,17 +2601,16 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-cart__root"
+      class="group/fui-cartesian-chart"
       id="chart_"
       role="presentation"
     >
       <div
-        class="fui-cart__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-          class="fui-cart__chart"
           height="300"
           role="region"
           style="display: block;"
@@ -2680,7 +2670,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-cart__yAxis"
+            class=""
             fill="none"
             font-family="sans-serif"
             font-size="10"
@@ -2825,23 +2815,23 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__legendContainer"
+        class=""
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2849,11 +2839,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Execllent (0-200)
               </div>
@@ -2861,7 +2851,7 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2869,11 +2859,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Nasty
               </div>
@@ -2949,17 +2939,16 @@ Object {
         dir="ltr"
       >
         <div
-          class="fui-cart__root"
+          class="group/fui-cartesian-chart"
           id="chart_"
           role="presentation"
         >
           <div
-            class="fui-cart__chartWrapper"
+            class=""
             data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
               aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-              class="fui-cart__chart"
               height="300"
               role="region"
               style="display: block;"
@@ -3019,7 +3008,7 @@ Object {
                 </g>
               </g>
               <g
-                class="fui-cart__yAxis"
+                class=""
                 fill="none"
                 font-family="sans-serif"
                 font-size="10"
@@ -3164,23 +3153,23 @@ Object {
             </svg>
           </div>
           <div
-            class="fui-cart__legendContainer"
+            class=""
           >
             <div
               aria-label="Legends"
               aria-multiselectable="false"
-              class="fui-legend__root"
+              class="group/fui-legends"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
               <div
-                class="group/fui-overflow fui-legend__resizableArea"
+                class="group/fui-overflow"
                 style="text-align: unset;"
               >
                 <button
                   aria-label="Execllent (0-200)"
                   aria-selected="false"
-                  class="group/fui-button fui-legend__legend"
+                  class="group/fui-button"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -3188,11 +3177,11 @@ Object {
                   type="button"
                 >
                   <div
-                    class="fui-legend__rect"
+                    class=""
                     style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
                   />
                   <div
-                    class="fui-legend__text"
+                    class=""
                   >
                     Execllent (0-200)
                   </div>
@@ -3200,7 +3189,7 @@ Object {
                 <button
                   aria-label="Nasty"
                   aria-selected="false"
-                  class="group/fui-button fui-legend__legend"
+                  class="group/fui-button"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -3208,11 +3197,11 @@ Object {
                   type="button"
                 >
                   <div
-                    class="fui-legend__rect"
+                    class=""
                     style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
                   />
                   <div
-                    class="fui-legend__text"
+                    class=""
                   >
                     Nasty
                   </div>
@@ -3230,17 +3219,16 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -3300,7 +3288,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -3445,23 +3433,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3469,11 +3457,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Execllent (0-200)
                 </div>
@@ -3481,7 +3469,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3489,11 +3477,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Nasty
                 </div>
@@ -3569,17 +3557,16 @@ Object {
         dir="rtl"
       >
         <div
-          class="fui-cart__root"
+          class="group/fui-cartesian-chart"
           id="chart_"
           role="presentation"
         >
           <div
-            class="fui-cart__chartWrapper"
+            class=""
             data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <svg
               aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-              class="fui-cart__chart"
               height="300"
               role="region"
               style="display: block;"
@@ -3639,7 +3626,7 @@ Object {
                 </g>
               </g>
               <g
-                class="fui-cart__yAxis"
+                class=""
                 fill="none"
                 font-family="sans-serif"
                 font-size="10"
@@ -3784,23 +3771,23 @@ Object {
             </svg>
           </div>
           <div
-            class="fui-cart__legendContainer"
+            class=""
           >
             <div
               aria-label="Legends"
               aria-multiselectable="false"
-              class="fui-legend__root"
+              class="group/fui-legends"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
               <div
-                class="group/fui-overflow fui-legend__resizableArea"
+                class="group/fui-overflow"
                 style="text-align: unset;"
               >
                 <button
                   aria-label="Execllent (0-200)"
                   aria-selected="false"
-                  class="group/fui-button fui-legend__legend"
+                  class="group/fui-button"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -3808,11 +3795,11 @@ Object {
                   type="button"
                 >
                   <div
-                    class="fui-legend__rect"
+                    class=""
                     style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
                   />
                   <div
-                    class="fui-legend__text"
+                    class=""
                   >
                     Execllent (0-200)
                   </div>
@@ -3820,7 +3807,7 @@ Object {
                 <button
                   aria-label="Nasty"
                   aria-selected="false"
-                  class="group/fui-button fui-legend__legend"
+                  class="group/fui-button"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -3828,11 +3815,11 @@ Object {
                   type="button"
                 >
                   <div
-                    class="fui-legend__rect"
+                    class=""
                     style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
                   />
                   <div
-                    class="fui-legend__text"
+                    class=""
                   >
                     Nasty
                   </div>
@@ -3849,17 +3836,16 @@ Object {
       dir="rtl"
     >
       <div
-        class="fui-cart__root"
+        class="group/fui-cartesian-chart"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fui-cart__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-cart__chart"
             height="300"
             role="region"
             style="display: block;"
@@ -3919,7 +3905,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-cart__yAxis"
+              class=""
               fill="none"
               font-family="sans-serif"
               font-size="10"
@@ -4064,23 +4050,23 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__legendContainer"
+          class=""
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: unset;"
             >
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4088,11 +4074,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Execllent (0-200)
                 </div>
@@ -4100,7 +4086,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4108,11 +4094,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   Nasty
                 </div>
@@ -4180,17 +4166,16 @@ Object {
 exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with numeric datapoints 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -4250,7 +4235,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -4385,23 +4370,23 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="Excellent"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4409,11 +4394,11 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Excellent
             </div>
@@ -4421,7 +4406,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <button
             aria-label="Nasty"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4429,11 +4414,11 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Nasty
             </div>
@@ -4448,17 +4433,16 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
 exports[`HeatMapChart snapshot tests should render axis labels correctly When custom formatter functions are set for x and y axis strings 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="group/fui-cartesian-chart"
     id="chart_"
     role="presentation"
   >
     <div
-      class="fui-cart__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-        class="fui-cart__chart"
         height="300"
         role="region"
         style="display: block;"
@@ -4518,7 +4502,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           </g>
         </g>
         <g
-          class="fui-cart__yAxis"
+          class=""
           fill="none"
           font-family="sans-serif"
           font-size="10"
@@ -4661,23 +4645,23 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
       </svg>
     </div>
     <div
-      class="fui-cart__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="Excellent"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4685,11 +4669,11 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Excellent
             </div>
@@ -4697,7 +4681,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <button
             aria-label="Nasty"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4705,11 +4689,11 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Nasty
             </div>
