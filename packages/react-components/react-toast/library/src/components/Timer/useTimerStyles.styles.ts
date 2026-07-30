@@ -8,7 +8,6 @@ import styles from './Timer.module.css';
  * Kept as a zero-argument function rather than collapsed to a bare constant so the single
  * call site in `Timer.tsx` — and the exported name, which the cookbook's "delete no exports"
  * rule protects — are unchanged by the conversion. It is no longer a React hook; the `use`
- * prefix is retained for the same reason, and the Phase 3 sweep that removes the `'use
- * client'` directives is the right place to revisit it.
+ * prefix is retained for that same reason.
  */
 export const useBaseAnimationStyles = (): string => styles.root;
