@@ -1,17 +1,4 @@
-'use client';
-
-/*
- * NOTE (Griffel → Tailwind + CSS Modules migration, migration/griffel-to-tailwind):
- * unlike react-divider/react-label, this file needs NO `enforce-use-client` suppression and
- * KEEPS its `react-hooks/immutability` disables — it still calls a React hook
- * (`usePopoverSurfaceStyles`, see below), so both rules still apply to it exactly as before.
- * Same split as react-button (Button lost both, ToggleButton kept them) and react-badge
- * (Badge lost both, CounterBadge kept them).
- */
-
 import { clsx } from 'clsx';
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { typographyStyles } from '@fluentui/react-theme';
 import type { InfoButtonState } from './InfoButton.types';
 
 import styles from './InfoButton.module.css';
@@ -34,34 +21,6 @@ import styles from './InfoButton.module.css';
 export const infoButtonClassNames: { root: string } = {
   root: 'group/fui-info-button',
 };
-
-/**
- * Styles for the info slot — deliberately still Griffel.
- *
- * `state.info` renders `@fluentui/react-popover`'s `PopoverSurface`, which has not been
- * converted yet (DECISIONS.md D12 schedules compound components later). Griffel injects its
- * atomics UNLAYERED, so they beat every `@layer fui.*` rule this package could emit
- * (migration/griffel-to-tailwind/reports/pilot-button.md §"The reliance").
- *
- * That is the correct outcome when an UNCONVERTED component styles a converted one — its
- * classes were mergeClasses' last argument, and unlayered reproduces that winner — but it
- * inverts in this direction. PopoverSurface's own `root` slice applies
- * `typographyStyles.body1`; the `smallMedium` slice below applies `caption1`. Today
- * mergeClasses deletes PopoverSurface's losing atomics because this string is its last
- * argument; a layered `.info` module class would instead LOSE to the surviving unlayered
- * atomic, and every small/medium InfoButton popover would silently render at body1
- * (fontSizeBase300/lineHeightBase300) instead of caption1 (fontSizeBase200/lineHeightBase200).
- *
- * So this slot keeps `makeStyles` + `mergeClasses` verbatim and converts together with
- * react-popover. It is the package's whitelisted `@griffel/react` import.
- */
-const usePopoverSurfaceStyles = makeStyles({
-  base: {
-    maxWidth: '264px',
-  },
-  smallMedium: typographyStyles.caption1,
-  large: typographyStyles.body1,
-});
 
 /**
  * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
@@ -88,19 +47,28 @@ type InfoButtonRootDataAttributes = {
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
   const { size } = state;
   const { open } = state.popover;
-  const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
   const root = state.root as InfoButtonState['root'] & InfoButtonRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
+  // The four `react-hooks/immutability` disables this function used to carry are gone: once the
+  // Griffel `usePopoverSurfaceStyles()` call was removed (see InfoButton.module.css §HISTORY) the
+  // rule stopped reporting these assignments, and eslint flagged all four directives as unused.
+  // Measured, not assumed — `nx run react-infolabel:lint` is clean with them deleted. The
+  // MUTATIONS below are unchanged and still belong to the D14 sweep (worklist Item 2); this file
+  // simply no longer needs a suppression for them.
   root['data-size'] = size;
-  // eslint-disable-next-line react-hooks/immutability
   root['data-open'] = open || undefined;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.info.className = mergeClasses(
-    popoverSurfaceStyles.base,
-    size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,
+  // The `info` slot is a `PopoverSurface` root, so these classes reach that component's hook as
+  // its CONSUMER className — the position mergeClasses gave them the win from. They sit in
+  // `@layer fui.components.l2`, above PopoverSurface's own l1 rules, which is what now
+  // guarantees the win; see InfoButton.module.css §ALTITUDE. The size branch stays a class pick
+  // rather than a `@variant size-large` block because `data-size` rides the BUTTON, and the
+  // surface is portalled out of the button's subtree. No named-group marker: the marker is the
+  // root slot's public identity, and nothing styles this element from outside.
+  state.info.className = clsx(
+    styles.info,
+    size === 'large' ? styles['info-large'] : styles['info-small-medium'],
     state.info.className,
   );
 
@@ -118,13 +86,12 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
   //
   // InfoButton needs no state mirrors: `data-size` and `data-open` are stamped on this very
   // element above, so `@variant group-open/fui-info-button` etc. work as-is (D15.6, Tier 0).
-  // The marker rides the `root` slot only — the `info` slot is the still-Griffel
-  // PopoverSurface (see the header above) and gets nothing.
+  // The marker rides the `root` slot only — the `info` slot is a portalled PopoverSurface and
+  // gets nothing.
   //
   // Cascade priority is decided by the `@layer fui.*` order in InfoButton.module.css, not
   // by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(styles.root, 'group/fui-info-button', state.root.className);
 
   return state;

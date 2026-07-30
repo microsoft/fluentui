@@ -36,16 +36,16 @@ describe('InfoButton', () => {
     // asserts the `fui-<Component>__<slot>` BEM format DECISIONS.md D16.1 removed.
     // `component-has-group-marker` (now a default test) replaces it — it asserts the group marker IS stamped
     // and is never `classList[0]` (D16.2 / D16.6). The `has-static-classnames` testOptions
-    // that fed the deleted test (including `getPortalElement`, which reached the still-Griffel
-    // PopoverSurface in the portal) went with it.
+    // that fed the deleted test (including `getPortalElement`, which reached the PopoverSurface
+    // in the portal — Griffel-styled at the time) went with it.
     //
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind):
     // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
-    // was called with the consumer className last. The root slot now composes with clsx, so
-    // the consumer className never reaches a mergeClasses call and the test can no longer
-    // observe the contract — even though this file still calls mergeClasses for the `info`
-    // slot, which deliberately stays on Griffel until react-popover converts (see
-    // useInfoButtonStyles.styles.ts). The guarantee itself is unchanged: clsx puts
+    // was called with the consumer className last. Both slots now compose with clsx — the
+    // `info` slot's Griffel `makeStyles` was converted in Phase 3 once react-popover landed
+    // (see useInfoButtonStyles.styles.ts) — so the consumer className never reaches a
+    // mergeClasses call and the test can no longer observe the contract. The guarantee itself
+    // is unchanged: clsx puts
     // `state.root.className` last and the `@layer fui.*` sublayers keep unlayered consumer
     // CSS winning (DECISIONS.md D2/D9). `classname-overrides-win` below is its
     // cascade-native replacement (DECISIONS.md D9).

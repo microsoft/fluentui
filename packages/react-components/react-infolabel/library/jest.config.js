@@ -40,11 +40,12 @@ module.exports = {
    * `jest.preset.js` once more packages convert (DECISIONS.md D9).
    *
    * Like react-badge and react-button — and unlike react-divider — this package KEEPS
-   * `@griffel/jest-serializer`, here for two reasons: InfoButton renders
-   * `@fluentui/react-icons` glyphs (an external Griffel consumer, explicitly out of scope —
-   * DECISIONS.md D11), and its `info` slot deliberately stays on Griffel until
-   * react-popover converts (see useInfoButtonStyles.styles.ts). Without it, both would
-   * write atomic + sequence-hash classes into every snapshot.
+   * `@griffel/jest-serializer`, now for ONE reason: InfoButton renders
+   * `@fluentui/react-icons` glyphs, an external Griffel consumer explicitly out of scope
+   * (DECISIONS.md D11). Without it those atomic + sequence-hash classes land in every
+   * snapshot. The second reason is gone — the `info` slot's Griffel `makeStyles` was
+   * converted in Phase 3 once react-popover landed (see useInfoButtonStyles.styles.ts), and
+   * this package no longer depends on `@griffel/react` at all.
    */
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,

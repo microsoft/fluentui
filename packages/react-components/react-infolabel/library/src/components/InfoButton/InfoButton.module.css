@@ -16,7 +16,7 @@
  * Layer assignment mirrors the mergeClasses ARGUMENT order of useInfoButtonStyles_unstable,
  * not source declaration order.
  *
- * `root` slot — the ONLY slot converted (see "the info slot stays Griffel" below):
+ * `root` slot (its own `<button>`):
  *
  *   #  mergeClasses argument              → target
  *   ---------------------------------------------------------------------------------
@@ -28,36 +28,45 @@
  *   6  size === 'large' && .large         → fui.components.l1  (data-size)
  *   7  consumer className                 → unlayered (always wins)
  *
+ * `info` slot (a `<PopoverSurface>` root — ANOTHER component's element):
+ *
+ *   #  mergeClasses argument                    → target
+ *   ---------------------------------------------------------------------------------
+ *   1  usePopoverSurfaceStyles.base             → fui.components.l2  `.info`
+ *   2  size === 'large' ? .large : .smallMedium → fui.components.l2  `.info-large` /
+ *                                                                   `.info-small-medium`
+ *   3  consumer className                       → unlayered (always wins)
+ *
  * EXCEPTION: the three `.fui-Icon-filled` / `.fui-Icon-regular` display swaps (from args
  * #2, #5 and #2's hover half) are NOT in a layer — they style `@fluentui/react-icons`'
  * elements, which that unconverted package styles unlayered. They live in one block at the
  * BOTTOM of this file; see "The icon swap must be UNLAYERED" there for the DOM evidence.
  *
- * InfoButton has no `makeResetStyles`, so `fui.base` is unused. Its root `<button>` is its
- * own element — `PopoverTrigger` clones aria/ref/handlers onto it and contributes no
- * className — so nothing here sits over another component's hook output and
- * `fui.components.l2` is unused too.
+ * InfoButton has no `makeResetStyles`, so `fui.base` is unused.
  *
- * ── The `info` slot stays Griffel, deliberately (mixed-mode seam) ────────────────────
- * `state.info` renders `@fluentui/react-popover`'s `PopoverSurface`, which is NOT converted
- * (DECISIONS.md D12 orders compound components later). Griffel injects its atomics
- * UNLAYERED, so they beat every `@layer fui.*` rule (reports/pilot-button.md §"The
- * reliance"). That asymmetry is harmless in the ToggleButton-over-Button direction — the
- * unconverted parent's classes were mergeClasses' LAST argument and unlayered reproduces
- * that winner — but it INVERTS here, where the converted component is the one styling the
- * unconverted child:
+ * ── ALTITUDE: why the `info` slot is l2, and why it is LAYERED ───────────────────────
+ * `state.info` renders `@fluentui/react-popover`'s `PopoverSurface`, so the classes this hook
+ * assigns arrive at `usePopoverSurfaceStyles_unstable` as that component's CONSUMER className
+ * — which is exactly where mergeClasses used to give them the win. `fui.components.l2` makes
+ * that win guaranteed rather than argument-order-dependent (D2 amendment 2). The collision that
+ * matters is typography: PopoverSurface's own `root` slice applies `typographyStyles.body1`
+ * (`--fontSizeBase300` / `--lineHeightBase300`) at l1, while this component's `smallMedium`
+ * slice applies `caption1` (`--fontSizeBase200` / `--lineHeightBase200`).
  *
- *   PopoverSurface's own `root` slice applies `typographyStyles.body1`
- *   (font-size: var(--fontSizeBase300); line-height: var(--lineHeightBase300)),
- *   while InfoButton's `smallMedium` slice applies `caption1`
- *   (var(--fontSizeBase200) / var(--lineHeightBase200), atomics `fy9rknc` / `fwrc4pm`).
+ * It stays LAYERED because `@fluentui/react-popover` is now CONVERTED (ledger: validated,
+ * batch 4) — every rule in `PopoverSurface.module.css` sits in `fui.components.l1`, so l2
+ * outranks it. Same shape as react-avatar's `AvatarGroupPopover.module.css`
+ * `.popover-surface`, which reaches the same component's root.
  *
- * Today InfoButton wins because its string is PopoverSurface's last mergeClasses argument
- * and Griffel DELETES the losing atomics. A layered `.info` rule would lose to the
- * surviving unlayered atomic and every small/medium InfoButton popover would silently
- * render at body1. So `usePopoverSurfaceStyles` keeps `makeStyles` + `mergeClasses` in
- * useInfoButtonStyles.styles.ts and is converted when react-popover converts. This is the
- * package's whitelisted `@griffel/react` import (cookbook "Definition of done").
+ * ── HISTORY: this slot used to be the package's whitelisted Griffel import ───────────
+ * Until Phase 3 the `info` slot kept `makeStyles` + `mergeClasses` from `@griffel/react`,
+ * because PopoverSurface was unconverted and Griffel injects UNLAYERED — beating every
+ * `@layer fui.*` rule (reports/pilot-button.md §"The reliance"). A layered `.info` rule would
+ * then have LOST to the surviving unlayered atomic and every small/medium InfoButton popover
+ * would silently have rendered at body1. That premise flipped when react-popover converted, so
+ * the slot is now plain module classes and the package no longer depends on `@griffel/react`
+ * at all. Do NOT reintroduce the unlayered form: nothing unlayered competes here any more, and
+ * unlayered would newly beat a consumer's own `className` on the same element.
  *
  * ── Block order is Griffel BUCKET order, not plain argument order ────────────────────
  * Every selector below is `:where()`-flat (0-1-0), so — unlike Griffel, where specificity
@@ -270,6 +279,44 @@
         color: Canvas;
       }
     }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * `info` args #1 and #2 — from usePopoverSurfaceStyles.base / .large / .smallMedium, over
+   * PopoverSurface's own l1 rules (see the ALTITUDE note in the header).
+   *
+   * `max-width: '264px'` is a px LITERAL that matches no spacing step, so it takes the NUMERIC
+   * utility, which computes through `--base-scale` (D4 amendment; the AvatarGroupPopover
+   * `max-h-220` / `w-220` precedent on the very same component's root).
+   *
+   * The two typography slices are `typographyStyles.caption1` and `typographyStyles.body1`
+   * expanded to their four longhands each — the shape every converted module uses for a
+   * typography preset spread (PopoverSurface.module.css does the same for its own `body1`).
+   * They are mutually exclusive in the hook, so their file order carries no cascade meaning;
+   * `smallMedium` is written first to match the ternary.
+   *
+   * `size` is a scale prop and `data-size` IS stamped on this component's root — but not on the
+   * PopoverSurface element, which is portalled out of the button's subtree. So the branch stays
+   * in the hook as a class pick rather than becoming a `@variant size-large` block here.
+   */
+  .info {
+    @apply max-w-264;
+  }
+
+  .info-small-medium {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .info-large {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
   }
 }
 
