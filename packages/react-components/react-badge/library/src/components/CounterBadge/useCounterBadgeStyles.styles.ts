@@ -1,13 +1,10 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): unlike the Badge and PresenceBadge
- * styles hooks, this file needs NO `enforce-use-client` suppression and KEEPS its
- * `react-hooks/immutability` disables — it still calls a React hook
- * (`useBadgeStyles_unstable`), so both rules still apply to it exactly as before. The
- * other two hooks call nothing after conversion, which is why their directives are
- * suppressed and their mutation disables are gone. Same split as react-button, where
- * Button lost both and ToggleButton (which still delegates) kept them.
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * it still calls a React hook (`useBadgeStyles_unstable`), so `enforce-use-client` never
+ * reports the directive as unnecessary. Badge and PresenceBadge call nothing after conversion
+ * and carry no directive at all — the same split as react-button's Button vs ToggleButton.
  */
 
 import { clsx } from 'clsx';
