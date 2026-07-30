@@ -47,23 +47,29 @@ export const useToolbarToggleButtonStyles_unstable = (state: ToolbarToggleButton
   // ToolbarToggleButton.module.css — everything is `fui.components.l2`, and the root rule
   // additionally compounds ToggleButton's marker and restricts itself to the rest state so
   // that ToggleButton's own hover/pressed rules keep winning. See that file's header.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    'group/fui-toolbar-toggle-button',
-    state.checked && styles.selected,
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx('group/fui-toolbar-toggle-button', state.checked && styles.selected, state.root.className),
+    },
+  };
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(state.checked && styles['icon-selected'], state.icon.className);
+    state = {
+      ...state,
+      icon: { ...state.icon, className: clsx(state.checked && styles['icon-selected'], state.icon.className) },
+    };
   }
 
   // Called LAST, exactly as before: `useToggleButtonStyles_unstable` composes its own
   // classes ahead of the incoming className, which is what made ToolbarToggleButton win
   // under Griffel. The layer altitude reproduces that winner now, but the call order still
   // has to stand so the consumer className stays last in the rendered class attribute.
-  useToggleButtonStyles_unstable(state);
+  // ToolbarToggleButtonState widens ToggleButtonState with `name` / `value`, so the delegate's
+  // narrower return is re-merged onto this component's own shape (F1 of the D14 mutation removal
+  // — thread the composed result, do not discard it).
+  state = { ...state, ...useToggleButtonStyles_unstable(state) };
 
   return state;
 };

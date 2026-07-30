@@ -184,7 +184,7 @@ export const useToolbarButton_unstable: (props: ToolbarButtonProps, ref: React_2
 export const useToolbarButtonBase_unstable: (props: ToolbarButtonBaseProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonBaseState;
 
 // @public
-export const useToolbarButtonStyles_unstable: (state: ToolbarButtonState) => void;
+export const useToolbarButtonStyles_unstable: (state: ToolbarButtonState) => ToolbarButtonState;
 
 // @public (undocumented)
 export const useToolbarContext_unstable: <T>(selector: ContextSelector<ToolbarContextValue, T>) => T;

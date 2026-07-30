@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * ToolbarToggleButton component
  */
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> = React.forwardRef((props, ref) => {
-  const state = useToolbarToggleButton_unstable(props, ref);
+  let state = useToolbarToggleButton_unstable(props, ref);
 
-  useToolbarToggleButtonStyles_unstable(state);
+  state = useToolbarToggleButtonStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useToolbarToggleButtonStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useToolbarToggleButtonStyles_unstable')(state);
 
   return renderToggleButton_unstable(state);
 }) as ForwardRefComponent<ToolbarToggleButtonProps>;

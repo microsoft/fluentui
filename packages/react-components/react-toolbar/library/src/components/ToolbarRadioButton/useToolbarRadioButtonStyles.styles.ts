@@ -31,17 +31,27 @@ export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonSt
   // `testOptions['has-group-marker'].markers` (D16.3).
   //
   // Cascade priority is decided by the `@layer fui.*` order in ToolbarRadioButton.module.css.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-toolbar-radio-button', state.checked && styles.selected, state.root.className);
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx('group/fui-toolbar-radio-button', state.checked && styles.selected, state.root.className),
+    },
+  };
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(state.checked && styles['icon-selected'], state.icon.className);
+    state = {
+      ...state,
+      icon: { ...state.icon, className: clsx(state.checked && styles['icon-selected'], state.icon.className) },
+    };
   }
 
   // Called LAST, exactly as before — see ToolbarToggleButton's hook for why the call order
   // still has to stand now that the layer altitude decides the winner.
-  useToggleButtonStyles_unstable(state);
+  // ToolbarRadioButtonState widens ToggleButtonState with `name` / `value`, so the delegate's
+  // narrower return is re-merged onto this component's own shape (F1 of the D14 mutation removal
+  // — thread the composed result, do not discard it).
+  state = { ...state, ...useToggleButtonStyles_unstable(state) };
 
   return state;
 };

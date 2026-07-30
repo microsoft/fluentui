@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * ToolbarDivider component
  */
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps> = React.forwardRef((props, ref) => {
-  const state = useToolbarDivider_unstable(props, ref);
+  let state = useToolbarDivider_unstable(props, ref);
 
-  useToolbarDividerStyles_unstable(state);
+  state = useToolbarDividerStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useToolbarDividerStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useToolbarDividerStyles_unstable')(state);
 
   return renderDivider_unstable(state);
 });

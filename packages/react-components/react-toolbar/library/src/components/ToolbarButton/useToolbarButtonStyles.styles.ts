@@ -30,14 +30,10 @@ type ToolbarButtonRootDataAttributes = {
 /**
  * Apply styling to the ToolbarButton slots based on the state
  */
-export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void => {
-  const root = state.root as ToolbarButtonState['root'] & ToolbarButtonRootDataAttributes;
-
-  // The state-mutation pattern is PRESERVED during conversion (CONVERSION_GUIDE §3,
-  // DECISIONS.md D14): the mixed-mode sibling seam and the customStyleHooks contract both
-  // depend on the shared object. Its removal is a single Phase 3 sweep.
-  // eslint-disable-next-line react-hooks/immutability
-  root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
+export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): ToolbarButtonState => {
+  const rootDataAttributes: ToolbarButtonRootDataAttributes = {
+    'data-orientation': state.vertical ? 'vertical' : 'horizontal',
+  };
 
   // Module class first, then the named group marker, consumer className last — the marker
   // must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
@@ -67,8 +63,14 @@ export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void
   // ToolbarButton.module.css — everything here is `fui.components.l2`, because both slices
   // style @fluentui/react-button's slots rather than elements of our own. See that file's
   // header for the mapping back to the mergeClasses() argument order this replaces.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-toolbar-button', state.root.className);
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(styles.root, 'group/fui-toolbar-button', state.root.className),
+    },
+  };
 
   // JS slot composition, the D16.3 mechanism for styling a sub-slot of a component this
   // package RENDERS ITSELF (M2 in reports/statics-removal-design.md §2.3). ToolbarButton
@@ -83,13 +85,17 @@ export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void
   // puts the incoming className last, so this class still beats Button's icon rules in a
   // tie exactly as the descendant selector did. `state.icon` is optional, hence the guard.
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(styles.icon, state.icon.className);
+    state = { ...state, icon: { ...state.icon, className: clsx(styles.icon, state.icon.className) } };
   }
 
   // Called LAST, exactly as before: `useButtonStyles_unstable` composes its own classes
   // ahead of the incoming className, which is what made ToolbarButton win under Griffel.
   // The layer altitude reproduces that winner now, but the call order still has to stand
   // so the consumer className stays last in the rendered class attribute.
-  useButtonStyles_unstable(state);
+  // `useButtonStyles_unstable` is typed on `ButtonState`, which ToolbarButtonState widens with
+  // `vertical`; the spread re-merges the composed Button slots onto this component's own state
+  // shape (F1 of the D14 mutation removal — thread the composed result, do not discard it).
+  state = { ...state, ...useButtonStyles_unstable(state) };
+
+  return state;
 };

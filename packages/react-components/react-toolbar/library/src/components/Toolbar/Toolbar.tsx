@@ -13,12 +13,12 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Toolbar component
  */
 export const Toolbar: ForwardRefComponent<ToolbarProps> = React.forwardRef((props, ref) => {
-  const state = useToolbar_unstable(props, ref);
+  let state = useToolbar_unstable(props, ref);
   const contextValues = useToolbarContextValues_unstable(state);
 
-  useToolbarStyles_unstable(state);
+  state = useToolbarStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useToolbarStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useToolbarStyles_unstable')(state);
 
   return renderToolbar_unstable(state, contextValues);
 });

@@ -31,17 +31,13 @@ type ToolbarDividerRootDataAttributes = {
  * Apply styling to the ToolbarDivider slots based on the state
  */
 export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): ToolbarDividerState => {
-  useDividerStyles_unstable(state);
+  state = useDividerStyles_unstable(state);
 
   const { vertical } = state;
 
-  const root = state.root as ToolbarDividerState['root'] & ToolbarDividerRootDataAttributes;
-
-  // The state-mutation pattern is PRESERVED during conversion (CONVERSION_GUIDE §3,
-  // DECISIONS.md D14): the mixed-mode sibling seam and the customStyleHooks contract both
-  // depend on the shared object. Its removal is a single Phase 3 sweep.
-  // eslint-disable-next-line react-hooks/immutability
-  root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
+  const rootDataAttributes: ToolbarDividerRootDataAttributes = {
+    'data-orientation': vertical ? 'vertical' : 'horizontal',
+  };
 
   // Module class first, then the named group marker, consumer className last (the
   // consumer's string is already the tail of `state.root.className` after
@@ -66,8 +62,14 @@ export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): To
   // react-divider's own, `fui.base` for the one `display` declaration that has to lose to
   // it. See that file's header for the mapping back to the mergeClasses() argument order
   // this replaces, including why that single inversion exists.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-toolbar-divider', state.root.className);
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(styles.root, 'group/fui-toolbar-divider', state.root.className),
+    },
+  };
 
   return state;
 };

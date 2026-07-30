@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * which will respect toolbar props such as `size`
  */
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps> = React.forwardRef((props, ref) => {
-  const state = useToolbarButton_unstable(props, ref);
+  let state = useToolbarButton_unstable(props, ref);
 
-  useToolbarButtonStyles_unstable(state);
+  state = useToolbarButtonStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useToolbarButtonStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useToolbarButtonStyles_unstable')(state);
 
   return renderButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react
