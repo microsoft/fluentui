@@ -83,8 +83,8 @@ export const FormFieldShim = React.forwardRef<HTMLInputElement, CustomInputField
     fieldProps.children = children;
   }
 
-  const state = useField_unstable(fieldProps, ref);
-  useFieldStyles_unstable(state);
+  let state = useField_unstable(fieldProps, ref);
+  state = useFieldStyles_unstable(state);
   const context = useFieldContextValues_unstable(state);
   return renderField_unstable(state, context);
 });
