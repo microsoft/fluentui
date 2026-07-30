@@ -3338,7 +3338,6 @@ __metadata:
     "@fluentui/react-tailwind-theme": "workspace:*"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
-    "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
     clsx: "npm:^2.1.1"
   peerDependencies:
@@ -4560,7 +4559,6 @@ __metadata:
     "@fluentui/react-tailwind-theme": "workspace:*"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
-    "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
     clsx: "npm:^2.1.1"
   peerDependencies:
@@ -5523,11 +5521,11 @@ __metadata:
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-spinner": "npm:^9.8.4"
     "@fluentui/react-switch": "npm:^9.7.4"
+    "@fluentui/react-tailwind-theme": "workspace:*"
     "@fluentui/react-text": "npm:^9.6.18"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-toast": "npm:^9.8.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
-    "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@storybook/addon-docs": ^9.1.17
