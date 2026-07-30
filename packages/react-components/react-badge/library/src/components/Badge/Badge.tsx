@@ -12,11 +12,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * Define a styled Badge, using the `useBadge_unstable` hook.
  */
 export const Badge: ForwardRefComponent<BadgeProps> = React.forwardRef((props, ref) => {
-  const state = useBadge_unstable(props, ref);
+  let state = useBadge_unstable(props, ref);
 
-  useBadgeStyles_unstable(state);
+  state = useBadgeStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useBadgeStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useBadgeStyles_unstable')(state);
 
   return renderBadge_unstable(state);
 });

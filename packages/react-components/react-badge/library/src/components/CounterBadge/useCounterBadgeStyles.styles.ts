@@ -77,14 +77,19 @@ export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): Counte
   // descendant selectors, and Badge's own hook stamps `data-size` / `data-icon-position` /
   // `data-empty` on this same root when it runs.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-counter-badge',
-    state.dot && styles.dot,
-    !state.root.children && !state.dot && styles.hide,
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-counter-badge',
+        state.dot && styles.dot,
+        !state.root.children && !state.dot && styles.hide,
+        state.root.className,
+      ),
+    },
+  };
 
   // The `icon` slot deliberately gets NO assignment here. Its only library token was the
   // `fui-CounterBadge__icon` static; CounterBadge has no module class for it (Badge's hook
