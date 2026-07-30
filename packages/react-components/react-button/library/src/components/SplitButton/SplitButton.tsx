@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * action, while interacting with the second one opens a menu with secondary actions.
  */
 export const SplitButton: ForwardRefComponent<SplitButtonProps> = React.forwardRef((props, ref) => {
-  const state = useSplitButton_unstable(props, ref);
+  let state = useSplitButton_unstable(props, ref);
 
-  useSplitButtonStyles_unstable(state);
+  state = useSplitButtonStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useSplitButtonStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useSplitButtonStyles_unstable')(state);
 
   return renderSplitButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

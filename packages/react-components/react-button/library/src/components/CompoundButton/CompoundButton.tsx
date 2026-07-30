@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * CompoundButtons are buttons that can have secondary content that adds extra information to the user.
  */
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps> = React.forwardRef((props, ref) => {
-  const state = useCompoundButton_unstable(props, ref);
+  let state = useCompoundButton_unstable(props, ref);
 
-  useCompoundButtonStyles_unstable(state);
+  state = useCompoundButtonStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useCompoundButtonStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useCompoundButtonStyles_unstable')(state);
 
   return renderCompoundButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

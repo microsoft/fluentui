@@ -47,52 +47,78 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   // Cascade priority is decided by the `@layer fui.*` order and by file position inside
   // CompoundButton.module.css — see that file's header for the mapping back to the
   // mergeClasses() argument order, including why its blocks are bucket-major.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    // Root styles
-    styles.root,
-    'group/fui-compound-button',
-    styles['high-contrast'],
-    appearance && styles[appearance],
-    styles[size],
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        // Root styles
+        styles.root,
+        'group/fui-compound-button',
+        styles['high-contrast'],
+        appearance && styles[appearance],
+        styles[size],
 
-    // Disabled styles
-    disabledAny && styles.disabled,
-    disabledAny && styles['disabled-high-contrast'],
+        // Disabled styles
+        disabledAny && styles.disabled,
+        disabledAny && styles['disabled-high-contrast'],
 
-    // Icon-only styles
-    iconOnly && styles[`icon-only-${size}`],
+        // Icon-only styles
+        iconOnly && styles[`icon-only-${size}`],
 
-    // User provided class name
-    state.root.className,
-  );
+        // User provided class name
+        state.root.className,
+      ),
+    },
+  };
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.contentContainer.className = clsx(styles['content-container'], state.contentContainer.className);
+  state = {
+    ...state,
+    contentContainer: {
+      ...state.contentContainer,
+      className: clsx(styles['content-container'], state.contentContainer.className),
+    },
+  };
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(
-      styles.icon,
-      state.root.children !== undefined && state.root.children !== null && styles[`icon-${iconPosition}`],
-      state.icon.className,
-    );
+    state = {
+      ...state,
+      icon: {
+        ...state.icon,
+        className: clsx(
+          styles.icon,
+          state.root.children !== undefined && state.root.children !== null && styles[`icon-${iconPosition}`],
+          state.icon.className,
+        ),
+      },
+    };
   }
 
   if (state.secondaryContent) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.secondaryContent.className = clsx(
-      styles['secondary-content'],
-      styles[`secondary-content-${size}`],
-      state.secondaryContent.className,
-    );
+    state = {
+      ...state,
+      secondaryContent: {
+        ...state.secondaryContent,
+        className: clsx(
+          styles['secondary-content'],
+          styles[`secondary-content-${size}`],
+          state.secondaryContent.className,
+        ),
+      },
+    };
   }
 
   // Called LAST, exactly as before: `useButtonStyles_unstable` composes its own classes
   // ahead of the incoming className, which is what made CompoundButton win under Griffel.
   // The `fui.components.l2` altitude reproduces that winner now, but the call order still
   // has to stand so the consumer className stays last in the rendered class attribute.
-  useButtonStyles_unstable(state);
+  // Thread the composed result instead of discarding it (F1 of the D14 mutation removal).
+  // CompoundButton adds `secondaryContent` / `contentWrapper` slots, so Button's `components`
+  // map is NARROWER than this one; it is dropped off the return so this component keeps its own,
+  // and every other key Button composed is merged onto this component's wider shape.
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const { components: buttonComponents, ...composedButton } = useButtonStyles_unstable(state);
+  state = { ...state, ...composedButton };
 
   return state;
 };

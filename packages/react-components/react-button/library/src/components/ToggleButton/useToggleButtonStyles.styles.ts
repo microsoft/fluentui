@@ -59,48 +59,63 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   // position inside ToggleButton.module.css — see that file's header for the mapping back
   // to the mergeClasses() argument order, including why its blocks are bucket-major
   // rather than slice-major.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    'group/fui-toggle-button',
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        'group/fui-toggle-button',
 
-    // Primary high contrast styles
-    appearance === 'primary' && styles['primary-high-contrast'],
-    appearance === 'primary' && disabledAny && styles['primary-high-contrast-disabled'],
+        // Primary high contrast styles
+        appearance === 'primary' && styles['primary-high-contrast'],
+        appearance === 'primary' && disabledAny && styles['primary-high-contrast-disabled'],
 
-    // Checked styles
-    checked && styles.checked,
-    checked && styles['checked-high-contrast'],
-    appearance && checked && styles[`checked-${appearance}`],
+        // Checked styles
+        checked && styles.checked,
+        checked && styles['checked-high-contrast'],
+        appearance && checked && styles[`checked-${appearance}`],
 
-    // Opt-in accessible checked styles
-    isAccessible && checked && styles['accessible-checked'],
-    isAccessible && appearance && checked && styles[`accessible-checked-${appearance}`],
+        // Opt-in accessible checked styles
+        isAccessible && checked && styles['accessible-checked'],
+        isAccessible && appearance && checked && styles[`accessible-checked-${appearance}`],
 
-    // Disabled styles
-    disabledAny && styles.disabled,
-    appearance && disabledAny && styles[`disabled-${appearance}`],
+        // Disabled styles
+        disabledAny && styles.disabled,
+        appearance && disabledAny && styles[`disabled-${appearance}`],
 
-    // User provided class name
-    state.root.className,
-  );
+        // User provided class name
+        state.root.className,
+      ),
+    },
+  };
 
+  // `styles.icon` is unconditional (it carries the forced-colors `forced-color-adjust`
+  // reset), which is also what makes it a stable private handle for the
+  // `.accessible-checked-subtle` hover rule in the module.
   if (state.icon) {
-    // `styles.icon` is unconditional (it carries the forced-colors `forced-color-adjust`
-    // reset), which is also what makes it a stable private handle for the
-    // `.accessible-checked-subtle` hover rule in the module.
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(
-      checked && !isAccessible && (appearance === 'subtle' || appearance === 'transparent') && styles['checked-icon'],
-      styles.icon,
-      state.icon.className,
-    );
+    state = {
+      ...state,
+      icon: {
+        ...state.icon,
+        className: clsx(
+          checked &&
+            !isAccessible &&
+            (appearance === 'subtle' || appearance === 'transparent') &&
+            styles['checked-icon'],
+          styles.icon,
+          state.icon.className,
+        ),
+      },
+    };
   }
 
   // Called LAST, exactly as before: `useButtonStyles_unstable` composes its own classes
   // ahead of the incoming className, which is what made ToggleButton win under Griffel.
   // The `fui.components.l2` altitude reproduces that winner now, but the call order still
   // has to stand so the consumer className stays last in the rendered class attribute.
-  useButtonStyles_unstable(state);
+  // ToggleButtonState widens ButtonState with `checked` / `isAccessible`, so the delegate's
+  // narrower return is re-merged onto this component's own shape (F1 of the D14 mutation removal — thread the composed result, do not discard it).
+  state = { ...state, ...useButtonStyles_unstable(state) };
 
   return state;
 };

@@ -52,40 +52,55 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   // rather than states inside one, and keeping them here preserves the 1:1 mapping the
   // module header documents. Cascade priority is decided by the `@layer fui.*` order in
   // MenuButton.module.css.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    'group/fui-menu-button',
-    expanded && styles.expanded,
-    expanded && styles[`expanded-${state.appearance}`],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        'group/fui-menu-button',
+        expanded && styles.expanded,
+        expanded && styles[`expanded-${state.appearance}`],
+        state.root.className,
+      ),
+    },
+  };
 
+  // PRESERVED VERBATIM, including its quirk. The Griffel source reads
+  //
+  //   state.root['aria-expanded'] && iconExpandedStyles[state.appearance] && iconExpandedStyles.highContrast
+  //
+  // — an `&&` chain, not a comma-separated argument list — so the APPEARANCE colour is
+  // never applied; the expression evaluates to `highContrast` alone, and only when the
+  // appearance slice is a non-empty class string. `primary` is the one empty slice
+  // (`{}` → `''` → falsy), so `appearance === 'primary'` suppresses the whole thing.
+  // That is a behaviour contract for this conversion, not a bug to fix while migrating
+  // styling: `appearance !== 'primary'` is the exact, readable form of the same guard.
   if (state.icon) {
-    // PRESERVED VERBATIM, including its quirk. The Griffel source reads
-    //
-    //   state.root['aria-expanded'] && iconExpandedStyles[state.appearance] && iconExpandedStyles.highContrast
-    //
-    // — an `&&` chain, not a comma-separated argument list — so the APPEARANCE colour is
-    // never applied; the expression evaluates to `highContrast` alone, and only when the
-    // appearance slice is a non-empty class string. `primary` is the one empty slice
-    // (`{}` → `''` → falsy), so `appearance === 'primary'` suppresses the whole thing.
-    // That is a behaviour contract for this conversion, not a bug to fix while migrating
-    // styling: `appearance !== 'primary'` is the exact, readable form of the same guard.
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(
-      expanded && state.appearance !== 'primary' && styles['icon-expanded-high-contrast'],
-      state.icon.className,
-    );
+    state = {
+      ...state,
+      icon: {
+        ...state.icon,
+        className: clsx(
+          expanded && state.appearance !== 'primary' && styles['icon-expanded-high-contrast'],
+          state.icon.className,
+        ),
+      },
+    };
   }
 
   if (state.menuIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.menuIcon.className = clsx(
-      styles['menu-icon'],
-      styles[`menu-icon-${state.size}`],
-      !state.iconOnly && styles['menu-icon-not-icon-only'],
-      state.menuIcon.className,
-    );
+    state = {
+      ...state,
+      menuIcon: {
+        ...state.menuIcon,
+        className: clsx(
+          styles['menu-icon'],
+          styles[`menu-icon-${state.size}`],
+          !state.iconOnly && styles['menu-icon-not-icon-only'],
+          state.menuIcon.className,
+        ),
+      },
+    };
   }
 
   // Called LAST, exactly as before: `useButtonStyles_unstable` composes its own classes
@@ -95,7 +110,15 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   // The `iconPosition: 'before'` override is unchanged — it is a shallow copy, so the
   // shared `root` / `icon` slot objects (and the data attributes Button stamps on them)
   // are still the ones this component renders.
-  useButtonStyles_unstable({ ...state, iconPosition: 'before' });
+  // Thread the composed result instead of discarding it (F1 of the D14 mutation removal). The
+  // delegate is handed a shallow copy carrying `iconPosition: 'before'`, so `iconPosition` is
+  // dropped off its return before the merge — MenuButtonState deliberately `Omit`s that key,
+  // and re-merging it would put a property on the rendered state that this component's own
+  // type says is absent. The cast re-narrows `components` back to MenuButtonSlots, which the
+  // delegate's ButtonState view does not know about; the object and every slot object on it is
+  // still the one MenuButton renders.
+  const { iconPosition, ...composedButton } = useButtonStyles_unstable({ ...state, iconPosition: 'before' });
+  state = { ...state, ...composedButton } as MenuButtonState;
 
   return state;
 };
