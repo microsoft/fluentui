@@ -2,11 +2,10 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * the other three converted styles files in this package carry an
- * `enforce-use-client` suppression, because a converted hook normally calls no React hook
- * and no RSC-unsafe function once `makeStyles` is gone. This one is the exception and needs
- * NO suppression: it still calls `useButtonStyles_unstable`, so the directive is genuinely
- * required and the rule does not flag it. (Adding the suppression anyway trips
+ * a converted hook normally calls no React hook and no RSC-unsafe function once `makeStyles`
+ * is gone, so the other three styles files in this package carry no directive at all. This
+ * one is the exception: it still calls `useButtonStyles_unstable`, so the directive is
+ * genuinely required and the rule does not flag it. (Adding a suppression anyway would trip
  * `--report-unused-disable-directives`.)
  */
 
