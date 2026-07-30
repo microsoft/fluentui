@@ -81,10 +81,14 @@ const useToggleButton_unstable = (props, ref) => {
 const ToggleButton = React.forwardRef((props, ref) => {
   const state = useToggleButton_unstable(props, ref);
 
-  // Inject classNames as needed.
-  state.className = mergeClasses(state.className, styles.root, state.checked && styles.checked);
+  // Inject classNames as needed. `clsx` is a plain string join: it neither merges nor
+  // de-duplicates, and which rule wins is decided by the cascade layer, not by argument order.
+  const styled = {
+    ...state,
+    className: clsx(state.className, styles.root, state.checked && styles.checked),
+  };
 
-  return renderButton_unstable(state);
+  return renderButton_unstable(styled);
 });
 ```
 
