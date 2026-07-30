@@ -33,8 +33,8 @@ export const colorSliderClassNames: { root: string } = {
  * (CONVERSION_GUIDE "Known special cases"), so these names are still public API.
  *
  * The four `--fui-Slider*` names are SHARED with `@fluentui/react-slider` and (for
- * `thumbSizeVar`) with ColorArea. They are deliberately not renamed by this conversion —
- * react-slider is still on Griffel and the namespace is a cross-package contract.
+ * `thumbSizeVar`) with ColorArea. They are deliberately not renamed: the namespace is a
+ * cross-package contract and, being public API, is not the conversion's to change.
  */
 export const colorSliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,

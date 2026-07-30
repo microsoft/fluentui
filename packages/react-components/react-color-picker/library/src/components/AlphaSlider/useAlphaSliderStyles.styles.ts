@@ -1,15 +1,10 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): unlike its three siblings in this
- * package, this file needs NO `enforce-use-client` suppression and KEEPS its
- * `react-hooks/immutability` disables. It still calls `useColorSliderStyles_unstable()`, so
- * eslint still treats this styles hook as a React hook and both rules apply to it exactly as
- * before — the same split react-avatar landed on, versus ColorPicker/ColorArea/ColorSlider,
- * whose converted hooks call nothing and therefore lose both.
- *
- * The state-mutation contract itself is deliberately preserved (DECISIONS.md D14); its
- * removal is a single Phase 3 sweep, not a per-conversion change.
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * it still calls `useColorSliderStyles_unstable()`, so eslint treats this styles hook as a
+ * React hook and `enforce-use-client` never reports the directive as unnecessary.
+ * ColorPicker/ColorArea/ColorSlider call nothing after conversion and carry no directive.
  */
 
 import { clsx } from 'clsx';
