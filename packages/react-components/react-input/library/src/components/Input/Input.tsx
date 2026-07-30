@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * The Input component allows people to enter and edit text.
  */
 export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, ref) => {
-  const state = useInput_unstable(props, ref);
+  let state = useInput_unstable(props, ref);
 
-  useInputStyles_unstable(state);
+  state = useInputStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useInputStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useInputStyles_unstable')(state);
 
   return renderInput_unstable(state);
 });
