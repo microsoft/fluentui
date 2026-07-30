@@ -2,12 +2,10 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike the converted leaf hooks this file needs NO `enforce-use-client` suppression — it
- * still calls `useDrawerHeaderStyles_unstable`, so the rule agrees the directive is required,
- * and that same call is what keeps this function a HOOK in the react-compiler's eyes, hence
- * the retained `react-hooks/immutability` disable below (the state-mutation pattern is
- * preserved per DECISIONS.md D14). Converted hooks that call nothing carry a trailing
- * `eslint-disable-line` instead; see useNavStyles.styles.ts.
+ * this file keeps `'use client'` because it still calls `useDrawerHeaderStyles_unstable`,
+ * so `enforce-use-client` sees a hook call and never reports the directive as unnecessary —
+ * and that same call is what keeps this function a HOOK in the react-compiler's eyes.
+ * Converted leaf hooks call nothing and carry no directive at all; see useNavStyles.styles.ts.
  */
 
 import { clsx } from 'clsx';
