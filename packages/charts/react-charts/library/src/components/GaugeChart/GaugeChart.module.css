@@ -1,0 +1,246 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useGaugeChartStyles`. Every
+ * slot had the identical 3-argument shape — `mergeClasses(<static>, <base slice>,
+ * props.styles?.<slot>)` — so there is exactly ONE library slice per slot and no intra-slot
+ * ordering to preserve:
+ *
+ *   root                     2 useStyles.root                     → l1  .root
+ *                              (static #1 REMOVED by D16.1; the root now leads with `.root`
+ *                              and carries `group/fui-gauge-chart` second)
+ *   chart                    2 useStyles.chart                    → l1  .chart
+ *   limits                   2 useStyles.limits                   → l1  .limits
+ *   chartValue               2 useStyles.chartValue               → l1  .chart-value
+ *   sublabel                 2 useStyles.sublabel                 → l1  .sublabel
+ *   needle                   2 useStyles.needle                   → l1  .needle
+ *   chartTitle               2 useStyles.chartTitle               → l1  .chart-title
+ *   svgTooltip               2 useStyles.svgTooltip               → l1  .svg-tooltip
+ *   segment                  2 useStyles.segment                  → l1  .segment
+ *   gradientSegment          2 useStyles.gradientSegment          → l1  .gradient-segment
+ *   calloutContentRoot       2 useStyles.calloutContentRoot       → l1  .callout-content-root
+ *   calloutDateTimeContainer 2 useStyles.calloutDateTimeContainer → l1  .callout-date-time-container
+ *   calloutContentX          2 useStyles.calloutContentX          → l1  .callout-content-x
+ *   calloutBlockContainer    2 useStyles.calloutBlockContainer    → l1  .callout-block-container
+ *   shapeStyles              2 useStyles.shapeStyles              → l1  .shape-styles
+ *   calloutlegendText        2 useStyles.calloutlegendText        → l1  .callout-legend-text
+ *   calloutContentY          2 useStyles.calloutContentY          → l1  .callout-content-y
+ *   descriptionMessage       2 useStyles.descriptionMessage       → l1  .description-message
+ *   legendsContainer         2 useStyles.legendsContainer         → l1  .legends-container
+ *   chartWrapper             (static only — no slice)             → slot passes the consumer
+ *                                                                    string through (Donut
+ *                                                                    chartWrapper precedent)
+ *   calloutInfoContainer     (static '' — hook never returned it) → nothing to convert
+ *   props.styles?.<slot>     → unlayered (always wins)
+ *
+ * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
+ * Everything is `fui.components.l1`. GaugeChart renders its OWN root `<div>` (it does not
+ * compose CartesianChart), and every classed element — the svg, arc `<path>`s, `<text>`s,
+ * and the custom multi-value callout content it hands ChartPopover via
+ * `customCallout.customizedCallout` — is rendered by GaugeChart itself. `.chart-title` and
+ * `.svg-tooltip` land on ChartTitle/SVGTooltipText elements, but those are plain render
+ * helpers with no styles hook of their own (DonutChart precedent), so l2 would buy nothing.
+ * The callout content mounts inside ChartPopover's surface but none of these elements IS a
+ * ChartPopover-styled element (ChartPopover precedent: own elements → l1).
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/GaugeChart/useGaugeChartStyles.styles.js (AOT atomics with their
+ * explicit `[ltr, rtl]` pairs).
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * Three compiled `[ltr, rtl]` pairs, all expressed logically here:
+ *   textAlign 'left' on `.root`                    → `text-align: start` (`text-start`)
+ *   paddingLeft 8px on `.callout-block-container`  → `padding-inline-start` (`ps-horizontal-s`)
+ *   marginRight 8px on `.shape-styles`             → `margin-inline-end` (`me-horizontal-s`)
+ *
+ * ── HighContrastSelector → `@variant forced-colors` ─────────────────────────────────────
+ * `.svg-tooltip` is the only media-query slice. The `-ms-high-contrast` half of
+ * `HighContrastSelector` is a removed non-standard query no shipping browser evaluates;
+ * narrowing to the catalog `forced-colors` variant is behaviour-preserving (DonutChart
+ * precedent, report §HighContrastSelector). The `forced-color-adjust` declarations
+ * elsewhere are FLAT properties (Griffel `d` bucket), carried verbatim.
+ *
+ * ── Spacing forms ───────────────────────────────────────────────────────────────────────
+ * 8px literals sit exactly on the S spacing step → named utilities (`ps-horizontal-s`,
+ * `me-horizontal-s`); 10px sits on MNudge → `mt-vertical-m-nudge` / `pt-vertical-m-nudge`;
+ * 13px matches no step → numeric `mt-13` (D4 amendment; Legends/ChartPopover precedent).
+ * `line-height: 16px` / `22px` and `border-top: 1px solid …` are frozen literals in the
+ * source, carried verbatim (ChartPopover precedent).
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — typographyStyles.body1 + layout; textAlign 'left' → logical `start` */
+  .root {
+    @apply flex h-full w-full flex-col items-center text-start;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  /* from useStyles.chart */
+  .chart {
+    @apply block;
+  }
+
+  /*
+   * from useStyles.limits and useStyles.sublabel — both typographyStyles.caption1Strong +
+   * fill/forced-color-adjust, identical atomic sets, so one rule emits both locals
+   * (ChartPopover numerator/denominator precedent).
+   */
+  .limits,
+  .sublabel {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+    fill: var(--colorNeutralForeground1);
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.chartValue — fontWeight only; the size comes from a `fontSize` ATTRIBUTE
+   * the component computes per breakpoint (BREAKPOINTS), not from CSS */
+  .chart-value {
+    font-weight: var(--fontWeightSemibold);
+    fill: var(--colorNeutralForeground1);
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.needle */
+  .needle {
+    fill: var(--colorNeutralForeground1);
+    stroke: var(--colorNeutralBackground1);
+  }
+
+  /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
+  .svg-tooltip {
+    fill: var(--colorNeutralBackground1);
+
+    @variant forced-colors {
+      fill: Canvas;
+    }
+  }
+
+  /*
+   * from useStyles.chartTitle = getChartTitleStyles() (utilities/Common.styles.ts).
+   * That factory is SHARED (ChartTable, FunnelChart, SankeyChart, DonutChart, …), so it is
+   * NOT converted in this batch (CONVERSION_GUIDE "shared utilities": convert only when ALL
+   * consumers are in the batch). Declarations inlined from the compiled atomics —
+   * byte-identical to DonutChart.module.css's `.chart-title`.
+   */
+  .chart-title {
+    @apply mb-vertical-s text-center;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase100);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase100);
+    fill: var(--colorNeutralForeground1);
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.segment — the focus outline is suppressed; the stroke IS the focus
+   * indicator (strokeWidth flips 0 → ARC_PADDING on focus, in JS) */
+  .segment {
+    outline: none;
+    stroke: var(--colorStrokeFocus2);
+  }
+
+  /* from useStyles.gradientSegment */
+  .gradient-segment {
+    @apply h-full w-full;
+  }
+
+  /* from useStyles.calloutContentRoot */
+  .callout-content-root {
+    @apply grid overflow-hidden;
+
+    background-color: var(--colorNeutralBackground1);
+    background-blend-mode: normal, luminosity;
+  }
+
+  /* from useStyles.calloutDateTimeContainer */
+  .callout-date-time-container {
+    @apply flex flex-row justify-between;
+  }
+
+  /* from useStyles.calloutContentX — typographyStyles.caption1 with its lineHeight
+   * overridden by a frozen 16px literal, + opacity */
+  .callout-content-x {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: 16px;
+    opacity: 0.85;
+  }
+
+  /* from useStyles.calloutBlockContainer — typographyStyles.body1Strong + block/margins;
+   * paddingLeft 8px → logical start. The coloured left border is an inline style the
+   * component writes per data point (`borderInlineStart: 4px solid <color>`). */
+  .callout-block-container {
+    @apply mt-13 block ps-horizontal-s;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+    color: var(--colorNeutralForeground1);
+    forced-color-adjust: none;
+  }
+
+  /* from useStyles.shapeStyles — marginRight → logical end */
+  .shape-styles {
+    @apply me-horizontal-s;
+  }
+
+  /* from useStyles.calloutlegendText — typographyStyles.caption1 + color */
+  .callout-legend-text {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    color: var(--colorNeutralForeground2);
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.calloutContentY — typographyStyles.body1Strong with its lineHeight
+   * overridden by a frozen 22px literal */
+  .callout-content-y {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: 22px;
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.descriptionMessage — typographyStyles.caption1 + color/margins/border.
+   * 10px sits on the MNudge spacing step; `border-top`'s `1px` is a frozen literal. */
+  .description-message {
+    @apply mt-vertical-m-nudge pt-vertical-m-nudge;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    color: var(--colorNeutralForeground1);
+    border-top: 1px solid var(--colorNeutralStroke1);
+  }
+
+  /* from useStyles.legendsContainer */
+  .legends-container {
+    @apply w-full;
+  }
+}

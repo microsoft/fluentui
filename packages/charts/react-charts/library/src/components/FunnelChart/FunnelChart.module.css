@@ -1,0 +1,115 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useFunnelChartStyles`.
+ * Every slot had ONE library slice, so there is no intra-slot ordering to preserve:
+ *
+ *   root               1 funnelClassNames.root        → static (JS) — REMOVED (D16.1); the
+ *                                                       root now leads with `.root` and
+ *                                                       carries `group/fui-funnel-chart` second
+ *                      2 useStyles.root               → l1  .root
+ *                      3 props.className              → unlayered (always wins)
+ *                      4 props.styles?.root           → unlayered (always wins)
+ *   chart              2 useStyles.chart              → l1  .chart
+ *   text               2 useStyles.text               → l1  .text
+ *   calloutContentRoot 1 useStyles.calloutContentRoot → l1  .callout-content-root
+ *                        (this slot never had a static — its FIRST argument was the slice)
+ *   chartTitle         2 useStyles.chartTitle         → l1  .chart-title
+ *   svgTooltip         2 useStyles.svgTooltip         → l1  .svg-tooltip
+ *
+ * KNOWN-DEAD SLOTS, kept because they are part of the public `FunnelChartStyles` contract
+ * (VerticalStackedBarChart `tooltip` precedent; retiring them belongs to the Phase 3
+ * sweep): no element in `FunnelChart.tsx` consumes `classes.text` (`_renderSegmentText`
+ * writes a bare `<text>` with fill/opacity attributes) or `classes.calloutContentRoot`
+ * (the ChartPopover it renders receives no `styles` prop).
+ *
+ * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
+ * Everything is `fui.components.l1`. FunnelChart renders its OWN root `<div>` (it does not
+ * compose CartesianChart); `.chart-title`/`.svg-tooltip` land on ChartTitle/SVGTooltipText
+ * elements — plain render helpers with no styles hook of their own (DonutChart precedent).
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/FunnelChart/useFunnelChartStyles.styles.js.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * One compiled `[ltr, rtl]` pair: textAlign 'left' on `.root` → `text-align: start`
+ * (`text-start`). Nothing else is direction-sensitive.
+ *
+ * ── HighContrastSelector → `@variant forced-colors` ─────────────────────────────────────
+ * `.svg-tooltip` only; same behaviour-preserving narrowing as DonutChart
+ * (report §HighContrastSelector).
+ */
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.root. `align-items: center` without a display:flex is carried verbatim
+   * from the source (it only takes effect when a consumer makes the root a flex container);
+   * the conversion is a pure re-expression of the compiled output.
+   */
+  .root {
+    @apply relative h-full w-full items-center text-start;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+  }
+
+  /* from useStyles.chart */
+  .chart {
+    @apply block h-full w-full;
+  }
+
+  /* from useStyles.text — segment value labels */
+  .text {
+    @apply pointer-events-none;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    fill: var(--colorNeutralForeground1);
+  }
+
+  /* from useStyles.calloutContentRoot — 238px matches no spacing step, carried as the
+   * numeric utility (Legends min-w-200/max-w-800 precedent) */
+  .callout-content-root {
+    @apply max-w-238;
+  }
+
+  /*
+   * from useStyles.chartTitle = getChartTitleStyles() (utilities/Common.styles.ts).
+   * That factory is SHARED (ChartTable, GaugeChart, SankeyChart, DonutChart, …), so it is
+   * NOT converted in this batch (CONVERSION_GUIDE "shared utilities"). Declarations inlined
+   * from the compiled atomics — byte-identical to DonutChart.module.css's `.chart-title`.
+   */
+  .chart-title {
+    @apply mb-vertical-s text-center;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase100);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase100);
+    fill: var(--colorNeutralForeground1);
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
+  .svg-tooltip {
+    fill: var(--colorNeutralBackground1);
+
+    @variant forced-colors {
+      fill: Canvas;
+    }
+  }
+}

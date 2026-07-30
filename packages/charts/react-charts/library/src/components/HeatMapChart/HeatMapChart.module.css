@@ -1,0 +1,87 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useHeatMapChartStyles`.
+ * The consumer `props.styles?.<slot>` arguments are COMMENTED OUT in the Griffel source
+ * for `text`/`calloutContentRoot` and stay that way; the hook returned only three slots
+ * (the other `HeatMapChartStyles` keys had empty statics and no slices — nothing to
+ * convert):
+ *
+ *   root               1 heatmapChartClassNames.root  → static (JS) — REMOVED (D16.1)
+ *                      2 useStyles.root = {}          → identity-only  .root  (l2, below)
+ *                      + group/fui-heat-map-chart     → identity marker (JS, unstyled)
+ *                      + props.styles?.root           → unlayered (always wins; see hook)
+ *   text               2 useStyles.text               → l1  .text
+ *   calloutContentRoot 2 useStyles.calloutContentRoot → l2  .callout-content-root (below)
+ *
+ * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
+ * `.text` is l1: the value `<text>`s are elements HeatMapChart renders itself inside
+ * CartesianChart's `children` render prop — this component's own cascade.
+ *
+ * `.root` and `.callout-content-root` are l2 because BOTH decorate elements owned by other
+ * (converted) components' hooks:
+ *   - `.root` rides CartesianChart's root `<div>` via the `styles` prop
+ *     (VerticalStackedBarChart precedent);
+ *   - `.callout-content-root` is passed into ChartPopover's `styles.calloutContentRoot`
+ *     (`calloutProps` in HeatMapChart.tsx) and lands on the div that already carries
+ *     ChartPopover's own l1 `.callout-content-root`. It was the LAST mergeClasses argument
+ *     inside `usePopoverStyles_unstable` (the winner); no property conflicts exist today
+ *     (`max-width` vs ChartPopover's grid/background set), and l2-beats-l1 preserves the
+ *     old winner direction if one ever appears.
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/HeatMapChart/useHeatMapChartStyles.styles.js. No `[ltr, rtl]`
+ * pair (nothing direction-sensitive) and no HighContrastSelector anywhere.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.text — typographyStyles.body1Strong + pointerEvents */
+  .text {
+    @apply pointer-events-none;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). `useStyles.root` was `{}` (compiles
+   * to no atomic) and HeatMapChart renders no element of its own: its outermost node is
+   * CartesianChart's root `<div>`, reached through CartesianChart's public `styles.root`
+   * prop (CONVERSION_GUIDE §3d M2 — VerticalStackedBarChart precedent).
+   * `useHeatMapChartStyles` leads its `clsx()` with this class so the composed string
+   * ALWAYS starts with a hashed, selector-safe token ahead of `group/fui-heat-map-chart`:
+   * nwsapi's `:scope` polyfill anchors on `escape(element.classList[0])` and the `/`
+   * survives that escaping, yielding an invalid selector and a render-time AggregateError
+   * under jsdom. Do not delete it because it looks like it does nothing.
+   *
+   * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE
+   * `postcss-modules` and Tailwind v4 prunes every declaration-less rule, so `.root {}`
+   * would never reach the class map and `styles.root` would be `undefined`. A custom
+   * property set to `initial` is guaranteed-invalid, so it renders nothing.
+   */
+  .root {
+    --fui-heat-map-chart-identity: initial;
+  }
+
+  /* from useStyles.calloutContentRoot — decorates ChartPopover's element (see header).
+   * 238px matches no spacing step, carried as the numeric utility (Legends precedent). */
+  .callout-content-root {
+    @apply max-w-238;
+  }
+}

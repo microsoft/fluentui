@@ -12,6 +12,7 @@ import type { ExtendedSegment } from './GaugeChart';
 import { GaugeChart, calcNeedleRotation, getSegmentLabel, getChartValueLabel, ARC_PADDING } from './GaugeChart';
 
 import legendStyles from '../Legends/Legends.module.css';
+import gaugeStyles from './GaugeChart.module.css';
 
 expect.extend(toHaveNoViolations);
 
@@ -25,6 +26,15 @@ expect.extend(toHaveNoViolations);
  * cannot see.
  */
 const getLegendTexts = (container: HTMLElement) => getByExactClass(container, legendStyles.text);
+
+/*
+ * Same seam for GaugeChart's own slots (charts C4): `fui-gc__chartValue` /
+ * `fui-gc__calloutContentRoot` are no longer rendered, so the `/chartValue/i` and
+ * `/calloutContentRoot/i` attribute regexes match nothing. The queries below go through the
+ * module class map instead — the very classes the component applies. Only the HANDLE moved:
+ * the ellipsis text, `font-size` attribute, and popover open/closed presence these tests
+ * assert are all runtime values the component still writes.
+ */
 
 enum GaugeValueFormat {
   Percentage = 'percentage',
@@ -411,8 +421,8 @@ describe('GaugeChart rendering and behavior tests', () => {
     }
 
     const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
-    expect(getByClass(container, /chartValue/i)).toHaveLength(1);
-    expect(getByClass(container, /chartValue/i)[0]).toHaveTextContent('...');
+    expect(getByExactClass(container, gaugeStyles['chart-value'])).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['chart-value'])[0]).toHaveTextContent('...');
   });
 
   it('should update the font size of the chart value when the chart resizes', () => {
@@ -421,7 +431,7 @@ describe('GaugeChart rendering and behavior tests', () => {
     for (let i = 1; i < bounds.length; i++) {
       const width = Math.floor(Math.random() * (bounds[i] - bounds[i - 1]) + bounds[i - 1]);
       rerender(<GaugeChart segments={segments} chartValue={25} hideMinMax width={width} height={1000} />);
-      const legendText = getByClass(container, /chartValue /i)[0];
+      const legendText = getByExactClass(container, gaugeStyles['chart-value'])[0];
       expect(Number(legendText.getAttribute('font-size'))).toBe(
         i < 2 ? BREAKPOINTS[0].fontSize : BREAKPOINTS[i - 2].fontSize,
       );
@@ -434,7 +444,7 @@ describe('GaugeChart rendering and behavior tests', () => {
     if (segs.length > 0) {
       fireEvent.mouseEnter(segs[0]!);
     }
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(0);
   });
 
   it('should ensure the needle rotation remains within the range of 0 to 180 degrees at all times', () => {
@@ -604,10 +614,10 @@ describe('Gauge Chart - Callout', () => {
     const segmentslist = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
     const needle = segmentslist[3];
     fireEvent.focus(needle!);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(1);
 
     fireEvent.blur(needle!);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(0);
   });
 
   it(`should show a callout when the mouse enters a highlighted segment and
@@ -617,14 +627,14 @@ describe('Gauge Chart - Callout', () => {
     fireEvent.click(legends[0]);
     const segs = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
     fireEvent.mouseEnter(segs[0]);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(1);
     fireEvent.mouseEnter(segs[1]);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(0);
     fireEvent.mouseEnter(segs[2]);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(0);
     //When mouse is on needle callout should be shown
     fireEvent.mouseEnter(segs[3]);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(1);
   });
 
   it(`should show a callout when the mouse moves over the chart value and
@@ -633,13 +643,13 @@ describe('Gauge Chart - Callout', () => {
 
     const chartValue = screen.getByText('25%');
     fireEvent.mouseEnter(chartValue);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(1);
 
     fireEvent.mouseMove(chartValue);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(1);
 
     fireEvent.mouseLeave(chartValue);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(0);
   });
 
   it(`should show a callout when the mouse moves over the needle and
@@ -651,13 +661,13 @@ describe('Gauge Chart - Callout', () => {
     const segmentslist = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
     const needle = segmentslist[3];
     fireEvent.mouseEnter(needle!);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(1);
 
     fireEvent.mouseMove(needle!);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(1);
 
     fireEvent.mouseLeave(needle!);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(0);
   });
 
   it(`should show a callout when the mouse moves over a segment and
@@ -666,8 +676,8 @@ describe('Gauge Chart - Callout', () => {
     const segmentslist = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
     fireEvent.mouseEnter(segmentslist[0]!);
     fireEvent.mouseMove(segmentslist[0]!);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(1);
     fireEvent.mouseLeave(segmentslist[0]!);
-    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+    expect(getByExactClass(container, gaugeStyles['callout-content-root'])).toHaveLength(0);
   });
 });

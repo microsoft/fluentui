@@ -8,7 +8,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-heat-map-chart"
         id="chart_"
         role="presentation"
       >
@@ -141,7 +141,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -164,7 +164,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -186,7 +186,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -209,7 +209,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -283,7 +283,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-heat-map-chart"
       id="chart_"
       role="presentation"
     >
@@ -416,7 +416,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -439,7 +439,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -461,7 +461,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -484,7 +484,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -617,7 +617,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-heat-map-chart"
         id="chart_"
         role="presentation"
       >
@@ -750,7 +750,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -772,7 +772,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -794,7 +794,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -816,7 +816,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -890,7 +890,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-heat-map-chart"
       id="chart_"
       role="presentation"
     >
@@ -1023,7 +1023,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -1045,7 +1045,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -1067,7 +1067,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -1089,7 +1089,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -1222,7 +1222,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-heat-map-chart"
         id="chart_"
         role="presentation"
       >
@@ -1355,7 +1355,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -1378,7 +1378,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -1400,7 +1400,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -1423,7 +1423,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -1440,7 +1440,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-heat-map-chart"
       id="chart_"
       role="presentation"
     >
@@ -1573,7 +1573,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -1596,7 +1596,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -1618,7 +1618,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -1641,7 +1641,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -1717,7 +1717,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-heat-map-chart"
         id="chart_"
         role="presentation"
       >
@@ -1850,7 +1850,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -1873,7 +1873,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -1895,7 +1895,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -1918,7 +1918,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -1992,7 +1992,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-heat-map-chart"
       id="chart_"
       role="presentation"
     >
@@ -2125,7 +2125,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -2148,7 +2148,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -2170,7 +2170,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -2193,7 +2193,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -2326,7 +2326,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-heat-map-chart"
         id="chart_"
         role="presentation"
       >
@@ -2459,7 +2459,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -2482,7 +2482,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -2504,7 +2504,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -2527,7 +2527,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -2601,7 +2601,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-heat-map-chart"
       id="chart_"
       role="presentation"
     >
@@ -2734,7 +2734,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -2757,7 +2757,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -2779,7 +2779,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -2802,7 +2802,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
-                class="fui-hmc__text"
+                class=""
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
@@ -2939,7 +2939,7 @@ Object {
         dir="ltr"
       >
         <div
-          class="group/fui-cartesian-chart"
+          class="group/fui-cartesian-chart group/fui-heat-map-chart"
           id="chart_"
           role="presentation"
         >
@@ -3072,7 +3072,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
-                    class="fui-hmc__text"
+                    class=""
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
                     text-anchor="middle"
@@ -3095,7 +3095,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
-                    class="fui-hmc__text"
+                    class=""
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
                     text-anchor="middle"
@@ -3117,7 +3117,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
-                    class="fui-hmc__text"
+                    class=""
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
                     text-anchor="middle"
@@ -3140,7 +3140,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
-                    class="fui-hmc__text"
+                    class=""
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
                     text-anchor="middle"
@@ -3219,7 +3219,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-heat-map-chart"
         id="chart_"
         role="presentation"
       >
@@ -3352,7 +3352,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -3375,7 +3375,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -3397,7 +3397,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -3420,7 +3420,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -3557,7 +3557,7 @@ Object {
         dir="rtl"
       >
         <div
-          class="group/fui-cartesian-chart"
+          class="group/fui-cartesian-chart group/fui-heat-map-chart"
           id="chart_"
           role="presentation"
         >
@@ -3690,7 +3690,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
-                    class="fui-hmc__text"
+                    class=""
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
                     text-anchor="middle"
@@ -3713,7 +3713,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
-                    class="fui-hmc__text"
+                    class=""
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
                     text-anchor="middle"
@@ -3735,7 +3735,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
-                    class="fui-hmc__text"
+                    class=""
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
                     text-anchor="middle"
@@ -3758,7 +3758,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
-                    class="fui-hmc__text"
+                    class=""
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
                     text-anchor="middle"
@@ -3836,7 +3836,7 @@ Object {
       dir="rtl"
     >
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-heat-map-chart"
         id="chart_"
         role="presentation"
       >
@@ -3969,7 +3969,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -3992,7 +3992,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -4014,7 +4014,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -4037,7 +4037,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
-                  class="fui-hmc__text"
+                  class=""
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
@@ -4166,7 +4166,7 @@ Object {
 exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with numeric datapoints 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-heat-map-chart"
     id="chart_"
     role="presentation"
   >
@@ -4299,7 +4299,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               width="286.23762376237624"
             />
             <text
-              class="fui-hmc__text"
+              class=""
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
@@ -4319,7 +4319,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               width="286.23762376237624"
             />
             <text
-              class="fui-hmc__text"
+              class=""
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
@@ -4339,7 +4339,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               width="286.23762376237624"
             />
             <text
-              class="fui-hmc__text"
+              class=""
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
@@ -4359,7 +4359,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               width="286.23762376237624"
             />
             <text
-              class="fui-hmc__text"
+              class=""
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
@@ -4433,7 +4433,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
 exports[`HeatMapChart snapshot tests should render axis labels correctly When custom formatter functions are set for x and y axis strings 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-heat-map-chart"
     id="chart_"
     role="presentation"
   >
@@ -4566,7 +4566,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               width="286.23762376237624"
             />
             <text
-              class="fui-hmc__text"
+              class=""
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
@@ -4588,7 +4588,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               width="286.23762376237624"
             />
             <text
-              class="fui-hmc__text"
+              class=""
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
@@ -4610,7 +4610,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               width="286.23762376237624"
             />
             <text
-              class="fui-hmc__text"
+              class=""
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
@@ -4632,7 +4632,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               width="286.23762376237624"
             />
             <text
-              class="fui-hmc__text"
+              class=""
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"

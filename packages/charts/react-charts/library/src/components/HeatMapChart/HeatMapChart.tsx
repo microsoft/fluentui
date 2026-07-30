@@ -780,6 +780,12 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     return !_isChartEmpty() ? (
       <CartesianChart
         {...props}
+        // Marker channel (CONVERSION_GUIDE §3d M2, VerticalStackedBarChart precedent):
+        // HeatMapChart's outermost node is CartesianChart's root, so its identity class +
+        // `group/fui-heat-map-chart` marker ride CartesianChart's public `styles.root` prop.
+        // Placed AFTER the `{...props}` spread so it wins; `classes.root` already composes
+        // the consumer's `props.styles?.root` (see useHeatMapChartStyles).
+        styles={{ ...props.styles, root: classes.root }}
         chartTitle={_getChartTitle()}
         points={data}
         chartType={ChartTypes.HeatMapChart}

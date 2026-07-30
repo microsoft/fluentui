@@ -7,15 +7,14 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
     dir="ltr"
   >
     <div
-      class="fui-gc__root"
+      class="group/fui-gauge-chart"
     >
       <div
-        class="fui-gc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
-          class="fui-gc__chart"
+          class=""
           height="-32"
           role="region"
           width="0"
@@ -25,7 +24,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
           >
             <text
               aria-label="Min value: 0"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="end"
               x="62"
@@ -35,7 +34,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             </text>
             <text
               aria-label="Max value: 100"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="start"
               x="-62"
@@ -45,7 +44,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             </text>
             <path
               aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
@@ -57,7 +56,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             />
             <path
               aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
@@ -69,7 +68,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             />
             <path
               aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
@@ -84,7 +83,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             >
               <path
                 aria-label="Current value: 30%"
-                class="fui-gc__needle"
+                class=""
                 d="
             M 0,-4
             L -16,-2
@@ -103,7 +102,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               <text
                 aria-describedby="tooltip-_r_26_"
                 aria-hidden="true"
-                class="fui-gc__chartValue"
+                class=""
                 font-size="20"
                 id="tooltip-host_r_25_"
                 text-anchor="middle"
@@ -120,7 +119,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
         </svg>
       </div>
       <div
-        class="fui-gc__legendsContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -301,15 +300,14 @@ Array [
 exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the other segments and legends on mouse click on a legend 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -319,7 +317,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -329,7 +327,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -339,7 +337,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -351,7 +349,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -362,7 +360,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -376,7 +374,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -395,7 +393,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             <text
               aria-describedby="tooltip-_r_19_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_18_"
               text-anchor="middle"
@@ -412,7 +410,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -497,15 +495,14 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
 exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the other segments and legends on mouse over a legend 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -515,7 +512,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -525,7 +522,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -535,7 +532,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -547,7 +544,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -558,7 +555,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -572,7 +569,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -591,7 +588,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             <text
               aria-describedby="tooltip-_r_16_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_15_"
               text-anchor="middle"
@@ -608,7 +605,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -693,15 +690,14 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
 exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -711,7 +707,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -721,7 +717,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -731,7 +727,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -743,7 +739,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -755,7 +751,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -770,7 +766,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -789,7 +785,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             <text
               aria-describedby="tooltip-_r_n_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_m_"
               text-anchor="middle"
@@ -806,7 +802,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -895,13 +891,13 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
-          class="fui-gc__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-gc__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-gc__calloutContentX"
+              class=""
               data-is-focusable="false"
               role="text"
             >
@@ -915,19 +911,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="0_0 - 33"
                   style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       Low Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       0 - 33
                     </div>
@@ -941,19 +937,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="1_33 - 67"
                   style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       Medium Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       33 - 67
                     </div>
@@ -967,19 +963,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="2_67 - 100"
                   style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       High Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       67 - 100
                     </div>
@@ -998,15 +994,14 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -1016,7 +1011,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -1026,7 +1021,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -1036,7 +1031,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -1048,7 +1043,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -1060,7 +1055,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -1075,7 +1070,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -1094,7 +1089,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             <text
               aria-describedby="tooltip-_r_n_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_m_"
               text-anchor="middle"
@@ -1111,7 +1106,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -1194,15 +1189,14 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
 exports[`Gauge chart interactions Should not show callout on mouse over when hideTooltip is true 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -1212,7 +1206,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -1222,7 +1216,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -1232,7 +1226,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -1244,7 +1238,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -1256,7 +1250,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -1271,7 +1265,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -1290,7 +1284,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             <text
               aria-describedby="tooltip-_r_k_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_j_"
               text-anchor="middle"
@@ -1307,7 +1301,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -1390,15 +1384,14 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
 exports[`Gauge chart interactions Should show callout on focus 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -1408,7 +1401,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -1418,7 +1411,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -1428,7 +1421,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -1440,7 +1433,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -1452,7 +1445,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -1467,7 +1460,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -1486,7 +1479,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             <text
               aria-describedby="tooltip-_r_s_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_r_"
               text-anchor="middle"
@@ -1503,7 +1496,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -1592,13 +1585,13 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
-          class="fui-gc__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-gc__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-gc__calloutContentX"
+              class=""
               data-is-focusable="false"
               role="text"
             >
@@ -1612,19 +1605,19 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="0_0 - 33"
                   style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       Low Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       0 - 33
                     </div>
@@ -1638,19 +1631,19 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="1_33 - 67"
                   style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       Medium Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       33 - 67
                     </div>
@@ -1664,19 +1657,19 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="2_67 - 100"
                   style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       High Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       67 - 100
                     </div>
@@ -1695,15 +1688,14 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
 exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -1713,7 +1705,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -1723,7 +1715,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -1733,7 +1725,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -1745,7 +1737,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -1757,7 +1749,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -1772,7 +1764,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -1791,7 +1783,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             <text
               aria-describedby="tooltip-_r_f_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_e_"
               text-anchor="middle"
@@ -1808,7 +1800,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -1897,13 +1889,13 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
-          class="fui-gc__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-gc__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-gc__calloutContentX"
+              class=""
               data-is-focusable="false"
               role="text"
             >
@@ -1917,19 +1909,19 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="0_0 - 33"
                   style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       Low Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       0 - 33
                     </div>
@@ -1943,19 +1935,19 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="1_33 - 67"
                   style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       Medium Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       33 - 67
                     </div>
@@ -1969,19 +1961,19 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             >
               <div>
                 <div
-                  class="fui-gc__calloutBlockContainer"
+                  class=""
                   id="2_67 - 100"
                   style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
                     <div
-                      class="fui-gc__calloutlegendText"
+                      class=""
                     >
                        
                       High Risk
                     </div>
                     <div
-                      class="fui-gc__calloutContentY"
+                      class=""
                     >
                       67 - 100
                     </div>
@@ -2000,15 +1992,14 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
 exports[`Gauge chart rendering -  Should render properly with chart title 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge Chart with title. Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -2017,7 +2008,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           transform="translate(0, -48)"
         >
           <rect
-            class="fui-gc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="-3"
@@ -2026,7 +2017,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           <text
             aria-describedby="tooltip-_r_7_"
             aria-hidden="true"
-            class="fui-gc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_6_"
             text-anchor="middle"
@@ -2040,7 +2031,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           />
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="87"
@@ -2050,7 +2041,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-87"
@@ -2060,7 +2051,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -2072,7 +2063,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -2084,7 +2075,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -2099,7 +2090,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -2118,7 +2109,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             <text
               aria-describedby="tooltip-_r_9_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_8_"
               text-anchor="middle"
@@ -2135,7 +2126,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -2218,15 +2209,14 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
 exports[`Gauge chart rendering -  Should render properly with chart value 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -2236,7 +2226,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -2246,7 +2236,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -2256,7 +2246,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -2268,7 +2258,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -2280,7 +2270,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -2295,7 +2285,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -2314,7 +2304,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             <text
               aria-describedby="tooltip-_r_4_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_3_"
               text-anchor="middle"
@@ -2331,7 +2321,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -2414,15 +2404,14 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
 exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -2432,7 +2421,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -2442,7 +2431,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -2452,7 +2441,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -2464,7 +2453,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -2476,7 +2465,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -2491,7 +2480,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -2510,7 +2499,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             <text
               aria-describedby="tooltip-_r_c_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_b_"
               text-anchor="middle"
@@ -2527,7 +2516,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -2610,15 +2599,14 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
 exports[`Gauge chart rendering -  Should render properly without chart value 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="-32"
         role="region"
         width="0"
@@ -2628,7 +2616,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="62"
@@ -2638,7 +2626,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="-62"
@@ -2648,7 +2636,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -2660,7 +2648,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -2672,7 +2660,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -2687,7 +2675,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           >
             <path
               aria-label="Current value: NaN%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -16,-2
@@ -2706,7 +2694,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             <text
               aria-describedby="tooltip-_r_1_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="20"
               id="tooltip-host_r_0_"
               text-anchor="middle"
@@ -2723,7 +2711,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -2811,15 +2799,14 @@ Object {
   >
     <div>
       <div
-        class="fui-gc__root"
+        class="group/fui-gauge-chart"
       >
         <div
-          class="fui-gc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
-            class="fui-gc__chart"
+            class=""
             height="-32"
             role="region"
             width="0"
@@ -2829,7 +2816,7 @@ Object {
             >
               <path
                 aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
@@ -2841,7 +2828,7 @@ Object {
               />
               <path
                 aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
@@ -2853,7 +2840,7 @@ Object {
               />
               <path
                 aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
@@ -2868,7 +2855,7 @@ Object {
               >
                 <path
                   aria-label="Current value: 25%"
-                  class="fui-gc__needle"
+                  class=""
                   d="
             M 0,-4
             L -16,-2
@@ -2887,7 +2874,7 @@ Object {
                 <text
                   aria-describedby="tooltip-_r_2f_"
                   aria-hidden="true"
-                  class="fui-gc__chartValue"
+                  class=""
                   font-size="20"
                   id="tooltip-host_r_2e_"
                   text-anchor="middle"
@@ -2904,7 +2891,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-gc__legendsContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -3004,15 +2991,14 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-gc__root"
+      class="group/fui-gauge-chart"
     >
       <div
-        class="fui-gc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
-          class="fui-gc__chart"
+          class=""
           height="-32"
           role="region"
           width="0"
@@ -3022,7 +3008,7 @@ Object {
           >
             <path
               aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
@@ -3034,7 +3020,7 @@ Object {
             />
             <path
               aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
@@ -3046,7 +3032,7 @@ Object {
             />
             <path
               aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
@@ -3061,7 +3047,7 @@ Object {
             >
               <path
                 aria-label="Current value: 25%"
-                class="fui-gc__needle"
+                class=""
                 d="
             M 0,-4
             L -16,-2
@@ -3080,7 +3066,7 @@ Object {
               <text
                 aria-describedby="tooltip-_r_2f_"
                 aria-hidden="true"
-                class="fui-gc__chartValue"
+                class=""
                 font-size="20"
                 id="tooltip-host_r_2e_"
                 text-anchor="middle"
@@ -3097,7 +3083,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-gc__legendsContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -3237,15 +3223,14 @@ Object {
   >
     <div>
       <div
-        class="fui-gc__root"
+        class="group/fui-gauge-chart"
       >
         <div
-          class="fui-gc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
-            class="fui-gc__chart"
+            class=""
             height="0"
             role="region"
             width="0"
@@ -3255,7 +3240,7 @@ Object {
             >
               <text
                 aria-label="Min value: 0"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="end"
                 x="52"
@@ -3265,7 +3250,7 @@ Object {
               </text>
               <text
                 aria-label="Max value: 100"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="start"
                 x="-52"
@@ -3275,7 +3260,7 @@ Object {
               </text>
               <path
                 aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
@@ -3287,7 +3272,7 @@ Object {
               />
               <path
                 aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
@@ -3299,7 +3284,7 @@ Object {
               />
               <path
                 aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
@@ -3314,7 +3299,7 @@ Object {
               >
                 <path
                   aria-label="Current value: 25%"
-                  class="fui-gc__needle"
+                  class=""
                   d="
             M 0,-4
             L -16,-2
@@ -3333,7 +3318,7 @@ Object {
                 <text
                   aria-describedby="tooltip-_r_2s_"
                   aria-hidden="true"
-                  class="fui-gc__chartValue"
+                  class=""
                   font-size="20"
                   id="tooltip-host_r_2r_"
                   text-anchor="middle"
@@ -3373,15 +3358,14 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-gc__root"
+      class="group/fui-gauge-chart"
     >
       <div
-        class="fui-gc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
-          class="fui-gc__chart"
+          class=""
           height="0"
           role="region"
           width="0"
@@ -3391,7 +3375,7 @@ Object {
           >
             <text
               aria-label="Min value: 0"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="end"
               x="52"
@@ -3401,7 +3385,7 @@ Object {
             </text>
             <text
               aria-label="Max value: 100"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="start"
               x="-52"
@@ -3411,7 +3395,7 @@ Object {
             </text>
             <path
               aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
@@ -3423,7 +3407,7 @@ Object {
             />
             <path
               aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
@@ -3435,7 +3419,7 @@ Object {
             />
             <path
               aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
@@ -3450,7 +3434,7 @@ Object {
             >
               <path
                 aria-label="Current value: 25%"
-                class="fui-gc__needle"
+                class=""
                 d="
             M 0,-4
             L -16,-2
@@ -3469,7 +3453,7 @@ Object {
               <text
                 aria-describedby="tooltip-_r_2s_"
                 aria-hidden="true"
-                class="fui-gc__chartValue"
+                class=""
                 font-size="20"
                 id="tooltip-host_r_2r_"
                 text-anchor="middle"
@@ -3549,15 +3533,14 @@ Object {
   >
     <div>
       <div
-        class="fui-gc__root"
+        class="group/fui-gauge-chart"
       >
         <div
-          class="fui-gc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
-            class="fui-gc__chart"
+            class=""
             height="-32"
             role="region"
             width="0"
@@ -3567,7 +3550,7 @@ Object {
             >
               <text
                 aria-label="Min value: 0"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="end"
                 x="62"
@@ -3577,7 +3560,7 @@ Object {
               </text>
               <text
                 aria-label="Max value: 100"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="start"
                 x="-62"
@@ -3587,7 +3570,7 @@ Object {
               </text>
               <path
                 aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
@@ -3599,7 +3582,7 @@ Object {
               />
               <path
                 aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
@@ -3611,7 +3594,7 @@ Object {
               />
               <path
                 aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
@@ -3626,7 +3609,7 @@ Object {
               >
                 <path
                   aria-label="Current value: 25%"
-                  class="fui-gc__needle"
+                  class=""
                   d="
             M 0,-4
             L -16,-2
@@ -3645,7 +3628,7 @@ Object {
                 <text
                   aria-describedby="tooltip-_r_2c_"
                   aria-hidden="true"
-                  class="fui-gc__chartValue"
+                  class=""
                   font-size="20"
                   id="tooltip-host_r_2b_"
                   text-anchor="middle"
@@ -3662,7 +3645,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-gc__legendsContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -3762,15 +3745,14 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-gc__root"
+      class="group/fui-gauge-chart"
     >
       <div
-        class="fui-gc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
-          class="fui-gc__chart"
+          class=""
           height="-32"
           role="region"
           width="0"
@@ -3780,7 +3762,7 @@ Object {
           >
             <text
               aria-label="Min value: 0"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="end"
               x="62"
@@ -3790,7 +3772,7 @@ Object {
             </text>
             <text
               aria-label="Max value: 100"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="start"
               x="-62"
@@ -3800,7 +3782,7 @@ Object {
             </text>
             <path
               aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
@@ -3812,7 +3794,7 @@ Object {
             />
             <path
               aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
@@ -3824,7 +3806,7 @@ Object {
             />
             <path
               aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
@@ -3839,7 +3821,7 @@ Object {
             >
               <path
                 aria-label="Current value: 25%"
-                class="fui-gc__needle"
+                class=""
                 d="
             M 0,-4
             L -16,-2
@@ -3858,7 +3840,7 @@ Object {
               <text
                 aria-describedby="tooltip-_r_2c_"
                 aria-hidden="true"
-                class="fui-gc__chartValue"
+                class=""
                 font-size="20"
                 id="tooltip-host_r_2b_"
                 text-anchor="middle"
@@ -3875,7 +3857,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-gc__legendsContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -4015,15 +3997,14 @@ Object {
   >
     <div>
       <div
-        class="fui-gc__root"
+        class="group/fui-gauge-chart"
       >
         <div
-          class="fui-gc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 2 segments. "
-            class="fui-gc__chart"
+            class=""
             height="-32"
             role="region"
             width="0"
@@ -4033,7 +4014,7 @@ Object {
             >
               <text
                 aria-label="Min value: 0"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="end"
                 x="62"
@@ -4043,7 +4024,7 @@ Object {
               </text>
               <text
                 aria-label="Max value: 100"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="start"
                 x="-62"
@@ -4053,7 +4034,7 @@ Object {
               </text>
               <path
                 aria-label="Used, 0 to 60"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="blue"
@@ -4065,7 +4046,7 @@ Object {
               />
               <path
                 aria-label="Unknown, 60 to 100"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="neutralLight"
@@ -4080,7 +4061,7 @@ Object {
               >
                 <path
                   aria-label="Current value: 60%"
-                  class="fui-gc__needle"
+                  class=""
                   d="
             M 0,-4
             L -16,-2
@@ -4099,7 +4080,7 @@ Object {
                 <text
                   aria-describedby="tooltip-_r_31_"
                   aria-hidden="true"
-                  class="fui-gc__chartValue"
+                  class=""
                   font-size="20"
                   id="tooltip-host_r_30_"
                   text-anchor="middle"
@@ -4116,7 +4097,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-gc__legendsContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -4196,15 +4177,14 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-gc__root"
+      class="group/fui-gauge-chart"
     >
       <div
-        class="fui-gc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 2 segments. "
-          class="fui-gc__chart"
+          class=""
           height="-32"
           role="region"
           width="0"
@@ -4214,7 +4194,7 @@ Object {
           >
             <text
               aria-label="Min value: 0"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="end"
               x="62"
@@ -4224,7 +4204,7 @@ Object {
             </text>
             <text
               aria-label="Max value: 100"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="start"
               x="-62"
@@ -4234,7 +4214,7 @@ Object {
             </text>
             <path
               aria-label="Used, 0 to 60"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="blue"
@@ -4246,7 +4226,7 @@ Object {
             />
             <path
               aria-label="Unknown, 60 to 100"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="neutralLight"
@@ -4261,7 +4241,7 @@ Object {
             >
               <path
                 aria-label="Current value: 60%"
-                class="fui-gc__needle"
+                class=""
                 d="
             M 0,-4
             L -16,-2
@@ -4280,7 +4260,7 @@ Object {
               <text
                 aria-describedby="tooltip-_r_31_"
                 aria-hidden="true"
-                class="fui-gc__chartValue"
+                class=""
                 font-size="20"
                 id="tooltip-host_r_30_"
                 text-anchor="middle"
@@ -4297,7 +4277,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-gc__legendsContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -4417,15 +4397,14 @@ Object {
   >
     <div>
       <div
-        class="fui-gc__root"
+        class="group/fui-gauge-chart"
       >
         <div
-          class="fui-gc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Riskometer. Gauge chart with 3 segments. "
-            class="fui-gc__chart"
+            class=""
             height="-32"
             role="region"
             width="0"
@@ -4434,7 +4413,7 @@ Object {
               transform="translate(0, -48)"
             >
               <rect
-                class="fui-gc__svgTooltip"
+                class=""
                 height="3"
                 width="6"
                 x="-3"
@@ -4443,7 +4422,7 @@ Object {
               <text
                 aria-describedby="tooltip-_r_2i_"
                 aria-hidden="true"
-                class="fui-gc__chartTitle"
+                class=""
                 dominant-baseline="auto"
                 id="tooltip-host_r_2h_"
                 text-anchor="middle"
@@ -4457,7 +4436,7 @@ Object {
               />
               <text
                 aria-label="Min value: 0"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="end"
                 x="87"
@@ -4467,7 +4446,7 @@ Object {
               </text>
               <text
                 aria-label="Max value: 100"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="start"
                 x="-87"
@@ -4477,7 +4456,7 @@ Object {
               </text>
               <path
                 aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
@@ -4489,7 +4468,7 @@ Object {
               />
               <path
                 aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
@@ -4501,7 +4480,7 @@ Object {
               />
               <path
                 aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
@@ -4516,7 +4495,7 @@ Object {
               >
                 <path
                   aria-label="Current value: 25%"
-                  class="fui-gc__needle"
+                  class=""
                   d="
             M 0,-4
             L -16,-2
@@ -4535,7 +4514,7 @@ Object {
                 <text
                   aria-describedby="tooltip-_r_2k_"
                   aria-hidden="true"
-                  class="fui-gc__chartValue"
+                  class=""
                   font-size="20"
                   id="tooltip-host_r_2j_"
                   text-anchor="middle"
@@ -4552,7 +4531,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-gc__legendsContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -4671,15 +4650,14 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-gc__root"
+      class="group/fui-gauge-chart"
     >
       <div
-        class="fui-gc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Riskometer. Gauge chart with 3 segments. "
-          class="fui-gc__chart"
+          class=""
           height="-32"
           role="region"
           width="0"
@@ -4688,7 +4666,7 @@ Object {
             transform="translate(0, -48)"
           >
             <rect
-              class="fui-gc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="-3"
@@ -4697,7 +4675,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_2i_"
               aria-hidden="true"
-              class="fui-gc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_2h_"
               text-anchor="middle"
@@ -4711,7 +4689,7 @@ Object {
             />
             <text
               aria-label="Min value: 0"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="end"
               x="87"
@@ -4721,7 +4699,7 @@ Object {
             </text>
             <text
               aria-label="Max value: 100"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="start"
               x="-87"
@@ -4731,7 +4709,7 @@ Object {
             </text>
             <path
               aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
@@ -4743,7 +4721,7 @@ Object {
             />
             <path
               aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
@@ -4755,7 +4733,7 @@ Object {
             />
             <path
               aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
@@ -4770,7 +4748,7 @@ Object {
             >
               <path
                 aria-label="Current value: 25%"
-                class="fui-gc__needle"
+                class=""
                 d="
             M 0,-4
             L -16,-2
@@ -4789,7 +4767,7 @@ Object {
               <text
                 aria-describedby="tooltip-_r_2k_"
                 aria-hidden="true"
-                class="fui-gc__chartValue"
+                class=""
                 font-size="20"
                 id="tooltip-host_r_2j_"
                 text-anchor="middle"
@@ -4806,7 +4784,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-gc__legendsContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -4946,15 +4924,14 @@ Object {
   >
     <div>
       <div
-        class="fui-gc__root"
+        class="group/fui-gauge-chart"
       >
         <div
-          class="fui-gc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
-            class="fui-gc__chart"
+            class=""
             height="-32"
             role="region"
             width="0"
@@ -4964,7 +4941,7 @@ Object {
             >
               <text
                 aria-label="Min value: 0"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="end"
                 x="62"
@@ -4974,7 +4951,7 @@ Object {
               </text>
               <text
                 aria-label="Max value: 100"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="start"
                 x="-62"
@@ -4984,7 +4961,7 @@ Object {
               </text>
               <path
                 aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
@@ -4996,7 +4973,7 @@ Object {
               />
               <path
                 aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
@@ -5008,7 +4985,7 @@ Object {
               />
               <path
                 aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
@@ -5023,7 +5000,7 @@ Object {
               >
                 <path
                   aria-label="Current value: 25/100"
-                  class="fui-gc__needle"
+                  class=""
                   d="
             M 0,-4
             L -16,-2
@@ -5042,7 +5019,7 @@ Object {
                 <text
                   aria-describedby="tooltip-_r_2u_"
                   aria-hidden="true"
-                  class="fui-gc__chartValue"
+                  class=""
                   font-size="20"
                   id="tooltip-host_r_2t_"
                   text-anchor="middle"
@@ -5059,7 +5036,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-gc__legendsContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -5159,15 +5136,14 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-gc__root"
+      class="group/fui-gauge-chart"
     >
       <div
-        class="fui-gc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
-          class="fui-gc__chart"
+          class=""
           height="-32"
           role="region"
           width="0"
@@ -5177,7 +5153,7 @@ Object {
           >
             <text
               aria-label="Min value: 0"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="end"
               x="62"
@@ -5187,7 +5163,7 @@ Object {
             </text>
             <text
               aria-label="Max value: 100"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="start"
               x="-62"
@@ -5197,7 +5173,7 @@ Object {
             </text>
             <path
               aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
@@ -5209,7 +5185,7 @@ Object {
             />
             <path
               aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
@@ -5221,7 +5197,7 @@ Object {
             />
             <path
               aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
@@ -5236,7 +5212,7 @@ Object {
             >
               <path
                 aria-label="Current value: 25/100"
-                class="fui-gc__needle"
+                class=""
                 d="
             M 0,-4
             L -16,-2
@@ -5255,7 +5231,7 @@ Object {
               <text
                 aria-describedby="tooltip-_r_2u_"
                 aria-hidden="true"
-                class="fui-gc__chartValue"
+                class=""
                 font-size="20"
                 id="tooltip-host_r_2t_"
                 text-anchor="middle"
@@ -5272,7 +5248,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-gc__legendsContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -5412,15 +5388,14 @@ Object {
   >
     <div>
       <div
-        class="fui-gc__root"
+        class="group/fui-gauge-chart"
       >
         <div
-          class="fui-gc__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Gauge chart with 3 segments. "
-            class="fui-gc__chart"
+            class=""
             height="-32"
             role="region"
             width="0"
@@ -5430,7 +5405,7 @@ Object {
             >
               <text
                 aria-label="Min value: 0"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="end"
                 x="82"
@@ -5440,7 +5415,7 @@ Object {
               </text>
               <text
                 aria-label="Max value: 100"
-                class="fui-gc__limits"
+                class=""
                 role="img"
                 text-anchor="start"
                 x="-82"
@@ -5450,7 +5425,7 @@ Object {
               </text>
               <path
                 aria-label="Low Risk, 0 to 33"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
@@ -5462,7 +5437,7 @@ Object {
               />
               <path
                 aria-label="Medium Risk, 33 to 67"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
@@ -5474,7 +5449,7 @@ Object {
               />
               <path
                 aria-label="High Risk, 67 to 100"
-                class="fui-gc__segment"
+                class=""
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
@@ -5489,7 +5464,7 @@ Object {
               >
                 <path
                   aria-label="Current value: 25%"
-                  class="fui-gc__needle"
+                  class=""
                   d="
             M 0,-4
             L -16,-2
@@ -5508,7 +5483,7 @@ Object {
                 <text
                   aria-describedby="tooltip-_r_2n_"
                   aria-hidden="true"
-                  class="fui-gc__chartValue"
+                  class=""
                   font-size="20"
                   id="tooltip-host_r_2m_"
                   text-anchor="middle"
@@ -5523,7 +5498,7 @@ Object {
               </g>
               <text
                 aria-describedby="tooltip-_r_2p_"
-                class="fui-gc__sublabel"
+                class=""
                 dominant-baseline="hanging"
                 id="tooltip-host_r_2o_"
                 text-anchor="middle"
@@ -5539,7 +5514,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-gc__legendsContainer"
+          class=""
         >
           <div
             aria-label="Legends"
@@ -5658,15 +5633,14 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-gc__root"
+      class="group/fui-gauge-chart"
     >
       <div
-        class="fui-gc__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Gauge chart with 3 segments. "
-          class="fui-gc__chart"
+          class=""
           height="-32"
           role="region"
           width="0"
@@ -5676,7 +5650,7 @@ Object {
           >
             <text
               aria-label="Min value: 0"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="end"
               x="82"
@@ -5686,7 +5660,7 @@ Object {
             </text>
             <text
               aria-label="Max value: 100"
-              class="fui-gc__limits"
+              class=""
               role="img"
               text-anchor="start"
               x="-82"
@@ -5696,7 +5670,7 @@ Object {
             </text>
             <path
               aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
@@ -5708,7 +5682,7 @@ Object {
             />
             <path
               aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
@@ -5720,7 +5694,7 @@ Object {
             />
             <path
               aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
+              class=""
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
@@ -5735,7 +5709,7 @@ Object {
             >
               <path
                 aria-label="Current value: 25%"
-                class="fui-gc__needle"
+                class=""
                 d="
             M 0,-4
             L -16,-2
@@ -5754,7 +5728,7 @@ Object {
               <text
                 aria-describedby="tooltip-_r_2n_"
                 aria-hidden="true"
-                class="fui-gc__chartValue"
+                class=""
                 font-size="20"
                 id="tooltip-host_r_2m_"
                 text-anchor="middle"
@@ -5769,7 +5743,7 @@ Object {
             </g>
             <text
               aria-describedby="tooltip-_r_2p_"
-              class="fui-gc__sublabel"
+              class=""
               dominant-baseline="hanging"
               id="tooltip-host_r_2o_"
               text-anchor="middle"
@@ -5785,7 +5759,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-gc__legendsContainer"
+        class=""
       >
         <div
           aria-label="Legends"
@@ -5920,15 +5894,14 @@ Object {
 exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="268"
         role="region"
         width="300"
@@ -5938,7 +5911,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="-98"
@@ -5948,7 +5921,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="98"
@@ -5958,7 +5931,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -5970,7 +5943,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -5982,7 +5955,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -5997,7 +5970,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -24,-2
@@ -6016,7 +5989,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <text
               aria-describedby="tooltip-_r_1r_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="32"
               id="tooltip-host_r_1q_"
               text-anchor="middle"
@@ -6033,7 +6006,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"
@@ -6116,15 +6089,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class="fui-gc__root"
+    class="group/fui-gauge-chart"
   >
     <div
-      class="fui-gc__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
+        class=""
         height="268"
         role="region"
         width="300"
@@ -6134,7 +6106,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         >
           <text
             aria-label="Min value: 0"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="end"
             x="-98"
@@ -6144,7 +6116,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </text>
           <text
             aria-label="Max value: 100"
-            class="fui-gc__limits"
+            class=""
             role="img"
             text-anchor="start"
             x="98"
@@ -6154,7 +6126,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </text>
           <path
             aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
+            class=""
             d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
             data-is-focusable="true"
             fill="#107c10"
@@ -6166,7 +6138,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           />
           <path
             aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
+            class=""
             d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
             data-is-focusable="true"
             fill="#f7630c"
@@ -6178,7 +6150,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           />
           <path
             aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
+            class=""
             d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
             data-is-focusable="true"
             fill="#c50f1f"
@@ -6193,7 +6165,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <path
               aria-label="Current value: 30%"
-              class="fui-gc__needle"
+              class=""
               d="
             M 0,-4
             L -24,-2
@@ -6212,7 +6184,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <text
               aria-describedby="tooltip-_r_1u_"
               aria-hidden="true"
-              class="fui-gc__chartValue"
+              class=""
               font-size="32"
               id="tooltip-host_r_1t_"
               text-anchor="middle"
@@ -6229,7 +6201,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       </svg>
     </div>
     <div
-      class="fui-gc__legendsContainer"
+      class=""
     >
       <div
         aria-label="Legends"

@@ -27,10 +27,13 @@
  * ResponsiveContainer renders NO classed element of its own: these classes are injected
  * via `cloneElement` into the CHILD CHART's `styles` prop and land on elements owned by
  * whichever chart is wrapped. That ownership set is MIXED — converted components
- * (CartesianChart's root/chartWrapper, DonutChart, …) and still-Griffel components
- * (SankeyChart, GaugeChart, VegaDeclarativeChart, …) whose own root slices are UNLAYERED
- * Griffel atomics that set the very same `width`/`height` properties (e.g.
- * useSankeyChartStyles root `width/height: 100%`). A layered copy of these rules could
+ * (CartesianChart's root/chartWrapper, DonutChart, GaugeChart, FunnelChart — the last two
+ * converted in charts C4; their `width/height: 100%` root slices now sit in
+ * `fui.components.l1`, which these unlayered rules still beat, preserving the old
+ * last-argument winner) and still-Griffel components (SankeyChart, VegaDeclarativeChart,
+ * …) whose own root slices are UNLAYERED Griffel atomics that set the very same
+ * `width`/`height` properties (e.g. useSankeyChartStyles root `width/height: 100%`).
+ * A layered copy of these rules could
  * never beat those atomics, inverting the old mergeClasses winner (the responsive classes
  * were the LAST argument, i.e. the winner). Unlayered preserves the winner in both
  * directions: it beats every `fui.*` layer on converted charts, and ties (specificity
