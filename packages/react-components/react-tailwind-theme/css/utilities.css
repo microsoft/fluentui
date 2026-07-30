@@ -1,8 +1,8 @@
 /**
  * Shared focus-ring utilities — the CSS replacement for react-tabster's Griffel focus
- * factories (DECISIONS.md D6). The JS helpers (`createFocusOutlineStyle`,
- * `createCustomFocusIndicatorStyle`) stay exported until the Phase 3 cleanup; converted
- * packages `@apply` these instead.
+ * factories (DECISIONS.md D6). Converted packages `@apply` these; the JS helpers
+ * (`createFocusOutlineStyle`, `createCustomFocusIndicatorStyle`) stay exported from
+ * react-tabster because unconverted and deprecated packages still call them.
  *
  * These are `@utility` (not plain classes) so component modules can `@apply` them INSIDE
  * their own `@layer fui.*` blocks: `@apply` inlines a utility's declarations at the call
