@@ -33,7 +33,7 @@ Base state hooks are not a replacement for composition hooks in most cases. If y
 ### What base state hooks exclude
 
 - Design props (for example `appearance`, `size`, `shape`)
-- Style logic (Griffel styles, design token styling)
+- Style logic (CSS-Module class composition, design token styling)
 - Motion and transitions
 - Default slot content
 
@@ -75,7 +75,8 @@ The example below shows the complete pattern for building a custom component on 
 
 ```tsx
 import * as React from 'react';
-import { assertSlots, mergeClasses, slot, type Slot } from '@fluentui/react-components';
+import { clsx } from 'clsx';
+import { assertSlots, slot, type Slot } from '@fluentui/react-components';
 import { useButtonBase_unstable } from '@fluentui/react-button';
 import type { ButtonBaseProps, ButtonBaseState } from '@fluentui/react-button';
 
@@ -131,20 +132,23 @@ const useLoadingButtonState = (
 };
 
 // --- Styles hook ---
-// Apply class names using mergeClasses. Always append the existing slot className last
-// so that consumer class names take precedence over your internal ones.
+// Join class names with clsx and RETURN the new state — never mutate the state you were handed.
+// Put the existing slot className last by convention; which rule wins is decided by the cascade
+// (your rules are unlayered or in fui.components.l3-l5, so they already beat the library's).
 
-const useLoadingButtonStyles = (state: LoadingButtonState): void => {
-  state.root.className = mergeClasses(
-    'loadingButton',
-    state.isLoading && 'loadingButton--busy',
-    state.root.className, // consumer class names win
-  );
-
-  if (state.loadingIndicator) {
-    state.loadingIndicator.className = mergeClasses('loadingButton__indicator', state.loadingIndicator.className);
-  }
-};
+const useLoadingButtonStyles = (state: LoadingButtonState): LoadingButtonState => ({
+  ...state,
+  root: {
+    ...state.root,
+    className: clsx('loadingButton', state.isLoading && 'loadingButton--busy', state.root.className),
+  },
+  ...(state.loadingIndicator && {
+    loadingIndicator: {
+      ...state.loadingIndicator,
+      className: clsx('loadingButton__indicator', state.loadingIndicator.className),
+    },
+  }),
+});
 
 // --- Render function ---
 // Controls what gets rendered and when. Use assertSlots to get type-safe slot
@@ -171,8 +175,8 @@ const renderLoadingButton = (state: LoadingButtonState) => {
 
 export const LoadingButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, LoadingButtonProps>(
   (props, ref) => {
-    const state = useLoadingButtonState(props, ref);
-    useLoadingButtonStyles(state);
+    let state = useLoadingButtonState(props, ref);
+    state = useLoadingButtonStyles(state);
     return renderLoadingButton(state);
   },
 );
@@ -181,7 +185,8 @@ export const LoadingButton = React.forwardRef<HTMLButtonElement | HTMLAnchorElem
 ### Authoring checklist
 
 - Preserve base root props and ref wiring — always pass the ref to `use{Component}Base_unstable`, never attach it yourself.
-- Keep user `className` precedence by passing existing slot class names as the last argument to `mergeClasses`.
+- Keep the user's `className` on the element by passing existing slot class names as the last argument to `clsx`. Whether it _wins_ is a cascade question, not an argument-order one: unlayered rules beat every `fui.*` layer.
+- Return a new state object from the styles hook rather than mutating the state you were passed.
 - After any rendering changes, verify keyboard behavior, ARIA semantics, and focus handling still work as expected.
 - Validate all visual states (`:hover`, `:active`, `:focus-visible`, disabled).
 - Test with a screen reader after custom rendering changes.

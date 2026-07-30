@@ -48,21 +48,26 @@ The alias tokens define general purpose color, layout, and effect values useful 
 For example, 'colorNeutralBackground1Hover'.
 A component like button would use this token when styling the background in the hover state.
 
-### CSS-in-JS style objects -> makeStyles
+### CSS-in-JS style objects -> CSS
 
 In v8, custom styles were created by defining style objects in Javascript.
 The types of style objects mapped closely to the structural hierarchy of the particular component.
 Style objects could be built by parameterized functions taking theme object or other state to produce the result at runtime.
 
-In v9, makeStyles helps define static styles that can be optimized at build time.
-The makeStyles function returns a hook that can be used during component render.
+In v9, styles are just CSS. Write them wherever your application already writes CSS — a stylesheet,
+a CSS Module, Tailwind — and reference theme values as custom properties
+(`var(--colorNeutralBackground1Hover)`). Nothing is computed at render time.
 
-### mergeStyles -> mergeClasses
+### mergeStyles -> the cascade
 
 In v8, mergeStyles combines a set of style objects to return a merged style object.
 The ordering of the parameters determines which styles overwrote preceding styles.
 
-In v9, mergeClasses takes a list of class names from makeStyles and returns the class names optimized for de-duping and minimal bundle size.
+In v9 there is no merge step at all. Class names are inert identifiers, and every property conflict
+is resolved by the CSS cascade: layer first, then specificity, then source order. Fluent's own rules
+live inside the `@layer fui.*` family, and unlayered author CSS beats every layer — so your rules
+win without you doing anything. If you prefer to keep app styling inside the family, the
+`fui.components.l3`–`l5` layers are reserved for consumers and are empty in the library.
 
 ### styles -> className
 
@@ -70,8 +75,8 @@ In v8, the styles prop was provided on each Fluent UI component.
 Callers could pass a style object to customize the style of a component.
 
 In v9, there is no custom prop for styling. The React className prop is used.
-Callers pass class names just like they would in any React code.
-Class names are built using makeStyles and mergeClasses.
+Callers pass class names just like they would in any React code — on the component, or on any of its
+slots, each of which takes its own `className`.
 
 ## Creating compatible themes
 

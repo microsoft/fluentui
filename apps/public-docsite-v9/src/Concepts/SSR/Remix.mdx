@@ -4,6 +4,12 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # React Router 7/Remix setup
 
+> **Component CSS needs no build plugin.** Fluent's component styles are precompiled — import each
+> package's stylesheet (and `@fluentui/react-tailwind-theme/styles.css`) once at your app root. The
+> `@griffel/vite-plugin` step below only optimizes `makeStyles` rules your own application authors;
+> skip it if you have none. See
+> [Basic setup](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs).
+
 ## Installation
 
 1. Create a new React Router 7/Remix project or skip this step if you already have one:

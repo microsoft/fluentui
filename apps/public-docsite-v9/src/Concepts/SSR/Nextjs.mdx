@@ -6,6 +6,12 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 For basic instructions on getting Next.js set up, see [Getting Started](https://nextjs.org/docs/getting-started).
 
+> **Component CSS needs no SSR wiring.** Import each package's precompiled stylesheet (and
+> `@fluentui/react-tailwind-theme/styles.css`) once at your app root — Next.js handles it like any
+> other CSS import. The renderer plumbing below remains for the theme's `<style>` tag and for any
+> `makeStyles` rules your own application authors. See
+> [Basic setup](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs).
+
 1. Get a basic next.js setup running, rendering a page from the `pages` folder, as guided by the tutorial.
 2. Add the Fluent UI dependencies: `@fluentui/react-components`.
 

@@ -42,7 +42,7 @@ Later in this topic, you will find examples covering each of these scenarios.
 
 - If you need to slightly adjust the display of a specific component instance, prefer to apply a custom style.
   For example, if you want to make a particular component have a thicker border,
-  create a class style using `makeStyles` and then apply it to the component using `className`.
+  write a rule in your own stylesheet and apply it to the component using `className`.
   See the Styling Components topic for more information.
 
 - If you want to change how a component behaves, make significant layout and style changes,
@@ -138,13 +138,17 @@ This allows you pass `PresenceBadge` props.
 You can pass the `className` prop to customize the style of a slot.
 The `Avatar` badge slot supports a `className`, allowing the badge style to be customized.
 
+```css
+/* BusyBrandAvatar.module.css */
+.badge {
+  color: var(--colorBrandStroke1);
+}
+```
+
 ```tsx
-const useStyles = makeStyles({
-  badge: { color: tokens.colorBrandStroke1 },
-});
+import styles from './BusyBrandAvatar.module.css';
 
 const BusyBrandAvatar = () => {
-  const styles = useStyles();
   return <Avatar name="IT probably" badge={{ status: 'busy', className: styles.badge }} />;
 };
 ```
@@ -356,7 +360,7 @@ and define the default element types for each slot.
 const useButtonStyles_unstable = (state: ButtonState)
 ```
 
-Hooks like `useButtonStyles` create classes and conditionally apply them based on the input state. Classes are typically created and applied with `makeStyles` and `mergeClasses`.
+Hooks like `useButtonStyles` conditionally apply the component's CSS-Module class names based on the input state, joining them with `clsx` and returning the new state.
 For instance, if a component is disabled then disabled styles are added.
 
 ### Declaring components slots in the state

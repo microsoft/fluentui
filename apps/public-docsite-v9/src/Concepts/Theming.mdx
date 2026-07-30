@@ -34,28 +34,48 @@ export const AppRoot = ({children}) => (
 );
 ```
 
-Import `tokens` to style a component using `makeStyles`
+A theme is delivered as CSS custom properties, so a stylesheet references them directly:
+
+```css
+/* MyComponent.module.css */
+.root {
+  display: flex;
+}
+
+.root-primary {
+  color: var(--colorNeutralForeground3);
+}
+```
+
+```jsx
+import { clsx } from 'clsx';
+
+import styles from './MyComponent.module.css';
+
+export const Component = props => <div className={clsx(styles.root, props.primary && styles['root-primary'])} />;
+```
+
+When a token value has to be read from TypeScript — an inline `style` object, a canvas fill, a
+third-party API that takes a colour string — import `tokens`, which maps each name to the same
+reference:
 
 ```jsx
 import { tokens } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: { display: 'flex' },
-  rootPrimary: { color: tokens.colorNeutralForeground3 },
-});
-
-export Component = props => {
-  const classes = useStyles();
-
-  return <div className={mergeClasses('ui-component', classes.root, props.primary && classes.rootPrimary)} />;
-}
+tokens.colorNeutralForeground3; // === 'var(--colorNeutralForeground3)'
 ```
 
 For more details, see [Styling components](?path=/docs/concepts-developer-styling-components--docs).
 
-### Do not use CSS variables directly
+### Token names are the public contract
 
-**⚠ Never use theme CSS variables directly!** The CSS variables implementation of the theme is internal to the library. We might eventually decide to change the variable names, hash them or even use direct values instead of some variables. Always use the `tokens` to access the theme.
+Token custom-property names (`--colorNeutralForeground3`, `--spacingHorizontalM`, …) are a supported
+public surface: Fluent's own component CSS references them, and so should yours. What is _not_
+public is anything below that — the hashed class names on component internals, and the exact rules
+inside a component's stylesheet.
+
+`@fluentui/react-tailwind-theme` also registers the tokens with Tailwind via `@theme inline`, so
+utilities named after them are available if your app uses Tailwind.
 
 ## Available themes
 
@@ -128,7 +148,7 @@ It's often useful for an app to extend the base set of tokens from Fluent UI. Th
 ⚠ Warning that adding more tokens adds more CSS variables which can effect run time performance as each DOM Node carries all the tokens.
 
 ```tsx
-import { makeStyles, themeToTokensObject, webLightTheme, FluentProvider, Theme } from '@fluentui/react-components';
+import { themeToTokensObject, webLightTheme, FluentProvider, Theme } from '@fluentui/react-components';
 
 // You can pass your own custom tokens to a theme and pass that to the provider.
 type CustomTheme = Theme & {
@@ -154,13 +174,16 @@ const customTokens: Record<keyof CustomTheme, string> = {
 // You can alternatively use the themeToTokensObject function to construct the custom tokens object.
 // Note: If you do it via the themeToTokensObject you might see a negative effect on tree-shaking since bundles won't know the shape of the output.
 const alternativeCustomTokens = themeToTokensObject(customTheme);
+```
 
-// You can then use this custom tokens object inside your styles.
-const useStyles = makeStyles({
-  base: {
-    color: customTokens.tokenA,
-    backgroundColor: customTokens.tokenB,
-    outlineColor: customTokens.tokenC,
-  },
-});
+Custom tokens land on the DOM as custom properties like any other, so your stylesheet references
+them the same way. They are not registered with Tailwind's `@theme`, so there is no generated
+utility for them:
+
+```css
+.base {
+  color: var(--tokenA);
+  background-color: var(--tokenB);
+  outline-color: var(--tokenC);
+}
 ```

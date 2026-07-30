@@ -48,26 +48,61 @@ The [AccordionHeader](?path=/docs/components-accordion--default) component uses 
   <FluentStory id="components-accordion--default" height={260} />
 </FluentCanvas>
 
-```tsx
-import { makeStyles } from '@fluentui/react-components';
-import { createFocusOutlineStyle } from '@fluentui/react-components';
+The indicator is a shared CSS utility, `fui-focus-outline`, from `@fluentui/react-tailwind-theme`.
+It draws the ring on an `::after` pseudo-element, so the element it is applied to must be
+positioned. Apply it under whichever focus variant you want:
 
-const useStyles = makeStyles({
-  focusIndicator: createFocusOutlineStyle({
-    // selector to be used to decide focus presence: 'focus-within' | 'focus'
-    selector: 'focus-within',
-    // custom style to be applied with the outline style
-    style: {
-      outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' },
-    },
-  }),
-});
+| Variant             | Matches                                                                       |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `focus-visible-fui` | `[data-fui-focus-visible]` — keyborg's keyboard-only signal, the usual choice |
+| `focus-within-fui`  | `[data-fui-focus-within]:focus-within` — pairs with `useFocusWithin()`        |
+| `focus-visible`     | the plain CSS `:focus-visible`                                                |
+| `focus-within`      | the plain CSS `:focus-within`                                                 |
 
-function Component() {
-  const styles = useStyles();
-  return <div className={styles.focusIndicator} />;
+```css
+/* Component.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .focus-indicator {
+    position: relative;
+
+    &:focus,
+    &:focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-within-fui {
+      @apply fui-focus-outline;
+    }
+  }
 }
 ```
+
+```tsx
+import styles from './Component.module.css';
+
+function Component() {
+  return <div className={styles['focus-indicator']} />;
+}
+```
+
+The ring is parameterized by four custom properties, each with the default shown. Set them on the
+same rule to customize width, colour, radius or offset:
+
+```css
+.focus-indicator {
+  --fui-focus-outline-width: 2px;
+  --fui-focus-outline-color: var(--colorStrokeFocus2);
+  --fui-focus-outline-radius: var(--borderRadiusMedium);
+  --fui-focus-outline-offset: 0px;
+}
+```
+
+> `createFocusOutlineStyle` is still exported for existing code, but it returns a `GriffelStyle`
+> object and is no longer how Fluent's own components draw their focus indicator.
 
 #### createCustomFocusIndicatorStyle
 
@@ -76,26 +111,47 @@ function Component() {
 > indicator that you have gotten the necessary feedback from designers and accessibility
 > experts.
 
-The [Link](?path=/docs/components-link--default) component uses `createCustomFocusIndicatorStyle` to add a double underlined focus indication style
+The [Link](?path=/docs/components-link--default) component replaces the default ring with a double
+underline instead.
 
 <FluentCanvas>
   <FluentStory id="components-link--default" height={150} />
 </FluentCanvas>
 
-```tsx
-import { makeStyles, createCustomFocusIndicatorStyle } from '@fluentui/react-components';
+There is no helper for this — write the declarations you want under the same focus variant, and do
+not apply `fui-focus-outline`:
 
-const useStyles = makeStyles({
-  focusIndicator: createCustomFocusIndicatorStyle({
-    borderBottomColor: 'transparent',
-    textDecorationColor: tokens.colorStrokeFocus2,
-    textDecorationLine: 'underline',
-    textDecorationStyle: 'double',
-  }),
-});
+```css
+/* MyLink.module.css */
+@reference '#theme';
 
-function Link() {
-  const styles = useStyles();
-  return <a className={styles.focusIndicator} />;
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .focus-indicator {
+    &:focus,
+    &:focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      border-bottom-color: transparent;
+      text-decoration-color: var(--colorStrokeFocus2);
+      text-decoration-line: underline;
+      text-decoration-style: double;
+    }
+  }
 }
 ```
+
+```tsx
+import styles from './MyLink.module.css';
+
+function Link() {
+  return <a className={styles['focus-indicator']} />;
+}
+```
+
+> `createCustomFocusIndicatorStyle` is still exported for existing code, but like
+> `createFocusOutlineStyle` it returns a `GriffelStyle` object and is no longer used by Fluent's own
+> components.

@@ -53,42 +53,60 @@ export function App() {
 
 A little scaffolding is required to get here first. Define a `useFancyButtonStyles.ts`, and calculate the style similar to how you would for any other Fluent component.
 
-> ⚠️ Custom style hooks must also append the slot's original className prop as returned by `getSlotClassNameProp_unstable`, after the custom styles. This ensures that the className prop added by the user will take precedence over custom styles. See [microsoft/fluentui#34166](https://github.com/microsoft/fluentui/pull/34166) for a detailed explanation.
+Write the rules in your own stylesheet. Because your rules are unlayered (or in `fui.components.l3`
+if you prefer to keep app styling inside the layer family), they beat the component's own
+`fui.components.l1` rules with no ordering care at all:
+
+```css
+/* FancyButton.module.css */
+.root {
+  border: 2px solid green;
+  background-color: pink;
+  border-radius: 64px;
+}
+
+.icon {
+  color: blue;
+  background-color: white;
+}
+```
+
+> ⚠️ A custom style hook must **return** the state it wants rendered — it must not mutate the state
+> it is handed. It must also re-append the slot's original `className` prop as returned by
+> `getSlotClassNameProp_unstable`, so the user's own `className` stays present on the element. See
+> [microsoft/fluentui#34166](https://github.com/microsoft/fluentui/pull/34166) for the background.
+>
+> Hooks written against the older `(state) => void` shape still work — the component normalizes a
+> `undefined` return back to the state it passed in — but new hooks should return.
 
 ```ts
-import { getSlotClassNameProp_unstable, makeStyles, type ButtonState } from '@fluentui/react-components';
+import { clsx } from 'clsx';
+import { getSlotClassNameProp_unstable, type ButtonState } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // These are all unique to Fancy theme.
-    border: '2px solid green',
-    backgroundColor: 'pink',
-    borderRadius: '64px',
-  },
-  icon: {
-    color: 'blue',
-    backgroundColor: 'white',
-  },
-});
+import styles from './FancyButton.module.css';
 
-export const useFancyButtonStyles = (state: unknown) => {
+export const useFancyButtonStyles = (state: unknown): ButtonState => {
   const buttonState = state as ButtonState;
-  const styles = useStyles();
-  buttonState.root.className = mergeClasses(
-    buttonState.root.className,
-    styles.root,
-    getSlotClassNameProp_unstable(buttonState.root),
-  );
 
-  if (buttonState.icon) {
-    buttonState.icon.className = mergeClasses(
-      buttonState.icon.className,
-      styles.icon,
-      getSlotClassNameProp_unstable(buttonState.icon),
-    );
-  }
+  return {
+    ...buttonState,
+    root: {
+      ...buttonState.root,
+      className: clsx(buttonState.root.className, styles.root, getSlotClassNameProp_unstable(buttonState.root)),
+    },
+    ...(buttonState.icon && {
+      icon: {
+        ...buttonState.icon,
+        className: clsx(buttonState.icon.className, styles.icon, getSlotClassNameProp_unstable(buttonState.icon)),
+      },
+    }),
+  };
 };
 ```
+
+`clsx` here is a plain string join — the argument order decides the order of tokens in the rendered
+`class` attribute and nothing else. Your rules win because of where they live in the cascade, not
+because of where they sit in this call.
 
 Define the value for `CustomStyleHooksProvider_unstable` in `FancyAppCustomStyleHooksValue.ts` that consumes custom style hooks:
 

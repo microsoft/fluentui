@@ -157,7 +157,7 @@ const StrongLabel = (props: LabelProps) =>  <Label weight="semibold">{props.chil
 
 ## Breaking Change: Custom styles to className
 
-In v9, styles are customized by using makeStyles and mergeClasses to set the className prop.
+In v9, styles are customized by writing ordinary CSS and setting the className prop.
 The className prop can be set on the component as well as on individual slots.
 
 If you have customized v8 components using the styles prop and passed custom style objects, you will need to convert them to class names.
@@ -184,26 +184,28 @@ const personaStyles: Partial<IPersonaStyles> = {
 />;
 ```
 
-To keep this customization in v9 Persona, you will need to create styles with makeStyles and then apply them to the associated slot.
+To keep this customization in v9 Persona, write the rules in your own stylesheet and apply them to the associated slot.
+
+```css
+/* MyPersona.module.css */
+.primary-text {
+  color: steelblue;
+}
+
+.secondary-text {
+  margin: 5px 0 0 10px;
+}
+```
 
 ```tsx
-const usePersonaStyles = makeStyles({
-  primaryText: {
-    color: 'steelblue',
-  },
-  secondaryText: {
-    ...shorthands.margin('5px', '0', '0', '10px'),
-  },
-});
-
-const personaStyles = usePersonaStyles();
+import personaStyles from './MyPersona.module.css';
 
 //...
 
 <Persona
   name="Anne Reid"
-  primaryText={{ className: personaStyles.primaryText }}
-  secondaryText={{ className: personaStyles.secondaryText, children: 'Available' }}
+  primaryText={{ className: personaStyles['primary-text'] }}
+  secondaryText={{ className: personaStyles['secondary-text'], children: 'Available' }}
   presence={{
     status: 'available',
   }}

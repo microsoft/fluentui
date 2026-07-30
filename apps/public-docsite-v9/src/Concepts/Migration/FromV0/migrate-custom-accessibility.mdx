@@ -77,17 +77,19 @@ const Component = () => (
 
 After:
 
+```css
+/* Component.module.css */
+.grid {
+  display: grid;
+  justify-content: space-evenly;
+}
+```
+
 ```tsx
-import { makeStyles } from '@fluentui/react-components';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
-const useStyles = makeStyles({
-  grid: {
-    display: 'grid',
-    justifyContent: 'space-evenly',
-  },
-});
+import styles from './Component.module.css';
 
 const arrowKeyNavigationAttributes = useTabsterAttributes({
   mover: {
@@ -98,7 +100,6 @@ const arrowKeyNavigationAttributes = useTabsterAttributes({
 const Component = () => {
   const { findFirstFocusable } = useFocusFinders();
   const gridRef = React.useRef<HTMLElement>(null);
-  const classes = useStyles();
 
   React.useEffect(() => {
     if (gridRef.current) {
@@ -108,7 +109,7 @@ const Component = () => {
   }, [findFirstFocusable, gridRef]);
 
   return (
-    <div className={classes.grid} {...arrowKeyNavigationAttributes} role="menu" ref={gridRef}>
+    <div className={styles.grid} {...arrowKeyNavigationAttributes} role="menu" ref={gridRef}>
       <Button role="menuitem">First</Button>
       ...
     </div>

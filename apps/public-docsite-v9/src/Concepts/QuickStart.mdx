@@ -4,24 +4,47 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Install
 
-Fluent UI should be installed as a `dependency` of your app.
+Fluent UI should be installed as a `dependency` of your app, together with the shared theme layer its CSS
+compiles against.
 
 ```sh
-yarn add @fluentui/react-components
+yarn add @fluentui/react-components @fluentui/react-tailwind-theme
 ```
 
 ## Setup
 
-Fluent UI components are styled using CSS in JS. This technique requires a style renderer which inserts CSS into DOM when needed. React context is used to provide the style renderer.
+### 1. Import the theme stylesheet, once
+
+Fluent UI components ship plain, precompiled CSS, pulled in automatically when you import a component. That
+CSS references a small set of document-level custom properties — the cascade `@layer` order, the spacing
+scale, the focus-outline registrations — and something has to emit those **once per document**. That is what
+`@fluentui/react-tailwind-theme` is for.
+
+Import it at your app root, before your own styles:
+
+```js
+// src/main.jsx (or _app.tsx, root layout, etc.)
+import '@fluentui/react-tailwind-theme/styles.css';
+```
+
+> ⚠ Skip this and components render with the right colors and the wrong metrics — spacing utilities resolve
+> against a missing variable and compute to `0px`. Collapsed padding and gaps means this import is missing.
+
+### 2. Add a provider
+
+`FluentProvider` owns every design-token **value**: it writes them as CSS custom properties scoped to its own
+element, which is what makes per-provider and nested-provider theming work.
 
 Place a `<FluentProvider />` at the root of your app and pass theme as a prop.
 
-### React 18
+#### React 18
 
 ```jsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+import '@fluentui/react-tailwind-theme/styles.css';
 
 import App from './App';
 
@@ -34,12 +57,14 @@ root.render(
 );
 ```
 
-### React 17
+#### React 17
 
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+import '@fluentui/react-tailwind-theme/styles.css';
 
 import App from './App';
 
@@ -53,7 +78,8 @@ ReactDOM.render(
 
 ## Usage
 
-That's it. You can now use Fluent UI components in your app.
+That's it. You can now use Fluent UI components in your app. You never import a component stylesheet
+yourself — importing the component brings its CSS with it.
 
 ```jsx
 import React from 'react';
@@ -61,6 +87,9 @@ import { Button } from '@fluentui/react-components';
 
 export default () => <Button appearance="primary">Get started</Button>;
 ```
+
+To restyle a component, pass a class name to it or to one of its slots — your own CSS wins over Fluent's by
+default. See [Styling components](?path=/docs/concepts-developer-styling-components--docs).
 
 ### Strict mode
 

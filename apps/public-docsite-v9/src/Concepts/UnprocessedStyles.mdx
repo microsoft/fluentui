@@ -6,7 +6,16 @@ import { Meta, Source } from '@storybook/addon-docs/blocks';
 
 ### Overview
 
-Fluent UI v9 components now ship with **raw module alternatives** to solve CSS style conflicts in multi-bundle applications. This feature addresses critical issues where Griffel-processed styles clash when multiple application bundles are loaded simultaneously.
+Raw modules are **unprocessed Griffel styles**, shipped as an alternative to the pre-processed ones, so that a
+build can prefix the generated class names and avoid collisions between bundles.
+
+> **`@fluentui/react-components` components no longer need this.** They ship plain, precompiled CSS with
+> content-hashed class names inside a cascade `@layer` family — two bundles cannot generate the same class name
+> for different rules, so the collision this page describes cannot happen. Those packages therefore no longer
+> emit `.raw.js` modules at all.
+>
+> Raw modules remain relevant for the packages that are still Griffel-based. See
+> [Package support status](#package-support-status).
 
 ### The Problem: Style Clashes in Multi-Bundle Apps
 
@@ -86,7 +95,7 @@ export default {
 
 | Package                       | Ships Processed Styles | Raw Modules Available | Version                                                                                                                                                                                                                                                                                                                       |
 | ----------------------------- | ---------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@fluentui/react-components`  | ⚠️ Yes                 | ✅ Available          | [v9.67.0+](https://www.npmjs.com/package/@fluentui/react-components/v/9.67.0)                                                                                                                                                                                                                                                 |
+| `@fluentui/react-components`  | ✅ No — plain CSS      | ✅ Not needed         | Components are no longer Griffel-based, so there is nothing to pre-process and no `.raw.js` output. Earlier versions did ship both; see [v9.67.0+](https://www.npmjs.com/package/@fluentui/react-components/v/9.67.0)                                                                                                         |
 | `@fluentui-contrib/*`         | ✅ No                  | ✅ Not needed         | N/A                                                                                                                                                                                                                                                                                                                           |
 | `@fluentui-copilot/*`         | ⚠️ Yes                 | ✅ Available          | [v0.28.4+](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.28.4), Older major version back-ports / [v0.26.2-hotfix.1](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.26.2-hotfix.1), [v0.25.3-hotfix.1](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.25.3-hotfix.1) |
 | `@fluentui/react-charts`      | ⚠️ Yes                 | ✅ Available          | [v9.2.0+](https://www.npmjs.com/package/@fluentui/react-charts/v/9.2.0)                                                                                                                                                                                                                                                       |

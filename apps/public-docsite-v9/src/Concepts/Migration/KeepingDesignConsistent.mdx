@@ -63,8 +63,8 @@ function App() {
 
 ## You can use design token styles in your own components
 
-Fluent UI React v9 leverages the Griffel CSS-in-JS library.
-The `makeStyles` and `mergeClasses` methods are exported by `@fluentui/react-components` package.
+Fluent UI React v9 ships plain, precompiled CSS, so styling it needs nothing beyond whatever your
+application already uses — a stylesheet, CSS Modules, Tailwind.
 Read [Styling Components](/docs/concepts-developer-styling-components--docs) for details.
 
 Because `FluentProvider` defines design token values as CSS variables, you can reference them your own component styles.
@@ -106,7 +106,7 @@ Check them out in the _/Migration Shims/Themes_ topics.
 
 ## You can define custom styles with className
 
-As detailed in the _/Concepts/Developer/Styling Components_ topic, you can create styles with `makeStyles` and `mergeClasses` and then pass the className to any v9 component or component slot.Those styles will be applied last, allowing you to modify the default component style.
+As detailed in the _/Concepts/Developer/Styling Components_ topic, you can write your rules in your own stylesheet and pass the class name to any v9 component or component slot. Your rules win because they are unlayered and the component's are inside the `@layer fui.*` family — the cascade compares layers before it looks at specificity, so no `!important` or ordering trick is needed.
 
 If you do create custom styles, we strongly recommend using design tokens.
 This ensures styles update with theme changes.
@@ -126,36 +126,31 @@ This example defines a new button component.
 The props to state hooks and render method from `Button` are reused.
 A new style hook is substituted for `useButtonStyle`.
 
+```css
+/* MyButton.module.css */
+.root {
+  background: var(--colorNeutralBackground2);
+  /* ... */
+}
+```
+
 ```tsx
 import * as React from 'react';
-import {
-  makeStyles,
-  tokens,
-  renderButton_unstable as renderButton,
-  useButton_unstable as useButton,
-} from '@fluentui/react-components';
+import { renderButton_unstable as renderButton, useButton_unstable as useButton } from '@fluentui/react-components';
 import type { ButtonProps, ButtonState, ForwardRefComponent } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    background: tokens.colorNeutralBackground2,
-    //...
-  },
+import styles from './MyButton.module.css';
+
+// This is an example of a custom style hook. It returns the state it wants rendered
+// rather than mutating the state it was given.
+const useCustomButtonStyles = (state: ButtonState): ButtonState => ({
+  ...state,
+  root: { ...state.root, className: styles.root },
 });
 
-// This is an example of a custom style hook
-const useCustomButtonStyles = (state: ButtonState): ButtonState => {
-  const styles = useStyles();
-
-  state.root.className = styles.root;
-  //...
-
-  return state;
-};
-
 export const MyButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
-  const state = useButton(props, ref);
-  useCustomButtonStyles(state);
+  let state = useButton(props, ref);
+  state = useCustomButtonStyles(state);
   return renderButton(state);
 }) as ForwardRefComponent<ButtonProps>;
 ```
@@ -174,26 +169,32 @@ This approach is meant as an escape-hatch when all other customizations are not 
 - Never change any state properties other than `className`.
 - Never dynamically change hooks at runtime. This will lead to unstable hook calls.
 - Custom style hooks are called from within the component and receive the component state.
-- Be judicious with creating styles and making `mergeClasses` call as you may affect the performance.
+- Return the state you want rendered; do not mutate the state you were handed.
 
 You can pass `FluentProvider.customStyleHooks_unstable` a set of custom style hooks. The custom style hooks are considered unstable and the API may change at any time.
 Each custom style hook can update root or slot class names.
 
+```css
+/* MyButton.module.css */
+.root {
+  /* ... */
+}
+```
+
 ```tsx
-import { makeStyles, mergeClasses, FluentProvider } from '@fluentui/react-components';
+import { clsx } from 'clsx';
+import { FluentProvider } from '@fluentui/react-components';
 import type { FluentProviderCustomStyleHooks, ButtonState } from '@fluentui/react-components';
 
-const useMyButtonStyles = makeStyles({
-  root: {
-    //...
-  },
-});
+import myButtonStyles from './MyButton.module.css';
 
 const myCustomStyles: FluentProviderCustomStyleHooks = {
   useButtonStyles_unstable: state => {
-    const myButtonStyles = useMyButtonStyles();
     const buttonState = state as ButtonState;
-    buttonState.root.className = mergeClasses(buttonState.root.className, myButtonStyles.root);
+    return {
+      ...buttonState,
+      root: { ...buttonState.root, className: clsx(buttonState.root.className, myButtonStyles.root) },
+    };
   },
 };
 
@@ -202,7 +203,12 @@ function App() {
 }
 ```
 
-To override existing styles, use `makeStyles` to create your custom styles and then call `mergeClasses` with state `className` and the your new styles.
-To completely replace existing styles, overwrite the state `className`.
+To add to the existing styles, `clsx` your class onto the state's `className`. To replace them
+entirely, set `className` to your class alone. Either way your rule wins on the properties it sets,
+because it is unlayered and the component's rules are inside `@layer fui.*`.
+
+> Hooks written against the older `(state) => void` shape — which mutated the state object — keep
+> working; the component normalizes an `undefined` return back to the state it passed in. New hooks
+> should return.
 
 When `FluentProvider` are nested, custom style hooks will be shallow merged.

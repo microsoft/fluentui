@@ -5,14 +5,22 @@ import imageFile from '../../public/style-resolution.png';
 
 ## Optimize runtime cost of styles
 
-Fluent UI uses the open source [Griffel.js](https://griffel.js.org/) CSS-in-JS styling engine.
-Make sure to take a look at the following docs to get started with styling in Fluent UI:
-
-- [Quick start](?path=/docs/concepts-developer-quick-start--docs)
-- [Styling components](?path=/story/concepts-developer-styling-components--docs)
+> **This page is about [Griffel.js](https://griffel.js.org/), and Fluent UI React v9 components no longer use
+> it.** They ship plain, precompiled CSS, so there is no render-time style resolution to optimize and **no
+> build-time setup of any kind is required to use them**. Start at
+> [Quick start](?path=/docs/concepts-developer-quick-start--docs) and
+> [Styling components](?path=/docs/concepts-developer-styling-components--docs).
+>
+> The page is kept because Griffel is still relevant in two situations:
+>
+> 1. **Your app authors its own styles with `makeStyles`.** Those exports are still available from
+>    `@fluentui/react-components`, and everything below applies to _your_ style code.
+> 2. **Some packages are still Griffel-based** — `@fluentui/react-icons`, `@fluentui/react-charts`, the
+>    `@fluentui-copilot/*` family, and the packages under `deprecated/`. Their runtime cost is real and the
+>    transforms below still reduce it.
 
 While there is nothing wrong with the associated runtime costs of a CSS-in-JS engine, larger and more complex
-applications might want to optimize for performance. In Fluent UI, the expensive runtime work only
+applications might want to optimize for performance. With Griffel, the expensive runtime work only
 happens on the first render of the component. This one-time work can be further optimized at build time by
 pre-computing and transforming styles. You can refer to the [last section](#what-is-being-optimized) of this page for more details
 about what the build time optimization does.
@@ -68,6 +76,9 @@ module.exports = {
 
 > ℹ️ **Note**: A chain of webpack loaders is executed in reverse order
 > [https://webpack.js.org/concepts/loaders/#loader-features](https://webpack.js.org/concepts/loaders/#loader-features)
+
+> ℹ️ **Note**: This rule only affects `makeStyles` calls. Fluent component styles arrive as a `.css` import
+> and are handled by your CSS pipeline, untouched by this loader.
 
 #### Typescript (and additional compilation) support
 
@@ -197,6 +208,10 @@ function Component() {
   return <div className={classes.root} />;
 }
 ```
+
+> 💡 For comparison, this entire pipeline is what Fluent's own components stopped needing. Their styles are
+> authored as CSS Modules and compiled to a stylesheet at package build time, so what ships is the CSS —
+> there is no resolution step, first render or otherwise, and nothing for a loader to precompute.
 
 ### Build time style evaluation
 

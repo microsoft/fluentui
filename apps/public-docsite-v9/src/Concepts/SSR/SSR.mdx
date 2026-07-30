@@ -6,6 +6,16 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 Fluent UI React v9 supports Server-Side Rendering.
 
+> **Component CSS needs no SSR setup.** Fluent's component styles are a precompiled stylesheet
+> shipped in each package — import them once at your app root and they are in the document before
+> React runs, so there is nothing to extract, flush, or hydrate. Make sure
+> `@fluentui/react-tailwind-theme/styles.css` is imported too; without it the theme's custom
+> properties are missing and spacing collapses.
+>
+> The setup below is still required for everything else: `SSRProvider` for stable generated ids,
+> `FluentProvider` for the theme, and the renderer for the theme's `<style>` tag and for any
+> `makeStyles` rules your own application still authors.
+
 ### Basic setup
 
 Add `@fluentui/react-components` dependency:

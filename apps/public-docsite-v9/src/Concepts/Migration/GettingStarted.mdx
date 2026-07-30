@@ -14,7 +14,9 @@ In previous versions, styles were created and applied at runtime. Components use
 
 In v9, styles are created at build time to define class names. Components apply these class names at runtime based on state. A theme object is used to set CSS variables in the DOM which component styles reference.
 
-[Griffel](https://griffel.js.org/), a CSS-in-JS framework, provides build-time transforms, atomic CSS, and type-safe styles for v9.
+Component styles are authored as Tailwind-flavored CSS Modules and compiled into a plain stylesheet
+shipped with each package. There is no runtime style engine, so nothing has to be generated,
+injected or de-duplicated while your app renders.
 
 Build-time styles significantly improve rendering performance and can be optimized to reduce bundle size.
 
