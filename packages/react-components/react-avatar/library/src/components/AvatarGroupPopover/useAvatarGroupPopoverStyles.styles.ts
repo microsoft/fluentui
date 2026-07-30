@@ -1,17 +1,12 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): this file needs NO
- * `enforce-use-client` suppression and KEEPS its `react-hooks/immutability` disables — it
- * still calls `useSizeStyles()` / `useGroupChildClassName()`, so eslint still treats the
- * styles hook as a React hook and both rules apply to it exactly as before (the same split
- * AvatarGroupItem landed on). The state-mutation contract itself is deliberately preserved
- * (DECISIONS.md D14).
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * it still calls `useSizeStyles()` / `useGroupChildClassName()`, so eslint treats the styles
+ * hook as a React hook and `enforce-use-client` never reports the directive as unnecessary.
  *
- * This hook converted AFTER its three siblings: the statics-removal sweep re-pointed
- * `avatarGroupPopoverClassNames.root` at the marker while the hook was still Griffel, so
- * `root` named a class nothing rendered. It now names the class the trigger button actually
- * carries — see the marker note on the `clsx` call below.
+ * `avatarGroupPopoverClassNames.root` names the class the trigger button actually carries —
+ * see the marker note on the `clsx` call below.
  */
 
 import { clsx } from 'clsx';

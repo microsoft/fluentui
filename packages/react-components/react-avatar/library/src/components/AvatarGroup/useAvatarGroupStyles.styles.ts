@@ -1,11 +1,9 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): this file needs NO
- * `enforce-use-client` suppression and KEEPS its `react-hooks/immutability` disable — it
- * still calls `useSizeStyles()`, so eslint still treats the styles hook as a React hook and
- * both rules apply to it exactly as before (react-badge CounterBadge precedent). The
- * state-mutation contract itself is deliberately preserved (DECISIONS.md D14).
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * it still calls `useSizeStyles()`, so eslint treats the styles hook as a React hook and
+ * `enforce-use-client` never reports the directive as unnecessary.
  */
 
 import { clsx } from 'clsx';

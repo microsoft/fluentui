@@ -1,15 +1,10 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): this file needs NO
- * `enforce-use-client` suppression and KEEPS its `react-hooks/immutability` disables. It
- * still calls `useSizeStyles()`, so eslint still treats the styles hook as a React hook and
- * both rules apply to it exactly as before — the same split react-badge's CounterBadge and
- * react-button's ToggleButton landed on, versus Divider/Button, whose converted hooks call
- * nothing and therefore lost both.
- *
- * The state-mutation contract itself is deliberately preserved (DECISIONS.md D14); its
- * removal is a single Phase 3 sweep, not a per-conversion change.
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * it still calls `useSizeStyles()`, so eslint treats the styles hook as a React hook and
+ * `enforce-use-client` never reports the directive as unnecessary. Converted hooks that call
+ * nothing — Divider, Button — carry no directive at all.
  */
 
 import { clsx } from 'clsx';
