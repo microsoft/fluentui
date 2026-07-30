@@ -414,7 +414,7 @@ Inline popover
 - Removed `onRestoreFocus`. `Popover` will focus the trigger when closed by default. Any other behaviour can be done through an effect by users.
 - Removed `onPositioned`.
 - Removed `doNotLayer` with `inline`.
-- Removed all styling props supported by `Callout`. `makeStyles` should be used instead.
+- Removed all styling props supported by `Callout`. Style via the `className` prop on the component or its slots instead.
 - Removed `coverTarget`, use `offset` callback instead.
 - Removed `setInitialFocus`. If `trapFocus` is used, first focusable element is used. Users must handle other specific cases.
 
