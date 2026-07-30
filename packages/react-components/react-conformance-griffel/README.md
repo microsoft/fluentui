@@ -2,6 +2,12 @@
 
 A set of conformance tests for `@griffel/react`. Intended to be used with `@fluentui/react-conformance`.
 
+> These tests apply to components that still compose their class names with Griffel's
+> `mergeClasses()`. Components converted to CSS Modules compose with `clsx`, where argument order
+> carries no cascade meaning — they disable `make-styles-overrides-win` and enable
+> `classname-overrides-win` from `@fluentui/react-conformance` instead, which asserts the
+> cascade-native contract. See that package's README.
+
 ## Usage
 
 ```ts
