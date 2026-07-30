@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Component to render an image, text and an action in a Card component.
  */
 export const CardHeader: ForwardRefComponent<CardHeaderProps> = React.forwardRef((props, ref) => {
-  const state = useCardHeader_unstable(props, ref);
+  let state = useCardHeader_unstable(props, ref);
 
-  useCardHeaderStyles_unstable(state);
+  state = useCardHeaderStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useCardHeaderStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useCardHeaderStyles_unstable')(state);
 
   return renderCardHeader_unstable(state);
 });

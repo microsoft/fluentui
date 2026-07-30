@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Component to render Button actions in a Card component.
  */
 export const CardFooter: ForwardRefComponent<CardFooterProps> = React.forwardRef((props, ref) => {
-  const state = useCardFooter_unstable(props, ref);
+  let state = useCardFooter_unstable(props, ref);
 
-  useCardFooterStyles_unstable(state);
+  state = useCardFooterStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useCardFooterStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useCardFooterStyles_unstable')(state);
 
   return renderCardFooter_unstable(state);
 });
