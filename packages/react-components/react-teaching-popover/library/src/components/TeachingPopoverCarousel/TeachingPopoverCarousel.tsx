@@ -18,11 +18,11 @@ import { useTeachingPopoverCarouselContextValues_unstable } from './useTeachingP
  */
 export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouselProps> = React.forwardRef(
   (props, ref) => {
-    const state = useTeachingPopoverCarousel_unstable(props, ref);
+    let state = useTeachingPopoverCarousel_unstable(props, ref);
 
-    useTeachingPopoverCarouselStyles_unstable(state);
+    state = useTeachingPopoverCarouselStyles_unstable(state);
 
-    useCustomStyleHook_unstable('useTeachingPopoverCarouselStyles_unstable')(state);
+    state = useCustomStyleHook_unstable('useTeachingPopoverCarouselStyles_unstable')(state);
 
     const contextValues = useTeachingPopoverCarouselContextValues_unstable(state);
 

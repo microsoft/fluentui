@@ -18,11 +18,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Users must provide the localized text for each button within the footer via slots.
  */
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps> = React.forwardRef((props, ref) => {
-  const state = useTeachingPopoverFooter_unstable(props, ref);
+  let state = useTeachingPopoverFooter_unstable(props, ref);
 
-  useTeachingPopoverFooterStyles_unstable(state);
+  state = useTeachingPopoverFooterStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTeachingPopoverFooterStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useTeachingPopoverFooterStyles_unstable')(state);
 
   return renderTeachingPopoverFooter_unstable(state);
 });

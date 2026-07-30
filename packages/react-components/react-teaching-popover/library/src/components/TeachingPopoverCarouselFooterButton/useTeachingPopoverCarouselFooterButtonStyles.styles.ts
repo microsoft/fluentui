@@ -63,14 +63,19 @@ export const useTeachingPopoverCarouselFooterButtonStyles_unstable = (
   // altitude is the one deliberate behaviour decision in this conversion; the module header
   // records why, and what it changes relative to the original all-Griffel code.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-teaching-popover-carousel-footer-button',
-    navType === 'prev' && popoverAppearance === 'brand' && styles['brand-previous'],
-    navType === 'next' && popoverAppearance === 'brand' && styles['brand-next'],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-teaching-popover-carousel-footer-button',
+        navType === 'prev' && popoverAppearance === 'brand' && styles['brand-previous'],
+        navType === 'next' && popoverAppearance === 'brand' && styles['brand-next'],
+        state.root.className,
+      ),
+    },
+  };
 
   // Called LAST now (the Griffel version called it first and merged its output back in as the
   // trailing mergeClasses argument). `useButtonStyles_unstable` composes its own classes AHEAD

@@ -15,11 +15,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  */
 export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopoverCarouselNavButtonProps> =
   React.forwardRef((props, ref) => {
-    const state = useTeachingPopoverCarouselNavButton_unstable(props, ref);
+    let state = useTeachingPopoverCarouselNavButton_unstable(props, ref);
 
-    useTeachingPopoverCarouselNavButtonStyles_unstable(state);
+    state = useTeachingPopoverCarouselNavButtonStyles_unstable(state);
 
-    useCustomStyleHook_unstable('useTeachingPopoverCarouselNavButtonStyles_unstable')(state);
+    state = useCustomStyleHook_unstable('useTeachingPopoverCarouselNavButtonStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselNavButton_unstable(state);
   }) as ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;

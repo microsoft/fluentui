@@ -16,11 +16,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * and an info-tip icon that can be overridden or removed, subtitle displayed will be the children elements of TeachingPopoverHeader.
  */
 export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderProps> = React.forwardRef((props, ref) => {
-  const state = useTeachingPopoverHeader_unstable(props, ref);
+  let state = useTeachingPopoverHeader_unstable(props, ref);
 
-  useTeachingPopoverHeaderStyles_unstable(state);
+  state = useTeachingPopoverHeaderStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTeachingPopoverHeaderStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useTeachingPopoverHeaderStyles_unstable')(state);
 
   return renderTeachingPopoverHeader_unstable(state);
 });

@@ -15,11 +15,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * TeachingPopoverBody is used to host content within a TeachingPopover, and provides a standardized media slot
  */
 export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps> = React.forwardRef((props, ref) => {
-  const state = useTeachingPopoverBody_unstable(props, ref);
+  let state = useTeachingPopoverBody_unstable(props, ref);
 
-  useTeachingPopoverBodyStyles_unstable(state);
+  state = useTeachingPopoverBodyStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTeachingPopoverBodyStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useTeachingPopoverBodyStyles_unstable')(state);
 
   return renderTeachingPopoverBody_unstable(state);
 });

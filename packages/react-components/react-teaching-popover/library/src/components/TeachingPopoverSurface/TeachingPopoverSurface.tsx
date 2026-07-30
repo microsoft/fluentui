@@ -15,11 +15,11 @@ import { renderTeachingPopoverSurface_unstable } from './renderTeachingPopoverSu
  */
 export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps> = React.forwardRef(
   (props, ref) => {
-    const state = useTeachingPopoverSurface_unstable(props, ref);
+    let state = useTeachingPopoverSurface_unstable(props, ref);
 
-    useTeachingPopoverSurfaceStyles_unstable(state);
+    state = useTeachingPopoverSurfaceStyles_unstable(state);
 
-    useCustomStyleHook_unstable('useTeachingPopoverSurfaceStyles_unstable')(state);
+    state = useCustomStyleHook_unstable('useTeachingPopoverSurfaceStyles_unstable')(state);
 
     return renderTeachingPopoverSurface_unstable(state);
   },

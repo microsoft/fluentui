@@ -16,11 +16,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * TeachingPopoverTitle can also optionally render a dismiss button, however this should only be enabled when there is no TeachingPopoverHeader/dismiss.
  */
 export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps> = React.forwardRef((props, ref) => {
-  const state = useTeachingPopoverTitle_unstable(props, ref);
+  let state = useTeachingPopoverTitle_unstable(props, ref);
 
-  useTeachingPopoverTitleStyles_unstable(state);
+  state = useTeachingPopoverTitleStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTeachingPopoverTitleStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useTeachingPopoverTitleStyles_unstable')(state);
 
   return renderTeachingPopoverTitle_unstable(state);
 });

@@ -15,11 +15,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  */
 export const TeachingPopoverCarouselPageCount: ForwardRefComponent<TeachingPopoverCarouselPageCountProps> =
   React.forwardRef((props, ref) => {
-    const state = useTeachingPopoverCarouselPageCount_unstable(props, ref);
+    let state = useTeachingPopoverCarouselPageCount_unstable(props, ref);
 
-    useTeachingPopoverCarouselPageCountStyles_unstable(state);
+    state = useTeachingPopoverCarouselPageCountStyles_unstable(state);
 
-    useCustomStyleHook_unstable('useTeachingPopoverCarouselPageCountStyles_unstable')(state);
+    state = useCustomStyleHook_unstable('useTeachingPopoverCarouselPageCountStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselPageCount_unstable(state);
   });

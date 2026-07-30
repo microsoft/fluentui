@@ -54,8 +54,10 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
   // — its single block sits at `fui.components.l2`, above react-popover's l1 — not by the order
   // of these arguments.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-teaching-popover-surface', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx(styles.root, 'group/fui-teaching-popover-surface', state.root.className) },
+  };
 
   // Called LAST, exactly as before — the Griffel source's comment for this line was "Make sure
   // to merge teaching bubble surface prior to popover styles", i.e. compose here first so that

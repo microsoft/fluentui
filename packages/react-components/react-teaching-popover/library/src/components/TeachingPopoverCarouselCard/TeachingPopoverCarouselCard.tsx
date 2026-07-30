@@ -16,11 +16,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  */
 export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCarouselCardProps> = React.forwardRef(
   (props, ref) => {
-    const state = useTeachingPopoverCarouselCard_unstable(props, ref);
+    let state = useTeachingPopoverCarouselCard_unstable(props, ref);
 
-    useTeachingPopoverCarouselCardStyles_unstable(state);
+    state = useTeachingPopoverCarouselCardStyles_unstable(state);
 
-    useCustomStyleHook_unstable('useTeachingPopoverCarouselCardStyles_unstable')(state);
+    state = useCustomStyleHook_unstable('useTeachingPopoverCarouselCardStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselCard_unstable(state);
   },
