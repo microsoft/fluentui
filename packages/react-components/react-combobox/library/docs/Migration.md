@@ -6,38 +6,38 @@ The v8 Dropdown component should be replaced with the [v9 Select](https://github
 
 ### Property mapping
 
-| v8 Dropdown            | v9 Dropdown                       |
-| ---------------------- | --------------------------------- |
-| `options`              | `<Option>` children               |
-| `ariaLabel`            | Native `aria-*` props             |
-| `calloutProps`         | `positioning` + `listbox`         |
-| `className`            | `className`                       |
-| `componentRef`         | `ref`                             |
-| `defaultSelectedKeys`  | defaultSelectedOptions            |
-| `disabled`             | `disabled`                        |
-| `dropdownWidth`        | `listbox` slot styles             |
-| `errorMessage`         | Handled by Field                  |
-| `id`                   | `id`                              |
-| `label`                | Handled by Field or Label         |
-| `multiSelect`          | `multiselect`                     |
-| `multiSelectDelimiter` | controlled `value`                |
-| `notifyOnReselect`     | `onClick` on Option               |
-| `onChange`             | `onOptionSelect`                  |
-| `onDismiss`            | `onOpenChange`                    |
-| `onRenderCaretDown`    | `expandIcon` slot                 |
-| `onRenderContainer`    | `listbox` slot                    |
-| `onRenderLabel`        | Handled by Field                  |
-| `onRenderItem`         | children                          |
-| `onRenderList`         | `listbox` slot                    |
-| `onRenderOption`       | `<Option>` children               |
-| `onRenderPlaceholder`  | `button` slot                     |
-| `onRenderTitle`        | `button` slot                     |
-| `openOnKeyboardFocus`  | controlled `open`                 |
-| `panelProps`           | N/A                               |
-| `placeholder`          | `placeholder`                     |
-| `required`             | `required`                        |
-| `selectedKey(s)`       | `selectedOptions`                 |
-| `styles`               | `makeStyles` or HTML `style` prop |
+| v8 Dropdown            | v9 Dropdown                            |
+| ---------------------- | -------------------------------------- |
+| `options`              | `<Option>` children                    |
+| `ariaLabel`            | Native `aria-*` props                  |
+| `calloutProps`         | `positioning` + `listbox`              |
+| `className`            | `className`                            |
+| `componentRef`         | `ref`                                  |
+| `defaultSelectedKeys`  | defaultSelectedOptions                 |
+| `disabled`             | `disabled`                             |
+| `dropdownWidth`        | `listbox` slot styles                  |
+| `errorMessage`         | Handled by Field                       |
+| `id`                   | `id`                                   |
+| `label`                | Handled by Field or Label              |
+| `multiSelect`          | `multiselect`                          |
+| `multiSelectDelimiter` | controlled `value`                     |
+| `notifyOnReselect`     | `onClick` on Option                    |
+| `onChange`             | `onOptionSelect`                       |
+| `onDismiss`            | `onOpenChange`                         |
+| `onRenderCaretDown`    | `expandIcon` slot                      |
+| `onRenderContainer`    | `listbox` slot                         |
+| `onRenderLabel`        | Handled by Field                       |
+| `onRenderItem`         | children                               |
+| `onRenderList`         | `listbox` slot                         |
+| `onRenderOption`       | `<Option>` children                    |
+| `onRenderPlaceholder`  | `button` slot                          |
+| `onRenderTitle`        | `button` slot                          |
+| `openOnKeyboardFocus`  | controlled `open`                      |
+| `panelProps`           | N/A                                    |
+| `placeholder`          | `placeholder`                          |
+| `required`             | `required`                             |
+| `selectedKey(s)`       | `selectedOptions`                      |
+| `styles`               | `className` prop, or HTML `style` prop |
 
 ## From v8 ComboBox
 
@@ -103,7 +103,7 @@ The v8 ComboBox component should be replaced with the v9 Combobox component. The
 | `scrollSelectedToTop`    |                                                |
 | `selectedKey(s)`         | `selectedOptions`                              |
 | `shouldRestoreFocus`     |                                                |
-| `styles`                 | `makeStyles` or HTML `style` prop              |
+| `styles`                 | `className` prop, or HTML `style` prop         |
 | `text`                   | `value`                                        |
 | `useComboBoxAsMenuWidth` | default behavior, `listbox` styles to override |
 
@@ -115,62 +115,62 @@ The v0 Dropdown should be replaced with the v9 Combobox if it allows typing with
 
 ### Property mapping
 
-| v0 Dropdown                   | v9 Dropdown & Combobox              |
-| ----------------------------- | ----------------------------------- |
-| `items`                       | `<Option>` children                 |
-| `activeSelectedIndex`         | N/A                                 |
-| `align`                       | `positioning`                       |
-| `checkable`                   | `expandIcon`                        |
-| `checkableIndicator`          | `expandIcon` children               |
-| `className`                   | `className`                         |
-| `clearIndicator`              | N/A                                 |
-| `clearable`                   |                                     |
-| `defaultActiveSelectedIndex`  | N/A                                 |
-| `defaultActiveSelectedIndex`  |                                     |
-| `defaultOpen`                 | `defaultOpen`                       |
-| `defaultSearchQuery`          | `defaultValue`                      |
-| `defaultValue`                | `defaultSelectedOptions`            |
-| `disabled`                    | `disabled`                          |
-| `error`                       | Handled by Field                    |
-| `flipBoundary`                | `positioning`                       |
-| `fluid`                       | custom styles                       |
-| `getA11ySelectionMessage`     |                                     |
-| `getA11yStatusMessage`        |                                     |
-| `headerMessage`               | children                            |
-| `highlightFirstItemOnOpen`    |                                     |
-| `highlightedIndex`            |                                     |
-| `inline`                      | custom styles                       |
-| `inverted`                    | theme or styles                     |
-| `itemToString`                | `<Option>` children or `text` prop  |
-| `itemToValue`                 | `<Option>` children or `value` prop |
-| `list`                        | `listbox`                           |
-| `loading`                     | children                            |
-| `loadingMessage`              |                                     |
-| `moveFocusOnTab`              |                                     |
-| `multiple`                    | `multiselect`                       |
-| `noResultsMessage`            | children                            |
-| `offset`                      | `positioning`                       |
-| `onActiveSelectedIndexChange` |                                     |
-| `onBlur`                      | `onBlur`                            |
-| `onChange`                    | `onOptionSelect`\*                  |
-| `onHighlightedIndexChange`    | `onActiveOptionChange`              |
-| `onOpenChange`                | `onOpenChange`                      |
-| `onSearchQueryChange`         | `onChange`\*                        |
-| `open`                        | `open`                              |
-| `overflowBoundary`            | `listbox` styles                    |
-| `placeholder`                 | `placeholder`                       |
-| `popperRef`                   | `listbox` slot's `ref`              |
-| `position`                    | `positioning`                       |
-| `positionFixed`               | `listbox` styles                    |
-| `renderItem`                  | children                            |
-| `renderSelectedItem`          | children or `<Option>` styles       |
-| `search`                      | use Combobox instead of Dropdown    |
-| `searchInput`                 | Combobox primary slot               |
-| `searchQuery`                 | `value`                             |
-| `styles`                      | `makeStyles` or HTML `style` prop   |
-| `toggleIndicator`             | `expandIcon`                        |
-| `triggerButton`               | Dropdown primary slot               |
-| `value`                       | `selectedOptions`                   |
-| `open`                        | `open`                              |
+| v0 Dropdown                   | v9 Dropdown & Combobox                 |
+| ----------------------------- | -------------------------------------- |
+| `items`                       | `<Option>` children                    |
+| `activeSelectedIndex`         | N/A                                    |
+| `align`                       | `positioning`                          |
+| `checkable`                   | `expandIcon`                           |
+| `checkableIndicator`          | `expandIcon` children                  |
+| `className`                   | `className`                            |
+| `clearIndicator`              | N/A                                    |
+| `clearable`                   |                                        |
+| `defaultActiveSelectedIndex`  | N/A                                    |
+| `defaultActiveSelectedIndex`  |                                        |
+| `defaultOpen`                 | `defaultOpen`                          |
+| `defaultSearchQuery`          | `defaultValue`                         |
+| `defaultValue`                | `defaultSelectedOptions`               |
+| `disabled`                    | `disabled`                             |
+| `error`                       | Handled by Field                       |
+| `flipBoundary`                | `positioning`                          |
+| `fluid`                       | custom styles                          |
+| `getA11ySelectionMessage`     |                                        |
+| `getA11yStatusMessage`        |                                        |
+| `headerMessage`               | children                               |
+| `highlightFirstItemOnOpen`    |                                        |
+| `highlightedIndex`            |                                        |
+| `inline`                      | custom styles                          |
+| `inverted`                    | theme or styles                        |
+| `itemToString`                | `<Option>` children or `text` prop     |
+| `itemToValue`                 | `<Option>` children or `value` prop    |
+| `list`                        | `listbox`                              |
+| `loading`                     | children                               |
+| `loadingMessage`              |                                        |
+| `moveFocusOnTab`              |                                        |
+| `multiple`                    | `multiselect`                          |
+| `noResultsMessage`            | children                               |
+| `offset`                      | `positioning`                          |
+| `onActiveSelectedIndexChange` |                                        |
+| `onBlur`                      | `onBlur`                               |
+| `onChange`                    | `onOptionSelect`\*                     |
+| `onHighlightedIndexChange`    | `onActiveOptionChange`                 |
+| `onOpenChange`                | `onOpenChange`                         |
+| `onSearchQueryChange`         | `onChange`\*                           |
+| `open`                        | `open`                                 |
+| `overflowBoundary`            | `listbox` styles                       |
+| `placeholder`                 | `placeholder`                          |
+| `popperRef`                   | `listbox` slot's `ref`                 |
+| `position`                    | `positioning`                          |
+| `positionFixed`               | `listbox` styles                       |
+| `renderItem`                  | children                               |
+| `renderSelectedItem`          | children or `<Option>` styles          |
+| `search`                      | use Combobox instead of Dropdown       |
+| `searchInput`                 | Combobox primary slot                  |
+| `searchQuery`                 | `value`                                |
+| `styles`                      | `className` prop, or HTML `style` prop |
+| `toggleIndicator`             | `expandIcon`                           |
+| `triggerButton`               | Dropdown primary slot                  |
+| `value`                       | `selectedOptions`                      |
+| `open`                        | `open`                                 |
 
 \*In v9, any native HTML properties supported on an `<input>` element may be set on `<Combobox>`, including the `onChange` handler. Because of this, the v0 `onChange` selection callback has been updated to `onOptionSelect`. The v9 Combobox's `onChange` event behavior is the same as for an `<input>` element, or the v9 Input control.
