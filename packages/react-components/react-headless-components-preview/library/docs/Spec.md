@@ -18,7 +18,7 @@ It is intended for teams building custom design systems that significantly diver
 **What this package does NOT provide:**
 
 - Design props (`appearance`, `size`, `shape`, etc.)
-- Style logic (Griffel, design tokens)
+- Style logic (CSS Modules, design tokens)
 - Motion logic (animations, transitions)
 - Default slot implementations (icons, components)
 
