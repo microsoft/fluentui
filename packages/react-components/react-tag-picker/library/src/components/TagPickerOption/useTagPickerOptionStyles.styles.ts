@@ -62,15 +62,37 @@ export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): 
   // No `data-*` mirror is minted: every state these rules read is a plain boolean branch on this
   // same element, and Option's own hook already relies on the native `aria-disabled` /
   // `data-activedescendant-focusvisible` that sit here (DECISIONS.md D15.6).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-tag-picker-option',
-    state.secondaryContent && styles['with-secondary-content'],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-tag-picker-option',
+        state.secondaryContent && styles['with-secondary-content'],
+        state.root.className,
+      ),
+    },
+  };
 
-  useOptionStyles_unstable({
+  // Thread the composed result instead of discarding it (F1 of the D14 mutation removal). The
+  // object handed to Option is a NEUTRALISED VIEW of this state, and TagPickerOptionState carries
+  // none of the keys that view overrode, so those keys are destructured OFF the return before the
+  // merge — threading them would publish Option's view (`active: false`, `checkIcon: undefined`)
+  // onto the object TagPickerOption actually renders. `components` goes the same way: Option's map
+  // does not know about this component's `media` / `secondaryContent` slots.
+  const {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    components: optionComponents,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    active: optionActive,
+    disabled: optionDisabled,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    focusVisible: optionFocusVisible,
+    checkIcon: optionCheckIcon,
+    selected: optionSelected,
+    ...composedOption
+  } = useOptionStyles_unstable({
     ...state,
     active: false,
     disabled: false,
@@ -79,14 +101,23 @@ export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): 
     selected: false,
   });
 
+  // The Option merge lands HERE, immediately after the call, now that Option returns NEW slot
+  // objects: deferring it to the return would overwrite the `media` / `secondaryContent`
+  // compositions below with Option's pass-through copies and silently drop them.
+  state = { ...state, ...composedOption };
+
   if (state.media) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.media.className = clsx(styles.media, state.media.className);
+    state = { ...state, media: { ...state.media, className: clsx(styles.media, state.media.className) } };
   }
 
   if (state.secondaryContent) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.secondaryContent.className = clsx(styles['secondary-content'], state.secondaryContent.className);
+    state = {
+      ...state,
+      secondaryContent: {
+        ...state.secondaryContent,
+        className: clsx(styles['secondary-content'], state.secondaryContent.className),
+      },
+    };
   }
 
   return state;

@@ -13,10 +13,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * A TagPickerControl is a composite component that controls actions and state for a TagPicker.
  */
 export const TagPickerControl: ForwardRefComponent<TagPickerControlProps> = React.forwardRef((props, ref) => {
-  const state = useTagPickerControl_unstable(props, ref);
+  let state = useTagPickerControl_unstable(props, ref);
 
-  useTagPickerControlStyles_unstable(state);
-  useCustomStyleHook_unstable('useTagPickerControlStyles_unstable')(state);
+  state = useTagPickerControlStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useTagPickerControlStyles_unstable')(state);
   return renderTagPickerControl_unstable(state);
 });
 

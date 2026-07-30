@@ -13,10 +13,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * A TagPickerList is a composite component that allows users to display a list of tag options to be selected.
  */
 export const TagPickerList: ForwardRefComponent<TagPickerListProps> = React.forwardRef((props, ref) => {
-  const state = useTagPickerList_unstable(props, ref);
+  let state = useTagPickerList_unstable(props, ref);
 
-  useTagPickerListStyles_unstable(state);
-  useCustomStyleHook_unstable('useTagPickerListStyles_unstable')(state);
+  state = useTagPickerListStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useTagPickerListStyles_unstable')(state);
   return renderTagPickerList_unstable(state);
 });
 

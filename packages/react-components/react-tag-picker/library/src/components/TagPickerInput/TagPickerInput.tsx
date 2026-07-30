@@ -13,10 +13,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * A TagPickerInput is a composite component that allows users to query tags.
  */
 export const TagPickerInput: ForwardRefComponent<TagPickerInputProps> = React.forwardRef((props, ref) => {
-  const state = useTagPickerInput_unstable(props, ref);
+  let state = useTagPickerInput_unstable(props, ref);
 
-  useTagPickerInputStyles_unstable(state);
-  useCustomStyleHook_unstable('useTagPickerInputStyles_unstable')(state);
+  state = useTagPickerInputStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useTagPickerInputStyles_unstable')(state);
 
   return renderTagPickerInput_unstable(state);
 });

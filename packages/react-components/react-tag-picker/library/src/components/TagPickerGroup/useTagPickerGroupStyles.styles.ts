@@ -49,7 +49,14 @@ export const useTagPickerGroupStyles_unstable = (state: TagPickerGroupState): Ta
   // class, its `group/fui-tag-group` marker and the `data-size` this root carries in the TAG
   // scale, then leaves the consumer className trailing. Everything this hook adds is prepended
   // to that string below, so the consumer's className stays last overall.
-  useTagGroupStyles_unstable(state);
+  // TagPickerGroupState widens TagGroupState, so the delegate's narrower return is re-merged onto
+  // this component's own shape (F1 of the D14 mutation removal — thread the
+  // composed result, do not discard it).
+  // The merge is applied IMMEDIATELY rather than at the return: TagGroup returns a NEW root, so
+  // merging after this hook's own composition would overwrite it and drop `styles.root`, the
+  // marker and the picker-scale size class.
+  const composedTagGroup = useTagGroupStyles_unstable(state);
+  state = { ...state, ...composedTagGroup };
 
   // `styles.root` first — hashed, unconditional and selector-safe — then the named group
   // marker, which must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
@@ -66,13 +73,18 @@ export const useTagPickerGroupStyles_unstable = (state: TagPickerGroupState): Ta
   // won every shared property key under Griffel. That is why this file's rules sit in
   // `fui.components.l1` rather than the usual composition altitude, and why the two property
   // sets are kept strictly disjoint (DECISIONS.md D12).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-tag-picker-group',
-    styles[tagSizeToTagPickerSize(state.size)],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-tag-picker-group',
+        styles[tagSizeToTagPickerSize(state.size)],
+        state.root.className,
+      ),
+    },
+  };
 
   return state;
 };

@@ -13,10 +13,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * A TagPickerOption is a composite component that allows users to select tags.
  */
 export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps> = React.forwardRef((props, ref) => {
-  const state = useTagPickerOption_unstable(props, ref);
+  let state = useTagPickerOption_unstable(props, ref);
 
-  useTagPickerOptionStyles_unstable(state);
-  useCustomStyleHook_unstable('useTagPickerOptionStyles_unstable')(state);
+  state = useTagPickerOptionStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useTagPickerOptionStyles_unstable')(state);
   return renderTagPickerOption_unstable(state);
 });
 

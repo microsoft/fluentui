@@ -49,15 +49,17 @@ export const useTagPickerOptionGroupStyles = (state: TagPickerOptionGroupState):
   // `label` slot and stamps its own `group/fui-option-group` marker, leaving the consumer
   // className trailing. Everything this hook adds is prepended to that string below, so the
   // consumer's className stays last overall.
-  useOptionGroupStyles_unstable(state);
+  state = useOptionGroupStyles_unstable(state);
 
   // `styles.root` is the identity-only local minted in TagPickerOptionGroup.module.css: this
   // component has no styles of its own, and leading with it keeps the D15.1 / D16.2 invariant
   // — the marker is never `classList[0]`, where nwsapi's jsdom `:scope` polyfill would splice
   // the `/` into an invalid selector — a property of THIS file rather than of react-combobox's
   // hook. Consumer className stays last.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-tag-picker-option-group', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx(styles.root, 'group/fui-tag-picker-option-group', state.root.className) },
+  };
 
   // The `label` slot deliberately gets NO assignment here. Its only library token was the
   // `fui-TagPickerOptionGroup__label` static; this component has no module class for it
