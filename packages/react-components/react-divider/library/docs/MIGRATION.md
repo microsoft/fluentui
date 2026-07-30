@@ -4,7 +4,7 @@
 
 The v8 `Separator` control supports a very similar set of props to the v9 `Divider` with a few differences that are outlined below:
 
-- `styles` => NOT SUPPORTED - use `makeStyles` to create styles and apply them with the `className` prop.
+- `styles` => NOT SUPPORTED - write your rules in your own stylesheet and apply them with the `className` prop.
 - `theme` => NOT SUPPORTED - use `FluentProvider`
 
 ## Migration from v0
