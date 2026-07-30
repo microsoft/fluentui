@@ -12,11 +12,11 @@ import type { FluentTriggerComponent } from '@fluentui/react-utilities';
  * A tooltip provides light weight contextual information on top of its target element.
  */
 export const Tooltip: React.FC<TooltipProps> = props => {
-  const state = useTooltip_unstable(props);
+  let state = useTooltip_unstable(props);
 
-  useTooltipStyles_unstable(state);
+  state = useTooltipStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTooltipStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useTooltipStyles_unstable')(state);
 
   return renderTooltip_unstable(state);
 };
