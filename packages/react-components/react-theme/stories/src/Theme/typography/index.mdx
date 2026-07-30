@@ -21,7 +21,29 @@ Typography style is represented by a set of tokens instead of an individual toke
 
 ## How to use
 
-Using typography styles is as simple as creating a custom style with any component. Simply import `typographyStyles` from the main `@fluentui/react-components` package and use it in your custom style:
+A typography ramp is four token custom properties — family, size, weight and line height — so in CSS
+you apply one by writing those four declarations. This is exactly what `Title2` and the other presets
+do internally:
+
+```css
+/* Example.module.css */
+.text {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero700);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero700);
+}
+```
+
+```tsx
+import styles from './Example.module.css';
+
+export const Example = () => <span className={styles.text}>Text using tokens</span>;
+```
+
+The `typographyStyles` object remains exported for code that needs the same values from TypeScript,
+and the examples below show that form — they are authored with `makeStyles`, which is still
+re-exported from `@fluentui/react-components`:
 
 ```tsx
 import * as React from 'react';

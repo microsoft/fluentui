@@ -18,15 +18,16 @@ Pass the theme to the `FluentProvider`:
 </FluentProvider>
 ```
 
-Use the `tokens` in your styles:
+Tokens are emitted as CSS custom properties, so reference them directly in your stylesheet:
 
-```jsx
-const useStyles = makeStyles({
-  root: {
-    color: tokens.colorNeutralForeground1,
-  },
-});
+```css
+.root {
+  color: var(--colorNeutralForeground1);
+}
 ```
+
+The `tokens` object is the TypeScript-side equivalent, for when a value has to be read from code —
+`tokens.colorNeutralForeground1 === 'var(--colorNeutralForeground1)'`.
 
 ### Using a custom brand ramp
 
