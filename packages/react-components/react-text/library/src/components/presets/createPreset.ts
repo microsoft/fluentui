@@ -13,9 +13,9 @@ export function createPreset(options: {
   const { useStyles, displayName } = options;
   const Wrapper: ForwardRefComponent<TextPresetProps> = React.forwardRef((props, ref) => {
     const styles = useStyles();
-    const state = useText_unstable(props as TextProps, ref);
+    let state = useText_unstable(props as TextProps, ref);
 
-    useTextStyles_unstable(state);
+    state = useTextStyles_unstable(state);
 
     /*
      * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
