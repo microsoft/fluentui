@@ -86,6 +86,12 @@ post-conversion bundle, zero retries:
 
 Batch total: **136/136 clean** (42 new + 94 existing), zero retries.
 
+Post-capture formatting note (C3 precedent): the commit hook's prettier pass rewrapped
+long JSX/data lines in three story files (FunnelChart/ChartTable Basic render lines,
+HeatMapChart data literal). Formatting-only — zero emitted-code difference — so the
+bundles both legs were captured from remain comparable against these baselines, and
+future re-captures from the committed source stay comparable too.
+
 ## Jest
 
 `node node_modules/jest/bin/jest.js -u --ci` in `packages/charts/react-charts/library`:
