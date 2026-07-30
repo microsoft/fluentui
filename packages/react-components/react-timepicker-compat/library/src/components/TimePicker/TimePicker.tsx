@@ -12,12 +12,12 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * TimePicker Compat component
  */
 export const TimePicker: ForwardRefComponent<TimePickerProps> = React.forwardRef((props, ref) => {
-  const state = useTimePicker_unstable(props, ref);
+  let state = useTimePicker_unstable(props, ref);
 
   const contextValues = useComboboxContextValues(state);
 
-  useTimePickerStyles_unstable(state);
-  useCustomStyleHook_unstable('useTimePickerCompatStyles_unstable')(state);
+  state = useTimePickerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useTimePickerCompatStyles_unstable')(state);
 
   return renderCombobox_unstable(state, contextValues);
 });

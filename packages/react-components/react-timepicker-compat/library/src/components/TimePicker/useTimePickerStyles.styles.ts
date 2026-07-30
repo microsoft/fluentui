@@ -65,8 +65,10 @@ export const useTimePickerStyles_unstable = (state: TimePickerState): TimePicker
   // that rule is unconditional (DECISIONS.md D15.6 — attributes are a fallback, not a
   // requirement).
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-time-picker', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx(styles.root, 'group/fui-time-picker', state.root.className) },
+  };
 
   // The `input`, `expandIcon` and `clearIcon` slots deliberately get NO assignment. Their only
   // library token was the `fui-TimePicker__<slot>` static; TimePicker has no module class for
@@ -75,16 +77,18 @@ export const useTimePickerStyles_unstable = (state: TimePickerState): TimePicker
   // imply this hook styles slots it does not (statics-removal design §4d). The `if (state.x)`
   // guards went with them.
 
+  // The listbox slot is react-combobox's `<Listbox>`; this rule sits in `fui.components.l2`
+  // (D2 amendment 2) — the same layer Combobox's own listbox rules sit in, because Combobox
+  // is decorating that component's output too. See TimePicker.module.css for why the tie
+  // that creates is broken with specificity rather than with an altitude.
   if (state.listbox) {
-    // The listbox slot is react-combobox's `<Listbox>`; this rule sits in `fui.components.l2`
-    // (D2 amendment 2) — the same layer Combobox's own listbox rules sit in, because Combobox
-    // is decorating that component's output too. See TimePicker.module.css for why the tie
-    // that creates is broken with specificity rather than with an altitude.
-    // eslint-disable-next-line react-hooks/immutability
-    state.listbox.className = clsx(styles.listbox, state.listbox.className);
+    state = { ...state, listbox: { ...state.listbox, className: clsx(styles.listbox, state.listbox.className) } };
   }
 
-  useComboboxStyles_unstable(state);
+  // TimePickerState widens ComboboxState with `freeform` / `parseTimeStringToDate` /
+  // `submittedText`, so the delegate's narrower return is re-merged onto this component's own
+  // shape (F1 of the D14 mutation removal — thread the composed result, do not discard it).
+  state = { ...state, ...useComboboxStyles_unstable(state) };
 
   return state;
 };
