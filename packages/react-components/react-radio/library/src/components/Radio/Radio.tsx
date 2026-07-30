@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Radio component is a wrapper for a radio button with a label.
  */
 export const Radio: ForwardRefComponent<RadioProps> = React.forwardRef((props, ref) => {
-  const state = useRadio_unstable(props, ref);
+  let state = useRadio_unstable(props, ref);
 
-  useRadioStyles_unstable(state);
+  state = useRadioStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useRadioStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useRadioStyles_unstable')(state);
 
   return renderRadio_unstable(state);
 });
