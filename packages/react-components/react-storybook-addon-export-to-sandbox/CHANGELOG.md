@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-storybook-addon-export-to-sandbox
 
-This log was last generated on Tue, 16 Jun 2026 18:28:46 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jul 2026 14:23:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.1)
+
+Thu, 30 Jul 2026 14:23:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.0..@fluentui/react-storybook-addon-export-to-sandbox_v0.3.1)
+
+### Patches
+
+- feat: run the story source transform before transpilation and remove the custom Babel loader ([PR #36385](https://github.com/microsoft/fluentui/pull/36385) by paulmardling@microsoft.com)
+- Bump @fluentui/babel-preset-storybook-full-source to v0.1.3 ([PR #36396](https://github.com/microsoft/fluentui/pull/36396) by beachball)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.0)
 
