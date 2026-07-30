@@ -2,10 +2,10 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike the converted leaf hooks in this package this file needs NO `enforce-use-client`
- * suppression — it still calls `usePopoverSurfaceStyles_unstable`, so the rule agrees the
- * directive is required. Leaf hooks that call nothing carry a trailing `eslint-disable-line`
- * instead; see useTeachingPopoverBodyStyles.styles.ts.
+ * this file keeps `'use client'` because it still calls `usePopoverSurfaceStyles_unstable`,
+ * so `enforce-use-client` sees a hook call and never reports the directive as unnecessary.
+ * Leaf hooks in this package call nothing and carry no directive at all; see
+ * useTeachingPopoverBodyStyles.styles.ts.
  */
 
 import { clsx } from 'clsx';
