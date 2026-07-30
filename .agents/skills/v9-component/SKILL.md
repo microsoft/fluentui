@@ -41,11 +41,27 @@ yarn nx g @fluentui/workspace-plugin:react-component --name $ARGUMENTS --project
 
 1. **Review generated files** against [docs/architecture/component-patterns.md](../../../docs/architecture/component-patterns.md) and fill in component-specific logic.
 
-2. **Add styles** in `use${ARGUMENTS}Styles.styles.ts` using design tokens:
+2. **Add styles** in a co-located `${ARGUMENTS}.module.css`, using token custom properties:
+
+   ```css
+   @reference '#theme';
+
+   @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+   @layer fui.components.l1 {
+     .root {
+       @apply flex items-center;
+
+       color: var(--colorNeutralForeground1);
+     }
+   }
+   ```
+
+   Then compose the class names in `use${ARGUMENTS}Styles.styles.ts`:
 
    ```tsx
-   import { makeStyles } from '@griffel/react';
-   import { tokens } from '@fluentui/react-theme';
+   import { clsx } from 'clsx';
+   import styles from './${ARGUMENTS}.module.css';
    ```
 
 3. **Create a default story** at the appropriate stories package location if not generated.
@@ -58,8 +74,11 @@ yarn nx g @fluentui/workspace-plugin:react-component --name $ARGUMENTS --project
 ## Critical Rules
 
 - Always use `ForwardRefComponent` with `React.forwardRef` — never `React.FC`
-- Always use design tokens from `@fluentui/react-theme` — never hardcoded colors/spacing/typography
-- Always preserve user `className` as the LAST argument in `mergeClasses()`
+- Always use design tokens — `var(--colorNeutralForeground1)` in CSS, the `tokens` object from
+  `@fluentui/react-theme` in TS — never hardcoded colors/spacing/typography
+- Always preserve user `className` as the LAST argument to `clsx()` (convention; the cascade layer,
+  not the argument position, decides which rule wins)
+- Styles hooks must **return** the composed state, never mutate the state they are handed
 - Use `_unstable` suffix on exported hooks: `use$ARGUMENTS_unstable`, `use${ARGUMENTS}Styles_unstable`, `render${ARGUMENTS}_unstable`
 - Guard any `window`/`document`/`navigator` access with `canUseDOM()` from `@fluentui/react-utilities`
 - Do not add dependencies on other Tier 3 component packages (see [docs/architecture/layers.md](../../../docs/architecture/layers.md))

@@ -63,13 +63,15 @@ Required if any published package source code changed (not just tests/stories/do
 
 Only for files in `packages/react-components/react-*/library/src/`:
 
-| Check               | Look for                                                                                            | Severity |
-| ------------------- | --------------------------------------------------------------------------------------------------- | -------- |
-| No `React.FC`       | `React.FC`, `: FC<`, `React.FunctionComponent` in added lines                                       | BLOCKER  |
-| No hardcoded styles | Hex colors `#[0-9a-fA-F]{3,8}`, hardcoded `px` values for spacing/radius/font in `.styles.ts` files | WARNING  |
-| Griffel usage       | Style files must use `makeStyles` from `@griffel/react`, not inline styles                          | WARNING  |
-| mergeClasses order  | User `className` must be the LAST argument in `mergeClasses()`                                      | WARNING  |
-| Slot system         | New components must use `slot.always`/`slot.optional` and `assertSlots`                             | WARNING  |
+| Check               | Look for                                                                                                                                                  | Severity |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| No `React.FC`       | `React.FC`, `: FC<`, `React.FunctionComponent` in added lines                                                                                             | BLOCKER  |
+| No hardcoded styles | Hex colors `#[0-9a-fA-F]{3,8}`, hardcoded `px` values for spacing/radius/font in `.module.css` files                                                      | WARNING  |
+| CSS Modules usage   | Styles must live in a co-located `*.module.css`, not in `makeStyles`/`makeResetStyles` or inline styles                                                   | WARNING  |
+| Layer discipline    | Library modules author into `fui.components.l1` (or `l2` when styling another component's output); `l3`–`l5` are consumer space and must stay empty       | WARNING  |
+| clsx order          | User `className` must be the LAST argument to `clsx()`; the unconditional module class must be first, so the `group/fui-*` marker is never `classList[0]` | WARNING  |
+| No state mutation   | Styles hooks must return a new state object, not assign to `state.<slot>.className`                                                                       | WARNING  |
+| Slot system         | New components must use `slot.always`/`slot.optional` and `assertSlots`                                                                                   | WARNING  |
 
 Reference: [docs/architecture/component-patterns.md](../../../docs/architecture/component-patterns.md)
 
@@ -79,7 +81,8 @@ For changes to `package.json` files or new imports in Tier 3 component packages:
 
 - **BLOCKER** if a Tier 3 package (`react-button`, `react-menu`, etc.) adds a dependency on another Tier 3 package
 - Allowed Tier 2 deps: `react-utilities`, `react-theme`, `react-shared-contexts`, `react-tabster`, `react-positioning`, `react-portal`
-- Allowed Tier 1 deps: `@griffel/react`, `@fluentui/tokens`, `@fluentui/react-jsx-runtime`
+- Allowed Tier 1 deps: `@fluentui/tokens`, `@fluentui/react-jsx-runtime`, `clsx`, and
+  `@fluentui/react-tailwind-theme` as a **devDependency** only (build-time `#theme` alias)
 
 Reference: [docs/architecture/layers.md](../../../docs/architecture/layers.md)
 

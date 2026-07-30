@@ -24,7 +24,7 @@ This is a large Nx monorepo with the following key characteristics:
 
    - Location: `packages/react-components/`
    - Nx Project Tags: `vNext`
-   - Features: Current stable version, actively developed. Tree-shakeable, atomic CSS classes
+   - Features: Current stable version, actively developed. Tree-shakeable, precompiled CSS shipped as `dist/styles.css` per package
 
 2. **Fluent UI v8** (`@fluentui/react`) - **MAINTENANCE ONLY**
 
@@ -145,7 +145,8 @@ packages/react-components/react-component-name/
 │   │   ├── index.ts                            # Local exports
 │   │   ├── renderComponentName.tsx             # JSX rendering
 │   │   ├── useComponentName.ts                 # State management
-│   │   └── useComponentNameStyles.styles.ts    # Griffel styling
+│   │   ├── ComponentName.module.css            # Authored styles (CSS Module)
+│   │   └── useComponentNameStyles.styles.ts    # Class composition (clsx)
 │   ├── testing/                                # Test utilities
 │   └── utils                                   # Reusable utils (if needed)
 └── stories/src/                                # Storybook documentation
@@ -164,7 +165,8 @@ react-component-name/
 │   │   ├── ComponentName.tsx                   # Main component export
 │   │   ├── ComponentName.types.ts              # Props, State, Slots types
 │   │   ├── useComponentName.ts                 # State management hook
-│   │   ├── useComponentNameStyles.styles.ts    # Griffel styling
+│   │   ├── ComponentName.module.css            # Authored styles (CSS Module)
+│   │   ├── useComponentNameStyles.styles.ts    # Class composition (clsx)
 │   │   └── renderComponentName.tsx             # JSX rendering logic
 │   └── index.ts                                # Package exports
 └── stories/                                    # Storybook stories
@@ -175,7 +177,7 @@ react-component-name/
 Components use three core hooks:
 
 1. **`useComponent_unstable()`** - Processes props, slots and main component logic into normalized state
-2. **`useComponentStyles_unstable()`** - Creates Griffel CSS-in-JS styling
+2. **`useComponentStyles_unstable()`** - Composes the CSS-Module class names onto the state and returns the new state (never mutates it)
 3. **`renderComponent_unstable()`** - Pure JSX rendering from state
 
 ### Slot System
@@ -207,54 +209,81 @@ export const renderButton_unstable = (state: ButtonState) => {
 };
 ```
 
-### Build-Time CSS-in-JS with Atomic Classes
+### Precompiled CSS with Tailwind-flavored CSS Modules
 
-**Critical**: v9 uses Griffel for compile-time CSS generation - styles are extracted into atomic CSS classes at build time, not runtime:
+**Critical**: v9 authors styles as plain CSS in a co-located `*.module.css`, compiled at build time
+into the package's `dist/styles.css`. There is no runtime style engine and no atomic-class merge
+step — every conflict is settled by the CSS cascade, using one `@layer` family:
+
+```css
+/* Button.module.css */
+@reference '#theme';
+
+/* `@reference` emits nothing, so the layer order has to be restated in every module —
+   otherwise first-appearance order would decide the ranking. Restating it is a no-op. */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l1 {
+  .root {
+    @apply inline-flex items-center;
+
+    /* Use token custom properties, not hardcoded values */
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+  }
+
+  .root:hover {
+    background-color: var(--colorNeutralBackground1Hover);
+  }
+
+  /* Size variations */
+  .small {
+    padding: var(--spacingVerticalXS);
+  }
+
+  .large {
+    padding: var(--spacingVerticalL);
+  }
+}
+```
 
 ```tsx
 // useButtonStyles.styles.ts
-import { makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { clsx } from 'clsx';
+import styles from './Button.module.css';
 
-export const useButtonStyles = makeStyles({
-  root: {
-    // Use design tokens, not hardcoded values
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorNeutralBackground1,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
-
-    // Pseudo-selectors and media queries supported
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-    },
-
-    ':focus-visible': {
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-    },
-  },
-
-  // Size variations
-  small: { padding: tokens.spacingVerticalXS },
-  large: { padding: tokens.spacingVerticalL },
-});
-
-// Apply in component hook
-export const useButton_unstable = (props, ref) => {
-  const classes = useButtonStyles();
-  const state = {
-    /* ... */
-  };
-
-  state.root.className = mergeClasses(
-    classes.root,
-    props.size === 'small' && classes.small,
-    props.size === 'large' && classes.large,
-    state.root.className, // Always preserve user className
-  );
-
-  return state;
+/** The component's public identity class — a named group marker, not a BEM static. */
+export const buttonClassNames: { root: string } = {
+  root: 'group/fui-button',
 };
+
+export const useButtonStyles_unstable = (state: ButtonState): ButtonState => ({
+  ...state,
+  root: {
+    ...state.root,
+    className: clsx(
+      // Unconditional module class first: the `group/fui-*` marker must never be classList[0].
+      styles.root,
+      'group/fui-button',
+      state.size === 'small' && styles.small,
+      state.size === 'large' && styles.large,
+      // Always preserve the user's className, last by convention.
+      state.root.className,
+    ),
+  },
+});
 ```
+
+Three rules follow from the cascade-first model:
+
+1. **`clsx` argument order carries no cascade meaning.** It is a plain string join. Which rule wins
+   is decided by layer, then specificity, then source order — record intended winners in the
+   module's layer assignment.
+2. **Styles hooks return state, they do not mutate it** (`react-hooks/immutability` enforces this).
+   Call sites rebind: `state = useButtonStyles_unstable(state);`.
+3. **Library modules author into `fui.components.l1`**, or `l2` when deliberately styling another
+   component's output. `l3`–`l5` are consumer space; unlayered consumer CSS beats all of it.
 
 ### Design Tokens System
 
@@ -280,15 +309,21 @@ Themes define CSS custom properties consumed by components:
 // FluentProvider injects CSS variables into DOM
 <FluentProvider theme={webLightTheme}>
   <App />
-</FluentProvider>;
-
-// Components reference tokens which resolve to CSS variables
-makeStyles({
-  root: {
-    color: tokens.colorNeutralForeground1, // becomes 'var(--colorNeutralForeground1)'
-  },
-});
+</FluentProvider>
 ```
+
+Components reference the custom properties directly in their `*.module.css`:
+
+```css
+@layer fui.components.l1 {
+  .root {
+    color: var(--colorNeutralForeground1);
+  }
+}
+```
+
+From TypeScript, use the `tokens` object — it maps each token name to the same reference
+(`tokens.colorNeutralForeground1 === 'var(--colorNeutralForeground1)'`).
 
 ### TypeScript Patterns (v9)
 
@@ -345,7 +380,7 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 - Comprehensive prop interfaces with JSDoc comments
 - Consistent naming conventions (PascalCase for components, camelCase for props)
 - Use React hooks and modern patterns for v9 components
-- Focus on the slot system, Griffel styling, and hook-based architecture for v9
+- Focus on the slot system, CSS-Modules styling with the `@layer fui.*` family, and hook-based architecture for v9
 
 ### Testing Requirements
 

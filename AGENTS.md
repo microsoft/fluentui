@@ -18,7 +18,10 @@ from existing code without verifying they match these instructions.
 
 ## Critical Rules (never violate)
 
-1. **Never hardcode colors, spacing, or typography values.** Always use design tokens from `@fluentui/react-theme`. See [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md).
+1. **Never hardcode colors, spacing, or typography values.** Always use design tokens — as
+   `var(--colorNeutralForeground1)` in a `.module.css`, or the `tokens` object from
+   `@fluentui/react-theme` in TS (it resolves to the same custom property). See
+   [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md).
 2. **Never use `React.FC`.** Always use `ForwardRefComponent` with `React.forwardRef`.
 3. **Never access `window`, `document`, or `navigator` directly.** In v9 components, use `useFluent_unstable()` to get `targetDocument` and `targetDocument.defaultView` instead of `document`/`window`. For non-component code, use `canUseDOM()` from `@fluentui/react-utilities`.
 4. **Never add dependencies between component packages.** `react-button` must not depend on `react-menu`. Shared logic goes in `react-utilities` or `react-shared-contexts`. See [docs/architecture/layers.md](docs/architecture/layers.md).
@@ -29,35 +32,78 @@ from existing code without verifying they match these instructions.
 ```tsx
 // ComponentName.tsx — always ForwardRefComponent, never React.FC
 export const ComponentName: ForwardRefComponent<ComponentNameProps> = React.forwardRef((props, ref) => {
-  const state = useComponentName_unstable(props, ref);
-  useComponentNameStyles_unstable(state);
+  let state = useComponentName_unstable(props, ref);
+
+  // Styles hooks RETURN the composed state — they no longer mutate the argument.
+  state = useComponentNameStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useComponentNameStyles_unstable')(state);
+
   return renderComponentName_unstable(state);
 });
+```
 
-// Styles — always use tokens, never hardcoded values
-import { makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+```css
+/* ComponentName.module.css — Tailwind-flavored CSS Modules, co-located with the component */
+@reference '#theme';
 
-export const useComponentNameStyles = makeStyles({
+/* Repeated in every module: `@reference` emits nothing, so without this the layer ranking
+   would be decided by whichever Fluent stylesheet happened to load first. */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/* Library components author into `fui.components.l1`. `l2` is for a component styling
+   another component's output; `l3`–`l5` belong to consumers and must stay empty here. */
+@layer fui.components.l1 {
+  .root {
+    @apply flex items-center;
+
+    /* Tokens are CSS custom properties — never hardcoded values. */
+    color: var(--colorNeutralForeground1);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+  }
+}
+```
+
+```tsx
+// ComponentName.styles.ts — compose with clsx; consumer className LAST by convention
+import { clsx } from 'clsx';
+import styles from './ComponentName.module.css';
+
+export const componentNameClassNames: { root: string } = {
+  // The root's public identity class is the named group marker, not a BEM static.
+  root: 'group/fui-component-name',
+};
+
+export const useComponentNameStyles_unstable = (state: ComponentNameState): ComponentNameState => ({
+  ...state,
   root: {
-    color: tokens.colorNeutralForeground1,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    ...state.root,
+    // Unconditional module class FIRST (the marker must never be classList[0]),
+    // then the marker, then conditionals, then the consumer's className.
+    className: clsx(styles.root, 'group/fui-component-name', state.root.className),
   },
 });
-
-// mergeClasses — always preserve user className LAST
-state.root.className = mergeClasses(
-  classes.root,
-  state.root.className, // always last
-);
 ```
+
+Ordering note: `clsx` argument order carries **no** cascade meaning — it is a plain string join with
+no merge or de-duplication. Which rule wins is decided by the `@layer` the rules live in. Put the
+consumer's `className` last by convention, and record the winner in the module's layer assignment.
 
 ## Legacy Anti-Patterns (never copy these)
 
 - **DO NOT copy patterns from `packages/react/` (v8).** That's maintenance-only legacy code using runtime styling, class components, and different APIs.
 - **DO NOT use `@fluentui/react` imports for new v9 work.** Use `@fluentui/react-components`.
-- **DO NOT use `mergeStyles` or `mergeStyleSets`.** Use Griffel `makeStyles` with design tokens.
-- **DO NOT use `IStyle` or `IStyleFunctionOrObject`.** Use Griffel's `GriffelStyle` type.
+- **DO NOT use `mergeStyles` or `mergeStyleSets`.** Author a co-located `*.module.css` and reference
+  token custom properties (`var(--colorNeutralForeground1)`).
+- **DO NOT use `makeStyles`, `makeResetStyles`, `mergeClasses`, `shorthands` or `GriffelStyle` in
+  library code.** Those symbols are still re-exported from `@fluentui/react-components` so existing
+  consumer apps keep compiling, but the library no longer authors styles with them. New library
+  styles are CSS Modules; class names are composed with `clsx`.
+- **DO NOT mutate `state` in a styles hook.** Return a new state object (`react-hooks/immutability`
+  enforces this).
+- **DO NOT hand-write a selector for a `group/fui-*` marker.** The `/` is legal in a class _token_
+  but terminates the name in a _selector_, so use `fuiSelector(xClassNames.root)`.
+- **DO NOT select a component's internal classes.** They are hashed CSS-Module identifiers
+  (`fuicm-…`) and are not public API — use the slot `className` props.
 - **DO NOT use `initializeIcons()`.** V9 uses `@fluentui/react-icons` with tree-shaking.
 
 ## Exploration Guidance
@@ -68,11 +114,11 @@ state.root.className = mergeClasses(
 
 ## Architecture (deep dives)
 
-| Topic                                         | Location                                                                           |
-| --------------------------------------------- | ---------------------------------------------------------------------------------- |
-| V9 component patterns (hooks, slots, Griffel) | [docs/architecture/component-patterns.md](docs/architecture/component-patterns.md) |
-| Design tokens and theming                     | [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md)           |
-| Package dependency layers                     | [docs/architecture/layers.md](docs/architecture/layers.md)                         |
+| Topic                                             | Location                                                                           |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| V9 component patterns (hooks, slots, CSS Modules) | [docs/architecture/component-patterns.md](docs/architecture/component-patterns.md) |
+| Design tokens and theming                         | [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md)           |
+| Package dependency layers                         | [docs/architecture/layers.md](docs/architecture/layers.md)                         |
 
 ## Workflows
 

@@ -110,7 +110,7 @@ For each issue, read the title + body + existing labels. If repro evidence is am
 - `packages/react-components/react-field/` — label/description/validation composition (if the ask is form-control adornments)
 - The component's stories for worked examples of the composition pattern
 
-v9 defaults to composition over configuration. An ask like "add a `shouldFadeIn` prop" usually has an answer like "compose with `<Fade>`" or "use `onLoad` + `makeStyles` keyframes". Surface the v9 pattern in the comment so the reporter isn't left hanging.
+v9 defaults to composition over configuration. An ask like "add a `shouldFadeIn` prop" usually has an answer like "compose with `<Fade>`" or "use `onLoad` plus a `@keyframes` rule in your own stylesheet". Surface the v9 pattern in the comment so the reporter isn't left hanging.
 
 When checking for duplicates, search first:
 
