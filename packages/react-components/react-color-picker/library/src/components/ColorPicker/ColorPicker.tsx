@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * ColorPicker component
  */
 export const ColorPicker: ForwardRefComponent<ColorPickerProps> = React.forwardRef((props, ref) => {
-  const state = useColorPicker_unstable(props, ref);
+  let state = useColorPicker_unstable(props, ref);
   const contextValues = useColorPickerContextValues(state);
 
-  useColorPickerStyles_unstable(state);
-  useCustomStyleHook_unstable('useColorPickerStyles_unstable')(state);
+  state = useColorPickerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useColorPickerStyles_unstable')(state);
 
   return renderColorPicker_unstable(state, contextValues);
 });

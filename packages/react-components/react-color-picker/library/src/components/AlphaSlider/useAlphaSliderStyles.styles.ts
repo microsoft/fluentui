@@ -74,18 +74,18 @@ export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSli
   //
   // Every rule these classes carry lives in `@layer fui.components.l2` — see
   // AlphaSlider.module.css for why composition over ColorSlider's output cannot sit in l1.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-alpha-slider', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx(styles.root, 'group/fui-alpha-slider', state.root.className) },
+  };
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.rail.className = clsx(styles.rail, state.rail.className);
+  state = { ...state, rail: { ...state.rail, className: clsx(styles.rail, state.rail.className) } };
 
   // The thumb was assigned TWICE in the Griffel version, with byte-identical arguments. That
   // was dead code with a visible symptom: `mergeClasses` de-duplicates its own atomics but not
   // plain string classes, so the emitted class list carried `fui-AlphaSlider__thumb` twice
   // (see the committed inline snapshot). One assignment.
-  // eslint-disable-next-line react-hooks/immutability
-  state.thumb.className = clsx(styles.thumb, state.thumb.className);
+  state = { ...state, thumb: { ...state.thumb, className: clsx(styles.thumb, state.thumb.className) } };
 
   // The `input` slot had a static-class-only assignment, which under D16 leaves
   // `clsx(state.input.className)` — an identity on the consumer's own string, i.e. dead code
@@ -94,7 +94,7 @@ export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSli
 
   // Applied LAST, exactly as before: it prepends ColorSlider's own classes to each slot and
   // keeps `state.*.className` — and therefore the consumer's className — trailing.
-  useColorSliderStyles_unstable(state);
+  state = useColorSliderStyles_unstable(state);
 
   return state;
 };
