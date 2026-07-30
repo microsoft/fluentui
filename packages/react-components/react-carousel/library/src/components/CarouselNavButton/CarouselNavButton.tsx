@@ -12,10 +12,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * The child element of CarouselNav, a singular button that will set the carousels active value on click.
  */
 export const CarouselNavButton: ForwardRefComponent<CarouselNavButtonProps> = React.forwardRef((props, ref) => {
-  const state = useCarouselNavButton_unstable(props, ref);
+  let state = useCarouselNavButton_unstable(props, ref);
 
-  useCarouselNavButtonStyles_unstable(state);
-  useCustomStyleHook_unstable('useCarouselNavButtonStyles_unstable')(state);
+  state = useCarouselNavButtonStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useCarouselNavButtonStyles_unstable')(state);
 
   return renderCarouselNavButton_unstable(state);
 });

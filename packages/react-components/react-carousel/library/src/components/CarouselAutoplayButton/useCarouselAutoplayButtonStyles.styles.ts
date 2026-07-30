@@ -60,7 +60,7 @@ export const useCarouselAutoplayButtonStyles_unstable = (
    */
   const colorsOverridden = Boolean(checked || disabled || disabledFocusable || appearance !== 'secondary');
 
-  useToggleButtonStyles_unstable(state);
+  state = useToggleButtonStyles_unstable(state);
 
   // Module class FIRST, then the named group marker — which must never be `classList[0]`
   // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
@@ -84,13 +84,18 @@ export const useCarouselAutoplayButtonStyles_unstable = (
   // CarouselAutoplayButton.module.css, NOT by these arguments — read its header before
   // adding anything, because the composition direction here is the inverse of every other
   // converted wrapper.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-carousel-autoplay-button',
-    !colorsOverridden && styles['rest-colors'],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-carousel-autoplay-button',
+        !colorsOverridden && styles['rest-colors'],
+        state.root.className,
+      ),
+    },
+  };
 
   return state;
 };

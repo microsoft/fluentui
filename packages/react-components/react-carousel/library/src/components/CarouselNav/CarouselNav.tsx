@@ -17,11 +17,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * provide the appropriate value based on their index position.
  */
 export const CarouselNav: ForwardRefComponent<CarouselNavProps> = React.forwardRef((props, ref) => {
-  const state = useCarouselNav_unstable(props, ref);
+  let state = useCarouselNav_unstable(props, ref);
   const contextValues = useCarouselNavContextValues_unstable(state);
 
-  useCarouselNavStyles_unstable(state);
-  useCustomStyleHook_unstable('useCarouselNavStyles_unstable')(state);
+  state = useCarouselNavStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useCarouselNavStyles_unstable')(state);
 
   return renderCarouselNav_unstable(state, contextValues);
 });

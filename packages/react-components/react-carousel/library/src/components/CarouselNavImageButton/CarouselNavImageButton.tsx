@@ -14,10 +14,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  */
 export const CarouselNavImageButton: ForwardRefComponent<CarouselNavImageButtonProps> = React.forwardRef(
   (props, ref) => {
-    const state = useCarouselNavImageButton_unstable(props, ref);
+    let state = useCarouselNavImageButton_unstable(props, ref);
 
-    useCarouselNavImageButtonStyles_unstable(state);
-    useCustomStyleHook_unstable('useCarouselNavImageButtonStyles_unstable')(state);
+    state = useCarouselNavImageButtonStyles_unstable(state);
+    state = useCustomStyleHook_unstable('useCarouselNavImageButtonStyles_unstable')(state);
 
     return renderCarouselNavImageButton_unstable(state);
   },

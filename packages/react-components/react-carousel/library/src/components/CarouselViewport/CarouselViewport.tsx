@@ -13,10 +13,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * CarouselViewport component - TODO: add more docs
  */
 export const CarouselViewport: ForwardRefComponent<CarouselViewportProps> = React.forwardRef((props, ref) => {
-  const state = useCarouselViewport_unstable(props, ref);
+  let state = useCarouselViewport_unstable(props, ref);
 
-  useCarouselViewportStyles_unstable(state);
-  useCustomStyleHook_unstable('useCarouselViewportStyles_unstable')(state);
+  state = useCarouselViewportStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useCarouselViewportStyles_unstable')(state);
 
   const context = useCarouselSliderContextValues_unstable(state);
 

@@ -17,10 +17,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * non-active card content will be set to inert until moved to active card.
  */
 export const CarouselCard: ForwardRefComponent<CarouselCardProps> = React.forwardRef((props, ref) => {
-  const state = useCarouselCard_unstable(props, ref);
+  let state = useCarouselCard_unstable(props, ref);
 
-  useCarouselCardStyles_unstable(state);
-  useCustomStyleHook_unstable('useCarouselCardStyles_unstable')(state);
+  state = useCarouselCardStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useCarouselCardStyles_unstable')(state);
 
   return renderCarouselCard_unstable(state);
 });

@@ -44,13 +44,18 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
   //
   // The marker literal here is what embla resolves at runtime (see the constant above), so
   // it must stay unconditional even if this component ever gains conditional classes.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-carousel-slider',
-    appearance === 'elevated' && styles.elevated,
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-carousel-slider',
+        appearance === 'elevated' && styles.elevated,
+        state.root.className,
+      ),
+    },
+  };
 
   return state;
 };

@@ -12,10 +12,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * CarouselNavContainer component - This container will provide multiple valid layout options for the underlying carousel controls
  */
 export const CarouselNavContainer: ForwardRefComponent<CarouselNavContainerProps> = React.forwardRef((props, ref) => {
-  const state = useCarouselNavContainer_unstable(props, ref);
+  let state = useCarouselNavContainer_unstable(props, ref);
 
-  useCarouselNavContainerStyles_unstable(state);
-  useCustomStyleHook_unstable('useCarouselNavContainerStyles_unstable')(state);
+  state = useCarouselNavContainerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useCarouselNavContainerStyles_unstable')(state);
 
   return renderCarouselNavContainer_unstable(state);
 });

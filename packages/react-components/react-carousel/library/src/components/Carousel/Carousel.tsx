@@ -16,10 +16,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Carousel also provides API interfaces for callbacks that will occur on navigation events.
  */
 export const Carousel: ForwardRefComponent<CarouselProps> = React.forwardRef((props, ref) => {
-  const state = useCarousel_unstable(props, ref);
+  let state = useCarousel_unstable(props, ref);
 
-  useCarouselStyles_unstable(state);
-  useCustomStyleHook_unstable('useCarouselStyles_unstable')(state);
+  state = useCarouselStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useCarouselStyles_unstable')(state);
 
   const contextValues = useCarouselContextValues_unstable(state);
 

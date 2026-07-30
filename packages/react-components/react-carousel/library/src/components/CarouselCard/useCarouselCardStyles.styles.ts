@@ -54,14 +54,19 @@ export const useCarouselCardStyles_unstable = (state: CarouselCardState): Carous
   // by the order of these arguments — but the argument order IS reproduced there, because
   // `autoSize` genuinely overrides `root`'s `flex` and the source declares the two slices in
   // the opposite order (see that file's header).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-carousel-card',
-    appearance === 'elevated' && styles.elevated,
-    autoSize && styles['auto-size'],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-carousel-card',
+        appearance === 'elevated' && styles.elevated,
+        autoSize && styles['auto-size'],
+        state.root.className,
+      ),
+    },
+  };
 
   return state;
 };
