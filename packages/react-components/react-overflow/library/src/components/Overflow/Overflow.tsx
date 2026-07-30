@@ -11,10 +11,10 @@ import { renderOverflow_unstable } from './renderOverflow';
  * Provides an OverflowContext for OverflowItem descendants.
  */
 export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
-  const state = useOverflow_unstable(props, ref as React.Ref<HTMLElement>);
+  let state = useOverflow_unstable(props, ref as React.Ref<HTMLElement>);
   const contextValues = useOverflowContextValues_unstable(state);
 
-  useOverflowStyles_unstable(state);
+  state = useOverflowStyles_unstable(state);
 
   return renderOverflow_unstable(state, contextValues);
 });
