@@ -13,12 +13,12 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * Define a styled MenuGrid, using the `useMenuGrid_unstable` hook.
  */
 export const MenuGrid: ForwardRefComponent<MenuGridProps> = React.forwardRef((props, ref) => {
-  const state = useMenuGrid_unstable(props, ref);
+  let state = useMenuGrid_unstable(props, ref);
   const contextValues = useMenuGridContextValues_unstable(state);
 
-  useMenuGridStyles_unstable(state);
+  state = useMenuGridStyles_unstable(state);
 
-  // useCustomStyleHook_unstable('useMenuGridStyles_unstable')(state);
+  // state = useCustomStyleHook_unstable('useMenuGridStyles_unstable')(state);
 
   return renderMenuGrid_unstable(state, contextValues);
 });

@@ -13,12 +13,12 @@ import { useMenuGridGroupStyles_unstable } from './useMenuGridGroupStyles.styles
  * Define a MenuGridGroup, using the `useMenuGridGroup_unstable` hook.
  */
 export const MenuGridGroup: ForwardRefComponent<MenuGridGroupProps> = React.forwardRef((props, ref) => {
-  const state = useMenuGridGroup_unstable(props, ref);
+  let state = useMenuGridGroup_unstable(props, ref);
   const contextValues = useMenuGridGroupContextValues_unstable(state);
 
-  useMenuGridGroupStyles_unstable(state);
+  state = useMenuGridGroupStyles_unstable(state);
 
-  // useCustomStyleHook_unstable('useMenuGridGroupStyles_unstable')(state);
+  // state = useCustomStyleHook_unstable('useMenuGridGroupStyles_unstable')(state);
 
   return renderMenuGridGroup_unstable(state, contextValues);
 });

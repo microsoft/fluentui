@@ -12,11 +12,11 @@ import { useMenuGridItemStyles_unstable } from './useMenuGridItemStyles.styles';
  * Define a MenuGridItem, using the `useMenuGridItem_unstable` hook.
  */
 export const MenuGridItem: ForwardRefComponent<MenuGridItemProps> = React.forwardRef((props, ref) => {
-  const state = useMenuGridItem_unstable(props, ref);
+  let state = useMenuGridItem_unstable(props, ref);
 
-  useMenuGridItemStyles_unstable(state);
+  state = useMenuGridItemStyles_unstable(state);
 
-  // useCustomStyleHook_unstable('useMenuGridItemStyles_unstable')(state);
+  // state = useCustomStyleHook_unstable('useMenuGridItemStyles_unstable')(state);
 
   return renderMenuGridItem_unstable(state);
 });

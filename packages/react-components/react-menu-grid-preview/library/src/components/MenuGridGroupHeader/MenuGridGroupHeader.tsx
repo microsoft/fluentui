@@ -12,11 +12,11 @@ import { useMenuGridGroupHeaderStyles_unstable } from './useMenuGridGroupHeaderS
  * Define a MenuGridGroupHeader, using the `useMenuGridGroupHeader_unstable` hook.
  */
 export const MenuGridGroupHeader: ForwardRefComponent<MenuGridGroupHeaderProps> = React.forwardRef((props, ref) => {
-  const state = useMenuGridGroupHeader_unstable(props, ref);
+  let state = useMenuGridGroupHeader_unstable(props, ref);
 
-  useMenuGridGroupHeaderStyles_unstable(state);
+  state = useMenuGridGroupHeaderStyles_unstable(state);
 
-  // useCustomStyleHook_unstable('useMenuGridGroupHeaderStyles_unstable')(state);
+  // state = useCustomStyleHook_unstable('useMenuGridGroupHeaderStyles_unstable')(state);
 
   return renderMenuGridGroupHeader_unstable(state);
 });

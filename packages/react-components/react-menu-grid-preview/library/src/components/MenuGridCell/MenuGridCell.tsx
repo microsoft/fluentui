@@ -12,11 +12,11 @@ import { useMenuGridCellStyles_unstable } from './useMenuGridCellStyles.styles';
  * Define a MenuGridCell, using the `useMenuGridCell_unstable` hook.
  */
 export const MenuGridCell: ForwardRefComponent<MenuGridCellProps> = React.forwardRef((props, ref) => {
-  const state = useMenuGridCell_unstable(props, ref);
+  let state = useMenuGridCell_unstable(props, ref);
 
-  useMenuGridCellStyles_unstable(state);
+  state = useMenuGridCellStyles_unstable(state);
 
-  // useCustomStyleHook_unstable('useMenuGridCellStyles_unstable')(state);
+  // state = useCustomStyleHook_unstable('useMenuGridCellStyles_unstable')(state);
 
   return renderMenuGridCell_unstable(state);
 });
