@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * PopoverSurface component renders react children in a positioned box
  */
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps> = React.forwardRef((props, ref) => {
-  const state = usePopoverSurface_unstable(props, ref);
+  let state = usePopoverSurface_unstable(props, ref);
 
-  usePopoverSurfaceStyles_unstable(state);
+  state = usePopoverSurfaceStyles_unstable(state);
 
-  useCustomStyleHook_unstable('usePopoverSurfaceStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('usePopoverSurfaceStyles_unstable')(state);
 
   return renderPopoverSurface_unstable(state);
 });
