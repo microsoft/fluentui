@@ -66,6 +66,11 @@ const tailwindThemeEntry = path.resolve(__dirname, 'tailwind-theme.css');
  * `require(name)` and return it UNINVOKED when options are empty (dist/utils.js
  * `loadPlugin`), so the instantiated object is passed directly instead.
  *
+ * The `require` is wrapped because `@tailwindcss/postcss` publishes its types only through
+ * `exports` (`dist/index.d.mts`), which this project's `moduleResolution` cannot follow — a
+ * type-lookup failure only; the runtime resolution is fine. Keeping the suppression on its own
+ * line confines it to the specifier instead of the whole plugin list.
+ *
  * @type {import("webpack").RuleSetUseItem}
  */
 const tailwindPostcssLoader = {
@@ -75,6 +80,7 @@ const tailwindPostcssLoader = {
       // no postcss.config.* exists in this repo — skip cosmiconfig's upward search
       config: false,
       plugins: [
+        // @ts-ignore -- types are behind `exports`; see the note above
         require('@tailwindcss/postcss')(),
         /**
          * MUST come after Tailwind and before css-loader's CSS-Modules pass. webpack runs
@@ -165,8 +171,20 @@ function excludeTailwindCssFromDefaultCssRule(config) {
       continue;
     }
 
-    const hasExcludes = rule.exclude !== null && rule.exclude !== undefined;
-    const existingExcludes = hasExcludes ? (Array.isArray(rule.exclude) ? rule.exclude : [rule.exclude]) : [];
+    /**
+     * The cast is what makes the spread below typecheck: webpack's `exclude` is a union whose
+     * array member is `RuleSetConditionAbsolute[]`, and wrapping a possibly-`undefined` scalar
+     * in `[rule.exclude]` widens the element type to include `undefined`. The `hasExcludes`
+     * guard already rules that out.
+     *
+     * @type {import("webpack").RuleSetConditionAbsolute[]}
+     */
+    const existingExcludes =
+      rule.exclude === null || rule.exclude === undefined
+        ? []
+        : /** @type {import("webpack").RuleSetConditionAbsolute[]} */ (
+            Array.isArray(rule.exclude) ? rule.exclude : [rule.exclude]
+          );
 
     rule.exclude = [...existingExcludes, /\.module\.css$/, TAILWIND_THEME_ENTRY];
   }
