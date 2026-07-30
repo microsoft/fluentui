@@ -359,7 +359,9 @@
        * `spinState`'s "this button is currently spinning" flag, stamped by the hook as
        * `data-spin-active`. It was the internal `fui-SpinButton__button_active` class until
        * DECISIONS.md D16.3 — never exported, and a JS-driven state that deliberately
-       * outlives `:active`, so it is not expressible natively (D15.6).
+       * outlives `:active`, so it is not expressible natively (D15.6). The Phase 3 catalog pass
+       * promoted the raw attribute selector into the shared catalog's `spin-active` entry
+       * (@fluentui/react-tailwind-theme `css/variants.css`).
        *
        * Specificity note: this dropped from 0-2-0 (unwrapped `:global()` class) to 0-1-0
        * (`:where()`-wrapped attribute), which changes nothing. Its declarations are
@@ -368,7 +370,7 @@
        * `@variant disabled` block below is mutually exclusive with the enclosing
        * `@variant enabled`.
        */
-      &:where([data-spin-active]) {
+      @variant spin-active {
         color: var(--colorNeutralForeground3Pressed);
         background-color: var(--colorSubtleBackgroundPressed);
       }
@@ -682,7 +684,7 @@
           background-color: var(--colorSubtleBackgroundPressed);
         }
 
-        &:where([data-spin-active]) {
+        @variant spin-active {
           color: var(--colorNeutralForeground3Pressed);
           background-color: var(--colorSubtleBackgroundPressed);
         }
@@ -711,7 +713,7 @@
           background-color: var(--colorNeutralBackground3Pressed);
         }
 
-        &:where([data-spin-active]) {
+        @variant spin-active {
           color: var(--colorNeutralForeground3Pressed);
           background-color: var(--colorNeutralBackground3Pressed);
         }
@@ -747,7 +749,7 @@
           background-color: var(--colorNeutralBackground1Pressed);
         }
 
-        &:where([data-spin-active]) {
+        @variant spin-active {
           color: var(--colorNeutralForeground3Pressed);
           background-color: var(--colorNeutralBackground1Pressed);
         }
