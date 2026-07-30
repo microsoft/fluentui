@@ -2,7 +2,82 @@
 
 [@layeshifter](https://github.com/layershifter)
 
-This document covers how to use [Griffel][griffel] CSS-in-JS (used in Fluent UI React v9) to efficiently style components.
+> **Scope note.** Fluent UI React v9 no longer authors its own styles with [Griffel][griffel].
+> Components ship precompiled CSS, authored as Tailwind-flavored CSS Modules inside the
+> `@layer fui.*` family. See **[Current styling contract](#current-styling-contract)** immediately
+> below for what to write today, or the docsite's
+> [Styling components](https://react.fluentui.dev/?path=/docs/concepts-developer-styling-components--docs)
+> page for the consumer-facing version.
+>
+> The rest of this document is retained as a **Griffel reference**. `makeStyles`, `makeResetStyles`,
+> `mergeClasses` and `shorthands` are still re-exported from `@fluentui/react-components`, so app
+> code that uses them keeps working and everything described below is still accurate _about Griffel_.
+> It no longer describes how the library styles itself, and it is not the pattern to copy for new
+> code in this repository.
+
+# Current styling contract
+
+Styles live in a `*.module.css` co-located with the component and are compiled at build time into the
+package's `dist/styles.css`. There is no runtime style engine, no atomic-class generation and no
+merge step.
+
+```css
+/* Button.module.css */
+@reference '#theme';
+
+/* `@reference` emits nothing, so every module restates the layer order — otherwise the ranking
+   would be decided by whichever Fluent stylesheet happened to load first. Restating is a no-op. */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l1 {
+  .root {
+    @apply inline-flex items-center;
+
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+  }
+}
+```
+
+```tsx
+// useButtonStyles.styles.ts
+import { clsx } from 'clsx';
+import styles from './Button.module.css';
+
+export const buttonClassNames: { root: string } = { root: 'group/fui-button' };
+
+export const useButtonStyles_unstable = (state: ButtonState): ButtonState => ({
+  ...state,
+  root: {
+    ...state.root,
+    className: clsx(styles.root, 'group/fui-button', state.disabled && styles.disabled, state.root.className),
+  },
+});
+```
+
+The differences that matter most when reading the Griffel material below:
+
+| Griffel model                                                 | Current model                                                                              |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Atomic classes, one property per class                        | Ordinary multi-property rules; no atomicity                                                |
+| `mergeClasses()` de-duplicates and the **last argument wins** | `clsx()` is a plain string join; **argument order carries no cascade meaning**             |
+| Property conflicts resolved at runtime, by call order         | Property conflicts resolved by the cascade: layer, then specificity, then source order     |
+| Overriding needs `mergeClasses` with your class last          | Overriding needs nothing — unlayered consumer CSS beats every `fui.*` layer                |
+| `tokens.colorNeutralForeground1` inside a style object        | `var(--colorNeutralForeground1)` inside CSS (`tokens` is still there for TS-side reads)    |
+| Styles hooks mutate `state.root.className`                    | Styles hooks **return** a new state object; mutation is a lint error                       |
+| `xClassNames.<slot>` are BEM statics on every slot            | `xClassNames.root` is the `group/fui-*` marker; other slots have no public class handle    |
+| Selector complexity is a runtime cost                         | Selector complexity is a plain browser-matching cost; the `:where()`-flat rule still holds |
+
+Two conventions to carry over deliberately:
+
+- Library modules author into `fui.components.l1`, or `fui.components.l2` when a component styles
+  another component's output. `l3`–`l5` are consumer space and stay empty in library code.
+- Build selectors for a marker with `fuiSelector(xClassNames.root)`. The `/` is legal in a class
+  _token_ but terminates the name in a _selector_, so `'.' + xClassNames.root` is invalid.
+
+---
+
+The remainder of this document is the original Griffel handbook, unchanged.
 
 ## Table of contents
 
@@ -70,7 +145,9 @@ Griffel uses Atomic CSS to generate classes. In Atomic CSS every property-value 
 
 [Learn more][griffel-atomic-css] about Atomic CSS.
 
-> 💡 **Note:** All examples in this document use `@griffel/react` package. However, if you're a Fluent UI consumer please use `@fluentui/react-components` in imports.
+> 💡 **Note:** All examples in this document use the `@griffel/react` package. A Fluent UI consumer
+> can import the same symbols from `@fluentui/react-components`, which re-exports them. Library code
+> in this repository uses neither — see [Current styling contract](#current-styling-contract).
 
 ## `makeStyles`
 

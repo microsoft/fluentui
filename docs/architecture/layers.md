@@ -17,8 +17,10 @@ Dependencies may only flow **downward** — never upward or sideways within the 
 │  (shared utilities, theme, context) │  react-shared-contexts, react-tabster,
 │                                     │  react-positioning, react-portal
 ├─────────────────────────────────────┤
-│  Tier 1: Core Packages              │  @griffel/react, @fluentui/tokens,
-│  (tokens, CSS-in-JS engine)         │  @fluentui/react-jsx-runtime
+│  Tier 1: Core Packages              │  @fluentui/tokens, @fluentui/react-jsx-runtime, clsx
+│  (tokens, jsx runtime, class join)  │  + @fluentui/react-tailwind-theme (build-time only:
+│                                     │    a devDependency reached through the `#theme`
+│                                     │    package-imports alias from each *.module.css)
 └─────────────────────────────────────┘
 ```
 

@@ -76,27 +76,50 @@ export const useNavDivider_unstable = (props: NavDividerProps, ref: React.Ref<HT
 };
 ```
 
-The last task is to add our new styling opinions. Pay special note to the location of `useDividerStyles`. We need to generate the base styles, but must add them _after_ merging the Nav specific styles such that the Nav styling opinions can 'win' and don't get overwritten by the base styles in the event of a collision as there is with `flexGrow`. The classes passed in from consumers via state will also be respected.
+The last task is to add our new styling opinions.
 
+This is where recomposition differs most from the pre-CSS-Modules era. Call order used to decide the
+winner, so `useDividerStyles_unstable` had to run in a particular position relative to the Nav-specific
+merge. It no longer does: class names are inert identifiers joined by `clsx`, and every property
+collision — `flex-grow` here — is settled by the **cascade layer** the two rules live in.
+
+NavDivider styles another component's output, which is exactly what `fui.components.l2` is for. Divider's
+own rules are in `fui.components.l1`, so NavDivider's `l2` rules win without any ordering care, and a
+consumer's unlayered `className` still beats both.
+
+```css
+/* NavDivider.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/* l2 — this component is styling Divider's output, not its own base cascade. */
+@layer fui.components.l2 {
+  .root {
+    flex-grow: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}
 ```
-// useNavDividerStyles.ts
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { useDividerStyles_unstable, type DividerSlots } from '@fluentui/react-divider';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+
+```tsx
+// useNavDividerStyles.styles.ts
+import { clsx } from 'clsx';
+import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import type { NavDividerState } from './NavDivider.types';
 
-export const navDividerClassNames: SlotClassNames<DividerSlots> = {
-  root: 'fui-NavDivider',
-  wrapper: 'fui-NavDivider__wrapper', // This will need to be added to match the slots of the divider
-};
+import styles from './NavDivider.module.css';
 
-const useStyles = makeStyles({
-  root: {
-    flexGrow: 0,
-    marginTop: '4px',
-    marginBottom: '4px',
-  },
-});
+/**
+ * The component's public identity class — a named group marker. There is no handle for the
+ * `wrapper` slot, or for any other internal: the BEM statics were removed, and the module's own
+ * class names are hashed and not addressable from outside this file. Consumers reach internals
+ * through the slot `className` props.
+ */
+export const navDividerClassNames: { root: string } = {
+  root: 'group/fui-nav-divider',
+};
 
 /**
  * Apply styling to the NavDivider slots based on the state
@@ -104,14 +127,23 @@ const useStyles = makeStyles({
 export const useNavDividerStyles_unstable = (state: NavDividerState): NavDividerState => {
   'use no memo';
 
-  const styles = useStyles();
+  // Delegate to the base component first, then compose our own classes onto what it returned.
+  // The hook returns new state rather than mutating the argument.
+  const based = useDividerStyles_unstable(state);
 
-  state.root.className = mergeClasses(navDividerClassNames.root, styles.root, state.root.className);
-  state.wrapper.className = mergeClasses(navDividerClassNames.wrapper, state.wrapper.className);
-
-  useDividerStyles_unstable(state);
-  return state;
+  return {
+    ...based,
+    root: {
+      ...based.root,
+      // Unconditional module class first — the `group/fui-*` marker must never be classList[0].
+      className: clsx(styles.root, 'group/fui-nav-divider', based.root.className),
+    },
+  };
 };
 ```
+
+Note what the argument order to `clsx` does and does not mean: it decides the order of tokens in the
+rendered `class` attribute, and nothing else. `state.root.className` goes last by convention so the
+attribute reads sensibly — not because the last argument wins.
 
 And that's it! You may need to update some snapshot tests and index files to handle how things have changed, but that's the basic pattern. 🍻

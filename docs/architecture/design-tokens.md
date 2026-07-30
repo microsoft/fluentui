@@ -45,16 +45,32 @@ Themes define CSS custom properties consumed by components:
 // FluentProvider injects CSS variables into DOM
 <FluentProvider theme={webLightTheme}>
   <App />
-</FluentProvider>;
-
-// Tokens resolve to CSS variables at build time
-makeStyles({
-  root: {
-    color: tokens.colorNeutralForeground1,
-    // becomes: 'var(--colorNeutralForeground1)'
-  },
-});
+</FluentProvider>
 ```
+
+In a `*.module.css`, reference the custom property directly:
+
+```css
+@layer fui.components.l1 {
+  .root {
+    color: var(--colorNeutralForeground1);
+  }
+}
+```
+
+In TypeScript — inline styles, a `style` object, a canvas fill — use the `tokens` object, which is
+a map of token name to the same custom-property reference:
+
+```tsx
+import { tokens } from '@fluentui/react-theme';
+
+tokens.colorNeutralForeground1; // === 'var(--colorNeutralForeground1)'
+```
+
+`@fluentui/react-tailwind-theme` also registers the tokens with Tailwind via `@theme inline`, so
+utilities named after them (`p-horizontal-m`, `gap-vertical-s`) are available to `@apply`. `inline`
+is required and a plain `@theme` alias is forbidden: it would freeze token resolution at `:root` and
+break nested `FluentProvider` theming. Literal `var(--tokenName)` authoring stays valid everywhere.
 
 ## Available Themes
 

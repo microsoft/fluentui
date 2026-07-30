@@ -156,9 +156,10 @@ Once the first draft of the spec has been reviewed, you can get started on the i
 **Requirements**
 
 - Use React hooks
-- Use makeStyles
-- Respect Figma tokens (and use the Provider)
-- Respect API principles, shorthands and slots handling
+- Author styles in a co-located `*.module.css` (Tailwind-flavored CSS Modules), into the
+  `fui.components.l1` cascade layer; compose the class names with `clsx`
+- Respect Figma tokens (and use the Provider) — reference them as `var(--tokenName)` in CSS
+- Respect API principles and slots handling
 - No dependency on v0/v7/v8
 
 You can follow examples of other converged components for the structure of the implementation, such as:
