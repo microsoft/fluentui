@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Select component
  */
 export const Select: ForwardRefComponent<SelectProps> = React.forwardRef((props, ref) => {
-  const state = useSelect_unstable(props, ref);
+  let state = useSelect_unstable(props, ref);
 
-  useSelectStyles_unstable(state);
+  state = useSelectStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useSelectStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useSelectStyles_unstable')(state);
 
   return renderSelect_unstable(state);
 });
