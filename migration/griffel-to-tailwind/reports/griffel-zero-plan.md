@@ -527,3 +527,14 @@ seven must hold:
 5. **D17 default adopted:** charts batches extend VR coverage as they go —
    new stories captured as pre-conversion baselines per batch (the
    baseline-before-convert ethos), rather than relaxing the gate.
+
+## User amendment 2 (2026-07-30) — PR topology
+
+**Exactly TWO PRs total**: (1) the icons fork's master → microsoft/fluentui-system-icons;
+(2) the UI fork's main branch → its origin. No per-stage PRs, no feature
+branches — all work lands directly on each fork's main branch. The I0–I7
+stages become a continuous commit stream on the icons fork's master, reviewed
+as one upstream PR. fluentui note: the migration currently lives on
+`styling/tailwind-css-modules`; at PR time the fork's main is fast-forwarded
+to that head so the PR originates from main per this amendment (no history
+surgery mid-execution).
