@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Button",
+    "path": "bundle-size/Button.fixture.js",
+    "minifiedSize": 53070,
+    "gzippedSize": 6542,
+    "assets": {
+      "css": { "minifiedSize": 48126, "gzippedSize": 4536 },
+      "js": { "minifiedSize": 4944, "gzippedSize": 2006 }
+    }
+  },
+  {
+    "name": "CompoundButton",
+    "path": "bundle-size/CompoundButton.fixture.js",
+    "minifiedSize": 55586,
+    "gzippedSize": 7178,
+    "assets": {
+      "css": { "minifiedSize": 48126, "gzippedSize": 4536 },
+      "js": { "minifiedSize": 7460, "gzippedSize": 2642 }
+    }
+  },
+  {
+    "name": "MenuButton",
+    "path": "bundle-size/MenuButton.fixture.js",
+    "minifiedSize": 60987,
+    "gzippedSize": 9575,
+    "assets": {
+      "css": { "minifiedSize": 48126, "gzippedSize": 4536 },
+      "js": { "minifiedSize": 12861, "gzippedSize": 5039 }
+    }
+  },
+  {
+    "name": "SplitButton",
+    "path": "bundle-size/SplitButton.fixture.js",
+    "minifiedSize": 63746,
+    "gzippedSize": 10281,
+    "assets": {
+      "css": { "minifiedSize": 48126, "gzippedSize": 4536 },
+      "js": { "minifiedSize": 15620, "gzippedSize": 5745 }
+    }
+  },
+  {
+    "name": "ToggleButton",
+    "path": "bundle-size/ToggleButton.fixture.js",
+    "minifiedSize": 55838,
+    "gzippedSize": 7343,
+    "assets": {
+      "css": { "minifiedSize": 48126, "gzippedSize": 4536 },
+      "js": { "minifiedSize": 7712, "gzippedSize": 2807 }
+    }
+  }
+]

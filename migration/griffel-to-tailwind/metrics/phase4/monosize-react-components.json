@@ -1,0 +1,42 @@
+[
+  {
+    "name": "react-components: Button, FluentProvider & webLightTheme",
+    "path": "bundle-size/ButtonProviderAndTheme.fixture.js",
+    "minifiedSize": 89860,
+    "gzippedSize": 18189,
+    "assets": {
+      "css": { "minifiedSize": 49418, "gzippedSize": 4923 },
+      "js": { "minifiedSize": 40442, "gzippedSize": 13266 }
+    }
+  },
+  {
+    "name": "react-components: Accordion, Button, FluentProvider, Image, Menu, Popover",
+    "path": "bundle-size/MultipleComponents.fixture.js",
+    "minifiedSize": 262945,
+    "gzippedSize": 65223,
+    "assets": {
+      "css": { "minifiedSize": 84258, "gzippedSize": 8822 },
+      "js": { "minifiedSize": 178687, "gzippedSize": 56401 }
+    }
+  },
+  {
+    "name": "react-components: FluentProvider & webLightTheme",
+    "path": "bundle-size/ProviderAndTheme.fixture.js",
+    "minifiedSize": 38557,
+    "gzippedSize": 12773,
+    "assets": {
+      "css": { "minifiedSize": 1292, "gzippedSize": 600 },
+      "js": { "minifiedSize": 37265, "gzippedSize": 12173 }
+    }
+  },
+  {
+    "name": "react-components: entire library",
+    "path": "bundle-size/ReactComponents.fixture.js",
+    "minifiedSize": 1379033,
+    "gzippedSize": 275289,
+    "assets": {
+      "css": { "minifiedSize": 586253, "gzippedSize": 54400 },
+      "js": { "minifiedSize": 792780, "gzippedSize": 220889 }
+    }
+  }
+]

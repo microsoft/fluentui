@@ -1,0 +1,4 @@
+      1 Processing griffel AOT with babel: 1 files
+      1 Processing griffel AOT with babel: 2 files
+      1 Processing griffel AOT with babel: 24 files
+      1 Processing griffel AOT with babel: 3 files
