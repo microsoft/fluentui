@@ -66,14 +66,19 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces. The conditions are unchanged.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-avatar-group',
-    layout === 'pie' && sizeStyles[size],
-    layout === 'pie' && styles.pie,
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-avatar-group',
+        layout === 'pie' && sizeStyles[size],
+        layout === 'pie' && styles.pie,
+        state.root.className,
+      ),
+    },
+  };
 
   return state;
 };

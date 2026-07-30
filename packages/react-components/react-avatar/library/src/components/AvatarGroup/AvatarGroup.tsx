@@ -14,12 +14,12 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * of individual Avatars in a spread, stack, or pie layout.
  */
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps> = React.forwardRef((props, ref) => {
-  const state = useAvatarGroup_unstable(props, ref);
+  let state = useAvatarGroup_unstable(props, ref);
   const contextValues = useAvatarGroupContextValues(state);
 
-  useAvatarGroupStyles_unstable(state);
+  state = useAvatarGroupStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useAvatarGroupStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useAvatarGroupStyles_unstable')(state);
 
   return renderAvatarGroup_unstable(state, contextValues);
 });

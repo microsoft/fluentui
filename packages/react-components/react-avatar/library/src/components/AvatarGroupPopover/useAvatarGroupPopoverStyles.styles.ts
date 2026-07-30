@@ -84,11 +84,9 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
   const sizeStyles = useSizeStyles();
   const groupChildClassName = useGroupChildClassName(layout, size);
 
-  const triggerButton = state.triggerButton as AvatarGroupPopoverState['triggerButton'] &
-    AvatarGroupPopoverTriggerButtonDataAttributes;
-
-  // eslint-disable-next-line react-hooks/immutability -- state-mutation builder, preserved per D14
-  triggerButton['data-size'] = size;
+  const triggerButtonDataAttributes: AvatarGroupPopoverTriggerButtonDataAttributes = {
+    'data-size': size,
+  };
 
   // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
   // D16.2). `styles['trigger-button']` is unconditional, so index 0 is always the hashed,
@@ -117,28 +115,38 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
   // hover/active. Every condition below is byte-for-byte the one the Griffel builder used;
   // the two size ladders (border width, indicator type ramp) moved out of JS onto `data-size`.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.triggerButton.className = clsx(
-    styles['trigger-button'],
-    'group/fui-avatar-group-popover',
-    groupChildClassName,
-    sizeStyles[size],
-    layout === 'pie' && styles['trigger-button-pie'],
-    layout !== 'pie' && styles['trigger-button-interactive'],
-    layout !== 'pie' && popoverOpen && styles['trigger-button-selected'],
-    indicator === 'count' ? styles['indicator-count'] : styles['indicator-icon'],
-    state.triggerButton.className,
-  );
+  state = {
+    ...state,
+    triggerButton: {
+      ...state.triggerButton,
+      ...triggerButtonDataAttributes,
+      className: clsx(
+        styles['trigger-button'],
+        'group/fui-avatar-group-popover',
+        groupChildClassName,
+        sizeStyles[size],
+        layout === 'pie' && styles['trigger-button-pie'],
+        layout !== 'pie' && styles['trigger-button-interactive'],
+        layout !== 'pie' && popoverOpen && styles['trigger-button-selected'],
+        indicator === 'count' ? styles['indicator-count'] : styles['indicator-icon'],
+        state.triggerButton.className,
+      ),
+    },
+  };
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.content.className = clsx(styles.content, state.content.className);
+  state = { ...state, content: { ...state.content, className: clsx(styles.content, state.content.className) } };
 
   // `popoverSurface` is a `<PopoverSurface>` root, so this class reaches that component's hook
   // as its CONSUMER className. It lives at `fui.components.l2` for that reason (D2 amendment
   // 2) — and stays LAYERED, because react-popover is converted and writes only at l1.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.popoverSurface.className = clsx(styles['popover-surface'], state.popoverSurface.className);
+  state = {
+    ...state,
+    popoverSurface: {
+      ...state.popoverSurface,
+      className: clsx(styles['popover-surface'], state.popoverSurface.className),
+    },
+  };
 
   return state;
 };

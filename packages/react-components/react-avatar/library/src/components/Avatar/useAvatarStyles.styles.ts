@@ -100,13 +100,11 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const isActive = active === 'active' || active === 'inactive';
   const hasRing = isActive && (activeAppearance === 'ring' || activeAppearance === 'ring-shadow');
 
-  const root = state.root as AvatarState['root'] & AvatarRootDataAttributes;
-
-  /* eslint-disable react-hooks/immutability -- state-mutation builder, preserved per D14 */
-  root['data-size'] = size;
-  root['data-active'] = active === 'unset' ? undefined : active;
-  root['data-active-appearance'] = isActive ? activeAppearance : undefined;
-  /* eslint-enable react-hooks/immutability */
+  const rootDataAttributes: AvatarRootDataAttributes = {
+    'data-size': size,
+    'data-active': active === 'unset' ? undefined : active,
+    'data-active-appearance': isActive ? activeAppearance : undefined,
+  };
 
   // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
   // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
@@ -130,58 +128,73 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   // if/else chains (typography, square radius, ring width, shadow depth, icon size) moved
   // out of JS and onto `data-size`.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-avatar',
-    size !== 32 && sizeStyles[size],
-    state.badge && styles['badge-align'],
-    // `||`, not `??` — byte-for-byte the Griffel condition (`styles[state.badge.size || 'medium']`)
-    state.badge && styles[`badge-${state.badge.size || 'medium'}`],
-    shape === 'square' && styles.square,
-    hasRing && styles[`ring-${color}`],
-    hasRing && state.badge && styles['ring-badge-cutout'],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(
+        styles.root,
+        'group/fui-avatar',
+        size !== 32 && sizeStyles[size],
+        state.badge && styles['badge-align'],
+        // `||`, not `??` — byte-for-byte the Griffel condition (`styles[state.badge.size || 'medium']`)
+        state.badge && styles[`badge-${state.badge.size || 'medium'}`],
+        shape === 'square' && styles.square,
+        hasRing && styles[`ring-${color}`],
+        hasRing && state.badge && styles['ring-badge-cutout'],
+        state.root.className,
+      ),
+    },
+  };
 
   if (state.badge) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.badge.className = clsx(styles.badge, state.badge.className);
+    state = { ...state, badge: { ...state.badge, className: clsx(styles.badge, state.badge.className) } };
   }
 
   if (state.image) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.image.className = clsx(
-      styles.image,
-      styles[color],
-      state.badge && styles['badge-cutout'],
-      state.image.className,
-    );
+    state = {
+      ...state,
+      image: {
+        ...state.image,
+        className: clsx(styles.image, styles[color], state.badge && styles['badge-cutout'], state.image.className),
+      },
+    };
   }
 
   if (state.initials) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.initials.className = clsx(
-      styles['icon-initials'],
-      styles[color],
-      state.badge && styles['badge-cutout'],
-      state.initials.className,
-    );
+    state = {
+      ...state,
+      initials: {
+        ...state.initials,
+        className: clsx(
+          styles['icon-initials'],
+          styles[color],
+          state.badge && styles['badge-cutout'],
+          state.initials.className,
+        ),
+      },
+    };
   }
 
+  // `styles.icon` carries no declarations of its own — it is the hook the root's
+  // `data-size` buckets use to reach the icon glyph (`.root:where([data-size='48'])
+  // :where(.icon)`), which is how the Griffel `iconSizeClass` chain is expressed now.
+  //
   if (state.icon) {
-    // `styles.icon` carries no declarations of its own — it is the hook the root's
-    // `data-size` buckets use to reach the icon glyph (`.root:where([data-size='48'])
-    // :where(.icon)`), which is how the Griffel `iconSizeClass` chain is expressed now.
-    //
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(
-      styles['icon-initials'],
-      styles.icon,
-      styles[color],
-      state.badge && styles['badge-cutout'],
-      state.icon.className,
-    );
+    state = {
+      ...state,
+      icon: {
+        ...state.icon,
+        className: clsx(
+          styles['icon-initials'],
+          styles.icon,
+          styles[color],
+          state.badge && styles['badge-cutout'],
+          state.icon.className,
+        ),
+      },
+    };
   }
 
   return state;

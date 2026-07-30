@@ -67,10 +67,9 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   const sizeStyles = useSizeStyles();
   const groupChildClassName = useGroupChildClassName(layout, size);
 
-  const root = state.root as AvatarGroupItemState['root'] & AvatarGroupItemRootDataAttributes;
-
-  // eslint-disable-next-line react-hooks/immutability -- state-mutation builder, preserved per D14
-  root['data-size'] = size;
+  const rootDataAttributes: AvatarGroupItemRootDataAttributes = {
+    'data-size': size,
+  };
 
   // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
   // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
@@ -95,33 +94,49 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   // now lives in the module under the shared `rtl` variant, which resolves the computed
   // direction from the DOM (DECISIONS.md D5). `useFluent()` is therefore no longer called.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-avatar-group-item',
-    !isOverflowItem && styles['non-overflow-item'],
-    !isOverflowItem && groupChildClassName,
-    !isOverflowItem && sizeStyles[size],
-    !isOverflowItem && layout === 'pie' && styles.pie,
-    isOverflowItem && styles['overflow-item'],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(
+        styles.root,
+        'group/fui-avatar-group-item',
+        !isOverflowItem && styles['non-overflow-item'],
+        !isOverflowItem && groupChildClassName,
+        !isOverflowItem && sizeStyles[size],
+        !isOverflowItem && layout === 'pie' && styles.pie,
+        isOverflowItem && styles['overflow-item'],
+        state.root.className,
+      ),
+    },
+  };
 
   // Both module classes here are CONDITIONAL, so this slot can emit the consumer's class
   // alone. That is harmless and deliberately NOT "fixed" (DECISIONS.md D16 / design §4c):
   // the slot carries no marker, so the D15.1 leading-token invariant is not in play, and the
   // element is an `<Avatar>` root that leads with Avatar's own unconditional `styles.root`.
   //
-  // eslint-disable-next-line react-hooks/immutability
-  state.avatar.className = clsx(
-    !isOverflowItem && styles['avatar-non-overflow-item'],
-    layout === 'pie' && styles['avatar-pie'],
-    state.avatar.className,
-  );
+  state = {
+    ...state,
+    avatar: {
+      ...state.avatar,
+      className: clsx(
+        !isOverflowItem && styles['avatar-non-overflow-item'],
+        layout === 'pie' && styles['avatar-pie'],
+        state.avatar.className,
+      ),
+    },
+  };
 
   if (state.overflowLabel) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.overflowLabel.className = clsx(styles['overflow-label'], state.overflowLabel.className);
+    state = {
+      ...state,
+      overflowLabel: {
+        ...state.overflowLabel,
+        className: clsx(styles['overflow-label'], state.overflowLabel.className),
+      },
+    };
   }
 
   return state;

@@ -9,11 +9,11 @@ import type { AvatarProps } from './Avatar.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props, ref) => {
-  const state = useAvatar_unstable(props, ref);
+  let state = useAvatar_unstable(props, ref);
 
-  useAvatarStyles_unstable(state);
+  state = useAvatarStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useAvatarStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useAvatarStyles_unstable')(state);
 
   return renderAvatar_unstable(state);
 });
