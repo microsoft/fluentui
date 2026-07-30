@@ -60,16 +60,19 @@ describe(`workspace-plugin`, () => {
     expect(getTargetsNames(results)).toContain('test');
   });
 
-  it('should add an optional attw target only when package.json declares exports', async () => {
+  it('should add an optional attw target only when package.json declares exports and is not private', async () => {
     await tempFs.createFiles({
       'with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
       'with-exports/package.json': serializeJson({ exports: { '.': './lib/index.js' } }),
       'no-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
       'no-exports/package.json': serializeJson({}),
+      'private-with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
+      'private-with-exports/package.json': serializeJson({ private: true, exports: { '.': './lib/index.js' } }),
     });
 
     const withExports = await createNodesFunction(['with-exports/project.json'], options, context);
     const noExports = await createNodesFunction(['no-exports/project.json'], options, context);
+    const privateWithExports = await createNodesFunction(['private-with-exports/project.json'], options, context);
 
     expect(getTargetsNames(withExports, 'with-exports')).toContain('attw');
     expect(getTargets(withExports, 'with-exports')?.attw).toMatchObject({
@@ -78,6 +81,7 @@ describe(`workspace-plugin`, () => {
       options: { cwd: 'with-exports', command: expect.stringContaining('attw --pack --profile node16') },
     });
     expect(getTargetsNames(noExports, 'no-exports')).not.toContain('attw');
+    expect(getTargetsNames(privateWithExports, 'private-with-exports')).not.toContain('attw');
   });
 
   it('should add lint,test task only if configuration exists', async () => {

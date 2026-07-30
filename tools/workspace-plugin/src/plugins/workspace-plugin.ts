@@ -448,7 +448,7 @@ function buildTestTarget(
 
 function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration | null {
   // optional, published-library-only types/exports validation. Not part of `build` or CI gates.
-  if (!config.packageJSON.exports) {
+  if (config.packageJSON.private || !config.packageJSON.exports) {
     return null;
   }
 
