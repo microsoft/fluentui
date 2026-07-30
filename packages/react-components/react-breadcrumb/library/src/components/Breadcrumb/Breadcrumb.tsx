@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Breadcrumb component - TODO: add more docs
  */
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps> = React.forwardRef((props, ref) => {
-  const state = useBreadcrumb_unstable(props, ref);
+  let state = useBreadcrumb_unstable(props, ref);
   const contextValues = useBreadcrumbContextValues_unstable(state);
 
-  useBreadcrumbStyles_unstable(state);
-  useCustomStyleHook_unstable('useBreadcrumbStyles_unstable')(state);
+  state = useBreadcrumbStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useBreadcrumbStyles_unstable')(state);
 
   return renderBreadcrumb_unstable(state, contextValues);
 });

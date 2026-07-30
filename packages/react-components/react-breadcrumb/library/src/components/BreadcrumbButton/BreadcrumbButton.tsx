@@ -12,10 +12,10 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * A button component which is used inside the Breadcrumb.
  */
 export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = React.forwardRef((props, ref) => {
-  const state = useBreadcrumbButton_unstable(props, ref);
+  let state = useBreadcrumbButton_unstable(props, ref);
 
-  useBreadcrumbButtonStyles_unstable(state);
-  useCustomStyleHook_unstable('useBreadcrumbButtonStyles_unstable')(state);
+  state = useBreadcrumbButtonStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useBreadcrumbButtonStyles_unstable')(state);
 
   return renderBreadcrumbButton_unstable(state);
 });

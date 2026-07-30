@@ -13,10 +13,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * It can be used as a non-interactive item.
  */
 export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps> = React.forwardRef((props, ref) => {
-  const state = useBreadcrumbItem_unstable(props, ref);
+  let state = useBreadcrumbItem_unstable(props, ref);
 
-  useBreadcrumbItemStyles_unstable(state);
-  useCustomStyleHook_unstable('useBreadcrumbItemStyles_unstable')(state);
+  state = useBreadcrumbItemStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useBreadcrumbItemStyles_unstable')(state);
 
   return renderBreadcrumbItem_unstable(state);
 });

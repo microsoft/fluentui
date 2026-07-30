@@ -12,10 +12,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * A divider component which is used inside the Breadcrumb
  */
 export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps> = React.forwardRef((props, ref) => {
-  const state = useBreadcrumbDivider_unstable(props, ref);
+  let state = useBreadcrumbDivider_unstable(props, ref);
 
-  useBreadcrumbDividerStyles_unstable(state);
-  useCustomStyleHook_unstable('useBreadcrumbDividerStyles_unstable')(state);
+  state = useBreadcrumbDividerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useBreadcrumbDividerStyles_unstable')(state);
 
   return renderBreadcrumbDivider_unstable(state);
 });

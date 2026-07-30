@@ -77,19 +77,9 @@ type BreadcrumbButtonRootDataAttributes = {
 export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
   const { current } = state;
 
-  const root = state.root as BreadcrumbButtonState['root'] & BreadcrumbButtonRootDataAttributes;
-
-  /*
-   * The `react-hooks/immutability` suppressions below are carried over from the Griffel
-   * version of this file, unchanged. The state-mutation pattern is KEPT during conversion
-   * (CONVERSION_GUIDE §3 / DECISIONS.md D14): the mixed-mode sibling seam and the
-   * customStyleHooks contract both depend on the shared object, and its removal is a single
-   * committed Phase 3 sweep rather than a per-conversion change. Note this file is the only
-   * converted styles hook in the package that still trips the rule — the other three no
-   * longer call any hook, so eslint no longer treats them as hooks at all.
-   */
-  // eslint-disable-next-line react-hooks/immutability
-  root['data-current'] = current || undefined;
+  const rootDataAttributes: BreadcrumbButtonRootDataAttributes = {
+    'data-current': current || undefined,
+  };
 
   // Module class FIRST, then the named group marker — which must never be `classList[0]`
   // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
@@ -122,24 +112,32 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   // `state.root.className` is what `useButtonStyles_unstable` receives as its own LAST
   // argument below, so this string still arrives after react-button's classes — exactly as
   // it did under mergeClasses.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-breadcrumb-button', state.root.className);
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(styles.root, 'group/fui-breadcrumb-button', state.root.className),
+    },
+  };
 
+  // `styles.icon` is this module's own hashed local on react-button's `icon` element. It is
+  // the D16.3 "M2" handle: every rule in BreadcrumbButton.module.css that used to reach
+  // that element through react-button's `:global(.fui-Button__icon)` static now selects
+  // this local instead, so the cross-package coupling is composed in JS here rather than
+  // published as a global class name. Same element, same descendant-selector shape, same
+  // specificity — a class-for-class substitution.
+  //
+  // The slot carries no marker, so D15.1 does not apply to it; the hashed class is
+  // `classList[0]` and react-button appends its own classes after this string.
   if (state.icon) {
-    // `styles.icon` is this module's own hashed local on react-button's `icon` element. It is
-    // the D16.3 "M2" handle: every rule in BreadcrumbButton.module.css that used to reach
-    // that element through react-button's `:global(.fui-Button__icon)` static now selects
-    // this local instead, so the cross-package coupling is composed in JS here rather than
-    // published as a global class name. Same element, same descendant-selector shape, same
-    // specificity — a class-for-class substitution.
-    //
-    // The slot carries no marker, so D15.1 does not apply to it; the hashed class is
-    // `classList[0]` and react-button appends its own classes after this string.
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(styles.icon, state.icon.className);
+    state = { ...state, icon: { ...state.icon, className: clsx(styles.icon, state.icon.className) } };
   }
 
-  useButtonStyles_unstable(state);
+  // BreadcrumbButtonState widens ButtonState, so the delegate's narrower return is re-merged
+  // onto this component's own shape (F1 of the D14 mutation removal — thread the
+  // composed result, do not discard it).
+  state = { ...state, ...useButtonStyles_unstable(state) };
 
   return state;
 };
