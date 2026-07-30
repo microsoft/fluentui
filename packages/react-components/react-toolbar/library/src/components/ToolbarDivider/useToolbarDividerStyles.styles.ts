@@ -2,10 +2,10 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike the converted leaf hooks (Toolbar, ToolbarGroup), this file needs NO
- * `enforce-use-client` suppression: it still calls `useDividerStyles_unstable`, so the rule
- * agrees the directive is required. Converted hooks that call nothing carry a trailing
- * `eslint-disable-line` instead — see useToolbarStyles.styles.ts.
+ * this file keeps `'use client'` because it still calls `useDividerStyles_unstable`, so
+ * `enforce-use-client` sees a hook call and never reports the directive as unnecessary. The
+ * converted leaf hooks (Toolbar, ToolbarGroup) call nothing and carry no directive at all —
+ * see useToolbarStyles.styles.ts.
  */
 
 import { clsx } from 'clsx';

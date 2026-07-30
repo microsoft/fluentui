@@ -2,16 +2,13 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike the converted leaf hooks (Toolbar, ToolbarGroup) this file needs NO
- * `enforce-use-client` suppression — it still calls `useToggleButtonStyles_unstable`, so
- * the rule agrees the directive is required. Same as useToolbarButtonStyles.styles.ts.
+ * this file keeps `'use client'` because it still calls `useToggleButtonStyles_unstable`,
+ * so `enforce-use-client` sees a hook call and never reports the directive as unnecessary.
+ * Same as useToolbarButtonStyles.styles.ts.
  *
- * This file was the last Griffel holdout in react-toolbar (reports/phase2-batch3.md,
- * "Deliberate scope leftovers"): both slices restyle @fluentui/react-button's
- * <ToggleButton>, whose own styles hook was still `makeStyles` + `mergeClasses`, and
- * Griffel injects UNLAYERED — no layered rule can beat that (DECISIONS.md D2 amendment 5).
- * ToggleButton is converted now, so the two altitudes can be compared deterministically;
- * ToolbarToggleButton.module.css documents exactly how.
+ * Both slices here restyle @fluentui/react-button's <ToggleButton>. Both sides are layered
+ * now, so the two altitudes compare deterministically; ToolbarToggleButton.module.css
+ * documents exactly how.
  */
 
 import { clsx } from 'clsx';

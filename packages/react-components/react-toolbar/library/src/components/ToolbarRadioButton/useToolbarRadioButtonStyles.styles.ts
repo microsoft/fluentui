@@ -2,12 +2,9 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike the converted leaf hooks (Toolbar, ToolbarGroup) this file needs NO
- * `enforce-use-client` suppression — it still calls `useToggleButtonStyles_unstable`, so
- * the rule agrees the directive is required. Same as useToolbarButtonStyles.styles.ts.
- *
- * Held back until @fluentui/react-button's ToggleButton converted, for the reason
- * ToolbarToggleButton/useToolbarToggleButtonStyles.styles.ts documents.
+ * this file keeps `'use client'` because it still calls `useToggleButtonStyles_unstable`,
+ * so `enforce-use-client` sees a hook call and never reports the directive as unnecessary.
+ * Same as useToolbarButtonStyles.styles.ts.
  */
 
 import { clsx } from 'clsx';
