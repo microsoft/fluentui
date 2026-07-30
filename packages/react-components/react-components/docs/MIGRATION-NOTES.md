@@ -1,5 +1,10 @@
 # Migration notes from `@fluentui/react-components@9.0.0-beta.5`to `@fluentui/react-components@9.0.0-rc.1`
 
+> **Historical record.** These notes describe one specific version bump and are kept as written.
+> They are not current guidance: v9 no longer authors its styles with Griffel. See
+> [Styling components](https://react.fluentui.dev/?path=/docs/concepts-developer-styling-components--docs)
+> for the current contract.
+
 ## Changes to the styling system
 
 ### Functions no longer supported
@@ -69,7 +74,11 @@ For more details, please check [microsoft/fluentui#20573](https://github.com/mic
 
 ### makeStyles is now Griffel [just rename]
 
-`makeStyles` CSS-in-JS become a separate project called [Griffel](https://github.com/microsoft/griffel). It is still used in Fluent UI React v9.
+`makeStyles` CSS-in-JS become a separate project called [Griffel](https://github.com/microsoft/griffel).
+
+_As of the CSS-Modules conversion, v9 no longer authors its own styles with Griffel. `makeStyles`
+and the rest of the Griffel surface are still re-exported from `@fluentui/react-components` so code
+written against these notes keeps compiling._
 
 ## Changes to the theming system
 
