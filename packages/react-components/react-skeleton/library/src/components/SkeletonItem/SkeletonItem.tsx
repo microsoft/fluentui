@@ -9,10 +9,10 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps> = React.forwardRef((props, ref) => {
-  const state = useSkeletonItem_unstable(props, ref);
+  let state = useSkeletonItem_unstable(props, ref);
 
-  useSkeletonItemStyles_unstable(state);
-  useCustomStyleHook_unstable('useSkeletonItemStyles_unstable')(state);
+  state = useSkeletonItemStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useSkeletonItemStyles_unstable')(state);
 
   return renderSkeletonItem_unstable(state);
 });

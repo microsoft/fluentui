@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Skeleton component - TODO: add more docs
  */
 export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef((props, ref) => {
-  const state = useSkeleton_unstable(props, ref);
+  let state = useSkeleton_unstable(props, ref);
   const contextValues = useSkeletonContextValues(state);
 
-  useSkeletonStyles_unstable(state);
-  useCustomStyleHook_unstable('useSkeletonStyles_unstable')(state);
+  state = useSkeletonStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useSkeletonStyles_unstable')(state);
 
   return renderSkeleton_unstable(state, contextValues);
 });
