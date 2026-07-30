@@ -2,11 +2,10 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike most converted styles files this one keeps a BARE `'use client'` with no
- * `enforce-use-client` suppression. `makeStyles` is gone, but the file still re-exports and
- * calls `useTabAnimatedIndicatorStyles_unstable`, which is a real React hook, so the rule
- * does not consider the directive unnecessary and a suppression here would be reported as an
- * unused disable directive.
+ * `makeStyles` is gone, but this file still re-exports and calls
+ * `useTabAnimatedIndicatorStyles_unstable`, which is a real React hook, so
+ * `enforce-use-client` does not consider the directive unnecessary and it stays. Converted
+ * styles files that call nothing carry no directive at all.
  */
 
 import { clsx } from 'clsx';

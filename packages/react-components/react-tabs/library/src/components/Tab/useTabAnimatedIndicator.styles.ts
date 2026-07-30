@@ -15,9 +15,9 @@
  * The two custom-property NAMES are byte-identical to the Griffel original and appear in this
  * package's committed snapshots; nothing here may rename them.
  *
- * Unlike the other converted styles files this one keeps a bare `'use client'` with no
- * suppression: it still calls React hooks (`useState`, `useTabListContext_unstable`,
- * `useAnimationFrame`), so `enforce-use-client` does not flag it.
+ * This file keeps `'use client'` because it still calls React hooks (`useState`,
+ * `useTabListContext_unstable`, `useAnimationFrame`), so `enforce-use-client` does not flag
+ * it. Converted styles files that call nothing carry no directive at all.
  */
 
 import * as React from 'react';
