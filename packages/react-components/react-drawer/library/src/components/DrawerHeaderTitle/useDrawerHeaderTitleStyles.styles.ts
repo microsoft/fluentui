@@ -62,7 +62,13 @@ export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleStat
   // and `action` with hashed module classes in `@layer fui.base` / `fui.components.l1` plus
   // its own `group/fui-dialog-title` marker on `heading`. See DrawerHeaderTitle.module.css
   // for the altitude analysis.
-  useDialogTitleStyles_unstable({
+  // Thread the composed result instead of discarding it (F1 of the D14 mutation removal). This
+  // seam is an ADAPTER, not a widening: it hands DialogTitle a synthetic state whose `root` is
+  // this component's `heading` slot, so the two slots the delegate composes have to be mapped
+  // back by name. `heading` defaults to `{}` in the destructure above, so a DrawerHeaderTitle
+  // that renders no heading must not acquire one here — hence the `undefined` guard. `action`
+  // needs no guard: it is passed through unchanged, so an absent action comes back absent.
+  const composedTitle = useDialogTitleStyles_unstable({
     components: {
       root: components.heading,
       action: components.action,
@@ -71,13 +77,25 @@ export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleStat
     action,
   });
 
+  // The DialogTitle merge lands HERE, immediately after the call. Under the old mutating contract
+  // it could sit at the return, because the delegate wrote onto the very `action` object this hook
+  // then wrote again. Now that DialogTitle returns NEW slot objects, merging last would overwrite
+  // this hook's `styles.action` write with the delegate's action and silently drop it.
+  state = {
+    ...state,
+    heading: state.heading === undefined ? undefined : composedTitle.root,
+    action: composedTitle.action,
+  };
+
   // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). The
   // unconditional hashed module class leads so the marker is never `classList[0]`: nwsapi's
   // jsdom `:scope` polyfill builds its anchor from `escape(element.classList[0])` and the
   // `/` survives that escaping into an invalid selector (D15.1). Before D16 the
   // `fui-DrawerHeaderTitle` static held that position.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-drawer-header-title', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx(styles.root, 'group/fui-drawer-header-title', state.root.className) },
+  };
 
   // The `heading` assignment is GONE. Its only library token was the
   // `fui-DrawerHeaderTitle__heading` static — this hook never styled the slot — so what
@@ -90,8 +108,7 @@ export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleStat
   // and the consumer className stays last. `styles.action` sits at `fui.components.l2` —
   // this element's base styles come from another component's hook (D2 amendment 2).
   if (state.action) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.action.className = clsx(styles.action, state.action.className);
+    state = { ...state, action: { ...state.action, className: clsx(styles.action, state.action.className) } };
   }
 
   return state;

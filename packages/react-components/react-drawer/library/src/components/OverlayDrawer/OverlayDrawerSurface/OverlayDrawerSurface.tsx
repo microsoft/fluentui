@@ -18,7 +18,7 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * @internal
  */
 export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps> = React.forwardRef((props, ref) => {
-  const dialogSurfaceState = useDialogSurface_unstable(
+  let dialogSurfaceState = useDialogSurface_unstable(
     {
       ...props,
       /**
@@ -33,8 +33,8 @@ export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps
   );
   const dialogSurfaceContextValues = useDialogSurfaceContextValues_unstable(dialogSurfaceState);
 
-  useOverlayDrawerSurfaceStyles_unstable(dialogSurfaceState);
-  useCustomStyleHook_unstable('useOverlayDrawerSurfaceStyles_unstable')(dialogSurfaceState);
+  dialogSurfaceState = useOverlayDrawerSurfaceStyles_unstable(dialogSurfaceState);
+  dialogSurfaceState = useCustomStyleHook_unstable('useOverlayDrawerSurfaceStyles_unstable')(dialogSurfaceState);
 
   return renderDialogSurface_unstable(dialogSurfaceState, dialogSurfaceContextValues);
 });

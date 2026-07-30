@@ -13,10 +13,10 @@ import type { DrawerBodyProps } from './DrawerBody.types';
  * DrawerBody provides with a container for the main content of a Drawer.
  */
 export const DrawerBody: ForwardRefComponent<DrawerBodyProps> = React.forwardRef((props, ref) => {
-  const state = useDrawerBody_unstable(props, ref);
+  let state = useDrawerBody_unstable(props, ref);
 
-  useDrawerBodyStyles_unstable(state);
-  useCustomStyleHook_unstable('useDrawerBodyStyles_unstable')(state);
+  state = useDrawerBodyStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useDrawerBodyStyles_unstable')(state);
 
   return renderDrawerBody_unstable(state);
 });

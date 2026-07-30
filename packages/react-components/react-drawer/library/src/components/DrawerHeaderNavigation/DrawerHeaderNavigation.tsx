@@ -14,10 +14,10 @@ import type { DrawerHeaderNavigationProps } from './DrawerHeaderNavigation.types
  */
 export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps> = React.forwardRef(
   (props, ref) => {
-    const state = useDrawerHeaderNavigation_unstable(props, ref);
+    let state = useDrawerHeaderNavigation_unstable(props, ref);
 
-    useDrawerHeaderNavigationStyles_unstable(state);
-    useCustomStyleHook_unstable('useDrawerHeaderNavigationStyles_unstable')(state);
+    state = useDrawerHeaderNavigationStyles_unstable(state);
+    state = useCustomStyleHook_unstable('useDrawerHeaderNavigationStyles_unstable')(state);
 
     return renderDrawerHeaderNavigation_unstable(state);
   },

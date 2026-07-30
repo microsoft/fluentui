@@ -13,10 +13,10 @@ import type { DrawerHeaderTitleProps } from './DrawerHeaderTitle.types';
  * DrawerHeader provides a structured header for the drawer component.
  */
 export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps> = React.forwardRef((props, ref) => {
-  const state = useDrawerHeaderTitle_unstable(props, ref);
+  let state = useDrawerHeaderTitle_unstable(props, ref);
 
-  useDrawerHeaderTitleStyles_unstable(state);
-  useCustomStyleHook_unstable('useDrawerHeaderTitleStyles_unstable')(state);
+  state = useDrawerHeaderTitleStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useDrawerHeaderTitleStyles_unstable')(state);
 
   return renderDrawerHeaderTitle_unstable(state);
 });

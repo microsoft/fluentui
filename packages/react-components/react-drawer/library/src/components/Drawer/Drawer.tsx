@@ -15,11 +15,11 @@ import type { DrawerProps } from './Drawer.types';
  * Drawer contains supplementary content and are used for complex creation, edit, or management experiences.
  */
 export const Drawer: ForwardRefComponent<DrawerProps> = React.forwardRef((props, ref) => {
-  const state = useDrawer_unstable(props, ref);
+  let state = useDrawer_unstable(props, ref);
   const contextValue = useDrawerContextValue();
 
-  useDrawerStyles_unstable(state);
-  useCustomStyleHook_unstable('useDrawerStyles_unstable')(state);
+  state = useDrawerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useDrawerStyles_unstable')(state);
 
   return renderDrawer_unstable(state, contextValue);
 });

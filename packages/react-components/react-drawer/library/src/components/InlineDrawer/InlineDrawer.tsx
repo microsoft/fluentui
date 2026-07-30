@@ -16,12 +16,12 @@ import { useInlineDrawerStyles_unstable } from './useInlineDrawerStyles.styles';
  * the main surface, users can still interact with other UI elements.
  */
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps> = React.forwardRef((props, ref) => {
-  const state = useInlineDrawer_unstable(props, ref);
+  let state = useInlineDrawer_unstable(props, ref);
   const contextValue = useDrawerContextValue();
 
-  useInlineDrawerStyles_unstable(state);
-  useCustomStyleHook_unstable('useDrawerInlineStyles_unstable')(state);
-  useCustomStyleHook_unstable('useInlineDrawerStyles_unstable')(state);
+  state = useInlineDrawerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useDrawerInlineStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useInlineDrawerStyles_unstable')(state);
 
   return renderInlineDrawer_unstable(state, contextValue);
 });
