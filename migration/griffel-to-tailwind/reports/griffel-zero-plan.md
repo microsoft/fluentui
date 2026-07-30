@@ -501,3 +501,29 @@ seven must hold:
 | D2a5 permanence clause, CDP evidence, react-button bug                                             | `migration/griffel-to-tailwind/reports/DECISIONS.md:372-438`                                 |
 | 5,218 B gzip, 28 manifest entries, 197,686 B AOT, charts feature census, S-A..S-I stages           | `migration/griffel-to-tailwind/reports/griffel-elimination-evaluation.md`                    |
 | batch regime (3–6 units, batch-scoped validation)                                                  | `migration/griffel-to-tailwind/RUNBOOK.md:28,35-43`                                          |
+
+---
+
+## User amendments (2026-07-30) — decisions resolved
+
+1. **D24 RESOLVED — contribute-back model, not divergence.** The forks exist to
+   create progress and contribute upstream via PRs from our fork copies. No
+   scoped npm publish, no permanent git dependency. Local dev/testing MAY point
+   fluentui's dependency at the fork, but that override MUST be reverted before
+   the fluentui PR so it behaves as expected against published packages. The
+   fluentui PR documents that **the icons upstream merge is a dependency of the
+   UI merge** (sequencing note in the PR body). D26's contract amendment
+   becomes part of the upstream icons PR conversation.
+2. **Headless promotion approach: APPROVED** ("absolutely the way to go").
+3. **D27 RESOLVED (initial) — fluentui-side `@import … layer(…)`, assigned to
+   the LOWEST component layer: `fui.components.l1`.** User's pick, held loosely
+   ("we can see how that plays out") — the retirement batches' VR gates
+   validate it; if l1 ties with component rules misbehave, revisit altitude.
+4. **Documentation requirement:** it must be explicit — in DECISIONS, the
+   cookbook, and the icons-side docs — that `@fluentui/react-icons` styles are
+   UNLAYERED by default, and correct behavior inside the fluentui layering
+   system requires assigning them into the layer mechanism via the
+   layer-scoped import.
+5. **D17 default adopted:** charts batches extend VR coverage as they go —
+   new stories captured as pre-conversion baselines per batch (the
+   baseline-before-convert ethos), rather than relaxing the gate.
