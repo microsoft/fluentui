@@ -13,10 +13,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Toast component
  */
 export const Toast: ForwardRefComponent<ToastProps> = React.forwardRef((props, ref) => {
-  const state = useToast_unstable(props, ref);
+  let state = useToast_unstable(props, ref);
 
-  useToastStyles_unstable(state);
-  useCustomStyleHook_unstable('useToastStyles_unstable')(state);
+  state = useToastStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useToastStyles_unstable')(state);
 
   return renderToast_unstable(state, useToastContextValues_unstable(state));
 });

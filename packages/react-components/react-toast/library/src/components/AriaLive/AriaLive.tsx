@@ -10,9 +10,9 @@ import type { AriaLiveProps } from './AriaLive.types';
  * A component that manages aria live announcements imperatively
  */
 export const AriaLive: React.FC<AriaLiveProps> = props => {
-  const state = useAriaLive_unstable(props);
+  let state = useAriaLive_unstable(props);
 
-  useAriaLiveStyles_unstable(state);
+  state = useAriaLiveStyles_unstable(state);
   return renderAriaLive_unstable(state);
 };
 
