@@ -25,9 +25,10 @@ const renderIconAfterButton = (state: ButtonState) => {
 };
 
 export const RecomposedButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
-  const state = useButton(props, ref);
-  // Keep default Fluent styles
-  useButtonStyles(state);
+  let state = useButton(props, ref);
+  // Keep default Fluent styles — the styles hook returns the composed state (D14), so its result
+  // has to be threaded; discarding it would drop every Fluent class.
+  state = useButtonStyles(state);
   return renderIconAfterButton(state);
 });
 
