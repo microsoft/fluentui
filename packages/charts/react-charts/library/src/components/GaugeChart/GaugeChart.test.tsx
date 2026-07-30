@@ -1,11 +1,30 @@
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { getByClass, testWithoutWait, testScreenResolutionChanges } from '../../utilities/TestUtility.test';
+import {
+  getByClass,
+  getByExactClass,
+  testWithoutWait,
+  testScreenResolutionChanges,
+} from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import type { ExtendedSegment } from './GaugeChart';
 import { GaugeChart, calcNeedleRotation, getSegmentLabel, getChartValueLabel, ARC_PADDING } from './GaugeChart';
+
+import legendStyles from '../Legends/Legends.module.css';
+
 expect.extend(toHaveNoViolations);
+
+/*
+ * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5): Legends is
+ * converted and `legendClassNames` no longer publishes the nine BEM slot keys, so
+ * `fui-legend__text` is not in the DOM. The legend label is found through the `.text` local of
+ * Legends.module.css — the same class the component applies. Only the HANDLE moved: the 0.67
+ * inactive-legend opacity is still written as an INLINE style by Legends.tsx, so the
+ * `toHaveStyle` assertions below still read a real runtime value rather than a CSS rule jsdom
+ * cannot see.
+ */
+const getLegendTexts = (container: HTMLElement) => getByExactClass(container, legendStyles.text);
 
 enum GaugeValueFormat {
   Percentage = 'percentage',
@@ -157,7 +176,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
       expect(legends).toHaveLength(3);
       fireEvent.mouseOver(legends[0]);
       expect(container).toMatchSnapshot();
-      const legendsAfterMouseOver = getByClass(container, /legend__text/i);
+      const legendsAfterMouseOver = getLegendTexts(container);
       expect(legendsAfterMouseOver).toHaveLength(3);
       expect(legendsAfterMouseOver[1]).toHaveStyle('opacity: 0.67');
       expect(legendsAfterMouseOver[2]).toHaveStyle('opacity: 0.67');
@@ -177,7 +196,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
       expect(legends).toHaveLength(3);
       fireEvent.click(legends[0]);
       expect(container).toMatchSnapshot();
-      const legendsAfterMouseOver = getByClass(container, /legend__text/i);
+      const legendsAfterMouseOver = getLegendTexts(container);
       expect(legendsAfterMouseOver).toHaveLength(3);
       expect(legendsAfterMouseOver[1]).toHaveStyle('opacity: 0.67');
       expect(legendsAfterMouseOver[2]).toHaveStyle('opacity: 0.67');
@@ -196,7 +215,7 @@ describe('Gauge chart - Subcomponent Legend', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(legends).toHaveLength(3);
       fireEvent.click(legends[0]);
-      const legendsAfterMouseOver = getByClass(container, /legend__text/i);
+      const legendsAfterMouseOver = getLegendTexts(container);
       expect(legendsAfterMouseOver).toHaveLength(3);
       expect(legendsAfterMouseOver[1]).toHaveStyle('opacity: 0.67');
       expect(legendsAfterMouseOver[2]).toHaveStyle('opacity: 0.67');

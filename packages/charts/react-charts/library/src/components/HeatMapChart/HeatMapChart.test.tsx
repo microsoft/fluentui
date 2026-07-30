@@ -3,12 +3,14 @@ import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@t
 import type { HeatMapChartProps } from './index';
 import { HeatMapChart } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/TestUtility.test';
+import { conditionalTest, getByExactClass, isTimezoneSet } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
 import { FluentProvider } from '@fluentui/react-provider';
 import { popoverSurfaceClassNames } from '@fluentui/react-popover';
 import { fuiSelector } from '@fluentui/react-utilities';
 const env = require('../../../config/tests');
+
+import legendStyles from '../Legends/Legends.module.css';
 
 /*
  * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5).
@@ -19,6 +21,16 @@ const env = require('../../../config/tests');
  * so this marker is the only handle on that element.
  */
 const popoverSurfaceSelector = fuiSelector(popoverSurfaceClassNames.root);
+
+/*
+ * Same statics removal, on the Legends side: `legendClassNames` no longer publishes the nine
+ * BEM slot keys, so `fui-legend__legend` is not in the DOM. The legend button is now found
+ * through the `.legend` local of Legends.module.css — the very class the component applies —
+ * which keeps this suite pinned to a renamed or dropped slot instead of to a string constant.
+ * Legends' behaviour is unchanged: opacity is still set as an INLINE style by the component,
+ * which is what the `style`-attribute assertions below read.
+ */
+const getLegendButtons = (container: HTMLElement) => getByExactClass(container, legendStyles.legend);
 
 expect.extend(toHaveNoViolations);
 
@@ -390,7 +402,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const legends = getByClass(container, /fui-legend__legend/i);
+    const legends = getLegendButtons(container);
     expect(legends[0]).toHaveAttribute('aria-selected', 'false');
     fireEvent.click(legends![0]);
     const legendsAfterClickEvent = screen.getAllByText(
@@ -408,7 +420,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const legends = getByClass(container, /fui-legend__legend/i);
+    const legends = getLegendButtons(container);
     const prevStyles0 = legends[0].getAttribute('style');
     const prevStyles1 = legends[1].getAttribute('style');
     fireEvent.mouseOver(legends[0]);
@@ -428,7 +440,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const legends = getByClass(container, /fui-legend__legend/i);
+    const legends = getLegendButtons(container);
     const prevStyles0 = legends[0].getAttribute('style');
     const prevStyles1 = legends[1].getAttribute('style');
     fireEvent.mouseOver(legends[0]);
@@ -449,7 +461,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const legends = getByClass(container, /fui-legend__legend/i);
+    const legends = getLegendButtons(container);
     const prevStyles0 = legends[0].getAttribute('style');
     const prevStyles1 = legends[1].getAttribute('style');
     fireEvent.click(legends[0]);

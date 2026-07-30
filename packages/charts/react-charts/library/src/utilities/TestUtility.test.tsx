@@ -8,6 +8,20 @@ const { Timezone } = require('../../scripts/constants');
 export const getById = queryAllByAttribute.bind(null, 'id');
 export const getByClass = queryAllByAttribute.bind(null, 'class');
 
+/**
+ * Query by an EXACT class token, for CSS-Modules idents imported from a `*.module.css`
+ * class map (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5).
+ *
+ * `getByClass` above matches a RegExp against the whole `class` ATTRIBUTE, so a substring
+ * pattern built from an ident cannot distinguish sibling locals that share a prefix — under
+ * jest every `*.module.css` resolves to the proxy in scripts/jest/src/css-modules/proxy.js,
+ * where `.legend` becomes `fuicm-legend` and `.legend-container` becomes
+ * `fuicm-legend-container`. A `/fuicm-legend/` RegExp would collect both. A class SELECTOR
+ * matches whole tokens, so it collects exactly the elements the slot was applied to.
+ */
+export const getByExactClass = (container: HTMLElement, className: string): HTMLElement[] =>
+  Array.from(container.querySelectorAll<HTMLElement>(`.${className}`));
+
 // Test function that does not wait for any async calls to finish
 export const testWithoutWait = (
   description: string,
