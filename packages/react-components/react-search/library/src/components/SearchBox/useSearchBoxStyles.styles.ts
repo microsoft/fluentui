@@ -79,10 +79,9 @@ type SearchBoxDismissDataAttributes = {
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
   const { disabled, focused } = state;
 
-  const root = state.root as SearchBoxState['root'] & SearchBoxRootDataAttributes;
-
-  // eslint-disable-next-line react-hooks/immutability
-  root['data-focused'] = focused || undefined;
+  const rootDataAttributes: SearchBoxRootDataAttributes = {
+    'data-focused': focused || undefined,
+  };
 
   // Unconditional module class FIRST, then the named group marker — the marker must never be
   // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1 /
@@ -115,20 +114,24 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // `data-focused` attribute above, and `styles[size]` lookups are `@variant size-*` blocks
   // keyed off the `data-size` Input's hook stamps.
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-search-box', state.root.className);
-
-  // eslint-disable-next-line react-hooks/immutability
-  state.input.className = clsx(styles.input, state.input.className);
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(styles.root, 'group/fui-search-box', state.root.className),
+    },
+    input: { ...state.input, className: clsx(styles.input, state.input.className) },
+  };
 
   if (state.dismiss) {
-    const dismiss = state.dismiss as NonNullable<SearchBoxState['dismiss']> & SearchBoxDismissDataAttributes;
+    const dismiss: NonNullable<SearchBoxState['dismiss']> & SearchBoxDismissDataAttributes = {
+      ...state.dismiss,
+      'data-disabled': disabled || undefined,
+      className: clsx(styles.dismiss, state.dismiss.className),
+    };
 
-    // eslint-disable-next-line react-hooks/immutability
-    dismiss['data-disabled'] = disabled || undefined;
-
-    // eslint-disable-next-line react-hooks/immutability
-    state.dismiss.className = clsx(styles.dismiss, state.dismiss.className);
+    state = { ...state, dismiss };
   }
 
   // The `contentBefore` slot deliberately gets NO assignment. Its only library token was the
@@ -138,19 +141,29 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // (statics-removal design §4d).
 
   if (state.contentAfter) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.contentAfter.className = clsx(styles['content-after'], state.contentAfter.className);
+    state = {
+      ...state,
+      contentAfter: { ...state.contentAfter, className: clsx(styles['content-after'], state.contentAfter.className) },
+    };
   } else if (state.dismiss) {
     // Preserved verbatim from the Griffel hook. `renderSearchBox_unstable` only renders the
     // dismiss INSIDE contentAfter, so this branch (contentAfter explicitly nulled out, e.g.
     // `<SearchBox contentAfter={null} />`) can never reach the DOM — it is kept so the
     // conversion changes nothing about the state object a customStyleHook or a custom render
     // function would observe.
-    // eslint-disable-next-line react-hooks/immutability
-    state.dismiss.className = clsx(state.dismiss.className, styles['content-after']);
+    state = {
+      ...state,
+      dismiss: { ...state.dismiss, className: clsx(state.dismiss.className, styles['content-after']) },
+    };
   }
 
-  useInputStyles_unstable(state);
+  // Thread the composed result instead of discarding it (F1 of the D14 mutation removal).
+  // SearchBoxState adds a `dismiss` slot, so Input's `components` map is NARROWER than this
+  // one; it is dropped off the return so this component keeps its own, and every other key
+  // Input composed is merged on.
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const { components: inputComponents, ...composedInput } = useInputStyles_unstable(state);
+  state = { ...state, ...composedInput };
 
   return state;
 };
