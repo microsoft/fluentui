@@ -224,9 +224,21 @@ Repeat until no `needs-conversion` remain:
 
 ### Phase 4 — Report + PR
 
-- [ ] Re-run every metric from `metrics/baseline/` → `metrics/after/`
-- [ ] Write `reports/METRICS_REPORT.md` (build time, output size, client bundle, deltas)
+- [x] Re-run every metric from `metrics/baseline/` → `metrics/phase4/` (commit `742487e59a`;
+      same D10 methodology, clean committed tree, machine-exclusive)
+- [x] **FINAL REPORT: `reports/FINAL_REPORT.md`** — the deliverable the user commissioned at
+      the project's start (build time, build output + client bundle sizes, client runtime perf,
+      architecture, validation, scope, process). Ledger stamped `phase: 4-report` with
+      `completionStamp`. Headlines: build 182→163s (−10.4%); monosize entire-library gz
+      326,152→275,289 (−15.6%); libJs 4,563,422→3,859,265 (−15.4%); `*.styles.raw.js`
+      700,829→0; Griffel AOT 62→4 packages / 277→30 files; commit time faster in all 25 perf
+      cells (median −45.1%) against a scenario-E re-render cliff that is transition processing
+      (~8ms unexplained, flagged). Regressions stated in place: whole-library minified +6.5%,
+      PresenceBadge fixture +27.0% gz (per-package CSS aggregation), VR storybook output +4.6%.
 - [ ] Author PR; move/remove `migration/` docs per user's preference
+- [ ] Pre-PR housekeeping (needs user confirmation): `.scratch/*`,
+      `git worktree remove .scratch/perf-eval/before-tree`, untracked `graphify-out/` +
+      `packages/graphify-out/` must not reach the PR
 
 ## Recovery notes
 

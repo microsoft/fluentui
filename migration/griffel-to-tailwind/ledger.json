@@ -1,7 +1,14 @@
 {
   "version": 1,
-  "updated": "2026-07-28",
-  "phase": "3-integration",
+  "updated": "2026-07-30",
+  "phase": "4-report",
+  "completionStamp": {
+    "date": "2026-07-30",
+    "commit": "27411c780ad2d5683f3e07d39eda21101db4b4e1",
+    "packages": "88 accounted (60 validated / 4 done / 24 no-styles); 247 styles files converted",
+    "metricsLeg": "metrics/phase4/ — build 182->163s, monosize entire-library gz 326,152->275,289, libJs 4,563,422->3,859,265, Griffel AOT 62->4 packages (277->30 files)",
+    "report": "reports/FINAL_REPORT.md"
+  },
   "branch": "styling/tailwind-css-modules",
   "statusValues": [
     "pending-triage",
