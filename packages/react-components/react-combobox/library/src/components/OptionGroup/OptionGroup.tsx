@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * OptionGroup component: allows grouping of Option components within a Combobox
  */
 export const OptionGroup: ForwardRefComponent<OptionGroupProps> = React.forwardRef((props, ref) => {
-  const state = useOptionGroup_unstable(props, ref);
+  let state = useOptionGroup_unstable(props, ref);
 
-  useOptionGroupStyles_unstable(state);
+  state = useOptionGroupStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useOptionGroupStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useOptionGroupStyles_unstable')(state);
 
   return renderOptionGroup_unstable(state);
 });

@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Option component: a styled child option of a Combobox
  */
 export const Option: ForwardRefComponent<OptionProps> = React.forwardRef((props, ref) => {
-  const state = useOption_unstable(props, ref);
+  let state = useOption_unstable(props, ref);
 
-  useOptionStyles_unstable(state);
+  state = useOptionStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useOptionStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useOptionStyles_unstable')(state);
 
   return renderOption_unstable(state);
 });

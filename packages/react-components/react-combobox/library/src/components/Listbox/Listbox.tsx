@@ -13,12 +13,12 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Listbox component: a standalone selection control, or the popup in a Combobox
  */
 export const Listbox: ForwardRefComponent<ListboxProps> = React.forwardRef((props, ref) => {
-  const state = useListbox_unstable(props, ref);
+  let state = useListbox_unstable(props, ref);
   const contextValues = useListboxContextValues(state);
 
-  useListboxStyles_unstable(state);
+  state = useListboxStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useListboxStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useListboxStyles_unstable')(state);
 
   return renderListbox_unstable(state, contextValues);
 });
