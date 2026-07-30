@@ -1,6 +1,6 @@
 {
-  "type": "none",
-  "comment": "Griffel to Tailwind CSS + CSS Modules migration: shared Tailwind theme, token mapping and @custom-variant catalog consumed by the converted packages. Not published (private, 0.0.0) — see migration/griffel-to-tailwind/reports/phase3-worklist.md item 12a for the unresolved packaging decision.",
+  "type": "prerelease",
+  "comment": "Shared Tailwind v4 theme layer for the Griffel to Tailwind CSS + CSS Modules migration: the fui cascade-layer order, the @custom-variant catalog, the base-scale spacing bridge and the generated Fluent token registration. New package. Converted component packages ship plain CSS that references theme-level custom properties, so consumers import @fluentui/react-tailwind-theme/styles.css exactly once at their document root; see the package README.",
   "packageName": "@fluentui/react-tailwind-theme",
   "email": "array.knight+github@gmail.com",
   "dependentChangeType": "none"

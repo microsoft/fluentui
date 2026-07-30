@@ -2,7 +2,7 @@
 // Required by every converted package's `*.module.css`. Package/app previews import this
 // module, so the side effect reaches all of them.
 import '../scripts/storybook/src/tailwind-theme.css';
-import '../packages/react-components/react-storybook-addon/src/styles.css';
+import '../packages/react-components/react-storybook-addon/src/docs-chrome.css';
 import '../packages/react-components/react-storybook-addon-export-to-sandbox/src/styles.css';
 import { withLinks } from '@storybook/addon-links';
 

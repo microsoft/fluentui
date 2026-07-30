@@ -1,7 +1,7 @@
 {
-  "type": "minor",
-  "comment": "Migrate component styling from Griffel to Tailwind CSS + CSS Modules. Styles now ship as a per-package stylesheet exported at ./styles.css instead of being injected at runtime, so consumers must import it (the @fluentui/react-components umbrella re-exports it). The BEM static class names previously published on component internals are no longer rendered; the *ClassNames constants are retained and marked deprecated for compile compatibility, with the root entry remaining each component's public identity class.",
+  "type": "none",
+  "comment": "Document why v8 portal theme-class extraction is unaffected by the removal of BEM static class names: the pattern requires a word character after the seed, so it only ever matched the runtime `fui-FluentProvider<useId>` class and never the bare static. Comment-only.",
   "packageName": "@fluentui/react-portal-compat",
   "email": "array.knight+github@gmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
