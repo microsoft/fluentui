@@ -49,7 +49,7 @@ export const navDrawerHeaderClassNames: { root: string } = {
  * Apply styling to the NavDrawerHeader slots based on the state
  */
 export const useNavDrawerHeaderStyles_unstable = (state: NavDrawerHeaderState): NavDrawerHeaderState => {
-  useDrawerHeaderStyles_unstable(state);
+  state = useDrawerHeaderStyles_unstable(state);
 
   // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). The
   // unconditional hashed module class leads so the marker is never `classList[0]`: nwsapi's
@@ -61,8 +61,10 @@ export const useNavDrawerHeaderStyles_unstable = (state: NavDrawerHeaderState): 
   // inside `state.root.className` and end up AFTER this pair. Cascade priority comes from
   // the `@layer` order (NavDrawerHeader.module.css authors at `fui.components.l2`), not from
   // string position.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-nav-drawer-header', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx(styles.root, 'group/fui-nav-drawer-header', state.root.className) },
+  };
 
   return state;
 };

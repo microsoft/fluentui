@@ -13,10 +13,10 @@ import type { NavDividerProps } from './NavDivider.types';
  * NavDivider component - a divider used within navigation components to separate items.
  */
 export const NavDivider: ForwardRefComponent<NavDividerProps> = React.forwardRef((props, ref) => {
-  const state = useNavDivider_unstable(props, ref);
+  let state = useNavDivider_unstable(props, ref);
 
-  useNavDividerStyles_unstable(state);
-  useCustomStyleHook_unstable('useNavDividerStyles_unstable')(state);
+  state = useNavDividerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useNavDividerStyles_unstable')(state);
 
   return renderDivider_unstable(state);
 });

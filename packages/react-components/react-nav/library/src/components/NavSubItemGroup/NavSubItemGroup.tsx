@@ -13,10 +13,10 @@ import type { NavSubItemGroupProps } from './NavSubItemGroup.types';
  * NavSubItemGroup component - a group of sub-items within a navigation structure.
  */
 export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps> = React.forwardRef((props, ref) => {
-  const state = useNavSubItemGroup_unstable(props, ref);
+  let state = useNavSubItemGroup_unstable(props, ref);
 
-  useNavSubItemGroupStyles_unstable(state);
-  useCustomStyleHook_unstable('useNavSubItemGroupStyles_unstable')(state);
+  state = useNavSubItemGroupStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useNavSubItemGroupStyles_unstable')(state);
 
   return renderNavSubItemGroup_unstable(state);
 });

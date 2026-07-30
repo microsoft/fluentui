@@ -14,12 +14,12 @@ import type { NavProps } from './Nav.types';
  * Nav - A component that provides up to two levels of nesting for navigation.
  */
 export const Nav: ForwardRefComponent<NavProps> = React.forwardRef((props, ref) => {
-  const state = useNav_unstable(props, ref);
+  let state = useNav_unstable(props, ref);
 
   const contextValues = useNavContextValues_unstable(state);
 
-  useNavStyles_unstable(state);
-  useCustomStyleHook_unstable('useHamburgerStyles_unstable')(state);
+  state = useNavStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useHamburgerStyles_unstable')(state);
 
   return renderNav_unstable(state, contextValues);
 });

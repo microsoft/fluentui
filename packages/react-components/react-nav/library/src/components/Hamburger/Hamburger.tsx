@@ -13,10 +13,10 @@ import type { HamburgerProps } from './Hamburger.types';
  * Hamburger component - a button that toggles a menu or navigation drawer.
  */
 export const Hamburger: ForwardRefComponent<HamburgerProps> = React.forwardRef((props, ref) => {
-  const state = useHamburger_unstable(props, ref);
+  let state = useHamburger_unstable(props, ref);
 
-  useHamburgerStyles_unstable(state);
-  useCustomStyleHook_unstable('useHamburgerStyles_unstable')(state);
+  state = useHamburgerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useHamburgerStyles_unstable')(state);
 
   return renderButton_unstable(state);
 }) as ForwardRefComponent<HamburgerProps>;

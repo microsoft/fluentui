@@ -59,8 +59,10 @@ export const useNavDividerStyles_unstable = (state: NavDividerState): NavDivider
   // `group/fui-divider`, so on the DOM element `classList[0]` is react-divider's module
   // class and this pair sits after it. Cascade priority comes from the `@layer` order
   // (NavDivider.module.css authors at `fui.components.l2`), not from string position.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-nav-divider', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx(styles.root, 'group/fui-nav-divider', state.root.className) },
+  };
 
   // The `wrapper` slot's assignment is gone: its only library token was the
   // `fui-NavDivider__wrapper` static, so what remained after D16 would have been
@@ -68,7 +70,7 @@ export const useNavDividerStyles_unstable = (state: NavDividerState): NavDivider
   // code implying this hook styles a slot it does not (CONVERSION_GUIDE, "a slot whose only
   // library token is the static").
 
-  useDividerStyles_unstable(state);
+  state = useDividerStyles_unstable(state);
 
   return state;
 };

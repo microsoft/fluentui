@@ -13,10 +13,10 @@ import type { NavDrawerHeaderProps } from './NavDrawerHeader.types';
  * NavDrawerHeader component
  */
 export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps> = React.forwardRef((props, ref) => {
-  const state = useNavDrawerHeader_unstable(props, ref);
+  let state = useNavDrawerHeader_unstable(props, ref);
 
-  useNavDrawerHeaderStyles_unstable(state);
-  useCustomStyleHook_unstable('useNavDrawerHeaderStyles_unstable')(state);
+  state = useNavDrawerHeaderStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useNavDrawerHeaderStyles_unstable')(state);
 
   return renderDrawerHeader_unstable(state);
 });

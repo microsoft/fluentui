@@ -47,7 +47,7 @@ export const hamburgerClassNames: { root: string } = {
  * Apply styling to the Hamburger slots based on the state
  */
 export const useHamburgerStyles_unstable = (state: HamburgerState): HamburgerState => {
-  useButtonStyles_unstable(state);
+  state = useButtonStyles_unstable(state);
 
   // ARGUMENT ORDER — `styles.root`, marker, consumer className (DECISIONS.md D16.2). The
   // unconditional hashed module class leads so the marker is never `classList[0]`: nwsapi's
@@ -59,8 +59,10 @@ export const useHamburgerStyles_unstable = (state: HamburgerState): HamburgerSta
   // `state.root.className` and end up AFTER this pair. Cascade priority comes from the
   // `@layer` order (Hamburger.module.css authors at `fui.components.l2`), not from string
   // position.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, 'group/fui-hamburger', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx(styles.root, 'group/fui-hamburger', state.root.className) },
+  };
 
   // The `icon` slot's assignment is gone: its only library token was the
   // `fui-Hamburger__icon` static, so what remained after D16 would have been

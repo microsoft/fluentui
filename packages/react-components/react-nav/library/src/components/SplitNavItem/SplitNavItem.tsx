@@ -13,10 +13,10 @@ import type { SplitNavItemProps } from './SplitNavItem.types';
  * SplitNavItem component - TODO: add more docs
  */
 export const SplitNavItem: ForwardRefComponent<SplitNavItemProps> = React.forwardRef((props, ref) => {
-  const state = useSplitNavItem_unstable(props, ref);
+  let state = useSplitNavItem_unstable(props, ref);
 
-  useSplitNavItemStyles_unstable(state);
-  useCustomStyleHook_unstable('useSplitNavItemStyles_unstable')(state);
+  state = useSplitNavItemStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useSplitNavItemStyles_unstable')(state);
 
   return renderSplitNavItem_unstable(state);
 });

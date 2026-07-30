@@ -13,10 +13,10 @@ import type { NavItemProps } from './NavItem.types';
  * NavItem component - a single item in the navigation menu.
  */
 export const NavItem: ForwardRefComponent<NavItemProps> = React.forwardRef((props, ref) => {
-  const state = useNavItem_unstable(props, ref);
+  let state = useNavItem_unstable(props, ref);
 
-  useNavItemStyles_unstable(state);
-  useCustomStyleHook_unstable('useNavItemStyles_unstable')(state);
+  state = useNavItemStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useNavItemStyles_unstable')(state);
 
   return renderNavItem_unstable(state);
 });

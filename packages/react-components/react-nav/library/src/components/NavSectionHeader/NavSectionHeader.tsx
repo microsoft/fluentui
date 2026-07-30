@@ -13,10 +13,10 @@ import type { NavSectionHeaderProps } from './NavSectionHeader.types';
  * NavSectionHeader component
  */
 export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps> = React.forwardRef((props, ref) => {
-  const state = useNavSectionHeader_unstable(props, ref);
+  let state = useNavSectionHeader_unstable(props, ref);
 
-  useNavSectionHeaderStyles_unstable(state);
-  useCustomStyleHook_unstable('useNavSectionHeaderStyles_unstable')(state);
+  state = useNavSectionHeaderStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useNavSectionHeaderStyles_unstable')(state);
 
   return renderNavSectionHeader_unstable(state);
 });

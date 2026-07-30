@@ -13,10 +13,10 @@ import type { AppItemStaticProps } from './AppItemStatic.types';
  * AppItemStatic component - Static application item in the navigation menu.
  */
 export const AppItemStatic: ForwardRefComponent<AppItemStaticProps> = React.forwardRef((props, ref) => {
-  const state = useAppItemStatic_unstable(props, ref);
+  let state = useAppItemStatic_unstable(props, ref);
 
-  useAppItemStaticStyles_unstable(state);
-  useCustomStyleHook_unstable('useAppItemStaticStyles_unstable')(state);
+  state = useAppItemStaticStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useAppItemStaticStyles_unstable')(state);
 
   return renderAppItemStatic_unstable(state);
 });

@@ -15,11 +15,11 @@ import { useNavCategoryItemContextValues_unstable } from '../useNavCategoryItemC
  * a list of NavSubItems to take users to a new destination.
  */
 export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = React.forwardRef((props, ref) => {
-  const state = useNavCategoryItem_unstable(props, ref);
+  let state = useNavCategoryItem_unstable(props, ref);
   const contextValues = useNavCategoryItemContextValues_unstable(state);
 
-  useNavCategoryItemStyles_unstable(state);
-  useCustomStyleHook_unstable('useNavCategoryItemStyles')(state);
+  state = useNavCategoryItemStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useNavCategoryItemStyles')(state);
 
   return renderNavCategoryItem_unstable(state, contextValues);
 });

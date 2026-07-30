@@ -15,11 +15,11 @@ import type { NavDrawerProps } from './NavDrawer.types';
  * NavDrawer component - a component that provides a drawer for navigation items.
  */
 export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef((props, ref) => {
-  const state = useNavDrawer_unstable(props, ref);
+  let state = useNavDrawer_unstable(props, ref);
   const contextValues = useNavContextValues_unstable(state as NavState);
 
-  useNavDrawerStyles_unstable(state);
-  useCustomStyleHook_unstable('useNavDrawerStyles_unstable')(state);
+  state = useNavDrawerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useNavDrawerStyles_unstable')(state);
 
   return renderNavDrawer_unstable(state, contextValues);
 });
