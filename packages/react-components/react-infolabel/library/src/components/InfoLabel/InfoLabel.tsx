@@ -13,10 +13,10 @@ import { useInfoLabelStyles_unstable } from './useInfoLabelStyles.styles';
  * InfoLabel component
  */
 export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((props, ref) => {
-  const state = useInfoLabel_unstable(props, ref);
+  let state = useInfoLabel_unstable(props, ref);
 
-  useInfoLabelStyles_unstable(state);
-  useCustomStyleHook_unstable('useInfoLabelStyles_unstable')(state);
+  state = useInfoLabelStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useInfoLabelStyles_unstable')(state);
 
   return renderInfoLabel_unstable(state);
 });
