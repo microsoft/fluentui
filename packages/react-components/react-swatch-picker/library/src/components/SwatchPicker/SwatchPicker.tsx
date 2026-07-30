@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * SwatchPicker component - TODO: add more docs
  */
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps> = React.forwardRef((props, ref) => {
-  const state = useSwatchPicker_unstable(props, ref);
+  let state = useSwatchPicker_unstable(props, ref);
   const contextValues = useSwatchPickerContextValues(state);
 
-  useSwatchPickerStyles_unstable(state);
-  useCustomStyleHook_unstable('useSwatchPickerStyles_unstable')(state);
+  state = useSwatchPickerStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useSwatchPickerStyles_unstable')(state);
 
   return renderSwatchPicker_unstable(state, contextValues);
 });

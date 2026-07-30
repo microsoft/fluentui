@@ -12,10 +12,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * ImageSwatch component is used to render an images, patterns and textures.
  */
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps> = React.forwardRef((props, ref) => {
-  const state = useImageSwatch_unstable(props, ref);
+  let state = useImageSwatch_unstable(props, ref);
 
-  useImageSwatchStyles_unstable(state);
-  useCustomStyleHook_unstable('useImageSwatchStyles_unstable')(state);
+  state = useImageSwatchStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useImageSwatchStyles_unstable')(state);
 
   return renderImageSwatch_unstable(state);
 });

@@ -12,10 +12,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * ColorSwatch component is used to render a colors, icons and gradients.
  */
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps> = React.forwardRef((props, ref) => {
-  const state = useColorSwatch_unstable(props, ref);
+  let state = useColorSwatch_unstable(props, ref);
 
-  useColorSwatchStyles_unstable(state);
-  useCustomStyleHook_unstable('useColorSwatchStyles_unstable')(state);
+  state = useColorSwatchStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useColorSwatchStyles_unstable')(state);
 
   return renderColorSwatch_unstable(state);
 });
