@@ -2,10 +2,9 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike the converted leaf hooks this file needs NO `enforce-use-client` suppression —
- * it still calls `useTableHeaderCellStyles_unstable`, so the rule agrees the directive is
- * required. Converted hooks that call nothing carry a trailing `eslint-disable-line`
- * instead; see useTableHeaderCellStyles.styles.ts.
+ * this file keeps `'use client'` because it still calls `useTableHeaderCellStyles_unstable`, so
+ * `enforce-use-client` sees a hook call and never reports the directive as unnecessary.
+ * Converted leaf hooks call nothing and carry no directive at all; see useTableHeaderCellStyles.styles.ts.
  */
 
 import { clsx } from 'clsx';
