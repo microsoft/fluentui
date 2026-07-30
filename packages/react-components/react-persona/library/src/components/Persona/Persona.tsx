@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * or an Avatar with a PresenceBadge.
  */
 export const Persona: ForwardRefComponent<PersonaProps> = React.forwardRef((props, ref) => {
-  const state = usePersona_unstable(props, ref);
+  let state = usePersona_unstable(props, ref);
 
-  usePersonaStyles_unstable(state);
+  state = usePersonaStyles_unstable(state);
 
-  useCustomStyleHook_unstable('usePersonaStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('usePersonaStyles_unstable')(state);
 
   return renderPersona_unstable(state);
 });
