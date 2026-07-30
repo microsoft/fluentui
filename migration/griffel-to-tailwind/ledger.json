@@ -589,7 +589,7 @@
     },
     "react-charts": {
       "status": "special",
-      "notes": "C1 (6 components) converted+gated; wrapTextInsideDonut was DEAD CODE under Griffel (multi-token selector), revived robustly. PRE-EXISTING DEFECT filed: DonutChart Dynamic stories crash with React #185 (Overflow forceUpdate loop via allowFocusOnLegends, code identical to master) — 3 stories excluded from VR (error-page pixels embed build hash). CartesianChart same latent dead selector (its batch must use CARTESIAN_XAXIS_CLASSNAME literal); SankeyChart literal-pair selectors must stay global."
+      "notes": "C1 (6 components) converted+gated; wrapTextInsideDonut was DEAD CODE under Griffel (multi-token selector), revived robustly. PRE-EXISTING DEFECT filed: DonutChart Dynamic stories crash with React #185 (Overflow forceUpdate loop via allowFocusOnLegends, code identical to master) — 3 stories excluded from VR (error-page pixels embed build hash). CartesianChart same latent dead selector (its batch must use CARTESIAN_XAXIS_CLASSNAME literal); SankeyChart literal-pair selectors must stay global. C2 closed: CartesianChart base + Area/Scatter converted, new VR coverage (9+9), gate 61/61 all 8 chart sets, legend dependent-test seam fixed (test-only, D16 handles)."
     }
   },
   "layerFamily": "fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities",
