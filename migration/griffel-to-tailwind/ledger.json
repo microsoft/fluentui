@@ -105,7 +105,7 @@
       "status": "validated",
       "stylesFiles": 7,
       "storiesCovered": null,
-      "notes": "",
+      "notes": "VR fixture re-baselined 2026-07-29: apps/vr-tests-react-components/src/stories/CalendarCompat/utils.tsx now pins today=3/15/2023 (it previously rendered <Calendar> with no today, so old baselines encoded the capture day); Griffel pixel-equivalence for this package was established by the batch-5 same-day gate (8/8, sweep of 2026-07-28) and this baseline is the post-conversion deterministic reference, re-capture+diff 8/8 clean at --maxDiffPixels 26 (residual = subpixel-vs-grayscale text antialiasing on day-number glyphs, 11-21 px, adjudicated per validation/README.md).",
       "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-card": {
