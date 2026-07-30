@@ -883,7 +883,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_p_"
     >
       <div
@@ -1580,7 +1580,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_u_"
     >
       <div
@@ -1885,7 +1885,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_h_"
     >
       <div

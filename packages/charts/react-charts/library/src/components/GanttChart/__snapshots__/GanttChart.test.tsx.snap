@@ -420,7 +420,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_2p_"
     >
       <div
@@ -435,32 +435,32 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
         style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px); --fui-positioning-slide-direction-x: 0px; --fui-positioning-slide-direction-y: 1px;"
       >
         <div
-          class="fui-cart__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-cart__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-cart__calloutContentX"
+              class=""
             >
               Job-1
                
             </div>
           </div>
           <div
-            class="fui-cart__calloutInfoContainer"
+            class=""
             style="border-inline-start: 4px solid #107c10; margin-top: 11px;"
           >
             <div
-              class="fui-cart__calloutBlockContainer"
+              class=""
             >
               <div
-                class="fui-cart__calloutlegendText"
+                class=""
               >
                 Complete
               </div>
               <div
-                class="fui-cart__calloutContentY"
+                class=""
                 style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
               >
                 01/01/2017 - 02/02/2017
@@ -4778,7 +4778,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_15_"
     >
       <div
@@ -4793,32 +4793,32 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
         style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px); --fui-positioning-slide-direction-x: 0px; --fui-positioning-slide-direction-y: 1px;"
       >
         <div
-          class="fui-cart__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-cart__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-cart__calloutContentX"
+              class=""
             >
               Job-1
                
             </div>
           </div>
           <div
-            class="fui-cart__calloutInfoContainer"
+            class=""
             style="border-inline-start: 4px solid #107c10; margin-top: 11px;"
           >
             <div
-              class="fui-cart__calloutBlockContainer"
+              class=""
             >
               <div
-                class="fui-cart__calloutlegendText"
+                class=""
               >
                 Complete
               </div>
               <div
-                class="fui-cart__calloutContentY"
+                class=""
                 style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
               >
                 01/01/2017 - 02/02/2017

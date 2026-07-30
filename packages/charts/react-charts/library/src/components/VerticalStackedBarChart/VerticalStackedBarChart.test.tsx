@@ -6,6 +6,8 @@ import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
+import vsbcStyles from './VerticalStackedBarChart.module.css';
+
 expect.extend(toHaveNoViolations);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -488,8 +490,13 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       expect(metalsLegend).toBeDefined();
       fireEvent.mouseOver(metalsLegend!);
 
-      // Assert: Paper bars (rendered as <path> due to barCornerRadius) should be dimmed
-      const paths = container.querySelectorAll('path.fui-vsbc__opacityChangeOnHover');
+      // Assert: Paper bars (rendered as <path> due to barCornerRadius) should be dimmed.
+      // Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5):
+      // `fui-vsbc__opacityChangeOnHover` is no longer rendered; the bars are found through
+      // the `.opacity-change-on-hover` local of VerticalStackedBarChart.module.css — the
+      // very class the component applies. The dimming mechanism is unchanged: `opacity` is
+      // still written as an ATTRIBUTE by the component, which is what the assertion reads.
+      const paths = container.querySelectorAll(`path.${vsbcStyles['opacity-change-on-hover']}`);
       paths.forEach(path => {
         expect(path).toHaveAttribute('opacity', '0.1');
       });

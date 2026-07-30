@@ -1,10 +1,26 @@
 import { screen, fireEvent, act } from '@testing-library/react';
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { getByClass, getByExactClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { toHaveNoViolations } from 'jest-axe';
 import type { HorizontalBarChartWithAxisDataPoint } from '../../HorizontalBarChart';
 import { render } from '@testing-library/react';
 import * as React from 'react';
+
+import popoverStyles from '../CommonComponents/ChartPopover.module.css';
+
+/*
+ * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5):
+ * ChartPopover is converted and `popoverClassNames` no longer publishes the per-slot BEM
+ * statics, so `fui-cart__calloutContentX` / `fui-cart__calloutContentY` /
+ * `fui-cart__calloutDateTimeContainer` are not in the DOM. The callout elements are found
+ * through the locals of ChartPopover.module.css — the very classes the component applies.
+ * Only the HANDLE moved: the callout still renders the same text content, which is what
+ * the `textContent` assertions below read.
+ */
+const getCalloutContentX = (container: HTMLElement) => getByExactClass(container, popoverStyles['callout-content-x']);
+const getCalloutContentY = (container: HTMLElement) => getByExactClass(container, popoverStyles['callout-content-y']);
+const getCalloutDateTimeContainer = (container: HTMLElement) =>
+  getByExactClass(container, popoverStyles['callout-date-time-container']);
 expect.extend(toHaveNoViolations);
 
 const pointsForWrapLabels = [
@@ -458,11 +474,11 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
     });
     // Assert
     expect(getById(container, /toolTipcallout/i)).toBeDefined();
-    expect(getByClass(container, /calloutDateTimeContainer/i)).toBeDefined();
-    const xAxisCallOutData = getByClass(container, /calloutContentX/i);
+    expect(getCalloutDateTimeContainer(container)).toBeDefined();
+    const xAxisCallOutData = getCalloutContentX(container);
     expect(xAxisCallOutData).toBeDefined();
     expect(xAxisCallOutData[0].textContent).toEqual('1000 ');
-    const yAxisCallOutData = getByClass(container, /calloutContentY/i);
+    const yAxisCallOutData = getCalloutContentY(container);
     expect(yAxisCallOutData).toBeDefined();
     expect(yAxisCallOutData[0].textContent).toEqual('1000');
   });
@@ -477,11 +493,11 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
     });
     // Assert
     expect(getById(container, /toolTipcallout/i)).toBeDefined();
-    expect(getByClass(container, /calloutDateTimeContainer/i)).toBeDefined();
-    const xAxisCallOutData = getByClass(container, /calloutContentX/i);
+    expect(getCalloutDateTimeContainer(container)).toBeDefined();
+    const xAxisCallOutData = getCalloutContentX(container);
     expect(xAxisCallOutData).toBeDefined();
     expect(xAxisCallOutData[0].textContent).toEqual('String One ');
-    const yAxisCallOutData = getByClass(container, /calloutContentY/i);
+    const yAxisCallOutData = getCalloutContentY(container);
     expect(yAxisCallOutData).toBeDefined();
     expect(yAxisCallOutData[0].textContent).toEqual('1000');
   });

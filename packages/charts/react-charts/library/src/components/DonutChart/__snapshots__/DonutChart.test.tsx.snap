@@ -80,7 +80,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       </svg>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_3_"
     />
     <div
@@ -249,7 +249,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         </svg>
       </div>
       <div
-        class="fui-cart__calloutContainer"
+        class="group/fui-chart-popover"
         id="callout_r_1l_"
       />
       <div
@@ -420,7 +420,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__calloutContainer"
+          class="group/fui-chart-popover"
           id="callout_r_41_"
         >
           <div
@@ -432,31 +432,31 @@ Object {
             style="position: fixed; left: 0px; top: 0px; margin: 0px;"
           >
             <div
-              class="fui-cart__calloutContentRoot"
+              class=""
             >
               <div
-                class="fui-cart__calloutDateTimeContainer"
+                class=""
               >
                 <div
-                  class="fui-cart__calloutContentX"
+                  class=""
                 >
                    
                 </div>
               </div>
               <div
-                class="fui-cart__calloutInfoContainer"
+                class=""
                 style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
               >
                 <div
-                  class="fui-cart__calloutBlockContainer"
+                  class=""
                 >
                   <div
-                    class="fui-cart__calloutlegendText"
+                    class=""
                   >
                     2020/04/30
                   </div>
                   <div
-                    class="fui-cart__calloutContentY"
+                    class=""
                     style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
                   >
                     20,000
@@ -645,7 +645,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__calloutContainer"
+        class="group/fui-chart-popover"
         id="callout_r_41_"
       >
         <div
@@ -657,31 +657,31 @@ Object {
           style="position: fixed; left: 0px; top: 0px; margin: 0px;"
         >
           <div
-            class="fui-cart__calloutContentRoot"
+            class=""
           >
             <div
-              class="fui-cart__calloutDateTimeContainer"
+              class=""
             >
               <div
-                class="fui-cart__calloutContentX"
+                class=""
               >
                  
               </div>
             </div>
             <div
-              class="fui-cart__calloutInfoContainer"
+              class=""
               style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
             >
               <div
-                class="fui-cart__calloutBlockContainer"
+                class=""
               >
                 <div
-                  class="fui-cart__calloutlegendText"
+                  class=""
                 >
                   2020/04/30
                 </div>
                 <div
-                  class="fui-cart__calloutContentY"
+                  class=""
                   style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
                 >
                   20,000
@@ -910,7 +910,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-cart__calloutContainer"
+          class="group/fui-chart-popover"
           id="callout_r_4e_"
         >
           <div
@@ -922,31 +922,31 @@ Object {
             style="position: fixed; left: 0px; top: 0px; margin: 0px;"
           >
             <div
-              class="fui-cart__calloutContentRoot"
+              class=""
             >
               <div
-                class="fui-cart__calloutDateTimeContainer"
+                class=""
               >
                 <div
-                  class="fui-cart__calloutContentX"
+                  class=""
                 >
                    
                 </div>
               </div>
               <div
-                class="fui-cart__calloutInfoContainer"
+                class=""
                 style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
               >
                 <div
-                  class="fui-cart__calloutBlockContainer"
+                  class=""
                 >
                   <div
-                    class="fui-cart__calloutlegendText"
+                    class=""
                   >
                     2020/04/30
                   </div>
                   <div
-                    class="fui-cart__calloutContentY"
+                    class=""
                     style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
                   >
                     20,000
@@ -1135,7 +1135,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-cart__calloutContainer"
+        class="group/fui-chart-popover"
         id="callout_r_4e_"
       >
         <div
@@ -1147,31 +1147,31 @@ Object {
           style="position: fixed; left: 0px; top: 0px; margin: 0px;"
         >
           <div
-            class="fui-cart__calloutContentRoot"
+            class=""
           >
             <div
-              class="fui-cart__calloutDateTimeContainer"
+              class=""
             >
               <div
-                class="fui-cart__calloutContentX"
+                class=""
               >
                  
               </div>
             </div>
             <div
-              class="fui-cart__calloutInfoContainer"
+              class=""
               style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
             >
               <div
-                class="fui-cart__calloutBlockContainer"
+                class=""
               >
                 <div
-                  class="fui-cart__calloutlegendText"
+                  class=""
                 >
                   2020/04/30
                 </div>
                 <div
-                  class="fui-cart__calloutContentY"
+                  class=""
                   style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
                 >
                   20,000
@@ -1394,7 +1394,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_33_"
   />
   <div
@@ -1587,7 +1587,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_2p_"
   />
   <div
@@ -1780,7 +1780,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_2u_"
   />
   <div
@@ -1943,7 +1943,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_1v_"
   />
   <div
@@ -2106,7 +2106,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_24_"
   />
   <div
@@ -2269,7 +2269,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_2g_"
   />
   <div
@@ -2420,7 +2420,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_27_"
   />
 </div>
@@ -2505,7 +2505,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_2b_"
   />
   <div
@@ -2668,7 +2668,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
     </svg>
   </div>
   <div
-    class="fui-cart__calloutContainer"
+    class="group/fui-chart-popover"
     id="callout_r_2k_"
   />
   <div

@@ -1878,7 +1878,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_bk_"
     >
       <div
@@ -1890,13 +1890,13 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
-          class="fui-cart__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-cart__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-cart__calloutContentX"
+              class=""
               data-is-focusable="false"
               role="text"
             >
@@ -1910,22 +1910,22 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             >
               <div>
                 <div
-                  class="fui-cart__calloutBlockContainer"
+                  class=""
                   id="0_30"
                   style="border-inline-start: 4px solid yellow;"
                 >
                   <div
-                    class="fui-cart__calloutBlockContainer fui-cart__calloutBlockContainertoDrawShapefalse"
+                    class=""
                     style="margin-top: 13px;"
                   >
                     <div
-                      class="fui-cart__calloutlegendText"
+                      class=""
                     >
                        
                       metaData3
                     </div>
                     <div
-                      class="fui-cart__calloutContentY"
+                      class=""
                       style="direction: ltr; unicode-bidi: isolate;"
                     >
                       30
@@ -2557,7 +2557,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_cr_"
     >
       <div

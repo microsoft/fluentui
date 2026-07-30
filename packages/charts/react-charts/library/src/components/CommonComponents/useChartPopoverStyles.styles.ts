@@ -1,162 +1,80 @@
-'use client';
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file no longer carries a
+ * `'use client'` directive. After conversion it calls no React hook — `makeStyles`'s
+ * `useStyles()` call is gone — so `enforce-use-client` reports the directive as
+ * unnecessary. Same split as react-badge's Badge (no directive) vs CounterBadge (kept it
+ * because it still calls a hook). `ChartPopover.tsx`, which does use hooks, keeps its own.
+ */
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { clsx } from 'clsx';
 import type { ChartPopoverProps, PopoverComponentStyles } from './ChartPopover.types';
 
+import styles from './ChartPopover.module.css';
+
 /**
+ * Public identity class for ChartPopover.
+ *
  * @internal
+ * @deprecated for styling. The only supported way to style a Fluent component's internals
+ * is the per-slot `styles` props. `root` is retained as the component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5), stamped on the
+ * `calloutContainer` `<div>` (ChartPopover's outermost element) — usable as a selector and
+ * as a `group-*` variant target. The per-slot BEM statics (`fui-cart__calloutContentRoot`,
+ * `fui-cart__calloutContainer`, …) were removed with the D16 sweep: there is no public
+ * class-name handle on component internals.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + popoverClassNames.root` is an invalid selector. Use
+ * `fuiSelector(popoverClassNames.root)` from `@fluentui/react-utilities` at every selector
+ * site (DECISIONS.md D16.5).
  */
-export const popoverClassNames: SlotClassNames<PopoverComponentStyles> = {
-  calloutContentRoot: 'fui-cart__calloutContentRoot',
-  calloutDateTimeContainer: 'fui-cart__calloutDateTimeContainer',
-  calloutContentX: 'fui-cart__calloutContentX',
-  calloutBlockContainer: 'fui-cart__calloutBlockContainer',
-  calloutBlockContainertoDrawShapefalse: 'fui-cart__calloutBlockContainertoDrawShapefalse',
-  calloutBlockContainertoDrawShapetrue: 'fui-cart__calloutBlockContainertoDrawShapetrue',
-  shapeStyles: 'fui-cart__shapeStyles',
-  calloutlegendText: 'fui-cart__calloutlegendText',
-  calloutContentY: 'fui-cart__calloutContentY',
-  descriptionMessage: 'fui-cart__descriptionMessage',
-  ratio: 'fui-cart__ratio',
-  numerator: 'fui-cart__numerator',
-  denominator: 'fui-cart__denominator',
-  calloutInfoContainer: 'fui-cart__calloutInfoContainer',
-  calloutContainer: 'fui-cart__calloutContainer',
+export const popoverClassNames: { root: string } = {
+  root: 'group/fui-chart-popover',
 };
 
 /**
- * Base Styles
- */
-const useStyles = makeStyles({
-  calloutContentRoot: {
-    display: 'grid',
-    overflow: 'hidden',
-    backgroundColor: tokens.colorNeutralBackground1,
-    backgroundBlendMode: 'normal, luminosity',
-  },
-  calloutDateTimeContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  calloutContentX: {
-    ...typographyStyles.caption1,
-    opacity: '0.8',
-    color: tokens.colorNeutralForeground2,
-  },
-  calloutBlockContainer: {
-    color: tokens.colorNeutralForeground2,
-    textAlign: 'left',
-  },
-  calloutBlockContainerCartesian: {
-    ...typographyStyles.caption1,
-    forcedColorAdjust: 'none',
-  },
-  calloutBlockContainerNonCartesian: {
-    fontSize: tokens.fontSizeHero700,
-    lineHeight: '22px',
-    forcedColorAdjust: 'none',
-  },
-  calloutBlockContainertoDrawShapefalse: {
-    paddingLeft: tokens.spacingHorizontalS,
-    forcedColorAdjust: 'none',
-  },
-  calloutBlockContainertoDrawShapetrue: { display: 'inline-grid' },
-  shapeStyles: {
-    marginRight: tokens.spacingHorizontalS,
-  },
-  calloutLegendText: {
-    ...typographyStyles.caption1,
-    color: tokens.colorNeutralForeground2,
-    forcedColorAdjust: 'auto',
-    marginBottom: tokens.spacingVerticalXS,
-  },
-  calloutContentY: {
-    forcedColorAdjust: 'auto',
-  },
-  calloutContentYCartesian: {
-    ...typographyStyles.subtitle2Stronger,
-  },
-  calloutContentYNonCartesian: {
-    ...typographyStyles.title2,
-  },
-  descriptionMessage: {
-    ...typographyStyles.caption1,
-    color: tokens.colorNeutralForeground2,
-    marginTop: tokens.spacingVerticalMNudge,
-    paddingTop: tokens.spacingVerticalMNudge,
-    borderTop: `1px solid ${tokens.colorNeutralStroke2}`,
-  },
-  ratio: {
-    ...typographyStyles.caption2,
-    marginLeft: tokens.spacingHorizontalSNudge,
-    color: tokens.colorNeutralForeground1,
-  },
-  numerator: {
-    ...typographyStyles.caption2Strong,
-  },
-  denominator: {
-    ...typographyStyles.caption2Strong,
-  },
-  calloutInfoContainer: {
-    paddingLeft: tokens.spacingHorizontalS,
-    forcedColorAdjust: 'none',
-  },
-  calloutContainer: {},
-});
-/**
- * Apply styling to the Carousel slots based on the state
+ * Apply styling to the ChartPopover slots based on the props.
+ *
+ * Cascade priority is decided by the `@layer fui.*` order in ChartPopover.module.css, not
+ * by the order of the `clsx` arguments — see that file's header for the mapping back to
+ * the mergeClasses() argument order this replaces.
+ *
+ * The `isCartesian` prop selects between two mutually-exclusive module classes on two
+ * slots — a plain conditional class lookup, exactly as the Griffel version selected
+ * between two slices. No data attributes are set: `isCartesian` is a render-time look
+ * selection with no descendant that needs to read it (D15.6 — data-* is fallback-only).
  */
 export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComponentStyles => {
   const { isCartesian } = props;
-  const baseStyles = useStyles();
   return {
-    calloutContentRoot: mergeClasses(
-      popoverClassNames.calloutContentRoot,
-      baseStyles.calloutContentRoot,
-      props.styles?.calloutContentRoot,
+    calloutContentRoot: clsx(styles['callout-content-root'], props.styles?.calloutContentRoot),
+    calloutDateTimeContainer: clsx(styles['callout-date-time-container'] /*props.styles?.calloutDateTimeContainer*/),
+    calloutContentX: clsx(styles['callout-content-x'] /*props.styles?.calloutContentX*/),
+    calloutBlockContainer: clsx(
+      styles['callout-block-container'] /*props.styles?.calloutBlockContainerCartesian*/,
+      isCartesian ? styles['callout-block-container-cartesian'] : styles['callout-block-container-non-cartesian'],
     ),
-    calloutDateTimeContainer: mergeClasses(
-      popoverClassNames.calloutDateTimeContainer,
-      baseStyles.calloutDateTimeContainer /*props.styles?.calloutDateTimeContainer*/,
+    calloutBlockContainertoDrawShapefalse: clsx(
+      styles['callout-block-container-to-draw-shape-false'] /*props.styles?.calloutBlockContainertoDrawShapefalse*/,
     ),
-    calloutContentX: mergeClasses(
-      popoverClassNames.calloutContentX,
-      baseStyles.calloutContentX /*props.styles?.calloutContentX*/,
+    calloutBlockContainertoDrawShapetrue: clsx(
+      styles['callout-block-container-to-draw-shape-true'] /*props.styles?.calloutBlockContainertoDrawShapetrue*/,
     ),
-    calloutBlockContainer: mergeClasses(
-      popoverClassNames.calloutBlockContainer,
-      baseStyles.calloutBlockContainer /*props.styles?.calloutBlockContainerCartesian*/,
-      isCartesian ? baseStyles.calloutBlockContainerCartesian : baseStyles.calloutBlockContainerNonCartesian,
+    shapeStyles: clsx(styles['shape-styles'] /*props.styles?.shapeStyles*/),
+    calloutlegendText: clsx(styles['callout-legend-text'] /*props.styles?.calloutlegendText*/),
+    calloutContentY: clsx(
+      styles['callout-content-y'] /*props.styles?.calloutContentYNonCartesian*/,
+      isCartesian ? styles['callout-content-y-cartesian'] : styles['callout-content-y-non-cartesian'],
     ),
-    calloutBlockContainertoDrawShapefalse: mergeClasses(
-      popoverClassNames.calloutBlockContainertoDrawShapefalse,
-      baseStyles.calloutBlockContainertoDrawShapefalse /*props.styles?.calloutBlockContainertoDrawShapefalse*/,
-    ),
-    calloutBlockContainertoDrawShapetrue: mergeClasses(
-      popoverClassNames.calloutBlockContainertoDrawShapetrue,
-      baseStyles.calloutBlockContainertoDrawShapetrue /*props.styles?.calloutBlockContainertoDrawShapetrue*/,
-    ),
-    shapeStyles: mergeClasses(popoverClassNames.shapeStyles, baseStyles.shapeStyles /*props.styles?.shapeStyles*/),
-    calloutlegendText: mergeClasses(
-      popoverClassNames.calloutlegendText,
-      baseStyles.calloutLegendText /*props.styles?.calloutlegendText*/,
-    ),
-    calloutContentY: mergeClasses(
-      popoverClassNames.calloutContentY,
-      baseStyles.calloutContentY /*props.styles?.calloutContentYNonCartesian*/,
-      isCartesian ? baseStyles.calloutContentYCartesian : baseStyles.calloutContentYNonCartesian,
-    ),
-    descriptionMessage: mergeClasses(
-      popoverClassNames.descriptionMessage,
-      baseStyles.descriptionMessage /*props.styles?. descriptionMessage*/,
-    ),
-    ratio: mergeClasses(popoverClassNames.ratio, baseStyles.ratio /*props.styles?.ratio*/),
-    numerator: mergeClasses(popoverClassNames.numerator, baseStyles.numerator /*props.styles?.numerator*/),
-    denominator: mergeClasses(popoverClassNames.denominator, baseStyles.denominator /*props.styles?.denominator*/),
-    calloutInfoContainer: mergeClasses(popoverClassNames.calloutInfoContainer, baseStyles.calloutInfoContainer),
-    calloutContainer: mergeClasses(popoverClassNames.calloutContainer, baseStyles.calloutContainer),
+    descriptionMessage: clsx(styles['description-message'] /*props.styles?. descriptionMessage*/),
+    ratio: clsx(styles.ratio /*props.styles?.ratio*/),
+    numerator: clsx(styles.numerator /*props.styles?.numerator*/),
+    denominator: clsx(styles.denominator /*props.styles?.denominator*/),
+    calloutInfoContainer: clsx(styles['callout-info-container']),
+    // Unconditional module identity class FIRST, then the named group marker (DECISIONS.md
+    // D16.2) — the marker must never be `classList[0]`; nwsapi's `:scope` polyfill throws
+    // on the `/` under jsdom. Written as a LITERAL, not `popoverClassNames.root`:
+    // greppable, and it keeps the `@deprecated` constant from being self-referenced.
+    calloutContainer: clsx(styles['callout-container'], 'group/fui-chart-popover'),
   };
 };

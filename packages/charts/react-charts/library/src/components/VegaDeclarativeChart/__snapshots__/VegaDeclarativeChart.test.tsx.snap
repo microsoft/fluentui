@@ -7,17 +7,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"
@@ -246,7 +246,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="Jan. North, 100."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="119.17190775681341"
@@ -261,7 +261,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   />
                   <rect
                     aria-label="Jan. South, 80."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#e3008c"
                     height="95.33752620545073"
@@ -284,7 +284,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="Feb. North, 120."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="143.19676549865227"
@@ -299,7 +299,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   />
                   <rect
                     aria-label="Feb. South, 90."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#e3008c"
                     height="107.39757412398922"
@@ -322,7 +322,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="Mar. North, 110."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="131.18311562651184"
@@ -337,7 +337,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   />
                   <rect
                     aria-label="Mar. South, 85."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#e3008c"
                     height="101.36877116594097"
@@ -595,17 +595,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"
@@ -834,7 +834,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-01-01. A, 100."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="212.5"
@@ -857,7 +857,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-01-02. A, 120."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="255"
@@ -880,7 +880,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-01-03. A, 110."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="233.75"
@@ -1046,17 +1046,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"
@@ -1285,7 +1285,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="A. Bar, 10."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="127.5"
@@ -1308,7 +1308,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="B. Bar, 20."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="255"
@@ -1331,7 +1331,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="C. Bar, 15."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="191.25"
@@ -1497,17 +1497,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Sales and Profit Trend. Vertical bar chart with 6 stacked bars and 1 lines. The X axis displays Month. The Y axis displays Sales ($). "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"
@@ -1813,7 +1813,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-01. Bar, 45000."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="lightblue"
                     height="157.8358208955224"
@@ -1836,7 +1836,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-02. Bar, 52000."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="lightblue"
                     height="182.38805970149255"
@@ -1859,7 +1859,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-03. Bar, 48000."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="lightblue"
                     height="168.35820895522386"
@@ -1882,7 +1882,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-04. Bar, 61000."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="lightblue"
                     height="213.955223880597"
@@ -1905,7 +1905,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-05. Bar, 58000."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="lightblue"
                     height="203.43283582089552"
@@ -1928,7 +1928,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 >
                   <rect
                     aria-label="2024-06. Bar, 67000."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="lightblue"
                     height="235"
@@ -2188,14 +2188,14 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fuicm-root group/fui-donut-chart fui-charts-resp-child__root"
+        class="group/fui-donut-chart group/fui-responsive-child"
       >
         <div
-          class="fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fuicm-chart fui-charts-resp-child__chart"
+            class=""
             height="160"
             width="0"
           >
@@ -2231,7 +2231,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
           </svg>
         </div>
         <div
-          class="fui-cart__calloutContainer"
+          class="group/fui-chart-popover"
           id="callout_r_2t_"
         />
         <div
@@ -2304,17 +2304,17 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-grouped-vertical-bar-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"
@@ -2459,7 +2459,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               >
                 <rect
                   aria-label="Q1. North, 45000."
-                  class="fui-gvbc**opacityChangeOnHover"
+                  class=""
                   fill="#637cef"
                   height="255"
                   opacity=""
@@ -2472,7 +2472,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 />
                 <rect
                   aria-label="Q1. South, 38000."
-                  class="fui-gvbc**opacityChangeOnHover"
+                  class=""
                   fill="#e3008c"
                   height="215.33333333333331"
                   opacity=""
@@ -2485,7 +2485,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-gvbc**barLabel"
+                  class=""
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
                   x="8"
@@ -2495,7 +2495,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 </text>
                 <text
                   aria-hidden="true"
-                  class="fui-gvbc**barLabel"
+                  class=""
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
                   x="25.77777777777778"
@@ -2577,17 +2577,17 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 2 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="350"
             role="region"
             style="display: block;"
@@ -2714,17 +2714,17 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Financial Ratios Heatmap. Heat map chart with 12 data points. The X axis displays Company. The Y axis displays Financial Ratio. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="350"
             role="region"
             style="display: block;"
@@ -3182,17 +3182,17 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 2 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="350"
             role="region"
             style="display: block;"
@@ -3319,17 +3319,17 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"
@@ -3539,7 +3539,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 >
                   <rect
                     aria-label="A. Bar, 10."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="159.375"
@@ -3555,7 +3555,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 </g>
                 <text
                   aria-label="Total: 10"
-                  class="fui-vsbc__barLabel"
+                  class=""
                   role="img"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
@@ -3574,7 +3574,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 >
                   <rect
                     aria-label="B. Bar, 15."
-                    class="fui-vsbc__opacityChangeOnHover default"
+                    class="default"
                     cursor="default"
                     fill="#637cef"
                     height="239.0625"
@@ -3590,7 +3590,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 </g>
                 <text
                   aria-label="Total: 15"
-                  class="fui-vsbc__barLabel"
+                  class=""
                   role="img"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
@@ -3728,17 +3728,17 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Air Quality Index Heatmap. Heat map chart with 12 data points. The X axis displays Time of Day. The Y axis displays City. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="350"
             role="region"
             style="display: block;"
@@ -4196,17 +4196,17 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Weekly Attendance Patterns. Heat map chart with 12 data points. The X axis displays Day of Week. The Y axis displays Class Period. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="350"
             role="region"
             style="display: block;"
@@ -4664,17 +4664,17 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
       style="width: 100%; height: 350px;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="350"
             role="region"
             style="display: block;"
@@ -4868,17 +4868,17 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fuicm-root group/fui-scatter-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-scatter-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="BMI Distribution ScatterThe X axis displays Height (cm). The Y axis displays Weight (kg). "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"
@@ -5402,17 +5402,17 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fuicm-root group/fui-scatter-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-scatter-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Chart. The X axis displays values. The Y axis displays values. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"
@@ -5805,17 +5805,17 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
       style="width: 100%; height: 100%;"
     >
       <div
-        class="fuicm-root group/fui-cartesian-chart fuicm-root group/fui-scatter-chart fui-charts-resp-child__root"
+        class="group/fui-cartesian-chart group/fui-scatter-chart group/fui-responsive-child"
         id="chart_"
         role="presentation"
       >
         <div
-          class="fuicm-chart-wrapper fui-charts-resp-child__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Chart. The X axis displays values. The Y axis displays values. "
-            class="fui-charts-resp-child__chart"
+            class=""
             height="310"
             role="region"
             style="display: block;"

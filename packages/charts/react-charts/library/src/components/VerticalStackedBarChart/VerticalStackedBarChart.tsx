@@ -1372,6 +1372,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return (
       <CartesianChart
         {...props}
+        // Identity composition (DECISIONS.md D15.1/D16.2): the module identity class +
+        // `group/fui-vertical-stacked-bar-chart` marker are composed in
+        // `useVerticalStackedBarChartStyles` and handed to CartesianChart's root through the
+        // `styles` prop — placed AFTER the `{...props}` spread so it wins.
+        styles={{ ...props.styles, root: classes.root }}
         chartTitle={_getChartTitle()}
         points={_dataset}
         chartType={ChartTypes.VerticalStackedBarChart}

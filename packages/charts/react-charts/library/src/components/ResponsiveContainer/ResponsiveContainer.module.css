@@ -1,0 +1,68 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Slot mapping (mergeClasses ARGUMENT order of `useResponsiveChildStyles`, composed in
+ * `ResponsiveContainer.tsx`'s cloneElement):
+ *
+ *   root          1 child.props.styles?.root       → consumer string (kept FIRST in the clsx)
+ *                 2 responsiveChildClassNames.root → static (JS) — REMOVED (D16.1)
+ *                 3 useStyles.root                 → UNLAYERED  .root  (see below)
+ *                 4 group/fui-responsive-child     → identity marker (JS, unstyled)
+ *   chartWrapper  same shape                       → UNLAYERED  .chart-wrapper
+ *   chart         same shape                       → UNLAYERED  .chart
+ *
+ * ── Why UNLAYERED, not fui.components.l2 (DECISIONS.md D2 amendment 5) ────────────────
+ * ResponsiveContainer renders NO classed element of its own: these classes are injected
+ * via `cloneElement` into the CHILD CHART's `styles` prop and land on elements owned by
+ * whichever chart is wrapped. That ownership set is MIXED — converted components
+ * (CartesianChart's root/chartWrapper, DonutChart, …) and still-Griffel components
+ * (SankeyChart, GaugeChart, VegaDeclarativeChart, …) whose own root slices are UNLAYERED
+ * Griffel atomics that set the very same `width`/`height` properties (e.g.
+ * useSankeyChartStyles root `width/height: 100%`). A layered copy of these rules could
+ * never beat those atomics, inverting the old mergeClasses winner (the responsive classes
+ * were the LAST argument, i.e. the winner). Unlayered preserves the winner in both
+ * directions: it beats every `fui.*` layer on converted charts, and ties (specificity
+ * 0-1-0, then load order) against the unconverted atomics — where the VALUES are identical
+ * (`100%` vs `100%`) today, so nothing can render differently.
+ *
+ * TRANSITIONAL, exactly as CONVERSION_GUIDE §2 describes: when the remaining chart
+ * components convert (their root slices move into `fui.components.l1`), this block moves
+ * into `@layer fui.components.l2` — the altitude that mirrors "styles applied over another
+ * component's hook output".
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/ResponsiveContainer/useResponsiveChildStyles.styles.js. No
+ * `[ltr, rtl]` pair (nothing direction-sensitive) and no HighContrastSelector.
+ */
+
+/* from useStyles.root */
+.root {
+  @apply h-full w-full;
+}
+
+/* from useStyles.chartWrapper */
+.chart-wrapper {
+  @apply w-full;
+}
+
+/*
+ * from useStyles.chart. Overrides the pixel `width` ATTRIBUTE of the chart `<svg>` (CSS
+ * beats presentation attributes at any cascade position) so it resizes properly within a
+ * flexbox or grid layout. Height is deliberately NOT set to 100% because that causes the
+ * charts to resize vertically in an infinite loop (comment carried from the source).
+ */
+.chart {
+  @apply w-full;
+}

@@ -3,7 +3,7 @@
 exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -211,7 +211,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             >
               <rect
                 aria-label="January. Metadata1, 2."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#0078d4"
                 height="4.2"
@@ -226,7 +226,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="January. Metadata2, 0.5."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#002050"
                 height="1.05"
@@ -242,7 +242,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </g>
             <text
               aria-label="Total: 2.5"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -261,7 +261,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             >
               <rect
                 aria-label="February. Metadata1, 30."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#0078d4"
                 height="62.999999999999986"
@@ -276,7 +276,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="February. Metadata2, 3."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#002050"
                 height="6.299999999999999"
@@ -291,7 +291,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="February. Metadata3, 40."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#00188f"
                 height="83.99999999999999"
@@ -307,7 +307,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </g>
             <text
               aria-label="Total: 73"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -326,7 +326,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             >
               <rect
                 aria-label="March. Metadata1, 10."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#0078d4"
                 height="21"
@@ -341,7 +341,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="March. Metadata2, 60."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#002050"
                 height="126"
@@ -356,7 +356,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="March. Metadata3, 30."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#00188f"
                 height="63"
@@ -372,7 +372,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </g>
             <text
               aria-label="Total: 100"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -558,7 +558,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
 exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -766,7 +766,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             >
               <rect
                 aria-label="January. Metadata1, 2."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#0078d4"
                 height="4.2"
@@ -781,7 +781,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="January. Metadata2, 0.5."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#002050"
                 height="1.05"
@@ -797,7 +797,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </g>
             <text
               aria-label="Total: 2.5"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -816,7 +816,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             >
               <rect
                 aria-label="February. Metadata1, 30."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#0078d4"
                 height="62.999999999999986"
@@ -831,7 +831,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="February. Metadata2, 3."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#002050"
                 height="6.299999999999999"
@@ -846,7 +846,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="February. Metadata3, 40."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#00188f"
                 height="83.99999999999999"
@@ -862,7 +862,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </g>
             <text
               aria-label="Total: 73"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -881,7 +881,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             >
               <rect
                 aria-label="March. Metadata1, 10."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#0078d4"
                 height="21"
@@ -896,7 +896,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="March. Metadata2, 60."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#002050"
                 height="126"
@@ -911,7 +911,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               />
               <rect
                 aria-label="March. Metadata3, 30."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="#00188f"
                 height="63"
@@ -927,7 +927,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </g>
             <text
               aria-label="Total: 100"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -1113,7 +1113,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
 exports[`Vertical stacked bar chart rendering Should render the vertical stacked bar chart with numeric x-axis data 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -1473,7 +1473,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="aqua"
                 height="188.46153846153845"
@@ -1488,7 +1488,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="navy"
                 height="23.557692307692307"
@@ -1504,7 +1504,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             </g>
             <text
               aria-label="Total: 45"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -1523,7 +1523,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="aqua"
                 height="141.34615384615384"
@@ -1538,7 +1538,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="navy"
                 height="94.23076923076923"
@@ -1554,7 +1554,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             </g>
             <text
               aria-label="Total: 50"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -1633,7 +1633,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
 exports[`VerticalStackedBarChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -1993,7 +1993,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="aqua"
                 height="188.46153846153845"
@@ -2008,7 +2008,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="navy"
                 height="23.557692307692307"
@@ -2024,7 +2024,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             </g>
             <text
               aria-label="Total: 45"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -2043,7 +2043,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="aqua"
                 height="141.34615384615384"
@@ -2058,7 +2058,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="navy"
                 height="94.23076923076923"
@@ -2074,7 +2074,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             </g>
             <text
               aria-label="Total: 50"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -2154,7 +2154,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_1v_"
     >
       <div
@@ -2166,32 +2166,32 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
-          class="fui-cart__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-cart__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-cart__calloutContentX"
+              class=""
             >
               2020/04/30
                
             </div>
           </div>
           <div
-            class="fui-cart__calloutInfoContainer"
+            class=""
             style="border-inline-start: 4px solid aqua; margin-top: 11px;"
           >
             <div
-              class="fui-cart__calloutBlockContainer"
+              class=""
             >
               <div
-                class="fui-cart__calloutlegendText"
+                class=""
               >
                 Metadata1
               </div>
               <div
-                class="fui-cart__calloutContentY"
+                class=""
                 style="color: aqua; font-size: var(--fontSizeHero700);"
               >
                 40%
@@ -2208,7 +2208,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
 exports[`VerticalStackedBarChart - mouse events Should render customized callout on mouseover 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -2568,7 +2568,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="aqua"
                 height="188.46153846153845"
@@ -2583,7 +2583,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="navy"
                 height="23.557692307692307"
@@ -2599,7 +2599,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </g>
             <text
               aria-label="Total: 45"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -2618,7 +2618,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="aqua"
                 height="141.34615384615384"
@@ -2633,7 +2633,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="navy"
                 height="94.23076923076923"
@@ -2649,7 +2649,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </g>
             <text
               aria-label="Total: 50"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -2729,7 +2729,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_27_"
     >
       <div
@@ -2760,7 +2760,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
 exports[`VerticalStackedBarChart - mouse events Should render customized callout per stack on mouseover 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -3120,7 +3120,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="aqua"
                 height="188.46153846153845"
@@ -3135,7 +3135,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="navy"
                 height="23.557692307692307"
@@ -3151,7 +3151,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </g>
             <text
               aria-label="Total: 45"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -3170,7 +3170,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="aqua"
                 height="141.34615384615384"
@@ -3185,7 +3185,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
-                class="fui-vsbc__opacityChangeOnHover default"
+                class="default"
                 cursor="default"
                 fill="navy"
                 height="94.23076923076923"
@@ -3201,7 +3201,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </g>
             <text
               aria-label="Total: 50"
-              class="fui-vsbc__barLabel"
+              class=""
               role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
@@ -3347,7 +3347,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_2b_"
     >
       <div
@@ -3359,32 +3359,32 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
-          class="fui-cart__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-cart__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-cart__calloutContentX"
+              class=""
             >
               2020/04/30
                
             </div>
           </div>
           <div
-            class="fui-cart__calloutInfoContainer"
+            class=""
             style="border-inline-start: 4px solid aqua; margin-top: 11px;"
           >
             <div
-              class="fui-cart__calloutBlockContainer"
+              class=""
             >
               <div
-                class="fui-cart__calloutlegendText"
+                class=""
               >
                 Metadata1
               </div>
               <div
-                class="fui-cart__calloutContentY"
+                class=""
                 style="color: aqua; font-size: var(--fontSizeHero700);"
               >
                 40%
@@ -3400,7 +3400,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
 
 exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -3760,7 +3760,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -3775,7 +3775,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -3798,7 +3798,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -3813,7 +3813,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -3894,7 +3894,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
 
 exports[`VerticalStackedBarChart snapShot testing Should render gradients on bars 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -4254,7 +4254,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -4269,7 +4269,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -4285,7 +4285,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -4304,7 +4304,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -4319,7 +4319,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -4335,7 +4335,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -4412,7 +4412,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
 
 exports[`VerticalStackedBarChart snapShot testing Should render rounded corners on bars 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -4772,7 +4772,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -4787,7 +4787,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -4803,7 +4803,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -4822,7 +4822,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -4837,7 +4837,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -4853,7 +4853,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -4930,7 +4930,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
 
 exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChart correctly 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -5290,7 +5290,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -5305,7 +5305,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -5321,7 +5321,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -5340,7 +5340,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -5355,7 +5355,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -5371,7 +5371,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -5448,7 +5448,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
 
 exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -5808,7 +5808,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -5823,7 +5823,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -5839,7 +5839,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -5858,7 +5858,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -5873,7 +5873,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -5889,7 +5889,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -5973,7 +5973,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
 
 exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -6333,7 +6333,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="3.846153846153846"
@@ -6348,7 +6348,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="0.4807692307692307"
@@ -6364,7 +6364,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -6383,7 +6383,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="2.884615384615384"
@@ -6398,7 +6398,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="1.923076923076923"
@@ -6414,7 +6414,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -6434,7 +6434,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
 
 exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -6794,7 +6794,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -6808,7 +6808,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -6823,7 +6823,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -6842,7 +6842,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -6856,7 +6856,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -6871,7 +6871,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -6948,7 +6948,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
 
 exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack correctly 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -7308,7 +7308,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             tabindex="0"
           >
             <rect
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -7320,7 +7320,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               y="76.53846153846155"
             />
             <rect
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -7334,7 +7334,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -7353,7 +7353,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             tabindex="0"
           >
             <rect
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -7365,7 +7365,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               y="123.65384615384616"
             />
             <rect
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -7379,7 +7379,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -7456,7 +7456,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
 
 exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -7893,7 +7893,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -7908,7 +7908,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -7924,7 +7924,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -7943,7 +7943,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -7958,7 +7958,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -7974,7 +7974,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -8056,7 +8056,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
 
 exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -8493,7 +8493,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -8508,7 +8508,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -8524,7 +8524,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -8543,7 +8543,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -8558,7 +8558,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -8574,7 +8574,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -8658,7 +8658,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
 
 exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 <div
-  class="group/fui-cartesian-chart"
+  class="group/fui-cartesian-chart group/fui-vertical-stacked-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -9018,7 +9018,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="188.46153846153845"
@@ -9033,7 +9033,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="23.557692307692307"
@@ -9049,7 +9049,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           </g>
           <text
             aria-label="Total: 45"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
@@ -9068,7 +9068,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="aqua"
               height="141.34615384615384"
@@ -9083,7 +9083,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              class="fui-vsbc__opacityChangeOnHover default"
+              class="default"
               cursor="default"
               fill="navy"
               height="94.23076923076923"
@@ -9099,7 +9099,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           </g>
           <text
             aria-label="Total: 50"
-            class="fui-vsbc__barLabel"
+            class=""
             role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"

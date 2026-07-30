@@ -4993,7 +4993,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_5t_"
     >
       <div
@@ -5005,32 +5005,32 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
-          class="fui-cart__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-cart__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-cart__calloutContentX"
+              class=""
             >
               2020/04/30
                
             </div>
           </div>
           <div
-            class="fui-cart__calloutInfoContainer"
+            class=""
             style="border-inline-start: 4px solid blue; margin-top: 11px;"
           >
             <div
-              class="fui-cart__calloutBlockContainer"
+              class=""
             >
               <div
-                class="fui-cart__calloutlegendText"
+                class=""
               >
                 Second
               </div>
               <div
-                class="fui-cart__calloutContentY"
+                class=""
                 style="color: blue; font-size: var(--fontSizeHero700);"
               >
                 50,000
@@ -5623,7 +5623,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_64_"
     >
       <div

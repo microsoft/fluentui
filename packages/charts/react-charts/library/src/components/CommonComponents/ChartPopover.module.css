@@ -1,0 +1,245 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `usePopoverStyles_unstable`.
+ * Every slot was `mergeClasses(<static>, <base slice>[, <conditional slice>])`, with a
+ * consumer override (`props.styles?.calloutContentRoot`) live on ONE slot only:
+ *
+ *   calloutContentRoot        2 useStyles.calloutContentRoot     → l1  .callout-content-root
+ *                             3 props.styles?.calloutContentRoot → unlayered (always wins)
+ *   calloutDateTimeContainer  2 useStyles.calloutDateTimeContainer → l1 .callout-date-time-container
+ *   calloutContentX           2 useStyles.calloutContentX        → l1  .callout-content-x
+ *   calloutBlockContainer     2 useStyles.calloutBlockContainer  → l1  .callout-block-container
+ *                             3 isCartesian ? …Cartesian : …NonCartesian
+ *                                                                → l1  .callout-block-container-cartesian /
+ *                                                                      .callout-block-container-non-cartesian
+ *                                                                  (authored AFTER the base — later argument)
+ *   calloutBlockContainertoDrawShapefalse                        → l1  .callout-block-container-to-draw-shape-false
+ *   calloutBlockContainertoDrawShapetrue                         → l1  .callout-block-container-to-draw-shape-true
+ *   shapeStyles               2 useStyles.shapeStyles            → l1  .shape-styles
+ *   calloutlegendText         2 useStyles.calloutLegendText      → l1  .callout-legend-text
+ *   calloutContentY           2 useStyles.calloutContentY        → l1  .callout-content-y
+ *                             3 isCartesian ? …Cartesian : …NonCartesian
+ *                                                                → l1  .callout-content-y-cartesian /
+ *                                                                      .callout-content-y-non-cartesian
+ *   descriptionMessage        2 useStyles.descriptionMessage     → l1  .description-message
+ *   ratio                     2 useStyles.ratio                  → l1  .ratio
+ *   numerator                 2 useStyles.numerator               → l1  .numerator
+ *   denominator               2 useStyles.denominator             → l1  .denominator
+ *   calloutInfoContainer      2 useStyles.calloutInfoContainer   → l1  .callout-info-container
+ *   calloutContainer          (identity only — see the block at the bottom of this file)
+ *
+ * Every static class (argument 1 of every slot) was REMOVED by D16.1;
+ * `group/fui-chart-popover` on `calloutContainer` is the sole public identity class.
+ *
+ * ── Altitude (DECISIONS.md D2 amendment 2) ────────────────────────────────────────────
+ * Everything is `fui.components.l1`: every subject element is a `<div>`/`<span>`/`<svg>`
+ * ChartPopover renders ITSELF — the classed elements sit INSIDE react-popover's
+ * `PopoverSurface` but none of them IS the surface, so no other component's hook competes
+ * on any of them and l2 would buy nothing.
+ *
+ * ── Portal reach ──────────────────────────────────────────────────────────────────────
+ * ChartPopover renders `<Popover inline>`, and `inline` mounts the surface in place (no
+ * Portal — `renderPopover_unstable` only wraps in `<Portal>` when `!state.inline`), so the
+ * classed elements stay inside the chart's DOM subtree. Either way the compiled module CSS
+ * is a document-level stylesheet, so these rules would reach a portaled surface in the same
+ * document too; only shadow-DOM/iframe boundaries would not (out of scope, D11).
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/CommonComponents/useChartPopoverStyles.styles.js (AOT atomics
+ * with their explicit `[ltr, rtl]` pairs).
+ *
+ * ── RTL (DECISIONS.md D5) ─────────────────────────────────────────────────────────────
+ * Four compiled `[ltr, rtl]` pairs, all expressed logically here:
+ *   textAlign 'left'  on `.callout-block-container` → `text-align: start` (`text-start`)
+ *   paddingLeft       on `.callout-block-container-to-draw-shape-false` and
+ *                        `.callout-info-container`  → `padding-inline-start` (`ps-horizontal-s`)
+ *   marginRight       on `.shape-styles`            → `margin-inline-end` (`me-horizontal-s`)
+ *   marginLeft        on `.ratio`                   → `margin-inline-start` (`ms-horizontal-s-nudge`)
+ *
+ * ── forced colors ─────────────────────────────────────────────────────────────────────
+ * No `HighContrastSelector` media query in any slice. The `forced-color-adjust`
+ * declarations below are FLAT properties (Griffel `d` bucket), carried verbatim.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.calloutContentRoot */
+  .callout-content-root {
+    @apply grid overflow-hidden;
+
+    background-color: var(--colorNeutralBackground1);
+    background-blend-mode: normal, luminosity;
+  }
+
+  /* from useStyles.calloutDateTimeContainer */
+  .callout-date-time-container {
+    @apply flex flex-row justify-between;
+  }
+
+  /* from useStyles.calloutContentX — typographyStyles.caption1 + opacity/color */
+  .callout-content-x {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    opacity: 0.8;
+    color: var(--colorNeutralForeground2);
+  }
+
+  /* from useStyles.calloutBlockContainer — textAlign 'left' → logical `start` */
+  .callout-block-container {
+    @apply text-start;
+
+    color: var(--colorNeutralForeground2);
+  }
+
+  /*
+   * from useStyles.calloutBlockContainerCartesian / …NonCartesian — the
+   * `isCartesian ? … : …` mergeClasses argument, authored AFTER the base because it is
+   * the later argument. `line-height: 22px` is a frozen LITERAL in the source (not a
+   * token), carried verbatim.
+   */
+  .callout-block-container-cartesian {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    forced-color-adjust: none;
+  }
+
+  .callout-block-container-non-cartesian {
+    font-size: var(--fontSizeHero700);
+    line-height: 22px;
+    forced-color-adjust: none;
+  }
+
+  /* from useStyles.calloutBlockContainertoDrawShapefalse — paddingLeft → logical start */
+  .callout-block-container-to-draw-shape-false {
+    @apply ps-horizontal-s;
+
+    forced-color-adjust: none;
+  }
+
+  /* from useStyles.calloutBlockContainertoDrawShapetrue */
+  .callout-block-container-to-draw-shape-true {
+    @apply inline-grid;
+  }
+
+  /* from useStyles.shapeStyles — marginRight → logical end */
+  .shape-styles {
+    @apply me-horizontal-s;
+  }
+
+  /* from useStyles.calloutLegendText — typographyStyles.caption1 + color/margin */
+  .callout-legend-text {
+    @apply mb-vertical-xs;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    color: var(--colorNeutralForeground2);
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.calloutContentY */
+  .callout-content-y {
+    forced-color-adjust: auto;
+  }
+
+  /*
+   * from useStyles.calloutContentYCartesian / …NonCartesian — subtitle2Stronger and
+   * title2 respectively; authored AFTER the base because they are the later argument.
+   */
+  .callout-content-y-cartesian {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightBold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .callout-content-y-non-cartesian {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeHero700);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightHero700);
+  }
+
+  /*
+   * from useStyles.descriptionMessage — typographyStyles.caption1 + color/margins/border.
+   * `border-top`'s `1px` is a frozen LITERAL in the source (not a strokeWidth token),
+   * carried verbatim.
+   */
+  .description-message {
+    @apply mt-vertical-m-nudge pt-vertical-m-nudge;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    color: var(--colorNeutralForeground2);
+    border-top: 1px solid var(--colorNeutralStroke2);
+  }
+
+  /* from useStyles.ratio — typographyStyles.caption2 + marginLeft → logical start */
+  .ratio {
+    @apply ms-horizontal-s-nudge;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase100);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase100);
+    color: var(--colorNeutralForeground1);
+  }
+
+  /* from useStyles.numerator and useStyles.denominator — both typographyStyles.caption2Strong,
+   * identical atomic sets, so one rule emits both locals. */
+  .numerator,
+  .denominator {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase100);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase100);
+  }
+
+  /* from useStyles.calloutInfoContainer — paddingLeft → logical start */
+  .callout-info-container {
+    @apply ps-horizontal-s;
+
+    forced-color-adjust: none;
+  }
+
+  /*
+   * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). `useStyles.calloutContainer` was `{}`
+   * (compiles to no atomic), so the removed BEM static was the slot's only token — but this
+   * slot is ChartPopover's OWN root `<div>`, the element that carries the
+   * `group/fui-chart-popover` marker. The hook leads its `clsx()` with this class so the
+   * composed string ALWAYS starts with a hashed, selector-safe token ahead of the marker:
+   * nwsapi's `:scope` polyfill anchors on `escape(element.classList[0])` and the `/`
+   * survives that escaping, yielding an invalid selector and a render-time AggregateError
+   * under jsdom. Do not delete it because it looks like it does nothing.
+   *
+   * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE
+   * `postcss-modules` and Tailwind v4 prunes every declaration-less rule, so
+   * `.callout-container {}` would never reach the class map. A custom property set to
+   * `initial` is guaranteed-invalid, so it renders nothing.
+   *
+   * ALTITUDE l1: this is ChartPopover's own element (unlike VerticalBarChart's `.root`,
+   * which decorates CartesianChart's element and sits at l2).
+   */
+  .callout-container {
+    --fui-chart-popover-identity: initial;
+  }
+}

@@ -198,7 +198,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_31_"
     />
   </div>
@@ -403,7 +403,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_37_"
     />
   </div>
@@ -612,7 +612,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
         </div>
       </div>
       <div
-        class="fui-cart__calloutContainer"
+        class="group/fui-chart-popover"
         id="callout_r_3e_"
       />
     </div>
@@ -830,7 +830,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_3k_"
     />
   </div>
@@ -902,7 +902,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_9_"
     />
     <div
@@ -1052,7 +1052,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_d_"
     />
     <div
@@ -1335,7 +1335,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
       </div>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_5_"
     />
   </div>
@@ -1497,7 +1497,7 @@ Object {
           </div>
         </div>
         <div
-          class="fui-cart__calloutContainer"
+          class="group/fui-chart-popover"
           id="callout_r_46_"
         />
       </div>
@@ -1700,7 +1700,7 @@ Object {
         </div>
       </div>
       <div
-        class="fui-cart__calloutContainer"
+        class="group/fui-chart-popover"
         id="callout_r_46_"
       />
     </div>
@@ -1941,7 +1941,7 @@ Object {
           </div>
         </div>
         <div
-          class="fui-cart__calloutContainer"
+          class="group/fui-chart-popover"
           id="callout_r_40_"
         />
       </div>
@@ -2171,7 +2171,7 @@ Object {
         </div>
       </div>
       <div
-        class="fui-cart__calloutContainer"
+        class="group/fui-chart-popover"
         id="callout_r_40_"
       />
     </div>

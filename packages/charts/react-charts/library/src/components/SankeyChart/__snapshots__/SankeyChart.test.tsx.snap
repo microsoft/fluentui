@@ -11590,7 +11590,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       </svg>
     </div>
     <div
-      class="fui-cart__calloutContainer"
+      class="group/fui-chart-popover"
       id="callout_r_4b_"
     >
       <div
@@ -11602,30 +11602,30 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
-          class="fui-cart__calloutContentRoot"
+          class=""
         >
           <div
-            class="fui-cart__calloutDateTimeContainer"
+            class=""
           >
             <div
-              class="fui-cart__calloutContentX"
+              class=""
             >
               124.360.55.1
                
             </div>
           </div>
           <div
-            class="fui-cart__calloutInfoContainer"
+            class=""
             style="border-inline-start: 4px solid #8764B8; margin-top: 11px;"
           >
             <div
-              class="fui-cart__calloutBlockContainer"
+              class=""
             >
               <div
-                class="fui-cart__calloutlegendText"
+                class=""
               />
               <div
-                class="fui-cart__calloutContentY"
+                class=""
                 style="color: rgb(135, 100, 184); font-size: var(--fontSizeHero700);"
               >
                 14

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
@@ -217,7 +217,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
               />
             )}
             <div
-              className={mergeClasses(
+              className={clsx(
                 classes.calloutBlockContainer,
                 toDrawShape
                   ? classes.calloutBlockContainertoDrawShapetrue

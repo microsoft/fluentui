@@ -4,7 +4,7 @@ import * as React from 'react';
 import { getWindow } from '../../utilities/getWindow';
 import type { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
 import { useResponsiveChildStyles } from './useResponsiveChildStyles.styles';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 
 /**
  * Responsive Container component
@@ -82,10 +82,14 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
         height: calculatedHeight,
         // For SankeyChart
         shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
+        // Argument order preserved from the mergeClasses call this replaces (consumer
+        // string first, responsive-child classes last). Order carries no cascade meaning —
+        // ResponsiveContainer.module.css's UNLAYERED rules decide the winners (D2
+        // amendment 5) — but keeping it makes the composed string's provenance readable.
         styles: {
-          root: mergeClasses(child.props.styles?.root, childClasses.root),
-          chartWrapper: mergeClasses(child.props.styles?.chartWrapper, childClasses.chartWrapper),
-          chart: mergeClasses(child.props.styles?.chart, childClasses.chart),
+          root: clsx(child.props.styles?.root, childClasses.root),
+          chartWrapper: clsx(child.props.styles?.chartWrapper, childClasses.chartWrapper),
+          chart: clsx(child.props.styles?.chart, childClasses.chart),
         },
       });
     });
