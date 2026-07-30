@@ -148,7 +148,30 @@ AOT still runs for it: `💅 Griffel RAW styles output enabled` + `Processing gr
 
 ## Open questions / risks for the overseer
 
-1. **`@fluentui/react-tailwind-theme` is `"private": true` at version `0.0.0`.** Real consumers cannot install it, so today they have no way to obtain the theme emission. D13 sanctions either publishing it or a suite-level convenience stylesheet — that packaging decision is unmade, and I deliberately did not settle it by side effect. **This is the one thing still blocking "a consumer can `npm install` these three packages and have them work."**
+1. **`@fluentui/react-tailwind-theme` cannot reach consumers.** Real consumers have no way to obtain the theme emission. D13 sanctions either publishing it or a suite-level convenience stylesheet — that packaging decision is unmade, and I deliberately did not settle it by side effect. **This is the one thing still blocking "a consumer can `npm install` these three packages and have them work."**
+
+   > **STATUS UPDATE (Phase 3 Batch B, 2026-07-29).** The text above is accurate **against
+   > `master`**, which still has `"version": "0.0.0"` and `"private": true`. It is being resolved
+   > right now by concurrent Batch C work: the working tree's
+   > `packages/react-components/react-tailwind-theme/package.json` drops `private`, moves to
+   > `9.0.0-alpha.0`, and adds `license` / `repository` / `prepack` — i.e. the package is being given
+   > a publishable shape rather than a suite-level convenience stylesheet.
+   >
+   > That in-flight version also adds a per-package beachball gate:
+   >
+   > ```json
+   > "beachball": { "disallowedChangeTypes": ["major", "minor", "patch"] }
+   > ```
+   >
+   > so `none` is the only change type the package accepts and beachball will not auto-bump the
+   > alpha. **Anyone finishing 12a needs to know this gate exists**, because it is what decides
+   > whether the package ever actually publishes — verified empirically: `beachball change
+--type minor` aborts with `minor type is not allowed` for this package alone, which is why the
+   > Batch B change file for it is `"type": "none"` while the other 62 are `minor`.
+   >
+   > Batch B did not touch this manifest; the observation is recorded here only so the two batches
+   > do not draw opposite conclusions from the same file.
+
 2. **Sourcemap drift:** the specifier rewrite lengthens one import line by 3 chars without regenerating `.js.map`. By the sourcemap format, only mapped columns _after_ the edit point _on that single line_ shift; in practice the specifier is the last mapped token on its line in both ESM and CJS output. Documented in-code; regenerating maps would mean re-running SWC.
 3. **AMD (`lib-amd`, tag `ships-amd`)** gets the commonjs class-map shape plus a build warning. No converted package ships AMD; if one ever does, this needs real work.
 4. **Stale `dist/styles.css`** if a package's last `*.module.css` is deleted — `cleanOutput` does not clean `dist/` (api-extractor owns it). nx's `{projectRoot}/dist` output covers cache restores, but a local incremental build would keep the orphan.

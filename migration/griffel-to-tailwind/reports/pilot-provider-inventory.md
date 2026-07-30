@@ -166,6 +166,22 @@ FluentProvider's base typography/colour moves from _unlayered_ Griffel atomics i
 - `.module.css` is never copied into `lib/` or `lib-commonjs/` by `nx run <pkg>:build`, so the published FluentProvider (and Divider, and Button) would fail to resolve `import styles from './FluentProvider.module.css'` at consumer runtime. D1's per-package CSS pipeline (`dist/styles.css` + generated class-map JS) is still unbuilt. Should this land before more packages convert, or is the VR-storybook-only (source-compiled) path acceptable through Phase 1?
 - The repo-wide `snapshotSerializers` entry I added to `jest.preset.js` is silently overridden by the 85 `jest.config.js` files that declare their own. Only `react-provider` and `charts/react-charts` were patched (they are the only suites that snapshot a rendered FluentProvider today). Should the remaining 83 be swept now, or gated on each package's conversion?
 - `FluentProvider.test.tsx`'s `toHaveStyle({ textAlign: 'left' | 'right' })` assertions were dropped — jsdom has no stylesheet to resolve `text-align: start` against. Is an RTL VR story an acceptable replacement, or should a computed-style probe against the built storybook be added to the validation harness for global styles?
-- `*.styles.raw.js` is still emitted for converted packages (2,268 B for FluentProvider, 2,026 B for Divider) because the raw-styles build step keys on the `*.styles.ts` filename, not on Griffel content. D10 counts its deletion as a metric line item — should the emit be disabled per-package during conversion, or globally in Phase 3?
-- `@griffel/core` is now imported only by `FluentProvider-node.test.tsx` inside react-provider, but remains a runtime `dependency`. Drop it to devDependencies now, or leave for the Phase 3 sweep (it is currently reachable only via hoisting)?
+- ~~`*.styles.raw.js` is still emitted for converted packages (2,268 B for FluentProvider, 2,026 B for Divider) because the raw-styles build step keys on the `*.styles.ts` filename, not on Griffel content. D10 counts its deletion as a metric line item — should the emit be disabled per-package during conversion, or globally in Phase 3?~~
+  **RESOLVED — note is STALE (verified Phase 3 Batch B, 2026-07-29).** Phase 1.5's "gate off Griffel
+  AOT + `*.styles.raw.js` generation for converted packages" did land. A tree-wide
+  `find packages apps -name '*.styles.raw.js'` returns **76 files, zero of them in a converted
+  package**: 62 in `packages/charts/react-charts/library/lib/` (not in the migration ledger) and 14
+  in `packages/react-components/deprecated/react-{alert,infobutton,virtualizer}/lib{,-commonjs}/`
+  (deliberately still Griffel). No FluentProvider or Divider `*.styles.raw.js` exists any more.
+  **No work to plan; do not re-open.**
+- ~~`@griffel/core` is now imported only by `FluentProvider-node.test.tsx` inside react-provider, but remains a runtime `dependency`. Drop it to devDependencies now, or leave for the Phase 3 sweep (it is currently reachable only via hoisting)?~~
+  **STILL ACCURATE, and now measured (Phase 3 Batch B).** `@griffel/core` remains in
+  react-provider's `dependencies` with its only importer still
+  `FluentProvider-node.test.tsx` → it belongs in `devDependencies`. It is one row of a wider audit:
+  **38 declared-but-never-imported** and **25 test/story-only** `@griffel/*` + `@fluentui/react-theme`
+  dependency rows across the repo (full data: `.scratch/phase3-batchB/depaudit.json`).
+  **Blocked, not deferred:** `yarn.lock` records each workspace's dependency list verbatim
+  (`@fluentui/react-infolabel@workspace:…` → `dependencies:` block), so every manifest edit
+  invalidates the lockfile, and regenerating it needs a `yarn install` that Batch B was not
+  permitted to run. Land the manifest edits together in one commit that also refreshes `yarn.lock`.
 - TASK 2 brief said `apps/vr-tests-react-components/src/utilities/*.tsx` 'use Griffel'. They do not — they use inline `style` props only. Does the deferral rationale (stable cross-conversion diffs) still stand, given there is nothing to convert there?
