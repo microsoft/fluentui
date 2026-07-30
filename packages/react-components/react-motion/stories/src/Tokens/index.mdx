@@ -7,21 +7,24 @@ import { MotionCurves, MotionDuration } from './Cards';
 
 Fluent UI React v9 offers predefined tokens for creating custom motions. These tokens can be used as CSS variables or plain JavaScript values, depending on the scenario.
 
-```ts
-import { createMotionComponent, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
+```css
+/* 💡 In CSS, reference the token's custom property directly */
+.root {
+  animation-duration: var(--curveAccelerateMid);
+}
+```
 
-// 💡 Use `tokens` for defining CSS based animations
-const useClasses = makeStyles({
-  root: {
-    animationDuration: tokens.curveAccelerateMid,
-  },
-});
+```ts
+import { createMotionComponent, motionTokens } from '@fluentui/react-components';
 
 // 💡 Use `motionTokens` for defining JS based animations
 const Motion = createMotionComponent({
   duration: motionTokens.curveAccelerateMid,
 });
 ```
+
+The `tokens` object from `@fluentui/react-components` is the TypeScript-side equivalent of the CSS
+form — `tokens.curveAccelerateMid` is the string `'var(--curveAccelerateMid)'`.
 
 ## Curves
 
