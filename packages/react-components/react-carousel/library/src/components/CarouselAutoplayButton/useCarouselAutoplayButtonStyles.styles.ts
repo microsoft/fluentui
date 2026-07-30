@@ -2,10 +2,10 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike the converted leaf hooks in this package this file needs NO `enforce-use-client`
- * suppression — it still calls `useToggleButtonStyles_unstable`, so the directive is
- * genuinely required and the rule does not flag it. (Adding the suppression anyway trips
- * `--report-unused-disable-directives`.)
+ * this file keeps `'use client'` because it still calls `useToggleButtonStyles_unstable`, so
+ * the directive is genuinely required and the rule does not flag it. (Adding a suppression
+ * anyway would trip `--report-unused-disable-directives`.) Converted leaf hooks in this
+ * package call nothing and carry no directive at all.
  */
 
 import { clsx } from 'clsx';
