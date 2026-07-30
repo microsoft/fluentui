@@ -30,6 +30,23 @@ export const donutPieClassNames: { root: string } = {
 };
 
 /**
+ * The single module-local token carried by Pie's centred `<text>` slot, exposed on its own so
+ * `wrapTextInsideDonut` can build a d3 selector from it.
+ *
+ * WHY NOT `usePieStyles(props).insideDonutString`. That value is a `clsx` COMPOSITION —
+ * `styles['inside-donut-string']` plus `props.className` plus `props.styles?.insideDonutString`.
+ * `wrapTextInsideDonut` interpolates its argument into `` `.${selectorClass}` `` (utilities.ts),
+ * so the moment a consumer supplies either of those props the composition becomes multi-token and
+ * the interpolation degrades into a descendant chain (`.a .b`) that matches nothing — the text
+ * wrapping silently stops running. DonutChart renders `<Pie>` without both props today, so the
+ * composition happens to be single-token and the selector happens to work; this const removes the
+ * dependence on that accident. Same token either way, so no rendered class and no pixel changes.
+ *
+ * @internal
+ */
+export const pieInsideDonutStringClassName: string = styles['inside-donut-string'];
+
+/**
  * Apply styling to the Pie inside donut chart component
  */
 export const usePieStyles = (props: PieProps): PieStyles => {

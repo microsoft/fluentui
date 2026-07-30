@@ -9,7 +9,7 @@ import { pie as d3Pie } from 'd3-shape';
 import type { PieProps } from './index';
 import { Arc } from '../Arc/index';
 import type { ChartDataPoint } from '../index';
-import { usePieStyles } from './usePieStyles.styles';
+import { pieInsideDonutStringClassName, usePieStyles } from './usePieStyles.styles';
 import { wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;
 
@@ -21,7 +21,12 @@ const TEXT_PADDING: number = 5;
 export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivElement, PieProps>(
   (props, forwardedRef) => {
     React.useEffect(() => {
-      wrapTextInsideDonut(classes.insideDonutString, props.innerRadius! * 2 - TEXT_PADDING);
+      // `wrapTextInsideDonut` interpolates this argument into `` `.${selectorClass}` ``, so it must
+      // be ONE class token. `classes.insideDonutString` is a clsx composition that grows extra
+      // tokens as soon as a consumer passes `className`/`styles.insideDonutString` to <Pie>, at
+      // which point the selector silently matches nothing. Pass the module local directly — it is
+      // the same token the composition leads with today, so nothing about the render changes.
+      wrapTextInsideDonut(pieInsideDonutStringClassName, props.innerRadius! * 2 - TEXT_PADDING);
     }, []);
 
     let _totalValue: number;
