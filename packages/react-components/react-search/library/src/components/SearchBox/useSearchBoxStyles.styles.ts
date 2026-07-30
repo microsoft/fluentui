@@ -2,15 +2,12 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * converted styles files normally carry a trailing
- * `// eslint-disable-line @fluentui/react-components/enforce-use-client` — once `makeStyles`
- * is gone they call no React hook and no RSC-unsafe function, so the rule correctly reports
- * the directive as unnecessary and the suppression keeps it anyway (dropping directives is a
- * Phase 3 sweep, not a per-conversion change; CONVERSION_GUIDE.md §3).
+ * once `makeStyles` is gone a converted styles file calls no React hook and no RSC-unsafe
+ * function, so the directive is unnecessary and those files carry none at all.
  *
- * This file is the exception and needs NO suppression: it still delegates to
- * `useInputStyles_unstable`, so `enforce-use-client` sees a hook call, never reports, and a
- * disable comment here would itself be flagged as unused. Same outcome, one fewer comment.
+ * This file is the exception: it still delegates to `useInputStyles_unstable`, so
+ * `enforce-use-client` sees a hook call and never reports, and a disable comment here would
+ * itself be flagged as unused.
  */
 
 import { clsx } from 'clsx';
