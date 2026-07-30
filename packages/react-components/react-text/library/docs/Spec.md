@@ -109,17 +109,31 @@ This is achieved with the `make-styles` rules being available to the user so tha
 
 ### Using styles directly
 
-```jsx
-import { typographyStyles } from '@fluentui/react-text';
+A typography ramp is four token custom properties — family, size, weight, line height. Apply a ramp
+to an element you own by writing those four declarations, exactly as the `Title1`/`Caption1` presets
+do internally:
 
-const useStyles = makeStyles({
-  root: typographyStyles.title,
-  caption: typographyStyles.caption,
-});
+```css
+/* Test.module.css */
+.root {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero800);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero800);
+}
+
+.caption {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase200);
+}
+```
+
+```jsx
+import styles from './Test.module.css';
 
 const Test = () => {
-  const styles = useStyles();
-
   return (
     <>
       <p className={styles.root}>
@@ -130,6 +144,9 @@ const Test = () => {
   );
 };
 ```
+
+The `typographyStyles` object is still exported for code that needs the same values from
+TypeScript.
 
 ## Behaviours
 

@@ -4,6 +4,28 @@
 
 This guide is a reference for upgrading from v7 (Fabric) or v0 (Northstar) into v9 (Fluent UI / converged).
 
+> **A note on the styling in the examples below.** Every "after" snippet on this page is written with
+> `makeStyles`. Those snippets still compile — `makeStyles` remains re-exported from
+> `@fluentui/react-components` — but v9 no longer authors its own styles that way, and new code
+> should not either. The shipped equivalent is ordinary CSS passed through `className`:
+>
+> ```css
+> /* MyText.module.css */
+> .text {
+>   color: var(--colorNeutralForeground2);
+> }
+> ```
+>
+> ```tsx
+> import styles from './MyText.module.css';
+>
+> <Text className={styles.text}>Hello</Text>;
+> ```
+>
+> Token names are unchanged — `tokens.colorNeutralForeground2` in a snippet below is the same value
+> as `var(--colorNeutralForeground2)` here. See
+> [Styling components](https://react.fluentui.dev/?path=/docs/concepts-developer-styling-components--docs).
+
 ## Property mapping
 
 Below you'll find a table with the relations between the properties of Fabric/Northstar and the converged version of Text to make it clear for you which properties require changes or are deprecated with the new version.
