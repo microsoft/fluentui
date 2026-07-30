@@ -14,11 +14,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * as well as the label for the rating.
  */
 export const RatingDisplay: ForwardRefComponent<RatingDisplayProps> = React.forwardRef((props, ref) => {
-  const state = useRatingDisplay_unstable(props, ref);
+  let state = useRatingDisplay_unstable(props, ref);
   const contextValues = useRatingDisplayContextValues(state);
 
-  useRatingDisplayStyles_unstable(state);
-  useCustomStyleHook_unstable('useRatingDisplayStyles_unstable')(state);
+  state = useRatingDisplayStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useRatingDisplayStyles_unstable')(state);
 
   return renderRatingDisplay_unstable(state, contextValues);
 });
