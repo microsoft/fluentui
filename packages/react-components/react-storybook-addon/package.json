@@ -25,8 +25,13 @@
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-toast": "^9.8.1",
     "@fluentui/react-utilities": "^9.26.5",
-    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
+  },
+  "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*"
+  },
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
   },
   "peerDependencies": {
     "@storybook/addon-docs": "^9.1.17",
@@ -53,14 +58,16 @@
     },
     "./preset": "./preset.js",
     "./styles.css": "./dist/styles.css",
+    "./docs-chrome.css": "./dist/docs-chrome.css",
     "./package.json": "./package.json"
   },
   "sideEffects": [
-    "./dist/styles.css"
+    "**/*.css"
   ],
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/docs-chrome.css",
     "dist/styles.css",
     "lib",
     "lib-commonjs",

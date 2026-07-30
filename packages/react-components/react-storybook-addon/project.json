@@ -32,7 +32,7 @@
           {
             "input": "{projectRoot}/src",
             "output": "dist",
-            "glob": "styles.css"
+            "glob": "docs-chrome.css"
           }
         ]
       }

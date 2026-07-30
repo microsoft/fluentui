@@ -1,0 +1,74 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces Toc.tsx's inline `makeStyles` (phase3-worklist Item 12c).
+ *
+ * ALTITUDE: fui.components.l4 for all of it — every subject is one of the addon's own
+ * plain elements (<nav>, <h3>, <ol>, <li>, <a>). No converted component is involved, so
+ * there is no l2 exception here.
+ *
+ * The hex literals and the 11px/14px font sizes are carried over verbatim: the Griffel
+ * source hardcoded them rather than reading tokens, and this is Storybook docs chrome
+ * whose look is defined against the sibling global sheet (docs-chrome.css), not against
+ * the Fluent ramp. `marginLeft`/`left` are RTL-flipped by Griffel and therefore become
+ * logical (`ms-*` / `start-*`).
+ */
+
+@layer fui.components.l4 {
+  /* from useTocStyles.root */
+  .root {
+    @apply sticky top-64 ms-40;
+  }
+
+  /* from useTocStyles.heading — marginBottom 20px is the vertical XL step */
+  .heading {
+    @apply font-bold uppercase mb-vertical-xl;
+
+    font-size: 11px;
+  }
+
+  /* from useTocStyles.ol — paddingInlineStart 20px is the horizontal XL step */
+  .ol {
+    @apply relative list-none ms-0 mt-0 ps-horizontal-xl;
+
+    & li {
+      /* 15px matches no spacing step -> numeric fallback; line-height reads the spacing scale */
+      @apply mb-15 leading-16;
+    }
+
+    & a {
+      @apply no-underline;
+
+      color: #201f1e;
+      font-size: 14px;
+
+      &:hover {
+        color: #201f1e;
+      }
+    }
+
+    /* 3px is the strokeWidthThicker step, so it uses the shared `w-thicker` utility */
+    &::before {
+      @apply absolute start-0 h-full w-thicker;
+
+      content: '';
+      background-color: #edebe9;
+      border-radius: 4px;
+    }
+  }
+
+  /* from useTocStyles.selected */
+  .selected {
+    @apply relative;
+
+    &::after {
+      @apply absolute -start-20 inset-y-0 w-thicker;
+
+      content: '';
+      background-color: #436dcd;
+      border-radius: 4px;
+    }
+  }
+}

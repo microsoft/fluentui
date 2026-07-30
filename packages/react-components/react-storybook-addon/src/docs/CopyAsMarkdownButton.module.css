@@ -1,0 +1,19 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces CopyAsMarkdownButton.tsx's inline `makeStyles` (phase3-worklist Item 12c).
+ *
+ * ALTITUDE: fui.components.l2. The one class is handed to `<SplitButton className={…}>`,
+ * i.e. it styles ANOTHER converted component's root output — l2 by definition
+ * (DECISIONS.md D2 amendment 2). `react-button` is `validated` in the ledger, so this is
+ * converted-over-converted and needs no unlayered block.
+ */
+
+@layer fui.components.l2 {
+  /* from useStyles.button — marginInlineStart was already logical in the Griffel source */
+  .button {
+    @apply ms-auto;
+  }
+}

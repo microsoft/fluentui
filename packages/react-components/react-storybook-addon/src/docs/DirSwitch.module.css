@@ -1,0 +1,39 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces DirSwitch.tsx's inline `makeStyles` (phase3-worklist Item 12c).
+ *
+ * ALTITUDE SPLIT:
+ *   .label     -> fui.components.l2 — applied to `<Label className={…}>`, i.e. over
+ *                 react-label's own hook output (D2 amendment 2). react-label is
+ *                 `validated`, so converted-over-converted; no unlayered block needed.
+ *   .container -> fui.components.l4 — plain docs chrome on the addon's own <div>.
+ */
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.label — `...typographyStyles.subtitle2` spread, transcribed to its four
+   * declarations exactly as react-text's presets.module.css does for the same preset.
+   */
+  .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+}
+
+@layer fui.components.l4 {
+  /*
+   * from useStyles.container. `justify-content: start` stays literal: Tailwind's
+   * `justify-start` emits `flex-start`, which behaves identically here but is not the
+   * keyword the Griffel source compiled to.
+   */
+  .container {
+    @apply flex items-center;
+
+    justify-content: start;
+  }
+}

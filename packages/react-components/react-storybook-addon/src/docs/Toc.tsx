@@ -2,63 +2,9 @@ import * as React from 'react';
 import { addons } from 'storybook/manager-api';
 import { NAVIGATE_URL } from 'storybook/internal/core-events';
 
-import { makeStyles } from '@griffel/react';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-const useTocStyles = makeStyles({
-  root: {
-    top: '64px',
-    position: 'sticky',
-    marginLeft: '40px',
-  },
-  heading: {
-    fontSize: '11px',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    marginBottom: '20px',
-  },
-  ol: {
-    position: 'relative',
-    listStyleType: 'none',
-    marginLeft: 0,
-    marginTop: 0,
-    paddingInlineStart: '20px',
-    '& li': {
-      marginBottom: '15px',
-      lineHeight: '16px',
-    },
-    '& a': {
-      textDecorationLine: 'none',
-      color: '#201F1E',
-      fontSize: '14px',
-      ':hover': {
-        color: '#201F1E',
-      },
-    },
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      left: 0,
-      height: '100%',
-      width: '3px',
-      backgroundColor: '#EDEBE9',
-      borderRadius: '4px',
-    },
-  },
-  selected: {
-    position: 'relative',
-    '&:after': {
-      content: '""',
-      position: 'absolute',
-      left: '-20px',
-      top: 0,
-      bottom: 0,
-      width: '3px',
-      backgroundColor: '#436DCD',
-      borderRadius: '4px',
-    },
-  },
-});
+import tocClasses from './Toc.module.css';
 
 type TocItem = { name: string; id: string; selected?: boolean };
 
@@ -114,7 +60,6 @@ export const Toc = ({ stories }: { stories: TocItem[] }): JSXElement => {
   const tocItems = stories.map(item => {
     return { ...item, selected: nameToHash(item.name) === selected };
   });
-  const tocClasses = useTocStyles();
   return (
     <nav className={tocClasses.root}>
       <h3 className={tocClasses.heading}>On this page</h3>

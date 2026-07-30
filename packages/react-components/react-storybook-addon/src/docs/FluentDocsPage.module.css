@@ -1,0 +1,141 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces both `makeStyles` calls in FluentDocsPage.tsx (phase3-worklist Item 12c) —
+ * `useStyles` and `useVideoClasses`. They are one module because the build aggregates every
+ * module of a package into one `dist/styles.css` anyway (D1); the `video-` prefix keeps the
+ * two former hooks' `container` locals from colliding.
+ *
+ * ALTITUDE SPLIT — three groups, and the third one is the interesting case:
+ *
+ *   fui.components.l2  .video-preview        applied to `<Link className={…}>` — over
+ *                                            react-link's own hook output (D2 amendment 2).
+ *                                            react-link is `validated`: converted-over-
+ *                                            converted, no unlayered block needed.
+ *   fui.components.l4  everything else       docs chrome on the addon's own <div>/<hr>/<img>.
+ *   UNLAYERED          .additional-info-icon applied to `<InfoFilled />`, an element owned by
+ *                                            `@fluentui/react-icons`, which D11 keeps on
+ *                                            Griffel PERMANENTLY. Griffel injects its atomics
+ *                                            with no `@layer`, and the cascade compares layer
+ *                                            origin BEFORE specificity — so any layered rule
+ *                                            here would lose outright. D2 amendment 5 requires
+ *                                            the unlayered block, at the bottom of the file.
+ *
+ * Intra-layer order is irrelevant in the l4 block: no element carries two of these classes.
+ */
+
+@layer fui.components.l2 {
+  /*
+   * from useVideoClasses.preview. `padding: spacingHorizontalM` is a shorthand, so it
+   * expands to the two logical pairs (both 12px); `gap` keeps its source token's axis name
+   * — `gap-horizontal-m` and `gap-vertical-m` compile to the identical `gap: 12px`.
+   */
+  .video-preview {
+    @apply flex flex-col gap-horizontal-m px-horizontal-m py-vertical-m;
+
+    border-radius: var(--borderRadiusSmall);
+    background-color: var(--colorNeutralBackground2);
+
+    &:hover {
+      background-color: var(--colorNeutralBackground2Hover);
+    }
+  }
+}
+
+@layer fui.components.l4 {
+  /*
+   * from useStyles.divider — lands on <hr>. 1px is the strokeWidthThin step and `height` is
+   * spacing-powered, so `h-thin`. `border: '0px none'` and `margin: '48px 0px'` are
+   * shorthands and expand (cookbook §2); 48px matches no spacing step -> numeric fallback.
+   */
+  .divider {
+    @apply h-thin my-48 mx-0;
+
+    background-color: #e1dfdd;
+    border-width: 0;
+    border-style: none;
+  }
+
+  /* from useStyles.wrapper — gap 16px is the horizontal L step (row flex -> column-gap) */
+  .wrapper {
+    @apply flex gap-horizontal-l;
+  }
+
+  /* from useStyles.toc — flex-basis is spacing-powered; 200px matches no step */
+  .toc {
+    @apply basis-200 shrink-0;
+
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
+  }
+
+  /* from useStyles.container — without a width this div grows wider than its parent */
+  .container {
+    @apply w-200 grow;
+  }
+
+  /* from useStyles.globalTogglesContainer — columnGap: spacingHorizontalXXXL */
+  .global-toggles-container {
+    @apply flex gap-x-horizontal-xxxl;
+  }
+
+  /* from useStyles.description */
+  .description {
+    @apply grid;
+
+    grid-template-columns: 1fr min-content;
+  }
+
+  /* from useStyles.additionalInfoWrapper */
+  .additional-info-wrapper {
+    @apply flex flex-col gap-vertical-m;
+  }
+
+  /*
+   * from useStyles.additionalInfo. `border-*-width` does NOT read the spacing namespace, so
+   * the stroke width goes in as the emitted custom property rather than a utility (cookbook
+   * §2 rule 2). `padding`/`margin` shorthands expand to their logical pairs.
+   */
+  .additional-info {
+    @apply flex flex-col gap-vertical-m px-horizontal-m py-vertical-m my-0 mx-horizontal-m;
+
+    border-width: var(--spacing-thin);
+    border-style: solid;
+    border-color: var(--colorNeutralStroke1);
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  /* from useStyles.additionalInfoMessage */
+  .additional-info-message {
+    @apply flex flex-row items-center gap-vertical-xs;
+  }
+
+  /* from useStyles.infoIcon */
+  .info-icon {
+    @apply flex flex-col gap-vertical-xs flex-1;
+  }
+
+  /* from useVideoClasses.container — gap: spacingHorizontalMNudge */
+  .video-container {
+    @apply flex flex-col gap-horizontal-m-nudge;
+  }
+
+  /* from useVideoClasses.image */
+  .video-image {
+    @apply w-200;
+  }
+}
+
+/*
+ * UNLAYERED — subject is a `@fluentui/react-icons` <svg> (D2 amendment 5). `marginRight` is
+ * RTL-flipped by Griffel and therefore becomes the logical `margin-inline-end`.
+ */
+.additional-info-icon {
+  @apply self-center me-horizontal-m;
+
+  color: var(--colorBrandForeground1);
+  font-size: 24px;
+}

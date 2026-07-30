@@ -4,31 +4,16 @@ import { addons } from 'storybook/preview-api';
 import { Menu, MenuItemRadio, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import type { MenuProps } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
-import { makeStyles } from '@griffel/react';
 
 import type { ThemeIds, Theme } from '..';
 import { THEME_ID } from '..';
 
-const useStyles = makeStyles({
-  menuButton: {
-    minWidth: '210px',
-    justifyContent: 'flex-start',
-  },
-
-  chevronIcon: {
-    marginLeft: 'auto',
-  },
-
-  menuPopover: {
-    minWidth: '210px',
-  },
-});
+import styles from './ThemePicker.module.css';
 
 /**
  * Theme picker used in the react-components docs header
  */
 export const ThemePicker: React.FC<{ selectedThemeId?: string; themes: Theme[] }> = ({ selectedThemeId, themes }) => {
-  const styles = useStyles();
   const [currentThemeId, setCurrentThemeId] = React.useState(selectedThemeId ?? null);
 
   const setGlobalTheme = (themeId: ThemeIds): void => {
@@ -50,11 +35,11 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string; themes: Theme[] }
       positioning={{ autoSize: true }}
     >
       <MenuTrigger>
-        <MenuButton className={styles.menuButton} menuIcon={{ className: styles.chevronIcon }}>
+        <MenuButton className={styles['menu-button']} menuIcon={{ className: styles['chevron-icon'] }}>
           {selectedTheme?.label ?? 'Theme'}
         </MenuButton>
       </MenuTrigger>
-      <MenuPopover className={styles.menuPopover}>
+      <MenuPopover className={styles['menu-popover']}>
         <MenuList>
           {themes.map(theme => (
             <MenuItemRadio name="theme" value={theme.id} key={theme.id}>

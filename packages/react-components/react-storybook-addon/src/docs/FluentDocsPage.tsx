@@ -12,10 +12,8 @@ import {
 } from '@storybook/addon-docs/blocks';
 import type { PreparedStory, Renderer, SBEnumType } from 'storybook/internal/types';
 
-import { tokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
 import { Text } from '@fluentui/react-text';
-import { makeStyles } from '@griffel/react';
 import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
@@ -28,95 +26,9 @@ import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
 import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
 
+import styles from './FluentDocsPage.module.css';
+
 type PrimaryStory = PreparedStory<Renderer>;
-
-const useStyles = makeStyles({
-  divider: {
-    height: '1px',
-    backgroundColor: '#e1dfdd',
-    border: '0px none',
-    margin: '48px 0px',
-  },
-  wrapper: {
-    display: 'flex',
-    gap: '16px',
-  },
-  toc: {
-    flexBasis: '200px',
-    flexShrink: 0,
-    [`@media screen and (max-width: 1000px)`]: {
-      display: 'none',
-    },
-  },
-  container: {
-    // without a width, this div grows wider than its parent
-    width: '200px',
-    flexGrow: 1,
-  },
-  globalTogglesContainer: {
-    columnGap: tokens.spacingHorizontalXXXL,
-    display: 'flex',
-  },
-  description: {
-    display: 'grid',
-    gridTemplateColumns: '1fr min-content',
-  },
-  additionalInfoWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalM,
-  },
-  additionalInfo: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalM,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: tokens.spacingHorizontalM,
-    margin: `0 ${tokens.spacingHorizontalM}`,
-  },
-  additionalInfoIcon: {
-    alignSelf: 'center',
-    color: tokens.colorBrandForeground1,
-    fontSize: '24px',
-    marginRight: tokens.spacingHorizontalM,
-  },
-  additionalInfoMessage: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: tokens.spacingVerticalXS,
-  },
-  infoIcon: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXS,
-    flex: 1,
-  },
-});
-
-const useVideoClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingHorizontalMNudge,
-  },
-  preview: {
-    borderRadius: tokens.borderRadiusSmall,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingHorizontalM,
-    padding: tokens.spacingHorizontalM,
-    backgroundColor: tokens.colorNeutralBackground2,
-
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground2Hover,
-    },
-  },
-  image: {
-    width: '200px',
-  },
-});
 
 const VideoPreviews: React.FC<{
   videos: {
@@ -127,13 +39,12 @@ const VideoPreviews: React.FC<{
   }[];
 }> = props => {
   const { videos } = props;
-  const classes = useVideoClasses();
 
   return (
-    <div className={classes.container}>
+    <div className={styles['video-container']}>
       {videos.map(video => (
-        <Link className={classes.preview} href={video.href} target="_blank" key={video.href}>
-          <img alt={`Video: ${video.preview}`} src={video.preview} className={classes.image} />
+        <Link className={styles['video-preview']} href={video.href} target="_blank" key={video.href}>
+          <img alt={`Video: ${video.preview}`} src={video.preview} className={styles['video-image']} />
           <Text>{video.title}</Text>
         </Link>
       ))}
@@ -238,12 +149,11 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
 }
 
 const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactElement[] }> = ({ children }) => {
-  const styles = useStyles();
   return (
-    <div className={styles.additionalInfo}>
-      <div className={styles.additionalInfoMessage}>
-        <InfoFilled className={styles.additionalInfoIcon} />
-        <div className={styles.infoIcon}>{children}</div>
+    <div className={styles['additional-info']}>
+      <div className={styles['additional-info-message']}>
+        <InfoFilled className={styles['additional-info-icon']} />
+        <div className={styles['info-icon']}>{children}</div>
       </div>
     </div>
   );
@@ -263,11 +173,10 @@ const RenderArgsTable = ({
     slotsApi: showSlotsApi,
     nativePropsApi: showNativePropsApi,
   });
-  const styles = useStyles();
 
   return hideArgsTable ? null : (
     <>
-      <div className={styles.additionalInfoWrapper}>
+      <div className={styles['additional-info-wrapper']}>
         <ArgTypes of={component} />
         {hasArgAsProp && (
           <AdditionalApiDocs>
@@ -315,7 +224,6 @@ const RenderPrimaryStory = ({
   primaryStory: PrimaryStory;
   skipPrimaryStory: boolean;
 }) => {
-  const styles = useStyles();
   return skipPrimaryStory ? null : (
     <>
       <hr className={styles.divider} />
@@ -379,7 +287,6 @@ export const FluentDocsPage = ({
   const skipPrimaryStory = Boolean(primaryStoryContext.parameters?.docs?.skipPrimaryStory);
 
   const videos = primaryStoryContext.parameters?.videos ?? null;
-  const styles = useStyles();
 
   // If docs page is disabled, return Storybook's default docs page
   if (!docsPageConfig) {
@@ -422,7 +329,7 @@ export const FluentDocsPage = ({
       <div className={styles.wrapper}>
         <div className={styles.container}>
           {(showThemePicker || showDirSwitcher || showCopyAsMarkdown) && (
-            <div className={styles.globalTogglesContainer}>
+            <div className={styles['global-toggles-container']}>
               {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} themes={themes} />}
               {showDirSwitcher && <DirSwitch dir={dir} />}
               {showCopyAsMarkdown && <CopyAsMarkdownButton storyId={primaryStory.id} />}

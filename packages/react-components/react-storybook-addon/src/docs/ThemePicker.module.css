@@ -1,0 +1,37 @@
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Replaces ThemePicker.tsx's inline `makeStyles` (phase3-worklist Item 12c).
+ *
+ * ALTITUDE: all three classes are fui.components.l2 — every one is handed to another
+ * converted component's slot (`MenuButton` root, its `menuIcon` slot, `MenuPopover` root),
+ * which is the "styles over ANOTHER component's hook output" case (D2 amendment 2).
+ * `react-button` and `react-menu` are both `validated`, so no unlayered block is needed.
+ *
+ * 210px matches no spacing step, so it uses the numeric fallback scale (`min-w-210`);
+ * numeric and named utilities are one system — both compute through `--base-scale`.
+ */
+
+@layer fui.components.l2 {
+  /* from useStyles.menuButton — lands on MenuButton's root */
+  .menu-button {
+    @apply min-w-210;
+
+    justify-content: flex-start;
+  }
+
+  /*
+   * from useStyles.chevronIcon — `marginLeft` is RTL-flipped by Griffel, so it becomes the
+   * logical `margin-inline-start` (`ms-*`). Lands on MenuButton's `menuIcon` slot.
+   */
+  .chevron-icon {
+    @apply ms-auto;
+  }
+
+  /* from useStyles.menuPopover — lands on MenuPopover's root */
+  .menu-popover {
+    @apply min-w-210;
+  }
+}

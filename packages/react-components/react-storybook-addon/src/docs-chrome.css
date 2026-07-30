@@ -1,3 +1,24 @@
+/*
+ * Global Storybook DOCS-VIEW chrome. Subjects are Storybook's OWN DOM (`#storybook-docs`,
+ * `.sbdocs-*`, emotion-generated classes), which ships as external UNLAYERED CSS — so these
+ * rules stay unlayered too (DECISIONS.md D2 amendment 5's authoring rule). Nothing here is
+ * CSS-Modules-scoped; every selector is global on purpose.
+ *
+ * ── Renamed from `src/styles.css` (phase3-worklist Item 12c) ────────────────────────────
+ * The addon's docs components moved off Griffel onto `*.module.css`, and
+ * `@fluentui/workspace-plugin:build` aggregates every `src/**` CSS Module of a package into
+ * `dist/styles.css` (DECISIONS.md D1, one fixed path shared by all 60 converted packages).
+ * That collides head-on with this file, which was asset-copied to the same `dist/styles.css`
+ * — one would have silently overwritten the other. So this sheet took a new name and a new
+ * subpath, and `./styles.css` now means for this package exactly what it means everywhere
+ * else: the compiled component styles.
+ *
+ * CONSUMER-VISIBLE: `@fluentui/react-storybook-addon/styles.css` still resolves, but its
+ * CONTENT changed. Anyone importing it for docs chrome must now also import
+ * `@fluentui/react-storybook-addon/docs-chrome.css`. In-repo, `.storybook/preview.js`
+ * imports both source files.
+ */
+
 #storybook-docs .sbdocs-content {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;

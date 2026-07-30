@@ -4,17 +4,12 @@ import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/re
 import { Spinner } from '@fluentui/react-spinner';
 import { Toast, Toaster, ToastTitle, useToastController } from '@fluentui/react-toast';
 import { useId } from '@fluentui/react-utilities';
-import { makeStyles } from '@griffel/react';
 import { bundleIcon, MarkdownFilled, MarkdownRegular } from '@fluentui/react-icons';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-const MarkdownIcon = bundleIcon(MarkdownFilled, MarkdownRegular);
+import styles from './CopyAsMarkdownButton.module.css';
 
-const useStyles = makeStyles({
-  button: {
-    marginInlineStart: 'auto',
-  },
-});
+const MarkdownIcon = bundleIcon(MarkdownFilled, MarkdownRegular);
 
 export interface CopyAsMarkdownProps {
   /** The Storybook story ID used to generate the markdown URL */
@@ -28,7 +23,6 @@ export interface CopyAsMarkdownProps {
 export const CopyAsMarkdownButton: React.FC<CopyAsMarkdownProps> = ({ storyId = '' }) => {
   const { targetDocument } = useFluent();
   const targetWindow = targetDocument?.defaultView;
-  const styles = useStyles();
   const toastId = useId('copy-toast');
   const toasterId = useId('toaster');
   const { dispatchToast, updateToast } = useToastController(toasterId);
