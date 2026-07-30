@@ -22,10 +22,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * allowing the user to show or hide the children.
  */
 export const TreeItem: ForwardRefComponent<TreeItemProps> = React.forwardRef((props, ref) => {
-  const state = useTreeItem_unstable(props, ref);
+  let state = useTreeItem_unstable(props, ref);
 
-  useTreeItemStyles_unstable(state);
-  useCustomStyleHook_unstable('useTreeItemStyles_unstable')(state);
+  state = useTreeItemStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useTreeItemStyles_unstable')(state);
 
   const contextValues = useTreeItemContextValues_unstable(state);
   return renderTreeItem_unstable(state, contextValues);

@@ -16,10 +16,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * On simple scenarios it is advised to simply use a nested structure instead.
  */
 export const FlatTree: ForwardRefComponent<FlatTreeProps> = React.forwardRef((props, ref) => {
-  const state = useFlatTree_unstable(props, ref);
+  let state = useFlatTree_unstable(props, ref);
   const contextValues = useFlatTreeContextValues_unstable(state);
-  useFlatTreeStyles_unstable(state);
-  useCustomStyleHook_unstable('useFlatTreeStyles_unstable')(state);
+  state = useFlatTreeStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useFlatTreeStyles_unstable')(state);
 
   return renderFlatTree_unstable(state, contextValues);
 });

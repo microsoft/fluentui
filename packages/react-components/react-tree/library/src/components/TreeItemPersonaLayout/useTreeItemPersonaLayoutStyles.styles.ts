@@ -63,10 +63,9 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
-  const root = state.root as typeof state.root & TreeItemPersonaLayoutRootDataAttributes;
-
-  // eslint-disable-next-line react-hooks/immutability
-  root['data-size'] = size;
+  const rootDataAttributes: TreeItemPersonaLayoutRootDataAttributes = {
+    'data-size': size,
+  };
 
   // Module class FIRST, then the named group marker — the marker must never be
   // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
@@ -90,41 +89,49 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   //
   // `styles.subtle` is intentionally absent from the module (the Griffel slice is `{}`);
   // clsx drops the resulting `undefined`, matching the empty class string Griffel produces.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-tree-item-persona-layout',
-    styles[itemType],
-    styles[appearance],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(
+        styles.root,
+        'group/fui-tree-item-persona-layout',
+        styles[itemType],
+        styles[appearance],
+        state.root.className,
+      ),
+    },
+  };
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.media.className = clsx(styles.media, state.media.className);
+  state = { ...state, media: { ...state.media, className: clsx(styles.media, state.media.className) } };
 
   if (state.main) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.main.className = clsx(
-      styles.main,
-      state.description && styles['main-with-description'],
-      state.main.className,
-    );
+    state = {
+      ...state,
+      main: {
+        ...state.main,
+        className: clsx(styles.main, state.description && styles['main-with-description'], state.main.className),
+      },
+    };
   }
   if (state.description) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.description.className = clsx(styles.description, state.description.className);
+    state = {
+      ...state,
+      description: { ...state.description, className: clsx(styles.description, state.description.className) },
+    };
   }
   if (state.actions) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.actions.className = clsx(styles.actions, state.actions.className);
+    state = { ...state, actions: { ...state.actions, className: clsx(styles.actions, state.actions.className) } };
   }
   if (state.aside) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.aside.className = clsx(styles.aside, state.aside.className);
+    state = { ...state, aside: { ...state.aside, className: clsx(styles.aside, state.aside.className) } };
   }
   if (state.expandIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.expandIcon.className = clsx(styles['expand-icon'], state.expandIcon.className);
+    state = {
+      ...state,
+      expandIcon: { ...state.expandIcon, className: clsx(styles['expand-icon'], state.expandIcon.className) },
+    };
   }
 
   // NOTE: `selector` gets NO assignment. Its only library token was the

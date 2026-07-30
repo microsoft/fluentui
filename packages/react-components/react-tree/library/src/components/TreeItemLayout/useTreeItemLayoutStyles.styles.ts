@@ -68,10 +68,9 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
-  const rootDataAttributes = root as typeof root & TreeItemLayoutRootDataAttributes;
-
-  // eslint-disable-next-line react-hooks/immutability
-  rootDataAttributes['data-size'] = size;
+  const rootDataAttributes: TreeItemLayoutRootDataAttributes = {
+    'data-size': size,
+  };
 
   // Module class FIRST, then the named group marker — the marker must never be
   // `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
@@ -95,40 +94,35 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   //
   // `styles.subtle` is intentionally absent from the module (the Griffel slice is `{}`);
   // clsx drops the resulting `undefined`, matching the empty class string Griffel produces.
-  // eslint-disable-next-line react-hooks/immutability
-  root.className = clsx(
-    styles.root,
-    'group/fui-tree-item-layout',
-    styles[appearance],
-    styles[itemType],
-    root.className,
-  );
-
-  // eslint-disable-next-line react-hooks/immutability
-  main.className = clsx(styles.main, main.className);
+  // This hook delegates to nothing, so every slot is composed in a single returned object rather
+  // than a chain of `state` rebindings — the optional slots stay absent when they were absent.
+  const composed: Pick<TreeItemLayoutState, 'root' | 'main'> &
+    Partial<Pick<TreeItemLayoutState, 'expandIcon' | 'iconBefore' | 'iconAfter' | 'actions' | 'aside'>> = {
+    root: {
+      ...root,
+      ...rootDataAttributes,
+      className: clsx(styles.root, 'group/fui-tree-item-layout', styles[appearance], styles[itemType], root.className),
+    },
+    main: { ...main, className: clsx(styles.main, main.className) },
+  };
 
   if (expandIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    expandIcon.className = clsx(styles['expand-icon'], expandIcon.className);
+    composed.expandIcon = { ...expandIcon, className: clsx(styles['expand-icon'], expandIcon.className) };
   }
 
   if (iconBefore) {
-    // eslint-disable-next-line react-hooks/immutability
-    iconBefore.className = clsx(styles.icon, styles['icon-before'], iconBefore.className);
+    composed.iconBefore = { ...iconBefore, className: clsx(styles.icon, styles['icon-before'], iconBefore.className) };
   }
 
   if (iconAfter) {
-    // eslint-disable-next-line react-hooks/immutability
-    iconAfter.className = clsx(styles.icon, styles['icon-after'], iconAfter.className);
+    composed.iconAfter = { ...iconAfter, className: clsx(styles.icon, styles['icon-after'], iconAfter.className) };
   }
 
   if (actions) {
-    // eslint-disable-next-line react-hooks/immutability
-    actions.className = clsx(styles.actions, actions.className);
+    composed.actions = { ...actions, className: clsx(styles.actions, actions.className) };
   }
   if (aside) {
-    // eslint-disable-next-line react-hooks/immutability
-    aside.className = clsx(styles.aside, aside.className);
+    composed.aside = { ...aside, className: clsx(styles.aside, aside.className) };
   }
 
   // NOTE: `selector` gets NO assignment. Its only library token was the
@@ -137,5 +131,5 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   // consumer's own string, i.e. dead code implying this hook styles a slot it does not.
   // The module declares no `.selector` local; if it ever gains one, restore the assignment.
 
-  return state;
+  return { ...state, ...composed };
 };

@@ -55,8 +55,8 @@ type FixedSizeTreeProps = Omit<FlatTreeProps, 'children'> & {
  * FixedSizeTree is a recomposition of Tree component that uses react-window FixedSizeList to render items.
  */
 const FixedSizeTree = React.forwardRef<HTMLElement, FixedSizeTreeProps>((props, ref) => {
-  const state = useFlatTree_unstable(props, ref);
-  useFlatTreeStyles_unstable(state);
+  let state = useFlatTree_unstable(props, ref);
+  state = useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
   assertSlots<FlatTreeSlots>(state);
   const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
