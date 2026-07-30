@@ -45,11 +45,10 @@
  * `DrawerFooter/useDrawerFooter.ts:14`), so the name is precedent, not invention. There is
  * no native selector for "the DrawerBody is scrolled to the middle", so this is the
  * fallback case D15.6 sanctions rather than a mirror of something CSS could already see.
- * Written as RAW attribute selectors: the shared `@custom-variant` catalog lives in another
- * package (@fluentui/react-tailwind-theme) and this conversion does not edit it; the
- * cookbook bans variant DEFINITIONS in component modules, not attribute selectors
- * (CONVERSION_GUIDE §2, scale-prop rule). `scroll-state-*` catalog entries are requested in
- * the conversion report.
+ * Read through the shared catalog's `not-scroll-state-none` and `scroll-state-middle-or-top`
+ * variants (@fluentui/react-tailwind-theme `css/variants.css`), promoted out of this file's raw
+ * attribute selectors by the Phase 3 catalog pass together with the four
+ * `scroll-state-<value>` singles.
  *
  * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
  * The three-value `padding` shorthand becomes `pt-vertical-l` / `px-horizontal-xxl` /
@@ -82,18 +81,20 @@
   /* arg #3 — from useDrawerFooterStyles.separator, whose `::before` body is the shared
      drawerSeparatorStyles object plus `top: 0` */
   .root {
-    &:where(:not([data-scroll-state='none']))::before {
-      @apply absolute h-thin;
+    @variant not-scroll-state-none {
+      &::before {
+        @apply absolute h-thin;
 
-      content: '';
-      inset-inline-start: 0;
-      inset-inline-end: 0;
-      top: 0;
-      opacity: 0;
-      background-color: var(--colorNeutralStroke1);
-      transition-duration: var(--durationNormal);
-      transition-property: opacity;
-      transition-timing-function: var(--curveEasyEase);
+        content: '';
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+        top: 0;
+        opacity: 0;
+        background-color: var(--colorNeutralStroke1);
+        transition-duration: var(--durationNormal);
+        transition-property: opacity;
+        transition-timing-function: var(--curveEasyEase);
+      }
     }
   }
 }
@@ -101,8 +102,10 @@
 @layer fui.components.l1 {
   /* arg #4 — from useDrawerFooterStyles.separatorVisible */
   .root {
-    &:where([data-scroll-state='middle'], [data-scroll-state='top'])::before {
-      opacity: 1;
+    @variant scroll-state-middle-or-top {
+      &::before {
+        opacity: 1;
+      }
     }
   }
 }

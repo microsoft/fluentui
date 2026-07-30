@@ -47,16 +47,21 @@
  * ── data attributes ──────────────────────────────────────────────────────────────────
  * `data-position` is one of the headless preview's 25 attribute names and is stamped on
  * exactly this element there (react-headless-components-preview `useInlineDrawer.ts:18`),
- * so the name is precedent, not invention. It is written as a RAW attribute selector
- * because the shared `@custom-variant` catalog lives in another package
- * (@fluentui/react-tailwind-theme) and this conversion does not edit it; the cookbook bans
- * variant DEFINITIONS in component modules, not attribute selectors (CONVERSION_GUIDE §2,
- * scale-prop rule). `position-start` / `position-end` / `position-bottom` catalog entries
- * are requested in the conversion report.
+ * so the name is precedent, not invention. It is read through the shared catalog's
+ * `position-start` / `position-end` / `position-bottom` / `position-start-or-end` variants
+ * (@fluentui/react-tailwind-theme `css/variants.css`), promoted from this file's original raw
+ * attribute selectors by the Phase 3 catalog pass.
  *
- * `data-size` uses the catalog variants that already exist (`size-small` / `size-medium` /
- * `size-large`). `full` has no catalog entry and gets the raw attribute selector for the
- * same reason; `size-full` is requested in the report.
+ * `data-size` uses the catalog variants `size-small` / `size-medium` / `size-large` and
+ * `size-full`, the last of which the same pass added — `full` is a value on the scale prop's
+ * attribute without being a scale step.
+ *
+ * The bottom+full override is authored as `@variant position-bottom { @variant size-full }`
+ * rather than one compound attribute selector. That emits
+ * `:where([data-position='bottom']):where([data-size='full'])` where the raw form emitted
+ * `:where([data-position='bottom'][data-size='full'])` — the same match set at the same 0-1-0,
+ * differing only in serialization, and it is the only way to express an intersection out of two
+ * catalog entries.
  *
  * ── Pixel literals and tokens (DECISIONS.md D4) ──────────────────────────────────────
  * `--fui-Drawer--size` is a custom PROPERTY, so no utility can set it and the three px
@@ -99,7 +104,7 @@
 @layer fui.components.l1 {
   /* arg #3a — from the shared useDrawerStyles.start / .end / .bottom */
   .root {
-    &:where([data-position='start']) {
+    @variant position-start {
       border-inline-end-width: var(--spacing-thin);
       border-inline-end-style: solid;
       border-inline-end-color: var(--colorTransparentStroke);
@@ -108,7 +113,7 @@
       inset-inline-end: auto;
     }
 
-    &:where([data-position='end']) {
+    @variant position-end {
       border-inline-start-width: var(--spacing-thin);
       border-inline-start-style: solid;
       border-inline-start-color: var(--colorTransparentStroke);
@@ -117,7 +122,7 @@
       inset-inline-start: auto;
     }
 
-    &:where([data-position='bottom']) {
+    @variant position-bottom {
       bottom: 0;
       top: auto;
     }
@@ -145,12 +150,14 @@
       --fui-Drawer--size: calc(940px * var(--base-scale));
     }
 
-    &:where([data-size='full']) {
+    @variant size-full {
       --fui-Drawer--size: 100vw;
     }
 
-    &:where([data-position='bottom'][data-size='full']) {
-      --fui-Drawer--size: 100%;
+    @variant position-bottom {
+      @variant size-full {
+        --fui-Drawer--size: 100%;
+      }
     }
   }
 }
@@ -164,19 +171,19 @@
    * tie at 0-1-0 and file position is what restores that winner.
    */
   .separator {
-    &:where([data-position='start']) {
+    @variant position-start {
       border-inline-end-width: calc(1px * var(--base-scale));
       border-inline-end-style: solid;
       border-inline-end-color: var(--colorNeutralBackground3);
     }
 
-    &:where([data-position='end']) {
+    @variant position-end {
       border-inline-start-width: calc(1px * var(--base-scale));
       border-inline-start-style: solid;
       border-inline-start-color: var(--colorNeutralBackground3);
     }
 
-    &:where([data-position='bottom']) {
+    @variant position-bottom {
       border-block-start-width: calc(1px * var(--base-scale));
       border-block-start-style: solid;
       border-block-start-color: var(--colorNeutralBackground3);
@@ -190,7 +197,7 @@
    * source and emit no rule here either.
    */
   .root {
-    &:where([data-position='bottom']) {
+    @variant position-bottom {
       width: 100%;
       height: var(--fui-Drawer--size);
     }
@@ -216,11 +223,11 @@
     border-inline-start-style: none;
     border-inline-end-style: none;
 
-    &:where([data-position='start'], [data-position='end']) {
+    @variant position-start-or-end {
       width: 0;
     }
 
-    &:where([data-position='bottom']) {
+    @variant position-bottom {
       height: 0;
     }
   }

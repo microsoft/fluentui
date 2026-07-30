@@ -73,11 +73,16 @@
  *
  * ── data attributes ──────────────────────────────────────────────────────────────────
  * `data-position` is one of the headless preview's 25 attribute names, stamped on exactly
- * this element there (react-headless-components-preview `useOverlayDrawer.ts:27`). Both it
- * and `data-size` are written as RAW attribute selectors / existing catalog variants; the
- * shared `@custom-variant` catalog lives in another package and this conversion does not
- * edit it (CONVERSION_GUIDE §2, scale-prop rule). `position-*` and `size-full` catalog
- * entries are requested in the conversion report.
+ * this element there (react-headless-components-preview `useOverlayDrawer.ts:27`). Both it and
+ * `data-size` are read entirely through the shared catalog (@fluentui/react-tailwind-theme
+ * `css/variants.css`): `position-start` / `position-end` / `position-bottom` and `size-full`
+ * were promoted out of this file's raw attribute selectors by the Phase 3 catalog pass, joining
+ * the `size-small` / `size-medium` / `size-large` entries that already existed.
+ *
+ * The bottom+full override is authored as `@variant position-bottom { @variant size-full }`,
+ * which emits `:where([data-position='bottom']):where([data-size='full'])` where the raw form
+ * emitted `:where([data-position='bottom'][data-size='full'])` — same match set, same 0-1-0,
+ * serialization only. See InlineDrawer.module.css, which carries the identical pair.
  *
  * These attributes ride the `root` SLOT, which is an `OverlayDrawerSurface` element type,
  * not an intrinsic. They survive the hop because `useDialogSurface_unstable` funnels
@@ -133,7 +138,7 @@
 @layer fui.components.l1 {
   /* arg #2a — from the shared useDrawerStyles.start / .end / .bottom */
   .root {
-    &:where([data-position='start']) {
+    @variant position-start {
       border-inline-end-width: var(--spacing-thin);
       border-inline-end-style: solid;
       border-inline-end-color: var(--colorTransparentStroke);
@@ -142,7 +147,7 @@
       inset-inline-end: auto;
     }
 
-    &:where([data-position='end']) {
+    @variant position-end {
       border-inline-start-width: var(--spacing-thin);
       border-inline-start-style: solid;
       border-inline-start-color: var(--colorTransparentStroke);
@@ -151,7 +156,7 @@
       inset-inline-start: auto;
     }
 
-    &:where([data-position='bottom']) {
+    @variant position-bottom {
       bottom: 0;
       top: auto;
     }
@@ -178,12 +183,14 @@
       --fui-Drawer--size: calc(940px * var(--base-scale));
     }
 
-    &:where([data-size='full']) {
+    @variant size-full {
       --fui-Drawer--size: 100vw;
     }
 
-    &:where([data-position='bottom'][data-size='full']) {
-      --fui-Drawer--size: 100%;
+    @variant position-bottom {
+      @variant size-full {
+        --fui-Drawer--size: 100%;
+      }
     }
   }
 }
@@ -194,7 +201,7 @@
    * source and emit no rule here either.
    */
   .root {
-    &:where([data-position='bottom']) {
+    @variant position-bottom {
       top: auto;
       height: var(--fui-Drawer--size);
       width: 100vw;
