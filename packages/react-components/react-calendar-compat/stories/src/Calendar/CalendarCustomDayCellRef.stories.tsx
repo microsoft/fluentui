@@ -14,8 +14,8 @@ export const CalendarCustomDayCellRef = (): JSXElement => {
     if (element) {
       element.title = 'custom title from customDayCellRef: ' + date.toString();
       if (date.getDay() === 0 || date.getDay() === 6) {
-        // We need to split the className since we use makeStyles and griffel provides a string of space
-        // separated classnames
+        // `classNames.dayOutsideBounds` is a className string, which may hold more than one
+        // space-separated class, so it is split before being passed to `classList.add`.
         classNames.dayOutsideBounds && element.classList.add(...classNames.dayOutsideBounds.split(' '));
         (element.children[0] as HTMLButtonElement).disabled = true;
       }
