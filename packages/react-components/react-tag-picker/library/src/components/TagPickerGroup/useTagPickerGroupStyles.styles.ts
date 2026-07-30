@@ -2,14 +2,13 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike most converted styles files, this one carries NO `enforce-use-client` suppression —
- * it still delegates to another package's client styles hook, so the rule agrees `'use client'`
- * is required here and a suppression would itself be reported as an unused disable directive.
+ * this file keeps `'use client'` because it still delegates to another package's client
+ * styles hook, so `enforce-use-client` sees a hook call and never reports the directive as
+ * unnecessary. Converted leaf hooks — `clsx` plus a CSS-Modules import — call nothing and
+ * carry no directive at all.
  *
- * Where the rule DOES object (a styles file whose remaining content is `clsx` plus a
- * CSS-Modules import), the suppression is a TRAILING `eslint-disable-line`, because a leading
- * block comment would push `'use client'` off line 1 of the emitted lib/lib-commonjs output.
- * Dropping the directives altogether is a Phase 3 sweep across all 180 style hooks.
+ * Any comment that has to sit ABOVE a surviving directive would push `'use client'` off line 1
+ * of the emitted lib/lib-commonjs output, which is why this note sits below it.
  */
 
 import { clsx } from 'clsx';
