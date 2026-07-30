@@ -14,12 +14,12 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * it contains everything that should be visible.
  */
 export const DialogSurface: ForwardRefComponent<DialogSurfaceProps> = React.forwardRef((props, ref) => {
-  const state = useDialogSurface_unstable(props, ref);
+  let state = useDialogSurface_unstable(props, ref);
   const contextValues = useDialogSurfaceContextValues_unstable(state);
 
-  useDialogSurfaceStyles_unstable(state);
+  state = useDialogSurfaceStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useDialogSurfaceStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useDialogSurfaceStyles_unstable')(state);
 
   return renderDialogSurface_unstable(state, contextValues);
 });
