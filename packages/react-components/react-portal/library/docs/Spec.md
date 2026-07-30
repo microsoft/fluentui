@@ -79,21 +79,21 @@ const customElement = document.createElement('div');
 
 `Portal` should be able to access theme values as css variables:
 
+```css
+/* PortalContent.module.css */
+.portal-content {
+  color: var(--colorNeutralForeground1);
+}
+```
+
 ```tsx
-const useStyles = makeStyles({
-    portalContent: theme => {...}
-})
-
-
-const styles = useStyles();
+import styles from './PortalContent.module.css';
 
 <ThemeProvider>
-    <Portal>
-      <div className={styles.portalContent}>
-        Can use all theme CSS variables from the parent ThemeProvider
-      </div>
-    </Portal>
-</ThemeProvider>
+  <Portal>
+    <div className={styles['portal-content']}>Can use all theme CSS variables from the parent ThemeProvider</div>
+  </Portal>
+</ThemeProvider>;
 ```
 
 ## Variants
