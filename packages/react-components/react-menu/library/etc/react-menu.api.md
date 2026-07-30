@@ -513,7 +513,7 @@ export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, 
 export type UninitializedMenuListState = Omit<MenuListState, 'checkedValues' | 'selectRadio' | 'setFocusByFirstCharacter' | 'toggleCheckbox'> & Partial<Pick<MenuListState, 'checkedValues'>>;
 
 // @public
-export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick<MenuItemState, "checkmark">) => void;
+export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick<MenuItemState, "checkmark">) => MenuItemSelectableState & Pick<MenuItemState, "checkmark">;
 
 // @public
 export const useMenu_unstable: (props: MenuProps & {
@@ -590,7 +590,7 @@ export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2
 export const useMenuItemRadioBase_unstable: (props: MenuItemRadioBaseProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioBaseState;
 
 // @public (undocumented)
-export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
+export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => MenuItemRadioState;
 
 // @public
 export const useMenuItemStyles_unstable: (state: MenuItemState) => MenuItemState;

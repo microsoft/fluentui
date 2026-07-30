@@ -42,15 +42,16 @@ export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState)
   // MenuSplitGroup's child selectors) can address whichever identity it means. Both are
   // declared to react-conformance's `component-has-group-marker` through
   // `testOptions['has-group-marker'].markers` in MenuItemCheckbox.test.tsx (D16.3).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-menu-item-checkbox', state.root.className);
+  state = { ...state, root: { ...state.root, className: clsx('group/fui-menu-item-checkbox', state.root.className) } };
 
   // Called LAST, exactly as before: it composes its own classes ahead of the incoming
   // className, which keeps the consumer's string last in the rendered class attribute.
   // It also applies the checkmark styles (`useCheckmarkStyles_unstable`), which is why this
   // hook no longer calls that helper a second time — clsx does not dedupe the way
   // mergeClasses did, and the second call only ever produced duplicate class tokens.
-  useMenuItemStyles_unstable(state);
+  // MenuItemCheckboxState is `MenuItemState & MenuItemSelectableState`, so the delegate's
+  // narrower return is re-merged onto this component's own shape (F1 of the D14 mutation removal — thread the composed result, do not discard it).
+  state = { ...state, ...useMenuItemStyles_unstable(state) };
 
   return state;
 };

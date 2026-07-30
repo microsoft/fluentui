@@ -53,65 +53,92 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   // Cascade priority is decided by the `@layer fui.*` order in MenuItem.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // Griffel mergeClasses argument list.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-menu-item',
-    state.submenuOpen && styles['submenu-open'],
-    state.disabled && styles.disabled,
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx(
+        styles.root,
+        'group/fui-menu-item',
+        state.submenuOpen && styles['submenu-open'],
+        state.disabled && styles.disabled,
+        state.root.className,
+      ),
+    },
+  };
 
+  // The Griffel source put `multiline && multilineStyles.content` AFTER the consumer
+  // className. Class-attribute position carries no cascade meaning here (mergeClasses
+  // only ever reordered ATOMICS, and a consumer string was passed through untouched), so
+  // the conditional class moves ahead of the consumer's — which is what
+  // `classname-overrides-win` asserts and what unlayered-beats-layered guarantees
+  // (DECISIONS.md D7 revision / D9). Same move on every slot below.
   if (state.content) {
-    // The Griffel source put `multiline && multilineStyles.content` AFTER the consumer
-    // className. Class-attribute position carries no cascade meaning here (mergeClasses
-    // only ever reordered ATOMICS, and a consumer string was passed through untouched), so
-    // the conditional class moves ahead of the consumer's — which is what
-    // `classname-overrides-win` asserts and what unlayered-beats-layered guarantees
-    // (DECISIONS.md D7 revision / D9). Same move on every slot below.
-    // eslint-disable-next-line react-hooks/immutability
-    state.content.className = clsx(styles.content, multiline && styles['content-multiline'], state.content.className);
+    state = {
+      ...state,
+      content: {
+        ...state.content,
+        className: clsx(styles.content, multiline && styles['content-multiline'], state.content.className),
+      },
+    };
   }
 
   if (state.checkmark) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.checkmark.className = clsx(styles.checkmark, state.checkmark.className);
+    state = {
+      ...state,
+      checkmark: { ...state.checkmark, className: clsx(styles.checkmark, state.checkmark.className) },
+    };
   }
 
   if (state.secondaryContent) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.secondaryContent.className = clsx(
-      styles['secondary-content'],
-      state.disabled && styles.disabled,
-      multiline && styles['secondary-content-multiline'],
-      state.secondaryContent.className,
-    );
+    state = {
+      ...state,
+      secondaryContent: {
+        ...state.secondaryContent,
+        className: clsx(
+          styles['secondary-content'],
+          state.disabled && styles.disabled,
+          multiline && styles['secondary-content-multiline'],
+          state.secondaryContent.className,
+        ),
+      },
+    };
   }
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = clsx(styles.icon, state.icon.className);
+    state = { ...state, icon: { ...state.icon, className: clsx(styles.icon, state.icon.className) } };
   }
 
   if (state.submenuIndicator) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.submenuIndicator.className = clsx(
-      styles['submenu-indicator'],
-      multiline && styles['submenu-indicator-multiline'],
-      state.submenuIndicator.className,
-    );
+    state = {
+      ...state,
+      submenuIndicator: {
+        ...state.submenuIndicator,
+        className: clsx(
+          styles['submenu-indicator'],
+          multiline && styles['submenu-indicator-multiline'],
+          state.submenuIndicator.className,
+        ),
+      },
+    };
   }
 
   if (state.subText) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.subText.className = clsx(
-      styles['sub-text'],
-      state.disabled && styles['sub-text-disabled'],
-      state.subText.className,
-    );
+    state = {
+      ...state,
+      subText: {
+        ...state.subText,
+        className: clsx(styles['sub-text'], state.disabled && styles['sub-text-disabled'], state.subText.className),
+      },
+    };
   }
 
-  useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
+  // The checkmark helper composes exactly one slot, so only that slot is threaded back — its
+  // parameter type (`MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>`) is wider than
+  // MenuItemState in the `checked` direction and narrower everywhere else, so re-merging the
+  // whole object would not type. Taking `checkmark` alone is the precise data flow (F1 of the
+  // D14 mutation removal — thread the composed result, do not discard it).
+  state = { ...state, checkmark: useCheckmarkStyles_unstable(state as MenuItemCheckboxState).checkmark };
 
   return state;
 };

@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Define a styled MenuItem, using the `useMenuItem_unstable` and `useMenuItemStyles_unstable` hook.
  */
 export const MenuItem: ForwardRefComponent<MenuItemProps> = React.forwardRef((props, ref) => {
-  const state = useMenuItem_unstable(props, ref);
+  let state = useMenuItem_unstable(props, ref);
 
-  useMenuItemStyles_unstable(state);
+  state = useMenuItemStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useMenuItemStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useMenuItemStyles_unstable')(state);
 
   return renderMenuItem_unstable(state);
 });

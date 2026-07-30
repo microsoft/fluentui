@@ -9,10 +9,10 @@ import { useMenuItemSwitchStyles_unstable } from './useMenuItemSwitchStyles.styl
 import type { MenuItemSwitchProps } from './MenuItemSwitch.types';
 
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps> = React.forwardRef((props, ref) => {
-  const state = useMenuItemSwitch_unstable(props, ref);
+  let state = useMenuItemSwitch_unstable(props, ref);
 
-  useMenuItemSwitchStyles_unstable(state);
-  useCustomStyleHook_unstable('useMenuItemSwitchStyles_unstable')(state);
+  state = useMenuItemSwitchStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useMenuItemSwitchStyles_unstable')(state);
   return renderMenuItemSwitch_unstable(state);
 });
 

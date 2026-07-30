@@ -13,12 +13,12 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Define a styled MenuGroup, using the `useMenuGroup_unstable` hook.
  */
 export const MenuGroup: ForwardRefComponent<MenuGroupProps> = React.forwardRef((props, ref) => {
-  const state = useMenuGroup_unstable(props, ref);
+  let state = useMenuGroup_unstable(props, ref);
   const contextValues = useMenuGroupContextValues_unstable(state);
 
-  useMenuGroupStyles_unstable(state);
+  state = useMenuGroupStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useMenuGroupStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useMenuGroupStyles_unstable')(state);
 
   return renderMenuGroup_unstable(state, contextValues);
 });

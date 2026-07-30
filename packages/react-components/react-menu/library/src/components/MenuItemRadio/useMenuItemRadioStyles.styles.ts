@@ -29,7 +29,7 @@ export const menuItemRadioClassNames: { root: string } = {
   root: 'group/fui-menu-item-radio',
 };
 
-export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState): void => {
+export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState): MenuItemRadioState => {
   // Named group marker, consumer className last. There is no unconditional module class to
   // lead with — this component has no styles of its own; its root IS a MenuItem root — and
   // it does not need one: `useMenuItemStyles_unstable` runs LAST and PREPENDS its own
@@ -42,13 +42,17 @@ export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState): void
   // MenuSplitGroup's child selectors) can address whichever identity it means. Both are
   // declared to react-conformance's `component-has-group-marker` through
   // `testOptions['has-group-marker'].markers` in MenuItemRadio.test.tsx (D16.3).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-menu-item-radio', state.root.className);
+  state = { ...state, root: { ...state.root, className: clsx('group/fui-menu-item-radio', state.root.className) } };
 
   // Called LAST, exactly as before: it composes its own classes ahead of the incoming
   // className, which keeps the consumer's string last in the rendered class attribute.
   // It also applies the checkmark styles (`useCheckmarkStyles_unstable`), which is why this
   // hook no longer calls that helper a second time — clsx does not dedupe the way
   // mergeClasses did, and the second call only ever produced duplicate class tokens.
-  useMenuItemStyles_unstable(state);
+  // MenuItemRadioState is `MenuItemState & MenuItemSelectableState`, so the delegate's
+  // `MenuItemState` return is re-merged onto this wider shape (F1 of the D14 mutation removal
+  // — thread the composed result, do not discard it).
+  state = { ...state, ...useMenuItemStyles_unstable(state) };
+
+  return state;
 };

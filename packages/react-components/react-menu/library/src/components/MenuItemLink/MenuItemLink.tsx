@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * MenuItemLink component
  */
 export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps> = React.forwardRef((props, ref) => {
-  const state = useMenuItemLink_unstable(props, ref);
+  let state = useMenuItemLink_unstable(props, ref);
 
-  useMenuItemLinkStyles_unstable(state);
+  state = useMenuItemLinkStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useMenuItemLinkStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useMenuItemLinkStyles_unstable')(state);
 
   return renderMenuItemLink_unstable(state);
 });

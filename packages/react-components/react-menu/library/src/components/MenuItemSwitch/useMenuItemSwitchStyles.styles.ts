@@ -61,26 +61,44 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
   // MenuItem's `group/fui-menu-item` — because it genuinely is both. Both are declared to
   // react-conformance's `component-has-group-marker` through
   // `testOptions['has-group-marker'].markers` in MenuItemSwitch.test.tsx (D16.3).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-menu-item-switch', state.root.className);
+  state = { ...state, root: { ...state.root, className: clsx('group/fui-menu-item-switch', state.root.className) } };
 
+  // The Griffel source put `multiline && multilineStyles.switch` AFTER the consumer
+  // className; class-attribute position carries no cascade meaning, so the conditional
+  // class moves ahead of the consumer's — `classname-overrides-win` (DECISIONS.md D9).
   if (state.switchIndicator) {
-    // The Griffel source put `multiline && multilineStyles.switch` AFTER the consumer
-    // className; class-attribute position carries no cascade meaning, so the conditional
-    // class moves ahead of the consumer's — `classname-overrides-win` (DECISIONS.md D9).
-    // eslint-disable-next-line react-hooks/immutability
-    state.switchIndicator.className = clsx(
-      styles['switch-indicator'],
-      checked && styles['switch-indicator-checked'],
-      multiline && styles['switch-indicator-multiline'],
-      state.switchIndicator.className,
-    );
+    state = {
+      ...state,
+      switchIndicator: {
+        ...state.switchIndicator,
+        className: clsx(
+          styles['switch-indicator'],
+          checked && styles['switch-indicator-checked'],
+          multiline && styles['switch-indicator-multiline'],
+          state.switchIndicator.className,
+        ),
+      },
+    };
   }
 
   // Called LAST, exactly as before. The spread is a SHALLOW copy, so `state.root` and every
   // other slot object handed over is still the one this component renders; only the
   // checkmark/submenuIndicator/submenu flags are neutralised for the MenuItem styling pass.
-  useMenuItemStyles_unstable({
+  // Thread the composed result instead of discarding it (F1 of the D14 mutation removal). The
+  // object handed to MenuItem is a NEUTRALISED VIEW of this state, and MenuItemSwitchState omits
+  // every key that view overrode, so those keys are destructured OFF the return before the
+  // merge — threading them would publish MenuItem's view (`checkmark: undefined`,
+  // `hasSubmenu: false`, `'span'` components) onto the object MenuItemSwitch actually renders.
+  const {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    components: menuItemComponents,
+    checkmark: menuItemCheckmark,
+    submenuIndicator: menuItemSubmenuIndicator,
+    hasSubmenu: menuItemHasSubmenu,
+    submenuOpen: menuItemSubmenuOpen,
+    persistOnClick: menuItemPersistOnClick,
+    ...composedMenuItem
+  } = useMenuItemStyles_unstable({
     ...state,
     components: {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -94,6 +112,8 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
     submenuOpen: false,
     persistOnClick: true,
   });
+
+  state = { ...state, ...composedMenuItem };
 
   return state;
 };
