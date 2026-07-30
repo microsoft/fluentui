@@ -51,8 +51,10 @@ export const useDataGridSelectionCellStyles_unstable = (
   // `:scope` polyfill throws on the `/` (D15.1 / D16.2). It also keeps the consumer
   // className last. The swap is cascade-inert: this component contributes no declarations,
   // and `@layer fui.*` decides every tie (D2).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-data-grid-selection-cell', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx('group/fui-data-grid-selection-cell', state.root.className) },
+  };
 
   // NOTE: the `checkboxIndicator` and `radioIndicator` assignments are gone. Each one's ONLY
   // library token was a `fui-DataGridSelectionCell__<slot>` static (D16.1 removed both) —
@@ -61,7 +63,7 @@ export const useDataGridSelectionCellStyles_unstable = (
   // (CONVERSION_GUIDE "a slot whose only library token is the static").
   // `useTableSelectionCellStyles_unstable` below still styles `radioIndicator`.
 
-  useTableSelectionCellStyles_unstable(state);
+  state = useTableSelectionCellStyles_unstable(state);
 
   return state;
 };

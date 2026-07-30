@@ -14,11 +14,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
   (<TItem>(props: DataGridRowProps<TItem>) => JSXElement) = React.forwardRef<HTMLElement, DataGridRowProps>(
   (props, ref) => {
-    const state = useDataGridRow_unstable(props, ref);
+    let state = useDataGridRow_unstable(props, ref);
 
-    useDataGridRowStyles_unstable(state);
+    state = useDataGridRowStyles_unstable(state);
 
-    useCustomStyleHook_unstable('useDataGridRowStyles_unstable')(state);
+    state = useCustomStyleHook_unstable('useDataGridRowStyles_unstable')(state);
 
     return renderDataGridRow_unstable(state);
   },

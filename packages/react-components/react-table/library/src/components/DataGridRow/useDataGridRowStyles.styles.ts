@@ -60,8 +60,13 @@ export const useDataGridRowStyles_unstable = (state: DataGridRowState): DataGrid
   // very element and nothing reads it from CSS across an element boundary (D15.6).
   //
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-data-grid-row', isSubtle && styles['subtle-selection'], state.root.className);
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      className: clsx('group/fui-data-grid-row', isSubtle && styles['subtle-selection'], state.root.className),
+    },
+  };
 
   // NOTE: there is deliberately no `state.selectionCell` assignment. Its only library token
   // was the `fui-DataGridRow__selectionCell` static (D16.1 removed it), so what remained,
@@ -70,7 +75,13 @@ export const useDataGridRowStyles_unstable = (state: DataGridRowState): DataGrid
   // only library token is the static"). The TableSelectionCell that fills the slot styles
   // itself, and this row reaches it through its marker — see DataGridRow.module.css.
 
-  useTableRowStyles_unstable(state);
+  // Thread the composed result instead of discarding it (F1 of the D14 mutation removal).
+  // DataGridRow adds a `selectionCell` slot, so TableRow's `components` map is NARROWER than this
+  // one; it is dropped off the return so this component keeps its own, and every other key
+  // TableRow composed is merged onto this component's wider shape.
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const { components: tableRowComponents, ...composedTableRow } = useTableRowStyles_unstable(state);
+  state = { ...state, ...composedTableRow };
 
   return state;
 };

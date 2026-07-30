@@ -45,8 +45,10 @@ export const useDataGridHeaderCellStyles_unstable = (state: DataGridHeaderCellSt
   // never be `classList[0]`, where nwsapi's jsdom `:scope` polyfill throws on the `/`
   // (D15.1 / D16.2). It also keeps the consumer className last. The swap is cascade-inert:
   // this component contributes no declarations, and `@layer fui.*` decides every tie (D2).
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-data-grid-header-cell', state.root.className);
+  state = {
+    ...state,
+    root: { ...state.root, className: clsx('group/fui-data-grid-header-cell', state.root.className) },
+  };
 
   // NOTE: the `button`, `sortIcon` and `aside` assignments are gone. Each one's ONLY
   // library token was a `fui-DataGridHeaderCell__<slot>` static (D16.1 removed them all) —
@@ -56,7 +58,7 @@ export const useDataGridHeaderCellStyles_unstable = (state: DataGridHeaderCellSt
   // library token is the static"). `useTableHeaderCellStyles_unstable` below still styles
   // `button` and `sortIcon`.
 
-  useTableHeaderCellStyles_unstable(state);
+  state = useTableHeaderCellStyles_unstable(state);
 
   return state;
 };

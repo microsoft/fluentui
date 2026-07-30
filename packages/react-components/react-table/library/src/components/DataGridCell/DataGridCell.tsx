@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * DataGridCell component
  */
 export const DataGridCell: ForwardRefComponent<DataGridCellProps> = React.forwardRef((props, ref) => {
-  const state = useDataGridCell_unstable(props, ref);
+  let state = useDataGridCell_unstable(props, ref);
 
-  useDataGridCellStyles_unstable(state);
+  state = useDataGridCellStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useDataGridCellStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useDataGridCellStyles_unstable')(state);
 
   return renderDataGridCell_unstable(state);
 });

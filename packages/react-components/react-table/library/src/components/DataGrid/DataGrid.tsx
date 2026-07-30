@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * DataGrid component
  */
 export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((props, ref) => {
-  const state = useDataGrid_unstable(props, ref);
+  let state = useDataGrid_unstable(props, ref);
 
-  useDataGridStyles_unstable(state);
+  state = useDataGridStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useDataGridStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useDataGridStyles_unstable')(state);
 
   return renderDataGrid_unstable(state, useDataGridContextValues_unstable(state));
 });

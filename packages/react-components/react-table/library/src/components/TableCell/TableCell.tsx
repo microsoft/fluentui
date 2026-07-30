@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * TableCell component
  */
 export const TableCell: ForwardRefComponent<TableCellProps> = React.forwardRef((props, ref) => {
-  const state = useTableCell_unstable(props, ref);
+  let state = useTableCell_unstable(props, ref);
 
-  useTableCellStyles_unstable(state);
+  state = useTableCellStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTableCellStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useTableCellStyles_unstable')(state);
 
   return renderTableCell_unstable(state);
 });
