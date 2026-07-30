@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * A divider visually segments content into groups.
  */
 export const Divider: ForwardRefComponent<DividerProps> = React.forwardRef((props, ref) => {
-  const state = useDivider_unstable(props, ref);
+  let state = useDivider_unstable(props, ref);
 
-  useDividerStyles_unstable(state);
+  state = useDividerStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useDividerStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useDividerStyles_unstable')(state);
 
   return renderDivider_unstable(state);
 });
