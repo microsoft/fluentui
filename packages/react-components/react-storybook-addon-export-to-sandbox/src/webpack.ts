@@ -55,6 +55,20 @@ function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack'
     use: {
       loader: require.resolve('babel-loader'),
       options: babelLoaderOptionsUpdater({
+        /**
+         * This pass exists ONLY to run the full-source plugin; transpilation is the job of the
+         * `enforce: 'pre'`-follower (swc). Without these two flags babel-loader loads the repo's
+         * root `babel.config.js` (and, via `babelrcRoots`, package `.babelrc.json` files), which
+         * spreads `@fluentui/scripts-babel` → a bare `'@babel/preset-react'` → `runtime: 'classic'`,
+         * which in turn *sets* `pragma`/`pragmaFrag`. Story files carrying a leading
+         * `@jsxRuntime automatic` docblock pragma then hard-fail the whole build with
+         * "pragma and pragmaFrag cannot be set when runtime is automatic" (react-motion ×6,
+         * react-tree ×1 — the docsite's INFRA-1c blocker). The presets were never wanted here:
+         * `parserOpts` already grants the TS/JSX syntax this pass needs, and `customize`
+         * (scripts/storybook custom-loader) existed only to subtract leaked presets one by one.
+         */
+        configFile: false,
+        babelrc: false,
         parserOpts: { plugins: ['typescript', 'jsx'] },
         plugins: [plugin],
       }),

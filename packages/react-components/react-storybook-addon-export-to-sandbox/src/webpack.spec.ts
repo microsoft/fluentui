@@ -19,6 +19,8 @@ describe(`webpack`, () => {
         use: {
           loader: expect.stringContaining('babel-loader'),
           options: {
+            configFile: false,
+            babelrc: false,
             parserOpts: { plugins: ['typescript', 'jsx'] },
             plugins: [
               [
@@ -59,6 +61,8 @@ describe(`webpack`, () => {
         use: {
           loader: expect.stringContaining('babel-loader'),
           options: {
+            configFile: false,
+            babelrc: false,
             parserOpts: { plugins: ['typescript', 'jsx'] },
             plugins: [
               [
@@ -99,6 +103,29 @@ describe(`webpack`, () => {
     expect(use.options.plugins[0][1].cssModules).toBe(true);
   });
 
+  it(`should not let external babel config leak into the pre-transpile pass`, () => {
+    const actual = webpack({ module: { rules: [] } }, {
+      presetsList: [
+        {
+          name: 'node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib/preset.js',
+          preset: {},
+          options: {},
+        },
+      ],
+    } as WebpackFinalOptions);
+
+    const rule = actual.module?.rules?.[0] as import('webpack').RuleSetRule;
+    const use = rule.use as { options: { configFile: unknown; babelrc: unknown } };
+
+    // Loading the repo root `babel.config.js` here pulls in a bare `'@babel/preset-react'`
+    // (`runtime: 'classic'`), which SETS `pragma`/`pragmaFrag`. Any story whose leading docblock
+    // opts into the automatic runtime then fails with "pragma and pragmaFrag cannot be set when
+    // runtime is automatic" and takes the whole docsite build down — INFRA-1c. This pass only
+    // needs `parserOpts` + the full-source plugin, so both config sources stay off.
+    expect(use.options.configFile).toBe(false);
+    expect(use.options.babelrc).toBe(false);
+  });
+
   it.each([
     ['boolean true', true as const],
     ['object with tokensFilePath', { tokensFilePath: '/path/to/tokens.css' }],
@@ -120,6 +147,8 @@ describe(`webpack`, () => {
         use: {
           loader: expect.stringContaining('babel-loader'),
           options: {
+            configFile: false,
+            babelrc: false,
             parserOpts: { plugins: ['typescript', 'jsx'] },
             plugins: [
               [
