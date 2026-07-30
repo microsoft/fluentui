@@ -1908,6 +1908,12 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     return !_isChartEmpty() ? (
       <CartesianChart
         {...props}
+        // Griffel → Tailwind + CSS Modules (CONVERSION_GUIDE §3d M2). LineChart renders no
+        // element of its own, so its identity class + named group marker are composed in
+        // `useLineChartStyles` and handed to CartesianChart's root through the `styles` prop
+        // it already accepts. Placed AFTER `{...props}` so it wins over the spread copy;
+        // `classes.root` already folds `props.styles?.root` in last.
+        styles={{ ...props.styles, root: classes.root }}
         chartTitle={_getChartTitle()}
         points={points}
         chartType={ChartTypes.LineChart}

@@ -1,0 +1,82 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated per module on purpose — see
+ * DonutChart.module.css for the full rationale.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useArcStyles`. One library
+ * slice per slot, so there is no intra-slot ordering to preserve:
+ *
+ *   root      1 donutArcClassNames.root      → static class (JS) — REMOVED (DECISIONS.md D16.1);
+ *                                              `.root` now leads and carries
+ *                                              `group/fui-donut-arc` second
+ *             2 useStyles.root               → fui.components.l1   .root
+ *             3 props.className              → unlayered (always wins)
+ *             4 props.styles?.root           → unlayered (always wins)
+ *   focusRing useStyles.focusRing            → fui.components.l1   .focus-ring
+ *   arcLabel  useStyles.arcLabel             → fui.components.l1   .arc-label
+ *
+ * All three land on elements Arc renders itself (`<path>`, `<path>`, `<text>` inside its own
+ * `<g>`), so `fui.components.l1` throughout; nothing here sits over another component's hook
+ * output and `fui.components.l2` is unused.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * The compiled atomics contain no `[ltr, rtl]` pair — every declaration is direction
+ * agnostic (`cursor`, `outline`, `stroke`, `fill`, type). The arc label's `text-anchor` is
+ * computed per-datum in `Arc.tsx` from `useRtl()` and stays there. No `@variant rtl` twin.
+ *
+ * ── Dropped rule: `'& selectors'` ───────────────────────────────────────────────────────
+ * `useArcStyles.styles.ts` declared
+ *
+ *     '& selectors': { '::-moz-focus-inner': { border: 0 } }
+ *
+ * — a malformed nesting (`selectors` was meant to be a Griffel keyword, not a child key), and
+ * Griffel compiled it literally to `.f2ofnjs selectors::-moz-focus-inner{border:0;}`: a
+ * DESCENDANT rule keyed on a `<selectors>` element type that exists in neither HTML nor SVG.
+ * It has matched nothing since it was written, so it is dropped rather than reproduced.
+ * Zero rendered-pixel consequence; recorded here so the omission is not read as an oversight.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — `outline: transparent` expanded to longhands (CONVERSION_GUIDE §2) */
+  .root {
+    @apply cursor-default;
+
+    outline-color: transparent;
+    outline-style: none;
+    outline-width: medium;
+    stroke: var(--colorNeutralBackground1);
+  }
+
+  /*
+   * from useStyles.focusRing.
+   *
+   * `stroke-width` is NOT one of the spacing-powered Tailwind families (D4 addendum rule 2 —
+   * v4's `stroke-*` numeric utilities are a fixed bare-number progression, and this theme
+   * registers no `--stroke-width-*` namespace), so the stroke width is written as a direct
+   * `var(--spacing-thickest)`. That variable IS emitted (it is one of the four stroke widths
+   * `css/emit.css` ships as real custom properties) and it scales with `--base-scale`, which
+   * a raw `var(--strokeWidthThickest)` would not.
+   */
+  .focus-ring {
+    fill: transparent;
+    stroke: var(--colorStrokeFocus2);
+    stroke-width: var(--spacing-thickest);
+  }
+
+  /* from useStyles.arcLabel — typographyStyles.caption1Strong + fill */
+  .arc-label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+    fill: var(--colorNeutralForeground1);
+
+    @variant forced-colors {
+      stroke: CanvasText;
+    }
+  }
+}

@@ -1,0 +1,209 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useHorizontalBarChartStyles`.
+ * That hook does NOT mutate a shared state object — it RETURNS one class string per slot —
+ * so every slot is its own independent call and there is no cross-slot ordering to encode:
+ *
+ *   #  mergeClasses argument            → target
+ *   ---------------------------------------------------------------------------------
+ *   1  hbcClassNames.<slot>             → static class (JS) — REMOVED in the statics sweep
+ *                                         (DECISIONS.md D16.1). The root now leads with
+ *                                         `.root` below and carries
+ *                                         `group/fui-horizontal-bar-chart` second; every
+ *                                         other slot leads with its own local.
+ *   2  useStyles.<slot>                 → the blocks below
+ *   3  props.className   (root only)    → unlayered (consumer, always wins)
+ *   4  props.styles?.<slot>             → unlayered (consumer, always wins)
+ *
+ * Two slots pick between a PAIR of mutually exclusive classes rather than adding one:
+ *
+ *   items          → `.items-16p-margin` when (showTriangle || variant === AbsoluteScale),
+ *                    else `.items-10p-margin`
+ *   chartTitleLeft → `.chart-title-left-4p-margin` when variant === AbsoluteScale,
+ *                    else `.chart-title-left-5p-margin`
+ *   chartWrapper   → `.chart-wrapper-40p-padding` when (AbsoluteScale && !hideLabels),
+ *                    else `.chart-wrapper-0p-padding`
+ *
+ * They stay a JS choice between module classes: exactly one applies per render, so nothing
+ * competes and no data attribute is needed (DECISIONS.md D15.6 — attributes are a fallback).
+ *
+ * Every element styled here is rendered by HorizontalBarChart itself — including the `<svg>`
+ * (`.chart`), the `<rect>` bars (`.bar-wrapper`) and the `<text>` bar labels (`.bar-label`),
+ * which are ordinary CSS subjects and follow the same dialect — so everything sits at
+ * `fui.components.l1`. There is no `makeResetStyles` (so `fui.base` is unused), no
+ * `@keyframes` and no transition to tighten.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root */
+  .root {
+    @apply flex w-full flex-col;
+
+    /* Support custom width: `width: 100%` above; textAlign 'left' → logical `start` */
+    text-align: start;
+  }
+
+  /* from useStyles.items10pMargin — tokens.spacingVerticalMNudge */
+  .items-10p-margin {
+    @apply mb-vertical-m-nudge;
+  }
+
+  /* from useStyles.items16pMargin — tokens.spacingVerticalL */
+  .items-16p-margin {
+    @apply mb-vertical-l;
+  }
+
+  /* from useStyles.chart — the bar `<svg>`. `height` supports a custom bar height. */
+  .chart {
+    @apply block h-vertical-m w-full;
+
+    overflow: visible;
+  }
+
+  /*
+   * from useStyles.barWrapper — the bar `<rect>`. The Griffel slice is `{}` (empty), so the
+   * only token this slot ever carried was the removed BEM static. The class is kept as an
+   * identity-only local rather than dropped, because `HorizontalBarChartStyles.barWrapper`
+   * is a required public field that `HorizontalBarChart.tsx` puts on every bar — this keeps
+   * the slot addressable for the bar-level styling the placeholder was reserved for.
+   * Do not delete because it looks empty (DECISIONS.md D16.2, same shape as an empty root).
+   *
+   * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE `postcss-modules`
+   * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
+   * every declaration-less rule, so an empty body would never reach the class map and
+   * `styles['bar-wrapper']` would be `undefined` in the real build while the jest proxy
+   * happily returned a name. `--fui-…-identity: initial` is the minimal surviving body: a
+   * custom property set to `initial` is guaranteed-invalid, so it renders nothing.
+   * Same fix, same measurement (Tailwind v4.3.3) as react-breadcrumb's `.root`.
+   */
+  .bar-wrapper {
+    --fui-horizontal-bar-chart-bar-wrapper-identity: initial;
+  }
+
+  /* from useStyles.chartTitle — typographyStyles.caption1 expanded */
+  .chart-title {
+    @apply flex justify-between;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  /* from useStyles.chartTitleLeft */
+  .chart-title-left {
+    @apply block overflow-hidden text-ellipsis whitespace-nowrap;
+
+    color: var(--colorNeutralForeground1);
+  }
+
+  /* from useStyles.chartTitleLeft4pMargin — 4px is the vertical XS step */
+  .chart-title-left-4p-margin {
+    @apply mb-vertical-xs;
+  }
+
+  /* from useStyles.chartTitleLeft5pMargin — 5px matches no spacing step, numeric fallback */
+  .chart-title-left-5p-margin {
+    @apply mb-5;
+  }
+
+  /* from useStyles.chartTitleRight — typographyStyles.body1Strong expanded */
+  .chart-title-right {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+    color: var(--colorNeutralForeground1);
+  }
+
+  /* from useStyles.chartDataTextDenominator — typographyStyles.body1 expanded */
+  .chart-data-text-denominator {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    color: var(--colorNeutralForeground1);
+  }
+
+  /* from useStyles.benchmarkContainer — 7px/3px/1px match no spacing step */
+  .benchmark-container {
+    @apply relative h-7 -mt-3 -mb-1;
+  }
+
+  /* from useStyles.triangle — the benchmark marker */
+  .triangle {
+    @apply absolute h-0 w-0 mb-vertical-xs;
+
+    /* borderLeft/borderRight → logical, so the RTL flip Griffel did by hand is free */
+    border-inline-start-width: 4px;
+    border-inline-start-style: solid;
+    border-inline-start-color: transparent;
+    border-inline-end-width: 4px;
+    border-inline-end-style: solid;
+    border-inline-end-color: transparent;
+
+    /*
+     * `borderTop: '7px solid'` then `borderTopColor` — expanded in that order, so the
+     * explicit colour still wins over the shorthand's implicit `currentcolor`.
+     */
+    border-top-width: 7px;
+    border-top-style: solid;
+    border-top-color: var(--colorPaletteBlueBorderActive);
+  }
+
+  /*
+   * from useStyles.barLabel — an SVG `<text>` node. typographyStyles.caption1Strong
+   * expanded, plus the SVG presentation properties as ordinary CSS.
+   */
+  .bar-label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+    fill: var(--colorNeutralForeground1);
+
+    /* from useStyles.barLabel[HighContrastSelector] — `-ms-high-contrast` is dropped, the
+       shared `forced-colors` variant is `@media (forced-colors: active)` only */
+    @variant forced-colors {
+      stroke: CanvasText;
+    }
+  }
+
+  /*
+   * from useStyles.chartWrapper40ppadding. The Griffel source is `paddingRight: '40p'` —
+   * `40p` is not a valid CSS length, so the compiled atomics (`.f1emi2st` /`.f53ee3v`)
+   * are dropped at parse time by every engine and this slice has never rendered anything.
+   * Kept as an identity-only local so the AbsoluteScale-with-labels branch of the hook still
+   * resolves to a class; reproducing the invalid declaration would only risk the CSS
+   * pipeline. Fixing it to `40px` would change rendered pixels and is out of scope here.
+   *
+   * The `--fui-…-identity: initial` body is what keeps a declaration-less rule alive through
+   * Tailwind v4's pruning pass — see `.bar-wrapper` above for the full explanation.
+   */
+  .chart-wrapper-40p-padding {
+    --fui-horizontal-bar-chart-chart-wrapper-40p-padding-identity: initial;
+  }
+
+  /* from useStyles.chartWrapper0ppadding — tokens.spacingHorizontalNone (0) */
+  .chart-wrapper-0p-padding {
+    @apply pe-horizontal-none;
+  }
+
+  /* from useStyles.legendContainer — tokens.spacingVerticalL */
+  .legend-container {
+    @apply pt-vertical-l;
+  }
+}

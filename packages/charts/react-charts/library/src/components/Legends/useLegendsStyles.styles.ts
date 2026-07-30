@@ -1,10 +1,7 @@
-'use client';
-
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { clsx } from 'clsx';
 import type { LegendsProps, LegendsStyles } from './Legends.types';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { HighContrastSelector } from '../../utilities/index';
+
+import styles from './Legends.module.css';
 
 // Constants needed to create legends using SVG for image export
 export const LEGEND_CONTAINER_MARGIN_TOP = 8;
@@ -21,134 +18,51 @@ export const LEGEND_SHAPE_MARGIN_END = 8;
 export const INACTIVE_LEGEND_TEXT_OPACITY = 0.67;
 
 /**
+ * Public identity class for Legends.
+ *
  * @internal
+ *
+ * @deprecated for styling. The only supported way to style this component's internals is the
+ * per-slot `styles` prop. `root` is retained as the component's identity class — the Tailwind
+ * named-group marker (DECISIONS.md D15.1) — usable as a selector and as a `group-*` variant
+ * target. The nine BEM slot keys were removed with the statics (DECISIONS.md D16.1 / D16.5):
+ * there is no class-name handle on component internals.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + legendClassNames.root` is an invalid selector. Use `fuiSelector(legendClassNames.root)`
+ * from `@fluentui/react-utilities` at every selector site (DECISIONS.md D16.5).
  */
-export const legendClassNames: SlotClassNames<LegendsStyles> = {
-  root: 'fui-legend__root',
-  legend: 'fui-legend__legend',
-  rect: 'fui-legend__rect',
-  shape: 'fui-legend__shape',
-  triangle: 'fui-legend__triangle',
-  text: 'fui-legend__text',
-  hoverChange: 'fui-legend__hoverChange',
-  resizableArea: 'fui-legend__resizableArea',
-  legendContainer: 'fui-legend__legendContainer',
-  annotation: 'fui-legend__annotation',
+export const legendClassNames: { root: string } = {
+  root: 'group/fui-legends',
 };
-
-const useStyles = makeStyles({
-  root: {
-    // FIXME: Removing this style allows the legend container in responsive donut chart to resize
-    // properly (horizontally) within a flexbox or grid layout. But it causes vertical resizing issues
-    // in responsive charts where legends consist of multiple words.
-    whiteSpace: 'nowrap',
-    width: '100%',
-    alignItems: 'center',
-  },
-  legend: {
-    // setting display to flex does not work
-    // display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'left',
-    cursor: 'pointer',
-    border: 'none',
-    padding: `${LEGEND_PADDING}px`,
-    textTransform: 'capitalize',
-    // The default min-width is 64px. Setting it to 0 allows the legend container in responsive
-    // cartesian charts to resize properly within a flexbox or grid layout.
-    minWidth: 0,
-    [HighContrastSelector]: {
-      color: 'WindowText',
-      forcedColorAdjust: 'none',
-      '&:focus-visible': {
-        outline: `${tokens.strokeWidthThick} solid canvasText`,
-        outlineOffset: `calc(${tokens.strokeWidthThick} * -1)`,
-      },
-    },
-    '&:hover': {
-      [HighContrastSelector]: {
-        color: 'HighlightText',
-        forcedColorAdjust: 'none',
-      },
-    },
-  },
-  rect: {
-    [HighContrastSelector]: {
-      content: 'var(--rect-content-high-contrast)',
-      opacity: 'var(--rect-opacity-high-contrast)',
-    },
-    width: `${LEGEND_SHAPE_SIZE_WITHOUT_BORDER}px`,
-    marginRight: `${LEGEND_SHAPE_MARGIN_END}px`,
-    border: `${LEGEND_SHAPE_BORDER}px solid`,
-  },
-  shape: {
-    marginRight: `${LEGEND_SHAPE_MARGIN_END}px`,
-  },
-  // TO DO Add props when these styles are used in the component
-  triangle: {
-    width: '0',
-    height: '0',
-    borderLeft: '6px solid transparent',
-    borderRight: '6px solid transparent',
-    borderTop: '10.4px solid',
-    marginRight: tokens.spacingHorizontalS,
-  },
-  // TO DO Add props when these styles are used in the component
-  text: {
-    ...typographyStyles.caption1,
-    color: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-  },
-  // TO DO Add props when these styles are used in the component
-  hoverChange: {
-    width: '12px',
-    height: '12px',
-    marginRight: tokens.spacingHorizontalS,
-    border: '1px solid',
-  },
-  resizableArea: {
-    position: 'relative',
-    textAlign: 'left',
-    transform: 'translate(-50%, 0)',
-    top: 'auto',
-    left: '50%',
-    minWidth: '200px',
-    maxWidth: '800px',
-    '::after': {
-      padding: '1px 4px 1px',
-      borderTop: '-2px',
-      borderLeft: '-2px',
-    },
-  },
-  legendContainer: {
-    flex: '0 1 auto',
-    margin: '4px',
-  },
-  annotation: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '4px',
-  },
-});
 
 export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
   const { className } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
-  const baseStyles = useStyles();
 
+  // Unconditional module class FIRST, then the named group marker, then the consumer's own
+  // strings last (DECISIONS.md D15.1 / D16.2). The marker must never be `classList[0]` —
+  // nwsapi's `:scope` polyfill throws on the `/` under jsdom — and `styles.root` is the token
+  // that guarantees it, since clsx never drops an unconditional argument. The BEM static that
+  // used to hold that position is gone (DECISIONS.md D16.1).
+  //
+  // Only the root carries the marker: `.legend`, `.rect`, `.text` … are descendants of it, so
+  // `@variant group-*/fui-legends` reaches them for free (DECISIONS.md D15, "No other slot
+  // gets a marker").
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in Legends.module.css, not by the
+  // order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, and for why `.legend` / `.resizable-area`
+  // sit at `fui.components.l2` rather than `.l1`.
   return {
-    root: mergeClasses(legendClassNames.root, baseStyles.root, className, props.styles?.root),
-    legend: mergeClasses(legendClassNames.legend, baseStyles.legend, props.styles?.legend),
-    rect: mergeClasses(legendClassNames.rect, baseStyles.rect, props.styles?.rect),
-    shape: mergeClasses(legendClassNames.shape, baseStyles.shape, props.styles?.shape),
-    triangle: mergeClasses(legendClassNames.triangle, baseStyles.triangle, props.styles?.triangle),
-    text: mergeClasses(legendClassNames.text, baseStyles.text, props.styles?.text),
-    hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.styles?.hoverChange),
-    resizableArea: mergeClasses(legendClassNames.resizableArea, baseStyles.resizableArea, props.styles?.resizableArea),
-    legendContainer: mergeClasses(
-      legendClassNames.legendContainer,
-      baseStyles.legendContainer,
-      props.styles?.legendContainer,
-    ),
-    annotation: mergeClasses(legendClassNames.annotation, baseStyles.annotation, props.styles?.annotation),
+    root: clsx(styles.root, 'group/fui-legends', className, props.styles?.root),
+    legend: clsx(styles.legend, props.styles?.legend),
+    rect: clsx(styles.rect, props.styles?.rect),
+    shape: clsx(styles.shape, props.styles?.shape),
+    triangle: clsx(styles.triangle, props.styles?.triangle),
+    text: clsx(styles.text, props.styles?.text),
+    hoverChange: clsx(styles['hover-change'], props.styles?.hoverChange),
+    resizableArea: clsx(styles['resizable-area'], props.styles?.resizableArea),
+    legendContainer: clsx(styles['legend-container'], props.styles?.legendContainer),
+    annotation: clsx(styles.annotation, props.styles?.annotation),
   };
 };

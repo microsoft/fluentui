@@ -12,7 +12,9 @@ import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabs
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
 import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
-import { mergeClasses } from '@griffel/react';
+// `classes.*` are CSS-Modules idents now, not Griffel atomics, so there is no atomic
+// de-duplication left for `mergeClasses` to do — plain concatenation is the whole contract.
+import { clsx } from 'clsx';
 
 // This is an internal interface used for rendering the legends with unique key
 interface LegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -152,7 +154,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
             {dataToRender.map(item => (
               <div
-                className={mergeClasses(classes.legendContainer, item.legendAnnotation && classes.annotation)}
+                className={clsx(classes.legendContainer, item.legendAnnotation && classes.annotation)}
                 key={item.key}
               >
                 {_renderButton(item)}

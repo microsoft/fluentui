@@ -3,7 +3,27 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "dist",
-    "types": ["jest", "node", "@testing-library/jest-dom"]
+    // REQUIRED by the CSS Modules migration, and unique to this package because it is the
+    // only converted package whose jest transform is `ts-jest` rather than `@swc/jest`.
+    //
+    // `tsconfig.base.json` leaves `esModuleInterop` at its default (false), so TypeScript
+    // emits `require('./X.module.css').default` for `import styles from './X.module.css'`.
+    // The shared jest mapper target (scripts/jest/src/css-modules/proxy.js) is a Proxy that
+    // answers EVERY string key with a generated ident — including `default`, deliberately,
+    // because `default` is a legitimate CSS class name (Divider's appearance). So without
+    // interop `styles` silently binds to the STRING `"fuicm-default"`, every `styles.<local>`
+    // read is `undefined`, and every converted hook emits an empty class list. Nothing fails
+    // loudly: the snapshot serializer strips `fuicm-*` anyway, so snapshots look correct
+    // while the component renders unstyled.
+    //
+    // With interop on, TS emits `__importDefault(...)`, which wraps a module lacking
+    // `__esModule` as `{ default: mod }` — so `styles` is the Proxy, matching what
+    // `@swc/jest` produces for every other converted package.
+    "esModuleInterop": true,
+    // "static-assets" declares `*.module.css` (typings/static-assets/index.d.ts) — the
+    // spec program compiles the converted styles hooks transitively via the components
+    // under test (Griffel → Tailwind + CSS Modules migration).
+    "types": ["jest", "node", "@testing-library/jest-dom", "static-assets"]
   },
   "include": [
     "**/*.spec.ts",

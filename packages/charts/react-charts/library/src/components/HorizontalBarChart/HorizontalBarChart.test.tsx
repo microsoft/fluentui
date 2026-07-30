@@ -9,6 +9,17 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration): the `getByClass` probes below match the
+ * CSS-Modules LOCAL name, lowercase-kebab (`/chart-title-right/`), not the removed BEM static
+ * (the hbc__chartTitleRight form) or the camelCase Griffel slice name. Generated idents are
+ * `fuicm-<component>-<local>-<hex6>` in the real pipelines and `fuicm-<local>` under jest
+ * (scripts/jest/src/css-modules/proxy.js), so a substring match on the local is stable across
+ * both. Statics are gone (DECISIONS.md D16.1) and module classes are hashed, so the local name
+ * is the only probe handle short of adding public `data-*` DOM surface, which D15.6 reserves
+ * as a fallback.
+ */
+
 const chartPoints: ChartProps[] = [
   {
     chartTitle: 'one',
@@ -152,7 +163,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     container => {
       // colors mentioned in the data points itself
       // Assert
-      const bars = getByClass(container, /barWrapper/);
+      const bars = getByClass(container, /bar-wrapper/);
       expect(bars[0].getAttribute('fill')).toEqual('#004b50');
       expect(bars[1].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
       expect(bars[2].getAttribute('fill')).toEqual('#5c2d91');
@@ -168,7 +179,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints, barHeight: 50 },
     container => {
       // Assert
-      const bars = getByClass(container, /barWrapper/);
+      const bars = getByClass(container, /bar-wrapper/);
       expect(bars).toHaveLength(6);
       expect(bars[0].getAttribute('height')).toEqual('50');
       expect(bars[1].getAttribute('height')).toEqual('50');
@@ -185,7 +196,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints, hideLabels: true },
     container => {
       // Assert
-      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
+      expect(getByClass(container, /bar-label/i)).toHaveLength(0);
     },
   );
 
@@ -195,7 +206,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints },
     container => {
       // Assert
-      expect(getByClass(container, /chartTitleLeft/i)).toHaveLength(3);
+      expect(getByClass(container, /chart-title-left/i)).toHaveLength(3);
     },
   );
 
@@ -205,7 +216,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints, variant: HorizontalBarChartVariant.AbsoluteScale },
     container => {
       // Assert
-      expect(getByClass(container, /chartTitleRight/i)).toHaveLength(0);
+      expect(getByClass(container, /chart-title-right/i)).toHaveLength(0);
     },
   );
 
@@ -215,7 +226,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints, variant: HorizontalBarChartVariant.PartToWhole },
     container => {
       // Assert
-      expect(getByClass(container, /chartTitleRight/i)).toHaveLength(3);
+      expect(getByClass(container, /chart-title-right/i)).toHaveLength(3);
     },
   );
 
@@ -225,7 +236,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints, chartDataMode: 'fraction' },
     container => {
       //Assert
-      expect(getByClass(container, /fui-hbc__textDenom/i)).toHaveLength(3);
+      expect(getByClass(container, /chart-data-text-denominator/i)).toHaveLength(3);
     },
   );
 
@@ -250,7 +261,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
       expect(screen.queryByText('10%')).toBeNull();
       expect(screen.queryByText('5%')).toBeNull();
       expect(screen.queryByText('59%')).toBeNull();
-      expect(getByClass(container, /fui-hbc__textDenom/i)).toHaveLength(0);
+      expect(getByClass(container, /chart-data-text-denominator/i)).toHaveLength(0);
     },
   );
 
@@ -310,7 +321,7 @@ describe('Horizontal bar chart - Subcomponent callout', () => {
     { data: chartPoints, calloutProps: { doNotLayer: true } },
     container => {
       // Arrange
-      const bars = getByClass(container, /barWrapper/);
+      const bars = getByClass(container, /bar-wrapper/);
       fireEvent.mouseOver(bars[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
@@ -331,7 +342,7 @@ describe('Horizontal bar chart - Subcomponent callout', () => {
         ) : null,
     },
     container => {
-      const bars = getByClass(container, /barWrapper/);
+      const bars = getByClass(container, /bar-wrapper/);
       fireEvent.mouseOver(bars[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();

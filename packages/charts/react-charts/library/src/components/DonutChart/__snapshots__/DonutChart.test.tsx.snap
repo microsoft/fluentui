@@ -3,20 +3,19 @@
 exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 <div>
   <div
-    class="fui-donut__root"
+    class="group/fui-donut-chart"
   >
     <div
-      class="fui-donut__chartWrapper"
       data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
         aria-label="Donut chart example"
-        class="fui-donut__chart"
+        class=""
         height="196"
         width="0"
       >
         <rect
-          class="fui-donut__svgTooltip"
+          class=""
           height="3"
           width="6"
           x="-3"
@@ -25,7 +24,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
         <text
           aria-describedby="tooltip-_r_2_"
           aria-hidden="true"
-          class="fui-donut__chartTitle"
+          class=""
           dominant-baseline="auto"
           id="tooltip-host_r_1_"
           text-anchor="middle"
@@ -38,12 +37,13 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           hidden=""
         />
         <g
+          class="group/fui-donut-pie"
           transform="translate(0, 89)"
         >
           <g>
             <path
               aria-label="2020/04/30, 20000."
-              class="fui-donut-arc__root"
+              class="group/fui-donut-arc"
               d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
               id="_Pie__r_0_first20000"
               opacity="1"
@@ -55,7 +55,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           <g>
             <path
               aria-label="2020/04/20, 39000."
-              class="fui-donut-arc__root"
+              class="group/fui-donut-arc"
               d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
               id="_Pie__r_0_second39000"
               opacity="1"
@@ -67,7 +67,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           <g>
             <path
               aria-label="2020/04/25, 45000."
-              class="fui-donut-arc__root"
+              class="group/fui-donut-arc"
               d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
               id="_Pie__r_0_third45000"
               opacity="1"
@@ -84,24 +84,24 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       id="callout_r_3_"
     />
     <div
-      class="fui-donut__legendContainer"
+      class=""
       style="margin-top: -36px;"
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: center;"
         >
           <button
             aria-label="first"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -109,11 +109,11 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               first
             </div>
@@ -121,7 +121,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           <button
             aria-label="second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -129,11 +129,11 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               second
             </div>
@@ -141,7 +141,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           <button
             aria-label="third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -149,11 +149,11 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               third
             </div>
@@ -172,20 +172,19 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
     dir="ltr"
   >
     <div
-      class="fui-donut__root"
+      class="group/fui-donut-chart"
     >
       <div
-        class="fui-donut__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
-          class="fui-donut__chart"
+          class=""
           height="196"
           width="0"
         >
           <rect
-            class="fui-donut__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="-3"
@@ -194,7 +193,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           <text
             aria-describedby="tooltip-_r_1k_"
             aria-hidden="true"
-            class="fui-donut__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_1j_"
             text-anchor="middle"
@@ -207,12 +206,13 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             hidden=""
           />
           <g
+            class="group/fui-donut-pie"
             transform="translate(0, 89)"
           >
             <g>
               <path
                 aria-label="2020/04/30, 20000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_1i_first20000"
                 opacity="1"
@@ -224,7 +224,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             <g>
               <path
                 aria-label="2020/04/20, 39000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_1i_second39000"
                 opacity="1"
@@ -236,7 +236,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             <g>
               <path
                 aria-label="2020/04/25, 45000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_1i_third45000"
                 opacity="1"
@@ -253,24 +253,24 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         id="callout_r_1l_"
       />
       <div
-        class="fui-donut__legendContainer"
+        class=""
         style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: center;"
           >
             <button
               aria-label="first"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -278,11 +278,11 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 first
               </div>
@@ -290,7 +290,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             <button
               aria-label="second"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -298,11 +298,11 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 second
               </div>
@@ -310,7 +310,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             <button
               aria-label="third"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -318,11 +318,11 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 third
               </div>
@@ -343,20 +343,19 @@ Object {
   >
     <div>
       <div
-        class="fui-donut__root"
+        class="group/fui-donut-chart"
       >
         <div
-          class="fui-donut__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Donut chart example"
-            class="fui-donut__chart"
+            class=""
             height="196"
             width="0"
           >
             <rect
-              class="fui-donut__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="-3"
@@ -365,7 +364,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_40_"
               aria-hidden="true"
-              class="fui-donut__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_3v_"
               text-anchor="middle"
@@ -378,12 +377,13 @@ Object {
               hidden=""
             />
             <g
+              class="group/fui-donut-pie"
               transform="translate(0, 89)"
             >
               <g>
                 <path
                   aria-label="2020/04/30, 20000."
-                  class="fui-donut-arc__root"
+                  class="group/fui-donut-arc"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   id="_Pie__r_3u_first20000"
                   opacity="1"
@@ -395,7 +395,7 @@ Object {
               <g>
                 <path
                   aria-label="2020/04/20, 39000."
-                  class="fui-donut-arc__root"
+                  class="group/fui-donut-arc"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   id="_Pie__r_3u_second39000"
                   opacity="1"
@@ -407,7 +407,7 @@ Object {
               <g>
                 <path
                   aria-label="2020/04/25, 45000."
-                  class="fui-donut-arc__root"
+                  class="group/fui-donut-arc"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   id="_Pie__r_3u_third45000"
                   opacity="1"
@@ -467,24 +467,24 @@ Object {
           </div>
         </div>
         <div
-          class="fui-donut__legendContainer"
+          class=""
           style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: center;"
             >
               <button
                 aria-label="first"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -492,11 +492,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   first
                 </div>
@@ -504,7 +504,7 @@ Object {
               <button
                 aria-label="second"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -512,11 +512,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   second
                 </div>
@@ -524,7 +524,7 @@ Object {
               <button
                 aria-label="third"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -532,11 +532,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   third
                 </div>
@@ -556,7 +556,9 @@ Object {
         id="tooltip-_r_40_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Donut chart example
       </div>
       <span
@@ -566,20 +568,19 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-donut__root"
+      class="group/fui-donut-chart"
     >
       <div
-        class="fui-donut__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
-          class="fui-donut__chart"
+          class=""
           height="196"
           width="0"
         >
           <rect
-            class="fui-donut__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="-3"
@@ -588,7 +589,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_40_"
             aria-hidden="true"
-            class="fui-donut__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_3v_"
             text-anchor="middle"
@@ -601,12 +602,13 @@ Object {
             hidden=""
           />
           <g
+            class="group/fui-donut-pie"
             transform="translate(0, 89)"
           >
             <g>
               <path
                 aria-label="2020/04/30, 20000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_3u_first20000"
                 opacity="1"
@@ -618,7 +620,7 @@ Object {
             <g>
               <path
                 aria-label="2020/04/20, 39000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_3u_second39000"
                 opacity="1"
@@ -630,7 +632,7 @@ Object {
             <g>
               <path
                 aria-label="2020/04/25, 45000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_3u_third45000"
                 opacity="1"
@@ -690,24 +692,24 @@ Object {
         </div>
       </div>
       <div
-        class="fui-donut__legendContainer"
+        class=""
         style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: center;"
           >
             <button
               aria-label="first"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -715,11 +717,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 first
               </div>
@@ -727,7 +729,7 @@ Object {
             <button
               aria-label="second"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -735,11 +737,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 second
               </div>
@@ -747,7 +749,7 @@ Object {
             <button
               aria-label="third"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -755,11 +757,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 third
               </div>
@@ -831,20 +833,19 @@ Object {
   >
     <div>
       <div
-        class="fui-donut__root"
+        class="group/fui-donut-chart"
       >
         <div
-          class="fui-donut__chartWrapper"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
             aria-label="Donut chart example"
-            class="fui-donut__chart"
+            class=""
             height="196"
             width="0"
           >
             <rect
-              class="fui-donut__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="-3"
@@ -853,7 +854,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_4d_"
               aria-hidden="true"
-              class="fui-donut__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_4c_"
               text-anchor="middle"
@@ -866,12 +867,13 @@ Object {
               hidden=""
             />
             <g
+              class="group/fui-donut-pie"
               transform="translate(0, 89)"
             >
               <g>
                 <path
                   aria-label="2020/04/30, 20000."
-                  class="fui-donut-arc__root"
+                  class="group/fui-donut-arc"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   id="_Pie__r_4b_first20000"
                   opacity="1"
@@ -883,7 +885,7 @@ Object {
               <g>
                 <path
                   aria-label="2020/04/20, 39000."
-                  class="fui-donut-arc__root"
+                  class="group/fui-donut-arc"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   id="_Pie__r_4b_second39000"
                   opacity="1"
@@ -895,7 +897,7 @@ Object {
               <g>
                 <path
                   aria-label="2020/04/25, 45000."
-                  class="fui-donut-arc__root"
+                  class="group/fui-donut-arc"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   id="_Pie__r_4b_third45000"
                   opacity="1"
@@ -955,24 +957,24 @@ Object {
           </div>
         </div>
         <div
-          class="fui-donut__legendContainer"
+          class=""
           style="margin-top: -36px;"
         >
           <div
             aria-label="Legends"
             aria-multiselectable="false"
-            class="fui-legend__root"
+            class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
             <div
-              class="group/fui-overflow fui-legend__resizableArea"
+              class="group/fui-overflow"
               style="text-align: center;"
             >
               <button
                 aria-label="first"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -980,11 +982,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   first
                 </div>
@@ -992,7 +994,7 @@ Object {
               <button
                 aria-label="second"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1000,11 +1002,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   second
                 </div>
@@ -1012,7 +1014,7 @@ Object {
               <button
                 aria-label="third"
                 aria-selected="false"
-                class="group/fui-button fui-legend__legend"
+                class="group/fui-button"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1020,11 +1022,11 @@ Object {
                 type="button"
               >
                 <div
-                  class="fui-legend__rect"
+                  class=""
                   style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
                 />
                 <div
-                  class="fui-legend__text"
+                  class=""
                 >
                   third
                 </div>
@@ -1044,7 +1046,9 @@ Object {
         id="tooltip-_r_4d_"
         role="tooltip"
       >
-        <div />
+        <div
+          class=""
+        />
         Donut chart example
       </div>
       <span
@@ -1054,20 +1058,19 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-donut__root"
+      class="group/fui-donut-chart"
     >
       <div
-        class="fui-donut__chartWrapper"
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
           aria-label="Donut chart example"
-          class="fui-donut__chart"
+          class=""
           height="196"
           width="0"
         >
           <rect
-            class="fui-donut__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="-3"
@@ -1076,7 +1079,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_4d_"
             aria-hidden="true"
-            class="fui-donut__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_4c_"
             text-anchor="middle"
@@ -1089,12 +1092,13 @@ Object {
             hidden=""
           />
           <g
+            class="group/fui-donut-pie"
             transform="translate(0, 89)"
           >
             <g>
               <path
                 aria-label="2020/04/30, 20000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_4b_first20000"
                 opacity="1"
@@ -1106,7 +1110,7 @@ Object {
             <g>
               <path
                 aria-label="2020/04/20, 39000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_4b_second39000"
                 opacity="1"
@@ -1118,7 +1122,7 @@ Object {
             <g>
               <path
                 aria-label="2020/04/25, 45000."
-                class="fui-donut-arc__root"
+                class="group/fui-donut-arc"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_4b_third45000"
                 opacity="1"
@@ -1178,24 +1182,24 @@ Object {
         </div>
       </div>
       <div
-        class="fui-donut__legendContainer"
+        class=""
         style="margin-top: -36px;"
       >
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: center;"
           >
             <button
               aria-label="first"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1203,11 +1207,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 first
               </div>
@@ -1215,7 +1219,7 @@ Object {
             <button
               aria-label="second"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1223,11 +1227,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 second
               </div>
@@ -1235,7 +1239,7 @@ Object {
             <button
               aria-label="third"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1243,11 +1247,11 @@ Object {
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 third
               </div>
@@ -1313,20 +1317,19 @@ Object {
 
 exports[`DonutChart snapShot testing Should elevate all smaller values to minimums 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="196"
       width="0"
     >
       <rect
-        class="fui-donut__svgTooltip"
+        class=""
         height="3"
         width="6"
         x="-3"
@@ -1335,7 +1338,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
       <text
         aria-describedby="tooltip-_r_32_"
         aria-hidden="true"
-        class="fui-donut__chartTitle"
+        class=""
         dominant-baseline="auto"
         id="tooltip-host_r_31_"
         text-anchor="middle"
@@ -1348,12 +1351,13 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         hidden=""
       />
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 89)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_30_first20000"
             opacity="1"
@@ -1365,7 +1369,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_30_second39000"
             opacity="1"
@@ -1377,7 +1381,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_30_third45000"
             opacity="1"
@@ -1394,24 +1398,24 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
     id="callout_r_33_"
   />
   <div
-    class="fui-donut__legendContainer"
+    class=""
     style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: center;"
       >
         <button
           aria-label="first"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1419,11 +1423,11 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             first
           </div>
@@ -1431,7 +1435,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         <button
           aria-label="second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1439,11 +1443,11 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             second
           </div>
@@ -1451,7 +1455,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         <button
           aria-label="third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1459,11 +1463,11 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             third
           </div>
@@ -1476,20 +1480,19 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
 
 exports[`DonutChart snapShot testing Should render arc labels 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="196"
       width="0"
     >
       <rect
-        class="fui-donut__svgTooltip"
+        class=""
         height="3"
         width="6"
         x="-3"
@@ -1498,7 +1501,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
       <text
         aria-describedby="tooltip-_r_2o_"
         aria-hidden="true"
-        class="fui-donut__chartTitle"
+        class=""
         dominant-baseline="auto"
         id="tooltip-host_r_2n_"
         text-anchor="middle"
@@ -1511,12 +1514,13 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         hidden=""
       />
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 89)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2m_first20000"
             opacity="1"
@@ -1526,7 +1530,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-donut-arc__arcLabel"
+            class=""
             dominant-baseline="auto"
             text-anchor="start"
             x="-1.143083014314768"
@@ -1538,7 +1542,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2m_second39000"
             opacity="1"
@@ -1548,7 +1552,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-donut-arc__arcLabel"
+            class=""
             dominant-baseline="hanging"
             text-anchor="start"
             x="-1.3603172563291284"
@@ -1560,7 +1564,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2m_third45000"
             opacity="1"
@@ -1570,7 +1574,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-donut-arc__arcLabel"
+            class=""
             dominant-baseline="auto"
             text-anchor="end"
             x="1.9541939332494636"
@@ -1587,24 +1591,24 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
     id="callout_r_2p_"
   />
   <div
-    class="fui-donut__legendContainer"
+    class=""
     style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: center;"
       >
         <button
           aria-label="first"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1612,11 +1616,11 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             first
           </div>
@@ -1624,7 +1628,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         <button
           aria-label="second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1632,11 +1636,11 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             second
           </div>
@@ -1644,7 +1648,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         <button
           aria-label="third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1652,11 +1656,11 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             third
           </div>
@@ -1669,20 +1673,19 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
 
 exports[`DonutChart snapShot testing Should render arc labels in percentage format 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="196"
       width="0"
     >
       <rect
-        class="fui-donut__svgTooltip"
+        class=""
         height="3"
         width="6"
         x="-3"
@@ -1691,7 +1694,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
       <text
         aria-describedby="tooltip-_r_2t_"
         aria-hidden="true"
-        class="fui-donut__chartTitle"
+        class=""
         dominant-baseline="auto"
         id="tooltip-host_r_2s_"
         text-anchor="middle"
@@ -1704,12 +1707,13 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         hidden=""
       />
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 89)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2r_first20000"
             opacity="1"
@@ -1719,7 +1723,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           />
           <text
             aria-hidden="true"
-            class="fui-donut-arc__arcLabel"
+            class=""
             dominant-baseline="auto"
             text-anchor="start"
             x="-1.143083014314768"
@@ -1731,7 +1735,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2r_second39000"
             opacity="1"
@@ -1741,7 +1745,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           />
           <text
             aria-hidden="true"
-            class="fui-donut-arc__arcLabel"
+            class=""
             dominant-baseline="hanging"
             text-anchor="start"
             x="-1.3603172563291284"
@@ -1753,7 +1757,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2r_third45000"
             opacity="1"
@@ -1763,7 +1767,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           />
           <text
             aria-hidden="true"
-            class="fui-donut-arc__arcLabel"
+            class=""
             dominant-baseline="auto"
             text-anchor="end"
             x="1.9541939332494636"
@@ -1780,24 +1784,24 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
     id="callout_r_2u_"
   />
   <div
-    class="fui-donut__legendContainer"
+    class=""
     style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: center;"
       >
         <button
           aria-label="first"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1805,11 +1809,11 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             first
           </div>
@@ -1817,7 +1821,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         <button
           aria-label="second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1825,11 +1829,11 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             second
           </div>
@@ -1837,7 +1841,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         <button
           aria-label="third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1845,11 +1849,11 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             third
           </div>
@@ -1862,20 +1866,19 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
 
 exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="196"
       width="0"
     >
       <rect
-        class="fui-donut__svgTooltip"
+        class=""
         height="3"
         width="6"
         x="-3"
@@ -1884,7 +1887,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
       <text
         aria-describedby="tooltip-_r_1u_"
         aria-hidden="true"
-        class="fui-donut__chartTitle"
+        class=""
         dominant-baseline="auto"
         id="tooltip-host_r_1t_"
         text-anchor="middle"
@@ -1897,12 +1900,13 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         hidden=""
       />
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 89)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
             id="_Pie__r_1s_first20000"
             opacity="1"
@@ -1914,7 +1918,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
             id="_Pie__r_1s_second39000"
             opacity="1"
@@ -1926,7 +1930,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
             id="_Pie__r_1s_third45000"
             opacity="1"
@@ -1943,24 +1947,24 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
     id="callout_r_1v_"
   />
   <div
-    class="fui-donut__legendContainer"
+    class=""
     style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: center;"
       >
         <button
           aria-label="first"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1968,11 +1972,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             first
           </div>
@@ -1980,7 +1984,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         <button
           aria-label="second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1988,11 +1992,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             second
           </div>
@@ -2000,7 +2004,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         <button
           aria-label="third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2008,11 +2012,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             third
           </div>
@@ -2025,20 +2029,19 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
 exports[`DonutChart snapShot testing renders DonutChart correctly without color points 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="196"
       width="0"
     >
       <rect
-        class="fui-donut__svgTooltip"
+        class=""
         height="3"
         width="6"
         x="-3"
@@ -2047,7 +2050,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
       <text
         aria-describedby="tooltip-_r_23_"
         aria-hidden="true"
-        class="fui-donut__chartTitle"
+        class=""
         dominant-baseline="auto"
         id="tooltip-host_r_22_"
         text-anchor="middle"
@@ -2060,12 +2063,13 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         hidden=""
       />
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 89)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_21_first20000"
             opacity="1"
@@ -2077,7 +2081,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_21_second39000"
             opacity="1"
@@ -2089,7 +2093,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_21_third45000"
             opacity="1"
@@ -2106,24 +2110,24 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
     id="callout_r_24_"
   />
   <div
-    class="fui-donut__legendContainer"
+    class=""
     style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: center;"
       >
         <button
           aria-label="first"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2131,11 +2135,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             first
           </div>
@@ -2143,7 +2147,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         <button
           aria-label="second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2151,11 +2155,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             second
           </div>
@@ -2163,7 +2167,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         <button
           aria-label="third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2171,11 +2175,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             third
           </div>
@@ -2188,20 +2192,19 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
 
 exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="196"
       width="0"
     >
       <rect
-        class="fui-donut__svgTooltip"
+        class=""
         height="3"
         width="6"
         x="-3"
@@ -2210,7 +2213,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
       <text
         aria-describedby="tooltip-_r_2f_"
         aria-hidden="true"
-        class="fui-donut__chartTitle"
+        class=""
         dominant-baseline="auto"
         id="tooltip-host_r_2e_"
         text-anchor="middle"
@@ -2223,12 +2226,13 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         hidden=""
       />
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 89)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2d_first20000"
             opacity="1"
@@ -2240,7 +2244,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2d_second39000"
             opacity="1"
@@ -2252,7 +2256,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2d_third45000"
             opacity="1"
@@ -2269,85 +2273,85 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
     id="callout_r_2g_"
   />
   <div
-    class="fui-donut__legendContainer"
+    class=""
     style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style="justify-content: center; flex-wrap: wrap;"
     >
       <div
-        class="fui-legend__resizableArea"
+        class=""
         style="display: flex; flex-wrap: wrap; overflow: auto;"
       >
         <div
-          class="fui-legend__legendContainer"
+          class=""
         >
           <button
             aria-label="first"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               first
             </div>
           </button>
         </div>
         <div
-          class="fui-legend__legendContainer"
+          class=""
         >
           <button
             aria-label="second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               second
             </div>
           </button>
         </div>
         <div
-          class="fui-legend__legendContainer"
+          class=""
         >
           <button
             aria-label="third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               third
             </div>
@@ -2361,25 +2365,25 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
 exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="200"
       width="0"
     >
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 91)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_26_first20000"
             opacity="1"
@@ -2391,7 +2395,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_26_second39000"
             opacity="1"
@@ -2403,7 +2407,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_26_third45000"
             opacity="1"
@@ -2424,20 +2428,19 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 
 exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="196"
       width="0"
     >
       <rect
-        class="fui-donut__svgTooltip"
+        class=""
         height="3"
         width="6"
         x="-3"
@@ -2446,7 +2449,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
       <text
         aria-describedby="tooltip-_r_2a_"
         aria-hidden="true"
-        class="fui-donut__chartTitle"
+        class=""
         dominant-baseline="auto"
         id="tooltip-host_r_29_"
         text-anchor="middle"
@@ -2459,12 +2462,13 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         hidden=""
       />
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 89)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_28_first20000"
             opacity="1"
@@ -2476,7 +2480,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_28_second39000"
             opacity="1"
@@ -2488,7 +2492,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_28_third45000"
             opacity="1"
@@ -2505,24 +2509,24 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
     id="callout_r_2b_"
   />
   <div
-    class="fui-donut__legendContainer"
+    class=""
     style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: center;"
       >
         <button
           aria-label="first"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2530,11 +2534,11 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             first
           </div>
@@ -2542,7 +2546,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2550,11 +2554,11 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             second
           </div>
@@ -2562,7 +2566,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2570,11 +2574,11 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             third
           </div>
@@ -2587,20 +2591,19 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
 exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 <div
-  class="fui-donut__root"
+  class="group/fui-donut-chart"
 >
   <div
-    class="fui-donut__chartWrapper"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
       aria-label="Donut chart example"
-      class="fui-donut__chart"
+      class=""
       height="196"
       width="0"
     >
       <rect
-        class="fui-donut__svgTooltip"
+        class=""
         height="3"
         width="6"
         x="-3"
@@ -2609,7 +2612,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
       <text
         aria-describedby="tooltip-_r_2j_"
         aria-hidden="true"
-        class="fui-donut__chartTitle"
+        class=""
         dominant-baseline="auto"
         id="tooltip-host_r_2i_"
         text-anchor="middle"
@@ -2622,12 +2625,13 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         hidden=""
       />
       <g
+        class="group/fui-donut-pie"
         transform="translate(0, 89)"
       >
         <g>
           <path
             aria-label="2020/04/30, 20000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2h_first20000"
             opacity="1"
@@ -2639,7 +2643,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         <g>
           <path
             aria-label="2020/04/20, 39000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2h_second39000"
             opacity="1"
@@ -2651,7 +2655,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         <g>
           <path
             aria-label="2020/04/25, 45000."
-            class="fui-donut-arc__root"
+            class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2h_third45000"
             opacity="1"
@@ -2668,24 +2672,24 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
     id="callout_r_2k_"
   />
   <div
-    class="fui-donut__legendContainer"
+    class=""
     style="margin-top: -36px;"
   >
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: center;"
       >
         <button
           aria-label="first"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2693,11 +2697,11 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             first
           </div>
@@ -2705,7 +2709,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         <button
           aria-label="second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2713,11 +2717,11 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             second
           </div>
@@ -2725,7 +2729,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         <button
           aria-label="third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2733,11 +2737,11 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             third
           </div>

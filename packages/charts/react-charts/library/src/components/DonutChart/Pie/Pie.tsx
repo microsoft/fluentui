@@ -101,7 +101,14 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     _totalValue = _computeTotalValue();
 
     return (
-      <g transform={translate}>
+      // `classes.root` was computed by `usePieStyles` and then dropped on the floor — the
+      // `fui-donut-pie__root` static it produced never reached the DOM. It is wired up here
+      // because the statics sweep makes this slot the carrier of Pie's `group/fui-donut-pie`
+      // marker (DECISIONS.md D15.1 / D16.2), which is now the only addressable handle on
+      // anything Pie renders (`insideDonutString` is a hashed module local). The class itself
+      // declares nothing — `.root` in Pie.module.css is identity-only — so this adds a class
+      // token to the `<g>` and changes no pixel.
+      <g className={classes.root} transform={translate}>
         {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
           <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>

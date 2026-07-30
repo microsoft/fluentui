@@ -3,7 +3,7 @@
 exports[`Is Chart Empty Test Sparkline chart with data 1`] = `
 <div>
   <div
-    class="fui-sprk__inlineBlock"
+    class="group/fui-sparkline"
     data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
   >
     <svg
@@ -59,7 +59,7 @@ exports[`Sparkline chart rendering Should re-render the Sparkline chart with dat
 exports[`Sparkline chart rendering Should re-render the Sparkline chart with data 2`] = `
 <div>
   <div
-    class="fui-sprk__inlineBlock"
+    class="group/fui-sparkline"
     data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
     style=""
   >
@@ -91,7 +91,7 @@ exports[`Sparkline chart rendering Should re-render the Sparkline chart with dat
 
 exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
 <div
-  class="fui-sprk__inlineBlock"
+  class="group/fui-sparkline"
   data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
 >
   <svg
@@ -123,7 +123,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
     width="80"
   >
     <text
-      class="fui-sprk__valueText"
+      class=""
       dx="8"
       dy="-5"
       text-anchor="start"
@@ -138,7 +138,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
 
 exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1`] = `
 <div
-  class="fui-sprk__inlineBlock"
+  class="group/fui-sparkline"
   data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
 >
   <svg

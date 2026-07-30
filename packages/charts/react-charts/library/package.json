@@ -5,10 +5,13 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/styles.css",
     "lib",
     "lib-commonjs"
   ],
@@ -44,6 +47,7 @@
     "@types/d3-shape": "^3.0.0",
     "@types/d3-time": "^3.0.0",
     "@types/d3-time-format": "^3.0.0",
+    "clsx": "^2.1.1",
     "d3-array": "^3.0.0",
     "d3-axis": "^3.0.0",
     "d3-color": "^3.0.0",
@@ -69,7 +73,14 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
+    "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
+  },
+  "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*"
+  },
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
   },
   "beachball": {
     "disallowedChangeTypes": [

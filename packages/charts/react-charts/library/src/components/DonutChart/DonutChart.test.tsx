@@ -9,6 +9,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
 import { popoverSurfaceClassNames } from '@fluentui/react-popover';
 import { fuiSelector } from '@fluentui/react-utilities';
+import { donutPieClassNames } from './Pie/usePieStyles.styles';
 
 expect.extend(toHaveNoViolations);
 
@@ -24,6 +25,19 @@ expect.extend(toHaveNoViolations);
  */
 const getPopoverSurfaces = (container: HTMLElement): Element[] =>
   Array.from(container.querySelectorAll(fuiSelector(popoverSurfaceClassNames.root)));
+
+/*
+ * Statics removal, same shape as the block above but for this package's own DonutChart.
+ * `donutPieClassNames.insideDonutString` no longer exists — sub-slots have no public
+ * class-name handle and that slot's class is now a hashed `fuicm-*` this test cannot name.
+ * The previous assertion used `getByClass(container, /insideDonutString.*?/)`, a regex over
+ * the class ATTRIBUTE, which would silently stop matching and make the assertion throw on an
+ * empty array. Select through Pie's group marker instead — it is the component's public
+ * identity class (D16.1) and it is stamped on the `<g>` that is the value text's parent.
+ * `fuiSelector()` escapes the `/`, which terminates a class name in selector position.
+ */
+const getInsideDonutString = (container: HTMLElement): Element | null =>
+  container.querySelector(`${fuiSelector(donutPieClassNames.root)} > text`);
 
 const chartTitle = 'Donut chart example';
 const pointsNoColors: ChartDataPoint[] = [
@@ -202,13 +216,12 @@ describe('Donut chart interactions', () => {
     const { container } = render(
       <DonutChart data={chartPointsDC} innerRadius={55} hideLegend={false} valueInsideDonut={1000} />,
     );
-    const getByClass = queryAllByAttribute.bind(null, 'class');
 
     // Act
     fireEvent.mouseOver(screen.getByText('first'));
 
     // Assert
-    expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('20,000');
+    expect(getInsideDonutString(container)!.textContent).toBe('20,000');
   });
 
   test('Should reflect theme change', () => {

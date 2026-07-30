@@ -786,7 +786,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
-            className={classes.opacityChangeOnHover}
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
             height={adjustedBarHeight}
@@ -1154,6 +1153,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   return !_isChartEmpty() ? (
     <CartesianChart
       {...props}
+      // Griffel → Tailwind + CSS Modules (CONVERSION_GUIDE §3d M2). VerticalBarChart renders
+      // no element of its own, so its identity class + named group marker are composed in
+      // `useVerticalBarChartStyles` and handed to CartesianChart's root through the `styles`
+      // prop it already accepts. Placed AFTER `{...props}` so it wins over the spread copy;
+      // `classes.root` already folds `props.styles?.root` in last.
+      styles={{ ...props.styles, root: classes.root }}
       points={_points}
       chartTitle={_getChartTitle()}
       chartType={ChartTypes.VerticalBarChart}

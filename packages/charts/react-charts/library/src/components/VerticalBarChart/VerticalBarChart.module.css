@@ -1,0 +1,141 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useVerticalBarChartStyles`,
+ * not source declaration order. Every slot was a two-argument call — BEM static first, one
+ * Griffel slice second — so there is no intra-slot ordering to encode:
+ *
+ *   `tooltip` slot
+ *     1 verticalbarchartClassNames.tooltip   → static class (JS) — REMOVED (D16.1)
+ *     2 useStyles.tooltip                    → fui.components.l1   .tooltip
+ *     3 consumer className                   → unlayered (still commented out upstream)
+ *
+ *   `barLabel` slot
+ *     1 verticalbarchartClassNames.barLabel  → static class (JS) — REMOVED
+ *     2 useStyles.barLabel                   → fui.components.l1   .bar-label
+ *     3 consumer className                   → unlayered (still commented out upstream)
+ *
+ *   `lineBorder` slot
+ *     1 verticalbarchartClassNames.lineBorder → static class (JS) — REMOVED
+ *     2 useStyles.lineBorder                  → fui.components.l1  .line-border
+ *     3 consumer className                    → unlayered (still commented out upstream)
+ *
+ *   `opacityChangeOnHover` slot — GONE, no CSS here.
+ *     `useStyles.opacityChangeOnHover` was `{}`; an empty `makeStyles` slice compiles to
+ *     NO atomic at all (the key is absent from the compiled `__styles` map in
+ *     lib-commonjs/…/useVerticalBarChartStyles.styles.js), so the BEM static was the slot's
+ *     ONLY token. CONVERSION_GUIDE "Known special cases": delete the assignment entirely
+ *     rather than mint an identity class for a slot the hook does not style.
+ *
+ *   `root` slot (NEW — see the identity block at the bottom of this file)
+ *     1 .root (identity-only)                 → fui.components.l2
+ *     2 group/fui-vertical-bar-chart          → identity marker (JS, unstyled)
+ *     3 consumer `props.styles.root`          → unlayered (always wins)
+ *
+ * The three styled slots are SVG elements VerticalBarChart renders itself inside
+ * CartesianChart's `children` render prop, so they are l1 — this component's own cascade.
+ * Only `.root` is l2, because that element belongs to CartesianChart (D2 amendment 2).
+ *
+ * VALUES ARE THE COMPILED ONES. `.tooltip` and `.bar-label` come from the shared
+ * `getTooltipStyle()` / `getBarLabelStyle()` factories in `src/utilities/Common.styles.ts`,
+ * which are NOT converted in this batch (six other chart components still consume them).
+ * Every declaration below was read off
+ * lib-commonjs/components/VerticalBarChart/useVerticalBarChartStyles.styles.js.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * No `[ltr, rtl]` atomic pair and no direction-sensitive property in the compiled output,
+ * so no `@variant rtl` twin is needed.
+ *
+ * ── forced colors ───────────────────────────────────────────────────────────────────
+ * `HighContrastSelector` is
+ * `@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)`;
+ * `@variant forced-colors` is `@media (forced-colors: active)`. The legacy
+ * `-ms-high-contrast` half is deliberately dropped (removed MS-proprietary feature,
+ * superseded by `forced-colors`) — the shared catalog is the single place that decision
+ * is made. `.bar-label` keeps its own `forced-color-adjust: auto`, which is a flat
+ * declaration in Griffel's `d` bucket, NOT a media query.
+ */
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.tooltip — the shared `getTooltipStyle()` factory
+   * (src/utilities/Common.styles.ts). Byte-identical to LineChart's `.tooltip`; the two
+   * stay duplicated on purpose while `Common.styles.ts` is still Griffel-owned.
+   * `typographyStyles.body1` compiled to the four font atomics below.
+   */
+  .tooltip {
+    @apply absolute flex flex-col p-horizontal-s text-center pointer-events-none;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    background-color: var(--colorNeutralBackground1);
+    border-radius: var(--borderRadiusSmall);
+    color: var(--colorNeutralForeground1);
+  }
+
+  /*
+   * from useStyles.barLabel — the shared `getBarLabelStyle()` factory.
+   * `typographyStyles.caption1Strong` compiled to the four font atomics below.
+   * `fill` is an ordinary CSS property on the `<text>` nodes this component renders;
+   * Tailwind's `fill-*` utilities are colour-scale-bound, so a token value is written as
+   * a plain declaration.
+   */
+  .bar-label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+    fill: var(--colorNeutralForeground1);
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.lineBorder */
+  .line-border {
+    stroke: var(--colorNeutralBackground1);
+
+    /* Griffel `m` bucket — emitted after the flat bucket; nesting reproduces that order. */
+    @variant forced-colors {
+      stroke: Canvas;
+    }
+  }
+}
+
+/*
+ * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). VerticalBarChart renders no element of
+ * its own: its outermost node is CartesianChart's root `<div>`, reached through
+ * CartesianChart's public `styles.root` prop (CONVERSION_GUIDE §3d M2 — this component
+ * renders CartesianChart itself, so it owns the props). `useVerticalBarChartStyles` leads
+ * its `clsx()` with this class so the composed string ALWAYS starts with a hashed,
+ * selector-safe token ahead of `group/fui-vertical-bar-chart`: nwsapi's `:scope` polyfill
+ * anchors on `escape(element.classList[0])` and the `/` survives that escaping, yielding an
+ * invalid selector and a render-time AggregateError under jsdom. Do not delete it because
+ * it looks like it does nothing.
+ *
+ * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE
+ * `postcss-modules` and Tailwind v4 prunes every declaration-less rule, so `.root {}`
+ * would never reach the class map and `styles.root` would be `undefined`. A custom
+ * property set to `initial` is guaranteed-invalid, so it renders nothing and any
+ * `var(--fui-vertical-bar-chart-identity, X)` still resolves to `X`.
+ *
+ * ALTITUDE l2, not l1: this class decorates an element whose base styles come from
+ * `useCartesianChartStyles` (DECISIONS.md D2 amendment 2).
+ */
+@layer fui.components.l2 {
+  .root {
+    --fui-vertical-bar-chart-identity: initial;
+  }
+}

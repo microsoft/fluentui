@@ -3,7 +3,7 @@
 exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -430,7 +430,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
@@ -455,7 +455,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
@@ -480,7 +480,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
@@ -498,18 +498,18 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -517,11 +517,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               First
             </div>
@@ -529,7 +529,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -537,11 +537,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Second
             </div>
@@ -549,7 +549,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -557,11 +557,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Third
             </div>
@@ -576,7 +576,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -1003,7 +1003,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
@@ -1028,7 +1028,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
@@ -1053,7 +1053,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
@@ -1071,18 +1071,18 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1090,11 +1090,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               First
             </div>
@@ -1102,7 +1102,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1110,11 +1110,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Second
             </div>
@@ -1122,7 +1122,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1130,11 +1130,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Third
             </div>
@@ -1153,7 +1153,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
     dir="ltr"
   >
     <div
-      class="fui-cart__root"
+      class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
       id="chart_"
       role="presentation"
     >
@@ -1580,7 +1580,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               />
               <text
                 aria-hidden="true"
-                class="fui-vbc__barLabel"
+                class=""
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="middle"
                 x="64"
@@ -1605,7 +1605,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               />
               <text
                 aria-hidden="true"
-                class="fui-vbc__barLabel"
+                class=""
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="middle"
                 x="272.46153846153845"
@@ -1630,7 +1630,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               />
               <text
                 aria-hidden="true"
-                class="fui-vbc__barLabel"
+                class=""
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="middle"
                 x="585.1538461538462"
@@ -1648,18 +1648,18 @@ exports[`Theme Change Should reflect theme change 1`] = `
         <div
           aria-label="Legends"
           aria-multiselectable="false"
-          class="fui-legend__root"
+          class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
           <div
-            class="group/fui-overflow fui-legend__resizableArea"
+            class="group/fui-overflow"
             style="text-align: unset;"
           >
             <button
               aria-label="First"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1667,11 +1667,11 @@ exports[`Theme Change Should reflect theme change 1`] = `
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 First
               </div>
@@ -1679,7 +1679,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <button
               aria-label="Second"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1687,11 +1687,11 @@ exports[`Theme Change Should reflect theme change 1`] = `
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Second
               </div>
@@ -1699,7 +1699,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <button
               aria-label="Third"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1707,11 +1707,11 @@ exports[`Theme Change Should reflect theme change 1`] = `
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Third
               </div>
@@ -1738,7 +1738,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart with data 2`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -2165,7 +2165,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
@@ -2190,7 +2190,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
@@ -2215,7 +2215,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
@@ -2233,18 +2233,18 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2252,11 +2252,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               First
             </div>
@@ -2264,7 +2264,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2272,11 +2272,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Second
             </div>
@@ -2284,7 +2284,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2292,11 +2292,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Third
             </div>
@@ -2311,7 +2311,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 exports[`Vertical bar chart rendering Should render the vertical bar chart with all negative y value bars correctly 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -2738,7 +2738,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
@@ -2763,7 +2763,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
@@ -2788,7 +2788,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
@@ -2806,18 +2806,18 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2825,11 +2825,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               First
             </div>
@@ -2837,7 +2837,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2845,11 +2845,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Second
             </div>
@@ -2857,7 +2857,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2865,11 +2865,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Third
             </div>
@@ -2884,7 +2884,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 exports[`Vertical bar chart rendering Should render the vertical bar chart with numeric x-axis data 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -3311,7 +3311,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
@@ -3336,7 +3336,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
@@ -3361,7 +3361,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
@@ -3379,18 +3379,18 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3398,11 +3398,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               First
             </div>
@@ -3410,7 +3410,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3418,11 +3418,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Second
             </div>
@@ -3430,7 +3430,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3438,11 +3438,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Third
             </div>
@@ -3457,7 +3457,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 exports[`Vertical bar chart rendering Should render the vertical bar chart with string x-axis data 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -3696,7 +3696,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="263"
@@ -3723,7 +3723,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="311"
@@ -3750,7 +3750,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="359"
@@ -3777,7 +3777,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="407"
@@ -3795,18 +3795,18 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="undefined"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3814,11 +3814,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: rgb(14, 120, 120); border-color: rgb(14, 120, 120); --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               undefined
             </div>
@@ -3833,7 +3833,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 exports[`Vertical bar chart rendering should render the vertical bar chart with some positive and some negative y value bars correctly 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -4279,7 +4279,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
@@ -4304,7 +4304,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
@@ -4329,7 +4329,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
@@ -4347,18 +4347,18 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
       >
         <div
-          class="group/fui-overflow fui-legend__resizableArea"
+          class="group/fui-overflow"
           style="text-align: unset;"
         >
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4366,11 +4366,11 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               First
             </div>
@@ -4378,7 +4378,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4386,11 +4386,11 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Second
             </div>
@@ -4398,7 +4398,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4406,11 +4406,11 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Third
             </div>
@@ -4425,7 +4425,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
 exports[`VerticalBarChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -4852,7 +4852,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
@@ -4877,7 +4877,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
@@ -4902,7 +4902,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
@@ -4920,79 +4920,79 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: unset; flex-wrap: wrap;"
       >
         <div
-          class="fui-legend__resizableArea"
+          class=""
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="First"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 First
               </div>
             </button>
           </div>
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Second"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Second
               </div>
             </button>
           </div>
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Third"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Third
               </div>
@@ -5056,7 +5056,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
 exports[`VerticalBarChart - mouse events Should render customized callout on mouseover 1`] = `
 <div>
   <div
-    class="fui-cart__root"
+    class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
     id="chart_"
     role="presentation"
   >
@@ -5483,7 +5483,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
@@ -5508,7 +5508,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
@@ -5533,7 +5533,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             />
             <text
               aria-hidden="true"
-              class="fui-vbc__barLabel"
+              class=""
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
@@ -5551,79 +5551,79 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: unset; flex-wrap: wrap;"
       >
         <div
-          class="fui-legend__resizableArea"
+          class=""
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="First"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 First
               </div>
             </button>
           </div>
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Second"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Second
               </div>
             </button>
           </div>
           <div
-            class="fui-legend__legendContainer"
+            class=""
           >
             <button
               aria-label="Third"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Third
               </div>
@@ -5664,7 +5664,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
 
 exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -6129,18 +6129,18 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6148,11 +6148,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             First
           </div>
@@ -6160,7 +6160,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6168,11 +6168,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Second
           </div>
@@ -6180,7 +6180,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6188,11 +6188,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Third
           </div>
@@ -6205,7 +6205,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
 
 exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -6632,7 +6632,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -6657,7 +6657,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -6682,7 +6682,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -6700,18 +6700,18 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6719,11 +6719,11 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             First
           </div>
@@ -6731,7 +6731,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6739,11 +6739,11 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Second
           </div>
@@ -6751,7 +6751,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6759,11 +6759,11 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Third
           </div>
@@ -6776,7 +6776,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
 
 exports[`VerticalBarChart snapShot testing Should render rounded corners on bars 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -7203,7 +7203,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -7228,7 +7228,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -7253,7 +7253,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -7271,18 +7271,18 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7290,11 +7290,11 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             First
           </div>
@@ -7302,7 +7302,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7310,11 +7310,11 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Second
           </div>
@@ -7322,7 +7322,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7330,11 +7330,11 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Third
           </div>
@@ -7347,7 +7347,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
 
 exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -7774,7 +7774,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -7799,7 +7799,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -7824,7 +7824,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -7842,18 +7842,18 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7861,11 +7861,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             First
           </div>
@@ -7873,7 +7873,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7881,11 +7881,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Second
           </div>
@@ -7893,7 +7893,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7901,11 +7901,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Third
           </div>
@@ -7918,7 +7918,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
 
 exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -8345,7 +8345,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -8370,7 +8370,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -8395,7 +8395,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -8413,79 +8413,79 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style="justify-content: unset; flex-wrap: wrap;"
     >
       <div
-        class="fui-legend__resizableArea"
+        class=""
         style="display: flex; flex-wrap: wrap; overflow: auto;"
       >
         <div
-          class="fui-legend__legendContainer"
+          class=""
         >
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               First
             </div>
           </button>
         </div>
         <div
-          class="fui-legend__legendContainer"
+          class=""
         >
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Second
             </div>
           </button>
         </div>
         <div
-          class="fui-legend__legendContainer"
+          class=""
         >
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-legend__legend"
+            class="group/fui-button"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
             type="button"
           >
             <div
-              class="fui-legend__rect"
+              class=""
               style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
             />
             <div
-              class="fui-legend__text"
+              class=""
             >
               Third
             </div>
@@ -8499,7 +8499,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
 
 exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -8926,7 +8926,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -8951,7 +8951,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -8976,7 +8976,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -8993,7 +8993,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
 
 exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -9419,7 +9419,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -9443,7 +9443,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -9467,7 +9467,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -9485,18 +9485,18 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -9504,11 +9504,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             First
           </div>
@@ -9516,7 +9516,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -9524,11 +9524,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Second
           </div>
@@ -9536,7 +9536,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -9544,11 +9544,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Third
           </div>
@@ -9561,7 +9561,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 
 exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -10086,7 +10086,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -10111,7 +10111,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -10136,7 +10136,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -10154,18 +10154,18 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10173,11 +10173,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             First
           </div>
@@ -10185,7 +10185,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10193,11 +10193,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Second
           </div>
@@ -10205,7 +10205,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10213,11 +10213,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Third
           </div>
@@ -10235,7 +10235,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
 
 exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -10760,7 +10760,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -10785,7 +10785,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -10810,7 +10810,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -10828,18 +10828,18 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10847,11 +10847,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             First
           </div>
@@ -10859,7 +10859,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10867,11 +10867,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Second
           </div>
@@ -10879,7 +10879,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10887,11 +10887,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Third
           </div>
@@ -10911,7 +10911,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
 
 exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 <div
-  class="fui-cart__root"
+  class="fui-cart__root fuicm-root group/fui-vertical-bar-chart"
   id="chart_"
   role="presentation"
 >
@@ -11338,7 +11338,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
@@ -11363,7 +11363,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
@@ -11388,7 +11388,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           />
           <text
             aria-hidden="true"
-            class="fui-vbc__barLabel"
+            class=""
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
@@ -11406,18 +11406,18 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     <div
       aria-label="Legends"
       aria-multiselectable="false"
-      class="fui-legend__root"
+      class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
     >
       <div
-        class="group/fui-overflow fui-legend__resizableArea"
+        class="group/fui-overflow"
         style="text-align: unset;"
       >
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -11425,11 +11425,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             First
           </div>
@@ -11437,7 +11437,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -11445,11 +11445,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Second
           </div>
@@ -11457,7 +11457,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-legend__legend"
+          class="group/fui-button"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -11465,11 +11465,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           type="button"
         >
           <div
-            class="fui-legend__rect"
+            class=""
             style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
           />
           <div
-            class="fui-legend__text"
+            class=""
           >
             Third
           </div>

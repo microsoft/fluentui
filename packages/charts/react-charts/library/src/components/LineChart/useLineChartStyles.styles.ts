@@ -1,60 +1,70 @@
-'use client';
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file no longer carries a
+ * `'use client'` directive. After conversion it calls no React hook — `makeStyles`'s
+ * `useStyles()` call is gone — so `enforce-use-client` reports the directive as
+ * unnecessary. Same split as react-badge's Badge (no directive) vs CounterBadge (kept it
+ * because it still calls a hook). `LineChart.tsx`, which does use hooks, keeps its own.
+ */
 
-import type { GriffelStyle } from '@griffel/react';
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { clsx } from 'clsx';
 import type { LineChartProps, LineChartStyles } from './LineChart.types';
-import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { HighContrastSelector } from '../../utilities/index';
-import { getMarkerLabelStyle, getTooltipStyle } from '../../utilities/index';
+
+import styles from './LineChart.module.css';
 
 /**
+ * Public identity class for LineChart.
+ *
  * @internal
+ * @deprecated for styling. The only supported way to style a Fluent component's internals
+ * is the per-slot `styles` props. `root` is retained as the component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable as a
+ * selector and as a `group-*` variant target. The per-slot BEM statics (`fui-line__*`)
+ * were removed with the D16 sweep: there is no public class-name handle on component
+ * internals. Note that `ScatterChart` declares its OWN copies of the same `fui-line__*`
+ * strings; removing them here does not touch that component.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + linechartClassNames.root` is an invalid selector. Use
+ * `fuiSelector(linechartClassNames.root)` from `@fluentui/react-utilities` at every
+ * selector site (DECISIONS.md D16.5).
  */
-export const linechartClassNames: SlotClassNames<LineChartStyles> = {
-  tooltip: 'fui-line__tooltip',
-  lineBorder: 'fui-line_lineBorder',
-  markerLabel: 'fui-line__markerLabel',
-  root: 'fui-line__root',
-  xAxis: 'fui-line__xAxis',
-  yAxis: 'fui-line__yAxis',
-  legendContainer: 'fui-line__legendContainer',
-  hover: 'fui-line__hover',
-  descriptionMessage: 'fui-line__descriptionMessage',
-  axisTitle: 'fui-line__axisTitle',
-  chartTitle: 'fui-line__chartTitle',
-  opacityChangeOnHover: 'fui-line__opacityChangeOnHover',
-  shapeStyles: 'fui-line__shapeStyles',
-  chartWrapper: 'fui-line__chartWrapper',
-  svgTooltip: '',
-  chart: '',
-  axisAnnotation: '',
-  plotContainer: '',
-  annotationLayer: '',
+export const linechartClassNames: { root: string } = {
+  root: 'group/fui-line-chart',
 };
 
 /**
- * Base Styles
- */
-const useStyles = makeStyles({
-  tooltip: getTooltipStyle() as GriffelStyle,
-  markerLabel: getMarkerLabelStyle() as GriffelStyle,
-  lineBorder: {
-    stroke: tokens.colorNeutralBackground1,
-    [HighContrastSelector]: {
-      stroke: 'Canvas',
-    },
-  },
-});
-
-/**
- * Apply styling to the Carousel slots based on the state
+ * Apply styling to the LineChart slots based on the state.
+ *
+ * DELEGATION SEAM: LineChart renders no element of its own — its outermost node is the
+ * root `<div>` of `CartesianChart`, which LineChart renders itself and whose props it
+ * therefore owns. That makes the `root` composition below CONVERSION_GUIDE §3d **M2**
+ * (JS slot-className composition), not M3: no new public DOM surface is minted, the
+ * existing `CartesianChart.styles.root` prop is the channel. `LineChart.tsx` forwards the
+ * value as `styles={{ ...props.styles, root: classes.root }}`, placed AFTER its `{...props}`
+ * spread so it wins.
+ *
+ * Two markers end up on that one element once CartesianChart converts
+ * (`group/fui-cartesian-chart` alongside `group/fui-line-chart`). That is the sanctioned
+ * shape, not a collision — react-button's ToggleButton root carries both
+ * `group/fui-toggle-button` and `group/fui-button` for exactly this reason, so a descendant
+ * can address whichever identity it means.
+ *
+ * Ordering (DECISIONS.md D16.2): unconditional module class FIRST, named group marker
+ * SECOND, consumer override LAST. `styles.root` is what guarantees the marker is never
+ * `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom.
+ *
+ * No data attributes are set: nothing in this component's styling is state-driven
+ * (D15.6 — data-* is fallback-only), and no `@variant` in either module reads one.
  */
 export const useLineChartStyles = (props: LineChartProps): LineChartStyles => {
-  const baseStyles = useStyles();
   return {
-    tooltip: mergeClasses(linechartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
-    lineBorder: mergeClasses(linechartClassNames.lineBorder, baseStyles.lineBorder /*props.styles?.lineBorder*/),
-    markerLabel: mergeClasses(linechartClassNames.markerLabel, baseStyles.markerLabel /*props.styles?.markerLabel*/),
+    // The marker is written as a LITERAL, not `linechartClassNames.root`: greppable,
+    // sortable by prettier-plugin-tailwindcss, and it keeps the `@deprecated` constant from
+    // being self-referenced (which the `deprecation` lint rule reports as an error). Same
+    // form as react-divider and react-button's ToggleButton.
+    root: clsx(styles.root, 'group/fui-line-chart', props.styles?.root),
+    tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
+    lineBorder: clsx(styles['line-border'] /*props.styles?.lineBorder*/),
+    markerLabel: clsx(styles['marker-label'] /*props.styles?.markerLabel*/),
   };
 };

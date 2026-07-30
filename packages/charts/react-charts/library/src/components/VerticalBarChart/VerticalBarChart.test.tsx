@@ -531,7 +531,11 @@ describe('Vertical bar chart - Subcomponent bar', () => {
     { data: chartPointsVBC, hideLabels: true },
     container => {
       // Assert
-      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
+      // Probe-class selector follows the conversion: the slot's class is the CSS-Modules
+      // local `bar-label` (`fuicm-vertical-bar-chart-bar-label-…`, `fuicm-bar-label` under
+      // jest), not the removed `fui-vbc__barLabel` static. Left as `/barLabel/i` this
+      // assertion could never match anything and would pass vacuously.
+      expect(getByClass(container, /bar-label/i)).toHaveLength(0);
     },
   );
 });

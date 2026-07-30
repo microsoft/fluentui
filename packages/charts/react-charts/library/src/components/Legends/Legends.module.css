@@ -1,0 +1,246 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useLegendStyles`. That hook
+ * does NOT mutate a shared state object — it RETURNS one class string per slot — so every
+ * slot is its own independent 3-argument call and there is no cross-slot ordering to encode:
+ *
+ *   #  mergeClasses argument            → target
+ *   ---------------------------------------------------------------------------------
+ *   1  legendClassNames.<slot>          → static class (JS) — REMOVED in the statics sweep
+ *                                         (DECISIONS.md D16.1). The root now leads with
+ *                                         `.root` below and carries `group/fui-legends`
+ *                                         second; every other slot leads with its own local.
+ *   2  useStyles.<slot>                 → the blocks below
+ *   3  props.className   (root only)    → unlayered (consumer, always wins)
+ *   4  props.styles?.<slot>             → unlayered (consumer, always wins)
+ *
+ * Legends has no `makeResetStyles`, so `fui.base` is unused. It stamps NO data attributes:
+ * nothing in this file reads component state, so attributes would be pure DOM weight
+ * (DECISIONS.md D15.6 — attributes are a fallback, not a requirement). There are no
+ * transitions to tighten and no `@keyframes`.
+ *
+ * ── Altitudes ────────────────────────────────────────────────────────────────────────
+ * `fui.components.l1` — slots whose element Legends itself renders: `.root`,
+ * `.text`, `.rect`, `.shape`, `.triangle`, `.hover-change`, `.legend-container`,
+ * `.annotation`. (`.rect` / `.shape` are rendered by this package's own `<Shape>`.)
+ *
+ * `fui.components.l2` — slots handed to ANOTHER package's component as its `className`,
+ * i.e. elements whose base styles come from that package's hook (D2 amendment 2):
+ *   • `.legend`         → `<Button className={classes.legend}>` (@fluentui/react-button).
+ *                         `border`, `padding`, `min-width` and `justify-content` here
+ *                         exist precisely to beat `useButtonStyles_unstable`, which writes
+ *                         `fui.base` (its makeResetStyles) + `fui.components.l1`. At l1
+ *                         this override would be decided by stylesheet load order.
+ *   • `.resizable-area` → the `<Overflow>` child element; `useOverflowStyles_unstable`
+ *                         owns that element's className (`clsx(styles.root,
+ *                         'group/fui-overflow', child.props.className)`).
+ * Both packages are converted, so a LAYERED rule is correct — nothing unlayered competes
+ * for these elements (D2 amendment: the unlayered escape hatch is only for elements owned
+ * by an unconverted/external Griffel package, and neither is).
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root */
+  .root {
+    /*
+     * FIXME (upstream, carried over verbatim): removing `white-space: nowrap` allows the
+     * legend container in a responsive donut chart to resize properly (horizontally)
+     * within a flexbox or grid layout, but it causes vertical resizing issues in
+     * responsive charts whose legends span multiple words.
+     */
+    @apply w-full items-center whitespace-nowrap;
+  }
+
+  /* from useStyles.rect */
+  .rect {
+    @apply w-horizontal-m me-horizontal-s;
+
+    /*
+     * `border: 1px solid` (compiled `.fpyyuzi`) expanded to longhands. The shorthand also
+     * sets `border-color: currentcolor`, which is the CSS initial value, so omitting the
+     * colour longhands is byte-identical in effect — and it leaves the inline
+     * `style={{ borderColor }}` Legends writes per datum untouched either way.
+     */
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+
+    /*
+     * from useStyles.rect[HighContrastSelector]. The two custom properties are set inline
+     * by Legends._getShape(). `-ms-high-contrast` is dropped: the shared `forced-colors`
+     * variant is `@media (forced-colors: active)` only, matching every converted package.
+     */
+    @variant forced-colors {
+      content: var(--rect-content-high-contrast);
+      opacity: var(--rect-opacity-high-contrast);
+    }
+  }
+
+  /* from useStyles.shape */
+  .shape {
+    @apply me-horizontal-s;
+  }
+
+  /*
+   * from useStyles.triangle. Unused by Legends today (the Griffel source carries a
+   * "TO DO Add props when these styles are used" note); preserved verbatim.
+   */
+  .triangle {
+    @apply h-0 w-0 me-horizontal-s;
+
+    /* borderLeft/borderRight → logical, so the RTL flip Griffel did by hand is free */
+    border-inline-start-width: 6px;
+    border-inline-start-style: solid;
+    border-inline-start-color: transparent;
+    border-inline-end-width: 6px;
+    border-inline-end-style: solid;
+    border-inline-end-color: transparent;
+    border-top-width: 10.4px;
+    border-top-style: solid;
+  }
+
+  /* from useStyles.text — typographyStyles.caption1 expanded */
+  .text {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    color: var(--colorNeutralForeground1);
+    forced-color-adjust: auto;
+  }
+
+  /*
+   * from useStyles.hoverChange. Unused by Legends today (same "TO DO" note as `.triangle`);
+   * preserved verbatim.
+   */
+  .hover-change {
+    @apply h-vertical-m w-horizontal-m me-horizontal-s;
+
+    /* `border: 1px solid` expanded — see `.rect` for why the colour longhands are omitted */
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+  }
+
+  /* from useStyles.legendContainer */
+  .legend-container {
+    /* `flex: 0 1 auto` and `margin: 4px` expanded to longhands */
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+
+    @apply mx-horizontal-xs my-vertical-xs;
+  }
+
+  /* from useStyles.annotation */
+  .annotation {
+    @apply flex items-center gap-horizontal-xs;
+  }
+}
+
+@layer fui.components.l2 {
+  /* from useStyles.legend — applied as the `className` of a react-button `<Button>` */
+  .legend {
+    /*
+     * The Griffel source notes that `display: flex` "does not work" here and leaves it
+     * commented out; Button's own display wins. Only `align-items` is set.
+     *
+     * `min-width: 0` overrides Button's 64px default so the legend container in responsive
+     * cartesian charts can shrink inside a flex/grid layout.
+     */
+    @apply min-w-0 cursor-pointer items-center capitalize;
+    @apply px-horizontal-s py-vertical-s;
+
+    /*
+     * `justify-content: left` is a PHYSICAL value that Griffel mirrors to `right` in RTL
+     * (compiled `.fc7pyfw` / `.fgbriwd`), so it needs a value-level RTL twin — there is no
+     * logical keyword that expresses "left" for `justify-content` in a row-reverse-safe way.
+     */
+    justify-content: left;
+
+    @variant rtl {
+      justify-content: right;
+    }
+
+    /*
+     * `border: none` expanded. `none` computes the used border width to 0 whatever the
+     * specified width is, so the four style longhands reproduce the shorthand exactly while
+     * leaving Button's own border-color longhands alone (they cannot render).
+     */
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+
+    /* from useStyles.legend[HighContrastSelector] and useStyles.legend['&:hover'] */
+    @variant forced-colors {
+      color: WindowText;
+      forced-color-adjust: none;
+
+      @variant focus-visible {
+        /* `outline: <width> solid canvasText` expanded; outline-width does NOT read the
+           spacing namespace, so strokeWidthThick is referenced as var(--spacing-thick) */
+        outline-width: var(--spacing-thick);
+        outline-style: solid;
+        outline-color: canvasText;
+        outline-offset: calc(var(--spacing-thick) * -1);
+      }
+
+      @variant hover {
+        color: HighlightText;
+        forced-color-adjust: none;
+      }
+    }
+  }
+
+  /* from useStyles.resizableArea — applied to the element `<Overflow>` owns */
+  .resizable-area {
+    @apply relative top-auto start-1/2 min-w-200 max-w-800;
+
+    /* textAlign 'left' → logical `start` (Griffel mirrored it to `right` in RTL) */
+    text-align: start;
+
+    /* value-level RTL: Griffel mirrors translate(-50%, 0) → translate(50%, 0) */
+    transform: translate(-50%, 0);
+
+    @variant rtl {
+      transform: translate(50%, 0);
+    }
+
+    &::after {
+      /* `padding: 1px 4px 1px` expanded; 4px is the XS spacing step, 1px matches no step */
+      @apply pt-1 pb-1 pe-horizontal-xs ps-horizontal-xs;
+
+      /*
+       * The Griffel source also sets `borderTop: '-2px'` and `borderLeft: '-2px'` here.
+       * A negative border width is invalid CSS: the compiled atomics (`.f3dcgnf::after`,
+       * `.ft9y50a::after`) are dropped at parse time by every engine, and this pseudo
+       * element has no `content` so it generates no box at all. They are documented rather
+       * than reproduced — emitting invalid declarations would only risk the CSS pipeline.
+       */
+    }
+  }
+}

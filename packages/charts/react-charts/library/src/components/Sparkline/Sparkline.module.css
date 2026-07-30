@@ -1,0 +1,54 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated per module on purpose — see
+ * DonutChart.module.css for the full rationale.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useSparklineStyles`. One
+ * library slice per slot; neither slot took a `className` argument:
+ *
+ *   inlineBlock 1 sparklineClassNames.inlineBlock → static class (JS) — REMOVED
+ *                                                   (DECISIONS.md D16.1); `.inline-block` now
+ *                                                   leads and carries `group/fui-sparkline`
+ *                                                   second — this is Sparkline's OUTERMOST
+ *                                                   node, so it is where the marker belongs
+ *                                                   even though the slot is not named `root`
+ *                                                   (same shape as react-tooltip, §3b)
+ *               2 useStyles.inlineBlock           → fui.components.l1   .inline-block
+ *               3 props.styles?.inlineBlock       → unlayered (always wins)
+ *   valueText   useStyles.valueText               → fui.components.l1   .value-text
+ *
+ * Both elements are Sparkline's own (`<div>` and the legend `<text>`), so
+ * `fui.components.l1` throughout; `fui.components.l2` is unused.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * No `[ltr, rtl]` pair in the compiled atomics. The legend text's `text-anchor` is computed
+ * from `useRtl()` in `Sparkline.tsx` and stays there. No `@variant rtl` twin.
+ *
+ * ── NOT converted here ──────────────────────────────────────────────────────────────────
+ * `Sparkline.tsx` also renders `className="line"` / `className="area"` on its two `<path>`
+ * elements. Those are unhashed global literals that carry NO styling (they are test handles
+ * read by `SparklineChartUT.test.tsx` via `getByClass`); every visual property on those paths
+ * is a presentation ATTRIBUTE set inline from the datum (`stroke`, `fill`, `fillOpacity`,
+ * `strokeWidth`). Nothing Griffel owned, nothing to convert — left exactly as found.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.inlineBlock */
+  .inline-block {
+    @apply inline;
+  }
+
+  /* from useStyles.valueText — typographyStyles.caption1 + fill/forced-color-adjust */
+  .value-text {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    fill: var(--colorNeutralForeground1);
+    forced-color-adjust: auto;
+  }
+}

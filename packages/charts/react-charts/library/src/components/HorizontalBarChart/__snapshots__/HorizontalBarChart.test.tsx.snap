@@ -3,18 +3,18 @@
 exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class="fui-hbc__root"
+    class="group/fui-horizontal-bar-chart"
   >
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -27,7 +27,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -36,7 +36,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         </div>
         <svg
           aria-label="one"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 1 of 3."
@@ -45,7 +45,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <rect
               aria-label="2020/04/30, 10%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#004b50"
               height="12"
               opacity="1"
@@ -56,7 +56,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -71,14 +71,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -91,7 +91,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -100,7 +100,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         </div>
         <svg
           aria-label="two"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 2 of 3."
@@ -109,7 +109,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <rect
               aria-label="2020/04/30, 5%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -120,7 +120,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -135,14 +135,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -155,7 +155,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -164,7 +164,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         </div>
         <svg
           aria-label="three"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 3 of 3."
@@ -173,7 +173,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <rect
               aria-label="2020/04/30, 59%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -184,7 +184,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -208,18 +208,18 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class="fui-hbc__root"
+    class="group/fui-horizontal-bar-chart"
   >
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -232,7 +232,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -241,7 +241,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         </div>
         <svg
           aria-label="one"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 1 of 3."
@@ -250,7 +250,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <rect
               aria-label="2020/04/30, 10%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#004b50"
               height="12"
               opacity="1"
@@ -261,7 +261,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -276,14 +276,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -296,7 +296,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -305,7 +305,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         </div>
         <svg
           aria-label="two"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 2 of 3."
@@ -314,7 +314,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <rect
               aria-label="2020/04/30, 5%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -325,7 +325,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -340,14 +340,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -360,7 +360,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -369,7 +369,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         </div>
         <svg
           aria-label="three"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 3 of 3."
@@ -378,7 +378,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <rect
               aria-label="2020/04/30, 59%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -389,7 +389,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -417,18 +417,18 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
     dir="ltr"
   >
     <div
-      class="fui-hbc__root"
+      class="group/fui-horizontal-bar-chart"
     >
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -441,7 +441,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
             </div>
             <div
-              class="fui-hbc__chartTitleRight"
+              class=""
               data-is-focusable="false"
               role="text"
             >
@@ -450,7 +450,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           </div>
           <svg
             aria-label="one"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 1 of 3."
@@ -459,7 +459,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             >
               <rect
                 aria-label="2020/04/30, 10%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#004b50"
                 height="12"
                 opacity="1"
@@ -470,7 +470,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 y="0"
               />
               <rect
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
@@ -485,14 +485,14 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -505,7 +505,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
             </div>
             <div
-              class="fui-hbc__chartTitleRight"
+              class=""
               data-is-focusable="false"
               role="text"
             >
@@ -514,7 +514,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           </div>
           <svg
             aria-label="two"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 2 of 3."
@@ -523,7 +523,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             >
               <rect
                 aria-label="2020/04/30, 5%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
@@ -534,7 +534,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 y="0"
               />
               <rect
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
@@ -549,14 +549,14 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -569,7 +569,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
             </div>
             <div
-              class="fui-hbc__chartTitleRight"
+              class=""
               data-is-focusable="false"
               role="text"
             >
@@ -578,7 +578,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           </div>
           <svg
             aria-label="three"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 3 of 3."
@@ -587,7 +587,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             >
               <rect
                 aria-label="2020/04/30, 59%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#a4262c"
                 height="12"
                 opacity="1"
@@ -598,7 +598,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 y="0"
               />
               <rect
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
@@ -634,19 +634,19 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar chart with data 2`] = `
 <div>
   <div
-    class="fui-hbc__root"
+    class="group/fui-horizontal-bar-chart"
     style=""
   >
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -659,7 +659,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -668,7 +668,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         </div>
         <svg
           aria-label="one"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 1 of 3."
@@ -677,7 +677,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           >
             <rect
               aria-label="2020/04/30, 10%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#004b50"
               height="12"
               opacity="1"
@@ -688,7 +688,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -703,14 +703,14 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -723,7 +723,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -732,7 +732,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         </div>
         <svg
           aria-label="two"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 2 of 3."
@@ -741,7 +741,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           >
             <rect
               aria-label="2020/04/30, 5%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -752,7 +752,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -767,14 +767,14 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -787,7 +787,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -796,7 +796,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         </div>
         <svg
           aria-label="three"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 3 of 3."
@@ -805,7 +805,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           >
             <rect
               aria-label="2020/04/30, 59%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -816,7 +816,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -840,18 +840,18 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row 0 with inline legends 1`] = `
 <div>
   <div
-    class="fui-hbc__root"
+    class="group/fui-horizontal-bar-chart"
   >
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -866,7 +866,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
         </div>
         <svg
           aria-label="one"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 1 of 1."
@@ -875,7 +875,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           >
             <rect
               aria-label="one.one, 10/100."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#004b50"
               height="12"
               opacity="1"
@@ -887,7 +887,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             />
             <rect
               aria-label="one.two, 90/100."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -906,38 +906,38 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
       id="callout_r_9_"
     />
     <div
-      class="fui-hbc__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: center; flex-wrap: wrap;"
       >
         <div
-          class="fui-legend__resizableArea"
+          class=""
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            class="fui-legend__legendContainer fui-legend__annotation"
+            class=""
           >
             <button
               aria-label="Legend 1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #a4262c; --rect-borderColor: #a4262c;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(164, 38, 44); border-color: rgb(164, 38, 44); --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Legend 1
               </div>
@@ -951,23 +951,23 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             </div>
           </div>
           <div
-            class="fui-legend__legendContainer fui-legend__annotation"
+            class=""
           >
             <button
               aria-label="Legend 2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #5c2d91; --rect-borderColor: #5c2d91;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(92, 45, 145); border-color: rgb(92, 45, 145); --rect-content-high-contrast: linear-gradient(to right, #5c2d91, #5c2d91);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Legend 2
               </div>
@@ -990,18 +990,18 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
 exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row 1 with inline legends 1`] = `
 <div>
   <div
-    class="fui-hbc__root"
+    class="group/fui-horizontal-bar-chart"
   >
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -1016,7 +1016,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
         </div>
         <svg
           aria-label="two"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 1 of 1."
@@ -1025,7 +1025,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           >
             <rect
               aria-label="two.one, 30/200."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -1037,7 +1037,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             />
             <rect
               aria-label="two.two, 170/200."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -1056,38 +1056,38 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
       id="callout_r_d_"
     />
     <div
-      class="fui-hbc__legendContainer"
+      class=""
     >
       <div
         aria-label="Legends"
         aria-multiselectable="false"
-        class="fui-legend__root"
+        class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: center; flex-wrap: wrap;"
       >
         <div
-          class="fui-legend__resizableArea"
+          class=""
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            class="fui-legend__legendContainer fui-legend__annotation"
+            class=""
           >
             <button
               aria-label="Legend 1"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #a4262c; --rect-borderColor: #a4262c;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(164, 38, 44); border-color: rgb(164, 38, 44); --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Legend 1
               </div>
@@ -1101,23 +1101,23 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             </div>
           </div>
           <div
-            class="fui-legend__legendContainer fui-legend__annotation"
+            class=""
           >
             <button
               aria-label="Legend 2"
               aria-selected="false"
-              class="group/fui-button fui-legend__legend"
+              class="group/fui-button"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #5c2d91; --rect-borderColor: #5c2d91;"
               type="button"
             >
               <div
-                class="fui-legend__rect"
+                class=""
                 style="height: 12px; background-color: rgb(92, 45, 145); border-color: rgb(92, 45, 145); --rect-content-high-contrast: linear-gradient(to right, #5c2d91, #5c2d91);"
               />
               <div
-                class="fui-legend__text"
+                class=""
               >
                 Legend 2
               </div>
@@ -1140,18 +1140,18 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
 exports[`Horizontal bar chart rendering Should render the Horizontal bar chart legend with string data 1`] = `
 <div>
   <div
-    class="fui-hbc__root"
+    class="group/fui-horizontal-bar-chart"
   >
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -1164,7 +1164,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -1173,7 +1173,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
         </div>
         <svg
           aria-label="one"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 1 of 3."
@@ -1182,7 +1182,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           >
             <rect
               aria-label="2020/04/30, 10%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#004b50"
               height="12"
               opacity="1"
@@ -1193,7 +1193,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -1208,14 +1208,14 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
     </div>
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -1228,7 +1228,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -1237,7 +1237,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
         </div>
         <svg
           aria-label="two"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 2 of 3."
@@ -1246,7 +1246,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           >
             <rect
               aria-label="2020/04/30, 5%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -1257,7 +1257,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -1272,14 +1272,14 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
     </div>
     <div>
       <div
-        class="fui-hbc__items"
+        class=""
         data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class="fui-hbc__chartTitle"
+          class=""
         >
           <div
-            class="fui-hbc__chartTitleLeft"
+            class=""
           >
             <span
               data-is-focusable="false"
@@ -1292,7 +1292,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
           </div>
           <div
-            class="fui-hbc__chartTitleRight"
+            class=""
             data-is-focusable="false"
             role="text"
           >
@@ -1301,7 +1301,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
         </div>
         <svg
           aria-label="three"
-          class="fui-hbc__chart"
+          class=""
         >
           <g
             aria-label="bar 3 of 3."
@@ -1310,7 +1310,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           >
             <rect
               aria-label="2020/04/30, 59%."
-              class="fui-hbc__barWrapper"
+              class=""
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -1321,7 +1321,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               y="0"
             />
             <rect
-              class="fui-hbc__barWrapper"
+              class=""
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -1350,18 +1350,18 @@ Object {
   >
     <div>
       <div
-        class="fui-hbc__root"
+        class="group/fui-horizontal-bar-chart"
       >
         <div>
           <div
-            class="fui-hbc__items"
+            class=""
             data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
           >
             <div
-              class="fui-hbc__chartTitle"
+              class=""
             >
               <div
-                class="fui-hbc__chartTitleLeft"
+                class=""
               >
                 <span
                   data-is-focusable="false"
@@ -1376,7 +1376,7 @@ Object {
             </div>
             <svg
               aria-label="one"
-              class="fui-hbc__chart"
+              class=""
             >
               <g
                 aria-label="bar 1 of 3."
@@ -1385,7 +1385,7 @@ Object {
               >
                 <rect
                   aria-label="2020/04/30, 10%."
-                  class="fui-hbc__barWrapper"
+                  class=""
                   fill="#004b50"
                   height="12"
                   opacity="1"
@@ -1402,14 +1402,14 @@ Object {
         </div>
         <div>
           <div
-            class="fui-hbc__items"
+            class=""
             data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
           >
             <div
-              class="fui-hbc__chartTitle"
+              class=""
             >
               <div
-                class="fui-hbc__chartTitleLeft"
+                class=""
               >
                 <span
                   data-is-focusable="false"
@@ -1424,7 +1424,7 @@ Object {
             </div>
             <svg
               aria-label="two"
-              class="fui-hbc__chart"
+              class=""
             >
               <g
                 aria-label="bar 2 of 3."
@@ -1433,7 +1433,7 @@ Object {
               >
                 <rect
                   aria-label="2020/04/30, 5%."
-                  class="fui-hbc__barWrapper"
+                  class=""
                   fill="#5c2d91"
                   height="12"
                   opacity="1"
@@ -1450,14 +1450,14 @@ Object {
         </div>
         <div>
           <div
-            class="fui-hbc__items"
+            class=""
             data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
           >
             <div
-              class="fui-hbc__chartTitle"
+              class=""
             >
               <div
-                class="fui-hbc__chartTitleLeft"
+                class=""
               >
                 <span
                   data-is-focusable="false"
@@ -1472,7 +1472,7 @@ Object {
             </div>
             <svg
               aria-label="three"
-              class="fui-hbc__chart"
+              class=""
             >
               <g
                 aria-label="bar 3 of 3."
@@ -1481,7 +1481,7 @@ Object {
               >
                 <rect
                   aria-label="2020/04/30, 59%."
-                  class="fui-hbc__barWrapper"
+                  class=""
                   fill="#a4262c"
                   height="12"
                   opacity="1"
@@ -1553,18 +1553,18 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-hbc__root"
+      class="group/fui-horizontal-bar-chart"
     >
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -1579,7 +1579,7 @@ Object {
           </div>
           <svg
             aria-label="one"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 1 of 3."
@@ -1588,7 +1588,7 @@ Object {
             >
               <rect
                 aria-label="2020/04/30, 10%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#004b50"
                 height="12"
                 opacity="1"
@@ -1605,14 +1605,14 @@ Object {
       </div>
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -1627,7 +1627,7 @@ Object {
           </div>
           <svg
             aria-label="two"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 2 of 3."
@@ -1636,7 +1636,7 @@ Object {
             >
               <rect
                 aria-label="2020/04/30, 5%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
@@ -1653,14 +1653,14 @@ Object {
       </div>
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -1675,7 +1675,7 @@ Object {
           </div>
           <svg
             aria-label="three"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 3 of 3."
@@ -1684,7 +1684,7 @@ Object {
             >
               <rect
                 aria-label="2020/04/30, 59%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#a4262c"
                 height="12"
                 opacity="1"
@@ -1767,18 +1767,18 @@ Object {
   >
     <div>
       <div
-        class="fui-hbc__root"
+        class="group/fui-horizontal-bar-chart"
       >
         <div>
           <div
-            class="fui-hbc__items"
+            class=""
             data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
           >
             <div
-              class="fui-hbc__chartTitle"
+              class=""
             >
               <div
-                class="fui-hbc__chartTitleLeft"
+                class=""
               >
                 <span
                   data-is-focusable="false"
@@ -1793,7 +1793,7 @@ Object {
             </div>
             <svg
               aria-label="one"
-              class="fui-hbc__chart"
+              class=""
             >
               <g
                 aria-label="bar 1 of 3."
@@ -1802,7 +1802,7 @@ Object {
               >
                 <rect
                   aria-label="2020/04/30, 10%."
-                  class="fui-hbc__barWrapper"
+                  class=""
                   fill="#004b50"
                   height="12"
                   opacity="1"
@@ -1814,7 +1814,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbc__barLabel"
+                  class=""
                   dominant-baseline="central"
                   transform="translate(4)"
                   x="10.286666666666665%"
@@ -1828,14 +1828,14 @@ Object {
         </div>
         <div>
           <div
-            class="fui-hbc__items"
+            class=""
             data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
           >
             <div
-              class="fui-hbc__chartTitle"
+              class=""
             >
               <div
-                class="fui-hbc__chartTitleLeft"
+                class=""
               >
                 <span
                   data-is-focusable="false"
@@ -1850,7 +1850,7 @@ Object {
             </div>
             <svg
               aria-label="two"
-              class="fui-hbc__chart"
+              class=""
             >
               <g
                 aria-label="bar 2 of 3."
@@ -1859,7 +1859,7 @@ Object {
               >
                 <rect
                   aria-label="2020/04/30, 5%."
-                  class="fui-hbc__barWrapper"
+                  class=""
                   fill="#5c2d91"
                   height="12"
                   opacity="1"
@@ -1871,7 +1871,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbc__barLabel"
+                  class=""
                   dominant-baseline="central"
                   transform="translate(4)"
                   x="5.333333333333334%"
@@ -1885,14 +1885,14 @@ Object {
         </div>
         <div>
           <div
-            class="fui-hbc__items"
+            class=""
             data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
           >
             <div
-              class="fui-hbc__chartTitle"
+              class=""
             >
               <div
-                class="fui-hbc__chartTitleLeft"
+                class=""
               >
                 <span
                   data-is-focusable="false"
@@ -1907,7 +1907,7 @@ Object {
             </div>
             <svg
               aria-label="three"
-              class="fui-hbc__chart"
+              class=""
             >
               <g
                 aria-label="bar 3 of 3."
@@ -1916,7 +1916,7 @@ Object {
               >
                 <rect
                   aria-label="2020/04/30, 59%."
-                  class="fui-hbc__barWrapper"
+                  class=""
                   fill="#a4262c"
                   height="12"
                   opacity="1"
@@ -1928,7 +1928,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbc__barLabel"
+                  class=""
                   dominant-baseline="central"
                   transform="translate(4)"
                   x="59.25333333333334%"
@@ -1997,18 +1997,18 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-hbc__root"
+      class="group/fui-horizontal-bar-chart"
     >
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -2023,7 +2023,7 @@ Object {
           </div>
           <svg
             aria-label="one"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 1 of 3."
@@ -2032,7 +2032,7 @@ Object {
             >
               <rect
                 aria-label="2020/04/30, 10%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#004b50"
                 height="12"
                 opacity="1"
@@ -2044,7 +2044,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbc__barLabel"
+                class=""
                 dominant-baseline="central"
                 transform="translate(4)"
                 x="10.286666666666665%"
@@ -2058,14 +2058,14 @@ Object {
       </div>
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -2080,7 +2080,7 @@ Object {
           </div>
           <svg
             aria-label="two"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 2 of 3."
@@ -2089,7 +2089,7 @@ Object {
             >
               <rect
                 aria-label="2020/04/30, 5%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
@@ -2101,7 +2101,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbc__barLabel"
+                class=""
                 dominant-baseline="central"
                 transform="translate(4)"
                 x="5.333333333333334%"
@@ -2115,14 +2115,14 @@ Object {
       </div>
       <div>
         <div
-          class="fui-hbc__items"
+          class=""
           data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class="fui-hbc__chartTitle"
+            class=""
           >
             <div
-              class="fui-hbc__chartTitleLeft"
+              class=""
             >
               <span
                 data-is-focusable="false"
@@ -2137,7 +2137,7 @@ Object {
           </div>
           <svg
             aria-label="three"
-            class="fui-hbc__chart"
+            class=""
           >
             <g
               aria-label="bar 3 of 3."
@@ -2146,7 +2146,7 @@ Object {
             >
               <rect
                 aria-label="2020/04/30, 59%."
-                class="fui-hbc__barWrapper"
+                class=""
                 fill="#a4262c"
                 height="12"
                 opacity="1"
@@ -2158,7 +2158,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbc__barLabel"
+                class=""
                 dominant-baseline="central"
                 transform="translate(4)"
                 x="59.25333333333334%"
