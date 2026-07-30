@@ -58,15 +58,16 @@
  * `data-layout` and `data-intent` are the names the in-repo headless preview already
  * stamps for THIS component (react-headless-components-preview/…/MessageBar/useMessageBar.ts:
  * `state.root['data-layout'] = state.layout`, `state.root['data-intent'] = …`), and both
- * are in the 25-name vocabulary (reports/headless-precedent.md). They are matched with
- * `&:where([data-…])` attribute selectors written here rather than shared
- * `@custom-variant` entries: the catalog lives in `@fluentui/react-tailwind-theme` and
- * this conversion may not edit other packages. The cookbook permits exactly this — it
- * bans variant DEFINITIONS in modules, not attribute selectors — and react-avatar does
- * the same for its `data-active` / `data-active-appearance`. Every selector is
- * `:where()`-wrapped so specificity stays flat and the cascade is decided by layer +
- * file order alone. Adding `layout-singleline` / `layout-multiline` / `intent-*` to the
- * shared catalog is filed as a cross-package follow-up.
+ * are in the 25-name vocabulary (reports/headless-precedent.md). Both are read through the
+ * shared `@custom-variant` catalog (@fluentui/react-tailwind-theme `css/variants.css`),
+ * whose `layout-singleline` / `layout-multiline` / `intent-info|success|warning|error`
+ * entries the Phase 3 catalog pass promoted out of this file's original raw attribute
+ * selectors. Every catalog entry is `:where()`-wrapped, so specificity stays flat and the
+ * cascade is decided by layer + file order alone — the same property the raw selectors had.
+ *
+ * `data-layout` is SHARED with RadioGroup's `layout` prop, which carries a disjoint value
+ * space (`vertical` / `horizontal` / `horizontal-stacked`); see the catalog's note. `intent`
+ * had no vocabulary anywhere, so its four names come from the public prop.
  *
  * `shape` stays a MODULE CLASS (`.square`) — D3 keeps look props (`appearance`, `shape`,
  * `color`) on class lookups; the headless preview has no `data-shape`.
@@ -136,7 +137,7 @@
 @layer fui.components.l1 {
   /* root arg #3 — from useStyles.rootMultiline, gated on `layout === 'multiline'` */
   .root {
-    &:where([data-layout='multiline']) {
+    @variant layout-multiline {
       @apply whitespace-normal pt-vertical-m-nudge;
 
       /* literal `start`, NOT `@apply items-start`: that utility emits
@@ -173,7 +174,7 @@
    * §2) — Griffel's shorthand/longhand priority machinery has no CSS equivalent.
    */
   .root {
-    &:where([data-intent='error']) {
+    @variant intent-error {
       background-color: var(--colorStatusDangerBackground1);
       border-top-color: var(--colorStatusDangerBorder1);
       border-right-color: var(--colorStatusDangerBorder1);
@@ -181,7 +182,7 @@
       border-left-color: var(--colorStatusDangerBorder1);
     }
 
-    &:where([data-intent='warning']) {
+    @variant intent-warning {
       background-color: var(--colorStatusWarningBackground1);
       border-top-color: var(--colorStatusWarningBorder1);
       border-right-color: var(--colorStatusWarningBorder1);
@@ -189,7 +190,7 @@
       border-left-color: var(--colorStatusWarningBorder1);
     }
 
-    &:where([data-intent='success']) {
+    @variant intent-success {
       background-color: var(--colorStatusSuccessBackground1);
       border-top-color: var(--colorStatusSuccessBorder1);
       border-right-color: var(--colorStatusSuccessBorder1);
@@ -206,16 +207,22 @@
    * Griffel source and emits no rule here either.
    */
   .root {
-    &:where([data-intent='error']) .icon {
-      color: var(--colorStatusDangerForeground1);
+    @variant intent-error {
+      & .icon {
+        color: var(--colorStatusDangerForeground1);
+      }
     }
 
-    &:where([data-intent='warning']) .icon {
-      color: var(--colorStatusWarningForeground3);
+    @variant intent-warning {
+      & .icon {
+        color: var(--colorStatusWarningForeground3);
+      }
     }
 
-    &:where([data-intent='success']) .icon {
-      color: var(--colorStatusSuccessForeground1);
+    @variant intent-success {
+      & .icon {
+        color: var(--colorStatusSuccessForeground1);
+      }
     }
   }
 }

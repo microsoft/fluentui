@@ -50,11 +50,11 @@
  * (reports/headless-precedent.md). `hasActions` follows the cookbook's boolean-pair rule:
  * ONE presence attribute plus a `:where(:not(…))` complement — the Griffel slice is gated
  * on `!hasActions`, so the complement is the branch that carries the rule.
- * They are matched with `&:where([data-…])` selectors written here rather than shared
- * `@custom-variant` entries because the catalog lives in `@fluentui/react-tailwind-theme`
- * and this conversion may not edit other packages (react-avatar sets the same precedent
- * with `data-active` / `data-active-appearance`). Catalog entries are filed as a
- * cross-package follow-up.
+ * Both are read through the shared `@custom-variant` catalog
+ * (@fluentui/react-tailwind-theme `css/variants.css`), whose `layout-multiline` and
+ * `has-actions` / `not-has-actions` entries the Phase 3 catalog pass promoted out of this
+ * file's original raw attribute selectors. `layout-multiline` is the same entry MessageBar's
+ * own module uses — MessageBar's context feeds this component the identical computed value.
  *
  * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
  * All three [ltr, rtl] pairs in the compiled atomics are pure PROPERTY flips → logical
@@ -92,7 +92,7 @@
 @layer fui.components.l1 {
   /* root arg #3 — from useMultilineStyles.root, gated on `layout === 'multiline'` */
   .root {
-    &:where([data-layout='multiline']) {
+    @variant layout-multiline {
       /* `pe-vertical-m` reproduces the source's `spacingVerticalM` on a horizontal
          property — see the spacing note in the file header. */
       @apply mt-vertical-m-nudge mb-vertical-s pe-vertical-m;
@@ -118,7 +118,7 @@
    * rule rides the `:not()` complement.
    */
   .root {
-    &:where(:not([data-has-actions])) {
+    @variant not-has-actions {
       @apply hidden;
     }
   }
