@@ -13,11 +13,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * or switch between two mutually exclusive options (checked or unchecked).
  */
 export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef((props, ref) => {
-  const state = useCheckbox_unstable(props, ref);
+  let state = useCheckbox_unstable(props, ref);
 
-  useCheckboxStyles_unstable(state);
+  state = useCheckboxStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useCheckboxStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useCheckboxStyles_unstable')(state);
 
   return renderCheckbox_unstable(state);
 });
