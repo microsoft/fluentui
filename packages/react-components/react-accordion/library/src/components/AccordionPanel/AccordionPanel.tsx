@@ -12,11 +12,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * Define a styled AccordionPanel, using the `useAccordionPanel_unstable` and `useAccordionPanelStyles_unstable` hooks.
  */
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps> = React.forwardRef((props, ref) => {
-  const state = useAccordionPanel_unstable(props, ref);
+  let state = useAccordionPanel_unstable(props, ref);
 
-  useAccordionPanelStyles_unstable(state);
+  state = useAccordionPanelStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useAccordionPanelStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useAccordionPanelStyles_unstable')(state);
 
   return renderAccordionPanel_unstable(state);
 });

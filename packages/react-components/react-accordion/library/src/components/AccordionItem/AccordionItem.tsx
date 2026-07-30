@@ -13,12 +13,12 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * Define a styled AccordionItem, using the `useAccordionItem_unstable` and `useAccordionItemStyles_unstable` hooks.
  */
 export const AccordionItem: ForwardRefComponent<AccordionItemProps> = React.forwardRef((props, ref) => {
-  const state = useAccordionItem_unstable(props, ref);
+  let state = useAccordionItem_unstable(props, ref);
   const contextValues = useAccordionItemContextValues_unstable(state);
 
-  useAccordionItemStyles_unstable(state);
+  state = useAccordionItemStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useAccordionItemStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useAccordionItemStyles_unstable')(state);
 
   return renderAccordionItem_unstable(state, contextValues);
 });

@@ -14,12 +14,12 @@ import type { ForwardRefComponent, JSXElement } from '@fluentui/react-utilities'
  */
 export const Accordion: ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSXElement) =
   React.forwardRef<HTMLDivElement, AccordionProps>((props, ref) => {
-    const state = useAccordion_unstable(props, ref);
+    let state = useAccordion_unstable(props, ref);
     const contextValues = useAccordionContextValues_unstable(state);
 
-    useAccordionStyles_unstable(state);
+    state = useAccordionStyles_unstable(state);
 
-    useCustomStyleHook_unstable('useAccordionStyles_unstable')(state);
+    state = useCustomStyleHook_unstable('useAccordionStyles_unstable')(state);
 
     return renderAccordion_unstable(state, contextValues);
   }) as ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSXElement);

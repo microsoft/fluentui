@@ -14,12 +14,12 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * hooks.
  */
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.forwardRef((props, ref) => {
-  const state = useAccordionHeader_unstable(props, ref);
+  let state = useAccordionHeader_unstable(props, ref);
   const contextValues = useAccordionHeaderContextValues_unstable(state);
 
-  useAccordionHeaderStyles_unstable(state);
+  state = useAccordionHeaderStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useAccordionHeaderStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useAccordionHeaderStyles_unstable')(state);
 
   return renderAccordionHeader_unstable(state, contextValues);
 });
