@@ -10,11 +10,11 @@ import type { ListProps } from './List.types';
 import { useListContextValues_unstable } from './useListContextValues';
 
 export const List: ForwardRefComponent<ListProps> = React.forwardRef((props, ref) => {
-  const state = useList_unstable(props, ref);
+  let state = useList_unstable(props, ref);
   const contextValues = useListContextValues_unstable(state);
 
-  useListStyles_unstable(state);
-  useCustomStyleHook_unstable('useListStyles_unstable')(state);
+  state = useListStyles_unstable(state);
+  state = useCustomStyleHook_unstable('useListStyles_unstable')(state);
 
   return renderList_unstable(state, contextValues);
 });
