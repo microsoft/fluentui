@@ -36,6 +36,7 @@
     "**/*.css"
   ],
   "nx": {
+    "name": "react-tailwind-theme",
     "targets": {
       "build": {
         "inputs": [
