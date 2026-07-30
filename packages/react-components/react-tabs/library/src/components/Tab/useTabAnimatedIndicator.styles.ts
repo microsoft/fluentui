@@ -121,10 +121,9 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   // original position and not when set at the previous tabs position.
   const animating = animationValues.offset === 0 && animationValues.scale === 1;
 
-  const root = state.root as TabState['root'] & TabAnimatedIndicatorDataAttributes;
-
-  // eslint-disable-next-line react-hooks/immutability
-  root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
+  const rootDataAttributes: TabAnimatedIndicatorDataAttributes = {
+    'data-orientation': vertical ? 'vertical' : 'horizontal',
+  };
 
   // The Griffel original wrote `mergeClasses(state.root.className, …)` — its own atomics
   // LAST, i.e. after the consumer's className, which mergeClasses does by design. The
@@ -139,19 +138,24 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   //
   // The `horizontal` / `vertical` slices this call used to carry are gone: they are
   // `data-orientation` arms nested inside `.indicator-transform` now.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    selected && styles['indicator-transform'],
-    selected && animating && styles['indicator-animated'],
-    state.root.className,
-  );
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(
+        selected && styles['indicator-transform'],
+        selected && animating && styles['indicator-animated'],
+        state.root.className,
+      ),
+    },
+  };
 
   const rootCssVars = {
     [tabIndicatorCssVars_unstable.offsetVar]: `${animationValues.offset}px`,
     [tabIndicatorCssVars_unstable.scaleVar]: `${animationValues.scale}`,
   };
 
-  // eslint-disable-next-line react-hooks/immutability
   state.root.style = {
     ...rootCssVars,
     ...state.root.style,

@@ -73,11 +73,11 @@ type TabRootDataAttributes = {
 export const useTabStyles_unstable = (state: TabState): TabState => {
   'use no memo'; // justified: compiler would optimize useTabStyles_unstable — manual opt-out to preserve runtime behavior
 
-  useTabIndicatorStyles_unstable(state);
+  state = useTabIndicatorStyles_unstable(state);
 
-  useTabButtonStyles_unstable(state, state.root);
+  state = useTabButtonStyles_unstable(state, state.root);
 
-  useTabContentStyles_unstable(state);
+  state = useTabContentStyles_unstable(state);
 
   return state;
 };
@@ -94,12 +94,10 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
 export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
   const { appearance, selected, size, vertical } = state;
 
-  const root = state.root as TabState['root'] & TabRootDataAttributes;
-
-  // eslint-disable-next-line react-hooks/immutability
-  root['data-size'] = size;
-  // eslint-disable-next-line react-hooks/immutability
-  root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
+  const rootDataAttributes: TabRootDataAttributes = {
+    'data-size': size,
+    'data-orientation': vertical ? 'vertical' : 'horizontal',
+  };
 
   // The two indicator pseudo-elements are suppressed entirely for the circular appearances,
   // exactly as the Griffel original's `if (appearance !== 'subtle-circular' && …)` guard did.
@@ -116,22 +114,24 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
   // mapping back to the mergeClasses() argument order this replaces, including the two places
   // where block order restores a specificity win that `:where()` flattening would have lost.
   //
-  // The state mutation is preserved deliberately (DECISIONS.md D14 defers the pure-builder
-  // rewrite to a single Phase 3 sweep), so the Griffel original's `react-hooks/immutability`
-  // suppressions are retained wherever the rule still reports — here and on the two data
-  // attributes above, which are the same kind of write. The equivalent writes in
-  // `useTabButtonStyles_unstable` and `useTabContentStyles_unstable` carry none because the
-  // rule does not report on them; an unused disable directive is itself a lint warning.
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    styles.root,
-    'group/fui-tab',
-    !isCircular && styles['pending-indicator'],
-    !isCircular && selected && styles['active-indicator'],
-    state.root.className,
-  );
+  // The data attributes above and the class list below land on the root in ONE composition, so
+  // the returned root is a single new object rather than a chain of copies.
+  state = {
+    ...state,
+    root: {
+      ...state.root,
+      ...rootDataAttributes,
+      className: clsx(
+        styles.root,
+        'group/fui-tab',
+        !isCircular && styles['pending-indicator'],
+        !isCircular && selected && styles['active-indicator'],
+        state.root.className,
+      ),
+    },
+  };
 
-  useTabAnimatedIndicatorStyles_unstable(state);
+  state = useTabAnimatedIndicatorStyles_unstable(state);
 
   return state;
 };
