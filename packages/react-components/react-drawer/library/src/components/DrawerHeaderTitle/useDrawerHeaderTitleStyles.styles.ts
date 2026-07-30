@@ -1,13 +1,10 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): unlike every other styles hook in this
- * package, this file needs NO `enforce-use-client` suppression and KEEPS its
- * `react-hooks/immutability` disables — it still calls a React hook
- * (`useDialogTitleStyles_unstable`), so both rules still apply to it exactly as before. The
- * other hooks call nothing after conversion, which is why their directives are suppressed
- * and their mutation disables are gone. Same split as react-badge, where Badge lost both and
- * CounterBadge (which still delegates) kept them.
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * it still calls a React hook (`useDialogTitleStyles_unstable`), so `enforce-use-client`
+ * never reports the directive as unnecessary. Every other styles hook in this package calls
+ * nothing after conversion and carries no directive at all.
  */
 
 import { clsx } from 'clsx';
