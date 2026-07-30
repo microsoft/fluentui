@@ -1,3 +1,5 @@
+import { execSync } from 'child_process';
+
 import headlessConfig from './release-headless.config';
 import toolsConfig from './release-tools.config';
 import v8Config from './release-v8.config';
@@ -5,8 +7,24 @@ import vNextConfig from './release-vNext.config';
 import webComponentsConfig from './release-web-components.config';
 import { config as sharedConfig } from './shared.config';
 
+jest.mock('child_process', () => ({
+  ...jest.requireActual<typeof import('child_process')>('child_process'),
+  execSync: jest.fn(),
+}));
+
 describe(`beachball configs`, () => {
   const excludedPackagesFromReleaseProcess = ['!packages/fluentui/*'];
+  const execSyncMock = jest.mocked(execSync);
+  const precommit = sharedConfig.hooks.precommit;
+
+  if (!precommit) {
+    throw new Error('Expected the shared Beachball config to define a precommit hook');
+  }
+
+  beforeEach(() => {
+    execSyncMock.mockReset();
+    execSyncMock.mockReturnValue(Buffer.from(''));
+  });
 
   it(`should generate shared config`, () => {
     expect(sharedConfig).toEqual({
@@ -46,6 +64,30 @@ describe(`beachball configs`, () => {
         },
       },
     });
+  });
+
+  it(`should normalize package dependencies and update the lockfile before committing`, () => {
+    precommit(process.cwd());
+
+    expect(execSyncMock.mock.calls).toEqual([
+      ['yarn nx g @fluentui/workspace-plugin:dependency-mismatch'],
+      ['yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies'],
+      ['yarn install --mode=update-lockfile'],
+    ]);
+  });
+
+  it(`should log precommit finalization failures`, () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+    const error = new Error('dependency normalization failed');
+    execSyncMock.mockImplementationOnce(() => {
+      throw error;
+    });
+
+    expect(() => precommit(process.cwd())).not.toThrow();
+    expect(consoleErrorSpy).toHaveBeenCalledWith(error);
+    expect(execSyncMock).toHaveBeenCalledTimes(1);
+
+    consoleErrorSpy.mockRestore();
   });
 
   it(`should generate v8 release config`, () => {
