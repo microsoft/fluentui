@@ -14,11 +14,11 @@ import { useTagAvatarContextValues_unstable } from '../../utils';
  * Provides visual attributes such as media, icon, primary and secondary text, as well as the ability to attach an action (by default it is dismiss)
  */
 export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) => {
-  const state = useTag_unstable(props, ref);
+  let state = useTag_unstable(props, ref);
 
-  useTagStyles_unstable(state);
+  state = useTagStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTagStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useTagStyles_unstable')(state);
 
   return renderTag_unstable(state, useTagAvatarContextValues_unstable(state));
 });

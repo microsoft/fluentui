@@ -14,11 +14,11 @@ import { useTagGroupContextValues_unstable } from './useTagGroupContextValues';
  * Provides context to size or dismiss children tags.
  */
 export const TagGroup: ForwardRefComponent<TagGroupProps> = React.forwardRef((props, ref) => {
-  const state = useTagGroup_unstable(props, ref);
+  let state = useTagGroup_unstable(props, ref);
 
-  useTagGroupStyles_unstable(state);
+  state = useTagGroupStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTagGroupStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useTagGroupStyles_unstable')(state);
 
   return renderTagGroup_unstable(state, useTagGroupContextValues_unstable(state));
 });

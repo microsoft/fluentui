@@ -14,11 +14,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Can have `InteractionTagPrimary` and `InteractionTagSecondary` components as its children.
  */
 export const InteractionTag: ForwardRefComponent<InteractionTagProps> = React.forwardRef((props, ref) => {
-  const state = useInteractionTag_unstable(props, ref);
+  let state = useInteractionTag_unstable(props, ref);
 
-  useInteractionTagStyles_unstable(state);
+  state = useInteractionTagStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useInteractionTagStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useInteractionTagStyles_unstable')(state);
 
   return renderInteractionTag_unstable(state, useInteractionTagContextValues_unstable(state));
 });

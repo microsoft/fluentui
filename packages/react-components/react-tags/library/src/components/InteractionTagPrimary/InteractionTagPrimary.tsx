@@ -14,11 +14,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Provides visual attributes such as media, icon, primary and secondary text, as well as the ability to attach a primary action.
  */
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps> = React.forwardRef((props, ref) => {
-  const state = useInteractionTagPrimary_unstable(props, ref);
+  let state = useInteractionTagPrimary_unstable(props, ref);
 
-  useInteractionTagPrimaryStyles_unstable(state);
+  state = useInteractionTagPrimaryStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useInteractionTagPrimaryStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useInteractionTagPrimaryStyles_unstable')(state);
 
   return renderInteractionTagPrimary_unstable(state, useTagAvatarContextValues_unstable(state));
 });
