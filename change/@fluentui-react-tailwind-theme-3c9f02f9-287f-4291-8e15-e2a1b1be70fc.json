@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Griffel to Tailwind CSS + CSS Modules migration: shared Tailwind theme, token mapping and @custom-variant catalog consumed by the converted packages. Not published (private, 0.0.0) — see migration/griffel-to-tailwind/reports/phase3-worklist.md item 12a for the unresolved packaging decision.",
+  "packageName": "@fluentui/react-tailwind-theme",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

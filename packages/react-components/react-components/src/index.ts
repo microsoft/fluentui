@@ -1,3 +1,20 @@
+/* eslint-disable @typescript-eslint/no-deprecated -- This barrel deliberately re-exports the
+ * deprecated `*ClassNames` constants (95 of them as of this change). Per DECISIONS D16.5 those
+ * constants are the migration's compile-compatibility contract: the Griffel -> Tailwind/CSS-Modules
+ * conversion stopped emitting BEM static classes, so the constants no longer describe rendered DOM,
+ * but they are kept — and kept exported by name from `@fluentui/react-components` — so that
+ * consumer code referencing them continues to compile. The `@deprecated` JSDoc on each constant is
+ * the intended signal to consumers; re-exporting it from the barrel is not itself a defect, so the
+ * rule is disabled for this file rather than suppressed ~95 times line-by-line.
+ *
+ * Note the cost of the file-level form: it also silences deprecation reports for the non-ClassNames
+ * re-exports below (getNativeElementProps, getSlots, resolveShorthand, ResolveShorthandFunction,
+ * ResolveShorthandOptions, AvatarSizes, ComboboxProvider, MenuOpenEvents,
+ * UninitializedMenuListState, useRadioGroupContext_unstable), and for any deprecation added here in
+ * future. Those exports keep their explanatory comments so the reason each one stays is still on
+ * record.
+ */
+
 // Utilities
 export {
   __css,
@@ -108,20 +125,17 @@ export {
   // the `/` in the group marker. Shipped alongside the constants it exists for — DECISIONS D16.5.
   fuiSelector,
   // getNativeElementProps is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
   getSlotClassNameProp_unstable,
   // getSlots is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,
   slot,
   assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
   // resolveShorthand is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   resolveShorthand,
   SSRProvider,
   useAnimationFrame,
@@ -145,10 +159,8 @@ export type {
   JSXIntrinsicElement,
   JSXIntrinsicElementKeys,
   // ResolveShorthandFunction is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
   // ResolveShorthandOptions is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandOptions,
   Slot,
   SlotOptions,
@@ -252,7 +264,6 @@ export type {
   AvatarNamedColor,
   AvatarProps,
   // AvatarSizes is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
   AvatarSize,
   AvatarSlots,
@@ -385,7 +396,6 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ComboboxProvider,
   useComboboxContextValues,
   ListboxProvider,
@@ -573,7 +583,6 @@ export type {
   MenuOpenChangeData,
   MenuOpenEvent,
   // MenuOpenEvents is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   MenuOpenEvents,
   MenuPopoverProps,
   MenuPopoverSlots,
@@ -589,7 +598,6 @@ export type {
   MenuTriggerState,
   SelectableHandler,
   // UninitializedMenuListState is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   UninitializedMenuListState,
 } from '@fluentui/react-menu';
 export {
@@ -641,7 +649,7 @@ export {
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
-  useRadioGroupContext_unstable, // eslint-disable-line @typescript-eslint/no-deprecated
+  useRadioGroupContext_unstable,
   useRadioGroupContextValue_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
@@ -918,7 +926,7 @@ export {
   OverflowItem,
   OverflowDivider,
   OverflowReorderObserver,
-  overflowClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
+  overflowClassNames,
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
   useOverflowCount,
