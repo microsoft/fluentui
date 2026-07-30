@@ -40,6 +40,12 @@ bundle, candidates from the post-conversion bundle:
   PopoverOpen × base/RTL/DarkMode). **12/12 clean.**
 - Popover-open baselines visually verified to contain the open callout (date header,
   legend text, colored border, Y value) before conversion.
+- Post-capture story lint fixes (committed form vs the bundles both legs were captured
+  from): VSBC types moved to `import type` (zero emitted-code difference) and GVBC's
+  `barwidth={24}` removed — verified inert, since `GroupedVerticalBarChart.tsx` passes its
+  own `barwidth={_barWidth}` to CartesianChart AFTER the `{...props}` spread, overriding
+  the story prop in both captured legs. Future re-captures from committed source remain
+  comparable against these baselines.
 
 Existing 8 chart sets re-validated against the post-conversion bundle, zero retries:
 
