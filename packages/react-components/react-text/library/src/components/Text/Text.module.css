@@ -50,10 +50,13 @@
  * at fui.components.l2: they are applied over the output of THIS component's hook, which is
  * the altitude rule's definition of a library composition (DECISIONS.md D2 amendment 2).
  *
- * `size` is a dense NUMERIC scale (100…1000), so per the cookbook's scale-prop rule it
- * rides `data-size` with direct attribute selectors written here rather than variant
- * definitions added to the shared catalog (which bans variant DEFINITIONS in modules, not
- * attribute selectors). `font`, `weight` and `align` are enum "look" values whose default
+ * `size` is a dense NUMERIC scale (100…1000), so per the cookbook's scale-prop rule it rides
+ * `data-size`. The Phase 3 catalog pass promoted this file's raw attribute selectors into the
+ * shared catalog's `size-100` … `size-1000` entries (@fluentui/react-tailwind-theme
+ * `css/variants.css`) — the typography ramp riding the same attribute as the pixel scale, with
+ * no value shared between the two number spaces.
+ *
+ * `font`, `weight` and `align` are enum "look" values whose default
  * (`base` / `regular` / `start`) carries NO Griffel slice at all, so they stay module class
  * lookups — the same call react-label made for its `weight` prop — and the rule-free
  * default is preserved by simply having no class to look up.
@@ -135,47 +138,47 @@
    * attribute is still stamped for every value so the DOM carries the state uniformly.
    */
   .root {
-    &:where([data-size='100']) {
+    @variant size-100 {
       font-size: var(--fontSizeBase100);
       line-height: var(--lineHeightBase100);
     }
 
-    &:where([data-size='200']) {
+    @variant size-200 {
       font-size: var(--fontSizeBase200);
       line-height: var(--lineHeightBase200);
     }
 
-    &:where([data-size='400']) {
+    @variant size-400 {
       font-size: var(--fontSizeBase400);
       line-height: var(--lineHeightBase400);
     }
 
-    &:where([data-size='500']) {
+    @variant size-500 {
       font-size: var(--fontSizeBase500);
       line-height: var(--lineHeightBase500);
     }
 
-    &:where([data-size='600']) {
+    @variant size-600 {
       font-size: var(--fontSizeBase600);
       line-height: var(--lineHeightBase600);
     }
 
-    &:where([data-size='700']) {
+    @variant size-700 {
       font-size: var(--fontSizeHero700);
       line-height: var(--lineHeightHero700);
     }
 
-    &:where([data-size='800']) {
+    @variant size-800 {
       font-size: var(--fontSizeHero800);
       line-height: var(--lineHeightHero800);
     }
 
-    &:where([data-size='900']) {
+    @variant size-900 {
       font-size: var(--fontSizeHero900);
       line-height: var(--lineHeightHero900);
     }
 
-    &:where([data-size='1000']) {
+    @variant size-1000 {
       font-size: var(--fontSizeHero1000);
       line-height: var(--lineHeightHero1000);
     }
