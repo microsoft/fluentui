@@ -215,12 +215,10 @@
 
   .root {
     /*
-     * `data-expand-icon-position` and `data-icon` are written as raw attribute selectors
-     * rather than `@custom-variant`s: the shared catalog lives in another package
-     * (@fluentui/react-tailwind-theme) and this conversion does not edit it. The cookbook
-     * bans variant DEFINITIONS in component modules, not attribute selectors
-     * (CONVERSION_GUIDE §2, scale-prop rule). Catalog entries are requested in the
-     * conversion report.
+     * `data-expand-icon-position` and `data-icon` are read through the shared
+     * `@custom-variant` catalog (@fluentui/react-tailwind-theme `css/variants.css`), whose
+     * `expand-icon-position-start` / `expand-icon-position-end` / `icon` / `not-icon` entries
+     * the Phase 3 catalog pass promoted out of this file's original raw attribute selectors.
      *
      * `data-expand-icon-position` is one of the headless preview's 25 attribute names
      * (reports/headless-precedent.md; its own AccordionHeader stamps exactly this).
@@ -228,9 +226,9 @@
      * condition — ONE presence attribute plus a `:not()` complement, per the cookbook's
      * boolean-pair rule.
      */
-    &:where([data-expand-icon-position='end']) {
+    @variant expand-icon-position-end {
       /* from useStyles.buttonExpandIconEndNoIcon — button arg #5 */
-      &:where(:not([data-icon])) {
+      @variant not-icon {
         & .button {
           @apply ps-horizontal-m;
         }
@@ -295,14 +293,14 @@
 
   .root {
     /* from useStyles.expandIconStart — expandIcon arg #3 */
-    &:where([data-expand-icon-position='start']) {
+    @variant expand-icon-position-start {
       & .expand-icon {
         @apply pe-horizontal-s;
       }
     }
 
     /* from useStyles.expandIconEnd — expandIcon arg #4 */
-    &:where([data-expand-icon-position='end']) {
+    @variant expand-icon-position-end {
       & .expand-icon {
         flex-grow: 1;
         flex-shrink: 1;
