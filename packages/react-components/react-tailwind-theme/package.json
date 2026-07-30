@@ -1,20 +1,34 @@
 {
   "name": "@fluentui/react-tailwind-theme",
-  "version": "0.0.0",
-  "private": true,
+  "version": "9.0.0-alpha.0",
   "description": "Shared Tailwind v4 theme layer for the CSS Modules styling migration: cascade layer order, custom variants, the base-scale spacing bridge, and the generated Fluent token registration (css/tokens.css). Fluent tokens stay runtime CSS custom properties written by FluentProvider; `@theme inline` only gives them utility names, so utilities compile to direct var(--token) references and per-provider theming is unchanged. Spacing is the one exception: the 22 spacing tokens and the 4 strokeWidth tokens register under --spacing-* as base-scale VALUES, so the named (p-horizontal-m, w-thin) and numeric (p-12) scales are one system. The 4 stroke widths are additionally emitted as real --spacing-thin/thick/thicker/thickest custom properties, because border/outline/ring/decoration widths do not consume the spacing namespace and must be authored as a direct var().",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  },
   "scripts": {
     "build": "node build.js",
     "generate-tokens-css": "node scripts/generate-tokens-css.js",
-    "verify-tokens-css": "node scripts/generate-tokens-css.js --check"
+    "verify-tokens-css": "node scripts/generate-tokens-css.js --check",
+    "prepack": "node build.js"
   },
   "style": "css/index.css",
   "exports": {
     ".": "./css/index.css",
     "./styles.css": "./dist/styles.css",
-    "./css/*": "./css/*"
+    "./css/*": "./css/*",
+    "./package.json": "./package.json"
   },
   "files": [
+    "*.md",
     "css",
     "dist/styles.css"
   ],

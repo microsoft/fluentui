@@ -10,12 +10,23 @@
  * `@property` registrations. Everything a component sheet references, nothing a component
  * sheet duplicates.
  *
- * NOT wired into nx on purpose (Phase 1.5). The workspace plugin creates its nodes from
- * `project.json` files, so adding one here would newly infer lint / format / type-check /
- * verify-packaging targets that a CSS-only package cannot satisfy. This package is also
- * still `"private": true` at version 0.0.0 — how the theme reaches real consumers
- * (published package vs. a suite-level convenience stylesheet, both sanctioned by D13) is
- * an open packaging decision, not something to settle by side effect here.
+ * NO `project.json` on purpose. The workspace plugin creates its nodes from `project.json`
+ * files and unconditionally infers `clean` / `format` / `type-check` targets (plus a
+ * `build` target overriding this one, once the project is tagged `vNext`), none of which a
+ * CSS-only package with no `src/`, no tsconfig and no TypeScript can satisfy. nx still sees
+ * this package — it is inferred from `package.json` (project name
+ * `@fluentui/react-tailwind-theme`, targets `build` / `generate-tokens-css` /
+ * `verify-tokens-css` from the scripts above) — it just carries no nx tags.
+ *
+ * PACKAGING (Phase 3 / D13, settled): the theme reaches consumers as this published package,
+ * not as a suite-level convenience stylesheet. Consumers import
+ * `@fluentui/react-tailwind-theme/styles.css` exactly once at their document root; see
+ * README.md.
+ *
+ * `dist/` is gitignored, and the release pipeline builds by nx tag (`nx run-many -t build -p
+ * tag:vNext`), which does not select an untagged project. So the emission is ALSO wired to
+ * the `prepack` script: `npm pack` and `npm publish` run it, which is what guarantees
+ * `dist/styles.css` is in the tarball regardless of whether a prior build step ran.
  *
  * Usage: node packages/react-components/react-tailwind-theme/build.js
  */
