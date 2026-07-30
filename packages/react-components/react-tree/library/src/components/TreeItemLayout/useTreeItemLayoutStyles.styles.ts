@@ -2,11 +2,10 @@
 
 /*
  * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
- * unlike most converted styles files, this one carries NO `enforce-use-client`
- * suppression. `useTreeItemLayoutStyles_unstable` still calls React hooks
- * (`useTreeContext_unstable`, `useTreeItemContext_unstable`) to read `size` / `appearance`
- * / `itemType`, so the rule agrees the directive is required and a suppression would be
- * flagged as an unused disable.
+ * `useTreeItemLayoutStyles_unstable` still calls React hooks (`useTreeContext_unstable`,
+ * `useTreeItemContext_unstable`) to read `size` / `appearance` / `itemType`, so
+ * `enforce-use-client` agrees the directive is required and it stays. Converted styles files
+ * that call nothing carry no directive at all.
  */
 
 import { clsx } from 'clsx';
