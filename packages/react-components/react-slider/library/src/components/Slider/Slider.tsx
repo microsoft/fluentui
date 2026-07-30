@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * The Slider component allows users to quickly select a value by dragging a thumb across a rail.
  */
 export const Slider: ForwardRefComponent<SliderProps> = React.forwardRef((props, ref) => {
-  const state = useSlider_unstable(props, ref);
+  let state = useSlider_unstable(props, ref);
 
-  useSliderStyles_unstable(state);
+  state = useSliderStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useSliderStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useSliderStyles_unstable')(state);
 
   return renderSlider_unstable(state);
 });
