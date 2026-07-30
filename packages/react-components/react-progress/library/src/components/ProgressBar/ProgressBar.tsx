@@ -12,11 +12,11 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * A ProgressBar bar shows the progression of a task.
  */
 export const ProgressBar: ForwardRefComponent<ProgressBarProps> = React.forwardRef((props, ref) => {
-  const state = useProgressBar_unstable(props, ref);
+  let state = useProgressBar_unstable(props, ref);
 
-  useProgressBarStyles_unstable(state);
+  state = useProgressBarStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useProgressBarStyles_unstable')(state);
+  state = useCustomStyleHook_unstable('useProgressBarStyles_unstable')(state);
 
   return renderProgressBar_unstable(state);
 });
