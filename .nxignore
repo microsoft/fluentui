@@ -15,3 +15,8 @@ plop-templates-_
 
 ; TODO: temporary ignore - remove once https://github.com/microsoft/fluentui/pull/32371 is merged
 scripts/\*/just.config.ts
+
+; local scratch workspace (gitignored) — contains copies of the repo tree from measurement
+; runs; without this nx discovers them as duplicate projects and the project graph fails to build
+.scratch
+**/.scratch/**
