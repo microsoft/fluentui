@@ -538,28 +538,75 @@ describe('Popover', () => {
       });
 
       it('should not close when focus moves outside but was never inside the popover', () => {
-        // Opening the popover does not steal focus (unstable_disableAutoFocus), so focus stays on
-        // the external input. A programmatic re-focus of it must not dismiss the popover.
-        mount(
-          <>
-            <input id="outside" aria-label="external input" />
-            <Popover trapFocus unstable_disableAutoFocus>
-              <PopoverTrigger disableButtonEnhancement>
-                <button>Popover trigger</button>
-              </PopoverTrigger>
-              <PopoverSurface>
-                <button>Inside</button>
-              </PopoverSurface>
-            </Popover>
-          </>,
-        );
+        const ControlledPopover = () => {
+          const [open, setOpen] = React.useState(false);
+
+          return (
+            <>
+              <input id="outside" aria-label="external input" />
+              <button id="open-programmatically" onClick={() => setOpen(true)}>
+                Open programmatically
+              </button>
+              <Popover
+                open={open}
+                onOpenChange={(_event, data) => setOpen(data.open)}
+                trapFocus
+                unstable_disableAutoFocus
+              >
+                <PopoverTrigger disableButtonEnhancement>
+                  <button>Popover anchor</button>
+                </PopoverTrigger>
+                <PopoverSurface>
+                  <button>Inside</button>
+                </PopoverSurface>
+              </Popover>
+            </>
+          );
+        };
+
+        mount(<ControlledPopover />);
 
         cy.get('#outside').focus();
-        cy.get(popoverTriggerSelector).click();
+        cy.get('#open-programmatically').click();
         cy.get(popoverInteractiveContentSelector).should('be.visible');
-        // Re-focus the external element (focus never entered the popover).
         cy.get('#outside').focus();
         cy.get(popoverInteractiveContentSelector).should('be.visible');
+      });
+
+      it('should close when autofocus is disabled but focus moves from inside to outside', () => {
+        const ControlledPopover = () => {
+          const [open, setOpen] = React.useState(false);
+
+          return (
+            <>
+              <button id="outside">Outside</button>
+              <button id="open-programmatically" onClick={() => setOpen(true)}>
+                Open programmatically
+              </button>
+              <Popover
+                open={open}
+                onOpenChange={(_event, data) => setOpen(data.open)}
+                trapFocus
+                unstable_disableAutoFocus
+              >
+                <PopoverTrigger disableButtonEnhancement>
+                  <button>Popover anchor</button>
+                </PopoverTrigger>
+                <PopoverSurface>
+                  <button>Inside</button>
+                </PopoverSurface>
+              </Popover>
+            </>
+          );
+        };
+
+        mount(<ControlledPopover />);
+
+        cy.get('#open-programmatically').click();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+        cy.contains('Inside').focus();
+        cy.get('#outside').focus();
+        cy.get(popoverInteractiveContentSelector).should('not.exist');
       });
 
       it('should not close when focus moves to the trigger', () => {
