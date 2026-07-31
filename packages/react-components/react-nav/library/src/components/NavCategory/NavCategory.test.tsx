@@ -19,7 +19,6 @@ describe('NavCategory', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classnames-object',
-      'make-styles-overrides-win',
       COMPONENT_HAS_GROUP_MARKER_TEST_NAME,
     ],
   });

@@ -25,7 +25,7 @@ describe('Slider', () => {
     // rendered, both of which are exactly what D16 retires. `component-has-group-marker`
     // (a default test since D16.6) replaces it — it asserts the group marker IS stamped
     // and, per D16.2, is never `classList[0]`.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

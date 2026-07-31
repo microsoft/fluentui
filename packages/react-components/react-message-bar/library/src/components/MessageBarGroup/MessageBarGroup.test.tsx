@@ -19,7 +19,6 @@ describe('MessageBarGroup', () => {
     // guarantee is simply that clsx puts `state.root.className` last (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
     disabledTests: [
-      'make-styles-overrides-win',
       // Statics removal (DECISIONS.md D16.1 / D16.6) — see MessageBar.test.tsx for the full
       // rationale. Replaced by `component-has-group-marker` (now a default test).
       'component-has-static-classnames-object',

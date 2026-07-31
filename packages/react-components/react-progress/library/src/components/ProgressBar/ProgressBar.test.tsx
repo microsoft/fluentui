@@ -25,7 +25,7 @@ describe('ProgressBar', () => {
     // actually holds now — including the D15.1 `classList[0]` invariant the static used to
     // satisfy incidentally (D16.2/D16.6). Its `has-static-classnames` testOptions entry
     // (which rendered a label/description so the sub-slot statics could be found) goes with it.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -33,7 +33,7 @@ describe('PopoverSurface', () => {
     // format and asserts those classes are rendered, both of which are exactly what D16
     // retires. `component-has-group-marker` (a default test) replaces it — it asserts
     // `group/fui-popover-surface` IS stamped and, per D16.2, is never `classList[0]`.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

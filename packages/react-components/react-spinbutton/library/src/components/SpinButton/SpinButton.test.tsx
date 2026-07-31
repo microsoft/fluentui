@@ -24,7 +24,6 @@ describe('SpinButton', () => {
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
     disabledTests: [
-      'make-styles-overrides-win',
       // Statics removal (DECISIONS.md D16.1/D16.6). SpinButton no longer renders
       // `fui-SpinButton` / `fui-SpinButton__<slot>`, and `spinButtonClassNames` is now
       // `{ root: 'group/fui-spin-button' }`, so all three assertions in

@@ -22,7 +22,6 @@ describe('MessageBarActions', () => {
       // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
       // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
       // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-      'make-styles-overrides-win',
     ],
     // `component-has-group-marker` asserts the D16 public contract: exactly one
     // `group/fui-message-bar-actions` marker on the outermost slot, and never at

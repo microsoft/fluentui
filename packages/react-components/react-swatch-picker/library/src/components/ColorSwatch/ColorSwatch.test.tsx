@@ -21,7 +21,7 @@ describe('ColorSwatch', () => {
     // format DECISIONS.md D16.1 removed. `component-has-group-marker` (now a default test)
     // replaces it: it asserts the group marker IS stamped and is never `classList[0]`
     // (D16.2 / D16.6). Its `has-static-classnames` testOptions entry goes with it.
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -24,7 +24,6 @@ describe('Popover', () => {
       // marker (migration/griffel-to-tailwind).
       'component-has-group-marker',
       // Popover does not have own styles
-      'make-styles-overrides-win',
     ],
     testOptions: {
       'consistent-callback-args': {

@@ -17,7 +17,7 @@ describe('NavDivider', () => {
     // holding the group marker (DECISIONS.md D16.5/D16.6) and `component-has-group-marker`
     // (a default test) replaces it. The `has-static-classnames` testOptions block went with
     // it, along with the `wrapper` key.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       // NavDivider IS a react-divider Divider — `useNavDividerStyles_unstable` calls

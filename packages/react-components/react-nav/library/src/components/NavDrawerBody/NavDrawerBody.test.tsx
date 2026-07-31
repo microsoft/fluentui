@@ -18,7 +18,7 @@ describe('NavDrawerBody', () => {
     // D16 statics-removal sweep retired; `navDrawerBodyClassNames.root` is now the group
     // marker (DECISIONS.md D16.5/D16.6) and `component-has-group-marker` (a default test)
     // replaces it.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       // NavDrawerBody IS a react-drawer DrawerBody — `useNavDrawerBodyStyles_unstable` calls

@@ -19,7 +19,7 @@ describe('SplitNavItem', () => {
     // testOptions block that asserted the five slot statics went with it — the three button
     // slots are now styled through JS slot composition plus `group-*/fui-split-nav-item`
     // variants (D16.3, mechanism M2), so there is nothing public left to assert.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 });

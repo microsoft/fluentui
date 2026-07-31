@@ -25,7 +25,6 @@ describe('PopoverTrigger', () => {
       // (migration/griffel-to-tailwind).
       'component-has-group-marker',
       // PopoverTrigger does not have own styles
-      'make-styles-overrides-win',
     ],
   });
 

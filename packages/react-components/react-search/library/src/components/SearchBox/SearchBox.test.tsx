@@ -43,7 +43,7 @@ describe('SearchBox', () => {
     // to `{ root }` and re-pointed it at the group marker. Its `has-static-classnames`
     // testOptions entry — which existed only to name the three sub-slot statics that the
     // default render does not produce — goes with it.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       // a SearchBox IS an Input — `useInputStyles_unstable` stamps its marker on this same element, so this root

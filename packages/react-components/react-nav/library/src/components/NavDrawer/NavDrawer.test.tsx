@@ -43,7 +43,6 @@ describe('NavDrawer', () => {
       'component-handles-classname',
       'component-has-static-classnames-object',
       'consistent-callback-args',
-      'make-styles-overrides-win',
     ],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {

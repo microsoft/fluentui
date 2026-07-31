@@ -27,7 +27,7 @@ describe('RadioGroup', () => {
     // converted package has been (D16.6). `component-has-group-marker` (now a default test) is its
     // replacement — it asserts the marker is stamped AND that it is never `classList[0]`
     // (D16.2).
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

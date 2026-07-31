@@ -17,7 +17,6 @@ describe('RatingDisplay', () => {
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
     disabledTests: [
-      'make-styles-overrides-win',
       // Statics removal (DECISIONS.md D16.1/D16.6). RatingDisplay no longer renders
       // `fui-RatingDisplay` / `fui-RatingDisplay__<slot>`, and `ratingDisplayClassNames` is
       // now `{ root: 'group/fui-rating-display' }`, so all three assertions in

@@ -18,7 +18,7 @@ describe('Nav', () => {
     // it.
     //
     // todo - # 30012, remove `consistent-callback-args` when conformance is updated
-    disabledTests: ['consistent-callback-args', 'make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['consistent-callback-args', 'component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 });
