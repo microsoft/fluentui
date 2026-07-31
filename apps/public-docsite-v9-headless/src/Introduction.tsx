@@ -2,10 +2,9 @@
 
 import * as React from 'react';
 
-import { useIntroductionStyles } from './Introduction.styles';
+import styles from './Introduction.module.css';
 
 export const Hero = ({ src, alt }: { src: string; alt: string }) => {
-  const styles = useIntroductionStyles();
   return (
     <div className={styles.hero}>
       <img className={styles.heroImage} src={src} alt={alt} />
@@ -14,7 +13,6 @@ export const Hero = ({ src, alt }: { src: string; alt: string }) => {
 };
 
 export const Features = ({ children }: { children: React.ReactNode }) => {
-  const styles = useIntroductionStyles();
   return <div className={styles.features}>{children}</div>;
 };
 
@@ -29,7 +27,6 @@ export const Feature = ({
   title: React.ReactNode;
   children: React.ReactNode;
 }) => {
-  const styles = useIntroductionStyles();
   return (
     <div className={styles.card}>
       <img className={styles.cardImage} src={src} alt={alt} />
@@ -40,7 +37,6 @@ export const Feature = ({
 };
 
 export const WhyGrid = ({ children }: { children: React.ReactNode }) => {
-  const styles = useIntroductionStyles();
   return <div className={styles.grid}>{children}</div>;
 };
 
@@ -55,7 +51,6 @@ export const WhyCard = ({
   title: React.ReactNode;
   children: React.ReactNode;
 }) => {
-  const styles = useIntroductionStyles();
   return (
     <div className={styles.gridCard}>
       <img className={styles.gridImage} src={src} alt={alt} />

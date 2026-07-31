@@ -1,5 +1,4 @@
 import { mount as mountBase } from '@fluentui/scripts-cypress';
-import { makeStyles } from '@griffel/react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import {
   Menu,
@@ -28,12 +27,10 @@ import {
   menuTriggerId,
 } from '../../testing/selectors';
 
-// eslint-disable-next-line @griffel/styles-file
-const useStyles = makeStyles({
-  pointerPortal: {
-    zIndex: 10000000,
-  },
-});
+// Griffel → Tailwind + CSS Modules migration (S-H): was a Griffel `makeStyles` hook. A plain
+// class + a `<style>` tag injected by `DebugPointer` below is enough for a test-only affordance.
+const pointerPortalClassName = 'menu-cy-pointer-portal';
+const pointerPortalCss = `.${pointerPortalClassName} { z-index: 10000000; }`;
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -1134,7 +1131,6 @@ describe('Context menu', () => {
  * Cypress doesn't display the cursor position in the viewport, this component shows a red dot at the mouse position.
  */
 const DebugPointer: React.FC = () => {
-  const styles = useStyles();
   const pointerRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -1153,7 +1149,8 @@ const DebugPointer: React.FC = () => {
   }, []);
 
   return (
-    <Portal mountNode={{ className: styles.pointerPortal }}>
+    <Portal mountNode={{ className: pointerPortalClassName }}>
+      <style>{pointerPortalCss}</style>
       <div
         style={{
           borderRadius: '4px',

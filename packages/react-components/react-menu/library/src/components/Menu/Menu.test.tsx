@@ -25,7 +25,6 @@ describe('Menu', () => {
       // has nothing to stamp it on (Griffel → Tailwind migration).
       COMPONENT_HAS_GROUP_MARKER_TEST_NAME,
       // Menu does not have own styles
-      'make-styles-overrides-win',
       // TODO:
       // onOpenChange: A second (data) argument cannot be a union
       'consistent-callback-args',

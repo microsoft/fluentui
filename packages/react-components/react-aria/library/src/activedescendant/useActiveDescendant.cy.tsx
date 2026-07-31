@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { makeStyles } from '@griffel/react';
 import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
 import { useActiveDescendant } from './useActiveDescendant';
 
@@ -74,24 +73,20 @@ describe('onActiveOptionChange', () => {
 
 describe('useOnKeyboardNavigationChange', () => {
   it('Should add focus visible attribute on active option', () => {
-    // Used for browser test test
-    // eslint-disable-next-line @griffel/styles-file
-    const useStyles = makeStyles({
-      active: {
-        [`[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}]`]: {
-          color: 'red',
-        },
-      },
-    });
+    // Debug affordance for the browser test: highlight the focus-visible option. Was a Griffel
+    // `makeStyles` rule (`[ATTR]` nested under a class Griffel resolves to `&[ATTR]`); a plain
+    // attribute-selector <style> tag is equivalent since the attribute only ever appears on the
+    // active option (Griffel → Tailwind + CSS Modules migration, S-H).
+    const focusVisibleCss = `[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}] { color: red; }`;
 
     const Example = () => {
-      const styles = useStyles();
       const { listboxRef, activeParentRef, controller } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
         matchOption: el => el.getAttribute('role') === 'option',
       });
 
       return (
         <>
+          <style>{focusVisibleCss}</style>
           <button
             onKeyDown={e => {
               switch (e.key) {
@@ -108,16 +103,16 @@ describe('useOnKeyboardNavigationChange', () => {
             active parent
           </button>
           <div ref={listboxRef}>
-            <div className={styles.active} role="option" id="option-1">
+            <div role="option" id="option-1">
               Option 1
             </div>
-            <div className={styles.active} role="option" id="option-2">
+            <div role="option" id="option-2">
               Option 2
             </div>
-            <div className={styles.active} role="option" id="option-3">
+            <div role="option" id="option-3">
               Option 3
             </div>
-            <div className={styles.active} role="option" id="option-4">
+            <div role="option" id="option-4">
               Option 4
             </div>
           </div>

@@ -24,7 +24,6 @@ describe('MenuTrigger', () => {
       // has nothing to stamp it on (Griffel → Tailwind migration).
       COMPONENT_HAS_GROUP_MARKER_TEST_NAME,
       // MenuTrigger does not have own styles
-      'make-styles-overrides-win',
     ],
     Component: MenuTrigger,
     displayName: 'MenuTrigger',

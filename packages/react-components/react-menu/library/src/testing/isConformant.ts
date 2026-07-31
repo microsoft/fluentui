@@ -1,6 +1,5 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
+import type { IsConformantOptions } from '@fluentui/react-conformance';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -14,7 +13,6 @@ export function isConformant<TProps = {}>(
     // DECISIONS.md D16.6) instead of opting out, and drops the `hasStaticClassNames` opt-in
     // that stood in for it. `make-styles-overrides-win` is disabled per component, alongside
     // the `classname-overrides-win` replacement that supersedes it (D9).
-    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

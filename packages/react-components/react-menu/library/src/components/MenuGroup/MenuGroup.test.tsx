@@ -18,7 +18,7 @@ describe('MenuGroup', () => {
     // `component-has-static-classnames-object` asserts the `fui-<Component>__<slot>` BEM
     // format DECISIONS.md D16.1 removed; `component-has-group-marker` (a default test since
     // D16.6) replaces it.
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 

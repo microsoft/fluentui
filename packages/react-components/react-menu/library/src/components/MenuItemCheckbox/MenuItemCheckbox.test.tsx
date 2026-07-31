@@ -32,7 +32,7 @@ describe('MenuItemCheckbox conformance', () => {
     // D16.6) replaces it: it asserts the group marker IS stamped and is never
     // `classList[0]` (D16.2). The `has-static-classnames` testOptions that fed the deleted
     // test went with it.
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // This root IS a MenuItem root — `useMenuItemStyles_unstable` stamps its marker on the
       // same element — so it legitimately carries both markers below (DECISIONS.md D16.3).
