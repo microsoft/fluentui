@@ -1,19 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Persona } from '@fluentui/react-components';
+import { Persona } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, max-content)',
-    columnGap: '10px',
-    rowGap: '10px',
-  },
-});
+import styles from './PersonaAvatarSize.module.css';
 
 export const AvatarSize = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <Persona

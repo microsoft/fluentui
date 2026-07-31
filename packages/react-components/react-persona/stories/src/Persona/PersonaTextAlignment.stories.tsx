@@ -1,18 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Persona } from '@fluentui/react-components';
+import { Persona } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    justifyItems: 'center',
-  },
-});
+import styles from './PersonaTextAlignment.module.css';
 
 export const TextAlignment = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <Persona

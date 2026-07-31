@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { JSXElement, OverflowItemProps } from '@fluentui/react-components';
 import {
-  makeStyles,
   Button,
   Menu,
   MenuTrigger,
@@ -9,59 +8,16 @@ import {
   MenuList,
   MenuItem,
   MenuButton,
-  tokens,
   Overflow,
   OverflowItem,
   useIsOverflowItemVisible,
   useOverflowMenu,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexGrow: 1,
-    flexWrap: 'nowrap',
-    minWidth: 0,
-    overflow: 'hidden',
-  },
-
-  farItems: {
-    display: 'flex',
-    gap: '4px',
-    flexWrap: 'nowrap',
-    marginRight: '10px', //to allow the resize handle to be grabbed
-  },
-
-  resizableArea: {
-    display: 'flex',
-    flexWrap: 'nowrap',
-    minWidth: '200px',
-    maxWidth: '1000px',
-    border: `2px solid ${tokens.colorBrandBackground}`,
-    padding: '20px 10px 10px 10px',
-    overflow: 'hidden',
-    position: 'relative',
-    resize: 'horizontal',
-    '::after': {
-      content: `'Resizable Area'`,
-      position: 'absolute',
-      padding: '1px 4px 1px',
-      top: '-2px',
-      left: '-2px',
-      fontFamily: 'monospace',
-      fontSize: '15px',
-      fontWeight: 900,
-      lineHeight: 1,
-      letterSpacing: '1px',
-      color: tokens.colorNeutralForegroundOnBrand,
-      backgroundColor: tokens.colorBrandBackground,
-    },
-  },
-});
+import styles from './Wrapped.module.css';
 
 export const Wrapped = (): JSXElement => {
   const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
-  const styles = useStyles();
 
   return (
     <div className={styles.resizableArea}>

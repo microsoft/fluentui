@@ -1,0 +1,35 @@
+/* Story styles for Vertical, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.overflowItem {
+  display: block;
+}
+
+.resizableArea {
+  min-width: 200px;
+  max-width: 800px;
+  border: 2px solid var(--colorBrandBackground);
+  padding: 20px 10px 10px 10px;
+  position: relative;
+  resize: vertical;
+}
+
+.resizableArea::after {
+  content: 'Resizable Area';
+  position: absolute;
+  padding: 1px 4px 1px;
+  top: -2px;
+  left: -2px;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--colorBrandBackground);
+}

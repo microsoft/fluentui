@@ -1,0 +1,19 @@
+/* Story styles for PersonaPresencePreviousBehavior, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.statusAway {
+  color: var(--colorPaletteMarigoldBackground3);
+}
+
+.statusOffline {
+  color: var(--colorNeutralForeground3);
+}
+
+.root {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, max-content);
+  grid-template-rows: repeat(3, auto);
+  column-gap: 20px;
+  row-gap: 10px;
+}

@@ -1,33 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  makeStyles,
-  Persona,
-  presenceAvailableRegular,
-  presenceOfflineRegular,
-  tokens,
-} from '@fluentui/react-components';
+import { Persona, presenceAvailableRegular, presenceOfflineRegular } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  statusAway: {
-    color: tokens.colorPaletteMarigoldBackground3,
-  },
-  statusOffline: {
-    color: tokens.colorNeutralForeground3,
-  },
-
-  root: {
-    display: 'grid',
-    gridAutoFlow: 'column',
-    gridTemplateColumns: 'repeat(2, max-content)',
-    gridTemplateRows: 'repeat(3, auto)',
-    columnGap: '20px',
-    rowGap: '10px',
-  },
-});
+import styles from './PersonaPresencePreviousBehavior.module.css';
 
 export const PresencePreviousBehavior = (): JSXElement => {
-  const styles = useStyles();
   const AwayFilledIcon = presenceAvailableRegular.small;
   const OfflineRegularIcon = presenceOfflineRegular.small;
 

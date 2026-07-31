@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { JSXElement, OverflowItemProps } from '@fluentui/react-components';
 import {
-  makeStyles,
   Button,
   Menu,
   MenuTrigger,
@@ -9,48 +8,15 @@ import {
   MenuList,
   MenuItem,
   MenuButton,
-  mergeClasses,
-  tokens,
   Overflow,
   OverflowItem,
   useIsOverflowItemVisible,
   useOverflowMenu,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexWrap: 'nowrap',
-    minWidth: 0,
-    overflow: 'hidden',
-  },
-
-  resizableArea: {
-    minWidth: '200px',
-    maxWidth: '800px',
-    border: `2px solid ${tokens.colorBrandBackground}`,
-    padding: '20px 10px 10px 10px',
-    position: 'relative',
-    resize: 'horizontal',
-    '::after': {
-      content: `'Resizable Area'`,
-      position: 'absolute',
-      padding: '1px 4px 1px',
-      top: '-2px',
-      left: '-2px',
-      fontFamily: 'monospace',
-      fontSize: '15px',
-      fontWeight: 900,
-      lineHeight: 1,
-      letterSpacing: '1px',
-      color: tokens.colorNeutralForegroundOnBrand,
-      backgroundColor: tokens.colorBrandBackground,
-    },
-  },
-});
+import styles from './Pinned.module.css';
 
 export const Pinned = (): JSXElement => {
-  const styles = useStyles();
   const [selected, setSelected] = React.useState<Set<string>>(() => new Set(['6']));
 
   const onSelect = (itemId: string) => {
@@ -69,7 +35,7 @@ export const Pinned = (): JSXElement => {
 
   return (
     <Overflow>
-      <div className={mergeClasses(styles.container, styles.resizableArea)}>
+      <div className={`${styles.container} ${styles.resizableArea}`}>
         {itemIds.map(i => (
           <OverflowSelectionItem onSelectItem={onSelect} key={i} id={i} selected={selected.has(i)} />
         ))}
