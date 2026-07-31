@@ -4473,15 +4473,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-icons@portal:../fluentui-system-icons/packages/react-icons::locator=%40fluentui%2Ffluentui-repo%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@fluentui/react-icons@portal:../fluentui-system-icons/packages/react-icons::locator=%40fluentui%2Ffluentui-repo%40workspace%3A."
+"@fluentui/react-icons@file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz::locator=%40fluentui%2Ffluentui-repo%40workspace%3A.":
+  version: 2.0.334
+  resolution: "@fluentui/react-icons@file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz#../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz::hash=1ba280&locator=%40fluentui%2Ffluentui-repo%40workspace%3A."
   dependencies:
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
+  checksum: 10c0/0c971d8499cdd59ae0b45d2f0c4b3c5020f0ec42d3ac38ff0fd96d71df1cb5761b3a047f998a33711ad475898734374d234e7f446aa3d8efb05fee9aa1201dea
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "@fluentui/react-image-stories@workspace:packages/react-components/react-image/stories":
   version: 0.0.0-use.local
