@@ -1,0 +1,16 @@
+/* Story styles for TagDismiss, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.tagGroup {
+  flex-wrap: wrap;
+}
+
+.resetButton {
+  width: fit-content;
+}

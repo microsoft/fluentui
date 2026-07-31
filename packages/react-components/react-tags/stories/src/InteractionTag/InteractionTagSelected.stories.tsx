@@ -1,19 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  InteractionTag,
-  InteractionTagPrimary,
-  InteractionTagSecondary,
-  makeResetStyles,
-} from '@fluentui/react-components';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-components';
 import { CalendarMonthRegular, CalendarMonthFilled, bundleIcon } from '@fluentui/react-icons';
+
+import styles from './InteractionTagSelected.module.css';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-const useContainerStyles = makeResetStyles({
-  columnGap: '10px',
-  display: 'flex',
-});
+const useContainerStyles = () => styles.container;
 
 export const Selected = (): JSXElement => {
   const containerStyles = useContainerStyles();

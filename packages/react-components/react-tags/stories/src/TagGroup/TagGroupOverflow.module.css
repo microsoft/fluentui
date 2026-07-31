@@ -1,0 +1,34 @@
+/* Story styles for TagGroupOverflow, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.menuItem {
+  padding: var(--spacingVerticalSNudge) var(--spacingHorizontalXS);
+}
+
+/* Tag's public identity class is its Tailwind named-group marker, `group/fui-tag`
+ * (DECISIONS.md D16.1/D16.5 — the `fui-Tag` BEM static no longer exists). The `/` is
+ * escaped because it is legal in a class TOKEN but terminates the name in selector
+ * position. Original source nested this under the menu item's :hover. */
+.menuItem:hover .group\/fui-tag {
+  color: var(--colorNeutralForeground2Hover);
+}
+
+.tag {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.container {
+  overflow: hidden;
+  padding: 5px;
+  z-index: 0;
+  height: fit-content;
+  min-width: 150px;
+  resize: horizontal;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tagGroup {
+  display: flex;
+}

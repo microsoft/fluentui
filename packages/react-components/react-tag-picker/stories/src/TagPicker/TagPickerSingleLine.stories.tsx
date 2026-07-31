@@ -7,7 +7,6 @@ import {
   TagPickerControl,
   TagPickerOption,
   TagPickerGroup,
-  makeStyles,
   useOverflowCount,
   useTagPickerContext_unstable,
   Tag,
@@ -17,32 +16,7 @@ import {
 } from '@fluentui/react-components';
 import { ChevronDownRegular, ChevronUpRegular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  focusedExpandIcon: { alignSelf: 'flex-end' },
-  countButton: { minWidth: 0 },
-  control: {
-    flexWrap: 'nowrap',
-    display: 'flex',
-    flexGrow: 1,
-    minWidth: 0,
-    overflow: 'hidden',
-    // TagPickerGroup's public identity class is its Tailwind named-group marker,
-    // `group/fui-tag-picker-group` (DECISIONS.md D16.1/D16.5 — the `fui-TagPickerGroup` BEM
-    // static no longer exists). Written as a literal escaped selector rather than
-    // `` `& > .${tagPickerGroupClassNames.root}` ``: the `/` is legal in a class TOKEN but
-    // terminates the name in SELECTOR position, and Griffel's build-time extraction needs a
-    // statically analysable key, so `fuiSelector()` cannot be called here.
-    ['& > .group\\/fui-tag-picker-group']: {
-      flexWrap: 'nowrap',
-    },
-    ':focus-within': {
-      flexWrap: 'wrap',
-      ['& > .group\\/fui-tag-picker-group']: {
-        flexWrap: 'wrap',
-      },
-    },
-  },
-});
+import styles from './TagPickerSingleLine.module.css';
 
 const options = [
   'John Doe',
@@ -71,7 +45,6 @@ const ExpandIcon = (props: ExpandIconProps) => {
 
 const OverFlowCountTag = (props: TagProps) => {
   const overflowCount = useOverflowCount();
-  const styles = useStyles();
   if (overflowCount === 0) {
     return null;
   }
@@ -107,7 +80,6 @@ const CustomTagPickerInput = React.forwardRef<HTMLInputElement, CustomTagPickerI
 );
 
 export const SingleLine = (): JSXElement => {
-  const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const inputRef = React.useRef<HTMLInputElement>(null);

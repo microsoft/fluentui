@@ -1,21 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Tag, Avatar, makeStyles } from '@fluentui/react-components';
+import { Tag, Avatar } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-const useContainerStyles = makeStyles({
-  innerWrapper: {
-    alignItems: 'start',
-    columnGap: '10px',
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  outerWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-});
+import styles from './TagShape.module.css';
+
+const useContainerStyles = () => styles;
 
 export const Shape = (): JSXElement => {
   const containerStyles = useContainerStyles();

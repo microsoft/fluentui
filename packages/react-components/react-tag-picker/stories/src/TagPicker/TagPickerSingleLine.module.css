@@ -1,0 +1,35 @@
+/* Story styles for TagPickerSingleLine, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.focusedExpandIcon {
+  align-self: flex-end;
+}
+
+.countButton {
+  min-width: 0;
+}
+
+.control {
+  flex-wrap: nowrap;
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* TagPickerGroup's public identity class is its Tailwind named-group marker,
+ * `group/fui-tag-picker-group` (DECISIONS.md D16.1/D16.5 — the `fui-TagPickerGroup` BEM
+ * static no longer exists). The `/` is escaped because it is legal in a class TOKEN but
+ * terminates the name in selector position. */
+.control > .group\/fui-tag-picker-group {
+  flex-wrap: nowrap;
+}
+
+.control:focus-within {
+  flex-wrap: wrap;
+}
+
+/* Original source nested this child rule under the control's :focus-within. */
+.control:focus-within > .group\/fui-tag-picker-group {
+  flex-wrap: wrap;
+}

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { TagGroup, InteractionTag, InteractionTagPrimary, Tag, makeStyles } from '@fluentui/react-components';
+import { TagGroup, InteractionTag, InteractionTagPrimary, Tag } from '@fluentui/react-components';
+
+import styles from './TagGroupDisabled.module.css';
 
 const WithTags = () => (
   <TagGroup disabled aria-label="Disabled tag group with Tag" role="list">
@@ -24,16 +26,7 @@ const WithInteractionTags = () => (
   </TagGroup>
 );
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-});
-
 export const Disabled = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.container}>
       Disabled example with Tag:

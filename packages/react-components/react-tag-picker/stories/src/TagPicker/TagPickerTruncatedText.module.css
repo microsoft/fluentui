@@ -1,0 +1,22 @@
+/* Story styles for TagPickerTruncatedText, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.tagTruncatedPrimaryText {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.tagPrimaryTextFixedWidth {
+  width: 50px;
+}
+
+.optionContent {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.optionSecondaryContent {
+  white-space: nowrap;
+}

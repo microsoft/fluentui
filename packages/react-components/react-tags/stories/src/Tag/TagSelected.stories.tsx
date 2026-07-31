@@ -1,12 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Tag, makeResetStyles } from '@fluentui/react-components';
+import { Tag } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-const useContainerStyles = makeResetStyles({
-  columnGap: '10px',
-  display: 'flex',
-});
+import styles from './TagSelected.module.css';
+
+const useContainerStyles = () => styles.container;
 
 export const Selected = (): JSXElement => {
   const containerStyles = useContainerStyles();

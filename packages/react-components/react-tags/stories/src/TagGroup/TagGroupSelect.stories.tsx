@@ -6,22 +6,12 @@ import {
   InteractionTagPrimary,
   InteractionTagSecondary,
   Button,
-  makeStyles,
-  makeResetStyles,
   type TagValue,
 } from '@fluentui/react-components';
 
-const useContainerStyles = makeResetStyles({
-  display: 'flex',
-  flexDirection: 'column',
-  rowGap: '10px',
-});
+import styles from './TagGroupSelect.module.css';
 
-const useStyles = makeStyles({
-  resetButton: {
-    width: 'fit-content',
-  },
-});
+const useContainerStyles = () => styles.container;
 
 const initialTags = [
   { value: '1', children: 'Tag 1' },
@@ -105,8 +95,6 @@ const DismissWithInteractionTags = () => {
   };
 
   const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
-
-  const styles = useStyles();
 
   return (
     <>

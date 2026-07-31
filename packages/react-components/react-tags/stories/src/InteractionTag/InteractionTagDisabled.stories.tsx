@@ -1,16 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary, makeStyles } from '@fluentui/react-components';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-const useContainerStyles = makeStyles({
-  container: {
-    columnGap: '10px',
-    display: 'flex',
-  },
-});
+import styles from './InteractionTagDisabled.module.css';
+
 export const Disabled = (): JSXElement => {
-  const styles = useContainerStyles();
   return (
     <div className={styles.container}>
       <InteractionTag disabled>

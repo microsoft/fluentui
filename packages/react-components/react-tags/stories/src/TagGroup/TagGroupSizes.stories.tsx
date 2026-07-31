@@ -6,20 +6,12 @@ import {
   InteractionTagPrimary,
   InteractionTagSecondary,
   Avatar,
-  makeStyles,
 } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-const useContainerStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-  tagGroup: {
-    flexWrap: 'wrap',
-  },
-});
+import styles from './TagGroupSizes.module.css';
+
+const useContainerStyles = () => styles;
 
 export const Sizes = (): JSXElement => {
   const containerStyles = useContainerStyles();

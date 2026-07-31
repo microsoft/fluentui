@@ -1,0 +1,7 @@
+/* Story styles for InteractionTagAppearance, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  column-gap: 10px;
+  display: flex;
+}

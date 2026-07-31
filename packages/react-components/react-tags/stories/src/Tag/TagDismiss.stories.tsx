@@ -1,20 +1,8 @@
 import * as React from 'react';
 import type { JSXElement, TagGroupProps } from '@fluentui/react-components';
-import { Tag, TagGroup, Button, makeStyles } from '@fluentui/react-components';
+import { Tag, TagGroup, Button } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-  tagGroup: {
-    flexWrap: 'wrap',
-  },
-  resetButton: {
-    width: 'fit-content',
-  },
-});
+import styles from './TagDismiss.module.css';
 
 const initialTags = [
   { value: '1', children: 'Tag 1' },
@@ -50,8 +38,6 @@ export const Dismiss = (): JSXElement => {
   };
   const resetItems = () => setVisibleTags(initialTags);
   const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
-
-  const styles = useStyles();
 
   return (
     <div className={styles.container}>

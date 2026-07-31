@@ -5,8 +5,6 @@ import {
   Tag,
   InteractionTag,
   InteractionTagPrimary,
-  makeStyles,
-  shorthands,
   Menu,
   MenuItem,
   MenuList,
@@ -17,8 +15,9 @@ import {
   Overflow,
   OverflowItem,
   Avatar,
-  tokens,
 } from '@fluentui/react-components';
+
+import styles from './TagGroupOverflow.module.css';
 
 const names = [
   'Johnie McConnell',
@@ -55,35 +54,12 @@ type OverflowMenuItemProps = {
   tag: TagProps;
 };
 
-const useMenuItemStyles = makeStyles({
-  menuItem: {
-    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalXS}`,
-    ':hover': {
-      // Tag's public identity class is its Tailwind named-group marker, `group/fui-tag`
-      // (DECISIONS.md D16.1/D16.5 — the `fui-Tag` BEM static no longer exists). Written as a
-      // literal escaped selector rather than `` `& .${tagClassNames.root}` ``: the `/` is
-      // legal in a class TOKEN but terminates the name in SELECTOR position, and Griffel's
-      // build-time extraction needs a statically analysable key, so `fuiSelector()` cannot be
-      // called here.
-      ['& .group\\/fui-tag']: {
-        color: tokens.colorNeutralForeground2Hover,
-      },
-    },
-  },
-  tag: {
-    backgroundColor: 'transparent',
-    ...shorthands.borderColor('transparent'),
-  },
-});
-
 /**
  * A menu item for an overflow menu that only displays when the tab is not visible
  */
 const OverflowMenuItem = (props: OverflowMenuItemProps) => {
   const { tag } = props;
   const isVisible = useIsOverflowItemVisible(tag.value!);
-
-  const styles = useMenuItemStyles();
 
   if (isVisible) {
     return null;
@@ -130,25 +106,7 @@ const OverflowMenu = () => {
 
 //----- Stories -----//
 
-const useStyles = makeStyles({
-  container: {
-    overflow: 'hidden',
-    padding: '5px',
-    zIndex: 0, // stop the browser resize handle from piercing the overflow menu
-    height: 'fit-content',
-    minWidth: '150px',
-    resize: 'horizontal',
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  tagGroup: {
-    display: 'flex', // TagGroup is inline-flex by default, but we want it to be same width as the container
-  },
-});
-
 export const WithOverflow = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <Overflow minimumVisible={2} padding={60}>

@@ -7,21 +7,13 @@ import {
   Popover,
   PopoverTrigger,
   PopoverSurface,
-  makeStyles,
   Tooltip,
   Link,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  popover: {
-    width: '360px',
-    maxWidth: '100%',
-    height: 'fit-content',
-  },
-});
+import styles from './InteractionTagHasPrimaryAction.module.css';
 
 export const HasPrimaryAction = (): JSXElement => {
-  const styles = useStyles();
   return (
     <InteractionTag>
       <Popover trapFocus>

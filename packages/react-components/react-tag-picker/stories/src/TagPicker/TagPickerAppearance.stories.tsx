@@ -8,7 +8,9 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-components';
-import { Tag, Avatar, tokens, makeStyles, Field } from '@fluentui/react-components';
+import { Tag, Avatar, tokens, Field } from '@fluentui/react-components';
+
+import styles from './TagPickerAppearance.module.css';
 
 const options = [
   'John Doe',
@@ -77,18 +79,7 @@ const Example = ({ appearance }: Pick<TagPickerProps, 'appearance'>) => {
   );
 };
 
-const useStyles = makeStyles({
-  darkBG: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    color: tokens.colorNeutralForegroundInverted2,
-    padding: '20px',
-    marginBlock: '10px',
-    borderRadius: tokens.borderRadiusMedium,
-  },
-});
-
 export const Appearance = (): JSXElement => {
-  const styles = useStyles();
   return (
     <>
       <div>

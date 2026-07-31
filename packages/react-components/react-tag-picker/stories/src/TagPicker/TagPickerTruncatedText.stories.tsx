@@ -8,7 +8,9 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-components';
-import { Tag, Avatar, makeStyles, mergeClasses, Field } from '@fluentui/react-components';
+import { Tag, Avatar, Field } from '@fluentui/react-components';
+
+import styles from './TagPickerTruncatedText.module.css';
 
 type Option = { value: string; fixedWidth?: boolean };
 const options: Option[] = [
@@ -29,25 +31,6 @@ const options: Option[] = [
   },
 ];
 
-const useStyles = makeStyles({
-  tagTruncatedPrimaryText: {
-    whiteSpace: 'nowrap',
-    overflowX: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-  tagPrimaryTextFixedWidth: {
-    width: '50px',
-  },
-  optionContent: {
-    whiteSpace: 'nowrap',
-    overflowX: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-  optionSecondaryContent: {
-    whiteSpace: 'nowrap',
-  },
-});
-
 export const TruncatedText = (): JSXElement => {
   const [selectedOptions, setSelectedOptions] = React.useState<Option[]>(options);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
@@ -57,7 +40,6 @@ export const TruncatedText = (): JSXElement => {
     setSelectedOptions(data.selectedOptions.map(option => options.find(o => o.value === option)!));
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
-  const styles = useStyles();
 
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
@@ -72,10 +54,9 @@ export const TruncatedText = (): JSXElement => {
                 value={option.value}
                 title={option.value}
                 primaryText={{
-                  className: mergeClasses(
-                    styles.tagTruncatedPrimaryText,
-                    option.fixedWidth && styles.tagPrimaryTextFixedWidth,
-                  ),
+                  className: [styles.tagTruncatedPrimaryText, option.fixedWidth && styles.tagPrimaryTextFixedWidth]
+                    .filter(Boolean)
+                    .join(' '),
                 }}
               >
                 {option.value}

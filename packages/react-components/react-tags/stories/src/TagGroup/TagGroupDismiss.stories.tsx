@@ -7,22 +7,9 @@ import {
   InteractionTagPrimary,
   InteractionTagSecondary,
   Button,
-  makeStyles,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-  tagGroup: {
-    flexWrap: 'wrap',
-  },
-  resetButton: {
-    width: 'fit-content',
-  },
-});
+import styles from './TagGroupDismiss.module.css';
 
 const initialTags = [
   { value: '1', children: 'Tag 1' },
@@ -58,8 +45,6 @@ const DismissWithTags = () => {
   };
   const resetItems = () => setVisibleTags(initialTags);
   const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
-
-  const styles = useStyles();
 
   return (
     <>
@@ -103,8 +88,6 @@ const DismissWithInteractionTags = () => {
   const resetItems = () => setVisibleTags(initialTags);
   const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
 
-  const styles = useStyles();
-
   return (
     <>
       {visibleTags.length !== 0 && (
@@ -133,7 +116,6 @@ const DismissWithInteractionTags = () => {
 };
 
 export const Dismiss = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.container}>
       Example with Tag:

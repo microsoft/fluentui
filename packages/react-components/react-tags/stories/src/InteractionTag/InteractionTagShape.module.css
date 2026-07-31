@@ -1,0 +1,15 @@
+/* Story styles for InteractionTagShape, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.innerWrapper {
+  align-items: start;
+  column-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.outerWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
