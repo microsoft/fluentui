@@ -3,9 +3,10 @@ import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { FluentProvider } from '@fluentui/react-provider';
-import { makeStyles } from '@griffel/react';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecoratorFixedWidth } from '../../utilities';
+
+import styles from './SpinButton.module.css';
 
 export default {
   title: 'SpinButton Converged',
@@ -41,11 +42,7 @@ export const WithAppearanceOverride = () => (
 WithAppearanceOverride.storyName = 'With appearance override';
 
 export const CustomWidth = () => {
-  const useStyles = makeStyles({
-    customWidth: { width: '50px' },
-  });
-  const classes = useStyles();
-  return <SpinButton value={10} className={classes.customWidth} />;
+  return <SpinButton value={10} className={styles.customWidth} />;
 };
 
 export const CustomWidthRTL = getStoryVariant(CustomWidth, RTL);

@@ -1,0 +1,18 @@
+/* Story-scaffolding styles for Card VR tests (Orientation), converted from Griffel
+ * `makeStyles` (S-E harness batch). */
+
+.card {
+  width: 360px;
+  max-width: 100%;
+  height: fit-content;
+  margin-top: 16px;
+}
+
+.horizontalCardImage {
+  width: 64px;
+  height: 64px;
+}
+
+.caption {
+  color: var(--colorNeutralForeground3);
+}

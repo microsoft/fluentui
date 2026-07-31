@@ -13,18 +13,13 @@ const REQUIRE_CALL = (moduleName: string): string =>
 
 describe('renderToHTML', () => {
   it('successfully renders a component with styles into HTML file', async () => {
+    // Styling is static CSS (CSS Modules) since the Griffel migration: class names are plain
+    // strings on the markup and there is no server-side style extraction to assert.
     const template = `
-const { makeStyles } = ${REQUIRE_CALL('@griffel/react')};
 const React = ${REQUIRE_CALL('react')};
 
-const useClasses = makeStyles({
-  root: { color: 'red' },
-});
-
 function App() {
-  const classes = useClasses();
-
-  return React.createElement('div', { className: classes.root }, 'Hello world!');
+  return React.createElement('div', { className: 'root' }, 'Hello world!');
 }
 
 exports.App = App;
@@ -41,10 +36,8 @@ exports.App = App;
     await renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile });
     const htmlContent = await fs.promises.readFile(htmlOutfile, { encoding: 'utf8' });
 
-    // <style> element with rehydration attribute
-    expect(htmlContent).toContain(
-      '<style data-make-styles-bucket="d" data-priority="0" data-make-styles-rehydration="true">',
-    );
+    // Class name is rendered into the markup
+    expect(htmlContent).toContain('class="root"');
     // <script> element with proper "src"
     expect(htmlContent).toContain('<script src="esm.js"></script>');
     // Contents of App component

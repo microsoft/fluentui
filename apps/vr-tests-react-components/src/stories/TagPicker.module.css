@@ -1,0 +1,13 @@
+/* Story-scaffolding styles for TagPicker VR tests (Appearance), converted from Griffel
+ * `makeStyles` (S-E harness batch). */
+
+.padding {
+  padding: 20px;
+}
+
+.darkBG {
+  background-color: var(--colorNeutralBackgroundInverted);
+  color: var(--colorNeutralForegroundInverted2);
+  margin-block: 10px;
+  border-radius: var(--borderRadiusMedium);
+}

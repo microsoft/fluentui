@@ -1,0 +1,19 @@
+/* Story-scaffolding styles for Spinner VR tests, converted from Griffel `makeResetStyles`
+ * (S-E harness batch).
+ *
+ * The descendant selector was `` [`& .${spinnerClassNames.spinner}, & .${spinnerClassNames.spinnerTail}`] ``
+ * before the BEM statics sweep removed the per-slot statics (DECISIONS.md D16.1 / D16.5);
+ * it now selects every descendant of the Spinner root through its public identity class,
+ * the named-group marker. The `spinner` and `tail` spans are the only animated
+ * descendants, so this pauses exactly what the old two-class selector paused. */
+
+.pauseWrapper {
+  min-width: 300px;
+  padding: 10px;
+}
+
+.pauseWrapper :global(.group\/fui-spinner) * {
+  animation-play-state: paused !important;
+  animation-delay: var(--test-animation-delay, -1s) !important;
+  animation-duration: 1.5s !important;
+}

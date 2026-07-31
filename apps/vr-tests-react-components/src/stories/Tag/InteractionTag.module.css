@@ -1,0 +1,13 @@
+/* Story-scaffolding styles for InteractionTag VR tests (WithIconBoxSizing), converted
+ * from Griffel `makeStyles` (S-E harness batch). Reproduces a `box-sizing: border-box`
+ * page default to guard icon measurements (microsoft/fluentui#32952). */
+
+.container {
+  box-sizing: border-box;
+}
+
+.container *,
+.container *::before,
+.container *::after {
+  box-sizing: inherit;
+}

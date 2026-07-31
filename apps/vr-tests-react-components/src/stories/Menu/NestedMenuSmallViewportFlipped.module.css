@@ -1,0 +1,14 @@
+/* Story-scaffolding styles, converted from Griffel `makeStyles` (S-E harness batch). */
+
+.container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  border: 2px dashed red;
+  padding: 10px;
+}
+
+.button {
+  position: absolute;
+  left: 40%;
+}

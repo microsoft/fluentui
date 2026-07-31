@@ -1,0 +1,12 @@
+/* Story-scaffolding styles for Link VR tests, converted from Griffel `makeStyles`
+ * (S-E harness batch). */
+
+.invertedBackground {
+  padding: 14px;
+  background-color: var(--colorNeutralBackgroundInverted);
+}
+
+.brandBackground {
+  padding: 14px;
+  background-color: var(--colorBrandBackgroundStatic);
+}

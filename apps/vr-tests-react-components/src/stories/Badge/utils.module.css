@@ -1,0 +1,52 @@
+/* Story-scaffolding styles for Badge VR tests, converted from Griffel `makeStyles`
+ * (S-E harness batch). Token references become `var(--token)`; `typographyStyles.subtitle2Stronger`
+ * is expanded to its four declarations (packages/tokens/src/global/typographyStyles.ts).
+ * `margin-inline-start` replaces `marginLeft` so the RTL story variants keep the flip
+ * Griffel's rtl transform used to provide. */
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.badgeContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.label {
+  margin-inline-start: 10px;
+}
+
+.brandContainer {
+  background-color: var(--colorBrandBackgroundStatic);
+}
+
+.groupSet {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 0 var(--spacingHorizontalL);
+  row-gap: var(--spacingVerticalL);
+}
+
+.group {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: var(--spacingVerticalS);
+}
+
+.groupLabel {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightBold);
+  line-height: var(--lineHeightBase400);
+}
+
+.row {
+  display: inline-flex;
+  align-items: center;
+  column-gap: var(--spacingHorizontalS);
+}

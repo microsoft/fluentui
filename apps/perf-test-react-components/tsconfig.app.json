@@ -6,7 +6,7 @@
     "outDir": "lib",
     "jsx": "react",
     "lib": ["ES2019", "DOM"],
-    "types": ["webpack-env"]
+    "types": ["webpack-env", "static-assets"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

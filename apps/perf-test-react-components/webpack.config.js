@@ -24,7 +24,11 @@ const config = /** @type {import('webpack').Configuration}*/ ({
   },
   devtool: 'eval',
   module: {
-    rules: [rules.cssRule, rules.scssRule, rules.tsRule],
+    // `cssModulesRule` resolves `*.module.css` (converted components and the MakeStyles
+    // scenario) with the same getLocalIdent/PostCSS chain as every storybook in the repo;
+    // the plain `cssRule` must stop matching those files so they are not double-processed
+    // as global CSS.
+    rules: [{ ...rules.cssRule, exclude: /\.module\.css$/ }, rules.cssModulesRule, rules.scssRule, rules.tsRule],
   },
 });
 

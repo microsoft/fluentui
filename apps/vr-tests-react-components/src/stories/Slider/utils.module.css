@@ -1,0 +1,32 @@
+/* Story-scaffolding styles for Slider VR tests, converted from Griffel `makeStyles`
+ * (S-E harness batch). Var names are the literal values of `sliderCSSVars`
+ * (react-slider Slider.constants.ts) — a CSS file cannot interpolate the JS constants.
+ *
+ * `##242424` is preserved verbatim from the original: it was already an invalid color
+ * under Griffel (the declaration shadows the library default and fails at
+ * computed-value time), and correcting it would change pixels. */
+
+.enabled {
+  --fui-Slider__progress--color: #ff0764;
+  --fui-Slider__rail--color: ##242424;
+  --fui-Slider__thumb--color: #ff0764;
+}
+
+.enabled:hover {
+  --fui-Slider__thumb--color: #d60d58;
+  --fui-Slider__progress--color: #d60d58;
+}
+
+.enabled:hover:active {
+  --fui-Slider__thumb--color: #b91150;
+  --fui-Slider__progress--color: #b91150;
+}
+
+.thumb {
+  --fui-Slider__thumb--size: 16px;
+  box-shadow: 0 0 0 calc(var(--fui-Slider__thumb--size) * 0.2) transparent inset;
+}
+
+.thumb::before {
+  content: unset;
+}

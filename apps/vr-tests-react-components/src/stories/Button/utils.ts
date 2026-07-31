@@ -1,13 +1,12 @@
 import { Steps } from 'storywright';
-import { makeStyles } from '@griffel/react';
+
+import styles from './utils.module.css';
 
 export const buttonId = 'button-id';
 
-export const useStyles = makeStyles({
-  longText: {
-    width: '280px',
-  },
-});
+/** Story-scaffolding classes (see utils.module.css). Kept as a hook-shaped function so the
+ * consuming stories are untouched by the Griffel -> CSS Modules conversion. */
+export const useStyles = (): typeof styles => styles;
 
 export const steps = new Steps()
   .snapshot('default')

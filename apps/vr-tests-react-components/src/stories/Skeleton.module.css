@@ -1,0 +1,7 @@
+/* Story-scaffolding styles for Skeleton VR tests, converted from Griffel `makeStyles`
+ * (S-E harness batch). Freezes the wave animation at a deterministic frame. */
+
+.paused * {
+  animation-play-state: paused !important;
+  animation-delay: -1s !important;
+}

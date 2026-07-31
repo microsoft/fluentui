@@ -7,8 +7,8 @@ import { Button } from '@fluentui/react-button';
 import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent, appLogoUrl } from './utils';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
-import { makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+
+import orientationStyles from './Card.module.css';
 
 export default {
   title: 'Card Converged',
@@ -97,26 +97,8 @@ export const Size = () => (
 
 Size.storyName = 'size';
 
-const useOrientationStyles = makeStyles({
-  card: {
-    width: '360px',
-    maxWidth: '100%',
-    height: 'fit-content',
-    marginTop: '16px',
-  },
-
-  horizontalCardImage: {
-    width: '64px',
-    height: '64px',
-  },
-
-  caption: {
-    color: tokens.colorNeutralForeground3,
-  },
-});
-
 export const Orientation = () => {
-  const styles = useOrientationStyles();
+  const styles = orientationStyles;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

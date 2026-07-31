@@ -1,0 +1,25 @@
+/* Story-scaffolding styles for Tooltip VR tests, converted from Griffel `makeStyles`
+ * (S-E harness batch). `.target` is a plain string className set by the stories, so it
+ * stays global. */
+
+.wrapper {
+  display: flex;
+  gap: 5px;
+  padding: 50px 120px;
+  background-color: var(--colorNeutralBackground1);
+}
+
+.wrapper button,
+.wrapper :global(.target) {
+  color: var(--colorNeutralForeground1);
+  background-color: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorNeutralStroke1);
+}
+
+.wrapperBordered {
+  position: relative;
+  height: 400px;
+  width: 400px;
+  padding: 10px;
+  border: 1px dashed red;
+}

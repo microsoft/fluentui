@@ -1,28 +1,14 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
-import { makeStyles, shorthands } from '@griffel/react';
-import { PositioningImperativeRef } from '@fluentui/react-positioning';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { Steps } from 'storywright';
 
 import type { StoryParameters } from 'storywright';
 
-const useStyles = makeStyles({
-  container: {
-    position: 'relative',
-    width: '400px',
-    height: '400px',
-    ...shorthands.border('2px', 'dashed', 'red'),
-    ...shorthands.padding('10px'),
-  },
-  button: {
-    position: 'absolute',
-    left: '40%',
-  },
-});
+import styles from './NestedMenuSmallViewportFlipped.module.css';
 
 const Example = () => {
-  const styles = useStyles();
   const [overflowBoundary, setBoundary] = React.useState<HTMLElement | null>(null);
   const positioningRefSubmenu = React.useRef<PositioningImperativeRef>(null);
   const positioningRefRoot = React.useRef<PositioningImperativeRef>(null);

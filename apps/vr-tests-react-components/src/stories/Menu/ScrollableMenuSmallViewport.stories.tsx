@@ -1,37 +1,14 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuGroup, MenuDivider } from '@fluentui/react-menu';
-import { makeStyles, shorthands } from '@griffel/react';
-import { PositioningProps } from '@fluentui/react-positioning';
+import type { PositioningProps } from '@fluentui/react-positioning';
 import { Steps } from 'storywright';
 
 import type { StoryParameters } from 'storywright';
 
-const useStyles = makeStyles({
-  wrapper: { display: 'flex' },
-  shortContainer: {
-    width: '200px',
-    height: '220px',
-    ...shorthands.border('2px', 'dashed', 'red'),
-    ...shorthands.padding('10px'),
-  },
-  longContainer: {
-    width: '200px',
-    height: '400px',
-    ...shorthands.border('2px', 'dashed', 'green'),
-    ...shorthands.padding('10px'),
-  },
-  scrollableMenuGroup: {
-    maxHeight: '150px',
-    overflowY: 'auto',
-  },
-  menuPopover: {
-    overflowX: 'hidden',
-  },
-});
+import styles from './ScrollableMenuSmallViewport.module.css';
 
 const ScrollableMenu = ({ overflowBoundary }: Pick<PositioningProps, 'overflowBoundary'>) => {
-  const styles = useStyles();
   return (
     <Menu open positioning={{ overflowBoundary, flipBoundary: overflowBoundary, autoSize: true }}>
       <MenuTrigger disableButtonEnhancement>
@@ -59,7 +36,6 @@ const ScrollableMenu = ({ overflowBoundary }: Pick<PositioningProps, 'overflowBo
 };
 
 const Example = () => {
-  const styles = useStyles();
   const [shortOverflowBoundary, setShortOverflowBoundary] = React.useState<HTMLElement | null>(null);
   const [longOverflowBoundary, setLongOverflowBoundary] = React.useState<HTMLElement | null>(null);
 

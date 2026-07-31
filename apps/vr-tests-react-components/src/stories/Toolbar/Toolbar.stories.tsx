@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
-import { makeStyles } from '@griffel/react';
-import {
-  Toolbar,
-  ToolbarProps,
-  ToolbarButton,
-  ToolbarDivider,
-  ToolbarToggleButton,
-  ToolbarGroup,
-} from '@fluentui/react-toolbar';
+
+import farGroupStyles from './Toolbar.module.css';
+import type { ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarToggleButton, ToolbarGroup } from '@fluentui/react-toolbar';
 import {
   TextBold24Regular,
   TextItalic24Regular,
@@ -150,14 +145,7 @@ export const VerticalButton = (props: Partial<ToolbarProps>) => (
   </Toolbar>
 );
 
-const useStyles = makeStyles({
-  toolbar: {
-    justifyContent: 'space-between',
-  },
-});
-
 export const FarGroup = (props: Partial<ToolbarProps>) => {
-  const farGroupStyles = useStyles();
   return (
     <Toolbar {...props} className={farGroupStyles.toolbar}>
       <ToolbarGroup role="presentation">

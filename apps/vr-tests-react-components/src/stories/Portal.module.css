@@ -1,0 +1,12 @@
+/* Story-scaffolding styles for the Portal CSS-variable-insertion canary, converted from
+ * Griffel `makeStyles` (S-E harness batch). The story asserts that theme CSS variables are
+ * present before mount: with a 1000s border transition, a late variable insertion would
+ * leave the border un-colored in the snapshot. */
+
+.canary {
+  border-color: var(--colorPaletteGreenBackground2);
+  border-width: 5px;
+  transition-duration: 1000s;
+  transition-property: border;
+  transition-timing-function: var(--curveEasyEase);
+}

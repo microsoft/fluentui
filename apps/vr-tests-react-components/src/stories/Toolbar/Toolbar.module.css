@@ -1,0 +1,6 @@
+/* Story-scaffolding styles for Toolbar VR tests (FarGroup), converted from Griffel
+ * `makeStyles` (S-E harness batch). */
+
+.toolbar {
+  justify-content: space-between;
+}

@@ -1,0 +1,8 @@
+/* Story-scaffolding styles, converted from Griffel `makeStyles` (S-E harness batch). */
+
+.container {
+  width: 200px;
+  height: 250px;
+  border: 2px dashed red;
+  padding: 10px;
+}

@@ -55,21 +55,13 @@ describe('generateEntryPoints', () => {
       "
     `);
     expect(appFile).toMatchInlineSnapshot(`
-      "import { RendererProvider, createDOMRenderer } from \\"@griffel/react\\";
-      import * as React from \\"react\\";
+      "import * as React from \\"react\\";
       import { hydrateRoot } from \\"react-dom/client\\";
 
       import { App } from \\"./stories\\";
 
-      const renderer = createDOMRenderer();
-
-      // .hydrate() is used to trigger hydration on pre-generated markup in \\"index.html\\"
-      hydrateRoot(
-        document.querySelector(\\"#root\\"),
-        <RendererProvider renderer={renderer}>
-          <App />
-        </RendererProvider>
-      );
+      // hydrateRoot() is used to trigger hydration on pre-generated markup in \\"index.html\\"
+      hydrateRoot(document.querySelector(\\"#root\\"), <App />);
       "
     `);
   });

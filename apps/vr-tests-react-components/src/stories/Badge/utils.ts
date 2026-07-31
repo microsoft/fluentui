@@ -1,6 +1,6 @@
-import { BadgeProps } from '@fluentui/react-badge';
-import { makeStyles, shorthands } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import type { BadgeProps } from '@fluentui/react-badge';
+
+import styles from './utils.module.css';
 
 type ValueArrays<T> = {
   [K in keyof T]: T[K][];
@@ -13,48 +13,6 @@ export const propValues: ValueArrays<Pick<Required<BadgeProps>, 'size' | 'color'
   shape: ['circular', 'rounded', 'square'],
 };
 
-export const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-
-  badgeContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    ...shorthands.gap('5px'),
-    ...shorthands.padding('5px'),
-  },
-
-  label: {
-    marginLeft: '10px',
-  },
-
-  brandContainer: {
-    backgroundColor: tokens.colorBrandBackgroundStatic,
-  },
-
-  groupSet: {
-    display: 'inline-flex',
-    flexDirection: 'column',
-    ...shorthands.padding(0, tokens.spacingHorizontalL),
-    rowGap: tokens.spacingVerticalL,
-  },
-
-  group: {
-    display: 'inline-flex',
-    flexDirection: 'column',
-    alignItems: 'start',
-    rowGap: tokens.spacingVerticalS,
-  },
-
-  groupLabel: {
-    ...typographyStyles.subtitle2Stronger,
-  },
-
-  row: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    columnGap: tokens.spacingHorizontalS,
-  },
-});
+/** Story-scaffolding classes (see utils.module.css). Kept as a hook-shaped function so the
+ * consuming stories are untouched by the Griffel -> CSS Modules conversion. */
+export const useStyles = (): typeof styles => styles;

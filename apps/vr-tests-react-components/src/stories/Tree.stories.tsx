@@ -1,17 +1,18 @@
 import * as React from 'react';
+import type {
+  HeadlessFlatTreeItemProps,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from '@fluentui/react-tree';
 import {
   FlatTree,
-  HeadlessFlatTreeItemProps,
   Tree,
   TreeItem,
   TreeItemLayout,
   TreeItemPersonaLayout,
-  TreeItemValue,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
   useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
-import { tokens } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import type { Meta } from '@storybook/react-webpack5';
@@ -28,8 +29,9 @@ import {
   SquareMultiple20Regular,
 } from '@fluentui/react-icons';
 import { CounterBadge } from '@fluentui/react-badge';
-import { makeStyles, shorthands } from '@griffel/react';
 import { Avatar } from '@fluentui/react-avatar';
+
+import treeStoryStyles from './Tree.module.css';
 
 export default {
   title: 'Tree',
@@ -495,20 +497,9 @@ export const LayoutHighContrast = getStoryVariant(Layout, HIGH_CONTRAST);
 
 export const LayoutRTL = getStoryVariant(Layout, RTL);
 
-const useBadgeStyles = makeStyles({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    marginLeft: 'auto',
-    ...shorthands.padding(0, tokens.spacingHorizontalXS),
-    ...shorthands.gap(tokens.spacingHorizontalXS),
-  },
-});
-
 const Badges = () => {
-  const badgeStyles = useBadgeStyles();
   return (
-    <div className={badgeStyles.base}>
+    <div className={treeStoryStyles.badges}>
       <Important16Regular primaryFill="red" />
       <CounterBadge count={1} color="danger" size="small" />
     </div>

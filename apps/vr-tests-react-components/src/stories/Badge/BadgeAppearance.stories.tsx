@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
-import { Badge, BadgeProps } from '@fluentui/react-badge';
+import type { BadgeProps } from '@fluentui/react-badge';
+import { Badge } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
-import { mergeClasses } from '@griffel/react';
 import type { Meta } from '@storybook/react-webpack5';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
@@ -62,11 +62,13 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
       {Array.from(badges.keys()).map((color: BadgeProps['color'], i) => (
         <div key={i} className={styles.container}>
           <div
-            className={mergeClasses(
+            className={[
               styles.badgeContainer,
               color === 'subtle' && appearance === 'outline' && styles.brandContainer,
               color === 'subtle' && appearance === 'ghost' && styles.brandContainer,
-            )}
+            ]
+              .filter(Boolean)
+              .join(' ')}
           >
             {badges.get(color)}
           </div>

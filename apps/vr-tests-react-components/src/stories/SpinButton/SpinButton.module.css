@@ -1,0 +1,6 @@
+/* Story-scaffolding styles for SpinButton VR tests (CustomWidth), converted from Griffel
+ * `makeStyles` (S-E harness batch). */
+
+.customWidth {
+  width: 50px;
+}

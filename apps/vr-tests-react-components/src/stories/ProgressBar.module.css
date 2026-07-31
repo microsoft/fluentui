@@ -1,0 +1,7 @@
+/* Story-scaffolding styles for ProgressBar VR tests, converted from Griffel `makeStyles`
+ * (S-E harness batch). Freezes the indeterminate animation at a deterministic frame. */
+
+.paused * {
+  animation-play-state: paused !important;
+  animation-delay: -1s !important;
+}

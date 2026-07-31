@@ -1,0 +1,58 @@
+/* Styles for the MakeStyles perf scenario, repointed from `@griffel/core` at the shipped
+ * CSS Modules path (S-E harness batch; griffel-elimination-evaluation.md §7 called for
+ * "retire it or repoint it at CSS Modules" — repointed so the suite keeps a styling-path
+ * mount scenario). Declarations are byte-for-byte the longhands the Griffel version used. */
+
+.view {
+  align-items: stretch;
+  border-left-width: 0;
+  border-left-style: solid;
+  box-sizing: border-box;
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin-left: 0;
+  padding-left: 0;
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+}
+
+.boxOuter {
+  align-self: flex-start;
+  padding-left: 4px;
+}
+
+.boxRow {
+  flex-direction: row;
+}
+
+.boxColor0 {
+  background-color: #14171a;
+}
+
+.boxColor1 {
+  background-color: #aab8c2;
+}
+
+.boxColor2 {
+  background-color: #e6ecf0;
+}
+
+.boxColor3 {
+  background-color: #ffad1f;
+}
+
+.boxColor4 {
+  background-color: #f45d22;
+}
+
+.boxColor5 {
+  background-color: #e0245e;
+}
+
+.boxFixed {
+  width: 6px;
+  height: 6px;
+}

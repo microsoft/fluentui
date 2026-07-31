@@ -1,0 +1,126 @@
+/* Story-scaffolding styles for Positioning VR tests, converted from Griffel `makeStyles`
+ * (S-E harness batch).
+ *
+ * `.arrow` is the hand-expanded output of react-positioning's `createArrowStyles({
+ * arrowHeight: 12, borderStyle: 'solid', borderColor: 'blue', borderWidth: '3px' })`
+ * (library/src/createArrowStyles.ts) — the factory returns a Griffel style object and
+ * cannot be consumed from a CSS file. arrowHeight 12 gives an edge length of
+ * 1.414 * 12 = 16.968px and an offset of -8.484px (createArrowHeightStyles).
+ * The `[data-popper-placement^=...]` rules were `:global()` parent selectors in the
+ * factory; `.target` is a plain string className set by the stories, so it stays global. */
+
+.wrapper {
+  display: flex;
+  gap: 5px;
+  background-color: var(--colorNeutralBackground1);
+}
+
+.wrapper :global(.target) {
+  color: var(--colorNeutralForeground1);
+  background-color: var(--colorNeutralBackground1);
+  border: 2px dashed green;
+  width: 400px;
+  height: 200px;
+}
+
+.gridWrapper {
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 20px;
+  row-gap: 50px;
+}
+
+.boundary {
+  border: 2px dashed red;
+}
+
+.box {
+  padding: 15px;
+  border: 1px solid blue;
+  background-color: white;
+}
+
+.boxBold {
+  border-width: 3px;
+}
+
+.arrow {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: -1;
+
+  --fui-positioning-arrow-height: 16.968px;
+  --fui-positioning-arrow-offset: -8.484px;
+
+  background-color: inherit;
+  background-clip: content-box;
+
+  border-bottom-left-radius: var(--borderRadiusSmall);
+  transform: rotate(var(--fui-positioning-arrow-angle));
+
+  height: var(--fui-positioning-arrow-height);
+  width: var(--fui-positioning-arrow-height);
+}
+
+.arrow::before {
+  content: '';
+
+  display: block;
+  background-color: inherit;
+  margin: -3px;
+  width: 100%;
+  height: 100%;
+
+  border: 3px solid blue;
+  border-bottom-left-radius: var(--borderRadiusSmall);
+
+  clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+}
+
+:global([data-popper-placement^='top']) .arrow {
+  bottom: var(--fui-positioning-arrow-offset);
+  --fui-positioning-arrow-angle: -45deg;
+}
+
+:global([data-popper-placement^='right']) .arrow {
+  left: var(--fui-positioning-arrow-offset);
+  --fui-positioning-arrow-angle: 45deg;
+}
+
+:global([data-popper-placement^='bottom']) .arrow {
+  top: var(--fui-positioning-arrow-offset);
+  --fui-positioning-arrow-angle: 135deg;
+}
+
+:global([data-popper-placement^='left']) .arrow {
+  right: var(--fui-positioning-arrow-offset);
+  --fui-positioning-arrow-angle: 225deg;
+}
+
+.seeThrough {
+  opacity: 0.6;
+}
+
+.visibilityModifiers {
+  background-color: #ccc;
+  min-height: 60px;
+  width: 200px;
+}
+
+.visibilityModifiers[data-popper-reference-hidden] {
+  outline-width: 5px;
+  outline-style: solid;
+  outline-color: red;
+}
+
+.visibilityModifiers[data-popper-escaped] {
+  background-color: yellow;
+}
+
+.visibilityModifiers[data-popper-is-intersecting] {
+  outline-width: 5px;
+  outline-style: solid;
+  outline-color: green;
+}

@@ -12,7 +12,7 @@
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["node", "jest"]
+    "types": ["node", "jest", "static-assets"]
   },
   "include": ["./src", "./.storybook/*"]
 }

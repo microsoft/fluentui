@@ -1,0 +1,11 @@
+/* Story-scaffolding styles for Tree VR tests (Badges aside), converted from Griffel
+ * `makeStyles` (S-E harness batch). `margin-inline-start` replaces `marginLeft` so the
+ * RTL story variants keep the flip Griffel's rtl transform used to provide. */
+
+.badges {
+  display: flex;
+  align-items: center;
+  margin-inline-start: auto;
+  padding: 0 var(--spacingHorizontalXS);
+  gap: var(--spacingHorizontalXS);
+}

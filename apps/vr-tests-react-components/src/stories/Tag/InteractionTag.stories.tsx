@@ -5,7 +5,8 @@ import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { Steps, type StoryParameters } from 'storywright';
-import { makeStyles } from '@griffel/react';
+
+import boxSizingStyles from './InteractionTag.module.css';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
@@ -144,19 +145,10 @@ export const BrandSelected = () => (
 export const BrandSelectedHighContrast = getStoryVariant(BrandSelected, HIGH_CONTRAST);
 export const BrandSelectedDarkMode = getStoryVariant(BrandSelected, DARK_MODE);
 
-const useBoxSizingContainerStyles = makeStyles({
-  container: {
-    boxSizing: 'border-box',
-    '& *, & *::before, & *::after': {
-      boxSizing: 'inherit',
-    },
-  },
-});
-
 // Make sure the icon measurements are correct when `box-sizing` default value is `border-box`
 // https://github.com/microsoft/fluentui/issues/32952
 export const WithIconBoxSizing = () => {
-  const styles = useBoxSizingContainerStyles();
+  const styles = boxSizingStyles;
 
   return (
     <div className={styles.container}>

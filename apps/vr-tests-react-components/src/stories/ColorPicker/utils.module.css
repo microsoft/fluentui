@@ -1,0 +1,9 @@
+/* Story-scaffolding styles for ColorPicker VR tests, converted from Griffel `makeStyles`
+ * (S-E harness batch). */
+
+.example {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

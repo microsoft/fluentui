@@ -1,47 +1,28 @@
-import { mergeClasses, makeStyles, createDOMRenderer } from '@griffel/core';
 import * as React from 'react';
 
-const renderer = createDOMRenderer(document);
+import styles from './MakeStylesStyles.module.css';
 
-const useStyles = makeStyles({
-  view: {
-    alignItems: 'stretch',
-    borderLeftWidth: 0,
-    borderLeftStyle: 'solid',
-    boxSizing: 'border-box',
-    display: 'flex',
-    flexBasis: 'auto',
-    flexDirection: 'column',
-    flexShrink: 0,
-    marginLeft: 0,
-    paddingLeft: 0,
-    position: 'relative',
-    minHeight: 0,
-    minWidth: 0,
-  },
-  boxOuter: { alignSelf: 'flex-start', paddingLeft: '4px' },
-  boxRow: { flexDirection: 'row' },
-  boxColor0: { backgroundColor: '#14171A' },
-  boxColor1: { backgroundColor: '#AAB8C2' },
-  boxColor2: { backgroundColor: '#E6ECF0' },
-  boxColor3: { backgroundColor: '#FFAD1F' },
-  boxColor4: { backgroundColor: '#F45D22' },
-  boxColor5: { backgroundColor: '#E0245E' },
-  boxFixed: { width: '6px', height: '6px' },
-});
+/**
+ * Historically this scenario benchmarked `@griffel/core` (`makeStyles` + `mergeClasses` with an
+ * explicit renderer). With the Griffel -> Tailwind + CSS Modules migration the Griffel path no
+ * longer ships, so the scenario is repointed at the replacement styling path: static CSS Modules
+ * classes composed with plain string concatenation. The rendered DOM and computed styles are
+ * unchanged (see MakeStylesStyles.module.css); what is measured is now the mount cost of the
+ * shipped styling approach.
+ *
+ * The file keeps its historical name so the scenario id stays stable in perf-test output.
+ */
 
 const View: React.FunctionComponent<{ className?: string }> = props => {
   const { className } = props;
 
-  const styles = useStyles({ dir: 'ltr', renderer });
-  const classes = mergeClasses(styles.view, className);
+  const classes = className ? `${styles.view} ${className}` : styles.view;
 
   return <div className={classes} />;
 };
 
 const Box: React.FunctionComponent = () => {
-  const styles = useStyles({ dir: 'ltr', renderer });
-  const classes = mergeClasses(styles.boxOuter, styles.boxRow, styles.boxFixed, styles.boxColor3);
+  const classes = `${styles.boxOuter} ${styles.boxRow} ${styles.boxFixed} ${styles.boxColor3}`;
 
   return <View className={classes} />;
 };

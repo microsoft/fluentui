@@ -2,18 +2,14 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
 import { Steps, type StoryParameters } from 'storywright';
-import { makeStyles } from '@griffel/react';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, HIGH_CONTRAST, DARK_MODE, RTL } from '../utilities';
 
-const useStyles = makeStyles({
-  paused: {
-    '& *': {
-      animationPlayState: 'paused !important',
-      animationDelay: '-1s !important',
-    },
-  },
-});
+import styles from './Skeleton.module.css';
+
+/** Story-scaffolding classes (see Skeleton.module.css). Kept as a hook-shaped function
+ * so the story bodies are untouched by the Griffel -> CSS Modules conversion. */
+const useStyles = (): typeof styles => styles;
 
 export default {
   title: 'Skeleton converged',

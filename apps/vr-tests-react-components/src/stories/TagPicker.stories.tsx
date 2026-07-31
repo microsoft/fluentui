@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
+import type { TagPickerProps } from '@fluentui/react-tag-picker';
 import {
   TagPicker,
   TagPickerControl,
@@ -8,13 +9,12 @@ import {
   TagPickerList,
   TagPickerOption,
   TagPickerOptionGroup,
-  TagPickerProps,
 } from '@fluentui/react-tag-picker';
 import { Tag } from '@fluentui/react-tags';
 import { Avatar } from '@fluentui/react-avatar';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import { Steps, type StoryParameters } from 'storywright';
+
+import appearanceStyles from './TagPicker.module.css';
 import { ArrowDownFilled } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-button';
 
@@ -149,20 +149,8 @@ export const DefaultOpenHighContrast = getStoryVariant(DefaultOpen, HIGH_CONTRAS
 
 export const DefaultOpenRTL = getStoryVariant(DefaultOpen, RTL);
 
-const useStyles = makeStyles({
-  padding: {
-    ...shorthands.padding('20px'),
-  },
-  darkBG: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    color: tokens.colorNeutralForegroundInverted2,
-    ...shorthands.marginBlock('10px'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-  },
-});
-
 export const Appearance = () => {
-  const styles = useStyles();
+  const styles = appearanceStyles;
   return (
     <>
       <div className={styles.padding}>
@@ -173,11 +161,11 @@ export const Appearance = () => {
         <h1>Underline</h1>
         <Default appearance="underline" />
       </div>
-      <div className={mergeClasses(styles.darkBG, styles.padding)}>
+      <div className={`${styles.darkBG} ${styles.padding}`}>
         <h1>Filled Darker</h1>
         <Default appearance="filled-darker" />
       </div>
-      <div className={mergeClasses(styles.darkBG, styles.padding)}>
+      <div className={`${styles.darkBG} ${styles.padding}`}>
         <h1>Filled Lighter</h1>
         <Default appearance="filled-lighter" />
       </div>
