@@ -32,7 +32,7 @@ describe('TreeItem', () => {
     // format DECISIONS.md D16.1 removed. `component-has-group-marker` (now a default test) replaces it: it
     // asserts the group marker IS stamped and is never `classList[0]` (D16.2 / D16.6). The
     // `has-static-classnames` testOptions that fed the deleted test went with it.
-    disabledTests: ['component-has-static-classnames-object', 'consistent-callback-args', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object', 'consistent-callback-args'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

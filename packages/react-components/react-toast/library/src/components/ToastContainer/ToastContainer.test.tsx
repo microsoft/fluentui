@@ -80,7 +80,6 @@ describe('ToastContainer', () => {
       //
       // `component-has-group-marker` runs from the DEFAULT set and asserts
       // `group/fui-toast-container` is stamped and never `classList[0]` (D15.1 / D16.2).
-      'make-styles-overrides-win',
     ],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,

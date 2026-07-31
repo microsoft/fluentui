@@ -18,7 +18,6 @@ describe('ToastBody', () => {
     // `component-has-group-marker` runs from the DEFAULT set and needs no `getTargetElement`
     // here: `renderToastBody` puts `root` first in its fragment, so the container's first
     // child is the marker-bearing element.
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

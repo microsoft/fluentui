@@ -22,7 +22,6 @@ describe('TeachingPopoverSurface', () => {
       // composes with clsx and delegates to react-popover's converted
       // `usePopoverSurfaceStyles_unstable`, so mergeClasses is never called at all.
       // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-      'make-styles-overrides-win',
       // Arrow slot is optional — and, since D16.1, this package publishes no BEM statics at
       // all, which is the other half of why this test cannot apply.
       'component-has-static-classnames-object',

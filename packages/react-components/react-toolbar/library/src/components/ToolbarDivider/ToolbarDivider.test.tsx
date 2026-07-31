@@ -14,7 +14,7 @@ describe('ToolbarDivider', () => {
     // nothing to observe — it was already failing on this component before this
     // conversion, from the react-divider side alone. `classname-overrides-win` is its
     // cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // renders react-divider’s Divider, whose hook stamps its marker on this same element, so this root
       // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set

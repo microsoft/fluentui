@@ -16,7 +16,6 @@ describe('ToastFooter', () => {
     //
     // `component-has-group-marker` runs from the DEFAULT set: it asserts
     // `group/fui-toast-footer` is stamped and never `classList[0]` (D15.1 / D16.2).
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

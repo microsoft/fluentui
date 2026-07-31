@@ -15,7 +15,6 @@ describe('TeachingPopoverTitle', () => {
       // wrapper: `make-styles-overrides-win` can no longer observe a clsx-composed component
       // and `classname-overrides-win` below is its cascade-native replacement
       // (DECISIONS.md D9).
-      'make-styles-overrides-win',
       // Title dismiss is optionally rendered — and, since D16.1, this package publishes no
       // BEM statics at all, which is the other half of why this test cannot apply.
       'component-has-static-classnames-object',

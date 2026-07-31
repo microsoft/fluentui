@@ -15,7 +15,7 @@ describe('ToolbarToggleButton', () => {
     // to observe. `classname-overrides-win` is its cascade-native replacement — it passes
     // here because `useToggleButtonStyles_unstable`, called last, composes with clsx and
     // keeps the incoming className (which carries the consumer's) last (DECISIONS.md D9).
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // renders react-button’s ToggleButton, which renders Button — each hook stamps its own marker on the one element, so this root
       // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set

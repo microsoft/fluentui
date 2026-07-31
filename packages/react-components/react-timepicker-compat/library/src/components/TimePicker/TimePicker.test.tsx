@@ -42,7 +42,7 @@ describe('TimePicker', () => {
     // guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       // a TimePicker IS a Combobox — `useComboboxStyles_unstable` stamps its marker on this same

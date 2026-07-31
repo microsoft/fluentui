@@ -38,7 +38,7 @@ describe('Textarea', () => {
     // to `{ root }` and re-pointed it at the group marker. `component-has-group-marker` (now a default test)
     // is its replacement and asserts the contract that actually holds now — including the
     // D15.1 `classList[0]` invariant the static used to satisfy incidentally (D16.2/D16.6).
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -18,7 +18,6 @@ describe('ToastTrigger', () => {
       // the opt-out has to be explicit.
       'component-has-group-marker',
       // ToastTrigger does not have own styles
-      'make-styles-overrides-win',
     ],
     Component: ToastTrigger,
     displayName: 'ToastTrigger',

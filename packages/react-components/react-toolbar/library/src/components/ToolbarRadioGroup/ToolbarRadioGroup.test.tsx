@@ -12,7 +12,7 @@ describe('ToolbarRadioGroup', () => {
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
     // ToolbarRadioGroup renders through `useToolbarGroupStyles_unstable`, which is
     // converted, so it no longer calls mergeClasses either — same swap as ToolbarGroup.
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -23,7 +23,6 @@ describe('AriaLive', () => {
       // `component-has-group-marker` (a default test) still runs and is satisfied — it reads
       // the container's first child, which is the `assertive` live region, and both regions
       // carry `group/fui-aria-live` after the hashed module class (D15.1 / D16.2).
-      'make-styles-overrides-win',
     ],
   });
 

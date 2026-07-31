@@ -15,7 +15,7 @@ describe('ToolbarRadioButton', () => {
     // reasoning as ToolbarToggleButton.test.tsx: nothing in this component's delegation
     // chain calls mergeClasses any more, so `make-styles-overrides-win` has nothing to
     // observe and `classname-overrides-win` replaces it (DECISIONS.md D9).
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // renders react-button’s ToggleButton, which renders Button — each hook stamps its own marker on the one element, so this root
       // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set

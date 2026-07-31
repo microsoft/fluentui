@@ -19,7 +19,7 @@ describe('TeachingPopoverFooter', () => {
     // BEM statics this package published are gone (D16.1) — including the `__primary` /
     // `__secondary` slot statics, whose styling now travels as hashed module classes composed
     // onto the two `Button` slot objects this hook holds (D16.3's M2).
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

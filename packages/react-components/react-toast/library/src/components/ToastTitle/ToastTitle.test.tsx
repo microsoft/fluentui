@@ -35,7 +35,6 @@ describe('ToastTitle', () => {
     // `component-has-group-marker` runs from the DEFAULT set: it asserts
     // `group/fui-toast-title` is stamped on the element `getTargetElement` returns, and that
     // the marker is never `classList[0]` (D15.1 / D16.2).
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

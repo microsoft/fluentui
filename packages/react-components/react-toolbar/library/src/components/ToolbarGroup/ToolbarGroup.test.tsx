@@ -14,7 +14,7 @@ describe('ToolbarGroup', () => {
     // it was called with the consumer className last; this component now composes with
     // clsx and never calls mergeClasses, so the test can no longer observe the contract.
     // `classname-overrides-win` is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

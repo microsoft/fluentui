@@ -30,7 +30,6 @@ describe('Toaster', () => {
       'component-has-group-marker',
       // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses; this hook
       // now composes with clsx and never calls it.
-      'make-styles-overrides-win',
     ],
   });
 
