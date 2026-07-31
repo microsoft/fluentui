@@ -1,0 +1,15 @@
+/* Story styles for SwatchPickerPopup, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+@media (forced-colors: active) {
+  .example {
+    forced-color-adjust: none;
+  }
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Tab, TabList } from '@fluentui/react-components';
+import { Tab, TabList } from '@fluentui/react-components';
 import {
   AirplaneRegular,
   AirplaneFilled,
@@ -12,39 +12,13 @@ import {
 } from '@fluentui/react-icons';
 import type { SelectTabData, SelectTabEvent, TabValue } from '@fluentui/react-components';
 
+import styles from './TabListWithPanels.module.css';
+
 const Airplane = bundleIcon(AirplaneFilled, AirplaneRegular);
 const AirplaneTakeOff = bundleIcon(AirplaneTakeOffFilled, AirplaneTakeOffRegular);
 const TimeAndWeather = bundleIcon(TimeAndWeatherFilled, TimeAndWeatherRegular);
 
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    padding: '50px 20px',
-    rowGap: '20px',
-  },
-  panels: {
-    padding: '0 10px',
-    '& th': {
-      textAlign: 'left',
-      padding: '0 30px 0 0',
-    },
-  },
-  propsTable: {
-    '& td:first-child': {
-      fontWeight: tokens.fontWeightSemibold,
-    },
-    '& td': {
-      padding: '0 30px 0 0',
-    },
-  },
-});
-
 export const WithPanels = (): JSXElement => {
-  const styles = useStyles();
-
   const [selectedValue, setSelectedValue] = React.useState<TabValue>('conditions');
 
   const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {

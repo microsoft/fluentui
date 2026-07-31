@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
-  makeStyles,
   Button,
   Popover,
   PopoverSurface,
@@ -12,17 +11,7 @@ import {
 } from '@fluentui/react-components';
 import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    width: '100px',
-    height: '100px',
-    border: '1px solid #ccc',
-    margin: '20px 0',
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-});
+import styles from './SwatchPickerPopup.module.css';
 
 const colorSet1 = [
   { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
@@ -103,8 +92,6 @@ export const SwatchPickerPopup = (): JSXElement => {
 
     setPopoverOpen(false);
   };
-
-  const styles = useStyles();
 
   return (
     <>

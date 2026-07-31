@@ -1,9 +1,6 @@
 import * as React from 'react';
 import type { JSXElement, MenuItemProps } from '@fluentui/react-components';
 import {
-  makeStyles,
-  mergeClasses,
-  tokens,
   Button,
   Menu,
   MenuItem,
@@ -40,6 +37,8 @@ import {
   MoreHorizontalFilled,
   bundleIcon,
 } from '@fluentui/react-icons';
+
+import styles from './TabListWithOverflow.module.css';
 
 const Calendar3Day = bundleIcon(Calendar3DayFilled, Calendar3DayRegular);
 const CalendarAgenda = bundleIcon(CalendarAgendaFilled, CalendarAgendaRegular);
@@ -136,15 +135,6 @@ const OverflowMenuItem = (props: OverflowMenuItemProps) => {
 
 //----- OverflowMenu -----//
 
-const useOverflowMenuStyles = makeStyles({
-  menu: {
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  menuButton: {
-    alignSelf: 'center',
-  },
-});
-
 type OverflowMenuProps = {
   onTabSelect?: (tabId: string) => void;
 };
@@ -155,8 +145,6 @@ type OverflowMenuProps = {
 const OverflowMenu = (props: OverflowMenuProps) => {
   const { onTabSelect } = props;
   const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
-
-  const styles = useOverflowMenuStyles();
 
   const onItemClick = (tabId: string) => {
     onTabSelect?.(tabId);
@@ -191,35 +179,7 @@ const OverflowMenu = (props: OverflowMenuProps) => {
 
 //----- Stories -----//
 
-const useExampleStyles = makeStyles({
-  example: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    overflow: 'hidden',
-    padding: '5px',
-    zIndex: 0, //stop the browser resize handle from piercing the overflow menu
-  },
-  horizontal: {
-    height: 'fit-content',
-    minWidth: '150px',
-    resize: 'horizontal',
-    width: '600px',
-  },
-  vertical: {
-    height: '250px',
-    minHeight: '100px',
-    resize: 'vertical',
-    width: 'fit-content',
-    display: 'flex',
-    alignContent: 'stretch',
-    alignItems: 'stretch',
-    justifyContent: 'stretch',
-    justifyItems: 'stretch',
-  },
-});
-
 const HorizontalExample = () => {
-  const styles = useExampleStyles();
-
   const [selectedTabId, setSelectedTabId] = React.useState<string>('today');
 
   const onTabSelect = (tabId: string) => {
@@ -227,7 +187,7 @@ const HorizontalExample = () => {
   };
 
   return (
-    <div className={mergeClasses(styles.example, styles.horizontal)}>
+    <div className={`${styles.example} ${styles.horizontal}`}>
       <Overflow minimumVisible={2}>
         <TabList selectedValue={selectedTabId} onTabSelect={(_, d) => onTabSelect(d.value as string)}>
           {tabs.map(tab => {
@@ -247,8 +207,6 @@ const HorizontalExample = () => {
 };
 
 const VerticalExample = () => {
-  const styles = useExampleStyles();
-
   const [selectedTabId, setSelectedTabId] = React.useState<string>('today');
 
   const onTabSelect = (tabId: string) => {
@@ -256,7 +214,7 @@ const VerticalExample = () => {
   };
 
   return (
-    <div className={mergeClasses(styles.example, styles.vertical)}>
+    <div className={`${styles.example} ${styles.vertical}`}>
       <Overflow minimumVisible={2} overflowAxis="vertical">
         <TabList vertical selectedValue={selectedTabId} onTabSelect={(_, d) => onTabSelect(d.value as string)}>
           {tabs.map(tab => {
@@ -275,21 +233,7 @@ const VerticalExample = () => {
   );
 };
 
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    overflow: 'auto',
-    padding: '50px 20px',
-    rowGap: '20px',
-    minHeight: '600px', //lets the page remain at a minimum height when vertical tabs are resized
-  },
-});
 export const WithOverflow = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <HorizontalExample />

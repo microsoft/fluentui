@@ -1,0 +1,13 @@
+/* Story styles for ColorSwatchVariants, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  display: flex;
+  gap: 8px;
+}
+
+@media (forced-colors: active) {
+  .icon {
+    forced-color-adjust: none;
+  }
+}

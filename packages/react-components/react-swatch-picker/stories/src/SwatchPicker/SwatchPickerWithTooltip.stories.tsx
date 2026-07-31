@@ -1,19 +1,9 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Tooltip, SwatchPicker, ColorSwatch, renderSwatchPickerGrid } from '@fluentui/react-components';
+import { Tooltip, SwatchPicker, ColorSwatch, renderSwatchPickerGrid } from '@fluentui/react-components';
 import type { ColorSwatchProps, SwatchProps, SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    width: '100px',
-    height: '100px',
-    border: '1px solid #ccc',
-    margin: '20px 0',
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-});
+import styles from './SwatchPickerWithTooltip.module.css';
 
 const colors = [
   { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
@@ -34,8 +24,6 @@ export const SwatchPickerWithTooltip = (): JSXElement => {
     setSelectedValue(data.selectedValue);
     setSelectedColor(data.selectedSwatch);
   };
-
-  const styles = useStyles();
 
   return (
     <>

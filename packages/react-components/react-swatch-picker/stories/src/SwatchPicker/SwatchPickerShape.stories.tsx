@@ -1,14 +1,8 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, SwatchPicker, ColorSwatch } from '@fluentui/react-components';
+import { SwatchPicker, ColorSwatch } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-});
+import styles from './SwatchPickerShape.module.css';
 
 const colors = [
   { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
@@ -23,7 +17,6 @@ const colors = [
 ];
 
 export const SwatchPickerShape = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.example}>
       <h3>Square</h3>

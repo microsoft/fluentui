@@ -1,0 +1,47 @@
+/* Story styles for TabListWithOverflow, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.menu {
+  background-color: var(--colorNeutralBackground1);
+}
+
+.menuButton {
+  align-self: center;
+}
+
+.example {
+  background-color: var(--colorNeutralBackground2);
+  overflow: hidden;
+  padding: 5px;
+  z-index: 0;
+}
+
+.horizontal {
+  height: fit-content;
+  min-width: 150px;
+  resize: horizontal;
+  width: 600px;
+}
+
+.vertical {
+  height: 250px;
+  min-height: 100px;
+  resize: vertical;
+  width: fit-content;
+  display: flex;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: stretch;
+  justify-items: stretch;
+}
+
+.root {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: auto;
+  padding: 50px 20px;
+  row-gap: 20px;
+  min-height: 600px;
+}

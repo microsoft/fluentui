@@ -1,21 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Tab, TabList } from '@fluentui/react-components';
+import { Tab, TabList } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    padding: '50px 20px',
-    rowGap: '20px',
-  },
-});
+import styles from './TabListHorizontal.module.css';
 
 export const Horizontal = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <TabList defaultSelectedValue="tab2">

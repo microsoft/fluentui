@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
-  makeStyles,
   Button,
   SwatchPicker,
   EmptySwatch,
@@ -18,47 +17,7 @@ import {
 } from '@fluentui/react-components';
 import type { SwatchPickerOnSelectEventHandler, ColorPickerProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    width: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  selectedColor: {
-    width: '100px',
-    height: '100px',
-    border: '1px solid #ccc',
-    margin: '20px 0',
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-  button: {
-    marginRight: '8px',
-  },
-  previewColor: {
-    margin: '10px 0',
-    width: '50px',
-    height: '50px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-  },
-  previewButton: {
-    minWidth: '50px',
-    height: '50px',
-    display: 'block',
-    margin: '10px 0',
-  },
-  rowWrapper: {
-    display: 'flex',
-    gap: '10px',
-  },
-  sliders: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
+import styles from './EmptySwatch.module.css';
 
 const ITEMS_LIMIT = 8;
 
@@ -72,8 +31,6 @@ const defaultItems = [
 const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
 
 export const EmptySwatchExample = (): JSXElement => {
-  const styles = useStyles();
-
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
   const [popoverOpen, setPopoverOpen] = React.useState(false);

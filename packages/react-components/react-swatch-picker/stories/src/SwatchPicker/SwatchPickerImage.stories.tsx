@@ -1,25 +1,9 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, SwatchPicker, ImageSwatch } from '@fluentui/react-components';
+import { SwatchPicker, ImageSwatch } from '@fluentui/react-components';
 import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    width: '100%',
-    height: '466px',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    margin: '20px 0',
-  },
-  swatch: {
-    width: '100px',
-    height: '100px',
-    '@media (max-width: 768px)': {
-      width: '50px',
-      height: '50px',
-    },
-  },
-});
+import styles from './SwatchPickerImage.module.css';
 
 const DEFAULT_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg';
 
@@ -52,8 +36,6 @@ export const SwatchPickerImage = (): JSXElement => {
     const image = images.find(img => img.value === data.selectedValue) || images[0];
     setSelectedImage(image.fullImageSrc);
   };
-
-  const styles = useStyles();
 
   return (
     <>

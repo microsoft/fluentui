@@ -1,0 +1,8 @@
+/* Story styles for SwatchPickerSize, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

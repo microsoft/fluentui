@@ -1,0 +1,11 @@
+/* Story styles for TabListSizeSmall, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 50px 20px;
+  row-gap: 20px;
+}

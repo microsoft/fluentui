@@ -1,24 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Tab, TabList } from '@fluentui/react-components';
+import { Tab, TabList } from '@fluentui/react-components';
 import { CalendarMonthRegular, CalendarMonthFilled, bundleIcon } from '@fluentui/react-icons';
+
+import styles from './TabListSizeLarge.module.css';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    padding: '50px 20px',
-    rowGap: '20px',
-  },
-});
-
 export const SizeLarge = (): JSXElement => {
-  const styles = useStyles();
-
   const renderTabs = () => {
     return (
       <>

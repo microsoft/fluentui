@@ -1,21 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Tab, TabList } from '@fluentui/react-components';
+import { Tab, TabList } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    padding: '50px 20px',
-    rowGap: '20px',
-  },
-});
+import styles from './TabListAppearance.module.css';
 
 export const Appearance = (): JSXElement => {
-  const styles = useStyles();
-
   const renderTabs = () => {
     return (
       <>

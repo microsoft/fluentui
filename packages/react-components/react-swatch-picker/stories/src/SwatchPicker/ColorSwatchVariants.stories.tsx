@@ -1,22 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { HeartFilled } from '@fluentui/react-icons';
-import { makeStyles, ColorSwatch } from '@fluentui/react-components';
+import { ColorSwatch } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    display: 'flex',
-    gap: '8px',
-  },
-  icon: {
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-});
+import styles from './ColorSwatchVariants.module.css';
 
 export const ColorSwatchVariants = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.example}>
       <ColorSwatch color="#E3008C" value="hot-pink-color" aria-label="Hot pink" />
