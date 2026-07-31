@@ -55,3 +55,7 @@ None — batch 2 had no doc pages and no mixin-consumer fences.
   batch 1 hit this only in the docsite (noUnusedLocals); in package story trees it surfaces as
   `@typescript-eslint/no-shadow` lint errors instead. The `\n{3,}` blank-line collapse in the
   codemod misses CRLF files.
+
+## Graphify
+
+`graphify update .` produced no output after 5+ minutes and was stopped per protocol — **graphify-out/ graph is stale** with respect to batch-2 changes (87 story files + 87 new module.css).
