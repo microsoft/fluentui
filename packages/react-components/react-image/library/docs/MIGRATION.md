@@ -70,55 +70,56 @@ For v9, this feature is no longer supported. The alternative would be to use the
 
 ### shouldFadeIn
 
-For v9, this feature is no longer supported. The alternative is to apply the animation through `make-styles` and using the global event `onLoad`. Below is an example of a migration:
+For v9, this feature is no longer supported. The alternative is to apply the animation with your own CSS and the global event `onLoad`. Below is an example of a migration:
+
+```css
+/* MyComponent.module.css */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn400 {
+  animation-name: fade-in;
+  animation-iteration-count: infinite;
+  animation-duration: 0.367s;
+}
+```
 
 ```jsx
 import { useState } from 'react';
 import { Image } from '@fluentui/react-image';
-import { makeStyles } from '@griffel/react';
-
-const useStyles = makeStyles(theme => ({
-  fadeIn400: {
-    animationName: {
-      from : {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      }
-    },
-    animationIterationCount: 'infinite',
-    animationDuration: '0.367s',
-  },
-})
+import styles from './MyComponent.module.css';
 
 const MyComponent = () => {
-    const [isLoaded, setLoaded] = useState(false);
-    const styles = useStyles()
+  const [isLoaded, setLoaded] = useState(false);
 
-    return <Image src="example.jpg" onLoad={()=> setLoaded(true)} className={!isLoaded? styles.fadeIn400 : ''} />
-}
+  return <Image src="example.jpg" onLoad={() => setLoaded(true)} className={!isLoaded ? styles.fadeIn400 : ''} />;
+};
 ```
 
 ### shouldStartVisible
 
 For v9, this feature is no longer supported. The alternative would be to use the global events such as: `onLoad` and `onError` to achieve the same behaviour. Below is an example showcasing this:
 
+```css
+/* App.module.css */
+.hidden {
+  display: none;
+}
+```
+
 ```jsx
 import { useState } from 'react';
-import { makeStyles } from '@griffel/react';
 import { Image } from '@fluentui/react-image';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'none',
-  },
-});
+import styles from './App.module.css';
 
 export default function App() {
   const [isLoaded, setLoaded] = useState(null);
-
-  const styles = useStyles();
 
   return (
     <Image
@@ -126,7 +127,7 @@ export default function App() {
       alt="Example image"
       onLoad={() => setLoaded(true)}
       onError={() => setLoaded(false)}
-      className={isLoaded === false ? styles.root : ''}
+      className={isLoaded === false ? styles.hidden : ''}
     />
   );
 }
@@ -134,11 +135,11 @@ export default function App() {
 
 ### styles
 
-For v9, you should migrate to use `make-styles` and do style customizations through the `className` prop.
+For v9, you should do style customizations with your own CSS through the `className` prop.
 
 ### theme
 
-For v9, you should use `tokens` in conjunction with `make-styles` and `FluentProvider` to achieve theming correctly.
+For v9, you should reference the theme's CSS variables (e.g. `var(--colorNeutralForeground1)`) in your CSS, with `FluentProvider` supplying the token values.
 
 ## Migration from v0
 
@@ -208,7 +209,7 @@ This prop has been renamed to `block` which will result into the same behaviour 
 
 ### styles
 
-For v9, you should migrate to use `make-styles` and do style customizations through the `className` prop.
+For v9, you should do style customizations with your own CSS through the `className` prop.
 
 ### variables
 
@@ -224,19 +225,18 @@ const MyComponent = () => {
 
 #### v9 implementation
 
+```css
+/* MyComponent.module.css */
+.width100 {
+  width: 100px;
+}
+```
+
 ```jsx
 import { Image } from '@fluentui/react-image';
-import { makeStyles } from '@griffel/react';
-
-const useStyles = makeStyles(theme => ({
-  width100: {
-     width: '100px'
-  },
-})
+import styles from './MyComponent.module.css';
 
 const MyComponent = () => {
-    const styles = useStyles()
-
-    return <Image src="example.jpg" className={styles.width100} />
-}
+  return <Image src="example.jpg" className={styles.width100} />;
+};
 ```
