@@ -98,9 +98,9 @@ export function assertConsumerClassNameWins(params: {
         ],
         suggestions: [
           `Pass ${resolveInfo('state.root.className')} as the LAST argument to ${resolveInfo('clsx(...)')}.`,
-          `If this component still composes with Griffel's ${resolveInfo('mergeClasses()')}, use ${resolveInfo(
-            'make-styles-overrides-win',
-          )} instead — mergeClasses appends its atomic classes after the consumer's className by design.`,
+          `A component composing with Griffel's ${resolveInfo(
+            'mergeClasses()',
+          )} cannot pass this test — mergeClasses appends its atomic classes after the consumer's className by design. Convert the component to clsx + CSS Modules first.`,
         ],
       }),
     );
@@ -167,7 +167,6 @@ export function assertConsumerClassNameWins(params: {
  * isConformant({
  *   Component: Divider,
  *   displayName: 'Divider',
- *   disabledTests: ['make-styles-overrides-win'],
  *   extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
  * });
  * ```

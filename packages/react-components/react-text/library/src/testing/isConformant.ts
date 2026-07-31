@@ -4,7 +4,6 @@ import {
   isConformant as baseIsConformant,
 } from '@fluentui/react-conformance';
 import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -35,9 +34,8 @@ export function isConformant<TProps = {}>(
     // `component-has-group-marker` replaces it. Text's own displayName derives the right
     // marker (`group/fui-text`); every preset overrides it via
     // `testOptions['has-group-marker']` to the same value, because a `<Body1>` IS a `<Text>`.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
-      ...(griffelTests as TestObject<TProps>),
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     } as TestObject<TProps>,
   };

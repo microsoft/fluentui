@@ -1,6 +1,5 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
+import type { IsConformantOptions } from '@fluentui/react-conformance';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -18,7 +17,6 @@ export function isConformant<TProps = {}>(
     // `make-styles-overrides-win` is disabled and `classname-overrides-win` added per
     // component, and the seven DataGrid* components declare their marker SET, because both
     // are per-component facts. See any *.test.tsx in this package.
-    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

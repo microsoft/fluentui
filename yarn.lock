@@ -3965,7 +3965,6 @@ __metadata:
     "@fluentui/react-tree": "npm:^9.16.3"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@fluentui/react-virtualizer": "npm:9.0.0-alpha.114"
-    "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
@@ -3975,9 +3974,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-conformance-griffel@workspace:packages/react-components/react-conformance-griffel":
+"@fluentui/react-conformance-griffel@workspace:packages/react-components/deprecated/react-conformance-griffel":
   version: 0.0.0-use.local
-  resolution: "@fluentui/react-conformance-griffel@workspace:packages/react-components/react-conformance-griffel"
+  resolution: "@fluentui/react-conformance-griffel@workspace:packages/react-components/deprecated/react-conformance-griffel"
   dependencies:
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
@@ -4754,7 +4753,6 @@ __metadata:
     "@fluentui/react-tailwind-theme": "workspace:*"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
-    "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
     clsx: "npm:^2.1.1"
   peerDependencies:

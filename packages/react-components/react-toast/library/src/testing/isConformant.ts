@@ -1,6 +1,5 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
+import type { IsConformantOptions } from '@fluentui/react-conformance';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -20,7 +19,6 @@ export function isConformant<TProps = {}>(
     // component in the individual `.test.tsx` files, where `classname-overrides-win` — its
     // cascade-native replacement (D9) — is added alongside. Registering it here and disabling
     // it there keeps the rationale next to the component it applies to.
-    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

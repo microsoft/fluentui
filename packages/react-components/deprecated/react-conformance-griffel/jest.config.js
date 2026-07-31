@@ -24,7 +24,7 @@ if (swcJestConfig.swcrc === undefined) {
  */
 module.exports = {
   displayName: 'react-conformance-griffel',
-  preset: '../../../jest.preset.js',
+  preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
   },

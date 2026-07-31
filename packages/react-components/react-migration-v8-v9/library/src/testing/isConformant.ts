@@ -5,7 +5,6 @@ import {
   isConformant as baseIsConformant,
 } from '@fluentui/react-conformance';
 import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -31,7 +30,6 @@ export function isConformant<TProps = {}>(
     // unlayered `:not(:global(.ms-StackItem))` exclusions.
     disabledTests: [COMPONENT_HAS_GROUP_MARKER_TEST_NAME],
     extraTests: {
-      ...griffelTests,
       [HAS_STATIC_CLASSNAMES_TEST_NAME]: hasStaticClassNames,
     } as TestObject<TProps>,
   };

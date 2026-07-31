@@ -1,6 +1,5 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
+import type { IsConformantOptions } from '@fluentui/react-conformance';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -22,7 +21,6 @@ export function isConformant<TProps = {}>(
     // files disable that entry individually alongside
     // `component-has-static-classnames-object`, adding `classname-overrides-win` in its place
     // (DECISIONS.md D9 / D16.6).
-    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

@@ -4,7 +4,6 @@ import {
   isConformant as baseIsConformant,
 } from '@fluentui/react-conformance';
 import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -33,9 +32,7 @@ export function isConformant<TProps = {}>(
     // AlphaSlider legitimately carries TWO markers (its own plus ColorSlider's, because it
     // renders ColorSlider's slots) and declares the pair locally via
     // `testOptions['has-group-marker'].markers` — see AlphaSlider.test.tsx.
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
-      ...(griffelTests as TestObject<TProps>),
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     } as TestObject<TProps>,
   };

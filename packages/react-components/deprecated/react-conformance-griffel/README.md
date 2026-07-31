@@ -1,5 +1,13 @@
 # @fluentui/react-conformance-griffel
 
+## DEPRECATED
+
+Fluent UI React no longer styles with Griffel (Griffel → Tailwind + CSS Modules migration,
+DECISIONS.md D19/D23); this package is retired in the same major version and receives no further
+releases. Its Griffel conformance suite remains in use only by the deprecated Griffel-based
+packages in this folder (`@fluentui/react-alert`, `@fluentui/react-infobutton`). For converted
+components, use `classname-overrides-win` from `@fluentui/react-conformance` instead.
+
 A set of conformance tests for `@griffel/react`. Intended to be used with `@fluentui/react-conformance`.
 
 > These tests apply to components that still compose their class names with Griffel's

@@ -17,7 +17,8 @@ const v8ReferencePackages = {
 };
 const convergedReferencePackages = {
   react: ['@fluentui/react-provider'],
-  node: ['@fluentui/react-conformance-griffel'],
+  // S-H (DECISIONS.md D23): was `@fluentui/react-conformance-griffel`, retired with Griffel.
+  node: ['@fluentui/react-conformance'],
 };
 
 interface Answers {

@@ -1,6 +1,5 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
+import type { IsConformantOptions } from '@fluentui/react-conformance';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -17,7 +16,6 @@ export function isConformant<TProps = {}>(
     // turn DatePicker's `make-styles-overrides-win` entry in `disabledTests` into a no-op
     // name, and that entry is what documents that the contract moved to
     // `classname-overrides-win`.
-    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

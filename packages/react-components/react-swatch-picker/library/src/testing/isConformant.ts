@@ -1,6 +1,5 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
-import griffelTests from '@fluentui/react-conformance-griffel';
+import type { IsConformantOptions } from '@fluentui/react-conformance';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
@@ -13,7 +12,6 @@ export function isConformant<TProps = {}>(
     // TAKES `component-has-group-marker` from the default set (DECISIONS.md D16.6) rather
     // than opting out of it, and it no longer needs the `hasStaticClassNames` opt-in — the
     // BEM statics it used to publish are gone (D16.1 / D16.5).
-    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

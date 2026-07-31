@@ -138,7 +138,7 @@ describe(`beachball configs`, () => {
       expect.arrayContaining([
         'packages/react-components/babel-preset-storybook-full-source',
         'packages/react-components/eslint-plugin-react-components',
-        'packages/react-components/react-conformance-griffel',
+        'packages/react-components/deprecated/react-conformance-griffel',
         'packages/react-components/react-storybook-addon',
         'packages/react-components/react-storybook-addon-export-to-sandbox',
         'packages/react-conformance',
