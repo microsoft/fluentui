@@ -1,5 +1,5 @@
-/* Story styles for BreadcrumbWithOverflow, converted from Griffel makeStyles (S-F batch 2).
- * Token references are the CSS variables they compile to. */
+/* Story styles for BreadcrumbWithOverflow.
+ * Token references are the Fluent theme's CSS variables. */
 
 .example {
   background-color: var(--colorNeutralBackground2);
