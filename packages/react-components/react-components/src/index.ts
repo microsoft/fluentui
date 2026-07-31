@@ -16,21 +16,14 @@
  */
 
 // Utilities
-export {
-  __css,
-  __resetCSS,
-  __resetStyles,
-  __styles,
-  createDOMRenderer,
-  makeResetStyles,
-  makeStaticStyles,
-  makeStyles,
-  mergeClasses,
-  RendererProvider,
-  renderToStyleElements,
-  shorthands,
-} from '@griffel/react';
-export type { GriffelStyle, GriffelRenderer, GriffelResetStyle } from '@griffel/react';
+// Griffel → Tailwind + CSS Modules migration (S-H, DECISIONS.md D19): the `@griffel/react`
+// re-exports are removed — 12 runtime symbols (`__css`, `__resetCSS`, `__resetStyles`,
+// `__styles`, `createDOMRenderer`, `makeResetStyles`, `makeStaticStyles`, `makeStyles`,
+// `mergeClasses`, `RendererProvider`, `renderToStyleElements`, `shorthands`) and 3 types
+// (`GriffelStyle`, `GriffelRenderer`, `GriffelResetStyle`). Fluent UI no longer styles with
+// Griffel (components ship static CSS Modules); consumers who still author Griffel styles
+// should depend on `@griffel/react` directly. This is part of the same major-version break
+// as the D16 statics removal.
 export {
   createCSSRuleFromTheme,
   FluentProvider,

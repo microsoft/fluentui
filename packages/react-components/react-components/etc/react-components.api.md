@@ -4,10 +4,6 @@
 
 ```ts
 
-import { __css } from '@griffel/react';
-import { __resetCSS } from '@griffel/react';
-import { __resetStyles } from '@griffel/react';
-import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
 import { AccordionContextValue } from '@fluentui/react-accordion';
@@ -267,7 +263,6 @@ import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
 import { createCSSRuleFromTheme } from '@fluentui/react-provider';
 import { createDarkTheme } from '@fluentui/react-theme';
-import { createDOMRenderer } from '@griffel/react';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createMotionComponent } from '@fluentui/react-motion';
@@ -452,9 +447,6 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
-import { GriffelRenderer } from '@griffel/react';
-import { GriffelResetStyle } from '@griffel/react';
-import { GriffelStyle } from '@griffel/react';
 import { Hamburger } from '@fluentui/react-nav';
 import { hamburgerClassNames } from '@fluentui/react-nav';
 import { HamburgerProps } from '@fluentui/react-nav';
@@ -547,9 +539,6 @@ import { ListItemState } from '@fluentui/react-list';
 import { ListProps } from '@fluentui/react-list';
 import { ListSlots } from '@fluentui/react-list';
 import { ListState } from '@fluentui/react-list';
-import { makeResetStyles } from '@griffel/react';
-import { makeStaticStyles } from '@griffel/react';
-import { makeStyles } from '@griffel/react';
 import { Menu } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { menuButtonClassNames } from '@fluentui/react-button';
@@ -631,7 +620,6 @@ import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
 import { mergeCallbacks } from '@fluentui/react-utilities';
-import { mergeClasses } from '@griffel/react';
 import { MessageBar } from '@fluentui/react-message-bar';
 import { MessageBarActions } from '@fluentui/react-message-bar';
 import { messageBarActionsClassNames } from '@fluentui/react-message-bar';
@@ -932,7 +920,6 @@ import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { renderEmptySwatch_unstable } from '@fluentui/react-swatch-picker';
-import { RendererProvider } from '@griffel/react';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
@@ -1051,7 +1038,6 @@ import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
-import { renderToStyleElements } from '@griffel/react';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
@@ -1084,7 +1070,6 @@ import { SelectTabEvent } from '@fluentui/react-tabs';
 import { SelectTabEventHandler } from '@fluentui/react-tabs';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
-import { shorthands } from '@griffel/react';
 import { Skeleton } from '@fluentui/react-skeleton';
 import { skeletonClassNames } from '@fluentui/react-skeleton';
 import { SkeletonContextProvider } from '@fluentui/react-skeleton';
@@ -2013,14 +1998,6 @@ import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
 
-export { __css }
-
-export { __resetCSS }
-
-export { __resetStyles }
-
-export { __styles }
-
 export { Accordion }
 
 export { accordionClassNames }
@@ -2539,8 +2516,6 @@ export { createCSSRuleFromTheme }
 
 export { createDarkTheme }
 
-export { createDOMRenderer }
-
 export { createHighContrastTheme }
 
 export { createLightTheme }
@@ -2909,12 +2884,6 @@ export { getSlotClassNameProp_unstable }
 
 export { getSlots }
 
-export { GriffelRenderer }
-
-export { GriffelResetStyle }
-
-export { GriffelStyle }
-
 export { Hamburger }
 
 export { hamburgerClassNames }
@@ -3099,12 +3068,6 @@ export { ListSlots }
 
 export { ListState }
 
-export { makeResetStyles }
-
-export { makeStaticStyles }
-
-export { makeStyles }
-
 export { Menu }
 
 export { MenuButton }
@@ -3266,8 +3229,6 @@ export { MenuTriggerProps }
 export { MenuTriggerState }
 
 export { mergeCallbacks }
-
-export { mergeClasses }
 
 export { MessageBar }
 
@@ -3869,8 +3830,6 @@ export { renderDropdown_unstable }
 
 export { renderEmptySwatch_unstable }
 
-export { RendererProvider }
-
 export { renderField_unstable }
 
 export { renderFlatTree_unstable }
@@ -4107,8 +4066,6 @@ export { renderToolbarGroup_unstable }
 
 export { renderTooltip_unstable }
 
-export { renderToStyleElements }
-
 export { renderTree_unstable }
 
 export { renderTreeItem_unstable }
@@ -4172,8 +4129,6 @@ export { SelectTabEventHandler }
 export { ShadowBrandTokens }
 
 export { ShadowTokens }
-
-export { shorthands }
 
 export { Skeleton }
 

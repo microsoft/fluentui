@@ -72,7 +72,6 @@
     "@fluentui/react-tree": "^9.16.3",
     "@fluentui/react-utilities": "^9.26.5",
     "@fluentui/react-virtualizer": "9.0.0-alpha.114",
-    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
@@ -107,11 +106,5 @@
     "lib",
     "lib-commonjs",
     "unstable"
-  ],
-  "wyw-in-js": {
-    "tags": {
-      "makeStyles": "@griffel/tag-processor/make-styles",
-      "makeResetStyles": "@griffel/tag-processor/make-reset-styles"
-    }
-  }
+  ]
 }
