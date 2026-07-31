@@ -1,0 +1,63 @@
+/* Story styles for CreateMotionComponentVariantDefault, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template: 'cards cards' 'controls .' / 1fr 1fr;
+  gap: 20px 10px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  grid-area: cards;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 20px;
+  min-height: 200px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  grid-area: controls;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+}
+
+.field {
+  flex: 1;
+}
+
+.sliderField {
+  grid-template-columns: min-content 1fr;
+}
+
+.sliderLabel {
+  text-wrap: nowrap;
+}
+
+.item {
+  background-color: var(--colorBrandBackground);
+  border: var(--strokeWidthThicker) solid var(--colorTransparentStroke);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.cardTitle {
+  margin-bottom: 50px;
+  font-weight: var(--fontWeightSemibold);
+}

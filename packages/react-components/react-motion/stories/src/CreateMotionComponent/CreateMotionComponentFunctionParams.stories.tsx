@@ -1,77 +1,18 @@
 import {
   createMotionComponent,
   Field,
-  makeStyles,
-  mergeClasses,
   type MotionImperativeRef,
   motionTokens,
   Slider,
-  tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentFunctionParams.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"cardA cardB" "controls ." / 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'end',
+import styles from './CreateMotionComponentFunctionParams.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-  },
-  sliderField: {
-    gridTemplateColumns: 'min-content 1fr',
-  },
-  sliderLabel: {
-    textWrap: 'nowrap',
-  },
-
-  cardA: {
-    gridArea: 'cardA',
-  },
-  cardB: {
-    gridArea: 'cardB',
-  },
-  item: {
-    backgroundColor: tokens.colorBrandBackground,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
-    borderRadius: '50%',
-
-    width: '100px',
-    height: '100px',
-  },
-  description: {
-    fontFamily: tokens.fontFamilyMonospace,
-    borderRadius: tokens.borderRadiusMedium,
-    marginTop: '10px',
-    padding: '5px 10px',
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-  },
-});
+const useClasses = () => styles;
 
 const Scale = createMotionComponent<{ startFrom?: number }>(({ startFrom = 0.5 }) => {
   return {
@@ -106,13 +47,13 @@ export const CreateMotionComponentFunctionParams = (): JSXElement => {
 
   return (
     <div className={classes.container}>
-      <div className={mergeClasses(classes.card, classes.cardA)}>
+      <div className={`${classes.card} ${classes.cardA}`}>
         <Scale imperativeRef={motionARef} startFrom={0.1}>
           <div className={classes.item} />
         </Scale>
         <div className={classes.description}>startFrom=0.1</div>
       </div>
-      <div className={mergeClasses(classes.card, classes.cardB)}>
+      <div className={`${classes.card} ${classes.cardB}`}>
         <Scale imperativeRef={motionBRef} startFrom={0.8}>
           <div className={classes.item} />
         </Scale>
@@ -121,7 +62,7 @@ export const CreateMotionComponentFunctionParams = (): JSXElement => {
 
       <div className={classes.controls}>
         <Field
-          className={mergeClasses(classes.field, classes.sliderField)}
+          className={`${classes.field} ${classes.sliderField}`}
           label={{
             children: (
               <>
@@ -134,7 +75,7 @@ export const CreateMotionComponentFunctionParams = (): JSXElement => {
         >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
-            className={mergeClasses(classes.field, classes.sliderField)}
+            className={`${classes.field} ${classes.sliderField}`}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}

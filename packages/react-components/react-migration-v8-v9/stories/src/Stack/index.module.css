@@ -1,0 +1,15 @@
+/* Story styles for index, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.stackWrapper {
+  width: 100%;
+}
+
+.stack {
+  background-color: pink;
+  min-height: 200px;
+}
+
+.stackItem {
+  background-color: lightblue;
+}

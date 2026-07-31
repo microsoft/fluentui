@@ -5,35 +5,17 @@ import descriptionMd from './Description.md';
 
 import { DefaultButton, Icon, initializeIcons } from '@fluentui/react';
 import type { IIconProps } from '@fluentui/react';
-import { FluentProvider, webLightTheme, makeStyles, ToggleButton } from '@fluentui/react-components';
+import { FluentProvider, webLightTheme, ToggleButton } from '@fluentui/react-components';
 import { ToggleButtonShim } from '@fluentui/react-migration-v8-v9';
 
-initializeIcons();
+import styles from './index.module.css';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
-    gridTemplateRows: '1fr',
-    width: 'fit-content',
-    alignContent: 'center',
-    alignItems: 'center',
-    justifyItems: 'center',
-    columnGap: '10px',
-    rowGap: '10px',
-  },
-  componentName: {
-    justifySelf: 'end',
-    margin: '0 10px 0 0',
-  },
-});
+initializeIcons();
 
 const volume0Icon: IIconProps = { iconName: 'Volume0' };
 const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   const [muted1, setMuted1] = React.useState(false);
   const [muted2, setMuted2] = React.useState(false);
   const [muted3, setMuted3] = React.useState(false);

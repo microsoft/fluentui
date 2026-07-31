@@ -1,11 +1,8 @@
 import {
   createMotionComponent,
   Field,
-  makeStyles,
-  mergeClasses,
   type MotionImperativeRef,
   motionTokens,
-  tokens,
   Slider,
   ToggleButton,
 } from '@fluentui/react-components';
@@ -15,68 +12,9 @@ import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentArrays.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'end',
-    gridArea: 'card',
+import styles from './CreateMotionComponentArrays.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-  },
-  sliderField: {
-    gridTemplateColumns: 'min-content 1fr',
-  },
-  sliderLabel: {
-    textWrap: 'nowrap',
-  },
-
-  balloon: {
-    display: 'inline-block',
-    width: '80px',
-    height: '100px',
-    backgroundColor: tokens.colorBrandBackground,
-    borderRadius: '80%',
-    position: 'relative',
-    boxShadow: 'inset -10px -10px 0 rgba(0,0,0,0.07)',
-    margin: '20px 30px',
-    zIndex: 1,
-
-    '::before': {
-      content: "'▲'",
-      fontSize: '20px',
-      color: tokens.colorCompoundBrandBackgroundPressed,
-      display: 'block',
-      textAlign: 'center',
-      width: '100%',
-      position: 'absolute',
-      bottom: '-12px',
-      zIndex: -1,
-    },
-  },
-});
+const useClasses = () => styles;
 
 const FadeFastGrowSlow = createMotionComponent([
   {
@@ -129,7 +67,7 @@ export const CreateMotionComponentArrays = (): JSXElement => {
           </ToggleButton>
         </div>
         <Field
-          className={mergeClasses(classes.field, classes.sliderField)}
+          className={`${classes.field} ${classes.sliderField}`}
           label={{
             children: (
               <>
@@ -142,7 +80,7 @@ export const CreateMotionComponentArrays = (): JSXElement => {
         >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
-            className={mergeClasses(classes.field, classes.sliderField)}
+            className={`${classes.field} ${classes.sliderField}`}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}

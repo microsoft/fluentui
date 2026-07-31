@@ -1,49 +1,13 @@
-import { Button, Card, makeStyles, Text, tokens } from '@fluentui/react-components';
+import { Button, Card, Text } from '@fluentui/react-components';
 import { Scale } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentReplayKey.stories.md';
 
-const useClasses = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gridTemplateRows: 'auto auto auto auto',
-    gridTemplateAreas: `"labelBefore labelAfter" "cardBefore cardAfter" "exampleBelowBefore exampleBelowAfter" "controls controls"`,
-    gap: '12px 20px',
-  },
+import styles from './CreateMotionComponentReplayKey.module.css';
 
-  label: {
-    textAlign: 'center',
-  },
-
-  example: {
-    textAlign: 'center',
-    fontFamily: 'monospace',
-    whiteSpace: 'pre-wrap',
-  },
-
-  card: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '160px',
-  },
-
-  controls: {
-    gridArea: 'controls',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-
-  counter: {
-    color: tokens.colorBrandForeground1,
-    fontSize: tokens.fontSizeHero900,
-    fontWeight: tokens.fontWeightBold,
-    lineHeight: '1',
-  },
-});
+const useClasses = () => styles;
 
 export const CreateMotionComponentReplayKey = (): JSXElement => {
   const classes = useClasses();

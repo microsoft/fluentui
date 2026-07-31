@@ -4,56 +4,16 @@ import type { Meta } from '@storybook/react-webpack5';
 
 import type { Theme as ThemeV8 } from '@fluentui/react';
 import { createTheme, ThemeProvider, DefaultPalette } from '@fluentui/react';
-import { Button, makeStyles, Textarea, tokens, webLightTheme, FluentProvider } from '@fluentui/react-components';
+import { Button, Textarea, webLightTheme, FluentProvider } from '@fluentui/react-components';
 import { createV9Theme } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
 import { ThemePreviewV8 } from '../ThemePreviewV8.stories';
 import { ThemePreviewV9 } from '../ThemePreviewV9.stories';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto',
-    gridTemplateRows: 'auto',
-    gridRowGap: '10px',
-    justifyItems: 'start',
-    padding: '5px',
-  },
-  instructions: {
-    color: tokens.colorNeutralForeground2,
-  },
-  editor: {
-    width: '400px',
-    height: '300px',
-  },
-  actions: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridColumnGap: '10px',
-    justifyItems: 'start',
-  },
-  error: {
-    color: 'red',
-  },
-  result: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto',
-    columnGap: '10px',
-    rowGap: '5px',
-  },
-  colorBlock: {
-    display: 'inline-block',
-    width: '10px',
-    height: '10px',
-    border: '1px solid black',
-  },
-});
+import styles from './index.module.css';
 
 export const Playground = (): JSXElement => {
-  const styles = useStyles();
-
   const defaultPaletteText = JSON.stringify(DefaultPalette, null, 4);
   const [paletteText, setPaletteText] = React.useState(defaultPaletteText);
 

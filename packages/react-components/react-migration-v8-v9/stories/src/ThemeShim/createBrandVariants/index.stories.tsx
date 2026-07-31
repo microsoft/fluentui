@@ -2,49 +2,15 @@ import * as React from 'react';
 import type { JSXElement, TextareaProps } from '@fluentui/react-components';
 
 import { DefaultPalette } from '@fluentui/react';
-import { Button, makeStyles, Textarea, RadioGroup, Radio } from '@fluentui/react-components';
+import { Button, Textarea, RadioGroup, Radio } from '@fluentui/react-components';
 import { createBrandVariants } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
 import type { Meta } from '@storybook/react-webpack5';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto',
-    gridTemplateRows: 'auto',
-    gridRowGap: '10px',
-    justifyItems: 'start',
-    padding: '5px',
-  },
-  editor: {
-    width: '400px',
-    height: '300px',
-  },
-  actions: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridColumnGap: '10px',
-    justifyItems: 'start',
-  },
-  result: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto',
-    columnGap: '10px',
-    rowGap: '5px',
-  },
-  colorBlock: {
-    display: 'inline-block',
-    width: '10px',
-    height: '10px',
-    border: '1px solid black',
-  },
-});
+import styles from './index.module.css';
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   const defaultPaletteText = JSON.stringify(DefaultPalette, null, 4);
 
   const [interpolation, setInterpolation] = React.useState('pairs');

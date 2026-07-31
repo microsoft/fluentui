@@ -1,11 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles } from '@fluentui/react-components';
 import { Checkbox, Dropdown, DropdownMenuItemType, Stack, TextField } from '@fluentui/react';
 import type { IDropdownOption } from '@fluentui/react';
 import { StackShim, StackItemShim } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
+
+import shimClasses from './index.module.css';
 
 const horizontalAlignOptions: IDropdownOption[] = [
   {
@@ -45,19 +46,6 @@ const styles = {
   },
 };
 
-const useCustomStyles = makeStyles({
-  stackWrapper: {
-    width: '100%',
-  },
-  stack: {
-    backgroundColor: 'pink',
-    minHeight: '200px',
-  },
-  stackItem: {
-    backgroundColor: 'lightblue',
-  },
-});
-
 export const Playground = (): JSXElement => {
   const [state, setState] = React.useState({
     verticalFill: false,
@@ -95,13 +83,12 @@ export const Playground = (): JSXElement => {
   const onPaddingTokenChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
     setPaddingToken(newValue!);
   };
-  const shimStyles = useCustomStyles();
-  const stackShimStyles = shimStyles.stack;
+  const stackShimStyles = shimClasses.stack;
   const stackStyles = {
     root: { backgroundColor: 'pink', minHeight: '200px' },
   };
   const stackItemStyles = { root: { backgroundColor: 'lightblue' } };
-  const stackItemShimStyles = shimStyles.stackItem;
+  const stackItemShimStyles = shimClasses.stackItem;
   return (
     <Stack styles={{ root: { width: '100%' } }}>
       <h1>Stack Playground</h1>
@@ -148,7 +135,7 @@ export const Playground = (): JSXElement => {
         </Stack>
       </Stack>
       <Stack horizontal horizontalAlign={'space-evenly'}>
-        <div className={shimStyles.stackWrapper}>
+        <div className={shimClasses.stackWrapper}>
           <h2>v8</h2>
           <Stack
             as={'span'}
@@ -178,7 +165,7 @@ export const Playground = (): JSXElement => {
             <Checkbox label="checkbox 2" styles={stackItemStyles} />
           </Stack>
         </div>
-        <div className={shimStyles.stackWrapper}>
+        <div className={shimClasses.stackWrapper}>
           <h2>StackShim</h2>
           <StackShim
             as={'span'}

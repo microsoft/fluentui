@@ -5,32 +5,14 @@ import descriptionMd from './Description.md';
 
 import { CommandButton, Icon } from '@fluentui/react';
 import type { IIconProps } from '@fluentui/react';
-import { FluentProvider, Button, webLightTheme, makeStyles } from '@fluentui/react-components';
+import { FluentProvider, Button, webLightTheme } from '@fluentui/react-components';
 import { CommandButtonShim } from '@fluentui/react-migration-v8-v9';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
-    gridTemplateRows: '1fr',
-    width: 'fit-content',
-    alignContent: 'center',
-    alignItems: 'center',
-    justifyItems: 'center',
-    columnGap: '10px',
-    rowGap: '10px',
-  },
-  componentName: {
-    justifySelf: 'end',
-    margin: '0 10px 0 0',
-  },
-});
+import styles from './index.module.css';
 
 const addIcon: IIconProps = { iconName: 'Add' };
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <h3>v8</h3>

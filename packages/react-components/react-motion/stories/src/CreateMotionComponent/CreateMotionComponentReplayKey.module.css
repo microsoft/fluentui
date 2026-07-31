@@ -1,0 +1,40 @@
+/* Story styles for CreateMotionComponentReplayKey, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: 'labelBefore labelAfter' 'cardBefore cardAfter' 'exampleBelowBefore exampleBelowAfter' 'controls controls';
+  gap: 12px 20px;
+}
+
+.label {
+  text-align: center;
+}
+
+.example {
+  text-align: center;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+}
+
+.controls {
+  grid-area: controls;
+  display: flex;
+  justify-content: center;
+}
+
+.counter {
+  color: var(--colorBrandForeground1);
+  font-size: var(--fontSizeHero900);
+  font-weight: var(--fontWeightBold);
+  line-height: 1;
+}

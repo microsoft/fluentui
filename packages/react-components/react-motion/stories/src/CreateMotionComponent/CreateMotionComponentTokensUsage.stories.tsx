@@ -1,43 +1,12 @@
-import { createMotionComponent, makeStyles, tokens } from '@fluentui/react-components';
+import { createMotionComponent, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentTokensUsage.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card" / 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'end',
-    gridArea: 'card',
+import styles from './CreateMotionComponentTokensUsage.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-
-  item: {
-    backgroundColor: tokens.colorBrandBackground,
-    borderRadius: tokens.borderRadiusCircular,
-    width: '100px',
-    height: '100px',
-    forcedColorAdjust: 'none',
-  },
-  description: {
-    fontFamily: tokens.fontFamilyMonospace,
-    borderRadius: tokens.borderRadiusMedium,
-    marginTop: '10px',
-    padding: '5px 10px',
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-  },
-});
+const useClasses = () => styles;
 
 const BackgroundChange = createMotionComponent({
   keyframes: [

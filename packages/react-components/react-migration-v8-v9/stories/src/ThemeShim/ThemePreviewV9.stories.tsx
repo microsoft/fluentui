@@ -1,9 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
-  makeStyles,
-  mergeClasses,
-  tokens,
   Body1,
   Title3,
   TabList,
@@ -33,74 +30,13 @@ import {
   CalendarLtrRegular,
 } from '@fluentui/react-icons';
 
+import styles from './ThemePreviewV9.module.css';
+
 export interface ContentProps {
   className?: string;
 }
 
-const useStyles = makeStyles({
-  root: {
-    padding: '16px',
-  },
-  threeCol: {
-    display: 'grid',
-    alignItems: 'start',
-    justifyContent: 'center',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridTemplateRows: 'auto',
-    gridColumnGap: tokens.spacingHorizontalXXXL,
-  },
-  col1: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalL,
-  },
-  col2: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: tokens.spacingVerticalL,
-  },
-  col3: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gridTemplateRows: 'repeat(4, auto)',
-    gridRowGap: tokens.spacingVerticalS,
-    gridColumnGap: tokens.spacingHorizontalS,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  twoCol: {
-    gridColumnStart: 1,
-    gridColumnEnd: 3,
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  icons: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto auto',
-    gridRowGap: tokens.spacingVerticalS,
-    gridColumnGap: tokens.spacingHorizontalS,
-    justifyContent: 'center',
-  },
-  avatar: {
-    display: 'flex',
-    gap: tokens.spacingVerticalL,
-  },
-  avatarText: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'left',
-  },
-});
-
 const Column1 = () => {
-  const styles = useStyles();
   return (
     <div className={styles.col1}>
       <Title3 block>Make an impression</Title3>
@@ -127,7 +63,6 @@ const Column1 = () => {
 };
 
 const Column2 = () => {
-  const styles = useStyles();
   const dropdownId = useId('dropdown-default');
   return (
     <div className={styles.col2}>
@@ -150,7 +85,6 @@ const Column2 = () => {
 };
 
 const DemoIcons = () => {
-  const styles = useStyles();
   const MeetNowIcon = bundleIcon(MeetNowFilled, MeetNowRegular);
   const CalendarLtrIcon = bundleIcon(CalendarLtrFilled, CalendarLtrRegular);
   return (
@@ -164,7 +98,6 @@ const DemoIcons = () => {
 };
 
 const Column3 = () => {
-  const styles = useStyles();
   return (
     <div className={styles.col3}>
       <Button appearance="primary">Sign Up</Button>
@@ -192,11 +125,10 @@ const Column3 = () => {
 };
 
 export const ThemePreviewV9: React.FC<ContentProps> = (props): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <Caption1>Examples</Caption1>
-      <div className={mergeClasses(styles.threeCol, props.className)}>
+      <div className={`${styles.threeCol} ${props.className}`}>
         <Column1 />
         <Column2 />
         <Column3 />

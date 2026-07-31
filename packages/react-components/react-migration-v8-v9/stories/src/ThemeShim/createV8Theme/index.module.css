@@ -1,0 +1,47 @@
+/* Story styles for index, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-row-gap: 10px;
+  justify-items: start;
+  padding: 5px;
+}
+
+.instructions {
+  color: var(--colorNeutralForeground2);
+}
+
+.editor {
+  width: 400px;
+  height: 300px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+}
+
+.actions > * {
+  margin: 5px;
+}
+
+.error {
+  color: red;
+}
+
+.result {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  gap: 5px;
+}
+
+.colorBlock {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+}

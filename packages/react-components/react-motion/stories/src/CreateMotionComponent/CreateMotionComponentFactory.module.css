@@ -1,0 +1,36 @@
+/* Story styles for CreateMotionComponentFactory, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template: 'card' / 1fr;
+  gap: 20px 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  grid-area: card;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+  padding-top: 120px;
+}
+
+.item {
+  background-color: var(--colorBrandBackground);
+  border: var(--strokeWidthThicker) solid var(--colorTransparentStroke);
+  width: 100px;
+  height: 100px;
+}
+
+.description {
+  font-family: var(--fontFamilyMonospace);
+  border-radius: var(--borderRadiusMedium);
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: var(--colorNeutralBackground1Pressed);
+}

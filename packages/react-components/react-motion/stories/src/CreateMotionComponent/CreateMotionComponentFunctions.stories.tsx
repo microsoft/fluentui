@@ -1,65 +1,18 @@
 import {
   createMotionComponent,
   Field,
-  makeStyles,
-  mergeClasses,
   type MotionImperativeRef,
   motionTokens,
   Slider,
-  tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentFunctions.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'end',
-    gridArea: 'card',
+import styles from './CreateMotionComponentFunctions.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-    minHeight: '180px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-  },
-  sliderField: {
-    gridTemplateColumns: 'min-content 1fr',
-  },
-  sliderLabel: {
-    textWrap: 'nowrap',
-  },
-
-  item: {
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorBrandBackground}`,
-    padding: '8px',
-    width: '300px',
-    overflow: 'hidden',
-  },
-  description: { margin: '5px' },
-});
+const useClasses = () => styles;
 
 const Grow = createMotionComponent(({ element }) => ({
   duration: motionTokens.durationUltraSlow,
@@ -101,7 +54,7 @@ export const CreateMotionComponentFunctions = (): JSXElement => {
 
       <div className={classes.controls}>
         <Field
-          className={mergeClasses(classes.field, classes.sliderField)}
+          className={`${classes.field} ${classes.sliderField}`}
           label={{
             children: (
               <>
@@ -114,7 +67,7 @@ export const CreateMotionComponentFunctions = (): JSXElement => {
         >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
-            className={mergeClasses(classes.field, classes.sliderField)}
+            className={`${classes.field} ${classes.sliderField}`}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}

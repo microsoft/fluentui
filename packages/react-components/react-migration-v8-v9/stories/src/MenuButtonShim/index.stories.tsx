@@ -8,7 +8,6 @@ import type { IContextualMenuItem, IContextualMenuProps, IIconProps } from '@flu
 import {
   FluentProvider,
   webLightTheme,
-  makeStyles,
   Menu,
   MenuButton,
   MenuDivider,
@@ -20,25 +19,9 @@ import {
 } from '@fluentui/react-components';
 import { MenuButtonShim } from '@fluentui/react-migration-v8-v9';
 
-initializeIcons();
+import styles from './index.module.css';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
-    gridTemplateRows: '1fr',
-    width: 'fit-content',
-    alignContent: 'center',
-    alignItems: 'center',
-    justifyItems: 'center',
-    columnGap: '10px',
-    rowGap: '10px',
-  },
-  componentName: {
-    justifySelf: 'end',
-    margin: '0 10px 0 0',
-  },
-});
+initializeIcons();
 
 const addIcon: IIconProps = { iconName: 'Add' };
 const mailIcon: IIconProps = { iconName: 'Mail' };
@@ -46,8 +29,6 @@ const calendarIcon: IIconProps = { iconName: 'Calendar' };
 const shareIcon: IIconProps = { iconName: 'Share', style: { color: 'salmon' } };
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   const [selection, setSelection] = React.useState<{ [key: string]: boolean }>({});
 
   const onToggleSelect = React.useCallback(

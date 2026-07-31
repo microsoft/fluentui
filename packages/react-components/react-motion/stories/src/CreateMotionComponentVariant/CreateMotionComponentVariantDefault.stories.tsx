@@ -1,64 +1,10 @@
-import { createMotionComponent, createMotionComponentVariant, makeStyles, tokens } from '@fluentui/react-components';
+import { createMotionComponent, createMotionComponentVariant } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement, MotionComponentProps } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"cards cards" "controls ." / 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  cards: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '20px',
-    gridArea: 'cards',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
+import styles from './CreateMotionComponentVariantDefault.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '20px',
-    minHeight: '200px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-  },
-  sliderField: {
-    gridTemplateColumns: 'min-content 1fr',
-  },
-  sliderLabel: {
-    textWrap: 'nowrap',
-  },
-
-  item: {
-    backgroundColor: tokens.colorBrandBackground,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
-    borderRadius: '50%',
-    width: '100px',
-    height: '100px',
-  },
-  cardTitle: {
-    marginBottom: '50px',
-    fontWeight: tokens.fontWeightSemibold,
-  },
-});
+const useClasses = () => styles;
 
 const springPulse = `linear(0 0.000%, 1.086 8.000%, 1.397 11.000%, 1.565 14.000%, 1.6 17.000%, 1.489 21.000%, 1.023 30.000%, 0.8785 34.000%, 0.81 39.000%, 0.8732 46.000%, 1.028 56.000%, 1.057 65.000%, 0.9827 83.000%, 1 100.000%)
 `;
