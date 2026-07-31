@@ -1,19 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
+import { useId, Label, SpinButton } from '@fluentui/react-components';
 import type { SpinButtonProps } from '@fluentui/react-components';
 
-const useLayoutStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '500px',
+import styles from './SpinButtonDisplayValue.module.css';
 
-    '> label': {
-      marginBottom: tokens.spacingVerticalXXS,
-    },
-  },
-});
+const useLayoutStyles = () => styles;
 
 type FormatterFn = (value: number) => string;
 type ParserFn = (formattedValue: string) => number;

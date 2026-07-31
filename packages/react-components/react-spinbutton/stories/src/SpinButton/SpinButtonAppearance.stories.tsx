@@ -1,38 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, mergeClasses, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
+import { useId, Label, SpinButton } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '500px',
-  },
-
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    padding: tokens.spacingHorizontalMNudge,
-  },
-
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-});
+import styles from './SpinButtonAppearance.module.css';
 
 export const Appearance = (): JSXElement => {
-  const styles = useStyles();
-
   const outlineId = useId('outline-id');
   const underlineId = useId('underline-id');
   const filledLighterId = useId('filledLighter-id');
@@ -50,12 +22,12 @@ export const Appearance = (): JSXElement => {
         <SpinButton appearance="underline" id={underlineId} />
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+      <div className={`${styles.field} ${styles.filledLighter}`}>
         <Label htmlFor={filledLighterId}>Filled Lighter</Label>
         <SpinButton appearance="filled-lighter" id={filledLighterId} />
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+      <div className={`${styles.field} ${styles.filledDarker}`}>
         <Label htmlFor={filledDarkerId}>Filled Darker</Label>
         <SpinButton appearance="filled-darker" id={filledDarkerId} />
       </div>

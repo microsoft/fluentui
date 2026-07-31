@@ -1,27 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Skeleton, SkeletonItem, makeStyles, Text, tokens } from '@fluentui/react-components';
+import { Skeleton, SkeletonItem, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: {
-    display: 'flex',
-    background: tokens.colorNeutralBackground1,
-    flexDirection: 'column',
-    padding: tokens.spacingHorizontalXL,
-    gap: tokens.spacingVerticalL,
-  },
-  innerWrapper: {
-    display: 'grid',
-    alignItems: 'center',
-    gridTemplateColumns: '25px 1fr',
-    gridGap: tokens.spacingHorizontalS,
-  },
-});
+import styles from './SkeletonItemSize.module.css';
 
 const SIZES = [8, 12, 14, 16, 20, 22, 24, 28, 32, 36, 40, 48, 52, 56, 64, 72, 92, 96, 120, 128] as const;
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.wrapper}>
       {SIZES.map(size => (

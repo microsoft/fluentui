@@ -1,16 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { useId, Label, Slider, makeStyles } from '@fluentui/react-components';
+import { useId, Label, Slider } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-});
+import styles from './SliderMinMax.module.css';
 
 export const MinMax = (): JSXElement => {
-  const styles = useStyles();
   const id = useId();
   const min = 10;
   const max = 50;

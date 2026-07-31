@@ -1,0 +1,24 @@
+/* Story styles for SkeletonRow, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.invertedWrapper {
+  background-color: var(--colorNeutralBackground1);
+}
+
+.firstRow {
+  align-items: center;
+  display: grid;
+  padding-bottom: 10px;
+  position: relative;
+  gap: 10px;
+  grid-template-columns: min-content 80%;
+}
+
+.secondThirdRow {
+  align-items: center;
+  display: grid;
+  padding-bottom: 10px;
+  position: relative;
+  gap: 10px;
+  grid-template-columns: min-content 20% 20% 15% 15%;
+}

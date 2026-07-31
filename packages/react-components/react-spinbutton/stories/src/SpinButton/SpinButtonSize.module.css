@@ -1,0 +1,22 @@
+/* Story styles for SpinButtonSize, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.base {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.base > div {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--spacingHorizontalMNudge);
+}
+
+.base > div:first-child {
+  margin-top: 0px;
+}
+
+.base > div label {
+  margin-bottom: var(--spacingVerticalXXS);
+}

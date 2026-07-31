@@ -1,0 +1,12 @@
+/* Story styles for SpinButtonBounds, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.base {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.base > label {
+  margin-bottom: var(--spacingVerticalXXS);
+}

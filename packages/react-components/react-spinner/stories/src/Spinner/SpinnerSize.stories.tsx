@@ -1,16 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Spinner } from '@fluentui/react-components';
+import { Spinner } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    '> div': { padding: '20px' },
-  },
-});
+import styles from './SpinnerSize.module.css';
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <Spinner size="extra-tiny" label="Extra Tiny Spinner" />

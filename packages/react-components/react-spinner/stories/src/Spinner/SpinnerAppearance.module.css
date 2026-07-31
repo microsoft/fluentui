@@ -1,0 +1,10 @@
+/* Story styles for SpinnerAppearance, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.container > div {
+  padding: 20px;
+}
+
+.invertedWrapper {
+  background-color: var(--colorBrandBackgroundStatic);
+}

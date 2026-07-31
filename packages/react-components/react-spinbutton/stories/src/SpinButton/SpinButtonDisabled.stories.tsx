@@ -1,18 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
+import { useId, Label, SpinButton } from '@fluentui/react-components';
 
-const useLayoutStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '500px',
+import styles from './SpinButtonDisabled.module.css';
 
-    '> label': {
-      marginBottom: tokens.spacingVerticalXXS,
-    },
-  },
-});
+const useLayoutStyles = () => styles;
 
 export const Disabled = (): JSXElement => {
   const layoutStyles = useLayoutStyles();

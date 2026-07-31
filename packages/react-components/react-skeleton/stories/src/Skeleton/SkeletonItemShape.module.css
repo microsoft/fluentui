@@ -1,0 +1,14 @@
+/* Story styles for SkeletonItemShape, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.invertedWrapper {
+  background: var(--colorNeutralBackground1);
+  display: flex;
+  padding: var(--spacingHorizontalXL);
+}
+
+.row {
+  display: grid;
+  gap: var(--spacingHorizontalL);
+  grid-template-columns: 1fr 150px 1fr;
+}

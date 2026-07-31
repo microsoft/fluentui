@@ -1,0 +1,8 @@
+/* Story styles for SkeletonAnimation, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.invertedWrapper {
+  background-color: var(--colorNeutralBackground1);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}

@@ -1,22 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Skeleton, SkeletonItem, makeStyles, tokens } from '@fluentui/react-components';
+import { Skeleton, SkeletonItem } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  invertedWrapper: {
-    background: tokens.colorNeutralBackground1,
-    display: 'flex',
-    padding: tokens.spacingHorizontalXL,
-  },
-  row: {
-    display: 'grid',
-    gap: tokens.spacingHorizontalL,
-    gridTemplateColumns: '1fr 150px 1fr',
-  },
-});
+import styles from './SkeletonItemShape.module.css';
 
 export const Shape = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.invertedWrapper}>
       <Skeleton className={styles.row} aria-label="Loading Content">

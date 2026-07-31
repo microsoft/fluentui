@@ -1,18 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, Skeleton, SkeletonItem, makeStyles, tokens } from '@fluentui/react-components';
+import { Field, Skeleton, SkeletonItem } from '@fluentui/react-components';
 import type { SkeletonProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  invertedWrapper: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    paddingTop: '50px',
-    paddingBottom: '50px',
-  },
-});
+import styles from './SkeletonAppearance.module.css';
 
 export const Appearance = (props: Partial<SkeletonProps>): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.invertedWrapper}>
       <Field validationMessage="Opaque Appearance" validationState="none">

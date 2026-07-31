@@ -1,0 +1,17 @@
+/* Story styles for SkeletonItemSize, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  display: flex;
+  background: var(--colorNeutralBackground1);
+  flex-direction: column;
+  padding: var(--spacingHorizontalXL);
+  gap: var(--spacingVerticalL);
+}
+
+.innerWrapper {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 25px 1fr;
+  grid-gap: var(--spacingHorizontalS);
+}

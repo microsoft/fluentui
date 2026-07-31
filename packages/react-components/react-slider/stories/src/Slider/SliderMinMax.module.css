@@ -1,0 +1,7 @@
+/* Story styles for SliderMinMax, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
