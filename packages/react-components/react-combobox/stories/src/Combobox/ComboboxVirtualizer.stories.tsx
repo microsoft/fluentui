@@ -1,21 +1,13 @@
 /* eslint @typescript-eslint/no-deprecated: 0 */
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Combobox, Option, makeStyles, useId, useMergedRefs, useTimeout } from '@fluentui/react-components';
+import { Combobox, Option, useId, useMergedRefs, useTimeout } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
 // TODO: Migrate virtualizer to fluentui-contrib dependency once released
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
 
-const useStyles = makeStyles({
-  listbox: {
-    // maxHeight will be applied only positioning autoSize set.
-    maxHeight: '250px',
-  },
-  option: {
-    height: '32px',
-  },
-});
+import styles from './ComboboxVirtualizer.module.css';
 
 export const ComboboxVirtualizer = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combobox');
@@ -35,7 +27,6 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>): JSXElement =
   });
   const selectedIndex = React.useRef(0);
 
-  const styles = useStyles();
   const mergedRefs = useMergedRefs(scrollRef);
   // Scroll timer required to post scrollTo on stack post-open state change
   const [setScrollTimer, clearScrollTimer] = useTimeout();

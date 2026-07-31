@@ -1,25 +1,15 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Combobox, Option, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './ComboboxMultiselectWithValueString.module.css';
 
 export const MultiselectWithValueString = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-multi');
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const [value, setValue] = React.useState('');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
-  const styles = useStyles();
 
   const onSelect: ComboboxProps['onOptionSelect'] = (event, data) => {
     // update selectedOptions

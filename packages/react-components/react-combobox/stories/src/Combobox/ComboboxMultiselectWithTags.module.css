@@ -1,0 +1,19 @@
+/* Story styles for ComboboxMultiselectWithTags, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  grid-template-rows: repeat(1fr);
+  justify-items: start;
+  gap: 2px;
+  max-width: 400px;
+}
+
+.tagsList {
+  list-style-type: none;
+  margin-bottom: var(--spacingVerticalXXS);
+  margin-top: 0;
+  display: flex;
+  grid-gap: var(--spacingHorizontalXXS);
+  padding-inline-start: 0;
+}

@@ -1,23 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Checkbox, Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Checkbox, Combobox, Option, useId } from '@fluentui/react-components';
 import type { CheckboxProps, ComboboxProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './ComboboxControllingOpenAndClose.module.css';
 
 export const ControllingOpenAndClose = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-default');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
-  const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: ComboboxProps['onOpenChange'] = (e, data) => setOpen(data.open);

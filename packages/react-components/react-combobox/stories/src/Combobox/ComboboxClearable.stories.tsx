@@ -1,19 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Combobox, Label, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Combobox, Label, Option, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateRows: 'auto auto',
-    justifyItems: 'start',
-    gap: '2px',
-  },
-});
+import styles from './ComboboxClearable.module.css';
 
 export const Clearable = (): JSXElement => {
   const comboboxId = useId('combobox');
-  const styles = useStyles();
 
   return (
     <div className={styles.root}>

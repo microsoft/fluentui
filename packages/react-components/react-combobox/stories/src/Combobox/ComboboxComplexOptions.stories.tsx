@@ -1,22 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Combobox, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
+import { Combobox, Option, useId, Persona } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './ComboboxComplexOptions.module.css';
 
 export const ComplexOptions = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-default');
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <label id={comboId}>Schedule a meeting</label>

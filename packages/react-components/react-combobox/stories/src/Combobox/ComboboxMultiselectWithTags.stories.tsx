@@ -1,27 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, Combobox, makeStyles, Option, tokens, useId } from '@fluentui/react-components';
+import { Button, Combobox, Option, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 import { Dismiss12Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-  tagsList: {
-    listStyleType: 'none',
-    marginBottom: tokens.spacingVerticalXXS,
-    marginTop: 0,
-    paddingLeft: 0,
-    display: 'flex',
-    gridGap: tokens.spacingHorizontalXXS,
-  },
-});
+import styles from './ComboboxMultiselectWithTags.module.css';
 
 export const MultiselectWithTags = (props: Partial<ComboboxProps>): JSXElement => {
   // generate ids for handling labelling
@@ -33,7 +16,6 @@ export const MultiselectWithTags = (props: Partial<ComboboxProps>): JSXElement =
   const comboboxInputRef = React.useRef<HTMLInputElement>(null);
 
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
-  const styles = useStyles();
 
   // Handle selectedOptions both when an option is selected or deselected in the Combobox,
   // and when an option is removed by clicking on a tag

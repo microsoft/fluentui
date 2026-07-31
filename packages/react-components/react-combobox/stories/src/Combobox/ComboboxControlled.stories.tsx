@@ -1,22 +1,9 @@
 import * as React from 'react';
 import type { JSXElement, PresenceBadgeStatus } from '@fluentui/react-components';
-import { Combobox, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
+import { Combobox, Option, useId, Persona } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    justifyItems: 'start',
-    gap: '20px',
-    maxWidth: '400px',
-  },
-  field: {
-    display: 'grid',
-    justifyItems: 'start',
-    gap: '2px',
-  },
-});
+import styles from './ComboboxControlled.module.css';
 
 const optionData = [
   { text: 'Katri Athokas', value: 'kathok', presence: 'available', secondaryText: 'Available' },
@@ -27,7 +14,6 @@ const optionData = [
 
 export const Controlled = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-controlled');
-  const styles = useStyles();
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(['eatkins']);
   const [value, setValue] = React.useState('Elvia Atkins');
   const [open, setOpen] = React.useState(false);

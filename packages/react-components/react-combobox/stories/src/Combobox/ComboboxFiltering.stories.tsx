@@ -1,17 +1,8 @@
 import * as React from 'react';
 import type { JSXElement, ComboboxProps } from '@fluentui/react-components';
-import { Combobox, makeStyles, useComboboxFilter, useId } from '@fluentui/react-components';
+import { Combobox, useComboboxFilter, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './ComboboxFiltering.module.css';
 
 const options = [
   { children: 'Alligator', value: 'Alligator' },
@@ -30,7 +21,6 @@ const options = [
 
 export const Filtering = (): JSXElement => {
   const comboId = useId();
-  const styles = useStyles();
 
   const [query, setQuery] = React.useState<string>('');
   const children = useComboboxFilter(query, options, {

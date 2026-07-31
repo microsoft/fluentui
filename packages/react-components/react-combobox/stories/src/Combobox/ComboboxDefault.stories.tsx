@@ -1,23 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Combobox, Option, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './ComboboxDefault.module.css';
 
 export const Default = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-default');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>

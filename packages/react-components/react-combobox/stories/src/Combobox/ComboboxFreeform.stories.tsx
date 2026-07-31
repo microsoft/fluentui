@@ -1,18 +1,9 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Combobox, Option, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './ComboboxFreeform.module.css';
 
 export const Freeform = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-default');
@@ -37,7 +28,6 @@ export const Freeform = (props: Partial<ComboboxProps>): JSXElement => {
   ];
   const [matchingOptions, setMatchingOptions] = React.useState([...options]);
   const [customSearch, setCustomSearch] = React.useState<string | undefined>();
-  const styles = useStyles();
 
   const onChange: ComboboxProps['onChange'] = event => {
     const value = event.target.value.trim();
