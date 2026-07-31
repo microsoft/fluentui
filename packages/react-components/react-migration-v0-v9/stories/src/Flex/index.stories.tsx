@@ -2,36 +2,11 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Flex, FlexItem, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { makeStyles } from '@fluentui/react-components';
-import { Flex as FlexShim, flexItem } from '@fluentui/react-migration-v0-v9';
+import { Flex as FlexShim } from '@fluentui/react-migration-v0-v9';
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gridTemplateRows: '1fr',
-    alignContent: 'center',
-    alignItems: 'center',
-    justifyItems: 'center',
-    columnGap: '10px',
-    rowGap: '10px',
-    '> *': {
-      width: '100%',
-    },
-  },
-  v0Align: {
-    // align: (value: "center" | "stretch" | "auto" | "end" | "start" | "baseline")
-    ...flexItem.align('end'),
-  },
-  v0Push: {
-    ...flexItem.pushRow(),
-  },
-});
+import styles from './index.module.css';
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>
@@ -47,8 +22,6 @@ export const Default = (): JSXElement => {
 };
 
 export const FlexItemAlign = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>
@@ -70,8 +43,6 @@ export const FlexItemAlign = (): JSXElement => {
 };
 
 export const FlexItemPush = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>

@@ -2,20 +2,11 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Slider, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { makeStyles, Slider as V9Slider, useId } from '@fluentui/react-components';
-import { slider } from '@fluentui/react-migration-v0-v9';
+import { Slider as V9Slider, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-  fluid: {
-    ...slider.fluid(),
-  },
-});
+import styles from './index.module.css';
 
 export const Fluid = (): JSXElement => {
-  const styles = useStyles();
   const id = useId('sliders');
 
   return (
@@ -28,11 +19,8 @@ export const Fluid = (): JSXElement => {
       <div>
         <h3 id={`${id}-v9`}>V9 With mixin</h3>
         {/*
-         * const useStyles = makeStyles({
-         *   fluid: {
-         *     ...slider.fluid();
-         *   }
-         * })
+         * `styles.fluid` (index.module.css) snapshots the output of `slider.fluid()`
+         * from `@fluentui/react-migration-v0-v9`.
          */}
         <V9Slider aria-labelledby={`${id}-v9`} className={styles.fluid} />
       </div>

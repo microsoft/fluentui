@@ -9,39 +9,12 @@ import {
   MessageBarGroup,
   Button,
   Link,
-  makeStyles,
-  tokens,
   Field,
   RadioGroup,
   Radio,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  controlsContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  messageBarGroup: {
-    padding: tokens.spacingHorizontalMNudge,
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: '10px',
-    gap: '10px',
-
-    height: '300px',
-    overflow: 'auto',
-    border: `2px solid ${tokens.colorBrandForeground1}`,
-  },
-  field: {
-    flexGrow: 1,
-    alignItems: 'center',
-    gridTemplateColumns: 'max-content auto',
-  },
-  buttonGroup: {
-    display: 'flex',
-    gap: '5px',
-  },
-});
+import styles from './Animation.module.css';
 
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
@@ -51,7 +24,6 @@ interface ExampleMessage {
 }
 
 export const Animation = (): JSXElement => {
-  const styles = useStyles();
   const counterRef = React.useRef(0);
 
   const [animate, setAnimate] = React.useState<MessageBarGroupProps['animate']>('both');

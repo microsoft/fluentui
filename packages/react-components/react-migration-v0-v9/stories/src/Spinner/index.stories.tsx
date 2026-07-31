@@ -2,24 +2,11 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Loader, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { makeStyles, Spinner } from '@fluentui/react-components';
-import { spinner } from '@fluentui/react-migration-v0-v9';
+import { Spinner } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-  inline: {
-    ...spinner.v0Inline(),
-  },
-  label: {
-    ...spinner.v0SpinnerLabelStyle(),
-  },
-});
+import styles from './index.module.css';
 
 export const Inline = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>
@@ -42,8 +29,6 @@ export const Inline = (): JSXElement => {
 };
 
 export const Label = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>

@@ -2,18 +2,11 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Segment, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { makeStyles } from '@fluentui/react-components';
 import { Segment as SegmentShim } from '@fluentui/react-migration-v0-v9';
 
-const useStyles = makeStyles({
-  root: {
-    width: 'fit-content',
-  },
-});
+import styles from './index.module.css';
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-import { MenuList, MenuItemCheckbox, makeStyles, tokens } from '@fluentui/react-components';
+import { MenuList, MenuItemCheckbox } from '@fluentui/react-components';
 import {
   bundleIcon,
   CutRegular,
@@ -13,25 +13,13 @@ import {
 } from '@fluentui/react-icons';
 import type { MenuProps } from '@fluentui/react-components';
 
+import styles from './MenuListControlledCheckboxItems.module.css';
+
 const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-const useMenuListContainerStyles = makeStyles({
-  container: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    minWidth: '128px',
-    minHeight: '48px',
-    maxWidth: '300px',
-    width: 'max-content',
-    boxShadow: `${tokens.shadow16}`,
-    paddingTop: '4px',
-    paddingBottom: '4px',
-  },
-});
-
 export const ControlledCheckboxItems = (): JSXElement => {
-  const styles = useMenuListContainerStyles();
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ edit: ['cut', 'paste'] });
   const onChange: MenuProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
     setCheckedValues(s => {

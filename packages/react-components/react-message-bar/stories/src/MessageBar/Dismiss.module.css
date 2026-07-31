@@ -1,0 +1,19 @@
+/* Story styles for Dismiss, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.messageBarGroup {
+  padding: var(--spacingHorizontalMNudge);
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+  height: 300px;
+  overflow: auto;
+  border: 2px solid var(--colorBrandForeground1);
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}

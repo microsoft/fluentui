@@ -9,28 +9,9 @@ import {
   MessageBarGroup,
   Button,
   Link,
-  makeStyles,
-  tokens,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  messageBarGroup: {
-    padding: tokens.spacingHorizontalMNudge,
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: '10px',
-    gap: '10px',
-
-    height: '300px',
-    overflow: 'auto',
-    border: `2px solid ${tokens.colorBrandForeground1}`,
-  },
-  buttonGroup: {
-    display: 'flex',
-    justifyContent: 'end',
-    gap: '5px',
-  },
-});
+import styles from './Dismiss.module.css';
 
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
@@ -40,8 +21,6 @@ interface ExampleMessage {
 }
 
 export const Dismiss = (): JSXElement => {
-  const styles = useStyles();
-
   const counterRef = React.useRef(0);
   const [messages, setMessages] = React.useState<ExampleMessage[]>([]);
 

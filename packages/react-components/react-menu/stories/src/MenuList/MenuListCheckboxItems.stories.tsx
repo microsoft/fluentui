@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-import { MenuList, MenuItemCheckbox, makeStyles, tokens } from '@fluentui/react-components';
+import { MenuList, MenuItemCheckbox } from '@fluentui/react-components';
 import {
   bundleIcon,
   CutRegular,
@@ -12,26 +12,13 @@ import {
   EditFilled,
 } from '@fluentui/react-icons';
 
+import styles from './MenuListCheckboxItems.module.css';
+
 const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-const useMenuListContainerStyles = makeStyles({
-  container: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    minWidth: '128px',
-    minHeight: '48px',
-    maxWidth: '300px',
-    width: 'max-content',
-    boxShadow: `${tokens.shadow16}`,
-    paddingTop: '4px',
-    paddingBottom: '4px',
-  },
-});
-
 export const CheckboxItems = (): JSXElement => {
-  const styles = useMenuListContainerStyles();
-
   return (
     <div className={styles.container}>
       <MenuList>

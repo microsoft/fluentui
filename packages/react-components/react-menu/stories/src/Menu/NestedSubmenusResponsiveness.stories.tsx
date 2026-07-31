@@ -1,53 +1,11 @@
 import * as React from 'react';
 import type { JSXElement, PositioningImperativeRef, MenuProps } from '@fluentui/react-components';
 
-import {
-  Button,
-  Menu,
-  MenuTrigger,
-  MenuList,
-  MenuItem,
-  MenuPopover,
-  makeStyles,
-  tokens,
-  mergeClasses,
-} from '@fluentui/react-components';
+import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    width: '500px',
-    height: '400px',
-  },
-
-  resizableArea: {
-    width: '500px',
-    height: '400px',
-    position: 'relative',
-    border: `2px solid ${tokens.colorBrandBackground}`,
-    padding: '20px 10px 10px 10px',
-    resize: 'both',
-    backgroundImage: `linear-gradient(-45deg, ${tokens.colorBrandBackground} 20px, transparent 20px)`,
-    overflow: 'hidden',
-
-    '::after': {
-      content: `'Resizable Area'`,
-      position: 'absolute',
-      padding: '1px 4px 1px',
-      top: '-2px',
-      left: '-2px',
-      fontFamily: 'monospace',
-      fontSize: '15px',
-      fontWeight: 900,
-      lineHeight: 1,
-      letterSpacing: '1px',
-      color: tokens.colorNeutralForegroundOnBrand,
-      backgroundColor: tokens.colorBrandBackground,
-    },
-  },
-});
+import styles from './NestedSubmenusResponsiveness.module.css';
 
 export const NestedSubmenusResponsiveness = (): JSXElement => {
-  const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const [boundary, setBoundary] = React.useState<HTMLElement | null>(null);
   const positioningRefSubmenu = React.useRef<PositioningImperativeRef>(null);
@@ -89,7 +47,7 @@ export const NestedSubmenusResponsiveness = (): JSXElement => {
 
   return (
     <div className={styles.container}>
-      <div id="boundary" className={mergeClasses(styles.container, styles.resizableArea)} ref={setBoundary}>
+      <div id="boundary" className={`${styles.container} ${styles.resizableArea}`} ref={setBoundary}>
         <Menu
           open={open}
           onOpenChange={onOpenChange}

@@ -1,0 +1,31 @@
+/* Story styles for Reflow, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.compact {
+  width: 600px;
+}
+
+.resizableArea {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 10px;
+  gap: 10px;
+  border: 2px solid var(--colorBrandBackground);
+  position: relative;
+  overflow: hidden;
+}
+
+.resizableArea::after {
+  content: 'Resizable Area';
+  position: absolute;
+  padding: 1px 4px 1px;
+  top: -2px;
+  left: -2px;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--colorBrandBackground);
+}

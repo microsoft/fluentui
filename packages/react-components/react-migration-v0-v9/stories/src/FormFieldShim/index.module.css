@@ -1,0 +1,18 @@
+/* Story styles for index, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 1fr;
+  width: fit-content;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+}
+
+.componentName {
+  justify-self: end;
+  margin: 0 10px 0 0;
+}

@@ -2,14 +2,9 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Grid, Image } from '@fluentui/react-northstar';
-import { makeStyles } from '@fluentui/react-components';
 import { GridShim } from '@fluentui/react-migration-v0-v9';
 
-const useStyles = makeStyles({
-  root: {
-    width: 'fit-content',
-  },
-});
+import styles from './index.module.css';
 
 const images = [
   <Image
@@ -75,8 +70,6 @@ const images = [
 ];
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <div>

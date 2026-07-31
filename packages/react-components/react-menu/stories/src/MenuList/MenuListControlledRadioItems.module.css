@@ -1,0 +1,13 @@
+/* Story styles for MenuListControlledRadioItems, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  background-color: var(--colorNeutralBackground1);
+  min-width: 128px;
+  min-height: 48px;
+  max-width: 300px;
+  width: max-content;
+  box-shadow: var(--shadow16);
+  padding-top: 4px;
+  padding-bottom: 4px;
+}

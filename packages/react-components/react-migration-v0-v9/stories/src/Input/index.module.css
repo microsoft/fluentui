@@ -1,0 +1,31 @@
+/* Story styles for InputMixins, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to.
+ * Hand-converted (codemod bail: makeStyles arg spreads mixins imported from
+ * `@fluentui/react-migration-v0-v9`). `.fluid` / `.errorIndicator` snapshot the output of
+ * `input.fluid()` / `input.errorIndicator()` (Input.mixins.ts); the mixins stay published
+ * API until they retire with the migration package (D19 / S-H). */
+
+/* `width: block` is preserved verbatim from the source makeStyles — it is an invalid value
+ * the browser drops, so keeping it is behavior-identical to what Griffel emitted. */
+.root {
+  width: block;
+}
+
+/* input.fluid() */
+.fluid {
+  width: 100%;
+}
+
+/* input.errorIndicator(), plus the story's own font-size */
+.errorIndicator {
+  color: var(--colorPaletteRedBorderActive);
+  font-size: 16px;
+}
+
+.field {
+  /* Stack the label above the field */
+  display: flex;
+  flex-direction: column;
+  /* Use 2px gap below the label (per the design system) */
+  gap: 2px;
+}

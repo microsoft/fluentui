@@ -4,32 +4,10 @@ import descriptionMd from './Description.md';
 import { Input, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { Input as V9Input, Label } from '@fluentui/react-components';
 import { ErrorCircleFilled } from '@fluentui/react-icons';
-import { makeStyles } from '@fluentui/react-components';
-import { input } from '@fluentui/react-migration-v0-v9';
 
-const useStyles = makeStyles({
-  root: {
-    width: 'block',
-  },
-  fluid: {
-    ...input.fluid(),
-  },
-  errorIndicator: {
-    ...input.errorIndicator(),
-    fontSize: '16px',
-  },
-  field: {
-    // Stack the label above the field
-    display: 'flex',
-    flexDirection: 'column',
-    // Use 2px gap below the label (per the design system)
-    gap: '2px',
-  },
-});
+import styles from './index.module.css';
 
 export const Fluid = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>
@@ -49,8 +27,6 @@ export const Fluid = (): JSXElement => {
 };
 
 export const Error = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>

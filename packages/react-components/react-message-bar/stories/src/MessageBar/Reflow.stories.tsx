@@ -3,10 +3,7 @@ import type { JSXElement } from '@fluentui/react-components';
 import {
   Button,
   Link,
-  makeStyles,
-  tokens,
   Switch,
-  mergeClasses,
   MessageBar,
   MessageBarActions,
   MessageBarBody,
@@ -14,38 +11,9 @@ import {
 } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  compact: {
-    width: '600px',
-  },
-  resizableArea: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '30px 10px',
-    gap: '10px',
-    border: `2px solid ${tokens.colorBrandBackground}`,
-    position: 'relative',
-    overflow: 'hidden',
-
-    '::after': {
-      content: `'Resizable Area'`,
-      position: 'absolute',
-      padding: '1px 4px 1px',
-      top: '-2px',
-      left: '-2px',
-      fontFamily: 'monospace',
-      fontSize: '15px',
-      fontWeight: 900,
-      lineHeight: 1,
-      letterSpacing: '1px',
-      color: tokens.colorNeutralForegroundOnBrand,
-      backgroundColor: tokens.colorBrandBackground,
-    },
-  },
-});
+import styles from './Reflow.module.css';
 
 export const Reflow = (): JSXElement => {
-  const styles = useStyles();
   const [compact, setCompact] = React.useState(true);
   return (
     <>
@@ -54,7 +22,7 @@ export const Reflow = (): JSXElement => {
         checked={compact}
         onChange={(_, { checked }) => setCompact(checked)}
       />
-      <div className={mergeClasses(styles.resizableArea, compact && styles.compact)}>
+      <div className={[styles.resizableArea, compact && styles.compact].filter(Boolean).join(' ')}>
         <MessageBar intent="success">
           <MessageBarBody>
             <MessageBarTitle>Descriptive title</MessageBarTitle>

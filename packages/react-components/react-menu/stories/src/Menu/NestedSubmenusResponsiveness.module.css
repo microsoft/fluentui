@@ -1,0 +1,33 @@
+/* Story styles for NestedSubmenusResponsiveness, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  width: 500px;
+  height: 400px;
+}
+
+.resizableArea {
+  width: 500px;
+  height: 400px;
+  position: relative;
+  border: 2px solid var(--colorBrandBackground);
+  padding: 20px 10px 10px 10px;
+  resize: both;
+  background-image: linear-gradient(-45deg, var(--colorBrandBackground) 20px, transparent 20px);
+  overflow: hidden;
+}
+
+.resizableArea::after {
+  content: 'Resizable Area';
+  position: absolute;
+  padding: 1px 4px 1px;
+  top: -2px;
+  left: -2px;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--colorBrandBackground);
+}

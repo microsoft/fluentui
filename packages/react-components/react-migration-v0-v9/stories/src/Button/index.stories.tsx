@@ -2,25 +2,12 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Button, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { makeStyles, Button as V9Button } from '@fluentui/react-components';
+import { Button as V9Button } from '@fluentui/react-components';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
-import * as buttonMigrationStyles from '@fluentui/react-migration-v0-v9';
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-  disabledCursor: {
-    ...buttonMigrationStyles.v9DisabledCursor(),
-  },
-  v0IconStyle: {
-    ...buttonMigrationStyles.v0Icon(),
-  },
-});
+import styles from './index.module.css';
 
 export const DisabledCursor = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>
@@ -37,8 +24,6 @@ export const DisabledCursor = (): JSXElement => {
 };
 
 export const Icon = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Provider theme={teamsTheme} className={styles.root}>
       <div>

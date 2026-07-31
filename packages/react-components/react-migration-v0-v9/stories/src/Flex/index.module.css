@@ -1,0 +1,32 @@
+/* Story styles for FlexShim, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to.
+ * Hand-converted (codemod bail: makeStyles arg spreads mixins imported from
+ * `@fluentui/react-migration-v0-v9`). `.v0Align` / `.v0Push` snapshot the output of
+ * `flexItem.align('end')` / `flexItem.pushRow()` (FlexItem.mixins.ts); the mixins stay
+ * published API until they retire with the migration package (D19 / S-H). */
+
+.root {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.root > * {
+  width: 100%;
+}
+
+/* flexItem.align('end') — align: (value: "center" | "stretch" | "auto" | "end" | "start" | "baseline") */
+.v0Align {
+  align-self: flex-end;
+}
+
+/* flexItem.pushRow() */
+.v0Push {
+  margin-left: auto;
+}

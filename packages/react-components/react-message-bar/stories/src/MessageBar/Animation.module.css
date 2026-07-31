@@ -1,0 +1,29 @@
+/* Story styles for Animation, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.controlsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.messageBarGroup {
+  padding: var(--spacingHorizontalMNudge);
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+  height: 300px;
+  overflow: auto;
+  border: 2px solid var(--colorBrandForeground1);
+}
+
+.field {
+  flex-grow: 1;
+  align-items: center;
+  grid-template-columns: max-content auto;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 5px;
+}

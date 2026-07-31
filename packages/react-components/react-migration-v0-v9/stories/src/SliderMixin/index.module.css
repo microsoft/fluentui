@@ -1,0 +1,15 @@
+/* Story styles for SliderMixin, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to.
+ * Hand-converted (codemod bail: makeStyles arg spreads mixins imported from
+ * `@fluentui/react-migration-v0-v9`). `.fluid` snapshots the output of `slider.fluid()`
+ * (Slider.mixins.ts); the mixin stays published API until it retires with the migration
+ * package (D19 / S-H). */
+
+.root {
+  width: 100%;
+}
+
+/* slider.fluid() */
+.fluid {
+  width: 100%;
+}

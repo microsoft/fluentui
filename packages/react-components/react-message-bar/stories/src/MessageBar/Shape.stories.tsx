@@ -1,14 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, MessageBar, MessageBarTitle, MessageBarBody } from '@fluentui/react-components';
+import { MessageBar, MessageBarTitle, MessageBarBody } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-});
+import styles from './Shape.module.css';
+
+const useClasses = () => styles;
 
 export const Shape = (): JSXElement => {
   const classes = useClasses();
