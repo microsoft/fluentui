@@ -1,0 +1,13 @@
+/* Story styles for TreeLazyLoading, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.screenReadersOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  /* '-1' is not a length; browsers drop this declaration — preserved verbatim from the original story */
+  margin: -1;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}

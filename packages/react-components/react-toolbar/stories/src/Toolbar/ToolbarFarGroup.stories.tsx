@@ -1,15 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles } from '@fluentui/react-components';
 import { FontIncreaseRegular, FontDecreaseRegular, TextFontRegular } from '@fluentui/react-icons';
 import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarGroup } from '@fluentui/react-components';
 import type { ToolbarProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  toolbar: {
-    justifyContent: 'space-between',
-  },
-});
+import styles from './ToolbarFarGroup.module.css';
+
+const useStyles = () => styles;
 
 export const FarGroup = (props: Partial<ToolbarProps>): JSXElement => {
   const farGroupStyles = useStyles();

@@ -1,0 +1,34 @@
+/* Story styles for ToastLifecycle, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  display: block;
+}
+
+.logContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.logLabel {
+  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--colorBrandBackground);
+  width: fit-content;
+  font-weight: var(--fontWeightBold);
+  padding: 2px 12px;
+}
+
+.log {
+  overflow-y: auto;
+  box-shadow: var(--shadow16);
+  position: relative;
+  min-width: 200px;
+  height: 200px;
+  border: 2px solid var(--colorBrandBackground);
+  padding: 12px;
+}

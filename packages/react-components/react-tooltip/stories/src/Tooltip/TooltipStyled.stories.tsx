@@ -1,19 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-import { makeStyles, tokens, Button, Tooltip } from '@fluentui/react-components';
+import { Button, Tooltip } from '@fluentui/react-components';
 import { SlideTextRegular } from '@fluentui/react-icons';
 import type { TooltipProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  tooltip: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundInverted,
-  },
-});
+import styles from './TooltipStyled.module.css';
 
 export const Styled = (props: Partial<TooltipProps>): JSXElement => {
-  const styles = useStyles();
   return (
     <Tooltip
       withArrow

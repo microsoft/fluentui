@@ -1,0 +1,6 @@
+/* Story styles for ToolbarFarGroup, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.toolbar {
+  justify-content: space-between;
+}

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import type { JSXElement, HeadlessFlatTreeItemProps, TreeItemValue } from '@fluentui/react-components';
 import { FlatTree, FlatTreeItem, TreeItemLayout, useHeadlessFlatTree_unstable } from '@fluentui/react-components';
-import { makeStyles, Spinner } from '@fluentui/react-components';
+import { Spinner } from '@fluentui/react-components';
+
+import styles from './TreeInfiniteScrolling.module.css';
 
 const ITEMS_PER_PAGE = 10;
 const MAX_PAGES = 4;
@@ -18,23 +20,6 @@ interface FetchResult {
 }
 
 type CustomItem = HeadlessFlatTreeItemProps & { name: string | React.ReactNode };
-
-const useStyles = makeStyles({
-  container: {
-    height: '400px',
-    paddingBottom: '10px',
-    overflow: 'auto',
-  },
-  screenReadersOnly: {
-    position: 'absolute',
-    width: '1px',
-    height: '1px',
-    margin: '-1',
-    overflow: 'hidden',
-    clip: 'rect(0,0,0,0)',
-    whiteSpace: 'nowrap',
-  },
-});
 
 export const InfiniteScrolling = (): JSXElement => {
   const [page, setPage] = React.useState(1);
@@ -69,8 +54,6 @@ export const InfiniteScrolling = (): JSXElement => {
     ],
     [isLoading, peopleItems],
   );
-
-  const styles = useStyles();
 
   const flatTree = useHeadlessFlatTree_unstable(items, { defaultOpenItems: ['pinned', 'people'] });
 
@@ -139,7 +122,6 @@ export const InfiniteScrolling = (): JSXElement => {
 };
 
 const AriaLive = ({ content }: { content: string | undefined }) => {
-  const styles = useStyles();
   return (
     <div aria-live="polite" aria-atomic="true" className={styles.screenReadersOnly}>
       {content}

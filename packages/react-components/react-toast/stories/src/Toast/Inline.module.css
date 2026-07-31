@@ -1,0 +1,13 @@
+/* Story styles for Inline, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  border: 2px dashed green;
+  height: 500px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 20px;
+}

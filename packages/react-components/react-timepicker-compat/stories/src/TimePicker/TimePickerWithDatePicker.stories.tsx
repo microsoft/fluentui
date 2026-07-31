@@ -1,24 +1,14 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 import type { TimePickerProps } from '@fluentui/react-timepicker-compat';
 import { TimePicker, formatDateToTimeString } from '@fluentui/react-timepicker-compat';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    columnGap: '20px',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    maxWidth: '600px',
-    marginBottom: '10px',
-  },
-});
+import styles from './TimePickerWithDatePicker.module.css';
 
 export const TimePickerWithDatePicker = (): JSXElement => {
-  const styles = useStyles();
-
   const [selectedDate, setSelectedDate] = React.useState<Date | null | undefined>(null);
 
   const [selectedTime, setSelectedTime] = React.useState<Date | null>(null);

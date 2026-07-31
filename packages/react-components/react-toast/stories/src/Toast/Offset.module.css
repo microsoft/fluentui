@@ -1,0 +1,23 @@
+/* Story styles for Offset, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.playground {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  gap: 20px;
+}
+
+.horizontal {
+  grid-column-end: 2;
+}
+
+.vertical {
+  grid-row-start: 2;
+  grid-column-end: 2;
+}
+
+.positions {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+}

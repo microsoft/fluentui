@@ -2,17 +2,17 @@ import * as React from 'react';
 import type { JSXElement, PersonaProps } from '@fluentui/react-components';
 import {
   Field,
-  makeStyles,
   motionTokens,
   Persona,
   Slider,
   Switch,
-  tokens,
   Tree,
   TreeItem,
   TreeItemLayout,
 } from '@fluentui/react-components';
 import description from './TreeMotionCustom.stories.md';
+
+import styles from './TreeMotionCustom.module.css';
 
 const personaData = [
   {
@@ -50,17 +50,7 @@ const avatarFor = (useImage?: boolean, image?: string): PersonaProps['avatar'] =
       }
     : { color: 'colorful' };
 
-const useStyles = makeStyles({
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    marginBottom: tokens.spacingVerticalL,
-    padding: tokens.spacingVerticalM,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-  },
-});
+const useStyles = () => styles;
 
 export const MotionCustom = (): JSXElement => {
   const classes = useStyles();

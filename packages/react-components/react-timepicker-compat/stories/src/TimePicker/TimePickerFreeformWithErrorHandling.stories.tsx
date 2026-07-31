@@ -1,15 +1,11 @@
 import * as React from 'react';
 import type { JSXElement, FieldProps } from '@fluentui/react-components';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import type { TimePickerErrorType, TimePickerProps } from '@fluentui/react-timepicker-compat';
 import { TimePicker } from '@fluentui/react-timepicker-compat';
 import story from './TimePickerFreeformWithErrorHandling.md';
 
-const useStyles = makeStyles({
-  control: {
-    maxWidth: '300px',
-  },
-});
+import styles from './TimePickerFreeformWithErrorHandling.module.css';
 
 const getErrorMessage = (error?: TimePickerErrorType): FieldProps['validationMessage'] => {
   switch (error) {
@@ -25,8 +21,6 @@ const getErrorMessage = (error?: TimePickerErrorType): FieldProps['validationMes
 };
 
 export const FreeformWithErrorHandling = (): JSXElement => {
-  const styles = useStyles();
-
   const [errorType, setErrorType] = React.useState<TimePickerErrorType>();
   const handleTimeChange: TimePickerProps['onTimeChange'] = (_ev, data) => {
     setErrorType(data.errorType);

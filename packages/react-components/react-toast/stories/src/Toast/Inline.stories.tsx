@@ -1,33 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  useId,
-  Link,
-  Button,
-  Toaster,
-  useToastController,
-  Toast,
-  ToastTitle,
-  Text,
-  makeStyles,
-} from '@fluentui/react-components';
+import { useId, Link, Button, Toaster, useToastController, Toast, ToastTitle, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    border: '2px dashed green',
-
-    height: '500px',
-    width: '500px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    marginTop: '20px',
-  },
-});
+import styles from './Inline.module.css';
 
 export const Inline = (): JSXElement => {
-  const styles = useStyles();
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const notify = () =>

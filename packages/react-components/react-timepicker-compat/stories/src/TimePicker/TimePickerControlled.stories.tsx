@@ -1,18 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import type { TimePickerProps } from '@fluentui/react-timepicker-compat';
 import { TimePicker, formatDateToTimeString } from '@fluentui/react-timepicker-compat';
 import story from './TimePickerControlled.md';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '20px',
-    maxWidth: '300px',
-  },
-});
+import styles from './TimePickerControlled.module.css';
 
 const DefaultSelection = () => {
   const [defaultSelectedTime] = React.useState(new Date('November 25, 2023 12:30:00'));
@@ -55,7 +48,6 @@ const ControlledSelection = () => {
 };
 
 export const Controlled = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <DefaultSelection />

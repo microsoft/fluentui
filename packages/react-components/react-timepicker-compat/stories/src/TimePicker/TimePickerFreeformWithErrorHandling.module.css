@@ -1,0 +1,6 @@
+/* Story styles for TimePickerFreeformWithErrorHandling, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.control {
+  max-width: 300px;
+}

@@ -1,15 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import type { TimePickerProps } from '@fluentui/react-timepicker-compat';
 import { TimePicker } from '@fluentui/react-timepicker-compat';
 import story from './TimePickerFreeformCustomParsing.md';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: '300px',
-  },
-});
+import styles from './TimePickerFreeformCustomParsing.module.css';
 
 const formatDateToTimeString = (date: Date) => {
   const localeTimeString = date.toLocaleTimeString([], {
@@ -24,8 +20,6 @@ const formatDateToTimeString = (date: Date) => {
 };
 
 export const FreeformCustomParsing = (): JSXElement => {
-  const styles = useStyles();
-
   const [anchor] = React.useState(() => new Date(2023, 1, 1));
 
   const parseTimeStringToDate: TimePickerProps['parseTimeStringToDate'] = (time: string | undefined) => {

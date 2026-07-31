@@ -7,39 +7,15 @@ import {
   SpinButton,
   RadioGroup,
   Radio,
-  makeStyles,
   Toaster,
   useToastController,
   ToastTitle,
   Toast,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  playground: {
-    display: 'grid',
-    gridTemplateColumns: '25% 75%',
-    columnGap: '20px',
-    rowGap: '20px',
-  },
-
-  horizontal: {
-    gridColumnEnd: 2,
-  },
-
-  vertical: {
-    gridRowStart: 2,
-    gridColumnEnd: 2,
-  },
-
-  positions: {
-    gridRowStart: 1,
-    gridRowEnd: 3,
-    gridColumnStart: 2,
-  },
-});
+import styles from './Offset.module.css';
 
 export const Offset = (): JSXElement => {
-  const styles = useStyles();
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const [horizontal, setHorizontal] = React.useState(20);

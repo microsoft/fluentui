@@ -1,0 +1,10 @@
+/* Story styles for TimePickerWithDatePicker, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 600px;
+  margin-bottom: 10px;
+}

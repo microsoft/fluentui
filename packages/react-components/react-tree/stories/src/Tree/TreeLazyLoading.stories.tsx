@@ -5,9 +5,11 @@ import type {
   TreeItemOpenChangeData,
   TreeItemOpenChangeEvent,
 } from '@fluentui/react-components';
-import { FlatTree, FlatTreeItem, TreeItemLayout, Spinner, makeStyles } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout, Spinner } from '@fluentui/react-components';
 import { useQuery } from './utils/useQuery';
 import { mockFetch } from './utils/mockFetch';
+
+import styles from './TreeLazyLoading.module.css';
 
 interface Entity {
   name: string;
@@ -20,21 +22,8 @@ type SubtreeProps = {
   onDataLoaded?(): void;
 };
 
-const useStyles = makeStyles({
-  screenReadersOnly: {
-    position: 'absolute',
-    width: '1px',
-    height: '1px',
-    margin: '-1',
-    overflow: 'hidden',
-    clip: 'rect(0,0,0,0)',
-    whiteSpace: 'nowrap',
-  },
-});
-
 export const LazyLoading = (): JSXElement => {
   const [ariaMessage, setAriaMessage] = React.useState('');
-  const styles = useStyles();
   return (
     <>
       <FlatTree aria-label="Lazy Loading">

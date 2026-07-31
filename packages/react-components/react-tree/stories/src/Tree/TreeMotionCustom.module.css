@@ -1,0 +1,12 @@
+/* Story styles for TreeMotionCustom, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalS);
+  margin-bottom: var(--spacingVerticalL);
+  padding: var(--spacingVerticalM);
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+}

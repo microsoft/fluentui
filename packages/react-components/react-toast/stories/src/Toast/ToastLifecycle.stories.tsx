@@ -5,8 +5,6 @@ import {
   Link,
   Button,
   Text,
-  makeStyles,
-  tokens,
   Toaster,
   useToastController,
   Toast,
@@ -15,42 +13,9 @@ import {
   ToastFooter,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    gap: '20px',
-  },
-
-  button: {
-    display: 'block',
-  },
-
-  logContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  logLabel: {
-    color: tokens.colorNeutralForegroundOnBrand,
-    backgroundColor: tokens.colorBrandBackground,
-    width: 'fit-content',
-    fontWeight: tokens.fontWeightBold,
-    padding: '2px 12px',
-  },
-
-  log: {
-    overflowY: 'auto',
-    boxShadow: tokens.shadow16,
-    position: 'relative',
-    minWidth: '200px',
-    height: '200px',
-    border: `2px solid ${tokens.colorBrandBackground}`,
-    padding: '12px',
-  },
-});
+import styles from './ToastLifecycle.module.css';
 
 export const ToastLifecycle = (): JSXElement => {
-  const styles = useStyles();
   const toasterId = useId('toaster');
   const labelId = useId();
   const { dispatchToast } = useToastController(toasterId);
