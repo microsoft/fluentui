@@ -2,13 +2,11 @@ import * as React from 'react';
 import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
 import type { VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
 import { VerticalBarChart } from '@fluentui/react-charts';
-import { Switch, Checkbox, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
+import { Switch, Checkbox, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground2,
-  },
-});
+import styles from './VerticalBarChartDefault.module.css';
+
+const useStyles = () => styles;
 
 export const VerticalBarDefault = (): JSXElement => {
   const classes = useStyles();

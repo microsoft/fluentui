@@ -2,16 +2,10 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import type { ChartProps } from '@fluentui/react-charts';
 import { DonutChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
-import { makeStyles, mergeClasses } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  customDonutChart: {
-    border: `2px solid ${getColorFromToken(DataVizPalette.color11)}`,
-    borderRadius: '50%',
-    padding: '10px',
-    backgroundColor: getColorFromToken(DataVizPalette.disabled),
-  },
-});
+import styles from './DonutChartStyled.module.css';
+
+const useStyles = () => styles;
 
 export const DonutChartStyled = (): JSXElement => {
   const classes = useStyles();
@@ -41,7 +35,7 @@ export const DonutChartStyled = (): JSXElement => {
       hideLegend={false}
       height={220}
       valueInsideDonut={39000}
-      className={mergeClasses(classes.customDonutChart)}
+      className={classes.customDonutChart}
     />
   );
 };

@@ -1,13 +1,11 @@
 import * as React from 'react';
 import type { JSXElement, RadioGroupOnChangeData } from '@fluentui/react-components';
 import { AreaChart } from '@fluentui/react-charts';
-import { Switch, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
+import { Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground2,
-  },
-});
+import styles from './AreaChartNegative..module.css';
+
+const useStyles = () => styles;
 
 export const AreaChartNegative = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);

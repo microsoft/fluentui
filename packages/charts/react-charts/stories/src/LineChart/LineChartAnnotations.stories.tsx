@@ -2,13 +2,10 @@ import * as React from 'react';
 import type { ChartProps, LineChartProps, ChartAnnotation } from '@fluentui/react-charts';
 import { LineChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground2,
-  },
-});
+import styles from './LineChartAnnotations.module.css';
+
+const useStyles = () => styles;
 
 export const LineChartAnnotationsExample = (props: LineChartProps): JSXElement => {
   const classes = useStyles();

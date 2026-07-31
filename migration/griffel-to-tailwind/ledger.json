@@ -615,5 +615,14 @@
     "result": "21 VR harness files converted to CSS Modules; scripts/test-ssr Griffel-free (5 files); perf MakeStyles scenario repointed at CSS Modules; VR zero-tolerance 1438/1438 clean across 26 story kinds (both legs fresh --skip-nx-cache); ssr-tests-v9 green; perf bundle green",
     "survivors": "ShadowDOM/utils.tsx + ShadowDOMDefault.stories.tsx (D11 accepted loss, shadow renderer load-bearing); MakeStyles/*.stories.tsx + CustomStyleHooks.stories.tsx retained pending retirement (D11 prescribes deletion; file deletion was denied by permissions this session); @griffel/react stays in vr-tests-react-components package.json for those files",
     "report": "reports/harness-se.md"
+  },
+  "storiesDocsSF": {
+    "date": "2026-07-30",
+    "worklist": "reports/sf-worklist.md",
+    "census": "561 files (511 story-makeStyles, 47 docs, 3 mergeClasses-only), 7 batches",
+    "progress": "batch 1/7 DONE (93 files: 49 stories converted + 46 new module.css; 44 docs — 25 codemod + hand rewrites; BuildTimeStyles.mdx DELETED per D21; SSR quartet + AdvancedConfiguration rewritten renderer-free)",
+    "survivors": "FromV0 mixin-consumer fences (retire with migration mixins in S-H/D19); StylingComponents escape-hatch section; AdvancedConfiguration CSP nonce (pending S-G/D20)",
+    "gates": "charts-stories tsc+lint green; docsite tsc+lint+jest green; docsite build-storybook FULL green (INFRA-1c did not reproduce); VR n/a",
+    "report": "reports/sf-batch1.md"
   }
 }

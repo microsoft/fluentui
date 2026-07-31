@@ -1,0 +1,28 @@
+/* Story styles for GanttChartGrouped, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.chartWrapper {
+  margin-top: 10px;
+}

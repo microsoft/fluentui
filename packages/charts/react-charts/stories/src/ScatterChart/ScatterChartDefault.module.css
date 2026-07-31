@@ -1,0 +1,6 @@
+/* Story styles for ScatterChartDefault, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.svgTooltip {
+  fill: var(--colorNeutralBackground2);
+}

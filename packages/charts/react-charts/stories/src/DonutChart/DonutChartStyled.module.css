@@ -1,0 +1,12 @@
+/* Story styles for DonutChartStyled, converted from Griffel makeStyles (S-F batch 1).
+ * The original called getColorFromToken(DataVizPalette.color11 / .disabled) at module scope
+ * with the default isDarkTheme=false, which always resolves to the light-theme table values
+ * (see library/src/utilities/colors.ts): qualitative.11 -> #3c51b4, semantic.disabled -> #dbdbdb.
+ * Those constants are inlined here. */
+
+.customDonutChart {
+  border: 2px solid #3c51b4;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: #dbdbdb;
+}

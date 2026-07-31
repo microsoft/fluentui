@@ -2,13 +2,11 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import type { ChartProps } from '@fluentui/react-charts';
 import { ScatterChart, DataVizPalette } from '@fluentui/react-charts';
-import { makeStyles, Switch, tokens } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground2,
-  },
-});
+import styles from './ScatterChartDefault.module.css';
+
+const useStyles = () => styles;
 
 export const ScatterChartDefault = (): JSXElement => {
   const classes = useStyles();

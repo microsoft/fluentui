@@ -2,14 +2,12 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import type { LineChartProps, ChartProps } from '@fluentui/react-charts';
 import { LineChart, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox, makeStyles, tokens, Field, Radio, RadioGroup } from '@fluentui/react-components';
+import { Switch, Checkbox, Field, Radio, RadioGroup } from '@fluentui/react-components';
 import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground2,
-  },
-});
+import styles from './LineChartDefault.module.css';
+
+const useStyles = () => styles;
 
 export const LineChartBasic = (props: LineChartProps): JSXElement => {
   const classes = useStyles();

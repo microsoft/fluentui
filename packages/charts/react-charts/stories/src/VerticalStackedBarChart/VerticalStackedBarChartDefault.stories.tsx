@@ -2,13 +2,11 @@ import * as React from 'react';
 import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
 import type { VSChartDataPoint, VerticalStackedChartProps, LineChartLineOptions } from '@fluentui/react-charts';
 import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
-import { Checkbox, Switch, tokens, makeStyles } from '@fluentui/react-components';
+import { Checkbox, Switch } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground2,
-  },
-});
+import styles from './VerticalStackedBarChartDefault.module.css';
+
+const useStyles = () => styles;
 
 export const VerticalStackedBarDefault = (): JSXElement => {
   const classes = useStyles();

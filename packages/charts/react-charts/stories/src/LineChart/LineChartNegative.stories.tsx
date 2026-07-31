@@ -2,13 +2,11 @@ import * as React from 'react';
 import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
 import type { ChartProps } from '@fluentui/react-charts';
 import { LineChart, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox, makeStyles, tokens } from '@fluentui/react-components';
+import { Switch, Checkbox } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground2,
-  },
-});
+import styles from './LineChartNegative.module.css';
+
+const useStyles = () => styles;
 
 export const LineChartNegative = (): JSXElement => {
   const classes = useStyles();

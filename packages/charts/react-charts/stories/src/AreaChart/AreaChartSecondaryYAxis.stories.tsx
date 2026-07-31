@@ -2,13 +2,11 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import type { ChartProps, LineChartDataPoint, LineChartPoints } from '@fluentui/react-charts';
 import { AreaChart } from '@fluentui/react-charts';
-import { makeStyles, tokens, useId } from '@fluentui/react-components';
+import { useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  svgTooltip: {
-    fill: tokens.colorNeutralBackground2,
-  },
-});
+import styles from './AreaChartSecondaryYAxis.module.css';
+
+const useStyles = () => styles;
 
 export const AreaChartSecondaryYAxis = (): JSXElement => {
   const classes = useStyles();

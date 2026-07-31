@@ -2,7 +2,9 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import type { GanttChartDataPoint } from '@fluentui/react-charts';
 import { DataVizPalette, GanttChart } from '@fluentui/react-charts';
-import { Switch, makeStyles } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-components';
+
+import styles from './GanttChartGrouped.module.css';
 
 const data: GanttChartDataPoint[] = [
   {
@@ -87,33 +89,7 @@ const data: GanttChartDataPoint[] = [
   },
 ];
 
-const useStyles = makeStyles({
-  container: {
-    padding: '16px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '16px',
-  },
-  row: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '20px',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-  },
-  sliderGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4px',
-    minWidth: '180px',
-  },
-  chartWrapper: {
-    marginTop: '10px',
-  },
-});
-
 export const GanttChartGrouped = (): JSXElement => {
-  const styles = useStyles();
   const [width, setWidth] = React.useState(600);
   const [height, setHeight] = React.useState(350);
   const [enableGradient, setEnableGradient] = React.useState(false);
