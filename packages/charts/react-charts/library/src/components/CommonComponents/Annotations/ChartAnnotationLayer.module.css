@@ -1,0 +1,156 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Slot mapping (mergeClasses ARGUMENT order of `useChartAnnotationLayerStyles`):
+ *
+ *   root                                 1 chartAnnotationLayerClassNames.root → static (JS) — REMOVED (D16.1)
+ *                                        2 useStyles.root                      → l1  .root
+ *                                          (+ `group/fui-chart-annotation-layer` marker second, in JS)
+ *                                        3 props.className                     → consumer (CartesianChart hands its
+ *                                                                               `.annotation-layer` class here)
+ *                                        4 props.styles?.root                  → consumer
+ *   annotation                           same shape → l1  .annotation (+ shared base, below)
+ *   annotationNoDefaults                 DEAD SLICE, carried: the Griffel hook declared it
+ *                                        but never returned it, so under
+ *                                        `hideDefaultStyles` the TSX's
+ *                                        `classes.annotationNoDefaults` was always
+ *                                        `undefined` (see the hook's JSDoc)
+ *                                                   → l1  .annotation-no-defaults
+ *   connectorLayer                       same shape → l1  .connector-layer
+ *   measurement                          same shape → l1  .measurement
+ *   annotationContent                    same shape → l1  .annotation-content
+ *   annotationForeignObject              same shape → l1  .annotation-foreign-object
+ *   annotationContentInteractive         same shape → l1  .annotation-content-interactive
+ *   annotationForeignObjectInteractive   same shape → l1  .annotation-foreign-object-interactive
+ *   connectorGroup                       same shape → l1  .connector-group
+ *
+ * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
+ * Everything is `fui.components.l1` — every classed element (the layer root `<div>`, the
+ * connector `<svg>`, the `<foreignObject>`s, the annotation container/content `<div>`s,
+ * the measurement `<div>`s and the connector `<g>`) is rendered by ChartAnnotationLayer
+ * itself. `root` is the component's outermost slot, so the D15.1 marker rides it.
+ *
+ * The Griffel source spread ONE shared object (`annotationBaseStyles`, i.e.
+ * `typographyStyles.caption1` + layout/padding/color) into both `annotation` and
+ * `annotationNoDefaults`, with `annotation` adding only shadow + border on top. That
+ * sharing is expressed as a two-class selector list (PolarChart `gridLine` precedent)
+ * followed by an `.annotation`-only block — file order is the winner order (D2a3), and
+ * the two blocks set disjoint properties anyway.
+ *
+ * IN-FILE ORDER IS LOAD-BEARING in one place: `.annotation-content-interactive` /
+ * `.annotation-foreign-object-interactive` (`pointer-events: auto`) must be declared
+ * AFTER `.annotation-content` / `.annotation-foreign-object` (`pointer-events: none`) —
+ * the TSX composes content + contentInteractive on the same element and the Griffel
+ * mergeClasses winner was the LAST argument.
+ *
+ * The per-annotation dynamic styling (backgroundColor/opacity via
+ * `applyOpacityToColor`, border*, padding, boxShadow, rotation, text color/size/weight)
+ * was always INLINE STYLE computed in the component — it never was in the Griffel
+ * slices and stays in JS.
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/CommonComponents/Annotations/useChartAnnotationLayer.styles.js.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * Two `[ltr, rtl]` atomic pairs, both inert but carried faithfully:
+ *   root            left:0 + right:0 (both flipped) → symmetric → physical `inset-0`
+ *   connector-layer left:0 only (flips to right:0 in RTL) → `start-0`
+ *     (inset-inline-start reproduces the flip exactly; with `width: 100%` the two
+ *     anchors coincide, so this is fidelity, not behaviour)
+ * The 4px/8px padding pair on the annotation base is symmetric (both sides set) →
+ * `px-horizontal-s` / `py-vertical-xs` (logical inline/block, identical computed values).
+ *
+ * ── forced colors ───────────────────────────────────────────────────────────────────────
+ * No `HighContrastSelector` media query in any slice — nothing to narrow.
+ *
+ * ── Spacing forms (D4 amendment) ────────────────────────────────────────────────────────
+ * 4px → vertical-XS step, 8px → horizontal-S step.
+ *
+ * ── Shorthands ──────────────────────────────────────────────────────────────────────────
+ * `border-radius: var(--borderRadiusMedium)` and `border: 1px solid
+ * var(--colorNeutralStroke1)` kept as compiled shorthands (react-tooltip/PopoverSurface
+ * precedent) — no rule in this module sets any of their longhands, so no Griffel priority
+ * machinery survives to get wrong. The border `1px` is a frozen literal (not a
+ * strokeWidth token in the source), so the D4-addendum `var(--spacing-*)` mapping does
+ * not apply.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root */
+  .root {
+    @apply absolute inset-0 h-full w-full pointer-events-none overflow-visible;
+
+    z-index: 1;
+  }
+
+  /* annotationBaseStyles — `typographyStyles.caption1` spread + layout/padding/color,
+   * shared verbatim by useStyles.annotation and useStyles.annotationNoDefaults */
+  .annotation,
+  .annotation-no-defaults {
+    @apply absolute pointer-events-none flex items-center justify-center text-center whitespace-pre-wrap px-horizontal-s py-vertical-xs;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    color: var(--colorNeutralForeground1);
+    border-radius: var(--borderRadiusMedium);
+    z-index: 2;
+  }
+
+  /* from useStyles.annotation — the default chrome `hideDefaultStyles` removes */
+  .annotation {
+    box-shadow: var(--shadow16);
+    border: 1px solid var(--colorNeutralStroke1);
+  }
+
+  /* from useStyles.connectorLayer */
+  .connector-layer {
+    @apply absolute top-0 start-0 h-full w-full pointer-events-none overflow-visible;
+  }
+
+  /* from useStyles.measurement */
+  .measurement {
+    @apply absolute invisible pointer-events-none;
+  }
+
+  /* from useStyles.annotationContent */
+  .annotation-content {
+    @apply h-full w-full pointer-events-none;
+  }
+
+  /* from useStyles.annotationForeignObject */
+  .annotation-foreign-object {
+    @apply overflow-visible pointer-events-none;
+  }
+
+  /* from useStyles.annotationContentInteractive — AFTER .annotation-content (file order
+   * = mergeClasses last-argument winner on the interactive content div) */
+  .annotation-content-interactive {
+    @apply pointer-events-auto;
+  }
+
+  /* from useStyles.annotationForeignObjectInteractive — AFTER .annotation-foreign-object
+   * for the same reason (the slot is part of the hook's public styles contract; the
+   * component's own JSX never composes it — VSBC known-dead-slot precedent) */
+  .annotation-foreign-object-interactive {
+    @apply pointer-events-auto;
+  }
+
+  /* from useStyles.connectorGroup */
+  .connector-group {
+    @apply pointer-events-none;
+  }
+}

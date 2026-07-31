@@ -1,10 +1,17 @@
-'use client';
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration): this file no longer carries a
+ * `'use client'` directive. After conversion it calls no React hook — `makeStyles`'s
+ * `useStyles()` call is gone — so `enforce-use-client` reports the directive as
+ * unnecessary (VerticalStackedBarChart precedent). `ChartAnnotationLayer.tsx`, which
+ * does use hooks, keeps its own.
+ */
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { clsx } from 'clsx';
+import { tokens } from '@fluentui/react-theme';
 import { color as d3Color } from 'd3-color';
 import type { ChartAnnotationArrowHead } from '../../../types/ChartAnnotation';
+
+import styles from './ChartAnnotationLayer.module.css';
 
 export interface ChartAnnotationLayerStyles {
   root?: string;
@@ -72,144 +79,73 @@ export const getDefaultAnnotationBackgroundColor = (): string | undefined =>
 export const getDefaultConnectorStrokeColor = (): string => tokens.colorNeutralForeground1;
 
 /**
+ * Public identity class for ChartAnnotationLayer.
+ *
  * @internal
+ * @deprecated for styling. The only supported way to style a Fluent component's internals
+ * is the per-slot `styles` props. `root` is retained as the component's public identity
+ * class — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable as a
+ * selector and as a `group-*` variant target. The per-slot BEM statics
+ * (`fui-chartAnnotationLayer__*`) were removed with the D16 sweep: there is no public
+ * class-name handle on component internals.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + chartAnnotationLayerClassNames.root` is an invalid selector. Use
+ * `fuiSelector(chartAnnotationLayerClassNames.root)` from `@fluentui/react-utilities` at
+ * every selector site (DECISIONS.md D16.5).
+ *
+ * NOT covered by this constant: the `data-chart-annotation*` attributes the component
+ * renders — they predate the migration and are consumer/test seams, not styling identity.
  */
-export const chartAnnotationLayerClassNames: SlotClassNames<ChartAnnotationLayerStyles> = {
-  root: 'fui-chartAnnotationLayer__root',
-  annotation: 'fui-chartAnnotationLayer__annotation',
-  annotationNoDefaults: 'fui-chartAnnotationLayer__annotationNoDefaults',
-  connectorLayer: 'fui-chartAnnotationLayer__connectorLayer',
-  measurement: 'fui-chartAnnotationLayer__measurement',
-  annotationContent: 'fui-chartAnnotationLayer__annotationContent',
-  annotationForeignObject: 'fui-chartAnnotationLayer__annotationForeignObject',
-  annotationContentInteractive: 'fui-chartAnnotationLayer__annotationContentInteractive',
-  annotationForeignObjectInteractive: 'fui-chartAnnotationLayer__annotationForeignObjectInteractive',
-  connectorGroup: 'fui-chartAnnotationLayer__connectorGroup',
+export const chartAnnotationLayerClassNames: { root: string } = {
+  root: 'group/fui-chart-annotation-layer',
 };
 
 /**
- * Base Styles
- */
-const annotationBaseStyles = {
-  ...typographyStyles.caption1,
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  textAlign: 'center',
-  color: tokens.colorNeutralForeground1,
-  paddingTop: '4px',
-  paddingBottom: '4px',
-  paddingLeft: '8px',
-  paddingRight: '8px',
-  borderRadius: tokens.borderRadiusMedium,
-  whiteSpace: 'pre-wrap',
-  zIndex: 2,
-} as const;
-
-const useStyles = makeStyles({
-  root: {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
-    width: '100%',
-    height: '100%',
-    pointerEvents: 'none',
-    overflow: 'visible',
-    zIndex: 1,
-  },
-  annotation: {
-    ...annotationBaseStyles,
-    boxShadow: tokens.shadow16,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-  },
-  annotationNoDefaults: {
-    ...annotationBaseStyles,
-  },
-  connectorLayer: {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    pointerEvents: 'none',
-    overflow: 'visible',
-  },
-  measurement: {
-    position: 'absolute',
-    visibility: 'hidden',
-    pointerEvents: 'none',
-  },
-  annotationContent: {
-    width: '100%',
-    height: '100%',
-    pointerEvents: 'none',
-  },
-  annotationForeignObject: {
-    overflow: 'visible',
-    pointerEvents: 'none',
-  },
-  annotationContentInteractive: {
-    pointerEvents: 'auto',
-  },
-  annotationForeignObjectInteractive: {
-    pointerEvents: 'auto',
-  },
-  connectorGroup: {
-    pointerEvents: 'none',
-  },
-});
-
-/**
- * Apply styling to the ChartAnnotationLayer slots based on the state
+ * Apply styling to the ChartAnnotationLayer slots based on the state.
+ *
+ * Cascade priority is decided by the `@layer fui.*` order in
+ * ChartAnnotationLayer.module.css, not by clsx argument order — see that file's header
+ * for the mapping back to the mergeClasses() argument order this replaces.
+ *
+ * Ordering on `root` (DECISIONS.md D16.2): unconditional module class FIRST, named group
+ * marker SECOND, consumer overrides LAST. `styles.root` is what guarantees the marker is
+ * never `classList[0]` — nwsapi's `:scope` polyfill throws on the `/` under jsdom.
+ * `props.className` is a live consumer channel (CartesianChart passes its
+ * `.annotation-layer` class through it) and `props.styles?.*` per-slot channels are
+ * preserved verbatim (HeatMapChart precedent).
+ *
+ * No data attributes are set by this hook: the `data-chart-annotation-*` attributes on
+ * the component's DOM predate the migration and are consumer/test seams, not styling
+ * state (D15.6 — data-* is fallback-only); no `@variant` in the module reads one.
+ *
+ * `annotationNoDefaults` is DELIBERATELY ABSENT from the returned object — fidelity, not
+ * an oversight (VSBC upstream-bug precedent). The Griffel hook declared the slice (and
+ * this interface declares the key) but its return object never composed it, so
+ * `classes.annotationNoDefaults` has always been `undefined`: under `hideDefaultStyles`
+ * an annotation renders with NO base styling at all (no caption1 typography, no flex
+ * centering, no padding), and the `props.styles?.annotationNoDefaults` channel is
+ * likewise dead. Returning the module class here would silently restyle every
+ * `hideDefaultStyles` consumer (AnnotationOnlyChart among them). The compiled slice is
+ * carried in the module as `.annotation-no-defaults` so a future upstream fix is a
+ * one-line re-point, not a re-transcription.
  */
 export const useChartAnnotationLayerStyles = (props: ChartAnnotationLayerStyleProps): ChartAnnotationLayerStyles => {
-  const baseStyles = useStyles();
-
   return {
-    root: mergeClasses(chartAnnotationLayerClassNames.root, baseStyles.root, props.className, props.styles?.root),
-    annotation: mergeClasses(
-      chartAnnotationLayerClassNames.annotation,
-      baseStyles.annotation,
-      props.styles?.annotation,
-    ),
-    connectorLayer: mergeClasses(
-      chartAnnotationLayerClassNames.connectorLayer,
-      baseStyles.connectorLayer,
-      props.styles?.connectorLayer,
-    ),
-    measurement: mergeClasses(
-      chartAnnotationLayerClassNames.measurement,
-      baseStyles.measurement,
-      props.styles?.measurement,
-    ),
-    annotationContent: mergeClasses(
-      chartAnnotationLayerClassNames.annotationContent,
-      baseStyles.annotationContent,
-      props.styles?.annotationContent,
-    ),
-    annotationForeignObject: mergeClasses(
-      chartAnnotationLayerClassNames.annotationForeignObject,
-      baseStyles.annotationForeignObject,
-      props.styles?.annotationForeignObject,
-    ),
-    annotationContentInteractive: mergeClasses(
-      chartAnnotationLayerClassNames.annotationContentInteractive,
-      baseStyles.annotationContentInteractive,
+    root: clsx(styles.root, 'group/fui-chart-annotation-layer', props.className, props.styles?.root),
+    annotation: clsx(styles.annotation, props.styles?.annotation),
+    connectorLayer: clsx(styles['connector-layer'], props.styles?.connectorLayer),
+    measurement: clsx(styles.measurement, props.styles?.measurement),
+    annotationContent: clsx(styles['annotation-content'], props.styles?.annotationContent),
+    annotationForeignObject: clsx(styles['annotation-foreign-object'], props.styles?.annotationForeignObject),
+    annotationContentInteractive: clsx(
+      styles['annotation-content-interactive'],
       props.styles?.annotationContentInteractive,
     ),
-    annotationForeignObjectInteractive: mergeClasses(
-      chartAnnotationLayerClassNames.annotationForeignObjectInteractive,
-      baseStyles.annotationForeignObjectInteractive,
+    annotationForeignObjectInteractive: clsx(
+      styles['annotation-foreign-object-interactive'],
       props.styles?.annotationForeignObjectInteractive,
     ),
-    connectorGroup: mergeClasses(
-      chartAnnotationLayerClassNames.connectorGroup,
-      baseStyles.connectorGroup,
-      props.styles?.connectorGroup,
-    ),
+    connectorGroup: clsx(styles['connector-group'], props.styles?.connectorGroup),
   };
 };

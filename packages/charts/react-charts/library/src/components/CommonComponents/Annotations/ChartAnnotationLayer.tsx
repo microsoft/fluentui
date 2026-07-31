@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import type { ChartAnnotation } from '../../../types/ChartAnnotation';
 import type {
   AnnotationPoint,
@@ -616,14 +616,14 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
               }
             }
           }}
-          className={mergeClasses(annotationClass, classes.measurement, layout?.className, annotation.style?.className)}
+          className={clsx(annotationClass, classes.measurement, layout?.className, annotation.style?.className)}
           style={measurementStyle}
           aria-hidden={true}
           data-annotation-key={key}
           data-chart-annotation-measurement="true"
         >
           <div
-            className={mergeClasses(classes.annotationContent, layout?.className, annotation.style?.className)}
+            className={clsx(classes.annotationContent, layout?.className, annotation.style?.className)}
             style={contentStyle}
           >
             {renderSimpleMarkup(annotationMarkupNodes, `${key}-measurement`)}
@@ -639,16 +639,16 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
         y={topLeftY}
         width={width}
         height={height}
-        className={mergeClasses(classes.annotationForeignObject)}
+        className={clsx(classes.annotationForeignObject)}
         data-annotation-key={key}
       >
         <div
-          className={mergeClasses(annotationClass, layout?.className, annotation.style?.className)}
+          className={clsx(annotationClass, layout?.className, annotation.style?.className)}
           style={containerStyle}
           data-annotation-key={key}
         >
           <div
-            className={mergeClasses(
+            className={clsx(
               classes.annotationContent,
               classes.annotationContentInteractive,
               annotation.style?.className,
