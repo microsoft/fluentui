@@ -23,24 +23,32 @@ const InputV0BasicExample = () => {
 
 An equivalent `Input` v9 usage is
 
+```css
+/* Input.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .root {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+```
+
 ```tsx
 import * as React from 'react';
-import { makeStyles, Label, Input } from '@fluentui/react-components';
+import { Label, Input } from '@fluentui/react-components';
 import { useId } from '@fluentui/react-utilities';
 
-const useLayoutStyles = makeStyles({
-  root: {
-    maxWidth: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
+import styles from './Input.module.css';
 
 const InputV9BasicExample = () => {
-  const layoutStyles = useLayoutStyles();
   const inputId = useId('input');
   return (
-    <div className={layoutStyles.root}>
+    <div className={styles.root}>
       <Label htmlFor={inputId}>Search</Label>
       <Input id={inputId} />
     </div>

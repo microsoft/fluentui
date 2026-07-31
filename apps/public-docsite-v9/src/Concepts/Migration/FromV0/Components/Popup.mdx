@@ -70,7 +70,7 @@ When `content` value is shorthand object, for example
 content = { content: 'hi', variables: { someVariable: true } };
 ```
 
-Migrate variables to use `makeStyles` API. Before:
+Migrate variables to a CSS Module class. Before:
 
 ```tsx
 // in COMPONENT_NAME.tsx
@@ -98,29 +98,32 @@ export const popupContentStyles = {
 
 After:
 
+```css
+/* COMPONENT_NAME.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .custom-popup {
+    background-color: var(--colorBrandBackground);
+  }
+}
+```
+
 ```tsx
 // in COMPONENT_NAME.tsx
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
-import { useStyles } from './COMPONENT_NAME.styles.ts';
+import styles from './COMPONENT_NAME.module.css';
 
 export const Component = () => {
-  const classes = useStyles();
   return (
     <Popover positioning={'above-start'} noArrow>
       <PopoverTrigger>{props.trigger}</PopoverTrigger>
-      <PopoverSurface className={classes.customPopup}>{props.content}</PopoverSurface>
+      <PopoverSurface className={styles['custom-popup']}>{props.content}</PopoverSurface>
     </Popover>
   );
 };
-
-// in COMPONENT_NAME.styles.ts
-import { makeStyles, tokens } from '@fluentui/react-components';
-
-export const useStyles = makeStyles({
-  customPopup: {
-    backgroundColor: tokens.colorBrandBackground,
-  },
-});
 ```
 
 ⚠️ **If this is your first time migrating style overrides**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--docs).

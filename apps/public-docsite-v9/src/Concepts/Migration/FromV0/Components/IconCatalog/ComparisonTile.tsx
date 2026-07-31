@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DismissRegular, InfoRegular } from '@fluentui/react-icons';
-import { Button, mergeClasses, Tooltip } from '@fluentui/react-components';
+import { Button, Tooltip } from '@fluentui/react-components';
 
 import { V0IconComponent, V9IconComponent } from './types';
 import { useComparisonTileStyles } from './ComparisonTile.styles';
@@ -21,7 +21,7 @@ export const ComparisonTile: React.FC<ComparisonTileProps> = ({ V0Icon, V9Icon }
       <Tooltip relationship="description" content={noV9Icon ? tooltipWarningContent : 'Good to go!'}>
         <Button
           appearance="subtle"
-          className={mergeClasses(styles.badge, noV9Icon ? styles.warning : styles.success)}
+          className={[styles.badge, noV9Icon ? styles.warning : styles.success].filter(Boolean).join(' ')}
           icon={<InfoRegular />}
           shape="circular"
         />

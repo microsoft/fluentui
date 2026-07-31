@@ -1,16 +1,5 @@
-import { makeStyles } from '@fluentui/react-components';
+import styles from './IconCatalog.module.css';
 
-export const useIconCatalogStyles = makeStyles({
-  searchPanel: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: '10px',
-    marginTop: '20px',
-  },
-
-  switch: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-});
+/** Story-scaffolding classes (see the colocated .module.css). Kept hook-shaped so consuming
+ * components are untouched by the Griffel -> CSS Modules conversion. */
+export const useIconCatalogStyles = (): typeof styles => styles;

@@ -50,28 +50,35 @@ export const DocumentCardCompleteExample: React.FunctionComponent = () => (
 
 After:
 
+```css
+/* CardFooter.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .card {
+    width: 300px;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    gap: 4px;
+  }
+}
+```
+
 ```jsx
 import * as React from 'react';
-import { Button, shorthands, makeStyles } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 import { Pin20Regular, Share20Regular, ServiceBell20Regular, Eye20Regular } from '@fluentui/react-icons';
 import { Card, CardFooter } from '@fluentui/react-card/unstable';
 
-const useStyles = makeStyles({
-  card: {
-    width: '300px',
-  },
-
-  actions: {
-    ...shorthands.gap('4px'),
-    ...shorthands.padding('4px'),
-    display: 'flex',
-    alignItems: 'center',
-  },
-});
+import styles from './CardFooter.module.css';
 
 export const Default = () => {
-  const styles = useStyles();
-
   return (
     <Card size="small" className={styles.card}>
       <CardFooter

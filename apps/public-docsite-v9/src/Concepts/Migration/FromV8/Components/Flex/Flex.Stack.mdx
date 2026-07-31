@@ -17,47 +17,10 @@ Stack's approach to layout is slightly different from Northstar's Flex, and CSS 
     ```
 
   </CodeExample>
-  <CodeExample title="make-styles">
-
-    ```js
-    makeStyles({
-      root: {
-        display: 'flex',
-        flexDirection: 'column',
-        flexWrap: 'nowrap',
-        width: 'auto',
-        height: 'auto',
-        boxSizing: 'border-box',
-        '> *': {
-          textOverflow: 'ellipsis',
-        },
-        '> :not(:first-child)': {
-          marginTop: '0px',
-        },
-        '> *:not(.ms-StackItem)': {
-          flexShrink: 1,
-        },
-      },
-    })
-    ```
-
-  </CodeExample>
-</CodeComparison>
-
-<CodeComparison>
-  <CodeExample>
-
-    ```html
-    <div className="flex">
-      ...
-    </div>
-    ```
-
-  </CodeExample>
-  <CodeExample>
+  <CodeExample title="*.module.css">
 
     ```css
-    .flex {
+    .root {
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
@@ -65,13 +28,13 @@ Stack's approach to layout is slightly different from Northstar's Flex, and CSS 
       height: auto;
       box-sizing: border-box;
     }
-    .flex > * {
+    .root > * {
       text-overflow: ellipsis;
     }
-    .flex > :not(:first-child) {
+    .root > :not(:first-child) {
       margin-top: 0px;
     }
-    .flex > *:not(.ms-StackItem) {
+    .root > *:not(.ms-StackItem) {
       flex-shrink: 1;
     }
     ```
@@ -104,19 +67,6 @@ The `as` property strictly replaces which element type will be rendered as the r
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        '> *': {
-          flexShrink: 0,
-        }
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex > * {
       flex-shrink: 0;
@@ -137,19 +87,6 @@ MDN documentation:
 _`10px` is used below as an example value_
 
 <CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        '> *': {
-          margin: '10px',
-        }
-      },
-    })
-    ```
-
-  </CodeExample>
   <CodeExample>
 
     ```css
@@ -174,21 +111,6 @@ _`10px` is used below as an example value_
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        display: 'flex',
-        flexDirection: 'row',
-        '> :not(:last-child)': {
-          marginRight: '10px',
-        }
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex {
       display: flex;
@@ -208,19 +130,6 @@ If you do not have this limitation, you can use the following CSS:
 _`10px` is used below as an example value_
 
 <CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        display: 'flex',
-        flexDirection: 'row',
-        gap: '10px',
-      },
-    })
-    ```
-
-  </CodeExample>
   <CodeExample>
 
     ```css
@@ -248,19 +157,6 @@ MDN documentation:
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        '> *': {
-          flexGrow: 1,
-        }
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex > * {
       flex-grow: 1;
@@ -279,17 +175,6 @@ MDN documentation:
 ## horizontal
 
 <CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        flexDirection: 'row',
-      },
-    })
-    ```
-
-  </CodeExample>
   <CodeExample>
 
     ```css
@@ -335,19 +220,6 @@ _`10px` is used below as an example value_
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        '> *': {
-          maxHeight: '10px',
-        }
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex > * {
       max-height: 10px;
@@ -370,19 +242,6 @@ _`10px` is used below as an example value_
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        '> *': {
-          maxWidth: '10px',
-        }
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex > * {
       max-width: 10px;
@@ -403,17 +262,6 @@ MDN documentation:
 _`10px` is used below as an example value_
 
 <CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        padding: '10px',
-      },
-    })
-    ```
-
-  </CodeExample>
   <CodeExample>
 
     ```css
@@ -445,17 +293,6 @@ Example usage for an horizontal layout:
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        flexDirection: 'row-reverse',
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex {
       flex-direction: row-reverse;
@@ -474,17 +311,6 @@ MDN documentation:
 ## verticalFill
 
 <CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        height: '100%',
-      },
-    })
-    ```
-
-  </CodeExample>
   <CodeExample>
 
     ```css
@@ -518,44 +344,10 @@ The `wrap` prop will also change the rendering. As such find below the styles an
     ```
 
   </CodeExample>
-  <CodeExample title="make-styles">
-
-    ```js
-    makeStyles({
-      root: {
-        flexWrap: 'wrap',
-        overflow: 'visible',
-        height: '100%',
-      },
-      inner: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        overflow: 'visible',
-        boxSizing: 'border-box',
-        width: '100%',
-        maxWidth: '100vw',
-      }
-    })
-    ```
-
-  </CodeExample>
-</CodeComparison>
-<CodeComparison>
-  <CodeExample>
-
-    ```html
-    <div className="flex">
-      <div className="inner">
-        ...
-      </div>
-    </div>
-    ```
-
-  </CodeExample>
-  <CodeExample>
+  <CodeExample title="*.module.css">
 
     ```css
-    .flex {
+    .root {
       flex-wrap: wrap;
       overflow: visible;
       height: 100%;

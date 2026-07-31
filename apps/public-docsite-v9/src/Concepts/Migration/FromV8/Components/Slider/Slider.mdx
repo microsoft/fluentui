@@ -46,9 +46,27 @@ export const V8FormattedValueExample = () => {
 
 An equivalent `Slider` in v9 is
 
+```css
+/* Slider.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto;
+    column-gap: var(--spacingHorizontalL);
+  }
+}
+```
+
 ```tsx
 import * as React from 'react';
-import { Slider, SliderProps, Label, useId, makeStyles, tokens } from '@fluentui/react-components';
+import { Slider, SliderProps, Label, useId, tokens } from '@fluentui/react-components';
+
+import styles from './Slider.module.css';
 
 export const V9BasicExample = () => {
   const basicId = useId();
@@ -82,17 +100,7 @@ export const V9ControlledExample = () => {
   );
 };
 
-const useGetFormattedExampleStyles = makeStyles({
-  wrapper: {
-    display: 'grid',
-    alignItems: 'center',
-    gridTemplateColumns: '1fr auto',
-    columnGap: tokens.spacingHorizontalL,
-  },
-});
-
 export const V9FormattedValueExample = () => {
-  const styles = useGetFormattedExampleStyles();
   const [sliderValue, setSliderValue] = React.useState(0);
   const sliderOnChange: SliderProps['onChange'] = (ev, data) => setSliderValue(data.value);
   const formattedId = useId();

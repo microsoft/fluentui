@@ -2,29 +2,9 @@ import * as React from 'react';
 import { ColorCompare } from './ColorCompare';
 import { darkThemeBrandMap, lightThemeBrandMap } from './themeMap';
 
-import { makeStyles, shorthands } from '@fluentui/react-components';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  section: {
-    ...shorthands.padding('25px'),
-  },
-  comparisons: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto',
-    columnGap: '10px',
-    rowGap: '10px',
-  },
-});
+import styles from './BrandColors.module.css';
 
 export const BrandColors = () => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <div className={styles.section}>

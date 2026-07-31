@@ -1,0 +1,15 @@
+/* Story styles for utils, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  justify-content: space-between;
+}
+
+.root > * {
+  width: 100%;
+}
+
+.root > :not(:last-child) {
+  margin-inline-end: 5%;
+}

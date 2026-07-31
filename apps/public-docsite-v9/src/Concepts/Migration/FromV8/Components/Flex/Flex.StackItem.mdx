@@ -17,36 +17,10 @@ import { CodeComparison, CodeExample } from './utils.stories';
 ```
 
   </CodeExample>
-  <CodeExample title="make-styles">
-
-    ```js
-    makeStyles({
-      root: {...}, // Flex container
-      item: {
-        height: 'auto',
-        width: 'auto',
-        flexShrink: 1,
-      },
-    })
-    ```
-
-  </CodeExample>
-</CodeComparison>
-
-<CodeComparison>
-  <CodeExample>
-
-    ```html
-    <div className="flex">
-      <div className="flex-item">Item</div>
-    </div>
-    ```
-
-  </CodeExample>
-  <CodeExample>
+  <CodeExample title="*.module.css">
 
     ```css
-    .flex-item {
+    .root-item {
       height: auto;
       width: auto;
       flex-shrink: 1;
@@ -71,17 +45,6 @@ MDN documentation:
 _`center` is used below as an example value_
 
 <CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        alignSelf: 'center'
-      },
-    })
-    ```
-
-  </CodeExample>
   <CodeExample>
 
     ```css
@@ -110,17 +73,6 @@ This is just an override to apply the class name to the rendered node.
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        flexShrink: 0,
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex-item {
       flex-shrink: 0;
@@ -139,17 +91,6 @@ MDN documentation:
 ## grow
 
 <CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        flexGrow: 1,
-      },
-    })
-    ```
-
-  </CodeExample>
   <CodeExample>
 
     ```css
@@ -174,17 +115,6 @@ _`1` is used below as an example value_
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        order: 1,
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex-item {
         order: 1;
@@ -207,17 +137,6 @@ _`1` is used below as an example value_
 <CodeComparison>
   <CodeExample>
 
-    ```js
-    makeStyles({
-      root: {
-        flexShrink: 1,
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
     ```css
     .flex-item {
       flex-shrink: 1;
@@ -236,17 +155,6 @@ MDN documentation:
 ## verticalFill
 
 <CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        height: "100%",
-      },
-    })
-    ```
-
-  </CodeExample>
   <CodeExample>
 
     ```css

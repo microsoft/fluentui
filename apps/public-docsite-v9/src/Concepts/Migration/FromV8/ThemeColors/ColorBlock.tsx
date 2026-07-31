@@ -1,4 +1,3 @@
-import { mergeClasses } from '@fluentui/react-components';
 import * as React from 'react';
 
 import { ColorInfo } from './types';
@@ -50,7 +49,7 @@ export const ColorBlock = (props: Props) => {
   const styles = useColorBlockStyles();
   const labels = getLabels(kind);
 
-  const className = mergeClasses(styles.root, flipAlign && styles.flipAlign);
+  const className = [styles.root, flipAlign && styles.flipAlign].filter(Boolean).join(' ');
 
   const blockColorStyle = {
     ['--ColorBlock__background-color' as any]: `${colorValue || 'tranparent'}`,

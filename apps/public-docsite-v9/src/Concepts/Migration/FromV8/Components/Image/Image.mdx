@@ -51,39 +51,48 @@ because of this:
 
 ### shouldFadeIn
 
-For v9, this feature is no longer supported. The alternative is to apply the animation through `makeStyles` and using the global event `onLoad`.
+For v9, this feature is no longer supported. The alternative is to apply the animation through a CSS Module class and the global event `onLoad`.
 Below is an example of a migration:
+
+```css
+/* Image.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .fade-in {
+    animation-name: image-fade-in;
+    animation-iteration-count: 1;
+    animation-duration: 0.367s;
+  }
+}
+
+@keyframes image-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+```
 
 ```jsx
 import { useState } from 'react';
 import { Image } from '@fluentui/react-image';
-import { makeStyles } from '@griffel/react';
 
-const useStyles = makeStyles(theme => ({
-  fadeIn400: {
-    animationName: {
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
-    },
-    animationIterationCount: '1',
-    animationDuration: '0.367s',
-  },
-}));
+import styles from './Image.module.css';
 
 const Component = () => {
   const [isLoaded, setLoaded] = useState(false);
-  const styles = useStyles();
 
   return (
     <Image
       src="https://via.placeholder.com/300x300"
       alt="Example image"
       onLoad={() => setLoaded(true)}
-      className={!isLoaded ? styles.fadeIn400 : ''}
+      className={!isLoaded ? styles['fade-in'] : ''}
     />
   );
 };
@@ -96,19 +105,10 @@ Below is an example showcasing this:
 
 ```jsx
 import { useState } from 'react';
-import { makeStyles } from '@griffel/react';
 import { Image } from '@fluentui/react-image';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'none',
-  },
-});
 
 const Component = () => {
   const [isLoaded, setLoaded] = useState(false);
-
-  const styles = useStyles();
 
   return (
     <Image
@@ -124,7 +124,7 @@ const Component = () => {
 
 ### styles
 
-For v9, this feature is no longer supported. The alternative is to apply styles through `makeStyles`. Below is an example of a migration:
+For v9, this feature is no longer supported. The alternative is to apply styles through a CSS Module and `className`. Below is an example of a migration:
 
 #### v8 implementation
 
@@ -143,18 +143,25 @@ const Component = () => {
 
 #### v9 implementation
 
-```jsx
-import { Image, makeStyles, tokens } from '@fluentui/react-components';
+```css
+/* Image.module.css */
+@reference '#theme';
 
-const useStyles = makeStyles({
-  bordered: {
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-  },
-});
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .bordered {
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  }
+}
+```
+
+```jsx
+import { Image } from '@fluentui/react-components';
+
+import styles from './Image.module.css';
 
 const Component = () => {
-  const styles = useStyles();
-
   return <Image src="example.jpg" className={styles.bordered} />;
 };
 ```
@@ -163,20 +170,20 @@ const Component = () => {
 
 The table below presents a mapping of props between the v8 and v9 `Image` components in order to clarify which properties require changes.
 
-| v8                       | v9                                                                         |
-| ------------------------ | -------------------------------------------------------------------------- |
-| \`height\`               | \`height\`                                                                 |
-| \`width\`                | \`width\`                                                                  |
-| \`className\`            | \`className\`                                                              |
-| \`coverStyle\`           | \`fit="cover"\`                                                            |
-| \`imageFit\`             | \`fit\`                                                                    |
-| \`maximizeFrame\`        | \`block\`.                                                                 |
-| \`styles\`               | \`className\`                                                              |
-| \`loading\`              | Not supported -> use onLoad and onError events                             |
-| \`onLoadingStateChange\` | Not supported -> use onLoad and onError events                             |
-| \`shouldFadeIn\`         | Not supported -> implement animation via makeStyles and className + onLoad |
-| \`shouldStartVisible\`   | Not supported -> use onLoad and onError events                             |
-| \`theme\`                | Use \`FluentProvider\` to customize the theme                              |
+| v8                       | v9                                                                   |
+| ------------------------ | -------------------------------------------------------------------- |
+| \`height\`               | \`height\`                                                           |
+| \`width\`                | \`width\`                                                            |
+| \`className\`            | \`className\`                                                        |
+| \`coverStyle\`           | \`fit="cover"\`                                                      |
+| \`imageFit\`             | \`fit\`                                                              |
+| \`maximizeFrame\`        | \`block\`.                                                           |
+| \`styles\`               | \`className\`                                                        |
+| \`loading\`              | Not supported -> use onLoad and onError events                       |
+| \`onLoadingStateChange\` | Not supported -> use onLoad and onError events                       |
+| \`shouldFadeIn\`         | Not supported -> implement animation via a CSS Module class + onLoad |
+| \`shouldStartVisible\`   | Not supported -> use onLoad and onError events                       |
+| \`theme\`                | Use \`FluentProvider\` to customize the theme                        |
 
 In v9, the boolean props from [IImageStyleProps](https://developer.microsoft.com/en-us/fluentui#/controls/web/image#IImageStyleProps)
 — such as `isCenter`, `isCenterCover`, `isCenterContain`, `isContain`, `isLandscape`, `isNone`, `isError`, `isLoaded`, and `isNotImageFit` — are no longer supported.

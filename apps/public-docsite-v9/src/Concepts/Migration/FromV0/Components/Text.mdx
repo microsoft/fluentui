@@ -83,24 +83,27 @@ export const textStyles1 = {
 
 After:
 
+```css
+/* COMPONENT_NAME.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .main-window-chat-header-title {
+    max-width: 11rem;
+  }
+}
+```
+
 ```tsx
 // in COMPONENT_NAME.tsx
 import { StyledText } from '@fluentui/react-migration-v0-v9';
-import { useStyles } from './COMPONENT_NAME.styles.ts';
+import styles from './COMPONENT_NAME.module.css';
 
 export const Component = () => {
-  const classes = useStyles();
-  return <StyledText className={classes.mainWindowChatHeaderTitle}></StyledText>;
+  return <StyledText className={styles['main-window-chat-header-title']}></StyledText>;
 };
-
-// in COMPONENT_NAME.styles.ts
-import { makeStyles } from '@fluentui/react-components';
-
-export const useStyles = makeStyles({
-  mainWindowChatHeaderTitle: {
-    maxWidth: '11rem',
-  },
-});
 ```
 
 ## Migrate size `large`

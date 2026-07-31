@@ -1,0 +1,66 @@
+/* Story styles for ComparisonTile, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 105px;
+  padding: 5px 0px;
+  gap: 10px;
+  border-color: var(--colorNeutralStroke1);
+  border-style: solid;
+  border-width: var(--strokeWidthThin);
+}
+
+.root:hover {
+  background-color: var(--colorNeutralBackground2Hover);
+}
+
+.badge {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.warning {
+  color: var(--colorPaletteDarkOrangeBackground3);
+}
+
+.success {
+  color: var(--colorPaletteGreenBackground3);
+}
+
+.v0 {
+  width: 16px;
+  height: 16px;
+}
+
+.v9 {
+  width: 20px;
+  height: 20px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.buttonReset {
+  resize: horizontal;
+  box-sizing: content-box;
+  background-color: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: normal;
+  -webkit-appearance: button;
+  text-align: unset;
+  padding: 0;
+  overflow: visible;
+  border-style: none;
+}

@@ -74,24 +74,27 @@ export const sliderStyles1 = {
 
 After:
 
+```css
+/* COMPONENT_NAME.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .is-volume-control {
+    color: var(--colorNeutralForeground1);
+  }
+}
+```
+
 ```tsx
 // in COMPONENT_NAME.tsx
 import { Slider } from '@fluentui/react-components';
-import { useStyles } from './COMPONENT_NAME.styles.ts';
+import styles from './COMPONENT_NAME.module.css';
 
 export const Component = () => {
-  const classes = useStyles();
-  return <Slider className={classes.isVolumeControl} />;
+  return <Slider className={styles['is-volume-control']} />;
 };
-
-// in COMPONENT_NAME.styles.ts
-import { makeStyles, tokens } from '@fluentui/react-components';
-
-export const useStyles = makeStyles({
-  isVolumeControl: {
-    color: tokens.colorNeutralForeground1,
-  },
-});
 ```
 
 Find more examples here: [Sandbox](https://codesandbox.io/s/slider-migration-fluentui-forked-e3zdj5?file=/example.tsx)

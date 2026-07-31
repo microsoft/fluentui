@@ -100,38 +100,40 @@ const ChoiceGroupCustomOptionExample = () => {
 
 An equivalent `RadioGroup` implementation:
 
+```css
+/* RadioGroupCustomOption.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .icon-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .label {
+    display: flex;
+    gap: 5px;
+  }
+
+  .green-border-option {
+    border: 1px solid green;
+  }
+}
+```
+
 ```tsx
 import * as React from 'react';
-import { makeStyles, shorthands, Label, Radio, RadioGroup } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup } from '@fluentui/react-components';
 import { useId } from '@fluentui/react-utilities';
 import { AnimalCat24Regular } from '@fluentui/react-icons';
 
-const useIconOptionStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    ...shorthands.gap('5px'),
-  },
-});
-
-const useLabelStyles = makeStyles({
-  root: {
-    display: 'flex',
-    ...shorthands.gap('5px'),
-  },
-});
-
-const useGreenBorderOptionStyles = makeStyles({
-  root: {
-    ...shorthands.border('1px', 'solid', 'green'),
-  },
-});
+import styles from './RadioGroupCustomOption.module.css';
 
 const RadioGroupCustomOptionExample = () => {
   const labelId = useId('label');
-  const iconOptionStyles = useIconOptionStyles();
-  const labelStyles = useLabelStyles();
-  const greenBorderOptionStyles = useGreenBorderOptionStyles();
 
   return (
     <>
@@ -139,11 +141,11 @@ const RadioGroupCustomOptionExample = () => {
         Pick One
       </Label>
       <RadioGroup aria-labelledby={labelId} defaultValue="B">
-        <div className={iconOptionStyles.root}>
+        <div className={styles['icon-option']}>
           <Radio
             value="A"
             label={{
-              className: labelStyles.root,
+              className: styles.label,
               children: (
                 <>
                   A <AnimalCat24Regular />
@@ -152,7 +154,7 @@ const RadioGroupCustomOptionExample = () => {
             }}
           />
         </div>
-        <Radio value="B" label="Option B" className={greenBorderOptionStyles.root} />
+        <Radio value="B" label="Option B" className={styles['green-border-option']} />
         <Radio value="C" label="Option C" disabled />
         <Radio value="D" label="Option D" />
       </RadioGroup>

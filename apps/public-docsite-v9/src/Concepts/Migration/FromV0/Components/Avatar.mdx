@@ -67,26 +67,27 @@ export const avatarStyles = {
 
 After:
 
+```css
+/* COMPONENT_NAME.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .custom-avatar:focus {
+    outline-color: var(--colorNeutralBackground3Pressed);
+  }
+}
+```
+
 ```tsx
 // in COMPONENT_NAME.tsx
 import { Avatar } from '@fluentui/react-components';
-import { useStyles } from './COMPONENT_NAME.styles.ts';
+import styles from './COMPONENT_NAME.module.css';
 
 export const Component = () => {
-  const classes = useStyles();
-  return <Avatar className={classes.customAvatar} />;
+  return <Avatar className={styles['custom-avatar']} />;
 };
-
-// in COMPONENT_NAME.styles.ts
-import { makeStyles, tokens } from '@fluentui/react-components';
-
-export const useStyles = makeStyles({
-  customAvatar: {
-    ':focus': {
-      outlineColor: tokens.colorNeutralBackground3Pressed,
-    },
-  },
-});
 ```
 
 ## Migrate `image` prop

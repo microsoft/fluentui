@@ -1,0 +1,20 @@
+/* Story styles for NeutralColors, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.section {
+  padding: 25px;
+}
+
+.comparisons {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  column-gap: 10px;
+  row-gap: 5px;
+}

@@ -89,13 +89,21 @@ export const Component = () => {
 };
 ```
 
-```tsx
-// in COMPONENT_NAME.styles.ts
-import { makeStyles } from '@fluentui/react-components';
+```css
+/* COMPONENT_NAME.module.css */
+@reference '#theme';
 
-export const useStyles = makeStyles({
-  root: { color: 'red' },
-});
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .root {
+    color: red;
+  }
+}
+```
+
+```tsx
+
 ```
 
 ## Migrate columns and rows

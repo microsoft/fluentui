@@ -1,21 +1,9 @@
 import * as React from 'react';
 import { Source } from '@storybook/addon-docs/blocks';
-import { makeStyles } from '@fluentui/react-components';
 
-const useCodeComparisonStyles = makeStyles({
-  root: {
-    display: 'flex',
-    justifyContent: 'space-between',
+import styles from './utils.module.css';
 
-    '> *': {
-      width: '100%',
-    },
-
-    '> :not(:last-child)': {
-      marginRight: '5%',
-    },
-  },
-});
+const useCodeComparisonStyles = () => styles;
 
 export const CodeComparison = (props: { children: React.ReactElement[] }) => {
   const { children } = props;

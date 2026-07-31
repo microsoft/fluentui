@@ -70,23 +70,26 @@ export const segmentStyles1 = {
 
 After:
 
+```css
+/* COMPONENT_NAME.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .speed-dial-contact-card {
+    background-color: inherit;
+    box-shadow: none;
+  }
+}
+```
+
 ```tsx
 // in COMPONENT_NAME.tsx
-import { useStyles } from './COMPONENT_NAME.styles.ts';
+import styles from './COMPONENT_NAME.module.css';
 import { Segment } from '@fluentui/react-migration-v0-v9';
 
 export const Component = () => {
-  const classes = useStyles();
-  return <Segment className={classes.speedDialContactCard}></Segment>;
+  return <Segment className={styles['speed-dial-contact-card']}></Segment>;
 };
-
-// in COMPONENT_NAME.styles.ts
-import { makeStyles } from '@fluentui/react-components';
-
-export const useStyles = makeStyles({
-  speedDialContactCard: {
-    backgroundColor: 'inherit',
-    boxShadow: 'none',
-  },
-});
 ```

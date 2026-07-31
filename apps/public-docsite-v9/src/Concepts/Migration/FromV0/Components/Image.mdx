@@ -61,24 +61,27 @@ export const imageStyles1 = {
 
 After:
 
+```css
+/* COMPONENT_NAME.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .custom-image {
+    opacity: 0.75;
+  }
+}
+```
+
 ```tsx
 // in COMPONENT_NAME.tsx
 import { Image } from '@fluentui/react-components';
-import { useStyles } from './COMPONENT_NAME.styles.ts';
+import styles from './COMPONENT_NAME.module.css';
 
 export const Component = () => {
-  const classes = useStyles();
-  return <Image className={classes.customImage} />;
+  return <Image className={styles['custom-image']} />;
 };
-
-// in COMPONENT_NAME.styles.ts
-import { makeStyles } from '@fluentui/react-components';
-
-export const useStyles = makeStyles({
-  customImage: {
-    opacity: 0.75,
-  },
-});
 ```
 
 ## Migrate `avatar` prop

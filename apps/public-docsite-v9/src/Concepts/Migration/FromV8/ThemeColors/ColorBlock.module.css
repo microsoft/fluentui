@@ -1,0 +1,62 @@
+/* Story styles for ColorBlock, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  border-top-color: #aaa;
+  border-bottom-color: #aaa;
+  border-left-color: transparent;
+  border-right-color: #aaa;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
+  column-gap: 10px;
+  padding: 0 5px 0 0;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.flipAlign {
+  grid-template-columns: 1fr auto;
+  padding: 0 0 0 5px;
+  border-right: 1px solid transparent;
+  border-left: 1px solid #aaa;
+}
+
+.color {
+  background-color: var(--ColorBlock__background-color);
+  width: 20px;
+  align-self: stretch;
+  border-right: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+}
+
+.names {
+  align-self: flex-start;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  column-gap: 5px;
+  justify-self: flex-start;
+}
+
+.names label {
+  text-align: right;
+  color: #aaa;
+  padding: 0;
+  margin: 0;
+}
+
+.blockName {
+  font-weight: 700;
+}
+
+.colorName {
+}
+
+.colorValue {
+}
+
+.comment {
+  color: green;
+  max-width: 250px;
+}

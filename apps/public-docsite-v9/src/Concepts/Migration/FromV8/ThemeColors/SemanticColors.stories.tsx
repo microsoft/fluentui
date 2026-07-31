@@ -2,27 +2,9 @@ import * as React from 'react';
 import { ColorCompare } from './ColorCompare';
 import { semanticToAliasMap } from './themeMap';
 
-import { makeStyles, shorthands } from '@fluentui/react-components';
-
-const useStyles = makeStyles({
-  root: {
-    ...shorthands.padding('25px'),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  comparisons: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto',
-    columnGap: '10px',
-    rowGap: '10px',
-  },
-});
+import styles from './SemanticColors.module.css';
 
 export const SemanticColors = () => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <h2>Semantic Colors</h2>

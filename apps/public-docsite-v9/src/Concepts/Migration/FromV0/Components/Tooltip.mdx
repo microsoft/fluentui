@@ -62,7 +62,7 @@ When `content` value is shorthand object, for example
 content = { content: 'hi', variables: { someVariable: true } };
 ```
 
-Migrate variables to use `makeStyles` API. Before:
+Migrate variables to a CSS Module class. Before:
 
 ```tsx
 // in COMPONENT_NAME.tsx
@@ -90,33 +90,36 @@ export const tooltipContentStyles = {
 
 After:
 
+```css
+/* COMPONENT_NAME.module.css */
+@reference '#theme';
+
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+@layer fui.components.l4 {
+  .custom-tooltip {
+    background-color: var(--colorBrandBackground);
+  }
+}
+```
+
 ```tsx
 // in COMPONENT_NAME.tsx
 import { Tooltip } from '@fluentui/react-components';
-import { useStyles } from './COMPONENT_NAME.styles.ts';
+import styles from './COMPONENT_NAME.module.css';
 
 export const Component = () => {
-  const classes = useStyles();
   return (
     <Tooltip
       content={{
         children: props.content,
-        className: classes.customTooltip,
+        className: styles['custom-tooltip'],
       }}
     >
       {props.trigger}
     </Tooltip>
   );
 };
-
-// in COMPONENT_NAME.styles.ts
-import { makeStyles, tokens } from '@fluentui/react-components';
-
-export const useStyles = makeStyles({
-  customTooltip: {
-    backgroundColor: tokens.colorBrandBackground,
-  },
-});
 ```
 
 ⚠️ **If this is your first time migrating style overrides**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--docs).

@@ -1,0 +1,15 @@
+/* Story styles for IconCatalog, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.searchPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+}
