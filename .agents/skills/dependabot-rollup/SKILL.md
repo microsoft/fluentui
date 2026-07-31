@@ -55,7 +55,7 @@ Do not rely on the `dependencies` label: repositories may customize or omit it.
 
 ### Step 3 - Classify candidates
 
-Before parsing individual updates, strip an optional conventional commit prefix of `chore(deps): ` or `chore(deps-dev): ` from the title. Detect native grouped PRs by either the remaining title being in the form `bump the <group> group ...` (case-insensitive) or a `headRefName` containing one of the configured group identifiers: `github-actions-minor-patch`, `github-actions-security`, `development-dependencies`, or `security-dependencies`. Exclude and report these PRs as `already grouped by Dependabot`; never place one rollup inside another.
+Before parsing individual updates, strip an optional conventional commit prefix of `chore(deps): ` or `chore(deps-dev): ` from the title. Detect native grouped PRs by either the remaining title being in the form `bump the <group> group ...` (case-insensitive) or a `headRefName` containing one of the configured group identifiers: `github-actions-minor-patch`, `github-actions-security`, `production-dependencies`, `development-dependencies`, or `security-dependencies`. Exclude and report these PRs as `already grouped by Dependabot`; never place one rollup inside another.
 
 After removing the optional conventional commit prefix, parse each title case-insensitively as `bump <dependency> from <version> to <version>`. Use the parsed dependency name as the deduplication key. Normalize a leading `v` in versions and accept only strict three-part numeric versions (`major.minor.patch`).
 
