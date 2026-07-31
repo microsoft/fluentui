@@ -1,15 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, useId, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
+import { useId, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
-  },
-});
+import styles from './PopoverNestedPopovers.module.css';
 
 const FirstNestedPopover = () => {
-  const styles = useStyles();
   const id = useId();
 
   return (
@@ -35,7 +30,6 @@ const FirstNestedPopover = () => {
 };
 
 const SecondNestedPopover = () => {
-  const styles = useStyles();
   const id = useId();
 
   return (
@@ -59,7 +53,6 @@ const SecondNestedPopover = () => {
 };
 
 export const NestedPopovers = (): JSXElement => {
-  const styles = useStyles();
   const id = useId();
 
   return (

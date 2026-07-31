@@ -1,24 +1,15 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Popover, PopoverSurface, useId, useRestoreFocusTarget } from '@fluentui/react-components';
+import { Button, Popover, PopoverSurface, useId, useRestoreFocusTarget } from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    gap: '10px',
-  },
 
-  contentHeader: {
-    marginTop: '0',
-  },
-});
+import styles from './PopoverWithoutTrigger.module.css';
 
 export const WithoutTrigger = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
   const headerId = useId();
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
-  const styles = useStyles();
   const restoreFocusTargetAttribute = useRestoreFocusTarget();
 
   React.useEffect(() => {

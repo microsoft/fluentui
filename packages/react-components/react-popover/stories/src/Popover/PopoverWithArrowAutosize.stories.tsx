@@ -1,21 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
+import { Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
 
-const useContentStyles = makeStyles({
-  root: {
-    boxSizing: 'border-box',
-    padding: '16px',
-    overflowY: 'auto',
-    height: '100%',
-  },
-  header: {
-    marginTop: '0',
-  },
-});
+import styles from './PopoverWithArrowAutosize.module.css';
 
 const ExampleContent = () => {
-  const styles = useContentStyles();
   return (
     <div className={styles.root}>
       <h3 className={styles.header}>Popover content</h3>

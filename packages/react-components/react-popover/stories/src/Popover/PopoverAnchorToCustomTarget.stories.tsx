@@ -1,20 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    gap: '10px',
-  },
 
-  contentHeader: {
-    marginTop: '0',
-  },
-});
+import styles from './PopoverAnchorToCustomTarget.module.css';
 
 const ExampleContent = () => {
-  const styles = useStyles();
   return (
     <div>
       <h3 className={styles.contentHeader}>Popover content</h3>
@@ -32,8 +23,6 @@ export const AnchorToCustomTarget = (): JSXElement => {
     },
     [positioningRef],
   );
-
-  const styles = useStyles();
 
   return (
     <div className={styles.container}>

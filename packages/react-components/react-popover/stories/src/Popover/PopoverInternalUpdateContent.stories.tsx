@@ -1,16 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Link, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { Button, Link, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
-  },
-});
+import styles from './PopoverInternalUpdateContent.module.css';
 
 const ExampleContent = () => {
-  const styles = useStyles();
   return (
     <div>
       <h3 className={styles.contentHeader}>Popover content</h3>

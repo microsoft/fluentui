@@ -1,0 +1,11 @@
+/* Story styles for PopoverWithoutTrigger, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  gap: 10px;
+}
+
+.contentHeader {
+  margin-top: 0;
+}

@@ -1,0 +1,13 @@
+/* Story styles for PopoverWithArrowAutosize, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  box-sizing: border-box;
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.header {
+  margin-top: 0;
+}

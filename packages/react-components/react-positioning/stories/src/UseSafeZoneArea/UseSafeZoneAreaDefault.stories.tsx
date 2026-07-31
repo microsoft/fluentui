@@ -4,11 +4,8 @@ import {
   Radio,
   RadioGroup,
   Switch,
-  makeStyles,
-  mergeClasses,
   type PositioningShorthandValue,
   resolvePositioningShorthand,
-  tokens,
   useMergedRefs,
   usePositioning,
   useSafeZoneArea,
@@ -17,73 +14,9 @@ import {
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
+import styles from './UseSafeZoneAreaDefault.module.css';
 
-  controls: {
-    display: 'grid',
-    gridTemplateColumns: '1fr auto',
-    alignItems: 'center',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-    minHeight: '400px',
-  },
-  cardAbove: {
-    justifyContent: 'end',
-  },
-  cardBelow: {
-    justifyContent: 'start',
-  },
-
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: tokens.fontSizeBase400,
-    width: '300px',
-    height: '300px',
-    color: tokens.colorPaletteBerryForeground2,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorPaletteBerryBorderActive}`,
-    backgroundColor: tokens.colorPaletteBerryBackground2,
-  },
-  target: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: tokens.fontSizeBase400,
-    width: '300px',
-    height: '50px',
-    color: tokens.colorPaletteBlueForeground2,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorPaletteBlueBorderActive}`,
-    backgroundColor: tokens.colorPaletteBlueBackground2,
-  },
-  targetSmall: {
-    fontSize: tokens.fontSizeBase100,
-    width: '100px',
-  },
-  targetLarge: {
-    width: '600px',
-  },
-});
+const useClasses = () => styles;
 
 export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions): JSXElement => {
   const classes = useClasses();
@@ -167,18 +100,22 @@ export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions): JSXElement =>
       </div>
 
       <div
-        className={mergeClasses(
+        className={[
           classes.card,
           (position.startsWith('above') || position.endsWith('bottom')) && classes.cardAbove,
           (position.startsWith('below') || position.endsWith('top')) && classes.cardBelow,
-        )}
+        ]
+          .filter(Boolean)
+          .join(' ')}
       >
         <div
-          className={mergeClasses(
+          className={[
             classes.target,
             targetWidth === 'small' && classes.targetSmall,
             targetWidth === 'large' && classes.targetLarge,
-          )}
+          ]
+            .filter(Boolean)
+            .join(' ')}
           ref={useMergedRefs(safeZoneArea.targetRef, positioning.targetRef)}
         >
           A target element

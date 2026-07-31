@@ -1,0 +1,16 @@
+/* Story styles for Default, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.message {
+  background-color: var(--colorNeutralBackground1);
+  border: var(--strokeWidthThick) solid var(--colorStatusSuccessBorder1);
+  padding: 20px;
+  font-size: var(--fontSizeBase600);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.portal {
+  z-index: 1;
+}

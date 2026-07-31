@@ -1,15 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, useId, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
+import { useId, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
-  },
-});
+import styles from './PopoverTrappingFocus.module.css';
 
 export const TrappingFocus = (): JSXElement => {
-  const styles = useStyles();
   const id = useId();
 
   return (

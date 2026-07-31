@@ -1,34 +1,18 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-import { Button, makeStyles, mergeClasses, Portal, tokens, toMountNodeProps } from '@fluentui/react-components';
+import { Button, Portal, toMountNodeProps } from '@fluentui/react-components';
 import type { PortalProps } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  message: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThick} solid ${tokens.colorStatusSuccessBorder1}`,
-    padding: '20px',
+import styles from './Default.module.css';
 
-    fontSize: tokens.fontSizeBase600,
-
-    position: 'fixed',
-    top: '0',
-    left: '0',
-  },
-
-  // Heads up!
-  // Overrides Portal's default z-index
-  portal: {
-    zIndex: 1,
-  },
-});
+const useClasses = () => styles;
 
 const CustomMessage: React.FC<{ children: React.ReactNode } & Pick<PortalProps, 'mountNode'>> = props => {
   const classes = useClasses();
 
   const mountNodeProps = toMountNodeProps(props.mountNode);
-  mountNodeProps.className = mergeClasses(classes.portal, mountNodeProps.className);
+  mountNodeProps.className = `${classes.portal} ${mountNodeProps.className}`;
 
   return (
     <Portal mountNode={mountNodeProps}>

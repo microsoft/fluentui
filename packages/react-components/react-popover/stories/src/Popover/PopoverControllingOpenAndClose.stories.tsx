@@ -1,20 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, Checkbox } from '@fluentui/react-components';
+import { Button, Popover, PopoverSurface, PopoverTrigger, Checkbox } from '@fluentui/react-components';
 import type { CheckboxProps, PopoverProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
-  },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
+import styles from './PopoverControllingOpenAndClose.module.css';
 
 const ExampleContent = () => {
-  const styles = useStyles();
   return (
     <div>
       <h3 className={styles.contentHeader}>Popover content</h3>
@@ -25,7 +16,6 @@ const ExampleContent = () => {
 };
 
 export const ControllingOpenAndClose = (): JSXElement => {
-  const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: PopoverProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
 

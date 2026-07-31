@@ -1,0 +1,44 @@
+/* Story styles for PortalDefault, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  gap: 8px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 200px;
+}
+
+.state {
+  font-family: var(--fontFamilyMonospace);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  padding: 4px;
+  text-align: center;
+}
+
+.clippingContainer {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase400);
+  background-color: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForeground1);
+  border: var(--strokeWidthThick) solid var(--colorNeutralStroke1);
+  padding: 24px 8px;
+  overflow: hidden;
+}
+
+.portalContent {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase500);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase500);
+  background-color: var(--colorBrandBackground2);
+  color: var(--colorBrandForeground2);
+  border: var(--strokeWidthThick) dashed var(--colorBrandStroke2);
+  padding: 12px 6px;
+}

@@ -1,23 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, tokens } from '@fluentui/react-components';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
-  },
-});
+import styles from './PopoverAppearance.module.css';
 
-const useLayoutStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: tokens.spacingVerticalMNudge,
-  },
-});
+const useLayoutStyles = () => styles;
 
 const ExampleContent = () => {
-  const styles = useStyles();
   return (
     <div>
       <h3 className={styles.contentHeader}>Popover content</h3>

@@ -1,0 +1,71 @@
+/* Story styles for UseSafeZoneAreaDefault, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+  min-height: 400px;
+}
+
+.cardAbove {
+  justify-content: end;
+}
+
+.cardBelow {
+  justify-content: start;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fontSizeBase400);
+  width: 300px;
+  height: 300px;
+  color: var(--colorPaletteBerryForeground2);
+  border: var(--strokeWidthThicker) solid var(--colorPaletteBerryBorderActive);
+  background-color: var(--colorPaletteBerryBackground2);
+}
+
+.target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fontSizeBase400);
+  width: 300px;
+  height: 50px;
+  color: var(--colorPaletteBlueForeground2);
+  border: var(--strokeWidthThicker) solid var(--colorPaletteBlueBorderActive);
+  background-color: var(--colorPaletteBlueBackground2);
+}
+
+.targetSmall {
+  font-size: var(--fontSizeBase100);
+  width: 100px;
+}
+
+.targetLarge {
+  width: 600px;
+}
