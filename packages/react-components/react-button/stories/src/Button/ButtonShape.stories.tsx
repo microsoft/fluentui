@@ -1,17 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: {
-    columnGap: '15px',
-    display: 'flex',
-    minWidth: 'min-content',
-  },
-});
+import styles from './ButtonShape.module.css';
 
 export const Shape = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.wrapper}>
       <Button>Rounded</Button>

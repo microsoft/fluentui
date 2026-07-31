@@ -1,25 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Tooltip } from '@fluentui/react-components';
+import { Button, Tooltip } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  innerWrapper: {
-    alignItems: 'start',
-    columnGap: '15px',
-    display: 'flex',
-  },
-  outerWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '15px',
-    minWidth: 'min-content',
-  },
-});
+import styles from './ButtonSize.module.css';
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.outerWrapper}>
       <div className={styles.innerWrapper}>

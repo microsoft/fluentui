@@ -1,0 +1,15 @@
+/* Story styles for ButtonSize, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.innerWrapper {
+  align-items: start;
+  column-gap: 15px;
+  display: flex;
+}
+
+.outerWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  min-width: min-content;
+}

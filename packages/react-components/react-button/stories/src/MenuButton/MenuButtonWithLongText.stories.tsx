@@ -1,22 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  longText: {
-    width: '280px',
-  },
-  wrapper: {
-    alignItems: 'center',
-    columnGap: '15px',
-    display: 'flex',
-    minWidth: 'min-content',
-  },
-});
+import styles from './MenuButtonWithLongText.module.css';
 
 export const WithLongText = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.wrapper}>
       <Menu>

@@ -1,0 +1,9 @@
+/* Story styles for MenuButtonSize, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  align-items: center;
+  column-gap: 15px;
+  display: flex;
+  min-width: min-content;
+}

@@ -1,20 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+
+import styles from './ButtonAppearance.module.css';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-const useStyles = makeStyles({
-  wrapper: {
-    columnGap: '15px',
-    display: 'flex',
-  },
-});
-
 export const Appearance = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.wrapper}>
       <Button icon={<CalendarMonthRegular />}>Default</Button>

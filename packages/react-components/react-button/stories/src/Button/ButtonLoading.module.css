@@ -1,0 +1,19 @@
+/* Story styles for ButtonLoading, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  column-gap: 15px;
+  display: flex;
+}
+
+.buttonNonInteractive {
+  background-color: var(--colorNeutralBackground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  color: var(--colorNeutralForeground1);
+  cursor: default;
+  pointer-events: none;
+}
+
+.icon {
+  color: var(--colorStatusSuccessForeground1);
+}

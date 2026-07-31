@@ -1,23 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, CompoundButton } from '@fluentui/react-components';
+import { CompoundButton } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  innerWrapper: {
-    columnGap: '15px',
-    display: 'flex',
-    minWidth: 'min-content',
-  },
-  outerWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '15px',
-  },
-});
+import styles from './CompoundButtonDisabled.module.css';
 
 export const Disabled = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.outerWrapper}>
       <div className={styles.innerWrapper}>

@@ -1,0 +1,7 @@
+/* Story styles for ButtonIcon, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  column-gap: 15px;
+  display: flex;
+}

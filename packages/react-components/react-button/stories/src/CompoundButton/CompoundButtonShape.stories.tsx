@@ -1,18 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, CompoundButton } from '@fluentui/react-components';
+import { CompoundButton } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: {
-    columnGap: '15px',
-    display: 'flex',
-    minWidth: 'min-content',
-  },
-});
+import styles from './CompoundButtonShape.module.css';
 
 export const Shape = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.wrapper}>
       <CompoundButton secondaryContent="Secondary content">Rounded</CompoundButton>

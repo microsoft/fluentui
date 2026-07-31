@@ -1,18 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Tooltip } from '@fluentui/react-components';
+import { Button, Tooltip } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  wrapper: {
-    columnGap: '15px',
-    display: 'flex',
-  },
-});
+import styles from './ButtonIcon.module.css';
 
 export const Icon = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.wrapper}>
       <Button icon={<CalendarMonthRegular />}>With calendar icon before contents</Button>
