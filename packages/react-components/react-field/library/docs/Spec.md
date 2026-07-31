@@ -266,7 +266,8 @@ export type FieldControlPropsOptions = {
    *
    * This should be used with controls that have a custom size prop that matches the Field's size prop.
    *
-   * @deprecated Read the Field size directly in the styled hook via `useFieldContext_unstable()` instead.
+   * NOTE: the size is set on the props *returned* by this hook, so the control must read `size` from the returned
+   * props.
    */
   supportsSize?: boolean;
 };

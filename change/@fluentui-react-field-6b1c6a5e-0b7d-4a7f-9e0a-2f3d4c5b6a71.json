@@ -1,7 +1,7 @@
 {
-  "type": "patch",
-  "comment": "chore: deprecate `supportsSize` option of `useFieldControlProps_unstable`",
+  "type": "none",
+  "comment": "docs: clarify how `supportsSize` option of `useFieldControlProps_unstable` applies the Field size",
   "packageName": "@fluentui/react-field",
   "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
