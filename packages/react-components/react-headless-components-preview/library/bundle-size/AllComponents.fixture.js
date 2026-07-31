@@ -1,5 +1,6 @@
 import * as Accordion from '@fluentui/react-headless-components-preview/accordion';
 import * as Avatar from '@fluentui/react-headless-components-preview/avatar';
+import * as AvatarGroup from '@fluentui/react-headless-components-preview/avatar-group';
 import * as Badge from '@fluentui/react-headless-components-preview/badge';
 import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcrumb';
 import * as Button from '@fluentui/react-headless-components-preview/button';
@@ -48,6 +49,7 @@ import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
 console.log({
   Accordion,
   Avatar,
+  AvatarGroup,
   Badge,
   Breadcrumb,
   Button,
