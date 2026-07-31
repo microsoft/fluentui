@@ -1,5 +1,5 @@
-/* Story styles for DividerDefault, converted from Griffel makeStyles (S-F batch 3).
- * Token references are the CSS variables they compile to. */
+/* Story styles for DividerDefault.
+ * Token references are the Fluent theme's CSS variables. */
 
 .root {
   display: flex;

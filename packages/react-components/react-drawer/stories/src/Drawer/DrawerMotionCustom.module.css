@@ -1,5 +1,5 @@
-/* Story styles for DrawerMotionCustom, converted from Griffel makeStyles (S-F batch 3).
- * Token references are the CSS variables they compile to.
+/* Story styles for DrawerMotionCustom.
+ * Token references are the Fluent theme's CSS variables.
  * Hand-converted (codemod bail): the makeStyles arg referenced module-scope consts
  * drawerWidth ('320px') and drawerMargin (tokens.spacingVerticalM); values are resolved
  * inline here. The consts remain in the story for the motion keyframes. */
