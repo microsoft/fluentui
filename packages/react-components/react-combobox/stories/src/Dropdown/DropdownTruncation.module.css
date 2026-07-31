@@ -1,0 +1,25 @@
+/* Story styles for DropdownTruncation, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  grid-template-rows: repeat(1fr);
+  justify-items: start;
+  gap: 2px;
+  max-width: 200px;
+}
+
+.listbox {
+  max-height: 200px;
+}
+
+.truncatedText {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optionText {
+  overflow: hidden;
+  overflow-wrap: break-word;
+}

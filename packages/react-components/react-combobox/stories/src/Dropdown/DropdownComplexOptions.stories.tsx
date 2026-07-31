@@ -1,22 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
+import { Dropdown, Option, useId, Persona } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './DropdownComplexOptions.module.css';
 
 export const ComplexOptions = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown');
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <label htmlFor={dropdownId}>Schedule a meeting</label>

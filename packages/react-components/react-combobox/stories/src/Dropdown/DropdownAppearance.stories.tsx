@@ -1,49 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, makeStyles, Option, tokens, useId } from '@fluentui/react-components';
+import { Dropdown, Option, useId } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '20px',
-    maxWidth: '400px',
-    '> div': {
-      display: 'grid',
-      gridTemplateRows: 'repeat(1fr)',
-      justifyItems: 'start',
-      gap: '2px',
-      // need padding to see the background color for filled variants
-      padding: '5px 20px 10px',
-    },
-  },
-  // filledLighter and filledDarker appearances depend on particular background colors
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-    '> h3': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-    '> h3': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-});
+import styles from './DropdownAppearance.module.css';
 
 export const Appearance = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown');
-  const styles = useStyles();
 
   return (
     <div className={styles.root}>

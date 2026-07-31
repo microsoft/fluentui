@@ -1,20 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, Label, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Dropdown, Label, Option, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './DropdownClearable.module.css';
 
 export const Clearable = (): JSXElement => {
   const dropdownId = useId('');
-  const styles = useStyles();
 
   return (
     <div className={styles.root}>

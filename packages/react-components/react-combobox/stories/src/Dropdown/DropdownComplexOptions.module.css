@@ -1,0 +1,10 @@
+/* Story styles for DropdownComplexOptions, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  grid-template-rows: repeat(1fr);
+  justify-items: start;
+  gap: 2px;
+  max-width: 400px;
+}

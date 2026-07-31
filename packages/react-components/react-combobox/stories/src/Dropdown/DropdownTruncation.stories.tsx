@@ -1,32 +1,9 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Dropdown, Option, useId } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '200px',
-  },
-  listbox: {
-    maxHeight: '200px',
-  },
-  // these styles wrap the value text within the dropdown button and cause it to truncate
-  truncatedText: {
-    overflowX: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-  },
-  // these styles allow option text to break and wrap on long words, e.g. emails
-  optionText: {
-    overflow: 'hidden',
-    overflowWrap: 'break-word',
-  },
-});
+import styles from './DropdownTruncation.module.css';
 
 export const TruncatedValue = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown');
@@ -44,7 +21,6 @@ export const TruncatedValue = (props: Partial<DropdownProps>): JSXElement => {
     'SuperLongName_123456789_SomeMoreStuffToMakeItLonger@fluentui.dev',
     'Screaming hairy armadillo (Chaetophractus vellerosus)',
   ];
-  const styles = useStyles();
 
   const placeholder = 'Select an animal';
 

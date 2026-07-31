@@ -1,0 +1,16 @@
+/* Story styles for DatePickerCustomDateFormatting, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.control {
+  max-width: 300px;
+}
+
+.clearButton {
+  margin-bottom: 5px;
+}

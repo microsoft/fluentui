@@ -1,26 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
+import { Dropdown, Option, useId, Persona } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    justifyItems: 'start',
-    gap: '20px',
-    maxWidth: '400px',
-  },
-  field: {
-    display: 'grid',
-    justifyItems: 'start',
-    gap: '2px',
-  },
-});
+import styles from './DropdownControlled.module.css';
 
 export const Controlled = (props: Partial<DropdownProps>): JSXElement => {
   const comboId = useId('combo-controlled');
-  const styles = useStyles();
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(['eatkins']);
   const [value, setValue] = React.useState('Elvia Atkins');
 

@@ -1,0 +1,14 @@
+/* Story styles for DatePickerFirstDayOfTheWeek, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.firstDaySelector {
+  display: inline-flex;
+  flex-direction: column;
+  row-gap: 5px;
+}

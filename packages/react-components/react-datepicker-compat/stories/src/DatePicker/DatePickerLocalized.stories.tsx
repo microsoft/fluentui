@@ -1,14 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { DatePicker, defaultDatePickerStrings } from '@fluentui/react-datepicker-compat';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import type { DatePickerProps, CalendarStrings } from '@fluentui/react-datepicker-compat';
 
-const useStyles = makeStyles({
-  control: {
-    maxWidth: '300px',
-  },
-});
+import styles from './DatePickerLocalized.module.css';
 
 const localizedStrings: CalendarStrings = {
   ...defaultDatePickerStrings,
@@ -37,8 +33,6 @@ const onFormatDate = (date?: Date) => {
 };
 
 export const Localized = (props: Partial<DatePickerProps>): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Field label="Selecciona una fecha">
       <DatePicker

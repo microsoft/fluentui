@@ -1,0 +1,6 @@
+/* Story styles for DatePickerTextInput, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.control {
+  max-width: 300px;
+}

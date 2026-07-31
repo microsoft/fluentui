@@ -2,24 +2,11 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { addDays } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
-import { AriaLiveAnnouncer, Button, Field, makeStyles, useAnnounce } from '@fluentui/react-components';
+import { AriaLiveAnnouncer, Button, Field, useAnnounce } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '15px',
-  },
-  control: {
-    maxWidth: '300px',
-  },
-  button: {
-    marginRight: '10px',
-  },
-});
+import styles from './DatePickerControlled.module.css';
 
 export const Controlled = (): JSXElement => {
-  const styles = useStyles();
   const { announce } = useAnnounce();
 
   const [selectedDate, setSelectedDate] = React.useState<Date | null | undefined>(null);

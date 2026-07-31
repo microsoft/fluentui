@@ -2,14 +2,10 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { addMonths, addYears } from '@fluentui/react-calendar-compat';
 import { DatePicker, defaultDatePickerErrorStrings } from '@fluentui/react-datepicker-compat';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import type { DatePickerValidationResultData } from '@fluentui/react-datepicker-compat';
 
-const useStyles = makeStyles({
-  control: {
-    maxWidth: '300px',
-  },
-});
+import styles from './DatePickerErrorHandling.module.css';
 
 const today = new Date();
 const minDate = addMonths(today, -1);
@@ -20,7 +16,6 @@ const onFormatDate = (date?: Date): string => {
 };
 
 export const ErrorHandling = (): JSXElement => {
-  const styles = useStyles();
   const [error, setError] = React.useState<DatePickerValidationResultData['error']>(undefined);
 
   return (

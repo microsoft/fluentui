@@ -2,13 +2,9 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { addMonths, addYears } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  inputControl: {
-    maxWidth: '300px',
-  },
-});
+import styles from './DatePickerDateBoundaries.module.css';
 
 const today = new Date();
 const minDate = addMonths(today, -1);
@@ -19,8 +15,6 @@ const onFormatDate = (date?: Date): string => {
 };
 
 export const DateBoundaries = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Field label={`The date boundaries for this example are ${minDate.toDateString()} to ${maxDate.toDateString()}.`}>
       <DatePicker

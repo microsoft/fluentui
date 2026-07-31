@@ -1,16 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, Field, makeStyles, Option } from '@fluentui/react-components';
+import { Dropdown, Field, Option } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: '400px',
-  },
-});
+import styles from './DropdownField.module.css';
 
 export const WithField = (props: Partial<DropdownProps>): JSXElement => {
-  const styles = useStyles();
   const options = ['Cat', 'Caterpillar', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
   return (
     <Field label="Best pet" required hint="Try picking 'Cat'" className={styles.root}>

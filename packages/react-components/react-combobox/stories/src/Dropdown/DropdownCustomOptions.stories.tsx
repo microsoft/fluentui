@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, makeStyles, Option, OptionGroup, useId } from '@fluentui/react-components';
+import { Dropdown, Option, OptionGroup, useId } from '@fluentui/react-components';
 import type { DropdownProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
 import {
   AnimalCat24Filled,
@@ -11,6 +11,8 @@ import {
   CheckboxChecked24Regular,
 } from '@fluentui/react-icons';
 
+import styles from './DropdownCustomOptions.module.css';
+
 const animalIcons = {
   Cat: AnimalCat24Filled,
   Dog: AnimalDog24Filled,
@@ -19,22 +21,11 @@ const animalIcons = {
   Fish: FoodFish24Filled,
 };
 
-const useCustomOptionStyles = makeStyles({
-  option: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '5px',
-  },
-  icon: { flex: '0 0 auto' },
-  text: { flex: '1 1 auto' },
-});
-
 type CustomOptionProps = Partial<OptionProps> & { animal: keyof typeof animalIcons };
 
 const CustomOption = (props: CustomOptionProps) => {
   const { animal, ...optionProps } = props;
   const Icon = animalIcons[animal];
-  const styles = useCustomOptionStyles();
   return (
     <Option text={animal} className={styles.option} checkIcon={<CheckboxChecked24Regular />} {...optionProps}>
       <Icon className={styles.icon} />
@@ -56,25 +47,10 @@ const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: (keyof 
   );
 };
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-  listbox: {
-    maxHeight: '200px',
-  },
-});
-
 export const CustomOptions = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown');
   const land = ['Cat', 'Dog', 'Rabbit'] as (keyof typeof animalIcons)[];
   const water = ['Fish', 'Turtle'] as (keyof typeof animalIcons)[];
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <label htmlFor={dropdownId}>Best pet</label>

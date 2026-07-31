@@ -2,26 +2,14 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { DayOfWeek } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
-import { Dropdown, Field, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Dropdown, Field, Option, useId } from '@fluentui/react-components';
+
+import styles from './DatePickerFirstDayOfTheWeek.module.css';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const useStyles = makeStyles({
-  root: {
-    display: 'inline-flex',
-    flexDirection: 'column',
-    rowGap: '15px',
-  },
-  firstDaySelector: {
-    display: 'inline-flex',
-    flexDirection: 'column',
-    rowGap: '5px',
-  },
-});
-
 export const FirstDayOfTheWeek = (): JSXElement => {
   const dropdownId = useId('dropdown-default');
-  const styles = useStyles();
 
   const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 

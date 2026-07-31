@@ -1,22 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import type { CheckboxProps, DropdownProps } from '@fluentui/react-components';
-import { Checkbox, Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Checkbox, Dropdown, Option, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './DropdownControllingOpenAndClose.module.css';
 
 export const ControllingOpenAndClose = (): JSXElement => {
-  const styles = useStyles();
-
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: DropdownProps['onOpenChange'] = (e, data) => setOpen(data.open);
   const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(!!data.checked);

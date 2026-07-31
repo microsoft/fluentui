@@ -1,17 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  control: {
-    maxWidth: '300px',
-  },
-});
+import styles from './DatePickerTextInput.module.css';
 
 export const TextInput = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Field label="Select a date">
       <DatePicker allowTextInput placeholder="Select a date..." className={styles.control} />

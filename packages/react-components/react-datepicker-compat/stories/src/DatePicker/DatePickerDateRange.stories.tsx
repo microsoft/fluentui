@@ -1,20 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, Label, makeStyles, Select } from '@fluentui/react-components';
+import { Field, Label, Select } from '@fluentui/react-components';
 import { DateRangeType } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '20px',
-  },
-
-  control: {
-    maxWidth: '300px',
-  },
-});
+import styles from './DatePickerDateRange.module.css';
 
 const dateRangeOptions = {
   Day: DateRangeType.Day,
@@ -24,7 +14,6 @@ const dateRangeOptions = {
 };
 
 export const DateRange = (): JSXElement => {
-  const styles = useStyles();
   const [dateRangeType, setDateRangeType] = React.useState('Week');
 
   return (

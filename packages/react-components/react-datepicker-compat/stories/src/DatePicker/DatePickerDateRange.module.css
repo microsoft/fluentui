@@ -1,0 +1,12 @@
+/* Story styles for DatePickerDateRange, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.control {
+  max-width: 300px;
+}

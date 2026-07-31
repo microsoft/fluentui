@@ -1,22 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
+import { Dropdown, Option, useId, Persona } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './DropdownActiveOptionChange.module.css';
 
 export const ActiveOptionChange = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown');
-  const styles = useStyles();
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
   const onActiveOptionChange = React.useCallback<NonNullable<DropdownProps['onActiveOptionChange']>>(

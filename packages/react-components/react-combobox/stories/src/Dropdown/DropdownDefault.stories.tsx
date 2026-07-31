@@ -1,23 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Dropdown, Option, useId } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    // Stack the label above the field with a gap
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './DropdownDefault.module.css';
 
 export const Default = (props: Partial<DropdownProps>): JSXElement => {
   const dropdownId = useId('dropdown-default');
   const options = ['Cat', 'Caterpillar', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <label htmlFor={dropdownId}>Best pet</label>

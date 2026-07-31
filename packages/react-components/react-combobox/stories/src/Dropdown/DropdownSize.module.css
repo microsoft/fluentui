@@ -1,0 +1,17 @@
+/* Story styles for DropdownSize, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  grid-template-rows: repeat(1fr);
+  justify-items: start;
+  gap: 20px;
+  max-width: 400px;
+}
+
+.root > div {
+  display: grid;
+  grid-template-rows: repeat(1fr);
+  justify-items: start;
+  gap: 2px;
+}
