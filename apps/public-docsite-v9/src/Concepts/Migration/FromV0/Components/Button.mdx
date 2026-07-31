@@ -6,8 +6,6 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Overview:
 
-To help with the migration we also offer a mixin that [can be checked here](/docs/migration-shims-v0-buttonmixins--disabled-cursor)
-
 Before:
 
 ```tsx
@@ -227,7 +225,6 @@ For usage v9 Icon with v0 Button it's required to add additional styles to keep 
 
 ```tsx
 import { CalendarMonth } from '@fluentui/react-components-icons';
-import { buttonMigrationStyles } from '@fluentui/react-components';
 import { Button, useUIProviderContext } from '@fluentui/react-northstar';
 
 const Component = () => {
@@ -236,12 +233,26 @@ const Component = () => {
 };
 
 // in button-namespace-flyout.ts
-import { buttonMigrationStyles } from '@fluentui/react-components';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 export default {
   root: {
     filterButton: () => ({
-      ...buttonMigrationStyles.V9Icon(),
+      // Keep a v9 SVG icon sized/centered consistently with the v0 icon metrics.
+      '& svg': {
+        width: '100%',
+        paddingBottom: '100%',
+        // negative margin centers the v9 icon inside the v0 button (the svg carries extra space)
+        margin: '-4px 0 0 -4px',
+        overflow: 'visible',
+      },
+      // Swap regular → filled on hover, matching the v0 icon behavior.
+      [`& .${iconFilledClassName}`]: { display: 'none' },
+      [`& .${iconRegularClassName}`]: { display: 'inline' },
+      '&:hover': {
+        [`& .${iconFilledClassName}`]: { display: 'inline' },
+        [`& .${iconRegularClassName}`]: { display: 'none' },
+      },
     }),
   },
 };
@@ -251,23 +262,33 @@ export default {
 
 ```tsx
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
-import { Button, makeStyles } from '@fluentui/react-components';
-import { buttonMigrationStyles } from '@fluentui/react-components';
-
-const useButtonStyles = makeStyles({
-  v0IconStyle: {
-    ...buttonMigrationStyles.v0Icon(),
-  },
-});
+import { Button } from '@fluentui/react-components';
+import styles from './Component.module.css';
 
 const Component = () => {
-  const classes = useButtonStyles();
   return (
-    <Button className={classes.v0IconStyle} icon={<CalendarIcon />}>
+    <Button className={styles.v0Icon} icon={<CalendarIcon />}>
       Calendar
     </Button>
   );
 };
+```
+
+```css
+/* Component.module.css — v0 icon inside a v9 Button: outline → filled swap on hover.
+   `ui-icon__outline` / `ui-icon__filled` are the v0 (react-northstar) icon class names. */
+.v0Icon :global(.ui-icon__outline) {
+  display: block;
+}
+.v0Icon :global(.ui-icon__filled) {
+  display: none;
+}
+.v0Icon:hover :global(.ui-icon__outline) {
+  display: none;
+}
+.v0Icon:hover :global(.ui-icon__filled) {
+  display: block;
+}
 ```
 
 Live example is here: https://codesandbox.io/s/button-icon-migration-lkt6o5?file=/example.tsx

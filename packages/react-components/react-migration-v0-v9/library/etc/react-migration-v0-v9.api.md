@@ -9,7 +9,6 @@ import type { ComponentProps } from '@fluentui/react-components';
 import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { GriffelStyle } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
@@ -95,16 +94,6 @@ export const Flex: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTML
 export const flexClassName = "group/fui-flex";
 
 // @public (undocumented)
-export const flexItem: {
-    align: (value: "auto" | "start" | "end" | "center" | "baseline" | "stretch") => GriffelStyle;
-    size: (value: "half" | "quarter" | "small" | "medium" | "large") => GriffelStyle;
-    grow: (flexGrow: boolean | number) => GriffelStyle | undefined;
-    shrink: (flexShrink: boolean | number) => GriffelStyle | undefined;
-    pushRow: () => GriffelStyle;
-    pushColumn: () => GriffelStyle;
-};
-
-// @public (undocumented)
 export const FormFieldShim: React_2.ForwardRefExoticComponent<{
     errorMessage?: WithContent;
     required?: boolean;
@@ -118,12 +107,6 @@ export const FormFieldShim: React_2.ForwardRefExoticComponent<{
     children?: React_2.ReactNode | undefined;
 } & React_2.RefAttributes<HTMLInputElement>>;
 
-// @public (undocumented)
-export const grid: {
-    columns: (template: string) => GriffelStyle;
-    rows: (template: string) => GriffelStyle;
-};
-
 // @public @deprecated
 export const gridClassName = "group/fui-grid-shim";
 
@@ -135,14 +118,6 @@ export interface GridShimProps {
     columns?: 1 | 2 | 3;
     rows?: 1 | 2 | 3;
 }
-
-// @public (undocumented)
-export const input: {
-    error: () => GriffelStyle;
-    errorIndicator: () => GriffelStyle;
-    fluid: () => GriffelStyle;
-    successIndicator: () => GriffelStyle;
-};
 
 // @public (undocumented)
 export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots, "root"> & Omit<{
@@ -236,17 +211,6 @@ export const renderListItem_unstable: (state: ListItemState) => JSXElement;
 export const Segment: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export const slider: {
-    fluid: () => GriffelStyle;
-};
-
-// @public (undocumented)
-export const spinner: {
-    v0Inline: () => GriffelStyle;
-    v0SpinnerLabelStyle: () => GriffelStyle;
-};
-
-// @public (undocumented)
 export const StyledText: React_2.ForwardRefExoticComponent<StyledTextProps & React_2.RefAttributes<HTMLSpanElement>>;
 
 // @public @deprecated
@@ -296,21 +260,6 @@ export function useListSelection(options?: SelectionHookParams): ListSelectionSt
 
 // @public
 export const useListStyles_unstable: (state: ListState) => ListState;
-
-// @public (undocumented)
-export const v0Icon: () => GriffelStyle;
-
-// @public (undocumented)
-export const v9CustomSizeIcon: () => GriffelStyle;
-
-// @public (undocumented)
-export const v9DisabledCursor: () => GriffelStyle;
-
-// @public (undocumented)
-export const v9HoverClasses: () => GriffelStyle;
-
-// @public (undocumented)
-export const v9Icon: () => GriffelStyle;
 
 // @public (undocumented)
 export const Video: React_2.ForwardRefExoticComponent<VideoProps & React_2.RefAttributes<HTMLVideoElement>>;

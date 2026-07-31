@@ -6,18 +6,21 @@
  * forwarding — so every such line carries the documented suppression. Same shape as
  * react-divider's `src/index.ts`.
  */
+/*
+ * Griffel → Tailwind + CSS Modules migration (S-H, DECISIONS.md D19): the Griffel style
+ * mixins (`grid`, `flexItem`, `input`, `slider`, `spinner`, `v0Icon`, `v9CustomSizeIcon`,
+ * `v9DisabledCursor`, `v9HoverClasses`, `v9Icon`) are retired. They returned `GriffelStyle`
+ * objects for consumers to spread into their own `makeStyles` calls; with the umbrella's
+ * Griffel re-exports removed in the same major, that authoring path no longer exists.
+ */
 // eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
-export { GridShim, grid, gridClassName, useGridStyles } from './components/Grid/index';
+export { GridShim, gridClassName, useGridStyles } from './components/Grid/index';
 export type { GridShimProps } from './components/Grid/index';
 export { FormFieldShim } from './components/FormField';
 export { Segment } from './components/Segment';
-export { slider } from './components/Slider';
 // eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { Video, videoClassName } from './components/Video';
 export { type VideoProps } from './components/Video';
-export { input } from './components/Input';
-export { v0Icon, v9CustomSizeIcon, v9DisabledCursor, v9HoverClasses, v9Icon } from './components/Button';
-export { spinner } from './components/Spinner';
 // eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { StyledText, styledTextClassName } from './components/StyledText';
 export type { StyledTextProps, StyledTextSlots } from './components/StyledText';
@@ -26,7 +29,7 @@ export { Primitive, primitiveClassName } from './components/Primitive';
 // eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
 export { ItemLayout, itemLayoutClassName, useItemLayoutStyles } from './components/ItemLayout';
 // eslint-disable-next-line @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity class is the point.
-export { Flex, flexClassName, flexItem, useFlexStyles } from './components/Flex';
+export { Flex, flexClassName, useFlexStyles } from './components/Flex';
 /* eslint-disable @typescript-eslint/no-deprecated -- deprecated FOR STYLING (DECISIONS.md D16.5); re-exporting the identity classes is the point. */
 export {
   List,

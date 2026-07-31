@@ -20,7 +20,7 @@ If this is your first time styling a v9 component, please check [this guide on h
 Your rules are unlayered and the component's live inside `@layer fui.*`, so yours win by default —
 there is no merge helper to call and no argument order to get right.
 
-> A few component migration guides still show the older `makeStyles` form in samples that consume
-> the Griffel-based migration mixins (for example `flexItem`, `grid`, `spinner`). Those mixins are
-> deprecated together with the `makeStyles` re-export and will be removed; for everything else the
-> CSS Module form above is what new code should use.
+> The Griffel-based migration mixins (`flexItem`, `grid`, `input`, `slider`, `spinner` and the
+> button icon mixins) were removed together with the `makeStyles` re-export in the same major
+> version. The component migration guides now show the equivalent plain CSS for each former mixin;
+> the CSS Module form above is what new code should use.

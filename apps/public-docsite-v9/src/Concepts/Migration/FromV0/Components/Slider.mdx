@@ -6,8 +6,6 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ## Overview:
 
-To help with the migration we also offer a mixin that [can be checked here](/docs/migration-shims-v0-slidermixin--docs)
-
 Before:
 
 ```tsx
@@ -35,7 +33,7 @@ Slider upgrade doc in V9: [Slider upgrade to V9](https://react.fluentui.dev/?pat
 | defaultValue                | keep it as is                                                                                               |
 | disabled                    | keep it as is                                                                                               |
 | getA11yValueMessageOnChange | create your own message for a11y attr \`aria-valuetext\` by listening \`onChange\` and updating state value |
-| fluid                       | use \`slider.fluid()\` mixin in Slider component's style file                                               |
+| fluid                       | add \`width: 100%\` to the Slider's class in your stylesheet                                                |
 | input                       | keep it as is                                                                                               |
 | max, min                    | keep it as is                                                                                               |
 | onChange                    | keep it as is                                                                                               |
