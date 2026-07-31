@@ -6,33 +6,15 @@ import {
   Field,
   RadioGroup,
   Radio,
-  makeStyles,
-  tokens,
   Title3,
   ToggleButton,
 } from '@fluentui/react-components';
 
+import styles from './MultipleNames.module.css';
+
 type ObservedNames = 'first' | 'second';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-
-    backgroundColor: tokens.colorBrandBackground2,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '10px',
-  },
-});
-
 export const MultipleNames = () => {
-  const styles = useStyles();
   const firstName = 'first' as const;
   const secondName = 'second' as const;
   const [observedName, setObservedName] = React.useState<ObservedNames>('first');

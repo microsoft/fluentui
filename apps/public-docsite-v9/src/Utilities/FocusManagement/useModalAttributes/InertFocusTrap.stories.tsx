@@ -1,32 +1,9 @@
 import * as React from 'react';
-import { useModalAttributes, useFocusFinders, makeStyles, Button, tokens, Title2 } from '@fluentui/react-components';
+import { useModalAttributes, useFocusFinders, Button, Title2 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  dialog: {
-    position: 'fixed',
-    backgroundColor: tokens.colorNeutralBackground1,
-    inset: '0',
-    padding: '10px',
-    margin: 'auto',
-    border: 'none',
-    overflow: 'unset',
-    boxShadow: tokens.shadow16,
-    width: '450px',
-    height: '200px',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  footer: {
-    display: 'flex',
-    marginTop: 'auto',
-    justifyContent: 'end',
-    gap: '5px',
-  },
-});
+import styles from './InertFocusTrap.module.css';
 
 export const InertFocusTrap = () => {
-  const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const { triggerAttributes, modalAttributes } = useModalAttributes({ trapFocus: true });
   const { findFirstFocusable } = useFocusFinders();

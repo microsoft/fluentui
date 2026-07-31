@@ -10,21 +10,11 @@ import {
   ClipboardPasteRegular,
   CutRegular,
 } from '@fluentui/react-icons';
-import { Button, useArrowNavigationGroup, makeStyles, useFocusFinders, tokens } from '@fluentui/react-components';
+import { Button, useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    marginTop: '5px',
-    display: 'flex',
-    gap: '5px',
-    padding: '10px',
-    border: `2px solid ${tokens.colorBrandStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-  },
-});
+import styles from './FindPrevious.module.css';
 
 export const FindPrevious = () => {
-  const styles = useStyles();
   const { findPrevFocusable } = useFocusFinders();
   const toolbarRef = React.useRef<HTMLDivElement>(null);
   const attributes = useArrowNavigationGroup({ axis: 'horizontal' });

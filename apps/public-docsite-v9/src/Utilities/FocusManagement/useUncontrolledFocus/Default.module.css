@@ -1,0 +1,41 @@
+/* Story styles for Default, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  place-items: start;
+}
+
+.focusTrapZone {
+  display: flex;
+  gap: 20px;
+  padding: 20px 10px 10px 10px;
+  position: relative;
+  width: 400px;
+  border: 2px solid var(--colorBrandBackground);
+}
+
+.focusTrapZone::after {
+  content: 'FocusTrapZone';
+  position: absolute;
+  padding: 4px;
+  top: -2px;
+  left: -2px;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--colorBrandBackground);
+}
+
+.controls {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  justify-content: end;
+}

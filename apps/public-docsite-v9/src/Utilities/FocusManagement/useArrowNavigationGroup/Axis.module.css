@@ -1,0 +1,27 @@
+/* Story styles for Axis, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  gap: 5px;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.both {
+}
+
+.horizontal {
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+}
+
+.grid-linear {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+}

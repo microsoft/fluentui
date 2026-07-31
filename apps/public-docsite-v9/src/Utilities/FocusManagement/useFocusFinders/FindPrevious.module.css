@@ -1,0 +1,11 @@
+/* Story styles for FindPrevious, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  margin-top: 5px;
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+  border: 2px solid var(--colorBrandStroke1);
+  border-radius: var(--borderRadiusMedium);
+}

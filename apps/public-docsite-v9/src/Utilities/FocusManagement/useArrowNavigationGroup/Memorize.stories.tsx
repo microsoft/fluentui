@@ -10,17 +10,11 @@ import {
   ClipboardPasteRegular,
   CutRegular,
 } from '@fluentui/react-icons';
-import { Button, useArrowNavigationGroup, makeStyles } from '@fluentui/react-components';
+import { Button, useArrowNavigationGroup } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    gap: '5px',
-  },
-});
+import styles from './Memorize.module.css';
 
 export const Memorize = () => {
-  const styles = useStyles();
   const attributes = useArrowNavigationGroup({ axis: 'horizontal', circular: true, memorizeCurrent: true });
 
   return (

@@ -1,34 +1,9 @@
 import * as React from 'react';
-import {
-  Button,
-  useObservedElement,
-  useFocusObserved,
-  useId,
-  makeStyles,
-  tokens,
-  ToggleButton,
-  Title3,
-} from '@fluentui/react-components';
+import { Button, useObservedElement, useFocusObserved, useId, ToggleButton, Title3 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-
-    backgroundColor: tokens.colorBrandBackground2,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '10px',
-  },
-});
+import styles from './Default.module.css';
 
 export const Default = () => {
-  const styles = useStyles();
   const observedName = useId('observed');
 
   const attributes = useObservedElement(observedName);

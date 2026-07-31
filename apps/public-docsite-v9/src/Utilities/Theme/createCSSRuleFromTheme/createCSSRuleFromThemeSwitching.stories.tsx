@@ -1,34 +1,8 @@
 /* eslint-disable no-restricted-properties */
 import * as React from 'react';
-import {
-  makeStyles,
-  tokens,
-  mergeClasses,
-  createCSSRuleFromTheme,
-  webLightTheme,
-  webDarkTheme,
-} from '@fluentui/react-components';
+import { createCSSRuleFromTheme, webLightTheme, webDarkTheme } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  colorBrandBackground: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-  },
-  colorBrandBackground2: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorNeutralForeground2,
-  },
-  box: { padding: tokens.spacingHorizontalM },
-  horizontalLayout: {
-    display: 'flex',
-    gap: `${tokens.spacingHorizontalM} ${tokens.spacingVerticalM}`,
-  },
-  verticalLayout: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: `${tokens.spacingHorizontalM} ${tokens.spacingVerticalM}`,
-  },
-});
+import styles from './createCSSRuleFromThemeSwitching.module.css';
 
 export const Switching = () => {
   React.useLayoutEffect(() => {
@@ -49,8 +23,6 @@ export const Switching = () => {
   const [selectedTheme, setSelectedTheme] = React.useState<'fluentui-light-theme' | 'fluentui-dark-theme'>(
     'fluentui-light-theme',
   );
-
-  const styles = useStyles();
 
   return (
     <div className={styles.verticalLayout}>
@@ -78,9 +50,9 @@ export const Switching = () => {
           <label htmlFor="dark-theme">Fluent UI dark theme</label>
         </div>
       </div>
-      <div className={mergeClasses(styles.horizontalLayout, selectedTheme)}>
-        <div className={mergeClasses(styles.box, styles.colorBrandBackground)}>colorBrandBackground</div>
-        <div className={mergeClasses(styles.box, styles.colorBrandBackground2)}>colorBrandBackground2</div>
+      <div className={`${styles.horizontalLayout} ${selectedTheme}`}>
+        <div className={`${styles.box} ${styles.colorBrandBackground}`}>colorBrandBackground</div>
+        <div className={`${styles.box} ${styles.colorBrandBackground2}`}>colorBrandBackground2</div>
       </div>
     </div>
   );

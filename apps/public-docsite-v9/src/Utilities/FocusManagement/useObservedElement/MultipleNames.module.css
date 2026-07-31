@@ -1,0 +1,17 @@
+/* Story styles for MultipleNames, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--colorBrandBackground2);
+  border-radius: var(--borderRadiusMedium);
+  padding: 10px;
+}

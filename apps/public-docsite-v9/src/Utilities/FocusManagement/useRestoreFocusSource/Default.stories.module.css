@@ -1,0 +1,11 @@
+/* Story styles for Default.stories, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.feedback {
+  display: flex;
+  align-items: center;
+}
+
+.field {
+  width: 300px;
+}

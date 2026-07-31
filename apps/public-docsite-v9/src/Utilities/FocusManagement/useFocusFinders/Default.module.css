@@ -1,0 +1,20 @@
+/* Story styles for Default, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+  border: 2px solid var(--colorBrandStroke1);
+  border-bottom-left-radius: var(--borderRadiusMedium);
+  border-bottom-right-radius: var(--borderRadiusMedium);
+}
+
+.note {
+  display: block;
+  background-color: var(--colorBrandStroke1);
+  color: var(--colorNeutralForegroundOnBrand);
+  padding: 4px;
+  border-top-left-radius: var(--borderRadiusMedium);
+  border-top-right-radius: var(--borderRadiusMedium);
+}

@@ -1,0 +1,21 @@
+/* Story styles for createCSSRuleFromThemeDefault, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.colorBrandBackground {
+  background-color: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+}
+
+.colorBrandBackground2 {
+  background-color: var(--colorBrandBackground2);
+  color: var(--colorNeutralForeground2);
+}
+
+.box {
+  padding: var(--spacingHorizontalM);
+}
+
+.layout {
+  display: flex;
+  gap: var(--spacingHorizontalM) var(--spacingVerticalM);
+}

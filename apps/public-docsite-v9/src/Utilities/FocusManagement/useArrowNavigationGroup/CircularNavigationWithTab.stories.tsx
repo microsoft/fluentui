@@ -10,17 +10,11 @@ import {
   ClipboardPasteRegular,
   CutRegular,
 } from '@fluentui/react-icons';
-import { Button, useArrowNavigationGroup, makeStyles, Checkbox } from '@fluentui/react-components';
+import { Button, useArrowNavigationGroup, Checkbox } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    gap: '5px',
-  },
-});
+import styles from './CircularNavigationWithTab.module.css';
 
 export const CircularNavigationWithTab = () => {
-  const styles = useStyles();
   const [checked, setChecked] = React.useState(true);
   const attributes = useArrowNavigationGroup({ axis: 'horizontal', circular: checked, tabbable: true });
 

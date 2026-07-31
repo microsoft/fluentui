@@ -1,0 +1,24 @@
+/* Story styles for Default, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.dialog {
+  position: fixed;
+  background-color: var(--colorNeutralBackground1);
+  inset: 0;
+  padding: 10px;
+  margin: auto;
+  border: none;
+  overflow: unset;
+  box-shadow: var(--shadow16);
+  width: 450px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  display: flex;
+  margin-top: auto;
+  justify-content: end;
+  gap: 5px;
+}

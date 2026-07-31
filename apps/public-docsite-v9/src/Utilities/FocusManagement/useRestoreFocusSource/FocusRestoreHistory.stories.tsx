@@ -1,27 +1,10 @@
 import * as React from 'react';
 import { ThumbLikeRegular, ThumbDislikeRegular } from '@fluentui/react-icons';
-import {
-  useRestoreFocusSource,
-  useRestoreFocusTarget,
-  Button,
-  makeStyles,
-  Textarea,
-  Field,
-} from '@fluentui/react-components';
+import { useRestoreFocusSource, useRestoreFocusTarget, Button, Textarea, Field } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  feedback: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-
-  field: {
-    width: '300px',
-  },
-});
+import styles from './FocusRestoreHistory.module.css';
 
 export const FocusRestoreHistory = () => {
-  const styles = useStyles();
   const restoreFocusSourceAttribute = useRestoreFocusSource();
   const restoreFocusTargetAttribute = useRestoreFocusTarget();
   const [experienceFeedbackSent, setExperienceFeedbackSent] = React.useState(false);

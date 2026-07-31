@@ -17,34 +17,11 @@ import {
   RadioGroup,
   Radio,
   UseArrowNavigationGroupOptions,
-  makeStyles,
-  mergeClasses,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    gap: '5px',
-  },
-
-  vertical: {
-    flexDirection: 'column',
-  },
-
-  both: {},
-  horizontal: {},
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, max-content)',
-  },
-  ['grid-linear']: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, max-content)',
-  },
-});
+import styles from './Axis.module.css';
 
 export const Axis = () => {
-  const styles = useStyles();
   const [axis, setAxis] = React.useState<UseArrowNavigationGroupOptions['axis']>('horizontal');
   const atributes = useArrowNavigationGroup({ axis });
 
@@ -63,7 +40,7 @@ export const Axis = () => {
         aria-label="Editor toolbar example"
         role="toolbar"
         {...atributes}
-        className={mergeClasses(styles.container, axis && styles[axis])}
+        className={[styles.container, axis && styles[axis]].filter(Boolean).join(' ')}
       >
         <Button aria-label="Bold" icon={<TextBoldRegular />} />
         <Button aria-label="Underline" icon={<TextUnderlineRegular />} />
