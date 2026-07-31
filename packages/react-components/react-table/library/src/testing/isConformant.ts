@@ -7,16 +7,9 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     tsConfig: { configName: 'tsconfig.spec.json' },
     componentPath: require.main?.filename.replace('.test', ''),
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // This package is now converted, so the package-wide opt-out of
-    // `component-has-group-marker` (a default test since DECISIONS.md D16.6) is gone and it
-    // no longer takes the opt-in `hasStaticClassNames`: the `fui-Table*` / `fui-DataGrid*`
-    // BEM statics that test asserted were removed by D16.1, and every component here stamps
-    // a `group/fui-*` marker instead.
-    //
-    // `make-styles-overrides-win` is disabled and `classname-overrides-win` added per
-    // component, and the seven DataGrid* components declare their marker SET, because both
-    // are per-component facts. See any *.test.tsx in this package.
+    // `classname-overrides-win` (DECISIONS.md D9) is added per component, and the seven
+    // DataGrid* components declare their marker SET (D16.3), because both are per-component
+    // facts. See any *.test.tsx in this package.
   };
 
   baseIsConformant(defaultOptions, testInfo);

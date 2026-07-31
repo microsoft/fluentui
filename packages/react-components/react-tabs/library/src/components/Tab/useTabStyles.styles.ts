@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * NOTE on the directive above:
  * `makeStyles` is gone, but this file still re-exports and calls
  * `useTabAnimatedIndicatorStyles_unstable`, which is a real React hook, so
  * `enforce-use-client` does not consider the directive unnecessary and it stays. Converted

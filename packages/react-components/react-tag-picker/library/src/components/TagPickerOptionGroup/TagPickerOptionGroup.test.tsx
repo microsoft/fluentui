@@ -11,14 +11,9 @@ describe('TagPickerOptionGroup', () => {
     requiredProps: {
       label: 'label',
     },
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind), D9
-    // delegation seam. `useTagPickerOptionGroupStyles` calls react-combobox's
-    // `useOptionGroupStyles_unstable` FIRST and then prepends its own classes with clsx, so
-    // `make-styles-overrides-win` — which jest-mocks mergeClasses and looks for the consumer
-    // className as a standalone ARGUMENT — can no longer observe the contract. The guarantee is
-    // unchanged: the consumer className is still last in the emitted string, and unlayered
-    // consumer CSS still beats every `@layer fui.*` rule. `classname-overrides-win` is its
-    // cascade-native replacement (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -11,11 +11,9 @@ describe('SwatchPicker', () => {
   isConformant({
     Component: SwatchPicker,
     displayName: 'SwatchPicker',
-    // Griffel → Tailwind + CSS Modules migration — see ColorSwatch.test.tsx for the full
-    // rationale. `make-styles-overrides-win` can no longer observe a clsx-composed hook;
-    // `classname-overrides-win` is its cascade-native replacement (DECISIONS.md D9), and
-    // `component-has-group-marker` (a default test) replaces the BEM-static assertion
-    // (D16.1 / D16.6).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively (DECISIONS.md D2/D9); `component-has-group-marker` (a default test)
+    // asserts the marker contract that replaced the BEM statics (D16.1 / D16.6).
     disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,

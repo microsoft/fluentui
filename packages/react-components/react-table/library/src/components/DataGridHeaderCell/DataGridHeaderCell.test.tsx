@@ -15,11 +15,9 @@ describe('DataGridHeaderCell', () => {
   isConformant<DataGridHeaderCellProps>({
     Component: DataGridHeaderCell,
     displayName: 'DataGridHeaderCell',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
-    // it was called with the consumer className last; this component now composes with
-    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
-    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     // This component renders another component's ROOT — a DataGridHeaderCell IS a TableHeaderCell — so the
     // element legitimately carries BOTH markers (DECISIONS.md D16.3). Declaring the whole set
     // keeps `component-has-group-marker` running as an exact set comparison, and keeps its
