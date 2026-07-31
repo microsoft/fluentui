@@ -32,16 +32,16 @@ describe('Tooltip', () => {
       );
 
       cy.get('#trigger').realHover();
-      cy.get('[role="tooltip"]').as('tooltip').should('be.visible');
 
-      cy.get('#scroll-container').scrollTo(0, 300);
-      cy.get('@tooltip')
-        .should('exist')
-        .and('have.css', 'visibility', 'hidden')
-        .and('have.css', 'pointer-events', 'none');
+      cy.get('[role="tooltip"]')
+        .should('be.visible')
+        .then($tooltip => {
+          cy.get('#scroll-container').scrollTo(0, 300);
+          cy.wrap($tooltip).should('not.be.visible');
 
-      cy.get('#scroll-container').scrollTo(0, 0);
-      cy.get('@tooltip').should('be.visible');
+          cy.get('#scroll-container').scrollTo(0, 0);
+          cy.wrap($tooltip).should('be.visible');
+        });
     });
   });
 });

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix the headless Tooltip state type after adding positioning visibility state.",
+  "comment": "fix: preserve the headless Tooltip state API after adding overflow visibility handling to react-tooltip",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"
