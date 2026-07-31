@@ -1,0 +1,8 @@
+/* Story styles for FieldRenderFunction, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+}

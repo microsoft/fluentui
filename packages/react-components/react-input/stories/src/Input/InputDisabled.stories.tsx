@@ -1,35 +1,8 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, useId, Input, Label, tokens, mergeClasses, Switch } from '@fluentui/react-components';
+import { useId, Input, Label, Switch } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '400px',
-  },
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    padding: tokens.spacingHorizontalMNudge,
-  },
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-  toggle: {
-    marginTop: tokens.spacingVerticalXL,
-  },
-});
+import styles from './InputDisabled.module.css';
 
 export const Disabled = (): JSXElement => {
   const idPrefix = 'input-disabled-story';
@@ -39,7 +12,6 @@ export const Disabled = (): JSXElement => {
     filledLighter: useId(idPrefix),
     filledDarker: useId(idPrefix),
   };
-  const styles = useStyles();
 
   const [disabled, setDisabled] = React.useState(true);
 
@@ -53,7 +25,7 @@ export const Disabled = (): JSXElement => {
         <Label htmlFor={inputIds.underline}>Disabled (underline appearance)</Label>
         <Input appearance="underline" disabled={disabled} id={inputIds.underline} defaultValue="disabled value" />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+      <div className={`${styles.field} ${styles.filledLighter}`}>
         <Label htmlFor={inputIds.filledLighter}>Disabled (filled lighter appearance)</Label>
         <Input
           appearance="filled-lighter"
@@ -62,7 +34,7 @@ export const Disabled = (): JSXElement => {
           defaultValue="disabled value"
         />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+      <div className={`${styles.field} ${styles.filledDarker}`}>
         <Label htmlFor={inputIds.filledDarker}>Disabled (filled darker appearance)</Label>
         <Input
           appearance="filled-darker"

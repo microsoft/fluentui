@@ -1,10 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Link, makeResetStyles } from '@fluentui/react-components';
+import { Link } from '@fluentui/react-components';
 
-const useDivWithWidthClassName = makeResetStyles({
-  width: '200px',
-});
+import styles from './LinkAsSpan.module.css';
+
+const useDivWithWidthClassName = () => styles.divWithWidth;
 
 export const AsSpan = (): JSXElement => (
   <div className={useDivWithWidthClassName()}>

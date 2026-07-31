@@ -2,7 +2,9 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { FixedSizeList } from 'react-window';
 import { List, ListItem } from '@fluentui/react-components';
-import { tokens, Text, makeResetStyles } from '@fluentui/react-components';
+import { Text } from '@fluentui/react-components';
+
+import styles from './VirtualizedListWithActionableItems.module.css';
 
 const countries = [
   'Afghanistan',
@@ -207,9 +209,7 @@ const CountriesList = React.forwardRef<HTMLUListElement>((props: React.Component
   <List navigationMode="items" aria-label="Countries" {...props} ref={ref} />
 ));
 
-const useTextStyle = makeResetStyles({
-  color: tokens.colorNeutralForeground1,
-});
+const useTextStyle = () => styles.text;
 
 export const VirtualizedListWithActionableItems = (): JSXElement => {
   const textStyle = useTextStyle();

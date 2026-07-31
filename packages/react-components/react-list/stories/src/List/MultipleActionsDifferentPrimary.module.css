@@ -1,0 +1,66 @@
+/* Story styles for MultipleActionsDifferentPrimary, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.listItemRoot {
+  position: relative;
+  flex-grow: 1;
+  gap: 8px;
+  border: 1px solid grey;
+  align-items: center;
+  border-radius: 8px;
+  grid-template:
+    'preview preview preview' auto
+    'header action secondary_action' auto / 1fr auto auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 300px;
+}
+
+.listItem {
+  display: grid;
+  padding: 8px;
+}
+
+.caption {
+  color: var(--colorNeutralForeground3);
+}
+
+.image {
+  height: 160px;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.title {
+  color: var(--colorNeutralForeground1);
+  font-weight: 600;
+  display: block;
+}
+
+.checkmark {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 1;
+}
+
+.preview {
+  grid-area: preview;
+  overflow: hidden;
+}
+
+.header {
+  grid-area: header;
+}
+
+.action {
+  grid-area: action;
+}
+
+.secondaryAction {
+  grid-area: secondary_action;
+}

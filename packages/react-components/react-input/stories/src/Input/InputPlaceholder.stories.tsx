@@ -1,19 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
+import { useId, Input, Label } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '5px',
-    maxWidth: '300px',
-  },
-});
+import styles from './InputPlaceholder.module.css';
 
 export const Placeholder = (): JSXElement => {
   const inputId = useId('input-with-placeholder');
-  const styles = useStyles();
 
   return (
     <div className={styles.root}>

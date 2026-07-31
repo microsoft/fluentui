@@ -1,0 +1,9 @@
+/* Story styles for InputDefault, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 400px;
+}

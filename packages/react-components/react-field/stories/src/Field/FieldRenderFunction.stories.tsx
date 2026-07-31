@@ -1,19 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components';
 import { AnimalCat24Regular } from '@fluentui/react-icons';
 
-const useCatInputStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    columnGap: '4px',
-  },
-});
+import styles from './FieldRenderFunction.module.css';
 
 const CatInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props => {
-  const styles = useCatInputStyles();
   return (
     <div className={styles.root}>
       <AnimalCat24Regular />

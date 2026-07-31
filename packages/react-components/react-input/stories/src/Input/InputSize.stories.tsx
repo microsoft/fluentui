@@ -1,24 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
+import { useId, Input, Label } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px',
-
-    maxWidth: '400px',
-    // Stack the label above the field (with 2px gap per the design system)
-    '> div': { display: 'flex', flexDirection: 'column', gap: '2px' },
-  },
-});
+import styles from './InputSize.module.css';
 
 export const Size = (): JSXElement => {
   const smallId = useId('input-small');
   const mediumId = useId('input-medium');
   const largeId = useId('input-large');
-  const styles = useStyles();
 
   return (
     <div className={styles.root}>

@@ -1,20 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-import { InfoLabel, makeStyles, tokens } from '@fluentui/react-components';
+import { InfoLabel } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    alignItems: 'start',
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: tokens.spacingVerticalL,
-  },
-});
+import styles from './InfoLabelSize.module.css';
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <InfoLabel size="small" info="Example small InfoLabel">

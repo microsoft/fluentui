@@ -1,0 +1,8 @@
+/* Story styles for FieldSize, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacingVerticalL);
+}

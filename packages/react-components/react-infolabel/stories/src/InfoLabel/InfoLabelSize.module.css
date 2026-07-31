@@ -1,0 +1,9 @@
+/* Story styles for InfoLabelSize, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacingVerticalL);
+}

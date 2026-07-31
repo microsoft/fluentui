@@ -1,8 +1,10 @@
-import { Button, makeStyles, Persona } from '@fluentui/react-components';
+import { Button, Persona } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
 import type { JSXElement, SelectionItemId } from '@fluentui/react-components';
+
+import styles from './SingleActionSelectionControlled.module.css';
 
 type Item = {
   name: string;
@@ -24,13 +26,7 @@ const items: Item[] = [
     'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
 }));
 
-const useStyles = makeStyles({
-  buttonControls: {
-    display: 'flex',
-    columnGap: '8px',
-    marginBottom: '16px',
-  },
-});
+const useStyles = () => styles;
 
 export const SingleActionSelectionControlled = (): JSXElement => {
   const classes = useStyles();

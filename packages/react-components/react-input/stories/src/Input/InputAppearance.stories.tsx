@@ -1,32 +1,8 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, mergeClasses, tokens, useId, Input, Label } from '@fluentui/react-components';
+import { useId, Input, Label } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '400px',
-  },
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    padding: tokens.spacingHorizontalMNudge,
-  },
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-});
+import styles from './InputAppearance.module.css';
 
 export const Appearance = (): JSXElement => {
   const idPrefix = 'input-appearance-story';
@@ -36,8 +12,6 @@ export const Appearance = (): JSXElement => {
     filledLighter: useId(idPrefix),
     filledDarker: useId(idPrefix),
   };
-
-  const styles = useStyles();
 
   return (
     <div className={styles.base}>
@@ -49,11 +23,11 @@ export const Appearance = (): JSXElement => {
         <Label htmlFor={inputIds.underline}>Underline appearance</Label>
         <Input appearance="underline" id={inputIds.underline} />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+      <div className={`${styles.field} ${styles.filledLighter}`}>
         <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance</Label>
         <Input appearance="filled-lighter" id={inputIds.filledLighter} />
       </div>
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+      <div className={`${styles.field} ${styles.filledDarker}`}>
         <Label htmlFor={inputIds.filledDarker}>Filled darker appearance</Label>
         <Input appearance="filled-darker" id={inputIds.filledDarker} />
       </div>

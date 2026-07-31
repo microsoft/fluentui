@@ -1,13 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-import { Field, Input, makeResetStyles, tokens } from '@fluentui/react-components';
+import { Field, Input } from '@fluentui/react-components';
 
-const useStackClassName = makeResetStyles({
-  display: 'flex',
-  flexDirection: 'column',
-  rowGap: tokens.spacingVerticalL,
-});
+import styles from './FieldSize.module.css';
+
+const useStackClassName = () => styles.stack;
 
 export const Size = (): JSXElement => (
   <div className={useStackClassName()}>

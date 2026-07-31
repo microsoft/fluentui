@@ -1,28 +1,16 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, useId, Body1, Button, Input, Label, Text } from '@fluentui/react-components';
+import { useId, Body1, Button, Input, Label, Text } from '@fluentui/react-components';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 import type { ButtonProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px',
-    // Prevent the example from taking the full width of the page (optional)
-    maxWidth: '400px',
-    // Stack the label above the field (with 2px gap per the design system)
-    '> div': { display: 'flex', flexDirection: 'column', gap: '2px' },
-  },
-});
+import styles from './InputContentBeforeAfter.module.css';
 
 const MicButton: React.FC<ButtonProps> = props => {
   return <Button {...props} appearance="transparent" icon={<MicRegular />} size="small" />;
 };
 
 export const ContentBeforeAfter = (): JSXElement => {
-  const styles = useStyles();
-
   const beforeId = useId('content-before');
   const afterId = useId('content-after');
   const beforeAndAfterId = useId('content-before-and-after');

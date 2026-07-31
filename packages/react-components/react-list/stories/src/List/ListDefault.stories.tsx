@@ -1,11 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-components';
-import { tokens, Text, makeResetStyles } from '@fluentui/react-components';
+import { Text } from '@fluentui/react-components';
 
-const useTextStyle = makeResetStyles({
-  color: tokens.colorNeutralForeground1,
-});
+import styles from './ListDefault.module.css';
+
+const useTextStyle = () => styles.text;
 
 export const Default = (): JSXElement => {
   const textStyle = useTextStyle();

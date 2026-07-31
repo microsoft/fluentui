@@ -1,0 +1,33 @@
+/* Story styles for ListActiveElement, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.selectedInfo {
+  margin-top: 16px;
+}
+
+.buttonWrapper {
+  align-self: center;
+}
+
+.item {
+  cursor: pointer;
+  padding: 2px 6px;
+  justify-content: space-between;
+}
+
+.itemSelected {
+  background-color: var(--colorSubtleBackgroundSelected);
+}
+
+@media (forced-colors: active) {
+  .itemSelected {
+    background: Highlight;
+  }
+}
+
+@media (forced-colors: active) {
+  .personaSelected {
+    forced-color-adjust: none;
+    color: HighlightText;
+  }
+}

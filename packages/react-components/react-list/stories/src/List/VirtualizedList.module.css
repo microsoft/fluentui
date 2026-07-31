@@ -1,0 +1,6 @@
+/* Story styles for VirtualizedList, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.text {
+  color: var(--colorNeutralForeground1);
+}

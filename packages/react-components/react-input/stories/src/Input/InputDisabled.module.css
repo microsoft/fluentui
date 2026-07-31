@@ -1,0 +1,35 @@
+/* Story styles for InputDisabled, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.field {
+  display: grid;
+  grid-row-gap: var(--spacingVerticalXXS);
+  margin-top: var(--spacingVerticalMNudge);
+  padding: var(--spacingHorizontalMNudge);
+}
+
+.filledLighter {
+  background-color: var(--colorNeutralBackgroundInverted);
+}
+
+.filledLighter > label {
+  color: var(--colorNeutralForegroundInverted2);
+}
+
+.filledDarker {
+  background-color: var(--colorNeutralBackgroundInverted);
+}
+
+.filledDarker > label {
+  color: var(--colorNeutralForegroundInverted2);
+}
+
+.toggle {
+  margin-top: var(--spacingVerticalXL);
+}

@@ -1,8 +1,10 @@
-import { Button, makeStyles, Persona, mergeClasses, Text, tokens } from '@fluentui/react-components';
+import { Button, Persona, Text } from '@fluentui/react-components';
 import { Mic16Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement, SelectionItemId } from '@fluentui/react-components';
+
+import styles from './ListActiveElement.module.css';
 
 type Item = {
   name: string;
@@ -25,31 +27,7 @@ const items: Item[] = [
     'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
 }));
 
-const useStyles = makeStyles({
-  selectedInfo: {
-    marginTop: '16px',
-  },
-  buttonWrapper: {
-    alignSelf: 'center',
-  },
-  item: {
-    cursor: 'pointer',
-    padding: '2px 6px',
-    justifyContent: 'space-between',
-  },
-  itemSelected: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
-    '@media (forced-colors:active)': {
-      background: 'Highlight',
-    },
-  },
-  personaSelected: {
-    '@media (forced-colors:active)': {
-      forcedColorAdjust: 'none',
-      color: 'HighlightText',
-    },
-  },
-});
+const useStyles = () => styles;
 
 export const ListActiveElement = (): JSXElement => {
   const classes = useStyles();
@@ -83,7 +61,7 @@ export const ListActiveElement = (): JSXElement => {
           <ListItem
             key={name}
             value={name}
-            className={mergeClasses(classes.item, selectedItems.includes(name) && classes.itemSelected)}
+            className={[classes.item, selectedItems.includes(name) && classes.itemSelected].filter(Boolean).join(' ')}
             data-value={name}
             aria-label={name}
             onFocus={onFocus}
@@ -94,7 +72,7 @@ export const ListActiveElement = (): JSXElement => {
               role="gridcell"
               secondaryText="Available"
               presence={{ status: 'available' }}
-              className={mergeClasses(selectedItems.includes(name) && classes.personaSelected)}
+              className={selectedItems.includes(name) ? classes.personaSelected : undefined}
               avatar={{
                 image: {
                   src: avatar,

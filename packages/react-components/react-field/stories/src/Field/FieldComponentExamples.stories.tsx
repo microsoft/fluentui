@@ -6,7 +6,6 @@ import {
   Combobox,
   Field,
   Input,
-  makeResetStyles,
   Option,
   Radio,
   RadioGroup,
@@ -14,14 +13,11 @@ import {
   SpinButton,
   Switch,
   Textarea,
-  tokens,
 } from '@fluentui/react-components';
 
-const useStackClassName = makeResetStyles({
-  display: 'flex',
-  flexDirection: 'column',
-  rowGap: tokens.spacingVerticalL,
-});
+import styles from './FieldComponentExamples.module.css';
+
+const useStackClassName = () => styles.stack;
 
 export const ComponentExamples = (): JSXElement => (
   <div className={useStackClassName()}>

@@ -1,0 +1,15 @@
+/* Story styles for InputContentBeforeAfter, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+}
+
+.root > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

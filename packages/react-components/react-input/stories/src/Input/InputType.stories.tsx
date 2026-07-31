@@ -1,24 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
+import { useId, Input, Label } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px',
-
-    maxWidth: '400px',
-    // Stack the label above the field (with 2px gap per the design system)
-    '> div': { display: 'flex', flexDirection: 'column', gap: '2px' },
-  },
-});
+import styles from './InputType.module.css';
 
 export const Type = (): JSXElement => {
   const emailId = useId('input-email');
   const urlId = useId('input-url');
   const passwordId = useId('input-password');
-  const styles = useStyles();
 
   return (
     <form noValidate autoComplete="off" className={styles.root}>
