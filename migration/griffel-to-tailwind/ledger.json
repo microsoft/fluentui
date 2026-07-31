@@ -633,5 +633,12 @@
     "deferred": "umbrella 12 Griffel re-exports + 3 types + wyw-in-js + dep (D19/S-H); react-conformance-griffel (D23/S-H); babel preset/eslint rules/root devDeps (S-H); react-migration-v0-v9 mixins (triage disposition); jest.preset.js griffel serializer + remaining entries (S-I); provenance comments (S-I)",
     "report": "reports/sg-core-specials.md",
     "decisions": "DECISIONS.md D20 (D20.1-D20.3)"
+  },
+  "shTheBreak": {
+    "date": "2026-07-31",
+    "scope": "griffel-zero S-H: the break — umbrella Griffel re-export removal (D19), react-migration-v0-v9 mixins retirement (D19), react-conformance-griffel retirement + move to deprecated/ (D23), Griffel tooling purge (eslint plugin/rules, generator templates, root devDeps), last live Griffel imports converted (Menu.cy, useActiveDescendant.cy, Dialog.test, useButton.test, headless Introduction), 6 stale @griffel/react manifest entries dropped",
+    "result": "umbrella api.md delta = exactly 12 runtime + 3 type Griffel symbols; wyw-in-js block + @griffel/react dep gone. Mixins (flexItem/grid/input/slider/spinner/v0Icon/v9*) deleted with demo stories; FromV0 + react-image docs teach plain CSS. conformance-griffel: 55 wrappers unwired, ~190 disabledTests entries dropped, package under deprecated/ with eol tag + beachball freeze. Generators scaffold clsx+CSS Modules. Kept with consumers: @griffel/babel-preset (deprecated AOT), jest-serializer (S-I), shadow-dom + webpack-loader (D11 survivors). Gates: vNext build 91 projects green; jest affected 158-project sweep green except pre-existing Windows-env suites (identical failure identities in pre-S-H H*-affected-tests logs; v8 spawn-jest-ENOENT class included); SSR full run green; public-docsite-v9:build-storybook green (INFRA-1c no longer reproduces); VR spot 4/4 sets zero-diff on fresh --skip-nx-cache build (button 129 / button-family 342 / menu 64 / react-portal 2). Griffel-zero grep: zero live @griffel/* imports outside deprecated/ + D11 survivors (sh-the-break.md §5)",
+    "deferred": "S-I sweep: ~216 provenance comments, @griffel/jest-serializer entries (~59 jest configs), migrate-converged-pkg conditional Griffel logic, RFC/handbook docs. S-J: D2a5 retirement (icons workstream). D11 revisit: survivor VR stories + shadow-dom/webpack-loader devDeps + vr-tests @griffel/react.",
+    "report": "reports/sh-the-break.md"
   }
 }

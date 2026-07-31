@@ -1209,3 +1209,41 @@ etc. re-exports (D7 surface, 12 symbols + 3 types + `wyw-in-js` block) remain un
 are S-H scope (D19). The tabster focus-ring factories and their umbrella re-exports were
 deleted in S-G (evaluation §8 places them there) — that is the only umbrella surface S-G
 touches.
+
+## D19 + D23 — the break, implemented (S-H, 2026-07-31)
+
+The griffel-zero plan's decision table resolved both; this records the implemented shape
+(full record: `reports/sh-the-break.md`).
+
+### D19 — umbrella Griffel re-exports removed
+
+`@fluentui/react-components` drops the 12 `@griffel/react` runtime re-exports (`__css`,
+`__resetCSS`, `__resetStyles`, `__styles`, `createDOMRenderer`, `makeResetStyles`,
+`makeStaticStyles`, `makeStyles`, `mergeClasses`, `RendererProvider`,
+`renderToStyleElements`, `shorthands`), the 3 types (`GriffelStyle`, `GriffelRenderer`,
+`GriffelResetStyle`), the `wyw-in-js.tags` block, and the `@griffel/react` dependency —
+**breaking**, same major as D16. No `griffel-compat` entrypoint was shipped (the plan's
+"optional" variant): with S-F/S-G done there were zero in-repo consumers left, and a compat
+entrypoint would keep the dependency the removal exists to drop. The react-migration-v0-v9
+Griffel mixins (the one published API built ON the re-exports) retire with it, per the
+disposition recorded in sf-batch1/sf-batch4; their demo stories are deleted and the FromV0
+guides now teach the equivalent plain CSS.
+
+### D23 — react-conformance-griffel retired
+
+`griffelTests` unwired from all 55 non-deprecated `isConformant` wrappers and the
+`make-styles-overrides-win` `disabledTests` entries dropped (~190 test files);
+`classname-overrides-win` (D9) is the replacement. The package moved to
+`packages/react-components/deprecated/` per the react-alert precedent (`eol` tag, beachball
+freeze `major/minor/patch`, DEPRECATED readme) — published history untouched; the two
+deprecated Griffel packages keep consuming it. Generators no longer scaffold it (or any
+Griffel): react-component emits clsx + CSS Modules, react-library emits no `@griffel/react`
+dep / serializer / griffel conformance wrapper.
+
+### Toolchain end-state
+
+`@griffel/eslint-plugin` (+ 4 rules) and root `@griffel/react` are gone. Deliberately kept,
+each with a live consumer: `@griffel/babel-preset` (deprecated/ AOT via preset-v9),
+`@griffel/jest-serializer` (S-I sweep), `@griffel/shadow-dom` + `@griffel/webpack-loader`
+(D11 survivor VR stories + storybook `griffelRule`). Griffel-zero grep assertion: zero live
+`@griffel/*` imports outside `deprecated/` and the D11 survivors (sh-the-break.md §5).
