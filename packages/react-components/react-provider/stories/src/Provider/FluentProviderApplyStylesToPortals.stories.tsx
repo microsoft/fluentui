@@ -1,29 +1,17 @@
-import {
-  createDOMRenderer,
-  makeStyles,
-  tokens,
-  FluentProvider,
-  Portal,
-  RendererProvider,
-} from '@fluentui/react-components';
+import { FluentProvider, Portal } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import * as ReactDOM from 'react-dom';
 
-const useStyles = makeStyles({
-  provider: {
-    border: `3px solid ${tokens.colorBrandForeground2}`,
-    borderRadius: '5px',
-    padding: '5px',
+import styles from './FluentProviderApplyStylesToPortals.module.css';
 
-    backgroundColor: tokens.colorBrandBackground2,
-    marginBottom: '20px',
-  },
-  portal: { border: `3x dotted ${tokens.colorPaletteDarkOrangeBorder2}`, padding: '5px' },
-});
-
+// S-F batch 6: the legacy runtime-styling renderer plumbing was removed from this story
+// (renderer-free rewrite per D21). Component styles are now static stylesheets and do not
+// cross document boundaries — iframe style injection is an accepted, deferred loss (D11);
+// this story is known-changed: `applyStylesToPortals` behavior (provider classes + theme on
+// portal nodes) is unchanged, but statically-built story classes only style the outer document.
 type FrameRendererProps = {
-  children: (externalDocument: Document, renderer: ReturnType<typeof createDOMRenderer>) => React.ReactElement;
+  children: (externalDocument: Document) => React.ReactElement;
 };
 
 const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }) => {
@@ -31,7 +19,6 @@ const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }
   const [container, setContainer] = React.useState<HTMLDivElement | null>(null);
 
   const contentDocument = frameRef ? (frameRef.contentDocument as Document) : undefined;
-  const renderer = React.useMemo(() => createDOMRenderer(contentDocument), [contentDocument]);
 
   React.useEffect(() => {
     if (contentDocument) {
@@ -45,14 +32,12 @@ const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }
   return (
     <>
       <iframe ref={setFrameRef} style={{ height: 300, width: 700, border: 'none' }} />
-      {contentDocument && container && ReactDOM.createPortal(children(contentDocument, renderer), container)}
+      {contentDocument && container && ReactDOM.createPortal(children(contentDocument), container)}
     </>
   );
 };
 
 const ApplyStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ targetDocument }) => {
-  const styles = useStyles();
-
   return (
     <>
       <FluentProvider className={styles.provider} targetDocument={targetDocument}>
@@ -81,13 +66,7 @@ const ApplyStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ 
 export const ApplyStylesToPortals = (): JSXElement => (
   // FrameRenderer is redundant this example, it's used only to render portals inside an iframe
   // to make them visible in Storybook
-  <FrameRenderer>
-    {(externalDocument, renderer) => (
-      <RendererProvider renderer={renderer} targetDocument={externalDocument}>
-        <ApplyStylesToPortalsExample targetDocument={externalDocument} />
-      </RendererProvider>
-    )}
-  </FrameRenderer>
+  <FrameRenderer>{externalDocument => <ApplyStylesToPortalsExample targetDocument={externalDocument} />}</FrameRenderer>
 );
 
 ApplyStylesToPortals.parameters = {

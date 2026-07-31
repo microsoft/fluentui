@@ -1,36 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  makeStyles,
-  teamsDarkTheme,
-  teamsLightTheme,
-  tokens,
-  webLightTheme,
-  Button,
-  FluentProvider,
-} from '@fluentui/react-components';
+import { teamsDarkTheme, teamsLightTheme, webLightTheme, Button, FluentProvider } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  button: {
-    marginTop: '5px',
-  },
-  provider: {
-    border: '1px',
-    borderRadius: '5px',
-    padding: '5px',
-  },
-  text: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
-    fontSize: '20px',
-    border: '1px',
-    borderRadius: '5px',
-    padding: '5px',
-  },
-});
+import styles from './FluentProviderDefault.module.css';
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
   return (
     <>
       <div>

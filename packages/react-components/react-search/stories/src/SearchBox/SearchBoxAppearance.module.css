@@ -1,0 +1,27 @@
+/* Story styles for SearchBoxAppearance, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.base {
+  display: flex;
+  flex-direction: column;
+}
+
+.filledLighter {
+  background-color: var(--colorNeutralBackgroundInverted);
+}
+
+.filledLighterLabel {
+  color: var(--colorNeutralForegroundInverted2);
+}
+
+.filledDarker {
+  background-color: var(--colorNeutralBackgroundInverted);
+}
+
+.filledDarkerLabel {
+  color: var(--colorNeutralForegroundInverted2);
+}
+
+.fieldWrapper {
+  padding: var(--spacingVerticalMNudge) var(--spacingHorizontalMNudge);
+}

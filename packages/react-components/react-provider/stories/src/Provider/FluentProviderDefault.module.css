@@ -1,0 +1,21 @@
+/* Story styles for FluentProviderDefault, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.button {
+  margin-top: 5px;
+}
+
+.provider {
+  border: 1px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.text {
+  background-color: var(--colorBrandBackground2);
+  color: var(--colorBrandForeground2);
+  font-size: 20px;
+  border: 1px;
+  border-radius: 5px;
+  padding: 5px;
+}

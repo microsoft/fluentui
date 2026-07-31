@@ -1,17 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, ProgressBar, makeStyles } from '@fluentui/react-components';
+import { Field, ProgressBar } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '20px',
-  },
-});
+import styles from './ProgressBarColor.module.css';
 
 export const Color = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.container}>
       <Field validationMessage="Error ProgressBar">

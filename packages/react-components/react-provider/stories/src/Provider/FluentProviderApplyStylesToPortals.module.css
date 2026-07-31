@@ -1,0 +1,17 @@
+/* Story styles for FluentProviderApplyStylesToPortals, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.provider {
+  border: 3px solid var(--colorBrandForeground2);
+  border-radius: 5px;
+  padding: 5px;
+  background-color: var(--colorBrandBackground2);
+  margin-bottom: 20px;
+}
+
+.portal {
+  /* '3x' is an invalid length shipped in the original story; browsers drop the whole
+   * border declaration. Preserved verbatim — behavior-identical to what was emitted before. */
+  border: 3x dotted var(--colorPaletteDarkOrangeBorder2);
+  padding: 5px;
+}

@@ -1,31 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, mergeClasses, SearchBox, tokens } from '@fluentui/react-components';
+import { Field, SearchBox } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-  },
-  filledLighterLabel: {
-    color: tokens.colorNeutralForegroundInverted2,
-  },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-  },
-  filledDarkerLabel: {
-    color: tokens.colorNeutralForegroundInverted2,
-  },
-  fieldWrapper: {
-    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
-  },
-});
+import styles from './SearchBoxAppearance.module.css';
 
 export const Appearance = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.base}>
       <Field className={styles.fieldWrapper} label="Outline appearance (default)">
@@ -37,14 +16,14 @@ export const Appearance = (): JSXElement => {
       </Field>
 
       <Field
-        className={mergeClasses(styles.fieldWrapper, styles.filledLighter)}
+        className={`${styles.fieldWrapper} ${styles.filledLighter}`}
         label={{ children: 'Filled lighter appearance', className: styles.filledLighterLabel }}
       >
         <SearchBox appearance="filled-lighter" />
       </Field>
 
       <Field
-        className={mergeClasses(styles.fieldWrapper, styles.filledDarker)}
+        className={`${styles.fieldWrapper} ${styles.filledDarker}`}
         label={{ children: 'Filled darker appearance', className: styles.filledDarkerLabel }}
       >
         <SearchBox appearance="filled-darker" />

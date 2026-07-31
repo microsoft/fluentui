@@ -1,0 +1,15 @@
+/* Story styles for FluentProviderNested, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  background-color: var(--colorBrandBackground2);
+  color: var(--colorBrandForeground2);
+  border: 5px solid var(--colorBrandStroke1);
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.text {
+  padding: 5px;
+  font-size: 18px;
+}

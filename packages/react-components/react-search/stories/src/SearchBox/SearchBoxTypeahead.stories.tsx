@@ -1,67 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  AriaLiveAnnouncer,
-  makeStyles,
-  mergeClasses,
-  SearchBox,
-  Spinner,
-  tokens,
-  useId,
-  useTypingAnnounce,
-} from '@fluentui/react-components';
+import { AriaLiveAnnouncer, SearchBox, Spinner, useId, useTypingAnnounce } from '@fluentui/react-components';
 import type { SearchBoxChangeEvent } from '@fluentui/react-components';
 import type { InputOnChangeData } from '@fluentui/react-components';
 
-const DEBOUNCE_MS = 300;
+import styles from './SearchBoxTypeahead.module.css';
 
-const useStyles = makeStyles({
-  root: {
-    position: 'relative',
-    maxWidth: '400px',
-  },
-  listbox: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    boxSizing: 'border-box',
-    listStyleType: 'none',
-    margin: 0,
-    padding: `${tokens.spacingVerticalXS} 0`,
-    position: 'absolute',
-    width: '100%',
-    zIndex: 1000,
-  },
-  listboxHidden: {
-    display: 'none',
-  },
-  option: {
-    alignItems: 'center',
-    cursor: 'pointer',
-    display: 'flex',
-    gap: tokens.spacingHorizontalS,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-    },
-  },
-  optionFocused: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
-    outline: 'none',
-  },
-  spinnerWrapper: {
-    alignItems: 'center',
-    display: 'flex',
-    gap: tokens.spacingHorizontalS,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
-    color: tokens.colorNeutralForeground3,
-  },
-  noResults: {
-    color: tokens.colorNeutralForeground3,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
-  },
-});
+const DEBOUNCE_MS = 300;
 
 type SearchResult = {
   id: string;
@@ -91,8 +36,6 @@ const fetchResults = (query: string): Promise<SearchResult[]> => {
 };
 
 export const Typeahead = (): JSXElement => {
-  const styles = useStyles();
-
   const [query, setQuery] = React.useState('');
   const [results, setResults] = React.useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -245,7 +188,7 @@ export const Typeahead = (): JSXElement => {
           id={listboxId}
           role="listbox"
           aria-label="Search results"
-          className={mergeClasses(styles.listbox, !showDropdown && !noResults && styles.listboxHidden)}
+          className={[styles.listbox, !showDropdown && !noResults && styles.listboxHidden].filter(Boolean).join(' ')}
         >
           {isLoading ? (
             <li className={styles.spinnerWrapper}>
@@ -261,7 +204,7 @@ export const Typeahead = (): JSXElement => {
                 }}
                 role="option"
                 aria-selected={selectedId === result.id}
-                className={mergeClasses(styles.option, focusedIndex === index && styles.optionFocused)}
+                className={[styles.option, focusedIndex === index && styles.optionFocused].filter(Boolean).join(' ')}
                 onMouseDown={e => {
                   // Prevent input blur before click registers
                   e.preventDefault();

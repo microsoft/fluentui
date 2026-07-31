@@ -1,0 +1,55 @@
+/* Story styles for SearchBoxTypeahead, converted from Griffel makeStyles (S-F batch 6).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  position: relative;
+  max-width: 400px;
+}
+
+.listbox {
+  background-color: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  box-sizing: border-box;
+  list-style-type: none;
+  margin: 0;
+  padding: var(--spacingVerticalXS) 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.listboxHidden {
+  display: none;
+}
+
+.option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: var(--spacingHorizontalS);
+  padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+}
+
+.option:hover {
+  background-color: var(--colorNeutralBackground1Hover);
+}
+
+.optionFocused {
+  background-color: var(--colorNeutralBackground1Selected);
+  outline: none;
+}
+
+.spinnerWrapper {
+  align-items: center;
+  display: flex;
+  gap: var(--spacingHorizontalS);
+  padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+  color: var(--colorNeutralForeground3);
+}
+
+.noResults {
+  color: var(--colorNeutralForeground3);
+  padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+}

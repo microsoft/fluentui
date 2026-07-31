@@ -1,37 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, mergeClasses, Select, tokens, useId } from '@fluentui/react-components';
+import { Select, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '500px',
-  },
-
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalXXS,
-    marginTop: tokens.spacingVerticalMNudge,
-    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
-  },
-
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
-  },
-});
+import styles from './SelectAppearance.module.css';
 
 export const Appearance = (): JSXElement => {
-  const styles = useStyles();
   const selectId = useId();
 
   return (
@@ -54,7 +27,7 @@ export const Appearance = (): JSXElement => {
         </Select>
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+      <div className={`${styles.field} ${styles.filledLighter}`}>
         <label htmlFor={`${selectId}-filledLighter`}>Filled Lighter</label>
         <Select id={`${selectId}-filledLighter`} appearance="filled-lighter">
           <option>Red</option>
@@ -63,7 +36,7 @@ export const Appearance = (): JSXElement => {
         </Select>
       </div>
 
-      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+      <div className={`${styles.field} ${styles.filledDarker}`}>
         <label htmlFor={`${selectId}-filledDarker`}>Filled Darker</label>
         <Select id={`${selectId}-filledDarker`} appearance="filled-darker">
           <option>Red</option>

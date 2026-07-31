@@ -1,15 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { RatingDisplay } from '@fluentui/react-components';
-import { makeStyles } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-});
+import styles from './RatingDisplayValue.module.css';
+
+const useStyles = () => styles;
 
 export const Value = (): JSXElement => {
   const classes = useStyles();

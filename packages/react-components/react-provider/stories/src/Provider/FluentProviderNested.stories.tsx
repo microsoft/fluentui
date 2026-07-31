@@ -1,23 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, webLightTheme, FluentProvider } from '@fluentui/react-components';
+import { webLightTheme, FluentProvider } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
-    border: `5px solid ${tokens.colorBrandStroke1}`,
-    borderRadius: '5px',
-    margin: '5px',
-  },
-  text: {
-    padding: '5px',
-    fontSize: '18px',
-  },
-});
+import styles from './FluentProviderNested.module.css';
 
 export const Nested = (): JSXElement => {
-  const styles = useStyles();
   return (
     <FluentProvider theme={webLightTheme}>
       <div className={styles.example}>

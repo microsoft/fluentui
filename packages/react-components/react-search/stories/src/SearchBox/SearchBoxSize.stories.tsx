@@ -1,20 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, SearchBox, tokens } from '@fluentui/react-components';
+import { Field, SearchBox } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  fieldWrapper: {
-    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
-  },
-});
+import styles from './SearchBoxSize.module.css';
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <Field className={styles.fieldWrapper} label="Small SearchBox">

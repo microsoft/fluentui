@@ -1,16 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, ProgressBar, makeStyles } from '@fluentui/react-components';
+import { Field, ProgressBar } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    margin: '20px 0px',
-  },
-});
+import styles from './ProgressBarThickness.module.css';
 
 export const Thickness = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div>
       <Field validationMessage="Medium ProgressBar" validationState="none">
