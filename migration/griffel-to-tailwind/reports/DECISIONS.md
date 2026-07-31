@@ -1274,3 +1274,39 @@ each with a live consumer: `@griffel/babel-preset` (deprecated/ AOT via preset-v
 `@griffel/jest-serializer` (S-I sweep), `@griffel/shadow-dom` + `@griffel/webpack-loader`
 (D11 survivor VR stories + storybook `griffelRule`). Griffel-zero grep assertion: zero live
 `@griffel/*` imports outside `deprecated/` and the D11 survivors (sh-the-break.md §5).
+
+## D27 — icons stylesheet layer assignment: `fui.components.l1` (icons integration 1, 2026-07-31)
+
+`@fluentui/react-icons` 3.0 (headless) expresses icon styling as data attributes
+(`data-fui-icon`, `data-fui-icon-rtl`, `data-fui-icon-hidden`, `data-fui-icon-font`)
+resolved by a REQUIRED stylesheet, `@fluentui/react-icons/styles.css`. That stylesheet
+ships **UNLAYERED by default** — the package's own back-compat posture, documented in its
+file header. Because cascade layers are compared before specificity, unlayered icon rules
+would beat every layered `fui.*` rule no matter how specific; correct behavior inside this
+repo's layering system therefore requires assigning the stylesheet a layer at import time:
+
+```css
+@import '@fluentui/react-icons/styles.css' layer(fui.components.l1);
+```
+
+**Altitude: `fui.components.l1`, the lowest component layer — the user's explicit pick**
+(griffel-zero-plan.md "User amendments" §3, "we can see how that plays out"), held loosely:
+icon state rules arbitrate with base library components by in-file source order; l2+,
+`fui.utilities`, and unlayered consumer CSS all still win. If l1 ties misbehave in the S-J
+retirement batches' VR gates, revisit the altitude.
+
+Wiring (both emission points, one import each):
+
+- `scripts/storybook/src/tailwind-theme.css` — every storybook document (root preview,
+  VR harness, docsite compose the root preview or import this entry directly).
+- `packages/react-components/react-tailwind-theme/css/emit.css` — inlined into
+  `dist/styles.css` at build time, so the package-consumer document's single theme import
+  also covers icons. Verified emitted: the `@layer fui.components.l1` block in
+  `dist/styles.css` carries all icon rules (base `:where([data-fui-icon])`, forced-colors,
+  font variants, RTL flip, bundled-pair hide).
+
+The D2a5 62 unlayered `:global(.fui-Icon-*)` lines stay REQUIRED until this import proves
+stable; they retire in S-J (per the D2a5 superseding amendment above). The icons package is
+consumed locally via a LOCAL-ONLY yarn `resolutions` tarball override that MUST be reverted
+before the PR (commits prefixed `LOCAL-ONLY(revert-before-PR)`); the icons upstream merge
+is a dependency of the UI merge.

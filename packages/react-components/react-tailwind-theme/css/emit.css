@@ -24,3 +24,19 @@
  * `fui.components.*` layer (CONVERSION_GUIDE.md "Toolchain traps").
  */
 @import './index.css' source(none);
+
+/*
+ * Icons stylesheet (headless @fluentui/react-icons 3.0), inlined into dist/styles.css at
+ * build time so the consuming document's single theme import also covers icons. The icon
+ * factories express styling as attributes (`data-fui-icon`, `data-fui-icon-rtl`,
+ * `data-fui-icon-hidden`, `data-fui-icon-font`) and the package ships the rules UNLAYERED
+ * by default — cascade layers are compared before specificity, so unlayered icon rules
+ * would beat every layered `fui.*` rule no matter how specific. Correct behavior inside
+ * the fluentui layering system requires assigning them a layer at import time; the
+ * user-decided altitude is `fui.components.l1`, the lowest component layer
+ * (griffel-zero-plan.md amendment D27): icon state rules arbitrate with base component
+ * rules by in-file source order, and l2+, utilities, and unlayered consumer CSS still win.
+ * The storybook/VR/docsite harness gets the identical import via
+ * scripts/storybook/src/tailwind-theme.css (documents that never load this artifact).
+ */
+@import '@fluentui/react-icons/styles.css' layer(fui.components.l1);

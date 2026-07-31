@@ -34,3 +34,24 @@
  * into the published theme/suite stylesheet and this file goes away.
  */
 @import '@fluentui/react-tailwind-theme' source(none);
+
+/*
+ * Icons stylesheet (headless @fluentui/react-icons 3.0). The icon factories express styling
+ * as attributes (`data-fui-icon`, `data-fui-icon-rtl`, `data-fui-icon-hidden`,
+ * `data-fui-icon-font`), so this file is REQUIRED: without it icons lose `display`, the RTL
+ * flip, high-contrast handling, and bundled pairs render BOTH variants at once.
+ *
+ * The icons package ships these rules UNLAYERED by default (its own back-compat posture).
+ * Cascade layers are compared before specificity, so unlayered icon rules would beat every
+ * layered `fui.*` rule no matter how specific — adhering to this repo's layering system
+ * therefore requires assigning them a layer at import time. `fui.components.l1` (the lowest
+ * component layer) is the user-decided altitude (griffel-zero-plan.md amendment D27): base
+ * library components live in l1, so icon state rules arbitrate with them by in-file source
+ * order, and everything above (l2+, utilities, unlayered consumer CSS) still wins. This
+ * import is what makes the D2a5 unlayered `:global(.fui-Icon-*)` blocks retirable (S-J).
+ *
+ * Mirrors the same import in @fluentui/react-tailwind-theme's css/emit.css (the published
+ * root artifact); this copy serves every storybook document — root preview, VR harness,
+ * docsite — which import this entry rather than dist/styles.css.
+ */
+@import '@fluentui/react-icons/styles.css' layer(fui.components.l1);

@@ -206,6 +206,12 @@ Dialect rules (from nyt-games + Fluent adaptations):
   fork (D18 option (c)) removes the Griffel atomics at the source, so the unlayered
   `:global(.fui-Icon-*)` blocks stay REQUIRED only until the icons 3.0 fork is adopted and
   retire with it (stage S-J). Until then, keep authoring them exactly as described above.
+  Adoption status (icons integration 1, 2026-07): icons 3.0 ships its required
+  `styles.css` UNLAYERED by default; this repo assigns it into the layer system via
+  `@import '@fluentui/react-icons/styles.css' layer(fui.components.l1);` in the two theme
+  emission points (`scripts/storybook/src/tailwind-theme.css` and react-tailwind-theme's
+  `css/emit.css` → `dist/styles.css`) — see DECISIONS.md D27. The 62 unlayered blocks
+  retire in S-J only after that import proves stable.
   Rules that style the component's OWN elements — including its own `:global(.fui-X__slot)`
   static classes — stay layered; nothing unlayered competes for those.
 
