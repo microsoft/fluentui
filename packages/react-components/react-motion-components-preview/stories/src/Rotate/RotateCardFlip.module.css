@@ -1,5 +1,5 @@
-/* Story styles for RotateCardFlip, converted from Griffel makeStyles (S-F batch 5).
- * Token references are the CSS variables they compile to.
+/* Story styles for RotateCardFlip.
+ * Token references are the Fluent theme's CSS variables.
  * The .cardWrapper transition snapshots @fluentui/react-motion motionTokens (plain
  * constants, not CSS vars): durationSlow = 300 (ms), curveDecelerateMid = cubic-bezier(0,0,0,1). */
 
