@@ -9,13 +9,9 @@ describe('CarouselButton', () => {
   isConformant({
     Component: CarouselButton as React.FunctionComponent<CarouselButtonProps>,
     displayName: 'CarouselButton',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // Neither this component's styles hook nor @fluentui/react-button's Button (also
-    // converted) calls mergeClasses any more, so `make-styles-overrides-win` has nothing to
-    // observe. `classname-overrides-win` is its cascade-native replacement, and it now
-    // passes: this hook composes with clsx and keeps `state.root.className` — which already
-    // ends with the consumer's, appended last by Button's own clsx — at the end of the
-    // rendered class attribute (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `component-has-static-classnames-object` and its `has-static-classnames` testOptions
     // are gone with the BEM statics: `carouselButtonClassNames.root` is now the group marker

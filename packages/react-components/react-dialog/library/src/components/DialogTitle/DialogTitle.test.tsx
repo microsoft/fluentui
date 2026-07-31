@@ -12,11 +12,9 @@ describe('DialogTitle', () => {
     disabledTests: [
       // TODO: having problems due to the fact root of DialogTitle is Fragment
       'component-has-static-classnames-object',
-      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-      // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
-      // it was called with the consumer className last; this component now composes with
-      // clsx and never calls mergeClasses, so the test can no longer observe the contract.
-      // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+      // `classname-overrides-win` (extraTests below) pins the styling override contract
+      // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+      // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
       //
       // The static-classnames opt-out above is now doubly true: D16.1 removed
       // `fui-DialogTitle` / `fui-DialogTitle__action` outright and narrowed

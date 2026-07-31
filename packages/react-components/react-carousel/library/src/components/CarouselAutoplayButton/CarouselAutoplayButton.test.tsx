@@ -10,13 +10,9 @@ describe('CarouselAutoplayButton', () => {
   isConformant({
     Component: CarouselAutoplayButton as React.FunctionComponent<CarouselAutoplayButtonProps>,
     displayName: 'CarouselAutoplayButton',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // Neither this component's styles hook nor @fluentui/react-button's ToggleButton (also
-    // converted) calls mergeClasses any more, so `make-styles-overrides-win` has nothing to
-    // observe. `classname-overrides-win` is its cascade-native replacement, and — unlike
-    // before react-carousel itself converted — it now passes: this hook composes with clsx
-    // and keeps `state.root.className`, which already ends with the consumer's, last
-    // (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `component-has-static-classnames-object` and its `has-static-classnames` testOptions
     // are gone with the BEM statics: `carouselAutoplayButtonClassNames.root` is now the group

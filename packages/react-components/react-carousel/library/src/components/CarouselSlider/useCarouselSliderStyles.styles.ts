@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * NOTE on the directive above:
  * this file keeps `'use client'` because it still calls `useCarouselContext_unstable`, so
  * the directive is genuinely required and the rule does not flag it. (Adding a suppression
  * anyway would trip `--report-unused-disable-directives`.) Converted leaf hooks call nothing

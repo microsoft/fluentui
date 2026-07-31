@@ -41,8 +41,7 @@ describe('Dialog', () => {
   });
 
   it('Testing DialogSurface with toBeVisible works as expected', () => {
-    // Was a Griffel makeStyles rule (`left: 2px`); a plain class + <style> tag keeps the
-    // fixture identical without Griffel (Griffel → Tailwind + CSS Modules migration, S-H).
+    // A plain class + <style> tag provides the custom-surface fixture (`left: 2px`).
     const customSurfaceClassName = 'dialog-test-custom-surface';
     const CustomDialogSurface = React.forwardRef<HTMLDivElement, DialogSurfaceProps>((props, ref) => {
       return (

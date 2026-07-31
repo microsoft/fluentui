@@ -9,10 +9,9 @@ describe('Listbox', () => {
   isConformant({
     Component: Listbox,
     displayName: 'Listbox',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // `make-styles-overrides-win` can no longer observe the contract — this component
-    // composes with clsx and never calls mergeClasses. `classname-overrides-win` is its
-    // cascade-native replacement (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

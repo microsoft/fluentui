@@ -55,13 +55,9 @@ describe('CalendarDayGrid', () => {
       'consistent-callback-args',
       // Some classnames are applied conditionally
       'component-has-static-classnames-object',
-      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-      // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
-      // it was called with the consumer className last; this component now composes with
-      // clsx and never calls mergeClasses, so the test can no longer observe the contract.
-      // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9);
-      // it is enabled even though `component-handles-classname` is not, because the `<table>`
-      // does take `props.className` as its last clsx argument.
+      // `classname-overrides-win` (extraTests below) pins the styling override contract
+      // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+      // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     ],
     // `component-has-group-marker` is a default test (DECISIONS.md D16.6) and asserts the
     // `group/fui-calendar-day-grid` marker the `<table>` — this component's outermost node —
