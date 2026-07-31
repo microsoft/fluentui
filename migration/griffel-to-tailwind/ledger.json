@@ -608,5 +608,12 @@
     "date": "2026-07-29",
     "result": "COMPLETE — 184 BEM statics removed across 33 packages; xClassNames narrowed to {root:marker}; conformance flipped (component-has-group-marker default, static-classnames opt-in); final sweep 34/34 zero retries",
     "design": "reports/statics-removal-design.md"
+  },
+  "harnessSE": {
+    "date": "2026-07-30",
+    "scope": "griffel-zero S-E: VR harness story scaffolding, scripts/test-ssr, perf-test scenario",
+    "result": "21 VR harness files converted to CSS Modules; scripts/test-ssr Griffel-free (5 files); perf MakeStyles scenario repointed at CSS Modules; VR zero-tolerance 1438/1438 clean across 26 story kinds (both legs fresh --skip-nx-cache); ssr-tests-v9 green; perf bundle green",
+    "survivors": "ShadowDOM/utils.tsx + ShadowDOMDefault.stories.tsx (D11 accepted loss, shadow renderer load-bearing); MakeStyles/*.stories.tsx + CustomStyleHooks.stories.tsx retained pending retirement (D11 prescribes deletion; file deletion was denied by permissions this session); @griffel/react stays in vr-tests-react-components package.json for those files",
+    "report": "reports/harness-se.md"
   }
 }
