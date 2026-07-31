@@ -9,14 +9,11 @@ import type { NavDrawerProps } from './NavDrawer.types';
  * component-handles-classname: Drawer uses the DialogSurface component to render the classname, so the main component do not handle classname.
  * consistent-callback-args: Disabled that as the Drawer callback function uses the same signature as the Dialog, and Dialog has those tests disabled.
  *
- * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind):
- * `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it was
- * called with the consumer className last; this component now composes with clsx and never
- * calls mergeClasses. `classname-overrides-win` below is its cascade-native replacement
- * (DECISIONS.md D9). `component-has-static-classnames-object` asserts the exact
- * `fui-<Component>` format the D16 statics-removal sweep retired; `navDrawerClassNames.root`
- * is now the group marker (D16.5/D16.6) and `component-has-group-marker` (a default test)
- * replaces it.
+ * `classname-overrides-win` (DECISIONS.md D2/D9) pins the styling override contract
+ * cascade-natively: the consumer `className` is composed last and unlayered consumer CSS
+ * beats the `@layer fui.*` rules. `component-has-static-classnames-object` asserts the exact
+ * `fui-<Component>` format the D16 statics removal retired; `navDrawerClassNames.root` is the
+ * group marker (D16.5/D16.6) and `component-has-group-marker` (a default test) replaces it.
  */
 
 describe('NavDrawer', () => {

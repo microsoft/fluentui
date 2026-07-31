@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * NOTE on the directive above:
  * once `makeStyles` is gone a converted styles file calls no React hook and no RSC-unsafe
  * function, so the directive is unnecessary and those files carry none at all.
  *

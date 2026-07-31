@@ -20,13 +20,9 @@ describe('RatingItem', () => {
       // rendered-class assertions no longer describe this component.
       // `component-has-group-marker` (now a default test) is its replacement (D16.5).
       'component-has-static-classnames-object',
-      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-      // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
-      // it was called with the consumer className last; this component now composes with
-      // clsx and never calls mergeClasses, so the test can no longer observe the contract.
-      // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
-      // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
-      // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+      // `classname-overrides-win` (extraTests below) pins the styling override contract
+      // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+      // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     ],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,

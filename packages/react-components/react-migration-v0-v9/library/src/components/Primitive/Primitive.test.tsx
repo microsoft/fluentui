@@ -40,8 +40,6 @@ xdescribe('Primitive', () => {
     componentPath: module!.filename.replace('.test', ''),
     displayName: 'Primitive',
     /*
-     * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-     *
      * `component-has-static-classnames-object` no longer exists in the default set — it was
      * DELETED when the BEM statics were removed (DECISIONS.md D16.6), because it hard-codes
      * the `fui-<Component>` / `fui-<Component>__<slot>` format and asserts those classes are
@@ -49,13 +47,9 @@ xdescribe('Primitive', () => {
      * and is now ENABLED here: it asserts the group marker IS stamped and, per D16.2, is
      * never `classList[0]`.
      *
-     * `classname-overrides-win` is the cascade-native replacement for
-     * `make-styles-overrides-win` (DECISIONS.md D9). The Griffel test jest-mocks
-     * `mergeClasses` and asserts it was called with the consumer className last; this
-     * component composes with clsx and never calls mergeClasses, so the old test can no
-     * longer observe the contract. It is not in this package's `isConformant` set to begin
-     * with (that comes from `@fluentui/react-conformance-griffel`, which this package does
-     * not use), so there is nothing to disable — only the replacement to add.
+     * `classname-overrides-win` (DECISIONS.md D9) pins the styling override contract
+     * cascade-natively: the consumer className is composed last (clsx) and unlayered
+     * consumer CSS beats the `@layer fui.*` rules (D2).
      */
     disabledTests: ['has-docblock', 'has-top-level-file'],
     extraTests: {

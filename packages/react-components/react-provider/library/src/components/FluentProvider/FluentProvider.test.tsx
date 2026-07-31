@@ -43,11 +43,9 @@ describe('FluentProvider', () => {
     ],
     Component: FluentProvider,
     displayName: 'FluentProvider',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // This package never registered `@fluentui/react-conformance-griffel`, so there is no
-    // `make-styles-overrides-win` to disable here — but the contract it guards still needs
-    // covering now that useFluentProviderStyles.styles.ts composes with clsx instead of
-    // mergeClasses (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // This is enabled even though `component-handles-classname` above is disabled: that
     // test compares class names across three separate renders, and FluentProvider's

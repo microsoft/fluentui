@@ -36,8 +36,7 @@ describe('StyledText', () => {
     /*
      * `component-has-static-classnames-object` was DELETED from the default set with the BEM
      * statics (DECISIONS.md D16.6); `component-has-group-marker` replaced it and is ENABLED.
-     * `classname-overrides-win` is the cascade-native replacement for
-     * `make-styles-overrides-win` (D9); the Griffel original is not in this package's set.
+     * `classname-overrides-win` (D9) pins the styling override contract cascade-natively.
      */
     disabledTests: ['has-docblock', 'has-top-level-file'],
     extraTests: {

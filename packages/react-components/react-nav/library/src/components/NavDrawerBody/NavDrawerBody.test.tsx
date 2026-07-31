@@ -6,13 +6,9 @@ describe('NavDrawerBody', () => {
   isConformant({
     Component: NavDrawerBody,
     displayName: 'NavDrawerBody',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
-    // was called with the consumer className last. It was already disabled here because this
-    // component delegates to react-drawer's converted `useDrawerBodyStyles_unstable`; now
-    // that react-nav is converted too, nothing in the chain calls mergeClasses at all.
-    // `classname-overrides-win` below is the cascade-native replacement (DECISIONS.md D9) and
-    // fits from this conversion on.
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `component-has-static-classnames-object` asserts the exact `fui-<Component>` format the
     // D16 statics-removal sweep retired; `navDrawerBodyClassNames.root` is now the group
