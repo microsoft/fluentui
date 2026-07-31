@@ -647,5 +647,39 @@
     "result": "Comments: 165 test files scripted + 26 bespoke variants rewritten (retired make-styles-overrides-win narration -> condensed classname-overrides-win live note); 15 testing/isConformant.ts wrappers cleaned of the stale \"griffelTests stays registered\" claim (S-H unwired it); 65 use-client NOTE framings stripped; 509 story-CSS provenance headers rewritten; module.css evidence blocks, slice citations, jest.config serializer headers and public-API retirement notes KEPT with recorded reasons (PR review aids / icons-gated / live consumer contract). Docs: 7 styling RFCs + specs/makeStyles.md annotated historical; styles-handbook + react-text/react-image MIGRATION.md stale \"still re-exported\" claims fixed to D19 reality; eslint-plugin README example off umbrella makeStyles; react-conformance README stops recommending the retired package. D2a5: CONVERSION_GUIDE §2 scope closed out (in-repo promotions complete S-G/C7; icons half transitional pending S-J), DECISIONS.md superseding amendment appended. Gates: word-level audit PASS (all .ts/.tsx/.js/.css changes comment-only; non-comment diffs confined to 15 .md docs); prettier over all ~800 files; lint+type-check green on 10-project sample except react-menu/react-color-picker type-check, verified PRE-EXISTING at HEAD via stash A/B; jest green on 5-package sample (see reports/si-sweep.md).",
     "remainderIconsGated": "@griffel/jest-serializer root devDep + jest.preset.js entry + 56 per-package snapshotSerializers entries; 62 unlayered :global(.fui-Icon-*) lines across 14 module.css files (S-J); icons CSS @import wiring; kept tooling per sh-the-break §2 (babel-preset/shadow-dom/webpack-loader/griffelRule); migrate-converged-pkg inert Griffel branch (functional change, out of sweep gate); deprecated/ + D11 survivors + rule/executor fixtures (permanent carve-outs)",
     "report": "migration/griffel-to-tailwind/reports/si-sweep.md"
+  },
+  "iconsIntegration1": {
+    "date": "2026-07-31",
+    "scope": "icons-gated batch 1: consume the headless @fluentui/react-icons 3.0 fork (sibling checkout, HEAD d435375837) via LOCAL-ONLY yarn resolutions tarball override; wire the required styles.css into layer fui.components.l1 at both theme emission points (scripts/storybook/src/tailwind-theme.css + react-tailwind-theme css/emit.css -> dist/styles.css); D27 recorded. The D2a5 62 unlayered :global(.fui-Icon-*) lines are untouched (S-J).",
+    "override": {
+      "mechanism": "yarn resolutions \"file:../fluentui-system-icons/packages/react-icons/fluentui-react-icons-local.tgz\" (yarn pack tarball). portal: was tried first and abandoned: the symlink exposes the fork nested @types/react@17, breaking react-provider declaration emit (TS2786) - a failure the published npm package cannot have.",
+      "revertBeforePR": true,
+      "commits": ["90d1096404", "b0248a57f1"]
+    },
+    "cssWiring": {
+      "commit": "c5d6a9b932",
+      "layer": "fui.components.l1"
+    },
+    "snapshots": {
+      "commit": "8db61a6ba0",
+      "churn": "react-menu 3 snapshots: +fui-Icon class, +data-fui-icon attr, fuicm token now stripped by css-modules serializer (first-match order flip), path d trailing-Z trim. react-button/react-avatar: no churn."
+    },
+    "gates": {
+      "vrSweep": {
+        "sets": 73,
+        "passed": 73,
+        "failed": [],
+        "flakyRetries": [],
+        "totalShots": 4654,
+        "results": ".scratch/int1-sweep-results.json",
+        "log": ".scratch/int1-sweep.log",
+        "adjudication": "upstream icon content drift npm 2.0.311 -> fork (2.0.334 lineage @ main HEAD): 9 glyphs proven redrawn at path-data level (TextItalic24Regular, LockClosed20Regular, SearchRegular, Warning12Filled, WarningFilled, DiamondDismiss12Filled, DiamondDismissFilled, HeartRegular, DismissRegular); 127 shots across 9 sets (harness-se 19, react-field 3, react-input 2, react-message-bar 7, react-search 49, react-swatch-picker 7, react-toast 21, react-toolbar 15, react-tree 4) rebaselined from deterministic candidates with provenance in each baseline manifest.json adjudications[]; every rebaselined set re-verified clean by a fresh capture+diff driver pass. Version churn, not an integration defect - full evidence in reports/icons-integration-1.md section 5."
+      },
+      "sanity": "16/16 subset pairs pixel-identical vs icons-2.x-era baselines (button 9, menu 4, avatar 3); pngs in validation/icons-integration-1/",
+      "jest": "react-button 198 pass, react-avatar pass, react-menu 484 pass after regen",
+      "ssr": "ssr-tests-v9 green",
+      "emittedCss": "dist/styles.css + VR bundle both carry @layer fui.components.l1 icon rules"
+    },
+    "report": "reports/icons-integration-1.md"
   }
 }
