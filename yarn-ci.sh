@@ -8,6 +8,8 @@ MAX_RETRIES=3
 LOG_ERROR="##vso[task.logissue type=error]"
 LOG_WARNING="##vso[task.logissue type=warning]"
 
+corepack enable
+
 # In .devops/templates/tools.yml we enable errexit and errtrace to ensure that the whole task fails
 # if any line of a multi-line script fails. However, that's not desirable here since the `timeout`
 # command below is intended to exit non-zero if a timeout occurs. (+o means turn option off)
@@ -19,7 +21,7 @@ while [ $attempt -le $MAX_RETRIES ]; do
 
   # `timeout` is in GNU coreutils. These are installed by default on Linux but not on Mac.
   # https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html#index-timeout
-  timeout -k "$((MAX_TIME+1))m" "${MAX_TIME}m" yarn install --frozen-lockfile
+  timeout -k "$((MAX_TIME+1))m" "${MAX_TIME}m" yarn install --immutable
   result=$?
 
   if [ $result = 0 ]; then

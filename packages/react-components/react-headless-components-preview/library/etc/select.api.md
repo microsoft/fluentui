@@ -5,14 +5,13 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderSelect_unstable as renderSelect } from '@fluentui/react-select';
 import type { SelectBaseProps } from '@fluentui/react-select';
-import { SelectBaseState } from '@fluentui/react-select';
+import type { SelectBaseState } from '@fluentui/react-select';
 import type { SelectSlots as SelectSlots_2 } from '@fluentui/react-select';
 
-// @public
-export const renderSelect: (state: SelectBaseState) => JSXElement;
+export { renderSelect }
 
 // @public
 export const Select: ForwardRefComponent<SelectProps>;

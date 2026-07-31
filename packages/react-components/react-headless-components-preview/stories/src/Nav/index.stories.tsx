@@ -15,6 +15,8 @@ import {
 
 import descriptionMd from './NavDescription.md';
 
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './NavDefault.stories';
 export { WithCategories } from './NavWithCategories.stories';
 export { Controlled } from './NavControlled.stories';
@@ -40,7 +42,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('Nav')].join('\n'),
       },
     },
   },

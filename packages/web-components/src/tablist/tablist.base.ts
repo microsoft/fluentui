@@ -158,11 +158,20 @@ export class BaseTablist extends FASTElement {
 
   /** @internal */
   public handleFocusIn(event: FocusEvent) {
-    const target = event.target as Node;
-    if (!isTab(target) || target.disabled) {
+    this.activeid = (event.target as HTMLElement).id;
+  }
+
+  /** @internal */
+  public handleClick(event: PointerEvent) {
+    // We only need to handle click event when `tab.click()` is called, a user
+    // click will be handled by `focusin` event. And as per the DOM spec,
+    // calling `Element.click()` results in `isTrusted=false`:
+    // https://dom.spec.whatwg.org/#dom-event-istrusted
+    if (event.isTrusted) {
       return;
     }
-    this.activeid = target.id;
+
+    this.activeid = (event.target as HTMLElement).id;
   }
 
   private changeTab(oldId: undefined | string, newId: string) {
@@ -170,7 +179,7 @@ export class BaseTablist extends FASTElement {
     const prevTab = oldId ? rootNode.getElementById(oldId) : null;
     const nextTab = rootNode.getElementById(newId);
 
-    if (!isTab(nextTab) || !this.contains(nextTab)) {
+    if (!isTab(nextTab) || nextTab.disabled || !this.contains(nextTab)) {
       return;
     }
 
