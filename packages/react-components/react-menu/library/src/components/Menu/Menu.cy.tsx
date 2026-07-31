@@ -27,8 +27,8 @@ import {
   menuTriggerId,
 } from '../../testing/selectors';
 
-// Griffel → Tailwind + CSS Modules migration (S-H): was a Griffel `makeStyles` hook. A plain
-// class + a `<style>` tag injected by `DebugPointer` below is enough for a test-only affordance.
+// A plain class + a `<style>` tag injected by `DebugPointer` below is enough for this
+// test-only affordance.
 const pointerPortalClassName = 'menu-cy-pointer-portal';
 const pointerPortalCss = `.${pointerPortalClassName} { z-index: 10000000; }`;
 

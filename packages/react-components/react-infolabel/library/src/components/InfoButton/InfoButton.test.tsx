@@ -39,16 +39,9 @@ describe('InfoButton', () => {
     // that fed the deleted test (including `getPortalElement`, which reached the PopoverSurface
     // in the portal — Griffel-styled at the time) went with it.
     //
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind):
-    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
-    // was called with the consumer className last. Both slots now compose with clsx — the
-    // `info` slot's Griffel `makeStyles` was converted in Phase 3 once react-popover landed
-    // (see useInfoButtonStyles.styles.ts) — so the consumer className never reaches a
-    // mergeClasses call and the test can no longer observe the contract. The guarantee itself
-    // is unchanged: clsx puts
-    // `state.root.className` last and the `@layer fui.*` sublayers keep unlayered consumer
-    // CSS winning (DECISIONS.md D2/D9). `classname-overrides-win` below is its
-    // cascade-native replacement (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     disabledTests: ['component-has-static-classnames-object', 'exported-top-level'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,

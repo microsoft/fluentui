@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * NOTE: this file keeps `'use client'` because
  * it still calls a React hook (`useDialogTitleStyles_unstable`), so `enforce-use-client`
  * never reports the directive as unnecessary. Every other styles hook in this package calls
  * nothing after conversion and carries no directive at all.

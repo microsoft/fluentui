@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * NOTE on the directive above:
  * this file keeps `'use client'` because it still calls `useCheckmarkStyles_unstable`, so
  * `enforce-use-client` sees a hook call and never reports the directive as unnecessary.
  * Converted leaf hooks are `clsx` plus a CSS-Modules import, call nothing, and carry no

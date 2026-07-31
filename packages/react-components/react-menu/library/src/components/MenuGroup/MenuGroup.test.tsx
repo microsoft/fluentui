@@ -9,11 +9,9 @@ describe('MenuGroup', () => {
   isConformant({
     Component: MenuGroup,
     displayName: 'MenuGroup',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // MenuGroup still has no styles of its own — the only local in MenuGroup.module.css is
-    // the identity-only `.root {}` that keeps the group marker off `classList[0]`
-    // (DECISIONS.md D16.2) — so `make-styles-overrides-win` stays disabled for that reason
-    // as well as because this hook no longer calls mergeClasses at all.
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `component-has-static-classnames-object` asserts the `fui-<Component>__<slot>` BEM
     // format DECISIONS.md D16.1 removed; `component-has-group-marker` (a default test since

@@ -38,10 +38,9 @@ describe('Flex', () => {
      * and is ENABLED here: it asserts the marker IS stamped and, per D16.2, is never
      * `classList[0]`.
      *
-     * `classname-overrides-win` is the cascade-native replacement for
-     * `make-styles-overrides-win` (DECISIONS.md D9). The Griffel original is not in this
-     * package's set to begin with (it ships in `@fluentui/react-conformance-griffel`, which
-     * this package does not use), so there is nothing to disable — only the replacement to add.
+     * `classname-overrides-win` (DECISIONS.md D9) pins the styling override contract
+     * cascade-natively: the consumer className is composed last (clsx) and unlayered
+     * consumer CSS beats the `@layer fui.*` rules (D2).
      */
     disabledTests: ['has-docblock', 'has-top-level-file'],
     extraTests: {

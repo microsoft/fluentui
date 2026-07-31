@@ -29,8 +29,7 @@ describe('GridShim', () => {
      * `group/fui-grid-shim` and no `testOptions['has-group-marker']` override is needed — see
      * the note on `gridShimClassName` in GridShim.tsx for why the identity string changed.
      *
-     * `classname-overrides-win` is the cascade-native replacement for
-     * `make-styles-overrides-win` (D9); the Griffel original is not in this package's set.
+     * `classname-overrides-win` (D9) pins the styling override contract cascade-natively.
      */
     disabledTests: ['has-docblock', 'has-top-level-file'],
     extraTests: {

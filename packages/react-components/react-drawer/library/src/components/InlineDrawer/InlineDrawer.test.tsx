@@ -14,13 +14,9 @@ describe('InlineDrawer', () => {
     requiredProps: {
       open: true,
     },
-    // `make-styles-overrides-win` was already disabled here (this component returns null
-    // when not open by default). Griffel → Tailwind + CSS Modules migration
-    // (migration/griffel-to-tailwind) makes that permanent: the hook now composes with clsx
-    // and never calls mergeClasses, which is what that test mocks. The guarantee is
-    // unchanged — clsx puts `state.root.className` last and the `@layer fui.*` sublayers
-    // keep unlayered consumer CSS winning (DECISIONS.md D2/D9) — and `classname-overrides-win`
-    // below is its cascade-native replacement (D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `component-has-static-classnames-object` asserts `inlineDrawerClassNames` still holds
     // `fui-InlineDrawer` AND that it is rendered. Both are false by design: DECISIONS.md

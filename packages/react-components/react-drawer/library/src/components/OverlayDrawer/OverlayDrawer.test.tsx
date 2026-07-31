@@ -26,19 +26,15 @@ describe('OverlayDrawer', () => {
    *
    * Why these tests are disabled:
    * component-handles-ref|component-has-root-ref: OverlayDrawer uses the Dialog under the hood and Dialog do not handle ref, as it is a renderless component
-   * component-handles-classname|component-has-static-classnames-object|make-styles-overrides-win: OverlayDrawer uses the DialogSurface component to render the className, so the main component do not handle className.
+   * component-handles-classname|component-has-static-classnames-object: OverlayDrawer uses the DialogSurface component to render the className, so the main component do not handle className.
    * consistent-callback-args: Disabled that as the OverlayDrawer callback function uses the same signature as the Dialog, and Dialog has those tests disabled.
    */
   isConformant<OverlayDrawerProps>({
     Component: OverlayDrawer,
     displayName: 'OverlayDrawer',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
-    // was called with the consumer className last; this component now composes with clsx and
-    // never calls mergeClasses, so the test can no longer observe the contract. The guarantee
-    // itself is unchanged — clsx puts `state.root.className` last and the `@layer fui.*`
-    // sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
-    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     disabledTests: [
       'component-handles-ref',
       'component-has-root-ref',
