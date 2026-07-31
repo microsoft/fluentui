@@ -1,0 +1,33 @@
+/* Story styles for DrawerMultipleLevels, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.toolbar {
+  justify-content: space-between;
+}
+
+.body {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+.level {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.level:first-child {
+  padding-top: 0;
+}
+
+.level:last-child {
+  padding-bottom: 0;
+}
+
+.footer {
+  justify-content: space-between;
+}

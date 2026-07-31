@@ -10,7 +10,6 @@ import {
   Toolbar,
   ToolbarGroup,
   ToolbarButton,
-  makeStyles,
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
@@ -21,16 +20,9 @@ import {
   ArrowLeft24Regular,
 } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-});
+import styles from './DrawerWithNavigation.module.css';
 
 export const WithNavigation = (): JSXElement => {
-  const styles = useStyles();
-
   const [isOpen, setIsOpen] = React.useState(false);
 
   // all Drawers need manual focus restoration attributes

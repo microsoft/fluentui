@@ -1,0 +1,57 @@
+/* Story styles for DividerCustomStyles, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  min-height: 96px;
+  background-color: var(--colorNeutralBackground1);
+}
+
+.customHeightExample {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 192px;
+}
+
+.customWidth {
+  width: 200px;
+}
+
+.customHeight {
+  max-height: 50px;
+}
+
+.customFont {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.customLineColor::before {
+  border-color: var(--colorPaletteRedBorder2);
+}
+
+.customLineColor::after {
+  border-color: var(--colorPaletteRedBorder2);
+}
+
+.customLineStyle {
+  border-width: 2px;
+}
+
+.customLineStyle::before {
+  border-top: 2px dashed;
+}
+
+.customLineStyle::after {
+  border-top: 2px dashed;
+}

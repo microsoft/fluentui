@@ -1,0 +1,17 @@
+/* Story styles for DividerVertical, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  min-height: 96px;
+  background-color: var(--colorNeutralBackground1);
+}

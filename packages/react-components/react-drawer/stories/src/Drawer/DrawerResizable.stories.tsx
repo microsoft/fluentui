@@ -5,9 +5,6 @@ import {
   DrawerHeader,
   DrawerHeaderTitle,
   InlineDrawer,
-  makeStyles,
-  mergeClasses,
-  tokens,
   Button,
   Input,
   Label,
@@ -19,92 +16,14 @@ import {
   DialogBody,
   DialogActions,
   DialogContent,
-  shorthands,
 } from '@fluentui/react-components';
 import { Dismiss20Regular } from '@fluentui/react-icons';
 
+import styles from './DrawerResizable.module.css';
+
 const MIN_SIDEBAR_WIDTH = 240;
-const useStyles = makeStyles({
-  root: {
-    border: '2px solid #ccc',
-    overflow: 'hidden',
-
-    display: 'flex',
-    height: '480px',
-    backgroundColor: '#fff',
-    userSelect: 'auto',
-  },
-
-  rootResizerActive: {
-    userSelect: 'none',
-  },
-
-  container: {
-    position: 'relative',
-  },
-
-  drawer: {
-    willChange: 'width',
-    transitionProperty: 'width',
-    transitionDuration: '16.666ms', // 60fps
-  },
-
-  resizer: {
-    width: '24px',
-    height: '100%',
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    cursor: 'col-resize',
-    border: 'none',
-    minWidth: 'unset',
-    borderRadius: tokens.borderRadiusNone,
-
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      borderRight: `1px solid ${tokens.colorNeutralBackground5}`,
-      width: '1px',
-      height: '100%',
-      transform: 'translateX(-50%)',
-      left: '50%',
-    },
-    ':hover': {
-      borderRightWidth: '4px',
-      cursor: 'col-resize',
-      backgroundColor: 'transparent',
-    },
-    ':hover:active': {
-      backgroundColor: 'transparent',
-      cursor: 'col-resize',
-    },
-  },
-
-  resizerActive: {
-    borderRightWidth: '4px',
-    borderRightColor: tokens.colorNeutralBackground5Pressed,
-  },
-
-  content: {
-    margin: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalXL}`,
-    flex: '1',
-  },
-
-  dialogContent: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  errorMessage: {
-    color: tokens.colorPaletteRedForeground1,
-  },
-  invalidInput: {
-    ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-  },
-});
 
 export const Resizable = (): JSXElement => {
-  const styles = useStyles();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isDialogOpen, setDialogOpen] = React.useState(false);
 
@@ -187,7 +106,7 @@ export const Resizable = (): JSXElement => {
 
   return (
     <>
-      <div className={mergeClasses(styles.root, isResizing && styles.rootResizerActive)}>
+      <div className={[styles.root, isResizing && styles.rootResizerActive].filter(Boolean).join(' ')}>
         <div className={styles.container}>
           <InlineDrawer
             open
@@ -206,7 +125,7 @@ export const Resizable = (): JSXElement => {
           <Dialog open={isDialogOpen} onOpenChange={(event, data) => setDialogOpen(data.open)}>
             <DialogTrigger disableButtonEnhancement>
               <Button
-                className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)}
+                className={[styles.resizer, isResizing && styles.resizerActive].filter(Boolean).join(' ')}
                 onMouseDown={startResizing}
                 aria-label="Resize drawer"
                 role="separator"

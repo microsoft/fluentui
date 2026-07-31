@@ -6,35 +6,16 @@ import {
   DrawerHeaderTitle,
   OverlayDrawer,
   Button,
-  makeStyles,
-  tokens,
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: tokens.spacingHorizontalL,
-  },
-
-  container: {
-    width: '500px',
-    height: '300px',
-    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalL}`,
-    position: 'relative',
-    overflow: 'hidden',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralStroke1}`,
-    backgroundColor: tokens.colorBrandBackground2,
-  },
-});
+import styles from './OverlayInsideContainer.module.css';
 
 export const OverlayInsideContainer = (): JSXElement => {
   const [isOpen, setIsOpen] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
-  const styles = useStyles();
 
   // all Drawers need manual focus restoration attributes
   // unless (as in the case of some inline drawers, you do not want automatic focus restoration)

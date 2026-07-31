@@ -6,36 +6,16 @@ import {
   DrawerHeaderTitle,
   Drawer,
   Button,
-  makeStyles,
-  tokens,
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    border: '2px solid #ccc',
-    overflow: 'hidden',
-
-    display: 'flex',
-    height: '480px',
-    backgroundColor: '#fff',
-  },
-
-  content: {
-    margin: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalXL}`,
-    flex: '1',
-
-    gridRowGap: tokens.spacingVerticalXXL,
-  },
-});
+import styles from './DrawerResponsive.module.css';
 
 type DrawerType = Required<DrawerProps>['type'];
 
 export const Responsive = (): JSXElement => {
-  const styles = useStyles();
-
   const [isOpen, setIsOpen] = React.useState(true);
   const [type, setType] = React.useState<DrawerType>('inline');
 

@@ -5,7 +5,6 @@ import {
   DrawerHeaderTitle,
   InlineDrawer,
   createPresenceComponent,
-  makeStyles,
   motionTokens,
   tokens,
 } from '@fluentui/react-components';
@@ -13,40 +12,10 @@ import { Dismiss24Regular } from '@fluentui/react-icons';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
+import styles from './DrawerMotionCustom.module.css';
+
 const drawerWidth = '320px';
 const drawerMargin = tokens.spacingVerticalM;
-
-const useStyles = makeStyles({
-  root: {
-    border: '2px solid #ccc',
-    overflow: 'hidden',
-    position: 'relative',
-
-    display: 'flex',
-    height: '480px',
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-
-  drawer: {
-    width: drawerWidth,
-    border: '1px solid',
-  },
-
-  content: {
-    flex: '1',
-    padding: '16px',
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    gap: tokens.spacingVerticalM,
-    gridAutoRows: 'max-content',
-    boxSizing: 'border-box',
-    position: 'absolute',
-    inset: 0,
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `1px solid ${tokens.colorNeutralBackground1}`,
-  },
-});
 
 /*
  * Create a custom DrawerMotion component that animates the drawer surface.
@@ -123,7 +92,6 @@ const ContentMotion = createPresenceComponent(() => {
 });
 
 export const MotionCustom = (): JSXElement => {
-  const styles = useStyles();
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (

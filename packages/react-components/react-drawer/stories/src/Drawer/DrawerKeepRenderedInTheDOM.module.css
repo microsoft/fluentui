@@ -1,0 +1,25 @@
+/* Story styles for DrawerKeepRenderedInTheDOM, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  border: 2px solid #ccc;
+  overflow: hidden;
+  display: flex;
+  height: 480px;
+  background-color: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  display: grid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  grid-row-gap: var(--spacingVerticalXXL);
+  grid-auto-rows: max-content;
+}
+
+.field {
+  display: grid;
+  grid-row-gap: var(--spacingVerticalS);
+}

@@ -1,28 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer, makeStyles } from '@fluentui/react-components';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    border: '2px solid #ccc',
-    overflow: 'hidden',
-    display: 'flex',
-    height: '480px',
-    backgroundColor: '#fff',
-  },
-
-  content: {
-    flex: '1',
-    padding: '16px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-});
+import styles from './DrawerAlwaysOpen.module.css';
 
 export const AlwaysOpen = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <InlineDrawer separator open>

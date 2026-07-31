@@ -1,0 +1,37 @@
+/* Story styles for InlineDrawer, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  border: 2px solid #ccc;
+  overflow: hidden;
+  display: flex;
+  height: 480px;
+  background-color: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+  position: relative;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.buttons {
+  flex: 1;
+  padding: 16px;
+  position: sticky;
+  top: -16px;
+  right: -16px;
+  left: -16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  column-gap: var(--spacingHorizontalXS);
+  background-color: #fff;
+  transition-duration: var(--durationFast);
+}

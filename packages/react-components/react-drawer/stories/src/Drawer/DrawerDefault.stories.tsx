@@ -9,8 +9,6 @@ import {
   Label,
   Radio,
   RadioGroup,
-  makeStyles,
-  tokens,
   useId,
   useRestoreFocusSource,
   useRestoreFocusTarget,
@@ -18,37 +16,11 @@ import {
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    border: '2px solid #ccc',
-    overflow: 'hidden',
-
-    display: 'flex',
-    height: '480px',
-    backgroundColor: '#fff',
-  },
-
-  content: {
-    flex: '1',
-    padding: '16px',
-
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    gridRowGap: tokens.spacingVerticalXXL,
-    gridAutoRows: 'max-content',
-  },
-
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
+import styles from './DrawerDefault.module.css';
 
 type DrawerType = Required<DrawerProps>['type'];
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
   const labelId = useId('type-label');
 
   const [isOpen, setIsOpen] = React.useState(false);

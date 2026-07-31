@@ -10,30 +10,16 @@ import {
   RadioGroup,
   Radio,
   useId,
-  tokens,
-  makeStyles,
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  main: {
-    display: 'grid',
-    justifyContent: 'flex-start',
-    gridRowGap: tokens.spacingVerticalXXL,
-  },
-
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
+import styles from './DrawerSize.module.css';
 
 type DrawerSizeStory = Required<DrawerProps>['size'];
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
   const labelId = useId('size-label');
 
   const [open, setOpen] = React.useState(false);

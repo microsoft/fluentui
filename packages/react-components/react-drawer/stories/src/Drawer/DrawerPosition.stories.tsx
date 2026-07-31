@@ -6,27 +6,16 @@ import {
   DrawerHeaderTitle,
   OverlayDrawer,
   Button,
-  makeStyles,
-  tokens,
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  content: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    columnGap: tokens.spacingHorizontalXS,
-  },
-});
+import styles from './DrawerPosition.module.css';
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const Position = (): JSXElement => {
-  const styles = useStyles();
-
   const [isOpen, setIsOpen] = React.useState(false);
   const [position, setPosition] = React.useState<Required<DrawerProps>['position']>('start');
 

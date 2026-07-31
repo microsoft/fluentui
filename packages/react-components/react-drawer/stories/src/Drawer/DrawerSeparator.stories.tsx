@@ -1,39 +1,9 @@
 import * as React from 'react';
 import type { JSXElement, DrawerProps } from '@fluentui/react-components';
-import {
-  DrawerBody,
-  DrawerHeader,
-  DrawerHeaderTitle,
-  InlineDrawer,
-  Button,
-  makeStyles,
-  tokens,
-  mergeClasses,
-} from '@fluentui/react-components';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer, Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    border: '2px solid #ccc',
-    overflow: 'hidden',
-    display: 'flex',
-    height: '480px',
-    backgroundColor: '#fff',
-  },
-
-  content: {
-    flex: '1',
-    padding: '16px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    columnGap: tokens.spacingHorizontalXS,
-  },
-
-  flexColumn: {
-    flexDirection: 'column',
-  },
-});
+import styles from './DrawerSeparator.module.css';
 
 type DrawerSeparatorExampleProps = {
   open: boolean;
@@ -63,14 +33,12 @@ const DrawerSeparatorExample: React.FC<DrawerSeparatorExampleProps> = ({ open, s
 };
 
 export const Separator = (): JSXElement => {
-  const styles = useStyles();
-
   const [startOpen, setStartOpen] = React.useState(true);
   const [endOpen, setEndOpen] = React.useState(true);
   const [bottomOpen, setBottomOpen] = React.useState(true);
 
   return (
-    <div className={mergeClasses(styles.root, styles.flexColumn)}>
+    <div className={`${styles.root} ${styles.flexColumn}`}>
       <div className={styles.root} style={{ borderBottomWidth: 0 }}>
         <DrawerSeparatorExample open={startOpen} setOpen={setStartOpen} position="start" />
 

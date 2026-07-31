@@ -1,0 +1,13 @@
+/* Story styles for DrawerSize, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.main {
+  display: grid;
+  justify-content: flex-start;
+  grid-row-gap: var(--spacingVerticalXXL);
+}
+
+.field {
+  display: grid;
+  grid-row-gap: var(--spacingVerticalS);
+}

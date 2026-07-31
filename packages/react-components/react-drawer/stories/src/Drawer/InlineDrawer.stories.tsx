@@ -6,54 +6,13 @@ import {
   DrawerHeaderTitle,
   InlineDrawer,
   Button,
-  makeStyles,
-  tokens,
-  mergeClasses,
   useRestoreFocusSource,
   useRestoreFocusTarget,
   ToggleButton,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    border: '2px solid #ccc',
-    overflow: 'hidden',
-
-    display: 'flex',
-    height: '480px',
-    backgroundColor: '#fff',
-  },
-
-  content: {
-    flex: '1',
-    padding: '16px',
-    overflow: 'auto',
-
-    position: 'relative',
-  },
-
-  flexColumn: {
-    flexDirection: 'column',
-  },
-
-  buttons: {
-    flex: '1',
-    padding: '16px',
-
-    position: 'sticky',
-    top: '-16px',
-    right: '-16px',
-    left: '-16px',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    columnGap: tokens.spacingHorizontalXS,
-    backgroundColor: '#fff',
-    transitionDuration: tokens.durationFast,
-  },
-});
+import styles from './InlineDrawer.module.css';
 
 type DrawerInlineExampleProps = InlineDrawerProps & {
   setOpen: (open: boolean) => void;
@@ -84,8 +43,6 @@ const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...p
 };
 
 export const Inline = (): JSXElement => {
-  const styles = useStyles();
-
   const [startOpen, setStartOpen] = React.useState(false);
   const [endOpen, setEndOpen] = React.useState(false);
   const [bottomOpen, setBottomOpen] = React.useState(false);
@@ -93,7 +50,7 @@ export const Inline = (): JSXElement => {
   const restoreFocusTargetAttributes = useRestoreFocusTarget();
 
   return (
-    <div className={mergeClasses(styles.root, styles.flexColumn)}>
+    <div className={`${styles.root} ${styles.flexColumn}`}>
       <div className={styles.root}>
         <DrawerInlineExample as="aside" open={startOpen} setOpen={setStartOpen} position="start" />
 

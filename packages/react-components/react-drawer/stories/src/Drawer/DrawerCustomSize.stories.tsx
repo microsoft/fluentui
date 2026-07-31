@@ -7,30 +7,15 @@ import {
   OverlayDrawer,
   Button,
   Field,
-  tokens,
-  makeStyles,
   Input,
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  main: {
-    display: 'grid',
-    justifyContent: 'flex-start',
-    gridRowGap: tokens.spacingVerticalXXL,
-  },
-
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
+import styles from './DrawerCustomSize.module.css';
 
 export const CustomSize = (): JSXElement => {
-  const styles = useStyles();
-
   const [open, setOpen] = React.useState(false);
   const [customSize, setCustomSize] = React.useState(600);
 

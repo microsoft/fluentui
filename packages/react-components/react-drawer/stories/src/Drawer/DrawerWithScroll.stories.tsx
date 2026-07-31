@@ -7,23 +7,9 @@ import {
   DrawerHeaderTitle,
   DrawerFooter,
   Button,
-  makeStyles,
-  tokens,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    rowGap: tokens.spacingHorizontalXXL,
-    columnGap: tokens.spacingHorizontalXXL,
-  },
-
-  drawer: {
-    height: '400px',
-    minWidth: '320px',
-  },
-});
+import styles from './DrawerWithScroll.module.css';
 
 const Header = () => {
   return (
@@ -58,8 +44,6 @@ const Body = () => {
 };
 
 export const WithScroll = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <InlineDrawer className={styles.drawer} open>

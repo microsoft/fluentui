@@ -14,45 +14,13 @@ import {
   Toolbar,
   ToolbarGroup,
   ToolbarButton,
-  makeStyles,
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular, Calendar24Regular, Settings24Regular, ArrowLeft24Regular } from '@fluentui/react-icons';
 import { fadeAtom, Scale, slideAtom } from '@fluentui/react-motion-components-preview';
 
-const useStyles = makeStyles({
-  toolbar: {
-    justifyContent: 'space-between',
-  },
-
-  body: {
-    flex: '1',
-    width: '100%',
-    maxWidth: '100%',
-    position: 'relative',
-  },
-
-  level: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-
-    ':first-child': {
-      paddingTop: 0,
-    },
-
-    ':last-child': {
-      paddingBottom: 0,
-    },
-  },
-
-  footer: {
-    justifyContent: 'space-between',
-  },
-});
+import styles from './DrawerMultipleLevels.module.css';
 
 const BodyPresenceMotion = createPresenceComponent<{ level: 1 | 2 }>(({ level }) => {
   const duration = motionTokens.durationNormal;
@@ -74,8 +42,6 @@ const IconPresenceMotion = createPresenceComponentVariant(Scale, {
 });
 
 export const MultipleLevels = (): JSXElement => {
-  const styles = useStyles();
-
   const [isOpen, setIsOpen] = React.useState(false);
   const [level, setLevel] = React.useState<1 | 2>(1);
 

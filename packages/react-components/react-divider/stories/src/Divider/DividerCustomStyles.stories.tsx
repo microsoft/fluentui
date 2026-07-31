@@ -1,60 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, shorthands, tokens, Divider } from '@fluentui/react-components';
+import { Divider } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '5px',
-  },
-  example: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyItems: 'center',
-    minHeight: '96px',
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  customHeightExample: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    minHeight: '192px',
-  },
-  customWidth: {
-    width: '200px',
-  },
-  customHeight: {
-    maxHeight: '50px',
-  },
-  customFont: {
-    fontSize: '14px',
-    fontWeight: 'bold',
-  },
-  customLineColor: {
-    '::before': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-    },
-    '::after': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-    },
-  },
-  customLineStyle: {
-    ...shorthands.borderWidth('2px'),
-    '::before': {
-      borderTopStyle: 'dashed',
-      borderTopWidth: '2px',
-    },
-    '::after': {
-      borderTopStyle: 'dashed',
-      borderTopWidth: '2px',
-    },
-  },
-});
+import styles from './DividerCustomStyles.module.css';
 
 export const CustomStyles = (): JSXElement => {
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <div className={styles.example}>
@@ -70,7 +20,7 @@ export const CustomStyles = (): JSXElement => {
       </div>
       <div className={styles.example}>
         <Divider className={styles.customLineColor}>
-          Custom line color (<code>tokens.colorPaletteRedBorder2</code>)
+          Custom line color (<code>var(--colorPaletteRedBorder2)</code>)
         </Divider>
       </div>
       <div className={styles.example}>

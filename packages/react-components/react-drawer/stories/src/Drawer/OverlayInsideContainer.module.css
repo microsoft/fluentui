@@ -1,0 +1,18 @@
+/* Story styles for OverlayInsideContainer, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacingHorizontalL);
+}
+
+.container {
+  width: 500px;
+  height: 300px;
+  padding: var(--spacingVerticalL) var(--spacingHorizontalL);
+  position: relative;
+  overflow: hidden;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralStroke1);
+  background-color: var(--colorBrandBackground2);
+}

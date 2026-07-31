@@ -1,0 +1,9 @@
+/* Story styles for DrawerPosition, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  column-gap: var(--spacingHorizontalXS);
+}

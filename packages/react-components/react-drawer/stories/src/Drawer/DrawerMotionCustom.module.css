@@ -1,0 +1,34 @@
+/* Story styles for DrawerMotionCustom, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to.
+ * Hand-converted (codemod bail): the makeStyles arg referenced module-scope consts
+ * drawerWidth ('320px') and drawerMargin (tokens.spacingVerticalM); values are resolved
+ * inline here. The consts remain in the story for the motion keyframes. */
+
+.root {
+  border: 2px solid #ccc;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  height: 480px;
+  background-color: var(--colorNeutralBackground1);
+}
+
+.drawer {
+  width: 320px;
+  border: 1px solid;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  display: grid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--spacingVerticalM);
+  grid-auto-rows: max-content;
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  background-color: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorNeutralBackground1);
+}

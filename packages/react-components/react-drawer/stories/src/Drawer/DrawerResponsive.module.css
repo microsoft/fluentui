@@ -1,0 +1,16 @@
+/* Story styles for DrawerResponsive, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  border: 2px solid #ccc;
+  overflow: hidden;
+  display: flex;
+  height: 480px;
+  background-color: #fff;
+}
+
+.content {
+  margin: var(--spacingVerticalXL) var(--spacingHorizontalXL);
+  flex: 1;
+  grid-row-gap: var(--spacingVerticalXXL);
+}

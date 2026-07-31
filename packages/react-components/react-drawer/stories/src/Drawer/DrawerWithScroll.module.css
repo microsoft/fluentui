@@ -1,0 +1,13 @@
+/* Story styles for DrawerWithScroll, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacingHorizontalXXL);
+}
+
+.drawer {
+  height: 400px;
+  min-width: 320px;
+}
