@@ -906,6 +906,11 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       <CartesianChart
         yAxisPadding={_yAxisPadding}
         {...props}
+        // AFTER the props spread so it wins: forwards this component's identity classes
+        // (module root + group/fui-horizontal-bar-chart-with-axis marker) onto
+        // CartesianChart's root while preserving the consumer's other slot overrides
+        // (M2 delegation seam — see useHorizontalBarChartWithAxisStyles).
+        styles={{ ...props.styles, root: styles.root }}
         chartTitle={_getChartTitle()}
         points={_points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}

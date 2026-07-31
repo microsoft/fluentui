@@ -1,0 +1,172 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of `useSankeyChartStyles`.
+ * Every slot had the shape `mergeClasses(<static>, <base slice>, [props.styles?.<slot>])`
+ * — exactly ONE library slice per slot, no intra-slot ordering to preserve. The consumer
+ * `props.styles?.<slot>` arguments for `nodes`/`links`/`nodeTextContainer`/`toolTip` are
+ * COMMENTED OUT in the Griffel source and stay that way (fidelity — see the hook):
+ *
+ *   root              2 useStyles.root              → l1  .root
+ *                       (static #1 REMOVED by D16.1; the root leads with `.root` and
+ *                       carries `group/fui-sankey-chart` second)
+ *   nodes             2 useStyles.nodes             → l1  .nodes
+ *   links             2 useStyles.links             → l1  .links
+ *   nodeTextContainer 2 useStyles.nodeTextContainer → l1  .node-text-container
+ *   toolTip           2 useStyles.toolTip           → l1  .tool-tip
+ *   chartWrapper      2 useStyles.chartWrapper      → l1  .chart-wrapper (CONDITIONAL —
+ *                       applied only when `reflowProps?.mode === 'min-width'`, in JS)
+ *   chart             2 useStyles.chart             → l1  .chart
+ *   chartTitle        2 useStyles.chartTitle        → l1  .chart-title
+ *   svgTooltip        2 useStyles.svgTooltip        → l1  .svg-tooltip
+ *   props.styles?.<slot>                            → unlayered (always wins)
+ *
+ * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
+ * Everything is `fui.components.l1`. SankeyChart renders its OWN root `<div>` (it does not
+ * compose CartesianChart), and every classed element — the wrapper div, the `<svg>`, the
+ * node/link `<g>`s, the text-measurement tooltip div — is rendered by SankeyChart itself.
+ * `.chart-title` and `.svg-tooltip` land on ChartTitle/SVGTooltipText elements, but those
+ * are plain render helpers with no styles hook of their own (GaugeChart/DonutChart
+ * precedent), so l2 would buy nothing.
+ *
+ * ── d3 / literal class-name seam (ledger note, react-charts) ────────────────────────────
+ * SankeyChart's LITERAL class-name pair stays GLOBAL and is deliberately NOT in this
+ * module: `SankeyChart.tsx` renders `<g className="nodeName">` and text-measures through
+ * `select('.nodeName')` / `.attr('class', 'tempText')` / `selectAll('.tempText')` — a
+ * d3 text-measurement seam keyed on literal strings with NO styles attached. Scoping them
+ * through the module would hash the JSX class while d3 keeps selecting the literal,
+ * silently breaking node-name truncation. They stay literal strings in the TSX (see the
+ * comment there); no `:global(...)` rule is needed here because no CSS selects them.
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/SankeyChart/useSankeyChartStyles.styles.js (AOT atomics with
+ * their explicit `[ltr, rtl]` pairs).
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * Two compiled `[ltr, rtl]` pairs, both expressed logically here:
+ *   textAlign 'left' on `.root`                       → `text-align: start` (`text-start`)
+ *   marginLeft/marginRight 8px on `.node-text-container` → `margin-inline-*`
+ *     (`ms-horizontal-s` / `me-horizontal-s` — symmetric 8px, logical either way)
+ *
+ * ── HighContrastSelector → `@variant forced-colors` ─────────────────────────────────────
+ * Four HC slices (`.nodes`, `.links`, `.svg-tooltip`, and the `& text` descendant slice in
+ * `.node-text-container`). The `-ms-high-contrast` half of `HighContrastSelector` is a
+ * removed non-standard query no shipping browser evaluates; narrowing to the catalog
+ * `forced-colors` variant is behaviour-preserving (CartesianChart/DonutChart precedent).
+ *
+ * ── Spacing forms ───────────────────────────────────────────────────────────────────────
+ * 8px literals sit exactly on the S spacing step → named utilities (`p-horizontal-s`,
+ * `ms/me-horizontal-s`); 4px sits on XS → `mt/mb-vertical-xs`. `stroke-width: 3px` on
+ * `.links` and `fill: #F5F5F5` on `.nodes` are frozen literals in the source, carried
+ * verbatim (the stroke width is a literal, not a strokeWidth token — the D4 addendum
+ * mapping applies to token references only).
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — typographyStyles.body1 + layout; textAlign 'left' → logical `start` */
+  .root {
+    @apply flex h-full w-full flex-col overflow-hidden text-start;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  /* from useStyles.links — the link `<g>`s; stroke-width 3px is a frozen literal */
+  .links {
+    fill: var(--colorNeutralBackground1);
+    stroke-width: 3px;
+
+    @variant forced-colors {
+      fill: Canvas;
+    }
+  }
+
+  /* from useStyles.nodes — the node `<g>`s; #F5F5F5 is a frozen literal */
+  .nodes {
+    fill: #f5f5f5;
+
+    @variant forced-colors {
+      fill: Canvas;
+    }
+  }
+
+  /*
+   * from useStyles.toolTip — the shared `getTooltipStyle()` factory
+   * (src/utilities/Common.styles.ts, converted out of existence this batch — SankeyChart
+   * was its last consumer). `typographyStyles.body1` compiled to the four font atomics
+   * below; byte-identical to VerticalBarChart/VerticalStackedBarChart `.tooltip`.
+   */
+  .tool-tip {
+    @apply absolute flex flex-col p-horizontal-s text-center pointer-events-none;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    background-color: var(--colorNeutralBackground1);
+    border-radius: var(--borderRadiusSmall);
+    color: var(--colorNeutralForeground1);
+  }
+
+  /* from useStyles.nodeTextContainer — margins on the text `<g>`; the HC slice is a
+   * descendant rule over the node `<text>`s */
+  .node-text-container {
+    @apply mt-vertical-xs mb-vertical-xs ms-horizontal-s me-horizontal-s;
+
+    @variant forced-colors {
+      & text {
+        fill: CanvasText;
+      }
+    }
+  }
+
+  /* from useStyles.chartWrapper — applied ONLY when `reflowProps?.mode === 'min-width'`
+   * (the conditional stays in the hook, exactly as the Griffel ternary had it) */
+  .chart-wrapper {
+    @apply overflow-auto;
+  }
+
+  /* from useStyles.chart */
+  .chart {
+    @apply block;
+  }
+
+  /*
+   * from useStyles.chartTitle = getChartTitleStyles() (utilities/Common.styles.ts,
+   * converted out of existence this batch). Declarations inlined from the compiled
+   * atomics — byte-identical to DonutChart/GaugeChart/FunnelChart `.chart-title`.
+   */
+  .chart-title {
+    @apply mb-vertical-s text-center;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase100);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase100);
+    fill: var(--colorNeutralForeground1);
+    forced-color-adjust: auto;
+  }
+
+  /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
+  .svg-tooltip {
+    fill: var(--colorNeutralBackground1);
+
+    @variant forced-colors {
+      fill: Canvas;
+    }
+  }
+}

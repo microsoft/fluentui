@@ -619,6 +619,12 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _computeNodeAttributes = React.useCallback(
     (nodes: SNode[], nodeAriaLabel: (node: SNode, weight: number) => string): ItemValues<RenderedNodeAttributes> => {
       const result: ItemValues<RenderedNodeAttributes> = {};
+      // LITERAL class-name pair — stays GLOBAL, deliberately NOT module-scoped (ledger
+      // note, react-charts): `.nodeName`/`.tempText` are a d3 text-measurement seam.
+      // `select('.nodeName')` must find the literal `<g className="nodeName">` rendered in
+      // `_createNodes`, and `selectAll('.tempText')` must find the elements injected here;
+      // hashing either side through the CSS module would silently break truncation. No
+      // stylesheet selects these names — they are selection handles, not styling.
       const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
       const nameSpan = select('.nodeName')
         .append('text')
@@ -822,6 +828,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
             />
             {height > MIN_HEIGHT_FOR_TYPE && (
               <g className={classes.nodeTextContainer}>
+                {/* literal GLOBAL class — d3 text-measurement seam, see _computeNodeAttributes */}
                 <g className="nodeName">
                   <text
                     id={`${nodeId}-name`}

@@ -8,20 +8,20 @@ Object {
   >
     <div>
       <div
-        class="fui-sc__root"
+        class="group/fui-sankey-chart"
       >
         <div
-          class="fui-sc__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-sc__chart"
+            class=""
             height="468"
             id="sankeyChart_r_2s_"
             width="912"
           >
             <rect
-              class="fui-sc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="453"
@@ -30,7 +30,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_32_"
               aria-hidden="true"
-              class="fui-sc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_31_"
               text-anchor="middle"
@@ -43,7 +43,7 @@ Object {
               hidden=""
             />
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_30_-0"
@@ -63,7 +63,7 @@ Object {
                   y="36.54945594697432"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -100,7 +100,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -137,7 +137,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -174,7 +174,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -211,7 +211,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -248,7 +248,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_30_-1"
@@ -268,7 +268,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -305,7 +305,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_30_-2"
@@ -325,7 +325,7 @@ Object {
                   y="406.627196792514"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -362,7 +362,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -399,7 +399,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -436,7 +436,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -473,7 +473,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -510,7 +510,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_30_-3"
@@ -530,7 +530,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -567,7 +567,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_30_-4"
@@ -587,7 +587,7 @@ Object {
                   y="337.7283258028935"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -624,7 +624,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_30_-5"
@@ -646,7 +646,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_30_-6"
@@ -670,7 +670,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-sc__toolTip"
+          class=""
           id="tooltip_r_2u_"
           style="opacity: 0;"
         />
@@ -698,20 +698,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_2s_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -720,7 +720,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_32_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_31_"
             text-anchor="middle"
@@ -733,7 +733,7 @@ Object {
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_30_-0"
@@ -753,7 +753,7 @@ Object {
                 y="36.54945594697432"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -790,7 +790,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -827,7 +827,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -864,7 +864,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -901,7 +901,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -938,7 +938,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_30_-1"
@@ -958,7 +958,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -995,7 +995,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_30_-2"
@@ -1015,7 +1015,7 @@ Object {
                 y="406.627196792514"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -1052,7 +1052,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -1089,7 +1089,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -1126,7 +1126,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -1163,7 +1163,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -1200,7 +1200,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_30_-3"
@@ -1220,7 +1220,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -1257,7 +1257,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_30_-4"
@@ -1277,7 +1277,7 @@ Object {
                 y="337.7283258028935"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -1314,7 +1314,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_30_-5"
@@ -1336,7 +1336,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_30_-6"
@@ -1360,7 +1360,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_2u_"
         style="opacity: 0;"
       />
@@ -1428,20 +1428,20 @@ Object {
   >
     <div>
       <div
-        class="fui-sc__root"
+        class="group/fui-sankey-chart"
       >
         <div
-          class="fui-sc__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-sc__chart"
+            class=""
             height="468"
             id="sankeyChart_r_34_"
             width="912"
           >
             <rect
-              class="fui-sc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="453"
@@ -1450,7 +1450,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_3a_"
               aria-hidden="true"
-              class="fui-sc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_39_"
               text-anchor="middle"
@@ -1463,7 +1463,7 @@ Object {
               hidden=""
             />
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_38_-0"
@@ -1483,7 +1483,7 @@ Object {
                   y="38.95576119190679"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -1520,7 +1520,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -1557,7 +1557,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -1594,7 +1594,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_38_-1"
@@ -1614,7 +1614,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -1651,7 +1651,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_38_-2"
@@ -1671,7 +1671,7 @@ Object {
                   y="279.19999999999993"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -1708,7 +1708,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -1745,7 +1745,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -1782,7 +1782,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -1819,7 +1819,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -1856,7 +1856,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_38_-3"
@@ -1876,7 +1876,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -1913,7 +1913,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_38_-4"
@@ -1933,7 +1933,7 @@ Object {
                   y="200.8"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -1972,7 +1972,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-sc__toolTip"
+          class=""
           id="tooltip_r_36_"
           style="opacity: 0;"
         />
@@ -2000,20 +2000,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_34_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -2022,7 +2022,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_3a_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_39_"
             text-anchor="middle"
@@ -2035,7 +2035,7 @@ Object {
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_38_-0"
@@ -2055,7 +2055,7 @@ Object {
                 y="38.95576119190679"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -2092,7 +2092,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -2129,7 +2129,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -2166,7 +2166,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_38_-1"
@@ -2186,7 +2186,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -2223,7 +2223,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_38_-2"
@@ -2243,7 +2243,7 @@ Object {
                 y="279.19999999999993"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -2280,7 +2280,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -2317,7 +2317,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -2354,7 +2354,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -2391,7 +2391,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -2428,7 +2428,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_38_-3"
@@ -2448,7 +2448,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -2485,7 +2485,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_38_-4"
@@ -2505,7 +2505,7 @@ Object {
                 y="200.8"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -2544,7 +2544,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_36_"
         style="opacity: 0;"
       />
@@ -2612,20 +2612,20 @@ Object {
   >
     <div>
       <div
-        class="fui-sc__root"
+        class="group/fui-sankey-chart"
       >
         <div
-          class="fui-sc__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-sc__chart"
+            class=""
             height="468"
             id="sankeyChart_r_24_"
             width="912"
           >
             <rect
-              class="fui-sc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="453"
@@ -2634,7 +2634,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_2a_"
               aria-hidden="true"
-              class="fui-sc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_29_"
               text-anchor="middle"
@@ -2647,7 +2647,7 @@ Object {
               hidden=""
             />
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-0"
@@ -2667,7 +2667,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -2704,7 +2704,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-1"
@@ -2724,7 +2724,7 @@ Object {
                   y="175.50684931506842"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -2761,7 +2761,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-2"
@@ -2783,7 +2783,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-4"
@@ -2805,7 +2805,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-3"
@@ -2825,7 +2825,7 @@ Object {
                   y="367.17808219178085"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -2862,7 +2862,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-5"
@@ -2884,7 +2884,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -2921,7 +2921,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -2958,7 +2958,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -2995,7 +2995,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3032,7 +3032,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3069,7 +3069,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3106,7 +3106,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3143,7 +3143,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3180,7 +3180,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-6"
@@ -3200,7 +3200,7 @@ Object {
                   y="37.6871032162321"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -3237,7 +3237,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-7"
@@ -3257,7 +3257,7 @@ Object {
                   y="274.496046898372"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -3294,7 +3294,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-8"
@@ -3314,7 +3314,7 @@ Object {
                   y="395.92070443261855"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -3351,7 +3351,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3388,7 +3388,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3425,7 +3425,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3462,7 +3462,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -3499,7 +3499,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-9"
@@ -3519,7 +3519,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -3556,7 +3556,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-10"
@@ -3576,7 +3576,7 @@ Object {
                   y="93.31506849315068"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -3613,7 +3613,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_28_-11"
@@ -3633,7 +3633,7 @@ Object {
                   y="275.1944984618674"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -3672,7 +3672,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-sc__toolTip"
+          class=""
           id="tooltip_r_26_"
           style="opacity: 0;"
         />
@@ -3700,20 +3700,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_24_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -3722,7 +3722,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_2a_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_29_"
             text-anchor="middle"
@@ -3735,7 +3735,7 @@ Object {
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-0"
@@ -3755,7 +3755,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -3792,7 +3792,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-1"
@@ -3812,7 +3812,7 @@ Object {
                 y="175.50684931506842"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -3849,7 +3849,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-2"
@@ -3871,7 +3871,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-4"
@@ -3893,7 +3893,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-3"
@@ -3913,7 +3913,7 @@ Object {
                 y="367.17808219178085"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -3950,7 +3950,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-5"
@@ -3972,7 +3972,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4009,7 +4009,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4046,7 +4046,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4083,7 +4083,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4120,7 +4120,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4157,7 +4157,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4194,7 +4194,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4231,7 +4231,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4268,7 +4268,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-6"
@@ -4288,7 +4288,7 @@ Object {
                 y="37.6871032162321"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -4325,7 +4325,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-7"
@@ -4345,7 +4345,7 @@ Object {
                 y="274.496046898372"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -4382,7 +4382,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-8"
@@ -4402,7 +4402,7 @@ Object {
                 y="395.92070443261855"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -4439,7 +4439,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4476,7 +4476,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4513,7 +4513,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4550,7 +4550,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -4587,7 +4587,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-9"
@@ -4607,7 +4607,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -4644,7 +4644,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-10"
@@ -4664,7 +4664,7 @@ Object {
                 y="93.31506849315068"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -4701,7 +4701,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_28_-11"
@@ -4721,7 +4721,7 @@ Object {
                 y="275.1944984618674"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -4760,7 +4760,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_26_"
         style="opacity: 0;"
       />
@@ -4828,20 +4828,20 @@ Object {
   >
     <div>
       <div
-        class="fui-sc__root"
+        class="group/fui-sankey-chart"
       >
         <div
-          class="fui-sc__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-sc__chart"
+            class=""
             height="468"
             id="sankeyChart_r_2c_"
             width="912"
           >
             <rect
-              class="fui-sc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="453"
@@ -4850,7 +4850,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_2i_"
               aria-hidden="true"
-              class="fui-sc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_2h_"
               text-anchor="middle"
@@ -4863,7 +4863,7 @@ Object {
               hidden=""
             />
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-0"
@@ -4883,7 +4883,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -4920,7 +4920,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-1"
@@ -4940,7 +4940,7 @@ Object {
                   y="175.50684931506842"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -4977,7 +4977,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-2"
@@ -4999,7 +4999,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-4"
@@ -5021,7 +5021,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-3"
@@ -5040,7 +5040,7 @@ Object {
                   y="367.17808219178085"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -5077,7 +5077,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-5"
@@ -5099,7 +5099,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5136,7 +5136,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5173,7 +5173,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5210,7 +5210,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5247,7 +5247,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5284,7 +5284,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5321,7 +5321,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5358,7 +5358,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5395,7 +5395,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-6"
@@ -5415,7 +5415,7 @@ Object {
                   y="37.6871032162321"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -5452,7 +5452,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-7"
@@ -5471,7 +5471,7 @@ Object {
                   y="274.496046898372"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -5508,7 +5508,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-8"
@@ -5528,7 +5528,7 @@ Object {
                   y="395.92070443261855"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -5565,7 +5565,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5602,7 +5602,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5639,7 +5639,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5676,7 +5676,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -5713,7 +5713,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-9"
@@ -5733,7 +5733,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -5770,7 +5770,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-10"
@@ -5790,7 +5790,7 @@ Object {
                   y="93.31506849315068"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -5827,7 +5827,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2g_-11"
@@ -5846,7 +5846,7 @@ Object {
                   y="275.1944984618674"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -5885,7 +5885,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-sc__toolTip"
+          class=""
           id="tooltip_r_2e_"
           style="opacity: 0;"
         />
@@ -5913,20 +5913,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_2c_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -5935,7 +5935,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_2i_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_2h_"
             text-anchor="middle"
@@ -5948,7 +5948,7 @@ Object {
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-0"
@@ -5968,7 +5968,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6005,7 +6005,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-1"
@@ -6025,7 +6025,7 @@ Object {
                 y="175.50684931506842"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6062,7 +6062,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-2"
@@ -6084,7 +6084,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-4"
@@ -6106,7 +6106,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-3"
@@ -6125,7 +6125,7 @@ Object {
                 y="367.17808219178085"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6162,7 +6162,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-5"
@@ -6184,7 +6184,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6221,7 +6221,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6258,7 +6258,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6295,7 +6295,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6332,7 +6332,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6369,7 +6369,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6406,7 +6406,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6443,7 +6443,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6480,7 +6480,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-6"
@@ -6500,7 +6500,7 @@ Object {
                 y="37.6871032162321"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6537,7 +6537,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-7"
@@ -6556,7 +6556,7 @@ Object {
                 y="274.496046898372"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6593,7 +6593,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-8"
@@ -6613,7 +6613,7 @@ Object {
                 y="395.92070443261855"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6650,7 +6650,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6687,7 +6687,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6724,7 +6724,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6761,7 +6761,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -6798,7 +6798,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-9"
@@ -6818,7 +6818,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6855,7 +6855,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-10"
@@ -6875,7 +6875,7 @@ Object {
                 y="93.31506849315068"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6912,7 +6912,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2g_-11"
@@ -6931,7 +6931,7 @@ Object {
                 y="275.1944984618674"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -6970,7 +6970,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_2e_"
         style="opacity: 0;"
       />
@@ -7038,20 +7038,20 @@ Object {
   >
     <div>
       <div
-        class="fui-sc__root"
+        class="group/fui-sankey-chart"
       >
         <div
-          class="fui-sc__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-sc__chart"
+            class=""
             height="468"
             id="sankeyChart_r_2k_"
             width="912"
           >
             <rect
-              class="fui-sc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="453"
@@ -7060,7 +7060,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_2q_"
               aria-hidden="true"
-              class="fui-sc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_2p_"
               text-anchor="middle"
@@ -7073,7 +7073,7 @@ Object {
               hidden=""
             />
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2o_-0"
@@ -7093,7 +7093,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -7130,7 +7130,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -7167,7 +7167,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_2o_-1"
@@ -7187,7 +7187,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -7226,7 +7226,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-sc__toolTip"
+          class=""
           id="tooltip_r_2m_"
           style="opacity: 0;"
         />
@@ -7254,20 +7254,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_2k_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -7276,7 +7276,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_2q_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_2p_"
             text-anchor="middle"
@@ -7289,7 +7289,7 @@ Object {
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2o_-0"
@@ -7309,7 +7309,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -7346,7 +7346,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -7383,7 +7383,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_2o_-1"
@@ -7403,7 +7403,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -7442,7 +7442,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_2m_"
         style="opacity: 0;"
       />
@@ -7505,20 +7505,20 @@ Object {
 exports[`Sankey bar chart rendering Should render the Sankey chart with string node data 1`] = `
 <div>
   <div
-    class="fui-sc__root"
+    class="group/fui-sankey-chart"
   >
     <div
-      class="fui-sc__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        class="fui-sc__chart"
+        class=""
         height="468"
         id="sankeyChart_r_1_"
         width="912"
       >
         <rect
-          class="fui-sc__svgTooltip"
+          class=""
           height="3"
           width="6"
           x="453"
@@ -7527,7 +7527,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         <text
           aria-describedby="tooltip-_r_7_"
           aria-hidden="true"
-          class="fui-sc__chartTitle"
+          class=""
           dominant-baseline="auto"
           id="tooltip-host_r_6_"
           text-anchor="middle"
@@ -7540,7 +7540,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
           hidden=""
         />
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_5_-0"
@@ -7560,7 +7560,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               y="36"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -7597,7 +7597,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_5_-1"
@@ -7617,7 +7617,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               y="285.2307692307692"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -7654,7 +7654,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -7691,7 +7691,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -7728,7 +7728,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_5_-2"
@@ -7748,7 +7748,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               y="36"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -7785,7 +7785,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_5_-3"
@@ -7805,7 +7805,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               y="285.2307692307692"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -7844,7 +7844,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
       </svg>
     </div>
     <div
-      class="fui-sc__toolTip"
+      class=""
       id="tooltip_r_3_"
       style="opacity: 0;"
     />
@@ -7859,20 +7859,20 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
     dir="ltr"
   >
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_a_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -7881,7 +7881,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           <text
             aria-describedby="tooltip-_r_g_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_f_"
             text-anchor="middle"
@@ -7894,7 +7894,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_e_-0"
@@ -7914,7 +7914,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -7951,7 +7951,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_e_-1"
@@ -7971,7 +7971,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 y="285.2307692307692"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -8008,7 +8008,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -8045,7 +8045,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -8082,7 +8082,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_e_-2"
@@ -8102,7 +8102,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -8139,7 +8139,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_e_-3"
@@ -8159,7 +8159,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 y="285.2307692307692"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -8198,7 +8198,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_c_"
         style="opacity: 0;"
       />
@@ -8221,21 +8221,21 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 1`] 
 exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] = `
 <div>
   <div
-    class="fui-sc__root"
+    class="group/fui-sankey-chart"
     style=""
   >
     <div
-      class="fui-sc__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        class="fui-sc__chart"
+        class=""
         height="468"
         id="sankeyChart_r_1k_"
         width="912"
       >
         <rect
-          class="fui-sc__svgTooltip"
+          class=""
           height="3"
           width="6"
           x="453"
@@ -8244,7 +8244,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         <text
           aria-describedby="tooltip-_r_1q_"
           aria-hidden="true"
-          class="fui-sc__chartTitle"
+          class=""
           dominant-baseline="auto"
           id="tooltip-host_r_1p_"
           text-anchor="middle"
@@ -8257,7 +8257,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           hidden=""
         />
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_1o_-0"
@@ -8277,7 +8277,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               y="36"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -8314,7 +8314,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_1o_-1"
@@ -8334,7 +8334,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               y="285.2307692307692"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -8371,7 +8371,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -8408,7 +8408,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -8445,7 +8445,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_1o_-2"
@@ -8465,7 +8465,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               y="36"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -8502,7 +8502,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_1o_-3"
@@ -8522,7 +8522,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               y="285.2307692307692"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -8561,7 +8561,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
       </svg>
     </div>
     <div
-      class="fui-sc__toolTip"
+      class=""
       id="tooltip_r_1m_"
       style="opacity: 0;"
     />
@@ -8577,20 +8577,20 @@ Object {
   >
     <div>
       <div
-        class="fui-sc__root"
+        class="group/fui-sankey-chart"
       >
         <div
-          class="fui-sc__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-sc__chart"
+            class=""
             height="468"
             id="sankeyChart_r_50_"
             width="912"
           >
             <rect
-              class="fui-sc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="453"
@@ -8599,7 +8599,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_56_"
               aria-hidden="true"
-              class="fui-sc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_55_"
               text-anchor="middle"
@@ -8612,7 +8612,7 @@ Object {
               hidden=""
             />
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_54_-0"
@@ -8634,7 +8634,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_54_-1"
@@ -8656,7 +8656,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_54_-2"
@@ -8678,7 +8678,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_54_-3"
@@ -8700,7 +8700,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_54_-4"
@@ -8720,7 +8720,7 @@ Object {
                   y="81.85148133897654"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -8757,7 +8757,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_54_-5"
@@ -8777,7 +8777,7 @@ Object {
                   y="407.7429780684879"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -8814,7 +8814,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -8851,7 +8851,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -8888,7 +8888,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -8925,7 +8925,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -8962,7 +8962,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -8999,7 +8999,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -9036,7 +9036,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_54_-6"
@@ -9058,7 +9058,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_54_-7"
@@ -9078,7 +9078,7 @@ Object {
                   y="82.41389009634662"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -9117,7 +9117,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-sc__toolTip"
+          class=""
           id="tooltip_r_52_"
           style="opacity: 0;"
         />
@@ -9145,20 +9145,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_50_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -9167,7 +9167,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_56_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_55_"
             text-anchor="middle"
@@ -9180,7 +9180,7 @@ Object {
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_54_-0"
@@ -9202,7 +9202,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_54_-1"
@@ -9224,7 +9224,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_54_-2"
@@ -9246,7 +9246,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_54_-3"
@@ -9268,7 +9268,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_54_-4"
@@ -9288,7 +9288,7 @@ Object {
                 y="81.85148133897654"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -9325,7 +9325,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_54_-5"
@@ -9345,7 +9345,7 @@ Object {
                 y="407.7429780684879"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -9382,7 +9382,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -9419,7 +9419,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -9456,7 +9456,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -9493,7 +9493,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -9530,7 +9530,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -9567,7 +9567,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -9604,7 +9604,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_54_-6"
@@ -9626,7 +9626,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_54_-7"
@@ -9646,7 +9646,7 @@ Object {
                 y="82.41389009634662"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -9685,7 +9685,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_52_"
         style="opacity: 0;"
       />
@@ -9753,20 +9753,20 @@ Object {
   >
     <div>
       <div
-        class="fui-sc__root"
+        class="group/fui-sankey-chart"
       >
         <div
-          class="fui-sc__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-sc__chart"
+            class=""
             height="468"
             id="sankeyChart_r_58_"
             width="912"
           >
             <rect
-              class="fui-sc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="453"
@@ -9775,7 +9775,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_5e_"
               aria-hidden="true"
-              class="fui-sc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_5d_"
               text-anchor="middle"
@@ -9788,7 +9788,7 @@ Object {
               hidden=""
             />
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_5c_-0"
@@ -9808,7 +9808,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -9845,7 +9845,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_5c_-1"
@@ -9867,7 +9867,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -9904,7 +9904,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -9941,7 +9941,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -9978,7 +9978,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -10015,7 +10015,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_5c_-2"
@@ -10035,7 +10035,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -10072,7 +10072,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_5c_-3"
@@ -10096,7 +10096,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-sc__toolTip"
+          class=""
           id="tooltip_r_5a_"
           style="opacity: 0;"
         />
@@ -10124,20 +10124,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_58_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -10146,7 +10146,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_5e_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_5d_"
             text-anchor="middle"
@@ -10159,7 +10159,7 @@ Object {
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_5c_-0"
@@ -10179,7 +10179,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -10216,7 +10216,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_5c_-1"
@@ -10238,7 +10238,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -10275,7 +10275,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -10312,7 +10312,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -10349,7 +10349,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -10386,7 +10386,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_5c_-2"
@@ -10406,7 +10406,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -10443,7 +10443,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_5c_-3"
@@ -10467,7 +10467,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_5a_"
         style="opacity: 0;"
       />
@@ -10530,20 +10530,20 @@ Object {
 exports[`SankeyChart - mouse events Should render callout correctly on mouseover when height of node is less than 24px 1`] = `
 <div>
   <div
-    class="fui-sc__root"
+    class="group/fui-sankey-chart"
   >
     <div
-      class="fui-sc__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        class="fui-sc__chart"
+        class=""
         height="468"
         id="sankeyChart_r_44_"
         width="912"
       >
         <rect
-          class="fui-sc__svgTooltip"
+          class=""
           height="3"
           width="6"
           x="453"
@@ -10552,7 +10552,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         <text
           aria-describedby="tooltip-_r_4a_"
           aria-hidden="true"
-          class="fui-sc__chartTitle"
+          class=""
           dominant-baseline="auto"
           id="tooltip-host_r_49_"
           text-anchor="middle"
@@ -10565,7 +10565,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           hidden=""
         />
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-0"
@@ -10585,7 +10585,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="36"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -10622,7 +10622,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-1"
@@ -10642,7 +10642,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="175.50684931506842"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -10679,7 +10679,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-2"
@@ -10701,7 +10701,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-4"
@@ -10723,7 +10723,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-3"
@@ -10743,7 +10743,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="367.17808219178085"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -10780,7 +10780,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-5"
@@ -10802,7 +10802,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -10839,7 +10839,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -10876,7 +10876,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -10913,7 +10913,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -10950,7 +10950,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -10987,7 +10987,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -11024,7 +11024,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -11061,7 +11061,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -11098,7 +11098,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-6"
@@ -11118,7 +11118,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="37.6871032162321"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -11155,7 +11155,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-7"
@@ -11175,7 +11175,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="274.496046898372"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -11212,7 +11212,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-8"
@@ -11232,7 +11232,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="395.92070443261855"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -11269,7 +11269,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -11306,7 +11306,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -11343,7 +11343,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -11380,7 +11380,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -11417,7 +11417,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-9"
@@ -11437,7 +11437,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="36"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -11474,7 +11474,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-10"
@@ -11494,7 +11494,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="93.31506849315068"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -11531,7 +11531,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_48_-11"
@@ -11551,7 +11551,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               y="275.1944984618674"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -11636,7 +11636,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       </div>
     </div>
     <div
-      class="fui-sc__toolTip"
+      class=""
       id="tooltip_r_46_"
       style="opacity: 0;"
     />
@@ -11652,20 +11652,20 @@ Object {
   >
     <div>
       <div
-        class="fui-sc__root"
+        class="group/fui-sankey-chart"
       >
         <div
-          class="fui-sc__chartWrapper"
+          class=""
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            class="fui-sc__chart"
+            class=""
             height="468"
             id="sankeyChart_r_3s_"
             width="912"
           >
             <rect
-              class="fui-sc__svgTooltip"
+              class=""
               height="3"
               width="6"
               x="453"
@@ -11674,7 +11674,7 @@ Object {
             <text
               aria-describedby="tooltip-_r_42_"
               aria-hidden="true"
-              class="fui-sc__chartTitle"
+              class=""
               dominant-baseline="auto"
               id="tooltip-host_r_41_"
               text-anchor="middle"
@@ -11687,7 +11687,7 @@ Object {
               hidden=""
             />
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-0"
@@ -11707,7 +11707,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -11744,7 +11744,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-1"
@@ -11764,7 +11764,7 @@ Object {
                   y="175.50684931506842"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -11801,7 +11801,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-2"
@@ -11823,7 +11823,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-4"
@@ -11845,7 +11845,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-3"
@@ -11865,7 +11865,7 @@ Object {
                   y="367.17808219178085"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -11902,7 +11902,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-5"
@@ -11924,7 +11924,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -11961,7 +11961,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -11998,7 +11998,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12035,7 +12035,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12072,7 +12072,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12109,7 +12109,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12146,7 +12146,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12183,7 +12183,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12220,7 +12220,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-6"
@@ -12240,7 +12240,7 @@ Object {
                   y="37.6871032162321"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -12277,7 +12277,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-7"
@@ -12297,7 +12297,7 @@ Object {
                   y="274.496046898372"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -12334,7 +12334,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-8"
@@ -12354,7 +12354,7 @@ Object {
                   y="395.92070443261855"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -12391,7 +12391,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12428,7 +12428,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12465,7 +12465,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12502,7 +12502,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__links"
+              class=""
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
@@ -12539,7 +12539,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-9"
@@ -12559,7 +12559,7 @@ Object {
                   y="36"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -12596,7 +12596,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-10"
@@ -12616,7 +12616,7 @@ Object {
                   y="93.31506849315068"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -12653,7 +12653,7 @@ Object {
               </g>
             </g>
             <g
-              class="fui-sc__nodes"
+              class=""
             >
               <g
                 id="nodeGElement_r_40_-11"
@@ -12673,7 +12673,7 @@ Object {
                   y="275.1944984618674"
                 />
                 <g
-                  class="fui-sc__nodeTextContainer"
+                  class=""
                 >
                   <g
                     class="nodeName"
@@ -12712,7 +12712,7 @@ Object {
           </svg>
         </div>
         <div
-          class="fui-sc__toolTip"
+          class=""
           id="tooltip_r_3u_"
           style="opacity: 0;"
         />
@@ -12740,20 +12740,20 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-sc__root"
+      class="group/fui-sankey-chart"
     >
       <div
-        class="fui-sc__chartWrapper"
+        class=""
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          class="fui-sc__chart"
+          class=""
           height="468"
           id="sankeyChart_r_3s_"
           width="912"
         >
           <rect
-            class="fui-sc__svgTooltip"
+            class=""
             height="3"
             width="6"
             x="453"
@@ -12762,7 +12762,7 @@ Object {
           <text
             aria-describedby="tooltip-_r_42_"
             aria-hidden="true"
-            class="fui-sc__chartTitle"
+            class=""
             dominant-baseline="auto"
             id="tooltip-host_r_41_"
             text-anchor="middle"
@@ -12775,7 +12775,7 @@ Object {
             hidden=""
           />
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-0"
@@ -12795,7 +12795,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -12832,7 +12832,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-1"
@@ -12852,7 +12852,7 @@ Object {
                 y="175.50684931506842"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -12889,7 +12889,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-2"
@@ -12911,7 +12911,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-4"
@@ -12933,7 +12933,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-3"
@@ -12953,7 +12953,7 @@ Object {
                 y="367.17808219178085"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -12990,7 +12990,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-5"
@@ -13012,7 +13012,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13049,7 +13049,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13086,7 +13086,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13123,7 +13123,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13160,7 +13160,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13197,7 +13197,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13234,7 +13234,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13271,7 +13271,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13308,7 +13308,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-6"
@@ -13328,7 +13328,7 @@ Object {
                 y="37.6871032162321"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -13365,7 +13365,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-7"
@@ -13385,7 +13385,7 @@ Object {
                 y="274.496046898372"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -13422,7 +13422,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-8"
@@ -13442,7 +13442,7 @@ Object {
                 y="395.92070443261855"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -13479,7 +13479,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13516,7 +13516,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13553,7 +13553,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13590,7 +13590,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__links"
+            class=""
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
@@ -13627,7 +13627,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-9"
@@ -13647,7 +13647,7 @@ Object {
                 y="36"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -13684,7 +13684,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-10"
@@ -13704,7 +13704,7 @@ Object {
                 y="93.31506849315068"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -13741,7 +13741,7 @@ Object {
             </g>
           </g>
           <g
-            class="fui-sc__nodes"
+            class=""
           >
             <g
               id="nodeGElement_r_40_-11"
@@ -13761,7 +13761,7 @@ Object {
                 y="275.1944984618674"
               />
               <g
-                class="fui-sc__nodeTextContainer"
+                class=""
               >
                 <g
                   class="nodeName"
@@ -13800,7 +13800,7 @@ Object {
         </svg>
       </div>
       <div
-        class="fui-sc__toolTip"
+        class=""
         id="tooltip_r_3u_"
         style="opacity: 0;"
       />
@@ -13863,20 +13863,20 @@ Object {
 exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover when node description is large 1`] = `
 <div>
   <div
-    class="fui-sc__root"
+    class="group/fui-sankey-chart"
   >
     <div
-      class="fui-sc__chartWrapper"
+      class=""
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        class="fui-sc__chart"
+        class=""
         height="468"
         id="sankeyChart_r_4e_"
         width="912"
       >
         <rect
-          class="fui-sc__svgTooltip"
+          class=""
           height="3"
           width="6"
           x="453"
@@ -13885,7 +13885,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         <text
           aria-describedby="tooltip-_r_4k_"
           aria-hidden="true"
-          class="fui-sc__chartTitle"
+          class=""
           dominant-baseline="auto"
           id="tooltip-host_r_4j_"
           text-anchor="middle"
@@ -13898,7 +13898,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           hidden=""
         />
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-0"
@@ -13918,7 +13918,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="36"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -13955,7 +13955,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-1"
@@ -13975,7 +13975,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="175.50684931506842"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -14012,7 +14012,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-2"
@@ -14034,7 +14034,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-4"
@@ -14056,7 +14056,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-3"
@@ -14076,7 +14076,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="367.17808219178085"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -14113,7 +14113,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-5"
@@ -14135,7 +14135,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14172,7 +14172,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14209,7 +14209,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14246,7 +14246,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14283,7 +14283,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14320,7 +14320,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14357,7 +14357,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14394,7 +14394,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14431,7 +14431,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-6"
@@ -14451,7 +14451,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="37.6871032162321"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -14488,7 +14488,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-7"
@@ -14508,7 +14508,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="274.496046898372"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -14545,7 +14545,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-8"
@@ -14565,7 +14565,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="395.92070443261855"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -14602,7 +14602,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14639,7 +14639,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14676,7 +14676,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14713,7 +14713,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__links"
+          class=""
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
@@ -14750,7 +14750,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-9"
@@ -14770,7 +14770,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="36"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -14807,7 +14807,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-10"
@@ -14827,7 +14827,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="93.31506849315068"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -14864,7 +14864,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          class="fui-sc__nodes"
+          class=""
         >
           <g
             id="nodeGElement_r_4i_-11"
@@ -14884,7 +14884,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               y="275.1944984618674"
             />
             <g
-              class="fui-sc__nodeTextContainer"
+              class=""
             >
               <g
                 class="nodeName"
@@ -14923,7 +14923,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       </svg>
     </div>
     <div
-      class="fui-sc__toolTip"
+      class=""
       id="tooltip_r_4g_"
       style="opacity: 0;"
     />

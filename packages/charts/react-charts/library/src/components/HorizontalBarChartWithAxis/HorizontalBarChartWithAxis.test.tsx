@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 import * as React from 'react';
 
 import popoverStyles from '../CommonComponents/ChartPopover.module.css';
+import hbcwaStyles from './HorizontalBarChartWithAxis.module.css';
 
 /*
  * Statics removal (migration/griffel-to-tailwind/reports/DECISIONS.md D16.1/D16.5):
@@ -424,7 +425,10 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
     { data: chartPointsHBCWA, hideLabels: true },
     container => {
       // Assert
-      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
+      // Statics removal (D16.1): `fui-hbcwa__barLabel` is no longer rendered; the label
+      // <text>s are found through the component's own module class. Only the HANDLE moved —
+      // whether labels render is still decided by the component (`hideLabels`).
+      expect(getByExactClass(container, hbcwaStyles['bar-label'])).toHaveLength(0);
     },
   );
 

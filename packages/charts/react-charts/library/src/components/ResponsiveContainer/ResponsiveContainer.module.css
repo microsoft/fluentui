@@ -26,24 +26,25 @@
  * ── Why UNLAYERED, not fui.components.l2 (DECISIONS.md D2 amendment 5) ────────────────
  * ResponsiveContainer renders NO classed element of its own: these classes are injected
  * via `cloneElement` into the CHILD CHART's `styles` prop and land on elements owned by
- * whichever chart is wrapped. That ownership set is MIXED — converted components
- * (CartesianChart's root/chartWrapper, DonutChart, GaugeChart, FunnelChart — the last two
- * converted in charts C4; their `width/height: 100%` root slices now sit in
- * `fui.components.l1`, which these unlayered rules still beat, preserving the old
- * last-argument winner) and still-Griffel components (SankeyChart, VegaDeclarativeChart,
- * …) whose own root slices are UNLAYERED Griffel atomics that set the very same
- * `width`/`height` properties (e.g. useSankeyChartStyles root `width/height: 100%`).
- * A layered copy of these rules could
- * never beat those atomics, inverting the old mergeClasses winner (the responsive classes
- * were the LAST argument, i.e. the winner). Unlayered preserves the winner in both
- * directions: it beats every `fui.*` layer on converted charts, and ties (specificity
- * 0-1-0, then load order) against the unconverted atomics — where the VALUES are identical
- * (`100%` vs `100%`) today, so nothing can render differently.
+ * whichever chart is wrapped. While that ownership set was MIXED (converted charts whose
+ * `width/height: 100%` root slices sit in `fui.components.l1` — which these unlayered
+ * rules still beat, preserving the old last-argument winner — alongside still-Griffel
+ * charts whose root slices were UNLAYERED Griffel atomics setting the very same
+ * `width`/`height` properties), a layered copy of these rules could never beat those
+ * atomics, inverting the old mergeClasses winner (the responsive classes were the LAST
+ * argument, i.e. the winner). Unlayered preserved the winner in both directions.
  *
- * TRANSITIONAL, exactly as CONVERSION_GUIDE §2 describes: when the remaining chart
- * components convert (their root slices move into `fui.components.l1`), this block moves
- * into `@layer fui.components.l2` — the altitude that mirrors "styles applied over another
- * component's hook output".
+ * STATUS AFTER CHARTS C5 (SankeyChart/PolarChart/HorizontalBarChartWithAxis/
+ * AnnotationOnlyChart converted): SankeyChart was the LAST wrapped chart carrying
+ * unlayered Griffel `width/height: 100%` root atomics — every chart a ResponsiveContainer
+ * can wrap now takes its root slices from `fui.components.l1` modules (the one remaining
+ * Griffel styles hook in react-charts, ChartAnnotationLayer, is not a ResponsiveContainer
+ * subject; VegaDeclarativeChart has no styles hook at all — bare `className`/`style`
+ * pass-through). The tie-by-load-order escape hatch is therefore no longer exercised and
+ * this block is ELIGIBLE to move into `@layer fui.components.l2` (the altitude that
+ * mirrors "styles applied over another component's hook output"). The promotion is
+ * deliberately DEFERRED to the final plumbing batch so it lands with its own scoped VR
+ * gate rather than riding a component batch (charts C5 report).
  *
  * VALUES ARE THE COMPILED ONES — read off
  * lib-commonjs/components/ResponsiveContainer/useResponsiveChildStyles.styles.js. No

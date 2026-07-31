@@ -1,0 +1,100 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * `useHorizontalBarChartWithAxisStyles`. The Griffel hook returned only THREE slots —
+ * every other `HorizontalBarChartWithAxisStyles` key had an empty static and no slice
+ * (HeatMapChart precedent: nothing to convert). No slot read `props.styles?.<slot>` (the
+ * hook never consumed consumer styles; the consumer channel flows through CartesianChart
+ * via the `{...props}` spread — see `.root` below):
+ *
+ *   opacityChangeOnHover 2 useStyles.opacityChangeOnHover → l1  .opacity-change-on-hover
+ *   xAxisTicks           2 useStyles.xAxisTicks = {}      → EMPTY slice + static REMOVED
+ *                          (D16.1) — the slot composes to '' in the hook; no local here
+ *   barLabel             2 useStyles.barLabel             → l1  .bar-label
+ *
+ *   root (NEW — identity block at the bottom of this file)
+ *     1 .root (identity-only)                     → fui.components.l2
+ *     2 group/fui-horizontal-bar-chart-with-axis  → identity marker (JS, unstyled)
+ *     3 consumer `props.styles?.root`             → unlayered (always wins)
+ *
+ * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
+ * `.opacity-change-on-hover` and `.bar-label` are l1: they land on SVG elements
+ * HorizontalBarChartWithAxis renders itself inside CartesianChart's `children` render prop
+ * — this component's own cascade. Only `.root` is l2, because that element belongs to
+ * CartesianChart (VerticalStackedBarChart/HeatMapChart precedent).
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/HorizontalBarChartWithAxis/useHorizontalBarChartWithAxisStyles.styles.js.
+ * `.bar-label` is byte-identical to VerticalBarChart/VerticalStackedBarChart `.bar-label`
+ * PLUS this component's own HC `stroke: CanvasText` slice.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * No `[ltr, rtl]` atomic pair and no direction-sensitive property in the compiled output.
+ *
+ * ── HighContrastSelector → `@variant forced-colors` ─────────────────────────────────────
+ * One HC slice (`stroke: CanvasText` on `.bar-label`). The `-ms-high-contrast` half of
+ * `HighContrastSelector` is a removed non-standard query no shipping browser evaluates;
+ * narrowing to the catalog `forced-colors` variant is behaviour-preserving
+ * (CartesianChart/DonutChart precedent).
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.opacityChangeOnHover — opacity 0.1 (supports custom opacity; the slot
+   * is part of the public styles contract — no element in this component consumes it
+   * today, the VSBC known-dead-slot call) */
+  .opacity-change-on-hover {
+    opacity: 0.1;
+  }
+
+  /* from useStyles.barLabel — typographyStyles.caption1Strong + fill + HC stroke */
+  .bar-label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+    fill: var(--colorNeutralForeground1);
+
+    @variant forced-colors {
+      stroke: CanvasText;
+    }
+  }
+}
+
+/*
+ * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2). HorizontalBarChartWithAxis renders no
+ * element of its own: its outermost node is CartesianChart's root `<div>`, reached through
+ * CartesianChart's public `styles.root` prop (CONVERSION_GUIDE §3d M2 — this component
+ * renders CartesianChart itself, so it owns the props).
+ * `useHorizontalBarChartWithAxisStyles` leads its `clsx()` with this class so the composed
+ * string ALWAYS starts with a hashed, selector-safe token ahead of
+ * `group/fui-horizontal-bar-chart-with-axis`: nwsapi's `:scope` polyfill anchors on
+ * `escape(element.classList[0])` and the `/` survives that escaping, yielding an invalid
+ * selector and a render-time AggregateError under jsdom. Do not delete it because it looks
+ * like it does nothing.
+ *
+ * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE
+ * `postcss-modules` and Tailwind v4 prunes every declaration-less rule, so `.root {}`
+ * would never reach the class map and `styles.root` would be `undefined`. A custom
+ * property set to `initial` is guaranteed-invalid, so it renders nothing.
+ *
+ * ALTITUDE l2, not l1: this class decorates an element whose base styles come from
+ * `useCartesianChartStyles` (DECISIONS.md D2 amendment 2).
+ */
+@layer fui.components.l2 {
+  .root {
+    --fui-horizontal-bar-chart-with-axis-identity: initial;
+  }
+}

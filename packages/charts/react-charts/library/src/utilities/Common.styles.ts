@@ -1,7 +1,16 @@
-import { HighContrastSelector } from '../utilities/utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { type GriffelStyle } from '@griffel/react';
 import type { Font } from '@fluentui/chart-utilities';
+
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration, charts C5): the five GriffelStyle
+ * factories this file used to export — getTooltipStyle, getAxisTitleStyle,
+ * getBarLabelStyle, getMarkerLabelStyle, getChartTitleStyles — are GONE. They were
+ * internal-only (never re-exported from the package index) and each consumer inlined the
+ * factory's compiled output into its own `*.module.css` as it converted (VerticalBarChart
+ * `.tooltip`/`.bar-label`, DonutChart/GaugeChart/FunnelChart/SankeyChart `.chart-title`,
+ * CartesianChart axis/marker labels, …). SankeyChart (C5) was the LAST consumer.
+ * What remains here is the non-Griffel surface: the chart-title layout types/constant and
+ * the runtime inline-style builder.
+ */
 
 /**
  * Default padding below chart title (in pixels).
@@ -32,63 +41,6 @@ export interface TitleStyles {
    */
   titlePad?: { t?: number; r?: number; b?: number; l?: number };
 }
-
-export const getTooltipStyle = (): GriffelStyle => {
-  return {
-    ...typographyStyles.body1,
-    display: 'flex',
-    flexDirection: 'column',
-    padding: tokens.spacingHorizontalS,
-    position: 'absolute',
-    textAlign: 'center',
-    backgroundColor: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
-    color: tokens.colorNeutralForeground1,
-  };
-};
-
-export const getAxisTitleStyle = (): GriffelStyle => {
-  return {
-    ...typographyStyles.caption2Strong,
-    fontStyle: 'normal',
-    textAlign: 'center',
-    color: tokens.colorNeutralForeground2,
-    fill: tokens.colorNeutralForeground1,
-    [HighContrastSelector]: {
-      fill: 'CanvasText',
-    },
-  };
-};
-
-export const getBarLabelStyle = (): GriffelStyle => {
-  return {
-    ...typographyStyles.caption1Strong, // Confirm styles
-    fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-  };
-};
-
-export const getMarkerLabelStyle = (): GriffelStyle => {
-  return {
-    ...typographyStyles.body1,
-    fill: tokens.colorNeutralForeground1,
-    textAnchor: 'middle',
-    [HighContrastSelector]: {
-      fill: 'CanvasText',
-    },
-  };
-};
-
-export const getChartTitleStyles = (): GriffelStyle => {
-  return {
-    ...typographyStyles.caption2Strong,
-    fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'auto',
-    textAlign: 'center',
-    marginBottom: tokens.spacingVerticalS,
-  };
-};
 
 /**
  * Creates dynamic chart title styles using CSS properties.

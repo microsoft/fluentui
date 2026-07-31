@@ -1,0 +1,74 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors `useAnnotationOnlyChartStyles`. The Griffel hook was a BARE
+ * `makeStyles` result (no statics constant, no `mergeClasses`, no `props.styles`
+ * channel — `AnnotationOnlyChartProps` declares no `styles` prop), so each slot maps to
+ * exactly one local:
+ *
+ *   root    → l1  .root   (+ `group/fui-annotation-only-chart` marker second, in JS)
+ *   content → l1  .content
+ *   title   → l1  .title
+ *
+ * ── Altitude (DECISIONS.md D2 amendment 2) ──────────────────────────────────────────────
+ * Everything is `fui.components.l1` — all three classed elements are rendered by
+ * AnnotationOnlyChart itself (the `foreignObject` content div, the plot content div, and
+ * the title span). The outer container div carries only a `data-*` attribute and no class;
+ * `root` is the component's outermost SLOT, so the D15.1 marker rides it (the
+ * react-tooltip "marker rides the outermost slot" precedent). ChartAnnotationLayer mounts
+ * INSIDE `.content` but `.content` is this component's own element, not one of
+ * ChartAnnotationLayer's.
+ *
+ * The dynamic per-instance values (width/minHeight/paper/font/padding on root, plot
+ * background on content) are INLINE STYLES the component writes — they never were in the
+ * Griffel slices and stay in JS.
+ *
+ * VALUES ARE THE COMPILED ONES — read off
+ * lib-commonjs/components/AnnotationOnlyChart/useAnnotationOnlyChartStyles.styles.js.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
+ * No `[ltr, rtl]` atomic pair and no direction-sensitive property in the compiled output.
+ *
+ * ── forced colors ───────────────────────────────────────────────────────────────────────
+ * No `HighContrastSelector` media query in any slice — nothing to narrow.
+ *
+ * ── Spacing forms ───────────────────────────────────────────────────────────────────────
+ * `row-gap: 8px` sits exactly on the S spacing step → `gap-y-vertical-s` (D4 amendment).
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — only body1's fontFamily was spread in the source
+   * (`typographyStyles.body1.fontFamily`), not the full preset */
+  .root {
+    @apply relative flex flex-col gap-y-vertical-s;
+
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+  }
+
+  /* from useStyles.content */
+  .content {
+    @apply relative grow box-border;
+
+    background-color: transparent;
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  /* from useStyles.title */
+  .title {
+    @apply text-center;
+  }
+}

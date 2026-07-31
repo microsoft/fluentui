@@ -3,7 +3,7 @@
 exports[`Horizontal bar chart with axis rendering Should render the Horizontal bar chart with axis with numaric yaxis data 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
     id="chart_"
     role="presentation"
   >
@@ -347,7 +347,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <text
               aria-hidden="true"
-              class="fui-hbcwa__barLabel"
+              class=""
               dominant-baseline="central"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
@@ -377,7 +377,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <text
               aria-hidden="true"
-              class="fui-hbcwa__barLabel"
+              class=""
               dominant-baseline="central"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
@@ -407,7 +407,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <text
               aria-hidden="true"
-              class="fui-hbcwa__barLabel"
+              class=""
               dominant-baseline="central"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
@@ -437,7 +437,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <text
               aria-hidden="true"
-              class="fui-hbcwa__barLabel"
+              class=""
               dominant-baseline="central"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
@@ -555,7 +555,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
 exports[`Horizontal bar chart with axis rendering Should render the Horizontal bar chart with axis with string yaxis data 1`] = `
 <div>
   <div
-    class="group/fui-cartesian-chart"
+    class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
     id="chart_"
     role="presentation"
   >
@@ -898,7 +898,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <text
               aria-hidden="true"
-              class="fui-hbcwa__barLabel"
+              class=""
               dominant-baseline="central"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
@@ -929,7 +929,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <text
               aria-hidden="true"
-              class="fui-hbcwa__barLabel"
+              class=""
               dominant-baseline="central"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
@@ -960,7 +960,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <text
               aria-hidden="true"
-              class="fui-hbcwa__barLabel"
+              class=""
               dominant-baseline="central"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
@@ -991,7 +991,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <text
               aria-hidden="true"
-              class="fui-hbcwa__barLabel"
+              class=""
               dominant-baseline="central"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="start"
@@ -1054,7 +1054,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
         id="chart_"
         role="presentation"
       >
@@ -1398,7 +1398,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -1428,7 +1428,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -1458,7 +1458,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -1488,7 +1488,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -1604,7 +1604,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
       id="chart_"
       role="presentation"
     >
@@ -1948,7 +1948,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -1978,7 +1978,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -2008,7 +2008,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -2038,7 +2038,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -2213,7 +2213,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
         id="chart_"
         role="presentation"
       >
@@ -2557,7 +2557,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -2587,7 +2587,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -2617,7 +2617,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -2647,7 +2647,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -2763,7 +2763,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
       id="chart_"
       role="presentation"
     >
@@ -3107,7 +3107,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -3137,7 +3137,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -3167,7 +3167,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -3197,7 +3197,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -3372,7 +3372,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
         id="chart_"
         role="presentation"
       >
@@ -3716,7 +3716,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -3746,7 +3746,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -3776,7 +3776,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -3806,7 +3806,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -3922,7 +3922,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
       id="chart_"
       role="presentation"
     >
@@ -4266,7 +4266,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -4296,7 +4296,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -4326,7 +4326,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -4356,7 +4356,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -4531,7 +4531,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
         id="chart_"
         role="presentation"
       >
@@ -4961,7 +4961,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -5020,7 +5020,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -5079,7 +5079,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -5175,7 +5175,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
       id="chart_"
       role="presentation"
     >
@@ -5605,7 +5605,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -5664,7 +5664,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -5723,7 +5723,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -5878,7 +5878,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
         id="chart_"
         role="presentation"
       >
@@ -6283,7 +6283,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
       id="chart_"
       role="presentation"
     >
@@ -6747,7 +6747,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
         id="chart_"
         role="presentation"
       >
@@ -7114,7 +7114,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -7145,7 +7145,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -7176,7 +7176,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -7207,7 +7207,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -7268,7 +7268,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
       id="chart_"
       role="presentation"
     >
@@ -7635,7 +7635,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -7666,7 +7666,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -7697,7 +7697,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -7728,7 +7728,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -7848,7 +7848,7 @@ Object {
   >
     <div>
       <div
-        class="group/fui-cartesian-chart"
+        class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
         id="chart_"
         role="presentation"
       >
@@ -8191,7 +8191,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -8222,7 +8222,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -8253,7 +8253,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -8284,7 +8284,7 @@ Object {
                 />
                 <text
                   aria-hidden="true"
-                  class="fui-hbcwa__barLabel"
+                  class=""
                   dominant-baseline="central"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="start"
@@ -8340,7 +8340,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="group/fui-cartesian-chart"
+      class="group/fui-cartesian-chart group/fui-horizontal-bar-chart-with-axis"
       id="chart_"
       role="presentation"
     >
@@ -8683,7 +8683,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -8714,7 +8714,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -8745,7 +8745,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
@@ -8776,7 +8776,7 @@ Object {
               />
               <text
                 aria-hidden="true"
-                class="fui-hbcwa__barLabel"
+                class=""
                 dominant-baseline="central"
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="start"
