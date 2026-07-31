@@ -1,6 +1,5 @@
-/* Converted from Introduction.styles.ts (Griffel makeStyles) — Griffel → Tailwind + CSS
- * Modules migration, S-H. Values are verbatim; the app's own design tokens
- * (`--space-*`, `--radius-*`, `--border`, …) are unchanged. */
+/* Styles for the docsite-headless Introduction page. Values come from the app's own design
+ * tokens (`--space-*`, `--radius-*`, `--border`, …). */
 
 .hero {
   display: flex;
