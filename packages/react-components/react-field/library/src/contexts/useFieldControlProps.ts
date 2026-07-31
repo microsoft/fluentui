@@ -27,6 +27,9 @@ export type FieldControlPropsOptions = {
    * Sets the size prop on the control to match the Field's size: `'small' | 'medium' | 'large'`.
    *
    * This should be used with controls that have a custom size prop that matches the Field's size prop.
+   *
+   * @deprecated Read the Field size in the styled hook via `useFieldContext_unstable()` instead. This option is a
+   * no-op for controls that strip `size` out of props before calling their base hook.
    */
   supportsSize?: boolean;
 };
@@ -109,6 +112,7 @@ export function getFieldControlProps<Props extends FieldControlProps>(
   }
 
   // Include the size prop if this control supports it
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- implementation of the deprecated option
   if (options?.supportsSize) {
     (props as { size?: FieldContextValue['size'] }).size ??= context.size;
   }

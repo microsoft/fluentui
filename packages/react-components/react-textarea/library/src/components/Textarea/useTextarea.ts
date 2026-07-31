@@ -52,6 +52,8 @@ export const useTextareaBase_unstable = (
   ref?: React.Ref<HTMLTextAreaElement>,
 ): TextareaBaseState => {
   // Merge props from surrounding <Field>, if any
+  // TODO: remove `supportsSize` - it is a no-op here because `useTextarea_unstable` strips `size` before calling this
+  // hook. Removed by https://github.com/microsoft/fluentui/pull/36453, which reads the Field size in the styled hook.
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
 
   const { resize = 'none', onChange } = props;

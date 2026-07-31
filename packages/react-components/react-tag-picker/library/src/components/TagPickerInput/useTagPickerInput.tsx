@@ -34,10 +34,11 @@ export const useTagPickerInputBase_unstable = (
   props: TagPickerInputBaseProps,
   ref: React.Ref<HTMLInputElement>,
 ): TagPickerInputBaseState => {
+  // NOTE: `supportsSize` is intentionally not used here. `TagPickerInput` has no `size` prop, its size comes from
+  // `TagPickerContext` and uses a different scale (`'medium' | 'large' | 'extra-large'`) than `Field` size.
   const fieldProps = useFieldControlProps_unstable(props, {
     supportsLabelFor: true,
     supportsRequired: true,
-    supportsSize: true,
   });
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
