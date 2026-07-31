@@ -7,7 +7,6 @@ module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx'],
     rules: {
-      '@griffel/styles-file': 'off',
       '@fluentui/react-components/enforce-use-client': 'off',
     },
   },

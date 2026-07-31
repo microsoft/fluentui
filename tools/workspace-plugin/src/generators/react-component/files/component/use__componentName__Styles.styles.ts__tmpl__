@@ -1,24 +1,19 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { <%= componentName %>Slots, <%= componentName %>State } from './<%= componentName %>.types';
+import { clsx } from 'clsx';
+import type { <%= componentName %>State } from './<%= componentName %>.types';
 
-
-export const <%= propertyName %>ClassNames:SlotClassNames<<%= componentName %>Slots> = {
-  root: 'fui-<%= componentName %>'
-  // TODO: add class names for all slots on <%= componentName %>Slots.
-  // Should be of the form `<slotName>: 'fui-<%= componentName %>__<slotName>`
-};
+import styles from './<%= componentName %>.module.css';
 
 /**
- * Styles for the root slot
+ * Public identity class for <%= componentName %> — the component's Tailwind named-group marker
+ * (DECISIONS.md D15.1 / D16.5). The only supported way to style a component's internals is the
+ * per-slot `className` props; `root` is retained as the component's public identity class,
+ * usable as a selector and as a `group-*` variant target. The `/` in the marker is legal in a
+ * class TOKEN but not in a class SELECTOR — use `fuiSelector(<%= propertyName %>ClassNames.root)`
+ * from `@fluentui/react-utilities` at every selector site.
  */
-const useStyles = makeStyles({
-  root: {
-      // TODO Add default styles for the root element
-  },
-
-  // TODO add additional classes for different states and/or slots
-});
+export const <%= propertyName %>ClassNames: { root: string } = {
+  root: 'group/fui-<%= fileName %>',
+};
 
 /**
  * Apply styling to the <%= componentName %> slots based on the state
@@ -26,12 +21,14 @@ const useStyles = makeStyles({
 export const use<%= componentName %>Styles_unstable = (state: <%= componentName %>State): <%= componentName %>State => {
   'use no memo';
 
-  const styles = useStyles();
+  // Unconditional module class FIRST, then the named-group marker, then any conditional module
+  // classes, with the consumer className LAST (DECISIONS.md D16.2). The marker must never be
+  // `classList[0]` (DECISIONS.md D15.1); the unconditional `styles.root` token guarantees that.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(<%= propertyName %>ClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(styles.root, <%= propertyName %>ClassNames.root, state.root.className);
 
   // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  // state.mySlot.className = clsx(styles.mySlot, state.mySlot.className);
 
   return state;
 };

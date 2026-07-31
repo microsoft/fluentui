@@ -13,7 +13,6 @@ module.exports = defineConfig(
   {
     rules: {
       'jsdoc/check-tag-names': 'off',
-      '@griffel/no-shorthands': 'off',
       'no-restricted-globals': restrictedGlobals,
       ...createReactCrossVersionRules({
         crossCompatTypePackage: '@fluentui/utilities',

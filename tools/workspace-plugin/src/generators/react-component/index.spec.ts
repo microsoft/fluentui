@@ -72,6 +72,7 @@ describe('react-component generator', () => {
 
         expect(tree.children(componentRootPath)).toMatchInlineSnapshot(`
       Array [
+        "MyOne.module.css",
         "MyOne.test.tsx",
         "MyOne.tsx",
         "MyOne.types.ts",
@@ -131,26 +132,22 @@ describe('react-component generator', () => {
 
         expect(tree.read(joinPathFragments(componentRootPath, 'useMyOneStyles.styles.ts'), 'utf-8'))
           .toMatchInlineSnapshot(`
-      "import { makeStyles, mergeClasses } from '@griffel/react';
-      import type { SlotClassNames } from '@fluentui/react-utilities';
-      import type { MyOneSlots, MyOneState } from './MyOne.types';
+      "import { clsx } from 'clsx';
+      import type { MyOneState } from './MyOne.types';
 
-      export const myOneClassNames: SlotClassNames<MyOneSlots> = {
-        root: 'fui-MyOne',
-        // TODO: add class names for all slots on MyOneSlots.
-        // Should be of the form \`<slotName>: 'fui-MyOne__<slotName>\`
-      };
+      import styles from './MyOne.module.css';
 
       /**
-       * Styles for the root slot
+       * Public identity class for MyOne — the component's Tailwind named-group marker
+       * (DECISIONS.md D15.1 / D16.5). The only supported way to style a component's internals is the
+       * per-slot \`className\` props; \`root\` is retained as the component's public identity class,
+       * usable as a selector and as a \`group-*\` variant target. The \`/\` in the marker is legal in a
+       * class TOKEN but not in a class SELECTOR — use \`fuiSelector(myOneClassNames.root)\`
+       * from \`@fluentui/react-utilities\` at every selector site.
        */
-      const useStyles = makeStyles({
-        root: {
-          // TODO Add default styles for the root element
-        },
-
-        // TODO add additional classes for different states and/or slots
-      });
+      export const myOneClassNames: { root: string } = {
+        root: 'group/fui-my-one',
+      };
 
       /**
        * Apply styling to the MyOne slots based on the state
@@ -158,16 +155,18 @@ describe('react-component generator', () => {
       export const useMyOneStyles_unstable = (state: MyOneState): MyOneState => {
         'use no memo';
 
-        const styles = useStyles();
+        // Unconditional module class FIRST, then the named-group marker, then any conditional module
+        // classes, with the consumer className LAST (DECISIONS.md D16.2). The marker must never be
+        // \`classList[0]\` (DECISIONS.md D15.1); the unconditional \`styles.root\` token guarantees that.
         // eslint-disable-next-line react-hooks/immutability
-        state.root.className = mergeClasses(
-          myOneClassNames.root,
+        state.root.className = clsx(
           styles.root,
+          myOneClassNames.root,
           state.root.className
         );
 
         // TODO Add class names to slots, for example:
-        // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+        // state.mySlot.className = clsx(styles.mySlot, state.mySlot.className);
 
         return state;
       };

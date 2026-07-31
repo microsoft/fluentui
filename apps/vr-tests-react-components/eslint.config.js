@@ -6,7 +6,6 @@ module.exports = [
   ...fluentPlugin.configs['flat/react'],
   {
     rules: {
-      '@griffel/styles-file': 'off',
       '@fluentui/no-restricted-imports': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/naming-convention': 'off',

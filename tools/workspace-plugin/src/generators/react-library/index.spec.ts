@@ -35,8 +35,8 @@ describe('react-library generator', () => {
     } catch (err) {
       expect(err).toMatchInlineSnapshot(`
         [Error: Following dependencies are not installed within your monorepo. You need to install them in root package.json as devDependencies:
-         - @griffel/react
-        - @swc/helpers]
+         - @swc/helpers
+        - clsx]
       `);
     }
   });
@@ -55,14 +55,14 @@ describe('react-library generator', () => {
         "project.json",
         ".babelrc.json",
         ".swcrc",
-        "LICENSE",
-        "README.md",
         "config",
         "docs",
         "eslint.config.js",
         "etc",
         "jest.config.js",
+        "LICENSE",
         "package.json",
+        "README.md",
         "src",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -109,8 +109,8 @@ describe('react-library generator', () => {
           '@proj/react-shared-contexts': '^9.0.0',
           '@proj/react-theme': '^9.0.0',
           '@proj/react-utilities': '^9.0.0',
-          '@griffel/react': '^1.2.3',
           '@swc/helpers': '^0.4.5',
+          clsx: '^2.1.3',
         },
       }),
     );
@@ -256,14 +256,14 @@ describe('react-library generator', () => {
         "project.json",
         ".babelrc.json",
         ".swcrc",
-        "LICENSE",
-        "README.md",
         "config",
         "docs",
         "eslint.config.js",
         "etc",
         "jest.config.js",
+        "LICENSE",
         "package.json",
+        "README.md",
         "src",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -306,8 +306,8 @@ describe('react-library generator', () => {
 function setup(tree: Tree) {
   updateJson(tree, 'package.json', json => {
     json.devDependencies = {
-      '@griffel/react': '1.2.3',
       '@swc/helpers': '0.4.5',
+      clsx: '2.1.3',
     };
     return json;
   });

@@ -1,0 +1,10 @@
+/* Styles for <%= componentName %>. Reference theme values via the Fluent CSS variables,
+ * e.g. `color: var(--colorNeutralForeground1);`. Rules compile into the package's
+ * `dist/styles.css` inside the `@layer fui.*` cascade layers, so unlayered consumer CSS
+ * always wins ties. */
+
+.root {
+  /* TODO Add default styles for the root element */
+}
+
+/* TODO add additional classes for different states and/or slots */

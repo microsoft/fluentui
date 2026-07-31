@@ -10,8 +10,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@eslint/compat": "1.3.0",
-    "@griffel/eslint-plugin": "^2.0.0",
     "@nx/eslint-plugin": "21.6.10",
     "@rnx-kit/eslint-plugin": "^0.8.4",
     "@typescript-eslint/eslint-plugin": "8.46.2",

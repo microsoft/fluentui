@@ -23,8 +23,8 @@
     "@<%= npmScope %>/react-shared-contexts": "",
     "@<%= npmScope %>/react-theme": "",
     "@<%= npmScope %>/react-utilities": "",
-    "@griffel/react": "",
-    "@swc/helpers": ""
+    "@swc/helpers": "",
+    "clsx": ""
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
