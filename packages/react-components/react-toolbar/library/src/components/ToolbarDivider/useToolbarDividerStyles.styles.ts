@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * NOTE on the directive above:
  * this file keeps `'use client'` because it still calls `useDividerStyles_unstable`, so
  * `enforce-use-client` sees a hook call and never reports the directive as unnecessary. The
  * converted leaf hooks (Toolbar, ToolbarGroup) call nothing and carry no directive at all —

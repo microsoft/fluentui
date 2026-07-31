@@ -9,12 +9,9 @@ describe('ToolbarButton', () => {
   isConformant({
     Component: ToolbarButton as React.FunctionComponent<ButtonProps>,
     displayName: 'ToolbarButton',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // Neither this component's styles hook nor @fluentui/react-button's Button (also
-    // converted) calls mergeClasses any more, so `make-styles-overrides-win` has nothing
-    // to observe. `classname-overrides-win` is its cascade-native replacement — it passes
-    // here because `useButtonStyles_unstable`, called last, composes with clsx and keeps
-    // the incoming className (which carries the consumer's) last (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // renders react-button’s Button, whose hook stamps its marker on this same element, so this root

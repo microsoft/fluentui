@@ -11,10 +11,9 @@ describe('ToolbarRadioButton', () => {
   isConformant({
     Component: ToolbarRadioButton as React.FunctionComponent<ToggleButtonProps>,
     displayName: 'ToolbarRadioButton',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind) — same
-    // reasoning as ToolbarToggleButton.test.tsx: nothing in this component's delegation
-    // chain calls mergeClasses any more, so `make-styles-overrides-win` has nothing to
-    // observe and `classname-overrides-win` replaces it (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // renders react-button’s ToggleButton, which renders Button — each hook stamps its own marker on the one element, so this root

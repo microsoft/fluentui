@@ -11,13 +11,9 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     tsConfig: { configName: 'tsconfig.spec.json' },
     componentPath: require.main?.filename.replace('.test', ''),
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
-    // it was called with the consumer className last; every component in this package now
-    // composes with clsx and never calls mergeClasses, so the test can no longer observe
-    // the contract. The guarantee itself is unchanged — clsx puts `state.root.className`
-    // last and the `@layer fui.*` sublayers keep unlayered consumer CSS winning
-    // (DECISIONS.md D2/D9). `classname-overrides-win` is its cascade-native replacement.
+    // `classname-overrides-win` (DECISIONS.md D9) pins the styling override contract
+    // cascade-natively: clsx puts `state.root.className` last and the `@layer fui.*`
+    // sublayers keep unlayered consumer CSS winning (D2).
     //
     // Wired here rather than per component (react-button wires it per component) because
     // this package converts WHOLE: Text and all 17 presets go through

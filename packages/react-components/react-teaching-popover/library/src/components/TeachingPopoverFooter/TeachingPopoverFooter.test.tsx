@@ -13,12 +13,9 @@ describe('TeachingPopoverFooter', () => {
       primary: 'Primary',
       secondary: 'Secondary',
     },
-    // Griffel → Tailwind + CSS Modules migration — same rationale as TeachingPopoverBody's
-    // wrapper: `make-styles-overrides-win` can no longer observe a clsx-composed component,
-    // `classname-overrides-win` is its cascade-native replacement (DECISIONS.md D9), and the
-    // BEM statics this package published are gone (D16.1) — including the `__primary` /
-    // `__secondary` slot statics, whose styling now travels as hashed module classes composed
-    // onto the two `Button` slot objects this hook holds (D16.3's M2).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,

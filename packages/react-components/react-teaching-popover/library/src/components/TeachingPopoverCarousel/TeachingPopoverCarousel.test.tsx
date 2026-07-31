@@ -11,10 +11,9 @@ describe('TeachingPopoverCarousel', () => {
     requiredProps: {
       defaultValue: '',
     },
-    // Griffel → Tailwind + CSS Modules migration — same rationale as TeachingPopoverBody's
-    // wrapper: `make-styles-overrides-win` can no longer observe a clsx-composed component,
-    // `classname-overrides-win` is its cascade-native replacement (DECISIONS.md D9), and the
-    // BEM statics this package published are gone (D16.1).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `classname-overrides-win` passes here even though this component has no styles of its
     // own: the root carries the module's IDENTITY-ONLY local ahead of the marker (D16.2), so

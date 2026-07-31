@@ -9,14 +9,9 @@ describe('TeachingPopoverCarouselFooterButton', () => {
   isConformant({
     Component: TeachingPopoverCarouselFooterButton as React.FunctionComponent<TeachingPopoverCarouselFooterButtonProps>,
     displayName: 'TeachingPopoverCarouselFooterButton',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses; this hook now
-    // composes with clsx and delegates to react-button's converted
-    // `useButtonStyles_unstable`, so mergeClasses is never called at all.
-    // `classname-overrides-win` — enabled below, and NOT enableable before this conversion —
-    // is its cascade-native replacement (DECISIONS.md D9): the consumer className rides at
-    // the end of this hook's clsx string, and `useButtonStyles_unstable` (called last)
-    // prepends its own classes, so the consumer's class stays last in the rendered attribute.
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `component-has-static-classnames-object` is disabled because the BEM statics are gone
     // (D16.1).

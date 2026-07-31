@@ -17,13 +17,9 @@ describe('TeachingPopoverSurface', () => {
     requiredProps: props as TeachingPopoverSurfaceProps,
     getTargetElement: result => result.getByTestId(testid),
     disabledTests: [
-      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-      // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses; this hook now
-      // composes with clsx and delegates to react-popover's converted
-      // `usePopoverSurfaceStyles_unstable`, so mergeClasses is never called at all.
-      // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-      // Arrow slot is optional — and, since D16.1, this package publishes no BEM statics at
-      // all, which is the other half of why this test cannot apply.
+      // `classname-overrides-win` (extraTests below) pins the styling override contract
+      // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+      // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
       'component-has-static-classnames-object',
     ],
     testOptions: {

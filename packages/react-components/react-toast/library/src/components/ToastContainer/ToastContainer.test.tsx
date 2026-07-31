@@ -73,10 +73,9 @@ describe('ToastContainer', () => {
       'consistent-callback-args',
       // There are conflicts between ToastContainerMotion mock and React
       //
-      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind): this hook
-      // also no longer calls mergeClasses at all, so `make-styles-overrides-win` could not
-      // observe its contract even without the mock conflict. `classname-overrides-win` — the
-      // cascade-native replacement (DECISIONS.md D9) — is added below.
+      // `classname-overrides-win` (extraTests below) pins the styling override contract
+      // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+      // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
       //
       // `component-has-group-marker` runs from the DEFAULT set and asserts
       // `group/fui-toast-container` is stamped and never `classList[0]` (D15.1 / D16.2).

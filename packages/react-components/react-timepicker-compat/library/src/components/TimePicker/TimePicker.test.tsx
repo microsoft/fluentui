@@ -36,12 +36,9 @@ describe('TimePicker', () => {
     // entry — `{ open: true, inlinePopup: true }`, which existed only to get the listbox
     // rendered inline so the portal did not hide its static from the query — goes with it.
     //
-    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s `mergeClasses` and asserts it
-    // was called with the consumer className last; neither this component nor react-combobox
-    // calls mergeClasses any more, so the test can no longer observe the contract. The
-    // guarantee itself is unchanged — clsx puts `state.root.className` last and the
-    // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
-    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {

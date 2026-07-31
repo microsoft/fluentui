@@ -34,32 +34,21 @@ describe('Tooltip', () => {
     displayName: 'Tooltip',
     requiredProps: { content: 'Example', children: <button />, visible: true },
     getTargetElement: getTooltipElement,
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `classname-overrides-win` (DECISIONS.md D9) is NOT wired because Tooltip cannot
+    // satisfy it, for the same reason `component-handles-classname` is disabled below:
+    // `TooltipSlots` declares only a `content` slot and no `root`, so `className` is not part
+    // of `TooltipProps` and never reaches the DOM. Wiring it produced
+    // `does not apply the consumer's "className" to its root slot` against the rendered
+    // content element. The cascade contract it exists to pin is unaffected: `clsx` still
+    // puts `state.content.className` (the `content` slot's own consumer className) last,
+    // and unlayered consumer CSS still beats every `fui.*` layer (D2/D9).
     //
-    // Neither half of the usual conformance swap applies to this package, both verified by
-    // running the suite rather than by inspection:
-    //
-    // 1. `make-styles-overrides-win` is NOT disabled because it never ran here.
-    //    `src/testing/isConformant.ts` does not pass `@fluentui/react-conformance-griffel`'s
-    //    `griffelTests` as `extraTests` (react-divider's wrapper does), so the Griffel
-    //    conformance tests are not registered for react-tooltip at all — the baseline suite
-    //    printed 21 tests and none of them was `make-styles-overrides-win`.
-    //
-    // 2. `classname-overrides-win` is NOT wired because Tooltip cannot satisfy it, for the
-    //    same reason `component-handles-classname` is disabled below: `TooltipSlots` declares
-    //    only a `content` slot and no `root`, so `className` is not part of `TooltipProps`
-    //    and never reaches the DOM. Wiring it produced
-    //    `does not apply the consumer's "className" to its root slot` against the rendered
-    //    content element. The cascade contract it exists to pin is unaffected: `clsx` still
-    //    puts `state.content.className` (the `content` slot's own consumer className) last,
-    //    and unlayered consumer CSS still beats every `fui.*` layer (DECISIONS.md D2/D9).
-    //
-    // 3. `component-has-static-classnames-object` IS disabled, because Tooltip no longer
-    //    publishes a BEM static (DECISIONS.md D16.1). Its sub-tests hard-code the
-    //    `fui-Tooltip__<slot>` format (defaultTests.tsx:244-245, 277), so they fail under the
-    //    retained-constant policy exactly as they would under deletion (D16.6).
-    //    `component-has-group-marker` (now a default test) is the replacement; `getTargetElement` already
-    //    resolves the portalled content element, which is where the marker rides (D15.1).
+    // `component-has-static-classnames-object` IS disabled, because Tooltip publishes no BEM
+    // static (DECISIONS.md D16.1). Its sub-tests hard-code the `fui-Tooltip__<slot>` format
+    // (defaultTests.tsx:244-245, 277), so they fail under the retained-constant policy exactly
+    // as they would under deletion (D16.6). `component-has-group-marker` (a default test) is
+    // the replacement; `getTargetElement` already resolves the portalled content element,
+    // which is where the marker rides (D15.1).
     disabledTests: [
       // Tooltip renders into a Portal, which confuses these tests
       'component-handles-ref',

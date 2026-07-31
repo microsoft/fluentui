@@ -8,12 +8,9 @@ describe('ToolbarDivider', () => {
   isConformant({
     Component: ToolbarDivider,
     displayName: 'ToolbarDivider',
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // Neither this component's styles hook nor @fluentui/react-divider (converted first,
-    // as the pilot) calls mergeClasses any more, so `make-styles-overrides-win` has
-    // nothing to observe — it was already failing on this component before this
-    // conversion, from the react-divider side alone. `classname-overrides-win` is its
-    // cascade-native replacement (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // renders react-divider’s Divider, whose hook stamps its marker on this same element, so this root

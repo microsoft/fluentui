@@ -11,12 +11,9 @@ describe('TeachingPopoverTitle', () => {
     displayName: 'TeachingPopoverTitle',
     requiredProps: {},
     disabledTests: [
-      // Griffel → Tailwind + CSS Modules migration — same rationale as TeachingPopoverBody's
-      // wrapper: `make-styles-overrides-win` can no longer observe a clsx-composed component
-      // and `classname-overrides-win` below is its cascade-native replacement
-      // (DECISIONS.md D9).
-      // Title dismiss is optionally rendered — and, since D16.1, this package publishes no
-      // BEM statics at all, which is the other half of why this test cannot apply.
+      // `classname-overrides-win` (extraTests below) pins the styling override contract
+      // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+      // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
       'component-has-static-classnames-object',
     ],
     extraTests: {
