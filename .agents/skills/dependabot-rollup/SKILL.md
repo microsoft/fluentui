@@ -35,7 +35,7 @@ git remote -v
 
 Unless `--push-remote` was provided, resolve `PUSH_REMOTE` from `remote.pushDefault`, then the current branch's configured remote. If neither is set, ask the user to select a writable remote before any publish step. Do not assume `origin` is writable.
 
-Before changing branches, require a clean working tree and a named current branch. If the checkout is dirty or detached, stop and ask the user to commit, stash, or select a suitable checkout. Record the current branch as `START_BRANCH` so it can be restored after the rollup is published or cancelled.
+Do not create or switch branches during prerequisite checks or analysis. Unrelated local changes may remain in the checkout, but stop if the root `yarn.lock` has staged or unstaged changes because they could contaminate conflict resolution. Record the current branch, or the current commit when detached, as `START_REF` so it can be restored after the rollup is published or cancelled. If creating the rollup branch would overwrite a local change, stop and ask the user to resolve it.
 
 ### Step 2 - Discover open Dependabot PRs
 
@@ -118,7 +118,7 @@ If there are no selected PRs, stop after reporting that result. Otherwise ask th
 
 ### Step 5 - Create the rollup branch
 
-Run this step only after explicit approval. Use only the approved PR numbers, even if new candidates appear after the dry run.
+Run this step only after the dry-run analysis and explicit approval. Use only the approved PR numbers, even if new candidates appear after the dry run.
 
 Immediately before merging each approved PR, repeat the base-version check against the current rollup branch. Skip the PR as obsolete if another merged update made its target unnecessary or removed its dependency. This preflight is required even when Git predicts a clean merge; never allow a stale PR to downgrade or reintroduce a dependency.
 
@@ -127,10 +127,9 @@ Fetch the target base, record its SHA, and create a uniquely named branch in the
 ```bash
 TARGET_URL="https://github.com/${REPO}.git"
 ROLLUP_BRANCH="dependabot-rollup/$(date -u +%Y%m%d-%H%M%S)"
-START_BRANCH="$(git branch --show-current)"
+START_REF="$(git symbolic-ref --quiet --short HEAD || git rev-parse HEAD)"
 
-test -n "$START_BRANCH"
-test -z "$(git status --porcelain)"
+test -z "$(git status --porcelain -- yarn.lock)"
 git fetch "$TARGET_URL" "$BASE_BRANCH"
 BASE_SHA="$(git rev-parse FETCH_HEAD)"
 git switch -c "$ROLLUP_BRANCH" "$BASE_SHA"
@@ -170,10 +169,10 @@ If any conflict is outside dependency manifests and the root lockfile, the inten
 git merge --abort
 ```
 
-If no PRs merge successfully, report the result, switch back to `START_BRANCH`, delete the empty rollup branch, and stop without creating an issue or PR:
+If no PRs merge successfully, report the result, switch back to `START_REF`, delete the empty rollup branch, and stop without creating an issue or PR:
 
 ```bash
-git switch "$START_BRANCH"
+git switch "$START_REF"
 git branch -D "$ROLLUP_BRANCH"
 ```
 
@@ -214,10 +213,10 @@ The PR body must list merged PRs, skipped PRs with reasons, and the exact valida
 
 ### Step 8 - Restore the starting branch and report
 
-After publishing, or when the user declines publication, return to the starting branch only when the rollup branch is clean and no merge is in progress. Keep the local rollup branch for PR follow-up:
+After publishing, or when the user declines publication, return to the starting ref only when no merge is in progress and doing so will not overwrite local changes. Keep the local rollup branch for PR follow-up:
 
 ```bash
-git switch "$START_BRANCH"
+git switch "$START_REF"
 ```
 
 Report:
@@ -238,7 +237,7 @@ Report:
 - Never include semver-major, non-semver, downgrade, or unparseable updates.
 - Never propose, merge, or publish a rollup containing more than 11 updates.
 - Never include more than one PR for the same dependency in a proposed rollup.
-- Never change branches or files before approval, and never proceed from a dirty or detached checkout.
+- Never change branches or files before approval, and never proceed when the root `yarn.lock` has local changes.
 - Never resolve conflicts by blindly choosing an entire side. Resolve only reviewed dependency manifest and lockfile conflicts as described above.
 - Never bypass failed validation.
 - Never create failure-tracking issues or close source Dependabot PRs.
