@@ -1,5 +1,5 @@
-/* Story styles for TabListSelectTabOnFocus, converted from Griffel makeStyles (S-F batch 6).
- * Token references are the CSS variables they compile to. */
+/* Story styles for TabListSelectTabOnFocus.
+ * Token references are the Fluent theme's CSS variables. */
 
 .root {
   align-items: flex-start;

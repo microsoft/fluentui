@@ -1,5 +1,5 @@
-/* Story styles for TagSelected, converted from Griffel makeStyles (S-F batch 6).
- * Token references are the CSS variables they compile to. */
+/* Story styles for TagSelected.
+ * Token references are the Fluent theme's CSS variables. */
 
 .container {
   column-gap: 10px;

@@ -1,5 +1,5 @@
-/* Story styles for ThemeFonts, converted from Griffel makeStyles (S-F batch 7, hand conversion).
- * Token references are the CSS variables they compile to.
+/* Story styles for ThemeFonts.
+ * Token references are the Fluent theme's CSS variables.
  * font-family is teamsLightTheme.fontFamilyBase resolved to its literal value — the story
  * deliberately renders a Teams-light-theme snapshot rather than the active theme. */
 

@@ -1,5 +1,5 @@
-/* Story styles for MixedStyles, converted from Griffel makeStyles (S-F batch 7).
- * Token references are the CSS variables they compile to. */
+/* Story styles for MixedStyles.
+ * Token references are the Fluent theme's CSS variables. */
 
 .title {
   font-family: var(--fontFamilyBase);
