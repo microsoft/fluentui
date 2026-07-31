@@ -1,5 +1,5 @@
-/* Story styles for FluentProviderApplyStylesToPortals, converted from Griffel makeStyles (S-F batch 6).
- * Token references are the CSS variables they compile to. */
+/* Story styles for FluentProviderApplyStylesToPortals.
+ * Token references are the Fluent theme's CSS variables. */
 
 .provider {
   border: 3px solid var(--colorBrandForeground2);

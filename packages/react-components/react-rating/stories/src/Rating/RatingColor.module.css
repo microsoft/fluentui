@@ -1,5 +1,5 @@
-/* Story styles for RatingColor, converted from Griffel makeStyles (S-F batch 6).
- * Token references are the CSS variables they compile to. */
+/* Story styles for RatingColor.
+ * Token references are the Fluent theme's CSS variables. */
 
 .root {
   display: flex;
