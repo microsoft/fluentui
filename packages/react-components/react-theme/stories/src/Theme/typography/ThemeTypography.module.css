@@ -1,5 +1,5 @@
-/* Story styles for ThemeTypography, converted from Griffel makeStyles (S-F batch 7).
- * Token references are the CSS variables they compile to. */
+/* Story styles for ThemeTypography.
+ * Token references are the Fluent theme's CSS variables. */
 
 .container {
   row-gap: 24px;
