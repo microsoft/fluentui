@@ -1,5 +1,5 @@
-/* Story styles for FieldValidationMessage, converted from Griffel makeStyles (S-F batch 4).
- * Token references are the CSS variables they compile to. */
+/* Story styles for FieldValidationMessage.
+ * Token references are the Fluent theme's CSS variables. */
 
 .stack {
   display: flex;
