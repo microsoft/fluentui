@@ -1,0 +1,45 @@
+/* Story styles for StaggerText, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacingHorizontalXL);
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  grid-area: controls;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+}
+
+.field {
+  flex: 1;
+}
+
+.items {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+.item {
+  position: absolute;
+  font-weight: bold;
+  font-size: 100px;
+  color: transparent;
+  margin: var(--spacingHorizontalXXS);
+  -webkit-text-stroke: 4px var(--tokens-colorBrandStroke2, var(--colorBrandStroke2));
+  -webkit-filter: blur(1.2px);
+  filter: blur(1.2px);
+}

@@ -1,73 +1,12 @@
 import * as React from 'react';
 import StaggerBouncingDotsDescription from './StaggerBouncingDots.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, motionTokens, createMotionComponent, Slider, Label } from '@fluentui/react-components';
+import { motionTokens, createMotionComponent, Slider, Label } from '@fluentui/react-components';
 import { Stagger } from '@fluentui/react-motion-components-preview';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXL,
-    padding: tokens.spacingHorizontalL,
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalM,
-    padding: tokens.spacingHorizontalM,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow8,
-  },
-  controlsRow: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalL,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-  },
-  controlGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    minWidth: '200px',
-  },
-  spinnerSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalM,
-    padding: tokens.spacingHorizontalL,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  spinnerTitle: {
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
-    color: tokens.colorNeutralForeground1,
-    margin: 0,
-  },
-  spinnerContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '120px',
-    padding: tokens.spacingHorizontalL,
-  },
-  bouncingDotsSpinner: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalS,
-    alignItems: 'center',
-  },
-  bouncingDot: {
-    width: '12px',
-    height: '12px',
-    borderRadius: '50%',
-    backgroundColor: tokens.colorBrandBackground,
-  },
-});
+import styles from './StaggerBouncingDots.module.css';
+
+const useClasses = () => styles;
 
 const BounceMotion = createMotionComponent<{ delay?: number; duration?: number }>(({ delay = 0, duration = 2000 }) => ({
   keyframes: [

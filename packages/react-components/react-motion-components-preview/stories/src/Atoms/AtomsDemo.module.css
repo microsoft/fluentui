@@ -1,0 +1,76 @@
+/* Story styles for AtomsDemo, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  margin-top: var(--spacingVerticalXXL);
+  margin-bottom: var(--spacingVerticalXXL);
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacingHorizontalL);
+  flex-wrap: wrap;
+  padding: var(--spacingVerticalL) var(--spacingHorizontalXL);
+  background-color: var(--colorNeutralBackground2);
+  border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+}
+
+.body {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .body {
+    flex-direction: column;
+  }
+}
+
+.demoArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  flex: 0 0 200px;
+  background-color: var(--colorNeutralBackground1);
+  padding: var(--spacingVerticalXL);
+}
+
+.demoBox {
+  width: 100px;
+  height: 80px;
+  background-color: var(--colorNeutralBackground3);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--colorNeutralForeground1);
+  font-weight: var(--fontWeightSemibold);
+}
+
+.codeArea {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: var(--spacingVerticalL) var(--spacingHorizontalXL);
+  background-color: var(--colorNeutralBackground3);
+  border-left: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  overflow: auto;
+  font-family: var(--fontFamilyMonospace);
+  font-size: var(--fontSizeBase100);
+  line-height: var(--lineHeightBase200);
+  color: var(--colorNeutralForeground1);
+}
+
+@media (max-width: 600px) {
+  .codeArea {
+    border-left: none;
+    border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  }
+}

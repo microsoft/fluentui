@@ -58,28 +58,10 @@ const codeSnippet = `const SpinBlur = createPresenceComponent({
 </SpinBlur>`;
 
 const stackblitzExampleCode = `import * as React from 'react';
-import { makeStyles, tokens, Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 import { createPresenceComponent } from '@fluentui/react-motion';
 import { rotateAtom, blurAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
-
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '16px',
-    padding: '40px',
-  },
-  box: {
-    padding: '24px 32px',
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: \`1px solid \${tokens.colorNeutralStroke1}\`,
-    borderRadius: '8px',
-    fontSize: '18px',
-    fontWeight: 600,
-    textAlign: 'center',
-  },
-});
+import './example.css';
 
 const SpinBlur = createPresenceComponent({
   enter: [
@@ -95,19 +77,38 @@ const SpinBlur = createPresenceComponent({
 });
 
 export default function Example() {
-  const classes = useClasses();
   const [visible, setVisible] = React.useState(true);
 
   return (
-    <div className={classes.container}>
+    <div className="container">
       <SpinBlur visible={visible}>
-        <div className={classes.box}>SpinBlur ✨</div>
+        <div className="box">SpinBlur ✨</div>
       </SpinBlur>
       <Button appearance="primary" onClick={() => setVisible(v => !v)}>
         {visible ? 'Hide' : 'Show'}
       </Button>
     </div>
   );
+}`;
+
+// Plain CSS for the StackBlitz example — token references are the CSS variables
+// FluentProvider defines (previously a CSS-in-JS block in the example code).
+const stackblitzExampleCss = `.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+}
+
+.box {
+  padding: 24px 32px;
+  background-color: var(--colorNeutralBackground3);
+  border: 1px solid var(--colorNeutralStroke1);
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
 }`;
 
 const stackblitzFiles: Record<string, string> = {
@@ -137,6 +138,7 @@ createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 );`,
   'src/example.tsx': stackblitzExampleCode,
+  'src/example.css': stackblitzExampleCss,
   'tsconfig.json': JSON.stringify(
     {
       compilerOptions: {

@@ -1,0 +1,73 @@
+/* Story styles for StaggerBouncingDots, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalXL);
+  padding: var(--spacingHorizontalL);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalM);
+  padding: var(--spacingHorizontalM);
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  background-color: var(--colorNeutralBackground1);
+  box-shadow: var(--shadow8);
+}
+
+.controlsRow {
+  display: flex;
+  gap: var(--spacingHorizontalL);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalS);
+  min-width: 200px;
+}
+
+.spinnerSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalM);
+  padding: var(--spacingHorizontalL);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  border-radius: var(--borderRadiusMedium);
+  background-color: var(--colorNeutralBackground1);
+}
+
+.spinnerTitle {
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  color: var(--colorNeutralForeground1);
+  margin: 0;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  padding: var(--spacingHorizontalL);
+}
+
+.bouncingDotsSpinner {
+  display: flex;
+  gap: var(--spacingHorizontalS);
+  align-items: center;
+}
+
+.bouncingDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--colorBrandBackground);
+}

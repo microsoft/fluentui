@@ -1,0 +1,66 @@
+/* Story styles for BlurDemo, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+}
+
+.demoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.imageGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: var(--colorNeutralBackground2);
+  border-radius: var(--borderRadiusMedium);
+}
+
+.imageCard {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: var(--borderRadiusMedium);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.imageBackground {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--colorBackgroundOverlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--colorNeutralForegroundInverted);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+}
+
+.overlayButton {
+  background-color: var(--colorSubtleBackgroundInverted);
+  padding: 8px 16px;
+  border-radius: var(--borderRadiusMedium);
+  border: 1px solid var(--colorNeutralStrokeAlpha2);
+}

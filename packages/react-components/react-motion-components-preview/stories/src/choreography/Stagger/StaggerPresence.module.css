@@ -1,0 +1,40 @@
+/* Story styles for StaggerPresence, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacingHorizontalXL);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  grid-area: controls;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+}
+
+.field {
+  flex: 1;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorNeutralBackgroundStatic);
+  color: var(--colorNeutralForegroundInverted);
+  width: 40px;
+  height: 100px;
+  margin: var(--spacingHorizontalXXS);
+}

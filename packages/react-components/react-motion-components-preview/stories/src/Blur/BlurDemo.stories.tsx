@@ -1,68 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Button } from '@fluentui/react-components';
+import { tokens, Button } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurDemoDescription from './BlurDemo.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '40px',
-    padding: '20px',
-  },
-  demoSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-  },
-  imageGallery: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '20px',
-    padding: '20px',
-    backgroundColor: tokens.colorNeutralBackground2,
-    borderRadius: tokens.borderRadiusMedium,
-  },
-  imageCard: {
-    position: 'relative',
-    aspectRatio: '4/3',
-    borderRadius: tokens.borderRadiusMedium,
-    overflow: 'hidden',
-    cursor: 'pointer',
-  },
-  imageBackground: {
-    width: '100%',
-    height: '100%',
-    position: 'relative',
-  },
+import styles from './BlurDemo.module.css';
 
-  controls: {
-    display: 'flex',
-    gap: '10px',
-    flexWrap: 'wrap',
-  },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: tokens.colorBackgroundOverlay,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: tokens.colorNeutralForegroundInverted,
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
-  },
-  overlayButton: {
-    backgroundColor: tokens.colorSubtleBackgroundInverted,
-    padding: '8px 16px',
-    borderRadius: tokens.borderRadiusMedium,
-    border: `1px solid ${tokens.colorNeutralStrokeAlpha2}`,
-  },
-});
+const useClasses = () => styles;
 
 const images = [
   {

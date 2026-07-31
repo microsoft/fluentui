@@ -1,0 +1,141 @@
+/* Story styles for StaggerSpinners, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalXL);
+  padding: var(--spacingHorizontalL);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalM);
+  padding: var(--spacingHorizontalM);
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  background-color: var(--colorNeutralBackground1);
+  box-shadow: var(--shadow8);
+}
+
+.spinnerSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalM);
+  padding: var(--spacingHorizontalL);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  border-radius: var(--borderRadiusMedium);
+  background-color: var(--colorNeutralBackground1);
+}
+
+.spinnerTitle {
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  color: var(--colorNeutralForeground1);
+  margin: 0;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  padding: var(--spacingHorizontalL);
+}
+
+.spinnerGrid {
+  display: grid;
+  gap: var(--spacingHorizontalL);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 640px) {
+  .spinnerGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.arcSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.arc {
+  position: absolute;
+  border-radius: 50%;
+  border-top-color: var(--colorBrandBackground);
+  border-bottom-color: var(--colorBrandBackground);
+}
+
+.arc1 {
+  width: 60px;
+  height: 60px;
+  border: 4px solid transparent;
+}
+
+.arc2 {
+  width: 45px;
+  height: 45px;
+  border: 4px solid transparent;
+  border-top-color: var(--colorBrandBackground);
+}
+
+.arc3 {
+  width: 30px;
+  height: 30px;
+  border: 4px solid transparent;
+  border-top-color: var(--colorBrandBackground);
+}
+
+.dotOrbitSpinner {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+}
+
+.orbitDot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--colorBrandBackground);
+  transform: translate(-50%, -50%) translateY(-22px);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.growingBarsSpinner {
+  display: flex;
+  gap: var(--spacingHorizontalS);
+  align-items: end;
+  height: 40px;
+}
+
+.growingBar {
+  width: 6px;
+  height: 100%;
+  background-color: var(--colorBrandBackground);
+  border-radius: var(--borderRadiusSmall);
+}
+
+.slidingBlocksSpinner {
+  display: flex;
+  gap: var(--spacingHorizontalL);
+  align-items: center;
+}
+
+.slidingBlock {
+  width: 16px;
+  height: 16px;
+  background-color: var(--colorBrandBackground);
+  border-radius: var(--borderRadiusSmall);
+}

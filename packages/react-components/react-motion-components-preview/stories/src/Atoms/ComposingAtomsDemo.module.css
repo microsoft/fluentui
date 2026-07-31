@@ -1,0 +1,95 @@
+/* Story styles for ComposingAtomsDemo, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  overflow: hidden;
+  margin-top: var(--spacingVerticalXXL);
+  margin-bottom: var(--spacingVerticalXXL);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacingVerticalM) var(--spacingHorizontalXL);
+  background-color: var(--colorNeutralBackground2);
+  border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+}
+
+.title {
+  margin: 0;
+  font-weight: var(--fontWeightSemibold);
+  font-size: var(--fontSizeBase300);
+}
+
+.body {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .body {
+    flex-direction: column;
+  }
+}
+
+.demoArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 120px;
+  padding: var(--spacingVerticalXL);
+  background-color: var(--colorNeutralBackground1);
+}
+
+.demoPane {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 220px;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacingVerticalM) var(--spacingHorizontalXL) var(--spacingVerticalL);
+  background-color: var(--colorNeutralBackground1);
+}
+
+.demoBox {
+  padding: var(--spacingVerticalL) var(--spacingHorizontalXXL);
+  background-color: var(--colorNeutralBackground3);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  color: var(--colorNeutralForeground1);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  text-align: center;
+}
+
+.codeArea {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--spacingVerticalL) var(--spacingHorizontalXL);
+  background-color: var(--colorNeutralBackground1);
+  border-left: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  overflow: auto;
+}
+
+@media (max-width: 600px) {
+  .codeArea {
+    border-left: none;
+    border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  }
+}
+
+.code {
+  font-family: var(--fontFamilyMonospace);
+  font-size: var(--fontSizeBase100);
+  line-height: var(--lineHeightBase200);
+  color: var(--colorNeutralForeground1);
+  white-space: pre;
+  margin: 0;
+  display: block;
+}

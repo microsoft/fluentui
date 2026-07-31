@@ -10,39 +10,13 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-  makeStyles,
-  tokens,
 } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurRadiusDescription from './BlurRadius.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: tokens.spacingVerticalXXXL,
-    padding: tokens.spacingVerticalMNudge,
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: tokens.spacingVerticalXL,
-    gap: tokens.spacingVerticalM,
-  },
-  cellNormal: {
-    fontWeight: tokens.fontWeightRegular,
-  },
-  cellBold: {
-    fontWeight: tokens.fontWeightBold,
-  },
-  controls: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: tokens.spacingVerticalXL,
-  },
-});
+import styles from './BlurRadius.module.css';
+
+const useClasses = () => styles;
 
 const blurRadiusCombinations = [
   // Top row: outRadius 5px, inRadius 0px (default)

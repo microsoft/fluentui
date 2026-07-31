@@ -1,17 +1,10 @@
 import * as React from 'react';
 import StaggerExpandableContainerDescription from './StaggerExpandableContainer.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  makeStyles,
-  tokens,
-  Button,
-  motionTokens,
-  Persona,
-  Slider,
-  Label,
-  type PersonaProps,
-} from '@fluentui/react-components';
+import { Button, motionTokens, Persona, Slider, Label, type PersonaProps } from '@fluentui/react-components';
 import { Stagger, Slide, Collapse } from '@fluentui/react-motion-components-preview';
+
+import styles from './StaggerExpandableContainer.module.css';
 
 // Timing constants for coordinated Collapse + Stagger choreography:
 // Time to wait for container expansion before stagger items appear
@@ -24,7 +17,7 @@ const STAGGER_ITEM_DELAY = 100;
 const VISIBLE_ITEMS_COUNT = 3;
 const COLLAPSE_DURATION = 600;
 const COLLAPSED_HEIGHT = '175px';
-const ITEM_HEIGHT = '36px';
+// ITEM_HEIGHT ('36px') was only used by the styles — resolved inline in StaggerExpandableContainer.module.css.
 
 const personaData = [
   {
@@ -61,52 +54,7 @@ const personaData = [
   },
 ];
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalL,
-    maxWidth: '300px',
-  },
-  controls: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalM,
-    alignItems: 'center',
-  },
-  sliderContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: tokens.spacingVerticalS,
-  },
-  sliderLabel: {
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightSemibold,
-    minWidth: '90px',
-    flexShrink: 0,
-  },
-  slider: {
-    flexGrow: 1,
-  },
-  listContainer: {
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  list: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: tokens.spacingVerticalL,
-    gap: tokens.spacingVerticalL,
-  },
-  item: {
-    display: 'flex',
-    alignItems: 'center',
-    borderRadius: tokens.borderRadiusSmall,
-    minHeight: ITEM_HEIGHT,
-    justifyContent: 'flex-start',
-  },
-});
+const useClasses = () => styles;
 
 export const ExpandableContainer = (): JSXElement => {
   const classes = useClasses();

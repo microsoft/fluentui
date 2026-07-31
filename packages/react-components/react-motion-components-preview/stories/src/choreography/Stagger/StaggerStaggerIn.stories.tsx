@@ -1,42 +1,13 @@
 import * as React from 'react';
 import StaggerStaggerInDescription from './StaggerStaggerIn.stories.md';
 import type { PresenceBadgeStatus, JSXElement } from '@fluentui/react-components';
-import { Avatar, Button, Card, CardHeader, Text, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
+import { Avatar, Button, Card, CardHeader, Text, motionTokens, tokens } from '@fluentui/react-components';
 import { Stagger, CollapseRelaxed } from '@fluentui/react-motion-components-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px',
-    padding: '20px',
-    maxWidth: '600px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-    padding: '16px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow8,
-  },
-  userCard: {
-    width: '100%',
-    marginBottom: '4px',
-  },
-  cardHeader: {
-    paddingBottom: '8px',
-  },
-  cardContent: {
-    padding: '0 16px 16px 16px',
-  },
-  ctaButton: {
-    minWidth: '120px',
-  },
-});
+import styles from './StaggerStaggerIn.module.css';
+
+const useClasses = () => styles;
 
 // Sample user data
 const users = [

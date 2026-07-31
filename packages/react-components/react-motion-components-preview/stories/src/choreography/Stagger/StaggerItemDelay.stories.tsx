@@ -1,51 +1,12 @@
 import * as React from 'react';
 import StaggerItemDelayDescription from './StaggerItemDelay.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, tokens, Button, Label, Slider } from '@fluentui/react-components';
+import { Field, Button, Label, Slider } from '@fluentui/react-components';
 import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    gap: tokens.spacingHorizontalXL,
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-    gap: tokens.spacingVerticalM,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-    minWidth: '300px',
-  },
-  field: {
-    flex: 1,
-  },
-  sliderField: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXS,
-  },
-  items: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  item: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: tokens.colorNeutralBackgroundStatic,
-    color: tokens.colorNeutralForegroundInverted,
-    width: '40px',
-    height: '100px',
-    margin: tokens.spacingHorizontalXXS,
-  },
-});
+import styles from './StaggerItemDelay.module.css';
+
+const useClasses = () => styles;
 
 export const ItemDelay = (): JSXElement => {
   const classes = useClasses();

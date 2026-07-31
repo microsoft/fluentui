@@ -1,0 +1,32 @@
+/* Story styles for BlurRadius, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacingVerticalXXXL);
+  padding: var(--spacingVerticalMNudge);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacingVerticalXL);
+  gap: var(--spacingVerticalM);
+}
+
+.cellNormal {
+  font-weight: var(--fontWeightRegular);
+}
+
+.cellBold {
+  font-weight: var(--fontWeightBold);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacingVerticalXL);
+}

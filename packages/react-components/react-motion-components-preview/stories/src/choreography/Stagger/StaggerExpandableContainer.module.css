@@ -1,0 +1,56 @@
+/* Story styles for StaggerExpandableContainer, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to.
+ * The .item min-height 36px was the module-scope const ITEM_HEIGHT, resolved inline
+ * (the const was only used by makeStyles and was removed with it). */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalL);
+  max-width: 300px;
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacingHorizontalM);
+  align-items: center;
+}
+
+.sliderContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacingVerticalS);
+}
+
+.sliderLabel {
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.slider {
+  flex-grow: 1;
+}
+
+.listContainer {
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  border-radius: var(--borderRadiusMedium);
+  background-color: var(--colorNeutralBackground1);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacingVerticalL);
+  gap: var(--spacingVerticalL);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  border-radius: var(--borderRadiusSmall);
+  min-height: 36px;
+  justify-content: flex-start;
+}

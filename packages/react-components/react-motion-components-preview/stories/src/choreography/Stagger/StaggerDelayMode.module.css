@@ -1,0 +1,74 @@
+/* Story styles for StaggerDelayMode, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalXL);
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacingHorizontalM);
+  align-items: center;
+  padding: var(--spacingVerticalM);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  border-radius: var(--borderRadiusSmall);
+  background-color: var(--colorNeutralBackground2);
+}
+
+.comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacingHorizontalXL);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalM);
+}
+
+.sectionTitle {
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  color: var(--colorNeutralForeground1);
+  margin-bottom: var(--spacingVerticalXS);
+}
+
+.modeHeader {
+  display: flex;
+  gap: var(--spacingHorizontalS);
+  align-items: center;
+  margin-bottom: var(--spacingVerticalS);
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--spacingHorizontalS);
+  padding: var(--spacingVerticalM);
+  border: var(--strokeWidthThin) dashed var(--colorNeutralStroke2);
+  border-radius: var(--borderRadiusSmall);
+  min-height: 80px;
+  position: relative;
+}
+
+.description {
+  font-size: var(--fontSizeBase200);
+  color: var(--colorNeutralForeground3);
+  margin-top: var(--spacingVerticalXS);
+}
+
+.badge {
+  font-size: var(--fontSizeBase100);
+  font-weight: var(--fontWeightMedium);
+  color: var(--colorBrandForeground1);
+  background-color: var(--colorBrandBackground2);
+  padding: var(--spacingVerticalXXS) var(--spacingHorizontalXS);
+  border-radius: var(--borderRadiusSmall);
+  position: absolute;
+  top: var(--spacingVerticalXS);
+  right: var(--spacingHorizontalXS);
+}

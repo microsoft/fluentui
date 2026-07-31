@@ -1,41 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Button, motionTokens } from '@fluentui/react-components';
+import { Button, motionTokens } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurDurationDescription from './BlurDuration.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '20px',
-    padding: '20px',
-  },
-  example: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '10px',
-  },
-  card: {
-    width: '200px',
-    height: '120px',
-    padding: '20px',
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: tokens.fontSizeBase300,
-    textAlign: 'center',
-  },
-  controls: {
-    display: 'flex',
-    gap: '10px',
-    marginBottom: '20px',
-  },
-});
+import styles from './BlurDuration.module.css';
+
+const useClasses = () => styles;
 
 const durationOptions: Array<{ label: string; duration: number; exitDuration?: number }> = [
   { label: `Fast (${motionTokens.durationFast}ms)`, duration: motionTokens.durationFast },

@@ -1,0 +1,48 @@
+/* Story styles for StaggerItemDelay, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacingHorizontalXL);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  grid-area: controls;
+  gap: var(--spacingVerticalM);
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+  min-width: 300px;
+}
+
+.field {
+  flex: 1;
+}
+
+.sliderField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalXS);
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorNeutralBackgroundStatic);
+  color: var(--colorNeutralForegroundInverted);
+  width: 40px;
+  height: 100px;
+  margin: var(--spacingHorizontalXXS);
+}

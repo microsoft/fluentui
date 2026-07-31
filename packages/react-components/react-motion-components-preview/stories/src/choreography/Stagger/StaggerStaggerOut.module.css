@@ -1,0 +1,38 @@
+/* Story styles for StaggerStaggerOut, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 600px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  background-color: var(--colorNeutralBackground1);
+  box-shadow: var(--shadow8);
+}
+
+.userCard {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.cardHeader {
+  padding-bottom: 8px;
+}
+
+.cardContent {
+  padding: 0 16px 16px 16px;
+}
+
+.ctaButton {
+  min-width: 120px;
+}

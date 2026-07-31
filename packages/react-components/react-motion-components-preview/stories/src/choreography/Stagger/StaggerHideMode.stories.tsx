@@ -1,8 +1,10 @@
 import * as React from 'react';
 import StaggerHideModeDescription from './StaggerHideMode.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Button, Avatar, Checkbox, motionTokens } from '@fluentui/react-components';
+import { Button, Avatar, Checkbox, motionTokens } from '@fluentui/react-components';
 import { Scale, Stagger } from '@fluentui/react-motion-components-preview';
+
+import styles from './StaggerHideMode.module.css';
 
 const avatarData = [
   { initials: 'DR', color: 'dark-red', name: 'darkRed avatar' },
@@ -36,65 +38,7 @@ const renderPlainAvatars = () => {
   ));
 };
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXL,
-  },
-  controls: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalM,
-    alignItems: 'center',
-    padding: tokens.spacingVerticalM,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-    borderRadius: tokens.borderRadiusSmall,
-    backgroundColor: tokens.colorNeutralBackground2,
-  },
-  comparison: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: tokens.spacingHorizontalXL,
-  },
-  section: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalM,
-  },
-  sectionTitle: {
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
-    color: tokens.colorNeutralForeground1,
-    marginBottom: tokens.spacingVerticalXS,
-  },
-  items: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    gap: tokens.spacingHorizontalS,
-    padding: tokens.spacingVerticalM,
-    border: `${tokens.strokeWidthThin} dashed ${tokens.colorNeutralStroke2}`,
-    borderRadius: tokens.borderRadiusSmall,
-    minHeight: '80px',
-    position: 'relative',
-  },
-  description: {
-    fontSize: tokens.fontSizeBase200,
-    color: tokens.colorNeutralForeground3,
-    marginTop: tokens.spacingVerticalXS,
-  },
-  badge: {
-    fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightMedium,
-    color: tokens.colorBrandForeground1,
-    backgroundColor: tokens.colorBrandBackground2,
-    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalXS}`,
-    borderRadius: tokens.borderRadiusSmall,
-    position: 'absolute',
-    top: tokens.spacingVerticalXS,
-    right: tokens.spacingHorizontalXS,
-  },
-});
+const useClasses = () => styles;
 
 // Overshoots the end point, then settles back to it.
 const curveOvershootFirmOut =

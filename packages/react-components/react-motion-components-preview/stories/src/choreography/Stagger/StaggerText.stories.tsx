@@ -1,53 +1,12 @@
 import * as React from 'react';
 import StaggerTextDescription from './StaggerText.stories.md';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, tokens, Button, motionTokens } from '@fluentui/react-components';
+import { Field, Button, motionTokens } from '@fluentui/react-components';
 import { Stagger, Scale } from '@fluentui/react-motion-components-preview';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    gap: tokens.spacingHorizontalXL,
-    overflow: 'hidden',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-  },
-  items: {
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    padding: '50px',
-  },
-  item: {
-    position: 'absolute',
+import styles from './StaggerText.module.css';
 
-    fontWeight: 'bold',
-    fontSize: '100px',
-    color: 'transparent',
-    margin: tokens.spacingHorizontalXXS,
-    // Prefer a CSS variable if available, fallback to the token value.
-    // If your theme exposes a CSS var like --tokens-colorBrandStroke2 you can
-    // control it there; otherwise the token is used.
-    WebkitTextStroke: `4px var(--tokens-colorBrandStroke2, ${tokens.colorBrandStroke2})`,
-    WebkitFilter: 'blur(1.2px)',
-    filter: 'blur(1.2px)',
-  },
-});
+const useClasses = () => styles;
 
 export const Text = (): JSXElement => {
   const classes = useClasses();
