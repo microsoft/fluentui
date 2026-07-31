@@ -15,7 +15,6 @@ const TestWrapperWithMultipleClasses: React.FC<{ children?: React.ReactNode }> =
   const { styleTagId } = useFluentProviderThemeStyleTag({
     theme: { borderRadiusCircular: '50px' },
     targetDocument: document,
-    rendererAttributes: {},
   });
 
   return (

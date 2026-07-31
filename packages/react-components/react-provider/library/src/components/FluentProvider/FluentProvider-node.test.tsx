@@ -9,8 +9,6 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { FluentProvider } from './FluentProvider';
 import * as prettier from 'prettier';
-import { createDOMRenderer } from '@griffel/core';
-import { RendererProvider } from '@griffel/react';
 import type { PartialTheme } from '@fluentui/react-theme';
 
 jest.mock('@fluentui/react-utilities', () => ({
@@ -69,17 +67,15 @@ describe('FluentProvider (node)', () => {
     `);
   });
 
+  /*
+   * Griffel → Tailwind + CSS Modules migration (D20, S-G): the CSP nonce used to reach the
+   * SSR style element via Griffel's renderer context
+   * (`RendererProvider` + `createDOMRenderer(undefined, { styleElementAttributes: { nonce } })`).
+   * It is now the Fluent-owned `nonce` prop on FluentProvider; the rendered output below is
+   * byte-identical to the pre-migration snapshot.
+   */
   it('renders nonce with SSR style element', () => {
-    const nonce = 'random';
-    const renderer = createDOMRenderer(undefined, {
-      styleElementAttributes: { nonce },
-    });
-
-    const html = renderToStaticMarkup(
-      <RendererProvider renderer={renderer}>
-        <FluentProvider theme={testTheme} />
-      </RendererProvider>,
-    );
+    const html = renderToStaticMarkup(<FluentProvider theme={testTheme} nonce="random" />);
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
       "<div dir="ltr" class="fui-FluentProvider1 group/fui-fluent-provider">
@@ -91,5 +87,37 @@ describe('FluentProvider (node)', () => {
         </style>
       </div>"
     `);
+  });
+
+  it('nested providers inherit the nonce from the closest ancestor', () => {
+    const html = renderToStaticMarkup(
+      <FluentProvider theme={testTheme} nonce="random">
+        <FluentProvider theme={testTheme} />
+      </FluentProvider>,
+    );
+
+    // Both the outer provider's style element and the nested provider's own style element
+    // must carry the root nonce — parity with the old app-root RendererProvider behavior.
+    expect(html).toContain('<style nonce="random" id="fui-FluentProvider1">');
+    expect(html).toContain('<style nonce="random" id="fui-FluentProvider2">');
+  });
+
+  it('a nested provider can override the inherited nonce', () => {
+    const html = renderToStaticMarkup(
+      <FluentProvider theme={testTheme} nonce="outer">
+        <FluentProvider theme={testTheme} nonce="inner" />
+      </FluentProvider>,
+    );
+
+    expect(html).toContain('<style nonce="outer" id="fui-FluentProvider1">');
+    expect(html).toContain('<style nonce="inner" id="fui-FluentProvider2">');
+  });
+
+  it('does not leak the nonce onto the root element or emit it without the prop', () => {
+    const html = renderToStaticMarkup(<FluentProvider theme={testTheme} nonce="random" />);
+    expect(html).not.toContain('<div nonce');
+
+    const withoutNonce = renderToStaticMarkup(<FluentProvider theme={testTheme} />);
+    expect(withoutNonce).not.toContain('nonce');
   });
 });

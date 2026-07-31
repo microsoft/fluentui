@@ -38,17 +38,18 @@ module.exports = {
    * the serializer strips those generated names from snapshots, exactly as
    * `@griffel/jest-serializer` did for Griffel atomics (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is KEPT alongside: react-provider's own tests still render
-   * Griffel-styled descendants (react-portal's mount-node styles) and this package still
-   * imports `@griffel/react` for `TextDirectionProvider` / `useRenderer_unstable`.
+   * `@griffel/jest-serializer` was dropped in S-G: react-provider no longer imports
+   * `@griffel/react` at all (`TextDirectionProvider` removed, `useRenderer_unstable`
+   * replaced by the Fluent-owned nonce context — D20), and no test in this package
+   * renders Griffel-styled descendants anymore.
    *
-   * The same pair is registered repo-wide in `jest.preset.js`, because FluentProvider is
-   * imported by test suites in ~every v9 package; this local copy is required only
-   * because a project-level `snapshotSerializers` REPLACES (does not merge with) the
-   * preset value in Jest's config normalisation.
+   * The css-modules serializer is registered repo-wide in `jest.preset.js`, because
+   * FluentProvider is imported by test suites in ~every v9 package; this local copy is
+   * required only because a project-level `snapshotSerializers` REPLACES (does not merge
+   * with) the preset value in Jest's config normalisation.
    */
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

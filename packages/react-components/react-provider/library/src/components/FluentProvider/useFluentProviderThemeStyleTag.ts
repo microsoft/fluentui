@@ -49,15 +49,14 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  * @returns CSS class to apply the rule
  */
 export const useFluentProviderThemeStyleTag = (
-  options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & { rendererAttributes: Record<string, string> },
+  options: Pick<FluentProviderState, 'theme' | 'targetDocument' | 'nonce'>,
 ): { styleTagId: string; rule: string } => {
-  const { targetDocument, theme, rendererAttributes } = options;
+  const { targetDocument, theme, nonce } = options;
 
   const styleTag = React.useRef<HTMLStyleElement | undefined | null>(undefined);
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated -- the deprecation is about STYLING use. This is the constant's retained non-styling role: it seeds the runtime `fui-FluentProvider<useId>` theme class (DECISIONS.md D16.1/D16.5).
   const styleTagId = useId(fluentProviderClassNames.root);
-  const styleElementAttributes = rendererAttributes;
 
   const rule = React.useMemo(() => createCSSRuleFromTheme(`.${styleTagId}`, theme), [theme, styleTagId]);
 
@@ -129,7 +128,10 @@ export const useFluentProviderThemeStyleTag = (
     if (ssrStyleElement) {
       styleTag.current = ssrStyleElement as HTMLStyleElement;
     } else {
-      styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
+      styleTag.current = createStyleTag(targetDocument, {
+        ...(nonce !== undefined && { nonce }),
+        id: styleTagId,
+      });
       if (styleTag.current) {
         insertSheet(styleTag.current, rule);
       }
@@ -138,7 +140,7 @@ export const useFluentProviderThemeStyleTag = (
     return () => {
       styleTag.current?.remove();
     };
-  }, [styleTagId, targetDocument, rule, styleElementAttributes]);
+  }, [styleTagId, targetDocument, rule, nonce]);
 
   return { styleTagId, rule };
 };

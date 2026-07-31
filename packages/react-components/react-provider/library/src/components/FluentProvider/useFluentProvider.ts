@@ -1,6 +1,5 @@
 'use client';
 
-import { useRenderer_unstable } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
@@ -15,12 +14,12 @@ import type {
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+import { StyleNonceContext } from './StyleNonceContext';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
 // Meomizing empty objects to avoid unnecessary rerenders.
 const DEFAULT_STYLE_HOOKS = {};
-const DEFAULT_RENDERER_ATTRIBUTES = {};
 
 /**
  * Create the state required to render FluentProvider.
@@ -38,6 +37,7 @@ export const useFluentProvider_unstable = (
   const parentContext = useFluent();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();
+  const parentNonce = React.useContext(StyleNonceContext);
   const parentCustomStyleHooks: CustomStyleHooksContextValue =
     React.useContext(CustomStyleHooksContext) || DEFAULT_STYLE_HOOKS;
 
@@ -51,6 +51,7 @@ export const useFluentProvider_unstable = (
     // eslint-disable-next-line @typescript-eslint/naming-convention
     customStyleHooks_unstable,
     dir = parentContext.dir,
+    nonce = parentNonce,
     targetDocument = parentContext.targetDocument,
     theme,
     overrides_unstable: overrides = {},
@@ -64,11 +65,10 @@ export const useFluentProvider_unstable = (
     customStyleHooks_unstable,
   ) as CustomStyleHooksContextValue;
 
-  const renderer = useRenderer_unstable();
   const { styleTagId, rule } = useFluentProviderThemeStyleTag({
     theme: mergedTheme,
     targetDocument,
-    rendererAttributes: renderer.styleElementAttributes ?? DEFAULT_RENDERER_ATTRIBUTES,
+    nonce,
   });
 
   if (process.env.NODE_ENV !== 'production') {
@@ -92,6 +92,7 @@ export const useFluentProvider_unstable = (
     // eslint-disable-next-line @typescript-eslint/naming-convention
     customStyleHooks_unstable: mergedCustomStyleHooks,
     dir,
+    nonce,
     targetDocument,
     theme: mergedTheme,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -105,6 +106,9 @@ export const useFluentProvider_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ...props,
+        // `nonce` targets the theme-variables <style> element only (see useFluentProviderThemeStyleTag);
+        // it is a global HTML attribute, so without this it would leak onto the root <div>.
+        nonce: undefined,
         dir,
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
@@ -117,7 +121,7 @@ export const useFluentProvider_unstable = (
     serverStyleProps: {
       cssRule: rule,
       attributes: {
-        ...renderer.styleElementAttributes,
+        ...(nonce !== undefined && { nonce }),
         id: styleTagId,
       },
     },

@@ -72,8 +72,9 @@ export const useFluentProviderStyles_unstable = (state: FluentProviderState): Fl
    * - the consumer `className` stays last (conformance contract, DECISIONS.md D3).
    *
    * `useRenderer_unstable()` is no longer called here — it only ever existed to feed
-   * Griffel's `useStyles()`. The renderer context itself is untouched: FluentProvider
-   * still consumes it in useFluentProvider.ts for the theme <style> tag (nonce/SSR path).
+   * Griffel's `useStyles()`. As of S-G (D20) the Griffel renderer context is gone from
+   * this package entirely: the theme <style> tag's CSP nonce now comes from the
+   * Fluent-owned `nonce` prop / StyleNonceContext (see StyleNonceContext.ts).
    */
   state.root.className = clsx(state.themeClassName, styles.root, 'group/fui-fluent-provider', state.root.className);
 

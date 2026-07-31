@@ -34,9 +34,9 @@ export const fluentProviderClassNames: {
 export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyleHooks_unstable' | 'theme' | 'overrides_unstable'> & {
     provider: ProviderContextValue_unstable;
     themeClassName: ThemeClassNameContextValue_unstable;
-    textDirection: 'ltr' | 'rtl';
     iconDirection: IconDirectionContextValue;
     tooltip: TooltipVisibilityContextValue_unstable;
+    styleTagNonce: string | undefined;
 };
 
 // @public (undocumented)
@@ -47,6 +47,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
     applyStylesToPortals?: boolean;
     customStyleHooks_unstable?: FluentProviderCustomStyleHooks;
     dir?: 'ltr' | 'rtl';
+    nonce?: string;
     targetDocument?: Document;
     theme?: PartialTheme;
     overrides_unstable?: OverridesContextValue_unstable;
@@ -58,7 +59,7 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'nonce' | 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
     serverStyleProps: {
@@ -80,9 +81,7 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
 export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
 // @internal
-export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, "theme" | "targetDocument"> & {
-    rendererAttributes: Record<string, string>;
-}) => {
+export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, "theme" | "targetDocument" | "nonce">) => {
     styleTagId: string;
     rule: string;
 };

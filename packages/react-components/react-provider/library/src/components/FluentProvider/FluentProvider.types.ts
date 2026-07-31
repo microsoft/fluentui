@@ -37,6 +37,17 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
   /** Sets the direction of text & generated styles. */
   dir?: 'ltr' | 'rtl';
 
+  /**
+   * CSP nonce applied to the theme-variables `<style>` element FluentProvider creates
+   * (both the client-side tag and the SSR-rendered element). Nested FluentProviders
+   * inherit the nonce from their closest ancestor, so it only needs to be set on the
+   * app-root provider.
+   *
+   * Replaces the Griffel renderer's `styleElementAttributes` nonce path
+   * (`RendererProvider` + `createDOMRenderer(document, { styleElementAttributes: { nonce } })`).
+   */
+  nonce?: string;
+
   /** Provides the document, can be undefined during SSR render. */
   targetDocument?: Document;
 
@@ -48,7 +59,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
 };
 
 export type FluentProviderState = ComponentState<FluentProviderSlots> &
-  Pick<FluentProviderProps, 'targetDocument'> &
+  Pick<FluentProviderProps, 'nonce' | 'targetDocument'> &
   Required<
     Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>
   > & {
@@ -75,7 +86,11 @@ export type FluentProviderContextValues = Pick<
 > & {
   provider: ProviderContextValue;
   themeClassName: ThemeClassNameContextValue;
-  textDirection: 'ltr' | 'rtl';
   iconDirection: IconDirectionContextValue;
   tooltip: TooltipVisibilityContextValue;
+  /**
+   * CSP nonce provided to descendants (including nested FluentProviders) for
+   * Fluent-created style elements. See {@link FluentProviderProps.nonce}.
+   */
+  styleTagNonce: string | undefined;
 };

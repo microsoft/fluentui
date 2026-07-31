@@ -9,6 +9,7 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
     // eslint-disable-next-line @typescript-eslint/naming-convention
     customStyleHooks_unstable,
     dir,
+    nonce,
     root,
     targetDocument,
     theme,
@@ -28,9 +29,9 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
     // eslint-disable-next-line @typescript-eslint/naming-convention
     overrides_unstable,
     provider,
-    textDirection: dir,
     iconDirection,
     tooltip,
+    styleTagNonce: nonce,
     theme,
     themeClassName: applyStylesToPortals ? root.className! : themeClassName,
   };
