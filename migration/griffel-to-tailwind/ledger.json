@@ -620,9 +620,9 @@
     "date": "2026-07-30",
     "worklist": "reports/sf-worklist.md",
     "census": "561 files (511 story-makeStyles, 47 docs, 3 mergeClasses-only), 7 batches",
-    "progress": "batch 1/7 DONE (93 files: 49 stories converted + 46 new module.css; 44 docs — 25 codemod + hand rewrites; BuildTimeStyles.mdx DELETED per D21; SSR quartet + AdvancedConfiguration rewritten renderer-free)",
+    "progress": "batch 2/7 DONE (87 files: 87 stories converted — 86 codemod + 1 hand (CardSelectableIndicator, spread of shared flex const); 87 new module.css; docsite Utilities + react-accordion/aria/avatar/badge/breadcrumb/button/calendar-compat/card). Batch 1/7 done (93 files: 49 stories converted + 46 new module.css; 44 docs — 25 codemod + hand rewrites; BuildTimeStyles.mdx DELETED per D21; SSR quartet + AdvancedConfiguration rewritten renderer-free)",
     "survivors": "FromV0 mixin-consumer fences (retire with migration mixins in S-H/D19); StylingComponents escape-hatch section; AdvancedConfiguration CSP nonce (pending S-G/D20)",
-    "gates": "charts-stories tsc+lint green; docsite tsc+lint+jest green; docsite build-storybook FULL green (INFRA-1c did not reproduce); VR n/a",
-    "report": "reports/sf-batch1.md"
+    "gates": "Batch 2: 8 story projects tsc+lint green; docsite tsc+lint+jest green; docsite build-storybook FULL green (exit 0, INFRA-1c did not reproduce); package jest skipped (no test imports touched stories, verified); VR n/a. charts-stories tsc+lint green; docsite tsc+lint+jest green; docsite build-storybook FULL green (INFRA-1c did not reproduce); VR n/a",
+    "report": "reports/sf-batch1.md, reports/sf-batch2.md"
   }
 }
