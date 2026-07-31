@@ -49,7 +49,7 @@ describe('InfoButton', () => {
     // `state.root.className` last and the `@layer fui.*` sublayers keep unlayered consumer
     // CSS winning (DECISIONS.md D2/D9). `classname-overrides-win` below is its
     // cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['component-has-static-classnames-object', 'exported-top-level', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object', 'exported-top-level'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

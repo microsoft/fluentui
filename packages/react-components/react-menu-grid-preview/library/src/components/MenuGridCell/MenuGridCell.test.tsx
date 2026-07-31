@@ -10,7 +10,7 @@ describe('MenuGridCell', () => {
     displayName: 'MenuGridCell',
     // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
     // See MenuGrid.test.tsx for the rationale behind this pair of adjustments.
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 

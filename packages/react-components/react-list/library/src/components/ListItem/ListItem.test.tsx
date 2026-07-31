@@ -26,7 +26,7 @@ describe('ListItem', () => {
     // until then converted packages opt out here. `component-has-group-marker` (now a default test) replaces
     // it — it asserts the marker IS stamped and, crucially, that it is never `classList[0]`
     // (D16.2).
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -43,7 +43,6 @@ describe('ToastContainer', () => {
       'consistent-callback-args',
       // Headless ToastContainer has no static classnames object.
       'component-has-static-classnames-object',
-      'make-styles-overrides-win',
       // ToastContainer is exported from `toast.ts` rather than top-level `toast-container.ts`.
       'has-top-level-file-extra',
       'export-map-entry-exists',

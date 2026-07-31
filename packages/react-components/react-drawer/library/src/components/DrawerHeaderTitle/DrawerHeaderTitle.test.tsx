@@ -23,7 +23,7 @@ describe('DrawerHeaderTitle', () => {
     // with it now, because there are no sub-slot statics left to find (DECISIONS.md D16.1)
     // and `drawerHeaderTitleClassNames` is `{ root: <marker> }` (D16.5). The replacement is
     // `component-has-group-marker`, now a default test.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 

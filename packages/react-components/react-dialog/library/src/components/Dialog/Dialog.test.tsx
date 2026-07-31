@@ -4,7 +4,7 @@ import { Dialog } from './Dialog';
 import type { DialogProps } from './Dialog.types';
 import { isConformant } from '../../testing/isConformant';
 import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import type { DialogSurfaceProps } from '../../DialogSurface';
 import { DialogSurface } from '../../DialogSurface';
 
@@ -28,7 +28,6 @@ describe('Dialog', () => {
       // onOpenChange: A second (data) argument cannot be a union
       'consistent-callback-args',
       // Dialog does not have own styles
-      'make-styles-overrides-win',
     ],
   });
 
@@ -42,15 +41,16 @@ describe('Dialog', () => {
   });
 
   it('Testing DialogSurface with toBeVisible works as expected', () => {
-    // eslint-disable-next-line @griffel/styles-file
-    const useStyles = makeStyles({
-      root: {
-        left: '2px',
-      },
-    });
+    // Was a Griffel makeStyles rule (`left: 2px`); a plain class + <style> tag keeps the
+    // fixture identical without Griffel (Griffel → Tailwind + CSS Modules migration, S-H).
+    const customSurfaceClassName = 'dialog-test-custom-surface';
     const CustomDialogSurface = React.forwardRef<HTMLDivElement, DialogSurfaceProps>((props, ref) => {
-      const styles = useStyles();
-      return <DialogSurface ref={ref} className={mergeClasses(styles.root, props.className)} {...props} />;
+      return (
+        <>
+          <style>{`.${customSurfaceClassName} { left: 2px; }`}</style>
+          <DialogSurface ref={ref} className={clsx(customSurfaceClassName, props.className)} {...props} />
+        </>
+      );
     });
 
     const result = render(

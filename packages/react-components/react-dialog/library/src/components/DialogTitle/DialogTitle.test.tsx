@@ -25,7 +25,6 @@ describe('DialogTitle', () => {
       // Fragment — it reads the classList of the container's first child, which is the
       // <h2> root — asserting the marker is stamped and never `classList[0]`
       // (D15.1 / D16.2).
-      'make-styles-overrides-win',
     ],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,

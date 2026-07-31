@@ -20,7 +20,6 @@ describe('Dialog', () => {
       'component-handles-classname',
       'component-has-static-classnames-object',
       'consistent-callback-args',
-      'make-styles-overrides-win',
     ],
     requiredProps: {
       children: <DialogSurface>Dialog content</DialogSurface>,

@@ -48,7 +48,7 @@ describe('DatePicker', () => {
     // `fui-DatePicker__popupSurface`, and D16.5 narrowed `datePickerClassNames` to
     // `{ root }` pointing at the group marker. `component-has-static-classnames-object` is
     // no longer a default test, so it needs no `disabledTests` entry.
-    disabledTests: ['consistent-callback-args', 'component-has-root-ref', 'make-styles-overrides-win'],
+    disabledTests: ['consistent-callback-args', 'component-has-root-ref'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       // a DatePicker's root slot IS an Input (`DatePickerSlots['root'] = Slot<typeof Input>`),

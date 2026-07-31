@@ -13,7 +13,6 @@ describe('Listbox', () => {
     // `make-styles-overrides-win` can no longer observe the contract — this component
     // composes with clsx and never calls mergeClasses. `classname-overrides-win` is its
     // cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

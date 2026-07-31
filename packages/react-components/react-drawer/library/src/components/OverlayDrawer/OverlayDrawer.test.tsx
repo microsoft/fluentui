@@ -45,7 +45,6 @@ describe('OverlayDrawer', () => {
       'component-handles-classname',
       'component-has-static-classnames-object',
       'consistent-callback-args',
-      'make-styles-overrides-win',
     ],
     requiredProps: props,
     getTargetElement: result => result.getByTestId(testid),

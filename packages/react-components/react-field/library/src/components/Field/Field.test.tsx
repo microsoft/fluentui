@@ -29,7 +29,6 @@ describe('Field', () => {
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
     disabledTests: [
-      'make-styles-overrides-win',
       // Statics removal (DECISIONS.md D16.1 / D16.6). Field no longer renders `fui-Field*` BEM
       // statics, and `fieldClassNames` is now `{ root: <marker> }`, so all three sub-tests of
       // this rule — the export shape, the hard-coded `fui-<Component>__<slot>` format, and the

@@ -27,7 +27,7 @@ describe('InlineDrawer', () => {
     // D16.1 removed the BEM statics, D16.5 narrowed the export to `{ root }` and re-pointed
     // it at the group marker. It is replaced by `component-has-group-marker`, now a default
     // test.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 

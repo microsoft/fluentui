@@ -40,7 +40,6 @@ describe('Drawer', () => {
       'component-handles-classname',
       'component-has-static-classnames-object',
       'consistent-callback-args',
-      'make-styles-overrides-win',
     ],
     testOptions: {
       // A Drawer IS an InlineDrawer or an OverlayDrawer: `useDrawer_unstable` picks one as

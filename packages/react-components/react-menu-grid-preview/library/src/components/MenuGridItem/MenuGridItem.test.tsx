@@ -12,7 +12,7 @@ describe('MenuGridItem', () => {
     // See MenuGrid.test.tsx for the rationale behind this pair of adjustments. The
     // `has-static-classnames` testOptions that fed the deleted BEM test went with it
     // (DECISIONS.md D16.1).
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // This root IS a MenuGridRow root — `useMenuGridItem_unstable` builds the root slot with
       // `elementType: MenuGridRow`, so `useMenuGridRowStyles_unstable` stamps its marker on

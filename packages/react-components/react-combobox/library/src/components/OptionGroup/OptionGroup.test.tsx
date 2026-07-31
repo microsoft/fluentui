@@ -13,7 +13,6 @@ describe('OptionGroup', () => {
     // composes with clsx and never calls mergeClasses. `classname-overrides-win` is its
     // cascade-native replacement (DECISIONS.md D9). The `has-static-classnames` options are
     // gone with the statics themselves (DECISIONS.md D16.1/D16.5).
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

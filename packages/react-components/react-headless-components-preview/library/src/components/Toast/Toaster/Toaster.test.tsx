@@ -13,7 +13,6 @@ describe('Toaster', () => {
       'component-handles-ref',
       'component-handles-classname',
       'component-has-static-classnames-object',
-      'make-styles-overrides-win',
       // Toaster is exported from `toast.ts` rather than top-level `toaster.ts`.
       'has-top-level-file-extra',
       'export-map-entry-exists',

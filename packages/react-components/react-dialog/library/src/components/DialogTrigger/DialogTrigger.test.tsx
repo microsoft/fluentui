@@ -24,7 +24,6 @@ describe('DialogTrigger', () => {
       // `component-has-group-marker` (a default test since DECISIONS.md D16.6) to target.
       'component-has-group-marker',
       // DialogTrigger does not have own styles
-      'make-styles-overrides-win',
     ],
     Component: DialogTrigger,
     displayName: 'DialogTrigger',

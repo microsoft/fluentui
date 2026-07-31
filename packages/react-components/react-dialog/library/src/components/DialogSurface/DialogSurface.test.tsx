@@ -30,7 +30,7 @@ describe('DialogSurface', () => {
     // compile error. `component-has-group-marker` replaces it, and reaches the portalled
     // root through the `getTargetElement` below — asserting the marker is stamped and that
     // it is never `classList[0]` (D15.1 / D16.2).
-    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
