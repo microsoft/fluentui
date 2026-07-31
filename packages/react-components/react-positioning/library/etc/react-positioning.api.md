@@ -4,7 +4,6 @@
 
 ```ts
 
-import type { GriffelStyle } from '@griffel/react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { RefObjectFunction } from '@fluentui/react-utilities';
@@ -19,21 +18,21 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 export type Boundary = PositioningBoundary;
 
 // @internal
-export function createArrowHeightStyles(arrowHeight: number): GriffelStyle;
+export function createArrowHeightStyles(arrowHeight: number): PositioningStyleObject;
 
 // @internal
-export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;
+export function createArrowStyles(options: CreateArrowStylesOptions): PositioningStyleObject;
 
 // @internal
 export type CreateArrowStylesOptions = {
     arrowHeight: number | undefined;
-    borderWidth?: GriffelStyle['borderBottomWidth'];
-    borderStyle?: GriffelStyle['borderBottomStyle'];
-    borderColor?: GriffelStyle['borderBottomColor'];
+    borderWidth?: React_2.CSSProperties['borderBottomWidth'];
+    borderStyle?: React_2.CSSProperties['borderBottomStyle'];
+    borderColor?: React_2.CSSProperties['borderBottomColor'];
 };
 
 // @public @deprecated
-export function createSlideStyles(mainAxis: number): GriffelStyle;
+export function createSlideStyles(mainAxis: number): PositioningStyleObject;
 
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
@@ -114,6 +113,11 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
 // @public (undocumented)
 export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
+
+// @public
+export type PositioningStyleObject = {
+    [selectorOrProperty: string]: unknown;
+};
 
 // @public (undocumented)
 export type PositioningVirtualElement = {

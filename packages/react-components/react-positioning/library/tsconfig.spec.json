@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "dist",
-    "types": ["jest", "node", "@testing-library/jest-dom"]
+    // "static-assets" declares `*.module.css` (typings/static-assets/index.d.ts) — required
+    // since SafeZoneArea's conversion to CSS Modules (same setup as react-provider).
+    "types": ["jest", "node", "@testing-library/jest-dom", "static-assets"]
   },
   "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.d.ts"]
 }

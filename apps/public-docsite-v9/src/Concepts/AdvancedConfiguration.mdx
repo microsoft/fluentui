@@ -36,26 +36,28 @@ You can check complete example at [CodeSandbox](https://codesandbox.io/s/fluentu
 `FluentProvider` renders the theme's custom properties through a `<style>` tag it creates at
 runtime. To add the `nonce` attribute needed for
 [Content Security Policies](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to that tag,
-use `styleElementAttributes`:
+pass the `nonce` prop:
 
 ```jsx
-import { createDOMRenderer, FluentProvider, RendererProvider } from '@fluentui/react-components';
+import { FluentProvider } from '@fluentui/react-components';
 import * as React from 'react';
 
 function MyComponent(props) {
   const { children } = props;
-  const renderer = React.useMemo(
-    () => createDOMRenderer(document, { styleElementAttributes: { nonce: 'random' } }),
-    [],
-  );
 
-  return (
-    <RendererProvider renderer={renderer}>
-      <FluentProvider>{children}</FluentProvider>
-    </RendererProvider>
-  );
+  return <FluentProvider nonce="random">{children}</FluentProvider>;
 }
 ```
+
+Set it once on the app-root provider — nested `FluentProvider`s inherit the nonce for their own
+theme style tags (and any of them can override it with its own `nonce` prop). The nonce is also
+applied to the style element emitted during SSR. Component CSS is a static stylesheet
+(`.css` assets), which a CSP covers via `style-src` source lists rather than nonces.
+
+> **Migrating from an older setup?** The Griffel-era
+> `RendererProvider` + `createDOMRenderer(document, { styleElementAttributes: { nonce } })`
+> wrapper is no longer how the nonce reaches the theme style tag — replace it with the `nonce`
+> prop above.
 
 ### IdPrefixProvider
 

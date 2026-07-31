@@ -17,6 +17,7 @@ export { resolvePositioningShorthand, mergeArrowOffset } from './utils/index';
 export type {
   Alignment,
   AutoSize,
+  PositioningStyleObject,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   Boundary,
   Offset,

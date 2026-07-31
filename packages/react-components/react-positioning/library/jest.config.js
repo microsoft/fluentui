@@ -40,12 +40,12 @@ module.exports = {
    * itself or `SafeZoneArea`'s snapshots would print the generated module class names
    * (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: `createArrowStyles` / `createSlideStyles`
-   * stay type-only Griffel data functions (D7), and `useSafeZoneArea.test.tsx` renders inside
-   * hosts that may still emit Griffel atomics into the same `class=` attribute.
+   * `@griffel/jest-serializer` was dropped in S-G: `createArrowStyles` / `createSlideStyles`
+   * no longer reference `@griffel/react` even for types (their signatures use the local
+   * `PositioningStyleObject`), and no test in this package renders Griffel-styled hosts.
    */
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

@@ -7,7 +7,7 @@ import { FluentCanvas, FluentStory } from '@fluentui/react-storybook-addon';
 
 Fluent UI components use [tabster](https://github.com/microsoft/tabster) for focus handling functionality, so that they can be easily integrated with application-level tabster functionality such as delooser and cross-iframe focusing.
 
-Fluent UI `@fluentui/react-tabster` package defines `useKeyboardNavAttribute`, `createCustomFocusIndicatorStyle` and `createFocusOutlineStyle` to integrate tabster keyboard navigation mechanism seemlesly within Fluent UI.
+Fluent UI `@fluentui/react-tabster` package defines `useKeyboardNavAttribute` (and the `data-fui-focus-visible` / `data-fui-focus-within` attributes) to integrate tabster keyboard navigation mechanism seemlesly within Fluent UI.
 
 ### useKeyboardNavAttribute
 
@@ -33,16 +33,16 @@ function Root() {
 
 ### Styling focus indicators
 
-The default focus indicator used in Fluent UI is an outline. However, in some cases more specific focus indicators are necessary depending on the use case and component design. In order to accommodate these requirements, Fluent UI exports two different utilities to style focus indicators:
+The default focus indicator used in Fluent UI is an outline. However, in some cases more specific focus indicators are necessary depending on the use case and component design. Two approaches cover these requirements:
 
-1. `createFocusOutlineStyle`
-2. `createCustomFocusIndicatorStyle`
+1. the shared `fui-focus-outline` CSS utility (the default ring)
+2. custom focus indicator declarations under a focus variant
 
-Both of the helper functions are powered using the method described above.
+Both are powered using the method described above.
 
-#### createFocusOutlineStyle
+#### The default outline (`fui-focus-outline`)
 
-The [AccordionHeader](?path=/docs/components-accordion--default) component uses `createFocusOutlineStyle` to style the default outline style when focus is detected
+The [AccordionHeader](?path=/docs/components-accordion--default) component uses the shared focus-outline utility to style the default outline style when focus is detected
 
 <FluentCanvas>
   <FluentStory id="components-accordion--default" height={260} />
@@ -101,10 +101,10 @@ same rule to customize width, colour, radius or offset:
 }
 ```
 
-> `createFocusOutlineStyle` is still exported for existing code, but it returns a `GriffelStyle`
-> object and is no longer how Fluent's own components draw their focus indicator.
+> The Griffel-era `createFocusOutlineStyle` helper has been removed from
+> `@fluentui/react-tabster` — the `fui-focus-outline` utility above is its replacement.
 
-#### createCustomFocusIndicatorStyle
+#### Custom focus indicators
 
 > ⚠️ A bad focus indicator can have serious accessibility consequences and can render
 > your experience unusable by certain user. Please ensure before creating a custom focus
@@ -152,6 +152,6 @@ function Link() {
 }
 ```
 
-> `createCustomFocusIndicatorStyle` is still exported for existing code, but like
-> `createFocusOutlineStyle` it returns a `GriffelStyle` object and is no longer used by Fluent's own
-> components.
+> The Griffel-era `createCustomFocusIndicatorStyle` helper has been removed from
+> `@fluentui/react-tabster` along with `createFocusOutlineStyle` — write the focus-variant
+> declarations directly, as above.

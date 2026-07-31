@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
-import type { GriffelStyle } from '@griffel/react';
 import { DATA_POSITIONING_PLACEMENT } from './constants';
+import type { PositioningStyleObject } from './types';
 
 /**
  * Creates animation styles so that positioned elements slide in from the main axis
@@ -10,7 +10,7 @@ import { DATA_POSITIONING_PLACEMENT } from './constants';
  * @deprecated The popover-related components now use the Slide motion component,
  * which they inject using the `surfaceMotion` slot.
  */
-export function createSlideStyles(mainAxis: number): GriffelStyle {
+export function createSlideStyles(mainAxis: number): PositioningStyleObject {
   // With 'accumulate' animation composition, these opacity keyframes are added onto the default opacity of 1.
   const fadeIn = {
     from: {

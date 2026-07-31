@@ -1,6 +1,15 @@
 import type * as React from 'react';
 
 /**
+ * Loose structural stand-in for Griffel's `GriffelStyle`, used by the style-factory helpers
+ * (`createArrowStyles` / `createArrowHeightStyles` / `createSlideStyles`) so their public
+ * signatures no longer reference `@griffel/react` (Griffel → Tailwind + CSS Modules
+ * migration, S-G). The runtime objects the factories return are unchanged, and still have
+ * the shape Griffel's `makeStyles` accepts for external consumers who spread them there.
+ */
+export type PositioningStyleObject = { [selectorOrProperty: string]: unknown };
+
+/**
  * Physical placement of a positioned element relative to its target, as computed by Floating UI.
  * This is a Fluent-owned equivalent of Floating UI's `Placement` type, avoiding a transitive
  * dependency on `@floating-ui/dom` in the public API surface.

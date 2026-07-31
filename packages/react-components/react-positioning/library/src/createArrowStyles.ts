@@ -1,5 +1,7 @@
+import type * as React from 'react';
 import { tokens } from '@fluentui/react-theme';
-import type { GriffelStyle } from '@griffel/react';
+
+import type { PositioningStyleObject } from './types';
 
 /**
  * Options parameter for the createArrowStyles function
@@ -20,21 +22,21 @@ export type CreateArrowStylesOptions = {
    *
    * @defaultvalue 1px
    */
-  borderWidth?: GriffelStyle['borderBottomWidth'];
+  borderWidth?: React.CSSProperties['borderBottomWidth'];
 
   /**
    * The borderStyle for the arrow. Should be the same borderStyle as the parent element.
    *
    * @defaultvalue solid
    */
-  borderStyle?: GriffelStyle['borderBottomStyle'];
+  borderStyle?: React.CSSProperties['borderBottomStyle'];
 
   /**
    * The borderColor of the arrow. Should be the same borderColor as the parent element.
    *
    * @defaultvalue tokens.colorTransparentStroke
    */
-  borderColor?: GriffelStyle['borderBottomColor'];
+  borderColor?: React.CSSProperties['borderBottomColor'];
 };
 
 /**
@@ -61,7 +63,7 @@ export type CreateArrowStylesOptions = {
  *
  * @internal
  */
-export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle {
+export function createArrowStyles(options: CreateArrowStylesOptions): PositioningStyleObject {
   const {
     arrowHeight,
     borderWidth = '1px',
@@ -128,7 +130,7 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
  *
  * @internal
  */
-export function createArrowHeightStyles(arrowHeight: number): GriffelStyle {
+export function createArrowHeightStyles(arrowHeight: number): PositioningStyleObject {
   // The arrow is a square rotated 45 degrees to have its bottom and right edges form a right triangle.
   // Multiply the triangle's height by sqrt(2) to get length of its edges.
   const edgeLength = 1.414 * arrowHeight;
