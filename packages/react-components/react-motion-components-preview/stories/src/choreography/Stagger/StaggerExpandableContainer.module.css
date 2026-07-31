@@ -1,5 +1,5 @@
-/* Story styles for StaggerExpandableContainer, converted from Griffel makeStyles (S-F batch 5).
- * Token references are the CSS variables they compile to.
+/* Story styles for StaggerExpandableContainer.
+ * Token references are the Fluent theme's CSS variables.
  * The .item min-height 36px was the module-scope const ITEM_HEIGHT, resolved inline
  * (the const was only used by makeStyles and was removed with it). */
 
