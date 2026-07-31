@@ -258,26 +258,24 @@
 }
 
 /*
- * ── The annotation-layer rule must be UNLAYERED (DECISIONS.md D2 amendment) ──────────────
+ * ── annotation-layer: fui.components.l2 (D2a5 transitional phase CLOSED in C7) ───────────
  *
  * `.annotation-layer` is not one of CartesianChart's own elements. It is handed to
- * `<ChartAnnotationLayer className={classes.annotationLayer}>`, whose still-Griffel hook
- * composes it as `mergeClasses(chartAnnotationLayerClassNames.root, baseStyles.root,
- * props.className, props.styles?.root)` onto its own root `<div>`.
+ * `<ChartAnnotationLayer className={classes.annotationLayer}>`, whose hook composes it
+ * as `clsx(styles.root, marker, props.className, props.styles?.root)` onto its own root
+ * `<div>` — l2 is the altitude that mirrors that consumer position (decorating another
+ * component's element, after the owner's own l1 `.root`).
  *
- * `useChartAnnotationLayer.styles.ts` root declares `pointerEvents: 'none'` itself, and
- * Griffel injects that atomic with NO `@layer`. In the CSS cascade an unlayered normal author
- * declaration beats EVERY `@layer` before specificity is even consulted, so a copy of this
- * rule sitting in `fui.components.l2` could never override it. The two values are identical
- * today, so nothing renders differently either way — but the altitude contract is about which
- * rule COULD win, not about which values happen to agree, and this is the direction D2 calls
- * out as a silent runtime bug.
- *
- * This is TRANSITIONAL, exactly as CONVERSION_GUIDE §2 describes for in-repo packages that
- * have not converted yet: when `ChartAnnotationLayer` converts (charts batch C7), this block
- * moves back up into `@layer fui.components.l2`, which is the altitude that mirrors its
- * mergeClasses position.
+ * HISTORY: while ChartAnnotationLayer was still on Griffel (through C5) this rule had to
+ * be UNLAYERED — the owner's root `pointerEvents: 'none'` atomic was an unlayered Griffel
+ * declaration that beats every `@layer` before specificity is consulted, so a layered
+ * copy could never have won the (value-identical) contention. C6 converted the owner
+ * (its root rule now sits in `fui.components.l1`), so the C7 plumbing batch moved this
+ * block back up into `@layer fui.components.l2` per the D2a5 return rule, under the
+ * full-charts VR gate (reports/charts-c6-c7.md).
  */
-.annotation-layer {
-  pointer-events: none;
+@layer fui.components.l2 {
+  .annotation-layer {
+    pointer-events: none;
+  }
 }

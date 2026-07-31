@@ -34,7 +34,6 @@
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-tooltip": "^9.10.3",
     "@fluentui/react-utilities": "^9.26.5",
-    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
     "@types/d3-array": "^3.0.0",
     "@types/d3-axis": "^3.0.0",

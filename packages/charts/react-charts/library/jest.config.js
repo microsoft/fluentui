@@ -67,6 +67,14 @@ module.exports = {
    * config normalisation. These suites snapshot a rendered `FluentProvider`, which is
    * converted to CSS Modules — without the serializer its generated `fuicm-*` class would
    * churn every snapshot on every style edit (DECISIONS.md D9).
+   *
+   * `@griffel/jest-serializer` STAYS although no file under this package imports
+   * `@griffel/react` any more (C6 closed the last one, ChartAnnotationLayer): these suites
+   * still mount `@fluentui/react-icons` glyphs transitively (e.g. GaugeChart's re-render
+   * snapshot contains an icon `<svg>` carrying Griffel atomics — `f1w7gpdv` et al. from
+   * `bundleIcon.styles.js`), and react-icons remains on Griffel PERMANENTLY (DECISIONS.md
+   * D11). Removal was probed during the C7 plumbing and produced a real snapshot delta
+   * (reports/charts-c6-c7.md), so this line is load-bearing, not vestigial.
    */
   snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
   moduleNameMapper: Object.fromEntries(

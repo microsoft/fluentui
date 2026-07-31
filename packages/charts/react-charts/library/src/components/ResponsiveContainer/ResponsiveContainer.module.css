@@ -23,50 +23,45 @@
  *   chartWrapper  same shape                       → UNLAYERED  .chart-wrapper
  *   chart         same shape                       → UNLAYERED  .chart
  *
- * ── Why UNLAYERED, not fui.components.l2 (DECISIONS.md D2 amendment 5) ────────────────
+ * ── Altitude: fui.components.l2 (DECISIONS.md D2 amendment 5 — transitional phase CLOSED)
  * ResponsiveContainer renders NO classed element of its own: these classes are injected
  * via `cloneElement` into the CHILD CHART's `styles` prop and land on elements owned by
- * whichever chart is wrapped. While that ownership set was MIXED (converted charts whose
- * `width/height: 100%` root slices sit in `fui.components.l1` — which these unlayered
- * rules still beat, preserving the old last-argument winner — alongside still-Griffel
- * charts whose root slices were UNLAYERED Griffel atomics setting the very same
- * `width`/`height` properties), a layered copy of these rules could never beat those
- * atomics, inverting the old mergeClasses winner (the responsive classes were the LAST
- * argument, i.e. the winner). Unlayered preserved the winner in both directions.
+ * whichever chart is wrapped — the definition of l2 ("identity classes decorating other
+ * components' elements", the altitude that mirrors "styles applied over another
+ * component's hook output"; the responsive classes were the LAST mergeClasses argument,
+ * i.e. the winner, and l2 beats every wrapped chart's l1 root slice).
  *
- * STATUS AFTER CHARTS C5 (SankeyChart/PolarChart/HorizontalBarChartWithAxis/
- * AnnotationOnlyChart converted): SankeyChart was the LAST wrapped chart carrying
- * unlayered Griffel `width/height: 100%` root atomics — every chart a ResponsiveContainer
- * can wrap now takes its root slices from `fui.components.l1` modules (the one remaining
- * Griffel styles hook in react-charts, ChartAnnotationLayer, is not a ResponsiveContainer
- * subject; VegaDeclarativeChart has no styles hook at all — bare `className`/`style`
- * pass-through). The tie-by-load-order escape hatch is therefore no longer exercised and
- * this block is ELIGIBLE to move into `@layer fui.components.l2` (the altitude that
- * mirrors "styles applied over another component's hook output"). The promotion is
- * deliberately DEFERRED to the final plumbing batch so it lands with its own scoped VR
- * gate rather than riding a component batch (charts C5 report).
+ * HISTORY: these rules were UNLAYERED from charts C3 through C6 (D2a5 transitional)
+ * because the ownership set was MIXED — still-Griffel charts carried UNLAYERED Griffel
+ * `width/height: 100%` root atomics that a layered rule could never beat. SankeyChart
+ * (C5) was the last such chart; after C6 (ChartAnnotationLayer, not a
+ * ResponsiveContainer subject) react-charts is Griffel-ZERO, every wrapped chart takes
+ * its root slices from `fui.components.l1` modules, and the C7 plumbing batch promoted
+ * this block to l2 under its own full-charts VR gate (reports/charts-c6-c7.md).
  *
  * VALUES ARE THE COMPILED ONES — read off
  * lib-commonjs/components/ResponsiveContainer/useResponsiveChildStyles.styles.js. No
  * `[ltr, rtl]` pair (nothing direction-sensitive) and no HighContrastSelector.
  */
 
-/* from useStyles.root */
-.root {
-  @apply h-full w-full;
-}
+@layer fui.components.l2 {
+  /* from useStyles.root */
+  .root {
+    @apply h-full w-full;
+  }
 
-/* from useStyles.chartWrapper */
-.chart-wrapper {
-  @apply w-full;
-}
+  /* from useStyles.chartWrapper */
+  .chart-wrapper {
+    @apply w-full;
+  }
 
-/*
- * from useStyles.chart. Overrides the pixel `width` ATTRIBUTE of the chart `<svg>` (CSS
- * beats presentation attributes at any cascade position) so it resizes properly within a
- * flexbox or grid layout. Height is deliberately NOT set to 100% because that causes the
- * charts to resize vertically in an infinite loop (comment carried from the source).
- */
-.chart {
-  @apply w-full;
+  /*
+   * from useStyles.chart. Overrides the pixel `width` ATTRIBUTE of the chart `<svg>` (CSS
+   * beats presentation attributes at any cascade position) so it resizes properly within a
+   * flexbox or grid layout. Height is deliberately NOT set to 100% because that causes the
+   * charts to resize vertically in an infinite loop (comment carried from the source).
+   */
+  .chart {
+    @apply w-full;
+  }
 }
