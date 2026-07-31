@@ -12,6 +12,10 @@ partition: later S-F batches resume from it without re-deriving the census.
   `createDOMRenderer`, `RendererProvider`, `renderToStyleElements`, `GriffelStyle`, `GriffelRenderer`,
   `GriffelResetStyle`, `__styles`, `__css`) from `@fluentui/react-components(/unstable)` — same symbol
   list as the evaluation §5 census (`.scratch/umbrella-syms.js`).
+- CORRECTION (same session): `.md/.mdx` pages are additionally scoped in on ANY text occurrence of a
+  Griffel API/package name (fences often omit import lines) — this added 13 doc pages the
+  umbrella-import census missed (e.g. `StylingComponents.mdx`, `FromV0/migrate-styles.mdx`,
+  `FromV8/Components/Tabs.mdx`), growing the census 548 -> 561.
 - NOTE: zero story files import `@griffel/react` directly anymore (verified by raw grep — only build
   caches match). The S-F surface is entirely umbrella re-export usage plus 4 doc pages with direct
   `@griffel` package mentions in prose/code fences.
@@ -21,9 +25,9 @@ partition: later S-F batches resume from it without re-deriving the census.
 | kind             |   files |
 | ---------------- | ------: |
 | story-makeStyles |     511 |
-| doc              |      34 |
+| doc              |      47 |
 | story-other-sym  |       3 |
-| **total**        | **548** |
+| **total**        | **561** |
 
 Kind legend: `story-makeStyles` = story/scaffolding file using makeStyles/makeResetStyles (module.css
 conversion); `story-other-sym` = only mergeClasses/other symbol (clsx swap); `doc` = .md/.mdx page
@@ -33,10 +37,10 @@ conversion); `story-other-sym` = only mergeClasses/other symbol (clsx swap); `do
 
 | batch | families                                                                                                                                                                                               | files |
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----: |
-| 1     | docsite:AccessibilityScenarios, docsite:Concepts, charts/react-charts                                                                                                                                  |    82 |
+| 1     | docsite:AccessibilityScenarios, docsite:Concepts, charts/react-charts                                                                                                                                  |    93 |
 | 2     | docsite:Utilities, react-accordion, react-aria, react-avatar, react-badge, react-breadcrumb, react-button, react-calendar-compat, react-card                                                           |    87 |
 | 3     | react-carousel, react-color-picker, react-combobox, react-datepicker-compat, react-dialog, react-divider, react-drawer                                                                                 |    88 |
-| 4     | react-field, react-infolabel, react-input, react-link, react-list, react-menu, react-message-bar, react-migration-v0-v9, react-migration-v8-v9, react-motion                                           |    89 |
+| 4     | react-field, react-headless-components-preview, react-infolabel, react-input, react-link, react-list, react-menu, react-message-bar, react-migration-v0-v9, react-migration-v8-v9, react-motion        |    91 |
 | 5     | react-motion-components-preview, react-nav, react-overflow, react-persona, react-popover, react-portal, react-positioning                                                                              |    87 |
 | 6     | react-progress, react-provider, react-rating, react-search, react-select, react-skeleton, react-slider, react-spinbutton, react-spinner, react-swatch-picker, react-tabs, react-tag-picker, react-tags |    85 |
 | 7     | react-text, react-textarea, react-theme, react-timepicker-compat, react-toast, react-toolbar, react-tooltip, react-tree                                                                                |    30 |
@@ -50,9 +54,10 @@ conversion); `story-other-sym` = only mergeClasses/other symbol (clsx swap); `do
 
 ## File-level partition
 
-### Batch 1 (82 files)
+### Batch 1 (93 files)
 
 - `apps/public-docsite-v9/src/AccessibilityScenarios/TabListOverflow.stories.tsx` — story-makeStyles (makeStyles,mergeClasses)
+- `apps/public-docsite-v9/src/Concepts/Accessibility/FocusIndicator.mdx` — doc (direct only)
 - `apps/public-docsite-v9/src/Concepts/Accessibility/LabellingExamples/ExampleFormErrorsMessages.stories.tsx` — story-makeStyles (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/Accessibility/LabellingExamples/Examples.stories.tsx` — story-makeStyles (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/AdvancedConfiguration.mdx` — doc (RendererProvider,createDOMRenderer)
@@ -63,6 +68,7 @@ conversion); `story-other-sym` = only mergeClasses/other symbol (clsx swap); `do
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Button.mdx` — doc (makeStyles,mergeClasses)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Card/Card.mdx` — doc (makeStyles,mergeClasses)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Divider.mdx` — doc (makeStyles)
+- `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Flex.mdx` — doc (direct only)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/FlexItem.mdx` — doc (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Grid.mdx` — doc (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Header.mdx` — doc (makeStyles)
@@ -82,15 +88,22 @@ conversion); `story-other-sym` = only mergeClasses/other symbol (clsx swap); `do
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Text.mdx` — doc (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Toolbar.mdx` — doc (makeStyles,mergeClasses,shorthands)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV0/Components/Tooltip.mdx` — doc (makeStyles)
+- `apps/public-docsite-v9/src/Concepts/Migration/FromV0/migrate-styles.mdx` — doc (direct only)
+- `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Button.mdx` — doc (direct only)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Card/CardFooter.mdx` — doc (makeStyles,shorthands)
+- `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Divider.mdx` — doc (direct only)
+- `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Flex/Flex.Stack.mdx` — doc (direct only)
+- `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Flex/Flex.StackItem.mdx` — doc (direct only)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Flex/utils.stories.tsx` — story-makeStyles (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Image/FitDifferences.styles.ts` — story-makeStyles (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Image/FitDifferences.tsx` — story-other-sym (mergeClasses)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Image/Image.mdx` — doc [direct @griffel] (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Input.mdx` — doc (makeStyles)
+- `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Menu.mdx` — doc (direct only)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/RadioGroup.mdx` — doc (makeStyles,shorthands)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Slider/Slider.mdx` — doc (makeStyles)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/SpinButton.mdx` — doc (makeStyles)
+- `apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Tabs.mdx` — doc (direct only)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ThemeColors/BrandColors.stories.tsx` — story-makeStyles (makeStyles,shorthands)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ThemeColors/ColorBlock.styles.ts` — story-makeStyles (makeStyles,shorthands)
 - `apps/public-docsite-v9/src/Concepts/Migration/FromV8/ThemeColors/ColorBlock.tsx` — story-other-sym (mergeClasses)
@@ -114,6 +127,8 @@ conversion); `story-other-sym` = only mergeClasses/other symbol (clsx swap); `do
 - `apps/public-docsite-v9/src/Concepts/SSR/NextJSAppDir.mdx` — doc [direct @griffel] (RendererProvider,createDOMRenderer,renderToStyleElements)
 - `apps/public-docsite-v9/src/Concepts/SSR/Remix.mdx` — doc [direct @griffel] (RendererProvider,createDOMRenderer,renderToStyleElements)
 - `apps/public-docsite-v9/src/Concepts/SSR/SSR.mdx` — doc (RendererProvider,createDOMRenderer,renderToStyleElements)
+- `apps/public-docsite-v9/src/Concepts/StylingComponents.mdx` — doc (direct only)
+- `apps/public-docsite-v9/src/Concepts/UnprocessedStyles.mdx` — doc (direct only)
 - `packages/charts/react-charts/stories/src/AreaChart/AreaChartDefault.stories.tsx` — story-makeStyles (makeStyles)
 - `packages/charts/react-charts/stories/src/AreaChart/AreaChartNegative..stories.tsx` — story-makeStyles (makeStyles)
 - `packages/charts/react-charts/stories/src/AreaChart/AreaChartSecondaryYAxis.stories.tsx` — story-makeStyles (makeStyles)
@@ -316,12 +331,14 @@ conversion); `story-other-sym` = only mergeClasses/other symbol (clsx swap); `do
 - `packages/react-components/react-drawer/stories/src/Drawer/InlineDrawer.stories.tsx` — story-makeStyles (makeStyles,mergeClasses)
 - `packages/react-components/react-drawer/stories/src/Drawer/OverlayInsideContainer.stories.tsx` — story-makeStyles (makeStyles)
 
-### Batch 4 (89 files)
+### Batch 4 (91 files)
 
 - `packages/react-components/react-field/stories/src/Field/FieldComponentExamples.stories.tsx` — story-makeStyles (makeResetStyles)
 - `packages/react-components/react-field/stories/src/Field/FieldRenderFunction.stories.tsx` — story-makeStyles (makeStyles)
 - `packages/react-components/react-field/stories/src/Field/FieldSize.stories.tsx` — story-makeStyles (makeResetStyles)
 - `packages/react-components/react-field/stories/src/Field/FieldValidationMessage.stories.tsx` — story-makeStyles (makeResetStyles)
+- `packages/react-components/react-headless-components-preview/stories/README.md` — doc (direct only)
+- `packages/react-components/react-headless-components-preview/stories/src/Menu/MenuDescription.md` — doc (direct only)
 - `packages/react-components/react-infolabel/stories/src/InfoLabel/InfoLabelSize.stories.tsx` — story-makeStyles (makeStyles)
 - `packages/react-components/react-input/stories/src/Input/InputAppearance.stories.tsx` — story-makeStyles (makeStyles,mergeClasses)
 - `packages/react-components/react-input/stories/src/Input/InputContentBeforeAfter.stories.tsx` — story-makeStyles (makeStyles)
