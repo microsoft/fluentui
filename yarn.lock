@@ -4473,17 +4473,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-icons@npm:^2.0.237, @fluentui/react-icons@npm:^2.0.239, @fluentui/react-icons@npm:^2.0.245, @fluentui/react-icons@npm:^2.0.306":
-  version: 2.0.311
-  resolution: "@fluentui/react-icons@npm:2.0.311"
+"@fluentui/react-icons@portal:../fluentui-system-icons/packages/react-icons::locator=%40fluentui%2Ffluentui-repo%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-icons@portal:../fluentui-system-icons/packages/react-icons::locator=%40fluentui%2Ffluentui-repo%40workspace%3A."
   dependencies:
-    "@griffel/react": "npm:^1.0.0"
     tslib: "npm:^2.1.0"
   peerDependencies:
     react: ">=16.8.0 <20.0.0"
-  checksum: 10c0/92374c68a5271afb4f8ed7e42e012bf422b3569aa0209216b65a2ec0d828bf011c1a6eccc438ff5fea7f49bf114df919ce2da861f3dcc21091025c1a4e430563
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "@fluentui/react-image-stories@workspace:packages/react-components/react-image/stories":
   version: 0.0.0-use.local
@@ -6771,7 +6769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/react@npm:^1.0.0, @griffel/react@npm:^1.5.32":
+"@griffel/react@npm:^1.5.32":
   version: 1.5.32
   resolution: "@griffel/react@npm:1.5.32"
   dependencies:
