@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-import { makeStyles, mergeClasses } from '@fluentui/react-components';
-
 import {
-  tokens,
   Button,
   Label,
   Checkbox,
@@ -27,6 +24,8 @@ import {
 import { MusicNote1Filled, InfoRegular, MoreHorizontalRegular } from '@fluentui/react-icons';
 
 import { Scenario } from './utils';
+
+import styles from './TabListOverflow.module.css';
 
 type SettingsTab = {
   id: string;
@@ -126,24 +125,7 @@ const OverflowMenu = (props: OverflowMenuProps) => {
   );
 };
 
-const useSettingsStyles = makeStyles({
-  settings: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    overflow: 'hidden',
-    padding: '5px',
-    zIndex: 0, //stop the browser resize handle from piercing the overflow menu
-  },
-  horizontal: {
-    height: 'fit-content',
-    minWidth: '150px',
-    resize: 'horizontal',
-    width: '300px',
-  },
-});
-
 export const MailSettingsOverflowTabList: React.FunctionComponent = () => {
-  const styles = useSettingsStyles();
-
   const [selectedTabValue, setSelectedTabValue] = React.useState<TabValue>('general');
 
   const onTabSelect = (tabId: string) => {
@@ -200,7 +182,7 @@ export const MailSettingsOverflowTabList: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Mail settings with overflow tablist">
       <h1>Settings</h1>
-      <div className={mergeClasses(styles.settings, styles.horizontal)}>
+      <div className={`${styles.settings} ${styles.horizontal}`}>
         <Overflow minimumVisible={2}>
           <TabList selectedValue={selectedTabValue} onTabSelect={(event, data) => onTabSelect(data.value as string)}>
             {tabs.map(tab => {

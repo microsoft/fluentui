@@ -1,19 +1,15 @@
 import * as React from 'react';
 
-import { Button, Input, Label, makeStyles } from '@fluentui/react-components';
+import { Button, Input, Label } from '@fluentui/react-components';
 
 import { useForm, Controller, OnSubmit } from 'react-hook-form';
 import { usePubSub, PubSubProvider as _PubSubProvider, Handler } from '@cactuslab/usepubsub';
+
+import styles from './ExampleFormErrorsMessages.module.css';
 // '@cactuslab/usepubsub' doesn't ship React 18 compatible types
 const PubSubProvider = _PubSubProvider as React.FC<
   React.PropsWithChildren<React.ComponentProps<typeof _PubSubProvider>>
 >;
-
-const useStyles = makeStyles({
-  formsButton: {
-    marginTop: '5px !important',
-  },
-});
 
 const regexes = {
   onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
@@ -118,7 +114,6 @@ interface FormExampleProps {
 const FormExample: React.FC<FormExampleProps> = ({ variant }) => {
   const fullNameId = `${variant}-fullName`;
   const emailId = `${variant}-email`;
-  const styles = useStyles();
 
   const { control, handleSubmit, errors, formState } = useForm<FormInputs>({
     validateCriteriaMode: 'all',

@@ -1,0 +1,44 @@
+/* Story styles for PositioningOverflowBoundaryRect, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.area {
+  border: 2px solid var(--colorStatusDangerBackground3);
+  padding: 60px 20px 20px 20px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+  position: relative;
+}
+
+.area::before {
+  content: 'Container';
+  position: absolute;
+  padding: var(--spacingHorizontalMNudge) var(--spacingHorizontalS);
+  top: 0;
+  left: 0;
+  color: var(--colorStatusDangerBackground1);
+  background-color: var(--colorStatusDangerBackground3);
+}
+
+.boundary {
+  width: 320px;
+  height: 320px;
+  outline: 2px solid var(--colorBrandBackground);
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  pointer-events: none;
+}
+
+.boundary::before {
+  content: 'Boundary';
+  position: absolute;
+  padding: var(--spacingHorizontalMNudge) var(--spacingHorizontalS);
+  top: 0;
+  left: 0;
+  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--colorBrandBackground);
+}

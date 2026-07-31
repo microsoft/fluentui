@@ -6,15 +6,20 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 Fluent UI React v9 supports Server-Side Rendering.
 
-> **Component CSS needs no SSR setup.** Fluent's component styles are a precompiled stylesheet
-> shipped in each package — import them once at your app root and they are in the document before
-> React runs, so there is nothing to extract, flush, or hydrate. Make sure
-> `@fluentui/react-tailwind-theme/styles.css` is imported too; without it the theme's custom
-> properties are missing and spacing collapses.
->
-> The setup below is still required for everything else: `SSRProvider` for stable generated ids,
-> `FluentProvider` for the theme, and the renderer for the theme's `<style>` tag and for any
-> `makeStyles` rules your own application still authors.
+**There is no style-extraction step.** Component styles are precompiled stylesheets shipped in each
+package, and the theme is one stylesheet (`@fluentui/react-tailwind-theme/styles.css`). Both are
+ordinary CSS: your bundler includes them in the page like any other stylesheet, so they are in the
+document before React runs. There is nothing to collect, flush, or rehydrate on the styling side —
+the server's only job is rendering markup.
+
+What SSR setup still consists of:
+
+- **`SSRProvider`** — makes generated ids stable between server and client so hydration matches.
+- **`FluentProvider`** — provides the theme. It renders its theme custom properties itself, on the
+  server and the client alike, so it needs no special wiring.
+- **Your stylesheets** — make sure the component CSS and `@fluentui/react-tailwind-theme/styles.css`
+  end up in the served page (a plain `import` at the app root is enough for every mainstream
+  bundler). Without the theme stylesheet the custom properties are missing and spacing collapses.
 
 ### Basic setup
 
@@ -28,57 +33,31 @@ yarn add @fluentui/react-components
 npm install @fluentui/react-components
 ```
 
-For any setup using SSR, you need to provide a `RendererProvider`, `SSRProvider` and `FluentProvider` in the root of your app. If these providers are not added, there will be issues when hydrating. See the following example:
+Wrap your app in `SSRProvider` and `FluentProvider` — identically on the server and the client:
 
 ```tsx
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {
-  createDOMRenderer,
-  RendererProvider,
-  renderToStyleElements,
-  FluentProvider,
-  webLightTheme,
-  SSRProvider,
-} from '@fluentui/react-components';
-
-const useExampleStyles = makeStyles({
-  root: {
-    color: 'red',
-  },
-});
-
-const ExampleComponent: React.FC = () => {
-  const classes = useExampleStyles();
-
-  return <div className={classes.root}>Hello world</div>;
-};
+import { Button, FluentProvider, webLightTheme, SSRProvider } from '@fluentui/react-components';
 
 const server = express();
 
 server.get('/', (req, res) => {
-  const renderer = createDOMRenderer();
-
   const html = ReactDOMServer.renderToString(
-    <RendererProvider renderer={renderer}>
-      <SSRProvider>
-        <FluentProvider theme={webLightTheme}>
-          <ExampleComponent />
-        </FluentProvider>
-      </SSRProvider>
-    </RendererProvider>,
+    <SSRProvider>
+      <FluentProvider theme={webLightTheme}>
+        <Button appearance="primary">Hello world</Button>
+      </FluentProvider>
+    </SSRProvider>,
   );
-
-  // Converting Fluent UI styles to style elements. 👇
-  const style = ReactDOMServer.renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>);
 
   res.write(`
   <!DOCTYPE html>
   <html>
     <head>
-      ${/* 👇 adding Fluent UI styles elements to output */}
-      ${style}
+      ${/* 👇 the app bundle's CSS — component styles and the theme stylesheet */ ''}
+      <link rel="stylesheet" href="/assets/app.css" />
     </head>
     <body>
       <div id="root">${html}</div>
@@ -90,3 +69,10 @@ server.get('/', (req, res) => {
 
 server.listen(3000, 'localhost');
 ```
+
+> **Migrating from an older setup?** `RendererProvider`, `createDOMRenderer` and
+> `renderToStyleElements` existed to extract [Griffel](https://griffel.js.org) CSS-in-JS rules
+> during SSR. Fluent's components no longer produce any, so that plumbing can simply be deleted. If
+> your own application still authors styles with the deprecated `makeStyles` re-export, Griffel's
+> own [SSR guide](https://griffel.js.org/react/guides/ssr-usage) covers extracting those rules until
+> you migrate them to CSS.

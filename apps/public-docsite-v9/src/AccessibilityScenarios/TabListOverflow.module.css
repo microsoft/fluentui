@@ -1,0 +1,16 @@
+/* Story styles for TabListOverflow, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.settings {
+  background-color: var(--colorNeutralBackground2);
+  overflow: hidden;
+  padding: 5px;
+  z-index: 0;
+}
+
+.horizontal {
+  height: fit-content;
+  min-width: 150px;
+  resize: horizontal;
+  width: 300px;
+}

@@ -1,0 +1,110 @@
+/* Story styles for SlotSketch, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-items: flex-start;
+  margin: 5px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-items: space-between;
+  background-color: var(--colorNeutralBackground3);
+  padding: 5px 20px;
+}
+
+.slot {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: 5px;
+  border-color: var(--colorNeutralStroke2);
+  border-style: dotted;
+  border-width: 3px;
+}
+
+.imageSlot {
+  width: 30px;
+  height: 30px;
+  margin: 5px 20px 5px 5px;
+}
+
+.image {
+  margin: 5px 20px 5px 5px;
+}
+
+.title {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase400);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-items: space-between;
+  flex-grow: 1;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  padding: 20px;
+}
+
+.component {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  border-radius: var(--borderRadiusMedium);
+  border-color: var(--colorNeutralStroke2);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.inputSketch {
+  width: 100px;
+}
+
+.contentSlot {
+  display: block;
+  border-color: var(--colorNeutralStroke2);
+  border-style: dotted;
+  border-width: 3px;
+}
+
+.input {
+  width: 210px;
+  min-height: 0;
+  padding: 0;
+}
+
+.urlBefore {
+  background-color: var(--colorNeutralBackground3);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase200);
+  padding: 10px 5px;
+}
+
+.urlAfter {
+  background-color: var(--colorNeutralBackground3);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase200);
+  padding: 10px 5px;
+}

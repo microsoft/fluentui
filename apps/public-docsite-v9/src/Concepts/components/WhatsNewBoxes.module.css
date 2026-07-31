@@ -1,0 +1,52 @@
+/* Story styles for WhatsNewBoxes, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.title {
+  margin-bottom: 32px;
+  margin-top: 0;
+  display: block;
+}
+
+.wrapper {
+  display: flex;
+}
+
+@media (max-width: 460px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}
+
+.whatsNew {
+  flex-basis: 100%;
+  margin-inline-end: 40px;
+}
+
+.whatsNew:last-child {
+  margin-bottom: 0;
+  margin-inline-end: 0;
+}
+
+@media (max-width: 900px) {
+  .whatsNew {
+    margin-inline-end: 20px;
+  }
+}
+
+@media (max-width: 460px) {
+  .whatsNew {
+    margin-bottom: 40px;
+    margin-inline-end: 0;
+  }
+}
+
+.box {
+  margin-bottom: 16px;
+  background-color: var(--colorNeutralBackground3);
+  border-radius: 16px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}

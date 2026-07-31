@@ -1,57 +1,14 @@
 import * as React from 'react';
 import type { PositioningImperativeRef, PositioningProps } from '@fluentui/react-components';
 
-import {
-  useId,
-  Text,
-  makeStyles,
-  tokens,
-  Popover,
-  Button,
-  PopoverTrigger,
-  PopoverSurface,
-} from '@fluentui/react-components';
+import { useId, Text, Popover, Button, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
+
+import styles from './PositioningListenToUpdates.module.css';
 
 // Derive the event type from PositioningProps instead of importing directly
 type OnPositioningEndEvent = Parameters<Exclude<PositioningProps['onPositioningEnd'], undefined>>[0];
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    gap: '20px',
-  },
-
-  button: {
-    display: 'block',
-    minWidth: '120px',
-  },
-
-  logContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  logLabel: {
-    color: tokens.colorNeutralForegroundOnBrand,
-    backgroundColor: tokens.colorBrandBackground,
-    width: 'fit-content',
-    fontWeight: tokens.fontWeightBold,
-    padding: '2px 12px',
-  },
-
-  log: {
-    overflowY: 'auto',
-    boxShadow: tokens.shadow16,
-    position: 'relative',
-    minWidth: '200px',
-    height: '200px',
-    border: `2px solid ${tokens.colorBrandBackground}`,
-    padding: '12px',
-  },
-});
-
 export const ListenToUpdates = () => {
-  const styles = useStyles();
   const labelId = useId();
   const [statusLog, setStatusLog] = React.useState<Array<{ timestamp: number; message: string }>>([]);
   const positioningRef = React.useRef<PositioningImperativeRef>(null);

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Button,
-  makeStyles,
   SpinButton,
   Menu,
   MenuTrigger,
@@ -17,20 +16,7 @@ import {
   PositioningProps,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  boundary: {
-    border: '2px dashed red',
-    width: '300px',
-    height: '300px',
-    overflow: 'auto',
-    resize: 'both',
-  },
-  trigger: {
-    display: 'block',
-    width: '150px',
-    margin: '200px auto',
-  },
-});
+import styles from './PositioningShiftToCoverTarget.module.css';
 
 const ResizableBoundary = React.forwardRef<
   HTMLDivElement,
@@ -52,8 +38,6 @@ const ResizableBoundary = React.forwardRef<
     }
   }, [onResize]);
 
-  const styles = useStyles();
-
   return (
     <div ref={useMergedRefs(ref, containerRef)} className={styles.boundary}>
       {children}
@@ -62,7 +46,6 @@ const ResizableBoundary = React.forwardRef<
 });
 
 export const CoverTargetForSmallViewport = () => {
-  const styles = useStyles();
   const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
 
   const [menuItemCount, setMenuItemCount] = React.useState(6);

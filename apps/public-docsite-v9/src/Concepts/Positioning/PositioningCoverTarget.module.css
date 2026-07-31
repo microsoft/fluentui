@@ -1,0 +1,148 @@
+/* Story styles for PositioningCoverTarget, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.popoverSurface {
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.target {
+  height: 50px;
+  width: 140px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  overflow: scroll;
+}
+
+.instructions {
+  text-align: center;
+}
+
+.targetContainer {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 64px);
+  gap: 20px;
+  margin: 16px 128px;
+}
+
+.aboveStart {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  flex-direction: row-reverse;
+}
+
+.above {
+  grid-row-start: 1;
+  grid-column-start: 2;
+  justify-content: center;
+}
+
+.above div:nth-child(2) {
+  display: none;
+}
+
+.aboveEnd {
+  grid-row-start: 1;
+  grid-column-start: 3;
+}
+
+.beforeTop {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  flex-direction: column-reverse;
+}
+
+.beforeTop div:nth-child(2) {
+  transform: rotate(270deg);
+}
+
+.before {
+  grid-row-start: 3;
+  grid-column-start: 1;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.before div:nth-child(2) {
+  display: none;
+}
+
+.beforeBottom {
+  grid-row-start: 4;
+  grid-column-start: 1;
+  flex-direction: column;
+}
+
+.beforeBottom div:nth-child(2) {
+  transform: rotate(270deg);
+}
+
+.afterTop {
+  grid-row-start: 2;
+  grid-column-start: 3;
+  flex-direction: column-reverse;
+}
+
+.afterTop div:nth-child(2) {
+  transform: rotate(90deg);
+}
+
+.after {
+  grid-row-start: 3;
+  grid-column-start: 3;
+  justify-content: center;
+}
+
+.after div:nth-child(2) {
+  display: none;
+}
+
+.afterBottom {
+  grid-row-start: 4;
+  grid-column-start: 3;
+  flex-direction: column;
+}
+
+.afterBottom div:nth-child(2) {
+  transform: rotate(90deg);
+}
+
+.belowStart {
+  flex-direction: row-reverse;
+  grid-row-start: 5;
+  grid-column-start: 1;
+}
+
+.belowStart div:nth-child(2) {
+  transform: rotate(180deg);
+}
+
+.below {
+  grid-row-start: 5;
+  grid-column-start: 2;
+  justify-content: center;
+}
+
+.below div:nth-child(2) {
+  display: none;
+}
+
+.belowEnd {
+  grid-row-start: 5;
+  grid-column-start: 3;
+}
+
+.belowEnd div:nth-child(2) {
+  transform: rotate(180deg);
+}

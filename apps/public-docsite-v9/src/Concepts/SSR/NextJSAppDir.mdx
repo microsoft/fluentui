@@ -6,6 +6,10 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 For basic instructions on getting Next.js set up, see [Getting Started](https://nextjs.org/docs/getting-started).
 
+**There is no style-extraction step.** Component styles are precompiled CSS; the server renders
+markup only. See
+[Basic setup](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs).
+
 1. Get a basic next.js setup running, rendering a page from the `app` folder, as guided by the tutorial.
 2. Add the Fluent UI dependencies: `@fluentui/react-components`.
 3. Add the SWC plugin to add the client directive for our library: `fluentui-next-appdir-directive`. See
@@ -27,44 +31,27 @@ npm install @fluentui/react-components fluentui-next-appdir-directive
 'use client';
 
 import * as React from 'react';
-import {
-  FluentProvider,
-  teamsDarkTheme,
-  SSRProvider,
-  RendererProvider,
-  createDOMRenderer,
-  renderToStyleElements,
-} from '@fluentui/react-components';
-import { useServerInsertedHTML } from 'next/navigation';
+import { FluentProvider, teamsDarkTheme, SSRProvider } from '@fluentui/react-components';
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const [renderer] = React.useState(() => createDOMRenderer());
-  const didRenderRef = React.useRef(false);
-
-  useServerInsertedHTML(() => {
-    if (didRenderRef.current) {
-      return;
-    }
-    didRenderRef.current = true;
-    return <>{renderToStyleElements(renderer)}</>;
-  });
-
   return (
-    <RendererProvider renderer={renderer}>
-      <SSRProvider>
-        <FluentProvider theme={teamsDarkTheme}>{children}</FluentProvider>
-      </SSRProvider>
-    </RendererProvider>
+    <SSRProvider>
+      <FluentProvider theme={teamsDarkTheme}>{children}</FluentProvider>
+    </SSRProvider>
   );
 }
 ```
 
-2. Modify the `layout.tsx` file under your `app` folder to add our providers:
+2. Modify the `layout.tsx` file under your `app` folder to add our providers and the theme
+   stylesheet:
 
 ```tsx
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+
+// 👇 the theme's custom properties — without this stylesheet spacing collapses
+import '@fluentui/react-tailwind-theme/styles.css';
 
 // 👇 import the providers
 import { Providers } from './providers';
@@ -88,13 +75,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-3. Add `fluentui-next-appdir-directive` plugin with the paths for `@griffel` and `@fluentui`:
+3. Add `fluentui-next-appdir-directive` plugin with the path for `@fluentui`:
 
 ```js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    swcPlugins: [['fluentui-next-appdir-directive', { paths: ['@griffel', '@fluentui'] }]],
+    swcPlugins: [['fluentui-next-appdir-directive', { paths: ['@fluentui'] }]],
   },
 };
 
@@ -111,3 +98,8 @@ export default function Home() {
   return <Button>Hello everyone</Button>;
 }
 ```
+
+> **Migrating from an older setup?** The `useServerInsertedHTML` / `createDOMRenderer` /
+> `renderToStyleElements` plumbing in `providers.tsx` existed to stream Griffel CSS-in-JS rules
+> into the server-rendered HTML. Fluent's components no longer produce any, so it can simply be
+> deleted, along with the `@griffel` entry in the SWC plugin's `paths`.

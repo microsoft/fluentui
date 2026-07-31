@@ -1,21 +1,12 @@
 import * as React from 'react';
-import { Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
+import { Combobox, Option, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
-    justifyItems: 'start',
-    gap: '2px',
-    maxWidth: '400px',
-  },
-});
+import styles from './PositioningFallbackPositions.module.css';
 
 export const FallbackPositions = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-default');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
-  const styles = useStyles();
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>

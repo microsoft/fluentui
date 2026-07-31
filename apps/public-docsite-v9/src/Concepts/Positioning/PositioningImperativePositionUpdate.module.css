@@ -1,0 +1,14 @@
+/* Story styles for PositioningImperativePositionUpdate, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  position: relative;
+}
+
+.button {
+  position: absolute;
+}
+
+.slider {
+  margin-bottom: 10px;
+}

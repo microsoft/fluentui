@@ -1,0 +1,6 @@
+/* Story styles for PositioningMatchTargetSize, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.target {
+  width: 350px;
+}

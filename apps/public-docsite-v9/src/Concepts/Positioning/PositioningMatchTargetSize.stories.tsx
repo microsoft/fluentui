@@ -1,14 +1,9 @@
 import * as React from 'react';
-import { Button, Popover, PopoverSurface, PopoverTrigger, makeStyles } from '@fluentui/react-components';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  target: {
-    width: '350px',
-  },
-});
+import styles from './PositioningMatchTargetSize.module.css';
 
 export const MatchTargetSize = () => {
-  const styles = useStyles();
   return (
     <Popover open positioning={{ matchTargetSize: 'width' }}>
       <PopoverTrigger disableButtonEnhancement>

@@ -1,0 +1,14 @@
+/* Story styles for Examples, converted from Griffel makeStyles (S-F batch 1).
+ * Token references are the CSS variables they compile to. */
+
+.visibleTextContainer {
+  margin-top: 10px;
+  display: flex;
+  width: 180px;
+  justify-content: space-between;
+}
+
+.divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

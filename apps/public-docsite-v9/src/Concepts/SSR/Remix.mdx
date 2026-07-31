@@ -4,11 +4,10 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # React Router 7/Remix setup
 
-> **Component CSS needs no build plugin.** Fluent's component styles are precompiled — import each
-> package's stylesheet (and `@fluentui/react-tailwind-theme/styles.css`) once at your app root. The
-> `@griffel/vite-plugin` step below only optimizes `makeStyles` rules your own application authors;
-> skip it if you have none. See
-> [Basic setup](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs).
+**Component CSS needs no build plugin and no style extraction.** Fluent's component styles are
+precompiled — import each package's stylesheet (and `@fluentui/react-tailwind-theme/styles.css`)
+once at your app root, and Vite serves them like any other CSS. See
+[Basic setup](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs).
 
 ## Installation
 
@@ -27,8 +26,8 @@ npx create-react-router@latest fluentui-react-router
 # Install Fluent UI core packages
 npm i @fluentui/react-components @fluentui/react-icons
 
-# Install required Vite plugins
-npm i vite-plugin-cjs-interop @griffel/vite-plugin -D
+# Install required Vite plugin
+npm i vite-plugin-cjs-interop -D
 ```
 
 ## Configuration
@@ -38,9 +37,8 @@ npm i vite-plugin-cjs-interop @griffel/vite-plugin -D
 ```ts
 // Import Vite plugins
 import { cjsInterop } from 'vite-plugin-cjs-interop';
-import griffel from '@griffel/vite-plugin';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(() => ({
   plugins: [
     reactRouter(), // or remix(),
     tsconfigPaths(),
@@ -49,8 +47,6 @@ export default defineConfig(({ command }) => ({
     cjsInterop({
       dependencies: ['@fluentui/react-components'],
     }),
-    // Add Griffel plugin for production optimization
-    command === 'build' && griffel(),
   ],
   // Required for Fluent UI icons in SSR
   ssr: {
@@ -59,11 +55,14 @@ export default defineConfig(({ command }) => ({
 }));
 ```
 
-2. Modify `app/root.tsx` to add Fluent UI providers:
+2. Modify `app/root.tsx` to add Fluent UI providers and the theme stylesheet:
 
 ```tsx
 // 1. Import Fluent UI dependencies
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+// 2. Import the theme's custom properties — without this stylesheet spacing collapses
+import '@fluentui/react-tailwind-theme/styles.css';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -73,8 +72,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        {/* 2. Add insertion point for Fluent UI styles before the </head>. */}
-        <meta name="fluentui-insertion-point" content="fluentui-insertion-point" />
       </head>
       <body>
         {/* 3. Wrap app content with FluentProvider */}
@@ -99,10 +96,11 @@ npx react-router reveal
 npx remix reveal
 ```
 
-- Update the `entry.client.tsx` to wrap the router with both `<RendererProvider>` and `<SSRProvider>`:
+- Update the `entry.client.tsx` to wrap the router with `<SSRProvider>` so generated ids match the
+  server's:
 
 ```tsx
-import { createDOMRenderer, RendererProvider, SSRProvider } from '@fluentui/react-components';
+import { SSRProvider } from '@fluentui/react-components';
 import { startTransition, StrictMode } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { HydratedRouter } from 'react-router/dom';
@@ -111,25 +109,18 @@ startTransition(() => {
   hydrateRoot(
     document,
     <StrictMode>
-      <RendererProvider renderer={createDOMRenderer()}>
-        <SSRProvider>
-          <HydratedRouter />
-        </SSRProvider>
-      </RendererProvider>
+      <SSRProvider>
+        <HydratedRouter />
+      </SSRProvider>
     </StrictMode>,
   );
 });
 ```
 
-- and then update the `entry.server.tsx`:
+- and then wrap the server router in `entry.server.tsx` the same way:
 
 ```tsx
-// 1. Import required Fluent UI SSR utilities
-import { createDOMRenderer, RendererProvider, renderToStyleElements, SSRProvider } from '@fluentui/react-components';
-
-// 2. Define constants for style injection
-const FLUENT_UI_INSERTION_POINT_TAG = `<meta name="fluentui-insertion-point" content="fluentui-insertion-point"/>`;
-const FLUENT_UI_INSERTION_TAG_REGEX = new RegExp(FLUENT_UI_INSERTION_POINT_TAG.replaceAll(' ', '(\\s)*'));
+import { SSRProvider } from '@fluentui/react-components';
 
 export default function handleRequest(
   request: Request,
@@ -137,47 +128,23 @@ export default function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
-  // 3. Create Fluent UI renderer
-  const renderer = createDOMRenderer();
-
-  // ...
-
   return new Promise((resolve, reject) => {
-    let shellRendered = false;
-    // 4. Track style extraction state
-    let isStyleExtracted = false;
-
     const { pipe, abort } = renderToPipeableStream(
-      // 5. Wrap RemixServer with Fluent UI providers
-      <RendererProvider renderer={renderer}>
-        <SSRProvider>
-          <ServerRouter context={routerContext} url={request.url} abortDelay={ABORT_DELAY} />
-          {/* or <RemixServer context={remixContext} url={request.url} /> */}
-        </SSRProvider>
-      </RendererProvider>,
+      <SSRProvider>
+        <ServerRouter context={routerContext} url={request.url} abortDelay={ABORT_DELAY} />
+        {/* or <RemixServer context={remixContext} url={request.url} /> */}
+      </SSRProvider>,
       {
-        [callbackName]: () => {
-          shellRendered = true;
-          const body = new PassThrough({
-            // 6. Transform stream to inject Fluent UI styles
-            transform(chunk, _, callback) {
-              const str = chunk.toString();
-              const style = renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>);
-
-              if (!isStyleExtracted && FLUENT_UI_INSERTION_TAG_REGEX.test(str)) {
-                chunk = str.replace(FLUENT_UI_INSERTION_TAG_REGEX, `${FLUENT_UI_INSERTION_POINT_TAG}${style}`);
-                isStyleExtracted = true;
-              }
-
-              callback(null, chunk);
-            },
-          });
-          // ...
-        }
-      }
+        // ... standard React Router / Remix streaming options, unchanged
+      },
+    );
   });
 }
 ```
+
+No transform stream, insertion-point `<meta>` tag, or style injection is needed — the stylesheets
+arrive through `<Links />` / the Vite bundle, and `FluentProvider` renders its own theme custom
+properties in the markup.
 
 ## Usage Example
 
@@ -204,15 +171,7 @@ export default function Index() {
 
 ### Common Issues
 
-1. **SSR Hydration Mismatch**
-
-```
-Text content does not match server-rendered HTML
-```
-
-Fix: Check style injection in `entry.server.tsx`.
-
-2. **Icons Not Rendering in SSR**
+1. **Icons Not Rendering in SSR**
 
 ```
 Error: No "exports" main defined in node_modules/@fluentui/react-icons/package.json
@@ -226,7 +185,7 @@ ssr: {
 }
 ```
 
-3. **Module Resolution Errors**
+2. **Module Resolution Errors**
 
 ```
 Cannot use import statement outside a module
@@ -240,7 +199,7 @@ cjsInterop({
 }),
 ```
 
-4. **Development Mode Warning**
+3. **Development Mode Warning**
 
 ```
 @fluentui/react-provider: There are conflicting ids in your DOM.
@@ -250,6 +209,10 @@ Configuration guide: https://aka.ms/fluentui-conflicting-ids
 
 This warning occurs in development due to [React's StrictMode double rendering](https://react.dev/reference/react/StrictMode#fixing-bugs-found-by-double-rendering-in-development). It can be safely ignored as it doesn't affect production builds.
 
-### Production Build Optimization
-
-For production builds, install and configure [`@griffel/vite-plugin`](https://griffel.js.org/react/ahead-of-time-compilation/with-vite) to enable build time pre-computing and transforming styles.
+> **Migrating from an older setup?** The `RendererProvider` wrappers, the
+> `fluentui-insertion-point` meta tag, the style-injecting transform stream in `entry.server.tsx`,
+> and `@griffel/vite-plugin` all existed to extract Griffel CSS-in-JS rules. Fluent's components no
+> longer produce any, so all of it can simply be deleted. If your own application still authors
+> styles with the deprecated `makeStyles` re-export, Griffel's
+> [SSR guide](https://griffel.js.org/react/guides/ssr-usage) covers those rules until you migrate
+> them to CSS.

@@ -1,23 +1,10 @@
 import * as React from 'react';
-import { Button, Popover, PopoverSurface, PopoverTrigger, Slider, Field, makeStyles } from '@fluentui/react-components';
+import { Button, Popover, PopoverSurface, PopoverTrigger, Slider, Field } from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    position: 'relative',
-  },
-
-  button: {
-    position: 'absolute',
-  },
-
-  slider: {
-    marginBottom: '10px',
-  },
-});
+import styles from './PositioningImperativePositionUpdate.module.css';
 
 export const ImperativePositionUpdate = () => {
-  const styles = useStyles();
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const [value, setValue] = React.useState(0);
 

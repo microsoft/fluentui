@@ -6,11 +6,10 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 For basic instructions on getting Next.js set up, see [Getting Started](https://nextjs.org/docs/getting-started).
 
-> **Component CSS needs no SSR wiring.** Import each package's precompiled stylesheet (and
-> `@fluentui/react-tailwind-theme/styles.css`) once at your app root — Next.js handles it like any
-> other CSS import. The renderer plumbing below remains for the theme's `<style>` tag and for any
-> `makeStyles` rules your own application authors. See
-> [Basic setup](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs).
+**Component CSS needs no SSR wiring.** Fluent's component styles and the theme stylesheet are
+ordinary CSS — import them once and Next.js handles them like any other stylesheet. No custom
+`_document.tsx` is required. See
+[Basic setup](?path=/docs/concepts-developer-server-side-rendering-basic-setup--docs).
 
 1. Get a basic next.js setup running, rendering a page from the `pages` folder, as guided by the tutorial.
 2. Add the Fluent UI dependencies: `@fluentui/react-components`.
@@ -25,118 +24,53 @@ npm install @fluentui/react-components
 
 ### Setting up Fluent UI
 
-1. Create a `_document.tsx` file under your `pages` folder with the following content:
+1. Create or modify a `_app.tsx` file under your `pages` folder with the following content:
 
 ```tsx
-import { createDOMRenderer, renderToStyleElements } from '@fluentui/react-components';
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-
-class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    // 👇 creates a renderer that will be used for SSR
-    const renderer = createDOMRenderer();
-    const originalRenderPage = ctx.renderPage;
-
-    ctx.renderPage = () =>
-      originalRenderPage({
-        enhanceApp: App =>
-          function EnhancedApp(props) {
-            const enhancedProps = {
-              ...props,
-              // 👇 this is required to provide a proper renderer instance
-              renderer,
-            };
-
-            return <App {...enhancedProps} />;
-          },
-      });
-
-    const initialProps = await Document.getInitialProps(ctx);
-    const styles = renderToStyleElements(renderer);
-
-    return {
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          {/* 👇 adding Fluent UI styles elements to output */}
-          {styles}
-        </>
-      ),
-    };
-  }
-
-  render() {
-    return (
-      <Html>
-        <Head />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
-
-export default MyDocument;
-```
-
-2. Create or modify a `_app.tsx` file under your `pages` folder with the following content:
-
-```tsx
-import {
-  createDOMRenderer,
-  FluentProvider,
-  GriffelRenderer,
-  SSRProvider,
-  RendererProvider,
-  webLightTheme,
-} from '@fluentui/react-components';
+import { FluentProvider, SSRProvider, webLightTheme } from '@fluentui/react-components';
 import type { AppProps } from 'next/app';
 
-type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
+// 👇 the theme's custom properties — without this stylesheet spacing collapses
+import '@fluentui/react-tailwind-theme/styles.css';
 
-function MyApp({ Component, pageProps, renderer }: EnhancedAppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    // 👇 Accepts a renderer from <Document /> or creates a default one
-    //    Also triggers rehydration a client
-    <RendererProvider renderer={renderer || createDOMRenderer()}>
-      <SSRProvider>
-        <FluentProvider theme={webLightTheme}>
-          <Component {...pageProps} />
-        </FluentProvider>
-      </SSRProvider>
-    </RendererProvider>
+    <SSRProvider>
+      <FluentProvider theme={webLightTheme}>
+        <Component {...pageProps} />
+      </FluentProvider>
+    </SSRProvider>
   );
 }
 
 export default MyApp;
 ```
 
-3. You should now be able to server render Fluent UI React components in any of your pages:
+2. You should now be able to server render Fluent UI React components in any of your pages. Styles
+   for the page itself are a CSS Module next to the page, referencing theme tokens as custom
+   properties:
+
+```css
+/* Home.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  border: 2px dashed var(--colorPaletteBerryBorder2);
+  border-radius: var(--borderRadiusMedium);
+  gap: 5px;
+  padding: 10px;
+}
+```
 
 ```tsx
-import { Button, makeStyles, shorthands, Title1, tokens } from '@fluentui/react-components';
+import { Button, Title1 } from '@fluentui/react-components';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '200px',
-
-    ...shorthands.border('2px', 'dashed', tokens.colorPaletteBerryBorder2),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.gap('5px'),
-    ...shorthands.padding('10px'),
-  },
-});
+import styles from './Home.module.css';
 
 const Home: NextPage = () => {
-  const styles = useStyles();
-
   return (
     <>
       <Head>
@@ -153,3 +87,8 @@ const Home: NextPage = () => {
 
 export default Home;
 ```
+
+> **Migrating from an older setup?** The `_document.tsx` renderer plumbing
+> (`createDOMRenderer` / `renderToStyleElements`) and the `RendererProvider` in `_app.tsx` existed
+> to extract Griffel CSS-in-JS rules during SSR. Fluent's components no longer produce any, so both
+> can simply be deleted.

@@ -1,25 +1,9 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface, Button, makeStyles, Checkbox } from '@fluentui/react-components';
+import { Popover, PopoverTrigger, PopoverSurface, Button, Checkbox } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  boundary: {
-    border: '2px dashed red',
-    padding: '20px',
-    width: '300px',
-    height: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'end',
-  },
-  trigger: {
-    display: 'block',
-    width: '150px',
-  },
-});
+import styles from './PositioningOverflowBoundary.module.css';
 
 export const OverflowBoundary = () => {
-  const styles = useStyles();
   const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
   const [open, setOpen] = React.useState(false);
 

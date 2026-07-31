@@ -4,31 +4,14 @@ import {
   PopoverTrigger,
   PopoverSurface,
   Button,
-  makeStyles,
   Checkbox,
   SpinButton,
   Label,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  boundary: {
-    border: '2px dashed red',
-    padding: '20px',
-    width: '300px',
-    height: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'end',
-  },
-  trigger: {
-    display: 'block',
-    width: '150px',
-    marginTop: '60px',
-  },
-});
+import styles from './PositioningOverflowBoundaryPadding.module.css';
 
 export const OverflowBoundaryPadding = () => {
-  const styles = useStyles();
   const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
   const [open, setOpen] = React.useState(false);
   const [padding, setPadding] = React.useState(8);

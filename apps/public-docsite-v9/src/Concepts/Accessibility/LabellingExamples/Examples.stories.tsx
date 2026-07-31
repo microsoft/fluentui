@@ -13,23 +13,11 @@ import {
   Avatar,
   Text,
   Divider,
-  makeStyles,
 } from '@fluentui/react-components';
 import { Send24Regular, Mic24Regular, PeopleRegular, PersonDelete24Regular } from '@fluentui/react-icons';
 import { FluentWapper } from './FluentUiWrapper.stories';
 
-const useStyles = makeStyles({
-  visibleTextContainer: {
-    marginTop: '10px',
-    display: 'flex',
-    width: '180px',
-    justifyContent: 'space-between',
-  },
-  divider: {
-    marginTop: '10px',
-    marginBottom: '10px',
-  },
-});
+import styles from './Examples.module.css';
 
 export const ActionAvoidBad = () => (
   <FluentWapper>
@@ -181,7 +169,6 @@ export const FocusTextAvoidBad = () => {
 };
 
 export const FocusTextAvoidGood = () => {
-  const styles = useStyles();
   return (
     <FluentWapper>
       <Text id="notificationText" block>
@@ -198,7 +185,6 @@ export const FocusTextAvoidGood = () => {
 };
 
 export const ReuseVisibleTextBad = () => {
-  const styles = useStyles();
   return (
     <FluentWapper>
       <h4>Members</h4>
@@ -212,7 +198,6 @@ export const ReuseVisibleTextBad = () => {
 };
 
 export const ReuseVisibleTextGood = () => {
-  const styles = useStyles();
   return (
     <FluentWapper>
       <h4>Members</h4>

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Button,
-  makeStyles,
   Checkbox,
   SpinButton,
   Label,
@@ -12,23 +11,9 @@ import {
   MenuItem,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  boundary: {
-    border: '2px dashed red',
-    width: '300px',
-    height: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  trigger: {
-    display: 'block',
-    width: '150px',
-  },
-});
+import styles from './PositioningAutoSize.module.css';
 
 export const AutoSizeForSmallViewport = () => {
-  const styles = useStyles();
   const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
   const [open, setOpen] = React.useState(false);
   const [menuItemCount, setMenuItemCount] = React.useState(10);
