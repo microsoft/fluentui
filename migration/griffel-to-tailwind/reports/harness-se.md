@@ -11,7 +11,7 @@ component library code, and packages' `stories/` trees (S-F). `apps/vr-tests` (v
 
 ## 1. VR harness (`apps/vr-tests-react-components`)
 
-### Converted — 21 files, Griffel → colocated `*.module.css` (12 new CSS files)
+### Converted — 21 files, Griffel → colocated `*.module.css` (20 new CSS files in this tree)
 
 Story-file contracts were preserved by keeping hook-shaped `useStyles = () => styles` exports
 where multiple stories consume a shared `utils` module, so consuming stories needed no edits
