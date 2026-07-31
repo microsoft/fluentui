@@ -18,7 +18,7 @@ describe('TabList', () => {
     // `component-has-static-classnames-object` asserts the exact `fui-<Component>` format the
     // conversion retired; `tabListClassNames` is now `{ root }` holding the group marker
     // (DECISIONS.md D16.5/D16.6) and `component-has-group-marker` (a default test) replaces it.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       'consistent-callback-args': {

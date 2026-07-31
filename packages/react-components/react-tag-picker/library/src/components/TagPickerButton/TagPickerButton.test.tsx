@@ -19,7 +19,6 @@ describe('TagPickerButton', () => {
     // The former `component-has-static-classnames-object` entry is dropped: that test left the
     // default set with DECISIONS.md D16.6 and this package no longer opts into it.
     // `component-has-group-marker` — the contract that DID replace it — now runs by default.
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

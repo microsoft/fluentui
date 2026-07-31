@@ -30,7 +30,6 @@ describe('TagPickerGroup', () => {
     // string, so the consumer's className is still last overall (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement — the promise the
     // pre-conversion comment here deferred until "react-tag-picker itself converts".
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -23,7 +23,7 @@ describe('Tab', () => {
     // marker (DECISIONS.md D16.5/D16.6) and `component-has-group-marker` (a default test)
     // replaces it. The `has-static-classnames` testOptions block that asserted the `icon` and
     // `content` statics went with it — those keys no longer exist.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 

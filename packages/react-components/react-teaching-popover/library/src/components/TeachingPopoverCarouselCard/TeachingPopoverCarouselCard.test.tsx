@@ -23,7 +23,6 @@ describe('TeachingPopoverCarouselCard', () => {
       // same reason `component-handles-classname` above is disabled — both assert against a
       // rendered root this suite does not resolve. `component-has-group-marker` (a default
       // test) does still run and pins the marker's placement.
-      'make-styles-overrides-win',
     ],
   });
 

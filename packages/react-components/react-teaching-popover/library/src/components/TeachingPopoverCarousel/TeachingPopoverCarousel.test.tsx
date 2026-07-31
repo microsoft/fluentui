@@ -19,7 +19,7 @@ describe('TeachingPopoverCarousel', () => {
     // `classname-overrides-win` passes here even though this component has no styles of its
     // own: the root carries the module's IDENTITY-ONLY local ahead of the marker (D16.2), so
     // there really is a class of its own for the consumer's to come after.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

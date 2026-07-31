@@ -17,7 +17,6 @@ describe('TagPickerOption', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last, then
     // `useOptionStyles_unstable` prepends Option's own classes and carries the whole string
     // through (DECISIONS.md D2/D9). `classname-overrides-win` is its cascade-native replacement.
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -23,7 +23,6 @@ describe('TableCell', () => {
     // it was called with the consumer className last; this component now composes with
     // clsx and never calls mergeClasses, so the test can no longer observe the contract.
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 

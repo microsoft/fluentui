@@ -16,7 +16,6 @@ describe('DataGridCell', () => {
     // it was called with the consumer className last; this component now composes with
     // clsx and never calls mergeClasses, so the test can no longer observe the contract.
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
     // This component renders another component's ROOT — a DataGridCell IS a TableCell — so the
     // element legitimately carries BOTH markers (DECISIONS.md D16.3). Declaring the whole set
     // keeps `component-has-group-marker` running as an exact set comparison, and keeps its

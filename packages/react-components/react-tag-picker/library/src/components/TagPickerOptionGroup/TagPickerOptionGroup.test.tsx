@@ -19,7 +19,6 @@ describe('TagPickerOptionGroup', () => {
     // unchanged: the consumer className is still last in the emitted string, and unlayered
     // consumer CSS still beats every `@layer fui.*` rule. `classname-overrides-win` is its
     // cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

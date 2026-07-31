@@ -20,7 +20,7 @@ describe('TeachingPopoverCarouselFooterButton', () => {
     //
     // `component-has-static-classnames-object` is disabled because the BEM statics are gone
     // (D16.1).
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // A TeachingPopoverCarouselFooterButton IS a react-button `Button` —
       // `useButtonStyles_unstable` stamps its marker on this same element — so this root

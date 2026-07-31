@@ -29,7 +29,6 @@ describe('TagPickerList', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last, and the
     // `<Listbox>` this slot renders as carries that whole string through as ITS last argument
     // (DECISIONS.md D2/D9). `classname-overrides-win` below is its cascade-native replacement.
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

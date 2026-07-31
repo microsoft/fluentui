@@ -24,7 +24,6 @@ describe('TagPicker', () => {
       // element, so there is nothing to stamp a marker on.
       'component-has-group-marker',
       // TagPicker does not have own styles
-      'make-styles-overrides-win',
     ],
   });
 

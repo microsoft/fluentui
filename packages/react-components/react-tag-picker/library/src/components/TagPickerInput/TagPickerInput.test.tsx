@@ -18,7 +18,6 @@ describe('TagPickerInput', () => {
     //
     // The former `component-has-static-classnames-object` entry is dropped: that test left the
     // default set with DECISIONS.md D16.6 and this package no longer opts into it.
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

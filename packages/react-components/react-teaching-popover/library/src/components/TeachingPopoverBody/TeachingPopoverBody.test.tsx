@@ -21,7 +21,7 @@ describe('TeachingPopoverBody', () => {
     // publishes BEM statics (DECISIONS.md D16.1): the test hard-codes the `fui-<Component>`
     // format and asserts those classes are rendered, both of which are exactly what D16
     // retires. `component-has-group-marker` (a default test) replaces it.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
