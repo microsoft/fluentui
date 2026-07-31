@@ -12,14 +12,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@ctrl/tinycolor": "^3.3.4",
+    "@ctrl/tinycolor": "^3.6.1",
     "@fluentui/fluent2-theme": "^8.107.154",
     "@fluentui/react": "^8.125.7",
     "@fluentui/react-components": "^9.74.4",
     "@fluentui/react-hooks": "^8.10.2",
-    "@fluentui/react-icons": "^2.0.245",
-    "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1"
+    "@fluentui/react-icons": "^2.0.334",
+    "@griffel/react": "^1.7.6",
+    "@swc/helpers": "^0.5.23"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

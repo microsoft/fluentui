@@ -15,6 +15,6 @@
     "update-sass-theme-files": "node ./scripts/generateDefaultThemeSassFiles.js"
   },
   "dependencies": {
-    "office-ui-fabric-core": "^11.0.0"
+    "office-ui-fabric-core": "^11.1.0"
   }
 }

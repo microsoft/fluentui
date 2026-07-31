@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.8",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.334",
     "@fluentui/react-jsx-runtime": "^9.4.4",
     "@fluentui/react-motion": "^9.16.1",
     "@fluentui/react-motion-components-preview": "^0.15.6",
@@ -21,8 +21,8 @@
     "@fluentui/react-tabster": "^9.26.16",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.5",
-    "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1"
+    "@griffel/react": "^1.7.6",
+    "@swc/helpers": "^0.5.23"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <20.0.0",

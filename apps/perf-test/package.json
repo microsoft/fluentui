@@ -16,9 +16,9 @@
     "@fluentui/example-data": "*",
     "@fluentui/react": "*",
     "@fluentui/scripts-perf-test-flamegrill": "*",
-    "@microsoft/load-themed-styles": "^1.10.26",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "@microsoft/load-themed-styles": "^1.10.295",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "tslib": "^2.1.0"
   }
 }

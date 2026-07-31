@@ -16,8 +16,8 @@
     "typescript": "^4.3.0"
   },
   "dependencies": {
-    "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1"
+    "@griffel/react": "^1.7.6",
+    "@swc/helpers": "^0.5.23"
   },
   "beachball": {
     "disallowedChangeTypes": [

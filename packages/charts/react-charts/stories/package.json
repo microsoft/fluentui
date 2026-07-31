@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "d3-format": "^3.0.0",
+    "d3-format": "^3.1.2",
     "d3-time-format": "^3.0.0"
   }
 }

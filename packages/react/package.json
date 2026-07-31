@@ -27,7 +27,7 @@
     "verify-packaging": "yarn run -T just-scripts verify-packaging"
   },
   "devDependencies": {
-    "office-ui-fabric-core": "^11.0.0"
+    "office-ui-fabric-core": "^11.1.0"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.6.11",
@@ -42,7 +42,7 @@
     "@fluentui/style-utilities": "^8.15.2",
     "@fluentui/theme": "^2.7.2",
     "@fluentui/utilities": "^8.17.2",
-    "@microsoft/load-themed-styles": "^1.10.26",
+    "@microsoft/load-themed-styles": "^1.10.295",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

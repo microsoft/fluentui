@@ -17,8 +17,8 @@
     "test": "yarn run -T just-scripts test"
   },
   "dependencies": {
-    "@microsoft/api-extractor-model": "7.31.2",
-    "@microsoft/tsdoc": "0.15.1",
+    "@microsoft/api-extractor-model": "7.33.10",
+    "@microsoft/tsdoc": "0.16.0",
     "fs-extra": "^8.1.0"
   }
 }

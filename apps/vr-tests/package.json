@@ -23,8 +23,8 @@
     "@fluentui/react-icons-mdl2": "*",
     "@fluentui/storybook": "*",
     "@fluentui/theme-samples": "*",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "tslib": "^2.1.0"
   }
 }

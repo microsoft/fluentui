@@ -13,7 +13,7 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.17.13",
     "@fluentui/react-button": "^9.10.1",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.334",
     "@fluentui/react-label": "^9.4.3",
     "@fluentui/react-link": "^9.8.3",
     "@fluentui/react-menu": "^9.25.1",
@@ -25,8 +25,8 @@
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-toast": "^9.8.1",
     "@fluentui/react-utilities": "^9.26.5",
-    "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1"
+    "@griffel/react": "^1.7.6",
+    "@swc/helpers": "^0.5.23"
   },
   "peerDependencies": {
     "@storybook/addon-docs": "^9.1.17",

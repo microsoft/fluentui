@@ -7,7 +7,7 @@
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-prettier": "*",
     "@fluentui/scripts-utils": "*",
-    "flamegrill": "0.2.0",
+    "flamegrill": "0.2.1",
     "just-scripts": "1.8.2"
   }
 }

@@ -13,12 +13,12 @@
     "lib-commonjs"
   ],
   "dependencies": {
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "cli-table3": "^0.6.5",
     "ejs": "^3.1.10",
     "find-up": "^5.0.0",
     "glob": "^11.0.1",
-    "pixelmatch": "^7.1.0",
+    "pixelmatch": "^7.2.0",
     "pngjs": "^7.0.0",
     "yargs": "^17.7.2"
   },

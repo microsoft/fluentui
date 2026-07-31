@@ -16,10 +16,10 @@
     ]
   },
   "dependencies": {
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "chalk": "^2.4.2",
     "lodash": "^4.18.1",
-    "react-docgen-typescript": "^2.1.0",
+    "react-docgen-typescript": "^2.4.0",
     "react-is": "^17.0.2"
   },
   "peerDependencies": {

@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.23"
   },
   "beachball": {
     "disallowedChangeTypes": [

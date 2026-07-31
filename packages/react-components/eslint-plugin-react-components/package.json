@@ -14,8 +14,8 @@
     "eslint-plugin-eslint-plugin": "6.4.0"
   },
   "dependencies": {
-    "@swc/helpers": "^0.5.1",
-    "@typescript-eslint/utils": "^8.46.2"
+    "@swc/helpers": "^0.5.23",
+    "@typescript-eslint/utils": "^8.65.0"
   },
   "peerDependencies": {
     "eslint": ">= 8.0.0",

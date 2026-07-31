@@ -10,13 +10,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/generator": "^7.12.13",
+    "@babel/core": "^7.29.7",
+    "@babel/generator": "^7.29.7",
     "@babel/helper-plugin-utils": "^7.12.13",
     "@babel/template": "^7.12.13",
-    "@babel/traverse": "^7.12.13",
-    "@emotion/hash": "^0.8.0",
-    "@swc/helpers": "^0.5.1",
+    "@babel/traverse": "^7.29.7",
+    "@emotion/hash": "^0.9.2",
+    "@swc/helpers": "^0.5.23",
     "find-up": "^5.0.0"
   },
   "peerDependencies": {
