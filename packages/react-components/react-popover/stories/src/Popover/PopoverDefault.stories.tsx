@@ -16,6 +16,7 @@ const ExampleContent = () => {
       <h3 className={styles.contentHeader}>Popover content</h3>
 
       <div>This is some popover content</div>
+      <Button>Action</Button>
     </div>
   );
 };
@@ -26,8 +27,7 @@ export const Default = (props: PopoverProps): JSXElement => (
       <Button>Popover trigger</Button>
     </PopoverTrigger>
 
-    {/* Use this labelling technique for very short popovers. Otherwise label by the heading if setting focus to the popover surface. */}
-    <PopoverSurface tabIndex={-1} id="popover-surface" aria-labelledby="popover-surface">
+    <PopoverSurface>
       <ExampleContent />
     </PopoverSurface>
   </Popover>

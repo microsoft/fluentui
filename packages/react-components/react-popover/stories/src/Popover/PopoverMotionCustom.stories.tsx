@@ -18,10 +18,10 @@ export const MotionCustom = (): JSXElement => (
       <Button>Open popover</Button>
     </PopoverTrigger>
 
-    {/* Use this labelling technique for very short popovers. Otherwise label by the heading if setting focus to the popover surface. */}
-    <PopoverSurface tabIndex={-1} id="popover-surface" aria-labelledby="popover-surface">
+    <PopoverSurface>
       <h3 style={{ marginTop: 0 }}>Popover content</h3>
       <p>This popover fades in and blurs out.</p>
+      <Button>Action</Button>
     </PopoverSurface>
   </Popover>
 );

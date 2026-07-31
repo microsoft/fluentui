@@ -20,11 +20,10 @@ const ExampleContent = () => {
   const styles = useStyles();
   return (
     <div>
-      <h3 className={styles.contentHeader} id="popover-title">
-        Popover content
-      </h3>
+      <h3 className={styles.contentHeader}>Popover content</h3>
 
       <div>This is some popover content</div>
+      <Button>Action</Button>
     </div>
   );
 };
@@ -39,7 +38,7 @@ export const Appearance = (): JSXElement => {
           <Button>Default appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface tabIndex={-1} aria-labelledby="popover-title">
+        <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
@@ -49,7 +48,7 @@ export const Appearance = (): JSXElement => {
           <Button>Brand appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface tabIndex={-1} aria-labelledby="popover-title">
+        <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
@@ -59,7 +58,7 @@ export const Appearance = (): JSXElement => {
           <Button>Inverted appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface tabIndex={-1} aria-labelledby="popover-title">
+        <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
