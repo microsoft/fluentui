@@ -2,7 +2,9 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+// Griffel → Tailwind + CSS Modules migration (S-G): `createCustomFocusIndicatorStyle` was
+// deleted from @fluentui/react-tabster. Its output for this call site is inlined below,
+// verbatim — this deprecated package intentionally stays on Griffel.
 import type { AlertSlots, AlertState } from './Alert.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -79,13 +81,12 @@ const useIntentIconStylesInverted = makeStyles({
 const useActionButtonColorInverted = makeStyles({
   action: {
     color: tokens.colorBrandForegroundInverted,
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-        outlineColor: tokens.colorNeutralBackground5Pressed,
-      },
-      { enableOutline: true },
-    ),
+    // Inlined `createCustomFocusIndicatorStyle({...}, { enableOutline: true })` output
+    // (`enableOutline` was already a deprecated no-op in the factory).
+    '&[data-fui-focus-visible]': {
+      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      outlineColor: tokens.colorNeutralBackground5Pressed,
+    },
   },
 });
 

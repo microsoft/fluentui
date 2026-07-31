@@ -7,13 +7,11 @@
 import { dispatchGroupperMoveFocusEvent } from 'tabster';
 import { dispatchMoverMoveFocusEvent } from 'tabster';
 import { EventsTypes } from 'tabster';
-import type { GriffelStyle } from '@griffel/react';
 import { GroupperMoveFocusActions } from 'tabster';
 import { GroupperMoveFocusEvent } from 'tabster';
 import { GroupperMoveFocusEventName } from 'tabster';
 import { KEYBORG_FOCUSIN } from 'keyborg';
 import { KeyborgFocusInEvent } from 'keyborg';
-import type { makeResetStyles } from '@griffel/react';
 import { MoverKeys } from 'tabster';
 import { MoverMemorizedElementEvent } from 'tabster';
 import { MoverMemorizedElementEventName } from 'tabster';
@@ -26,27 +24,6 @@ import { Types } from 'tabster';
 
 // @internal (undocumented)
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
-
-// @public
-export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector: selectorType, customizeSelector, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
-
-// @public (undocumented)
-export interface CreateCustomFocusIndicatorStyleOptions {
-    customizeSelector?: (selector: string) => string;
-    // @deprecated
-    enableOutline?: boolean;
-    selector?: 'focus' | 'focus-within';
-}
-
-// @public
-export const createFocusOutlineStyle: ({ enableOutline, selector, customizeSelector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
-
-// @public (undocumented)
-export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIndicatorStyleOptions, 'enableOutline'> {
-    enableOutline?: boolean;
-    // (undocumented)
-    style?: Partial<FocusOutlineStyleOptions>;
-}
 
 // @public (undocumented)
 interface CrossOriginAPI {
@@ -491,17 +468,6 @@ const FocusInEventName = "tabster:focusin";
 
 // @public (undocumented)
 const FocusOutEventName = "tabster:focusout";
-
-// @public (undocumented)
-export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
-
-// @public (undocumented)
-export type FocusOutlineStyleOptions = {
-    outlineRadius: string;
-    outlineColor: string;
-    outlineWidth: string;
-    outlineOffset?: string | FocusOutlineOffset;
-};
 
 // @public (undocumented)
 type GetTabster = () => TabsterCore;

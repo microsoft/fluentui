@@ -48,9 +48,11 @@ export type {
   FluentProviderSlots,
   FluentProviderState,
 } from '@fluentui/react-provider';
+// Griffel → Tailwind + CSS Modules migration (S-G): `createCustomFocusIndicatorStyle` /
+// `createFocusOutlineStyle` (+ their option types below) are removed — the Griffel
+// focus-ring factories were deleted from @fluentui/react-tabster (DECISIONS.md D6; shared
+// focus-ring CSS utilities replace them).
 export {
-  createCustomFocusIndicatorStyle,
-  createFocusOutlineStyle,
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
@@ -65,8 +67,6 @@ export {
   useUncontrolledFocus,
 } from '@fluentui/react-tabster';
 export type {
-  CreateCustomFocusIndicatorStyleOptions,
-  CreateFocusOutlineStyleOptions,
   UseArrowNavigationGroupOptions,
   UseFocusableGroupOptions,
   UseModalAttributesOptions,

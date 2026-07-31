@@ -2,7 +2,9 @@
 
 'use client';
 
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+// Griffel → Tailwind + CSS Modules migration (S-G): `createFocusOutlineStyle` was deleted
+// from @fluentui/react-tabster. Its default output is inlined below, verbatim — this
+// deprecated package intentionally stays on Griffel.
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -96,7 +98,37 @@ const useButtonStyles = makeStyles({
     },
   },
 
-  focusIndicator: createFocusOutlineStyle(),
+  // Inlined `createFocusOutlineStyle()` default output.
+  focusIndicator: {
+    ':focus': {
+      outlineStyle: 'none',
+    },
+    ':focus-visible': {
+      outlineStyle: 'none',
+    },
+    '&[data-fui-focus-visible]': {
+      ...shorthands.borderColor('transparent'),
+      '@media (forced-colors: active)': {
+        '::after': {
+          ...shorthands.borderColor('Highlight'),
+        },
+      },
+      '::after': {
+        content: '""',
+        position: 'absolute',
+        pointerEvents: 'none',
+        zIndex: 1,
+
+        border: `2px solid ${tokens.colorStrokeFocus2}`,
+        borderRadius: tokens.borderRadiusMedium,
+
+        top: 'calc(2px * -1)',
+        right: 'calc(2px * -1)',
+        bottom: 'calc(2px * -1)',
+        left: 'calc(2px * -1)',
+      },
+    },
+  },
 
   large: {
     ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingVerticalXXS),
