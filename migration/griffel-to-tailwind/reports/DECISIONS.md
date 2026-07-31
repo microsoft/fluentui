@@ -1156,3 +1156,56 @@ selectors. 25 further test files carry hand-written inline `class="fui-…"` ass
 layer-for-layer identical, so any pixel diff is a bug, not a baseline** — with one named
 exception to watch: react-button's ten icon rules move from a descendant selector to a
 `group-*`-scoped one (D16.3), which is the only structural selector change in the phase.
+
+## D20 — react-provider core specials: Fluent-owned CSP nonce; TextDirectionProvider removed (S-G, 2026-07-31)
+
+The griffel-zero plan's decision table split D20 in two; this records the implemented shape.
+
+### D20.1 — CSP nonce: a `nonce` prop on FluentProvider + internal inheritance context
+
+Griffel's `useRenderer_unstable().styleElementAttributes` was the channel through which a
+consumer-configured CSP nonce reached the theme-variables `<style>` element — the only style
+element Fluent creates at runtime (component CSS ships as static css-modules assets, covered
+by a CSP's `style-src` source lists, not nonces). The replacement is Fluent-owned and minimal:
+
+- **`FluentProviderProps.nonce?: string`** — applied to the client-side theme `<style>` tag
+  (`useFluentProviderThemeStyleTag`) and to the SSR-rendered style element
+  (`state.serverStyleProps.attributes`).
+- **`StyleNonceContext`** (react-provider internal, NOT exported): each FluentProvider
+  provides its resolved nonce; nested providers default their `nonce` prop to the inherited
+  value. This preserves the old "configure once at the app root" ergonomics of
+  `RendererProvider(createDOMRenderer(document, { styleElementAttributes: { nonce } }))`.
+  A nested provider may override the inherited nonce with its own prop.
+- `FluentProviderContextValues` gains `styleTagNonce: string | undefined` (the render
+  function's channel to the context provider); `FluentProviderState` gains optional `nonce`.
+- `useFluentProviderThemeStyleTag`'s options change from
+  `{ theme, targetDocument, rendererAttributes: Record<string, string> }` to
+  `Pick<FluentProviderState, 'theme' | 'targetDocument' | 'nonce'>` — the attributes bag only
+  ever carried the nonce. **Breaking** for direct callers of this `@internal` hook.
+- The `nonce` prop is stripped from the root slot's DOM spread (it is a global HTML
+  attribute and would otherwise leak onto the provider `<div>`).
+
+Not chosen: adding nonce to `react-shared-contexts`' `ProviderContextValue` (cross-package
+API for a single-package need), and a standalone public `StyleNonceProvider` export (YAGNI —
+export it only if another Fluent-created style element ever appears).
+
+### D20.2 — `TextDirectionProvider` removed with no replacement
+
+`@griffel/react`'s `TextDirectionProvider` fed Griffel's RTL style flipping only. First-party
+CSS flips via the rendered `dir` attribute + logical properties / `:dir(rtl)` (D5), and
+`@fluentui/react-icons` keeps its own `IconDirectionContextProvider` (still rendered).
+In-repo consumers of Griffel's direction context: zero (verified by grep — the only match was
+renderFluentProvider itself). Consumer-authored Griffel styles no longer auto-flip under
+FluentProvider — deliberately part of the same compat break as D19/S-H.
+`FluentProviderContextValues.textDirection` is removed with it (**breaking**, `_unstable`
+surface; `dir` on the provider context is unchanged and remains the source of truth).
+
+### D20.3 — S-G / S-H boundary for the remaining Griffel API
+
+react-provider itself re-exported nothing from Griffel, so S-G leaves **no** re-export shims:
+after S-G the package has zero `@griffel/*` imports and zero `@griffel/*` dependencies. The
+umbrella's `RendererProvider` / `createDOMRenderer` / `renderToStyleElements` / `makeStyles`
+etc. re-exports (D7 surface, 12 symbols + 3 types + `wyw-in-js` block) remain untouched and
+are S-H scope (D19). The tabster focus-ring factories and their umbrella re-exports were
+deleted in S-G (evaluation §8 places them there) — that is the only umbrella surface S-G
+touches.

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-07-30",
+  "updated": "2026-07-31",
   "phase": "4-report",
   "completionStamp": {
     "date": "2026-07-30",
@@ -625,5 +625,13 @@
     "gates": "Batch 7: 8 story projects tsc+lint green (zero warnings; 1 dangling tokens import removed); docsite gates n/a (no docsite files touched); package jest skipped (no test imports touched stories, verified); VR n/a; 30/30 Griffel-symbol sweep clean (existence + known-dirty VR MakeStyles.stories.tsx positive control). Full-surface closure sweep: 561/561 accounted (547 clean + 13 documented survivors + 1 D21 deletion). Batch 6: 13 story projects tsc+lint green (zero warnings; 1 dangling tokens import removed; 2 css selector repairs were invisible to tsc/lint — caught by css inspection); docsite gates n/a (no docsite files touched); package jest skipped (no test imports touched stories, verified); VR n/a; 85/85 Griffel-symbol sweep clean (existence + batch-7 positive control). Batch 5: 7 story projects tsc+lint green (zero warnings; 5 NEW lint-class defects fixed pre-gate — use-client demotion in all 5 standalone .styles.ts, same class as batch 4); docsite gates n/a (no docsite files touched); package jest skipped (no test imports touched stories, verified); VR n/a; 87/87 Griffel-symbol sweep clean (existence + control checks). Batch 4: 10 story projects tsc+lint green (zero warnings; 2 NEW tsc errors + 7 NEW lint errors introduced by codemod fixed — 'use client' demotion in standalone .styles.ts, css-import collision with pre-existing v8 styles const, mergeClasses single-conditional string|false); docsite gates n/a (no docsite files touched; 6 of 7 INFRA-1c pragma files converted with pragmas preserved, INFRA-1c untested); package jest skipped (no test imports touched stories, verified); VR n/a; 91/91 Griffel-symbol sweep clean. Batch 3: 7 story projects tsc+lint green (zero warnings); docsite gates n/a (no docsite files touched); package jest skipped (no test imports touched stories, verified); VR n/a; 88/88 Griffel-symbol sweep clean. Batch 2: 8 story projects tsc+lint green; docsite tsc+lint+jest green; docsite build-storybook FULL green (exit 0, INFRA-1c did not reproduce); package jest skipped (no test imports touched stories, verified); VR n/a. charts-stories tsc+lint green; docsite tsc+lint+jest green; docsite build-storybook FULL green (INFRA-1c did not reproduce); VR n/a",
     "report": "reports/sf-batch1.md, reports/sf-batch2.md, reports/sf-batch3.md, reports/sf-batch4.md, reports/sf-batch5.md, reports/sf-batch6.md, reports/sf-batch7.md (incl. retro audit + closure)",
     "status": "COMPLETE"
+  },
+  "sgCoreSpecials": {
+    "date": "2026-07-31",
+    "scope": "griffel-zero S-G: react-provider CSP nonce (D20.1) + TextDirectionProvider removal (D20.2); react-tabster focus-factory deletion; react-positioning GriffelStyle type swap",
+    "result": "react-provider zero @griffel/* (imports+deps): nonce prop + internal StyleNonceContext replaces useRenderer_unstable, TextDirectionProvider removed (zero in-repo direction-context consumers); tabster factories deleted (2 deprecated callers inlined verbatim, umbrella re-exports removed); positioning types swapped to PositioningStyleObject + static-assets tsconfig.spec seam fix; docsite CSP + focus-indicator pages updated. Gates: jest green 6 projects (react-provider 46/46 incl. 5 nonce-path tests), type-check+lint green, api.md regenerated x4, ssr-tests-v9 full run + scripts-test-ssr 12/12 green, VR full sweep 73/73 sets / 4654 shots zero-diff on fresh --skip-nx-cache build (calendar-compat clean without using its 26px ceiling; RTL evidence: react-menu 22 + react-avatar 6 RTL shots clean)",
+    "deferred": "umbrella 12 Griffel re-exports + 3 types + wyw-in-js + dep (D19/S-H); react-conformance-griffel (D23/S-H); babel preset/eslint rules/root devDeps (S-H); react-migration-v0-v9 mixins (triage disposition); jest.preset.js griffel serializer + remaining entries (S-I); provenance comments (S-I)",
+    "report": "reports/sg-core-specials.md",
+    "decisions": "DECISIONS.md D20 (D20.1-D20.3)"
   }
 }
