@@ -20,6 +20,8 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement |
   state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-icon-position'] = state.icon ? state.iconPosition : undefined;
 
   return state;
 };

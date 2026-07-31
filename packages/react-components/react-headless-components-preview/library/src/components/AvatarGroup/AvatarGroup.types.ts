@@ -1,7 +1,11 @@
-export type {
-  AvatarGroupBaseProps as AvatarGroupProps,
-  AvatarGroupBaseState as AvatarGroupState,
-  AvatarGroupContextValue,
-  AvatarGroupContextValues,
-  AvatarGroupSlots,
-} from '@fluentui/react-avatar';
+import type { AvatarGroupBaseProps, AvatarGroupBaseState } from '@fluentui/react-avatar';
+
+export type { AvatarGroupContextValue, AvatarGroupContextValues, AvatarGroupSlots } from '@fluentui/react-avatar';
+
+export type AvatarGroupProps = AvatarGroupBaseProps;
+
+export type AvatarGroupState = AvatarGroupBaseState & {
+  root: {
+    'data-layout'?: AvatarGroupBaseState['layout'];
+  };
+};

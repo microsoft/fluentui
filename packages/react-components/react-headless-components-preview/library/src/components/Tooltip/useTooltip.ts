@@ -21,6 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
+import { stringifyDataAttribute } from '../../utils';
 
 /**
  * Create the state required to render Tooltip.
@@ -69,6 +70,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
   state.content.id = useId('tooltip-', state.content.id);
+  state.content['data-visible'] = stringifyDataAttribute(state.visible);
 
   const contentRef = useMergedRefs(state.content.ref, containerRef);
   state.content.ref = contentRef;

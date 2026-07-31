@@ -20,6 +20,10 @@ export const useSpinButton = (props: SpinButtonProps, ref: React.Ref<HTMLInputEl
   state.root['data-spin-state'] = state.spinState !== 'rest' ? state.spinState : undefined;
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-at-bound'] = state.atBound !== 'none' ? state.atBound : undefined;
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-invalid'] = stringifyDataAttribute(
+    state.input['aria-invalid'] === true || state.input['aria-invalid'] === 'true',
+  );
 
   return state;
 };
