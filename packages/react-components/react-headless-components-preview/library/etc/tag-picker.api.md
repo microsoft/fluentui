@@ -218,7 +218,7 @@ export { useTagPickerContextValues }
 export const useTagPickerControl: (props: TagPickerControlProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlState;
 
 // @public (undocumented)
-export function useTagPickerFilter({ filter, noOptionsElement, renderOption, query, options, }: UseTagPickerFilterConfig): JSXElement[];
+export function useTagPickerFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseTagPickerFilterConfig): JSXElement[];
 
 // @public
 export const useTagPickerGroup: (props: TagPickerGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerGroupState;

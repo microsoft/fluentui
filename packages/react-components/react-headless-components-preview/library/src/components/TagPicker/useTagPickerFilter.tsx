@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { useTagPickerFilter as useStyledTagPickerFilter } from '@fluentui/react-tag-picker';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { TagPickerOption } from './TagPickerOption';
@@ -23,11 +22,32 @@ function defaultRenderOption(option: string): JSXElement {
 }
 
 export function useTagPickerFilter({
-  filter,
+  filter: filterOverride,
   noOptionsElement,
   renderOption = defaultRenderOption,
   query,
   options,
 }: UseTagPickerFilterConfig): JSXElement[] {
-  return useStyledTagPickerFilter({ filter, noOptionsElement, renderOption, query, options });
+  const defaultFilter = React.useCallback(
+    (option: string) => {
+      const trimmedQuery = query.trim();
+      return trimmedQuery === '' || option.toLowerCase().includes(trimmedQuery.toLowerCase());
+    },
+    [query],
+  );
+  const filter = filterOverride ?? defaultFilter;
+  const filteredOptions = React.useMemo(
+    () =>
+      options.reduce<JSXElement[]>((accumulator, option, index) => {
+        if (filter(option, index)) {
+          accumulator.push(renderOption(option));
+        }
+        return accumulator;
+      }, []),
+    [options, renderOption, filter],
+  );
+
+  return filteredOptions.length === 0
+    ? [noOptionsElement.key ? noOptionsElement : React.cloneElement(noOptionsElement, { key: 'no-options' })]
+    : filteredOptions;
 }

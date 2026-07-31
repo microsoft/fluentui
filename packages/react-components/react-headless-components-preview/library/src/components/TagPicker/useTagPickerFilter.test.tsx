@@ -1,43 +1,10 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { useTagPickerFilter as useStyledTagPickerFilter } from '@fluentui/react-tag-picker';
 
 import { useTagPickerFilter } from '../../tag-picker';
 import { TagPickerOption } from './TagPickerOption';
 
-jest.mock('@fluentui/react-tag-picker', () => {
-  const actual = jest.requireActual('@fluentui/react-tag-picker');
-
-  return {
-    ...actual,
-    useTagPickerFilter: jest.fn(actual.useTagPickerFilter),
-  };
-});
-
-const useStyledTagPickerFilterMock = useStyledTagPickerFilter as jest.MockedFunction<typeof useStyledTagPickerFilter>;
-
 describe('useTagPickerFilter', () => {
-  beforeEach(() => {
-    useStyledTagPickerFilterMock.mockClear();
-  });
-
-  it('delegates filtering to the styled TagPicker hook', () => {
-    const noOptionsElement = <TagPickerOption value="no-options">No options</TagPickerOption>;
-
-    renderHook(() =>
-      useTagPickerFilter({
-        query: '',
-        options: ['Cat'],
-        noOptionsElement,
-      }),
-    );
-
-    expect(useStyledTagPickerFilterMock).toHaveBeenCalledTimes(1);
-    expect(useStyledTagPickerFilterMock).toHaveBeenCalledWith(
-      expect.objectContaining({ renderOption: expect.any(Function) }),
-    );
-  });
-
   it('renders headless TagPickerOption elements by default', () => {
     const noOptionsElement = <TagPickerOption value="no-options">No options</TagPickerOption>;
     const { result } = renderHook(() =>
