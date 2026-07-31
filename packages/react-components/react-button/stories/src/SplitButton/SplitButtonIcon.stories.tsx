@@ -1,32 +1,15 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  makeStyles,
-  Menu,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  SplitButton,
-  Tooltip,
-} from '@fluentui/react-components';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton, Tooltip } from '@fluentui/react-components';
 import { CalendarMonthRegular, FilterRegular } from '@fluentui/react-icons';
 import type { MenuButtonProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: {
-    columnGap: '15px',
-    display: 'flex',
-    minWidth: 'min-content',
-  },
-});
+import styles from './SplitButtonIcon.module.css';
 
 export const Icon = (): JSXElement => {
   const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
     HTMLButtonElement | HTMLAnchorElement | null
   >(null);
-
-  const styles = useStyles();
 
   return (
     <div className={styles.wrapper}>

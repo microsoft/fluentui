@@ -1,23 +1,16 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, ToggleButton, Tooltip } from '@fluentui/react-components';
+import { ToggleButton, Tooltip } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+import styles from './ToggleButtonIcon.module.css';
 
-const useStyles = makeStyles({
-  wrapper: {
-    columnGap: '15px',
-    display: 'flex',
-    minWidth: 'min-content',
-  },
-});
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export const Icon = (): JSXElement => {
   const [checked1, setChecked1] = React.useState(false);
   const [checked2, setChecked2] = React.useState(false);
   const [checked3, setChecked3] = React.useState(false);
-  const styles = useStyles();
 
   const toggleChecked = React.useCallback(
     (buttonIndex: number) => {

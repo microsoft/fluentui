@@ -1,19 +1,12 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, ToggleButton } from '@fluentui/react-components';
+import { ToggleButton } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: {
-    columnGap: '15px',
-    display: 'flex',
-    minWidth: 'min-content',
-  },
-});
+import styles from './ToggleButtonAppearanceAccessible.module.css';
 
 export const AccessibleAppearance = (): JSXElement => {
   const [checked1, setChecked1] = React.useState(false);
   const [checked2, setChecked2] = React.useState(false);
-  const styles = useStyles();
 
   const toggleChecked = React.useCallback(
     (buttonIndex: number) => {

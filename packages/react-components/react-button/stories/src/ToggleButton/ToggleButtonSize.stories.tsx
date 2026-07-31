@@ -1,19 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, ToggleButton } from '@fluentui/react-components';
+import { ToggleButton } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: {
-    alignItems: 'center',
-    columnGap: '15px',
-    display: 'flex',
-    minWidth: 'min-content',
-  },
-});
+import styles from './ToggleButtonSize.module.css';
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.wrapper}>
       <ToggleButton size="small">Size: small</ToggleButton>
