@@ -5,20 +5,6 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
-    groups:
-      github-actions-minor-patch:
-        patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      github-actions-security:
-        applies-to: security-updates
-        patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
 
   # npm dependencies - weekly minor and patch updates
   - package-ecosystem: 'npm'
@@ -31,25 +17,3 @@ updates:
       # Ignore major version bumps for scheduled npm version updates
       - dependency-name: '*'
         update-types: ['version-update:semver-major']
-    groups:
-      production-dependencies:
-        dependency-type: 'production'
-        patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      development-dependencies:
-        dependency-type: 'development'
-        patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      security-dependencies:
-        applies-to: security-updates
-        patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
