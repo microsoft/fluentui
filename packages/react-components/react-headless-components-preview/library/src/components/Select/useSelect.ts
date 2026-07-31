@@ -20,6 +20,10 @@ export const useSelect = (props: SelectProps, ref: React.Ref<HTMLSelectElement>)
   // Set data attribute for disabled state to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.select.disabled);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-invalid'] = stringifyDataAttribute(
+    state.select['aria-invalid'] === true || state.select['aria-invalid'] === 'true',
+  );
 
   return state;
 };

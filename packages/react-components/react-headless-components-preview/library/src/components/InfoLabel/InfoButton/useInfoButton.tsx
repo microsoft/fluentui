@@ -14,6 +14,7 @@ import {
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import { Popover, PopoverSurface } from '../../Popover';
 import type { PopoverProps } from '../../Popover';
+import { stringifyDataAttribute } from '../../../utils';
 
 /**
  * Create the state required to render InfoButton.
@@ -66,6 +67,7 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   });
 
   state.popover.open = popoverOpen;
+  state.root['data-open'] = stringifyDataAttribute(popoverOpen);
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (_e, data) => setPopoverOpen(data.open));
 
   const infoRef = useMergedRefs(state.info.ref);

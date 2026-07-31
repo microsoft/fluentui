@@ -17,4 +17,10 @@ export type TextareaProps = TextareaBaseProps;
 /**
  * Textarea component state
  */
-export type TextareaState = TextareaBaseState;
+export type TextareaState = TextareaBaseState & {
+  root: {
+    'data-disabled'?: string;
+    'data-invalid'?: string;
+    'data-resize'?: TextareaBaseState['resize'];
+  };
+};
