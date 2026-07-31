@@ -12,38 +12,9 @@ import {
   DialogSurface,
   DialogTrigger,
   Image,
-  makeStyles,
-  tokens,
-  typographyStyles,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  surface: {
-    padding: 0,
-    border: 'none',
-    overflow: 'hidden',
-  },
-  carousel: { padding: 0 },
-  card: {},
-  footer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: 'auto',
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL}`,
-  },
-  header: {
-    display: 'block',
-    // We use margin instead of padding to avoid messing with the focus indicator in the header
-    margin: `${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL}`,
-    ...typographyStyles.subtitle1,
-  },
-  text: {
-    display: 'block',
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL}`,
-    ...typographyStyles.body1,
-  },
-});
+import styles from './CarouselFirstRunExperience.module.css';
 
 const PAGES = [
   {
@@ -67,7 +38,6 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
 };
 
 export const FirstRunExperience = (): JSXElement => {
-  const styles = useStyles();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [open, setModalOpen] = React.useState(false);
   const totalPages = PAGES.length;

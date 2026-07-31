@@ -1,4 +1,4 @@
-import { makeStyles, Image, CarouselSlider } from '@fluentui/react-components';
+import { Image, CarouselSlider } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselCard,
@@ -10,23 +10,9 @@ import {
 import * as React from 'react';
 import type { JSXElement, CarouselAnnouncerFunction } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  viewport: {
-    /* Optional: Prevent image from overlapping the 'overlay-expanded' controls */
-    marginBottom: '72px',
-  },
-  card: {
-    boxSizing: 'border-box',
-    width: '100%',
-    /*  Optional: Padding provides a buffer space for the 'overlay-expanded' next/prev buttons without cutting off viewport */
-    paddingLeft: '52px',
-    paddingRight: '52px',
-    overflow: 'hidden',
-  },
-  image: {
-    width: '100%',
-  },
-});
+import styles from './CarouselImageBox.module.css';
+
+const useClasses = () => styles;
 
 type ImageDefinition = {
   previewUrl: string;

@@ -1,10 +1,7 @@
 import {
   Body1,
   Divider,
-  makeStyles,
-  mergeClasses,
   Title1,
-  tokens,
   Tooltip,
   Toolbar,
   ToolbarButton,
@@ -15,84 +12,9 @@ import { Carousel, CarouselButton, CarouselCard, CarouselViewport } from '@fluen
 import * as React from 'react';
 import type { JSXElement, CarouselAnnouncerFunction } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  carousel: {
-    display: 'grid',
-    gridTemplateColumns: '1fr auto 1fr',
-    gridTemplateRows: '1fr auto',
-    gap: '10px',
-    placeItems: 'center',
-  },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px',
-  },
-  viewport: {
-    overflow: 'hidden',
-  },
-  footer: {
-    display: 'flex',
-    gap: '10px',
+import styles from './CarouselControlled.module.css';
 
-    alignSelf: 'center',
-    justifySelf: 'center',
-    width: 'max-content',
-
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-
-    padding: '10px',
-  },
-  controls: {
-    padding: 0,
-  },
-  controlButton: {
-    minWidth: '32px',
-  },
-  code: {
-    display: 'flex',
-    placeItems: 'center',
-    padding: '4px 8px',
-
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-
-    backgroundColor: tokens.colorNeutralBackground4,
-    borderRadius: tokens.borderRadiusMedium,
-  },
-
-  wireframe: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-    placeContent: 'center',
-
-    padding: '40px',
-    height: '200px',
-
-    position: 'relative',
-  },
-  wireframeEven: {
-    backgroundColor: tokens.colorBrandBackground2,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandStroke1}`,
-  },
-  wireframeInfo: {
-    position: 'absolute',
-    right: '12px',
-    top: '12px',
-
-    backgroundColor: tokens.colorPaletteRedBackground2,
-    border: `${tokens.strokeWidthThin} dotted ${tokens.colorPaletteRedBorder2}`,
-
-    fontSize: tokens.fontSizeBase200,
-    padding: '4px 8px',
-  },
-});
+const useClasses = () => styles;
 
 const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
   return `Carousel slide ${index + 1} of ${totalSlides}`;
@@ -104,7 +26,7 @@ const WireframeContent: React.FC<{
   const classes = useClasses();
 
   return (
-    <div className={mergeClasses(classes.wireframe, props.index % 2 === 0 && classes.wireframeEven)}>
+    <div className={[classes.wireframe, props.index % 2 === 0 && classes.wireframeEven].filter(Boolean).join(' ')}>
       <div className={classes.wireframeInfo}>
         <code>index: {props.index}</code>
       </div>

@@ -1,0 +1,79 @@
+/* Story styles for CarouselActionCards, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  box-shadow: var(--shadow16);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 10px;
+  min-height: 100px;
+}
+
+.carousel {
+  flex: 1;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-bottom: none;
+  border-radius: var(--borderRadiusMedium);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 10px;
+}
+
+.field {
+  flex: 1;
+  grid-template-columns: minmax(100px, max-content) 1fr;
+}
+
+.dropdown {
+  min-width: 100px;
+  width: 1fr;
+}
+
+.actionCard {
+  border-radius: var(--borderRadiusLarge);
+  overflow: hidden;
+  text-align: center;
+  max-width: 350px;
+  margin: 0px 6px;
+  box-shadow: var(--shadow16);
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.image {
+  max-height: 200px;
+}
+
+.imageButton {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+  width: auto;
+  align-content: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,36 @@
+/* Story styles for CarouselDefault, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.bannerCard {
+  align-content: center;
+  height: 450px;
+  text-align: left;
+  position: relative;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  left: 10%;
+  top: 25%;
+  background: var(--colorNeutralBackground1);
+  padding: 18px;
+  max-width: 270px;
+  width: 50%;
+}
+
+.title {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero800);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero800);
+}
+
+.subtext {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+}

@@ -17,24 +17,15 @@ import {
   RadioGroup,
   Radio,
   useId,
-  tokens,
-  makeStyles,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import story from './DialogBackdropAppearance.md';
 
-const useStyles = makeStyles({
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalS,
-    marginBottom: tokens.spacingVerticalL,
-  },
-});
+import styles from './DialogBackdropAppearance.module.css';
 
 type BackdropAppearanceOption = 'dimmed' | 'transparent';
 
 export const BackdropAppearance = (): JSXElement => {
-  const styles = useStyles();
   const labelId = useId('backdrop-appearance-label');
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);

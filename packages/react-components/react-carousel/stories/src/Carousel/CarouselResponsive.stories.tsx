@@ -1,13 +1,4 @@
-import {
-  Body1,
-  Caption1,
-  makeStyles,
-  mergeClasses,
-  tokens,
-  Title1,
-  Subtitle2,
-  CarouselSlider,
-} from '@fluentui/react-components';
+import { Body1, Caption1, Title1, Subtitle2, CarouselSlider } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselCard,
@@ -19,51 +10,9 @@ import {
 import * as React from 'react';
 import type { JSXElement, CarouselAnnouncerFunction } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  slider: {
-    gap: '10px',
-  },
-  wireframe: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+import styles from './CarouselResponsive.module.css';
 
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-    placeContent: 'center',
-
-    padding: '40px',
-    height: '200px',
-
-    position: 'relative',
-  },
-  wireframeEven: {
-    backgroundColor: tokens.colorBrandBackground2,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandStroke1}`,
-  },
-  wireframeInfo: {
-    position: 'absolute',
-    right: '12px',
-    top: '12px',
-
-    backgroundColor: tokens.colorPaletteRedBackground2,
-    border: `${tokens.strokeWidthThin} dotted ${tokens.colorPaletteRedBorder2}`,
-
-    fontSize: tokens.fontSizeBase200,
-    padding: '4px 8px',
-  },
-  wireframeSmall: {
-    minWidth: '100px',
-    padding: '40px 20px',
-  },
-  wireframeMedium: {
-    minWidth: '200px',
-    padding: '40px 20px',
-  },
-  wireframeLarge: {
-    minWidth: '350px',
-  },
-});
+const useClasses = () => styles;
 
 const WireframeContent: React.FC<{
   appearance: 'odd' | 'even';
@@ -74,13 +23,15 @@ const WireframeContent: React.FC<{
 
   return (
     <div
-      className={mergeClasses(
+      className={[
         classes.wireframe,
         props.appearance === 'even' && classes.wireframeEven,
         props.size === 'small' && classes.wireframeSmall,
         props.size === 'medium' && classes.wireframeMedium,
         props.size === 'large' && classes.wireframeLarge,
-      )}
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
       <div className={classes.wireframeInfo}>
         <code>size: {props.size ?? 'auto'}</code>

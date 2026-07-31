@@ -1,0 +1,88 @@
+/* Story styles for CarouselEventing, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.carousel {
+  border: 2px solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 20px 0;
+  margin-top: 24px;
+}
+
+.card {
+  margin: 10px;
+}
+
+.logLabel {
+  align-self: end;
+  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--colorBrandBackground);
+  width: fit-content;
+  font-weight: var(--fontWeightBold);
+  padding: 2px 12px;
+  border-radius: var(--borderRadiusMedium) var(--borderRadiusMedium) 0 0;
+}
+
+.log {
+  overflow-y: auto;
+  box-shadow: var(--shadow16);
+  min-width: 240px;
+  flex: 1;
+  border: 2px solid var(--colorBrandBackground);
+  border-radius: var(--borderRadiusMedium) 0 var(--borderRadiusMedium) var(--borderRadiusMedium);
+  padding: 12px;
+  max-height: 250px;
+}
+
+.logContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  filter: drop-shadow(0 0 4px var(--colorNeutralStroke1));
+}
+
+.wireframe {
+  background-color: var(--colorNeutralBackground3);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  place-content: center;
+  padding: 40px;
+  height: 100px;
+  position: relative;
+}
+
+.wireframeEven {
+  background-color: var(--colorBrandBackground2);
+  border: var(--strokeWidthThin) solid var(--colorBrandStroke1);
+}
+
+.wireframeInfo {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background-color: var(--colorPaletteRedBackground2);
+  border: var(--strokeWidthThin) dotted var(--colorPaletteRedBorder2);
+  font-size: var(--fontSizeBase200);
+  padding: 4px 8px;
+}
+
+.wireframeSmall {
+  min-width: 100px;
+  padding: 40px 20px;
+}
+
+.wireframeMedium {
+  min-width: 200px;
+  padding: 40px 20px;
+}
+
+.wireframeLarge {
+  min-width: 350px;
+}

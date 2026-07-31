@@ -1,0 +1,18 @@
+/* Story styles for CarouselImageBox, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.viewport {
+  margin-bottom: 72px;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  padding-inline-end: 52px;
+  padding-inline-start: 52px;
+}
+
+.image {
+  width: 100%;
+}

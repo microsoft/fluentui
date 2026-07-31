@@ -1,0 +1,43 @@
+/* Story styles for ColorPickerDefault, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.previewColor {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+@media (forced-colors: active) {
+  .previewColor {
+    forced-color-adjust: none;
+  }
+}
+
+.inputFields {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.colorFieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  width: 96px;
+}
+
+.spinButton {
+  min-width: 60px;
+}

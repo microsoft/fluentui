@@ -2,13 +2,11 @@ import * as React from 'react';
 import type { JSXElement, ColorPickerProps } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
-  makeStyles,
   Button,
   SwatchPicker,
   EmptySwatch,
   ColorSwatch,
   Label,
-  tokens,
   ColorPicker,
   ColorSlider,
   AlphaSlider,
@@ -16,41 +14,7 @@ import {
 } from '@fluentui/react-components';
 import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    width: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  previewColor: {
-    width: '50px',
-    height: '50px',
-    borderRadius: tokens.borderRadiusMedium,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    margin: `${tokens.spacingVerticalMNudge} 0`,
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-  button: {
-    marginRight: tokens.spacingHorizontalS,
-  },
-  input: {
-    display: 'block',
-    margin: `${tokens.spacingVerticalSNudge} 0`,
-  },
-  row: {
-    display: 'flex',
-    gap: '10px',
-    justifyContent: 'space-between',
-  },
-  sliders: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '80%',
-  },
-});
+import styles from './ColorAndSwatchPicker.module.css';
 
 const ITEMS_LIMIT = 8;
 const DEFAULT_SELECTED_VALUE = '2be700';
@@ -59,7 +23,6 @@ const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 const DEFAULT_SELECTED_COLOR = tinycolor(DEFAULT_COLOR_HSV).toHex();
 
 export const ColorAndSwatchPicker = (): JSXElement => {
-  const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [selectedValue, setSelectedValue] = React.useState(DEFAULT_SELECTED_VALUE);
   const [selectedColor, setSelectedColor] = React.useState(DEFAULT_SELECTED_COLOR);

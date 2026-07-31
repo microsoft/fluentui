@@ -1,0 +1,38 @@
+/* Story styles for CarouselNavDefault, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  box-shadow: var(--shadow16);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 10px;
+  min-height: 100px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-bottom: none;
+  border-radius: var(--borderRadiusMedium);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 10px;
+}
+
+.sliderField {
+  flex: 1;
+  grid-template-columns: max-content 1fr;
+}

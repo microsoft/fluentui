@@ -10,25 +10,15 @@ import {
   DialogTitle,
   DialogTrigger,
   Field,
-  makeStyles,
   motionTokens,
   Slider,
   Switch,
-  tokens,
 } from '@fluentui/react-components';
 import description from './DialogMotionCustom.stories.md';
 
-const useStyles = makeStyles({
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    marginBottom: tokens.spacingVerticalL,
-    padding: tokens.spacingVerticalM,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-  },
-});
+import styles from './DialogMotionCustom.module.css';
+
+const useStyles = () => styles;
 
 export const MotionCustom = (): JSXElement => {
   const classes = useStyles();

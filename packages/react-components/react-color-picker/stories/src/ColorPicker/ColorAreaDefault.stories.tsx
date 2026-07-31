@@ -1,32 +1,14 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, makeStyles, tokens, ColorArea } from '@fluentui/react-components';
+import { Button, ColorArea } from '@fluentui/react-components';
 import type { ColorAreaProps } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 
-const useStyles = makeStyles({
-  example: {
-    width: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  previewColor: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '4px',
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-});
+import styles from './ColorAreaDefault.module.css';
 
 const DEFAULT_COLOR_HSV = { h: 324, s: 0.5, v: 0.5, a: 1 };
 
 export const ColorAreaDefault = (): JSXElement => {
-  const styles = useStyles();
-
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [namedColor, setNamedColor] = React.useState('');
 

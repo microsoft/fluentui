@@ -1,15 +1,4 @@
-import {
-  Button,
-  makeStyles,
-  tokens,
-  Image,
-  Persona,
-  Dropdown,
-  Option,
-  Switch,
-  Field,
-  CarouselSlider,
-} from '@fluentui/react-components';
+import { Button, Image, Persona, Dropdown, Option, Switch, Field, CarouselSlider } from '@fluentui/react-components';
 import { MoreHorizontalRegular, DocumentLinkRegular } from '@fluentui/react-icons';
 import {
   Carousel,
@@ -22,81 +11,11 @@ import {
 import * as React from 'react';
 import type { JSXElement, CarouselAnnouncerFunction, CarouselProps } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'minmax(0, 1fr)',
-    gridTemplateRows: 'auto 1fr',
-    boxShadow: tokens.shadow16,
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
+import styles from './CarouselActionCards.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 0,
+const useClasses = () => styles;
 
-    padding: '10px',
-    minHeight: '100px',
-  },
-  carousel: {
-    flex: 1,
-    padding: '20px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderBottom: 'none',
-    borderRadius: tokens.borderRadiusMedium,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-    gridTemplateColumns: 'minmax(100px, max-content) 1fr',
-  },
-  dropdown: {
-    minWidth: '100px',
-    width: '1fr',
-  },
-});
-
-const useCardClasses = makeStyles({
-  actionCard: {
-    borderRadius: tokens.borderRadiusLarge,
-    overflow: 'hidden',
-    textAlign: 'center',
-    maxWidth: '350px',
-    margin: '0px 6px',
-    boxShadow: tokens.shadow16,
-  },
-  imageContainer: {
-    position: 'relative',
-  },
-  image: {
-    maxHeight: '200px',
-  },
-  imageButton: {
-    position: 'absolute',
-    left: '12px',
-    bottom: '12px',
-  },
-  info: {
-    display: 'flex',
-    flexDirection: 'row',
-    padding: '12px',
-    width: 'auto',
-    alignContent: 'center',
-    justifyContent: 'space-between',
-  },
-});
+const useCardClasses = () => styles;
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 

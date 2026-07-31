@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
-  makeStyles,
   Button,
   Popover,
   PopoverSurface,
@@ -14,37 +13,11 @@ import {
 } from '@fluentui/react-components';
 import type { ColorPickerProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    width: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  previewColor: {
-    margin: '10px 0',
-    width: '50px',
-    height: '50px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-  row: {
-    display: 'flex',
-    gap: '10px',
-  },
-  sliders: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
+import styles from './ColorPickerPopup.module.css';
 
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
 export const ColorPickerPopup = (): JSXElement => {
-  const styles = useStyles();
   const [previewColor, setPreviewColor] = React.useState(DEFAULT_COLOR_HSV);
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
 

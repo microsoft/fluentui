@@ -11,20 +11,12 @@ import {
   Button,
   Input,
   Label,
-  makeStyles,
 } from '@fluentui/react-components';
 import story from './DialogWithForm.md';
 
-const useStyles = makeStyles({
-  content: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-});
+import styles from './DialogWithForm.module.css';
 
 export const WithForm = (): JSXElement => {
-  const styles = useStyles();
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault();
     alert('form submitted!');

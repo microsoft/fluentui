@@ -1,0 +1,8 @@
+/* Story styles for DialogBackdropAppearance, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.field {
+  display: grid;
+  grid-row-gap: var(--spacingVerticalS);
+  margin-bottom: var(--spacingVerticalL);
+}

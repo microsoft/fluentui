@@ -1,4 +1,4 @@
-import { Button, CarouselSlider, Image, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { Button, CarouselSlider, Image } from '@fluentui/react-components';
 import type { CarouselAnnouncerFunction } from '@fluentui/react-components';
 import {
   Carousel,
@@ -11,85 +11,9 @@ import {
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-const useClasses = makeStyles({
-  bannerCard: {
-    alignContent: 'center',
-    borderRadius: tokens.borderRadiusXLarge,
-    boxShadow: tokens.shadow16,
-    height: '450px',
-    textAlign: 'left',
-    position: 'relative',
-  },
-  image: {
-    borderRadius: 'inherit',
-  },
-  cardContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingHorizontalS,
+import styles from './CarouselTopNavigation.module.css';
 
-    position: 'absolute',
-    left: '10%',
-    top: '25%',
-    borderRadius: tokens.borderRadiusLarge,
-    boxShadow: tokens.shadow8,
-    background: tokens.colorNeutralBackground1,
-    padding: `${tokens.spacingHorizontalXXL} ${tokens.spacingVerticalXXXL}`,
-    maxWidth: '270px',
-    width: '50%',
-  },
-  title: {
-    ...typographyStyles.title3,
-  },
-  subtext: {
-    marginBottom: tokens.spacingVerticalM,
-    ...typographyStyles.body1,
-  },
-  container: {
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridTemplateRows: 'auto 1fr',
-  },
-  card: {
-    minHeight: '100px',
-  },
-  carousel: {
-    flex: 1,
-    paddingBottom: tokens.spacingVerticalXL,
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalSNudge,
-
-    padding: `${tokens.spacingHorizontalMNudge} ${tokens.spacingVerticalMNudge}`,
-  },
-  field: {
-    flex: 1,
-    gridTemplateColumns: 'minmax(100px, max-content) 1fr',
-  },
-  dropdown: {
-    maxWidth: 'max-content',
-  },
-  carouselHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: tokens.spacingVerticalSNudge,
-    marginBottom: tokens.spacingHorizontalL,
-  },
-  carouselHeaderTitle: {
-    flex: '1',
-    margin: '0',
-    fontSize: tokens.fontSizeBase600,
-    fontWeight: tokens.fontWeightSemibold,
-  },
-  carouselNavigation: { width: 'fit-content', alignSelf: 'center', margin: '0' },
-  slider: {
-    gap: tokens.spacingVerticalXXL,
-    padding: `0 ${tokens.spacingVerticalXXL}`,
-  },
-});
+const useClasses = () => styles;
 
 const IMAGES = [
   'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',

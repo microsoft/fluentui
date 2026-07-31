@@ -1,14 +1,4 @@
-import {
-  Body1,
-  Caption1,
-  makeStyles,
-  mergeClasses,
-  tokens,
-  Title1,
-  Subtitle2,
-  useId,
-  CarouselSlider,
-} from '@fluentui/react-components';
+import { Body1, Caption1, Title1, Subtitle2, useId, CarouselSlider } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselCard,
@@ -21,87 +11,9 @@ import {
 import * as React from 'react';
 import type { JSXElement, CarouselAnnouncerFunction } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    gap: '20px',
-  },
-  carousel: {
-    border: `2px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '20px 0',
-    marginTop: '24px',
-  },
-  card: {
-    margin: '10px',
-  },
-  logLabel: {
-    alignSelf: 'end',
-    color: tokens.colorNeutralForegroundOnBrand,
-    backgroundColor: tokens.colorBrandBackground,
-    width: 'fit-content',
-    fontWeight: tokens.fontWeightBold,
-    padding: '2px 12px',
-    borderRadius: `${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium} 0 0`,
-  },
-  log: {
-    overflowY: 'auto',
-    boxShadow: tokens.shadow16,
-    minWidth: '240px',
-    flex: 1,
-    border: `2px solid ${tokens.colorBrandBackground}`,
-    borderRadius: `${tokens.borderRadiusMedium} 0 ${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium}`,
-    padding: '12px',
-    maxHeight: '250px',
-  },
-  logContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    filter: `drop-shadow(0 0 4px ${tokens.colorNeutralStroke1})`,
-  },
-  wireframe: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+import styles from './CarouselEventing.module.css';
 
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-    placeContent: 'center',
-
-    padding: '40px',
-    height: '100px',
-
-    position: 'relative',
-  },
-  wireframeEven: {
-    backgroundColor: tokens.colorBrandBackground2,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandStroke1}`,
-  },
-  wireframeInfo: {
-    position: 'absolute',
-    right: '12px',
-    top: '12px',
-
-    backgroundColor: tokens.colorPaletteRedBackground2,
-    border: `${tokens.strokeWidthThin} dotted ${tokens.colorPaletteRedBorder2}`,
-
-    fontSize: tokens.fontSizeBase200,
-    padding: '4px 8px',
-  },
-  wireframeSmall: {
-    minWidth: '100px',
-    padding: '40px 20px',
-  },
-  wireframeMedium: {
-    minWidth: '200px',
-    padding: '40px 20px',
-  },
-  wireframeLarge: {
-    minWidth: '350px',
-  },
-});
+const useClasses = () => styles;
 
 const WireframeContent: React.FC<{
   appearance: 'odd' | 'even';
@@ -113,13 +25,15 @@ const WireframeContent: React.FC<{
   return (
     <div
       tabIndex={0}
-      className={mergeClasses(
+      className={[
         classes.wireframe,
         props.appearance === 'even' && classes.wireframeEven,
         props.size === 'small' && classes.wireframeSmall,
         props.size === 'medium' && classes.wireframeMedium,
         props.size === 'large' && classes.wireframeLarge,
-      )}
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
       <div className={classes.wireframeInfo}>
         <code>size: {props.size ?? 'auto'}</code>

@@ -1,0 +1,44 @@
+/* Story styles for ColorAndSwatchPicker, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.previewColor {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--borderRadiusMedium);
+  border: 1px solid var(--colorNeutralStroke1);
+  margin: var(--spacingVerticalMNudge) 0;
+}
+
+@media (forced-colors: active) {
+  .previewColor {
+    forced-color-adjust: none;
+  }
+}
+
+.button {
+  margin-inline-end: var(--spacingHorizontalS);
+}
+
+.input {
+  display: block;
+  margin: var(--spacingVerticalSNudge) 0;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}

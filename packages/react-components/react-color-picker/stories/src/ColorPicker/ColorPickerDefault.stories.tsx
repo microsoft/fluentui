@@ -4,7 +4,6 @@ import { tinycolor } from '@ctrl/tinycolor';
 import {
   Input,
   Label,
-  makeStyles,
   SpinButton,
   useId,
   AlphaSlider,
@@ -20,40 +19,7 @@ import type {
   SpinButtonProps,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    width: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  previewColor: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-  inputFields: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-    gap: '10px',
-  },
-  colorFieldWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px',
-  },
-  input: {
-    width: '96px',
-  },
-  spinButton: {
-    minWidth: '60px',
-  },
-});
+import styles from './ColorPickerDefault.module.css';
 
 const HEX_COLOR_REGEX = /^#?([0-9A-Fa-f]{0,8})$/;
 const NUMBER_REGEX = /^\d+$/;
@@ -65,7 +31,6 @@ export const Default = (): JSXElement => {
   const hexId = useId('hex-input');
   const alphaId = useId('alpha-input');
 
-  const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [hex, setHex] = React.useState(tinycolor(color).toHexString());
   const [rgb, setRgb] = React.useState(tinycolor(color).toRgb());
@@ -163,7 +128,6 @@ const InputHexField = ({
   value: string;
   onChange: InputProps['onChange'];
 }) => {
-  const styles = useStyles();
   return (
     <div className={styles.colorFieldWrapper}>
       <Label htmlFor={id}>{label}</Label>
@@ -181,7 +145,6 @@ interface InputRgbFieldProps {
 
 const InputRgbField = ({ value, onChange, label, name }: InputRgbFieldProps) => {
   const id = useId(`${label.toLowerCase()}-input`);
-  const styles = useStyles();
 
   const handleChange = React.useCallback(
     (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
@@ -225,8 +188,6 @@ const InputAlphaField = ({
   onChange?: SpinButtonProps['onChange'];
   id: string;
 }) => {
-  const styles = useStyles();
-
   return (
     <div className={styles.colorFieldWrapper}>
       <Label htmlFor={id}>{label}</Label>

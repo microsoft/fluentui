@@ -1,30 +1,13 @@
 import * as React from 'react';
 import type { JSXElement, AlphaSliderProps } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
-import { Button, makeStyles, AlphaSlider } from '@fluentui/react-components';
+import { Button, AlphaSlider } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  example: {
-    width: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  previewColor: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-    },
-  },
-});
+import styles from './AlphaSliderDefault.module.css';
+
 const COLOR = { h: 96, s: 1, v: 0.9, a: 1 };
 
 export const AlphaSliderDefault = (props: Partial<AlphaSliderProps>): JSXElement => {
-  const styles = useStyles();
-
   const [color, setColor] = React.useState(COLOR);
   const [transparancyColor, setTransparancyColor] = React.useState(COLOR);
   const [value, setValue] = React.useState(COLOR.a * 100);

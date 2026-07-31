@@ -1,0 +1,33 @@
+/* Story styles for ColorPickerPopup, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.previewColor {
+  margin: 10px 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+@media (forced-colors: active) {
+  .previewColor {
+    forced-color-adjust: none;
+  }
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+}

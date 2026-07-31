@@ -1,48 +1,12 @@
 import { CarouselNav, CarouselNavImageButton, CarouselNavButton } from '@fluentui/react-components';
-import { Field, makeStyles, Switch, tokens } from '@fluentui/react-components';
+import { Field, Switch } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
+import styles from './CarouselNavDefault.module.css';
+
 const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridTemplateRows: 'auto 1fr',
-
-    boxShadow: tokens.shadow16,
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'end',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 0,
-
-    padding: '10px',
-    minHeight: '100px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderBottom: 'none',
-    borderRadius: tokens.borderRadiusMedium,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-
-    padding: '10px',
-  },
-  sliderField: {
-    flex: 1,
-    gridTemplateColumns: 'max-content 1fr',
-  },
-});
+const useClasses = () => styles;
 
 export const Default = (): JSXElement => {
   const classes = useClasses();

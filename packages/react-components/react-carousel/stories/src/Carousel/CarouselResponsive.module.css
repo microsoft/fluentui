@@ -1,0 +1,47 @@
+/* Story styles for CarouselResponsive, converted from Griffel makeStyles (S-F batch 3).
+ * Token references are the CSS variables they compile to. */
+
+.slider {
+  gap: 10px;
+}
+
+.wireframe {
+  background-color: var(--colorNeutralBackground3);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  place-content: center;
+  padding: 40px;
+  height: 200px;
+  position: relative;
+}
+
+.wireframeEven {
+  background-color: var(--colorBrandBackground2);
+  border: var(--strokeWidthThin) solid var(--colorBrandStroke1);
+}
+
+.wireframeInfo {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background-color: var(--colorPaletteRedBackground2);
+  border: var(--strokeWidthThin) dotted var(--colorPaletteRedBorder2);
+  font-size: var(--fontSizeBase200);
+  padding: 4px 8px;
+}
+
+.wireframeSmall {
+  min-width: 100px;
+  padding: 40px 20px;
+}
+
+.wireframeMedium {
+  min-width: 200px;
+  padding: 40px 20px;
+}
+
+.wireframeLarge {
+  min-width: 350px;
+}
