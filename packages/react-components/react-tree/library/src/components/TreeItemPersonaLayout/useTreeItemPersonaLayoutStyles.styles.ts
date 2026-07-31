@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * NOTE on the directive above:
  * `useTreeItemPersonaLayoutStyles_unstable` still calls React hooks
  * (`useTreeContext_unstable`, `useTreeItemContext_unstable`) to read `size` / `appearance`
  * / `itemType`, so `enforce-use-client` agrees the directive is required and it stays.

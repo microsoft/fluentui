@@ -115,8 +115,8 @@ export function assertConsumerClassNameWins(params: {
  *
  * ## Why this is opt-in rather than a default test
  *
- * This is the replacement for `make-styles-overrides-win` (in
- * `@fluentui/react-conformance-griffel`) for components that have moved off Griffel to
+ * This is the replacement for `make-styles-overrides-win` (in the retired
+ * `@fluentui/react-conformance-griffel`, which gets no further releases) for components that have moved off Griffel to
  * plain `clsx` composition. It is deliberately NOT registered in `defaultTests`, because
  * components still composing with Griffel's `mergeClasses()` do NOT satisfy it — and that
  * is by design, not a bug in them.
