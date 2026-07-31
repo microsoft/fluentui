@@ -15,7 +15,7 @@ import {
   AppItem,
   AppItemStatic,
 } from '@fluentui/react-components';
-import { Label, Switch, Tooltip, makeStyles, tokens, useId, Radio, RadioGroup } from '@fluentui/react-components';
+import { Label, Switch, Tooltip, useId, Radio, RadioGroup } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -48,30 +48,7 @@ import {
   PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    overflow: 'hidden',
-    display: 'flex',
-    height: '600px',
-  },
-  nav: {
-    minWidth: '200px',
-  },
-  content: {
-    flex: '1',
-    padding: '16px',
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  field: {
-    display: 'flex',
-    marginTop: '4px',
-    marginLeft: '8px',
-    flexDirection: 'column',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
+import styles from './VariableDensityItems.module.css';
 
 const Person = bundleIcon(Person20Filled, Person20Regular);
 const Dashboard = bundleIcon(Board20Filled, Board20Regular);
@@ -88,8 +65,6 @@ const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
 
 export const VariableDensityItems = (props: Partial<NavDrawerProps>): JSXElement => {
-  const styles = useStyles();
-
   const labelId = useId('type-label');
   const linkLabelId = useId('link-label');
   const appItemIconLabelId = useId('app-item-icon-label');

@@ -15,17 +15,7 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-components';
 import type { DrawerProps } from '@fluentui/react-drawer';
-import {
-  Label,
-  Radio,
-  RadioGroup,
-  Switch,
-  Tooltip,
-  makeStyles,
-  tokens,
-  useId,
-  useRestoreFocusTarget,
-} from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Switch, Tooltip, useId, useRestoreFocusTarget } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -57,30 +47,7 @@ import {
   PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    overflow: 'hidden',
-    display: 'flex',
-    height: '600px',
-  },
-  nav: {
-    minWidth: '260px',
-  },
-  content: {
-    flex: '1',
-    padding: '16px',
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  field: {
-    display: 'flex',
-    marginTop: '4px',
-    marginLeft: '8px',
-    flexDirection: 'column',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
+import styles from './Basic.module.css';
 
 const Person = bundleIcon(Person20Filled, Person20Regular);
 const Dashboard = bundleIcon(Board20Filled, Board20Regular);
@@ -99,8 +66,6 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 type DrawerType = Required<DrawerProps>['type'];
 
 export const Basic = (): JSXElement => {
-  const styles = useStyles();
-
   const typeLableId = useId('type-label');
   const linkLabelId = useId('link-label');
   const multipleLabelId = useId('multiple-label');

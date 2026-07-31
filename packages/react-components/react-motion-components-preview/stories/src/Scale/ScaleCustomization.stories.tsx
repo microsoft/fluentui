@@ -5,63 +5,19 @@ import {
   CardHeader,
   createPresenceComponentVariant,
   Field,
-  makeStyles,
-  mergeClasses,
   type MotionImperativeRef,
   motionTokens,
   Slider,
   Switch,
   Text,
-  tokens,
 } from '@fluentui/react-components';
 
 import description from './ScaleCustomization.stories.md';
 import { Scale } from '@fluentui/react-motion-components-preview';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
-  },
-  card: {
-    gridArea: 'card',
-    padding: tokens.spacingVerticalXL,
-    maxHeight: '300px',
-    overflow: 'hidden',
-  },
-  cardHeaderText: {
-    margin: 0,
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
+import styles from './ScaleCustomization.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: tokens.spacingVerticalMNudge,
-  },
-  field: {
-    flex: 1,
-  },
-  sliderField: {
-    gridTemplateColumns: 'min-content 1fr',
-  },
-  sliderLabel: {
-    textWrap: 'nowrap',
-  },
-
-  item: {
-    backgroundColor: tokens.colorBrandBackground,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
-    borderRadius: '50%',
-
-    width: '100px',
-    height: '100px',
-  },
-});
+const useClasses = () => styles;
 
 // Overshoots the end point, then settles back to it.
 const curveOvershootFirmOut =
@@ -122,7 +78,7 @@ export const Customization = (): JSXElement => {
           />
         </Field>
         <Field
-          className={mergeClasses(classes.field, classes.sliderField)}
+          className={`${classes.field} ${classes.sliderField}`}
           label={{
             children: (
               <>
@@ -135,7 +91,7 @@ export const Customization = (): JSXElement => {
         >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
-            className={mergeClasses(classes.field, classes.sliderField)}
+            className={`${classes.field} ${classes.sliderField}`}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}

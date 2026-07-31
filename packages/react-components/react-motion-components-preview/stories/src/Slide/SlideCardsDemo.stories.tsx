@@ -1,39 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Button, Card, CardHeader, CardPreview, Body1 } from '@fluentui/react-components';
+import { tokens, Button, Card, CardHeader, CardPreview, Body1 } from '@fluentui/react-components';
 import { Slide } from '@fluentui/react-motion-components-preview';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px',
-    padding: '20px',
-    maxWidth: '800px',
-  },
-  controls: {
-    display: 'flex',
-    gap: '10px',
-    marginBottom: '20px',
-  },
+import styles from './SlideCardsDemo.module.css';
 
-  cardGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '15px',
-    alignItems: 'start',
-  },
-  card: {
-    height: '150px',
-  },
-  cardPreview: {
-    height: '80px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: tokens.fontSizeBase600,
-  },
-});
+const useClasses = () => styles;
 
 const cardData = [
   {

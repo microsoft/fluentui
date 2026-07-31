@@ -1,0 +1,49 @@
+/* Story styles for ScaleCustomization, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template: 'controls .' 'card card' / 1fr 1fr;
+  gap: var(--spacingVerticalXL) var(--spacingHorizontalMNudge);
+}
+
+.card {
+  grid-area: card;
+  padding: var(--spacingVerticalXL);
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.cardHeaderText {
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  grid-area: controls;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: var(--spacingVerticalMNudge);
+}
+
+.field {
+  flex: 1;
+}
+
+.sliderField {
+  grid-template-columns: min-content 1fr;
+}
+
+.sliderLabel {
+  text-wrap: nowrap;
+}
+
+.item {
+  background-color: var(--colorBrandBackground);
+  border: var(--strokeWidthThicker) solid var(--colorTransparentStroke);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}

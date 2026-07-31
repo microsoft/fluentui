@@ -14,7 +14,7 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-components';
-import { Button, Label, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Button, Label, Switch, Tooltip, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -46,30 +46,7 @@ import {
   PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    overflow: 'hidden',
-    display: 'flex',
-    height: '600px',
-  },
-  nav: {
-    minWidth: '200px',
-  },
-  content: {
-    flex: '1',
-    padding: '16px',
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  field: {
-    display: 'flex',
-    marginTop: '4px',
-    marginLeft: '8px',
-    flexDirection: 'column',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
+import styles from './Controlled.module.css';
 
 const Person = bundleIcon(Person20Filled, Person20Regular);
 const Dashboard = bundleIcon(Board20Filled, Board20Regular);
@@ -130,8 +107,6 @@ const getRandomPage = (): SelectedPage => {
 };
 
 export const Controlled = (): JSXElement => {
-  const styles = useStyles();
-
   const multipleLabelId = useId('multiple-label');
 
   const [openCategories, setOpenCategories] = React.useState<NavItemValue[]>(['6', '11']);

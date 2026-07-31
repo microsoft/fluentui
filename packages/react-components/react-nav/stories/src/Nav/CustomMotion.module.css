@@ -1,0 +1,39 @@
+/* Story styles for CustomMotion, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to.
+ * The .nav width 260px was the module-scope const drawerWidth, resolved inline
+ * (the const remains in the story for the custom DrawerMotion/ContentMotion keyframes). */
+
+.root {
+  overflow: hidden;
+  height: 600px;
+  position: relative;
+  display: flex;
+  background-color: var(--colorNeutralBackground1);
+}
+
+.nav {
+  min-width: 200px;
+  width: 260px;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  display: grid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  gap: var(--spacingVerticalM);
+  grid-auto-rows: max-content;
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+}
+
+.field {
+  display: flex;
+  margin-top: 4px;
+  margin-left: 8px;
+  flex-direction: column;
+  grid-row-gap: var(--spacingVerticalS);
+}

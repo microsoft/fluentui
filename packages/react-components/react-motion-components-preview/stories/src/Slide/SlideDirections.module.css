@@ -1,0 +1,68 @@
+/* Story styles for SlideDirections, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 20px;
+  flex: 0 0 auto;
+}
+
+.directionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.directionButton {
+  height: 44px;
+  font-size: var(--fontSizeBase200);
+  min-width: 44px;
+}
+
+.centerSpace {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fontSizeBase100);
+  color: var(--colorNeutralForeground3);
+}
+
+.demo {
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  border-radius: var(--borderRadiusMedium);
+  padding: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--colorNeutralBackground2);
+  min-width: 300px;
+  min-height: 200px;
+  flex: 1 1 300px;
+  overflow: hidden;
+}
+
+.card {
+  padding: 20px;
+  background-color: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow8);
+  max-width: 300px;
+  text-align: center;
+}

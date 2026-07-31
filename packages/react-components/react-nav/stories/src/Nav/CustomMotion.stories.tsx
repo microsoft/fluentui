@@ -21,7 +21,6 @@ import {
   Switch,
   Tooltip,
   createPresenceComponent,
-  makeStyles,
   motionTokens,
   tokens,
   useId,
@@ -58,43 +57,10 @@ import {
   PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
+import styles from './CustomMotion.module.css';
+
 const drawerWidth = '260px';
 const drawerMargin = tokens.spacingVerticalM;
-
-const useStyles = makeStyles({
-  root: {
-    overflow: 'hidden',
-    height: '600px',
-    position: 'relative',
-    display: 'flex',
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  nav: {
-    minWidth: '200px',
-    width: drawerWidth,
-  },
-  content: {
-    flex: '1',
-    padding: '16px',
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-
-    margin: 0,
-    gap: tokens.spacingVerticalM,
-    gridAutoRows: 'max-content',
-    boxSizing: 'border-box',
-    position: 'absolute',
-    inset: 0,
-  },
-  field: {
-    display: 'flex',
-    marginTop: '4px',
-    marginLeft: '8px',
-    flexDirection: 'column',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
 
 /*
  * Create a custom DrawerMotion component that animates the drawer surface.
@@ -186,8 +152,6 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 type DrawerType = Required<DrawerProps>['type'];
 
 export const CustomMotion = (): JSXElement => {
-  const styles = useStyles();
-
   const typeLableId = useId('type-label');
   const linkLabelId = useId('link-label');
   const multipleLabelId = useId('multiple-label');

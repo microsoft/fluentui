@@ -1,0 +1,28 @@
+/* Story styles for Controlled, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  overflow: hidden;
+  display: flex;
+  height: 600px;
+}
+
+.nav {
+  min-width: 200px;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  display: grid;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.field {
+  display: flex;
+  margin-top: 4px;
+  flex-direction: column;
+  grid-row-gap: var(--spacingVerticalS);
+  margin-inline-start: 8px;
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Button } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 import { Slide } from '@fluentui/react-motion-components-preview';
 import SlideDirectionsDescription from './SlideDirections.stories.md';
 import type { FluentIcon } from '@fluentui/react-icons';
@@ -15,67 +15,9 @@ import {
   ArrowDownRightFilled,
 } from '@fluentui/react-icons';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '20px',
-    padding: '20px',
-    alignItems: 'flex-start',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '15px',
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '20px',
-    flex: '0 0 auto',
-  },
-  directionsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridTemplateRows: 'repeat(3, 1fr)',
-    gap: '6px',
-  },
-  directionButton: {
-    height: '44px',
-    fontSize: tokens.fontSizeBase200,
-    minWidth: '44px',
-  },
-  centerSpace: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: tokens.fontSizeBase100,
-    color: tokens.colorNeutralForeground3,
-  },
-  demo: {
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '20px',
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: tokens.colorNeutralBackground2,
-    minWidth: '300px',
-    minHeight: '200px',
-    flex: '1 1 300px',
-    overflow: 'hidden',
-  },
-  card: {
-    padding: '20px',
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow8,
-    maxWidth: '300px',
-    textAlign: 'center',
-  },
-});
+import styles from './SlideDirections.module.css';
+
+const useClasses = () => styles;
 
 const slideDirections = {
   Top: { outX: '0%', outY: '-100%' },

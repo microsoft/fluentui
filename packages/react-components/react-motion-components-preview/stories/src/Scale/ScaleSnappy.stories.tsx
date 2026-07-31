@@ -1,39 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Card, CardHeader, Field, makeStyles, tokens, Switch, Text } from '@fluentui/react-components';
+import { Card, CardHeader, Field, Switch, Text } from '@fluentui/react-components';
 import { ScaleSnappy } from '@fluentui/react-motion-components-preview';
 
 import description from './ScaleSnappy.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
-  },
-  card: {
-    gridArea: 'card',
-    padding: tokens.spacingVerticalXL,
-    maxHeight: '300px',
-    overflow: 'hidden',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
+import styles from './ScaleSnappy.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: tokens.spacingVerticalMNudge,
-  },
-  field: {
-    flex: 1,
-  },
-  cardHeaderText: {
-    margin: 0,
-  },
-});
+const useClasses = () => styles;
 
 const LoremIpsum = () => (
   <>

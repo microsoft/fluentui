@@ -33,8 +33,6 @@ import {
   RadioGroup,
   Switch,
   Tooltip,
-  makeStyles,
-  tokens,
   useId,
 } from '@fluentui/react-components';
 import {
@@ -71,34 +69,7 @@ import {
   Person20Regular,
 } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  root: {
-    overflow: 'hidden',
-    display: 'flex',
-    height: '600px',
-  },
-  nav: {
-    minWidth: '200px',
-  },
-  content: {
-    flex: '1',
-    padding: '16px',
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  field: {
-    display: 'flex',
-    marginTop: '4px',
-    marginLeft: '8px',
-    flexDirection: 'column',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-  pinned: {
-    opacity: 1,
-    transform: 'translate3D(0, 0, 0)',
-  },
-});
+import styles from './SplitNavItems.module.css';
 
 const Dashboard = bundleIcon(Board20Filled, Board20Regular);
 const Announcements = bundleIcon(MegaphoneLoud20Filled, MegaphoneLoud20Regular);
@@ -191,8 +162,6 @@ const DemoMenuPopover = () => {
 };
 
 export const SplitNavItems = (): JSXElement => {
-  const styles = useStyles();
-
   const labelId = useId('type-label');
   const linkLabelId = useId('link-label');
   const appItemIconLabelId = useId('app-item-icon-label');
