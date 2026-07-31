@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Popover, PopoverTrigger, PopoverSurface, useId } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
 
 const useContentStyles = makeStyles({
   root: {
@@ -14,13 +14,13 @@ const useContentStyles = makeStyles({
   },
 });
 
-const ExampleContent = ({ headingId }: { headingId: string }) => {
+const ExampleContent = () => {
   const styles = useContentStyles();
   return (
     <div className={styles.root}>
-      <h3 id={headingId} className={styles.header}>
-        Popover content
-      </h3>
+      <h3 className={styles.header}>Popover content</h3>
+
+      <Button>Action</Button>
 
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper, nulla at pretium pulvinar, erat nibh
@@ -76,23 +76,19 @@ const ExampleContent = ({ headingId }: { headingId: string }) => {
   );
 };
 
-export const WithArrowAutosize = (): JSXElement => {
-  const headingId = useId('popover-heading');
+export const WithArrowAutosize = (): JSXElement => (
+  <Popover withArrow positioning={{ autoSize: true }}>
+    <PopoverTrigger disableButtonEnhancement>
+      <Button>Popover trigger</Button>
+    </PopoverTrigger>
 
-  return (
-    <Popover withArrow positioning={{ autoSize: true }}>
-      <PopoverTrigger disableButtonEnhancement>
-        <Button>Popover trigger</Button>
-      </PopoverTrigger>
-
-      {/* 1. Reset the overflow behavior on `PopoverSurface` to avoid clipping of arrow */}
-      <PopoverSurface tabIndex={-1} aria-labelledby={headingId} style={{ overflow: 'visible', padding: 0 }}>
-        {/* 2. Set the height of the popover content to 100% to fill the available space and allow scrolling */}
-        <ExampleContent headingId={headingId} />
-      </PopoverSurface>
-    </Popover>
-  );
-};
+    {/* 1. Reset the overflow behavior on `PopoverSurface` to avoid clipping of arrow */}
+    <PopoverSurface style={{ overflow: 'visible', padding: 0 }}>
+      {/* 2. Set the height of the popover content to 100% to fill the available space and allow scrolling */}
+      <ExampleContent />
+    </PopoverSurface>
+  </Popover>
+);
 
 WithArrowAutosize.parameters = {
   docs: {
@@ -100,8 +96,6 @@ WithArrowAutosize.parameters = {
       story: [
         'When using the arrow with the `autoSize` positioning feature,',
         'make sure to move the `overflow` from the popover to an inner element to avoid clipping the arrow.',
-        'This example has no interactive content, so focus is placed on `PopoverSurface` when it opens.',
-        'The surface is labelled by its heading so that screen readers announce its content.',
       ].join(' '),
     },
   },
