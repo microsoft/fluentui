@@ -199,10 +199,13 @@ Dialect rules (from nyt-games + Fluent adaptations):
   layer loses at 0-2-0 to `.fjseox`'s 0-1-0 and the glyph never swaps. **Grep every module
   you convert for `fui-Icon-filled`.**
 
-  Scope: this is **permanent** for `@fluentui/react-icons` (D11 keeps it on Griffel — it is
-  not in the conversion scope), and **transitional** for in-repo packages that simply have
-  not converted yet (react-popover's `PopoverSurface`, etc.); when the owning package
-  converts, the rule can move back into the layer that mirrors its mergeClasses argument.
+  Scope (updated S-I, 2026-07 — see the D2a5 superseding amendment in DECISIONS.md): the
+  in-repo half is CLOSED — every package is converted and the transitional unlayered rules
+  were promoted back into the layers that mirror their mergeClasses argument (S-G; charts
+  C7). The `@fluentui/react-icons` half is no longer permanent either: the headless icons
+  fork (D18 option (c)) removes the Griffel atomics at the source, so the unlayered
+  `:global(.fui-Icon-*)` blocks stay REQUIRED only until the icons 3.0 fork is adopted and
+  retire with it (stage S-J). Until then, keep authoring them exactly as described above.
   Rules that style the component's OWN elements — including its own `:global(.fui-X__slot)`
   static classes — stay layered; nothing unlayered competes for those.
 
@@ -225,9 +228,10 @@ Dialect rules (from nyt-games + Fluent adaptations):
 - Focus rings: `@apply` the shared focus-ring utility; never hand-copy the ring CSS.
 - Keep a comment trail: each rule block cites the source slice name it replaces
   (`/* from useBaseStyles.base */`) — reviewers diff against the Griffel file.
-  These citations (and any mergeClasses mentions in hook comments) are TRANSITIONAL
-  review aids — the Phase 3 documentation audit (RUNBOOK) decides their fate once the
-  mechanism they reference is gone.
+  These citations (and any mergeClasses mentions in hook comments) are review aids for the
+  migration PR. The S-I sweep (2026-07) ruled they STAY until the PR lands: they are the
+  reviewer's map from each rule back to the source it replaced. Dropping them is a
+  post-merge cleanup, not part of the migration.
 - **Scale-prop rule (batch-1 lesson):** small ENUM scales (small/medium/large…) get
   catalog variants; dense NUMERIC scales (SkeletonItem 8–128) use direct
   `&:where([data-size='16'])` attribute selectors in the module — the catalog rule

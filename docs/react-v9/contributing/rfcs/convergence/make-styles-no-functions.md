@@ -1,5 +1,12 @@
 # RFC: No functions in `makeStyles()`
 
+> **Status (2026-07):** Historical record. Fluent UI React v9 has since migrated its styling from
+> Griffel (runtime CSS-in-JS) to build-time Tailwind-flavored CSS Modules under the `@layer fui.*`
+> family, and the umbrella no longer re-exports any Griffel API. This RFC predates that migration
+> and is preserved unedited. The current styling contract is recorded in
+> `migration/griffel-to-tailwind/reports/DECISIONS.md` (see also
+> `migration/griffel-to-tailwind/CONVERSION_GUIDE.md`).
+
 ---
 
 @layershifter @khmakoto

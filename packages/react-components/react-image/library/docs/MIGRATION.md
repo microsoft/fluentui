@@ -5,8 +5,9 @@
 This guide is a reference for upgrading the `Image` component from v8 or v0 to v9 .
 
 > **A note on the styling in the examples below.** The "after" snippets on this page are written with
-> `makeStyles`. They still compile — `makeStyles` remains re-exported from
-> `@fluentui/react-components` — but v9 no longer authors its own styles that way. The shipped
+> `makeStyles`. As of the vNEXT major, `makeStyles` is no longer re-exported from
+> `@fluentui/react-components` (add `@griffel/react` as a dependency to run them verbatim), and v9
+> no longer authors its own styles that way. The shipped
 > equivalent is ordinary CSS (a stylesheet, a CSS Module, Tailwind) passed through `className`, with
 > theme values referenced as custom properties such as `var(--colorNeutralForeground2)`. See
 > [Styling components](https://react.fluentui.dev/?path=/docs/concepts-developer-styling-components--docs).

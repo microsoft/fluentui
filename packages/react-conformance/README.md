@@ -85,9 +85,10 @@ describe('Foo', () => {
 });
 ```
 
-Components that still compose with Griffel's `mergeClasses()` do **not** satisfy it, and
-should keep using `make-styles-overrides-win` from `@fluentui/react-conformance-griffel`
-instead: `mergeClasses()` emits its atomic classes _after_ every non-atomic string,
+Components that still compose with Griffel's `mergeClasses()` do **not** satisfy it, by
+design (`@fluentui/react-conformance-griffel`'s `make-styles-overrides-win` covered that
+composition model; that package is retired and gets no further releases):
+`mergeClasses()` emits its atomic classes _after_ every non-atomic string,
 including the consumer's `className`, so the consumer's class lands in the middle of the
 attribute by design. That is also why the test has to be enabled per component rather than
 in a package's shared `isConformant` wrapper — a package can be partly converted.

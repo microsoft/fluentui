@@ -1,5 +1,11 @@
 # makeStyles spec
 
+> **Status (2026-07):** Historical spec. `makeStyles` is no longer used by — nor re-exported
+> from — `@fluentui/react-components`: v9 components ship build-time Tailwind-flavored CSS
+> Modules under the `@layer fui.*` family (see
+> `migration/griffel-to-tailwind/reports/DECISIONS.md`, D19). Preserved unedited as a historical
+> record of the original design.
+
 ## Background
 
 `makeStyles` is a way how CSS is applied to core components and their variants as well as a utility used to implement style overrides for those components.

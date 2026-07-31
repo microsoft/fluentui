@@ -108,7 +108,7 @@ Prevents imports from `forbidden` packages. If a corresponding `preferred` impor
   {
     paths: [
       {
-        forbidden: ['@fluentui/react-theme', '@griffel/react`],
+        forbidden: ['@fluentui/react-theme'],
         preferred: '@fluentui/react-components',
       },
     ],
@@ -121,14 +121,13 @@ Prevents imports from `forbidden` packages. If a corresponding `preferred` impor
 ```ts
 import * as React from 'react';
 import { webDarkTheme } from '@fluentui/react-theme';
-import { makeStyles } from '@griffel/react';
 ```
 
 **✅ Do**
 
 ```ts
 import * as React from 'react';
-import { makeStyles, webDarkTheme } from '@fluentui/react-components';
+import { webDarkTheme } from '@fluentui/react-components';
 ```
 
 ### `no-tslint-comments`

@@ -1,5 +1,12 @@
 # RFC: Replace `makeStyles()` implementation / API updates
 
+> **Status (2026-07):** Historical record. Fluent UI React v9 has since migrated its styling from
+> Griffel (runtime CSS-in-JS) to build-time Tailwind-flavored CSS Modules under the `@layer fui.*`
+> family, and the umbrella no longer re-exports any Griffel API. This RFC predates that migration
+> and is preserved unedited. The current styling contract is recorded in
+> `migration/griffel-to-tailwind/reports/DECISIONS.md` (see also
+> `migration/griffel-to-tailwind/CONVERSION_GUIDE.md`).
+
 <!--
 An RFC can be anything. A question, a suggestion, a plan. The purpose of this template is to give some structure to help folks write successful RFCs. However, don't feel constrained by this template; use your best judgement.
 

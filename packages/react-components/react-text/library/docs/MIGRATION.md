@@ -5,9 +5,10 @@
 This guide is a reference for upgrading from v7 (Fabric) or v0 (Northstar) into v9 (Fluent UI / converged).
 
 > **A note on the styling in the examples below.** Every "after" snippet on this page is written with
-> `makeStyles`. Those snippets still compile — `makeStyles` remains re-exported from
-> `@fluentui/react-components` — but v9 no longer authors its own styles that way, and new code
-> should not either. The shipped equivalent is ordinary CSS passed through `className`:
+> `makeStyles`. As of the vNEXT major, `makeStyles` is no longer re-exported from
+> `@fluentui/react-components` — to run one of these snippets verbatim, add `@griffel/react` as a
+> dependency and import `makeStyles` from it. v9 no longer authors its own styles that way, and new
+> code should not either. The shipped equivalent is ordinary CSS passed through `className`:
 >
 > ```css
 > /* MyText.module.css */
@@ -702,7 +703,7 @@ const MyComponent = () => {
 
 ### variables [DEPRECATED]
 
-For v9, this feature is no longer supported. The alternative is to apply styles through `makeStyles()` (see [Griffel](https://github.com/microsoft/griffel) docs for more details). Below is an example of a migration:
+For v9, this feature is no longer supported. The alternative is to apply styles through `className` (plain CSS / CSS Modules, or `makeStyles` from [Griffel](https://github.com/microsoft/griffel) if your app uses it). Below is an example of a migration:
 
 #### v0 (Northstar) implementation
 
@@ -749,4 +750,4 @@ _This property suffered no changes and can be left as is._
 
 ### styles
 
-_This property suffered no changes and can be used as is. However, we highly recommend that you migrate to `makeStyles()` (a [Griffel](https://github.com/microsoft/griffel) styling solution) for performance reasons._
+_This property suffered no changes and can be used as is. However, we highly recommend that you migrate to plain CSS applied through `className` for performance reasons._

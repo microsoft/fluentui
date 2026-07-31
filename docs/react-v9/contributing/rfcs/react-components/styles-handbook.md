@@ -9,11 +9,11 @@
 > [Styling components](https://react.fluentui.dev/?path=/docs/concepts-developer-styling-components--docs)
 > page for the consumer-facing version.
 >
-> The rest of this document is retained as a **Griffel reference**. `makeStyles`, `makeResetStyles`,
-> `mergeClasses` and `shorthands` are still re-exported from `@fluentui/react-components`, so app
-> code that uses them keeps working and everything described below is still accurate _about Griffel_.
-> It no longer describes how the library styles itself, and it is not the pattern to copy for new
-> code in this repository.
+> The rest of this document is retained as a **Griffel reference**. As of the vNEXT major
+> (DECISIONS.md D19, migration/griffel-to-tailwind/reports/) `@fluentui/react-components` no longer
+> re-exports any Griffel API — apps that still author Griffel styles must depend on `@griffel/react`
+> directly. Everything described below is still accurate _about Griffel_, but it no longer describes
+> how the library styles itself, and it is not the pattern to copy for new code in this repository.
 
 # Current styling contract
 

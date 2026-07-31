@@ -384,7 +384,8 @@ of the module, ordered by mergeClasses argument order (file position is the only
 there, since `@variant` compounds are all `:where()`-flat). Rules on the component's own
 elements — including its own `:global(.fui-X__slot)` static classes — stay layered.
 
-**Scope.** Permanent for `@fluentui/react-icons` (D11 keeps it on Griffel, so nothing will
+**Scope.** _(Superseded in part — see the D2a5 superseding amendment below, S-I 2026-07-31.)_
+Permanent for `@fluentui/react-icons` (D11 keeps it on Griffel, so nothing will
 ever move those atomics into a layer). Transitional for in-repo packages awaiting conversion
 under D12 (e.g. react-popover's `PopoverSurface` as consumed by InfoButton); when the owner
 converts, the rules return to the layer that mirrors their mergeClasses argument.
@@ -470,6 +471,32 @@ artifact's freshness. Fixing the inputs alone would have restored correctness wh
 failure mode silent; the guard is what makes the next occurrence visible. Both were required.
 Any VR-green claim made before b27bf13985 for a change confined to `packages/**` should be
 treated as unverified and re-run on a cache-miss build.
+
+## D2 amendment 5 — superseding amendment: the "permanent" scope is retired (S-I, 2026-07-31)
+
+The Scope clause above rested on two premises that no longer hold:
+
+1. **"Transitional for in-repo packages awaiting conversion"** — closed. Every in-repo
+   package is converted (mass conversion complete; scoped gate 48/48) and the transitional
+   unlayered rules were promoted back into the layers that mirror their mergeClasses
+   argument as their owners converted (S-G core specials; charts C7 completed the last
+   promotions). No in-repo unlayered escape hatch remains.
+2. **"Permanent for `@fluentui/react-icons` (D11 keeps it on Griffel)"** — superseded by the
+   icons fork. D18 flipped from (a) accept to **(c) CONVERT VIA FORK**
+   (`reports/griffel-zero-plan.md` §0): the headless icons 3.0 promotion removes the Griffel
+   atomics (`bundleIcon.styles.js`'s unlayered `.fjseox` / `.f1w7gpdv`) at the source, which
+   is exactly the thing this clause said would never happen. The **62 unlayered
+   `:global(.fui-Icon-*)` selector lines across 14 `.module.css` files** are therefore
+   TRANSITIONAL: they stay required — and new conversions must keep authoring them per
+   CONVERSION_GUIDE §2 — until the fork is adopted in this repo, and they retire with it
+   (stage S-J, hard-gated on the icons workstream). The evaluation's proposed
+   `fui-Icon-filled` lint-rule hardening becomes unnecessary rather than mandatory.
+
+The authoring rule itself (rules whose subject element is owned by an external Griffel
+package go unlayered, ordered by mergeClasses argument order) remains correct and in force
+for as long as any external Griffel-styled element is in scope; what this amendment retires
+is only its permanence. The postmortem above (stale-bundle false pass) is unaffected and
+stands on its own.
 
 ## D14 — State-mutation builder pattern is REMOVED in Phase 3 (settled with user 2026-07-27)
 
