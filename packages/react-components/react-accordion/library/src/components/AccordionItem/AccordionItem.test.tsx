@@ -11,7 +11,6 @@ describe('AccordionItem', () => {
     displayName: 'AccordionItem',
     disabledTests: [
       // AccordionItem does not have own styles
-      'make-styles-overrides-win',
       // Statics removal (DECISIONS.md D16.1 / D16.6) — see Accordion.test.tsx for the full
       // rationale. Replaced by `component-has-group-marker` (now a default test).
       'component-has-static-classnames-object',

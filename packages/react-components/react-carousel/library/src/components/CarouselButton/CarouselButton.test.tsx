@@ -20,7 +20,7 @@ describe('CarouselButton', () => {
     // `component-has-static-classnames-object` and its `has-static-classnames` testOptions
     // are gone with the BEM statics: `carouselButtonClassNames.root` is now the group marker
     // and the never-applied `icon` key was removed (DECISIONS.md D16.1/D16.5/D16.6).
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     requiredProps: {
       navType: 'next',
     },

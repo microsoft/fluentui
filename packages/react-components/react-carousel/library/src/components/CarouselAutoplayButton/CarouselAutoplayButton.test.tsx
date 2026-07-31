@@ -21,7 +21,7 @@ describe('CarouselAutoplayButton', () => {
     // `component-has-static-classnames-object` and its `has-static-classnames` testOptions
     // are gone with the BEM statics: `carouselAutoplayButtonClassNames.root` is now the group
     // marker and the never-applied `icon` key was removed (DECISIONS.md D16.1/D16.5/D16.6).
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // renders react-button's ToggleButton, which is a Button — each of the three hooks
       // stamps its own marker on this one element, so the root legitimately carries all

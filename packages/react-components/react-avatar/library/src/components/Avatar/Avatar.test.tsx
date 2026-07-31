@@ -25,7 +25,7 @@ describe('Avatar', () => {
     // is stamped and — the machine-checkable form of D15.1/D16.2 — that it is never
     // `classList[0]`. The `has-static-classnames` variant options it consumed are removed
     // with it; the sub-slot keys they referenced no longer exist.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

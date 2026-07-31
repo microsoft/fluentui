@@ -25,7 +25,7 @@ describe('Badge', () => {
     // D15.1 `classList[0]` invariant the static used to satisfy incidentally (D16.2/D16.6).
     // Its `has-static-classnames` testOptions entry (which rendered an `icon` so the sub-slot
     // static could be found) goes with it.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

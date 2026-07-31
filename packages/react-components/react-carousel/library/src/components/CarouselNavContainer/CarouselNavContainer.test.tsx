@@ -22,7 +22,7 @@ describe('CarouselNavContainer', () => {
     // `next` / `prev` / `autoplay` keys the old expectation enumerated, plus the three
     // `*Tooltip` keys that were never applied to the DOM at all (DECISIONS.md D16.1/D16.5).
     // `component-has-group-marker` (a default test) replaces the coverage on the root.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

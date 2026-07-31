@@ -39,7 +39,7 @@ describe('BreadcrumbButton', () => {
     // a jsdom-only render-time throw that neither the build nor VR can see — is asserted
     // locally instead, immediately below. Move back to the shared test if it ever grows an
     // allowance for composed markers.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // renders react-button’s Button, whose hook stamps its marker on this same element, so this root
       // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set

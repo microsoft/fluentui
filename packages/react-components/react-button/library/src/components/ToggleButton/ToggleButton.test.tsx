@@ -41,8 +41,6 @@ describe('ToggleButton', () => {
     // CompoundButton, MenuButton, react-toolbar's three Toolbar*Buttons and
     // react-breadcrumb's BreadcrumbButton.
     disabledTests: [
-      'make-styles-overrides-win',
-
       'component-has-static-classnames-object',
       // Renders another package's root, so it carries that component's marker alongside its
       // own. `component-has-group-marker` became a default test with the statics removal

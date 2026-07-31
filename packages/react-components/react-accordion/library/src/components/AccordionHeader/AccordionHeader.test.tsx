@@ -21,7 +21,6 @@ describe('AccordionHeader', () => {
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
     disabledTests: [
-      'make-styles-overrides-win',
       // Statics removal (DECISIONS.md D16.1 / D16.6) — see Accordion.test.tsx for the full
       // rationale. The `has-static-classnames` testOptions entry that used to render this
       // component with an `icon` (so the `fui-AccordionHeader__icon` static appeared in the

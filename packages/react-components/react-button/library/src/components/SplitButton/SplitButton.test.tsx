@@ -21,7 +21,7 @@ describe('SplitButton', () => {
     // group marker, and the default test hard-codes the `fui-<Component>__<slot>` format.
     // `component-has-group-marker` (now a default test) is its replacement (DECISIONS.md D16.2 / D16.6).
     // SplitButton's root is its own `<div>`, so it carries exactly one marker.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

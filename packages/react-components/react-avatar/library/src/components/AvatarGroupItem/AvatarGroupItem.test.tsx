@@ -27,7 +27,7 @@ describe('AvatarGroupItem', () => {
     // `fui-AvatarGroupItem` / `fui-AvatarGroupItem__<slot>` format (defaultTests.tsx:244-245,
     // 277), so it fails under the retained-constant policy just as it would under outright
     // deletion (D16.6). `component-has-group-marker` (now a default test) is its replacement.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

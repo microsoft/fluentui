@@ -30,7 +30,7 @@ describe('Button', () => {
     // (react-conformance/src/defaultTests.tsx). `component-has-group-marker` (now a default test) is its
     // replacement — it asserts the marker IS stamped and, crucially, that it is never
     // `classList[0]` (DECISIONS.md D15.1 / D16.2 / D16.6).
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -23,7 +23,7 @@ describe('BreadcrumbItem', () => {
     // Its `has-static-classnames` testOptions went with it. `component-has-group-marker`
     // (now a default test) is the replacement — it asserts the marker is stamped AND never lands at
     // `classList[0]`, the machine-checkable form of the D15.1/D16.2 invariant.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

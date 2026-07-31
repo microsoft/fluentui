@@ -25,7 +25,7 @@ describe('CarouselNavImageButton', () => {
     // `carouselNavImageButtonClassNames.root` is now the group marker and the per-slot
     // `image` key is gone (DECISIONS.md D16.5/D16.6). `component-has-group-marker` (a default
     // test) replaces it.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import { useButtonBase_unstable } from './useButton';
 import { renderButton_unstable } from './renderButton';
 import type { ButtonState, ButtonBaseProps } from './Button.types';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 
 describe('useButtonBase_unstable', () => {
   it('returns default state when no props are provided', () => {
@@ -49,7 +49,7 @@ describe('useButtonBase_unstable', () => {
       ({ appearance = '1', ...props }, ref) => {
         const state = useButtonBase_unstable(props, ref);
 
-        state.root.className = mergeClasses('custom-button', `appearance-${appearance}`, state.root.className);
+        state.root.className = clsx('custom-button', `appearance-${appearance}`, state.root.className);
 
         return renderButton_unstable(state as ButtonState);
       },

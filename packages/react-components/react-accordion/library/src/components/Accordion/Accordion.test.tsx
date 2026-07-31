@@ -11,7 +11,6 @@ describe('Accordion', () => {
     displayName: 'Accordion',
     disabledTests: [
       // Accordion does not have own styles
-      'make-styles-overrides-win',
       'consistent-callback-args',
       // Statics removal (DECISIONS.md D16.1 / D16.6). Accordion no longer renders a
       // `fui-Accordion` BEM static, and `accordionClassNames` is now `{ root: <marker> }`,

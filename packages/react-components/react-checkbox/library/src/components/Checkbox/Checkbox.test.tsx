@@ -33,7 +33,7 @@ describe('Checkbox', () => {
     // (D16.6). `component-has-group-marker` (now a default test) is its replacement: it asserts the marker
     // is stamped and — the machine-checkable form of D15.1/D16.2 — that it is never
     // `classList[0]`.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

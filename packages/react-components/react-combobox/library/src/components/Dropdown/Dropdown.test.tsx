@@ -47,7 +47,6 @@ describe('Dropdown', () => {
     // (DECISIONS.md D16.1/D16.5); `component-has-group-marker`, a default test, asserts the
     // contract that actually holds now — `group/fui-dropdown` on the root, never at
     // `classList[0]` (D16.2/D16.6).
-    disabledTests: ['make-styles-overrides-win'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

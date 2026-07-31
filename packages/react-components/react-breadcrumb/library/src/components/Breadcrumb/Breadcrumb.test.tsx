@@ -24,7 +24,7 @@ describe('Breadcrumb', () => {
     // key is gone (DECISIONS.md D16.5/D16.6). `component-has-group-marker` (now a default test) is its
     // replacement — it asserts the marker is stamped AND never lands at `classList[0]`,
     // which is the machine-checkable form of the D15.1/D16.2 invariant.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

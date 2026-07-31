@@ -62,7 +62,6 @@ describe('CalendarDayGrid', () => {
       // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9);
       // it is enabled even though `component-handles-classname` is not, because the `<table>`
       // does take `props.className` as its last clsx argument.
-      'make-styles-overrides-win',
     ],
     // `component-has-group-marker` is a default test (DECISIONS.md D16.6) and asserts the
     // `group/fui-calendar-day-grid` marker the `<table>` — this component's outermost node —

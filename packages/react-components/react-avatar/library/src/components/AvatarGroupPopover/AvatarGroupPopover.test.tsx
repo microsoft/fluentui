@@ -39,8 +39,6 @@ describe('AvatarGroupPopover', () => {
 
       'component-handles-classname',
 
-      'make-styles-overrides-win',
-
       'component-has-static-classnames-object',
     ],
     testOptions: {

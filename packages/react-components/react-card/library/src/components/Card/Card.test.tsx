@@ -34,11 +34,7 @@ describe('Card', () => {
     // default set repo-wide as the sweep completes (D16.6); until then converted packages
     // opt out here. `component-has-group-marker` (now a default test) is its replacement — it asserts the
     // marker IS stamped and, critically, that it is never `classList[0]` (D15.1 / D16.2).
-    disabledTests: [
-      'component-has-static-classname-exported',
-      'component-has-static-classnames-object',
-      'make-styles-overrides-win',
-    ],
+    disabledTests: ['component-has-static-classname-exported', 'component-has-static-classnames-object'],
     extraTests: {
       [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },

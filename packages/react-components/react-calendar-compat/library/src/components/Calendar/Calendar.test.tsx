@@ -23,7 +23,6 @@ describe('Calendar', () => {
       // The guarantee itself is unchanged — clsx puts the consumer `className` last and the
       // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
       // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-      'make-styles-overrides-win',
     ],
     // `component-has-group-marker` is a default test (DECISIONS.md D16.6) and asserts the
     // `group/fui-calendar` marker this root now stamps, plus the D15.1 `classList[0]`

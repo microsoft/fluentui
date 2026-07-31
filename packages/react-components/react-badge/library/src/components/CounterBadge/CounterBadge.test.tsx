@@ -23,7 +23,7 @@ describe('CounterBadge', () => {
     // Both are false by design: DECISIONS.md D16.1 removed the BEM statics, D16.5 narrowed
     // the export to `{ root }` and re-pointed it at the group marker. Its
     // `has-static-classnames` testOptions entry goes with it.
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object'],
     testOptions: {
       // a CounterBadge IS a Badge — `useBadgeStyles_unstable` stamps its marker on this same element, so this root
       // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set
