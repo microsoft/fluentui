@@ -1,0 +1,11 @@
+/* Story styles for ThemeColors, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.inputSearch {
+  width: 100%;
+}

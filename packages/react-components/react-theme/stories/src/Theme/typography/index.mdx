@@ -41,24 +41,9 @@ import styles from './Example.module.css';
 export const Example = () => <span className={styles.text}>Text using tokens</span>;
 ```
 
-The `typographyStyles` object remains exported for code that needs the same values from TypeScript,
-and the examples below show that form — they are authored with `makeStyles`, which is still
-re-exported from `@fluentui/react-components`:
-
-```tsx
-import * as React from 'react';
-import { makeStyles, typographyStyles } from '@fluentui/react-components';
-
-const useStyles = makeStyles({
-  text: typographyStyles.title2,
-});
-
-export const Example = () => {
-  const styles = useStyles();
-
-  return <span className={styles.text}>Text using tokens</span>;
-};
-```
+The `typographyStyles` object remains exported for code that needs the same values from
+TypeScript (for example, to feed an inline `style` or a charting library) — but for styling,
+the CSS Module above is the whole recipe.
 
 <FluentCanvas>
   <Example />
@@ -66,26 +51,24 @@ export const Example = () => {
 
 ## Composing Tokens
 
-Besides using typography styles, you can still use individual typography tokens:
+Besides using a full typography ramp, you can still compose individual typography tokens:
+
+```css
+/* Composing.module.css */
+.text {
+  font-family: var(--fontFamilyMonospace);
+  font-size: var(--fontSizeBase600);
+  font-weight: var(--fontWeightBold);
+  line-height: var(--lineHeightBase600);
+}
+```
 
 ```tsx
 import * as React from 'react';
-import { makeStyles, tokens } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  text: {
-    fontFamily: tokens.fontFamilyMonospace,
-    fontSize: tokens.fontSizeBase600,
-    fontWeight: tokens.fontWeightBold,
-    lineHeight: tokens.lineHeightBase600,
-  },
-});
+import styles from './Composing.module.css';
 
-export const Composing = () => {
-  const styles = useStyles();
-
-  return <span className={styles.text}>Custom text using only tokens</span>;
-};
+export const Composing = () => <span className={styles.text}>Custom text using only tokens</span>;
 ```
 
 <FluentCanvas>
@@ -94,37 +77,48 @@ export const Composing = () => {
 
 ## Mixing tokens and custom styles
 
-To mix tokens and custom styles, spread typography styles into the style object and combine them with another CSS properties:
+To mix tokens and custom styles, start a class from a ramp's four declarations and add any other
+CSS properties next to them:
+
+```css
+/* MixedStyles.module.css */
+.title {
+  /* Title 2 ramp */
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero700);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero700);
+}
+
+.paragraph {
+  /* Body 1 ramp */
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  /* custom additions */
+  letter-spacing: 0.0675em;
+  font-style: italic;
+}
+```
 
 ```tsx
 import * as React from 'react';
-import { makeStyles, typographyStyles, Text } from '@fluentui/react-components';
+import { Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  title: typographyStyles.title2,
+import styles from './MixedStyles.module.css';
 
-  paragraph: {
-    ...typographyStyles.body1,
-    letterSpacing: '0.0675em',
-    fontStyle: 'italic',
-  },
-});
+export const MixedStyles = () => (
+  <div>
+    <Text as="h1" block className={styles.title}>
+      Using Title 2 tokens
+    </Text>
 
-export const MixedStyles = () => {
-  const styles = useStyles();
-
-  return (
-    <div>
-      <Text as="h1" block className={styles.title}>
-        Using Title 2 tokens
-      </Text>
-
-      <Text as="p" block className={styles.paragraph}>
-        I'm a paragraph using Body 1 tokens and customized styles
-      </Text>
-    </div>
-  );
-};
+    <Text as="p" block className={styles.paragraph}>
+      I'm a paragraph using Body 1 tokens and customized styles
+    </Text>
+  </div>
+);
 ```
 
 <FluentCanvas>

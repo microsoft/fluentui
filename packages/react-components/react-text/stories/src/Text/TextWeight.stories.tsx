@@ -1,18 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Text } from '@fluentui/react-components';
+import { Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    gap: '16px',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
+import styles from './TextWeight.module.css';
 
 export const Weight = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <Text weight="regular">Regular weight</Text>

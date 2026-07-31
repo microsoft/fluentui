@@ -1,0 +1,9 @@
+/* Story styles for Composing, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.text {
+  font-family: var(--fontFamilyMonospace);
+  font-size: var(--fontSizeBase600);
+  font-weight: var(--fontWeightBold);
+  line-height: var(--lineHeightBase600);
+}

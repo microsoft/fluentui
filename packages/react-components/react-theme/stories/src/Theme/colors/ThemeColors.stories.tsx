@@ -7,11 +7,12 @@ import {
   webLightTheme,
   webDarkTheme,
   Input,
-  makeStyles,
 } from '@fluentui/react-components';
 
 import { ColorRampItem } from './ColorRamp.stories';
 import { TokensFilterButton } from './FilterButton.stories';
+
+import styles from './ThemeColors.module.css';
 
 // FIXME: hardcoded theme
 const theme = {
@@ -21,16 +22,6 @@ const theme = {
   teamsDark: teamsDarkTheme,
   teamsHighContrast: teamsHighContrastTheme,
 };
-
-const useStyles = makeStyles({
-  searchContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  inputSearch: {
-    width: '100%',
-  },
-});
 
 const tokens: Array<keyof Theme> = (Object.keys(theme.webLight) as Array<keyof Theme>).filter(
   tokenName => tokenName.match(/^color(?!Palette).*/) || tokenName.startsWith(`colorPalette`),
@@ -44,8 +35,6 @@ export const Colors = (): JSXElement => {
 
   // Value checked from the filter menu button
   const [checkedValue, setCheckedValue] = React.useState<Record<string, string[]>>();
-
-  const styles = useStyles();
 
   // It returns tokens matching the input value.
   const searchToken = React.useCallback(

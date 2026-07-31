@@ -1,19 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Text } from '@fluentui/react-components';
+import { Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    gap: '16px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'baseline',
-  },
-});
+import styles from './TextSize.module.css';
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <Text size={100}>100</Text>

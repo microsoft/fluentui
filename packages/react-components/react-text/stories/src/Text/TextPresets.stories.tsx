@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
-  makeStyles,
   Body1,
   Body1Strong,
   Body1Stronger,
@@ -22,18 +21,9 @@ import {
 } from '@fluentui/react-components';
 import textPresetsMd from './TextPresets.md';
 
-const useStyles = makeStyles({
-  container: {
-    gap: '16px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'baseline',
-  },
-});
+import styles from './TextPresets.module.css';
 
 export const Presets = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <Caption2>Caption2</Caption2>

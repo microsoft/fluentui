@@ -1,0 +1,18 @@
+/* Story styles for MixedStyles, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.title {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero700);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero700);
+}
+
+.paragraph {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  letter-spacing: 0.0675em;
+  font-style: italic;
+}

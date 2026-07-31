@@ -1,0 +1,16 @@
+/* Story styles for ThemeFonts, converted from Griffel makeStyles (S-F batch 7, hand conversion).
+ * Token references are the CSS variables they compile to.
+ * font-family is teamsLightTheme.fontFamilyBase resolved to its literal value — the story
+ * deliberately renders a Teams-light-theme snapshot rather than the active theme. */
+
+.propGrid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  align-content: center;
+  align-items: center;
+}

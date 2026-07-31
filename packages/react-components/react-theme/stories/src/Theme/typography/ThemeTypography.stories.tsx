@@ -1,27 +1,11 @@
 import * as React from 'react';
 import type { JSXElement, Theme } from '@fluentui/react-components';
-import { makeStyles, Subtitle2Stronger, Text, typographyStyles, webLightTheme } from '@fluentui/react-components';
+import { Subtitle2Stronger, Text, typographyStyles, webLightTheme } from '@fluentui/react-components';
 import type { TypographyStyles } from '@fluentui/react-components';
 
+import styles from './ThemeTypography.module.css';
+
 type TypographyTokens = [token: keyof TypographyStyles, tokenName: string, entries: [string, string][]][];
-
-const useStyles = makeStyles({
-  container: {
-    rowGap: '24px',
-    columnGap: '48px',
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto 1fr',
-    alignItems: 'start',
-  },
-  value: {
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    overflowX: 'hidden',
-    maxWidth: '10.5em',
-  },
-
-  ...typographyStyles,
-});
 
 // FIXME: hardcoded theme
 const theme = webLightTheme;
@@ -53,8 +37,6 @@ const tokens: TypographyTokens = tokenOrder.map(token => [
 ]);
 
 export const Typography = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <Subtitle2Stronger>Name</Subtitle2Stronger>

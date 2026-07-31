@@ -1,0 +1,20 @@
+/* Story styles for TextareaAppearance, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.base {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacingVerticalMNudge);
+}
+
+.inverted {
+  background-color: var(--colorNeutralBackgroundInverted);
+}
+
+.invertedLabel {
+  color: var(--colorNeutralForegroundInverted2);
+}
+
+.fieldWrapper {
+  padding: var(--spacingVerticalMNudge) var(--spacingHorizontalMNudge);
+}

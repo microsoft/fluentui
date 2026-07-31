@@ -1,0 +1,136 @@
+/* Story styles for ThemeTypography, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  row-gap: 24px;
+  column-gap: 48px;
+  display: grid;
+  grid-template-columns: auto auto auto 1fr;
+  align-items: start;
+}
+
+.value {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  max-width: 10.5em;
+}
+
+.body1 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+}
+
+.body1Strong {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase300);
+}
+
+.body1Stronger {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightBold);
+  line-height: var(--lineHeightBase300);
+}
+
+.body2 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase400);
+}
+
+.caption1 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase200);
+}
+
+.caption1Strong {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase200);
+}
+
+.caption1Stronger {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightBold);
+  line-height: var(--lineHeightBase200);
+}
+
+.caption2 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase100);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase100);
+}
+
+.caption2Strong {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase100);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase100);
+}
+
+.subtitle1 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase500);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase500);
+}
+
+.subtitle2 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase400);
+}
+
+.subtitle2Stronger {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightBold);
+  line-height: var(--lineHeightBase400);
+}
+
+.title1 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero800);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero800);
+}
+
+.title2 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero700);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero700);
+}
+
+.title3 {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase600);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase600);
+}
+
+.largeTitle {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero900);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero900);
+}
+
+.display {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeHero1000);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightHero1000);
+}

@@ -1,18 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, Textarea, tokens } from '@fluentui/react-components';
+import { Field, Textarea } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: tokens.spacingVerticalMNudge,
-  },
-});
+import styles from './TextareaResize.module.css';
 
 export const Resize = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.base}>
       <Field label='Textarea with resize set to "none"'>

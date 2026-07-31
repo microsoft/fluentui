@@ -1,19 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Text } from '@fluentui/react-components';
+import { Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    gap: '16px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'stretch',
-  },
-});
+import styles from './TextAlignment.module.css';
 
 export const Alignment = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <Text align="start">Aligned to start</Text>

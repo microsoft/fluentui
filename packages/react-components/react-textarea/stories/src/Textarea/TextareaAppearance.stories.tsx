@@ -1,27 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles, mergeClasses, tokens, Textarea } from '@fluentui/react-components';
+import { Field, Textarea } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: tokens.spacingVerticalMNudge,
-  },
-  inverted: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-  },
-  invertedLabel: {
-    color: tokens.colorNeutralForegroundInverted2,
-  },
-  fieldWrapper: {
-    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
-  },
-});
+import styles from './TextareaAppearance.module.css';
 
 export const Appearance = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.base}>
       <div className={styles.fieldWrapper}>
@@ -30,13 +13,13 @@ export const Appearance = (): JSXElement => {
         </Field>
       </div>
 
-      <div className={mergeClasses(styles.fieldWrapper, styles.inverted)}>
+      <div className={`${styles.fieldWrapper} ${styles.inverted}`}>
         <Field label={{ children: 'Textarea with Filled Darker appearance', className: styles.invertedLabel }}>
           <Textarea appearance="filled-darker" placeholder="type here..." resize="both" />
         </Field>
       </div>
 
-      <div className={mergeClasses(styles.fieldWrapper, styles.inverted)}>
+      <div className={`${styles.fieldWrapper} ${styles.inverted}`}>
         <Field label={{ children: 'Textarea with Filled Lighter appearance', className: styles.invertedLabel }}>
           <Textarea appearance="filled-lighter" placeholder="type here..." resize="both" />
         </Field>

@@ -1,0 +1,8 @@
+/* Story styles for TextareaResize, converted from Griffel makeStyles (S-F batch 7).
+ * Token references are the CSS variables they compile to. */
+
+.base {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacingVerticalMNudge);
+}
