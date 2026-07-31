@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * NOTE: this file keeps `'use client'` because
  * it still calls `useSizeStyles()` / `useGroupChildClassName()`, so eslint treats the styles
  * hook as a React hook and `enforce-use-client` never reports the directive as unnecessary.
  */

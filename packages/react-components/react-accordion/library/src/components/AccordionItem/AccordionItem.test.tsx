@@ -15,11 +15,9 @@ describe('AccordionItem', () => {
       // rationale. Replaced by `component-has-group-marker` (now a default test).
       'component-has-static-classnames-object',
     ],
-    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
-    // The hook now composes with clsx instead of mergeClasses; `classname-overrides-win`
-    // is the cascade-native replacement for `make-styles-overrides-win` and DOES apply
-    // here — the identity-only `.root` local is a class of the component's own, so the
-    // assertion "consumer className is last" is non-vacuous (DECISIONS.md D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `component-has-group-marker` asserts the D16 public contract: exactly one
     // `group/fui-accordion-item` marker on the outermost slot, and never at `classList[0]`

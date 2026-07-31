@@ -73,10 +73,9 @@ describe('onActiveOptionChange', () => {
 
 describe('useOnKeyboardNavigationChange', () => {
   it('Should add focus visible attribute on active option', () => {
-    // Debug affordance for the browser test: highlight the focus-visible option. Was a Griffel
-    // `makeStyles` rule (`[ATTR]` nested under a class Griffel resolves to `&[ATTR]`); a plain
-    // attribute-selector <style> tag is equivalent since the attribute only ever appears on the
-    // active option (Griffel → Tailwind + CSS Modules migration, S-H).
+    // Debug affordance for the browser test: highlight the focus-visible option. A plain
+    // attribute-selector <style> tag is enough, since the attribute only ever appears on the
+    // active option.
     const focusVisibleCss = `[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}] { color: red; }`;
 
     const Example = () => {

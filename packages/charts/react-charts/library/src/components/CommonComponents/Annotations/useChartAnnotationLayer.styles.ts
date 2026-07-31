@@ -1,5 +1,5 @@
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): this file no longer carries a
+ * NOTE: this file no longer carries a
  * `'use client'` directive. After conversion it calls no React hook — `makeStyles`'s
  * `useStyles()` call is gone — so `enforce-use-client` reports the directive as
  * unnecessary (VerticalStackedBarChart precedent). `ChartAnnotationLayer.tsx`, which

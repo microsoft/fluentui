@@ -10,7 +10,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 expect.extend(toHaveNoViolations);
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): the `getByClass` probes below match the
+ * NOTE: the `getByClass` probes below match the
  * CSS-Modules LOCAL name, lowercase-kebab (`/chart-title-right/`), not the removed BEM static
  * (the hbc__chartTitleRight form) or the camelCase Griffel slice name. Generated idents are
  * `fuicm-<component>-<local>-<hex6>` in the real pipelines and `fuicm-<local>` under jest

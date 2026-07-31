@@ -10,12 +10,9 @@ describe('AvatarGroup', () => {
   isConformant({
     Component: AvatarGroup,
     displayName: 'AvatarGroup',
-    // `make-styles-overrides-win` was already disabled here before the Griffel → Tailwind +
-    // CSS Modules migration (migration/griffel-to-tailwind). It is now doubly inapplicable:
-    // the hook composes with clsx and never calls mergeClasses, so the mock the test
-    // installs is never hit. `classname-overrides-win` is its cascade-native replacement —
-    // consumer `className` last on the root, with unlayered consumer CSS beating the
-    // `@layer fui.*` rules (DECISIONS.md D2/D9).
+    // `classname-overrides-win` (extraTests below) pins the styling override contract
+    // cascade-natively: the consumer `className` is composed last, and unlayered consumer CSS
+    // beats the component’s `@layer fui.*` rules (DECISIONS.md D2/D9).
     //
     // `component-has-static-classnames-object` is disabled because AvatarGroup no longer
     // publishes BEM statics (DECISIONS.md D16.1). Its sub-tests hard-code the

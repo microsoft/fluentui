@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): this file keeps `'use client'` because
+ * NOTE: this file keeps `'use client'` because
  * it still calls a React hook (`useBadgeStyles_unstable`), so `enforce-use-client` never
  * reports the directive as unnecessary. Badge and PresenceBadge call nothing after conversion
  * and carry no directive at all — the same split as react-button's Button vs ToggleButton.

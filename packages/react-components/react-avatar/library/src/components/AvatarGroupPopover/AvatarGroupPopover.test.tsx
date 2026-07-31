@@ -21,10 +21,8 @@ describe('AvatarGroupPopover', () => {
     // resolves to. No `testOptions['has-group-marker']` override is needed — the marker is
     // derivable from the displayName.
     //
-    // `make-styles-overrides-win` is disabled because the hook composes with clsx and never
-    // calls mergeClasses, so the mock that test installs is never hit. Its cascade-native
-    // replacement `classname-overrides-win` is NOT applicable to this component either, for
-    // exactly the reason `component-handles-classname` is disabled two lines above it: the
+    // `classname-overrides-win` (DECISIONS.md D9) is NOT applicable to this component, for
+    // exactly the reason `component-handles-classname` is disabled below: the
     // consumer's `className` lands on the `root` slot, which is a `<Popover>` that renders no
     // DOM element, so no rendered element ever carries it. Both halves of that test — "the
     // consumer's className reaches the root slot" and "nothing follows it" — are unassertable

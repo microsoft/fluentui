@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * NOTE on the directive above:
  * a converted hook normally calls no React hook and no RSC-unsafe function once `makeStyles`
  * is gone, so the other three styles files in this package carry no directive at all. This
  * one is the exception: it still calls `useButtonStyles_unstable`, so the directive is

@@ -1,5 +1,5 @@
 /*
- * NOTE (Griffel → Tailwind + CSS Modules migration): this file no longer carries a
+ * NOTE: this file no longer carries a
  * `'use client'` directive. After conversion it calls no React hook — both `makeStyles`'s
  * `useStyles()` and the `useRtl()` branch are gone (the RTL rule is now `@variant rtl` in
  * the module) — so `enforce-use-client` reports the directive as unnecessary. Same split as
