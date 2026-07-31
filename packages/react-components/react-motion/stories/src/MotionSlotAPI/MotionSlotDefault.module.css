@@ -1,0 +1,27 @@
+/* Story styles for MotionSlotDefault, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template: 'card' / 1fr;
+  gap: 20px 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-area: card;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 20px;
+}
+
+.indicator {
+  background-color: var(--colorBrandBackground);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}

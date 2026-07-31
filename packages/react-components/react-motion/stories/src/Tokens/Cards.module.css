@@ -1,0 +1,172 @@
+/* Story styles for Cards, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  align-self: end;
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusMedium);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 6px 10px;
+  border: 2px solid var(--colorNeutralStroke1);
+  border-bottom: none;
+  width: fit-content;
+}
+
+.card {
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusMedium);
+  border-top-right-radius: 0;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px 50px;
+  place-items: center;
+  border: 2px solid var(--colorNeutralStroke1);
+}
+
+.cardClassesContainer {
+  display: grid;
+  grid-template:
+    'view point'
+    'title .' auto / min-content var(--point-size);
+  gap: 10px;
+  --container-size: 250px;
+  --point-size: 20px;
+}
+
+.point {
+  grid-area: point;
+  width: var(--point-size);
+  height: var(--point-size);
+  background-color: var(--colorBrandBackground);
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+  animation-name: point-kf;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+@media (forced-colors: active) {
+  .point {
+    background-color: LinkText;
+  }
+}
+
+.graph {
+  grid-area: view;
+  display: grid;
+  grid-template:
+    'graphP svg'
+    '.      graphT' / min-content 1fr;
+  gap: 6px;
+}
+
+@media (forced-colors: active) {
+  .graph {
+    background-color: Canvas;
+  }
+}
+
+.graphP {
+  grid-area: graphP;
+  color: var(--colorNeutralStroke1);
+  font-family: var(--fontFamilyMonospace);
+}
+
+.graphT {
+  grid-area: graphT;
+  justify-self: end;
+  color: var(--colorNeutralStroke1);
+  font-family: var(--fontFamilyMonospace);
+}
+
+.svg {
+  grid-area: svg;
+  border-left: 1px solid var(--colorNeutralStroke1);
+  border-bottom: 1px solid var(--colorNeutralStroke1);
+  overflow: visible;
+  height: var(--container-size);
+  width: var(--container-size);
+}
+
+.path {
+  fill: none;
+  stroke: var(--colorNeutralStrokeAccessible);
+  stroke-width: 2;
+}
+
+@media (forced-colors: active) {
+  .path {
+    stroke: CanvasText;
+  }
+}
+
+.duration {
+  place-self: center;
+  width: 128px;
+  height: 4px;
+  margin: 64px auto;
+  background-color: var(--colorNeutralForeground3);
+  animation-name: duration-kf;
+  animation-iteration-count: infinite;
+}
+
+@media (forced-colors: active) {
+  .duration {
+    background-color: CanvasText;
+  }
+}
+
+.view {
+  grid-area: view;
+}
+
+.title {
+  grid-area: title;
+  justify-self: center;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: var(--fontFamilyMonospace);
+  font-size: var(--fontSizeBase400);
+  padding: 5px 10px;
+  background-color: var(--colorNeutralBackground3);
+  border-radius: var(--borderRadiusMedium);
+}
+
+.name {
+  text-align: center;
+}
+
+.value {
+  font-size: var(--fontSizeBase200);
+  font-style: italic;
+  white-space: nowrap;
+  text-align: center;
+}
+
+@keyframes point-kf {
+  0% {
+    transform: translateY(calc(var(--container-size) - var(--point-size) / 2));
+  }
+  60%,
+  100% {
+    transform: translateY(calc(var(--point-size) / 2 * -1));
+  }
+}
+
+@keyframes duration-kf {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}

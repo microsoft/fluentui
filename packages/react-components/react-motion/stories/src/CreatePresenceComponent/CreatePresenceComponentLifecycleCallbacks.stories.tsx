@@ -1,14 +1,11 @@
 import {
   createPresenceComponent,
   Field,
-  makeStyles,
-  mergeClasses,
   type MotionImperativeRef,
   motionTokens,
   Slider,
   Switch,
   Text,
-  tokens,
   useId,
 } from '@fluentui/react-components';
 import * as React from 'react';
@@ -16,77 +13,9 @@ import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentLifecycleCallbacks.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card logs" "controls ." / 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'end',
-    gridArea: 'card',
+import styles from './CreatePresenceComponentLifecycleCallbacks.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-  },
-  sliderField: {
-    gridTemplateColumns: 'min-content 1fr',
-  },
-  sliderLabel: {
-    textWrap: 'nowrap',
-  },
-
-  item: {
-    backgroundColor: tokens.colorBrandBackground,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
-    borderRadius: '50%',
-
-    width: '100px',
-    height: '100px',
-  },
-
-  logContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'logs',
-  },
-  logLabel: {
-    color: tokens.colorNeutralForegroundOnBrand,
-    backgroundColor: tokens.colorNeutralForeground3,
-    width: 'fit-content',
-    alignSelf: 'end',
-    fontWeight: tokens.fontWeightBold,
-    padding: '2px 12px',
-    borderRadius: `${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium} 0 0`,
-  },
-  log: {
-    overflowY: 'auto',
-    position: 'relative',
-    height: '200px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    borderTopRightRadius: 0,
-    padding: '10px',
-  },
-});
+const useClasses = () => styles;
 
 const Fade = createPresenceComponent({
   enter: {
@@ -153,7 +82,7 @@ export const CreatePresenceComponentLifecycleCallbacks = (): JSXElement => {
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field>
         <Field
-          className={mergeClasses(classes.field, classes.sliderField)}
+          className={`${classes.field} ${classes.sliderField}`}
           label={{
             children: (
               <>

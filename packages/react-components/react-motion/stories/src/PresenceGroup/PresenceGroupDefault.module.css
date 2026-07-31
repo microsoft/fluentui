@@ -1,0 +1,30 @@
+/* Story styles for PresenceGroupDefault, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  border-top-right-radius: 0;
+  box-shadow: var(--shadow16);
+  padding: 10px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-bottom: none;
+  border-top-left-radius: var(--borderRadiusMedium);
+  border-top-right-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+  align-self: end;
+}

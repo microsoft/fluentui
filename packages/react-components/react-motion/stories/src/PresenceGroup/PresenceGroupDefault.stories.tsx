@@ -1,9 +1,7 @@
 import {
   createPresenceComponent,
-  makeStyles,
   Button,
   Persona,
-  tokens,
   MessageBar,
   MessageBarTitle,
   MessageBarBody,
@@ -14,33 +12,9 @@ import { AddRegular, DeleteRegular } from '@fluentui/react-icons';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    borderTopRightRadius: 0,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  controls: {
-    display: 'flex',
-    gap: '10px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderBottom: 'none',
-    borderTopLeftRadius: tokens.borderRadiusMedium,
-    borderTopRightRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-    alignSelf: 'end',
-  },
-});
+import styles from './PresenceGroupDefault.module.css';
+
+const useClasses = () => styles;
 
 const users = [
   {

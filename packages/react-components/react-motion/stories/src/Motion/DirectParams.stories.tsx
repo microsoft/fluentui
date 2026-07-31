@@ -14,79 +14,16 @@ import {
   DialogTitle,
   DialogTrigger,
   Field,
-  makeStyles,
   Slider,
   Text,
-  tokens,
   Tree,
   TreeItem,
   TreeItemLayout,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalL,
-    width: '100%',
-    maxWidth: '800px',
-    scrollbarGutter: 'stable',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    padding: tokens.spacingVerticalM,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-  },
-  row: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalL,
-    alignItems: 'start',
-  },
-  column: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    flex: 1,
-    minWidth: 0,
-  },
-  section: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    padding: tokens.spacingVerticalM,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    overflow: 'hidden',
-    overflowWrap: 'break-word',
-    wordBreak: 'break-word',
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  codeBlock: {
-    fontFamily: tokens.fontFamilyMonospace,
-    fontSize: tokens.fontSizeBase200,
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
-    whiteSpace: 'pre',
-    overflow: 'auto',
-  },
-  accordionContainer: {
-    minWidth: 0,
-    overflow: 'hidden',
-    maxWidth: '100%',
-  },
-  constrainedText: {
-    minWidth: 0,
-    display: 'block',
-    overflow: 'hidden',
-    overflowWrap: 'break-word',
-    wordBreak: 'break-word',
-  },
-});
+import styles from './DirectParams.module.css';
+
+const useStyles = () => styles;
 
 /**
  * When a component's motion slot type includes generic parameters, those parameters

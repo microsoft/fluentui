@@ -1,0 +1,49 @@
+/* Story styles for CustomMotion, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightSemibold);
+  margin: 0;
+}
+
+.sectionDescription {
+  font-size: var(--fontSizeBase300);
+  color: var(--colorNeutralForeground3);
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.drawerContainer {
+  border: 2px solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 300px;
+  background-color: var(--colorNeutralBackground1);
+}
+
+.drawerContent {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}

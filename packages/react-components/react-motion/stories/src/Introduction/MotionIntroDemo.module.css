@@ -1,0 +1,17 @@
+/* Story styles for MotionIntroDemo, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacingVerticalM);
+  padding: var(--spacingVerticalXL);
+}
+
+.card {
+  padding: var(--spacingVerticalL) var(--spacingHorizontalXXL);
+  font-weight: var(--fontWeightSemibold);
+  font-size: var(--fontSizeBase300);
+  text-align: center;
+}

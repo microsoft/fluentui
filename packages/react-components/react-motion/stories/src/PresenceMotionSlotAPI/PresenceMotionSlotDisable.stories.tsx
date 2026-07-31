@@ -1,7 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { assertSlots, Field, makeStyles, presenceMotionSlot, slot, Switch, tokens } from '@fluentui/react-components';
+import { assertSlots, Field, presenceMotionSlot, slot, Switch } from '@fluentui/react-components';
 import type {
   ComponentProps,
   ComponentState,
@@ -13,6 +13,8 @@ import { Fade, type FadeParams } from '../../../../react-motion-components-previ
 import * as React from 'react';
 
 import description from './PresenceMotionSlotDisable.stories.md';
+
+import styles from './PresenceMotionSlotDisable.module.css';
 
 type InfoPanelSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -69,42 +71,7 @@ const InfoPanel: React.FC<InfoPanelProps> = props => {
 
 // --- Story ---
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gridArea: 'card',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-    minHeight: '120px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  panel: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '20px',
-  },
-});
+const useClasses = () => styles;
 
 export const PresenceMotionSlotDisable = (): JSXElement => {
   const classes = useClasses();

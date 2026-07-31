@@ -1,19 +1,13 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import {
-  assertSlots,
-  createMotionComponent,
-  makeStyles,
-  motionSlot,
-  motionTokens,
-  slot,
-  tokens,
-} from '@fluentui/react-components';
+import { assertSlots, createMotionComponent, motionSlot, motionTokens, slot } from '@fluentui/react-components';
 import type { ComponentProps, ComponentState, JSXElement, MotionSlotProps, Slot } from '@fluentui/react-components';
 import * as React from 'react';
 
 import description from './MotionSlotDefault.stories.md';
+
+import styles from './MotionSlotDefault.module.css';
 
 // 1. Describe the motion's tunable parameters
 type PulseParams = {
@@ -86,31 +80,7 @@ const PulseIndicator: React.FC<PulseIndicatorProps> = props => {
 
 // --- Story ---
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card" / 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gridArea: 'card',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '20px',
-  },
-  indicator: {
-    backgroundColor: tokens.colorBrandBackground,
-    borderRadius: '50%',
-    width: '80px',
-    height: '80px',
-  },
-});
+const useClasses = () => styles;
 
 export const MotionSlotDefault = (): JSXElement => {
   const classes = useClasses();

@@ -1,0 +1,86 @@
+/* Story styles for MotionVsPresenceDemo, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacingHorizontalXXL);
+  margin-top: var(--spacingVerticalXXL);
+  margin-bottom: var(--spacingVerticalXXL);
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  overflow: hidden;
+}
+
+.panelHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacingVerticalXS);
+  padding: var(--spacingVerticalL) var(--spacingHorizontalXL) var(--spacingVerticalM);
+  background-color: var(--colorNeutralBackground2);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightSemibold);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--fontSizeBase200);
+  color: var(--colorNeutralForeground3);
+  text-align: center;
+}
+
+.demoArea {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  height: 80px;
+  padding: var(--spacingVerticalL);
+  background-color: var(--colorNeutralBackground1);
+}
+
+.motionWrapper {
+  width: fit-content;
+}
+
+.card {
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacingVerticalM) var(--spacingHorizontalXL);
+  font-weight: var(--fontWeightSemibold);
+  font-size: var(--fontSizeBase300);
+}
+
+.codeArea {
+  margin: 0;
+  padding: var(--spacingVerticalM) var(--spacingHorizontalL);
+  background-color: var(--colorNeutralBackground3);
+  border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  overflow: auto;
+  font-family: var(--fontFamilyMonospace);
+  font-size: var(--fontSizeBase100);
+  line-height: var(--lineHeightBase200);
+  color: var(--colorNeutralForeground1);
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacingVerticalM) var(--spacingHorizontalXL) var(--spacingVerticalL);
+  background-color: var(--colorNeutralBackground2);
+}

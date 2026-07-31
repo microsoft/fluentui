@@ -14,13 +14,14 @@ import {
   DrawerHeader,
   DrawerHeaderTitle,
   InlineDrawer,
-  makeStyles,
   motionTokens,
   tokens,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 import description from './CustomMotion.stories.md';
+
+import styles from './CustomMotion.module.css';
 
 // --- Custom motions for Dialog ---
 
@@ -97,50 +98,7 @@ const CustomSlideMotion = createPresenceComponent(() => {
 
 // --- Styles ---
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '40px',
-  },
-
-  section: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-  },
-  sectionTitle: {
-    fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
-    margin: '0',
-  },
-  sectionDescription: {
-    fontSize: tokens.fontSizeBase300,
-    color: tokens.colorNeutralForeground3,
-    margin: '0',
-  },
-  buttons: {
-    display: 'flex',
-    gap: '12px',
-  },
-
-  drawerContainer: {
-    border: `2px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column-reverse',
-    height: '300px',
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  drawerContent: {
-    flex: '1',
-    padding: '16px',
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: '12px',
-  },
-});
+const useStyles = () => styles;
 
 const curveSwimSpringSlide = `linear(0, .003149 1%, .01215 2%, .02643 3%, .04544 4%, .06871 5%, .09533 6%, .1204 7%, .1429 8%, .1632 9%, .1814 10%, .1977 11%, .2124 12%, .2257 13%, .2375 14%, .2482 15%, .2664 17%, .2811 19%, .293 21%, .3078 24%, .3181 25%, .3336 26%, .3536 27%, .3778 28%, .4342 30%, .4598 31%, .4827 32%, .5034 33%, .5219 34%, .5386 35%, .5536 36%, .5671 37%, .5792 38%, .5901 39%, .6086 41%, .6236 43%, .6358 45%, .6456 47%, .6537 48%, .6672 49%, .6855 50%, .7081 51%, .7346 52%, .7638 53%, .7908 54%, .8151 55%, .8369 56%, .8565 57%, .8741 58%, .8899 59%, .9041 60%, .9169 61%, .9284 62%, .9387 63%, .9563 65%, .9706 67%, .9821 69%, .9914 71%, .9987 73%, 1.004 75%, 1.008 77%, 1.011 80%, 1.012 83%, 1.01 87%, 1.002 95%, 1 99%, 1)`;
 

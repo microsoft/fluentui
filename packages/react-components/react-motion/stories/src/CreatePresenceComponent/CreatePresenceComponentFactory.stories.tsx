@@ -1,58 +1,12 @@
-import {
-  createPresenceComponent,
-  Field,
-  makeStyles,
-  type MotionImperativeRef,
-  tokens,
-  Switch,
-} from '@fluentui/react-components';
+import { createPresenceComponent, Field, type MotionImperativeRef, Switch } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentFactory.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'end',
-    gridArea: 'card',
+import styles from './CreatePresenceComponentFactory.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-    paddingTop: '100px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-  },
-
-  item: {
-    backgroundColor: tokens.colorBrandBackground,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
-    borderRadius: '50%',
-
-    width: '100px',
-    height: '100px',
-  },
-});
+const useClasses = () => styles;
 
 const DropIn = createPresenceComponent({
   enter: {

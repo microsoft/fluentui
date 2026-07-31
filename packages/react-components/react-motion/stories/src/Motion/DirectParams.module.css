@@ -1,0 +1,72 @@
+/* Story styles for DirectParams, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalL);
+  width: 100%;
+  max-width: 800px;
+  scrollbar-gutter: stable;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalS);
+  padding: var(--spacingVerticalM);
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+}
+
+.row {
+  display: flex;
+  gap: var(--spacingHorizontalL);
+  align-items: start;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalS);
+  flex: 1;
+  min-width: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalS);
+  padding: var(--spacingVerticalM);
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.codeBlock {
+  font-family: var(--fontFamilyMonospace);
+  font-size: var(--fontSizeBase200);
+  background-color: var(--colorNeutralBackground1Pressed);
+  border-radius: var(--borderRadiusMedium);
+  padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+  white-space: pre;
+  overflow: auto;
+}
+
+.accordionContainer {
+  min-width: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.constrainedText {
+  min-width: 0;
+  display: block;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}

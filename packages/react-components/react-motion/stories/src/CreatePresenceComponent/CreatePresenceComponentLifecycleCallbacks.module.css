@@ -1,0 +1,76 @@
+/* Story styles for CreatePresenceComponentLifecycleCallbacks, converted from Griffel makeStyles (S-F batch 4).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template: 'card logs' 'controls .' / 1fr 1fr;
+  gap: 20px 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  grid-area: card;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  grid-area: controls;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: 10px;
+}
+
+.field {
+  flex: 1;
+}
+
+.sliderField {
+  grid-template-columns: min-content 1fr;
+}
+
+.sliderLabel {
+  text-wrap: nowrap;
+}
+
+.item {
+  background-color: var(--colorBrandBackground);
+  border: var(--strokeWidthThicker) solid var(--colorTransparentStroke);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.logContainer {
+  display: flex;
+  flex-direction: column;
+  grid-area: logs;
+}
+
+.logLabel {
+  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--colorNeutralForeground3);
+  width: fit-content;
+  align-self: end;
+  font-weight: var(--fontWeightBold);
+  padding: 2px 12px;
+  border-radius: var(--borderRadiusMedium) var(--borderRadiusMedium) 0 0;
+}
+
+.log {
+  overflow-y: auto;
+  position: relative;
+  height: 200px;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  border-top-right-radius: 0;
+  padding: 10px;
+}

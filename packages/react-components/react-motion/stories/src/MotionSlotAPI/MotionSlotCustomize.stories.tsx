@@ -1,19 +1,13 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import {
-  assertSlots,
-  createMotionComponent,
-  makeStyles,
-  motionSlot,
-  motionTokens,
-  slot,
-  tokens,
-} from '@fluentui/react-components';
+import { assertSlots, createMotionComponent, motionSlot, motionTokens, slot } from '@fluentui/react-components';
 import type { ComponentProps, ComponentState, JSXElement, MotionSlotProps, Slot } from '@fluentui/react-components';
 import * as React from 'react';
 
 import description from './MotionSlotCustomize.stories.md';
+
+import styles from './MotionSlotCustomize.module.css';
 
 // A params-typed pulse: consumers can pass `{ duration, iterations }` directly on the slot.
 type PulseParams = {
@@ -86,41 +80,7 @@ const SpinMotion = createMotionComponent({
 
 // --- Story ---
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card card card" / 1fr 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '10px',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '20px',
-  },
-  label: {
-    color: tokens.colorNeutralForeground3,
-    fontSize: tokens.fontSizeBase200,
-    textAlign: 'center',
-  },
-  indicator: {
-    backgroundColor: tokens.colorBrandBackground,
-    borderRadius: '50%',
-    width: '80px',
-    height: '80px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: tokens.colorNeutralForegroundOnBrand,
-    fontSize: '24px',
-  },
-});
+const useClasses = () => styles;
 
 export const MotionSlotCustomize = (): JSXElement => {
   const classes = useClasses();

@@ -5,12 +5,10 @@ import {
   assertSlots,
   createPresenceComponent,
   Field,
-  makeStyles,
   motionTokens,
   presenceMotionSlot,
   slot,
   Switch,
-  tokens,
 } from '@fluentui/react-components';
 import type {
   ComponentProps,
@@ -23,6 +21,8 @@ import { Fade, type FadeParams } from '../../../../react-motion-components-previ
 import * as React from 'react';
 
 import description from './PresenceMotionSlotCustomize.stories.md';
+
+import styles from './PresenceMotionSlotCustomize.module.css';
 
 // A params-typed fade slot: consumers can pass `{ duration, easing, outOpacity, ... }`
 // directly on `surfaceMotion`.
@@ -101,49 +101,7 @@ const SlideMotion = createPresenceComponent({
 
 // --- Story ---
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"card card card" "controls controls controls" / 1fr 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-    minHeight: '140px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  panel: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '16px',
-    fontSize: tokens.fontSizeBase200,
-    textAlign: 'center',
-  },
-  label: {
-    color: tokens.colorNeutralForeground3,
-    fontSize: tokens.fontSizeBase200,
-    textAlign: 'center',
-    marginTop: '8px',
-  },
-});
+const useClasses = () => styles;
 
 export const PresenceMotionSlotCustomize = (): JSXElement => {
   const classes = useClasses();

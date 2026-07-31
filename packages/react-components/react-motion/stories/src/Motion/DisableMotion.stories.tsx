@@ -13,8 +13,6 @@ import {
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
-  makeStyles,
-  tokens,
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
@@ -22,49 +20,9 @@ import { Dismiss24Regular } from '@fluentui/react-icons';
 
 import description from './DisableMotion.stories.md';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '40px',
-  },
+import styles from './DisableMotion.module.css';
 
-  section: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-  },
-  sectionTitle: {
-    fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
-    margin: '0',
-  },
-  sectionDescription: {
-    fontSize: tokens.fontSizeBase300,
-    color: tokens.colorNeutralForeground3,
-    margin: '0',
-  },
-  buttons: {
-    display: 'flex',
-    gap: '12px',
-  },
-
-  drawerContainer: {
-    border: `2px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    overflow: 'hidden',
-    display: 'flex',
-    height: '300px',
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  drawerContent: {
-    flex: '1',
-    padding: '16px',
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: '12px',
-  },
-});
+const useStyles = () => styles;
 
 // --- Dialog examples ---
 

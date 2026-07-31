@@ -1,78 +1,19 @@
 import {
   createPresenceComponent,
   Field,
-  makeStyles,
-  mergeClasses,
   type MotionImperativeRef,
   type PresenceMotionFn,
   Slider,
   Switch,
-  tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentFunctions.stories.md';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"cardA cardB" "controls ." / 1fr 1fr`,
-    gap: '20px 10px',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'end',
+import styles from './CreatePresenceComponentFunctions.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-
-    minHeight: '230px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: '10px',
-  },
-  field: {
-    flex: 1,
-  },
-  sliderField: {
-    gridTemplateColumns: 'min-content 1fr',
-  },
-  sliderLabel: {
-    textWrap: 'nowrap',
-  },
-
-  cardA: {
-    gridArea: 'cardA',
-  },
-  cardB: {
-    gridArea: 'cardB',
-  },
-  item: {
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorBrandBackground}`,
-    padding: '8px',
-
-    width: '300px',
-  },
-  description: {
-    fontFamily: tokens.fontFamilyMonospace,
-    borderRadius: tokens.borderRadiusMedium,
-    marginTop: '10px',
-    padding: '5px 10px',
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-  },
-});
+const useClasses = () => styles;
 
 const collapseMotion: PresenceMotionFn = ({ element }) => {
   const duration = 500;
@@ -106,7 +47,7 @@ export const CreatePresenceComponentFunctions = (): JSXElement => {
 
   return (
     <div className={classes.container}>
-      <div className={mergeClasses(classes.card, classes.cardA)}>
+      <div className={`${classes.card} ${classes.cardA}`}>
         <Collapse imperativeRef={motionInRef} visible={visible}>
           <div className={classes.item}>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie,
@@ -116,7 +57,7 @@ export const CreatePresenceComponentFunctions = (): JSXElement => {
         </Collapse>
         <div className={classes.description}>normal state</div>
       </div>
-      <div className={mergeClasses(classes.card, classes.cardB)}>
+      <div className={`${classes.card} ${classes.cardB}`}>
         <Collapse imperativeRef={motionOutRef} visible={!visible}>
           <div className={classes.item}>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie,
@@ -132,7 +73,7 @@ export const CreatePresenceComponentFunctions = (): JSXElement => {
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field>
         <Field
-          className={mergeClasses(classes.field, classes.sliderField)}
+          className={`${classes.field} ${classes.sliderField}`}
           label={{
             children: (
               <>
