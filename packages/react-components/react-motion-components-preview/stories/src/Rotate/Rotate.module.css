@@ -1,0 +1,6 @@
+/* Story styles for Rotate, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  padding: var(--spacingVerticalXL);
+}

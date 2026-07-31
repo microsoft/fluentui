@@ -1,60 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, Button, CompoundButton, motionTokens } from '@fluentui/react-components';
+import { tokens, Button, CompoundButton, motionTokens } from '@fluentui/react-components';
 import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXL, // 20px
-    padding: tokens.spacingVerticalXL, // 20px
-    maxWidth: '1000px',
-  },
-  controls: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalMNudge, // 10px
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    marginBottom: tokens.spacingVerticalXL, // 20px
-  },
-  patternsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: tokens.spacingVerticalXL, // 20px
-  },
-  cardWrapper: {
-    perspective: '500px',
-    perspectiveOrigin: 'center center',
-    height: '140px',
-    cursor: 'pointer',
-    borderRadius: tokens.borderRadiusMedium,
-    transition: `scale ${motionTokens.durationSlow}ms ${motionTokens.curveDecelerateMid}`,
-    '&:hover': {
-      scale: '105%',
-    },
-  },
-  patternCard: {
-    height: '100%',
-    width: '100%',
-    border: `2px solid ${tokens.colorNeutralStroke1}`,
-    backgroundColor: tokens.colorNeutralBackground1, // Override transparent background from outline appearance
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover, // Override transparent hover background
-    },
-  },
-  demoIcon: {
-    width: '48px',
-    height: '48px',
-    borderRadius: tokens.borderRadiusMedium,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: tokens.colorNeutralForegroundOnBrand,
-  },
-});
+import styles from './RotateCardFlip.module.css';
+
+const useClasses = () => styles;
 
 const curveSpringRelaxed = `linear(0.0000 0.00%, 0.9935 36.00%, 1.042 38.00%, 1.072 40.00%, 1.084 42.00%, 1.080 44.00%, 1.055 47.00%, 0.9933 53.00%, 0.9746 57.00%, 0.9797 62.00%, 1.002 69.00%, 1.008 73.00%, 1.008 76.00%, 0.9980 87.00%, 1.000 100.00%)`;
 const curveAnticipation = `linear(0, -0.01210 6%, -0.07124 19%, -0.08333 25%, -0.07200 30%, -0.04316 34%, 0.007701 38%, 0.06276 41%, 0.1342 44%, 0.2238 47%, 0.4463 53%, 0.5760 57%, 0.6836 61%, 0.7713 65%, 0.8411 69%, 0.9063 74%, 0.9506 79%, 0.9820 85%, 0.9982 93%, 1)`;

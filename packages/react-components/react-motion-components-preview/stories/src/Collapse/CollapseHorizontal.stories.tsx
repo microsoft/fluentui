@@ -1,38 +1,13 @@
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
+import { Field, Switch } from '@fluentui/react-components';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CollapseHorizontal.stories.md';
 
-const useClasses = makeStyles({
-  container: { display: 'flex', flexDirection: 'column', gap: '10px' },
-  sideContent: {
-    background: 'lightgrey',
-    padding: '50px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  card: {
-    gridArea: 'card',
-    padding: '20px',
-    width: '300px',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
+import styles from './CollapseHorizontal.module.css';
 
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: tokens.spacingVerticalMNudge,
-  },
-  field: {
-    flex: 1,
-  },
-});
+const useClasses = () => styles;
 
 const LoremIpsum = () => (
   <>

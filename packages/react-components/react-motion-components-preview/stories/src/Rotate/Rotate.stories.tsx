@@ -1,13 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, tokens, type PresenceComponentProps } from '@fluentui/react-components';
+import { type PresenceComponentProps } from '@fluentui/react-components';
 import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
-const useClasses = makeStyles({
-  wrapper: {
-    padding: tokens.spacingVerticalXL,
-  },
-});
+import styles from './Rotate.module.css';
+
+const useClasses = () => styles;
 
 const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => (
   <div ref={ref} {...props}>

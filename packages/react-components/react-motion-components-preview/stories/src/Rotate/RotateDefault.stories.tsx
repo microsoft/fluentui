@@ -4,8 +4,6 @@ import {
   Card,
   CardHeader,
   Field,
-  makeStyles,
-  tokens,
   useId,
   Label,
   Slider,
@@ -17,83 +15,11 @@ import {
 } from '@fluentui/react-components';
 import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
+import styles from './RotateDefault.module.css';
+
 type Axis3D = NonNullable<RotateParams['axis']>;
 
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
-  },
-  card: {
-    gridArea: 'card',
-    padding: tokens.spacingHorizontalMNudge,
-  },
-  cardHeaderText: {
-    margin: 0,
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: 'controls',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    boxShadow: tokens.shadow16,
-    padding: tokens.spacingHorizontalL,
-    gap: tokens.spacingVerticalL,
-  },
-  controlSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalM,
-  },
-  sectionHeader: {
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightSemibold,
-    color: tokens.colorNeutralForeground2,
-    marginBottom: tokens.spacingVerticalXS,
-    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-    paddingBottom: tokens.spacingVerticalXS,
-  },
-  toggleGroup: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: tokens.spacingHorizontalM,
-  },
-  ctaButton: {
-    flex: 1,
-  },
-  field: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXS,
-  },
-  sliderField: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXS,
-  },
-  sliderWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: tokens.spacingHorizontalS,
-  },
-  sliderLabel: {
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightMedium,
-    color: tokens.colorNeutralForeground1,
-  },
-  valueDisplay: {
-    fontSize: tokens.fontSizeBase200,
-    color: tokens.colorNeutralForeground2,
-    fontFamily: tokens.fontFamilyMonospace,
-  },
-  sliderHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-});
+const useClasses = () => styles;
 
 const LoremIpsum = () => (
   <>

@@ -1,0 +1,89 @@
+/* Story styles for RotateDefault, converted from Griffel makeStyles (S-F batch 5).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: grid;
+  grid-template: 'controls .' 'card card' / 1fr 1fr;
+  gap: var(--spacingVerticalXL) var(--spacingHorizontalMNudge);
+}
+
+.card {
+  grid-area: card;
+  padding: var(--spacingHorizontalMNudge);
+}
+
+.cardHeaderText {
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  grid-area: controls;
+  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: var(--shadow16);
+  padding: var(--spacingHorizontalL);
+  gap: var(--spacingVerticalL);
+}
+
+.controlSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalM);
+}
+
+.sectionHeader {
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+  color: var(--colorNeutralForeground2);
+  margin-bottom: var(--spacingVerticalXS);
+  border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  padding-bottom: var(--spacingVerticalXS);
+}
+
+.toggleGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacingHorizontalM);
+}
+
+.ctaButton {
+  flex: 1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalXS);
+}
+
+.sliderField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalXS);
+}
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacingHorizontalS);
+}
+
+.sliderLabel {
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightMedium);
+  color: var(--colorNeutralForeground1);
+}
+
+.valueDisplay {
+  font-size: var(--fontSizeBase200);
+  color: var(--colorNeutralForeground2);
+  font-family: var(--fontFamilyMonospace);
+}
+
+.sliderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
