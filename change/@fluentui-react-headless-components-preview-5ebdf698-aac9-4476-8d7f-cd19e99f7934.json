@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "feat: export Drawer context utilities",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
