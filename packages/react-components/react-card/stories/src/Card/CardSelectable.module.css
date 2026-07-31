@@ -1,0 +1,33 @@
+/* Story styles for CardSelectable, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.main {
+  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 400px;
+  width: 100%;
+  height: fit-content;
+}
+
+.caption {
+  color: var(--colorNeutralForeground3);
+}
+
+.smallRadius {
+  border-radius: var(--borderRadiusSmall);
+}
+
+.grayBackground {
+  background-color: var(--colorNeutralBackground3);
+}
+
+.logoBadge {
+  padding: 5px;
+  border-radius: var(--borderRadiusSmall);
+  background-color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12);
+}

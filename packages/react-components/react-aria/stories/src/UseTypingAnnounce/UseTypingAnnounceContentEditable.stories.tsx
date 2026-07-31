@@ -1,14 +1,8 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { AriaLiveAnnouncer, Field, makeStyles, tokens, useId, useTypingAnnounce } from '@fluentui/react-components';
+import { AriaLiveAnnouncer, Field, useId, useTypingAnnounce } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentEditable: {
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: '4px',
-    padding: '0.5em',
-  },
-});
+import styles from './UseTypingAnnounceContentEditable.module.css';
 
 const charCountMessage = (count: number) => {
   // the threshold for announcing character count updates is 10 characters
@@ -30,7 +24,6 @@ const charCountMessage = (count: number) => {
 
 export const ContentEditable = (): JSXElement => {
   const [count, setCount] = React.useState(0);
-  const styles = useStyles();
 
   const announceId = useId('charCount');
 

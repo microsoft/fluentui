@@ -1,0 +1,13 @@
+/* Story styles for CardHeaderDefault, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+}
+
+.header {
+  width: 300px;
+}

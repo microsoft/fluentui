@@ -1,0 +1,10 @@
+/* Story styles for CalendarMultiDayView, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.wrapper {
+  height: 360px;
+}
+
+.dropdown {
+  width: 230px;
+}

@@ -1,0 +1,8 @@
+/* Story styles for UseTypingAnnounceContentEditable, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.contentEditable {
+  border: 1px solid var(--colorNeutralStroke1);
+  border-radius: 4px;
+  padding: 0.5em;
+}

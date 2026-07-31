@@ -4,17 +4,10 @@ import {
   AvatarGroup,
   AvatarGroupItem,
   AvatarGroupPopover,
-  makeStyles,
   partitionAvatarGroupItems,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-});
+import styles from './AvatarGroupLayout.module.css';
 
 const names = [
   'Johnie McConnell',
@@ -31,7 +24,6 @@ const names = [
 ];
 
 export const Layout = (): JSXElement => {
-  const styles = useStyles();
   const partitionedItems = partitionAvatarGroupItems({ items: names });
   const piePartitionedItems = partitionAvatarGroupItems({ items: names, layout: 'pie' });
 

@@ -1,28 +1,8 @@
 import * as React from 'react';
-import {
-  AriaLiveAnnouncer,
-  Field,
-  Input,
-  makeStyles,
-  tokens,
-  useId,
-  useTypingAnnounce,
-} from '@fluentui/react-components';
+import { AriaLiveAnnouncer, Field, Input, useId, useTypingAnnounce } from '@fluentui/react-components';
 import type { InputProps, JSXElement } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  results: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    listStyleType: 'none',
-    padding: 0,
-    margin: 0,
-    marginTop: tokens.spacingVerticalM,
-  },
-  resultItem: {
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
-  },
-});
+import styles from './UseTypingAnnounceFiltering.module.css';
 
 const resultsMessage = (count: number) => {
   if (count < 1) {
@@ -47,7 +27,6 @@ const sampleItems = [
 
 export const Filtering = (): JSXElement => {
   const [results, setResults] = React.useState<string[]>([]);
-  const styles = useStyles();
 
   const announceId = useId('filter');
 

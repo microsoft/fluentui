@@ -1,0 +1,19 @@
+/* Story styles for BadgeColorVsAppearance, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacingVerticalS);
+}
+
+.badge {
+  display: flex;
+  gap: var(--spacingHorizontalS);
+}
+
+.brand {
+  display: flex;
+  background-color: var(--colorBrandBackground);
+  padding: var(--spacingHorizontalXXS);
+}

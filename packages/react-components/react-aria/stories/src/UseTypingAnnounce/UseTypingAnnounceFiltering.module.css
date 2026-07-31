@@ -1,0 +1,15 @@
+/* Story styles for UseTypingAnnounceFiltering, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.results {
+  background-color: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorNeutralStroke1);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: var(--spacingVerticalM);
+}
+
+.resultItem {
+  padding: var(--spacingVerticalS) var(--spacingHorizontalS);
+}

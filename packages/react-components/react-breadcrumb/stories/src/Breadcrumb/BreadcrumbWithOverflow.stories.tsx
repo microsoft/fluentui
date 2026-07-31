@@ -6,8 +6,6 @@ import {
   BreadcrumbButton,
   BreadcrumbDivider,
   partitionBreadcrumbItems,
-  makeStyles,
-  tokens,
   Button,
   Menu,
   MenuItemLink,
@@ -29,6 +27,8 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-components';
+
+import styles from './BreadcrumbWithOverflow.module.css';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
@@ -105,26 +105,7 @@ const items: Item[] = [
   },
 ];
 
-const useExampleStyles = makeStyles({
-  example: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    overflow: 'hidden',
-    padding: '5px',
-    zIndex: 0, //stop the browser resize handle from piercing the overflow menu
-    height: 'fit-content',
-    minWidth: '200px',
-    resize: 'horizontal',
-    width: '600px',
-  },
-});
-
-const useTooltipStyles = makeStyles({
-  tooltip: {
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-});
+const useTooltipStyles = () => styles;
 
 const MenuItem: React.FC<{ id: string; item: Item }> = props => {
   const { item, id } = props;
@@ -232,8 +213,6 @@ const OverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
   );
 };
 const BreadcrumbOverflowExample = () => {
-  const styles = useExampleStyles();
-
   const { startDisplayedItems, overflowItems, endDisplayedItems }: PartitionBreadcrumbItems<Item> =
     partitionBreadcrumbItems({
       items,

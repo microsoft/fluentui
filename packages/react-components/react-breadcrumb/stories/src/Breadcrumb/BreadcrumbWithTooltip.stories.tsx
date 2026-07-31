@@ -8,7 +8,6 @@ import {
   partitionBreadcrumbItems,
   truncateBreadcrumbLongName,
   isTruncatableBreadcrumbContent,
-  makeStyles,
   Tooltip,
   useIsOverflowItemVisible,
   Menu,
@@ -21,6 +20,8 @@ import {
 } from '@fluentui/react-components';
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-components';
+
+import styles from './BreadcrumbWithTooltip.module.css';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
@@ -87,13 +88,7 @@ const itemsWithLongNames: Item[] = [
   },
 ];
 
-const useTooltipStyles = makeStyles({
-  tooltip: {
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-});
+const useTooltipStyles = () => styles;
 
 function renderItem(entry: Item, isLastItem: boolean) {
   return (

@@ -1,18 +1,14 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Calendar } from '@fluentui/react-calendar-compat';
-import { Dropdown, Field, makeStyles, Option } from '@fluentui/react-components';
+import { Dropdown, Field, Option } from '@fluentui/react-components';
 import type { SelectionEvents, OptionOnSelectData } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: { height: '360px' },
-  dropdown: { width: '230px' },
-});
+import styles from './CalendarMultiDayView.module.css';
 
 const dayOptions = ['1', '2', '3', '4', '5', '6'];
 
 export const CalendarMultidayDayView = (): JSXElement => {
-  const styles = useStyles();
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
   const [daysToSelectInDayView, setDaysToSelectInDayView] = React.useState(4);

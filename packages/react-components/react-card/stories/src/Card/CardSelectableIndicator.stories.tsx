@@ -1,8 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Caption1, tokens, Checkbox, Text, useId } from '@fluentui/react-components';
+import { Button, Caption1, Checkbox, Text, useId } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
+
+import styles from './CardSelectableIndicator.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -11,52 +13,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-const flex = {
-  gap: '16px',
-  display: 'flex',
-};
-
-const useStyles = makeStyles({
-  main: {
-    ...flex,
-    flexDirection: 'column',
-  },
-
-  row: {
-    ...flex,
-    flexWrap: 'wrap',
-  },
-
-  card: {
-    maxWidth: '400px',
-    width: '100%',
-    height: 'fit-content',
-  },
-
-  caption: {
-    color: tokens.colorNeutralForeground3,
-  },
-
-  smallRadius: { borderRadius: tokens.borderRadiusSmall },
-
-  grayBackground: {
-    backgroundColor: tokens.colorNeutralBackground3,
-  },
-
-  logoBadge: {
-    padding: '5px',
-    borderRadius: tokens.borderRadiusSmall,
-    backgroundColor: '#FFF',
-    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
-  },
-
-  actions: {
-    display: 'flex',
-  },
-});
-
 export const SelectableIndicator = (): JSXElement => {
-  const styles = useStyles();
   const idPrefix = useId('card-title');
 
   const [selected1, setSelected1] = React.useState(false);

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import type { JSXElement, CardProps } from '@fluentui/react-components';
-import { makeStyles, tokens, Caption1, Subtitle1, mergeClasses, Text } from '@fluentui/react-components';
+import { Caption1, Subtitle1, Text } from '@fluentui/react-components';
 import { Card, CardHeader } from '@fluentui/react-components';
+
+import styles from './CardSize.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -10,48 +12,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-const useStyles = makeStyles({
-  main: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    columnGap: '16px',
-    rowGap: '36px',
-  },
-
-  title: { margin: '0 0 12px' },
-
-  card: {
-    maxWidth: '300px',
-    width: '100%',
-    height: 'fit-content',
-  },
-
-  flex: {
-    gap: '4px',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  appIcon: {
-    borderRadius: '4px',
-    height: '32px',
-  },
-
-  caption: {
-    color: tokens.colorNeutralForeground3,
-  },
-
-  cardFooter: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-});
-
 const Title = ({ children }: React.PropsWithChildren<{}>) => {
-  const styles = useStyles();
-
   return (
     <Subtitle1 as="h4" block className={styles.title}>
       {children}
@@ -60,8 +21,6 @@ const Title = ({ children }: React.PropsWithChildren<{}>) => {
 };
 
 const CardExample = (props: CardProps) => {
-  const styles = useStyles();
-
   return (
     <Card className={styles.card} {...props}>
       <header className={styles.flex}>
@@ -78,7 +37,7 @@ const CardExample = (props: CardProps) => {
         description={<Caption1 className={styles.caption}>By Microsoft</Caption1>}
       />
 
-      <footer className={mergeClasses(styles.flex, styles.cardFooter)}>
+      <footer className={`${styles.flex} ${styles.cardFooter}`}>
         <span>Automated</span>
         <span>3290</span>
       </footer>
@@ -87,8 +46,6 @@ const CardExample = (props: CardProps) => {
 };
 
 export const Size = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.main}>
       <section>

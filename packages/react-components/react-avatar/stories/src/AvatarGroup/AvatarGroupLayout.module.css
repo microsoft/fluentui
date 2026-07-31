@@ -1,0 +1,8 @@
+/* Story styles for AvatarGroupLayout, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.root {
+  display: grid;
+  flex-direction: column;
+  row-gap: 10px;
+}

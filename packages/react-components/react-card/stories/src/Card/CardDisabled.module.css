@@ -1,0 +1,14 @@
+/* Story styles for CardDisabled, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  max-width: 400px;
+  min-width: 230px;
+  width: 100%;
+}

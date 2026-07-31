@@ -1,17 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { AriaLiveAnnouncer, Button, Field, Input, makeStyles, tokens, useAnnounce } from '@fluentui/react-components';
+import { AriaLiveAnnouncer, Button, Field, Input, useAnnounce } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '8px',
-    padding: '8px',
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: '4px',
-  },
-});
+import styles from './AriaLiveAnnouncerDefault.module.css';
+
+const useClasses = () => styles;
 
 const AnnouncePlayground: React.FC = () => {
   const classes = useClasses();

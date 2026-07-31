@@ -1,8 +1,10 @@
 import * as React from 'react';
 import type { JSXElement, CardProps } from '@fluentui/react-components';
-import { makeStyles, tokens, Button, Text, Caption1, Subtitle1, Body1, mergeClasses } from '@fluentui/react-components';
+import { Button, Text, Caption1, Subtitle1, Body1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader } from '@fluentui/react-components';
+
+import styles from './CardAppearance.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -11,40 +13,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-const useStyles = makeStyles({
-  main: {
-    gap: '36px',
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-  },
-
-  title: { margin: '0 0 12px' },
-
-  description: { margin: '0 0 12px' },
-
-  card: {
-    maxWidth: '480px',
-    width: '100%',
-    height: 'fit-content',
-  },
-
-  caption: {
-    color: tokens.colorNeutralForeground3,
-  },
-
-  logo: {
-    borderRadius: '4px',
-    width: '48px',
-    height: '48px',
-  },
-
-  text: { margin: '0' },
-});
-
 const ExampleHeader = ({ title, description }: Record<string, string>) => {
-  const styles = useStyles();
-
   return (
     <header>
       {title ? (
@@ -63,12 +32,10 @@ const ExampleHeader = ({ title, description }: Record<string, string>) => {
 };
 
 const CardExample = ({ className, ...props }: CardProps) => {
-  const styles = useStyles();
-
   const onClick = React.useCallback(() => console.log('Interactive!'), []);
 
   return (
-    <Card {...props} className={mergeClasses(className, styles.card)} onClick={onClick}>
+    <Card {...props} className={`${className} ${styles.card}`} onClick={onClick}>
       <CardHeader
         image={<img className={styles.logo} src={resolveAsset('app_logo.svg')} alt="App name logo" />}
         header={
@@ -88,8 +55,6 @@ const CardExample = ({ className, ...props }: CardProps) => {
 };
 
 export const Appearance = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.main}>
       <section>

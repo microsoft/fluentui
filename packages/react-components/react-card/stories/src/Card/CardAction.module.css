@@ -1,0 +1,37 @@
+/* Story styles for CardAction, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  column-gap: 16px;
+  row-gap: 36px;
+}
+
+.title {
+  margin: 0 0 12px;
+}
+
+.description {
+  margin: 0 0 12px;
+}
+
+.card {
+  max-width: 400px;
+  width: 100%;
+  height: fit-content;
+}
+
+.link {
+  color: var(--colorNeutralForeground1);
+}
+
+.link:hover {
+  color: var(--colorNeutralForeground1);
+  text-decoration: none;
+}
+
+.text {
+  margin: 0;
+}

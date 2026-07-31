@@ -1,0 +1,41 @@
+/* Story styles for CardSize, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 36px;
+}
+
+.title {
+  margin: 0 0 12px;
+}
+
+.card {
+  max-width: 300px;
+  width: 100%;
+  height: fit-content;
+}
+
+.flex {
+  gap: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.appIcon {
+  border-radius: 4px;
+  height: 32px;
+}
+
+.caption {
+  color: var(--colorNeutralForeground3);
+}
+
+.cardFooter {
+  align-items: center;
+  justify-content: space-between;
+}

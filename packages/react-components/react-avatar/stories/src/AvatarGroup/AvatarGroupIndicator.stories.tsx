@@ -4,17 +4,10 @@ import {
   AvatarGroup,
   AvatarGroupItem,
   AvatarGroupPopover,
-  makeStyles,
   partitionAvatarGroupItems,
 } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-});
+import styles from './AvatarGroupIndicator.module.css';
 
 const names = [
   'Johnie McConnell',
@@ -31,7 +24,6 @@ const names = [
 ];
 
 export const Indicator = (): JSXElement => {
-  const styles = useStyles();
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (

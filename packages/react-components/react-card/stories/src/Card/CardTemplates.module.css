@@ -1,0 +1,45 @@
+/* Story styles for CardTemplates, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.container {
+  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 280px;
+  width: 100%;
+  height: fit-content;
+}
+
+.flex {
+  gap: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.labels {
+  gap: 6px;
+}
+
+.footer {
+  gap: 12px;
+}
+
+.caption {
+  color: var(--colorNeutralForeground3);
+}
+
+.taskCheckbox {
+  display: flex;
+  align-items: flex-start;
+}
+
+.grid {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

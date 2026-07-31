@@ -1,17 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
-import {
-  makeStyles,
-  Body1,
-  Caption1,
-  Button,
-  Card,
-  CardFooter,
-  CardHeader,
-  CardPreview,
-} from '@fluentui/react-components';
+import { Body1, Caption1, Button, Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-components';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
+
+import styles from './CardDefault.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -20,17 +13,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-const useStyles = makeStyles({
-  card: {
-    margin: 'auto',
-    maxWidth: '720px',
-    width: '100%',
-  },
-});
-
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <Card className={styles.card}>
       <CardHeader

@@ -1,28 +1,12 @@
 import * as React from 'react';
 import type { JSXElement, BadgeProps } from '@fluentui/react-components';
 
-import { Badge, makeStyles, tokens } from '@fluentui/react-components';
+import { Badge } from '@fluentui/react-components';
 import { ClipboardPasteRegular as PasteIcon } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  example: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-  },
-  badge: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalS,
-  },
-  brand: {
-    display: 'flex',
-    backgroundColor: tokens.colorBrandBackground,
-    padding: tokens.spacingHorizontalXXS,
-  },
-});
+import styles from './BadgeColorVsAppearance.module.css';
 
 const Badges = (props: BadgeProps) => {
-  const styles = useStyles();
   const { appearance } = props;
 
   const colors: BadgeProps['color'][] = [
@@ -57,8 +41,6 @@ const Badges = (props: BadgeProps) => {
 };
 
 export const ColorAndAppearance = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.example}>
       <h3>Filled</h3>

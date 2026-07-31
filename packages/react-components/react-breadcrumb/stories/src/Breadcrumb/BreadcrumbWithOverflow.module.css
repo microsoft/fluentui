@@ -1,0 +1,19 @@
+/* Story styles for BreadcrumbWithOverflow, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.example {
+  background-color: var(--colorNeutralBackground2);
+  overflow: hidden;
+  padding: 5px;
+  z-index: 0;
+  height: fit-content;
+  min-width: 200px;
+  resize: horizontal;
+  width: 600px;
+}
+
+.tooltip {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

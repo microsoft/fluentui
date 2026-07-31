@@ -1,20 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { CardHeader } from '@fluentui/react-components';
-import { makeStyles, Button, Body1, Caption1 } from '@fluentui/react-components';
+import { Button, Body1, Caption1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '16px',
-    gap: '16px',
-  },
-  header: {
-    width: '300px',
-  },
-});
+import styles from './CardHeaderDefault.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -24,8 +14,6 @@ const resolveAsset = (asset: string) => {
 };
 
 export const Default = (): JSXElement => {
-  const styles = useStyles();
-
   const powerpointLogoURL = resolveAsset('pptx.png');
 
   return (

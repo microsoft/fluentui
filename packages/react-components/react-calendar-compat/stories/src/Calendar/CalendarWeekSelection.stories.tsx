@@ -1,16 +1,14 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { addDays, getDateRangeArray, Calendar, DateRangeType, DayOfWeek } from '@fluentui/react-calendar-compat';
-import { Button, makeStyles } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  wrapper: { height: '360px' },
-});
+import styles from './CalendarWeekSelection.module.css';
+
 const dateRangeType = DateRangeType.Week;
 const firstDayOfWeek = DayOfWeek.Sunday;
 
 export const CalendarWeekSelection = (): JSXElement => {
-  const styles = useStyles();
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 

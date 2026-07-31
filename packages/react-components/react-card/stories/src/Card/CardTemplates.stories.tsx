@@ -1,16 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  makeStyles,
-  tokens,
-  Button,
-  Text,
-  Caption1,
-  Badge,
-  Checkbox,
-  Body1,
-  mergeClasses,
-} from '@fluentui/react-components';
+import { Button, Text, Caption1, Badge, Checkbox, Body1 } from '@fluentui/react-components';
 import {
   AlertUrgent16Filled,
   Attach16Regular,
@@ -21,46 +11,7 @@ import {
 } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  container: {
-    gap: '16px',
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-
-  card: {
-    maxWidth: '280px',
-    width: '100%',
-    height: 'fit-content',
-  },
-
-  flex: {
-    gap: '4px',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  labels: { gap: '6px' },
-
-  footer: { gap: '12px' },
-
-  caption: {
-    color: tokens.colorNeutralForeground3,
-  },
-
-  taskCheckbox: {
-    display: 'flex',
-    alignItems: 'flex-start',
-  },
-
-  grid: {
-    gap: '16px',
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-  },
-});
+import styles from './CardTemplates.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -74,12 +25,10 @@ const wordLogo = resolveAsset('docx.png');
 const powerpointLogoURL = resolveAsset('pptx.png');
 
 export const Templates = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.container}>
       <Card className={styles.card}>
-        <header className={mergeClasses(styles.flex, styles.labels)}>
+        <header className={`${styles.flex} ${styles.labels}`}>
           <Badge color="severe" shape="rounded" appearance="tint">
             Red
           </Badge>
@@ -123,7 +72,7 @@ export const Templates = (): JSXElement => {
           </label>
         </div>
 
-        <footer className={mergeClasses(styles.flex, styles.footer)}>
+        <footer className={`${styles.flex} ${styles.footer}`}>
           <AlertUrgent16Filled primaryFill="#C4314B" />
           <CircleHalfFill16Regular primaryFill="#0078DB" />
 

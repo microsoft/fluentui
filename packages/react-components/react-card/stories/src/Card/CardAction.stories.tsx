@@ -9,12 +9,12 @@ import {
   CardFooter,
   CardPreview,
   Link,
-  makeStyles,
   Subtitle1,
   Text,
-  tokens,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular, Open16Regular } from '@fluentui/react-icons';
+
+import styles from './CardAction.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -23,40 +23,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-const useStyles = makeStyles({
-  main: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    columnGap: '16px',
-    rowGap: '36px',
-  },
-
-  title: { margin: '0 0 12px' },
-
-  description: { margin: '0 0 12px' },
-
-  card: {
-    maxWidth: '400px',
-    width: '100%',
-    height: 'fit-content',
-  },
-
-  link: {
-    color: tokens.colorNeutralForeground1,
-
-    ':hover': {
-      color: tokens.colorNeutralForeground1,
-      textDecoration: 'none',
-    },
-  },
-
-  text: { margin: '0' },
-});
-
 const Header = ({ title, description }: Record<string, string>) => {
-  const styles = useStyles();
-
   return (
     <>
       {title ? (
@@ -75,7 +42,6 @@ const Header = ({ title, description }: Record<string, string>) => {
 };
 
 export const WithAction = (): JSXElement => {
-  const styles = useStyles();
   const linkRef = React.useRef<HTMLAnchorElement>(null);
 
   const onActionCardKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {

@@ -1,8 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { makeStyles, Button, Caption1, Text, tokens, Subtitle1 } from '@fluentui/react-components';
+import { Button, Caption1, Text, Subtitle1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
+
+import styles from './CardOrientation.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -11,47 +13,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-const useStyles = makeStyles({
-  main: {
-    gap: '36px',
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-  },
-
-  card: {
-    width: '100%',
-    height: 'fit-content',
-  },
-
-  section: {
-    maxWidth: '360px',
-    width: '100%',
-  },
-
-  title: { margin: '0 0 12px' },
-
-  horizontalCardImage: {
-    width: '64px',
-    height: '64px',
-  },
-
-  headerImage: {
-    borderRadius: '4px',
-    maxWidth: '44px',
-    maxHeight: '44px',
-  },
-
-  caption: {
-    color: tokens.colorNeutralForeground3,
-  },
-
-  text: { margin: '0' },
-});
-
 const Title = ({ children }: React.PropsWithChildren<{}>) => {
-  const styles = useStyles();
-
   return (
     <Subtitle1 as="h4" block className={styles.title}>
       {children}
@@ -60,8 +22,6 @@ const Title = ({ children }: React.PropsWithChildren<{}>) => {
 };
 
 export const Orientation = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.main}>
       <section className={styles.section}>

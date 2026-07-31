@@ -1,0 +1,42 @@
+/* Story styles for CardOrientation, converted from Griffel makeStyles (S-F batch 2).
+ * Token references are the CSS variables they compile to. */
+
+.main {
+  gap: 36px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 100%;
+  height: fit-content;
+}
+
+.section {
+  max-width: 360px;
+  width: 100%;
+}
+
+.title {
+  margin: 0 0 12px;
+}
+
+.horizontalCardImage {
+  width: 64px;
+  height: 64px;
+}
+
+.headerImage {
+  border-radius: 4px;
+  max-width: 44px;
+  max-height: 44px;
+}
+
+.caption {
+  color: var(--colorNeutralForeground3);
+}
+
+.text {
+  margin: 0;
+}

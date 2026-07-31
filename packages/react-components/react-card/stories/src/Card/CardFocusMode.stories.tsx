@@ -1,8 +1,10 @@
 import * as React from 'react';
 import type { JSXElement, CardProps } from '@fluentui/react-components';
-import { makeStyles, Button, Caption1, Body1, Subtitle1 } from '@fluentui/react-components';
+import { Button, Caption1, Body1, Subtitle1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular, Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-components';
+
+import styles from './CardFocusMode.module.css';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -11,31 +13,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-const useStyles = makeStyles({
-  main: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    columnGap: '16px',
-    rowGap: '36px',
-  },
-
-  title: { margin: '0 0 12px' },
-
-  description: { margin: '0 0 12px' },
-
-  card: {
-    maxWidth: '400px',
-    width: '100%',
-    height: 'fit-content',
-  },
-
-  text: { margin: '0' },
-});
-
 const Header = ({ title, description }: Record<string, string>) => {
-  const styles = useStyles();
-
   return (
     <>
       {title ? (
@@ -54,8 +32,6 @@ const Header = ({ title, description }: Record<string, string>) => {
 };
 
 const CardExample = (props: CardProps) => {
-  const styles = useStyles();
-
   return (
     <Card className={styles.card} {...props}>
       <CardPreview>
@@ -88,8 +64,6 @@ const CardExample = (props: CardProps) => {
 };
 
 export const FocusMode = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.main}>
       <section>

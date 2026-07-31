@@ -7,13 +7,13 @@ import {
   AccordionItem,
   AccordionPanel,
   Field,
-  makeStyles,
   motionTokens,
   Persona,
   Slider,
   Switch,
-  tokens,
 } from '@fluentui/react-components';
+
+import styles from './AccordionMotionCustom.module.css';
 
 const personaData = [
   {
@@ -51,23 +51,7 @@ const avatarFor = (useImage?: boolean, image?: string): PersonaProps['avatar'] =
       }
     : { color: 'colorful' };
 
-const useStyles = makeStyles({
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    marginBottom: tokens.spacingVerticalL,
-    padding: tokens.spacingVerticalM,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-  },
-  list: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalM,
-    padding: `${tokens.spacingVerticalS} 0`,
-  },
-});
+const useStyles = () => styles;
 
 export const MotionCustom = (): JSXElement => {
   const classes = useStyles();

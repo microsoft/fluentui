@@ -4,18 +4,11 @@ import {
   AvatarGroup,
   AvatarGroupItem,
   AvatarGroupPopover,
-  makeStyles,
   partitionAvatarGroupItems,
 } from '@fluentui/react-components';
 import type { AvatarSize } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-});
+import styles from './AvatarGroupSizeStack.module.css';
 
 const names = [
   'Johnie McConnell',
@@ -34,8 +27,6 @@ const names = [
 const sizes: AvatarSize[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
 export const SizeStack = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       {sizes.map(size => {
