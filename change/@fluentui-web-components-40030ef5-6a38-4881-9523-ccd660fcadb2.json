@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix TextInput spellcheck attribute converter throwing on null/undefined values",
+  "packageName": "@fluentui/web-components",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

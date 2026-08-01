@@ -70,6 +70,77 @@ test.describe('TextInput', () => {
     await expect(control).toHaveAttribute('spellcheck', 'true');
   });
 
+  test('should set `spellcheck="false"` on the internal control from the attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const control = element.locator('input');
+
+    await fastPage.setTemplate({ attributes: { spellcheck: 'false' } });
+
+    await expect(control).toHaveAttribute('spellcheck', 'false');
+  });
+
+  test('should reflect boolean `spellcheck` property values without throwing', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const control = element.locator('input');
+
+    await fastPage.setTemplate();
+
+    let hasError = false;
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await element.evaluate((node: TextInput) => {
+      node.spellcheck = false;
+    });
+
+    await expect(element).toHaveAttribute('spellcheck', 'false');
+    await expect(control).toHaveAttribute('spellcheck', 'false');
+
+    await element.evaluate((node: TextInput) => {
+      node.spellcheck = true;
+    });
+
+    await expect(element).toHaveAttribute('spellcheck', 'true');
+    await expect(control).toHaveAttribute('spellcheck', 'true');
+
+    expect(hasError).toBe(false);
+  });
+
+  test('should remove the `spellcheck` attribute when the property is set to null', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const control = element.locator('input');
+
+    await fastPage.setTemplate({ attributes: { spellcheck: 'true' } });
+
+    let hasError = false;
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await element.evaluate((node: TextInput) => {
+      (node as any).spellcheck = null;
+    });
+
+    await expect(element).not.toHaveAttribute('spellcheck');
+    await expect(control).not.toHaveAttribute('spellcheck');
+
+    expect(hasError).toBe(false);
+  });
+
+  test('should honor property writes after the `spellcheck` attribute is removed', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { spellcheck: 'true' } });
+
+    await element.evaluate((node: TextInput) => {
+      node.removeAttribute('spellcheck');
+      node.spellcheck = true;
+    });
+
+    await expect(element).toHaveAttribute('spellcheck', 'true');
+  });
+
   test('should set the `maxlength` attribute on the internal control', async ({ fastPage }) => {
     const { element } = fastPage;
     const control = element.locator('input');

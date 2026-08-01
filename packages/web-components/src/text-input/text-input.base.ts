@@ -270,8 +270,21 @@ export class BaseTextInput extends FASTElement {
    */
   @attr({
     converter: {
-      fromView: value => (typeof value === 'string' ? ['true', ''].includes(value.trim().toLowerCase()) : null),
-      toView: value => value.toString(),
+      fromView: (value: string | boolean | null | undefined): boolean | null => {
+        // fromView also runs for property writes, which pass booleans through unchanged.
+        if (typeof value === 'boolean') {
+          return value;
+        }
+
+        if (typeof value === 'string') {
+          return ['true', ''].includes(value.trim().toLowerCase());
+        }
+
+        return null;
+      },
+      // A nullish value removes the attribute rather than reflecting, since an empty
+      // string would mean `true` per the enumerated attribute's semantics.
+      toView: (value: boolean | null | undefined): string | null => (typeof value === 'boolean' ? `${value}` : null),
     },
   })
   public spellcheck!: boolean;
