@@ -1216,6 +1216,15 @@ test('formatScientificLimitWidth should format a numeric value with appropriate 
   expect(utils.formatScientificLimitWidth(100990000)).toBe('101M');
 });
 
+test('formatScientificLimitWidth should not use SI notation for values with absolute value less than 1', () => {
+  expect(utils.formatScientificLimitWidth(0.9)).toBe('0.9');
+  expect(utils.formatScientificLimitWidth(0.18)).toBe('0.18');
+  expect(utils.formatScientificLimitWidth(0.123)).toBe('0.12');
+  expect(utils.formatScientificLimitWidth(0.0005)).toBe('0.0005');
+  expect(utils.formatScientificLimitWidth(0)).toBe('0');
+  expect(utils.formatScientificLimitWidth(-0.9)).toBe('−0.9');
+});
+
 describe('getClosestPairDiffAndRange', () => {
   it('should return undefined if data length is less than 2', () => {
     const data: number[] = [1];
