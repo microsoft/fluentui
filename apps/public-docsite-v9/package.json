@@ -39,7 +39,7 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-hook-form": "^5.7.2",
-    "react-window": "^1.8.6",
+    "react-window": "^2.3.0",
     "tslib": "^2.1.0"
   }
 }

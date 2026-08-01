@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { ListChildComponentProps } from 'react-window';
-import { FixedSizeList as List } from 'react-window';
+import type { RowComponentProps } from 'react-window';
+import { List as VirtualList } from 'react-window';
 
 import type { JSXElement, PresenceBadgeStatus, TableRowData as RowStateBase } from '@fluentui/react-components';
 import {
@@ -54,9 +54,7 @@ interface TableRowData extends RowStateBase<Item> {
   appearance: 'brand' | 'none';
 }
 
-interface ReactWindowRenderFnProps extends ListChildComponentProps {
-  data: TableRowData[];
-}
+type ReactWindowRenderFnProps = RowComponentProps<{ rows: TableRowData[] }>;
 
 const baseItems: Item[] = [
   {
@@ -114,8 +112,8 @@ const columns = [
   }),
 ];
 
-const RenderRow = ({ index, style, data }: ReactWindowRenderFnProps) => {
-  const { item, selected, appearance, onClick, onKeyDown } = data[index];
+const RenderRow = ({ index, style, rows }: ReactWindowRenderFnProps) => {
+  const { item, selected, appearance, onClick, onKeyDown } = rows[index];
   return (
     <TableRow
       aria-rowindex={index + 2}
@@ -217,9 +215,13 @@ export const Virtualization = (): JSXElement => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <List height={400} itemCount={items.length} itemSize={45} width="100%" itemData={rows}>
-          {RenderRow}
-        </List>
+        <VirtualList
+          rowComponent={RenderRow}
+          rowCount={rows.length}
+          rowHeight={45}
+          rowProps={{ rows }}
+          style={{ height: 400, width: '100%' }}
+        />
       </TableBody>
     </Table>
   );

@@ -20,8 +20,8 @@ import {
   useFlatTreeContextValues_unstable,
   useHeadlessFlatTree_unstable,
 } from '@fluentui/react-components';
-import type { FixedSizeListProps, ListChildComponentProps } from 'react-window';
-import { FixedSizeList } from 'react-window';
+import type { ListProps, RowComponentProps } from 'react-window';
+import { List as VirtualList, useListRef } from 'react-window';
 import { assertSlots } from '@fluentui/react-components';
 
 type ItemProps = HeadlessFlatTreeItemProps & { content: string };
@@ -47,43 +47,38 @@ const defaultItems: ItemProps[] = [
   })),
 ];
 
+type RowData = { flatTreeItems: HeadlessFlatTreeItem<ItemProps>[] };
+
 type FixedSizeTreeProps = Omit<FlatTreeProps, 'children'> & {
-  listProps: FixedSizeListProps & { ref?: React.Ref<FixedSizeList> };
+  listProps: ListProps<RowData>;
 };
 
 /**
- * FixedSizeTree is a recomposition of Tree component that uses react-window FixedSizeList to render items.
+ * FixedSizeTree is a recomposition of Tree component that uses react-window List to render items.
  */
 const FixedSizeTree = React.forwardRef<HTMLElement, FixedSizeTreeProps>((props, ref) => {
   const state = useFlatTree_unstable(props, ref);
   useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
   assertSlots<FlatTreeSlots>(state);
-  const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
-    if (instance) {
-      // This element stays between the tree and treeitem
-      // Due to accessibility issues this element should have role="none"
-      instance.setAttribute('role', 'none');
-    }
-  }, []);
   return (
     <TreeProvider value={contextValues.tree}>
       <state.root>
-        <FixedSizeList outerRef={handleOuterRef} {...props.listProps} />
+        {/**
+         * This element stays between the tree and treeitem
+         * Due to accessibility issues this element should have role="none"
+         */}
+        <VirtualList role="none" {...props.listProps} />
       </state.root>
     </TreeProvider>
   );
 }) as ForwardRefComponent<FixedSizeTreeProps>;
 
-interface FixedSizeTreeItemProps extends ListChildComponentProps {
-  data: HeadlessFlatTreeItem<ItemProps>[];
-}
-
-const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
-  const flatTreeItem = props.data[props.index];
+const FixedSizeTreeItem = ({ index, style, flatTreeItems }: RowComponentProps<RowData>) => {
+  const flatTreeItem = flatTreeItems[index];
   const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
   return (
-    <FlatTreeItem {...treeItemProps} style={props.style}>
+    <FlatTreeItem {...treeItemProps} style={style}>
       <TreeItemLayout>{content}</TreeItemLayout>
     </FlatTreeItem>
   );
@@ -91,7 +86,7 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
 
 export const Virtualization = (): JSXElement => {
   const headlessTree = useHeadlessFlatTree_unstable(defaultItems);
-  const listRef = React.useRef<FixedSizeList>(null);
+  const listRef = useListRef(null);
   const items = React.useMemo(() => Array.from(headlessTree.items()), [headlessTree]);
 
   /**
@@ -106,7 +101,7 @@ export const Virtualization = (): JSXElement => {
     // if the next item is not rendered, scroll to it and try to navigate again
     if (!headlessTree.getElementFromItem(nextItem)) {
       event.preventDefault(); // preventing default disables internal navigation.
-      listRef.current?.scrollToItem(nextItem.index);
+      listRef.current?.scrollToRow({ index: nextItem.index });
       // waiting for the next animation frame to allow the list to be scrolled
       return requestAnimationFrame(() => headlessTree.navigate(data));
     }
@@ -116,13 +111,12 @@ export const Virtualization = (): JSXElement => {
     <FixedSizeTree
       {...headlessTree.getTreeProps()}
       listProps={{
-        ref: listRef,
-        height: 300,
-        itemCount: items.length,
-        itemData: items,
-        itemSize: 32,
-        width: 300,
-        children: FixedSizeTreeItem,
+        listRef,
+        rowCount: items.length,
+        rowProps: { flatTreeItems: items },
+        rowHeight: 32,
+        rowComponent: FixedSizeTreeItem,
+        style: { height: 300, width: 300 },
       }}
       onNavigation={handleNavigation}
       aria-label="Virtualization"
@@ -140,7 +134,7 @@ By utilizing virtualization, the tree only renders the nodes that are currently 
 
 In this example of a flat tree with \`react-window\` for virtualization, two main adjustments are necessary:
 
-1. \`Tree\` component must be recomposed using composition API to use \`FixedSizeList\` to wrap root content.
+1. \`Tree\` component must be recomposed using composition API to use \`List\` to wrap root content.
 2. Navigation will break as some nodes will not be available on the DOM (since they'll be virtualized), to fix this we'll need to provide a custom navigation handler that will scroll to the correct node before calling the default handler.
       `,
     },

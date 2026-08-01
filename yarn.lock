@@ -1755,7 +1755,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.22.6, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.2, @babel/runtime@npm:^7.4.5, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.3, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.22.6, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.2, @babel/runtime@npm:^7.4.5, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.3, @babel/runtime@npm:^7.9.2":
   version: 7.25.0
   resolution: "@babel/runtime@npm:7.25.0"
   dependencies:
@@ -2860,7 +2860,6 @@ __metadata:
     "@types/react-is": "npm:19.2.0"
     "@types/react-test-renderer": "npm:19.1.0"
     "@types/react-transition-group": "npm:4.4.6"
-    "@types/react-window": "npm:^1.8.2"
     "@types/scheduler": "npm:0.16.2"
     "@types/semver": "npm:^6.2.0"
     "@types/tmp": "npm:0.2.0"
@@ -2989,7 +2988,7 @@ __metadata:
     react-is: "npm:19.2.0"
     react-shadow: "npm:20.3.0"
     react-test-renderer: "npm:19.2.0"
-    react-window: "npm:^1.8.6"
+    react-window: "npm:^2.3.0"
     read-pkg-up: "npm:7.0.1"
     remark-gfm: "npm:4.0.1"
     replace-in-file: "npm:6.1.0"
@@ -3245,7 +3244,7 @@ __metadata:
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     react-hook-form: "npm:^5.7.2"
-    react-window: "npm:^1.8.6"
+    react-window: "npm:^2.3.0"
     tslib: "npm:^2.1.0"
   languageName: unknown
   linkType: soft
@@ -10751,15 +10750,6 @@ __metadata:
   dependencies:
     "@types/react": "npm:*"
   checksum: 10c0/154dc4e94738cff0b2fa183331427c0de3d8daac44a9b79c27aa8a95b78adde44b9f70db8a374399eabe1d44ca50304b1d7bbaeadca0fbdf6f2a91f6f9eb343d
-  languageName: node
-  linkType: hard
-
-"@types/react-window@npm:^1.8.2":
-  version: 1.8.2
-  resolution: "@types/react-window@npm:1.8.2"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: 10c0/6dc56660e5ef2850a249b005a49b0b1cf74c201efd211425daede818151b000a13a0cd54b40b6c42def0e42cfa9d82483ddb6a6d97ba55fbca26a91bd5b585c6
   languageName: node
   linkType: hard
 
@@ -23699,13 +23689,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"memoize-one@npm:>=3.1.1 <6":
-  version: 5.1.1
-  resolution: "memoize-one@npm:5.1.1"
-  checksum: 10c0/df6b4319d402a069ef7f274729dc2390a623f444abb15f5324b558afff253b7d407015a02f69d24f133fd413c029652a9ed2645d0387c90b7419d61b32f9fb4f
-  languageName: node
-  linkType: hard
-
 "merge-descriptors@npm:1.0.3":
   version: 1.0.3
   resolution: "merge-descriptors@npm:1.0.3"
@@ -27271,16 +27254,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-window@npm:^1.8.6":
-  version: 1.8.6
-  resolution: "react-window@npm:1.8.6"
-  dependencies:
-    "@babel/runtime": "npm:^7.0.0"
-    memoize-one: "npm:>=3.1.1 <6"
+"react-window@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "react-window@npm:2.3.0"
   peerDependencies:
-    react: ^15.0.0 || ^16.0.0 || ^17.0.0
-    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 10c0/590dd58ced06fbfcce06d11135f0c6dd50ad778b90ce1af6340b7e5b9063ab2e05a4a4c964bbf855087b6f5c437790d01c41f27cee7b46045721be86bfe03820
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  checksum: 10c0/fb4ec4aea1efecf16a5ebe112a9c1e815e276efef7abf22742e146630960d68bb3aee969c50317139bcd0952a23d06e38fc16f667e80abe64835fefa78cfb64c
   languageName: node
   linkType: hard
 

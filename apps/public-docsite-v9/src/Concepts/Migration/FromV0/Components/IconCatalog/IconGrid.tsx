@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { FixedSizeList as List } from 'react-window';
-import type { ListChildComponentProps } from 'react-window';
+import { List } from 'react-window';
+import type { RowComponentProps } from 'react-window';
 import { ComparisonTile as ComparisonTileBase } from './ComparisonTile';
-import { V0IconComponent, V9IconComponent } from './types';
+import type { V0IconComponent, V9IconComponent } from './types';
 
 const ComparisonTile = React.memo(ComparisonTileBase);
 
@@ -15,13 +15,9 @@ interface IconGridProps {
 
 const ROW_SIZE = 3;
 
-interface RowProps extends ListChildComponentProps {
-  data: IconGridProps['entries'];
-}
-
-const Row = ({ index, style, data }: RowProps) => {
+const Row = ({ index, style, entries }: RowComponentProps<{ entries: IconGridProps['entries'] }>) => {
   const start = index * ROW_SIZE;
-  const items = data.slice(start, start + 3);
+  const items = entries.slice(start, start + 3);
   return (
     <div style={style}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
@@ -35,8 +31,12 @@ const Row = ({ index, style, data }: RowProps) => {
 
 export const IconGrid: React.FC<IconGridProps> = ({ entries }) => {
   return (
-    <List width="100%" itemCount={entries.length / ROW_SIZE} height={600} itemData={entries} itemSize={110}>
-      {Row}
-    </List>
+    <List
+      rowComponent={Row}
+      rowCount={Math.ceil(entries.length / ROW_SIZE)}
+      rowHeight={110}
+      rowProps={{ entries }}
+      style={{ height: 600, width: '100%' }}
+    />
   );
 };
