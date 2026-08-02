@@ -223,9 +223,8 @@
    * beat that package's `subtle` hover/pressed icon colours in l1.
    *
    * The `.fui-Icon-filled` / `.fui-Icon-regular` halves of this same slice are a different
-   * story entirely — those classes belong to `@fluentui/react-icons`, which is NOT converted
-   * (D11) and is therefore untouched by D16: see the UNLAYERED block at the bottom of this
-   * file.
+   * story entirely — those classes belong to `@fluentui/react-icons` and their swap-back
+   * blocks sit in the S-J/D27 l2 section at the bottom of this file.
    */
   .root {
     @variant current {
@@ -306,90 +305,73 @@
 }
 
 /*
- * ── The icon swap must be UNLAYERED (D2 amendment 5) ─────────────────────────────────
+ * ── The icon swap-back, at l2 (S-J retirement of D2 amendment 5; D27) ────────────────
  *
  * These rules — the `.fui-Icon-filled` / `.fui-Icon-regular` halves of `useStyles.current`
  * (arg #5) — style ANOTHER package's elements: the two `<svg>`s that
- * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. react-icons is not
- * converted (D11 keeps it on Griffel permanently), so it styles those same two elements with
- * Griffel atomics, and Griffel injects UNLAYERED:
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. Under icons 2.x
+ * they had to be UNLAYERED (Griffel injected the swap atomics unlayered, and an unlayered
+ * declaration beats every `@layer` before specificity is consulted — the old D2a5 rule).
+ * Icons 3.0 (headless) styles the glyphs via `[data-fui-icon-hidden]` (0-1-0) from a
+ * static stylesheet this repo imports at `@layer fui.components.l1` (D27), so the escape
+ * hatch is retired and the block moves to THIS module's established altitude:
+ * `fui.components.l2` — the same D2-amendment-2 altitude every other BreadcrumbButton
+ * rule uses, because this component decorates react-button's element.
  *
- *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
- *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
- *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
+ * ── Why l2 and not l1 (the ToggleButton/MenuButton precedent) ────────────────────────
+ * This is the site where the OLD unlayered position had to beat SIBLING component rules,
+ * not just the icons hide:
  *
- * In the CSS cascade an UNLAYERED normal author declaration outranks EVERY `@layer` — that
- * comparison happens BEFORE specificity is consulted. Inside `@layer fui.components.l2`
- * these rules could never beat `.fjseox`, no matter how much more specific they are; the
- * compiled Griffel atomics (`.fi9vkhg:disabled .fui-Icon-filled`, 0-3-0) won on specificity,
- * and reproducing that requires being unlayered too. Full evidence — CDP matched-rules
- * readout of the identical defect — in reports/DECISIONS.md "D2 amendment 5" and at the
- * bottom of react-button's Button.module.css.
- *
- * ── The specificity bump is load-bearing, and is NOT the usual flat form ─────────────
- * This is the first converted component that BOTH composes a converted component and swaps
- * icons, so it is the first place where two UNLAYERED Fluent rules contend on the same
- * element for the same property:
- *
- *   react-button `.subtle` (BreadcrumbButton's appearance) hover + pressed
+ *   react-button `.subtle` (BreadcrumbButton's appearance) hover + pressed, now at l1
  *       → .fui-Icon-filled { display: inline }   (swap TO the filled glyph)
- *   this component's `current` hover
+ *   this component's `current` hover / disabled
  *       → .fui-Icon-filled { display: none    }   (a current entry never swaps)
  *
- * Both are unlayered, so `@layer` cannot arbitrate, and in the flat `:where()` form both
- * score 0-2-0 — leaving CROSS-STYLESHEET load order as the only tiebreak, i.e. an
- * undefined winner. Griffel had a definite winner: BreadcrumbButton's classes are Button's
- * LAST mergeClasses argument, so its atomic survived the dedupe. Compounding a second class
- * this component always writes onto its own root restores that winner deterministically at
- * 0-3-0 vs Button's 0-2-0 — no matter which package's `dist/styles.css` the document loads
- * first.
+ * In the unlayered era that contest was decided by the 0-3-0 marker compound beating
+ * Button's 0-2-0 on specificity. At l2 the layer order decides it outright — l2 beats
+ * Button's l1 swap AND the icons sheet's l1 hide before specificity is consulted, which
+ * is deterministic regardless of which package's stylesheet the document loads first.
+ * Same shape as ToggleButton/MenuButton in S-J batch 1.
  *
- * ── The compounded class is the MARKER, not the old static (D16.4) ───────────────────
- * That second class used to be `:global(.fui-BreadcrumbButton)`. The D16 sweep removed the
- * BEM statics, and this is the ONE site in the phase where deleting one would have changed
- * rendered pixels rather than just the `class=` string: dropping it outright takes the rule
- * to 0-2-0, a TIE with react-button, decided by stylesheet load order — i.e. undefined. So
- * it compounds `:global(.group\/fui-breadcrumb-button)` instead, the named-group marker the
- * styles hook writes unconditionally on this same element. Identical 0-3-0, identical
- * winner, and the marker is now the component's sole public identity class (D16.1).
- *
- * The `\/` escape is required: `/` is legal inside a class TOKEN but terminates a class
- * NAME inside a selector, so the unescaped form would silently select `.group` instead.
- *
- * Two properties of the marker make it a sound replacement for the static here, and both
- * must hold for any future edit: it is written by EVERY render of this component (it is a
- * literal in the hook's `clsx`, not conditional), and it is unhashed and global, so
- * `:global()` reaches it from a CSS-Modules file. If either ever stops being true, this rule
- * silently drops to a tie again — which VR would catch only in the icon-swap states.
+ * ── The 0-3-0 marker compound is KEPT (D16.4) ────────────────────────────────────────
+ * `:global(.group\/fui-breadcrumb-button)` — the named-group marker the styles hook
+ * writes unconditionally on this root — stays compounded. l2 already arbitrates against
+ * react-button's l1, but the marker keeps the winner deterministic against any FUTURE
+ * same-layer contender on this element, exactly the anti-tie job it was given when it
+ * replaced the removed `fui-BreadcrumbButton` BEM static. The `\/` escape is required:
+ * `/` is legal inside a class TOKEN but terminates a class NAME inside a selector, so the
+ * unescaped form would silently select `.group` instead. Both marker properties that make
+ * this sound (written on every render; unhashed and global) must keep holding for any
+ * future edit.
  *
  * Everything that styles this component's own state on react-button's OWN elements stays
- * layered above, including the `.icon` rules: nothing unlayered competes for that slot, so
- * l2-over-l1 already decides those. Only the react-icons `<svg>` swap has to come down here,
- * because react-icons is unconverted and injects unlayered (D11).
+ * in the l2 blocks above, including the `.icon` rules — l2-over-l1 already decides those.
  *
  * Ordering inside this block: the three Griffel states (`:hover`, `:hover:active`,
  * `:disabled`) carry IDENTICAL declarations, so file position is inert here — `:hover:active`
  * is collapsed into `@variant hover` for the same reason as the layered block above.
  */
-.root:global(.group\/fui-breadcrumb-button) {
-  @variant current {
-    @variant hover {
-      & :global(.fui-Icon-filled) {
-        display: none;
+@layer fui.components.l2 {
+  .root:global(.group\/fui-breadcrumb-button) {
+    @variant current {
+      @variant hover {
+        & :global(.fui-Icon-filled) {
+          display: none;
+        }
+
+        & :global(.fui-Icon-regular) {
+          display: inline;
+        }
       }
 
-      & :global(.fui-Icon-regular) {
-        display: inline;
-      }
-    }
+      @variant disabled {
+        & :global(.fui-Icon-filled) {
+          display: none;
+        }
 
-    @variant disabled {
-      & :global(.fui-Icon-filled) {
-        display: none;
-      }
-
-      & :global(.fui-Icon-regular) {
-        display: inline;
+        & :global(.fui-Icon-regular) {
+          display: inline;
+        }
       }
     }
   }

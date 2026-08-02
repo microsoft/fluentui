@@ -53,14 +53,15 @@
  * Raw `var(--spacingVertical*)` is FORBIDDEN in modules — it is the one form that does not
  * scale with `--base-scale`.
  *
- * ── UNLAYERED: the react-icons glyph swap (DECISIONS.md D2 amendment 5) ─────────────
+ * ── The react-icons glyph swap, at l1 (S-J retirement of D2 amendment 5, D27) ───────
  * The `:hover` slice also toggles `:global(.fui-Icon-filled)` / `:global(.fui-Icon-regular)`.
- * Those elements belong to `@fluentui/react-icons`, which stays on Griffel PERMANENTLY
- * (D11) and injects `.fjseox{display:none}` / `.f1w7gpdv{display:inline}` UNLAYERED. An
- * unlayered declaration beats every `@layer` before specificity is even consulted, so a swap
- * rule left inside `fui.base` could never win and the glyph would never change. It is lifted
- * into the unlayered block at the BOTTOM of this file; a pointer comment marks the block it
- * came out of.
+ * Those elements belong to `@fluentui/react-icons`; icons 3.0 (headless) styles them via
+ * `[data-fui-icon-hidden]` (0-1-0) from a stylesheet this repo imports at
+ * `@layer fui.components.l1` (D27), so the old unlayered escape hatch is retired. The swap
+ * lives in an l1 block at the BOTTOM of this file — NOT in `fui.base` with the rest of its
+ * slice, because at base altitude it would lose to the icons sheet's l1 hide on LAYER
+ * order; at l1 it wins on specificity (0-2-0 over 0-1-0). A pointer comment marks the
+ * block it came out of.
  *
  * Verified against the compiled Griffel atomics in
  * lib-commonjs/components/MenuGridRow/useMenuGridRowStyles.styles.js.
@@ -103,7 +104,7 @@
       color: var(--colorNeutralForeground2Hover);
 
       /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
-         block — see the UNLAYERED section at the bottom of this file. */
+         block — see the S-J/D27 l1 section at the bottom of this file. */
     }
 
     /*
@@ -159,21 +160,19 @@
 
 /*
  * ─────────────────────────────────────────────────────────────────────────────────────
- * The icon swap must be UNLAYERED (DECISIONS.md D2 amendment 5).
+ * The icon swap, at l1 (S-J retirement of DECISIONS.md D2 amendment 5; D27).
  *
- * `bundleIcon()` renders both glyphs and toggles them with Griffel atomics that carry NO
- * cascade layer — `node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js`
- * compiles to `.fjseox{display:none}` / `.f1w7gpdv{display:inline}`, and `bundleIcon.js`
- * hands the filled `<svg>` `root + (filled && visible)` and the regular one
- * `root + (!filled && visible)`.
+ * `bundleIcon()` renders both glyphs; icons 3.0 (headless) toggles them with
+ * `[data-fui-icon-hidden] { display: none }` (0-1-0) from a static stylesheet this repo
+ * imports at `@layer fui.components.l1` (D27). Under icons 2.x this block had to be
+ * UNLAYERED (the old D2a5 rule); with the hide now inside l1 the escape hatch is retired.
  *
- * In the CSS cascade an unlayered normal author declaration beats EVERY `@layer`, and that
- * comparison happens before specificity — so this rule at 0-2-0 inside `@layer fui.base`
- * would lose to `.fjseox` at 0-1-0 and the glyph would never swap. Unlayered it wins at
- * 0-2-0, exactly as the compiled Griffel atomic
- * (`.r1j5mkl8:hover .fui-Icon-filled{display:inline}`) did.
- * `@fluentui/react-icons` is out of conversion scope permanently (D11), so this is
- * permanent, not transitional.
+ * The block is l1, NOT `fui.base` with the rest of its slice: at base altitude it would
+ * lose to the icons sheet's l1 hide on LAYER order (layers are compared before
+ * specificity). At l1 it wins on SPECIFICITY ONLY — 0-2-0 over the hide's 0-1-0; the
+ * icons sheet is emitted AFTER component modules in document order, so an
+ * equal-specificity rule would lose the within-layer source-order tiebreak. Verified via
+ * CDP matched rules (.scratch/sj23-cdp-post.json).
  *
  * Only ONE block lives here — the single `:hover` swap from `useRootBaseStyles` (arg #2) —
  * so there is no intra-block ordering to preserve. MenuGridRow itself renders no glyph; the
@@ -182,15 +181,17 @@
  * ─────────────────────────────────────────────────────────────────────────────────────
  */
 
-/* from useRootBaseStyles — root arg #2, the `:hover` half */
-.root {
-  @variant hover {
-    & :global(.fui-Icon-filled) {
-      display: inline;
-    }
+@layer fui.components.l1 {
+  /* from useRootBaseStyles — root arg #2, the `:hover` half */
+  .root {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
 
-    & :global(.fui-Icon-regular) {
-      display: none;
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
     }
   }
 }

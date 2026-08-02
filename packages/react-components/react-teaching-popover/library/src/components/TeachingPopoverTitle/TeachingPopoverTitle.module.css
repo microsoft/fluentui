@@ -53,13 +53,14 @@
  * they take the LOGICAL longhands below and no `@variant rtl` twin is needed.
  * `marginInlineStart` was already logical at source.
  *
- * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ────────────────────────────────
+ * ── Icon-swap rules (S-J retirement of D2 amendment 5; D27) ─────────────────────────────
  * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
  * The dismiss glyph IS a `bundleIcon()` pair (`DismissFilled` / `DismissRegular`), whose
- * filled/regular toggle rides `@fluentui/react-icons`' own UNLAYERED atomics — but this module
- * declares no rule that touches it, so there is nothing to lift out of a layer. Should a
- * future `:global(.fui-Icon-filled)` rule be added here, it MUST be unlayered
- * (D2 amendment 5); see react-infolabel's InfoButton.module.css for the template.
+ * filled/regular toggle rides icons 3.0's `[data-fui-icon-hidden]` stylesheet, imported at
+ * `@layer fui.components.l1` (D27) — but this module declares no rule that touches it.
+ * Should a future `:global(.fui-Icon-filled)` rule be added here, it goes at the module's
+ * own altitude and must beat the hide's 0-1-0 on specificity (or ride a higher layer);
+ * see react-infolabel's InfoButton.module.css for the template.
  *
  * Verified against the compiled Griffel atomics in
  * lib-commonjs/components/TeachingPopoverTitle/useTeachingPopoverTitleStyles.styles.js.

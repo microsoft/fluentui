@@ -45,10 +45,10 @@
  * live in Tag.module.css — one definition, selected through each slot's own `data-size`;
  * nothing about them is re-declared here.
  *
- * EXCEPTION: the six `.fui-Icon-filled` / `.fui-Icon-regular` rules (from args #4
- * `outline` and #5 `selected`) are NOT in a layer — they style `@fluentui/react-icons`'
- * elements, which that unconverted package styles unlayered. They live in one block at the
- * BOTTOM of this file; see "The icon swap must be UNLAYERED" there.
+ * The six `.fui-Icon-filled` / `.fui-Icon-regular` rules (from args #4 `outline` and #5
+ * `selected`) live in one `fui.components.l1` section at the BOTTOM of this file (S-J
+ * retirement of D2 amendment 5, D27) — they style `@fluentui/react-icons`' elements,
+ * whose hide rule now also sits at l1; see the note there for the cascade math.
  *
  * ── Which prop becomes what ─────────────────────────────────────────────────────────
  * `size` is a small ENUM scale → the catalog's `data-size` variants (DECISIONS.md D3).
@@ -202,7 +202,7 @@
 
 @layer fui.components.l1 {
   /* from useRootStyles[appearance] — arg #4, the ENABLED branch. The `.fui-Icon-*` halves
-     of `outline`'s hover/active are NOT here — see the UNLAYERED block at the bottom. */
+     of `outline`'s hover/active are NOT here — see the S-J/D27 l1 section at the bottom. */
   .filled {
     background-color: var(--colorNeutralBackground3);
     color: var(--colorNeutralForeground2);
@@ -243,7 +243,7 @@
       cursor: pointer;
       background-color: var(--colorSubtleBackgroundHover);
       color: var(--colorNeutralForeground2Hover);
-      /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap is UNLAYERED, at the bottom */
+      /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap sits in the S-J/D27 l1 section at the bottom */
     }
 
     @variant active {
@@ -319,7 +319,7 @@
 
 @layer fui.components.l1 {
   /* from useRootStyles.selected — arg #5, written after the appearance blocks. Its
-     `.fui-Icon-filled` colour halves are UNLAYERED, at the bottom of this file. */
+     `.fui-Icon-filled` colour halves sit in the S-J/D27 l1 section at the bottom of this file. */
   .selected {
     /* compiled as the `background` SHORTHAND (Griffel priority -2), not background-color */
     background: var(--colorBrandBackground);
@@ -458,80 +458,76 @@
 }
 
 /*
- * ── The icon swap must be UNLAYERED (DECISIONS.md D2 amendment 5) ────────────────────
+ * ── The icon swap, at l1 (S-J retirement of DECISIONS.md D2 amendment 5; D27) ────────
  *
  * These six rules style ANOTHER package's elements: the <svg>s that
- * `@fluentui/react-icons`' `bundleIcon()` renders inside this button. react-icons is
- * unconverted (D11 keeps it on Griffel permanently), so it styles those same elements with
- * Griffel atomics, and Griffel injects UNLAYERED:
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside this button. Under icons 2.x
+ * they had to be UNLAYERED (Griffel injected the swap atomics unlayered, and an unlayered
+ * declaration beats every `@layer` before specificity is consulted — the old D2a5 rule).
+ * Icons 3.0 (headless) replaced the atomics with `[data-fui-icon-hidden]` (0-1-0) from a
+ * static stylesheet this repo imports at `@layer fui.components.l1` (D27), so the rules
+ * return to their slices' own altitude, l1 — where `.outline` (arg #4) and `.selected`
+ * (arg #5) already live.
  *
- *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
- *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
- *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
- *   bundleIcon.js gives the FILLED svg `root + (filled && visible)` and the REGULAR svg
- *   `root + (!filled && visible)`.
+ * Cascade note (S-J): the icons sheet is emitted AFTER component modules in document
+ * order, so at l1 these rules win on SPECIFICITY ONLY — 0-2-0 beats the hide's 0-1-0; an
+ * equal-specificity rule would LOSE the within-layer source-order tiebreak. Verified via
+ * CDP matched rules (.scratch/sj23-cdp-post.json).
  *
- * In the CSS cascade an UNLAYERED normal author declaration outranks EVERY `@layer` — the
- * comparison happens before specificity is consulted. Left inside `@layer fui.components.l1`
- * these rules could never beat `.fjseox`, no matter that they are 0-2-0 against its 0-1-0,
- * and hovering an `outline` InteractionTagPrimary would keep rendering the OUTLINE glyph.
- * Griffel's own compiled output for this component was unlayered at 0-2-0 and won on
- * specificity (`.ft1hn21:hover .fui-Icon-filled{display:inline}`); reproducing that requires
- * these rules to be unlayered too. Everything that styles THIS component's own root, and
- * everything on its own slots, stays layered above. (The `fui-InteractionTagPrimary__*`
- * BEM statics those slots used to carry were removed by DECISIONS.md D16.1; the slots are
- * now addressed only by their hashed module classes. `fui-Icon-filled` / `fui-Icon-regular`
- * are unaffected — they belong to `@fluentui/react-icons`, not to a converted package.)
- *
- * The same DOM evidence collected for react-infolabel's InfoButton and react-button applies
- * verbatim here — same two atomics, same element pair, same 0-2-0 vs 0-1-0 comparison; see
- * DECISIONS.md D2 amendment 5 for the CDP matched-rules readout.
+ * Everything that styles THIS component's own root, and everything on its own slots,
+ * stays in the layer blocks above. (The `fui-InteractionTagPrimary__*` BEM statics those
+ * slots used to carry were removed by DECISIONS.md D16.1; the slots are now addressed
+ * only by their hashed module classes. `fui-Icon-filled` / `fui-Icon-regular` are
+ * unaffected — they are icons 3.0's public statics.)
  *
  * Ordering is load-bearing and mirrors mergeClasses ARGUMENT order: `.outline` is arg #4,
  * `.selected` is arg #5, so a hovered SELECTED outline tag resolves the filled glyph's
  * colour to colorNeutralForegroundOnBrand — exactly what mergeClasses produced by keeping
- * the later argument's `I6i3kg` atomic.
+ * the later argument's `I6i3kg` atomic. Both flatten to 0-2-0, so within-layer file
+ * position is the only tiebreak, same as the unlayered form.
  *
  * `display: inline` is the compiled value, reproduced verbatim; the <svg>s are grid/flex
  * items, so CSS Display 3 blockifies it — that is expected, not a wrong value.
  */
 
-/* from useRootStyles.outline — arg #4, the `h` and `a` bucket halves */
-.outline {
-  @variant hover {
-    & :global(.fui-Icon-filled) {
-      display: inline;
-      color: var(--colorNeutralForeground2BrandHover);
+@layer fui.components.l1 {
+  /* from useRootStyles.outline — arg #4, the `h` and `a` bucket halves */
+  .outline {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
+        display: inline;
+        color: var(--colorNeutralForeground2BrandHover);
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
     }
 
-    & :global(.fui-Icon-regular) {
-      display: none;
-    }
-  }
+    @variant active {
+      & :global(.fui-Icon-filled) {
+        display: inline;
+        color: var(--colorNeutralForeground2BrandPressed);
+      }
 
-  @variant active {
-    & :global(.fui-Icon-filled) {
-      display: inline;
-      color: var(--colorNeutralForeground2BrandPressed);
-    }
-
-    & :global(.fui-Icon-regular) {
-      display: none;
-    }
-  }
-}
-
-/* from useRootStyles.selected — arg #5, the `h` and `a` bucket halves */
-.selected {
-  @variant hover {
-    & :global(.fui-Icon-filled) {
-      color: var(--colorNeutralForegroundOnBrand);
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
     }
   }
 
-  @variant active {
-    & :global(.fui-Icon-filled) {
-      color: var(--colorNeutralForegroundOnBrand);
+  /* from useRootStyles.selected — arg #5, the `h` and `a` bucket halves */
+  .selected {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
+        color: var(--colorNeutralForegroundOnBrand);
+      }
+    }
+
+    @variant active {
+      & :global(.fui-Icon-filled) {
+        color: var(--colorNeutralForegroundOnBrand);
+      }
     }
   }
 }

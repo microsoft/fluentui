@@ -84,16 +84,18 @@
  * MenuItemRadio, MenuItemSwitch) author their own additions at l2 — see
  * MenuItemLink.module.css.
  *
- * ── UNLAYERED: the react-icons glyph swap (DECISIONS.md D2 amendment 5) ─────────────
+ * ── The react-icons glyph swap, at l1 (S-J retirement of D2 amendment 5, D27) ───────
  * Three of the four slices above also toggle `:global(.fui-Icon-filled)` /
- * `:global(.fui-Icon-regular)`. Those elements belong to `@fluentui/react-icons`, which
- * stays on Griffel PERMANENTLY (D11) and injects `.fjseox{display:none}` /
- * `.f1w7gpdv{display:inline}` UNLAYERED. An unlayered declaration beats every `@layer`
- * before specificity is even consulted, so a swap rule left inside `fui.base` or
- * `fui.components.l1` can never win and the glyph would never change. They are lifted
- * into the unlayered block at the BOTTOM of this file; pointer comments mark the blocks
- * they came out of. MenuItem is a `bundleIcon()` consumer itself — its default submenu
- * chevron is `bundleIcon(ChevronRightFilled, ChevronRightRegular)` (useMenuItem.tsx).
+ * `:global(.fui-Icon-regular)`. Those elements belong to `@fluentui/react-icons`; icons
+ * 3.0 (headless) styles them via `[data-fui-icon-hidden]` (0-1-0) from a stylesheet this
+ * repo imports at `@layer fui.components.l1` (D27), so the old unlayered escape hatch is
+ * retired. All three swap blocks live in ONE `fui.components.l1` section at the BOTTOM of
+ * this file — including the `useRootBaseStyles` hover half, whose own slice is `fui.base`:
+ * at base altitude it would lose to the icons sheet's l1 hide on LAYER order, so it rides
+ * at l1 with its siblings, where 0-2-0 beats the hide's 0-1-0 on specificity. Pointer
+ * comments mark the blocks they came out of. MenuItem is a `bundleIcon()` consumer itself
+ * — its default submenu chevron is `bundleIcon(ChevronRightFilled, ChevronRightRegular)`
+ * (useMenuItem.tsx).
  *
  * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
  * Every `[ltr, rtl]` pair in the compiled atomics is a pure PROPERTY flip with identical
@@ -139,7 +141,7 @@
       color: var(--colorNeutralForeground2Hover);
 
       /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
-         block — see the UNLAYERED section at the bottom of this file. */
+         block — see the S-J/D27 l1 section at the bottom of this file. */
 
       & .icon {
         color: var(--colorNeutralForeground2BrandSelected);
@@ -284,7 +286,7 @@
     color: var(--colorNeutralForeground2Hover);
 
     /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
-       block — see the UNLAYERED section at the bottom of this file. */
+       block — see the S-J/D27 l1 section at the bottom of this file. */
 
     & .icon {
       color: var(--colorNeutralForeground2BrandSelected);
@@ -313,7 +315,7 @@
       cursor: not-allowed;
 
       /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap-BACK that belongs here is NOT in
-         this block — see the UNLAYERED section at the bottom of this file. */
+         this block — see the S-J/D27 l1 section at the bottom of this file. */
 
       & .icon {
         color: var(--colorNeutralForegroundDisabled);
@@ -403,25 +405,30 @@
 
 /*
  * ─────────────────────────────────────────────────────────────────────────────────────
- * The icon swap must be UNLAYERED (DECISIONS.md D2 amendment 5).
+ * The icon swap, at l1 (S-J retirement of DECISIONS.md D2 amendment 5; D27).
  *
- * `bundleIcon()` renders both glyphs and toggles them with Griffel atomics that carry NO
- * cascade layer — `node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js`
- * compiles to `.fjseox{display:none}` / `.f1w7gpdv{display:inline}`, and `bundleIcon.js`
- * hands the filled `<svg>` `root + (filled && visible)` and the regular one
- * `root + (!filled && visible)`.
+ * `bundleIcon()` renders both glyphs; icons 3.0 (headless) toggles them with
+ * `[data-fui-icon-hidden] { display: none }` (0-1-0) from a static stylesheet this repo
+ * imports at `@layer fui.components.l1` (D27). Under icons 2.x these blocks had to be
+ * UNLAYERED (Griffel injected the swap atomics unlayered, and an unlayered declaration
+ * beats every `@layer` before specificity is consulted); with the hide now INSIDE l1 the
+ * escape hatch is retired and the swap rules contend at the same altitude.
  *
- * In the CSS cascade an unlayered normal author declaration beats EVERY `@layer`, and
- * that comparison happens before specificity — so these rules at 0-2-0 inside
- * `@layer fui.base` / `@layer fui.components.l1` would lose to `.fjseox` at 0-1-0 and the
- * glyph would never swap. Unlayered they win at 0-2-0, exactly as the compiled Griffel
- * atomics did. `@fluentui/react-icons` is out of conversion scope permanently (D11), so
- * this is permanent, not transitional.
+ * Cascade note (S-J): the icons sheet is emitted AFTER component modules in document
+ * order, so at l1 these rules win on SPECIFICITY ONLY — 0-2-0 beats the hide's 0-1-0; an
+ * equal-specificity rule would LOSE the within-layer source-order tiebreak. Verified via
+ * CDP matched rules (.scratch/sj23-cdp-post.json).
  *
- * ── Order inside this block reproduces mergeClasses ARGUMENT order ──────────────────
+ * ── Why ALL THREE blocks are l1, including the base-reset half ──────────────────────
+ * The `.root` :hover half comes from `useRootBaseStyles`, whose own slice is `fui.base` —
+ * but at base altitude the swap would lose to the icons sheet's l1 hide on LAYER order
+ * (layers are compared before specificity), so it rides at l1 with its siblings. The
+ * three blocks stay in ONE layer so file position keeps arbitrating their internal order.
+ *
+ * ── Order inside this section reproduces mergeClasses ARGUMENT order ────────────────
  * Every selector here is `:where()`-flat at 0-2-0 and `.root`, `.submenu-open` and
- * `.disabled` are three CSS-module classes on the SAME element, so file position is the
- * only tiebreak:
+ * `.disabled` are three CSS-module classes on the SAME element, so within-layer file
+ * position is the only tiebreak:
  *
  *   1. `.root` :hover swap                 ← arg #2 (useRootBaseStyles, `r` bucket)
  *   2. `.submenu-open` swap                ← arg #3 (useStyles.submenuOpen, `d` bucket)
@@ -430,15 +437,29 @@
  * which is also the Griffel bucket order (r < d < h), so a hovered *disabled* item keeps
  * the outline glyph — the same winner the compiled sheet produced.
  *
- * Everything that styles MenuItem's OWN elements stays layered above, including the
- * `.icon` / `.sub-text` colour rules that were lifted out of the same source blocks:
- * those locals sit on this package's slots and nothing unlayered competes for them.
+ * Everything that styles MenuItem's OWN elements keeps its slice's own altitude above,
+ * including the `.icon` / `.sub-text` colour rules that were lifted out of the same
+ * source blocks: those locals sit on this package's slots and nothing competes for them
+ * across layers.
  * ─────────────────────────────────────────────────────────────────────────────────────
  */
 
-/* from useRootBaseStyles — root arg #2, the `:hover` half */
-.root {
-  @variant hover {
+@layer fui.components.l1 {
+  /* from useRootBaseStyles — root arg #2, the `:hover` half */
+  .root {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+  }
+
+  /* from useStyles.submenuOpen — root arg #3 */
+  .submenu-open {
     & :global(.fui-Icon-filled) {
       display: inline;
     }
@@ -447,29 +468,18 @@
       display: none;
     }
   }
-}
 
-/* from useStyles.submenuOpen — root arg #3 */
-.submenu-open {
-  & :global(.fui-Icon-filled) {
-    display: inline;
-  }
+  /* from useStyles.disabled — root arg #4, the `:hover` swap-BACK. LAST in the file because
+     arg #4 outranks args #2/#3 above. */
+  .disabled {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
+        display: none;
+      }
 
-  & :global(.fui-Icon-regular) {
-    display: none;
-  }
-}
-
-/* from useStyles.disabled — root arg #4, the `:hover` swap-BACK. LAST in the file because
-   arg #4 outranks args #2/#3 above. */
-.disabled {
-  @variant hover {
-    & :global(.fui-Icon-filled) {
-      display: none;
-    }
-
-    & :global(.fui-Icon-regular) {
-      display: inline;
+      & :global(.fui-Icon-regular) {
+        display: inline;
+      }
     }
   }
 }
