@@ -55,7 +55,7 @@
  *                                                                  prepended ahead of it
  *   2  primaryHighContrastStyles.base        (appearance=primary)   → block 5
  *   3  primaryHighContrastStyles.disabled    (+ disabled-any)       → block 5
- *   4  rootCheckedStyles.base                (checked)              → blocks 1/3/4 + UNLAYERED
+ *   4  rootCheckedStyles.base                (checked)              → blocks 1/3/4 + icon swap (l2, bottom)
  *   5  rootCheckedStyles.highContrast        (checked)              → block 5
  *   6  rootCheckedStyles[appearance]         (checked)              → blocks 1/2/3/4
  *   7  accessibleCheckedStyles.base          (isAccessible+checked) → blocks 1/3
@@ -120,9 +120,8 @@
     border-bottom-width: var(--spacing-thin);
     border-left-width: var(--spacing-thin);
 
-    /* The `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
-       layer — it is UNLAYERED at the bottom of this file. See "The icon swap must be
-       UNLAYERED" there. */
+    /* The `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here lives in the
+       l2 icon-swap block at the bottom of this file (DECISIONS.md D27 / S-J batch 1). */
   }
 
   /* from useRootCheckedStyles.outline — arg #6 */
@@ -619,37 +618,35 @@
 }
 
 /*
- * ── The icon swap must be UNLAYERED ──────────────────────────────────────────────────
+ * ── The icon swap — retired to `fui.components.l2` (S-J batch 1, DECISIONS.md D27) ────
  *
- * Same defect, same fix, same evidence as react-button's own Button.module.css (bottom of
- * that file) and react-infolabel's InfoButton.module.css. These two rules style ANOTHER
- * package's elements: the two <svg>s that `@fluentui/react-icons`' `bundleIcon()` renders
- * inside the icon slot. react-icons is not converted (D11 keeps it on Griffel), and
- * Griffel injects UNLAYERED:
+ * These two rules style ANOTHER package's elements: the two <svg>s that
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. They were
+ * UNLAYERED under D2 amendment 5 while icons 2.x styled those elements with unlayered
+ * Griffel atomics; icons 3.0's stylesheet is imported at `layer(fui.components.l1)`
+ * (D27), so the swap returns to this module's own altitude — `fui.components.l2`, the
+ * layer every other ToggleButton root slice already uses.
  *
- *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
- *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
- *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
- *
- * An unlayered normal author declaration outranks EVERY `@layer` — that comparison happens
- * before specificity is consulted — so a `display` rule left in `@layer fui.components.l2`
- * could never beat `.fjseox`, and a checked ToggleButton would keep the OUTLINE glyph.
- *
- * ── Order against Button.module.css's own unlayered block ────────────────────────────
- * Both blocks are 0-2-0 and both are unlayered, so file position inside react-button's
- * aggregated `dist/styles.css` is the only tiebreak, and this file follows Button's.
- * That reproduces the mixed-mode winner this conversion replaces: while this hook was
- * still Griffel its runtime <style> was appended after the module bundle, so the checked
- * swap already beat Button's `disabled-any` swap-BACK.
+ * Cascade math at l2: the icons sheet's bundled-pair hide (`[data-fui-icon-hidden]`,
+ * 0-1-0) and base (`:where([data-fui-icon])`, 0-0-0) sit at l1, and Button's own
+ * disabled-any hover/pressed swap-BACKS sit at l1 too — l2 beats all of them on layer
+ * order, so a checked (even checked+disabled) ToggleButton keeps the FILLED glyph.
+ * That reproduces the winner the unlayered blocks decided by file position (this file
+ * follows Button's in the aggregated CSS), which itself reproduced the mixed-mode
+ * Griffel winner (the runtime <style> appended after the module bundle). Verified
+ * per-state in the S-J VR gate ("Checked with icon" / "Checked Disabled with icon") and
+ * by CDP computed-style evidence (reports/sj-batch1.md).
  */
 
-/* from useRootCheckedStyles.base — arg #4 */
-.checked {
-  & :global(.fui-Icon-filled) {
-    display: inline;
-  }
+@layer fui.components.l2 {
+  /* from useRootCheckedStyles.base — arg #4 */
+  .checked {
+    & :global(.fui-Icon-filled) {
+      display: inline;
+    }
 
-  & :global(.fui-Icon-regular) {
-    display: none;
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
   }
 }

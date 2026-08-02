@@ -45,12 +45,15 @@
  *   4  iconStyles[size]                              → fui.components.l1
  *   5  consumer className                            → unlayered
  *
- * EXCEPTION: the six `.fui-Icon-filled` / `.fui-Icon-regular` display swaps (from args #3
- * `subtle`/`transparent` and arg #8 `rootDisabledStyles.base`) are NOT in a layer — they
- * style `@fluentui/react-icons`' elements, which that unconverted package styles unlayered.
- * They live in one block at the BOTTOM of this file; see "The icon swap must be UNLAYERED"
- * there for the DOM evidence. The icon COLOUR swaps stay layered: they now select `.icon`,
- * this module's own local on react-button's icon slot, not another package's element.
+ * The six `.fui-Icon-filled` / `.fui-Icon-regular` display swaps (from args #3
+ * `subtle`/`transparent` and arg #8 `rootDisabledStyles.base`) style `@fluentui/react-icons`'
+ * elements and sit in `fui.components.l1` like every other root-slot rule, in one block at
+ * the BOTTOM of this file — see "The icon swap" there for the cascade math. They were
+ * UNLAYERED under D2 amendment 5 while icons 2.x styled those elements with unlayered
+ * Griffel atomics; icons 3.0's stylesheet is imported at `layer(fui.components.l1)`
+ * (DECISIONS.md D27), so the swaps retired to their natural altitude (S-J batch 1).
+ * The icon COLOUR swaps stay layered too: they select `.icon`, this module's own local on
+ * react-button's icon slot, not another package's element.
  *
  * ── D16: the icon slot has no public handle ─────────────────────────────────────────
  * Ten rules below used to select `:global(.fui-Button__icon)`. They select `.icon` instead
@@ -329,10 +332,9 @@
       border-left-color: transparent;
       color: var(--colorNeutralForeground2Hover);
 
-      /* The `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
-         layer — it is UNLAYERED at the bottom of this file. See "The icon swap must be
-         UNLAYERED". `.icon` below is this module's own local on react-button's icon slot,
-         so its colour rule stays layered. */
+      /* The `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here lives in the
+         l1 icon-swap block at the bottom of this file (D27 / S-J batch 1). `.icon` below is
+         this module's own local on react-button's icon slot, so its colour rule stays here. */
 
       & .icon {
         color: var(--colorNeutralForeground2BrandHover);
@@ -347,8 +349,8 @@
       border-left-color: transparent;
       color: var(--colorNeutralForeground2Pressed);
 
-      /* Icon swap UNLAYERED at the bottom of this file — see "The icon swap must be
-         UNLAYERED". `.icon` is this module's own local and its colour rule stays here. */
+      /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). `.icon`
+         is this module's own local and its colour rule stays here. */
 
       & .icon {
         color: var(--colorNeutralForeground2BrandPressed);
@@ -391,7 +393,7 @@
       border-left-color: transparent;
       color: var(--colorNeutralForeground2BrandHover);
 
-      /* Icon swap UNLAYERED at the bottom of this file — see "The icon swap must be UNLAYERED". */
+      /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). */
     }
 
     @variant hover-active {
@@ -402,7 +404,7 @@
       border-left-color: transparent;
       color: var(--colorNeutralForeground2BrandPressed);
 
-      /* Icon swap UNLAYERED at the bottom of this file — see "The icon swap must be UNLAYERED". */
+      /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). */
     }
 
     @variant forced-colors {
@@ -509,9 +511,9 @@
 
         cursor: not-allowed;
 
-        /* The icon swap-BACK that belongs here is UNLAYERED at the bottom of this file, and is
-           written LAST there so it still beats the appearance swaps — see "The icon swap must
-           be UNLAYERED". */
+        /* The icon swap-BACK that belongs here is in the l1 icon-swap block at the bottom of
+           this file, written LAST there so it still beats the appearance swaps (D27 / S-J
+           batch 1). */
 
         & .icon {
           color: var(--colorNeutralForegroundDisabled);
@@ -528,9 +530,9 @@
 
         cursor: not-allowed;
 
-        /* The icon swap-BACK that belongs here is UNLAYERED at the bottom of this file, and is
-           written LAST there so it still beats the appearance swaps — see "The icon swap must
-           be UNLAYERED". */
+        /* The icon swap-BACK that belongs here is in the l1 icon-swap block at the bottom of
+           this file, written LAST there so it still beats the appearance swaps (D27 / S-J
+           batch 1). */
 
         & .icon {
           color: var(--colorNeutralForegroundDisabled);
@@ -798,126 +800,118 @@
 }
 
 /*
- * ── The icon swap must be UNLAYERED ──────────────────────────────────────────────────
- *
- * Same defect, same fix, same evidence as react-infolabel's InfoButton.module.css (bottom
- * of that file) — Button carried it latently and it is broken at runtime today; VR history
- * masked it because the pipeline was serving a stale storybook bundle (fixed by nx input
- * corrections + a capture guard in b27bf13985, see reports/DECISIONS.md).
+ * ── The icon swap — retired to `fui.components.l1` (S-J batch 1, DECISIONS.md D27) ────
  *
  * These twelve rules style ANOTHER package's elements: the two <svg>s that
- * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. react-icons is not
- * converted, so it styles those same two elements with Griffel atomics, and Griffel injects
- * UNLAYERED:
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. Under icons 2.x
+ * that package styled them with UNLAYERED Griffel atomics, so these rules had to be
+ * unlayered too (D2 amendment 5 — the CDP matched-rules evidence lives in DECISIONS.md
+ * and this file's git history). Icons 3.0 (headless) replaced the atomics with
+ * `data-fui-icon-*` attributes resolved by a stylesheet this repo imports at
+ * `layer(fui.components.l1)` (D27), so the swap returns to the layer that mirrors its
+ * mergeClasses argument — the retirement D2a5's own scope clause promised.
  *
- *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
- *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
- *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
- *   bundleIcon.js gives the FILLED svg `root + (filled && visible)` and the REGULAR svg
- *   `root + (!filled && visible)`. Button never passes `filled`, so at rest the filled svg
- *   carries `.fjseox` (display:none) and the regular svg `.f1w7gpdv` (display:inline).
- *
- * In the CSS cascade, UNLAYERED normal author declarations outrank EVERY `@layer` — that
- * comparison happens BEFORE specificity is consulted. So while these rules lived in
- * `@layer fui.components.l1` they could never beat `.fjseox`, no matter that they are 0-2-0
- * against its 0-1-0: hovering or pressing a subtle/transparent Button kept the OUTLINE glyph
- * instead of swapping to the filled one, and a disabled Button's swap-BACK was equally inert
- * (harmless only because the swap it undoes was also losing). Griffel's own compiled output
- * for this component was unlayered at 0-2-0 and won on specificity — reproducing that
- * requires these rules to be unlayered too.
- *
- * Everything that styles react-button's OWN elements stays layered above, INCLUDING the
- * `.icon` colour rules: that local sits on this package's icon slot, not another package's
- * element, and nothing unlayered competes for it.
+ * ── Cascade math at l1 (verified: emitted VR bundle + CDP computed styles, S-J gate) ──
+ * The icons sheet's competing rules are the base `:where([data-fui-icon])` (0-0-0,
+ * display:inline) and the bundled-pair hide `[data-fui-icon-hidden]` (0-1-0,
+ * display:none, deliberately not `:where()`-wrapped). Every selector below is 0-2-0
+ * (two classes; the `@variant` compounds are `:where()`-flat), so within the shared
+ * `fui.components.l1` layer these rules win on SPECIFICITY and the icons-sheet-vs-module
+ * source order never becomes the tiebreak. ToggleButton's `.checked` and MenuButton's
+ * `.expanded` swaps sit at those modules' own `fui.components.l2` altitude and beat all
+ * of this on layer order — reproducing the winner the unlayered blocks decided by file
+ * position.
  *
  * ── Order inside this block reproduces mergeClasses ARGUMENT order ───────────────────
- * Every selector here is `:where()`-flat at 0-2-0 (`disabled-any` and `hover-active` are
- * both `:where(...)` compounds — see react-tailwind-theme/css/variants.css), and `.root`,
- * `.subtle`, `.transparent` are separate CSS-module classes on the SAME element. So the tie
- * is broken purely by file position and file position must therefore encode argument order:
+ * Every selector here ties at 0-2-0 in the same layer (`disabled-any` and `hover-active`
+ * are both `:where(...)` compounds — see react-tailwind-theme/css/variants.css), and
+ * `.root`, `.subtle`, `.transparent` are separate CSS-module classes on the SAME element.
+ * So the tie is broken purely by file position and file position must therefore encode
+ * argument order, exactly as it did while the block was unlayered:
  *
  *   1. `.subtle` / `.transparent` hover + pressed swaps   ← args #3 (rootStyles[appearance])
  *   2. `.root` disabled-any hover + pressed swap-BACKS    ← arg  #8 (rootDisabledStyles.base)
  *
  * arg #8 outranks arg #3 in mergeClasses, so the disabled swap-backs are written LAST and a
  * hovered *disabled* subtle Button keeps the regular glyph. Within each appearance, `hover`
- * is written before `hover-active` for the same reason it was in the layered version —
- * Griffel separated them by specificity (0-2-0 vs 0-3-0), `:where()` does not, so pressed
- * must come second to win.
+ * is written before `hover-active` — Griffel separated them by specificity (0-2-0 vs
+ * 0-3-0), `:where()` does not, so pressed must come second to win.
  *
  * `@variant`, not hand-written `[disabled]`/`:hover` selectors, so the shared catalog stays
  * the single definition of each selector; `:where()` still flattens them to 0-2-0 total.
  */
 
-/* from useRootStyles.subtle — arg #3, the `h` bucket halves */
-.subtle {
-  @variant hover {
-    & :global(.fui-Icon-filled) {
-      display: inline;
-    }
-
-    & :global(.fui-Icon-regular) {
-      display: none;
-    }
-  }
-
-  @variant hover-active {
-    & :global(.fui-Icon-filled) {
-      display: inline;
-    }
-
-    & :global(.fui-Icon-regular) {
-      display: none;
-    }
-  }
-}
-
-/* from useRootStyles.transparent — arg #3, the `h` bucket halves */
-.transparent {
-  @variant hover {
-    & :global(.fui-Icon-filled) {
-      display: inline;
-    }
-
-    & :global(.fui-Icon-regular) {
-      display: none;
-    }
-  }
-
-  @variant hover-active {
-    & :global(.fui-Icon-filled) {
-      display: inline;
-    }
-
-    & :global(.fui-Icon-regular) {
-      display: none;
-    }
-  }
-}
-
-/*
- * from useRootDisabledStyles.base — arg #8. LAST in the file because arg #8 outranks the
- * appearance args above; this is the swap-BACK that keeps a disabled button's glyph static.
- */
-.root {
-  @variant disabled-any {
+@layer fui.components.l1 {
+  /* from useRootStyles.subtle — arg #3, the `h` bucket halves */
+  .subtle {
     @variant hover {
       & :global(.fui-Icon-filled) {
-        display: none;
+        display: inline;
       }
 
       & :global(.fui-Icon-regular) {
-        display: inline;
+        display: none;
       }
     }
 
     @variant hover-active {
       & :global(.fui-Icon-filled) {
-        display: none;
+        display: inline;
       }
 
       & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+  }
+
+  /* from useRootStyles.transparent — arg #3, the `h` bucket halves */
+  .transparent {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
         display: inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+
+    @variant hover-active {
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+  }
+
+  /*
+   * from useRootDisabledStyles.base — arg #8. LAST in the file because arg #8 outranks the
+   * appearance args above; this is the swap-BACK that keeps a disabled button's glyph static.
+   */
+  .root {
+    @variant disabled-any {
+      @variant hover {
+        & :global(.fui-Icon-filled) {
+          display: none;
+        }
+
+        & :global(.fui-Icon-regular) {
+          display: inline;
+        }
+      }
+
+      @variant hover-active {
+        & :global(.fui-Icon-filled) {
+          display: none;
+        }
+
+        & :global(.fui-Icon-regular) {
+          display: inline;
+        }
       }
     }
   }

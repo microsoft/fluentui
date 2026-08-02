@@ -26,7 +26,7 @@
  *                                                     with `group/fui-menu-button`, and
  *                                                     `useButtonStyles_unstable` prepends
  *                                                     Button's `.root` ahead of it
- *   2  rootExpandedStyles.base        (expanded)    → UNLAYERED (react-icons swap)
+ *   2  rootExpandedStyles.base        (expanded)    → fui.components.l2 (icon swap, bottom)
  *   3  rootExpandedStyles[appearance] (expanded)    → fui.components.l2
  *   4  consumer className                           → unlayered (always wins)
  *
@@ -175,38 +175,36 @@
 }
 
 /*
- * ── The icon swap must be UNLAYERED ──────────────────────────────────────────────────
+ * ── The icon swap — retired to `fui.components.l2` (S-J batch 1, DECISIONS.md D27) ────
  *
  * `useRootExpandedStyles.base` (arg #2) is NOTHING BUT this swap, so the whole slice
- * lives here. Same defect, same fix and same evidence as react-button's own
- * Button.module.css (bottom of that file): these two rules style ANOTHER package's
- * elements — the two <svg>s `@fluentui/react-icons`' `bundleIcon()` renders inside the
- * icon slot — and react-icons is not converted (D11 keeps it on Griffel), so it styles
- * them with UNLAYERED atomics:
+ * lives here. The two rules style ANOTHER package's elements — the two <svg>s
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. They were
+ * UNLAYERED under D2 amendment 5 while icons 2.x styled those elements with unlayered
+ * Griffel atomics; icons 3.0's stylesheet is imported at `layer(fui.components.l1)`
+ * (D27), so the swap returns to this module's root altitude, `fui.components.l2`.
  *
- *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
- *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
- *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
- *
- * An unlayered normal author declaration outranks EVERY `@layer` — that comparison
- * happens before specificity is consulted — so a `display` rule left in
- * `@layer fui.components.l2` could never beat `.fjseox`, and an expanded MenuButton would
- * keep the OUTLINE glyph.
- *
- * Ordering against Button.module.css's own unlayered block: both are 0-2-0 and unlayered,
- * so file position inside react-button's aggregated `dist/styles.css` is the only
- * tiebreak, and this file follows Button's — reproducing the mixed-mode winner this
- * conversion replaces (while this hook was still Griffel its runtime <style> was appended
- * after the module bundle).
+ * Cascade math at l2: the icons sheet's bundled-pair hide (`[data-fui-icon-hidden]`,
+ * 0-1-0) and base (`:where([data-fui-icon])`, 0-0-0) sit at l1, and Button's
+ * disabled-any swap-BACKS sit at l1 too — l2 beats all of them on layer order, so an
+ * expanded MenuButton shows the FILLED glyph: the same winner file position produced
+ * when both blocks were unlayered (this file follows Button's in the aggregated CSS),
+ * which itself reproduced the mixed-mode Griffel winner. Arg #2 landing after arg #3's
+ * l2 blocks in file order carries no cascade meaning: this slice only sets `display` on
+ * the icons' <svg>s, which no other rule in this module touches. Verified per-state in
+ * the S-J VR gate ("With icon expanded") and by CDP computed-style evidence
+ * (reports/sj-batch1.md).
  */
 
-/* from useRootExpandedStyles.base — arg #2 */
-.expanded {
-  & :global(.fui-Icon-filled) {
-    display: inline;
-  }
+@layer fui.components.l2 {
+  /* from useRootExpandedStyles.base — arg #2 */
+  .expanded {
+    & :global(.fui-Icon-filled) {
+      display: inline;
+    }
 
-  & :global(.fui-Icon-regular) {
-    display: none;
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
   }
 }
