@@ -4,4 +4,4 @@ Tooltips should always wrap interactive controls like buttons, links, form field
 
 Tooltips should not be used to provide a full-text alternative to truncated content. For more infomation on the accessibility of truncated content, see our [truncation docs](https://react.fluentui.dev/?path=/docs/concepts-developer-accessibility-truncation--docs).
 
-Use `secondaryContent` for short supporting information such as a keyboard shortcut. Set `aria-keyshortcuts` on the trigger to expose keyboard shortcuts semantically to assistive technologies.
+Use `secondaryContent` for short supporting information displayed opposite the primary content, such as a keyboard shortcut. Secondary content is included in the trigger's accessible label or description.

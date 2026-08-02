@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { Tooltip } from './Tooltip';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import type { RenderResult } from '@testing-library/react';
 import { act, fireEvent, render } from '@testing-library/react';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resetIdsForTests, SSRProvider } from '@fluentui/react-utilities';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleTooltip(result: RenderResult) {
@@ -95,10 +96,10 @@ describe('Tooltip', () => {
     expect(target.getAttribute('aria-labelledby')).toBe('the-tooltip-id');
   });
 
-  it('renders secondary content without including it in the accessible label', () => {
+  it('includes secondary content in the accessible label', () => {
     const result = render(
       <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label" visible>
-        <button aria-keyshortcuts="Control+B" />
+        <button />
       </Tooltip>,
     );
 
@@ -107,15 +108,84 @@ describe('Tooltip', () => {
     const secondaryContent = tooltip.querySelector('.fui-Tooltip__secondaryContent');
 
     expect(tooltip.textContent).toBe('BoldCtrl+B');
-    expect(target.getAttribute('aria-label')).toBe('Bold');
-    expect(target.getAttribute('aria-keyshortcuts')).toBe('Control+B');
+    expect(target.getAttribute('aria-label')).toBe('Bold Ctrl+B');
+    expect(target.getAttribute('aria-labelledby')).toBeNull();
     expect(secondaryContent?.hasAttribute('aria-hidden')).toBe(false);
   });
 
-  it('renders secondary content without hiding it from assistive technologies', () => {
+  it('includes secondary content in a rich accessible label', () => {
+    const result = render(
+      <Tooltip content={<span>Bold</span>} secondaryContent="Ctrl+B" relationship="label">
+        <button />
+      </Tooltip>,
+    );
+
+    const tooltip = getByRoleTooltip(result);
+    const target = result.getByRole('button');
+    const secondaryContent = tooltip.querySelector('.fui-Tooltip__secondaryContent');
+
+    expect(target.getAttribute('aria-labelledby')).toBe(tooltip.id);
+    expect(secondaryContent?.hasAttribute('aria-hidden')).toBe(false);
+  });
+
+  it('keeps a string label with secondary content when the trigger popup is expanded', () => {
+    const result = render(
+      <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label" visible>
+        <button aria-haspopup="menu" aria-expanded="true" />
+      </Tooltip>,
+    );
+
+    expect(queryByRoleTooltip(result)).toBeNull();
+    expect(result.getByRole('button').getAttribute('aria-label')).toBe('Bold Ctrl+B');
+  });
+
+  it('keeps a generic secondary content label when the trigger popup is expanded', () => {
+    const result = render(
+      <Tooltip content="Bold" secondaryContent={<span>Ctrl+B</span>} relationship="label" visible>
+        <button aria-haspopup="menu" aria-expanded="true" />
+      </Tooltip>,
+    );
+
+    const tooltip = getByRoleTooltip(result);
+    const target = result.getByRole('button');
+
+    expect(target.getAttribute('aria-label')).toBeNull();
+    expect(target.getAttribute('aria-labelledby')).toBe(tooltip.id);
+    expect(tooltip.textContent).toBe('BoldCtrl+B');
+  });
+
+  it('dismisses internal visibility with Escape while the trigger popup is expanded', () => {
+    const onVisibleChange = jest.fn();
+    render(
+      <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label" visible onVisibleChange={onVisibleChange}>
+        <button aria-haspopup="menu" aria-expanded="true" />
+      </Tooltip>,
+    );
+
+    act(() => {
+      fireEvent.keyDown(document, { key: 'Escape' });
+    });
+
+    expect(onVisibleChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ visible: false }));
+  });
+
+  it('keeps the primary string label during SSR with generic secondary content', () => {
+    const html = renderToStaticMarkup(
+      <SSRProvider>
+        <Tooltip content="Bold" secondaryContent={<span>Ctrl+B</span>} relationship="label">
+          <button />
+        </Tooltip>
+      </SSRProvider>,
+    );
+
+    expect(html).toContain('aria-label="Bold"');
+    expect(html).not.toContain('aria-labelledby');
+  });
+
+  it('includes secondary content in the accessible description', () => {
     const result = render(
       <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="description">
-        <button aria-keyshortcuts="Control+B" />
+        <button />
       </Tooltip>,
     );
 

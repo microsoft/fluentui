@@ -5,7 +5,7 @@ import { TextBoldRegular } from '@fluentui/react-icons';
 
 export const SecondaryContent = (): JSXElement => (
   <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label">
-    <Button aria-keyshortcuts="Control+B" icon={<TextBoldRegular />} />
+    <Button icon={<TextBoldRegular />} />
   </Tooltip>
 );
 
@@ -13,8 +13,7 @@ SecondaryContent.parameters = {
   docs: {
     description: {
       story:
-        'Use `secondaryContent` for short supporting information such as a keyboard shortcut. ' +
-        'Use `aria-keyshortcuts` on the trigger to expose the keyboard shortcut semantically.',
+        'Use `secondaryContent` for short supporting information displayed opposite the primary content, such as a keyboard shortcut.',
     },
   },
 };

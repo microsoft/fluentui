@@ -33,7 +33,7 @@ export const BasicHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
 export const SecondaryContent = () => (
   <div className={useStyles().wrapper}>
     <Tooltip visible content="Bold" secondaryContent="Ctrl+B" relationship="label">
-      <button aria-keyshortcuts="Control+B">
+      <button>
         <TextBoldRegular />
       </button>
     </Tooltip>
