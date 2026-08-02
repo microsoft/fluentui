@@ -62,3 +62,22 @@ export const Brand = () => (
 );
 export const BrandHighContrast = getStoryVariant(Brand, HIGH_CONTRAST);
 export const BrandDarkMode = getStoryVariant(Brand, DARK_MODE);
+
+/*
+ * S-J state-matrix story (migration/griffel-to-tailwind/reports/griffel-zero-plan.md §2.2):
+ * `useRootStyles.selected` (arg #5) re-colours the FILLED glyph on hover/active — visible
+ * only when the filled glyph is displayed, i.e. compounded with `outline`'s (arg #4)
+ * hover/active display swap on the same element. The two blocks tie at 0-2-0 and file
+ * position must keep arg #5 over arg #4 (colorNeutralForegroundOnBrand wins). No story
+ * above combines `selected` with an icon and the hover/pressed steps.
+ */
+export const OutlineSelected = () => (
+  <InteractionTag appearance="outline" selected>
+    <InteractionTagPrimary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary id={dismissButtonId} />
+  </InteractionTag>
+);
+export const OutlineSelectedHighContrast = getStoryVariant(OutlineSelected, HIGH_CONTRAST);
+export const OutlineSelectedDarkMode = getStoryVariant(OutlineSelected, DARK_MODE);

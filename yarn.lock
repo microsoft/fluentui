@@ -6588,6 +6588,7 @@ __metadata:
     "@fluentui/react-link": "npm:*"
     "@fluentui/react-list": "npm:*"
     "@fluentui/react-menu": "npm:*"
+    "@fluentui/react-menu-grid-preview": "npm:*"
     "@fluentui/react-message-bar": "npm:*"
     "@fluentui/react-nav": "npm:*"
     "@fluentui/react-persona": "npm:*"

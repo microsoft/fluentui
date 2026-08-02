@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import { TabList, Tab } from '@fluentui/react-tabs';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 import type { StoryParameters } from 'storywright';
@@ -233,3 +234,43 @@ export const FilledCircularAppearance = () => (
 export const FilledCircularAppearanceDarkMode = getStoryVariant(FilledCircularAppearance, DARK_MODE);
 
 export const FilledCircularAppearanceHighContrast = getStoryVariant(FilledCircularAppearance, HIGH_CONTRAST);
+
+/*
+ * S-J state-matrix stories (migration/griffel-to-tailwind/reports/griffel-zero-plan.md §2.2):
+ * Tab's bundled-icon rules fire on SELECTION (`useIconStyles.selected` shows the filled
+ * glyph; the base half keeps it hidden), and `useCircularAppearanceStyles.filled` re-colours
+ * both glyphs under forced-colors `:enabled:hover`. The `With icon` stories above use plain
+ * string icons, so neither rule had bundled-icon pixel evidence. The selected story pins the
+ * base/selected file-position tie (both 0-2-0 on the same element); the filled-circular
+ * High Contrast variant pins the forced-colors glyph colours under the shared hover step.
+ */
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+export const WithBundledIconSelected = () => (
+  <TabList defaultSelectedValue="2">
+    <Tab icon={<CalendarMonth />} value="1">
+      First
+    </Tab>
+    <Tab icon={<CalendarMonth />} className="mouse-target" value="2">
+      Second
+    </Tab>
+    <Tab icon={<CalendarMonth />} value="3">
+      Third
+    </Tab>
+  </TabList>
+);
+WithBundledIconSelected.storyName = 'With bundled icon selected';
+
+export const FilledCircularWithBundledIcon = () => (
+  <TabList appearance="filled-circular" defaultSelectedValue="1">
+    <Tab icon={<CalendarMonth />} value="1">
+      First
+    </Tab>
+    <Tab icon={<CalendarMonth />} className="mouse-target" value="2">
+      Second
+    </Tab>
+  </TabList>
+);
+FilledCircularWithBundledIcon.storyName = 'Filled circular with bundled icon';
+
+export const FilledCircularWithBundledIconHighContrast = getStoryVariant(FilledCircularWithBundledIcon, HIGH_CONTRAST);

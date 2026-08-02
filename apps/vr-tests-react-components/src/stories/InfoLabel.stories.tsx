@@ -54,6 +54,25 @@ Required.storyName = 'required';
 
 export const RequiredRTL = getStoryVariant(Required, RTL);
 
+/*
+ * S-J state-matrix story (migration/griffel-to-tailwind/reports/griffel-zero-plan.md §2.2):
+ * InfoButton's bundled-icon rules fire at rest (regular shown), on `open` (SizesOpen below)
+ * and on `:hover` — the hover half had no pixel evidence, since every story above snapshots
+ * `rest` only. The base → open → hover file-position order is load-bearing (all 0-2-0), so
+ * the hover snapshot pins the last block in that chain.
+ */
+export const InfoButtonHover = () => <InfoLabel info="Test" infoButton={{ className: 'mouse-target' }} />;
+InfoButtonHover.storyName = 'infobutton -- hover';
+InfoButtonHover.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .snapshot('rest', { cropTo: '.testWrapper' })
+      .hover('.mouse-target')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .end(),
+  },
+} satisfies StoryParameters;
+
 export const SizesOpen = () => (
   <div
     style={{
