@@ -71,7 +71,7 @@ export const BrandDarkMode = getStoryVariant(Brand, DARK_MODE);
  * position must keep arg #5 over arg #4 (colorNeutralForegroundOnBrand wins). No story
  * above combines `selected` with an icon and the hover/pressed steps.
  */
-export const OutlineSelected = () => (
+export const OutlineSelectedWithIcon = () => (
   <InteractionTag appearance="outline" selected>
     <InteractionTagPrimary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
@@ -79,5 +79,5 @@ export const OutlineSelected = () => (
     <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
-export const OutlineSelectedHighContrast = getStoryVariant(OutlineSelected, HIGH_CONTRAST);
-export const OutlineSelectedDarkMode = getStoryVariant(OutlineSelected, DARK_MODE);
+export const OutlineSelectedWithIconHighContrast = getStoryVariant(OutlineSelectedWithIcon, HIGH_CONTRAST);
+export const OutlineSelectedWithIconDarkMode = getStoryVariant(OutlineSelectedWithIcon, DARK_MODE);
