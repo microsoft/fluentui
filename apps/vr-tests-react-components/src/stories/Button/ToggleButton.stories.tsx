@@ -173,3 +173,28 @@ export const TransparentChecked = () => (
     Hello, world
   </ToggleButton>
 );
+
+/*
+ * S-J state-matrix stories (griffel-zero-plan.md §2.2): `useRootCheckedStyles.base`'s
+ * bundled-icon swap (filled shown while checked) had no pixel evidence — no story above
+ * combines `checked` with a bundled icon. The Disabled variant additionally pins the
+ * cross-module winner: ToggleButton's checked swap must beat Button's disabled-any
+ * hover/pressed swap-BACK (the filled glyph stays, even under the steps' forced
+ * hover/pressed), exactly as it did when both blocks were unlayered and file position
+ * decided.
+ */
+export const CheckedWithIcon = () => (
+  <ToggleButton id={buttonId} checked icon={<CalendarMonth />}>
+    Hello, world
+  </ToggleButton>
+);
+
+CheckedWithIcon.storyName = 'Checked with icon';
+
+export const CheckedDisabledWithIcon = () => (
+  <ToggleButton id={buttonId} checked disabled icon={<CalendarMonth />}>
+    Hello, world
+  </ToggleButton>
+);
+
+CheckedDisabledWithIcon.storyName = 'Checked Disabled with icon';

@@ -139,6 +139,21 @@ export const IconOnly = () => <MenuButton id={buttonId} icon={<CalendarMonth />}
 
 IconOnly.storyName = 'Icon only';
 
+/*
+ * S-J state-matrix story (griffel-zero-plan.md §2.2): `useMenuButtonStyles_unstable` keys
+ * the `expanded` slice off `state.root['aria-expanded']`, and that slice is nothing but
+ * the filled<->regular bundled-icon swap — no story above combines it with a bundled
+ * icon, so the `open` leg of the swap matrix had no pixel evidence. Passing the
+ * attribute directly renders the open-trigger state without popup scaffolding.
+ */
+export const WithIconExpanded = () => (
+  <MenuButton id={buttonId} icon={<CalendarMonth />} aria-expanded>
+    Hello, world
+  </MenuButton>
+);
+
+WithIconExpanded.storyName = 'With icon expanded';
+
 export const CircularAndIconOnly = () => <MenuButton id={buttonId} shape="circular" icon={<CalendarMonth />} />;
 
 CircularAndIconOnly.storyName = 'Circular and icon only';

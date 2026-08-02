@@ -185,6 +185,46 @@ export const IconOnly = () => <Button id={buttonId} icon={<CalendarMonth />} />;
 
 IconOnly.storyName = 'Icon only';
 
+/*
+ * S-J state-matrix stories (migration/griffel-to-tailwind/reports/griffel-zero-plan.md §2.2):
+ * the filled<->regular bundled-icon swap only fires on the subtle/transparent appearances
+ * (hover/pressed) and its disabled swap-back on any appearance — none of the stories above
+ * combine those appearances with a bundled icon, so the swap had no pixel evidence. The
+ * shared steps (hover -> pressed) exercise each rule; the disabled stories pin the
+ * swap-BACK (glyph must stay regular under forced hover/pressed).
+ */
+export const SubtleWithIcon = () => (
+  <Button id={buttonId} appearance="subtle" icon={<CalendarMonth />}>
+    Hello, world
+  </Button>
+);
+
+SubtleWithIcon.storyName = 'Subtle with icon';
+
+export const TransparentWithIcon = () => (
+  <Button id={buttonId} appearance="transparent" icon={<CalendarMonth />}>
+    Hello, world
+  </Button>
+);
+
+TransparentWithIcon.storyName = 'Transparent with icon';
+
+export const SubtleDisabledWithIcon = () => (
+  <Button id={buttonId} appearance="subtle" disabled icon={<CalendarMonth />}>
+    Hello, world
+  </Button>
+);
+
+SubtleDisabledWithIcon.storyName = 'Subtle Disabled with icon';
+
+export const TransparentDisabledWithIcon = () => (
+  <Button id={buttonId} appearance="transparent" disabled icon={<CalendarMonth />}>
+    Hello, world
+  </Button>
+);
+
+TransparentDisabledWithIcon.storyName = 'Transparent Disabled with icon';
+
 export const CircularAndIconOnly = () => <Button id={buttonId} shape="circular" icon={<CalendarMonth />} />;
 
 CircularAndIconOnly.storyName = 'Circular and icon only';
