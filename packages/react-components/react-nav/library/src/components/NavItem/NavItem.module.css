@@ -30,9 +30,9 @@
  *   icon slot
  *   1  navItemClassNames.icon                    → REMOVED (D16.1/D16.5); there is no public
  *                                                  class handle on component internals
- *   2  useIconStyles.base                        → fui.components.l1 .icon (own box) +
- *                                                  UNLAYERED (the react-icons descendants)
- *   3  selected && useIconStyles.selected        → UNLAYERED .icon-selected
+ *   2  useIconStyles.base                        → fui.components.l1 .icon (own box +
+ *                                                  react-icons descendants, S-J/D27)
+ *   3  selected && useIconStyles.selected        → fui.components.l1 .icon-selected
  *   4  consumer className                        → unlayered (always wins)
  *
  * ── Why the shared slices are DUPLICATED here instead of living in one shared module ──
@@ -203,7 +203,8 @@
   /*
    * icon arg #2, the half that styles THIS package's own <span> — from the shared
    * useIconStyles.base. The grid trick stacks the filled and regular glyphs on top of each
-   * other; the two `.fui-Icon-*` descendant halves are UNLAYERED at the bottom of the file.
+   * other; the two `.fui-Icon-*` descendant halves sit in their own l1 blocks at the
+   * bottom of the file (S-J/D27).
    */
   .icon {
     @apply grid justify-center overflow-hidden min-h-vertical-xl min-w-horizontal-xl;
@@ -223,61 +224,63 @@
 }
 
 /*
- * ── The icon swap must be UNLAYERED (D2 amendment) ───────────────────────────────────
+ * ── The icon swap, at the module's own altitude (S-J retirement of D2 amendment 5) ────
  *
  * The rules below style ANOTHER package's elements: the two <svg>s that
- * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. react-icons is
- * deliberately NOT in the conversion scope (DECISIONS.md D11 keeps it on Griffel), and
- * Griffel injects its atomics UNLAYERED:
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. Under icons 2.x
+ * these blocks had to be UNLAYERED (Griffel injected the swap atomics unlayered, and an
+ * unlayered declaration beats every `@layer` before specificity is consulted — the old
+ * D2a5 rule). Icons 3.0 (headless) replaced the atomics with `[data-fui-icon-hidden]`
+ * (0-1-0) from a static stylesheet this repo imports at `@layer fui.components.l1`
+ * (DECISIONS.md D27), so the escape hatch is retired: the blocks live at the icon slot's
+ * own altitude, `fui.components.l1`.
  *
- *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
- *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
- *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
+ * Cascade note (S-J): the icons stylesheet is emitted AFTER component modules in document
+ * order, so at the shared l1 altitude these rules win on SPECIFICITY ONLY — 0-2-0 beats
+ * the hide's 0-1-0; an equal-specificity rule would LOSE the within-layer source-order
+ * tiebreak. Verified via CDP matched rules (.scratch/sj23-cdp-post.json).
  *
- * In the CSS cascade an UNLAYERED normal author declaration outranks EVERY `@layer` — that
- * comparison happens before specificity is consulted. A `@layer fui.components.l1` rule at
- * 0-2-0 therefore loses to `.fjseox` at 0-1-0 and the glyph never swaps on selection.
- * Griffel's own compiled output for these slices was unlayered at 0-2-0 and won on
- * specificity; reproducing that requires these rules to be unlayered too. Everything that
- * styles the icon slot's OWN box stays layered above.
- *
- * ORDER IS LOAD-BEARING. Every selector here flattens to 0-2-0, so file position is the
- * only tiebreak — the blocks are laid out in the icon slot's mergeClasses ARGUMENT order
- * (base #2 first, selected #3 last), exactly as they would be inside a layer. In Griffel
- * `useIconStyles.selected` overwrote base's `display` atomic (`D0sxk3`) for the filled
- * glyph; here the later block does.
+ * ORDER IS STILL LOAD-BEARING. Every selector here flattens to 0-2-0, so within-layer
+ * file position is the only tiebreak — the blocks stay in the icon slot's mergeClasses
+ * ARGUMENT order (base #2 first, selected #3 last), exactly as in the unlayered form. In
+ * Griffel `useIconStyles.selected` overwrote base's `display` atomic (`D0sxk3`) for the
+ * filled glyph; here the later block does.
  *
  * `useIconStyles.selected` deliberately leaves the REGULAR glyph at `display: inline` and
  * fades it out through `nav-item-icon-regular-exit` + `animation-fill-mode: both`.
  */
-.icon {
-  & :global(.fui-Icon-filled) {
-    grid-area: overlay-area;
-    color: transparent;
-    display: none;
-  }
+@layer fui.components.l1 {
+  .icon {
+    & :global(.fui-Icon-filled) {
+      grid-area: overlay-area;
+      color: transparent;
+      display: none;
+    }
 
-  & :global(.fui-Icon-regular) {
-    grid-area: overlay-area;
-    display: inline;
+    & :global(.fui-Icon-regular) {
+      grid-area: overlay-area;
+      display: inline;
+    }
   }
 }
 
-/* icon arg #3 — from the shared useIconStyles.selected */
-.icon-selected {
-  & :global(.fui-Icon-filled) {
-    display: inline;
+@layer fui.components.l1 {
+  /* icon arg #3 — from the shared useIconStyles.selected */
+  .icon-selected {
+    & :global(.fui-Icon-filled) {
+      display: inline;
 
-    animation-name: nav-item-icon-filled-enter;
-    animation-duration: var(--durationFaster);
-    animation-fill-mode: both;
-    animation-timing-function: var(--curveLinear);
-  }
+      animation-name: nav-item-icon-filled-enter;
+      animation-duration: var(--durationFaster);
+      animation-fill-mode: both;
+      animation-timing-function: var(--curveLinear);
+    }
 
-  & :global(.fui-Icon-regular) {
-    animation-name: nav-item-icon-regular-exit;
-    animation-duration: var(--durationFaster);
-    animation-fill-mode: both;
-    animation-timing-function: var(--curveLinear);
+    & :global(.fui-Icon-regular) {
+      animation-name: nav-item-icon-regular-exit;
+      animation-duration: var(--durationFaster);
+      animation-fill-mode: both;
+      animation-timing-function: var(--curveLinear);
+    }
   }
 }

@@ -37,9 +37,9 @@
  *
  *   icon slot
  *   1  navCategoryItemClassNames.icon                 → REMOVED (D16.1/D16.5)
- *   2  useIconStyles.base                             → fui.components.l1 .icon (own box) +
- *                                                       UNLAYERED (react-icons descendants)
- *   3  selected && useIconStyles.selected             → UNLAYERED .icon-selected
+ *   2  useIconStyles.base                             → fui.components.l1 .icon (own box +
+ *                                                       react-icons descendants, S-J/D27)
+ *   3  selected && useIconStyles.selected             → fui.components.l1 .icon-selected
  *   4  consumer className                             → unlayered (always wins)
  *
  * `useExpandIconStyles.selected` (typographyStyles.body1Strong) exists in the Griffel source
@@ -215,47 +215,52 @@
 }
 
 /*
- * ── The icon swap must be UNLAYERED (D2 amendment) ───────────────────────────────────
+ * ── The icon swap, at the module's own altitude (S-J retirement of D2 amendment 5) ────
  *
- * These rules style `@fluentui/react-icons`' two `bundleIcon()` <svg>s. react-icons stays on
- * Griffel (D11) and Griffel injects UNLAYERED atomics
- * (`.fjseox{display:none}` / `.f1w7gpdv{display:inline}`); an unlayered normal author
- * declaration outranks EVERY `@layer` before specificity is even consulted, so a layered
- * 0-2-0 rule here would lose to `.fjseox`'s 0-1-0 and the glyph would never swap.
- * See NavItem.module.css's copy of this note for the full DOM evidence.
+ * These rules style `@fluentui/react-icons`' two `bundleIcon()` <svg>s. Icons 3.0
+ * (headless) styles them via `[data-fui-icon-hidden]` (0-1-0) from a stylesheet this repo
+ * imports at `@layer fui.components.l1` (DECISIONS.md D27), so the D2a5 unlayered escape
+ * hatch is retired and the blocks live at the icon slot's own altitude, l1. The icons
+ * sheet is emitted AFTER component modules at that altitude, so these rules win on
+ * SPECIFICITY ONLY (0-2-0 over 0-1-0) — see NavItem.module.css's copy of this note and
+ * the CDP evidence pointer.
  *
- * ORDER IS LOAD-BEARING: every selector flattens to 0-2-0, so file position is the only
- * tiebreak — blocks are in the icon slot's mergeClasses ARGUMENT order (base #2, then
- * selected #3).
+ * ORDER IS STILL LOAD-BEARING: every selector flattens to 0-2-0, so within-layer file
+ * position is the only tiebreak — blocks stay in the icon slot's mergeClasses ARGUMENT
+ * order (base #2, then selected #3).
  */
-.icon {
-  & :global(.fui-Icon-filled) {
-    grid-area: overlay-area;
-    color: transparent;
-    display: none;
-  }
+@layer fui.components.l1 {
+  .icon {
+    & :global(.fui-Icon-filled) {
+      grid-area: overlay-area;
+      color: transparent;
+      display: none;
+    }
 
-  & :global(.fui-Icon-regular) {
-    grid-area: overlay-area;
-    display: inline;
+    & :global(.fui-Icon-regular) {
+      grid-area: overlay-area;
+      display: inline;
+    }
   }
 }
 
-/* icon arg #3 — from the shared useIconStyles.selected */
-.icon-selected {
-  & :global(.fui-Icon-filled) {
-    display: inline;
+@layer fui.components.l1 {
+  /* icon arg #3 — from the shared useIconStyles.selected */
+  .icon-selected {
+    & :global(.fui-Icon-filled) {
+      display: inline;
 
-    animation-name: nav-category-item-icon-filled-enter;
-    animation-duration: var(--durationFaster);
-    animation-fill-mode: both;
-    animation-timing-function: var(--curveLinear);
-  }
+      animation-name: nav-category-item-icon-filled-enter;
+      animation-duration: var(--durationFaster);
+      animation-fill-mode: both;
+      animation-timing-function: var(--curveLinear);
+    }
 
-  & :global(.fui-Icon-regular) {
-    animation-name: nav-category-item-icon-regular-exit;
-    animation-duration: var(--durationFaster);
-    animation-fill-mode: both;
-    animation-timing-function: var(--curveLinear);
+    & :global(.fui-Icon-regular) {
+      animation-name: nav-category-item-icon-regular-exit;
+      animation-duration: var(--durationFaster);
+      animation-fill-mode: both;
+      animation-timing-function: var(--curveLinear);
+    }
   }
 }

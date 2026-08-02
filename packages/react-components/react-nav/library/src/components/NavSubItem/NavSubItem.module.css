@@ -52,8 +52,8 @@
  * shared `indicatorOffset` plus this component's 36px sub-level indent). Written after #6
  * for the same reason.
  *
- * NavSubItem declares NO icon slot, so this module has no `.fui-Icon-*` rules and needs no
- * unlayered block.
+ * NavSubItem declares NO icon slot, so this module has no `.fui-Icon-*` rules (the swap
+ * blocks in NavItem/NavCategoryItem/AppItem/AppItemStatic sit at l1 per S-J/D27).
  *
  * The shared slices (args #2, #3, #6, #7) are DUPLICATED into this module rather than
  * shared — see NavItem.module.css's header for the full rationale plus the spacing, RTL and

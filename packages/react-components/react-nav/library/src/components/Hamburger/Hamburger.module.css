@@ -39,8 +39,8 @@
  * l2 reproduces that winner from inside the layer system. Note that l2 also outranks
  * Button's DISABLED background rules, which is the pre-existing behaviour, not a change.
  *
- * Button's own unlayered `.fui-Icon-*` swap blocks are untouched: nothing here styles the
- * icon, so there is no unlayered block in this module.
+ * Button's own `.fui-Icon-*` swap blocks (at l1 since the S-J/D27 retirement) are
+ * untouched: nothing here styles the icon.
  *
  * ── Shorthands (CONVERSION_GUIDE §2) ─────────────────────────────────────────────────
  * `border: 'none'` compiled to the `border:none` SHORTHAND. `border-*-style: none` is the
