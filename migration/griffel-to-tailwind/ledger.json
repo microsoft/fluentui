@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-08-01",
-  "phase": "4-report",
+  "phase": "griffel-zero-closed",
   "completionStamp": {
     "date": "2026-07-30",
     "commit": "27411c780ad2d5683f3e07d39eda21101db4b4e1",
@@ -724,5 +724,33 @@
       "docs": "this commit"
     },
     "report": "reports/sj-batch1.md"
+  },
+  "sjBatches23": {
+    "date": "2026-08-01",
+    "scope": "S-J batches 2+3 (closing): the remaining 42 unlayered :global(.fui-Icon-*) selector lines across 10 modules retired into module layers — nav family 12 -> l1 (NavItem 4, NavCategoryItem 4, AppItem 2, AppItemStatic 2); MenuItem 6 -> l1 (incl. the fui.base-slice hover half, elevated because base loses to the icons sheet l1 hide on layer order); MenuGridRow 2 -> l1 (same elevation); InfoButton 6 -> l1; Tab 6 -> l1; InteractionTagPrimary 6 -> l1; BreadcrumbButton 4 -> l2 (ToggleButton/MenuButton precedent — swap-back must beat react-button l1 subtle swap; 0-3-0 marker compound kept). TeachingPopoverTitle comment-only. Repo now has 58 layered / 0 unlayered fui-Icon selector lines.",
+    "stateMatrix": "21 new story exports (11 base + variants) / 51 shots; NEW baseline sets react-nav (5) + react-menu-grid (8, VR app gains react-menu-grid-preview dep); gaps filled in menu/tabs/tags/infolabel/breadcrumb; baselines from pre-change bundle, existing shots re-verified clean first (0 failed/0 missing, extras = new shots only)",
+    "gates": {
+      "vr": "511/511 pairs across 8 sets at --maxDiffPixels 0 (menu 70, react-menu 70, react-tabs 123, react-tags 197, react-infolabel 12, react-breadcrumb 26, react-nav 5, react-menu-grid 8); fresh --skip-nx-cache both legs, staleness guard active",
+      "cdp": "22 state cases pre=post on computed display of both svgs (.scratch/sj23-cdp-pre.json / -post.json); one color-alpha delta adjudicated as keyframe sampling progress, not cascade; matched-rules winners show specificity-only wins at l1 and layer-order win at l2 for breadcrumb",
+      "bundle": ".scratch/sj23-bundle-check.mjs — 15 probes all enclosed in expected layers; icons hide after component modules in doc order; MenuItem r<d<h emission order intact",
+      "lint": "9 touched projects green"
+    },
+    "commits": ["c467f6d6b0", "b4f99d306e", "aba145371a", "a09c73a4cd"],
+    "report": "reports/sj-batches-2-3.md"
+  },
+  "serializerRetirement": {
+    "date": "2026-08-01",
+    "scope": "@griffel/jest-serializer retired: removed from 71 non-deprecated jest.config.js files (two-element arrays keep the css-modules serializer; single-element arrays drop the property, preset css-modules serializer applies — none of those 11 packages have snapshot files), from the migrate-converged-pkg generator (packagesThatTriggerAddingSnapshots machinery deleted, regression test asserts absence), and from root devDependencies. KEPT in the 3 deprecated/ packages, which now declare it as their own devDependency (still resolves; they emit Griffel atomics from their own makeStyles). Comment prose de-Griffel-literaled for grep hygiene.",
+    "probe": "react-charts full suite without the serializer: exactly 1 snapshot churned (the C7 GaugeChart sentinel that proved it load-bearing under icons 2.x); diff is 5 lines, pure serializer-representation + icons-3.0 churn (class fui-Icon + data-fui-icon now visible; path-d z-trim). react-search SearchBox snapshot same anatomy (SearchRegular redraw already adjudicated in icons-integration-1), regenerated with normalized-diff proof.",
+    "gates": {
+      "jest": "react-charts 912 passed/86 skipped, 321/321 snapshots; react-button+react-menu+react-avatar+react-search+react-toolbar green (nx run-many, --skip-nx-cache)",
+      "workspacePlugin": "generator suites green except pre-existing Windows path-separator failure in babelrc test (fails identically with changes stashed)"
+    },
+    "commits": ["5cc993350a", "98a7a77d81"]
+  },
+  "campaignClosure": {
+    "date": "2026-08-01",
+    "scope": "Griffel-zero campaign closed. 58 layered / 0 unlayered fui-Icon selector lines; import grep survivors = D11 carve-out only (3 MakeStyles/CustomStyleHooks VR stories + 2 ShadowDOM + rule/executor fixtures); manifests clean except vr-tests @griffel/react (D11) + 3 root dev tools; jest-serializer resolves only via deprecated/. LOCAL-ONLY revert-before-PR: 90d1096404 + b0248a57f1 (revert tarball first, then portal, then yarn install — only after icons 3.0 publishes). Icons upstream merge is a dependency of the UI merge.",
+    "report": "reports/GRIFFEL_ZERO_CLOSURE.md"
   }
 }
