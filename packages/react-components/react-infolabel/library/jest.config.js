@@ -36,11 +36,11 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (Phase 2, batch 2).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9).
    *
    * Like react-badge and react-button — and unlike react-divider — this package KEEPS
-   * `@griffel/jest-serializer`, now for ONE reason: InfoButton renders
+   * Griffel's jest serializer, now for ONE reason: InfoButton renders
    * `@fluentui/react-icons` glyphs, an external Griffel consumer explicitly out of scope
    * (DECISIONS.md D11). Without it those atomic + sequence-hash classes land in every
    * snapshot. The second reason is gone — the `info` slot's Griffel `makeStyles` was
@@ -50,5 +50,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

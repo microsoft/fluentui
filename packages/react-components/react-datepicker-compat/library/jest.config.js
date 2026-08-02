@@ -36,12 +36,12 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration.
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9). The mapper is already
    * in the preset and merges; a project-level `snapshotSerializers` array REPLACES the
    * preset's, which is why this file has to list the serializer itself.
    *
-   * `@griffel/jest-serializer` STAYS: no react-datepicker-compat source imports Griffel any
+   * Griffel's jest serializer STAYED until the S-J closing batch (icons 3.0 emits no Griffel classes): no react-datepicker-compat source imports Griffel any
    * more, but DatePicker renders a `@fluentui/react-icons` glyph (`CalendarMonthRegular`)
    * and mounts a `<Calendar>` from the still-Griffel `@fluentui/react-calendar-compat`.
    * Without it, both would spray atomic + sequence-hash classes into every snapshot.
@@ -49,5 +49,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

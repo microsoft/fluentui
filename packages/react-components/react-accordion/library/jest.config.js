@@ -36,11 +36,11 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (Phase 2, BATCH-3).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. A project-level
+   * as Griffel's jest serializer did for Griffel atomics. A project-level
    * `snapshotSerializers` REPLACES the preset's array, so both have to be listed here
    * even though `jest.preset.js` already declares the CSS-modules one (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: AccordionHeader renders
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): AccordionHeader renders
    * `@fluentui/react-icons`' <ChevronRightRegular />, which still authors its styles with
    * Griffel (D11 keeps react-icons on Griffel) and emits atomics into the same `class=`
    * attribute.
@@ -48,5 +48,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

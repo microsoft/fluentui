@@ -36,9 +36,9 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics (DECISIONS.md D9).
+   * as Griffel's jest serializer did for Griffel atomics (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is KEPT alongside it for ONE remaining reason: Avatar's
+   * Griffel's jest serializer is KEPT alongside it for ONE remaining reason: Avatar's
    * default icon and AvatarGroupPopover's `MoreHorizontalRegular` indicator are
    * `@fluentui/react-icons` glyphs, and that package is an external Griffel consumer
    * explicitly out of scope for this migration (D11), so its atomics still reach these
@@ -49,5 +49,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

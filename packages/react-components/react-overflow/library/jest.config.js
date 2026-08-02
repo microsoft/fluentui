@@ -39,10 +39,10 @@ module.exports = {
    * array — so a package that declares its own has to list `cssModules.snapshotSerializer`
    * itself or every generated class name leaks into its snapshots (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` stays alongside it even though react-overflow now imports no
+   * Griffel's jest serializer stays alongside it even though react-overflow now imports no
    * `@griffel/*` module of its own: `Overflow` clones whatever child a test renders, so a
    * suite that wraps a still-Griffel component emits atomics into the same `class=`
    * attribute this package writes to.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

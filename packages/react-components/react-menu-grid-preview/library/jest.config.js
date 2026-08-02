@@ -41,10 +41,10 @@ module.exports = {
    * has to be listed here explicitly or the generated `fuicm-…` names leak into snapshots
    * (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: MenuGrid rows host
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): MenuGrid rows host
    * `@fluentui/react-icons` glyphs (the package's own stories use `bundleIcon()`-shaped
    * icons), and that package stays on Griffel permanently (D11), emitting atomics into the
    * same `class=` attribute.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

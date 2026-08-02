@@ -39,11 +39,11 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (Phase 2, specials batch S3).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated `fuicm-*` names from snapshots,
-   * exactly as `@griffel/jest-serializer` does for Griffel atomics. Both are declared here
+   * exactly as Griffel's jest serializer did for Griffel atomics. Both are declared here
    * rather than inherited because a project-level `snapshotSerializers` REPLACES the
    * preset's array (documented in jest.preset.js).
    *
-   * `@griffel/jest-serializer` STAYS. Nothing in this package's `library/src` imports
+   * Griffel's jest serializer STAYED until the S-J closing batch (icons 3.0 emits no Griffel classes). Nothing in this package's `library/src` imports
    * Griffel any more, but the components it renders do: `AttachmentAction` renders a v9
    * `<Button>`, and `@fluentui/react-icons` glyphs inside it carry Griffel atomics
    * (DECISIONS.md D11 keeps react-icons on Griffel). The `*.mixins.ts` files also return
@@ -52,5 +52,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

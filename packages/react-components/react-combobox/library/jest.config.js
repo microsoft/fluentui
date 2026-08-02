@@ -36,11 +36,11 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9).
    *
    * Like react-badge, react-button and react-select, this package keeps
-   * `@griffel/jest-serializer` as well: no react-combobox source imports Griffel any more,
+   * Griffel's jest serializer as well: no react-combobox source imports Griffel any more,
    * but the default icon slots render `@fluentui/react-icons`' `ChevronDownRegular` /
    * `DismissRegular` / `CheckmarkFilled`, and that package is an external Griffel consumer
    * explicitly out of scope for this migration (DECISIONS.md D11). Without it the glyph
@@ -49,5 +49,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

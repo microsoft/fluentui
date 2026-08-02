@@ -41,7 +41,7 @@ module.exports = {
    * packages; `moduleNameMapper` merges, so the duplicate is a no-op.
    *
    * Like react-persona and unlike react-divider, this package keeps
-   * `@griffel/jest-serializer` as well: no react-field source imports Griffel any more,
+   * Griffel's jest serializer as well: no react-field source imports Griffel any more,
    * but Field renders `@fluentui/react-icons` glyphs inside its validationMessageIcon
    * slot, and that package is an external Griffel consumer explicitly out of scope for
    * this migration (DECISIONS.md D11). Without it the icon `<svg>` renders its atomic +
@@ -50,5 +50,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

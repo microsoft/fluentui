@@ -68,15 +68,13 @@ module.exports = {
    * converted to CSS Modules — without the serializer its generated `fuicm-*` class would
    * churn every snapshot on every style edit (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` STAYS although no file under this package imports
-   * `@griffel/react` any more (C6 closed the last one, ChartAnnotationLayer): these suites
-   * still mount `@fluentui/react-icons` glyphs transitively (e.g. GaugeChart's re-render
-   * snapshot contains an icon `<svg>` carrying Griffel atomics — `f1w7gpdv` et al. from
-   * `bundleIcon.styles.js`), and react-icons remains on Griffel PERMANENTLY (DECISIONS.md
-   * D11). Removal was probed during the C7 plumbing and produced a real snapshot delta
-   * (reports/charts-c6-c7.md), so this line is load-bearing, not vestigial.
+   * Griffel's jest serializer was RETIRED in the S-J closing batch: it survived C7's
+   * probe only because these suites mounted `@fluentui/react-icons` 2.x glyphs whose
+   * `bundleIcon.styles.js` emitted Griffel atomics (`f1w7gpdv` et al.) into snapshots.
+   * Icons 3.0 (headless, D18c/D27) emits no Griffel classes — re-probed in this batch:
+   * the C7 sentinel (GaugeChart re-render snapshot) passes without the serializer.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
   moduleNameMapper: Object.fromEntries(
     d3Libs.map(libraryName => [`^${libraryName}$`, createD3LibMappingToCommonJs(libraryName)]),
   ),

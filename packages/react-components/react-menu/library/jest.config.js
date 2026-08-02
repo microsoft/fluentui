@@ -41,10 +41,10 @@ module.exports = {
    * has to be listed here explicitly or the generated `fuicm-…` names leak into snapshots
    * (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: every menu item renders
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): every menu item renders
    * `@fluentui/react-icons` glyphs (`bundleIcon()`'s chevron, MenuItemSwitch's
    * `<CircleFilled />`), which stays on Griffel permanently (D11) and emits atomics into the
    * same `class=` attribute. `Menu.cy.tsx` also still uses `makeStyles` directly.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

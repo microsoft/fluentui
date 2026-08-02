@@ -36,15 +36,15 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (Phase 1 pilot #2).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9).
    *
-   * Unlike react-divider, this package keeps `@griffel/jest-serializer` as well: only
+   * Unlike react-divider, this package kept Griffel's jest serializer as well (retired in the S-J closing batch): only
    * Button is converted — ToggleButton/CompoundButton/MenuButton/SplitButton still author
    * their styles with Griffel and render atomics into the same `class=` attribute.
    */
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

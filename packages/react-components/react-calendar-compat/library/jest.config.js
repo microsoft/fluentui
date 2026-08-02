@@ -40,7 +40,7 @@ module.exports = {
    * `cssModules.snapshotSerializer` itself or its snapshots would print the generated
    * module class names (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: the suites render
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): the suites render
    * `@fluentui/react-motion-components-preview` presence components, and unconverted
    * packages elsewhere in the tree still emit Griffel atomics into the same `class=`
    * attribute.
@@ -48,5 +48,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

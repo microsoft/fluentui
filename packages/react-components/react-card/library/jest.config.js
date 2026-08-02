@@ -36,16 +36,16 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (Phase 2, BATCH-3).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. The mapper also lives in the
+   * as Griffel's jest serializer did for Griffel atomics. The mapper also lives in the
    * repo-wide `jest.preset.js`, but a project-level `snapshotSerializers` REPLACES the
    * preset's array — so this file has to list the serializer itself (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: `isConformant` renders these
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): `isConformant` renders these
    * components inside providers and sibling packages that still author with Griffel and
    * emit atomics into the same `class=` attribute.
    */
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

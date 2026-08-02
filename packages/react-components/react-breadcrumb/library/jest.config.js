@@ -41,9 +41,9 @@ module.exports = {
    * its own, so it has to list `cssModules.snapshotSerializer` itself; without it the proxy's
    * generated `fuicm-*` names leak into every committed snapshot (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: BreadcrumbDivider renders
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): BreadcrumbDivider renders
    * `@fluentui/react-icons` glyphs and BreadcrumbButton composes with unconverted packages,
    * both of which still emit Griffel atomics into the same `class=` attribute.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };
