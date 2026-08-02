@@ -11,6 +11,11 @@ export type TooltipSlots = {
    * The text or JSX content of the tooltip.
    */
   content: NonNullable<Slot<'div'>>;
+
+  /**
+   * Secondary content rendered opposite the primary content (e.g. shortcut text).
+   */
+  secondaryContent?: Slot<'span'>;
 };
 
 /**
@@ -151,6 +156,16 @@ export type TooltipState = ComponentState<TooltipSlots> &
      * CSS class for the arrow element
      */
     arrowClassName?: string;
+
+    /**
+     * CSS class for the content layout when secondary content is present.
+     */
+    contentLayoutClassName?: string;
+
+    /**
+     * CSS class for the primary content when secondary content is present.
+     */
+    primaryContentClassName?: string;
   };
 
 export type TooltipBaseState = Omit<TooltipState, 'appearance'>;

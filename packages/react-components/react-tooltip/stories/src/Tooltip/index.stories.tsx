@@ -5,6 +5,7 @@ import { Tooltip } from '@fluentui/react-components';
 import descriptionMd from './TooltipDescription.md';
 import accessibilityMd from './TooltipAccessibility.md';
 export { Default } from './TooltipDefault.stories';
+export { SecondaryContent } from './TooltipSecondaryContent.stories';
 export { RelationshipLabel } from './TooltipRelationshipLabel.stories';
 export { RelationshipDescription } from './TooltipRelationshipDescription.stories';
 export { Inverted } from './TooltipInverted.stories';

@@ -50,6 +50,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> & TriggerProps<TooltipTr
 // @public
 export type TooltipSlots = {
     content: NonNullable<Slot<'div'>>;
+    secondaryContent?: Slot<'span'>;
 };
 
 // @public
@@ -59,6 +60,8 @@ export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mo
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;
+    contentLayoutClassName?: string;
+    primaryContentClassName?: string;
 };
 
 // @public

@@ -48,6 +48,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   const {
     children,
     content,
+    secondaryContent,
     withArrow = false,
     positioning = 'above',
     onVisibleChange,
@@ -70,12 +71,16 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     // Slots
     components: {
       content: 'div',
+      secondaryContent: 'span',
     },
     content: slot.always(content, {
       defaultProps: {
         role: 'tooltip',
       },
       elementType: 'div',
+    }),
+    secondaryContent: slot.optional(secondaryContent, {
+      elementType: 'span',
     }),
   };
 

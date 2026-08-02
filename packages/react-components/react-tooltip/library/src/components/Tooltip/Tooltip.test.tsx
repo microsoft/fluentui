@@ -44,6 +44,13 @@ describe('Tooltip', () => {
       'consistent-callback-args': {
         legacyCallbacks: ['onVisibleChange'],
       },
+      'has-static-classnames': [
+        {
+          props: {
+            secondaryContent: 'Test secondary content',
+          },
+        },
+      ],
     },
   });
 
@@ -86,6 +93,38 @@ describe('Tooltip', () => {
     const target = result.getByRole('button');
     expect(tooltip.id).toBe('the-tooltip-id');
     expect(target.getAttribute('aria-labelledby')).toBe('the-tooltip-id');
+  });
+
+  it('renders secondary content without including it in the accessible label', () => {
+    const result = render(
+      <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label" visible>
+        <button aria-keyshortcuts="Control+B" />
+      </Tooltip>,
+    );
+
+    const tooltip = getByRoleTooltip(result);
+    const target = result.getByRole('button');
+    const secondaryContent = tooltip.querySelector('.fui-Tooltip__secondaryContent');
+
+    expect(tooltip.textContent).toBe('BoldCtrl+B');
+    expect(target.getAttribute('aria-label')).toBe('Bold');
+    expect(target.getAttribute('aria-keyshortcuts')).toBe('Control+B');
+    expect(secondaryContent?.hasAttribute('aria-hidden')).toBe(false);
+  });
+
+  it('renders secondary content without hiding it from assistive technologies', () => {
+    const result = render(
+      <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="description">
+        <button aria-keyshortcuts="Control+B" />
+      </Tooltip>,
+    );
+
+    const tooltip = getByRoleTooltip(result);
+    const target = result.getByRole('button');
+    const secondaryContent = tooltip.querySelector('.fui-Tooltip__secondaryContent');
+
+    expect(target.getAttribute('aria-describedby')).toBe(tooltip.id);
+    expect(secondaryContent?.hasAttribute('aria-hidden')).toBe(false);
   });
 
   it('renders a description tooltip content always', () => {

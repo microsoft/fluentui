@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add secondary content to Tooltip",
   "packageName": "@fluentui/react-tooltip",
   "email": "petrduda@microsoft.com",
