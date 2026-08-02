@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-07-31",
+  "updated": "2026-08-01",
   "phase": "4-report",
   "completionStamp": {
     "date": "2026-07-30",
@@ -681,5 +681,48 @@
       "emittedCss": "dist/styles.css + VR bundle both carry @layer fui.components.l1 icon rules"
     },
     "report": "reports/icons-integration-1.md"
+  },
+  "sjBatch1": {
+    "date": "2026-08-01",
+    "scope": "S-J batch 1/3 (button family): the 16 D2a5 unlayered :global(.fui-Icon-*) selector lines retired into their modules' own layers — Button.module.css 12 lines -> fui.components.l1; ToggleButton.module.css 2 lines -> fui.components.l2; MenuButton.module.css 2 lines -> fui.components.l2. Selectors unchanged (icons 3.0 keeps fui-Icon-filled/regular statics); only layer placement moved. All D2a5 'must be UNLAYERED' comments replaced with D27/S-J references.",
+    "cascadeEvidence": {
+      "emittedOrder": "icons styles.css rules ([data-fui-icon-hidden] 0-1-0, :where([data-fui-icon]) 0-0-0) emitted at fui.components.l1 AFTER the Button module in document order (main.*.iframe.bundle.js offsets 560077 vs 377884) — equal-specificity component rules would lose the within-l1 source-order tiebreak; the retirement is safe because every swap selector is 0-2-0 and wins on specificity. ToggleButton/MenuButton swaps at l2 beat l1 on layer order.",
+      "cdp": "CSS.getMatchedStylesForNode + computed display on both svgs across 15 state cases (subtle/transparent x rest/hover/pressed, disabled swap-backs, expanded, checked, checked+disabled): identical pre-change vs post-change (.scratch/sj1-cdp-pre.json / -post.json)."
+    },
+    "stateMatrix": {
+      "newStories": [
+        "Button/Subtle with icon",
+        "Button/Transparent with icon",
+        "Button/Subtle Disabled with icon",
+        "Button/Transparent Disabled with icon",
+        "MenuButton/With icon expanded",
+        "ToggleButton/Checked with icon",
+        "ToggleButton/Checked Disabled with icon"
+      ],
+      "note": "no pre-existing button-family story combined a bundled icon with the states the swap fires on; 21 new shots, baselines captured from the PRE-change bundle (capture.mjs baseline-mode semantics) and merged into baseline/button (129->141) and baseline/button-family (342->351) with manifest provenance."
+    },
+    "gates": {
+      "vr": {
+        "button": {
+          "pairs": 141,
+          "failed": 0
+        },
+        "buttonFamily": {
+          "pairs": 351,
+          "failed": 0
+        },
+        "tolerance": 0,
+        "freshBuilds": true,
+        "cacheReplayLines": 0
+      },
+      "lint": "react-button + vr-tests-react-components green",
+      "jest": "skipped — package change is CSS-only; TSX touched only in VR stories app (no jest target)"
+    },
+    "commits": {
+      "stories": "fff0a4c298",
+      "layerMoves": "7fb3a06dec",
+      "docs": "this commit"
+    },
+    "report": "reports/sj-batch1.md"
   }
 }
