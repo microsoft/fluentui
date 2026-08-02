@@ -36,12 +36,12 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration.
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9). The mapper is already
    * in the preset and merges; a project-level `snapshotSerializers` array REPLACES the
    * preset's, which is why this file has to list the serializer itself.
    *
-   * Like react-badge and react-button, this package keeps `@griffel/jest-serializer` as
+   * Like react-badge and react-button, this package kept Griffel's jest serializer (retired in the S-J closing batch) as
    * well: no react-search source imports Griffel any more, but SearchBox renders
    * `@fluentui/react-icons` glyphs (SearchRegular / DismissRegular), and that package is an
    * external Griffel consumer explicitly out of scope for this migration (DECISIONS.md
@@ -51,5 +51,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

@@ -36,12 +36,12 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (Phase 2, BATCH-3).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9) — the mapper already has,
    * but a project-level `snapshotSerializers` REPLACES the preset's array, so it is listed
    * here.
    *
-   * `@griffel/jest-serializer` is kept alongside it (the react-field precedent): both
+   * Griffel's jest serializer was kept alongside it (the react-field precedent; retired in the S-J closing batch): both
    * SpinButton buttons render `@fluentui/react-icons` chevrons, and that package is an
    * external Griffel consumer explicitly out of scope for this migration (DECISIONS.md
    * D11). Without it the icon `<svg>` renders its atomic + sequence-hash classes into
@@ -50,5 +50,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

@@ -36,10 +36,10 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` stays alongside it. No react-tag-picker source imports Griffel
+   * Griffel's jest serializer stays alongside it. No react-tag-picker source imports Griffel
    * any more, but this package renders `@fluentui/react-icons`' `ChevronDownRegular` as the
    * default `expandIcon`, and that package is an external Griffel consumer explicitly out of
    * scope for this migration (DECISIONS.md D11). Without it the glyph `<svg>` renders its
@@ -49,5 +49,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

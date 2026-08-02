@@ -39,10 +39,10 @@ module.exports = {
    * array — so a package that declares its own has to list `cssModules.snapshotSerializer`
    * itself or every generated class name leaks into its snapshots (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` stays alongside it, and not only for this package's own
+   * Griffel's jest serializer stays alongside it, and not only for this package's own
    * remaining Griffel: ToolbarToggleButton / ToolbarRadioButton keep `makeStyles` (see
    * their styles hooks) AND every Toolbar suite renders @fluentui/react-button's
    * still-Griffel ToggleButton, which emits atomics into the same `class=` attribute.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

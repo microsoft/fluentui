@@ -40,11 +40,11 @@ module.exports = {
    * `snapshotSerializers` REPLACES the preset's array — so `cssModules.snapshotSerializer`
    * has to be listed here explicitly or the generated `fuicm-…` names leak into snapshots.
    *
-   * `@griffel/jest-serializer` is kept alongside it: react-tree renders
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): react-tree renders
    * `@fluentui/react-checkbox` / `@fluentui/react-radio` (the `selector` slot),
    * `@fluentui/react-avatar` (TreeItemPersonaLayout's `media`) and
    * `@fluentui/react-button` (the actions surface), several of which still author their
    * styles with Griffel and emit atomics into the same `class=` attribute.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

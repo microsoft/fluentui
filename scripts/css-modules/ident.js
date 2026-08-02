@@ -27,7 +27,7 @@
  * ALL LOWERCASE, `-` separated, nothing else. Rationale, point by point:
  *
  *  - `fuicm-` prefix — a HARD CONTRACT. scripts/jest/src/css-modules/serializer.js strips
- *    every `fuicm-…` token from snapshots the way `@griffel/jest-serializer` strips atomics
+ *    every `fuicm-…` token from snapshots the way Griffel's jest serializer stripped atomics
  *    (DECISIONS.md D9). Changing the prefix silently reintroduces generated class names into
  *    every committed snapshot.
  *  - No `-module__` infix and no `--` separator. The previous shape

@@ -448,27 +448,13 @@ describe('migrate-converged-pkg generator', () => {
           },
           coverageDirectory: './coverage',
           setupFilesAfterEnv: ['./config/tests.js'],
-          snapshotSerializers: ['@griffel/jest-serializer'],
         };
         "
       `);
     });
 
-    it(`should add 'snapshotSerializers' to jest.config.js only when needed`, async () => {
+    it(`should not add 'snapshotSerializers' to jest.config.js (Griffel serializer retired, S-J closing batch)`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      function removePkgDependenciesThatTriggerSnapshotSerializersAddition() {
-        const packagesThatTriggerAddingSnapshots = ['@griffel/react'];
-
-        updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
-          packagesThatTriggerAddingSnapshots.forEach(pkgName => {
-            delete (json.dependencies ?? {})[pkgName];
-          });
-
-          return json;
-        });
-      }
-
-      removePkgDependenciesThatTriggerSnapshotSerializersAddition();
 
       await generator(tree, options);
 

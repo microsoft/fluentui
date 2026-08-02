@@ -40,7 +40,7 @@ module.exports = {
    * itself or `SafeZoneArea`'s snapshots would print the generated module class names
    * (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` was dropped in S-G: `createArrowStyles` / `createSlideStyles`
+   * Griffel's jest serializer was dropped in S-G: `createArrowStyles` / `createSlideStyles`
    * no longer reference `@griffel/react` even for types (their signatures use the local
    * `PositioningStyleObject`), and no test in this package renders Griffel-styled hosts.
    */

@@ -147,7 +147,7 @@ describe('split-library-in-two generator', () => {
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['./config/tests.js'],
-        snapshotSerializers: ['@griffel/jest-serializer'],
+        snapshotSerializers: ['jest-serializer-html'],
       };
       "
     `);
@@ -402,7 +402,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['./config/tests.js'],
-        snapshotSerializers: ['@griffel/jest-serializer'],
+        snapshotSerializers: ['jest-serializer-html'],
       };
       `,
     babelConfig: {

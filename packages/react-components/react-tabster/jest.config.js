@@ -30,7 +30,7 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  // Griffel → Tailwind + CSS Modules migration (S-G): `@griffel/jest-serializer` dropped —
+  // Griffel → Tailwind + CSS Modules migration (S-G): Griffel's jest serializer dropped —
   // the Griffel focus-ring factories were deleted and this package has no Griffel left
   // (and no snapshot tests that relied on the serializer).
 };

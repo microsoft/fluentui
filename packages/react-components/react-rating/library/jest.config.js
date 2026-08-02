@@ -39,9 +39,9 @@ module.exports = {
    * it, so a converted package that declares its own has to list
    * `cssModules.snapshotSerializer` itself (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: RatingItem renders the caller's
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): RatingItem renders the caller's
    * `iconFilled` / `iconOutline` elements, which are `@fluentui/react-icons` <svg>s and
    * still emit Griffel atomics into the same `class=` attribute.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

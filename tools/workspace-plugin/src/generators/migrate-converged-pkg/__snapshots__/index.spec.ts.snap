@@ -6,7 +6,7 @@ const path = require('path');
 
 const config = createConfig({
 setupFiles: ['./config/tests.js'],
-snapshotSerializers: ['@griffel/jest-serializer'],
+snapshotSerializers: ['jest-serializer-html'],
 });
 
 module.exports = config;"

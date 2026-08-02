@@ -36,12 +36,12 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9) — the mapper already
    * lives there, but a project-level `snapshotSerializers` REPLACES the preset's array,
    * so this config must list the serializer itself.
    *
-   * `@griffel/jest-serializer` is kept alongside it: no react-swatch-picker source imports
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): no react-swatch-picker source imports
    * Griffel any more, but a DISABLED ColorSwatch renders its `disabledIcon` default —
    * `<ProhibitedFilled />` from `@fluentui/react-icons`, an external Griffel consumer
    * explicitly out of scope for this migration (DECISIONS.md D11). Without it that `<svg>`
@@ -54,5 +54,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

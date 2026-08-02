@@ -36,9 +36,9 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration.
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * the serializer strips those generated names from snapshots, exactly as
-   * `@griffel/jest-serializer` did for Griffel atomics (DECISIONS.md D9).
+   * Griffel's jest serializer did for Griffel atomics (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` was dropped in S-G: react-provider no longer imports
+   * Griffel's jest serializer was dropped in S-G: react-provider no longer imports
    * `@griffel/react` at all (`TextDirectionProvider` removed, `useRenderer_unstable`
    * replaced by the Fluent-owned nonce context — D20), and no test in this package
    * renders Griffel-styled descendants anymore.

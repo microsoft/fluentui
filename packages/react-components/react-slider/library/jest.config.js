@@ -36,9 +36,9 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (specials batch S1).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` did for Griffel atomics.
+   * as Griffel's jest serializer did for Griffel atomics.
    *
-   * `@griffel/jest-serializer` is DROPPED: nothing this suite renders authors Griffel any
+   * Griffel's jest serializer is DROPPED: nothing this suite renders authors Griffel any
    * more. Slider's own styles are converted, `@fluentui/react-field` (the only styled
    * component the suite mounts, in the surrounding-Field test) is converted, and
    * `@fluentui/react-tabster` contributes only the `useFocusWithin` ref — no classes.

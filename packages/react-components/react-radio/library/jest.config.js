@@ -36,10 +36,10 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * the serializer strips those generated names from snapshots, exactly as
-   * `@griffel/jest-serializer` did for Griffel atomics. Both move into the repo-wide
+   * Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is dropped rather than kept alongside (as react-button
+   * Griffel's jest serializer is dropped rather than kept alongside (as react-button
    * does): nothing rendered by Radio or RadioGroup emits atomics any more. Radio's `label`
    * slot renders `@fluentui/react-label`'s <Label>, which is already converted, and neither
    * component renders an `@fluentui/react-icons` glyph — the default indicator is a plain

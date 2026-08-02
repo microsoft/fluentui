@@ -65,7 +65,6 @@
     "@fluentui/scripts-test-ssr": "*",
     "@fluentui/storybook-llms-extractor": "*",
     "@griffel/babel-preset": "1.5.8",
-    "@griffel/jest-serializer": "1.1.24",
     "@griffel/shadow-dom": "0.2.2",
     "@griffel/webpack-loader": "2.2.10",
     "@jest/reporters": "30.2.0",

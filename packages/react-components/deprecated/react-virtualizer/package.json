@@ -18,6 +18,9 @@
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
+  "devDependencies": {
+    "@griffel/jest-serializer": "1.1.24"
+  },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
     "@types/react-dom": ">=16.9.0 <20.0.0",

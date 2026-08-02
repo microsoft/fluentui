@@ -36,11 +36,11 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (DECISIONS.md D9).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and the
    * serializer strips those generated names from snapshots, exactly as
-   * `@griffel/jest-serializer` did for Griffel atomics. The mapper is also in the repo-wide
+   * Griffel's jest serializer did for Griffel atomics. The mapper is also in the repo-wide
    * `jest.preset.js`, but a project-level `snapshotSerializers` REPLACES the preset's array,
    * so it has to be listed here.
    *
-   * `@griffel/jest-serializer` is dropped rather than kept alongside (the react-badge
+   * Griffel's jest serializer is dropped rather than kept alongside (the react-badge
    * precedent for packages that render `@fluentui/react-icons` glyphs): Tooltip is this
    * package's only component, it renders no icons, and nothing else it mounts emits Griffel
    * atomics into the DOM.

@@ -291,7 +291,6 @@ const templates = {
   jest: (options: {
     platform: 'node' | 'web';
     pkgName: string;
-    addSnapshotSerializers: boolean;
     testSetupFilePath: string;
     projectConfig: ProjectConfiguration;
   }) => stripIndents`
@@ -314,7 +313,6 @@ const templates = {
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['${options.testSetupFilePath}'],
-        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@griffel/jest-serializer'],` : ''}
       };
   `,
   storybook: (options: NormalizedSchema) => {
@@ -965,16 +963,9 @@ async function setupCypress(tree: Tree, options: NormalizedSchema) {
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = options.paths.jestSetupFile;
   const packageType = getPackageType(tree, options);
-  const packagesThatTriggerAddingSnapshots = [`@griffel/react`];
-
-  const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
-  packageJson.dependencies = packageJson.dependencies ?? {};
 
   const config = {
     pkgName: options.normalizedPkgName,
-    addSnapshotSerializers:
-      packageType === 'web' &&
-      Object.keys(packageJson.dependencies).some(pkgDepName => packagesThatTriggerAddingSnapshots.includes(pkgDepName)),
     testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
     platform: packageType,
     projectConfig: options.projectConfig,

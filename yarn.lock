@@ -2805,7 +2805,6 @@ __metadata:
     "@fluentui/scripts-test-ssr": "npm:*"
     "@fluentui/storybook-llms-extractor": "npm:*"
     "@griffel/babel-preset": "npm:1.5.8"
-    "@griffel/jest-serializer": "npm:1.1.24"
     "@griffel/shadow-dom": "npm:0.2.2"
     "@griffel/webpack-loader": "npm:2.2.10"
     "@jest/reporters": "npm:30.2.0"
@@ -3353,6 +3352,7 @@ __metadata:
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
+    "@griffel/jest-serializer": "npm:1.1.24"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -4520,6 +4520,7 @@ __metadata:
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
+    "@griffel/jest-serializer": "npm:1.1.24"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -6037,6 +6038,7 @@ __metadata:
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-utilities": "npm:^9.26.5"
+    "@griffel/jest-serializer": "npm:1.1.24"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:

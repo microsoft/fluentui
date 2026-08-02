@@ -36,11 +36,11 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration.
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` does for Griffel atomics (DECISIONS.md D9). The mapper is
+   * as Griffel's jest serializer did for Griffel atomics (DECISIONS.md D9). The mapper is
    * already in `jest.preset.js` and MERGES; a project-level `snapshotSerializers` array
    * REPLACES the preset's, which is why this file has to list the serializer itself.
    *
-   * `@griffel/jest-serializer` stays, and here it is not a formality: no react-timepicker-compat
+   * Griffel's jest serializer stays, and here it is not a formality: no react-timepicker-compat
    * source imports Griffel any more, but every TimePicker render goes through
    * `useComboboxStyles_unstable` (react-combobox is still on Griffel, ledger.json
    * `needs-conversion`) and through `@fluentui/react-icons` glyphs, which D11 keeps on Griffel
@@ -49,5 +49,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.module\\.css$': cssModules.moduleNameMapperTarget,
   },
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

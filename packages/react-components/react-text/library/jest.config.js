@@ -36,9 +36,9 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * the serializer strips those generated names from snapshots, exactly as
-   * `@griffel/jest-serializer` did for Griffel atomics (DECISIONS.md D9).
+   * Griffel's jest serializer did for Griffel atomics (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is DROPPED rather than kept alongside: every component in
+   * Griffel's jest serializer is DROPPED rather than kept alongside: every component in
    * this package is converted and none of them renders an `@fluentui/react-icons` glyph
    * (that package is external Griffel and out of scope per D11 — the reason react-badge
    * had to keep both). Nothing in a react-text snapshot can carry a Griffel atomic.

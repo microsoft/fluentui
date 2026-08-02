@@ -13,7 +13,8 @@ exports[`SearchBox renders a default state 1`] = `
     >
       <svg
         aria-hidden="true"
-        class=""
+        class="fui-Icon"
+        data-fui-icon=""
         fill="currentColor"
         height="1em"
         viewBox="0 0 20 20"
@@ -21,7 +22,7 @@ exports[`SearchBox renders a default state 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M12.73 13.44a6.5 6.5 0 1 1 .7-.7l3.42 3.4a.5.5 0 0 1-.63.77l-.07-.06-3.42-3.41Zm-.71-.71A5.54 5.54 0 0 0 14 8.5a5.5 5.5 0 1 0-1.98 4.23Z"
+          d="M13.73 14.44a6.5 6.5 0 1 1 .7-.7l3.42 3.4a.5.5 0 0 1-.63.77l-.07-.06zm-.71-.71A5.5 5.5 0 0 0 15 9.5a5.5 5.5 0 1 0-1.98 4.23"
           fill="currentColor"
         />
       </svg>
@@ -42,7 +43,8 @@ exports[`SearchBox renders a default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="fui-Icon"
+          data-fui-icon=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -50,7 +52,7 @@ exports[`SearchBox renders a default state 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
+            d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07z"
             fill="currentColor"
           />
         </svg>

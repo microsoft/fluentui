@@ -36,10 +36,10 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration.
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * the serializer strips those generated names from snapshots, exactly as
-   * `@griffel/jest-serializer` did for Griffel atomics. Both move into the repo-wide
+   * Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is dropped rather than kept alongside (react-button keeps
+   * Griffel's jest serializer is dropped rather than kept alongside (react-button keeps
    * both): ProgressBar is this package's only component and nothing here authors Griffel
    * styles any more.
    */

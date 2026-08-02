@@ -6,7 +6,7 @@
  * lowercase-kebab, `fuicm-`-prefixed shape the two real pipelines emit
  * (`fuicm-<component>-<local>-<hex6>` — see scripts/css-modules/ident.js). The snapshot
  * serializer in ./serializer.js strips every `fuicm-…` token, so component snapshots stay
- * free of generated class names — the role `@griffel/jest-serializer` plays for Griffel
+ * free of generated class names — the role Griffel's jest serializer played for Griffel
  * atomics (migration/griffel-to-tailwind/reports/DECISIONS.md D9).
  *
  * WHY THE NAME IS SHORTER HERE: `moduleNameMapper` maps every `*.module.css` in the repo to

@@ -36,10 +36,10 @@ module.exports = {
    * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
    * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
    * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
-   * as `@griffel/jest-serializer` did for Griffel atomics. Both move into the repo-wide
+   * as Griffel's jest serializer did for Griffel atomics. Both move into the repo-wide
    * `jest.preset.js` once more packages convert (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is dropped: this package has a single component and no
+   * Griffel's jest serializer is dropped: this package has a single component and no
    * Griffel import remains anywhere in `library/src`, so nothing renders atomics here.
    */
   moduleNameMapper: {

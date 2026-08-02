@@ -41,10 +41,10 @@ module.exports = {
    * has to be listed here explicitly or the generated `fuicm-…` names leak into snapshots
    * (DECISIONS.md D9).
    *
-   * `@griffel/jest-serializer` is kept alongside it: TeachingPopoverHeader renders two
+   * Griffel's jest serializer was kept alongside it (retired in the S-J closing batch — icons 3.0 emits no Griffel classes): TeachingPopoverHeader renders two
    * `@fluentui/react-icons` glyphs and TeachingPopoverTitle a `bundleIcon()` pair, and that
    * package stays on Griffel permanently (D11) — without the serializer its atomics write
    * into the same `class=` attribute the committed snapshots assert on.
    */
-  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

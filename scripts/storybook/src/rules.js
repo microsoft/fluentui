@@ -108,7 +108,7 @@ const tailwindPostcssLoader = {
  * produce byte-identical class names for the same module — see scripts/css-modules/ident.js.
  *
  * The `fuicm-` prefix is a hard contract with the jest snapshot serializer, which strips
- * these exactly like `@griffel/jest-serializer` strips atomics
+ * these exactly like Griffel's jest serializer stripped atomics
  * (migration/griffel-to-tailwind/reports/DECISIONS.md D9).
  *
  * @type {import("webpack").RuleSetRule}

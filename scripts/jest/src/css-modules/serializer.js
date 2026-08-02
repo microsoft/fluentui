@@ -1,7 +1,7 @@
 /**
  * Jest snapshot serializer that strips generated CSS-Modules class names.
  *
- * Counterpart to `@griffel/jest-serializer`: converted components render
+ * Counterpart to Griffel's retired jest serializer: converted components render
  * `class="group/fui-divider fui-Divider fuicm-divider-root-a3f2c1"`, and only the stable,
  * public tokens belong in a snapshot. Generated names carry a digest over the package name,
  * the source-relative path and the local (webpack and the package build:
@@ -16,7 +16,7 @@
  *
  * pretty-format hands each attribute value to the registered plugins as a string, which
  * is why `test`/`print` operate on strings rather than DOM nodes — same contract as
- * `@griffel/jest-serializer` (node_modules/@griffel/jest-serializer/src/index.js).
+ * Griffel's jest serializer (removed from the repo in the S-J closing batch).
  *
  * IMPORTANT — why `print` edits in place instead of split/join:
  * pretty-format offers a plugin every string in the tree, not just class attributes. A
