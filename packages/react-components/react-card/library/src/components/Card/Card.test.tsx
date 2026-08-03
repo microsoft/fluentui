@@ -14,7 +14,7 @@ describe('Card', () => {
   isConformant<CardProps>({
     Component: Card,
     displayName: 'Card',
-    extraTests: customStyleHookTests,
+    extraTests: customStyleHookTests<CardProps>(),
     testOptions: {
       'has-static-classnames': [
         {

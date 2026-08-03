@@ -14,7 +14,7 @@ describe('MenuItemLink', () => {
   isConformant<MenuItemLinkProps>({
     Component: MenuItemLink,
     displayName: 'MenuItemLink',
-    extraTests: customStyleHookTests,
+    extraTests: customStyleHookTests<MenuItemLinkProps>(),
     testOptions: {
       'has-static-classnames': [
         {

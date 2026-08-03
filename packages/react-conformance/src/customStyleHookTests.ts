@@ -1,6 +1,8 @@
-import { TestObject } from './types';
+import type { TestObject } from './types';
 import { CUSTOM_STYLE_HOOK_CALLED_TEST_NAME, customStyleHookCalled } from './customStyleHookCalled';
 
-export const customStyleHookTests: TestObject = {
-  [CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]: customStyleHookCalled,
-};
+export function customStyleHookTests<TProps>(): TestObject<TProps> {
+  return {
+    [CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]: customStyleHookCalled,
+  };
+}

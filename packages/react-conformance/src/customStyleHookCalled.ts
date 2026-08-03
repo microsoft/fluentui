@@ -1,4 +1,4 @@
-import type { BaseConformanceTest, IsConformantOptions } from './types';
+import type { IsConformantOptions } from './types';
 
 export const CUSTOM_STYLE_HOOK_CALLED_TEST_NAME = 'component-calls-custom-style-hook';
 const CUSTOM_STYLE_HOOK_PROP = 'useCustomStyleHook_unstable' as const;
@@ -11,10 +11,10 @@ const PLAIN_OBJECT_MATCHER = {
 /**
  * Requires a component from a file path, required for proper mocking.
  */
-async function getReactComponent(
+async function getReactComponent<TProps>(
   componentPath: string,
-  testInfo: IsConformantOptions,
-): Promise<IsConformantOptions['Component']> {
+  testInfo: IsConformantOptions<TProps>,
+): Promise<IsConformantOptions<TProps>['Component']> {
   const componentModule = await import(componentPath);
   const component = testInfo.useDefaultExport ? componentModule.default : componentModule[testInfo.displayName];
 
@@ -35,7 +35,7 @@ async function getReactComponent(
  * Ensures that components call useCustomStyleHook_unstable with an expected hook name
  * and then invoke the returned hook with component state.
  */
-export const customStyleHookCalled: BaseConformanceTest = testInfo => {
+export function customStyleHookCalled<TProps>(testInfo: IsConformantOptions<TProps>): void {
   describe(CUSTOM_STYLE_HOOK_CALLED_TEST_NAME, () => {
     let container: HTMLElement | null = null;
     let createdContainer = false;
@@ -102,4 +102,4 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
       unmount?.();
     });
   });
-};
+}

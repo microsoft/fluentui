@@ -11,7 +11,7 @@ describe('Button', () => {
   isConformant<ButtonProps>({
     Component: Button as React.FunctionComponent<ButtonProps>,
     displayName: 'Button',
-    extraTests: customStyleHookTests,
+    extraTests: customStyleHookTests<ButtonProps>(),
     testOptions: {
       'has-static-classnames': [
         {
