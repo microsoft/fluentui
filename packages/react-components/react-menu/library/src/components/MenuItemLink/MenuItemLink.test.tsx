@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { createEvent, fireEvent, render } from '@testing-library/react';
-import { customStyleHookTests } from '@fluentui/react-conformance';
 import { MenuItemLink } from './MenuItemLink';
 import type { MenuItemLinkProps } from './MenuItemLink.types';
 import { isConformant } from '../../testing/isConformant';
@@ -14,8 +13,8 @@ describe('MenuItemLink', () => {
   isConformant<MenuItemLinkProps>({
     Component: MenuItemLink,
     displayName: 'MenuItemLink',
-    extraTests: customStyleHookTests<MenuItemLinkProps>(),
     testOptions: {
+      'component-calls-custom-style-hook': {},
       'has-static-classnames': [
         {
           props: {

@@ -27,6 +27,7 @@ export interface TestOptions {
     /** Prefix for the classname, if not `fui-` */
     prefix?: string;
   };
+  /** Enables the custom style hook conformance test during its opt-in rollout. */
   'component-calls-custom-style-hook'?: {
     /** Custom style hook name, if it does not follow the component display name. */
     hookName?: string;
@@ -128,6 +129,7 @@ export interface TestObject<TProps = {}> {
 }
 
 export interface DefaultTestObject<TProps = {}> {
+  'component-calls-custom-style-hook': BaseConformanceTest<TProps>;
   'exports-component': BaseConformanceTest<TProps>;
   'component-renders': BaseConformanceTest<TProps>;
   'component-has-displayname': BaseConformanceTest<TProps>;

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { buttonAccessibilityBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
-import { customStyleHookTests } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { Button } from './Button';
 import type { ButtonProps } from './Button.types';
@@ -11,8 +10,8 @@ describe('Button', () => {
   isConformant<ButtonProps>({
     Component: Button as React.FunctionComponent<ButtonProps>,
     displayName: 'Button',
-    extraTests: customStyleHookTests<ButtonProps>(),
     testOptions: {
+      'component-calls-custom-style-hook': {},
       'has-static-classnames': [
         {
           props: {
