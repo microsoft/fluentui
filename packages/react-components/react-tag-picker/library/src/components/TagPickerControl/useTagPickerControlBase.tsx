@@ -14,7 +14,7 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 
 import type { TagPickerControlBaseState, TagPickerControlProps } from './TagPickerControl.types';
-import { tagPickerControlAsideWidthToken } from './TagPickerControl.constants';
+import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useExpandLabel } from '../../utils/useExpandLabel';
 import { useResizeObserverRef } from '../../utils/useResizeObserverRef';

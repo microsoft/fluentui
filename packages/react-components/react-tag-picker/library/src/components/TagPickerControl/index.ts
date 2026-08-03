@@ -7,12 +7,12 @@ export type {
   TagPickerControlSlots,
   TagPickerControlState,
 } from './TagPickerControl.types';
-export { tagPickerControlAsideWidthToken } from './TagPickerControl.constants';
 export { renderTagPickerControl_unstable } from './renderTagPickerControl';
 export { useTagPickerControlBase_unstable } from './useTagPickerControlBase';
 export { useTagPickerControl_unstable } from './useTagPickerControl';
 export {
   iconSizes,
+  tagPickerControlAsideWidthToken,
   tagPickerControlClassNames,
   useTagPickerControlStyles_unstable,
 } from './useTagPickerControlStyles.styles';
