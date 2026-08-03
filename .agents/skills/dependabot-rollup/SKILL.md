@@ -178,7 +178,24 @@ git branch -D "$ROLLUP_BRANCH"
 
 ### Step 6 - Validate the rollup
 
-Run validation from the rollup branch through the repository's Nx workflow:
+Deduplicate the lockfile after all approved PRs have been merged and before running immutable installation or Nx validation:
+
+```bash
+yarn dedupe
+```
+
+If `yarn.lock` changed, commit that change separately so the rollup history records the normalization:
+
+```bash
+if ! git diff --quiet -- yarn.lock; then
+  git add yarn.lock
+  git commit -m "chore(deps): dedupe lockfile"
+fi
+
+yarn dedupe --check
+```
+
+Stop if deduplication or the dedupe check fails. Then run validation from the rollup branch through the repository's Nx workflow:
 
 ```bash
 yarn install --immutable
@@ -189,7 +206,7 @@ yarn nx affected \
   --head=HEAD
 ```
 
-If installation or validation fails, report the failing command and leave the rollup branch checked out for inspection. Do not push the branch, open a PR, or create a tracking issue.
+If deduplication, installation, or validation fails, report the failing command and leave the rollup branch checked out for inspection. Do not push the branch, open a PR, or create a tracking issue.
 
 ### Step 7 - Publish only after validation
 
@@ -240,4 +257,4 @@ Report:
 - Never change branches or files before approval, and never proceed when the root `yarn.lock` has local changes.
 - Never resolve conflicts by blindly choosing an entire side. Resolve only reviewed dependency manifest and lockfile conflicts as described above.
 - Never bypass failed validation.
-- Never create failure-tracking issues or close source Dependabot PRs.
+- Never create failure-tracking issues or close source Dependabot PRs directly.
