@@ -2,6 +2,11 @@ import type { BaseConformanceTest, IsConformantOptions } from './types';
 
 export const CUSTOM_STYLE_HOOK_CALLED_TEST_NAME = 'component-calls-custom-style-hook';
 const CUSTOM_STYLE_HOOK_PROP = 'useCustomStyleHook_unstable' as const;
+const PLAIN_OBJECT_MATCHER = {
+  asymmetricMatch: (value: unknown) =>
+    typeof value === 'object' && value !== null && Object.getPrototypeOf(value) === Object.prototype,
+  toString: () => 'PlainObject',
+};
 
 /**
  * Requires a component from a file path, required for proper mocking.
@@ -90,11 +95,9 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
       });
 
       expect(useCustomStyleHook).toHaveBeenCalledWith(expectedHookName);
-      expect(hooks[expectedHookName]).toHaveBeenCalled();
-
-      const state = hooks[expectedHookName].mock.calls[0][0];
-      expect(state).toEqual(expect.objectContaining({ components: expect.anything() }));
-      expect(Object.getPrototypeOf(state.components)).toBe(Object.prototype);
+      expect(hooks[expectedHookName]).toHaveBeenCalledWith(
+        expect.objectContaining({ components: PLAIN_OBJECT_MATCHER }),
+      );
 
       unmount?.();
     });
