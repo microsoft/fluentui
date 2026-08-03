@@ -3,7 +3,6 @@ import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { customStyleHookTests } from '@fluentui/react-conformance';
-import type { TestObject } from '@fluentui/react-conformance';
 
 import { isConformant } from '../../testing/isConformant';
 
@@ -15,7 +14,7 @@ describe('Card', () => {
   isConformant<CardProps>({
     Component: Card,
     displayName: 'Card',
-    extraTests: customStyleHookTests as TestObject<CardProps>,
+    extraTests: customStyleHookTests,
     testOptions: {
       'has-static-classnames': [
         {

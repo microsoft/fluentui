@@ -1,5 +1,3 @@
-import type { ReactElement } from 'react';
-
 import type { BaseConformanceTest, IsConformantOptions } from './types';
 
 export const CUSTOM_STYLE_HOOK_CALLED_TEST_NAME = 'component-calls-custom-style-hook';
@@ -50,9 +48,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
       }
     });
 
-    afterEach(async () => {
-      jest.dontMock('@fluentui/react-shared-contexts');
-
+    afterEach(() => {
       if (createdContainer && container?.parentNode) {
         container.parentNode.removeChild(container);
       }
@@ -63,9 +59,12 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
     it('calls custom style hook with state', async () => {
       /* eslint-disable @fluentui/no-global-react */
-      const customStyleHook = jest.fn();
-      const useCustomStyleHook = jest.fn().mockImplementation(() => customStyleHook);
+      const hooks: Record<string, jest.Mock> = {};
+      const useCustomStyleHook = jest.fn((hookName: string) => (hooks[hookName] ??= jest.fn()));
       let unmount: (() => void) | undefined;
+      const expectedHookName =
+        testInfo.testOptions?.[CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]?.hookName ??
+        `use${testInfo.displayName}Styles_unstable`;
 
       await jest.isolateModulesAsync(async () => {
         jest.doMock('@fluentui/react-shared-contexts', () => {
@@ -75,6 +74,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
         });
 
         const React = await import('react');
+        const { render } = await import('@testing-library/react/pure');
 
         const Component = await getReactComponent(testInfo.componentPath, testInfo);
         const Wrapper = testInfo.renderOptions?.wrapper;
@@ -85,88 +85,18 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
           element = React.createElement(Wrapper, null, element);
         }
 
-        const result = await renderWithReactDOM(element, container as HTMLElement);
+        const result = render(element, { container: container as HTMLElement });
         unmount = result.unmount;
       });
 
-      const expectedHookName = `use${testInfo.displayName}Styles_unstable`;
-
       expect(useCustomStyleHook).toHaveBeenCalledWith(expectedHookName);
-      expect(customStyleHook).toHaveBeenCalled();
-      expect(customStyleHook.mock.calls.length).toBeGreaterThanOrEqual(1);
+      expect(hooks[expectedHookName]).toHaveBeenCalled();
 
-      // Verify that the hook receives a state-like object.
-      expect(customStyleHook.mock.calls[0][0]).toEqual(expect.objectContaining({ components: expect.any(Object) }));
+      const state = hooks[expectedHookName].mock.calls[0][0];
+      expect(state).toEqual(expect.objectContaining({ components: expect.anything() }));
+      expect(Object.getPrototypeOf(state.components)).toBe(Object.prototype);
 
       unmount?.();
     });
   });
 };
-
-async function renderWithReactDOM(element: ReactElement, container: HTMLElement) {
-  const ReactModule = await import('react');
-  const act = ReactModule.act;
-
-  try {
-    const ReactDOMClient = await import('react-dom/client');
-    const root = ReactDOMClient.createRoot(container);
-
-    if (act) {
-      await act(async () => {
-        root.render(element);
-      });
-    } else {
-      root.render(element);
-    }
-
-    return {
-      unmount: () => {
-        if (act) {
-          return act(() => {
-            root.unmount();
-          });
-        }
-
-        root.unmount();
-      },
-    };
-  } catch {
-    const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacyModule;
-    const legacyReactDOM = getLegacyReactDOM(ReactDOM);
-
-    if (act) {
-      await act(async () => {
-        legacyReactDOM.render(element, container);
-      });
-    } else {
-      legacyReactDOM.render(element, container);
-    }
-
-    return {
-      unmount: () => {
-        if (act) {
-          return act(() => {
-            legacyReactDOM.unmountComponentAtNode(container);
-          });
-        }
-
-        legacyReactDOM.unmountComponentAtNode(container);
-      },
-    };
-  }
-}
-
-function getLegacyReactDOM(module: ReactDOMLegacyModule): ReactDOMLegacy {
-  if ('render' in module) {
-    return module as ReactDOMLegacy;
-  }
-
-  return module.default;
-}
-
-declare type ReactDOMLegacyModule = ReactDOMLegacy | { default: ReactDOMLegacy };
-
-declare interface ReactDOMLegacy {
-  render(element: ReactElement, container: Element | DocumentFragment | null): void;
-  unmountComponentAtNode(container: Element | DocumentFragment | null): void;
-}

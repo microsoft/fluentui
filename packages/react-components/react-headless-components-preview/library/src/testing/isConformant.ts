@@ -1,8 +1,6 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 
-const CUSTOM_STYLE_HOOK_CALLED_TEST_NAME = 'component-calls-custom-style-hook';
-
 function kebabCase(str: string): string {
   return str
     .replace(/([a-z])([A-Z])/g, '$1-$2')
@@ -25,8 +23,6 @@ export function isConformant<TProps = {}>(
       'has-top-level-file',
       // Headless components don't have static classnames, so we need to disable this test
       'component-has-static-classnames-object',
-      // Headless package owns this disable via its local factory.
-      CUSTOM_STYLE_HOOK_CALLED_TEST_NAME,
     ],
     disableTypeTests: true,
     extraTests: {
