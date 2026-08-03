@@ -1,4 +1,4 @@
-<f-template name="fluent-text-input" shadowrootmode="open">
+<f-template name="fluent-text-input" shadowrootmode="open" shadowrootdelegatesfocus>
   <template @keydown="{keydownHandler($e)}">
     {{styles}}
     <label part="label" for="control" class="label" f-ref="{controlLabel}">
