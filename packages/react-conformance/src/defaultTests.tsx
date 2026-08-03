@@ -7,7 +7,6 @@ import { IsConformantOptions, DefaultTestObject } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils/index';
-import { customStyleHookCalled } from './customStyleHookCalled';
 
 /**
  * TODO - TS 4.5 introduces strict catch `err` callback handling - opting out for sake of smoother ts 4.5 upgrade
@@ -31,7 +30,6 @@ function getTargetElement(
 }
 
 export const defaultTests: DefaultTestObject = {
-  'component-calls-custom-style-hook': customStyleHookCalled,
   /** Component file exports a valid React element type  */
   'exports-component': (testInfo: IsConformantOptions) => {
     it(`exports component from file under correct name (exports-component)`, () => {

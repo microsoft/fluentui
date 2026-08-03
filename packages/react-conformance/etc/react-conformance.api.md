@@ -15,6 +15,9 @@ export type BaseConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TP
 // @public (undocumented)
 export type ConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc, tsProgram: ts.Program) => void;
 
+// @public
+export function customStyleHookTests<TProps extends {}>(): TestObject<TProps>;
+
 // @public (undocumented)
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]): void;
 
@@ -50,6 +53,7 @@ export interface TestObject<TProps = {}> {
 
 // @public
 export interface TestOptions {
+    // (undocumented)
     'component-calls-custom-style-hook'?: {
         hookName?: string;
     };

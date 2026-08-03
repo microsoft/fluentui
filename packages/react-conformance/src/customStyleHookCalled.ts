@@ -36,10 +36,6 @@ async function getReactComponent<TProps extends {}>(
  * and then invoke the returned hook with component state.
  */
 export function customStyleHookCalled<TProps extends {}>(testInfo: IsConformantOptions<TProps>): void {
-  if (!testInfo.testOptions?.[CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]) {
-    return;
-  }
-
   describe(CUSTOM_STYLE_HOOK_CALLED_TEST_NAME, () => {
     let container: HTMLElement | null = null;
     let createdContainer = false;
