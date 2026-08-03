@@ -749,7 +749,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         const target = singleLink.target as SNode;
         // TODO: localize the aria-label string
         return (
-          <g key={key}>
+          <g key={key} role="presentation">
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0" stopColor={source.color} />
@@ -770,7 +770,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               fillOpacity={_getOpacityStream(singleLink)}
               tabIndex={0}
               aria-label={aria}
-              role="img"
+              role="option"
             />
           </g>
         );
@@ -802,7 +802,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         const { name, actualValue, x0, x1, y0 } = singleNode;
         const textColor = nodeTextColor({ selectedState, selectedNodes, selectedNode }, singleNode);
         return (
-          <g key={index} id={gElementId}>
+          <g key={index} id={gElementId} role="presentation">
             <rect
               x={x0}
               y={y0}
@@ -818,7 +818,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               opacity="1"
               tabIndex={0}
               aria-label={aria}
-              role="img"
+              role="option"
             />
             {height > MIN_HEIGHT_FOR_TYPE && (
               <g className={classes.nodeTextContainer}>
@@ -1148,7 +1148,14 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         in a non-sequential and erratic manner within a 2D grid.
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
-          <svg width={width} height={height} id={_chartId} className={classes.chart}>
+          <svg
+            width={width}
+            height={height}
+            id={_chartId}
+            className={classes.chart}
+            role="listbox"
+            aria-label={`Sankey chart with ${nodes.length} nodes and ${links.length} links`}
+          >
             {!props.hideLegend && props.data.chartTitle && (
               <ChartTitle
                 title={props.data.chartTitle}
@@ -1162,7 +1169,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
                 return (
-                  <g key={nodes[item.index].nodeId} className={classes.nodes}>
+                  <g key={nodes[item.index].nodeId} className={classes.nodes} role="presentation">
                     {nodeData![item.index]}
                   </g>
                 );
@@ -1173,6 +1180,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
                     className={classes.links}
                     stroke={props.pathColor ? props.pathColor : tokens.colorStrokeFocus2}
                     strokeOpacity={1}
+                    role="presentation"
                   >
                     {linkData![item.index]}
                   </g>
