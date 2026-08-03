@@ -47,6 +47,7 @@ describe(`beachball configs`, () => {
         '**/stories/**',
         '**/.storybook/**',
         '**/bundle-size/**',
+        '**/monosize.config.mjs',
         '**/common/isConformant.ts',
         '**/src/testing/**',
         '**/src/e2e/**',
