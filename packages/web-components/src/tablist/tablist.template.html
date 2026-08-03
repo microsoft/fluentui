@@ -1,5 +1,5 @@
 <f-template name="fluent-tablist" shadowrootmode="open">
-  <template role="tablist" focusgroup="tablist inline block" @focusin="{handleFocusIn($e)}">
+  <template role="tablist" focusgroup="tablist inline block" @click="{handleClick($e)}" @focusin="{handleFocusIn($e)}">
     {{styles}}
     <slot name="tab" f-slotted="{slottedTabs}"></slot>
   </template>

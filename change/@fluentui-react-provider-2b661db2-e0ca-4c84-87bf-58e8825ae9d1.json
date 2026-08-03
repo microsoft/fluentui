@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: escape SSR theme style selectors",
+  "packageName": "@fluentui/react-provider",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}

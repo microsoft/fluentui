@@ -2,6 +2,65 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Sat, 01 Aug 2026 15:19:05 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "5726a85e58837117b2bb82441a4624bccf119dd7",
+            "comment": "fix: preserve the headless Tooltip state API after adding overflow visibility handling to react-tooltip"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "10a43b33c23f5a537396ec2b885885bbf34cd5a3",
+            "comment": "fix: export useFieldContext and useFieldControlProps hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "4aacb7b8b2c326735f7da4bf404209063b4e5d4b",
+            "comment": "fix: fix multiple anchors support on the same element"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "5b142da11348ee175929f89ad9bdbf8081f0dd70",
+            "comment": "feat: add AvatarGroup, AvatarGroupItem, and AvatarGroupPopover components"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "fb9826c58da42bfc0ffcb274a44bd98997f4126a",
+            "comment": "feat: export Drawer context utilities"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "88fc286a29ad64ea2f7ecae541501323a9fbc2ac",
+            "comment": "feat: add headless TagPicker"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "a61b2539fb114f00d9ec4618bd7ea692e936056b",
+            "comment": "chore: re-export headless render helpers"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: migrate to yarn modern"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 18:34:05 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.2.3",
       "version": "0.2.3",

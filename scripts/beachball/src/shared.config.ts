@@ -33,6 +33,9 @@ export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changel
           const out = execSync(cmd);
           console.log(out.toString());
         });
+
+        const out = execSync('yarn install --mode=update-lockfile');
+        console.log(out.toString());
       } catch (err) {
         console.error(err);
       }
