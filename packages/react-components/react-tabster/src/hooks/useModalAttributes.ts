@@ -40,7 +40,7 @@ const tabsterAccessibleCheck: TabsterTypes.ModalizerElementAccessibleCheck = ele
 };
 
 function initTabsterModules(tabster: TabsterTypes.TabsterCore) {
-  getModalizer(tabster, undefined, tabsterAccessibleCheck);
+  getModalizer(tabster, tabsterAccessibleCheck);
   getRestorer(tabster);
 }
 

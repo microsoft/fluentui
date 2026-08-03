@@ -39,8 +39,6 @@ export { applyFocusVisiblePolyfill } from './focus/index';
 import {
   type Types,
   type EventsTypes,
-  dispatchGroupperMoveFocusEvent,
-  dispatchMoverMoveFocusEvent,
   MoverMoveFocusEventName,
   MoverMoveFocusEvent,
   MoverKeys,
@@ -65,11 +63,23 @@ import * as TabsterTypes6_0_1_DoNotUse from './tabster-types-6.0.1-do-not-use';
 export {
   /** @deprecated (Do not use! Exposed by mistake and will be removed in the next major version.)  */
   TabsterTypes6_0_1_DoNotUse as TabsterTypes,
-  /** @deprecated Use element.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape })) */
-  dispatchGroupperMoveFocusEvent,
-  /** @deprecated Use element.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys.ArrowDown })) */
-  dispatchMoverMoveFocusEvent,
 };
+
+/** @deprecated Use `element.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }))`. */
+export function dispatchGroupperMoveFocusEvent(): void {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'dispatchGroupperMoveFocusEvent is deprecated. Use element.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }))',
+  );
+}
+
+/** @deprecated Use `element.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys.ArrowDown }))`. */
+export function dispatchMoverMoveFocusEvent(): void {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'dispatchMoverMoveFocusEvent is deprecated. Use element.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys.ArrowDown }))',
+  );
+}
 
 /**
  * For all exports below, we don't do wildcard exports to keep Tabster API flexible. We export only required

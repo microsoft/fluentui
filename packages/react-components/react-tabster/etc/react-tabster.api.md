@@ -4,8 +4,6 @@
 
 ```ts
 
-import { dispatchGroupperMoveFocusEvent } from 'tabster';
-import { dispatchMoverMoveFocusEvent } from 'tabster';
 import { EventsTypes } from 'tabster';
 import type { GriffelStyle } from '@griffel/react';
 import { GroupperMoveFocusActions } from 'tabster';
@@ -236,9 +234,11 @@ interface DeloserProps {
     restoreFocusOrder?: RestoreFocusOrder;
 }
 
-export { dispatchGroupperMoveFocusEvent }
+// @public @deprecated (undocumented)
+export function dispatchGroupperMoveFocusEvent(): void;
 
-export { dispatchMoverMoveFocusEvent }
+// @public @deprecated (undocumented)
+export function dispatchMoverMoveFocusEvent(): void;
 
 // @public (undocumented)
 interface Disposable {
