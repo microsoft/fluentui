@@ -2534,7 +2534,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/babel-preset-storybook-full-source@npm:^0.1.2, @fluentui/babel-preset-storybook-full-source@workspace:packages/react-components/babel-preset-storybook-full-source":
+"@fluentui/babel-preset-storybook-full-source@npm:^0.1.3, @fluentui/babel-preset-storybook-full-source@workspace:packages/react-components/babel-preset-storybook-full-source":
   version: 0.0.0-use.local
   resolution: "@fluentui/babel-preset-storybook-full-source@workspace:packages/react-components/babel-preset-storybook-full-source"
   dependencies:
@@ -4312,6 +4312,7 @@ __metadata:
     "@fluentui/react-switch": "npm:^9.7.4"
     "@fluentui/react-tabs": "npm:^9.12.3"
     "@fluentui/react-tabster": "npm:^9.26.16"
+    "@fluentui/react-tag-picker": "npm:^9.10.0"
     "@fluentui/react-tags": "npm:^9.9.2"
     "@fluentui/react-teaching-popover": "npm:^9.7.2"
     "@fluentui/react-textarea": "npm:^9.7.4"
@@ -5409,11 +5410,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-storybook-addon-export-to-sandbox@npm:*, @fluentui/react-storybook-addon-export-to-sandbox@npm:^0.3.0, @fluentui/react-storybook-addon-export-to-sandbox@workspace:packages/react-components/react-storybook-addon-export-to-sandbox":
+"@fluentui/react-storybook-addon-export-to-sandbox@npm:*, @fluentui/react-storybook-addon-export-to-sandbox@npm:^0.3.1, @fluentui/react-storybook-addon-export-to-sandbox@workspace:packages/react-components/react-storybook-addon-export-to-sandbox":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon-export-to-sandbox@workspace:packages/react-components/react-storybook-addon-export-to-sandbox"
   dependencies:
-    "@fluentui/babel-preset-storybook-full-source": "npm:^0.1.2"
+    "@fluentui/babel-preset-storybook-full-source": "npm:^0.1.3"
     "@swc/helpers": "npm:^0.5.1"
     babel-loader: "npm:^9.1.3"
     codesandbox-import-utils: "npm:^2.2.3"
@@ -6331,7 +6332,7 @@ __metadata:
     "@fluentui/react-components": "npm:^9.74.4"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-storybook-addon-export-to-sandbox": "npm:^0.3.0"
+    "@fluentui/react-storybook-addon-export-to-sandbox": "npm:^0.3.1"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
