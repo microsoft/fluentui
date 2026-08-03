@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: avoid the default styled icon dependency in headless TagPicker",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

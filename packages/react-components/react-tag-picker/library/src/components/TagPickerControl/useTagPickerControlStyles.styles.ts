@@ -8,6 +8,7 @@ import type {
   TagPickerControlSlots,
   TagPickerControlState,
 } from './TagPickerControl.types';
+import { tagPickerControlAsideWidthToken } from './TagPickerControl.constants';
 
 export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots & TagPickerControlInternalSlots> = {
   root: 'fui-TagPickerControl',
@@ -15,8 +16,6 @@ export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots & 
   secondaryAction: 'fui-TagPickerControl__secondaryAction',
   aside: 'fui-TagPickerControl__aside',
 };
-
-export const tagPickerControlAsideWidthToken = '--fui-TagPickerControl-aside-width' as const;
 
 /**
  * Styles for the root slot
