@@ -16,6 +16,13 @@ export type OverflowItemProps = {
    * The single child that has overflow item behavior attached.
    */
   children: React.ReactElement;
+  /**
+   * Optional size hint in pixels for the overflow axis.
+   * When provided and used with `createFlatOverflowManager`, the manager will use
+   * this value instead of reading `offsetWidth`/`offsetHeight`, eliminating a
+   * layout read on first compute. Only set when the item has a known, stable size.
+   */
+  sizeHint?: number;
 } & (
   | {
       /**
