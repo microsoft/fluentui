@@ -102,7 +102,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSXElement[] = [];
     dataToRender.map((legend, index) => {
-      const hoverCardElement = _renderButton(legend, index);
+      const hoverCardElement = _renderButton(legend, index, true);
       overflowHoverCardLegends.push(hoverCardElement);
     });
     const overflowString = props.overflowText ? props.overflowText : 'more';
@@ -110,24 +110,28 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
 
     function renderLegends(): JSXElement {
       return (
-        <div
-          {...focusAttributes}
-          {...arrowAttributes}
-          {...(allowFocusOnLegends && {
-            role: 'listbox',
-            'aria-label': 'Legends',
-            'aria-multiselectable': canSelectMultipleLegends,
-          })}
-          className={classes.root}
-          ref={_rootElem}
-        >
+        <div {...focusAttributes} {...arrowAttributes} className={classes.root} ref={_rootElem}>
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>
-              {dataToRender.map((item, id) => (
-                <OverflowItem key={id} id={id.toString()}>
-                  {_renderButton(item)}
-                </OverflowItem>
-              ))}
+              {/*
+                Only the selectable options belong to the listbox; the overflow trigger stays a sibling so a
+                menu button is not treated as a listbox child. `display: contents` keeps the options as direct
+                flex participants so overflow measurement is unaffected.
+              */}
+              <div
+                {...(allowFocusOnLegends && {
+                  role: 'listbox',
+                  'aria-label': 'Legends',
+                  'aria-multiselectable': canSelectMultipleLegends,
+                })}
+                style={{ display: 'contents' }}
+              >
+                {dataToRender.map((item, id) => (
+                  <OverflowItem key={id} id={id.toString()}>
+                    {_renderButton(item, id)}
+                  </OverflowItem>
+                ))}
+              </div>
               <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
             </div>
           </Overflow>
@@ -150,12 +154,12 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           ref={_rootElem}
         >
           <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
-            {dataToRender.map(item => (
+            {dataToRender.map((item, id) => (
               <div
                 className={mergeClasses(classes.legendContainer, item.legendAnnotation && classes.annotation)}
                 key={item.key}
               >
-                {_renderButton(item)}
+                {_renderButton(item, id)}
                 {item.legendAnnotation && <div>{item.legendAnnotation()}</div>}
               </div>
             ))}
@@ -262,8 +266,10 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function _renderButton(data: any, index?: number) {
+    function _renderButton(data: any, index?: number, isOverflowItem?: boolean) {
       const { allowFocusOnLegends = true } = props;
+      // Overflow legends are rendered inside a menu, not the listbox, so they must not carry `option` semantics.
+      const showListboxOption = allowFocusOnLegends && !isOverflowItem;
       const legend: Legend = {
         title: data.title,
         color: data.color,
@@ -276,8 +282,8 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         opacity: data.opacity,
       };
       const color = _getColor(legend.title, legend.color);
-      const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-        _onClick(legend, event);
+      const onClickHandler = (event: React.MouseEvent<HTMLElement>) => {
+        _onClick(legend, event as React.MouseEvent<HTMLButtonElement>);
       };
       const onHoverHandler = () => {
         _onHoverOverLegend(legend);
@@ -286,38 +292,66 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         _onLeave(legend);
       };
       const shape = _getShape(legend, color);
-      return (
-        <Button
-          {...(allowFocusOnLegends && {
-            'aria-selected': !!selectedLegends[legend.title],
-            role: 'option',
-            'aria-label': `${legend.title}`,
-            'aria-setsize': data['aria-setsize'],
-            'aria-posinset': data['aria-posinset'],
-          })}
-          {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
-          key={index}
-          className={classes.legend}
-          onClick={onClickHandler}
-          onMouseOver={onHoverHandler}
-          onMouseOut={onMouseOut}
-          onFocus={onHoverHandler}
-          onBlur={onMouseOut}
-          appearance={'outline'}
-          size="small"
-          style={{
-            '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
-            '--rect-backgroundColor': legend.stripePattern ? '' : color,
-            '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
-            '--rect-content': legend.stripePattern
-              ? `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
-              : '',
-          }}
-        >
+      const legendStyle = {
+        '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
+        '--rect-backgroundColor': legend.stripePattern ? '' : color,
+        '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
+        '--rect-content': legend.stripePattern
+          ? `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
+          : '',
+      } as React.CSSProperties;
+      const legendContent = (
+        <>
           {shape}
           <div className={classes.text} style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}>
             {legend.title}
           </div>
+        </>
+      );
+      // Shared by the listbox Button and the overflow div. Hover/focus handlers are included so the overflow
+      // menu can forward them to its item (the div itself never receives focus).
+      const commonProps: React.HTMLAttributes<HTMLElement> = {
+        className: classes.legend,
+        onClick: onClickHandler,
+        onMouseOver: onHoverHandler,
+        onMouseOut: onMouseOut,
+        onFocus: onHoverHandler,
+        onBlur: onMouseOut,
+        style: legendStyle,
+      };
+      if (isOverflowItem) {
+        // In the overflow menu the item itself is interactive, so keep this content a non-interactive div to
+        // avoid nested clickable elements. display:flex lays the swatch and label out inline (a bare div would
+        // stack them). data-selected / data-title are read by the overflow menu to drive its checked state.
+        return (
+          <div
+            key={index}
+            {...commonProps}
+            data-selected={!!selectedLegends[legend.title]}
+            data-title={legend.title}
+            style={{ ...legendStyle, display: 'flex', alignItems: 'center' }}
+          >
+            {legendContent}
+          </div>
+        );
+      }
+      return (
+        <Button
+          {...(showListboxOption && {
+            'aria-selected': !!selectedLegends[legend.title],
+            role: 'option',
+            'aria-label': `${legend.title}`,
+            // Full-list position so counts match the overflow menu.
+            'aria-setsize': props.legends.length,
+            'aria-posinset': (index ?? 0) + 1,
+          })}
+          {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
+          key={index}
+          {...commonProps}
+          appearance={'outline'}
+          size="small"
+        >
+          {legendContent}
         </Button>
       );
     }

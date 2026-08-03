@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin-react-components",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2026 14:23:08 GMT",
+      "tag": "@fluentui/eslint-plugin-react-components_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2026 18:28:49 GMT",
       "tag": "@fluentui/eslint-plugin-react-components_v0.3.0",
       "version": "0.3.0",

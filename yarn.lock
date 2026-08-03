@@ -2534,7 +2534,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/babel-preset-storybook-full-source@npm:^0.1.2, @fluentui/babel-preset-storybook-full-source@workspace:packages/react-components/babel-preset-storybook-full-source":
+"@fluentui/babel-preset-storybook-full-source@npm:^0.1.3, @fluentui/babel-preset-storybook-full-source@workspace:packages/react-components/babel-preset-storybook-full-source":
   version: 0.0.0-use.local
   resolution: "@fluentui/babel-preset-storybook-full-source@workspace:packages/react-components/babel-preset-storybook-full-source"
   dependencies:
@@ -2682,7 +2682,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/eslint-plugin@workspace:packages/eslint-plugin":
+"@fluentui/eslint-plugin@npm:*, @fluentui/eslint-plugin@workspace:packages/eslint-plugin":
   version: 0.0.0-use.local
   resolution: "@fluentui/eslint-plugin@workspace:packages/eslint-plugin"
   dependencies:
@@ -3030,6 +3030,7 @@ __metadata:
     typescript: "npm:5.7.3"
     typescript-eslint: "npm:8.46.2"
     vite: "npm:6.4.2"
+    web-features: "npm:3.30.0"
     webpack: "npm:5.108.4"
     webpack-bundle-analyzer: "npm:4.10.1"
     webpack-cli: "npm:5.1.4"
@@ -4311,6 +4312,7 @@ __metadata:
     "@fluentui/react-switch": "npm:^9.7.4"
     "@fluentui/react-tabs": "npm:^9.12.3"
     "@fluentui/react-tabster": "npm:^9.26.16"
+    "@fluentui/react-tag-picker": "npm:^9.10.0"
     "@fluentui/react-tags": "npm:^9.9.2"
     "@fluentui/react-teaching-popover": "npm:^9.7.2"
     "@fluentui/react-textarea": "npm:^9.7.4"
@@ -5408,11 +5410,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-storybook-addon-export-to-sandbox@npm:*, @fluentui/react-storybook-addon-export-to-sandbox@npm:^0.3.0, @fluentui/react-storybook-addon-export-to-sandbox@workspace:packages/react-components/react-storybook-addon-export-to-sandbox":
+"@fluentui/react-storybook-addon-export-to-sandbox@npm:*, @fluentui/react-storybook-addon-export-to-sandbox@npm:^0.3.1, @fluentui/react-storybook-addon-export-to-sandbox@workspace:packages/react-components/react-storybook-addon-export-to-sandbox":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon-export-to-sandbox@workspace:packages/react-components/react-storybook-addon-export-to-sandbox"
   dependencies:
-    "@fluentui/babel-preset-storybook-full-source": "npm:^0.1.2"
+    "@fluentui/babel-preset-storybook-full-source": "npm:^0.1.3"
     "@swc/helpers": "npm:^0.5.1"
     babel-loader: "npm:^9.1.3"
     codesandbox-import-utils: "npm:^2.2.3"
@@ -6330,7 +6332,7 @@ __metadata:
     "@fluentui/react-components": "npm:^9.74.4"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-storybook-addon-export-to-sandbox": "npm:^0.3.0"
+    "@fluentui/react-storybook-addon-export-to-sandbox": "npm:^0.3.1"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
@@ -6591,6 +6593,14 @@ __metadata:
   peerDependencies:
     "@microsoft/fast-element": ^3.0.0
     "@microsoft/focusgroup-polyfill": ^1.5.0
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/web-features-generator@workspace:tools/web-features":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/web-features-generator@workspace:tools/web-features"
+  dependencies:
+    "@fluentui/eslint-plugin": "npm:*"
   languageName: unknown
   linkType: soft
 
@@ -31905,6 +31915,13 @@ __metadata:
   dependencies:
     defaults: "npm:^1.0.3"
   checksum: 10c0/5b61ca583a95e2dd85d7078400190efd452e05751a64accb8c06ce4db65d7e0b0cde9917d705e826a2e05cc2548f61efde115ffa374c3e436d04be45c889e5b4
+  languageName: node
+  linkType: hard
+
+"web-features@npm:3.30.0":
+  version: 3.30.0
+  resolution: "web-features@npm:3.30.0"
+  checksum: 10c0/fa4f193af8a55aebc5ca7192abf809994084a51cbb4c608465efb7a4a532f739e046fe6fa902e14e847aee1022462620c820abd8db14c2296e71bcde31647fcc
   languageName: node
   linkType: hard
 
