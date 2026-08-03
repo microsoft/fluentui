@@ -32,7 +32,10 @@ updates:
         update-types:
           - 'version-update:semver-minor'
           - 'version-update:semver-patch'
-      # Keep production dependencies eligible for security updates only.
+      # Production dependencies must stay in `allow` so security updates still apply;
+      # `allow.update-types` is ignored for security updates. Allowing only major version
+      # updates here, combined with the major version `ignore` rule below, disables all
+      # routine version updates for production dependencies.
       - dependency-type: 'production'
         update-types:
           - 'version-update:semver-major'

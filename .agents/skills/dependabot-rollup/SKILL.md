@@ -3,7 +3,7 @@ name: dependabot-rollup
 description: >-
   Review and optionally combine at most 11 open individual Dependabot patch and minor pull requests into a validated draft rollup PR. Use this skill as a local or cloud-agent fallback to native Dependabot groups without adding a custom scheduled GitHub Actions workflow. Always presents a dry-run plan and requires explicit approval before changing branches or GitHub pull requests.
 disable-model-invocation: true
-argument-hint: '[--repo owner/repo] [--base branch] [--max count] [--push-remote remote] [--cleanup rollup-pr]'
+argument-hint: '[--repo owner/repo] [--base branch] [--max count] [--push-remote remote]'
 allowed-tools: Bash Read Grep Glob
 ---
 
@@ -19,9 +19,8 @@ Build a reviewable manual rollup of compatible individual Dependabot updates as 
 | `--base`        | `master`                           | Base branch for discovery and the rollup      |
 | `--max`         | `11`                               | Eligible PR limit, from 1 through 11          |
 | `--push-remote` | Current branch's configured remote | Writable fork remote used only after approval |
-| `--cleanup`     | Not set                            | Refresh source PRs after a rollup PR merges   |
 
-Parse overrides from `$ARGUMENTS`. Reject an invalid repository name, a `--max` value that is not an integer from 1 through 11, an unknown Git remote, a `--cleanup` value that is not a positive PR number, or unknown arguments instead of guessing. The value 11 is an absolute ceiling, not only the default. When `--cleanup` is provided, run only Step 9; reject `--base`, `--max`, and `--push-remote` because cleanup does not create a rollup branch.
+Parse overrides from `$ARGUMENTS`. Reject an invalid repository name, a `--max` value that is not an integer from 1 through 11, an unknown Git remote, or unknown arguments instead of guessing. The value 11 is an absolute ceiling, not only the default.
 
 ## Workflow
 
@@ -185,11 +184,10 @@ Deduplicate the lockfile after all approved PRs have been merged and before runn
 yarn dedupe
 ```
 
-Inspect the resulting diff. The dedupe step may modify only the root `yarn.lock`; stop if it changes any other file. If `yarn.lock` changed, commit that change separately so the rollup history records the normalization:
+If `yarn.lock` changed, commit that change separately so the rollup history records the normalization:
 
 ```bash
 if ! git diff --quiet -- yarn.lock; then
-  test -z "$(git status --short -- . ':(exclude)yarn.lock')"
   git add yarn.lock
   git commit -m "chore(deps): dedupe lockfile"
 fi
@@ -228,13 +226,7 @@ gh pr create \
   --body-file "$PR_BODY_FILE"
 ```
 
-The PR body must list merged PRs, skipped PRs with reasons, and the exact validation commands. It must also end with a machine-readable HTML comment containing the successfully merged source PR numbers in ascending numeric order:
-
-```markdown
-<!-- dependabot-rollup-source-prs: 123,456,789 -->
-```
-
-Do not include skipped, excluded, or superseded PRs in this metadata. Do not close or modify the original Dependabot PRs automatically.
+The PR body must list merged PRs, skipped PRs with reasons, and the exact validation commands. Do not close or modify the original Dependabot PRs automatically.
 
 ### Step 8 - Restore the starting branch and report
 
@@ -252,43 +244,6 @@ Report:
 - Draft PR URL when one was created.
 - Local rollup branch name when retained for investigation or PR follow-up.
 
-### Step 9 - Refresh source PRs after merge
-
-Run this step only through `--cleanup <rollup-pr>`. It must work from a fresh session using only the rollup PR body, not local branches or remembered candidate state.
-
-Retrieve the rollup PR and verify that it has merged and contains exactly one well-formed source metadata comment:
-
-```bash
-ROLLUP_DATA="$(gh pr view "$CLEANUP_PR_NUMBER" --repo "$REPO" --json body,mergedAt,url)"
-ROLLUP_MERGED_AT="$(jq -r '.mergedAt // empty' <<<"$ROLLUP_DATA")"
-SOURCE_METADATA_COUNT="$(jq -r '.body | [match("<\u0021-- dependabot-rollup-source-prs: [0-9]+(,[0-9]+)* -->"; "g")] | length' <<<"$ROLLUP_DATA")"
-
-test -n "$ROLLUP_MERGED_AT"
-test "$SOURCE_METADATA_COUNT" -eq 1
-
-SOURCE_PRS="$(jq -r '.body | capture("<\u0021-- dependabot-rollup-source-prs: (?<prs>[0-9]+(,[0-9]+)*) -->").prs | split(",")[]' <<<"$ROLLUP_DATA")"
-```
-
-Reject missing, duplicate, or malformed metadata instead of inferring source PRs from prose or commit history. Reject duplicate source PR numbers and lists containing more than 11 entries.
-
-For each source PR, retrieve its current state and author. Classify it as refreshable only when it is still open and its author is Dependabot:
-
-```bash
-PR_DATA="$(gh pr view "$PR_NUMBER" --repo "$REPO" --json author,state)"
-PR_STATE="$(jq -r .state <<<"$PR_DATA")"
-PR_AUTHOR="$(jq -r .author.login <<<"$PR_DATA")"
-
-[[ "$PR_STATE" == "OPEN" && ( "$PR_AUTHOR" == "app/dependabot" || "$PR_AUTHOR" == "dependabot[bot]" ) ]]
-```
-
-Present a dry-run table of refreshable and skipped PRs with reasons, then require explicit approval. After approval, re-check each refreshable PR's state and author immediately before posting `@dependabot rebase`:
-
-```bash
-gh pr comment "$PR_NUMBER" --repo "$REPO" --body '@dependabot rebase'
-```
-
-Skip PRs that became closed or are no longer Dependabot-authored. Report which PRs were refreshed and which were skipped. Dependabot should close source PRs that become obsolete after rebasing; do not close them directly.
-
 ## Guardrails
 
 - Always dry-run and obtain approval before mutation.
@@ -302,5 +257,4 @@ Skip PRs that became closed or are no longer Dependabot-authored. Report which P
 - Never change branches or files before approval, and never proceed when the root `yarn.lock` has local changes.
 - Never resolve conflicts by blindly choosing an entire side. Resolve only reviewed dependency manifest and lockfile conflicts as described above.
 - Never bypass failed validation.
-- Never refresh source PRs before the rollup merges or without explicit approval.
 - Never create failure-tracking issues or close source Dependabot PRs directly.
