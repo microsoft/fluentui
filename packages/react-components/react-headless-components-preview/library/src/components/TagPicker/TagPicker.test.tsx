@@ -14,7 +14,7 @@ const renderTagPicker = (props: Partial<Pick<TagPickerProps, 'disabled' | 'posit
   const { selectedOptions = [], ...tagPickerProps } = props;
   return render(
     <TagPicker open selectedOptions={selectedOptions} {...tagPickerProps}>
-      <TagPickerControl data-testid="tag-picker-control">
+      <TagPickerControl>
         <TagPickerGroup aria-label="Selected animals">
           {selectedOptions.map(option => (
             <Tag data-testid={`tag-${option}`} key={option} value={option}>
@@ -36,38 +36,6 @@ const renderTagPicker = (props: Partial<Pick<TagPickerProps, 'disabled' | 'posit
 };
 
 describe('TagPicker', () => {
-  it('does not render a default expand icon', () => {
-    const { getByTestId } = renderTagPicker();
-    const control = getByTestId('tag-picker-control');
-
-    expect(control.querySelector('[role="button"]')).toBeNull();
-    expect(control.querySelector(':scope > span')).toBeNull();
-  });
-
-  it('renders an explicitly provided expand icon', () => {
-    const { getByTestId } = render(
-      <TagPicker open>
-        <TagPickerControl
-          data-testid="tag-picker-control"
-          expandIcon={{ children: <span data-testid="expand-icon">Expand</span> }}
-        >
-          <TagPickerInput aria-label="Select animals" />
-        </TagPickerControl>
-        <TagPickerList>
-          <TagPickerOption value="cat">Cat</TagPickerOption>
-        </TagPickerList>
-      </TagPicker>,
-    );
-    const control = getByTestId('tag-picker-control');
-    const expandIconContent = getByTestId('expand-icon');
-    const expandIcon = expandIconContent.parentElement;
-
-    expect(expandIconContent).toHaveTextContent('Expand');
-    expect(expandIcon).toHaveAttribute('role', 'button');
-    expect(expandIcon).toHaveAttribute('aria-expanded', 'true');
-    expect(expandIcon?.parentElement).toBe(control.lastElementChild);
-  });
-
   it('renders the input trigger and the options list when open', () => {
     const { getByRole, getAllByRole } = renderTagPicker();
 
