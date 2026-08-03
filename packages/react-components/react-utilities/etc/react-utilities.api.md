@@ -37,9 +37,6 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
 
 // @public
-export function deIndent(strings: TemplateStringsArray, ...values: unknown[]): string;
-
-// @public
 export type DistributiveOmit<T, K extends keyof any> = T extends unknown ? Omit<T, K> : T;
 
 // @internal

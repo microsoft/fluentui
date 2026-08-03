@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "add deIndent helper utility method",
-  "packageName": "@fluentui/react-utilities",
-  "email": "paulmardling@microsoft.com",
-  "dependentChangeType": "none"
-}

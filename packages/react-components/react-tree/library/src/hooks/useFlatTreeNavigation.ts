@@ -1,6 +1,6 @@
 'use client';
 
-import { deIndent, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TreeNavigationData_unstable } from '../Tree';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
@@ -53,7 +53,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
         if (!nextElement && process.env.NODE_ENV !== 'production') {
           // eslint-disable-next-line no-console
           console.warn(
-            deIndent`
+            /* #__DE-INDENT__ */ `
             @fluentui/react-tree [useFlatTreeNavigation]:
             \'ArrowLeft\' navigation was not possible.
             No parent element found for the current element:
@@ -77,7 +77,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
           const ariaLevel = Number(data.target.getAttribute('aria-level'));
           // eslint-disable-next-line no-console
           console.warn(
-            deIndent`
+            /* #__DE-INDENT__ */ `
             @fluentui/react-tree [useFlatTreeNavigation]:
             \'ArrowRight\' navigation was not possible.
             No element with "aria-posinset=1" and "aria-level=${ariaLevel + 1}"

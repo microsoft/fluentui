@@ -3041,6 +3041,7 @@ __metadata:
     strip-ansi: "npm:6.0.0"
     style-loader: "npm:2.0.0"
     swc-loader: "npm:0.2.6"
+    swc-plugin-de-indent-template-literal: "npm:1.5.0"
     syncpack: "npm:10.6.1"
     terser: "npm:5.39.1"
     terser-webpack-plugin: "npm:5.3.10"
@@ -29977,6 +29978,15 @@ __metadata:
     "@swc/core": ^1.2.147
     webpack: ">=2"
   checksum: 10c0/b06926c5cb153931589c2166aa4c7c052cc53c68758acdda480d1eb59ecddf7d74b168e33166c4f807cc9dbae4395de9d80a14ad43e265fffaa775638abf71ce
+  languageName: node
+  linkType: hard
+
+"swc-plugin-de-indent-template-literal@npm:1.5.0":
+  version: 1.5.0
+  resolution: "swc-plugin-de-indent-template-literal@npm:1.5.0"
+  peerDependencies:
+    "@swc/core": ^1.11.1
+  checksum: 10c0/6663cfbee2da9327a9299ef45bf2f582e3c493552379ed0119b97163b769b1b886fcd5ac9f81fe51456dac658ddded0941d905c2734fac7e72d751c2892b000f
   languageName: node
   linkType: hard
 

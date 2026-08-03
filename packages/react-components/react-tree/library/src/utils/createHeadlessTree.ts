@@ -1,4 +1,3 @@
-import { deIndent } from '@fluentui/react-utilities';
 import type { TreeItemProps, TreeItemType, TreeItemValue } from '../TreeItem';
 import type { ImmutableSet } from './ImmutableSet';
 
@@ -110,7 +109,7 @@ export function createHeadlessTree<Props extends HeadlessTreeItemProps>(
       if (!parentItem) {
         if (process.env.NODE_ENV === 'development') {
           // eslint-disable-next-line no-console
-          console.error(deIndent`
+          console.error(/* #__DE-INDENT__ */ `
             @fluentui/react-tree [createHeadlessTree]:
             TreeItem "${props.value}" is wrongly positioned, did you properly ordered provided item props? make sure provided items are organized, parents should come before children
           `);
@@ -159,7 +158,7 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
     getTreeItemProps: () => {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error(deIndent`
+        console.error(/* #__DE-INDENT__ */ `
           @fluentui/react-tree [createHeadlessTree]:
           Internal error, trying to access treeitem props from invalid root element
         `);
@@ -178,7 +177,7 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
     get index() {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error(deIndent`
+        console.error(/* #__DE-INDENT__ */ `
           @fluentui/react-tree [createHeadlessTree]:
           Internal error, trying to access treeitem props from invalid root element
         `);
@@ -188,7 +187,7 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
     get position() {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error(deIndent`
+        console.error(/* #__DE-INDENT__ */ `
           @fluentui/react-tree [createHeadlessTree]:
           Internal error, trying to access treeitem props from invalid root element
         `);

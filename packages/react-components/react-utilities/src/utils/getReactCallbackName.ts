@@ -1,5 +1,4 @@
 import type * as React from 'react';
-import { deIndent } from './deIndent';
 
 interface ReactSyntheticEvent extends React.SyntheticEvent<unknown> {
   // React 17/18
@@ -45,7 +44,7 @@ export function getReactCallbackName(event: ReactSyntheticEvent): ReactCallbackN
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
-    console.error(deIndent`
+    console.error(/** #__DE-INDENT__ */ `
       @fluentui/react-utilities [${getReactCallbackName.name}]:
       Passed React.SyntheticEvent does not contain ".dispatchConfig" or "._reactName". This should not happen, please report it to https://github.com/microsoft/fluentui.
     `);

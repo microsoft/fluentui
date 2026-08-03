@@ -10,6 +10,9 @@
     "/**/*.test.tsx"
   ],
   "jsc": {
+    "experimental": {
+      "plugins": [["swc-plugin-de-indent-template-literal", {}]]
+    },
     "parser": {
       "syntax": "typescript",
       "tsx": true,
