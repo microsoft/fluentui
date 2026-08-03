@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: close Popover on focus escape only when focus was inside the surface, so a popover whose focus never entered (e.g. an external input stays focused) is not dismissed when focus moves programmatically",
+  "packageName": "@fluentui/react-popover",
+  "email": "petrduda@microsoft.com",
+  "dependentChangeType": "patch"
+}
