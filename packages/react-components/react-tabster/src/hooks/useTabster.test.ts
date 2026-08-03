@@ -1,20 +1,23 @@
-import { createTabster, disposeTabster } from 'tabster';
+import { createTabster, disposeTabster, getRootDummyInputs } from 'tabster';
 import { renderHook } from '@testing-library/react-hooks';
 import { useTabster } from './useTabster';
 
 jest.mock('tabster', () => ({
   createTabster: jest.fn(() => 'mock-tabster-instance'),
   disposeTabster: jest.fn(),
+  getRootDummyInputs: jest.fn(),
 }));
 
 const createTabsterMock = createTabster as jest.Mock;
 const disposeTabsterMock = disposeTabster as jest.Mock;
+const getRootDummyInputsMock = getRootDummyInputs as jest.Mock;
 
 describe('useTabster', () => {
   it('returns a ref to the tabster instance', () => {
     const { result } = renderHook(() => useTabster());
 
     expect(createTabsterMock).toHaveBeenCalledTimes(1);
+    expect(getRootDummyInputsMock).toHaveBeenCalledWith('mock-tabster-instance');
     expect(result.current).toMatchObject({
       current: 'mock-tabster-instance',
     });
