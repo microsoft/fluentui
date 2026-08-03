@@ -11,7 +11,7 @@ const PLAIN_OBJECT_MATCHER = {
 /**
  * Requires a component from a file path, required for proper mocking.
  */
-async function getReactComponent<TProps>(
+async function getReactComponent<TProps extends {}>(
   componentPath: string,
   testInfo: IsConformantOptions<TProps>,
 ): Promise<IsConformantOptions<TProps>['Component']> {
@@ -35,7 +35,7 @@ async function getReactComponent<TProps>(
  * Ensures that components call useCustomStyleHook_unstable with an expected hook name
  * and then invoke the returned hook with component state.
  */
-export function customStyleHookCalled<TProps>(testInfo: IsConformantOptions<TProps>): void {
+export function customStyleHookCalled<TProps extends {}>(testInfo: IsConformantOptions<TProps>): void {
   describe(CUSTOM_STYLE_HOOK_CALLED_TEST_NAME, () => {
     let container: HTMLElement | null = null;
     let createdContainer = false;
@@ -83,8 +83,7 @@ export function customStyleHookCalled<TProps>(testInfo: IsConformantOptions<TPro
 
         const Component = await getReactComponent(testInfo.componentPath, testInfo);
         const Wrapper = testInfo.renderOptions?.wrapper;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let element = React.createElement(Component, { ...testInfo.requiredProps } as any);
+        let element: React.ReactElement = React.createElement(Component, { ...testInfo.requiredProps } as TProps);
 
         if (Wrapper) {
           element = React.createElement(Wrapper, null, element);

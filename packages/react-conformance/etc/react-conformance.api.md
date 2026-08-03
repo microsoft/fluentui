@@ -16,7 +16,7 @@ export type BaseConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TP
 export type ConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc, tsProgram: ts.Program) => void;
 
 // @public (undocumented)
-export function customStyleHookTests<TProps>(): TestObject<TProps>;
+export function customStyleHookTests<TProps extends {}>(): TestObject<TProps>;
 
 // @public (undocumented)
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]): void;
