@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 07 Jul 2026 04:09:49 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2026 04:09:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.2)
+
+Mon, 13 Jul 2026 04:09:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.1..@fluentui/web-components_v3.0.2)
+
+### Patches
+
+- fix focusgroup in tree when focusgroup is natively supported ([PR #36379](https://github.com/microsoft/fluentui/pull/36379) by machi@microsoft.com)
 
 ## [3.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.1)
 
