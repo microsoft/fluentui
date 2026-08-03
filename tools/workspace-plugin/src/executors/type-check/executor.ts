@@ -1,7 +1,6 @@
-import { PromiseExecutor, readJsonFile, logger, ExecutorContext } from '@nx/devkit';
+import { PromiseExecutor, joinPathFragments, readJsonFile, logger, ExecutorContext } from '@nx/devkit';
 
 import { existsSync } from 'node:fs';
-import { join } from 'node:path';
 import { promisify } from 'node:util';
 import { exec } from 'node:child_process';
 
@@ -29,7 +28,7 @@ export default runExecutor;
 // ===================
 
 async function runTypeCheck(options: NormalizedOptions, context: ExecutorContext): Promise<boolean> {
-  const tsConfigPath = join(context.root, options.project.root, 'tsconfig.json');
+  const tsConfigPath = joinPathFragments(context.root, options.project.root, 'tsconfig.json');
 
   if (!existsSync(tsConfigPath)) {
     logger.error(`Cannot find tsconfig.json at "${tsConfigPath}"`);
@@ -37,8 +36,8 @@ async function runTypeCheck(options: NormalizedOptions, context: ExecutorContext
     return Promise.resolve(false);
   }
 
-  const projectRootAbsolutePath = join(context.root, options.project.root);
-  const baseTsConfig = readJsonFile(join(context.root, options.project.root, 'tsconfig.json'));
+  const projectRootAbsolutePath = joinPathFragments(context.root, options.project.root);
+  const baseTsConfig = readJsonFile(joinPathFragments(context.root, options.project.root, 'tsconfig.json'));
 
   const tsConfigsRefs = getTsConfigs(baseTsConfig, projectRootAbsolutePath, options.excludeProject);
   const asyncQueue = [];
@@ -86,7 +85,7 @@ function getTsConfigs(
       continue;
     }
 
-    refsPaths.push(join(projectRootPath, ref.path));
+    refsPaths.push(joinPathFragments(projectRootPath, ref.path));
   }
 
   return refsPaths;
