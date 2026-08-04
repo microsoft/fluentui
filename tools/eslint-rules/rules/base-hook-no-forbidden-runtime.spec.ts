@@ -226,6 +226,19 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
         };
       `,
     },
+    // A props type doing `typeof SomeComponent` describes the component's shape; it does not
+    // consume its runtime, so the component's implementation must not be walked.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import type { WidgetHostProps } from 'component-pkg';
+        export const useThingBase_unstable = (props: WidgetHostProps, ref) => {
+          return { props, ref };
+        };
+      `,
+    },
     // A symbol whose own shape does not touch the forbidden runtime is fine even when the file
     // declaring it imports that runtime for a *sibling* export.
     {
@@ -622,6 +635,30 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
             package: 'typed-dist-pkg',
             runtime: 'heavy-runtime',
             viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/typed-dist-pkg/index.d.ts',
+          },
+        },
+      ],
+    },
+    // Actually rendering that same component in a base hook is a runtime dependency and is reported.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import { Widget } from 'component-pkg';
+        export const useThingBase_unstable = (props: { a: number }, ref) => {
+          return { props, ref, components: { widget: Widget } };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'Widget',
+            package: 'component-pkg',
+            runtime: 'heavy-runtime',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/component-pkg/widget.ts',
           },
         },
       ],

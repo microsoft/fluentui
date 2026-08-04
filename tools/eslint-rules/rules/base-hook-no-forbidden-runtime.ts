@@ -476,7 +476,7 @@ function isScopeWithinFunction(scope: TSESLint.Scope.Scope, hookFn: BaseHookFunc
  * the barrel's contents.
  *
  * `followTypes` selects the reference kind being validated: value references follow value
- * positions only (runtime coupling), type references also follow type positions (API coupling).
+ * positions only (runtime coupling), type references follow type positions only (API coupling).
  *
  * Memoized per Program × symbol × mode. Cycle-safe.
  */
@@ -559,7 +559,11 @@ function findForbiddenRuntime(
   /**
    * Walks the identifiers `declaration` references, recursing into each referenced symbol.
    * Identifiers that are not references (property names, declaration names, import specifier
-   * names) are skipped, as are type positions when only runtime coupling is being validated.
+   * names) are skipped.
+   *
+   * The two modes never mix. A runtime query follows only value positions; a type query follows
+   * only type positions. Crossing between them would make `typeof SomeComponent` in a props type
+   * drag in that component's whole implementation, which is API coupling that does not exist.
    */
   function walkReferences(declaration: ts.Node): Hit | null {
     let hit: Hit | null = null;
@@ -568,7 +572,7 @@ function findForbiddenRuntime(
       if (hit) {
         return;
       }
-      if (ts.isIdentifier(node) && isReferencePosition(node) && (followTypes || !isInTypePosition(node))) {
+      if (ts.isIdentifier(node) && isReferencePosition(node) && isInTypePosition(node) === followTypes) {
         const referenced = checker.getSymbolAtLocation(node);
         if (referenced) {
           hit = visitSymbol(referenced);

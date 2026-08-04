@@ -16,6 +16,7 @@
       "barrel-pkg": ["./stubs/barrel-pkg/index.ts"],
       "wrapper-pkg": ["./stubs/wrapper-pkg/index.ts"],
       "relay-pkg": ["./stubs/relay-pkg/index.ts"],
+      "component-pkg": ["./stubs/component-pkg/index.ts"],
       "typed-dist-pkg": ["./stubs/typed-dist-pkg/index.d.ts"],
       "heavy-runtime": ["./stubs/heavy-runtime/index.ts"],
       "heavy-runtime/*": ["./stubs/heavy-runtime/*"],

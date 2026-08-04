@@ -71,7 +71,6 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
  * @param props - AvatarGroupPopover props
  * @returns AvatarGroupPopover state
  */
-// eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- state/props embed Popover, which pulls tabster via useModalAttributes
 export const useAvatarGroupPopoverBase_unstable = (props: AvatarGroupPopoverBaseProps): AvatarGroupPopoverBaseState => {
   const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   const { indicator = 'count', count = React.Children.count(props.children), children, ...restOfProps } = props;
