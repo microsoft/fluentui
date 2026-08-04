@@ -21,6 +21,7 @@ import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 import type { ComboboxOpenEvents } from '../Combobox/Combobox.types';
 import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
+import { useTabsterEscapeIgnore } from '../../hooks/useTabsterEscapeIgnore';
 
 /**
  * Create the base state required to render Dropdown, without design-only props.
@@ -178,5 +179,9 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     ...baseState,
     appearance,
     size,
+    button: {
+      ...useTabsterEscapeIgnore(baseState.button, baseState.open),
+      ...baseState.button,
+    },
   };
 };
