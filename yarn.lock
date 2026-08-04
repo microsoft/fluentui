@@ -5579,8 +5579,8 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
-    keyborg: "npm:^2.14.1"
-    tabster: "npm:^8.8.0"
+    keyborg: "npm:^3.0.0"
+    tabster: "npm:9.0.0-canary.0"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     "@types/react-dom": ">=16.9.0 <20.0.0"
@@ -22439,10 +22439,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keyborg@npm:^2.14.0, keyborg@npm:^2.14.1":
-  version: 2.14.1
-  resolution: "keyborg@npm:2.14.1"
-  checksum: 10c0/5776649f12a572b4cca590451d0baf30c88329f533a71576b3fb4da4438eafe67f4636544483431fd98f539d3057370455b6853af2eb3ba44006fbd276bb7ee0
+"keyborg@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "keyborg@npm:3.0.0"
+  checksum: 10c0/2625f3a881eb2c1b319952faa1967973f16223ca83931615a94670b29ffd17a1328011bc6cf41730af538bf81cd2ceb79ccba542075c8a71463f1bb6bacccd87
   languageName: node
   linkType: hard
 
@@ -29993,13 +29993,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tabster@npm:^8.8.0":
-  version: 8.8.0
-  resolution: "tabster@npm:8.8.0"
+"tabster@npm:9.0.0-canary.0":
+  version: 9.0.0-canary.0
+  resolution: "tabster@npm:9.0.0-canary.0"
   dependencies:
-    keyborg: "npm:^2.14.0"
+    keyborg: "npm:^3.0.0"
     tslib: "npm:^2.8.1"
-  checksum: 10c0/013e269b66af718d02401d26e0c6dfd5d169a18b30fb257198e68188521f43b9b093b933d6f6b56d0e7c9533e403217149bd48092db3fac3d95495964185b689
+  checksum: 10c0/afbb865dc59abb72f3fd39c7a3bae0f60e926c3f7d6642cacec4776effd0a3000797230f2727e2a149fce9ef48ae636cfcc50d17a82fa6d47e1e66ea5a3a324c
   languageName: node
   linkType: hard
 

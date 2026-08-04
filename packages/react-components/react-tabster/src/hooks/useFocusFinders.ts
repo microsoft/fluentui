@@ -2,6 +2,13 @@
 
 import * as React from 'react';
 import type { Types as TabsterTypes } from 'tabster';
+import {
+  findAllFocusable as findAll,
+  findFirstFocusable as findFirst,
+  findLastFocusable as findLast,
+  findNextFocusable as findNext,
+  findPrevFocusable as findPrev,
+} from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useTabster } from './useTabster';
 
@@ -27,17 +34,17 @@ export const useFocusFinders = (): {
   // Narrow props for now and let need dictate additional props in the future
   const findAllFocusable = React.useCallback(
     (container: HTMLElement | null, acceptCondition?: (el: HTMLElement) => boolean) =>
-      (container && tabsterRef.current?.focusable.findAll({ container, acceptCondition })) || [],
+      (container && tabsterRef.current && findAll(tabsterRef.current, { container, acceptCondition })) || [],
     [tabsterRef],
   );
 
   const findFirstFocusable = React.useCallback(
-    (container: HTMLElement | null) => container && tabsterRef.current?.focusable.findFirst({ container }),
+    (container: HTMLElement | null) => container && tabsterRef.current && findFirst(tabsterRef.current, { container }),
     [tabsterRef],
   );
 
   const findLastFocusable = React.useCallback(
-    (container: HTMLElement | null) => container && tabsterRef.current?.focusable.findLast({ container }),
+    (container: HTMLElement | null) => container && tabsterRef.current && findLast(tabsterRef.current, { container }),
     [tabsterRef],
   );
 
@@ -49,7 +56,7 @@ export const useFocusFinders = (): {
 
       const { container = targetDocument.body } = options;
 
-      return tabsterRef.current.focusable.findNext({ currentElement, container });
+      return findNext(tabsterRef.current, { currentElement, container });
     },
     [tabsterRef, targetDocument],
   );
@@ -62,7 +69,7 @@ export const useFocusFinders = (): {
 
       const { container = targetDocument.body } = options;
 
-      return tabsterRef.current.focusable.findPrev({ currentElement, container });
+      return findPrev(tabsterRef.current, { currentElement, container });
     },
     [tabsterRef, targetDocument],
   );

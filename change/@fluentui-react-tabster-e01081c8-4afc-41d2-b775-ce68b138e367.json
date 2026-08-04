@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update to Tabster 9 canary",
+  "packageName": "@fluentui/react-tabster",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

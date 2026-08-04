@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import type { Types as TabsterTypes } from 'tabster';
-import { createTabster, disposeTabster } from 'tabster';
+import { createTabster, disposeTabster, getRootDummyInputs } from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { getParent, useIsomorphicLayoutEffect, usePrevious } from '@fluentui/react-utilities';
 
@@ -27,7 +27,7 @@ export function createTabsterWithConfig(targetDocument: Document | undefined): T
   const shadowDOMAPI = (defaultView as WindowWithTabsterShadowDOMAPI | undefined)?.__tabsterShadowDOMAPI;
 
   if (defaultView) {
-    return createTabster(defaultView, {
+    const tabster = createTabster(defaultView, {
       autoRoot: {},
       controlTab: false,
       getParent,
@@ -38,6 +38,10 @@ export function createTabsterWithConfig(targetDocument: Document | undefined): T
         element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper') === true || undefined,
       DOMAPI: shadowDOMAPI,
     });
+
+    getRootDummyInputs(tabster);
+
+    return tabster;
   }
 }
 
