@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TextareaBaseProps, TextareaBaseState, TextareaProps, TextareaState } from './Textarea.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
@@ -17,8 +17,13 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  */
 export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTextAreaElement>): TextareaState => {
   const overrides = useOverrides();
+  const fieldContext = useFieldContext_unstable();
 
-  const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', ...baseProps } = props;
+  const {
+    size = fieldContext?.size ?? 'medium',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
+    ...baseProps
+  } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -52,7 +57,7 @@ export const useTextareaBase_unstable = (
   ref?: React.Ref<HTMLTextAreaElement>,
 ): TextareaBaseState => {
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
   const { resize = 'none', onChange } = props;
 
