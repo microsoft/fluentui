@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pin @ctrl/tinycolor version to prevent yarn modern duplication",
-  "packageName": "@fluentui/react-color-picker",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,29 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:24 GMT",
+      "tag": "@fluentui/react-persona_v9.7.6",
+      "version": "9.7.6",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.11.4",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:51 GMT",
       "tag": "@fluentui/react-persona_v9.7.5",
       "version": "9.7.5",

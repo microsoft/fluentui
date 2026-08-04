@@ -2,6 +2,21 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:19 GMT",
+      "tag": "@fluentui/react-image_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:44 GMT",
       "tag": "@fluentui/react-image_v9.4.3",
       "version": "9.4.3",

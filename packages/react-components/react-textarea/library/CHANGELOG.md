@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Wed, 24 Jun 2026 11:10:02 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.7.5)
+
+Tue, 04 Aug 2026 10:12:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.7.4..@fluentui/react-textarea_v9.7.5)
+
+### Patches
+
+- fix: fix Field control size handling ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
 
 ## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.7.4)
 
