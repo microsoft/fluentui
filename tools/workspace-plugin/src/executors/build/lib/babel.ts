@@ -14,6 +14,7 @@ import { type Config } from '@swc/core';
 
 import { processAsyncQueue, type NormalizedOptions } from './shared';
 import { compileSwc } from './swc';
+import { cjsRenameTransforms } from './cjs-extension';
 
 const EOL_REGEX = /\r?\n/g;
 
@@ -33,7 +34,7 @@ export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
   if (!esmConfig) {
     logger.warn('es6 module output not specified. Skipping griffel AOT...');
     const compilationQueue = restOfConfigs.map(outputConfig => {
-      return compileSwc(outputConfig, options);
+      return compileSwc(outputConfig, options, cjsRenameTransforms(outputConfig, options));
     });
     return processAsyncQueue(compilationQueue);
   }
@@ -66,10 +67,11 @@ export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
     // so instead of transpiling TS(ESM) -> JS(COMMONJS), we transpile JS(ESM + griffel AOT) -> JS(COMMONJS)
     const overriddenAbsoluteSourceRoot = join(overriddenSourceRoot, esmConfig.outputPath);
 
-    return compileSwc(outputConfig, {
-      ...options,
-      absoluteSourceRoot: overriddenAbsoluteSourceRoot,
-    });
+    return compileSwc(
+      outputConfig,
+      { ...options, absoluteSourceRoot: overriddenAbsoluteSourceRoot },
+      cjsRenameTransforms(outputConfig, options),
+    );
   });
 
   return processAsyncQueue(compilationQueue);
@@ -241,7 +243,7 @@ export async function compileWithReactCompiler(options: NormalizedOptions) {
   if (!esmConfig) {
     logger.warn('es6 module output not specified. Skipping react-compiler...');
     const compilationQueue = restOfConfigs.map(outputConfig => {
-      return compileSwc(outputConfig, options);
+      return compileSwc(outputConfig, options, cjsRenameTransforms(outputConfig, options));
     });
     return processAsyncQueue(compilationQueue);
   }
@@ -260,10 +262,11 @@ export async function compileWithReactCompiler(options: NormalizedOptions) {
     // Transpile from ESM+react-compiler output → CJS (same pattern as Griffel AOT)
     const overriddenAbsoluteSourceRoot = join(overriddenSourceRoot, esmConfig.outputPath);
 
-    return compileSwc(outputConfig, {
-      ...options,
-      absoluteSourceRoot: overriddenAbsoluteSourceRoot,
-    });
+    return compileSwc(
+      outputConfig,
+      { ...options, absoluteSourceRoot: overriddenAbsoluteSourceRoot },
+      cjsRenameTransforms(outputConfig, options),
+    );
   });
 
   return processAsyncQueue(compilationQueue);
