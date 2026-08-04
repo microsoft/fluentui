@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 24 Jun 2026 11:09:52 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.14.5)
+
+Tue, 04 Aug 2026 10:12:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.14.4..@fluentui/react-popover_v9.14.5)
+
+### Patches
+
+- fix: close Popover on focus escape only when focus was inside the surface, so a popover whose focus never entered (e.g. an external input stays focused) is not dismissed when focus moves programmatically ([PR #36440](https://github.com/microsoft/fluentui/pull/36440) by petrduda@microsoft.com)
+- Bump @fluentui/react-positioning to v9.23.0 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.14.4)
 

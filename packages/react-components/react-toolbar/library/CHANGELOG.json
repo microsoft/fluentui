@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:12 GMT",
+      "tag": "@fluentui/react-toolbar_v9.8.3",
+      "version": "9.8.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 15:15:07 GMT",
       "tag": "@fluentui/react-toolbar_v9.8.3",
       "version": "9.8.3",

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getPartitionedNativeProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import type { SelectBaseProps, SelectBaseState, SelectProps, SelectState } from './Select.types';
@@ -18,8 +18,13 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  */
 export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
   const overrides = useOverrides();
+  const fieldContext = useFieldContext_unstable();
 
-  const { appearance = overrides.inputDefaultAppearance ?? 'outline', size = 'medium', ...baseProps } = props;
+  const {
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
+    size = fieldContext?.size ?? 'medium',
+    ...baseProps
+  } = props;
 
   const state = useSelectBase_unstable(baseProps, ref);
 
