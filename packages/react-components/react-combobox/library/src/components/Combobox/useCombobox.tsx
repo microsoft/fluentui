@@ -74,7 +74,6 @@ export const useComboboxBase_unstable = (
     },
   });
 
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- useTriggerSlot pulls tabster via useTabsterAttributes
   const triggerSlot = useInputTriggerSlot(props.input ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
     state: comboboxInternalState,
     freeform,

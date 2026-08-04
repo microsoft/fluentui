@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: suppress known base hook tabster lint violations (comments only)",
-  "packageName": "@fluentui/react-combobox",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
