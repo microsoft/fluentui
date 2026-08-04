@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-color-picker
 
-This log was last generated on Wed, 24 Jun 2026 11:09:41 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.2.19)
+
+Tue, 04 Aug 2026 10:12:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.2.18..@fluentui/react-color-picker_v9.2.19)
+
+### Patches
+
+- Pin @ctrl/tinycolor version to prevent yarn modern duplication ([PR #35747](https://github.com/microsoft/fluentui/pull/35747) by vgenaev@gmail.com)
 
 ## [9.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.2.18)
 

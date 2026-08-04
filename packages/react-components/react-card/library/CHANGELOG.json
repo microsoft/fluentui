@@ -2,6 +2,21 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:16 GMT",
+      "tag": "@fluentui/react-card_v9.7.1",
+      "version": "9.7.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: Yarn Modern migration compatibility changes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:09 GMT",
       "tag": "@fluentui/react-card_v9.7.1",
       "version": "9.7.1",

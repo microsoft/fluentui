@@ -3337,11 +3337,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-alert@npm:9.0.0-beta.142, @fluentui/react-alert@workspace:packages/react-components/deprecated/react-alert":
+"@fluentui/react-alert@npm:9.0.0-beta.143, @fluentui/react-alert@workspace:packages/react-components/deprecated/react-alert":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-alert@workspace:packages/react-components/deprecated/react-alert"
   dependencies:
-    "@fluentui/react-avatar": "npm:^9.11.3"
+    "@fluentui/react-avatar": "npm:^9.11.4"
     "@fluentui/react-button": "npm:^9.10.1"
     "@fluentui/react-icons": "npm:^2.0.239"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
@@ -3388,7 +3388,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-avatar@npm:*, @fluentui/react-avatar@npm:^9.11.3, @fluentui/react-avatar@workspace:packages/react-components/react-avatar/library":
+"@fluentui/react-avatar@npm:*, @fluentui/react-avatar@npm:^9.11.4, @fluentui/react-avatar@workspace:packages/react-components/react-avatar/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-avatar@workspace:packages/react-components/react-avatar/library"
   dependencies:
@@ -3396,11 +3396,11 @@ __metadata:
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
-    "@fluentui/react-popover": "npm:^9.14.4"
+    "@fluentui/react-popover": "npm:^9.14.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
-    "@fluentui/react-tooltip": "npm:^9.10.3"
+    "@fluentui/react-tooltip": "npm:^9.10.4"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
@@ -3599,7 +3599,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-carousel@npm:*, @fluentui/react-carousel@npm:^9.9.10, @fluentui/react-carousel@workspace:packages/react-components/react-carousel/library":
+"@fluentui/react-carousel@npm:*, @fluentui/react-carousel@npm:^9.9.11, @fluentui/react-carousel@workspace:packages/react-components/react-carousel/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-carousel@workspace:packages/react-components/react-carousel/library"
   dependencies:
@@ -3611,7 +3611,7 @@ __metadata:
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
-    "@fluentui/react-tooltip": "npm:^9.10.3"
+    "@fluentui/react-tooltip": "npm:^9.10.4"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
@@ -3685,11 +3685,11 @@ __metadata:
     "@fluentui/react-button": "npm:^9.10.1"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-overflow": "npm:^9.9.1"
-    "@fluentui/react-popover": "npm:^9.14.4"
+    "@fluentui/react-popover": "npm:^9.14.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
-    "@fluentui/react-tooltip": "npm:^9.10.3"
+    "@fluentui/react-tooltip": "npm:^9.10.4"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
@@ -3757,7 +3757,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-color-picker@npm:*, @fluentui/react-color-picker@npm:^9.2.18, @fluentui/react-color-picker@workspace:packages/react-components/react-color-picker/library":
+"@fluentui/react-color-picker@npm:*, @fluentui/react-color-picker@npm:^9.2.19, @fluentui/react-color-picker@workspace:packages/react-components/react-color-picker/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-color-picker@workspace:packages/react-components/react-color-picker/library"
   dependencies:
@@ -3801,7 +3801,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-combobox@npm:*, @fluentui/react-combobox@npm:^9.17.3, @fluentui/react-combobox@workspace:packages/react-components/react-combobox/library":
+"@fluentui/react-combobox@npm:*, @fluentui/react-combobox@npm:^9.17.4, @fluentui/react-combobox@workspace:packages/react-components/react-combobox/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-combobox@workspace:packages/react-components/react-combobox/library"
   dependencies:
@@ -3812,7 +3812,7 @@ __metadata:
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-portal": "npm:^9.8.14"
-    "@fluentui/react-positioning": "npm:^9.22.3"
+    "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -3880,48 +3880,48 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.74.4, @fluentui/react-components@workspace:packages/react-components/react-components":
+"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.74.5, @fluentui/react-components@workspace:packages/react-components/react-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-components@workspace:packages/react-components/react-components"
   dependencies:
     "@fluentui/react-accordion": "npm:^9.12.1"
-    "@fluentui/react-alert": "npm:9.0.0-beta.142"
+    "@fluentui/react-alert": "npm:9.0.0-beta.143"
     "@fluentui/react-aria": "npm:^9.17.13"
-    "@fluentui/react-avatar": "npm:^9.11.3"
+    "@fluentui/react-avatar": "npm:^9.11.4"
     "@fluentui/react-badge": "npm:^9.5.4"
     "@fluentui/react-breadcrumb": "npm:^9.4.4"
     "@fluentui/react-button": "npm:^9.10.1"
     "@fluentui/react-card": "npm:^9.7.1"
-    "@fluentui/react-carousel": "npm:^9.9.10"
+    "@fluentui/react-carousel": "npm:^9.9.11"
     "@fluentui/react-checkbox": "npm:^9.6.3"
-    "@fluentui/react-color-picker": "npm:^9.2.18"
-    "@fluentui/react-combobox": "npm:^9.17.3"
+    "@fluentui/react-color-picker": "npm:^9.2.19"
+    "@fluentui/react-combobox": "npm:^9.17.4"
     "@fluentui/react-dialog": "npm:^9.18.2"
     "@fluentui/react-divider": "npm:^9.7.3"
     "@fluentui/react-drawer": "npm:^9.13.1"
     "@fluentui/react-field": "npm:^9.5.3"
     "@fluentui/react-image": "npm:^9.4.3"
-    "@fluentui/react-infobutton": "npm:9.0.0-beta.117"
-    "@fluentui/react-infolabel": "npm:^9.4.22"
-    "@fluentui/react-input": "npm:^9.8.4"
+    "@fluentui/react-infobutton": "npm:9.0.0-beta.118"
+    "@fluentui/react-infolabel": "npm:^9.4.23"
+    "@fluentui/react-input": "npm:^9.8.5"
     "@fluentui/react-label": "npm:^9.4.3"
     "@fluentui/react-link": "npm:^9.8.3"
     "@fluentui/react-list": "npm:^9.6.16"
-    "@fluentui/react-menu": "npm:^9.25.1"
-    "@fluentui/react-message-bar": "npm:^9.7.3"
+    "@fluentui/react-menu": "npm:^9.25.2"
+    "@fluentui/react-message-bar": "npm:^9.7.4"
     "@fluentui/react-motion": "npm:^9.16.1"
-    "@fluentui/react-nav": "npm:^9.4.2"
+    "@fluentui/react-nav": "npm:^9.4.3"
     "@fluentui/react-overflow": "npm:^9.9.1"
-    "@fluentui/react-persona": "npm:^9.7.5"
-    "@fluentui/react-popover": "npm:^9.14.4"
+    "@fluentui/react-persona": "npm:^9.7.6"
+    "@fluentui/react-popover": "npm:^9.14.5"
     "@fluentui/react-portal": "npm:^9.8.14"
-    "@fluentui/react-positioning": "npm:^9.22.3"
+    "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-progress": "npm:^9.5.3"
-    "@fluentui/react-provider": "npm:^9.22.18"
+    "@fluentui/react-provider": "npm:^9.22.19"
     "@fluentui/react-radio": "npm:^9.6.4"
     "@fluentui/react-rating": "npm:^9.4.3"
-    "@fluentui/react-search": "npm:^9.4.4"
-    "@fluentui/react-select": "npm:^9.5.3"
+    "@fluentui/react-search": "npm:^9.4.5"
+    "@fluentui/react-select": "npm:^9.5.4"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-skeleton": "npm:^9.7.4"
     "@fluentui/react-slider": "npm:^9.6.4"
@@ -3929,19 +3929,19 @@ __metadata:
     "@fluentui/react-spinner": "npm:^9.8.4"
     "@fluentui/react-swatch-picker": "npm:^9.5.4"
     "@fluentui/react-switch": "npm:^9.7.4"
-    "@fluentui/react-table": "npm:^9.19.17"
+    "@fluentui/react-table": "npm:^9.19.18"
     "@fluentui/react-tabs": "npm:^9.12.3"
     "@fluentui/react-tabster": "npm:^9.26.16"
-    "@fluentui/react-tag-picker": "npm:^9.10.0"
-    "@fluentui/react-tags": "npm:^9.9.2"
-    "@fluentui/react-teaching-popover": "npm:^9.7.2"
+    "@fluentui/react-tag-picker": "npm:^9.10.1"
+    "@fluentui/react-tags": "npm:^9.9.3"
+    "@fluentui/react-teaching-popover": "npm:^9.7.3"
     "@fluentui/react-text": "npm:^9.6.18"
-    "@fluentui/react-textarea": "npm:^9.7.4"
+    "@fluentui/react-textarea": "npm:^9.7.5"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-toast": "npm:^9.8.1"
     "@fluentui/react-toolbar": "npm:^9.8.3"
-    "@fluentui/react-tooltip": "npm:^9.10.3"
-    "@fluentui/react-tree": "npm:^9.16.3"
+    "@fluentui/react-tooltip": "npm:^9.10.4"
+    "@fluentui/react-tree": "npm:^9.16.4"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@fluentui/react-virtualizer": "npm:9.0.0-alpha.114"
     "@griffel/react": "npm:^1.5.32"
@@ -4033,11 +4033,11 @@ __metadata:
     "@fluentui/react-calendar-compat": "npm:^0.4.4"
     "@fluentui/react-field": "npm:^9.5.3"
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-input": "npm:^9.8.4"
+    "@fluentui/react-input": "npm:^9.8.5"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
-    "@fluentui/react-popover": "npm:^9.14.4"
+    "@fluentui/react-popover": "npm:^9.14.5"
     "@fluentui/react-portal": "npm:^9.8.14"
-    "@fluentui/react-positioning": "npm:^9.22.3"
+    "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -4302,36 +4302,36 @@ __metadata:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
     "@fluentui/react-accordion": "npm:^9.12.1"
     "@fluentui/react-aria": "npm:^9.17.13"
-    "@fluentui/react-avatar": "npm:^9.11.3"
+    "@fluentui/react-avatar": "npm:^9.11.4"
     "@fluentui/react-badge": "npm:^9.5.4"
     "@fluentui/react-breadcrumb": "npm:^9.4.4"
     "@fluentui/react-button": "npm:^9.10.1"
     "@fluentui/react-card": "npm:^9.7.1"
     "@fluentui/react-checkbox": "npm:^9.6.3"
-    "@fluentui/react-combobox": "npm:^9.17.3"
+    "@fluentui/react-combobox": "npm:^9.17.4"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-dialog": "npm:^9.18.2"
     "@fluentui/react-divider": "npm:^9.7.3"
     "@fluentui/react-drawer": "npm:^9.13.1"
     "@fluentui/react-field": "npm:^9.5.3"
     "@fluentui/react-image": "npm:^9.4.3"
-    "@fluentui/react-input": "npm:^9.8.4"
+    "@fluentui/react-input": "npm:^9.8.5"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-label": "npm:^9.4.3"
     "@fluentui/react-link": "npm:^9.8.3"
-    "@fluentui/react-menu": "npm:^9.25.1"
-    "@fluentui/react-message-bar": "npm:^9.7.3"
-    "@fluentui/react-nav": "npm:^9.4.2"
+    "@fluentui/react-menu": "npm:^9.25.2"
+    "@fluentui/react-message-bar": "npm:^9.7.4"
+    "@fluentui/react-nav": "npm:^9.4.3"
     "@fluentui/react-overflow": "npm:^9.9.1"
-    "@fluentui/react-persona": "npm:^9.7.5"
-    "@fluentui/react-popover": "npm:^9.14.4"
-    "@fluentui/react-positioning": "npm:^9.22.3"
+    "@fluentui/react-persona": "npm:^9.7.6"
+    "@fluentui/react-popover": "npm:^9.14.5"
+    "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-progress": "npm:^9.5.3"
-    "@fluentui/react-provider": "npm:^9.22.18"
+    "@fluentui/react-provider": "npm:^9.22.19"
     "@fluentui/react-radio": "npm:^9.6.4"
     "@fluentui/react-rating": "npm:^9.4.3"
-    "@fluentui/react-search": "npm:^9.4.4"
-    "@fluentui/react-select": "npm:^9.5.3"
+    "@fluentui/react-search": "npm:^9.4.5"
+    "@fluentui/react-select": "npm:^9.5.4"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-skeleton": "npm:^9.7.4"
     "@fluentui/react-slider": "npm:^9.6.4"
@@ -4340,13 +4340,13 @@ __metadata:
     "@fluentui/react-switch": "npm:^9.7.4"
     "@fluentui/react-tabs": "npm:^9.12.3"
     "@fluentui/react-tabster": "npm:^9.26.16"
-    "@fluentui/react-tag-picker": "npm:^9.10.0"
-    "@fluentui/react-tags": "npm:^9.9.2"
-    "@fluentui/react-teaching-popover": "npm:^9.7.2"
-    "@fluentui/react-textarea": "npm:^9.7.4"
+    "@fluentui/react-tag-picker": "npm:^9.10.1"
+    "@fluentui/react-tags": "npm:^9.9.3"
+    "@fluentui/react-teaching-popover": "npm:^9.7.3"
+    "@fluentui/react-textarea": "npm:^9.7.5"
     "@fluentui/react-toast": "npm:^9.8.1"
     "@fluentui/react-toolbar": "npm:^9.8.3"
-    "@fluentui/react-tooltip": "npm:^9.10.3"
+    "@fluentui/react-tooltip": "npm:^9.10.4"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@fluentui/scripts-cypress": "npm:*"
     "@oddbird/popover-polyfill": "npm:^0.6.1"
@@ -4493,14 +4493,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-infobutton@npm:9.0.0-beta.117, @fluentui/react-infobutton@workspace:packages/react-components/deprecated/react-infobutton":
+"@fluentui/react-infobutton@npm:9.0.0-beta.118, @fluentui/react-infobutton@workspace:packages/react-components/deprecated/react-infobutton":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-infobutton@workspace:packages/react-components/deprecated/react-infobutton"
   dependencies:
     "@fluentui/react-icons": "npm:^2.0.237"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-label": "npm:^9.4.3"
-    "@fluentui/react-popover": "npm:^9.14.4"
+    "@fluentui/react-popover": "npm:^9.14.5"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
@@ -4520,14 +4520,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-infolabel@npm:*, @fluentui/react-infolabel@npm:^9.4.22, @fluentui/react-infolabel@workspace:packages/react-components/react-infolabel/library":
+"@fluentui/react-infolabel@npm:*, @fluentui/react-infolabel@npm:^9.4.23, @fluentui/react-infolabel@workspace:packages/react-components/react-infolabel/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-infolabel@workspace:packages/react-components/react-infolabel/library"
   dependencies:
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-label": "npm:^9.4.3"
-    "@fluentui/react-popover": "npm:^9.14.4"
+    "@fluentui/react-popover": "npm:^9.14.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -4548,7 +4548,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-input@npm:*, @fluentui/react-input@npm:^9.8.4, @fluentui/react-input@workspace:packages/react-components/react-input/library":
+"@fluentui/react-input@npm:*, @fluentui/react-input@npm:^9.8.5, @fluentui/react-input@workspace:packages/react-components/react-input/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-input@workspace:packages/react-components/react-input/library"
   dependencies:
@@ -4682,9 +4682,9 @@ __metadata:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
-    "@fluentui/react-menu": "npm:^9.25.1"
+    "@fluentui/react-menu": "npm:^9.25.2"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
-    "@fluentui/react-table": "npm:^9.19.17"
+    "@fluentui/react-table": "npm:^9.19.18"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
@@ -4704,7 +4704,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-menu@npm:*, @fluentui/react-menu@npm:^9.25.1, @fluentui/react-menu@workspace:packages/react-components/react-menu/library":
+"@fluentui/react-menu@npm:*, @fluentui/react-menu@npm:^9.25.2, @fluentui/react-menu@workspace:packages/react-components/react-menu/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-menu@workspace:packages/react-components/react-menu/library"
   dependencies:
@@ -4716,7 +4716,7 @@ __metadata:
     "@fluentui/react-motion": "npm:^9.16.1"
     "@fluentui/react-motion-components-preview": "npm:^0.15.6"
     "@fluentui/react-portal": "npm:^9.8.14"
-    "@fluentui/react-positioning": "npm:^9.22.3"
+    "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -4737,7 +4737,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-message-bar@npm:*, @fluentui/react-message-bar@npm:^9.7.3, @fluentui/react-message-bar@workspace:packages/react-components/react-message-bar/library":
+"@fluentui/react-message-bar@npm:*, @fluentui/react-message-bar@npm:^9.7.4, @fluentui/react-message-bar@workspace:packages/react-components/react-message-bar/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-message-bar@workspace:packages/react-components/react-message-bar/library"
   dependencies:
@@ -4771,7 +4771,7 @@ __metadata:
   resolution: "@fluentui/react-migration-v0-v9@workspace:packages/react-components/react-migration-v0-v9/library"
   dependencies:
     "@fluentui/react-aria": "npm:^9.17.13"
-    "@fluentui/react-components": "npm:^9.74.4"
+    "@fluentui/react-components": "npm:^9.74.5"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
@@ -4803,7 +4803,7 @@ __metadata:
     "@ctrl/tinycolor": "npm:^3.3.4"
     "@fluentui/fluent2-theme": "npm:^8.107.154"
     "@fluentui/react": "npm:^8.125.7"
-    "@fluentui/react-components": "npm:^9.74.4"
+    "@fluentui/react-components": "npm:^9.74.5"
     "@fluentui/react-hooks": "npm:^8.10.2"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@griffel/react": "npm:^1.5.32"
@@ -4893,7 +4893,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-nav@npm:*, @fluentui/react-nav@npm:^9.4.2, @fluentui/react-nav@workspace:packages/react-components/react-nav/library":
+"@fluentui/react-nav@npm:*, @fluentui/react-nav@npm:^9.4.3, @fluentui/react-nav@workspace:packages/react-components/react-nav/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-nav@workspace:packages/react-components/react-nav/library"
   dependencies:
@@ -4909,7 +4909,7 @@ __metadata:
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
-    "@fluentui/react-tooltip": "npm:^9.10.3"
+    "@fluentui/react-tooltip": "npm:^9.10.4"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
@@ -5022,11 +5022,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-persona@npm:*, @fluentui/react-persona@npm:^9.7.5, @fluentui/react-persona@workspace:packages/react-components/react-persona/library":
+"@fluentui/react-persona@npm:*, @fluentui/react-persona@npm:^9.7.6, @fluentui/react-persona@workspace:packages/react-components/react-persona/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-persona@workspace:packages/react-components/react-persona/library"
   dependencies:
-    "@fluentui/react-avatar": "npm:^9.11.3"
+    "@fluentui/react-avatar": "npm:^9.11.4"
     "@fluentui/react-badge": "npm:^9.5.4"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
@@ -5048,7 +5048,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-popover@npm:*, @fluentui/react-popover@npm:^9.14.4, @fluentui/react-popover@workspace:packages/react-components/react-popover/library":
+"@fluentui/react-popover@npm:*, @fluentui/react-popover@npm:^9.14.5, @fluentui/react-popover@workspace:packages/react-components/react-popover/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-popover@workspace:packages/react-components/react-popover/library"
   dependencies:
@@ -5059,7 +5059,7 @@ __metadata:
     "@fluentui/react-motion": "npm:^9.16.1"
     "@fluentui/react-motion-components-preview": "npm:^0.15.6"
     "@fluentui/react-portal": "npm:^9.8.14"
-    "@fluentui/react-positioning": "npm:^9.22.3"
+    "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -5093,7 +5093,7 @@ __metadata:
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@fluentui/react-components": ^9.74.4
+    "@fluentui/react-components": ^9.74.5
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
   languageName: unknown
@@ -5128,7 +5128,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-positioning@npm:*, @fluentui/react-positioning@npm:^9.22.3, @fluentui/react-positioning@workspace:packages/react-components/react-positioning/library":
+"@fluentui/react-positioning@npm:*, @fluentui/react-positioning@npm:^9.23.0, @fluentui/react-positioning@workspace:packages/react-components/react-positioning/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-positioning@workspace:packages/react-components/react-positioning/library"
   dependencies:
@@ -5191,7 +5191,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-provider@npm:*, @fluentui/react-provider@npm:^9.22.18, @fluentui/react-provider@workspace:packages/react-components/react-provider/library":
+"@fluentui/react-provider@npm:*, @fluentui/react-provider@npm:^9.22.19, @fluentui/react-provider@workspace:packages/react-components/react-provider/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-provider@workspace:packages/react-components/react-provider/library"
   dependencies:
@@ -5271,12 +5271,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-search@npm:*, @fluentui/react-search@npm:^9.4.4, @fluentui/react-search@workspace:packages/react-components/react-search/library":
+"@fluentui/react-search@npm:*, @fluentui/react-search@npm:^9.4.5, @fluentui/react-search@workspace:packages/react-components/react-search/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-search@workspace:packages/react-components/react-search/library"
   dependencies:
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-input": "npm:^9.8.4"
+    "@fluentui/react-input": "npm:^9.8.5"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -5297,7 +5297,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-select@npm:*, @fluentui/react-select@npm:^9.5.3, @fluentui/react-select@workspace:packages/react-components/react-select/library":
+"@fluentui/react-select@npm:*, @fluentui/react-select@npm:^9.5.4, @fluentui/react-select@workspace:packages/react-components/react-select/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-select@workspace:packages/react-components/react-select/library"
   dependencies:
@@ -5461,8 +5461,8 @@ __metadata:
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-label": "npm:^9.4.3"
     "@fluentui/react-link": "npm:^9.8.3"
-    "@fluentui/react-menu": "npm:^9.25.1"
-    "@fluentui/react-provider": "npm:^9.22.18"
+    "@fluentui/react-menu": "npm:^9.25.2"
+    "@fluentui/react-provider": "npm:^9.22.19"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-spinner": "npm:^9.8.4"
     "@fluentui/react-switch": "npm:^9.7.4"
@@ -5546,13 +5546,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-table@npm:*, @fluentui/react-table@npm:^9.19.17, @fluentui/react-table@workspace:packages/react-components/react-table/library":
+"@fluentui/react-table@npm:*, @fluentui/react-table@npm:^9.19.18, @fluentui/react-table@workspace:packages/react-components/react-table/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-table@workspace:packages/react-components/react-table/library"
   dependencies:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
     "@fluentui/react-aria": "npm:^9.17.13"
-    "@fluentui/react-avatar": "npm:^9.11.3"
+    "@fluentui/react-avatar": "npm:^9.11.4"
     "@fluentui/react-checkbox": "npm:^9.6.3"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-icons": "npm:^2.0.245"
@@ -5623,22 +5623,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tag-picker@npm:*, @fluentui/react-tag-picker@npm:^9.10.0, @fluentui/react-tag-picker@workspace:packages/react-components/react-tag-picker/library":
+"@fluentui/react-tag-picker@npm:*, @fluentui/react-tag-picker@npm:^9.10.1, @fluentui/react-tag-picker@workspace:packages/react-components/react-tag-picker/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tag-picker@workspace:packages/react-components/react-tag-picker/library"
   dependencies:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
     "@fluentui/react-aria": "npm:^9.17.13"
-    "@fluentui/react-combobox": "npm:^9.17.3"
+    "@fluentui/react-combobox": "npm:^9.17.4"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-field": "npm:^9.5.3"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-portal": "npm:^9.8.14"
-    "@fluentui/react-positioning": "npm:^9.22.3"
+    "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
-    "@fluentui/react-tags": "npm:^9.9.2"
+    "@fluentui/react-tags": "npm:^9.9.3"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@griffel/react": "npm:^1.5.32"
@@ -5657,13 +5657,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tags@npm:*, @fluentui/react-tags@npm:^9.9.2, @fluentui/react-tags@workspace:packages/react-components/react-tags/library":
+"@fluentui/react-tags@npm:*, @fluentui/react-tags@npm:^9.9.3, @fluentui/react-tags@workspace:packages/react-components/react-tags/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tags@workspace:packages/react-components/react-tags/library"
   dependencies:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
     "@fluentui/react-aria": "npm:^9.17.13"
-    "@fluentui/react-avatar": "npm:^9.11.3"
+    "@fluentui/react-avatar": "npm:^9.11.4"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
@@ -5686,7 +5686,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-teaching-popover@npm:*, @fluentui/react-teaching-popover@npm:^9.7.2, @fluentui/react-teaching-popover@workspace:packages/react-components/react-teaching-popover/library":
+"@fluentui/react-teaching-popover@npm:*, @fluentui/react-teaching-popover@npm:^9.7.3, @fluentui/react-teaching-popover@workspace:packages/react-components/react-teaching-popover/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-teaching-popover@workspace:packages/react-components/react-teaching-popover/library"
   dependencies:
@@ -5695,7 +5695,7 @@ __metadata:
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
-    "@fluentui/react-popover": "npm:^9.14.4"
+    "@fluentui/react-popover": "npm:^9.14.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -5742,7 +5742,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-textarea@npm:*, @fluentui/react-textarea@npm:^9.7.4, @fluentui/react-textarea@workspace:packages/react-components/react-textarea/library":
+"@fluentui/react-textarea@npm:*, @fluentui/react-textarea@npm:^9.7.5, @fluentui/react-textarea@workspace:packages/react-components/react-textarea/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-textarea@workspace:packages/react-components/react-textarea/library"
   dependencies:
@@ -5795,7 +5795,7 @@ __metadata:
   resolution: "@fluentui/react-timepicker-compat@workspace:packages/react-components/react-timepicker-compat/library"
   dependencies:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
-    "@fluentui/react-combobox": "npm:^9.17.3"
+    "@fluentui/react-combobox": "npm:^9.17.4"
     "@fluentui/react-field": "npm:^9.5.3"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
@@ -5877,14 +5877,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tooltip@npm:*, @fluentui/react-tooltip@npm:^9.10.3, @fluentui/react-tooltip@workspace:packages/react-components/react-tooltip/library":
+"@fluentui/react-tooltip@npm:*, @fluentui/react-tooltip@npm:^9.10.4, @fluentui/react-tooltip@workspace:packages/react-components/react-tooltip/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tooltip@workspace:packages/react-components/react-tooltip/library"
   dependencies:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-portal": "npm:^9.8.14"
-    "@fluentui/react-positioning": "npm:^9.22.3"
+    "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.16"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -5905,13 +5905,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tree@npm:*, @fluentui/react-tree@npm:^9.16.3, @fluentui/react-tree@workspace:packages/react-components/react-tree/library":
+"@fluentui/react-tree@npm:*, @fluentui/react-tree@npm:^9.16.4, @fluentui/react-tree@workspace:packages/react-components/react-tree/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tree@workspace:packages/react-components/react-tree/library"
   dependencies:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
     "@fluentui/react-aria": "npm:^9.17.13"
-    "@fluentui/react-avatar": "npm:^9.11.3"
+    "@fluentui/react-avatar": "npm:^9.11.4"
     "@fluentui/react-button": "npm:^9.10.1"
     "@fluentui/react-checkbox": "npm:^9.6.3"
     "@fluentui/react-context-selector": "npm:^9.2.18"
@@ -6032,7 +6032,7 @@ __metadata:
   resolution: "@fluentui/recipes@workspace:packages/react-components/recipes"
   dependencies:
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-provider": "npm:^9.22.18"
+    "@fluentui/react-provider": "npm:^9.22.19"
     "@fluentui/react-text": "npm:^9.6.18"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-utilities": "npm:^9.26.5"
@@ -6357,7 +6357,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/theme-designer@workspace:packages/react-components/theme-designer"
   dependencies:
-    "@fluentui/react-components": "npm:^9.74.4"
+    "@fluentui/react-components": "npm:^9.74.5"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:^0.3.1"
@@ -6487,7 +6487,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/visual-regression-utilities@workspace:tools/visual-regression-utilities"
   dependencies:
-    "@fluentui/react-provider": "npm:^9.22.18"
+    "@fluentui/react-provider": "npm:^9.22.19"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
