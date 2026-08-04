@@ -156,11 +156,13 @@
    * `--colorStrokeFocus2`), and with no `outlineOffset` the utility's
    * `calc(0px - <width> - 0px)` reproduces `calc(<width> * -1)` exactly.
    *
-   * The knob is set on `&::after`, not on the element: it is registered with
-   * `@property … inherits: false`, and a pseudo-element takes the INITIAL value of every
-   * non-inherited property, so a knob set on the `<td>` would never reach `::after`
-   * (react-card precedent). The ring is positioned against the `position: relative` that
-   * `.day-cell` sets above, as `createFocusOutlineStyle` requires.
+   * The knob is set on `&::after`, not on the element: the `fui-focus-outline` utility
+   * RESETS every outline knob to `initial` on the element it is applied to
+   * (react-tailwind-theme/css/utilities.css — isolation for the unregistered,
+   * otherwise-inheriting knobs), and declarations on `::after` itself sit past that
+   * element-level reset and always win (react-card precedent). The ring is positioned
+   * against the `position: relative` that `.day-cell` sets above, as
+   * `createFocusOutlineStyle` requires.
    *
    * The two `outline-style: none` rules are emitted OUTSIDE the focus-visible selector by
    * `createFocusOutlineStyle`, so they stay here with the caller.

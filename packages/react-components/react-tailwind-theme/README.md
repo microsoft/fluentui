@@ -5,8 +5,10 @@
 Fluent UI React v9 component packages ship plain, precompiled CSS (`<package>/dist/styles.css`,
 reached automatically through each package's generated class map). That compiled CSS references a
 small set of theme-level custom properties — the cascade `@layer` order, `--base-scale`,
-`--spacing`, the four stroke widths and the focus-outline `@property` registrations. Something has
-to emit those **once per document**. That is this package.
+`--spacing` and the four stroke widths. Something has to emit those **once per document**. That is
+this package. (It deliberately registers **no** `@property` rules: a non-empty custom-property
+registry puts Blink's transition-start path on a page-global slow branch — see
+`migration/griffel-to-tailwind/reports/perf-property-remedy.md`.)
 
 > ⚠ This package exports no JavaScript. It is CSS only.
 

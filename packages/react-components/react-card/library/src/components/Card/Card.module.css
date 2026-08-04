@@ -505,13 +505,13 @@
    *                          causes some weird bugs"), reproduced verbatim, NOT
    *                          "fixed" to a stroke width (DECISIONS.md D6).
    *
-   * The knobs are set on `&::after`, not on the element: they are registered with
-   * `@property … inherits: false` (react-tailwind-theme/css/utilities.css) so that a knob
-   * on one component can never leak into a nested one — and a pseudo-element takes the
-   * INITIAL value of every non-inherited property, so a knob set on the root would not
-   * reach `::after`, where all three are consumed. Custom properties resolve at
-   * computed-value time, so declaring them in a second `::after` rule works regardless of
-   * which rule is written first.
+   * The knobs are set on `&::after`, not on the element: the `fui-focus-outline` utility
+   * RESETS every outline knob to `initial` on the element it is applied to
+   * (react-tailwind-theme/css/utilities.css — the knobs are unregistered and would
+   * otherwise inherit, so the reset is what keeps a knob on one component from leaking
+   * into a nested one). Declarations on `::after` itself sit past that element-level
+   * reset and always win. Custom properties resolve at computed-value time, so declaring
+   * them in a second `::after` rule works regardless of which rule is written first.
    *
    * `--fui-Card--border-radius` itself is an UNregistered custom property, so it inherits
    * into `::after` normally — the reset above already relies on that.

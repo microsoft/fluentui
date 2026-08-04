@@ -165,11 +165,12 @@
 
       &::after {
         /*
-         * The knob is set on `&::after`, not on the element: it is registered
-         * `@property … inherits: false`, and a pseudo-element takes the INITIAL value of
-         * every non-inherited property, so a knob on the root would not reach `::after`,
-         * where it is consumed. Custom properties resolve at computed-value time, so
-         * declaring it in a second `::after` rule works regardless of rule order.
+         * The knob is set on `&::after`, not on the element: the `fui-focus-outline`
+         * utility RESETS every outline knob to `initial` on the element it is applied to
+         * (react-tailwind-theme/css/utilities.css — isolation for the unregistered,
+         * otherwise-inheriting knobs), and declarations on `::after` itself sit past that
+         * element-level reset and always win. Custom properties resolve at computed-value
+         * time, so declaring it in a second `::after` rule works regardless of rule order.
          *
          * Only the BLOCK axis can ride the knob — `outlineOffset` was passed per side and
          * the inline sides differ per orientation, so they are written out below. Byte-check

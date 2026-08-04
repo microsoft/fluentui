@@ -19,47 +19,33 @@
  * ── Parameterisation ────────────────────────────────────────────────────────────────
  * The compiled Griffel output differs per component only in the values react-tabster's
  * options expose (`outlineRadius`, `outlineColor`, `outlineWidth`, `outlineOffset`).
- * Those become CSS custom properties here, each registered with `@property … inherits:
- * false` so a knob set on one button can NEVER leak into a nested one (SplitButton
- * renders a Button inside a Button). With every knob unset the `var()` fallbacks
- * reproduce the compiled defaults exactly — see the byte-comparisons below.
+ * Those become CSS custom properties here ("knobs"). With every knob unset the `var()`
+ * fallbacks reproduce the compiled defaults exactly — see the byte-comparisons below.
+ *
+ * ── Isolation (why each utility RESETS its knobs) ───────────────────────────────────
+ * The knobs are deliberately UNREGISTERED (no `@property`), and each utility opens by
+ * resetting every knob it consumes to `initial` on the element it is applied to.
+ * Unregistered custom properties inherit, and `initial` on an unregistered custom
+ * property is the guaranteed-invalid value — so the resets keep the knobs self-scoped:
+ * a knob set on an ancestor can never leak into a nested component's focus indicator
+ * (SplitButton renders a Button inside a Button), and an unset knob still resolves to
+ * its `var()` fallback. To override a knob, set it on the consuming element in a
+ * declaration that beats the component's focus rule (after the `@apply` in the same
+ * rule, a higher layer, or unlayered consumer CSS) — or, for `fui-focus-outline`, on
+ * the `::after` pseudo-element itself, which the element-level resets never touch
+ * (that is where every in-repo caller sets its knobs).
+ *
+ * The knobs were previously registered with `@property … syntax:'*'; inherits:false`,
+ * which enforced both guarantees engine-side. The registrations were REMOVED
+ * (2026-08-04): any non-empty custom-property registry flips Blink's transition-start
+ * path onto a page-global slow branch costing ~9.4 µs per started CSS transition —
+ * paid by EVERY transition on the page, on properties unrelated to the registered
+ * ones, turning ~2.5× toggle-cost regressions in transition-heavy scenarios. See
+ * migration/griffel-to-tailwind/reports/perf-mechanism-diagnostic.md (mechanism +
+ * strip experiment) and reports/perf-property-remedy.md (this change and its gates).
+ * Do NOT reintroduce `@property` into shipped FluentUI CSS without re-running that
+ * perf gate.
  */
-
-/* Knobs. `syntax: '*'` with no `initial-value` gives the guaranteed-invalid initial
-   value, so an unset knob always resolves to the `var()` fallback; `inherits: false`
-   stops any knob from reaching descendants. */
-@property --fui-focus-outline-width {
-  syntax: '*';
-  inherits: false;
-}
-@property --fui-focus-outline-color {
-  syntax: '*';
-  inherits: false;
-}
-@property --fui-focus-outline-radius {
-  syntax: '*';
-  inherits: false;
-}
-@property --fui-focus-outline-offset {
-  syntax: '*';
-  inherits: false;
-}
-@property --fui-focus-ring-color {
-  syntax: '*';
-  inherits: false;
-}
-@property --fui-focus-ring-radius {
-  syntax: '*';
-  inherits: false;
-}
-@property --fui-focus-ring-width {
-  syntax: '*';
-  inherits: false;
-}
-@property --fui-focus-ring-inset-width {
-  syntax: '*';
-  inherits: false;
-}
 
 /**
  * `fui-focus-outline` — the DEFAULT ring produced by
@@ -92,6 +78,15 @@
  * output before trusting it.
  */
 @utility fui-focus-outline {
+  /* Knob isolation — see the header note. `initial` is the guaranteed-invalid value
+     for these unregistered properties: an ancestor's knob override stops here, the
+     `var()` fallbacks below stay live, and `::after`-level knob declarations (how all
+     in-repo callers parameterise this ring) are unaffected. */
+  --fui-focus-outline-width: initial;
+  --fui-focus-outline-color: initial;
+  --fui-focus-outline-radius: initial;
+  --fui-focus-outline-offset: initial;
+
   border-top-color: transparent;
   border-right-color: transparent;
   border-bottom-color: transparent;
@@ -153,6 +148,13 @@
  * against the `border:` shorthand a caller's base rule may set in a lower layer.
  */
 @utility fui-focus-ring {
+  /* Knob isolation — see the header note. Same-element overrides must come AFTER the
+     `@apply` (or from a higher layer / unlayered consumer CSS) to beat these resets. */
+  --fui-focus-ring-color: initial;
+  --fui-focus-ring-radius: initial;
+  --fui-focus-ring-width: initial;
+  --fui-focus-ring-inset-width: initial;
+
   border-color: var(--fui-focus-ring-color, var(--colorStrokeFocus2));
   border-radius: var(--fui-focus-ring-radius, var(--borderRadiusMedium));
   border-width: var(--fui-focus-ring-width, 1px);

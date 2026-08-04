@@ -6,9 +6,10 @@
  * The output holds the `@layer` order statement, the `@theme` custom properties
  * (`--base-scale`, `--spacing`), the 4 stroke widths (`--spacing-thin` … `--spacing-thickest`,
  * the only token registrations that emit a variable — border/outline widths do not consume
- * the `--spacing-*` namespace, so modules reference them directly) and the focus-knob
- * `@property` registrations. Everything a component sheet references, nothing a component
- * sheet duplicates.
+ * the `--spacing-*` namespace, so modules reference them directly). The focus-knob
+ * `@property` registrations were REMOVED (Blink registry transition-start penalty —
+ * reports/perf-property-remedy.md); the artifact must contain ZERO `@property` rules.
+ * Everything a component sheet references, nothing a component sheet duplicates.
  *
  * NO `project.json` on purpose. The workspace plugin creates its nodes from `project.json`
  * files and unconditionally infers `clean` / `format` / `type-check` targets (plus a

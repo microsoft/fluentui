@@ -12,7 +12,9 @@
  * (`dist/styles.css`) which the consuming document imports exactly once — never bundled
  * into a component package.
  *
- * What it emits: `--base-scale`, `--spacing`, the focus-knob `@property` registrations, and
+ * What it emits: `--base-scale`, `--spacing` (NO focus-knob `@property` registrations —
+ * removed for the Blink registry transition-start penalty, see
+ * migration/griffel-to-tailwind/reports/perf-property-remedy.md), and
  * the 4 stroke widths `--spacing-thin/thick/thicker/thickest`. Those four come from the
  * generated `css/tokens.css` and are the ONLY token registrations that also emit a variable
  * — border/outline/ring/decoration widths do not consume the `--spacing-*` namespace, so
