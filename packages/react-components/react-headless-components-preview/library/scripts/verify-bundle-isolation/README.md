@@ -2,7 +2,26 @@
 
 Verifies that headless package bundle-size fixtures do not retain browser runtimes that the headless API must avoid.
 
-The check bundles each `*.fixture.js` file with esbuild and inspects the retained module graph. It fails when a configured forbidden package survives tree shaking, when bundling resolves to package source instead of built output, or when a known violation becomes stale.
+The check bundles each `*.fixture.js` file with webpack — the same bundler that produces the bundle-size numbers — and inspects the resulting module graph. It fails when a configured forbidden package survives tree shaking, when bundling resolves to package source instead of built output, or when a known violation becomes stale.
+
+On failure it names the exact exports that kept the package alive and the modules importing them:
+
+```
+AllComponents.fixture.js pulls in forbidden runtime:
+    @fluentui/react-icons - 9 modules retained
+      ChevronDownRegular <- packages/.../react-tag-picker/library/lib/components/TagPickerControl/useTagPickerControl.js
+      DismissRegular <- packages/.../react-teaching-popover/library/lib/components/TeachingPopoverTitle/useTeachingPopoverTitle.js
+```
+
+Attribution intersects webpack's `usedExports` with active import connections, and counts an importer only when that module survived into a chunk. Import edges alone are recorded before tree shaking, so a package importing an unused icon is not reported as a leak.
+
+The analysis lives in [`bundle-isolation-plugin.js`](./bundle-isolation-plugin.js) as a standard webpack plugin, so it can also be applied to an existing build instead of the one the CLI creates:
+
+```js
+new BundleIsolationPlugin({ forbiddenPackages, workspaceRoot, onReport });
+```
+
+It requires `optimization.concatenateModules: false` — scope hoisting merges modules into a `ConcatenatedModule` with no per-module `resource`, which hides the packages being looked for.
 
 ## Usage
 
@@ -16,6 +35,12 @@ Use a different package-root-relative configuration file with:
 
 ```sh
 node scripts/verify-bundle-isolation/cli.js --config ./bundle-isolation.config.json
+```
+
+Emit a webpack-bundle-analyzer treemap per fixture into `dist/bundle-isolation/` with:
+
+```sh
+node scripts/verify-bundle-isolation/cli.js --analyze
 ```
 
 The Nx target builds dependencies and runs the check with the correct working directory:

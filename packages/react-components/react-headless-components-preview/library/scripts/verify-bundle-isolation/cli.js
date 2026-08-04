@@ -3,20 +3,24 @@
  * Asserts that no bundle-size fixture in this package bundles a runtime the headless API is
  * meant to stay free of.
  *
- * Runs against the built `lib/` output (never `src/`) because tree shaking depends on
- * `/*#__PURE__*\/` annotations that swc only adds at build time.
+ * Bundles with webpack so the verdict comes from the same bundler that produces the bundle-size
+ * numbers, and so `usedExports` can name the exact symbols that survived tree shaking.
  *
- * Usage: node scripts/verify-bundle-isolation/cli.js
+ * Usage: node scripts/verify-bundle-isolation/cli.js [--config <path>] [--analyze]
  */
 const { existsSync, readdirSync, readFileSync } = require('node:fs');
 const { dirname, isAbsolute, join, resolve, sep } = require('node:path');
 const { parseArgs } = require('node:util');
 
 const Ajv = /** @type {typeof import('ajv').default} */ (/** @type {unknown} */ (require('ajv')));
-const esbuild = require('esbuild');
+const webpack = require('webpack');
+
+const { BundleIsolationPlugin } = require('./bundle-isolation-plugin');
 
 /** @typedef {{fixturesRoot: string, externals: string[], forbiddenPackages: string[], knownViolations: Record<string, string[]>}} Config */
-/** @typedef {{configPath: string, config: Config, fixturesRoot: string, packageRoot: string, workspaceRoot: string}} RuntimeOptions */
+/** @typedef {{configPath: string, analyze: boolean, config: Config, fixturesRoot: string, packageRoot: string, workspaceRoot: string}} RuntimeOptions */
+/** @typedef {import('./bundle-isolation-plugin').Leak} Leak */
+/** @typedef {import('./bundle-isolation-plugin').BundleIsolationReport} BundleIsolationReport */
 
 const schemaPath = join(__dirname, 'schema.json');
 
@@ -25,7 +29,7 @@ main(processArgs()).catch(error => {
   process.exit(1);
 });
 
-/** @param {{configPath: string}} options */
+/** @param {{configPath: string, analyze: boolean}} options */
 async function main(options) {
   const packageRoot = dirname(options.configPath);
   const workspaceRoot = findWorkspaceRoot(packageRoot);
@@ -44,6 +48,11 @@ async function main(options) {
   const results = await Promise.all(fixtures.map(fixture => verifyFixture(fixture, runtimeOptions)));
 
   const failures = collectFailures(results, runtimeOptions);
+
+  if (options.analyze) {
+    const reports = join(packageRoot, 'dist', 'bundle-isolation');
+    console.log(`Analyzer reports written to ${relativeToWorkspace(reports, workspaceRoot)}`);
+  }
 
   if (failures.length === 0) {
     console.log(
@@ -64,11 +73,15 @@ function processArgs() {
         type: 'string',
         default: 'bundle-isolation.config.json',
       },
+      analyze: {
+        type: 'boolean',
+        default: false,
+      },
     },
     allowPositionals: false,
   });
 
-  return { configPath: resolve(process.cwd(), values.config) };
+  return { configPath: resolve(process.cwd(), values.config), analyze: values.analyze };
 }
 
 /**
@@ -76,157 +89,103 @@ function processArgs() {
  * @param {RuntimeOptions} options
  */
 async function verifyFixture(fixture, options) {
-  /** @type {{fixture: string, found: string[], rootCauses: string[], chains: Record<string, string[]>, sourceResolved: string[], error?: string}} */
-  const result = { fixture, found: [], rootCauses: [], chains: {}, sourceResolved: [] };
+  /** @type {{fixture: string, found: string[], leaks: Record<string, Leak>, sourceResolved: string[], error?: string}} */
+  const result = { fixture, found: [], leaks: {}, sourceResolved: [] };
 
-  let metafile;
+  let stats;
+  /** @type {BundleIsolationReport | undefined} */
+  let report;
+
   try {
-    ({ metafile } = await esbuild.build({
-      entryPoints: [join(options.fixturesRoot, fixture)],
-      bundle: true,
-      write: false,
-      metafile: true,
-      format: 'esm',
-      platform: 'browser',
-      external: options.config.externals,
-      absWorkingDir: options.workspaceRoot,
-      logLevel: 'silent',
-      // `tsconfig.base.json` maps every `@fluentui/*` specifier to `library/src/index.ts`, and esbuild
-      // honours those paths - which would verify sources instead of the published output. An inline
-      // empty config disables tsconfig discovery so resolution goes through `exports` only.
-      tsconfigRaw: {},
-      conditions: ['import'],
-    }));
+    stats = await bundleFixture(fixture, options, value => {
+      report = value;
+    });
   } catch (error) {
     result.error = error instanceof Error ? error.message : String(error);
     return result;
   }
 
-  const output = Object.values(metafile.outputs)[0];
-  const kept = new Set(Object.keys(output.inputs));
-  const entry = output.entryPoint;
-  const ownerOf = createForbiddenOwnerResolver(options);
-
-  if (!entry) {
-    result.error = 'esbuild did not report an entry point for the fixture output';
+  if (stats.hasErrors()) {
+    result.error = (stats.toJson({ all: false, errors: true }).errors ?? []).map(error => error.message).join('\n    ');
     return result;
   }
 
-  result.sourceResolved = [...kept].filter(modulePath => /[/\\]library[/\\]src[/\\]/.test(modulePath));
+  if (!report) {
+    result.error = 'the bundle isolation plugin did not report on this build';
+    return result;
+  }
 
-  // The output's module list is authoritative for *what* leaked.
-  result.found = [...new Set([...kept].map(ownerOf).filter(Boolean))].sort();
-
-  // Chains are best effort: prefer a path made only of retained modules, but esbuild records
-  // import edges from the pre-shaking graph, so a retained module's only recorded importer may
-  // itself have been eliminated. Fall back to the full graph so every leak still gets a chain.
-  const keptChains = traceForbiddenPackages(metafile, entry, ownerOf, modulePath => kept.has(modulePath));
-  const allChains = result.found.every(name => name in keptChains)
-    ? keptChains
-    : traceForbiddenPackages(metafile, entry, ownerOf, () => true);
-  result.chains = Object.fromEntries(result.found.map(name => [name, keptChains[name] ?? allChains[name] ?? []]));
-
-  // A package reached *through* another forbidden package is a symptom, not a cause.
-  result.rootCauses = result.found.filter(name =>
-    result.chains[name].slice(0, -1).every(step => {
-      const owner = ownerOf(step);
-      return owner === null || owner === name;
-    }),
-  );
+  result.leaks = report.leaks;
+  result.sourceResolved = report.sourceResolved;
+  result.found = Object.keys(report.leaks).sort();
 
   return result;
 }
 
 /**
- * Breadth-first walk of the module graph, recording the shortest import chain from the
- * entry to the first module of every forbidden package it reaches.
- *
- * One traversal (rather than a search per package) guarantees each reported chain is
- * genuinely reachable and is the shortest one.
- *
- * @param {import('esbuild').Metafile} metafile
- * @param {string} entry
- * @param {(modulePath: string) => string | null} ownerOf
- * @param {(modulePath: string) => boolean} allowEdge
- * @returns {Record<string, string[]>}
+ * @param {string} fixture
+ * @param {RuntimeOptions} options
+ * @param {(report: BundleIsolationReport) => void} onReport
+ * @returns {Promise<import('webpack').Stats>}
  */
-function traceForbiddenPackages(metafile, entry, ownerOf, allowEdge) {
-  /** @type {Map<string, string | null>} */
-  const previous = new Map([[entry, null]]);
-  const queue = [entry];
-  /** @type {Record<string, string[]>} */
-  const chains = {};
+function bundleFixture(fixture, options, onReport) {
+  const compiler = webpack(createWebpackConfig(fixture, options, onReport));
 
-  while (queue.length > 0) {
-    const current = /** @type {string} */ (queue.shift());
-    const owner = current === entry ? null : ownerOf(current);
-
-    if (owner && !(owner in chains)) {
-      const chain = [];
-      for (let node = /** @type {string | null} */ (current); node; node = previous.get(node) ?? null) {
-        chain.unshift(node);
-      }
-      chains[owner] = chain.slice(1); // drop the synthetic entry module
-    }
-
-    for (const imported of metafile.inputs[current]?.imports ?? []) {
-      if (!allowEdge(imported.path) || previous.has(imported.path)) {
-        continue;
-      }
-      previous.set(imported.path, current);
-      queue.push(imported.path);
-    }
-  }
-
-  return chains;
+  return new Promise((resolveStats, rejectStats) => {
+    compiler.run((error, stats) => {
+      compiler.close(() => {
+        if (error || !stats) {
+          rejectStats(error ?? new Error('webpack finished without producing stats'));
+          return;
+        }
+        resolveStats(stats);
+      });
+    });
+  });
 }
 
 /**
- * Maps a module path to the forbidden package owning it, or `null`.
- *
- * Ownership is resolved by walking up to the nearest `package.json`, which handles both
- * `node_modules` dependencies and workspace packages (esbuild resolves symlinked workspace
- * packages to their real path, so there is no `node_modules` segment to match on).
+ * @param {string} fixture
+ * @param {RuntimeOptions} options
+ * @param {(report: BundleIsolationReport) => void} onReport
+ * @returns {import('webpack').Configuration}
  */
-/** @param {RuntimeOptions} options */
-function createForbiddenOwnerResolver(options) {
-  const exact = new Set(options.config.forbiddenPackages.filter(pattern => !pattern.endsWith('/*')));
-  const scopes = options.config.forbiddenPackages
-    .filter(pattern => pattern.endsWith('/*'))
-    .map(pattern => pattern.slice(0, -1));
-  /** @type {Map<string, string | null>} */
-  const cache = new Map();
+function createWebpackConfig(fixture, options, onReport) {
+  const outputPath = join(options.packageRoot, 'dist', 'bundle-isolation', fixture.replace(/\.fixture\.js$/, ''));
 
-  /** @param {string} modulePath */
-  return function ownerOf(modulePath) {
-    let dir = dirname(isAbsolute(modulePath) ? modulePath : join(options.workspaceRoot, modulePath));
-    const visited = [];
-
-    while (dir && dir !== dirname(dir)) {
-      if (cache.has(dir)) {
-        const cached = cache.get(dir) ?? null;
-        visited.forEach(seen => cache.set(seen, cached));
-        return cached;
-      }
-      visited.push(dir);
-
-      const manifest = join(dir, 'package.json');
-      if (existsSync(manifest)) {
-        const name = readJson(manifest).name;
-        // Nested manifests without a name (e.g. `{ "type": "module" }` markers) are not package roots.
-        if (name) {
-          const owner = exact.has(name) || scopes.some(scope => name.startsWith(scope)) ? name : null;
-          visited.forEach(seen => cache.set(seen, owner));
-          return owner;
-        }
-      }
-
-      dir = dirname(dir);
-    }
-
-    visited.forEach(seen => cache.set(seen, null));
-    return null;
+  return {
+    name: 'bundle-isolation',
+    target: 'web',
+    mode: 'production',
+    context: options.workspaceRoot,
+    entry: join(options.fixturesRoot, fixture),
+    externals: Object.fromEntries(options.config.externals.map(name => [name, name])),
+    output: { path: outputPath, filename: 'index.js' },
+    performance: { hints: false },
+    // Scope hoisting and minification change how code is emitted, not which modules and exports
+    // survive tree shaking, so both stay off to keep the module graph 1:1 for attribution.
+    optimization: { concatenateModules: false, minimize: false },
+    plugins: [
+      new BundleIsolationPlugin({
+        forbiddenPackages: options.config.forbiddenPackages,
+        workspaceRoot: options.workspaceRoot,
+        onReport,
+      }),
+      ...(options.analyze ? [createAnalyzerPlugin(outputPath)] : []),
+    ],
   };
+}
+
+/** @param {string} outputPath */
+function createAnalyzerPlugin(outputPath) {
+  const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+  return new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+    reportFilename: join(outputPath, 'report.html'),
+    openAnalyzer: false,
+    logLevel: 'silent',
+  });
 }
 
 /**
@@ -255,18 +214,8 @@ function collectFailures(results, options) {
     const fixed = allowed.filter(name => !result.found.includes(name));
 
     if (regressions.length > 0) {
-      const causes = regressions.filter(name => result.rootCauses.includes(name));
-      const symptoms = regressions.filter(name => !causes.includes(name));
-      const details = (causes.length > 0 ? causes : regressions)
-        .map(name => {
-          const chain = result.chains[name].map(
-            (step, index) => `${'  '.repeat(index + 3)}|- ${relativeToWorkspace(step, options.workspaceRoot)}`,
-          );
-          return `    ${name}\n${chain.join('\n')}`;
-        })
-        .join('\n');
-      const trailer = symptoms.length > 0 ? `\n    ...which also pulls in ${symptoms.join(', ')}` : '';
-      failures.push(`${result.fixture} pulls in forbidden runtime:\n${details}${trailer}`);
+      const details = regressions.map(name => describeLeak(name, result.leaks[name], options)).join('\n');
+      failures.push(`${result.fixture} pulls in forbidden runtime:\n${details}`);
     }
 
     if (fixed.length > 0) {
@@ -290,6 +239,30 @@ function collectFailures(results, options) {
   }
 
   return failures;
+}
+
+/**
+ * @param {string} name
+ * @param {Leak} leak
+ * @param {RuntimeOptions} options
+ */
+function describeLeak(name, leak, options) {
+  const header = `    ${name} - ${leak.modules} module${leak.modules === 1 ? '' : 's'} retained`;
+
+  if (leak.exports.length === 0) {
+    return `${header}\n      no importing symbol identified - rerun with --analyze to inspect the bundle`;
+  }
+
+  const listed = leak.exports.slice(0, 5).map(({ name: exportName, importers }) => {
+    const shown = importers.slice(0, 2).map(importer => relativeToWorkspace(importer, options.workspaceRoot));
+    const hidden = importers.length - shown.length;
+    return `      ${exportName} <- ${shown.join(', ')}${hidden > 0 ? ` (+${hidden} more)` : ''}`;
+  });
+  const rest = leak.exports.length - listed.length;
+
+  return `${header}\n${listed.join('\n')}${
+    rest > 0 ? `\n      ...and ${rest} more export${rest === 1 ? '' : 's'}` : ''
+  }`;
 }
 
 /** @param {string} root */

@@ -24,10 +24,11 @@
         "{projectRoot}/scripts/verify-bundle-isolation/schema.json",
         "{projectRoot}/bundle-size/**/*",
         "{projectRoot}/package.json",
-        { "externalDependencies": ["ajv", "esbuild"] }
+        { "externalDependencies": ["ajv", "webpack"] }
       ],
+      "outputs": ["{projectRoot}/dist/bundle-isolation"],
       "metadata": {
-        "technologies": ["esbuild"],
+        "technologies": ["webpack"],
         "description": "Assert entry points do not bundle tabster, Griffel or react-icons"
       }
     }
