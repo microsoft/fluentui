@@ -10,6 +10,23 @@
       "options": {
         "exportSubpaths": true
       }
+    },
+    "verify-bundle-isolation": {
+      "cache": true,
+      "dependsOn": ["build", "^build"],
+      "command": "node scripts/verify-bundle-isolation/cli.js",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "inputs": [
+        "{projectRoot}/scripts/verify-bundle-isolation/cli.js",
+        "{projectRoot}/package.json",
+        { "externalDependencies": ["esbuild"] }
+      ],
+      "metadata": {
+        "technologies": ["esbuild"],
+        "description": "Assert entry points do not bundle tabster, Griffel or react-icons"
+      }
     }
   }
 }
