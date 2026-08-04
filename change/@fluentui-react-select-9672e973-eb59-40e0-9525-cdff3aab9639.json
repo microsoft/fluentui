@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: fix Field control size handling for Select",
+  "packageName": "@fluentui/react-select",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
