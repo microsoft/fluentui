@@ -35,6 +35,7 @@ export const useTagPickerButtonBase_unstable = (
 
   // casting is required here as triggerRef can either be button or input,
   // but in this case we can assure it's a button
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- useTriggerSlot pulls tabster via useTabsterAttributes
   const root = useButtonTriggerSlot(props, triggerRef as React.RefObject<HTMLButtonElement>, {
     activeDescendantController,
     defaultProps: {

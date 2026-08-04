@@ -77,6 +77,7 @@ export const useTagPickerInputBase_unstable = (
 
   const isTypingRef = React.useRef(false);
 
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- useTriggerSlot pulls tabster via useTabsterAttributes
   const root = useInputTriggerSlot(
     {
       type: 'text',

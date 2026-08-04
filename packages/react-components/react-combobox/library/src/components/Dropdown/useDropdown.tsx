@@ -73,6 +73,7 @@ export const useDropdownBase_unstable = (
     disabled: !open,
   });
 
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- useTriggerSlot pulls tabster via useTabsterAttributes
   const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
     state: dropdownInternalState,
     defaultProps: {
