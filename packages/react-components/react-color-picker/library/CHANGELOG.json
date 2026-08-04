@@ -2,6 +2,21 @@
   "name": "@fluentui/react-color-picker",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:17 GMT",
+      "tag": "@fluentui/react-color-picker_v9.2.19",
+      "version": "9.2.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "Pin @ctrl/tinycolor version to prevent yarn modern duplication"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:41 GMT",
       "tag": "@fluentui/react-color-picker_v9.2.18",
       "version": "9.2.18",

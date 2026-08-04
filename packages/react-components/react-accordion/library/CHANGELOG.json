@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:14 GMT",
+      "tag": "@fluentui/react-accordion_v9.12.1",
+      "version": "9.12.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:06 GMT",
       "tag": "@fluentui/react-accordion_v9.12.1",
       "version": "9.12.1",

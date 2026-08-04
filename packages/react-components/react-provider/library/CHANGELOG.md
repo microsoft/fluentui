@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Wed, 24 Jun 2026 11:09:53 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.19)
+
+Tue, 04 Aug 2026 10:12:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.22.18..@fluentui/react-provider_v9.22.19)
+
+### Patches
+
+- fix: escape SSR theme style selectors ([PR #36464](https://github.com/microsoft/fluentui/pull/36464) by paulmardling@microsoft.com)
 
 ## [9.22.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.18)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-timepicker-compat",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:26 GMT",
+      "tag": "@fluentui/react-timepicker-compat_v0.4.37",
+      "version": "0.4.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-combobox to v9.17.4",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:02 GMT",
       "tag": "@fluentui/react-timepicker-compat_v0.4.36",
       "version": "0.4.36",

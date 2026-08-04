@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-teaching-popover
 
-This log was last generated on Mon, 29 Jun 2026 15:15:07 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.3)
+
+Tue, 04 Aug 2026 10:12:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.7.2..@fluentui/react-teaching-popover_v9.7.3)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.14.5 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.2)
 

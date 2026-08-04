@@ -2,6 +2,29 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:11 GMT",
+      "tag": "@fluentui/react-textarea_v9.7.5",
+      "version": "9.7.5",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1",
+            "comment": "fix: fix Field control size handling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:02 GMT",
       "tag": "@fluentui/react-textarea_v9.7.4",
       "version": "9.7.4",

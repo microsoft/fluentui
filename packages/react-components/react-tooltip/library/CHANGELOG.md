@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Wed, 24 Jun 2026 11:10:03 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.10.4)
+
+Tue, 04 Aug 2026 10:12:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.10.3..@fluentui/react-tooltip_v9.10.4)
+
+### Patches
+
+- fix: hide Tooltip when its trigger scrolls outside an overflow container ([PR #36386](https://github.com/microsoft/fluentui/pull/36386) by paulmardling@microsoft.com)
+- Bump @fluentui/react-positioning to v9.23.0 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.10.3)
 

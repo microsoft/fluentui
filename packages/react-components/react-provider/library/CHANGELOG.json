@@ -2,6 +2,29 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:08 GMT",
+      "tag": "@fluentui/react-provider_v9.22.19",
+      "version": "9.22.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "cc7550b3dfcc51c6cf11a72d13b8c6bdbc930302",
+            "comment": "fix: escape SSR theme style selectors"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:53 GMT",
       "tag": "@fluentui/react-provider_v9.22.18",
       "version": "9.22.18",
