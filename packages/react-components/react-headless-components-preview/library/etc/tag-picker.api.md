@@ -16,7 +16,7 @@ import type { OptionSlots as OptionSlots_2 } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
-import { renderTagPicker_unstable as renderTagPicker } from '@fluentui/react-tag-picker';
+import { renderTagPickerBase_unstable as renderTagPicker } from '@fluentui/react-tag-picker';
 import { renderTagPickerButton_unstable as renderTagPickerButton } from '@fluentui/react-tag-picker';
 import { renderTagPickerControl_unstable as renderTagPickerControl } from '@fluentui/react-tag-picker';
 import { renderTagPickerGroup_unstable as renderTagPickerGroup } from '@fluentui/react-tag-picker';

@@ -12,6 +12,7 @@ export type {
 export {
   TagPicker,
   renderTagPicker_unstable,
+  renderTagPickerBase_unstable,
   useTagPicker_unstable,
   useTagPickerBase_unstable,
   useTagPickerContextValues,
