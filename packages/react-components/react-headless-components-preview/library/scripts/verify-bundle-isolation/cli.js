@@ -169,6 +169,7 @@ function createWebpackConfig(fixture, options, onReport) {
       new BundleIsolationPlugin({
         forbiddenPackages: options.config.forbiddenPackages,
         workspaceRoot: options.workspaceRoot,
+        packageRoot: options.packageRoot,
         onReport,
       }),
       ...(options.analyze ? [createAnalyzerPlugin(outputPath)] : []),
@@ -254,9 +255,15 @@ function describeLeak(name, leak, options) {
   }
 
   const listed = leak.exports.slice(0, 5).map(({ name: exportName, importers }) => {
-    const shown = importers.slice(0, 2).map(importer => relativeToWorkspace(importer, options.workspaceRoot));
-    const hidden = importers.length - shown.length;
-    return `      ${exportName} <- ${shown.join(', ')}${hidden > 0 ? ` (+${hidden} more)` : ''}`;
+    const lines = importers.slice(0, 2).map(importer => {
+      const module = relativeToWorkspace(importer.module, options.workspaceRoot);
+      return `        <- ${module}${importer.via ? ` (via ${importer.via})` : ''}`;
+    });
+    const hidden = importers.length - lines.length;
+    if (hidden > 0) {
+      lines.push(`        <- +${hidden} more`);
+    }
+    return `      ${exportName}\n${lines.join('\n')}`;
   });
   const rest = leak.exports.length - listed.length;
 

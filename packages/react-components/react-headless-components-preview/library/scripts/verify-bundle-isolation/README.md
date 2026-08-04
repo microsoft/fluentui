@@ -6,14 +6,19 @@ Fails when a bundle-size fixture retains a runtime the package is meant to stay 
 
 Each `*.fixture.js` is bundled with webpack — the same bundler behind the bundle-size numbers — and the resulting module graph is inspected. The check fails when a forbidden package survives tree shaking, when bundling resolves to sources instead of built output, or when a baseline entry is no longer reachable.
 
-Failures name the exports that kept the package alive and the modules importing them:
+Failures name the exports that kept the package alive, the modules importing them, and the module in this package that pulled those modules in:
 
 ```
 AllComponents.fixture.js pulls in forbidden runtime:
     @fluentui/react-icons - 9 modules retained
-      ChevronDownRegular <- .../react-tag-picker/lib/components/TagPickerControl/useTagPickerControl.js
-      DismissRegular <- .../react-teaching-popover/lib/components/TeachingPopoverTitle/useTeachingPopoverTitle.js
+      ChevronDownRegular
+        <- .../react-tag-picker/lib/components/TagPickerControl/useTagPickerControl.js (via lib/tag-picker.js)
+    @griffel/core - 11 modules retained
+      mergeClasses
+        <- .../react-portal/lib/components/Portal/usePortalMountNode.js (via lib/tag-picker.js)
 ```
+
+`via` matters when a leak arrives through a dependency: above, nothing imports `react-portal` directly - `lib/tag-picker.js` re-exports a render function that mounts a portal, which is what drags Griffel in.
 
 Attribution intersects webpack's `usedExports` with active import connections, and counts an importer only when that module itself survived into a chunk. Import edges are recorded before tree shaking, so a module importing something it no longer uses is not reported.
 
@@ -84,7 +89,9 @@ This prevents fixed leaks from being silently reintroduced.
 The analysis lives in [`bundle-isolation-plugin.js`](./bundle-isolation-plugin.js) as a standard webpack plugin, so it can run inside an existing build instead of the one the CLI creates:
 
 ```js
-new BundleIsolationPlugin({ forbiddenPackages, workspaceRoot, onReport });
+new BundleIsolationPlugin({ forbiddenPackages, workspaceRoot, packageRoot, onReport });
 ```
+
+`packageRoot` is optional and only powers the `via` origin.
 
 It requires `optimization.concatenateModules: false`, because scope hoisting merges modules into a `ConcatenatedModule` with no per-module `resource`.
