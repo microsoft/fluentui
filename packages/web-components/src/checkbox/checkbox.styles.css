@@ -79,16 +79,20 @@
 }
 
 :host(:state(checked)),
-:host(:state(indeterminate)) {
+:host(
+    :is(:state(indeterminate), [defaultindeterminate]:not(:state(dirty-indeterminate))):not(:is([disabled], :disabled))
+  ) {
   border-color: var(--colorCompoundBrandStroke);
 }
 
 :host(:state(checked)),
-:host(:state(indeterminate)) .indeterminate-indicator {
+:host(:state(indeterminate)) .indeterminate-indicator,
+:host([defaultindeterminate]:not(:state(dirty-indeterminate)):not(:state(checked))) .indeterminate-indicator {
   background-color: var(--colorCompoundBrandBackground);
 }
 
-:host(:state(indeterminate)) .indeterminate-indicator {
+:host(:state(indeterminate)) .indeterminate-indicator,
+:host([defaultindeterminate]:not(:state(dirty-indeterminate)):not(:state(checked))) .indeterminate-indicator {
   border-radius: var(--borderRadiusSmall);
   position: absolute;
   width: calc(var(--size) / 2);
@@ -119,7 +123,9 @@
   cursor: unset;
 }
 
-:host(:is([disabled], :disabled):state(indeterminate)) .indeterminate-indicator {
+:host(:is([disabled], :disabled):state(indeterminate)) .indeterminate-indicator,
+:host(:is([disabled], :disabled)[defaultindeterminate]:not(:state(dirty-indeterminate)):not(:state(checked)))
+  .indeterminate-indicator {
   background-color: var(--colorNeutralStrokeDisabled);
 }
 
@@ -148,12 +154,17 @@
   }
 
   :host(:state(checked)),
-  :host(:state(indeterminate)) .indeterminate-indicator {
+  :host(:state(indeterminate)) .indeterminate-indicator,
+  :host([defaultindeterminate]:not(:state(dirty-indeterminate)):not(:state(checked))) .indeterminate-indicator {
     background-color: FieldText;
   }
 
   :host(:state(checked):not(:is([disabled], :disabled)):hover),
-  :host(:state(indeterminate):not(:is([disabled], :disabled)):hover) .indeterminate-indicator {
+  :host(:state(indeterminate):not(:is([disabled], :disabled)):hover) .indeterminate-indicator,
+  :host(
+      [defaultindeterminate]:not(:state(dirty-indeterminate)):not(:state(checked)):not(:is([disabled], :disabled)):hover
+    )
+    .indeterminate-indicator {
     background-color: Highlight;
   }
 
@@ -161,7 +172,9 @@
     border-color: GrayText;
   }
 
-  :host(:is([disabled], :disabled):state(indeterminate)) .indeterminate-indicator {
+  :host(:is([disabled], :disabled):state(indeterminate)) .indeterminate-indicator,
+  :host(:is([disabled], :disabled)[defaultindeterminate]:not(:state(dirty-indeterminate)):not(:state(checked)))
+    .indeterminate-indicator {
     background-color: GrayText;
   }
 
