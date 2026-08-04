@@ -20,8 +20,11 @@
       },
       "inputs": [
         "{projectRoot}/scripts/verify-bundle-isolation/cli.js",
+        "{projectRoot}/bundle-isolation.config.json",
+        "{projectRoot}/scripts/verify-bundle-isolation/schema.json",
+        "{projectRoot}/bundle-size/**/*",
         "{projectRoot}/package.json",
-        { "externalDependencies": ["esbuild"] }
+        { "externalDependencies": ["ajv", "esbuild"] }
       ],
       "metadata": {
         "technologies": ["esbuild"],

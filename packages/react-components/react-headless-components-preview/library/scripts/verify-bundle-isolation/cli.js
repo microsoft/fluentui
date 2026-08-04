@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * Asserts that no entry point of this package bundles a runtime the headless API is
+ * Asserts that no bundle-size fixture in this package bundles a runtime the headless API is
  * meant to stay free of.
  *
  * Runs against the built `lib/` output (never `src/`) because tree shaking depends on
@@ -8,59 +8,47 @@
  *
  * Usage: node scripts/verify-bundle-isolation/cli.js
  */
-const { existsSync, readFileSync } = require('node:fs');
+const { existsSync, readdirSync, readFileSync } = require('node:fs');
 const { dirname, isAbsolute, join, resolve, sep } = require('node:path');
+const { parseArgs } = require('node:util');
 
+const Ajv = /** @type {typeof import('ajv').default} */ (/** @type {unknown} */ (require('ajv')));
 const esbuild = require('esbuild');
 
-/** Packages that must never survive tree shaking. `@scope/*` matches the whole scope. */
-const FORBIDDEN = ['tabster', '@griffel/*', '@fluentui/react-icons'];
+/** @typedef {{fixturesRoot: string, externals: string[], forbiddenPackages: string[], knownViolations: Record<string, string[]>}} Config */
+/** @typedef {{configPath: string, config: Config, fixturesRoot: string, packageRoot: string, workspaceRoot: string}} RuntimeOptions */
 
-/**
- * Entry point -> forbidden packages that are tolerated for now.
- *
- * This baseline may only shrink. Removing a leak without deleting its entry here
- * fails the check, so a fix cannot silently regress later.
- *
- * @type {Record<string, string[]>}
- */
-const KNOWN_VIOLATIONS = {
-  // https://github.com/microsoft/fluentui/pull/36503
-  './tag-picker': ['@fluentui/react-icons', '@griffel/core', '@griffel/react'],
-  // https://github.com/microsoft/fluentui/pull/36504
-  './teaching-popover': ['@fluentui/react-icons', '@griffel/core', '@griffel/react'],
-};
+const schemaPath = join(__dirname, 'schema.json');
 
-/** Host-provided modules - including them would drown the signal. */
-const EXTERNALS = ['react', 'react-dom', 'react/jsx-runtime', 'react/compiler-runtime'];
-
-const ENTRY_SOURCEFILE = 'bundle-isolation-entry.js';
-
-const packageRoot = resolve(__dirname, '../..');
-const workspaceRoot = findWorkspaceRoot(packageRoot);
-
-main().catch(error => {
+main(processArgs()).catch(error => {
   console.error(error);
   process.exit(1);
 });
 
-async function main() {
+/** @param {{configPath: string}} options */
+async function main(options) {
+  const packageRoot = dirname(options.configPath);
+  const workspaceRoot = findWorkspaceRoot(packageRoot);
+  const config = loadConfig({ ...options, workspaceRoot });
+  const fixturesRoot = resolve(packageRoot, config.fixturesRoot);
   const packageJson = readJson(join(packageRoot, 'package.json'));
-  const entryPoints = Object.keys(packageJson.exports ?? {}).filter(
-    subpath => subpath.startsWith('.') && !subpath.endsWith('package.json') && !subpath.includes('*'),
-  );
+  const fixtures = findFixtures(fixturesRoot);
 
-  if (entryPoints.length === 0) {
-    console.error(`No entry points found in ${packageJson.name} "exports" - nothing to verify.`);
+  if (fixtures.length === 0) {
+    console.error(`No bundle-size fixtures found in ${packageJson.name} - nothing to verify.`);
     process.exit(1);
   }
 
-  const results = await Promise.all(entryPoints.sort().map(subpath => verifyEntryPoint(subpath, packageJson.name)));
+  /** @type {RuntimeOptions} */
+  const runtimeOptions = { ...options, config, fixturesRoot, packageRoot, workspaceRoot };
+  const results = await Promise.all(fixtures.map(fixture => verifyFixture(fixture, runtimeOptions)));
 
-  const failures = collectFailures(results);
+  const failures = collectFailures(results, runtimeOptions);
 
   if (failures.length === 0) {
-    console.log(`OK ${packageJson.name}: ${entryPoints.length} entry points free of ${FORBIDDEN.join(', ')}`);
+    console.log(
+      `OK ${packageJson.name}: ${fixtures.length} bundle-size fixtures free of ${config.forbiddenPackages.join(', ')}`,
+    );
     return;
   }
 
@@ -69,31 +57,39 @@ async function main() {
   process.exit(1);
 }
 
+function processArgs() {
+  const { values } = parseArgs({
+    options: {
+      config: {
+        type: 'string',
+        default: 'bundle-isolation.config.json',
+      },
+    },
+    allowPositionals: false,
+  });
+
+  return { configPath: resolve(process.cwd(), values.config) };
+}
+
 /**
- * @param {string} subpath
- * @param {string} packageName
+ * @param {string} fixture
+ * @param {RuntimeOptions} options
  */
-async function verifyEntryPoint(subpath, packageName) {
-  const specifier = packageName + subpath.slice(1);
-  /** @type {{subpath: string, found: string[], rootCauses: string[], chains: Record<string, string[]>, sourceResolved: string[], error?: string}} */
-  const result = { subpath, found: [], rootCauses: [], chains: {}, sourceResolved: [] };
+async function verifyFixture(fixture, options) {
+  /** @type {{fixture: string, found: string[], rootCauses: string[], chains: Record<string, string[]>, sourceResolved: string[], error?: string}} */
+  const result = { fixture, found: [], rootCauses: [], chains: {}, sourceResolved: [] };
 
   let metafile;
   try {
     ({ metafile } = await esbuild.build({
-      stdin: {
-        contents: `export * from '${specifier}';\n`,
-        resolveDir: workspaceRoot,
-        sourcefile: ENTRY_SOURCEFILE,
-        loader: 'js',
-      },
+      entryPoints: [join(options.fixturesRoot, fixture)],
       bundle: true,
       write: false,
       metafile: true,
       format: 'esm',
       platform: 'browser',
-      external: EXTERNALS,
-      absWorkingDir: workspaceRoot,
+      external: options.config.externals,
+      absWorkingDir: options.workspaceRoot,
       logLevel: 'silent',
       // `tsconfig.base.json` maps every `@fluentui/*` specifier to `library/src/index.ts`, and esbuild
       // honours those paths - which would verify sources instead of the published output. An inline
@@ -108,8 +104,13 @@ async function verifyEntryPoint(subpath, packageName) {
 
   const output = Object.values(metafile.outputs)[0];
   const kept = new Set(Object.keys(output.inputs));
-  const entry = output.entryPoint ?? ENTRY_SOURCEFILE;
-  const ownerOf = createForbiddenOwnerResolver();
+  const entry = output.entryPoint;
+  const ownerOf = createForbiddenOwnerResolver(options);
+
+  if (!entry) {
+    result.error = 'esbuild did not report an entry point for the fixture output';
+    return result;
+  }
 
   result.sourceResolved = [...kept].filter(modulePath => /[/\\]library[/\\]src[/\\]/.test(modulePath));
 
@@ -150,6 +151,7 @@ async function verifyEntryPoint(subpath, packageName) {
  * @returns {Record<string, string[]>}
  */
 function traceForbiddenPackages(metafile, entry, ownerOf, allowEdge) {
+  /** @type {Map<string, string | null>} */
   const previous = new Map([[entry, null]]);
   const queue = [entry];
   /** @type {Record<string, string[]>} */
@@ -161,7 +163,7 @@ function traceForbiddenPackages(metafile, entry, ownerOf, allowEdge) {
 
     if (owner && !(owner in chains)) {
       const chain = [];
-      for (let node = current; node; node = previous.get(node) ?? null) {
+      for (let node = /** @type {string | null} */ (current); node; node = previous.get(node) ?? null) {
         chain.unshift(node);
       }
       chains[owner] = chain.slice(1); // drop the synthetic entry module
@@ -186,14 +188,18 @@ function traceForbiddenPackages(metafile, entry, ownerOf, allowEdge) {
  * `node_modules` dependencies and workspace packages (esbuild resolves symlinked workspace
  * packages to their real path, so there is no `node_modules` segment to match on).
  */
-function createForbiddenOwnerResolver() {
-  const exact = new Set(FORBIDDEN.filter(pattern => !pattern.endsWith('/*')));
-  const scopes = FORBIDDEN.filter(pattern => pattern.endsWith('/*')).map(pattern => pattern.slice(0, -1));
+/** @param {RuntimeOptions} options */
+function createForbiddenOwnerResolver(options) {
+  const exact = new Set(options.config.forbiddenPackages.filter(pattern => !pattern.endsWith('/*')));
+  const scopes = options.config.forbiddenPackages
+    .filter(pattern => pattern.endsWith('/*'))
+    .map(pattern => pattern.slice(0, -1));
   /** @type {Map<string, string | null>} */
   const cache = new Map();
 
+  /** @param {string} modulePath */
   return function ownerOf(modulePath) {
-    let dir = dirname(isAbsolute(modulePath) ? modulePath : join(workspaceRoot, modulePath));
+    let dir = dirname(isAbsolute(modulePath) ? modulePath : join(options.workspaceRoot, modulePath));
     const visited = [];
 
     while (dir && dir !== dirname(dir)) {
@@ -223,25 +229,28 @@ function createForbiddenOwnerResolver() {
   };
 }
 
-/** @param {Array<ReturnType<typeof verifyEntryPoint> extends Promise<infer T> ? T : never>} results */
-function collectFailures(results) {
+/**
+ * @param {Array<ReturnType<typeof verifyFixture> extends Promise<infer T> ? T : never>} results
+ * @param {RuntimeOptions} options
+ */
+function collectFailures(results, options) {
   const failures = [];
 
   for (const result of results) {
     if (result.error) {
-      failures.push(`${result.subpath} could not be bundled - is the package built?\n    ${result.error}`);
+      failures.push(`${result.fixture} could not be bundled - is the package built?\n    ${result.error}`);
       continue;
     }
 
     if (result.sourceResolved.length > 0) {
       failures.push(
-        `${result.subpath} resolved to package sources instead of built output, so the result is meaningless.\n` +
+        `${result.fixture} resolved to package sources instead of built output, so the result is meaningless.\n` +
           `    e.g. ${result.sourceResolved[0]}`,
       );
       continue;
     }
 
-    const allowed = KNOWN_VIOLATIONS[result.subpath] ?? [];
+    const allowed = options.config.knownViolations[result.fixture] ?? [];
     const regressions = result.found.filter(name => !allowed.includes(name));
     const fixed = allowed.filter(name => !result.found.includes(name));
 
@@ -251,31 +260,75 @@ function collectFailures(results) {
       const details = (causes.length > 0 ? causes : regressions)
         .map(name => {
           const chain = result.chains[name].map(
-            (step, index) => `${'  '.repeat(index + 3)}|- ${relativeToWorkspace(step)}`,
+            (step, index) => `${'  '.repeat(index + 3)}|- ${relativeToWorkspace(step, options.workspaceRoot)}`,
           );
           return `    ${name}\n${chain.join('\n')}`;
         })
         .join('\n');
       const trailer = symptoms.length > 0 ? `\n    ...which also pulls in ${symptoms.join(', ')}` : '';
-      failures.push(`${result.subpath} pulls in forbidden runtime:\n${details}${trailer}`);
+      failures.push(`${result.fixture} pulls in forbidden runtime:\n${details}${trailer}`);
     }
 
     if (fixed.length > 0) {
       failures.push(
-        `${result.subpath} no longer pulls in ${fixed.join(', ')} - ` +
-          `remove it from KNOWN_VIOLATIONS in ${__filename.replace(workspaceRoot + sep, '')} to lock the fix in.`,
+        `${result.fixture} no longer pulls in ${fixed.join(', ')} - ` +
+          `remove it from config.knownViolations in ${relativeToWorkspace(
+            options.configPath,
+            options.workspaceRoot,
+          )} to lock the fix in.`,
       );
     }
   }
 
-  const verified = new Set(results.map(result => result.subpath));
-  for (const [subpath, packages] of Object.entries(KNOWN_VIOLATIONS)) {
-    if (!verified.has(subpath)) {
-      failures.push(`KNOWN_VIOLATIONS lists "${subpath}" (${packages.join(', ')}) which is not an entry point.`);
+  const verified = new Set(results.map(result => result.fixture));
+  for (const [fixture, packages] of Object.entries(options.config.knownViolations)) {
+    if (!verified.has(fixture)) {
+      failures.push(
+        `config.knownViolations lists "${fixture}" (${packages.join(', ')}) which is not a bundle-size fixture.`,
+      );
     }
   }
 
   return failures;
+}
+
+/** @param {string} root */
+function findFixtures(root) {
+  if (!existsSync(root)) {
+    return [];
+  }
+
+  return readdirSync(root, { recursive: true, withFileTypes: true })
+    .filter(entry => entry.isFile() && entry.name.endsWith('.fixture.js'))
+    .map(entry => {
+      const path = join(entry.parentPath, entry.name);
+      return path.slice(root.length + 1);
+    })
+    .sort();
+}
+
+/**
+ * @param {{configPath: string, workspaceRoot: string}} options
+ * @returns {Config}
+ */
+function loadConfig(options) {
+  const config = readJson(options.configPath);
+  const schema = /** @type {object} */ (readJson(schemaPath));
+  const validate = new Ajv({ allErrors: true }).compile(schema);
+
+  if (!validate(config)) {
+    const errors = (validate.errors ?? [])
+      .map(/** @param {import('ajv').ErrorObject} error */ error => `${error.instancePath || '/'} ${error.message}`)
+      .join('\n    ');
+    throw new Error(
+      `Invalid bundle isolation configuration at ${relativeToWorkspace(
+        options.configPath,
+        options.workspaceRoot,
+      )}:\n    ${errors}`,
+    );
+  }
+
+  return /** @type {Config} */ (config);
 }
 
 /** @param {string} startDir */
@@ -295,8 +348,11 @@ function readJson(filePath) {
   return JSON.parse(readFileSync(filePath, 'utf-8'));
 }
 
-/** @param {string} modulePath */
-function relativeToWorkspace(modulePath) {
+/**
+ * @param {string} modulePath
+ * @param {string} workspaceRoot
+ */
+function relativeToWorkspace(modulePath, workspaceRoot) {
   const absolute = isAbsolute(modulePath) ? modulePath : resolve(workspaceRoot, modulePath);
   return absolute.startsWith(workspaceRoot + sep) ? absolute.slice(workspaceRoot.length + 1) : modulePath;
 }
