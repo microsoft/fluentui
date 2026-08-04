@@ -34,7 +34,7 @@ export const useFocusFinders = (): {
   // Narrow props for now and let need dictate additional props in the future
   const findAllFocusable = React.useCallback(
     (container: HTMLElement | null, acceptCondition?: (el: HTMLElement) => boolean) =>
-      (container && !!tabsterRef.current && findAll(tabsterRef.current, { container, acceptCondition })) || [],
+      (container && tabsterRef.current && findAll(tabsterRef.current, { container, acceptCondition })) || [],
     [tabsterRef],
   );
 
