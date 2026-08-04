@@ -51,6 +51,8 @@ export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTML
   const fieldControlProps = useFieldControlProps_unstable(props, {
     supportsLabelFor: true,
     supportsRequired: true,
+    // TODO: remove `supportsSize` - it is a no-op here because `useInput_unstable` strips `size` before calling this
+    // hook. Removed by https://github.com/microsoft/fluentui/pull/36453, which reads the Field size in the styled hook.
     supportsSize: true,
   });
 
