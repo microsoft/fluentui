@@ -30,7 +30,7 @@ jobs:
       actions: 'read'
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           fetch-depth: 0
 
@@ -39,7 +39,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           cache: 'yarn'
           node-version: '22'
@@ -89,7 +89,7 @@ jobs:
       actions: 'read'
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           fetch-depth: 0
 
@@ -98,7 +98,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           cache: 'yarn'
           node-version: '22'
@@ -113,7 +113,7 @@ jobs:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           fetch-depth: 0
 
@@ -122,7 +122,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           cache: 'yarn'
           node-version: '22'
@@ -146,7 +146,7 @@ jobs:
           yarn nx affected -t test-rit--17--e2e,test-rit--18--e2e --exclude='react-19-tests-v9,react-charting,react'
 
       - name: Upload Cypress screenshots if exist
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         if: always() && steps.e2e.outcome == 'failure'
         with:
           name: cypress-screenshots-react-test-rit
@@ -171,7 +171,7 @@ jobs:
       actions: 'read'
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           fetch-depth: 0
 
@@ -180,7 +180,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           cache: 'yarn'
           node-version: '22'
@@ -199,7 +199,7 @@ jobs:
         run: yarn nx affected -t e2e --nxBail --parallel 1
 
       - name: Upload Cypress screenshots if exist
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         if: failure()
         with:
           name: cypress-screenshots
