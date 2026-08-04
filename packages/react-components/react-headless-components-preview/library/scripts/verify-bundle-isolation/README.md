@@ -1,53 +1,34 @@
 # Bundle isolation verification
 
-Verifies that headless package bundle-size fixtures do not retain browser runtimes that the headless API must avoid.
+Fails when a bundle-size fixture retains a runtime the package is meant to stay free of, such as a styling engine or icon set that should have been tree shaken away.
 
-The check bundles each `*.fixture.js` file with webpack — the same bundler that produces the bundle-size numbers — and inspects the resulting module graph. It fails when a configured forbidden package survives tree shaking, when bundling resolves to package source instead of built output, or when a known violation becomes stale.
+## How it works
 
-On failure it names the exact exports that kept the package alive and the modules importing them:
+Each `*.fixture.js` is bundled with webpack — the same bundler behind the bundle-size numbers — and the resulting module graph is inspected. The check fails when a forbidden package survives tree shaking, when bundling resolves to sources instead of built output, or when a baseline entry is no longer reachable.
+
+Failures name the exports that kept the package alive and the modules importing them:
 
 ```
 AllComponents.fixture.js pulls in forbidden runtime:
     @fluentui/react-icons - 9 modules retained
-      ChevronDownRegular <- packages/.../react-tag-picker/library/lib/components/TagPickerControl/useTagPickerControl.js
-      DismissRegular <- packages/.../react-teaching-popover/library/lib/components/TeachingPopoverTitle/useTeachingPopoverTitle.js
+      ChevronDownRegular <- .../react-tag-picker/lib/components/TagPickerControl/useTagPickerControl.js
+      DismissRegular <- .../react-teaching-popover/lib/components/TeachingPopoverTitle/useTeachingPopoverTitle.js
 ```
 
-Attribution intersects webpack's `usedExports` with active import connections, and counts an importer only when that module survived into a chunk. Import edges alone are recorded before tree shaking, so a package importing an unused icon is not reported as a leak.
-
-The analysis lives in [`bundle-isolation-plugin.js`](./bundle-isolation-plugin.js) as a standard webpack plugin, so it can also be applied to an existing build instead of the one the CLI creates:
-
-```js
-new BundleIsolationPlugin({ forbiddenPackages, workspaceRoot, onReport });
-```
-
-It requires `optimization.concatenateModules: false` — scope hoisting merges modules into a `ConcatenatedModule` with no per-module `resource`, which hides the packages being looked for.
+Attribution intersects webpack's `usedExports` with active import connections, and counts an importer only when that module itself survived into a chunk. Import edges are recorded before tree shaking, so a module importing something it no longer uses is not reported.
 
 ## Usage
 
-Run from the package root after building the package and its dependencies:
+Run from the package root, once the package and its dependencies are built:
 
 ```sh
 node scripts/verify-bundle-isolation/cli.js
 ```
 
-Use a different package-root-relative configuration file with:
-
-```sh
-node scripts/verify-bundle-isolation/cli.js --config ./bundle-isolation.config.json
-```
-
-Emit a webpack-bundle-analyzer treemap per fixture into `dist/bundle-isolation/` with:
-
-```sh
-node scripts/verify-bundle-isolation/cli.js --analyze
-```
-
-The Nx target builds dependencies and runs the check with the correct working directory:
-
-```sh
-yarn nx run react-headless-components-preview:verify-bundle-isolation
-```
+| Flag              | Default                        | Description                                                                     |
+| ----------------- | ------------------------------ | ------------------------------------------------------------------------------- |
+| `--config <path>` | `bundle-isolation.config.json` | Configuration file, resolved from the working directory                         |
+| `--analyze`       | off                            | Write a webpack-bundle-analyzer treemap per fixture to `dist/bundle-isolation/` |
 
 ## Configuration
 
@@ -77,16 +58,16 @@ All configured paths are resolved relative to the package root:
 Fixtures follow the existing Monosize convention in `bundle-size/*.fixture.js`. A fixture imports the public API under test and uses the import observably so tree shaking cannot discard it.
 
 ```js
-import * as HeadlessButton from '@fluentui/react-headless-components-preview/button';
+import * as Button from '@scope/package/button';
 
-console.log(HeadlessButton);
+console.log(Button);
 
 export default {
-  name: 'HeadlessButton',
+  name: 'Button',
 };
 ```
 
-Using the same fixtures keeps bundle isolation and bundle-size measurements aligned.
+Sharing fixtures keeps isolation checks and bundle-size measurements aligned.
 
 ## Known violations
 
@@ -97,3 +78,13 @@ Using the same fixtures keeps bundle isolation and bundle-size measurements alig
 - A baseline entry for a missing fixture fails the check.
 
 This prevents fixed leaks from being silently reintroduced.
+
+## Reuse in another build
+
+The analysis lives in [`bundle-isolation-plugin.js`](./bundle-isolation-plugin.js) as a standard webpack plugin, so it can run inside an existing build instead of the one the CLI creates:
+
+```js
+new BundleIsolationPlugin({ forbiddenPackages, workspaceRoot, onReport });
+```
+
+It requires `optimization.concatenateModules: false`, because scope hoisting merges modules into a `ConcatenatedModule` with no per-module `resource`.
