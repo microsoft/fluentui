@@ -64,6 +64,11 @@ kinds in `apps/vr-tests-react-components/src/stories/<Component>/`.
   flaky (~1 anomalous capture observed in 4 runs, 95px at the animated-gradient tail;
   double-capture comparison proves nondeterminism). On failure: recapture before
   investigating CSS.
+- 'CalendarCompat / multiDayView' (all theme variants, at random) is flaky at the day-19
+  cell glyph: 17–21 px, the failing VARIANT migrates between passes (three same-bundle
+  captures 2026-08-04 disagreed pairwise: LTR+RTL+DM, then DM only, then HC only), and
+  the compiled calendar CSS was sha1-identical across the compared legs
+  (perf-property-remedy.md gate 3). On failure: recapture before investigating CSS.
 
 - Chromium for Playwright must be installed (`npx playwright install chromium`) — a
   missing browser produces zero screenshots with exit 0; `--expect` catches this.

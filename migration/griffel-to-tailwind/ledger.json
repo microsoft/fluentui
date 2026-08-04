@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-01",
+  "updated": "2026-08-04",
   "phase": "griffel-zero-closed",
   "completionStamp": {
     "date": "2026-07-30",
@@ -752,5 +752,10 @@
     "date": "2026-08-01",
     "scope": "Griffel-zero campaign closed. 58 layered / 0 unlayered fui-Icon selector lines; import grep survivors = D11 carve-out only (3 MakeStyles/CustomStyleHooks VR stories + 2 ShadowDOM + rule/executor fixtures); manifests clean except vr-tests @griffel/react (D11) + 3 root dev tools; jest-serializer resolves only via deprecated/. LOCAL-ONLY revert-before-PR: 90d1096404 + b0248a57f1 (revert tarball first, then portal, then yarn install — only after icons 3.0 publishes). Icons upstream merge is a dependency of the UI merge.",
     "report": "reports/GRIFFEL_ZERO_CLOSURE.md"
+  },
+  "propertyRemedy": {
+    "date": "2026-08-04",
+    "scope": "E-cliff remedy SHIPPED: 8 @property focus-knob registrations removed from react-tailwind-theme; isolation moved to element-level initial resets inside fui-focus-outline/fui-focus-ring. Perf: Switch E 11.7->5.4ms (Griffel 4.4), Button E 8.2->3.4ms (Griffel 3.4), Divider control equal; registry 8->0, all 57 built package CSS 0 @property. Equivalence: 10 CDP scenarios identical pre/post; isolation holds both legs; knob channel live. VR zero-tolerance: 2772 shots/leg, 2770 clean, 2 = CalendarCompat.multiDayView proven flake (double-capture protocol; added to validation README known-flakes). New focus VR stories: Button family + SplitButton (incl. ancestor-knob isolation), Checkbox, Radio, Switch, Slider, Card (36 stories). Jest 7/8 green (react-checkbox 2 pre-existing icon snapshot failures, stash-proven). Known divergence: root-set outline knob (previously inert) now reaches own ::after.",
+    "report": "reports/perf-property-remedy.md"
   }
 }

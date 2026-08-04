@@ -134,6 +134,29 @@ theming-system). react-tabster's Griffel helpers (used in 46 styles files) are r
 these utilities during each package's conversion; the JS helpers remain exported until
 Phase 3 cleanup.
 
+**Amendment (2026-08-04, perf-property-remedy):** the focus knobs
+(`--fui-focus-outline-*` / `--fui-focus-ring-*`) are now UNREGISTERED — the 8
+`@property … syntax:'*'; inherits:false` rules were removed from
+react-tailwind-theme/css/utilities.css. `perf-mechanism-diagnostic.md` proved any
+non-empty custom-property registry flips Blink's transition-start path onto a
+page-global slow branch (~9.4 µs per started transition — the whole unexplained E-cliff
+residual; Button E +145% → ±0% vs Griffel, Switch +165% → +23% on removal). The
+isolation the registrations provided is reproduced by **element-level resets**: each
+focus utility opens by setting every knob it consumes to `initial` (guaranteed-invalid
+for unregistered properties) on the element it is applied to, so ancestor overrides
+never reach a nested component's indicator and unset knobs still hit their `var()`
+fallbacks. Knob overrides on `::after` (all in-repo callers) are unaffected;
+same-element overrides must cascade past the component's focus rule (after the
+`@apply`, higher layer, inline, or unlayered). One previously-inert edge became live:
+an outline knob set directly on a component's own root now inherits into its own
+`::after` (measured, no in-repo/story occurrence). Gated by scenario-equivalence CDP
+probes, isolation probes, VR 2770/2772 pixel-identical at zero tolerance (2 = proven
+CalendarCompat.multiDayView flake), and new focus VR stories (Button family incl.
+SplitButton + ancestor-knob isolation, Checkbox, Radio, Switch, Slider, Card). Do NOT
+reintroduce `@property` into shipped CSS without re-running the perf gate — and note
+the win is host-page fragile (any host `@property`, e.g. Tailwind v4 apps, restores the
+engine penalty for the whole page).
+
 ## D7 — Public API: hooks stay, Griffel exports stay (for now)
 
 `useXStyles_unstable` hooks (180) keep existing and now apply module classes;
