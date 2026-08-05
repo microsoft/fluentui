@@ -41,13 +41,7 @@ Add the tool as a devDependency of the package to check and give it a target:
       "dependsOn": ["build", "^build"],
       "command": "yarn run -T verify-bundle-isolation",
       "options": { "cwd": "{projectRoot}" },
-      "inputs": [
-        "{projectRoot}/bundle-isolation.config.json",
-        "{projectRoot}/bundle-size/**/*",
-        "{projectRoot}/package.json",
-        "{workspaceRoot}/tools/verify-bundle-isolation/**/*",
-        { "externalDependencies": ["ajv", "webpack"] }
-      ],
+      "inputs": ["default", "^default", { "externalDependencies": ["ajv", "webpack"] }],
       "outputs": ["{projectRoot}/dist/bundle-isolation"]
     }
   }
@@ -56,6 +50,14 @@ Add the tool as a devDependency of the package to check and give it a target:
 
 The check must run against built output, hence `dependsOn`. It reports an error if bundling resolves to package sources
 instead, because the verdict would not reflect what ships.
+
+`^default` is what makes the cache correct: this task's result depends on every dependency's files, and on the tool
+itself, which is a dependency by virtue of the devDependency. Replacing it with a hand-written input list silently
+serves stale verdicts after a dependency changes.
+
+The repo pins webpack to a single version through `resolutions` in the root `package.json`. That is deliberate - the
+verdict is only meaningful if it comes from the same bundler that produces the bundle-size numbers, and webpack 5.109
+changed module resolution in a way that makes these packages resolve to sources rather than built output.
 
 | Flag              | Default                        | Description                                                          |
 | ----------------- | ------------------------------ | -------------------------------------------------------------------- |
@@ -94,6 +96,7 @@ summary answers _what_ leaked and _why_, while the analyzer output answers _how 
 
 ```json
 {
+  "$schema": "../../../../tools/verify-bundle-isolation/schema.json",
   "fixturesRoot": "./bundle-size",
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
   "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],
@@ -110,8 +113,11 @@ All configured paths are resolved relative to the package root:
 - `forbiddenPackages` lists exact package names or scoped globs such as `@griffel/*`.
 - `allowedViolations` maps fixture paths, relative to `fixturesRoot`, to tolerated forbidden packages.
 
-Editor completions come from the `json.schemas` mapping in `.vscode/settings.json`, so consumers do not need a `$schema`
-path. Add one only if you want the file to validate outside this repo.
+`$schema` has to be a workspace-relative path. Editors resolve it against the config file and do not apply Node package
+resolution, so `@fluentui/verify-bundle-isolation/schema.json` will not work there despite the export map. The export
+map exists for programmatic consumers, which can `require.resolve('@fluentui/verify-bundle-isolation/schema.json')`.
+
+Validation itself never depends on `$schema` - the CLI always loads the schema shipped alongside it.
 
 ## Fixtures
 

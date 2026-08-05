@@ -1,13 +1,6 @@
 {
   // Controls the rendering size of tabs in characters.
   "editor.tabSize": 2,
-  // Schemas for repo-local config files, so a `$schema` path is not needed in every consumer.
-  "json.schemas": [
-    {
-      "fileMatch": ["**/bundle-isolation.config.json"],
-      "url": "./tools/verify-bundle-isolation/schema.json"
-    }
-  ],
   // When opening a file, `editor.tabSize` and `editor.insertSpaces` will NOT be detected based on the file contents.
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,

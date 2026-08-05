@@ -18,13 +18,7 @@
       "options": {
         "cwd": "{projectRoot}"
       },
-      "inputs": [
-        "{projectRoot}/bundle-isolation.config.json",
-        "{projectRoot}/bundle-size/**/*",
-        "{projectRoot}/package.json",
-        "{workspaceRoot}/tools/verify-bundle-isolation/**/*",
-        { "externalDependencies": ["ajv", "webpack"] }
-      ],
+      "inputs": ["default", "^default", { "externalDependencies": ["ajv", "webpack"] }],
       "outputs": ["{projectRoot}/dist/bundle-isolation"],
       "metadata": {
         "technologies": ["webpack"],

@@ -381,6 +381,7 @@
     "swc-loader": "0.2.6",
     "syncpack/minimatch": "^9.0.7",
     "tar-fs": "2.1.4",
+    "webpack": "5.108.4",
     "ws": "^8.21.1"
   },
   "nx": {

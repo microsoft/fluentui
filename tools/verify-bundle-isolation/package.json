@@ -5,12 +5,13 @@
   "private": true,
   "type": "commonjs",
   "bin": "./bin/verify-bundle-isolation.js",
+  "exports": {
+    "./schema.json": "./schema.json",
+    "./package.json": "./package.json"
+  },
   "dependencies": {
     "ajv": "^8.13.0",
-    "webpack": "5.108.4",
-    "webpack-bundle-analyzer": "4.10.1"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "webpack": "^5.108.4",
+    "webpack-bundle-analyzer": "^4.10.1"
   }
 }
