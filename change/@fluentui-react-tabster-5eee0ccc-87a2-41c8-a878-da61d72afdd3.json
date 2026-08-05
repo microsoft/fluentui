@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "BREAKING CHANGE: remove the Griffel style-object factories `createFocusOutlineStyle` and `createCustomFocusIndicatorStyle` (and their option types `CreateFocusOutlineStyleOptions`, `CreateCustomFocusIndicatorStyleOptions`, `FocusOutlineStyleOptions`, `FocusOutlineOffset`). Converted packages style focus indication with the shared focus-ring CSS utilities instead; the `data-fui-focus-visible` / `data-fui-focus-within` attributes managed by the exported polyfills remain the public focus contract.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}
