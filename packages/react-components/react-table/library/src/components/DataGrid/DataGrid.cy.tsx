@@ -300,5 +300,63 @@ describe('DataGrid', () => {
       validateHeaderWidth('header-2', 160);
       validateHeaderWidth('header-3', 526);
     });
+
+    // PR-36513 review item 17: the selection cell renders at `w-44` =
+    // `calc(44px * var(--base-scale))` (TableSelectionCell.module.css), while the DataGrid
+    // width math subtracted the FIXED `CELL_WIDTH = 44`. `useDataGrid_unstable` now reads
+    // `--base-scale` at the grid (useCssVarValue) and subtracts the SCALED width, so at
+    // `--base-scale: 1.25` the offset is 55 and the space-filling last column must come out
+    // exactly `55 - 44 = 11px` narrower than the unscaled mount. Pre-fix the offset was
+    // scale-invariant and this delta was 0. The remount matters: the scale is read once per
+    // mount (documented staleness semantics of useCssVarValue).
+    it('offsets column sizing by the SCALED selection-cell width under a non-default --base-scale', () => {
+      const columnSizingOptions = {
+        first: { idealWidth: 150, minWidth: 70 },
+        second: { idealWidth: 160, minWidth: 80 },
+        third: { idealWidth: 170, minWidth: 90 },
+      };
+      const SelectableResizableDataGrid = () => (
+        <DataGrid
+          items={testItems}
+          columns={testColumns}
+          resizableColumns
+          selectionMode="multiselect"
+          columnSizingOptions={columnSizingOptions}
+        >
+          <DataGridHeader>
+            <DataGridRow<Item>>
+              {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+            </DataGridRow>
+          </DataGridHeader>
+          <DataGridBody<Item>>
+            {({ item }) => (
+              <DataGridRow<Item>>{({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}</DataGridRow>
+            )}
+          </DataGridBody>
+        </DataGrid>
+      );
+
+      let unscaledThirdWidth: number | undefined;
+
+      mount(<SelectableResizableDataGrid />);
+      cy.get('div')
+        .contains('header-3')
+        .should(el => {
+          unscaledThirdWidth = el.width();
+          expect(unscaledThirdWidth).to.be.a('number');
+        });
+
+      mount(
+        <div style={{ '--base-scale': '1.25' } as React.CSSProperties}>
+          <SelectableResizableDataGrid />
+        </div>,
+      );
+      cy.get('div')
+        .contains('header-3')
+        .should(el => {
+          expect(unscaledThirdWidth, 'unscaled width captured first').to.be.a('number');
+          expect(el.width()).to.be.closeTo((unscaledThirdWidth as number) - 11, 1);
+        });
+    });
   });
 });

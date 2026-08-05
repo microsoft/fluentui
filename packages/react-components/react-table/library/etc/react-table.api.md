@@ -276,7 +276,7 @@ export type SortDirection = 'ascending' | 'descending';
 // @public
 export const Table: ForwardRefComponent<TableProps>;
 
-// @public (undocumented)
+// @public
 export const TABLE_SELECTION_CELL_WIDTH = 44;
 
 // @public

@@ -370,6 +370,14 @@ export type UseControllableStateOptions<State> = {
     initialState: State;
 };
 
+// @public
+export function useCssVarValue(variableName: string, elementRef: React_2.RefObject<HTMLElement | null>, options?: UseCssVarValueOptions): string | undefined;
+
+// @public
+export interface UseCssVarValueOptions {
+    fallback?: string;
+}
+
 // @internal
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => ((...args: Args) => Return);
 

@@ -2,6 +2,8 @@ export { useAnimationFrame } from './useAnimationFrame';
 export { useApplyScrollbarWidth } from './useApplyScrollbarWidth';
 export type { UseControllableStateOptions } from './useControllableState';
 export { useControllableState } from './useControllableState';
+export type { UseCssVarValueOptions } from './useCssVarValue';
+export { useCssVarValue } from './useCssVarValue';
 export { useEventCallback } from './useEventCallback';
 export { useFirstMount } from './useFirstMount';
 export { useForceUpdate } from './useForceUpdate';

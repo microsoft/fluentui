@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';
 import { useTable_unstable } from '../Table/useTable';
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { useCssVarValue, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { End, Home } from '@fluentui/keyboard-keys';
 import {
   useTableFeatures,
@@ -46,7 +46,22 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     resizableColumnsOptions = {},
   } = props;
 
-  const widthOffset = containerWidthOffset ?? (selectionMode ? -CELL_WIDTH : 0);
+  const innerRef = React.useRef<HTMLDivElement>(null);
+
+  // The selection cell's rendered width is `w-44` = `calc(44px * var(--base-scale))`
+  // (TableSelectionCell.module.css), so the offset subtracted from the container must track
+  // the SCALED width or every non-default `--base-scale` makes the column-sizing math
+  // disagree with the rendered column (PR-36513 review item 17). The scale is read at the
+  // grid's own DOM position once per mount (SSR/pre-mount falls back to `1`, i.e. the
+  // legacy `CELL_WIDTH` behaviour), and the guard keeps a malformed value from poisoning
+  // the math. `CELL_WIDTH` remains the default-scale value and public fallback
+  // (`TABLE_SELECTION_CELL_WIDTH`).
+  const baseScale = useCssVarValue('--base-scale', innerRef, { fallback: '1' });
+  const parsedBaseScale = Number.parseFloat(baseScale ?? '1');
+  const scaledCellWidth =
+    Number.isFinite(parsedBaseScale) && parsedBaseScale > 0 ? CELL_WIDTH * parsedBaseScale : CELL_WIDTH;
+
+  const widthOffset = containerWidthOffset ?? (selectionMode ? -scaledCellWidth : 0);
 
   const gridTabsterAttribute = useArrowNavigationGroup({
     axis: 'grid',
@@ -82,7 +97,6 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     }),
   ]);
 
-  const innerRef = React.useRef<HTMLDivElement>(null);
   const { findFirstFocusable, findLastFocusable } = useFocusFinders();
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLTableElement>) => {
     props.onKeyDown?.(e);

@@ -3,6 +3,17 @@ import type { TableSelectionCellState } from './TableSelectionCell.types';
 
 import styles from './TableSelectionCell.module.css';
 
+/**
+ * The selection cell's DEFAULT-SCALE width in pixels, and the SSR/pre-mount fallback for
+ * width math (public as `TABLE_SELECTION_CELL_WIDTH`).
+ *
+ * The rendered width is `w-44` = `calc(44px * var(--base-scale))`
+ * (TableSelectionCell.module.css), so at a non-default `--base-scale` the live width
+ * diverges from this constant. Consumers of the RENDERED width must scale it —
+ * `useDataGrid_unstable` reads `--base-scale` at the grid via `useCssVarValue` and
+ * multiplies (PR-36513 review item 17); this constant is the value at scale 1 and the
+ * fallback wherever the variable cannot be read.
+ */
 export const CELL_WIDTH = 44;
 
 /**

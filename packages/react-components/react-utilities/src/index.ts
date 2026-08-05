@@ -46,6 +46,7 @@ export {
   useAnimationFrame,
   useApplyScrollbarWidth,
   useControllableState,
+  useCssVarValue,
   useEventCallback,
   useFirstMount,
   useForceUpdate,
@@ -58,7 +59,12 @@ export {
   useScrollbarWidth,
   useTimeout,
 } from './hooks/index';
-export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
+export type {
+  RefObjectFunction,
+  UseControllableStateOptions,
+  UseCssVarValueOptions,
+  UseOnClickOrScrollOutsideOptions,
+} from './hooks/index';
 
 export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
