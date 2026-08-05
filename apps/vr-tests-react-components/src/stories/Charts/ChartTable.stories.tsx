@@ -3,7 +3,11 @@ import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { ChartTable } from '@fluentui/react-charts';
-import { tokens } from '@fluentui/react-components';
+// `tokens` comes from the theme package directly: `@fluentui/react-components` is not a
+// declared dependency of this app (import/no-extraneous-dependencies — PR-36513 review
+// item 9). `@fluentui/react-theme` is declared and is where the umbrella re-exports it from,
+// so the values — and therefore the rendered pixels — are identical.
+import { tokens } from '@fluentui/react-theme';
 
 export default {
   title: 'Charts/ChartTable',
