@@ -27,6 +27,7 @@ import type {
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
 import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
+import { useTabsterEscapeIgnore } from '../../hooks/useTabsterEscapeIgnore';
 
 /**
  * Create the base state required to render Combobox, without design-only props.
@@ -229,5 +230,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     ...baseState,
     appearance,
     size,
+    input: {
+      ...useTabsterEscapeIgnore(baseState.input, baseState.open),
+      ...baseState.input,
+    },
   };
 };
