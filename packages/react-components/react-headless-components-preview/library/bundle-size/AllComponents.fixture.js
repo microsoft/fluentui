@@ -6,6 +6,7 @@ import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcr
 import * as Button from '@fluentui/react-headless-components-preview/button';
 import * as Card from '@fluentui/react-headless-components-preview/card';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
+import * as ColorPicker from '@fluentui/react-headless-components-preview/color-picker';
 import * as Combobox from '@fluentui/react-headless-components-preview/combobox';
 import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
@@ -56,6 +57,7 @@ console.log({
   Button,
   Card,
   Checkbox,
+  ColorPicker,
   Combobox,
   Dialog,
   Divider,
