@@ -5,7 +5,6 @@ import { join } from 'node:path';
 import { type AllPackageInfo, getAllPackageInfo, workspaceRoot } from '@fluentui/scripts-monorepo';
 import { logger, readJsonFile } from '@nx/devkit';
 import type { ChangeType } from 'beachball';
-import yargs from 'yargs';
 
 /**
  * Deprecates a package by executing an `npm deprecate` command.
@@ -66,7 +65,8 @@ function getPackagesToDeprecate(options: { changeFilesRoot: string; packages: Al
 }
 
 export type DeprecateReactComponentsPreviewPackagesOptions = {
-  argv: { changeFilesRoot: string; token: string };
+  changeFilesRoot: string;
+  token: string;
   packages: AllPackageInfo;
 };
 
@@ -74,10 +74,8 @@ export type DeprecateReactComponentsPreviewPackagesOptions = {
  *  Deprecates React Components v9 preview packages
  **/
 export function deprecateReactComponentsPreviewPackages(options: DeprecateReactComponentsPreviewPackagesOptions) {
-  const { argv } = options;
-
   const packagesToDeprecate = getPackagesToDeprecate({
-    changeFilesRoot: argv.changeFilesRoot,
+    changeFilesRoot: options.changeFilesRoot,
     packages: options.packages,
   });
 
@@ -88,7 +86,7 @@ export function deprecateReactComponentsPreviewPackages(options: DeprecateReactC
 
   logger.log('Packages to deprecate:', packagesToDeprecate);
 
-  packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, argv.token));
+  packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, options.token));
 }
 
 /**
@@ -122,21 +120,17 @@ function createPackageChangeFileReader(options: { changeFilesRoot: string }) {
   };
 }
 
-function main() {
-  const argv = yargs
-    .option('changeFilesRoot', {
-      type: 'string',
-      description: 'Root folder where change files live (relative to workspace root)',
-      default: 'change',
-    })
-    .option('token', {
-      type: 'string',
-      description: 'NPM Token',
-      demandOption: true,
-    }).argv;
+function main(options?: Omit<DeprecateReactComponentsPreviewPackagesOptions, 'packages'>) {
+  options ??= {
+    changeFilesRoot: 'change',
+    token: process.env.NPM_TOKEN ?? '',
+  };
+  if (!process.env.NPM_TOKEN) {
+    throw new Error('The NPM_TOKEN environment variable is required');
+  }
 
   try {
-    deprecateReactComponentsPreviewPackages({ argv, packages: getAllPackageInfo() });
+    deprecateReactComponentsPreviewPackages({ ...options, packages: getAllPackageInfo() });
   } catch (e) {
     logger.error(e);
     logger.error('Failed to deprecate packages');

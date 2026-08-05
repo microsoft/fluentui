@@ -72,11 +72,9 @@ const packages: AllPackageInfo = {
 describe('deprecateReactComponentsPreviewPackages', () => {
   it('should skip deprecating packages (no change files)', () => {
     deprecateReactComponentsPreviewPackages({
-      argv: {
-        changeFilesRoot:
-          'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/no-change-files/change',
-        token: 'npm-token',
-      },
+      changeFilesRoot:
+        'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/no-change-files/change',
+      token: 'npm-token',
       packages,
     });
 
@@ -85,11 +83,9 @@ describe('deprecateReactComponentsPreviewPackages', () => {
 
   it('should skip deprecating packages (no preview packages)', () => {
     deprecateReactComponentsPreviewPackages({
-      argv: {
-        changeFilesRoot:
-          'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/no-preview-packages/change',
-        token: 'npm-token',
-      },
+      changeFilesRoot:
+        'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/no-preview-packages/change',
+      token: 'npm-token',
       packages,
     });
 
@@ -98,11 +94,9 @@ describe('deprecateReactComponentsPreviewPackages', () => {
 
   it('should deprecate preview packages', () => {
     deprecateReactComponentsPreviewPackages({
-      argv: {
-        changeFilesRoot:
-          'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/with-preview-packages/change',
-        token: 'npm-token',
-      },
+      changeFilesRoot:
+        'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/with-preview-packages/change',
+      token: 'npm-token',
       packages,
     });
 
@@ -117,10 +111,8 @@ describe('deprecateReactComponentsPreviewPackages', () => {
   it('should throw an error (change dir is not correct)', () => {
     expect(() =>
       deprecateReactComponentsPreviewPackages({
-        argv: {
-          changeFilesRoot: 'wrong-path',
-          token: 'npm-token',
-        },
+        changeFilesRoot: 'wrong-path',
+        token: 'npm-token',
         packages,
       }),
     ).toThrow();
@@ -133,11 +125,9 @@ describe('deprecateReactComponentsPreviewPackages', () => {
 
     expect(() =>
       deprecateReactComponentsPreviewPackages({
-        argv: {
-          changeFilesRoot:
-            'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/with-preview-packages/change',
-          token: 'npm-token',
-        },
+        changeFilesRoot:
+          'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/with-preview-packages/change',
+        token: 'npm-token',
         packages,
       }),
     ).toThrow();

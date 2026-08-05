@@ -2,7 +2,6 @@ import { execSync } from 'child_process';
 
 import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 import * as semver from 'semver';
-import yargs from 'yargs';
 
 function tagPackages(npmToken: string) {
   const packagesToTag = getPackagesToTag();
@@ -57,16 +56,17 @@ function getPackagesToTag() {
     .filter(Boolean) as Array<{ name: string; version: string }> | [];
 }
 
-function main(argv: yargs.Arguments) {
-  if (!argv.token || typeof argv.token !== 'string') {
-    throw new Error('Please pass an NPM token through the --token argument');
+function main() {
+  const token = process.env.NPM_TOKEN;
+  if (!token || typeof token !== 'string') {
+    throw new Error('Please set the NPM_TOKEN environment variable');
   }
 
-  tagPackages(argv.token);
+  tagPackages(token);
 }
 
 if (require.main === module && process.env.RELEASE_VNEXT) {
-  main(yargs.argv);
+  main();
 } else {
   console.log('"RELEASE_VNEXT" not set - skipping');
 }

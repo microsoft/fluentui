@@ -1,14 +1,9 @@
 import { execSync } from 'child_process';
-import * as fs from 'fs';
-import * as path from 'path';
 
 import type { BeachballConfig } from 'beachball';
 
 import { renderEntry, renderHeader } from './customRenderers';
-
-const baseConfig: typeof import('../base.config.json') = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../base.config.json'), { encoding: 'utf8' }),
-);
+import * as baseConfig from './base.config';
 
 export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changelog' | 'hooks'>> = {
   ...baseConfig,

@@ -81,10 +81,11 @@ extends:
                 displayName: Build, Test, Lint
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-web-components.config.js --message 'release: applying package updates - web-components'
+                  yarn publish:beachball --config scripts/beachball/src/release-web-components.config.js --message 'release: applying package updates - web-components'
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)
+                  NPM_TOKEN: $(npmToken)
                 displayName: Publish changes and bump versions
                 condition: not(${{ parameters.dryRun }})
 

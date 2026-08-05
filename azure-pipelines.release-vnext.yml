@@ -90,23 +90,28 @@ extends:
                 displayName: lint
 
               - script: |
-                  node -r ./scripts/ts-node/src/register ./scripts/executors/src/deprecate-react-components-preview-packages.ts --token $(npmToken)
+                  node -r ./scripts/ts-node/src/register ./scripts/executors/src/deprecate-react-components-preview-packages.ts
                 displayName: 'Deprecate preview packages'
                 condition: not(${{ parameters.dryRun }})
+                env:
+                  NPM_TOKEN: $(npmToken)
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'
+                  yarn publish:beachball --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)
+                  NPM_TOKEN: $(npmToken)
                 displayName: Publish changes and bump versions
                 condition: not(${{ parameters.dryRun }})
 
               - script: |
-                  node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts --token $(npmToken)
-                displayName: Tag prelease packages with prerelease tag
+                  node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts
+                displayName: Tag prerelease packages with prerelease tag
                 continueOnError: true
                 condition: not(${{ parameters.dryRun }})
+                env:
+                  NPM_TOKEN: $(npmToken)
 
               # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
               - script: |
@@ -115,7 +120,7 @@ extends:
 
               # TODO update release notes script for v9
               # - script: |
-              #     node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
+              #     node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --apply --debug
               #   displayName: 'Update github release notes'
 
               # This would usually be run automatically (via a pipeline decorator from an extension), but the

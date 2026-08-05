@@ -41,16 +41,26 @@ export async function renderEntry(entry: ChangelogEntry): Promise<string> {
   return `- ${entry.comment} (${commitLink} by ${entry.author})`;
 }
 
+const prNumberCache = new Map<ChangelogEntry, number | undefined>();
+
 async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> {
+  if (prNumberCache.has(entry)) {
+    return prNumberCache.get(entry);
+  }
+  if (!entry.commit || entry.commit === 'not available') {
+    return undefined;
+  }
   // Look for (presumably) the PR number at the end of the first line of the commit
   try {
     // Get the actual commit message which should contain the PR number
     const logResult = spawnSync('git', ['log', '--pretty=format:%s', '-n', '1', entry.commit]);
     if (logResult.status === 0) {
       const message = logResult.stdout.toString().trim();
-      const prMatch = message.split(/\r?\n/)[0].match(/\(#(\d+)\)$/m);
+      const prMatch = message.match(/\(#(\d+)\)$/m);
       if (prMatch) {
-        return Number(prMatch[1]);
+        const prNumber = Number(prMatch[1]);
+        prNumberCache.set(entry, prNumber);
+        return prNumber;
       }
     }
   } catch (ex) {
@@ -60,6 +70,7 @@ async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> 
   // Or fetch from GitHub API
   console.log(`Attempting to fetch pull request corresponding to ${entry.commit}...`);
   const pr = await getPullRequestForCommit({ commit: entry.commit, github, repoDetails: fluentRepoDetails });
+  prNumberCache.set(entry, pr?.number);
   if (pr) {
     console.log('...success!'); // failure message is logged by getPullRequestForCommit
     return pr.number;
