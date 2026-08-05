@@ -34,8 +34,7 @@
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "prerelease",
-      "major"
+      "prerelease"
     ]
   },
   "exports": {
