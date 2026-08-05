@@ -7,6 +7,23 @@
 import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
+// @internal (undocumented)
+export type AncestorMotionController_unstable = AncestorMotionState_unstable & {
+    setActive: (active: boolean) => void;
+};
+
+// @internal (undocumented)
+export const AncestorMotionProvider_unstable: (props: {
+    value: AncestorMotionState_unstable;
+    children: React_2.ReactNode;
+}) => React_2.ReactElement;
+
+// @internal (undocumented)
+export type AncestorMotionState_unstable = {
+    getSnapshot: () => boolean;
+    subscribe: (listener: () => void) => () => void;
+};
+
 // @public (undocumented)
 type AnnounceContextValue = {
     announce: (message: string, options?: AnnounceOptions) => void;
@@ -32,6 +49,9 @@ export type BackgroundAppearanceContextValue = 'inverted' | 'brand' | undefined;
 
 // @internal (undocumented)
 export const BackgroundAppearanceProvider: React_2.Provider<BackgroundAppearanceContextValue>;
+
+// @internal (undocumented)
+export const createAncestorMotionController_unstable: () => AncestorMotionController_unstable;
 
 // @internal (undocumented)
 export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
@@ -668,6 +688,9 @@ export type TooltipVisibilityContextValue_unstable = {
 
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
+
+// @internal (undocumented)
+export const useAncestorMotionState_unstable: () => AncestorMotionState_unstable;
 
 // @public
 function useAnnounce(): AnnounceContextValue;

@@ -1,6 +1,11 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
+import {
+  AncestorMotionProvider_unstable,
+  createAncestorMotionController_unstable,
+} from '@fluentui/react-shared-contexts';
 import { usePositioning } from './usePositioning';
+import { createPositionManager } from './createPositionManager';
 import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
 
@@ -48,6 +53,34 @@ const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioni
 };
 
 describe('usePositioning', () => {
+  it('updates on animation frames only while ancestor motion is active', async () => {
+    const motionController = createAncestorMotionController_unstable();
+
+    render(
+      <AncestorMotionProvider_unstable value={motionController}>
+        <TestComponent />
+      </AncestorMotionProvider_unstable>,
+    );
+
+    expect(createPositionManager).toHaveBeenLastCalledWith(
+      expect.objectContaining({ updatePositionOnAnimationFrame: false }),
+    );
+    const initialManagerCount = jest.mocked(createPositionManager).mock.calls.length;
+
+    await act(async () => motionController.setActive(true));
+
+    expect(createPositionManager).toHaveBeenLastCalledWith(
+      expect.objectContaining({ updatePositionOnAnimationFrame: true }),
+    );
+
+    await act(async () => motionController.setActive(false));
+
+    expect(createPositionManager).toHaveBeenLastCalledWith(
+      expect.objectContaining({ updatePositionOnAnimationFrame: false }),
+    );
+    expect(createPositionManager).toHaveBeenCalledTimes(initialManagerCount + 2);
+  });
+
   describe('onPositioningEnd', () => {
     it('calls onPositioningEnd with the positioning event', async () => {
       const onPositioningEnd = jest.fn();

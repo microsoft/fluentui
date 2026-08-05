@@ -1,7 +1,9 @@
 'use client';
 
+import { useAncestorMotionState_unstable } from '@fluentui/react-shared-contexts';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 import { POSITIONING_END_EVENT } from './constants';
 import { createPositionManager } from './createPositionManager';
@@ -26,7 +28,13 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const containerRef = React.useRef<HTMLElement | null>(null);
   const arrowRef = React.useRef<HTMLElement | null>(null);
 
-  const { enabled = true, updatePositionOnAnimationFrame = false } = options;
+  const ancestorMotionState = useAncestorMotionState_unstable();
+  const updatePositionOnAnimationFrame = useSyncExternalStore(
+    ancestorMotionState.subscribe,
+    ancestorMotionState.getSnapshot,
+    ancestorMotionState.getSnapshot,
+  );
+  const { enabled = true } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
   const updatePositionManager = React.useCallback(() => {
     if (managerRef.current) {

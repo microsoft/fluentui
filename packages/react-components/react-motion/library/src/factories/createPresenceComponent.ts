@@ -1,5 +1,9 @@
 'use client';
 
+import {
+  AncestorMotionProvider_unstable,
+  createAncestorMotionController_unstable,
+} from '@fluentui/react-shared-contexts';
 import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React from 'react';
@@ -117,6 +121,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
       const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
       const [child, childRef] = useChildElement(children, mounted);
+      const motionController = React.useRef(createAncestorMotionController_unstable()).current;
 
       const handleRef = useMotionImperativeRef(imperativeRef);
       const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams; skipMotions: boolean }>({
@@ -130,9 +135,11 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       const isReducedMotion = useIsReducedMotion();
 
       const handleMotionStart = useEventCallback((direction: PresenceDirection) => {
+        motionController.setActive(true);
         onMotionStart?.(null, { direction });
       });
       const handleMotionFinish = useEventCallback((direction: PresenceDirection) => {
+        motionController.setActive(false);
         onMotionFinish?.(null, { direction });
 
         if (direction === 'exit' && unmountOnExit) {
@@ -142,6 +149,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       });
 
       const handleMotionCancel = useEventCallback((direction: PresenceDirection) => {
+        motionController.setActive(false);
         onMotionCancel?.(null, { direction });
       });
 
@@ -254,7 +262,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       }, [handleRef, unmountOnExit, mounted]);
 
       if (mounted) {
-        return child;
+        return React.createElement(AncestorMotionProvider_unstable, { value: motionController, children: child });
       }
 
       return null;

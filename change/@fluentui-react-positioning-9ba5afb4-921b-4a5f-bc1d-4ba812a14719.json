@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Added updatePositionOnAnimationFrame option to continuously refresh placement during animations/motion (fixes #35968)",
+  "comment": "Updates positioned elements while a Fluent ancestor motion is active.",
   "packageName": "@fluentui/react-positioning",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"

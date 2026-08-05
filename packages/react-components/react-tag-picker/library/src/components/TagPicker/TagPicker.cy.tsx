@@ -115,33 +115,8 @@ const TagPickerInAnimatedDialog = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const [loadedOptions, setLoadedOptions] = React.useState<string[]>([]);
+  const [dialogAnimating, setDialogAnimating] = React.useState(false);
   const hasLoadedOnceRef = React.useRef(false);
-  const animatedHostRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    if (!dialogOpen) {
-      return;
-    }
-
-    if (animatedHostRef.current) {
-      animatedHostRef.current.dataset.animating = 'true';
-    }
-
-    const animation = animatedHostRef.current?.animate(
-      [{ transform: 'translate3d(40px, 21px, 0)' }, { transform: 'translate3d(0, 0, 0)' }],
-      { duration: 50, easing: 'ease-out', fill: 'forwards' },
-    );
-
-    if (animation) {
-      animation.onfinish = () => {
-        if (animatedHostRef.current) {
-          animatedHostRef.current.dataset.animating = 'false';
-        }
-      };
-    }
-
-    return () => animation?.cancel();
-  }, [dialogOpen]);
 
   React.useEffect(() => {
     if (!dialogOpen) {
@@ -182,10 +157,17 @@ const TagPickerInAnimatedDialog = () => {
         Close dialog
       </Button>
 
-      <Dialog open={dialogOpen} onOpenChange={onOpenChange}>
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={onOpenChange}
+        surfaceMotion={{
+          onMotionStart: () => setDialogAnimating(true),
+          onMotionFinish: () => setDialogAnimating(false),
+        }}
+      >
         <DialogSurface>
-          <DialogBody data-testid="dialog-body">
-            <div data-testid="dialog-tag-picker-host" ref={animatedHostRef}>
+          <DialogBody data-testid="dialog-body" data-animating={dialogAnimating}>
+            <div>
               <TagPicker
                 onOptionSelect={onOptionSelect}
                 selectedOptions={selectedOptions}
@@ -573,7 +555,7 @@ describe('TagPicker', () => {
 
       const assertDropdownAlignedToControl = () => {
         cy.get('[data-testid="dialog-tag-picker-control"]').should('be.visible');
-        cy.get('[data-testid="dialog-tag-picker-host"]').should('have.attr', 'data-animating', 'false');
+        cy.get('[data-testid="dialog-body"]').should('have.attr', 'data-animating', 'false');
         cy.get('[data-testid="dialog-tag-picker-list"]', { timeout: 200 })
           .should('be.visible')
           .should($list => {

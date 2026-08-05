@@ -1,5 +1,9 @@
 'use client';
 
+import {
+  AncestorMotionProvider_unstable,
+  createAncestorMotionController_unstable,
+} from '@fluentui/react-shared-contexts';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
@@ -104,6 +108,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     } = props;
     const params = _rest as Exclude<typeof props, MotionComponentProps>;
     const [child, childRef] = useChildElement(children);
+    const motionController = React.useRef(createAncestorMotionController_unstable()).current;
 
     const handleRef = useMotionImperativeRef(imperativeRef);
     const isInitialRender = React.useRef(true);
@@ -117,14 +122,17 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const isReducedMotion = useIsReducedMotion();
 
     const onMotionStart = useEventCallback(() => {
+      motionController.setActive(true);
       onMotionStartProp?.(null);
     });
 
     const onMotionFinish = useEventCallback(() => {
+      motionController.setActive(false);
       onMotionFinishProp?.(null);
     });
 
     const onMotionCancel = useEventCallback(() => {
+      motionController.setActive(false);
       onMotionCancelProp?.(null);
     });
 
@@ -189,7 +197,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       };
     }, []);
 
-    return child;
+    return React.createElement(AncestorMotionProvider_unstable, { value: motionController, children: child });
   };
 
   return Object.assign(Atom, {

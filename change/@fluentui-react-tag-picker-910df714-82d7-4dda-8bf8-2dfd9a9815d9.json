@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fixed popup positioning drift when the anchor moves during parent entry animations (for example, TagPicker inside Dialog), by refreshing placement during animation frames.",
+  "comment": "Fixes popup positioning drift when TagPicker is used inside an animating Fluent component such as Dialog.",
   "packageName": "@fluentui/react-tag-picker",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"
