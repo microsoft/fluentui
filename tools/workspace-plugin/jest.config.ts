@@ -1,6 +1,6 @@
 // @ts-check
 
-module.exports = {
+export default {
   displayName: 'workspace-plugin',
   preset: '../../jest.preset.js',
   transform: {
