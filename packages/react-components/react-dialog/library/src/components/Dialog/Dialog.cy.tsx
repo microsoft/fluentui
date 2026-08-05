@@ -362,6 +362,44 @@ describe('Dialog', () => {
       cy.get('html').should('have.css', 'overflow', 'visible clip');
     });
 
+    // PR-36513 review item 5: the scroll-lock classes are deliberately UNLAYERED
+    // (useDisableBodyScroll.module.css). Inside `@layer fui.base` any unlayered consumer
+    // reset (`body { overflow-y: auto }`) would outrank the lock before specificity is even
+    // consulted; unlayered, `.body-no-scroll` (0-1-0) beats the element reset (0-0-1) exactly
+    // as the Griffel makeResetStyles atomics did. The reset is appended AFTER every component
+    // stylesheet so it would also win any layer/order tie — the realistic regression shape.
+    it('should keep body scroll locked against an unlayered consumer reset', () => {
+      mount(
+        <>
+          <Dialog modalType="modal">
+            <DialogTrigger disableButtonEnhancement>
+              <Button id={dialogTriggerOpenId}>Open dialog</Button>
+            </DialogTrigger>
+            <DialogSurface>
+              <DialogTitle>Dialog title</DialogTitle>
+              <DialogBody>Lorem ipsum dolor sit amet consectetur adipisicing elit.</DialogBody>
+            </DialogSurface>
+          </Dialog>
+          {lorem}
+        </>,
+      );
+      cy.document().then(document => {
+        const consumerReset = document.createElement('style');
+        consumerReset.id = 'consumer-unlayered-reset';
+        consumerReset.textContent = 'html, body { overflow-y: auto; }';
+        document.head.appendChild(consumerReset);
+      });
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogSurfaceSelector).should('exist');
+      cy.get('html').should('have.css', 'overflow-y', 'clip');
+      cy.get('body').should('have.css', 'overflow-y', 'hidden');
+      // The AUT document is shared across tests in this spec — remove the reset so it
+      // cannot leak into later assertions.
+      cy.document().then(document => {
+        document.getElementById('consumer-unlayered-reset')?.remove();
+      });
+    });
+
     it('should focus trap by default', () => {
       mount(
         <Dialog modalType="modal">
