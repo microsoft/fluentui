@@ -69,9 +69,6 @@ yarn nx run <project>:start             # Start Storybook for component
 # Component generation (v9 only)
 yarn create-component                   # Interactive component generator
 
-# Release management
-yarn change                             # Create beachball change file (required for PRs)
-
 # Show project targets
 yarn nx show projects                   # List all projects
 ```
@@ -85,7 +82,7 @@ yarn nx show projects                   # List all projects
 3. Follow hook-based architecture pattern exactly
 4. Add comprehensive tests and Storybook stories
 5. Run `yarn nx run <project>:generate-api` to update API docs
-6. Create change file with `yarn change` before PR
+6. Create change file with `/beachball-change-file` skill before PR
 
 **For v8 components** (maintenance only):
 
@@ -463,7 +460,7 @@ The repository uses a triage bot that automatically assigns labels and assignees
 1. Labels are automatically applied based on changed files
 2. Focus on clear PR titles and descriptions
 3. Reference related issues with proper syntax (`Fixes #123`)
-4. Create change files for breaking changes (`yarn change`)
+4. Create change files for changes impacting published code (`/beachball-change-file` skill)
 
 **For Maintainers**:
 

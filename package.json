@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dedupe": "yarn dedupe --strategy highest",
-    "change": "beachball change --no-commit",
+    "change": "beachball change",
     "check:change": "beachball check",
     "check:modified-files": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/check-for-modified-files",
     "check:affected": "node ./scripts/executors/src/checkIfPackagesAffected.js",
@@ -23,7 +23,6 @@
     "generate-version-files": "node -r ./scripts/ts-node/src/register ./scripts/generators/src/generate-version-files",
     "postinstall": "husky && node ./scripts/package-manager/src/postinstall.js",
     "preinstall": "node ./scripts/package-manager/src/preinstall.js",
-    "publish:beachball": "beachball publish -b origin/master --access public -y",
     "start": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/start",
     "generate": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/generate-ui",
     "clean": "nx run-many -t clean --verbose",
@@ -163,7 +162,6 @@
     "@types/webpack-env": "1.18.8",
     "@types/webpack-hot-middleware": "2.25.9",
     "@types/yargs": "13.0.11",
-    "@types/yargs-unparser": "2.0.1",
     "@typescript-eslint/eslint-plugin": "8.46.2",
     "@typescript-eslint/rule-tester": "^8.46.2",
     "autoprefixer": "10.2.1",
@@ -176,7 +174,7 @@
     "babel-plugin-module-resolver": "5.0.3",
     "babel-plugin-react-compiler": "1.0.0",
     "babel-plugin-tester": "10.1.0",
-    "beachball": "2.31.0",
+    "beachball": "3.0.0-alpha.7",
     "chalk": "4.1.0",
     "chrome-remote-interface": "0.28.2",
     "ci-info": "3.9.0",
@@ -281,7 +279,6 @@
     "react-shadow": "20.3.0",
     "react-test-renderer": "19.2.0",
     "react-window": "^1.8.6",
-    "read-pkg-up": "7.0.1",
     "remark-gfm": "4.0.1",
     "replace-in-file": "6.1.0",
     "resolve": "1.22.8",
@@ -329,10 +326,8 @@
     "webpack-dev-server": "4.15.2",
     "webpack-hot-middleware": "2.26.1",
     "webpack-merge": "5.10.0",
-    "workspace-tools": "0.29.1",
     "yargs": "13.3.2",
-    "yargs-parser": "13.1.2",
-    "yargs-unparser": "2.0.0"
+    "yargs-parser": "13.1.2"
   },
   "dependencies": {
     "@fluentui/react-icons-northstar": "0.66.5",

@@ -1,1 +1,1 @@
-module.exports = require('./scripts/beachball/base.config.json');
+module.exports = require('./scripts/beachball/src/base.config');

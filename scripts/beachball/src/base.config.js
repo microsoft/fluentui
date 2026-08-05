@@ -1,0 +1,33 @@
+/** @satisfies {import('beachball').BeachballConfig} */
+const config = {
+  access: 'public',
+  commit: false,
+  disallowedChangeTypes: ['major'],
+  tag: 'latest',
+  generateChangelog: true,
+  ignorePatterns: [
+    '**/*.{shot,snap}',
+    '**/*.{test,spec,cy}.{ts,tsx}',
+    '**/*.stories.{ts,tsx}',
+    '**/.eslintrc.*',
+    '**/eslint.config.*',
+    '**/rit.config.js',
+    '**/__fixtures__/**',
+    '**/__mocks__/**',
+    '**/docs/**',
+    '**/stories/**',
+    '**/.storybook/**',
+    '**/bundle-size/**',
+    '**/common/isConformant.ts',
+    '**/src/testing/**',
+    '**/src/e2e/**',
+    '**/config/tests.js',
+    '**/jest.config.js',
+    '**/SPEC*.md',
+    '**/tests/**',
+  ],
+  scope: ['!packages/fluentui/*'],
+  changehint: "Run 'yarn change' to generate a change file",
+};
+
+module.exports = config;
