@@ -4,8 +4,7 @@ import { ChevronDownRegular } from '@fluentui/react-icons';
 
 import { TagPickerContextProvider } from '../../contexts/TagPickerContext';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
-import { useTagPickerControlBase_unstable } from './useTagPickerControlBase';
-import { useTagPickerControl_unstable } from './useTagPickerControl';
+import { useTagPickerControlBase_unstable, useTagPickerControl_unstable } from './useTagPickerControl';
 
 const makeContext = (overrides: Partial<TagPickerContextValue> = {}): TagPickerContextValue => ({
   triggerRef: React.createRef<HTMLInputElement>(),

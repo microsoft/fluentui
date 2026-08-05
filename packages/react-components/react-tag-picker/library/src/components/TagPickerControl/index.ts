@@ -8,8 +8,7 @@ export type {
   TagPickerControlState,
 } from './TagPickerControl.types';
 export { renderTagPickerControl_unstable } from './renderTagPickerControl';
-export { useTagPickerControlBase_unstable } from './useTagPickerControlBase';
-export { useTagPickerControl_unstable } from './useTagPickerControl';
+export { useTagPickerControl_unstable, useTagPickerControlBase_unstable } from './useTagPickerControl';
 export {
   iconSizes,
   tagPickerControlAsideWidthToken,
