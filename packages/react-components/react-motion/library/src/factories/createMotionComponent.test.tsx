@@ -51,7 +51,9 @@ const MotionStateObserver = React.forwardRef<HTMLDivElement, { onChange: (active
     const notify = () => props.onChange(motionState?.active ?? false);
     notify();
     motionState?.listeners.add(notify);
-    return () => motionState?.listeners.delete(notify);
+    return () => {
+      motionState?.listeners.delete(notify);
+    };
   }, [motionState, props]);
 
   return <div ref={ref}>MotionStateObserver</div>;
