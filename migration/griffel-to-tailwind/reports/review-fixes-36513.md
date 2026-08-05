@@ -332,3 +332,224 @@ Commit: `23ae3aaf78`.
   docs-chrome source directly.
 - README "Shared Storybook Preview Styles" now instructs importing BOTH subpaths and
   carries a migration note for consumers who imported only `styles.css`.
+
+## Item 5 — Dialog body-scroll lock defeated by unlayered page resets (HIGH) — CONFIRMED, fixed
+
+Commit: `aedb775481`. Date: 2026-08-05.
+
+### Verification
+
+- **CONFIRMED.** `useDisableBodyScroll.module.css` placed `.html-no-scroll` /
+  `.body-no-scroll` in `@layer fui.base`; any unlayered consumer rule on `html`/`body`
+  outranks a layered rule before specificity is consulted, so `body { overflow-y: auto }`
+  defeated the modal lock. The file's own header documented this as the accepted half of
+  D2 — the review overrides that call: the lock is the FUNCTIONAL half of modality, not a
+  styling preference a reset should win by accident.
+- **Pre-migration parity:** Griffel injected both classes as UNLAYERED `makeResetStyles`
+  atomics (compiled output in `lib-commonjs/utils/useDisableBodyScroll.styles.js`), so the
+  0-1-0 class beat consumer element resets (0-0-1) on specificity. Unlayering RESTORES
+  Griffel behavior; equal-specificity later consumer rules win by source order — same as
+  under Griffel.
+- **Consumers:** `useDisableBodyScroll` is imported only by `DialogSurface`
+  (`useDialogSurface.ts`); Drawer's `OverlayDrawer` composes `DialogSurface` — dialog AND
+  drawer VR sets are the affected surfaces.
+
+### Fix
+
+- Both classes moved out of `@layer fui.base` to UNLAYERED; header rewritten citing the
+  D2-amendment-5 rationale (rules whose subject element is owned by external code sit
+  unlayered — `<html>`/`<body>` are consumer-owned) + review item 5; records that
+  deliberate consumer opt-out (higher specificity / `!important`) still works.
+- Durable probe: `Dialog.cy.tsx` "should keep body scroll locked against an unlayered
+  consumer reset" — appends `html, body { overflow-y: auto }` as an unlayered `<style>`
+  AFTER every component stylesheet, opens a modal dialog, asserts computed `overflow-y` =
+  `clip` (html) / `hidden` (body); removes the injected style afterwards (shared AUT
+  document).
+
+### Gates
+
+- **RED-then-GREEN proven, uncached both legs:** with the pre-fix layered CSS restored the
+  probe fails all 5 cypress retries; with the fix `react-dialog:e2e --skip-nx-cache` =
+  24/24 passing.
+- react-dialog jest green (run-many, zero failures).
+- **VR zero tolerance:** `Dialog` 63/63 and `Drawer` 76/76 pairs pixel-identical
+  (baseline = fresh `--skip-nx-cache` build at pre-fix HEAD `ca4c07161d`; candidate =
+  fresh `--skip-nx-cache` build with fixes; staleness guard clean both legs). The
+  unlayering is invisible in VR (no unlayered reset exists in the storybook) — expected.
+
+## Item 9 — ChartTable VR story undeclared dep (MEDIUM) — CONFIRMED, fixed
+
+Commit: `900a87aeb0`. Date: 2026-08-05.
+
+### Verification
+
+- **CONFIRMED.** The VR app does not declare `@fluentui/react-components`;
+  `@fluentui/react-theme` IS declared (`"*"`) and re-exports the SAME `tokens` object from
+  `@fluentui/tokens` (`react-theme/library/src/index.ts`), so values are identical by
+  construction.
+
+### Fix
+
+- `ChartTable.stories.tsx` imports `tokens` from `@fluentui/react-theme` (comment records
+  the reason).
+
+### Gates
+
+- `vr-tests-react-components:lint` green (6-project run-many, exit 0).
+- **VR zero tolerance:** `Charts-ChartTable` 6/6 pairs pixel-identical across the swap
+  (same fresh-build protocol as item 5).
+
+## Item 12 — CarouselAutoplayButton drops colors for outline appearance (MEDIUM) — CONFIRMED, fixed
+
+Commit: `c9b6a14156`. Date: 2026-08-05.
+
+### Verification
+
+- **CONFIRMED against pre-migration sources.** Griffel-era hook (at `d2375b2452`) merged
+  `mergeClasses(static, styles.root, state.root.className)` with react-button's classes
+  LAST; per-property winners follow react-button's appearance slices
+  (`useButtonStyles.styles.ts` at `60d59a5f72~1`):
+  - `outline`: sets ONLY `background-color` (rest/hover/pressed) — carousel's
+    `border-*-color: colorTransparentStroke` and `color: colorNeutralForeground2`
+    SURVIVED under Griffel;
+  - `primary` / `subtle` / `transparent`: set all three colour properties — carousel
+    atomics deleted;
+  - `secondary`: empty slice — carousel keeps all three;
+  - `checked` / `disabled(Focusable)`: ToggleButton/react-button slices set all three —
+    deleted in every appearance.
+    The migrated per-slice gate dropped everything for `outline`; the module header had
+    already recorded exactly this as a "RESIDUAL, reported rather than engineered around" —
+    the review upgraded it to a fix.
+
+### Fix
+
+- `CarouselAutoplayButton.module.css` — `.rest-colors` split into `.rest-background`
+  (background-color) and `.rest-stroke-foreground` (4 border colours + color), both still
+  `@variant at-rest` in `fui.components.l2`; header carries the per-property derivation.
+- `useCarouselAutoplayButtonStyles.styles.ts` — per-property gates:
+  `backgroundOverridden = state || appearance !== 'secondary'`;
+  `strokeAndForegroundOverridden = state || (appearance !== 'secondary' && appearance !== 'outline')`.
+- New VR coverage `CarouselAutoplayButton Converged` (9 stories: Secondary, Outline,
+  Primary, Subtle, Transparent, Checked, OutlineChecked, Disabled, OutlineDisabled) — the
+  package previously had NO VR stories (ledger: VR "NOT possible" at conversion time).
+
+### Gates
+
+- react-carousel jest: 8 new gate tests green (secondary keeps both classes; outline keeps
+  stroke/foreground only; primary/subtle/transparent and checked/disabled/outline+checked
+  drop both). 3 PRE-EXISTING snapshot failures ("renders a default state" in
+  `CarouselAutoplayButton`, `CarouselButton`, `CarouselNavContainer`) are icon-markup
+  churn (`fui-Icon` class + `data-fui-icon` + repathed svg `d`) from the headless-icons
+  workstream — two of the three suites are untouched by this item; not caused and not
+  absorbed here.
+- **VR fix-invariance evidence** (pre-fix bundle `review36513-carousel-prefix` vs fixed
+  bundle, both fresh `--skip-nx-cache`): all renderable non-checked stories
+  pixel-identical EXCEPT `Outline` — 123 diff px localized to the button: pre-fix shows
+  react-button's neutral border ring + Foreground1 icon; fixed shows transparent border +
+  Foreground2 icon, matching the Griffel winners above. **The `Outline` baseline is
+  captured from the FIXED bundle and intentionally differs from the pre-fix rendering**
+  (pre-fix bug pixels retained in `validation/baseline/review36513-carousel-prefix/`).
+- Story defect found during capture: `defaultChecked` + a SINGLE-card carousel crashes
+  embla autoplay (`Cannot read properties of undefined (reading '0')` in `startAutoplay`)
+  — storybook rendered its error page in BOTH legs, so the two Checked captures were
+  error-page pairs (their 362-px "diff" was the hashed bundle filename inside the stack
+  trace). Stories now use 3 cards; Checked/OutlineChecked baselines are first captured
+  from the fixed bundle, with checked-config class invariance pinned by the jest gates
+  instead. The single-card autoplay crash itself looks like a pre-existing
+  embla-integration defect — noted for follow-up, out of scope here.
+- Final baseline set `validation/baseline/review36513-carousel-final`: 9 screenshots from
+  the fixed bundle (fresh `--skip-nx-cache`); determinism verified by an immediate
+  re-capture diffing 9/9 identical at zero tolerance (autoplay advances exactly one card
+  before the 500 ms screenshot, consistently).
+
+## Item 15 — ListItem `?? undefined` un-suppresses explicit null indicator (MEDIUM) — CONFIRMED, fixed
+
+Commit: `f5f25d0b59`. Date: 2026-08-05.
+
+### Verification
+
+- **CONFIRMED.** `useListItemStyles.styles.ts` flattened explicit `null` (suppress —
+  `slot.optional` returns `undefined` for `null`, Checkbox renders nothing) into
+  `undefined` (use default — `slot.always` fabricates a props object and Checkbox's
+  `renderByDefault: true` indicator renders). `slot.optional`
+  (`react-utilities/src/compose/slot.ts`) is the repo-wide definition of explicit-null
+  semantics; no other converted component converts `null` before slot normalisation.
+
+### Fix
+
+- Normalisation now runs only `if (state.checkmark.indicator !== null)`; `null` passes
+  through untouched and Checkbox drops the slot. `undefined`/shorthand/props behave
+  exactly as before (D16.3 class merge unchanged).
+
+### Gates
+
+- New jest test: `checkmark={{ indicator: null }}` renders NO
+  `[class*="checkmark-indicator"]` element, with a `checkmark={{}}` sibling control
+  rendering one. react-list suite green 80/80, 6/6 snapshots untouched.
+- **VR: not needed — emitted CSS is byte-unchanged** (JS slot plumbing only;
+  `ListItem.module.css` untouched).
+
+## Item 17 — CELL_WIDTH divergence: DataGrid offset now tracks the scaled selection cell (MEDIUM) — CONFIRMED, fixed
+
+Commit: `599b3d0d59`. Date: 2026-08-05. (User-approved design: computed-value hook, not a
+44px CSS literal.)
+
+### Verification
+
+- **CONFIRMED.** `TableSelectionCell.module.css` renders the cell at `w-44` /
+  `min-w-44 max-w-44` = `calc(44px * var(--base-scale))` (theme:
+  `--spacing: calc(1px * var(--base-scale))`, `react-tailwind-theme/css/index.css`), while
+  `useDataGrid.ts` subtracted the FIXED `CELL_WIDTH = 44` — at any non-default
+  `--base-scale` the sizing math disagrees with the rendered column by 44\*(scale-1) px.
+
+### Fix
+
+- NEW public hook `useCssVarValue(variableName, elementRef, { fallback })` in
+  `@fluentui/react-utilities` (pattern credit: Accelint standard-toolkit token-read
+  convention — `getComputedStyle(el).getPropertyValue(...)` at the consuming DOM
+  position). Read ONCE per mount in an isomorphic layout effect (re-read only if
+  `variableName` changes); deliberately NOT reactive to later theme/stylesheet changes
+  (documented staleness semantics); SSR-safe (`fallback` until mounted); jsdom
+  inline-style-only limitation documented in jsdoc and test.
+- `useDataGrid_unstable` reads `--base-scale` at the grid root (`innerRef`), guards
+  non-finite/non-positive parses, subtracts `CELL_WIDTH * scale`; SSR/pre-mount and
+  missing var fall back to legacy `-CELL_WIDTH`; explicit `containerWidthOffset` still
+  wins. `CELL_WIDTH` / `TABLE_SELECTION_CELL_WIDTH` stay exported, now documented as the
+  default-scale value + fallback. CSS untouched — the JS tracks it.
+
+### Gates
+
+- react-utilities jest: 6 new `useCssVarValue` tests green (read-at-mount, fallback
+  pre-mount/undefined-var, undefined without fallback, once-per-mount staleness, re-read
+  on name change, trimming). Suite green.
+- react-table jest green; `react-table:type-check` and `lint` green.
+- api.md regenerated (`generate-api --skip-nx-cache`): `react-utilities.api.md` adds
+  `useCssVarValue` + `UseCssVarValueOptions`, both `@public` and documented;
+  `react-table.api.md` upgrades `TABLE_SELECTION_CELL_WIDTH` to documented.
+- **Non-default base-scale probe (cypress, real Chrome): RED-then-GREEN proven, uncached.**
+  New `DataGrid.cy.tsx` test mounts a resizable multiselect grid at scale 1, remounts
+  under `--base-scale: 1.25`, asserts the space-filling column is exactly 55-44 = 11 px
+  narrower. Fix: 12/12 passing. Pre-fix `useDataGrid.ts` restored: fails all 5 retries —
+  "expected 482 to be close to 471 +/- 1" (pre-fix delta 0).
+- **VR zero tolerance (default scale must be pixel-identical):** `Table ` 162/162 and
+  `DataGridConverged` 6/6 pairs identical (fresh `--skip-nx-cache` both legs, staleness
+  guard clean).
+- Dependency-floor note (same shape as review item 19, out of this item's scope):
+  react-table's `@fluentui/react-utilities` range `^9.26.5` predates `useCssVarValue` and
+  needs a bump at release versioning.
+
+## Cross-item environment notes for items 5/9/12/15/17 (2026-08-05)
+
+- Concurrent review-fix agents were active in the same tree (items 3/4/6/7/8/10/11/13/14/16
+  committed during this work); tree state at candidate-build time recorded in
+  `.scratch/review36513-tree-state-at-build3.txt`. All five zero-tolerance VR sets passed
+  despite the churn.
+- VR artifact locations (gitignored): baselines `validation/baseline/review36513-*`,
+  candidates + diff summaries `validation/candidate/review36513-*`; build/test logs
+  `validation/*review36513*.log`.
+- Pre-existing failures observed at run time, owned elsewhere: react-dialog and
+  react-carousel `type-check` still fail with TS2307 on `*.module.css` via
+  `tsconfig.cy.json`/`tsconfig.spec.json` (item-6 commit `6ddf01b255` did not cover these
+  two packages); `vr-tests-react-components:type-check` fails on
+  `ChartAnnotationLayer.stories.tsx:118` (committed content, untouched here);
+  react-carousel icon-markup snapshot failures (headless-icons workstream).
