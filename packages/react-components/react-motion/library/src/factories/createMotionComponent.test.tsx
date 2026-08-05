@@ -48,9 +48,10 @@ const MotionStateObserver = React.forwardRef<HTMLDivElement, { onChange: (active
   const motionState = useAncestorMotionState_unstable();
 
   useIsomorphicLayoutEffect(() => {
-    const notify = () => props.onChange(motionState.getSnapshot());
+    const notify = () => props.onChange(motionState?.active ?? false);
     notify();
-    return motionState.subscribe(notify);
+    motionState?.listeners.add(notify);
+    return () => motionState?.listeners.delete(notify);
   }, [motionState, props]);
 
   return <div ref={ref}>MotionStateObserver</div>;

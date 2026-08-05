@@ -29,10 +29,37 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const arrowRef = React.useRef<HTMLElement | null>(null);
 
   const ancestorMotionState = useAncestorMotionState_unstable();
+  const subscribeToAncestorMotion = React.useCallback(
+    (listener: () => void) => {
+      const states: NonNullable<typeof ancestorMotionState>[] = [];
+      let state = ancestorMotionState;
+
+      while (state) {
+        states.push(state);
+        state.listeners.add(listener);
+        state = state.parent;
+      }
+
+      return () => states.forEach(ancestorState => ancestorState.listeners.delete(listener));
+    },
+    [ancestorMotionState],
+  );
+  const getAncestorMotionSnapshot = React.useCallback(() => {
+    let state = ancestorMotionState;
+
+    while (state) {
+      if (state.active) {
+        return true;
+      }
+      state = state.parent;
+    }
+
+    return false;
+  }, [ancestorMotionState]);
   const updatePositionOnAnimationFrame = useSyncExternalStore(
-    ancestorMotionState.subscribe,
-    ancestorMotionState.getSnapshot,
-    ancestorMotionState.getSnapshot,
+    subscribeToAncestorMotion,
+    getAncestorMotionSnapshot,
+    getAncestorMotionSnapshot,
   );
   const { enabled = true } = options;
   const resolvePositioningOptions = usePositioningOptions(options);

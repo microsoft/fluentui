@@ -3,6 +3,7 @@
 import {
   AncestorMotionProvider_unstable,
   createAncestorMotionController_unstable,
+  useAncestorMotionState_unstable,
 } from '@fluentui/react-shared-contexts';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
@@ -108,7 +109,9 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     } = props;
     const params = _rest as Exclude<typeof props, MotionComponentProps>;
     const [child, childRef] = useChildElement(children);
+    const ancestorMotionState = useAncestorMotionState_unstable();
     const motionController = React.useRef(createAncestorMotionController_unstable()).current;
+    motionController.parent = ancestorMotionState;
 
     const handleRef = useMotionImperativeRef(imperativeRef);
     const isInitialRender = React.useRef(true);

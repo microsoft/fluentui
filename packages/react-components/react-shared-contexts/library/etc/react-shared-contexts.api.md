@@ -13,15 +13,13 @@ export type AncestorMotionController_unstable = AncestorMotionState_unstable & {
 };
 
 // @internal (undocumented)
-export const AncestorMotionProvider_unstable: (props: {
-    value: AncestorMotionState_unstable;
-    children: React_2.ReactNode;
-}) => React_2.ReactElement;
+export const AncestorMotionProvider_unstable: React_2.Provider<AncestorMotionState_unstable | undefined>;
 
 // @internal (undocumented)
 export type AncestorMotionState_unstable = {
-    getSnapshot: () => boolean;
-    subscribe: (listener: () => void) => () => void;
+    active: boolean;
+    listeners: Set<() => void>;
+    parent?: AncestorMotionState_unstable;
 };
 
 // @public (undocumented)
@@ -690,7 +688,7 @@ export type TooltipVisibilityContextValue_unstable = {
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
 
 // @internal (undocumented)
-export const useAncestorMotionState_unstable: () => AncestorMotionState_unstable;
+export const useAncestorMotionState_unstable: () => AncestorMotionState_unstable | undefined;
 
 // @public
 function useAnnounce(): AnnounceContextValue;

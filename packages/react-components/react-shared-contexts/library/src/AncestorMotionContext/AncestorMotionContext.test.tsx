@@ -8,7 +8,7 @@ import {
   type AncestorMotionState,
 } from './AncestorMotionContext';
 
-let observedState: AncestorMotionState;
+let observedState: AncestorMotionState | undefined;
 const MotionState = () => {
   observedState = useAncestorMotionState();
   return null;
@@ -18,7 +18,7 @@ describe('AncestorMotionContext', () => {
   it('is inactive by default', () => {
     render(<MotionState />);
 
-    expect(observedState.getSnapshot()).toBe(false);
+    expect(observedState).toBeUndefined();
   });
 
   it('provides active motion to descendants', () => {
@@ -31,13 +31,14 @@ describe('AncestorMotionContext', () => {
       </AncestorMotionProvider>,
     );
 
-    expect(observedState.getSnapshot()).toBe(true);
+    expect(observedState?.active).toBe(true);
   });
 
   it('preserves active motion through an inactive nested provider', () => {
     const activeController = createAncestorMotionController();
     const inactiveController = createAncestorMotionController();
     activeController.setActive(true);
+    inactiveController.parent = activeController;
 
     render(
       <AncestorMotionProvider value={activeController}>
@@ -47,19 +48,20 @@ describe('AncestorMotionContext', () => {
       </AncestorMotionProvider>,
     );
 
-    expect(observedState.getSnapshot()).toBe(true);
+    expect(observedState?.active).toBe(false);
+    expect(observedState?.parent?.active).toBe(true);
   });
 
   it('notifies subscribers when motion state changes', () => {
     const controller = createAncestorMotionController();
     const listener = jest.fn();
-    const unsubscribe = controller.subscribe(listener);
+    controller.listeners.add(listener);
 
     controller.setActive(true);
     controller.setActive(true);
     controller.setActive(false);
 
     expect(listener).toHaveBeenCalledTimes(2);
-    unsubscribe();
+    controller.listeners.delete(listener);
   });
 });

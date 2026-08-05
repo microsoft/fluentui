@@ -3,6 +3,7 @@
 import {
   AncestorMotionProvider_unstable,
   createAncestorMotionController_unstable,
+  useAncestorMotionState_unstable,
 } from '@fluentui/react-shared-contexts';
 import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -121,7 +122,9 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
       const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
       const [child, childRef] = useChildElement(children, mounted);
+      const ancestorMotionState = useAncestorMotionState_unstable();
       const motionController = React.useRef(createAncestorMotionController_unstable()).current;
+      motionController.parent = ancestorMotionState;
 
       const handleRef = useMotionImperativeRef(imperativeRef);
       const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams; skipMotions: boolean }>({
