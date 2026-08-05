@@ -43,8 +43,16 @@ export {
   splitButtonClassNames,
   useSplitButtonStyles_unstable,
   useSplitButton_unstable,
+  useSplitButtonBase_unstable,
 } from './SplitButton';
-export type { SplitButtonProps, SplitButtonSlots, SplitButtonState } from './SplitButton';
+export type {
+  SplitButtonBaseProps,
+  SplitButtonBaseSlots,
+  SplitButtonBaseState,
+  SplitButtonProps,
+  SplitButtonSlots,
+  SplitButtonState,
+} from './SplitButton';
 export {
   ToggleButton,
   renderToggleButton_unstable,
