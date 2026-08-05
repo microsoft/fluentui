@@ -84,15 +84,15 @@ Fix (additive, root exports kept — consumer semantics identical):
 
 ## Gate results (all on `5c3e817823`)
 
-| Gate                                                     | Result                                         |
-| -------------------------------------------------------- | ---------------------------------------------- | --------------------------- | ---------------------- |
-| `vitest run src` (unit + contract, incl. entrypoint-api) | 4 files, 93 passed                             |
-| `build-transforms.test.js`                               | 86 passed (was 72)                             |
-| `yarn build:js` (full tsc rebuild, lib + lib-cjs)        | exit 0                                         |
-| Consumer transform proof vs built output                 | PASS — all 11 imports resolve (was 6 failures) |
-| `yarn build-verify`                                      | 4 files, \*\*155 passed                        | 8 skipped\*\* (baseline 140 | 8; +15 new assertions) |
-| `yarn lint` (package) / `yarn type-check:infra`          | clean                                          |
-| Working tree after commit                                | clean                                          |
+| Gate                                                     | Result                                                       |
+| -------------------------------------------------------- | ------------------------------------------------------------ |
+| `vitest run src` (unit + contract, incl. entrypoint-api) | 4 files, 93 passed                                           |
+| `build-transforms.test.js`                               | 86 passed (was 72)                                           |
+| `yarn build:js` (full tsc rebuild, lib + lib-cjs)        | exit 0                                                       |
+| Consumer transform proof vs built output                 | PASS — all 11 imports resolve (was 6 failures)               |
+| `yarn build-verify`                                      | **155 passed, 8 skipped** (baseline 140, 8; +15 new asserts) |
+| `yarn lint` (package) / `yarn type-check:infra`          | clean                                                        |
+| Working tree after commit                                | clean                                                        |
 
 The 8 skips are the sprite suite, by design (see Item 1).
 
