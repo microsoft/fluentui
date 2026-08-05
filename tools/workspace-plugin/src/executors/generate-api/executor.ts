@@ -1,8 +1,15 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 import { execSync } from 'node:child_process';
 import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
-import { CompilerState, Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-extractor';
+import {
+  CompilerState,
+  ConsoleMessageId,
+  Extractor,
+  ExtractorConfig,
+  type ExtractorMessage,
+  type IConfigFile,
+} from '@microsoft/api-extractor';
 
 import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
@@ -47,14 +54,47 @@ async function runGenerateApi(options: NormalizedOptions, context: ExecutorConte
 
   const extractorConfigs = configSources.map(configSource => prepareExtractorConfig(configSource, options));
   const compilerState = createCompilerState(extractorConfigs);
+  const messageCallback = createConsoleMessageDeduper();
 
-  for (const extractorConfig of extractorConfigs) {
-    if (!invokeExtractor(extractorConfig, compilerState, options, context)) {
+  for (const [index, extractorConfig] of extractorConfigs.entries()) {
+    const invoked = invokeExtractor(
+      {
+        extractorConfig,
+        compilerState,
+        messageCallback,
+        progress: { current: index + 1, total: extractorConfigs.length },
+      },
+      options,
+      context,
+    );
+
+    if (!invoked) {
       return false;
     }
   }
 
   return true;
+}
+
+/**
+ * api-extractor repeats its compiler version notices on every invocation, so keep only the first of each.
+ */
+function createConsoleMessageDeduper() {
+  const dedupedMessageIds: string[] = [ConsoleMessageId.Preamble, ConsoleMessageId.CompilerVersionNotice];
+  const alreadyReported = new Set<string>();
+
+  return (message: ExtractorMessage) => {
+    if (!dedupedMessageIds.includes(message.messageId)) {
+      return;
+    }
+
+    if (alreadyReported.has(message.messageId)) {
+      message.handled = true;
+      return;
+    }
+
+    alreadyReported.add(message.messageId);
+  };
 }
 
 /**
@@ -180,15 +220,22 @@ function prepareExtractorConfig(configSource: ConfigSource, options: NormalizedO
 }
 
 function invokeExtractor(
-  extractorConfig: ExtractorConfig,
-  compilerState: CompilerState,
+  params: {
+    extractorConfig: ExtractorConfig;
+    compilerState: CompilerState;
+    messageCallback: (message: ExtractorMessage) => void;
+    progress: { current: number; total: number };
+  },
   options: NormalizedOptions,
   context: ExecutorContext,
 ) {
-  verboseLog(`Running api-extractor for entry point: ${extractorConfig.mainEntryPointFilePath}`);
+  const { extractorConfig, compilerState, messageCallback, progress } = params;
+
+  logEntryPoint();
 
   const extractorResult = Extractor.invoke(extractorConfig, {
     compilerState,
+    messageCallback,
 
     // Equivalent to the "--local" command-line parameter
     localBuild: options.local,
@@ -208,6 +255,18 @@ function invokeExtractor(
       ` and ${extractorResult.warningCount} warnings`,
   );
   return false;
+
+  function logEntryPoint() {
+    const outputPath = extractorConfig.untrimmedFilePath || extractorConfig.mainEntryPointFilePath;
+    const label = relative(options.projectAbsolutePath, outputPath);
+
+    if (progress.total === 1) {
+      verboseLog(`Generating API for ${label}`);
+      return;
+    }
+
+    logger.info(`[${progress.current}/${progress.total}] Generating API for ${label}`);
+  }
 }
 
 function getTsConfigForApiExtractor(options: {
