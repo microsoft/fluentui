@@ -133,30 +133,6 @@ export class BaseTreeItem extends FASTElement {
   @attr({ mode: 'boolean' })
   public empty: boolean = false;
 
-  private styles: ElementStyles | undefined;
-
-  /**
-   * The indent of the tree item element.
-   * This is not needed once css attr() is supported (--indent: attr(data-indent type(<number>)));
-   * @public
-   */
-  @attr({ attribute: 'data-indent' })
-  public dataIndent!: number | undefined;
-
-  protected dataIndentChanged(prev: number, next: number) {
-    if (this.styles !== undefined) {
-      this.$fastController.removeStyles(this.styles);
-    }
-
-    this.styles = css`
-      :host {
-        --indent: ${next as any};
-      }
-    `;
-
-    this.$fastController.addStyles(this.styles);
-  }
-
   /** @internal */
   @observable
   public childTreeItems: BaseTreeItem[] | undefined = [];
@@ -172,7 +148,7 @@ export class BaseTreeItem extends FASTElement {
   }
 
   /**
-   * Updates the childrens indent
+   * Updates the children’s selected states.
    *
    * @public
    */
@@ -185,18 +161,6 @@ export class BaseTreeItem extends FASTElement {
     if (!this.expanded) {
       this.expanded = Array.from(this.querySelectorAll('[selected]')).some(el => isTreeItem(el));
     }
-
-    this.childTreeItems.forEach(item => {
-      this.setIndent(item);
-    });
-  }
-
-  /**
-   * Sets the indent for each item
-   */
-  private setIndent(item: BaseTreeItem): void {
-    const indent = this.dataIndent ?? 0;
-    item.dataIndent = indent + 1;
   }
 
   /**
