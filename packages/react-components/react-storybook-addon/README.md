@@ -40,12 +40,19 @@ export const ThemePicker: React.FC<{ context: FluentStoryContext }> = ({ context
 
 ### Shared Storybook Preview Styles
 
-The package ships a `styles.css` file with shared Storybook preview styles (docs layout, table formatting, theme-aware backgrounds, etc.). Import it once in your Storybook `preview.js`/`preview.ts`:
+The package ships two stylesheets. Import both once in your Storybook `preview.js`/`preview.ts`:
 
 ```js
 // .storybook/preview.js
-import '@fluentui/react-storybook-addon/styles.css';
+import '@fluentui/react-storybook-addon/styles.css'; // the addon's compiled component styles (CSS Modules)
+import '@fluentui/react-storybook-addon/docs-chrome.css'; // global docs chrome (docs layout, table formatting, theme-aware backgrounds, etc.)
 ```
+
+> ⚠ Migration note: the global docs chrome used to live in `styles.css`. It moved to the
+> `docs-chrome.css` export when the addon's docs components were converted to CSS Modules —
+> `styles.css` now means the same thing here as in every converted `@fluentui` package: the
+> package's own compiled component styles. If you previously imported only `styles.css` for
+> docs styling, add the `docs-chrome.css` import.
 
 ### Augmented Docs Blocks
 
