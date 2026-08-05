@@ -4,7 +4,7 @@ import { type HSVA, tinycolor } from '@ctrl/tinycolor';
 
 import styles from './color-picker.module.css';
 
-export const ColorAreaDefault = (): React.ReactNode => {
+export const ColorAreaDefault = (): React.ReactElement => {
   const [color, setColor] = React.useState({ h: 320, s: 0.7, v: 0.8, a: 0.75 });
 
   return (
@@ -34,7 +34,7 @@ ColorAreaDefault.parameters = {
   },
 };
 
-const ColorPreview = ({ color }: { color: HSVA }): React.ReactNode => {
+const ColorPreview = ({ color }: { color: HSVA }): React.ReactElement => {
   return (
     <div className={styles.colorPreview}>
       <output className={styles.output}>{tinycolor(color).toHex8String()}</output>
