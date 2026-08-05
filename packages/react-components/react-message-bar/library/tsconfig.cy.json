@@ -2,8 +2,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "isolatedModules": false,
-    "types": ["node", "cypress", "cypress-real-events"],
-    "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"],
+    // "static-assets" declares `*.module.css` (typings/static-assets/index.d.ts); the cy program
+    // reaches the converted styles hooks transitively. This tsconfig replaces the base `typeRoots`
+    // (which includes `./typings`), so the repo's typings directory is re-listed here to resolve it.
+    "types": ["node", "cypress", "cypress-real-events", "static-assets"],
+    "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types", "../../../../typings"],
     "lib": ["ES2019", "dom"]
   },
   "include": ["**/*.cy.ts", "**/*.cy.tsx"]

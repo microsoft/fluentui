@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "dist",
-    "types": ["jest", "node", "@testing-library/jest-dom"]
+    // "static-assets" declares `*.module.css` (typings/static-assets/index.d.ts) — required
+    // since the package's conversion to CSS Modules (same setup as react-positioning).
+    "types": ["jest", "node", "@testing-library/jest-dom", "static-assets"]
   },
   "include": [
     "**/*.spec.ts",
