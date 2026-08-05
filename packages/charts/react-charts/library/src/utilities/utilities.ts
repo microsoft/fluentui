@@ -1262,14 +1262,31 @@ export const wrapContent = (content: string, id: string, maxWidth: number): bool
 
 /**
  * Calculates the width of the longest axis label in pixels
+ *
+ * `query` exists only to locate a rendered tick label and copy its font; when it matches
+ * nothing the measurement falls back to a hardcoded `600 10px "Segoe UI"`.
+ *
+ * `container` scopes that lookup to one chart instance. The classes interpolated into
+ * `query` are shared by every instance of a chart (`CARTESIAN_XAXIS_CLASSNAME` is a single
+ * literal; the y-axis module local is one hashed token per stylesheet), so a document-wide
+ * `querySelector` resolves to the FIRST matching chart on the page — under multiple charts
+ * with different inherited typography, every chart would measure the first chart's font.
+ * Semantics: `undefined` = legacy document-wide lookup (external callers unchanged);
+ * `null` = deliberately no scope yet (e.g. first render, before the chart's ref is
+ * attached) → fallback font rather than reading a DIFFERENT chart's label.
  */
-export const calculateLongestLabelWidth = (labels: (string | number)[], query: string = 'none'): number => {
+export const calculateLongestLabelWidth = (
+  labels: (string | number)[],
+  query: string = 'none',
+  container?: HTMLElement | null,
+): number => {
   let maxLabelWidth = 0;
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
   if (ctx) {
-    const axisText = document.querySelector(query);
+    const scope: ParentNode | null = container === undefined ? document : container;
+    const axisText = scope ? scope.querySelector(query) : null;
     if (axisText) {
       const styles = window.getComputedStyle(axisText, null);
       const fontWeight = styles.getPropertyValue('font-weight');
@@ -1858,9 +1875,26 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps): number |
   return Math.floor(maxHeight / 1.414); // Compute maxHeight/tanInverse(45) to get the vertical height of labels.
 }
 
-export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): void {
+/**
+ * Wraps the donut center value (`valueInsideDonut`) into tspan lines no wider than `maxWidth`.
+ *
+ * `root` scopes the selection to one chart instance. `selectorClass` is a CSS-module local
+ * shared by EVERY Pie on the page, so the legacy document-wide `selectAll` rewrites the
+ * center text of every mounted DonutChart using the CALLER's `maxWidth` (radius) — mounting
+ * one donut would re-wrap all others. Semantics: `undefined` = legacy document-wide
+ * selection (kept for external callers); `null` = no root available yet → no-op rather
+ * than mutating other charts' labels; an Element = wrap only within that subtree.
+ */
+export function wrapTextInsideDonut(selectorClass: string, maxWidth: number, root?: Element | null): void {
   let idx: number = 0;
-  d3SelectAll(`.${selectorClass}`).each(function () {
+  if (root === null) {
+    return;
+  }
+  const selection =
+    root === undefined
+      ? d3SelectAll<SVGTextElement, unknown>(`.${selectorClass}`)
+      : d3Select(root).selectAll<SVGTextElement, unknown>(`.${selectorClass}`);
+  selection.each(function () {
     const text = d3Select(this);
     const words = text.text().split(/\s+/).reverse();
     let word: string = '';

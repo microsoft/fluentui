@@ -159,6 +159,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
    * the whole life of the v9 chart, and its result feeds `startFromX` → `margins.left`. The
    * class is now the single hashed module local, so the selector matches and the y-axis margin
    * is sized from the font the labels are actually painted with.
+   *
+   * The lookup is SCOPED to `chartContainer` (third argument): the module local is shared by
+   * every CartesianChart instance, so a document-wide `querySelector` reads the FIRST chart on
+   * the page — under multiple charts with different inherited typography every chart would size
+   * its margins from that first chart's font. Scoping guarantees each chart measures its OWN
+   * rendered tick label (this function only runs from effects, after the ref is attached).
    */
   function calculateMaxYAxisLabelLength(): number {
     const formatTickLabel = (str: string) => {
@@ -171,6 +177,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     return calculateLongestLabelWidth(
       _yAxisTickText.current.map(label => formatTickLabel(label)),
       `.${cartesianYAxisClassName} text`,
+      chartContainer.current,
     );
   }
 
@@ -598,11 +605,18 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
    * emits verbatim. The two halves of the wrapping feature therefore agree on the font for the
    * first time; on a host where `fontFamilyBase` resolves to something other than Segoe UI the
    * measured widths — and hence the reserved label space — change accordingly.
+   *
+   * Each lookup is SCOPED to `chartContainer` (third argument): the identity class is shared by
+   * every CartesianChart instance, so a document-wide `querySelector` reads the FIRST chart on
+   * the page — under multiple charts with different inherited typography every chart would
+   * measure the first chart's font. On the very first render the ref is still `null`, which
+   * `calculateLongestLabelWidth` treats as "no scope yet" → fallback font, exactly what the
+   * unscoped query produced then too (this chart's axis DOM did not exist yet to be matched).
    */
   function _calcMaxLabelWidthWithTransform(x: (string | number)[]) {
     // Case: rotated labels
     if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
-      const longestLabelWidth = calculateLongestLabelWidth(x, CARTESIAN_XAXIS_TEXT_SELECTOR);
+      const longestLabelWidth = calculateLongestLabelWidth(x, CARTESIAN_XAXIS_TEXT_SELECTOR, chartContainer.current);
       return Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
     }
 
@@ -613,7 +627,11 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
       });
 
-      const longestLabelWidth = calculateLongestLabelWidth(tickLabels, CARTESIAN_XAXIS_TEXT_SELECTOR);
+      const longestLabelWidth = calculateLongestLabelWidth(
+        tickLabels,
+        CARTESIAN_XAXIS_TEXT_SELECTOR,
+        chartContainer.current,
+      );
       return Math.ceil(longestLabelWidth);
     }
 
@@ -628,12 +646,16 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
       // This approach works well in most cases, since overflow typically occurs only when
       // a single word exceeds the specified width — otherwise, the text will wrap as expected.
-      const longestLabelWidth = calculateLongestLabelWidth(words, CARTESIAN_XAXIS_TEXT_SELECTOR);
+      const longestLabelWidth = calculateLongestLabelWidth(
+        words,
+        CARTESIAN_XAXIS_TEXT_SELECTOR,
+        chartContainer.current,
+      );
       return Math.max(Math.ceil(longestLabelWidth), DEFAULT_WRAP_WIDTH);
     }
 
     // Default case
-    const longestLabelWidth = calculateLongestLabelWidth(x, CARTESIAN_XAXIS_TEXT_SELECTOR);
+    const longestLabelWidth = calculateLongestLabelWidth(x, CARTESIAN_XAXIS_TEXT_SELECTOR, chartContainer.current);
     return Math.ceil(longestLabelWidth);
   }
 

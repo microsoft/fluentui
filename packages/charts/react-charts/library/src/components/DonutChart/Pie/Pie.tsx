@@ -1,6 +1,5 @@
 'use client';
 
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
@@ -20,14 +19,22 @@ const TEXT_PADDING: number = 5;
  */
 export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivElement, PieProps>(
   (props, forwardedRef) => {
+    const rootNode = React.useRef<SVGGElement | null>(null);
     React.useEffect(() => {
       // `wrapTextInsideDonut` interpolates this argument into `` `.${selectorClass}` ``, so it must
       // be ONE class token. `classes.insideDonutString` is a clsx composition that grows extra
       // tokens as soon as a consumer passes `className`/`styles.insideDonutString` to <Pie>, at
       // which point the selector silently matches nothing. Pass the module local directly — it is
       // the same token the composition leads with today, so nothing about the render changes.
-      wrapTextInsideDonut(pieInsideDonutStringClassName, props.innerRadius! * 2 - TEXT_PADDING);
-    }, []);
+      //
+      // The wrap is SCOPED to this Pie's own `<g>` (third argument): the module local is shared
+      // by every Pie on the page, so an unscoped call would re-wrap the center text of every
+      // mounted DonutChart using THIS Pie's radius. The deps re-run the wrap when the radius or
+      // the value changes (the `key` on the `<text>` below recreates the node on value change,
+      // because the wrap replaces React's text child with tspans and a detached text node would
+      // otherwise swallow the update).
+      wrapTextInsideDonut(pieInsideDonutStringClassName, props.innerRadius! * 2 - TEXT_PADDING, rootNode.current);
+    }, [props.innerRadius, props.valueInsideDonut]);
 
     let _totalValue: number;
     const classes = usePieStyles(props);
@@ -113,10 +120,16 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       // anything Pie renders (`insideDonutString` is a hashed module local). The class itself
       // declares nothing — `.root` in Pie.module.css is identity-only — so this adds a class
       // token to the `<g>` and changes no pixel.
-      <g className={classes.root} transform={translate}>
+      <g ref={rootNode} className={classes.root} transform={translate}>
         {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
-          <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>
+          <text
+            key={`value-inside-donut-${props.valueInsideDonut}`}
+            y={5}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className={classes.insideDonutString}
+          >
             {props.valueInsideDonut}
           </text>
         )}

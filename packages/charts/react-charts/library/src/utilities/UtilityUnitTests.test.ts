@@ -1338,6 +1338,106 @@ test('wrapTextInsideDonut should wrap valueInsideDonut when it exceeds the maxWi
   SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
 });
 
+test('wrapTextInsideDonut scoped to a root element must not touch matching text outside that root', () => {
+  const content = 'Lorem ipsum dolor sit amet';
+  const className = 'insideDonutString-scoped';
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const SVGElement: any = window.SVGElement;
+  const originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+  // Constant 100 > maxWidth 10: every appended word overflows, so a wrapped text gets one
+  // tspan per word (5). An untouched text keeps zero tspans.
+  SVGElement.prototype.getComputedTextLength = jest.fn().mockReturnValue(100);
+
+  const makeDonutText = () => {
+    const textElement = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    textElement.textContent = content;
+    textElement.classList.add(className);
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.appendChild(textElement);
+    document.body.appendChild(svg);
+    return { svg, textElement };
+  };
+  const chartA = makeDonutText();
+  const chartB = makeDonutText();
+
+  // null root = "no node available yet" → no-op everywhere.
+  utils.wrapTextInsideDonut(className, 10, null);
+  expect(chartA.textElement.querySelectorAll('tspan')).toHaveLength(0);
+  expect(chartB.textElement.querySelectorAll('tspan')).toHaveLength(0);
+
+  // Scoped to chart A's svg: A wraps, B stays untouched.
+  utils.wrapTextInsideDonut(className, 10, chartA.svg);
+  expect(chartA.textElement.querySelectorAll('tspan')).toHaveLength(5);
+  expect(chartB.textElement.querySelectorAll('tspan')).toHaveLength(0);
+  expect(chartB.textElement.textContent).toBe(content);
+
+  document.body.removeChild(chartA.svg);
+  document.body.removeChild(chartB.svg);
+
+  SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
+});
+
+describe('calculateLongestLabelWidth container scoping', () => {
+  // The function copies the matched label's font onto a canvas ctx before measuring; capture
+  // what font it selects. jsdom's canvas getContext returns null, so stub it.
+  const fakeCtx = { font: '', measureText: jest.fn().mockReturnValue({ width: 42 }) };
+  let getContextSpy: jest.SpyInstance;
+  let containerA: HTMLDivElement;
+  let containerB: HTMLDivElement;
+
+  const makeChart = (fontSize: string) => {
+    const chartContainer = document.createElement('div');
+    const axis = document.createElement('div');
+    axis.classList.add('test-axis');
+    const label = document.createElement('text');
+    label.setAttribute('style', `font-weight: 700; font-size: ${fontSize}; font-family: Arial`);
+    label.textContent = '100';
+    axis.appendChild(label);
+    chartContainer.appendChild(axis);
+    document.body.appendChild(chartContainer);
+    return chartContainer;
+  };
+
+  beforeAll(() => {
+    getContextSpy = jest
+      .spyOn(HTMLCanvasElement.prototype, 'getContext')
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .mockReturnValue(fakeCtx as any);
+    // B is FIRST in document order, so an unscoped document.querySelector resolves to B.
+    containerB = makeChart('30px');
+    containerA = makeChart('20px');
+  });
+
+  afterAll(() => {
+    getContextSpy.mockRestore();
+    document.body.removeChild(containerA);
+    document.body.removeChild(containerB);
+  });
+
+  beforeEach(() => {
+    fakeCtx.font = '';
+  });
+
+  test('measures with the axis font of the PROVIDED container, not the first chart in the document', () => {
+    utils.calculateLongestLabelWidth(['100', '2000'], '.test-axis text', containerA);
+    expect(fakeCtx.font).toContain('20px');
+
+    utils.calculateLongestLabelWidth(['100', '2000'], '.test-axis text', containerB);
+    expect(fakeCtx.font).toContain('30px');
+  });
+
+  test('omitted container keeps the legacy document-wide lookup', () => {
+    utils.calculateLongestLabelWidth(['100', '2000'], '.test-axis text');
+    expect(fakeCtx.font).toContain('30px'); // first match in document order = B
+  });
+
+  test('null container (no scope yet) uses the hardcoded fallback font', () => {
+    utils.calculateLongestLabelWidth(['100', '2000'], '.test-axis text', null);
+    expect(fakeCtx.font).toBe('600 10px "Segoe UI"');
+  });
+});
+
 test('formatScientificLimitWidth should format a numeric value with appropriate SI prefix', () => {
   expect(utils.formatScientificLimitWidth(19.53)).toBe('19.53');
   expect(utils.formatScientificLimitWidth(983)).toBe('983');
