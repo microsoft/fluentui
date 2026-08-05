@@ -101,9 +101,9 @@ function collectLeaks(compilation, options) {
       exports: [...leak.exports.values()]
         .map(({ name: exportName, importers }) => ({
           name: exportName,
-          importers: [...importers.values()].sort((a, b) => a.module.localeCompare(b.module)),
+          importers: [...importers.values()].sort((left, right) => left.module.localeCompare(right.module)),
         }))
-        .sort((a, b) => a.name.localeCompare(b.name)),
+        .sort((left, right) => left.name.localeCompare(right.name)),
     };
   }
 

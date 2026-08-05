@@ -19,9 +19,8 @@
         "cwd": "{projectRoot}"
       },
       "inputs": [
-        "{projectRoot}/scripts/verify-bundle-isolation/cli.js",
+        "{projectRoot}/scripts/verify-bundle-isolation/**/*",
         "{projectRoot}/bundle-isolation.config.json",
-        "{projectRoot}/scripts/verify-bundle-isolation/schema.json",
         "{projectRoot}/bundle-size/**/*",
         "{projectRoot}/package.json",
         { "externalDependencies": ["ajv", "webpack"] }

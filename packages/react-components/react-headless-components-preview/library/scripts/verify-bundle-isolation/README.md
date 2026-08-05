@@ -110,6 +110,18 @@ Sharing fixtures keeps isolation checks and bundle-size measurements aligned.
 
 This prevents fixed leaks from being silently reintroduced. Deleting an entry is the goal; adding one is a regression.
 
+## Layout
+
+| File                                                         | Responsibility                                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [`bundle-isolation-plugin.js`](./bundle-isolation-plugin.js) | The analysis - which forbidden packages survived, and why. A standard webpack plugin. |
+| [`config.js`](./config.js)                                   | Configuration loading, fixture discovery, path conventions                            |
+| [`report.js`](./report.js)                                   | Turns raw results into a verdict and renders it. No webpack, no file system.          |
+| [`cli.js`](./cli.js)                                         | Argument parsing and the webpack run that feeds the above                             |
+
+Keeping `report.js` free of webpack and I/O is what makes the verdict testable without bundling anything;
+`bundle-isolation-plugin.spec.js` covers attribution by bundling a purpose-built module graph.
+
 ## Reuse in another build
 
 The analysis lives in [`bundle-isolation-plugin.js`](./bundle-isolation-plugin.js) as a standard webpack plugin, so it can run inside an existing build instead of the one the CLI creates:
