@@ -5,14 +5,13 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderSplitButton_unstable as renderSplitButton } from '@fluentui/react-button';
 import { SplitButtonBaseProps as SplitButtonProps } from '@fluentui/react-button';
 import { SplitButtonBaseSlots as SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonBaseState as SplitButtonState } from '@fluentui/react-button';
 
-// @public
-export const renderSplitButton: (state: SplitButtonState) => JSXElement;
+export { renderSplitButton }
 
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
