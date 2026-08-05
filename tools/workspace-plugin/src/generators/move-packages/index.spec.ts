@@ -19,10 +19,6 @@ import { TsConfig } from '../../types';
 import { setupCodeowners } from '../../utils-testing';
 import { getProjectNameWithoutScope, getWorkspaceConfig } from '../../utils';
 
-jest.mock('@nx/workspace/generators', () => ({
-  moveGenerator: jest.requireActual('@nx/workspace/src/generators/move/move').moveGenerator,
-}));
-
 type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
 const noop = () => null;
 
