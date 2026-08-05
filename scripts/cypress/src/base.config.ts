@@ -95,14 +95,47 @@ const cssModulesRule = {
 };
 
 /**
+ * The shared Tailwind theme entry (scripts/storybook/src/tailwind-theme.css) — the single file
+ * that emits `--base-scale`, the token registration and the stroke-width variables. The compiled
+ * module utilities reference `var(--spacing, calc(1px * var(--base-scale)))`, so without this
+ * emission every numeric utility is invalid at computed-value time and converted components
+ * render unstyled in Cypress. The support file (`support/component.js`) imports it once per
+ * spec document; this rule routes it through the same Tailwind PostCSS pass the storybooks use
+ * (`rules.tailwindThemeRule` in scripts/storybook/src/rules.js — same regexp, same reasons:
+ * matched by name because symlinked/real path spellings can disagree).
+ */
+const TAILWIND_THEME_ENTRY = /[\\/]tailwind-theme\.css$/;
+
+const tailwindThemeRule = {
+  test: /\.css$/,
+  include: [TAILWIND_THEME_ENTRY],
+  sideEffects: true,
+  use: [
+    'style-loader',
+    { loader: 'css-loader', options: { importLoaders: 1 } },
+    {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          // no postcss.config.* exists in this repo — skip cosmiconfig's upward search
+          config: false,
+          plugins: [require('@tailwindcss/postcss')()],
+        },
+      },
+    },
+  ],
+};
+
+/**
  * Plain, non-module CSS still needs to load (unconverted packages, third-party stylesheets).
- * `exclude` keeps it off `*.module.css`, which the rule above owns: webpack applies EVERY
- * matching rule, so an unguarded `/\.css$/` here would double-process modules and hand back an
- * empty class map.
+ * `exclude` keeps it off `*.module.css`, which the rule above owns, and off the theme entry,
+ * which `tailwindThemeRule` owns: webpack applies EVERY matching rule, so an unguarded
+ * `/\.css$/` here would double-process modules (empty class map) and emit the theme entry's
+ * `@import … source(none)` verbatim.
  */
 const cssRule = {
   test: /\.css$/,
-  exclude: [/\.module\.css$/],
+  exclude: [/\.module\.css$/, TAILWIND_THEME_ENTRY],
   use: ['style-loader', 'css-loader'],
 };
 
@@ -117,6 +150,7 @@ const cypressWebpackConfig = (): Configuration => {
         },
       },
       cssModulesRule,
+      tailwindThemeRule,
       cssRule,
     );
   }

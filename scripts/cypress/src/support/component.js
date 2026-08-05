@@ -17,5 +17,11 @@
 import 'cypress-real-events/support';
 import './commands';
 
+// The shared Tailwind theme emission (--base-scale, token registration, stroke widths).
+// Loaded once per spec document, exactly like every storybook preview does; without it the
+// compiled `*.module.css` numeric utilities are invalid at computed-value time. Routed through
+// the Tailwind PostCSS pass by `tailwindThemeRule` in ../base.config.ts (matched by filename).
+import '../../../storybook/src/tailwind-theme.css';
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

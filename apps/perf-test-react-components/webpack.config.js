@@ -13,7 +13,12 @@ const tsConfigPath = path.resolve(__dirname, '../../tsconfig.base.json');
 const config = /** @type {import('webpack').Configuration}*/ ({
   mode: 'production',
   target: ['web', 'es5'],
-  entry: './src/app.tsx',
+  // The shared Tailwind theme emission loads first: compiled `*.module.css` utilities
+  // reference `var(--spacing, calc(1px * var(--base-scale)))`, so without this entry every
+  // numeric utility is invalid at computed-value time and converted components render
+  // unstyled in perf scenarios. `rules.tailwindThemeRule` below routes it through the same
+  // Tailwind PostCSS pass the storybooks use.
+  entry: [rules.tailwindThemeEntry, './src/app.tsx'],
   output: {
     filename: 'perf-test.js',
     libraryTarget: 'umd',
@@ -26,9 +31,16 @@ const config = /** @type {import('webpack').Configuration}*/ ({
   module: {
     // `cssModulesRule` resolves `*.module.css` (converted components and the MakeStyles
     // scenario) with the same getLocalIdent/PostCSS chain as every storybook in the repo;
-    // the plain `cssRule` must stop matching those files so they are not double-processed
-    // as global CSS.
-    rules: [{ ...rules.cssRule, exclude: /\.module\.css$/ }, rules.cssModulesRule, rules.scssRule, rules.tsRule],
+    // `tailwindThemeRule` owns the theme entry added above. The plain `cssRule` must stop
+    // matching both so they are not double-processed as global CSS (which would also emit
+    // the theme entry's `@import … source(none)` verbatim).
+    rules: [
+      { ...rules.cssRule, exclude: [/\.module\.css$/, /[\\/]tailwind-theme\.css$/] },
+      rules.cssModulesRule,
+      rules.tailwindThemeRule,
+      rules.scssRule,
+      rules.tsRule,
+    ],
   },
 });
 
