@@ -32,7 +32,7 @@ jobs:
 
       - run: yarn nx run scripts-executors:test -- -t 'smoke test'
 
-      - run: yarn nx run workspace-plugin:test -- --runTestsByPath src/generators/prepare-initial-release/index.spec.ts
+      - run: yarn nx run workspace-plugin:test -- -t 'prepare-initial-release generator'
 
       - run: yarn nx list @fluentui/workspace-plugin
 
