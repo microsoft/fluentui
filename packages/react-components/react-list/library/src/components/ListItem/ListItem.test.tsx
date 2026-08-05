@@ -53,4 +53,20 @@ describe('ListItem', () => {
     // its value — and assert the consumer's stays LAST, the invariant every slot shares.
     expect(indicator!.className).toMatch(/\S+\s+consumer-indicator$/);
   });
+
+  // PR-36513 review item 15: an explicit `null` indicator means SUPPRESS the slot —
+  // Checkbox's `slot.optional` drops it. The styles hook used to flatten `null` to
+  // `undefined` (`?? undefined`), which `slot.always` then normalised into a fresh default
+  // `<div>`, recreating the element the consumer disabled. `null` must pass through.
+  it('renders no indicator when the consumer suppresses it with an explicit null', () => {
+    const suppressed = render(<ListItem checkmark={{ indicator: null }}>ListItem</ListItem>);
+    // Sibling control: same render shape with the indicator left to its default, so the
+    // absence below is attributable to the `null` and not to the checkmark never rendering.
+    const defaulted = render(<ListItem checkmark={{}}>ListItem</ListItem>);
+
+    const indicatorSelector = '[class*="checkmark-indicator"]';
+
+    expect(defaulted.container.querySelector(indicatorSelector)).not.toBeNull();
+    expect(suppressed.container.querySelector(indicatorSelector)).toBeNull();
+  });
 });

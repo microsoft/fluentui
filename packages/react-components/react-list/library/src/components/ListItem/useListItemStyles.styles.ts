@@ -106,11 +106,19 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
     // `clsx` keeps this className last, so ours still wins its ties. Altitude is unchanged:
     // `.checkmark-indicator` sits in `fui.components.l2` against Checkbox's `fui.base`
     // indicator reset — see ListItem.module.css.
-    const indicator = slot.always<CheckmarkIndicatorProps>(state.checkmark.indicator ?? undefined, {
-      elementType: 'div',
-    });
-    indicator.className = clsx(styles['checkmark-indicator'], indicator.className);
-    state.checkmark.indicator = indicator;
+    //
+    // An explicit `null` is a SUPPRESSED slot (`checkmark={{ indicator: null }}` renders no
+    // indicator — Checkbox's `slot.optional` drops it) and must pass through untouched: a
+    // `?? undefined` here used to convert it into "use the default", making `slot.always`
+    // recreate the very element the consumer disabled (PR-36513 review item 15). Only
+    // `undefined`/shorthand/props go through normalisation.
+    if (state.checkmark.indicator !== null) {
+      const indicator = slot.always<CheckmarkIndicatorProps>(state.checkmark.indicator, {
+        elementType: 'div',
+      });
+      indicator.className = clsx(styles['checkmark-indicator'], indicator.className);
+      state.checkmark.indicator = indicator;
+    }
   }
 
   return state;
