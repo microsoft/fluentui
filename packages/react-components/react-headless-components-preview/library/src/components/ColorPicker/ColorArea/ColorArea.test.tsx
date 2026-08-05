@@ -8,7 +8,6 @@ describe('ColorArea', () => {
     Component: ColorArea,
     displayName: 'ColorArea',
     disabledTests: ['has-top-level-file-extra'],
-    exportMapName: 'color-picker',
   });
 
   it('renders two native range inputs with the current color', () => {

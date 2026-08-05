@@ -8,7 +8,6 @@ describe('AlphaSlider', () => {
     Component: AlphaSlider,
     displayName: 'AlphaSlider',
     disabledTests: ['has-top-level-file-extra'],
-    exportMapName: 'color-picker',
     primarySlot: 'input',
   });
 

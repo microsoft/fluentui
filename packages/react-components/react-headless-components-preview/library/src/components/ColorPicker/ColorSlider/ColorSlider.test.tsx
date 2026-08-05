@@ -8,7 +8,6 @@ describe('ColorSlider', () => {
     Component: ColorSlider,
     displayName: 'ColorSlider',
     disabledTests: ['has-top-level-file-extra'],
-    exportMapName: 'color-picker',
     primarySlot: 'input',
   });
 
