@@ -17,6 +17,7 @@ export const scaffold = {
       'src/App.tsx': Vite.getApp(data),
       'src/index.tsx': Vite.getRootIndex(),
       'src/example.tsx': Vite.getExample(data),
+      'src/vite-env.d.ts': Vite.getViteEnvDts(),
       'tsconfig.json': Vite.getTsconfig(),
       'tsconfig.node.json': Vite.getTsconfigNode(),
       'vite.config.ts': Vite.getViteCfg(),
@@ -36,6 +37,7 @@ export const scaffold = {
       'src/App.tsx': CRA.getApp(data),
       'src/index.tsx': CRA.getRootIndex(),
       'src/example.tsx': CRA.getExample(data),
+      'src/react-app-env.d.ts': CRA.getReactAppEnvDts(),
       'tsconfig.json': CRA.getTsconfig(),
       'package.json': CRA.getPkgJson(data),
     };
@@ -132,6 +134,13 @@ const Vite = {
   getRootIndex: getIndex,
   getExample,
   getApp,
+  /**
+   * The standard create-vite ambient declaration file. `vite/client` declares `*.module.css`
+   * (and the other static-asset import shapes), which the exported story needs now that the
+   * addon preserves CSS-module imports (`cssModules: true`) — the scaffold's build script runs
+   * `tsc` before `vite build`, so without this every `*.module.css` import fails with TS2307.
+   */
+  getViteEnvDts: () => `/// <reference types="vite/client" />\n`,
   getViteCfg: () => {
     return dedent`
       import { defineConfig } from 'vite'
@@ -212,6 +221,13 @@ const CRA = {
   getRootIndex: getIndex,
   getExample,
   getApp,
+  /**
+   * The standard CRA ambient declaration file. `react-scripts` declares `*.module.css`,
+   * which the exported story needs now that the addon preserves CSS-module imports
+   * (`cssModules: true`) — `react-scripts build` type-checks, so without this every
+   * `*.module.css` import fails with TS2307.
+   */
+  getReactAppEnvDts: () => `/// <reference types="react-scripts" />\n`,
   getTsconfig: () =>
     serializeJson({
       include: ['./src/**/*'],

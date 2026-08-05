@@ -81,6 +81,8 @@ describe(`sabdbox-scaffold`, () => {
             <App />
           </React.StrictMode>,
         );",
+          "src/react-app-env.d.ts": "/// <reference types=\\"react-scripts\\" />
+        ",
           "tsconfig.json": "{
           \\"include\\": [
             \\"./src/**/*\\"
@@ -198,6 +200,8 @@ describe(`sabdbox-scaffold`, () => {
             <App />
           </React.StrictMode>,
         );",
+          "src/react-app-env.d.ts": "/// <reference types=\\"react-scripts\\" />
+        ",
           "tsconfig.json": "{
           \\"include\\": [
             \\"./src/**/*\\"
@@ -281,6 +285,8 @@ describe(`sabdbox-scaffold`, () => {
             <App />
           </React.StrictMode>,
         );",
+          "src/react-app-env.d.ts": "/// <reference types=\\"react-scripts\\" />
+        ",
           "tsconfig.json": "{
           \\"include\\": [
             \\"./src/**/*\\"
@@ -419,6 +425,8 @@ describe(`sabdbox-scaffold`, () => {
             <App />
           </React.StrictMode>,
         );",
+          "src/vite-env.d.ts": "/// <reference types=\\"vite/client\\" />
+        ",
           "tsconfig.json": "{
           \\"compilerOptions\\": {
             \\"target\\": \\"ES2020\\",
@@ -546,6 +554,8 @@ describe(`sabdbox-scaffold`, () => {
             <App />
           </React.StrictMode>,
         );",
+          "src/vite-env.d.ts": "/// <reference types=\\"vite/client\\" />
+        ",
           "tsconfig.json": "{
           \\"compilerOptions\\": {
             \\"target\\": \\"ES2020\\",
