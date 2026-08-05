@@ -6,9 +6,9 @@
  * Bundles with webpack so the verdict comes from the same bundler that produces the bundle-size
  * numbers, and so `usedExports` can name the exact symbols that survived tree shaking.
  *
- * Usage: node scripts/verify-bundle-isolation/cli.js [--config <path>] [--analyze]
+ * Usage: node scripts/verify-bundle-isolation/cli.js [--config <path>] [--analyze] [--strict]
  */
-const { existsSync, readdirSync, readFileSync } = require('node:fs');
+const { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } = require('node:fs');
 const { dirname, isAbsolute, join, resolve, sep } = require('node:path');
 const { parseArgs } = require('node:util');
 
@@ -17,10 +17,12 @@ const webpack = require('webpack');
 
 const { BundleIsolationPlugin } = require('./bundle-isolation-plugin');
 
-/** @typedef {{fixturesRoot: string, externals: string[], forbiddenPackages: string[], knownViolations: Record<string, string[]>}} Config */
-/** @typedef {{configPath: string, analyze: boolean, config: Config, fixturesRoot: string, packageRoot: string, workspaceRoot: string}} RuntimeOptions */
+/** @typedef {{fixturesRoot: string, externals: string[], forbiddenPackages: string[], allowedViolations: Record<string, string[]>}} Config */
+/** @typedef {{configPath: string, analyze: boolean, strict: boolean, config: Config, fixturesRoot: string, packageRoot: string, workspaceRoot: string}} RuntimeOptions */
 /** @typedef {import('./bundle-isolation-plugin').Leak} Leak */
 /** @typedef {import('./bundle-isolation-plugin').BundleIsolationReport} BundleIsolationReport */
+/** @typedef {{fixture: string, found: string[], leaks: Record<string, Leak>, sourceResolved: string[], error?: string}} FixtureResult */
+/** @typedef {FixtureResult & {status: 'error' | 'regression' | 'stale' | 'allowed' | 'clean', allowed: string[], tolerated: string[], regressions: string[], stale: string[]}} Outcome */
 
 const schemaPath = join(__dirname, 'schema.json');
 
@@ -29,7 +31,7 @@ main(processArgs()).catch(error => {
   process.exit(1);
 });
 
-/** @param {{configPath: string, analyze: boolean}} options */
+/** @param {{configPath: string, analyze: boolean, strict: boolean}} options */
 async function main(options) {
   const packageRoot = dirname(options.configPath);
   const workspaceRoot = findWorkspaceRoot(packageRoot);
@@ -45,25 +47,24 @@ async function main(options) {
 
   /** @type {RuntimeOptions} */
   const runtimeOptions = { ...options, config, fixturesRoot, packageRoot, workspaceRoot };
+
+  // Fixtures come and go; a stale output directory would otherwise be mistaken for a fresh report.
+  rmSync(outputRoot(runtimeOptions), { recursive: true, force: true });
+
   const results = await Promise.all(fixtures.map(fixture => verifyFixture(fixture, runtimeOptions)));
+  const outcomes = results.map(result => classify(result, runtimeOptions));
+  const orphans = orphanedAllowlistEntries(fixtures, runtimeOptions);
+  const failed = hasFailed(outcomes, orphans, runtimeOptions);
 
-  const failures = collectFailures(results, runtimeOptions);
+  const summaryPath = writeSummary(outcomes, orphans, packageJson.name, runtimeOptions);
+  const report = formatReport(outcomes, orphans, packageJson.name, runtimeOptions, summaryPath);
 
-  if (options.analyze) {
-    const reports = join(packageRoot, 'dist', 'bundle-isolation');
-    console.log(`Analyzer reports written to ${relativeToWorkspace(reports, workspaceRoot)}`);
+  // One stream for the whole report - splitting it would let the shell interleave the verdict.
+  (failed ? console.error : console.log)(report);
+
+  if (failed) {
+    process.exit(1);
   }
-
-  if (failures.length === 0) {
-    console.log(
-      `OK ${packageJson.name}: ${fixtures.length} bundle-size fixtures free of ${config.forbiddenPackages.join(', ')}`,
-    );
-    return;
-  }
-
-  console.error(`Bundle isolation check failed for ${packageJson.name}:\n`);
-  failures.forEach(failure => console.error(`  ${failure}\n`));
-  process.exit(1);
 }
 
 function processArgs() {
@@ -77,19 +78,24 @@ function processArgs() {
         type: 'boolean',
         default: false,
       },
+      strict: {
+        type: 'boolean',
+        default: false,
+      },
     },
     allowPositionals: false,
   });
 
-  return { configPath: resolve(process.cwd(), values.config), analyze: values.analyze };
+  return { configPath: resolve(process.cwd(), values.config), analyze: values.analyze, strict: values.strict };
 }
 
 /**
  * @param {string} fixture
  * @param {RuntimeOptions} options
+ * @returns {Promise<FixtureResult>}
  */
 async function verifyFixture(fixture, options) {
-  /** @type {{fixture: string, found: string[], leaks: Record<string, Leak>, sourceResolved: string[], error?: string}} */
+  /** @type {FixtureResult} */
   const result = { fixture, found: [], leaks: {}, sourceResolved: [] };
 
   let stats;
@@ -151,7 +157,7 @@ function bundleFixture(fixture, options, onReport) {
  * @returns {import('webpack').Configuration}
  */
 function createWebpackConfig(fixture, options, onReport) {
-  const outputPath = join(options.packageRoot, 'dist', 'bundle-isolation', fixture.replace(/\.fixture\.js$/, ''));
+  const outputPath = fixtureOutputPath(fixture, options);
 
   return {
     name: 'bundle-isolation',
@@ -172,74 +178,372 @@ function createWebpackConfig(fixture, options, onReport) {
         packageRoot: options.packageRoot,
         onReport,
       }),
-      ...(options.analyze ? [createAnalyzerPlugin(outputPath)] : []),
+      ...(options.analyze ? createAnalyzerPlugins(outputPath) : []),
     ],
   };
 }
 
-/** @param {string} outputPath */
-function createAnalyzerPlugin(outputPath) {
+/**
+ * One instance per output format - `analyzerMode` is single valued, so the treemap and its
+ * underlying data need separate plugins.
+ *
+ * @param {string} outputPath
+ */
+function createAnalyzerPlugins(outputPath) {
   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-  return new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-    reportFilename: join(outputPath, 'report.html'),
-    openAnalyzer: false,
-    logLevel: 'silent',
-  });
+  return [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: join(outputPath, 'report.html'),
+      openAnalyzer: false,
+      logLevel: 'silent',
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'json',
+      reportFilename: join(outputPath, 'report.json'),
+      logLevel: 'silent',
+    }),
+  ];
 }
 
 /**
- * @param {Array<ReturnType<typeof verifyFixture> extends Promise<infer T> ? T : never>} results
+ * @param {FixtureResult} result
+ * @param {RuntimeOptions} options
+ * @returns {Outcome}
+ */
+function classify(result, options) {
+  const allowed = options.config.allowedViolations[result.fixture] ?? [];
+  const regressions = result.found.filter(name => !allowed.includes(name));
+  const stale = allowed.filter(name => !result.found.includes(name));
+  const tolerated = allowed.filter(name => result.found.includes(name));
+
+  const status =
+    result.error || result.sourceResolved.length > 0
+      ? 'error'
+      : regressions.length > 0
+      ? 'regression'
+      : stale.length > 0
+      ? 'stale'
+      : tolerated.length > 0
+      ? 'allowed'
+      : 'clean';
+
+  return { ...result, status, allowed, tolerated, regressions, stale };
+}
+
+/**
+ * @param {string[]} fixtures
  * @param {RuntimeOptions} options
  */
-function collectFailures(results, options) {
-  const failures = [];
+function orphanedAllowlistEntries(fixtures, options) {
+  return Object.entries(options.config.allowedViolations)
+    .filter(([fixture]) => !fixtures.includes(fixture))
+    .map(([fixture, packages]) => ({ fixture, packages }));
+}
 
-  for (const result of results) {
-    if (result.error) {
-      failures.push(`${result.fixture} could not be bundled - is the package built?\n    ${result.error}`);
-      continue;
-    }
+/**
+ * @param {Outcome[]} outcomes
+ * @param {ReturnType<typeof orphanedAllowlistEntries>} orphans
+ * @param {RuntimeOptions} options
+ */
+function hasFailed(outcomes, orphans, options) {
+  return (
+    orphans.length > 0 ||
+    outcomes.some(
+      outcome =>
+        outcome.status === 'error' ||
+        outcome.regressions.length > 0 ||
+        outcome.stale.length > 0 ||
+        (options.strict && outcome.tolerated.length > 0),
+    )
+  );
+}
 
-    if (result.sourceResolved.length > 0) {
-      failures.push(
-        `${result.fixture} resolved to package sources instead of built output, so the result is meaningless.\n` +
-          `    e.g. ${result.sourceResolved[0]}`,
-      );
-      continue;
-    }
+/**
+ * @param {Outcome[]} outcomes
+ * @param {ReturnType<typeof orphanedAllowlistEntries>} orphans
+ * @param {string} packageName
+ * @param {RuntimeOptions} options
+ * @param {string} summaryPath
+ */
+function formatReport(outcomes, orphans, packageName, options, summaryPath) {
+  const lines = [`Bundle isolation · ${packageName}`, `forbidden: ${options.config.forbiddenPackages.join(', ')}`, ''];
 
-    const allowed = options.config.knownViolations[result.fixture] ?? [];
-    const regressions = result.found.filter(name => !allowed.includes(name));
-    const fixed = allowed.filter(name => !result.found.includes(name));
-
-    if (regressions.length > 0) {
-      const details = regressions.map(name => describeLeak(name, result.leaks[name], options)).join('\n');
-      failures.push(`${result.fixture} pulls in forbidden runtime:\n${details}`);
-    }
-
-    if (fixed.length > 0) {
-      failures.push(
-        `${result.fixture} no longer pulls in ${fixed.join(', ')} - ` +
-          `remove it from config.knownViolations in ${relativeToWorkspace(
-            options.configPath,
-            options.workspaceRoot,
-          )} to lock the fix in.`,
-      );
-    }
+  for (const outcome of outcomes) {
+    lines.push(...formatFixture(outcome, options), '');
   }
 
-  const verified = new Set(results.map(result => result.fixture));
-  for (const [fixture, packages] of Object.entries(options.config.knownViolations)) {
-    if (!verified.has(fixture)) {
-      failures.push(
-        `config.knownViolations lists "${fixture}" (${packages.join(', ')}) which is not a bundle-size fixture.`,
-      );
-    }
+  for (const orphan of orphans) {
+    lines.push(
+      `  ORPHAN      ${orphan.fixture} - allowlisted (${orphan.packages.join(', ')}) but not a bundle-size fixture`,
+      `    remove the entry from allowedViolations in ${configPathLabel(options)}`,
+      '',
+    );
   }
 
-  return failures;
+  lines.push(...formatVerdict(outcomes, orphans, options), '', ...formatArtifacts(options, summaryPath));
+
+  return lines.join('\n');
+}
+
+/**
+ * @param {Outcome} outcome
+ * @param {RuntimeOptions} options
+ */
+function formatFixture(outcome, options) {
+  if (outcome.status === 'error') {
+    return [`  ERROR       ${outcome.fixture}`, ...formatError(outcome, options)];
+  }
+
+  if (outcome.status === 'clean') {
+    return [`  CLEAN       ${outcome.fixture}`];
+  }
+
+  const lines = [];
+
+  if (outcome.regressions.length > 0) {
+    lines.push(
+      `  REGRESSION  ${outcome.fixture} - ${count(
+        outcome.regressions.length,
+        'forbidden package',
+      )} not on the allowlist`,
+      ...outcome.regressions.map(name => describeLeak(name, outcome.leaks[name], options)),
+    );
+  }
+
+  if (outcome.stale.length > 0) {
+    lines.push(
+      `  STALE       ${outcome.fixture} - no longer pulls in ${outcome.stale.join(', ')}`,
+      `    remove it from allowedViolations in ${configPathLabel(options)} to lock the fix in`,
+    );
+  }
+
+  if (outcome.tolerated.length > 0) {
+    const modules = outcome.tolerated.reduce((total, name) => total + outcome.leaks[name].modules, 0);
+    lines.push(
+      `  ALLOWED     ${outcome.fixture} - ${count(outcome.tolerated.length, 'forbidden package')}, ${count(
+        modules,
+        'module',
+      )}`,
+      ...formatTolerated(outcome, options),
+    );
+  }
+
+  return lines;
+}
+
+/**
+ * @param {Outcome} outcome
+ * @param {RuntimeOptions} options
+ */
+function formatError(outcome, options) {
+  if (outcome.error) {
+    return [
+      `    could not be bundled - is the package built?`,
+      ...outcome.error.split('\n').map(line => `      ${line.trim()}`),
+    ];
+  }
+
+  return [
+    `    resolved to package sources instead of built output, so the result is meaningless`,
+    `      e.g. ${relativeToWorkspace(outcome.sourceResolved[0], options.workspaceRoot)}`,
+  ];
+}
+
+/**
+ * Ordered by module count so the most expensive debt to pay down is listed first.
+ *
+ * @param {Outcome} outcome
+ * @param {RuntimeOptions} options
+ */
+function formatTolerated(outcome, options) {
+  const rows = outcome.tolerated
+    .map(name => ({ name, leak: outcome.leaks[name] }))
+    .sort((a, b) => b.leak.modules - a.leak.modules || a.name.localeCompare(b.name));
+
+  const nameWidth = Math.max(...rows.map(row => row.name.length));
+  const moduleWidth = Math.max(...rows.map(row => count(row.leak.modules, 'module').length));
+
+  return rows.flatMap(({ name, leak }) => [
+    `    ${name.padEnd(nameWidth)}  ${count(leak.modules, 'module').padStart(moduleWidth)}  ${count(
+      leak.exports.length,
+      'export',
+    )}`,
+    ...originsOf(leak, options).map(origin => `      via ${origin}`),
+  ]);
+}
+
+/**
+ * @param {Leak} leak
+ * @param {RuntimeOptions} options
+ */
+function originsOf(leak, options) {
+  const origins = new Set(
+    leak.exports.flatMap(({ importers }) =>
+      importers.map(importer => importer.via ?? relativeToWorkspace(importer.module, options.workspaceRoot)),
+    ),
+  );
+  const listed = [...origins].sort().slice(0, 3);
+  const hidden = origins.size - listed.length;
+
+  return hidden > 0 ? [...listed, `+${count(hidden, 'more entry point')}`] : listed;
+}
+
+/**
+ * @param {Outcome[]} outcomes
+ * @param {ReturnType<typeof orphanedAllowlistEntries>} orphans
+ * @param {RuntimeOptions} options
+ */
+function formatVerdict(outcomes, orphans, options) {
+  const totals = {
+    errors: outcomes.filter(outcome => outcome.status === 'error').length,
+    regressions: outcomes.reduce((total, outcome) => total + outcome.regressions.length, 0),
+    stale: outcomes.reduce((total, outcome) => total + outcome.stale.length, 0),
+    tolerated: outcomes.reduce((total, outcome) => total + outcome.tolerated.length, 0),
+  };
+  const fixtures = count(outcomes.length, 'fixture');
+
+  if (hasFailed(outcomes, orphans, options)) {
+    const parts = [
+      totals.errors > 0 && count(totals.errors, 'fixture') + ' failed to bundle',
+      totals.regressions > 0 && count(totals.regressions, 'regression'),
+      totals.stale > 0 && count(totals.stale, 'stale allowlist entry', 'stale allowlist entries'),
+      orphans.length > 0 && count(orphans.length, 'orphaned allowlist entry', 'orphaned allowlist entries'),
+      options.strict && totals.tolerated > 0 && count(totals.tolerated, 'allowed violation') + ' rejected by --strict',
+    ].filter(Boolean);
+
+    return [`FAIL - ${fixtures}: ${parts.join(', ')}`];
+  }
+
+  if (totals.tolerated === 0) {
+    return [`PASS - ${fixtures} free of ${options.config.forbiddenPackages.join(', ')}`];
+  }
+
+  const leaked = [...new Set(outcomes.flatMap(outcome => outcome.tolerated))].sort();
+  const keptOut = options.config.forbiddenPackages.filter(
+    pattern => !leaked.some(name => matchesPackagePattern(pattern, name)),
+  );
+
+  return [
+    `PASS WITH DEBT - ${fixtures}, 0 regressions, ${count(totals.tolerated, 'allowed violation')}`,
+    ...(keptOut.length > 0 ? [`  kept out:  ${keptOut.join(', ')}`] : []),
+    `  allowlist: ${leaked.join(', ')}`,
+    `             tracked in ${configPathLabel(options)} - deleting an entry is the goal, adding one is a regression`,
+  ];
+}
+
+/**
+ * @param {RuntimeOptions} options
+ * @param {string} summaryPath
+ */
+function formatArtifacts(options, summaryPath) {
+  const lines = [`summary:  ${relativeToWorkspace(summaryPath, options.workspaceRoot)}`];
+
+  if (options.analyze) {
+    lines.push(
+      `analyzer: ${relativeToWorkspace(
+        outputRoot(options),
+        options.workspaceRoot,
+      )}/<fixture>/report.html + report.json`,
+    );
+  } else {
+    lines.push(`analyzer: rerun with --analyze for per-fixture treemaps`);
+  }
+
+  return lines;
+}
+
+/**
+ * @param {string} pattern
+ * @param {string} name
+ */
+function matchesPackagePattern(pattern, name) {
+  return pattern.endsWith('/*') ? name.startsWith(pattern.slice(0, -1)) : name === pattern;
+}
+
+/**
+ * @param {number} value
+ * @param {string} singular
+ * @param {string} [plural]
+ */
+function count(value, singular, plural) {
+  return `${value} ${value === 1 ? singular : plural ?? `${singular}s`}`;
+}
+
+/** @param {RuntimeOptions} options */
+function configPathLabel(options) {
+  return relativeToWorkspace(options.configPath, options.workspaceRoot);
+}
+
+/**
+ * Companion to the analyzer treemap: the same verdict as the console output, but structured so it
+ * can be diffed between runs or handed to another tool. Always written - it is the cheap artifact.
+ *
+ * @param {Outcome[]} outcomes
+ * @param {ReturnType<typeof orphanedAllowlistEntries>} orphans
+ * @param {string} packageName
+ * @param {RuntimeOptions} options
+ */
+function writeSummary(outcomes, orphans, packageName, options) {
+  const toWorkspacePath = (/** @type {string} */ path) => relativeToWorkspace(path, options.workspaceRoot);
+
+  const summary = {
+    package: packageName,
+    config: toWorkspacePath(options.configPath),
+    strict: options.strict,
+    status: hasFailed(outcomes, orphans, options)
+      ? 'failed'
+      : outcomes.some(outcome => outcome.tolerated.length > 0)
+      ? 'passed-with-debt'
+      : 'passed',
+    forbiddenPackages: options.config.forbiddenPackages,
+    orphanedAllowlistEntries: orphans,
+    fixtures: outcomes.map(outcome => ({
+      fixture: outcome.fixture,
+      status: outcome.status,
+      analyzerReport: options.analyze
+        ? toWorkspacePath(join(fixtureOutputPath(outcome.fixture, options), 'report.json'))
+        : null,
+      error: outcome.error ?? null,
+      sourceResolved: outcome.sourceResolved.map(toWorkspacePath),
+      allowedViolations: outcome.allowed,
+      tolerated: outcome.tolerated,
+      regressions: outcome.regressions,
+      stale: outcome.stale,
+      leaks: Object.fromEntries(
+        Object.entries(outcome.leaks).map(([name, leak]) => [
+          name,
+          {
+            modules: leak.modules,
+            exports: leak.exports.map(({ name: exportName, importers }) => ({
+              name: exportName,
+              importers: importers.map(importer => ({ module: toWorkspacePath(importer.module), via: importer.via })),
+            })),
+          },
+        ]),
+      ),
+    })),
+  };
+
+  const summaryPath = join(outputRoot(options), 'summary.json');
+  mkdirSync(dirname(summaryPath), { recursive: true });
+  writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + '\n');
+
+  return summaryPath;
+}
+
+/** @param {Pick<RuntimeOptions, 'packageRoot'>} options */
+function outputRoot(options) {
+  return join(options.packageRoot, 'dist', 'bundle-isolation');
+}
+
+/**
+ * @param {string} fixture
+ * @param {Pick<RuntimeOptions, 'packageRoot'>} options
+ */
+function fixtureOutputPath(fixture, options) {
+  return join(outputRoot(options), fixture.replace(/\.fixture\.js$/, ''));
 }
 
 /**

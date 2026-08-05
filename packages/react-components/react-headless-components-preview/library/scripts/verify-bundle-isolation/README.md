@@ -30,10 +30,36 @@ Run from the package root, once the package and its dependencies are built:
 node scripts/verify-bundle-isolation/cli.js
 ```
 
-| Flag              | Default                        | Description                                                                     |
-| ----------------- | ------------------------------ | ------------------------------------------------------------------------------- |
-| `--config <path>` | `bundle-isolation.config.json` | Configuration file, resolved from the working directory                         |
-| `--analyze`       | off                            | Write a webpack-bundle-analyzer treemap per fixture to `dist/bundle-isolation/` |
+| Flag              | Default                        | Description                                                          |
+| ----------------- | ------------------------------ | -------------------------------------------------------------------- |
+| `--config <path>` | `bundle-isolation.config.json` | Configuration file, resolved from the working directory              |
+| `--analyze`       | off                            | Also write webpack-bundle-analyzer artifacts per fixture             |
+| `--strict`        | off                            | Fail on allowed violations too, so the allowlist cannot be relied on |
+
+## Verdicts
+
+| Verdict          | Exit | Meaning                                                                                                                            |
+| ---------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `PASS`           | 0    | No forbidden package survived bundling. Only this verdict claims a bundle is free of them.                                         |
+| `PASS WITH DEBT` | 0    | Every surviving forbidden package is on the allowlist. The leaks are listed with their module counts and entry points.             |
+| `FAIL`           | 1    | A regression, a stale or orphaned allowlist entry, a fixture that failed to bundle, or - under `--strict` - any allowed violation. |
+
+Per fixture the report labels each finding `CLEAN`, `ALLOWED`, `REGRESSION`, `STALE` or `ERROR`; a single fixture can
+carry more than one label. Module and export counts come from a build with `minimize: false`, so they measure how much
+of a package is retained, not what it costs to ship - use monosize for bytes.
+
+## Output
+
+`dist/bundle-isolation/` is wiped on every run, so it only ever contains the fixtures that currently exist.
+
+| Path                    | Written          | Contents                                                                                                                                                               |
+| ----------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `summary.json`          | always           | The console verdict in structured form - overall `status`, and per fixture its `status`, `allowedViolations`, `tolerated`, `regressions`, `stale` and full `leaks` map |
+| `<Fixture>/report.html` | with `--analyze` | webpack-bundle-analyzer treemap                                                                                                                                        |
+| `<Fixture>/report.json` | with `--analyze` | The same data the treemap renders from - module tree with `statSize`, `parsedSize` and `gzipSize`                                                                      |
+
+`leaks` maps a forbidden package to the exports that survived tree shaking and the modules importing them, so the
+summary answers _what_ leaked and _why_, while the analyzer output answers _how much_ it costs.
 
 ## Configuration
 
@@ -45,7 +71,7 @@ The default configuration is `bundle-isolation.config.json` in the package root.
   "fixturesRoot": "./bundle-size",
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
   "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],
-  "knownViolations": {
+  "allowedViolations": {
     "AllComponents.fixture.js": ["@fluentui/react-icons"]
   }
 }
@@ -56,7 +82,7 @@ All configured paths are resolved relative to the package root:
 - `fixturesRoot` is the directory containing bundle-size fixtures.
 - `externals` lists host-provided modules excluded from the bundle.
 - `forbiddenPackages` lists exact package names or scoped globs such as `@griffel/*`.
-- `knownViolations` maps fixture paths, relative to `fixturesRoot`, to temporarily tolerated forbidden packages.
+- `allowedViolations` maps fixture paths, relative to `fixturesRoot`, to tolerated forbidden packages.
 
 ## Fixtures
 
@@ -74,15 +100,15 @@ export default {
 
 Sharing fixtures keeps isolation checks and bundle-size measurements aligned.
 
-## Known violations
+## Allowed violations
 
-`knownViolations` is a shrink-only baseline:
+`allowedViolations` is tracked debt, not an exemption. It is shrink-only:
 
 - A newly retained forbidden package fails the check.
-- A package that no longer survives bundling also fails the check until its baseline entry is removed.
-- A baseline entry for a missing fixture fails the check.
+- A package that no longer survives bundling also fails the check until its entry is removed.
+- An entry for a missing fixture fails the check.
 
-This prevents fixed leaks from being silently reintroduced.
+This prevents fixed leaks from being silently reintroduced. Deleting an entry is the goal; adding one is a regression.
 
 ## Reuse in another build
 

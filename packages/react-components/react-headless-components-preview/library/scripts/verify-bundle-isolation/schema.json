@@ -32,8 +32,8 @@
         "minLength": 1
       }
     },
-    "knownViolations": {
-      "description": "Bundle-size fixture paths mapped to forbidden packages tolerated temporarily.",
+    "allowedViolations": {
+      "description": "Bundle-size fixture paths mapped to forbidden packages tolerated as tracked debt.",
       "type": "object",
       "additionalProperties": {
         "type": "array",
@@ -45,5 +45,5 @@
       }
     }
   },
-  "required": ["fixturesRoot", "externals", "forbiddenPackages", "knownViolations"]
+  "required": ["fixturesRoot", "externals", "forbiddenPackages", "allowedViolations"]
 }
