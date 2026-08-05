@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "In-repo adaptation to the Griffel to Tailwind migration (conformance wrapper and style-hook typing). Deprecated package; not republished.",
+  "packageName": "@fluentui/react-alert",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

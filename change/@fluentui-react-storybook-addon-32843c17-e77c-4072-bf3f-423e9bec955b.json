@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "The global Storybook docs chrome moved from ./styles.css to the new ./docs-chrome.css export; ./styles.css now contains the addon's compiled CSS-Module component styles (the same contract as every converted package). Storybooks that imported @fluentui/react-storybook-addon/styles.css for docs styling must import both subpaths.",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

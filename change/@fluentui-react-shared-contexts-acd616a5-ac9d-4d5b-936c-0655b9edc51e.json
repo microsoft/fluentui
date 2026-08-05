@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "useCustomStyleHook_unstable now returns the state to render instead of a void no-op: custom style hooks may follow the new functional contract (return a new state) or the previous mutating contract (return undefined; mutations on the input state are preserved). Converted component packages assign the returned value to their render state and therefore require this implementation.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

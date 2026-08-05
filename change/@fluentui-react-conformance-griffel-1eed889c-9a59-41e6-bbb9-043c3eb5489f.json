@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Package retired to packages/react-components/deprecated/ per the react-alert precedent; published history untouched. The two deprecated Griffel packages keep consuming it in-repo.",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

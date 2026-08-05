@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove the unused @griffel/react dependency as part of the Griffel to Tailwind CSS + CSS Modules migration. No API change.",
+  "packageName": "@fluentui/react-icons-compat",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

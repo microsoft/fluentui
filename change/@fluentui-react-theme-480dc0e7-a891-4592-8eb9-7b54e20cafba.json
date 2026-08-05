@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs: update README token-usage example from makeStyles to plain CSS custom properties.",
+  "packageName": "@fluentui/react-theme",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}
