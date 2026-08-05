@@ -2,6 +2,47 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:10 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.10.1",
+      "version": "9.10.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "989dbeb880ea0d5f472d015f6e91b0889774136b",
+            "comment": "fix: allow base states in TagPicker render functions"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.17.4",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-positioning to v9.23.0",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.9.3",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2026 14:10:41 GMT",
       "tag": "@fluentui/react-tag-picker_v9.10.0",
       "version": "9.10.0",

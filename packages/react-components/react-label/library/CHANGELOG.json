@@ -2,6 +2,21 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:21 GMT",
+      "tag": "@fluentui/react-label_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:45 GMT",
       "tag": "@fluentui/react-label_v9.4.3",
       "version": "9.4.3",

@@ -2,6 +2,337 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:07 GMT",
+      "tag": "@fluentui/react-components_v9.74.5",
+      "version": "9.74.5",
+      "comments": {
+        "minor": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9846ec31c1f0c116edf9c632b2dec1c6eb9aae1d",
+            "comment": "feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: yarn-modern dependency reorder"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-rating",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: Yarn Modern migration compatibility changes"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: Yarn Modern migration compatibility changes"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-list",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5e1703dff7576f902d345e32e8b9e5a73fcc296e",
+            "comment": "test: add regression tests for split-group submenu trigger alignment icons"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "cc7550b3dfcc51c6cf11a72d13b8c6bdbc930302",
+            "comment": "fix: escape SSR theme style selectors"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1",
+            "comment": "fix: fix Field control size handling for Select"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "989dbeb880ea0d5f472d015f6e91b0889774136b",
+            "comment": "fix: allow base states in TagPicker render functions"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1",
+            "comment": "fix: fix Field control size handling"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "5726a85e58837117b2bb82441a4624bccf119dd7",
+            "comment": "fix: hide Tooltip when its trigger scrolls outside an overflow container"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e85170a2cc9139a7adfbbb524090541389cbeafe",
+            "comment": "fix: add accessible names to Tree selection controls"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a50f6d4d680e8bdb811866473e3a89aea3c89def",
+            "comment": "voice control accessibility bug fix"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "47b4e4269f0415a4942fb4ddf5ebb3998fc4aa46",
+            "comment": "Accessibility bug fixe"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "83370c9895b9013dae68b0096a64c9508397b3e6",
+            "comment": "HorizontalBarChart bug fixes"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "Pin @ctrl/tinycolor version to prevent yarn modern duplication"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1",
+            "comment": "fix: fix Field control size handling Combobox and Dropdown"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1",
+            "comment": "fix: fix Field control size handling"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "fb9607c34c507ed956497ee76c8adddf1f93c9a0",
+            "comment": "fix(MessageBar): v9 MessageBar Resize Flicker Fix"
+          },
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ff7809f0c1525dfe59eb8f0e7489f48bc6b8c277",
+            "comment": "fix: close Popover on focus escape only when focus was inside the surface, so a popover whose focus never entered (e.g. an external input stays focused) is not dismissed when focus moves programmatically"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jul 2026 14:10:40 GMT",
       "tag": "@fluentui/react-components_v9.74.4",
       "version": "9.74.4",

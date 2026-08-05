@@ -2,6 +2,35 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:18 GMT",
+      "tag": "@fluentui/react-combobox_v9.17.4",
+      "version": "9.17.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1",
+            "comment": "fix: fix Field control size handling Combobox and Dropdown"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.23.0",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:41 GMT",
       "tag": "@fluentui/react-combobox_v9.17.3",
       "version": "9.17.3",
