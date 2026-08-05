@@ -23,6 +23,10 @@ export const useMenuButton = (
   state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-open'] = stringifyDataAttribute(
+    state.root['aria-expanded'] === true || state.root['aria-expanded'] === 'true',
+  );
 
   return state;
 };

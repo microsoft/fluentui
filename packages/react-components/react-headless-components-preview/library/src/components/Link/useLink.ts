@@ -17,6 +17,8 @@ export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>): LinkStat
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-inline'] = stringifyDataAttribute(state.inline);
 
   return state;
 };

@@ -5,6 +5,10 @@ import { isConformant } from '../../testing/isConformant';
 import { TeachingPopover } from './TeachingPopover';
 import { TeachingPopoverTrigger } from './TeachingPopoverTrigger';
 import { TeachingPopoverSurface } from './TeachingPopoverSurface';
+import { TeachingPopoverCarousel } from './TeachingPopoverCarousel';
+import { TeachingPopoverCarouselCard } from './TeachingPopoverCarouselCard';
+import { TeachingPopoverCarouselNav } from './TeachingPopoverCarouselNav';
+import { TeachingPopoverCarouselNavButton } from './TeachingPopoverCarouselNavButton';
 
 describe('TeachingPopover', () => {
   isConformant({
@@ -113,5 +117,20 @@ describe('TeachingPopover', () => {
 
     expect(getByText('Surface')).toBeInTheDocument();
     expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
+  });
+
+  it('exposes the selected carousel navigation button', () => {
+    const { getByRole } = render(
+      <TeachingPopoverCarousel defaultValue="one" announcement={index => `Page ${index + 1}`}>
+        <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselNav>
+          {(value: string) => <TeachingPopoverCarouselNavButton aria-label={`Go to ${value}`} />}
+        </TeachingPopoverCarouselNav>
+      </TeachingPopoverCarousel>,
+    );
+
+    expect(getByRole('tab', { name: 'Go to one' })).toHaveAttribute('data-selected');
+    expect(getByRole('tab', { name: 'Go to two' })).not.toHaveAttribute('data-selected');
   });
 });

@@ -28,6 +28,7 @@ export type SwitchState = SwitchBaseState & {
         'data-disabled'?: string;
         'data-disabled-focusable'?: string;
         'data-checked'?: string;
+        'data-label-position'?: SwitchBaseState['labelPosition'];
     };
 };
 

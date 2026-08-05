@@ -9,5 +9,6 @@ export type TabState = TabBaseState & {
     focusgroupstart?: string;
     'data-icon-only'?: string;
     'data-selected'?: string;
+    'data-disabled'?: string;
   };
 };

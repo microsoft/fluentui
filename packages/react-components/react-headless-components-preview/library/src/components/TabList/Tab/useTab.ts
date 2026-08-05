@@ -19,6 +19,8 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
   state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-selected'] = stringifyDataAttribute(state.selected);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
 
   return state;
 };

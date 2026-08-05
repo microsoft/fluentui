@@ -78,6 +78,7 @@ export type CardSlots = CardSlots_2;
 export type CardState = CardBaseState & {
     root: {
         'data-selected'?: string;
+        'data-disabled'?: string;
     };
 };
 

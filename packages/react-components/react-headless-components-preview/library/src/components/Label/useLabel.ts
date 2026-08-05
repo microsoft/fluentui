@@ -16,6 +16,8 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLLabelElement>): L
   // Set data attribute for disabled state to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-required'] = stringifyDataAttribute(Boolean(state.required));
 
   return state;
 };
