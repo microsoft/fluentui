@@ -1,6 +1,6 @@
 {
   "type": "major",
-  "comment": "Griffel to Tailwind CSS + CSS Modules migration, umbrella surface: the suite now re-exports the converted packages’ stylesheet via the ./styles.css subpath, and the *ClassNames constants are re-exported as deprecated compile-compatibility symbols — the BEM static class names they used to describe are no longer rendered on component internals, while each constant’s `root` entry remains that component’s public identity class.",
+  "comment": "Griffel to Tailwind CSS + CSS Modules migration, umbrella surface: the @griffel/react runtime re-exports (__css, __resetCSS, __resetStyles, __styles, createDOMRenderer, makeResetStyles, makeStaticStyles, makeStyles, mergeClasses, RendererProvider, renderToStyleElements, shorthands), the GriffelStyle/GriffelRenderer/GriffelResetStyle types and the @griffel/react dependency are removed. There is no umbrella stylesheet: converted packages are self-styling — bundler consumers get each package's CSS automatically through its ESM side-effect import, SSR/CommonJS consumers import each package's ./styles.css subpath, and apps load @fluentui/react-tailwind-theme/styles.css once at the document root. The *ClassNames constants are re-exported as deprecated compile-compatibility symbols — the BEM static class names they used to describe are no longer rendered on component internals, while each constant's `root` entry remains that component's public identity class.",
   "packageName": "@fluentui/react-components",
   "email": "array.knight+github@gmail.com",
   "dependentChangeType": "patch"

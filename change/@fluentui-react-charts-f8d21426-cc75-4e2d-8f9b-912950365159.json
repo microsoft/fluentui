@@ -1,6 +1,6 @@
 {
   "type": "major",
-  "comment": "Migrate chart styling from Griffel to Tailwind CSS + CSS Modules. Styles now ship as a per-package stylesheet exported at ./styles.css instead of being injected at runtime, so consumers must import it. Rendered class names on chart internals changed to CSS-Module-scoped identifiers; the *ClassNames-style static names are no longer emitted.",
+  "comment": "Migrate chart styling from Griffel to Tailwind CSS + CSS Modules. Styles now ship as a per-package stylesheet compiled to dist/styles.css instead of being injected at runtime: bundler consumers load it automatically through the package's ESM side-effect import, SSR/CommonJS consumers import the ./styles.css subpath, and apps load @fluentui/react-tailwind-theme/styles.css once at the document root. Rendered class names on chart internals changed to CSS-Module-scoped identifiers; the *ClassNames-style static names are no longer emitted.",
   "packageName": "@fluentui/react-charts",
   "email": "array.knight+github@gmail.com",
   "dependentChangeType": "patch"
