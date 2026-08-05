@@ -1,5 +1,4 @@
 {
-  "$schema": "./scripts/verify-bundle-isolation/schema.json",
   "fixturesRoot": "./bundle-size",
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
   "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],

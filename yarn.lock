@@ -2772,6 +2772,7 @@ __metadata:
     "@fluentui/react-northstar": "npm:0.66.5"
     "@fluentui/scripts-test-ssr": "npm:*"
     "@fluentui/storybook-llms-extractor": "npm:*"
+    "@fluentui/verify-bundle-isolation": "npm:*"
     "@griffel/babel-preset": "npm:1.5.8"
     "@griffel/eslint-plugin": "npm:^2.0.0"
     "@griffel/jest-serializer": "npm:1.1.24"
@@ -4321,6 +4322,7 @@ __metadata:
     "@fluentui/react-tooltip": "npm:^9.10.4"
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@fluentui/scripts-cypress": "npm:*"
+    "@fluentui/verify-bundle-isolation": "npm:*"
     "@oddbird/popover-polyfill": "npm:^0.6.1"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -6432,6 +6434,19 @@ __metadata:
   peerDependencies:
     "@types/react": ">=16.8.0 <20.0.0"
     react: ">=16.8.0 <20.0.0"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/verify-bundle-isolation@npm:*, @fluentui/verify-bundle-isolation@workspace:tools/verify-bundle-isolation":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/verify-bundle-isolation@workspace:tools/verify-bundle-isolation"
+  dependencies:
+    "@fluentui/eslint-plugin": "npm:*"
+    ajv: "npm:^8.13.0"
+    webpack: "npm:5.108.4"
+    webpack-bundle-analyzer: "npm:4.10.1"
+  bin:
+    verify-bundle-isolation: ./bin/verify-bundle-isolation.js
   languageName: unknown
   linkType: soft
 
@@ -12289,6 +12304,18 @@ __metadata:
     require-from-string: "npm:^2.0.2"
     uri-js: "npm:^4.4.1"
   checksum: 10c0/14c6497b6f72843986d7344175a1aa0e2c35b1e7f7475e55bc582cddb765fca7e6bf950f465dc7846f817776d9541b706f4b5b3fbedd8dfdeb5fce6f22864264
+  languageName: node
+  linkType: hard
+
+"ajv@npm:^8.13.0":
+  version: 8.20.0
+  resolution: "ajv@npm:8.20.0"
+  dependencies:
+    fast-deep-equal: "npm:^3.1.3"
+    fast-uri: "npm:^3.0.1"
+    json-schema-traverse: "npm:^1.0.0"
+    require-from-string: "npm:^2.0.2"
+  checksum: 10c0/5df9a1c8f83863cde1bd3a9ddb426f599718f88e3dc9153616c79fb28e0be455335830d7f21d745576519f057b371352daa31047b6a33d7036fe08777d60cf2a
   languageName: node
   linkType: hard
 
@@ -18173,6 +18200,13 @@ __metadata:
   version: 1.1.4
   resolution: "fast-loops@npm:1.1.4"
   checksum: 10c0/25e8a608fccc0d84c1d037efa715ab1e6f21576e1070931b3ed966657204c47ed2b1cba16e5c46ddde2d62aba0b4100d86616d995318b7367fa0a902a78ed885
+  languageName: node
+  linkType: hard
+
+"fast-uri@npm:^3.0.1":
+  version: 3.1.5
+  resolution: "fast-uri@npm:3.1.5"
+  checksum: 10c0/2bf60eb800dd610c65e17be436425dcb21c92aff3a87d442a8bccab0b7b071e88cf1a5d7d1ea946370b937e6fc0375c405c0296c10587e57de4f78be4646d1d0
   languageName: node
   linkType: hard
 

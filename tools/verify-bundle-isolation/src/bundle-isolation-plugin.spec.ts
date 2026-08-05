@@ -1,22 +1,15 @@
-/*
- * @jest-environment node
- */
-// @ts-check
-const { mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } = require('node:fs');
-const { tmpdir } = require('node:os');
-const { dirname, join } = require('node:path');
+import { mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { dirname, join } from 'node:path';
 
-const webpack = require('webpack');
+import webpack from 'webpack';
 
-const { BundleIsolationPlugin } = require('./bundle-isolation-plugin');
-
-/** @typedef {import('./bundle-isolation-plugin').BundleIsolationReport} BundleIsolationReport */
+import { BundleIsolationPlugin, type BundleIsolationReport } from './bundle-isolation-plugin';
 
 jest.setTimeout(60_000);
 
 describe('BundleIsolationPlugin', () => {
-  /** @type {string} */
-  let root;
+  let root: string;
 
   beforeEach(() => {
     // webpack reports resolved real paths, which on macOS differ from the symlinked temp path.
@@ -28,8 +21,7 @@ describe('BundleIsolationPlugin', () => {
   });
 
   describe('attribution', () => {
-    /** @type {BundleIsolationReport} */
-    let report;
+    let report: BundleIsolationReport;
 
     beforeEach(async () => {
       writeFiles(root, {
@@ -124,13 +116,16 @@ describe('BundleIsolationPlugin', () => {
   });
 });
 
-/**
- * @param {{root: string, packageRoot: string, forbiddenPackages: string[]}} options
- * @returns {Promise<BundleIsolationReport>}
- */
-function bundle({ root, packageRoot, forbiddenPackages }) {
-  /** @type {BundleIsolationReport | undefined} */
-  let report;
+function bundle({
+  root,
+  packageRoot,
+  forbiddenPackages,
+}: {
+  root: string;
+  packageRoot: string;
+  forbiddenPackages: string[];
+}): Promise<BundleIsolationReport> {
+  let report: BundleIsolationReport | undefined;
 
   const compiler = webpack({
     target: 'web',
@@ -158,17 +153,13 @@ function bundle({ root, packageRoot, forbiddenPackages }) {
           rejectPromise(error ?? new Error(stats?.toString({ errors: true })));
           return;
         }
-        resolvePromise(/** @type {BundleIsolationReport} */ (report));
+        resolvePromise(report as BundleIsolationReport);
       });
     });
   });
 }
 
-/**
- * @param {string} root
- * @param {Record<string, string>} files
- */
-function writeFiles(root, files) {
+function writeFiles(root: string, files: Record<string, string>) {
   for (const [path, contents] of Object.entries(files)) {
     const target = join(root, path);
     mkdirSync(dirname(target), { recursive: true });
@@ -176,7 +167,6 @@ function writeFiles(root, files) {
   }
 }
 
-/** @param {string} name */
-function manifest(name) {
+function manifest(name: string) {
   return JSON.stringify({ name, version: '1.0.0', sideEffects: false });
 }

@@ -64,6 +64,7 @@
     "@fluentui/react-integration-tester": "*",
     "@fluentui/scripts-test-ssr": "*",
     "@fluentui/storybook-llms-extractor": "*",
+    "@fluentui/verify-bundle-isolation": "*",
     "@griffel/babel-preset": "1.5.8",
     "@griffel/eslint-plugin": "^2.0.0",
     "@griffel/jest-serializer": "1.1.24",

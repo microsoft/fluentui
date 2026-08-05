@@ -1,21 +1,61 @@
-// @ts-check
 /**
  * Turns raw per-fixture bundling results into a verdict, and renders that verdict for the console
  * and for `summary.json`. Kept free of webpack and of the file system so it can be tested directly.
  */
-const { join } = require('node:path');
+import { join } from 'node:path';
 
-const { fixtureOutputPath, relativeToWorkspace } = require('./config');
+import type { Leak } from './bundle-isolation-plugin';
+import { type Config, fixtureOutputPath, relativeToWorkspace } from './config';
 
-/** @typedef {import('./config').Config} Config */
-/** @typedef {import('./bundle-isolation-plugin').Leak} Leak */
-/** @typedef {{configPath: string, analyze: boolean, strict: boolean, config: Config, fixturesRoot: string, packageRoot: string, workspaceRoot: string}} RuntimeOptions */
-/** @typedef {{fixture: string, found: string[], leaks: Record<string, Leak>, sourceResolved: string[], error?: string}} FixtureResult */
-/** @typedef {'error' | 'regression' | 'stale' | 'allowed' | 'clean'} FixtureStatus */
-/** @typedef {FixtureResult & {status: FixtureStatus, allowed: string[], tolerated: string[], regressions: string[], stale: string[]}} Outcome */
-/** @typedef {{fixture: string, packages: string[]}} Orphan */
-/** @typedef {{packageName: string, options: RuntimeOptions, outcomes: Outcome[], orphans: Orphan[], totals: Totals, failed: boolean, status: 'passed' | 'passed-with-debt' | 'failed'}} Report */
-/** @typedef {{errors: number, regressions: number, stale: number, tolerated: number}} Totals */
+export interface RuntimeOptions {
+  configPath: string;
+  analyze: boolean;
+  strict: boolean;
+  config: Config;
+  fixturesRoot: string;
+  packageRoot: string;
+  workspaceRoot: string;
+}
+
+export interface FixtureResult {
+  fixture: string;
+  found: string[];
+  leaks: Record<string, Leak>;
+  sourceResolved: string[];
+  error?: string;
+}
+
+export type FixtureStatus = 'error' | 'regression' | 'stale' | 'allowed' | 'clean';
+
+export interface Outcome extends FixtureResult {
+  status: FixtureStatus;
+  allowed: string[];
+  tolerated: string[];
+  regressions: string[];
+  stale: string[];
+}
+
+export interface Orphan {
+  fixture: string;
+  packages: string[];
+}
+
+export interface Totals {
+  errors: number;
+  regressions: number;
+  stale: number;
+  tolerated: number;
+}
+
+export interface Report {
+  packageName: string;
+  options: RuntimeOptions;
+  outcomes: Outcome[];
+  orphans: Orphan[];
+  totals: Totals;
+  failed: boolean;
+  status: 'passed' | 'passed-with-debt' | 'failed';
+}
 
 /** Widest badge plus its trailing gap, so every fixture line starts at the same column. */
 const BADGE_WIDTH = 'REGRESSION'.length + 2;
@@ -23,14 +63,20 @@ const MAX_ORIGINS = 3;
 const MAX_EXPORTS = 5;
 const MAX_IMPORTERS = 2;
 
-/**
- * @param {{packageName: string, results: FixtureResult[], fixtures: string[], options: RuntimeOptions}} input
- * @returns {Report}
- */
-function createReport({ packageName, results, fixtures, options }) {
+export function createReport({
+  packageName,
+  results,
+  fixtures,
+  options,
+}: {
+  packageName: string;
+  results: FixtureResult[];
+  fixtures: string[];
+  options: RuntimeOptions;
+}): Report {
   const outcomes = results.map(result => classify(result, options.config.allowedViolations[result.fixture] ?? []));
   const orphans = orphanedAllowlistEntries(fixtures, options.config.allowedViolations);
-  const totals = {
+  const totals: Totals = {
     errors: outcomes.filter(outcome => outcome.status === 'error').length,
     regressions: sumBy(outcomes, outcome => outcome.regressions.length),
     stale: sumBy(outcomes, outcome => outcome.stale.length),
@@ -55,18 +101,12 @@ function createReport({ packageName, results, fixtures, options }) {
   };
 }
 
-/**
- * @param {FixtureResult} result
- * @param {string[]} allowed
- * @returns {Outcome}
- */
-function classify(result, allowed) {
+export function classify(result: FixtureResult, allowed: string[]): Outcome {
   const regressions = result.found.filter(name => !allowed.includes(name));
   const stale = allowed.filter(name => !result.found.includes(name));
   const tolerated = allowed.filter(name => result.found.includes(name));
 
-  /** @type {FixtureStatus} */
-  let status = 'clean';
+  let status: FixtureStatus = 'clean';
   if (result.error || result.sourceResolved.length > 0) {
     status = 'error';
   } else if (regressions.length > 0) {
@@ -80,22 +120,13 @@ function classify(result, allowed) {
   return { ...result, status, allowed, tolerated, regressions, stale };
 }
 
-/**
- * @param {string[]} fixtures
- * @param {Record<string, string[]>} allowedViolations
- * @returns {Orphan[]}
- */
-function orphanedAllowlistEntries(fixtures, allowedViolations) {
+export function orphanedAllowlistEntries(fixtures: string[], allowedViolations: Record<string, string[]>): Orphan[] {
   return Object.entries(allowedViolations)
     .filter(([fixture]) => !fixtures.includes(fixture))
     .map(([fixture, packages]) => ({ fixture, packages }));
 }
 
-/**
- * @param {Report} report
- * @param {string} summaryPath
- */
-function formatReport(report, summaryPath) {
+export function formatReport(report: Report, summaryPath: string): string {
   const { options } = report;
   const lines = [
     `Bundle isolation · ${report.packageName}`,
@@ -120,11 +151,7 @@ function formatReport(report, summaryPath) {
   return lines.join('\n');
 }
 
-/**
- * @param {Outcome} outcome
- * @param {RuntimeOptions} options
- */
-function formatFixture(outcome, options) {
+function formatFixture(outcome: Outcome, options: RuntimeOptions): string[] {
   if (outcome.status === 'error') {
     return [`${badge('ERROR')}${outcome.fixture}`, ...formatError(outcome, options.workspaceRoot)];
   }
@@ -133,7 +160,7 @@ function formatFixture(outcome, options) {
     return [`${badge('CLEAN')}${outcome.fixture}`];
   }
 
-  const lines = [];
+  const lines: string[] = [];
 
   if (outcome.regressions.length > 0) {
     lines.push(
@@ -166,11 +193,7 @@ function formatFixture(outcome, options) {
   return lines;
 }
 
-/**
- * @param {Outcome} outcome
- * @param {string} workspaceRoot
- */
-function formatError(outcome, workspaceRoot) {
+function formatError(outcome: Outcome, workspaceRoot: string): string[] {
   if (outcome.error) {
     return [
       '    could not be bundled - is the package built?',
@@ -184,13 +207,8 @@ function formatError(outcome, workspaceRoot) {
   ];
 }
 
-/**
- * Ordered by module count so the most expensive debt to pay down is listed first.
- *
- * @param {Outcome} outcome
- * @param {string} workspaceRoot
- */
-function formatTolerated(outcome, workspaceRoot) {
+/** Ordered by module count so the most expensive debt to pay down is listed first. */
+function formatTolerated(outcome: Outcome, workspaceRoot: string): string[] {
   const rows = outcome.tolerated
     .map(name => ({ name, leak: outcome.leaks[name] }))
     .sort((left, right) => right.leak.modules - left.leak.modules || left.name.localeCompare(right.name));
@@ -207,12 +225,7 @@ function formatTolerated(outcome, workspaceRoot) {
   ]);
 }
 
-/**
- * @param {string} name
- * @param {Leak} leak
- * @param {string} workspaceRoot
- */
-function describeLeak(name, leak, workspaceRoot) {
+function describeLeak(name: string, leak: Leak, workspaceRoot: string): string[] {
   const lines = [`    ${name} - ${count(leak.modules, 'module')} retained`];
 
   if (leak.exports.length === 0) {
@@ -242,11 +255,7 @@ function describeLeak(name, leak, workspaceRoot) {
   return lines;
 }
 
-/**
- * @param {Leak} leak
- * @param {string} workspaceRoot
- */
-function originsOf(leak, workspaceRoot) {
+function originsOf(leak: Leak, workspaceRoot: string): string[] {
   const origins = new Set(
     leak.exports.flatMap(({ importers }) =>
       importers.map(importer => importer.via ?? relativeToWorkspace(importer.module, workspaceRoot)),
@@ -259,8 +268,7 @@ function originsOf(leak, workspaceRoot) {
   return hidden > 0 ? [...listed, `+${count(hidden, 'more entry point')}`] : listed;
 }
 
-/** @param {Report} report */
-function formatVerdict(report) {
+function formatVerdict(report: Report): string[] {
   const { options, totals, orphans } = report;
   const fixtures = count(report.outcomes.length, 'fixture');
 
@@ -293,11 +301,7 @@ function formatVerdict(report) {
   ];
 }
 
-/**
- * @param {RuntimeOptions} options
- * @param {string} summaryPath
- */
-function formatArtifacts(options, summaryPath) {
+function formatArtifacts(options: RuntimeOptions, summaryPath: string): string[] {
   const analyzer = options.analyze
     ? `${relativeToWorkspace(fixtureOutputPath('<fixture>.fixture.js', options.packageRoot), options.workspaceRoot)}/` +
       'report.html + report.json'
@@ -309,12 +313,10 @@ function formatArtifacts(options, summaryPath) {
 /**
  * Companion to the analyzer treemap: the same verdict, structured so it can be diffed between runs
  * or handed to another tool.
- *
- * @param {Report} report
  */
-function createSummary(report) {
+export function createSummary(report: Report) {
   const { options } = report;
-  const toWorkspacePath = (/** @type {string} */ path) => relativeToWorkspace(path, options.workspaceRoot);
+  const toWorkspacePath = (path: string) => relativeToWorkspace(path, options.workspaceRoot);
 
   return {
     package: report.packageName,
@@ -351,48 +353,22 @@ function createSummary(report) {
   };
 }
 
-/**
- * @param {string} pattern
- * @param {string} name
- */
-function matchesPackagePattern(pattern, name) {
+export function matchesPackagePattern(pattern: string, name: string): boolean {
   return pattern.endsWith('/*') ? name.startsWith(pattern.slice(0, -1)) : name === pattern;
 }
 
-/**
- * @param {number} value
- * @param {string} singular
- * @param {string} [plural]
- */
-function count(value, singular, plural) {
+export function count(value: number, singular: string, plural?: string): string {
   return `${value} ${value === 1 ? singular : plural ?? `${singular}s`}`;
 }
 
-/** @param {string} label */
-function badge(label) {
+function badge(label: string): string {
   return `  ${label.padEnd(BADGE_WIDTH)}`;
 }
 
-/** @param {RuntimeOptions} options */
-function configLabel(options) {
+function configLabel(options: RuntimeOptions): string {
   return relativeToWorkspace(options.configPath, options.workspaceRoot);
 }
 
-/**
- * @template TItem
- * @param {TItem[]} items
- * @param {(item: TItem) => number} valueOf
- */
-function sumBy(items, valueOf) {
+function sumBy<TItem>(items: TItem[], valueOf: (item: TItem) => number): number {
   return items.reduce((total, item) => total + valueOf(item), 0);
 }
-
-module.exports = {
-  classify,
-  count,
-  createReport,
-  createSummary,
-  formatReport,
-  matchesPackagePattern,
-  orphanedAllowlistEntries,
-};

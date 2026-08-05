@@ -1,4 +1,3 @@
-// @ts-check
 /**
  * Reports which forbidden packages survived tree shaking, the exports keeping them alive and the
  * modules importing those exports.
@@ -9,27 +8,46 @@
  * Requires `optimization.concatenateModules: false`; scope hoisting merges modules into a
  * `ConcatenatedModule` with no per-module `resource`, which hides the packages being looked for.
  */
-const { existsSync, readFileSync } = require('node:fs');
-const { dirname, isAbsolute, join, relative, sep } = require('node:path');
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, isAbsolute, join, relative, sep } from 'node:path';
 
-/** @typedef {{module: string, via: string | null}} Importer */
-/** @typedef {{modules: number, exports: Array<{name: string, importers: Importer[]}>}} Leak */
-/** @typedef {{leaks: Record<string, Leak>, sourceResolved: string[]}} BundleIsolationReport */
-/** @typedef {{forbiddenPackages: string[], workspaceRoot: string, packageRoot?: string}} AnalysisOptions */
+import type { ChunkGraph, Compilation, Compiler, Module, ModuleGraph } from 'webpack';
+
+// webpack declares RuntimeSpec internally but does not export it, so recover it from a signature.
+type RuntimeSpec = Parameters<ReturnType<ChunkGraph['getModuleRuntimes']>['add']>[0];
+
+export interface Importer {
+  module: string;
+  via: string | null;
+}
+
+export interface Leak {
+  modules: number;
+  exports: Array<{ name: string; importers: Importer[] }>;
+}
+
+export interface BundleIsolationReport {
+  leaks: Record<string, Leak>;
+  sourceResolved: string[];
+}
+
+export interface AnalysisOptions {
+  forbiddenPackages: string[];
+  workspaceRoot: string;
+  packageRoot?: string;
+}
+
+type ForbiddenOwnerResolver = (modulePath: string) => string | null;
 
 /** `ExportInfo.getUsed()` returns this when nothing references the export. */
 const UNUSED = 0;
 
 const PLUGIN_NAME = 'BundleIsolationPlugin';
 
-class BundleIsolationPlugin {
-  /** @param {AnalysisOptions & {onReport: (report: BundleIsolationReport) => void}} options */
-  constructor(options) {
-    this.options = options;
-  }
+export class BundleIsolationPlugin {
+  constructor(private options: AnalysisOptions & { onReport: (report: BundleIsolationReport) => void }) {}
 
-  /** @param {import('webpack').Compiler} compiler */
-  apply(compiler) {
+  public apply(compiler: Compiler) {
     compiler.hooks.afterEmit.tap(PLUGIN_NAME, compilation => {
       this.options.onReport(collectLeaks(compilation, this.options));
     });
@@ -40,18 +58,15 @@ class BundleIsolationPlugin {
  * webpack records import edges for modules whose imports were later eliminated, so edges alone
  * over-report. A package counts as leaked only when its modules are in a chunk, an export is
  * reported as used, and the importing module survived as well.
- *
- * @param {import('webpack').Compilation} compilation
- * @param {AnalysisOptions} options
- * @returns {BundleIsolationReport}
  */
-function collectLeaks(compilation, options) {
+export function collectLeaks(compilation: Compilation, options: AnalysisOptions): BundleIsolationReport {
   const { chunkGraph, moduleGraph } = compilation;
   const ownerOf = createForbiddenOwnerResolver(options);
-  /** @type {Record<string, {modules: number, exports: Map<string, {name: string, importers: Map<string, Importer>}>}>} */
-  const collected = {};
-  /** @type {string[]} */
-  const sourceResolved = [];
+  const collected: Record<
+    string,
+    { modules: number; exports: Map<string, { name: string; importers: Map<string, Importer> }> }
+  > = {};
+  const sourceResolved: string[] = [];
 
   for (const module of compilation.modules) {
     const resource = resourceOf(module);
@@ -81,20 +96,21 @@ function collectLeaks(compilation, options) {
       }
       // Keyed per module so two modules exporting the same name are not merged.
       const key = `${name}\u0000${resource}`;
-      const known = leak.exports.get(key) ?? { name, importers: new Map() };
+      const known = leak.exports.get(key) ?? { name, importers: new Map<string, Importer>() };
+
       for (const importer of importers) {
-        const importerResource = /** @type {string} */ (resourceOf(importer));
+        const importerResource = resourceOf(importer) as string;
         known.importers.set(importerResource, {
           module: importerResource,
           via: packageOriginOf(moduleGraph, chunkGraph, importer, options.packageRoot),
         });
       }
+
       leak.exports.set(key, known);
     }
   }
 
-  /** @type {Record<string, Leak>} */
-  const leaks = {};
+  const leaks: Record<string, Leak> = {};
   for (const [name, leak] of Object.entries(collected)) {
     leaks[name] = {
       modules: leak.modules,
@@ -110,13 +126,7 @@ function collectLeaks(compilation, options) {
   return { leaks, sourceResolved };
 }
 
-/**
- * @param {import('webpack').ModuleGraph} moduleGraph
- * @param {import('webpack').RuntimeSpec} runtime
- * @param {import('webpack').Module} module
- * @returns {string[]}
- */
-function usedExportNames(moduleGraph, runtime, module) {
+function usedExportNames(moduleGraph: ModuleGraph, runtime: RuntimeSpec, module: Module): string[] {
   const names = [];
 
   for (const exportInfo of moduleGraph.getExportsInfo(module).orderedExports) {
@@ -128,28 +138,27 @@ function usedExportNames(moduleGraph, runtime, module) {
   return names;
 }
 
-/**
- * @param {import('webpack').ModuleGraph} moduleGraph
- * @param {import('webpack').ChunkGraph} chunkGraph
- * @param {import('webpack').RuntimeSpec} runtime
- * @param {import('webpack').Module} module
- * @param {string} exportName
- * @param {(modulePath: string) => string | null} ownerOf
- * @returns {import('webpack').Module[]}
- */
-function externalImporters(moduleGraph, chunkGraph, runtime, module, exportName, ownerOf) {
-  /** @type {Map<string, import('webpack').Module>} */
-  const importers = new Map();
+function externalImporters(
+  moduleGraph: ModuleGraph,
+  chunkGraph: ChunkGraph,
+  runtime: RuntimeSpec,
+  module: Module,
+  exportName: string,
+  ownerOf: ForbiddenOwnerResolver,
+): Module[] {
+  const importers = new Map<string, Module>();
 
   for (const connection of moduleGraph.getIncomingConnections(module)) {
     // An eliminated importer keeps an active connection, so its own retention decides.
     if (!connection.originModule || chunkGraph.getNumberOfModuleChunks(connection.originModule) === 0) {
       continue;
     }
+
     const origin = resourceOf(connection.originModule);
     if (!origin || ownerOf(origin) || connection.getActiveState(runtime) === false) {
       continue;
     }
+
     if (importedIds(connection.dependency, moduleGraph)[0] === exportName) {
       importers.set(origin, connection.originModule);
     }
@@ -161,20 +170,18 @@ function externalImporters(moduleGraph, chunkGraph, runtime, module, exportName,
 /**
  * Walks back over retained modules to the first one owned by the package under test, so a leak
  * reached through a dependency points at the code that pulled that dependency in.
- *
- * @param {import('webpack').ModuleGraph} moduleGraph
- * @param {import('webpack').ChunkGraph} chunkGraph
- * @param {import('webpack').Module} module
- * @param {string | undefined} packageRoot
- * @returns {string | null}
  */
-function packageOriginOf(moduleGraph, chunkGraph, module, packageRoot) {
+function packageOriginOf(
+  moduleGraph: ModuleGraph,
+  chunkGraph: ChunkGraph,
+  module: Module,
+  packageRoot: string | undefined,
+): string | null {
   if (!packageRoot) {
     return null;
   }
 
-  /** @param {import('webpack').Module} candidate */
-  const owned = candidate => {
+  const owned = (candidate: Module) => {
     const resource = resourceOf(candidate);
     return Boolean(resource && resource.startsWith(packageRoot + sep));
   };
@@ -187,17 +194,19 @@ function packageOriginOf(moduleGraph, chunkGraph, module, packageRoot) {
   const queue = [module];
 
   while (queue.length > 0) {
-    const current = /** @type {import('webpack').Module} */ (queue.shift());
+    const current = queue.shift() as Module;
 
     for (const connection of moduleGraph.getIncomingConnections(current)) {
       const origin = connection.originModule;
       if (!origin || visited.has(origin) || chunkGraph.getNumberOfModuleChunks(origin) === 0) {
         continue;
       }
+
       visited.add(origin);
       if (owned(origin)) {
-        return relative(packageRoot, /** @type {string} */ (resourceOf(origin)));
+        return relative(packageRoot, resourceOf(origin) as string);
       }
+
       queue.push(origin);
     }
   }
@@ -205,15 +214,8 @@ function packageOriginOf(moduleGraph, chunkGraph, module, packageRoot) {
   return null;
 }
 
-/**
- * @param {unknown} dependency
- * @param {import('webpack').ModuleGraph} moduleGraph
- * @returns {string[]}
- */
-function importedIds(dependency, moduleGraph) {
-  const candidate = /** @type {{getIds?: (graph: import('webpack').ModuleGraph) => string[], ids?: string[]}} */ (
-    dependency
-  );
+function importedIds(dependency: unknown, moduleGraph: ModuleGraph): string[] {
+  const candidate = dependency as { getIds?: (graph: ModuleGraph) => string[]; ids?: string[] };
 
   if (typeof candidate?.getIds === 'function') {
     return candidate.getIds(moduleGraph) ?? [];
@@ -222,13 +224,8 @@ function importedIds(dependency, moduleGraph) {
   return candidate?.ids ?? [];
 }
 
-/**
- * @param {import('webpack').Module} module
- * @returns {string | null}
- */
-function resourceOf(module) {
-  const candidate = /** @type {{resource?: string}} */ (/** @type {unknown} */ (module));
-  return candidate.resource ?? module.nameForCondition() ?? null;
+function resourceOf(module: Module): string | null {
+  return (module as unknown as { resource?: string }).resource ?? module.nameForCondition() ?? null;
 }
 
 /**
@@ -237,21 +234,17 @@ function resourceOf(module) {
  * Ownership is resolved by walking up to the nearest `package.json`, which handles both
  * `node_modules` dependencies and workspace packages (webpack resolves symlinked workspace
  * packages to their real path, so there is no `node_modules` segment to match on).
- *
- * @param {AnalysisOptions} options
  */
-function createForbiddenOwnerResolver(options) {
+function createForbiddenOwnerResolver(options: AnalysisOptions): ForbiddenOwnerResolver {
   const exact = new Set(options.forbiddenPackages.filter(pattern => !pattern.endsWith('/*')));
   const scopes = options.forbiddenPackages
     .filter(pattern => pattern.endsWith('/*'))
     .map(pattern => pattern.slice(0, -1));
-  /** @type {Map<string, string | null>} */
-  const cache = new Map();
+  const cache = new Map<string, string | null>();
 
-  /** @param {string} modulePath */
-  return function ownerOf(modulePath) {
+  return function ownerOf(modulePath: string) {
     let dir = dirname(isAbsolute(modulePath) ? modulePath : join(options.workspaceRoot, modulePath));
-    const visited = [];
+    const visited: string[] = [];
 
     while (dir && dir !== dirname(dir)) {
       if (cache.has(dir)) {
@@ -279,5 +272,3 @@ function createForbiddenOwnerResolver(options) {
     return null;
   };
 }
-
-module.exports = { BundleIsolationPlugin };

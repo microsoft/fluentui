@@ -1,35 +1,37 @@
-// @ts-check
 /**
- * Asserts that no bundle-size fixture in this package bundles a runtime the headless API is
- * meant to stay free of.
+ * Asserts that no bundle-size fixture in a package bundles a runtime its public API is meant to
+ * stay free of.
  *
  * Bundles with webpack so the verdict comes from the same bundler that produces the bundle-size
  * numbers, and so `usedExports` can name the exact symbols that survived tree shaking.
  *
- * Usage: node scripts/verify-bundle-isolation/cli.js [--config <path>] [--analyze] [--strict]
+ * Usage: verify-bundle-isolation [--config <path>] [--analyze] [--strict]
  */
-const { mkdirSync, rmSync, writeFileSync } = require('node:fs');
-const { dirname, join, resolve } = require('node:path');
-const { parseArgs } = require('node:util');
+import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { parseArgs } from 'node:util';
 
-const webpack = require('webpack');
+import webpack, { type Configuration, type Stats, type WebpackPluginInstance } from 'webpack';
 
-const { BundleIsolationPlugin } = require('./bundle-isolation-plugin');
-const { findFixtures, findWorkspaceRoot, fixtureOutputPath, loadConfig, outputRoot, readJson } = require('./config');
-const { createReport, createSummary, formatReport } = require('./report');
+import { BundleIsolationPlugin, type BundleIsolationReport } from './bundle-isolation-plugin';
+import { findFixtures, findWorkspaceRoot, fixtureOutputPath, loadConfig, outputRoot, readJson } from './config';
+import {
+  type FixtureResult,
+  type Report,
+  type RuntimeOptions,
+  createReport,
+  createSummary,
+  formatReport,
+} from './report';
 
-/** @typedef {import('./report').Report} Report */
-/** @typedef {import('./report').RuntimeOptions} RuntimeOptions */
-/** @typedef {import('./report').FixtureResult} FixtureResult */
-/** @typedef {import('./bundle-isolation-plugin').BundleIsolationReport} BundleIsolationReport */
+interface Args {
+  configPath: string;
+  analyze: boolean;
+  strict: boolean;
+}
 
-main(processArgs()).catch(error => {
-  console.error(error);
-  process.exit(1);
-});
-
-/** @param {{configPath: string, analyze: boolean, strict: boolean}} args */
-async function main(args) {
+export async function cli(): Promise<void> {
+  const args = processArgs();
   const packageRoot = dirname(args.configPath);
   const workspaceRoot = findWorkspaceRoot(packageRoot);
   const config = loadConfig(args.configPath, workspaceRoot);
@@ -42,8 +44,7 @@ async function main(args) {
     process.exit(1);
   }
 
-  /** @type {RuntimeOptions} */
-  const options = { ...args, config, fixturesRoot, packageRoot, workspaceRoot };
+  const options: RuntimeOptions = { ...args, config, fixturesRoot, packageRoot, workspaceRoot };
 
   // Fixtures come and go; a stale output directory would otherwise be mistaken for a fresh report.
   rmSync(outputRoot(packageRoot), { recursive: true, force: true });
@@ -60,7 +61,7 @@ async function main(args) {
   }
 }
 
-function processArgs() {
+function processArgs(): Args {
   const { values } = parseArgs({
     options: {
       config: { type: 'string', default: 'bundle-isolation.config.json' },
@@ -70,21 +71,18 @@ function processArgs() {
     allowPositionals: false,
   });
 
-  return { configPath: resolve(process.cwd(), values.config), analyze: values.analyze, strict: values.strict };
+  return {
+    configPath: resolve(process.cwd(), values.config as string),
+    analyze: values.analyze as boolean,
+    strict: values.strict as boolean,
+  };
 }
 
-/**
- * @param {string} fixture
- * @param {RuntimeOptions} options
- * @returns {Promise<FixtureResult>}
- */
-async function verifyFixture(fixture, options) {
-  /** @type {FixtureResult} */
-  const result = { fixture, found: [], leaks: {}, sourceResolved: [] };
+async function verifyFixture(fixture: string, options: RuntimeOptions): Promise<FixtureResult> {
+  const result: FixtureResult = { fixture, found: [], leaks: {}, sourceResolved: [] };
 
-  /** @type {BundleIsolationReport | undefined} */
-  let analysis;
-  let stats;
+  let analysis: BundleIsolationReport | undefined;
+  let stats: Stats;
 
   try {
     stats = await bundleFixture(fixture, options, report => {
@@ -112,13 +110,11 @@ async function verifyFixture(fixture, options) {
   return result;
 }
 
-/**
- * @param {string} fixture
- * @param {RuntimeOptions} options
- * @param {(report: BundleIsolationReport) => void} onReport
- * @returns {Promise<import('webpack').Stats>}
- */
-function bundleFixture(fixture, options, onReport) {
+function bundleFixture(
+  fixture: string,
+  options: RuntimeOptions,
+  onReport: (report: BundleIsolationReport) => void,
+): Promise<Stats> {
   const compiler = webpack(createWebpackConfig(fixture, options, onReport));
 
   return new Promise((resolveStats, rejectStats) => {
@@ -134,13 +130,11 @@ function bundleFixture(fixture, options, onReport) {
   });
 }
 
-/**
- * @param {string} fixture
- * @param {RuntimeOptions} options
- * @param {(report: BundleIsolationReport) => void} onReport
- * @returns {import('webpack').Configuration}
- */
-function createWebpackConfig(fixture, options, onReport) {
+function createWebpackConfig(
+  fixture: string,
+  options: RuntimeOptions,
+  onReport: (report: BundleIsolationReport) => void,
+): Configuration {
   const outputPath = fixtureOutputPath(fixture, options.packageRoot);
 
   return {
@@ -170,10 +164,8 @@ function createWebpackConfig(fixture, options, onReport) {
 /**
  * One instance per output format - `analyzerMode` is single valued, so the treemap and its
  * underlying data need separate plugins.
- *
- * @param {string} outputPath
  */
-function createAnalyzerPlugins(outputPath) {
+function createAnalyzerPlugins(outputPath: string): WebpackPluginInstance[] {
   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
   return [
@@ -191,8 +183,7 @@ function createAnalyzerPlugins(outputPath) {
   ];
 }
 
-/** @param {Report} report */
-function writeSummary(report) {
+function writeSummary(report: Report): string {
   const summaryPath = join(outputRoot(report.options.packageRoot), 'summary.json');
 
   mkdirSync(dirname(summaryPath), { recursive: true });

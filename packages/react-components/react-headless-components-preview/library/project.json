@@ -14,15 +14,15 @@
     "verify-bundle-isolation": {
       "cache": true,
       "dependsOn": ["build", "^build"],
-      "command": "node scripts/verify-bundle-isolation/cli.js",
+      "command": "yarn run -T verify-bundle-isolation",
       "options": {
         "cwd": "{projectRoot}"
       },
       "inputs": [
-        "{projectRoot}/scripts/verify-bundle-isolation/**/*",
         "{projectRoot}/bundle-isolation.config.json",
         "{projectRoot}/bundle-size/**/*",
         "{projectRoot}/package.json",
+        "{workspaceRoot}/tools/verify-bundle-isolation/**/*",
         { "externalDependencies": ["ajv", "webpack"] }
       ],
       "outputs": ["{projectRoot}/dist/bundle-isolation"],

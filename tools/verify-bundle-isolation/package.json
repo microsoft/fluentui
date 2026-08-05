@@ -1,0 +1,16 @@
+{
+  "name": "@fluentui/verify-bundle-isolation",
+  "version": "0.0.1",
+  "description": "Asserts that a package's bundle-size fixtures do not bundle forbidden runtimes",
+  "private": true,
+  "type": "commonjs",
+  "bin": "./bin/verify-bundle-isolation.js",
+  "dependencies": {
+    "ajv": "^8.13.0",
+    "webpack": "5.108.4",
+    "webpack-bundle-analyzer": "4.10.1"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*"
+  }
+}

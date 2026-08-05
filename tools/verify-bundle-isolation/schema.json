@@ -5,8 +5,8 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "type": "string",
-      "const": "./scripts/verify-bundle-isolation/schema.json"
+      "description": "Path to this schema, relative to the configuration file.",
+      "type": "string"
     },
     "fixturesRoot": {
       "description": "Package-relative directory containing bundle-size fixtures.",

@@ -1,13 +1,11 @@
-// @ts-check
-const { mkdirSync, mkdtempSync, rmSync, writeFileSync } = require('node:fs');
-const { tmpdir } = require('node:os');
-const { join } = require('node:path');
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
-const { findFixtures, loadConfig, outputRoot, fixtureOutputPath, relativeToWorkspace } = require('./config');
+import { findFixtures, fixtureOutputPath, loadConfig, outputRoot, relativeToWorkspace } from './config';
 
 describe('loadConfig', () => {
-  /** @type {string} */
-  let root;
+  let root: string;
 
   beforeEach(() => {
     root = mkdtempSync(join(tmpdir(), 'bundle-isolation-config-'));
@@ -24,8 +22,7 @@ describe('loadConfig', () => {
     allowedViolations: {},
   };
 
-  /** @param {object} config */
-  const load = config => {
+  const load = (config: object) => {
     const configPath = join(root, 'bundle-isolation.config.json');
     writeFileSync(configPath, JSON.stringify(config));
     return loadConfig(configPath, root);
@@ -53,8 +50,7 @@ describe('loadConfig', () => {
 });
 
 describe('findFixtures', () => {
-  /** @type {string} */
-  let root;
+  let root: string;
 
   beforeEach(() => {
     root = mkdtempSync(join(tmpdir(), 'bundle-isolation-fixtures-'));

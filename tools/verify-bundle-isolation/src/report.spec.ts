@@ -1,8 +1,13 @@
-// @ts-check
-const { classify, count, createReport, createSummary, formatReport, matchesPackagePattern } = require('./report');
-
-/** @typedef {import('./report').FixtureResult} FixtureResult */
-/** @typedef {import('./report').RuntimeOptions} RuntimeOptions */
+import {
+  type FixtureResult,
+  type RuntimeOptions,
+  classify,
+  count,
+  createReport,
+  createSummary,
+  formatReport,
+  matchesPackagePattern,
+} from './report';
 
 const workspaceRoot = '/ws';
 const packageRoot = '/ws/packages/thing';
@@ -282,18 +287,34 @@ describe('matchesPackagePattern', () => {
   });
 });
 
-/** @returns {FixtureResult} */
-function fixtureResult({ fixture = 'A.fixture.js', found = [], leaks = {}, sourceResolved = [], error } = {}) {
+function fixtureResult({
+  fixture = 'A.fixture.js',
+  found = [] as string[],
+  leaks = {} as FixtureResult['leaks'],
+  sourceResolved = [] as string[],
+  error,
+}: Partial<FixtureResult> = {}): FixtureResult {
   return { fixture, found, leaks, sourceResolved, ...(error ? { error } : {}) };
 }
 
-function leak({ modules = 2, via = null } = {}) {
+function leak({ modules = 2, via = null }: { modules?: number; via?: string | null } = {}) {
   return { modules, exports: [{ name: 'used', importers: [{ module: '/ws/packages/other/lib/importer.js', via }] }] };
 }
 
-function input({ results, fixtures = ['A.fixture.js'], allowedViolations = {}, strict = false, analyze = false }) {
-  /** @type {RuntimeOptions} */
-  const options = {
+function input({
+  results,
+  fixtures = ['A.fixture.js'],
+  allowedViolations = {},
+  strict = false,
+  analyze = false,
+}: {
+  results: FixtureResult[];
+  fixtures?: string[];
+  allowedViolations?: Record<string, string[]>;
+  strict?: boolean;
+  analyze?: boolean;
+}) {
+  const options: RuntimeOptions = {
     configPath: '/ws/packages/thing/config.json',
     analyze,
     strict,
