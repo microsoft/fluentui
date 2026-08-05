@@ -4,6 +4,7 @@
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
   "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],
   "allowedViolations": {
-    "AllComponents.fixture.js": ["@fluentui/react-icons", "@griffel/core", "@griffel/react"]
+    "AllComponents.fixture.js": ["@fluentui/react-icons", "@griffel/core", "@griffel/react"],
+    "TagPicker.fixture.js": ["@griffel/core", "@griffel/react"]
   }
 }
