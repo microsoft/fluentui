@@ -316,6 +316,12 @@
       "import": "./lib/spinner.js",
       "require": "./lib-commonjs/spinner.js"
     },
+    "./split-button": {
+      "types": "./dist/split-button.d.ts",
+      "node": "./lib-commonjs/split-button.js",
+      "import": "./lib/split-button.js",
+      "require": "./lib-commonjs/split-button.js"
+    },
     "./switch": {
       "types": "./dist/switch.d.ts",
       "node": "./lib-commonjs/switch.js",
