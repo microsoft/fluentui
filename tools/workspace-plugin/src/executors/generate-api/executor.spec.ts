@@ -1,6 +1,8 @@
 import { type ExecutorContext, serializeJson } from '@nx/devkit';
 import {
+  CompilerState,
   Extractor,
+  type ICompilerStateCreateOptions,
   type IExtractorInvokeOptions,
   type ExtractorConfig,
   type ExtractorResult,
@@ -39,6 +41,14 @@ const _context: ExecutorContext = {
 };
 
 const execSyncMock = execSync as jest.Mock;
+
+// The real thing would build a TS program over the fixtures, which the mocked `Extractor.invoke` never reads.
+const compilerStateStub = { program: {} } as unknown as CompilerState;
+let compilerStateCreateSpy: jest.SpyInstance<CompilerState, [ExtractorConfig, ICompilerStateCreateOptions?]>;
+
+beforeEach(() => {
+  compilerStateCreateSpy = jest.spyOn(CompilerState, 'create').mockReturnValue(compilerStateStub);
+});
 
 function cleanup() {
   // Remove all contents of the fixtures directory but keep the directory itself
@@ -192,6 +202,7 @@ describe('GenerateApi Executor', () => {
     const actualLocalBuildValue = isCI() ? false : true;
 
     expect(extractorArgs).toEqual({
+      compilerState: compilerStateStub,
       localBuild: actualLocalBuildValue,
       showDiagnostics: false,
       showVerboseMessages: true,
@@ -224,6 +235,7 @@ describe('GenerateApi Executor', () => {
 
     expect(extractorConfig).toEqual(expect.any(Object));
     expect(extractorArgs).toEqual({
+      compilerState: compilerStateStub,
       localBuild: false,
       showDiagnostics: true,
       showVerboseMessages: true,
@@ -490,6 +502,32 @@ describe('GenerateApi Executor – export subpath resolution', () => {
 
     // primary (1) + utils (1) + wildcard sub-dirs (2)
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + 1 + subDirs.length);
+    expect(output.success).toBe(true);
+  });
+
+  it('creates one compiler state for all entry points and reuses it for every invocation', async () => {
+    const subDirs = ['alpha', 'beta'];
+    const { context } = prepareExportFixture({ wildcardSubDirs: subDirs, namedExports: ['utils'] });
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    const capturedStates: (CompilerState | undefined)[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation((cfg, invokeOptions) => {
+      capturedConfigs.push(cfg);
+      capturedStates.push(invokeOptions?.compilerState);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    const output = await executor({ ...options, exportSubpaths: true }, context);
+
+    expect(compilerStateCreateSpy).toHaveBeenCalledTimes(1);
+
+    const [primaryConfig, createOptions] = compilerStateCreateSpy.mock.calls[0];
+    expect(primaryConfig).toBe(capturedConfigs[0]);
+    expect(createOptions?.additionalEntryPoints).toEqual(
+      capturedConfigs.slice(1).map(cfg => cfg.mainEntryPointFilePath),
+    );
+
+    expect(capturedStates).toEqual(new Array(1 + 1 + subDirs.length).fill(compilerStateStub));
     expect(output.success).toBe(true);
   });
 });
