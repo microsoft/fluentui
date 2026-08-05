@@ -14,9 +14,10 @@
  *   #  mergeClasses argument               → target
  *   -----------------------------------------------------------------------------------
  *   1  group/fui-carousel-autoplay-button  → identity marker (JS); no declarations
- *   2  styles.root                         → fui.components.l2, SPLIT into two locals:
- *                                              .root        (unconditional)
- *                                              .rest-colors (JS-gated + `at-rest`)
+ *   2  styles.root                         → fui.components.l2, SPLIT into three locals:
+ *                                              .root                   (unconditional)
+ *                                              .rest-background        (JS-gated + `at-rest`)
+ *                                              .rest-stroke-foreground (JS-gated + `at-rest`)
  *   3  state.root.className                → unlayered; this is react-button's and
  *                                             ToggleButton's ENTIRE class string plus the
  *                                             consumer's, and under Griffel it therefore
@@ -64,10 +65,18 @@
  * That gate is why the slice is split: `margin-block` and `pointer-events` have no competitor
  * in any state or appearance, so they stay unconditional in `.root`.
  *
- * RESIDUAL, reported rather than engineered around: under a consumer-supplied `outline`
- * appearance react-button sets `background-color` but not `color`, so Griffel would have kept
- * carousel's `color` there. The gate is per-slice, not per-property, so that path now falls
- * through to react-button's own colour. Splitting further would buy a corner of a corner.
+ * PER-PROPERTY SPLIT (PR-36513 review item 12; formerly a reported residual): under a
+ * consumer-supplied `outline` appearance react-button's slice sets ONLY `background-color`
+ * (rest/hover/pressed — verified against the pre-conversion useButtonStyles.styles.ts at
+ * 60d59a5f72~1), so Griffel kept carousel's border colours and `color` there. A single
+ * per-slice gate dropped them. The slice is therefore split in two, each with its own JS
+ * gate mirroring exactly which properties a later mergeClasses argument overwrote:
+ *
+ *   • `.rest-background`        — background-color; overridden by EVERY non-`secondary`
+ *                                 appearance (outline included) and by checked/disabled.
+ *   • `.rest-stroke-foreground` — the four border colours + color; overridden by
+ *                                 primary/subtle/transparent (each sets all three colour
+ *                                 properties) and by checked/disabled, but NOT by outline.
  *
  * ── Stroke widths / spacing / RTL ───────────────────────────────────────────────────────
  * No spacing or stroke-width tokens here. Zero `[ltr, rtl]` pairs in the compiled atomics:
@@ -96,10 +105,12 @@
 
 @layer fui.components.l2 {
   /*
-   * from useStyles.root — arg #2, the three colour properties. Restricted to the rest state
-   * so react-button's reset keeps its hover and pressed feedback, and JS-gated to the
-   * configurations in which no later mergeClasses argument overwrote them. See the header:
-   * both restrictions reproduce a Griffel outcome, neither is a design choice.
+   * from useStyles.root — arg #2, the three colour properties, SPLIT per property winner
+   * (see the PER-PROPERTY SPLIT header note; PR-36513 review item 12). Both locals are
+   * restricted to the rest state so react-button's reset keeps its hover and pressed
+   * feedback, and JS-gated to the configurations in which no later mergeClasses argument
+   * overwrote them. Both restrictions reproduce a Griffel outcome, neither is a design
+   * choice.
    *
    * The `:hover { cursor: pointer }` half of the slice is NOT reproduced: react-button's own
    * reset already sets an identical `cursor: pointer` under `@variant hover`, and its
@@ -107,9 +118,14 @@
    * the same hover-bucket key, deleted carousel's atomic outright. Dropping it reproduces
    * both states exactly; keeping it at l2 would show a pointer cursor on a disabled button.
    */
-  .rest-colors {
+  .rest-background {
     @variant at-rest {
       background-color: var(--colorNeutralBackgroundAlpha);
+    }
+  }
+
+  .rest-stroke-foreground {
+    @variant at-rest {
       border-block-start-color: var(--colorTransparentStroke);
       border-inline-end-color: var(--colorTransparentStroke);
       border-inline-start-color: var(--colorTransparentStroke);

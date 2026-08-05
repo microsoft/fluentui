@@ -65,4 +65,53 @@ describe('CarouselAutoplayButton', () => {
       expect.objectContaining({ checked: false }),
     );
   });
+
+  // PR-36513 review item 12: the rest colour slice is gated PER PROPERTY against the
+  // configurations in which a later Griffel mergeClasses argument overwrote it.
+  // `appearance="outline"` overrides only `background-color` in react-button, so the
+  // carousel border/foreground class must survive it; every other non-`secondary`
+  // appearance — and checked/disabled in any appearance — overrides all three colour
+  // properties and drops both classes. Class names are the deterministic jest CSS-Modules
+  // proxy idents (`fuicm-<local>`).
+  describe('rest colour gates', () => {
+    const restBackground = 'fuicm-rest-background';
+    const restStrokeForeground = 'fuicm-rest-stroke-foreground';
+
+    const renderRoot = (props?: CarouselAutoplayButtonProps) => {
+      const { getByRole } = render(<CarouselAutoplayButton {...props}>Autoplay</CarouselAutoplayButton>);
+      return getByRole('button');
+    };
+
+    it('applies both rest colour classes for the default (secondary) appearance', () => {
+      const root = renderRoot();
+
+      expect(root.classList.contains(restBackground)).toBe(true);
+      expect(root.classList.contains(restStrokeForeground)).toBe(true);
+    });
+
+    it('keeps border/foreground but cedes background for appearance="outline"', () => {
+      const root = renderRoot({ appearance: 'outline' });
+
+      expect(root.classList.contains(restBackground)).toBe(false);
+      expect(root.classList.contains(restStrokeForeground)).toBe(true);
+    });
+
+    it.each(['primary', 'subtle', 'transparent'] as const)('drops both classes for appearance="%s"', appearance => {
+      const root = renderRoot({ appearance });
+
+      expect(root.classList.contains(restBackground)).toBe(false);
+      expect(root.classList.contains(restStrokeForeground)).toBe(false);
+    });
+
+    it.each([
+      ['checked', { checked: true } as CarouselAutoplayButtonProps],
+      ['disabled', { disabled: true } as CarouselAutoplayButtonProps],
+      ['outline + checked', { appearance: 'outline', checked: true } as CarouselAutoplayButtonProps],
+    ])('drops both classes when %s', (_name, props) => {
+      const root = renderRoot(props);
+
+      expect(root.classList.contains(restBackground)).toBe(false);
+      expect(root.classList.contains(restStrokeForeground)).toBe(false);
+    });
+  });
 });

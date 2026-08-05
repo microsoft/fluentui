@@ -46,19 +46,27 @@ export const useCarouselAutoplayButtonStyles_unstable = (
 
   /*
    * The exact set of configurations in which a LATER mergeClasses argument used to delete
-   * this component's three colour atomics, reproduced as a JS gate because the overriding
-   * classes are hashed CSS-Modules locals with no attribute to select on:
+   * this component's colour atomics, reproduced as PER-PROPERTY JS gates because the
+   * overriding classes are hashed CSS-Modules locals with no attribute to select on
+   * (PR-36513 review item 12 split the former single gate):
    *
    *   • `checked`                      → ToggleButton's `rootCheckedStyles.base`
-   *     (background-color, border-*-color, color)
+   *     (background-color, border-*-color, color — all three)
    *   • `disabled` / `disabledFocusable` → react-button's and ToggleButton's
-   *     `rootDisabledStyles.base` (same three)
-   *   • any non-`secondary` appearance → react-button's `useRootStyles[appearance]`
-   *     (`secondary` alone is empty — "exactly the same as the base styles")
+   *     `rootDisabledStyles.base` (all three)
+   *   • `primary` / `subtle` / `transparent` → react-button's `useRootStyles[appearance]`
+   *     (all three; `secondary` alone is empty — "exactly the same as the base styles")
+   *   • `outline`                      → react-button's `useRootStyles.outline` sets ONLY
+   *     `background-color`, so carousel's border colours and foreground survived under
+   *     Griffel's per-property merge and must survive here (verified against the
+   *     pre-conversion useButtonStyles.styles.ts at 60d59a5f72~1).
    *
    * Full derivation, and the probes behind it, in CarouselAutoplayButton.module.css.
    */
-  const colorsOverridden = Boolean(checked || disabled || disabledFocusable || appearance !== 'secondary');
+  const stateOverridesColors = Boolean(checked || disabled || disabledFocusable);
+  const backgroundOverridden = stateOverridesColors || appearance !== 'secondary';
+  const strokeAndForegroundOverridden =
+    stateOverridesColors || (appearance !== 'secondary' && appearance !== 'outline');
 
   state = useToggleButtonStyles_unstable(state);
 
@@ -91,7 +99,8 @@ export const useCarouselAutoplayButtonStyles_unstable = (
       className: clsx(
         styles.root,
         'group/fui-carousel-autoplay-button',
-        !colorsOverridden && styles['rest-colors'],
+        !backgroundOverridden && styles['rest-background'],
+        !strokeAndForegroundOverridden && styles['rest-stroke-foreground'],
         state.root.className,
       ),
     },
