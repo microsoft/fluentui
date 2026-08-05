@@ -58,6 +58,7 @@ describe(`beachball configs`, () => {
         '**/SPEC*.md',
         '**/tests/**',
       ],
+      registry: 'https://registry.npmjs.org',
       scope: ['!packages/fluentui/*'],
       tag: 'latest',
       changelog: {

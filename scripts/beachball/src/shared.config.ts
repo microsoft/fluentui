@@ -8,11 +8,14 @@ import baseConfig from './base.config';
 /**
  * Shared Beachball release config.
  */
-export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'branch' | 'changelog' | 'hooks'>> = {
+export const config: typeof baseConfig &
+  Required<Pick<BeachballConfig, 'branch' | 'changelog' | 'hooks' | 'registry'>> = {
   ...baseConfig,
   // This can't be in the base config because people might use different names for remotes,
   // but it should be safe in release pipelines.
   branch: 'origin/master',
+  // In beachball v3 alpha, this is required if NPM_TOKEN is used.
+  registry: 'https://registry.npmjs.org',
   changelog: {
     customRenderers: {
       renderHeader,
