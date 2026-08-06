@@ -22,26 +22,47 @@
  * `inline` emits an alias custom property ONLY when some utility references it BY NAME
  * (`bg-(--color-neutral-background-1)`); a plain `bg-neutral-background-1` inlines the
  * value and needs no variable. Under the `source(none)` form the theme package mandates,
- * that never happens: probe-measured, the emitted `@layer fui.theme` block holds
- * `--base-scale` and `--spacing` and nothing else, with all registrations present — zero
- * of them reach the output. Byte-identical to the `reference` variant.
+ * no COLOR/FONT/etc. registration is ever referenced by name, so zero of those reach the
+ * output.
  *
  * `reference` was tried and rejected: it suppresses the alias even when a by-name
  * reference DOES exist, emitting `background-color: var(--color-neutral-background-1)`
  * against a variable nothing defines — silently broken CSS. `inline` self-heals instead.
  *
  * SPACING IS DIFFERENT — see SPACING_SCALE / STROKE_WIDTH_SCALE below. The 22
- * spacingHorizontal / spacingVertical tokens AND the 4 strokeWidth tokens register under
- * `--spacing-*` with LITERAL base-scale values, not var() references, so every named and
- * numeric spacing scale is one system. Everything else registers as a var() reference
- * exactly as described above.
+ * spacingHorizontal / spacingVertical tokens register under `--spacing-*` as ALIASES OF
+ * THE NUMERIC AXIS — `calc(var(--spacing) * <multiplier>)`, where the multiplier is the
+ * token's canonical px divided by the `--spacing` base px (theming Phase 1, settled with
+ * user 2026-07-29; supersedes the literal `calc(<px> * var(--base-scale))` form). Probe-
+ * verified: `@theme inline` carries the `var(--spacing)` reference VERBATIM into each
+ * utility, so `p-horizontal-m` compiles to `padding: calc(var(--spacing) * 12)` — the
+ * same shape as `p-12` — and BOTH respond identically to a subtree `--spacing` override.
+ * `--spacing` (css/index.css: `calc(1px * var(--base-scale))`) is the single density knob.
  *
- * THE 4 STROKE-WIDTH ENTRIES ARE ALSO EMITTED AS REAL CUSTOM PROPERTIES (`emit: true`).
- * `@theme inline` registers a utility name but emits NO variable, and border/outline/ring/
- * decoration widths do NOT consume the spacing namespace (probe-measured — see
- * `.scratch/layer-probe/check-stroke-namespace.mjs`), so those properties must be authored as
- * a direct `var(--spacing-thin)` reference. A registration alone would leave that var
- * undefined. The emission rides the once-per-document artifact (css/emit.css -> dist/styles.css)
+ * THE 4 strokeWidth TOKENS ARE THE DELIBERATE EXCEPTION: their PUBLIC variables are
+ * `--stroke-width-thin/thick/thicker/thickest` with LITERAL base-scale values
+ * (`calc(<px> * var(--base-scale))`), NOT coupled to `--spacing` — borders must not thin
+ * when layout density changes. The `--spacing-thin/…` names still exist, but ONLY as
+ * PRIVATE internal hooks (`--spacing-thin: var(--stroke-width-thin)`) that feed Tailwind
+ * utility generation (`w-thin`, `p-thick`, …) and the sanctioned direct-var authoring in
+ * component modules; the public set-contract is `--stroke-width-*`. See STROKE_WIDTH_SCALE.
+ *
+ * ALL ENTRIES ARE ALSO EMITTED AS REAL CUSTOM PROPERTIES (`emit: true`): the 22 spacing
+ * canonicals, the 4 `--stroke-width-*` canonicals, and the 4 private hooks. `@theme inline`
+ * registers a utility name but emits NO variable, and border/outline/ring/decoration widths
+ * do NOT consume the spacing namespace (probe-measured — see
+ * `.scratch/layer-probe/check-stroke-namespace.mjs`), so those properties must be authored
+ * as a direct `var(--spacing-thin)` reference, which needs a real variable.
+ *
+ * THE OLD camelCase NAMES (`--spacingHorizontalM`, `--strokeWidthThin`, …) NO LONGER EXIST
+ * in emitted CSS (option B, settled with user: single vocabulary; a documented major break
+ * for hand-written consumer CSS against the old names). The `tokens.*` JS constants in
+ * @fluentui/tokens are repointed to the canonical kebab names instead — this generator
+ * ASSERTS that lockstep on every run. (FluentProvider's runtime theme tag still writes the
+ * old camelCase names on provider elements until theming Phase 2 removes it — with no CSS
+ * reader left, those declarations are harmless orphans.)
+ *
+ * The emission rides the once-per-document artifact (css/emit.css -> dist/styles.css)
  * and is suppressed in component modules by `@reference`, exactly like `--base-scale`.
  *
  * Run:      node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js
@@ -90,16 +111,25 @@ function kebabCase(name) {
 
 /**
  * Fluent's spacing scale — the ONE namespace whose registered values are NOT
- * `var(--fluentToken)` references (dual spacing support, settled with user 2026-07-27).
+ * `var(--fluentToken)` references (dual spacing support, settled with user 2026-07-27;
+ * numeric-axis alias restructure settled with user 2026-07-29 — theming Phase 1).
  *
- * WHY LITERAL VALUES AND NOT `var(--spacingHorizontalM)`
- * -----------------------------------------------------
- * The numeric spacing utilities (`p-12`, `gap-8`) compute px→rem through `--base-scale`
- * (D4). Registering the semantic tokens as runtime `var()` references would create two
- * spacing systems that scale differently: `p-12` would follow the user's root font-size
- * while `p-horizontal-m` stayed frozen at the provider's literal px. Registering the
- * base-scale EQUIVALENT of each token's canonical px unifies them — `p-horizontal-m` and
- * `p-12` emit the same computed length, and both scale together.
+ * WHY NUMERIC-AXIS ALIASES AND NOT `var(--spacingHorizontalM)` OR PX LITERALS
+ * ---------------------------------------------------------------------------
+ * The numeric spacing utilities (`p-12`, `gap-8`) compile to
+ * `calc(var(--spacing) * N)` — they compute px→rem through the `--spacing` base
+ * (`calc(1px * var(--base-scale))`, css/index.css). Registering the semantic tokens as
+ * runtime token `var()` references would create two spacing systems that scale
+ * differently: `p-12` would follow the user's root font-size while `p-horizontal-m`
+ * stayed frozen at the provider's literal px. Registering each token as
+ * `calc(var(--spacing) * <multiplier>)` — multiplier = canonical px / SPACING_BASE_PX —
+ * makes BOTH scales aliases of ONE axis: `p-horizontal-m` and `p-12` emit the same
+ * calc shape, compute the same length at default, and respond identically to a
+ * `--spacing` override on any subtree (`--spacing` is the single density knob).
+ * The earlier literal form (`calc(12px * var(--base-scale))`) was arithmetically
+ * identical at default but bypassed `--spacing`, so a subtree density override reached
+ * numeric utilities and missed named ones. Probe-verified that `@theme inline` carries
+ * the `var(--spacing)` reference verbatim into utilities (.scratch/phase1-theming/).
  *
  * COST, ACCEPTED: a FluentProvider `theme` override of `spacingHorizontalM` no longer
  * reaches utility-sourced spacing (a literal `var(--spacingHorizontalM)` still honours it,
@@ -161,7 +191,24 @@ const SPACING_SCALE = [
  * these four, alone in the namespace, are ALSO emitted as real custom properties (`emit: true`
  * on the NAMESPACES entry). `@theme inline` emits no variables.
  *
- * Values are literal base-scale equivalents for the same reason spacing is: one scaling system.
+ * CANONICAL `--stroke-width-*` VALUES STAY LITERAL `calc(<px> * var(--base-scale))` —
+ * DELIBERATELY NOT `--spacing`-COUPLED
+ * -----------------------------------------------------------------------------------
+ * Theming Phase 1 (settled with user 2026-07-29) rebased the 22 spacing tokens onto the
+ * `--spacing` numeric axis; these four are the intentional exception. `--spacing` is the
+ * layout DENSITY knob — a subtree that halves it should compress padding and gaps, but
+ * borders must NOT thin with it: a 1px hairline is a 1px hairline at any density. Stroke
+ * widths therefore keep the raw `--base-scale` form and ignore `--spacing` overrides.
+ *
+ * NAME SPLIT (user amendment): the PUBLIC set-contract variable is
+ * `--stroke-width-<step>`, emitted with the literal value; the spacing-namespace
+ * `--spacing-<step>` names are PRIVATE internal hooks registered/emitted as
+ * `var(--stroke-width-<step>)` so Tailwind's spacing-consuming utility families
+ * (`w-thin`, `p-thick`, `gap-thicker`, …) and module-authored `var(--spacing-thin)`
+ * border/outline widths keep working. `--stroke-width-*` is deliberately NOT registered
+ * in `@theme` — Tailwind's `--stroke-width-*` namespace drives SVG `stroke-width`
+ * utilities, which would be the wrong property.
+ *
  * All 7 shipped themes carry byte-identical strokeWidth values — asserted before shipping in
  * `.scratch/layer-probe/assert-theme-stroke-width.js` (1/2/3/4px, zero divergence).
  *
@@ -178,14 +225,72 @@ const STROKE_WIDTH_SCALE = [
 ];
 
 /**
- * The base-scale-equivalent CSS value for a spacing step. Zero stays a plain `0` — a
- * `calc(0px * …)` would be valid but noisy, and `0` is unitless-safe everywhere.
+ * The px value of the `--spacing` numeric-axis base, as registered in css/index.css
+ * (`--spacing: calc(1px * var(--base-scale))`). Spacing-token multipliers are derived
+ * against it, so if the base ever changes, every multiplier recomputes — and the exactness
+ * guard in `spacingTokenValue` throws on any px value the new base cannot express exactly.
+ */
+const SPACING_BASE_PX = 1;
+
+/**
+ * The numeric-axis alias for a spacing step: `calc(var(--spacing) * <multiplier>)`, the
+ * same compiled shape as Tailwind's numeric utilities (`p-12` → `calc(var(--spacing) * 12)`),
+ * so named and numeric spacing respond identically to a `--spacing` override anywhere in
+ * the tree. Zero stays a plain `0` — a `calc(… * 0)` would be valid but noisy, and `0` is
+ * unitless-safe everywhere.
  *
- * @param {number} px
+ * The multiplier MUST reproduce the canonical px exactly at the default base; anything
+ * else is a silent visual change, so it throws.
+ *
+ * @param {{ px: number }} step
  * @returns {string}
  */
-function spacingValue(px) {
-  return px === 0 ? '0' : `calc(${px}px * var(--base-scale))`;
+function spacingTokenValue(step) {
+  const { px } = step;
+  if (px === 0) {
+    return '0';
+  }
+  const multiplier = px / SPACING_BASE_PX;
+  if (multiplier * SPACING_BASE_PX !== px) {
+    throw new Error(
+      `Spacing step ${px}px is not exactly expressible as a multiple of the ${SPACING_BASE_PX}px --spacing base.`,
+    );
+  }
+  return `calc(var(--spacing) * ${multiplier})`;
+}
+
+/**
+ * The canonical (public set-contract) variable name for a stroke width step.
+ *
+ * @param {{ utility: string }} step
+ * @returns {string}
+ */
+function strokeWidthCanonicalName(step) {
+  return `--stroke-width-${step.utility}`;
+}
+
+/**
+ * The canonical `--stroke-width-*` value: literal base-scale, deliberately NOT
+ * `--spacing`-coupled — borders must not thin when layout density changes (see the
+ * STROKE_WIDTH_SCALE doc block).
+ *
+ * @param {{ px: number }} step
+ * @returns {string}
+ */
+function strokeWidthCanonicalValue(step) {
+  return step.px === 0 ? '0' : `calc(${step.px}px * var(--base-scale))`;
+}
+
+/**
+ * The spacing-namespace PRIVATE hook value for a stroke width step: an alias of the
+ * canonical variable, so utility families and module-authored `var(--spacing-thin)`
+ * resolve through the one public definition.
+ *
+ * @param {{ utility: string, px: number }} step
+ * @returns {string}
+ */
+function strokeWidthValue(step) {
+  return `var(${strokeWidthCanonicalName(step)})`;
 }
 
 /**
@@ -321,22 +426,27 @@ const NAMESPACES = [
     prefix: 'spacingHorizontal',
     namespace: 'spacing-horizontal',
     utility: 'px-* ps-* pe-* mx-* gap-x-* …',
-    heading: 'Horizontal spacing, inline axis — base-scale VALUES, not token refs',
+    heading: 'Horizontal spacing, inline axis — numeric-axis ALIASES (calc(var(--spacing) * N))',
     scale: SPACING_SCALE,
+    value: spacingTokenValue,
+    emit: true,
   },
   {
     prefix: 'spacingVertical',
     namespace: 'spacing-vertical',
     utility: 'py-* pt-* pb-* my-* gap-y-* …',
-    heading: 'Vertical spacing, block axis — base-scale VALUES, not token refs',
+    heading: 'Vertical spacing, block axis — numeric-axis ALIASES (calc(var(--spacing) * N))',
     scale: SPACING_SCALE,
+    value: spacingTokenValue,
+    emit: true,
   },
   {
     prefix: 'strokeWidth',
     namespace: 'spacing',
     utility: 'w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for border/outline widths',
-    heading: 'Stroke widths — base-scale VALUES, and the ONLY entries also EMITTED as variables',
+    heading: 'Stroke widths — PRIVATE hooks aliasing the canonical --stroke-width-* variables',
     scale: STROKE_WIDTH_SCALE,
+    value: strokeWidthValue,
     emit: true,
   },
   {
@@ -435,8 +545,10 @@ function readTokens() {
   }
 
   // Every token value must be a var() reference, optionally with a fallback (zIndex*).
+  // Hyphens allowed: the 26 spacing/stroke tokens reference canonical kebab-case names
+  // (theming Phase 1 option B).
   for (const { name, value } of tokens) {
-    if (!/^var\(--[A-Za-z][A-Za-z0-9_]*(?:, ?[^)]+)?\)$/.test(value)) {
+    if (!/^var\(--[A-Za-z][A-Za-z0-9_-]*(?:, ?[^)]+)?\)$/.test(value)) {
       throw new Error(`${TOKENS_SOURCE}: token \`${name}\` has an unexpected value \`${value}\`.`);
     }
   }
@@ -480,7 +592,8 @@ function classify(name) {
         kind: 'register',
         group,
         themeKey: `--${group.namespace}-${step.utility}`,
-        value: spacingValue(step.px),
+        value: group.value(step),
+        step,
       };
     }
 
@@ -513,8 +626,12 @@ function render(options = {}) {
 
   /** @type {Map<string, { group: typeof NAMESPACES[number], lines: string[] }>} */
   const sections = new Map();
-  /** Keys that must ALSO be emitted as real custom properties. @type {string[]} */
+  /** Spacing-canonical keys that must ALSO be emitted as real custom properties. @type {string[]} */
   const emittedVariables = [];
+  /** Canonical `--stroke-width-*` declarations (public set-contract). @type {string[]} */
+  const canonicalStrokes = [];
+  /** Private spacing-namespace hooks for stroke widths. @type {string[]} */
+  const strokeHooks = [];
   /** Excluded token names, keyed by the EXCLUSIONS prefix that matched. @type {Map<string, string[]>} */
   const excluded = new Map();
   /** @type {Map<string, string>} */
@@ -542,8 +659,28 @@ function render(options = {}) {
     section.lines.push(`  ${themeKey}: ${resolved};`);
     sections.set(group.prefix, section);
 
+    if (group.scale) {
+      // tokens.ts lockstep (option B): the JS `tokens.*` constants are the READ path and
+      // must reference the canonical variable this generator emits — assert, never drift.
+      const canonical = group.prefix === 'strokeWidth' ? strokeWidthCanonicalName(classification.step) : themeKey;
+      const expectedTokenValue = `var(${canonical})`;
+      if (value !== expectedTokenValue) {
+        throw new Error(
+          `Token \`${name}\` is \`${value}\` in packages/tokens/src/tokens.ts but the canonical ` +
+            `variable is \`${expectedTokenValue}\`. Repoint tokens.ts (theming Phase 1 option B).`,
+        );
+      }
+    }
+
     if (group.emit) {
-      emittedVariables.push(`    ${themeKey}: ${resolved};`);
+      if (group.prefix === 'strokeWidth') {
+        canonicalStrokes.push(
+          `    ${strokeWidthCanonicalName(classification.step)}: ${strokeWidthCanonicalValue(classification.step)};`,
+        );
+        strokeHooks.push(`    ${themeKey}: ${resolved};`);
+      } else {
+        emittedVariables.push(`    ${themeKey}: ${resolved};`);
+      }
     }
   }
 
@@ -574,11 +711,15 @@ function render(options = {}) {
   out.push(' * values resolve per-element against the nearest FluentProvider. A plain `@theme`');
   out.push(' * alias would freeze resolution at `:root`, where Fluent tokens do not exist.');
   out.push(' *');
-  out.push(' * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* and the');
-  out.push(' * 4 --spacing-thin/thick/thicker/thickest carry the base-scale EQUIVALENT of each');
-  out.push(" * token's canonical px, NOT var(--spacingHorizontalM) / var(--strokeWidthThin). Named");
-  out.push(' * and numeric spacing are then ONE scaling system (p-horizontal-m === p-12). Provider');
-  out.push(' * overrides do not reach these; all 7 shipped themes carry identical values.');
+  out.push(' * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* are');
+  out.push(' * ALIASES OF THE NUMERIC AXIS — calc(var(--spacing) * N), the same shape p-12');
+  out.push(' * compiles to — so named and numeric spacing are ONE system with ONE density knob');
+  out.push(' * (--spacing). Stroke widths are the deliberate exception: their PUBLIC variables');
+  out.push(' * are --stroke-width-thin/thick/thicker/thickest with literal');
+  out.push(' * calc(<px> * var(--base-scale)) values (borders must not thin when layout density');
+  out.push(' * changes); --spacing-thin/… are PRIVATE hooks aliasing them for utility generation.');
+  out.push(' * Provider spacing/strokeWidth overrides do not reach these; all 7 shipped themes');
+  out.push(' * carry identical values.');
   out.push(' *');
   out.push(' * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose');
   out.push(' * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.');
@@ -600,17 +741,25 @@ function render(options = {}) {
 
   out.push('}');
 
-  if (emittedVariables.length > 0) {
+  if (emittedVariables.length + canonicalStrokes.length + strokeHooks.length > 0) {
     out.push('');
     out.push('/*');
     out.push(' * REAL CUSTOM PROPERTIES — the one block in this file that emits declarations.');
     out.push(' *');
     out.push(' * `@theme inline` above registers utility NAMES and emits no variables, which is');
-    out.push(' * correct for every other namespace. These four are different: border-width,');
-    out.push(' * outline-width, ring-width, divide-*, underline-offset and text-decoration-thickness');
-    out.push(' * do NOT consume the --spacing-* namespace (v4 border widths are a fixed bare-number');
-    out.push(' * px progression), so modules author those properties as a direct var(--spacing-thin).');
-    out.push(' * That reference needs a variable that actually exists.');
+    out.push(' * correct for every other namespace. The spacing namespace needs real variables:');
+    out.push(' * border-width, outline-width, ring-width, divide-*, underline-offset and');
+    out.push(' * text-decoration-thickness do NOT consume the --spacing-* namespace (v4 border');
+    out.push(' * widths are a fixed bare-number px progression), so modules author those as a');
+    out.push(' * direct var(--spacing-thin); and the `tokens.*` JS constants in @fluentui/tokens');
+    out.push(' * are var() reference strings against the canonical names emitted here (charts');
+    out.push(' * inline styles etc.).');
+    out.push(' *');
+    out.push(' * THE OLD camelCase NAMES (--spacingHorizontalM, --strokeWidthThin, …) ARE GONE');
+    out.push(' * (option B, settled with user): single vocabulary, documented major break for');
+    out.push(" * hand-written consumer CSS. FluentProvider's runtime theme tag still writes them");
+    out.push(' * on provider elements until theming Phase 2 removes it — harmless orphans, since');
+    out.push(' * no shipped CSS or tokens.* string reads them anymore.');
     out.push(' *');
     out.push(' * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component');
     out.push(' * `*.module.css` output stays free of theme declarations; css/emit.css compiles it');
@@ -627,6 +776,21 @@ function render(options = {}) {
     // and the formatter disagree forever.
     out.push('  :root,');
     out.push('  :host {');
+    out.push('    /*');
+    out.push('     * Stroke widths — PUBLIC set-contract. Literal base-scale values, deliberately');
+    out.push('     * NOT coupled to the --spacing density knob: borders must not thin when layout');
+    out.push('     * density changes.');
+    out.push('     */');
+    out.push(...canonicalStrokes);
+    out.push('');
+    out.push('    /*');
+    out.push('     * PRIVATE internal hooks — Tailwind utility generation only (w-thin, p-thick, …)');
+    out.push('     * and module-authored var(--spacing-thin) border/outline widths. Do NOT set or');
+    out.push('     * read these from consumer code; the public contract is --stroke-width-*.');
+    out.push('     */');
+    out.push(...strokeHooks);
+    out.push('');
+    out.push('    /* Spacing — numeric-axis aliases; --spacing (see css/index.css) is the density knob. */');
     out.push(...emittedVariables);
     out.push('  }');
     out.push('}');
@@ -715,7 +879,11 @@ module.exports = {
   readSpacingScale,
   readStrokeWidthScale,
   render,
-  spacingValue,
+  spacingTokenValue,
+  strokeWidthValue,
+  strokeWidthCanonicalName,
+  strokeWidthCanonicalValue,
+  SPACING_BASE_PX,
   NAMESPACES,
   EXCLUSIONS,
   SPACING_SCALE,

@@ -511,36 +511,47 @@ export const tokens: Record<keyof Theme, string> = {
   shadow28Brand: 'var(--shadow28Brand)',
   shadow64Brand: 'var(--shadow64Brand)',
 
-  // Stroke width tokens
-  strokeWidthThin: 'var(--strokeWidthThin)',
-  strokeWidthThick: 'var(--strokeWidthThick)',
-  strokeWidthThicker: 'var(--strokeWidthThicker)',
-  strokeWidthThickest: 'var(--strokeWidthThickest)',
+  // Stroke width tokens.
+  //
+  // THEMING PHASE 1 (settled with user 2026-07-29, option B): these JS constants are the
+  // READ path for stroke widths and reference the CANONICAL kebab-case variables emitted
+  // by @fluentui/react-tailwind-theme at `:root, :host` (--stroke-width-* — literal
+  // base-scale values, deliberately NOT coupled to the --spacing density knob). The old
+  // camelCase CSS variables (--strokeWidthThin, ...) no longer exist in emitted CSS.
+  strokeWidthThin: 'var(--stroke-width-thin)',
+  strokeWidthThick: 'var(--stroke-width-thick)',
+  strokeWidthThicker: 'var(--stroke-width-thicker)',
+  strokeWidthThickest: 'var(--stroke-width-thickest)',
 
-  // Spacings
-  spacingHorizontalNone: 'var(--spacingHorizontalNone)',
-  spacingHorizontalXXS: 'var(--spacingHorizontalXXS)',
-  spacingHorizontalXS: 'var(--spacingHorizontalXS)',
-  spacingHorizontalSNudge: 'var(--spacingHorizontalSNudge)',
-  spacingHorizontalS: 'var(--spacingHorizontalS)',
-  spacingHorizontalMNudge: 'var(--spacingHorizontalMNudge)',
-  spacingHorizontalM: 'var(--spacingHorizontalM)',
-  spacingHorizontalL: 'var(--spacingHorizontalL)',
-  spacingHorizontalXL: 'var(--spacingHorizontalXL)',
-  spacingHorizontalXXL: 'var(--spacingHorizontalXXL)',
-  spacingHorizontalXXXL: 'var(--spacingHorizontalXXXL)',
+  // Spacings.
+  //
+  // THEMING PHASE 1: same as stroke widths — these reference the canonical
+  // --spacing-horizontal-* / --spacing-vertical-* variables (numeric-axis aliases,
+  // calc(var(--spacing) * N)) emitted by the theme artifact; the old camelCase CSS
+  // variables (--spacingHorizontalM, ...) no longer exist in emitted CSS.
+  spacingHorizontalNone: 'var(--spacing-horizontal-none)',
+  spacingHorizontalXXS: 'var(--spacing-horizontal-xxs)',
+  spacingHorizontalXS: 'var(--spacing-horizontal-xs)',
+  spacingHorizontalSNudge: 'var(--spacing-horizontal-s-nudge)',
+  spacingHorizontalS: 'var(--spacing-horizontal-s)',
+  spacingHorizontalMNudge: 'var(--spacing-horizontal-m-nudge)',
+  spacingHorizontalM: 'var(--spacing-horizontal-m)',
+  spacingHorizontalL: 'var(--spacing-horizontal-l)',
+  spacingHorizontalXL: 'var(--spacing-horizontal-xl)',
+  spacingHorizontalXXL: 'var(--spacing-horizontal-xxl)',
+  spacingHorizontalXXXL: 'var(--spacing-horizontal-xxxl)',
 
-  spacingVerticalNone: 'var(--spacingVerticalNone)',
-  spacingVerticalXXS: 'var(--spacingVerticalXXS)',
-  spacingVerticalXS: 'var(--spacingVerticalXS)',
-  spacingVerticalSNudge: 'var(--spacingVerticalSNudge)',
-  spacingVerticalS: 'var(--spacingVerticalS)',
-  spacingVerticalMNudge: 'var(--spacingVerticalMNudge)',
-  spacingVerticalM: 'var(--spacingVerticalM)',
-  spacingVerticalL: 'var(--spacingVerticalL)',
-  spacingVerticalXL: 'var(--spacingVerticalXL)',
-  spacingVerticalXXL: 'var(--spacingVerticalXXL)',
-  spacingVerticalXXXL: 'var(--spacingVerticalXXXL)',
+  spacingVerticalNone: 'var(--spacing-vertical-none)',
+  spacingVerticalXXS: 'var(--spacing-vertical-xxs)',
+  spacingVerticalXS: 'var(--spacing-vertical-xs)',
+  spacingVerticalSNudge: 'var(--spacing-vertical-s-nudge)',
+  spacingVerticalS: 'var(--spacing-vertical-s)',
+  spacingVerticalMNudge: 'var(--spacing-vertical-m-nudge)',
+  spacingVerticalM: 'var(--spacing-vertical-m)',
+  spacingVerticalL: 'var(--spacing-vertical-l)',
+  spacingVerticalXL: 'var(--spacing-vertical-xl)',
+  spacingVerticalXXL: 'var(--spacing-vertical-xxl)',
+  spacingVerticalXXXL: 'var(--spacing-vertical-xxxl)',
 
   // Durations
   durationUltraFast: 'var(--durationUltraFast)',

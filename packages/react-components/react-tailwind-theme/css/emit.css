@@ -14,12 +14,16 @@
  *
  * What it emits: `--base-scale`, `--spacing` (NO focus-knob `@property` registrations —
  * removed for the Blink registry transition-start penalty, see
- * migration/griffel-to-tailwind/reports/perf-property-remedy.md), and
- * the 4 stroke widths `--spacing-thin/thick/thicker/thickest`. Those four come from the
- * generated `css/tokens.css` and are the ONLY token registrations that also emit a variable
- * — border/outline/ring/decoration widths do not consume the `--spacing-*` namespace, so
- * modules author them as a direct `var(--spacing-thin)`, which needs a real variable. Every
- * other Fluent token stays an `@theme inline` name that emits nothing.
+ * migration/griffel-to-tailwind/reports/perf-property-remedy.md), the 4 canonical
+ * `--stroke-width-*` variables (literal base-scale values — deliberately NOT
+ * `--spacing`-coupled), the 4 private `--spacing-thin/…` hooks aliasing them, and the 22
+ * spacing custom properties (numeric-axis aliases, `calc(var(--spacing) * N)`). These
+ * come from the generated `css/tokens.css` and are the ONLY token registrations that also
+ * emit variables — border/outline/ring/decoration widths do not consume the `--spacing-*`
+ * namespace, so modules author them as a direct `var(--spacing-thin)`, which needs a real
+ * variable; and the `tokens.*` JS reference strings resolve against these canonical names
+ * (the old camelCase variables no longer exist in emitted CSS — option B). Every other
+ * Fluent token stays an `@theme inline` name that emits nothing.
  *
  * `source(none)` is mandatory. Without it Tailwind auto-detects content, scans this
  * package, and dumps its findings into the utilities layer, which outranks every

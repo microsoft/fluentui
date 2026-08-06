@@ -63,11 +63,17 @@
    *    the LATER import survives this reset — probe-verified, and the reason ./tokens.css
    *    must stay imported after this block.
    *
-   * All 26 keys carry base-scale VALUES (`calc(12px * var(--base-scale))`), not
-   * `var(--spacingHorizontalM)` / `var(--strokeWidthThin)`, so named and numeric spacing
-   * are one scaling system: p-horizontal-m and p-12 emit the same computed length.
-   * FluentProvider spacing/strokeWidth overrides therefore do not reach utility-sourced
-   * spacing; all 7 shipped themes carry identical values for both sets (asserted:
+   * The 22 spacing keys are ALIASES OF THE NUMERIC AXIS — `calc(var(--spacing) * 12)`,
+   * the exact shape `p-12` compiles to — so named and numeric spacing are one scaling
+   * system with ONE density knob: the `--spacing` base below (theming Phase 1, settled
+   * with user 2026-07-29). Overriding `--spacing` on any subtree rescales both forms
+   * identically. Stroke widths are the deliberate exception: their PUBLIC variables are
+   * `--stroke-width-thin/thick/thicker/thickest`, literal `calc(<px> * var(--base-scale))`
+   * — borders must not thin when layout density changes — and the `--spacing-thin/…` keys
+   * are PRIVATE hooks aliasing them for utility generation. No form reads the old
+   * camelCase names (gone — option B single vocabulary), so FluentProvider
+   * spacing/strokeWidth overrides do not reach utility-sourced spacing; all 7 shipped
+   * themes carry identical values for both sets (asserted:
    * .scratch/layer-probe/assert-theme-spacing.js and assert-theme-stroke-width.js), so no
    * shipped theme changes behavior.
    */
@@ -105,18 +111,22 @@
  * `z-popup`, …) that compiles to a DIRECT `var(--fluentToken)` reference via
  * `@theme inline`. Literal `var(--tokenName)` authoring stays valid and unchanged.
  *
- * SPACING IS THE ONE EXCEPTION: `p-horizontal-m` / `gap-vertical-s` / `w-thin` compile to
- * the base-scale equivalent of the token's canonical px, NOT to `var(--spacingHorizontalM)`
- * or `var(--strokeWidthThin)` — see the dual-spacing note in the `@theme static` block above.
+ * SPACING IS THE ONE EXCEPTION: `p-horizontal-m` / `gap-vertical-s` compile to the
+ * numeric-axis alias `calc(var(--spacing) * N)` and `w-thin` to
+ * `var(--stroke-width-thin)` — never to any old camelCase token variable (those names no
+ * longer exist in emitted CSS; option B) — see the dual-spacing note in the
+ * `@theme static` block above.
  *
- * THE 4 STROKE WIDTHS ARE ALSO EMITTED as real `--spacing-thin/thick/thicker/thickest`
- * custom properties (a `@layer fui.theme { :root, :host { … } }` block at the end of the
- * generated file — the only declarations it contains). Border, outline, ring, divide,
- * underline-offset and decoration widths do NOT consume the `--spacing-*` namespace in v4
- * (`border-thin` does not exist; `border-2` is a hardcoded px literal, not a theme lookup),
- * so modules author those properties as a direct `var(--spacing-thin)`, which needs a
- * variable that exists. Emitted once per document via ./emit.css exactly like `--base-scale`;
- * `@reference` keeps it out of every component module. Probe:
+ * ALL SPACING-NAMESPACE KEYS ARE ALSO EMITTED as real custom properties, together with
+ * the 4 canonical `--stroke-width-*` variables — a `@layer fui.theme { :root, :host { … } }`
+ * block at the end of the generated file, the only declarations it contains. Two reasons:
+ * (a) border, outline, ring, divide, underline-offset and decoration widths do NOT
+ * consume the `--spacing-*` namespace in v4 (`border-thin` does not exist; `border-2` is
+ * a hardcoded px literal, not a theme lookup), so modules author those properties as a
+ * direct `var(--spacing-thin)`, which needs a variable that exists; (b) the `tokens.*`
+ * JS constants in @fluentui/tokens are var() reference strings against these canonical
+ * names (charts inline styles etc.). Emitted once per document via ./emit.css exactly
+ * like `--base-scale`; `@reference` keeps it out of every component module. Probe:
  * .scratch/layer-probe/check-stroke-namespace.mjs (consumes/does-not table) and
  * check-stroke-emission.mjs (emission end to end).
  *

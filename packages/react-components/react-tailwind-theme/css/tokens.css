@@ -12,11 +12,15 @@
  * values resolve per-element against the nearest FluentProvider. A plain `@theme`
  * alias would freeze resolution at `:root`, where Fluent tokens do not exist.
  *
- * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* and the
- * 4 --spacing-thin/thick/thicker/thickest carry the base-scale EQUIVALENT of each
- * token's canonical px, NOT var(--spacingHorizontalM) / var(--strokeWidthThin). Named
- * and numeric spacing are then ONE scaling system (p-horizontal-m === p-12). Provider
- * overrides do not reach these; all 7 shipped themes carry identical values.
+ * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* are
+ * ALIASES OF THE NUMERIC AXIS — calc(var(--spacing) * N), the same shape p-12
+ * compiles to — so named and numeric spacing are ONE system with ONE density knob
+ * (--spacing). Stroke widths are the deliberate exception: their PUBLIC variables
+ * are --stroke-width-thin/thick/thicker/thickest with literal
+ * calc(<px> * var(--base-scale)) values (borders must not thin when layout density
+ * changes); --spacing-thin/… are PRIVATE hooks aliasing them for utility generation.
+ * Provider spacing/strokeWidth overrides do not reach these; all 7 shipped themes
+ * carry identical values.
  *
  * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose
  * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.
@@ -455,37 +459,37 @@
   --shadow-28-brand: var(--shadow28Brand);
   --shadow-64-brand: var(--shadow64Brand);
 
-  /* Stroke widths — base-scale VALUES, and the ONLY entries also EMITTED as variables — 4 tokens → --spacing-* (w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for border/outline widths) */
-  --spacing-thin: calc(1px * var(--base-scale));
-  --spacing-thick: calc(2px * var(--base-scale));
-  --spacing-thicker: calc(3px * var(--base-scale));
-  --spacing-thickest: calc(4px * var(--base-scale));
+  /* Stroke widths — PRIVATE hooks aliasing the canonical --stroke-width-* variables — 4 tokens → --spacing-* (w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for border/outline widths) */
+  --spacing-thin: var(--stroke-width-thin);
+  --spacing-thick: var(--stroke-width-thick);
+  --spacing-thicker: var(--stroke-width-thicker);
+  --spacing-thickest: var(--stroke-width-thickest);
 
-  /* Horizontal spacing, inline axis — base-scale VALUES, not token refs — 11 tokens → --spacing-horizontal-* (px-* ps-* pe-* mx-* gap-x-* …) */
+  /* Horizontal spacing, inline axis — numeric-axis ALIASES (calc(var(--spacing) * N)) — 11 tokens → --spacing-horizontal-* (px-* ps-* pe-* mx-* gap-x-* …) */
   --spacing-horizontal-none: 0;
-  --spacing-horizontal-xxs: calc(2px * var(--base-scale));
-  --spacing-horizontal-xs: calc(4px * var(--base-scale));
-  --spacing-horizontal-s-nudge: calc(6px * var(--base-scale));
-  --spacing-horizontal-s: calc(8px * var(--base-scale));
-  --spacing-horizontal-m-nudge: calc(10px * var(--base-scale));
-  --spacing-horizontal-m: calc(12px * var(--base-scale));
-  --spacing-horizontal-l: calc(16px * var(--base-scale));
-  --spacing-horizontal-xl: calc(20px * var(--base-scale));
-  --spacing-horizontal-xxl: calc(24px * var(--base-scale));
-  --spacing-horizontal-xxxl: calc(32px * var(--base-scale));
+  --spacing-horizontal-xxs: calc(var(--spacing) * 2);
+  --spacing-horizontal-xs: calc(var(--spacing) * 4);
+  --spacing-horizontal-s-nudge: calc(var(--spacing) * 6);
+  --spacing-horizontal-s: calc(var(--spacing) * 8);
+  --spacing-horizontal-m-nudge: calc(var(--spacing) * 10);
+  --spacing-horizontal-m: calc(var(--spacing) * 12);
+  --spacing-horizontal-l: calc(var(--spacing) * 16);
+  --spacing-horizontal-xl: calc(var(--spacing) * 20);
+  --spacing-horizontal-xxl: calc(var(--spacing) * 24);
+  --spacing-horizontal-xxxl: calc(var(--spacing) * 32);
 
-  /* Vertical spacing, block axis — base-scale VALUES, not token refs — 11 tokens → --spacing-vertical-* (py-* pt-* pb-* my-* gap-y-* …) */
+  /* Vertical spacing, block axis — numeric-axis ALIASES (calc(var(--spacing) * N)) — 11 tokens → --spacing-vertical-* (py-* pt-* pb-* my-* gap-y-* …) */
   --spacing-vertical-none: 0;
-  --spacing-vertical-xxs: calc(2px * var(--base-scale));
-  --spacing-vertical-xs: calc(4px * var(--base-scale));
-  --spacing-vertical-s-nudge: calc(6px * var(--base-scale));
-  --spacing-vertical-s: calc(8px * var(--base-scale));
-  --spacing-vertical-m-nudge: calc(10px * var(--base-scale));
-  --spacing-vertical-m: calc(12px * var(--base-scale));
-  --spacing-vertical-l: calc(16px * var(--base-scale));
-  --spacing-vertical-xl: calc(20px * var(--base-scale));
-  --spacing-vertical-xxl: calc(24px * var(--base-scale));
-  --spacing-vertical-xxxl: calc(32px * var(--base-scale));
+  --spacing-vertical-xxs: calc(var(--spacing) * 2);
+  --spacing-vertical-xs: calc(var(--spacing) * 4);
+  --spacing-vertical-s-nudge: calc(var(--spacing) * 6);
+  --spacing-vertical-s: calc(var(--spacing) * 8);
+  --spacing-vertical-m-nudge: calc(var(--spacing) * 10);
+  --spacing-vertical-m: calc(var(--spacing) * 12);
+  --spacing-vertical-l: calc(var(--spacing) * 16);
+  --spacing-vertical-xl: calc(var(--spacing) * 20);
+  --spacing-vertical-xxl: calc(var(--spacing) * 24);
+  --spacing-vertical-xxxl: calc(var(--spacing) * 32);
 
   /* Transition durations — 8 tokens → --transition-duration-* (duration-*) */
   --transition-duration-ultra-fast: var(--durationUltraFast);
@@ -523,11 +527,19 @@
  * REAL CUSTOM PROPERTIES — the one block in this file that emits declarations.
  *
  * `@theme inline` above registers utility NAMES and emits no variables, which is
- * correct for every other namespace. These four are different: border-width,
- * outline-width, ring-width, divide-*, underline-offset and text-decoration-thickness
- * do NOT consume the --spacing-* namespace (v4 border widths are a fixed bare-number
- * px progression), so modules author those properties as a direct var(--spacing-thin).
- * That reference needs a variable that actually exists.
+ * correct for every other namespace. The spacing namespace needs real variables:
+ * border-width, outline-width, ring-width, divide-*, underline-offset and
+ * text-decoration-thickness do NOT consume the --spacing-* namespace (v4 border
+ * widths are a fixed bare-number px progression), so modules author those as a
+ * direct var(--spacing-thin); and the `tokens.*` JS constants in @fluentui/tokens
+ * are var() reference strings against the canonical names emitted here (charts
+ * inline styles etc.).
+ *
+ * THE OLD camelCase NAMES (--spacingHorizontalM, --strokeWidthThin, …) ARE GONE
+ * (option B, settled with user): single vocabulary, documented major break for
+ * hand-written consumer CSS. FluentProvider's runtime theme tag still writes them
+ * on provider elements until theming Phase 2 removes it — harmless orphans, since
+ * no shipped CSS or tokens.* string reads them anymore.
  *
  * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component
  * `*.module.css` output stays free of theme declarations; css/emit.css compiles it
@@ -541,9 +553,48 @@
 @layer fui.theme {
   :root,
   :host {
-    --spacing-thin: calc(1px * var(--base-scale));
-    --spacing-thick: calc(2px * var(--base-scale));
-    --spacing-thicker: calc(3px * var(--base-scale));
-    --spacing-thickest: calc(4px * var(--base-scale));
+    /*
+     * Stroke widths — PUBLIC set-contract. Literal base-scale values, deliberately
+     * NOT coupled to the --spacing density knob: borders must not thin when layout
+     * density changes.
+     */
+    --stroke-width-thin: calc(1px * var(--base-scale));
+    --stroke-width-thick: calc(2px * var(--base-scale));
+    --stroke-width-thicker: calc(3px * var(--base-scale));
+    --stroke-width-thickest: calc(4px * var(--base-scale));
+
+    /*
+     * PRIVATE internal hooks — Tailwind utility generation only (w-thin, p-thick, …)
+     * and module-authored var(--spacing-thin) border/outline widths. Do NOT set or
+     * read these from consumer code; the public contract is --stroke-width-*.
+     */
+    --spacing-thin: var(--stroke-width-thin);
+    --spacing-thick: var(--stroke-width-thick);
+    --spacing-thicker: var(--stroke-width-thicker);
+    --spacing-thickest: var(--stroke-width-thickest);
+
+    /* Spacing — numeric-axis aliases; --spacing (see css/index.css) is the density knob. */
+    --spacing-horizontal-none: 0;
+    --spacing-horizontal-xxs: calc(var(--spacing) * 2);
+    --spacing-horizontal-xs: calc(var(--spacing) * 4);
+    --spacing-horizontal-s-nudge: calc(var(--spacing) * 6);
+    --spacing-horizontal-s: calc(var(--spacing) * 8);
+    --spacing-horizontal-m-nudge: calc(var(--spacing) * 10);
+    --spacing-horizontal-m: calc(var(--spacing) * 12);
+    --spacing-horizontal-l: calc(var(--spacing) * 16);
+    --spacing-horizontal-xl: calc(var(--spacing) * 20);
+    --spacing-horizontal-xxl: calc(var(--spacing) * 24);
+    --spacing-horizontal-xxxl: calc(var(--spacing) * 32);
+    --spacing-vertical-none: 0;
+    --spacing-vertical-xxs: calc(var(--spacing) * 2);
+    --spacing-vertical-xs: calc(var(--spacing) * 4);
+    --spacing-vertical-s-nudge: calc(var(--spacing) * 6);
+    --spacing-vertical-s: calc(var(--spacing) * 8);
+    --spacing-vertical-m-nudge: calc(var(--spacing) * 10);
+    --spacing-vertical-m: calc(var(--spacing) * 12);
+    --spacing-vertical-l: calc(var(--spacing) * 16);
+    --spacing-vertical-xl: calc(var(--spacing) * 20);
+    --spacing-vertical-xxl: calc(var(--spacing) * 24);
+    --spacing-vertical-xxxl: calc(var(--spacing) * 32);
   }
 }
