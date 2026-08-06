@@ -1,37 +1,33 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { SwatchPickerProvider } from '../../contexts/swatchPicker';
+import { SwatchPickerProvider, swatchPickerContextDefaultValue } from '../../contexts/swatchPicker';
 import { useSwatchPickerRow_unstable } from './useSwatchPickerRow';
 
+const wrapper = ({ children }: { children: React.ReactNode }) => (
+  <SwatchPickerProvider value={{ ...swatchPickerContextDefaultValue, spacing: 'small' }}>
+    {children}
+  </SwatchPickerProvider>
+);
+
 describe('useSwatchPickerRow', () => {
-  it('returns the default state', () => {
+  it('uses the row role', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useSwatchPickerRow_unstable({}, ref));
 
     expect(result.current.root.role).toBe('row');
+  });
+
+  it('uses the default spacing', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { result } = renderHook(() => useSwatchPickerRow_unstable({}, ref));
+
     expect(result.current.spacing).toBe('medium');
   });
 
-  it('uses spacing from context', () => {
+  it('uses the spacing from context', () => {
     const ref = React.createRef<HTMLDivElement>();
-    const { result } = renderHook(() => useSwatchPickerRow_unstable({}, ref), {
-      wrapper: ({ children }: { children: React.ReactNode }) => (
-        <SwatchPickerProvider
-          value={{
-            isGrid: true,
-            requestSelectionChange: jest.fn(),
-            selectedValue: undefined,
-            shape: 'square',
-            size: 'medium',
-            spacing: 'small',
-          }}
-        >
-          {children}
-        </SwatchPickerProvider>
-      ),
-    });
+    const { result } = renderHook(() => useSwatchPickerRow_unstable({}, ref), { wrapper });
 
-    expect(result.current.root.role).toBe('row');
     expect(result.current.spacing).toBe('small');
   });
 });
