@@ -105,7 +105,11 @@ describe('rit CLI e2e', () => {
     expect(runCmd.cwd).toEqual(expect.stringContaining(join(fs.tempDir, 'tmp/rit/react-18/proj-react-18')));
 
     // no project folder exists as it was cleanuped
-    expect(readdirSync(join(fs.tempDir, 'tmp/rit/react-18/'))).toEqual(['package.json']);
+    expect(readdirSync(join(fs.tempDir, 'tmp/rit/react-18/')).sort()).toEqual([
+      '.yarnrc.yml',
+      'package.json',
+      'yarn.lock',
+    ]);
   });
 
   test('--install-deps installs into react root (no project scaffolding)', () => {
@@ -133,7 +137,6 @@ describe('rit CLI e2e', () => {
     expect(yarn).toBeTruthy();
     expect(yarn?.cwd).toContain('tmp/rit/react-18');
 
-    expect(existsSync(join(fs.tempDir, 'tmp/rit/.yarn-cache'))).toBeTruthy();
     expect(readJSON(join(fs.tempDir, 'tmp/rit/react-18/package.json'))).toMatchInlineSnapshot(`
       Object {
         "dependencies": Object {

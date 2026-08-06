@@ -5,14 +5,13 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderTextarea_unstable as renderTextarea } from '@fluentui/react-textarea';
 import type { TextareaBaseProps } from '@fluentui/react-textarea';
-import { TextareaBaseState } from '@fluentui/react-textarea';
+import type { TextareaBaseState } from '@fluentui/react-textarea';
 import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
 
-// @public
-export const renderTextarea: (state: TextareaBaseState) => JSXElement;
+export { renderTextarea }
 
 // @public
 export const Textarea: ForwardRefComponent<TextareaProps>;

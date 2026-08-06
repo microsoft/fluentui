@@ -3,6 +3,8 @@ import { Tooltip } from '@fluentui/react-headless-components-preview/tooltip';
 import descriptionMd from './TooltipDescription.md';
 import bestPracticesMd from './TooltipBestPractices.md';
 
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './TooltipDefault.stories';
 export { WithArrow } from './TooltipWithArrow.stories';
 export { Positions } from './TooltipPositions.stories';
@@ -16,7 +18,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, getBrowserSupportNotice('Tooltip')].join('\n'),
       },
     },
   },

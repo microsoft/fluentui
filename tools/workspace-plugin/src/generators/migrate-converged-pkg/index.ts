@@ -692,17 +692,17 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 
   function setupExportMaps(json: PackageJson) {
-    const isWeb = getPackageType(tree, options) === 'web';
     const commonjs = json.main ? normalizePackageEntryPointPaths(json.main) : null;
     const esm = json.module ? normalizePackageEntryPointPaths(json.module) : null;
-    const commonjsCjs = commonjs ? commonjs.replace(/\.js$/, '.cjs') : null;
 
-    if (isWeb) {
-      // Web packages ship ESM-first as `type: module`: bare Node `import` resolves to valid ESM (`lib/`),
-      // `require` resolves to CommonJS (`lib-commonjs/*.cjs`). No `node` condition is needed.
-      // Per-condition `types` point `require` at a `.d.cts` so `node16`/`nodenext` CJS consumers get a
-      // CommonJS-flavoured declaration (keeps `@arethetypeswrong/cli` green).
-      json.type = 'module';
+    // Opt-in: a package becomes ESM-first by declaring `"type": "module"` in its package.json. Such
+    // packages get the ESM/CJS conditional export shape (no `node` condition); every other package
+    // keeps the existing CommonJS-first shape below unchanged (this stays a no-op for them).
+    if (json.type === 'module') {
+      // bare Node `import` resolves to valid ESM (`lib/`), `require` resolves to CommonJS
+      // (`lib-commonjs/*.cjs`). Per-condition `types` point `require` at a `.d.cts` so `node16`/
+      // `nodenext` CJS consumers get a CommonJS-flavoured declaration (keeps `@arethetypeswrong/cli` green).
+      const commonjsCjs = commonjs ? commonjs.replace(/\.js$/, '.cjs') : null;
       if (commonjsCjs) {
         json.main = commonjsCjs;
       }
@@ -1010,11 +1010,12 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
   packageJson.dependencies = packageJson.dependencies ?? {};
 
-  // Web packages ship as `type: module`, so their CommonJS configs must use the `.cjs` extension.
-  const isWeb = packageType === 'web';
-  const testSetupExtension = isWeb ? 'cjs' : 'js';
-  const jestConfigPath = isWeb ? options.paths.jestConfig.replace(/\.js$/, '.cjs') : options.paths.jestConfig;
-  const resolvedJestSetupFilePath = isWeb ? jestSetupFilePath.replace(/\.js$/, '.cjs') : jestSetupFilePath;
+  // ESM-first packages opt in via `"type": "module"`, so their CommonJS jest config + setup must use
+  // the `.cjs` extension. CommonJS (default) packages keep `.js` unchanged.
+  const isEsmFirst = packageJson.type === 'module';
+  const testSetupExtension = isEsmFirst ? 'cjs' : 'js';
+  const jestConfigPath = isEsmFirst ? options.paths.jestConfig.replace(/\.js$/, '.cjs') : options.paths.jestConfig;
+  const resolvedJestSetupFilePath = isEsmFirst ? jestSetupFilePath.replace(/\.js$/, '.cjs') : jestSetupFilePath;
 
   const config = {
     pkgName: options.normalizedPkgName,
@@ -1026,8 +1027,8 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
     projectConfig: options.projectConfig,
   } as const;
 
-  // drop the legacy `.js` variants when emitting `.cjs` (type:module web packages)
-  if (isWeb) {
+  // drop the legacy `.js` variants when emitting `.cjs` (type:module packages)
+  if (isEsmFirst) {
     if (tree.exists(options.paths.jestConfig)) {
       tree.delete(options.paths.jestConfig);
     }
@@ -1133,7 +1134,7 @@ function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
 function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
   // update test TS config
   updateJson(tree, options.paths.tsconfig.test, (json: TsConfig) => {
-    // web packages emit the jest setup as `.cjs` (type:module); fall back to the legacy `.js` path
+    // ESM-first (type:module) packages emit the jest setup as `.cjs`; fall back to the legacy `.js` path
     const jestSetupFilePath = [options.paths.jestSetupFile.replace(/\.js$/, '.cjs'), options.paths.jestSetupFile].find(
       candidate => tree.exists(candidate),
     );

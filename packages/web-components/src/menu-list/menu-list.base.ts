@@ -95,17 +95,6 @@ export class BaseMenuList extends FASTElement {
     this.menuItems?.find(item => !item.disabled)?.focus();
   }
 
-  private static elementIndent(el: HTMLElement): MenuItemColumnCount {
-    const role = el.role;
-    const startSlot = el.querySelector('[slot=start]');
-
-    if (role && role !== MenuItemRole.menuitem) {
-      return startSlot ? 2 : 1;
-    }
-
-    return startSlot ? 1 : 0;
-  }
-
   protected setItems(): void {
     const children: HTMLElement[] = Array.from(this.children) as HTMLElement[];
     children.forEach((child: Element) => {
@@ -113,22 +102,7 @@ export class BaseMenuList extends FASTElement {
     });
 
     this.menuChildren = children.filter(child => !child.hasAttribute('hidden'));
-
-    /**
-     * Set the indent attribute on MenuItem elements based on their
-     * position in the MenuList. Each MenuItem element has a data-indent attribute that is
-     * used to set the indent of the element's start slot content.
-     */
     this.menuItems = this.menuChildren?.filter(this.isMenuItemElement);
-    const indent: MenuItemColumnCount = this.menuItems?.reduce<MenuItemColumnCount>((accum, current) => {
-      const elementValue = BaseMenuList.elementIndent(current as HTMLElement);
-
-      return Math.max(accum, elementValue as number) as MenuItemColumnCount;
-    }, 0);
-
-    this.menuItems?.forEach((item: HTMLElement) => {
-      item.dataset.indent = `${indent}`;
-    });
   }
 
   /**

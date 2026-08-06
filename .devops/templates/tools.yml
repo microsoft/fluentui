@@ -25,6 +25,9 @@ steps:
     displayName: 'Install Node.js'
     retryCountOnTaskFailure: 1
 
+  - script: corepack enable
+    displayName: 'Enable Corepack'
+
   - script: |
       echo "nodejs:" && node -v
       echo "yarn:" && yarn -v

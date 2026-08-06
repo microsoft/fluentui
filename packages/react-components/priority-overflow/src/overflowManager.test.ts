@@ -136,6 +136,28 @@ describe('overflowManager', () => {
     });
   });
 
+  it('should not notify subscribers when disconnect runs', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(100);
+    const item = createElementWithSize('button', 40);
+    const listener = jest.fn();
+
+    manager.addItem({ element: item, id: 'a', priority: 1 });
+    manager.observe(container);
+    manager.forceUpdate();
+    listener.mockClear();
+
+    manager.subscribe(listener);
+    manager.disconnect();
+
+    expect(listener).not.toHaveBeenCalled();
+    expect(manager.getSnapshot()).toEqual({
+      itemVisibility: {},
+      groupVisibility: {},
+      invisibleItemCount: 0,
+    });
+  });
+
   it('should re-dispatch when the overflow menu is attached while observing', () => {
     const onUpdateOverflow = jest.fn();
     const manager = createOverflowManager(createObserveOptions({ onUpdateOverflow }));

@@ -413,11 +413,7 @@ describe('migrate-converged-pkg generator', () => {
 
   describe(`jest config updates`, () => {
     function getProjectJestConfig(projectConfig: ReadProjectConfiguration) {
-      // web packages emit `.cjs` (type:module); fall back to legacy `.js`
-      return (
-        tree.read(`${projectConfig.root}/jest.config.cjs`)?.toString('utf-8') ??
-        tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8')
-      );
+      return tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8');
     }
 
     it(`should setup new local jest config which extends from root `, async () => {
@@ -451,7 +447,7 @@ describe('migrate-converged-pkg generator', () => {
             ],
           },
           coverageDirectory: './coverage',
-          setupFilesAfterEnv: ['./config/tests.cjs'],
+          setupFilesAfterEnv: ['./config/tests.js'],
           snapshotSerializers: ['@griffel/jest-serializer'],
         };
         "
@@ -483,14 +479,12 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should create local ./config/tests.js file if missing that is used for "setupFilesAfterEnv"`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      // web packages emit the setup file as `.cjs` (type:module)
-      const legacyJestSetupFilePath = `${projectConfig.root}/config/tests.js`;
-      const jestSetupFilePath = `${projectConfig.root}/config/tests.cjs`;
+      const jestSetupFilePath = `${projectConfig.root}/config/tests.js`;
       function getJestSetupFile() {
         return tree.read(jestSetupFilePath)?.toString('utf-8');
       }
 
-      tree.delete(legacyJestSetupFilePath);
+      tree.delete(jestSetupFilePath);
       expect(tree.exists(jestSetupFilePath)).toBeFalsy();
 
       await generator(tree, options);
@@ -500,6 +494,25 @@ describe('migrate-converged-pkg generator', () => {
         "/** Jest test setup file. */
         "
       `);
+    });
+
+    it(`emits the CommonJS jest config + setup as .cjs when the package opts into "type": "module"`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
+        json.type = 'module';
+        return json;
+      });
+
+      await generator(tree, options);
+
+      // legacy `.js` variants are replaced by `.cjs` so Node parses them as CommonJS under type:module
+      expect(tree.exists(`${projectConfig.root}/jest.config.js`)).toBeFalsy();
+      expect(tree.exists(`${projectConfig.root}/jest.config.cjs`)).toBeTruthy();
+      expect(tree.exists(`${projectConfig.root}/config/tests.js`)).toBeFalsy();
+      expect(tree.exists(`${projectConfig.root}/config/tests.cjs`)).toBeTruthy();
+      expect(tree.read(`${projectConfig.root}/jest.config.cjs`, 'utf-8')).toContain(
+        `setupFilesAfterEnv: ['./config/tests.cjs']`,
+      );
     });
   });
 
@@ -936,6 +949,53 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.exports).toMatchInlineSnapshot(`
           Object {
             ".": Object {
+              "import": "./lib/index.js",
+              "node": Object {
+                "default": "./lib-commonjs/index.js",
+                "module": "./lib/index.js",
+              },
+              "require": "./lib-commonjs/index.js",
+              "style": "./css/index.css",
+              "types": "./dist/index.d.ts",
+            },
+            "./package.json": "./package.json",
+          }
+        `);
+      });
+
+      it(`should update exports map based on main,module fields`, async () => {
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+        });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        expect((pkgJson.exports?.['.'] as { import?: string }).import).toBe(undefined);
+      });
+
+      it(`opts a package into the ESM-first shape when it declares "type": "module"`, async () => {
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+          jsonUpdates: {
+            type: 'module',
+            main: './lib-commonjs/index.js',
+            module: './lib/index.js',
+            style: './css/index.css',
+          },
+        });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        expect(pkgJson.type).toBe('module');
+        // CommonJS entry switches to `.cjs` so Node parses it correctly under `type: module`
+        expect(pkgJson.main).toBe('./lib-commonjs/index.cjs');
+        // no `node` condition; `import`/`require` carry their own per-condition `types`
+        expect((pkgJson.exports?.['.'] as { node?: unknown }).node).toBeUndefined();
+        expect(pkgJson.exports).toMatchInlineSnapshot(`
+          Object {
+            ".": Object {
               "import": Object {
                 "default": "./lib/index.js",
                 "types": "./dist/index.d.ts",
@@ -951,7 +1011,7 @@ describe('migrate-converged-pkg generator', () => {
         `);
       });
 
-      it(`should set type:module and a .cjs main for web packages`, async () => {
+      it(`keeps CommonJS packages on the legacy shape (no opt-in)`, async () => {
         const { getPackageJson } = updatePackageJson(tree, {
           projectName: options.name,
           jsonUpdates: { module: './lib/index.js' },
@@ -960,20 +1020,14 @@ describe('migrate-converged-pkg generator', () => {
         await generator(tree, options);
 
         const pkgJson = getPackageJson();
-        expect(pkgJson.type).toBe('module');
-        expect(pkgJson.main).toBe('./lib-commonjs/index.cjs');
-        expect((pkgJson.exports?.['.'] as { node?: unknown }).node).toBeUndefined();
-      });
-
-      it(`should update exports map based on main,module fields`, async () => {
-        const { getPackageJson } = updatePackageJson(tree, {
-          projectName: options.name,
+        expect(pkgJson.type).toBeUndefined();
+        // CommonJS entry is not rewritten to `.cjs`
+        expect(pkgJson.main).not.toMatch(/\.cjs$/);
+        // bare Node stays CommonJS via `default`, bundlers tree-shake via the nested `module` condition
+        expect((pkgJson.exports?.['.'] as { node?: unknown }).node).toEqual({
+          module: './lib/index.js',
+          default: './lib-commonjs/index.js',
         });
-
-        await generator(tree, options);
-
-        const pkgJson = getPackageJson();
-        expect((pkgJson.exports?.['.'] as { import?: string }).import).toBe(undefined);
       });
     });
 
@@ -1013,7 +1067,6 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.files).toMatchInlineSnapshot(`
         Array [
           "*.md",
-          "dist/*.d.cts",
           "dist/*.d.ts",
           "lib-commonjs",
         ]

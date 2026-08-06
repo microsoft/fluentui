@@ -5,14 +5,13 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderSearchBox_unstable as renderSearchBox } from '@fluentui/react-search';
 import type { SearchBoxBaseProps } from '@fluentui/react-search';
-import { SearchBoxBaseState } from '@fluentui/react-search';
+import type { SearchBoxBaseState } from '@fluentui/react-search';
 import type { SearchBoxSlots as SearchBoxSlots_2 } from '@fluentui/react-search';
 
-// @public
-export const renderSearchBox: (state: SearchBoxBaseState) => JSXElement;
+export { renderSearchBox }
 
 // @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;

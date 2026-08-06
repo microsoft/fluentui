@@ -661,7 +661,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={`${point.x}_${index}` as string}>
+        <g key={`${point.x}_${index}` as string} role="presentation">
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -674,7 +674,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
@@ -724,6 +724,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         <g
           key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
+          role="presentation"
         >
           <rect
             id={`${_vbcBarId}-${index}`}
@@ -732,7 +733,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             width={_barWidth}
             height={adjustedBarHeight}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
@@ -782,7 +783,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
+        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`} role="presentation">
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -796,7 +797,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
@@ -1099,6 +1100,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return categoryToValues;
   }
 
+  function _getBarsGroupLabel(): string {
+    // Calculate number of unique series and total data points for accessibility label
+    const uniqueSeries = new Set(_points.map(point => point.legend)).size;
+    const totalDataPoints = _points.length;
+    return `${uniqueSeries} series and ${totalDataPoints} bars`;
+  }
+
   function updatePosition(newX: number, newY: number) {
     const threshold = 1; // Set a threshold for movement
     const { x, y } = clickPosition;
@@ -1179,7 +1187,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       children={(props: ChildProps) => {
         return (
           <>
-            <g>{_bars}</g>
+            <g role="listbox" aria-label={_getBarsGroupLabel()}>
+              {_bars}
+            </g>
             {_isHavingLine && (
               <g>
                 {_createLine(

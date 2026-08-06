@@ -47,7 +47,14 @@ interface TargetPluginOption {
 export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
   projectConfigGlob,
   async (configFiles, options, context) => {
-    const globalConfig: Pick<TaskBuilderConfig, 'pmc'> = { pmc: getPackageManagerCommand('yarn') };
+    const pmc = getPackageManagerCommand('yarn');
+    const globalConfig: Pick<TaskBuilderConfig, 'pmc'> = {
+      pmc: {
+        ...pmc,
+        // Generated targets use binaries installed in the root workspace.
+        exec: 'yarn run -T',
+      },
+    };
 
     measureStart('workspace-plugin');
     const nodes = await createNodesFromFiles(
@@ -441,7 +448,7 @@ function buildTestTarget(
 
 function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration | null {
   // optional, published-library-only types/exports validation. Not part of `build` or CI gates.
-  if (!config.packageJSON.exports) {
+  if (config.packageJSON.private || !config.packageJSON.exports) {
     return null;
   }
 
@@ -731,6 +738,10 @@ function buildReactIntegrationTesterProjectConfiguration(
     return {};
   }
 
+  // rit is provided by @fluentui/react-integration-tester which is a root devDependency,
+  // so `yarn run -T rit` resolves it correctly.
+  const ritBin = `${config.pmc.exec} rit`;
+
   const targets: Record<string, TargetConfiguration> = {};
   const inputs = [
     'default',
@@ -771,7 +782,7 @@ function buildReactIntegrationTesterProjectConfiguration(
 
     if (!skipPrepare) {
       targets[targetNamePrepare] = {
-        command: `${config.pmc.exec} rit --prepare-only --no-install --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
+        command: `${ritBin} --prepare-only --no-install --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
         options: {
           cwd: '{projectRoot}',
         },
@@ -786,7 +797,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           technologies: ['react-integration-tester'],
           description: `Run react integration tests against React ${reactVersion}`,
           help: {
-            command: `${config.pmc.exec} rit --help`,
+            command: `${ritBin} --help`,
             example: {},
           },
         },
@@ -799,7 +810,7 @@ function buildReactIntegrationTesterProjectConfiguration(
 
       if (runOption === 'type-check') {
         const defaultTargetDefinition = {
-          command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+          command: `${ritBin} --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
           options: { cwd: '{projectRoot}' },
           cache: true,
           inputs,
@@ -809,7 +820,7 @@ function buildReactIntegrationTesterProjectConfiguration(
             technologies: ['react-integration-tester'],
             description: `Run react integration tests against React ${reactVersion}`,
             help: {
-              command: `${config.pmc.exec} rit --help`,
+              command: `${ritBin} --help`,
               example: {},
             },
           },
@@ -829,7 +840,7 @@ function buildReactIntegrationTesterProjectConfiguration(
         }
       } else {
         targets[targetName] = {
-          command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+          command: `${ritBin} --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
           options: { cwd: '{projectRoot}' },
           cache: true,
           inputs,
@@ -841,7 +852,7 @@ function buildReactIntegrationTesterProjectConfiguration(
             technologies: ['react-integration-tester'],
             description: `Run react integration tests against React ${reactVersion}`,
             help: {
-              command: `${config.pmc.exec} rit --help`,
+              command: `${ritBin} --help`,
               example: {},
             },
           },
@@ -872,7 +883,7 @@ function buildReactIntegrationTesterProjectConfiguration(
       technologies: ['react-integration-tester'],
       description: `Run react integration tests against React ${reactVersions.join(', ')}`,
       help: {
-        command: `${config.pmc.exec} rit --help`,
+        command: `${ritBin} --help`,
         example: {},
       },
     },

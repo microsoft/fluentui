@@ -22,7 +22,5 @@
     "dist/*.d.ts",
     "support",
     "fixtures"
-  ],
-  "dependencies": {},
-  "devDependencies": {}
+  ]
 }

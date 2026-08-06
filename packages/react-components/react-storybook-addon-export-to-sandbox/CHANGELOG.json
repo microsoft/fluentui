@@ -2,6 +2,35 @@
   "name": "@fluentui/react-storybook-addon-export-to-sandbox",
   "entries": [
     {
+      "date": "Thu, 30 Jul 2026 14:23:06 GMT",
+      "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "78ea7c4de683945b759a5e3431fb4e7d9ff451c9",
+            "comment": "feat: run the story source transform before transpilation and remove the custom Babel loader"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "comment": "Bump @fluentui/babel-preset-storybook-full-source to v0.1.3",
+            "commit": "a50f6d4d680e8bdb811866473e3a89aea3c89def"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2026 18:28:46 GMT",
       "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.3.0",
       "version": "0.3.0",

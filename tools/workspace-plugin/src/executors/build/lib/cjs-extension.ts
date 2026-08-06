@@ -1,13 +1,13 @@
 import { readFile, writeFile, rm, readdir, access, copyFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { readJsonFile, logger } from '@nx/devkit';
+import { logger } from '@nx/devkit';
 
 import { type NormalizedOptions } from './shared';
+import { type Transform } from './swc';
 
 // rewrite only RELATIVE specifiers (./ or ../) ending in .js -> .cjs
 const RELATIVE_REQUIRE = /(require\(\s*["'])(\.[^"']+?)\.js(["']\s*\))/g;
-const RELATIVE_SOURCEMAP = /(\/\/#\s*sourceMappingURL=)(\.?[^\s]+?)\.js\.map/g;
 
 async function exists(path: string) {
   try {
@@ -33,58 +33,42 @@ async function* walk(dir: string): AsyncGenerator<string> {
  * When a package ships as `"type": "module"`, the CommonJS output (`lib-commonjs`) must use the
  * `.cjs` extension - otherwise Node would parse those `.js` files as ESM and fail.
  *
- * This renames every `lib-commonjs/**\/*.js` -> `*.cjs` (incl. `*.styles.raw.js`), rewrites relative
- * `require("./x.js")` -> `require("./x.cjs")`, and renames the adjacent `*.js.map` -> `*.cjs.map`.
- *
- * No-op for packages that are not `"type": "module"`.
+ * Wired in as an SWC `Transform` (see `cjsRenameTransforms`) so each `commonjs` file is renamed
+ * right after it's written, instead of a separate postprocessing pass over the whole output dir.
+ * Renames `*.js` -> `*.cjs` (incl. `*.styles.raw.js`), rewrites relative `require("./x.js")` ->
+ * `require("./x.cjs")`, and renames the adjacent `*.js.map` -> `*.cjs.map`.
  */
-export async function postprocessCjsExtension(options: NormalizedOptions): Promise<boolean> {
-  const pkgJson = readJsonFile<{ type?: string }>(join(options.absoluteProjectRoot, 'package.json'));
-  if (pkgJson.type !== 'module') {
-    return true;
-  }
-
-  const commonjsOutput = options.moduleOutput.find(output => output.module === 'commonjs');
-  if (!commonjsOutput) {
-    return true;
-  }
-
-  const cjsDir = join(options.absoluteProjectRoot, commonjsOutput.outputPath);
-  if (!(await exists(cjsDir))) {
-    return true;
-  }
-
-  let renamedFiles = 0;
-  let renamedMaps = 0;
-
-  for await (const file of walk(cjsDir)) {
-    if (file.endsWith('.js')) {
-      const code = (await readFile(file, 'utf-8'))
-        .replace(RELATIVE_REQUIRE, '$1$2.cjs$3')
-        .replace(RELATIVE_SOURCEMAP, '$1$2.cjs.map');
-      await writeFile(file.replace(/\.js$/, '.cjs'), code);
-      await rm(file);
-      renamedFiles++;
+export const renameToCjs: Transform = async filePath => {
+  if (filePath.endsWith('.js.map')) {
+    const map = JSON.parse(await readFile(filePath, 'utf-8'));
+    if (typeof map.file === 'string') {
+      map.file = map.file.replace(/\.js$/, '.cjs');
     }
+    await writeFile(filePath.replace(/\.js\.map$/, '.cjs.map'), JSON.stringify(map));
+    await rm(filePath);
+    return;
   }
 
-  for await (const file of walk(cjsDir)) {
-    if (file.endsWith('.js.map')) {
-      const map = JSON.parse(await readFile(file, 'utf-8'));
-      if (typeof map.file === 'string') {
-        map.file = map.file.replace(/\.js$/, '.cjs');
-      }
-      await writeFile(file.replace(/\.js\.map$/, '.cjs.map'), JSON.stringify(map));
-      await rm(file);
-      renamedMaps++;
-    }
+  if (filePath.endsWith('.js')) {
+    const code = (await readFile(filePath, 'utf-8')).replace(RELATIVE_REQUIRE, '$1$2.cjs$3');
+    await writeFile(
+      filePath.replace(/\.js$/, '.cjs'),
+      code.replace(/(\/\/#\s*sourceMappingURL=.*?)\.js\.map$/m, '$1.cjs.map'),
+    );
+    await rm(filePath);
   }
+};
 
-  logger.log(
-    `📦 CJS extension: ${renamedFiles} *.js → *.cjs (${renamedMaps} source maps) in ${commonjsOutput.outputPath}`,
-  );
-
-  return true;
+/**
+ * Transforms to pass into `compileSwc` for a given `moduleOutput` entry: `[renameToCjs]` for the
+ * `commonjs` target of a `"type": "module"` package, `undefined` otherwise (no-op for every other
+ * package/target, keeping this safe before any package opts into ESM-first packaging).
+ */
+export function cjsRenameTransforms(
+  outputConfig: NormalizedOptions['moduleOutput'][number],
+  options: NormalizedOptions,
+): Transform[] | undefined {
+  return outputConfig.module === 'commonjs' && options.isEsmPackage ? [renameToCjs] : undefined;
 }
 
 /**
@@ -98,8 +82,7 @@ export async function postprocessCjsExtension(options: NormalizedOptions): Promi
  * No-op for packages that are not `"type": "module"`.
  */
 export async function copyCjsTypes(options: NormalizedOptions): Promise<boolean> {
-  const pkgJson = readJsonFile<{ type?: string }>(join(options.absoluteProjectRoot, 'package.json'));
-  if (pkgJson.type !== 'module') {
+  if (!options.isEsmPackage) {
     return true;
   }
 

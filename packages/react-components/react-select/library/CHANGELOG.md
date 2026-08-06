@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Wed, 24 Jun 2026 11:09:55 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.5.4)
+
+Tue, 04 Aug 2026 10:12:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.5.3..@fluentui/react-select_v9.5.4)
+
+### Patches
+
+- fix: fix Field control size handling for Select ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
 
 ## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.5.3)
 

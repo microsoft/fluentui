@@ -9,10 +9,15 @@
  * `type: module` to use it. The `mount` browser API is served via the package `browser` field.
  */
 
+import type { mount as cypressMount } from '@cypress/react';
+
 export { baseConfig, baseWebpackConfig } from './base.config.js';
 
 // =========== BROWSER APIs ==================
 
 // TODO: Browser related APIs should be exposed via export maps or moved to separate package
 // Expose Browser specific API under same barrel; resolved at runtime via the package `browser` field.
-export declare const mount: typeof import('./browser/index.js').mount;
+// The type is aliased from `@cypress/react` rather than `typeof import('./browser/index.js')` because
+// api-extractor cannot roll up a relative dynamic import - it leaks into `dist/index.d.ts` as an
+// unresolvable specifier, silently degrading `mount` to `any` for consumers.
+export declare const mount: typeof cypressMount;
