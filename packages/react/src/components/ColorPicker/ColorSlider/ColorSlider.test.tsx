@@ -24,7 +24,7 @@ describe('ColorSlider', () => {
       bottom: 18,
       width,
       height: 18,
-    } as DOMRect);
+    }) as DOMRect;
 
   /** Verify stored value and thumb position */
   function verifyValue(type: IColorSliderProps['type'], value: number) {

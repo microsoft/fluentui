@@ -128,8 +128,8 @@ export class InterfaceParserHelper extends BaseParser {
             const propType = isDeprecated
               ? InterfacePropertyType.deprecated
               : isOptional
-              ? InterfacePropertyType.optional
-              : InterfacePropertyType.required;
+                ? InterfacePropertyType.optional
+                : InterfacePropertyType.required;
 
             if (isOptional) {
               identifierName = identifierName.substr(0, identifierName.length - 1);

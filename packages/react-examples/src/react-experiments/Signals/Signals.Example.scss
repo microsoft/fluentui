@@ -3,7 +3,9 @@
 .example {
   padding: 8px;
 
-  transition: color 0.2s linear, background-color 0.2s linear;
+  transition:
+    color 0.2s linear,
+    background-color 0.2s linear;
 }
 
 .small {

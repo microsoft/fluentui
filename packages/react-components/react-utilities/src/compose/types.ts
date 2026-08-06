@@ -43,8 +43,7 @@ export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'classNam
  * Helper type for {@link Slot}. Adds shorthand types that are assignable to the slot's `children`.
  */
 type WithSlotShorthandValue<Props> =
-  | Props
-  | ('children' extends keyof Props ? Extract<SlotShorthandValue, Props['children']> : never);
+  Props | ('children' extends keyof Props ? Extract<SlotShorthandValue, Props['children']> : never);
 
 /**
  * Helper type for {@link Slot}. Takes the props we want to support for a slot and adds the ability for `children`
@@ -139,22 +138,22 @@ export type Slot<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Type extends JSXIntrinsicElementKeys | ComponentType<any> | UnknownSlotProps,
   AlternateAs extends JSXIntrinsicElementKeys = never,
-> = IsSingleton<Extract<Type, string>> extends true
-  ?
-      | WithSlotShorthandValue<
+> =
+  IsSingleton<Extract<Type, string>> extends true
+    ? | WithSlotShorthandValue<
           Type extends JSXIntrinsicElementKeys // Intrinsic elements like `div`
             ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
             : Type extends ComponentType<infer Props> // Component types like `typeof Button`
-            ? Props extends UnknownSlotProps
-              ? Props
-              : WithSlotRenderFunction<Props>
-            : Type // Props types like `ButtonProps`
+              ? Props extends UnknownSlotProps
+                ? Props
+                : WithSlotRenderFunction<Props>
+              : Type // Props types like `ButtonProps`
         >
       | (AlternateAs extends unknown
           ? { as: AlternateAs } & WithSlotRenderFunction<IntrinsicElementProps<AlternateAs>>
           : never)
       | null
-  : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+    : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 /**
  * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
@@ -272,8 +271,7 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
      * @internal
      */
     [SLOT_ELEMENT_TYPE_SYMBOL]:
-      | ComponentType<Props>
-      | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
+      ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
     /**
      * The original className prop for the slot, before being modified by the useStyles hook.
      *
@@ -297,8 +295,7 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
  * ) & \{ open: boolean; \};
  */
 export type EventData<Type extends string, TEvent> =
-  | { type: undefined; event: React.SyntheticEvent | Event }
-  | { type: Type; event: TEvent };
+  { type: undefined; event: React.SyntheticEvent | Event } | { type: Type; event: TEvent };
 
 /**
  * Type for props that are event handlers.

@@ -8,11 +8,9 @@ import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { useBoolean } from '@fluentui/react-hooks';
 
 const stackTokens = { childrenGap: 10 };
-const getTrapZoneStackStyles = memoizeFunction(
-  (useTrapZone: boolean): Partial<IStackStyles> => ({
-    root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
-  }),
-);
+const getTrapZoneStackStyles = memoizeFunction((useTrapZone: boolean): Partial<IStackStyles> => ({
+  root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
+}));
 const focusZoneStackStyles: Partial<IStackStyles> = {
   root: {
     border: '2px dashed #ababab',

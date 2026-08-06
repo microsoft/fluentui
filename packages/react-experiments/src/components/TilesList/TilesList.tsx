@@ -340,7 +340,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     let shimmerWrapperWidth = 0;
 
-    for (let i = 0; i < endIndex; ) {
+    for (let i = 0; i < endIndex;) {
       // For each cell at the start of a grid.
       const grid = cells[i].grid;
 
@@ -558,7 +558,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const cellSizes: IPageData<TItem>['cellSizes'] = {};
     const widths: IPageData<TItem>['pageWidths'] = {};
 
-    for (; i < endIndex; ) {
+    for (; i < endIndex;) {
       // For each cell at the start of a grid.
       const grid = cells[i].grid;
 

@@ -18,9 +18,10 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
     options: ResolveShorthandOptions<P, true>,
   ): WithoutSlotRenderFunction<P>;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>):
-    | WithoutSlotRenderFunction<P>
-    | undefined;
+  <P extends Props>(
+    value: P | SlotShorthandValue | null | undefined,
+    options?: ResolveShorthandOptions<P, boolean>,
+  ): WithoutSlotRenderFunction<P> | undefined;
 };
 
 /**

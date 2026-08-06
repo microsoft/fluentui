@@ -8,11 +8,9 @@ import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { useBoolean, useEventCallback } from '@fluentui/react-hooks';
 import type { JSXElement } from '@fluentui/utilities';
 
-const getStackStyles = memoizeFunction(
-  (isActive: boolean): Partial<IStackStyles> => ({
-    root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 },
-  }),
-);
+const getStackStyles = memoizeFunction((isActive: boolean): Partial<IStackStyles> => ({
+  root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 },
+}));
 
 const stackTokens = { childrenGap: 10 };
 const fixedWidthToggleStyles: Partial<IToggleStyles> = { root: { width: 200 } };

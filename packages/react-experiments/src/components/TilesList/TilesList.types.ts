@@ -142,9 +142,7 @@ type RemovedReactProps<T> = {
 };
 
 export interface ITilesListProps<TItem>
-  extends IBaseProps,
-    RemovedReactProps<TilesList<TItem>>,
-    React.HTMLAttributes<HTMLDivElement> {
+  extends IBaseProps, RemovedReactProps<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.
    * This should be complete and not contain any holes.

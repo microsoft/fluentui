@@ -67,8 +67,8 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
             @fluentui/react-utilities [${assertSlots.name}]:
             "state.${slotName}" element type differs from "state.components.${slotName}",
             ${elementType} !== ${
-            typedState.components[slotName] /* eslint-disable-line @typescript-eslint/no-deprecated */
-          }.
+              typedState.components[slotName] /* eslint-disable-line @typescript-eslint/no-deprecated */
+            }.
             Be sure to create slots properly by using "slot.always" or "slot.optional" with the correct elementType.
           `);
         }

@@ -25,7 +25,8 @@ export interface IVerticalPersonaSlots {
 // Extending IStyleableComponentProps will automatically add stylable props for you, such as styles and theme.
 // If you don't want these props to be included in your component, just remove this extension.
 export interface IVerticalPersonaProps
-  extends IVerticalPersonaSlots,
+  extends
+    IVerticalPersonaSlots,
     IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles> {
   vertical: true;
   text: string;

@@ -390,12 +390,12 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       const newColor = isHex
         ? getColorFromString('#' + newValue)
         : isTransparency
-        ? updateT(color, Number(newValue))
-        : getColorFromRGBA({
-            ...color,
-            // Overwrite whichever key is being updated with the new value
-            [component]: Number(newValue),
-          });
+          ? updateT(color, Number(newValue))
+          : getColorFromRGBA({
+              ...color,
+              // Overwrite whichever key is being updated with the new value
+              [component]: Number(newValue),
+            });
       this._updateColor(event, newColor);
     }
   }

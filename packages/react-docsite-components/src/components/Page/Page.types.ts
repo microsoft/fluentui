@@ -132,8 +132,10 @@ export interface IBanner {
   message?: string;
 }
 
-export interface IPageSectionProps<TPlatforms extends string = string>
-  extends Pick<IPageProps<TPlatforms>, 'title' | 'componentUrl' | 'fileNamePrefix' | 'platform'> {
+export interface IPageSectionProps<TPlatforms extends string = string> extends Pick<
+  IPageProps<TPlatforms>,
+  'title' | 'componentUrl' | 'fileNamePrefix' | 'platform'
+> {
   /** ID for the section (auto-generated if not specified) */
   id?: string;
 

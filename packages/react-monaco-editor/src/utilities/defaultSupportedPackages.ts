@@ -49,8 +49,8 @@ if (typesContext) {
       packageName === '@fluentui/example-data'
         ? exampleDataGroup
         : packageName === '@fluentui/react-hooks'
-        ? hooksGroup
-        : fabricGroup;
+          ? hooksGroup
+          : fabricGroup;
     packageGroup.packages.push({
       packageName,
       loadTypes: () =>

@@ -50,8 +50,7 @@ export interface IComboBoxOption extends ISelectableOption {
  * {@docCategory ComboBox}
  */
 export interface IComboBoxProps
-  extends ISelectableDroppableTextProps<IComboBox, IComboBox>,
-    React.RefAttributes<HTMLDivElement> {
+  extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional ref to access the `IComboBox` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.

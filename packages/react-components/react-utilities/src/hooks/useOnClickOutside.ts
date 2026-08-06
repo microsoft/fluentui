@@ -15,8 +15,7 @@ export type UseOnClickOrScrollOutsideOptions = {
   /**
    * Refs to elements that check if the click is outside
    */
-  refs: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  React.MutableRefObject<HTMLElement | undefined | null>[];
+  refs: React.MutableRefObject<HTMLElement | undefined | null>[]; // eslint-disable-next-line @typescript-eslint/no-deprecated
 
   /**
    * By default uses element.contains, but custom contain function can be provided
@@ -138,8 +137,10 @@ const getWindowEvent = (target: Node | Window | null | undefined): Event | undef
 
 const FUI_FRAME_EVENT = 'fuiframefocus';
 
-interface UseIFrameFocusOptions
-  extends Pick<UseOnClickOrScrollOutsideOptions, 'disabled' | 'element' | 'callback' | 'contains' | 'refs'> {
+interface UseIFrameFocusOptions extends Pick<
+  UseOnClickOrScrollOutsideOptions,
+  'disabled' | 'element' | 'callback' | 'contains' | 'refs'
+> {
   /**
    * Millisecond duration to poll
    */

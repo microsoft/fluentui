@@ -278,5 +278,4 @@ type EditingItemProps<T> = Pick<
 
 export const DefaultEditingItem =
   <T extends any>(outerProps: EditingItemProps<T>): ((innerProps: EditingItemComponentProps<T>) => JSXElement) =>
-  (innerProps: EditingItemComponentProps<T>): JSXElement =>
-    <DefaultEditingItemInner {...outerProps} {...innerProps} />;
+  (innerProps: EditingItemComponentProps<T>): JSXElement => <DefaultEditingItemInner {...outerProps} {...innerProps} />;

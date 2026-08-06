@@ -49,10 +49,12 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
    * Subset of classnames currently generated in DetailsRow that are used within DetailsRowFields.
    */
   rowClassNames: {
-    [k in keyof Pick<
-      IDetailsRowStyles,
-      'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'
-    >]: string;
+    [
+      k in keyof Pick<
+        IDetailsRowStyles,
+        'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'
+      >
+    ]: string;
   };
 
   /**

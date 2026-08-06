@@ -25,7 +25,7 @@ export function isHTMLElement<ConstructorName extends HTMLElementConstructorName
   const typedElement = element as Node | null | undefined;
   return Boolean(
     typedElement?.ownerDocument?.defaultView &&
-      typedElement instanceof typedElement.ownerDocument.defaultView[options?.constructorName ?? 'HTMLElement'],
+    typedElement instanceof typedElement.ownerDocument.defaultView[options?.constructorName ?? 'HTMLElement'],
   );
 }
 

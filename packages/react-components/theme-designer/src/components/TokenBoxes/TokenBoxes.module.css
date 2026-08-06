@@ -24,7 +24,9 @@
     border-width: 2px;
     border-style: solid;
     border-radius: 0.5em;
-    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 1.5px 5px 0 rgb(0 0 0 / 19%);
+    box-shadow:
+      0 2px 4px 0 rgb(0 0 0 / 20%),
+      0 1.5px 5px 0 rgb(0 0 0 / 19%);
   }
 
   /* from useStyles.colors */

@@ -7,11 +7,9 @@ import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { useBoolean } from '@fluentui/react-hooks';
 
-const getStackStyles = memoizeFunction(
-  (useTrapZone: boolean): Partial<IStackStyles> => ({
-    root: { border: `2px dashed ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
-  }),
-);
+const getStackStyles = memoizeFunction((useTrapZone: boolean): Partial<IStackStyles> => ({
+  root: { border: `2px dashed ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
+}));
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
 const stackTokens = { childrenGap: 15 };
 

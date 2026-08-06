@@ -14,8 +14,7 @@ export interface IPositioningContainer {}
  * {@docCategory Coachmark}
  */
 export interface IPositioningContainerProps
-  extends IBaseProps<IPositioningContainer>,
-    React.RefAttributes<HTMLDivElement> {
+  extends IBaseProps<IPositioningContainer>, React.RefAttributes<HTMLDivElement> {
   /**
    * All props for your component are to be defined here.
    */

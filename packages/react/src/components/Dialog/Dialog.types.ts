@@ -21,7 +21,8 @@ export interface IDialog {}
  * {@docCategory Dialog}
  */
 export interface IDialogProps
-  extends React.ClassAttributes<DialogBase>,
+  extends
+    React.ClassAttributes<DialogBase>,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     IWithResponsiveModeState,
     IAccessiblePopupProps {

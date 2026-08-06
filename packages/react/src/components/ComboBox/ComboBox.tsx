@@ -815,8 +815,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     return currentPendingValue !== null && currentPendingValue !== undefined
       ? currentPendingValue
       : indexWithinBounds(currentOptions, index)
-      ? getPreviewText(currentOptions[index])
-      : '';
+        ? getPreviewText(currentOptions[index])
+        : '';
   }
 
   /**
@@ -1779,8 +1779,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       (includeCurrentPendingValue && currentPendingValue !== null && currentPendingValue !== undefined)
       ? currentPendingValueValidIndex
       : this.props.multiSelect
-      ? -1
-      : this._getFirstSelectedIndex();
+        ? -1
+        : this._getFirstSelectedIndex();
   }
 
   /**

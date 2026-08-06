@@ -439,13 +439,19 @@
   .onlyOnHover {
     .name {
       opacity: 0;
-      transition: transform 0.25s ease-out, opacity 0.2s linear, color 0.2s linear;
+      transition:
+        transform 0.25s ease-out,
+        opacity 0.2s linear,
+        color 0.2s linear;
       transform: translateY(1rem);
     }
 
     .activity {
       opacity: 0;
-      transition: transform 0.25s ease-out, opacity 0.2s linear, color 0.2s linear;
+      transition:
+        transform 0.25s ease-out,
+        opacity 0.2s linear,
+        color 0.2s linear;
       transform: translateY(1rem);
     }
   }

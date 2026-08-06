@@ -79,7 +79,8 @@ export interface IDetailsItemProps {
  * {@docCategory DetailsList}
  */
 export interface IDetailsRowBaseProps
-  extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'>,
+  extends
+    Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'>,
     IBaseProps<IDetailsRow>,
     IDetailsItemProps {
   /**

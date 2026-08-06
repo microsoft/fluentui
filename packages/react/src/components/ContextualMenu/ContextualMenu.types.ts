@@ -48,7 +48,8 @@ export interface IContextualMenu {}
  * {@docCategory ContextualMenu}
  */
 export interface IContextualMenuProps
-  extends IBaseProps<IContextualMenu>,
+  extends
+    IBaseProps<IContextualMenu>,
     React.RefAttributes<HTMLDivElement>,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     IWithResponsiveModeState {

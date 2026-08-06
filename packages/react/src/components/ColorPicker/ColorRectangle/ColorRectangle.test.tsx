@@ -24,7 +24,7 @@ describe('ColorRectangle', () => {
         bottom: size + offset,
         width: size,
         height: size,
-      } as DOMRect);
+      }) as DOMRect;
 
   afterEach(() => {
     if (component) {

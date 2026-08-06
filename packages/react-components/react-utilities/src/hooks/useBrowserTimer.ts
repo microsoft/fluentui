@@ -3,8 +3,7 @@
 import * as React from 'react';
 
 type BrowserTimerSetter =
-  | ((fn: () => void, duration?: number, ...args: Record<string, unknown>[]) => number)
-  | ((fn: () => void) => number);
+  ((fn: () => void, duration?: number, ...args: Record<string, unknown>[]) => number) | ((fn: () => void) => number);
 
 /**
  * Helper to manage a browser timer.

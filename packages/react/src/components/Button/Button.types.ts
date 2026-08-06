@@ -43,10 +43,9 @@ export interface IButton {
  * {@docCategory Button}
  */
 /* eslint-disable @typescript-eslint/no-deprecated */
-export interface IButtonProps
-  extends React.AllHTMLAttributes<
-    HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement
-  > {
+export interface IButtonProps extends React.AllHTMLAttributes<
+  HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement
+> {
   /* eslint-enable @typescript-eslint/no-deprecated */
   /**
    * Optional callback to access the `IButton` interface. Use this instead of `ref` for accessing

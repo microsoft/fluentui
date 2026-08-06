@@ -126,12 +126,12 @@ class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
         a.interfacePropertyType < b.interfacePropertyType
           ? -1
           : a.interfacePropertyType > b.interfacePropertyType
-          ? 1
-          : a.name < b.name
-          ? -1
-          : a.name > b.name
-          ? 1
-          : 0,
+            ? 1
+            : a.name < b.name
+              ? -1
+              : a.name > b.name
+                ? 1
+                : 0,
       )
       .map((prop: IInterfaceProperty | IEnumProperty, index: number) => ({ ...prop, key: index }));
 

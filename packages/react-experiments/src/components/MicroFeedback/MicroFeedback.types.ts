@@ -86,7 +86,8 @@ export interface IMicroFeedbackSlots {
 export interface IMicroFeedback {}
 
 export interface IMicroFeedbackProps
-  extends IMicroFeedbackSlots,
+  extends
+    IMicroFeedbackSlots,
     IStyleableComponentProps<IMicroFeedbackProps, IMicroFeedbackTokens, IMicroFeedbackStyles>,
     IBaseProps<IMicroFeedback> {
   /**

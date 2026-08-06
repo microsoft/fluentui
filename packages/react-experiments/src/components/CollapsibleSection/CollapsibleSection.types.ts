@@ -31,7 +31,8 @@ export interface ICollapsibleSectionSlots {
 export interface ICollapsibleSection {}
 
 export interface ICollapsibleSectionProps
-  extends ISlottableProps<ICollapsibleSectionSlots>,
+  extends
+    ISlottableProps<ICollapsibleSectionSlots>,
     IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles, ICollapsibleSectionTokens>,
     IBaseProps<ICollapsibleSection> {
   /**
