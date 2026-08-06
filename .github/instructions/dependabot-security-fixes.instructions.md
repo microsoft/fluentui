@@ -11,14 +11,14 @@ This instruction guide explains how Dependabot automation works for security fix
 Dependabot is configured to automatically create pull requests for:
 
 1. **Security updates** - Advisory-driven minor and patch updates grouped by ecosystem
-2. **npm dependencies** - Weekly minor and patch updates grouped by production or development dependency type
+2. **npm dependencies** - Weekly minor and patch updates grouped for development dependencies; routine production version updates are disabled
 3. **GitHub Actions** - Weekly minor and patch version and security update groups
 
 ## Configuration
 
 The Dependabot configuration is defined in `.github/dependabot.yml`:
 
-- **npm dependencies**: Weekly minor and patch version updates grouped into production and development pull requests
+- **npm dependencies**: Weekly minor and patch version updates grouped for development dependencies; production dependencies are updated only for security advisories
 - **GitHub Actions**: Weekly minor and patch version updates grouped separately from security updates
 - **Security updates**: Minor and patch updates are grouped; major remediations are excluded from groups for isolated review
 - **Manual rollups**: Maintainers can use `/dependabot-rollup` as a fallback to combine at most 11 eligible non-major updates

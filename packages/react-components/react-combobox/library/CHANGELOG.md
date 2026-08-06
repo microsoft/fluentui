@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Wed, 24 Jun 2026 11:09:41 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.4)
+
+Tue, 04 Aug 2026 10:12:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.17.3..@fluentui/react-combobox_v9.17.4)
+
+### Patches
+
+- fix: fix Field control size handling Combobox and Dropdown ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-positioning to v9.23.0 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.17.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.3)
 

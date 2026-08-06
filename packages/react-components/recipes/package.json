@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-provider": "^9.22.18",
+    "@fluentui/react-provider": "^9.22.19",
     "@fluentui/react-text": "^9.6.18",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.5",

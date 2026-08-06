@@ -2,6 +2,21 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:14 GMT",
+      "tag": "@fluentui/react-aria_v9.17.13",
+      "version": "9.17.13",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:10 GMT",
       "tag": "@fluentui/react-aria_v9.17.13",
       "version": "9.17.13",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: allow base states in TagPicker render functions",
-  "packageName": "@fluentui/react-tag-picker",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

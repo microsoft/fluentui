@@ -2,6 +2,21 @@
   "name": "@fluentui/react-breadcrumb",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:15 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.4.4",
+      "version": "9.4.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 15:15:07 GMT",
       "tag": "@fluentui/react-breadcrumb_v9.4.4",
       "version": "9.4.4",

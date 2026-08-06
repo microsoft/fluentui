@@ -2,6 +2,35 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:13 GMT",
+      "tag": "@fluentui/react-tree_v9.16.4",
+      "version": "9.16.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e85170a2cc9139a7adfbbb524090541389cbeafe",
+            "comment": "fix: add accessible names to Tree selection controls"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.11.4",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 15:15:07 GMT",
       "tag": "@fluentui/react-tree_v9.16.3",
       "version": "9.16.3",

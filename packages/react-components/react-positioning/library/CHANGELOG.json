@@ -2,6 +2,29 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:07 GMT",
+      "tag": "@fluentui/react-positioning_v9.23.0",
+      "version": "9.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9846ec31c1f0c116edf9c632b2dec1c6eb9aae1d",
+            "comment": "feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:53 GMT",
       "tag": "@fluentui/react-positioning_v9.22.3",
       "version": "9.22.3",

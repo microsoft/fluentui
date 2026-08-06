@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 15 Jul 2026 14:10:40 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.74.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.5)
+
+Tue, 04 Aug 2026 10:12:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.4..@fluentui/react-components_v9.74.5)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail ([PR #36432](https://github.com/microsoft/fluentui/pull/36432) by paulmardling@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - fix: escape SSR theme style selectors ([PR #36464](https://github.com/microsoft/fluentui/pull/36464) by paulmardling@microsoft.com)
+- `@fluentui/react-select`
+  - fix: fix Field control size handling for Select ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: allow base states in TagPicker render functions ([PR #36443](https://github.com/microsoft/fluentui/pull/36443) by vgenaev@gmail.com)
+- `@fluentui/react-textarea`
+  - fix: fix Field control size handling ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: hide Tooltip when its trigger scrolls outside an overflow container ([PR #36386](https://github.com/microsoft/fluentui/pull/36386) by paulmardling@microsoft.com)
+- `@fluentui/react-tree`
+  - fix: add accessible names to Tree selection controls ([PR #36384](https://github.com/microsoft/fluentui/pull/36384) by paulmardling@microsoft.com)
+- `@fluentui/react-charts`
+  - voice control accessibility bug fix ([PR #36396](https://github.com/microsoft/fluentui/pull/36396) by 132879294+v-baambati@users.noreply.github.com)
+  - Accessibility bug fixe ([PR #36426](https://github.com/microsoft/fluentui/pull/36426) by 132879294+v-baambati@users.noreply.github.com)
+  - HorizontalBarChart bug fixes ([PR #36494](https://github.com/microsoft/fluentui/pull/36494) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-color-picker`
+  - Pin @ctrl/tinycolor version to prevent yarn modern duplication ([PR #35747](https://github.com/microsoft/fluentui/pull/35747) by vgenaev@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: fix Field control size handling Combobox and Dropdown ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-input`
+  - fix: fix Field control size handling ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix(MessageBar): v9 MessageBar Resize Flicker Fix ([PR #36405](https://github.com/microsoft/fluentui/pull/36405) by jiangemma@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: close Popover on focus escape only when focus was inside the surface, so a popover whose focus never entered (e.g. an external input stays focused) is not dismissed when focus moves programmatically ([PR #36440](https://github.com/microsoft/fluentui/pull/36440) by petrduda@microsoft.com)
 
 ## [9.74.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.4)
 
