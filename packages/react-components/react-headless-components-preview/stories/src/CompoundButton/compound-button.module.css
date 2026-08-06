@@ -23,21 +23,17 @@
 .eyebrow {
   color: var(--accent);
   font-family: var(--font-sans);
-  font-weight: 700;
   letter-spacing: var(--tracking-heading);
 }
 
 .heading {
   color: var(--text);
   font-family: var(--font-display);
-  font-weight: 700;
   letter-spacing: var(--tracking-display);
-  line-height: 1.2;
 }
 
 .summary {
   color: var(--text-muted);
-  line-height: 1.5;
 }
 
 .status {
@@ -49,7 +45,6 @@
   background: var(--bg-elev);
   color: var(--text);
   font-family: var(--font-mono);
-  font-weight: 600;
 }
 
 .actions {
@@ -78,12 +73,12 @@
   text-decoration: none;
 }
 
-.action:hover:not([data-disabled], [data-disabled-focusable], [aria-disabled='true']) {
+.action:hover:not(:disabled, [data-disabled], [data-disabled-focusable], [aria-disabled='true']) {
   border-color: var(--accent);
   background: var(--accent-soft);
 }
 
-.action:active:not([data-disabled], [data-disabled-focusable], [aria-disabled='true']) {
+.action:active:not(:disabled, [data-disabled], [data-disabled-focusable], [aria-disabled='true']) {
   border-color: var(--accent-strong);
   box-shadow: none;
 }
@@ -93,6 +88,7 @@
   outline-offset: var(--space-1);
 }
 
+.action:disabled,
 .action[data-disabled],
 .action[data-disabled-focusable],
 .action[aria-disabled='true'] {
@@ -127,19 +123,17 @@
   gap: var(--space-1);
   min-inline-size: 0;
   color: inherit;
-  font-weight: 700;
-  line-height: 1.2;
 }
 
 .actionSecondary {
   color: var(--text-muted);
-  font-weight: 400;
-  line-height: 1.4;
 }
 
+.action:disabled .actionIcon,
 .action[data-disabled] .actionIcon,
 .action[data-disabled-focusable] .actionIcon,
 .action[aria-disabled='true'] .actionIcon,
+.action:disabled .actionSecondary,
 .action[data-disabled] .actionSecondary,
 .action[data-disabled-focusable] .actionSecondary,
 .action[aria-disabled='true'] .actionSecondary {
@@ -156,6 +150,13 @@
   inline-size: var(--space-16);
   padding: 0;
   justify-content: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action {
+    transition: none;
+    animation: none;
+  }
 }
 
 @media (forced-colors: active) {
@@ -175,6 +176,7 @@
     outline: var(--stroke-thick) solid currentColor;
   }
 
+  .action:disabled,
   .action[data-disabled],
   .action[data-disabled-focusable],
   .action[aria-disabled='true'] {
