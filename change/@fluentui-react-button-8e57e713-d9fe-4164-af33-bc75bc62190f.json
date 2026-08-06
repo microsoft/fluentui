@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(react-button): expose CompoundButton headless base APIs",
+  "comment": "Expose CompoundButton headless base APIs",
   "packageName": "@fluentui/react-button",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
