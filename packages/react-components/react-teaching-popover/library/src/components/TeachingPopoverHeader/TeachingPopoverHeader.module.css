@@ -105,7 +105,7 @@
 @layer fui.components.l1 {
   /* from useStyles.dismissButton — dismissButton arg #2 */
   .dismiss-button {
-    @apply flex items-center cursor-pointer box-border;
+    @apply box-border flex cursor-pointer items-center;
 
     color: var(--colorNeutralForeground2);
     position: relative;
@@ -125,7 +125,7 @@
     border-inline-end-style: none;
 
     @apply ms-auto;
-    @apply pt-vertical-xs pb-vertical-xs ps-horizontal-xs pe-horizontal-xs;
+    @apply ps-horizontal-xs pe-horizontal-xs pt-vertical-xs pb-vertical-xs;
 
     /* from createCustomFocusIndicatorStyle({ outline, borderRadius, borderColor('transparent') }) */
     @variant focus-visible-fui {
@@ -150,7 +150,7 @@
 @layer fui.components.l1 {
   /* from useStyles.icon — icon arg #2 */
   .icon {
-    @apply inline-flex items-center justify-center box-content;
+    @apply box-content inline-flex items-center justify-center;
 
     height: var(--fontSizeBase200);
     width: var(--fontSizeBase200);

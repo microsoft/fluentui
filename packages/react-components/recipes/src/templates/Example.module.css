@@ -21,7 +21,7 @@
 @layer fui.components.l4 {
   /* from useExampleStyles.root */
   .root {
-    @apply m-6 p-30 rounded-[16px];
+    @apply m-6 rounded-[16px] p-30;
 
     /*
      * `border` expanded to longhands per the cookbook's shorthand rule. The 1px width is
@@ -41,7 +41,7 @@
    * asymmetry to preserve.
    */
   .inner-container {
-    @apply flex py-48 px-24;
+    @apply flex px-24 py-48;
 
     background-color: rgb(250, 250, 250);
   }

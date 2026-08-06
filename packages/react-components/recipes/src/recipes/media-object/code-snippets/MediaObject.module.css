@@ -54,7 +54,7 @@
 
   /* from useSkeletonStyles.legendColor */
   .legend-color {
-    @apply self-center w-10 h-10;
+    @apply h-10 w-10 self-center;
   }
 
   /* from useMediaObjectStyles.main */
@@ -73,12 +73,12 @@
    * so it is authored logically (`ps-80`) rather than as a physical longhand.
    */
   .empty-media {
-    @apply py-20 pe-20 ps-80;
+    @apply py-20 ps-80 pe-20;
   }
 
   /* from useMediaObjectStyles.emptyText */
   .empty-text {
-    @apply w-100 h-50;
+    @apply h-50 w-100;
   }
 
   /* from useMediaObjectStyles.centerMedia */
@@ -88,7 +88,7 @@
 
   /* from useMediaObjectStyles.verticalMediaObject */
   .vertical-media-object {
-    @apply flex flex-col gap-4 items-center;
+    @apply flex flex-col items-center gap-4;
   }
 
   /* from useMediaObjectStyles.centerTextPosition */

@@ -51,7 +51,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root */
   .content {
-    @apply hidden box-border max-w-240 cursor-default break-words;
+    @apply box-border hidden max-w-240 cursor-default break-words;
 
     /* Griffel `padding: '4px 11px 6px 11px'` — a pixel literal, not a token read, but two of
        the three values land exactly on a spacing step, so they take the named block-axis
@@ -61,7 +61,7 @@
        atomic), so `px-11` (padding-inline) reproduces it exactly in both directions.
        All four lengths compute identically before and after: the numeric and named scales
        are one system (`--spacing` is `calc(1px * var(--base-scale))`). */
-    @apply pt-vertical-xs pb-vertical-s-nudge px-11;
+    @apply px-11 pt-vertical-xs pb-vertical-s-nudge;
 
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase200);

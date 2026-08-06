@@ -91,7 +91,7 @@
 @layer fui.components.l1 {
   /* from useStyles.dismissButton — dismissButton arg #2 */
   .dismiss-button {
-    @apply flex items-center cursor-pointer box-border;
+    @apply box-border flex cursor-pointer items-center;
 
     position: relative;
 

@@ -78,7 +78,7 @@
 @layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
   .root {
-    @apply box-border mt-vertical-l;
+    @apply mt-vertical-l box-border;
 
     border-radius: var(--borderRadiusMedium);
 

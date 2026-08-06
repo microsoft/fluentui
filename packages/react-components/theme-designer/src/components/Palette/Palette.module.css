@@ -21,7 +21,7 @@
 
   /* from useStyles.block */
   .block {
-    @apply grid grow shrink-0;
+    @apply grid shrink-0 grow;
 
     grid-template-columns: 0.5em auto;
     grid-template-rows: 0.5em 1fr 1fr 0.5em;

@@ -12,7 +12,7 @@
 
   /* from useStyles.column — gap: spacingVerticalL */
   .column {
-    @apply flex flex-col box-border gap-vertical-l;
+    @apply box-border flex flex-col gap-vertical-l;
 
     /* source value is the `start` keyword, not `flex-start` — kept verbatim */
     justify-content: start;
@@ -41,7 +41,7 @@
 
   /* from useStyles.icons — rowGap: spacingVerticalS, columnGap: spacingHorizontalS */
   .icons {
-    @apply grid justify-center gap-y-vertical-s gap-x-horizontal-s;
+    @apply grid justify-center gap-x-horizontal-s gap-y-vertical-s;
 
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;

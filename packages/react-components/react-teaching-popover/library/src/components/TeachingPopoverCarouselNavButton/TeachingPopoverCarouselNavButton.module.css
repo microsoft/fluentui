@@ -111,7 +111,7 @@
   /* from useStyles.root — arg #2, FLAT half. The `@supports` / `@media` halves of the
      selected/unselected slices are the split blocks at the bottom; see reason (b). */
   .root {
-    @apply flex cursor-pointer box-border;
+    @apply box-border flex cursor-pointer;
     @apply h-vertical-s w-horizontal-s;
 
     background-color: var(--colorBrandBackground);

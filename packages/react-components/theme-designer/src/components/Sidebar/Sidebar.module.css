@@ -17,7 +17,7 @@
    */
   .root {
     @apply flex flex-col items-center justify-start;
-    @apply gap-y-vertical-xxl gap-x-horizontal-xxl;
+    @apply gap-x-horizontal-xxl gap-y-vertical-xxl;
 
     border-inline-end-width: 1px;
     border-inline-end-style: solid;

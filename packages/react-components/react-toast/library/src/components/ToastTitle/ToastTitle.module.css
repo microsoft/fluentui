@@ -106,7 +106,7 @@
 
   /* from useMediaBaseClassName (makeResetStyles) — media arg #2 */
   .media {
-    @apply flex pt-vertical-xxs pe-horizontal-s;
+    @apply flex pe-horizontal-s pt-vertical-xxs;
 
     grid-column-end: 2;
 

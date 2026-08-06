@@ -48,7 +48,7 @@
 @layer fui.base {
   /* from useBaseStyle (makeResetStyles) — arg #2 */
   .root {
-    @apply box-border grow min-w-24 max-w-full;
+    @apply box-border max-w-full min-w-24 grow;
 
     background-color: var(--colorTransparentBackground);
     color: var(--colorNeutralForeground1);
@@ -104,7 +104,7 @@
       font-weight: var(--fontWeightRegular);
       line-height: var(--lineHeightBase300);
 
-      @apply py-vertical-s-nudge px-horizontal-none;
+      @apply px-horizontal-none py-vertical-s-nudge;
     }
 
     @variant size-large {
@@ -113,7 +113,7 @@
       font-weight: var(--fontWeightRegular);
       line-height: var(--lineHeightBase300);
 
-      @apply py-vertical-m-nudge px-horizontal-none;
+      @apply px-horizontal-none py-vertical-m-nudge;
     }
 
     @variant size-extra-large {
@@ -122,7 +122,7 @@
       font-weight: var(--fontWeightRegular);
       line-height: var(--lineHeightBase300);
 
-      @apply py-vertical-m px-horizontal-none;
+      @apply px-horizontal-none py-vertical-m;
     }
   }
 }

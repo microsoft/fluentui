@@ -160,7 +160,7 @@
 
     /* `padding: <spacingVerticalMNudge> <spacingHorizontalXS> <spacingVerticalMNudge>
        <spacingHorizontalS>` expanded to longhands (cookbook §2) */
-    @apply pt-vertical-m-nudge pb-vertical-m-nudge ps-horizontal-s pe-horizontal-xs;
+    @apply ps-horizontal-s pe-horizontal-xs pt-vertical-m-nudge pb-vertical-m-nudge;
   }
 
   /* from useDescriptionBaseStyles (makeResetStyles) — description arg #2 */
@@ -177,7 +177,7 @@
        expanded to longhands (cookbook §2) */
     padding-top: 0;
 
-    @apply pb-vertical-m-nudge ps-horizontal-s pe-horizontal-xs;
+    @apply ps-horizontal-s pe-horizontal-xs pb-vertical-m-nudge;
   }
 
   /* from useActionsBaseStyles (makeResetStyles) — actions arg #2 */
@@ -330,7 +330,7 @@
    * — Griffel did the same with a shorthand atomic plus explicit `0` longhand keys.
    */
   .main-with-description {
-    @apply pt-vertical-m-nudge ps-horizontal-s pe-horizontal-xs;
+    @apply ps-horizontal-s pe-horizontal-xs pt-vertical-m-nudge;
 
     padding-bottom: 0;
   }

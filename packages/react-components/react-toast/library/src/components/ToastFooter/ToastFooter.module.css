@@ -51,7 +51,7 @@
 @layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
   .root {
-    @apply flex items-center pt-vertical-l gap-14;
+    @apply flex items-center gap-14 pt-vertical-l;
 
     grid-column-start: 2;
     grid-column-end: 3;

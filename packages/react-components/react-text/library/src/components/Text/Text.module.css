@@ -69,7 +69,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root */
   .root {
-    @apply text-start whitespace-normal overflow-visible text-clip;
+    @apply overflow-visible text-start text-clip whitespace-normal;
 
     /*
      * `display: inline` longhand rather than `@apply inline`: `inline` is also the name of
@@ -91,7 +91,7 @@
    * reproduce; expanding would only add bytes (react-image / react-link precedent).
    */
   .nowrap {
-    @apply whitespace-nowrap overflow-hidden;
+    @apply overflow-hidden whitespace-nowrap;
   }
 
   /* from useStyles.truncate */

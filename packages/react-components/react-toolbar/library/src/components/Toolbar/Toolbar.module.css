@@ -73,7 +73,7 @@
     @apply flex items-center;
 
     /* `padding: '4px 8px'` → four longhands; 4px = spacingVerticalXS, 8px = spacingHorizontalS */
-    @apply pt-vertical-xs pb-vertical-xs ps-horizontal-s pe-horizontal-s;
+    @apply ps-horizontal-s pe-horizontal-s pt-vertical-xs pb-vertical-xs;
   }
 }
 
@@ -103,12 +103,12 @@
 
       @variant size-medium {
         /* `padding: '4px 8px'` — identical to the base slice, as in the source */
-        @apply pt-vertical-xs pb-vertical-xs ps-horizontal-s pe-horizontal-s;
+        @apply ps-horizontal-s pe-horizontal-s pt-vertical-xs pb-vertical-xs;
       }
 
       @variant size-large {
         /* `padding: '4px 20px'` — 20px = spacingHorizontalXL */
-        @apply pt-vertical-xs pb-vertical-xs ps-horizontal-xl pe-horizontal-xl;
+        @apply ps-horizontal-xl pe-horizontal-xl pt-vertical-xs pb-vertical-xs;
       }
     }
   }

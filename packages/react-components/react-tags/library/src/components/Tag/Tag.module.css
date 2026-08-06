@@ -197,7 +197,7 @@
   .secondary-text {
     grid-area: secondary;
 
-    @apply whitespace-nowrap px-horizontal-xxs;
+    @apply px-horizontal-xxs whitespace-nowrap;
 
     /* typographyStyles.caption2 */
     font-family: var(--fontFamilyBase);
@@ -410,7 +410,7 @@
 
   /* from usePrimaryTextStyles.base (arg #2) + usePrimaryTextStyles[size] (arg #3) */
   .primary-text {
-    @apply whitespace-nowrap px-horizontal-xxs;
+    @apply px-horizontal-xxs whitespace-nowrap;
 
     /* typographyStyles.body1 */
     @variant size-medium {

@@ -30,7 +30,7 @@
 @layer fui.components.l4 {
   /* from useStyles.logo — paddingLeft: spacingHorizontalL, gap: spacingHorizontalS */
   .logo {
-    @apply flex items-center ps-horizontal-l gap-horizontal-s;
+    @apply flex items-center gap-horizontal-s ps-horizontal-l;
 
     justify-content: start;
   }

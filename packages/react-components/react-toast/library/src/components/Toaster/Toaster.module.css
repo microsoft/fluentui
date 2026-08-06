@@ -71,7 +71,7 @@
 @layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) — arg #2 */
   .root {
-    @apply fixed w-292 pointer-events-none;
+    @apply pointer-events-none fixed w-292;
   }
 }
 
