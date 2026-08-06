@@ -189,7 +189,7 @@ describe('GenerateApi Executor', () => {
     });
     expect(extractorConfig.skipLibCheck).toBe(false);
 
-    const actualLocalBuildValue = isCI() ? false : true;
+    const actualLocalBuildValue = Boolean(process.env.__FORCE_API_MD_UPDATE__) || !isCI();
 
     expect(extractorArgs).toEqual({
       localBuild: actualLocalBuildValue,
@@ -224,7 +224,7 @@ describe('GenerateApi Executor', () => {
 
     expect(extractorConfig).toEqual(expect.any(Object));
     expect(extractorArgs).toEqual({
-      localBuild: false,
+      localBuild: Boolean(process.env.__FORCE_API_MD_UPDATE__),
       showDiagnostics: true,
       showVerboseMessages: true,
     });
