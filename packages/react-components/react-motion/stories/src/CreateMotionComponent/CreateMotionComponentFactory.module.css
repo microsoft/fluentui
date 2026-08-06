@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: end;
   grid-area: card;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
   padding: 10px;
@@ -22,7 +22,7 @@
 
 .item {
   background-color: var(--colorBrandBackground);
-  border: var(--strokeWidthThicker) solid var(--colorTransparentStroke);
+  border: var(--stroke-width-thicker) solid var(--colorTransparentStroke);
   width: 100px;
   height: 100px;
 }

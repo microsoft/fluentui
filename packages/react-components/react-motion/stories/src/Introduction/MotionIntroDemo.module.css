@@ -5,12 +5,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacingVerticalM);
-  padding: var(--spacingVerticalXL);
+  gap: var(--spacing-vertical-m);
+  padding: var(--spacing-vertical-xl);
 }
 
 .card {
-  padding: var(--spacingVerticalL) var(--spacingHorizontalXXL);
+  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xxl);
   font-weight: var(--fontWeightSemibold);
   font-size: var(--fontSizeBase300);
   text-align: center;

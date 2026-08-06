@@ -4,16 +4,16 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalXL);
-  padding: var(--spacingHorizontalL);
+  gap: var(--spacing-vertical-xl);
+  padding: var(--spacing-horizontal-l);
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalM);
-  padding: var(--spacingHorizontalM);
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  gap: var(--spacing-vertical-m);
+  padding: var(--spacing-horizontal-m);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   background-color: var(--colorNeutralBackground1);
   box-shadow: var(--shadow8);
@@ -22,9 +22,9 @@
 .spinnerSection {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalM);
-  padding: var(--spacingHorizontalL);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  gap: var(--spacing-vertical-m);
+  padding: var(--spacing-horizontal-l);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
   border-radius: var(--borderRadiusMedium);
   background-color: var(--colorNeutralBackground1);
 }
@@ -41,12 +41,12 @@
   justify-content: center;
   align-items: center;
   min-height: 120px;
-  padding: var(--spacingHorizontalL);
+  padding: var(--spacing-horizontal-l);
 }
 
 .spinnerGrid {
   display: grid;
-  gap: var(--spacingHorizontalL);
+  gap: var(--spacing-horizontal-l);
   grid-template-columns: 1fr;
   align-items: start;
 }
@@ -115,7 +115,7 @@
 
 .growingBarsSpinner {
   display: flex;
-  gap: var(--spacingHorizontalS);
+  gap: var(--spacing-horizontal-s);
   align-items: end;
   height: 40px;
 }
@@ -129,7 +129,7 @@
 
 .slidingBlocksSpinner {
   display: flex;
-  gap: var(--spacingHorizontalL);
+  gap: var(--spacing-horizontal-l);
   align-items: center;
 }
 

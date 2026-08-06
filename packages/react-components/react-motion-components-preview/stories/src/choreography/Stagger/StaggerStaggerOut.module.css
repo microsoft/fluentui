@@ -14,7 +14,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   background-color: var(--colorNeutralBackground1);
   box-shadow: var(--shadow8);

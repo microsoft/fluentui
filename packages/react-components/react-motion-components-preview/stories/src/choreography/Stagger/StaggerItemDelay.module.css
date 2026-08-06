@@ -5,15 +5,15 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--spacingHorizontalXL);
+  gap: var(--spacing-horizontal-xl);
 }
 
 .controls {
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  gap: var(--spacingVerticalM);
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  gap: var(--spacing-vertical-m);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
   padding: 10px;
@@ -27,7 +27,7 @@
 .sliderField {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalXS);
+  gap: var(--spacing-vertical-xs);
 }
 
 .items {
@@ -44,5 +44,5 @@
   color: var(--colorNeutralForegroundInverted);
   width: 40px;
   height: 100px;
-  margin: var(--spacingHorizontalXXS);
+  margin: var(--spacing-horizontal-xxs);
 }

@@ -4,9 +4,9 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacingHorizontalXXL);
-  margin-top: var(--spacingVerticalXXL);
-  margin-bottom: var(--spacingVerticalXXL);
+  gap: var(--spacing-horizontal-xxl);
+  margin-top: var(--spacing-vertical-xxl);
+  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 @media (max-width: 600px) {
@@ -18,7 +18,7 @@
 .panel {
   display: flex;
   flex-direction: column;
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   border-radius: var(--borderRadiusMedium);
   overflow: hidden;
 }
@@ -27,8 +27,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacingVerticalXS);
-  padding: var(--spacingVerticalL) var(--spacingHorizontalXL) var(--spacingVerticalM);
+  gap: var(--spacing-vertical-xs);
+  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl) var(--spacing-vertical-m);
   background-color: var(--colorNeutralBackground2);
 }
 
@@ -50,7 +50,7 @@
   align-items: center;
   justify-items: center;
   height: 80px;
-  padding: var(--spacingVerticalL);
+  padding: var(--spacing-vertical-l);
   background-color: var(--colorNeutralBackground1);
 }
 
@@ -61,16 +61,16 @@
 .card {
   align-items: center;
   justify-content: center;
-  padding: var(--spacingVerticalM) var(--spacingHorizontalXL);
+  padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
   font-weight: var(--fontWeightSemibold);
   font-size: var(--fontSizeBase300);
 }
 
 .codeArea {
   margin: 0;
-  padding: var(--spacingVerticalM) var(--spacingHorizontalL);
+  padding: var(--spacing-vertical-m) var(--spacing-horizontal-l);
   background-color: var(--colorNeutralBackground3);
-  border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-top: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   overflow: auto;
   font-family: var(--fontFamilyMonospace);
   font-size: var(--fontSizeBase100);
@@ -81,6 +81,6 @@
 .buttonRow {
   display: flex;
   justify-content: center;
-  padding: var(--spacingVerticalM) var(--spacingHorizontalXL) var(--spacingVerticalL);
+  padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl) var(--spacing-vertical-l);
   background-color: var(--colorNeutralBackground2);
 }

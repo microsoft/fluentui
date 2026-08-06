@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
   padding: 20px;
@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
   padding: 10px;
@@ -51,7 +51,7 @@
 
 .item {
   background-color: var(--colorBrandBackground);
-  border: var(--strokeWidthThicker) solid var(--colorTransparentStroke);
+  border: var(--stroke-width-thicker) solid var(--colorTransparentStroke);
   border-radius: 50%;
   width: 100px;
   height: 100px;

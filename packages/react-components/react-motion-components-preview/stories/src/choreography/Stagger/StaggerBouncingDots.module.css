@@ -4,16 +4,16 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalXL);
-  padding: var(--spacingHorizontalL);
+  gap: var(--spacing-vertical-xl);
+  padding: var(--spacing-horizontal-l);
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalM);
-  padding: var(--spacingHorizontalM);
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  gap: var(--spacing-vertical-m);
+  padding: var(--spacing-horizontal-m);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   background-color: var(--colorNeutralBackground1);
   box-shadow: var(--shadow8);
@@ -21,7 +21,7 @@
 
 .controlsRow {
   display: flex;
-  gap: var(--spacingHorizontalL);
+  gap: var(--spacing-horizontal-l);
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -30,16 +30,16 @@
 .controlGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalS);
+  gap: var(--spacing-vertical-s);
   min-width: 200px;
 }
 
 .spinnerSection {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalM);
-  padding: var(--spacingHorizontalL);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  gap: var(--spacing-vertical-m);
+  padding: var(--spacing-horizontal-l);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
   border-radius: var(--borderRadiusMedium);
   background-color: var(--colorNeutralBackground1);
 }
@@ -56,12 +56,12 @@
   justify-content: center;
   align-items: center;
   min-height: 120px;
-  padding: var(--spacingHorizontalL);
+  padding: var(--spacing-horizontal-l);
 }
 
 .bouncingDotsSpinner {
   display: flex;
-  gap: var(--spacingHorizontalS);
+  gap: var(--spacing-horizontal-s);
   align-items: center;
 }
 
