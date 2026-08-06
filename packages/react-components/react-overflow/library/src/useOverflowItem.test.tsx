@@ -12,7 +12,7 @@ const mockContextValue = (options: Partial<OverflowContextValue> = {}) =>
     registerItem: jest.fn(),
     updateOverflow: jest.fn(),
     ...options,
-  } as OverflowContextValue);
+  }) as OverflowContextValue;
 
 describe('useOverflowItem', () => {
   it('should register item', () => {

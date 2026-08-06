@@ -29,13 +29,13 @@ export const devtoolsCallback =
     const flipBoundaries: HTMLElement[] = Array.isArray(options.flipBoundary)
       ? options.flipBoundary
       : isHTMLElement(options.flipBoundary)
-      ? [options.flipBoundary]
-      : [];
+        ? [options.flipBoundary]
+        : [];
     const overflowBoundaries: HTMLElement[] = Array.isArray(options.overflowBoundary)
       ? options.overflowBoundary
       : isHTMLElement(options.overflowBoundary)
-      ? [options.overflowBoundary]
-      : [];
+        ? [options.overflowBoundary]
+        : [];
     return {
       type: 'FluentUIMiddleware',
       middlewareState,

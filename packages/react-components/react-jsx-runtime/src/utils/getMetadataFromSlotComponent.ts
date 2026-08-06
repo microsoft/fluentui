@@ -26,7 +26,7 @@ export function getMetadataFromSlotComponent<Props extends UnknownSlotProps>(
   const props = propsWithoutMetadata as UnknownSlotProps as Props;
 
   const elementType = (
-    typeof baseElementType === 'string' ? as ?? baseElementType : baseElementType
+    typeof baseElementType === 'string' ? (as ?? baseElementType) : baseElementType
   ) as React.ElementType<Props>;
 
   if (typeof elementType !== 'string' && as) {

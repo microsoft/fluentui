@@ -30,8 +30,10 @@ export function getStaggerTotalDuration({
   return Math.max(0, staggerDuration + itemDuration);
 }
 
-export interface StaggerItemsVisibilityAtTimeParams
-  extends Pick<StaggerProps, 'itemDelay' | 'itemDuration' | 'reversed'> {
+export interface StaggerItemsVisibilityAtTimeParams extends Pick<
+  StaggerProps,
+  'itemDelay' | 'itemDuration' | 'reversed'
+> {
   itemCount: number;
   elapsed: number;
   direction?: 'enter' | 'exit';

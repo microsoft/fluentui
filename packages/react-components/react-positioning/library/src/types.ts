@@ -110,12 +110,7 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 export type NormalizedAutoSize = { applyMaxWidth: boolean; applyMaxHeight: boolean };
 
 export type PositioningBoundary =
-  | PositioningRect
-  | HTMLElement
-  | Array<HTMLElement>
-  | 'clippingParents'
-  | 'scrollParent'
-  | 'window';
+  PositioningRect | HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 /**
  * @deprecated use PositioningBoundary instead
  */
@@ -277,27 +272,26 @@ export interface PositioningOptions {
 /**
  * Public api that allows components using react-positioning to specify positioning options
  */
-export interface PositioningProps
-  extends Pick<
-    PositioningOptions,
-    | 'align'
-    | 'arrowPadding'
-    | 'autoSize'
-    | 'coverTarget'
-    | 'fallbackPositions'
-    | 'flipBoundary'
-    | 'offset'
-    | 'overflowBoundary'
-    | 'overflowBoundaryPadding'
-    | 'pinned'
-    | 'position'
-    | 'strategy'
-    | 'useTransform'
-    | 'matchTargetSize'
-    | 'onPositioningEnd'
-    | 'disableUpdateOnResize'
-    | 'shiftToCoverTarget'
-  > {
+export interface PositioningProps extends Pick<
+  PositioningOptions,
+  | 'align'
+  | 'arrowPadding'
+  | 'autoSize'
+  | 'coverTarget'
+  | 'fallbackPositions'
+  | 'flipBoundary'
+  | 'offset'
+  | 'overflowBoundary'
+  | 'overflowBoundaryPadding'
+  | 'pinned'
+  | 'position'
+  | 'strategy'
+  | 'useTransform'
+  | 'matchTargetSize'
+  | 'onPositioningEnd'
+  | 'disableUpdateOnResize'
+  | 'shiftToCoverTarget'
+> {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;
 

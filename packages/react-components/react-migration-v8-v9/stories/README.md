@@ -8,7 +8,7 @@ To include within storybook specify stories globs:
 
 \`\`\`js
 module.exports = {
-stories: ['../packages/react-components/react-migration-v8-v9/stories/src/**/*.stories.mdx', '../packages/react-components/react-migration-v8-v9/stories/src/**/index.stories.@(ts|tsx)'],
+stories: ['../packages/react-components/react-migration-v8-v9/stories/src/**/\*.stories.mdx', '../packages/react-components/react-migration-v8-v9/stories/src/**/index.stories.@(ts|tsx)'],
 }
 \`\`\`
 

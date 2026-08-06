@@ -20,6 +20,5 @@ export type PortalState = Pick<PortalProps, 'children'> & {
   /**
    * Ref to the root span element as virtual parent
    */
-  virtualParentRootRef: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  React.MutableRefObject<HTMLSpanElement | null>;
+  virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>; // eslint-disable-next-line @typescript-eslint/no-deprecated
 };

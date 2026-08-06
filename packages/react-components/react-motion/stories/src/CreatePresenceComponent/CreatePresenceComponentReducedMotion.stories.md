@@ -15,9 +15,7 @@ const Motion = createPresenceComponent({
       duration: 1000,
     },
   },
-  exit: {
-    /* ... */
-  },
+  exit: {/* ... */},
 });
 ```
 

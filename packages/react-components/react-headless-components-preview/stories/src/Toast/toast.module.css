@@ -58,7 +58,9 @@
   padding: 12px;
   min-width: 280px;
   max-width: 400px;
-  transition: box-shadow var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard);
+  transition:
+    box-shadow var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
   animation: var(--toast-enter-animation, slideInFromRight) var(--duration-medium) var(--ease-emphasized);
 }
 
@@ -277,7 +279,9 @@
 
 .btnPrimary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .btnPrimary:disabled {
@@ -317,7 +321,9 @@
 
 .btnSecondary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .btnSecondary:disabled {
@@ -357,7 +363,9 @@
 
 .triggerBtn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .triggerBtn:disabled {

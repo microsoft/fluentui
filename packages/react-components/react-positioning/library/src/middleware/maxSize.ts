@@ -3,8 +3,10 @@ import type { Middleware } from '@floating-ui/dom';
 import type { NormalizedAutoSize, PositioningOptions } from '../types';
 import { getBoundary } from '../utils/getBoundary';
 import { toFloatingUIPadding } from '../utils';
-export interface MaxSizeMiddlewareOptions
-  extends Pick<PositioningOptions, 'overflowBoundary' | 'overflowBoundaryPadding'> {
+export interface MaxSizeMiddlewareOptions extends Pick<
+  PositioningOptions,
+  'overflowBoundary' | 'overflowBoundaryPadding'
+> {
   container: HTMLElement | null;
   isRtl: boolean;
 }

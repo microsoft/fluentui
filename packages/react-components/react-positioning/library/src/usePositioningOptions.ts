@@ -182,7 +182,7 @@ export function usePositioningOptions(options: PositioningOptions): (
       return {
         placement,
         middleware,
-        strategy: strategy ?? positionFixed ? ('fixed' as const) : ('absolute' as const),
+        strategy: (strategy ?? positionFixed) ? ('fixed' as const) : ('absolute' as const),
 
         disableUpdateOnResize,
         useTransform,

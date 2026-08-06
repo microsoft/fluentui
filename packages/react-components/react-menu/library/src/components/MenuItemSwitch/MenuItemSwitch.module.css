@@ -100,8 +100,8 @@
      * SINGLE-valued, so they apply to every entry — no positional-list realignment.
      * Same shape as react-switch's indicator; see reports/transition-audit.md §2.3.
      */
-    transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
-      color;
+    transition-property:
+      background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
 
     @media screen and (prefers-reduced-motion: reduce) {
       transition-duration: 0.01ms;

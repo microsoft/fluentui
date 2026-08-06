@@ -3,8 +3,10 @@ import { shift as baseShift, limitShift } from '@floating-ui/dom';
 import type { PositioningOptions } from '../types';
 import { getBoundary, toFloatingUIPadding } from '../utils/index';
 
-export interface ShiftMiddlewareOptions
-  extends Pick<PositioningOptions, 'overflowBoundary' | 'overflowBoundaryPadding' | 'shiftToCoverTarget'> {
+export interface ShiftMiddlewareOptions extends Pick<
+  PositioningOptions,
+  'overflowBoundary' | 'overflowBoundaryPadding' | 'shiftToCoverTarget'
+> {
   hasScrollableElement?: boolean;
   disableTether?: PositioningOptions['unstable_disableTether'];
   container: HTMLElement | null;

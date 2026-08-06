@@ -57,7 +57,7 @@ export function getCollapseTimingInfo(
   const enterDelays = {
     size: motion.enter[0]?.delay ?? 0,
     whitespace: motion.enter[1]?.delay ?? 0,
-    opacity: animateOpacity ? motion.enter[2]?.delay ?? 0 : undefined,
+    opacity: animateOpacity ? (motion.enter[2]?.delay ?? 0) : undefined,
   };
 
   const exitDelays = animateOpacity
@@ -84,7 +84,7 @@ export function getCollapseDurationInfo(
   const enterDurations = {
     size: motion.enter[0]?.duration ?? 0,
     whitespace: motion.enter[1]?.duration ?? 0,
-    opacity: animateOpacity ? motion.enter[2]?.duration ?? 0 : undefined,
+    opacity: animateOpacity ? (motion.enter[2]?.duration ?? 0) : undefined,
   };
 
   const exitDurations = animateOpacity

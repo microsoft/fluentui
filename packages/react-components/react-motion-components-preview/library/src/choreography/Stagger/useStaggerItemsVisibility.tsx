@@ -11,8 +11,7 @@ import {
 } from './utils';
 
 export interface UseStaggerItemsVisibilityParams
-  extends Pick<StaggerProps, 'onMotionFinish'>,
-    Omit<StaggerItemsVisibilityAtTimeParams, 'elapsed' | 'itemCount'> {
+  extends Pick<StaggerProps, 'onMotionFinish'>, Omit<StaggerItemsVisibilityAtTimeParams, 'elapsed' | 'itemCount'> {
   hideMode: StaggerProps['hideMode'];
   childMapping: StaggerChildMapping;
 }

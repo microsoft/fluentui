@@ -27,7 +27,8 @@
   justify-content: center;
   font-size: var(--fontSizeBase400);
   text-align: center;
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       45deg,
       var(--colorNeutralBackground3) 25%,
       transparent 25%,
@@ -42,7 +43,9 @@
       var(--colorNeutralBackground3) 75%
     );
   background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
+  background-position:
+    0 0,
+    10px 10px;
 }
 
 .controls {

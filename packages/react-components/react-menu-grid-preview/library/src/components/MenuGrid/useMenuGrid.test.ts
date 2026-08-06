@@ -38,7 +38,7 @@ describe('useMenuGrid_unstable', () => {
       ({
         key,
         target: target ?? { role: 'row' },
-      } as unknown as React.KeyboardEvent<HTMLElement>);
+      }) as unknown as React.KeyboardEvent<HTMLElement>;
 
     it('should focus the next row matching the pressed character', () => {
       const current = rows[0]; // Apple

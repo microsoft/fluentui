@@ -10,7 +10,7 @@ function createMatchMediaMock(matches: boolean): Window['matchMedia'] {
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
       matches,
-    } as unknown as ReturnType<Window['matchMedia']>);
+    }) as unknown as ReturnType<Window['matchMedia']>;
 }
 
 function createDocumentMock(matchMedia: Window['matchMedia'] | undefined): Document {

@@ -8,7 +8,7 @@ To include within storybook specify stories globs:
 
 \`\`\`js
 module.exports = {
-stories: ['../packages/react-components/react-shared-contexts/stories/src/**/*.stories.mdx', '../packages/react-components/react-shared-contexts/stories/src/**/index.stories.@(ts|tsx)'],
+stories: ['../packages/react-components/react-shared-contexts/stories/src/**/\*.stories.mdx', '../packages/react-components/react-shared-contexts/stories/src/**/index.stories.@(ts|tsx)'],
 }
 \`\`\`
 

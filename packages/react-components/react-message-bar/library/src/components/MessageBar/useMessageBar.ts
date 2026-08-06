@@ -20,7 +20,7 @@ export const useMessageBarBase_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): MessageBarBaseState => {
   const { layout = 'auto', intent = 'info', politeness } = props;
-  const computedPoliteness = politeness ?? intent === 'info' ? 'polite' : 'assertive';
+  const computedPoliteness = (politeness ?? intent === 'info') ? 'polite' : 'assertive';
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
   const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;

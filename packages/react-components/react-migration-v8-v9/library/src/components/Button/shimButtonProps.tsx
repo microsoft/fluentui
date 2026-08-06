@@ -17,7 +17,7 @@ export const shimButtonProps = (
     <Icon {...props.iconProps} />
   ) : undefined;
 
-  const variantClassName = props.variantClassName ?? props.primary ? 'ms-Button--primary' : 'ms-Button--default';
+  const variantClassName = (props.variantClassName ?? props.primary) ? 'ms-Button--primary' : 'ms-Button--default';
   const className = [props.baseClassName, variantClassName, props.className].filter(Boolean).join(' ');
 
   return {
@@ -34,7 +34,7 @@ export const shimButtonProps = (
     children: props.onRenderChildren
       ? props.onRenderChildren(props)
       : props.onRenderText
-      ? props.onRenderText(props)
-      : props.text || props.children,
+        ? props.onRenderText(props)
+        : props.text || props.children,
   } as ButtonProps;
 };

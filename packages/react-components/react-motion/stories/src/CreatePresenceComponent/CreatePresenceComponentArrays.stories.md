@@ -14,8 +14,6 @@ const FastFadeSlowScale = createPresenceComponent({
       easing: 'cubic-bezier(0.42, 0, 0.58, 1)' /* 💡 note the different easing */,
     },
   ],
-  exit: {
-    /* ... */
-  },
+  exit: {/* ... */},
 });
 ```
