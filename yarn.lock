@@ -2958,6 +2958,7 @@ __metadata:
     license-webpack-plugin: "npm:4.0.2"
     lint-staged: "npm:10.2.10"
     loader-utils: "npm:2.0.4"
+    lodash: "npm:^4.18.1"
     markdown-table: "npm:2.0.0"
     memfs: "npm:3.5.3"
     micromatch: "npm:4.0.8"
