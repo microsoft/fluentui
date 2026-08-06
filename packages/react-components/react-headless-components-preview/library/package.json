@@ -571,6 +571,7 @@
   },
   "devDependencies": {
     "@fluentui/scripts-cypress": "*",
+    "@fluentui/verify-bundle-isolation": "*",
     "@oddbird/popover-polyfill": "^0.6.1"
   },
   "type": "module"
