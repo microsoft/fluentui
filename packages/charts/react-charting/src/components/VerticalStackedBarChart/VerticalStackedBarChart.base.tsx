@@ -626,8 +626,8 @@ export class VerticalStackedBarChartBase
     return this.props.onRenderCalloutPerStack
       ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
       : this.props.onRenderCalloutPerDataPoint && !_isHavingLines
-      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
-      : null;
+        ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps, this._renderCallout)
+        : null;
   };
 
   private _onLegendHover(legendTitle: string): void {
@@ -737,8 +737,8 @@ export class VerticalStackedBarChartBase
     return this.state.selectedLegends.length > 0
       ? this.state.selectedLegends
       : this.state.activeLegend
-      ? [this.state.activeLegend]
-      : [];
+        ? [this.state.activeLegend]
+        : [];
   }
 
   private _onRectHover(
@@ -961,8 +961,8 @@ export class VerticalStackedBarChartBase
         this._xAxisType === XAxisTypes.NumericAxis
           ? (singleChartData.xAxisPoint as number)
           : this._xAxisType === XAxisTypes.DateAxis
-          ? (singleChartData.xAxisPoint as Date)
-          : (singleChartData.xAxisPoint as string),
+            ? (singleChartData.xAxisPoint as Date)
+            : (singleChartData.xAxisPoint as string),
       );
       const xScaleBandwidthTranslate =
         this._xAxisType !== XAxisTypes.StringAxis ? -this._barWidth / 2 : (xBarScale.bandwidth() - this._barWidth) / 2;
@@ -1205,8 +1205,8 @@ export class VerticalStackedBarChartBase
               {typeof barLabel === 'string'
                 ? barLabel
                 : typeof this.props.yAxisTickFormat === 'function'
-                ? this.props.yAxisTickFormat(barLabel)
-                : formatScientificLimitWidth(barLabel)}
+                  ? this.props.yAxisTickFormat(barLabel)
+                  : formatScientificLimitWidth(barLabel)}
             </text>
           )}
         </g>

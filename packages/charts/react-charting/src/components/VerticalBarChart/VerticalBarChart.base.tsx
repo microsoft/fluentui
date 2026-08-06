@@ -535,8 +535,8 @@ export class VerticalBarChartBase
       this._xAxisType === XAxisTypes.NumericAxis
         ? this._createNumericBars(containerHeight, containerWidth, xElement!)
         : this._xAxisType === XAxisTypes.DateAxis
-        ? this._createDateBars(containerHeight, containerWidth, xElement!)
-        : this._createStringBars(containerHeight, containerWidth, xElement!));
+          ? this._createDateBars(containerHeight, containerWidth, xElement!)
+          : this._createStringBars(containerHeight, containerWidth, xElement!));
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -1177,16 +1177,16 @@ export class VerticalBarChartBase
     return this.state.selectedLegends.length > 0
       ? this.state.selectedLegends
       : this.state.activeLegend
-      ? [this.state.activeLegend]
-      : [];
+        ? [this.state.activeLegend]
+        : [];
   }
 
   private _getAriaLabel = (point: IVerticalBarChartDataPoint): string => {
     const xValue = point.xAxisCalloutData
       ? point.xAxisCalloutData
       : point.x instanceof Date
-      ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
-      : point.x;
+        ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
+        : point.x;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
     const lineLegend = this.props.lineLegendText || 'Line';
@@ -1221,8 +1221,8 @@ export class VerticalBarChartBase
       customBarLabel !== undefined
         ? customBarLabel
         : typeof this.props.yAxisTickFormat === 'function'
-        ? this.props.yAxisTickFormat(barValue)
-        : formatScientificLimitWidth(barValue);
+          ? this.props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue);
 
     return (
       <text

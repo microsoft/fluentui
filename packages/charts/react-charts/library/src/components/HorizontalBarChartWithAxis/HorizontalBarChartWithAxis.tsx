@@ -460,8 +460,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
           ? xStart
           : xStart + barWidth
         : point.x >= X_ORIGIN
-        ? xStart + barWidth
-        : xStart;
+          ? xStart + barWidth
+          : xStart;
       const isPositiveBar = point.x >= X_ORIGIN;
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
@@ -637,8 +637,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
           ? xStart
           : xStart + barWidth
         : point.x >= X_ORIGIN
-        ? xStart + barWidth
-        : xStart;
+          ? xStart + barWidth
+          : xStart;
       const isPositiveBar = point.x >= X_ORIGIN;
       const yPosition = yBarScale(point.y) + 0.5 * (yBarScale.bandwidth() - _barHeight);
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
@@ -900,7 +900,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     };
 
     _yAxisLabels = _getOrderedYAxisLabels();
-    _xMax = Math.max(d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x)!, props.xMaxValue || 0);
+    _xMax = Math.max(
+      d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x)!,
+      props.xMaxValue || 0,
+    );
     const legendBars: JSXElement = _getLegendData(_points);
     return (
       <CartesianChart

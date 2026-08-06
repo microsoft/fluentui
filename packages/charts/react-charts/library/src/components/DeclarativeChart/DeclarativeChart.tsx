@@ -487,8 +487,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       } else {
         traceKey =
           chart.validTracesInfo![index].type === 'scatterpolar'
-            ? (trace as { subplot?: string }).subplot ?? DEFAULT_POLAR_SUBPLOT
-            : (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
+            ? ((trace as { subplot?: string }).subplot ?? DEFAULT_POLAR_SUBPLOT)
+            : ((trace as PlotData).xaxis ?? DEFAULT_XAXIS);
       }
       if (!groupedTraces[traceKey]) {
         groupedTraces[traceKey] = [];
@@ -543,7 +543,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   type ChartType = keyof ChartTypeMap;
 
   const titleObj = plotlyInputWithValidData.layout?.title;
-  const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
+  const chartTitle = typeof titleObj === 'string' ? titleObj : (titleObj?.text ?? '');
   const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
 
   const titleStyle: React.CSSProperties = {
@@ -578,7 +578,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           let chartType =
             chart.type === 'fallback' || chart.type === 'groupedverticalbar'
               ? chart.type
-              : filteredTracesInfo[0]?.type ?? chart.type;
+              : (filteredTracesInfo[0]?.type ?? chart.type);
 
           if (
             validTracesFilteredIndex.some(trace => trace.type === 'line') &&

@@ -15,7 +15,7 @@ You could also create issues under the [charting](https://github.com/microsoft/f
 
 ## Contributing
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-1EAEDB)]()
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-1EAEDB)](<>)
 
 A comprehensive contributor and developer guide is available in the charts [wiki](https://aka.ms/fluentChartingWiki).
 

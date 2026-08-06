@@ -237,7 +237,7 @@ const renderSimpleMarkupNodeList = (nodes: SimpleMarkupNode[], keyPrefix: string
   });
 const renderSimpleMarkup = (nodes: SimpleMarkupNode[], keyPrefix: string): React.ReactNode => {
   const rendered = renderSimpleMarkupNodeList(nodes, keyPrefix);
-  return rendered.length <= 1 ? rendered[0] ?? null : rendered;
+  return rendered.length <= 1 ? (rendered[0] ?? null) : rendered;
 };
 
 const normalizeBandOffset = (
@@ -498,10 +498,13 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
             }),
           }
         : hideDefaultStyles
-        ? {}
-        : {
-            backgroundColor: applyOpacityToColor(tokens.colorNeutralBackground1, DEFAULT_ANNOTATION_BACKGROUND_OPACITY),
-          }),
+          ? {}
+          : {
+              backgroundColor: applyOpacityToColor(
+                tokens.colorNeutralBackground1,
+                DEFAULT_ANNOTATION_BACKGROUND_OPACITY,
+              ),
+            }),
       borderColor: annotation.style?.borderColor,
       borderWidth: annotation.style?.borderWidth,
       borderStyle: annotation.style?.borderStyle ?? (annotation.style?.borderColor ? 'solid' : undefined),
@@ -544,8 +547,8 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
     const usePlotBounds = layout?.clipToBounds !== false;
     const viewportX = usePlotBounds ? context.plotRect.x : 0;
     const viewportY = usePlotBounds ? context.plotRect.y : 0;
-    const viewportWidth = usePlotBounds ? context.plotRect.width : context.svgRect.width ?? 0;
-    const viewportHeight = usePlotBounds ? context.plotRect.height : context.svgRect.height ?? 0;
+    const viewportWidth = usePlotBounds ? context.plotRect.width : (context.svgRect.width ?? 0);
+    const viewportHeight = usePlotBounds ? context.plotRect.height : (context.svgRect.height ?? 0);
 
     const maxTopLeftX = viewportWidth > 0 ? viewportX + viewportWidth - width : baseTopLeftX;
     const maxTopLeftY = viewportHeight > 0 ? viewportY + viewportHeight - height : baseTopLeftY;

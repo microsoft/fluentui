@@ -286,8 +286,8 @@ export class HorizontalBarChartWithAxisBase
       color = point.color
         ? point.color
         : this.props.colors
-        ? this._createColors()(point.x)
-        : getNextColor(selectedPointIndex, 0, this.props.theme?.isInverted);
+          ? this._createColors()(point.x)
+          : getNextColor(selectedPointIndex, 0, this.props.theme?.isInverted);
     }
     return (
       <>
@@ -407,8 +407,8 @@ export class HorizontalBarChartWithAxisBase
       color = selectedPoint[0].color
         ? selectedPoint[0].color
         : this.props.colors
-        ? this._createColors()(selectedPoint[0].x)
-        : getNextColor(selectedPointIndex, 0, this.props.theme?.isInverted);
+          ? this._createColors()(selectedPoint[0].x)
+          : getNextColor(selectedPointIndex, 0, this.props.theme?.isInverted);
     }
     // callout data for the bar
     YValueHover.push({
@@ -711,8 +711,8 @@ export class HorizontalBarChartWithAxisBase
           ? xStart
           : xStart + barWidth
         : point.x >= this.X_ORIGIN
-        ? xStart + barWidth
-        : xStart;
+          ? xStart + barWidth
+          : xStart;
       const isPositiveBar = point.x >= this.X_ORIGIN;
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
       prevPoint = point.x;
@@ -923,8 +923,8 @@ export class HorizontalBarChartWithAxisBase
           ? xStart
           : xStart + barWidth
         : point.x >= this.X_ORIGIN
-        ? xStart + barWidth
-        : xStart;
+          ? xStart + barWidth
+          : xStart;
       const isPositiveBar = point.x >= this.X_ORIGIN;
       const yPosition = yBarScale(point.y) + 0.5 * (yBarScale.bandwidth() - this._barHeight);
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
@@ -1062,8 +1062,8 @@ export class HorizontalBarChartWithAxisBase
     return this.state.selectedLegends.length > 0
       ? this.state.selectedLegends
       : this.state.selectedLegendTitle
-      ? [this.state.selectedLegendTitle]
-      : [];
+        ? [this.state.selectedLegendTitle]
+        : [];
   }
 
   private _onLegendSelectionChange(

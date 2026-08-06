@@ -666,8 +666,8 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
             return props.sortOrder === 'none'
               ? 0
               : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
-              ? 1
-              : -1;
+                ? 1
+                : -1;
           } else if (_xAxisType.current === XAxisTypes.DateAxis) {
             return (a.x as Date).getTime() - (b.x as Date).getTime();
           } else if (_xAxisType.current === XAxisTypes.NumericAxis) {

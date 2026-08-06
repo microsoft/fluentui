@@ -205,7 +205,7 @@ export const getOpacity = (series: Partial<PlotData>, index: number): number => 
     ? isArrayOrTypedArray(series.marker?.opacity)
       ? (series.marker?.opacity as number[])[index % (series.marker?.opacity as number[]).length]
       : (series.marker?.opacity as number)
-    : series.opacity ?? 1;
+    : (series.opacity ?? 1);
 };
 
 export const createColorScale = (

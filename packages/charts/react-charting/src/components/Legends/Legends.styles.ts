@@ -84,8 +84,8 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         props.colorOnSelectedState === theme!.semanticColors.buttonBackground
           ? '0.6'
           : props.opacity
-          ? props.opacity
-          : '',
+            ? props.opacity
+            : '',
       selectors: {
         [HighContrastSelector]: {
           border: '0px',

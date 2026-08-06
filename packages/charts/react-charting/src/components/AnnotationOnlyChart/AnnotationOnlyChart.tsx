@@ -181,22 +181,18 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
 
   const resolvedAnnotations = annotations ?? [];
   const hasAnnotations = resolvedAnnotations.length > 0;
-  const ariaLabel = hasAnnotations ? description ?? chartTitle : undefined;
+  const ariaLabel = hasAnnotations ? (description ?? chartTitle) : undefined;
 
-  React.useImperativeHandle(
-    componentRef,
-    () => {
-      const chartHandle: IChart = {
-        chartContainer: containerRef.current,
-        toImage: (opts?: IImageExportOptions) => {
-          return exportChartsAsImage([{ container: containerRef.current }], undefined, getRTL(), opts);
-        },
-      };
+  React.useImperativeHandle(componentRef, () => {
+    const chartHandle: IChart = {
+      chartContainer: containerRef.current,
+      toImage: (opts?: IImageExportOptions) => {
+        return exportChartsAsImage([{ container: containerRef.current }], undefined, getRTL(), opts);
+      },
+    };
 
-      return chartHandle;
-    },
-    [],
-  );
+    return chartHandle;
+  }, []);
 
   return (
     <div ref={containerRef} data-chart-annotation-container="true">

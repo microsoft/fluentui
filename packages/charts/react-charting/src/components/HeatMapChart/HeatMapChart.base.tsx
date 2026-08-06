@@ -858,8 +858,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           return this.props.sortOrder === 'none'
             ? 0
             : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
-            ? 1
-            : -1;
+              ? 1
+              : -1;
         } else if (this._xAxisType === XAxisTypes.DateAxis) {
           return (a.x as Date).getTime() - (b.x as Date).getTime();
         } else if (this._xAxisType === XAxisTypes.NumericAxis) {

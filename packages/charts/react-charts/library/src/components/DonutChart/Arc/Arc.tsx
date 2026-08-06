@@ -119,26 +119,22 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           // TODO innerradius and outerradius were absent
           <path
             id={id + 'focusRing'}
-            d={
-              arc.cornerRadius(cornerRadius)({
-                ...props.data!,
-                innerRadius: props.innerRadius,
-                outerRadius: props.outerRadius,
-              })!
-            }
+            d={arc.cornerRadius(cornerRadius)({
+              ...props.data!,
+              innerRadius: props.innerRadius,
+              outerRadius: props.outerRadius,
+            })!}
             className={classes.focusRing}
           />
         )}
         <path
           // TODO innerradius and outerradius were absent
           id={id}
-          d={
-            arc.cornerRadius(cornerRadius)({
-              ...props.data!,
-              innerRadius: props.innerRadius,
-              outerRadius: props.outerRadius,
-            })!
-          }
+          d={arc.cornerRadius(cornerRadius)({
+            ...props.data!,
+            innerRadius: props.innerRadius,
+            outerRadius: props.outerRadius,
+          })!}
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
           onFocus={event => _onFocus(props.data!.data, id, event, targetElement)}

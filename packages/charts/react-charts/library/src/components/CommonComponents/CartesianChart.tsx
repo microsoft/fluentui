@@ -587,8 +587,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         (axisType === XAxisTypes.StringAxis || axisType === YAxisType.StringAxis
           ? 'categories'
           : axisType === XAxisTypes.DateAxis || axisType === YAxisType.DateAxis
-          ? 'time'
-          : 'values')) +
+            ? 'time'
+            : 'values')) +
       '. '
     );
   }
@@ -843,8 +843,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                 (titleXAnchor === 'left'
                   ? margins.left! + AXIS_TITLE_PADDING
                   : titleXAnchor === 'right'
-                  ? margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth
-                  : margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2) +
+                    ? margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth
+                    : margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2) +
                 padL -
                 padR;
 
@@ -859,10 +859,10 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                 titleYAnchor === 'top'
                   ? 'hanging'
                   : titleYAnchor === 'bottom'
-                  ? 'alphabetic'
-                  : titleYAnchor === 'middle'
-                  ? 'central'
-                  : 'auto';
+                    ? 'alphabetic'
+                    : titleYAnchor === 'middle'
+                      ? 'central'
+                      : 'auto';
 
               return (
                 <SVGTooltipText

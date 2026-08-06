@@ -132,7 +132,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
           {props!.YValueHover &&
             props!.YValueHover.map((yValue: YValueHover, index: number, yValues: YValueHover[]) => {
               const isLast: boolean = index + 1 === yValues.length;
-              const shouldDrawBorderBottom = isLast ? false : yValue.shouldDrawBorderBottom ?? false;
+              const shouldDrawBorderBottom = isLast ? false : (yValue.shouldDrawBorderBottom ?? false);
               return (
                 <div
                   {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
@@ -229,7 +229,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
               <div className={classes.calloutContentY} style={{ direction: 'ltr', unicodeBidi: 'isolate' }}>
                 {
                   formatToLocaleString(
-                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
+                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : (xValue.y ?? xValue.data),
                     culture,
                   ) as React.ReactNode
                 }

@@ -91,17 +91,17 @@ export const getChartValueLabel = (
     return minValue !== 0
       ? chartValue.toString()
       : chartValueFormat === GaugeValueFormat.Fraction
-      ? `${((chartValue / maxValue) * 100).toFixed()}%`
-      : `${chartValue}/${maxValue}`;
+        ? `${((chartValue / maxValue) * 100).toFixed()}%`
+        : `${chartValue}/${maxValue}`;
   }
 
   return typeof chartValueFormat === 'function'
     ? chartValueFormat([chartValue - minValue, maxValue - minValue])
     : minValue !== 0
-    ? chartValue.toString()
-    : chartValueFormat === GaugeValueFormat.Fraction
-    ? `${chartValue}/${maxValue}`
-    : `${((chartValue / maxValue) * 100).toFixed()}%`;
+      ? chartValue.toString()
+      : chartValueFormat === GaugeValueFormat.Fraction
+        ? `${chartValue}/${maxValue}`
+        : `${((chartValue / maxValue) * 100).toFixed()}%`;
 };
 
 interface IYValue extends Omit<IYValueHover, 'y'> {
@@ -573,8 +573,8 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     return this.state.selectedLegends.length > 0
       ? this.state.selectedLegends
       : this.state.hoveredLegend
-      ? [this.state.hoveredLegend]
-      : [];
+        ? [this.state.hoveredLegend]
+        : [];
   }
 
   private _handleFocus = (focusEvent: React.FocusEvent<SVGElement>, focusedElement: string) => {

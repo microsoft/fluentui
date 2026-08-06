@@ -752,8 +752,8 @@ export class GroupedVerticalBarChartBase
     return this.state.selectedLegends.length > 0
       ? this.state.selectedLegends
       : this.state.activeLegend
-      ? [this.state.activeLegend]
-      : [];
+        ? [this.state.activeLegend]
+        : [];
   }
 
   private _getAriaLabel = (point: IGVBarChartSeriesPoint, xAxisPoint: string): string => {

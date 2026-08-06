@@ -400,10 +400,10 @@ export const PolarChartBase: React.FunctionComponent<IPolarChartProps> = React.f
                     Math.abs(radialAxisAngle - (3 * Math.PI) / 2) < EPSILON
                       ? 'middle'
                       : // (0, pi/2) or (pi, 3pi/2)
-                      (radialAxisAngle > EPSILON && radialAxisAngle - Math.PI / 2 < -EPSILON) ||
-                        (radialAxisAngle - Math.PI > EPSILON && radialAxisAngle - (3 * Math.PI) / 2 < -EPSILON)
-                      ? 'start'
-                      : 'end'
+                        (radialAxisAngle > EPSILON && radialAxisAngle - Math.PI / 2 < -EPSILON) ||
+                          (radialAxisAngle - Math.PI > EPSILON && radialAxisAngle - (3 * Math.PI) / 2 < -EPSILON)
+                        ? 'start'
+                        : 'end'
                   }
                   dominantBaseline="middle"
                   aria-hidden={true}
@@ -429,8 +429,8 @@ export const PolarChartBase: React.FunctionComponent<IPolarChartProps> = React.f
                   Math.abs(angle) < EPSILON || Math.abs(angle - Math.PI) < EPSILON
                     ? 'middle'
                     : angle > Math.PI
-                    ? 'end'
-                    : 'start'
+                      ? 'end'
+                      : 'start'
                 }
                 dominantBaseline="middle"
                 aria-hidden={true}

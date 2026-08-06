@@ -166,7 +166,7 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
 
   const resolvedAnnotations = annotations ?? [];
   const hasAnnotations = resolvedAnnotations.length > 0;
-  const ariaLabel = hasAnnotations ? description ?? chartTitle : undefined;
+  const ariaLabel = hasAnnotations ? (description ?? chartTitle) : undefined;
 
   return (
     <div ref={containerRef} data-chart-annotation-container="true">

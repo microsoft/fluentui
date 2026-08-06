@@ -699,8 +699,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     return props.onRenderCalloutPerStack
       ? props.onRenderCalloutPerStack(stackCalloutProps)
       : props.onRenderCalloutPerDataPoint
-      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
-      : null;
+        ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+        : null;
   }
 
   const _getNumericMinMaxOfY = React.useCallback(

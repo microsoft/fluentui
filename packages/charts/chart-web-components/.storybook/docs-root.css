@@ -18,7 +18,13 @@
 }
 
 #storybook-docs .sbdocs-content {
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   max-width: 1200px;
 }
@@ -38,7 +44,13 @@
 }
 
 #storybook-docs .sbdocs:not(.sbdocs-preview) p {
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   font-size: 18px;
   line-height: 27px;
@@ -64,7 +76,13 @@
 }
 
 #storybook-docs .sbdocs h2 {
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   font-size: 24px;
   line-height: 28px;
@@ -82,7 +100,13 @@
 }
 
 #storybook-docs .sbdocs-h3 {
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -105,7 +129,13 @@
 }
 
 #storybook-docs .sbdocs:not(.sbdocs-preview) li {
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   font-size: 16px;
   line-height: 150%;
@@ -191,7 +221,13 @@
 
 .docs-story + div > div:last-child > button {
   color: white;
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   font-size: 14px;
   line-height: 150%;
@@ -217,7 +253,13 @@
 #storybook-docs .docblock-argstable-head th {
   letter-spacing: -0.01em;
   color: black;
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   font-size: 16px;
   line-height: 150%;
@@ -241,7 +283,13 @@
 
 #storybook-docs .docblock-argstable tbody tr td:nth-child(1) span {
   font-weight: normal;
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   font-size: 16px;
   line-height: 130%;
@@ -327,7 +375,13 @@
 #storybook-docs .docblock-argstable-body td > div > p,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) p,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > span {
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   font-size: 16px;
   line-height: 130%;
@@ -349,7 +403,8 @@
 
 @font-face {
   font-family: 'Segoe UI';
-  src: local('Segoe UI Light'),
+  src:
+    local('Segoe UI Light'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format('woff2'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format('woff'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format('truetype');
@@ -358,7 +413,8 @@
 
 @font-face {
   font-family: 'Segoe UI';
-  src: local('Segoe UI Semilight'),
+  src:
+    local('Segoe UI Semilight'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2) format('woff2'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff) format('woff'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf) format('truetype');
@@ -367,7 +423,8 @@
 
 @font-face {
   font-family: 'Segoe UI';
-  src: local('Segoe UI'),
+  src:
+    local('Segoe UI'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format('woff2'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format('woff'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format('truetype');
@@ -376,7 +433,8 @@
 
 @font-face {
   font-family: 'Segoe UI';
-  src: local('Segoe UI Semibold'),
+  src:
+    local('Segoe UI Semibold'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2) format('woff2'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff) format('woff'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf) format('truetype');
@@ -385,7 +443,8 @@
 
 @font-face {
   font-family: 'Segoe UI';
-  src: local('Segoe UI Bold'),
+  src:
+    local('Segoe UI Bold'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format('woff2'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format('woff'),
     url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format('truetype');

@@ -464,8 +464,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return this.state.selectedLegends.length > 0
       ? this.state.selectedLegends
       : this.state.activeLegend
-      ? [this.state.activeLegend]
-      : [];
+        ? [this.state.activeLegend]
+        : [];
   }
 
   private _isLegendHighlighted = (legend: string | undefined): boolean => {

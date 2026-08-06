@@ -600,8 +600,8 @@ export class CartesianChartBase
                   (titleXAnchor === 'left'
                     ? this.margins.left! + AXIS_TITLE_PADDING
                     : titleXAnchor === 'right'
-                    ? this.margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth
-                    : this.margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2) +
+                      ? this.margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth
+                      : this.margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2) +
                   padL -
                   padR;
 
@@ -616,10 +616,10 @@ export class CartesianChartBase
                   titleYAnchor === 'top'
                     ? 'hanging'
                     : titleYAnchor === 'bottom'
-                    ? 'alphabetic'
-                    : titleYAnchor === 'middle'
-                    ? 'central'
-                    : 'auto';
+                      ? 'alphabetic'
+                      : titleYAnchor === 'middle'
+                        ? 'central'
+                        : 'auto';
 
                 return (
                   <SVGTooltipText
@@ -887,7 +887,7 @@ export class CartesianChartBase
               <div className={_classNames.calloutContentY}>
                 {
                   formatToLocaleString(
-                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
+                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : (xValue.y ?? xValue.data),
                     culture,
                     useUTC,
                   ) as React.ReactNode
@@ -1021,8 +1021,8 @@ export class CartesianChartBase
         (axisType === XAxisTypes.StringAxis || axisType === YAxisType.StringAxis
           ? 'categories'
           : axisType === XAxisTypes.DateAxis || axisType === YAxisType.DateAxis
-          ? 'time'
-          : 'values')) +
+            ? 'time'
+            : 'values')) +
       '. '
     );
   };

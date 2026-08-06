@@ -497,8 +497,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return this.props.onRenderCalloutPerStack
       ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
       : this.props.onRenderCalloutPerDataPoint
-      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-      : null;
+        ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+        : null;
   };
 
   private _getNumericMinMaxOfY = (
@@ -782,8 +782,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   currentMarkerSize
                     ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
                     : activePoint === circleId
-                    ? 5.5
-                    : 3.5
+                      ? 5.5
+                      : 3.5
                 }
                 cx={xPoint}
                 cy={yPoint}
@@ -975,8 +975,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     markerSize
                       ? (markerSize! * extraMaxPixels * 0.3) / maxMarkerSize
                       : activePoint === this._circleId
-                      ? 5.5
-                      : 3.5
+                        ? 5.5
+                        : 3.5
                   }
                   cx={xPoint}
                   cy={yPoint}

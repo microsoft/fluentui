@@ -83,17 +83,17 @@ export const getChartValueLabel = (
     return minValue !== 0
       ? chartValue.toString()
       : chartValueFormat === 'fraction'
-      ? `${((chartValue / maxValue) * 100).toFixed()}%`
-      : `${chartValue}/${maxValue}`;
+        ? `${((chartValue / maxValue) * 100).toFixed()}%`
+        : `${chartValue}/${maxValue}`;
   }
 
   return typeof chartValueFormat === 'function'
     ? chartValueFormat([chartValue - minValue, maxValue - minValue])
     : minValue !== 0
-    ? chartValue.toString()
-    : chartValueFormat === 'fraction'
-    ? `${chartValue}/${maxValue}`
-    : `${((chartValue / maxValue) * 100).toFixed()}%`;
+      ? chartValue.toString()
+      : chartValueFormat === 'fraction'
+        ? `${chartValue}/${maxValue}`
+        : `${((chartValue / maxValue) * 100).toFixed()}%`;
 };
 
 interface YValue extends Omit<YValueHover, 'y'> {

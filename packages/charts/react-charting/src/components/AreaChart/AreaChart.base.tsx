@@ -694,8 +694,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return this.props.onRenderCalloutPerStack
       ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
       : this.props.onRenderCalloutPerDataPoint
-      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-      : null;
+        ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+        : null;
   };
 
   private _getGraphData = (
@@ -1068,8 +1068,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return this.state.selectedLegends.length > 0
       ? this.state.selectedLegends
       : this.state.activeLegend
-      ? [this.state.activeLegend]
-      : [];
+        ? [this.state.activeLegend]
+        : [];
   }
 
   private _addDefaultColors = (lineChartData?: ILineChartPoints[]): ILineChartPoints[] => {
@@ -1173,12 +1173,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _isChartEmpty(): boolean {
     return !(
-      (
-        this.props.data &&
-        this.props.data.lineChartData &&
-        this.props.data.lineChartData.length > 0 &&
-        this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
-      )
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
       // if all the data sets have no data
       // filtering all items which have no data and checking if the length of the filtered array is 0
       // which means chart is not empty

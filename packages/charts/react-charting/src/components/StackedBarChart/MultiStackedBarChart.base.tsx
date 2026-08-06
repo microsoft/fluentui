@@ -255,8 +255,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       let startColor: string = point.color
         ? point.color
         : point.placeHolder
-        ? palette.neutralLight
-        : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+          ? palette.neutralLight
+          : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       let endColor: string = startColor;
       if (this.props.enableGradient) {
         startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];

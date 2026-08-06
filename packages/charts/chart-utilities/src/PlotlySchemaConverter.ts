@@ -337,9 +337,11 @@ function findSankeyCycles(input: Partial<SankeyData>): boolean {
   const graph: Record<number, number[]> = {};
   input.node?.label?.forEach((_, idx) => (graph[idx] = []));
   input.link?.value?.forEach((val, idx) => {
-    if (
-      !(isInvalidValue(val) || isInvalidValue(input.link?.source?.[idx]) || isInvalidValue(input.link?.target?.[idx]))
-    ) {
+    if (!(
+      isInvalidValue(val) ||
+      isInvalidValue(input.link?.source?.[idx]) ||
+      isInvalidValue(input.link?.target?.[idx])
+    )) {
       graph[input.link!.source![idx]].push(input.link!.target![idx]);
     }
   });
@@ -599,7 +601,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
         ({
           index: trace.traceIndex!,
           type: trace.type!,
-        } as TraceInfo),
+        }) as TraceInfo,
     );
 
     const containsBars = mappedTraces.some(

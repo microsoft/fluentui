@@ -53,7 +53,7 @@ Figma design guidance - Coming soon
 
 ## Contributing
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-1EAEDB)]()
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-1EAEDB)](<>)
 
 Refer the main fluentui [wiki](https://github.com/microsoft/fluentui/wiki) for detailed instructions on setup and contributing to the package.
 

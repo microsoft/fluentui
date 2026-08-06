@@ -174,7 +174,7 @@ const dashOptions = {
 
 function getTitles(layout: Partial<Layout> | undefined) {
   const titleObj = layout?.title;
-  const chartTitle = typeof titleObj === 'string' ? titleObj : titleObj?.text ?? '';
+  const chartTitle = typeof titleObj === 'string' ? titleObj : (titleObj?.text ?? '');
   const titleFont = typeof titleObj === 'object' ? titleObj?.font : undefined;
   const titleXAnchor = typeof titleObj === 'object' ? titleObj?.xanchor : undefined;
   const titleYAnchor = typeof titleObj === 'object' ? titleObj?.yanchor : undefined;
@@ -190,8 +190,8 @@ function getTitles(layout: Partial<Layout> | undefined) {
   const titles = {
     chartTitle,
     ...(Object.keys(titleStyles).length > 0 ? { titleStyles } : {}),
-    xAxisTitle: typeof layout?.xaxis?.title === 'string' ? layout?.xaxis?.title : layout?.xaxis?.title?.text ?? '',
-    yAxisTitle: typeof layout?.yaxis?.title === 'string' ? layout?.yaxis?.title : layout?.yaxis?.title?.text ?? '',
+    xAxisTitle: typeof layout?.xaxis?.title === 'string' ? layout?.xaxis?.title : (layout?.xaxis?.title?.text ?? ''),
+    yAxisTitle: typeof layout?.yaxis?.title === 'string' ? layout?.yaxis?.title : (layout?.yaxis?.title?.text ?? ''),
     xAxisAnnotation: chartTitle,
   };
   return titles;
@@ -345,8 +345,8 @@ const getSecondaryYAxisValues = (data: Data[], layout: Partial<Layout> | undefin
       typeof layout?.yaxis2?.title === 'string'
         ? layout.yaxis2.title
         : typeof layout?.yaxis2?.title?.text === 'string'
-        ? layout.yaxis2.title.text
-        : undefined,
+          ? layout.yaxis2.title.text
+          : undefined,
     secondaryYScaleOptions: {
       yMinValue,
       yMaxValue,
@@ -1429,8 +1429,8 @@ export const transformPlotlyJsonToVSBCProps = (
       const textValues = Array.isArray(series.text)
         ? series.text.slice(rangeStart, rangeEnd)
         : typeof series.text === 'string'
-        ? series.text
-        : undefined;
+          ? series.text
+          : undefined;
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
@@ -2044,8 +2044,8 @@ const transformPlotlyJsonToScatterTraceProps = (
         const markerColors = isArrayOrTypedArray(series.marker?.color)
           ? (series.marker!.color as string[]).slice(rangeStart, rangeEnd)
           : Array.isArray(series.marker?.color)
-          ? (series.marker!.color as string[]).slice(rangeStart, rangeEnd)
-          : undefined;
+            ? (series.marker!.color as string[]).slice(rangeStart, rangeEnd)
+            : undefined;
         const textValues = Array.isArray(series.text) ? series.text.slice(rangeStart, rangeEnd) : undefined;
 
         return {
@@ -2057,8 +2057,8 @@ const transformPlotlyJsonToScatterTraceProps = (
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: markerSizes[i] }
               : typeof series.marker?.size === 'number'
-              ? { markerSize: series.marker.size }
-              : {}),
+                ? { markerSize: series.marker.size }
+                : {}),
             ...(markerColors ? { markerColor: markerColors[i] } : {}),
             ...(textValues ? { text: textValues[i] } : {}),
             yAxisCalloutData: getFormattedCalloutYData(rangeYValues[i] as number, yAxisTickFormat),
@@ -2307,7 +2307,7 @@ export const transformPlotlyJsonToGanttChartProps = (
   const resolveXValue = getAxisValueResolver(xAxisType, parseLocalDate);
   const resolveGanttXValue = (value: Datum) => {
     const resolvedValue = resolveXValue(value);
-    return typeof resolvedValue === 'string' ? 0 : resolvedValue ?? 0;
+    return typeof resolvedValue === 'string' ? 0 : (resolvedValue ?? 0);
   };
   const isXDate = xAxisType === 'date';
   const ganttData: GanttChartDataPoint[] = [];
@@ -2539,7 +2539,7 @@ export const transformPlotlyJsonToHeatmapProps = (
         const annotationText = getAnnotationByIndex(xIdx, yIdx);
 
         heatmapDataPoints.push({
-          x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
+          x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : (xVal ?? 0),
           y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
           value: zVal,
           rectText: annotationText || zVal,
@@ -2934,8 +2934,7 @@ export const transformPlotlyJsonToChartTableProps = (
       const fontSize = resolveCellStyle(header?.font?.size, rowIndex, colIndex) as number | undefined;
       const backgroundColor = resolveCellStyle(header?.fill?.color, rowIndex, colIndex) as string | undefined;
       const textAlign = resolveCellStyle(header?.align, rowIndex, colIndex) as
-        | React.CSSProperties['textAlign']
-        | undefined;
+        React.CSSProperties['textAlign'] | undefined;
 
       const style: React.CSSProperties = {
         ...(typeof fontColor === 'string' ? { color: fontColor } : {}),
@@ -2963,8 +2962,7 @@ export const transformPlotlyJsonToChartTableProps = (
       const fontSize = resolveCellStyle(cells?.font?.size, rowIndex, colIndex) as number | undefined;
       const backgroundColor = resolveCellStyle(cells?.fill?.color, rowIndex, colIndex) as string | undefined;
       const textAlign = resolveCellStyle(cells?.align, rowIndex, colIndex) as
-        | React.CSSProperties['textAlign']
-        | undefined;
+        React.CSSProperties['textAlign'] | undefined;
 
       const style: React.CSSProperties = {
         ...(fontColor ? { color: fontColor } : {}),
@@ -3243,8 +3241,8 @@ export const transformPlotlyJsonToPolarChartProps = (
                     ? thetaUnit === 'radians'
                       ? (theta * 180) / Math.PI
                       : thetaUnit === 'gradians'
-                      ? theta * 0.9
-                      : theta
+                        ? theta * 0.9
+                        : theta
                     : (theta as string),
                 color: markerColor ? rgb(markerColor).copy({ opacity: markerOpacity }).formatHex8() : finalSeriesColor,
                 ...(typeof markerSize !== 'undefined' ? { markerSize } : {}),
@@ -4070,13 +4068,11 @@ const plotlyDtick = (dtick: DTickValue | undefined, axType: AxisType | undefined
     dtickNum <= 0 ||
     !(
       // "M<n>" gives ticks every (integer) n months
-      (
-        (isDateAx && prefix === 'M' && dtickNum === Math.round(dtickNum)) ||
-        // "L<f>" gives ticks linearly spaced in data (not in position) every (float) f
-        (isLogAx && prefix === 'L') ||
-        // "D1" gives powers of 10 with all small digits between, "D2" gives only 2 and 5
-        (isLogAx && prefix === 'D' && (dtickNum === 1 || dtickNum === 2))
-      )
+      (isDateAx && prefix === 'M' && dtickNum === Math.round(dtickNum)) ||
+      // "L<f>" gives ticks linearly spaced in data (not in position) every (float) f
+      (isLogAx && prefix === 'L') ||
+      // "D1" gives powers of 10 with all small digits between, "D2" gives only 2 and 5
+      (isLogAx && prefix === 'D' && (dtickNum === 1 || dtickNum === 2))
     )
   ) {
     return dtickDflt;

@@ -536,8 +536,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       return props.onRenderCalloutPerStack
         ? props.onRenderCalloutPerStack(stackCalloutProps)
         : props.onRenderCalloutPerDataPoint
-        ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
-        : null;
+          ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+          : null;
     }
 
     function _getGraphData(
@@ -1003,13 +1003,11 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
 
     function _isChartEmpty(): boolean {
       return !(
-        (
-          props.data &&
-          props.data.lineChartData &&
-          props.data.lineChartData.length > 0 &&
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          props.data.lineChartData.filter((item: { data: string | any[] }) => item.data.length === 0).length === 0
-        )
+        props.data &&
+        props.data.lineChartData &&
+        props.data.lineChartData.length > 0 &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        props.data.lineChartData.filter((item: { data: string | any[] }) => item.data.length === 0).length === 0
         // if all the data sets have no data
         // filtering all items which have no data and checking if the length of the filtered array is 0
         // which means chart is not empty

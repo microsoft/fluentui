@@ -41,7 +41,7 @@ function updateChartWidthAndHeight() {
       right: 35.67,
       top: 20,
       width: 650,
-    } as DOMRect);
+    }) as DOMRect;
 }
 function sharedAfterEach() {
   jest.useRealTimers();
