@@ -166,7 +166,7 @@
     border-left-width: 0;
 
     /*
-     * `padding: 0 var(--spacingHorizontalM) 0 var(--spacingHorizontalMNudge)` expanded to
+     * `padding: 0 var(--spacing-horizontal-m) 0 var(--spacing-horizontal-m-nudge)` expanded to
      * longhands. The compiled `[ltr, rtl]` pair (`f1rmphuq` / `f26yw9j`) swaps only the
      * two inline sides, i.e. a pure property flip → logical properties.
      */

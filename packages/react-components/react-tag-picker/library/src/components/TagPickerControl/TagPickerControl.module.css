@@ -77,7 +77,7 @@
  * `useTagPickerControl.tsx`'s ResizeObserver via the byte-identical
  * `tagPickerControlAsideWidthToken` const. Both the name and the `, 0px` fallback are
  * reproduced verbatim from the compiled atomic
- * (`.f1d8q41i{padding-right:calc(var(--spacingHorizontalM) + var(--fui-TagPickerControl-aside-width, 0px));}`).
+ * (`.f1d8q41i{padding-right:calc(var(--spacing-horizontal-m) + var(--fui-TagPickerControl-aside-width, 0px));}`).
  * The runtime mechanism is untouched by this conversion.
  *
  * ── Slot rules and specificity ──────────────────────────────────────────────────────
@@ -118,7 +118,7 @@
      * `paddingRight: calc(spacingHorizontalM + var(--fui-TagPickerControl-aside-width, 0px))`.
      *
      * A spacing step in ARITHMETIC with a runtime variable: no `pe-*` utility can express it,
-     * and raw `var(--spacingHorizontalM)` is forbidden because it is the one authoring form
+     * and raw `var(--spacing-horizontal-m)` is forbidden because it is the one authoring form
      * that does not ride `--base-scale` (D4 amendment). The M step is therefore written as its
      * own `calc(12px * var(--base-scale))`, which is byte-for-byte what `pe-horizontal-m`
      * compiles to (`--spacing-horizontal-m: calc(12px * var(--base-scale))` in the generated

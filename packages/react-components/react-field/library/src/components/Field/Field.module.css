@@ -99,7 +99,7 @@
  * ── Pixel literals and spacing (DECISIONS.md D4 + amendment) ────────────────────────
  * Every value the Griffel source read from a `tokens.spacing*` is authored as the NAMED
  * spacing utility (`mt-vertical-xxs`, `me-horizontal-m`, `pt-vertical-s-nudge`, …). Raw
- * `var(--spacingVerticalXXS)` is forbidden in modules: it is the one authoring form that
+ * `var(--spacing-vertical-xxs)` is forbidden in modules: it is the one authoring form that
  * does not ride `--base-scale`. The px literals (1px, 9px, and the 12px `iconSize`) ride
  * `--base-scale` too — via the numeric utilities (`pt-1`, `pt-9`) where one exists, and as
  * `calc(<n>px * var(--base-scale))` inside calc()/font-size/vertical-align where none

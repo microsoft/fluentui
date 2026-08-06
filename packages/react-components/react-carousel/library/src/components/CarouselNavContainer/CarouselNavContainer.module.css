@@ -61,9 +61,9 @@
  * `classList[0]` (D16.2), and none of these three slots carries a marker.
  *
  * ── ONE DECLARATION IS DELIBERATELY DROPPED ─────────────────────────────────────────────
- * `autoplayExpanded` compiled to `.f49tsn4{bottom:-var(--spacingHorizontalXS);}`. That value
+ * `autoplayExpanded` compiled to `.f49tsn4{bottom:-var(--spacing-horizontal-xs);}`. That value
  * is INVALID CSS and always has been: `-var(` tokenises as a function named `-var`, so no
- * `var()` substitution happens and `-var(--spacingHorizontalXS)` is not a `<length>`.
+ * `var()` substitution happens and `-var(--spacing-horizontal-xs)` is not a `<length>`.
  * Checked, not assumed — css-tree's lexer reports `Mismatch … syntax: <length> |
  * <percentage> | auto` for it, i.e. the declaration is dropped at parse time and the rule
  * has never contributed a `bottom` to any browser. Nothing else sets `bottom` on the

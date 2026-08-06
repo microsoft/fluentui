@@ -59,7 +59,7 @@
    * registers no `--stroke-width-*` namespace), so the stroke width is written as a direct
    * `var(--spacing-thickest)`. That variable IS emitted (it is one of the four stroke widths
    * `css/emit.css` ships as real custom properties) and it scales with `--base-scale`, which
-   * a raw `var(--strokeWidthThickest)` would not.
+   * a raw `var(--stroke-width-thickest)` would not.
    */
   .focus-ring {
     fill: transparent;

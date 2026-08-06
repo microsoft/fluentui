@@ -83,7 +83,7 @@
 
   /*
    * arg 3' — from useRootStyles.overflowItem. Compiled as the `padding` shorthand
-   * (`var(--spacingVerticalXS) var(--spacingHorizontalXS)`).
+   * (`var(--spacing-vertical-xs) var(--spacing-horizontal-xs)`).
    *
    * Now the two named axis utilities (D4 amendment — raw `var(--spacing*)` is the one form
    * that does not scale with `--base-scale`): `py-vertical-xs` → `padding-block`,

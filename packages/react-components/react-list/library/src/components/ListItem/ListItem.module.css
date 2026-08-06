@@ -65,7 +65,7 @@
  * Compiled AOT reference
  * (lib-commonjs/components/ListItem/useListItemStyles.styles.js:25-65):
  *   .rikgcmv{padding:0;margin:0;text-indent:0;list-style-type:none;}
- *   .rikgcmv[data-fui-focus-visible]{outline:var(--strokeWidthThick) solid
+ *   .rikgcmv[data-fui-focus-visible]{outline:var(--stroke-width-thick) solid
  *     var(--colorStrokeFocus2);border-radius:var(--borderRadiusMedium);}
  *   .f7nlbp4{align-self:center;}
  *   .f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}

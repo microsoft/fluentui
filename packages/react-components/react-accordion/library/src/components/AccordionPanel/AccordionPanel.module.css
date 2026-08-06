@@ -36,14 +36,14 @@
  *
  * ── Spacing (DECISIONS.md D4 amendment) ────────────────────────────────────────────
  * `tokens.spacingHorizontalM` is authored as the named utility `ms-horizontal-m` /
- * `me-horizontal-m`; raw `var(--spacingHorizontalM)` is forbidden in modules because it
+ * `me-horizontal-m`; raw `var(--spacing-horizontal-m)` is forbidden in modules because it
  * is the one form that does not ride `--base-scale`.
  */
 
 @layer fui.components.l1 {
   /*
    * from useStyles.root — root arg #2.
-   * `margin: 0 var(--spacingHorizontalM)` expanded to longhands (CONVERSION_GUIDE §2).
+   * `margin: 0 var(--spacing-horizontal-m)` expanded to longhands (CONVERSION_GUIDE §2).
    */
   .root {
     @apply mt-0 mb-0 ms-horizontal-m me-horizontal-m;

@@ -446,7 +446,7 @@
     grid-row-start: primary;
     grid-row-end: secondary;
 
-    /* compiled `padding-bottom: var(--spacingHorizontalXXS)` — the HORIZONTAL token on a
+    /* compiled `padding-bottom: var(--spacing-horizontal-xxs)` — the HORIZONTAL token on a
        block-axis property. Reproduced verbatim rather than "fixed" to the vertical token;
        both steps are 2px, so this is a naming faithfulness point, not a value difference. */
     @apply pb-horizontal-xxs;

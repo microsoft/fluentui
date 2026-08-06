@@ -73,7 +73,7 @@
  * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
  * All three margins read a `tokens.spacingHorizontal*`, so they are authored as the NAMED
  * spacing utilities (`ms-horizontal-xs` / `-s-nudge` / `-s`). Raw
- * `var(--spacingHorizontalXS)` is forbidden in modules: it is the one authoring form that
+ * `var(--spacing-horizontal-xs)` is forbidden in modules: it is the one authoring form that
  * does not ride `--base-scale`.
  */
 

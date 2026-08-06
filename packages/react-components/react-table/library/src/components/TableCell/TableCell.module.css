@@ -45,7 +45,7 @@
  * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
  * `padding: '0px ' + tokens.spacingHorizontalS` is the only token-derived value and takes
  * the NAMED utilities (`ps-horizontal-s` / `pe-horizontal-s`); raw
- * `var(--spacingHorizontalS)` is forbidden in modules because it is the one form that does
+ * `var(--spacing-horizontal-s)` is forbidden in modules because it is the one form that does
  * not ride `--base-scale`. The row heights (44 / 34 / 24 px) are pixel LITERALS in the
  * Griffel source, so they take the NUMERIC utilities `h-44` / `min-h-44` &c., which
  * compute through the same `--base-scale`.

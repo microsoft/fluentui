@@ -517,9 +517,9 @@
    * into `::after` normally — the reset above already relies on that.
    *
    * Byte-check against the compiled atomics:
-   *   .fpqizxz[…]::after{border:var(--strokeWidthThick) solid var(--colorStrokeFocus2)}
+   *   .fpqizxz[…]::after{border:var(--stroke-width-thick) solid var(--colorStrokeFocus2)}
    *   .fnd8nzh[…]::after{border-radius:var(--fui-Card--border-radius)}
-   *   .f15fr7a0[…]::after{top:calc(0px - var(--strokeWidthThick) - -2px)}   (×4 sides)
+   *   .f15fr7a0[…]::after{top:calc(0px - var(--stroke-width-thick) - -2px)}   (×4 sides)
    * The utility's `calc(0px - var(--fui-focus-outline-width, 2px) -
    * var(--fui-focus-outline-offset, 0px))` substitutes to exactly that.
    *

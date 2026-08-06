@@ -36,7 +36,7 @@
  *
  * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
  * `row-gap` was read from `tokens.spacingVerticalXXS` → the named `gap-y-vertical-xxs`
- * utility. Raw `var(--spacingVerticalXXS)` is forbidden in modules: it is the one
+ * utility. Raw `var(--spacing-vertical-xxs)` is forbidden in modules: it is the one
  * authoring form that does not ride `--base-scale`.
  *
  * Verified against the compiled Griffel atomics in

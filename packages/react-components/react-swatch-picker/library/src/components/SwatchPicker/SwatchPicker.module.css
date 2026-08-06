@@ -41,7 +41,7 @@
   .root {
     /*
      * `padding: ${spacingHorizontalNone} ${spacingVerticalNone}` — compiled verbatim as
-     * `padding:var(--spacingHorizontalNone) var(--spacingVerticalNone)`, i.e. the
+     * `padding:var(--spacing-horizontal-none) var(--spacing-vertical-none)`, i.e. the
      * HORIZONTAL token on the block axis and the VERTICAL token on the inline axis. The
      * axes are swapped relative to this guide's axis rule; that is the source's own
      * oddity and it is inert because both steps are 0. Reproduced as written (D4: raw

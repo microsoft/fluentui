@@ -31,7 +31,7 @@
  * shared utility to `@apply` — the declarations are the component's own and are written
  * under the catalog `focus-visible-fui` variant. Compiled selectors reproduced 1:1:
  *
- *   .f89hs3r[data-fui-focus-visible]{outline:var(--strokeWidthThick) solid var(--colorStrokeFocus2)}
+ *   .f89hs3r[data-fui-focus-visible]{outline:var(--stroke-width-thick) solid var(--colorStrokeFocus2)}
  *   .f2krc9w[data-fui-focus-visible]{border-radius:var(--borderRadiusMedium)}
  *   .f8hki3x/.f1d2448m/.ffh67wi/.f1bjia2o[data-fui-focus-visible]{border-*-color:transparent}
  *
@@ -45,11 +45,11 @@
  * ── Stroke widths (DECISIONS.md D4 addendum) ────────────────────────────────────────
  * `outline-width` is NOT one of the families that reads the `--spacing-*` namespace, so
  * `strokeWidthThick` takes the direct `var(--spacing-thick)` reference rather than a
- * utility. Raw `var(--strokeWidthThick)` is forbidden — it is the one form that does not
+ * utility. Raw `var(--stroke-width-thick)` is forbidden — it is the one form that does not
  * ride `--base-scale`.
  *
  * ── Spacing (DECISIONS.md D4) ───────────────────────────────────────────────────────
- * `margin: auto var(--spacingHorizontalS)` compiled to a single class (`.fkb7v5e`, no
+ * `margin: auto var(--spacing-horizontal-s)` compiled to a single class (`.fkb7v5e`, no
  * `[ltr, rtl]` pair — a symmetric shorthand needs no flip). Expanded to longhands: the
  * block axis is `auto`, the inline axis is the NAMED spacing utility.
  *

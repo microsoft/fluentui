@@ -67,7 +67,7 @@
  * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
  * Every token read becomes the NAMED spacing utility. Note `useMultilineStyles.root`
  * reads `tokens.spacingVerticalM` for a HORIZONTAL property (`paddingRight`); the
- * compiled atomic is `padding-right: var(--spacingVerticalM)`, so it is reproduced as
+ * compiled atomic is `padding-right: var(--spacing-vertical-m)`, so it is reproduced as
  * `pe-vertical-m` rather than silently re-axised to `pe-horizontal-m`. Both steps are
  * 12px and both ride `--base-scale`, so the computed length is identical either way —
  * the source token is kept so this stays a pure conversion.

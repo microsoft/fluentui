@@ -34,7 +34,7 @@
  *
  * ── Stroke widths (DECISIONS.md D4 addendum) ────────────────────────────────────────────
  * `outline-width` does NOT read the `--spacing-*` namespace, so `strokeWidthThick` takes a
- * direct `var(--spacing-thick)` reference rather than a utility. Raw `var(--strokeWidthThick)`
+ * direct `var(--spacing-thick)` reference rather than a utility. Raw `var(--stroke-width-thick)`
  * is forbidden in modules — it is the one form that does not scale with `--base-scale`.
  *
  * ── ORDER ───────────────────────────────────────────────────────────────────────────────

@@ -56,7 +56,7 @@
  * the base blocks — the same relation the mergeClasses argument order encoded.
  *
  * ── Shorthand expansion & spacing (DECISIONS.md D4) ─────────────────────────────────────
- * `padding: 0px` (`.f1c5fvqg`) and `margin: 0 var(--spacingHorizontalXS)` (`.f186qr3g`,
+ * `padding: 0px` (`.f1c5fvqg`) and `margin: 0 var(--spacing-horizontal-xs)` (`.f186qr3g`,
  * single class — a symmetric shorthand needs no RTL flip) are expanded to longhands per the
  * cookbook; the inline margin takes the NAMED spacing utility. The 40/48 px box sizes match
  * no spacing step, so they take NUMERIC utilities (`w-40`, `h-48`), which compile through

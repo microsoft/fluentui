@@ -56,7 +56,7 @@
  *
  * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
  * `tokens.spacingHorizontalS` takes the NAMED utility `gap-horizontal-s`; raw
- * `var(--spacingHorizontalS)` is forbidden in modules because it is the one form that does
+ * `var(--spacing-horizontal-s)` is forbidden in modules because it is the one form that does
  * not ride `--base-scale`. The three media font sizes (16 / 20 / 24 px) are pixel LITERALS,
  * written `calc(<n>px * var(--base-scale))` — `font-size` reads Tailwind's `--text-*`
  * namespace, not `--spacing-*`, so there is no numeric utility for it and this is the form

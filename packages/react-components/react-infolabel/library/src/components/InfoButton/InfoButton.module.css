@@ -202,7 +202,7 @@
    * from useButtonStyles.large — arg #6, and the last `d` bucket rule, so it beats the
    * base padding above. `size` is a scale prop → `data-size` (DECISIONS.md D3).
    *
-   * NOTE the compiled value is `padding:var(--spacingVerticalXXS) var(--spacingVerticalXXS)`
+   * NOTE the compiled value is `padding:var(--spacing-vertical-xxs) var(--spacing-vertical-xxs)`
    * — spacingVERTICALXXS on BOTH axes. That is what the Griffel source says and what the
    * compiler emitted (atomic `f1kx978o`); reproduced verbatim rather than "fixed" to
    * spacingHorizontalXXS. The named utilities keep that quirk visible: the inline-axis pair

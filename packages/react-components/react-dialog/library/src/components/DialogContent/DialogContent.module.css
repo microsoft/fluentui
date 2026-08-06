@@ -38,7 +38,7 @@
  * margin that cancels it — the pair exists so a focus ring drawn just outside a child is not
  * clipped by this element's `overflow-y: auto`, and it only nets to zero if both halves are
  * the same length. `padding` and `margin` are spacing-powered families (probe-measured), so
- * both take the utility: `p-thick` / `-m-thick`. Raw `var(--strokeWidthThick)` is forbidden
+ * both take the utility: `p-thick` / `-m-thick`. Raw `var(--stroke-width-thick)` is forbidden
  * in component modules — it is the one form that does not ride `--base-scale`, which would
  * break exactly the cancellation this rule depends on under user zoom.
  *

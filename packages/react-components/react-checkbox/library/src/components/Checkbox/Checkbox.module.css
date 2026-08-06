@@ -107,7 +107,7 @@
  *
  * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
  * Every value the Griffel source read from a `tokens.spacing*` is authored as the NAMED
- * spacing utility (`mt-vertical-s`, `ps-horizontal-xs`, …). Raw `var(--spacingVerticalS)`
+ * spacing utility (`mt-vertical-s`, `ps-horizontal-xs`, …). Raw `var(--spacing-vertical-s)`
  * is forbidden in modules: it is the one authoring form that does not ride `--base-scale`,
  * so it would drift from the indicator sizes above at a non-default root font size. The two
  * spacing terms that sit INSIDE a calc() — where no utility can reach — are written as the
@@ -180,7 +180,7 @@
     border-width: var(--spacing-thin);
     border-radius: var(--borderRadiusSmall);
 
-    /* `margin: var(--spacingVerticalS) var(--spacingHorizontalS)` expanded to longhands and
+    /* `margin: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands and
        then to the named spacing utilities (D4 amendment); no rtl class was compiled, so the
        inline sides stay physical. */
     @apply mt-vertical-s mr-horizontal-s mb-vertical-s ml-horizontal-s;
@@ -342,7 +342,7 @@
     color: inherit;
     cursor: inherit;
 
-    /* `padding: var(--spacingVerticalS) var(--spacingHorizontalS)` expanded to longhands
+    /* `padding: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands
        (CONVERSION_GUIDE §2): the position slices below override single inline sides inside
        this same layer, and Griffel's shorthand-loses-to-longhand priority (`p: -1`) has no
        CSS equivalent. Inline sides are logical because `before`/`after` compile to an

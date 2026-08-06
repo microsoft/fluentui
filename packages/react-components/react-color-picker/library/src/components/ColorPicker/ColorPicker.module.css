@@ -32,7 +32,7 @@
  * Verified against the compiled Griffel atomics in
  * lib-commonjs/components/ColorPicker/useColorPickerStyles.styles.js:
  *   .f22iagw{display:flex}  .f1vx9l62{flex-direction:column}
- *   .f7e3wsx{gap:var(--spacingVerticalXS)}
+ *   .f7e3wsx{gap:var(--spacing-vertical-xs)}
  */
 
 @layer fui.components.l1 {

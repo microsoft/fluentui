@@ -90,7 +90,7 @@
  * has nothing for `--base-scale` to scale — same call InfoButton.module.css documents).
  * `spacingHorizontalXXL` appears inside a `calc()`, where no utility can reach, so it is
  * written as the token's canonical `24px * var(--base-scale)` — raw
- * `var(--spacingHorizontalXXL)` is forbidden because it is the one form that would not
+ * `var(--spacing-horizontal-xxl)` is forbidden because it is the one form that would not
  * scale with the rest.
  *
  * Pixel literals (32/24 px min-height, 24px min-width) stay pixel literals and ride
@@ -129,7 +129,7 @@
 
   /* from useMainBaseStyles (makeResetStyles) — main arg #2 */
   .main {
-    /* `padding: 0 var(--spacingHorizontalXXS)` expanded to longhands (cookbook §2) */
+    /* `padding: 0 var(--spacing-horizontal-xxs)` expanded to longhands (cookbook §2) */
     padding-top: 0;
     padding-bottom: 0;
 
@@ -146,7 +146,7 @@
        Griffel reset is `flex: 0 0 auto`. Same computed value, fewer questions. */
     flex: 0 0 auto;
 
-    /* `padding: var(--spacingVerticalXS) 0` expanded to longhands (cookbook §2) */
+    /* `padding: var(--spacing-vertical-xs) 0` expanded to longhands (cookbook §2) */
     @apply pt-vertical-xs pb-vertical-xs;
 
     padding-left: 0;
@@ -170,7 +170,7 @@
     z-index: 1;
     grid-area: aside;
 
-    /* `padding: 0 var(--spacingHorizontalS)` expanded to longhands (cookbook §2) */
+    /* `padding: 0 var(--spacing-horizontal-s)` expanded to longhands (cookbook §2) */
     padding-top: 0;
     padding-bottom: 0;
 
@@ -184,7 +184,7 @@
     z-index: 0;
     grid-area: aside;
 
-    /* `padding: 0 var(--spacingHorizontalM)` expanded to longhands (cookbook §2) */
+    /* `padding: 0 var(--spacing-horizontal-m)` expanded to longhands (cookbook §2) */
     padding-top: 0;
     padding-bottom: 0;
 

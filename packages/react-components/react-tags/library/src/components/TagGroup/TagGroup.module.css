@@ -30,7 +30,7 @@
  *
  * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
  * `column-gap` is the INLINE axis, so the three size steps take the horizontal token's
- * `gap-x-*` utility. Raw `var(--spacingHorizontalS)` is forbidden in modules: it is the
+ * `gap-x-*` utility. Raw `var(--spacing-horizontal-s)` is forbidden in modules: it is the
  * one authoring form that does not ride `--base-scale`.
  *
  * ── RTL ─────────────────────────────────────────────────────────────────────────────

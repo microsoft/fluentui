@@ -51,10 +51,10 @@
  * `.svg-tooltip` uses `HighContrastSelector`, narrowed as usual (DonutChart precedent).
  *
  * ── Stroke widths (D4 addendum) ─────────────────────────────────────────────────────────
- * `border: strokeWidthThick solid …` — raw `var(--strokeWidthThick)` is forbidden in
+ * `border: strokeWidthThick solid …` — raw `var(--stroke-width-thick)` is forbidden in
  * modules; the sanctioned form for border widths is the emitted `var(--spacing-thick)`
  * (= calc(2px * var(--base-scale)), identical at the default root). `padding:
- * var(--spacingHorizontalS)` (8px, the S step) becomes the named utility `p-horizontal-s`.
+ * var(--spacing-horizontal-s)` (8px, the S step) becomes the named utility `p-horizontal-s`.
  */
 
 @layer fui.components.l1 {

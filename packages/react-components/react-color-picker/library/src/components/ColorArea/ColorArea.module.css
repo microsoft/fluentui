@@ -157,9 +157,9 @@
    *   .ftqa4ok:focus{outline-style:none}
    *   .f2hkw1w:focus-visible{outline-style:none}
    *   .f1b1k54r[data-fui-focus-within]:focus-within{border-top-color:transparent}   (×4 sides)
-   *   .f1i978nd[…]::after{border:var(--strokeWidthThick) solid var(--colorStrokeFocus2)}
+   *   .f1i978nd[…]::after{border:var(--stroke-width-thick) solid var(--colorStrokeFocus2)}
    *   .f16hcqkr[…]::after{border-radius:var(--borderRadiusCircular)}
-   *   .f1tye2sp[…]::after{top:calc(var(--strokeWidthThick) * -1)}                   (×4 sides)
+   *   .f1tye2sp[…]::after{top:calc(var(--stroke-width-thick) * -1)}                   (×4 sides)
    *   @media (forced-colors: active){…::after{border-top-color:Highlight}}          (×4 sides)
    * The shared `fui-focus-outline` utility emits exactly this set; its
    * `calc(0px - var(--fui-focus-outline-width) - var(--fui-focus-outline-offset, 0px))`

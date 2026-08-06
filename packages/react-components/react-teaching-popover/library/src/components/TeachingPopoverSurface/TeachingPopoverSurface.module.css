@@ -43,7 +43,7 @@
  *
  * ── Lengths (DECISIONS.md D4) ───────────────────────────────────────────────────────────
  * `padding` reads `spacingVerticalL` on BOTH axes in the source (not a copy-paste slip worth
- * "fixing": the compiled atomic is `padding:var(--spacingVerticalL) var(--spacingVerticalL)`),
+ * "fixing": the compiled atomic is `padding:var(--spacing-vertical-l) var(--spacing-vertical-l)`),
  * so it takes the named `vertical` utility — `p-*` is all-sides and the two scales compute
  * through the same `--base-scale`. It stays the SHORTHAND Griffel emitted: PopoverSurface sets
  * its padding with a shorthand too, and cascade LAYERS decide between the two before

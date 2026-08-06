@@ -49,7 +49,7 @@
  * The source spreads `createCustomFocusIndicatorStyle({ outline: … })` into the reset. That
  * helper compiles to a plain `[data-fui-focus-visible]` rule — the AOT output is literally
  *
- *     .r98b696[data-fui-focus-visible]{outline:var(--strokeWidthThick) solid var(--colorStrokeFocus2);}
+ *     .r98b696[data-fui-focus-visible]{outline:var(--stroke-width-thick) solid var(--colorStrokeFocus2);}
  *
  * — i.e. a bespoke one-declaration outline, NOT `createFocusOutlineStyle` and NOT the
  * Button-family ring. So neither shared utility (`fui-focus-outline`, `fui-focus-ring`)

@@ -56,7 +56,7 @@
       /* `borderBottom: strokeWidthThin solid colorNeutralStroke2` expanded to longhands.
          `border-*-width` is NOT a spacing-powered Tailwind family, so the stroke width is
          referenced through the emitted `--spacing-thin` custom property, never
-         `var(--strokeWidthThin)` (D4 addendum). */
+         `var(--stroke-width-thin)` (D4 addendum). */
       border-bottom-width: var(--spacing-thin);
       border-bottom-style: solid;
       border-bottom-color: var(--colorNeutralStroke2);

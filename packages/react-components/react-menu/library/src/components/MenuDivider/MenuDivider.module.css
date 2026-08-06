@@ -35,7 +35,7 @@
  * numeric utility `-mx-5`, which computes through the same `--base-scale`. `strokeWidthThin`
  * becomes `var(--spacing-thin)`: `border-*-width` is NOT a spacing-powered Tailwind family
  * (there is no `border-thin`), so the direct variable reference is the sanctioned form, and
- * the raw `var(--strokeWidthThin)` is forbidden because it is the one form that does not
+ * the raw `var(--stroke-width-thin)` is forbidden because it is the one form that does not
  * scale with `--base-scale`.
  *
  * Verified against the compiled Griffel atomics in

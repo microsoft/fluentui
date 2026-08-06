@@ -39,8 +39,8 @@
  *             ${spacingVerticalXS}  ${spacingHorizontalMNudge}`
  *
  * and Griffel compiled it verbatim —
- * `.f1j1cbdv{padding:var(--spacingVerticalXXS) var(--spacingHorizontalXS)
- * var(--spacingVerticalXXS) var(--spacingVerticalXS) var(--spacingHorizontalMNudge);}`.
+ * `.f1j1cbdv{padding:var(--spacing-vertical-xxs) var(--spacing-horizontal-xs)
+ * var(--spacing-vertical-xxs) var(--spacing-vertical-xs) var(--spacing-horizontal-m-nudge);}`.
  * `padding` accepts one to four values, so five is a PARSE ERROR: every browser drops the
  * declaration and NavDrawerFooter renders today with DrawerFooter's own
  * `pt-vertical-l px-horizontal-xxl pb-vertical-xxl` and nothing from this slice.

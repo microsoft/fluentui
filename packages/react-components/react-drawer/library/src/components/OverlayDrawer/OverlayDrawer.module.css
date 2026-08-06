@@ -48,7 +48,7 @@
  * ── ALTITUDE: the focus ring is hoisted OUT of fui.base ───────────────────────────────
  * `useDrawerResetStyles` spreads `createFocusOutlineStyle()`, whose focus-visible half
  * compiles to `.r7dfyj8[data-fui-focus-visible]{border-*-color:transparent}` — 0-2-0. It
- * beat arg #2a's `.f1xteiwb{border-right:var(--strokeWidthThin) solid
+ * beat arg #2a's `.f1xteiwb{border-right:var(--stroke-width-thin) solid
  * var(--colorTransparentStroke)}` (0-1-0) on SPECIFICITY even though the reset bucket sorts
  * first. `:where()`-flat selectors erase that, so leaving the focus block in `fui.base`
  * would let the position border colour survive a focus ring. That is observable: in the

@@ -425,7 +425,7 @@
   .root {
     /*
      * Size variations — arg #4. `medium` is the compiled `{}` slice ("defined in base
-     * styles"), so only small/large have rules. `padding: 3px var(--spacingHorizontalS)`
+     * styles"), so only small/large have rules. `padding: 3px var(--spacing-horizontal-s)`
      * is expanded to block/inline longhands so the later `padding-block` overrides in
      * fui.components.l1 compose predictably.
      */

@@ -67,7 +67,7 @@
  * `--fui-Drawer--size` is a custom PROPERTY, so no utility can set it and the three px
  * widths take the D4 literal form `calc(<n>px * var(--base-scale))`. `strokeWidthThin`
  * becomes `var(--spacing-thin)` (D4 addendum: `border-*-width` is not spacing-powered, so
- * it takes the emitted variable directly, never `var(--strokeWidthThin)`). The separator's
+ * it takes the emitted variable directly, never `var(--stroke-width-thin)`). The separator's
  * hand-written `1px` is a px LITERAL, so it takes the `calc(1px * var(--base-scale))` form
  * — numerically the same as `var(--spacing-thin)`, but the source never named the token.
  *

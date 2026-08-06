@@ -363,7 +363,7 @@
    * popoverSurface arg 1 — from usePopoverSurfaceStyles.base, over PopoverSurface's own l1
    * rules (see the ALTITUDE note in the header).
    *
-   * `padding` compiled to the `var(--spacingVerticalS) var(--spacingHorizontalS)` shorthand
+   * `padding` compiled to the `var(--spacing-vertical-s) var(--spacing-horizontal-s)` shorthand
    * → the two named axis utilities (D4 amendment; raw `var(--spacing*)` does not scale with
    * `--base-scale`). These are the two-value LOGICAL pairs, so the inline sides still cannot
    * drift in RTL, and the axis↔token pairing matches the shorthand's vertical-then-horizontal
