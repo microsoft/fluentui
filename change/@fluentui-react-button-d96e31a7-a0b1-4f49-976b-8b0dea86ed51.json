@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "test(react-button): add CompoundButton regression coverage before base-hook extraction",
   "packageName": "@fluentui/react-button",
   "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
