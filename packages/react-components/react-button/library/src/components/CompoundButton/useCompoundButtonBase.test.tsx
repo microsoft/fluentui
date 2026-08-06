@@ -3,14 +3,14 @@ import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import '@testing-library/jest-dom';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { CompoundButtonBaseProps, CompoundButtonState } from './CompoundButton.types';
+import type { CompoundButtonBaseProps } from './CompoundButton.types';
 import { renderCompoundButton_unstable } from './renderCompoundButton';
 import { useCompoundButtonBase_unstable } from './useCompoundButton';
 
 const TestCompoundButtonBase: ForwardRefComponent<CompoundButtonBaseProps> = React.forwardRef((props, ref) => {
   const state = useCompoundButtonBase_unstable(props, ref);
 
-  return renderCompoundButton_unstable(state as CompoundButtonState);
+  return renderCompoundButton_unstable(state);
 });
 
 describe('useCompoundButtonBase_unstable', () => {
