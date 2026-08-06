@@ -84,23 +84,22 @@ export interface PieHoverLabel {
 
 export type PieInsideTextOrientation = 'horizontal' | 'radial' | 'tangential' | 'auto';
 
-export interface PieData
-  extends Pick<
-    PlotData,
-    | 'name'
-    | 'visible'
-    | 'showlegend'
-    | 'legendgroup'
-    | 'opacity'
-    | 'ids'
-    | 'labels'
-    | 'hovertext'
-    | 'automargin'
-    | 'textinfo'
-    | 'direction'
-    | 'hole'
-    | 'rotation'
-  > {
+export interface PieData extends Pick<
+  PlotData,
+  | 'name'
+  | 'visible'
+  | 'showlegend'
+  | 'legendgroup'
+  | 'opacity'
+  | 'ids'
+  | 'labels'
+  | 'hovertext'
+  | 'automargin'
+  | 'textinfo'
+  | 'direction'
+  | 'hole'
+  | 'rotation'
+> {
   type: 'pie';
   title: Partial<PieDataTitle>;
   values: Array<number | string>;
@@ -708,13 +707,7 @@ export interface Axis {
    * plotted on
    */
   spikemode:
-    | 'toaxis'
-    | 'across'
-    | 'marker'
-    | 'toaxis+across'
-    | 'toaxis+across+marker'
-    | 'across+marker'
-    | 'toaxis+marker';
+    'toaxis' | 'across' | 'marker' | 'toaxis+across' | 'toaxis+across+marker' | 'across+marker' | 'toaxis+marker';
   /**
    * Determines whether spikelines are stuck to the cursor or to the closest datapoints.
    */
@@ -993,13 +986,7 @@ export interface DataTitle {
   font: Partial<Font>;
   standoff: number;
   position:
-    | 'top left'
-    | 'top center'
-    | 'top right'
-    | 'middle center'
-    | 'bottom left'
-    | 'bottom center'
-    | 'bottom right';
+    'top left' | 'top center' | 'top right' | 'middle center' | 'bottom left' | 'bottom center' | 'bottom right';
 }
 
 export interface PlotNumber {
@@ -1105,10 +1092,7 @@ export type PlotType =
 export type Data = Partial<PlotData> | Partial<PieData> | Partial<SankeyData>;
 
 export type Color =
-  | string
-  | number
-  | Array<string | number | undefined | null>
-  | Array<Array<string | number | undefined | null>>;
+  string | number | Array<string | number | undefined | null> | Array<Array<string | number | undefined | null>>;
 export type ColorScale = string | string[] | Array<[number, string]>;
 export type DataTransform = Partial<Transform>;
 export type ScatterData = PlotData;

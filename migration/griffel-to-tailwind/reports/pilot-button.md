@@ -67,11 +67,8 @@ Per the guide's "when the guide and a report disagree with the code, the code wi
   border-radius: var(--fui-focus-ring-radius, var(--borderRadiusMedium));
   border-width: var(--fui-focus-ring-width, 1px);
   outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
-  box-shadow: 0 0 0 var(--fui-focus-ring-inset-width, var(--strokeWidthThin)) var(
-      --fui-focus-ring-color,
-      var(--colorStrokeFocus2)
-    )
-    inset;
+  box-shadow: 0 0 0 var(--fui-focus-ring-inset-width, var(--strokeWidthThin))
+    var(--fui-focus-ring-color, var(--colorStrokeFocus2)) inset;
   z-index: 1;
 }
 ```

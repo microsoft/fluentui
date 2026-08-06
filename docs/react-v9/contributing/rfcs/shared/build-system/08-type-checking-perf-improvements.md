@@ -133,10 +133,10 @@ This dts generation can be done in 2 ways:
     "type-check": {
       "dependsOn": [
         /* global nx task/script that will be run automatically - its cached so it will do work only once  */
-        "generate-circular-deps-dts"
-      ]
-    }
-  }
+        "generate-circular-deps-dts",
+      ],
+    },
+  },
 }
 ```
 

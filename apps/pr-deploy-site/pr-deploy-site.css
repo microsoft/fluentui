@@ -33,14 +33,18 @@ body {
 .Tile {
   background-color: white;
   border-radius: 2px;
-  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+  box-shadow:
+    0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132),
+    0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
   margin: 0 12px 12px 0;
   opacity: 0.96;
   transition: all 0.15s linear;
 }
 
 .Tile:not(.Tile--intro):hover {
-  box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+  box-shadow:
+    0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132),
+    0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
   opacity: 1;
 }
 

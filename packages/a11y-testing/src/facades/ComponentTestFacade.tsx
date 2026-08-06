@@ -7,7 +7,10 @@ export class ComponentTestFacade implements TestFacade {
   private root: HTMLElement;
   private onClickExecuted!: boolean;
 
-  constructor(private Component: React.FC, private props: Props = {}) {
+  constructor(
+    private Component: React.FC,
+    private props: Props = {},
+  ) {
     props.onClick = () => {
       this.onClickExecuted = true;
     };

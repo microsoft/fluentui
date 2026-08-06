@@ -55,4 +55,4 @@ on April 18th 2023 `auto-merge.config.enforce` started to block all PR's (it nev
 
 As we use github automerge funcionatity anyways we removed it from required status checks to unblock contributors and use github build-in features.
 
-~Enforcement of auto-merge comments is handled by the `auto-merge.config.enforce` status check. It's intended to run for each PR and automatically succeed if no AutoMerge policies apply. If this stops working, contact the bot team (check internal wiki for contact info).~
+~~Enforcement of auto-merge comments is handled by the `auto-merge.config.enforce` status check. It's intended to run for each PR and automatically succeed if no AutoMerge policies apply. If this stops working, contact the bot team (check internal wiki for contact info).~~

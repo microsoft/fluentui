@@ -248,8 +248,7 @@ or the `children` of a React child, array of nodes, or portal.
 
 ```ts
 type WithSlotShorthandValue<Props extends { children?: unknown }> =
-  | Props
-  | Extract<SlotShorthandValue, Props['children']>;
+  Props | Extract<SlotShorthandValue, Props['children']>;
 
 type SlotShorthandValue = React.ReactChild | React.ReactNodeArray | React.ReactPortal;
 ```

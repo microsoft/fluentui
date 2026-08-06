@@ -266,15 +266,9 @@ The [`mergeClasses() API`][griffel-merge-classes] should be used when multiple G
 import { makeStyles, shorthands } from '@griffel/react';
 
 const useClasses = makeStyles({
-  root: {
-    /* styles */
-  },
-  foo: {
-    /* styles */
-  },
-  bar: {
-    /* styles */
-  },
+  root: {/* styles */},
+  foo: {/* styles */},
+  bar: {/* styles */},
 });
 
 function Component(props) {
@@ -710,9 +704,7 @@ const useBaseClassName = makeResetStyles({
 });
 const useClasses = makeStyles({
   small: { fontSize: '12px' },
-  medium: {
-    /* defined in base styles */
-  },
+  medium: {/* defined in base styles */},
   large: { fontSize: '20px' },
 });
 

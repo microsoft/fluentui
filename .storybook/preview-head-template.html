@@ -55,10 +55,10 @@
         H = function () {},
         W = {
           height: function () {
-            return re('Custom height calculation function not defined'), document.documentElement.offsetHeight;
+            return (re('Custom height calculation function not defined'), document.documentElement.offsetHeight);
           },
           width: function () {
-            return re('Custom width calculation function not defined'), document.body.scrollWidth;
+            return (re('Custom width calculation function not defined'), document.body.scrollWidth);
           },
         },
         B = {},
@@ -74,7 +74,7 @@
             },
           }
         );
-        window.addEventListener('test', ee, U), window.removeEventListener('test', ee, U);
+        (window.addEventListener('test', ee, U), window.removeEventListener('test', ee, U));
       } catch (e) {}
       var V,
         X,
@@ -165,16 +165,16 @@
               K
             );
           });
-      te(window, 'message', function (t) {
+      (te(window, 'message', function (t) {
         var n = {
           init: function () {
-            (y = t.data),
+            ((y = t.data),
               (z = t.source),
               ae(),
               (h = !1),
               setTimeout(function () {
                 v = !1;
-              }, m);
+              }, m));
           },
           reset: function () {
             v ? ie('Page reset ignored by init') : (ie('Page size reset by host page'), Me('resetPage'));
@@ -190,11 +190,11 @@
           },
           pageInfo: function () {
             var e = i();
-            ie('PageInfoFromParent called from parent: ' + e), H(JSON.parse(e)), ie(' --');
+            (ie('PageInfoFromParent called from parent: ' + e), H(JSON.parse(e)), ie(' --'));
           },
           message: function () {
             var e = i();
-            ie('onMessage called from parent: ' + e), j(JSON.parse(e)), ie(' --');
+            (ie('onMessage called from parent: ' + e), j(JSON.parse(e)), ie(' --'));
           },
         };
         function o() {
@@ -219,11 +219,11 @@
           (!1 === h
             ? e()
             : r()
-            ? n.init()
-            : ie('Ignored message of type "' + o() + '". Received before initialization.'));
+              ? n.init()
+              : ie('Ignored message of type "' + o() + '". Received before initialization.'));
       }),
         te(window, 'readystatechange', Ae),
-        Ae();
+        Ae());
     }
     function ee() {}
     function te(e, t, n, o) {
@@ -250,9 +250,9 @@
         Ne(0, 0, e.type, e.screenY + ':' + e.screenX);
       }
       function o(e, t) {
-        ie('Add event listener: ' + t), te(window.document, e, n);
+        (ie('Add event listener: ' + t), te(window.document, e, n));
       }
-      (t = y.substr(M).split(':')),
+      ((t = y.substr(M).split(':')),
         (I = t[0]),
         (a = c !== t[1] ? Number(t[1]) : a),
         (l = c !== t[2] ? e(t[2]) : l),
@@ -271,19 +271,19 @@
         ie('Initialising iFrame (' + window.location.href + ')'),
         (function () {
           function e(e, t) {
-            return 'function' == typeof e && (ie('Setup custom ' + t + 'CalcMethod'), (W[t] = e), (e = 'custom')), e;
+            return ('function' == typeof e && (ie('Setup custom ' + t + 'CalcMethod'), (W[t] = e), (e = 'custom')), e);
           }
           'iFrameResizer' in window &&
             Object === window.iFrameResizer.constructor &&
             ((function () {
               var e = window.iFrameResizer;
-              ie('Reading data from page: ' + JSON.stringify(e)),
+              (ie('Reading data from page: ' + JSON.stringify(e)),
                 Object.keys(e).forEach(ue, e),
                 (j = 'onMessage' in e ? e.onMessage : j),
                 (q = 'onReady' in e ? e.onReady : q),
                 (k = 'targetOrigin' in e ? e.targetOrigin : k),
                 (p = 'heightCalculationMethod' in e ? e.heightCalculationMethod : p),
-                (P = 'widthCalculationMethod' in e ? e.widthCalculationMethod : P);
+                (P = 'widthCalculationMethod' in e ? e.widthCalculationMethod : P));
             })(),
             (p = e(p, 'height')),
             (P = e(P, 'width')));
@@ -346,13 +346,13 @@
             Ne(0, 0, 'message', JSON.stringify(e), t);
           },
           setHeightCalculationMethod: function (e) {
-            (p = e), fe();
+            ((p = e), fe());
           },
           setWidthCalculationMethod: function (e) {
-            (P = e), me();
+            ((P = e), me());
           },
           setTargetOrigin: function (e) {
-            ie('Set targetOrigin: ' + e), (k = e);
+            (ie('Set targetOrigin: ' + e), (k = e));
           },
           size: function (e, t) {
             Oe('size', 'parentIFrame.size(' + ((e || '') + (t ? ',' + t : '')) + ')', e, t);
@@ -390,7 +390,7 @@
             Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function (e) {
               '#' !== e.getAttribute('href') &&
                 te(e, 'click', function (e) {
-                  e.preventDefault(), n(this.getAttribute('href'));
+                  (e.preventDefault(), n(this.getAttribute('href')));
                 });
             });
           }
@@ -403,7 +403,7 @@
           return { findTarget: n };
         })()),
         Oe('init', 'Init message from host page'),
-        q();
+        q());
     }
     function ue(e) {
       var t = e.split('Callback');
@@ -427,21 +427,21 @@
           function t() {
             Oe(n.eventName, n.eventType);
           }
-          (B[e] = t), te(window, e, t, { passive: !0 });
+          ((B[e] = t), te(window, e, t, { passive: !0 }));
         },
         remove: function (e) {
           var t,
             n = B[e];
-          delete B[e], (t = window), (e = e), (n = n), t.removeEventListener(e, n, !1);
+          (delete B[e], (t = window), (e = e), (n = n), t.removeEventListener(e, n, !1));
         },
       };
-      n.eventNames && Array.prototype.map
+      (n.eventNames && Array.prototype.map
         ? ((n.eventName = n.eventNames[0]), n.eventNames.map(e[n.method]))
         : e[n.method](n.eventName),
-        ie(ne(n.method) + ' event listener: ' + n.eventType);
+        ie(ne(n.method) + ' event listener: ' + n.eventType));
     }
     function de(e) {
-      se({ method: e, eventType: 'Animation Start', eventNames: ['animationstart', 'webkitAnimationStart'] }),
+      (se({ method: e, eventType: 'Animation Start', eventNames: ['animationstart', 'webkitAnimationStart'] }),
         se({
           method: e,
           eventType: 'Animation Iteration',
@@ -484,7 +484,7 @@
           eventType: 'Transition End',
           eventNames: ['transitionend', 'webkitTransitionEnd', 'MSTransitionEnd', 'oTransitionEnd', 'otransitionend'],
         }),
-        'child' === A && se({ method: e, eventType: 'IFrame Resized', eventName: 'resize' });
+        'child' === A && se({ method: e, eventType: 'IFrame Resized', eventName: 'resize' }));
     }
     function le(e, t, n, o) {
       return (
@@ -522,14 +522,14 @@
                       : 'childList' === e.type && Array.prototype.forEach.call(e.target.querySelectorAll('img'), t);
                   }
                   function o(e) {
-                    ie('Remove listeners from ' + e.src),
+                    (ie('Remove listeners from ' + e.src),
                       e.removeEventListener('load', i, !1),
                       e.removeEventListener('error', r, !1),
                       (e = e),
-                      u.splice(u.indexOf(e), 1);
+                      u.splice(u.indexOf(e), 1));
                   }
                   function n(e, t, n) {
-                    o(e.target), Oe(t, n + ': ' + e.target.src);
+                    (o(e.target), Oe(t, n + ': ' + e.target.src));
                   }
                   function i(e) {
                     n(e, 'imageLoad', 'Image loaded');
@@ -538,7 +538,7 @@
                     n(e, 'imageLoadFailed', 'Image load failed');
                   }
                   function a(e) {
-                    Oe('mutationObserver', 'mutationObserver: ' + e[0].target + ' ' + e[0].type), e.forEach(t);
+                    (Oe('mutationObserver', 'mutationObserver: ' + e[0].target + ' ' + e[0].type), e.forEach(t));
                   }
                   var u = [],
                     c = window.MutationObserver || window.WebKitMutationObserver,
@@ -616,12 +616,12 @@
       function u(e, t) {
         return !(Math.abs(e - t) <= R);
       }
-      (r = c !== n ? n : Z[p]()),
+      ((r = c !== n ? n : Z[p]()),
         (a = c !== o ? o : $[P]()),
-        u(g, r) || (l && u(F, a)) || 'init' === e ? (Se(), Ne((g = r), (F = a), e)) : i();
+        u(g, r) || (l && u(F, a)) || 'init' === e ? (Se(), Ne((g = r), (F = a), e)) : i());
     }
     function Ee() {
-      (G = Date.now()), (Q = null), (K = V.apply(X, Y)), Q || (X = Y = null);
+      ((G = Date.now()), (Q = null), (K = V.apply(X, Y)), Q || (X = Y = null));
     }
     function Oe(e, t, n, o) {
       x && e in f
@@ -629,18 +629,18 @@
         : (e in { reset: 1, resetPage: 1, init: 1 } || ie('Trigger event: ' + t), ('init' === e ? Te : _)(e, t, n, o));
     }
     function Se() {
-      x || ((x = !0), ie('Trigger event lock on')),
+      (x || ((x = !0), ie('Trigger event lock on')),
         clearTimeout(e),
         (e = setTimeout(function () {
-          (x = !1), ie('Trigger event lock off'), ie('--');
-        }, m));
+          ((x = !1), ie('Trigger event lock off'), ie('--'));
+        }, m)));
     }
     function Me(e) {
-      (g = Z[p]()), (F = $[P]()), Ne(g, F, e);
+      ((g = Z[p]()), (F = $[P]()), Ne(g, F, e));
     }
     function Ie(e) {
       var t = p;
-      (p = n), ie('Reset trigger event: ' + e), Se(), Me('reset'), (p = t);
+      ((p = n), ie('Reset trigger event: ' + e), Se(), Me('reset'), (p = t));
     }
     function Ne(e, t, n, o, i) {
       var r;

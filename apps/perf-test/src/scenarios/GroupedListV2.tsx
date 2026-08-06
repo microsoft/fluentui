@@ -16,14 +16,12 @@ const groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
 const columns = Object.keys(items[0])
   .slice(0, 3)
-  .map(
-    (key: string): IColumn => ({
-      key,
-      name: key,
-      fieldName: key,
-      minWidth: 300,
-    }),
-  );
+  .map((key: string): IColumn => ({
+    key,
+    name: key,
+    fieldName: key,
+    minWidth: 300,
+  }));
 
 const selection = new Selection();
 selection.setItems(items);

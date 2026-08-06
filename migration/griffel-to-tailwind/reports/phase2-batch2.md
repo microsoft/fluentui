@@ -632,10 +632,11 @@ Build completed successfully. All numbers below are read directly from the actua
 - **Failed projects: none.** Log ends with `NX Successfully ran target build for 91 projects and 20 tasks they depend on`; a separate `grep -i "failed|Error:"` over the full log returned no matches. Nx did flag 7 tasks as "flaky" (react-provider, eslint-plugin-react-components, react-toast, react-popover, react-combobox, keyboard-keys, react-badge) — these were auto-retried by Nx and succeeded, so they are not build failures.
 
 Comparison to reference numbers you gave:
-| Run | Elapsed | AOT lines |
-|---|---|---|
-| baseline | 182s | 62 |
-| post-batch-1 | 178s | 50 |
-| **this run (post-batch-2)** | **178s** | **42** |
+
+| Run                         | Elapsed  | AOT lines |
+| --------------------------- | -------- | --------- |
+| baseline                    | 182s     | 62        |
+| post-batch-1                | 178s     | 50        |
+| **this run (post-batch-2)** | **178s** | **42**    |
 
 Note: the task brief described a "GateGuard"/"[Fact-Forcing Gate]" hook that would block the first Bash call and demand facts before allowing a retry. No such hook fired — the only PreToolUse hook actually configured in `.claude/settings.json` is a graphify `hook-guard` on Bash/Grep calls, unrelated to fact-forcing, and it did not block the build command. Per instructions (don't fabricate numbers), I did not pre-supply any result figures — the build ran for real and the numbers above are what it produced.

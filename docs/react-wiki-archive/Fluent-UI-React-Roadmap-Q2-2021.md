@@ -2,9 +2,9 @@ This roadmap represents the currently planned work for Fluent UI React for the n
 
 As an open source project, features not tracked on this roadmap may be submitted by the community. If you have a feature you would like to add to Fluent UI React, [file an issue](https://github.com/microsoft/fluentui/issues/new/choose) or an [RFC](https://github.com/microsoft/fluentui/tree/master/rfcs) to start the discussion!
 
-| ⚠️ Subject to Change
-|:-----------------------------------------|
-|Our roadmap provides insight into our current planning and is subject to change based on new priorities, feature requests, or learnings. While we will do our best to maintain a stable roadmap, this document does not represent a firm commitment.|
+| ⚠️ Subject to Change                                                                                                                                                                                                                                 |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Our roadmap provides insight into our current planning and is subject to change based on new priorities, feature requests, or learnings. While we will do our best to maintain a stable roadmap, this document does not represent a firm commitment. |
 
 | ❓ Got questions |
 | :--------------- |

@@ -139,7 +139,7 @@ The triage recorded:
 > One pattern the cookbook does not cover: `Export/ExportLink.tsx:74` calls `makeStyles({…})` > **inside a component body**. That has no CSS-Modules equivalent and needs a hand-written answer.
 
 **This is wrong, and it was the item that made `theme-designer` look bespoke.** `ExportLink.tsx:15`
-opens a template literal — ` const content = dedent\`` — which is closed at  `:278`. Everything
+opens a template literal — `const content = dedent\`` — which is closed at `:278`. Everything
 between is a **string**. `makeStaticStyles`/`makeStyles`/`shorthands`at`:18-20`and the`const useStyles = makeStyles({`at`:74`are text inside it. The string's value is handed to
 CodeSandbox as the`example.tsx` file (`:311-316`, via `getParameters`from`codesandbox-import-utils`, `:4`), producing the "Preview theme in CodeSandbox" link (`:334-338`).
 

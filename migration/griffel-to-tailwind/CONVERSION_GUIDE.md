@@ -41,7 +41,7 @@ where the winner would be decided by stylesheet load order. `l3`–`l5` are cons
 directly into a parent layer (`fui.components`) beat all its sublayers (probe-verified) —
 library code never does this.
 
-**Record every `` [`& .${xClassNames.slot}`] `` selector in the source before you author the
+**Record every ``[`& .${xClassNames.slot}`]`` selector in the source before you author the
 module.** Under D16 these do not survive as selectors: root-targeting ones become group markers,
 sub-slot ones become JS slot composition (§3d). Decide which each one is while you still have
 the Griffel file open — retrofitting the decision after the CSS is written means rewriting both
@@ -606,7 +606,7 @@ Ledger `validated`: build + tests green, VR diff clean, no `@griffel` import rem
 **Statics-removal gates (D16, per package once its sweep lands).** Run from the package root;
 each must return nothing.
 
-1. `` grep -rnE "['\"\`]fui-" src/ `` — no static class literals remain outside a retained identity
+1. ``grep -rnE "['\"\`]fui-" src/`` — no static class literals remain outside a retained identity
    constant. **Match all three quote characters.** `react-field` declares its five statics with
    BACKTICKS (`useFieldStyles.styles.ts:22–28`), so a single-quote-only scan reports it as having
    none and the codemod silently skips it.

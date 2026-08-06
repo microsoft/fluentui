@@ -418,9 +418,7 @@ Another API approach might be to compose existing components with motion factori
 import { Button } from '@fluentui/react-components';
 import { type AtomMotion, createMotionElement } from '@fluentui/react-motions-preview';
 
-const fade: AtomMotion = {
-  /* --- */
-};
+const fade: AtomMotion = {/* --- */};
 
 const FadeEnterDiv = createMotionElement('div', fade);
 const FadeEnterButton = createMotionElement(Button, fade);
@@ -443,9 +441,7 @@ This approach does not have obvious pros or cons, but it's worth noting that eve
 import { Button, Image } from '@fluentui/react-components';
 import { createMotionComponent, createMotionElement, atom } from '@fluentui/react-motions-preview';
 
-const fade: AtomMotion = {
-  /* --- */
-};
+const fade: AtomMotion = {/* --- */};
 
 const FadeEnter = createMotionComponent(fade);
 
@@ -524,12 +520,8 @@ type PresenceMotion = {
 For example, when using `fadePresence`, it yields a `PresenceMotion` object containing `enter` and `exit` motions:
 
 ```ts
-const fadeEnter: AtomMotion = {
-  /* --- */
-};
-const fadeExit: AtomMotion = {
-  /* --- */
-};
+const fadeEnter: AtomMotion = {/* --- */};
+const fadeExit: AtomMotion = {/* --- */};
 
 const fadePresence: PresenceMotion = {
   enter: fadeEnter,
@@ -546,9 +538,7 @@ import { createPresenceComponent, type PresenceMotion } from '@fluentui/react-mo
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
-const fadePresence: PresenceMotion = {
-  /* --- */
-};
+const fadePresence: PresenceMotion = {/* --- */};
 const Fade = createPresenceComponent(fadePresence);
 
 function MyComponent() {
@@ -573,9 +563,7 @@ import { createPresenceComponent, type PresenceMotion } from '@fluentui/react-mo
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
-const fadePresence: PresenceMotion = {
-  /* --- */
-};
+const fadePresence: PresenceMotion = {/* --- */};
 const Fade = createPresenceComponent(fadePresence);
 
 function MyComponent() {
@@ -629,9 +617,7 @@ import { createPresenceComponent, type PresenceMotion, PresenceGroup } from '@fl
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
-const fadePresence: PresenceMotion = {
-  /* --- */
-};
+const fadePresence: PresenceMotion = {/* --- */};
 
 const Fade = createPresenceComponent(fadePresence);
 
@@ -1033,9 +1019,7 @@ import { fadeEnterSlow, fadeExitSlow } from 'some-pkg';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 const useClasses = makeStyles({
-  root: {
-    /* some CSS */
-  },
+  root: {/* some CSS */},
   entering: {
     ...fadeEnterSlow,
   },
@@ -1078,9 +1062,7 @@ The approach proposed in [microsoft/fluentui#27328](https://github.com/microsoft
 import { makeStyles, Drawer } from '@fluentui/react-components';
 import { useMotion } from '@fluentui/react-motion-preview';
 
-const useClasses = makeStyles({
-  /* some CSS */
-});
+const useClasses = makeStyles({/* some CSS */});
 
 function App() {
   const classes = useClasses();
@@ -1110,9 +1092,7 @@ To avoid lifting up the state, an option is to pass the `motion` configuration a
 ```tsx
 import { makeStyles, Drawer } from '@fluentui/react-components';
 
-const useClasses = makeStyles({
-  /* some CSS */
-});
+const useClasses = makeStyles({/* some CSS */});
 
 function App() {
   const classes = useClasses();

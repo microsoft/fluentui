@@ -432,21 +432,21 @@ Consumption inside a module is always the block form, never a class prefix:
 
 ```css
 @utility color-* {
-  --color-value: --value(--fg- *, --accent- *, --game- *, --neutral- *, [ *]);
+  --color-value: --value(--fg-*, --accent-*, --game-*, --neutral-*, [*]);
   --color-opacity: calc(--modifier(integer) / 100);
 
   color: rgb(from var(--color-value) r g b / var(--color-opacity, alpha));
 }
 
 @utility flood-* {
-  --flood-value: --value(--bg- *, --accent- *, --game- *, --neutral- *, [ *]);
+  --flood-value: --value(--bg-*, --accent-*, --game-*, --neutral-*, [*]);
   --flood-opacity: calc(--modifier(integer) / 100);
 
   background-color: rgb(from var(--flood-value) r g b / var(--flood-opacity, alpha));
 }
 
 @utility outline-* {
-  --outline-value: --value(--outline- *, --accent- *, --game- *, --neutral- *, [ *]);
+  --outline-value: --value(--outline-*, --accent-*, --game-*, --neutral-*, [*]);
   --outline-opacity: calc(--modifier(integer) / 100);
 
   outline-color: rgb(from var(--outline-value) r g b / var(--outline-opacity, alpha));

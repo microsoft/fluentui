@@ -103,22 +103,24 @@ Untouched, as required: `Label.types.ts`, `useLabel.tsx`, `renderLabel.tsx`, `La
 ### Mapping table (mergeClasses ARGUMENT order → layer)
 
 **root slot**
-| # | mergeClasses argument | → target |
-|---|---|---|
-| 1 | `labelClassNames.root` | static class (JS) |
-| 2 | `useStyles.root` | `fui.components.l1` block 1 — `.root` |
-| 3 | `disabled && useStyles.disabled` | `fui.components.l1` block 2 — `.root` `@variant disabled` |
-| 4 | `useStyles[size]` | `fui.components.l1` block 3 — `@variant size-small/medium/large` (`data-size`) |
-| 5 | `weight==='semibold' && useStyles.semibold` | `fui.components.l1` block 4 — `.semibold` module class |
-| 6 | consumer `className` | unlayered (always wins) |
+
+| #   | mergeClasses argument                       | → target                                                                       |
+| --- | ------------------------------------------- | ------------------------------------------------------------------------------ |
+| 1   | `labelClassNames.root`                      | static class (JS)                                                              |
+| 2   | `useStyles.root`                            | `fui.components.l1` block 1 — `.root`                                          |
+| 3   | `disabled && useStyles.disabled`            | `fui.components.l1` block 2 — `.root` `@variant disabled`                      |
+| 4   | `useStyles[size]`                           | `fui.components.l1` block 3 — `@variant size-small/medium/large` (`data-size`) |
+| 5   | `weight==='semibold' && useStyles.semibold` | `fui.components.l1` block 4 — `.semibold` module class                         |
+| 6   | consumer `className`                        | unlayered (always wins)                                                        |
 
 **required slot**
-| # | mergeClasses argument | → target |
-|---|---|---|
-| 1 | `labelClassNames.required` | static class (JS) |
-| 2 | `useStyles.required` | `fui.components.l1` block 1 — `.required` |
-| 3 | `disabled && useStyles.disabled` | `fui.components.l1` block 2 — `.required` `@variant disabled` |
-| 4 | consumer `className` | unlayered |
+
+| #   | mergeClasses argument            | → target                                                      |
+| --- | -------------------------------- | ------------------------------------------------------------- |
+| 1   | `labelClassNames.required`       | static class (JS)                                             |
+| 2   | `useStyles.required`             | `fui.components.l1` block 1 — `.required`                     |
+| 3   | `disabled && useStyles.disabled` | `fui.components.l1` block 2 — `.required` `@variant disabled` |
+| 4   | consumer `className`             | unlayered                                                     |
 
 No `makeResetStyles` → nothing in `fui.base`. No composition over another component's hook → nothing in `fui.components.l2`.
 

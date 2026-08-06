@@ -49,22 +49,22 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     // by default we gonna use tsc for type checking only
-    "noEmit": true
+    "noEmit": true,
     //...
   },
   "include": [],
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.lib.json"
+      "path": "./tsconfig.lib.json",
     },
     {
-      "path": "./tsconfig.spec.json"
+      "path": "./tsconfig.spec.json",
     },
     {
-      "path": "./storybook/tsconfig.json"
-    }
-  ]
+      "path": "./storybook/tsconfig.json",
+    },
+  ],
 }
 ```
 
@@ -85,10 +85,10 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
     "types": [],
     // enable transpilation and declaration files generation only for implementation files
     "noEmit": false,
-    "declaration": true
+    "declaration": true,
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.stories.tsx"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx"],
 }
 ```
 
@@ -105,9 +105,9 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
     "outDir": "./dist",
     "module": "commonjs",
     // properly scoped globals and environment - note that extra 'jest'
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
   },
-  "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.spec.jsx", "**/*.d.ts"]
+  "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.spec.jsx", "**/*.d.ts"],
 }
 ```
 
@@ -122,14 +122,14 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "",
-    "checkJs": true
+    "checkJs": true,
   },
   "exclude": ["../**/*.spec.ts", "../**/*.spec.js", "../**/*.spec.tsx", "../**/*.spec.jsx"],
   "include": [
     "../src/**/*",
     // this is only to type check SB config files
-    "./*.js"
-  ]
+    "./*.js",
+  ],
 }
 ```
 
@@ -151,12 +151,12 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
       // includes tsconfig.lib.json and tsconfig.spec.json
       "path/to/<package-name>/tsconfig.*?.json",
       // includes storybook config
-      "path/to/<package-name>/.storybook/tsconfig.json"
-    ]
+      "path/to/<package-name>/.storybook/tsconfig.json",
+    ],
   },
   "rules": {
     // ...
-  }
+  },
 }
 ```
 
@@ -201,5 +201,5 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
 ## Open Issues
 
 - https://github.com/microsoft/fluentui/issues/17101
-- ~https://github.com/microsoft/fluentui/issues/19042~
+- ~~https://github.com/microsoft/fluentui/issues/19042~~
   - temporarily solved by ignoring files via .npmignore (which is not the appropriate way, as there are still typing/env clashes)

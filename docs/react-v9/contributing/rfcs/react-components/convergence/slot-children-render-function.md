@@ -396,8 +396,7 @@ type SlotComponent<Props extends UnknownSlotProps = UnknownSlotProps> = React.Ex
   readonly props: Props;
   readonly defaultProps?: Partial<Props> | undefined;
   readonly componentType:
-    | React.ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    React.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };
 ```
 
@@ -653,7 +652,7 @@ function jsxFromSlotComponent<Props extends UnknownSlotProps>(
 
   const elementType =
     component.componentType === undefined || typeof component.componentType === 'string'
-      ? asProp ?? component.componentType ?? 'div'
+      ? (asProp ?? component.componentType ?? 'div')
       : component.componentType;
 
   // on the case of an External property of children as render then this overrides even the override children.

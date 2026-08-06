@@ -88,9 +88,7 @@ This API allows overriding any positioning option for any element positioned via
 > ```ts
 > /* ⚠️ Not the proposal */
 > function usePopover() {
->   const {
->     /* ... */
->   } = usePositioning({
+>   const {/* ... */} = usePositioning({
 >     componentName: 'PopoverSurface',
 >   });
 > }

@@ -48,8 +48,8 @@ Switch class tokens in the built CSS):
 
 ```css
 /* @layer fui.base .fuicm-switch-indicator-541abe */
-transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
-  color;
+transition-property:
+  background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
 +will-change: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
 
 /* @layer fui.base .fuicm-switch-indicator-541abe > * (the thumb) */
@@ -57,8 +57,8 @@ transition-property: transform;
 +will-change: transform;
 
 /* @layer fui.base .fuicm-button-root-605c69 */
-transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
-  color;
+transition-property:
+  background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
 +will-change: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
 ```
 

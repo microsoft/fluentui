@@ -284,9 +284,7 @@ Now when either internally or externally we want to extend/add slots:
 ```ts
 const state = useComponentState();
 state.components.extraSlot = 'div';
-state.extraSlot = resolveShorthand({
-  /** Shorthand props */
-});
+state.extraSlot = resolveShorthand({/** Shorthand props */});
 
 state.components.icon = 'button';
 state.icon = filterNativeButtonProps(state.icon);

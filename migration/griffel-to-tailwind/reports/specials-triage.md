@@ -77,7 +77,7 @@ it is the identical arrangement already shipped in validated `react-carousel` an
   vars arriving as inline `style` attributes.
 - **Hard coupling to A1.** `ColorSlider` re-declares react-slider's exact var names
   (`useColorSliderStyles.styles.ts:16-21`) and `ColorArea` reads one directly:
-  `useColorAreaStyles.styles.ts:24` → `` const thumbSizeVar = `--fui-Slider__thumb--size`  ``. These two packages
+  `useColorAreaStyles.styles.ts:24` → ``const thumbSizeVar = `--fui-Slider__thumb--size` ``. These two packages
   must move in the same batch, or the names must be treated as a frozen cross-package contract.
 - Focus rings: `useColorAreaStyles.styles.ts:6,72` (`createFocusOutlineStyle`).
 - Griffel surface includes `makeResetStyles` (`useColorSliderStyles.styles.ts:38`,
@@ -128,7 +128,7 @@ The ledger note ("style factories + runtime middlewares") overstates the work.
 ### A6 · `react-migration-v0-v9` — 14 styles files
 
 - The "Attachment runtime width" flag is a false alarm: `Attachment.tsx:47` is
-  `` style={{ width: `${progress}%` }} `` — an ordinary React inline style with no Griffel involvement.
+  ``style={{ width: `${progress}%` }}`` — an ordinary React inline style with no Griffel involvement.
 - Coupling worth noting: this package imports its styling primitives from the **suite**, not from Griffel
   directly — `Attachment.styles.ts:3`:
   `import { createCustomFocusIndicatorStyle, makeResetStyles, makeStyles, tokens } from '@fluentui/react-components';`

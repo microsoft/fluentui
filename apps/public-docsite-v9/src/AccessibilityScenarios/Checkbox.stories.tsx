@@ -39,8 +39,8 @@ export const QuestionnaireAboutFoodCheckboxes: React.FunctionComponent = () => {
                 isAppleSelected && isBananaSelected && isOrangeSelected
                   ? true
                   : !(isAppleSelected || isBananaSelected || isOrangeSelected)
-                  ? false
-                  : 'mixed'
+                    ? false
+                    : 'mixed'
               }
               onChange={(event: React.ChangeEvent, data: CheckboxOnChangeData) => {
                 setIsAppleSelected(!!data.checked);

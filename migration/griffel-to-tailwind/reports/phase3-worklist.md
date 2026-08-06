@@ -216,19 +216,19 @@ progress `thickness-medium|large` · skeleton `size-8`…`size-128` (20) · radi
 
 **Still outstanding, per candidate:**
 
-| Candidate                                       | Source                                                           | Status                                                                                                         |
+| Candidate | Source | Status |
 | ----------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------- |
-| accordion `data-expand-icon-position`           | `phase2-batch3.md:74`, `AccordionHeader.module.css:217-227`      | still-local; 4 files, 3 raw uses (also NavCategoryItem, TreeItemLayout, TreeItemPersonaLayout)                 |
-| accordion `data-icon` (`has-icon`/`no-icon`)    | same                                                             | still-local (AccordionHeader, Tab)                                                                             |
-| message-bar `intent-*`                          | `phase2-batch3.md:75`, `MessageBar.module.css:63-69`             | still-local; 6 raw uses (also ToastTitle)                                                                      |
-| message-bar `layout-singleline`/`-multiline`    | same                                                             | **partial** — `layout-vertical                                                                                 | horizontal                                                        | horizontal-stacked` exist; singleline/multiline don't. 5 files |
-| message-bar `has-actions`                       | `MessageBarActions.module.css:54-57`                             | still-local                                                                                                    |
-| card `has-description`                          | `phase2-batch3.md:76`, `CardHeader.module.css:39-44`             | **not an attribute at all** — CardHeader kept two module-class maps; no `data-has-description` exists anywhere |
-| drawer `position-start                          | end                                                              | bottom`                                                                                                        | `InlineDrawer.module.css:48-60`, `OverlayDrawer.module.css:74-80` | still-local; 16 raw `[data-position` uses                      |
-| drawer `size-full`                              | same                                                             | still-local                                                                                                    |
-| drawer `scroll-state-*`                         | `DrawerHeader.module.css:44-48`, `DrawerFooter.module.css:48-52` | still-local; 6 raw uses                                                                                        |
-| avatar `data-active` / `data-active-appearance` | `Avatar.module.css`                                              | still-local; 10 raw uses; cited as the precedent other modules copy                                            |
-| combobox `data-activedescendant-focusvisible`   | `Option.module.css:69-73`                                        | **deliberately not a candidate** — "D15.5 admits no additions"                                                 |
+| accordion `data-expand-icon-position` | `phase2-batch3.md:74`, `AccordionHeader.module.css:217-227` | still-local; 4 files, 3 raw uses (also NavCategoryItem, TreeItemLayout, TreeItemPersonaLayout) |
+| accordion `data-icon` (`has-icon`/`no-icon`) | same | still-local (AccordionHeader, Tab) |
+| message-bar `intent-*` | `phase2-batch3.md:75`, `MessageBar.module.css:63-69` | still-local; 6 raw uses (also ToastTitle) |
+| message-bar `layout-singleline`/`-multiline` | same | **partial** — `layout-vertical                                                                                 | horizontal                                                        | horizontal-stacked` exist; singleline/multiline don't. 5 files |
+| message-bar `has-actions` | `MessageBarActions.module.css:54-57` | still-local |
+| card `has-description` | `phase2-batch3.md:76`, `CardHeader.module.css:39-44` | **not an attribute at all** — CardHeader kept two module-class maps; no `data-has-description` exists anywhere |
+| drawer `position-start                          | end                                                              | bottom` | `InlineDrawer.module.css:48-60`, `OverlayDrawer.module.css:74-80` | still-local; 16 raw `[data-position` uses |
+| drawer `size-full` | same | still-local |
+| drawer `scroll-state-*` | `DrawerHeader.module.css:44-48`, `DrawerFooter.module.css:48-52` | still-local; 6 raw uses |
+| avatar `data-active` / `data-active-appearance` | `Avatar.module.css` | still-local; 10 raw uses; cited as the precedent other modules copy |
+| combobox `data-activedescendant-focusvisible` | `Option.module.css:69-73` | **deliberately not a candidate** — "D15.5 admits no additions" |
 
 Also refused-by-design and out of scope: `Field.module.css:185-190`, `Image.module.css:36-38`,
 `TreeItemLayout.module.css:203-206`, `TreeItemPersonaLayout.module.css:234`.

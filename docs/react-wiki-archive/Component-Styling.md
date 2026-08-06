@@ -282,9 +282,7 @@ const getClassNames = classNamesFunction<IComponentStyleProps, IComponentStyles>
 class Comp extends React.Component {
   public render(): JSX.Element {
     const { styles, theme } = this.props;
-    const classNames = getClassNames(styles, theme, {
-      /* style props */
-    });
+    const classNames = getClassNames(styles, theme, {/* style props */});
 
     return <div className={classNames.root}>...</div>;
   }

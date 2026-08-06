@@ -160,16 +160,16 @@ per-token old/new strings in the gate output, `.scratch/phase1-theming/arith-ide
    legs shuffled per cell per rep, seed 20260805, pooled n = 93/cell; headless Chromium
    141.0.7390.37; per-leg liveness asserted: control bundle 41 literal-form / 0 axis-form
    occurrences, new bundle 33 axis-form + canonical stroke emission). Medians:
-   | Cell | control (ms) | new (ms) | delta |
-   | ---- | -----------: | -------: | ----: |
-   | Button E | 3.500 | 3.500 | +0.0% |
-   | Switch E | 5.400 | 5.500 | +1.9% |
-   | Divider E | 1.300 | 1.300 | +0.0% |
-   Switch's +0.1 ms median shift sits inside the overlapping IQRs (control [5.30, 5.60],
-   new [5.30, 5.80]) — below the series' within-leg spread; Button and Switch anchors
-   reproduce the post-remedy series values (3.4–3.5 / 5.3–5.5). The one added var() hop
-   on ~18 spacing values does not register above noise. Raw:
-   `.scratch/perf-eval/phase1-theming/results/raw-e-cells.json`.
+   | Cell                                                                                  | control (ms) | new (ms) | delta |
+   | ------------------------------------------------------------------------------------- | -----------: | -------: | ----: |
+   | Button E                                                                              |        3.500 |    3.500 | +0.0% |
+   | Switch E                                                                              |        5.400 |    5.500 | +1.9% |
+   | Divider E                                                                             |        1.300 |    1.300 | +0.0% |
+   | Switch's +0.1 ms median shift sits inside the overlapping IQRs (control [5.30, 5.60], |
+   | new [5.30, 5.80]) — below the series' within-leg spread; Button and Switch anchors    |
+   | reproduce the post-remedy series values (3.4–3.5 / 5.3–5.5). The one added var() hop  |
+   | on ~18 spacing values does not register above noise. Raw:                             |
+   | `.scratch/perf-eval/phase1-theming/results/raw-e-cells.json`.                         |
 
 ### Tailwind mechanics that make this work (probe-verified, `.scratch/phase1-theming/`)
 

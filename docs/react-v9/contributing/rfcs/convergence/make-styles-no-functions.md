@@ -101,8 +101,7 @@ The type of `FluentProviderProps` would then be:
 
 ```ts
 export interface FluentProviderProps<TTheme extends PartialTheme = PartialTheme>
-  extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>,
-    Partial<FluentProviderCommons> {
+  extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommons> {
   theme?: TTheme;
 }
 ```

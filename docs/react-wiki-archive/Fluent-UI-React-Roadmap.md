@@ -2,9 +2,9 @@ This roadmap represents the currently planned work for Fluent UI React
 
 As an open source project, features not tracked on this roadmap may be submitted by the community. To make a request for a feature to be added to this roadmap, please submit an [issue on github](https://github.com/microsoft/fluentui/issues/new/choose).
 
-| ⚠️ Subject to Change
-|:-----------------------------------------|
-|Our roadmap provides insight into our current planning and is subject to change at any time based on new priorities, feature requests, or learnings. While we will do our best to maintain a stable roadmap, this document does not represent a firm commitment.|
+| ⚠️ Subject to Change                                                                                                                                                                                                                                             |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Our roadmap provides insight into our current planning and is subject to change at any time based on new priorities, feature requests, or learnings. While we will do our best to maintain a stable roadmap, this document does not represent a firm commitment. |
 
 | ❓ Got questions |
 | :--------------- |
@@ -13,7 +13,7 @@ As an open source project, features not tracked on this roadmap may be submitted
 
 ## Q4 (Oct-Dec) 2021
 
-### Deliver a ~public~ preview of @fluentui/react-components
+### Deliver a ~~public~~ preview of @fluentui/react-components
 
 _[Update] we're not announcing @fluentui/react-components publicly until later. Our focus right now is on internal partners and getting their feedback._
 

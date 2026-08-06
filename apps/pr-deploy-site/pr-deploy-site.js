@@ -10,9 +10,7 @@ function main() {
    * NOTE: A build step will replace this with the list of actual built packages
    * @type {string[]}
    */
-  var packages = [
-    /* __PACKAGES_LIST_PLACEHOLDER__ */
-  ];
+  var packages = [/* __PACKAGES_LIST_PLACEHOLDER__ */];
 
   /**
    * @type {SiteInfo[]}

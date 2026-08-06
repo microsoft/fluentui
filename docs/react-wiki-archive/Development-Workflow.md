@@ -63,7 +63,7 @@ To start, open the root folder of the repo in VS Code. You can do this by either
 
 To open files in VS Code, use the navigation sidebar or press `ctrl+P` (Mac: `cmd+P`) and type part of the filename.
 
-VS Code also has a built-in terminal. Press `` ctrl+`  `` (Windows or Mac) to open it. (Using the built-in terminal isn't required, just convenient.)
+VS Code also has a built-in terminal. Press ``ctrl+` `` (Windows or Mac) to open it. (Using the built-in terminal isn't required, just convenient.)
 
 ### Create a branch
 

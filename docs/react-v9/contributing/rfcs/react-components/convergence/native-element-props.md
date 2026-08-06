@@ -121,11 +121,13 @@ export type ComponentProps<Shorthands, Primary extends keyof Shorthands = 'root'
   // Put the primary slot's props directly on the ComponentProps
   Shorthands[Primary] & {
     // Add shorthand props for the other slots
-    [Key in Exclude<
-      keyof Shorthands,
-      // Exclude `root` only if it is the primary slot
-      Primary extends 'root' ? Primary : never
-    >]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+    [
+      Key in Exclude<
+        keyof Shorthands,
+        // Exclude `root` only if it is the primary slot
+        Primary extends 'root' ? Primary : never
+      >
+    ]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
   };
 ```
 

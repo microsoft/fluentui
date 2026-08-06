@@ -469,8 +469,8 @@ stay installed (~2.4 MB). Consumer bundles keep **5,218 B gzip**. The 6 dev-only
   _benchmark scenario whose purpose is measuring Griffel_. Retire it or repoint it at CSS Modules —
   a deliberate choice about what the perf suite measures.
 - **`docs/react-v9/contributing/rfcs/**`** (5 files) and
-`packages/react-components/react-image/library/docs/MIGRATION.md`,
-`react-conformance-griffel/README.md`, `styles-handbook.md`: historical RFCs and handbooks.
+  `packages/react-components/react-image/library/docs/MIGRATION.md`,
+  `react-conformance-griffel/README.md`, `styles-handbook.md`: historical RFCs and handbooks.
   Leave the RFCs (they are dated records); the styles handbook and the conformance README need
   rewriting or retiring.
 - **`packages/react-components/react-theme-sass`, `theme-designer`, `recipes`,

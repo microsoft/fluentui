@@ -153,12 +153,11 @@ makes the property list 5 entries, so both value lists must go 2 → 5 entries:
 ```css
 /* if you expand — BOTH of these must change, in TWO places */
 transition-property: margin-top, margin-right, margin-bottom, margin-left, opacity;
-transition-timing-function: var(--curveEasyEaseMax), var(--curveEasyEaseMax), var(--curveEasyEaseMax), var(
-    --curveEasyEaseMax
-  ), var(--curveLinear);
-transition-duration: var(--durationUltraSlow), var(--durationUltraSlow), var(--durationUltraSlow), var(
-    --durationUltraSlow
-  ), var(--durationSlower);
+transition-timing-function:
+  var(--curveEasyEaseMax), var(--curveEasyEaseMax), var(--curveEasyEaseMax), var(--curveEasyEaseMax), var(--curveLinear);
+transition-duration:
+  var(--durationUltraSlow), var(--durationUltraSlow), var(--durationUltraSlow), var(--durationUltraSlow),
+  var(--durationSlower);
 ```
 
 Leave a 2-entry list against a 5-entry property list and CSS **cycles** it: `margin-top` gets

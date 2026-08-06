@@ -21,13 +21,7 @@ The behavior for `null rendering` should be described as: receiving `null` shoul
 
 ```tsx
 export type ShorthandProps<Props = {}> =
-  | React.ReactChild
-  | React.ReactNodeArray
-  | React.ReactPortal
-  | number
-  | null
-  | undefined
-  | ObjectShorthandProps<Props>;
+  React.ReactChild | React.ReactNodeArray | React.ReactPortal | number | null | undefined | ObjectShorthandProps<Props>;
 ```
 
 `getSlots` is a method that iterates over `ObjectShorthandProps` (_shorthands_ that were converted during `resolveShorthand` method) declarations and converts them to something that can be rendered by React.

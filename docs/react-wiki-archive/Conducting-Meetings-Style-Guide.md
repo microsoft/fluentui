@@ -55,7 +55,6 @@ Meeting should be recorded, so it can be viewed by anyone that wasn't able to at
 2. Use meeting notes
 
    > (💡 TIP: write <kbd>//</kbd> + <kbd>ENTER</kbd> to generate your name)
-
    - to ask questions
    - to provide comments/answers
 

@@ -50,12 +50,13 @@ I also extracted the previously module-private `getTargetElement` helper from `d
 All `--skip-nx-cache`.
 
 **Tests / lint / type-check — the 3 converted packages + conformance + the unconverted control:**
-| Project | Result |
-|---|---|
-| `react-conformance` | 4 suites, **36 passed** (6 new) |
-| `react-divider` | 1 suite, **33 passed**, 14 snapshots |
-| `react-button` | 9 suites, **203 passed**, 13 skipped |
-| `react-provider` | 7 suites, **44 passed**, 12 snapshots |
+
+| Project                             | Result                                  |
+| ----------------------------------- | --------------------------------------- |
+| `react-conformance`                 | 4 suites, **36 passed** (6 new)         |
+| `react-divider`                     | 1 suite, **33 passed**, 14 snapshots    |
+| `react-button`                      | 9 suites, **203 passed**, 13 skipped    |
+| `react-provider`                    | 7 suites, **44 passed**, 12 snapshots   |
 | `react-badge` (unconverted control) | 3 suites, **68 passed** — no regression |
 
 `nx run-many -t test,lint,type-check` over all five: **Successfully ran**. `generate-api` re-run clean with no tsdoc warnings.
@@ -220,18 +221,20 @@ plus `assetTypes: ['js', 'css']` on the top-level config. This is the only sourc
 Ran `yarn nx run react-divider:bundle-size --skip-nx-cache`, `react-button:bundle-size --skip-nx-cache`, `react-badge:bundle-size --skip-nx-cache`. Each rebuilt the package first (CSS Modules compiled, `dist/styles.css` emitted), then `monosize measure` logged `Asset types: css, js` and produced a `css` bucket in `assets` for the two converted packages.
 
 **react-divider** (baseline was JS-only, from `migration/griffel-to-tailwind/metrics/baseline/monosize-react-divider.json`):
-| Fixture | baseline (js) min/gz | after js min/gz | after css min/gz | after combined min/gz | Δ combined |
-|---|---|---|---|---|---|
-| Divider | 15,077 / 5,398 B | 3,467 / 1,456 B | 6,711 / 1,259 B | 10,178 / 2,715 B | −4,899 B (−32.5%) min, −2,683 B (−49.7%) gz |
+
+| Fixture | baseline (js) min/gz | after js min/gz | after css min/gz | after combined min/gz | Δ combined                                  |
+| ------- | -------------------- | --------------- | ---------------- | --------------------- | ------------------------------------------- |
+| Divider | 15,077 / 5,398 B     | 3,467 / 1,456 B | 6,711 / 1,259 B  | 10,178 / 2,715 B      | −4,899 B (−32.5%) min, −2,683 B (−49.7%) gz |
 
 **react-button**:
-| Fixture | baseline (js) min/gz | after js min/gz | after css min/gz | after combined min/gz | Δ combined |
-|---|---|---|---|---|---|
-| Button | 32,675 / 8,499 B | 4,965 / 1,992 B | 20,058 / 2,431 B | 25,023 / 4,423 B | −7,652 (−23.4%) min, −4,076 (−48.0%) gz |
-| CompoundButton | 39,553 / 9,853 B | 16,683 / 5,581 B | 20,058 / 2,431 B | 36,741 / 8,012 B | −2,812 (−7.1%) min, −1,841 (−18.7%) gz |
-| MenuButton | 37,621 / 9,890 B | 14,753 / 5,610 B | 20,058 / 2,431 B | 34,811 / 8,041 B | −2,810 (−7.5%) min, −1,849 (−18.7%) gz |
-| SplitButton | 46,572 / 11,521 B | 23,700 / 7,400 B | 20,058 / 2,431 B | 43,758 / 9,831 B | −2,814 (−6.0%) min, −1,690 (−14.7%) gz |
-| ToggleButton | 52,331 / 10,633 B | 29,461 / 7,641 B | 20,058 / 2,431 B | 49,519 / 10,072 B | −2,812 (−5.4%) min, −561 (−5.3%) gz |
+
+| Fixture        | baseline (js) min/gz | after js min/gz  | after css min/gz | after combined min/gz | Δ combined                              |
+| -------------- | -------------------- | ---------------- | ---------------- | --------------------- | --------------------------------------- |
+| Button         | 32,675 / 8,499 B     | 4,965 / 1,992 B  | 20,058 / 2,431 B | 25,023 / 4,423 B      | −7,652 (−23.4%) min, −4,076 (−48.0%) gz |
+| CompoundButton | 39,553 / 9,853 B     | 16,683 / 5,581 B | 20,058 / 2,431 B | 36,741 / 8,012 B      | −2,812 (−7.1%) min, −1,841 (−18.7%) gz  |
+| MenuButton     | 37,621 / 9,890 B     | 14,753 / 5,610 B | 20,058 / 2,431 B | 34,811 / 8,041 B      | −2,810 (−7.5%) min, −1,849 (−18.7%) gz  |
+| SplitButton    | 46,572 / 11,521 B    | 23,700 / 7,400 B | 20,058 / 2,431 B | 43,758 / 9,831 B      | −2,814 (−6.0%) min, −1,690 (−14.7%) gz  |
+| ToggleButton   | 52,331 / 10,633 B    | 29,461 / 7,641 B | 20,058 / 2,431 B | 49,519 / 10,072 B     | −2,812 (−5.4%) min, −561 (−5.3%) gz     |
 
 The `css` asset is identical (20,058 / 2,431 B) across all five Button fixtures because they all pull in the same `react-button/dist/styles.css` — Button's own converted stylesheet — regardless of which composite component is the fixture entry (CompoundButton/MenuButton/SplitButton/ToggleButton stay Griffel per the mixed-mode pilot decision but still import Button's compiled CSS transitively). Per D10, these combined numbers are the tool's own per-file-gzip sum (each asset gzipped independently, then summed) — not a subtraction-derived estimate, and not the gzip of the concatenated output.
 

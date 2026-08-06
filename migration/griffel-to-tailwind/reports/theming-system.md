@@ -196,13 +196,13 @@ with guidance in `createCSSRuleFromThemeBestPractices.md`: create rules at app b
 
 `packages/tokens/src/themes/index.ts` exports `teamsDarkTheme`, `teamsDarkV21Theme`, `teamsHighContrastTheme`, `teamsLightTheme`, `teamsLightV21Theme`, `webDarkTheme`, `webLightTheme`. All 7 are re-exported from `@fluentui/react-components` (`packages/react-components/react-components/src/index.ts:58-73`).
 
-| Theme                                    | Definition                                                                    | Notes                                                 |
+| Theme | Definition | Notes |
 | ---------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `webLightTheme`                          | `packages/tokens/src/themes/web/lightTheme.ts` — `createLightTheme(brandWeb)` |                                                       |
-| `webDarkTheme`                           | `packages/tokens/src/themes/web/darkTheme.ts` — `createDarkTheme(brandWeb)`   |                                                       |
-| `teamsLightTheme` / `teamsLightV21Theme` | `packages/tokens/src/themes/teams/lightTheme.ts`                              | `createLightTheme(brandTeams                          | brandTeamsV21)`+`...fontFamilies`from`packages/tokens/src/alias/teamsFontFamilies.ts` |
-| `teamsDarkTheme` / `teamsDarkV21Theme`   | `packages/tokens/src/themes/teams/darkTheme.ts`                               | `createTeamsDarkTheme(...)` + teams `fontFamilies`    |
-| `teamsHighContrastTheme`                 | `packages/tokens/src/themes/teams/highContrastTheme.ts`                       | `createHighContrastTheme()` — takes **no brand ramp** |
+| `webLightTheme` | `packages/tokens/src/themes/web/lightTheme.ts` — `createLightTheme(brandWeb)` | |
+| `webDarkTheme` | `packages/tokens/src/themes/web/darkTheme.ts` — `createDarkTheme(brandWeb)` | |
+| `teamsLightTheme` / `teamsLightV21Theme` | `packages/tokens/src/themes/teams/lightTheme.ts` | `createLightTheme(brandTeams                          | brandTeamsV21)`+`...fontFamilies`from`packages/tokens/src/alias/teamsFontFamilies.ts` |
+| `teamsDarkTheme` / `teamsDarkV21Theme` | `packages/tokens/src/themes/teams/darkTheme.ts` | `createTeamsDarkTheme(...)` + teams `fontFamilies` |
+| `teamsHighContrastTheme` | `packages/tokens/src/themes/teams/highContrastTheme.ts` | `createHighContrastTheme()` — takes **no brand ramp** |
 
 Factories: `packages/tokens/src/utils/createLightTheme.ts`, `createDarkTheme.ts`, `createTeamsDarkTheme.ts`, `createHighContrastTheme.ts` — each spreads `borderRadius, fontSizes, lineHeights, fontFamilies, fontWeights, strokeWidths, horizontalSpacings, verticalSpacings, durations, curves`, a color-token generator, `colorPaletteTokens`, `colorStatusTokens`, and two `createShadowTokens(...)` calls (neutral + `'Brand'` suffix).
 
@@ -260,8 +260,8 @@ const className =
       ? classNameMapping[1]
       : classNameMapping
     : hasRTLClassName
-    ? classNameMapping[0]
-    : classNameMapping;
+      ? classNameMapping[0]
+      : classNameMapping;
 ```
 
 `dir` comes from **React context, not the DOM** — `node_modules/@griffel/react/makeStyles.esm.js`: `const dir = useTextDirection();`, backed by `node_modules/@griffel/react/TextDirectionContext.esm.js` (`React.createContext('ltr')`, `TextDirectionProvider`).
@@ -409,7 +409,7 @@ function createBaseSelector(selectorType) {
 }), { selector, customizeSelector })
 ```
 
-with `getFocusOutlineStyles` = `{ ...shorthands.borderColor('transparent'), '@media (forced-colors: active)': { '::after': { ...shorthands.borderColor('Highlight') } }, '::after': { content: '""', position: 'absolute', pointerEvents: 'none', zIndex: 1, border: \`${w} solid ${c}\`, borderRadius: r, top/right/bottom/left: getOutlinePosition(...) } }`, and `getOutlinePosition` returning `calc(${outlineWidth} \* -1)`when`outlineOffset`is absent, else`calc(0px - ${outlineWidth} - ${offset})`.
+with `getFocusOutlineStyles` = `{ ...shorthands.borderColor('transparent'), '@media (forced-colors: active)': { '::after': { ...shorthands.borderColor('Highlight') } }, '::after': { content: '""', position: 'absolute', pointerEvents: 'none', zIndex: 1, border: \`${w} solid ${c}\`, borderRadius: r, top/right/bottom/left: getOutlinePosition(...) } }`, and `getOutlinePosition`returning`calc(${outlineWidth} \* -1)`when`outlineOffset`is absent, else`calc(0px - ${outlineWidth} - ${offset})`.
 
 ### 4.3 Exact compiled CSS to replicate (extracted from a built artifact)
 
