@@ -23,6 +23,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
  * @param element - HTMLElement to check scroll state of
  */
 const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement): DrawerScrollState => {
+  const epsilon = 1;
   if (scrollHeight <= clientHeight) {
     return 'none';
   }
@@ -31,7 +32,7 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
     return 'top';
   }
 
-  if (scrollTop + clientHeight === scrollHeight) {
+  if (scrollTop + clientHeight >= scrollHeight - epsilon) {
     return 'bottom';
   }
 
