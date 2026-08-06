@@ -758,6 +758,101 @@ the sweep validates against the existing zero-tolerance VR pass. Like the spacin
 deliberately NOT bundled here; schedule it per package alongside the 176-declaration spacing
 sweep, which touches an overlapping file set.
 
+## D4 superseding amendment — spacing tokens become numeric-axis aliases; old camelCase names removed, `tokens.*` repointed (theming Phase 1, option B + stroke rename, settled with user 2026-07-29)
+
+**Supersedes the value form recorded in the two 2026-07-27 amendments above** (and the
+review-item-18 line of discussion — the user's theming-architecture decision overrides that
+reviewer finding). An earlier draft of this amendment kept the old camelCase names as CSS
+read-aliases; the user then chose **option B** — drop the aliases entirely and repoint the
+JS constants — plus the **stroke rename** below. Behavior at the default 16px root is
+UNCHANGED (arithmetic identity gated, below); what changes is the structure:
+
+1. **The 22 spacing tokens register AND emit as aliases of the numeric axis**:
+   `--spacing-horizontal-m: calc(var(--spacing) * 12)` instead of
+   `calc(12px * var(--base-scale))`. `--spacing` (`calc(1px * var(--base-scale))`,
+   css/index.css — already the numeric utilities' base, unchanged) is now the **single
+   density knob**: it was verified (probe, `.scratch/phase1-theming/`) that `@theme inline`
+   carries the `var(--spacing)` reference VERBATIM into utilities, so `p-horizontal-m`
+   compiles to `padding: calc(var(--spacing) * 12)` — the same shape as `p-12` — and both
+   respond identically to a `--spacing` override on any subtree. Under the old literal
+   form that override reached numeric utilities and missed named ones (probe-demonstrated
+   red: 24px vs 12px). Multipliers are the canonical px value over the 1px base (multiplier =
+   px; exactness asserted by the generator, which throws on any px the base cannot express
+   exactly).
+2. **Stroke rename + deliberate density exception**: the PUBLIC stroke variables are
+   **`--stroke-width-thin/thick/thicker/thickest`**, emitted with the literal
+   `calc(<px> * var(--base-scale))` values — NOT `--spacing`-coupled: `--spacing` is the
+   layout density knob, and borders must not thin when layout density changes. A subtree
+   `--spacing` override rescales padding/gap and leaves `var(--stroke-width-thin)` at 1px
+   (browser-asserted in the behavior probe). The spacing-namespace `--spacing-thin/…`
+   names become **PRIVATE internal hooks** (`--spacing-thin: var(--stroke-width-thin)`)
+   that exist only to feed Tailwind's spacing-consuming utility families (`w-thin`,
+   `p-thick`, …) and the sanctioned module authoring form `var(--spacing-thin)` for
+   border/outline widths (border-family properties do not consume the namespace — the
+   probe-measured constraint stands). `--stroke-width-*` is deliberately NOT registered
+   in `@theme`: Tailwind's `--stroke-width-*` namespace drives SVG `stroke-width`
+   utilities, the wrong property.
+3. **The old camelCase CSS variables are GONE (option B)** — no
+   `--spacingHorizontalM`, no `--strokeWidthThin`, no read-aliases. Single vocabulary;
+   hand-written consumer CSS against the old names is a **documented major break**.
+   Instead, the READ path moved to JS: the 26 `tokens.*` constants in
+   `packages/tokens/src/tokens.ts` now emit the canonical var strings
+   (`tokens.spacingHorizontalM === 'var(--spacing-horizontal-m)'`,
+   `tokens.strokeWidthThin === 'var(--stroke-width-thin)'`), covered by an exact-string
+   unit test (`packages/tokens/src/tokens.test.ts`) AND asserted from the other side by
+   the generator on every run (it throws if tokens.ts and the emitted canonicals drift).
+   The `react-theme-sass` bridge (`$spacingHorizontalM` etc.) repoints identically. A
+   repo-wide sweep repointed every raw old-name `var()` reference in react-domain source
+   (651 replacements / 197 files: converted `*.module.css`, stories, docsite, vr-tests;
+   `packages/web-components/**` excluded — it is a separate system whose own
+   design-tokens.ts defines the camelCase variables it reads).
+4. All spacing-namespace names plus the 4 `--stroke-width-*` canonicals are emitted as
+   real custom properties in the generated `@layer fui.theme { :root, :host }` block
+   (dist/styles.css 1,410 → 2,810 bytes).
+
+**Interim-state semantics (until theming Phase 2 removes the JS theming path):**
+FluentProvider's runtime theme tag (`createCSSRuleFromTheme`) still writes ALL old
+camelCase names as literals on `.fui-FluentProviderN` (unlayered, element-scoped). With
+the aliases dropped and every shipped reader repointed, those declarations are now
+**harmless orphans** — nothing in shipped CSS or in the `tokens.*` strings reads them.
+(Exception: the docsite's `createCSSRuleFromTheme` usage examples demo that util's own
+output; their module CSS was repointed to canonical names like everything else.) A custom
+FluentProvider `theme` spacing/strokeWidth override therefore no longer reaches ANY
+shipped reader — the priced-in cost the 2026-07-27 amendments already accepted for
+utilities now extends to `tokens.*` readers; all 7 shipped themes carry byte-identical
+values, so no shipped theme changes behavior.
+
+**Known CSS-inheritance nuance, priced in:** the emitted custom properties resolve their
+`var(--spacing)` at `:root` (custom-property substitution happens at the declaring
+element), so a _subtree_ `--spacing` override reaches UTILITIES (which carry the calc
+inline per element) but not `var(--spacing-horizontal-m)` _custom-property readers_
+(`tokens.*` inline styles), which keep the root-level density. Document-level density
+changes (set `--spacing`/`--base-scale` at `:root`) reach everything.
+
+Gates run for this amendment (evidence `.scratch/phase1-theming/`,
+`reports/theming-css-native.md`):
+
+- Arithmetic identity: 26/26 token defaults exact old-vs-new; canonical strokes literal +
+  hooks aliased; tokens.ts lockstep 26/26; 20 named utilities string-identical to their
+  numeric twins in compiled output.
+- Behavior probes (`scripts/probe-spacing-behavior.mjs`, headless Chromium, committed as a
+  package test, npm script `test-spacing-behavior`): 15/15 PASS, including density knob,
+  stroke decoupling, canonical reads, and old-names-removed assertions.
+- Zero-reference sweep: no exact old name remains in react-domain source or emitted CSS
+  (comment prose documenting the removal excepted).
+- `packages/tokens` unit tests green (exact-string repoint test added).
+- Full VR sweep at zero tolerance (all baseline sets, fresh `--skip-nx-cache` build) — see
+  `reports/theming-css-native.md` Phase 1 for totals.
+- D13 re-verified: `@reference` modules emit zero theme declarations.
+
+**Follow-on: theming Phase 2** — remove the FluentProvider runtime theme tag / JS theming
+path so the CSS-native names are the sole contract end to end.
+
+**OPEN QUESTION (recorded, NOT implemented — user to decide in Phase 2):** full-token-set
+kebab rename — the remaining ~440 tokens (colors, fonts, radii, shadows, durations,
+curves, z-index) still use camelCase CSS variables (`--colorNeutralBackground1`). A
+uniform kebab vocabulary across the whole token set is under consideration.
+
 ## D15 — Named groups + all-lowercase generated idents (settled with user 2026-07-28)
 
 Source analysis: `reports/named-groups-design.md`. **Naming below is the user's amendment and
