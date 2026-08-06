@@ -65,6 +65,7 @@
     "@fluentui/react-integration-tester": "*",
     "@fluentui/scripts-test-ssr": "*",
     "@fluentui/storybook-llms-extractor": "*",
+    "@fluentui/verify-bundle-isolation": "*",
     "@griffel/babel-preset": "1.5.8",
     "@griffel/eslint-plugin": "^2.0.0",
     "@griffel/jest-serializer": "1.1.24",
@@ -381,6 +382,7 @@
     "swc-loader": "0.2.6",
     "syncpack/minimatch": "^9.0.7",
     "tar-fs": "2.1.4",
+    "webpack": "5.108.4",
     "ws": "^8.21.1"
   },
   "nx": {
