@@ -58,7 +58,7 @@ module.exports = {
     ],
   },
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.js'],
+  setupFilesAfterEnv: ['./config/tests.cjs'],
   snapshotSerializers: ['@griffel/jest-serializer'],
   moduleNameMapper: Object.fromEntries(
     d3Libs.map(libraryName => [`^${libraryName}$`, createD3LibMappingToCommonJs(libraryName)]),
