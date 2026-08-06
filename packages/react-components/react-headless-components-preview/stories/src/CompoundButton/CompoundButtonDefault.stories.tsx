@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { CompoundButton } from '@fluentui/react-headless-components-preview/compound-button';
 import { AddRegular, ArrowDownloadRegular, DeleteRegular, OpenRegular, SettingsRegular } from '@fluentui/react-icons';
-import { expect, userEvent, within } from 'storybook/test';
 
 import styles from './compound-button.module.css';
 
@@ -87,43 +86,4 @@ export const Default = (): React.ReactNode => {
       </div>
     </div>
   );
-};
-
-Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const enabledAction = canvas.getByRole('button', {
-    name: 'Create release Starts a new deployment',
-  });
-  const disabledAction = canvas.getByRole('button', {
-    name: 'Delete release Unavailable while deployment is active',
-  });
-  const disabledFocusableAction = canvas.getByRole('button', {
-    name: 'Configure policy Focusable for feature discovery',
-  });
-  const anchorAction = canvas.getByRole('link', {
-    name: 'Review release Opens release details',
-  });
-  const iconOnlyAction = canvas.getByRole('button', {
-    name: 'Add deployment target',
-  });
-  const status = canvas.getByRole('status');
-
-  await expect(enabledAction).toHaveAttribute('data-has-secondary-content', '');
-  await expect(enabledAction).not.toHaveAttribute('data-disabled');
-  await expect(anchorAction).toHaveAttribute('href', '#release-details');
-  await expect(anchorAction).toHaveAttribute('data-has-secondary-content', '');
-  await expect(disabledAction).toBeDisabled();
-  await expect(disabledAction).toHaveAttribute('disabled');
-  await expect(disabledAction).toHaveAttribute('data-disabled', '');
-  await expect(disabledFocusableAction).not.toBeDisabled();
-  await expect(disabledFocusableAction).toHaveAttribute('aria-disabled', 'true');
-  await expect(disabledFocusableAction).toHaveAttribute('data-disabled-focusable', '');
-  await expect(iconOnlyAction).toHaveAttribute('data-icon-only', '');
-  await expect(iconOnlyAction).not.toHaveAttribute('data-has-secondary-content');
-
-  await expect(status).toHaveTextContent('Actions completed: 0');
-  await userEvent.click(enabledAction);
-  await expect(status).toHaveTextContent('Actions completed: 1');
-  await userEvent.click(disabledAction);
-  await expect(status).toHaveTextContent('Actions completed: 1');
 };

@@ -22,11 +22,11 @@ export type CompoundButtonSlots = CompoundButtonSlots_2;
 
 // @public
 export type CompoundButtonState = CompoundButtonBaseState & {
-    root: CompoundButtonBaseState['root'] & {
-        'data-disabled': '' | undefined;
-        'data-disabled-focusable': '' | undefined;
-        'data-icon-only': '' | undefined;
-        'data-has-secondary-content': '' | undefined;
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+        'data-has-secondary-content'?: string;
     };
 };
 
