@@ -86,6 +86,6 @@
    * still emits exactly ONE class on its `<ul>` and needs no composition helper.
    */
   .pane-trap {
-    @apply flex flex-col gap-10 list-none m-0 p-0;
+    @apply m-0 flex list-none flex-col gap-10 p-0;
   }
 }
