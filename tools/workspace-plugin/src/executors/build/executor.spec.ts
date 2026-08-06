@@ -278,19 +278,20 @@ describe('Build Executor', () => {
 
     const publicApiFilePath = join(workspaceRoot, 'libs/proj/src/index.ts');
     const originalApiContent = readFileSync(publicApiFilePath);
-    const existingEnvVariableCi = process.env.CI;
+    const env = jest.replaceProperty(process, 'env', {
+      ...process.env,
+      CI: 'true',
+      __FORCE_API_MD_UPDATE__: '',
+    });
 
     appendFileSync(publicApiFilePath, `export const hello='new public api';\n`);
     // force api-extractor CI behaviors to fail on both Local/CI
-    process.env.CI = 'true';
-
-    const outputFailed = await executor(options, context);
-    expect(outputFailed.success).toBe(false);
-
-    // cleanup
-    writeFileSync(publicApiFilePath, originalApiContent, 'utf-8');
-    if (existingEnvVariableCi) {
-      process.env.CI = existingEnvVariableCi;
+    try {
+      const outputFailed = await executor(options, context);
+      expect(outputFailed.success).toBe(false);
+    } finally {
+      writeFileSync(publicApiFilePath, originalApiContent, 'utf-8');
+      env.restore();
     }
   }, 60000);
 
