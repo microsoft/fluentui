@@ -114,7 +114,7 @@
     @apply relative overflow-hidden;
 
     &::after {
-      @apply absolute block inset-0;
+      @apply absolute inset-0 block;
 
       content: '';
 

@@ -82,7 +82,7 @@
 @layer fui.base {
   /* arg #2 — from the shared useRootDefaultClassName (makeResetStyles) */
   .root {
-    @apply relative flex w-full box-border cursor-pointer items-start text-start normal-case no-underline;
+    @apply relative box-border flex w-full cursor-pointer items-start text-start normal-case no-underline;
     @apply gap-vertical-l py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s;
 
     /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
@@ -147,7 +147,7 @@
   /* arg #6 — from the shared useIndicatorStyles.base (the "french fry") */
   .indicator {
     &::after {
-      @apply absolute h-vertical-xl w-horizontal-xs -ms-horizontal-l;
+      @apply absolute -ms-horizontal-l h-vertical-xl w-horizontal-xs;
 
       content: '';
       background-color: var(--colorCompoundBrandForeground1);

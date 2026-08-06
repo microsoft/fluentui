@@ -114,7 +114,7 @@
       &::before {
         /* `strokeWidthThin` on a `width`: that IS a spacing-powered Tailwind family, so it
            takes the utility rather than a `var(--spacing-thin)` reference (D4 addendum). */
-        @apply w-thin h-20;
+        @apply h-20 w-thin;
 
         content: '';
         background-color: var(--colorNeutralStroke1);

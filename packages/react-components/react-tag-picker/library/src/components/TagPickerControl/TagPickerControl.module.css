@@ -104,7 +104,7 @@
    * required.
    */
   .root {
-    @apply flex flex-wrap items-center relative box-border min-w-250;
+    @apply relative box-border flex min-w-250 flex-wrap items-center;
 
     border-radius: var(--borderRadiusMedium);
 
@@ -457,7 +457,7 @@
   .root {
     /* from useAsideStyles.root — arg #2 */
     & .aside {
-      @apply flex absolute h-full;
+      @apply absolute flex h-full;
 
       top: 0;
 
@@ -497,7 +497,7 @@
   .root {
     /* from useIconStyles.icon — arg #2 */
     & .icon {
-      @apply box-border flex justify-center items-center self-start;
+      @apply box-border flex items-center justify-center self-start;
 
       color: var(--colorNeutralStrokeAccessible);
       cursor: pointer;

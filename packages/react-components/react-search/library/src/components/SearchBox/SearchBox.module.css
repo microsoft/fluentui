@@ -296,7 +296,7 @@
 
   /* from useContentAfterStyles.contentAfter — arg #6 */
   .content-after {
-    @apply ps-horizontal-m gap-x-horizontal-xs;
+    @apply gap-x-horizontal-xs ps-horizontal-m;
   }
 
   /*

@@ -23,7 +23,7 @@
   .root {
     /* `marginRight` is RTL-flippable → logical, and 12px is spacing step M on the inline
        axis, so it takes the NAMED utility (CONVERSION_GUIDE §2, D4 amendment). */
-    @apply inline-flex h-32 w-32 items-center justify-center me-horizontal-m;
+    @apply me-horizontal-m inline-flex h-32 w-32 items-center justify-center;
 
     & svg {
       @apply h-full w-full;

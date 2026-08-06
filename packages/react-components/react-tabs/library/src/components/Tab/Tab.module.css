@@ -217,31 +217,31 @@
      */
     @variant size-small {
       @variant horizontal {
-        @apply gap-x-horizontal-xxs py-vertical-s-nudge px-horizontal-s-nudge;
+        @apply gap-x-horizontal-xxs px-horizontal-s-nudge py-vertical-s-nudge;
       }
 
       @variant vertical {
-        @apply gap-x-horizontal-xxs py-vertical-xxs px-horizontal-s-nudge;
+        @apply gap-x-horizontal-xxs px-horizontal-s-nudge py-vertical-xxs;
       }
     }
 
     @variant size-medium {
       @variant horizontal {
-        @apply gap-x-horizontal-s-nudge py-vertical-m px-horizontal-m-nudge;
+        @apply gap-x-horizontal-s-nudge px-horizontal-m-nudge py-vertical-m;
       }
 
       @variant vertical {
-        @apply gap-x-horizontal-s-nudge py-vertical-s-nudge px-horizontal-m-nudge;
+        @apply gap-x-horizontal-s-nudge px-horizontal-m-nudge py-vertical-s-nudge;
       }
     }
 
     @variant size-large {
       @variant horizontal {
-        @apply gap-x-horizontal-s-nudge py-vertical-l px-horizontal-m-nudge;
+        @apply gap-x-horizontal-s-nudge px-horizontal-m-nudge py-vertical-l;
       }
 
       @variant vertical {
-        @apply gap-x-horizontal-s-nudge py-vertical-s px-horizontal-m-nudge;
+        @apply gap-x-horizontal-s-nudge px-horizontal-m-nudge py-vertical-s;
       }
     }
   }
@@ -631,13 +631,13 @@
     @variant size-small {
       @variant horizontal {
         &::before {
-          @apply bottom-0 h-thick start-horizontal-s-nudge end-horizontal-s-nudge;
+          @apply start-horizontal-s-nudge end-horizontal-s-nudge bottom-0 h-thick;
         }
       }
 
       @variant vertical {
         &::before {
-          @apply bottom-vertical-xs start-0 top-vertical-xs w-thicker;
+          @apply start-0 top-vertical-xs bottom-vertical-xs w-thicker;
         }
       }
     }
@@ -645,13 +645,13 @@
     @variant size-medium {
       @variant horizontal {
         &::before {
-          @apply bottom-0 h-thicker start-horizontal-m end-horizontal-m;
+          @apply start-horizontal-m end-horizontal-m bottom-0 h-thicker;
         }
       }
 
       @variant vertical {
         &::before {
-          @apply bottom-vertical-s start-0 top-vertical-s w-thicker;
+          @apply start-0 top-vertical-s bottom-vertical-s w-thicker;
         }
       }
     }
@@ -659,13 +659,13 @@
     @variant size-large {
       @variant horizontal {
         &::before {
-          @apply bottom-0 h-thicker start-horizontal-m end-horizontal-m;
+          @apply start-horizontal-m end-horizontal-m bottom-0 h-thicker;
         }
       }
 
       @variant vertical {
         &::before {
-          @apply bottom-vertical-m-nudge start-0 top-vertical-m-nudge w-thicker;
+          @apply start-0 top-vertical-m-nudge bottom-vertical-m-nudge w-thicker;
         }
       }
     }
@@ -764,13 +764,13 @@
     @variant size-small {
       @variant horizontal {
         &::after {
-          @apply bottom-0 h-thick start-horizontal-s-nudge end-horizontal-s-nudge;
+          @apply start-horizontal-s-nudge end-horizontal-s-nudge bottom-0 h-thick;
         }
       }
 
       @variant vertical {
         &::after {
-          @apply bottom-vertical-xs start-0 top-vertical-xs w-thicker;
+          @apply start-0 top-vertical-xs bottom-vertical-xs w-thicker;
         }
       }
     }
@@ -778,13 +778,13 @@
     @variant size-medium {
       @variant horizontal {
         &::after {
-          @apply bottom-0 h-thicker start-horizontal-m end-horizontal-m;
+          @apply start-horizontal-m end-horizontal-m bottom-0 h-thicker;
         }
       }
 
       @variant vertical {
         &::after {
-          @apply bottom-vertical-s start-0 top-vertical-s w-thicker;
+          @apply start-0 top-vertical-s bottom-vertical-s w-thicker;
         }
       }
     }
@@ -792,13 +792,13 @@
     @variant size-large {
       @variant horizontal {
         &::after {
-          @apply bottom-0 h-thicker start-horizontal-m end-horizontal-m;
+          @apply start-horizontal-m end-horizontal-m bottom-0 h-thicker;
         }
       }
 
       @variant vertical {
         &::after {
-          @apply bottom-vertical-m-nudge start-0 top-vertical-m-nudge w-thicker;
+          @apply start-0 top-vertical-m-nudge bottom-vertical-m-nudge w-thicker;
         }
       }
     }
@@ -1022,7 +1022,7 @@
    * has no equivalent priority machinery in plain CSS.
    */
   .content {
-    @apply overflow-hidden py-vertical-none px-horizontal-xxs;
+    @apply overflow-hidden px-horizontal-xxs py-vertical-none;
 
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase300);

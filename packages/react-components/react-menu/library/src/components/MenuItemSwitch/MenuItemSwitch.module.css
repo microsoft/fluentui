@@ -78,7 +78,7 @@
 @layer fui.base {
   /* from useSwitchIndicatorBaseClassName (makeResetStyles) */
   .switch-indicator {
-    @apply box-border h-20 w-40 shrink-0 me-horizontal-xs;
+    @apply me-horizontal-xs box-border h-20 w-40 shrink-0;
 
     border-radius: var(--borderRadiusCircular);
     border: var(--spacing-thin) solid var(--colorNeutralStrokeAccessible);

@@ -88,7 +88,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2, flat half */
   .root {
-    @apply relative pt-0 pb-0 ps-horizontal-s pe-horizontal-s;
+    @apply relative ps-horizontal-s pe-horizontal-s pt-0 pb-0;
 
     font-weight: var(--fontWeightRegular);
   }
@@ -154,7 +154,7 @@
 @layer fui.components.l1 {
   /* from useStyles.resetButton — `button` arg #2 */
   .reset-button {
-    @apply resize-x box-content overflow-visible p-0;
+    @apply box-content resize-x overflow-visible p-0;
 
     background-color: inherit;
     color: inherit;
@@ -171,7 +171,7 @@
 
   /* from useStyles.button — `button` arg #3 */
   .button {
-    @apply relative flex w-full h-full items-center gap-horizontal-xs min-h-32;
+    @apply relative flex h-full min-h-32 w-full items-center gap-horizontal-xs;
 
     /*
      * The Griffel source also sets `flexGrow: 1` here, but the LATER `flex: '1 1 0px'`

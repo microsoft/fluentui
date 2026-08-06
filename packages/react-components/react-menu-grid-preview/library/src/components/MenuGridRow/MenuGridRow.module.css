@@ -72,8 +72,8 @@
      "Base styles similar to regular menu item. Right now excludes icon color, hover active
      style for secondary text." (source comment) */
   .root {
-    @apply relative box-border flex max-w-290 min-h-32 shrink-0 cursor-pointer select-none;
-    @apply px-horizontal-s-nudge py-vertical-xs gap-horizontal-xs;
+    @apply relative box-border flex min-h-32 max-w-290 shrink-0 cursor-pointer select-none;
+    @apply gap-horizontal-xs px-horizontal-s-nudge py-vertical-xs;
 
     /* the compiled atomic is `align-items:start`, NOT `flex-start` — `items-start` would
        emit the latter. Identical rendering for a flex container, written longhand so the

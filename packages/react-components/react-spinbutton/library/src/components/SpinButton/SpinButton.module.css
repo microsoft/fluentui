@@ -137,7 +137,7 @@
    * physical longhands are exact and match the compiled atomics 1:1.
    */
   .root {
-    @apply relative isolate inline-grid align-middle min-h-32;
+    @apply relative isolate inline-grid min-h-32 align-middle;
 
     /* `gridTemplateColumns: '1fr 24px'` — no utility expresses a mixed track list, so the
        px literal rides `--base-scale` directly. It must stay in lockstep with the buttons'
@@ -153,7 +153,7 @@
 
     /* `padding: 0 0 0 tokens.spacingHorizontalMNudge` expanded to longhands. The compiled
        pair is `padding-left` (ltr) / `padding-right` (rtl) — a pure property flip. */
-    @apply py-vertical-none pe-horizontal-none ps-horizontal-m-nudge;
+    @apply py-vertical-none ps-horizontal-m-nudge pe-horizontal-none;
 
     border-radius: var(--borderRadiusMedium);
 
@@ -166,7 +166,7 @@
      * `outline` appearance, which is why the extra ceremony is worth it.
      */
     &::before {
-      @apply pointer-events-none box-border absolute;
+      @apply pointer-events-none absolute box-border;
 
       content: '';
       inset: 0;
@@ -200,7 +200,7 @@
      * with `--borderRadiusMedium`, which is an unscaled token.
      */
     &::after {
-      @apply box-border absolute;
+      @apply absolute box-border;
 
       content: '';
 
@@ -282,7 +282,7 @@
        compiled shorthand: no rule in this module overrides any border longhand here. */
     border: 0;
 
-    @apply py-vertical-none px-horizontal-none;
+    @apply px-horizontal-none py-vertical-none;
 
     color: var(--colorNeutralForeground1);
 
@@ -318,7 +318,7 @@
    * two conditions are mutually exclusive, so no declaration ever changes hands.
    */
   .button {
-    @apply absolute inline-flex items-center justify-center w-24 h-16;
+    @apply absolute inline-flex h-16 w-24 items-center justify-center;
 
     /* nothing in this module overrides a border longhand on this slot */
     border: 0;
@@ -336,7 +336,7 @@
     /* `padding: '0 5px 0 5px'` — 5px is not a Fluent spacing step, so the numeric utility
        is the sanctioned fallback (the reset compiles with a `null` rtl class, i.e. the two
        inline sides are equal and never flip). */
-    @apply py-vertical-none px-5;
+    @apply px-5 py-vertical-none;
 
     @variant active {
       outline-style: none;
@@ -778,12 +778,12 @@
     @variant size-small {
       & .increment {
         /* `padding: '3px 6px 0px 4px'` (ltr) / `'3px 4px 0px 6px'` (rtl) */
-        @apply pt-3 pe-horizontal-s-nudge pb-vertical-none ps-horizontal-xs h-12;
+        @apply h-12 ps-horizontal-xs pe-horizontal-s-nudge pt-3 pb-vertical-none;
       }
 
       & .decrement {
         /* `padding: '0px 6px 3px 4px'` (ltr) / `'0px 4px 3px 6px'` (rtl) */
-        @apply pt-vertical-none pe-horizontal-s-nudge pb-3 ps-horizontal-xs h-12;
+        @apply h-12 ps-horizontal-xs pe-horizontal-s-nudge pt-vertical-none pb-3;
       }
     }
   }

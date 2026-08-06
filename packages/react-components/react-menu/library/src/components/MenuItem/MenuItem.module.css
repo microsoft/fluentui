@@ -123,8 +123,8 @@
 @layer fui.base {
   /* from useRootBaseStyles (makeResetStyles) */
   .root {
-    @apply relative box-border flex max-w-290 min-h-32 shrink-0 cursor-pointer select-none;
-    @apply px-horizontal-s-nudge py-vertical-s-nudge gap-horizontal-xs;
+    @apply relative box-border flex min-h-32 max-w-290 shrink-0 cursor-pointer select-none;
+    @apply gap-horizontal-xs px-horizontal-s-nudge py-vertical-s-nudge;
 
     /* the compiled atomic is `align-items:start`, NOT `flex-start` — `items-start` would
        emit the latter. Identical rendering for a flex container, written longhand so the
@@ -222,7 +222,7 @@
 
   /* from useContentBaseStyles (makeResetStyles) */
   .content {
-    @apply px-horizontal-xxs grow bg-transparent;
+    @apply grow bg-transparent px-horizontal-xxs;
   }
 
   /* from useSecondaryContentBaseStyles (makeResetStyles) — typographyStyles.caption1 with

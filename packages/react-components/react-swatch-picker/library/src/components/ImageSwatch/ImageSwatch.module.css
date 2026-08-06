@@ -72,7 +72,7 @@
    * that one is the Griffel `s` bucket and lives at the bottom of this file.
    */
   .root {
-    @apply inline-flex box-border bg-cover bg-no-repeat p-0;
+    @apply box-border inline-flex bg-cover bg-no-repeat p-0;
 
     /* Kept as the `border` shorthand the source wrote; every other border declaration in
        this component is also a shorthand (`border: none`), so no longhand competes. */

@@ -35,7 +35,7 @@
   /* from useItemLayoutStyles.startMedia */
   .start-media {
     /* `marginRight` is RTL-flippable → logical; 8px is spacing step S on the inline axis */
-    @apply self-center me-horizontal-s;
+    @apply me-horizontal-s self-center;
 
     grid-column-start: 1;
     grid-column-end: 2;
@@ -45,7 +45,7 @@
 
   /* from useItemLayoutStyles.header */
   .header {
-    @apply self-end me-horizontal-s;
+    @apply me-horizontal-s self-end;
 
     grid-column-start: 2;
     grid-column-end: 3;
@@ -69,7 +69,7 @@
 
   /* from useItemLayoutStyles.contentWrapper */
   .content-wrapper {
-    @apply self-start me-horizontal-s;
+    @apply me-horizontal-s self-start;
 
     grid-column-start: 2;
     grid-column-end: 3;

@@ -51,6 +51,6 @@
 @layer fui.components.l2 {
   /* arg #2 — from useStyles.root */
   .root {
-    @apply grow-0 mt-vertical-xs mb-vertical-xs;
+    @apply mt-vertical-xs mb-vertical-xs grow-0;
   }
 }

@@ -71,7 +71,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2, flat half */
   .root {
-    @apply relative pt-0 pb-0 ps-horizontal-s pe-horizontal-s;
+    @apply relative ps-horizontal-s pe-horizontal-s pt-0 pb-0;
   }
 }
 

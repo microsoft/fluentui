@@ -24,14 +24,14 @@
 
   /* from useTocStyles.heading — marginBottom 20px is the vertical XL step */
   .heading {
-    @apply font-bold uppercase mb-vertical-xl;
+    @apply mb-vertical-xl font-bold uppercase;
 
     font-size: 11px;
   }
 
   /* from useTocStyles.ol — paddingInlineStart 20px is the horizontal XL step */
   .ol {
-    @apply relative list-none ms-0 mt-0 ps-horizontal-xl;
+    @apply relative ms-0 mt-0 list-none ps-horizontal-xl;
 
     & li {
       /* 15px matches no spacing step -> numeric fallback; line-height reads the spacing scale */
@@ -64,7 +64,7 @@
     @apply relative;
 
     &::after {
-      @apply absolute -start-20 inset-y-0 w-thicker;
+      @apply absolute inset-y-0 -start-20 w-thicker;
 
       content: '';
       background-color: #436dcd;

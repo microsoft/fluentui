@@ -94,7 +94,7 @@
    * exact.
    */
   .root {
-    @apply relative box-border inline-flex flex-nowrap items-center align-middle min-h-32;
+    @apply relative box-border inline-flex min-h-32 flex-nowrap items-center align-middle;
 
     /* `gap: tokens.spacingHorizontalXXS` — the source named the horizontal axis, so the
        utility does too. */
@@ -200,7 +200,7 @@
 
   /* from useInputClassName (makeResetStyles) */
   .input {
-    @apply box-border grow self-stretch min-w-0;
+    @apply box-border min-w-0 grow self-stretch;
 
     /* the input itself never has a border — the root draws it */
     border-style: none;
@@ -208,7 +208,7 @@
     /* `padding: 0 ${horizontalPadding.combined.medium}`. The block-axis zero is the
        `None` step; combined.medium is spacingHorizontalM (the source comments it as
        MNudge + XXS = 12px, i.e. exactly M). */
-    @apply py-vertical-none px-horizontal-m;
+    @apply px-horizontal-m py-vertical-none;
 
     color: var(--colorNeutralForeground1);
 

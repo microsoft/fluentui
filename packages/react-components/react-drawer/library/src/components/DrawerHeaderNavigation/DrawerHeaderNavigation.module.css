@@ -40,6 +40,6 @@
 @layer fui.base {
   /* arg #2 — from useStyles (makeResetStyles) */
   .root {
-    @apply -my-vertical-s -mx-horizontal-l;
+    @apply -mx-horizontal-l -my-vertical-s;
   }
 }

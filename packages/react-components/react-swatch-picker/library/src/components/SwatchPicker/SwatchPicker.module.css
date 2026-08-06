@@ -49,7 +49,7 @@
      * the same two tokens) rather than silently "corrected", so the mapping back to the
      * Griffel slice stays 1:1.
      */
-    @apply flex py-horizontal-none px-vertical-none;
+    @apply flex px-vertical-none py-horizontal-none;
   }
 }
 

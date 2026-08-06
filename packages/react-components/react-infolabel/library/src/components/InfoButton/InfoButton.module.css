@@ -134,7 +134,7 @@
        axis → horizontal tokens, matching the Griffel source's own axis choice. Kept as four
        longhand utilities rather than `py-vertical-xs px-horizontal-xs` so the properties
        stay byte-identical to the expanded shorthand the `size-large` block below overrides. */
-    @apply pt-vertical-xs pb-vertical-xs ps-horizontal-xs pe-horizontal-xs;
+    @apply ps-horizontal-xs pe-horizontal-xs pt-vertical-xs pb-vertical-xs;
 
     /* The `.fui-Icon-filled` / `.fui-Icon-regular` display swap is NOT here — it sits in
        its own l1 block at the bottom of this file (S-J/D27). */
@@ -211,7 +211,7 @@
    */
   .root {
     @variant size-large {
-      @apply pt-vertical-xxs pb-vertical-xxs ps-vertical-xxs pe-vertical-xxs;
+      @apply ps-vertical-xxs pe-vertical-xxs pt-vertical-xxs pb-vertical-xxs;
     }
   }
 }

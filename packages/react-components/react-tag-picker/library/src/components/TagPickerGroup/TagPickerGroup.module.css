@@ -65,7 +65,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #3 */
   .root {
-    @apply flex-wrap box-border;
+    @apply box-border flex-wrap;
 
     cursor: text;
   }
@@ -81,14 +81,14 @@
    * length on the block axis).
    */
   .medium {
-    @apply py-vertical-s-nudge px-horizontal-none gap-y-horizontal-xs;
+    @apply gap-y-horizontal-xs px-horizontal-none py-vertical-s-nudge;
   }
 
   .large {
-    @apply py-vertical-s px-horizontal-none gap-y-horizontal-s-nudge;
+    @apply gap-y-horizontal-s-nudge px-horizontal-none py-vertical-s;
   }
 
   .extra-large {
-    @apply py-vertical-s px-horizontal-none gap-y-horizontal-s-nudge;
+    @apply gap-y-horizontal-s-nudge px-horizontal-none py-vertical-s;
   }
 }

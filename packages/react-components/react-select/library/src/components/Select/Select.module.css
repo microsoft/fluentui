@@ -193,7 +193,7 @@
    * shorthand (Griffel deletes the base class outright — same property key).
    */
   .select {
-    @apply box-border grow max-w-full cursor-pointer;
+    @apply box-border max-w-full grow cursor-pointer;
 
     /* compiled: `-webkit-appearance:none;-moz-appearance:none;appearance:none`. The
        `-moz-` alias is dropped — Firefox has supported the unprefixed property since 80
@@ -523,7 +523,7 @@
 @layer fui.components.l1 {
   /* from useIconStyles.icon — icon slot arg #2 */
   .icon {
-    @apply absolute block box-border pointer-events-none;
+    @apply pointer-events-none absolute box-border block;
 
     color: var(--colorNeutralStrokeAccessible);
 
@@ -554,7 +554,7 @@
      */
     @variant size-small {
       & .icon {
-        @apply h-16 w-16 end-horizontal-s-nudge;
+        @apply end-horizontal-s-nudge h-16 w-16;
 
         font-size: calc(16px * var(--base-scale));
       }
@@ -562,7 +562,7 @@
 
     @variant size-medium {
       & .icon {
-        @apply h-20 w-20 end-horizontal-m-nudge;
+        @apply end-horizontal-m-nudge h-20 w-20;
 
         font-size: calc(20px * var(--base-scale));
       }
@@ -570,7 +570,7 @@
 
     @variant size-large {
       & .icon {
-        @apply h-24 w-24 end-horizontal-m;
+        @apply end-horizontal-m h-24 w-24;
 
         font-size: calc(24px * var(--base-scale));
       }

@@ -51,7 +51,7 @@
    * shorthands and expand (cookbook §2); 48px matches no spacing step -> numeric fallback.
    */
   .divider {
-    @apply h-thin my-48 mx-0;
+    @apply mx-0 my-48 h-thin;
 
     background-color: #e1dfdd;
     border-width: 0;
@@ -65,7 +65,7 @@
 
   /* from useStyles.toc — flex-basis is spacing-powered; 200px matches no step */
   .toc {
-    @apply basis-200 shrink-0;
+    @apply shrink-0 basis-200;
 
     @media screen and (max-width: 1000px) {
       display: none;
@@ -100,7 +100,7 @@
    * §2 rule 2). `padding`/`margin` shorthands expand to their logical pairs.
    */
   .additional-info {
-    @apply flex flex-col gap-vertical-m px-horizontal-m py-vertical-m my-0 mx-horizontal-m;
+    @apply mx-horizontal-m my-0 flex flex-col gap-vertical-m px-horizontal-m py-vertical-m;
 
     border-width: var(--spacing-thin);
     border-style: solid;
@@ -115,7 +115,7 @@
 
   /* from useStyles.infoIcon */
   .info-icon {
-    @apply flex flex-col gap-vertical-xs flex-1;
+    @apply flex flex-1 flex-col gap-vertical-xs;
   }
 
   /* from useVideoClasses.container — gap: spacingHorizontalMNudge */
@@ -134,7 +134,7 @@
  * RTL-flipped by Griffel and therefore becomes the logical `margin-inline-end`.
  */
 .additional-info-icon {
-  @apply self-center me-horizontal-m;
+  @apply me-horizontal-m self-center;
 
   color: var(--colorBrandForeground1);
   font-size: 24px;

@@ -55,6 +55,6 @@
     margin-inline-start: unset;
     margin-inline-end: unset;
 
-    @apply ps-14 py-5;
+    @apply py-5 ps-14;
   }
 }

@@ -40,7 +40,7 @@
 @layer fui.components.l1 {
   /* arg #2 — from useStyles.root */
   .root {
-    @apply ms-horizontal-m-nudge my-vertical-s;
+    @apply my-vertical-s ms-horizontal-m-nudge;
 
     /* typographyStyles.caption1Strong */
     font-family: var(--fontFamilyBase);

@@ -49,7 +49,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2, incl. typographyStyles.body1 */
   .root {
-    @apply box-border w-max min-w-138 max-w-300 overflow-x-hidden;
+    @apply box-border w-max max-w-300 min-w-138 overflow-x-hidden;
     @apply px-horizontal-xs py-vertical-xs;
 
     border-radius: var(--borderRadiusMedium);

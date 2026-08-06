@@ -104,7 +104,7 @@
 @layer fui.base {
   /* from useRootBaseStyles (makeResetStyles) */
   .root {
-    @apply grid box-border items-center whitespace-nowrap ps-horizontal-m min-h-36;
+    @apply box-border grid min-h-36 items-center ps-horizontal-m whitespace-nowrap;
 
     grid-template-columns: auto 1fr auto auto;
     grid-template-rows: 1fr;
@@ -119,7 +119,7 @@
 
   /* from useIconBaseStyles (makeResetStyles) */
   .icon {
-    @apply flex items-center me-horizontal-s;
+    @apply me-horizontal-s flex items-center;
 
     grid-area: icon;
     font-size: var(--fontSizeBase500);
@@ -138,7 +138,7 @@
   /* root arg #3 — from useStyles.rootMultiline, gated on `layout === 'multiline'` */
   .root {
     @variant layout-multiline {
-      @apply whitespace-normal pt-vertical-m-nudge;
+      @apply pt-vertical-m-nudge whitespace-normal;
 
       /* literal `start`, NOT `@apply items-start`: that utility emits
          `align-items: flex-start`, while the compiled Griffel atomic is

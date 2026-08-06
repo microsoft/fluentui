@@ -43,7 +43,7 @@
   .root {
     /* `padding: '0 10px'` — block 0, inline 10px (spacing step MNudge). Symmetric on the
        inline axis, so the logical utilities are a straight substitution. */
-    @apply list-none py-vertical-none px-horizontal-m-nudge;
+    @apply list-none px-horizontal-m-nudge py-vertical-none;
 
     margin: 0;
     text-indent: 0;

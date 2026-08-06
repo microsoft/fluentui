@@ -66,8 +66,8 @@
 @layer fui.base {
   /* arg #2 — from useStyles (makeResetStyles) */
   .root {
-    @apply relative box-border flex flex-col self-stretch w-full max-w-full;
-    @apply pt-vertical-xxl px-horizontal-xxl pb-vertical-s gap-horizontal-s;
+    @apply relative box-border flex w-full max-w-full flex-col self-stretch;
+    @apply gap-horizontal-s px-horizontal-xxl pt-vertical-xxl pb-vertical-s;
 
     z-index: 2;
   }

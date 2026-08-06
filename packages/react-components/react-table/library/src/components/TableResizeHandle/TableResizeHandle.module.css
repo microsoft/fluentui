@@ -64,7 +64,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply absolute w-16 my-0 -mx-8 cursor-col-resize;
+    @apply absolute -mx-8 my-0 w-16 cursor-col-resize;
 
     inset-inline-end: 0;
     top: 0;
@@ -76,7 +76,7 @@
 
     /* from useStyles.root['::after'] — the 1px rule drawn down the middle of the handle */
     &::after {
-      @apply block absolute w-1;
+      @apply absolute block w-1;
 
       content: ' ';
       inset-inline-start: 50%;

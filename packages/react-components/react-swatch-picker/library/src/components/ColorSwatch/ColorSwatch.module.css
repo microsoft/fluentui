@@ -102,7 +102,7 @@
    * ports unchanged (CONVERSION_GUIDE "Known special cases").
    */
   .root {
-    @apply inline-flex shrink-0 items-center justify-center box-border overflow-hidden p-0;
+    @apply box-border inline-flex shrink-0 items-center justify-center overflow-hidden p-0;
 
     /* Kept as the `border` shorthand the source wrote; every other border declaration in
        this component is also a shorthand (`border: none`), so no longhand competes. */

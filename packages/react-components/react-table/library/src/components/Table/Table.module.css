@@ -59,7 +59,7 @@
    * it is load-bearing in TableBody / TableHeader, which have no `.root`.
    */
   .table-root {
-    @apply table align-middle w-full table-fixed;
+    @apply table w-full table-fixed align-middle;
   }
 
   .flex-root {

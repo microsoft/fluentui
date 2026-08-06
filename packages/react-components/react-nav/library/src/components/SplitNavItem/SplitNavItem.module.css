@@ -97,7 +97,7 @@
 @layer fui.base {
   /* arg #2 — from the shared useRootDefaultClassName (makeResetStyles) */
   .root {
-    @apply relative flex w-full box-border cursor-pointer items-start text-start normal-case no-underline;
+    @apply relative box-border flex w-full cursor-pointer items-start text-start normal-case no-underline;
     @apply gap-vertical-l py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s;
 
     /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
@@ -175,7 +175,7 @@
 @layer fui.components.l2 {
   /* navItem arg #2 — from useSplitNaveItemStyles.baseNavItem */
   .nav-item {
-    @apply relative flex self-stretch text-start normal-case gap-vertical-l;
+    @apply relative flex gap-vertical-l self-stretch text-start normal-case;
 
     /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
     justify-content: start;
@@ -187,7 +187,7 @@
 @layer fui.components.l2 {
   /* button arg #2 — from useSplitNaveItemStyles.baseSecondary */
   .secondary {
-    @apply min-w-28 pt-5 ps-5 pe-horizontal-m;
+    @apply min-w-28 ps-5 pe-horizontal-m pt-5;
 
     /* `start`, not `flex-start`: `items-start` would emit the other keyword */
     align-items: start;

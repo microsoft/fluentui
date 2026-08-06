@@ -15,6 +15,6 @@
    * (spacingHorizontalXL / spacingVerticalXL).
    */
   .canvas {
-    @apply px-horizontal-xl py-vertical-xl box-border overflow-auto;
+    @apply box-border overflow-auto px-horizontal-xl py-vertical-xl;
   }
 }

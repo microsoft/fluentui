@@ -49,7 +49,7 @@
 @layer fui.components.l1 {
   /* from useStyles.button — arg #2 */
   .root {
-    @apply flex items-center box-border grow min-h-32;
+    @apply box-border flex min-h-32 grow items-center;
 
     background-color: var(--colorTransparentBackground);
 
@@ -97,7 +97,7 @@
       line-height: var(--lineHeightBase200);
 
       /* SNudge (6) + XXS (2) = 8px, exactly the S step */
-      @apply py-3 pe-horizontal-s-nudge ps-horizontal-s;
+      @apply py-3 ps-horizontal-s pe-horizontal-s-nudge;
     }
 
     @variant size-large {
@@ -107,7 +107,7 @@
       line-height: var(--lineHeightBase300);
 
       /* MNudge (10) + XXS (2) = 12px, exactly the M step */
-      @apply py-5 pe-horizontal-m-nudge ps-horizontal-m;
+      @apply py-5 ps-horizontal-m pe-horizontal-m-nudge;
     }
 
     @variant size-extra-large {
@@ -121,7 +121,7 @@
 
       /* M (12) + SNudge (6) = 18px, which matches NO spacing step, so the numeric utility is
          the sanctioned fallback (D4 amendment) — same scale, `ps-18` === `calc(18px * var(--base-scale))`. */
-      @apply py-7 pe-horizontal-m ps-18;
+      @apply py-7 ps-18 pe-horizontal-m;
     }
   }
 }
@@ -133,7 +133,7 @@
    * left in the accessibility tree).
    */
   .visually-hidden {
-    @apply absolute h-1 w-1 -m-1 p-0 overflow-hidden;
+    @apply absolute -m-1 h-1 w-1 overflow-hidden p-0;
 
     clip: rect(0px, 0px, 0px, 0px);
   }

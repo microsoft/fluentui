@@ -116,7 +116,7 @@
 @layer fui.components.l1 {
   /* from useStyles.mainTruncate — `main` arg #2 */
   .main-truncate {
-    @apply overflow-x-hidden whitespace-nowrap text-ellipsis;
+    @apply overflow-x-hidden text-ellipsis whitespace-nowrap;
   }
 
   /* from useStyles.mainPrimary — `main` arg #3 */

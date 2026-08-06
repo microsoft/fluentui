@@ -56,7 +56,7 @@
   /* arg #2 — from useStyles.root */
   .root {
     @apply flex flex-col;
-    @apply py-0 ps-horizontal-m-nudge pe-horizontal-xs gap-y-vertical-xxs;
+    @apply gap-y-vertical-xxs py-0 ps-horizontal-m-nudge pe-horizontal-xs;
 
     align-items: unset;
   }

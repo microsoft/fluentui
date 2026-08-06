@@ -83,7 +83,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2, flat half */
   .root {
-    @apply text-center whitespace-nowrap p-0;
+    @apply p-0 text-center whitespace-nowrap;
   }
 
   /* from useTableLayoutStyles.root — arg #3, native-table branch */
@@ -93,7 +93,7 @@
 
   /* from useFlexLayoutStyles.root — arg #3, flex branch */
   .flex-root {
-    @apply flex min-w-44 max-w-44 justify-center;
+    @apply flex max-w-44 min-w-44 justify-center;
 
     /* `flex: '1 1 0px'` — kept as the compiled shorthand (`.f1izfyrr`); Tailwind's
        `flex-1` is `flex: 1 1 0%`, a different basis. */

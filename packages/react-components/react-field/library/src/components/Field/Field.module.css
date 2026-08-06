@@ -248,7 +248,7 @@
     @variant horizontal {
       & .label {
         /* tokens.spacingVerticalSNudge / spacingHorizontalM → named spacing utilities */
-        @apply pt-vertical-s-nudge pb-vertical-s-nudge me-horizontal-m;
+        @apply me-horizontal-m pt-vertical-s-nudge pb-vertical-s-nudge;
 
         grid-row-start: 1;
         grid-row-end: -1;
@@ -284,7 +284,7 @@
     @variant vertical {
       & .label {
         /* tokens.spacingVerticalXXS → named spacing utility */
-        @apply pt-vertical-xxs pb-vertical-xxs mb-vertical-xxs;
+        @apply mb-vertical-xxs pt-vertical-xxs pb-vertical-xxs;
       }
     }
 
@@ -293,7 +293,7 @@
       @variant size-large {
         & .label {
           /* 1px has no spacing step → numeric fallback; mb reads spacingVerticalXS */
-          @apply pt-1 pb-1 mb-vertical-xs;
+          @apply mb-vertical-xs pt-1 pb-1;
         }
       }
     }

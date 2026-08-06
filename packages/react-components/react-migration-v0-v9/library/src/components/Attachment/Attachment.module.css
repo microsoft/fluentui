@@ -48,7 +48,7 @@
 @layer fui.base {
   /* from useAttachmentBaseStyles (makeResetStyles) */
   .root {
-    @apply relative inline-flex w-full max-w-424 min-h-32 items-center pt-7 pe-3 pb-7 ps-11 mb-2 me-2;
+    @apply relative me-2 mb-2 inline-flex min-h-32 w-full max-w-424 items-center ps-11 pe-3 pt-7 pb-7;
 
     background-color: var(--colorNeutralBackground6);
     color: var(--colorNeutralForeground1);
@@ -83,7 +83,7 @@
      `left` / `right` are RTL-flippable in Griffel, so both take logical utilities
      (`start-0` / `end-0`); the values are equal, but the property flip is preserved. */
   .progress-container {
-    @apply absolute bottom-0 start-0 end-0 h-4 overflow-hidden;
+    @apply absolute start-0 end-0 bottom-0 h-4 overflow-hidden;
 
     border-end-start-radius: calc(4px * var(--base-scale));
     border-end-end-radius: calc(4px * var(--base-scale));

@@ -64,7 +64,7 @@
      *   .f3tsq5r{width:0}       .f1aehjj5{pointer-events:none}
      * All four unpaired — nothing on this element is RTL-flipped.
      */
-    @apply hidden h-0 w-0 pointer-events-none;
+    @apply pointer-events-none hidden h-0 w-0;
   }
 
   /*
@@ -94,7 +94,7 @@
      * PRE-EXISTING Griffel behaviour, reproduced deliberately rather than "fixed" — see the
      * conversion report.
      */
-    @apply fixed pointer-events-none;
+    @apply pointer-events-none fixed;
 
     fill: transparent;
     top: 0;

@@ -71,7 +71,7 @@
 @layer fui.base {
   /* arg #1 — from the shared useRootDefaultClassName (makeResetStyles) */
   .root {
-    @apply relative flex w-full box-border cursor-pointer items-start text-start normal-case no-underline;
+    @apply relative box-border flex w-full cursor-pointer items-start text-start normal-case no-underline;
     @apply gap-vertical-l py-vertical-m-nudge ps-horizontal-m-nudge pe-horizontal-s;
 
     /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
@@ -157,7 +157,7 @@
    * reproduced verbatim from the compiled atomics and render nothing in any browser.
    */
   .icon {
-    @apply grid justify-center overflow-hidden min-h-vertical-xl min-w-horizontal-xl;
+    @apply grid min-h-vertical-xl min-w-horizontal-xl justify-center overflow-hidden;
 
     grid-template-areas: overlay-area;
     align-items: top;
