@@ -6,6 +6,6 @@
   display: flex;
   align-items: center;
   margin-inline-start: auto;
-  padding: 0 var(--spacingHorizontalXS);
-  gap: var(--spacingHorizontalXS);
+  padding: 0 var(--spacing-horizontal-xs);
+  gap: var(--spacing-horizontal-xs);
 }

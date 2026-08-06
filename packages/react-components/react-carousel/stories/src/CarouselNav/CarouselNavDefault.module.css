@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: end;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -24,7 +24,7 @@
 .controls {
   display: flex;
   flex-direction: column;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-bottom: none;
   border-radius: var(--borderRadiusMedium);
   border-bottom-left-radius: 0;

@@ -4,16 +4,16 @@
 .example {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalS);
+  gap: var(--spacing-vertical-s);
 }
 
 .badge {
   display: flex;
-  gap: var(--spacingHorizontalS);
+  gap: var(--spacing-horizontal-s);
 }
 
 .brand {
   display: flex;
   background-color: var(--colorBrandBackground);
-  padding: var(--spacingHorizontalXXS);
+  padding: var(--spacing-horizontal-xxs);
 }

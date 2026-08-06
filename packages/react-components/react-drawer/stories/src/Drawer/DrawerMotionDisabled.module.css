@@ -15,11 +15,11 @@
   display: grid;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: var(--spacingVerticalXXL);
+  gap: var(--spacing-vertical-xxl);
   grid-auto-rows: max-content;
 }
 
 .field {
   display: grid;
-  gap: var(--spacingVerticalS);
+  gap: var(--spacing-vertical-s);
 }

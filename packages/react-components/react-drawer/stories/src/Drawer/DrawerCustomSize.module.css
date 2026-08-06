@@ -4,10 +4,10 @@
 .main {
   display: grid;
   justify-content: flex-start;
-  grid-row-gap: var(--spacingVerticalXXL);
+  grid-row-gap: var(--spacing-vertical-xxl);
 }
 
 .field {
   display: grid;
-  grid-row-gap: var(--spacingVerticalS);
+  grid-row-gap: var(--spacing-vertical-s);
 }

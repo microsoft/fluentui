@@ -4,7 +4,7 @@
 .root {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacingHorizontalXXL);
+  gap: var(--spacing-horizontal-xxl);
 }
 
 .drawer {

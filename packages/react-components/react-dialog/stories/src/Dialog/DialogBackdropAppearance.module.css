@@ -3,6 +3,6 @@
 
 .field {
   display: grid;
-  grid-row-gap: var(--spacingVerticalS);
-  margin-bottom: var(--spacingVerticalL);
+  grid-row-gap: var(--spacing-vertical-s);
+  margin-bottom: var(--spacing-vertical-l);
 }

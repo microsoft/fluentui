@@ -27,15 +27,15 @@
 .groupSet {
   display: inline-flex;
   flex-direction: column;
-  padding: 0 var(--spacingHorizontalL);
-  row-gap: var(--spacingVerticalL);
+  padding: 0 var(--spacing-horizontal-l);
+  row-gap: var(--spacing-vertical-l);
 }
 
 .group {
   display: inline-flex;
   flex-direction: column;
   align-items: start;
-  row-gap: var(--spacingVerticalS);
+  row-gap: var(--spacing-vertical-s);
 }
 
 .groupLabel {
@@ -48,5 +48,5 @@
 .row {
   display: inline-flex;
   align-items: center;
-  column-gap: var(--spacingHorizontalS);
+  column-gap: var(--spacing-horizontal-s);
 }

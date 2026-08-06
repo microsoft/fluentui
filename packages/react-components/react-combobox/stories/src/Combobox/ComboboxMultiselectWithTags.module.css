@@ -11,9 +11,9 @@
 
 .tagsList {
   list-style-type: none;
-  margin-bottom: var(--spacingVerticalXXS);
+  margin-bottom: var(--spacing-vertical-xxs);
   margin-top: 0;
   display: flex;
-  grid-gap: var(--spacingHorizontalXXS);
+  grid-gap: var(--spacing-horizontal-xxs);
   padding-inline-start: 0;
 }

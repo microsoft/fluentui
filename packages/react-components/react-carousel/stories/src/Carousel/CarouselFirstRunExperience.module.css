@@ -19,12 +19,12 @@
   flex-direction: row;
   justify-content: space-between;
   width: auto;
-  padding: var(--spacingVerticalS) var(--spacingVerticalXXL) var(--spacingVerticalXXL) var(--spacingVerticalXXL);
+  padding: var(--spacing-vertical-s) var(--spacing-vertical-xxl) var(--spacing-vertical-xxl) var(--spacing-vertical-xxl);
 }
 
 .header {
   display: block;
-  margin: var(--spacingVerticalXXL) var(--spacingVerticalXXL) var(--spacingVerticalS) var(--spacingVerticalXXL);
+  margin: var(--spacing-vertical-xxl) var(--spacing-vertical-xxl) var(--spacing-vertical-s) var(--spacing-vertical-xxl);
   font-family: var(--fontFamilyBase);
   font-size: var(--fontSizeBase500);
   font-weight: var(--fontWeightSemibold);
@@ -33,7 +33,7 @@
 
 .text {
   display: block;
-  padding: var(--spacingVerticalS) var(--spacingVerticalXXL);
+  padding: var(--spacing-vertical-s) var(--spacing-vertical-xxl);
   font-family: var(--fontFamilyBase);
   font-size: var(--fontSizeBase300);
   font-weight: var(--fontWeightRegular);

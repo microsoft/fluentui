@@ -16,7 +16,7 @@
 .area::before {
   content: 'Container';
   position: absolute;
-  padding: var(--spacingHorizontalMNudge) var(--spacingHorizontalS);
+  padding: var(--spacing-horizontal-m-nudge) var(--spacing-horizontal-s);
   top: 0;
   left: 0;
   color: var(--colorStatusDangerBackground1);
@@ -36,7 +36,7 @@
 .boundary::before {
   content: 'Boundary';
   position: absolute;
-  padding: var(--spacingHorizontalMNudge) var(--spacingHorizontalS);
+  padding: var(--spacing-horizontal-m-nudge) var(--spacing-horizontal-s);
   top: 0;
   left: 0;
   color: var(--colorNeutralForegroundOnBrand);

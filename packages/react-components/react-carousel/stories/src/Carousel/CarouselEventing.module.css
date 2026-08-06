@@ -48,7 +48,7 @@
 
 .wireframe {
   background-color: var(--colorNeutralBackground3);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -60,7 +60,7 @@
 
 .wireframeEven {
   background-color: var(--colorBrandBackground2);
-  border: var(--strokeWidthThin) solid var(--colorBrandStroke1);
+  border: var(--stroke-width-thin) solid var(--colorBrandStroke1);
 }
 
 .wireframeInfo {
@@ -68,7 +68,7 @@
   right: 12px;
   top: 12px;
   background-color: var(--colorPaletteRedBackground2);
-  border: var(--strokeWidthThin) dotted var(--colorPaletteRedBorder2);
+  border: var(--stroke-width-thin) dotted var(--colorPaletteRedBorder2);
   font-size: var(--fontSizeBase200);
   padding: 4px 8px;
 }

@@ -64,7 +64,7 @@
 }
 
 .content {
-  margin: var(--spacingVerticalXL) var(--spacingHorizontalXL);
+  margin: var(--spacing-vertical-xl) var(--spacing-horizontal-xl);
   flex: 1;
 }
 

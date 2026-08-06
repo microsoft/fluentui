@@ -13,7 +13,7 @@
   height: 50px;
   border-radius: var(--borderRadiusMedium);
   border: 1px solid var(--colorNeutralStroke1);
-  margin: var(--spacingVerticalMNudge) 0;
+  margin: var(--spacing-vertical-m-nudge) 0;
 }
 
 @media (forced-colors: active) {
@@ -23,12 +23,12 @@
 }
 
 .button {
-  margin-inline-end: var(--spacingHorizontalS);
+  margin-inline-end: var(--spacing-horizontal-s);
 }
 
 .input {
   display: block;
-  margin: var(--spacingVerticalSNudge) 0;
+  margin: var(--spacing-vertical-s-nudge) 0;
 }
 
 .row {

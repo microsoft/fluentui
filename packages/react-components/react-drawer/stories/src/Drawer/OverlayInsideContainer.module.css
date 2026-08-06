@@ -4,15 +4,15 @@
 .root {
   display: flex;
   align-items: flex-start;
-  gap: var(--spacingHorizontalL);
+  gap: var(--spacing-horizontal-l);
 }
 
 .container {
   width: 500px;
   height: 300px;
-  padding: var(--spacingVerticalL) var(--spacingHorizontalL);
+  padding: var(--spacing-vertical-l) var(--spacing-horizontal-l);
   position: relative;
   overflow: hidden;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralStroke1);
   background-color: var(--colorBrandBackground2);
 }

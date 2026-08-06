@@ -8,7 +8,7 @@
 
 .buttonNonInteractive {
   background-color: var(--colorNeutralBackground1);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   color: var(--colorNeutralForeground1);
   cursor: default;
   pointer-events: none;

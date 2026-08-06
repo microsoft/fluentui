@@ -17,14 +17,14 @@
 .cardContainer {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingHorizontalS);
+  gap: var(--spacing-horizontal-s);
   position: absolute;
   left: 10%;
   top: 25%;
   border-radius: var(--borderRadiusLarge);
   box-shadow: var(--shadow8);
   background: var(--colorNeutralBackground1);
-  padding: var(--spacingHorizontalXXL) var(--spacingVerticalXXXL);
+  padding: var(--spacing-horizontal-xxl) var(--spacing-vertical-xxxl);
   max-width: 270px;
   width: 50%;
 }
@@ -37,7 +37,7 @@
 }
 
 .subtext {
-  margin-bottom: var(--spacingVerticalM);
+  margin-bottom: var(--spacing-vertical-m);
   font-family: var(--fontFamilyBase);
   font-size: var(--fontSizeBase300);
   font-weight: var(--fontWeightRegular);
@@ -56,14 +56,14 @@
 
 .carousel {
   flex: 1;
-  padding-bottom: var(--spacingVerticalXL);
+  padding-bottom: var(--spacing-vertical-xl);
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalSNudge);
-  padding: var(--spacingHorizontalMNudge) var(--spacingVerticalMNudge);
+  gap: var(--spacing-vertical-s-nudge);
+  padding: var(--spacing-horizontal-m-nudge) var(--spacing-vertical-m-nudge);
 }
 
 .field {
@@ -79,8 +79,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--spacingVerticalSNudge);
-  margin-bottom: var(--spacingHorizontalL);
+  gap: var(--spacing-vertical-s-nudge);
+  margin-bottom: var(--spacing-horizontal-l);
 }
 
 .carouselHeaderTitle {
@@ -97,6 +97,6 @@
 }
 
 .slider {
-  gap: var(--spacingVerticalXXL);
-  padding: 0 var(--spacingVerticalXXL);
+  gap: var(--spacing-vertical-xxl);
+  padding: 0 var(--spacing-vertical-xxl);
 }

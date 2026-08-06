@@ -4,16 +4,16 @@
 .controls {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalS);
-  margin-bottom: var(--spacingVerticalL);
-  padding: var(--spacingVerticalM);
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  gap: var(--spacing-vertical-s);
+  margin-bottom: var(--spacing-vertical-l);
+  padding: var(--spacing-vertical-m);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalM);
-  padding: var(--spacingVerticalS) 0;
+  gap: var(--spacing-vertical-m);
+  padding: var(--spacing-vertical-s) 0;
 }

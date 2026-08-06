@@ -5,5 +5,5 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  column-gap: var(--spacingHorizontalXS);
+  column-gap: var(--spacing-horizontal-xs);
 }
