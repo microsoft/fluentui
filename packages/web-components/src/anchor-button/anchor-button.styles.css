@@ -55,7 +55,9 @@
 :host(:focus-visible) {
   border-color: var(--colorTransparentStroke);
   outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
-  box-shadow: var(--shadow4), 0 0 0 2px var(--colorStrokeFocus2);
+  box-shadow:
+    var(--shadow4),
+    0 0 0 2px var(--colorStrokeFocus2);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -153,7 +155,9 @@
 
 :host([appearance='primary']:focus-visible) {
   border-color: var(--colorNeutralForegroundOnBrand);
-  box-shadow: var(--shadow2), 0 0 0 2px var(--colorStrokeFocus2);
+  box-shadow:
+    var(--shadow2),
+    0 0 0 2px var(--colorStrokeFocus2);
 }
 
 :host([appearance='outline']) {

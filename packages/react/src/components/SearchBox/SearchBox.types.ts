@@ -28,8 +28,7 @@ export interface ISearchBox {
  * {@docCategory SearchBox}
  */
 export interface ISearchBoxProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    React.RefAttributes<HTMLDivElement> {
+  extends React.InputHTMLAttributes<HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

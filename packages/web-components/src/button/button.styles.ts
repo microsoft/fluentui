@@ -113,7 +113,9 @@ export const baseButtonStyles = css`
   :host(:focus-visible) {
     border-color: ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
-    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
+    box-shadow:
+      ${shadow4},
+      0 0 0 2px ${colorStrokeFocus2};
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
@@ -211,7 +213,9 @@ export const baseButtonStyles = css`
 
   :host([appearance='primary']:focus-visible) {
     border-color: ${colorNeutralForegroundOnBrand};
-    box-shadow: ${shadow2}, 0 0 0 2px ${colorStrokeFocus2};
+    box-shadow:
+      ${shadow2},
+      0 0 0 2px ${colorStrokeFocus2};
   }
 
   :host([appearance='outline']) {
@@ -328,15 +332,15 @@ export const styles = css`
     }
 
     :host(
-        :is(
-            :disabled,
-            [disabled],
-            [disabled-focusable],
-            [appearance]:disabled,
-            [appearance][disabled],
-            [appearance][disabled-focusable]
-          )
-      ) {
+      :is(
+        :disabled,
+        [disabled],
+        [disabled-focusable],
+        [appearance]:disabled,
+        [appearance][disabled],
+        [appearance][disabled-focusable]
+      )
+    ) {
       background-color: ButtonFace;
       color: GrayText;
       border-color: ButtonText;

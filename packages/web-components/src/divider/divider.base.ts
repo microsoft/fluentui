@@ -71,7 +71,7 @@ export class BaseDivider extends FASTElement {
    * @internal
    */
   public orientationChanged(previous: DividerRole | undefined, next: DividerRole | undefined): void {
-    this.elementInternals.ariaOrientation = this.role !== DividerRole.presentation ? next ?? null : null;
+    this.elementInternals.ariaOrientation = this.role !== DividerRole.presentation ? (next ?? null) : null;
 
     swapStates(this.elementInternals, previous, next, DividerOrientation);
   }

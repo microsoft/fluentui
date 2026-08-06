@@ -82,8 +82,9 @@ export default {
 
 export const Default: Story = {
   args: {
-    actionSlottedContent: () =>
-      html` <fluent-button slot="action" id="dialog-default-close">Close Dialog</fluent-button> `,
+    actionSlottedContent: () => html`
+      <fluent-button slot="action" id="dialog-default-close">Close Dialog</fluent-button>
+    `,
 
     slottedContent: () => html`
       <p>

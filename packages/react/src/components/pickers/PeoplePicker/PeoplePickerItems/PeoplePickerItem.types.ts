@@ -24,8 +24,7 @@ export interface IPeoplePickerItemSharedProps {
  * {@docCategory PeoplePicker}
  */
 export interface IPeoplePickerItemSelectedProps
-  extends IPickerItemProps<IPersonaProps & { ValidationState: ValidationState }>,
-    IPeoplePickerItemSharedProps {
+  extends IPickerItemProps<IPersonaProps & { ValidationState: ValidationState }>, IPeoplePickerItemSharedProps {
   /** Call to provide customized styling that will layer on top of the variant rules. */
   styles?: IStyleFunctionOrObject<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>;
 }

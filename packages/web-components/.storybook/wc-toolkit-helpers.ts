@@ -52,14 +52,7 @@ export type ControlOptions =
   | 'multi-select';
 
 export type Categories =
-  | 'attributes'
-  | 'cssParts'
-  | 'cssProps'
-  | 'cssStates'
-  | 'events'
-  | 'methods'
-  | 'properties'
-  | 'slots';
+  'attributes' | 'cssParts' | 'cssProps' | 'cssStates' | 'events' | 'methods' | 'properties' | 'slots';
 
 export type StorybookHelpersOptions = {
   /** hides the `arg ref` label on each control */
@@ -250,8 +243,8 @@ function getComponentEventsWithType(component?: any): any[] {
       const eventType = DOM_EVENTS.has(type)
         ? type
         : type && type !== 'CustomEvent'
-        ? `CustomEvent<${type}>`
-        : 'CustomEvent';
+          ? `CustomEvent<${type}>`
+          : 'CustomEvent';
       return { ...e, type: { text: eventType } };
     }) || []
   );
@@ -330,8 +323,8 @@ export function getAttributesAndProperties(
         ? defaultValue === "''"
           ? ''
           : control === 'object'
-          ? JSON.parse(formatToValidJson(defaultValue))
-          : defaultValue
+            ? JSON.parse(formatToValidJson(defaultValue))
+            : defaultValue
         : undefined,
       control: enabled && !member.readonly && control ? { type: control } : false,
       table: {

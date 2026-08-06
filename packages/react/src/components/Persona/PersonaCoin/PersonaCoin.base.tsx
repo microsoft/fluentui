@@ -150,7 +150,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
 
   const shouldRenderInitials = Boolean(
     imageLoadState !== ImageLoadState.loaded &&
-      ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || imageLoadState === ImageLoadState.error || hideImage),
+    ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || imageLoadState === ImageLoadState.error || hideImage),
   );
 
   return (

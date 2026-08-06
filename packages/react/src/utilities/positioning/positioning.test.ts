@@ -487,7 +487,7 @@ describe('getBoundingRectangle', () => {
             bottom: 300,
             width: 200,
             height: 200,
-          } as DOMRect),
+          }) as DOMRect,
       } as Element;
       expect(getBoundsFromTargetWindow(targetWithinLeftScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
         validateBoundsLeftScreen,
@@ -504,7 +504,7 @@ describe('getBoundingRectangle', () => {
             bottom: 300,
             width: 300,
             height: 200,
-          } as DOMRect),
+          }) as DOMRect,
       } as Element;
       expect(getBoundsFromTargetWindow(targetWithinRightScreen, leftRightDualScreenTargetWindow)).toStrictEqual(
         validateBoundsRightScreen,
@@ -521,7 +521,7 @@ describe('getBoundingRectangle', () => {
             bottom: 300,
             width: 200,
             height: 200,
-          } as DOMRect),
+          }) as DOMRect,
       } as Element;
       expect(
         getBoundsFromTargetWindow(targetCrossingScreensWithCenterOnLeftScreen, leftRightDualScreenTargetWindow),
@@ -538,7 +538,7 @@ describe('getBoundingRectangle', () => {
             bottom: 300,
             width: 200,
             height: 200,
-          } as DOMRect),
+          }) as DOMRect,
       } as Element;
       expect(
         getBoundsFromTargetWindow(targetCrossingScreensWithCenterOnRightScreen, leftRightDualScreenTargetWindow),
@@ -655,7 +655,7 @@ describe('getBoundingRectangle', () => {
             bottom: 300,
             width: 200,
             height: 200,
-          } as DOMRect),
+          }) as DOMRect,
       } as Element;
       expect(getBoundsFromTargetWindow(targetWithinTopScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
         validateBoundsTopScreen,
@@ -672,7 +672,7 @@ describe('getBoundingRectangle', () => {
             bottom: 1000,
             width: 200,
             height: 200,
-          } as DOMRect),
+          }) as DOMRect,
       } as Element;
       expect(getBoundsFromTargetWindow(targetWithinBottomScreen, topBottomDualScreenTargetWindow)).toStrictEqual(
         validateBoundsBottomScreen,
@@ -689,7 +689,7 @@ describe('getBoundingRectangle', () => {
             bottom: 400,
             width: 200,
             height: 200,
-          } as DOMRect),
+          }) as DOMRect,
       } as Element;
       expect(
         getBoundsFromTargetWindow(targetCrossingScreensWithCenterOnTopScreen, topBottomDualScreenTargetWindow),
@@ -706,7 +706,7 @@ describe('getBoundingRectangle', () => {
             bottom: 500,
             width: 200,
             height: 200,
-          } as DOMRect),
+          }) as DOMRect,
       } as Element;
       expect(
         getBoundsFromTargetWindow(targetCrossingScreensWithCenterOnBottomScreen, topBottomDualScreenTargetWindow),

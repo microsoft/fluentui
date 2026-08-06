@@ -247,8 +247,9 @@ export const ModalWithNoTitle: Story = {
     titleActionSlottedContent: () => html`
       <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
     `,
-    slottedContent: () =>
-      html` <p>A dialog without a <code>title</code> but with a <code>title-action</code> slot</p> `,
+    slottedContent: () => html`
+      <p>A dialog without a <code>title</code> but with a <code>title-action</code> slot</p>
+    `,
   },
 };
 

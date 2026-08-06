@@ -12,8 +12,8 @@ export const renderThemeProvider = (state: ThemeProviderState): JSXElement => {
     typeof state.as === 'string'
       ? getNativeElementProps(state.as, state)
       : state.as === React.Fragment
-      ? { children: state.children }
-      : omit(state, ['as']);
+        ? { children: state.children }
+        : omit(state, ['as']);
 
   return (
     <ThemeContext.Provider value={theme}>

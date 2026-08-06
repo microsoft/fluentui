@@ -1,10 +1,7 @@
 import { find, KeyCodes } from '../../Utilities';
 
 export type KeytipTransitionModifier =
-  | typeof KeyCodes.shift
-  | typeof KeyCodes.ctrl
-  | typeof KeyCodes.alt
-  | typeof KeyCodes.leftWindow;
+  typeof KeyCodes.shift | typeof KeyCodes.ctrl | typeof KeyCodes.alt | typeof KeyCodes.leftWindow;
 
 export interface IKeytipTransitionKey {
   key: string;

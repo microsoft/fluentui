@@ -81,13 +81,13 @@ export const styles = css`
 
   :host(
       :is(
-          :disabled,
-          :disabled[appearance],
-          [disabled],
-          [disabled][appearance],
-          [disabled-focusable],
-          [disabled-focusable][appearance]
-        )
+        :disabled,
+        :disabled[appearance],
+        [disabled],
+        [disabled][appearance],
+        [disabled-focusable],
+        [disabled-focusable][appearance]
+      )
     )
     ::slotted([slot='description']) {
     color: ${colorNeutralForegroundDisabled};

@@ -31,8 +31,7 @@ export interface IDropdown {
  * {@docCategory Dropdown}
  */
 export interface IDropdownProps
-  extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>,
-    React.RefAttributes<HTMLDivElement> {
+  extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    * @deprecated Use `placeholder`

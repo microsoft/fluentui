@@ -30,14 +30,16 @@ export default {
 export const Default: Story = {};
 
 export const Image: Story = {
-  render: renderComponent(html<StoryArgs<FluentAvatar>>`<fluent-avatar>
-    <img
-      alt="Persona test"
-      role="presentation"
-      aria-hidden="true"
-      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg"
-    />
-  </fluent-avatar>`),
+  render: renderComponent(
+    html<StoryArgs<FluentAvatar>>`<fluent-avatar>
+      <img
+        alt="Persona test"
+        role="presentation"
+        aria-hidden="true"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg"
+      />
+    </fluent-avatar>`,
+  ),
 };
 
 export const Icon: Story = {
@@ -61,9 +63,11 @@ export const Icon: Story = {
 };
 
 export const Badge: Story = {
-  render: renderComponent(html<StoryArgs<FluentAvatar>>` <fluent-avatar name="Lydia Bauer"
-    ><fluent-badge slot="badge" size="extra-small"></fluent-badge
-  ></fluent-avatar>`),
+  render: renderComponent(
+    html<StoryArgs<FluentAvatar>>` <fluent-avatar name="Lydia Bauer"
+      ><fluent-badge slot="badge" size="extra-small"></fluent-badge
+    ></fluent-avatar>`,
+  ),
 };
 
 export const ColorBrand: Story = {

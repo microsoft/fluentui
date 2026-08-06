@@ -14,14 +14,7 @@ import type {
  * {@docCategory Stack}
  */
 export type Alignment =
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'baseline'
-  | 'stretch';
+  'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 /**
  * {@docCategory Stack}
@@ -67,7 +60,8 @@ export interface IStackSlots {
  * {@docCategory Stack}
  */
 export interface IStackProps
-  extends ISlottableProps<IStackSlots>,
+  extends
+    ISlottableProps<IStackSlots>,
     IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>,
     React.HTMLAttributes<HTMLElement> {
   /**

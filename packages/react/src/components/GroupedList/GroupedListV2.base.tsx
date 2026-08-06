@@ -304,48 +304,44 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     [listView],
   );
 
-  React.useImperativeHandle(
-    groupedListRef,
-    () => {
-      let indexMap: number[] | undefined;
+  React.useImperativeHandle(groupedListRef, () => {
+    let indexMap: number[] | undefined;
 
-      return {
-        scrollToIndex: (
-          index: number,
-          measureItem?: (itemIndex: number) => number,
-          scrollToMode?: ScrollToMode,
-        ): void => {
-          indexMap =
-            indexMap ??
-            listView.reduce((map, item, listIndex) => {
-              if (item.type === 'item') {
-                map[item.itemIndex] = listIndex;
-              }
-              return map;
-            }, [] as number[]);
+    return {
+      scrollToIndex: (
+        index: number,
+        measureItem?: (itemIndex: number) => number,
+        scrollToMode?: ScrollToMode,
+      ): void => {
+        indexMap =
+          indexMap ??
+          listView.reduce((map, item, listIndex) => {
+            if (item.type === 'item') {
+              map[item.itemIndex] = listIndex;
+            }
+            return map;
+          }, [] as number[]);
 
-          const scrollIndex = indexMap[index];
-          const measure =
-            typeof measureItem === 'function'
-              ? (itemIndex: number): number => {
-                  if (listView[itemIndex]?.type === 'item') {
-                    return measureItem((listView[itemIndex] as IItemGroupedItem).itemIndex);
-                  }
-
-                  return 0;
+        const scrollIndex = indexMap[index];
+        const measure =
+          typeof measureItem === 'function'
+            ? (itemIndex: number): number => {
+                if (listView[itemIndex]?.type === 'item') {
+                  return measureItem((listView[itemIndex] as IItemGroupedItem).itemIndex);
                 }
-              : undefined;
 
-          listRef.current?.scrollToIndex(scrollIndex, measure, scrollToMode);
-        },
+                return 0;
+              }
+            : undefined;
 
-        getStartItemIndexInView: (): number => {
-          return listRef.current?.getStartItemIndexInView() || 0;
-        },
-      };
-    },
-    [listView, listRef],
-  );
+        listRef.current?.scrollToIndex(scrollIndex, measure, scrollToMode);
+      },
+
+      getStartItemIndexInView: (): number => {
+        return listRef.current?.getStartItemIndexInView() || 0;
+      },
+    };
+  }, [listView, listRef]);
 
   React.useEffect(() => {
     if (groupProps?.isAllGroupsCollapsed) {

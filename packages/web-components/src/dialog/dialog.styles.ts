@@ -57,7 +57,11 @@ export const styles = css`
     @media (prefers-reduced-motion: no-preference) {
       dialog,
       ::backdrop {
-        transition: display allow-discrete, opacity, overlay allow-discrete, scale;
+        transition:
+          display allow-discrete,
+          opacity,
+          overlay allow-discrete,
+          scale;
         transition-duration: ${durationGentle};
         transition-timing-function: ${curveDecelerateMid};
         /* Set opacity to 0 when closed */

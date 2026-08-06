@@ -294,30 +294,29 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
  * internal Suggestions component.
  * {@docCategory Pickers}
  */
-export interface IBasePickerSuggestionsProps<T = any>
-  extends Pick<
-    ISuggestionsProps<T>,
-    | 'onRenderNoResultFound'
-    | 'suggestionsHeaderText'
-    | 'mostRecentlyUsedHeaderText'
-    | 'noResultsFoundText'
-    | 'className'
-    | 'suggestionsClassName'
-    | 'suggestionsItemClassName'
-    | 'searchForMoreIcon'
-    | 'searchForMoreText'
-    | 'forceResolveText'
-    | 'loadingText'
-    | 'searchingText'
-    | 'resultsFooterFull'
-    | 'resultsFooter'
-    | 'resultsMaximumNumber'
-    | 'showRemoveButtons'
-    | 'suggestionsAvailableAlertText'
-    | 'suggestionsContainerAriaLabel'
-    | 'showForceResolve'
-    | 'removeButtonIconProps'
-  > {}
+export interface IBasePickerSuggestionsProps<T = any> extends Pick<
+  ISuggestionsProps<T>,
+  | 'onRenderNoResultFound'
+  | 'suggestionsHeaderText'
+  | 'mostRecentlyUsedHeaderText'
+  | 'noResultsFoundText'
+  | 'className'
+  | 'suggestionsClassName'
+  | 'suggestionsItemClassName'
+  | 'searchForMoreIcon'
+  | 'searchForMoreText'
+  | 'forceResolveText'
+  | 'loadingText'
+  | 'searchingText'
+  | 'resultsFooterFull'
+  | 'resultsFooter'
+  | 'resultsMaximumNumber'
+  | 'showRemoveButtons'
+  | 'suggestionsAvailableAlertText'
+  | 'suggestionsContainerAriaLabel'
+  | 'showForceResolve'
+  | 'removeButtonIconProps'
+> {}
 
 /**
  * Validation state of the user's input.

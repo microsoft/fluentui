@@ -35,11 +35,10 @@ export type TimePickerValidationResultData = {
 /**
  * {@docCategory TimePicker}
  */
-export interface ITimePickerProps
-  extends Omit<
-    IComboBoxProps,
-    'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'
-  > {
+export interface ITimePickerProps extends Omit<
+  IComboBoxProps,
+  'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'
+> {
   /**
    * Label of the component.
    */

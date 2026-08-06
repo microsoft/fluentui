@@ -45,7 +45,8 @@ export interface ITextSlots {
  * {@docCategory Text}
  */
 export interface ITextProps
-  extends ISlottableProps<ITextSlots>,
+  extends
+    ISlottableProps<ITextSlots>,
     IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>,
     React.HTMLAttributes<HTMLElement> {
   /**

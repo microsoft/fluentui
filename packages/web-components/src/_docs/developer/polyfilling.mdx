@@ -79,9 +79,8 @@ Menu anchor positioning is handled minimally in a fallback script but for more c
  * This MUST be included before Fluent UI.
  */
 if (!CSS.supports('anchor-name: --foo')) {
-  const { default: applyPolyfill } = await import(
-    'https://unpkg.com/@oddbird/css-anchor-positioning/dist/css-anchor-positioning-fn.js'
-  );
+  const { default: applyPolyfill } =
+    await import('https://unpkg.com/@oddbird/css-anchor-positioning/dist/css-anchor-positioning-fn.js');
   window.CSS_ANCHOR_POLYFILL = applyPolyfill;
 }
 ```

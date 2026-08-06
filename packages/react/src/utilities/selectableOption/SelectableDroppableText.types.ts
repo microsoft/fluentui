@@ -10,8 +10,10 @@ import type { ISelectableOption } from '../../utilities/selectableOption/Selecta
  *   `TComponent` is assumed.
  * {@docCategory ISelectableDroppableTextProps}
  */
-export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
-  extends React.HTMLAttributes<TListenerElement> {
+export interface ISelectableDroppableTextProps<
+  TComponent,
+  TListenerElement,
+> extends React.HTMLAttributes<TListenerElement> {
   /**
    * Optional callback to access the component interface (usually `IDropdown` or `IComboBox`).
    * Use this instead of `ref` for accessing the public methods and properties of the component.

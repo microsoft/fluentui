@@ -312,8 +312,7 @@ export interface IPage<T = any> {
  * {@docCategory List}
  */
 export interface IPageProps<T = any>
-  extends React.HTMLAttributes<HTMLDivElement>,
-    React.ClassAttributes<HTMLDivElement> {
+  extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   /**
    * The role being assigned to the rendered page element by the list.
    */

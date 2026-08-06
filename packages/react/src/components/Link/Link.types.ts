@@ -47,7 +47,8 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
  * {@docCategory Link}
  */
 export interface ILinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>,
+  extends
+    React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>,
     Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>,
     React.RefAttributes<HTMLElement> {
   /**

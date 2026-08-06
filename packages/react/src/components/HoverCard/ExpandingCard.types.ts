@@ -11,8 +11,11 @@ export interface IExpandingCard {}
  * ExpandingCard component props.
  * {@docCategory HoverCard}
  */
-export interface IExpandingCardProps
-  extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
+export interface IExpandingCardProps extends IBaseCardProps<
+  IExpandingCard,
+  IExpandingCardStyles,
+  IExpandingCardStyleProps
+> {
   /**
    * Height of compact card
    * @defaultvalue 156

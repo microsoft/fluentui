@@ -42,7 +42,8 @@ export type IStackItemStylesReturnType = ReturnType<Extract<IStackItemComponent[
  * {@docCategory Stack}
  */
 export interface IStackItemProps
-  extends IStackItemSlots,
+  extends
+    IStackItemSlots,
     IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>,
     React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode;

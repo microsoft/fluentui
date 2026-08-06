@@ -208,7 +208,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    *  of the Dropdown is dynamic (e.g, "fit-content").
    */
   private _hasBeenPositioned: boolean;
-  private readonly _scrollIdleDelay: number = 250 /* ms */;
+  private readonly _scrollIdleDelay: number = 250; /* ms */
   private _scrollIdleTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
@@ -805,12 +805,12 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const itemClassName = item.hidden // predicate: item hidden
       ? this._classNames.dropdownItemHidden
       : isItemSelected && item.disabled === true // predicate: both selected and disabled
-      ? this._classNames.dropdownItemSelectedAndDisabled
-      : isItemSelected // predicate: selected only
-      ? this._classNames.dropdownItemSelected
-      : item.disabled === true // predicate: disabled only
-      ? this._classNames.dropdownItemDisabled
-      : this._classNames.dropdownItem;
+        ? this._classNames.dropdownItemSelectedAndDisabled
+        : isItemSelected // predicate: selected only
+          ? this._classNames.dropdownItemSelected
+          : item.disabled === true // predicate: disabled only
+            ? this._classNames.dropdownItemDisabled
+            : this._classNames.dropdownItem;
 
     const { title } = item;
 

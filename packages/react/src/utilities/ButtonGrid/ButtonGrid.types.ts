@@ -7,8 +7,7 @@ import type { JSXElement } from '@fluentui/utilities';
 export interface IButtonGrid {}
 
 export interface IButtonGridProps
-  extends React.TableHTMLAttributes<HTMLTableElement>,
-    React.RefAttributes<HTMLElement> {
+  extends React.TableHTMLAttributes<HTMLTableElement>, React.RefAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */

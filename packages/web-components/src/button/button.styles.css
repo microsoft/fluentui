@@ -55,7 +55,9 @@
 :host(:focus-visible) {
   border-color: var(--colorTransparentStroke);
   outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
-  box-shadow: var(--shadow4), 0 0 0 2px var(--colorStrokeFocus2);
+  box-shadow:
+    var(--shadow4),
+    0 0 0 2px var(--colorStrokeFocus2);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -153,7 +155,9 @@
 
 :host([appearance='primary']:focus-visible) {
   border-color: var(--colorNeutralForegroundOnBrand);
-  box-shadow: var(--shadow2), 0 0 0 2px var(--colorStrokeFocus2);
+  box-shadow:
+    var(--shadow2),
+    0 0 0 2px var(--colorStrokeFocus2);
 }
 
 :host([appearance='outline']) {
@@ -214,35 +218,35 @@
 }
 
 :host(
-    :is(
-        :disabled,
-        [disabled],
-        [disabled-focusable],
-        [appearance]:disabled,
-        [appearance][disabled],
-        [appearance][disabled-focusable]
-      )
-  ),
+  :is(
+    :disabled,
+    [disabled],
+    [disabled-focusable],
+    [appearance]:disabled,
+    [appearance][disabled],
+    [appearance][disabled-focusable]
+  )
+),
 :host(
-    :is(
-        :disabled,
-        [disabled],
-        [disabled-focusable],
-        [appearance]:disabled,
-        [appearance][disabled],
-        [appearance][disabled-focusable]
-      ):hover
-  ),
+  :is(
+    :disabled,
+    [disabled],
+    [disabled-focusable],
+    [appearance]:disabled,
+    [appearance][disabled],
+    [appearance][disabled-focusable]
+  ):hover
+),
 :host(
-    :is(
-        :disabled,
-        [disabled],
-        [disabled-focusable],
-        [appearance]:disabled,
-        [appearance][disabled],
-        [appearance][disabled-focusable]
-      ):hover:active
-  ) {
+  :is(
+      :disabled,
+      [disabled],
+      [disabled-focusable],
+      [appearance]:disabled,
+      [appearance][disabled],
+      [appearance][disabled-focusable]
+    ):hover:active
+) {
   background-color: var(--colorNeutralBackgroundDisabled);
   border-color: var(--colorNeutralStrokeDisabled);
   color: var(--colorNeutralForegroundDisabled);
@@ -288,15 +292,15 @@
   }
 
   :host(
-      :is(
-          :disabled,
-          [disabled],
-          [disabled-focusable],
-          [appearance]:disabled,
-          [appearance][disabled],
-          [appearance][disabled-focusable]
-        )
-    ) {
+    :is(
+      :disabled,
+      [disabled],
+      [disabled-focusable],
+      [appearance]:disabled,
+      [appearance][disabled],
+      [appearance][disabled-focusable]
+    )
+  ) {
     background-color: ButtonFace;
     color: GrayText;
     border-color: ButtonText;

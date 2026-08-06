@@ -38,7 +38,11 @@
   @media (prefers-reduced-motion: no-preference) {
     dialog,
     ::backdrop {
-      transition: display allow-discrete, opacity, overlay allow-discrete, scale;
+      transition:
+        display allow-discrete,
+        opacity,
+        overlay allow-discrete,
+        scale;
       transition-duration: var(--durationGentle);
       transition-timing-function: var(--curveDecelerateMid);
       /* Set opacity to 0 when closed */

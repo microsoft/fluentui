@@ -31,10 +31,9 @@ function onResolveSuggestions(text: string): ISimple[] {
     .map((item: string) => ({ key: item, name: item }));
 }
 
-const BasePickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<ISimple>) => BaseFloatingPicker<
-  ISimple,
-  IBaseFloatingPickerProps<ISimple>
->;
+const BasePickerWithType = BaseFloatingPicker as new (
+  props: IBaseFloatingPickerProps<ISimple>,
+) => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
 
 const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (
   props: IBaseSelectedItemsListProps<ISimple>,

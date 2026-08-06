@@ -115,7 +115,7 @@ describe('Slider', () => {
     const sliderThumb = getByRole('slider');
 
     sliderLine.getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 }) as DOMRect;
 
     fireEvent.mouseDown(sliderThumb, { clientX: 0, clientY: 0 });
     // Default min is 0.
@@ -143,7 +143,7 @@ describe('Slider', () => {
     const sliderThumb = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
     sliderLine.getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 }) as DOMRect;
 
     fireEvent.mouseDown(sliderThumb, { clientX: 0, clientY: 0 });
     // Default min is 0.
@@ -167,7 +167,7 @@ describe('Slider', () => {
     const sliderThumb = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
     sliderLine.getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 }) as DOMRect;
 
     fireEvent.mouseDown(sliderThumb, { clientX: 0, clientY: 0 });
     expect(onChange.mock.calls[0][1]).toBeUndefined();
@@ -185,7 +185,7 @@ describe('Slider', () => {
     const sliderThumb = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
     sliderLine.getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 }) as DOMRect;
 
     fireEvent.mouseDown(sliderThumb, { clientX: 100, clientY: 0 });
 
@@ -209,7 +209,7 @@ describe('Slider', () => {
     const sliderThumb = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
     sliderLine.getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 }) as DOMRect;
 
     fireEvent.mouseDown(sliderThumb, { clientX: 80, clientY: 0 });
 
@@ -226,7 +226,7 @@ describe('Slider', () => {
     const sliderThumb = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
     sliderLine.getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 }) as DOMRect;
 
     fireEvent.mouseDown(sliderThumb, { clientX: 40, clientY: 0 });
 
@@ -244,7 +244,7 @@ describe('Slider', () => {
     const sliderThumb = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
     sliderLine.getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 }) as DOMRect;
 
     fireEvent.mouseDown(sliderThumb, { clientX: 10, clientY: 0 });
 
@@ -269,7 +269,7 @@ describe('Slider', () => {
     const sliderThumb = container.getElementsByClassName('ms-Slider-slideBox')[0];
 
     sliderLine.getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 }) as DOMRect;
 
     fireEvent.mouseDown(sliderThumb, { clientX: 10, clientY: 0 });
     fireEvent.mouseDown(sliderThumb, { clientX: 20, clientY: 0 });

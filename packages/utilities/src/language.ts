@@ -20,8 +20,8 @@ export function getLanguage(
       persistenceType === 'localStorage'
         ? localStorage.getItem(STORAGE_KEY)
         : persistenceType === 'sessionStorage'
-        ? sessionStorage.getItem(STORAGE_KEY)
-        : undefined;
+          ? sessionStorage.getItem(STORAGE_KEY)
+          : undefined;
 
     if (savedLanguage) {
       _language = savedLanguage;

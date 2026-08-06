@@ -314,144 +314,88 @@ export type ColorPaletteLightGreen =
   | 'colorPaletteLightGreenBorder2';
 
 export type ColorPaletteDarkRed =
-  | 'colorPaletteDarkRedBackground2'
-  | 'colorPaletteDarkRedForeground2'
-  | 'colorPaletteDarkRedBorderActive';
+  'colorPaletteDarkRedBackground2' | 'colorPaletteDarkRedForeground2' | 'colorPaletteDarkRedBorderActive';
 
 export type ColorPaletteCranberry =
-  | 'colorPaletteCranberryBackground2'
-  | 'colorPaletteCranberryForeground2'
-  | 'colorPaletteCranberryBorderActive';
+  'colorPaletteCranberryBackground2' | 'colorPaletteCranberryForeground2' | 'colorPaletteCranberryBorderActive';
 
 export type ColorPalettePumpkin =
-  | 'colorPalettePumpkinBackground2'
-  | 'colorPalettePumpkinForeground2'
-  | 'colorPalettePumpkinBorderActive';
+  'colorPalettePumpkinBackground2' | 'colorPalettePumpkinForeground2' | 'colorPalettePumpkinBorderActive';
 
 export type ColorPalettePeach =
-  | 'colorPalettePeachBackground2'
-  | 'colorPalettePeachForeground2'
-  | 'colorPalettePeachBorderActive';
+  'colorPalettePeachBackground2' | 'colorPalettePeachForeground2' | 'colorPalettePeachBorderActive';
 
 export type ColorPaletteGold =
-  | 'colorPaletteGoldBackground2'
-  | 'colorPaletteGoldForeground2'
-  | 'colorPaletteGoldBorderActive';
+  'colorPaletteGoldBackground2' | 'colorPaletteGoldForeground2' | 'colorPaletteGoldBorderActive';
 
 export type ColorPaletteBrass =
-  | 'colorPaletteBrassBackground2'
-  | 'colorPaletteBrassForeground2'
-  | 'colorPaletteBrassBorderActive';
+  'colorPaletteBrassBackground2' | 'colorPaletteBrassForeground2' | 'colorPaletteBrassBorderActive';
 
 export type ColorPaletteBrown =
-  | 'colorPaletteBrownBackground2'
-  | 'colorPaletteBrownForeground2'
-  | 'colorPaletteBrownBorderActive';
+  'colorPaletteBrownBackground2' | 'colorPaletteBrownForeground2' | 'colorPaletteBrownBorderActive';
 
 export type ColorPaletteForest =
-  | 'colorPaletteForestBackground2'
-  | 'colorPaletteForestForeground2'
-  | 'colorPaletteForestBorderActive';
+  'colorPaletteForestBackground2' | 'colorPaletteForestForeground2' | 'colorPaletteForestBorderActive';
 
 export type ColorPaletteSeafoam =
-  | 'colorPaletteSeafoamBackground2'
-  | 'colorPaletteSeafoamForeground2'
-  | 'colorPaletteSeafoamBorderActive';
+  'colorPaletteSeafoamBackground2' | 'colorPaletteSeafoamForeground2' | 'colorPaletteSeafoamBorderActive';
 
 export type ColorPaletteDarkGreen =
-  | 'colorPaletteDarkGreenBackground2'
-  | 'colorPaletteDarkGreenForeground2'
-  | 'colorPaletteDarkGreenBorderActive';
+  'colorPaletteDarkGreenBackground2' | 'colorPaletteDarkGreenForeground2' | 'colorPaletteDarkGreenBorderActive';
 
 export type ColorPaletteLightTeal =
-  | 'colorPaletteLightTealBackground2'
-  | 'colorPaletteLightTealForeground2'
-  | 'colorPaletteLightTealBorderActive';
+  'colorPaletteLightTealBackground2' | 'colorPaletteLightTealForeground2' | 'colorPaletteLightTealBorderActive';
 
 export type ColorPaletteTeal =
-  | 'colorPaletteTealBackground2'
-  | 'colorPaletteTealForeground2'
-  | 'colorPaletteTealBorderActive';
+  'colorPaletteTealBackground2' | 'colorPaletteTealForeground2' | 'colorPaletteTealBorderActive';
 
 export type ColorPaletteSteel =
-  | 'colorPaletteSteelBackground2'
-  | 'colorPaletteSteelForeground2'
-  | 'colorPaletteSteelBorderActive';
+  'colorPaletteSteelBackground2' | 'colorPaletteSteelForeground2' | 'colorPaletteSteelBorderActive';
 
 export type ColorPaletteBlue =
-  | 'colorPaletteBlueBackground2'
-  | 'colorPaletteBlueForeground2'
-  | 'colorPaletteBlueBorderActive';
+  'colorPaletteBlueBackground2' | 'colorPaletteBlueForeground2' | 'colorPaletteBlueBorderActive';
 
 export type ColorPaletteRoyalBlue =
-  | 'colorPaletteRoyalBlueBackground2'
-  | 'colorPaletteRoyalBlueForeground2'
-  | 'colorPaletteRoyalBlueBorderActive';
+  'colorPaletteRoyalBlueBackground2' | 'colorPaletteRoyalBlueForeground2' | 'colorPaletteRoyalBlueBorderActive';
 
 export type ColorPaletteCornflower =
-  | 'colorPaletteCornflowerBackground2'
-  | 'colorPaletteCornflowerForeground2'
-  | 'colorPaletteCornflowerBorderActive';
+  'colorPaletteCornflowerBackground2' | 'colorPaletteCornflowerForeground2' | 'colorPaletteCornflowerBorderActive';
 
 export type ColorPaletteNavy =
-  | 'colorPaletteNavyBackground2'
-  | 'colorPaletteNavyForeground2'
-  | 'colorPaletteNavyBorderActive';
+  'colorPaletteNavyBackground2' | 'colorPaletteNavyForeground2' | 'colorPaletteNavyBorderActive';
 
 export type ColorPaletteLavender =
-  | 'colorPaletteLavenderBackground2'
-  | 'colorPaletteLavenderForeground2'
-  | 'colorPaletteLavenderBorderActive';
+  'colorPaletteLavenderBackground2' | 'colorPaletteLavenderForeground2' | 'colorPaletteLavenderBorderActive';
 
 export type ColorPalettePurple =
-  | 'colorPalettePurpleBackground2'
-  | 'colorPalettePurpleForeground2'
-  | 'colorPalettePurpleBorderActive';
+  'colorPalettePurpleBackground2' | 'colorPalettePurpleForeground2' | 'colorPalettePurpleBorderActive';
 
 export type ColorPaletteGrape =
-  | 'colorPaletteGrapeBackground2'
-  | 'colorPaletteGrapeForeground2'
-  | 'colorPaletteGrapeBorderActive';
+  'colorPaletteGrapeBackground2' | 'colorPaletteGrapeForeground2' | 'colorPaletteGrapeBorderActive';
 
 export type ColorPaletteLilac =
-  | 'colorPaletteLilacBackground2'
-  | 'colorPaletteLilacForeground2'
-  | 'colorPaletteLilacBorderActive';
+  'colorPaletteLilacBackground2' | 'colorPaletteLilacForeground2' | 'colorPaletteLilacBorderActive';
 
 export type ColorPalettePink =
-  | 'colorPalettePinkBackground2'
-  | 'colorPalettePinkForeground2'
-  | 'colorPalettePinkBorderActive';
+  'colorPalettePinkBackground2' | 'colorPalettePinkForeground2' | 'colorPalettePinkBorderActive';
 
 export type ColorPaletteMagenta =
-  | 'colorPaletteMagentaBackground2'
-  | 'colorPaletteMagentaForeground2'
-  | 'colorPaletteMagentaBorderActive';
+  'colorPaletteMagentaBackground2' | 'colorPaletteMagentaForeground2' | 'colorPaletteMagentaBorderActive';
 
 export type ColorPalettePlum =
-  | 'colorPalettePlumBackground2'
-  | 'colorPalettePlumForeground2'
-  | 'colorPalettePlumBorderActive';
+  'colorPalettePlumBackground2' | 'colorPalettePlumForeground2' | 'colorPalettePlumBorderActive';
 
 export type ColorPaletteBeige =
-  | 'colorPaletteBeigeBackground2'
-  | 'colorPaletteBeigeForeground2'
-  | 'colorPaletteBeigeBorderActive';
+  'colorPaletteBeigeBackground2' | 'colorPaletteBeigeForeground2' | 'colorPaletteBeigeBorderActive';
 
 export type ColorPaletteMink =
-  | 'colorPaletteMinkBackground2'
-  | 'colorPaletteMinkForeground2'
-  | 'colorPaletteMinkBorderActive';
+  'colorPaletteMinkBackground2' | 'colorPaletteMinkForeground2' | 'colorPaletteMinkBorderActive';
 
 export type ColorPalettePlatinum =
-  | 'colorPalettePlatinumBackground2'
-  | 'colorPalettePlatinumForeground2'
-  | 'colorPalettePlatinumBorderActive';
+  'colorPalettePlatinumBackground2' | 'colorPalettePlatinumForeground2' | 'colorPalettePlatinumBorderActive';
 
 export type ColorPaletteAnchor =
-  | 'colorPaletteAnchorBackground2'
-  | 'colorPaletteAnchorForeground2'
-  | 'colorPaletteAnchorBorderActive';
+  'colorPaletteAnchorBackground2' | 'colorPaletteAnchorForeground2' | 'colorPaletteAnchorBorderActive';
 
 export type ColorStatusTokens = Record<ColorStatusSuccess | ColorStatusWarning | ColorStatusDanger, string>;
 

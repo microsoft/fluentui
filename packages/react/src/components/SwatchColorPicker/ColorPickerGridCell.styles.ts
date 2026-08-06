@@ -40,8 +40,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
   const calculatedBorderWidth = borderWidth
     ? borderWidth
     : width < CELL_BORDER_BREAKPOINT
-    ? SMALL_BORDER
-    : LARGE_BORDER;
+      ? SMALL_BORDER
+      : LARGE_BORDER;
 
   return {
     // this is a button that wraps the color

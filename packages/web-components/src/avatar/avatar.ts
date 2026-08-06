@@ -146,8 +146,8 @@ export class Avatar extends BaseAvatar {
       colorful && this.colorId
         ? this.colorId
         : colorful
-        ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
-        : this.color ?? AvatarColor.neutral;
+          ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
+          : (this.color ?? AvatarColor.neutral);
 
     this.setAttribute('data-color', this.currentColor);
   }
