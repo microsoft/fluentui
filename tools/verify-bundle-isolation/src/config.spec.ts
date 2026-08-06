@@ -44,6 +44,18 @@ describe('loadConfig', () => {
     expect(() => load({ ...valid, knownViolations: {} })).toThrow(/must NOT have additional properties/);
   });
 
+  it('rejects a glob in allowedViolations, which would silently absorb an unrelated leak', () => {
+    expect(() => load({ ...valid, allowedViolations: { 'A.fixture.js': ['@griffel/*'] } })).toThrow(
+      /must match pattern/,
+    );
+  });
+
+  it('accepts an exact package name in allowedViolations', () => {
+    expect(load({ ...valid, allowedViolations: { 'A.fixture.js': ['@griffel/core'] } }).allowedViolations).toEqual({
+      'A.fixture.js': ['@griffel/core'],
+    });
+  });
+
   it('reports the offending path relative to the workspace', () => {
     expect(() => load({ ...valid, externals: 'react' })).toThrow(/bundle-isolation\.config\.json/);
   });
@@ -71,7 +83,8 @@ describe('findFixtures', () => {
     writeFileSync(join(root, 'readme.md'), '');
     writeFileSync(join(root, 'nested', 'C.fixture.js'), '');
 
-    expect(findFixtures(root)).toEqual(['A.fixture.js', 'B.fixture.js', join('nested', 'C.fixture.js')]);
+    // Asserted as a literal rather than via join(), because these become config keys on every platform.
+    expect(findFixtures(root)).toEqual(['A.fixture.js', 'B.fixture.js', 'nested/C.fixture.js']);
   });
 });
 
@@ -82,6 +95,12 @@ describe('paths', () => {
 
   it('gives each fixture its own output directory', () => {
     expect(fixtureOutputPath('A.fixture.js', '/ws/packages/thing')).toBe('/ws/packages/thing/dist/bundle-isolation/A');
+  });
+
+  it('keeps a nested fixture under its own directory', () => {
+    expect(fixtureOutputPath('nested/C.fixture.js', '/ws/packages/thing')).toBe(
+      join('/ws/packages/thing/dist/bundle-isolation/nested/C'),
+    );
   });
 
   it('shortens workspace paths for display', () => {

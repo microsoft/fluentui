@@ -33,14 +33,16 @@
       }
     },
     "allowedViolations": {
-      "description": "Bundle-size fixture paths mapped to forbidden packages tolerated as tracked debt.",
+      "description": "Bundle-size fixture paths mapped to forbidden packages tolerated as tracked debt. Fixture paths use forward slashes and are relative to fixturesRoot.",
       "type": "object",
       "additionalProperties": {
         "type": "array",
         "uniqueItems": true,
         "items": {
+          "description": "Exact resolved package name. Globs are rejected so a tolerated leak cannot silently cover a new one.",
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "^[^*]+$"
         }
       }
     }

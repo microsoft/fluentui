@@ -111,7 +111,13 @@ All configured paths are resolved relative to the package root:
 - `fixturesRoot` is the directory containing bundle-size fixtures.
 - `externals` lists host-provided modules excluded from the bundle.
 - `forbiddenPackages` lists exact package names or scoped globs such as `@griffel/*`.
-- `allowedViolations` maps fixture paths, relative to `fixturesRoot`, to tolerated forbidden packages.
+- `allowedViolations` maps fixture paths, relative to `fixturesRoot` and always with forward slashes, to tolerated
+  forbidden packages.
+
+The two lists do not take the same values. `forbiddenPackages` declares intent, so it accepts globs. `allowedViolations`
+records what actually leaked, so it takes **exact resolved package names** and rejects globs - `@griffel/*` there would
+let a newly leaked `@griffel/anything` hide behind an entry approved for something else. The debt has to name what it
+is: `@griffel/core` and `@griffel/react`, separately.
 
 `$schema` has to be a workspace-relative path. Editors resolve it against the config file and do not apply Node package
 resolution, so `@fluentui/verify-bundle-isolation/schema.json` will not work there despite the export map. The export

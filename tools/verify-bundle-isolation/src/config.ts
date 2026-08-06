@@ -39,10 +39,18 @@ export function findFixtures(fixturesRoot: string): string[] {
     return [];
   }
 
-  return readdirSync(fixturesRoot, { recursive: true, withFileTypes: true })
-    .filter(entry => entry.isFile() && entry.name.endsWith(FIXTURE_SUFFIX))
-    .map(entry => join(entry.parentPath, entry.name).slice(fixturesRoot.length + 1))
-    .sort();
+  return (
+    readdirSync(fixturesRoot, { recursive: true, withFileTypes: true })
+      .filter(entry => entry.isFile() && entry.name.endsWith(FIXTURE_SUFFIX))
+      // Fixture paths become config keys, so they stay POSIX rather than following the host separator.
+      .map(entry =>
+        join(entry.parentPath, entry.name)
+          .slice(fixturesRoot.length + 1)
+          .split(sep)
+          .join('/'),
+      )
+      .sort()
+  );
 }
 
 export function findWorkspaceRoot(startDir: string): string {

@@ -114,6 +114,46 @@ describe('BundleIsolationPlugin', () => {
 
     expect(report.sourceResolved).toEqual([join(root, 'my-pkg/library/src/index.js')]);
   });
+
+  // webpack reports an import as `ids`, where only the first entry names the export. These two
+  // cases pin that down: matching any id instead would blame `alpha.beta` for importing `beta`.
+  describe('imported ids', () => {
+    it('credits every specifier of a multi-specifier import', async () => {
+      writeFiles(root, {
+        'package.json': manifest('test-workspace'),
+        'node_modules/forbidden-pkg/package.json': manifest('forbidden-pkg'),
+        'node_modules/forbidden-pkg/index.js': `export const alpha = () => Date.now();\nexport const beta = () => Math.random();\n`,
+        'my-pkg/package.json': manifest('my-pkg'),
+        'my-pkg/lib/index.js': `import { alpha, beta } from 'forbidden-pkg';\nexport const use = () => alpha() + beta();\n`,
+        'entry.js': `import { use } from './my-pkg/lib/index.js';\nconsole.log(use());\n`,
+      });
+
+      const report = await bundle({ root, packageRoot: join(root, 'my-pkg'), forbiddenPackages: ['forbidden-pkg'] });
+
+      expect(report.leaks['forbidden-pkg'].exports.map(({ name }) => name)).toEqual(['alpha', 'beta']);
+    });
+
+    it('does not treat a property read on an import as an import of that property', async () => {
+      writeFiles(root, {
+        'package.json': manifest('test-workspace'),
+        'node_modules/forbidden-pkg/package.json': manifest('forbidden-pkg'),
+        'node_modules/forbidden-pkg/index.js': `export const alpha = { beta: () => Date.now() };\nexport const beta = () => Math.random();\n`,
+        'my-pkg/package.json': manifest('my-pkg'),
+        'my-pkg/lib/uses-beta.js': `import { beta } from 'forbidden-pkg';\nexport const viaImport = () => beta();\n`,
+        // Reads `.beta` off `alpha`, so its ids are ["alpha", "beta"] without importing `beta`.
+        'my-pkg/lib/uses-alpha.js': `import { alpha } from 'forbidden-pkg';\nexport const viaProperty = () => alpha.beta();\n`,
+        'my-pkg/lib/index.js': `export * from './uses-beta';\nexport * from './uses-alpha';\n`,
+        'entry.js': `import { viaImport, viaProperty } from './my-pkg/lib/index.js';\nconsole.log(viaImport(), viaProperty());\n`,
+      });
+
+      const report = await bundle({ root, packageRoot: join(root, 'my-pkg'), forbiddenPackages: ['forbidden-pkg'] });
+      const betaImporters = report.leaks['forbidden-pkg'].exports
+        .filter(({ name }) => name === 'beta')
+        .flatMap(({ importers }) => importers.map(importer => importer.module));
+
+      expect(betaImporters).toEqual([join(root, 'my-pkg/lib/uses-beta.js')]);
+    });
+  });
 });
 
 function bundle({

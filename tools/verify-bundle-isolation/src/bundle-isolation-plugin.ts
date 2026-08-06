@@ -159,6 +159,9 @@ function externalImporters(
       continue;
     }
 
+    // Only the first id names the import. webpack emits one dependency per specifier, so
+    // `import { a, b }` is already two connections, while `a.b` is a single one with ids
+    // ["a", "b"] - matching any id would blame that module for importing `b`.
     if (importedIds(connection.dependency, moduleGraph)[0] === exportName) {
       importers.set(origin, connection.originModule);
     }
