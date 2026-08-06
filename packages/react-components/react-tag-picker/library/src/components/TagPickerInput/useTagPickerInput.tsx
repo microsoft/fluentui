@@ -21,6 +21,7 @@ import { useInputTriggerSlot } from '@fluentui/react-combobox';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { tagPickerInputCSSRules } from '../../utils/tokens';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { useTabsterEscapeIgnore } from '../../utils/useTabsterEscapeIgnore';
 
 /**
  * Create the base state required to render TagPickerInput, without design-only props.
@@ -160,11 +161,16 @@ export const useTagPickerInput_unstable = (
   });
 
   const baseState = useTagPickerInputBase_unstable({ ...props, onKeyDown }, ref);
+  const open = useTagPickerContext_unstable(ctx => ctx.open);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
 
   return {
     ...baseState,
     size,
+    root: {
+      ...useTabsterEscapeIgnore(baseState.root, open),
+      ...baseState.root,
+    },
   };
 };
 

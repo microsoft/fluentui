@@ -2,6 +2,29 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:23 GMT",
+      "tag": "@fluentui/react-message-bar_v9.7.4",
+      "version": "9.7.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "fb9607c34c507ed956497ee76c8adddf1f93c9a0",
+            "comment": "fix(MessageBar): v9 MessageBar Resize Flicker Fix"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 15:15:07 GMT",
       "tag": "@fluentui/react-message-bar_v9.7.3",
       "version": "9.7.3",

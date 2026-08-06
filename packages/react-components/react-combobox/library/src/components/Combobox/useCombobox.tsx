@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useActiveDescendant } from '@fluentui/react-aria';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
@@ -27,6 +27,7 @@ import type {
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
 import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
+import { useTabsterEscapeIgnore } from '../../hooks/useTabsterEscapeIgnore';
 
 /**
  * Create the base state required to render Combobox, without design-only props.
@@ -213,7 +214,8 @@ export const useComboboxBase_unstable = (
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  const { appearance = 'outline', size = 'medium', ...baseProps } = props;
+  const fieldContext = useFieldContext_unstable();
+  const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useComboboxBase_unstable(baseProps, ref);
 
   if (baseState.clearIcon) {
@@ -228,5 +230,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     ...baseState,
     appearance,
     size,
+    input: {
+      ...useTabsterEscapeIgnore(baseState.input, baseState.open),
+      ...baseState.input,
+    },
   };
 };

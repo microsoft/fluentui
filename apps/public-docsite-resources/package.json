@@ -30,7 +30,6 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn run -T just-scripts build",
-    "prebundle": "yarn build",
     "bundle": "yarn run -T just-scripts bundle",
     "lint": "yarn run -T eslint --ext .js,.ts,.tsx ./src",
     "just": "yarn run -T just-scripts",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:07 GMT",
+      "tag": "@fluentui/react-progress_v9.5.3",
+      "version": "9.5.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: yarn-modern dependency reorder"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:53 GMT",
       "tag": "@fluentui/react-progress_v9.5.3",
       "version": "9.5.3",

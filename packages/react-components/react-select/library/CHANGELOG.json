@@ -2,6 +2,21 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:09 GMT",
+      "tag": "@fluentui/react-select_v9.5.4",
+      "version": "9.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1",
+            "comment": "fix: fix Field control size handling for Select"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:55 GMT",
       "tag": "@fluentui/react-select_v9.5.3",
       "version": "9.5.3",

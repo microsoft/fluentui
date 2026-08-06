@@ -934,7 +934,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
     return domainValue;
   };
   const yAxis = axis.tickPadding(tickPadding).tickValues(customTickValues).tickFormat(tickFormat);
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
 
   axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
 
@@ -988,7 +988,7 @@ export const createStringYAxis = (
   if (chartType === ChartTypes.VerticalStackedBarChart) {
     axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   }
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
 
   axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
 

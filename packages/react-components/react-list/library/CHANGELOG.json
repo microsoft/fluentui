@@ -2,6 +2,21 @@
   "name": "@fluentui/react-list",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:21 GMT",
+      "tag": "@fluentui/react-list_v9.6.16",
+      "version": "9.6.16",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-list",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:46 GMT",
       "tag": "@fluentui/react-list_v9.6.16",
       "version": "9.6.16",

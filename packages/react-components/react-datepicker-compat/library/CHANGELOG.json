@@ -2,6 +2,33 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:26 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.6.35",
+      "version": "0.6.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-input to v9.8.5",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.14.5",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-positioning to v9.23.0",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 15:15:07 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.6.34",
       "version": "0.6.34",

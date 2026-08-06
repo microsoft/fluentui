@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 15 Jul 2026 14:10:40 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.23)
+
+Tue, 04 Aug 2026 10:12:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.22..@fluentui/react-charts_v9.3.23)
+
+### Patches
+
+- voice control accessibility bug fix ([PR #36396](https://github.com/microsoft/fluentui/pull/36396) by 132879294+v-baambati@users.noreply.github.com)
+- Accessibility bug fixe ([PR #36426](https://github.com/microsoft/fluentui/pull/36426) by 132879294+v-baambati@users.noreply.github.com)
+- HorizontalBarChart bug fixes ([PR #36494](https://github.com/microsoft/fluentui/pull/36494) by 132879294+v-baambati@users.noreply.github.com)
+- Bump @fluentui/react-popover to v9.14.5 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
+- Bump @fluentui/react-tooltip to v9.10.4 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.22)
 

@@ -170,4 +170,36 @@ describe('Tooltip', () => {
 
     visibilityStateSpy.mockRestore();
   });
+
+  it.each([
+    { escaped: true, referenceHidden: false },
+    { escaped: false, referenceHidden: true },
+  ])('hides and restores the tooltip based on positioning visibility flags', flags => {
+    const onPositioningEnd = jest.fn();
+    const result = render(
+      <Tooltip content="Tooltip content" relationship="label" visible positioning={{ onPositioningEnd }}>
+        <button />
+      </Tooltip>,
+    );
+    const tooltip = getByRoleTooltip(result);
+
+    const hiddenEvent = new CustomEvent('fui-positioningend', {
+      detail: { placement: 'top', ...flags },
+    });
+    act(() => tooltip.dispatchEvent(hiddenEvent));
+
+    expect(getByRoleTooltip(result)).toBe(tooltip);
+    expect(getComputedStyle(tooltip).visibility).toBe('hidden');
+    expect(getComputedStyle(tooltip).pointerEvents).toBe('none');
+    expect(onPositioningEnd).toHaveBeenCalledWith(hiddenEvent);
+
+    const visibleEvent = new CustomEvent('fui-positioningend', {
+      detail: { placement: 'top', escaped: false, referenceHidden: false },
+    });
+    act(() => tooltip.dispatchEvent(visibleEvent));
+
+    expect(getByRoleTooltip(result)).toBe(tooltip);
+    expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
+    expect(onPositioningEnd).toHaveBeenCalledWith(visibleEvent);
+  });
 });
