@@ -1,3 +1,5 @@
+export { useGridNavigation } from './useGridNavigation';
+export type { GridNavigationProps, UseGridNavigationOptions } from './useGridNavigation';
 export { usePositioning } from './usePositioning';
 export type {
   Position,

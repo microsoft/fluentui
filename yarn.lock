@@ -4358,6 +4358,7 @@ __metadata:
     "@fluentui/react-slider": "npm:^9.6.4"
     "@fluentui/react-spinbutton": "npm:^9.6.4"
     "@fluentui/react-spinner": "npm:^9.8.4"
+    "@fluentui/react-swatch-picker": "npm:^9.5.4"
     "@fluentui/react-switch": "npm:^9.7.4"
     "@fluentui/react-tabs": "npm:^9.12.3"
     "@fluentui/react-tabster": "npm:^9.26.16"
