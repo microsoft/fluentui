@@ -4,6 +4,8 @@
  * - `false` and `undefined` become `undefined` (indicating the absence of the attribute).
  * - Other values are converted to strings.
  */
+export function stringifyDataAttribute(value: boolean): '' | undefined;
+export function stringifyDataAttribute(value: boolean | string | number | undefined): string | undefined;
 export function stringifyDataAttribute(value: boolean | string | number | undefined): string | undefined {
   if (value === true) {
     return '';
