@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add CompoundButton",
+  "comment": "feat: add headless CompoundButton",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
