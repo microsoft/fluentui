@@ -2,20 +2,20 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   border-radius: var(--borderRadiusMedium);
   overflow: hidden;
-  margin-top: var(--spacingVerticalXXL);
-  margin-bottom: var(--spacingVerticalXXL);
+  margin-top: var(--spacing-vertical-xxl);
+  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacingVerticalM) var(--spacingHorizontalXL);
+  padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
   background-color: var(--colorNeutralBackground2);
-  border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-bottom: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
 }
 
 .title {
@@ -40,7 +40,7 @@
   justify-content: center;
   flex: 1 1 auto;
   min-height: 120px;
-  padding: var(--spacingVerticalXL);
+  padding: var(--spacing-vertical-xl);
   background-color: var(--colorNeutralBackground1);
 }
 
@@ -53,14 +53,14 @@
 .buttonRow {
   display: flex;
   justify-content: center;
-  padding: var(--spacingVerticalM) var(--spacingHorizontalXL) var(--spacingVerticalL);
+  padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl) var(--spacing-vertical-l);
   background-color: var(--colorNeutralBackground1);
 }
 
 .demoBox {
-  padding: var(--spacingVerticalL) var(--spacingHorizontalXXL);
+  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xxl);
   background-color: var(--colorNeutralBackground3);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   border-radius: var(--borderRadiusMedium);
   color: var(--colorNeutralForeground1);
   font-size: var(--fontSizeBase300);
@@ -71,16 +71,16 @@
 .codeArea {
   flex: 1 1 auto;
   min-width: 0;
-  padding: var(--spacingVerticalL) var(--spacingHorizontalXL);
+  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
   background-color: var(--colorNeutralBackground1);
-  border-left: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-left: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   overflow: auto;
 }
 
 @media (max-width: 600px) {
   .codeArea {
     border-left: none;
-    border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-top: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   }
 }
 

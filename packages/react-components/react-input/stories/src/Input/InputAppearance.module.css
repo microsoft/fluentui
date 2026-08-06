@@ -9,9 +9,9 @@
 
 .field {
   display: grid;
-  grid-row-gap: var(--spacingVerticalXXS);
-  margin-top: var(--spacingVerticalMNudge);
-  padding: var(--spacingHorizontalMNudge);
+  grid-row-gap: var(--spacing-vertical-xxs);
+  margin-top: var(--spacing-vertical-m-nudge);
+  padding: var(--spacing-horizontal-m-nudge);
 }
 
 .filledLighter {

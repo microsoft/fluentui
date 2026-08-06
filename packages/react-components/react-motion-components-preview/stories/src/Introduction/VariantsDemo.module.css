@@ -3,15 +3,15 @@
 
 .toolbar {
   text-align: center;
-  margin-bottom: var(--spacingVerticalL);
+  margin-bottom: var(--spacing-vertical-l);
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacingHorizontalL);
-  margin-top: var(--spacingVerticalXXL);
-  margin-bottom: var(--spacingVerticalXXL);
+  gap: var(--spacing-horizontal-l);
+  margin-top: var(--spacing-vertical-xxl);
+  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 @media (max-width: 600px) {
@@ -24,9 +24,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacingVerticalM);
-  padding: var(--spacingVerticalXL);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  gap: var(--spacing-vertical-m);
+  padding: var(--spacing-vertical-xl);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   border-radius: var(--borderRadiusMedium);
   background-color: var(--colorNeutralBackground1);
 }
@@ -67,6 +67,6 @@
 
 .button {
   min-width: auto;
-  padding: var(--spacingVerticalXS) var(--spacingHorizontalM);
+  padding: var(--spacing-vertical-xs) var(--spacing-horizontal-m);
   font-size: var(--fontSizeBase200);
 }

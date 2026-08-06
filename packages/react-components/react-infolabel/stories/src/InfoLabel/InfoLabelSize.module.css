@@ -5,5 +5,5 @@
   align-items: start;
   display: flex;
   flex-direction: column;
-  row-gap: var(--spacingVerticalL);
+  row-gap: var(--spacing-vertical-l);
 }

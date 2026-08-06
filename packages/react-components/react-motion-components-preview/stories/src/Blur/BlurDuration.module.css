@@ -19,7 +19,7 @@
   width: 200px;
   height: 120px;
   padding: 20px;
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   border-radius: var(--borderRadiusMedium);
   background-color: var(--colorNeutralBackground1);
   display: flex;

@@ -2,5 +2,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  padding: var(--spacingVerticalXL);
+  padding: var(--spacing-vertical-xl);
 }

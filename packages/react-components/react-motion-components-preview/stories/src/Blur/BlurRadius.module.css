@@ -4,8 +4,8 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacingVerticalXXXL);
-  padding: var(--spacingVerticalMNudge);
+  gap: var(--spacing-vertical-xxxl);
+  padding: var(--spacing-vertical-m-nudge);
 }
 
 .card {
@@ -13,8 +13,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--spacingVerticalXL);
-  gap: var(--spacingVerticalM);
+  padding: var(--spacing-vertical-xl);
+  gap: var(--spacing-vertical-m);
 }
 
 .cellNormal {
@@ -28,5 +28,5 @@
 .controls {
   display: flex;
   justify-content: center;
-  margin-top: var(--spacingVerticalXL);
+  margin-top: var(--spacing-vertical-xl);
 }

@@ -4,12 +4,12 @@
 .container {
   display: grid;
   grid-template: 'controls .' 'card card' / 1fr 1fr;
-  gap: var(--spacingVerticalXL) var(--spacingHorizontalMNudge);
+  gap: var(--spacing-vertical-xl) var(--spacing-horizontal-m-nudge);
 }
 
 .card {
   grid-area: card;
-  padding: var(--spacingVerticalXL);
+  padding: var(--spacing-vertical-xl);
 }
 
 .cardContent {
@@ -25,10 +25,10 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
-  padding: var(--spacingVerticalMNudge);
+  padding: var(--spacing-vertical-m-nudge);
 }
 
 .field {
@@ -45,7 +45,7 @@
 
 .item {
   background-color: var(--colorBrandBackground);
-  border: var(--strokeWidthThicker) solid var(--colorTransparentStroke);
+  border: var(--stroke-width-thicker) solid var(--colorTransparentStroke);
   border-radius: 50%;
   width: 100px;
   height: 100px;

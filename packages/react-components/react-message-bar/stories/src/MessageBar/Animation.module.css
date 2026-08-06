@@ -7,7 +7,7 @@
 }
 
 .messageBarGroup {
-  padding: var(--spacingHorizontalMNudge);
+  padding: var(--spacing-horizontal-m-nudge);
   display: flex;
   flex-direction: column;
   margin-top: 10px;

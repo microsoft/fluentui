@@ -6,23 +6,23 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalXL); /* 20px */
-  padding: var(--spacingVerticalXL); /* 20px */
+  gap: var(--spacing-vertical-xl); /* 20px */
+  padding: var(--spacing-vertical-xl); /* 20px */
   max-width: 1000px;
 }
 
 .controls {
   display: flex;
-  gap: var(--spacingHorizontalMNudge); /* 10px */
+  gap: var(--spacing-horizontal-m-nudge); /* 10px */
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: var(--spacingVerticalXL); /* 20px */
+  margin-bottom: var(--spacing-vertical-xl); /* 20px */
 }
 
 .patternsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacingVerticalXL); /* 20px */
+  gap: var(--spacing-vertical-xl); /* 20px */
 }
 
 .cardWrapper {

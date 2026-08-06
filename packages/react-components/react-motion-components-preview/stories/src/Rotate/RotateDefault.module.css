@@ -4,12 +4,12 @@
 .container {
   display: grid;
   grid-template: 'controls .' 'card card' / 1fr 1fr;
-  gap: var(--spacingVerticalXL) var(--spacingHorizontalMNudge);
+  gap: var(--spacing-vertical-xl) var(--spacing-horizontal-m-nudge);
 }
 
 .card {
   grid-area: card;
-  padding: var(--spacingHorizontalMNudge);
+  padding: var(--spacing-horizontal-m-nudge);
 }
 
 .cardHeaderText {
@@ -20,32 +20,32 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
-  padding: var(--spacingHorizontalL);
-  gap: var(--spacingVerticalL);
+  padding: var(--spacing-horizontal-l);
+  gap: var(--spacing-vertical-l);
 }
 
 .controlSection {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalM);
+  gap: var(--spacing-vertical-m);
 }
 
 .sectionHeader {
   font-size: var(--fontSizeBase200);
   font-weight: var(--fontWeightSemibold);
   color: var(--colorNeutralForeground2);
-  margin-bottom: var(--spacingVerticalXS);
-  border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
-  padding-bottom: var(--spacingVerticalXS);
+  margin-bottom: var(--spacing-vertical-xs);
+  border-bottom: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
+  padding-bottom: var(--spacing-vertical-xs);
 }
 
 .toggleGroup {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacingHorizontalM);
+  gap: var(--spacing-horizontal-m);
 }
 
 .ctaButton {
@@ -55,19 +55,19 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalXS);
+  gap: var(--spacing-vertical-xs);
 }
 
 .sliderField {
   display: flex;
   flex-direction: column;
-  gap: var(--spacingVerticalXS);
+  gap: var(--spacing-vertical-xs);
 }
 
 .sliderWrapper {
   display: flex;
   align-items: center;
-  gap: var(--spacingHorizontalS);
+  gap: var(--spacing-horizontal-s);
 }
 
 .sliderLabel {

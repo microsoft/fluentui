@@ -4,18 +4,18 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--spacingHorizontalL);
-  margin-top: var(--spacingVerticalXXL);
-  margin-bottom: var(--spacingVerticalXXL);
+  gap: var(--spacing-horizontal-l);
+  margin-top: var(--spacing-vertical-xxl);
+  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacingVerticalM);
-  padding: var(--spacingVerticalXL);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  gap: var(--spacing-vertical-m);
+  padding: var(--spacing-vertical-xl);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   border-radius: var(--borderRadiusMedium);
   background-color: var(--colorNeutralBackground1);
 }
@@ -38,7 +38,7 @@
   width: 50px;
   height: 50px;
   background-color: var(--colorNeutralBackground3);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   border-radius: var(--borderRadiusSmall);
   display: flex;
   align-items: center;

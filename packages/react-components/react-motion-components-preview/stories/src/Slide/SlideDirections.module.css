@@ -43,7 +43,7 @@
 }
 
 .demo {
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
   border-radius: var(--borderRadiusMedium);
   padding: 20px;
   position: relative;
