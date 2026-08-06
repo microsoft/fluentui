@@ -6,21 +6,20 @@ import { createContext, useContextSelector } from '@fluentui/react-context-selec
 import type { TagPickerSize } from '../components/TagPicker/TagPicker.types';
 import type { ComboboxBaseState } from '@fluentui/react-combobox';
 
-export interface TagPickerContextValue
-  extends Pick<
-    ComboboxBaseState,
-    | 'open'
-    | 'clearSelection'
-    | 'getOptionById'
-    | 'selectedOptions'
-    | 'selectOption'
-    | 'setHasFocus'
-    | 'setOpen'
-    | 'setValue'
-    | 'value'
-    | 'appearance'
-    | 'disabled'
-  > {
+export interface TagPickerContextValue extends Pick<
+  ComboboxBaseState,
+  | 'open'
+  | 'clearSelection'
+  | 'getOptionById'
+  | 'selectedOptions'
+  | 'selectOption'
+  | 'setHasFocus'
+  | 'setOpen'
+  | 'setValue'
+  | 'value'
+  | 'appearance'
+  | 'disabled'
+> {
   triggerRef: React.RefObject<HTMLInputElement | HTMLButtonElement | null>;
   popoverRef: React.RefObject<HTMLDivElement | null>;
   popoverId: string;

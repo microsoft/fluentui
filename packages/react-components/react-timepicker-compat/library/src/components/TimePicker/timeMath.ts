@@ -156,8 +156,8 @@ export function getDateFromTimeString(
       ? REGEX_SHOW_SECONDS_HOUR_12
       : REGEX_HIDE_SECONDS_HOUR_12
     : showSeconds
-    ? REGEX_SHOW_SECONDS_HOUR_24
-    : REGEX_HIDE_SECONDS_HOUR_24;
+      ? REGEX_SHOW_SECONDS_HOUR_24
+      : REGEX_HIDE_SECONDS_HOUR_24;
 
   if (!regex.test(time)) {
     return { date: null, errorType: 'invalid-input' };

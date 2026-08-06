@@ -16,7 +16,7 @@ import { useTableContext } from '../../contexts/tableContext';
  */
 export const useTableBody_unstable = (props: TableBodyProps, ref: React.Ref<HTMLElement>): TableBodyState => {
   const { noNativeElements } = useTableContext();
-  const rootComponent = props.as ?? noNativeElements ? 'div' : 'tbody';
+  const rootComponent = (props.as ?? noNativeElements) ? 'div' : 'tbody';
 
   return {
     components: {

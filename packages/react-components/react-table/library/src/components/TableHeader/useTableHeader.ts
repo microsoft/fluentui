@@ -17,7 +17,7 @@ import { useTableContext } from '../../contexts/tableContext';
 export const useTableHeader_unstable = (props: TableHeaderProps, ref: React.Ref<HTMLElement>): TableHeaderState => {
   const { noNativeElements } = useTableContext();
 
-  const rootComponent = props.as ?? noNativeElements ? 'div' : 'thead';
+  const rootComponent = (props.as ?? noNativeElements) ? 'div' : 'thead';
   return {
     components: {
       root: rootComponent,

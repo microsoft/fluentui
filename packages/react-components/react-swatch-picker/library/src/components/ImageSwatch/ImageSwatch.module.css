@@ -82,7 +82,8 @@
       @apply cursor-pointer;
 
       border: none;
-      box-shadow: inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke1),
+      box-shadow:
+        inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke1),
         inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
 
       /* `:hover:active` — NOT the shared `hover-active` variant, which is Griffel's
@@ -91,7 +92,8 @@
          `.r18b5q7m:hover:active`; nesting `hover` + `active` reproduces it exactly. */
       @variant active {
         border: none;
-        box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorCompoundBrandStrokePressed),
+        box-shadow:
+          inset 0 0 0 var(--spacing-thicker) var(--colorCompoundBrandStrokePressed),
           inset 0 0 0 var(--spacing-thickest) var(--colorStrokeFocus1);
       }
     }
@@ -112,7 +114,8 @@
     @variant focus-visible-fui {
       border: none;
       outline: none;
-      box-shadow: inset 0 0 0 var(--spacing-thick) var(--colorStrokeFocus2),
+      box-shadow:
+        inset 0 0 0 var(--spacing-thick) var(--colorStrokeFocus2),
         inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
     }
   }
@@ -178,27 +181,32 @@
   /* arg #5 — from useStylesSelected.selected; written in Griffel BUCKET order (see header) */
   .selected {
     border: none;
-    box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke1),
+    box-shadow:
+      inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke1),
       inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
 
     /* `m` bucket, same 0-1-0 as the rest rule above — so it wins at rest in forced colors,
        but still loses to the 0-2-0 focus/hover rules below exactly as Griffel had it. */
     @variant forced-colors {
-      box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke2Pressed),
+      box-shadow:
+        inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke2Pressed),
         inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
     }
 
     @variant focus-visible-fui {
-      box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus2),
+      box-shadow:
+        inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus2),
         inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
     }
 
     @variant hover {
-      box-shadow: inset 0 0 0 var(--spacing-thickest) var(--colorCompoundBrandStrokeHover),
+      box-shadow:
+        inset 0 0 0 var(--spacing-thickest) var(--colorCompoundBrandStrokeHover),
         inset 0 0 0 calc(6px * var(--base-scale)) var(--colorStrokeFocus1);
 
       @variant active {
-        box-shadow: inset 0 0 0 var(--spacing-thickest) var(--colorCompoundBrandStrokePressed),
+        box-shadow:
+          inset 0 0 0 var(--spacing-thickest) var(--colorCompoundBrandStrokePressed),
           inset 0 0 0 calc(7px * var(--base-scale)) var(--colorStrokeFocus1);
       }
     }
@@ -225,11 +233,13 @@
       forced-color-adjust: none;
 
       @variant hover {
-        box-shadow: inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke2Hover),
+        box-shadow:
+          inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke2Hover),
           inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
 
         @variant active {
-          box-shadow: inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke2Pressed),
+          box-shadow:
+            inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke2Pressed),
             inset 0 0 0 var(--spacing-thickest) var(--colorStrokeFocus1);
         }
       }

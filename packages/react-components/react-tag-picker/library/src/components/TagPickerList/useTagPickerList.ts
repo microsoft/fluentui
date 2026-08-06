@@ -21,8 +21,7 @@ export const useTagPickerList_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerListState => {
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef) as
-    | React.RefObject<HTMLInputElement>
-    | React.RefObject<HTMLButtonElement>;
+    React.RefObject<HTMLInputElement> | React.RefObject<HTMLButtonElement>;
   const popoverRef = useTagPickerContext_unstable(ctx => ctx.popoverRef);
   const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
   const open = useTagPickerContext_unstable(ctx => ctx.open);

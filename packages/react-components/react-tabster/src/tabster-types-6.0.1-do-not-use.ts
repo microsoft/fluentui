@@ -248,9 +248,7 @@ interface ObservedElementAPIInternal {
 }
 
 export interface ObservedElementAPI
-  extends Subscribable<HTMLElement, ObservedElementDetails>,
-    Disposable,
-    ObservedElementAPIInternal {
+  extends Subscribable<HTMLElement, ObservedElementDetails>, Disposable, ObservedElementAPIInternal {
   getElement(observedName: string, accessibility?: ObservedElementAccesibility): HTMLElement | null;
   waitElement(
     observedName: string,
@@ -309,8 +307,7 @@ export interface CrossOriginMessage {
 }
 
 export interface CrossOriginFocusedElementState
-  extends Subscribable<CrossOriginElement | undefined, FocusedElementDetails>,
-    Disposable {
+  extends Subscribable<CrossOriginElement | undefined, FocusedElementDetails>, Disposable {
   focus(
     element: CrossOriginElement,
     noFocusedProgrammaticallyFlag?: boolean,
@@ -332,8 +329,7 @@ export interface CrossOriginFocusedElementState
 }
 
 export interface CrossOriginObservedElementState
-  extends Subscribable<CrossOriginElement, ObservedElementProps>,
-    Disposable {
+  extends Subscribable<CrossOriginElement, ObservedElementProps>, Disposable {
   getElement(observedName: string, accessibility?: ObservedElementAccesibility): Promise<CrossOriginElement | null>;
   waitElement(
     observedName: string,
@@ -778,9 +774,7 @@ export interface GroupperProps {
 }
 
 export interface Groupper
-  extends TabsterPart<GroupperProps>,
-    TabsterPartWithFindNextTabbable,
-    TabsterPartWithAcceptElement {
+  extends TabsterPart<GroupperProps>, TabsterPartWithFindNextTabbable, TabsterPartWithAcceptElement {
   readonly id: string;
   readonly dummyManager: DummyInputManager | undefined;
   dispose(): void;
@@ -1212,7 +1206,8 @@ export interface Tabster {
 }
 
 export interface TabsterCore
-  extends Pick<TabsterCoreProps, 'controlTab' | 'rootDummyInputs'>,
+  extends
+    Pick<TabsterCoreProps, 'controlTab' | 'rootDummyInputs'>,
     Disposable,
     TabsterCoreInternal,
     Omit<Tabster, 'core'> {}

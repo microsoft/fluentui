@@ -173,8 +173,8 @@
      * SINGLE-valued, so they apply to every entry — no positional-list realignment (that is
      * the Avatar trap, §2.1, which is why Avatar's `margin` deliberately stays a shorthand).
      */
-    transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
-      color;
+    transition-property:
+      background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
 
     @media screen and (prefers-reduced-motion: reduce) {
       transition-duration: 0.01ms;

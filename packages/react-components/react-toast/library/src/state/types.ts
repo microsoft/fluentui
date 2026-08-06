@@ -85,8 +85,10 @@ export interface ToasterShortcuts {
   focus: (e: KeyboardEvent) => boolean;
 }
 
-export interface ToasterOptions
-  extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover' | 'priority'> {
+export interface ToasterOptions extends Pick<
+  ToastOptions,
+  'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover' | 'priority'
+> {
   offset?: ToastOffset;
   toasterId?: ToasterId;
   limit?: number;

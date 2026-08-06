@@ -900,7 +900,9 @@
       outline-width: var(--spacing-thick);
       outline-color: transparent;
       outline-style: solid;
-      box-shadow: var(--shadow4), 0 0 0 var(--spacing-thick) var(--colorStrokeFocus2);
+      box-shadow:
+        var(--shadow4),
+        0 0 0 var(--spacing-thick) var(--colorStrokeFocus2);
       z-index: 1;
     }
   }
@@ -914,7 +916,9 @@
       outline-width: var(--spacing-thick);
       outline-color: transparent;
       outline-style: solid;
-      box-shadow: var(--shadow4), 0 0 0 var(--spacing-thick) var(--colorStrokeFocus2),
+      box-shadow:
+        var(--shadow4),
+        0 0 0 var(--spacing-thick) var(--colorStrokeFocus2),
         0 0 0 var(--spacing-thin) var(--colorNeutralStrokeOnBrand) inset;
       z-index: 1;
     }

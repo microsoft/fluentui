@@ -9,7 +9,13 @@
   grid-template-rows: 1fr;
   row-gap: 10px;
   column-gap: 10px;
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   align-content: center;
   align-items: center;

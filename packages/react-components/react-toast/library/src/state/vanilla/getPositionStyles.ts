@@ -14,7 +14,7 @@ export const getPositionStyles = (
 ): PositionStyles => {
   const positionStyles: PositionStyles = {};
 
-  const offsetStyles: ToastOffsetObject = offset ? (isShorthandOffset(offset) ? offset : offset[position] ?? {}) : {};
+  const offsetStyles: ToastOffsetObject = offset ? (isShorthandOffset(offset) ? offset : (offset[position] ?? {})) : {};
 
   const centered = position === 'top' || position === 'bottom';
 

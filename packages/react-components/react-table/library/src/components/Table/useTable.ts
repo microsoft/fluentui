@@ -12,7 +12,7 @@ import type { TableProps, TableState } from './Table.types';
  * @param ref - reference to root HTMLElement of Table
  */
 export const useTable_unstable = (props: TableProps, ref: React.Ref<HTMLElement>): TableState => {
-  const rootComponent = props.as ?? props.noNativeElements ? 'div' : 'table';
+  const rootComponent = (props.as ?? props.noNativeElements) ? 'div' : 'table';
 
   return {
     components: {

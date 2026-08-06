@@ -7,7 +7,13 @@
 #storybook-docs .docblock-code-toggle,
 .docs-story .with-code-sandbox-button,
 .docs-story .with-open-in-new-tab-button {
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+  font-family:
+    'Segoe UI',
+    'Segoe UI Web (West European)',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Helvetica Neue',
     sans-serif;
   min-width: 91px;
   font-size: 14px !important;

@@ -64,14 +64,14 @@ See [MIGRATION.md](./MIGRATION.md).
 
 - _Interaction_
   - _Keyboard_
-    | Key | Description |
-    | - | - |
-    | `Up`/`Right` | Increments the value of the slider by the `step` prop. |
-    | `Down`/`Left` | Decrements the value of the slider by the `step` prop.|
-    | `PageUp`/`Up/Right & Shift`| Increments the value of the slider by 10 _ `step`. |
-    | `PageDown` /`Down/Left & Shift`| Decrements the value of the slider by 10 _ `step`. |
-    | `Home` | Sets value to the `min` prop. |
-    | `End` | Sets value to the `max` prop. |
+    | Key                             | Description                                            |
+    | ------------------------------- | ------------------------------------------------------ |
+    | `Up`/`Right`                    | Increments the value of the slider by the `step` prop. |
+    | `Down`/`Left`                   | Decrements the value of the slider by the `step` prop. |
+    | `PageUp`/`Up/Right & Shift`     | Increments the value of the slider by 10 _ `step`.     |
+    | `PageDown` /`Down/Left & Shift` | Decrements the value of the slider by 10 _ `step`.     |
+    | `Home`                          | Sets value to the `min` prop.                          |
+    | `End`                           | Sets value to the `max` prop.                          |
   - _Cursor_
     `pointerdown` sets the current value immediately.
     `pointermove` changes the slider value as mouse is moved

@@ -107,10 +107,13 @@ function openStackblitz(data: { files: Record<string, string> } & Data) {
  * @see https://codesandbox.io/docs/learn/sandboxes/cli-api#define-api
  */
 function openCodeSandbox({ files, provider }: { files: Record<string, string> } & Data) {
-  const normalizedFilesApi = Object.entries(files).reduce((acc, current) => {
-    acc[current[0]] = { isBinary: false, content: current[1] };
-    return acc;
-  }, {} as Record<string, { content: string; isBinary: boolean }>);
+  const normalizedFilesApi = Object.entries(files).reduce(
+    (acc, current) => {
+      acc[current[0]] = { isBinary: false, content: current[1] };
+      return acc;
+    },
+    {} as Record<string, { content: string; isBinary: boolean }>,
+  );
 
   const env = provider === 'codesandbox-cloud' ? 'server' : 'browser';
   const parameters = getParameters({ files: normalizedFilesApi });

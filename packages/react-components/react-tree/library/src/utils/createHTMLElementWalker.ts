@@ -26,7 +26,7 @@ export function createHTMLElementWalker(
         return NodeFilter.FILTER_REJECT;
       }
       const filterResult = filter(node);
-      return filterResult === NodeFilter.FILTER_ACCEPT ? temporaryFilter?.(node) ?? filterResult : filterResult;
+      return filterResult === NodeFilter.FILTER_ACCEPT ? (temporaryFilter?.(node) ?? filterResult) : filterResult;
     },
   });
   return {

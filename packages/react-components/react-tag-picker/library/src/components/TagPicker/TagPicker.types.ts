@@ -27,8 +27,7 @@ export type TagPickerOnOptionSelectData = {
 } & (EventData<'click', React.MouseEvent<HTMLDivElement>> | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>);
 
 export type TagPickerOnOpenChangeData = { open: boolean } & (
-  | EventData<'click', React.MouseEvent<HTMLDivElement>>
-  | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>
+  EventData<'click', React.MouseEvent<HTMLDivElement>> | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>
 );
 
 /**

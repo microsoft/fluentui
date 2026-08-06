@@ -18,7 +18,7 @@ import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
  */
 export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLElement>): TableRowState => {
   const { noNativeElements, size } = useTableContext();
-  const rootComponent = props.as ?? noNativeElements ? 'div' : 'tr';
+  const rootComponent = (props.as ?? noNativeElements) ? 'div' : 'tr';
   const focusVisibleRef = useFocusVisible();
   const focusWithinRef = useFocusWithin();
   const isHeaderRow = useIsInTableHeader();

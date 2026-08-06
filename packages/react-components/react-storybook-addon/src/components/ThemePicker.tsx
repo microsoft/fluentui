@@ -41,7 +41,7 @@ export const ThemePicker = (): JSXElement => {
   const fluentTheme: FluentParameters['fluentTheme'] = useParameter('fluentTheme');
   const themes: Theme[] = useParameter('fluentThemes') ?? globals[THEMES] ?? defaultThemes;
 
-  const selectedThemeId = fluentTheme ? fluentTheme : globals[THEME_ID] ?? defaultTheme.id;
+  const selectedThemeId = fluentTheme ? fluentTheme : (globals[THEME_ID] ?? defaultTheme.id);
   const selectedTheme = themes.find(entry => entry.id === selectedThemeId);
 
   const isActive = selectedThemeId !== defaultTheme.id;

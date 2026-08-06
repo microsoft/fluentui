@@ -59,22 +59,25 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(
   }, [toaster]);
 
   const getMostRecentVisibleToast = React.useCallback(() => {
-    return Array.from(toaster.visibleToasts).reduce((cur, next) => {
-      const toast = toaster.toasts.get(next);
-      if (!toast) {
+    return Array.from(toaster.visibleToasts).reduce(
+      (cur, next) => {
+        const toast = toaster.toasts.get(next);
+        if (!toast) {
+          return cur;
+        }
+
+        if (!cur) {
+          return toast;
+        }
+
+        if (cur.order < toast?.order) {
+          return toast;
+        }
+
         return cur;
-      }
-
-      if (!cur) {
-        return toast;
-      }
-
-      if (cur.order < toast?.order) {
-        return toast;
-      }
-
-      return cur;
-    }, undefined as Toast | undefined);
+      },
+      undefined as Toast | undefined,
+    );
   }, [toaster]);
 
   const tryRestoreFocus = React.useCallback(() => {

@@ -7,8 +7,7 @@ const setTimeoutNoop = (_callback: Function) => -1;
 const clearTimeoutNoop = (_handle: number) => undefined;
 
 type BrowserTimerSetter =
-  | ((fn: () => void, duration?: number, ...args: Record<string, unknown>[]) => number)
-  | ((fn: () => void) => number);
+  ((fn: () => void, duration?: number, ...args: Record<string, unknown>[]) => number) | ((fn: () => void) => number);
 
 /**
  * @internal

@@ -30,7 +30,7 @@ export const useTableHeaderCell_unstable = (
   const { noNativeElements, sortable: contextSortable } = useTableContext();
   const { sortable = contextSortable } = props;
 
-  const rootComponent = props.as ?? noNativeElements ? 'div' : 'th';
+  const rootComponent = (props.as ?? noNativeElements) ? 'div' : 'th';
 
   // The sort button is rendered as a div when not sortable, and as an ARIA button when sortable.
   const buttonSlot = slot.always<ARIAButtonSlotProps>(props.button, {
@@ -55,7 +55,7 @@ export const useTableHeaderCell_unstable = (
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, useFocusWithin()) as React.Ref<HTMLDivElement>,
         role: rootComponent === 'div' ? 'columnheader' : undefined,
-        'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
+        'aria-sort': sortable ? (props.sortDirection ?? 'none') : undefined,
         ...props,
       } as const),
       { elementType: rootComponent },
