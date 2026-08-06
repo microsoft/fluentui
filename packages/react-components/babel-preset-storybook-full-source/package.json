@@ -11,9 +11,10 @@
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.10.4",
+    "@prettier/sync": "^0.6.1",
     "@swc/helpers": "^0.5.1",
     "pkg-up": "^3.1.0",
-    "prettier": "^2.8.8"
+    "prettier": "^3.9.6"
   },
   "exports": {
     ".": {

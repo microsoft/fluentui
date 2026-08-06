@@ -1,5 +1,7 @@
 import * as Babel from '@babel/core';
-import * as prettier from 'prettier';
+// Babel visitors are synchronous, but prettier 3's `format` is async — use the official
+// synchronous wrapper (runs prettier in a worker thread under the hood).
+import * as prettier from '@prettier/sync';
 import * as fs from 'fs';
 import * as nodePath from 'path';
 

@@ -8,7 +8,9 @@ import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { FluentProvider } from './FluentProvider';
-import * as prettier from 'prettier';
+// prettier 3's async `format` relies on dynamic import, which Jest's VM forbids without
+// --experimental-vm-modules; the synchronous worker-thread wrapper avoids both problems.
+import * as prettier from '@prettier/sync';
 import type { PartialTheme } from '@fluentui/react-theme';
 
 jest.mock('@fluentui/react-utilities', () => ({

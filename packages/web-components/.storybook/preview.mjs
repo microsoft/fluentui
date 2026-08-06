@@ -1,6 +1,6 @@
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
-import * as prettier from 'prettier';
-import prettierPluginHTML from 'prettier/parser-html.js';
+import * as prettier from 'prettier/standalone';
+import * as prettierPluginHTML from 'prettier/plugins/html.mjs';
 import webcomponentsTheme from './theme.mjs';
 import { setStorybookHelpersConfig } from './wc-toolkit-helpers.js';
 
@@ -106,7 +106,7 @@ export const parameters = {
     source: {
       // To get around the inability to change Prettier options in the source addon, this transform function
       // imports the standalone Prettier and uses it to format the source with the desired options.
-      transform(/** @type {string} */ src, /** @type {import('@storybook/html').StoryContext} */ storyContext) {
+      async transform(/** @type {string} */ src, /** @type {import('@storybook/html').StoryContext} */ storyContext) {
         if (!src) {
           const fragment = storyContext.originalStoryFn(storyContext.allArgs, storyContext);
           if (!(fragment instanceof DocumentFragment) && !(fragment instanceof HTMLElement)) {
@@ -120,7 +120,7 @@ export const parameters = {
 
         src = src.replace(FAST_EXPRESSION_COMMENTS, ''); // remove comments
         src = src.replace(/=""/g, ''); // remove values for boolean attributes
-        src = prettier.format(src, {
+        src = await prettier.format(src, {
           htmlWhitespaceSensitivity: 'ignore',
           parser: 'html',
           plugins: [prettierPluginHTML],
