@@ -82,7 +82,8 @@
        compiled Griffel atomic is a literal `align-items:start`; reproduce it exactly. */
     align-items: start;
     border: var(--spacing-thin) solid var(--colorNeutralStroke1);
-    background: linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent),
+    background:
+      linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent),
       var(--fui-Area--main-color);
     forced-color-adjust: none;
 
@@ -90,7 +91,8 @@
     --fui-Slider__thumb--size: calc(20px * var(--base-scale));
 
     @variant rtl {
-      background: linear-gradient(to bottom, transparent, #000), linear-gradient(to left, #fff, transparent),
+      background:
+        linear-gradient(to bottom, transparent, #000), linear-gradient(to left, #fff, transparent),
         var(--fui-Area--main-color);
     }
   }

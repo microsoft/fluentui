@@ -91,8 +91,8 @@ export function useEmblaCarousel(
     onAutoplayIndexChange,
   } = options;
 
-  const motionType = typeof motion === 'string' ? motion : motion?.kind ?? 'slide';
-  const motionDuration = typeof motion === 'string' ? 25 : motion?.duration ?? 25;
+  const motionType = typeof motion === 'string' ? motion : (motion?.kind ?? 'slide');
+  const motionDuration = typeof motion === 'string' ? 25 : (motion?.duration ?? 25);
 
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,

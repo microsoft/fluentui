@@ -52,12 +52,16 @@
   background: var(--bg-elev);
   border: 2px solid var(--accent);
   box-shadow: var(--shadow-2);
-  transition: transform 80ms var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+  transition:
+    transform 80ms var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
 }
 
 .input:focus-visible ~ .thumb,
 .input:focus-visible + .thumb {
-  box-shadow: 0 0 0 4px var(--surface-muted), var(--shadow-2);
+  box-shadow:
+    0 0 0 4px var(--surface-muted),
+    var(--shadow-2);
 }
 
 .input:active ~ .thumb {

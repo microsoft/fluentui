@@ -358,8 +358,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const inputAppearance: InputProps['appearance'] = underlined
     ? 'underline'
     : borderless
-    ? 'filled-lighter'
-    : 'outline';
+      ? 'filled-lighter'
+      : 'outline';
 
   const [triggerWrapperRef, popupRef] = usePopupPositioning(props);
 

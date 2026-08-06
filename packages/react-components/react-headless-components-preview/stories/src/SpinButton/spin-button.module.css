@@ -7,7 +7,8 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: border-color var(--duration-fast) var(--ease-standard),
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
 }
 
@@ -16,7 +17,9 @@
 }
 
 .wrap:has(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .input {
@@ -46,7 +49,9 @@
   background: var(--bg-elev);
   color: var(--text-muted);
   cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
 }
 
 .btn:hover {

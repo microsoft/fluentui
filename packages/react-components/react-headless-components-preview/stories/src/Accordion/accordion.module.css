@@ -65,7 +65,8 @@
   line-height: 1.65;
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--duration-medium) var(--ease-emphasized),
+  transition:
+    max-height var(--duration-medium) var(--ease-emphasized),
     padding var(--duration-medium) var(--ease-emphasized);
 }
 

@@ -16,7 +16,8 @@
   background: var(--bg-elev);
   padding: 0 var(--space-3);
   box-shadow: var(--shadow-1);
-  transition: border-color var(--duration-fast) var(--ease-standard),
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
 }
 
@@ -143,7 +144,9 @@
   flex-shrink: 0;
   color: var(--text-soft);
   cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
 }
 
 .clearIcon:hover {

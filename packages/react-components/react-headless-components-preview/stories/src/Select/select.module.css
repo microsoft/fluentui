@@ -15,7 +15,8 @@
   padding: 8px 36px 8px 12px;
   font-size: 13.5px;
   cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-standard),
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
 }
 
@@ -25,7 +26,9 @@
 
 .select:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .select:disabled {

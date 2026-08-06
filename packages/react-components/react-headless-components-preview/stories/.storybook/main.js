@@ -15,7 +15,7 @@ const tsConfigPath = path.resolve(repoRoot, 'tsconfig.base.json');
  * @param {string | { name?: string }} addon
  */
 function isNotExportToSandboxAddon(addon) {
-  const name = typeof addon === 'string' ? addon : addon?.name ?? '';
+  const name = typeof addon === 'string' ? addon : (addon?.name ?? '');
   return !name.includes('react-storybook-addon-export-to-sandbox');
 }
 

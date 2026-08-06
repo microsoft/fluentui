@@ -185,8 +185,9 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 ### AlphaSlider
 
 AlphaSlider has the same props and slots as ColorSlider except `transparent` prop.
-| Property | Values | Default | Purpose |
-| ------------ | ---------------------------- | --------- | ----------------------------------------- |
+
+| Property    | Values    | Default | Purpose                                                                     |
+| ----------- | --------- | ------- | --------------------------------------------------------------------------- |
 | transparent | `boolean` | `false` | The `transparency` property determines how the alpha channel is interpreted |
 
 ## Structure

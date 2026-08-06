@@ -13,7 +13,8 @@
   background: var(--bg-soft);
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
-  transition: background var(--duration-fast) var(--ease-standard),
+  transition:
+    background var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard);
 }
 
@@ -56,7 +57,9 @@
   background: transparent;
   color: var(--text-muted);
   cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
 }
 
 .iconBtn:hover {
@@ -66,7 +69,9 @@
 
 .iconBtn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .iconBtn svg {

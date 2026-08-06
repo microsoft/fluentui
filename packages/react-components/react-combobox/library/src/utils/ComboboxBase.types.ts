@@ -153,9 +153,7 @@ export type ComboboxBaseOpenChangeData = {
 
 /** Possible event types for onOpen */
 export type ComboboxBaseOpenEvents =
-  | React.MouseEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
+  React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>;
 
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;

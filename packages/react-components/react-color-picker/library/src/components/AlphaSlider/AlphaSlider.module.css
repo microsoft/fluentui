@@ -91,11 +91,8 @@
    */
   .rail {
     border: var(--spacing-thin) solid var(--colorNeutralStroke1);
-    background-image: linear-gradient(
-        var(--fui-AlphaSlider--direction),
-        transparent,
-        var(--fui-AlphaSlider__rail--color)
-      ),
+    background-image:
+      linear-gradient(var(--fui-AlphaSlider--direction), transparent, var(--fui-AlphaSlider__rail--color)),
       url(https://fabricweb.azureedge.net/fabric-website/assets/images/transparent-pattern.png);
   }
 

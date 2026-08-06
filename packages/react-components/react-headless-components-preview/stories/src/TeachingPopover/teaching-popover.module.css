@@ -42,7 +42,10 @@
   font-size: 14px;
   line-height: 1;
   cursor: pointer;
-  transition: background-color 80ms ease, border-color 80ms ease, color 80ms ease;
+  transition:
+    background-color 80ms ease,
+    border-color 80ms ease,
+    color 80ms ease;
 }
 
 .dismissButton:hover {
@@ -122,7 +125,10 @@
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
-  transition: background-color 80ms ease, border-color 80ms ease, color 80ms ease;
+  transition:
+    background-color 80ms ease,
+    border-color 80ms ease,
+    color 80ms ease;
 }
 
 .actionButton:hover {
@@ -208,7 +214,10 @@
   border-radius: 50%;
   background: color-mix(in srgb, var(--accent) 30%, transparent);
   cursor: pointer;
-  transition: width 120ms ease, border-radius 120ms ease, background-color 120ms ease;
+  transition:
+    width 120ms ease,
+    border-radius 120ms ease,
+    background-color 120ms ease;
 }
 
 @supports not (color: color-mix(in lch, white, black)) {

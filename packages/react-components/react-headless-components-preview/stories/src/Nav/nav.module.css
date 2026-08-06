@@ -25,7 +25,9 @@
   text-align: start;
   width: 100%;
   border-radius: var(--radius-md);
-  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
 }
 
 .navItem:hover,

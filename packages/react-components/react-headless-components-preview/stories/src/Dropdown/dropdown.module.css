@@ -21,7 +21,8 @@
   color: var(--text);
   box-shadow: var(--shadow-1);
   cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-standard),
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
 }
 
@@ -149,7 +150,9 @@
   color: var(--text-soft);
   cursor: pointer;
   line-height: 1;
-  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
 }
 
 .clearButton:hover {
@@ -159,7 +162,9 @@
 
 .clearButton:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .button[data-placeholder] + .clearButton,

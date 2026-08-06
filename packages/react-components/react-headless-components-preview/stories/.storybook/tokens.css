@@ -174,7 +174,8 @@ body {
   font-size: 14px;
   line-height: 1.45;
   letter-spacing: var(--tracking-tight);
-  transition: background-color var(--duration-medium) var(--ease-standard),
+  transition:
+    background-color var(--duration-medium) var(--ease-standard),
     color var(--duration-medium) var(--ease-standard);
 }
 

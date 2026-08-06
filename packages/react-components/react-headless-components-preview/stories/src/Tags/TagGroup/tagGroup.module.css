@@ -29,8 +29,10 @@
   letter-spacing: 0;
   cursor: default;
   user-select: none;
-  transition: background-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
 }
 
 .tag[data-dismissible] {
@@ -46,11 +48,15 @@
 
 .tag[data-dismissible]:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .tag[data-selected][data-dismissible]:focus-visible {
-  box-shadow: 0 0 0 2px var(--accent), 0 0 0 4px var(--accent-contrast);
+  box-shadow:
+    0 0 0 2px var(--accent),
+    0 0 0 4px var(--accent-contrast);
 }
 
 .tag[data-selected] {

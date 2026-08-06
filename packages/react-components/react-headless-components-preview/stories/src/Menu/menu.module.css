@@ -26,7 +26,9 @@
 
 .trigger:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .triggerSecondary {
@@ -189,7 +191,9 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 1;
-  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard),
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard);
 }
 
@@ -217,7 +221,8 @@
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
   border: var(--stroke-thin) solid var(--border);
-  transition: background-color var(--duration-fast) var(--ease-standard),
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard);
 }
 
@@ -230,7 +235,8 @@
   height: 12px;
   border-radius: var(--radius-pill);
   background: var(--bg-elev);
-  transition: transform var(--duration-fast) var(--ease-standard),
+  transition:
+    transform var(--duration-fast) var(--ease-standard),
     background-color var(--duration-fast) var(--ease-standard);
 }
 

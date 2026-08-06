@@ -405,8 +405,7 @@ This shows the DOM structure of the Combobox after being opened. If `inlinePopup
   <!-- listbox root slot -->
   <div role="group" aria-labelledby="group1-label-id">
     <!-- optiongroup root slot -->
-    <span id="group1-label-id" role="presentation">Group 1</span
-    ><!-- optiongroup label slot -->
+    <span id="group1-label-id" role="presentation">Group 1</span><!-- optiongroup label slot -->
     <div role="option" aria-selected="false" id="option1-id">
       <!-- option root slot -->
       <span aria-hidden="true">
@@ -466,8 +465,7 @@ If `inlinePopup` is set to true, the listbox will render immediately after the `
   <!-- listbox root slot -->
   <div role="group" aria-labelledby="group1-label-id">
     <!-- optiongroup root slot -->
-    <span id="group1-label-id" role="presentation">Group 1</span
-    ><!-- optiongroup label slot -->
+    <span id="group1-label-id" role="presentation">Group 1</span><!-- optiongroup label slot -->
     <div role="option" aria-selected="false" id="option1-id">
       <!-- option root slot -->
       <span aria-hidden="true">

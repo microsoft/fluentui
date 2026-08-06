@@ -89,11 +89,11 @@ function useVisibilityState({
   });
 
   const [isMonthPickerVisible, setIsMonthPickerVisible] = React.useState(() =>
-    showMonthPickerAsOverlayState ? false : isMonthPickerVisibleProp ?? false,
+    showMonthPickerAsOverlayState ? false : (isMonthPickerVisibleProp ?? false),
   );
   /** State used to show/hide day picker */
   const [isDayPickerVisible, setIsDayPickerVisible] = React.useState(() =>
-    showMonthPickerAsOverlayState ? true : isDayPickerVisibleProp ?? true,
+    showMonthPickerAsOverlayState ? true : (isDayPickerVisibleProp ?? true),
   );
 
   const toggleDayMonthPickerVisibility = () => {

@@ -5,7 +5,8 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 8px 12px;
-  transition: border-color var(--duration-fast) var(--ease-standard),
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
 }
 
@@ -14,7 +15,9 @@
 }
 
 .wrap:has(:focus-visible) {
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .textarea {

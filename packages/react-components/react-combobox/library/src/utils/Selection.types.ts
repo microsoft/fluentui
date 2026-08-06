@@ -47,6 +47,4 @@ export type OptionOnSelectData = {
 
 /** Possible event types for onOptionSelect */
 export type SelectionEvents =
-  | React.ChangeEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.MouseEvent<HTMLElement>;
+  React.ChangeEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>;

@@ -15,7 +15,8 @@
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
   cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-standard),
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
     background var(--duration-fast) var(--ease-standard);
 }
 
@@ -55,7 +56,9 @@
 }
 
 .input:focus-visible + .indicator {
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .row:has(.input:checked) {

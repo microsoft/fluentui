@@ -6,7 +6,8 @@
   font-weight: 500;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  transition: color var(--duration-fast) var(--ease-standard),
+  transition:
+    color var(--duration-fast) var(--ease-standard),
     text-decoration-color var(--duration-fast) var(--ease-standard);
 }
 
@@ -17,7 +18,9 @@
 
 .link:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .link[data-disabled] {

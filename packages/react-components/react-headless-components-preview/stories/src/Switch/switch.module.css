@@ -32,7 +32,8 @@
   background: var(--surface-sunken);
   border: 1px solid var(--border);
   flex-shrink: 0;
-  transition: background var(--duration-medium) var(--ease-standard),
+  transition:
+    background var(--duration-medium) var(--ease-standard),
     border-color var(--duration-medium) var(--ease-standard);
 }
 
@@ -60,7 +61,9 @@
 }
 
 .input:focus-visible + .indicator {
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+  box-shadow:
+    0 0 0 2px var(--bg-elev),
+    0 0 0 4px var(--accent);
 }
 
 .label {

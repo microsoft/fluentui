@@ -52,7 +52,10 @@
   border-right: var(--stroke-thin) solid transparent;
   width: 0;
   opacity: 0;
-  transition: width 200ms linear, opacity 200ms linear, border-color 200ms linear;
+  transition:
+    width 200ms linear,
+    opacity 200ms linear,
+    border-color 200ms linear;
 }
 
 .drawerInline[data-open] {
