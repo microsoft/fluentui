@@ -11,5 +11,6 @@ export type {
   TagPickerState,
 } from './TagPicker.types';
 export { renderTagPicker_unstable } from './renderTagPicker';
+export { renderTagPickerBase_unstable } from './renderTagPickerBase';
 export { useTagPicker_unstable, useTagPickerBase_unstable } from './useTagPicker';
 export { useTagPickerContextValues } from './useTagPickerContextValues';

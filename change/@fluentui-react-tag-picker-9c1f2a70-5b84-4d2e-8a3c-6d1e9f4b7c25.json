@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add renderTagPickerBase_unstable, a portal-free render for headless consumers",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

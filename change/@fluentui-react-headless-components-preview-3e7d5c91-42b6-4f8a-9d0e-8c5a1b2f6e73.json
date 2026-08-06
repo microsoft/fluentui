@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: render TagPicker without a portal so react-portal is not bundled",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
