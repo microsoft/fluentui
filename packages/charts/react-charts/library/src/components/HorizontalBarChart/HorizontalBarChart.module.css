@@ -140,12 +140,12 @@
 
   /* from useStyles.benchmarkContainer — 7px/3px/1px match no spacing step */
   .benchmark-container {
-    @apply relative h-7 -mt-3 -mb-1;
+    @apply relative -mt-3 -mb-1 h-7;
   }
 
   /* from useStyles.triangle — the benchmark marker */
   .triangle {
-    @apply absolute h-0 w-0 mb-vertical-xs;
+    @apply absolute mb-vertical-xs h-0 w-0;
 
     /* borderLeft/borderRight → logical, so the RTL flip Griffel did by hand is free */
     border-inline-start-width: 4px;

@@ -111,7 +111,7 @@
    * below; byte-identical to VerticalBarChart/VerticalStackedBarChart `.tooltip`.
    */
   .tool-tip {
-    @apply absolute flex flex-col p-horizontal-s text-center pointer-events-none;
+    @apply pointer-events-none absolute flex flex-col p-horizontal-s text-center;
 
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase300);
@@ -125,7 +125,7 @@
   /* from useStyles.nodeTextContainer — margins on the text `<g>`; the HC slice is a
    * descendant rule over the node `<text>`s */
   .node-text-container {
-    @apply mt-vertical-xs mb-vertical-xs ms-horizontal-s me-horizontal-s;
+    @apply ms-horizontal-s me-horizontal-s mt-vertical-xs mb-vertical-xs;
 
     @variant forced-colors {
       & text {

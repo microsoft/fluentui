@@ -225,7 +225,7 @@
    * `margin-left` / `margin-right` pair and is therefore the logical inline-start margin.
    */
   .legend-container {
-    @apply mt-vertical-s ms-horizontal-xl;
+    @apply ms-horizontal-xl mt-vertical-s;
   }
 
   /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind axis titles */

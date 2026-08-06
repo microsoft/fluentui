@@ -103,7 +103,7 @@
    * sub-1px border — and unsets `background-clip` below.)
    */
   .root {
-    @apply inline-flex box-border items-center justify-center pt-1 pb-1 ps-1 pe-1;
+    @apply box-border inline-flex items-center justify-center ps-1 pe-1 pt-1 pb-1;
 
     border-radius: var(--borderRadiusCircular);
     background-color: var(--colorNeutralBackground1);
@@ -112,7 +112,7 @@
 
   /* from useIconClassName (makeResetStyles) — cancels the root's 1px background inset. */
   .icon {
-    @apply flex -mt-1 -mb-1 -ms-1 -me-1;
+    @apply -ms-1 -me-1 -mt-1 -mb-1 flex;
   }
 }
 

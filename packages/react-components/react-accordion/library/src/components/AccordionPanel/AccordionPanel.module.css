@@ -46,6 +46,6 @@
    * `margin: 0 var(--spacing-horizontal-m)` expanded to longhands (CONVERSION_GUIDE §2).
    */
   .root {
-    @apply mt-0 mb-0 ms-horizontal-m me-horizontal-m;
+    @apply ms-horizontal-m me-horizontal-m mt-0 mb-0;
   }
 }

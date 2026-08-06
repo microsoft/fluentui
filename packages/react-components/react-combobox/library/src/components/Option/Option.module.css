@@ -76,7 +76,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply flex items-center relative;
+    @apply relative flex items-center;
 
     border-radius: var(--borderRadiusMedium);
     color: var(--colorNeutralForeground1);
@@ -89,7 +89,7 @@
     @apply gap-x-horizontal-xs;
 
     /* `padding: spacingVerticalSNudge spacingHorizontalS` */
-    @apply py-vertical-s-nudge px-horizontal-s;
+    @apply px-horizontal-s py-vertical-s-nudge;
 
     /*
      * from useStyles.active — arg #4, applied unconditionally. The focus ring an
@@ -101,7 +101,7 @@
      * no `@variant rtl` twin is required.
      */
     &:where([data-activedescendant-focusvisible])::after {
-      @apply absolute pointer-events-none;
+      @apply pointer-events-none absolute;
 
       content: '';
       z-index: 1;
@@ -163,7 +163,7 @@
 
   /* from useStyles.multiselectCheck — arg #3 */
   .multiselect-check {
-    @apply flex items-center justify-center box-border h-16 w-16;
+    @apply box-border flex h-16 w-16 items-center justify-center;
 
     /* `border: strokeWidthThin solid colorNeutralStrokeAccessible` expanded to longhands —
        args #5/#7 each override the four colors alone. `border-*-width` is not a

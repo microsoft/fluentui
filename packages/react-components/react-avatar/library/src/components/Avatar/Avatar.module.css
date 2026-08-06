@@ -82,7 +82,7 @@
    * the ring/shadow rules in l1 set `content: ''` to reveal them.
    */
   .root {
-    @apply relative inline-block shrink-0 align-middle size-32;
+    @apply relative inline-block size-32 shrink-0 align-middle;
 
     border-radius: var(--borderRadiusCircular);
     font-family: var(--fontFamilyBase);
@@ -132,7 +132,7 @@
    * initials and icon slots, exactly as the Griffel source shared it.
    */
   .icon-initials {
-    @apply absolute box-border flex h-full w-full select-none items-center justify-center text-center;
+    @apply absolute box-border flex h-full w-full items-center justify-center text-center select-none;
 
     inset-block-start: 0;
     inset-inline-start: 0;

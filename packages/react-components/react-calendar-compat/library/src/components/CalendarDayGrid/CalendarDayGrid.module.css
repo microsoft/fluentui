@@ -83,7 +83,7 @@
 
   /* from useTableStyles.base — table arg #2 */
   .table {
-    @apply border-collapse relative table-fixed text-center w-196;
+    @apply relative w-196 table-fixed border-collapse text-center;
 
     border-spacing: 0;
     font-size: inherit;
@@ -102,7 +102,7 @@
   .day-cell {
     color: var(--colorNeutralForeground1);
 
-    @apply cursor-pointer relative m-0 p-horizontal-xxs;
+    @apply relative m-0 cursor-pointer p-horizontal-xxs;
 
     font-size: var(--fontSizeBase200);
     font-weight: var(--fontWeightRegular);
@@ -316,7 +316,7 @@
     border-inline-end-style: solid;
     border-inline-end-color: var(--colorNeutralStroke2);
 
-    @apply box-border h-28 w-28 m-0 p-0;
+    @apply m-0 box-border h-28 w-28 p-0;
 
     color: var(--colorNeutralForeground4);
     font-size: var(--fontSizeBase200);
@@ -382,7 +382,7 @@
 
     color: inherit;
 
-    @apply cursor-pointer overflow-visible h-24 w-24 p-0;
+    @apply h-24 w-24 cursor-pointer overflow-visible p-0;
 
     font-size: var(--fontSizeBase200);
     font-weight: inherit;
@@ -400,7 +400,7 @@
 
   /* from useDayIsTodayStyles.base — dayButton arg #3 (day.isToday) */
   .day-is-today {
-    @apply flex justify-center items-center;
+    @apply flex items-center justify-center;
 
     color: var(--colorNeutralForegroundOnBrand);
     font-weight: var(--fontWeightSemibold);
@@ -420,12 +420,12 @@
    * overlay from intercepting clicks. `TransitionRowSlideOut` fades opacity 1 → 0, ending here.
    */
   .first-transition-week {
-    @apply opacity-0 overflow-hidden pointer-events-none absolute;
+    @apply pointer-events-none absolute overflow-hidden opacity-0;
   }
 
   /* from useLastTransitionWeekStyles.base */
   .last-transition-week {
-    @apply -mt-28 opacity-0 overflow-hidden pointer-events-none absolute;
+    @apply pointer-events-none absolute -mt-28 overflow-hidden opacity-0;
   }
 
   /* from useDayMarkerStyles.base */
@@ -433,7 +433,7 @@
     background-color: var(--colorBrandForeground2);
     border-radius: 100%;
 
-    @apply absolute bottom-1 h-4 w-4 m-auto;
+    @apply absolute bottom-1 m-auto h-4 w-4;
 
     /* `left: 0` + `right: 0` — rtl-css-js swaps them, a no-op at 0; written logically */
     inset-inline: 0;
@@ -475,7 +475,7 @@
 
   /* from useDayTodayMarkerStyles.base */
   .day-today-marker {
-    @apply flex justify-center items-center h-20 w-20;
+    @apply flex h-20 w-20 items-center justify-center;
 
     background-color: var(--colorBrandBackground);
     border-radius: 100%;

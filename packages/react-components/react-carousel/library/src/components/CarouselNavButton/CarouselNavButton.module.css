@@ -129,9 +129,9 @@
    * pseudo-element, so there is no priority interaction to expand away.
    */
   .root {
-    @apply cursor-pointer box-content;
-    @apply w-horizontal-s h-vertical-s;
-    @apply pt-vertical-s pb-vertical-s ps-horizontal-s pe-horizontal-s;
+    @apply box-content cursor-pointer;
+    @apply h-vertical-s w-horizontal-s;
+    @apply ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
 
     /* `pointer-events: all` is not Tailwind's `pointer-events-auto`; the dots re-enable
        hit-testing inside CarouselNavContainer's `pointer-events: none` overlay. */
@@ -144,8 +144,8 @@
     border-block-end-width: 0;
 
     &::after {
-      @apply block box-border;
-      @apply w-horizontal-s h-vertical-s;
+      @apply box-border block;
+      @apply h-vertical-s w-horizontal-s;
 
       content: '';
       border: none;
@@ -201,7 +201,7 @@
 
     @variant selected {
       @apply w-horizontal-l;
-      @apply pt-vertical-s pb-vertical-s ps-horizontal-xs pe-horizontal-xs;
+      @apply ps-horizontal-xs pe-horizontal-xs pt-vertical-s pb-vertical-s;
 
       outline: var(--spacing-thin) solid transparent;
 

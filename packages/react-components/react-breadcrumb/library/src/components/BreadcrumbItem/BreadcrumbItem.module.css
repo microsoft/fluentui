@@ -39,7 +39,7 @@
 @layer fui.base {
   /* from useBreadcrumbItemResetStyles (makeResetStyles) */
   .root {
-    @apply flex items-center box-border text-nowrap;
+    @apply box-border flex items-center text-nowrap;
 
     color: var(--colorNeutralForeground2);
   }

@@ -64,12 +64,12 @@
   .normalize {
     box-shadow: none;
 
-    @apply box-border m-0 p-0;
+    @apply m-0 box-border p-0;
   }
 
   /* from useRootStyles.base — root arg #3; re-sets `box-sizing` and `padding` from above */
   .root {
-    @apply box-content p-horizontal-m w-196;
+    @apply box-content w-196 p-horizontal-m;
   }
 
   /* from useRootStyles.showWeekNumbers — root arg #4 (showWeekNumbers) */
@@ -81,14 +81,14 @@
 @layer fui.components.l1 {
   /* from useHeaderStyles.base */
   .header {
-    @apply inline-flex relative h-28 w-full;
+    @apply relative inline-flex h-28 w-full;
 
     line-height: calc(44px * var(--base-scale));
   }
 
   /* from useMonthAndYearStyles.base — monthAndYear arg #2 */
   .month-and-year {
-    @apply items-center inline-block grow overflow-hidden text-ellipsis whitespace-nowrap;
+    @apply inline-block grow items-center overflow-hidden text-ellipsis whitespace-nowrap;
 
     background-color: var(--colorTransparentBackground);
 
@@ -144,7 +144,7 @@
 
   /* from useMonthComponentsStyles.base */
   .month-components {
-    @apply self-end inline-flex;
+    @apply inline-flex self-end;
   }
 
   /* from useHeaderIconButtonStyles.base */
@@ -157,7 +157,7 @@
     border-radius: var(--borderRadiusMedium);
     color: var(--colorNeutralForeground3);
 
-    @apply block overflow-visible relative text-center h-28 w-28 p-0;
+    @apply relative block h-28 w-28 overflow-visible p-0 text-center;
 
     font-family: inherit;
     font-size: var(--fontSizeBase200);

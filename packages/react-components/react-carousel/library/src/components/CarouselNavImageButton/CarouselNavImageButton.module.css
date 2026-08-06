@@ -75,9 +75,9 @@
   /* from useStyles.root — root arg #2 */
   .root {
     @apply box-content overflow-hidden;
-    @apply pt-0 pb-0 ps-0 pe-0;
-    @apply mt-0 mb-0 ms-horizontal-xs me-horizontal-xs;
-    @apply w-40 h-40;
+    @apply ps-0 pe-0 pt-0 pb-0;
+    @apply ms-horizontal-xs me-horizontal-xs mt-0 mb-0;
+    @apply h-40 w-40;
 
     border-block-start-color: var(--colorTransparentStroke);
     border-inline-end-color: var(--colorTransparentStroke);
@@ -95,7 +95,7 @@
   /* from useStyles.selected — root arg #3, keyed off the root's own `aria-selected` */
   .root {
     @variant selected {
-      @apply w-48 h-48;
+      @apply h-48 w-48;
     }
   }
 }
@@ -103,7 +103,7 @@
 @layer fui.components.l1 {
   /* from useStyles.image — image arg #1 */
   .image {
-    @apply w-40 h-40;
+    @apply h-40 w-40;
 
     border-radius: var(--borderRadiusSmall);
   }
@@ -117,7 +117,7 @@
    */
   .image {
     @variant group-selected/fui-carousel-nav-image-button {
-      @apply w-48 h-48;
+      @apply h-48 w-48;
     }
   }
 }

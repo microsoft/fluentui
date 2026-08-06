@@ -109,7 +109,7 @@
    * `margin-inline-end` is exact and no `@variant rtl` twin is required.
    */
   .clear-button {
-    @apply self-center relative h-fit m-0 p-0;
+    @apply relative m-0 h-fit self-center p-0;
 
     background-color: var(--colorTransparentBackground);
     border-style: none;
@@ -141,7 +141,7 @@
    * properties are exact.
    */
   .root {
-    @apply inline-flex relative box-border align-middle min-w-250;
+    @apply relative box-border inline-flex min-w-250 align-middle;
 
     border-radius: var(--borderRadiusMedium);
 
@@ -443,7 +443,7 @@
   .root {
     /* from useStyles.button — arg #2 */
     & .button {
-      @apply grid items-center box-border w-full justify-between;
+      @apply box-border grid w-full items-center justify-between;
 
       background-color: var(--colorTransparentBackground);
       border-style: none;
@@ -479,7 +479,7 @@
         line-height: var(--lineHeightBase200);
 
         /* SNudge (6) + XXS (2) = 8px, exactly the S step */
-        @apply py-3 pe-horizontal-s-nudge ps-horizontal-s;
+        @apply py-3 ps-horizontal-s pe-horizontal-s-nudge;
       }
     }
 
@@ -491,7 +491,7 @@
         line-height: var(--lineHeightBase300);
 
         /* MNudge (10) + XXS (2) = 12px, exactly the M step */
-        @apply py-5 pe-horizontal-m-nudge ps-horizontal-m;
+        @apply py-5 ps-horizontal-m pe-horizontal-m-nudge;
       }
     }
 
@@ -504,7 +504,7 @@
 
         /* `columnGap: spacingHorizontalSNudge` overrides the button's XXS.
            M (12) + SNudge (6) = 18px matches NO spacing step → numeric fallback. */
-        @apply py-7 pe-horizontal-m ps-18 gap-x-horizontal-s-nudge;
+        @apply gap-x-horizontal-s-nudge py-7 ps-18 pe-horizontal-m;
       }
     }
 

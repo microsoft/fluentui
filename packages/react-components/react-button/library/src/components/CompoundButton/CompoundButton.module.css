@@ -114,7 +114,7 @@
 
   /* from useRootStyles.small */
   .small {
-    @apply pt-horizontal-s px-horizontal-s pb-horizontal-m-nudge;
+    @apply px-horizontal-s pt-horizontal-s pb-horizontal-m-nudge;
 
     font-size: var(--fontSizeBase300);
     line-height: var(--lineHeightBase300);
@@ -122,7 +122,7 @@
 
   /* from useRootStyles.medium */
   .medium {
-    @apply pt-14 px-horizontal-m pb-horizontal-l;
+    @apply px-horizontal-m pt-14 pb-horizontal-l;
 
     font-size: var(--fontSizeBase300);
     line-height: var(--lineHeightBase300);
@@ -130,7 +130,7 @@
 
   /* from useRootStyles.large */
   .large {
-    @apply pt-18 px-horizontal-l pb-horizontal-xl;
+    @apply px-horizontal-l pt-18 pb-horizontal-xl;
 
     font-size: var(--fontSizeBase400);
     line-height: var(--lineHeightBase400);
@@ -151,17 +151,17 @@
 
   /* from useRootIconOnlyStyles.small */
   .icon-only-small {
-    @apply p-horizontal-xs max-w-48 min-w-48;
+    @apply max-w-48 min-w-48 p-horizontal-xs;
   }
 
   /* from useRootIconOnlyStyles.medium */
   .icon-only-medium {
-    @apply p-horizontal-s-nudge max-w-52 min-w-52;
+    @apply max-w-52 min-w-52 p-horizontal-s-nudge;
   }
 
   /* from useRootIconOnlyStyles.large */
   .icon-only-large {
-    @apply p-horizontal-s max-w-56 min-w-56;
+    @apply max-w-56 min-w-56 p-horizontal-s;
   }
 }
 

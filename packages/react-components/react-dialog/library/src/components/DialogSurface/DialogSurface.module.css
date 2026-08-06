@@ -206,7 +206,7 @@
 
   /* from useBackdropBaseStyle (makeResetStyles) — backdrop arg #2 */
   .backdrop {
-    @apply inset-0 fixed;
+    @apply fixed inset-0;
 
     background-color: var(--colorBackgroundOverlay);
   }

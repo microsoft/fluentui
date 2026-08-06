@@ -66,7 +66,7 @@
       /* `margin: 0 calc(spacingHorizontalXS * -1) spacingVerticalXS` — block-start 0,
          inline ±XS pulled outward, block-end verticalXS. The block axis never flips, so
          the physical `mt-`/`mb-` utilities are exact. */
-      @apply mt-vertical-none -mx-horizontal-xs mb-vertical-xs;
+      @apply -mx-horizontal-xs mt-vertical-none mb-vertical-xs;
     }
   }
 
@@ -82,6 +82,6 @@
 
     /* `padding: spacingHorizontalS spacingHorizontalSNudge` — the source named horizontal
        tokens on both axes; reproduced verbatim. */
-    @apply py-horizontal-s px-horizontal-s-nudge;
+    @apply px-horizontal-s-nudge py-horizontal-s;
   }
 }

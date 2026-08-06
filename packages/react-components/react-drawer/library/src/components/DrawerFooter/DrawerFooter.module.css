@@ -70,8 +70,8 @@
 @layer fui.base {
   /* arg #2 — from useStyles (makeResetStyles) */
   .root {
-    @apply relative box-border flex items-center justify-start w-full max-w-full;
-    @apply pt-vertical-l px-horizontal-xxl pb-vertical-xxl gap-x-horizontal-s;
+    @apply relative box-border flex w-full max-w-full items-center justify-start;
+    @apply gap-x-horizontal-s px-horizontal-xxl pt-vertical-l pb-vertical-xxl;
 
     z-index: 2;
   }

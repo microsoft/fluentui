@@ -75,7 +75,7 @@
    * under `@variant rtl` rather than expressed logically.
    */
   .root {
-    @apply relative inline-grid touch-none justify-items-start box-border min-w-300 min-h-300 mb-vertical-s-nudge;
+    @apply relative mb-vertical-s-nudge box-border inline-grid min-h-300 min-w-300 touch-none justify-items-start;
 
     /* `align-items: start`, NOT Tailwind's `items-start` — that utility emits `flex-start`,
        which the Box Alignment spec only *behaves as* `start` in a grid container. The
@@ -119,7 +119,7 @@
    * and the transform gets an `@variant rtl` twin. `bottom` has no flip and stays physical.
    */
   .thumb {
-    @apply absolute pointer-events-none;
+    @apply pointer-events-none absolute;
 
     width: var(--fui-Slider__thumb--size);
     height: var(--fui-Slider__thumb--size);
@@ -206,7 +206,7 @@
    * `inset-inline-start`; `top: 0` has no flip and stays physical.
    */
   .input {
-    @apply overflow-hidden absolute pointer-events-none opacity-0 p-0 m-0 w-full h-full;
+    @apply pointer-events-none absolute m-0 h-full w-full overflow-hidden p-0 opacity-0;
 
     top: 0;
     inset-inline-start: 0;

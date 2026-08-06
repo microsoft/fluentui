@@ -61,7 +61,7 @@
 
   /* from useStyles.content */
   .content {
-    @apply relative grow box-border;
+    @apply relative box-border grow;
 
     background-color: transparent;
     border-radius: var(--borderRadiusMedium);

@@ -38,7 +38,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply box-border flex flex-col overflow-y-auto min-w-160;
+    @apply box-border flex min-w-160 flex-col overflow-y-auto;
 
     background-color: var(--colorNeutralBackground1);
 

@@ -95,7 +95,7 @@
 @layer fui.base {
   /* from useRootStyles (makeResetStyles) — no RTL twin in the compiled output */
   .root {
-    @apply relative inline-grid touch-none items-center justify-items-center min-h-32;
+    @apply relative inline-grid min-h-32 touch-none items-center justify-items-center;
 
     /* Shared with react-slider / ColorArea — do NOT rename (see header). */
     --fui-Slider__thumb--size: calc(20px * var(--base-scale));
@@ -228,7 +228,7 @@
 @layer fui.components.l1 {
   /* thumb arg #2 — from useThumbStyles.thumb */
   .thumb {
-    @apply absolute pointer-events-none;
+    @apply pointer-events-none absolute;
 
     grid-row-start: 2;
     grid-row-end: 2;
@@ -302,7 +302,7 @@
    * hardcoded focus-ring width verbatim.
    */
   .input {
-    @apply cursor-pointer opacity-0 p-0 m-0;
+    @apply m-0 cursor-pointer p-0 opacity-0;
 
     grid-row-start: 1;
     grid-row-end: -1;

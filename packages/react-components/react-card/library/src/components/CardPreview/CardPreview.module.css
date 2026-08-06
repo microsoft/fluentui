@@ -78,6 +78,6 @@
 
   /* from useStyles.logo — logo arg #2 */
   .logo {
-    @apply absolute bottom-12 start-12 h-32 w-32;
+    @apply absolute start-12 bottom-12 h-32 w-32;
   }
 }

@@ -94,7 +94,7 @@
    * two axis pairs cannot change a within-rule winner.
    */
   .overflow-item {
-    @apply py-vertical-xs px-horizontal-xs;
+    @apply px-horizontal-xs py-vertical-xs;
   }
 }
 

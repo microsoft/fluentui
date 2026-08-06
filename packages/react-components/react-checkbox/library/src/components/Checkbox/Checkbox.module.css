@@ -347,7 +347,7 @@
        this same layer, and Griffel's shorthand-loses-to-longhand priority (`p: -1`) has no
        CSS equivalent. Inline sides are logical because `before`/`after` compile to an
        [ltr, rtl] padding pair. Longhands carry the named spacing utilities (D4 amendment). */
-    @apply pt-vertical-s pb-vertical-s ps-horizontal-s pe-horizontal-s;
+    @apply ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
   }
 
   .root {

@@ -66,7 +66,7 @@
 
   /* from useStyles.rect */
   .rect {
-    @apply w-horizontal-m me-horizontal-s;
+    @apply me-horizontal-s w-horizontal-m;
 
     /*
      * `border: 1px solid` (compiled `.fpyyuzi`) expanded to longhands. The shorthand also
@@ -104,7 +104,7 @@
    * "TO DO Add props when these styles are used" note); preserved verbatim.
    */
   .triangle {
-    @apply h-0 w-0 me-horizontal-s;
+    @apply me-horizontal-s h-0 w-0;
 
     /* borderLeft/borderRight → logical, so the RTL flip Griffel did by hand is free */
     border-inline-start-width: 6px;
@@ -132,7 +132,7 @@
    * preserved verbatim.
    */
   .hover-change {
-    @apply h-vertical-m w-horizontal-m me-horizontal-s;
+    @apply me-horizontal-s h-vertical-m w-horizontal-m;
 
     /* `border: 1px solid` expanded — see `.rect` for why the colour longhands are omitted */
     border-top-width: 1px;
@@ -218,7 +218,7 @@
 
   /* from useStyles.resizableArea — applied to the element `<Overflow>` owns */
   .resizable-area {
-    @apply relative top-auto start-1/2 min-w-200 max-w-800;
+    @apply relative start-1/2 top-auto max-w-800 min-w-200;
 
     /* textAlign 'left' → logical `start` (Griffel mirrored it to `right` in RTL) */
     text-align: start;
@@ -232,7 +232,7 @@
 
     &::after {
       /* `padding: 1px 4px 1px` expanded; 4px is the XS spacing step, 1px matches no step */
-      @apply pt-1 pb-1 pe-horizontal-xs ps-horizontal-xs;
+      @apply ps-horizontal-xs pe-horizontal-xs pt-1 pb-1;
 
       /*
        * The Griffel source also sets `borderTop: '-2px'` and `borderLeft: '-2px'` here.

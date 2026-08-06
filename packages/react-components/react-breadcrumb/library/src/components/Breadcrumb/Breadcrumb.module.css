@@ -70,7 +70,7 @@
 @layer fui.base {
   /* from useListClassName (makeResetStyles) */
   .list {
-    @apply list-none flex items-center;
+    @apply flex list-none items-center;
 
     /*
      * `margin: 0` / `padding: 0` are reproduced as the compiled SHORTHANDS, not expanded:

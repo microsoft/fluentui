@@ -45,7 +45,7 @@
 @layer fui.base {
   /* arg #2 — from useStyles (makeResetStyles) */
   .root {
-    @apply relative flex-1 self-stretch overflow-auto py-0 px-horizontal-xxl;
+    @apply relative flex-1 self-stretch overflow-auto px-horizontal-xxl py-0;
 
     z-index: 1;
 

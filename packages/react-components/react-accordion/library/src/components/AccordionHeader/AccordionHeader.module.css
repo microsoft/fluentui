@@ -173,7 +173,7 @@
     padding-top: 0;
     padding-bottom: 0;
 
-    @apply pe-horizontal-m ps-horizontal-m-nudge;
+    @apply ps-horizontal-m-nudge pe-horizontal-m;
 
     /* 44px matches no spacing step → numeric utility (D4) */
     @apply min-h-44;

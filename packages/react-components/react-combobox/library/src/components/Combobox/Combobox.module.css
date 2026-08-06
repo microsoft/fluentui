@@ -97,7 +97,7 @@
    * properties are exact and no `@variant rtl` twin is required.
    */
   .root {
-    @apply inline-grid items-center relative box-border align-middle justify-between min-w-250;
+    @apply relative box-border inline-grid min-w-250 items-center justify-between align-middle;
 
     grid-template-columns: 1fr auto;
     border-radius: var(--borderRadiusMedium);
@@ -278,7 +278,7 @@
 
     @variant size-large {
       /* `columnGap: spacingHorizontalSNudge` overrides the root's XXS */
-      @apply h-40 pe-horizontal-m gap-x-horizontal-s-nudge;
+      @apply h-40 gap-x-horizontal-s-nudge pe-horizontal-m;
     }
   }
 }
@@ -478,7 +478,7 @@
         line-height: var(--lineHeightBase200);
 
         /* SNudge (6) + XXS (2) = 8px, exactly the S step */
-        @apply py-vertical-none pe-horizontal-none ps-horizontal-s;
+        @apply py-vertical-none ps-horizontal-s pe-horizontal-none;
       }
     }
 
@@ -490,7 +490,7 @@
         line-height: var(--lineHeightBase300);
 
         /* MNudge (10) + XXS (2) = 12px, exactly the M step */
-        @apply py-vertical-none pe-horizontal-none ps-horizontal-m;
+        @apply py-vertical-none ps-horizontal-m pe-horizontal-none;
       }
     }
 
@@ -504,7 +504,7 @@
         /* M (12) + SNudge (6) = 18px, which matches NO spacing step, so the numeric utility
            is the sanctioned fallback. Same scale: `--spacing` is `calc(1px * var(--base-scale))`,
            so `ps-18` === `calc(18px * var(--base-scale))`. */
-        @apply py-vertical-none pe-horizontal-none ps-18;
+        @apply py-vertical-none ps-18 pe-horizontal-none;
       }
     }
 
@@ -540,7 +540,7 @@
   .root {
     /* from useIconStyles.icon — arg #2 */
     & .icon {
-      @apply box-border block relative;
+      @apply relative box-border block;
 
       color: var(--colorNeutralStrokeAccessible);
       cursor: pointer;
@@ -623,7 +623,7 @@
      * `position: absolute` likewise overrides the icon's `relative`.
      */
     & .visually-hidden {
-      @apply absolute h-1 w-1 -m-1 p-0 overflow-hidden;
+      @apply absolute -m-1 h-1 w-1 overflow-hidden p-0;
 
       clip: rect(0px, 0px, 0px, 0px);
     }

@@ -90,7 +90,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root */
   .root {
-    @apply absolute inset-0 h-full w-full pointer-events-none overflow-visible;
+    @apply pointer-events-none absolute inset-0 h-full w-full overflow-visible;
 
     z-index: 1;
   }
@@ -99,7 +99,7 @@
    * shared verbatim by useStyles.annotation and useStyles.annotationNoDefaults */
   .annotation,
   .annotation-no-defaults {
-    @apply absolute pointer-events-none flex items-center justify-center text-center whitespace-pre-wrap px-horizontal-s py-vertical-xs;
+    @apply pointer-events-none absolute flex items-center justify-center px-horizontal-s py-vertical-xs text-center whitespace-pre-wrap;
 
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase200);
@@ -118,22 +118,22 @@
 
   /* from useStyles.connectorLayer */
   .connector-layer {
-    @apply absolute top-0 start-0 h-full w-full pointer-events-none overflow-visible;
+    @apply pointer-events-none absolute start-0 top-0 h-full w-full overflow-visible;
   }
 
   /* from useStyles.measurement */
   .measurement {
-    @apply absolute invisible pointer-events-none;
+    @apply pointer-events-none invisible absolute;
   }
 
   /* from useStyles.annotationContent */
   .annotation-content {
-    @apply h-full w-full pointer-events-none;
+    @apply pointer-events-none h-full w-full;
   }
 
   /* from useStyles.annotationForeignObject */
   .annotation-foreign-object {
-    @apply overflow-visible pointer-events-none;
+    @apply pointer-events-none overflow-visible;
   }
 
   /* from useStyles.annotationContentInteractive — AFTER .annotation-content (file order

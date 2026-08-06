@@ -107,7 +107,7 @@
    * with `pointer-events: all`.
    */
   .root {
-    @apply flex flex-row justify-center w-full;
+    @apply flex w-full flex-row justify-center;
 
     pointer-events: none;
   }
@@ -124,7 +124,7 @@
   }
 
   .overlay {
-    @apply absolute box-border bottom-vertical-m;
+    @apply absolute bottom-vertical-m box-border;
   }
 }
 
@@ -148,7 +148,7 @@
    * Its `& > div` rule is NOT here — see the l2 block at the bottom of this file.
    */
   .expanded {
-    @apply w-full h-full items-end justify-center bottom-0;
+    @apply bottom-0 h-full w-full items-end justify-center;
   }
 }
 

@@ -67,7 +67,7 @@
   /* from useStyles.root — arg #2 */
   .root {
     @apply flex flex-row items-center justify-center;
-    @apply mt-auto mb-auto ms-horizontal-s me-horizontal-s;
+    @apply ms-horizontal-s me-horizontal-s mt-auto mb-auto;
 
     /* `pointer-events: all` is not Tailwind's `pointer-events-auto`; the nav re-enables
        hit-testing inside CarouselNavContainer's `pointer-events: none` overlay. */

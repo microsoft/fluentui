@@ -108,7 +108,7 @@
    */
   .root {
     @variant size-small {
-      @apply h-24 pt-horizontal-s-nudge pb-horizontal-s-nudge ps-horizontal-s-nudge pe-horizontal-s-nudge;
+      @apply h-24 ps-horizontal-s-nudge pe-horizontal-s-nudge pt-horizontal-s-nudge pb-horizontal-s-nudge;
 
       font-family: var(--fontFamilyBase);
       font-size: var(--fontSizeBase200);
@@ -117,7 +117,7 @@
     }
 
     @variant size-medium {
-      @apply h-32 pt-horizontal-s-nudge pb-horizontal-s-nudge ps-horizontal-s-nudge pe-horizontal-s-nudge;
+      @apply h-32 ps-horizontal-s-nudge pe-horizontal-s-nudge pt-horizontal-s-nudge pb-horizontal-s-nudge;
 
       font-family: var(--fontFamilyBase);
       font-size: var(--fontSizeBase300);
@@ -126,7 +126,7 @@
     }
 
     @variant size-large {
-      @apply h-40 pt-horizontal-s pb-horizontal-s ps-horizontal-s pe-horizontal-s;
+      @apply h-40 ps-horizontal-s pe-horizontal-s pt-horizontal-s pb-horizontal-s;
 
       font-family: var(--fontFamilyBase);
       font-size: var(--fontSizeBase400);

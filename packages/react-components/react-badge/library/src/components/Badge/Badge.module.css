@@ -61,7 +61,7 @@
    * left↔right while carrying the same value, so physical longhands are exact.
    */
   .root {
-    @apply relative inline-flex box-border items-center justify-center h-20 min-w-20;
+    @apply relative box-border inline-flex h-20 min-w-20 items-center justify-center;
 
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase200);
@@ -74,7 +74,7 @@
      * Written as ps/pe (not px-) so the four longhands the size slices override — and the
      * `unset`s the tiny/extra-small slices set — keep landing on the same properties.
      */
-    @apply pt-vertical-none pb-vertical-none ps-horizontal-s-nudge pe-horizontal-s-nudge;
+    @apply ps-horizontal-s-nudge pe-horizontal-s-nudge pt-vertical-none pb-vertical-none;
 
     border-radius: var(--borderRadiusCircular);
 
@@ -115,7 +115,7 @@
     line-height: 1;
 
     /* `margin: 0 calc(-1 * textPadding)` — textPadding = tokens.spacingHorizontalXXS */
-    @apply mt-vertical-none mb-vertical-none -ms-horizontal-xxs -me-horizontal-xxs;
+    @apply -ms-horizontal-xxs -me-horizontal-xxs mt-vertical-none mb-vertical-none;
 
     /* px literal → `--base-scale` (D4); exactly 12px at the default 16px root. */
     font-size: calc(12px * var(--base-scale));
@@ -167,21 +167,21 @@
       @apply h-16 min-w-16;
 
       /* `0 calc(spacingHorizontalXXS + textPadding)` = 2px + 2px = 4px = the XS step */
-      @apply pt-vertical-none pb-vertical-none ps-horizontal-xs pe-horizontal-xs;
+      @apply ps-horizontal-xs pe-horizontal-xs pt-vertical-none pb-vertical-none;
     }
 
     @variant size-large {
       @apply h-24 min-w-24;
 
       /* `0 calc(spacingHorizontalXS + textPadding)` = 4px + 2px = 6px = the SNudge step */
-      @apply pt-vertical-none pb-vertical-none ps-horizontal-s-nudge pe-horizontal-s-nudge;
+      @apply ps-horizontal-s-nudge pe-horizontal-s-nudge pt-vertical-none pb-vertical-none;
     }
 
     @variant size-extra-large {
       @apply h-32 min-w-32;
 
       /* `0 calc(spacingHorizontalSNudge + textPadding)` = 6px + 2px = 8px = the S step */
-      @apply pt-vertical-none pb-vertical-none ps-horizontal-s pe-horizontal-s;
+      @apply ps-horizontal-s pe-horizontal-s pt-vertical-none pb-vertical-none;
     }
   }
 }

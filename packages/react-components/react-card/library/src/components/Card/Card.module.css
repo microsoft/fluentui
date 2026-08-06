@@ -772,7 +772,7 @@
 @layer fui.components.l1 {
   /* from useCardStyles.select — floatingAction slot arg #2 */
   .floating-action {
-    @apply absolute top-4 end-4;
+    @apply absolute end-4 top-4;
 
     z-index: var(--zIndexContent, 1);
   }

@@ -43,7 +43,7 @@
 @layer fui.components.l1 {
   /* from useBaseStyles.base */
   .root {
-    @apply relative box-border flex flex-row grow items-center text-center;
+    @apply relative box-border flex grow flex-row items-center text-center;
 
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase200);
@@ -267,7 +267,7 @@
      */
     @variant empty {
       &::before {
-        @apply mb-vertical-none me-horizontal-none;
+        @apply me-horizontal-none mb-vertical-none;
       }
 
       &::after {

@@ -57,7 +57,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply grow-0 shrink-0 basis-full max-w-full;
+    @apply max-w-full shrink-0 grow-0 basis-full;
   }
 }
 
@@ -74,6 +74,6 @@
 @layer fui.components.l1 {
   /* from useStyles.autoSize — arg #4. Adapts the slide size to its content. */
   .auto-size {
-    @apply grow-0 shrink-0 basis-auto min-w-0 w-auto max-w-full;
+    @apply w-auto max-w-full min-w-0 shrink-0 grow-0 basis-auto;
   }
 }

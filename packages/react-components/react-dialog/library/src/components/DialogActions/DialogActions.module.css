@@ -86,7 +86,7 @@
     /* DIALOG_GAP = '8px' → the S spacing step (D4 amendment) */
     @apply gap-horizontal-s;
 
-    @apply h-fit box-border flex;
+    @apply box-border flex h-fit;
 
     grid-row-start: 3;
     grid-row-end: 3;

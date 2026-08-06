@@ -83,7 +83,7 @@
     min-width: auto;
 
     /* `padding: '0'` — the 0 px literal is the `none` spacing step (D4 amendment) */
-    @apply pt-vertical-none pb-vertical-none ps-horizontal-none pe-horizontal-none;
+    @apply ps-horizontal-none pe-horizontal-none pt-vertical-none pb-vertical-none;
   }
 
   /* from useStyles.hide — no children and not a dot, so there is nothing to show. */

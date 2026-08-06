@@ -71,7 +71,7 @@
   .normalize {
     box-shadow: none;
 
-    @apply box-border m-0 p-0;
+    @apply m-0 box-border p-0;
   }
 
   /* from useRootStyles.monthPickerNotVisible — root arg #4 (!isMonthPickerVisible) */
@@ -125,7 +125,7 @@
 
   /* from useGoTodayButtonStyles.base */
   .go-today-button {
-    @apply self-end box-content overflow-visible;
+    @apply box-content self-end overflow-visible;
 
     background-color: var(--colorTransparentBackground);
 
@@ -149,7 +149,7 @@
 
     /* `padding: '0 4px'` → block 0 / inline 4px (the XS step); `px-*` is padding-inline in
        Tailwind v4, so the RTL flip of the shorthand's 2nd/4th values is free */
-    @apply py-0 px-horizontal-xs;
+    @apply px-horizontal-xs py-0;
 
     & div {
       font-size: var(--fontSizeBase200);

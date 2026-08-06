@@ -54,7 +54,7 @@
   /* from useStyles (makeResetStyles) — root arg #2 */
   .root {
     /* `padding: tokens.strokeWidthThick` / `margin: calc(tokens.strokeWidthThick * -1)` */
-    @apply p-thick -m-thick;
+    @apply -m-thick p-thick;
 
     /* from typographyStyles.body1 */
     font-family: var(--fontFamilyBase);
@@ -62,7 +62,7 @@
     font-weight: var(--fontWeightRegular);
     line-height: var(--lineHeightBase300);
 
-    @apply overflow-y-auto min-h-32 box-border;
+    @apply box-border min-h-32 overflow-y-auto;
 
     grid-row-start: 2;
     grid-row-end: 2;
