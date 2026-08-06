@@ -360,7 +360,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
       () =>
         ({
           succeeded: true,
-        } as ExtractorResult),
+        }) as ExtractorResult,
     );
 
     await executor(options, context);
@@ -407,7 +407,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
       () =>
         ({
           succeeded: true,
-        } as ExtractorResult),
+        }) as ExtractorResult,
     );
 
     const output = await executor(options, context);
@@ -426,7 +426,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
         () =>
           ({
             succeeded: true,
-          } as ExtractorResult),
+          }) as ExtractorResult,
       );
 
       const output = await executor({ ...options, ...overrides }, context);
@@ -483,7 +483,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
       () =>
         ({
           succeeded: true,
-        } as ExtractorResult),
+        }) as ExtractorResult,
     );
 
     const output = await executor({ ...options, exportSubpaths: true }, context);

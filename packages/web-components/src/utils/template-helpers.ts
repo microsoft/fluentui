@@ -16,10 +16,7 @@ import {
  * @public
  */
 export type StaticallyComposableHTML<TSource = any, TParent = any> =
-  | string
-  | HTMLDirective
-  | SyntheticViewTemplate<TSource, TParent>
-  | undefined;
+  string | HTMLDirective | SyntheticViewTemplate<TSource, TParent> | undefined;
 
 /**
  * A function to compose template options.

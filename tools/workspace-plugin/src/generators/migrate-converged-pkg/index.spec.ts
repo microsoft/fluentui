@@ -40,7 +40,7 @@ jest.mock(
       prompt: jest.fn(async () => ({
         name: '',
       })),
-    } satisfies Pick<Enquirer, 'prompt'>),
+    }) satisfies Pick<Enquirer, 'prompt'>,
 );
 
 describe('migrate-converged-pkg generator', () => {
@@ -1338,11 +1338,14 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, { all: true });
 
-      const configs = projects.reduce((acc, projectName) => {
-        acc[projectName] = readProjectConfiguration(tree, projectName);
+      const configs = projects.reduce(
+        (acc, projectName) => {
+          acc[projectName] = readProjectConfiguration(tree, projectName);
 
-        return acc;
-      }, {} as Record<(typeof projects)[number], ReadProjectConfiguration>);
+          return acc;
+        },
+        {} as Record<(typeof projects)[number], ReadProjectConfiguration>,
+      );
 
       expect(configs['@proj/react-foo'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-bar'].sourceRoot).toBeDefined();
@@ -1362,11 +1365,14 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, { name: `${projects[0]},${projects[1]}` });
 
-      const configs = projects.reduce((acc, projectName) => {
-        acc[projectName] = readProjectConfiguration(tree, projectName);
+      const configs = projects.reduce(
+        (acc, projectName) => {
+          acc[projectName] = readProjectConfiguration(tree, projectName);
 
-        return acc;
-      }, {} as Record<(typeof projects)[number], ReadProjectConfiguration>);
+          return acc;
+        },
+        {} as Record<(typeof projects)[number], ReadProjectConfiguration>,
+      );
 
       expect(configs[projects[0]].sourceRoot).toBeDefined();
       expect(configs[projects[1]].sourceRoot).toBeDefined();

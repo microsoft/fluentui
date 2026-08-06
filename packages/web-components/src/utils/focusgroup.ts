@@ -8,7 +8,10 @@ import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/sh
  * or any component that maintains its own ordered list of focusable descendants.
  */
 export class ArrayItemCollection<T extends HTMLElement> implements FocusGroupItemCollection {
-  constructor(private getItems: () => readonly T[], private getStart?: () => T | null) {}
+  constructor(
+    private getItems: () => readonly T[],
+    private getStart?: () => T | null,
+  ) {}
 
   get start(): HTMLElement | null {
     return this.getStart?.() ?? null;
@@ -26,13 +29,13 @@ export class ArrayItemCollection<T extends HTMLElement> implements FocusGroupIte
   next(current: HTMLElement): HTMLElement | null {
     const items = this.getItems();
     const i = items.indexOf(current as T);
-    return i === -1 ? null : items[i + 1] ?? null;
+    return i === -1 ? null : (items[i + 1] ?? null);
   }
 
   previous(current: HTMLElement): HTMLElement | null {
     const items = this.getItems();
     const i = items.indexOf(current as T);
-    return i <= 0 ? null : items[i - 1] ?? null;
+    return i <= 0 ? null : (items[i - 1] ?? null);
   }
 
   *items(): Iterable<{ element: HTMLElement }> {

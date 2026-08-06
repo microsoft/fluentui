@@ -253,16 +253,19 @@ test.describe('MenuButton', () => {
 
     await fastPage.setTemplate({ attributes: { disabled: true } });
 
-    const wasNotClicked = await page.evaluate(el => {
-      const event = new KeyboardEvent('click', {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-      });
+    const wasNotClicked = await page.evaluate(
+      el => {
+        const event = new KeyboardEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+        });
 
-      // The return value of dispatchEvent will be false if any event listener called preventDefault, or true otherwise.
-      return el?.dispatchEvent(event);
-    }, await element.elementHandle());
+        // The return value of dispatchEvent will be false if any event listener called preventDefault, or true otherwise.
+        return el?.dispatchEvent(event);
+      },
+      await element.elementHandle(),
+    );
 
     expect(wasNotClicked).toEqual(true);
   });

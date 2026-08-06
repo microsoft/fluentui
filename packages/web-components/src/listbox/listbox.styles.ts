@@ -45,7 +45,10 @@ export const styles = css`
       min-inline-size: anchor-size(inline);
       inset-block-start: anchor(outside);
       inset-inline-start: anchor(inside);
-      position-try-fallbacks: flip-block, flip-inline, flip-inline flip-block;
+      position-try-fallbacks:
+        flip-block,
+        flip-inline,
+        flip-inline flip-block;
     }
   }
 

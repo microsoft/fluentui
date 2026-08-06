@@ -96,10 +96,11 @@ export const CustomIcon: Story = {
   args: {
     value: 3.7,
     ariaLabel: 'Rated 3.7 out of 5',
-    iconSlottedContent: () => html`<svg slot="icon">
-      <path
-        d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z"
-      />
-    </svg>`,
+    iconSlottedContent: () =>
+      html`<svg slot="icon">
+        <path
+          d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z"
+        />
+      </svg>`,
   },
 };

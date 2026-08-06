@@ -119,8 +119,8 @@ export const styles = css`
   @media (forced-colors: active) {
     :host(${pressedState}),
     :host(
-        ${pressedState}:is([appearance='primary'], [appearance='subtle'], [appearance='outline'], [appearance='transparent'])
-      ) {
+      ${pressedState}:is([appearance='primary'], [appearance='subtle'], [appearance='outline'], [appearance='transparent'])
+    ) {
       background: SelectedItem;
     }
 

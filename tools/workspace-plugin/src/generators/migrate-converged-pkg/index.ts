@@ -1104,11 +1104,14 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
     .filter(pkgName => {
       return pkgName.startsWith(publishedNpmScope) && !rootPkgDevDependencies[pkgName];
     })
-    .reduce((acc, pkgName) => {
-      acc[pkgName] = [`${allProjects.get(pkgName)?.root}/src/index.ts`];
+    .reduce(
+      (acc, pkgName) => {
+        acc[pkgName] = [`${allProjects.get(pkgName)?.root}/src/index.ts`];
 
-      return acc;
-    }, {} as Required<Pick<TsConfig['compilerOptions'], 'paths'>>['paths']);
+        return acc;
+      },
+      {} as Required<Pick<TsConfig['compilerOptions'], 'paths'>>['paths'],
+    );
 
   updateJson<TsConfig, TsConfig>(tree, options.paths.rootTsconfig, json => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};

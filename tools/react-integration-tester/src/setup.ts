@@ -314,9 +314,7 @@ async function installDependenciesAtReactRoot(reactVersionRootPath: string) {
 }
 
 type EnsureDepsMode =
-  | { kind: 'reuse-run' }
-  | { kind: 'prepare-only-no-install' }
-  | { kind: 'run-install'; scaffoldRoot: string };
+  { kind: 'reuse-run' } | { kind: 'prepare-only-no-install' } | { kind: 'run-install'; scaffoldRoot: string };
 
 async function ensureDependencies(params: {
   reactRootPath: string;

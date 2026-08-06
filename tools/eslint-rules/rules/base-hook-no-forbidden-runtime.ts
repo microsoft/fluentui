@@ -62,9 +62,7 @@ type MessageIds = 'forbiddenRuntimeDirect' | 'forbiddenRuntimeReach' | 'typedSer
  *  - namespace import     (`import * as X`)         → `'*'`
  */
 type ImportSpecifierNode =
-  | TSESTree.ImportSpecifier
-  | TSESTree.ImportDefaultSpecifier
-  | TSESTree.ImportNamespaceSpecifier;
+  TSESTree.ImportSpecifier | TSESTree.ImportDefaultSpecifier | TSESTree.ImportNamespaceSpecifier;
 
 /**
  * A locally-declared binding originating from a tracked import (a watched or forbidden-runtime

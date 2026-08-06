@@ -38,11 +38,7 @@ type BaseHookFunction = TSESTree.FunctionDeclaration | TSESTree.FunctionExpressi
 type Options = [];
 
 type MessageIds =
-  | 'invalidParamCount'
-  | 'invalidParamName'
-  | 'invalidRefType'
-  | 'missingPropsType'
-  | 'invalidBaseHookInit';
+  'invalidParamCount' | 'invalidParamName' | 'invalidRefType' | 'missingPropsType' | 'invalidBaseHookInit';
 
 export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,

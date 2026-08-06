@@ -68,16 +68,17 @@ export const MenuOpenOnContext: Story = {
 export const MenuWithMaxHeight: Story = {
   args: {
     '--menu-max-height': '10rem',
-    slottedContent: () => html`<fluent-menu-list>
-      <fluent-menu-item>Menu item 1</fluent-menu-item>
-      <fluent-menu-item>Menu item 2</fluent-menu-item>
-      <fluent-menu-item>Menu item 3</fluent-menu-item>
-      <fluent-menu-item>Menu item 4</fluent-menu-item>
-      <fluent-menu-item>Menu item 5</fluent-menu-item>
-      <fluent-menu-item>Menu item 6</fluent-menu-item>
-      <fluent-menu-item>Menu item 7</fluent-menu-item>
-      <fluent-menu-item>Menu item 8</fluent-menu-item>
-    </fluent-menu-list>`,
+    slottedContent: () =>
+      html`<fluent-menu-list>
+        <fluent-menu-item>Menu item 1</fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+        <fluent-menu-item>Menu item 5</fluent-menu-item>
+        <fluent-menu-item>Menu item 6</fluent-menu-item>
+        <fluent-menu-item>Menu item 7</fluent-menu-item>
+        <fluent-menu-item>Menu item 8</fluent-menu-item>
+      </fluent-menu-list>`,
   },
 };
 
@@ -125,12 +126,13 @@ export const SplitButton: Story = {
   },
   args: {
     split: true,
-    triggerSlottedContent: () => html`<fluent-menu-button
-      aria-label="Toggle Menu"
-      appearance="primary"
-      slot="trigger"
-      icon-only
-    ></fluent-menu-button>`,
+    triggerSlottedContent: () =>
+      html`<fluent-menu-button
+        aria-label="Toggle Menu"
+        appearance="primary"
+        slot="trigger"
+        icon-only
+      ></fluent-menu-button>`,
     primaryActionSlottedContent: () => html`${generatePimaryActionSlottedContent()}`,
   },
 };

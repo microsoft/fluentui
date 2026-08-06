@@ -19,7 +19,10 @@ export const styles = css`
     inset: unset;
     inset-block-start: anchor(outside);
     inset-inline-start: anchor(self-start);
-    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    position-try-fallbacks:
+      flip-block,
+      flip-inline,
+      flip-block flip-inline;
     position: fixed;
     z-index: 1;
   }

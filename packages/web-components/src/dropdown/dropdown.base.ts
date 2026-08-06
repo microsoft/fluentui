@@ -884,8 +884,8 @@ export class BaseDropdown extends FASTElement {
       const nextMatch = isCycling
         ? candidates[this.getEnabledIndexInBounds(currentPos + 1, candidates.length)]
         : currentPos >= 0
-        ? activeOption
-        : candidates[0];
+          ? activeOption
+          : candidates[0];
 
       this.activeIndex = this.enabledOptions.indexOf(nextMatch);
     }

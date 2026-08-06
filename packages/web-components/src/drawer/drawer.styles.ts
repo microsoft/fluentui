@@ -102,7 +102,11 @@ export const styles = css`
     /* Disable animations for reduced motion */
     @media (prefers-reduced-motion: no-preference) {
       dialog {
-        transition: display allow-discrete, opacity, overlay allow-discrete, transform;
+        transition:
+          display allow-discrete,
+          opacity,
+          overlay allow-discrete,
+          transform;
         transition-duration: ${durationGentle};
         transition-timing-function: ${curveDecelerateMid};
       }
@@ -122,7 +126,11 @@ export const styles = css`
       }
 
       dialog::backdrop {
-        transition: display allow-discrete, opacity, overlay allow-discrete, scale;
+        transition:
+          display allow-discrete,
+          opacity,
+          overlay allow-discrete,
+          scale;
         transition-duration: ${durationGentle};
         transition-timing-function: ${curveDecelerateMid};
         background: var(--dialog-backdrop, ${colorBackgroundOverlay});

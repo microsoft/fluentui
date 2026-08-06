@@ -34,15 +34,13 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
             ) {
               const typeAnnotation = member.typeAnnotation?.typeAnnotation;
               // Check if typeAnnotation is of type EventHandler
-              if (
-                !(
-                  typeAnnotation &&
-                  typeAnnotation.type === AST_NODE_TYPES.TSTypeReference &&
-                  typeAnnotation.typeName.type === AST_NODE_TYPES.Identifier &&
-                  typeAnnotation.typeName.name === 'EventHandler' &&
-                  typeAnnotation.typeArguments
-                )
-              ) {
+              if (!(
+                typeAnnotation &&
+                typeAnnotation.type === AST_NODE_TYPES.TSTypeReference &&
+                typeAnnotation.typeName.type === AST_NODE_TYPES.Identifier &&
+                typeAnnotation.typeName.name === 'EventHandler' &&
+                typeAnnotation.typeArguments
+              )) {
                 context.report({
                   node: member,
                   messageId: 'invalidType',

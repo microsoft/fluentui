@@ -80,7 +80,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
         this.$fastController.removeStyles(this.stepStyles);
       }
 
-      this.stepStyles = css/**css*/ `
+      this.stepStyles = css /**css*/ `
         :host {
           --step-rate: ${totalSteps}%;
         }

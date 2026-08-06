@@ -51,8 +51,8 @@ function customError(type, ...args) {
         return nextArg === undefined
           ? ''
           : nextArg && typeof nextArg === 'object'
-          ? JSON.stringify(nextArg, null, 2) // avoid "[object Object]"
-          : nextArg; // everything else just use default formatting
+            ? JSON.stringify(nextArg, null, 2) // avoid "[object Object]"
+            : nextArg; // everything else just use default formatting
       }),
     ];
     processedArgs.push(...unprocessedArgs);

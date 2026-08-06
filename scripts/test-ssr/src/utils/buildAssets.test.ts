@@ -152,9 +152,8 @@ describe('buildAssets', () => {
       export const Foo = 'foo' + hello
       `;
 
-    const { getCjsContent, getEsmContent, getCjsContentWithoutHelpers, updateTsConfig, ...apiArgs } = await setup(
-      template,
-    );
+    const { getCjsContent, getEsmContent, getCjsContentWithoutHelpers, updateTsConfig, ...apiArgs } =
+      await setup(template);
 
     await updateTsConfig(content => {
       const currentMapping = content.compilerOptions.paths['@proj/hello'];
@@ -179,9 +178,8 @@ describe('buildAssets', () => {
       export const className = styles.root;
     `;
 
-    const { getEsmContent, getCjsContent, getCjsContentWithoutHelpers, distDirectory, ...apiArgs } = await setup(
-      template,
-    );
+    const { getEsmContent, getCjsContent, getCjsContentWithoutHelpers, distDirectory, ...apiArgs } =
+      await setup(template);
 
     // Create a dummy CSS module file so esbuild can resolve the path
     await fs.promises.writeFile(path.resolve(distDirectory, 'button.module.css'), '.root { color: red; }');

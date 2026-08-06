@@ -121,7 +121,9 @@ export const styles = css`
     border-color: ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     outline-offset: 1px;
-    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
+    box-shadow:
+      ${shadow4},
+      0 0 0 2px ${colorStrokeFocus2};
   }
 
   @media (forced-colors: active) {

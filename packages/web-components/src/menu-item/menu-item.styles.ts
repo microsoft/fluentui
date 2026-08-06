@@ -157,7 +157,10 @@ export const styles = css`
       inset: unset;
       inset-block-start: anchor(inside);
       inset-inline-start: anchor(outside);
-      position-try-fallbacks: --inline-inside, flip-block, flip-block --inline-inside;
+      position-try-fallbacks:
+        --inline-inside,
+        flip-block,
+        flip-block --inline-inside;
       z-index: 1;
     }
 

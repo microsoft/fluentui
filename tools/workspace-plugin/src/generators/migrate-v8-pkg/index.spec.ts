@@ -104,11 +104,14 @@ describe('migrate-v8-pkg generator', () => {
     it(`should run migration on all vNext packages in batch`, async () => {
       await generator(tree, { all: true });
 
-      const configs = projects.reduce((acc, projectName) => {
-        acc[projectName] = readProjectConfiguration(tree, projectName);
+      const configs = projects.reduce(
+        (acc, projectName) => {
+          acc[projectName] = readProjectConfiguration(tree, projectName);
 
-        return acc;
-      }, {} as Record<(typeof projects)[number], ProjectConfiguration>);
+          return acc;
+        },
+        {} as Record<(typeof projects)[number], ProjectConfiguration>,
+      );
 
       expect(configs[projects[1]].sourceRoot).not.toBeDefined();
       expect(configs[options.name].sourceRoot).toBeDefined();

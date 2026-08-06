@@ -203,10 +203,13 @@ function formatMissingApiViolationMessage(messages: string[]) {
   const regexPkg = /'(@fluentui\/[a-z-]+)'/i;
 
   return Object.values(
-    messages.reduce((acc, curr) => {
-      const [, packageName] = regexPkg.exec(curr) ?? [];
-      acc[curr] = chalk.italic.red('\t- ' + packageName);
-      return acc;
-    }, {} as Record<string, string>),
+    messages.reduce(
+      (acc, curr) => {
+        const [, packageName] = regexPkg.exec(curr) ?? [];
+        acc[curr] = chalk.italic.red('\t- ' + packageName);
+        return acc;
+      },
+      {} as Record<string, string>,
+    ),
   ).join('\n');
 }

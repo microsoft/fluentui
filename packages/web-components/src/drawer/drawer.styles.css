@@ -83,7 +83,11 @@ dialog::backdrop {
   /* Disable animations for reduced motion */
   @media (prefers-reduced-motion: no-preference) {
     dialog {
-      transition: display allow-discrete, opacity, overlay allow-discrete, transform;
+      transition:
+        display allow-discrete,
+        opacity,
+        overlay allow-discrete,
+        transform;
       transition-duration: var(--durationGentle);
       transition-timing-function: var(--curveDecelerateMid);
     }
@@ -103,7 +107,11 @@ dialog::backdrop {
     }
 
     dialog::backdrop {
-      transition: display allow-discrete, opacity, overlay allow-discrete, scale;
+      transition:
+        display allow-discrete,
+        opacity,
+        overlay allow-discrete,
+        scale;
       transition-duration: var(--durationGentle);
       transition-timing-function: var(--curveDecelerateMid);
       background: var(--dialog-backdrop, var(--colorBackgroundOverlay));

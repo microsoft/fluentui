@@ -332,8 +332,8 @@ function getCell(testResult: CookResult, getBaseline: boolean, options: ReportOp
   const cell = errorFile
     ? `<a href="${urlForDeployPath}/${path.basename(errorFile)}">err</a>`
     : flamegraphFile
-    ? `<a href="${urlForDeployPath}/${path.basename(flamegraphFile)}">${numTicks}</a>`
-    : `n/a`;
+      ? `<a href="${urlForDeployPath}/${path.basename(flamegraphFile)}">${numTicks}</a>`
+      : `n/a`;
 
   return `<td>${cell}</td>`;
 }

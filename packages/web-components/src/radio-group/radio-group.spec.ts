@@ -183,16 +183,19 @@ test.describe('RadioGroup', () => {
 
     for (const radio of await radios.all()) {
       // Using page.evaluate to manually simulate what would happen with a click event
-      const isClickable = await page.evaluate(el => {
-        const event = new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-        });
+      const isClickable = await page.evaluate(
+        el => {
+          const event = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+          });
 
-        // The return value of dispatchEvent will be false if any event listener called preventDefault, or true otherwise.
-        return el?.dispatchEvent(event);
-      }, await radio.elementHandle());
+          // The return value of dispatchEvent will be false if any event listener called preventDefault, or true otherwise.
+          return el?.dispatchEvent(event);
+        },
+        await radio.elementHandle(),
+      );
 
       // Since the radio group is disabled, the click event should be canceled, so we expect isClickable to be false
       expect(isClickable).toBe(false);

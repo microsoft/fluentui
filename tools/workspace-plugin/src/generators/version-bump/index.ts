@@ -217,8 +217,9 @@ export const validBumpTypes = [
 
 export const validScopes = ['vNext', 'tools'] as const;
 
-interface ValidatedSchema
-  extends Required<Omit<VersionBumpGeneratorSchema, 'exclude' | 'explicitVersion' | 'bumpType' | 'versionSuffix'>> {
+interface ValidatedSchema extends Required<
+  Omit<VersionBumpGeneratorSchema, 'exclude' | 'explicitVersion' | 'bumpType' | 'versionSuffix'>
+> {
   bumpType?: (typeof validBumpTypes)[number];
   explicitVersion?: string;
   versionSuffix?: string;

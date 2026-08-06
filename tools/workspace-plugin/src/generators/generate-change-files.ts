@@ -10,7 +10,8 @@ type WithoutNullable<T> = {
 };
 
 interface ChangeFileOptions
-  extends WithoutNullable<Pick<CliOptions, 'message' | 'type'>>,
+  extends
+    WithoutNullable<Pick<CliOptions, 'message' | 'type'>>,
     Partial<NonNullable<Pick<CliOptions, 'dependentChangeType'>>> {}
 
 /**
