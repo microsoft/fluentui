@@ -29,6 +29,6 @@ module.exports = {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
   },
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.cjs'],
+  setupFilesAfterEnv: ['./config/tests.js'],
   snapshotSerializers: ['@griffel/jest-serializer'],
 };
