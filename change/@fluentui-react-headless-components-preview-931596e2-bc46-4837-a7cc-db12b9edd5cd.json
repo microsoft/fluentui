@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat(react-headless-components-preview): add swatch picker components",
+  "type": "patch",
+  "comment": "feat: add swatch picker components",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
