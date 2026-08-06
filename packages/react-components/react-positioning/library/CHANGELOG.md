@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 26 May 2026 09:39:32 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.0)
+
+Tue, 04 Aug 2026 10:12:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.22.3..@fluentui/react-positioning_v9.23.0)
+
+### Minor changes
+
+- feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail ([PR #36432](https://github.com/microsoft/fluentui/pull/36432) by paulmardling@microsoft.com)
+
+## [9.22.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.22.3)
+
+Wed, 24 Jun 2026 11:09:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.22.2..@fluentui/react-positioning_v9.22.3)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.22.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.22.2)
 

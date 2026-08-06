@@ -36,6 +36,8 @@ export interface FluentGlobals extends Args {
     [STRICT_MODE_ID]?: boolean;
     // (undocumented)
     [THEME_ID]?: ThemeIds;
+    // (undocumented)
+    [THEMES]?: Theme[];
 }
 
 // @public
@@ -44,6 +46,8 @@ export interface FluentParameters extends Parameters_2 {
     dir?: 'ltr' | 'rtl';
     // (undocumented)
     fluentTheme?: ThemeIds;
+    // (undocumented)
+    fluentThemes?: Theme[];
     // (undocumented)
     mode?: 'default' | 'vr-test';
     // (undocumented)
@@ -68,10 +72,16 @@ export interface FluentStoryContext extends StoryContext {
 export function parameters(options?: FluentParameters): FluentParameters;
 
 // @public (undocumented)
+export type Theme = (typeof themes)[number];
+
+// @public (undocumented)
 export const THEME_ID: "storybook_fluentui-react-addon_theme";
 
 // @public (undocumented)
-export type ThemeIds = (typeof themes)[number]['id'];
+export type ThemeIds = Theme['id'];
+
+// @public (undocumented)
+export const THEMES: "storybook_fluentui-react-addon_themes";
 
 // @public (undocumented)
 export const themes: readonly [{

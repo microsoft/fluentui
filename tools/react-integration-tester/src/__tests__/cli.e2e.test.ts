@@ -105,7 +105,11 @@ describe('rit CLI e2e', () => {
     expect(runCmd.cwd).toEqual(expect.stringContaining(join(fs.tempDir, 'tmp/rit/react-18/proj-react-18')));
 
     // no project folder exists as it was cleanuped
-    expect(readdirSync(join(fs.tempDir, 'tmp/rit/react-18/'))).toEqual(['package.json']);
+    expect(readdirSync(join(fs.tempDir, 'tmp/rit/react-18/')).sort()).toEqual([
+      '.yarnrc.yml',
+      'package.json',
+      'yarn.lock',
+    ]);
   });
 
   test('--install-deps installs into react root (no project scaffolding)', () => {
@@ -133,7 +137,6 @@ describe('rit CLI e2e', () => {
     expect(yarn).toBeTruthy();
     expect(yarn?.cwd).toContain('tmp/rit/react-18');
 
-    expect(existsSync(join(fs.tempDir, 'tmp/rit/.yarn-cache'))).toBeTruthy();
     expect(readJSON(join(fs.tempDir, 'tmp/rit/react-18/package.json'))).toMatchInlineSnapshot(`
       Object {
         "dependencies": Object {
@@ -360,8 +363,11 @@ describe('rit CLI e2e', () => {
       "import { join, resolve } from 'node:path';
       import baseConfig from '../../../../proj/cypress.config.ts';
 
-      // Resolve dependencies from the shared react-version root folder (injected by CLI)
-      const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
+      // Resolve dependencies from the shared react-version root folder (injected by CLI).
+      // Cypress executes this config with \`cwd\` set to the prepared project root (where this file lives),
+      // so \`process.cwd()\` is equivalent to the config directory and works in both CommonJS and ESM
+      // (\`type: module\`) sandboxes — unlike \`__dirname\`, which is undefined under native ESM.
+      const usedNodeModulesPath = join(process.cwd(), '..', 'node_modules');
 
       const config = { ...baseConfig };
 

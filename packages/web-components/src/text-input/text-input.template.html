@@ -1,5 +1,5 @@
 <f-template name="fluent-text-input" shadowrootmode="open" shadowrootdelegatesfocus>
-  <template @focusin="{focusinHandler($e)}" @keydown="{keydownHandler($e)}">
+  <template @keydown="{keydownHandler($e)}">
     {{styles}}
     <label part="label" for="control" class="label" f-ref="{controlLabel}">
       <slot f-slotted="{defaultSlottedNodes}"></slot>
@@ -12,7 +12,6 @@
         id="control"
         @change="{changeHandler($e)}"
         @input="{inputHandler($e)}"
-        ?autofocus="{{autofocus}}"
         autocomplete="{{autocomplete}}"
         ?disabled="{{disabled}}"
         list="{{list}}"

@@ -78,15 +78,15 @@
   --control-padding-inline: var(--spacingHorizontalSNudge);
 }
 
-:host([resize='both']:not(:disabled)) {
+:host([resize='both']:not(:is([disabled], :disabled))) {
   --resize: both;
 }
 
-:host([resize='horizontal']:not(:disabled)) {
+:host([resize='horizontal']:not(:is([disabled], :disabled))) {
   --resize: horizontal;
 }
 
-:host([resize='vertical']:not(:disabled)) {
+:host([resize='vertical']:not(:is([disabled], :disabled))) {
   --resize: vertical;
 }
 
@@ -116,7 +116,7 @@
   --border-block-end-color: var(--colorPaletteRedBorder2);
 }
 
-:host(:disabled) {
+:host(:is([disabled], :disabled)) {
   --color: var(--colorNeutralForegroundDisabled);
   --background-color: var(--colorTransparentBackground);
   --border-color: var(--colorNeutralStrokeDisabled);
@@ -174,7 +174,7 @@
 }
 
 :host([readonly]) .root::after,
-:host(:disabled) .root::after {
+:host(:is([disabled], :disabled)) .root::after {
   content: none;
 }
 
@@ -253,7 +253,7 @@ label[hidden] {
     --border-block-end-color: Highlight;
   }
 
-  :host(:disabled) {
+  :host(:is([disabled], :disabled)) {
     --color: GrayText;
     --border-color: GrayText;
     --border-block-end-color: GrayText;

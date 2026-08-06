@@ -57,7 +57,19 @@ export const styles = css`
   :host([orientation='vertical']) {
     --tabPaddingBlock: ${spacingVerticalS};
     --tabIndicatorInsetBlock: ${spacingVerticalS};
-    flex-direction: column;
+    --_col-start-width: 0px;
+    display: grid;
+    grid-template-columns: ${spacingHorizontalMNudge} var(--_col-start-width) 1fr auto ${spacingHorizontalMNudge};
+  }
+
+  :host(:has([slot='start'])) {
+    --_col-start-width: 24px;
+  }
+
+  @scope {
+    :scope:has([slot='start']) {
+      --_col-start-width: 24px;
+    }
   }
 
   :host([orientation='vertical'][size='small']) {
@@ -77,6 +89,12 @@ export const styles = css`
 
   :host([orientation='vertical']) ::slotted([role='tab']) {
     justify-content: flex-start;
+    display: grid;
+    gap: 0;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    grid-row: unset;
+    padding-inline: 0;
   }
 
   :host ::slotted([slot='tab'])::after {
@@ -188,7 +206,7 @@ export const styles = css`
    * TODO: Remove '(text-size-adjust: auto)' after this bug is fixed:
    * https://bugs.webkit.org/show_bug.cgi?id=298646
    * Also remove the same trick from tab.styles.ts.
-   * Using '@supports (text-size-adjust: auto)' here to exclude Safari 26 from
+   * Using '@supports (text-size-adjust: auto)' here to exclude Safari 26.0 from
    * using CSS Anchor Positioning here because it crashes.
    */
   @supports (anchor-name: --a) and (text-size-adjust: auto) {
@@ -200,7 +218,8 @@ export const styles = css`
       background-color: ${colorCompoundBrandStroke};
       content: '';
       inline-size: 100%;
-      inset: auto auto anchor(end) anchor(center);
+      inset-block: auto anchor(end);
+      inset-inline: anchor(center) auto;
       position: fixed;
       position-anchor: --tab;
       transform: translateX(-50%);
@@ -215,18 +234,19 @@ export const styles = css`
       height: ${strokeWidthThicker};
     }
 
+    :host(:dir(rtl))::after {
+      transform: translateX(50%);
+    }
+
     :host([orientation='vertical'])::after {
-      inset: anchor(center) anchor(end) auto 0;
+      inset-block: anchor(center) auto;
+      inset-inline: anchor(start) auto;
       transform: translateY(-50%);
       transition-property: inset-block, height;
 
       /* These styles should be in sync with #vertical-tab-highlight above */
       width: ${strokeWidthThicker};
       height: calc(anchor-size() - var(--tabIndicatorInsetBlock) * 2);
-    }
-
-    :host(:dir(rtl)[orientation='vertical'])::after {
-      inset: anchor(center) anchor(start) auto 0;
     }
 
     :host([disabled])::after {

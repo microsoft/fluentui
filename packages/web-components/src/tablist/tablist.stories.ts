@@ -45,7 +45,7 @@ const storyTemplate = html<StoryArgs<FluentTablist>>`
       <fluent-tab id="${story => story.ids?.[2]}">Third Tab</fluent-tab>
       <fluent-tab id="${story => story.ids?.[3]}">Fourth Tab</fluent-tab>
     </fluent-tablist>
-    <div ${ref('panel')}></div>
+    <div ${ref('panel')} style="color: var(--colorNeutralForeground1)"></div>
   </div>
 `;
 
@@ -162,10 +162,10 @@ export const AutoPanelAssociation: Story = {
         <fluent-tab aria-controls="panel3">Third Tab</fluent-tab>
         <fluent-tab aria-controls="panel4">Fourth Tab</fluent-tab>
       </fluent-tablist>
-      <div id="panel1">First panel</div>
-      <div id="panel2">Second panel</div>
-      <div id="panel3">Third panel</div>
-      <div id="panel4">Fourth panel</div>
+      <div id="panel1" style="color: var(--colorNeutralForeground1)">First panel</div>
+      <div id="panel2" style="color: var(--colorNeutralForeground1)">Second panel</div>
+      <div id="panel3" style="color: var(--colorNeutralForeground1)">Third panel</div>
+      <div id="panel4" style="color: var(--colorNeutralForeground1)">Fourth panel</div>
     </div>
   `),
 };

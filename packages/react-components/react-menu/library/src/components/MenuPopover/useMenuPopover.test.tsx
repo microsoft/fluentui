@@ -140,12 +140,16 @@ describe('useMenuPopover_unstable', () => {
       expect((result.current.root as Record<string, unknown>)['data-testid']).toBe('popover');
     });
 
-    it('spreads restoreFocusSource attributes onto root', () => {
+    it('spreads restoreFocusSource and ignoreKeydown attributes onto root', () => {
       const { wrapper } = makeWrapper();
 
       const { result } = renderHook(() => useMenuPopover_unstable({}, null), { wrapper });
 
-      expect((result.current.root as Record<string, unknown>)['data-tabster']).toBe('{"restorer":{"type":1}}');
+      // tabster is told to ignore Escape so the menu (which closes itself on Escape)
+      // doesn't also escape a parent groupper/modalizer
+      expect((result.current.root as Record<string, unknown>)['data-tabster']).toBe(
+        '{"restorer":{"type":1},"focusable":{"ignoreKeydown":{"Escape":true}}}',
+      );
     });
   });
 

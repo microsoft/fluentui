@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Thu, 11 Jun 2026 13:26:43 GMT and should not be manually modified.
+This log was last generated on Sat, 01 Aug 2026 15:19:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.4)
+
+Sat, 01 Aug 2026 15:19:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.3..@fluentui/react-headless-components-preview_v0.2.4)
+
+### Patches
+
+- fix: preserve the headless Tooltip state API after adding overflow visibility handling to react-tooltip ([PR #36386](https://github.com/microsoft/fluentui/pull/36386) by paulmardling@microsoft.com)
+- fix: export useFieldContext and useFieldControlProps hooks ([PR #36452](https://github.com/microsoft/fluentui/pull/36452) by dmytrokirpa@microsoft.com)
+- fix: fix multiple anchors support on the same element ([PR #36454](https://github.com/microsoft/fluentui/pull/36454) by dmytrokirpa@microsoft.com)
+- feat: add AvatarGroup, AvatarGroupItem, and AvatarGroupPopover components ([PR #36350](https://github.com/microsoft/fluentui/pull/36350) by dmytrokirpa@microsoft.com)
+- feat: export Drawer context utilities ([PR #36479](https://github.com/microsoft/fluentui/pull/36479) by vgenaev@gmail.com)
+- feat: add headless TagPicker ([PR #36285](https://github.com/microsoft/fluentui/pull/36285) by vgenaev@gmail.com)
+
+## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.3)
+
+Mon, 29 Jun 2026 18:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.2..@fluentui/react-headless-components-preview_v0.2.3)
+
+### Patches
+
+- feat: add headless MenuButton ([PR #36320](https://github.com/microsoft/fluentui/pull/36320) by vgenaev@gmail.com)
+
+## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.2)
+
+Wed, 24 Jun 2026 14:52:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.1..@fluentui/react-headless-components-preview_v0.2.2)
+
+### Patches
+
+- fix: fix Tooltip, Dialog, Menu, and Popover trigger components ([PR #36335](https://github.com/microsoft/fluentui/pull/36335) by dmytrokirpa@microsoft.com)
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.1)
+
+Fri, 19 Jun 2026 13:52:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.0..@fluentui/react-headless-components-preview_v0.2.1)
+
+### Patches
+
+- fix: export useSkeletonContextValues from Skeleton ([PR #36303](https://github.com/microsoft/fluentui/pull/36303) by dmytrokirpa@microsoft.com)
+- feat: add headless Overflow component ([PR #36305](https://github.com/microsoft/fluentui/pull/36305) by vgenaev@gmail.com)
+- fix: export useRadioGroupContextValues from RadioGroup ([PR #36311](https://github.com/microsoft/fluentui/pull/36311) by dmytrokirpa@microsoft.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.0)
 

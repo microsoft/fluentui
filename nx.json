@@ -60,7 +60,12 @@
       "cache": true
     },
     "e2e": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "scripts-cypress"
+        }
+      ],
       "cache": true,
       "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
@@ -163,16 +168,13 @@
         "apps/public-docsite-v9-headless/**",
         "apps/rit-tests-v9/*",
         "apps/rit-tests-v8/*",
-
         "tools/**/*",
         "scripts/**/*",
         "packages/eslint-plugin/**",
-
         "packages/tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*",
         "packages/charts/react-charts/**/*",
-
         "packages/foundation-legacy/**",
         "packages/jest-serializer-merge-styles/**",
         "packages/react/**",

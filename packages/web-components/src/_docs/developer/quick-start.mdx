@@ -12,20 +12,34 @@ Fluent UI web components and Fluent tokens should be installed as a `dependency`
 npm install @fluentui/web-components @fluentui/tokens
 ```
 
-## Basic Usage: Import entire component bundle
+## Basic Usage
+
+Fluent UI Web Components are styled using tokens in the form of CSS variables. You can use the `setTheme` utility to provide a theme for your website or application.
+
+Available themes:
+
+- `webLightTheme`
+- `webDarkTheme`
+
+Theme implementation:
+
+```js
+import { setTheme } from '@fluentui/web-components';
+import { webLightTheme } from '@fluentui/tokens';
+
+setTheme(webLightTheme);
+```
+
+### Import entire component bundle
 
 The easiest way to get up and running with Fluent Web Components is to use our entire component bundle. You will also need Fluent UI's design token CSS on the page in either by generating stylesheet yourself or using our `setTheme` utility.
 
 ```js
-// Import all components and the setTheme utility
-import '@fluentui/web-components/web-components.min.js';
-
-// Set theme
-import { webLightTheme } from '@fluentui/tokens';
-setTheme(webLightTheme);
+// Import all components
+import '@fluentui/web-components/web-components.js';
 ```
 
-## Recommended Usage: Use our tree-shakable component exports
+### Recommended Usage: Use our tree-shakable component exports
 
 To reduce your production bundle size, we offer each component as a standalone ESM export. We recommend this pathway for maximum performance and tree-shaking. There are two options for importing individual components.
 
@@ -36,12 +50,6 @@ Our defined component exports will import single components _and_ define the cus
 ```js
 // Import with side-effectful Custom Element definitions
 import '@fluentui/web-components/button.js';
-import '@fluentui/web-components/dialog.js';
-
-// Set theme
-import { setTheme } from '@fluentui/web-components';
-import { webLightTheme } from '@fluentui/tokens';
-setTheme(webLightTheme);
 ```
 
 Note: If a component has a child component dependency, you will need to import both components (e.g. Tablist and Tab).
@@ -52,14 +60,9 @@ If you want to control side-effects and need granular control of when your compo
 
 ```js
 // Import non-side-effectful component definitions
-import { ButtonDefinition, DialogDefinition, FluentDesignSystem } from '@fluentui/web-components';
+import { Button } from '@fluentui/web-components/button/class.js';
+import { definition as buttonDefinition } from '@fluentui/web-components/button/definition.js';
 
 // Manual component definition
-ButtonDefinition.define(FluentDesignSystem.registry);
-DialogDefinition.define(FluentDesignSystem.registry);
-
-// Set theme
-import { setTheme } from '@fluentui/web-components';
-import { webLightTheme } from '@fluentui/tokens';
-setTheme(webLightTheme);
+Button.define(buttonDefinition);
 ```

@@ -1,6 +1,7 @@
 'use client';
 
 import type * as React from 'react';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import { useMenuTrigger } from './useMenuTrigger';
 import { renderMenuTrigger } from './renderMenuTrigger';
 import type { MenuTriggerProps } from '@fluentui/react-menu';
@@ -17,3 +18,9 @@ export const MenuTrigger: React.FC<MenuTriggerProps> = props => {
 };
 
 MenuTrigger.displayName = 'MenuTrigger';
+
+/**
+ * Marks the MenuTrigger component as a FluentTriggerComponent by setting the isFluentTriggerComponent flag.
+ * Uses type-casting to avoid exposing internal types in the public API.
+ */
+(MenuTrigger as FluentTriggerComponent).isFluentTriggerComponent = true;

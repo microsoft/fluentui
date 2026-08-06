@@ -148,28 +148,28 @@ export class Menu extends FASTElement {
    * Defines whether the menu is open or not.
    * @internal
    */
-  private _open: boolean = false;
+  protected _open: boolean = false;
 
   /**
    * The trigger element of the menu.
    * @internal
    */
-  private _trigger?: HTMLElement;
+  protected _trigger?: HTMLElement;
   /**
    * The menu list element of the menu which has the popover behavior.
    * @internal
    */
-  private _menuList?: HTMLElement;
+  protected _menuList?: HTMLElement;
 
   /**
    * @internal
    */
-  private _triggerAbortController?: AbortController;
+  protected _triggerAbortController?: AbortController;
 
   /**
    * @internal
    */
-  private _menuListAbortController?: AbortController;
+  protected _menuListAbortController?: AbortController;
 
   /**
    * Called when the element is connected to the DOM.
@@ -356,7 +356,7 @@ export class Menu extends FASTElement {
    * Adds trigger-related event listeners.
    * @internal
    */
-  private addTriggerListeners(): void {
+  protected addTriggerListeners(): void {
     this._triggerAbortController = new AbortController();
     const { signal } = this._triggerAbortController;
 
@@ -376,7 +376,7 @@ export class Menu extends FASTElement {
    * Adds menu-list event listeners.
    * @internal
    */
-  private addMenuListListeners(): void {
+  protected addMenuListListeners(): void {
     this._menuListAbortController = new AbortController();
     const { signal } = this._menuListAbortController;
 
@@ -452,7 +452,7 @@ export class Menu extends FASTElement {
    * @internal
    * @param e - The event triggered on document click.
    */
-  private documentClickHandler = (e: any) => {
+  protected documentClickHandler = (e: any) => {
     if (!e.composedPath().some((el: any) => el === this._trigger || el === this._menuList)) {
       this.closeMenu();
     }

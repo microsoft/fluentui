@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './tab.definition.js';
+import { Tab } from './tab.js';
 
-definition.define(FluentDesignSystem.registry);
+Tab.define(definition);

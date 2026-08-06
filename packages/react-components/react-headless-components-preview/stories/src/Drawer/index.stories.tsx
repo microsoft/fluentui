@@ -10,6 +10,9 @@ import {
 } from '@fluentui/react-headless-components-preview/drawer';
 
 import descriptionMd from './DrawerDescription.md';
+
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './DefaultDrawer.stories';
 export { Inline } from './InlineDrawer.stories';
 
@@ -28,7 +31,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('Drawer')].join('\n'),
       },
     },
   },

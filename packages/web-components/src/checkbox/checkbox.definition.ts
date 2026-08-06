@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './checkbox.options.js';
-import { Checkbox } from './checkbox.js';
 import { styles } from './checkbox.styles.js';
 import { template } from './checkbox.template.js';
 
 /**
- * The Fluent Checkbox Element
+ * The definition for the `<fluent-checkbox>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-checkbox\>
  */
-export const definition = Checkbox.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

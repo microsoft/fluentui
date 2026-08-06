@@ -1,5 +1,4 @@
-import { RenderableFASTElement } from '@microsoft/fast-html';
-import { definition } from './drawer.definition-async.js';
+import { declarativeDefinition } from './drawer.definition-async.js';
 import { Drawer } from './drawer.js';
 
-RenderableFASTElement(Drawer).defineAsync(definition);
+Drawer.define(declarativeDefinition);

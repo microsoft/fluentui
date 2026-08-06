@@ -64,7 +64,7 @@
   border-top: 1px solid #ebebeb;
 }
 
-#storybook-docs .sbdocs h2:not(.sbdocs-preview h2) {
+#storybook-docs .sbdocs h2:not(.sbdocs-preview h2, .sticker-sheet h2) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 24px;

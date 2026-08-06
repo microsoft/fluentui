@@ -73,7 +73,7 @@ export default {
     actionsSlottedContent: () => html` <fluent-button slot="actions" size="small">Action</fluent-button> `,
 
     dismissSlottedContent: () => html`
-      <fluent-button slot="dismiss" size="small" appearance="transparent" icon-only>
+      <fluent-button slot="dismiss" size="small" appearance="transparent" icon-only aria-label="Dismiss">
         ${dismiss20Regular}
       </fluent-button>
     `,

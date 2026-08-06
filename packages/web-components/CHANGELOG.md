@@ -1,8 +1,75 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 12 Jun 2026 04:07:42 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jul 2026 04:09:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.2)
+
+Mon, 13 Jul 2026 04:09:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.1..@fluentui/web-components_v3.0.2)
+
+### Patches
+
+- fix focusgroup in tree when focusgroup is natively supported ([PR #36379](https://github.com/microsoft/fluentui/pull/36379) by machi@microsoft.com)
+
+## [3.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.1)
+
+Tue, 07 Jul 2026 04:09:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0..@fluentui/web-components_v3.0.1)
+
+### Patches
+
+- fix: selected indocator position in vertical tablist ([PR #36371](https://github.com/microsoft/fluentui/pull/36371) by machi@microsoft.com)
+
+## [3.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0)
+
+Mon, 29 Jun 2026 22:18:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.31..@fluentui/web-components_v3.0.0)
+
+### Patches
+
+- Promote @fluentui/web-components to 3.0.0 stable release. ([PR #36356](https://github.com/microsoft/fluentui/pull/36356) by 7559015+janechu@users.noreply.github.com)
+
+## [3.0.0-rc.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.31)
+
+Mon, 29 Jun 2026 04:08:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.30..@fluentui/web-components_v3.0.0-rc.31)
+
+### Changes
+
+- refactor: migrate async definitions to fast-element v3 declarative API ([PR #36351](https://github.com/microsoft/fluentui/pull/36351) by 863023+radium-v@users.noreply.github.com)
+- fix: set focus on autofocus element when a dialog is open ([PR #36355](https://github.com/microsoft/fluentui/pull/36355) by machi@microsoft.com)
+- fix: update link style to latest treatment ([PR #36352](https://github.com/microsoft/fluentui/pull/36352) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-rc.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.30)
+
+Thu, 25 Jun 2026 04:09:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.29..@fluentui/web-components_v3.0.0-rc.30)
+
+### Changes
+
+- fix: ensure toggle button text is visible in high contrast modes ([PR #36338](https://github.com/microsoft/fluentui/pull/36338) by 13071055+chrisdholt@users.noreply.github.com)
+- refactor: replace compose() with plain definition objects ([PR #36337](https://github.com/microsoft/fluentui/pull/36337) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-rc.29](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.29)
+
+Wed, 24 Jun 2026 04:08:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.28..@fluentui/web-components_v3.0.0-rc.29)
+
+### Changes
+
+- fix: ensure message bar color is visible in dark mode themes ([PR #36340](https://github.com/microsoft/fluentui/pull/36340) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: ensure accordion item content is visible in dark mode' ([PR #36339](https://github.com/microsoft/fluentui/pull/36339) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-rc.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.28)
+
+Fri, 19 Jun 2026 04:05:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.27..@fluentui/web-components_v3.0.0-rc.28)
+
+### Changes
+
+- fix anchor positioning for rtl ([PR #36321](https://github.com/microsoft/fluentui/pull/36321) by machi@microsoft.com)
 
 ## [3.0.0-rc.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.27)
 

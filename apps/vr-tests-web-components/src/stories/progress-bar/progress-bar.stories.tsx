@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
 import { Steps } from 'storywright';
-import { ProgressBarDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
-ProgressBarDefinition.define(FluentDesignSystem.registry);
+import '@fluentui/web-components/progress-bar/define.js';
 
 export default {
   title: 'ProgressBar',

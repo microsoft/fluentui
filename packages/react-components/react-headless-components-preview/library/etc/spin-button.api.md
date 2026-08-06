@@ -5,14 +5,13 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderSpinButton_unstable as renderSpinButton } from '@fluentui/react-spinbutton';
 import type { SpinButtonBaseProps } from '@fluentui/react-spinbutton';
-import { SpinButtonBaseState } from '@fluentui/react-spinbutton';
+import type { SpinButtonBaseState } from '@fluentui/react-spinbutton';
 import type { SpinButtonSlots as SpinButtonSlots_2 } from '@fluentui/react-spinbutton';
 
-// @public
-export const renderSpinButton: (state: SpinButtonBaseState) => JSXElement;
+export { renderSpinButton }
 
 // @public
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;

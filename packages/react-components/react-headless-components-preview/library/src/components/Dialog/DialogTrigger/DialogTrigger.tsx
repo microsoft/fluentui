@@ -1,6 +1,7 @@
 'use client';
 
 import type * as React from 'react';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import { useDialogTrigger } from './useDialogTrigger';
 import type { DialogTriggerProps } from './DialogTrigger.types';
 
@@ -17,3 +18,9 @@ export const DialogTrigger: React.FC<DialogTriggerProps> = props => {
 };
 
 DialogTrigger.displayName = 'DialogTrigger';
+
+/**
+ * Marks the DialogTrigger component as a FluentTriggerComponent by setting the isFluentTriggerComponent flag.
+ * Uses type-casting to avoid exposing internal types in the public API.
+ */
+(DialogTrigger as FluentTriggerComponent).isFluentTriggerComponent = true;

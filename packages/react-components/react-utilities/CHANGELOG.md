@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 26 May 2026 09:39:16 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:10:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.5)
+
+Wed, 24 Jun 2026 11:10:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.4..@fluentui/react-utilities_v9.26.5)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
 
 ## [9.26.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.4)
 

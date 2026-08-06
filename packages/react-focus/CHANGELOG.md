@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Mon, 11 May 2026 10:02:38 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2026 09:55:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.10.7)
+
+Thu, 02 Jul 2026 09:55:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.10.6..@fluentui/react-focus_v8.10.7)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.15.2 ([commit](https://github.com/microsoft/fluentui/commit/e287a20abcf5146c41ae0a6243c04358fddca40c) by beachball)
 
 ## [8.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.10.6)
 

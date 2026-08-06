@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: produce a correct overflow snapshot before the first paint",
-  "packageName": "@fluentui/react-overflow",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

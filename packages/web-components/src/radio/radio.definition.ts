@@ -1,18 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './radio.options.js';
-import { Radio } from './radio.js';
 import { styles } from './radio.styles.js';
 import { template } from './radio.template.js';
 
 /**
- * The Fluent Radio Element.
- *
+ * The definition for the `<fluent-radio>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-radio\>
  */
-export const definition = Radio.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

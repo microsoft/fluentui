@@ -1,5 +1,6 @@
 import * as Accordion from '@fluentui/react-headless-components-preview/accordion';
 import * as Avatar from '@fluentui/react-headless-components-preview/avatar';
+import * as AvatarGroup from '@fluentui/react-headless-components-preview/avatar-group';
 import * as Badge from '@fluentui/react-headless-components-preview/badge';
 import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcrumb';
 import * as Button from '@fluentui/react-headless-components-preview/button';
@@ -20,6 +21,7 @@ import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as Menu from '@fluentui/react-headless-components-preview/menu';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as Nav from '@fluentui/react-headless-components-preview/nav';
+import * as Overflow from '@fluentui/react-headless-components-preview/overflow';
 import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
@@ -37,6 +39,7 @@ import * as Switch from '@fluentui/react-headless-components-preview/switch';
 import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
 import * as Tag from '@fluentui/react-headless-components-preview/tag';
 import * as TagGroup from '@fluentui/react-headless-components-preview/tag-group';
+import * as TagPicker from '@fluentui/react-headless-components-preview/tag-picker';
 import * as TeachingPopover from '@fluentui/react-headless-components-preview/teaching-popover';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
 import * as Toast from '@fluentui/react-headless-components-preview/toast';
@@ -47,6 +50,7 @@ import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
 console.log({
   Accordion,
   Avatar,
+  AvatarGroup,
   Badge,
   Breadcrumb,
   Button,
@@ -67,6 +71,7 @@ console.log({
   Menu,
   MessageBar,
   Nav,
+  Overflow,
   Persona,
   Popover,
   ProgressBar,
@@ -84,6 +89,7 @@ console.log({
   TabList,
   Tag,
   TagGroup,
+  TagPicker,
   TeachingPopover,
   Textarea,
   Toast,

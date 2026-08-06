@@ -1,8 +1,9 @@
-import { type PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { declarativeTemplate, type PartialFASTElementDefinition } from '@microsoft/fast-element/declarative.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './accordion.options.js';
 
 /**
- * The async definition configuration for the fluent-accordion element.
+ * The async definition configuration for the `<fluent-accordion>` element.
  *
  * @public
  * @remarks
@@ -11,5 +12,6 @@ import { tagName } from './accordion.options.js';
  */
 export const declarativeDefinition: PartialFASTElementDefinition = {
   name: tagName,
-  templateOptions: 'defer-and-hydrate',
-} as const;
+  registry: FluentDesignSystem.registry,
+  template: declarativeTemplate(),
+};

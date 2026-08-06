@@ -18,6 +18,9 @@ export const useSkeleton = (props: SkeletonProps, ref: React.Ref<HTMLDivElement>
   return state;
 };
 
+/**
+ * Returns the context values for a Skeleton component.
+ */
 export const useSkeletonContextValues = useSkeletonContextValues_unstable as (
   state: SkeletonState,
 ) => SkeletonContextValues;

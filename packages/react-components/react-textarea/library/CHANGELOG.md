@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Tue, 26 May 2026 09:39:11 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2026 10:12:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.7.5)
+
+Tue, 04 Aug 2026 10:12:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.7.4..@fluentui/react-textarea_v9.7.5)
+
+### Patches
+
+- fix: fix Field control size handling ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.7.4)
+
+Wed, 24 Jun 2026 11:10:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.7.3..@fluentui/react-textarea_v9.7.4)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.5.3 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.7.3)
 

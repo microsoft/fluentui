@@ -5,11 +5,11 @@
 ```ts
 
 import type { CheckboxBaseProps } from '@fluentui/react-checkbox';
-import { CheckboxBaseState } from '@fluentui/react-checkbox';
+import type { CheckboxBaseState } from '@fluentui/react-checkbox';
 import type { CheckboxSlots as CheckboxSlots_2 } from '@fluentui/react-checkbox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderCheckbox_unstable as renderCheckbox } from '@fluentui/react-checkbox';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
@@ -28,8 +28,7 @@ export type CheckboxState = CheckboxBaseState & {
     };
 };
 
-// @public
-export const renderCheckbox: (state: CheckboxBaseState) => JSXElement;
+export { renderCheckbox }
 
 // @public
 export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;

@@ -19,8 +19,8 @@ import { makeStyles } from '@griffel/react';
 import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import { DIR_ID, THEME_ID } from '../constants';
-import { themes } from '../theme';
+import { DIR_ID, THEME_ID, THEMES } from '../constants';
+import { themes as defaultThemes, type Theme } from '../theme';
 
 import { getDocsPageConfig } from './utils';
 import { DirSwitch } from './DirSwitch';
@@ -371,6 +371,8 @@ export const FluentDocsPage = ({
   assertStoryMetaValues(primaryStory);
 
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
+  const themes: Theme[] =
+    primaryStoryContext.parameters?.fluentThemes ?? primaryStoryContext.globals?.[THEMES] ?? defaultThemes;
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
 
   const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
@@ -421,7 +423,7 @@ export const FluentDocsPage = ({
         <div className={styles.container}>
           {(showThemePicker || showDirSwitcher || showCopyAsMarkdown) && (
             <div className={styles.globalTogglesContainer}>
-              {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} />}
+              {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} themes={themes} />}
               {showDirSwitcher && <DirSwitch dir={dir} />}
               {showCopyAsMarkdown && <CopyAsMarkdownButton storyId={primaryStory.id} />}
             </div>

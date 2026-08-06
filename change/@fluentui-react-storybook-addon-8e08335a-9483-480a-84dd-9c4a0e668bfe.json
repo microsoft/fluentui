@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve container preventing Canvas Toolbar interactions",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
 import { Steps } from 'storywright';
-import { MenuListDefinition, MenuItemDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
-MenuListDefinition.define(FluentDesignSystem.registry);
-MenuItemDefinition.define(FluentDesignSystem.registry);
+import '@fluentui/web-components/menu-list/define.js';
+import '@fluentui/web-components/menu-item/define.js';
 
 const createDecorator =
   (wrapperStyle: React.CSSProperties = { width: '320px' }) =>

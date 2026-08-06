@@ -58,7 +58,7 @@ const cypressWebpackConfig = (): Configuration => {
   baseWebpackConfig.resolve.plugins ??= [];
   baseWebpackConfig.resolve.plugins.push(
     new TsconfigPathsPlugin({
-      configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
+      configFile: path.resolve(import.meta.dirname, '../../../tsconfig.base.json'),
     }),
   );
 
@@ -82,8 +82,12 @@ interface BaseConfig extends Cypress.ConfigOptions {
  * This is a workaround for the issue where Cypress does not resolve the paths correctly, as it
  * internally prepend the __dirname, making them invalid
  *
+ * Heads up! `import.meta.dirname` is compiled by SWC to `__dirname` for the CommonJS (`lib-commonjs`)
+ * output and kept as-is for the ESM (`lib`) output. Both live one level under the package root, so
+ * `../support` and `../fixtures` resolve to the package's `support/` and `fixtures/` source folders
+ * (which Cypress' webpack bundles for the browser).
  */
-const sharedConfigSupportRootDir = path.join(__dirname, './support');
+const sharedConfigSupportRootDir = path.join(import.meta.dirname, '../support');
 const projectSupportDir = path.relative(projectRoot, sharedConfigSupportRootDir);
 
 export const baseConfig = defineConfig({
@@ -106,7 +110,7 @@ export const baseConfig = defineConfig({
   // Screenshots go under <pkg>/cypress/screenshots and can be useful to look at after failures in
   // local headless runs (especially if the failure is specific to headless runs)
   // screenshotOnRunFailure: isLocalRun && argv.mode === 'run',
-  fixturesFolder: path.join(__dirname, './fixtures'),
+  fixturesFolder: path.join(import.meta.dirname, '../fixtures'),
 }) as BaseConfig;
 
 /**

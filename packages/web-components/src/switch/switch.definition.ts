@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './switch.options.js';
-import { Switch } from './switch.js';
-import { template } from './switch.template.js';
 import { styles } from './switch.styles.js';
+import { template } from './switch.template.js';
 
 /**
- * The Fluent Switch Element.
+ * The definition for the `<fluent-switch>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-switch\>
  */
-export const definition = Switch.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

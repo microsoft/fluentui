@@ -1,8 +1,18 @@
 # Change Log - @fluentui/eslint-plugin-react-components
 
-This log was last generated on Wed, 01 Apr 2026 14:06:15 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jun 2026 18:28:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin-react-components_v0.3.0)
+
+Tue, 16 Jun 2026 18:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin-react-components_v0.2.1..@fluentui/eslint-plugin-react-components_v0.3.0)
+
+### Minor changes
+
+- feat: expand component coverage ([PR #35999](https://github.com/microsoft/fluentui/pull/35999) by vgenaev@gmail.com)
+- Remove the ESM entrypoint in eslint-plugin package.json and change module type to commonjs. ([PR #36284](https://github.com/microsoft/fluentui/pull/36284) by ngo.trev.95@gmail.com)
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin-react-components_v0.2.1)
 

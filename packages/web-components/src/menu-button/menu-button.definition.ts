@@ -1,15 +1,17 @@
-import { styles } from './menu-button.styles.js';
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './menu-button.options.js';
-import { MenuButton } from './menu-button.js';
+import { styles } from './menu-button.styles.js';
 import { template } from './menu-button.template.js';
 
 /**
+ * The definition for the `<fluent-menu-button>` element.
+ *
  * @public
- * @remarks
- * HTML Element: \<fluent-button\>
  */
-export const definition = MenuButton.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

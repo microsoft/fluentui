@@ -34,6 +34,7 @@ export const styles: ElementStyles = css`
     line-height: ${lineHeightBase200};
     width: 100%;
     background: ${colorNeutralBackground3};
+    color: ${colorNeutralForeground3};
     border: 1px solid ${colorNeutralStroke1};
     padding-inline: ${spacingHorizontalM};
     border-radius: ${borderRadiusMedium};
@@ -74,7 +75,6 @@ export const styles: ElementStyles = css`
 
   .content {
     grid-area: body;
-    max-width: 520px;
     padding-block: ${spacingVerticalMNudge};
     padding-inline: 0;
   }

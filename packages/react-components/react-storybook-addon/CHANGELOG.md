@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Tue, 03 Mar 2026 13:16:24 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jun 2026 10:28:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.1)
+
+Tue, 30 Jun 2026 10:28:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.7.0..@fluentui/react-storybook-addon_v0.7.1)
+
+### Patches
+
+- feat: allow theme picker options configuration ([PR #36358](https://github.com/microsoft/fluentui/pull/36358) by dmytrokirpa@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.0)
+
+Tue, 16 Jun 2026 18:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.6.0..@fluentui/react-storybook-addon_v0.7.0)
+
+### Minor changes
+
+- feat: Allow consumers to replace primary-story / args-table / stories sections of FluentDocsPage ([PR #36115](https://github.com/microsoft/fluentui/pull/36115) by dmytrokirpa@microsoft.com)
+- feat: add shared SB preview styles ([PR #35949](https://github.com/microsoft/fluentui/pull/35949) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- fix: resolve container preventing Canvas Toolbar interactions ([PR #36223](https://github.com/microsoft/fluentui/pull/36223) by martinhochel@microsoft.com)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.6.0)
 

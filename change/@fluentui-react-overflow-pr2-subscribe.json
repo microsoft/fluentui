@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: subscribe overflow hooks directly to the manager snapshot",
-  "packageName": "@fluentui/react-overflow",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

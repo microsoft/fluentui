@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './dropdown.definition.js';
+import { Dropdown } from './dropdown.js';
 
-definition.define(FluentDesignSystem.registry);
+Dropdown.define(definition);

@@ -26,6 +26,7 @@ const Person20Regular = html.partial(/* html */ `
 
 const storyTemplate = html<StoryArgs<FluentTextInput>>`
   <fluent-text-input
+    ?autofocus="${story => story.autofocus}"
     appearance="${story => story.appearance}"
     autocomplete="${story => story.autocomplete}"
     control-size="${story => story.controlSize}"
@@ -149,5 +150,18 @@ export const Inline: Story = {
       <fluent-text-input style="display: inline-flex" placeholder="adjective"></fluent-text-input>
       dog.
     </p>
+  `),
+};
+
+export const InDialog: Story = {
+  args: {
+    slottedContent: () => 'Input in dialog',
+    autofocus: true,
+  },
+  render: renderComponent(html<StoryArgs<FluentTextInput>>`
+    <fluent-button @click="${story => story.dialog.show()}">Open dialog</fluent-button>
+    <fluent-dialog ${ref('dialog')}>
+      <fluent-dialog-body> ${storyTemplate} </fluent-dialog-body>
+    </fluent-dialog>
   `),
 };

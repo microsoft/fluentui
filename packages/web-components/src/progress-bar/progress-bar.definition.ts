@@ -1,18 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './progress-bar.options.js';
-import { ProgressBar } from './progress-bar.js';
 import { styles } from './progress-bar.styles.js';
 import { template } from './progress-bar.template.js';
 
 /**
- * The Fluent ProgressBar Element.
- *
+ * The definition for the `<fluent-progress-bar>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-progress-bar\>
  */
-export const definition = ProgressBar.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

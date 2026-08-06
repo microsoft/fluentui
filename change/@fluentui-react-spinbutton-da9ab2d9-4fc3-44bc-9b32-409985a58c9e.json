@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove redundant use no memo directives, and add justification to valid ones",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

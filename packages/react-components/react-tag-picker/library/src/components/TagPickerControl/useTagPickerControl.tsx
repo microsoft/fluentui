@@ -11,13 +11,14 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import type { TagPickerControlBaseState, TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
-import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { ChevronDownRegular } from '@fluentui/react-icons';
-import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
-import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
 import { useFieldContext_unstable } from '@fluentui/react-field';
+import { ChevronDownRegular } from '@fluentui/react-icons';
+
+import type { TagPickerControlBaseState, TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
+import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
+import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useExpandLabel } from '../../utils/useExpandLabel';
+import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
 
 /**
  * Create the base state required to render TagPickerControl, without design-only state.
@@ -57,11 +58,9 @@ export const useTagPickerControlBase_unstable = (
   }
 
   const expandIcon = slot.optional(props.expandIcon, {
-    renderByDefault: !noPopover,
     defaultProps: {
       'aria-expanded': open,
       'aria-disabled': disabled ? 'true' : undefined,
-      children: <ChevronDownRegular />,
       role: 'button',
     },
     elementType: 'span',
@@ -164,7 +163,15 @@ export const useTagPickerControl_unstable = (
   props: TagPickerControlProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlState => {
-  const baseState = useTagPickerControlBase_unstable(props, ref);
+  const noPopover = useTagPickerContext_unstable(ctx => ctx.noPopover ?? false);
+  const baseProps =
+    !noPopover && props.expandIcon === undefined
+      ? {
+          ...props,
+          expandIcon: <ChevronDownRegular />,
+        }
+      : props;
+  const baseState = useTagPickerControlBase_unstable(baseProps, ref);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
 

@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Tue, 26 May 2026 09:39:46 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2026 15:15:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.4.4)
+
+Mon, 29 Jun 2026 15:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.4.3..@fluentui/react-calendar-compat_v0.4.4)
+
+### Patches
+
+- fix(Calendar): year prev/next buttons don't lose focus when they become disabled ([PR #36343](https://github.com/microsoft/fluentui/pull/36343) by sarah.higley@microsoft.com)
+
+## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.4.3)
+
+Wed, 24 Jun 2026 11:10:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.4.2..@fluentui/react-calendar-compat_v0.4.3)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- refactor(react-calendar): migrate to motion components ([PR #35666](https://github.com/microsoft/fluentui/pull/35666) by robertpenner@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-motion to v9.16.1 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.6 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.4.2)
 

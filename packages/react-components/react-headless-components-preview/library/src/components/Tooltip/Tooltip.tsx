@@ -1,6 +1,6 @@
 'use client';
 
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { FluentTriggerComponent, JSXElement } from '@fluentui/react-utilities';
 import { useTooltip } from './useTooltip';
 import { renderTooltip } from './renderTooltip';
 import type { TooltipProps } from './Tooltip.types';
@@ -14,3 +14,9 @@ export const Tooltip = (props: TooltipProps): JSXElement => {
 };
 
 Tooltip.displayName = 'Tooltip';
+
+/**
+ * Marks the Tooltip component as a FluentTriggerComponent by setting the isFluentTriggerComponent flag.
+ * Uses type-casting to avoid exposing internal types in the public API.
+ */
+(Tooltip as FluentTriggerComponent).isFluentTriggerComponent = true;

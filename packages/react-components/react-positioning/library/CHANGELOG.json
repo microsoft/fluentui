@@ -2,6 +2,50 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 04 Aug 2026 10:12:07 GMT",
+      "tag": "@fluentui/react-positioning_v9.23.0",
+      "version": "9.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9846ec31c1f0c116edf9c632b2dec1c6eb9aae1d",
+            "comment": "feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jun 2026 11:09:53 GMT",
+      "tag": "@fluentui/react-positioning_v9.22.3",
+      "version": "9.22.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.26.5",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 May 2026 09:39:32 GMT",
       "tag": "@fluentui/react-positioning_v9.22.2",
       "version": "9.22.2",

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Remove the ESM entrypoint in eslint-plugin package.json and change module type to commonjs.",
-  "packageName": "@fluentui/eslint-plugin-react-components",
-  "email": "ngo.trev.95@gmail.com",
-  "dependentChangeType": "patch"
-}
