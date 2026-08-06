@@ -103,9 +103,9 @@ describe('Build Executor', () => {
     expect(stripIndents`${clearLogs}`).toEqual(stripIndents`
       Cleaning outputs:
 
-       - ${workspaceRoot}/libs/proj/lib-commonjs
-       - ${workspaceRoot}/libs/proj/lib
-       - ${workspaceRoot}/libs/proj/dist/assets/spec.md
+       - ${join(workspaceRoot, 'libs/proj/lib-commonjs')}
+       - ${join(workspaceRoot, 'libs/proj/lib')}
+       - ${join(workspaceRoot, 'libs/proj/dist/assets/spec.md')}
     `);
 
     expect(restOfLogs).toEqual([
@@ -116,22 +116,22 @@ describe('Build Executor', () => {
 
     expect(loggerVerboseSpy.mock.calls.flat()).toEqual([
       `Applying transforms: 0`,
-      `babel: transformed ${workspaceRoot}/libs/proj/lib/greeter.styles.js`,
+      `babel: transformed ${join(workspaceRoot, 'libs/proj/lib/greeter.styles.js')}`,
       `Applying transforms: 0`,
     ]);
 
     expect(rmMock.mock.calls.flat()).toEqual([
-      `${workspaceRoot}/libs/proj/lib-commonjs`,
+      join(workspaceRoot, 'libs/proj/lib-commonjs'),
       {
         force: true,
         recursive: true,
       },
-      `${workspaceRoot}/libs/proj/lib`,
+      join(workspaceRoot, 'libs/proj/lib'),
       {
         force: true,
         recursive: true,
       },
-      `${workspaceRoot}/libs/proj/dist/assets/spec.md`,
+      join(workspaceRoot, 'libs/proj/dist/assets/spec.md'),
       {
         force: true,
         recursive: true,
@@ -454,9 +454,9 @@ describe('Build Executor', () => {
       expect(greeterCjs).not.toContain(`./helper.js`);
 
       // package.json itself is never modified by this temporary flag
-      expect(readFileSync(join(workspaceRoot, 'libs/esm-first-proj/package.json'), 'utf-8')).toBe(
-        '{\n  "name": "esm-first-proj"\n}\n',
-      );
+      expect(JSON.parse(readFileSync(join(workspaceRoot, 'libs/esm-first-proj/package.json'), 'utf-8'))).toEqual({
+        name: 'esm-first-proj',
+      });
 
       // `copyCjsTypes` is driven by the same `isEsmPackage` flag as the `.cjs` rename - unified via `options.isEsmPackage`
       expect(existsSync(join(workspaceRoot, 'libs/esm-first-proj/dist/index.d.cts'))).toBe(true);

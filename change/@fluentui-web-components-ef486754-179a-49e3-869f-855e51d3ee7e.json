@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Remove max-width from MessageBar component",
+  "packageName": "@fluentui/web-components",
+  "email": "jolud@microsoft.com",
+  "dependentChangeType": "patch"
+}

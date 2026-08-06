@@ -47,7 +47,6 @@
 
 .content {
   grid-area: body;
-  max-width: 520px;
   padding-block: var(--spacingVerticalMNudge);
   padding-inline: 0;
 }
