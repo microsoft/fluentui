@@ -86,37 +86,33 @@ export function useVirtualizerScrollViewDynamic_unstable(
   const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 
-  React.useImperativeHandle(
-    imperativeRef,
-    () => {
-      return {
-        scrollTo(index: number, behavior = 'auto', callback: undefined | ((index: number) => void)) {
-          scrollCallbackRef.current = callback ?? null;
-          if (_imperativeVirtualizerRef.current) {
-            const progressiveSizes = _imperativeVirtualizerRef.current.progressiveSizes.current;
-            const totalSize =
-              progressiveSizes && progressiveSizes?.length > 0
-                ? progressiveSizes[Math.max(progressiveSizes.length - 1, 0)]
-                : 0;
+  React.useImperativeHandle(imperativeRef, () => {
+    return {
+      scrollTo(index: number, behavior = 'auto', callback: undefined | ((index: number) => void)) {
+        scrollCallbackRef.current = callback ?? null;
+        if (_imperativeVirtualizerRef.current) {
+          const progressiveSizes = _imperativeVirtualizerRef.current.progressiveSizes.current;
+          const totalSize =
+            progressiveSizes && progressiveSizes?.length > 0
+              ? progressiveSizes[Math.max(progressiveSizes.length - 1, 0)]
+              : 0;
 
-            _imperativeVirtualizerRef.current.setFlaggedIndex(index);
-            scrollToItemDynamic({
-              index,
-              itemSizes: _imperativeVirtualizerRef.current?.nodeSizes,
-              totalSize,
-              scrollViewRef: scrollViewRef as React.RefObject<HTMLDivElement>,
-              axis,
-              reversed,
-              behavior,
-            });
-          }
-        },
-        currentIndex: _imperativeVirtualizerRef.current?.currentIndex,
-        virtualizerLength: virtualizerLengthRef,
-      };
-    },
-    [axis, scrollViewRef, reversed, _imperativeVirtualizerRef],
-  );
+          _imperativeVirtualizerRef.current.setFlaggedIndex(index);
+          scrollToItemDynamic({
+            index,
+            itemSizes: _imperativeVirtualizerRef.current?.nodeSizes,
+            totalSize,
+            scrollViewRef: scrollViewRef as React.RefObject<HTMLDivElement>,
+            axis,
+            reversed,
+            behavior,
+          });
+        }
+      },
+      currentIndex: _imperativeVirtualizerRef.current?.currentIndex,
+      virtualizerLength: virtualizerLengthRef,
+    };
+  }, [axis, scrollViewRef, reversed, _imperativeVirtualizerRef]);
 
   const handleRenderedIndex = (index: number) => {
     if (scrollCallbackRef.current) {

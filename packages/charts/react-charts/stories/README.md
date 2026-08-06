@@ -8,7 +8,7 @@ To include within storybook specify stories globs:
 
 \`\`\`js
 module.exports = {
-stories: ['../packages/react-components/charts/react-charts/stories/src/**/*.stories.mdx', '../packages/charts/react-charts/stories/src/**/index.stories.@(ts|tsx)'],
+stories: ['../packages/react-components/charts/react-charts/stories/src/**/\*.stories.mdx', '../packages/charts/react-charts/stories/src/**/index.stories.@(ts|tsx)'],
 }
 \`\`\`
 

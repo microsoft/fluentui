@@ -22,9 +22,8 @@ export type { _Omit as Omit };
  * it will always map to a style function.
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export type __MapToFunctionType<T> = Extract<T, Function> extends never
-  ? (...args: any[]) => Partial<T>
-  : Extract<T, Function>;
+export type __MapToFunctionType<T> =
+  Extract<T, Function> extends never ? (...args: any[]) => Partial<T> : Extract<T, Function>;
 
 /**
  * Used for 'extends IStyleSetBase' type constraints when an IStyleSet type argument is needed.

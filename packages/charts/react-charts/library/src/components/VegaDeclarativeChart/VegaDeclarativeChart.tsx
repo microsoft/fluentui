@@ -457,8 +457,8 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                   typeof vegaLiteSpec.height === 'number'
                     ? vegaLiteSpec.height
                     : typeof subSpec.height === 'number'
-                    ? subSpec.height
-                    : 300;
+                      ? subSpec.height
+                      : 300;
 
                 const mergedSpec = {
                   ...subSpec,

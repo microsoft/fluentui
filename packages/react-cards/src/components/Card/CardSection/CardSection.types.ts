@@ -60,7 +60,8 @@ export interface ICardSection {}
  * {@docCategory Card}
  */
 export interface ICardSectionProps
-  extends ICardSectionSlots,
+  extends
+    ICardSectionSlots,
     Pick<
       IStackProps,
       | 'as'

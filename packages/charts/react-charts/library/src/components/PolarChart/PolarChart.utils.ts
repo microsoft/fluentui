@@ -252,5 +252,5 @@ export const formatAngle = (
   typeof value === 'string'
     ? value
     : unit === 'radians'
-    ? `${precisionRound(value / 180, 6)}π`
-    : `${precisionRound(value, 6)}°`;
+      ? `${precisionRound(value / 180, 6)}π`
+      : `${precisionRound(value, 6)}°`;

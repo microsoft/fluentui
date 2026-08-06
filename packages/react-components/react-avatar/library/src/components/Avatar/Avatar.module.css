@@ -376,15 +376,15 @@
     /* arg 11 — from useStyles.ringThick / .ringThicker / .ringThickest. */
     @variant active-appearance-ring-or-ring-shadow {
       &:where(
-          [data-size='16'],
-          [data-size='20'],
-          [data-size='24'],
-          [data-size='28'],
-          [data-size='32'],
-          [data-size='36'],
-          [data-size='40'],
-          [data-size='48']
-        ) {
+        [data-size='16'],
+        [data-size='20'],
+        [data-size='24'],
+        [data-size='28'],
+        [data-size='32'],
+        [data-size='36'],
+        [data-size='40'],
+        [data-size='48']
+      ) {
         --fui-Avatar-ringWidth: var(--spacing-thick);
       }
 

@@ -285,16 +285,12 @@ function idFromNumberOrSNode(node: SNode | number): NodeId {
  */
 function duplicateData(data: SankeyChartData): SankeyChartData {
   return {
-    nodes: data.nodes.map(
-      (node: SNode): SNode => ({
-        ...node,
-      }),
-    ),
-    links: data.links.map(
-      (link: SLink): SLink => ({
-        ...link,
-      }),
-    ),
+    nodes: data.nodes.map((node: SNode): SNode => ({
+      ...node,
+    })),
+    links: data.links.map((link: SLink): SLink => ({
+      ...link,
+    })),
   };
 }
 

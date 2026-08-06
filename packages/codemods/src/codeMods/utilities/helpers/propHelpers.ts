@@ -191,8 +191,8 @@ export function renamePropInSpread(
             initializer: changeValueMap
               ? `{${newMapName}[${toRename}]}`
               : replacementValue
-              ? `{${replacementValue}}`
-              : `{${toRename}}`,
+                ? `{${replacementValue}}`
+                : `{${toRename}}`,
           }); // Add the updated prop name and set its value.
         }
       }

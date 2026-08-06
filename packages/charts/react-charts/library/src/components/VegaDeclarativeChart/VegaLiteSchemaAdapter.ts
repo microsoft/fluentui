@@ -1241,7 +1241,7 @@ function initializeTransformContext(spec: VegaLiteSpec) {
       const result: Record<string, unknown> = { [field]: key };
       if (yField && yAgg !== 'count') {
         const vals = rows.map(r => Number(r[yField])).filter(v => !isNaN(v));
-        result[yField] = yAgg === 'sum' ? d3Sum(vals) : d3Mean(vals) ?? 0;
+        result[yField] = yAgg === 'sum' ? d3Sum(vals) : (d3Mean(vals) ?? 0);
       } else {
         result[yField || '__count'] = rows.length;
       }
@@ -2255,8 +2255,8 @@ export function transformVegaLiteToVerticalBarChartProps(
           colorField && row[colorField] !== undefined
             ? String(row[colorField])
             : useSingleLegend
-            ? 'Bar'
-            : String(xValue);
+              ? 'Bar'
+              : String(xValue);
 
         if (!colorIndex.has(legend)) {
           colorIndex.set(legend, currentColorIndex++);
@@ -2322,7 +2322,7 @@ export function transformVegaLiteToVerticalBarChartProps(
     ...(yAxisType && { yScaleType: yAxisType }),
     ...categoryOrderProps,
     // Hide legend for single-series bar charts (no color encoding) to avoid showing "Bar" legend
-    hideLegend: !colorField ? true : encoding.color?.legend?.disable ?? false,
+    hideLegend: !colorField ? true : (encoding.color?.legend?.disable ?? false),
   };
 
   if (tickConfig.tickValues) {
@@ -2683,8 +2683,8 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     if (allLineYValues.length > 0) {
       // Use explicit domain from line encoding if available, otherwise compute from data
       const lineDomain = lineEncoding.y?.scale?.domain;
-      const secYMin = Array.isArray(lineDomain) ? (lineDomain[0] as number) : d3Min(allLineYValues) ?? 0;
-      const secYMax = Array.isArray(lineDomain) ? (lineDomain[1] as number) : d3Max(allLineYValues) ?? 0;
+      const secYMin = Array.isArray(lineDomain) ? (lineDomain[0] as number) : (d3Min(allLineYValues) ?? 0);
+      const secYMax = Array.isArray(lineDomain) ? (lineDomain[1] as number) : (d3Max(allLineYValues) ?? 0);
       secondaryYAxisProps.secondaryYScaleOptions = {
         yMinValue: secYMin,
         yMaxValue: secYMax,
@@ -2986,7 +2986,7 @@ export function transformVegaLiteToHorizontalBarChartProps(
     yAxisTitle: titles.yAxisTitle,
     ...(titles.titleStyles ? titles.titleStyles : {}),
     // Hide legend for single-series horizontal bars (no color encoding)
-    hideLegend: !colorField ? true : encoding.color?.legend?.disable ?? false,
+    hideLegend: !colorField ? true : (encoding.color?.legend?.disable ?? false),
   };
 
   if (annotations.length > 0) {
@@ -3541,7 +3541,7 @@ function calculateHistogramAggregate(
       return d3Sum(bin);
     case 'mean':
     case 'average':
-      return bin.length === 0 ? 0 : d3Mean(bin) ?? 0;
+      return bin.length === 0 ? 0 : (d3Mean(bin) ?? 0);
     case 'min':
       return d3Min(bin) ?? 0;
     case 'max':

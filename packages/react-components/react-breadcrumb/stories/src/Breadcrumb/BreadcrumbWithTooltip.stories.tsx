@@ -168,15 +168,18 @@ const getTooltipContent = (breadcrumbItems: readonly Item[] | undefined) => {
   if (!breadcrumbItems) {
     return '';
   }
-  return breadcrumbItems.reduce((acc, initialValue, idx, arr) => {
-    return (
-      <>
-        {acc}
-        {arr[0].item !== initialValue.item && ' > '}
-        {initialValue.item}
-      </>
-    );
-  }, <React.Fragment />);
+  return breadcrumbItems.reduce(
+    (acc, initialValue, idx, arr) => {
+      return (
+        <>
+          {acc}
+          {arr[0].item !== initialValue.item && ' > '}
+          {initialValue.item}
+        </>
+      );
+    },
+    <React.Fragment />,
+  );
 };
 
 const BreadcrumbWithTooltipExample = () => {

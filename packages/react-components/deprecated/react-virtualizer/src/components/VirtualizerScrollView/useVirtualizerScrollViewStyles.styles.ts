@@ -66,8 +66,8 @@ export const useVirtualizerScrollViewStyles_unstable = (
         ? styles.horizontalReversed
         : styles.horizontal
       : state.reversed
-      ? styles.verticalReversed
-      : styles.vertical;
+        ? styles.verticalReversed
+        : styles.vertical;
 
   // Add container styles
   // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring

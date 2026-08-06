@@ -2,14 +2,7 @@ import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { BadgeProps, BadgeState, BadgeSlots } from '../Badge/Badge.types';
 
 export type PresenceBadgeStatus =
-  | 'busy'
-  | 'out-of-office'
-  | 'away'
-  | 'available'
-  | 'offline'
-  | 'do-not-disturb'
-  | 'unknown'
-  | 'blocked';
+  'busy' | 'out-of-office' | 'away' | 'available' | 'offline' | 'do-not-disturb' | 'unknown' | 'blocked';
 
 export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | 'icon'>>, 'color'> &
   Pick<BadgeProps, 'size'> & {

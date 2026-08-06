@@ -706,8 +706,8 @@ export function prepareDatapoints(
   const val = isIntegralDataset
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto >= 1
-    ? Math.ceil((maxVal - minVal) / splitInto)
-    : (maxVal - minVal) / splitInto;
+      ? Math.ceil((maxVal - minVal) / splitInto)
+      : (maxVal - minVal) / splitInto;
   /*
     For cases where we have negative and positive values
     The dataPointsArray is filled from 0 to minVal by val difference
@@ -2481,7 +2481,7 @@ export const generateMonthlyTicks = (
 
   // Find the earliest tick <= domainMin
   let start = 0;
-  for (let firstTick = new Date(+tick0); +firstTick > domainMin; ) {
+  for (let firstTick = new Date(+tick0); +firstTick > domainMin;) {
     firstTick = setMonth(firstTick, getMonth(firstTick) - tickStepInMonths);
     start -= tickStepInMonths;
   }

@@ -620,8 +620,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     return props.onRenderCalloutPerStack
       ? props.onRenderCalloutPerStack(stackCalloutProps)
       : props.onRenderCalloutPerDataPoint
-      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
-      : null;
+        ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+        : null;
   }
 
   /**

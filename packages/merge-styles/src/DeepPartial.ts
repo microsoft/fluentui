@@ -16,7 +16,7 @@ type DeepPartialObject<T> = {
 export type DeepPartialV2<T> = T extends Function
   ? T
   : T extends Array<infer U>
-  ? IDeepPartialArray<U>
-  : T extends object
-  ? DeepPartialObject<T>
-  : T;
+    ? IDeepPartialArray<U>
+    : T extends object
+      ? DeepPartialObject<T>
+      : T;

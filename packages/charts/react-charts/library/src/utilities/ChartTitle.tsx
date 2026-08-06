@@ -68,10 +68,10 @@ export const ChartTitle: React.FunctionComponent<ChartTitleProps> = props => {
     titleYAnchor === 'top'
       ? 'hanging'
       : titleYAnchor === 'bottom'
-      ? 'alphabetic'
-      : titleYAnchor === 'middle'
-      ? 'central'
-      : 'auto';
+        ? 'alphabetic'
+        : titleYAnchor === 'middle'
+          ? 'central'
+          : 'auto';
 
   // Calculate x position with padding adjustments
   const computedX = x + (titlePad?.l ?? 0) - (titlePad?.r ?? 0);

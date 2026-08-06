@@ -32,29 +32,25 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
   const imperativeVirtualizerRef = React.useRef<VirtualizerDataRef | null>(null);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 
-  React.useImperativeHandle(
-    imperativeRef,
-    () => {
-      return {
-        scrollTo(index: number, behavior = 'auto', callback: ((index: number) => void) | undefined) {
-          scrollCallbackRef.current = callback ?? null;
-          imperativeVirtualizerRef.current?.setFlaggedIndex(index);
-          scrollToItemStatic({
-            index,
-            itemSize,
-            totalItems: numItems,
-            scrollViewRef,
-            axis,
-            reversed,
-            behavior,
-          });
-        },
-        currentIndex: imperativeVirtualizerRef.current?.currentIndex,
-        virtualizerLength: virtualizerLengthRef,
-      };
-    },
-    [axis, scrollViewRef, itemSize, numItems, reversed],
-  );
+  React.useImperativeHandle(imperativeRef, () => {
+    return {
+      scrollTo(index: number, behavior = 'auto', callback: ((index: number) => void) | undefined) {
+        scrollCallbackRef.current = callback ?? null;
+        imperativeVirtualizerRef.current?.setFlaggedIndex(index);
+        scrollToItemStatic({
+          index,
+          itemSize,
+          totalItems: numItems,
+          scrollViewRef,
+          axis,
+          reversed,
+          behavior,
+        });
+      },
+      currentIndex: imperativeVirtualizerRef.current?.currentIndex,
+      virtualizerLength: virtualizerLengthRef,
+    };
+  }, [axis, scrollViewRef, itemSize, numItems, reversed]);
 
   const handleRenderedIndex = (index: number) => {
     if (scrollCallbackRef.current) {

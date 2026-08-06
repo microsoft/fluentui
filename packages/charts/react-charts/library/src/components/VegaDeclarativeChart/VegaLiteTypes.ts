@@ -37,30 +37,13 @@ export type VegaLiteMark = 'line' | 'point' | 'circle' | 'square' | 'bar' | 'are
  * Vega-Lite scale type
  */
 export type VegaLiteScaleType =
-  | 'linear'
-  | 'log'
-  | 'pow'
-  | 'sqrt'
-  | 'symlog'
-  | 'time'
-  | 'utc'
-  | 'ordinal'
-  | 'band'
-  | 'point';
+  'linear' | 'log' | 'pow' | 'sqrt' | 'symlog' | 'time' | 'utc' | 'ordinal' | 'band' | 'point';
 
 /**
  * Vega-Lite interpolation method
  */
 export type VegaLiteInterpolate =
-  | 'linear'
-  | 'linear-closed'
-  | 'step'
-  | 'step-before'
-  | 'step-after'
-  | 'basis'
-  | 'cardinal'
-  | 'monotone'
-  | 'natural';
+  'linear' | 'linear-closed' | 'step' | 'step-before' | 'step-after' | 'basis' | 'cardinal' | 'monotone' | 'natural';
 
 /**
  * Vega-Lite axis configuration

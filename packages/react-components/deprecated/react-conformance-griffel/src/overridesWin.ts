@@ -30,8 +30,7 @@ async function getReactComponent(
  */
 export const overridesWin: BaseConformanceTest = testInfo => {
   const testOptions = testInfo.testOptions as
-    | (TestOptions & { [OVERRIDES_WIN_TEST_NAME]?: OverridesWinTestOptions })
-    | undefined;
+    (TestOptions & { [OVERRIDES_WIN_TEST_NAME]?: OverridesWinTestOptions }) | undefined;
 
   let container: HTMLElement | null = null;
   const mergeClasses = jest.fn().mockImplementation(() => '');

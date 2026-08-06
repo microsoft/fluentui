@@ -55,7 +55,8 @@ export interface ICardSlots {
  * {@docCategory Card}
  */
 export interface ICardProps
-  extends ICardSlots,
+  extends
+    ICardSlots,
     IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>,
     IBaseProps<ICard>,
     React.AllHTMLAttributes<HTMLElement> {

@@ -13,6 +13,7 @@ export interface IFoundationComponent<
   TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
   TStatics = {},
-> extends React.FunctionComponent {
+>
+  extends React.FunctionComponent {
   __options?: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
 }

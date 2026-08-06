@@ -479,8 +479,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return props.onRenderCalloutPerStack
       ? props.onRenderCalloutPerStack(stackCalloutProps)
       : props.onRenderCalloutPerDataPoint && !_isHavingLines
-      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps, _renderCallout)
-      : null;
+        ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps, _renderCallout)
+        : null;
   }
 
   function _toFocusWholeStack(): boolean {
@@ -995,8 +995,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         _xAxisType === XAxisTypes.NumericAxis
           ? (singleChartData.xAxisPoint as number)
           : _xAxisType === XAxisTypes.DateAxis
-          ? (singleChartData.xAxisPoint as Date)
-          : (singleChartData.xAxisPoint as string),
+            ? (singleChartData.xAxisPoint as Date)
+            : (singleChartData.xAxisPoint as string),
       );
       const xScaleBandwidthTranslate =
         _xAxisType !== XAxisTypes.StringAxis ? -_barWidth / 2 : (xBarScale.bandwidth() - _barWidth) / 2;
@@ -1212,8 +1212,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               {typeof barLabel === 'string'
                 ? barLabel
                 : typeof props.yAxisTickFormat === 'function'
-                ? props.yAxisTickFormat(barLabel)
-                : formatScientificLimitWidth(barLabel)}
+                  ? props.yAxisTickFormat(barLabel)
+                  : formatScientificLimitWidth(barLabel)}
             </text>
           )}
         </g>

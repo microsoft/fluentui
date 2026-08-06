@@ -49,7 +49,7 @@ export const useBreadcrumbButtonBase_unstable = (
 ): BreadcrumbButtonBaseState => {
   const { current = false, as, ...rest } = props;
 
-  const controlType = as ?? (props as ARIAButtonProps<'a'>).href ? 'a' : 'button';
+  const controlType = (as ?? (props as ARIAButtonProps<'a'>).href) ? 'a' : 'button';
 
   const buttonState = useButtonBase_unstable(
     {
@@ -57,8 +57,8 @@ export const useBreadcrumbButtonBase_unstable = (
       type: undefined,
       as: controlType,
       iconPosition: 'before',
-      'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
-      'aria-disabled': current ? props['aria-disabled'] ?? true : undefined,
+      'aria-current': current ? (props['aria-current'] ?? 'page') : undefined,
+      'aria-disabled': current ? (props['aria-disabled'] ?? true) : undefined,
       ...rest,
     } as ButtonBaseProps,
     ref,

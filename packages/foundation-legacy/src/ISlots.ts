@@ -79,10 +79,10 @@ export type ExtractProps<TUnion> = TUnion extends ISlotProp<infer TProps> ? TPro
 export type ExtractShorthand<TUnion> = TUnion extends boolean
   ? boolean
   : TUnion extends number
-  ? number
-  : TUnion extends string
-  ? string
-  : never;
+    ? number
+    : TUnion extends string
+      ? string
+      : never;
 
 /**
  * Interface for aggregated slots objects used internally by components. Extract the TProps type passed
@@ -110,8 +110,7 @@ export interface IDefaultSlotProps<TSlots> {
 // TODO: Constrain TProps more clearly (notably also exclude Functions) once this TS PR is merged:
 // https://github.com/Microsoft/TypeScript/pull/29317
 export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> =
-  | TShorthandProp
-  | TProps;
+  TShorthandProp | TProps;
 
 /**
  * Defines the slot options object for all slot props:

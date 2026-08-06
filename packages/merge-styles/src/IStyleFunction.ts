@@ -15,5 +15,4 @@ export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSetBase> = (
  * {@docCategory IStyleFunctionOrObject}
  */
 export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSetBase> =
-  | IStyleFunction<TStylesProps, TStyleSet>
-  | DeepPartial<TStyleSet>;
+  IStyleFunction<TStylesProps, TStyleSet> | DeepPartial<TStyleSet>;

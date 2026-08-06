@@ -177,15 +177,15 @@
 
     /* from usePieStyles.thick / .thicker / .thickest */
     &:where(
-        [data-size='16'],
-        [data-size='20'],
-        [data-size='24'],
-        [data-size='28'],
-        [data-size='32'],
-        [data-size='36'],
-        [data-size='40'],
-        [data-size='48']
-      ) {
+      [data-size='16'],
+      [data-size='20'],
+      [data-size='24'],
+      [data-size='28'],
+      [data-size='32'],
+      [data-size='36'],
+      [data-size='40'],
+      [data-size='48']
+    ) {
       --fuiAvatarGroupItem__divider--width: var(--spacing-thick);
     }
 

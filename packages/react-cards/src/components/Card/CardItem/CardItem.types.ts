@@ -55,7 +55,8 @@ export interface ICardItem {}
  * {@docCategory Card}
  */
 export interface ICardItemProps
-  extends ICardItemSlots,
+  extends
+    ICardItemSlots,
     Pick<IStackItemProps, 'grow' | 'shrink' | 'disableShrink' | 'align' | 'verticalFill' | 'order'>,
     IStyleableComponentProps<ICardItemProps, ICardItemTokens, ICardItemStyles>,
     IBaseProps<ICardItem> {

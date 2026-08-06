@@ -15,15 +15,13 @@ export type IViewComponent<TViewProps, TComponentSlots = {}> = (
  * Defines the contract for slot components.
  */
 export type ISlotComponent<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots> =
-  | ISlotDefinition<Required<TComponentSlots>>
-  | ((props: TComponentProps) => ISlotDefinition<Required<TComponentSlots>>);
+  ISlotDefinition<Required<TComponentSlots>> | ((props: TComponentProps) => ISlotDefinition<Required<TComponentSlots>>);
 
 /**
  * Defines the contract for partial slot components used in recomposition.
  */
 export type IPartialSlotComponent<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots> =
-  | ISlotDefinition<TComponentSlots>
-  | ((props: TComponentProps) => ISlotDefinition<TComponentSlots>);
+  ISlotDefinition<TComponentSlots> | ((props: TComponentProps) => ISlotDefinition<TComponentSlots>);
 
 /**
  * Component options used by foundation to tie elements together.

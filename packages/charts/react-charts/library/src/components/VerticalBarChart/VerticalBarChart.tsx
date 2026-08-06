@@ -391,8 +391,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       _xAxisType === XAxisTypes.NumericAxis
         ? _createNumericBars(containerHeight, containerWidth, xElement!)
         : _xAxisType === XAxisTypes.DateAxis
-        ? _createDateBars(containerHeight, containerWidth, xElement!)
-        : _createStringBars(containerHeight, containerWidth, xElement!));
+          ? _createDateBars(containerHeight, containerWidth, xElement!)
+          : _createStringBars(containerHeight, containerWidth, xElement!));
   }
 
   function _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -922,8 +922,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const xValue = point.xAxisCalloutData
       ? point.xAxisCalloutData
       : point.x instanceof Date
-      ? point.x.toLocaleString()
-      : point.x;
+        ? point.x.toLocaleString()
+        : point.x;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
     const lineLegend = props.lineLegendText || 'Line';
@@ -954,8 +954,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       customBarLabel !== undefined
         ? customBarLabel
         : typeof props.yAxisTickFormat === 'function'
-        ? props.yAxisTickFormat(barValue)
-        : formatScientificLimitWidth(barValue);
+          ? props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue);
 
     return (
       <text
@@ -1119,8 +1119,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   _adjustProps();
   _xAxisLabels = _getOrderedXAxisLabels();
-  _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
-  _yMin = Math.min(d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMinValue || 0);
+  _yMax = Math.max(
+    d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!,
+    props.yMaxValue || 0,
+  );
+  _yMin = Math.min(
+    d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!,
+    props.yMinValue || 0,
+  );
   const legendBars: JSXElement = _getLegendData(_points);
   const calloutProps = {
     ...(_isHavingLine && {

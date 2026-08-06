@@ -325,14 +325,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
   alignContent?:
-    | ICSSRule
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'space-between'
-    | 'space-around'
-    | 'stretch'
-    | string;
+    ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch' | string;
 
   /**
    * Sets the default alignment in the cross axis for all of the flex container's items,
@@ -348,13 +341,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * https://www.w3.org/TR/css-align-3/#propdef-align-self
    */
   alignSelf?:
-    | ICSSRule
-    | 'auto'
-    | 'normal'
-    | 'stretch'
-    | ICSSBaselinePositionRule
-    | ICSSOverflowAndSelfPositionRule
-    | string;
+    ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
 
   /**
    * This property allows precise alignment of elements, such as graphics, that do not
@@ -1707,13 +1694,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * https://www.w3.org/TR/css-align-3/#place-self-property
    */
   placeSelf?:
-    | ICSSRule
-    | 'auto'
-    | 'normal'
-    | 'stretch'
-    | ICSSBaselinePositionRule
-    | ICSSOverflowAndSelfPositionRule
-    | string;
+    ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
 
   /**
    * The pointer-events property allows you to control whether an element can be the

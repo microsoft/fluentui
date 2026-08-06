@@ -31,8 +31,7 @@ export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSetBase
  * Composite type for component styles functions and objects.
  */
 export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSetBase> =
-  | IStylesFunction<TViewProps, TTokens, TStyleSet>
-  | TStyleSet;
+  IStylesFunction<TViewProps, TTokens, TStyleSet> | TStyleSet;
 
 /**
  * Tokens can be defined as an object, function, or an array of objects and functions.

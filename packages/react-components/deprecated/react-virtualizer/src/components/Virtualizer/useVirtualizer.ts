@@ -510,18 +510,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
   };
 
-  React.useImperativeHandle(
-    imperativeVirtualizerRef,
-    () => {
-      return {
-        progressiveSizes: childProgressiveSizes,
-        nodeSizes: childSizes,
-        setFlaggedIndex: (index: number | null) => (flaggedIndex.current = index),
-        currentIndex: actualIndexRef,
-      };
-    },
-    [childProgressiveSizes, childSizes],
-  );
+  React.useImperativeHandle(imperativeVirtualizerRef, () => {
+    return {
+      progressiveSizes: childProgressiveSizes,
+      nodeSizes: childSizes,
+      setFlaggedIndex: (index: number | null) => (flaggedIndex.current = index),
+      currentIndex: actualIndexRef,
+    };
+  }, [childProgressiveSizes, childSizes]);
 
   // Initialization on mount - update array index to 0 (ready state).
   // Only fire on mount (no deps).

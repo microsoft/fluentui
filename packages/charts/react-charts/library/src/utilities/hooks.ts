@@ -20,25 +20,21 @@ export const useImageExport = (
   const legendsRef = React.useRef<LegendContainer>(null);
   const isRTL = useRtl();
 
-  React.useImperativeHandle(
-    componentRef,
-    () => {
-      const chartContainer = isChartCartesian ? cartesianChartRef.current?.chartContainer : chartContainerRef.current;
+  React.useImperativeHandle(componentRef, () => {
+    const chartContainer = isChartCartesian ? cartesianChartRef.current?.chartContainer : chartContainerRef.current;
 
-      return {
-        chartContainer: chartContainer ?? null,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return exportChartsAsImage(
-            [{ container: chartContainer }],
-            hideLegends ? undefined : legendsRef.current?.toSVG,
-            isRTL,
-            opts,
-          );
-        },
-      };
-    },
-    [hideLegends, isChartCartesian, isRTL],
-  );
+    return {
+      chartContainer: chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return exportChartsAsImage(
+          [{ container: chartContainer }],
+          hideLegends ? undefined : legendsRef.current?.toSVG,
+          isRTL,
+          opts,
+        );
+      },
+    };
+  }, [hideLegends, isChartCartesian, isRTL]);
 
   return {
     cartesianChartRef,

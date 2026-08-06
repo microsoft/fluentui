@@ -304,8 +304,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       return props.onRenderCalloutPerStack
         ? props.onRenderCalloutPerStack(stackCalloutProps)
         : props.onRenderCalloutPerDataPoint
-        ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
-        : null;
+          ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+          : null;
     }
 
     function _getNumericMinMaxOfY(
@@ -1464,8 +1464,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }
 
       const found = findCalloutPoints(calloutPointsRef.current, pointToHighlight.x) as
-        | CustomizedCalloutData
-        | undefined;
+        CustomizedCalloutData | undefined;
 
       const pointToHighlightUpdated =
         nearestCircleToHighlight === null ||
