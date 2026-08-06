@@ -5,11 +5,11 @@ import type { ButtonContextValue } from '../../contexts/ButtonContext';
 import { useCompoundButton_unstable } from './useCompoundButton';
 
 const wrap = (contextValue: ButtonContextValue = {}): React.ComponentType<{ children?: React.ReactNode }> => {
-  function Wrapper({ children }: { children?: React.ReactNode }) {
-    return <ButtonContextProvider value={contextValue}>{children}</ButtonContextProvider>;
-  }
+  const wrapper = ({ children }: { children?: React.ReactNode }) => (
+    <ButtonContextProvider value={contextValue}>{children}</ButtonContextProvider>
+  );
 
-  return Wrapper;
+  return wrapper;
 };
 
 describe('useCompoundButton_unstable', () => {
@@ -25,16 +25,18 @@ describe('useCompoundButton_unstable', () => {
     });
   });
 
-  it('uses the default root element and icon position and normalizes content slots', () => {
-    const { result } = renderHook(() =>
-      useCompoundButton_unstable({ children: 'Primary', secondaryContent: 'Secondary' }, React.createRef()),
-    );
+  it('uses the default root element and icon position', () => {
+    const { result } = renderHook(() => useCompoundButton_unstable({}, React.createRef()));
 
     expect(result.current.root.type).toBe('button');
     expect(result.current.iconPosition).toBe('before');
+  });
+
+  it('normalizes the contentContainer slot', () => {
+    const { result } = renderHook(() => useCompoundButton_unstable({ children: 'Primary' }, React.createRef()));
+
     expect(result.current.contentContainer).toBeDefined();
     expect(result.current.contentContainer.children).toBeUndefined();
-    expect(result.current.secondaryContent).toMatchObject({ children: 'Secondary' });
   });
 
   it('normalizes secondaryContent string shorthand', () => {
