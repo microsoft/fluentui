@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix focusgroup in tree when focusgroup is natively supported",
+  "comment": "remove using data-indent for styling",
   "packageName": "@fluentui/web-components",
   "email": "machi@microsoft.com",
   "dependentChangeType": "patch"
