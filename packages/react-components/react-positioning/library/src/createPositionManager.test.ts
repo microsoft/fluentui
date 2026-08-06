@@ -288,7 +288,7 @@ describe('createPositionManager', () => {
       middleware: [],
       placement: 'bottom',
       disableUpdateOnResize: true,
-      updatePositionOnAnimationFrame: true,
+      isMotionActive: true,
     });
 
     await flushMicrotasks();

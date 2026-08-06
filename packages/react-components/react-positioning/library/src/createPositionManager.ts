@@ -42,13 +42,8 @@ interface PositionManagerOptions {
    * Disables the resize observer that updates position on target or dimension change
    */
   disableUpdateOnResize?: boolean;
-  /**
-   * Continuously updates position on animation frames while mounted.
-   * Useful when the positioned element's target moves during animations that don't trigger
-   * standard observers (e.g., Web Animations API). Use sparingly as it has performance cost.
-   * See https://github.com/microsoft/fluentui/issues/35968 for context.
-   */
-  updatePositionOnAnimationFrame?: boolean;
+  /** Whether a Fluent ancestor motion is active. */
+  isMotionActive?: boolean;
 }
 
 /**
@@ -66,7 +61,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
     placement,
     useTransform = true,
     disableUpdateOnResize = false,
-    updatePositionOnAnimationFrame = false,
+    isMotionActive = false,
   } = options;
   const targetWindow = container.ownerDocument.defaultView;
   if (!target || !container || !targetWindow) {
@@ -178,7 +173,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const updatePosition = debounce(() => forceUpdate());
 
   const scheduleAnimationFrameUpdate = () => {
-    if (!targetWindow || !updatePositionOnAnimationFrame || isDestroyed) {
+    if (!targetWindow || !isMotionActive || isDestroyed) {
       return;
     }
 

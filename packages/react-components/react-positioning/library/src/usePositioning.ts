@@ -56,7 +56,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
 
     return false;
   }, [ancestorMotionState]);
-  const updatePositionOnAnimationFrame = useSyncExternalStore(
+  const isMotionActive = useSyncExternalStore(
     subscribeToAncestorMotion,
     getAncestorMotionSnapshot,
     getAncestorMotionSnapshot,
@@ -76,11 +76,11 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
-        updatePositionOnAnimationFrame,
+        isMotionActive,
         ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
     }
-  }, [enabled, resolvePositioningOptions, updatePositionOnAnimationFrame]);
+  }, [enabled, isMotionActive, resolvePositioningOptions]);
 
   const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
     overrideTargetRef.current = target;

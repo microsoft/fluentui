@@ -62,22 +62,16 @@ describe('usePositioning', () => {
       </AncestorMotionProvider_unstable>,
     );
 
-    expect(createPositionManager).toHaveBeenLastCalledWith(
-      expect.objectContaining({ updatePositionOnAnimationFrame: false }),
-    );
+    expect(createPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ isMotionActive: false }));
     const initialManagerCount = jest.mocked(createPositionManager).mock.calls.length;
 
     await act(async () => motionController.setActive(true));
 
-    expect(createPositionManager).toHaveBeenLastCalledWith(
-      expect.objectContaining({ updatePositionOnAnimationFrame: true }),
-    );
+    expect(createPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ isMotionActive: true }));
 
     await act(async () => motionController.setActive(false));
 
-    expect(createPositionManager).toHaveBeenLastCalledWith(
-      expect.objectContaining({ updatePositionOnAnimationFrame: false }),
-    );
+    expect(createPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ isMotionActive: false }));
     expect(createPositionManager).toHaveBeenCalledTimes(initialManagerCount + 2);
   });
 
