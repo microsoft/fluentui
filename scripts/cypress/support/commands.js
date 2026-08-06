@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import { realPress } from 'cypress-real-events/commands/realPress.js';
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -37,5 +38,5 @@ const CYPRESS_MAJOR_VERSION =
   typeof Cypress !== 'undefined' && Cypress.version ? Number(String(Cypress.version).split('.')[0]) : undefined;
 
 if (CYPRESS_MAJOR_VERSION === 13) {
-  Cypress.Commands.add('press', /** @type {any} */ (require('cypress-real-events/commands/realPress').realPress));
+  Cypress.Commands.add('press', /** @type {any} */ (realPress));
 }
