@@ -14,7 +14,7 @@
   box-sizing: border-box;
   list-style-type: none;
   margin: 0;
-  padding: var(--spacingVerticalXS) 0;
+  padding: var(--spacing-vertical-xs) 0;
   position: absolute;
   width: 100%;
   z-index: 1000;
@@ -28,8 +28,8 @@
   align-items: center;
   cursor: pointer;
   display: flex;
-  gap: var(--spacingHorizontalS);
-  padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+  gap: var(--spacing-horizontal-s);
+  padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
 }
 
 .option:hover {
@@ -44,12 +44,12 @@
 .spinnerWrapper {
   align-items: center;
   display: flex;
-  gap: var(--spacingHorizontalS);
-  padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+  gap: var(--spacing-horizontal-s);
+  padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
   color: var(--colorNeutralForeground3);
 }
 
 .noResults {
   color: var(--colorNeutralForeground3);
-  padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+  padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
 }

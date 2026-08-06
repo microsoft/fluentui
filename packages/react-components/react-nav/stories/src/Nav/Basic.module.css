@@ -23,6 +23,6 @@
   display: flex;
   margin-top: 4px;
   flex-direction: column;
-  grid-row-gap: var(--spacingVerticalS);
+  grid-row-gap: var(--spacing-vertical-s);
   margin-inline-start: 8px;
 }

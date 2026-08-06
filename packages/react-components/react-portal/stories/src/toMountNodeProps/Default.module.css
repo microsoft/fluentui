@@ -3,7 +3,7 @@
 
 .message {
   background-color: var(--colorNeutralBackground1);
-  border: var(--strokeWidthThick) solid var(--colorStatusSuccessBorder1);
+  border: var(--stroke-width-thick) solid var(--colorStatusSuccessBorder1);
   padding: 20px;
   font-size: var(--fontSizeBase600);
   position: fixed;

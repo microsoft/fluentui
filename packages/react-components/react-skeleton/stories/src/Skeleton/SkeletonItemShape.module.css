@@ -4,11 +4,11 @@
 .invertedWrapper {
   background: var(--colorNeutralBackground1);
   display: flex;
-  padding: var(--spacingHorizontalXL);
+  padding: var(--spacing-horizontal-xl);
 }
 
 .row {
   display: grid;
-  gap: var(--spacingHorizontalL);
+  gap: var(--spacing-horizontal-l);
   grid-template-columns: 1fr 150px 1fr;
 }

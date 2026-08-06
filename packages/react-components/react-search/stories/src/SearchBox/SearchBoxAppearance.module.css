@@ -23,5 +23,5 @@
 }
 
 .fieldWrapper {
-  padding: var(--spacingVerticalMNudge) var(--spacingHorizontalMNudge);
+  padding: var(--spacing-vertical-m-nudge) var(--spacing-horizontal-m-nudge);
 }

@@ -23,7 +23,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   margin: 0;
-  gap: var(--spacingVerticalM);
+  gap: var(--spacing-vertical-m);
   grid-auto-rows: max-content;
   box-sizing: border-box;
   position: absolute;
@@ -35,5 +35,5 @@
   margin-top: 4px;
   margin-left: 8px;
   flex-direction: column;
-  grid-row-gap: var(--spacingVerticalS);
+  grid-row-gap: var(--spacing-vertical-s);
 }

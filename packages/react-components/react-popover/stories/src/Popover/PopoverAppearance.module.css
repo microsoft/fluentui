@@ -8,5 +8,5 @@
 .root {
   display: flex;
   flex-direction: column;
-  row-gap: var(--spacingVerticalMNudge);
+  row-gap: var(--spacing-vertical-m-nudge);
 }

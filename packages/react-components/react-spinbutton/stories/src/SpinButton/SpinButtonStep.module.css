@@ -8,5 +8,5 @@
 }
 
 .base > label {
-  margin-bottom: var(--spacingVerticalXXS);
+  margin-bottom: var(--spacing-vertical-xxs);
 }

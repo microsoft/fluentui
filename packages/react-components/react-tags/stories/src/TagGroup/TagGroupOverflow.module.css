@@ -2,7 +2,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .menuItem {
-  padding: var(--spacingVerticalSNudge) var(--spacingHorizontalXS);
+  padding: var(--spacing-vertical-s-nudge) var(--spacing-horizontal-xs);
 }
 
 /* Tag's public identity class is its Tailwind named-group marker, `group/fui-tag`

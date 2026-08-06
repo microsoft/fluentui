@@ -5,13 +5,13 @@
   display: flex;
   background: var(--colorNeutralBackground1);
   flex-direction: column;
-  padding: var(--spacingHorizontalXL);
-  gap: var(--spacingVerticalL);
+  padding: var(--spacing-horizontal-xl);
+  gap: var(--spacing-vertical-l);
 }
 
 .innerWrapper {
   display: grid;
   align-items: center;
   grid-template-columns: 25px 1fr;
-  grid-gap: var(--spacingHorizontalS);
+  grid-gap: var(--spacing-horizontal-s);
 }

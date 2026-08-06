@@ -4,7 +4,7 @@
 .base {
   display: flex;
   flex-direction: column;
-  row-gap: var(--spacingVerticalMNudge);
+  row-gap: var(--spacing-vertical-m-nudge);
 }
 
 .inverted {
@@ -16,5 +16,5 @@
 }
 
 .fieldWrapper {
-  padding: var(--spacingVerticalMNudge) var(--spacingHorizontalMNudge);
+  padding: var(--spacing-vertical-m-nudge) var(--spacing-horizontal-m-nudge);
 }

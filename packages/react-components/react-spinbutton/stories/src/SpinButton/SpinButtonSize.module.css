@@ -10,7 +10,7 @@
 .base > div {
   display: flex;
   flex-direction: column;
-  margin-top: var(--spacingHorizontalMNudge);
+  margin-top: var(--spacing-horizontal-m-nudge);
 }
 
 .base > div:first-child {
@@ -18,5 +18,5 @@
 }
 
 .base > div label {
-  margin-bottom: var(--spacingVerticalXXS);
+  margin-bottom: var(--spacing-vertical-xxs);
 }

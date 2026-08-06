@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
   padding: 10px;
@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--strokeWidthThicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
   padding: 10px;

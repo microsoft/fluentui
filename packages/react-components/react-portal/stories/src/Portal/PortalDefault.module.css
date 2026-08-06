@@ -15,7 +15,7 @@
 
 .state {
   font-family: var(--fontFamilyMonospace);
-  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
   padding: 4px;
   text-align: center;
 }
@@ -27,7 +27,7 @@
   line-height: var(--lineHeightBase400);
   background-color: var(--colorNeutralBackground1);
   color: var(--colorNeutralForeground1);
-  border: var(--strokeWidthThick) solid var(--colorNeutralStroke1);
+  border: var(--stroke-width-thick) solid var(--colorNeutralStroke1);
   padding: 24px 8px;
   overflow: hidden;
 }
@@ -39,6 +39,6 @@
   line-height: var(--lineHeightBase500);
   background-color: var(--colorBrandBackground2);
   color: var(--colorBrandForeground2);
-  border: var(--strokeWidthThick) dashed var(--colorBrandStroke2);
+  border: var(--stroke-width-thick) dashed var(--colorBrandStroke2);
   padding: 12px 6px;
 }
