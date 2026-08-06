@@ -5,11 +5,11 @@
 ```ts
 
 import type { CompoundButtonBaseProps } from '@fluentui/react-button';
-import { CompoundButtonBaseState } from '@fluentui/react-button';
+import type { CompoundButtonBaseState } from '@fluentui/react-button';
 import type { CompoundButtonSlots as CompoundButtonSlots_2 } from '@fluentui/react-button';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderCompoundButton_unstable as renderCompoundButton } from '@fluentui/react-button';
 
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
@@ -30,8 +30,7 @@ export type CompoundButtonState = CompoundButtonBaseState & {
     };
 };
 
-// @public
-export const renderCompoundButton: (state: CompoundButtonBaseState) => JSXElement;
+export { renderCompoundButton }
 
 // @public
 export const useCompoundButton: (props: CompoundButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonState;
