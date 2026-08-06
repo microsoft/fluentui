@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { isConformant } from '../../testing/isConformant';
 import { CompoundButton } from './CompoundButton';
+
+expect.extend(toHaveNoViolations);
 
 describe('CompoundButton', () => {
   isConformant({
@@ -95,6 +99,30 @@ describe('CompoundButton', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
+  it('activates a focused enabled button with Enter', () => {
+    const onClick = jest.fn();
+    const { getByRole } = render(<CompoundButton onClick={onClick}>Enabled</CompoundButton>);
+    const button = getByRole('button');
+
+    button.focus();
+    userEvent.keyboard('{Enter}');
+
+    expect(button).toHaveFocus();
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('activates a focused enabled button with Space', () => {
+    const onClick = jest.fn();
+    const { getByRole } = render(<CompoundButton onClick={onClick}>Enabled</CompoundButton>);
+    const button = getByRole('button');
+
+    button.focus();
+    userEvent.keyboard('{space}');
+
+    expect(button).toHaveFocus();
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
   it('blocks activation and emits an exact disabled presence attribute when disabled', () => {
     const onClick = jest.fn();
     const { getByRole } = render(
@@ -127,6 +155,23 @@ describe('CompoundButton', () => {
     expect(button).not.toBeDisabled();
     expect(button).toHaveAttribute('aria-disabled', 'true');
     expect(button).toHaveAttribute('data-disabled-focusable', '');
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('allows focus but suppresses Enter and Space activation when disabledFocusable', () => {
+    const onClick = jest.fn();
+    const { getByRole } = render(
+      <CompoundButton disabledFocusable onClick={onClick}>
+        Disabled focusable
+      </CompoundButton>,
+    );
+    const button = getByRole('button');
+
+    button.focus();
+    userEvent.keyboard('{Enter}');
+    userEvent.keyboard('{space}');
+
+    expect(button).toHaveFocus();
     expect(onClick).not.toHaveBeenCalled();
   });
 
@@ -226,5 +271,21 @@ describe('CompoundButton', () => {
     expect(button).not.toHaveAttribute('data-disabled-focusable');
     expect(button).not.toHaveAttribute('data-icon-only');
     expect(button).not.toHaveAttribute('data-has-secondary-content');
+  });
+
+  it('has no accessibility violations in a representative group', async () => {
+    const { container } = render(
+      <div role="group" aria-label="Compound button examples">
+        <CompoundButton secondaryContent="Secondary">Primary</CompoundButton>
+        <CompoundButton as="a" href="#compound-button">
+          Link
+        </CompoundButton>
+        <CompoundButton disabled>Disabled</CompoundButton>
+        <CompoundButton disabledFocusable>Disabled focusable</CompoundButton>
+        <CompoundButton icon="Icon" aria-label="Icon button" />
+      </div>,
+    );
+
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
