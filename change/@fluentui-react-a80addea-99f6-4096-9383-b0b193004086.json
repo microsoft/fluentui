@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: prevent pixel-fraction overflow from TextField focus indicator",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
