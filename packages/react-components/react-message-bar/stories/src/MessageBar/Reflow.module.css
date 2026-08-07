@@ -10,7 +10,7 @@
   flex-direction: column;
   padding: 30px 10px;
   gap: 10px;
-  border: 2px solid var(--colorBrandBackground);
+  border: 2px solid var(--color-brand-background);
   position: relative;
   overflow: hidden;
 }
@@ -26,6 +26,6 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: 1px;
-  color: var(--colorNeutralForegroundOnBrand);
-  background-color: var(--colorBrandBackground);
+  color: var(--color-neutral-foreground-on-brand);
+  background-color: var(--color-brand-background);
 }

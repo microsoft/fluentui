@@ -43,9 +43,9 @@
     @apply my-vertical-s ms-horizontal-m-nudge;
 
     /* typographyStyles.caption1Strong */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-200);
   }
 }

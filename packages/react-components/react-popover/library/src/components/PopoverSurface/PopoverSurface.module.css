@@ -86,28 +86,29 @@
 @layer fui.components.l1 {
   /* from useStyles.root — root arg #2 */
   .root {
-    color: var(--colorNeutralForeground1);
-    background-color: var(--colorNeutralBackground1);
+    color: var(--color-neutral-foreground-1);
+    background-color: var(--color-neutral-background-1);
 
     /* Kept as the compiled shorthands (`.ft85np5{border-radius:…}`, `.f9ggezi{border:1px
        solid …}`): no rule in this module sets any of their longhands, so there is no Griffel
        shorthand-vs-longhand priority left for the cascade to get wrong. Same call as
        react-tooltip, whose root slice is the same pair of declarations. */
-    border-radius: var(--borderRadiusMedium);
-    border: 1px solid var(--colorTransparentStroke);
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--color-transparent-stroke);
 
     /* ...typographyStyles.body1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
 
     /* TODO carried verbatim from the Griffel source: need versions of
        tokens.alias.shadow.shadow16 etc. that work with filter.
-       The px lengths stay literal — they are this filter's stand-in for the `--shadow16`
+       The px lengths stay literal — they are this filter's stand-in for the `--shadow-16`
        TOKEN, and tokens never ride `--base-scale` (D4), so rescaling them would make the two
        forms of the same shadow drift apart at a non-default root font size. */
-    filter: drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 8px 16px var(--colorNeutralShadowKey));
+    filter: drop-shadow(0 0 2px var(--color-neutral-shadow-ambient))
+      drop-shadow(0 8px 16px var(--color-neutral-shadow-key));
 
     /*
      * from useStyles.inline — root arg #3.
@@ -152,13 +153,13 @@
    * and react-button made for their own `appearance`.
    */
   .inverted {
-    background-color: var(--colorNeutralBackgroundStatic);
-    color: var(--colorNeutralForegroundStaticInverted);
+    background-color: var(--color-neutral-background-static);
+    color: var(--color-neutral-foreground-static-inverted);
   }
 
   .brand {
-    background-color: var(--colorBrandBackground);
-    color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--color-brand-background);
+    color: var(--color-neutral-foreground-on-brand);
   }
 }
 
@@ -188,7 +189,7 @@
     background-color: inherit;
     background-clip: content-box;
 
-    border-bottom-left-radius: var(--borderRadiusSmall); /* @noflip */
+    border-bottom-left-radius: var(--radius-small); /* @noflip */
     transform: rotate(var(--fui-positioning-arrow-angle)); /* @noflip */
 
     height: var(--fui-positioning-arrow-height);
@@ -206,9 +207,9 @@
          spacing utilities are --base-scale rem, so both are written literally here to keep
          them from drifting apart at a non-default root font size. */
       margin: -1px;
-      border: 1px solid var(--colorTransparentStroke);
+      border: 1px solid var(--color-transparent-stroke);
 
-      border-bottom-left-radius: var(--borderRadiusSmall); /* @noflip */
+      border-bottom-left-radius: var(--radius-small); /* @noflip */
       clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
     }
 

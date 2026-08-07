@@ -66,38 +66,38 @@
 
   /* from useSizeStyles.* */
   .base100 {
-    font-size: var(--fontSizeBase100);
-    line-height: var(--lineHeightBase100);
+    font-size: var(--text-base-100);
+    line-height: var(--leading-base-100);
   }
 
   .base200 {
-    font-size: var(--fontSizeBase200);
-    line-height: var(--lineHeightBase200);
+    font-size: var(--text-base-200);
+    line-height: var(--leading-base-200);
   }
 
   .base300 {
-    font-size: var(--fontSizeBase300);
-    line-height: var(--lineHeightBase300);
+    font-size: var(--text-base-300);
+    line-height: var(--leading-base-300);
   }
 
   .base400 {
-    font-size: var(--fontSizeBase400);
-    line-height: var(--lineHeightBase400);
+    font-size: var(--text-base-400);
+    line-height: var(--leading-base-400);
   }
 
   .base500 {
-    font-size: var(--fontSizeBase500);
-    line-height: var(--lineHeightBase500);
+    font-size: var(--text-base-500);
+    line-height: var(--leading-base-500);
   }
 
   .base600 {
-    font-size: var(--fontSizeBase600);
-    line-height: var(--lineHeightBase600);
+    font-size: var(--text-base-600);
+    line-height: var(--leading-base-600);
   }
 
   .hero700 {
-    font-size: var(--fontSizeHero700);
-    line-height: var(--lineHeightHero700);
+    font-size: var(--text-hero-700);
+    line-height: var(--leading-hero-700);
   }
 
   /* from useWeightStyles.* — raw numeric weights, not the Fluent fontWeight* tokens, so
@@ -152,34 +152,34 @@
 
   /* from useStyles.mention */
   .mention {
-    color: var(--colorBrandForegroundLink);
+    color: var(--color-brand-foreground-link);
   }
 
   /* from useStyles.mentionMe */
   .mention-me {
-    color: var(--colorPalettePumpkinBorderActive);
+    color: var(--color-palette-pumpkin-border-active);
     font-weight: 700;
   }
 
   /* from useStyles.disabled */
   .disabled {
-    color: var(--colorNeutralForegroundDisabled);
+    color: var(--color-neutral-foreground-disabled);
   }
 
   /* from useStyles.error */
   .error {
-    color: var(--colorPaletteRedForeground3);
+    color: var(--color-palette-red-foreground-3);
   }
 
   /* from useStyles.important */
   .important {
-    color: var(--colorPaletteDarkOrangeForeground3);
+    color: var(--color-palette-dark-orange-foreground-3);
     font-weight: 700;
   }
 
   /* from useStyles.success */
   .success {
-    color: var(--colorPaletteGreenForeground3);
+    color: var(--color-palette-green-foreground-3);
   }
 
   /* from useStyles.temporary */
@@ -189,6 +189,6 @@
 
   /* from useStyles.timestamp */
   .timestamp {
-    color: var(--colorNeutralForeground3);
+    color: var(--color-neutral-foreground-3);
   }
 }

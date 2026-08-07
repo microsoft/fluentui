@@ -107,11 +107,11 @@
   .primary-text-base {
     @apply block;
 
-    color: var(--colorNeutralForeground1);
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    color: var(--color-neutral-foreground-1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /* from useOptionalTextBaseClassName (makeResetStyles) — compiled `.rp1pf9e`,
@@ -119,11 +119,11 @@
   .optional-text-base {
     @apply block;
 
-    color: var(--colorNeutralForeground2);
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    color: var(--color-neutral-foreground-2);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
   }
 }
 
@@ -229,24 +229,24 @@
   /* from useTextStyles.caption1/.subtitle2/.body1 — typographyStyles expanded to longhands.
      These beat the two `fui.base` text resets, reproducing Griffel's d-beats-r buckets. */
   .caption1 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
   }
 
   .subtitle2 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase400);
+    font-family: var(--font-base);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-400);
   }
 
   .body1 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /*

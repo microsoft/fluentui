@@ -52,7 +52,7 @@
  * border colors). The blocks are still written in mergeClasses argument order so a later
  * refactor cannot silently invert a winner. Across layers the two real overrides are
  * `rootMultiline`'s grid template + `align-items` over the reset, and `square`'s
- * `border-radius: 0` over the reset's `--borderRadiusMedium` — both l1-over-base.
+ * `border-radius: 0` over the reset's `--radius-medium` — both l1-over-base.
  *
  * ── Enum props → in-module attribute selectors ──────────────────────────────────────
  * `data-layout` and `data-intent` are the names the in-repo headless preview already
@@ -112,9 +112,9 @@
 
     /* kept as the compiled `border` shorthand (the atomic is one declaration); the
        intent slices below replace only its colour, from a higher layer. */
-    border: var(--spacing-thin) solid var(--colorNeutralStroke1);
-    border-radius: var(--borderRadiusMedium);
-    background-color: var(--colorNeutralBackground3);
+    border: var(--spacing-thin) solid var(--color-neutral-stroke-1);
+    border-radius: var(--radius-medium);
+    background-color: var(--color-neutral-background-3);
   }
 
   /* from useIconBaseStyles (makeResetStyles) */
@@ -122,8 +122,8 @@
     @apply me-horizontal-s flex items-center;
 
     grid-area: icon;
-    font-size: var(--fontSizeBase500);
-    color: var(--colorNeutralForeground3);
+    font-size: var(--text-base-500);
+    color: var(--color-neutral-foreground-3);
   }
 
   /* from useReflowSpacerBaseStyles (makeResetStyles) */
@@ -175,27 +175,27 @@
    */
   .root {
     @variant intent-error {
-      background-color: var(--colorStatusDangerBackground1);
-      border-top-color: var(--colorStatusDangerBorder1);
-      border-right-color: var(--colorStatusDangerBorder1);
-      border-bottom-color: var(--colorStatusDangerBorder1);
-      border-left-color: var(--colorStatusDangerBorder1);
+      background-color: var(--color-status-danger-background-1);
+      border-top-color: var(--color-status-danger-border-1);
+      border-right-color: var(--color-status-danger-border-1);
+      border-bottom-color: var(--color-status-danger-border-1);
+      border-left-color: var(--color-status-danger-border-1);
     }
 
     @variant intent-warning {
-      background-color: var(--colorStatusWarningBackground1);
-      border-top-color: var(--colorStatusWarningBorder1);
-      border-right-color: var(--colorStatusWarningBorder1);
-      border-bottom-color: var(--colorStatusWarningBorder1);
-      border-left-color: var(--colorStatusWarningBorder1);
+      background-color: var(--color-status-warning-background-1);
+      border-top-color: var(--color-status-warning-border-1);
+      border-right-color: var(--color-status-warning-border-1);
+      border-bottom-color: var(--color-status-warning-border-1);
+      border-left-color: var(--color-status-warning-border-1);
     }
 
     @variant intent-success {
-      background-color: var(--colorStatusSuccessBackground1);
-      border-top-color: var(--colorStatusSuccessBorder1);
-      border-right-color: var(--colorStatusSuccessBorder1);
-      border-bottom-color: var(--colorStatusSuccessBorder1);
-      border-left-color: var(--colorStatusSuccessBorder1);
+      background-color: var(--color-status-success-background-1);
+      border-top-color: var(--color-status-success-border-1);
+      border-right-color: var(--color-status-success-border-1);
+      border-bottom-color: var(--color-status-success-border-1);
+      border-left-color: var(--color-status-success-border-1);
     }
   }
 }
@@ -209,19 +209,19 @@
   .root {
     @variant intent-error {
       & .icon {
-        color: var(--colorStatusDangerForeground1);
+        color: var(--color-status-danger-foreground-1);
       }
     }
 
     @variant intent-warning {
       & .icon {
-        color: var(--colorStatusWarningForeground3);
+        color: var(--color-status-warning-foreground-3);
       }
     }
 
     @variant intent-success {
       & .icon {
-        color: var(--colorStatusSuccessForeground1);
+        color: var(--color-status-success-foreground-1);
       }
     }
   }

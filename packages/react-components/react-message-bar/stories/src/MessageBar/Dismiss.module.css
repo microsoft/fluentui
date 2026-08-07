@@ -9,7 +9,7 @@
   gap: 10px;
   height: 300px;
   overflow: auto;
-  border: 2px solid var(--colorBrandForeground1);
+  border: 2px solid var(--color-brand-foreground-1);
 }
 
 .buttonGroup {

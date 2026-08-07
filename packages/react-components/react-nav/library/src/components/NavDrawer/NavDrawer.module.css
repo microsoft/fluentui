@@ -48,7 +48,7 @@
 @layer fui.components.l2 {
   /* arg #2 — from useStyles.root */
   .root {
-    background-color: var(--colorNeutralBackground4);
+    background-color: var(--color-neutral-background-4);
     align-items: unset;
   }
 }

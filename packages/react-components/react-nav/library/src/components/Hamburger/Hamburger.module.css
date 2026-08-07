@@ -57,7 +57,7 @@
   .root {
     @apply no-underline;
 
-    background-color: var(--colorNeutralBackground4);
+    background-color: var(--color-neutral-background-4);
 
     /* from `border: 'none'` — see the header */
     border-block-start-style: none;
@@ -66,11 +66,11 @@
     border-inline-end-style: none;
 
     @variant hover {
-      background-color: var(--colorNeutralBackground4Hover);
+      background-color: var(--color-neutral-background-4-hover);
     }
 
     @variant active {
-      background-color: var(--colorNeutralBackground4Pressed);
+      background-color: var(--color-neutral-background-4-pressed);
     }
   }
 }

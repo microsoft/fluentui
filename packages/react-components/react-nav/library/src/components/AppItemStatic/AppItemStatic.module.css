@@ -47,7 +47,7 @@
  * blocks; it is the faithful form, not a DRY regression.
  *
  * ── `background-color: unset` on hover is not a no-op ───────────────────────────────
- * The reset paints `--colorNeutralBackground4` unconditionally, so arg #4's `unset` (=
+ * The reset paints `--color-neutral-background-4` unconditionally, so arg #4's `unset` (=
  * `initial` = transparent) makes a hovered AppItemStatic go TRANSPARENT rather than fall
  * back to the rest colour. Griffel produced exactly that: `.fmaajru:hover` at 0-2-0 beat the
  * reset's plain `.rdi7s9k` at 0-1-0. Here `fui.components.l1` beats `fui.base` before
@@ -71,9 +71,9 @@
     /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
     justify-content: start;
 
-    background-color: var(--colorNeutralBackground4);
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-neutral-background-4);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-2);
 
     /* from `border: 'none'` */
     border-block-start-style: none;
@@ -81,25 +81,25 @@
     border-inline-start-style: none;
     border-inline-end-style: none;
 
-    transition-duration: var(--durationFaster);
-    transition-timing-function: var(--curveLinear);
+    transition-duration: var(--duration-faster);
+    transition-timing-function: var(--ease-linear);
     transition-property: background-color;
 
     /* typographyStyles.body1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
 
     @variant hover {
-      background-color: var(--colorNeutralBackground4Hover);
+      background-color: var(--color-neutral-background-4-hover);
     }
 
     /* the component's own insert focus indicator — not the shared focus-ring utility */
     @variant focus-visible {
       outline-width: var(--spacing-thick);
       outline-style: solid;
-      outline-color: var(--colorStrokeFocus2);
+      outline-color: var(--color-stroke-focus-2);
       outline-offset: calc(var(--spacing-thick) * -1);
     }
   }
@@ -118,10 +118,10 @@
     width: revert;
 
     /* typographyStyles.subtitle2 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase400);
+    font-family: var(--font-base);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-400);
   }
 }
 

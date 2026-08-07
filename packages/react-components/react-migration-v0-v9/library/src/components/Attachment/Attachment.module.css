@@ -50,21 +50,21 @@
   .root {
     @apply relative me-2 mb-2 inline-flex min-h-32 w-full max-w-424 items-center ps-11 pe-3 pt-7 pb-7;
 
-    background-color: var(--colorNeutralBackground6);
-    color: var(--colorNeutralForeground1);
-    box-shadow: 0 0.2rem 0.4rem -0.075rem var(--colorNeutralShadowAmbient);
+    background-color: var(--color-neutral-background-6);
+    color: var(--color-neutral-foreground-1);
+    box-shadow: 0 0.2rem 0.4rem -0.075rem var(--color-neutral-shadow-ambient);
 
     /* Raw px literals, not `strokeWidthThin` / a radius token — written as the base-scale
        product a numeric utility would emit, so they scale with every other length
        (CONVERSION_GUIDE §2 "Pixel literals"; precedent: CarouselNavButton.module.css). */
-    border: calc(1px * var(--base-scale)) solid var(--colorNeutralStroke3);
+    border: calc(1px * var(--base-scale)) solid var(--color-neutral-stroke-3);
     border-radius: calc(4px * var(--base-scale));
 
     /* from createCustomFocusIndicatorStyle(…, { selector: 'focus' }) — the keyborg
        attribute pair, never the native :focus-visible (CONVERSION_GUIDE §2 pseudo-states). */
     @variant focus-visible-fui {
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
     }
   }
 }
@@ -75,7 +75,7 @@
     @apply cursor-pointer;
 
     @variant hover {
-      background-color: var(--colorNeutralBackground4Hover);
+      background-color: var(--color-neutral-background-4-hover);
     }
   }
 
@@ -93,7 +93,7 @@
   .progress-bar {
     @apply h-full max-w-full;
 
-    background-color: var(--colorPaletteLightGreenBackground3);
+    background-color: var(--color-palette-light-green-background-3);
 
     /* `transition: 'width 0.2s'` expanded to longhands. `width` is already a longhand
        property name, so the transition set is exactly one property (transition-audit.md). */

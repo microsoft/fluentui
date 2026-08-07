@@ -51,8 +51,8 @@
     /* from createCustomFocusIndicatorStyle(…, { selector: 'focus' }) — the keyborg
        attribute, never the native :focus-visible (CONVERSION_GUIDE §2 pseudo-states). */
     @variant focus-visible-fui {
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
     }
   }
 }
@@ -63,20 +63,20 @@
     @apply cursor-pointer;
 
     @variant hover {
-      background-color: var(--colorNeutralBackground1Hover);
+      background-color: var(--color-neutral-background-1-hover);
     }
   }
 
   /* from useStyles.rootSelected */
   .root-selected {
-    background-color: var(--colorNeutralBackground1Selected);
+    background-color: var(--color-neutral-background-1-selected);
   }
 }
 
 @layer fui.components.l2 {
   /* from useStyles.contentWrapper — applied over ItemLayout's `.content-wrapper` */
   .content-wrapper {
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
   }
 
   /* from useStyles.truncate — applied over ItemLayout's `.header` and `.content-wrapper` */

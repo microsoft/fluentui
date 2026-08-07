@@ -2,10 +2,10 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .message {
-  background-color: var(--colorNeutralBackground1);
-  border: var(--stroke-width-thick) solid var(--colorStatusSuccessBorder1);
+  background-color: var(--color-neutral-background-1);
+  border: var(--stroke-width-thick) solid var(--color-status-success-border-1);
   padding: 20px;
-  font-size: var(--fontSizeBase600);
+  font-size: var(--text-base-600);
   position: fixed;
   top: 0;
   left: 0;

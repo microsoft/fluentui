@@ -64,7 +64,7 @@
   }
 
   100% {
-    background-color: var(--colorCompoundBrandForeground1);
+    background-color: var(--color-compound-brand-foreground-1);
   }
 }
 
@@ -77,7 +77,7 @@
 
   100% {
     opacity: 1;
-    color: var(--colorNeutralForeground2BrandSelected);
+    color: var(--color-neutral-foreground-2-brand-selected);
   }
 }
 
@@ -85,7 +85,7 @@
 @keyframes nav-category-item-icon-regular-exit {
   0% {
     opacity: 1;
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
   }
 
   100% {
@@ -103,9 +103,9 @@
     /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
     justify-content: start;
 
-    background-color: var(--colorNeutralBackground4);
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-neutral-background-4);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-2);
 
     /* from `border: 'none'` */
     border-block-start-style: none;
@@ -113,25 +113,25 @@
     border-inline-start-style: none;
     border-inline-end-style: none;
 
-    transition-duration: var(--durationFaster);
-    transition-timing-function: var(--curveLinear);
+    transition-duration: var(--duration-faster);
+    transition-timing-function: var(--ease-linear);
     transition-property: background-color;
 
     /* typographyStyles.body1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
 
     @variant hover {
-      background-color: var(--colorNeutralBackground4Hover);
+      background-color: var(--color-neutral-background-4-hover);
     }
 
     /* the component's own insert focus indicator — not the shared focus-ring utility */
     @variant focus-visible {
       outline-width: var(--spacing-thick);
       outline-style: solid;
-      outline-color: var(--colorStrokeFocus2);
+      outline-color: var(--color-stroke-focus-2);
       outline-offset: calc(var(--spacing-thick) * -1);
     }
   }
@@ -162,13 +162,13 @@
       @apply absolute -ms-horizontal-l h-vertical-xl w-horizontal-xs;
 
       content: '';
-      background-color: var(--colorCompoundBrandForeground1);
-      border-radius: var(--borderRadiusCircular);
+      background-color: var(--color-compound-brand-foreground-1);
+      border-radius: var(--radius-circular);
 
       animation-name: nav-category-item-indicator-enter;
-      animation-duration: var(--durationFaster);
+      animation-duration: var(--duration-faster);
       animation-fill-mode: both;
-      animation-timing-function: var(--curveLinear);
+      animation-timing-function: var(--ease-linear);
     }
 
     @variant forced-colors {
@@ -176,7 +176,7 @@
         /* D6: the hardcoded 2px is upstream's, not a stroke-width token */
         outline-width: 2px;
         outline-style: solid;
-        outline-color: var(--colorTransparentStroke);
+        outline-color: var(--color-transparent-stroke);
         outline-offset: -2px;
       }
     }
@@ -186,10 +186,10 @@
 @layer fui.components.l1 {
   /* arg #6 — from the shared useContentStyles.selected (typographyStyles.body1Strong) */
   .selected {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-300);
   }
 }
 
@@ -251,16 +251,16 @@
       display: inline;
 
       animation-name: nav-category-item-icon-filled-enter;
-      animation-duration: var(--durationFaster);
+      animation-duration: var(--duration-faster);
       animation-fill-mode: both;
-      animation-timing-function: var(--curveLinear);
+      animation-timing-function: var(--ease-linear);
     }
 
     & :global(.fui-Icon-regular) {
       animation-name: nav-category-item-icon-regular-exit;
-      animation-duration: var(--durationFaster);
+      animation-duration: var(--duration-faster);
       animation-fill-mode: both;
-      animation-timing-function: var(--curveLinear);
+      animation-timing-function: var(--ease-linear);
     }
   }
 }

@@ -39,7 +39,7 @@
     border-block-end-style: solid;
     border-inline-start-style: solid;
 
-    background-color: var(--colorNeutralBackground1);
-    box-shadow: 0 1px 1px 1px var(--colorNeutralShadowKey);
+    background-color: var(--color-neutral-background-1);
+    box-shadow: 0 1px 1px 1px var(--color-neutral-shadow-key);
   }
 }

@@ -15,8 +15,8 @@
   .root {
     @apply block;
 
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
     /* unitless ratio, not a length — no base-scale product */
     line-height: 1;
   }

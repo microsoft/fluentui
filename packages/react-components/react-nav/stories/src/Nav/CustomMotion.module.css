@@ -8,7 +8,7 @@
   height: 600px;
   position: relative;
   display: flex;
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
 }
 
 .nav {

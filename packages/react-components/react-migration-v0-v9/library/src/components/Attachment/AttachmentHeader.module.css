@@ -15,8 +15,8 @@
   .root {
     @apply block;
 
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
     /* unitless ratio, not a length — no base-scale product */
     line-height: 1.4286;
   }

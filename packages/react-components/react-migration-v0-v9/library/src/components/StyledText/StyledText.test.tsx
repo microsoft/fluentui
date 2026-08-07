@@ -22,7 +22,7 @@ import styles from './StyledText.module.css';
  *     key the component uses, so a renamed or dropped slice fails.
  *   - WHAT declarations that class carries → asserted against the build-emitted
  *     `dist/styles.css` by the conversion report's computed-style probe. The `size` cases in
- *     particular used to assert `line-height: var(--lineHeightBase400)` etc.; that token
+ *     particular used to assert `line-height: var(--leading-base-400)` etc.; that token
  *     mapping is now pinned in StyledText.module.css and covered by the probe.
  *
  * Same split react-text made for its 30 equivalent assertions (reports/phase2-batch2.md).

@@ -103,9 +103,9 @@
     /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
     justify-content: start;
 
-    background-color: var(--colorNeutralBackground4);
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-neutral-background-4);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-2);
 
     /* from `border: 'none'` */
     border-block-start-style: none;
@@ -113,25 +113,25 @@
     border-inline-start-style: none;
     border-inline-end-style: none;
 
-    transition-duration: var(--durationFaster);
-    transition-timing-function: var(--curveLinear);
+    transition-duration: var(--duration-faster);
+    transition-timing-function: var(--ease-linear);
     transition-property: background-color;
 
     /* typographyStyles.body1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
 
     @variant hover {
-      background-color: var(--colorNeutralBackground4Hover);
+      background-color: var(--color-neutral-background-4-hover);
     }
 
     /* the component's own insert focus indicator — not the shared focus-ring utility */
     @variant focus-visible {
       outline-width: var(--spacing-thick);
       outline-style: solid;
-      outline-color: var(--colorStrokeFocus2);
+      outline-color: var(--color-stroke-focus-2);
       outline-offset: calc(var(--spacing-thick) * -1);
     }
   }
@@ -157,17 +157,17 @@
 
     text-align: unset;
 
-    background-color: var(--colorNeutralBackground4);
-    transition-duration: var(--durationFaster);
-    transition-timing-function: var(--curveLinear);
+    background-color: var(--color-neutral-background-4);
+    transition-duration: var(--duration-faster);
+    transition-timing-function: var(--ease-linear);
     transition-property: background-color;
 
     @variant hover {
-      background-color: var(--colorNeutralBackground4Hover);
+      background-color: var(--color-neutral-background-4-hover);
     }
 
     @variant active {
-      background-color: var(--colorNeutralBackground4Pressed);
+      background-color: var(--color-neutral-background-4-pressed);
     }
   }
 }

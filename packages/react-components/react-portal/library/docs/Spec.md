@@ -82,7 +82,7 @@ const customElement = document.createElement('div');
 ```css
 /* PortalContent.module.css */
 .portal-content {
-  color: var(--colorNeutralForeground1);
+  color: var(--color-neutral-foreground-1);
 }
 ```
 

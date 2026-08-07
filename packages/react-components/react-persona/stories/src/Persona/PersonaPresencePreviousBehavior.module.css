@@ -2,11 +2,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .statusAway {
-  color: var(--colorPaletteMarigoldBackground3);
+  color: var(--color-palette-marigold-background-3);
 }
 
 .statusOffline {
-  color: var(--colorNeutralForeground3);
+  color: var(--color-neutral-foreground-3);
 }
 
 .root {
