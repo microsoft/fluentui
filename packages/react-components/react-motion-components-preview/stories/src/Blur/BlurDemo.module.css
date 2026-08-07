@@ -19,14 +19,14 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
-  background-color: var(--colorNeutralBackground2);
-  border-radius: var(--borderRadiusMedium);
+  background-color: var(--color-neutral-background-2);
+  border-radius: var(--radius-medium);
 }
 
 .imageCard {
   position: relative;
   aspect-ratio: 4/3;
-  border-radius: var(--borderRadiusMedium);
+  border-radius: var(--radius-medium);
   overflow: hidden;
   cursor: pointer;
 }
@@ -49,18 +49,18 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--colorBackgroundOverlay);
+  background-color: var(--color-background-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--colorNeutralForegroundInverted);
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightSemibold);
+  color: var(--color-neutral-foreground-inverted);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-semibold);
 }
 
 .overlayButton {
-  background-color: var(--colorSubtleBackgroundInverted);
+  background-color: var(--color-subtle-background-inverted);
   padding: 8px 16px;
-  border-radius: var(--borderRadiusMedium);
-  border: 1px solid var(--colorNeutralStrokeAlpha2);
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--color-neutral-stroke-alpha-2);
 }

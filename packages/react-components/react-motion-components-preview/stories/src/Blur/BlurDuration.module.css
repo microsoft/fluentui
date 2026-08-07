@@ -19,13 +19,13 @@
   width: 200px;
   height: 120px;
   padding: 20px;
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fontSizeBase300);
+  font-size: var(--text-base-300);
   text-align: center;
 }
 

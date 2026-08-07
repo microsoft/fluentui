@@ -20,9 +20,9 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: var(--spacing-horizontal-l);
   gap: var(--spacing-vertical-l);
 }
@@ -34,11 +34,11 @@
 }
 
 .sectionHeader {
-  font-size: var(--fontSizeBase200);
-  font-weight: var(--fontWeightSemibold);
-  color: var(--colorNeutralForeground2);
+  font-size: var(--text-base-200);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-foreground-2);
   margin-bottom: var(--spacing-vertical-xs);
-  border-bottom: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
+  border-bottom: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
   padding-bottom: var(--spacing-vertical-xs);
 }
 
@@ -71,15 +71,15 @@
 }
 
 .sliderLabel {
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightMedium);
-  color: var(--colorNeutralForeground1);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-foreground-1);
 }
 
 .valueDisplay {
-  font-size: var(--fontSizeBase200);
-  color: var(--colorNeutralForeground2);
-  font-family: var(--fontFamilyMonospace);
+  font-size: var(--text-base-200);
+  color: var(--color-neutral-foreground-2);
+  font-family: var(--font-monospace);
 }
 
 .sliderHeader {

@@ -30,7 +30,7 @@
   perspective-origin: center center;
   height: 140px;
   cursor: pointer;
-  border-radius: var(--borderRadiusMedium);
+  border-radius: var(--radius-medium);
   transition: scale 300ms cubic-bezier(0, 0, 0, 1);
 }
 
@@ -41,24 +41,24 @@
 .patternCard {
   height: 100%;
   width: 100%;
-  border: 2px solid var(--colorNeutralStroke1);
+  border: 2px solid var(--color-neutral-stroke-1);
   /* Override transparent background from outline appearance */
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
 }
 
 .patternCard:hover {
   /* Override transparent hover background */
-  background-color: var(--colorNeutralBackground1Hover);
+  background-color: var(--color-neutral-background-1-hover);
 }
 
 .demoIcon {
   width: 48px;
   height: 48px;
-  border-radius: var(--borderRadiusMedium);
+  border-radius: var(--radius-medium);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
   font-weight: bold;
-  color: var(--colorNeutralForegroundOnBrand);
+  color: var(--color-neutral-foreground-on-brand);
 }

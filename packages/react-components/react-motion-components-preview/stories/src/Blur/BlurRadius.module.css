@@ -18,11 +18,11 @@
 }
 
 .cellNormal {
-  font-weight: var(--fontWeightRegular);
+  font-weight: var(--font-weight-regular);
 }
 
 .cellBold {
-  font-weight: var(--fontWeightBold);
+  font-weight: var(--font-weight-bold);
 }
 
 .controls {

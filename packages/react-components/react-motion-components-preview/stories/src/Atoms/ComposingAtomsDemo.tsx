@@ -103,8 +103,8 @@ const stackblitzExampleCss = `.container {
 
 .box {
   padding: 24px 32px;
-  background-color: var(--colorNeutralBackground3);
-  border: 1px solid var(--colorNeutralStroke1);
+  background-color: var(--color-neutral-background-3);
+  border: 1px solid var(--color-neutral-stroke-1);
   border-radius: 8px;
   font-size: 18px;
   font-weight: 600;

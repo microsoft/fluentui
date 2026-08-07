@@ -15,8 +15,8 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 20px;
   flex: 0 0 auto;
 }
@@ -30,7 +30,7 @@
 
 .directionButton {
   height: 44px;
-  font-size: var(--fontSizeBase200);
+  font-size: var(--text-base-200);
   min-width: 44px;
 }
 
@@ -38,19 +38,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fontSizeBase100);
-  color: var(--colorNeutralForeground3);
+  font-size: var(--text-base-100);
+  color: var(--color-neutral-foreground-3);
 }
 
 .demo {
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
+  border-radius: var(--radius-medium);
   padding: 20px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--colorNeutralBackground2);
+  background-color: var(--color-neutral-background-2);
   min-width: 300px;
   min-height: 200px;
   flex: 1 1 300px;
@@ -59,10 +59,10 @@
 
 .card {
   padding: 20px;
-  background-color: var(--colorBrandBackground);
-  color: var(--colorNeutralForegroundOnBrand);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow8);
+  background-color: var(--color-brand-background);
+  color: var(--color-neutral-foreground-on-brand);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-8);
   max-width: 300px;
   text-align: center;
 }

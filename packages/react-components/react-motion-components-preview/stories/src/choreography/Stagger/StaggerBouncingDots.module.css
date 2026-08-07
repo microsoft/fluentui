@@ -13,10 +13,10 @@
   flex-direction: column;
   gap: var(--spacing-vertical-m);
   padding: var(--spacing-horizontal-m);
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
-  box-shadow: var(--shadow8);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
+  box-shadow: var(--shadow-8);
 }
 
 .controlsRow {
@@ -39,15 +39,15 @@
   flex-direction: column;
   gap: var(--spacing-vertical-m);
   padding: var(--spacing-horizontal-l);
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
 }
 
 .spinnerTitle {
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightSemibold);
-  color: var(--colorNeutralForeground1);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-foreground-1);
   margin: 0;
 }
 
@@ -69,5 +69,5 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: var(--colorBrandBackground);
+  background-color: var(--color-brand-background);
 }

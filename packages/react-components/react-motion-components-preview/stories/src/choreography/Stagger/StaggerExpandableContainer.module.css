@@ -24,8 +24,8 @@
 }
 
 .sliderLabel {
-  font-size: var(--fontSizeBase200);
-  font-weight: var(--fontWeightSemibold);
+  font-size: var(--text-base-200);
+  font-weight: var(--font-weight-semibold);
   min-width: 90px;
   flex-shrink: 0;
 }
@@ -35,9 +35,9 @@
 }
 
 .listContainer {
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
 }
 
 .list {
@@ -50,7 +50,7 @@
 .item {
   display: flex;
   align-items: center;
-  border-radius: var(--borderRadiusSmall);
+  border-radius: var(--radius-small);
   min-height: 36px;
   justify-content: flex-start;
 }

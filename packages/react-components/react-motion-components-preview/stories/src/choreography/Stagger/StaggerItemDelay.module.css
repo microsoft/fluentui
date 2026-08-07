@@ -13,9 +13,9 @@
   flex-direction: column;
   grid-area: controls;
   gap: var(--spacing-vertical-m);
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
   min-width: 300px;
 }
@@ -40,8 +40,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--colorNeutralBackgroundStatic);
-  color: var(--colorNeutralForegroundInverted);
+  background-color: var(--color-neutral-background-static);
+  color: var(--color-neutral-foreground-inverted);
   width: 40px;
   height: 100px;
   margin: var(--spacing-horizontal-xxs);

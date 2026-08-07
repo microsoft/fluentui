@@ -19,28 +19,28 @@
   width: 250px;
   height: 180px;
   padding: 20px;
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fontSizeBase400);
+  font-size: var(--text-base-400);
   text-align: center;
   background-image:
     linear-gradient(
       45deg,
-      var(--colorNeutralBackground3) 25%,
+      var(--color-neutral-background-3) 25%,
       transparent 25%,
       transparent 75%,
-      var(--colorNeutralBackground3) 75%
+      var(--color-neutral-background-3) 75%
     ),
     linear-gradient(
       45deg,
-      var(--colorNeutralBackground3) 25%,
+      var(--color-neutral-background-3) 25%,
       transparent 25%,
       transparent 75%,
-      var(--colorNeutralBackground3) 75%
+      var(--color-neutral-background-3) 75%
     );
   background-size: 20px 20px;
   background-position:

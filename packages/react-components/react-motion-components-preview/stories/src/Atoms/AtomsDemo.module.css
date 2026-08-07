@@ -4,8 +4,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
+  border-radius: var(--radius-medium);
   margin-top: var(--spacing-vertical-xxl);
   margin-bottom: var(--spacing-vertical-xxl);
   overflow: hidden;
@@ -17,8 +17,8 @@
   gap: var(--spacing-horizontal-l);
   flex-wrap: wrap;
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
-  background-color: var(--colorNeutralBackground2);
-  border-bottom: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
+  background-color: var(--color-neutral-background-2);
+  border-bottom: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
 .body {
@@ -37,21 +37,21 @@
   justify-content: center;
   min-height: 120px;
   flex: 0 0 200px;
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
   padding: var(--spacing-vertical-xl);
 }
 
 .demoBox {
   width: 100px;
   height: 80px;
-  background-color: var(--colorNeutralBackground3);
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
-  border-radius: var(--borderRadiusMedium);
+  background-color: var(--color-neutral-background-3);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
+  border-radius: var(--radius-medium);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--colorNeutralForeground1);
-  font-weight: var(--fontWeightSemibold);
+  color: var(--color-neutral-foreground-1);
+  font-weight: var(--font-weight-semibold);
 }
 
 .codeArea {
@@ -59,18 +59,18 @@
   min-width: 0;
   margin: 0;
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
-  background-color: var(--colorNeutralBackground3);
-  border-left: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
+  background-color: var(--color-neutral-background-3);
+  border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   overflow: auto;
-  font-family: var(--fontFamilyMonospace);
-  font-size: var(--fontSizeBase100);
-  line-height: var(--lineHeightBase200);
-  color: var(--colorNeutralForeground1);
+  font-family: var(--font-monospace);
+  font-size: var(--text-base-100);
+  line-height: var(--leading-base-200);
+  color: var(--color-neutral-foreground-1);
 }
 
 @media (max-width: 600px) {
   .codeArea {
     border-left: none;
-    border-top: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
+    border-top: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   }
 }

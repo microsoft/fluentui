@@ -14,10 +14,10 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
-  box-shadow: var(--shadow8);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
+  box-shadow: var(--shadow-8);
 }
 
 .userCard {

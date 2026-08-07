@@ -26,22 +26,22 @@
   align-items: center;
   gap: var(--spacing-vertical-m);
   padding: var(--spacing-vertical-xl);
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
 }
 
 .title {
   margin: 0;
-  font-weight: var(--fontWeightSemibold);
-  font-size: var(--fontSizeBase300);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-base-300);
 }
 
 .duration {
   margin: 0;
-  font-size: var(--fontSizeBase200);
-  color: var(--colorNeutralForeground3);
-  font-family: var(--fontFamilyMonospace);
+  font-size: var(--text-base-200);
+  color: var(--color-neutral-foreground-3);
+  font-family: var(--font-monospace);
 }
 
 .demoArea {
@@ -55,18 +55,18 @@
 .demoBox {
   width: 80px;
   height: 50px;
-  background-color: var(--colorBrandBackground);
-  border-radius: var(--borderRadiusSmall);
+  background-color: var(--color-brand-background);
+  border-radius: var(--radius-small);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--colorNeutralForegroundOnBrand);
-  font-size: var(--fontSizeBase200);
-  font-weight: var(--fontWeightSemibold);
+  color: var(--color-neutral-foreground-on-brand);
+  font-size: var(--text-base-200);
+  font-weight: var(--font-weight-semibold);
 }
 
 .button {
   min-width: auto;
   padding: var(--spacing-vertical-xs) var(--spacing-horizontal-m);
-  font-size: var(--fontSizeBase200);
+  font-size: var(--text-base-200);
 }

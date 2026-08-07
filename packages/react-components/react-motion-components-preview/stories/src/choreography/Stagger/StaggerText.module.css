@@ -13,9 +13,9 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
@@ -39,7 +39,7 @@
   font-size: 100px;
   color: transparent;
   margin: var(--spacing-horizontal-xxs);
-  -webkit-text-stroke: 4px var(--tokens-colorBrandStroke2, var(--colorBrandStroke2));
+  -webkit-text-stroke: 4px var(--tokens-colorBrandStroke2, var(--color-brand-stroke-2));
   -webkit-filter: blur(1.2px);
   filter: blur(1.2px);
 }

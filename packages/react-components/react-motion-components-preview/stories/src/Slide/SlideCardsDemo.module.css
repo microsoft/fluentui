@@ -31,5 +31,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fontSizeBase600);
+  font-size: var(--text-base-600);
 }

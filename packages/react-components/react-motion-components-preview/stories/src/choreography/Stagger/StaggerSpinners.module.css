@@ -13,10 +13,10 @@
   flex-direction: column;
   gap: var(--spacing-vertical-m);
   padding: var(--spacing-horizontal-m);
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
-  box-shadow: var(--shadow8);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
+  box-shadow: var(--shadow-8);
 }
 
 .spinnerSection {
@@ -24,15 +24,15 @@
   flex-direction: column;
   gap: var(--spacing-vertical-m);
   padding: var(--spacing-horizontal-l);
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
-  border-radius: var(--borderRadiusMedium);
-  background-color: var(--colorNeutralBackground1);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-neutral-background-1);
 }
 
 .spinnerTitle {
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightSemibold);
-  color: var(--colorNeutralForeground1);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-foreground-1);
   margin: 0;
 }
 
@@ -69,8 +69,8 @@
 .arc {
   position: absolute;
   border-radius: 50%;
-  border-top-color: var(--colorBrandBackground);
-  border-bottom-color: var(--colorBrandBackground);
+  border-top-color: var(--color-brand-background);
+  border-bottom-color: var(--color-brand-background);
 }
 
 .arc1 {
@@ -83,14 +83,14 @@
   width: 45px;
   height: 45px;
   border: 4px solid transparent;
-  border-top-color: var(--colorBrandBackground);
+  border-top-color: var(--color-brand-background);
 }
 
 .arc3 {
   width: 30px;
   height: 30px;
   border: 4px solid transparent;
-  border-top-color: var(--colorBrandBackground);
+  border-top-color: var(--color-brand-background);
 }
 
 .dotOrbitSpinner {
@@ -107,7 +107,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: var(--colorBrandBackground);
+  background-color: var(--color-brand-background);
   transform: translate(-50%, -50%) translateY(-22px);
   transform-origin: center center;
   will-change: transform;
@@ -123,8 +123,8 @@
 .growingBar {
   width: 6px;
   height: 100%;
-  background-color: var(--colorBrandBackground);
-  border-radius: var(--borderRadiusSmall);
+  background-color: var(--color-brand-background);
+  border-radius: var(--radius-small);
 }
 
 .slidingBlocksSpinner {
@@ -136,6 +136,6 @@
 .slidingBlock {
   width: 16px;
   height: 16px;
-  background-color: var(--colorBrandBackground);
-  border-radius: var(--borderRadiusSmall);
+  background-color: var(--color-brand-background);
+  border-radius: var(--radius-small);
 }

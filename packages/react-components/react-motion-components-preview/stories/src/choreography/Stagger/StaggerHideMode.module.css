@@ -12,9 +12,9 @@
   gap: var(--spacing-horizontal-m);
   align-items: center;
   padding: var(--spacing-vertical-m);
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke2);
-  border-radius: var(--borderRadiusSmall);
-  background-color: var(--colorNeutralBackground2);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
+  border-radius: var(--radius-small);
+  background-color: var(--color-neutral-background-2);
 }
 
 .comparison {
@@ -30,9 +30,9 @@
 }
 
 .sectionTitle {
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightSemibold);
-  color: var(--colorNeutralForeground1);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-foreground-1);
   margin-bottom: var(--spacing-vertical-xs);
 }
 
@@ -42,25 +42,25 @@
   align-items: flex-start;
   gap: var(--spacing-horizontal-s);
   padding: var(--spacing-vertical-m);
-  border: var(--stroke-width-thin) dashed var(--colorNeutralStroke2);
-  border-radius: var(--borderRadiusSmall);
+  border: var(--stroke-width-thin) dashed var(--color-neutral-stroke-2);
+  border-radius: var(--radius-small);
   min-height: 80px;
   position: relative;
 }
 
 .description {
-  font-size: var(--fontSizeBase200);
-  color: var(--colorNeutralForeground3);
+  font-size: var(--text-base-200);
+  color: var(--color-neutral-foreground-3);
   margin-top: var(--spacing-vertical-xs);
 }
 
 .badge {
-  font-size: var(--fontSizeBase100);
-  font-weight: var(--fontWeightMedium);
-  color: var(--colorBrandForeground1);
-  background-color: var(--colorBrandBackground2);
+  font-size: var(--text-base-100);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-brand-foreground-1);
+  background-color: var(--color-brand-background-2);
   padding: var(--spacing-vertical-xxs) var(--spacing-horizontal-xs);
-  border-radius: var(--borderRadiusSmall);
+  border-radius: var(--radius-small);
   position: absolute;
   top: var(--spacing-vertical-xs);
   right: var(--spacing-horizontal-xs);
