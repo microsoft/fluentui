@@ -88,19 +88,19 @@
 
   /* from useCurrentItemButtonStyles.base — currentItemButton arg #2 */
   .current-item-button {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* `shorthands.borderStyle('none')` — the four style longhands, i.e. `border-style` */
     border-style: none;
 
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
     color: inherit;
 
     @apply grow overflow-visible;
 
     font-family: inherit;
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
 
     /* `padding: '0 4px 0 10px'` → block 0, inline-start 10px (MNudge), inline-end 4px (XS) */
     @apply py-0 ps-horizontal-m-nudge pe-horizontal-xs;
@@ -117,12 +117,12 @@
    */
   .has-header-click-callback {
     @variant hover {
-      background-color: var(--colorBrandBackgroundInvertedHover);
-      color: var(--colorBrandForegroundOnLightHover);
+      background-color: var(--color-brand-background-inverted-hover);
+      color: var(--color-brand-foreground-on-light-hover);
 
       @apply cursor-pointer;
 
-      outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+      outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
     }
 
     /* `&:hover:active` — an INTERSECTION, written as nested variants so the compiled
@@ -131,12 +131,12 @@
        component's Griffel source never emitted. */
     @variant hover {
       @variant active {
-        background-color: var(--colorBrandBackgroundInvertedPressed);
-        color: var(--colorBrandForegroundOnLightPressed);
+        background-color: var(--color-brand-background-inverted-pressed);
+        color: var(--color-brand-foreground-on-light-pressed);
 
         @apply cursor-pointer;
 
-        outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+        outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
       }
     }
   }
@@ -148,34 +148,34 @@
 
   /* from useNavigationButtonStyles.base */
   .navigation-button {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* `border: 'none'` — the style longhands are the half that carries it for layout and
        paint (react-drawer/InlineDrawer precedent) */
     border-style: none;
 
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground1);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-1);
 
     @apply relative block h-28 min-h-28 w-28 min-w-28 overflow-visible p-0 text-center;
 
     font-family: inherit;
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
     line-height: calc(28px * var(--base-scale));
 
     @variant hover {
-      background-color: var(--colorBrandBackgroundInvertedHover);
-      color: var(--colorBrandForegroundOnLightHover);
+      background-color: var(--color-brand-background-inverted-hover);
+      color: var(--color-brand-foreground-on-light-hover);
 
       @apply cursor-pointer;
 
-      outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+      outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
     }
 
     @variant hover {
       @variant active {
-        background-color: var(--colorBrandBackgroundInvertedPressed);
-        color: var(--colorBrandForegroundOnLightPressed);
+        background-color: var(--color-brand-background-inverted-pressed);
+        color: var(--color-brand-foreground-on-light-pressed);
       }
     }
   }
@@ -197,18 +197,18 @@
 
   /* from useItemButtonStyles.base — itemButton arg #2 */
   .item-button {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* `border: 'none'` — style longhands */
     border-style: none;
 
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground3);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-3);
 
     @apply h-40 min-h-40 w-40 min-w-40 overflow-visible p-0;
 
     font-family: inherit;
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
     line-height: calc(40px * var(--base-scale));
 
     /* `margin: '0 12px 0 0'` → block 0, inline-end 12px (the M step), inline-start 0.
@@ -226,16 +226,16 @@
     }
 
     & div {
-      font-weight: var(--fontWeightRegular);
+      font-weight: var(--font-weight-regular);
     }
 
     @variant hover {
-      background-color: var(--colorBrandBackgroundInvertedHover);
-      color: var(--colorNeutralForeground1Static);
+      background-color: var(--color-brand-background-inverted-hover);
+      color: var(--color-neutral-foreground-1-static);
 
       @apply cursor-pointer;
 
-      outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+      outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
 
       @variant forced-colors {
         background-color: Window;
@@ -247,7 +247,7 @@
 
     @variant hover {
       @variant active {
-        background-color: var(--colorBrandBackgroundInvertedPressed);
+        background-color: var(--color-brand-background-inverted-pressed);
 
         @variant forced-colors {
           background-color: Window;
@@ -260,9 +260,9 @@
 
   /* from useCurrentStyles.highlightCurrent — itemButton arg #3 (highlightCurrent) */
   .highlight-current {
-    background-color: var(--colorBrandBackground);
-    color: var(--colorNeutralForegroundOnBrand);
-    font-weight: var(--fontWeightSemibold);
+    background-color: var(--color-brand-background);
+    color: var(--color-neutral-foreground-on-brand);
+    font-weight: var(--font-weight-semibold);
 
     @variant forced-colors {
       background-color: WindowText;
@@ -277,8 +277,8 @@
      */
     &:where(:hover),
     &:where(:hover):where(:active) {
-      background-color: var(--colorBrandBackground);
-      color: var(--colorNeutralForegroundOnBrand);
+      background-color: var(--color-brand-background);
+      color: var(--color-neutral-foreground-on-brand);
 
       @variant forced-colors {
         background-color: WindowText;
@@ -290,9 +290,9 @@
 
   /* from useSelectedStyles.highlightSelected — itemButton arg #4 (highlightSelected) */
   .highlight-selected {
-    background-color: var(--colorBrandBackgroundInvertedSelected);
-    color: var(--colorNeutralForeground1Static);
-    font-weight: var(--fontWeightSemibold);
+    background-color: var(--color-brand-background-inverted-selected);
+    color: var(--color-neutral-foreground-1-static);
+    font-weight: var(--font-weight-semibold);
 
     @variant forced-colors {
       background-color: Highlight;
@@ -301,12 +301,12 @@
     }
 
     & div {
-      font-weight: var(--fontWeightSemibold);
+      font-weight: var(--font-weight-semibold);
     }
 
     @variant hover {
-      background-color: var(--colorBrandBackgroundInvertedSelected);
-      color: var(--colorNeutralForeground1Static);
+      background-color: var(--color-brand-background-inverted-selected);
+      color: var(--color-neutral-foreground-1-static);
 
       @variant forced-colors {
         background-color: Highlight;
@@ -317,7 +317,7 @@
 
     @variant hover {
       @variant active {
-        background-color: var(--colorBrandBackgroundInvertedPressed);
+        background-color: var(--color-brand-background-inverted-pressed);
       }
     }
   }
@@ -336,7 +336,7 @@
     &,
     &:where(:disabled),
     & button {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
 
       @apply pointer-events-none;
     }

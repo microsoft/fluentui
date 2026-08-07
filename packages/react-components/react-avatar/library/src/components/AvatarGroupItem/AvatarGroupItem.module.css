@@ -78,7 +78,7 @@
 
   /* arg 3a — from useRootStyles.nonOverflowItem */
   .non-overflow-item {
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
   }
 
   /*
@@ -106,15 +106,15 @@
    * the Griffel trigger button stamps no attributes.
    */
   .stack-thick {
-    box-shadow: 0 0 0 var(--spacing-thick) var(--colorNeutralBackground2);
+    box-shadow: 0 0 0 var(--spacing-thick) var(--color-neutral-background-2);
   }
 
   .stack-thicker {
-    box-shadow: 0 0 0 var(--spacing-thicker) var(--colorNeutralBackground2);
+    box-shadow: 0 0 0 var(--spacing-thicker) var(--color-neutral-background-2);
   }
 
   .stack-thickest {
-    box-shadow: 0 0 0 var(--spacing-thickest) var(--colorNeutralBackground2);
+    box-shadow: 0 0 0 var(--spacing-thickest) var(--color-neutral-background-2);
   }
 
   /*
@@ -270,11 +270,11 @@
   .overflow-label {
     @apply ms-horizontal-s;
 
-    color: var(--colorNeutralForeground1);
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    color: var(--color-neutral-foreground-1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 }
 

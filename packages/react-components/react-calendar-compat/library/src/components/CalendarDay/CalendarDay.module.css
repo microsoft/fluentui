@@ -90,16 +90,16 @@
   .month-and-year {
     @apply inline-block grow items-center overflow-hidden text-ellipsis whitespace-nowrap;
 
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* `shorthands.borderStyle('none')` — the four style longhands, i.e. `border-style` */
     border-style: none;
 
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground1);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-1);
     font-family: inherit;
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
     line-height: calc(28px * var(--base-scale));
 
     /* `padding: '0 4px 0 10px'` → block 0, inline-start 10px (MNudge), inline-end 4px (XS).
@@ -118,12 +118,12 @@
    */
   .header-is-clickable {
     @variant hover {
-      background-color: var(--colorBrandBackgroundInvertedHover);
-      color: var(--colorBrandForegroundOnLightHover);
+      background-color: var(--color-brand-background-inverted-hover);
+      color: var(--color-brand-foreground-on-light-hover);
 
       @apply cursor-pointer;
 
-      outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+      outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
     }
 
     /* `&:hover:active` — an INTERSECTION, written as nested variants so the compiled
@@ -132,12 +132,12 @@
        component's Griffel source never emitted. */
     @variant hover {
       @variant active {
-        background-color: var(--colorBrandBackgroundInvertedPressed);
-        color: var(--colorBrandForegroundOnLightPressed);
+        background-color: var(--color-brand-background-inverted-pressed);
+        color: var(--color-brand-foreground-on-light-pressed);
 
         @apply cursor-pointer;
 
-        outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+        outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
       }
     }
   }
@@ -149,33 +149,33 @@
 
   /* from useHeaderIconButtonStyles.base */
   .header-icon-button {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* `shorthands.borderStyle('none')` — the four style longhands */
     border-style: none;
 
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground3);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-3);
 
     @apply relative block h-28 w-28 overflow-visible p-0 text-center;
 
     font-family: inherit;
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
     line-height: calc(28px * var(--base-scale));
 
     @variant hover {
-      background-color: var(--colorBrandBackgroundInvertedHover);
-      color: var(--colorBrandForegroundOnLightHover);
+      background-color: var(--color-brand-background-inverted-hover);
+      color: var(--color-brand-foreground-on-light-hover);
 
       @apply cursor-pointer;
 
-      outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+      outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
     }
 
     @variant hover {
       @variant active {
-        background-color: var(--colorBrandBackgroundInvertedPressed);
-        color: var(--colorBrandForegroundOnLightPressed);
+        background-color: var(--color-brand-background-inverted-pressed);
+        color: var(--color-brand-foreground-on-light-pressed);
       }
     }
   }
@@ -196,7 +196,7 @@
     &,
     &:where(:disabled),
     & button {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
 
       @apply pointer-events-none;
 

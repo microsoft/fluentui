@@ -7,8 +7,8 @@
   gap: var(--spacing-vertical-s);
   margin-bottom: var(--spacing-vertical-l);
   padding: var(--spacing-vertical-m);
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
 }
 
 .list {

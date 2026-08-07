@@ -105,15 +105,15 @@
 @layer fui.components.l1 {
   .root {
     /* from useStyles.root — root arg #2 */
-    color: var(--colorNeutralForeground1);
-    background-color: var(--colorTransparentBackground);
+    color: var(--color-neutral-foreground-1);
+    background-color: var(--color-transparent-background);
 
     /* `margin: '0'` — nothing in this component overrides a single margin side, so the
        compiled shorthand is kept (CONVERSION_GUIDE §2 expands shorthands only where a
        longhand competes; the button's padding below is the case that does). */
     @apply m-0;
 
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     /*
      * from useStyles.rootInline — root arg #3.
@@ -128,7 +128,7 @@
     /* from useStyles.rootDisabled — root arg #4; re-sets `color` from arg #2 above */
     @variant disabled {
       background-image: none;
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
     }
   }
 }
@@ -181,10 +181,10 @@
     @apply cursor-pointer;
 
     /* typographyStyles.body1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
 
     @apply box-border;
 
@@ -253,23 +253,23 @@
         /* 32px matches no spacing step → numeric utility (D4) */
         @apply min-h-32;
 
-        font-size: var(--fontSizeBase200);
+        font-size: var(--text-base-200);
       }
     }
 
     /* from useStyles.buttonLarge — button arg #9 */
     @variant size-large {
       & .button {
-        line-height: var(--lineHeightBase400);
-        font-size: var(--fontSizeBase400);
+        line-height: var(--leading-base-400);
+        font-size: var(--text-base-400);
       }
     }
 
     /* from useStyles.buttonExtraLarge — button arg #10 */
     @variant size-extra-large {
       & .button {
-        line-height: var(--lineHeightBase500);
-        font-size: var(--fontSizeBase500);
+        line-height: var(--leading-base-500);
+        font-size: var(--text-base-500);
       }
     }
 
@@ -287,8 +287,8 @@
   .expand-icon {
     @apply flex h-full items-center;
 
-    line-height: var(--lineHeightBase500);
-    font-size: var(--fontSizeBase500);
+    line-height: var(--leading-base-500);
+    font-size: var(--text-base-500);
   }
 
   .root {
@@ -317,7 +317,7 @@
   .icon {
     @apply flex h-full items-center pe-horizontal-s;
 
-    line-height: var(--lineHeightBase500);
-    font-size: var(--fontSizeBase500);
+    line-height: var(--leading-base-500);
+    font-size: var(--text-base-500);
   }
 }

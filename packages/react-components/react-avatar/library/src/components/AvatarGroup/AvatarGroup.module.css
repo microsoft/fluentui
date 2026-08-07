@@ -45,7 +45,7 @@
    * it inside the rule reproduces that order.
    */
   .pie {
-    background-color: var(--colorTransparentStroke);
+    background-color: var(--color-transparent-stroke);
     clip-path: circle(50%);
 
     @variant forced-colors {

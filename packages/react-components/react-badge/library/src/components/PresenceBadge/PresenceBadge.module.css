@@ -105,8 +105,8 @@
   .root {
     @apply box-border inline-flex items-center justify-center ps-1 pe-1 pt-1 pb-1;
 
-    border-radius: var(--borderRadiusCircular);
-    background-color: var(--colorNeutralBackground1);
+    border-radius: var(--radius-circular);
+    background-color: var(--color-neutral-background-1);
     background-clip: content-box;
   }
 
@@ -121,47 +121,47 @@
 
   /* arg 3 — busy | do-not-disturb | blocked */
   .status-busy {
-    color: var(--colorPaletteRedBackground3);
+    color: var(--color-palette-red-background-3);
   }
 
   /* arg 4 */
   .status-away {
-    color: var(--colorPaletteMarigoldBackground3);
+    color: var(--color-palette-marigold-background-3);
   }
 
   /* arg 5 */
   .status-available {
-    color: var(--colorPaletteLightGreenForeground3);
+    color: var(--color-palette-light-green-foreground-3);
   }
 
   /* arg 6 */
   .status-offline {
-    color: var(--colorNeutralForeground3);
+    color: var(--color-neutral-foreground-3);
   }
 
   /* arg 7 */
   .status-out-of-office {
-    color: var(--colorPaletteBerryForeground3);
+    color: var(--color-palette-berry-foreground-3);
   }
 
   /* arg 8 */
   .status-unknown {
-    color: var(--colorNeutralForeground3);
+    color: var(--color-neutral-foreground-3);
   }
 
   /* arg 9 — overridden by args 10–13 in every reachable combination (see header) */
   .out-of-office {
-    color: var(--colorNeutralBackground1);
+    color: var(--color-neutral-background-1);
   }
 
   /* arg 10 */
   .out-of-office-available {
-    color: var(--colorPaletteLightGreenForeground3);
+    color: var(--color-palette-light-green-foreground-3);
   }
 
   /* arg 11 */
   .out-of-office-busy {
-    color: var(--colorPaletteRedBackground3);
+    color: var(--color-palette-red-background-3);
   }
 
   /*
@@ -169,12 +169,12 @@
    * header). Identical declaration to `.status-out-of-office`; only its file position differs.
    */
   .out-of-office-status {
-    color: var(--colorPaletteBerryForeground3);
+    color: var(--color-palette-berry-foreground-3);
   }
 
   /* arg 13 */
   .out-of-office-unknown {
-    color: var(--colorNeutralForeground3);
+    color: var(--color-neutral-foreground-3);
   }
 }
 

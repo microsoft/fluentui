@@ -146,7 +146,7 @@
     padding: var(--fui-Card--size);
     gap: var(--fui-Card--size);
 
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
 
     /* Border set on an ::after pseudo-element so CardPreview can render behind it. */
     &::after {
@@ -211,17 +211,17 @@
   .root {
     @variant size-small {
       --fui-Card--size: calc(8px * var(--base-scale));
-      --fui-Card--border-radius: var(--borderRadiusSmall);
+      --fui-Card--border-radius: var(--radius-small);
     }
 
     @variant size-medium {
       --fui-Card--size: calc(12px * var(--base-scale));
-      --fui-Card--border-radius: var(--borderRadiusMedium);
+      --fui-Card--border-radius: var(--radius-medium);
     }
 
     @variant size-large {
       --fui-Card--size: calc(16px * var(--base-scale));
-      --fui-Card--border-radius: var(--borderRadiusLarge);
+      --fui-Card--border-radius: var(--radius-large);
     }
   }
 }
@@ -234,50 +234,50 @@
    * `shorthands.borderColor()` expanded to four physical longhands (cookbook §2).
    */
   .filled {
-    background-color: var(--colorNeutralBackground1);
-    box-shadow: var(--shadow4);
+    background-color: var(--color-neutral-background-1);
+    box-shadow: var(--shadow-4);
 
     &::after {
-      border-top-color: var(--colorTransparentStroke);
-      border-right-color: var(--colorTransparentStroke);
-      border-bottom-color: var(--colorTransparentStroke);
-      border-left-color: var(--colorTransparentStroke);
+      border-top-color: var(--color-transparent-stroke);
+      border-right-color: var(--color-transparent-stroke);
+      border-bottom-color: var(--color-transparent-stroke);
+      border-left-color: var(--color-transparent-stroke);
     }
   }
 
   .filled-alternative {
-    background-color: var(--colorNeutralBackground2);
-    box-shadow: var(--shadow4);
+    background-color: var(--color-neutral-background-2);
+    box-shadow: var(--shadow-4);
 
     &::after {
-      border-top-color: var(--colorTransparentStroke);
-      border-right-color: var(--colorTransparentStroke);
-      border-bottom-color: var(--colorTransparentStroke);
-      border-left-color: var(--colorTransparentStroke);
+      border-top-color: var(--color-transparent-stroke);
+      border-right-color: var(--color-transparent-stroke);
+      border-bottom-color: var(--color-transparent-stroke);
+      border-left-color: var(--color-transparent-stroke);
     }
   }
 
   .outline {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
     box-shadow: none;
 
     &::after {
-      border-top-color: var(--colorNeutralStroke1);
-      border-right-color: var(--colorNeutralStroke1);
-      border-bottom-color: var(--colorNeutralStroke1);
-      border-left-color: var(--colorNeutralStroke1);
+      border-top-color: var(--color-neutral-stroke-1);
+      border-right-color: var(--color-neutral-stroke-1);
+      border-bottom-color: var(--color-neutral-stroke-1);
+      border-left-color: var(--color-neutral-stroke-1);
     }
   }
 
   .subtle {
-    background-color: var(--colorSubtleBackground);
+    background-color: var(--color-subtle-background);
     box-shadow: none;
 
     &::after {
-      border-top-color: var(--colorTransparentStroke);
-      border-right-color: var(--colorTransparentStroke);
-      border-bottom-color: var(--colorTransparentStroke);
-      border-left-color: var(--colorTransparentStroke);
+      border-top-color: var(--color-transparent-stroke);
+      border-right-color: var(--color-transparent-stroke);
+      border-bottom-color: var(--color-transparent-stroke);
+      border-left-color: var(--color-transparent-stroke);
     }
   }
 }
@@ -297,24 +297,24 @@
     @variant interactive {
       @apply cursor-pointer;
 
-      background-color: var(--colorNeutralBackground1);
-      box-shadow: var(--shadow4);
+      background-color: var(--color-neutral-background-1);
+      box-shadow: var(--shadow-4);
 
       &::after {
-        border-top-color: var(--colorTransparentStroke);
-        border-right-color: var(--colorTransparentStroke);
-        border-bottom-color: var(--colorTransparentStroke);
-        border-left-color: var(--colorTransparentStroke);
+        border-top-color: var(--color-transparent-stroke);
+        border-right-color: var(--color-transparent-stroke);
+        border-bottom-color: var(--color-transparent-stroke);
+        border-left-color: var(--color-transparent-stroke);
       }
 
       @variant hover {
-        color: var(--colorNeutralForeground1Hover);
-        background-color: var(--colorNeutralBackground1Hover);
-        box-shadow: var(--shadow8);
+        color: var(--color-neutral-foreground-1-hover);
+        background-color: var(--color-neutral-background-1-hover);
+        box-shadow: var(--shadow-8);
       }
 
       @variant active {
-        background-color: var(--colorNeutralBackground1Pressed);
+        background-color: var(--color-neutral-background-1-pressed);
       }
     }
   }
@@ -323,24 +323,24 @@
     @variant interactive {
       @apply cursor-pointer;
 
-      background-color: var(--colorNeutralBackground2);
-      box-shadow: var(--shadow4);
+      background-color: var(--color-neutral-background-2);
+      box-shadow: var(--shadow-4);
 
       &::after {
-        border-top-color: var(--colorTransparentStroke);
-        border-right-color: var(--colorTransparentStroke);
-        border-bottom-color: var(--colorTransparentStroke);
-        border-left-color: var(--colorTransparentStroke);
+        border-top-color: var(--color-transparent-stroke);
+        border-right-color: var(--color-transparent-stroke);
+        border-bottom-color: var(--color-transparent-stroke);
+        border-left-color: var(--color-transparent-stroke);
       }
 
       @variant hover {
-        color: var(--colorNeutralForeground2Hover);
-        background-color: var(--colorNeutralBackground2Hover);
-        box-shadow: var(--shadow8);
+        color: var(--color-neutral-foreground-2-hover);
+        background-color: var(--color-neutral-background-2-hover);
+        box-shadow: var(--shadow-8);
       }
 
       @variant active {
-        background-color: var(--colorNeutralBackground2Pressed);
+        background-color: var(--color-neutral-background-2-pressed);
       }
     }
   }
@@ -349,36 +349,36 @@
     @variant interactive {
       @apply cursor-pointer;
 
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
       box-shadow: none;
 
       &::after {
-        border-top-color: var(--colorNeutralStroke1);
-        border-right-color: var(--colorNeutralStroke1);
-        border-bottom-color: var(--colorNeutralStroke1);
-        border-left-color: var(--colorNeutralStroke1);
+        border-top-color: var(--color-neutral-stroke-1);
+        border-right-color: var(--color-neutral-stroke-1);
+        border-bottom-color: var(--color-neutral-stroke-1);
+        border-left-color: var(--color-neutral-stroke-1);
       }
 
       @variant hover {
-        color: var(--colorNeutralForeground1Hover);
-        background-color: var(--colorTransparentBackgroundHover);
+        color: var(--color-neutral-foreground-1-hover);
+        background-color: var(--color-transparent-background-hover);
 
         &::after {
-          border-top-color: var(--colorNeutralStroke1Hover);
-          border-right-color: var(--colorNeutralStroke1Hover);
-          border-bottom-color: var(--colorNeutralStroke1Hover);
-          border-left-color: var(--colorNeutralStroke1Hover);
+          border-top-color: var(--color-neutral-stroke-1-hover);
+          border-right-color: var(--color-neutral-stroke-1-hover);
+          border-bottom-color: var(--color-neutral-stroke-1-hover);
+          border-left-color: var(--color-neutral-stroke-1-hover);
         }
       }
 
       @variant active {
-        background-color: var(--colorTransparentBackgroundPressed);
+        background-color: var(--color-transparent-background-pressed);
 
         &::after {
-          border-top-color: var(--colorNeutralStroke1Pressed);
-          border-right-color: var(--colorNeutralStroke1Pressed);
-          border-bottom-color: var(--colorNeutralStroke1Pressed);
-          border-left-color: var(--colorNeutralStroke1Pressed);
+          border-top-color: var(--color-neutral-stroke-1-pressed);
+          border-right-color: var(--color-neutral-stroke-1-pressed);
+          border-bottom-color: var(--color-neutral-stroke-1-pressed);
+          border-left-color: var(--color-neutral-stroke-1-pressed);
         }
       }
     }
@@ -388,23 +388,23 @@
     @variant interactive {
       @apply cursor-pointer;
 
-      background-color: var(--colorSubtleBackground);
+      background-color: var(--color-subtle-background);
       box-shadow: none;
 
       &::after {
-        border-top-color: var(--colorTransparentStroke);
-        border-right-color: var(--colorTransparentStroke);
-        border-bottom-color: var(--colorTransparentStroke);
-        border-left-color: var(--colorTransparentStroke);
+        border-top-color: var(--color-transparent-stroke);
+        border-right-color: var(--color-transparent-stroke);
+        border-bottom-color: var(--color-transparent-stroke);
+        border-left-color: var(--color-transparent-stroke);
       }
 
       @variant hover {
-        color: var(--colorNeutralForeground1Hover);
-        background-color: var(--colorSubtleBackgroundHover);
+        color: var(--color-neutral-foreground-1-hover);
+        background-color: var(--color-subtle-background-hover);
       }
 
       @variant active {
-        background-color: var(--colorSubtleBackgroundPressed);
+        background-color: var(--color-subtle-background-pressed);
       }
     }
   }
@@ -419,72 +419,72 @@
    */
   .filled {
     @variant selected {
-      background-color: var(--colorNeutralBackground1Selected);
+      background-color: var(--color-neutral-background-1-selected);
 
       &::after {
-        border-top-color: var(--colorNeutralStroke1Selected);
-        border-right-color: var(--colorNeutralStroke1Selected);
-        border-bottom-color: var(--colorNeutralStroke1Selected);
-        border-left-color: var(--colorNeutralStroke1Selected);
+        border-top-color: var(--color-neutral-stroke-1-selected);
+        border-right-color: var(--color-neutral-stroke-1-selected);
+        border-bottom-color: var(--color-neutral-stroke-1-selected);
+        border-left-color: var(--color-neutral-stroke-1-selected);
       }
 
       @variant hover {
-        color: var(--colorNeutralForeground1Selected);
-        background-color: var(--colorNeutralBackground1Selected);
+        color: var(--color-neutral-foreground-1-selected);
+        background-color: var(--color-neutral-background-1-selected);
       }
     }
   }
 
   .filled-alternative {
     @variant selected {
-      background-color: var(--colorNeutralBackground2Selected);
+      background-color: var(--color-neutral-background-2-selected);
 
       &::after {
-        border-top-color: var(--colorNeutralStroke1Selected);
-        border-right-color: var(--colorNeutralStroke1Selected);
-        border-bottom-color: var(--colorNeutralStroke1Selected);
-        border-left-color: var(--colorNeutralStroke1Selected);
+        border-top-color: var(--color-neutral-stroke-1-selected);
+        border-right-color: var(--color-neutral-stroke-1-selected);
+        border-bottom-color: var(--color-neutral-stroke-1-selected);
+        border-left-color: var(--color-neutral-stroke-1-selected);
       }
 
       @variant hover {
-        color: var(--colorNeutralForeground2Selected);
-        background-color: var(--colorNeutralBackground2Selected);
+        color: var(--color-neutral-foreground-2-selected);
+        background-color: var(--color-neutral-background-2-selected);
       }
     }
   }
 
   .outline {
     @variant selected {
-      background-color: var(--colorTransparentBackgroundSelected);
+      background-color: var(--color-transparent-background-selected);
 
       &::after {
-        border-top-color: var(--colorNeutralStroke1Selected);
-        border-right-color: var(--colorNeutralStroke1Selected);
-        border-bottom-color: var(--colorNeutralStroke1Selected);
-        border-left-color: var(--colorNeutralStroke1Selected);
+        border-top-color: var(--color-neutral-stroke-1-selected);
+        border-right-color: var(--color-neutral-stroke-1-selected);
+        border-bottom-color: var(--color-neutral-stroke-1-selected);
+        border-left-color: var(--color-neutral-stroke-1-selected);
       }
 
       @variant hover {
-        color: var(--colorNeutralForeground1Selected);
-        background-color: var(--colorTransparentBackgroundSelected);
+        color: var(--color-neutral-foreground-1-selected);
+        background-color: var(--color-transparent-background-selected);
       }
     }
   }
 
   .subtle {
     @variant selected {
-      background-color: var(--colorSubtleBackgroundSelected);
+      background-color: var(--color-subtle-background-selected);
 
       &::after {
-        border-top-color: var(--colorNeutralStroke1Selected);
-        border-right-color: var(--colorNeutralStroke1Selected);
-        border-bottom-color: var(--colorNeutralStroke1Selected);
-        border-left-color: var(--colorNeutralStroke1Selected);
+        border-top-color: var(--color-neutral-stroke-1-selected);
+        border-right-color: var(--color-neutral-stroke-1-selected);
+        border-bottom-color: var(--color-neutral-stroke-1-selected);
+        border-left-color: var(--color-neutral-stroke-1-selected);
       }
 
       @variant hover {
-        color: var(--colorNeutralForeground1Selected);
-        background-color: var(--colorSubtleBackgroundSelected);
+        color: var(--color-neutral-foreground-1-selected);
+        background-color: var(--color-subtle-background-selected);
       }
     }
   }
@@ -517,7 +517,7 @@
    * into `::after` normally — the reset above already relies on that.
    *
    * Byte-check against the compiled atomics:
-   *   .fpqizxz[…]::after{border:var(--stroke-width-thick) solid var(--colorStrokeFocus2)}
+   *   .fpqizxz[…]::after{border:var(--stroke-width-thick) solid var(--color-stroke-focus-2)}
    *   .fnd8nzh[…]::after{border-radius:var(--fui-Card--border-radius)}
    *   .f15fr7a0[…]::after{top:calc(0px - var(--stroke-width-thick) - -2px)}   (×4 sides)
    * The utility's `calc(0px - var(--fui-focus-outline-width, 2px) -
@@ -648,84 +648,84 @@
     @variant disabled {
       @apply cursor-not-allowed select-none;
 
-      color: var(--colorNeutralForegroundDisabled);
-      background-color: var(--colorNeutralBackgroundDisabled);
-      box-shadow: var(--shadow2);
+      color: var(--color-neutral-foreground-disabled);
+      background-color: var(--color-neutral-background-disabled);
+      box-shadow: var(--shadow-2);
 
-      border-top-color: var(--colorNeutralStrokeDisabled);
-      border-right-color: var(--colorNeutralStrokeDisabled);
-      border-bottom-color: var(--colorNeutralStrokeDisabled);
-      border-left-color: var(--colorNeutralStrokeDisabled);
+      border-top-color: var(--color-neutral-stroke-disabled);
+      border-right-color: var(--color-neutral-stroke-disabled);
+      border-bottom-color: var(--color-neutral-stroke-disabled);
+      border-left-color: var(--color-neutral-stroke-disabled);
 
       &::before {
         @apply absolute;
 
         content: '';
         inset: 0;
-        z-index: calc(var(--zIndexContent, 1) + 1);
+        z-index: calc(var(--z-index-content, 1) + 1);
       }
 
       &::after {
-        border-top-color: var(--colorNeutralStrokeDisabled);
-        border-right-color: var(--colorNeutralStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorNeutralStrokeDisabled);
+        border-top-color: var(--color-neutral-stroke-disabled);
+        border-right-color: var(--color-neutral-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-neutral-stroke-disabled);
       }
 
       /* the `'&:hover, &:active': disabledStyles` restatement */
       @variant hover {
         @apply cursor-not-allowed select-none;
 
-        color: var(--colorNeutralForegroundDisabled);
-        background-color: var(--colorNeutralBackgroundDisabled);
-        box-shadow: var(--shadow2);
+        color: var(--color-neutral-foreground-disabled);
+        background-color: var(--color-neutral-background-disabled);
+        box-shadow: var(--shadow-2);
 
-        border-top-color: var(--colorNeutralStrokeDisabled);
-        border-right-color: var(--colorNeutralStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorNeutralStrokeDisabled);
+        border-top-color: var(--color-neutral-stroke-disabled);
+        border-right-color: var(--color-neutral-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-neutral-stroke-disabled);
 
         &::before {
           @apply absolute;
 
           content: '';
           inset: 0;
-          z-index: calc(var(--zIndexContent, 1) + 1);
+          z-index: calc(var(--z-index-content, 1) + 1);
         }
 
         &::after {
-          border-top-color: var(--colorNeutralStrokeDisabled);
-          border-right-color: var(--colorNeutralStrokeDisabled);
-          border-bottom-color: var(--colorNeutralStrokeDisabled);
-          border-left-color: var(--colorNeutralStrokeDisabled);
+          border-top-color: var(--color-neutral-stroke-disabled);
+          border-right-color: var(--color-neutral-stroke-disabled);
+          border-bottom-color: var(--color-neutral-stroke-disabled);
+          border-left-color: var(--color-neutral-stroke-disabled);
         }
       }
 
       @variant active {
         @apply cursor-not-allowed select-none;
 
-        color: var(--colorNeutralForegroundDisabled);
-        background-color: var(--colorNeutralBackgroundDisabled);
-        box-shadow: var(--shadow2);
+        color: var(--color-neutral-foreground-disabled);
+        background-color: var(--color-neutral-background-disabled);
+        box-shadow: var(--shadow-2);
 
-        border-top-color: var(--colorNeutralStrokeDisabled);
-        border-right-color: var(--colorNeutralStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorNeutralStrokeDisabled);
+        border-top-color: var(--color-neutral-stroke-disabled);
+        border-right-color: var(--color-neutral-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-neutral-stroke-disabled);
 
         &::before {
           @apply absolute;
 
           content: '';
           inset: 0;
-          z-index: calc(var(--zIndexContent, 1) + 1);
+          z-index: calc(var(--z-index-content, 1) + 1);
         }
 
         &::after {
-          border-top-color: var(--colorNeutralStrokeDisabled);
-          border-right-color: var(--colorNeutralStrokeDisabled);
-          border-bottom-color: var(--colorNeutralStrokeDisabled);
-          border-left-color: var(--colorNeutralStrokeDisabled);
+          border-top-color: var(--color-neutral-stroke-disabled);
+          border-right-color: var(--color-neutral-stroke-disabled);
+          border-bottom-color: var(--color-neutral-stroke-disabled);
+          border-left-color: var(--color-neutral-stroke-disabled);
         }
       }
     }
@@ -741,29 +741,29 @@
    */
   .outline {
     @variant disabled {
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
       box-shadow: none;
 
-      border-top-color: var(--colorNeutralStrokeDisabled);
-      border-right-color: var(--colorNeutralStrokeDisabled);
-      border-bottom-color: var(--colorNeutralStrokeDisabled);
-      border-left-color: var(--colorNeutralStrokeDisabled);
+      border-top-color: var(--color-neutral-stroke-disabled);
+      border-right-color: var(--color-neutral-stroke-disabled);
+      border-bottom-color: var(--color-neutral-stroke-disabled);
+      border-left-color: var(--color-neutral-stroke-disabled);
 
       @variant hover {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
         box-shadow: none;
       }
 
       @variant active {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
         box-shadow: none;
       }
 
       &::after {
-        border-top-color: var(--colorNeutralStrokeDisabled);
-        border-right-color: var(--colorNeutralStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorNeutralStrokeDisabled);
+        border-top-color: var(--color-neutral-stroke-disabled);
+        border-right-color: var(--color-neutral-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-neutral-stroke-disabled);
       }
     }
   }
@@ -774,7 +774,7 @@
   .floating-action {
     @apply absolute end-4 top-4;
 
-    z-index: var(--zIndexContent, 1);
+    z-index: var(--z-index-content, 1);
   }
 
   /* from useCardStyles.hiddenCheckbox — checkbox slot arg #2 */

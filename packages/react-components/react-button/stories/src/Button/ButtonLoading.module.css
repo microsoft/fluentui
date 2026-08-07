@@ -7,13 +7,13 @@
 }
 
 .buttonNonInteractive {
-  background-color: var(--colorNeutralBackground1);
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
-  color: var(--colorNeutralForeground1);
+  background-color: var(--color-neutral-background-1);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
+  color: var(--color-neutral-foreground-1);
   cursor: default;
   pointer-events: none;
 }
 
 .icon {
-  color: var(--colorStatusSuccessForeground1);
+  color: var(--color-status-success-foreground-1);
 }

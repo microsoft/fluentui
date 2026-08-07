@@ -853,6 +853,65 @@ kebab rename — the remaining ~440 tokens (colors, fonts, radii, shadows, durat
 curves, z-index) still use camelCase CSS variables (`--colorNeutralBackground1`). A
 uniform kebab vocabulary across the whole token set is under consideration.
 
+## D4 Phase-2a amendment — FULL-token-set kebab rename (closes the open question above; theming Phase 2a, 2026-08-06)
+
+**Closes the D4 open question.** The remaining 441 camelCase token CSS variables (colors
+incl. palette, font families/sizes/weights, line heights, radii, shadows, curves,
+durations, z-index) are renamed to canonical kebab-case names, option-B style: the old
+names cease to exist in every shipped read path; `tokens.*` JS constants repoint (all
+467 now canonical). Committed mapping: `reports/token-rename-map.md` / `.json`.
+
+1. **Naming = the Tailwind v4 theme key** for every family except durations:
+   `--color-neutral-background-1`, `--color-palette-red-background-1`, `--font-base`
+   (families), `--text-base-300` (sizes), `--font-weight-semibold`, `--leading-base-300`,
+   `--radius-medium`, `--shadow-2-brand`, `--ease-easy-ease`, `--z-index-popup` (tokens.*
+   keeps the value fallback: `var(--z-index-popup, 2000)`). **Durations split** (user
+   intent: family-consistent custom namespaces where no native namespace is worth
+   occupying): canonical runtime variable `--duration-fast`; `@theme` key stays what the
+   installed v4.3.3 utility registry reads, `--transition-duration-fast`, registered as
+   `var(--duration-fast)`.
+2. **Utility class names: ZERO change** — the `@theme` keys were already these kebab
+   names; byte-compared HEAD vs new, the 467 registered keys are identical. Only the
+   registered VALUES changed (`var(--colorX)` → `var(--color-x)`). No module.css class
+   sweep needed.
+3. **Task-premise correction, recorded:** unlike Phase 1's spacing/stroke (theme-invariant
+   and `:root`-emitted), the 441 renamed tokens are THEME-VARIANT and had NO static value
+   emission — FluentProvider's runtime tag was their sole value source. A rename of all
+   readers with a camelCase-only tag would have unstyled everything. **Resolution:
+   `createCSSRuleFromTheme` writes every theme entry under BOTH vocabularies** (legacy
+   camelCase + canonical kebab, canonical derived from the repointed `tokens.*` strings —
+   guaranteed lockstep, no second kebab implementation). All shipped readers use the
+   canonical names; the camelCase half feeds nothing shipped (interim insurance for
+   hand-written consumer CSS; removed with the whole tag in Phase 2b). Per-provider rule:
+   459 → 918 declarations (19,215 → 39,873 chars, webLightTheme), once per provider.
+4. **`@theme inline reference` adopted** (supersedes the pre-Phase-2a rejection recorded
+   in the generator): with runtime names equal to theme keys, every registration is
+   self-named; plain `inline` would emit 400+ self-referential aliases at `:root, :host`
+   (cycle-invalid, ~19KB dead weight — probe `.scratch/phase2a-theming/probe/`).
+   `reference` suppresses exactly that emission, probed byte-identical utility output;
+   its old rejection reason (variables nothing defines) is retired because the tag now
+   defines the canonical names. `dist/styles.css` is byte-stable (2,810 bytes, zero old
+   names, Phase-1 emission block unchanged).
+5. **Sweep:** tokens.ts 441 values (scripted; unit test rewritten as an independent
+   canonical-derivation exact-string test over all 467 + no-camelCase regex + uniqueness;
+   generator drift-throw extended to the full set), react-theme-sass 433, theme package
+   css 12 + regenerated tokens.css, repo-wide 5,331 replacements / 438 files, residuals
+   zero. **Exemptions (verified):** web-components + chart-web-components +
+   vr-tests-web-components' WCThemeDecorator (separate system defining its own camelCase
+   vars); `deprecated/**` — ZERO raw references, consumes tokens only via `tokens.*` JS
+   (follows the repoint automatically, resolves against the dual tag); migration history
+   reports; the two dual-emission SSR snapshots (legacy names correct there until 2b);
+   removal-documenting comments. Docsite residual `--colorPaletteSilverForeground1` is
+   NOT a token (v0-migration doc example, dead before and after).
+6. Gates: browser identity probe 2,237 checks (441 tokens × 5 assertions: canonical=theme
+   literal under light provider, legacy=same (dual), dark switch, HC switch, no
+   resolution outside providers; + Phase-1 root-resolution + 6 end-to-end utility spot
+   checks) — ALL PASS; full VR sweep at zero tolerance + perf E-cell — totals recorded in
+   `reports/theming-css-native.md` Phase 2a.
+
+**Follow-on: theming Phase 2b** — remove the FluentProvider runtime theme tag / JS
+theming path entirely; the canonical kebab variable graph becomes the sole contract.
+
 ## D15 — Named groups + all-lowercase generated idents (settled with user 2026-07-28)
 
 Source analysis: `reports/named-groups-design.md`. **Naming below is the user's amendment and

@@ -78,28 +78,28 @@
     height: auto;
 
     & .secondary-content {
-      color: var(--colorNeutralForeground2);
+      color: var(--color-neutral-foreground-2);
     }
   }
 
   /* from useRootStyles.primary — arg #4 */
   .primary {
     & .secondary-content {
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
   }
 
   /* from useRootStyles.subtle — arg #4 */
   .subtle {
     & .secondary-content {
-      color: var(--colorNeutralForeground2);
+      color: var(--color-neutral-foreground-2);
     }
   }
 
   /* from useRootStyles.transparent — arg #4 */
   .transparent {
     & .secondary-content {
-      color: var(--colorNeutralForeground2);
+      color: var(--color-neutral-foreground-2);
     }
   }
 
@@ -116,30 +116,30 @@
   .small {
     @apply px-horizontal-s pt-horizontal-s pb-horizontal-m-nudge;
 
-    font-size: var(--fontSizeBase300);
-    line-height: var(--lineHeightBase300);
+    font-size: var(--text-base-300);
+    line-height: var(--leading-base-300);
   }
 
   /* from useRootStyles.medium */
   .medium {
     @apply px-horizontal-m pt-14 pb-horizontal-l;
 
-    font-size: var(--fontSizeBase300);
-    line-height: var(--lineHeightBase300);
+    font-size: var(--text-base-300);
+    line-height: var(--leading-base-300);
   }
 
   /* from useRootStyles.large */
   .large {
     @apply px-horizontal-l pt-18 pb-horizontal-xl;
 
-    font-size: var(--fontSizeBase400);
-    line-height: var(--lineHeightBase400);
+    font-size: var(--text-base-400);
+    line-height: var(--leading-base-400);
   }
 
   /* from useRootStyles.disabled — arg #6 */
   .disabled {
     & .secondary-content {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
     }
   }
 
@@ -173,7 +173,7 @@
   .root {
     @variant hover {
       & .secondary-content {
-        color: var(--colorNeutralForeground2Hover);
+        color: var(--color-neutral-foreground-2-hover);
       }
     }
   }
@@ -182,7 +182,7 @@
   .primary {
     @variant hover {
       & .secondary-content {
-        color: var(--colorNeutralForegroundOnBrand);
+        color: var(--color-neutral-foreground-on-brand);
       }
     }
   }
@@ -191,7 +191,7 @@
   .subtle {
     @variant hover {
       & .secondary-content {
-        color: var(--colorNeutralForeground2Hover);
+        color: var(--color-neutral-foreground-2-hover);
       }
     }
   }
@@ -200,7 +200,7 @@
   .transparent {
     @variant hover {
       & .secondary-content {
-        color: var(--colorNeutralForeground2BrandHover);
+        color: var(--color-neutral-foreground-2-brand-hover);
       }
     }
   }
@@ -209,7 +209,7 @@
   .disabled {
     @variant hover {
       & .secondary-content {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
   }
@@ -223,7 +223,7 @@
   .root {
     @variant hover-active {
       & .secondary-content {
-        color: var(--colorNeutralForeground2Pressed);
+        color: var(--color-neutral-foreground-2-pressed);
       }
     }
   }
@@ -232,7 +232,7 @@
   .primary {
     @variant hover-active {
       & .secondary-content {
-        color: var(--colorNeutralForegroundOnBrand);
+        color: var(--color-neutral-foreground-on-brand);
       }
     }
   }
@@ -241,7 +241,7 @@
   .subtle {
     @variant hover-active {
       & .secondary-content {
-        color: var(--colorNeutralForeground2Pressed);
+        color: var(--color-neutral-foreground-2-pressed);
       }
     }
   }
@@ -250,7 +250,7 @@
   .transparent {
     @variant hover-active {
       & .secondary-content {
-        color: var(--colorNeutralForeground2BrandPressed);
+        color: var(--color-neutral-foreground-2-brand-pressed);
       }
     }
   }
@@ -259,7 +259,7 @@
   .disabled {
     @variant hover-active {
       & .secondary-content {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
   }
@@ -281,20 +281,20 @@
   /* from useSecondaryContentStyles.base */
   .secondary-content {
     line-height: 100%;
-    font-weight: var(--fontWeightRegular);
+    font-weight: var(--font-weight-regular);
   }
 
   /* from useSecondaryContentStyles.small / .medium / .large */
   .secondary-content-small {
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
   }
 
   .secondary-content-medium {
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
   }
 
   .secondary-content-large {
-    font-size: var(--fontSizeBase300);
+    font-size: var(--text-base-300);
   }
 }
 

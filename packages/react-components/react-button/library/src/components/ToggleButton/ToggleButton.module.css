@@ -106,12 +106,12 @@
 
   /* from useRootCheckedStyles.base — arg #4 */
   .checked {
-    background-color: var(--colorNeutralBackground1Selected);
-    border-top-color: var(--colorNeutralStroke1);
-    border-right-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStroke1);
-    border-left-color: var(--colorNeutralStroke1);
-    color: var(--colorNeutralForeground1Selected);
+    background-color: var(--color-neutral-background-1-selected);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-right-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-1);
+    border-left-color: var(--color-neutral-stroke-1);
+    color: var(--color-neutral-foreground-1-selected);
 
     /* `shorthands.borderWidth(tokens.strokeWidthThin)`. Border widths are not
        spacing-powered utilities, so the D4 addendum's direct `var(--spacing-*)` form. */
@@ -126,11 +126,11 @@
 
   /* from useRootCheckedStyles.outline — arg #6 */
   .checked-outline {
-    background-color: var(--colorTransparentBackgroundSelected);
-    border-top-color: var(--colorNeutralStroke1);
-    border-right-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStroke1);
-    border-left-color: var(--colorNeutralStroke1);
+    background-color: var(--color-transparent-background-selected);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-right-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-1);
+    border-left-color: var(--color-neutral-stroke-1);
     border-top-width: var(--spacing-thicker);
     border-right-width: var(--spacing-thicker);
     border-bottom-width: var(--spacing-thicker);
@@ -139,42 +139,42 @@
 
   /* from useRootCheckedStyles.primary — arg #6 */
   .checked-primary {
-    background-color: var(--colorBrandBackgroundSelected);
+    background-color: var(--color-brand-background-selected);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-neutral-foreground-on-brand);
   }
 
   /* from useRootCheckedStyles.subtle — arg #6 */
   .checked-subtle {
-    background-color: var(--colorSubtleBackgroundSelected);
+    background-color: var(--color-subtle-background-selected);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    color: var(--colorNeutralForeground2Selected);
+    color: var(--color-neutral-foreground-2-selected);
   }
 
   /* from useRootCheckedStyles.transparent — arg #6 */
   .checked-transparent {
-    background-color: var(--colorTransparentBackgroundSelected);
+    background-color: var(--color-transparent-background-selected);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    color: var(--colorNeutralForeground2BrandSelected);
+    color: var(--color-neutral-foreground-2-brand-selected);
   }
 
   /* from useCheckedAccessibleStyles.base — arg #7 */
   .accessible-checked {
-    background-color: var(--colorBrandBackground);
+    background-color: var(--color-brand-background);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-neutral-foreground-on-brand);
   }
 
   /* from useCheckedAccessibleStyles.outline — arg #8
@@ -188,18 +188,18 @@
 
   /* from useCheckedAccessibleStyles.primary — arg #8; primary has an inner stroke when checked */
   .accessible-checked-primary {
-    outline: var(--spacing-thin) solid var(--colorNeutralForegroundOnBrand);
+    outline: var(--spacing-thin) solid var(--color-neutral-foreground-on-brand);
     outline-offset: calc(var(--spacing-thicker) * -1);
   }
 
   /* from useRootDisabledStyles.base — arg #9 */
   .disabled {
-    background-color: var(--colorNeutralBackgroundDisabled);
-    border-top-color: var(--colorNeutralStrokeDisabled);
-    border-right-color: var(--colorNeutralStrokeDisabled);
-    border-bottom-color: var(--colorNeutralStrokeDisabled);
-    border-left-color: var(--colorNeutralStrokeDisabled);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-neutral-background-disabled);
+    border-top-color: var(--color-neutral-stroke-disabled);
+    border-right-color: var(--color-neutral-stroke-disabled);
+    border-bottom-color: var(--color-neutral-stroke-disabled);
+    border-left-color: var(--color-neutral-stroke-disabled);
+    color: var(--color-neutral-foreground-disabled);
   }
 
   /* from useRootDisabledStyles.primary — arg #10 */
@@ -212,7 +212,7 @@
 
   /* from useRootDisabledStyles.subtle — arg #10 */
   .disabled-subtle {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
@@ -221,7 +221,7 @@
 
   /* from useRootDisabledStyles.transparent — arg #10 */
   .disabled-transparent {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
@@ -238,10 +238,10 @@
   /* from useRootCheckedStyles.outline — arg #6, createCustomFocusIndicatorStyle({ borderColor }) */
   .checked-outline {
     @variant focus-visible-fui {
-      border-top-color: var(--colorNeutralStroke1);
-      border-right-color: var(--colorNeutralStroke1);
-      border-bottom-color: var(--colorNeutralStroke1);
-      border-left-color: var(--colorNeutralStroke1);
+      border-top-color: var(--color-neutral-stroke-1);
+      border-right-color: var(--color-neutral-stroke-1);
+      border-bottom-color: var(--color-neutral-stroke-1);
+      border-left-color: var(--color-neutral-stroke-1);
     }
   }
 
@@ -251,7 +251,7 @@
    */
   .accessible-checked-primary {
     @variant focus-visible-fui {
-      outline: var(--spacing-thin) solid var(--colorNeutralForegroundOnBrand);
+      outline: var(--spacing-thin) solid var(--color-neutral-foreground-on-brand);
       outline-offset: calc(var(--spacing-thickest) * -1);
     }
   }
@@ -264,67 +264,67 @@
   /* from useRootCheckedStyles.base — arg #4 */
   .checked {
     @variant hover {
-      background-color: var(--colorNeutralBackground1Hover);
-      border-top-color: var(--colorNeutralStroke1Hover);
-      border-right-color: var(--colorNeutralStroke1Hover);
-      border-bottom-color: var(--colorNeutralStroke1Hover);
-      border-left-color: var(--colorNeutralStroke1Hover);
-      color: var(--colorNeutralForeground1Hover);
+      background-color: var(--color-neutral-background-1-hover);
+      border-top-color: var(--color-neutral-stroke-1-hover);
+      border-right-color: var(--color-neutral-stroke-1-hover);
+      border-bottom-color: var(--color-neutral-stroke-1-hover);
+      border-left-color: var(--color-neutral-stroke-1-hover);
+      color: var(--color-neutral-foreground-1-hover);
     }
   }
 
   /* from useRootCheckedStyles.outline — arg #6 */
   .checked-outline {
     @variant hover {
-      background-color: var(--colorTransparentBackgroundHover);
+      background-color: var(--color-transparent-background-hover);
     }
   }
 
   /* from useRootCheckedStyles.primary — arg #6 */
   .checked-primary {
     @variant hover {
-      background-color: var(--colorBrandBackgroundHover);
+      background-color: var(--color-brand-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
   }
 
   /* from useRootCheckedStyles.subtle — arg #6 */
   .checked-subtle {
     @variant hover {
-      background-color: var(--colorSubtleBackgroundHover);
+      background-color: var(--color-subtle-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForeground2Hover);
+      color: var(--color-neutral-foreground-2-hover);
     }
   }
 
   /* from useRootCheckedStyles.transparent — arg #6 */
   .checked-transparent {
     @variant hover {
-      background-color: var(--colorTransparentBackgroundHover);
+      background-color: var(--color-transparent-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForeground2BrandHover);
+      color: var(--color-neutral-foreground-2-brand-hover);
     }
   }
 
   /* from useCheckedAccessibleStyles.base — arg #7 */
   .accessible-checked {
     @variant hover {
-      background-color: var(--colorBrandBackgroundHover);
+      background-color: var(--color-brand-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
   }
 
@@ -338,7 +338,7 @@
   .accessible-checked-subtle {
     @variant hover {
       & .icon {
-        color: var(--colorNeutralForegroundOnBrand);
+        color: var(--color-neutral-foreground-on-brand);
       }
     }
   }
@@ -346,12 +346,12 @@
   /* from useRootDisabledStyles.base — arg #9 */
   .disabled {
     @variant hover {
-      background-color: var(--colorNeutralBackgroundDisabled);
-      border-top-color: var(--colorNeutralStrokeDisabled);
-      border-right-color: var(--colorNeutralStrokeDisabled);
-      border-bottom-color: var(--colorNeutralStrokeDisabled);
-      border-left-color: var(--colorNeutralStrokeDisabled);
-      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--color-neutral-background-disabled);
+      border-top-color: var(--color-neutral-stroke-disabled);
+      border-right-color: var(--color-neutral-stroke-disabled);
+      border-bottom-color: var(--color-neutral-stroke-disabled);
+      border-left-color: var(--color-neutral-stroke-disabled);
+      color: var(--color-neutral-foreground-disabled);
     }
   }
 
@@ -368,7 +368,7 @@
   /* from useRootDisabledStyles.subtle — arg #10 */
   .disabled-subtle {
     @variant hover {
-      background-color: var(--colorTransparentBackgroundHover);
+      background-color: var(--color-transparent-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
@@ -379,7 +379,7 @@
   /* from useRootDisabledStyles.transparent — arg #10 */
   .disabled-transparent {
     @variant hover {
-      background-color: var(--colorTransparentBackgroundHover);
+      background-color: var(--color-transparent-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
@@ -396,79 +396,79 @@
   /* from useRootCheckedStyles.base — arg #4 */
   .checked {
     @variant hover-active {
-      background-color: var(--colorNeutralBackground1Pressed);
-      border-top-color: var(--colorNeutralStroke1Pressed);
-      border-right-color: var(--colorNeutralStroke1Pressed);
-      border-bottom-color: var(--colorNeutralStroke1Pressed);
-      border-left-color: var(--colorNeutralStroke1Pressed);
-      color: var(--colorNeutralForeground1Pressed);
+      background-color: var(--color-neutral-background-1-pressed);
+      border-top-color: var(--color-neutral-stroke-1-pressed);
+      border-right-color: var(--color-neutral-stroke-1-pressed);
+      border-bottom-color: var(--color-neutral-stroke-1-pressed);
+      border-left-color: var(--color-neutral-stroke-1-pressed);
+      color: var(--color-neutral-foreground-1-pressed);
     }
   }
 
   /* from useRootCheckedStyles.outline — arg #6 */
   .checked-outline {
     @variant hover-active {
-      background-color: var(--colorTransparentBackgroundPressed);
+      background-color: var(--color-transparent-background-pressed);
     }
   }
 
   /* from useRootCheckedStyles.primary — arg #6 */
   .checked-primary {
     @variant hover-active {
-      background-color: var(--colorBrandBackgroundPressed);
+      background-color: var(--color-brand-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
   }
 
   /* from useRootCheckedStyles.subtle — arg #6 */
   .checked-subtle {
     @variant hover-active {
-      background-color: var(--colorSubtleBackgroundPressed);
+      background-color: var(--color-subtle-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForeground2Pressed);
+      color: var(--color-neutral-foreground-2-pressed);
     }
   }
 
   /* from useRootCheckedStyles.transparent — arg #6 */
   .checked-transparent {
     @variant hover-active {
-      background-color: var(--colorTransparentBackgroundPressed);
+      background-color: var(--color-transparent-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForeground2BrandPressed);
+      color: var(--color-neutral-foreground-2-brand-pressed);
     }
   }
 
   /* from useCheckedAccessibleStyles.base — arg #7 */
   .accessible-checked {
     @variant hover-active {
-      background-color: var(--colorBrandBackgroundPressed);
+      background-color: var(--color-brand-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
   }
 
   /* from useRootDisabledStyles.base — arg #9 */
   .disabled {
     @variant hover-active {
-      background-color: var(--colorNeutralBackgroundDisabled);
-      border-top-color: var(--colorNeutralStrokeDisabled);
-      border-right-color: var(--colorNeutralStrokeDisabled);
-      border-bottom-color: var(--colorNeutralStrokeDisabled);
-      border-left-color: var(--colorNeutralStrokeDisabled);
-      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--color-neutral-background-disabled);
+      border-top-color: var(--color-neutral-stroke-disabled);
+      border-right-color: var(--color-neutral-stroke-disabled);
+      border-bottom-color: var(--color-neutral-stroke-disabled);
+      border-left-color: var(--color-neutral-stroke-disabled);
+      color: var(--color-neutral-foreground-disabled);
     }
   }
 
@@ -485,7 +485,7 @@
   /* from useRootDisabledStyles.subtle — arg #10 */
   .disabled-subtle {
     @variant hover-active {
-      background-color: var(--colorTransparentBackgroundPressed);
+      background-color: var(--color-transparent-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
@@ -496,7 +496,7 @@
   /* from useRootDisabledStyles.transparent — arg #10 */
   .disabled-transparent {
     @variant hover-active {
-      background-color: var(--colorTransparentBackgroundPressed);
+      background-color: var(--color-transparent-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
@@ -525,7 +525,7 @@
 
   /* from useIconCheckedStyles.subtleOrTransparent — icon arg #2 */
   .checked-icon {
-    color: var(--colorNeutralForeground2BrandSelected);
+    color: var(--color-neutral-foreground-2-brand-selected);
   }
 }
 

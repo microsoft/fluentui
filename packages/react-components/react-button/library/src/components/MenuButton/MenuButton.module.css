@@ -69,10 +69,10 @@
 
   /* from useRootExpandedStyles.outline */
   .expanded-outline {
-    border-top-color: var(--colorNeutralStroke1Selected);
-    border-right-color: var(--colorNeutralStroke1Selected);
-    border-bottom-color: var(--colorNeutralStroke1Selected);
-    border-left-color: var(--colorNeutralStroke1Selected);
+    border-top-color: var(--color-neutral-stroke-1-selected);
+    border-right-color: var(--color-neutral-stroke-1-selected);
+    border-bottom-color: var(--color-neutral-stroke-1-selected);
+    border-left-color: var(--color-neutral-stroke-1-selected);
 
     /* Border widths are not spacing-powered utilities, so the D4 addendum's direct
        `var(--spacing-*)` form (`strokeWidthThicker`). */
@@ -81,34 +81,34 @@
     border-bottom-width: var(--spacing-thicker);
     border-left-width: var(--spacing-thicker);
 
-    color: var(--colorNeutralForeground1Selected);
+    color: var(--color-neutral-foreground-1-selected);
   }
 
   /* from useRootExpandedStyles.primary */
   .expanded-primary {
-    background-color: var(--colorBrandBackgroundSelected);
+    background-color: var(--color-brand-background-selected);
   }
 
   /* from useRootExpandedStyles.secondary */
   .expanded-secondary {
-    background-color: var(--colorNeutralBackground1Selected);
-    border-top-color: var(--colorNeutralStroke1Selected);
-    border-right-color: var(--colorNeutralStroke1Selected);
-    border-bottom-color: var(--colorNeutralStroke1Selected);
-    border-left-color: var(--colorNeutralStroke1Selected);
-    color: var(--colorNeutralForeground1Selected);
+    background-color: var(--color-neutral-background-1-selected);
+    border-top-color: var(--color-neutral-stroke-1-selected);
+    border-right-color: var(--color-neutral-stroke-1-selected);
+    border-bottom-color: var(--color-neutral-stroke-1-selected);
+    border-left-color: var(--color-neutral-stroke-1-selected);
+    color: var(--color-neutral-foreground-1-selected);
   }
 
   /* from useRootExpandedStyles.subtle */
   .expanded-subtle {
-    background-color: var(--colorSubtleBackgroundSelected);
-    color: var(--colorNeutralForeground2Selected);
+    background-color: var(--color-subtle-background-selected);
+    color: var(--color-neutral-foreground-2-selected);
   }
 
   /* from useRootExpandedStyles.transparent */
   .expanded-transparent {
-    background-color: var(--colorTransparentBackgroundSelected);
-    color: var(--colorNeutralForeground2BrandSelected);
+    background-color: var(--color-transparent-background-selected);
+    color: var(--color-neutral-foreground-2-brand-selected);
   }
 }
 
@@ -146,7 +146,7 @@
     @apply size-12;
 
     font-size: calc(12px * var(--base-scale));
-    line-height: var(--lineHeightBase200);
+    line-height: var(--leading-base-200);
   }
 
   /* from useMenuIconStyles.medium */
@@ -154,7 +154,7 @@
     @apply size-12;
 
     font-size: calc(12px * var(--base-scale));
-    line-height: var(--lineHeightBase200);
+    line-height: var(--leading-base-200);
   }
 
   /* from useMenuIconStyles.large */
@@ -162,7 +162,7 @@
     @apply size-16;
 
     font-size: calc(16px * var(--base-scale));
-    line-height: var(--lineHeightBase400);
+    line-height: var(--leading-base-400);
   }
 
   /*

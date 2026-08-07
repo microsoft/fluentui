@@ -88,14 +88,14 @@
   .trigger-button {
     @apply relative inline-flex shrink-0 items-center justify-center p-0;
 
-    color: var(--colorNeutralForeground1);
-    background-color: var(--colorNeutralBackground1);
-    border-radius: var(--borderRadiusCircular);
+    color: var(--color-neutral-foreground-1);
+    background-color: var(--color-neutral-background-1);
+    border-radius: var(--radius-circular);
 
-    border-block-start-color: var(--colorNeutralStroke1);
-    border-inline-end-color: var(--colorNeutralStroke1);
-    border-block-end-color: var(--colorNeutralStroke1);
-    border-inline-start-color: var(--colorNeutralStroke1);
+    border-block-start-color: var(--color-neutral-stroke-1);
+    border-inline-end-color: var(--color-neutral-stroke-1);
+    border-block-end-color: var(--color-neutral-stroke-1);
+    border-inline-start-color: var(--color-neutral-stroke-1);
 
     border-block-start-style: solid;
     border-inline-end-style: solid;
@@ -150,23 +150,23 @@
    */
   .trigger-button-pie {
     color: transparent;
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
-    border-block-start-color: var(--colorTransparentStroke);
-    border-inline-end-color: var(--colorTransparentStroke);
-    border-block-end-color: var(--colorTransparentStroke);
-    border-inline-start-color: var(--colorTransparentStroke);
+    border-block-start-color: var(--color-transparent-stroke);
+    border-inline-end-color: var(--color-transparent-stroke);
+    border-block-end-color: var(--color-transparent-stroke);
+    border-inline-start-color: var(--color-transparent-stroke);
   }
 
   /* arg 7 — from useTriggerButtonStyles.selected */
   .trigger-button-selected {
-    color: var(--colorNeutralForeground1Selected);
-    background-color: var(--colorNeutralBackground1Selected);
+    color: var(--color-neutral-foreground-1-selected);
+    background-color: var(--color-neutral-background-1-selected);
 
-    border-block-start-color: var(--colorNeutralStroke1Selected);
-    border-inline-end-color: var(--colorNeutralStroke1Selected);
-    border-block-end-color: var(--colorNeutralStroke1Selected);
-    border-inline-start-color: var(--colorNeutralStroke1Selected);
+    border-block-start-color: var(--color-neutral-stroke-1-selected);
+    border-inline-end-color: var(--color-neutral-stroke-1-selected);
+    border-block-end-color: var(--color-neutral-stroke-1-selected);
+    border-inline-start-color: var(--color-neutral-stroke-1-selected);
   }
 }
 
@@ -210,7 +210,7 @@
    */
   .trigger-button {
     @variant focus-visible-fui {
-      border: var(--spacing-thick) solid var(--colorStrokeFocus2);
+      border: var(--spacing-thick) solid var(--color-stroke-focus-2);
       outline-style: none;
     }
   }
@@ -227,23 +227,23 @@
    */
   .trigger-button-interactive {
     @variant hover {
-      color: var(--colorNeutralForeground1Hover);
-      background-color: var(--colorNeutralBackground1Hover);
+      color: var(--color-neutral-foreground-1-hover);
+      background-color: var(--color-neutral-background-1-hover);
 
-      border-block-start-color: var(--colorNeutralStroke1Hover);
-      border-inline-end-color: var(--colorNeutralStroke1Hover);
-      border-block-end-color: var(--colorNeutralStroke1Hover);
-      border-inline-start-color: var(--colorNeutralStroke1Hover);
+      border-block-start-color: var(--color-neutral-stroke-1-hover);
+      border-inline-end-color: var(--color-neutral-stroke-1-hover);
+      border-block-end-color: var(--color-neutral-stroke-1-hover);
+      border-inline-start-color: var(--color-neutral-stroke-1-hover);
     }
 
     @variant active {
-      color: var(--colorNeutralForeground1Pressed);
-      background-color: var(--colorNeutralBackground1Pressed);
+      color: var(--color-neutral-foreground-1-pressed);
+      background-color: var(--color-neutral-background-1-pressed);
 
-      border-block-start-color: var(--colorNeutralStroke1Pressed);
-      border-inline-end-color: var(--colorNeutralStroke1Pressed);
-      border-block-end-color: var(--colorNeutralStroke1Pressed);
-      border-inline-start-color: var(--colorNeutralStroke1Pressed);
+      border-block-start-color: var(--color-neutral-stroke-1-pressed);
+      border-inline-end-color: var(--color-neutral-stroke-1-pressed);
+      border-block-end-color: var(--color-neutral-stroke-1-pressed);
+      border-inline-start-color: var(--color-neutral-stroke-1-pressed);
     }
   }
 }
@@ -263,43 +263,43 @@
    * hoisted onto the class itself and only size/line-height vary per bucket.
    */
   .indicator-count {
-    font-family: var(--fontFamilyBase);
-    font-weight: var(--fontWeightSemibold);
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-semibold);
 
     /* size <= 24 — typographyStyles.caption2Strong */
     &:where([data-size='16'], [data-size='20'], [data-size='24']) {
-      font-size: var(--fontSizeBase100);
-      line-height: var(--lineHeightBase100);
+      font-size: var(--text-base-100);
+      line-height: var(--leading-base-100);
     }
 
     /* size <= 28 — typographyStyles.caption1Strong */
     &:where([data-size='28']) {
-      font-size: var(--fontSizeBase200);
-      line-height: var(--lineHeightBase200);
+      font-size: var(--text-base-200);
+      line-height: var(--leading-base-200);
     }
 
     /* size <= 40 — typographyStyles.body1Strong */
     &:where([data-size='32'], [data-size='36'], [data-size='40']) {
-      font-size: var(--fontSizeBase300);
-      line-height: var(--lineHeightBase300);
+      font-size: var(--text-base-300);
+      line-height: var(--leading-base-300);
     }
 
     /* size <= 56 — typographyStyles.subtitle2 */
     &:where([data-size='48'], [data-size='56']) {
-      font-size: var(--fontSizeBase400);
-      line-height: var(--lineHeightBase400);
+      font-size: var(--text-base-400);
+      line-height: var(--leading-base-400);
     }
 
     /* size <= 96 — typographyStyles.subtitle1 */
     &:where([data-size='64'], [data-size='72'], [data-size='96']) {
-      font-size: var(--fontSizeBase500);
-      line-height: var(--lineHeightBase500);
+      font-size: var(--text-base-500);
+      line-height: var(--leading-base-500);
     }
 
     /* else — typographyStyles.title3 */
     &:where([data-size='120'], [data-size='128']) {
-      font-size: var(--fontSizeBase600);
-      line-height: var(--lineHeightBase600);
+      font-size: var(--text-base-600);
+      line-height: var(--leading-base-600);
     }
   }
 

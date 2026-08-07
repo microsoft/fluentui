@@ -3,10 +3,10 @@
 
 .invertedBackground {
   padding: 14px;
-  background-color: var(--colorNeutralBackgroundInverted);
+  background-color: var(--color-neutral-background-inverted);
 }
 
 .brandBackground {
   padding: 14px;
-  background-color: var(--colorBrandBackgroundStatic);
+  background-color: var(--color-brand-background-static);
 }

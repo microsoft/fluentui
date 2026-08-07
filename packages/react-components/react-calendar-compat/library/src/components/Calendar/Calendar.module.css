@@ -112,7 +112,7 @@
   .divider {
     border-inline-end-width: calc(1px * var(--base-scale));
     border-inline-end-style: solid;
-    border-inline-end-color: var(--colorNeutralStroke2);
+    border-inline-end-color: var(--color-neutral-stroke-2);
 
     /* inert on a statically-positioned element, reproduced from the compiled atomic */
     top: 0;
@@ -127,15 +127,15 @@
   .go-today-button {
     @apply box-content self-end overflow-visible;
 
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* `shorthands.borderStyle('none')` — the four style longhands, i.e. `border-style` */
     border-style: none;
 
     bottom: 0;
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
     font-family: inherit;
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
 
     @apply h-30;
 
@@ -152,12 +152,12 @@
     @apply px-horizontal-xs py-0;
 
     & div {
-      font-size: var(--fontSizeBase200);
+      font-size: var(--text-base-200);
     }
 
     @variant hover {
-      background-color: var(--colorTransparentBackground);
-      color: var(--colorBrandForeground1);
+      background-color: var(--color-transparent-background);
+      color: var(--color-brand-foreground-1);
 
       @apply cursor-pointer;
 
@@ -166,7 +166,7 @@
            reproduced verbatim. `outline-width` is NOT spacing-powered, so the stroke width
            is referenced directly as `var(--spacing-thin)` (D4 addendum, case 2). */
         outline: var(--spacing-thin);
-        border-radius: var(--borderRadiusSmall);
+        border-radius: var(--radius-small);
       }
     }
 
@@ -176,12 +176,12 @@
        component's Griffel source never emitted. */
     @variant hover {
       @variant active {
-        color: var(--colorBrandForeground2);
+        color: var(--color-brand-foreground-2);
       }
     }
 
     @variant disabled {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
 
       @apply pointer-events-none;
     }

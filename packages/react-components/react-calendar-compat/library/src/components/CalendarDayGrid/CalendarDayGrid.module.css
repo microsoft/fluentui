@@ -100,12 +100,12 @@
 @layer fui.components.l1 {
   /* from useDayCellStyles.base — dayCell arg #2 */
   .day-cell {
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
 
     @apply relative m-0 cursor-pointer p-horizontal-xxs;
 
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
 
     @variant forced-colors {
       background-color: Window;
@@ -113,8 +113,8 @@
     }
 
     &.hover-style {
-      color: var(--colorNeutralForeground1Static);
-      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--color-neutral-foreground-1-static);
+      background-color: var(--color-brand-background-inverted-hover);
 
       @variant forced-colors {
         outline: calc(1px * var(--base-scale)) solid Highlight;
@@ -127,8 +127,8 @@
     }
 
     &.pressed-style {
-      color: var(--colorNeutralForeground1Static);
-      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--color-neutral-foreground-1-static);
+      background-color: var(--color-brand-background-inverted-pressed);
 
       @variant forced-colors {
         background-color: Window;
@@ -152,8 +152,8 @@
    * `outlineRadius` / `outlineColor` / `outlineWidth` from the option object, so the
    * `shorthands.borderWidth(tokens.strokeWidthThick)` spread in the Griffel source is
    * inert and is NOT reproduced (react-tabster/src/focus/createFocusOutlineStyle.ts:55-80).
-   * Radius and color therefore stay at the utility's defaults (`--borderRadiusMedium`,
-   * `--colorStrokeFocus2`), and with no `outlineOffset` the utility's
+   * Radius and color therefore stay at the utility's defaults (`--radius-medium`,
+   * `--color-stroke-focus-2`), and with no `outlineOffset` the utility's
    * `calc(0px - <width> - 0px)` reproduces `calc(<width> * -1)` exactly.
    *
    * The knob is set on `&::after`, not on the element: the `fui-focus-outline` utility
@@ -187,8 +187,8 @@
 
   /* from useDaySelectedStyles.base — dayCell arg #5 */
   .day-selected {
-    background-color: var(--colorBrandBackgroundInvertedSelected);
-    color: var(--colorNeutralForeground1Static);
+    background-color: var(--color-brand-background-inverted-selected);
+    color: var(--color-neutral-foreground-1-static);
 
     @variant forced-colors {
       background-color: Highlight;
@@ -208,8 +208,8 @@
     &:where(:hover),
     &.hover-style,
     &.pressed-style {
-      color: var(--colorNeutralForeground1Static);
-      background-color: var(--colorBrandBackgroundInvertedSelected);
+      color: var(--color-neutral-foreground-1-static);
+      background-color: var(--color-brand-background-inverted-selected);
 
       @variant forced-colors {
         background-color: Highlight;
@@ -226,7 +226,7 @@
 
   /* from useDaySingleSelectedStyles.base — dayCell arg #6 */
   .day-single-selected {
-    color: var(--colorNeutralForeground1Static);
+    color: var(--color-neutral-foreground-1-static);
 
     & > .day-marker {
       @variant forced-colors {
@@ -235,7 +235,7 @@
     }
 
     & > .day-button {
-      border-radius: var(--borderRadiusMedium);
+      border-radius: var(--radius-medium);
 
       /* `border: '1px solid <token>'` expanded to longhands: `.day-button` below resets
          `border-style` and the forced-colors block re-sets all four colors, so the
@@ -248,10 +248,10 @@
       border-right-style: solid;
       border-bottom-style: solid;
       border-left-style: solid;
-      border-top-color: var(--colorBrandStroke1);
-      border-right-color: var(--colorBrandStroke1);
-      border-bottom-color: var(--colorBrandStroke1);
-      border-left-color: var(--colorBrandStroke1);
+      border-top-color: var(--color-brand-stroke-1);
+      border-right-color: var(--color-brand-stroke-1);
+      border-bottom-color: var(--color-brand-stroke-1);
+      border-left-color: var(--color-brand-stroke-1);
 
       /*
        * ⚠ REST-STATE RESTRICTION — the one place in this package where `:where()`
@@ -272,7 +272,7 @@
        * this component's competitors are plain `:hover` and plain `:active`.
        */
       &:where(:not(:hover, :active)) {
-        background-color: var(--colorBrandBackgroundInvertedSelected);
+        background-color: var(--color-brand-background-inverted-selected);
       }
 
       /* forced-colors is Griffel bucket `m`, which is inserted after `h`/`a`, so this half
@@ -308,19 +308,19 @@
 
   /* from useWeekNumberCellStyles.base */
   .week-number-cell {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* `borderRight: '1px solid <token>'` — rtl-css-js swaps borderRight↔borderLeft, a pure
        PROPERTY flip, so it becomes the `border-inline-end-*` longhands */
     border-inline-end-width: calc(1px * var(--base-scale));
     border-inline-end-style: solid;
-    border-inline-end-color: var(--colorNeutralStroke2);
+    border-inline-end-color: var(--color-neutral-stroke-2);
 
     @apply m-0 box-border h-28 w-28 p-0;
 
-    color: var(--colorNeutralForeground4);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
+    color: var(--color-neutral-foreground-4);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
   }
 
   /*
@@ -338,8 +338,8 @@
     & button,
     &.hover-style,
     &.pressed-style {
-      background-color: var(--colorTransparentBackground);
-      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--color-transparent-background);
+      color: var(--color-neutral-foreground-disabled);
 
       @apply pointer-events-none;
     }
@@ -356,8 +356,8 @@
    * (it used to be the bare `fui-CalendarDayGrid__dayOutsideNavigatedMonth` static).
    */
   .lighten-days-outside-navigated-month {
-    color: var(--colorNeutralForeground4);
-    font-weight: var(--fontWeightRegular);
+    color: var(--color-neutral-foreground-4);
+    font-weight: var(--font-weight-regular);
 
     @variant forced-colors {
       color: GrayText;
@@ -374,7 +374,7 @@
    * `line-height: inherit`) never applied to anything.
    */
   .day-button {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* `border: 'none'` — the style longhands are the half that carries it for layout and
        paint (react-drawer/InlineDrawer precedent) */
@@ -384,17 +384,17 @@
 
     @apply h-24 w-24 cursor-pointer overflow-visible p-0;
 
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
     font-weight: inherit;
     line-height: calc(24px * var(--base-scale));
 
     @variant hover {
-      background-color: var(--colorBrandBackgroundInvertedHover);
-      border-radius: var(--borderRadiusMedium);
+      background-color: var(--color-brand-background-inverted-hover);
+      border-radius: var(--radius-medium);
     }
 
     @variant active {
-      background-color: var(--colorBrandBackgroundInvertedPressed);
+      background-color: var(--color-brand-background-inverted-pressed);
     }
   }
 
@@ -402,11 +402,11 @@
   .day-is-today {
     @apply flex items-center justify-center;
 
-    color: var(--colorNeutralForegroundOnBrand);
-    font-weight: var(--fontWeightSemibold);
+    color: var(--color-neutral-foreground-on-brand);
+    font-weight: var(--font-weight-semibold);
 
     & > .day-marker {
-      background-color: var(--colorNeutralForegroundOnBrand);
+      background-color: var(--color-neutral-foreground-on-brand);
 
       @variant forced-colors {
         background-color: Window;
@@ -430,7 +430,7 @@
 
   /* from useDayMarkerStyles.base */
   .day-marker {
-    background-color: var(--colorBrandForeground2);
+    background-color: var(--color-brand-foreground-2);
     border-radius: 100%;
 
     @apply absolute bottom-1 m-auto h-4 w-4;
@@ -457,19 +457,19 @@
    */
   .corners {
     &.top-left-corner-date {
-      border-start-start-radius: var(--borderRadiusMedium);
+      border-start-start-radius: var(--radius-medium);
     }
 
     &.top-right-corner-date {
-      border-start-end-radius: var(--borderRadiusMedium);
+      border-start-end-radius: var(--radius-medium);
     }
 
     &.bottom-left-corner-date {
-      border-end-start-radius: var(--borderRadiusMedium);
+      border-end-start-radius: var(--radius-medium);
     }
 
     &.bottom-right-corner-date {
-      border-end-end-radius: var(--borderRadiusMedium);
+      border-end-end-radius: var(--radius-medium);
     }
   }
 
@@ -477,7 +477,7 @@
   .day-today-marker {
     @apply flex h-20 w-20 items-center justify-center;
 
-    background-color: var(--colorBrandBackground);
+    background-color: var(--color-brand-background);
     border-radius: 100%;
     line-height: calc(20px * var(--base-scale));
 

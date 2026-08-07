@@ -6,8 +6,8 @@
 }
 
 .darkBG {
-  background-color: var(--colorNeutralBackgroundInverted);
-  color: var(--colorNeutralForegroundInverted2);
+  background-color: var(--color-neutral-background-inverted);
+  color: var(--color-neutral-foreground-inverted-2);
   margin-block: 10px;
-  border-radius: var(--borderRadiusMedium);
+  border-radius: var(--radius-medium);
 }

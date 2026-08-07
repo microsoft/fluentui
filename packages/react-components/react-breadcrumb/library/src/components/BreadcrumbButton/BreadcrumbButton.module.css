@@ -103,35 +103,35 @@
    *
    * `typographyStyles.caption1` / `.body1` / `.body2` expand to the four `font-*` /
    * `line-height` declarations the compiler emitted; all three carry
-   * `font-weight: var(--fontWeightRegular)` (`figsok6`), including `large` — `body2` is NOT
+   * `font-weight: var(--font-weight-regular)` (`figsok6`), including `large` — `body2` is NOT
    * semibold. The `current` overrides below are the only semibold path.
    */
   .root {
     @variant size-small {
       @apply h-24 ps-horizontal-s-nudge pe-horizontal-s-nudge pt-horizontal-s-nudge pb-horizontal-s-nudge;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-family: var(--font-base);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
     }
 
     @variant size-medium {
       @apply h-32 ps-horizontal-s-nudge pe-horizontal-s-nudge pt-horizontal-s-nudge pb-horizontal-s-nudge;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
+      font-family: var(--font-base);
+      font-size: var(--text-base-300);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-300);
     }
 
     @variant size-large {
       @apply h-40 ps-horizontal-s pe-horizontal-s pt-horizontal-s pb-horizontal-s;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase400);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase400);
+      font-family: var(--font-base);
+      font-size: var(--text-base-400);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-400);
     }
   }
 }
@@ -165,24 +165,24 @@
   .root {
     @variant current {
       @variant size-small {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase200);
-        font-weight: var(--fontWeightSemibold);
-        line-height: var(--lineHeightBase200);
+        font-family: var(--font-base);
+        font-size: var(--text-base-200);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--leading-base-200);
       }
 
       @variant size-medium {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightSemibold);
-        line-height: var(--lineHeightBase300);
+        font-family: var(--font-base);
+        font-size: var(--text-base-300);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--leading-base-300);
       }
 
       @variant size-large {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase400);
-        font-weight: var(--fontWeightSemibold);
-        line-height: var(--lineHeightBase400);
+        font-family: var(--font-base);
+        font-size: var(--text-base-400);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--leading-base-400);
       }
     }
   }
@@ -229,8 +229,8 @@
   .root {
     @variant current {
       @variant hover {
-        background-color: var(--colorTransparentBackground);
-        color: var(--colorNeutralForeground2);
+        background-color: var(--color-transparent-background);
+        color: var(--color-neutral-foreground-2);
         cursor: auto;
 
         & .icon {
@@ -239,8 +239,8 @@
       }
 
       @variant disabled {
-        background-color: var(--colorTransparentBackground);
-        color: var(--colorNeutralForeground2);
+        background-color: var(--color-transparent-background);
+        color: var(--color-neutral-foreground-2);
         cursor: auto;
 
         & .icon {
@@ -284,21 +284,21 @@
     @variant size-small {
       & .icon {
         --fui-Breadcrumb--icon-size: calc(12px * var(--base-scale));
-        --fui-Breadcrumb--icon-line-height: var(--lineHeightBase200);
+        --fui-Breadcrumb--icon-line-height: var(--leading-base-200);
       }
     }
 
     @variant size-medium {
       & .icon {
         --fui-Breadcrumb--icon-size: calc(16px * var(--base-scale));
-        --fui-Breadcrumb--icon-line-height: var(--lineHeightBase400);
+        --fui-Breadcrumb--icon-line-height: var(--leading-base-400);
       }
     }
 
     @variant size-large {
       & .icon {
         --fui-Breadcrumb--icon-size: calc(20px * var(--base-scale));
-        --fui-Breadcrumb--icon-line-height: var(--lineHeightBase600);
+        --fui-Breadcrumb--icon-line-height: var(--leading-base-600);
       }
     }
   }

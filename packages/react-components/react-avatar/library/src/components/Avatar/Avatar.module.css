@@ -84,10 +84,10 @@
   .root {
     @apply relative inline-block size-32 shrink-0 align-middle;
 
-    border-radius: var(--borderRadiusCircular);
-    font-family: var(--fontFamilyBase);
-    font-weight: var(--fontWeightSemibold);
-    font-size: var(--fontSizeBase300);
+    border-radius: var(--radius-circular);
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-base-300);
 
     &::before,
     &::after {
@@ -103,8 +103,8 @@
       margin: calc(-2 * var(--fui-Avatar-ringWidth, 0px));
       border-radius: inherit;
       transition-property: margin, opacity;
-      transition-timing-function: var(--curveEasyEaseMax), var(--curveLinear);
-      transition-duration: var(--durationUltraSlow), var(--durationSlower);
+      transition-timing-function: var(--ease-easy-ease-max), var(--ease-linear);
+      transition-duration: var(--duration-ultra-slow), var(--duration-slower);
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
@@ -137,7 +137,7 @@
     inset-block-start: 0;
     inset-inline-start: 0;
     line-height: 1;
-    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+    border: var(--spacing-thin) solid var(--color-transparent-stroke);
     border-radius: inherit;
 
     /* `vertical-align: center` is not a valid value and is dropped by every browser.
@@ -270,23 +270,23 @@
      * rule: 32/36/40 keep `fontSizeBase300` from the reset.
      */
     &:where([data-size='16'], [data-size='20'], [data-size='24']) {
-      font-size: var(--fontSizeBase100);
+      font-size: var(--text-base-100);
     }
 
     &:where([data-size='28']) {
-      font-size: var(--fontSizeBase200);
+      font-size: var(--text-base-200);
     }
 
     &:where([data-size='48'], [data-size='56']) {
-      font-size: var(--fontSizeBase400);
+      font-size: var(--text-base-400);
     }
 
     &:where([data-size='64'], [data-size='72'], [data-size='96']) {
-      font-size: var(--fontSizeBase500);
+      font-size: var(--text-base-500);
     }
 
     &:where([data-size='120'], [data-size='128']) {
-      font-size: var(--fontSizeBase600);
+      font-size: var(--text-base-600);
     }
 
     /*
@@ -330,19 +330,19 @@
    */
   .square {
     &:where([data-size='16'], [data-size='20'], [data-size='24']) {
-      border-radius: var(--borderRadiusSmall);
+      border-radius: var(--radius-small);
     }
 
     &:where([data-size='28'], [data-size='32'], [data-size='36'], [data-size='40'], [data-size='48']) {
-      border-radius: var(--borderRadiusMedium);
+      border-radius: var(--radius-medium);
     }
 
     &:where([data-size='56'], [data-size='64'], [data-size='72']) {
-      border-radius: var(--borderRadiusLarge);
+      border-radius: var(--radius-large);
     }
 
     &:where([data-size='96'], [data-size='120'], [data-size='128']) {
-      border-radius: var(--borderRadiusXLarge);
+      border-radius: var(--radius-x-large);
     }
   }
 }
@@ -358,8 +358,8 @@
       /* work-around for text pixel snapping at the end of the animation */
       transform: perspective(1px);
       transition-property: transform, opacity;
-      transition-duration: var(--durationUltraSlow), var(--durationFaster);
-      transition-timing-function: var(--curveEasyEaseMax), var(--curveLinear);
+      transition-duration: var(--duration-ultra-slow), var(--duration-faster);
+      transition-timing-function: var(--ease-easy-ease-max), var(--ease-linear);
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
@@ -407,19 +407,19 @@
     /* arg 13 — from useStyles.shadow4 / .shadow8 / .shadow16 / .shadow28. */
     @variant active-appearance-shadow-or-ring-shadow {
       &:where([data-size='16'], [data-size='20'], [data-size='24'], [data-size='28'])::after {
-        box-shadow: var(--shadow4);
+        box-shadow: var(--shadow-4);
       }
 
       &:where([data-size='32'], [data-size='36'], [data-size='40'], [data-size='48'])::after {
-        box-shadow: var(--shadow8);
+        box-shadow: var(--shadow-8);
       }
 
       &:where([data-size='56'], [data-size='64'])::after {
-        box-shadow: var(--shadow16);
+        box-shadow: var(--shadow-16);
       }
 
       &:where([data-size='72'], [data-size='96'], [data-size='120'], [data-size='128'])::after {
-        box-shadow: var(--shadow28);
+        box-shadow: var(--shadow-28);
       }
     }
   }
@@ -432,127 +432,127 @@
    */
   .ring-neutral::before,
   .ring-brand::before {
-    color: var(--colorBrandStroke1);
+    color: var(--color-brand-stroke-1);
   }
 
   .ring-dark-red::before {
-    color: var(--colorPaletteDarkRedBorderActive);
+    color: var(--color-palette-dark-red-border-active);
   }
 
   .ring-cranberry::before {
-    color: var(--colorPaletteCranberryBorderActive);
+    color: var(--color-palette-cranberry-border-active);
   }
 
   .ring-red::before {
-    color: var(--colorPaletteRedBorderActive);
+    color: var(--color-palette-red-border-active);
   }
 
   .ring-pumpkin::before {
-    color: var(--colorPalettePumpkinBorderActive);
+    color: var(--color-palette-pumpkin-border-active);
   }
 
   .ring-peach::before {
-    color: var(--colorPalettePeachBorderActive);
+    color: var(--color-palette-peach-border-active);
   }
 
   .ring-marigold::before {
-    color: var(--colorPaletteMarigoldBorderActive);
+    color: var(--color-palette-marigold-border-active);
   }
 
   .ring-gold::before {
-    color: var(--colorPaletteGoldBorderActive);
+    color: var(--color-palette-gold-border-active);
   }
 
   .ring-brass::before {
-    color: var(--colorPaletteBrassBorderActive);
+    color: var(--color-palette-brass-border-active);
   }
 
   .ring-brown::before {
-    color: var(--colorPaletteBrownBorderActive);
+    color: var(--color-palette-brown-border-active);
   }
 
   .ring-forest::before {
-    color: var(--colorPaletteForestBorderActive);
+    color: var(--color-palette-forest-border-active);
   }
 
   .ring-seafoam::before {
-    color: var(--colorPaletteSeafoamBorderActive);
+    color: var(--color-palette-seafoam-border-active);
   }
 
   .ring-dark-green::before {
-    color: var(--colorPaletteDarkGreenBorderActive);
+    color: var(--color-palette-dark-green-border-active);
   }
 
   .ring-light-teal::before {
-    color: var(--colorPaletteLightTealBorderActive);
+    color: var(--color-palette-light-teal-border-active);
   }
 
   .ring-teal::before {
-    color: var(--colorPaletteTealBorderActive);
+    color: var(--color-palette-teal-border-active);
   }
 
   .ring-steel::before {
-    color: var(--colorPaletteSteelBorderActive);
+    color: var(--color-palette-steel-border-active);
   }
 
   .ring-blue::before {
-    color: var(--colorPaletteBlueBorderActive);
+    color: var(--color-palette-blue-border-active);
   }
 
   .ring-royal-blue::before {
-    color: var(--colorPaletteRoyalBlueBorderActive);
+    color: var(--color-palette-royal-blue-border-active);
   }
 
   .ring-cornflower::before {
-    color: var(--colorPaletteCornflowerBorderActive);
+    color: var(--color-palette-cornflower-border-active);
   }
 
   .ring-navy::before {
-    color: var(--colorPaletteNavyBorderActive);
+    color: var(--color-palette-navy-border-active);
   }
 
   .ring-lavender::before {
-    color: var(--colorPaletteLavenderBorderActive);
+    color: var(--color-palette-lavender-border-active);
   }
 
   .ring-purple::before {
-    color: var(--colorPalettePurpleBorderActive);
+    color: var(--color-palette-purple-border-active);
   }
 
   .ring-grape::before {
-    color: var(--colorPaletteGrapeBorderActive);
+    color: var(--color-palette-grape-border-active);
   }
 
   .ring-lilac::before {
-    color: var(--colorPaletteLilacBorderActive);
+    color: var(--color-palette-lilac-border-active);
   }
 
   .ring-pink::before {
-    color: var(--colorPalettePinkBorderActive);
+    color: var(--color-palette-pink-border-active);
   }
 
   .ring-magenta::before {
-    color: var(--colorPaletteMagentaBorderActive);
+    color: var(--color-palette-magenta-border-active);
   }
 
   .ring-plum::before {
-    color: var(--colorPalettePlumBorderActive);
+    color: var(--color-palette-plum-border-active);
   }
 
   .ring-beige::before {
-    color: var(--colorPaletteBeigeBorderActive);
+    color: var(--color-palette-beige-border-active);
   }
 
   .ring-mink::before {
-    color: var(--colorPaletteMinkBorderActive);
+    color: var(--color-palette-mink-border-active);
   }
 
   .ring-platinum::before {
-    color: var(--colorPalettePlatinumBorderActive);
+    color: var(--color-palette-platinum-border-active);
   }
 
   .ring-anchor::before {
-    color: var(--colorPaletteAnchorBorderActive);
+    color: var(--color-palette-anchor-border-active);
   }
 
   /*
@@ -586,13 +586,13 @@
     @variant active-inactive {
       opacity: 0.8;
       transform: scale(0.875);
-      transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+      transition-timing-function: var(--ease-decelerate-min), var(--ease-linear);
 
       &::before,
       &::after {
         margin: 0;
         opacity: 0;
-        transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+        transition-timing-function: var(--ease-decelerate-min), var(--ease-linear);
       }
     }
   }
@@ -605,163 +605,163 @@
    * the argument order on all three slots.
    */
   .neutral {
-    color: var(--colorNeutralForeground3);
-    background-color: var(--colorNeutralBackground6);
+    color: var(--color-neutral-foreground-3);
+    background-color: var(--color-neutral-background-6);
   }
 
   .brand {
-    color: var(--colorNeutralForegroundStaticInverted);
-    background-color: var(--colorBrandBackgroundStatic);
+    color: var(--color-neutral-foreground-static-inverted);
+    background-color: var(--color-brand-background-static);
   }
 
   .dark-red {
-    color: var(--colorPaletteDarkRedForeground2);
-    background-color: var(--colorPaletteDarkRedBackground2);
+    color: var(--color-palette-dark-red-foreground-2);
+    background-color: var(--color-palette-dark-red-background-2);
   }
 
   .cranberry {
-    color: var(--colorPaletteCranberryForeground2);
-    background-color: var(--colorPaletteCranberryBackground2);
+    color: var(--color-palette-cranberry-foreground-2);
+    background-color: var(--color-palette-cranberry-background-2);
   }
 
   .red {
-    color: var(--colorPaletteRedForeground2);
-    background-color: var(--colorPaletteRedBackground2);
+    color: var(--color-palette-red-foreground-2);
+    background-color: var(--color-palette-red-background-2);
   }
 
   .pumpkin {
-    color: var(--colorPalettePumpkinForeground2);
-    background-color: var(--colorPalettePumpkinBackground2);
+    color: var(--color-palette-pumpkin-foreground-2);
+    background-color: var(--color-palette-pumpkin-background-2);
   }
 
   .peach {
-    color: var(--colorPalettePeachForeground2);
-    background-color: var(--colorPalettePeachBackground2);
+    color: var(--color-palette-peach-foreground-2);
+    background-color: var(--color-palette-peach-background-2);
   }
 
   .marigold {
-    color: var(--colorPaletteMarigoldForeground2);
-    background-color: var(--colorPaletteMarigoldBackground2);
+    color: var(--color-palette-marigold-foreground-2);
+    background-color: var(--color-palette-marigold-background-2);
   }
 
   .gold {
-    color: var(--colorPaletteGoldForeground2);
-    background-color: var(--colorPaletteGoldBackground2);
+    color: var(--color-palette-gold-foreground-2);
+    background-color: var(--color-palette-gold-background-2);
   }
 
   .brass {
-    color: var(--colorPaletteBrassForeground2);
-    background-color: var(--colorPaletteBrassBackground2);
+    color: var(--color-palette-brass-foreground-2);
+    background-color: var(--color-palette-brass-background-2);
   }
 
   .brown {
-    color: var(--colorPaletteBrownForeground2);
-    background-color: var(--colorPaletteBrownBackground2);
+    color: var(--color-palette-brown-foreground-2);
+    background-color: var(--color-palette-brown-background-2);
   }
 
   .forest {
-    color: var(--colorPaletteForestForeground2);
-    background-color: var(--colorPaletteForestBackground2);
+    color: var(--color-palette-forest-foreground-2);
+    background-color: var(--color-palette-forest-background-2);
   }
 
   .seafoam {
-    color: var(--colorPaletteSeafoamForeground2);
-    background-color: var(--colorPaletteSeafoamBackground2);
+    color: var(--color-palette-seafoam-foreground-2);
+    background-color: var(--color-palette-seafoam-background-2);
   }
 
   .dark-green {
-    color: var(--colorPaletteDarkGreenForeground2);
-    background-color: var(--colorPaletteDarkGreenBackground2);
+    color: var(--color-palette-dark-green-foreground-2);
+    background-color: var(--color-palette-dark-green-background-2);
   }
 
   .light-teal {
-    color: var(--colorPaletteLightTealForeground2);
-    background-color: var(--colorPaletteLightTealBackground2);
+    color: var(--color-palette-light-teal-foreground-2);
+    background-color: var(--color-palette-light-teal-background-2);
   }
 
   .teal {
-    color: var(--colorPaletteTealForeground2);
-    background-color: var(--colorPaletteTealBackground2);
+    color: var(--color-palette-teal-foreground-2);
+    background-color: var(--color-palette-teal-background-2);
   }
 
   .steel {
-    color: var(--colorPaletteSteelForeground2);
-    background-color: var(--colorPaletteSteelBackground2);
+    color: var(--color-palette-steel-foreground-2);
+    background-color: var(--color-palette-steel-background-2);
   }
 
   .blue {
-    color: var(--colorPaletteBlueForeground2);
-    background-color: var(--colorPaletteBlueBackground2);
+    color: var(--color-palette-blue-foreground-2);
+    background-color: var(--color-palette-blue-background-2);
   }
 
   .royal-blue {
-    color: var(--colorPaletteRoyalBlueForeground2);
-    background-color: var(--colorPaletteRoyalBlueBackground2);
+    color: var(--color-palette-royal-blue-foreground-2);
+    background-color: var(--color-palette-royal-blue-background-2);
   }
 
   .cornflower {
-    color: var(--colorPaletteCornflowerForeground2);
-    background-color: var(--colorPaletteCornflowerBackground2);
+    color: var(--color-palette-cornflower-foreground-2);
+    background-color: var(--color-palette-cornflower-background-2);
   }
 
   .navy {
-    color: var(--colorPaletteNavyForeground2);
-    background-color: var(--colorPaletteNavyBackground2);
+    color: var(--color-palette-navy-foreground-2);
+    background-color: var(--color-palette-navy-background-2);
   }
 
   .lavender {
-    color: var(--colorPaletteLavenderForeground2);
-    background-color: var(--colorPaletteLavenderBackground2);
+    color: var(--color-palette-lavender-foreground-2);
+    background-color: var(--color-palette-lavender-background-2);
   }
 
   .purple {
-    color: var(--colorPalettePurpleForeground2);
-    background-color: var(--colorPalettePurpleBackground2);
+    color: var(--color-palette-purple-foreground-2);
+    background-color: var(--color-palette-purple-background-2);
   }
 
   .grape {
-    color: var(--colorPaletteGrapeForeground2);
-    background-color: var(--colorPaletteGrapeBackground2);
+    color: var(--color-palette-grape-foreground-2);
+    background-color: var(--color-palette-grape-background-2);
   }
 
   .lilac {
-    color: var(--colorPaletteLilacForeground2);
-    background-color: var(--colorPaletteLilacBackground2);
+    color: var(--color-palette-lilac-foreground-2);
+    background-color: var(--color-palette-lilac-background-2);
   }
 
   .pink {
-    color: var(--colorPalettePinkForeground2);
-    background-color: var(--colorPalettePinkBackground2);
+    color: var(--color-palette-pink-foreground-2);
+    background-color: var(--color-palette-pink-background-2);
   }
 
   .magenta {
-    color: var(--colorPaletteMagentaForeground2);
-    background-color: var(--colorPaletteMagentaBackground2);
+    color: var(--color-palette-magenta-foreground-2);
+    background-color: var(--color-palette-magenta-background-2);
   }
 
   .plum {
-    color: var(--colorPalettePlumForeground2);
-    background-color: var(--colorPalettePlumBackground2);
+    color: var(--color-palette-plum-foreground-2);
+    background-color: var(--color-palette-plum-background-2);
   }
 
   .beige {
-    color: var(--colorPaletteBeigeForeground2);
-    background-color: var(--colorPaletteBeigeBackground2);
+    color: var(--color-palette-beige-foreground-2);
+    background-color: var(--color-palette-beige-background-2);
   }
 
   .mink {
-    color: var(--colorPaletteMinkForeground2);
-    background-color: var(--colorPaletteMinkBackground2);
+    color: var(--color-palette-mink-foreground-2);
+    background-color: var(--color-palette-mink-background-2);
   }
 
   .platinum {
-    color: var(--colorPalettePlatinumForeground2);
-    background-color: var(--colorPalettePlatinumBackground2);
+    color: var(--color-palette-platinum-foreground-2);
+    background-color: var(--color-palette-platinum-background-2);
   }
 
   .anchor {
-    color: var(--colorPaletteAnchorForeground2);
-    background-color: var(--colorPaletteAnchorBackground2);
+    color: var(--color-palette-anchor-foreground-2);
+    background-color: var(--color-palette-anchor-background-2);
   }
 
   /*

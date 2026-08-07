@@ -101,19 +101,19 @@
      */
     @apply min-w-96 px-horizontal-m py-5;
 
-    background-color: var(--colorNeutralBackground1);
-    color: var(--colorNeutralForeground1);
-    border: var(--spacing-thin) solid var(--colorNeutralStroke1);
-    border-radius: var(--borderRadiusMedium);
+    background-color: var(--color-neutral-background-1);
+    color: var(--color-neutral-foreground-1);
+    border: var(--spacing-thin) solid var(--color-neutral-stroke-1);
+    border-radius: var(--radius-medium);
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-300);
 
     outline-style: none;
 
-    transition-duration: var(--durationFaster);
+    transition-duration: var(--duration-faster);
     /*
      * Longhands only. The Griffel source declared `background, border, color`, which is not
      * 3 properties: per CSS Transitions L1 a shorthand in `transition-property` expands to
@@ -131,20 +131,20 @@
      */
     transition-property:
       background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color;
-    transition-timing-function: var(--curveEasyEase);
+    transition-timing-function: var(--ease-easy-ease);
 
     @variant hover {
-      background-color: var(--colorNeutralBackground1Hover);
-      border-color: var(--colorNeutralStroke1Hover);
-      color: var(--colorNeutralForeground1Hover);
+      background-color: var(--color-neutral-background-1-hover);
+      border-color: var(--color-neutral-stroke-1-hover);
+      color: var(--color-neutral-foreground-1-hover);
 
       cursor: pointer;
     }
 
     @variant hover-active {
-      background-color: var(--colorNeutralBackground1Pressed);
-      border-color: var(--colorNeutralStroke1Pressed);
-      color: var(--colorNeutralForeground1Pressed);
+      background-color: var(--color-neutral-background-1-pressed);
+      border-color: var(--color-neutral-stroke-1-pressed);
+      color: var(--color-neutral-foreground-1-pressed);
 
       outline-style: none;
     }
@@ -186,7 +186,7 @@
     /* BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642) */
     @supports (-moz-appearance: button) {
       @variant focus-visible-fui {
-        box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--colorStrokeFocus2) inset;
+        box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
       }
     }
   }
@@ -248,42 +248,42 @@
 
   /* from useRootStyles.outline */
   .outline {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     @variant hover {
-      background-color: var(--colorTransparentBackgroundHover);
+      background-color: var(--color-transparent-background-hover);
     }
 
     @variant hover-active {
-      background-color: var(--colorTransparentBackgroundPressed);
+      background-color: var(--color-transparent-background-pressed);
     }
   }
 
   /* from useRootStyles.primary */
   .primary {
-    background-color: var(--colorBrandBackground);
+    background-color: var(--color-brand-background);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-neutral-foreground-on-brand);
 
     @variant hover {
-      background-color: var(--colorBrandBackgroundHover);
+      background-color: var(--color-brand-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
 
     @variant hover-active {
-      background-color: var(--colorBrandBackgroundPressed);
+      background-color: var(--color-brand-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
 
     @variant forced-colors {
@@ -317,43 +317,43 @@
 
   /* from useRootStyles.subtle */
   .subtle {
-    background-color: var(--colorSubtleBackground);
+    background-color: var(--color-subtle-background);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
 
     @variant hover {
-      background-color: var(--colorSubtleBackgroundHover);
+      background-color: var(--color-subtle-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForeground2Hover);
+      color: var(--color-neutral-foreground-2-hover);
 
       /* The `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here lives in the
          l1 icon-swap block at the bottom of this file (D27 / S-J batch 1). `.icon` below is
          this module's own local on react-button's icon slot, so its colour rule stays here. */
 
       & .icon {
-        color: var(--colorNeutralForeground2BrandHover);
+        color: var(--color-neutral-foreground-2-brand-hover);
       }
     }
 
     @variant hover-active {
-      background-color: var(--colorSubtleBackgroundPressed);
+      background-color: var(--color-subtle-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForeground2Pressed);
+      color: var(--color-neutral-foreground-2-pressed);
 
       /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). `.icon`
          is this module's own local and its colour rule stays here. */
 
       & .icon {
-        color: var(--colorNeutralForeground2BrandPressed);
+        color: var(--color-neutral-foreground-2-brand-pressed);
       }
     }
 
@@ -378,43 +378,43 @@
 
   /* from useRootStyles.transparent */
   .transparent {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
 
     @variant hover {
-      background-color: var(--colorTransparentBackgroundHover);
+      background-color: var(--color-transparent-background-hover);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForeground2BrandHover);
+      color: var(--color-neutral-foreground-2-brand-hover);
 
       /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). */
     }
 
     @variant hover-active {
-      background-color: var(--colorTransparentBackgroundPressed);
+      background-color: var(--color-transparent-background-pressed);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--colorNeutralForeground2BrandPressed);
+      color: var(--color-neutral-foreground-2-brand-pressed);
 
       /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). */
     }
 
     @variant forced-colors {
       @variant hover {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
         color: Highlight;
       }
 
       @variant hover-active {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
         color: Highlight;
       }
     }
@@ -435,11 +435,11 @@
       /* `padding: buttonSpacingSmall(3px) tokens.spacingHorizontalS`; 3px and 64px match no step */
       @apply min-w-64 px-horizontal-s py-3;
 
-      border-radius: var(--borderRadiusMedium);
+      border-radius: var(--radius-medium);
 
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
     }
 
     /* from useRootStyles.large */
@@ -451,11 +451,11 @@
        */
       @apply min-w-96 px-horizontal-l py-vertical-s;
 
-      border-radius: var(--borderRadiusMedium);
+      border-radius: var(--radius-medium);
 
-      font-size: var(--fontSizeBase400);
-      font-weight: var(--fontWeightSemibold);
-      line-height: var(--lineHeightBase400);
+      font-size: var(--text-base-400);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--leading-base-400);
     }
 
     /* from useIconStyles.small — icon slot arg #4, keyed off the root's data-size */
@@ -488,26 +488,26 @@
      * alone is not enough.
      */
     @variant disabled-any {
-      background-color: var(--colorNeutralBackgroundDisabled);
-      border-top-color: var(--colorNeutralStrokeDisabled);
-      border-right-color: var(--colorNeutralStrokeDisabled);
-      border-bottom-color: var(--colorNeutralStrokeDisabled);
-      border-left-color: var(--colorNeutralStrokeDisabled);
-      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--color-neutral-background-disabled);
+      border-top-color: var(--color-neutral-stroke-disabled);
+      border-right-color: var(--color-neutral-stroke-disabled);
+      border-bottom-color: var(--color-neutral-stroke-disabled);
+      border-left-color: var(--color-neutral-stroke-disabled);
+      color: var(--color-neutral-foreground-disabled);
 
       cursor: not-allowed;
 
       & .icon {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
 
       @variant hover {
-        background-color: var(--colorNeutralBackgroundDisabled);
-        border-top-color: var(--colorNeutralStrokeDisabled);
-        border-right-color: var(--colorNeutralStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorNeutralStrokeDisabled);
-        color: var(--colorNeutralForegroundDisabled);
+        background-color: var(--color-neutral-background-disabled);
+        border-top-color: var(--color-neutral-stroke-disabled);
+        border-right-color: var(--color-neutral-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-neutral-stroke-disabled);
+        color: var(--color-neutral-foreground-disabled);
 
         cursor: not-allowed;
 
@@ -516,17 +516,17 @@
            batch 1). */
 
         & .icon {
-          color: var(--colorNeutralForegroundDisabled);
+          color: var(--color-neutral-foreground-disabled);
         }
       }
 
       @variant hover-active {
-        background-color: var(--colorNeutralBackgroundDisabled);
-        border-top-color: var(--colorNeutralStrokeDisabled);
-        border-right-color: var(--colorNeutralStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorNeutralStrokeDisabled);
-        color: var(--colorNeutralForegroundDisabled);
+        background-color: var(--color-neutral-background-disabled);
+        border-top-color: var(--color-neutral-stroke-disabled);
+        border-right-color: var(--color-neutral-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-neutral-stroke-disabled);
+        color: var(--color-neutral-foreground-disabled);
 
         cursor: not-allowed;
 
@@ -535,7 +535,7 @@
            batch 1). */
 
         & .icon {
-          color: var(--colorNeutralForegroundDisabled);
+          color: var(--color-neutral-foreground-disabled);
         }
       }
 
@@ -590,11 +590,11 @@
     /* from useRootFocusStyles.small / .large — arg #12 */
     @variant focus-visible-fui {
       @variant size-small {
-        border-radius: var(--borderRadiusSmall);
+        border-radius: var(--radius-small);
       }
 
       @variant size-large {
-        border-radius: var(--borderRadiusLarge);
+        border-radius: var(--radius-large);
       }
     }
   }
@@ -608,14 +608,14 @@
   /* from useRootDisabledStyles.outline */
   .outline {
     @variant disabled-any {
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
 
       @variant hover {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
       }
 
       @variant hover-active {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
       }
     }
   }
@@ -648,23 +648,23 @@
      * `appearance === 'primary'`, i.e. exactly when this class is on the element.
      */
     @variant focus-visible-fui {
-      border-top-color: var(--colorStrokeFocus2);
-      border-right-color: var(--colorStrokeFocus2);
-      border-bottom-color: var(--colorStrokeFocus2);
-      border-left-color: var(--colorStrokeFocus2);
+      border-top-color: var(--color-stroke-focus-2);
+      border-right-color: var(--color-stroke-focus-2);
+      border-bottom-color: var(--color-stroke-focus-2);
+      border-left-color: var(--color-stroke-focus-2);
       box-shadow:
-        var(--shadow2),
-        0 0 0 var(--spacing-thin) var(--colorStrokeFocus2) inset,
-        0 0 0 var(--spacing-thick) var(--colorNeutralForegroundOnBrand) inset;
+        var(--shadow-2),
+        0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset,
+        0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
 
       @variant hover {
-        border-top-color: var(--colorStrokeFocus2);
-        border-right-color: var(--colorStrokeFocus2);
-        border-bottom-color: var(--colorStrokeFocus2);
-        border-left-color: var(--colorStrokeFocus2);
+        border-top-color: var(--color-stroke-focus-2);
+        border-right-color: var(--color-stroke-focus-2);
+        border-bottom-color: var(--color-stroke-focus-2);
+        border-left-color: var(--color-stroke-focus-2);
         box-shadow:
-          var(--shadow2),
-          0 0 0 var(--spacing-thin) var(--colorStrokeFocus2) inset;
+          var(--shadow-2),
+          0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset;
       }
     }
 
@@ -672,14 +672,14 @@
     @supports (-moz-appearance: button) {
       @variant focus-visible-fui {
         box-shadow:
-          var(--shadow2),
-          0 0 0 calc(var(--spacing-thin) + 0.25px) var(--colorStrokeFocus2) inset,
-          0 0 0 var(--spacing-thick) var(--colorNeutralForegroundOnBrand) inset;
+          var(--shadow-2),
+          0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset,
+          0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
 
         @variant hover {
           box-shadow:
-            var(--shadow2),
-            0 0 0 calc(var(--spacing-thin) + 0.25px) var(--colorStrokeFocus2) inset;
+            var(--shadow-2),
+            0 0 0 calc(var(--spacing-thin) + 0.25px) var(--color-stroke-focus-2) inset;
         }
       }
     }
@@ -688,14 +688,14 @@
   /* from useRootDisabledStyles.subtle */
   .subtle {
     @variant disabled-any {
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
 
       @variant hover {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
         border-top-color: transparent;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -703,7 +703,7 @@
       }
 
       @variant hover-active {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
         border-top-color: transparent;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -715,14 +715,14 @@
   /* from useRootDisabledStyles.transparent */
   .transparent {
     @variant disabled-any {
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
 
       @variant hover {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
         border-top-color: transparent;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -730,7 +730,7 @@
       }
 
       @variant hover-active {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
         border-top-color: transparent;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -768,19 +768,19 @@
 
   /* from useRootStyles.circular + useRootFocusStyles.circular */
   .circular {
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusCircular);
+      border-radius: var(--radius-circular);
     }
   }
 
   /* from useRootStyles.square + useRootFocusStyles.square */
   .square {
-    border-radius: var(--borderRadiusNone);
+    border-radius: var(--radius-none);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusNone);
+      border-radius: var(--radius-none);
     }
   }
 

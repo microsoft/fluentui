@@ -4,9 +4,9 @@
  * leave the border un-colored in the snapshot. */
 
 .canary {
-  border-color: var(--colorPaletteGreenBackground2);
+  border-color: var(--color-palette-green-background-2);
   border-width: 5px;
   transition-duration: 1000s;
   transition-property: border;
-  transition-timing-function: var(--curveEasyEase);
+  transition-timing-function: var(--ease-easy-ease);
 }

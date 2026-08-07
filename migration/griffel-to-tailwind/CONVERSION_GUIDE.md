@@ -65,7 +65,7 @@ COMPILED values, not your reading of the source.
 @layer fui.components.l1 {
   .root {
     @apply flex items-center;                 /* Tailwind utilities where 1:1 */
-    font-family: var(--fontFamilyBase);       /* tokens stay literal var() */
+    font-family: var(--font-base);       /* tokens stay literal var() */
 
     &::before { … }
 
@@ -75,7 +75,7 @@ COMPILED values, not your reading of the source.
 }
 
 @layer fui.components.l1 {
-  .brand { color: var(--colorBrandForeground1); }
+  .brand { color: var(--color-brand-foreground-1); }
   .subtle { … }
 }
 ```
@@ -386,7 +386,7 @@ another component's output, same rule as D2 amendment 2:
     }
     @variant group-hover/fui-switch {
       @variant group-disabled-control/fui-switch {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
   }

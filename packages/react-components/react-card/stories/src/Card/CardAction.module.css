@@ -24,11 +24,11 @@
 }
 
 .link {
-  color: var(--colorNeutralForeground1);
+  color: var(--color-neutral-foreground-1);
 }
 
 .link:hover {
-  color: var(--colorNeutralForeground1);
+  color: var(--color-neutral-foreground-1);
   text-decoration: none;
 }
 

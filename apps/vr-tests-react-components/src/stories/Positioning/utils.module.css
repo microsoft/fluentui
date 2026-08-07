@@ -12,12 +12,12 @@
 .wrapper {
   display: flex;
   gap: 5px;
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
 }
 
 .wrapper :global(.target) {
-  color: var(--colorNeutralForeground1);
-  background-color: var(--colorNeutralBackground1);
+  color: var(--color-neutral-foreground-1);
+  background-color: var(--color-neutral-background-1);
   border: 2px dashed green;
   width: 400px;
   height: 200px;
@@ -57,7 +57,7 @@
   background-color: inherit;
   background-clip: content-box;
 
-  border-bottom-left-radius: var(--borderRadiusSmall);
+  border-bottom-left-radius: var(--radius-small);
   transform: rotate(var(--fui-positioning-arrow-angle));
 
   height: var(--fui-positioning-arrow-height);
@@ -74,7 +74,7 @@
   height: 100%;
 
   border: 3px solid blue;
-  border-bottom-left-radius: var(--borderRadiusSmall);
+  border-bottom-left-radius: var(--radius-small);
 
   clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
 }

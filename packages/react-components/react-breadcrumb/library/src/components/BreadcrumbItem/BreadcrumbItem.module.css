@@ -41,6 +41,6 @@
   .root {
     @apply box-border flex items-center text-nowrap;
 
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
   }
 }
