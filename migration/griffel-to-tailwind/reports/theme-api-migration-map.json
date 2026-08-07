@@ -1,0 +1,74 @@
+{
+  "$schema": "theme-api-migration-map",
+  "description": "Consumer find/replace source for theming Phase 2b: the JS theming path is removed and themes are static CSS classes. Companion to token-rename-map.json (Phases 1 + 2a, which renamed the CSS custom properties). Apply this map AFTER token-rename-map.json. Every row was verified against the regenerated api.md files: 'umbrella' = packages/react-components/react-components/etc/react-components.api.md, 'tokens' = packages/tokens/etc/tokens.api.md.",
+  "generatedBy": "theming Phase 2b closeout",
+  "prerequisite": "Import '@fluentui/react-tailwind-theme/styles.css' exactly once per document. It emits the Web Light token values at ':root, :host' (so the default theme needs no provider and no class) and ships one class per theme.",
+  "propRenames": [
+    {
+      "component": "FluentProvider",
+      "from": "theme",
+      "to": "themeClassName",
+      "fromType": "Theme object",
+      "toType": "string (CSS class name)",
+      "note": "A nested provider that omits themeClassName inherits the parent provider's resolved class."
+    }
+  ],
+  "themeClassNames": [
+    { "from": "webLightTheme", "to": "webLightThemeClassName", "cssClass": "fui-theme-web-light" },
+    { "from": "webDarkTheme", "to": "webDarkThemeClassName", "cssClass": "fui-theme-web-dark" },
+    { "from": "teamsLightTheme", "to": "teamsLightThemeClassName", "cssClass": "fui-theme-teams-light" },
+    { "from": "teamsDarkTheme", "to": "teamsDarkThemeClassName", "cssClass": "fui-theme-teams-dark" },
+    {
+      "from": "teamsHighContrastTheme",
+      "to": "teamsHighContrastThemeClassName",
+      "cssClass": "fui-theme-teams-high-contrast"
+    },
+    { "from": "teamsLightV21Theme", "to": "teamsLightV21ThemeClassName", "cssClass": "fui-theme-teams-light-v21" },
+    { "from": "teamsDarkV21Theme", "to": "teamsDarkV21ThemeClassName", "cssClass": "fui-theme-teams-dark-v21" }
+  ],
+  "relocatedToTokens": {
+    "note": "Removed from @fluentui/react-components and @fluentui/react-theme; still exported by @fluentui/tokens, but as BUILD-TIME / TOOLING input only — not part of the runtime API. Use them in a script to generate a theme class, then ship that class as static CSS.",
+    "symbols": [
+      "webLightTheme",
+      "webDarkTheme",
+      "teamsLightTheme",
+      "teamsDarkTheme",
+      "teamsHighContrastTheme",
+      "teamsLightV21Theme",
+      "teamsDarkV21Theme",
+      "createLightTheme",
+      "createDarkTheme",
+      "createHighContrastTheme",
+      "createTeamsDarkTheme",
+      "themeToTokensObject",
+      "Theme",
+      "PartialTheme",
+      "Brands",
+      "BrandVariants"
+    ]
+  },
+  "removedNoReplacement": [
+    {
+      "symbol": "createCSSRuleFromTheme",
+      "reason": "The provider no longer builds a theme rule at runtime; theme rules are generated at build time by @fluentui/react-tailwind-theme.",
+      "guidance": "Author the theme as a CSS class of custom-property declarations (canonical kebab-case names) and ship it as static CSS."
+    },
+    {
+      "symbol": "useFluentProviderThemeStyleTag",
+      "reason": "The runtime theme <style> tag is deleted.",
+      "guidance": "None needed — apply a theme class instead."
+    },
+    {
+      "symbol": "ThemeContext_unstable",
+      "reason": "FluentProvider no longer provides a JS theme object at runtime.",
+      "guidance": "To read a resolved token VALUE at runtime, use useCssVarValue (@fluentui/react-utilities) at an element inside the themed scope, passing the active theme class via its `deps` option so a theme switch re-reads."
+    },
+    { "symbol": "ThemeProvider_unstable", "reason": "Removed with ThemeContext_unstable.", "guidance": "None." },
+    { "symbol": "ThemeContextValue_unstable", "reason": "Removed with ThemeContext_unstable.", "guidance": "None." },
+    {
+      "symbol": "nonce (FluentProvider prop) / StyleNonceContext",
+      "reason": "There is no runtime or SSR style element left to sign (DECISIONS.md D20.1 retired).",
+      "guidance": "Cover the static .css assets with a CSP `style-src` source list. `style-src 'unsafe-inline'` is not required."
+    }
+  ]
+}

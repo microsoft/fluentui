@@ -39,13 +39,21 @@ boxShadow: '0 2px 4px rgba(0,0,0,0.1)';
 
 ## Theme Architecture
 
-Themes define CSS custom properties consumed by components:
+Themes define CSS custom properties consumed by components. They ship as static CSS classes in
+`@fluentui/react-tailwind-theme` (import `@fluentui/react-tailwind-theme/styles.css` once per
+document; web-light values are the `:root` defaults):
 
 ```tsx
-// FluentProvider injects CSS variables into DOM
-<FluentProvider theme={webLightTheme}>
+// FluentProvider applies a static theme class (and propagates it to portals)
+<FluentProvider themeClassName={webLightThemeClassName}>
   <App />
 </FluentProvider>
+```
+
+Because a theme is only a class, any element can open a themed scope — a provider is not required:
+
+```tsx
+<aside className={webDarkThemeClassName}>{/* dark subtree */}</aside>
 ```
 
 In a `*.module.css`, reference the custom property directly:
@@ -53,7 +61,7 @@ In a `*.module.css`, reference the custom property directly:
 ```css
 @layer fui.components.l1 {
   .root {
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
   }
 }
 ```
@@ -64,16 +72,24 @@ a map of token name to the same custom-property reference:
 ```tsx
 import { tokens } from '@fluentui/react-theme';
 
-tokens.colorNeutralForeground1; // === 'var(--colorNeutralForeground1)'
+tokens.colorNeutralForeground1; // === 'var(--color-neutral-foreground-1)'
 ```
 
 `@fluentui/react-tailwind-theme` also registers the tokens with Tailwind via `@theme inline`, so
 utilities named after them (`p-horizontal-m`, `gap-vertical-s`) are available to `@apply`. `inline`
 is required and a plain `@theme` alias is forbidden: it would freeze token resolution at `:root` and
-break nested `FluentProvider` theming. Literal `var(--tokenName)` authoring stays valid everywhere.
+break theme-class scoping. Literal `var(--token-name)` authoring stays valid everywhere.
 
 ## Available Themes
 
-- `webLightTheme` — Default light
-- `webDarkTheme` — Default dark
-- `teamsLightTheme` / `teamsDarkTheme` / `teamsHighContrastTheme` — Teams variants
+Each theme is a class-name constant exported from `@fluentui/react-components` (and
+`@fluentui/react-theme`); `themeClassNames` maps each historical theme name (`webLightTheme`, …)
+to its class, and `ThemeClassName` is the union of the class names.
+
+- `webLightThemeClassName` — Default light (also the `:root` default, so no class is needed for it)
+- `webDarkThemeClassName` — Default dark
+- `teamsLightThemeClassName` / `teamsDarkThemeClassName` / `teamsHighContrastThemeClassName` — Teams variants
+- `teamsLightV21ThemeClassName` / `teamsDarkV21ThemeClassName` — Teams v21 variants
+
+The theme _objects_ (`webLightTheme`, `createLightTheme`, …) remain available from
+`@fluentui/tokens` as build-time/tooling input — they are no longer part of the runtime API.

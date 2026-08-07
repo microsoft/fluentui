@@ -303,11 +303,13 @@ borderRadius: '4px';
 
 ### Theme Architecture
 
-Themes define CSS custom properties consumed by components:
+Themes define CSS custom properties consumed by components. They ship as static CSS classes in
+`@fluentui/react-tailwind-theme` (import `@fluentui/react-tailwind-theme/styles.css` once per
+document; web-light values are the `:root` defaults):
 
 ```tsx
-// FluentProvider injects CSS variables into DOM
-<FluentProvider theme={webLightTheme}>
+// FluentProvider applies a static theme class (and propagates it to portals)
+<FluentProvider themeClassName={webLightThemeClassName}>
   <App />
 </FluentProvider>
 ```
@@ -317,13 +319,13 @@ Components reference the custom properties directly in their `*.module.css`:
 ```css
 @layer fui.components.l1 {
   .root {
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
   }
 }
 ```
 
 From TypeScript, use the `tokens` object — it maps each token name to the same reference
-(`tokens.colorNeutralForeground1 === 'var(--colorNeutralForeground1)'`).
+(`tokens.colorNeutralForeground1 === 'var(--color-neutral-foreground-1)'`).
 
 ### TypeScript Patterns (v9)
 

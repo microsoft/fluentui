@@ -371,3 +371,338 @@ Remove the FluentProvider runtime theme tag / JS theming path. With Phase 2a don
 tag is the ONLY remaining writer of both vocabularies; 2b must introduce the static
 value emission / theme-application mechanism for the canonical names (the design
 question deferred from this phase) and delete `createCSSRuleFromTheme`'s runtime role.
+
+## Phase 2b — the JS theming path is removed; themes are static CSS classes
+
+Date: 2026-08-06 · Branch: `styling/tailwind-css-modules` · Decision record:
+DECISIONS.md **D28** (+ D20.1 retirement note). Completes the arc: FluentProvider's
+runtime theme style tag — since 2a the SOLE value source for the 433 theme-variant
+canonical variables — is deleted, and the react-tailwind-theme artifact becomes the
+only writer of token values.
+
+### The shipped artifact
+
+- `css/tokens.css`: the `@layer fui.theme { :root, :host }` block now carries the 433
+  theme-variant web-light values below the Phase-1 spacing/stroke emission (20,842 →
+  63,560 bytes). Default = web light, no provider or class needed.
+- **NEW generated `css/themes.css`** (152,729 bytes): one class per shipped theme —
+  `.fui-theme-web-light`, `.fui-theme-web-dark`, `.fui-theme-teams-light`,
+  `.fui-theme-teams-dark`, `.fui-theme-teams-high-contrast`,
+  `.fui-theme-teams-light-v21`, `.fui-theme-teams-dark-v21` — 433 custom-property
+  declarations each, `@layer fui.theme`, imported by `css/index.css`.
+  `dist/styles.css`: 2,810 → 175,638 bytes raw / 14,603 bytes gzip.
+- Per-class exclusions, generator-asserted: the 26 spacing/stroke tokens are
+  theme-invariant (all 7 themes checked against the pinned scales) and stay
+  `:root`-only in density-knob form; the 8 zIndex tokens are theme-absent
+  (fallback-carried).
+- Value source: committed `packages/tokens/theme-values.json` (7 themes × 459 keys;
+  jest drift gate deep-equals it against the computed themes; `verify-theme-values`
+  wired into the CI target lists). Class-name constants (`webLightThemeClassName`, …,
+  `themeClassNames`, `ThemeClassName`) live in @fluentui/tokens and re-export through
+  react-theme + the umbrella; the generator re-derives and asserts them on every run.
+  Generated css files are prettier-ignored — value bytes stay identical to the JS
+  themes (prettier would rewrite rgba spacing / trailing zeros / wrap font stacks).
+- D13 re-verified: an `@reference '#theme'` module compile emits 210 bytes with ZERO
+  theme declarations or classes while `w-thin` / `bg-neutral-background-1` inline the
+  canonical var() references.
+
+### Provider surface (prop-shape decision recorded)
+
+`themeClassName?: string` — chosen because `themeClassName` is already the provider's
+own vocabulary (state field + portal channel). Resolution: prop → inherited from the
+parent provider (new `FluentProviderThemeClassName` context; hook
+`useFluentProviderThemeClassName_unstable`, `@internal`) → `''` (root defaults). The
+class joins `root.className` (now AFTER `styles.root` + marker — it can be empty;
+D15.1) and reaches portals through the untouched `ThemeClassNameContext` propagation.
+REMOVED: `theme` prop, `useFluentProviderThemeStyleTag`, `createCSSRuleFromTheme`,
+`serverStyleProps` + SSR style element, `nonce` prop + `StyleNonceContext` (D20.1
+retired), the theme-undefined warning and the duplicate-id dev check;
+`ThemeContext_unstable`/`ThemeProvider_unstable`/`ThemeContextValue_unstable` removed
+from react-shared-contexts (which drops its react-theme dependency);
+react-portal-compat applies the resolved class from the new context instead of
+regex-extracting the dead runtime `fui-FluentProvider<useId>` class. Umbrella +
+react-theme drop the theme objects / `create*Theme` / `themeToTokensObject` /
+`Theme`-family types (all remain in @fluentui/tokens as build-time input) and gain the
+class constants. api.md regenerated for 6 packages with the breaking shapes.
+
+### Runtime value-reader inventory (migrated per the useCssVarValue directive)
+
+- `charts/react-charts` `useIsDarkTheme` (the ONLY shipped runtime theme-object
+  reader; 2 duplicated copies) — unified onto one hook taking an element ref; reads
+  `--color-neutral-background-1` / `--color-neutral-foreground-1` (names derived from
+  the `tokens.*` strings) via `useCssVarValue` at the chart container and compares HSL
+  lightness; web-light fallbacks reproduce the pre-2b no-provider behavior.
+- `react-storybook-addon` example container: `tokens.colorNeutralBackground2` var()
+  string as inline style (no read at all).
+- `theme-designer` + `react-migration-v8-v9` shim stories: still build Theme OBJECTS
+  (from @fluentui/tokens) and apply them as generated custom-property classes via a
+  local `applyThemeAsClass` util (canonical names derived from `tokens.*` — no second
+  kebab implementation); export snippets emit the new consumer pattern.
+- `useCssVarValue` upgraded per the user directive: module-level memo keyed by
+  (element, variable) + an explicit `deps` re-read trigger (effect-style list; a
+  change re-reads the DOM and refreshes the cache; providing `deps` opts out of the
+  cross-mount memo on first read — a cached hit after a theme change while unmounted
+  would be stale). Read-once stays the default; no per-render reads, no observers.
+  10/10 unit tests.
+
+### Harness/story sweep (mechanical record)
+
+Scripted sweep `.scratch/phase2b-theming/sweep-theme-prop.mjs` (log:
+`sweep-theme-prop.log.json`): **96 files / 119 `theme={<shipped>Theme}` →
+`themeClassName={<shipped>ThemeClassName}` replacements** with import repoints (38
+cypress files, 8 perf scenarios, migration shim stories, docsite MDX, SSR entry
+generator, sandbox scaffold, fixtures). Manual clusters (two subagents + direct work):
+`getStoryVariant` (vr-tests + tools mirror) maps DARK_MODE/HIGH_CONTRAST/RTL to class
+constants; `withFluentProvider` id→class map; provider stories (nested custom theming
+now demos a module-css theme class); theme-designer; v8↔v9 shims;
+`Utilities/Theme/createCSSRuleFromTheme` docsite section replaced by
+`Utilities/Theme/ThemeClasses`; Theming.mdx rewritten; react-theme value-table stories
+import @fluentui/tokens; bundle-size fixtures follow the new exports. v8-domain files
+(packages/react, react-charting v8, react-examples, azure-themes, v8 apps) and
+web-components are out of scope and untouched; eslint-plugin lint-rule fixtures use
+the old names as arbitrary symbols and were left (recorded).
+
+### Gates
+
+1. **Scoped-theming browser probe (committed test) — PASS 2/2**:
+   `react-menu/library/src/components/Menu/MenuThemeScoping.cy.tsx` (cypress component
+   runner, real Chromium): a bare `webDarkThemeClassName` div themes its subtree
+   (probe computes `#292929`/`#ffffff`) while a sibling stays web light; a menu opened
+   from inside a themed provider carries the theme to its PORTALED surface (probe
+   inside MenuPopover computes the dark value; the mount node carries the class;
+   siblings outside stay light).
+2. **Deprecated-package themed rendering — verified via cypress, not stories**:
+   react-alert/react-infobutton have NO stories anywhere (docsite explicitly excludes
+   deprecated packages; no vr-tests dirs) — recorded as the answer to the task's
+   "verify dark-mode stories" item. Evidence instead:
+   `deprecated/react-infobutton/.../InfoLabel.cy.tsx` (+2 tests, suite 5/5) proves the
+   still-Griffel package's `tokens.colorNeutralForeground2` reference computes the
+   webDark value (`#d6d6d6`) under the dark CLASS and the light value (`#424242`)
+   under the default — Griffel-var → theme-class resolution end to end.
+3. **jest**: react-provider 37/37 (suites rewritten to the new contract: class
+   application, inheritance, override, SSR = plain div, empty-head hydration);
+   react-portal-compat green (context-based extraction incl. multi-class + nested
+   cases); tokens 10/10 (2 new gates); react-utilities/react-shared-contexts/
+   react-theme/react-button/react-avatar/react-motion/react-card/react-badge = 131
+   passed; react-table green; charts react-charts 917 passed / 86 skipped (69
+   snapshots regenerated — diffs inspected: provider markup + useId shifts only);
+   sandbox-export + workspace-plugin + vr utilities + test-ssr generator specs green.
+4. **SSR full run green**: `ssr-tests-v9:test-ssr` exit 0 (fresh) — the harness
+   template now emits `themeClassName={teamsLightThemeClassName}`; the provider
+   injects nothing, hydration clean.
+5. **lint/type-check**: type-check green across tokens, react-theme,
+   react-shared-contexts, react-provider, react-portal-compat, react-components,
+   react-charts, react-table, react-portal, react-infobutton,
+   react-storybook-addon(-export-to-sandbox), vr-tests-react-components,
+   visual-regression-utilities, theme-designer, react-migration-v8-v9(+stories),
+   react-theme-stories, react-provider-stories, react-migration-v0-v9-stories,
+   public-docsite-v9. lint green on the touched core packages; `react-utilities:lint`
+   fails PRE-EXISTING (2 `no-deprecated` errors in files 2b does not touch:
+   `compose/types.ts`, `hooks/useOnClickOutside.ts`). public-docsite-v9 storybook
+   build green (fresh).
+6. **Perf — provider mount, measured before/after**: dedicated benchmark
+   (`.scratch/phase2b-theming/perf-provider-mount/`; control = pre-2b HEAD worktree
+   bundled from source, new = working tree; 40 providers mounted per window via
+   `flushSync`, 31 windows + 5 warmups per visit, 6 interleaved reps, pooled
+   n = 186/leg, headless Chromium; liveness asserted: control injected 40 theme style
+   tags per window, new injected 0). Medians: control **9.4 ms** [IQR 9.1, 9.6] vs new
+   **0.3 ms** [0.2, 0.4] per 40-provider window — **−96.8%** (~0.235 → ~0.008 ms per
+   provider). The deleted work: building + inserting the 918-declaration dual-vocab
+   rule per provider. Raw: `perf-provider-mount/results.json`.
+7. **Full VR sweep at zero tolerance — 76/76 canonical sets PASS, failing: none.**
+   **7,621 matched pairs, ALL clean — 0 failed, 0 missing, 0 extra — every set on its
+   FIRST attempt** (no flake retries; even the two adjudicated-ceiling sets,
+   react-calendar-compat and property-remedy [2,772 pairs], and the known
+   ProgressBar-HC flake set diffed zero pixels). The harness themes exclusively via
+   classes now, so this sweep IS the proof that the class-based themes are
+   pixel-identical, including every dark/HC variant story.
+   Fresh `--skip-nx-cache` `vr-tests-react-components:build-storybook` AFTER all edits
+   settled (bundle marker-verified: 0 camelCase declarations, 0
+   createCSSRuleFromTheme / useFluentProviderThemeStyleTag references, theme classes
+   present in the bundled CSS, 511 themeClassName references); driver
+   `.scratch/phase2b-sweep-driver.mjs` (phase2a shape, review36513-\* excluded),
+   results `.scratch/phase2b-sweep-results.json`. An earlier same-day attempt recorded
+   0/76 — ALL capture-stage staleness-guard refusals (the docs subagent was still
+   editing sources; zero pixel evidence involved); the results file was reset and the
+   sweep re-run against the fresh bundle.
+
+### Interim semantics RESOLVED
+
+No runtime tag, no camelCase emission anywhere (the dual tag died with the tag), no JS
+theme objects in the runtime API. Deprecated packages' Griffel styles read `tokens.*`
+strings → canonical vars → resolved by the static `:root` emission + theme classes
+(gate 2). A theme class on any DOM node themes that subtree; portals and nested
+providers inherit; outside any class, web light applies everywhere (canonical vars now
+RESOLVE at `:root` — the one deliberate semantics change vs the provider-scoped era,
+part of the documented contract).
+
+### Closeout audit — defects fixed after the sweep
+
+The Phase-2b run was interrupted before its docs commit. A three-auditor review of the
+uncommitted tail found the following; all were fixed and re-gated (no VR re-run, see the
+coverage note below).
+
+1. **BEHAVIOURAL REGRESSION — `react-charts` `useIsDarkTheme` lost theme reactivity.**
+   Pre-2b it read `ThemeContext_unstable`, so a provider theme change re-rendered charts
+   with the new dark/light decision. Post-2b it called `useCssVarValue` with no `deps`,
+   which is read-once-per-(element, variable) and module-memoized in a WeakMap — and the
+   chart container is a stable DOM node, so `DeclarativeChart` / `VegaDeclarativeChart`
+   stayed stuck on the theme active at first mount. FIXED by passing the closest
+   provider's class string (`useThemeClassName_unstable`, already a react-charts
+   dependency — the resolved theme class joins `root.className` and is published as that
+   context value) as `deps` on both reads. This restores the pre-2b reactivity envelope
+   exactly: provider theme changes are tracked; a class swapped on a bare element was not
+   tracked pre-2b either and still is not. NOTE: the audit's suggested
+   `useFluentProviderThemeClassName_unstable` would have required a new react-provider
+   dependency AND would not have fixed the bare-element case it cited.
+   NEW TEST: `VegaDeclarativeChartHooks.test.tsx`, 5 tests — the two reactivity tests were
+   confirmed to FAIL with `deps` removed and PASS with it.
+2. **beachball, CI-blocking.** Added missing entries for `@fluentui/tokens` and
+   `@fluentui/react-theme-sass` (both `prerelease` — their manifests disallow
+   major/minor/patch). Lifted the `major` gate in `react-theme`,
+   `react-shared-contexts` and `react-portal-compat` (precedent: commit `9b59224287`),
+   and flipped `@fluentui/react-storybook-addon` (v0.7.1) from `major` to `minor` per the
+   branch's 0.x convention (`eae2756306`) — which removes its need for a gate lift.
+   Added changelog-fidelity entries for `react-storybook-addon-export-to-sandbox` (the
+   sandbox scaffold change) and `react-tailwind-theme` (the 2b artifact delta).
+   Simulating beachball's validator over all 223 change entries now reports **0 with a
+   disallowed type**.
+3. **Docs prescribing a removed API.** `AdvancedConfiguration.mdx` still documented the
+   `nonce` prop and the runtime `<style>` tag and told consumers to migrate TO the nonce
+   prop; its "Configuring rendering" section still claimed FluentProvider writes theme
+   custom properties into the child document. Both rewritten. Also finished three
+   half-applied files whose code fences were swapped but whose prose was not:
+   `QuickStart.mdx`, `Migration/GettingStarted.mdx`, and the `storybook-llms-extractor`
+   golden fixture + its inline snapshot (which publish the model into generated
+   `llms.txt`). Updated the two maintained in-repo docs that still imported removed
+   umbrella symbols: `docs/react-v9/contributing/patterns/extending-tokens.md` and
+   `docs/architecture/design-tokens.md` (the unswept twin of the
+   `copilot.instructions.md` block already in the diff).
+4. **Pre-2a vocabulary still documented.** Both `design-tokens.md` and
+   `copilot.instructions.md` asserted `tokens.colorNeutralForeground1 ===
+'var(--colorNeutralForeground1)'`. Verified false — the value is
+   `'var(--color-neutral-foreground-1)'`, and `css/themes.css` declares **0** camelCase
+   names vs **7** kebab-case (one per theme class). Corrected in both.
+5. **Undeclared dependency.** `public-docsite-v9` imports `@fluentui/tokens` in 4 ThemeShim
+   files without declaring it (4 `import/no-extraneous-dependencies` errors). Added it as
+   `"*"`, matching the convention of all 16 other `@fluentui` deps in that private app's
+   manifest (a hard pin would be the only one of its kind and would rot). The 4 errors are
+   gone; the 9 that remain in those files were proven pre-existing by linting the pre-2b
+   file content.
+6. **Child-window bug in the duplicated theme util.** `theme-designer`'s
+   `applyThemeAsClass` injected into the global `document` while its byte-identical twin in
+   `react-migration-v8-v9/stories` correctly used `useFluent().targetDocument`. Fixed, and
+   both copies now carry a DUPLICATE cross-reference plus a note that a theme key with no
+   matching `tokens` entry is silently dropped.
+7. **Staleness-guard hole.** `validation/capture.mjs` walked only
+   `packages/react-components`, so a stale `getStoryVariant` could never have tripped it.
+   Widened to `packages/charts` (19 `stories/Charts/*` files import `@fluentui/react-charts`
+   — a hole the audit did not spot), `apps/vr-tests-react-components/src` and
+   `tools/visual-regression-utilities/src`.
+
+Also added: `reports/theme-api-migration-map.{md,json}` — the consumer find/replace source
+for this break (7 theme→class rows, the prop rename, the relocated-to-`@fluentui/tokens`
+list and the removed-with-no-replacement table), the Phase-2b counterpart to
+`token-rename-map`. And an explicit before/after migration callout in `Theming.mdx`.
+
+### VR coverage — what the 76/76 does and does not cover
+
+The sweep was NOT re-run (see below), so this records its exact reach:
+
+- `git diff --quiet <captured-tree> -- <VR paths>` returns 0 for
+  `apps/vr-tests-react-components`, `tools/visual-regression-utilities`,
+  `react-storybook-addon(-export-to-sandbox)`, `tokens`, `react-provider`,
+  `react-tailwind-theme` and `scripts/storybook` — the screenshotted tree is intact.
+- **`tools/visual-regression-utilities/src/getStoryVariant.tsx` is NOT in any of the 76
+  pixel sets.** It is the published mirror with zero in-repo consumers; all candidate
+  manifests capture from `apps/vr-tests-react-components/dist/storybook`, which uses the
+  app's own copy. Its only gate is its unit spec (3/3).
+- The `react-charts` fix above touches a bundled package, but **no VR set renders a
+  consumer of it**: `useIsDarkTheme` is imported only by `DeclarativeChart` and
+  `VegaDeclarativeChart`, neither of which has a story anywhere under
+  `apps/vr-tests-react-components/src` (grep: 0 hits), and nothing but barrel files
+  re-exports them. Its gate is the new unit suite.
+- The `react-theme` delta vs the captured tree is exactly one deleted line —
+  `"major",` in `beachball.disallowedChangeTypes`. Release metadata; never bundled.
+
+### Correction to the artifact byte figures above
+
+The `css/tokens.css` "20,842 → 63,560 bytes" line is wrong on the BEFORE side. Measured:
+`git show 4e90ba2a89:…/css/tokens.css | wc -c` = **41,511**; the current file is 63,560.
+`css/themes.css` (152,729) and `dist/styles.css` (175,638) are confirmed, but
+`dist/styles.css` is a build artifact and is not committed at `4e90ba2a89` (0 bytes there),
+so its "2,810 →" baseline is not reproducible from git. Local gzip of the current
+`dist/styles.css` measures 15,714 bytes, not 14,603 — treat the gzip figure as
+compressor-dependent. Byte figures were omitted from the changelog entry for this reason.
+
+### Re-gate after the closeout fixes (2026-08-07)
+
+Every gate below was re-run AFTER the seven closeout fixes landed in the working tree.
+VR was NOT re-run — justified by the frozen-path proof in the coverage note above
+(`git diff --quiet` = exit 0 on all 8 genuinely-frozen VR paths), so the 76/76 at zero
+tolerance still describes the committed tree.
+
+| Gate                                           | Result                                                                                                                                                                                                                                  |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type-check                                     | exit 0 — 15 projects + 104 dependent tasks                                                                                                                                                                                              |
+| lint                                           | exit 0 — 0 errors (pre-existing warnings only)                                                                                                                                                                                          |
+| jest — react-charts                            | 922 passed / 86 skipped (= the prior 917 + the 5 new hook tests; no snapshot churn)                                                                                                                                                     |
+| jest — react-menu                              | 484/484 (includes the scoped-theming cypress-adjacent suite)                                                                                                                                                                            |
+| jest — react-button                            | 198 passed / 13 skipped                                                                                                                                                                                                                 |
+| jest — react-provider                          | 37/37                                                                                                                                                                                                                                   |
+| jest — tokens                                  | 10/10                                                                                                                                                                                                                                   |
+| jest — react-storybook-addon-export-to-sandbox | 54/54                                                                                                                                                                                                                                   |
+| jest — storybook-llms-extractor                | 9/9 (6 snapshots)                                                                                                                                                                                                                       |
+| jest — react-portal-compat                     | 8/8                                                                                                                                                                                                                                     |
+| jest — react-migration-v8-v9                   | 11/11                                                                                                                                                                                                                                   |
+| jest — react-theme-sass                        | 1/1                                                                                                                                                                                                                                     |
+| jest — visual-regression-utilities             | 3/3                                                                                                                                                                                                                                     |
+| SSR                                            | `ssr-tests-v9:test-ssr` exit 0 — output asserted: **0** `<style>` elements, **0** `nonce` attributes, theme = `fui-theme-teams-light`, 588 bytes. Directly validates the CSP doc rewrite.                                               |
+| docsite                                        | `public-docsite-v9:build-storybook` exit 0 (39 dependent tasks)                                                                                                                                                                         |
+| perf                                           | Not re-measured (react-provider is untouched by the closeout fixes). Recomputed from the stored 186+186 raw samples: control median **9.40 ms** [9.10, 9.60] vs new **0.30 ms** [0.20, 0.40] = **−96.8%**; liveness 40 vs 0 style tags. |
+
+**Two failures proven PRE-EXISTING** (Windows/tooling, not theming — both isolated by
+running the pre-2b content of the same files):
+
+- `workspace-plugin:test` — 59 failed / 196 passed: EBUSY temp-directory locks plus
+  POSIX-vs-Windows path assertions. The pre-2b version of the one 2b-touched spec fails
+  snapshots 3, 9, 11 and 12; with the 2b edit only 3 and 9 fail. Phase 2b strictly
+  improved it.
+- `scripts-test-ssr:test` — 1 failed / 11 passed: `A dynamic import callback was invoked
+without --experimental-vm-modules` (prettier ESM under jest). Pre-2b sources give the
+  identical 1-failed / 11-passed.
+
+**beachball**: `npx beachball check` still exits 1 while the change files are UNTRACKED —
+the tool filters change files through `getChangesBetweenRefs(fromRef, 'HEAD')`, so
+uncommitted entries do not count. Proven by calling `readChangeFiles` directly:
+`fromRef=undefined` → 220 entries with `@fluentui/tokens` and `@fluentui/react-theme-sass`
+both present as `prerelease`; `fromRef=origin/master` → 73 entries with neither found.
+The entries are correct and complete; the gate turns green once they are committed.
+Residual: **18 other packages** are flagged as needing change files — all pre-existing
+branch debt with ZERO Phase-2b-attributable non-ignored files (babel-preset-storybook-full-source,
+chart-utilities, chart-web-components, codemods, cra-template, foundation-legacy,
+merge-styles, public-docsite-setup, react, react-cards, react-charting,
+react-docsite-components, react-experiments, react-jsx-runtime, react-monaco-editor,
+react-motion-components-preview, utilities, web-components). That residual is NOT Phase
+2b's to fix and needs its own decision before the PR can go green.
+
+### Deliberately deferred (recorded, not fixed)
+
+- **`react-tailwind-theme/css/index.css` stale header comment** — still asserts
+  "FluentProvider still owns the values", contradicted by 29337609ea / 1b3af972d2. NOT
+  fixed: this is a frozen VR path, and editing it for a cosmetic comment would void the
+  76/76 and force a full rebuild + re-sweep. Flagged for the next commit that touches
+  the package for a substantive reason.
+- **`ChartAnnotationLayer.stories.tsx` `fontSize: 18` → `'18px'`** — a non-theming edit
+  that arrived inside the 2b diff. Left as-is: it is part of the captured tree and is
+  pixel-neutral (React serializes numeric `fontSize` to `px`), consistent with the
+  76/76. Recorded here because no other report entry explained it.
+- **`eslint-plugin` no-restricted-imports fixtures** — keep `webLightTheme` /
+  `webDarkTheme` as arbitrary RuleTester string literals (never type-checked; the rule
+  is config-driven). Previously recorded; restated here for completeness.
+- **`@fluentui-contrib/react-themeless-provider` shadow-DOM path** — the rewritten
+  interop guide recommends that external package's `createCSSStyleSheetFromTheme` for
+  non-default themes. The package is not installed in this repo, so whether its output
+  uses the canonical kebab names Phase 2a standardized on could NOT be verified here.
+  This is a Phase-2a exposure that the 2b prose re-blesses; confirm or hedge before the
+  PR ships.

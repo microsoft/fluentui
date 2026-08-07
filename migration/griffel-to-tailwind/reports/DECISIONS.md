@@ -1367,6 +1367,10 @@ The griffel-zero plan's decision table split D20 in two; this records the implem
 
 ### D20.1 — CSP nonce: a `nonce` prop on FluentProvider + internal inheritance context
 
+> **RETIRED in theming Phase 2b (D28, 2026-08-06):** FluentProvider no longer creates any
+> style element, so the `nonce` prop and `StyleNonceContext` are removed with the runtime
+> theme tag. The record below describes the interim (S-G → Phase 2b) implementation.
+
 Griffel's `useRenderer_unstable().styleElementAttributes` was the channel through which a
 consumer-configured CSP nonce reached the theme-variables `<style>` element — the only style
 element Fluent creates at runtime (component CSS ships as static css-modules assets, covered
@@ -1487,3 +1491,101 @@ stable; they retire in S-J (per the D2a5 superseding amendment above). The icons
 consumed locally via a LOCAL-ONLY yarn `resolutions` tarball override that MUST be reverted
 before the PR (commits prefixed `LOCAL-ONLY(revert-before-PR)`); the icons upstream merge
 is a dependency of the UI merge.
+
+## D28 — Themes are static CSS classes; the JS theming path is REMOVED (theming Phase 2b, settled with user, executed 2026-08-06)
+
+Completes the D4 arc: after Phase 1 (spacing/stroke canonicals at `:root`) and Phase 2a
+(full kebab rename + interim dual-vocabulary runtime tag), Phase 2b deletes the runtime
+theming machinery entirely. The CSS custom-property graph shipped by
+`@fluentui/react-tailwind-theme` is the SOLE theming contract.
+
+### The theming contract
+
+- **Shipped theme classes.** One CSS class per shipped theme —
+  `.fui-theme-web-light`, `.fui-theme-web-dark`, `.fui-theme-teams-light`,
+  `.fui-theme-teams-dark`, `.fui-theme-teams-high-contrast`,
+  `.fui-theme-teams-light-v21`, `.fui-theme-teams-dark-v21` — generated at build time
+  into `css/themes.css` (imported by `css/index.css`, compiled into `dist/styles.css`).
+  Each class contains ONLY custom-property declarations (433 theme-VARIANT canonical
+  kebab variables), wrapped in `@layer fui.theme`. Class names derive from the theme
+  export name (`fui-theme-` + kebab minus `Theme`; digits attach to the previous
+  segment: `teamsDarkV21Theme` → `fui-theme-teams-dark-v21`).
+- **Default at `:root, :host` stays web light** — the generated `css/tokens.css`
+  emission block now carries all 433 web-light theme-variant values alongside the
+  Phase-1 spacing/stroke canonicals. No provider, no class → web light.
+- **Scoped theming**: a theme class on ANY DOM node themes that subtree (custom
+  properties cascade). Theme classes MUST contain only custom-property declarations —
+  never styling rules — and shipped ones live in `@layer fui.theme` (consumer-authored
+  classes may be unlayered; only variable definitions are involved, so layer placement
+  affects nothing but var-name collisions between theme classes themselves).
+- **Deliberate exclusions per class**: the 26 spacing/strokeWidth tokens are
+  theme-INVARIANT (generator-asserted across all 7 themes against the pinned scales) and
+  stay `:root`-only in density-knob calc form — a literal per-theme re-emission would
+  freeze `--spacing` overrides inside themed subtrees. The 8 zIndex tokens are
+  theme-absent; their defaults ride the `tokens.*` var() fallbacks.
+- **Value source lockstep**: theme values come from the committed
+  `packages/tokens/theme-values.json` snapshot (generated from the built tokens package;
+  `themeValues.test.ts` fails CI on drift against the computed themes). Class-name
+  constants live in `packages/tokens/src/themes/themeClassNames.ts`; the generator
+  text-reads and re-derives them (throws on mismatch), `themeClassNames.test.ts` asserts
+  the same derivation from jest. The generated `css/tokens.css` / `css/themes.css` are
+  byte-exact generator output and therefore prettier-ignored (prettier would rewrite
+  value bytes: rgba spacing, trailing zeros, line wraps).
+
+### FluentProvider surface (BREAKING, the major)
+
+- **`theme?: PartialTheme` prop REPLACED by `themeClassName?: string`** (decided from the
+  codebase's existing vocabulary: `themeClassName` is already the provider's
+  portal-propagation channel and state field; the prop takes the shipped constants —
+  `webDarkThemeClassName` etc. — or any consumer-authored theme class). The provider
+  applies the class to its root (AFTER `styles.root` and the group marker: the class may
+  now be empty, and D15.1 forbids the marker at classList[0]) and propagates it to
+  portals via the EXISTING `ThemeClassNameContext` mechanism (`root.className` by
+  default; bare theme class under `applyStylesToPortals={false}`).
+- **Nested providers inherit** the resolved theme class through a new react-provider
+  context (`FluentProviderThemeClassName.ts`, hook
+  `useFluentProviderThemeClassName_unstable`, `@internal`, umbrella-exported) — without
+  it, a portal opened under an unthemed nested provider would lose the ancestor theme.
+- **REMOVED**: `useFluentProviderThemeStyleTag` (runtime `<style>` tag emission),
+  `createCSSRuleFromTheme`, `FluentProviderState.serverStyleProps` + the SSR-rendered
+  style element (SSR output is now just the root div; hydration needs no style
+  reconciliation), the "no theme defined" dev warning, and the duplicate-provider-id
+  dev check (it guarded style-tag id collisions that no longer exist).
+- **D20.1 RETIRED — `nonce` prop + `StyleNonceContext` removed.** The nonce existed
+  solely for the theme `<style>` element; FluentProvider creates no style elements at
+  all now, so the prop, the inheritance context and the root-slot `nonce: undefined`
+  strip are deleted. Component CSS remains static assets covered by CSP `style-src`
+  source lists.
+- **`ThemeContext` removed from react-shared-contexts** (`ThemeContext_unstable`,
+  `ThemeProvider_unstable`, `ThemeContextValue_unstable`): its sole producer stopped
+  producing. `ThemeClassNameContext` is unchanged. react-shared-contexts drops its
+  `@fluentui/react-theme` dependency.
+- **react-portal-compat repointed**: v8 portals get the RESOLVED theme class from the
+  new context instead of regex-extracting `fui-FluentProvider\w+` (which matches nothing
+  now). Works for shipped and consumer-authored classes; deliberately does NOT use
+  `useThemeClassName()` (the full root class string would restyle v8 surfaces).
+
+### Public API relocation (umbrella + react-theme)
+
+- `@fluentui/react-components` / `@fluentui/react-theme` STOP exporting the theme
+  objects (7), `createDarkTheme`/`createHighContrastTheme`/`createLightTheme`/
+  `createTeamsDarkTheme`, `themeToTokensObject`, and the `Theme`/`PartialTheme`/
+  `Brands`/`BrandVariants` types; they now export the 7 `*ThemeClassName` constants, the
+  `themeClassNames` map and the `ThemeClassName` type (defined in @fluentui/tokens,
+  re-exported through react-theme). `tokens` and `typographyStyles` are unchanged.
+- **`@fluentui/tokens` KEEPS the theme objects and factories** — they are the
+  build-time generator input and remain available for tooling (theme-designer, v8↔v9
+  shims, the docs' value tables).
+
+### Value readers at runtime
+
+`useCssVarValue` (react-utilities) is the sanctioned reader and stays deliberately
+minimal: once-per-mount read, plus (Phase 2b) a module-level memo keyed by
+(element, variable) and an EXPLICIT re-read trigger — a `deps` option compared like an
+effect dependency list (documented nuance: providing `deps` opts that instance out of
+the cross-mount memo on its first read, since the cache cannot know which deps a value
+was read under). NO per-render reads, NO observers. Migrated readers: charts'
+`useIsDarkTheme` (both copies unified in `VegaDeclarativeChartHooks.ts`) now takes an
+element ref and compares the HSL lightness of `--color-neutral-background-1` vs
+`--color-neutral-foreground-1` at the chart container; the storybook addon reads
+`tokens.*` var() strings for its example-container background.
