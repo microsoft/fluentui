@@ -28,7 +28,10 @@ describe(`beachball configs`, () => {
 
   it(`should generate shared config`, () => {
     expect(sharedConfig).toEqual({
+      access: 'public',
+      branch: 'origin/master',
       changehint: "Run 'yarn change' to generate a change file",
+      commit: false,
       disallowedChangeTypes: ['major'],
       generateChangelog: true,
       hooks: {
@@ -55,6 +58,7 @@ describe(`beachball configs`, () => {
         '**/SPEC*.md',
         '**/tests/**',
       ],
+      registry: 'https://registry.npmjs.org',
       scope: ['!packages/fluentui/*'],
       tag: 'latest',
       changelog: {
@@ -135,7 +139,7 @@ describe(`beachball configs`, () => {
     expect(vNextConfig.changelog.groups).toEqual([
       {
         changelogPath: 'packages/react-components/react-components',
-        masterPackageName: '@fluentui/react-components',
+        mainPackageName: '@fluentui/react-components',
         include: includeScopes,
       },
     ]);
