@@ -7,7 +7,7 @@
 @layer fui.components.l4 {
   /* from useStyles.root */
   .root {
-    background-color: var(--colorNeutralBackground3);
+    background-color: var(--color-neutral-background-3);
   }
 
   /* from useStyles.inputs */
@@ -40,7 +40,7 @@
 
     border-width: 1px;
     border-style: solid;
-    border-color: var(--colorNeutralStroke1);
+    border-color: var(--color-neutral-stroke-1);
     border-radius: 25px;
     height: 30px;
     width: 30px;

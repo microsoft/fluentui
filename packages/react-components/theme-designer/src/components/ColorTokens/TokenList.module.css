@@ -42,7 +42,7 @@
 @layer fui.components.l4 {
   /* from useStyles.colorLabel */
   .color-label {
-    color: var(--colorBrandForeground1);
+    color: var(--color-brand-foreground-1);
   }
 
   /* from useStyles.selected */
@@ -74,6 +74,6 @@
 
   /* from useStyles.output */
   .output {
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
   }
 }

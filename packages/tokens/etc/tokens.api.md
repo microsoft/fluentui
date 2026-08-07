@@ -483,7 +483,7 @@ export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & Str
 // @public
 export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
 
-// @public (undocumented)
+// @public
 export const tokens: Record<keyof Theme, string>;
 
 // @public (undocumented)

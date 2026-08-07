@@ -21,7 +21,7 @@
 
     border-inline-end-width: 1px;
     border-inline-end-style: solid;
-    border-inline-end-color: var(--colorNeutralStroke1);
-    background-color: var(--colorNeutralBackground3);
+    border-inline-end-color: var(--color-neutral-stroke-1);
+    background-color: var(--color-neutral-background-3);
   }
 }
