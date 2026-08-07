@@ -13,6 +13,7 @@ import { Anchor, Canvas, Description, HeaderMdx } from '@storybook/addon-docs/bl
 import { FluentDocsPage, type FluentDocsPageProps } from '@fluentui/react-storybook-addon';
 
 import { HeadlessSourcePanel } from './HeadlessSourcePanel';
+import { HeadlessDataAttributes } from './HeadlessDataAttributes';
 
 const dividerStyle: React.CSSProperties = {
   height: 1,
@@ -124,6 +125,10 @@ const HeadlessRenderStories: FluentDocsPageProps['renderStories'] = ({ stories }
 
 export const HeadlessDocsPage: React.FC = () => (
   <div className="headless-docs-page">
-    <FluentDocsPage renderPrimaryStory={HeadlessRenderPrimaryStory} renderStories={HeadlessRenderStories} />
+    <FluentDocsPage
+      renderPrimaryStory={HeadlessRenderPrimaryStory}
+      renderStories={HeadlessRenderStories}
+      renderAfterArgsTable={({ story }) => <HeadlessDataAttributes story={story} />}
+    />
   </div>
 );

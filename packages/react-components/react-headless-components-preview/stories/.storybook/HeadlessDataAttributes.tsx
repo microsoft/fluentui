@@ -1,0 +1,208 @@
+/**
+ * `HeadlessDataAttributes` — docs block that renders automatically extracted
+ * data-attribute metadata from the `HEADLESS_STATE_DATA_ATTRIBUTES` webpack
+ * global.  Rendered after the Args table for the primary component and all
+ * declared subcomponents.
+ */
+import * as React from 'react';
+
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { FluentDocsPageStory } from '@fluentui/react-storybook-addon';
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
+export interface HeadlessDataAttributesProps {
+  story: FluentDocsPageStory;
+}
+
+type DataAttributeEntry = {
+  name: `data-${string}`;
+  type: string;
+  description: string;
+};
+
+// ---------------------------------------------------------------------------
+// Styles
+// ---------------------------------------------------------------------------
+
+const useStyles = makeStyles({
+  section: {
+    marginTop: tokens.spacingVerticalXXL,
+  },
+  heading: {
+    fontSize: tokens.fontSizeBase500,
+    fontWeight: tokens.fontWeightSemibold,
+    lineHeight: tokens.lineHeightBase500,
+    color: tokens.colorNeutralForeground1,
+    marginBottom: tokens.spacingVerticalL,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    paddingBottom: tokens.spacingVerticalS,
+  },
+  componentHeading: {
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+    lineHeight: tokens.lineHeightBase400,
+    color: tokens.colorNeutralForeground1,
+    margin: `${tokens.spacingVerticalL} 0 ${tokens.spacingVerticalS}`,
+  },
+  tableWrapper: {
+    overflowX: 'auto',
+    marginBottom: tokens.spacingVerticalL,
+  },
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    color: tokens.colorNeutralForeground1,
+  },
+  th: {
+    textAlign: 'left',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    borderBottom: `2px solid ${tokens.colorNeutralStroke1}`,
+    fontWeight: tokens.fontWeightSemibold,
+    color: tokens.colorNeutralForeground2,
+    fontSize: tokens.fontSizeBase200,
+    letterSpacing: '0.05em',
+    textTransform: 'uppercase',
+  },
+  td: {
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    verticalAlign: 'top',
+  },
+  code: {
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase200,
+    backgroundColor: tokens.colorNeutralBackground3,
+    borderRadius: tokens.borderRadiusSmall,
+    padding: `1px ${tokens.spacingHorizontalXS}`,
+    color: tokens.colorNeutralForeground1,
+  },
+});
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Extracts a display name from a component reference, falling back to the
+ * last segment of the story title.
+ */
+function resolveComponentName(
+  component: FluentDocsPageStory['component'],
+  title: FluentDocsPageStory['title'],
+): string | null {
+  if (component) {
+    const name = (component as { displayName?: string }).displayName ?? (component as { name?: string }).name;
+    if (name) {
+      return name;
+    }
+  }
+  // Fall back to the last segment of the story title
+  if (title && title.includes('/')) {
+    const segments = title.split('/');
+    return segments[segments.length - 1].trim() || null;
+  }
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+
+/**
+ * Renders the "Data attributes" docs section for the primary component and all
+ * declared subcomponents.  Returns `null` when no metadata is found.
+ */
+export function HeadlessDataAttributes({ story }: HeadlessDataAttributesProps): React.ReactElement | null {
+  const classes = useStyles();
+
+  // ------------------------------------------------------------------
+  // 1. Collect component names to look up
+  // ------------------------------------------------------------------
+  const componentNames: Array<{ label: string; entries: DataAttributeEntry[] }> = [];
+
+  // Primary component
+  const primaryName = resolveComponentName(story.component, story.title);
+  if (primaryName) {
+    const entries = HEADLESS_STATE_DATA_ATTRIBUTES[primaryName];
+    if (entries && entries.length > 0) {
+      componentNames.push({ label: primaryName, entries });
+    }
+  }
+
+  // Subcomponents — prefer explicit keys from story.subcomponents
+  const subcomponents = story.subcomponents as Record<string, unknown> | undefined;
+  if (subcomponents) {
+    for (const [key, comp] of Object.entries(subcomponents)) {
+      // The key is the canonical display name; use it directly.
+      let name = key;
+
+      // If the key doesn't find a hit, try component.displayName / .name as fallback
+      if (!HEADLESS_STATE_DATA_ATTRIBUTES[name]) {
+        const fallback =
+          (comp as { displayName?: string } | null)?.displayName ?? (comp as { name?: string } | null)?.name;
+        if (fallback) {
+          name = fallback;
+        }
+      }
+
+      const entries = HEADLESS_STATE_DATA_ATTRIBUTES[name];
+      if (entries && entries.length > 0) {
+        // Skip if already added (e.g. primary and subcomponent share same name)
+        if (!componentNames.some(c => c.label === name)) {
+          componentNames.push({ label: name, entries });
+        }
+      }
+    }
+  }
+
+  // ------------------------------------------------------------------
+  // 2. Bail out when there is nothing to show
+  // ------------------------------------------------------------------
+  if (componentNames.length === 0) {
+    return null;
+  }
+
+  // ------------------------------------------------------------------
+  // 3. Render
+  // ------------------------------------------------------------------
+  return (
+    <section className={classes.section}>
+      <h2 className={classes.heading}>Data attributes</h2>
+      {componentNames.map(({ label, entries }) => (
+        <div key={label}>
+          {componentNames.length > 1 && <h3 className={classes.componentHeading}>{label}</h3>}
+          <div className={classes.tableWrapper}>
+            <table className={classes.table}>
+              <thead>
+                <tr>
+                  <th className={classes.th}>Attribute</th>
+                  <th className={classes.th}>Type/Values</th>
+                  <th className={classes.th}>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {entries.map(entry => (
+                  <tr key={entry.name}>
+                    <td className={classes.td}>
+                      <code className={classes.code}>{entry.name}</code>
+                    </td>
+                    <td className={classes.td}>
+                      <code className={classes.code}>{entry.type}</code>
+                    </td>
+                    <td className={mergeClasses(classes.td)}>{entry.description || '\u2014'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}
