@@ -270,23 +270,36 @@ function collectDataAttributes(type, checker, location) {
  * paired `false`/`true` BooleanLiteral members to the canonical `boolean`
  * keyword so that `false | true` renders as `boolean` and
  * `false | true | "mixed"` renders as `boolean | "mixed"`.
+ * A lone `false` or `true` (without its counterpart) is preserved as-is.
  *
  * @param {import('typescript').Type[]} types
  * @param {import('typescript').TypeChecker} checker
  * @returns {string}
  */
 function formatTypeList(types, checker) {
+  const hasFalseLiteral = types.some(
+    t => hasTypeFlag(t, ts.TypeFlags.BooleanLiteral) && checker.typeToString(t) === 'false',
+  );
+  const hasTrueLiteral = types.some(
+    t => hasTypeFlag(t, ts.TypeFlags.BooleanLiteral) && checker.typeToString(t) === 'true',
+  );
+  const collapseToBooleanKeyword = hasFalseLiteral && hasTrueLiteral;
+
   /** @type {string[]} */
   const parts = [];
   let booleanEmitted = false;
 
   for (const t of types) {
     if (hasTypeFlag(t, ts.TypeFlags.BooleanLiteral)) {
-      if (!booleanEmitted) {
-        parts.push('boolean');
-        booleanEmitted = true;
+      if (collapseToBooleanKeyword) {
+        if (!booleanEmitted) {
+          parts.push('boolean');
+          booleanEmitted = true;
+        }
+        // skip the individual false/true — already covered by 'boolean'
+      } else {
+        parts.push(checker.typeToString(t));
       }
-      // skip the individual false/true — already covered by 'boolean'
     } else {
       parts.push(checker.typeToString(t));
     }

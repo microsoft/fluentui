@@ -8,9 +8,11 @@
     "build-storybook": {
       "inputs": [
         "default",
+        "^production",
         "{workspaceRoot}/.storybook/**",
         "{projectRoot}/.storybook/**",
-        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.ts"
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.ts",
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/stories/.storybook/**"
       ],
       "dependsOn": [
         {
@@ -28,9 +30,11 @@
       ],
       "inputs": [
         "default",
+        "^production",
         "{workspaceRoot}/.storybook/**",
         "{projectRoot}/.storybook/**",
-        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.ts"
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.ts",
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/stories/.storybook/**"
       ]
     }
   }

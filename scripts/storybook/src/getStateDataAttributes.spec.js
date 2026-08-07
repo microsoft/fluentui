@@ -253,6 +253,24 @@ describe('getStateDataAttributes', () => {
       // Stable ordering: boolean-literal members collapse to 'boolean' first
       expect(attr?.type).toBe('boolean | "mixed"');
     });
+
+    it('keeps a lone false literal as "false" (does not widen to boolean)', () => {
+      const attr = result.Button.find(a => a.name === 'data-lone-false');
+      expect(attr).toBeDefined();
+      expect(attr?.type).toBe('false');
+    });
+
+    it('keeps a lone true literal as "true" (does not widen to boolean)', () => {
+      const attr = result.Button.find(a => a.name === 'data-lone-true');
+      expect(attr).toBeDefined();
+      expect(attr?.type).toBe('true');
+    });
+
+    it('keeps "false | \\"mixed\\"" as-is (does not widen to boolean)', () => {
+      const attr = result.Button.find(a => a.name === 'data-false-mixed');
+      expect(attr).toBeDefined();
+      expect(attr?.type).toBe('false | "mixed"');
+    });
   });
 
   // ─── syntax diagnostics ───────────────────────────────────────────────────────
