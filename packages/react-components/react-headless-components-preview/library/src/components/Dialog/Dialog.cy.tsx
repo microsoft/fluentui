@@ -21,6 +21,7 @@ const dialogSurfaceElementSelector = `dialog`;
 const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
 const dialogTriggerCloseSelector = `#${dialogTriggerCloseId}`;
 const dialogPrimaryButtonSelector = `#${dialogPrimaryButtonId}`;
+const tooltipSelector = `[role="tooltip"]`;
 
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
@@ -186,7 +187,10 @@ describe('Dialog', () => {
     cy.get('#open-popover-btn').should('have.focus');
 
     // Open Tooltip, wait for the tooltip to appear and then close it with Escape
-    cy.get(dialogTriggerCloseSelector).focus().wait(0).realType('{esc}');
+    cy.get(dialogTriggerCloseSelector).focus();
+    cy.get(tooltipSelector).should('be.visible');
+    cy.focused().realType('{esc}');
+    cy.get(tooltipSelector).should('not.exist');
     cy.get(dialogSurfaceSelector).should('exist');
   });
 
