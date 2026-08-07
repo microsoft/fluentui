@@ -191,7 +191,7 @@ function createStateDataAttributesArgTypesEnhancer(allMetadata) {
     // ── unwrap to base extractor if already wrapped; create fresh wrapper ───────
     const incomingExtractor = /** @type {any} */ (originalDocs.extractArgTypes);
     const baseExtractor =
-      incomingExtractor && incomingExtractor[BASE_EXTRACTOR_KEY] !== undefined
+      incomingExtractor && Object.prototype.hasOwnProperty.call(incomingExtractor, BASE_EXTRACTOR_KEY)
         ? /** @type {ExtractArgTypes | undefined} */ (incomingExtractor[BASE_EXTRACTOR_KEY])
         : /** @type {ExtractArgTypes | undefined} */ (incomingExtractor);
 

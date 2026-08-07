@@ -382,4 +382,54 @@ describe('createStateDataAttributesArgTypesEnhancer', () => {
     const enhancer = createStateDataAttributesArgTypesEnhancer({});
     expect(/** @type {any} */ (enhancer).secondPass).toBe(true);
   });
+
+  // Test 16: no stacking when extractArgTypes starts as undefined (regression)
+  //
+  // Observable approach: use two enhancers that inject DIFFERENT data-attributes for the
+  // same component key.  Run enhancer-1 first with extractArgTypes = undefined, then run
+  // enhancer-2.  With the BUG the enhancer-2 wrapper stacks enhancer-1's wrapper as its
+  // base, so invoking the enhancer-2 wrapper also calls enhancer-1's wrapper — leaking
+  // enhancer-1's generated rows ('data-disabled') into enhancer-2's output.  With the FIX
+  // enhancer-2 properly unwraps to base=undefined, so only enhancer-2's rows appear.
+  it('does not stack wrappers when extractArgTypes starts as undefined (test 16)', () => {
+    const metadata1 = {
+      MyComponent: /** @type {import('./stateDataAttributesArgTypes').StateDataAttribute[]} */ ([
+        { name: /** @type {'data-disabled'} */ ('data-disabled'), type: 'boolean', description: 'Disabled.' },
+      ]),
+    };
+    const metadata2 = {
+      MyComponent: /** @type {import('./stateDataAttributesArgTypes').StateDataAttribute[]} */ ([
+        { name: /** @type {'data-checked'} */ ('data-checked'), type: 'boolean', description: 'Checked.' },
+      ]),
+    };
+
+    const enhancer1 = createStateDataAttributesArgTypesEnhancer(metadata1);
+    const enhancer2 = createStateDataAttributesArgTypesEnhancer(metadata2);
+
+    const MyComponent = () => null;
+    const ctx = makeContext({ component: MyComponent });
+    ctx.parameters.docs.extractArgTypes = undefined;
+
+    // Run 1: installs wrapper-1 whose stored base is undefined (own-property symbol = undefined)
+    enhancer1(ctx);
+
+    // Run 2: reads wrapper-1 as incoming extractor
+    //   BUG  — incomingExtractor[BASE_EXTRACTOR_KEY] is undefined → treated as untagged →
+    //           wrapper-2.base = wrapper-1 → stacked
+    //   FIX  — hasOwnProperty detects the own-property symbol → unwraps to base=undefined →
+    //           wrapper-2.base = undefined → single depth
+    enhancer2(ctx);
+
+    const wrapper2 = /** @type {import('./stateDataAttributesArgTypes').ExtractArgTypes} */ (
+      /** @type {unknown} */ (ctx.parameters.docs.extractArgTypes)
+    );
+    const result = wrapper2(MyComponent);
+
+    // Enhancer-2's rows must be present
+    expect(result['data-checked']).toBeDefined();
+
+    // Enhancer-1's rows must NOT appear — they bleed through only if wrapper-1 is in the
+    // call chain (stacking).  This assertion fails before the fix and passes after.
+    expect(result['data-disabled']).toBeUndefined();
+  });
 });
