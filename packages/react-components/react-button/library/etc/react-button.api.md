@@ -115,7 +115,7 @@ export const renderCompoundButton_unstable: (state: CompoundButtonBaseState) => 
 export const renderMenuButton_unstable: (state: MenuButtonBaseState) => JSXElement;
 
 // @public
-export const renderSplitButton_unstable: (state: SplitButtonBaseState) => JSXElement;
+export const renderSplitButton_unstable: (state: SplitButtonState) => JSXElement;
 
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
@@ -131,7 +131,13 @@ export type SplitButtonBaseSlots = {
 };
 
 // @public
-export type SplitButtonBaseState = ComponentState<SplitButtonBaseSlots> & Omit<ButtonBaseState, 'components' | 'iconOnly' | 'root'> & Omit<MenuButtonBaseState, 'components' | 'iconOnly' | 'root'>;
+export type SplitButtonBaseState = Omit<ComponentState<SplitButtonBaseSlots>, 'components' | 'menuButton' | 'primaryActionButton'> & {
+    components: {
+        root: 'div';
+    };
+    menuButton: MenuButtonBaseProps;
+    primaryActionButton: ButtonBaseProps;
+};
 
 // @public (undocumented)
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
@@ -202,10 +208,10 @@ export const useMenuButtonBase_unstable: (props: MenuButtonBaseProps, ref: React
 export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;
 
 // @public
-export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
+export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLDivElement>) => SplitButtonState;
 
 // @public
-export const useSplitButtonBase_unstable: (props: SplitButtonBaseProps, ref?: React_2.Ref<HTMLDivElement>) => SplitButtonBaseState;
+export const useSplitButtonBase_unstable: (props: SplitButtonBaseProps, ref: React_2.Ref<HTMLDivElement>) => SplitButtonBaseState;
 
 // @public (undocumented)
 export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;

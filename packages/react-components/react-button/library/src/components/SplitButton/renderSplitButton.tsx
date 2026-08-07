@@ -4,12 +4,12 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import type { SplitButtonSlots, SplitButtonBaseState } from './SplitButton.types';
+import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
 
 /**
  * Renders a SplitButton component by passing the state defined props to the appropriate slots.
  */
-export const renderSplitButton_unstable = (state: SplitButtonBaseState): JSXElement => {
+export const renderSplitButton_unstable = (state: SplitButtonState): JSXElement => {
   assertSlots<SplitButtonSlots>(state);
 
   return (

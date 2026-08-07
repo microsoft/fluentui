@@ -2,14 +2,12 @@
 
 import type * as React from 'react';
 import { useId, slot } from '@fluentui/react-utilities';
-import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
 import type {
   SplitButtonBaseProps,
   SplitButtonBaseState,
   SplitButtonProps,
-  SplitButtonSlots,
   SplitButtonState,
 } from './SplitButton.types';
 
@@ -18,29 +16,23 @@ import type {
  * @param props - User provided props to the SplitButton component.
  * @param ref - User provided ref to be passed to the SplitButton component.
  */
-export const useSplitButton_unstable = (
-  props: SplitButtonProps,
-  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): SplitButtonState => {
+export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<HTMLDivElement>): SplitButtonState => {
   const { appearance = 'secondary', shape = 'rounded', size = 'medium', ...rest } = props;
-  const baseState = useSplitButtonBase_unstable(rest, ref as React.Ref<HTMLDivElement>);
+  const baseState = useSplitButtonBase_unstable(rest, ref);
 
-  const menuButtonShorthand = slot.optional<ExtractSlotProps<NonNullable<SplitButtonSlots['menuButton']>>>(
-    baseState.menuButton,
-    {
-      defaultProps: {
-        appearance,
-        shape,
-        size,
-      },
-      renderByDefault: true,
-      elementType: MenuButton,
-    },
-  );
-  const primaryActionButtonShorthand = slot.optional<
-    ExtractSlotProps<NonNullable<SplitButtonSlots['primaryActionButton']>>
-  >(baseState.primaryActionButton, {
+  const menuButtonShorthand = slot.optional(props.menuButton, {
     defaultProps: {
+      ...baseState.menuButton,
+      appearance,
+      shape,
+      size,
+    },
+    renderByDefault: true,
+    elementType: MenuButton,
+  });
+  const primaryActionButtonShorthand = slot.optional(props.primaryActionButton, {
+    defaultProps: {
+      ...baseState.primaryActionButton,
       appearance,
       shape,
       size,
@@ -53,6 +45,9 @@ export const useSplitButton_unstable = (
     ...baseState,
     // Props passed at the top-level
     appearance,
+    disabled: props.disabled ?? false,
+    disabledFocusable: props.disabledFocusable ?? false,
+    iconPosition: props.iconPosition ?? 'before',
     shape,
     size,
     // Slots definition
@@ -67,18 +62,14 @@ export const useSplitButton_unstable = (
  * structure and ARIA attributes, without design-specific props such as `appearance`, `shape`, or
  * `size`.
  *
- * The `menuButton` and `primaryActionButton` slots returned by this hook use placeholder element
- * metadata (`'button'`). Consuming layers (styled or headless) must recreate both slots with
- * `slot.optional`/`slot.always` and their own concrete child component before rendering, since
- * production rendering resolves the element type from the slot's element-type metadata rather
- * than from `state.components`.
+ * Concrete wrappers recreate child slots from these base prop defaults before rendering.
  *
  * @param props - User provided props to the SplitButton component.
  * @param ref - User provided ref to be passed to the SplitButton component.
  */
 export const useSplitButtonBase_unstable = (
   props: SplitButtonBaseProps,
-  ref?: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): SplitButtonBaseState => {
   const {
     children,
@@ -93,48 +84,38 @@ export const useSplitButtonBase_unstable = (
   } = props;
   const baseId = useId('splitButton-');
 
-  const menuButtonShorthand = slot.optional(menuButton, {
-    defaultProps: {
-      disabled,
-      disabledFocusable,
-      menuIcon,
-    },
-    renderByDefault: true,
-    elementType: 'button',
-  });
-  const primaryActionButtonShorthand = slot.optional(primaryActionButton, {
-    defaultProps: {
-      children,
-      disabled,
-      disabledFocusable,
-      icon,
-      iconPosition,
-      id: baseId + '__primaryActionButton',
-    },
-    renderByDefault: true,
-    elementType: 'button',
-  });
+  const menuButtonProps: SplitButtonBaseState['menuButton'] = {
+    disabled,
+    disabledFocusable,
+    menuIcon,
+    ...slot.resolveShorthand(menuButton),
+  };
+  const primaryActionButtonProps: SplitButtonBaseState['primaryActionButton'] = {
+    children,
+    disabled,
+    disabledFocusable,
+    icon,
+    iconPosition,
+    id: baseId + '__primaryActionButton',
+    ...slot.resolveShorthand(primaryActionButton),
+  };
 
   // Resolve menu button's aria-labelledby to be labelled by the primary action button if no label was provided by the
   // user.
   if (
-    menuButtonShorthand &&
-    primaryActionButtonShorthand &&
-    !menuButtonShorthand['aria-label'] &&
-    !menuButtonShorthand['aria-labelledby']
+    menuButton !== null &&
+    primaryActionButton !== null &&
+    !menuButtonProps['aria-label'] &&
+    !menuButtonProps['aria-labelledby']
   ) {
-    menuButtonShorthand['aria-labelledby'] = primaryActionButtonShorthand.id;
+    menuButtonProps['aria-labelledby'] = primaryActionButtonProps.id;
   }
 
   return {
-    // Props passed at the top-level
-    disabled,
-    disabledFocusable,
-    iconPosition,
     // Slots definition
-    components: { root: 'div', menuButton: 'button', primaryActionButton: 'button' },
+    components: { root: 'div' },
     root: slot.always({ ref, ...rest }, { elementType: 'div' }),
-    menuButton: menuButtonShorthand,
-    primaryActionButton: primaryActionButtonShorthand,
+    menuButton: menuButtonProps,
+    primaryActionButton: primaryActionButtonProps,
   };
 };
