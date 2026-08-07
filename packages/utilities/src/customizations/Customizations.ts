@@ -66,6 +66,10 @@ export class Customizations {
     const globalScopedSettings = (scopeName && _allSettings.scopedSettings[scopeName]) || {};
 
     for (let property of properties) {
+      if (property === 'scopedSettings') {
+        settings[property] = localSettings.scopedSettings || _allSettings.scopedSettings;
+      }
+
       settings[property] =
         localScopedSettings[property] ||
         localSettings.settings[property] ||
