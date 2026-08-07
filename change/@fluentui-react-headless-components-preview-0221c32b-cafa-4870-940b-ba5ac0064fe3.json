@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat(react-headless-components-preview): add color picker controls",
+  "type": "patch",
+  "comment": "feat: add color picker controls",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
