@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
@@ -51,6 +51,70 @@ describe('Tooltip', () => {
 
     expect(screen.getByLabelText('Default Tooltip')).toBeInTheDocument();
     expect(screen.getByRole('tooltip')).toHaveAttribute('popover', 'hint');
+  });
+
+  it('wires interestfor on the trigger to the tooltip content (Interest Invokers)', () => {
+    render(
+      <Tooltip content="Interest tooltip" relationship="label" visible>
+        <button>Trigger</button>
+      </Tooltip>,
+    );
+
+    const tooltip = screen.getByRole('tooltip');
+    const trigger = screen.getByRole('button');
+    expect(trigger).toHaveAttribute('interestfor', tooltip.id);
+  });
+
+  it('shows the tooltip via the JS fallback when Interest Invokers are unsupported', () => {
+    jest.useFakeTimers();
+    try {
+      render(
+        <Tooltip content="Hover me" relationship="description">
+          <button>Trigger</button>
+        </Tooltip>,
+      );
+
+      const trigger = screen.getByRole('button');
+      const tooltip = screen.getByRole('tooltip', { hidden: true });
+
+      fireEvent.pointerEnter(trigger);
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
+
+      expect(tooltip.matches(':popover-open')).toBe(true);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it('defers to the browser (no JS show) when Interest Invokers are supported', () => {
+    jest.useFakeTimers();
+    // jsdom doesn't implement CSS.supports; stub it to report Interest Invoker support.
+    const originalSupports = (CSS as { supports?: typeof CSS.supports }).supports;
+    (CSS as { supports: (condition: string) => boolean }).supports = (condition: string) =>
+      condition === 'interest-delay: 0s';
+    try {
+      render(
+        <Tooltip content="Hover me" relationship="description">
+          <button>Trigger</button>
+        </Tooltip>,
+      );
+
+      const trigger = screen.getByRole('button');
+      const tooltip = screen.getByRole('tooltip', { hidden: true });
+
+      fireEvent.pointerEnter(trigger);
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
+
+      // The JS timer is skipped; the platform's `interestfor` would open it instead.
+      expect(tooltip.matches(':popover-open')).toBe(false);
+    } finally {
+      (CSS as { supports?: typeof CSS.supports }).supports = originalSupports;
+      jest.useRealTimers();
+    }
   });
 
   it('renders only aria-label for a simple label tooltip', () => {
