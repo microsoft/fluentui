@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { join, normalize, relative } from 'node:path';
 import { execSync } from 'node:child_process';
 import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
 import {
@@ -348,7 +348,7 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
 }
 
 function getApiExtractorConfigPath(schema: Required<Pick<GenerateApiExecutorSchema, 'config'>>, projectRoot: string) {
-  const configPath = schema.config.replace('{projectRoot}', projectRoot);
+  const configPath = normalize(schema.config.replace('{projectRoot}', projectRoot));
 
   if (!existsSync(configPath)) {
     return { error: `Cannot find api-extractor.json at "${configPath}"`, result: null };

@@ -30,9 +30,9 @@ jobs:
 
       - run: yarn install --immutable
 
-      - run: yarn nx run scripts-executors:test -t 'smoke test'
+      - run: yarn nx run scripts-executors:test -- -t 'smoke test'
 
-      - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'
+      - run: yarn nx run workspace-plugin:test -- -t 'prepare-initial-release generator'
 
       - run: yarn nx list @fluentui/workspace-plugin
 
