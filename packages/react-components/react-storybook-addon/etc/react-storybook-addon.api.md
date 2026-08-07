@@ -19,14 +19,20 @@ export const DIR_ID: "storybook_fluentui-react-addon_dir";
 export const FluentCanvas: (props: React_2.ComponentProps<"div">) => JSXElement;
 
 // @public (undocumented)
-export const FluentDocsPage: ({ renderPrimaryStory, renderArgsTable, renderStories, }?: FluentDocsPageProps) => JSXElement;
+export const FluentDocsPage: ({ renderPrimaryStory, renderArgsTable, renderStories, renderAfterArgsTable, }?: FluentDocsPageProps) => JSXElement;
 
 // @public (undocumented)
 export type FluentDocsPageProps = {
     renderPrimaryStory?: typeof RenderPrimaryStory;
     renderArgsTable?: typeof RenderArgsTable;
     renderStories?: typeof RenderStories;
+    renderAfterArgsTable?: (props: {
+        story: FluentDocsPageStory;
+    }) => React_2.ReactNode;
 };
+
+// @public
+export type FluentDocsPageStory = PreparedStory<Renderer>;
 
 // @public
 export interface FluentGlobals extends Args {
