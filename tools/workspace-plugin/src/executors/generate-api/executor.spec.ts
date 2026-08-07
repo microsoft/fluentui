@@ -1,8 +1,12 @@
 import { type ExecutorContext, serializeJson } from '@nx/devkit';
 import {
+  CompilerState,
+  ConsoleMessageId,
   Extractor,
+  type ICompilerStateCreateOptions,
   type IExtractorInvokeOptions,
   type ExtractorConfig,
+  type ExtractorMessage,
   type ExtractorResult,
 } from '@microsoft/api-extractor';
 import { basename, join } from 'node:path';
@@ -39,6 +43,14 @@ const _context: ExecutorContext = {
 };
 
 const execSyncMock = execSync as jest.Mock;
+
+// The real thing would build a TS program over the fixtures, which the mocked `Extractor.invoke` never reads.
+const compilerStateStub = { program: {} } as unknown as CompilerState;
+let compilerStateCreateSpy: jest.SpyInstance<CompilerState, [ExtractorConfig, ICompilerStateCreateOptions?]>;
+
+beforeEach(() => {
+  compilerStateCreateSpy = jest.spyOn(CompilerState, 'create').mockReturnValue(compilerStateStub);
+});
 
 function cleanup() {
   // Remove all contents of the fixtures directory but keep the directory itself
@@ -192,6 +204,8 @@ describe('GenerateApi Executor', () => {
     const actualLocalBuildValue = Boolean(process.env.__FORCE_API_MD_UPDATE__) || !isCI();
 
     expect(extractorArgs).toEqual({
+      compilerState: compilerStateStub,
+      messageCallback: expect.any(Function),
       localBuild: actualLocalBuildValue,
       showDiagnostics: false,
       showVerboseMessages: true,
@@ -224,6 +238,8 @@ describe('GenerateApi Executor', () => {
 
     expect(extractorConfig).toEqual(expect.any(Object));
     expect(extractorArgs).toEqual({
+      compilerState: compilerStateStub,
+      messageCallback: expect.any(Function),
       localBuild: Boolean(process.env.__FORCE_API_MD_UPDATE__),
       showDiagnostics: true,
       showVerboseMessages: true,
@@ -491,5 +507,61 @@ describe('GenerateApi Executor – export subpath resolution', () => {
     // primary (1) + utils (1) + wildcard sub-dirs (2)
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + 1 + subDirs.length);
     expect(output.success).toBe(true);
+  });
+
+  it('creates one compiler state for all entry points and reuses it for every invocation', async () => {
+    const subDirs = ['alpha', 'beta'];
+    const { context } = prepareExportFixture({ wildcardSubDirs: subDirs, namedExports: ['utils'] });
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    const capturedStates: (CompilerState | undefined)[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation((cfg, invokeOptions) => {
+      capturedConfigs.push(cfg);
+      capturedStates.push(invokeOptions?.compilerState);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    const output = await executor({ ...options, exportSubpaths: true }, context);
+
+    expect(compilerStateCreateSpy).toHaveBeenCalledTimes(1);
+
+    const [primaryConfig, createOptions] = compilerStateCreateSpy.mock.calls[0];
+    expect(primaryConfig).toBe(capturedConfigs[0]);
+    expect(createOptions?.additionalEntryPoints).toEqual(
+      capturedConfigs.slice(1).map(cfg => cfg.mainEntryPointFilePath),
+    );
+
+    expect(capturedStates).toEqual(new Array(1 + 1 + subDirs.length).fill(compilerStateStub));
+    expect(output.success).toBe(true);
+  });
+
+  it('reports repeated api-extractor console notices only once across invocations', async () => {
+    const { context } = prepareExportFixture({ namedExports: ['utils'] });
+
+    const capturedCallbacks: NonNullable<IExtractorInvokeOptions['messageCallback']>[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation((_config, invokeOptions) => {
+      capturedCallbacks.push(invokeOptions!.messageCallback!);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    await executor({ ...options, exportSubpaths: true }, context);
+
+    expect(capturedCallbacks).toHaveLength(2);
+    expect(capturedCallbacks[0]).toBe(capturedCallbacks[1]);
+
+    const messages = {
+      firstPreamble: { messageId: ConsoleMessageId.Preamble, handled: false } as ExtractorMessage,
+      secondPreamble: { messageId: ConsoleMessageId.Preamble, handled: false } as ExtractorMessage,
+      apiReport: { messageId: ConsoleMessageId.ApiReportCopied, handled: false } as ExtractorMessage,
+    };
+
+    capturedCallbacks[0](messages.firstPreamble);
+    capturedCallbacks[1](messages.secondPreamble);
+    capturedCallbacks[1](messages.apiReport);
+
+    expect(messages.firstPreamble.handled).toBe(false);
+    expect(messages.secondPreamble.handled).toBe(true);
+    // unrelated console messages keep api-extractor's default handling
+    expect(messages.apiReport.handled).toBe(false);
   });
 });
