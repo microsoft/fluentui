@@ -12,6 +12,6 @@ describe('ImageSwatch', () => {
       wrapper: ({ children }) => <SwatchPicker selectedValue="image">{children}</SwatchPicker>,
     });
 
-    expect(getByRole('radio')).toHaveAttribute('data-selected', '');
+    expect(getByRole('radio')).toHaveAttribute('data-selected');
   });
 });

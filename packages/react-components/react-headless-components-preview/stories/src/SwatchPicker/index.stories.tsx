@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import descriptionMd from './SwatchPickerDescription.md';
 import styles from './swatch-picker.module.css';
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
 
 export { Default } from './SwatchPickerDefault.stories';
 export { EmptySwatchExample } from './SwatchPickerEmpty.stories';
@@ -21,7 +22,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: descriptionMd + getBrowserSupportNotice('SwatchPicker'),
       },
     },
   },

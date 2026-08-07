@@ -12,7 +12,7 @@ describe('ColorSwatch', () => {
   });
 
   it('emits selected and disabled state attributes', () => {
-    const { getByRole } = render(<ColorSwatch color="#f09" value="pink" aria-label="Pink" />, {
+    const { getByRole } = render(<ColorSwatch color="#f09" value="pink" aria-label="Pink" disabled />, {
       wrapper: ({ children }) => (
         <SwatchPicker aria-label="Colors" selectedValue="pink">
           {children}
@@ -22,5 +22,7 @@ describe('ColorSwatch', () => {
     const swatch = getByRole('radio');
     expect(swatch).toHaveAttribute('aria-label', 'Pink');
     expect(swatch).toHaveAttribute('aria-checked', 'true');
+    expect(swatch).toHaveAttribute('data-selected');
+    expect(swatch).toHaveAttribute('data-disabled');
   });
 });

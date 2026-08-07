@@ -4,15 +4,15 @@
 
 ```ts
 
+import type { ColorSwatchBaseState } from '@fluentui/react-swatch-picker';
 import { ColorSwatchBaseProps as ColorSwatchProps } from '@fluentui/react-swatch-picker';
-import { ColorSwatchSlots } from '@fluentui/react-swatch-picker';
-import { ColorSwatchBaseState as ColorSwatchState } from '@fluentui/react-swatch-picker';
+import type { ColorSwatchSlots } from '@fluentui/react-swatch-picker';
+import type { EmptySwatchBaseState } from '@fluentui/react-swatch-picker';
 import { EmptySwatchBaseProps as EmptySwatchProps } from '@fluentui/react-swatch-picker';
-import { EmptySwatchSlots } from '@fluentui/react-swatch-picker';
-import { EmptySwatchBaseState as EmptySwatchState } from '@fluentui/react-swatch-picker';
+import type { EmptySwatchSlots } from '@fluentui/react-swatch-picker';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { ImageSwatchBaseProps } from '@fluentui/react-swatch-picker';
 import type { ImageSwatchBaseState } from '@fluentui/react-swatch-picker';
+import { ImageSwatchBaseProps as ImageSwatchProps } from '@fluentui/react-swatch-picker';
 import type { ImageSwatchSlots as ImageSwatchSlots_2 } from '@fluentui/react-swatch-picker';
 import type * as React_2 from 'react';
 import { renderColorSwatch_unstable as renderColorSwatch } from '@fluentui/react-swatch-picker';
@@ -26,8 +26,6 @@ import { SwatchPickerRowBaseProps as SwatchPickerRowProps } from '@fluentui/reac
 import { SwatchPickerRowSlots } from '@fluentui/react-swatch-picker';
 import { SwatchPickerRowBaseState as SwatchPickerRowState } from '@fluentui/react-swatch-picker';
 import { SwatchPickerSlots } from '@fluentui/react-swatch-picker';
-import { useColorSwatchBase_unstable as useColorSwatch } from '@fluentui/react-swatch-picker';
-import { useEmptySwatchBase_unstable as useEmptySwatch } from '@fluentui/react-swatch-picker';
 import { useSwatchPickerContextValue_unstable as useSwatchPickerContextValue } from '@fluentui/react-swatch-picker';
 import { useSwatchPickerContextValues } from '@fluentui/react-swatch-picker';
 import { useSwatchPickerRowBase_unstable as useSwatchPickerRow } from '@fluentui/react-swatch-picker';
@@ -39,7 +37,13 @@ export { ColorSwatchProps }
 
 export { ColorSwatchSlots }
 
-export { ColorSwatchState }
+// @public (undocumented)
+export type ColorSwatchState = ColorSwatchBaseState & {
+    root: {
+        'data-selected'?: string;
+        'data-disabled'?: string;
+    };
+};
 
 // @public (undocumented)
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
@@ -48,13 +52,18 @@ export { EmptySwatchProps }
 
 export { EmptySwatchSlots }
 
-export { EmptySwatchState }
+// @public (undocumented)
+export type EmptySwatchState = EmptySwatchBaseState & {
+    root: {
+        'data-selected'?: string;
+        'data-disabled'?: string;
+    };
+};
 
 // @public (undocumented)
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
 
-// @public (undocumented)
-export type ImageSwatchProps = ImageSwatchBaseProps;
+export { ImageSwatchProps }
 
 // @public (undocumented)
 export type ImageSwatchSlots = ImageSwatchSlots_2;
@@ -95,13 +104,16 @@ export { SwatchPickerSlots }
 // @public (undocumented)
 export type SwatchPickerState = SwatchPickerBaseState & {
     root: {
+        'data-layout'?: SwatchPickerBaseState['layout'];
         focusgroup?: string;
     };
 };
 
-export { useColorSwatch }
+// @public (undocumented)
+export const useColorSwatch: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;
 
-export { useEmptySwatch }
+// @public (undocumented)
+export const useEmptySwatch: (props: EmptySwatchProps, ref: React_2.Ref<HTMLButtonElement>) => EmptySwatchState;
 
 // @public (undocumented)
 export const useImageSwatch: (props: ImageSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ImageSwatchState;
