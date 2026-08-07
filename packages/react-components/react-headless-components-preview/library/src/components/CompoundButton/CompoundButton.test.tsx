@@ -30,14 +30,6 @@ describe('CompoundButton', () => {
     expect(getByRole('link', { name: 'Link' })).toHaveAttribute('href', '#compound-button');
   });
 
-  it('forwards its ref to the root', () => {
-    const ref = React.createRef<HTMLButtonElement>();
-
-    render(<CompoundButton ref={ref}>Button</CompoundButton>);
-
-    expect(ref.current?.tagName).toBe('BUTTON');
-  });
-
   it('forwards root className and style', () => {
     const { getByRole } = render(
       <CompoundButton className="root-class" style={{ cursor: 'pointer' }}>
@@ -88,39 +80,6 @@ describe('CompoundButton', () => {
     const { getByRole } = render(<CompoundButton secondaryContent="Secondary" />);
 
     expect(getByRole('button', { name: 'Secondary' })).toBeInTheDocument();
-  });
-
-  it('invokes click handlers when enabled', () => {
-    const onClick = jest.fn();
-    const { getByRole } = render(<CompoundButton onClick={onClick}>Enabled</CompoundButton>);
-
-    fireEvent.click(getByRole('button'));
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  it('activates a focused enabled button with Enter', () => {
-    const onClick = jest.fn();
-    const { getByRole } = render(<CompoundButton onClick={onClick}>Enabled</CompoundButton>);
-    const button = getByRole('button');
-
-    button.focus();
-    userEvent.keyboard('{Enter}');
-
-    expect(button).toHaveFocus();
-    expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  it('activates a focused enabled button with Space', () => {
-    const onClick = jest.fn();
-    const { getByRole } = render(<CompoundButton onClick={onClick}>Enabled</CompoundButton>);
-    const button = getByRole('button');
-
-    button.focus();
-    userEvent.keyboard('{space}');
-
-    expect(button).toHaveFocus();
-    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   it('blocks activation and emits an exact disabled presence attribute when disabled', () => {

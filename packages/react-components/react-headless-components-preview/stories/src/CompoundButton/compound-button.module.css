@@ -152,13 +152,6 @@
   justify-content: center;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .action {
-    transition: none;
-    animation: none;
-  }
-}
-
 @media (forced-colors: active) {
   .demo,
   .status,

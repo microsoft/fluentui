@@ -4,9 +4,9 @@
 
 ```ts
 
-import type { CompoundButtonBaseProps } from '@fluentui/react-button';
 import type { CompoundButtonBaseState } from '@fluentui/react-button';
-import type { CompoundButtonSlots as CompoundButtonSlots_2 } from '@fluentui/react-button';
+import { CompoundButtonBaseProps as CompoundButtonProps } from '@fluentui/react-button';
+import { CompoundButtonSlots } from '@fluentui/react-button';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderCompoundButton_unstable as renderCompoundButton } from '@fluentui/react-button';
@@ -14,11 +14,9 @@ import { renderCompoundButton_unstable as renderCompoundButton } from '@fluentui
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
-// @public
-export type CompoundButtonProps = CompoundButtonBaseProps;
+export { CompoundButtonProps }
 
-// @public
-export type CompoundButtonSlots = CompoundButtonSlots_2;
+export { CompoundButtonSlots }
 
 // @public
 export type CompoundButtonState = CompoundButtonBaseState & {

@@ -1,18 +1,6 @@
-import type {
-  CompoundButtonBaseProps,
-  CompoundButtonBaseState,
-  CompoundButtonSlots as CompoundButtonBaseSlots,
-} from '@fluentui/react-button';
+import type { CompoundButtonBaseState } from '@fluentui/react-button';
 
-/**
- * CompoundButton component slots.
- */
-export type CompoundButtonSlots = CompoundButtonBaseSlots;
-
-/**
- * CompoundButton component props.
- */
-export type CompoundButtonProps = CompoundButtonBaseProps;
+export type { CompoundButtonBaseProps as CompoundButtonProps, CompoundButtonSlots } from '@fluentui/react-button';
 
 /**
  * CompoundButton component state.

@@ -2,11 +2,15 @@ A compound button presents a primary action with optional secondary text that ad
 
 `CompoundButton` renders a native button by default and can render an anchor with `as="a"` and `href`. A disabled button uses the native `disabled` attribute and cannot be focused or activated. A disabled-focusable button remains in the tab order, exposes `aria-disabled="true"`, and blocks activation.
 
-The root exposes presence-based state attributes. Each attribute is present with the exact value `""` when its state is true and is omitted when false:
-
-- `data-disabled`
-- `data-disabled-focusable`
-- `data-icon-only`
-- `data-has-secondary-content`
-
 The `contentContainer` slot groups the primary and secondary text, while `secondaryContent` represents the second textual line. These semantic slots let consumers apply their own layout and typography without changing the component's behavior.
+
+## State attributes
+
+State attributes are applied to the root, omitted when false, and form the supported CSS targeting contract.
+
+| Attribute                    | Meaning                                                                      | Value when present |
+| ---------------------------- | ---------------------------------------------------------------------------- | ------------------ |
+| `data-disabled`              | Native disabled state active                                                 | `""`               |
+| `data-disabled-focusable`    | Disabled-focusable state active                                              | `""`               |
+| `data-icon-only`             | Only icon content rendered                                                   | `""`               |
+| `data-has-secondary-content` | Normalized secondary-content slot is present and the button is not icon-only | `""`               |
