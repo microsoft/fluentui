@@ -151,28 +151,3 @@
   padding: 0;
   justify-content: center;
 }
-
-@media (forced-colors: active) {
-  .demo,
-  .status,
-  .action {
-    box-shadow: none;
-  }
-
-  .action {
-    border-color: currentColor;
-  }
-
-  .action:focus-visible,
-  .action[data-disabled-focusable]:focus-visible,
-  .action[aria-disabled='true']:focus-visible {
-    outline: var(--stroke-thick) solid currentColor;
-  }
-
-  .action:disabled,
-  .action[data-disabled],
-  .action[data-disabled-focusable],
-  .action[aria-disabled='true'] {
-    border-style: dashed;
-  }
-}
