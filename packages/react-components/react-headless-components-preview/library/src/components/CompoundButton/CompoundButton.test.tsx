@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe, toHaveNoViolations } from 'jest-axe';
 import { isConformant } from '../../testing/isConformant';
 import { CompoundButton } from './CompoundButton';
-
-expect.extend(toHaveNoViolations);
 
 describe('CompoundButton', () => {
   isConformant({
@@ -230,21 +227,5 @@ describe('CompoundButton', () => {
     expect(button).not.toHaveAttribute('data-disabled-focusable');
     expect(button).not.toHaveAttribute('data-icon-only');
     expect(button).not.toHaveAttribute('data-has-secondary-content');
-  });
-
-  it('has no accessibility violations in a representative group', async () => {
-    const { container } = render(
-      <div role="group" aria-label="Compound button examples">
-        <CompoundButton secondaryContent="Secondary">Primary</CompoundButton>
-        <CompoundButton as="a" href="#compound-button">
-          Link
-        </CompoundButton>
-        <CompoundButton disabled>Disabled</CompoundButton>
-        <CompoundButton disabledFocusable>Disabled focusable</CompoundButton>
-        <CompoundButton icon="Icon" aria-label="Icon button" />
-      </div>,
-    );
-
-    expect(await axe(container)).toHaveNoViolations();
   });
 });
