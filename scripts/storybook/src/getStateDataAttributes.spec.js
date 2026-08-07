@@ -322,9 +322,11 @@ describe('getStateDataAttributes', () => {
   // ─── Task 5: .tsx files excluded from inspection set ─────────────────────────
 
   describe('.tsx implementation files excluded from inspection set', () => {
-    it('succeeds even when .tsx files coexist in the same sourceRoot', () => {
-      // Button.tsx exports a duplicate ButtonState — if included it would trigger
-      // a duplicate-key error; exclusion keeps extraction clean.
+    it('succeeds even when a .tsx file is a genuine transitive import into the TS program', () => {
+      // ButtonState.ts imports a type from Button.tsx, so Button.tsx is a real
+      // member of program.getSourceFiles(). Button.tsx also exports a duplicate
+      // ButtonState — the collection loop must use filteredSourceFileSet and
+      // skip Button.tsx, avoiding a duplicate-key error.
       expect(() =>
         getStateDataAttributes({
           tsconfigPath: path.join(TSX_EXCLUDED_FIXTURE, 'tsconfig.json'),
@@ -333,7 +335,7 @@ describe('getStateDataAttributes', () => {
       ).not.toThrow();
     });
 
-    it('returns only one key (Button) — the .tsx duplicate does not create a second entry', () => {
+    it('returns only one key (Button) — the transitive .tsx duplicate does not create a second entry', () => {
       const result = getStateDataAttributes({
         tsconfigPath: path.join(TSX_EXCLUDED_FIXTURE, 'tsconfig.json'),
         sourceRoot: path.join(TSX_EXCLUDED_FIXTURE, 'src'),

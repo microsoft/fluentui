@@ -10,7 +10,7 @@
         "default",
         "{workspaceRoot}/.storybook/**",
         "{projectRoot}/.storybook/**",
-        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.types.ts"
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.ts"
       ],
       "dependsOn": [
         {
@@ -30,7 +30,7 @@
         "default",
         "{workspaceRoot}/.storybook/**",
         "{projectRoot}/.storybook/**",
-        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.types.ts"
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.ts"
       ]
     }
   }

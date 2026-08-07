@@ -122,10 +122,10 @@ function getStateDataAttributes(options) {
 
   const program = ts.createProgram(filteredSourceFiles, compilerOptions);
 
-  // check syntactic and semantic diagnostics on the explicit *.types.ts files only.
-  // Transitive imports (e.g. render*.tsx pulled in via `typeof Component` usages) are
-  // excluded because they live outside the *.types.ts set and may contain JSX that
-  // requires a full React setup not guaranteed by tsconfig.base.json.
+  // check syntactic and semantic diagnostics on the explicit non-test .ts (not .tsx) files only.
+  // Transitive imports (e.g. render*.tsx pulled in via imports) are excluded because they
+  // live outside the non-test .ts source set and may contain JSX that requires a full
+  // React setup not guaranteed by tsconfig.base.json.
   const filteredSourceFileSet = new Set(filteredSourceFiles.map(f => path.resolve(f)));
   const programDiagnostics = program
     .getSourceFiles()
@@ -148,10 +148,9 @@ function getStateDataAttributes(options) {
   const seenSymbols = new Set();
 
   for (const sourceFile of program.getSourceFiles()) {
-    if (!isInSourceRoot(sourceFile.fileName)) {
-      continue;
-    }
-    if (sourceFile.isDeclarationFile || isTestOrDeclarationFile(sourceFile.fileName)) {
+    // Only process the explicit filtered .ts source set; skip .tsx files and any
+    // transitively imported files that are not in filteredSourceFileSet.
+    if (!filteredSourceFileSet.has(path.resolve(sourceFile.fileName))) {
       continue;
     }
 
