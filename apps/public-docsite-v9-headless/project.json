@@ -6,6 +6,12 @@
   "tags": ["platform:web", "vNext"],
   "targets": {
     "build-storybook": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.types.ts"
+      ],
       "dependsOn": [
         {
           "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
@@ -20,7 +26,12 @@
           "target": "build"
         }
       ],
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/library/src/components/**/*.types.ts"
+      ]
     }
   }
 }

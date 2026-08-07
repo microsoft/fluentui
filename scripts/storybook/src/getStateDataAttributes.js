@@ -101,19 +101,35 @@ function getStateDataAttributes(options) {
    * @param {string} filePath
    */
   function isTestOrDeclarationFile(filePath) {
-    return filePath.endsWith('.d.ts') || /\.(spec|test)\.[jt]s$/.test(filePath);
+    return filePath.endsWith('.d.ts') || /\.(spec|test|cy)\.[jt]sx?$/.test(filePath);
   }
 
-  const filteredSourceFiles = parsedCommandLine.fileNames.filter(f => isInSourceRoot(f) && !isTestOrDeclarationFile(f));
+  // Only process .ts (not .tsx) files: *State types always live in plain TypeScript
+  // files (.types.ts or similar). Excluding .tsx files keeps the TS program free of
+  // JSX that requires a full React setup not guaranteed by tsconfig.base.json.
+  const filteredSourceFiles = parsedCommandLine.fileNames.filter(
+    f => isInSourceRoot(f) && f.endsWith('.ts') && !isTestOrDeclarationFile(f),
+  );
 
   // ── create TS program ─────────────────────────────────────────────────────────
 
-  const program = ts.createProgram(filteredSourceFiles, parsedCommandLine.options);
+  // Force JSX support so .tsx source files parse correctly regardless of the
+  // tsconfig used (e.g. tsconfig.base.json which omits the `jsx` compiler option).
+  const compilerOptions = {
+    ...parsedCommandLine.options,
+    jsx: parsedCommandLine.options.jsx ?? ts.JsxEmit.ReactJSX,
+  };
 
-  // check syntactic and semantic diagnostics on our source files, not library declarations
+  const program = ts.createProgram(filteredSourceFiles, compilerOptions);
+
+  // check syntactic and semantic diagnostics on the explicit *.types.ts files only.
+  // Transitive imports (e.g. render*.tsx pulled in via `typeof Component` usages) are
+  // excluded because they live outside the *.types.ts set and may contain JSX that
+  // requires a full React setup not guaranteed by tsconfig.base.json.
+  const filteredSourceFileSet = new Set(filteredSourceFiles.map(f => path.resolve(f)));
   const programDiagnostics = program
     .getSourceFiles()
-    .filter(sf => isInSourceRoot(sf.fileName) && !sf.isDeclarationFile && !isTestOrDeclarationFile(sf.fileName))
+    .filter(sf => filteredSourceFileSet.has(path.resolve(sf.fileName)))
     .flatMap(sf => [...program.getSyntacticDiagnostics(sf), ...program.getSemanticDiagnostics(sf)])
     .filter(d => d.category === ts.DiagnosticCategory.Error);
 
