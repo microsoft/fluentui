@@ -11,7 +11,7 @@
 
 .card {
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xxl);
-  font-weight: var(--fontWeightSemibold);
-  font-size: var(--fontSizeBase300);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-base-300);
   text-align: center;
 }

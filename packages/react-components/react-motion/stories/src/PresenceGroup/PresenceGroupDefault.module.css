@@ -10,21 +10,21 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
   border-top-right-radius: 0;
-  box-shadow: var(--shadow16);
+  box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
 .controls {
   display: flex;
   gap: 10px;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-bottom: none;
-  border-top-left-radius: var(--borderRadiusMedium);
-  border-top-right-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border-top-left-radius: var(--radius-medium);
+  border-top-right-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
   align-self: end;
 }

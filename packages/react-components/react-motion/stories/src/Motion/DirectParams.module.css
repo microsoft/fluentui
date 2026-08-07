@@ -15,8 +15,8 @@
   flex-direction: column;
   gap: var(--spacing-vertical-s);
   padding: var(--spacing-vertical-m);
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
 }
 
 .row {
@@ -38,8 +38,8 @@
   flex-direction: column;
   gap: var(--spacing-vertical-s);
   padding: var(--spacing-vertical-m);
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
   overflow: hidden;
   overflow-wrap: break-word;
   word-break: break-word;
@@ -48,10 +48,10 @@
 }
 
 .codeBlock {
-  font-family: var(--fontFamilyMonospace);
-  font-size: var(--fontSizeBase200);
-  background-color: var(--colorNeutralBackground1Pressed);
-  border-radius: var(--borderRadiusMedium);
+  font-family: var(--font-monospace);
+  font-size: var(--text-base-200);
+  background-color: var(--color-neutral-background-1-pressed);
+  border-radius: var(--radius-medium);
   padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
   white-space: pre;
   overflow: auto;

@@ -18,8 +18,8 @@
 .panel {
   display: flex;
   flex-direction: column;
-  border: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
+  border-radius: var(--radius-medium);
   overflow: hidden;
 }
 
@@ -29,19 +29,19 @@
   align-items: center;
   gap: var(--spacing-vertical-xs);
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl) var(--spacing-vertical-m);
-  background-color: var(--colorNeutralBackground2);
+  background-color: var(--color-neutral-background-2);
 }
 
 .title {
   margin: 0;
-  font-size: var(--fontSizeBase400);
-  font-weight: var(--fontWeightSemibold);
+  font-size: var(--text-base-400);
+  font-weight: var(--font-weight-semibold);
 }
 
 .subtitle {
   margin: 0;
-  font-size: var(--fontSizeBase200);
-  color: var(--colorNeutralForeground3);
+  font-size: var(--text-base-200);
+  color: var(--color-neutral-foreground-3);
   text-align: center;
 }
 
@@ -51,7 +51,7 @@
   justify-items: center;
   height: 80px;
   padding: var(--spacing-vertical-l);
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
 }
 
 .motionWrapper {
@@ -62,25 +62,25 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
-  font-weight: var(--fontWeightSemibold);
-  font-size: var(--fontSizeBase300);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-base-300);
 }
 
 .codeArea {
   margin: 0;
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-l);
-  background-color: var(--colorNeutralBackground3);
-  border-top: var(--stroke-width-thin) solid var(--colorNeutralStroke1);
+  background-color: var(--color-neutral-background-3);
+  border-top: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   overflow: auto;
-  font-family: var(--fontFamilyMonospace);
-  font-size: var(--fontSizeBase100);
-  line-height: var(--lineHeightBase200);
-  color: var(--colorNeutralForeground1);
+  font-family: var(--font-monospace);
+  font-size: var(--text-base-100);
+  line-height: var(--leading-base-200);
+  color: var(--color-neutral-foreground-1);
 }
 
 .buttonRow {
   display: flex;
   justify-content: center;
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl) var(--spacing-vertical-l);
-  background-color: var(--colorNeutralBackground2);
+  background-color: var(--color-neutral-background-2);
 }

@@ -20,9 +20,9 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 20px;
   min-height: 200px;
 }
@@ -31,9 +31,9 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
@@ -50,8 +50,8 @@
 }
 
 .item {
-  background-color: var(--colorBrandBackground);
-  border: var(--stroke-width-thicker) solid var(--colorTransparentStroke);
+  background-color: var(--color-brand-background);
+  border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -59,5 +59,5 @@
 
 .cardTitle {
   margin-bottom: 50px;
-  font-weight: var(--fontWeightSemibold);
+  font-weight: var(--font-weight-semibold);
 }

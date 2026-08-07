@@ -13,9 +13,9 @@
   align-items: center;
   justify-content: center;
   grid-area: card;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
   min-height: 120px;
 }
@@ -24,15 +24,15 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
 .panel {
-  background-color: var(--colorBrandBackground);
-  color: var(--colorNeutralForegroundOnBrand);
-  border-radius: var(--borderRadiusMedium);
+  background-color: var(--color-brand-background);
+  color: var(--color-neutral-foreground-on-brand);
+  border-radius: var(--radius-medium);
   padding: 20px;
 }

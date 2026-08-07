@@ -13,9 +13,9 @@
   align-items: center;
   justify-content: end;
   grid-area: card;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
@@ -23,9 +23,9 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
@@ -45,7 +45,7 @@
   display: inline-block;
   width: 80px;
   height: 100px;
-  background-color: var(--colorBrandBackground);
+  background-color: var(--color-brand-background);
   border-radius: 80%;
   position: relative;
   box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.07);
@@ -56,7 +56,7 @@
 .balloon::before {
   content: '▲';
   font-size: 20px;
-  color: var(--colorCompoundBrandBackgroundPressed);
+  color: var(--color-compound-brand-background-pressed);
   display: block;
   text-align: center;
   width: 100%;

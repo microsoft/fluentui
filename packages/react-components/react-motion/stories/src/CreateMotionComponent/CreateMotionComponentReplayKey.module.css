@@ -33,8 +33,8 @@
 }
 
 .counter {
-  color: var(--colorBrandForeground1);
-  font-size: var(--fontSizeHero900);
-  font-weight: var(--fontWeightBold);
+  color: var(--color-brand-foreground-1);
+  font-size: var(--text-hero-900);
+  font-weight: var(--font-weight-bold);
   line-height: 1;
 }

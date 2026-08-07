@@ -13,9 +13,9 @@
   align-items: center;
   justify-content: center;
   grid-area: card;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
@@ -23,9 +23,9 @@
   display: flex;
   flex-direction: column;
   grid-area: controls;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
@@ -42,8 +42,8 @@
 }
 
 .item {
-  background-color: var(--colorBrandBackground);
-  border: var(--stroke-width-thicker) solid var(--colorTransparentStroke);
+  background-color: var(--color-brand-background);
+  border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -56,21 +56,21 @@
 }
 
 .logLabel {
-  color: var(--colorNeutralForegroundOnBrand);
-  background-color: var(--colorNeutralForeground3);
+  color: var(--color-neutral-foreground-on-brand);
+  background-color: var(--color-neutral-foreground-3);
   width: fit-content;
   align-self: end;
-  font-weight: var(--fontWeightBold);
+  font-weight: var(--font-weight-bold);
   padding: 2px 12px;
-  border-radius: var(--borderRadiusMedium) var(--borderRadiusMedium) 0 0;
+  border-radius: var(--radius-medium) var(--radius-medium) 0 0;
 }
 
 .log {
   overflow-y: auto;
   position: relative;
   height: 200px;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
   border-top-right-radius: 0;
   padding: 10px;
 }

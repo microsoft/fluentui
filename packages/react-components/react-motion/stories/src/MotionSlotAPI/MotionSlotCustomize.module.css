@@ -13,26 +13,26 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
-  box-shadow: var(--shadow16);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-16);
   padding: 20px;
 }
 
 .label {
-  color: var(--colorNeutralForeground3);
-  font-size: var(--fontSizeBase200);
+  color: var(--color-neutral-foreground-3);
+  font-size: var(--text-base-200);
   text-align: center;
 }
 
 .indicator {
-  background-color: var(--colorBrandBackground);
+  background-color: var(--color-brand-background);
   border-radius: 50%;
   width: 80px;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--colorNeutralForegroundOnBrand);
+  color: var(--color-neutral-foreground-on-brand);
   font-size: 24px;
 }

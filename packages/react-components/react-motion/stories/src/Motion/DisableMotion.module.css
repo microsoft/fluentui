@@ -14,14 +14,14 @@
 }
 
 .sectionTitle {
-  font-size: var(--fontSizeBase400);
-  font-weight: var(--fontWeightSemibold);
+  font-size: var(--text-base-400);
+  font-weight: var(--font-weight-semibold);
   margin: 0;
 }
 
 .sectionDescription {
-  font-size: var(--fontSizeBase300);
-  color: var(--colorNeutralForeground3);
+  font-size: var(--text-base-300);
+  color: var(--color-neutral-foreground-3);
   margin: 0;
 }
 
@@ -31,12 +31,12 @@
 }
 
 .drawerContainer {
-  border: 2px solid var(--colorNeutralStroke1);
-  border-radius: var(--borderRadiusMedium);
+  border: 2px solid var(--color-neutral-stroke-1);
+  border-radius: var(--radius-medium);
   overflow: hidden;
   display: flex;
   height: 300px;
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
 }
 
 .drawerContent {
