@@ -217,3 +217,157 @@ removal; nothing in Phase 1 depends on it either way.
 Remove the FluentProvider runtime theme style tag / JS theming path; the CSS-native
 variable graph (canonical `--spacing-*` / `--stroke-width-*` + Fluent color/typography
 vars) becomes the sole contract. Decide the full-token-set kebab rename question above.
+
+## Phase 2a — full-token-set kebab rename (option B, Tailwind-namespace-aligned canonicals)
+
+Date: 2026-08-06 · Branch: `styling/tailwind-css-modules` · Closes the Phase-1 open
+question: the remaining 441 camelCase token CSS variables (colors incl. palette, font
+families/sizes/weights, line heights, radii, shadows, curves, durations, z-index) are
+renamed to canonical kebab-case names aligned with the Tailwind v4 theme namespaces.
+Single vocabulary, option B: the old names cease to exist in every shipped read path;
+`tokens.*` repoints. Complete mapping committed as `reports/token-rename-map.md` +
+`.json` (467 rows: 26 Phase 1 + 441 Phase 2a — the machine-readable find/replace source
+for consumer migration). Decision record: DECISIONS.md "D4 Phase-2a amendment".
+
+### Namespace mapping (canonical = the token's Tailwind `@theme` key, except durations)
+
+Colors → `--color-*` (palette: `--color-palette-*`); font families → `--font-*`; font
+sizes → `--text-*`; font weights → `--font-weight-*`; line heights → `--leading-*`;
+radii → `--radius-*`; shadows → `--shadow-*`; curves → `--ease-*`; z-index →
+`--z-index-*` (tokens.\* keeps the value fallback, e.g. `var(--z-index-popup, 2000)`).
+**Durations split** (user intent — family-consistent custom namespace): canonical
+runtime variable `--duration-fast`; the `@theme` key stays what the installed v4.3.3
+utility registry reads (`--transition-duration-fast`), registered as
+`var(--duration-fast)` so utilities carry the canonical reference verbatim. All 467
+canonical names asserted unique.
+
+### Utility-name impact verdict: ZERO
+
+The `@theme` keys were already these kebab names. Byte-compared HEAD vs new: the 467
+registered keys are identical sets; only registered VALUES changed
+(`var(--colorNeutralBackground1)` → `var(--color-neutral-background-1)`). No utility
+class name changes; no module.css class-usage sweep.
+
+### Architectural correction to the task premise (recorded honestly)
+
+The task assumed the FluentProvider runtime tag's literals would "feed NOTHING" after
+the rename (Phase-1 semantics). That held in Phase 1 only because spacing/stroke are
+theme-INVARIANT and `:root`-emitted. The 441 renamed tokens are theme-VARIANT (7 shipped
+themes differ; dark/HC VR stories resolve through per-provider values) with NO static
+value emission — the tag is their sole value source (verified: zero static camelCase
+value definitions in repo CSS). A camelCase-only tag would have unstyled everything.
+
+**Resolution — dual-vocabulary tag (interim until 2b):** `createCSSRuleFromTheme` writes
+each theme entry under BOTH names, deriving the canonical from the repointed `tokens.*`
+strings (guaranteed lockstep, no second kebab implementation). Shipped readers all use
+canonical names; the camelCase half feeds nothing shipped — the task's stated interim
+semantics, made true constructively — and doubles as unbroken-interim insurance for
+hand-written consumer CSS. Cost: per-provider rule 459 → 918 declarations
+(webLightTheme 19,215 → 39,873 chars), inserted once per provider mount.
+
+### `@theme inline reference` adopted (earlier rejection retired)
+
+With runtime names equal to theme keys, every registration is self-named
+(`--color-x: var(--color-x)`); plain `inline` emits 400+ self-referential aliases at
+`:root, :host` (cycle-invalid at `:root`, ~19KB — probe `.scratch/phase2a-theming/probe/`).
+`reference` suppresses exactly that emission (probed byte-identical utility output); its
+pre-2a rejection reason — "emits CSS against a variable nothing defines" — is retired
+because the tag now defines the canonical names. `dist/styles.css` byte-stable: 2,810
+bytes, Phase-1 emission block unchanged, zero old names.
+
+### Sweep counts
+
+- `packages/tokens/src/tokens.ts`: 441 values repointed; test rewritten as an
+  INDEPENDENT canonical-derivation exact-string test (all 467) + no-camelCase-var regex
+  - uniqueness; generator drift-throw extended to every token (fallback only for
+    zIndex).
+- `react-theme-sass`: 433 values across 8 scss files (SCSS `$` names stay camelCase).
+- react-tailwind-theme: tokens.css regenerated (441 values); 12 hand-written refs in
+  css/utilities.css.
+- Repo sweep: **5,331 replacements across 438 files** (module.css HCM blocks, stories,
+  docsite MDX/css, vr-tests utils, charts inline styles, motion token strings,
+  storybook-addon css, theme-designer, workspace-plugin template, calendar/datepicker
+  compat, migration-v0/v8 shims). Residuals: zero in sweep scope.
+- Exemptions (verified): web-components / chart-web-components /
+  vr-tests-web-components' WCThemeDecorator (separate system defining its own camelCase
+  vars — 49 files / 2,424 occurrences untouched); `deprecated/**` — ZERO raw old-name
+  references (consumes tokens only via `tokens.*` JS inside Griffel makeStyles, e.g.
+  react-alert's `tokens.colorTransparentStroke` — follows the repoint automatically,
+  resolves against the dual tag; no exemption needed, nothing to sweep); migration
+  history reports/ledger; the two dual-emission SSR snapshot tests (legacy names are
+  CORRECT there until 2b); removal-documenting comments. Docsite residual
+  `--colorPaletteSilverForeground1` is NOT a token (v0-migration doc example, dead
+  before and after).
+
+### Gates
+
+1. **Browser identity probe — 2,237 checks, ALL PASS** (headless Chromium, rebuilt dist
+   - real `createCSSRuleFromTheme` rules from webLight/webDark/teamsHighContrast; script
+     `.scratch/phase2a-theming/identity-probe.mjs`): per Phase-2a token (441 × 5) —
+     canonical var == theme literal under a light provider; legacy var == same value (dual
+     emission); canonical switches under a nested dark provider; canonical carries HC
+     values; canonical does NOT resolve outside any provider (camelCase-era semantics
+     preserved). Plus 26 Phase-1 root-resolution checks and 6 end-to-end utility spot
+     checks (bg/shadow/duration/text/radius/ease computed == theme-literal reference
+     elements).
+2. **Emitted-CSS verification — zero old names**: dist/styles.css (2,810 bytes,
+   byte-stable emission shape); fresh `--skip-nx-cache` VR storybook bundle — 247
+   css/js files, 0 old-name occurrences, canonical forms present (172
+   `var(--color-neutral-background-1)` refs); public-docsite-v9 storybook build green —
+   354 files, 0 real old-token refs, 266 canonical refs.
+3. **Full VR sweep at zero tolerance — 76/76 canonical sets PASS, failing: none.**
+   Fresh `--skip-nx-cache` `vr-tests-react-components:build-storybook` (bundle
+   marker-verified pre-sweep: zero old names, canonical present); driver
+   `.scratch/phase2a-sweep-driver.mjs` (phase1b shape, review36513-\* excluded), results
+   `.scratch/phase2a-sweep-results.json`. All matched pairs pixel-identical except two
+   documented flake classes, both within pre-adjudicated protocol: `property-remedy`
+   (2,772 shots) had 3 `CalendarCompat.multiDayView*` shots at 11–21 diff px — the
+   ledger-adjudicated bistable text-antialiasing flake (ceiling 26; diff image
+   inspected: single-glyph speckle, not a value change) — the react-calendar-compat
+   tolerance was mirrored onto this composite set that embeds the same shots;
+   `react-progress` passed on its protocol recapture (known ProgressBar HC flake). No
+   story-inventory drift: the phase1b-folded baselines were current, 0 extras / 0
+   missing anywhere.
+4. **jest**: tokens 3/3 (new full-set tests); react-provider (dual-emission snapshots
+   updated; suite green); react-button, react-avatar, react-motion, react-card green;
+   react-badge 66/66 after regenerating ONE pre-existing stale PresenceBadge snapshot
+   (icon `data-fui-icon` drift from committed S-J history — same root cause as the 3
+   carousel snapshots regenerated in `944cccc0bc`; verified via `git log -S` that no
+   Phase-2a file touches icon rendering); charts react-charts 917 passed / 86 skipped.
+5. **SSR run green**: `ssr-tests-v9:test-ssr` exit 0.
+6. **lint/type-check** on touched-project sample: type-check tokens, react-provider,
+   react-button, react-motion, react-charts + `verify-tokens-css` all green; lint
+   tokens (after a JSDoc tag-name fix in the new comments), react-provider,
+   react-button, react-motion, react-charts all green.
+7. **Perf E-cell spot-check — flat.** Same rig as Phase 1 (scenario E, pooled-window,
+   31 windows + 5 warmups per visit, 6 reps, legs shuffled per cell per rep, seed
+   20260806, n = 186/cell; Chromium 141.0.7390.37; per-leg liveness asserted: control
+   bundle carries `var(--colorNeutralBackground1)` forms and zero canonical forms, new
+   bundle the inverse). Medians:
+   | Cell                                                                                 | control (ms) | new (ms) | delta |
+   | ------------------------------------------------------------------------------------ | -----------: | -------: | ----: |
+   | Button E                                                                             |        3.500 |    3.500 | +0.0% |
+   | Switch E                                                                             |        5.600 |    5.550 | -0.9% |
+   | Divider E                                                                            |        1.300 |    1.300 | +0.0% |
+   | IQRs overlap fully (Button [3.400, 3.700] both legs; Switch control [5.400, 5.900] / |
+   | new [5.400, 5.900]; Divider [1.300, 1.400] both). Raw:                               |
+   | `.scratch/perf-eval/phase2a-theming/results/`. The provider-rule doubling (dual      |
+   | emission) is a once-per-provider-mount cost outside scenario E's re-render loop; its |
+   | size delta is recorded above and it disappears with the tag in Phase 2b.             |
+
+### Interim-state semantics (until Phase 2b)
+
+FluentProvider's runtime tag now writes BOTH vocabularies per provider element. The
+camelCase half feeds no shipped reader (all shipped CSS and `tokens.*` strings are
+canonical); it keeps hand-written consumer reads of old names working under providers
+during the interim. A custom provider `theme` override reaches every shipped reader
+through the canonical half — unlike Phase 1's spacing (which froze at `:root`), color/
+font/etc. theming behavior through providers is fully preserved. Outside any provider,
+canonical names do not resolve — exactly the camelCase-era semantics.
+
+### Phase 2b (queued)
+
+Remove the FluentProvider runtime theme tag / JS theming path. With Phase 2a done, the
+tag is the ONLY remaining writer of both vocabularies; 2b must introduce the static
+value emission / theme-application mechanism for the canonical names (the design
+question deferred from this phase) and delete `createCSSRuleFromTheme`'s runtime role.

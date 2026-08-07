@@ -1,0 +1,3743 @@
+{
+  "$schema": "token-rename-map",
+  "description": "Complete old->new CSS custom property mapping for the Fluent design token set. Phase 1 (2026-08-05): spacing + strokeWidth (26 tokens). Phase 2a: everything else (441 tokens). Old names ceased to exist in emitted CSS (option B); tokens.* JS constants read the new names. This file is the machine-readable find/replace source for consumer migration: replace every occurrence of oldVar with newVar (longest-first, with a (?![A-Za-z0-9-]) boundary).",
+  "generatedBy": ".scratch/phase2a-theming/emit-mapping-artifacts.mjs (theming Phase 2a session)",
+  "tokens": [
+    {
+      "token": "colorNeutralForeground1",
+      "oldVar": "--colorNeutralForeground1",
+      "newVar": "--color-neutral-foreground-1",
+      "themeKey": "--color-neutral-foreground-1",
+      "tokensJs": "var(--color-neutral-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground1Hover",
+      "oldVar": "--colorNeutralForeground1Hover",
+      "newVar": "--color-neutral-foreground-1-hover",
+      "themeKey": "--color-neutral-foreground-1-hover",
+      "tokensJs": "var(--color-neutral-foreground-1-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground1Pressed",
+      "oldVar": "--colorNeutralForeground1Pressed",
+      "newVar": "--color-neutral-foreground-1-pressed",
+      "themeKey": "--color-neutral-foreground-1-pressed",
+      "tokensJs": "var(--color-neutral-foreground-1-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground1Selected",
+      "oldVar": "--colorNeutralForeground1Selected",
+      "newVar": "--color-neutral-foreground-1-selected",
+      "themeKey": "--color-neutral-foreground-1-selected",
+      "tokensJs": "var(--color-neutral-foreground-1-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2",
+      "oldVar": "--colorNeutralForeground2",
+      "newVar": "--color-neutral-foreground-2",
+      "themeKey": "--color-neutral-foreground-2",
+      "tokensJs": "var(--color-neutral-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2Hover",
+      "oldVar": "--colorNeutralForeground2Hover",
+      "newVar": "--color-neutral-foreground-2-hover",
+      "themeKey": "--color-neutral-foreground-2-hover",
+      "tokensJs": "var(--color-neutral-foreground-2-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2Pressed",
+      "oldVar": "--colorNeutralForeground2Pressed",
+      "newVar": "--color-neutral-foreground-2-pressed",
+      "themeKey": "--color-neutral-foreground-2-pressed",
+      "tokensJs": "var(--color-neutral-foreground-2-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2Selected",
+      "oldVar": "--colorNeutralForeground2Selected",
+      "newVar": "--color-neutral-foreground-2-selected",
+      "themeKey": "--color-neutral-foreground-2-selected",
+      "tokensJs": "var(--color-neutral-foreground-2-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2BrandHover",
+      "oldVar": "--colorNeutralForeground2BrandHover",
+      "newVar": "--color-neutral-foreground-2-brand-hover",
+      "themeKey": "--color-neutral-foreground-2-brand-hover",
+      "tokensJs": "var(--color-neutral-foreground-2-brand-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2BrandPressed",
+      "oldVar": "--colorNeutralForeground2BrandPressed",
+      "newVar": "--color-neutral-foreground-2-brand-pressed",
+      "themeKey": "--color-neutral-foreground-2-brand-pressed",
+      "tokensJs": "var(--color-neutral-foreground-2-brand-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2BrandSelected",
+      "oldVar": "--colorNeutralForeground2BrandSelected",
+      "newVar": "--color-neutral-foreground-2-brand-selected",
+      "themeKey": "--color-neutral-foreground-2-brand-selected",
+      "tokensJs": "var(--color-neutral-foreground-2-brand-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground3",
+      "oldVar": "--colorNeutralForeground3",
+      "newVar": "--color-neutral-foreground-3",
+      "themeKey": "--color-neutral-foreground-3",
+      "tokensJs": "var(--color-neutral-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground3Hover",
+      "oldVar": "--colorNeutralForeground3Hover",
+      "newVar": "--color-neutral-foreground-3-hover",
+      "themeKey": "--color-neutral-foreground-3-hover",
+      "tokensJs": "var(--color-neutral-foreground-3-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground3Pressed",
+      "oldVar": "--colorNeutralForeground3Pressed",
+      "newVar": "--color-neutral-foreground-3-pressed",
+      "themeKey": "--color-neutral-foreground-3-pressed",
+      "tokensJs": "var(--color-neutral-foreground-3-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground3Selected",
+      "oldVar": "--colorNeutralForeground3Selected",
+      "newVar": "--color-neutral-foreground-3-selected",
+      "themeKey": "--color-neutral-foreground-3-selected",
+      "tokensJs": "var(--color-neutral-foreground-3-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground3BrandHover",
+      "oldVar": "--colorNeutralForeground3BrandHover",
+      "newVar": "--color-neutral-foreground-3-brand-hover",
+      "themeKey": "--color-neutral-foreground-3-brand-hover",
+      "tokensJs": "var(--color-neutral-foreground-3-brand-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground3BrandPressed",
+      "oldVar": "--colorNeutralForeground3BrandPressed",
+      "newVar": "--color-neutral-foreground-3-brand-pressed",
+      "themeKey": "--color-neutral-foreground-3-brand-pressed",
+      "tokensJs": "var(--color-neutral-foreground-3-brand-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground3BrandSelected",
+      "oldVar": "--colorNeutralForeground3BrandSelected",
+      "newVar": "--color-neutral-foreground-3-brand-selected",
+      "themeKey": "--color-neutral-foreground-3-brand-selected",
+      "tokensJs": "var(--color-neutral-foreground-3-brand-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground4",
+      "oldVar": "--colorNeutralForeground4",
+      "newVar": "--color-neutral-foreground-4",
+      "themeKey": "--color-neutral-foreground-4",
+      "tokensJs": "var(--color-neutral-foreground-4)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground5",
+      "oldVar": "--colorNeutralForeground5",
+      "newVar": "--color-neutral-foreground-5",
+      "themeKey": "--color-neutral-foreground-5",
+      "tokensJs": "var(--color-neutral-foreground-5)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground5Hover",
+      "oldVar": "--colorNeutralForeground5Hover",
+      "newVar": "--color-neutral-foreground-5-hover",
+      "themeKey": "--color-neutral-foreground-5-hover",
+      "tokensJs": "var(--color-neutral-foreground-5-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground5Pressed",
+      "oldVar": "--colorNeutralForeground5Pressed",
+      "newVar": "--color-neutral-foreground-5-pressed",
+      "themeKey": "--color-neutral-foreground-5-pressed",
+      "tokensJs": "var(--color-neutral-foreground-5-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground5Selected",
+      "oldVar": "--colorNeutralForeground5Selected",
+      "newVar": "--color-neutral-foreground-5-selected",
+      "themeKey": "--color-neutral-foreground-5-selected",
+      "tokensJs": "var(--color-neutral-foreground-5-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundDisabled",
+      "oldVar": "--colorNeutralForegroundDisabled",
+      "newVar": "--color-neutral-foreground-disabled",
+      "themeKey": "--color-neutral-foreground-disabled",
+      "tokensJs": "var(--color-neutral-foreground-disabled)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundLink",
+      "oldVar": "--colorBrandForegroundLink",
+      "newVar": "--color-brand-foreground-link",
+      "themeKey": "--color-brand-foreground-link",
+      "tokensJs": "var(--color-brand-foreground-link)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundLinkHover",
+      "oldVar": "--colorBrandForegroundLinkHover",
+      "newVar": "--color-brand-foreground-link-hover",
+      "themeKey": "--color-brand-foreground-link-hover",
+      "tokensJs": "var(--color-brand-foreground-link-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundLinkPressed",
+      "oldVar": "--colorBrandForegroundLinkPressed",
+      "newVar": "--color-brand-foreground-link-pressed",
+      "themeKey": "--color-brand-foreground-link-pressed",
+      "tokensJs": "var(--color-brand-foreground-link-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundLinkSelected",
+      "oldVar": "--colorBrandForegroundLinkSelected",
+      "newVar": "--color-brand-foreground-link-selected",
+      "themeKey": "--color-brand-foreground-link-selected",
+      "tokensJs": "var(--color-brand-foreground-link-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2Link",
+      "oldVar": "--colorNeutralForeground2Link",
+      "newVar": "--color-neutral-foreground-2-link",
+      "themeKey": "--color-neutral-foreground-2-link",
+      "tokensJs": "var(--color-neutral-foreground-2-link)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2LinkHover",
+      "oldVar": "--colorNeutralForeground2LinkHover",
+      "newVar": "--color-neutral-foreground-2-link-hover",
+      "themeKey": "--color-neutral-foreground-2-link-hover",
+      "tokensJs": "var(--color-neutral-foreground-2-link-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2LinkPressed",
+      "oldVar": "--colorNeutralForeground2LinkPressed",
+      "newVar": "--color-neutral-foreground-2-link-pressed",
+      "themeKey": "--color-neutral-foreground-2-link-pressed",
+      "tokensJs": "var(--color-neutral-foreground-2-link-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground2LinkSelected",
+      "oldVar": "--colorNeutralForeground2LinkSelected",
+      "newVar": "--color-neutral-foreground-2-link-selected",
+      "themeKey": "--color-neutral-foreground-2-link-selected",
+      "tokensJs": "var(--color-neutral-foreground-2-link-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandForeground1",
+      "oldVar": "--colorCompoundBrandForeground1",
+      "newVar": "--color-compound-brand-foreground-1",
+      "themeKey": "--color-compound-brand-foreground-1",
+      "tokensJs": "var(--color-compound-brand-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandForeground1Hover",
+      "oldVar": "--colorCompoundBrandForeground1Hover",
+      "newVar": "--color-compound-brand-foreground-1-hover",
+      "themeKey": "--color-compound-brand-foreground-1-hover",
+      "tokensJs": "var(--color-compound-brand-foreground-1-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandForeground1Pressed",
+      "oldVar": "--colorCompoundBrandForeground1Pressed",
+      "newVar": "--color-compound-brand-foreground-1-pressed",
+      "themeKey": "--color-compound-brand-foreground-1-pressed",
+      "tokensJs": "var(--color-compound-brand-foreground-1-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundOnBrand",
+      "oldVar": "--colorNeutralForegroundOnBrand",
+      "newVar": "--color-neutral-foreground-on-brand",
+      "themeKey": "--color-neutral-foreground-on-brand",
+      "tokensJs": "var(--color-neutral-foreground-on-brand)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInverted",
+      "oldVar": "--colorNeutralForegroundInverted",
+      "newVar": "--color-neutral-foreground-inverted",
+      "themeKey": "--color-neutral-foreground-inverted",
+      "tokensJs": "var(--color-neutral-foreground-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInvertedHover",
+      "oldVar": "--colorNeutralForegroundInvertedHover",
+      "newVar": "--color-neutral-foreground-inverted-hover",
+      "themeKey": "--color-neutral-foreground-inverted-hover",
+      "tokensJs": "var(--color-neutral-foreground-inverted-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInvertedPressed",
+      "oldVar": "--colorNeutralForegroundInvertedPressed",
+      "newVar": "--color-neutral-foreground-inverted-pressed",
+      "themeKey": "--color-neutral-foreground-inverted-pressed",
+      "tokensJs": "var(--color-neutral-foreground-inverted-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInvertedSelected",
+      "oldVar": "--colorNeutralForegroundInvertedSelected",
+      "newVar": "--color-neutral-foreground-inverted-selected",
+      "themeKey": "--color-neutral-foreground-inverted-selected",
+      "tokensJs": "var(--color-neutral-foreground-inverted-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInverted2",
+      "oldVar": "--colorNeutralForegroundInverted2",
+      "newVar": "--color-neutral-foreground-inverted-2",
+      "themeKey": "--color-neutral-foreground-inverted-2",
+      "tokensJs": "var(--color-neutral-foreground-inverted-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundStaticInverted",
+      "oldVar": "--colorNeutralForegroundStaticInverted",
+      "newVar": "--color-neutral-foreground-static-inverted",
+      "themeKey": "--color-neutral-foreground-static-inverted",
+      "tokensJs": "var(--color-neutral-foreground-static-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInvertedLink",
+      "oldVar": "--colorNeutralForegroundInvertedLink",
+      "newVar": "--color-neutral-foreground-inverted-link",
+      "themeKey": "--color-neutral-foreground-inverted-link",
+      "tokensJs": "var(--color-neutral-foreground-inverted-link)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInvertedLinkHover",
+      "oldVar": "--colorNeutralForegroundInvertedLinkHover",
+      "newVar": "--color-neutral-foreground-inverted-link-hover",
+      "themeKey": "--color-neutral-foreground-inverted-link-hover",
+      "tokensJs": "var(--color-neutral-foreground-inverted-link-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInvertedLinkPressed",
+      "oldVar": "--colorNeutralForegroundInvertedLinkPressed",
+      "newVar": "--color-neutral-foreground-inverted-link-pressed",
+      "themeKey": "--color-neutral-foreground-inverted-link-pressed",
+      "tokensJs": "var(--color-neutral-foreground-inverted-link-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInvertedLinkSelected",
+      "oldVar": "--colorNeutralForegroundInvertedLinkSelected",
+      "newVar": "--color-neutral-foreground-inverted-link-selected",
+      "themeKey": "--color-neutral-foreground-inverted-link-selected",
+      "tokensJs": "var(--color-neutral-foreground-inverted-link-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForegroundInvertedDisabled",
+      "oldVar": "--colorNeutralForegroundInvertedDisabled",
+      "newVar": "--color-neutral-foreground-inverted-disabled",
+      "themeKey": "--color-neutral-foreground-inverted-disabled",
+      "tokensJs": "var(--color-neutral-foreground-inverted-disabled)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForeground1",
+      "oldVar": "--colorBrandForeground1",
+      "newVar": "--color-brand-foreground-1",
+      "themeKey": "--color-brand-foreground-1",
+      "tokensJs": "var(--color-brand-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForeground2",
+      "oldVar": "--colorBrandForeground2",
+      "newVar": "--color-brand-foreground-2",
+      "themeKey": "--color-brand-foreground-2",
+      "tokensJs": "var(--color-brand-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForeground2Hover",
+      "oldVar": "--colorBrandForeground2Hover",
+      "newVar": "--color-brand-foreground-2-hover",
+      "themeKey": "--color-brand-foreground-2-hover",
+      "tokensJs": "var(--color-brand-foreground-2-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForeground2Pressed",
+      "oldVar": "--colorBrandForeground2Pressed",
+      "newVar": "--color-brand-foreground-2-pressed",
+      "themeKey": "--color-brand-foreground-2-pressed",
+      "tokensJs": "var(--color-brand-foreground-2-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralForeground1Static",
+      "oldVar": "--colorNeutralForeground1Static",
+      "newVar": "--color-neutral-foreground-1-static",
+      "themeKey": "--color-neutral-foreground-1-static",
+      "tokensJs": "var(--color-neutral-foreground-1-static)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundInverted",
+      "oldVar": "--colorBrandForegroundInverted",
+      "newVar": "--color-brand-foreground-inverted",
+      "themeKey": "--color-brand-foreground-inverted",
+      "tokensJs": "var(--color-brand-foreground-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundInvertedHover",
+      "oldVar": "--colorBrandForegroundInvertedHover",
+      "newVar": "--color-brand-foreground-inverted-hover",
+      "themeKey": "--color-brand-foreground-inverted-hover",
+      "tokensJs": "var(--color-brand-foreground-inverted-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundInvertedPressed",
+      "oldVar": "--colorBrandForegroundInvertedPressed",
+      "newVar": "--color-brand-foreground-inverted-pressed",
+      "themeKey": "--color-brand-foreground-inverted-pressed",
+      "tokensJs": "var(--color-brand-foreground-inverted-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundOnLight",
+      "oldVar": "--colorBrandForegroundOnLight",
+      "newVar": "--color-brand-foreground-on-light",
+      "themeKey": "--color-brand-foreground-on-light",
+      "tokensJs": "var(--color-brand-foreground-on-light)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundOnLightHover",
+      "oldVar": "--colorBrandForegroundOnLightHover",
+      "newVar": "--color-brand-foreground-on-light-hover",
+      "themeKey": "--color-brand-foreground-on-light-hover",
+      "tokensJs": "var(--color-brand-foreground-on-light-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundOnLightPressed",
+      "oldVar": "--colorBrandForegroundOnLightPressed",
+      "newVar": "--color-brand-foreground-on-light-pressed",
+      "themeKey": "--color-brand-foreground-on-light-pressed",
+      "tokensJs": "var(--color-brand-foreground-on-light-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandForegroundOnLightSelected",
+      "oldVar": "--colorBrandForegroundOnLightSelected",
+      "newVar": "--color-brand-foreground-on-light-selected",
+      "themeKey": "--color-brand-foreground-on-light-selected",
+      "tokensJs": "var(--color-brand-foreground-on-light-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground1",
+      "oldVar": "--colorNeutralBackground1",
+      "newVar": "--color-neutral-background-1",
+      "themeKey": "--color-neutral-background-1",
+      "tokensJs": "var(--color-neutral-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground1Hover",
+      "oldVar": "--colorNeutralBackground1Hover",
+      "newVar": "--color-neutral-background-1-hover",
+      "themeKey": "--color-neutral-background-1-hover",
+      "tokensJs": "var(--color-neutral-background-1-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground1Pressed",
+      "oldVar": "--colorNeutralBackground1Pressed",
+      "newVar": "--color-neutral-background-1-pressed",
+      "themeKey": "--color-neutral-background-1-pressed",
+      "tokensJs": "var(--color-neutral-background-1-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground1Selected",
+      "oldVar": "--colorNeutralBackground1Selected",
+      "newVar": "--color-neutral-background-1-selected",
+      "themeKey": "--color-neutral-background-1-selected",
+      "tokensJs": "var(--color-neutral-background-1-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground2",
+      "oldVar": "--colorNeutralBackground2",
+      "newVar": "--color-neutral-background-2",
+      "themeKey": "--color-neutral-background-2",
+      "tokensJs": "var(--color-neutral-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground2Hover",
+      "oldVar": "--colorNeutralBackground2Hover",
+      "newVar": "--color-neutral-background-2-hover",
+      "themeKey": "--color-neutral-background-2-hover",
+      "tokensJs": "var(--color-neutral-background-2-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground2Pressed",
+      "oldVar": "--colorNeutralBackground2Pressed",
+      "newVar": "--color-neutral-background-2-pressed",
+      "themeKey": "--color-neutral-background-2-pressed",
+      "tokensJs": "var(--color-neutral-background-2-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground2Selected",
+      "oldVar": "--colorNeutralBackground2Selected",
+      "newVar": "--color-neutral-background-2-selected",
+      "themeKey": "--color-neutral-background-2-selected",
+      "tokensJs": "var(--color-neutral-background-2-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground3",
+      "oldVar": "--colorNeutralBackground3",
+      "newVar": "--color-neutral-background-3",
+      "themeKey": "--color-neutral-background-3",
+      "tokensJs": "var(--color-neutral-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground3Hover",
+      "oldVar": "--colorNeutralBackground3Hover",
+      "newVar": "--color-neutral-background-3-hover",
+      "themeKey": "--color-neutral-background-3-hover",
+      "tokensJs": "var(--color-neutral-background-3-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground3Pressed",
+      "oldVar": "--colorNeutralBackground3Pressed",
+      "newVar": "--color-neutral-background-3-pressed",
+      "themeKey": "--color-neutral-background-3-pressed",
+      "tokensJs": "var(--color-neutral-background-3-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground3Selected",
+      "oldVar": "--colorNeutralBackground3Selected",
+      "newVar": "--color-neutral-background-3-selected",
+      "themeKey": "--color-neutral-background-3-selected",
+      "tokensJs": "var(--color-neutral-background-3-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground4",
+      "oldVar": "--colorNeutralBackground4",
+      "newVar": "--color-neutral-background-4",
+      "themeKey": "--color-neutral-background-4",
+      "tokensJs": "var(--color-neutral-background-4)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground4Hover",
+      "oldVar": "--colorNeutralBackground4Hover",
+      "newVar": "--color-neutral-background-4-hover",
+      "themeKey": "--color-neutral-background-4-hover",
+      "tokensJs": "var(--color-neutral-background-4-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground4Pressed",
+      "oldVar": "--colorNeutralBackground4Pressed",
+      "newVar": "--color-neutral-background-4-pressed",
+      "themeKey": "--color-neutral-background-4-pressed",
+      "tokensJs": "var(--color-neutral-background-4-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground4Selected",
+      "oldVar": "--colorNeutralBackground4Selected",
+      "newVar": "--color-neutral-background-4-selected",
+      "themeKey": "--color-neutral-background-4-selected",
+      "tokensJs": "var(--color-neutral-background-4-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground5",
+      "oldVar": "--colorNeutralBackground5",
+      "newVar": "--color-neutral-background-5",
+      "themeKey": "--color-neutral-background-5",
+      "tokensJs": "var(--color-neutral-background-5)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground5Hover",
+      "oldVar": "--colorNeutralBackground5Hover",
+      "newVar": "--color-neutral-background-5-hover",
+      "themeKey": "--color-neutral-background-5-hover",
+      "tokensJs": "var(--color-neutral-background-5-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground5Pressed",
+      "oldVar": "--colorNeutralBackground5Pressed",
+      "newVar": "--color-neutral-background-5-pressed",
+      "themeKey": "--color-neutral-background-5-pressed",
+      "tokensJs": "var(--color-neutral-background-5-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground5Selected",
+      "oldVar": "--colorNeutralBackground5Selected",
+      "newVar": "--color-neutral-background-5-selected",
+      "themeKey": "--color-neutral-background-5-selected",
+      "tokensJs": "var(--color-neutral-background-5-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground6",
+      "oldVar": "--colorNeutralBackground6",
+      "newVar": "--color-neutral-background-6",
+      "themeKey": "--color-neutral-background-6",
+      "tokensJs": "var(--color-neutral-background-6)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground7",
+      "oldVar": "--colorNeutralBackground7",
+      "newVar": "--color-neutral-background-7",
+      "themeKey": "--color-neutral-background-7",
+      "tokensJs": "var(--color-neutral-background-7)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground7Hover",
+      "oldVar": "--colorNeutralBackground7Hover",
+      "newVar": "--color-neutral-background-7-hover",
+      "themeKey": "--color-neutral-background-7-hover",
+      "tokensJs": "var(--color-neutral-background-7-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground7Pressed",
+      "oldVar": "--colorNeutralBackground7Pressed",
+      "newVar": "--color-neutral-background-7-pressed",
+      "themeKey": "--color-neutral-background-7-pressed",
+      "tokensJs": "var(--color-neutral-background-7-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground7Selected",
+      "oldVar": "--colorNeutralBackground7Selected",
+      "newVar": "--color-neutral-background-7-selected",
+      "themeKey": "--color-neutral-background-7-selected",
+      "tokensJs": "var(--color-neutral-background-7-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackground8",
+      "oldVar": "--colorNeutralBackground8",
+      "newVar": "--color-neutral-background-8",
+      "themeKey": "--color-neutral-background-8",
+      "tokensJs": "var(--color-neutral-background-8)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundInverted",
+      "oldVar": "--colorNeutralBackgroundInverted",
+      "newVar": "--color-neutral-background-inverted",
+      "themeKey": "--color-neutral-background-inverted",
+      "tokensJs": "var(--color-neutral-background-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundInvertedHover",
+      "oldVar": "--colorNeutralBackgroundInvertedHover",
+      "newVar": "--color-neutral-background-inverted-hover",
+      "themeKey": "--color-neutral-background-inverted-hover",
+      "tokensJs": "var(--color-neutral-background-inverted-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundInvertedPressed",
+      "oldVar": "--colorNeutralBackgroundInvertedPressed",
+      "newVar": "--color-neutral-background-inverted-pressed",
+      "themeKey": "--color-neutral-background-inverted-pressed",
+      "tokensJs": "var(--color-neutral-background-inverted-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundInvertedSelected",
+      "oldVar": "--colorNeutralBackgroundInvertedSelected",
+      "newVar": "--color-neutral-background-inverted-selected",
+      "themeKey": "--color-neutral-background-inverted-selected",
+      "tokensJs": "var(--color-neutral-background-inverted-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundStatic",
+      "oldVar": "--colorNeutralBackgroundStatic",
+      "newVar": "--color-neutral-background-static",
+      "themeKey": "--color-neutral-background-static",
+      "tokensJs": "var(--color-neutral-background-static)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundAlpha",
+      "oldVar": "--colorNeutralBackgroundAlpha",
+      "newVar": "--color-neutral-background-alpha",
+      "themeKey": "--color-neutral-background-alpha",
+      "tokensJs": "var(--color-neutral-background-alpha)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundAlpha2",
+      "oldVar": "--colorNeutralBackgroundAlpha2",
+      "newVar": "--color-neutral-background-alpha-2",
+      "themeKey": "--color-neutral-background-alpha-2",
+      "tokensJs": "var(--color-neutral-background-alpha-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackground",
+      "oldVar": "--colorSubtleBackground",
+      "newVar": "--color-subtle-background",
+      "themeKey": "--color-subtle-background",
+      "tokensJs": "var(--color-subtle-background)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundHover",
+      "oldVar": "--colorSubtleBackgroundHover",
+      "newVar": "--color-subtle-background-hover",
+      "themeKey": "--color-subtle-background-hover",
+      "tokensJs": "var(--color-subtle-background-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundPressed",
+      "oldVar": "--colorSubtleBackgroundPressed",
+      "newVar": "--color-subtle-background-pressed",
+      "themeKey": "--color-subtle-background-pressed",
+      "tokensJs": "var(--color-subtle-background-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundSelected",
+      "oldVar": "--colorSubtleBackgroundSelected",
+      "newVar": "--color-subtle-background-selected",
+      "themeKey": "--color-subtle-background-selected",
+      "tokensJs": "var(--color-subtle-background-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundLightAlphaHover",
+      "oldVar": "--colorSubtleBackgroundLightAlphaHover",
+      "newVar": "--color-subtle-background-light-alpha-hover",
+      "themeKey": "--color-subtle-background-light-alpha-hover",
+      "tokensJs": "var(--color-subtle-background-light-alpha-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundLightAlphaPressed",
+      "oldVar": "--colorSubtleBackgroundLightAlphaPressed",
+      "newVar": "--color-subtle-background-light-alpha-pressed",
+      "themeKey": "--color-subtle-background-light-alpha-pressed",
+      "tokensJs": "var(--color-subtle-background-light-alpha-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundLightAlphaSelected",
+      "oldVar": "--colorSubtleBackgroundLightAlphaSelected",
+      "newVar": "--color-subtle-background-light-alpha-selected",
+      "themeKey": "--color-subtle-background-light-alpha-selected",
+      "tokensJs": "var(--color-subtle-background-light-alpha-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundInverted",
+      "oldVar": "--colorSubtleBackgroundInverted",
+      "newVar": "--color-subtle-background-inverted",
+      "themeKey": "--color-subtle-background-inverted",
+      "tokensJs": "var(--color-subtle-background-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundInvertedHover",
+      "oldVar": "--colorSubtleBackgroundInvertedHover",
+      "newVar": "--color-subtle-background-inverted-hover",
+      "themeKey": "--color-subtle-background-inverted-hover",
+      "tokensJs": "var(--color-subtle-background-inverted-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundInvertedPressed",
+      "oldVar": "--colorSubtleBackgroundInvertedPressed",
+      "newVar": "--color-subtle-background-inverted-pressed",
+      "themeKey": "--color-subtle-background-inverted-pressed",
+      "tokensJs": "var(--color-subtle-background-inverted-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorSubtleBackgroundInvertedSelected",
+      "oldVar": "--colorSubtleBackgroundInvertedSelected",
+      "newVar": "--color-subtle-background-inverted-selected",
+      "themeKey": "--color-subtle-background-inverted-selected",
+      "tokensJs": "var(--color-subtle-background-inverted-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorTransparentBackground",
+      "oldVar": "--colorTransparentBackground",
+      "newVar": "--color-transparent-background",
+      "themeKey": "--color-transparent-background",
+      "tokensJs": "var(--color-transparent-background)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorTransparentBackgroundHover",
+      "oldVar": "--colorTransparentBackgroundHover",
+      "newVar": "--color-transparent-background-hover",
+      "themeKey": "--color-transparent-background-hover",
+      "tokensJs": "var(--color-transparent-background-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorTransparentBackgroundPressed",
+      "oldVar": "--colorTransparentBackgroundPressed",
+      "newVar": "--color-transparent-background-pressed",
+      "themeKey": "--color-transparent-background-pressed",
+      "tokensJs": "var(--color-transparent-background-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorTransparentBackgroundSelected",
+      "oldVar": "--colorTransparentBackgroundSelected",
+      "newVar": "--color-transparent-background-selected",
+      "themeKey": "--color-transparent-background-selected",
+      "tokensJs": "var(--color-transparent-background-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundDisabled",
+      "oldVar": "--colorNeutralBackgroundDisabled",
+      "newVar": "--color-neutral-background-disabled",
+      "themeKey": "--color-neutral-background-disabled",
+      "tokensJs": "var(--color-neutral-background-disabled)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundDisabled2",
+      "oldVar": "--colorNeutralBackgroundDisabled2",
+      "newVar": "--color-neutral-background-disabled-2",
+      "themeKey": "--color-neutral-background-disabled-2",
+      "tokensJs": "var(--color-neutral-background-disabled-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralBackgroundInvertedDisabled",
+      "oldVar": "--colorNeutralBackgroundInvertedDisabled",
+      "newVar": "--color-neutral-background-inverted-disabled",
+      "themeKey": "--color-neutral-background-inverted-disabled",
+      "tokensJs": "var(--color-neutral-background-inverted-disabled)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStencil1",
+      "oldVar": "--colorNeutralStencil1",
+      "newVar": "--color-neutral-stencil-1",
+      "themeKey": "--color-neutral-stencil-1",
+      "tokensJs": "var(--color-neutral-stencil-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStencil2",
+      "oldVar": "--colorNeutralStencil2",
+      "newVar": "--color-neutral-stencil-2",
+      "themeKey": "--color-neutral-stencil-2",
+      "tokensJs": "var(--color-neutral-stencil-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStencil1Alpha",
+      "oldVar": "--colorNeutralStencil1Alpha",
+      "newVar": "--color-neutral-stencil-1-alpha",
+      "themeKey": "--color-neutral-stencil-1-alpha",
+      "tokensJs": "var(--color-neutral-stencil-1-alpha)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStencil2Alpha",
+      "oldVar": "--colorNeutralStencil2Alpha",
+      "newVar": "--color-neutral-stencil-2-alpha",
+      "themeKey": "--color-neutral-stencil-2-alpha",
+      "tokensJs": "var(--color-neutral-stencil-2-alpha)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBackgroundOverlay",
+      "oldVar": "--colorBackgroundOverlay",
+      "newVar": "--color-background-overlay",
+      "themeKey": "--color-background-overlay",
+      "tokensJs": "var(--color-background-overlay)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorScrollbarOverlay",
+      "oldVar": "--colorScrollbarOverlay",
+      "newVar": "--color-scrollbar-overlay",
+      "themeKey": "--color-scrollbar-overlay",
+      "tokensJs": "var(--color-scrollbar-overlay)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackground",
+      "oldVar": "--colorBrandBackground",
+      "newVar": "--color-brand-background",
+      "themeKey": "--color-brand-background",
+      "tokensJs": "var(--color-brand-background)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackgroundHover",
+      "oldVar": "--colorBrandBackgroundHover",
+      "newVar": "--color-brand-background-hover",
+      "themeKey": "--color-brand-background-hover",
+      "tokensJs": "var(--color-brand-background-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackgroundPressed",
+      "oldVar": "--colorBrandBackgroundPressed",
+      "newVar": "--color-brand-background-pressed",
+      "themeKey": "--color-brand-background-pressed",
+      "tokensJs": "var(--color-brand-background-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackgroundSelected",
+      "oldVar": "--colorBrandBackgroundSelected",
+      "newVar": "--color-brand-background-selected",
+      "themeKey": "--color-brand-background-selected",
+      "tokensJs": "var(--color-brand-background-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandBackground",
+      "oldVar": "--colorCompoundBrandBackground",
+      "newVar": "--color-compound-brand-background",
+      "themeKey": "--color-compound-brand-background",
+      "tokensJs": "var(--color-compound-brand-background)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandBackgroundHover",
+      "oldVar": "--colorCompoundBrandBackgroundHover",
+      "newVar": "--color-compound-brand-background-hover",
+      "themeKey": "--color-compound-brand-background-hover",
+      "tokensJs": "var(--color-compound-brand-background-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandBackgroundPressed",
+      "oldVar": "--colorCompoundBrandBackgroundPressed",
+      "newVar": "--color-compound-brand-background-pressed",
+      "themeKey": "--color-compound-brand-background-pressed",
+      "tokensJs": "var(--color-compound-brand-background-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackgroundStatic",
+      "oldVar": "--colorBrandBackgroundStatic",
+      "newVar": "--color-brand-background-static",
+      "themeKey": "--color-brand-background-static",
+      "tokensJs": "var(--color-brand-background-static)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackground2",
+      "oldVar": "--colorBrandBackground2",
+      "newVar": "--color-brand-background-2",
+      "themeKey": "--color-brand-background-2",
+      "tokensJs": "var(--color-brand-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackground2Hover",
+      "oldVar": "--colorBrandBackground2Hover",
+      "newVar": "--color-brand-background-2-hover",
+      "themeKey": "--color-brand-background-2-hover",
+      "tokensJs": "var(--color-brand-background-2-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackground2Pressed",
+      "oldVar": "--colorBrandBackground2Pressed",
+      "newVar": "--color-brand-background-2-pressed",
+      "themeKey": "--color-brand-background-2-pressed",
+      "tokensJs": "var(--color-brand-background-2-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackground3Static",
+      "oldVar": "--colorBrandBackground3Static",
+      "newVar": "--color-brand-background-3-static",
+      "themeKey": "--color-brand-background-3-static",
+      "tokensJs": "var(--color-brand-background-3-static)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackground4Static",
+      "oldVar": "--colorBrandBackground4Static",
+      "newVar": "--color-brand-background-4-static",
+      "themeKey": "--color-brand-background-4-static",
+      "tokensJs": "var(--color-brand-background-4-static)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackgroundInverted",
+      "oldVar": "--colorBrandBackgroundInverted",
+      "newVar": "--color-brand-background-inverted",
+      "themeKey": "--color-brand-background-inverted",
+      "tokensJs": "var(--color-brand-background-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackgroundInvertedHover",
+      "oldVar": "--colorBrandBackgroundInvertedHover",
+      "newVar": "--color-brand-background-inverted-hover",
+      "themeKey": "--color-brand-background-inverted-hover",
+      "tokensJs": "var(--color-brand-background-inverted-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackgroundInvertedPressed",
+      "oldVar": "--colorBrandBackgroundInvertedPressed",
+      "newVar": "--color-brand-background-inverted-pressed",
+      "themeKey": "--color-brand-background-inverted-pressed",
+      "tokensJs": "var(--color-brand-background-inverted-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandBackgroundInvertedSelected",
+      "oldVar": "--colorBrandBackgroundInvertedSelected",
+      "newVar": "--color-brand-background-inverted-selected",
+      "themeKey": "--color-brand-background-inverted-selected",
+      "tokensJs": "var(--color-brand-background-inverted-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralCardBackground",
+      "oldVar": "--colorNeutralCardBackground",
+      "newVar": "--color-neutral-card-background",
+      "themeKey": "--color-neutral-card-background",
+      "tokensJs": "var(--color-neutral-card-background)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralCardBackgroundHover",
+      "oldVar": "--colorNeutralCardBackgroundHover",
+      "newVar": "--color-neutral-card-background-hover",
+      "themeKey": "--color-neutral-card-background-hover",
+      "tokensJs": "var(--color-neutral-card-background-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralCardBackgroundPressed",
+      "oldVar": "--colorNeutralCardBackgroundPressed",
+      "newVar": "--color-neutral-card-background-pressed",
+      "themeKey": "--color-neutral-card-background-pressed",
+      "tokensJs": "var(--color-neutral-card-background-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralCardBackgroundSelected",
+      "oldVar": "--colorNeutralCardBackgroundSelected",
+      "newVar": "--color-neutral-card-background-selected",
+      "themeKey": "--color-neutral-card-background-selected",
+      "tokensJs": "var(--color-neutral-card-background-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralCardBackgroundDisabled",
+      "oldVar": "--colorNeutralCardBackgroundDisabled",
+      "newVar": "--color-neutral-card-background-disabled",
+      "themeKey": "--color-neutral-card-background-disabled",
+      "tokensJs": "var(--color-neutral-card-background-disabled)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeAccessible",
+      "oldVar": "--colorNeutralStrokeAccessible",
+      "newVar": "--color-neutral-stroke-accessible",
+      "themeKey": "--color-neutral-stroke-accessible",
+      "tokensJs": "var(--color-neutral-stroke-accessible)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeAccessibleHover",
+      "oldVar": "--colorNeutralStrokeAccessibleHover",
+      "newVar": "--color-neutral-stroke-accessible-hover",
+      "themeKey": "--color-neutral-stroke-accessible-hover",
+      "tokensJs": "var(--color-neutral-stroke-accessible-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeAccessiblePressed",
+      "oldVar": "--colorNeutralStrokeAccessiblePressed",
+      "newVar": "--color-neutral-stroke-accessible-pressed",
+      "themeKey": "--color-neutral-stroke-accessible-pressed",
+      "tokensJs": "var(--color-neutral-stroke-accessible-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeAccessibleSelected",
+      "oldVar": "--colorNeutralStrokeAccessibleSelected",
+      "newVar": "--color-neutral-stroke-accessible-selected",
+      "themeKey": "--color-neutral-stroke-accessible-selected",
+      "tokensJs": "var(--color-neutral-stroke-accessible-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke1",
+      "oldVar": "--colorNeutralStroke1",
+      "newVar": "--color-neutral-stroke-1",
+      "themeKey": "--color-neutral-stroke-1",
+      "tokensJs": "var(--color-neutral-stroke-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke1Hover",
+      "oldVar": "--colorNeutralStroke1Hover",
+      "newVar": "--color-neutral-stroke-1-hover",
+      "themeKey": "--color-neutral-stroke-1-hover",
+      "tokensJs": "var(--color-neutral-stroke-1-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke1Pressed",
+      "oldVar": "--colorNeutralStroke1Pressed",
+      "newVar": "--color-neutral-stroke-1-pressed",
+      "themeKey": "--color-neutral-stroke-1-pressed",
+      "tokensJs": "var(--color-neutral-stroke-1-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke1Selected",
+      "oldVar": "--colorNeutralStroke1Selected",
+      "newVar": "--color-neutral-stroke-1-selected",
+      "themeKey": "--color-neutral-stroke-1-selected",
+      "tokensJs": "var(--color-neutral-stroke-1-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke2",
+      "oldVar": "--colorNeutralStroke2",
+      "newVar": "--color-neutral-stroke-2",
+      "themeKey": "--color-neutral-stroke-2",
+      "tokensJs": "var(--color-neutral-stroke-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke3",
+      "oldVar": "--colorNeutralStroke3",
+      "newVar": "--color-neutral-stroke-3",
+      "themeKey": "--color-neutral-stroke-3",
+      "tokensJs": "var(--color-neutral-stroke-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke4",
+      "oldVar": "--colorNeutralStroke4",
+      "newVar": "--color-neutral-stroke-4",
+      "themeKey": "--color-neutral-stroke-4",
+      "tokensJs": "var(--color-neutral-stroke-4)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke4Hover",
+      "oldVar": "--colorNeutralStroke4Hover",
+      "newVar": "--color-neutral-stroke-4-hover",
+      "themeKey": "--color-neutral-stroke-4-hover",
+      "tokensJs": "var(--color-neutral-stroke-4-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke4Pressed",
+      "oldVar": "--colorNeutralStroke4Pressed",
+      "newVar": "--color-neutral-stroke-4-pressed",
+      "themeKey": "--color-neutral-stroke-4-pressed",
+      "tokensJs": "var(--color-neutral-stroke-4-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStroke4Selected",
+      "oldVar": "--colorNeutralStroke4Selected",
+      "newVar": "--color-neutral-stroke-4-selected",
+      "themeKey": "--color-neutral-stroke-4-selected",
+      "tokensJs": "var(--color-neutral-stroke-4-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeSubtle",
+      "oldVar": "--colorNeutralStrokeSubtle",
+      "newVar": "--color-neutral-stroke-subtle",
+      "themeKey": "--color-neutral-stroke-subtle",
+      "tokensJs": "var(--color-neutral-stroke-subtle)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeOnBrand",
+      "oldVar": "--colorNeutralStrokeOnBrand",
+      "newVar": "--color-neutral-stroke-on-brand",
+      "themeKey": "--color-neutral-stroke-on-brand",
+      "tokensJs": "var(--color-neutral-stroke-on-brand)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeOnBrand2",
+      "oldVar": "--colorNeutralStrokeOnBrand2",
+      "newVar": "--color-neutral-stroke-on-brand-2",
+      "themeKey": "--color-neutral-stroke-on-brand-2",
+      "tokensJs": "var(--color-neutral-stroke-on-brand-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeOnBrand2Hover",
+      "oldVar": "--colorNeutralStrokeOnBrand2Hover",
+      "newVar": "--color-neutral-stroke-on-brand-2-hover",
+      "themeKey": "--color-neutral-stroke-on-brand-2-hover",
+      "tokensJs": "var(--color-neutral-stroke-on-brand-2-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeOnBrand2Pressed",
+      "oldVar": "--colorNeutralStrokeOnBrand2Pressed",
+      "newVar": "--color-neutral-stroke-on-brand-2-pressed",
+      "themeKey": "--color-neutral-stroke-on-brand-2-pressed",
+      "tokensJs": "var(--color-neutral-stroke-on-brand-2-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeOnBrand2Selected",
+      "oldVar": "--colorNeutralStrokeOnBrand2Selected",
+      "newVar": "--color-neutral-stroke-on-brand-2-selected",
+      "themeKey": "--color-neutral-stroke-on-brand-2-selected",
+      "tokensJs": "var(--color-neutral-stroke-on-brand-2-selected)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandStroke1",
+      "oldVar": "--colorBrandStroke1",
+      "newVar": "--color-brand-stroke-1",
+      "themeKey": "--color-brand-stroke-1",
+      "tokensJs": "var(--color-brand-stroke-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandStroke2",
+      "oldVar": "--colorBrandStroke2",
+      "newVar": "--color-brand-stroke-2",
+      "themeKey": "--color-brand-stroke-2",
+      "tokensJs": "var(--color-brand-stroke-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandStroke2Hover",
+      "oldVar": "--colorBrandStroke2Hover",
+      "newVar": "--color-brand-stroke-2-hover",
+      "themeKey": "--color-brand-stroke-2-hover",
+      "tokensJs": "var(--color-brand-stroke-2-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandStroke2Pressed",
+      "oldVar": "--colorBrandStroke2Pressed",
+      "newVar": "--color-brand-stroke-2-pressed",
+      "themeKey": "--color-brand-stroke-2-pressed",
+      "tokensJs": "var(--color-brand-stroke-2-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandStroke2Contrast",
+      "oldVar": "--colorBrandStroke2Contrast",
+      "newVar": "--color-brand-stroke-2-contrast",
+      "themeKey": "--color-brand-stroke-2-contrast",
+      "tokensJs": "var(--color-brand-stroke-2-contrast)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandStroke",
+      "oldVar": "--colorCompoundBrandStroke",
+      "newVar": "--color-compound-brand-stroke",
+      "themeKey": "--color-compound-brand-stroke",
+      "tokensJs": "var(--color-compound-brand-stroke)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandStrokeHover",
+      "oldVar": "--colorCompoundBrandStrokeHover",
+      "newVar": "--color-compound-brand-stroke-hover",
+      "themeKey": "--color-compound-brand-stroke-hover",
+      "tokensJs": "var(--color-compound-brand-stroke-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorCompoundBrandStrokePressed",
+      "oldVar": "--colorCompoundBrandStrokePressed",
+      "newVar": "--color-compound-brand-stroke-pressed",
+      "themeKey": "--color-compound-brand-stroke-pressed",
+      "tokensJs": "var(--color-compound-brand-stroke-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeDisabled",
+      "oldVar": "--colorNeutralStrokeDisabled",
+      "newVar": "--color-neutral-stroke-disabled",
+      "themeKey": "--color-neutral-stroke-disabled",
+      "tokensJs": "var(--color-neutral-stroke-disabled)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeDisabled2",
+      "oldVar": "--colorNeutralStrokeDisabled2",
+      "newVar": "--color-neutral-stroke-disabled-2",
+      "themeKey": "--color-neutral-stroke-disabled-2",
+      "tokensJs": "var(--color-neutral-stroke-disabled-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeInvertedDisabled",
+      "oldVar": "--colorNeutralStrokeInvertedDisabled",
+      "newVar": "--color-neutral-stroke-inverted-disabled",
+      "themeKey": "--color-neutral-stroke-inverted-disabled",
+      "tokensJs": "var(--color-neutral-stroke-inverted-disabled)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorTransparentStroke",
+      "oldVar": "--colorTransparentStroke",
+      "newVar": "--color-transparent-stroke",
+      "themeKey": "--color-transparent-stroke",
+      "tokensJs": "var(--color-transparent-stroke)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorTransparentStrokeInteractive",
+      "oldVar": "--colorTransparentStrokeInteractive",
+      "newVar": "--color-transparent-stroke-interactive",
+      "themeKey": "--color-transparent-stroke-interactive",
+      "tokensJs": "var(--color-transparent-stroke-interactive)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorTransparentStrokeDisabled",
+      "oldVar": "--colorTransparentStrokeDisabled",
+      "newVar": "--color-transparent-stroke-disabled",
+      "themeKey": "--color-transparent-stroke-disabled",
+      "tokensJs": "var(--color-transparent-stroke-disabled)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeAlpha",
+      "oldVar": "--colorNeutralStrokeAlpha",
+      "newVar": "--color-neutral-stroke-alpha",
+      "themeKey": "--color-neutral-stroke-alpha",
+      "tokensJs": "var(--color-neutral-stroke-alpha)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralStrokeAlpha2",
+      "oldVar": "--colorNeutralStrokeAlpha2",
+      "newVar": "--color-neutral-stroke-alpha-2",
+      "themeKey": "--color-neutral-stroke-alpha-2",
+      "tokensJs": "var(--color-neutral-stroke-alpha-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStrokeFocus1",
+      "oldVar": "--colorStrokeFocus1",
+      "newVar": "--color-stroke-focus-1",
+      "themeKey": "--color-stroke-focus-1",
+      "tokensJs": "var(--color-stroke-focus-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStrokeFocus2",
+      "oldVar": "--colorStrokeFocus2",
+      "newVar": "--color-stroke-focus-2",
+      "themeKey": "--color-stroke-focus-2",
+      "tokensJs": "var(--color-stroke-focus-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralShadowAmbient",
+      "oldVar": "--colorNeutralShadowAmbient",
+      "newVar": "--color-neutral-shadow-ambient",
+      "themeKey": "--color-neutral-shadow-ambient",
+      "tokensJs": "var(--color-neutral-shadow-ambient)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralShadowKey",
+      "oldVar": "--colorNeutralShadowKey",
+      "newVar": "--color-neutral-shadow-key",
+      "themeKey": "--color-neutral-shadow-key",
+      "tokensJs": "var(--color-neutral-shadow-key)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralShadowAmbientLighter",
+      "oldVar": "--colorNeutralShadowAmbientLighter",
+      "newVar": "--color-neutral-shadow-ambient-lighter",
+      "themeKey": "--color-neutral-shadow-ambient-lighter",
+      "tokensJs": "var(--color-neutral-shadow-ambient-lighter)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralShadowKeyLighter",
+      "oldVar": "--colorNeutralShadowKeyLighter",
+      "newVar": "--color-neutral-shadow-key-lighter",
+      "themeKey": "--color-neutral-shadow-key-lighter",
+      "tokensJs": "var(--color-neutral-shadow-key-lighter)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralShadowAmbientDarker",
+      "oldVar": "--colorNeutralShadowAmbientDarker",
+      "newVar": "--color-neutral-shadow-ambient-darker",
+      "themeKey": "--color-neutral-shadow-ambient-darker",
+      "tokensJs": "var(--color-neutral-shadow-ambient-darker)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorNeutralShadowKeyDarker",
+      "oldVar": "--colorNeutralShadowKeyDarker",
+      "newVar": "--color-neutral-shadow-key-darker",
+      "themeKey": "--color-neutral-shadow-key-darker",
+      "tokensJs": "var(--color-neutral-shadow-key-darker)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandShadowAmbient",
+      "oldVar": "--colorBrandShadowAmbient",
+      "newVar": "--color-brand-shadow-ambient",
+      "themeKey": "--color-brand-shadow-ambient",
+      "tokensJs": "var(--color-brand-shadow-ambient)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorBrandShadowKey",
+      "oldVar": "--colorBrandShadowKey",
+      "newVar": "--color-brand-shadow-key",
+      "themeKey": "--color-brand-shadow-key",
+      "tokensJs": "var(--color-brand-shadow-key)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedBackground1",
+      "oldVar": "--colorPaletteRedBackground1",
+      "newVar": "--color-palette-red-background-1",
+      "themeKey": "--color-palette-red-background-1",
+      "tokensJs": "var(--color-palette-red-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedBackground2",
+      "oldVar": "--colorPaletteRedBackground2",
+      "newVar": "--color-palette-red-background-2",
+      "themeKey": "--color-palette-red-background-2",
+      "tokensJs": "var(--color-palette-red-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedBackground3",
+      "oldVar": "--colorPaletteRedBackground3",
+      "newVar": "--color-palette-red-background-3",
+      "themeKey": "--color-palette-red-background-3",
+      "tokensJs": "var(--color-palette-red-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedBorderActive",
+      "oldVar": "--colorPaletteRedBorderActive",
+      "newVar": "--color-palette-red-border-active",
+      "themeKey": "--color-palette-red-border-active",
+      "tokensJs": "var(--color-palette-red-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedBorder1",
+      "oldVar": "--colorPaletteRedBorder1",
+      "newVar": "--color-palette-red-border-1",
+      "themeKey": "--color-palette-red-border-1",
+      "tokensJs": "var(--color-palette-red-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedBorder2",
+      "oldVar": "--colorPaletteRedBorder2",
+      "newVar": "--color-palette-red-border-2",
+      "themeKey": "--color-palette-red-border-2",
+      "tokensJs": "var(--color-palette-red-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedForeground1",
+      "oldVar": "--colorPaletteRedForeground1",
+      "newVar": "--color-palette-red-foreground-1",
+      "themeKey": "--color-palette-red-foreground-1",
+      "tokensJs": "var(--color-palette-red-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedForeground2",
+      "oldVar": "--colorPaletteRedForeground2",
+      "newVar": "--color-palette-red-foreground-2",
+      "themeKey": "--color-palette-red-foreground-2",
+      "tokensJs": "var(--color-palette-red-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedForeground3",
+      "oldVar": "--colorPaletteRedForeground3",
+      "newVar": "--color-palette-red-foreground-3",
+      "themeKey": "--color-palette-red-foreground-3",
+      "tokensJs": "var(--color-palette-red-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRedForegroundInverted",
+      "oldVar": "--colorPaletteRedForegroundInverted",
+      "newVar": "--color-palette-red-foreground-inverted",
+      "themeKey": "--color-palette-red-foreground-inverted",
+      "tokensJs": "var(--color-palette-red-foreground-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenBackground1",
+      "oldVar": "--colorPaletteGreenBackground1",
+      "newVar": "--color-palette-green-background-1",
+      "themeKey": "--color-palette-green-background-1",
+      "tokensJs": "var(--color-palette-green-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenBackground2",
+      "oldVar": "--colorPaletteGreenBackground2",
+      "newVar": "--color-palette-green-background-2",
+      "themeKey": "--color-palette-green-background-2",
+      "tokensJs": "var(--color-palette-green-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenBackground3",
+      "oldVar": "--colorPaletteGreenBackground3",
+      "newVar": "--color-palette-green-background-3",
+      "themeKey": "--color-palette-green-background-3",
+      "tokensJs": "var(--color-palette-green-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenBorderActive",
+      "oldVar": "--colorPaletteGreenBorderActive",
+      "newVar": "--color-palette-green-border-active",
+      "themeKey": "--color-palette-green-border-active",
+      "tokensJs": "var(--color-palette-green-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenBorder1",
+      "oldVar": "--colorPaletteGreenBorder1",
+      "newVar": "--color-palette-green-border-1",
+      "themeKey": "--color-palette-green-border-1",
+      "tokensJs": "var(--color-palette-green-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenBorder2",
+      "oldVar": "--colorPaletteGreenBorder2",
+      "newVar": "--color-palette-green-border-2",
+      "themeKey": "--color-palette-green-border-2",
+      "tokensJs": "var(--color-palette-green-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenForeground1",
+      "oldVar": "--colorPaletteGreenForeground1",
+      "newVar": "--color-palette-green-foreground-1",
+      "themeKey": "--color-palette-green-foreground-1",
+      "tokensJs": "var(--color-palette-green-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenForeground2",
+      "oldVar": "--colorPaletteGreenForeground2",
+      "newVar": "--color-palette-green-foreground-2",
+      "themeKey": "--color-palette-green-foreground-2",
+      "tokensJs": "var(--color-palette-green-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenForeground3",
+      "oldVar": "--colorPaletteGreenForeground3",
+      "newVar": "--color-palette-green-foreground-3",
+      "themeKey": "--color-palette-green-foreground-3",
+      "tokensJs": "var(--color-palette-green-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGreenForegroundInverted",
+      "oldVar": "--colorPaletteGreenForegroundInverted",
+      "newVar": "--color-palette-green-foreground-inverted",
+      "themeKey": "--color-palette-green-foreground-inverted",
+      "tokensJs": "var(--color-palette-green-foreground-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeBackground1",
+      "oldVar": "--colorPaletteDarkOrangeBackground1",
+      "newVar": "--color-palette-dark-orange-background-1",
+      "themeKey": "--color-palette-dark-orange-background-1",
+      "tokensJs": "var(--color-palette-dark-orange-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeBackground2",
+      "oldVar": "--colorPaletteDarkOrangeBackground2",
+      "newVar": "--color-palette-dark-orange-background-2",
+      "themeKey": "--color-palette-dark-orange-background-2",
+      "tokensJs": "var(--color-palette-dark-orange-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeBackground3",
+      "oldVar": "--colorPaletteDarkOrangeBackground3",
+      "newVar": "--color-palette-dark-orange-background-3",
+      "themeKey": "--color-palette-dark-orange-background-3",
+      "tokensJs": "var(--color-palette-dark-orange-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeBorderActive",
+      "oldVar": "--colorPaletteDarkOrangeBorderActive",
+      "newVar": "--color-palette-dark-orange-border-active",
+      "themeKey": "--color-palette-dark-orange-border-active",
+      "tokensJs": "var(--color-palette-dark-orange-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeBorder1",
+      "oldVar": "--colorPaletteDarkOrangeBorder1",
+      "newVar": "--color-palette-dark-orange-border-1",
+      "themeKey": "--color-palette-dark-orange-border-1",
+      "tokensJs": "var(--color-palette-dark-orange-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeBorder2",
+      "oldVar": "--colorPaletteDarkOrangeBorder2",
+      "newVar": "--color-palette-dark-orange-border-2",
+      "themeKey": "--color-palette-dark-orange-border-2",
+      "tokensJs": "var(--color-palette-dark-orange-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeForeground1",
+      "oldVar": "--colorPaletteDarkOrangeForeground1",
+      "newVar": "--color-palette-dark-orange-foreground-1",
+      "themeKey": "--color-palette-dark-orange-foreground-1",
+      "tokensJs": "var(--color-palette-dark-orange-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeForeground2",
+      "oldVar": "--colorPaletteDarkOrangeForeground2",
+      "newVar": "--color-palette-dark-orange-foreground-2",
+      "themeKey": "--color-palette-dark-orange-foreground-2",
+      "tokensJs": "var(--color-palette-dark-orange-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkOrangeForeground3",
+      "oldVar": "--colorPaletteDarkOrangeForeground3",
+      "newVar": "--color-palette-dark-orange-foreground-3",
+      "themeKey": "--color-palette-dark-orange-foreground-3",
+      "tokensJs": "var(--color-palette-dark-orange-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowBackground1",
+      "oldVar": "--colorPaletteYellowBackground1",
+      "newVar": "--color-palette-yellow-background-1",
+      "themeKey": "--color-palette-yellow-background-1",
+      "tokensJs": "var(--color-palette-yellow-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowBackground2",
+      "oldVar": "--colorPaletteYellowBackground2",
+      "newVar": "--color-palette-yellow-background-2",
+      "themeKey": "--color-palette-yellow-background-2",
+      "tokensJs": "var(--color-palette-yellow-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowBackground3",
+      "oldVar": "--colorPaletteYellowBackground3",
+      "newVar": "--color-palette-yellow-background-3",
+      "themeKey": "--color-palette-yellow-background-3",
+      "tokensJs": "var(--color-palette-yellow-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowBorderActive",
+      "oldVar": "--colorPaletteYellowBorderActive",
+      "newVar": "--color-palette-yellow-border-active",
+      "themeKey": "--color-palette-yellow-border-active",
+      "tokensJs": "var(--color-palette-yellow-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowBorder1",
+      "oldVar": "--colorPaletteYellowBorder1",
+      "newVar": "--color-palette-yellow-border-1",
+      "themeKey": "--color-palette-yellow-border-1",
+      "tokensJs": "var(--color-palette-yellow-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowBorder2",
+      "oldVar": "--colorPaletteYellowBorder2",
+      "newVar": "--color-palette-yellow-border-2",
+      "themeKey": "--color-palette-yellow-border-2",
+      "tokensJs": "var(--color-palette-yellow-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowForeground1",
+      "oldVar": "--colorPaletteYellowForeground1",
+      "newVar": "--color-palette-yellow-foreground-1",
+      "themeKey": "--color-palette-yellow-foreground-1",
+      "tokensJs": "var(--color-palette-yellow-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowForeground2",
+      "oldVar": "--colorPaletteYellowForeground2",
+      "newVar": "--color-palette-yellow-foreground-2",
+      "themeKey": "--color-palette-yellow-foreground-2",
+      "tokensJs": "var(--color-palette-yellow-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowForeground3",
+      "oldVar": "--colorPaletteYellowForeground3",
+      "newVar": "--color-palette-yellow-foreground-3",
+      "themeKey": "--color-palette-yellow-foreground-3",
+      "tokensJs": "var(--color-palette-yellow-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteYellowForegroundInverted",
+      "oldVar": "--colorPaletteYellowForegroundInverted",
+      "newVar": "--color-palette-yellow-foreground-inverted",
+      "themeKey": "--color-palette-yellow-foreground-inverted",
+      "tokensJs": "var(--color-palette-yellow-foreground-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryBackground1",
+      "oldVar": "--colorPaletteBerryBackground1",
+      "newVar": "--color-palette-berry-background-1",
+      "themeKey": "--color-palette-berry-background-1",
+      "tokensJs": "var(--color-palette-berry-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryBackground2",
+      "oldVar": "--colorPaletteBerryBackground2",
+      "newVar": "--color-palette-berry-background-2",
+      "themeKey": "--color-palette-berry-background-2",
+      "tokensJs": "var(--color-palette-berry-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryBackground3",
+      "oldVar": "--colorPaletteBerryBackground3",
+      "newVar": "--color-palette-berry-background-3",
+      "themeKey": "--color-palette-berry-background-3",
+      "tokensJs": "var(--color-palette-berry-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryBorderActive",
+      "oldVar": "--colorPaletteBerryBorderActive",
+      "newVar": "--color-palette-berry-border-active",
+      "themeKey": "--color-palette-berry-border-active",
+      "tokensJs": "var(--color-palette-berry-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryBorder1",
+      "oldVar": "--colorPaletteBerryBorder1",
+      "newVar": "--color-palette-berry-border-1",
+      "themeKey": "--color-palette-berry-border-1",
+      "tokensJs": "var(--color-palette-berry-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryBorder2",
+      "oldVar": "--colorPaletteBerryBorder2",
+      "newVar": "--color-palette-berry-border-2",
+      "themeKey": "--color-palette-berry-border-2",
+      "tokensJs": "var(--color-palette-berry-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryForeground1",
+      "oldVar": "--colorPaletteBerryForeground1",
+      "newVar": "--color-palette-berry-foreground-1",
+      "themeKey": "--color-palette-berry-foreground-1",
+      "tokensJs": "var(--color-palette-berry-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryForeground2",
+      "oldVar": "--colorPaletteBerryForeground2",
+      "newVar": "--color-palette-berry-foreground-2",
+      "themeKey": "--color-palette-berry-foreground-2",
+      "tokensJs": "var(--color-palette-berry-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBerryForeground3",
+      "oldVar": "--colorPaletteBerryForeground3",
+      "newVar": "--color-palette-berry-foreground-3",
+      "themeKey": "--color-palette-berry-foreground-3",
+      "tokensJs": "var(--color-palette-berry-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldBackground1",
+      "oldVar": "--colorPaletteMarigoldBackground1",
+      "newVar": "--color-palette-marigold-background-1",
+      "themeKey": "--color-palette-marigold-background-1",
+      "tokensJs": "var(--color-palette-marigold-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldBackground2",
+      "oldVar": "--colorPaletteMarigoldBackground2",
+      "newVar": "--color-palette-marigold-background-2",
+      "themeKey": "--color-palette-marigold-background-2",
+      "tokensJs": "var(--color-palette-marigold-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldBackground3",
+      "oldVar": "--colorPaletteMarigoldBackground3",
+      "newVar": "--color-palette-marigold-background-3",
+      "themeKey": "--color-palette-marigold-background-3",
+      "tokensJs": "var(--color-palette-marigold-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldBorderActive",
+      "oldVar": "--colorPaletteMarigoldBorderActive",
+      "newVar": "--color-palette-marigold-border-active",
+      "themeKey": "--color-palette-marigold-border-active",
+      "tokensJs": "var(--color-palette-marigold-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldBorder1",
+      "oldVar": "--colorPaletteMarigoldBorder1",
+      "newVar": "--color-palette-marigold-border-1",
+      "themeKey": "--color-palette-marigold-border-1",
+      "tokensJs": "var(--color-palette-marigold-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldBorder2",
+      "oldVar": "--colorPaletteMarigoldBorder2",
+      "newVar": "--color-palette-marigold-border-2",
+      "themeKey": "--color-palette-marigold-border-2",
+      "tokensJs": "var(--color-palette-marigold-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldForeground1",
+      "oldVar": "--colorPaletteMarigoldForeground1",
+      "newVar": "--color-palette-marigold-foreground-1",
+      "themeKey": "--color-palette-marigold-foreground-1",
+      "tokensJs": "var(--color-palette-marigold-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldForeground2",
+      "oldVar": "--colorPaletteMarigoldForeground2",
+      "newVar": "--color-palette-marigold-foreground-2",
+      "themeKey": "--color-palette-marigold-foreground-2",
+      "tokensJs": "var(--color-palette-marigold-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMarigoldForeground3",
+      "oldVar": "--colorPaletteMarigoldForeground3",
+      "newVar": "--color-palette-marigold-foreground-3",
+      "themeKey": "--color-palette-marigold-foreground-3",
+      "tokensJs": "var(--color-palette-marigold-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenBackground1",
+      "oldVar": "--colorPaletteLightGreenBackground1",
+      "newVar": "--color-palette-light-green-background-1",
+      "themeKey": "--color-palette-light-green-background-1",
+      "tokensJs": "var(--color-palette-light-green-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenBackground2",
+      "oldVar": "--colorPaletteLightGreenBackground2",
+      "newVar": "--color-palette-light-green-background-2",
+      "themeKey": "--color-palette-light-green-background-2",
+      "tokensJs": "var(--color-palette-light-green-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenBackground3",
+      "oldVar": "--colorPaletteLightGreenBackground3",
+      "newVar": "--color-palette-light-green-background-3",
+      "themeKey": "--color-palette-light-green-background-3",
+      "tokensJs": "var(--color-palette-light-green-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenBorderActive",
+      "oldVar": "--colorPaletteLightGreenBorderActive",
+      "newVar": "--color-palette-light-green-border-active",
+      "themeKey": "--color-palette-light-green-border-active",
+      "tokensJs": "var(--color-palette-light-green-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenBorder1",
+      "oldVar": "--colorPaletteLightGreenBorder1",
+      "newVar": "--color-palette-light-green-border-1",
+      "themeKey": "--color-palette-light-green-border-1",
+      "tokensJs": "var(--color-palette-light-green-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenBorder2",
+      "oldVar": "--colorPaletteLightGreenBorder2",
+      "newVar": "--color-palette-light-green-border-2",
+      "themeKey": "--color-palette-light-green-border-2",
+      "tokensJs": "var(--color-palette-light-green-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenForeground1",
+      "oldVar": "--colorPaletteLightGreenForeground1",
+      "newVar": "--color-palette-light-green-foreground-1",
+      "themeKey": "--color-palette-light-green-foreground-1",
+      "tokensJs": "var(--color-palette-light-green-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenForeground2",
+      "oldVar": "--colorPaletteLightGreenForeground2",
+      "newVar": "--color-palette-light-green-foreground-2",
+      "themeKey": "--color-palette-light-green-foreground-2",
+      "tokensJs": "var(--color-palette-light-green-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightGreenForeground3",
+      "oldVar": "--colorPaletteLightGreenForeground3",
+      "newVar": "--color-palette-light-green-foreground-3",
+      "themeKey": "--color-palette-light-green-foreground-3",
+      "tokensJs": "var(--color-palette-light-green-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteAnchorBackground2",
+      "oldVar": "--colorPaletteAnchorBackground2",
+      "newVar": "--color-palette-anchor-background-2",
+      "themeKey": "--color-palette-anchor-background-2",
+      "tokensJs": "var(--color-palette-anchor-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteAnchorBorderActive",
+      "oldVar": "--colorPaletteAnchorBorderActive",
+      "newVar": "--color-palette-anchor-border-active",
+      "themeKey": "--color-palette-anchor-border-active",
+      "tokensJs": "var(--color-palette-anchor-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteAnchorForeground2",
+      "oldVar": "--colorPaletteAnchorForeground2",
+      "newVar": "--color-palette-anchor-foreground-2",
+      "themeKey": "--color-palette-anchor-foreground-2",
+      "tokensJs": "var(--color-palette-anchor-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBeigeBackground2",
+      "oldVar": "--colorPaletteBeigeBackground2",
+      "newVar": "--color-palette-beige-background-2",
+      "themeKey": "--color-palette-beige-background-2",
+      "tokensJs": "var(--color-palette-beige-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBeigeBorderActive",
+      "oldVar": "--colorPaletteBeigeBorderActive",
+      "newVar": "--color-palette-beige-border-active",
+      "themeKey": "--color-palette-beige-border-active",
+      "tokensJs": "var(--color-palette-beige-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBeigeForeground2",
+      "oldVar": "--colorPaletteBeigeForeground2",
+      "newVar": "--color-palette-beige-foreground-2",
+      "themeKey": "--color-palette-beige-foreground-2",
+      "tokensJs": "var(--color-palette-beige-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBlueBackground2",
+      "oldVar": "--colorPaletteBlueBackground2",
+      "newVar": "--color-palette-blue-background-2",
+      "themeKey": "--color-palette-blue-background-2",
+      "tokensJs": "var(--color-palette-blue-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBlueBorderActive",
+      "oldVar": "--colorPaletteBlueBorderActive",
+      "newVar": "--color-palette-blue-border-active",
+      "themeKey": "--color-palette-blue-border-active",
+      "tokensJs": "var(--color-palette-blue-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBlueForeground2",
+      "oldVar": "--colorPaletteBlueForeground2",
+      "newVar": "--color-palette-blue-foreground-2",
+      "themeKey": "--color-palette-blue-foreground-2",
+      "tokensJs": "var(--color-palette-blue-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBrassBackground2",
+      "oldVar": "--colorPaletteBrassBackground2",
+      "newVar": "--color-palette-brass-background-2",
+      "themeKey": "--color-palette-brass-background-2",
+      "tokensJs": "var(--color-palette-brass-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBrassBorderActive",
+      "oldVar": "--colorPaletteBrassBorderActive",
+      "newVar": "--color-palette-brass-border-active",
+      "themeKey": "--color-palette-brass-border-active",
+      "tokensJs": "var(--color-palette-brass-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBrassForeground2",
+      "oldVar": "--colorPaletteBrassForeground2",
+      "newVar": "--color-palette-brass-foreground-2",
+      "themeKey": "--color-palette-brass-foreground-2",
+      "tokensJs": "var(--color-palette-brass-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBrownBackground2",
+      "oldVar": "--colorPaletteBrownBackground2",
+      "newVar": "--color-palette-brown-background-2",
+      "themeKey": "--color-palette-brown-background-2",
+      "tokensJs": "var(--color-palette-brown-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBrownBorderActive",
+      "oldVar": "--colorPaletteBrownBorderActive",
+      "newVar": "--color-palette-brown-border-active",
+      "themeKey": "--color-palette-brown-border-active",
+      "tokensJs": "var(--color-palette-brown-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteBrownForeground2",
+      "oldVar": "--colorPaletteBrownForeground2",
+      "newVar": "--color-palette-brown-foreground-2",
+      "themeKey": "--color-palette-brown-foreground-2",
+      "tokensJs": "var(--color-palette-brown-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteCornflowerBackground2",
+      "oldVar": "--colorPaletteCornflowerBackground2",
+      "newVar": "--color-palette-cornflower-background-2",
+      "themeKey": "--color-palette-cornflower-background-2",
+      "tokensJs": "var(--color-palette-cornflower-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteCornflowerBorderActive",
+      "oldVar": "--colorPaletteCornflowerBorderActive",
+      "newVar": "--color-palette-cornflower-border-active",
+      "themeKey": "--color-palette-cornflower-border-active",
+      "tokensJs": "var(--color-palette-cornflower-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteCornflowerForeground2",
+      "oldVar": "--colorPaletteCornflowerForeground2",
+      "newVar": "--color-palette-cornflower-foreground-2",
+      "themeKey": "--color-palette-cornflower-foreground-2",
+      "tokensJs": "var(--color-palette-cornflower-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteCranberryBackground2",
+      "oldVar": "--colorPaletteCranberryBackground2",
+      "newVar": "--color-palette-cranberry-background-2",
+      "themeKey": "--color-palette-cranberry-background-2",
+      "tokensJs": "var(--color-palette-cranberry-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteCranberryBorderActive",
+      "oldVar": "--colorPaletteCranberryBorderActive",
+      "newVar": "--color-palette-cranberry-border-active",
+      "themeKey": "--color-palette-cranberry-border-active",
+      "tokensJs": "var(--color-palette-cranberry-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteCranberryForeground2",
+      "oldVar": "--colorPaletteCranberryForeground2",
+      "newVar": "--color-palette-cranberry-foreground-2",
+      "themeKey": "--color-palette-cranberry-foreground-2",
+      "tokensJs": "var(--color-palette-cranberry-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkGreenBackground2",
+      "oldVar": "--colorPaletteDarkGreenBackground2",
+      "newVar": "--color-palette-dark-green-background-2",
+      "themeKey": "--color-palette-dark-green-background-2",
+      "tokensJs": "var(--color-palette-dark-green-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkGreenBorderActive",
+      "oldVar": "--colorPaletteDarkGreenBorderActive",
+      "newVar": "--color-palette-dark-green-border-active",
+      "themeKey": "--color-palette-dark-green-border-active",
+      "tokensJs": "var(--color-palette-dark-green-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkGreenForeground2",
+      "oldVar": "--colorPaletteDarkGreenForeground2",
+      "newVar": "--color-palette-dark-green-foreground-2",
+      "themeKey": "--color-palette-dark-green-foreground-2",
+      "tokensJs": "var(--color-palette-dark-green-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkRedBackground2",
+      "oldVar": "--colorPaletteDarkRedBackground2",
+      "newVar": "--color-palette-dark-red-background-2",
+      "themeKey": "--color-palette-dark-red-background-2",
+      "tokensJs": "var(--color-palette-dark-red-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkRedBorderActive",
+      "oldVar": "--colorPaletteDarkRedBorderActive",
+      "newVar": "--color-palette-dark-red-border-active",
+      "themeKey": "--color-palette-dark-red-border-active",
+      "tokensJs": "var(--color-palette-dark-red-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteDarkRedForeground2",
+      "oldVar": "--colorPaletteDarkRedForeground2",
+      "newVar": "--color-palette-dark-red-foreground-2",
+      "themeKey": "--color-palette-dark-red-foreground-2",
+      "tokensJs": "var(--color-palette-dark-red-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteForestBackground2",
+      "oldVar": "--colorPaletteForestBackground2",
+      "newVar": "--color-palette-forest-background-2",
+      "themeKey": "--color-palette-forest-background-2",
+      "tokensJs": "var(--color-palette-forest-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteForestBorderActive",
+      "oldVar": "--colorPaletteForestBorderActive",
+      "newVar": "--color-palette-forest-border-active",
+      "themeKey": "--color-palette-forest-border-active",
+      "tokensJs": "var(--color-palette-forest-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteForestForeground2",
+      "oldVar": "--colorPaletteForestForeground2",
+      "newVar": "--color-palette-forest-foreground-2",
+      "themeKey": "--color-palette-forest-foreground-2",
+      "tokensJs": "var(--color-palette-forest-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGoldBackground2",
+      "oldVar": "--colorPaletteGoldBackground2",
+      "newVar": "--color-palette-gold-background-2",
+      "themeKey": "--color-palette-gold-background-2",
+      "tokensJs": "var(--color-palette-gold-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGoldBorderActive",
+      "oldVar": "--colorPaletteGoldBorderActive",
+      "newVar": "--color-palette-gold-border-active",
+      "themeKey": "--color-palette-gold-border-active",
+      "tokensJs": "var(--color-palette-gold-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGoldForeground2",
+      "oldVar": "--colorPaletteGoldForeground2",
+      "newVar": "--color-palette-gold-foreground-2",
+      "themeKey": "--color-palette-gold-foreground-2",
+      "tokensJs": "var(--color-palette-gold-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGrapeBackground2",
+      "oldVar": "--colorPaletteGrapeBackground2",
+      "newVar": "--color-palette-grape-background-2",
+      "themeKey": "--color-palette-grape-background-2",
+      "tokensJs": "var(--color-palette-grape-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGrapeBorderActive",
+      "oldVar": "--colorPaletteGrapeBorderActive",
+      "newVar": "--color-palette-grape-border-active",
+      "themeKey": "--color-palette-grape-border-active",
+      "tokensJs": "var(--color-palette-grape-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteGrapeForeground2",
+      "oldVar": "--colorPaletteGrapeForeground2",
+      "newVar": "--color-palette-grape-foreground-2",
+      "themeKey": "--color-palette-grape-foreground-2",
+      "tokensJs": "var(--color-palette-grape-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLavenderBackground2",
+      "oldVar": "--colorPaletteLavenderBackground2",
+      "newVar": "--color-palette-lavender-background-2",
+      "themeKey": "--color-palette-lavender-background-2",
+      "tokensJs": "var(--color-palette-lavender-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLavenderBorderActive",
+      "oldVar": "--colorPaletteLavenderBorderActive",
+      "newVar": "--color-palette-lavender-border-active",
+      "themeKey": "--color-palette-lavender-border-active",
+      "tokensJs": "var(--color-palette-lavender-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLavenderForeground2",
+      "oldVar": "--colorPaletteLavenderForeground2",
+      "newVar": "--color-palette-lavender-foreground-2",
+      "themeKey": "--color-palette-lavender-foreground-2",
+      "tokensJs": "var(--color-palette-lavender-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightTealBackground2",
+      "oldVar": "--colorPaletteLightTealBackground2",
+      "newVar": "--color-palette-light-teal-background-2",
+      "themeKey": "--color-palette-light-teal-background-2",
+      "tokensJs": "var(--color-palette-light-teal-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightTealBorderActive",
+      "oldVar": "--colorPaletteLightTealBorderActive",
+      "newVar": "--color-palette-light-teal-border-active",
+      "themeKey": "--color-palette-light-teal-border-active",
+      "tokensJs": "var(--color-palette-light-teal-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLightTealForeground2",
+      "oldVar": "--colorPaletteLightTealForeground2",
+      "newVar": "--color-palette-light-teal-foreground-2",
+      "themeKey": "--color-palette-light-teal-foreground-2",
+      "tokensJs": "var(--color-palette-light-teal-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLilacBackground2",
+      "oldVar": "--colorPaletteLilacBackground2",
+      "newVar": "--color-palette-lilac-background-2",
+      "themeKey": "--color-palette-lilac-background-2",
+      "tokensJs": "var(--color-palette-lilac-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLilacBorderActive",
+      "oldVar": "--colorPaletteLilacBorderActive",
+      "newVar": "--color-palette-lilac-border-active",
+      "themeKey": "--color-palette-lilac-border-active",
+      "tokensJs": "var(--color-palette-lilac-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteLilacForeground2",
+      "oldVar": "--colorPaletteLilacForeground2",
+      "newVar": "--color-palette-lilac-foreground-2",
+      "themeKey": "--color-palette-lilac-foreground-2",
+      "tokensJs": "var(--color-palette-lilac-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMagentaBackground2",
+      "oldVar": "--colorPaletteMagentaBackground2",
+      "newVar": "--color-palette-magenta-background-2",
+      "themeKey": "--color-palette-magenta-background-2",
+      "tokensJs": "var(--color-palette-magenta-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMagentaBorderActive",
+      "oldVar": "--colorPaletteMagentaBorderActive",
+      "newVar": "--color-palette-magenta-border-active",
+      "themeKey": "--color-palette-magenta-border-active",
+      "tokensJs": "var(--color-palette-magenta-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMagentaForeground2",
+      "oldVar": "--colorPaletteMagentaForeground2",
+      "newVar": "--color-palette-magenta-foreground-2",
+      "themeKey": "--color-palette-magenta-foreground-2",
+      "tokensJs": "var(--color-palette-magenta-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMinkBackground2",
+      "oldVar": "--colorPaletteMinkBackground2",
+      "newVar": "--color-palette-mink-background-2",
+      "themeKey": "--color-palette-mink-background-2",
+      "tokensJs": "var(--color-palette-mink-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMinkBorderActive",
+      "oldVar": "--colorPaletteMinkBorderActive",
+      "newVar": "--color-palette-mink-border-active",
+      "themeKey": "--color-palette-mink-border-active",
+      "tokensJs": "var(--color-palette-mink-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteMinkForeground2",
+      "oldVar": "--colorPaletteMinkForeground2",
+      "newVar": "--color-palette-mink-foreground-2",
+      "themeKey": "--color-palette-mink-foreground-2",
+      "tokensJs": "var(--color-palette-mink-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteNavyBackground2",
+      "oldVar": "--colorPaletteNavyBackground2",
+      "newVar": "--color-palette-navy-background-2",
+      "themeKey": "--color-palette-navy-background-2",
+      "tokensJs": "var(--color-palette-navy-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteNavyBorderActive",
+      "oldVar": "--colorPaletteNavyBorderActive",
+      "newVar": "--color-palette-navy-border-active",
+      "themeKey": "--color-palette-navy-border-active",
+      "tokensJs": "var(--color-palette-navy-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteNavyForeground2",
+      "oldVar": "--colorPaletteNavyForeground2",
+      "newVar": "--color-palette-navy-foreground-2",
+      "themeKey": "--color-palette-navy-foreground-2",
+      "tokensJs": "var(--color-palette-navy-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePeachBackground2",
+      "oldVar": "--colorPalettePeachBackground2",
+      "newVar": "--color-palette-peach-background-2",
+      "themeKey": "--color-palette-peach-background-2",
+      "tokensJs": "var(--color-palette-peach-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePeachBorderActive",
+      "oldVar": "--colorPalettePeachBorderActive",
+      "newVar": "--color-palette-peach-border-active",
+      "themeKey": "--color-palette-peach-border-active",
+      "tokensJs": "var(--color-palette-peach-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePeachForeground2",
+      "oldVar": "--colorPalettePeachForeground2",
+      "newVar": "--color-palette-peach-foreground-2",
+      "themeKey": "--color-palette-peach-foreground-2",
+      "tokensJs": "var(--color-palette-peach-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePinkBackground2",
+      "oldVar": "--colorPalettePinkBackground2",
+      "newVar": "--color-palette-pink-background-2",
+      "themeKey": "--color-palette-pink-background-2",
+      "tokensJs": "var(--color-palette-pink-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePinkBorderActive",
+      "oldVar": "--colorPalettePinkBorderActive",
+      "newVar": "--color-palette-pink-border-active",
+      "themeKey": "--color-palette-pink-border-active",
+      "tokensJs": "var(--color-palette-pink-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePinkForeground2",
+      "oldVar": "--colorPalettePinkForeground2",
+      "newVar": "--color-palette-pink-foreground-2",
+      "themeKey": "--color-palette-pink-foreground-2",
+      "tokensJs": "var(--color-palette-pink-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePlatinumBackground2",
+      "oldVar": "--colorPalettePlatinumBackground2",
+      "newVar": "--color-palette-platinum-background-2",
+      "themeKey": "--color-palette-platinum-background-2",
+      "tokensJs": "var(--color-palette-platinum-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePlatinumBorderActive",
+      "oldVar": "--colorPalettePlatinumBorderActive",
+      "newVar": "--color-palette-platinum-border-active",
+      "themeKey": "--color-palette-platinum-border-active",
+      "tokensJs": "var(--color-palette-platinum-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePlatinumForeground2",
+      "oldVar": "--colorPalettePlatinumForeground2",
+      "newVar": "--color-palette-platinum-foreground-2",
+      "themeKey": "--color-palette-platinum-foreground-2",
+      "tokensJs": "var(--color-palette-platinum-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePlumBackground2",
+      "oldVar": "--colorPalettePlumBackground2",
+      "newVar": "--color-palette-plum-background-2",
+      "themeKey": "--color-palette-plum-background-2",
+      "tokensJs": "var(--color-palette-plum-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePlumBorderActive",
+      "oldVar": "--colorPalettePlumBorderActive",
+      "newVar": "--color-palette-plum-border-active",
+      "themeKey": "--color-palette-plum-border-active",
+      "tokensJs": "var(--color-palette-plum-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePlumForeground2",
+      "oldVar": "--colorPalettePlumForeground2",
+      "newVar": "--color-palette-plum-foreground-2",
+      "themeKey": "--color-palette-plum-foreground-2",
+      "tokensJs": "var(--color-palette-plum-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePumpkinBackground2",
+      "oldVar": "--colorPalettePumpkinBackground2",
+      "newVar": "--color-palette-pumpkin-background-2",
+      "themeKey": "--color-palette-pumpkin-background-2",
+      "tokensJs": "var(--color-palette-pumpkin-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePumpkinBorderActive",
+      "oldVar": "--colorPalettePumpkinBorderActive",
+      "newVar": "--color-palette-pumpkin-border-active",
+      "themeKey": "--color-palette-pumpkin-border-active",
+      "tokensJs": "var(--color-palette-pumpkin-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePumpkinForeground2",
+      "oldVar": "--colorPalettePumpkinForeground2",
+      "newVar": "--color-palette-pumpkin-foreground-2",
+      "themeKey": "--color-palette-pumpkin-foreground-2",
+      "tokensJs": "var(--color-palette-pumpkin-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePurpleBackground2",
+      "oldVar": "--colorPalettePurpleBackground2",
+      "newVar": "--color-palette-purple-background-2",
+      "themeKey": "--color-palette-purple-background-2",
+      "tokensJs": "var(--color-palette-purple-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePurpleBorderActive",
+      "oldVar": "--colorPalettePurpleBorderActive",
+      "newVar": "--color-palette-purple-border-active",
+      "themeKey": "--color-palette-purple-border-active",
+      "tokensJs": "var(--color-palette-purple-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPalettePurpleForeground2",
+      "oldVar": "--colorPalettePurpleForeground2",
+      "newVar": "--color-palette-purple-foreground-2",
+      "themeKey": "--color-palette-purple-foreground-2",
+      "tokensJs": "var(--color-palette-purple-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRoyalBlueBackground2",
+      "oldVar": "--colorPaletteRoyalBlueBackground2",
+      "newVar": "--color-palette-royal-blue-background-2",
+      "themeKey": "--color-palette-royal-blue-background-2",
+      "tokensJs": "var(--color-palette-royal-blue-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRoyalBlueBorderActive",
+      "oldVar": "--colorPaletteRoyalBlueBorderActive",
+      "newVar": "--color-palette-royal-blue-border-active",
+      "themeKey": "--color-palette-royal-blue-border-active",
+      "tokensJs": "var(--color-palette-royal-blue-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteRoyalBlueForeground2",
+      "oldVar": "--colorPaletteRoyalBlueForeground2",
+      "newVar": "--color-palette-royal-blue-foreground-2",
+      "themeKey": "--color-palette-royal-blue-foreground-2",
+      "tokensJs": "var(--color-palette-royal-blue-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteSeafoamBackground2",
+      "oldVar": "--colorPaletteSeafoamBackground2",
+      "newVar": "--color-palette-seafoam-background-2",
+      "themeKey": "--color-palette-seafoam-background-2",
+      "tokensJs": "var(--color-palette-seafoam-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteSeafoamBorderActive",
+      "oldVar": "--colorPaletteSeafoamBorderActive",
+      "newVar": "--color-palette-seafoam-border-active",
+      "themeKey": "--color-palette-seafoam-border-active",
+      "tokensJs": "var(--color-palette-seafoam-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteSeafoamForeground2",
+      "oldVar": "--colorPaletteSeafoamForeground2",
+      "newVar": "--color-palette-seafoam-foreground-2",
+      "themeKey": "--color-palette-seafoam-foreground-2",
+      "tokensJs": "var(--color-palette-seafoam-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteSteelBackground2",
+      "oldVar": "--colorPaletteSteelBackground2",
+      "newVar": "--color-palette-steel-background-2",
+      "themeKey": "--color-palette-steel-background-2",
+      "tokensJs": "var(--color-palette-steel-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteSteelBorderActive",
+      "oldVar": "--colorPaletteSteelBorderActive",
+      "newVar": "--color-palette-steel-border-active",
+      "themeKey": "--color-palette-steel-border-active",
+      "tokensJs": "var(--color-palette-steel-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteSteelForeground2",
+      "oldVar": "--colorPaletteSteelForeground2",
+      "newVar": "--color-palette-steel-foreground-2",
+      "themeKey": "--color-palette-steel-foreground-2",
+      "tokensJs": "var(--color-palette-steel-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteTealBackground2",
+      "oldVar": "--colorPaletteTealBackground2",
+      "newVar": "--color-palette-teal-background-2",
+      "themeKey": "--color-palette-teal-background-2",
+      "tokensJs": "var(--color-palette-teal-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteTealBorderActive",
+      "oldVar": "--colorPaletteTealBorderActive",
+      "newVar": "--color-palette-teal-border-active",
+      "themeKey": "--color-palette-teal-border-active",
+      "tokensJs": "var(--color-palette-teal-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorPaletteTealForeground2",
+      "oldVar": "--colorPaletteTealForeground2",
+      "newVar": "--color-palette-teal-foreground-2",
+      "themeKey": "--color-palette-teal-foreground-2",
+      "tokensJs": "var(--color-palette-teal-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessBackground1",
+      "oldVar": "--colorStatusSuccessBackground1",
+      "newVar": "--color-status-success-background-1",
+      "themeKey": "--color-status-success-background-1",
+      "tokensJs": "var(--color-status-success-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessBackground2",
+      "oldVar": "--colorStatusSuccessBackground2",
+      "newVar": "--color-status-success-background-2",
+      "themeKey": "--color-status-success-background-2",
+      "tokensJs": "var(--color-status-success-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessBackground3",
+      "oldVar": "--colorStatusSuccessBackground3",
+      "newVar": "--color-status-success-background-3",
+      "themeKey": "--color-status-success-background-3",
+      "tokensJs": "var(--color-status-success-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessForeground1",
+      "oldVar": "--colorStatusSuccessForeground1",
+      "newVar": "--color-status-success-foreground-1",
+      "themeKey": "--color-status-success-foreground-1",
+      "tokensJs": "var(--color-status-success-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessForeground2",
+      "oldVar": "--colorStatusSuccessForeground2",
+      "newVar": "--color-status-success-foreground-2",
+      "themeKey": "--color-status-success-foreground-2",
+      "tokensJs": "var(--color-status-success-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessForeground3",
+      "oldVar": "--colorStatusSuccessForeground3",
+      "newVar": "--color-status-success-foreground-3",
+      "themeKey": "--color-status-success-foreground-3",
+      "tokensJs": "var(--color-status-success-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessForegroundInverted",
+      "oldVar": "--colorStatusSuccessForegroundInverted",
+      "newVar": "--color-status-success-foreground-inverted",
+      "themeKey": "--color-status-success-foreground-inverted",
+      "tokensJs": "var(--color-status-success-foreground-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessBorderActive",
+      "oldVar": "--colorStatusSuccessBorderActive",
+      "newVar": "--color-status-success-border-active",
+      "themeKey": "--color-status-success-border-active",
+      "tokensJs": "var(--color-status-success-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessBorder1",
+      "oldVar": "--colorStatusSuccessBorder1",
+      "newVar": "--color-status-success-border-1",
+      "themeKey": "--color-status-success-border-1",
+      "tokensJs": "var(--color-status-success-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusSuccessBorder2",
+      "oldVar": "--colorStatusSuccessBorder2",
+      "newVar": "--color-status-success-border-2",
+      "themeKey": "--color-status-success-border-2",
+      "tokensJs": "var(--color-status-success-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningBackground1",
+      "oldVar": "--colorStatusWarningBackground1",
+      "newVar": "--color-status-warning-background-1",
+      "themeKey": "--color-status-warning-background-1",
+      "tokensJs": "var(--color-status-warning-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningBackground2",
+      "oldVar": "--colorStatusWarningBackground2",
+      "newVar": "--color-status-warning-background-2",
+      "themeKey": "--color-status-warning-background-2",
+      "tokensJs": "var(--color-status-warning-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningBackground3",
+      "oldVar": "--colorStatusWarningBackground3",
+      "newVar": "--color-status-warning-background-3",
+      "themeKey": "--color-status-warning-background-3",
+      "tokensJs": "var(--color-status-warning-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningForeground1",
+      "oldVar": "--colorStatusWarningForeground1",
+      "newVar": "--color-status-warning-foreground-1",
+      "themeKey": "--color-status-warning-foreground-1",
+      "tokensJs": "var(--color-status-warning-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningForeground2",
+      "oldVar": "--colorStatusWarningForeground2",
+      "newVar": "--color-status-warning-foreground-2",
+      "themeKey": "--color-status-warning-foreground-2",
+      "tokensJs": "var(--color-status-warning-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningForeground3",
+      "oldVar": "--colorStatusWarningForeground3",
+      "newVar": "--color-status-warning-foreground-3",
+      "themeKey": "--color-status-warning-foreground-3",
+      "tokensJs": "var(--color-status-warning-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningForegroundInverted",
+      "oldVar": "--colorStatusWarningForegroundInverted",
+      "newVar": "--color-status-warning-foreground-inverted",
+      "themeKey": "--color-status-warning-foreground-inverted",
+      "tokensJs": "var(--color-status-warning-foreground-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningBorderActive",
+      "oldVar": "--colorStatusWarningBorderActive",
+      "newVar": "--color-status-warning-border-active",
+      "themeKey": "--color-status-warning-border-active",
+      "tokensJs": "var(--color-status-warning-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningBorder1",
+      "oldVar": "--colorStatusWarningBorder1",
+      "newVar": "--color-status-warning-border-1",
+      "themeKey": "--color-status-warning-border-1",
+      "tokensJs": "var(--color-status-warning-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusWarningBorder2",
+      "oldVar": "--colorStatusWarningBorder2",
+      "newVar": "--color-status-warning-border-2",
+      "themeKey": "--color-status-warning-border-2",
+      "tokensJs": "var(--color-status-warning-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerBackground1",
+      "oldVar": "--colorStatusDangerBackground1",
+      "newVar": "--color-status-danger-background-1",
+      "themeKey": "--color-status-danger-background-1",
+      "tokensJs": "var(--color-status-danger-background-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerBackground2",
+      "oldVar": "--colorStatusDangerBackground2",
+      "newVar": "--color-status-danger-background-2",
+      "themeKey": "--color-status-danger-background-2",
+      "tokensJs": "var(--color-status-danger-background-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerBackground3",
+      "oldVar": "--colorStatusDangerBackground3",
+      "newVar": "--color-status-danger-background-3",
+      "themeKey": "--color-status-danger-background-3",
+      "tokensJs": "var(--color-status-danger-background-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerBackground3Hover",
+      "oldVar": "--colorStatusDangerBackground3Hover",
+      "newVar": "--color-status-danger-background-3-hover",
+      "themeKey": "--color-status-danger-background-3-hover",
+      "tokensJs": "var(--color-status-danger-background-3-hover)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerBackground3Pressed",
+      "oldVar": "--colorStatusDangerBackground3Pressed",
+      "newVar": "--color-status-danger-background-3-pressed",
+      "themeKey": "--color-status-danger-background-3-pressed",
+      "tokensJs": "var(--color-status-danger-background-3-pressed)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerForeground1",
+      "oldVar": "--colorStatusDangerForeground1",
+      "newVar": "--color-status-danger-foreground-1",
+      "themeKey": "--color-status-danger-foreground-1",
+      "tokensJs": "var(--color-status-danger-foreground-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerForeground2",
+      "oldVar": "--colorStatusDangerForeground2",
+      "newVar": "--color-status-danger-foreground-2",
+      "themeKey": "--color-status-danger-foreground-2",
+      "tokensJs": "var(--color-status-danger-foreground-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerForeground3",
+      "oldVar": "--colorStatusDangerForeground3",
+      "newVar": "--color-status-danger-foreground-3",
+      "themeKey": "--color-status-danger-foreground-3",
+      "tokensJs": "var(--color-status-danger-foreground-3)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerForegroundInverted",
+      "oldVar": "--colorStatusDangerForegroundInverted",
+      "newVar": "--color-status-danger-foreground-inverted",
+      "themeKey": "--color-status-danger-foreground-inverted",
+      "tokensJs": "var(--color-status-danger-foreground-inverted)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerBorderActive",
+      "oldVar": "--colorStatusDangerBorderActive",
+      "newVar": "--color-status-danger-border-active",
+      "themeKey": "--color-status-danger-border-active",
+      "tokensJs": "var(--color-status-danger-border-active)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerBorder1",
+      "oldVar": "--colorStatusDangerBorder1",
+      "newVar": "--color-status-danger-border-1",
+      "themeKey": "--color-status-danger-border-1",
+      "tokensJs": "var(--color-status-danger-border-1)",
+      "phase": "2a"
+    },
+    {
+      "token": "colorStatusDangerBorder2",
+      "oldVar": "--colorStatusDangerBorder2",
+      "newVar": "--color-status-danger-border-2",
+      "themeKey": "--color-status-danger-border-2",
+      "tokensJs": "var(--color-status-danger-border-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadiusNone",
+      "oldVar": "--borderRadiusNone",
+      "newVar": "--radius-none",
+      "themeKey": "--radius-none",
+      "tokensJs": "var(--radius-none)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadiusSmall",
+      "oldVar": "--borderRadiusSmall",
+      "newVar": "--radius-small",
+      "themeKey": "--radius-small",
+      "tokensJs": "var(--radius-small)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadiusMedium",
+      "oldVar": "--borderRadiusMedium",
+      "newVar": "--radius-medium",
+      "themeKey": "--radius-medium",
+      "tokensJs": "var(--radius-medium)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadiusLarge",
+      "oldVar": "--borderRadiusLarge",
+      "newVar": "--radius-large",
+      "themeKey": "--radius-large",
+      "tokensJs": "var(--radius-large)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadiusXLarge",
+      "oldVar": "--borderRadiusXLarge",
+      "newVar": "--radius-x-large",
+      "themeKey": "--radius-x-large",
+      "tokensJs": "var(--radius-x-large)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadius2XLarge",
+      "oldVar": "--borderRadius2XLarge",
+      "newVar": "--radius-2-x-large",
+      "themeKey": "--radius-2-x-large",
+      "tokensJs": "var(--radius-2-x-large)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadius3XLarge",
+      "oldVar": "--borderRadius3XLarge",
+      "newVar": "--radius-3-x-large",
+      "themeKey": "--radius-3-x-large",
+      "tokensJs": "var(--radius-3-x-large)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadius4XLarge",
+      "oldVar": "--borderRadius4XLarge",
+      "newVar": "--radius-4-x-large",
+      "themeKey": "--radius-4-x-large",
+      "tokensJs": "var(--radius-4-x-large)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadius5XLarge",
+      "oldVar": "--borderRadius5XLarge",
+      "newVar": "--radius-5-x-large",
+      "themeKey": "--radius-5-x-large",
+      "tokensJs": "var(--radius-5-x-large)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadius6XLarge",
+      "oldVar": "--borderRadius6XLarge",
+      "newVar": "--radius-6-x-large",
+      "themeKey": "--radius-6-x-large",
+      "tokensJs": "var(--radius-6-x-large)",
+      "phase": "2a"
+    },
+    {
+      "token": "borderRadiusCircular",
+      "oldVar": "--borderRadiusCircular",
+      "newVar": "--radius-circular",
+      "themeKey": "--radius-circular",
+      "tokensJs": "var(--radius-circular)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontFamilyBase",
+      "oldVar": "--fontFamilyBase",
+      "newVar": "--font-base",
+      "themeKey": "--font-base",
+      "tokensJs": "var(--font-base)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontFamilyMonospace",
+      "oldVar": "--fontFamilyMonospace",
+      "newVar": "--font-monospace",
+      "themeKey": "--font-monospace",
+      "tokensJs": "var(--font-monospace)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontFamilyNumeric",
+      "oldVar": "--fontFamilyNumeric",
+      "newVar": "--font-numeric",
+      "themeKey": "--font-numeric",
+      "tokensJs": "var(--font-numeric)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeBase100",
+      "oldVar": "--fontSizeBase100",
+      "newVar": "--text-base-100",
+      "themeKey": "--text-base-100",
+      "tokensJs": "var(--text-base-100)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeBase200",
+      "oldVar": "--fontSizeBase200",
+      "newVar": "--text-base-200",
+      "themeKey": "--text-base-200",
+      "tokensJs": "var(--text-base-200)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeBase300",
+      "oldVar": "--fontSizeBase300",
+      "newVar": "--text-base-300",
+      "themeKey": "--text-base-300",
+      "tokensJs": "var(--text-base-300)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeBase400",
+      "oldVar": "--fontSizeBase400",
+      "newVar": "--text-base-400",
+      "themeKey": "--text-base-400",
+      "tokensJs": "var(--text-base-400)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeBase500",
+      "oldVar": "--fontSizeBase500",
+      "newVar": "--text-base-500",
+      "themeKey": "--text-base-500",
+      "tokensJs": "var(--text-base-500)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeBase600",
+      "oldVar": "--fontSizeBase600",
+      "newVar": "--text-base-600",
+      "themeKey": "--text-base-600",
+      "tokensJs": "var(--text-base-600)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeHero700",
+      "oldVar": "--fontSizeHero700",
+      "newVar": "--text-hero-700",
+      "themeKey": "--text-hero-700",
+      "tokensJs": "var(--text-hero-700)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeHero800",
+      "oldVar": "--fontSizeHero800",
+      "newVar": "--text-hero-800",
+      "themeKey": "--text-hero-800",
+      "tokensJs": "var(--text-hero-800)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeHero900",
+      "oldVar": "--fontSizeHero900",
+      "newVar": "--text-hero-900",
+      "themeKey": "--text-hero-900",
+      "tokensJs": "var(--text-hero-900)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontSizeHero1000",
+      "oldVar": "--fontSizeHero1000",
+      "newVar": "--text-hero-1000",
+      "themeKey": "--text-hero-1000",
+      "tokensJs": "var(--text-hero-1000)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontWeightRegular",
+      "oldVar": "--fontWeightRegular",
+      "newVar": "--font-weight-regular",
+      "themeKey": "--font-weight-regular",
+      "tokensJs": "var(--font-weight-regular)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontWeightMedium",
+      "oldVar": "--fontWeightMedium",
+      "newVar": "--font-weight-medium",
+      "themeKey": "--font-weight-medium",
+      "tokensJs": "var(--font-weight-medium)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontWeightSemibold",
+      "oldVar": "--fontWeightSemibold",
+      "newVar": "--font-weight-semibold",
+      "themeKey": "--font-weight-semibold",
+      "tokensJs": "var(--font-weight-semibold)",
+      "phase": "2a"
+    },
+    {
+      "token": "fontWeightBold",
+      "oldVar": "--fontWeightBold",
+      "newVar": "--font-weight-bold",
+      "themeKey": "--font-weight-bold",
+      "tokensJs": "var(--font-weight-bold)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightBase100",
+      "oldVar": "--lineHeightBase100",
+      "newVar": "--leading-base-100",
+      "themeKey": "--leading-base-100",
+      "tokensJs": "var(--leading-base-100)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightBase200",
+      "oldVar": "--lineHeightBase200",
+      "newVar": "--leading-base-200",
+      "themeKey": "--leading-base-200",
+      "tokensJs": "var(--leading-base-200)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightBase300",
+      "oldVar": "--lineHeightBase300",
+      "newVar": "--leading-base-300",
+      "themeKey": "--leading-base-300",
+      "tokensJs": "var(--leading-base-300)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightBase400",
+      "oldVar": "--lineHeightBase400",
+      "newVar": "--leading-base-400",
+      "themeKey": "--leading-base-400",
+      "tokensJs": "var(--leading-base-400)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightBase500",
+      "oldVar": "--lineHeightBase500",
+      "newVar": "--leading-base-500",
+      "themeKey": "--leading-base-500",
+      "tokensJs": "var(--leading-base-500)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightBase600",
+      "oldVar": "--lineHeightBase600",
+      "newVar": "--leading-base-600",
+      "themeKey": "--leading-base-600",
+      "tokensJs": "var(--leading-base-600)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightHero700",
+      "oldVar": "--lineHeightHero700",
+      "newVar": "--leading-hero-700",
+      "themeKey": "--leading-hero-700",
+      "tokensJs": "var(--leading-hero-700)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightHero800",
+      "oldVar": "--lineHeightHero800",
+      "newVar": "--leading-hero-800",
+      "themeKey": "--leading-hero-800",
+      "tokensJs": "var(--leading-hero-800)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightHero900",
+      "oldVar": "--lineHeightHero900",
+      "newVar": "--leading-hero-900",
+      "themeKey": "--leading-hero-900",
+      "tokensJs": "var(--leading-hero-900)",
+      "phase": "2a"
+    },
+    {
+      "token": "lineHeightHero1000",
+      "oldVar": "--lineHeightHero1000",
+      "newVar": "--leading-hero-1000",
+      "themeKey": "--leading-hero-1000",
+      "tokensJs": "var(--leading-hero-1000)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow2",
+      "oldVar": "--shadow2",
+      "newVar": "--shadow-2",
+      "themeKey": "--shadow-2",
+      "tokensJs": "var(--shadow-2)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow4",
+      "oldVar": "--shadow4",
+      "newVar": "--shadow-4",
+      "themeKey": "--shadow-4",
+      "tokensJs": "var(--shadow-4)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow8",
+      "oldVar": "--shadow8",
+      "newVar": "--shadow-8",
+      "themeKey": "--shadow-8",
+      "tokensJs": "var(--shadow-8)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow16",
+      "oldVar": "--shadow16",
+      "newVar": "--shadow-16",
+      "themeKey": "--shadow-16",
+      "tokensJs": "var(--shadow-16)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow28",
+      "oldVar": "--shadow28",
+      "newVar": "--shadow-28",
+      "themeKey": "--shadow-28",
+      "tokensJs": "var(--shadow-28)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow64",
+      "oldVar": "--shadow64",
+      "newVar": "--shadow-64",
+      "themeKey": "--shadow-64",
+      "tokensJs": "var(--shadow-64)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow2Brand",
+      "oldVar": "--shadow2Brand",
+      "newVar": "--shadow-2-brand",
+      "themeKey": "--shadow-2-brand",
+      "tokensJs": "var(--shadow-2-brand)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow4Brand",
+      "oldVar": "--shadow4Brand",
+      "newVar": "--shadow-4-brand",
+      "themeKey": "--shadow-4-brand",
+      "tokensJs": "var(--shadow-4-brand)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow8Brand",
+      "oldVar": "--shadow8Brand",
+      "newVar": "--shadow-8-brand",
+      "themeKey": "--shadow-8-brand",
+      "tokensJs": "var(--shadow-8-brand)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow16Brand",
+      "oldVar": "--shadow16Brand",
+      "newVar": "--shadow-16-brand",
+      "themeKey": "--shadow-16-brand",
+      "tokensJs": "var(--shadow-16-brand)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow28Brand",
+      "oldVar": "--shadow28Brand",
+      "newVar": "--shadow-28-brand",
+      "themeKey": "--shadow-28-brand",
+      "tokensJs": "var(--shadow-28-brand)",
+      "phase": "2a"
+    },
+    {
+      "token": "shadow64Brand",
+      "oldVar": "--shadow64Brand",
+      "newVar": "--shadow-64-brand",
+      "themeKey": "--shadow-64-brand",
+      "tokensJs": "var(--shadow-64-brand)",
+      "phase": "2a"
+    },
+    {
+      "token": "strokeWidthThin",
+      "oldVar": "--strokeWidthThin",
+      "newVar": "--stroke-width-thin",
+      "themeKey": "--spacing-thin",
+      "tokensJs": "var(--stroke-width-thin)",
+      "phase": "1"
+    },
+    {
+      "token": "strokeWidthThick",
+      "oldVar": "--strokeWidthThick",
+      "newVar": "--stroke-width-thick",
+      "themeKey": "--spacing-thick",
+      "tokensJs": "var(--stroke-width-thick)",
+      "phase": "1"
+    },
+    {
+      "token": "strokeWidthThicker",
+      "oldVar": "--strokeWidthThicker",
+      "newVar": "--stroke-width-thicker",
+      "themeKey": "--spacing-thicker",
+      "tokensJs": "var(--stroke-width-thicker)",
+      "phase": "1"
+    },
+    {
+      "token": "strokeWidthThickest",
+      "oldVar": "--strokeWidthThickest",
+      "newVar": "--stroke-width-thickest",
+      "themeKey": "--spacing-thickest",
+      "tokensJs": "var(--stroke-width-thickest)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalNone",
+      "oldVar": "--spacingHorizontalNone",
+      "newVar": "--spacing-horizontal-none",
+      "themeKey": "--spacing-horizontal-none",
+      "tokensJs": "var(--spacing-horizontal-none)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalXXS",
+      "oldVar": "--spacingHorizontalXXS",
+      "newVar": "--spacing-horizontal-xxs",
+      "themeKey": "--spacing-horizontal-xxs",
+      "tokensJs": "var(--spacing-horizontal-xxs)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalXS",
+      "oldVar": "--spacingHorizontalXS",
+      "newVar": "--spacing-horizontal-xs",
+      "themeKey": "--spacing-horizontal-xs",
+      "tokensJs": "var(--spacing-horizontal-xs)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalSNudge",
+      "oldVar": "--spacingHorizontalSNudge",
+      "newVar": "--spacing-horizontal-s-nudge",
+      "themeKey": "--spacing-horizontal-s-nudge",
+      "tokensJs": "var(--spacing-horizontal-s-nudge)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalS",
+      "oldVar": "--spacingHorizontalS",
+      "newVar": "--spacing-horizontal-s",
+      "themeKey": "--spacing-horizontal-s",
+      "tokensJs": "var(--spacing-horizontal-s)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalMNudge",
+      "oldVar": "--spacingHorizontalMNudge",
+      "newVar": "--spacing-horizontal-m-nudge",
+      "themeKey": "--spacing-horizontal-m-nudge",
+      "tokensJs": "var(--spacing-horizontal-m-nudge)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalM",
+      "oldVar": "--spacingHorizontalM",
+      "newVar": "--spacing-horizontal-m",
+      "themeKey": "--spacing-horizontal-m",
+      "tokensJs": "var(--spacing-horizontal-m)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalL",
+      "oldVar": "--spacingHorizontalL",
+      "newVar": "--spacing-horizontal-l",
+      "themeKey": "--spacing-horizontal-l",
+      "tokensJs": "var(--spacing-horizontal-l)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalXL",
+      "oldVar": "--spacingHorizontalXL",
+      "newVar": "--spacing-horizontal-xl",
+      "themeKey": "--spacing-horizontal-xl",
+      "tokensJs": "var(--spacing-horizontal-xl)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalXXL",
+      "oldVar": "--spacingHorizontalXXL",
+      "newVar": "--spacing-horizontal-xxl",
+      "themeKey": "--spacing-horizontal-xxl",
+      "tokensJs": "var(--spacing-horizontal-xxl)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingHorizontalXXXL",
+      "oldVar": "--spacingHorizontalXXXL",
+      "newVar": "--spacing-horizontal-xxxl",
+      "themeKey": "--spacing-horizontal-xxxl",
+      "tokensJs": "var(--spacing-horizontal-xxxl)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalNone",
+      "oldVar": "--spacingVerticalNone",
+      "newVar": "--spacing-vertical-none",
+      "themeKey": "--spacing-vertical-none",
+      "tokensJs": "var(--spacing-vertical-none)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalXXS",
+      "oldVar": "--spacingVerticalXXS",
+      "newVar": "--spacing-vertical-xxs",
+      "themeKey": "--spacing-vertical-xxs",
+      "tokensJs": "var(--spacing-vertical-xxs)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalXS",
+      "oldVar": "--spacingVerticalXS",
+      "newVar": "--spacing-vertical-xs",
+      "themeKey": "--spacing-vertical-xs",
+      "tokensJs": "var(--spacing-vertical-xs)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalSNudge",
+      "oldVar": "--spacingVerticalSNudge",
+      "newVar": "--spacing-vertical-s-nudge",
+      "themeKey": "--spacing-vertical-s-nudge",
+      "tokensJs": "var(--spacing-vertical-s-nudge)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalS",
+      "oldVar": "--spacingVerticalS",
+      "newVar": "--spacing-vertical-s",
+      "themeKey": "--spacing-vertical-s",
+      "tokensJs": "var(--spacing-vertical-s)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalMNudge",
+      "oldVar": "--spacingVerticalMNudge",
+      "newVar": "--spacing-vertical-m-nudge",
+      "themeKey": "--spacing-vertical-m-nudge",
+      "tokensJs": "var(--spacing-vertical-m-nudge)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalM",
+      "oldVar": "--spacingVerticalM",
+      "newVar": "--spacing-vertical-m",
+      "themeKey": "--spacing-vertical-m",
+      "tokensJs": "var(--spacing-vertical-m)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalL",
+      "oldVar": "--spacingVerticalL",
+      "newVar": "--spacing-vertical-l",
+      "themeKey": "--spacing-vertical-l",
+      "tokensJs": "var(--spacing-vertical-l)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalXL",
+      "oldVar": "--spacingVerticalXL",
+      "newVar": "--spacing-vertical-xl",
+      "themeKey": "--spacing-vertical-xl",
+      "tokensJs": "var(--spacing-vertical-xl)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalXXL",
+      "oldVar": "--spacingVerticalXXL",
+      "newVar": "--spacing-vertical-xxl",
+      "themeKey": "--spacing-vertical-xxl",
+      "tokensJs": "var(--spacing-vertical-xxl)",
+      "phase": "1"
+    },
+    {
+      "token": "spacingVerticalXXXL",
+      "oldVar": "--spacingVerticalXXXL",
+      "newVar": "--spacing-vertical-xxxl",
+      "themeKey": "--spacing-vertical-xxxl",
+      "tokensJs": "var(--spacing-vertical-xxxl)",
+      "phase": "1"
+    },
+    {
+      "token": "durationUltraFast",
+      "oldVar": "--durationUltraFast",
+      "newVar": "--duration-ultra-fast",
+      "themeKey": "--transition-duration-ultra-fast",
+      "tokensJs": "var(--duration-ultra-fast)",
+      "phase": "2a"
+    },
+    {
+      "token": "durationFaster",
+      "oldVar": "--durationFaster",
+      "newVar": "--duration-faster",
+      "themeKey": "--transition-duration-faster",
+      "tokensJs": "var(--duration-faster)",
+      "phase": "2a"
+    },
+    {
+      "token": "durationFast",
+      "oldVar": "--durationFast",
+      "newVar": "--duration-fast",
+      "themeKey": "--transition-duration-fast",
+      "tokensJs": "var(--duration-fast)",
+      "phase": "2a"
+    },
+    {
+      "token": "durationNormal",
+      "oldVar": "--durationNormal",
+      "newVar": "--duration-normal",
+      "themeKey": "--transition-duration-normal",
+      "tokensJs": "var(--duration-normal)",
+      "phase": "2a"
+    },
+    {
+      "token": "durationGentle",
+      "oldVar": "--durationGentle",
+      "newVar": "--duration-gentle",
+      "themeKey": "--transition-duration-gentle",
+      "tokensJs": "var(--duration-gentle)",
+      "phase": "2a"
+    },
+    {
+      "token": "durationSlow",
+      "oldVar": "--durationSlow",
+      "newVar": "--duration-slow",
+      "themeKey": "--transition-duration-slow",
+      "tokensJs": "var(--duration-slow)",
+      "phase": "2a"
+    },
+    {
+      "token": "durationSlower",
+      "oldVar": "--durationSlower",
+      "newVar": "--duration-slower",
+      "themeKey": "--transition-duration-slower",
+      "tokensJs": "var(--duration-slower)",
+      "phase": "2a"
+    },
+    {
+      "token": "durationUltraSlow",
+      "oldVar": "--durationUltraSlow",
+      "newVar": "--duration-ultra-slow",
+      "themeKey": "--transition-duration-ultra-slow",
+      "tokensJs": "var(--duration-ultra-slow)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveAccelerateMax",
+      "oldVar": "--curveAccelerateMax",
+      "newVar": "--ease-accelerate-max",
+      "themeKey": "--ease-accelerate-max",
+      "tokensJs": "var(--ease-accelerate-max)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveAccelerateMid",
+      "oldVar": "--curveAccelerateMid",
+      "newVar": "--ease-accelerate-mid",
+      "themeKey": "--ease-accelerate-mid",
+      "tokensJs": "var(--ease-accelerate-mid)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveAccelerateMin",
+      "oldVar": "--curveAccelerateMin",
+      "newVar": "--ease-accelerate-min",
+      "themeKey": "--ease-accelerate-min",
+      "tokensJs": "var(--ease-accelerate-min)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveDecelerateMax",
+      "oldVar": "--curveDecelerateMax",
+      "newVar": "--ease-decelerate-max",
+      "themeKey": "--ease-decelerate-max",
+      "tokensJs": "var(--ease-decelerate-max)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveDecelerateMid",
+      "oldVar": "--curveDecelerateMid",
+      "newVar": "--ease-decelerate-mid",
+      "themeKey": "--ease-decelerate-mid",
+      "tokensJs": "var(--ease-decelerate-mid)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveDecelerateMin",
+      "oldVar": "--curveDecelerateMin",
+      "newVar": "--ease-decelerate-min",
+      "themeKey": "--ease-decelerate-min",
+      "tokensJs": "var(--ease-decelerate-min)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveEasyEaseMax",
+      "oldVar": "--curveEasyEaseMax",
+      "newVar": "--ease-easy-ease-max",
+      "themeKey": "--ease-easy-ease-max",
+      "tokensJs": "var(--ease-easy-ease-max)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveEasyEase",
+      "oldVar": "--curveEasyEase",
+      "newVar": "--ease-easy-ease",
+      "themeKey": "--ease-easy-ease",
+      "tokensJs": "var(--ease-easy-ease)",
+      "phase": "2a"
+    },
+    {
+      "token": "curveLinear",
+      "oldVar": "--curveLinear",
+      "newVar": "--ease-linear",
+      "themeKey": "--ease-linear",
+      "tokensJs": "var(--ease-linear)",
+      "phase": "2a"
+    },
+    {
+      "token": "zIndexBackground",
+      "oldVar": "--zIndexBackground",
+      "newVar": "--z-index-background",
+      "themeKey": "--z-index-background",
+      "tokensJs": "var(--z-index-background, 0)",
+      "phase": "2a"
+    },
+    {
+      "token": "zIndexContent",
+      "oldVar": "--zIndexContent",
+      "newVar": "--z-index-content",
+      "themeKey": "--z-index-content",
+      "tokensJs": "var(--z-index-content, 1)",
+      "phase": "2a"
+    },
+    {
+      "token": "zIndexOverlay",
+      "oldVar": "--zIndexOverlay",
+      "newVar": "--z-index-overlay",
+      "themeKey": "--z-index-overlay",
+      "tokensJs": "var(--z-index-overlay, 1000)",
+      "phase": "2a"
+    },
+    {
+      "token": "zIndexPopup",
+      "oldVar": "--zIndexPopup",
+      "newVar": "--z-index-popup",
+      "themeKey": "--z-index-popup",
+      "tokensJs": "var(--z-index-popup, 2000)",
+      "phase": "2a"
+    },
+    {
+      "token": "zIndexMessages",
+      "oldVar": "--zIndexMessages",
+      "newVar": "--z-index-messages",
+      "themeKey": "--z-index-messages",
+      "tokensJs": "var(--z-index-messages, 3000)",
+      "phase": "2a"
+    },
+    {
+      "token": "zIndexFloating",
+      "oldVar": "--zIndexFloating",
+      "newVar": "--z-index-floating",
+      "themeKey": "--z-index-floating",
+      "tokensJs": "var(--z-index-floating, 4000)",
+      "phase": "2a"
+    },
+    {
+      "token": "zIndexPriority",
+      "oldVar": "--zIndexPriority",
+      "newVar": "--z-index-priority",
+      "themeKey": "--z-index-priority",
+      "tokensJs": "var(--z-index-priority, 5000)",
+      "phase": "2a"
+    },
+    {
+      "token": "zIndexDebug",
+      "oldVar": "--zIndexDebug",
+      "newVar": "--z-index-debug",
+      "themeKey": "--z-index-debug",
+      "tokensJs": "var(--z-index-debug, 6000)",
+      "phase": "2a"
+    }
+  ]
+}
