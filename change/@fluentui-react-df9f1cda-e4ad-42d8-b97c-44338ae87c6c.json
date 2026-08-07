@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Check for null value returned inside promise",
+  "packageName": "@fluentui/react",
+  "email": "the.mtrix@gmail.com",
+  "dependentChangeType": "patch"
+}
