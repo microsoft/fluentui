@@ -32,6 +32,7 @@ export const parameters = {
     },
     optionalDependencies: {
       '@fluentui/react-icons': 'latest',
+      'react-window': '^2',
     },
   },
 };

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { FixedSizeList } from 'react-window';
+import { List as VirtualList } from 'react-window';
+import type { RowComponentProps } from 'react-window';
 import { List, ListItem } from '@fluentui/react-components';
 import { tokens, Text, makeResetStyles } from '@fluentui/react-components';
 
@@ -211,23 +212,25 @@ const CountriesList = React.forwardRef<HTMLUListElement>((props: React.Component
   <List aria-label="Countries" tabIndex={0} {...props} ref={ref} />
 ));
 
-export const VirtualizedList = (): JSXElement => {
+const Row = ({ index, style, ariaAttributes, countries: data }: RowComponentProps<{ countries: string[] }>) => {
   const textStyle = useTextStyle();
   return (
-    <FixedSizeList
-      height={400}
-      itemCount={countries.length}
-      itemSize={20}
-      width="100%"
-      itemData={countries}
-      outerElementType={CountriesList}
-    >
-      {({ index, style, data }) => (
-        <ListItem style={style} aria-setsize={countries.length} aria-posinset={index + 1}>
-          <Text className={textStyle}>{data[index]}</Text>
-        </ListItem>
-      )}
-    </FixedSizeList>
+    <ListItem style={style} {...ariaAttributes}>
+      <Text className={textStyle}>{data[index]}</Text>
+    </ListItem>
+  );
+};
+
+export const VirtualizedList = (): JSXElement => {
+  return (
+    <VirtualList
+      tagName={CountriesList as unknown as 'ul'}
+      rowComponent={Row}
+      rowCount={countries.length}
+      rowHeight={20}
+      rowProps={{ countries }}
+      style={{ height: 400, width: '100%' }}
+    />
   );
 };
 
