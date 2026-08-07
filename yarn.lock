@@ -4329,6 +4329,7 @@ __metadata:
     "@fluentui/react-button": "npm:^9.10.1"
     "@fluentui/react-card": "npm:^9.7.1"
     "@fluentui/react-checkbox": "npm:^9.6.3"
+    "@fluentui/react-color-picker": "npm:^9.2.19"
     "@fluentui/react-combobox": "npm:^9.17.4"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-dialog": "npm:^9.18.2"
