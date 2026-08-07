@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: prefer autofocus element over first focusable in Dialog/Drawer (#35749)",
+  "packageName": "@fluentui/react-dialog",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
