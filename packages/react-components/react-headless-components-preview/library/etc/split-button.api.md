@@ -4,26 +4,38 @@
 
 ```ts
 
+import type { ButtonBaseProps } from '@fluentui/react-button';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { MenuButtonBaseProps } from '@fluentui/react-button';
 import type * as React_2 from 'react';
-import { renderSplitButton_unstable as renderSplitButton } from '@fluentui/react-button';
-import { SplitButtonBaseProps as SplitButtonProps } from '@fluentui/react-button';
-import { SplitButtonBaseSlots as SplitButtonSlots } from '@fluentui/react-button';
-import { SplitButtonBaseState as SplitButtonState } from '@fluentui/react-button';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SplitButtonBaseProps } from '@fluentui/react-button';
+import type { SplitButtonBaseSlots } from '@fluentui/react-button';
+import type { SplitButtonBaseState } from '@fluentui/react-button';
 
-export { renderSplitButton }
+// @public
+export const renderSplitButton: (state: SplitButtonState) => JSXElement;
 
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
-export { SplitButtonProps }
+// @public
+export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Pick<SplitButtonBaseProps, 'disabled' | 'disabledFocusable' | 'icon' | 'iconPosition' | 'menuIcon'>;
 
-export { SplitButtonSlots }
-
-export { SplitButtonState }
+// @public (undocumented)
+export type SplitButtonSlots = Omit<SplitButtonBaseSlots, 'menuButton' | 'primaryActionButton'> & {
+    menuButton?: Slot<typeof MenuButton>;
+    primaryActionButton?: Slot<typeof Button>;
+};
 
 // @public
-export const useSplitButton: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
+export type SplitButtonState = ComponentState<SplitButtonSlots> & Pick<SplitButtonBaseState, 'disabled' | 'disabledFocusable' | 'iconPosition'>;
+
+// @public
+export const useSplitButton: (props: SplitButtonProps, ref: React_2.Ref<HTMLDivElement>) => SplitButtonState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { isSlot, SLOT_ELEMENT_TYPE_SYMBOL } from '@fluentui/react-utilities';
-import { renderHook } from '@testing-library/react-hooks';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { SplitButton } from './SplitButton';
-import { Button } from '../Button/Button';
-import { MenuButton } from '../MenuButton/MenuButton';
-import { useSplitButton } from './useSplitButton';
+import type { ButtonProps } from '../Button/Button.types';
+import type { MenuButtonProps } from '../MenuButton/MenuButton.types';
 
 describe('SplitButton', () => {
   isConformant({
@@ -23,20 +21,25 @@ describe('SplitButton', () => {
     expect(menuButton).toBeInTheDocument();
   });
 
-  it('forwards a ref to the root DIV element', () => {
-    let rootElement: Element | null = null;
-    const { container } = render(
-      <SplitButton
-        ref={node => {
-          rootElement = node;
-        }}
-      >
-        This is a button
-      </SplitButton>,
+  it('preserves default children for a primary action button render function', () => {
+    const renderPrimaryActionButton: SlotRenderFunction<ButtonProps> = (_Component, slotProps) => slotProps.children;
+    const { getByText } = render(
+      <SplitButton primaryActionButton={{ children: renderPrimaryActionButton }}>This is a button</SplitButton>,
     );
 
-    expect(rootElement).toBeInstanceOf(HTMLDivElement);
-    expect(rootElement).toBe(container.firstElementChild);
+    expect(getByText('This is a button')).toBeInTheDocument();
+  });
+
+  it('preserves undefined children for a menu button render function', () => {
+    const renderMenuButton: SlotRenderFunction<MenuButtonProps> = (_Component, slotProps) => {
+      expect(slotProps.children).toBeUndefined();
+      return <button type="button" />;
+    };
+    const { getAllByRole } = render(
+      <SplitButton menuButton={{ children: renderMenuButton }}>This is a button</SplitButton>,
+    );
+
+    expect(getAllByRole('button')).toHaveLength(2);
   });
 
   it('ships no default menu icon', () => {
@@ -99,26 +102,22 @@ describe('SplitButton', () => {
     expect(menuButton).toHaveAttribute('disabled');
   });
 
+  it('allows an independent menuButton override to win over propagated defaults', () => {
+    const { getAllByRole } = render(
+      <SplitButton disabled menuButton={{ disabled: false }}>
+        This is a button
+      </SplitButton>,
+    );
+    const [primaryActionButton, menuButton] = getAllByRole('button');
+
+    expect(primaryActionButton).toHaveAttribute('disabled');
+    expect(menuButton).not.toHaveAttribute('disabled');
+  });
+
   it('does not emit a wrapper-level data-disabled attribute', () => {
     const { container } = render(<SplitButton disabled>This is a button</SplitButton>);
     const root = container.firstElementChild as HTMLElement;
 
     expect(root).not.toHaveAttribute('data-disabled');
-  });
-
-  it('resolves child slot element metadata to the headless Button and MenuButton components', () => {
-    const { result } = renderHook(() => useSplitButton({ children: 'This is a button' }, React.createRef()));
-
-    const { primaryActionButton, menuButton } = result.current;
-
-    expect(isSlot(primaryActionButton)).toBe(true);
-    expect(isSlot(menuButton)).toBe(true);
-
-    if (!isSlot(primaryActionButton) || !isSlot(menuButton)) {
-      return;
-    }
-
-    expect(primaryActionButton[SLOT_ELEMENT_TYPE_SYMBOL]).toBe(Button);
-    expect(menuButton[SLOT_ELEMENT_TYPE_SYMBOL]).toBe(MenuButton);
   });
 });
