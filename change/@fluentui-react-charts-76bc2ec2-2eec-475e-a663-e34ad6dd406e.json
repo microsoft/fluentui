@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Theming Phase 2b: useIsDarkTheme now takes an element ref and reads the canonical CSS custom properties via useCssVarValue instead of the removed JS ThemeContext; DeclarativeChart/VegaDeclarativeChart wire their container refs accordingly. Dark-mode detection follows the active theme CLASS at the chart position.",
+  "packageName": "@fluentui/react-charts",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Theming Phase 2b: adds the shipped theme CLASS-name constants (webLightThemeClassName, webDarkThemeClassName, teamsLightThemeClassName, teamsDarkThemeClassName, teamsHighContrastThemeClassName, teamsLightV21ThemeClassName, teamsDarkV21ThemeClassName), the themeClassNames map and the ThemeClassName type. Adds the committed theme-values.json snapshot (7 themes) plus the verify-theme-values drift gate that deep-equals it against the computed theme objects; @fluentui/react-tailwind-theme generates its theme classes from that snapshot and re-derives the class names from these constants. The theme objects and create*Theme factories now live here as build-time/tooling input only — they are no longer part of the runtime API of @fluentui/react-theme or @fluentui/react-components.",
+  "packageName": "@fluentui/tokens",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

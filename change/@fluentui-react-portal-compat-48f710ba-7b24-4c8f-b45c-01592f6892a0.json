@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Theming Phase 2b: v8 portal theming now applies the resolved FluentProvider theme class (via useFluentProviderThemeClassName_unstable) instead of regex-extracting the runtime fui-FluentProvider<id> class, which no longer exists. Works with shipped and consumer-authored theme classes.",
+  "packageName": "@fluentui/react-portal-compat",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

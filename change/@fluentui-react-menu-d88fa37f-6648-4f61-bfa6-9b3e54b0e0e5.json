@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Adds a cypress probe for the theming Phase 2b scoped-theming contract (theme classes + portal propagation). No runtime changes.",
+  "packageName": "@fluentui/react-menu",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

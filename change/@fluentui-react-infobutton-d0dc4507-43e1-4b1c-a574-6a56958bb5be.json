@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Adds cypress evidence that deprecated (Griffel) packages resolve tokens.* references against the Phase 2b theme classes. No runtime changes.",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Theming Phase 2b: FluentProvider no longer injects a runtime theme <style> tag. BREAKING: the theme prop (JS theme object) is replaced by themeClassName?: string (pass a shipped theme class constant such as webDarkThemeClassName, or any class containing only custom-property declarations); the nonce prop and the CSP-nonce inheritance context are removed (no style element is created anymore); createCSSRuleFromTheme and useFluentProviderThemeStyleTag are removed; FluentProviderState loses theme/serverStyleProps/nonce and FluentProviderContextValues loses theme/styleTagNonce (gains themeClass). Nested providers inherit the parent theme class; portals receive it via the existing themeClassName propagation.",
+  "packageName": "@fluentui/react-provider",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

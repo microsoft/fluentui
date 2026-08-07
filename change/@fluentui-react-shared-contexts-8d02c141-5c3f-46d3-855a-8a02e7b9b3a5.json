@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Theming Phase 2b: ThemeContext_unstable / ThemeProvider_unstable / ThemeContextValue_unstable are removed — FluentProvider no longer provides a JS theme object at runtime. Runtime theming is CSS-class based; value readers use useCssVarValue (@fluentui/react-utilities). ThemeClassNameContext is unchanged.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Test-only: FluentProvider usage in tests updated to the Phase 2b themeClassName API. No runtime changes.",
+  "packageName": "@fluentui/react-portal",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

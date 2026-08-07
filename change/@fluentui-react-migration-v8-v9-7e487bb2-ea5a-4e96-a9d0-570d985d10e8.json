@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Theming Phase 2b: createV9Theme/createV8Theme keep converting theme OBJECTS but import them from @fluentui/tokens; the result is build-time/tooling input (e.g. to generate a custom CSS theme class) — FluentProvider no longer accepts theme objects.",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

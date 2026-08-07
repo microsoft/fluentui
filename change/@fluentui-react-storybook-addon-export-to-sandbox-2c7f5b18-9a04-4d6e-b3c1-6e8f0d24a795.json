@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Theming Phase 2b: the generated sandbox scaffold now imports @fluentui/react-tailwind-theme/styles.css and wraps the exported story in <FluentProvider themeClassName={webLightThemeClassName}> using the shipped theme class-name constants, instead of passing a theme object to the removed theme prop. @fluentui/react-tailwind-theme is added to the generated sandbox's dependencies so the theme CSS resolves.",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

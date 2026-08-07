@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Theming Phase 2b: theme objects (webLightTheme, webDarkTheme, teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme, teamsLightV21Theme, teamsDarkV21Theme), createDarkTheme/createHighContrastTheme/createLightTheme/createTeamsDarkTheme, themeToTokensObject, createCSSRuleFromTheme, useFluentProviderThemeStyleTag and the Theme/PartialTheme/BrandVariants types are removed from the public API. Themes ship as static CSS classes (@fluentui/react-tailwind-theme); the new exports are the theme class-name constants (webLightThemeClassName, ..., themeClassNames, ThemeClassName) plus useFluentProviderThemeClassName_unstable. Theme objects remain available from @fluentui/tokens for build-time tooling.",
+  "packageName": "@fluentui/react-components",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

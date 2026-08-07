@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Theming Phase 2b: package description and README repointed to the static theme classes — the SASS variables reference design tokens now shipped as static CSS by @fluentui/react-tailwind-theme rather than injected into the DOM by react-provider. Usage now imports @fluentui/react-tailwind-theme/styles.css once per document and passes a theme class to FluentProvider's themeClassName prop instead of a theme object to the removed theme prop. Adds @fluentui/tokens as a devDependency for the token-parity test. The emitted SASS variables themselves are unchanged.",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Theming Phase 2b: this package is now the sole source of design-token VALUES — FluentProvider's runtime theme style tag is gone. css/tokens.css gains the 433 theme-variant web-light values at :root, :host (so the default theme needs no provider or class), and a new generated css/themes.css ships one class per theme (.fui-theme-web-light, .fui-theme-web-dark, .fui-theme-teams-light, .fui-theme-teams-dark, .fui-theme-teams-high-contrast, .fui-theme-teams-light-v21, .fui-theme-teams-dark-v21), each declaring the full token set inside @layer fui.theme. Values are generated from the committed @fluentui/tokens theme-values.json snapshot and the class names are re-derived from and asserted against the @fluentui/tokens class-name constants on every run. The theme-invariant spacing/stroke tokens stay :root-only; zIndex tokens remain fallback-carried. The shipped stylesheet grows accordingly — consumers import @fluentui/react-tailwind-theme/styles.css once per document.",
+  "packageName": "@fluentui/react-tailwind-theme",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "none"
+}

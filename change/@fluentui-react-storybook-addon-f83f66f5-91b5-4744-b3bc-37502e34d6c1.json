@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Theming Phase 2b: the addon theme switcher maps theme ids to shipped theme CLASS names and passes themeClassName to FluentProvider; the example container reads background via tokens.* var() strings.",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

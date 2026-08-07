@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Theming Phase 2b: builds themes with @fluentui/tokens factories and previews/exports them as CSS custom-property theme classes (themeClassName) instead of passing theme objects to FluentProvider.",
+  "packageName": "@fluentui/theme-designer",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

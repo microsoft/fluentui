@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "useCssVarValue: adds memoized caching keyed by (element, variable) and an explicit re-read trigger via a new deps option (an effect-style dependency list; changing an entry re-reads the DOM and refreshes the cache). Default behavior stays read-once — no per-render reads, no observers.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}

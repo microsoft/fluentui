@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Theming Phase 2b: this package no longer exports theme objects, createTheme factories, themeToTokensObject or the Theme/PartialTheme/Brands/BrandVariants types. It now exports the shipped theme CLASS-name constants (webLightThemeClassName, webDarkThemeClassName, teamsLightThemeClassName, teamsDarkThemeClassName, teamsHighContrastThemeClassName, teamsLightV21ThemeClassName, teamsDarkV21ThemeClassName, themeClassNames, ThemeClassName) alongside tokens and typographyStyles. Theme objects remain in @fluentui/tokens for build-time use.",
+  "packageName": "@fluentui/react-theme",
+  "email": "array.knight+github@gmail.com",
+  "dependentChangeType": "patch"
+}
