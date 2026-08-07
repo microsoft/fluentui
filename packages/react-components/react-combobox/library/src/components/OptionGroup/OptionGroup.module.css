@@ -59,7 +59,7 @@
          `var(--stroke-width-thin)` (D4 addendum). */
       border-bottom-width: var(--spacing-thin);
       border-bottom-style: solid;
-      border-bottom-color: var(--colorNeutralStroke2);
+      border-bottom-color: var(--color-neutral-stroke-2);
 
       @apply pb-horizontal-xs;
 
@@ -74,11 +74,11 @@
   .label {
     @apply block;
 
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground3);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase200);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-3);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-200);
 
     /* `padding: spacingHorizontalS spacingHorizontalSNudge` — the source named horizontal
        tokens on both axes; reproduced verbatim. */

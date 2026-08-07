@@ -108,7 +108,7 @@
     overflow: unset;
 
     /*
-     * `border: 1px solid var(--colorTransparentStroke)` expanded to longhands
+     * `border: 1px solid var(--color-transparent-stroke)` expanded to longhands
      * (CONVERSION_GUIDE §2): the short-screen block below overrides three widths
      * individually, and the focus-visible ring overrides all four colors, so the
      * shorthand has competing longhands on two of its three sub-properties.
@@ -121,12 +121,12 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--colorTransparentStroke);
-    border-right-color: var(--colorTransparentStroke);
-    border-bottom-color: var(--colorTransparentStroke);
-    border-left-color: var(--colorTransparentStroke);
+    border-top-color: var(--color-transparent-stroke);
+    border-right-color: var(--color-transparent-stroke);
+    border-bottom-color: var(--color-transparent-stroke);
+    border-left-color: var(--color-transparent-stroke);
 
-    border-radius: var(--borderRadiusXLarge);
+    border-radius: var(--radius-x-large);
 
     @apply block;
 
@@ -149,12 +149,12 @@
 
     @apply box-border;
 
-    background-color: var(--colorNeutralBackground1);
-    color: var(--colorNeutralForeground1);
+    background-color: var(--color-neutral-background-1);
+    color: var(--color-neutral-foreground-1);
 
     /* Same value as DialogSurfaceMotion's last keyframe, so an opted-out surfaceMotion
        still renders correctly (comment carried over from the Griffel source). */
-    box-shadow: var(--shadow64);
+    box-shadow: var(--shadow-64);
 
     /*
      * from `...createFocusOutlineStyle()` spread into the same reset — default options, so
@@ -208,7 +208,7 @@
   .backdrop {
     @apply fixed inset-0;
 
-    background-color: var(--colorBackgroundOverlay);
+    background-color: var(--color-background-overlay);
   }
 }
 
@@ -223,6 +223,6 @@
 
   /* from useStyles.nestedDialogBackdrop — backdrop arg #4 */
   .nested-dialog-backdrop {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
   }
 }

@@ -137,7 +137,7 @@
        hit-testing inside CarouselNavContainer's `pointer-events: none` overlay. */
     pointer-events: all;
 
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
     border-block-start-width: 0;
     border-inline-end-width: 0;
     border-inline-start-width: 0;
@@ -150,8 +150,8 @@
       content: '';
       border: none;
       border-radius: 50%;
-      background-color: var(--colorNeutralForeground1);
-      color: var(--colorNeutralForeground1);
+      background-color: var(--color-neutral-foreground-1);
+      color: var(--color-neutral-foreground-1);
     }
   }
 }
@@ -194,8 +194,8 @@
       @variant focus-visible-fui {
         @apply -m-thick;
 
-        border: var(--spacing-thick) solid var(--colorStrokeFocus2);
-        border-radius: var(--borderRadiusMedium);
+        border: var(--spacing-thick) solid var(--color-stroke-focus-2);
+        border-radius: var(--radius-medium);
       }
     }
 
@@ -226,8 +226,8 @@
       @variant focus-visible-fui {
         @apply -m-thick;
 
-        border: var(--spacing-thick) solid var(--colorStrokeFocus2);
-        border-radius: var(--borderRadiusMedium);
+        border: var(--spacing-thick) solid var(--color-stroke-focus-2);
+        border-radius: var(--radius-medium);
       }
     }
   }
@@ -237,7 +237,7 @@
   /* from useStyles.brand — arg #4, REST half (see reason (c) in the header). */
   .brand {
     &::after {
-      background-color: var(--colorCompoundBrandBackground);
+      background-color: var(--color-compound-brand-background);
       opacity: 1;
     }
   }
@@ -253,7 +253,7 @@
     @variant not-selected {
       &::after {
         opacity: 0.6;
-        background-color: var(--colorNeutralForeground1);
+        background-color: var(--color-neutral-foreground-1);
       }
     }
   }
@@ -288,14 +288,14 @@
   .brand {
     @variant hover {
       &::after {
-        background-color: var(--colorCompoundBrandBackgroundHover);
+        background-color: var(--color-compound-brand-background-hover);
         opacity: 1;
       }
     }
 
     @variant active {
       &::after {
-        background-color: var(--colorCompoundBrandBackgroundPressed);
+        background-color: var(--color-compound-brand-background-pressed);
         opacity: 1;
       }
     }

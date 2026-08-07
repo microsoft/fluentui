@@ -40,7 +40,7 @@
   .root {
     @apply box-border flex min-w-160 flex-col overflow-y-auto;
 
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     /*
      * `outline: 1px solid tokens.colorTransparentStroke` expanded to longhands per
@@ -50,7 +50,7 @@
      */
     outline-width: 1px;
     outline-style: solid;
-    outline-color: var(--colorTransparentStroke);
+    outline-color: var(--color-transparent-stroke);
 
     /* `padding: tokens.spacingHorizontalXS` — one value, both axes. The axis word names
        the TOKEN, not the axis it is applied to (`--spacing-*` is axis-agnostic). */

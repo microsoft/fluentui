@@ -52,7 +52,7 @@
  * component's hook output belongs in `fui.components.l2`, never l1 — in l1 the winner
  * between Checkbox and Label would be decided by stylesheet load order.
  *
- * Load-bearing, not bookkeeping: Label's own rules set `color: var(--colorNeutralForeground1)`
+ * Load-bearing, not bookkeeping: Label's own rules set `color: var(--color-neutral-foreground-1)`
  * while `labelStyles.base` must win with `color: inherit` (the root's state colour is what
  * the label shows, including the disabled grey). mergeClasses produced that winner because
  * Checkbox's classes arrive as `className` on <Label>, which `useLabelStyles_unstable`
@@ -64,7 +64,7 @@
  * checked/mixed blocks reproduces that and cannot be dropped: `rootStyles.disabled` sets
  * only cursor/color/borderColor/indicatorColor and NEVER
  * `--fui-Checkbox__indicator--backgroundColor`, so an ungated `checked` block would leave a
- * disabled+checked indicator painted `--colorCompoundBrandBackground` instead of falling
+ * disabled+checked indicator painted `--color-compound-brand-background` instead of falling
  * back to transparent (the var resolves invalid-at-computed-value-time when unset, exactly
  * as in the compiled sheet).
  *
@@ -126,7 +126,7 @@
   .root {
     @apply relative inline-flex max-w-fit cursor-pointer align-middle;
 
-    color: var(--colorNeutralForeground3);
+    color: var(--color-neutral-foreground-3);
 
     /*
      * from createFocusOutlineStyle({ style: {}, selector: 'focus-within' }) — same factory
@@ -175,10 +175,10 @@
 
     color: var(--fui-Checkbox__indicator--color);
     background-color: var(--fui-Checkbox__indicator--backgroundColor);
-    border-color: var(--fui-Checkbox__indicator--borderColor, var(--colorNeutralStrokeAccessible));
+    border-color: var(--fui-Checkbox__indicator--borderColor, var(--color-neutral-stroke-accessible));
     border-style: solid;
     border-width: var(--spacing-thin);
-    border-radius: var(--borderRadiusSmall);
+    border-radius: var(--radius-small);
 
     /* `margin: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands and
        then to the named spacing utilities (D4 amendment); no rtl class was compiled, so the
@@ -202,15 +202,15 @@
       @variant not-checked {
         @variant not-indeterminate {
           @variant hover {
-            color: var(--colorNeutralForeground2);
+            color: var(--color-neutral-foreground-2);
 
-            --fui-Checkbox__indicator--borderColor: var(--colorNeutralStrokeAccessibleHover);
+            --fui-Checkbox__indicator--borderColor: var(--color-neutral-stroke-accessible-hover);
           }
 
           @variant active {
-            color: var(--colorNeutralForeground1);
+            color: var(--color-neutral-foreground-1);
 
-            --fui-Checkbox__indicator--borderColor: var(--colorNeutralStrokeAccessiblePressed);
+            --fui-Checkbox__indicator--borderColor: var(--color-neutral-stroke-accessible-pressed);
           }
         }
       }
@@ -219,20 +219,20 @@
     /* from useRootStyles.checked */
     @variant enabled {
       @variant checked {
-        color: var(--colorNeutralForeground1);
+        color: var(--color-neutral-foreground-1);
 
-        --fui-Checkbox__indicator--backgroundColor: var(--colorCompoundBrandBackground);
-        --fui-Checkbox__indicator--color: var(--colorNeutralForegroundInverted);
-        --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandBackground);
+        --fui-Checkbox__indicator--backgroundColor: var(--color-compound-brand-background);
+        --fui-Checkbox__indicator--color: var(--color-neutral-foreground-inverted);
+        --fui-Checkbox__indicator--borderColor: var(--color-compound-brand-background);
 
         @variant hover {
-          --fui-Checkbox__indicator--backgroundColor: var(--colorCompoundBrandBackgroundHover);
-          --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandBackgroundHover);
+          --fui-Checkbox__indicator--backgroundColor: var(--color-compound-brand-background-hover);
+          --fui-Checkbox__indicator--borderColor: var(--color-compound-brand-background-hover);
         }
 
         @variant active {
-          --fui-Checkbox__indicator--backgroundColor: var(--colorCompoundBrandBackgroundPressed);
-          --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandBackgroundPressed);
+          --fui-Checkbox__indicator--backgroundColor: var(--color-compound-brand-background-pressed);
+          --fui-Checkbox__indicator--borderColor: var(--color-compound-brand-background-pressed);
         }
       }
     }
@@ -240,19 +240,19 @@
     /* from useRootStyles.mixed */
     @variant enabled {
       @variant indeterminate {
-        color: var(--colorNeutralForeground1);
+        color: var(--color-neutral-foreground-1);
 
-        --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandStroke);
-        --fui-Checkbox__indicator--color: var(--colorCompoundBrandForeground1);
+        --fui-Checkbox__indicator--borderColor: var(--color-compound-brand-stroke);
+        --fui-Checkbox__indicator--color: var(--color-compound-brand-foreground-1);
 
         @variant hover {
-          --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandStrokeHover);
-          --fui-Checkbox__indicator--color: var(--colorCompoundBrandForeground1Hover);
+          --fui-Checkbox__indicator--borderColor: var(--color-compound-brand-stroke-hover);
+          --fui-Checkbox__indicator--color: var(--color-compound-brand-foreground-1-hover);
         }
 
         @variant active {
-          --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandStrokePressed);
-          --fui-Checkbox__indicator--color: var(--colorCompoundBrandForeground1Pressed);
+          --fui-Checkbox__indicator--borderColor: var(--color-compound-brand-stroke-pressed);
+          --fui-Checkbox__indicator--color: var(--color-compound-brand-foreground-1-pressed);
         }
       }
     }
@@ -261,10 +261,10 @@
     @variant disabled {
       @apply cursor-default;
 
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
 
-      --fui-Checkbox__indicator--borderColor: var(--colorNeutralStrokeDisabled);
-      --fui-Checkbox__indicator--color: var(--colorNeutralForegroundDisabled);
+      --fui-Checkbox__indicator--borderColor: var(--color-neutral-stroke-disabled);
+      --fui-Checkbox__indicator--color: var(--color-neutral-foreground-disabled);
 
       @variant forced-colors {
         color: GrayText;
@@ -325,7 +325,7 @@
    * slice (the square radius comes from the base reset).
    */
   .circular {
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
   }
 }
 
@@ -358,15 +358,15 @@
      */
     @variant size-medium {
       & .label {
-        margin-top: calc((16px * var(--base-scale) - var(--lineHeightBase300)) / 2);
-        margin-bottom: calc((16px * var(--base-scale) - var(--lineHeightBase300)) / 2);
+        margin-top: calc((16px * var(--base-scale) - var(--leading-base-300)) / 2);
+        margin-bottom: calc((16px * var(--base-scale) - var(--leading-base-300)) / 2);
       }
     }
 
     @variant size-large {
       & .label {
-        margin-top: calc((20px * var(--base-scale) - var(--lineHeightBase300)) / 2);
-        margin-bottom: calc((20px * var(--base-scale) - var(--lineHeightBase300)) / 2);
+        margin-top: calc((20px * var(--base-scale) - var(--leading-base-300)) / 2);
+        margin-bottom: calc((20px * var(--base-scale) - var(--leading-base-300)) / 2);
       }
     }
 

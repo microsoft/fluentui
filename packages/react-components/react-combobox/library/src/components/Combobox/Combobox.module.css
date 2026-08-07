@@ -100,7 +100,7 @@
     @apply relative box-border inline-grid min-w-250 items-center justify-between align-middle;
 
     grid-template-columns: 1fr auto;
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     /* `columnGap: tokens.spacingHorizontalXXS` */
     @apply gap-x-horizontal-xxs;
@@ -112,7 +112,7 @@
      * The `max()` floor and the `clip-path` inset are LITERAL `2px` in this component's
      * source (unlike Dropdown, which reads `strokeWidthThick` for the floor) and are
      * reproduced literally: they must agree with each other and with
-     * `--borderRadiusMedium`, which is an unscaled token. `border-bottom-width` DOES read
+     * `--radius-medium`, which is an unscaled token. `border-bottom-width` DOES read
      * `strokeWidthThick`, so it takes the `--spacing-thick` form (D4 addendum).
      */
     &::after {
@@ -126,24 +126,24 @@
 
       /* Use the whole border-radius as the height and only put radii on the bottom
          corners, otherwise the radius is auto-reduced to fit the available space. */
-      height: max(2px, var(--borderRadiusMedium));
-      border-end-start-radius: var(--borderRadiusMedium);
-      border-end-end-radius: var(--borderRadiusMedium);
+      height: max(2px, var(--radius-medium));
+      border-end-start-radius: var(--radius-medium);
+      border-end-end-radius: var(--radius-medium);
 
       /* longhands: `:focus-within:active` below overrides the color alone */
       border-bottom-width: var(--spacing-thick);
       border-bottom-style: solid;
-      border-bottom-color: var(--colorCompoundBrandStroke);
+      border-bottom-color: var(--color-compound-brand-stroke);
 
       clip-path: inset(calc(100% - 2px) 0 0 0);
 
       /* Animation for focus OUT */
       transform: scaleX(0);
       transition-property: transform;
-      transition-duration: var(--durationUltraFast);
+      transition-duration: var(--duration-ultra-fast);
 
       /* Curve token used as a delay — reproduced from the compiled output verbatim. */
-      transition-delay: var(--curveAccelerateMid);
+      transition-delay: var(--ease-accelerate-mid);
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
@@ -161,8 +161,8 @@
       &::after {
         transform: scaleX(1);
         transition-property: transform;
-        transition-duration: var(--durationNormal);
-        transition-delay: var(--curveDecelerateMid);
+        transition-duration: var(--duration-normal);
+        transition-delay: var(--ease-decelerate-mid);
 
         @media screen and (prefers-reduced-motion: reduce) {
           transition-duration: 0.01ms;
@@ -173,7 +173,7 @@
       /* clicking the field again while it is already focused */
       @variant active {
         &::after {
-          border-bottom-color: var(--colorCompoundBrandStrokePressed);
+          border-bottom-color: var(--color-compound-brand-stroke-pressed);
         }
       }
     }
@@ -193,7 +193,7 @@
 
   /* from useStyles.outline (the default appearance) */
   .outline {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -203,20 +203,20 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--colorNeutralStroke1);
-    border-right-color: var(--colorNeutralStroke1);
-    border-left-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-right-color: var(--color-neutral-stroke-1);
+    border-left-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
   }
 
   /* from useStyles.underline — only the bottom border is drawn; the other three sides keep
      the initial `border-style: none`, so they render nothing. */
   .underline {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     border-bottom-width: var(--spacing-thin);
     border-bottom-style: solid;
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
 
     /* corners look strange if rounded */
     border-radius: 0;
@@ -224,7 +224,7 @@
 
   /* from useStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -234,15 +234,15 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--colorTransparentStroke);
-    border-right-color: var(--colorTransparentStroke);
-    border-bottom-color: var(--colorTransparentStroke);
-    border-left-color: var(--colorTransparentStroke);
+    border-top-color: var(--color-transparent-stroke);
+    border-right-color: var(--color-transparent-stroke);
+    border-bottom-color: var(--color-transparent-stroke);
+    border-left-color: var(--color-transparent-stroke);
   }
 
   /* from useStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--colorNeutralBackground3);
+    background-color: var(--color-neutral-background-3);
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -252,10 +252,10 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--colorTransparentStroke);
-    border-right-color: var(--colorTransparentStroke);
-    border-bottom-color: var(--colorTransparentStroke);
-    border-left-color: var(--colorTransparentStroke);
+    border-top-color: var(--color-transparent-stroke);
+    border-right-color: var(--color-transparent-stroke);
+    border-bottom-color: var(--color-transparent-stroke);
+    border-left-color: var(--color-transparent-stroke);
   }
 }
 
@@ -293,12 +293,12 @@
   .root {
     @variant disabled {
       cursor: not-allowed;
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
 
-      border-top-color: var(--colorNeutralStrokeDisabled);
-      border-right-color: var(--colorNeutralStrokeDisabled);
-      border-bottom-color: var(--colorNeutralStrokeDisabled);
-      border-left-color: var(--colorNeutralStrokeDisabled);
+      border-top-color: var(--color-neutral-stroke-disabled);
+      border-right-color: var(--color-neutral-stroke-disabled);
+      border-bottom-color: var(--color-neutral-stroke-disabled);
+      border-left-color: var(--color-neutral-stroke-disabled);
 
       @variant forced-colors {
         border-top-color: GrayText;
@@ -328,10 +328,10 @@
   .filled-darker {
     @variant invalid {
       @variant not-focus-within {
-        border-top-color: var(--colorPaletteRedBorder2);
-        border-right-color: var(--colorPaletteRedBorder2);
-        border-bottom-color: var(--colorPaletteRedBorder2);
-        border-left-color: var(--colorPaletteRedBorder2);
+        border-top-color: var(--color-palette-red-border-2);
+        border-right-color: var(--color-palette-red-border-2);
+        border-bottom-color: var(--color-palette-red-border-2);
+        border-left-color: var(--color-palette-red-border-2);
       }
     }
   }
@@ -339,7 +339,7 @@
   .underline {
     @variant invalid {
       @variant not-focus-within {
-        border-bottom-color: var(--colorPaletteRedBorder2);
+        border-bottom-color: var(--color-palette-red-border-2);
       }
     }
   }
@@ -362,24 +362,24 @@
   .outline {
     @variant enabled {
       @variant focus-within {
-        border-top-color: var(--colorNeutralStroke1Pressed);
-        border-right-color: var(--colorNeutralStroke1Pressed);
-        border-left-color: var(--colorNeutralStroke1Pressed);
-        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+        border-top-color: var(--color-neutral-stroke-1-pressed);
+        border-right-color: var(--color-neutral-stroke-1-pressed);
+        border-left-color: var(--color-neutral-stroke-1-pressed);
+        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
       }
 
       @variant hover {
-        border-top-color: var(--colorNeutralStroke1Hover);
-        border-right-color: var(--colorNeutralStroke1Hover);
-        border-left-color: var(--colorNeutralStroke1Hover);
-        border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+        border-top-color: var(--color-neutral-stroke-1-hover);
+        border-right-color: var(--color-neutral-stroke-1-hover);
+        border-left-color: var(--color-neutral-stroke-1-hover);
+        border-bottom-color: var(--color-neutral-stroke-accessible-hover);
       }
 
       @variant active {
-        border-top-color: var(--colorNeutralStroke1Pressed);
-        border-right-color: var(--colorNeutralStroke1Pressed);
-        border-left-color: var(--colorNeutralStroke1Pressed);
-        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+        border-top-color: var(--color-neutral-stroke-1-pressed);
+        border-right-color: var(--color-neutral-stroke-1-pressed);
+        border-left-color: var(--color-neutral-stroke-1-pressed);
+        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
       }
     }
   }
@@ -407,10 +407,10 @@
     @variant invalid {
       @variant hover {
         @variant not-focus-within {
-          border-top-color: var(--colorPaletteRedBorder2);
-          border-right-color: var(--colorPaletteRedBorder2);
-          border-bottom-color: var(--colorPaletteRedBorder2);
-          border-left-color: var(--colorPaletteRedBorder2);
+          border-top-color: var(--color-palette-red-border-2);
+          border-right-color: var(--color-palette-red-border-2);
+          border-bottom-color: var(--color-palette-red-border-2);
+          border-left-color: var(--color-palette-red-border-2);
         }
       }
     }
@@ -420,7 +420,7 @@
     @variant invalid {
       @variant hover {
         @variant not-focus-within {
-          border-bottom-color: var(--colorPaletteRedBorder2);
+          border-bottom-color: var(--color-palette-red-border-2);
         }
       }
     }
@@ -439,13 +439,13 @@
       @apply self-stretch;
 
       /* literal `colorTransparentBackground` so the root's background shows through */
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
 
       /* the input itself never has a border — the root draws it */
       border-style: none;
 
-      color: var(--colorNeutralForeground1);
-      font-family: var(--fontFamilyBase);
+      color: var(--color-neutral-foreground-1);
+      font-family: var(--font-base);
 
       /* disable the default browser outline */
       @variant focus {
@@ -460,7 +460,7 @@
        * list.
        */
       &::placeholder {
-        color: var(--colorNeutralForeground4);
+        color: var(--color-neutral-foreground-4);
         opacity: 1; /* browser style override */
       }
     }
@@ -472,10 +472,10 @@
      */
     @variant size-small {
       & .input {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase200);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase200);
+        font-family: var(--font-base);
+        font-size: var(--text-base-200);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-200);
 
         /* SNudge (6) + XXS (2) = 8px, exactly the S step */
         @apply py-vertical-none ps-horizontal-s pe-horizontal-none;
@@ -484,10 +484,10 @@
 
     @variant size-medium {
       & .input {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase300);
+        font-family: var(--font-base);
+        font-size: var(--text-base-300);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-300);
 
         /* MNudge (10) + XXS (2) = 12px, exactly the M step */
         @apply py-vertical-none ps-horizontal-m pe-horizontal-none;
@@ -496,10 +496,10 @@
 
     @variant size-large {
       & .input {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase400);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase400);
+        font-family: var(--font-base);
+        font-size: var(--text-base-400);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-400);
 
         /* M (12) + SNudge (6) = 18px, which matches NO spacing step, so the numeric utility
            is the sanctioned fallback. Same scale: `--spacing` is `calc(1px * var(--base-scale))`,
@@ -518,12 +518,12 @@
      */
     @variant disabled {
       & .input {
-        color: var(--colorNeutralForegroundDisabled);
-        background-color: var(--colorTransparentBackground);
+        color: var(--color-neutral-foreground-disabled);
+        background-color: var(--color-transparent-background);
         cursor: not-allowed;
 
         &::placeholder {
-          color: var(--colorNeutralForegroundDisabled);
+          color: var(--color-neutral-foreground-disabled);
         }
       }
     }
@@ -542,9 +542,9 @@
     & .icon {
       @apply relative box-border block;
 
-      color: var(--colorNeutralStrokeAccessible);
+      color: var(--color-neutral-stroke-accessible);
       cursor: pointer;
-      font-size: var(--fontSizeBase500);
+      font-size: var(--text-base-500);
 
       /*
        * Extend the clickable area to cover the root's right padding "dead zone". Without
@@ -610,7 +610,7 @@
     /* from useIconStyles.disabled — arg #4 */
     @variant disabled {
       & .icon {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
         cursor: not-allowed;
       }
     }
@@ -651,8 +651,8 @@
   .listbox {
     @apply box-border;
 
-    box-shadow: var(--shadow16);
-    border-radius: var(--borderRadiusMedium);
+    box-shadow: var(--shadow-16);
+    border-radius: var(--radius-medium);
     max-height: 80vh;
   }
 

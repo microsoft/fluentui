@@ -3,8 +3,8 @@
 
 .bannerCard {
   align-content: center;
-  border-radius: var(--borderRadiusXLarge);
-  box-shadow: var(--shadow16);
+  border-radius: var(--radius-x-large);
+  box-shadow: var(--shadow-16);
   height: 450px;
   text-align: left;
   position: relative;
@@ -21,27 +21,27 @@
   position: absolute;
   left: 10%;
   top: 25%;
-  border-radius: var(--borderRadiusLarge);
-  box-shadow: var(--shadow8);
-  background: var(--colorNeutralBackground1);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-8);
+  background: var(--color-neutral-background-1);
   padding: var(--spacing-horizontal-xxl) var(--spacing-vertical-xxxl);
   max-width: 270px;
   width: 50%;
 }
 
 .title {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase600);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightBase600);
+  font-family: var(--font-base);
+  font-size: var(--text-base-600);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-base-600);
 }
 
 .subtext {
   margin-bottom: var(--spacing-vertical-m);
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightRegular);
-  line-height: var(--lineHeightBase300);
+  font-family: var(--font-base);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-base-300);
 }
 
 .container {
@@ -86,8 +86,8 @@
 .carouselHeaderTitle {
   flex: 1;
   margin: 0;
-  font-size: var(--fontSizeBase600);
-  font-weight: var(--fontWeightSemibold);
+  font-size: var(--text-base-600);
+  font-weight: var(--font-weight-semibold);
 }
 
 .carouselNavigation {

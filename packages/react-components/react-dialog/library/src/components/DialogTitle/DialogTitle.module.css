@@ -70,10 +70,10 @@
   /* from useRootResetStyles (makeResetStyles) — root arg #2 */
   .root {
     /* from typographyStyles.subtitle1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase500);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase500);
+    font-family: var(--font-base);
+    font-size: var(--text-base-500);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-500);
 
     @apply m-0;
 

@@ -66,8 +66,8 @@
   .elevated {
     @apply overflow-hidden;
 
-    border-radius: var(--borderRadiusXLarge);
-    box-shadow: var(--shadow16);
+    border-radius: var(--radius-x-large);
+    box-shadow: var(--shadow-16);
   }
 }
 

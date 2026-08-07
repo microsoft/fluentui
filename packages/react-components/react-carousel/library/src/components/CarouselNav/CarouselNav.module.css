@@ -31,8 +31,8 @@
  * shared utility to `@apply` — the declarations are the component's own and are written
  * under the catalog `focus-visible-fui` variant. Compiled selectors reproduced 1:1:
  *
- *   .f89hs3r[data-fui-focus-visible]{outline:var(--stroke-width-thick) solid var(--colorStrokeFocus2)}
- *   .f2krc9w[data-fui-focus-visible]{border-radius:var(--borderRadiusMedium)}
+ *   .f89hs3r[data-fui-focus-visible]{outline:var(--stroke-width-thick) solid var(--color-stroke-focus-2)}
+ *   .f2krc9w[data-fui-focus-visible]{border-radius:var(--radius-medium)}
  *   .f8hki3x/.f1d2448m/.ffh67wi/.f1bjia2o[data-fui-focus-visible]{border-*-color:transparent}
  *
  * ── ORDERING IS LOAD-BEARING inside this one rule ───────────────────────────────────
@@ -73,13 +73,13 @@
        hit-testing inside CarouselNavContainer's `pointer-events: none` overlay. */
     pointer-events: all;
 
-    background-color: var(--colorNeutralBackgroundAlpha);
-    border-radius: var(--borderRadiusXLarge);
+    background-color: var(--color-neutral-background-alpha);
+    border-radius: var(--radius-x-large);
 
     /* MUST stay last — see "ORDERING IS LOAD-BEARING" in the header. */
     @variant focus-visible-fui {
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
       border-block-start-color: transparent;
       border-inline-end-color: transparent;
       border-inline-start-color: transparent;

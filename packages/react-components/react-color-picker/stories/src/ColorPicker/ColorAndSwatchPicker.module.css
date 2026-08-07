@@ -11,8 +11,8 @@
 .previewColor {
   width: 50px;
   height: 50px;
-  border-radius: var(--borderRadiusMedium);
-  border: 1px solid var(--colorNeutralStroke1);
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--color-neutral-stroke-1);
   margin: var(--spacing-vertical-m-nudge) 0;
 }
 

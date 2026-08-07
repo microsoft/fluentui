@@ -5,14 +5,14 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto 1fr;
-  box-shadow: var(--shadow16);
+  box-shadow: var(--shadow-16);
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
-  border-radius: var(--borderRadiusMedium);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
+  border-radius: var(--radius-medium);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 10px;
@@ -28,9 +28,9 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralForeground3);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-bottom: none;
-  border-radius: var(--borderRadiusMedium);
+  border-radius: var(--radius-medium);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   padding: 10px;
@@ -47,12 +47,12 @@
 }
 
 .actionCard {
-  border-radius: var(--borderRadiusLarge);
+  border-radius: var(--radius-large);
   overflow: hidden;
   text-align: center;
   max-width: 350px;
   margin: 0px 6px;
-  box-shadow: var(--shadow16);
+  box-shadow: var(--shadow-16);
 }
 
 .imageContainer {

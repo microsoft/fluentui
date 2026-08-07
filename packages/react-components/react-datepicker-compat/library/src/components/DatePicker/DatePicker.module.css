@@ -117,12 +117,12 @@
 @layer fui.base {
   /*
    * from usePopupSurfaceClassName (makeResetStyles) — compiled:
-   * `.r1ytv1z8{background-color:var(--colorNeutralBackground1);box-shadow:var(--shadow16);
-   *   border-radius:var(--borderRadiusMedium);border-width:1px;border-style:solid;
-   *   border-color:var(--colorTransparentStroke);display:inline-flex;
-   *   color:var(--colorNeutralForeground1);font-family:var(--fontFamilyBase);
-   *   font-size:var(--fontSizeBase300);font-weight:var(--fontWeightRegular);
-   *   line-height:var(--lineHeightBase300);}`
+   * `.r1ytv1z8{background-color:var(--color-neutral-background-1);box-shadow:var(--shadow-16);
+   *   border-radius:var(--radius-medium);border-width:1px;border-style:solid;
+   *   border-color:var(--color-transparent-stroke);display:inline-flex;
+   *   color:var(--color-neutral-foreground-1);font-family:var(--font-base);
+   *   font-size:var(--text-base-300);font-weight:var(--font-weight-regular);
+   *   line-height:var(--leading-base-300);}`
    *
    * `border-radius` and `border-width` are kept as the compiled shorthands: no rule in this
    * module sets any of their longhands, so none of Griffel's shorthand/longhand priority
@@ -133,19 +133,19 @@
   .popup-surface {
     @apply inline-flex;
 
-    background-color: var(--colorNeutralBackground1);
-    box-shadow: var(--shadow16);
-    border-radius: var(--borderRadiusMedium);
+    background-color: var(--color-neutral-background-1);
+    box-shadow: var(--shadow-16);
+    border-radius: var(--radius-medium);
     border-width: 1px;
     border-style: solid;
-    border-color: var(--colorTransparentStroke);
-    color: var(--colorNeutralForeground1);
+    border-color: var(--color-transparent-stroke);
+    color: var(--color-neutral-foreground-1);
 
     /* typographyStyles.body1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 }
 

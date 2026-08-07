@@ -18,25 +18,25 @@
 }
 
 .filledLighter {
-  background-color: var(--colorNeutralBackgroundInverted);
+  background-color: var(--color-neutral-background-inverted);
 }
 
 .filledLighter > label {
-  color: var(--colorNeutralForegroundInverted2);
+  color: var(--color-neutral-foreground-inverted-2);
 }
 
 .filledLighter > h3 {
-  color: var(--colorNeutralForegroundInverted2);
+  color: var(--color-neutral-foreground-inverted-2);
 }
 
 .filledDarker {
-  background-color: var(--colorNeutralBackgroundInverted);
+  background-color: var(--color-neutral-background-inverted);
 }
 
 .filledDarker > label {
-  color: var(--colorNeutralForegroundInverted2);
+  color: var(--color-neutral-foreground-inverted-2);
 }
 
 .filledDarker > h3 {
-  color: var(--colorNeutralForegroundInverted2);
+  color: var(--color-neutral-foreground-inverted-2);
 }

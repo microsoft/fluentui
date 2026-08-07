@@ -45,10 +45,10 @@
   .root {
     @apply relative box-border flex grow flex-row items-center text-center;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
 
     &::before,
     &::after {
@@ -193,53 +193,53 @@
 @layer fui.components.l1 {
   /* from useBaseStyles.brand — shorthands.borderColor() expanded to four longhands */
   .brand {
-    color: var(--colorBrandForeground1);
+    color: var(--color-brand-foreground-1);
 
     &::before,
     &::after {
-      border-top-color: var(--colorBrandStroke1);
-      border-right-color: var(--colorBrandStroke1);
-      border-bottom-color: var(--colorBrandStroke1);
-      border-left-color: var(--colorBrandStroke1);
+      border-top-color: var(--color-brand-stroke-1);
+      border-right-color: var(--color-brand-stroke-1);
+      border-bottom-color: var(--color-brand-stroke-1);
+      border-left-color: var(--color-brand-stroke-1);
     }
   }
 
   /* from useBaseStyles.default */
   .default {
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
 
     &::before,
     &::after {
-      border-top-color: var(--colorNeutralStroke2);
-      border-right-color: var(--colorNeutralStroke2);
-      border-bottom-color: var(--colorNeutralStroke2);
-      border-left-color: var(--colorNeutralStroke2);
+      border-top-color: var(--color-neutral-stroke-2);
+      border-right-color: var(--color-neutral-stroke-2);
+      border-bottom-color: var(--color-neutral-stroke-2);
+      border-left-color: var(--color-neutral-stroke-2);
     }
   }
 
   /* from useBaseStyles.subtle */
   .subtle {
-    color: var(--colorNeutralForeground3);
+    color: var(--color-neutral-foreground-3);
 
     &::before,
     &::after {
-      border-top-color: var(--colorNeutralStroke3);
-      border-right-color: var(--colorNeutralStroke3);
-      border-bottom-color: var(--colorNeutralStroke3);
-      border-left-color: var(--colorNeutralStroke3);
+      border-top-color: var(--color-neutral-stroke-3);
+      border-right-color: var(--color-neutral-stroke-3);
+      border-bottom-color: var(--color-neutral-stroke-3);
+      border-left-color: var(--color-neutral-stroke-3);
     }
   }
 
   /* from useBaseStyles.strong */
   .strong {
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
 
     &::before,
     &::after {
-      border-top-color: var(--colorNeutralStroke1);
-      border-right-color: var(--colorNeutralStroke1);
-      border-bottom-color: var(--colorNeutralStroke1);
-      border-left-color: var(--colorNeutralStroke1);
+      border-top-color: var(--color-neutral-stroke-1);
+      border-right-color: var(--color-neutral-stroke-1);
+      border-bottom-color: var(--color-neutral-stroke-1);
+      border-left-color: var(--color-neutral-stroke-1);
     }
   }
 }

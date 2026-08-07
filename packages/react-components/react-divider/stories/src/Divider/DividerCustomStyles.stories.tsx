@@ -20,7 +20,7 @@ export const CustomStyles = (): JSXElement => {
       </div>
       <div className={styles.example}>
         <Divider className={styles.customLineColor}>
-          Custom line color (<code>var(--colorPaletteRedBorder2)</code>)
+          Custom line color (<code>var(--color-palette-red-border-2)</code>)
         </Divider>
       </div>
       <div className={styles.example}>

@@ -81,7 +81,7 @@
        which the Box Alignment spec only *behaves as* `start` in a grid container. The
        compiled Griffel atomic is a literal `align-items:start`; reproduce it exactly. */
     align-items: start;
-    border: var(--spacing-thin) solid var(--colorNeutralStroke1);
+    border: var(--spacing-thin) solid var(--color-neutral-stroke-1);
     background:
       linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent),
       var(--fui-Area--main-color);
@@ -101,11 +101,11 @@
 @layer fui.components.l1 {
   /* arg #3 — from useShapeStyles, applied to the root */
   .rounded {
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
   }
 
   .square {
-    border-radius: var(--borderRadiusNone);
+    border-radius: var(--radius-none);
   }
 }
 
@@ -125,9 +125,9 @@
     height: var(--fui-Slider__thumb--size);
     outline-style: none;
     forced-color-adjust: none;
-    border-radius: var(--borderRadiusCircular);
-    border: var(--spacing-thin) solid var(--colorNeutralForeground4);
-    box-shadow: var(--shadow4);
+    border-radius: var(--radius-circular);
+    border: var(--spacing-thin) solid var(--color-neutral-foreground-4);
+    box-shadow: var(--shadow-4);
     background-color: var(--fui-Area__thumb--color);
     transform: translate(-50%, 50%);
     inset-inline-start: var(--fui-AreaX--progress);
@@ -140,10 +140,10 @@
     &::before {
       position: absolute;
       inset: 0px;
-      border-radius: var(--borderRadiusCircular);
+      border-radius: var(--radius-circular);
       box-sizing: border-box;
       content: '';
-      border: var(--spacing-thick) solid var(--colorNeutralBackground1);
+      border: var(--spacing-thick) solid var(--color-neutral-background-1);
     }
   }
 }
@@ -159,8 +159,8 @@
    *   .ftqa4ok:focus{outline-style:none}
    *   .f2hkw1w:focus-visible{outline-style:none}
    *   .f1b1k54r[data-fui-focus-within]:focus-within{border-top-color:transparent}   (×4 sides)
-   *   .f1i978nd[…]::after{border:var(--stroke-width-thick) solid var(--colorStrokeFocus2)}
-   *   .f16hcqkr[…]::after{border-radius:var(--borderRadiusCircular)}
+   *   .f1i978nd[…]::after{border:var(--stroke-width-thick) solid var(--color-stroke-focus-2)}
+   *   .f16hcqkr[…]::after{border-radius:var(--radius-circular)}
    *   .f1tye2sp[…]::after{top:calc(var(--stroke-width-thick) * -1)}                   (×4 sides)
    *   @media (forced-colors: active){…::after{border-top-color:Highlight}}          (×4 sides)
    * The shared `fui-focus-outline` utility emits exactly this set; its
@@ -191,7 +191,7 @@
 
       &::after {
         --fui-focus-outline-width: var(--spacing-thick);
-        --fui-focus-outline-radius: var(--borderRadiusCircular);
+        --fui-focus-outline-radius: var(--radius-circular);
       }
     }
   }

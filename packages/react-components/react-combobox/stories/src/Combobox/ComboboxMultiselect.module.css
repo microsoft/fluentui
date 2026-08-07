@@ -10,8 +10,8 @@
 }
 
 .description {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase200);
-  font-weight: var(--fontWeightRegular);
-  line-height: var(--lineHeightBase200);
+  font-family: var(--font-base);
+  font-size: var(--text-base-200);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-base-200);
 }

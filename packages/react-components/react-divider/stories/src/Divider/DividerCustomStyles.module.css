@@ -13,7 +13,7 @@
   align-items: center;
   justify-items: center;
   min-height: 96px;
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
 }
 
 .customHeightExample {
@@ -37,11 +37,11 @@
 }
 
 .customLineColor::before {
-  border-color: var(--colorPaletteRedBorder2);
+  border-color: var(--color-palette-red-border-2);
 }
 
 .customLineColor::after {
-  border-color: var(--colorPaletteRedBorder2);
+  border-color: var(--color-palette-red-border-2);
 }
 
 .customLineStyle {

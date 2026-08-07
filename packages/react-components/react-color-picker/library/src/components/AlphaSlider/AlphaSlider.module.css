@@ -90,7 +90,7 @@
    * declaration is an `outline`), so it merely adds.
    */
   .rail {
-    border: var(--spacing-thin) solid var(--colorNeutralStroke1);
+    border: var(--spacing-thin) solid var(--color-neutral-stroke-1);
     background-image:
       linear-gradient(var(--fui-AlphaSlider--direction), transparent, var(--fui-AlphaSlider__rail--color)),
       url(https://fabricweb.azureedge.net/fabric-website/assets/images/transparent-pattern.png);
@@ -99,7 +99,7 @@
   /* from useThumbStyles.thumb — overrides ColorSlider's `--fui-Slider__thumb--color` fill
      with the neutral background, and tints the inner ring instead. */
   .thumb {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     &::before {
       background-color: var(--fui-AlphaSlider__thumb--color);

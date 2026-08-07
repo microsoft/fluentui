@@ -96,8 +96,8 @@
    *   .rticfuj:focus-visible{outline-style:none}
    *   .rticfuj[data-fui-focus-visible]{border-{top,right,bottom,left}-color:transparent}
    *   .rticfuj[data-fui-focus-visible]::after{content:"";position:absolute;pointer-events:none;
-   *       z-index:1;border:2px solid var(--colorStrokeFocus2);
-   *       border-radius:var(--borderRadiusMedium);
+   *       z-index:1;border:2px solid var(--color-stroke-focus-2);
+   *       border-radius:var(--radius-medium);
    *       top:calc(2px * -1);right:…;bottom:…;left:…}
    *   @media (forced-colors: active){…::after{border-*-color:Highlight}}
    *
@@ -111,7 +111,7 @@
   .clear-button {
     @apply relative m-0 h-fit self-center p-0;
 
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
     border-style: none;
     cursor: pointer;
 
@@ -143,13 +143,13 @@
   .root {
     @apply relative box-border inline-flex min-w-250 align-middle;
 
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     /*
      * The bottom focus underline, shared with Input, Select and SpinButton. Unlike Combobox,
      * this component's `max()` floor reads `strokeWidthThick`, so it takes the
      * `--spacing-thick` form (D4 addendum); the `clip-path` inset stays the literal `2px` the
-     * source uses, because it has to agree with `--borderRadiusMedium`, an unscaled token.
+     * source uses, because it has to agree with `--radius-medium`, an unscaled token.
      */
     &::after {
       @apply absolute box-border;
@@ -162,25 +162,25 @@
 
       /* Use the whole border-radius as the height and only put radii on the bottom
          corners, otherwise the radius is auto-reduced to fit the available space. */
-      height: max(var(--spacing-thick), var(--borderRadiusMedium));
-      border-end-start-radius: var(--borderRadiusMedium);
-      border-end-end-radius: var(--borderRadiusMedium);
+      height: max(var(--spacing-thick), var(--radius-medium));
+      border-end-start-radius: var(--radius-medium);
+      border-end-end-radius: var(--radius-medium);
 
       /* longhands: `:focus-within:active` and the `:has()` rule below each override the
          color alone */
       border-bottom-width: var(--spacing-thick);
       border-bottom-style: solid;
-      border-bottom-color: var(--colorCompoundBrandStroke);
+      border-bottom-color: var(--color-compound-brand-stroke);
 
       clip-path: inset(calc(100% - 2px) 0 0 0);
 
       /* Animation for focus OUT */
       transform: scaleX(0);
       transition-property: transform;
-      transition-duration: var(--durationUltraFast);
+      transition-duration: var(--duration-ultra-fast);
 
       /* Curve token used as a delay — reproduced from the compiled output verbatim. */
-      transition-delay: var(--curveAccelerateMid);
+      transition-delay: var(--ease-accelerate-mid);
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
@@ -198,8 +198,8 @@
       &::after {
         transform: scaleX(1);
         transition-property: transform;
-        transition-duration: var(--durationNormal);
-        transition-delay: var(--curveDecelerateMid);
+        transition-duration: var(--duration-normal);
+        transition-delay: var(--ease-decelerate-mid);
 
         @media screen and (prefers-reduced-motion: reduce) {
           transition-duration: 0.01ms;
@@ -210,7 +210,7 @@
       /* clicking the field again while it is already focused */
       @variant active {
         &::after {
-          border-bottom-color: var(--colorCompoundBrandStrokePressed);
+          border-bottom-color: var(--color-compound-brand-stroke-pressed);
         }
       }
     }
@@ -248,7 +248,7 @@
 
   /* from useStyles.outline (the default appearance) */
   .outline {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -258,20 +258,20 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--colorNeutralStroke1);
-    border-right-color: var(--colorNeutralStroke1);
-    border-left-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-right-color: var(--color-neutral-stroke-1);
+    border-left-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
   }
 
   /* from useStyles.underline — only the bottom border is drawn; the other three sides keep
      the initial `border-style: none`, so they render nothing. */
   .underline {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     border-bottom-width: var(--spacing-thin);
     border-bottom-style: solid;
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
 
     /* corners look strange if rounded */
     border-radius: 0;
@@ -283,7 +283,7 @@
    * `solid ${tokens.colorTransparentStroke}`. Reproduced as written; do not "harmonise" them.
    */
   .filled-lighter {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -300,7 +300,7 @@
   }
 
   .filled-darker {
-    background-color: var(--colorNeutralBackground3);
+    background-color: var(--color-neutral-background-3);
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -327,12 +327,12 @@
   .root {
     @variant disabled {
       cursor: not-allowed;
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
 
-      border-top-color: var(--colorNeutralStrokeDisabled);
-      border-right-color: var(--colorNeutralStrokeDisabled);
-      border-bottom-color: var(--colorNeutralStrokeDisabled);
-      border-left-color: var(--colorNeutralStrokeDisabled);
+      border-top-color: var(--color-neutral-stroke-disabled);
+      border-right-color: var(--color-neutral-stroke-disabled);
+      border-bottom-color: var(--color-neutral-stroke-disabled);
+      border-left-color: var(--color-neutral-stroke-disabled);
 
       @variant forced-colors {
         border-top-color: GrayText;
@@ -355,10 +355,10 @@
   .filled-darker {
     @variant invalid {
       @variant not-focus-within {
-        border-top-color: var(--colorPaletteRedBorder2);
-        border-right-color: var(--colorPaletteRedBorder2);
-        border-bottom-color: var(--colorPaletteRedBorder2);
-        border-left-color: var(--colorPaletteRedBorder2);
+        border-top-color: var(--color-palette-red-border-2);
+        border-right-color: var(--color-palette-red-border-2);
+        border-bottom-color: var(--color-palette-red-border-2);
+        border-left-color: var(--color-palette-red-border-2);
       }
     }
   }
@@ -366,7 +366,7 @@
   .underline {
     @variant invalid {
       @variant not-focus-within {
-        border-bottom-color: var(--colorPaletteRedBorder2);
+        border-bottom-color: var(--color-palette-red-border-2);
       }
     }
   }
@@ -380,24 +380,24 @@
   .outline {
     @variant enabled {
       @variant focus-within {
-        border-top-color: var(--colorNeutralStroke1Pressed);
-        border-right-color: var(--colorNeutralStroke1Pressed);
-        border-left-color: var(--colorNeutralStroke1Pressed);
-        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+        border-top-color: var(--color-neutral-stroke-1-pressed);
+        border-right-color: var(--color-neutral-stroke-1-pressed);
+        border-left-color: var(--color-neutral-stroke-1-pressed);
+        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
       }
 
       @variant hover {
-        border-top-color: var(--colorNeutralStroke1Hover);
-        border-right-color: var(--colorNeutralStroke1Hover);
-        border-left-color: var(--colorNeutralStroke1Hover);
-        border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+        border-top-color: var(--color-neutral-stroke-1-hover);
+        border-right-color: var(--color-neutral-stroke-1-hover);
+        border-left-color: var(--color-neutral-stroke-1-hover);
+        border-bottom-color: var(--color-neutral-stroke-accessible-hover);
       }
 
       @variant active {
-        border-top-color: var(--colorNeutralStroke1Pressed);
-        border-right-color: var(--colorNeutralStroke1Pressed);
-        border-left-color: var(--colorNeutralStroke1Pressed);
-        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+        border-top-color: var(--color-neutral-stroke-1-pressed);
+        border-right-color: var(--color-neutral-stroke-1-pressed);
+        border-left-color: var(--color-neutral-stroke-1-pressed);
+        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
       }
     }
   }
@@ -416,10 +416,10 @@
     @variant invalid {
       @variant hover {
         @variant not-focus-within {
-          border-top-color: var(--colorPaletteRedBorder2);
-          border-right-color: var(--colorPaletteRedBorder2);
-          border-bottom-color: var(--colorPaletteRedBorder2);
-          border-left-color: var(--colorPaletteRedBorder2);
+          border-top-color: var(--color-palette-red-border-2);
+          border-right-color: var(--color-palette-red-border-2);
+          border-bottom-color: var(--color-palette-red-border-2);
+          border-left-color: var(--color-palette-red-border-2);
         }
       }
     }
@@ -429,7 +429,7 @@
     @variant invalid {
       @variant hover {
         @variant not-focus-within {
-          border-bottom-color: var(--colorPaletteRedBorder2);
+          border-bottom-color: var(--color-palette-red-border-2);
         }
       }
     }
@@ -445,11 +445,11 @@
     & .button {
       @apply box-border grid w-full items-center justify-between;
 
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
       border-style: none;
-      color: var(--colorNeutralForeground1);
+      color: var(--color-neutral-foreground-1);
       cursor: pointer;
-      font-family: var(--fontFamilyBase);
+      font-family: var(--font-base);
       grid-template-columns: [content] 1fr [icon] auto [end];
 
       /* `columnGap: tokens.spacingHorizontalXXS` */
@@ -473,10 +473,10 @@
      */
     @variant size-small {
       & .button {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase200);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase200);
+        font-family: var(--font-base);
+        font-size: var(--text-base-200);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-200);
 
         /* SNudge (6) + XXS (2) = 8px, exactly the S step */
         @apply py-3 ps-horizontal-s pe-horizontal-s-nudge;
@@ -485,10 +485,10 @@
 
     @variant size-medium {
       & .button {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase300);
+        font-family: var(--font-base);
+        font-size: var(--text-base-300);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-300);
 
         /* MNudge (10) + XXS (2) = 12px, exactly the M step */
         @apply py-5 ps-horizontal-m pe-horizontal-m-nudge;
@@ -497,10 +497,10 @@
 
     @variant size-large {
       & .button {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase400);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase400);
+        font-family: var(--font-base);
+        font-size: var(--text-base-400);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-400);
 
         /* `columnGap: spacingHorizontalSNudge` overrides the button's XXS.
            M (12) + SNudge (6) = 18px matches NO spacing step → numeric fallback. */
@@ -510,13 +510,13 @@
 
     /* from useStyles.placeholder — arg #4, applied while the trigger shows the placeholder */
     & .placeholder {
-      color: var(--colorNeutralForeground4);
+      color: var(--color-neutral-foreground-4);
     }
 
     /* from useStyles.disabledText — arg #5, the last `button` style argument */
     @variant disabled {
       & .button {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
         cursor: not-allowed;
       }
     }
@@ -540,8 +540,8 @@
     & .icon {
       @apply box-border block;
 
-      color: var(--colorNeutralStrokeAccessible);
-      font-size: var(--fontSizeBase500);
+      color: var(--color-neutral-stroke-accessible);
+      font-size: var(--text-base-500);
       grid-column-start: icon;
       grid-column-end: end;
     }
@@ -578,7 +578,7 @@
     /* from useIconStyles.disabled — colour only; unlike Combobox this slice sets no cursor */
     @variant disabled {
       & .icon {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
 
@@ -609,8 +609,8 @@
   .listbox {
     @apply box-border;
 
-    box-shadow: var(--shadow16);
-    border-radius: var(--borderRadiusMedium);
+    box-shadow: var(--shadow-16);
+    border-radius: var(--radius-medium);
     max-height: 80vh;
   }
 

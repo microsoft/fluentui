@@ -78,12 +78,12 @@
   .root {
     @apply relative flex items-center;
 
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground1);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-1);
     cursor: pointer;
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    line-height: var(--leading-base-300);
 
     /* `columnGap: tokens.spacingHorizontalXS` */
     @apply gap-x-horizontal-xs;
@@ -108,8 +108,8 @@
 
       border-width: 2px;
       border-style: solid;
-      border-color: var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      border-color: var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
 
       top: -2px;
       bottom: -2px;
@@ -124,7 +124,7 @@
      * (DECISIONS.md D15.6).
      */
     @variant disabled-control {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
       cursor: default;
 
       @variant forced-colors {
@@ -145,7 +145,7 @@
   .check-icon {
     @apply shrink-0;
 
-    font-size: var(--fontSizeBase400);
+    font-size: var(--text-base-400);
 
     /*
      * Shift icon(s) to the left to give text content extra spacing without needing an extra
@@ -177,12 +177,12 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--colorNeutralStrokeAccessible);
-    border-right-color: var(--colorNeutralStrokeAccessible);
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
-    border-left-color: var(--colorNeutralStrokeAccessible);
+    border-top-color: var(--color-neutral-stroke-accessible);
+    border-right-color: var(--color-neutral-stroke-accessible);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
+    border-left-color: var(--color-neutral-stroke-accessible);
 
-    border-radius: var(--borderRadiusSmall);
+    border-radius: var(--radius-small);
 
     fill: currentColor;
     font-size: calc(12px * var(--base-scale));
@@ -197,18 +197,18 @@
 
   /* from useStyles.selectedMultiselectCheck — arg #5 */
   .selected-multiselect-check {
-    background-color: var(--colorCompoundBrandBackground);
-    color: var(--colorNeutralForegroundInverted);
+    background-color: var(--color-compound-brand-background);
+    color: var(--color-neutral-foreground-inverted);
 
-    border-top-color: var(--colorCompoundBrandBackground);
-    border-right-color: var(--colorCompoundBrandBackground);
-    border-bottom-color: var(--colorCompoundBrandBackground);
-    border-left-color: var(--colorCompoundBrandBackground);
+    border-top-color: var(--color-compound-brand-background);
+    border-right-color: var(--color-compound-brand-background);
+    border-bottom-color: var(--color-compound-brand-background);
+    border-left-color: var(--color-compound-brand-background);
   }
 
   /* from useStyles.checkDisabled — arg #6 */
   .check-disabled {
-    color: var(--colorNeutralForegroundDisabled);
+    color: var(--color-neutral-foreground-disabled);
 
     @variant forced-colors {
       color: GrayText;
@@ -217,10 +217,10 @@
 
   /* from useStyles.multiselectCheckDisabled — arg #7, the last style argument */
   .multiselect-check-disabled {
-    border-top-color: var(--colorNeutralForegroundDisabled);
-    border-right-color: var(--colorNeutralForegroundDisabled);
-    border-bottom-color: var(--colorNeutralForegroundDisabled);
-    border-left-color: var(--colorNeutralForegroundDisabled);
+    border-top-color: var(--color-neutral-foreground-disabled);
+    border-right-color: var(--color-neutral-foreground-disabled);
+    border-bottom-color: var(--color-neutral-foreground-disabled);
+    border-left-color: var(--color-neutral-foreground-disabled);
   }
 }
 
@@ -242,26 +242,26 @@
   .root {
     @variant enabled-control {
       @variant hover {
-        background-color: var(--colorNeutralBackground1Hover);
-        color: var(--colorNeutralForeground1Hover);
+        background-color: var(--color-neutral-background-1-hover);
+        color: var(--color-neutral-foreground-1-hover);
 
         & .check-icon {
-          border-top-color: var(--colorNeutralForeground1Hover);
-          border-right-color: var(--colorNeutralForeground1Hover);
-          border-bottom-color: var(--colorNeutralForeground1Hover);
-          border-left-color: var(--colorNeutralForeground1Hover);
+          border-top-color: var(--color-neutral-foreground-1-hover);
+          border-right-color: var(--color-neutral-foreground-1-hover);
+          border-bottom-color: var(--color-neutral-foreground-1-hover);
+          border-left-color: var(--color-neutral-foreground-1-hover);
         }
       }
 
       @variant active {
-        background-color: var(--colorNeutralBackground1Pressed);
-        color: var(--colorNeutralForeground1Pressed);
+        background-color: var(--color-neutral-background-1-pressed);
+        color: var(--color-neutral-foreground-1-pressed);
 
         & .check-icon {
-          border-top-color: var(--colorNeutralForeground1Hover);
-          border-right-color: var(--colorNeutralForeground1Hover);
-          border-bottom-color: var(--colorNeutralForeground1Hover);
-          border-left-color: var(--colorNeutralForeground1Hover);
+          border-top-color: var(--color-neutral-foreground-1-hover);
+          border-right-color: var(--color-neutral-foreground-1-hover);
+          border-bottom-color: var(--color-neutral-foreground-1-hover);
+          border-left-color: var(--color-neutral-foreground-1-hover);
         }
       }
     }

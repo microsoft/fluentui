@@ -15,22 +15,22 @@
   position: absolute;
   left: 10%;
   top: 25%;
-  background: var(--colorNeutralBackground1);
+  background: var(--color-neutral-background-1);
   padding: 18px;
   max-width: 270px;
   width: 50%;
 }
 
 .title {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeHero800);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightHero800);
+  font-family: var(--font-base);
+  font-size: var(--text-hero-800);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-hero-800);
 }
 
 .subtext {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightRegular);
-  line-height: var(--lineHeightBase300);
+  font-family: var(--font-base);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-base-300);
 }

@@ -138,7 +138,7 @@
     forced-color-adjust: none;
     outline-width: var(--spacing-thin);
     outline-style: solid;
-    outline-color: var(--colorTransparentStroke);
+    outline-color: var(--color-transparent-stroke);
 
     &::before {
       content: '';
@@ -176,11 +176,11 @@
 @layer fui.components.l1 {
   /* rail arg #4 — from useShapeStyles, applied to the rail */
   .rounded {
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
   }
 
   .square {
-    border-radius: var(--borderRadiusNone);
+    border-radius: var(--radius-none);
   }
 }
 
@@ -238,18 +238,18 @@
     height: var(--fui-Slider__thumb--size);
     outline-style: none;
     forced-color-adjust: none;
-    border-radius: var(--borderRadiusCircular);
-    border: var(--spacing-thin) solid var(--colorNeutralForeground4);
-    box-shadow: var(--shadow4);
+    border-radius: var(--radius-circular);
+    border: var(--spacing-thin) solid var(--color-neutral-foreground-4);
+    box-shadow: var(--shadow-4);
     background-color: var(--fui-Slider__thumb--color);
 
     &::before {
       position: absolute;
       inset: 0px;
-      border-radius: var(--borderRadiusCircular);
+      border-radius: var(--radius-circular);
       box-sizing: border-box;
       content: '';
-      border: var(--spacing-thick) solid var(--colorNeutralBackground1);
+      border: var(--spacing-thick) solid var(--color-neutral-background-1);
     }
   }
 }
@@ -311,9 +311,9 @@
 
     @variant focus-visible {
       & ~ .thumb {
-        border: 2px solid var(--colorStrokeFocus2);
-        outline: var(--spacing-thick) solid var(--colorTransparentStroke);
-        border-radius: var(--borderRadiusCircular);
+        border: 2px solid var(--color-stroke-focus-2);
+        outline: var(--spacing-thick) solid var(--color-transparent-stroke);
+        border-radius: var(--radius-circular);
       }
     }
   }

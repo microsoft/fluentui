@@ -79,11 +79,11 @@
     @apply ms-horizontal-xs me-horizontal-xs mt-0 mb-0;
     @apply h-40 w-40;
 
-    border-block-start-color: var(--colorTransparentStroke);
-    border-inline-end-color: var(--colorTransparentStroke);
-    border-inline-start-color: var(--colorTransparentStroke);
-    border-block-end-color: var(--colorTransparentStroke);
-    border-radius: var(--borderRadiusSmall);
+    border-block-start-color: var(--color-transparent-stroke);
+    border-inline-end-color: var(--color-transparent-stroke);
+    border-inline-start-color: var(--color-transparent-stroke);
+    border-block-end-color: var(--color-transparent-stroke);
+    border-radius: var(--radius-small);
 
     @variant hover {
       @apply cursor-pointer;
@@ -105,7 +105,7 @@
   .image {
     @apply h-40 w-40;
 
-    border-radius: var(--borderRadiusSmall);
+    border-radius: var(--radius-small);
   }
 }
 

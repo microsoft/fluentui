@@ -120,17 +120,17 @@
    */
   .rest-background {
     @variant at-rest {
-      background-color: var(--colorNeutralBackgroundAlpha);
+      background-color: var(--color-neutral-background-alpha);
     }
   }
 
   .rest-stroke-foreground {
     @variant at-rest {
-      border-block-start-color: var(--colorTransparentStroke);
-      border-inline-end-color: var(--colorTransparentStroke);
-      border-inline-start-color: var(--colorTransparentStroke);
-      border-block-end-color: var(--colorTransparentStroke);
-      color: var(--colorNeutralForeground2);
+      border-block-start-color: var(--color-transparent-stroke);
+      border-inline-end-color: var(--color-transparent-stroke);
+      border-inline-start-color: var(--color-transparent-stroke);
+      border-block-end-color: var(--color-transparent-stroke);
+      color: var(--color-neutral-foreground-2);
     }
   }
 }
