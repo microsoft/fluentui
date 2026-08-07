@@ -63,30 +63,31 @@
        are one system (`--spacing` is `calc(1px * var(--base-scale))`). */
     @apply px-11 pt-vertical-xs pb-vertical-s-nudge;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    line-height: var(--leading-base-200);
 
     /* Kept as the compiled shorthands (`.ft85np5{border-radius:…}`, `.f9ggezi{border:1px
        solid …}`): no rule in this module sets any of their longhands, so there is no
        Griffel shorthand-vs-longhand priority left for the cascade to get wrong. */
-    border-radius: var(--borderRadiusMedium);
-    border: 1px solid var(--colorTransparentStroke);
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--color-transparent-stroke);
 
-    background-color: var(--colorNeutralBackground1);
-    color: var(--colorNeutralForeground1);
+    background-color: var(--color-neutral-background-1);
+    color: var(--color-neutral-foreground-1);
 
     /* TODO carried verbatim from the Griffel source: need versions of
        tokens.alias.shadow.shadow8 etc. that work with filter. */
-    filter: drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey));
+    filter: drop-shadow(0 0 2px var(--color-neutral-shadow-ambient))
+      drop-shadow(0 4px 8px var(--color-neutral-shadow-key));
   }
 }
 
 @layer fui.components.l1 {
   /* from useStyles.inverted — `appearance` is a LOOK prop, so it rides a module class (D3) */
   .inverted {
-    background-color: var(--colorNeutralBackgroundStatic);
-    color: var(--colorNeutralForegroundStaticInverted);
+    background-color: var(--color-neutral-background-static);
+    color: var(--color-neutral-foreground-static-inverted);
   }
 }
 
@@ -134,7 +135,7 @@
     background-color: inherit;
     background-clip: content-box;
 
-    border-bottom-left-radius: var(--borderRadiusSmall); /* @noflip */
+    border-bottom-left-radius: var(--radius-small); /* @noflip */
     transform: rotate(var(--fui-positioning-arrow-angle)); /* @noflip */
 
     height: var(--fui-positioning-arrow-height);
@@ -152,9 +153,9 @@
          while its spacing utilities are --base-scale rem, so both are written literally
          here to keep them from drifting apart at a non-default root font size. */
       margin: -1px;
-      border: 1px solid var(--colorTransparentStroke);
+      border: 1px solid var(--color-transparent-stroke);
 
-      border-bottom-left-radius: var(--borderRadiusSmall); /* @noflip */
+      border-bottom-left-radius: var(--radius-small); /* @noflip */
       clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
     }
 

@@ -67,16 +67,16 @@
 
     grid-template-columns: auto 1fr auto;
 
-    border: var(--spacing-thin) solid var(--colorTransparentStroke);
-    border-radius: var(--borderRadiusMedium);
-    box-shadow: var(--shadow8);
+    border: var(--spacing-thin) solid var(--color-transparent-stroke);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-8);
 
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
     line-height: calc(20px * var(--base-scale));
 
-    color: var(--colorNeutralForeground1);
-    background-color: var(--colorNeutralBackground1);
+    color: var(--color-neutral-foreground-1);
+    background-color: var(--color-neutral-background-1);
   }
 }
 
@@ -88,7 +88,7 @@
    * keeps data attributes to the cases a class cannot express.
    */
   .inverted {
-    color: var(--colorNeutralForegroundInverted2);
-    background-color: var(--colorNeutralBackgroundInverted);
+    color: var(--color-neutral-foreground-inverted-2);
+    background-color: var(--color-neutral-background-inverted);
   }
 }

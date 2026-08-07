@@ -69,8 +69,8 @@
 
     /* from createCustomFocusIndicatorStyle({ outline, borderRadius, borderColor('transparent') }) */
     @variant focus-visible-fui {
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
 
       border-block-start-color: transparent;
       border-inline-end-color: transparent;

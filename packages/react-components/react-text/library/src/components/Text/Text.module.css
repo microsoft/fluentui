@@ -78,10 +78,10 @@
      */
     display: inline;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /*
@@ -139,74 +139,74 @@
    */
   .root {
     @variant size-100 {
-      font-size: var(--fontSizeBase100);
-      line-height: var(--lineHeightBase100);
+      font-size: var(--text-base-100);
+      line-height: var(--leading-base-100);
     }
 
     @variant size-200 {
-      font-size: var(--fontSizeBase200);
-      line-height: var(--lineHeightBase200);
+      font-size: var(--text-base-200);
+      line-height: var(--leading-base-200);
     }
 
     @variant size-400 {
-      font-size: var(--fontSizeBase400);
-      line-height: var(--lineHeightBase400);
+      font-size: var(--text-base-400);
+      line-height: var(--leading-base-400);
     }
 
     @variant size-500 {
-      font-size: var(--fontSizeBase500);
-      line-height: var(--lineHeightBase500);
+      font-size: var(--text-base-500);
+      line-height: var(--leading-base-500);
     }
 
     @variant size-600 {
-      font-size: var(--fontSizeBase600);
-      line-height: var(--lineHeightBase600);
+      font-size: var(--text-base-600);
+      line-height: var(--leading-base-600);
     }
 
     @variant size-700 {
-      font-size: var(--fontSizeHero700);
-      line-height: var(--lineHeightHero700);
+      font-size: var(--text-hero-700);
+      line-height: var(--leading-hero-700);
     }
 
     @variant size-800 {
-      font-size: var(--fontSizeHero800);
-      line-height: var(--lineHeightHero800);
+      font-size: var(--text-hero-800);
+      line-height: var(--leading-hero-800);
     }
 
     @variant size-900 {
-      font-size: var(--fontSizeHero900);
-      line-height: var(--lineHeightHero900);
+      font-size: var(--text-hero-900);
+      line-height: var(--leading-hero-900);
     }
 
     @variant size-1000 {
-      font-size: var(--fontSizeHero1000);
-      line-height: var(--lineHeightHero1000);
+      font-size: var(--text-hero-1000);
+      line-height: var(--leading-hero-1000);
     }
   }
 
   /* from useStyles.monospace */
   .monospace {
-    font-family: var(--fontFamilyMonospace);
+    font-family: var(--font-monospace);
   }
 
   /* from useStyles.numeric */
   .numeric {
-    font-family: var(--fontFamilyNumeric);
+    font-family: var(--font-numeric);
   }
 
   /* from useStyles.weightMedium */
   .medium {
-    font-weight: var(--fontWeightMedium);
+    font-weight: var(--font-weight-medium);
   }
 
   /* from useStyles.weightSemibold */
   .semibold {
-    font-weight: var(--fontWeightSemibold);
+    font-weight: var(--font-weight-semibold);
   }
 
   /* from useStyles.weightBold */
   .bold {
-    font-weight: var(--fontWeightBold);
+    font-weight: var(--font-weight-bold);
   }
 
   /* from useStyles.alignCenter */

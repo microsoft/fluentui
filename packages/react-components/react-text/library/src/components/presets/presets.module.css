@@ -32,7 +32,7 @@
  * ToggleButton-over-Button shape). That makes it a library COMPOSITION, so it belongs in
  * `fui.components.l2`, which beats all of `fui.components.l1` regardless of stylesheet
  * load order. In `fui.components.l1` the winner between `.root`'s `font-size:
- * var(--fontSizeBase300)` and `.display`'s `var(--fontSizeHero1000)` would come down to
+ * var(--text-base-300)` and `.display`'s `var(--text-hero-1000)` would come down to
  * which file the aggregator emitted first — the exact nondeterminism l2 exists to remove.
  *
  * ── Local names ────────────────────────────────────────────────────────────────────
@@ -51,137 +51,137 @@
 @layer fui.components.l2 {
   /* from useBody1Styles.root — typographyStyles.body1 */
   .body1 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /* from useBody1StrongStyles.root — typographyStyles.body1Strong */
   .body1-strong {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-300);
   }
 
   /* from useBody1StrongerStyles.root — typographyStyles.body1Stronger */
   .body1-stronger {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightBold);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-base-300);
   }
 
   /* from useBody2Styles.root — typographyStyles.body2 */
   .body2 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase400);
+    font-family: var(--font-base);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-400);
   }
 
   /* from useCaption1Styles.root — typographyStyles.caption1 */
   .caption1 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
   }
 
   /* from useCaption1StrongStyles.root — typographyStyles.caption1Strong */
   .caption1-strong {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-200);
   }
 
   /* from useCaption1StrongerStyles.root — typographyStyles.caption1Stronger */
   .caption1-stronger {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightBold);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-base-200);
   }
 
   /* from useCaption2Styles.root — typographyStyles.caption2 */
   .caption2 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase100);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-100);
   }
 
   /* from useCaption2StrongStyles.root — typographyStyles.caption2Strong */
   .caption2-strong {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
   }
 
   /* from useDisplayStyles.root — typographyStyles.display */
   .display {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeHero1000);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightHero1000);
+    font-family: var(--font-base);
+    font-size: var(--text-hero-1000);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-hero-1000);
   }
 
   /* from useLargeTitleStyles.root — typographyStyles.largeTitle */
   .large-title {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeHero900);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightHero900);
+    font-family: var(--font-base);
+    font-size: var(--text-hero-900);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-hero-900);
   }
 
   /* from useSubtitle1Styles.root — typographyStyles.subtitle1 */
   .subtitle1 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase500);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase500);
+    font-family: var(--font-base);
+    font-size: var(--text-base-500);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-500);
   }
 
   /* from useSubtitle2Styles.root — typographyStyles.subtitle2 */
   .subtitle2 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase400);
+    font-family: var(--font-base);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-400);
   }
 
   /* from useSubtitle2StrongerStyles.root — typographyStyles.subtitle2Stronger */
   .subtitle2-stronger {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightBold);
-    line-height: var(--lineHeightBase400);
+    font-family: var(--font-base);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-base-400);
   }
 
   /* from useTitle1Styles.root — typographyStyles.title1 */
   .title1 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeHero800);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightHero800);
+    font-family: var(--font-base);
+    font-size: var(--text-hero-800);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-hero-800);
   }
 
   /* from useTitle2Styles.root — typographyStyles.title2 */
   .title2 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeHero700);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightHero700);
+    font-family: var(--font-base);
+    font-size: var(--text-hero-700);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-hero-700);
   }
 
   /* from useTitle3Styles.root — typographyStyles.title3 */
   .title3 {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase600);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase600);
+    font-family: var(--font-base);
+    font-size: var(--text-base-600);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-600);
   }
 }

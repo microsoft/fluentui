@@ -139,10 +139,10 @@
    * (cookbook), with the right/left pair written logically because Griffel flipped it in RTL.
    */
   .brand-secondary {
-    border-block-start-color: var(--colorNeutralForegroundOnBrand);
-    border-inline-end-color: var(--colorNeutralForegroundOnBrand);
-    border-block-end-color: var(--colorNeutralForegroundOnBrand);
-    border-inline-start-color: var(--colorNeutralForegroundOnBrand);
+    border-block-start-color: var(--color-neutral-foreground-on-brand);
+    border-inline-end-color: var(--color-neutral-foreground-on-brand);
+    border-block-end-color: var(--color-neutral-foreground-on-brand);
+    border-inline-start-color: var(--color-neutral-foreground-on-brand);
   }
 }
 
@@ -157,16 +157,16 @@
    * and widening it would newly paint the pressed look on a keyboard-activated button.
    */
   .brand-primary {
-    color: var(--colorBrandForeground1);
-    background-color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-brand-foreground-1);
+    background-color: var(--color-neutral-foreground-on-brand);
 
     @variant hover {
-      color: var(--colorCompoundBrandForeground1Hover);
-      background-color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-compound-brand-foreground-1-hover);
+      background-color: var(--color-neutral-foreground-on-brand);
 
       @variant active {
-        color: var(--colorCompoundBrandForeground1Pressed);
-        background-color: var(--colorNeutralForegroundOnBrand);
+        color: var(--color-compound-brand-foreground-1-pressed);
+        background-color: var(--color-neutral-foreground-on-brand);
       }
     }
   }

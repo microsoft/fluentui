@@ -116,17 +116,17 @@ do internally:
 ```css
 /* Test.module.css */
 .root {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeHero800);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightHero800);
+  font-family: var(--font-base);
+  font-size: var(--text-hero-800);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-hero-800);
 }
 
 .caption {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase200);
-  font-weight: var(--fontWeightRegular);
-  line-height: var(--lineHeightBase200);
+  font-family: var(--font-base);
+  font-size: var(--text-base-200);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-base-200);
 }
 ```
 

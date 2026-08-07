@@ -51,12 +51,12 @@
   .root {
     @apply box-border flex min-h-32 grow items-center;
 
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* compiled `border:none` — TagPickerControl draws the field's border */
     border-style: none;
 
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
     cursor: pointer;
 
     /*
@@ -64,7 +64,7 @@
      * `typographyStyles.*` spread; all four are the same token, so Griffel deduplicated them
      * onto one atomic (`.fk6fouc`). Declared once here for the same reason.
      */
-    font-family: var(--fontFamilyBase);
+    font-family: var(--font-base);
 
     /* `columnGap: tokens.spacingHorizontalXXS` — `extra-large` overrides it below */
     @apply gap-x-horizontal-xxs;
@@ -92,9 +92,9 @@
   .root {
     @variant size-medium {
       /* typographyStyles.caption1 */
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
 
       /* SNudge (6) + XXS (2) = 8px, exactly the S step */
       @apply py-3 ps-horizontal-s pe-horizontal-s-nudge;
@@ -102,9 +102,9 @@
 
     @variant size-large {
       /* typographyStyles.body1 */
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
+      font-size: var(--text-base-300);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-300);
 
       /* MNudge (10) + XXS (2) = 12px, exactly the M step */
       @apply py-5 ps-horizontal-m pe-horizontal-m-nudge;
@@ -115,9 +115,9 @@
       @apply gap-x-horizontal-s-nudge;
 
       /* typographyStyles.body2 */
-      font-size: var(--fontSizeBase400);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase400);
+      font-size: var(--text-base-400);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-400);
 
       /* M (12) + SNudge (6) = 18px, which matches NO spacing step, so the numeric utility is
          the sanctioned fallback (D4 amendment) — same scale, `ps-18` === `calc(18px * var(--base-scale))`. */

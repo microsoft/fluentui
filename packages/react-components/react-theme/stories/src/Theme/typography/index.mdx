@@ -28,10 +28,10 @@ do internally:
 ```css
 /* Example.module.css */
 .text {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeHero700);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightHero700);
+  font-family: var(--font-base);
+  font-size: var(--text-hero-700);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-hero-700);
 }
 ```
 
@@ -56,10 +56,10 @@ Besides using a full typography ramp, you can still compose individual typograph
 ```css
 /* Composing.module.css */
 .text {
-  font-family: var(--fontFamilyMonospace);
-  font-size: var(--fontSizeBase600);
-  font-weight: var(--fontWeightBold);
-  line-height: var(--lineHeightBase600);
+  font-family: var(--font-monospace);
+  font-size: var(--text-base-600);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-base-600);
 }
 ```
 
@@ -84,18 +84,18 @@ CSS properties next to them:
 /* MixedStyles.module.css */
 .title {
   /* Title 2 ramp */
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeHero700);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightHero700);
+  font-family: var(--font-base);
+  font-size: var(--text-hero-700);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-hero-700);
 }
 
 .paragraph {
   /* Body 1 ramp */
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightRegular);
-  line-height: var(--lineHeightBase300);
+  font-family: var(--font-base);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-base-300);
   /* custom additions */
   letter-spacing: 0.0675em;
   font-style: italic;

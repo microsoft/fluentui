@@ -55,9 +55,9 @@
  * the `vertical` axis.
  *
  * ── Reproduced verbatim, including one oddity ───────────────────────────────────────
- * The subtitle's `line-height` reads `--fontSizeBase200`, NOT `--lineHeightBase200`. That is
+ * The subtitle's `line-height` reads `--text-base-200`, NOT `--leading-base-200`. That is
  * what the source declares and what the compiled atomic emits
- * (`.rzjw1xk{…line-height:var(--fontSizeBase200);…}`); it is reproduced rather than
+ * (`.rzjw1xk{…line-height:var(--text-base-200);…}`); it is reproduced rather than
  * "corrected", per the cookbook's rule to reproduce the COMPILED values.
  *
  * Verified against the compiled Griffel atomics in
@@ -72,10 +72,10 @@
     grid-column-start: 2;
     grid-column-end: 3;
 
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-    color: var(--colorNeutralForeground1);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
+    color: var(--color-neutral-foreground-1);
 
     /* Tailwind's `break-words` is `overflow-wrap: break-word`, a DIFFERENT property —
        the compiled atomic sets `word-break`, so this stays a literal declaration. */
@@ -89,11 +89,11 @@
     grid-column-start: 2;
     grid-column-end: 3;
 
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
     /* see the header note — the source really does use the FONT SIZE token here */
-    line-height: var(--fontSizeBase200);
-    color: var(--colorNeutralForeground2);
+    line-height: var(--text-base-200);
+    color: var(--color-neutral-foreground-2);
   }
 }
 
@@ -107,10 +107,10 @@
    * separate Griffel slices (which happen to carry the same colour).
    */
   .root-inverted {
-    color: var(--colorNeutralForegroundInverted2);
+    color: var(--color-neutral-foreground-inverted-2);
   }
 
   .subtitle-inverted {
-    color: var(--colorNeutralForegroundInverted2);
+    color: var(--color-neutral-foreground-inverted-2);
   }
 }

@@ -97,8 +97,8 @@
   .root {
     @apply relative box-border flex cursor-pointer flex-col pe-horizontal-none;
 
-    background-color: var(--colorSubtleBackground);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-subtle-background);
+    color: var(--color-neutral-foreground-2);
 
     /* createCustomFocusIndicatorStyle draws its own ring, so the browser default is
        removed here. Both rules are reproduced even though `:focus-visible` is a strict
@@ -179,15 +179,15 @@
     @variant focus-visible-fui {
       & > :global(.group\/fui-tree-item-layout),
       & > :global(.group\/fui-tree-item-persona-layout) {
-        border-radius: var(--borderRadiusMedium);
-        outline-color: var(--colorStrokeFocus2);
+        border-radius: var(--radius-medium);
+        outline-color: var(--color-stroke-focus-2);
 
         /* `outline-radius` is not a real CSS property — react-tabster passes its
            `outlineRadius` option straight through and Griffel compiles it verbatim
            (see the compiled atomic). It has never had any effect; it is reproduced
            rather than silently dropped so this block stays a byte-for-byte mirror of
            the AOT output, and its removal belongs to the Phase 3 tabster cleanup. */
-        outline-radius: var(--borderRadiusMedium);
+        outline-radius: var(--radius-medium);
 
         /* react-tabster's own FIXME ("tokens.strokeWidthThick causes some weird bugs") —
            reproduced verbatim, not "fixed" to a stroke width (DECISIONS.md D6). */

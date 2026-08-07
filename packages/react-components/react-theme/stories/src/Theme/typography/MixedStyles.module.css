@@ -2,17 +2,17 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .title {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeHero700);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightHero700);
+  font-family: var(--font-base);
+  font-size: var(--text-hero-700);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-hero-700);
 }
 
 .paragraph {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase300);
-  font-weight: var(--fontWeightRegular);
-  line-height: var(--lineHeightBase300);
+  font-family: var(--font-base);
+  font-size: var(--text-base-300);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-base-300);
   letter-spacing: 0.0675em;
   font-style: italic;
 }

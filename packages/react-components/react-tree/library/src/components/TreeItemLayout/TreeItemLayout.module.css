@@ -109,20 +109,20 @@
     grid-area: layout;
 
     @variant hover {
-      color: var(--colorNeutralForeground2Hover);
-      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--color-neutral-foreground-2-hover);
+      background-color: var(--color-subtle-background-hover);
 
       & .expand-icon {
-        color: var(--colorNeutralForeground3Hover);
+        color: var(--color-neutral-foreground-3-hover);
       }
     }
 
     @variant active {
-      color: var(--colorNeutralForeground2Pressed);
-      background-color: var(--colorSubtleBackgroundPressed);
+      color: var(--color-neutral-foreground-2-pressed);
+      background-color: var(--color-subtle-background-pressed);
 
       & .expand-icon {
-        color: var(--colorNeutralForeground3Pressed);
+        color: var(--color-neutral-foreground-3-pressed);
       }
     }
   }
@@ -140,7 +140,7 @@
   .expand-icon {
     @apply box-border flex min-w-24 items-center justify-center;
 
-    color: var(--colorNeutralForeground3);
+    color: var(--color-neutral-foreground-3);
 
     /* literal, not `flex-none`: that utility compiles to `flex: none`, the compiled
        Griffel reset is `flex: 0 0 auto`. Same computed value, fewer questions. */
@@ -158,9 +158,9 @@
   .icon {
     @apply flex items-center;
 
-    color: var(--colorNeutralForeground2);
-    line-height: var(--lineHeightBase500);
-    font-size: var(--fontSizeBase500);
+    color: var(--color-neutral-foreground-2);
+    line-height: var(--leading-base-500);
+    font-size: var(--text-base-500);
   }
 
   /* from useActionsBaseStyles (makeResetStyles) — actions arg #2 */
@@ -208,23 +208,23 @@
    */
   .subtle-alpha {
     @variant hover {
-      background-color: var(--colorSubtleBackgroundLightAlphaHover);
+      background-color: var(--color-subtle-background-light-alpha-hover);
     }
 
     @variant active {
-      background-color: var(--colorSubtleBackgroundLightAlphaPressed);
+      background-color: var(--color-subtle-background-light-alpha-pressed);
     }
   }
 
   .transparent {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     @variant hover {
-      background-color: var(--colorTransparentBackgroundHover);
+      background-color: var(--color-transparent-background-hover);
     }
 
     @variant active {
-      background-color: var(--colorTransparentBackgroundPressed);
+      background-color: var(--color-transparent-background-pressed);
     }
   }
 }
@@ -241,19 +241,19 @@
    */
   .root {
     @variant size-medium {
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
+      font-family: var(--font-base);
+      font-size: var(--text-base-300);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-300);
     }
 
     @variant size-small {
       @apply min-h-24;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-family: var(--font-base);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
     }
   }
 }

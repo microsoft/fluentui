@@ -138,16 +138,16 @@
       'media primary   dismissIcon'
       'media secondary dismissIcon';
 
-    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+    border: var(--spacing-thin) solid var(--color-transparent-stroke);
   }
 
   /* from useRootRoundedBaseClassName — the rounded-only half of arg #2 */
   .rounded {
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusMedium);
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+      border-radius: var(--radius-medium);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
     }
 
     /*
@@ -163,19 +163,19 @@
         position: absolute;
         /* px literal → `--base-scale` (D4); exactly -1px at the default 16px root */
         inset: calc(-1px * var(--base-scale));
-        border-start-start-radius: var(--borderRadiusMedium);
-        border-start-end-radius: var(--borderRadiusMedium);
+        border-start-start-radius: var(--radius-medium);
+        border-start-end-radius: var(--radius-medium);
       }
     }
   }
 
   /* from useRootCircularBaseClassName — the circular-only half of arg #2 */
   .circular {
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusCircular);
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+      border-radius: var(--radius-circular);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
     }
 
     @media (forced-colors: active) {
@@ -188,7 +188,7 @@
         border-inline-end: var(--spacing-thin) solid;
         position: absolute;
         inset: calc(-1px * var(--base-scale));
-        border-radius: var(--borderRadiusCircular);
+        border-radius: var(--radius-circular);
       }
     }
   }
@@ -200,34 +200,34 @@
     @apply px-horizontal-xxs whitespace-nowrap;
 
     /* typographyStyles.caption2 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase100);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-100);
   }
 }
 
 @layer fui.components.l1 {
   /* from useRootStyles[appearance] — root arg #3, the ENABLED branch */
   .filled {
-    background-color: var(--colorNeutralBackground3);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-neutral-background-3);
+    color: var(--color-neutral-foreground-2);
   }
 
   .outline {
-    background-color: var(--colorSubtleBackground);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-subtle-background);
+    color: var(--color-neutral-foreground-2);
 
     /* shorthands.borderColor(...) → the four longhands the compiler emits, in its order */
-    border-top-color: var(--colorNeutralStroke1);
-    border-inline-end-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStroke1);
-    border-inline-start-color: var(--colorNeutralStroke1);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-inline-end-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-1);
+    border-inline-start-color: var(--color-neutral-stroke-1);
   }
 
   .brand {
-    background-color: var(--colorBrandBackground2);
-    color: var(--colorBrandForeground2);
+    background-color: var(--color-brand-background-2);
+    color: var(--color-brand-foreground-2);
   }
 
   /*
@@ -238,37 +238,37 @@
   .filled-disabled,
   .brand-disabled {
     cursor: not-allowed;
-    background-color: var(--colorNeutralBackgroundDisabled);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-neutral-background-disabled);
+    color: var(--color-neutral-foreground-disabled);
 
-    border-top-color: var(--colorTransparentStrokeDisabled);
-    border-inline-end-color: var(--colorTransparentStrokeDisabled);
-    border-bottom-color: var(--colorTransparentStrokeDisabled);
-    border-inline-start-color: var(--colorTransparentStrokeDisabled);
+    border-top-color: var(--color-transparent-stroke-disabled);
+    border-inline-end-color: var(--color-transparent-stroke-disabled);
+    border-bottom-color: var(--color-transparent-stroke-disabled);
+    border-inline-start-color: var(--color-transparent-stroke-disabled);
   }
 
   .outline-disabled {
     cursor: not-allowed;
-    background-color: var(--colorSubtleBackground);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-subtle-background);
+    color: var(--color-neutral-foreground-disabled);
 
-    border-top-color: var(--colorNeutralStrokeDisabled);
-    border-inline-end-color: var(--colorNeutralStrokeDisabled);
-    border-bottom-color: var(--colorNeutralStrokeDisabled);
-    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+    border-top-color: var(--color-neutral-stroke-disabled);
+    border-inline-end-color: var(--color-neutral-stroke-disabled);
+    border-bottom-color: var(--color-neutral-stroke-disabled);
+    border-inline-start-color: var(--color-neutral-stroke-disabled);
   }
 }
 
 @layer fui.components.l1 {
   /* from useRootStyles.selected — root arg #4, written after the appearance blocks */
   .selected {
-    background-color: var(--colorBrandBackground);
-    color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--color-brand-background);
+    color: var(--color-neutral-foreground-on-brand);
 
-    border-top-color: var(--colorBrandStroke1);
-    border-inline-end-color: var(--colorBrandStroke1);
-    border-bottom-color: var(--colorBrandStroke1);
-    border-inline-start-color: var(--colorBrandStroke1);
+    border-top-color: var(--color-brand-stroke-1);
+    border-inline-end-color: var(--color-brand-stroke-1);
+    border-bottom-color: var(--color-brand-stroke-1);
+    border-inline-start-color: var(--color-brand-stroke-1);
 
     @variant forced-colors {
       forced-color-adjust: none;
@@ -414,25 +414,25 @@
 
     /* typographyStyles.body1 */
     @variant size-medium {
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
+      font-family: var(--font-base);
+      font-size: var(--text-base-300);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-300);
     }
 
     /* typographyStyles.caption1 */
     @variant size-small {
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-family: var(--font-base);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
     }
 
     @variant size-extra-small {
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-family: var(--font-base);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
     }
   }
 
@@ -456,10 +456,10 @@
     grid-area: primary;
 
     /* typographyStyles.caption1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
 
     /* compiled `margin-top:-2px`; the literal matches the XXS step, and the block axis
        takes the vertical token (react-persona precedent) */
@@ -504,22 +504,22 @@
   .dismiss-icon-interactive {
     @variant hover {
       cursor: pointer;
-      color: var(--colorCompoundBrandForeground1Hover);
+      color: var(--color-compound-brand-foreground-1-hover);
     }
 
     @variant active {
-      color: var(--colorCompoundBrandForeground1Pressed);
+      color: var(--color-compound-brand-foreground-1-pressed);
     }
   }
 
   /* from useDismissIconStyles.selected — dismissIcon arg #5; beats the block above */
   .dismiss-icon-selected {
     @variant hover {
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
 
     @variant active {
-      color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-neutral-foreground-on-brand);
     }
   }
 

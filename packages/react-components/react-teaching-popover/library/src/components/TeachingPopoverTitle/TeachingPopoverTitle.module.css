@@ -71,10 +71,10 @@
   .root {
     @apply flex flex-row justify-between;
 
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightSemibold);
-    color: var(--colorNeutralForeground1);
-    line-height: var(--lineHeightBase400);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-foreground-1);
+    line-height: var(--leading-base-400);
 
     @apply pb-vertical-s;
     @apply mt-horizontal-none mb-horizontal-none;
@@ -84,7 +84,7 @@
 @layer fui.components.l1 {
   /* from useStyles.rootBrand — root arg #3 */
   .brand {
-    color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-neutral-foreground-on-brand);
   }
 }
 
@@ -95,26 +95,26 @@
 
     position: relative;
 
-    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+    border: var(--spacing-thin) solid var(--color-transparent-stroke);
 
     /* ...typographyStyles.body1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
 
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
-    border-start-end-radius: var(--borderRadiusNone);
-    border-end-end-radius: var(--borderRadiusNone);
+    border-start-end-radius: var(--radius-none);
+    border-end-end-radius: var(--radius-none);
     border-inline-end-style: none;
 
     @apply ms-auto;
 
     /* from createCustomFocusIndicatorStyle({ outline, borderRadius, borderColor('transparent') }) */
     @variant focus-visible-fui {
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
 
       border-block-start-color: transparent;
       border-inline-end-color: transparent;
@@ -127,6 +127,6 @@
 @layer fui.components.l1 {
   /* from useStyles.dismissBrand — dismissButton arg #3 */
   .dismiss-brand {
-    color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-neutral-foreground-on-brand);
   }
 }

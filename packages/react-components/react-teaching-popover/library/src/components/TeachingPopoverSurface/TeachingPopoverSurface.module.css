@@ -71,6 +71,6 @@
     @apply p-vertical-l;
     @apply min-w-320;
 
-    border-radius: var(--borderRadiusXLarge);
+    border-radius: var(--radius-x-large);
   }
 }

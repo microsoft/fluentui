@@ -13,7 +13,7 @@ This guide is a reference for upgrading from v7 (Fabric) or v0 (Northstar) into 
 > ```css
 > /* MyText.module.css */
 > .text {
->   color: var(--colorNeutralForeground2);
+>   color: var(--color-neutral-foreground-2);
 > }
 > ```
 >
@@ -24,7 +24,7 @@ This guide is a reference for upgrading from v7 (Fabric) or v0 (Northstar) into 
 > ```
 >
 > Token names are unchanged — `tokens.colorNeutralForeground2` in a snippet below is the same value
-> as `var(--colorNeutralForeground2)` here. See
+> as `var(--color-neutral-foreground-2)` here. See
 > [Styling components](https://react.fluentui.dev/?path=/docs/concepts-developer-styling-components--docs).
 
 ## Property mapping

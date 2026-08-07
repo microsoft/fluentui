@@ -22,12 +22,12 @@ Tokens are emitted as CSS custom properties, so reference them directly in your 
 
 ```css
 .root {
-  color: var(--colorNeutralForeground1);
+  color: var(--color-neutral-foreground-1);
 }
 ```
 
 The `tokens` object is the TypeScript-side equivalent, for when a value has to be read from code —
-`tokens.colorNeutralForeground1 === 'var(--colorNeutralForeground1)'`.
+`tokens.colorNeutralForeground1 === 'var(--color-neutral-foreground-1)'`.
 
 ### Using a custom brand ramp
 

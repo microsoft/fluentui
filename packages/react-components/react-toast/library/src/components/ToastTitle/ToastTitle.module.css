@@ -97,7 +97,7 @@
 
     grid-column-end: 3;
 
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
 
     /* Tailwind's `break-words` is `overflow-wrap: break-word`, a DIFFERENT property —
        the compiled atomic sets `word-break`, so this stays a literal declaration. */
@@ -111,7 +111,7 @@
     grid-column-end: 2;
 
     font-size: calc(16px * var(--base-scale));
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
   }
 
   /* from useActionBaseClassName (makeResetStyles) — action arg #2 */
@@ -126,36 +126,36 @@
 
     grid-column-end: -1;
 
-    color: var(--colorBrandForeground1);
+    color: var(--color-brand-foreground-1);
   }
 }
 
 @layer fui.components.l1 {
   /* from useInvertedStyles.root — root arg #3 */
   .root-inverted {
-    color: var(--colorNeutralForegroundInverted2);
+    color: var(--color-neutral-foreground-inverted-2);
   }
 
   /* from useInvertedStyles.media — media arg #3 */
   .media-inverted {
-    color: var(--colorNeutralForegroundInverted);
+    color: var(--color-neutral-foreground-inverted);
   }
 
   /* from useIntentIconStyles[intent] — media arg #4. MUST stay after `.media-inverted`. */
   .media-success {
-    color: var(--colorStatusSuccessForeground1);
+    color: var(--color-status-success-foreground-1);
   }
 
   .media-error {
-    color: var(--colorStatusDangerForeground1);
+    color: var(--color-status-danger-foreground-1);
   }
 
   .media-warning {
-    color: var(--colorStatusWarningForeground1);
+    color: var(--color-status-warning-foreground-1);
   }
 
   .media-info {
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
   }
 
   /*
@@ -164,23 +164,23 @@
    * both classes are present whenever a toast is inverted AND carries an intent.
    */
   .media-inverted-success {
-    color: var(--colorStatusSuccessForegroundInverted);
+    color: var(--color-status-success-foreground-inverted);
   }
 
   .media-inverted-error {
-    color: var(--colorStatusDangerForegroundInverted);
+    color: var(--color-status-danger-foreground-inverted);
   }
 
   .media-inverted-warning {
-    color: var(--colorStatusWarningForegroundInverted);
+    color: var(--color-status-warning-foreground-inverted);
   }
 
   .media-inverted-info {
-    color: var(--colorNeutralForegroundInverted2);
+    color: var(--color-neutral-foreground-inverted-2);
   }
 
   /* from useInvertedStyles.action — action arg #3 */
   .action-inverted {
-    color: var(--colorBrandForegroundInverted);
+    color: var(--color-brand-foreground-inverted);
   }
 }

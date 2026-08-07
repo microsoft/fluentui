@@ -92,15 +92,15 @@
     /* declaration order preserved from the compiled reset: the `border` shorthand comes
        AFTER `border-style: none` and re-establishes `solid`, then the divider colour and
        the two squared-off leading corners override single longhands. */
-    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+    border: var(--spacing-thin) solid var(--color-transparent-stroke);
 
     /* divider between Primary and Secondary */
-    border-inline-start-color: var(--colorNeutralStroke1);
-    border-start-start-radius: var(--borderRadiusNone);
-    border-end-start-radius: var(--borderRadiusNone);
+    border-inline-start-color: var(--color-neutral-stroke-1);
+    border-start-start-radius: var(--radius-none);
+    border-end-start-radius: var(--radius-none);
 
     @variant focus-visible-fui {
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
     }
   }
 }
@@ -108,20 +108,20 @@
 @layer fui.components.l1 {
   /* from useRootStyles[appearance] — arg #3, the ENABLED branch */
   .filled {
-    background-color: var(--colorNeutralBackground3);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-neutral-background-3);
+    color: var(--color-neutral-foreground-2);
     border-top-width: 0;
     border-bottom-width: 0;
 
     @variant hover {
       cursor: pointer;
-      background-color: var(--colorNeutralBackground3Hover);
-      color: var(--colorNeutralForeground2BrandHover);
+      background-color: var(--color-neutral-background-3-hover);
+      color: var(--color-neutral-foreground-2-brand-hover);
     }
 
     @variant active {
-      background-color: var(--colorNeutralBackground3Pressed);
-      color: var(--colorNeutralForeground2BrandPressed);
+      background-color: var(--color-neutral-background-3-pressed);
+      color: var(--color-neutral-foreground-2-brand-pressed);
     }
 
     @variant forced-colors {
@@ -139,24 +139,24 @@
   }
 
   .outline {
-    background-color: var(--colorSubtleBackground);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-subtle-background);
+    color: var(--color-neutral-foreground-2);
 
     /* shorthands.borderColor(...) → the four longhands the compiler emits, in its order */
-    border-top-color: var(--colorNeutralStroke1);
-    border-inline-end-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStroke1);
-    border-inline-start-color: var(--colorNeutralStroke1);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-inline-end-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-1);
+    border-inline-start-color: var(--color-neutral-stroke-1);
 
     @variant hover {
       cursor: pointer;
-      background-color: var(--colorSubtleBackgroundHover);
-      color: var(--colorNeutralForeground2BrandHover);
+      background-color: var(--color-subtle-background-hover);
+      color: var(--color-neutral-foreground-2-brand-hover);
     }
 
     @variant active {
-      background-color: var(--colorSubtleBackgroundPressed);
-      color: var(--colorNeutralForeground2BrandPressed);
+      background-color: var(--color-subtle-background-pressed);
+      color: var(--color-neutral-foreground-2-brand-pressed);
     }
 
     @variant forced-colors {
@@ -171,22 +171,22 @@
   }
 
   .brand {
-    background-color: var(--colorBrandBackground2);
-    color: var(--colorBrandForeground2);
+    background-color: var(--color-brand-background-2);
+    color: var(--color-brand-foreground-2);
     /* divider */
-    border-inline-start-color: var(--colorBrandStroke2);
+    border-inline-start-color: var(--color-brand-stroke-2);
     border-top-width: 0;
     border-bottom-width: 0;
 
     @variant hover {
       cursor: pointer;
-      background-color: var(--colorBrandBackground2Hover);
-      color: var(--colorCompoundBrandForeground1Hover);
+      background-color: var(--color-brand-background-2-hover);
+      color: var(--color-compound-brand-foreground-1-hover);
     }
 
     @variant active {
-      background-color: var(--colorBrandBackground2Pressed);
-      color: var(--colorCompoundBrandForeground1Pressed);
+      background-color: var(--color-brand-background-2-pressed);
+      color: var(--color-compound-brand-foreground-1-pressed);
     }
 
     @variant forced-colors {
@@ -210,25 +210,25 @@
   .filled-disabled,
   .brand-disabled {
     cursor: not-allowed;
-    background-color: var(--colorNeutralBackgroundDisabled);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-neutral-background-disabled);
+    color: var(--color-neutral-foreground-disabled);
 
-    border-top-color: var(--colorTransparentStrokeDisabled);
-    border-inline-end-color: var(--colorTransparentStrokeDisabled);
-    border-bottom-color: var(--colorTransparentStrokeDisabled);
+    border-top-color: var(--color-transparent-stroke-disabled);
+    border-inline-end-color: var(--color-transparent-stroke-disabled);
+    border-bottom-color: var(--color-transparent-stroke-disabled);
     /* divider — declared after the shorthand expansion in the Griffel source */
-    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+    border-inline-start-color: var(--color-neutral-stroke-disabled);
   }
 
   .outline-disabled {
     cursor: not-allowed;
-    background-color: var(--colorSubtleBackground);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-subtle-background);
+    color: var(--color-neutral-foreground-disabled);
 
-    border-top-color: var(--colorNeutralStrokeDisabled);
-    border-inline-end-color: var(--colorNeutralStrokeDisabled);
-    border-bottom-color: var(--colorNeutralStrokeDisabled);
-    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+    border-top-color: var(--color-neutral-stroke-disabled);
+    border-inline-end-color: var(--color-neutral-stroke-disabled);
+    border-bottom-color: var(--color-neutral-stroke-disabled);
+    border-inline-start-color: var(--color-neutral-stroke-disabled);
   }
 }
 
@@ -236,13 +236,13 @@
   /* from useRootStyles[shape] — arg #4; only the TRAILING corners, the leading pair is
      squared off by the reset */
   .rounded {
-    border-start-end-radius: var(--borderRadiusMedium);
-    border-end-end-radius: var(--borderRadiusMedium);
+    border-start-end-radius: var(--radius-medium);
+    border-end-end-radius: var(--radius-medium);
   }
 
   .circular {
-    border-start-end-radius: var(--borderRadiusCircular);
-    border-end-end-radius: var(--borderRadiusCircular);
+    border-start-end-radius: var(--radius-circular);
+    border-end-end-radius: var(--radius-circular);
   }
 }
 
@@ -301,23 +301,23 @@
      in both the plain and the forced-colors cascades */
   .selected {
     /* compiled as the `background` SHORTHAND (Griffel priority -2), not background-color */
-    background: var(--colorBrandBackground);
-    color: var(--colorNeutralForegroundOnBrand);
+    background: var(--color-brand-background);
+    color: var(--color-neutral-foreground-on-brand);
 
-    border-top-color: var(--colorBrandStroke1);
-    border-inline-end-color: var(--colorBrandStroke1);
-    border-bottom-color: var(--colorBrandStroke1);
+    border-top-color: var(--color-brand-stroke-1);
+    border-inline-end-color: var(--color-brand-stroke-1);
+    border-bottom-color: var(--color-brand-stroke-1);
     /* divider — declared last in the Griffel source, after shorthands.borderColor */
-    border-inline-start-color: var(--colorNeutralStrokeOnBrand2);
+    border-inline-start-color: var(--color-neutral-stroke-on-brand-2);
 
     @variant hover {
-      background-color: var(--colorBrandBackgroundHover);
-      color: var(--colorNeutralForegroundOnBrand);
+      background-color: var(--color-brand-background-hover);
+      color: var(--color-neutral-foreground-on-brand);
     }
 
     @variant active {
-      background-color: var(--colorBrandBackgroundPressed);
-      color: var(--colorNeutralForegroundOnBrand);
+      background-color: var(--color-brand-background-pressed);
+      color: var(--color-neutral-foreground-on-brand);
     }
 
     @variant forced-colors {

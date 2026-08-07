@@ -49,8 +49,8 @@
   .root {
     @apply box-border;
 
-    box-shadow: var(--shadow16);
-    border-radius: var(--borderRadiusMedium);
+    box-shadow: var(--shadow-16);
+    border-radius: var(--radius-medium);
     max-height: 80vh;
   }
 

@@ -32,7 +32,7 @@
      */
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--colorNeutralStroke1);
+    border-color: var(--color-neutral-stroke-1);
   }
 
   /*

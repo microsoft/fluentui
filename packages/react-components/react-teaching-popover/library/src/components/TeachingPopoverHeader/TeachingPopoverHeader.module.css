@@ -85,10 +85,10 @@
   .root {
     @apply flex flex-row items-center;
 
-    color: var(--colorNeutralForeground3);
-    font-weight: var(--fontWeightSemibold);
-    font-size: var(--fontSizeBase200);
-    line-height: var(--lineHeightBase200);
+    color: var(--color-neutral-foreground-3);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-base-200);
+    line-height: var(--leading-base-200);
 
     @apply pb-vertical-xs;
     @apply mt-horizontal-none mb-horizontal-none;
@@ -98,7 +98,7 @@
 @layer fui.components.l1 {
   /* from useStyles.rootBrand — root arg #3 */
   .brand {
-    color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-neutral-foreground-on-brand);
   }
 }
 
@@ -107,21 +107,21 @@
   .dismiss-button {
     @apply box-border flex cursor-pointer items-center;
 
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
     position: relative;
 
-    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+    border: var(--spacing-thin) solid var(--color-transparent-stroke);
 
     /* ...typographyStyles.body1 */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
 
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
-    border-start-end-radius: var(--borderRadiusNone);
-    border-end-end-radius: var(--borderRadiusNone);
+    border-start-end-radius: var(--radius-none);
+    border-end-end-radius: var(--radius-none);
     border-inline-end-style: none;
 
     @apply ms-auto;
@@ -129,8 +129,8 @@
 
     /* from createCustomFocusIndicatorStyle({ outline, borderRadius, borderColor('transparent') }) */
     @variant focus-visible-fui {
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
 
       border-block-start-color: transparent;
       border-inline-end-color: transparent;
@@ -143,7 +143,7 @@
 @layer fui.components.l1 {
   /* from useStyles.dismissBrand — dismissButton arg #3 */
   .dismiss-brand {
-    color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-neutral-foreground-on-brand);
   }
 }
 
@@ -152,17 +152,17 @@
   .icon {
     @apply box-content inline-flex items-center justify-center;
 
-    height: var(--fontSizeBase200);
-    width: var(--fontSizeBase200);
-    line-height: var(--lineHeightBase200);
-    font-size: var(--fontSizeBase200);
+    height: var(--text-base-200);
+    width: var(--text-base-200);
+    line-height: var(--leading-base-200);
+    font-size: var(--text-base-200);
 
     text-decoration-line: none;
     vertical-align: middle;
     position: relative;
 
-    background-color: var(--colorTransparentBackground);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-transparent-background);
+    color: var(--color-neutral-foreground-2);
 
     @apply me-horizontal-xs;
   }
@@ -171,6 +171,6 @@
 @layer fui.components.l1 {
   /* from useStyles.iconBrand — icon arg #3 */
   .icon-brand {
-    color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-neutral-foreground-on-brand);
   }
 }

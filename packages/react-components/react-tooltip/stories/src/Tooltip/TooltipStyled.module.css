@@ -2,6 +2,6 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .tooltip {
-  background-color: var(--colorBrandBackground);
-  color: var(--colorNeutralForegroundInverted);
+  background-color: var(--color-brand-background);
+  color: var(--color-neutral-foreground-inverted);
 }

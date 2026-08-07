@@ -60,11 +60,11 @@
    * is reproduced as-is.
    */
   .rounded {
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
   }
 
   .circular {
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
   }
 }
 

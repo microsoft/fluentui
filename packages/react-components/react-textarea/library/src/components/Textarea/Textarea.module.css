@@ -82,15 +82,15 @@
     padding-block-start: 0; /* spacingVerticalNone */
     padding-block-end: var(--spacing-thick);
 
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     /* from useRootStyles.disabled — arg #3 */
     @variant disabled {
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
 
       border-width: var(--spacing-thin);
       border-style: solid;
-      border-color: var(--colorNeutralStrokeDisabled);
+      border-color: var(--color-neutral-stroke-disabled);
 
       /* shorthands.borderColor('GrayText') → four longhands; the compiled [ltr, rtl]
          pair only swaps left↔right and carries the same value, so the flip is a no-op. */
@@ -108,7 +108,7 @@
   /*
    * from useRootStyles.filled — arg #4, applied for every `filled*` appearance. The two
    * `*-shadow` appearances re-set `border-color` in arg #5 below (to the SAME
-   * `--colorTransparentStrokeInteractive` these hover/focus rules use), which is why
+   * `--color-transparent-stroke-interactive` these hover/focus rules use), which is why
    * Griffel's arg-order override of the `border` shorthand is a visual no-op here.
    *
    * Griffel authors one compound rule (`:hover,:focus-within`); two variant blocks with
@@ -117,20 +117,20 @@
   .filled {
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--colorTransparentStroke);
+    border-color: var(--color-transparent-stroke);
 
     @variant hover {
-      border-top-color: var(--colorTransparentStrokeInteractive);
-      border-right-color: var(--colorTransparentStrokeInteractive);
-      border-bottom-color: var(--colorTransparentStrokeInteractive);
-      border-left-color: var(--colorTransparentStrokeInteractive);
+      border-top-color: var(--color-transparent-stroke-interactive);
+      border-right-color: var(--color-transparent-stroke-interactive);
+      border-bottom-color: var(--color-transparent-stroke-interactive);
+      border-left-color: var(--color-transparent-stroke-interactive);
     }
 
     @variant focus-within {
-      border-top-color: var(--colorTransparentStrokeInteractive);
-      border-right-color: var(--colorTransparentStrokeInteractive);
-      border-bottom-color: var(--colorTransparentStrokeInteractive);
-      border-left-color: var(--colorTransparentStrokeInteractive);
+      border-top-color: var(--color-transparent-stroke-interactive);
+      border-right-color: var(--color-transparent-stroke-interactive);
+      border-bottom-color: var(--color-transparent-stroke-interactive);
+      border-left-color: var(--color-transparent-stroke-interactive);
     }
   }
 }
@@ -140,44 +140,44 @@
 
   /* from useRootStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--colorNeutralBackground3);
+    background-color: var(--color-neutral-background-3);
   }
 
   /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
   }
 
   /* from useRootStyles['filled-darker-shadow'] (deprecated appearance) */
   .filled-darker-shadow {
-    background-color: var(--colorNeutralBackground3);
+    background-color: var(--color-neutral-background-3);
 
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--colorTransparentStrokeInteractive);
+    border-color: var(--color-transparent-stroke-interactive);
 
-    box-shadow: var(--shadow2);
+    box-shadow: var(--shadow-2);
   }
 
   /* from useRootStyles['filled-lighter-shadow'] (deprecated appearance) */
   .filled-lighter-shadow {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--colorTransparentStrokeInteractive);
+    border-color: var(--color-transparent-stroke-interactive);
 
-    box-shadow: var(--shadow2);
+    box-shadow: var(--shadow-2);
   }
 
   /* from useRootStyles.outline */
   .outline {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
   }
 }
 
@@ -204,27 +204,27 @@
 
         /* Maintaining the correct corner radius: the whole border-radius is used as the
            height and only the bottom corners get radii, so the radius is not reduced to
-           fit. max() keeps the bar visible even at --borderRadiusMedium: 0. */
-        height: max(var(--spacing-thick), var(--borderRadiusMedium));
+           fit. max() keeps the bar visible even at --radius-medium: 0. */
+        height: max(var(--spacing-thick), var(--radius-medium));
 
         /* borderBottomLeft/RightRadius → logical block-end corners (compiled [ltr, rtl]
            pair, same value both ways). */
-        border-end-start-radius: var(--borderRadiusMedium);
-        border-end-end-radius: var(--borderRadiusMedium);
+        border-end-start-radius: var(--radius-medium);
+        border-end-end-radius: var(--radius-medium);
 
         /* Flat 2px border: borderBottom alone would leave little "horns" on the ends;
            the clipPath trims them. `inset()` right/left are both 0 → no RTL flip. */
         border-bottom-width: var(--spacing-thick);
         border-bottom-style: solid;
-        border-bottom-color: var(--colorCompoundBrandStroke);
+        border-bottom-color: var(--color-compound-brand-stroke);
         clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
 
-        /* Animation for focus OUT. `transition-delay: var(--curveAccelerateMid)` is a
+        /* Animation for focus OUT. `transition-delay: var(--ease-accelerate-mid)` is a
            curve token used as a delay — reproduced verbatim from the compiled output. */
         transform: scaleX(0);
         transition-property: transform;
-        transition-duration: var(--durationUltraFast);
-        transition-delay: var(--curveAccelerateMid);
+        transition-duration: var(--duration-ultra-fast);
+        transition-delay: var(--ease-accelerate-mid);
 
         @media screen and (prefers-reduced-motion: reduce) {
           transition-duration: 0.01ms;
@@ -241,8 +241,8 @@
         &::after {
           transform: scaleX(1);
           transition-property: transform;
-          transition-duration: var(--durationNormal);
-          transition-delay: var(--curveDecelerateMid);
+          transition-duration: var(--duration-normal);
+          transition-delay: var(--ease-decelerate-mid);
 
           @media screen and (prefers-reduced-motion: reduce) {
             transition-duration: 0.01ms;
@@ -253,7 +253,7 @@
         /* The user clicks the field again while it is already focused */
         @variant active {
           &::after {
-            border-bottom-color: var(--colorCompoundBrandStrokePressed);
+            border-bottom-color: var(--color-compound-brand-stroke-pressed);
           }
         }
       }
@@ -275,22 +275,22 @@
     @variant focus-within {
       border-width: var(--spacing-thin);
       border-style: solid;
-      border-color: var(--colorNeutralStroke1Pressed);
-      border-bottom-color: var(--colorCompoundBrandStroke);
+      border-color: var(--color-neutral-stroke-1-pressed);
+      border-bottom-color: var(--color-compound-brand-stroke);
     }
 
     @variant hover {
       border-width: var(--spacing-thin);
       border-style: solid;
-      border-color: var(--colorNeutralStroke1Hover);
-      border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+      border-color: var(--color-neutral-stroke-1-hover);
+      border-bottom-color: var(--color-neutral-stroke-accessible-hover);
     }
 
     @variant active {
       border-width: var(--spacing-thin);
       border-style: solid;
-      border-color: var(--colorNeutralStroke1Pressed);
-      border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+      border-color: var(--color-neutral-stroke-1-pressed);
+      border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
     }
   }
 }
@@ -304,10 +304,10 @@
      */
     @variant invalid {
       @variant not-focus-within {
-        border-top-color: var(--colorPaletteRedBorder2);
-        border-right-color: var(--colorPaletteRedBorder2);
-        border-bottom-color: var(--colorPaletteRedBorder2);
-        border-left-color: var(--colorPaletteRedBorder2);
+        border-top-color: var(--color-palette-red-border-2);
+        border-right-color: var(--color-palette-red-border-2);
+        border-bottom-color: var(--color-palette-red-border-2);
+        border-left-color: var(--color-palette-red-border-2);
       }
     }
   }
@@ -326,14 +326,14 @@
     border-inline-start-style: none;
 
     background-color: transparent;
-    color: var(--colorNeutralForeground1);
-    font-family: var(--fontFamilyBase);
+    color: var(--color-neutral-foreground-1);
+    font-family: var(--font-base);
 
     /* disable the default browser outline */
     outline-style: none;
 
     &::placeholder {
-      color: var(--colorNeutralForeground4);
+      color: var(--color-neutral-foreground-4);
       opacity: 1;
     }
 
@@ -353,10 +353,10 @@
          `horizontalPadding.combined.small`. */
       @apply px-horizontal-s py-vertical-xs;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-family: var(--font-base);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
     }
 
     /* from useTextareaStyles.medium + typographyStyles.body1 */
@@ -368,10 +368,10 @@
          `horizontalPadding.combined.medium` records the same identity). */
       @apply px-horizontal-m py-vertical-s-nudge;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
+      font-family: var(--font-base);
+      font-size: var(--text-base-300);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-300);
     }
 
     /* from useTextareaStyles.large + typographyStyles.body2 */
@@ -384,10 +384,10 @@
          `calc(1px * var(--base-scale))`, so px-14 === calc(14px * var(--base-scale))). */
       @apply px-14 py-vertical-s;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase400);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase400);
+      font-family: var(--font-base);
+      font-size: var(--text-base-400);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-400);
     }
   }
 }
@@ -425,11 +425,11 @@
      * `disabled` attribute the textarea slot already carries.
      */
     @variant disabled {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
       cursor: not-allowed;
 
       &::placeholder {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
   }

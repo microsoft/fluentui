@@ -114,7 +114,7 @@
     @apply box-border flex cursor-pointer;
     @apply h-vertical-s w-horizontal-s;
 
-    background-color: var(--colorBrandBackground);
+    background-color: var(--color-brand-background);
   }
 }
 
@@ -142,11 +142,11 @@
       padding: 0;
       outline: var(--spacing-thin) solid transparent;
 
-      background-color: color-mix(in srgb, var(--colorBrandBackground) 30%, transparent);
+      background-color: color-mix(in srgb, var(--color-brand-background) 30%, transparent);
 
       @variant focus-visible-fui {
-        outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-        border-radius: var(--borderRadiusMedium);
+        outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+        border-radius: var(--radius-medium);
 
         border-block-start-color: transparent;
         border-inline-end-color: transparent;
@@ -165,8 +165,8 @@
       padding: 0;
 
       @variant focus-visible-fui {
-        outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-        border-radius: var(--borderRadiusMedium);
+        outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+        border-radius: var(--radius-medium);
 
         border-block-start-color: transparent;
         border-inline-end-color: transparent;
@@ -186,11 +186,11 @@
    */
   .brand {
     @variant selected {
-      background-color: var(--colorNeutralForegroundOnBrand);
+      background-color: var(--color-neutral-foreground-on-brand);
     }
 
     @variant not-selected {
-      background-color: color-mix(in srgb, var(--colorNeutralForegroundOnBrand) 30%, transparent);
+      background-color: color-mix(in srgb, var(--color-neutral-foreground-on-brand) 30%, transparent);
     }
   }
 }
@@ -214,7 +214,7 @@
     @variant not-selected {
       @supports not (color: color-mix(in lch, white, black)) {
         opacity: 0.3;
-        background-color: var(--colorBrandBackground);
+        background-color: var(--color-brand-background);
       }
     }
   }

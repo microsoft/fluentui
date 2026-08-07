@@ -10,7 +10,7 @@
  * escaped because it is legal in a class TOKEN but terminates the name in selector
  * position. Original source nested this under the menu item's :hover. */
 .menuItem:hover .group\/fui-tag {
-  color: var(--colorNeutralForeground2Hover);
+  color: var(--color-neutral-foreground-2-hover);
 }
 
 .tag {

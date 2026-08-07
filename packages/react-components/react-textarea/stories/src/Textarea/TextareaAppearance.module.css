@@ -8,11 +8,11 @@
 }
 
 .inverted {
-  background-color: var(--colorNeutralBackgroundInverted);
+  background-color: var(--color-neutral-background-inverted);
 }
 
 .invertedLabel {
-  color: var(--colorNeutralForegroundInverted2);
+  color: var(--color-neutral-foreground-inverted-2);
 }
 
 .fieldWrapper {

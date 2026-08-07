@@ -103,31 +103,31 @@
    * widening it would newly paint the pressed look on a keyboard-activated button.
    */
   .brand-previous {
-    color: var(--colorNeutralForegroundOnBrand);
-    background-color: var(--colorBrandBackground);
+    color: var(--color-neutral-foreground-on-brand);
+    background-color: var(--color-brand-background);
 
-    border-block-start-color: var(--colorNeutralForegroundOnBrand);
-    border-inline-end-color: var(--colorNeutralForegroundOnBrand);
-    border-block-end-color: var(--colorNeutralForegroundOnBrand);
-    border-inline-start-color: var(--colorNeutralForegroundOnBrand);
+    border-block-start-color: var(--color-neutral-foreground-on-brand);
+    border-inline-end-color: var(--color-neutral-foreground-on-brand);
+    border-block-end-color: var(--color-neutral-foreground-on-brand);
+    border-inline-start-color: var(--color-neutral-foreground-on-brand);
 
     @variant hover {
-      color: var(--colorNeutralForegroundOnBrand);
-      background-color: var(--colorBrandBackgroundHover);
+      color: var(--color-neutral-foreground-on-brand);
+      background-color: var(--color-brand-background-hover);
 
-      border-block-start-color: var(--colorNeutralForegroundOnBrand);
-      border-inline-end-color: var(--colorNeutralForegroundOnBrand);
-      border-block-end-color: var(--colorNeutralForegroundOnBrand);
-      border-inline-start-color: var(--colorNeutralForegroundOnBrand);
+      border-block-start-color: var(--color-neutral-foreground-on-brand);
+      border-inline-end-color: var(--color-neutral-foreground-on-brand);
+      border-block-end-color: var(--color-neutral-foreground-on-brand);
+      border-inline-start-color: var(--color-neutral-foreground-on-brand);
 
       @variant active {
-        color: var(--colorNeutralForegroundOnBrand);
-        background-color: var(--colorBrandBackgroundPressed);
+        color: var(--color-neutral-foreground-on-brand);
+        background-color: var(--color-brand-background-pressed);
 
-        border-block-start-color: var(--colorNeutralForegroundOnBrand);
-        border-inline-end-color: var(--colorNeutralForegroundOnBrand);
-        border-block-end-color: var(--colorNeutralForegroundOnBrand);
-        border-inline-start-color: var(--colorNeutralForegroundOnBrand);
+        border-block-start-color: var(--color-neutral-foreground-on-brand);
+        border-inline-end-color: var(--color-neutral-foreground-on-brand);
+        border-block-end-color: var(--color-neutral-foreground-on-brand);
+        border-inline-start-color: var(--color-neutral-foreground-on-brand);
       }
     }
   }
@@ -139,21 +139,21 @@
    * Mutually exclusive with `.brand-previous` above; see the header's inversion note.
    */
   .brand-next {
-    color: var(--colorBrandForeground1);
-    background-color: var(--colorNeutralForegroundOnBrand);
+    color: var(--color-brand-foreground-1);
+    background-color: var(--color-neutral-foreground-on-brand);
 
-    border-block-start-color: var(--colorTransparentBackground);
-    border-inline-end-color: var(--colorTransparentBackground);
-    border-block-end-color: var(--colorTransparentBackground);
-    border-inline-start-color: var(--colorTransparentBackground);
+    border-block-start-color: var(--color-transparent-background);
+    border-inline-end-color: var(--color-transparent-background);
+    border-block-end-color: var(--color-transparent-background);
+    border-inline-start-color: var(--color-transparent-background);
 
     @variant hover {
-      color: var(--colorCompoundBrandForeground1Hover);
-      background-color: var(--colorNeutralForegroundOnBrand);
+      color: var(--color-compound-brand-foreground-1-hover);
+      background-color: var(--color-neutral-foreground-on-brand);
 
       @variant active {
-        color: var(--colorCompoundBrandForeground1Pressed);
-        background-color: var(--colorNeutralForegroundOnBrand);
+        color: var(--color-compound-brand-foreground-1-pressed);
+        background-color: var(--color-neutral-foreground-on-brand);
       }
     }
   }

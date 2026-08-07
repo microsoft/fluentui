@@ -50,9 +50,9 @@
   .root {
     @apply box-border max-w-full min-w-24 grow;
 
-    background-color: var(--colorTransparentBackground);
-    color: var(--colorNeutralForeground1);
-    font-family: var(--fontFamilyBase);
+    background-color: var(--color-transparent-background);
+    color: var(--color-neutral-foreground-1);
+    font-family: var(--font-base);
 
     /* compiled `border:none`; the field's border is drawn by TagPickerControl */
     border-style: none;
@@ -77,7 +77,7 @@
      * react-combobox's `input` slot.
      */
     &::placeholder {
-      color: var(--colorNeutralForeground4);
+      color: var(--color-neutral-foreground-4);
       opacity: 1; /* browser style override */
     }
 
@@ -99,28 +99,28 @@
    */
   .root {
     @variant size-medium {
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
+      font-family: var(--font-base);
+      font-size: var(--text-base-300);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-300);
 
       @apply px-horizontal-none py-vertical-s-nudge;
     }
 
     @variant size-large {
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
+      font-family: var(--font-base);
+      font-size: var(--text-base-300);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-300);
 
       @apply px-horizontal-none py-vertical-m-nudge;
     }
 
     @variant size-extra-large {
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
+      font-family: var(--font-base);
+      font-size: var(--text-base-300);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-300);
 
       @apply px-horizontal-none py-vertical-m;
     }
@@ -138,12 +138,12 @@
    */
   .root {
     @variant disabled {
-      color: var(--colorNeutralForegroundDisabled);
-      background-color: var(--colorTransparentBackground);
+      color: var(--color-neutral-foreground-disabled);
+      background-color: var(--color-transparent-background);
       cursor: not-allowed;
 
       &::placeholder {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
   }
