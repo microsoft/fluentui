@@ -1,0 +1,4 @@
+elapsed_seconds: 167
+exit_code: 0
+parallel: 3
+command: nx run-many -t build --projects=tag:vNext --skip-nx-cache --parallel=3

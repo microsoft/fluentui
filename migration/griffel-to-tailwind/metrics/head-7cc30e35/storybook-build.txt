@@ -1,0 +1,4 @@
+elapsed_seconds: 74
+exit_code: 0
+dist_bytes: 39045618
+command: nx run vr-tests-react-components:build-storybook --skip-nx-cache
