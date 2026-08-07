@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightThemeClassName } from '@fluentui/react-theme';
 
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { OverlayDrawer } from './OverlayDrawer';
@@ -32,7 +32,7 @@ const BACKDROP_PROBE = 'overlay-drawer-backdrop-probe';
 const backdropSelector = `.${BACKDROP_PROBE}`;
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<FluentProvider themeClassName={webLightThemeClassName}>{element}</FluentProvider>);
 };
 
 const LongPageContent = ({ children }: { children?: React.ReactNode }) => (

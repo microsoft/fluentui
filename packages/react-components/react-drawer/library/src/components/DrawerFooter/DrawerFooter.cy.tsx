@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightThemeClassName } from '@fluentui/react-theme';
 
 import { Drawer } from '../Drawer/Drawer';
 import { DrawerBody } from '../DrawerBody/DrawerBody';
@@ -10,7 +10,7 @@ import { DrawerFooter } from './DrawerFooter';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<FluentProvider themeClassName={webLightThemeClassName}>{element}</FluentProvider>);
 };
 
 describe('DrawerFooter', () => {

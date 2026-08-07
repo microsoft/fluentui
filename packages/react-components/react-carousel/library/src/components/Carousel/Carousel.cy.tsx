@@ -2,7 +2,7 @@ import 'cypress-real-events';
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
 import type { CarouselProps } from './Carousel.types';
 import { CarouselNav } from '../CarouselNav/CarouselNav';
 import { CarouselNavButton, carouselNavButtonClassNames } from '../CarouselNavButton/index';
@@ -26,7 +26,7 @@ const navButtonSelector = fuiSelector(carouselNavButtonClassNames.root);
 const cardSelector = fuiSelector(carouselCardClassNames.root);
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<FluentProvider themeClassName={teamsLightThemeClassName}>{element}</FluentProvider>);
 };
 
 const CarouselTest: React.FC<CarouselProps> = props => {

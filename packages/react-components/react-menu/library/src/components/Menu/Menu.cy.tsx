@@ -15,7 +15,7 @@ import {
 } from '@fluentui/react-menu';
 import { FluentProvider } from '@fluentui/react-provider';
 import { Portal } from '@fluentui/react-portal';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
 import * as React from 'react';
 
 import {
@@ -33,7 +33,7 @@ const pointerPortalClassName = 'menu-cy-pointer-portal';
 const pointerPortalCss = `.${pointerPortalClassName} { z-index: 10000000; }`;
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<FluentProvider themeClassName={teamsLightThemeClassName}>{element}</FluentProvider>);
 };
 
 describe('MenuTrigger', () => {

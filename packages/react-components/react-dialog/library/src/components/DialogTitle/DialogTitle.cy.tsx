@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import {
@@ -21,7 +21,8 @@ import {
   dialogTriggerOpenSelector,
 } from '../../testing/selectors';
 
-const mount = (element: JSXElement) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+const mount = (element: JSXElement) =>
+  mountBase(<FluentProvider themeClassName={teamsLightThemeClassName}>{element}</FluentProvider>);
 
 describe('DialogTitle', () => {
   describe('modalType = modal', () => {

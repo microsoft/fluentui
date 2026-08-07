@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
 
 import { Combobox, Option } from '@fluentui/react-combobox';
 import type { ComboboxProps } from '@fluentui/react-combobox';
@@ -11,7 +11,7 @@ import { triggerSelector, listboxSelector, triggerId } from '../../testing/selec
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<FluentProvider themeClassName={teamsLightThemeClassName}>{element}</FluentProvider>);
 };
 
 describe('Combobox controlling open/close state', () => {

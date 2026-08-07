@@ -127,12 +127,12 @@ const stackblitzFiles: Record<string, string> = {
 </html>`,
   'src/index.tsx': `import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
 import Example from './example';
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider themeClassName={webLightThemeClassName}>
       <Example />
     </FluentProvider>
   </React.StrictMode>,

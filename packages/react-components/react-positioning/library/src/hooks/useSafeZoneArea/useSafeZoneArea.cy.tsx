@@ -8,12 +8,12 @@ import {
 } from '@fluentui/react-positioning';
 import { Portal } from '@fluentui/react-portal';
 import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 const mount = (node: React.ReactElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{node}</FluentProvider>);
+  mountBase(<FluentProvider themeClassName={teamsLightThemeClassName}>{node}</FluentProvider>);
 };
 
 /**

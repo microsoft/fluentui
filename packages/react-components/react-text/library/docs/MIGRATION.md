@@ -338,7 +338,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(200, 198, 196)'
   },
@@ -360,7 +360,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(96, 94, 92)'
   },
@@ -382,7 +382,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(63, 242, 63)'
   },
@@ -408,7 +408,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(196, 49, 75)'
   },
@@ -430,7 +430,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(231, 53, 80)'
   },
@@ -452,7 +452,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(255, 0, 0)'
   },
@@ -479,7 +479,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(196, 49, 75)',
      fontWeight: 700
@@ -503,7 +503,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(231, 53, 80)',
      fontWeight: 700
@@ -527,7 +527,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(255, 0, 0)',
      fontWeight: 700
@@ -554,7 +554,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(35, 123, 75)'
   },
@@ -576,7 +576,7 @@ Northstar design tokens:
 ```
 import { makeStyles, Text } from '@fluentui/react-components';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
      color: 'rgb(146, 195, 83)'
   },

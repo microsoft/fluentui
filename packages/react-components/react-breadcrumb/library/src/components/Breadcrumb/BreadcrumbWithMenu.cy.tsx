@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightThemeClassName } from '@fluentui/react-theme';
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbItem } from '../BreadcrumbItem';
@@ -17,7 +17,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<FluentProvider themeClassName={webLightThemeClassName}>{element}</FluentProvider>);
 };
 
 const mapHelper = new Array(7).fill(0).map((_, i) => i);

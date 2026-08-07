@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightThemeClassName } from '@fluentui/react-theme';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import type { InlineDrawer } from '../components/InlineDrawer';
@@ -11,7 +11,7 @@ import type { OverlayDrawer } from '../components/OverlayDrawer';
 import type { Drawer, DrawerProps } from '../Drawer';
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<FluentProvider themeClassName={webLightThemeClassName}>{element}</FluentProvider>);
 };
 
 export function testDrawerBaseScenarios(Component: typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer): void {

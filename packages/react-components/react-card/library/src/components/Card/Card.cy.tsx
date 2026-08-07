@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightThemeClassName } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { fuiSelector } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -45,7 +45,7 @@ const floatingActionSelector = `.${FLOATING_ACTION_PROBE}`;
 const headerSlotSelector = `.${HEADER_SLOT_PROBE}`;
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<FluentProvider themeClassName={webLightThemeClassName}>{element}</FluentProvider>);
 };
 
 const resolveAsset = (asset: string) => {

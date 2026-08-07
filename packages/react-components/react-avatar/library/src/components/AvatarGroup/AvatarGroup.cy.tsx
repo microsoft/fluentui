@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
 import { AvatarGroupPopover, AvatarGroupItem } from '@fluentui/react-avatar';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<FluentProvider themeClassName={teamsLightThemeClassName}>{element}</FluentProvider>);
 };
 
 const overflowTriggerSelector = '[type="button"]';

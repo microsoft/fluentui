@@ -39,13 +39,12 @@ describe('Portal', () => {
   });
 
   it('applies "dir" attribute based on a context value', () => {
-    const theme = {};
     const { getByText } = render(
       <>
-        <FluentProvider dir="ltr" theme={theme}>
+        <FluentProvider dir="ltr">
           <Portal>LTR</Portal>
         </FluentProvider>
-        <FluentProvider dir="rtl" theme={theme}>
+        <FluentProvider dir="rtl">
           <Portal>RTL</Portal>
         </FluentProvider>
       </>,
