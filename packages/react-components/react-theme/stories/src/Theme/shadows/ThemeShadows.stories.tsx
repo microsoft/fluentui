@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/react-components';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/tokens';
 import type { ShadowTokens } from '@fluentui/react-components';
 
 // FIXME: hardcoded theme

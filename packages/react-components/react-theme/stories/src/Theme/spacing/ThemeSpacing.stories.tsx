@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { teamsLightTheme } from '@fluentui/react-components';
+import { teamsLightTheme } from '@fluentui/tokens';
 import type { HorizontalSpacingTokens, VerticalSpacingTokens } from '@fluentui/react-components';
 
 const theme = teamsLightTheme;

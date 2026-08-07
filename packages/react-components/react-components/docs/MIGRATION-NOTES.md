@@ -103,47 +103,36 @@ import { tokens } from '@fluentui/react-components';
 console.log(tokens.colorNeutralForeground1);
 ```
 
-### Custom tokens can now be passed as part of the Theme
+### Custom tokens are custom properties in your CSS
 
-Previously, the only tokens one could access were those provided by Fluent UI in its `Theme` definition. We are now opening up our APIs so that custom tokens can be passed down and accessed in our theming infrastructure. An example of how to achieve that is as follows:
+Previously, the only tokens one could access were those provided by Fluent UI in its `Theme` definition. Themes are now applied as static CSS classes (`FluentProvider` takes a `themeClassName`), so custom tokens are simply additional custom properties declared in your own CSS — for example in a custom theme class — and referenced like any built-in token:
 
-```tsx
-import { makeStyles, themeToTokensObject, webLightTheme, FluentProvider, Theme } from '@fluentui/react-components';
-
-// You can pass your own custom tokens to a theme and pass that to the provider.
-type CustomTheme = Theme & {
-  tokenA: string;
-  tokenB: string;
-  tokenC: string;
-};
-const customTheme: CustomTheme = { ...webLightTheme, tokenA: 'red', tokenB: 'blue', tokenC: 'green' };
-function App() {
-  return <FluentProvider theme={customTheme}>{/* ... */}</FluentProvider>;
+```css
+/* my-theme.css — a custom theme class contains only custom-property declarations */
+.my-custom-theme {
+  --tokenA: red;
+  --tokenB: blue;
+  --tokenC: green;
 }
 
-// ...
-
-// You can construct a custom tokens object by yourself.
-const customTokens: Record<keyof CustomTheme, string> = {
-  ...tokens,
-  tokenA: `var(--tokenA)`,
-  tokenB: `var(--tokenB)`,
-  tokenC: `var(--tokenC)`,
-};
-
-// You can alternatively use the themeToTokensObject function to construct the custom tokens object.
-// Note: If you do it via the themeToTokensObject you might see a negative effect on tree-shaking since bundles won't know the shape of the output.
-const alternativeCustomTokens = themeToTokensObject(customTheme);
-
-// You can then use this custom tokens object inside your styles.
-const useStyles = makeStyles({
-  base: {
-    color: customTokens.tokenA,
-    backgroundColor: customTokens.tokenB,
-    outlineColor: customTokens.tokenC,
-  },
-});
+/* MyComponent.module.css */
+.base {
+  color: var(--tokenA);
+  background-color: var(--tokenB);
+  outline-color: var(--tokenC);
+}
 ```
+
+```tsx
+import './my-theme.css';
+import { FluentProvider } from '@fluentui/react-components';
+
+function App() {
+  return <FluentProvider themeClassName="my-custom-theme">{/* ... */}</FluentProvider>;
+}
+```
+
+Theme objects (`webLightTheme`, …) and `themeToTokensObject` remain available from `@fluentui/tokens` for build-time/tooling use.
 
 ### `themeToCSSVariables()` was removed
 
@@ -208,7 +197,7 @@ For more details, please check [microsoft/fluentui#21257](https://github.com/mic
 To replace the usage of this function you should just spread the themes into a new object (which was what the function was doing internally for the most part):
 
 ```diff
-import { webLightTheme, Theme } from '@fluentui/react-components';
+import { webLightTheme, Theme } from '@fluentui/tokens';
 
 const customTokens = { ... };
 -const customTheme = mergeTheme(webLightTheme, customTokens);

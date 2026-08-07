@@ -95,4 +95,85 @@ describe('useCssVarValue', () => {
 
     expect(onValue).toHaveBeenLastCalledWith('1.25');
   });
+
+  it('re-reads when a `deps` entry changes (the explicit staleness trigger)', () => {
+    const onValue = jest.fn();
+
+    const { rerender } = render(
+      <TestComponent variableName="--test-var" variableValue="1.5" options={{ deps: ['light'] }} onValue={onValue} />,
+    );
+    expect(onValue).toHaveBeenLastCalledWith('1.5');
+
+    // Variable changes AND the dep changes -> exactly this triggers a fresh DOM read.
+    rerender(
+      <TestComponent variableName="--test-var" variableValue="2" options={{ deps: ['dark'] }} onValue={onValue} />,
+    );
+    expect(onValue).toHaveBeenLastCalledWith('2');
+  });
+
+  it('falls back when a deps-triggered re-read finds the variable undefined', () => {
+    const onValue = jest.fn();
+
+    const { rerender } = render(
+      <TestComponent
+        variableName="--test-var"
+        variableValue="1.5"
+        options={{ deps: [1], fallback: 'fb' }}
+        onValue={onValue}
+      />,
+    );
+    expect(onValue).toHaveBeenLastCalledWith('1.5');
+
+    rerender(<TestComponent variableName="--test-var" options={{ deps: [2], fallback: 'fb' }} onValue={onValue} />);
+    expect(onValue).toHaveBeenLastCalledWith('fb');
+  });
+
+  it('memoizes per (element, variable): a remount at the same element skips getComputedStyle', () => {
+    const host = document.createElement('div');
+    host.style.setProperty('--memo-var', '42');
+    document.body.appendChild(host);
+
+    const hostRef = { current: host };
+    const getComputedStyleSpy = jest.spyOn(window, 'getComputedStyle');
+
+    const Reader: React.FC = () => {
+      useCssVarValue('--memo-var', hostRef);
+      return null;
+    };
+
+    const first = render(<Reader />);
+    first.unmount();
+    const second = render(<Reader />);
+
+    const readsForVar = getComputedStyleSpy.mock.calls.filter(call => call[0] === host).length;
+    expect(readsForVar).toBe(1);
+
+    second.unmount();
+    getComputedStyleSpy.mockRestore();
+    host.remove();
+  });
+
+  it('does NOT use the cross-mount cache when `deps` is provided (fresh read per mount)', () => {
+    const host = document.createElement('div');
+    host.style.setProperty('--memo-var-deps', 'a');
+    document.body.appendChild(host);
+
+    const hostRef = { current: host };
+    const onValue = jest.fn();
+
+    const Reader: React.FC = () => {
+      onValue(useCssVarValue('--memo-var-deps', hostRef, { deps: ['x'] }));
+      return null;
+    };
+
+    render(<Reader />).unmount();
+    expect(onValue).toHaveBeenLastCalledWith('a');
+
+    // Value changes while unmounted; a cached hit would be stale.
+    host.style.setProperty('--memo-var-deps', 'b');
+    render(<Reader />);
+    expect(onValue).toHaveBeenLastCalledWith('b');
+
+    host.remove();
+  });
 });

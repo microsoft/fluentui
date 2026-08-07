@@ -13,20 +13,56 @@ export interface UseCssVarValueOptions {
    * element/ref is absent).
    */
   fallback?: string;
+
+  /**
+   * Explicit re-read trigger. Compared like an effect dependency list (`Object.is` per
+   * entry): when any entry changes, the variable is re-read from the DOM and the
+   * `(element, variable)` cache entry is refreshed. Omit it for the default
+   * read-once-per-(element, variable) behavior.
+   *
+   * Typical use: pass the value that scopes the variable — e.g. the active theme class —
+   * so a theme switch triggers exactly one re-read:
+   * `useCssVarValue('--color-neutral-background-1', ref, { deps: [themeClassName] })`.
+   *
+   * Providing `deps` also opts the instance out of the cross-mount cache on its FIRST
+   * read (the DOM is read fresh on every mount) — the cache cannot know which deps a
+   * cached value was read under, and a stale hit after a theme change while unmounted
+   * would be wrong.
+   */
+  deps?: React.DependencyList;
+}
+
+/**
+ * Module-level memo of resolved values, keyed by (element, variable). Repeated mounts
+ * reading the same variable at the same element skip the `getComputedStyle` call — the
+ * dominant cost of this hook. Entries live as long as the element (WeakMap) and are only
+ * refreshed by a `deps` change (see {@link UseCssVarValueOptions.deps}).
+ */
+const cssVarValueCache = new WeakMap<HTMLElement, Map<string, string>>();
+
+function areDepsEqual(a: React.DependencyList | undefined, b: React.DependencyList | undefined): boolean {
+  if (a === undefined || b === undefined) {
+    return a === b;
+  }
+
+  return a.length === b.length && a.every((value, index) => Object.is(value, b[index]));
 }
 
 /**
  * Reads the computed value of a CSS custom property at the DOM position of `elementRef`.
  *
  * The read happens through `getComputedStyle(element).getPropertyValue(variableName)` at the
- * consuming element, so cascade, inheritance and theme-provider scoping all apply — the value
- * is whatever CSS would hand to a `var()` reference on that element.
+ * consuming element, so cascade, inheritance and theme scoping (theme classes — theming
+ * Phase 2b) all apply — the value is whatever CSS would hand to a `var()` reference on that
+ * element.
  *
- * Staleness semantics: the variable is read ONCE, in a layout effect after the element
- * mounts (and again only if `variableName` changes). It is deliberately NOT reactive — later
- * stylesheet, class or theme changes that alter the variable do not update the returned
- * value. Callers that need a live value must remount or re-key the owner. This keeps the
- * hook free of per-render `getComputedStyle` calls and observers.
+ * Staleness semantics: the variable is read ONCE per (element, variable) — in a layout
+ * effect after the element mounts — and the result is memoized module-wide, so later
+ * mounts at the same element reuse it without touching the DOM. It is deliberately NOT
+ * reactive: stylesheet, class or theme changes that alter the variable do NOT update the
+ * returned value (no per-render reads, no observers). Callers that need a re-read have
+ * exactly one trigger: change an entry of `options.deps` (e.g. pass the active theme
+ * class), which re-reads the DOM and refreshes the cache entry.
  *
  * SSR-safe: on the server (and until the layout effect runs) the hook returns
  * `options.fallback`.
@@ -47,8 +83,9 @@ export function useCssVarValue(
   elementRef: React.RefObject<HTMLElement | null>,
   options: UseCssVarValueOptions = {},
 ): string | undefined {
-  const { fallback } = options;
+  const { fallback, deps } = options;
   const [value, setValue] = React.useState<string | undefined>(undefined);
+  const previousDepsRef = React.useRef<React.DependencyList | undefined>(undefined);
 
   useIsomorphicLayoutEffect(() => {
     const element = elementRef.current;
@@ -58,14 +95,36 @@ export function useCssVarValue(
       return;
     }
 
+    const depsChanged = !areDepsEqual(previousDepsRef.current, deps);
+    previousDepsRef.current = deps;
+
+    let elementCache = cssVarValueCache.get(element);
+    const cached = depsChanged ? undefined : elementCache?.get(variableName);
+
+    if (cached !== undefined) {
+      setValue(cached);
+      return;
+    }
+
     const computed = targetWindow.getComputedStyle(element).getPropertyValue(variableName).trim();
 
     if (computed !== '') {
+      if (!elementCache) {
+        elementCache = new Map();
+        cssVarValueCache.set(element, elementCache);
+      }
+      elementCache.set(variableName, computed);
       setValue(computed);
+    } else {
+      // The variable does not resolve (anymore) — drop any stale memo and fall back.
+      elementCache?.delete(variableName);
+      setValue(undefined);
     }
-    // Read once per mount (per variableName) — see the staleness semantics above. The ref
-    // object identity is stable; its `.current` is intentionally not a reactive input.
-  }, [variableName, elementRef]);
+    // Read once per (element, variableName), re-read only on a `deps` change — see the
+    // staleness semantics above. The ref object identity is stable; its `.current` is
+    // intentionally not a reactive input.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [variableName, elementRef, ...(deps ?? [])]);
 
   return value ?? fallback;
 }

@@ -5,8 +5,6 @@
 ```ts
 
 import { BorderRadiusTokens } from '@fluentui/tokens';
-import { Brands } from '@fluentui/tokens';
-import { BrandVariants } from '@fluentui/tokens';
 import { ColorPaletteAnchor } from '@fluentui/tokens';
 import { ColorPaletteBeige } from '@fluentui/tokens';
 import { ColorPaletteBerry } from '@fluentui/tokens';
@@ -44,10 +42,6 @@ import { ColorPaletteTeal } from '@fluentui/tokens';
 import { ColorPaletteTokens } from '@fluentui/tokens';
 import { ColorPaletteYellow } from '@fluentui/tokens';
 import { ColorTokens } from '@fluentui/tokens';
-import { createDarkTheme } from '@fluentui/tokens';
-import { createHighContrastTheme } from '@fluentui/tokens';
-import { createLightTheme } from '@fluentui/tokens';
-import { createTeamsDarkTheme } from '@fluentui/tokens';
 import { CurveTokens } from '@fluentui/tokens';
 import { DurationTokens } from '@fluentui/tokens';
 import { FontFamilyTokens } from '@fluentui/tokens';
@@ -55,31 +49,26 @@ import { FontSizeTokens } from '@fluentui/tokens';
 import { FontWeightTokens } from '@fluentui/tokens';
 import { HorizontalSpacingTokens } from '@fluentui/tokens';
 import { LineHeightTokens } from '@fluentui/tokens';
-import { PartialTheme } from '@fluentui/tokens';
 import { ShadowBrandTokens } from '@fluentui/tokens';
 import { ShadowTokens } from '@fluentui/tokens';
 import { SpacingTokens } from '@fluentui/tokens';
 import { StrokeWidthTokens } from '@fluentui/tokens';
-import { teamsDarkTheme } from '@fluentui/tokens';
-import { teamsDarkV21Theme } from '@fluentui/tokens';
-import { teamsHighContrastTheme } from '@fluentui/tokens';
-import { teamsLightTheme } from '@fluentui/tokens';
-import { teamsLightV21Theme } from '@fluentui/tokens';
-import { Theme } from '@fluentui/tokens';
-import { themeToTokensObject } from '@fluentui/tokens';
+import { teamsDarkThemeClassName } from '@fluentui/tokens';
+import { teamsDarkV21ThemeClassName } from '@fluentui/tokens';
+import { teamsHighContrastThemeClassName } from '@fluentui/tokens';
+import { teamsLightThemeClassName } from '@fluentui/tokens';
+import { teamsLightV21ThemeClassName } from '@fluentui/tokens';
+import { ThemeClassName } from '@fluentui/tokens';
+import { themeClassNames } from '@fluentui/tokens';
 import { tokens } from '@fluentui/tokens';
 import { TypographyStyle } from '@fluentui/tokens';
 import { TypographyStyles } from '@fluentui/tokens';
 import { typographyStyles } from '@fluentui/tokens';
 import { VerticalSpacingTokens } from '@fluentui/tokens';
-import { webDarkTheme } from '@fluentui/tokens';
-import { webLightTheme } from '@fluentui/tokens';
+import { webDarkThemeClassName } from '@fluentui/tokens';
+import { webLightThemeClassName } from '@fluentui/tokens';
 
 export { BorderRadiusTokens }
-
-export { Brands }
-
-export { BrandVariants }
 
 export { ColorPaletteAnchor }
 
@@ -155,14 +144,6 @@ export { ColorPaletteYellow }
 
 export { ColorTokens }
 
-export { createDarkTheme }
-
-export { createHighContrastTheme }
-
-export { createLightTheme }
-
-export { createTeamsDarkTheme }
-
 export { CurveTokens }
 
 export { DurationTokens }
@@ -177,8 +158,6 @@ export { HorizontalSpacingTokens }
 
 export { LineHeightTokens }
 
-export { PartialTheme }
-
 export { ShadowBrandTokens }
 
 export { ShadowTokens }
@@ -187,19 +166,19 @@ export { SpacingTokens }
 
 export { StrokeWidthTokens }
 
-export { teamsDarkTheme }
+export { teamsDarkThemeClassName }
 
-export { teamsDarkV21Theme }
+export { teamsDarkV21ThemeClassName }
 
-export { teamsHighContrastTheme }
+export { teamsHighContrastThemeClassName }
 
-export { teamsLightTheme }
+export { teamsLightThemeClassName }
 
-export { teamsLightV21Theme }
+export { teamsLightV21ThemeClassName }
 
-export { Theme }
+export { ThemeClassName }
 
-export { themeToTokensObject }
+export { themeClassNames }
 
 export { tokens }
 
@@ -211,9 +190,9 @@ export { typographyStyles }
 
 export { VerticalSpacingTokens }
 
-export { webDarkTheme }
+export { webDarkThemeClassName }
 
-export { webLightTheme }
+export { webLightThemeClassName }
 
 // (No @packageDocumentation comment for this package)
 

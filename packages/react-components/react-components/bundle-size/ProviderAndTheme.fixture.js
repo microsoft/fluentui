@@ -1,7 +1,7 @@
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
 
-console.log(FluentProvider, webLightTheme);
+console.log(FluentProvider, webLightThemeClassName);
 
 export default {
-  name: 'react-components: FluentProvider & webLightTheme',
+  name: 'react-components: FluentProvider & webLightThemeClassName',
 };

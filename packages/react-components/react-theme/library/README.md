@@ -4,16 +4,18 @@
 
 ## Usage
 
-Import a theme and tokens:
+Themes ship as static CSS classes in `@fluentui/react-tailwind-theme` (import
+`@fluentui/react-tailwind-theme/styles.css` once per document). This package exports the typed
+class-name constants and the `tokens` object:
 
 ```jsx
-import { webLightTheme, tokens } from '@fluentui/react-components';
+import { webLightThemeClassName, tokens } from '@fluentui/react-components';
 ```
 
-Pass the theme to the `FluentProvider`:
+Pass the theme class to the `FluentProvider`:
 
 ```jsx
-<FluentProvider theme={webLightTheme}>
+<FluentProvider themeClassName={webLightThemeClassName}>
   <App />
 </FluentProvider>
 ```
@@ -31,10 +33,15 @@ The `tokens` object is the TypeScript-side equivalent, for when a value has to b
 
 ### Using a custom brand ramp
 
-To use a theme based on a custom brand ramp, use the `createXXXTheme` function:
+A custom theme is a CSS class containing only custom-property declarations with the canonical
+kebab-case token names, applied via `themeClassName` (or on any DOM node). To derive the values from
+a custom brand ramp, use the theme factories in `@fluentui/tokens` (build-time/tooling input) and
+emit the result as such a CSS class:
 
-```jsx
-import { createWebLightTheme } from '@fluentui/react-components';
+```tsx
+// build-time tooling — not part of the runtime API
+import { createLightTheme } from '@fluentui/tokens';
+import type { BrandVariants } from '@fluentui/tokens';
 
 const customBrandRamp: BrandVariants = {
   10: `#2b2b40`,
@@ -42,7 +49,8 @@ const customBrandRamp: BrandVariants = {
   160: `#e8ebfa`,
 };
 
-const customTheme = createWebLightTheme(customBrandRamp);
+const customTheme = createLightTheme(customBrandRamp);
+// emit customTheme as a CSS class of custom-property declarations
 ```
 
 ## Contributing

@@ -99,7 +99,6 @@ import { Body1Strong } from '@fluentui/react-text';
 import { Body1Stronger } from '@fluentui/react-text';
 import { Body2 } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
-import { BrandVariants } from '@fluentui/react-theme';
 import { Breadcrumb } from '@fluentui/react-breadcrumb';
 import { BreadcrumbButton } from '@fluentui/react-breadcrumb';
 import { breadcrumbButtonClassNames } from '@fluentui/react-breadcrumb';
@@ -261,17 +260,12 @@ import { CounterBadge } from '@fluentui/react-badge';
 import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
-import { createCSSRuleFromTheme } from '@fluentui/react-provider';
-import { createDarkTheme } from '@fluentui/react-theme';
-import { createHighContrastTheme } from '@fluentui/react-theme';
-import { createLightTheme } from '@fluentui/react-theme';
 import { createMotionComponent } from '@fluentui/react-motion';
 import { createMotionComponentVariant } from '@fluentui/react-motion';
 import { createPresenceComponent } from '@fluentui/react-motion';
 import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
-import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
 import { DATA_OVERFLOW_DIVIDER } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
@@ -753,7 +747,6 @@ import { overlayDrawerClassNames } from '@fluentui/react-drawer';
 import { OverlayDrawerProps } from '@fluentui/react-drawer';
 import { OverlayDrawerSlots } from '@fluentui/react-drawer';
 import { OverlayDrawerState } from '@fluentui/react-drawer';
-import { PartialTheme } from '@fluentui/react-theme';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
@@ -1358,11 +1351,11 @@ import { TeachingPopoverTrigger } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverTriggerChildProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverTriggerProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverTriggerState } from '@fluentui/react-teaching-popover';
-import { teamsDarkTheme } from '@fluentui/react-theme';
-import { teamsDarkV21Theme } from '@fluentui/react-theme';
-import { teamsHighContrastTheme } from '@fluentui/react-theme';
-import { teamsLightTheme } from '@fluentui/react-theme';
-import { teamsLightV21Theme } from '@fluentui/react-theme';
+import { teamsDarkThemeClassName } from '@fluentui/react-theme';
+import { teamsDarkV21ThemeClassName } from '@fluentui/react-theme';
+import { teamsHighContrastThemeClassName } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
+import { teamsLightV21ThemeClassName } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
 import { Textarea } from '@fluentui/react-textarea';
 import { textareaClassNames } from '@fluentui/react-textarea';
@@ -1375,8 +1368,8 @@ import { TextPresetProps } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
-import { Theme } from '@fluentui/react-theme';
-import { themeToTokensObject } from '@fluentui/react-theme';
+import { ThemeClassName } from '@fluentui/react-theme';
+import { themeClassNames } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
 import { Title3 } from '@fluentui/react-text';
@@ -1660,7 +1653,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
-import { useFluentProviderThemeStyleTag } from '@fluentui/react-provider';
+import { useFluentProviderThemeClassName_unstable } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -1995,8 +1988,8 @@ import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useTypingAnnounce } from '@fluentui/react-aria';
 import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
-import { webDarkTheme } from '@fluentui/react-theme';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
+import { webLightThemeClassName } from '@fluentui/react-theme';
 
 export { Accordion }
 
@@ -2187,8 +2180,6 @@ export { Body1Stronger }
 export { Body2 }
 
 export { BorderRadiusTokens }
-
-export { BrandVariants }
 
 export { Breadcrumb }
 
@@ -2512,14 +2503,6 @@ export { CounterBadgeProps }
 
 export { CounterBadgeState }
 
-export { createCSSRuleFromTheme }
-
-export { createDarkTheme }
-
-export { createHighContrastTheme }
-
-export { createLightTheme }
-
 export { createMotionComponent }
 
 export { createMotionComponentVariant }
@@ -2531,8 +2514,6 @@ export { createPresenceComponentVariant }
 export { createTableColumn }
 
 export { CreateTableColumnOptions }
-
-export { createTeamsDarkTheme }
 
 export { CurveTokens }
 
@@ -3495,8 +3476,6 @@ export { OverlayDrawerProps }
 export { OverlayDrawerSlots }
 
 export { OverlayDrawerState }
-
-export { PartialTheme }
 
 export { PartitionAvatarGroupItems }
 
@@ -4706,15 +4685,15 @@ export { TeachingPopoverTriggerProps }
 
 export { TeachingPopoverTriggerState }
 
-export { teamsDarkTheme }
+export { teamsDarkThemeClassName }
 
-export { teamsDarkV21Theme }
+export { teamsDarkV21ThemeClassName }
 
-export { teamsHighContrastTheme }
+export { teamsHighContrastThemeClassName }
 
-export { teamsLightTheme }
+export { teamsLightThemeClassName }
 
-export { teamsLightV21Theme }
+export { teamsLightV21ThemeClassName }
 
 export { Text_2 as Text }
 
@@ -4740,9 +4719,9 @@ export { TextSlots }
 
 export { TextState }
 
-export { Theme }
+export { ThemeClassName }
 
-export { themeToTokensObject }
+export { themeClassNames }
 
 export { Title1 }
 
@@ -5310,7 +5289,7 @@ export { useFluentProviderContextValues_unstable }
 
 export { useFluentProviderStyles_unstable }
 
-export { useFluentProviderThemeStyleTag }
+export { useFluentProviderThemeClassName_unstable }
 
 export { useFocusableGroup }
 
@@ -5980,9 +5959,9 @@ export { useUncontrolledFocus }
 
 export { VerticalSpacingTokens }
 
-export { webDarkTheme }
+export { webDarkThemeClassName }
 
-export { webLightTheme }
+export { webLightThemeClassName }
 
 // (No @packageDocumentation comment for this package)
 

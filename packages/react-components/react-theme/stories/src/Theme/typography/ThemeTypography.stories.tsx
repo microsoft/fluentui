@@ -1,6 +1,8 @@
 import * as React from 'react';
-import type { JSXElement, Theme } from '@fluentui/react-components';
-import { Subtitle2Stronger, Text, typographyStyles, webLightTheme } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import type { Theme } from '@fluentui/tokens';
+import { Subtitle2Stronger, Text, typographyStyles } from '@fluentui/react-components';
+import { webLightTheme } from '@fluentui/tokens';
 import type { TypographyStyles } from '@fluentui/react-components';
 
 import styles from './ThemeTypography.module.css';

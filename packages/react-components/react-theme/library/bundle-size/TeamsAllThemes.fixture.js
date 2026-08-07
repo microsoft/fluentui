@@ -1,7 +1,11 @@
-import { teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme } from '@fluentui/react-theme';
+import {
+  teamsLightThemeClassName,
+  teamsDarkThemeClassName,
+  teamsHighContrastThemeClassName,
+} from '@fluentui/react-theme';
 
-console.log(teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme);
+console.log(teamsLightThemeClassName, teamsDarkThemeClassName, teamsHighContrastThemeClassName);
 
 export default {
-  name: 'Teams: all themes',
+  name: 'Teams: all theme class names',
 };

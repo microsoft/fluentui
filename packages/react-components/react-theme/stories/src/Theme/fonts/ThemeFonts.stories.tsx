@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { teamsLightTheme } from '@fluentui/react-components';
+import { teamsLightTheme } from '@fluentui/tokens';
 import type { FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens } from '@fluentui/react-components';
 
 import styles from './ThemeFonts.module.css';

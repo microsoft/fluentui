@@ -1,13 +1,8 @@
 import * as React from 'react';
-import type { JSXElement, Theme, MenuCheckedValueChangeData } from '@fluentui/react-components';
-import {
-  teamsDarkTheme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  webLightTheme,
-  webDarkTheme,
-  Input,
-} from '@fluentui/react-components';
+import type { JSXElement, MenuCheckedValueChangeData } from '@fluentui/react-components';
+import type { Theme } from '@fluentui/tokens';
+import { Input } from '@fluentui/react-components';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webLightTheme, webDarkTheme } from '@fluentui/tokens';
 
 import { ColorRampItem } from './ColorRamp.stories';
 import { TokensFilterButton } from './FilterButton.stories';

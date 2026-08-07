@@ -1,23 +1,23 @@
+// Theming Phase 2b: the JS theme objects (webLightTheme, …), createTheme factories and
+// themeToTokensObject are no longer part of the react-facing runtime API — themes ship as
+// static CSS classes (@fluentui/react-tailwind-theme); the constants below name them.
+// The theme objects remain exported by @fluentui/tokens as build-time generator input.
 export {
-  teamsDarkTheme,
-  teamsDarkV21Theme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  teamsLightV21Theme,
-  webDarkTheme,
-  webLightTheme,
-  createDarkTheme,
-  createHighContrastTheme,
-  createLightTheme,
-  createTeamsDarkTheme,
-  themeToTokensObject,
+  teamsDarkThemeClassName,
+  teamsDarkV21ThemeClassName,
+  teamsHighContrastThemeClassName,
+  teamsLightThemeClassName,
+  teamsLightV21ThemeClassName,
+  themeClassNames,
+  webDarkThemeClassName,
+  webLightThemeClassName,
   tokens,
   typographyStyles,
 } from '@fluentui/tokens';
 
+export type { ThemeClassName } from '@fluentui/tokens';
+
 export type {
-  Brands,
-  BrandVariants,
   FontSizeTokens,
   FontWeightTokens,
   LineHeightTokens,
@@ -68,8 +68,6 @@ export type {
   ColorPalettePlatinum,
   ColorPaletteAnchor,
   ColorTokens,
-  PartialTheme,
-  Theme,
   TypographyStyle,
   TypographyStyles,
 } from '@fluentui/tokens';

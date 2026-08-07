@@ -1,7 +1,7 @@
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
 
-console.log(teamsLightTheme);
+console.log(teamsLightThemeClassName);
 
 export default {
-  name: 'Teams: Light theme',
+  name: 'Teams: Light theme class name',
 };

@@ -24,15 +24,17 @@
 // Griffel (components ship static CSS Modules); consumers who still author Griffel styles
 // should depend on `@griffel/react` directly. This is part of the same major-version break
 // as the D16 statics removal.
+// Theming Phase 2b: `createCSSRuleFromTheme` and `useFluentProviderThemeStyleTag` are
+// removed — FluentProvider no longer injects a runtime theme <style> tag. Themes are
+// static CSS classes (webLightThemeClassName, …) passed via the `themeClassName` prop.
 export {
-  createCSSRuleFromTheme,
   FluentProvider,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
   useFluentProvider_unstable,
   useFluentProviderContextValues_unstable,
   useFluentProviderStyles_unstable,
-  useFluentProviderThemeStyleTag,
+  useFluentProviderThemeClassName_unstable,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
@@ -65,32 +67,31 @@ export type {
   UseModalAttributesOptions,
 } from '@fluentui/react-tabster';
 
+// Theming Phase 2b: the JS theme objects (webLightTheme, …), the createTheme factories
+// and themeToTokensObject are removed from the public runtime API — theme objects are
+// build-time generator input now (still exported by @fluentui/tokens for tooling). The
+// runtime theming surface is the theme CLASS constants below plus the `tokens.*` var()
+// read strings; theme values ship as static CSS (@fluentui/react-tailwind-theme).
 export {
-  createDarkTheme,
-  createHighContrastTheme,
-  createLightTheme,
-  createTeamsDarkTheme,
-  themeToTokensObject,
-  teamsDarkTheme,
-  teamsDarkV21Theme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  teamsLightV21Theme,
+  teamsDarkThemeClassName,
+  teamsDarkV21ThemeClassName,
+  teamsHighContrastThemeClassName,
+  teamsLightThemeClassName,
+  teamsLightV21ThemeClassName,
+  themeClassNames,
   tokens,
   typographyStyles,
-  webDarkTheme,
-  webLightTheme,
+  webDarkThemeClassName,
+  webLightThemeClassName,
 } from '@fluentui/react-theme';
 export type {
   BorderRadiusTokens,
-  BrandVariants,
   ColorPaletteTokens,
   ColorTokens,
   FontFamilyTokens,
   FontSizeTokens,
   FontWeightTokens,
   LineHeightTokens,
-  PartialTheme,
   ShadowBrandTokens,
   ShadowTokens,
   StrokeWidthTokens,
@@ -99,7 +100,7 @@ export type {
   VerticalSpacingTokens,
   DurationTokens,
   CurveTokens,
-  Theme,
+  ThemeClassName,
   TypographyStyle,
   TypographyStyles,
 } from '@fluentui/react-theme';

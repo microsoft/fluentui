@@ -12,15 +12,16 @@ Add @fluentui/react-components to a project:
 yarn add @fluentui/react-components
 ```
 
-To use a component, add a `FluentProvider` with a theme close to the root of your application and then instantiate components inside the provider's subtree:
+To use a component, import the theme stylesheet once per document, add a `FluentProvider` with a theme class close to the root of your application and then instantiate components inside the provider's subtree:
 
 ```js
 import React from 'react';
 import ReactDOMClient from 'react-dom/client';
-import { FluentProvider, teamsLightTheme, Button } from '@fluentui/react-components';
+import '@fluentui/react-tailwind-theme/styles.css';
+import { FluentProvider, teamsLightThemeClassName, Button } from '@fluentui/react-components';
 
 ReactDOMClient.createRoot(document.getElementById('root')).render(
-  <FluentProvider theme={teamsLightTheme}>
+  <FluentProvider themeClassName={teamsLightThemeClassName}>
     <Button appearance="primary">I am a button.</Button>
   </FluentProvider>,
 );

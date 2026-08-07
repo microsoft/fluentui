@@ -375,6 +375,7 @@ export function useCssVarValue(variableName: string, elementRef: React_2.RefObje
 
 // @public
 export interface UseCssVarValueOptions {
+    deps?: React_2.DependencyList;
     fallback?: string;
 }
 
