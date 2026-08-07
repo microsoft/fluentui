@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "test: add SplitButton regression coverage for ref forwarding, default menu icon, and slot element metadata",
+  "comment": "test: add SplitButton regression coverage for default menu icon and slot element metadata",
   "packageName": "@fluentui/react-button",
   "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }

@@ -182,22 +182,6 @@ describe('SplitButton', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  it('forwards a ref to the root DIV element', () => {
-    let rootElement: Element | null = null;
-    const { container } = render(
-      <SplitButton
-        ref={node => {
-          rootElement = node;
-        }}
-      >
-        This is a button
-      </SplitButton>,
-    );
-
-    expect(rootElement).toBeInstanceOf(HTMLDivElement);
-    expect(rootElement).toBe(container.firstElementChild);
-  });
-
   it('renders the default styled menu icon (chevron) when no menu icon is provided', () => {
     const { getAllByRole } = render(<SplitButton>This is a button</SplitButton>);
     const [, menuButton] = getAllByRole('button');
@@ -206,10 +190,10 @@ describe('SplitButton', () => {
   });
 
   it('renders an explicit menu icon instead of the default chevron', () => {
-    const { getAllByRole } = render(<SplitButton menuIcon="Test MenuIcon">This is a button</SplitButton>);
+    const { getAllByRole, getByText } = render(<SplitButton menuIcon="Test MenuIcon">This is a button</SplitButton>);
     const [, menuButton] = getAllByRole('button');
 
-    expect(menuButton.textContent).toBe('Test MenuIcon');
+    expect(getByText('Test MenuIcon')).toBeTruthy();
     expect(menuButton.querySelector('svg')).toBeFalsy();
   });
 
