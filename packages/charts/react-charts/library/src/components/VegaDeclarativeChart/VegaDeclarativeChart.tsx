@@ -31,6 +31,7 @@ import { DonutChart } from '../DonutChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
 import { PolarChart } from '../PolarChart/index';
 import { useIsDarkTheme, useColorMapping } from './VegaDeclarativeChartHooks';
+import { useMergedRefs } from '@fluentui/react-utilities';
 import type { Chart } from '../../types/index';
 
 // Re-export the typed VegaLiteSpec for public API
@@ -398,7 +399,11 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
     validateJsonDepth(vegaLiteSpec);
 
     const colorMap = useColorMapping();
-    const isDarkTheme = useIsDarkTheme();
+    // Theming Phase 2b: dark-mode detection reads the CSS custom properties at the chart
+    // root, so the root ref is merged with the forwarded one.
+    const rootRef = React.useRef<HTMLDivElement>(null);
+    const mergedRootRef = useMergedRefs(rootRef, forwardedRef);
+    const isDarkTheme = useIsDarkTheme(rootRef);
     const chartRef = React.useRef<Chart>(null);
 
     const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
@@ -442,7 +447,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
         const sharedLegendProps = getVegaLiteLegendsProps(firstSubSpec, colorMap, isDarkTheme);
 
         return (
-          <div ref={forwardedRef} className={props.className} style={props.style}>
+          <div ref={mergedRootRef} className={props.className} style={props.style}>
             <div
               style={{
                 display: 'grid',
@@ -515,7 +520,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
       const chartComponent = renderSingleChart(vegaLiteSpec, colorMap, isDarkTheme, interactiveCommonProps);
 
       return (
-        <div ref={forwardedRef} className={props.className} style={props.style}>
+        <div ref={mergedRootRef} className={props.className} style={props.style}>
           {chartComponent}
         </div>
       );

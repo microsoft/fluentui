@@ -413,7 +413,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider_r_38_ group/fui-fluent-provider"
+    class="group/fui-fluent-provider fui-theme-web-dark"
     dir="ltr"
   >
     <div
@@ -454,7 +454,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           >
             <g
               aria-label="bar 1 of 3."
-              id="_HorizontalLine__r_39__0"
+              id="_HorizontalLine__r_38__0"
               role="listbox"
             >
               <rect
@@ -518,7 +518,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           >
             <g
               aria-label="bar 2 of 3."
-              id="_HorizontalLine__r_39__1"
+              id="_HorizontalLine__r_38__1"
               role="listbox"
             >
               <rect
@@ -582,7 +582,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           >
             <g
               aria-label="bar 3 of 3."
-              id="_HorizontalLine__r_39__2"
+              id="_HorizontalLine__r_38__2"
               role="listbox"
             >
               <rect
@@ -613,7 +613,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div
         class="group/fui-chart-popover"
-        id="callout_r_3e_"
+        id="callout_r_3d_"
       />
     </div>
   </div>
@@ -624,7 +624,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_empty_r_3g_"
+    id="_HBC_empty_r_3f_"
     role="alert"
     style="opacity: 0;"
   />
@@ -672,7 +672,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         >
           <g
             aria-label="bar 1 of 3."
-            id="_HorizontalLine__r_3f__0"
+            id="_HorizontalLine__r_3e__0"
             role="listbox"
           >
             <rect
@@ -736,7 +736,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         >
           <g
             aria-label="bar 2 of 3."
-            id="_HorizontalLine__r_3f__1"
+            id="_HorizontalLine__r_3e__1"
             role="listbox"
           >
             <rect
@@ -800,7 +800,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         >
           <g
             aria-label="bar 3 of 3."
-            id="_HorizontalLine__r_3f__2"
+            id="_HorizontalLine__r_3e__2"
             role="listbox"
           >
             <rect
@@ -831,7 +831,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div
       class="group/fui-chart-popover"
-      id="callout_r_3k_"
+      id="callout_r_3j_"
     />
   </div>
 </div>
@@ -1380,7 +1380,7 @@ Object {
             >
               <g
                 aria-label="bar 1 of 3."
-                id="_HorizontalLine__r_41__0"
+                id="_HorizontalLine__r_40__0"
                 role="listbox"
               >
                 <rect
@@ -1428,7 +1428,7 @@ Object {
             >
               <g
                 aria-label="bar 2 of 3."
-                id="_HorizontalLine__r_41__1"
+                id="_HorizontalLine__r_40__1"
                 role="listbox"
               >
                 <rect
@@ -1476,7 +1476,7 @@ Object {
             >
               <g
                 aria-label="bar 3 of 3."
-                id="_HorizontalLine__r_41__2"
+                id="_HorizontalLine__r_40__2"
                 role="listbox"
               >
                 <rect
@@ -1498,7 +1498,7 @@ Object {
         </div>
         <div
           class="group/fui-chart-popover"
-          id="callout_r_46_"
+          id="callout_r_45_"
         />
       </div>
     </div>
@@ -1509,7 +1509,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_43_"
+        id="tooltip-_r_42_"
         role="tooltip"
       >
         one
@@ -1525,7 +1525,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_44_"
+        id="tooltip-_r_43_"
         role="tooltip"
       >
         two
@@ -1541,7 +1541,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_45_"
+        id="tooltip-_r_44_"
         role="tooltip"
       >
         three
@@ -1583,7 +1583,7 @@ Object {
           >
             <g
               aria-label="bar 1 of 3."
-              id="_HorizontalLine__r_41__0"
+              id="_HorizontalLine__r_40__0"
               role="listbox"
             >
               <rect
@@ -1631,7 +1631,7 @@ Object {
           >
             <g
               aria-label="bar 2 of 3."
-              id="_HorizontalLine__r_41__1"
+              id="_HorizontalLine__r_40__1"
               role="listbox"
             >
               <rect
@@ -1679,7 +1679,7 @@ Object {
           >
             <g
               aria-label="bar 3 of 3."
-              id="_HorizontalLine__r_41__2"
+              id="_HorizontalLine__r_40__2"
               role="listbox"
             >
               <rect
@@ -1701,7 +1701,7 @@ Object {
       </div>
       <div
         class="group/fui-chart-popover"
-        id="callout_r_46_"
+        id="callout_r_45_"
       />
     </div>
   </div>,
@@ -1797,7 +1797,7 @@ Object {
             >
               <g
                 aria-label="bar 1 of 3."
-                id="_HorizontalLine__r_3r__0"
+                id="_HorizontalLine__r_3q__0"
                 role="listbox"
               >
                 <rect
@@ -1854,7 +1854,7 @@ Object {
             >
               <g
                 aria-label="bar 2 of 3."
-                id="_HorizontalLine__r_3r__1"
+                id="_HorizontalLine__r_3q__1"
                 role="listbox"
               >
                 <rect
@@ -1911,7 +1911,7 @@ Object {
             >
               <g
                 aria-label="bar 3 of 3."
-                id="_HorizontalLine__r_3r__2"
+                id="_HorizontalLine__r_3q__2"
                 role="listbox"
               >
                 <rect
@@ -1942,7 +1942,7 @@ Object {
         </div>
         <div
           class="group/fui-chart-popover"
-          id="callout_r_40_"
+          id="callout_r_3v_"
         />
       </div>
     </div>
@@ -1953,7 +1953,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_3t_"
+        id="tooltip-_r_3s_"
         role="tooltip"
       >
         one
@@ -1969,7 +1969,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_3u_"
+        id="tooltip-_r_3t_"
         role="tooltip"
       >
         two
@@ -1985,7 +1985,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_3v_"
+        id="tooltip-_r_3u_"
         role="tooltip"
       >
         three
@@ -2027,7 +2027,7 @@ Object {
           >
             <g
               aria-label="bar 1 of 3."
-              id="_HorizontalLine__r_3r__0"
+              id="_HorizontalLine__r_3q__0"
               role="listbox"
             >
               <rect
@@ -2084,7 +2084,7 @@ Object {
           >
             <g
               aria-label="bar 2 of 3."
-              id="_HorizontalLine__r_3r__1"
+              id="_HorizontalLine__r_3q__1"
               role="listbox"
             >
               <rect
@@ -2141,7 +2141,7 @@ Object {
           >
             <g
               aria-label="bar 3 of 3."
-              id="_HorizontalLine__r_3r__2"
+              id="_HorizontalLine__r_3q__2"
               role="listbox"
             >
               <rect
@@ -2172,7 +2172,7 @@ Object {
       </div>
       <div
         class="group/fui-chart-popover"
-        id="callout_r_40_"
+        id="callout_r_3v_"
       />
     </div>
   </div>,

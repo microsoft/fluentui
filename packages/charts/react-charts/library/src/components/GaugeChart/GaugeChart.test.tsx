@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import {
   getByClass,
   getByExactClass,
@@ -340,7 +341,7 @@ describe('Gauge Chart - Theme Change', () => {
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
-      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+      <FluentProvider themeClassName={webDarkThemeClassName}>
         <GaugeChart culture={window.navigator.language} segments={segments} chartValue={30} />
       </FluentProvider>,
     );

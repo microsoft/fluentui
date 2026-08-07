@@ -2,6 +2,7 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import type { LineChartPoints } from './index';
 import { LineChart } from './index';
 import '@testing-library/jest-dom';
@@ -718,7 +719,7 @@ describe('Theme and accessibility', () => {
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
-      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+      <FluentProvider themeClassName={webDarkThemeClassName}>
         <LineChart culture={window.navigator.language} data={basicChartPoints} />
       </FluentProvider>,
     );

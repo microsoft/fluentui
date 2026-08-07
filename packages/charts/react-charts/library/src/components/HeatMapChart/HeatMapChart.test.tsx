@@ -6,6 +6,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { conditionalTest, getByExactClass, isTimezoneSet } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
 import { FluentProvider } from '@fluentui/react-provider';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import { popoverSurfaceClassNames } from '@fluentui/react-popover';
 import { fuiSelector } from '@fluentui/react-utilities';
 const env = require('../../../config/tests');
@@ -551,7 +552,7 @@ describe('HeatMapChart snapShot testing', () => {
 
   it('should render HeatMapChart correctly in dark theme', () => {
     const wrapper = render(
-      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+      <FluentProvider themeClassName={webDarkThemeClassName}>
         <HeatMapChart
           data={HeatMapDateStringData}
           domainValuesForColorScale={[0, 600]}

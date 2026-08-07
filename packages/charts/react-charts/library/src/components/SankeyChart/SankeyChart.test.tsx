@@ -1,5 +1,5 @@
 import { FluentProvider } from '@fluentui/react-provider';
-import { webDarkTheme } from '@fluentui/react-theme';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
@@ -142,7 +142,7 @@ describe('Sankey chart - Theme', () => {
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
-      <FluentProvider theme={webDarkTheme}>
+      <FluentProvider themeClassName={webDarkThemeClassName}>
         <SankeyChart data={chartPointsWithStringNodeId()} />
       </FluentProvider>,
     );

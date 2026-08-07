@@ -3,7 +3,7 @@
 exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider_r_24_ group/fui-fluent-provider"
+    class="group/fui-fluent-provider fui-theme-web-dark"
     dir="ltr"
   >
     <div
@@ -100,11 +100,11 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_26_"
+                aria-describedby="tooltip-_r_25_"
                 aria-hidden="true"
                 class=""
                 font-size="20"
-                id="tooltip-host_r_25_"
+                id="tooltip-host_r_24_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -2873,11 +2873,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2f_"
+                  aria-describedby="tooltip-_r_2e_"
                   aria-hidden="true"
                   class=""
                   font-size="20"
-                  id="tooltip-host_r_2e_"
+                  id="tooltip-host_r_2d_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -2977,7 +2977,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_2f_"
+        id="tooltip-_r_2e_"
         role="tooltip"
       >
         <div
@@ -3065,11 +3065,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2f_"
+                aria-describedby="tooltip-_r_2e_"
                 aria-hidden="true"
                 class=""
                 font-size="20"
-                id="tooltip-host_r_2e_"
+                id="tooltip-host_r_2d_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3317,11 +3317,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2s_"
+                  aria-describedby="tooltip-_r_2r_"
                   aria-hidden="true"
                   class=""
                   font-size="20"
-                  id="tooltip-host_r_2r_"
+                  id="tooltip-host_r_2q_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -3344,7 +3344,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_2s_"
+        id="tooltip-_r_2r_"
         role="tooltip"
       >
         <div
@@ -3452,11 +3452,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2s_"
+                aria-describedby="tooltip-_r_2r_"
                 aria-hidden="true"
                 class=""
                 font-size="20"
-                id="tooltip-host_r_2r_"
+                id="tooltip-host_r_2q_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3627,11 +3627,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2c_"
+                  aria-describedby="tooltip-_r_2b_"
                   aria-hidden="true"
                   class=""
                   font-size="20"
-                  id="tooltip-host_r_2b_"
+                  id="tooltip-host_r_2a_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -3731,7 +3731,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_2c_"
+        id="tooltip-_r_2b_"
         role="tooltip"
       >
         <div
@@ -3839,11 +3839,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2c_"
+                aria-describedby="tooltip-_r_2b_"
                 aria-hidden="true"
                 class=""
                 font-size="20"
-                id="tooltip-host_r_2b_"
+                id="tooltip-host_r_2a_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4079,11 +4079,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_31_"
+                  aria-describedby="tooltip-_r_30_"
                   aria-hidden="true"
                   class=""
                   font-size="20"
-                  id="tooltip-host_r_30_"
+                  id="tooltip-host_r_2v_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4163,7 +4163,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_31_"
+        id="tooltip-_r_30_"
         role="tooltip"
       >
         <div
@@ -4259,11 +4259,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_31_"
+                aria-describedby="tooltip-_r_30_"
                 aria-hidden="true"
                 class=""
                 font-size="20"
-                id="tooltip-host_r_30_"
+                id="tooltip-host_r_2v_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4421,11 +4421,11 @@ Object {
                 y="74"
               />
               <text
-                aria-describedby="tooltip-_r_2i_"
+                aria-describedby="tooltip-_r_2h_"
                 aria-hidden="true"
                 class=""
                 dominant-baseline="auto"
-                id="tooltip-host_r_2h_"
+                id="tooltip-host_r_2g_"
                 text-anchor="middle"
                 x="0"
                 y="80"
@@ -4513,11 +4513,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2k_"
+                  aria-describedby="tooltip-_r_2j_"
                   aria-hidden="true"
                   class=""
                   font-size="20"
-                  id="tooltip-host_r_2j_"
+                  id="tooltip-host_r_2i_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4617,7 +4617,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_2i_"
+        id="tooltip-_r_2h_"
         role="tooltip"
       >
         <div
@@ -4636,7 +4636,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_2k_"
+        id="tooltip-_r_2j_"
         role="tooltip"
       >
         <div
@@ -4674,11 +4674,11 @@ Object {
               y="74"
             />
             <text
-              aria-describedby="tooltip-_r_2i_"
+              aria-describedby="tooltip-_r_2h_"
               aria-hidden="true"
               class=""
               dominant-baseline="auto"
-              id="tooltip-host_r_2h_"
+              id="tooltip-host_r_2g_"
               text-anchor="middle"
               x="0"
               y="80"
@@ -4766,11 +4766,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2k_"
+                aria-describedby="tooltip-_r_2j_"
                 aria-hidden="true"
                 class=""
                 font-size="20"
-                id="tooltip-host_r_2j_"
+                id="tooltip-host_r_2i_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5018,11 +5018,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2u_"
+                  aria-describedby="tooltip-_r_2t_"
                   aria-hidden="true"
                   class=""
                   font-size="20"
-                  id="tooltip-host_r_2t_"
+                  id="tooltip-host_r_2s_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -5122,7 +5122,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_2u_"
+        id="tooltip-_r_2t_"
         role="tooltip"
       >
         <div
@@ -5230,11 +5230,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2u_"
+                aria-describedby="tooltip-_r_2t_"
                 aria-hidden="true"
                 class=""
                 font-size="20"
-                id="tooltip-host_r_2t_"
+                id="tooltip-host_r_2s_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5482,11 +5482,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-_r_2n_"
+                  aria-describedby="tooltip-_r_2m_"
                   aria-hidden="true"
                   class=""
                   font-size="20"
-                  id="tooltip-host_r_2m_"
+                  id="tooltip-host_r_2l_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -5498,10 +5498,10 @@ Object {
                 />
               </g>
               <text
-                aria-describedby="tooltip-_r_2p_"
+                aria-describedby="tooltip-_r_2o_"
                 class=""
                 dominant-baseline="hanging"
-                id="tooltip-host_r_2o_"
+                id="tooltip-host_r_2n_"
                 text-anchor="middle"
                 x="0"
                 y="4"
@@ -5600,7 +5600,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_2n_"
+        id="tooltip-_r_2m_"
         role="tooltip"
       >
         <div
@@ -5619,7 +5619,7 @@ Object {
     >
       <div
         class="group/fui-tooltip"
-        id="tooltip-_r_2p_"
+        id="tooltip-_r_2o_"
         role="tooltip"
       >
         <div
@@ -5727,11 +5727,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-_r_2n_"
+                aria-describedby="tooltip-_r_2m_"
                 aria-hidden="true"
                 class=""
                 font-size="20"
-                id="tooltip-host_r_2m_"
+                id="tooltip-host_r_2l_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5743,10 +5743,10 @@ Object {
               />
             </g>
             <text
-              aria-describedby="tooltip-_r_2p_"
+              aria-describedby="tooltip-_r_2o_"
               class=""
               dominant-baseline="hanging"
-              id="tooltip-host_r_2o_"
+              id="tooltip-host_r_2n_"
               text-anchor="middle"
               x="0"
               y="4"

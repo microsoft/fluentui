@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { FluentProvider } from '@fluentui/react-provider';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import {
   forEachTimezone,
   getByClass,
@@ -816,7 +817,7 @@ describe('Theme Change', () => {
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
-      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+      <FluentProvider themeClassName={webDarkThemeClassName}>
         <VerticalBarChart culture={window.navigator.language} data={chartPointsVBC} />
       </FluentProvider>,
     );

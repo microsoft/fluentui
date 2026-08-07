@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { render, screen, fireEvent, act, cleanup } from '@testing-library/react';
-import { webDarkTheme } from '@fluentui/react-theme';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import { resetIdsForTests, fuiSelector } from '@fluentui/react-utilities';
 import { popoverSurfaceClassNames } from '@fluentui/react-popover';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -81,7 +81,7 @@ describe('GanttChart rendering and behavior tests', () => {
 
   it('should render GanttChart correctly in dark theme', () => {
     const { container } = render(
-      <FluentProvider theme={webDarkTheme}>
+      <FluentProvider themeClassName={webDarkThemeClassName}>
         <GanttChart data={ganttData} />
       </FluentProvider>,
     );

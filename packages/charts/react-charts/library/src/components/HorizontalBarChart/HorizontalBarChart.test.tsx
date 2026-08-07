@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import type { ChartProps } from './index';
@@ -408,7 +409,7 @@ describe('Horizontal bar chart - Theme', () => {
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
-      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+      <FluentProvider themeClassName={webDarkThemeClassName}>
         <HorizontalBarChart culture={window.navigator.language} data={chartPoints} />
       </FluentProvider>,
     );

@@ -12,10 +12,7 @@ import {
 } from '@fluentui/chart-utilities';
 import type { GridProperties } from './PlotlySchemaAdapter';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import type { Theme } from '@fluentui/tokens';
-import { webLightTheme } from '@fluentui/tokens';
-import * as d3Color from 'd3-color';
+import { useIsDarkTheme } from '../VegaDeclarativeChart/VegaDeclarativeChartHooks';
 
 import {
   correctYearMonth,
@@ -337,19 +334,6 @@ const chartMap: ChartTypeMap = {
   },
 };
 
-const useIsDarkTheme = (): boolean => {
-  const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
-  const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
-
-  // Get background and foreground colors
-  const backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
-  const foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
-
-  const isDarkTheme = backgroundColor.l < foregroundColor.l;
-
-  return isDarkTheme;
-};
-
 /**
  * DeclarativeChart component.
  * {@docCategory DeclarativeChart}
@@ -381,11 +365,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
-  const isDarkTheme = useIsDarkTheme();
   const chartRefs = React.useRef<{ compRef: Chart | null; row: number; col: number }[]>([]);
   const isMultiPlot = React.useRef(false);
   const legendsRef = React.useRef<LegendContainer>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
+  // Theming Phase 2b: dark-mode detection reads the CSS custom properties at the chart
+  // container (see VegaDeclarativeChartHooks.useIsDarkTheme).
+  const isDarkTheme = useIsDarkTheme(containerRef);
   const isRTL = useRtl();
 
   if (!isArrayOrTypedArray(selectedLegends)) {
