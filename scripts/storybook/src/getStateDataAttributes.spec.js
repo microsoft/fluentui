@@ -6,6 +6,11 @@ const { getStateDataAttributes } = require('./getStateDataAttributes');
 
 const VALID_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/valid');
 const INVALID_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/invalid');
+const INVALID_TSCONFIG_OPTIONS_FIXTURE = path.join(
+  __dirname,
+  '__fixtures__/state-data-attributes/invalid-tsconfig-options',
+);
+const SEMANTIC_ERROR_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/semantic-error');
 
 describe('getStateDataAttributes', () => {
   // ─── happy path ───────────────────────────────────────────────────────────────
@@ -157,5 +162,72 @@ describe('getStateDataAttributes', () => {
         }),
       ).toThrow(/duplicate.*Button|Button.*duplicate/i);
     });
+
+    it('throws a descriptive error when tsconfig has invalid compiler options (parseJsonConfigFileContent.errors)', () => {
+      expect(() =>
+        getStateDataAttributes({
+          tsconfigPath: path.join(INVALID_TSCONFIG_OPTIONS_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(INVALID_TSCONFIG_OPTIONS_FIXTURE, 'src'),
+        }),
+      ).toThrow(new RegExp(escapeRegExp(INVALID_TSCONFIG_OPTIONS_FIXTURE)));
+    });
+
+    it('error message for invalid compiler options includes the TypeScript diagnostic text', () => {
+      let message = '';
+      try {
+        getStateDataAttributes({
+          tsconfigPath: path.join(INVALID_TSCONFIG_OPTIONS_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(INVALID_TSCONFIG_OPTIONS_FIXTURE, 'src'),
+        });
+      } catch (/** @type {any} */ err) {
+        message = err.message;
+      }
+      // TypeScript diagnostic: "Argument for '--target' option must be: ..."
+      expect(message).toMatch(/--target/i);
+    });
+
+    it('throws a descriptive error when a source file under sourceRoot has semantic diagnostics', () => {
+      expect(() =>
+        getStateDataAttributes({
+          tsconfigPath: path.join(SEMANTIC_ERROR_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(SEMANTIC_ERROR_FIXTURE, 'src'),
+        }),
+      ).toThrow(/TypeScript program errors/i);
+    });
+
+    it('semantic diagnostic error message includes the tsconfig path for context', () => {
+      let message = '';
+      try {
+        getStateDataAttributes({
+          tsconfigPath: path.join(SEMANTIC_ERROR_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(SEMANTIC_ERROR_FIXTURE, 'src'),
+        });
+      } catch (/** @type {any} */ err) {
+        message = err.message;
+      }
+      expect(message).toContain(SEMANTIC_ERROR_FIXTURE);
+    });
+
+    it('semantic diagnostic error message includes the TypeScript diagnostic text', () => {
+      let message = '';
+      try {
+        getStateDataAttributes({
+          tsconfigPath: path.join(SEMANTIC_ERROR_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(SEMANTIC_ERROR_FIXTURE, 'src'),
+        });
+      } catch (/** @type {any} */ err) {
+        message = err.message;
+      }
+      // TS2322: "Type 'number' is not assignable to type 'string'."
+      expect(message).toMatch(/not assignable/i);
+    });
   });
 });
+
+/**
+ * Escapes a string for use inside a RegExp literal.
+ * @param {string} str
+ */
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
