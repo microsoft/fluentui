@@ -88,23 +88,51 @@ const useStyles = makeStyles({
 // ---------------------------------------------------------------------------
 
 /**
- * Extracts a display name from a component reference, falling back to the
- * last segment of the story title.
+ * Read the webpack-injected global defensively so that missing injection
+ * (e.g. in a test environment or a plain Storybook build) degrades to an
+ * empty map rather than throwing a ReferenceError.
  */
-function resolveComponentName(
+const DATA_ATTRIBUTES_MAP: Record<string, DataAttributeEntry[]> =
+  typeof HEADLESS_STATE_DATA_ATTRIBUTES !== 'undefined' ? HEADLESS_STATE_DATA_ATTRIBUTES : {};
+
+/**
+ * Build an ordered list of candidate lookup names for a component:
+ *   1. component.displayName  (most specific)
+ *   2. component.name         (function name fallback)
+ *   3. last segment of title  (last resort; only when title contains "/")
+ *
+ * Returns the first candidate that has a non-empty entry in the metadata
+ * map, or `null` when nothing matches.
+ */
+function resolvePrimaryComponentName(
   component: FluentDocsPageStory['component'],
   title: FluentDocsPageStory['title'],
 ): string | null {
+  const candidates: string[] = [];
+
   if (component) {
-    const name = (component as { displayName?: string }).displayName ?? (component as { name?: string }).name;
-    if (name) {
-      return name;
+    const displayName = (component as { displayName?: string }).displayName;
+    if (displayName) {
+      candidates.push(displayName);
+    }
+    const fnName = (component as { name?: string }).name;
+    if (fnName) {
+      candidates.push(fnName);
     }
   }
-  // Fall back to the last segment of the story title
+
+  // Title-segment fallback — only when it looks like a path ("Foo/Bar")
   if (title && title.includes('/')) {
-    const segments = title.split('/');
-    return segments[segments.length - 1].trim() || null;
+    const lastSegment = title.split('/').pop()?.trim();
+    if (lastSegment) {
+      candidates.push(lastSegment);
+    }
+  }
+
+  for (const name of candidates) {
+    if (DATA_ATTRIBUTES_MAP[name]?.length) {
+      return name;
+    }
   }
   return null;
 }
@@ -125,10 +153,10 @@ export function HeadlessDataAttributes({ story }: HeadlessDataAttributesProps): 
   // ------------------------------------------------------------------
   const componentNames: Array<{ label: string; entries: DataAttributeEntry[] }> = [];
 
-  // Primary component
-  const primaryName = resolveComponentName(story.component, story.title);
+  // Primary component — try displayName, name, then title segment in order
+  const primaryName = resolvePrimaryComponentName(story.component, story.title);
   if (primaryName) {
-    const entries = HEADLESS_STATE_DATA_ATTRIBUTES[primaryName];
+    const entries = DATA_ATTRIBUTES_MAP[primaryName];
     if (entries && entries.length > 0) {
       componentNames.push({ label: primaryName, entries });
     }
@@ -142,7 +170,7 @@ export function HeadlessDataAttributes({ story }: HeadlessDataAttributesProps): 
       let name = key;
 
       // If the key doesn't find a hit, try component.displayName / .name as fallback
-      if (!HEADLESS_STATE_DATA_ATTRIBUTES[name]) {
+      if (!DATA_ATTRIBUTES_MAP[name]) {
         const fallback =
           (comp as { displayName?: string } | null)?.displayName ?? (comp as { name?: string } | null)?.name;
         if (fallback) {
@@ -150,7 +178,7 @@ export function HeadlessDataAttributes({ story }: HeadlessDataAttributesProps): 
         }
       }
 
-      const entries = HEADLESS_STATE_DATA_ATTRIBUTES[name];
+      const entries = DATA_ATTRIBUTES_MAP[name];
       if (entries && entries.length > 0) {
         // Skip if already added (e.g. primary and subcomponent share same name)
         if (!componentNames.some(c => c.label === name)) {
@@ -170,38 +198,55 @@ export function HeadlessDataAttributes({ story }: HeadlessDataAttributesProps): 
   // ------------------------------------------------------------------
   // 3. Render
   // ------------------------------------------------------------------
+  const sectionId = 'headless-data-attributes-heading';
+
   return (
     <section className={classes.section}>
-      <h2 className={classes.heading}>Data attributes</h2>
-      {componentNames.map(({ label, entries }) => (
-        <div key={label}>
-          {componentNames.length > 1 && <h3 className={classes.componentHeading}>{label}</h3>}
-          <div className={classes.tableWrapper}>
-            <table className={classes.table}>
-              <thead>
-                <tr>
-                  <th className={classes.th}>Attribute</th>
-                  <th className={classes.th}>Type/Values</th>
-                  <th className={classes.th}>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {entries.map(entry => (
-                  <tr key={entry.name}>
-                    <td className={classes.td}>
-                      <code className={classes.code}>{entry.name}</code>
-                    </td>
-                    <td className={classes.td}>
-                      <code className={classes.code}>{entry.type}</code>
-                    </td>
-                    <td className={classes.td}>{entry.description || '\u2014'}</td>
+      <h2 id={sectionId} className={classes.heading}>
+        Data attributes
+      </h2>
+      {componentNames.map(({ label, entries }) => {
+        const headingId = `headless-data-attr-${label.replace(/\s+/g, '-').toLowerCase()}`;
+        return (
+          <div key={label}>
+            {componentNames.length > 1 && (
+              <h3 id={headingId} className={classes.componentHeading}>
+                {label}
+              </h3>
+            )}
+            <div className={classes.tableWrapper}>
+              <table className={classes.table} aria-labelledby={componentNames.length > 1 ? headingId : sectionId}>
+                <thead>
+                  <tr>
+                    <th scope="col" className={classes.th}>
+                      Attribute
+                    </th>
+                    <th scope="col" className={classes.th}>
+                      Type/Values
+                    </th>
+                    <th scope="col" className={classes.th}>
+                      Description
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {entries.map(entry => (
+                    <tr key={entry.name}>
+                      <td className={classes.td}>
+                        <code className={classes.code}>{entry.name}</code>
+                      </td>
+                      <td className={classes.td}>
+                        <code className={classes.code}>{entry.type}</code>
+                      </td>
+                      <td className={classes.td}>{entry.description || '\u2014'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </section>
   );
 }
