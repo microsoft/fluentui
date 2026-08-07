@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SwatchPicker, ColorSwatch, ImageSwatch, EmptySwatch } from '@fluentui/react-components';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightThemeClassName } from '@fluentui/react-theme';
 
 const Scenario = () => (
   <SwatchPicker aria-label="SwatchPicker default" defaultSelectedValue="FF1921">
@@ -12,7 +12,7 @@ const Scenario = () => (
 );
 
 Scenario.decorator = (props: { children: React.ReactNode }) => (
-  <FluentProvider theme={webLightTheme}>{props.children}</FluentProvider>
+  <FluentProvider themeClassName={webLightThemeClassName}>{props.children}</FluentProvider>
 );
 
 export default Scenario;

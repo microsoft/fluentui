@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightThemeClassName } from '@fluentui/react-theme';
 
 const LayoutShift: React.FunctionComponent<{ children?: React.ReactNode }> = ({ children }) => {
   // eslint-disable-next-line no-restricted-properties
@@ -18,7 +18,7 @@ const LayoutShift: React.FunctionComponent<{ children?: React.ReactNode }> = ({ 
 const FluentProviderWithTheme = () => (
   <LayoutShift>
     {Array.from({ length: 20 }, (n, i) => (
-      <FluentProvider key={i} theme={teamsLightTheme}>
+      <FluentProvider key={i} themeClassName={teamsLightThemeClassName}>
         FluentProvider
       </FluentProvider>
     ))}
