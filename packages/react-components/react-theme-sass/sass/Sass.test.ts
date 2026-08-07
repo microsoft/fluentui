@@ -1,5 +1,5 @@
 import { compileString } from 'sass';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightTheme } from '@fluentui/tokens';
 
 describe('Sass tokens', () => {
   // by referencing all react-theme tokens as SCSS variables, verifies that all the variables are exported

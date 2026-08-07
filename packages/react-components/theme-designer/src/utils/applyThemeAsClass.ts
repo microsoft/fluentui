@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { tokens } from '@fluentui/react-components';
+import { tokens, useFluent } from '@fluentui/react-components';
 import type { Theme } from '@fluentui/tokens';
 
 const CSS_VAR_NAME_REGEX = /^var\((--[^,)]+)/;
@@ -10,6 +10,14 @@ const CSS_VAR_NAME_REGEX = /^var\((--[^,)]+)/;
  *
  * The result can be injected into a `<style>` element and the class passed to
  * `<FluentProvider themeClassName={...}>` (or set on any DOM node) to theme that subtree.
+ *
+ * NOTE: a theme key with no matching entry in `tokens` is silently dropped — the rule simply
+ * will not declare that variable.
+ *
+ * DUPLICATE: `react-migration-v8-v9/stories/src/ThemeShim/applyThemeAsClass.ts` holds a
+ * byte-identical copy of this function. The two live in separate packages (a tool and a
+ * stories-only helper) with no shared dependency between them, so they are deliberately not
+ * factored out — keep them in sync by hand, especially the canonical-name derivation above.
  */
 export const createThemeClassRule = (className: string, theme: Theme): string => {
   const themeRecord = theme as unknown as Record<string, string | number>;
@@ -32,16 +40,23 @@ let themeClassCounter = 0;
  * `<FluentProvider themeClassName={...}>`.
  */
 export const useThemeAsClass = (theme: Theme): string => {
+  // The style element must land in the document that actually renders the previewed tree —
+  // using the global `document` would inject into the host page when the designer is rendered
+  // into an iframe or child window, leaving the preview unthemed.
+  const { targetDocument } = useFluent();
   const [className] = React.useState(() => `fui-theme-designer-${++themeClassCounter}`);
 
   React.useEffect(() => {
-    const styleElement = document.createElement('style');
+    if (!targetDocument) {
+      return;
+    }
+    const styleElement = targetDocument.createElement('style');
     styleElement.textContent = createThemeClassRule(className, theme);
-    document.head.appendChild(styleElement);
+    targetDocument.head.appendChild(styleElement);
     return () => {
       styleElement.remove();
     };
-  }, [className, theme]);
+  }, [className, theme, targetDocument]);
 
   return className;
 };

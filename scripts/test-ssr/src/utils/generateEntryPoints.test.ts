@@ -36,7 +36,7 @@ describe('generateEntryPoints', () => {
     expect(storiesFile).toMatchInlineSnapshot(`
       "import {
         FluentProvider,
-        teamsLightTheme,
+        teamsLightThemeClassName,
         SSRProvider,
       } from \\"@fluentui/react-components\\";
       import * as React from \\"react\\";
@@ -46,7 +46,10 @@ describe('generateEntryPoints', () => {
 
       export const App = () => (
         <SSRProvider>
-          <FluentProvider id=\\"root-provider\\" theme={teamsLightTheme}>
+          <FluentProvider
+            id=\\"root-provider\\"
+            themeClassName={teamsLightThemeClassName}
+          >
             <ModuleFooBar />
             <ModuleFooBaz />
           </FluentProvider>

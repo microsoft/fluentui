@@ -495,10 +495,10 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
     import * as React from 'react';
     import { mount as mountBase } from '@cypress/react';
     import { FluentProvider } from '@proj/react-provider';
-    import { teamsLightTheme } from '@proj/react-theme';
+    import { teamsLightThemeClassName } from '@proj/react-theme';
 
     const mount = (element: JSX.Element) => {
-      mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+      mountBase(<FluentProvider themeClassName={teamsLightThemeClassName}>{element}</FluentProvider>);
     };
 
     describe('FlatTree', () => {

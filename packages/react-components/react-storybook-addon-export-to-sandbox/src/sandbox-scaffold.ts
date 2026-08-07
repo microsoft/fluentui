@@ -205,6 +205,8 @@ const Vite = {
       },
       dependencies: {
         ...data.dependencies,
+        // Ships the :root token defaults + theme classes imported by App (theming Phase 2b).
+        '@fluentui/react-tailwind-theme': '*',
       },
       devDependencies: {
         ...commonDevDeps,
@@ -243,6 +245,8 @@ const CRA = {
       main: 'src/index.tsx',
       dependencies: {
         ...data.dependencies,
+        // Ships the :root token defaults + theme classes imported by App (theming Phase 2b).
+        '@fluentui/react-tailwind-theme': '*',
       },
       devDependencies: {
         ...commonDevDeps,
@@ -333,12 +337,15 @@ function getExample(demoData: Data) {
 
 function getApp(_data: Data) {
   return dedent`
-    import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+    import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
+    // Theme + token CSS (theming Phase 2b): the :root web-light defaults and the shipped
+    // theme classes are static CSS — import once per document.
+    import '@fluentui/react-tailwind-theme/styles.css';
     import { Example } from './example';
 
     const App = () => {
         return (
-          <FluentProvider theme={webLightTheme}>
+          <FluentProvider themeClassName={webLightThemeClassName}>
             <Example />
           </FluentProvider>
         );

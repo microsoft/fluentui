@@ -30,14 +30,14 @@ export async function generateEntryPoints(config: GenerateEntryPointsConfig): Pr
   `;
 
   const storiesTemplate = `
-  import { FluentProvider, teamsLightTheme, SSRProvider } from '@fluentui/react-components';
+  import { FluentProvider, teamsLightThemeClassName, SSRProvider } from '@fluentui/react-components';
   import * as React from 'react';
 
   ${imports.map(entry => `import { ${entry.local} as ${entry.imported} } from '${entry.path}'; `).join('\n')}
 
   export const App = () => (
       <SSRProvider>
-    <FluentProvider id="${PROVIDER_ID}" theme={teamsLightTheme}>
+    <FluentProvider id="${PROVIDER_ID}" themeClassName={teamsLightThemeClassName}>
       ${imports.map(entry => `<${entry.imported} />`).join('\n')}
     </FluentProvider>
     </SSRProvider>

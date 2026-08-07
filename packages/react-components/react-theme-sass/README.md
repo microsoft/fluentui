@@ -2,20 +2,24 @@
 
 **React Theme Sass for [Fluent UI React](https://react.fluentui.dev)**
 
-SASS variables referencing react-theme design tokens injected to DOM by react-provider.
+SASS variables referencing react-theme design tokens shipped as static CSS by
+`@fluentui/react-tailwind-theme`.
 
 ## Usage
 
-1. Instantiate a `FluentProvider` to inject a Fluent theme into a DOM:
+1. Import `@fluentui/react-tailwind-theme/styles.css` once per document (it emits the theme's custom
+   properties; web-light values are the `:root` defaults) and instantiate a `FluentProvider` with a
+   theme class:
 
 ```jsx
 import React from 'react';
 import ReactDOMClient from 'react-dom/client';
-import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
+import '@fluentui/react-tailwind-theme/styles.css';
+import { FluentProvider, teamsLightThemeClassName } from '@fluentui/react-components';
 import App from './App';
 
 ReactDOMClient.createRoot(document.getElementById('root')).render(
-  <FluentProvider theme={teamsLightTheme}>
+  <FluentProvider themeClassName={teamsLightThemeClassName}>
     <App />
   </FluentProvider>,
 );

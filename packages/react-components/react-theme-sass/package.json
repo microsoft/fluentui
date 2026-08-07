@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-theme-sass",
   "version": "9.0.0-alpha.30",
-  "description": "SASS variables referencing react-theme design tokens injected to DOM by react-provider.",
+  "description": "SASS variables referencing react-theme design tokens shipped as static CSS by react-tailwind-theme.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -21,6 +21,9 @@
   },
   "dependencies": {
     "@swc/helpers": "^0.5.1"
+  },
+  "devDependencies": {
+    "@fluentui/tokens": "1.0.0-alpha.23"
   },
   "exports": {
     ".": {

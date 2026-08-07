@@ -10,6 +10,14 @@ const CSS_VAR_NAME_REGEX = /^var\((--[^,)]+)/;
 /**
  * Builds a CSS rule containing only custom-property declarations for the given theme object,
  * using the canonical kebab-case variable names (derived from the `tokens` var-strings).
+ *
+ * NOTE: a theme key with no matching entry in `tokens` is silently dropped — the rule simply
+ * will not declare that variable.
+ *
+ * DUPLICATE: `theme-designer/src/utils/applyThemeAsClass.ts` holds a byte-identical copy of
+ * this function. The two live in separate packages (a stories-only helper and a tool) with no
+ * shared dependency between them, so they are deliberately not factored out — keep them in
+ * sync by hand, especially the canonical-name derivation above.
  */
 export const createThemeClassRule = (className: string, theme: Theme): string => {
   const themeRecord = theme as unknown as Record<string, string | number>;

@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { Theme } from '@fluentui/react-theme';
 import {
-  teamsDarkTheme,
-  teamsDarkV21Theme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  teamsLightV21Theme,
-  webDarkTheme,
-  webLightTheme,
+  teamsDarkThemeClassName,
+  teamsDarkV21ThemeClassName,
+  teamsHighContrastThemeClassName,
+  teamsLightThemeClassName,
+  teamsLightV21ThemeClassName,
+  tokens,
+  webDarkThemeClassName,
+  webLightThemeClassName,
 } from '@fluentui/react-theme';
 import type { ThemeIds } from '../theme';
 import { defaultTheme } from '../theme';
@@ -18,14 +18,14 @@ import { DIR_ID, THEME_ID } from '../constants';
 import type { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
-const themes: Record<ThemeIds, Theme> = {
-  'web-light': webLightTheme,
-  'web-dark': webDarkTheme,
-  'teams-light': teamsLightTheme,
-  'teams-dark': teamsDarkTheme,
-  'teams-high-contrast': teamsHighContrastTheme,
-  'teams-light-v21': teamsLightV21Theme,
-  'teams-dark-v21': teamsDarkV21Theme,
+const themes: Record<ThemeIds, string> = {
+  'web-light': webLightThemeClassName,
+  'web-dark': webDarkThemeClassName,
+  'teams-light': teamsLightThemeClassName,
+  'teams-dark': teamsDarkThemeClassName,
+  'teams-high-contrast': teamsHighContrastThemeClassName,
+  'teams-light-v21': teamsLightV21ThemeClassName,
+  'teams-dark-v21': teamsDarkV21ThemeClassName,
 } as const;
 
 const findTheme = (themeId?: ThemeIds) => {
@@ -44,18 +44,16 @@ export const withFluentProvider = (StoryFn: () => JSXElement, context: FluentSto
   const dir = parameters.dir ?? globals[DIR_ID] ?? 'ltr';
   const globalTheme = findTheme(globals[THEME_ID]);
   const paramTheme = findTheme(parameters.fluentTheme);
-  const theme = paramTheme ?? globalTheme ?? themes[defaultTheme.id];
+  const themeClassName = paramTheme ?? globalTheme ?? themes[defaultTheme.id];
 
   return (
-    <FluentProvider theme={theme} dir={dir}>
-      {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
+    <FluentProvider themeClassName={themeClassName} dir={dir}>
+      {isVrTest ? StoryFn() : <FluentExampleContainer>{StoryFn()}</FluentExampleContainer>}
     </FluentProvider>
   );
 };
 
-const FluentExampleContainer: React.FC<{ children: React.ReactNode; theme: Theme }> = props => {
-  const { theme } = props;
-
-  const backgroundColor = theme.colorNeutralBackground2;
+const FluentExampleContainer: React.FC<{ children: React.ReactNode }> = props => {
+  const backgroundColor = tokens.colorNeutralBackground2;
   return <div style={{ padding: '48px 24px', backgroundColor }}>{props.children}</div>;
 };

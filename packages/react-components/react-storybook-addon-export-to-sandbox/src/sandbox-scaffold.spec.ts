@@ -28,7 +28,9 @@ describe(`sabdbox-scaffold`, () => {
         Object {
           "package.json": "{
           \\"main\\": \\"src/index.tsx\\",
-          \\"dependencies\\": {},
+          \\"dependencies\\": {
+            \\"@fluentui/react-tailwind-theme\\": \\"*\\"
+          },
           \\"devDependencies\\": {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
@@ -50,12 +52,15 @@ describe(`sabdbox-scaffold`, () => {
           ]
         }",
           "public/index.html": "<div id=\\"root\\"></div>",
-          "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+          "src/App.tsx": "import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
+        // Theme + token CSS (theming Phase 2b): the :root web-light defaults and the shipped
+        // theme classes are static CSS — import once per document.
+        import '@fluentui/react-tailwind-theme/styles.css';
         import { Example } from './example';
 
         const App = () => {
             return (
-              <FluentProvider theme={webLightTheme}>
+              <FluentProvider themeClassName={webLightThemeClassName}>
                 <Example />
               </FluentProvider>
             );
@@ -147,7 +152,9 @@ describe(`sabdbox-scaffold`, () => {
         }",
           "package.json": "{
           \\"main\\": \\"src/index.tsx\\",
-          \\"dependencies\\": {},
+          \\"dependencies\\": {
+            \\"@fluentui/react-tailwind-theme\\": \\"*\\"
+          },
           \\"devDependencies\\": {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
@@ -169,12 +176,15 @@ describe(`sabdbox-scaffold`, () => {
           ]
         }",
           "public/index.html": "<div id=\\"root\\"></div>",
-          "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+          "src/App.tsx": "import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
+        // Theme + token CSS (theming Phase 2b): the :root web-light defaults and the shipped
+        // theme classes are static CSS — import once per document.
+        import '@fluentui/react-tailwind-theme/styles.css';
         import { Example } from './example';
 
         const App = () => {
             return (
-              <FluentProvider theme={webLightTheme}>
+              <FluentProvider themeClassName={webLightThemeClassName}>
                 <Example />
               </FluentProvider>
             );
@@ -232,7 +242,9 @@ describe(`sabdbox-scaffold`, () => {
           ".stackblitzrc": "{}",
           "package.json": "{
           \\"main\\": \\"src/index.tsx\\",
-          \\"dependencies\\": {},
+          \\"dependencies\\": {
+            \\"@fluentui/react-tailwind-theme\\": \\"*\\"
+          },
           \\"devDependencies\\": {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
@@ -254,12 +266,15 @@ describe(`sabdbox-scaffold`, () => {
           ]
         }",
           "public/index.html": "<div id=\\"root\\"></div>",
-          "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+          "src/App.tsx": "import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
+        // Theme + token CSS (theming Phase 2b): the :root web-light defaults and the shipped
+        // theme classes are static CSS — import once per document.
+        import '@fluentui/react-tailwind-theme/styles.css';
         import { Example } from './example';
 
         const App = () => {
             return (
-              <FluentProvider theme={webLightTheme}>
+              <FluentProvider themeClassName={webLightThemeClassName}>
                 <Example />
               </FluentProvider>
             );
@@ -385,7 +400,9 @@ describe(`sabdbox-scaffold`, () => {
             \\"build\\": \\"tsc && vite build\\",
             \\"preview\\": \\"vite preview\\"
           },
-          \\"dependencies\\": {},
+          \\"dependencies\\": {
+            \\"@fluentui/react-tailwind-theme\\": \\"*\\"
+          },
           \\"devDependencies\\": {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
@@ -394,12 +411,15 @@ describe(`sabdbox-scaffold`, () => {
             \\"vite\\": \\"^5.0.0\\"
           }
         }",
-          "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+          "src/App.tsx": "import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
+        // Theme + token CSS (theming Phase 2b): the :root web-light defaults and the shipped
+        // theme classes are static CSS — import once per document.
+        import '@fluentui/react-tailwind-theme/styles.css';
         import { Example } from './example';
 
         const App = () => {
             return (
-              <FluentProvider theme={webLightTheme}>
+              <FluentProvider themeClassName={webLightThemeClassName}>
                 <Example />
               </FluentProvider>
             );
@@ -514,7 +534,9 @@ describe(`sabdbox-scaffold`, () => {
             \\"build\\": \\"tsc && vite build\\",
             \\"preview\\": \\"vite preview\\"
           },
-          \\"dependencies\\": {},
+          \\"dependencies\\": {
+            \\"@fluentui/react-tailwind-theme\\": \\"*\\"
+          },
           \\"devDependencies\\": {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
@@ -523,12 +545,15 @@ describe(`sabdbox-scaffold`, () => {
             \\"vite\\": \\"^5.0.0\\"
           }
         }",
-          "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+          "src/App.tsx": "import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
+        // Theme + token CSS (theming Phase 2b): the :root web-light defaults and the shipped
+        // theme classes are static CSS — import once per document.
+        import '@fluentui/react-tailwind-theme/styles.css';
         import { Example } from './example';
 
         const App = () => {
             return (
-              <FluentProvider theme={webLightTheme}>
+              <FluentProvider themeClassName={webLightThemeClassName}>
                 <Example />
               </FluentProvider>
             );
@@ -630,7 +655,7 @@ describe(`sabdbox-scaffold`, () => {
       });
 
       expect(actual['src/App.tsx']).toContain(
-        "import { FluentProvider, webLightTheme } from '@fluentui/react-components';",
+        "import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';",
       );
       expect(actual['src/App.tsx']).toContain("import { Example } from './example';");
     });

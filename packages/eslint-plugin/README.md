@@ -120,14 +120,14 @@ Prevents imports from `forbidden` packages. If a corresponding `preferred` impor
 
 ```ts
 import * as React from 'react';
-import { webDarkTheme } from '@fluentui/react-theme';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 ```
 
 **✅ Do**
 
 ```ts
 import * as React from 'react';
-import { webDarkTheme } from '@fluentui/react-components';
+import { webDarkThemeClassName } from '@fluentui/react-components';
 ```
 
 ### `no-tslint-comments`

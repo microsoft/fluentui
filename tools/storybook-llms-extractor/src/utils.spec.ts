@@ -108,20 +108,20 @@ describe('generate-llms-docs', () => {
 
         # Setup
 
-        Fluent UI components are styled using CSS in JS. This technique requires a style renderer which inserts CSS into DOM when needed. React context is used to provide the style renderer.
+        Fluent UI components are styled with static CSS. Import \`@fluentui/react-tailwind-theme/styles.css\` once per document — it applies the web light theme at the document root, so components are themed with no further setup.
 
-        Place a \`<FluentProvider />\` at the root of your app and pass theme as a prop.
+        Every theme ships as a static CSS class. Place a \`<FluentProvider />\` at the root of your app and pass the class name through the \`themeClassName\` prop to choose a different one.
 
         # React 18
 
         \`\`\`jsx
         import React from 'react';
         import { createRoot } from 'react-dom/client';
-        import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+        import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
         import App from './App';
         const root = createRoot(document.getElementById('root'));
         root.render(
-          <FluentProvider theme={webLightTheme}>
+          <FluentProvider themeClassName={webLightThemeClassName}>
             <App />
           </FluentProvider>,
         );
@@ -132,10 +132,10 @@ describe('generate-llms-docs', () => {
         \`\`\`jsx
         import React from 'react';
         import ReactDOM from 'react-dom';
-        import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+        import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
         import App from './App';
         ReactDOM.render(
-          <FluentProvider theme={webLightTheme}>
+          <FluentProvider themeClassName={webLightThemeClassName}>
             <App />
           </FluentProvider>,
           document.getElementById('root'),
