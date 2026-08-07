@@ -1,5 +1,5 @@
 import type { IPalette } from '@fluentui/react';
-import type { BrandVariants } from '@fluentui/react-components';
+import type { BrandVariants } from '@fluentui/tokens';
 import { TinyColor } from '@ctrl/tinycolor';
 import type { ColorInput } from '@ctrl/tinycolor';
 

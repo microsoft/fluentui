@@ -7,7 +7,7 @@ import { ContextualMenuItemType, DefaultButton, Icon, initializeIcons } from '@f
 import type { IContextualMenuItem, IContextualMenuProps, IIconProps } from '@fluentui/react';
 import {
   FluentProvider,
-  webLightTheme,
+  webLightThemeClassName,
   Menu,
   MenuButton,
   MenuDivider,
@@ -122,10 +122,10 @@ export const Default = (): JSXElement => {
       <h3>shim</h3>
       <h3>v9</h3>
       <DefaultButton text="Menu Button" menuProps={menuProps} />
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <MenuButtonShim text="Menu Button" menuProps={menuProps} />
       </FluentProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <Menu hasIcons hasCheckmarks>
           <MenuTrigger>
             <MenuButton>Menu Button</MenuButton>

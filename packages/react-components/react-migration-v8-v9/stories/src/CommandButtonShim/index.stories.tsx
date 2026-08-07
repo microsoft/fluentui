@@ -5,7 +5,7 @@ import descriptionMd from './Description.md';
 
 import { CommandButton, Icon } from '@fluentui/react';
 import type { IIconProps } from '@fluentui/react';
-import { FluentProvider, Button, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, Button, webLightThemeClassName } from '@fluentui/react-components';
 import { CommandButtonShim } from '@fluentui/react-migration-v8-v9';
 
 import styles from './index.module.css';
@@ -19,10 +19,10 @@ export const Default = (): JSXElement => {
       <h3>shim</h3>
       <h3>v9</h3>
       <CommandButton iconProps={addIcon}>Command</CommandButton>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <CommandButtonShim iconProps={addIcon}>Command</CommandButtonShim>
       </FluentProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <Button appearance="transparent" icon={<Icon {...addIcon} />}>
           Command
         </Button>

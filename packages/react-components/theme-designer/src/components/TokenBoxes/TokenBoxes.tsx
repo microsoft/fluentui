@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useId, Button, Caption1, Input } from '@fluentui/react-components';
 import styles from './TokenBoxes.module.css';
 import type { InputOnChangeData } from '@fluentui/react-components';
-import type { Theme } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/tokens';
 import { SearchRegular } from '@fluentui/react-icons';
 
 export interface TokenBoxesProps {

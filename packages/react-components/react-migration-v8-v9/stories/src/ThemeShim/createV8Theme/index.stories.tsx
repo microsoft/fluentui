@@ -1,22 +1,18 @@
 import * as React from 'react';
-import type { JSXElement, TextareaProps, BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
+import type { JSXElement, TextareaProps } from '@fluentui/react-components';
 import type { Meta } from '@storybook/react-webpack5';
 
 import type { Theme as ThemeV8 } from '@fluentui/react';
 import { createTheme, ThemeProvider, initializeIcons } from '@fluentui/react';
-import {
-  Button,
-  Textarea,
-  webLightTheme,
-  createLightTheme,
-  createDarkTheme,
-  FluentProvider,
-} from '@fluentui/react-components';
+import { Button, Textarea, FluentProvider } from '@fluentui/react-components';
+import { createDarkTheme, createLightTheme, webLightTheme } from '@fluentui/tokens';
+import type { BrandVariants, Theme as ThemeV9 } from '@fluentui/tokens';
 import { brandWeb, createV8Theme } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
 import { ThemePreviewV8 } from '../ThemePreviewV8.stories';
 import { ThemePreviewV9 } from '../ThemePreviewV9.stories';
+import { useThemeAsClass } from '../applyThemeAsClass';
 
 import styles from './index.module.css';
 
@@ -83,6 +79,10 @@ export const Playground = (): JSXElement => {
       setCreateV9ThemeError((e as Error).message);
     }
   }, [brandVariantText]);
+
+  // v9 theme objects are build-time input: the preview applies them as a generated CSS class
+  // of custom-property declarations passed to FluentProvider's themeClassName.
+  const v9ThemeClassName = useThemeAsClass(v9Theme);
 
   const onPreviewV9Theme = React.useCallback(() => {
     try {
@@ -154,7 +154,7 @@ export const Playground = (): JSXElement => {
         <Button onClick={onPreviewV9Theme}>Preview</Button>
       </div>
       <div className={styles.error}>{previewV9ThemeError}</div>
-      <FluentProvider theme={v9Theme}>
+      <FluentProvider themeClassName={v9ThemeClassName}>
         <ThemePreviewV9 />
       </FluentProvider>
       <h2>3. Create a v8 Theme</h2>

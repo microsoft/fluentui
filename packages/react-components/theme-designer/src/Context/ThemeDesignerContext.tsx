@@ -1,11 +1,10 @@
 import * as React from 'react';
-import type { BrandVariants, Theme } from '@fluentui/react-components';
-import { createLightTheme } from '@fluentui/react-components';
+import type { Brands, BrandVariants, Theme } from '@fluentui/tokens';
+import { createLightTheme } from '@fluentui/tokens';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { brandWeb } from '../utils/brandColors';
 import { getBrandTokensFromPalette } from '../utils/getBrandTokensFromPalette';
 import { getOverridableTokenBrandColors } from '../utils/getOverridableTokenBrandColors';
-import type { Brands } from '@fluentui/react-theme';
 import { createDarkThemeWithUpdatedMapping } from '../utils/getOverridableTokenBrandColors';
 
 export type ColorOverrideBrands = Record<string, Brands>;

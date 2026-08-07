@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { BrandVariants } from '@fluentui/react-components';
+import type { BrandVariants } from '@fluentui/tokens';
 import type { ButtonProps } from '@fluentui/react-components';
 import type { IBaseButtonProps } from '@fluentui/react';
 import type { IButtonProps } from '@fluentui/react';
@@ -17,7 +17,7 @@ import type { IStackProps } from '@fluentui/react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { MenuProps } from '@fluentui/react-components';
 import * as React_2 from 'react';
-import type { Theme } from '@fluentui/react-components';
+import type { Theme } from '@fluentui/tokens';
 import type { Theme as Theme_2 } from '@fluentui/react';
 
 // @public

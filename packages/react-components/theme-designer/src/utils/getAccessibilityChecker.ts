@@ -1,6 +1,6 @@
 import type { Vec3 } from '../colors';
 import { contrast, hex_to_sRGB, hex_to_LCH } from '../colors';
-import type { Theme } from '@fluentui/react-components';
+import type { Theme } from '@fluentui/tokens';
 import { accessiblePairs, lightnessPairs } from '../components/ColorTokens/AccessiblePairs';
 
 export enum TestType {

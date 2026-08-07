@@ -5,7 +5,7 @@ import descriptionMd from './Description.md';
 
 import { DefaultButton, Icon, initializeIcons } from '@fluentui/react';
 import type { IIconProps } from '@fluentui/react';
-import { FluentProvider, webLightTheme, ToggleButton } from '@fluentui/react-components';
+import { FluentProvider, webLightThemeClassName, ToggleButton } from '@fluentui/react-components';
 import { ToggleButtonShim } from '@fluentui/react-migration-v8-v9';
 
 import styles from './index.module.css';
@@ -32,7 +32,7 @@ export const Default = (): JSXElement => {
         iconProps={muted1 ? volume0Icon : volume3Icon}
         onClick={() => setMuted1(!muted1)}
       />
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <ToggleButtonShim
           toggle
           checked={muted2}
@@ -41,7 +41,7 @@ export const Default = (): JSXElement => {
           onClick={() => setMuted2(!muted2)}
         />
       </FluentProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <ToggleButton
           checked={muted3}
           icon={muted3 ? <Icon {...volume0Icon} /> : <Icon {...volume3Icon} />}

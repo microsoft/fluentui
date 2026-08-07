@@ -1,7 +1,7 @@
 import type { Theme as ThemeV8 } from '@fluentui/react';
 import type { IEffects, IPalette } from '@fluentui/react';
-import { webLightTheme } from '@fluentui/react-components';
-import type { BorderRadiusTokens, ColorTokens, ShadowTokens, Theme as ThemeV9 } from '@fluentui/react-components';
+import { webLightTheme } from '@fluentui/tokens';
+import type { BorderRadiusTokens, ColorTokens, ShadowTokens, Theme as ThemeV9 } from '@fluentui/tokens';
 import { blackAlpha, whiteAlpha, grey, grey10Alpha, grey12Alpha } from './themeDuplicates';
 
 /**
@@ -220,8 +220,13 @@ const mapBorderRadiusTokens = (effects: IEffects): Partial<BorderRadiusTokens> =
 };
 
 /**
- * Creates a v9 theme from a v8 theme.
- * You can optional pass a base v9 theme; otherwise webLightTheme is used.
+ * Creates a v9 theme object from a v8 theme.
+ * You can optionally pass a base v9 theme object; otherwise webLightTheme (from @fluentui/tokens) is used.
+ *
+ * The result is a build-time/tooling input: v9 no longer accepts theme objects at runtime
+ * (FluentProvider takes a `themeClassName`). Feed the returned object into your theme
+ * pipeline — e.g. generate a custom CSS theme class containing only custom-property
+ * declarations — rather than passing it to a provider.
  */
 export const createV9Theme = (themeV8: ThemeV8, baseThemeV9?: ThemeV9): ThemeV9 => {
   const baseTheme = baseThemeV9 ?? webLightTheme;

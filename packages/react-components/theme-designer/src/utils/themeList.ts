@@ -1,4 +1,4 @@
-import type { BrandVariants } from '@fluentui/react-components';
+import type { BrandVariants } from '@fluentui/tokens';
 
 export type ThemeList = Record<string, { brand?: BrandVariants }>;
 

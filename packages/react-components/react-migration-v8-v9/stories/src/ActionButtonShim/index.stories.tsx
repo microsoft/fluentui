@@ -5,7 +5,7 @@ import descriptionMd from './Description.md';
 
 import { ActionButton, Icon, initializeIcons } from '@fluentui/react';
 import type { IIconProps } from '@fluentui/react';
-import { FluentProvider, Button, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, Button, webLightThemeClassName } from '@fluentui/react-components';
 import { ActionButtonShim } from '@fluentui/react-migration-v8-v9';
 
 import styles from './index.module.css';
@@ -21,10 +21,10 @@ export const Default = (): JSXElement => {
       <h3>shim</h3>
       <h3>v9</h3>
       <ActionButton iconProps={addIcon}>Action</ActionButton>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <ActionButtonShim iconProps={addIcon}>Action</ActionButtonShim>
       </FluentProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <Button appearance="transparent" icon={<Icon {...addIcon} />}>
           Action
         </Button>

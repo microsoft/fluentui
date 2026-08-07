@@ -4,7 +4,7 @@ import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 
 import { CompoundButton as CompoundButtonV8 } from '@fluentui/react';
-import { CompoundButton as CompoundButtonV9, webLightTheme, FluentProvider } from '@fluentui/react-components';
+import { CompoundButton as CompoundButtonV9, webLightThemeClassName, FluentProvider } from '@fluentui/react-components';
 import { CompoundButtonShim } from '@fluentui/react-migration-v8-v9';
 
 import styles from './index.module.css';
@@ -16,10 +16,10 @@ export const Default = (): JSXElement => {
       <h3>shim</h3>
       <h3>v9</h3>
       <CompoundButtonV8 secondaryText="Secondary text">Compound</CompoundButtonV8>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <CompoundButtonShim secondaryText="Secondary text">Compound</CompoundButtonShim>
       </FluentProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <CompoundButtonV9 secondaryContent="Secondary text">Compound</CompoundButtonV9>
       </FluentProvider>
     </div>

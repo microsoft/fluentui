@@ -7,6 +7,7 @@ import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportPanel } from '../Export/ExportPanel';
+import { useThemeAsClass } from '../../utils/applyThemeAsClass';
 
 export interface ContentProps {
   className?: string;
@@ -16,8 +17,9 @@ export const Content: React.FC<ContentProps> = props => {
   const {
     state: { themeWithOverrides },
   } = useThemeDesigner();
+  const themeWithOverridesClassName = useThemeAsClass(themeWithOverrides);
   return (
-    <FluentProvider theme={themeWithOverrides}>
+    <FluentProvider themeClassName={themeWithOverridesClassName}>
       <ExportPanel />
       <div className={clsx(styles.root, props.className)}>
         <h1 style={{ marginBottom: 0 }}>Fluent Theme Designer</h1>

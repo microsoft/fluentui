@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { clsx } from 'clsx';
-import { FluentProvider, Text, webDarkTheme, Button } from '@fluentui/react-components';
+import { FluentProvider, Text, webDarkThemeClassName, Button } from '@fluentui/react-components';
 import styles from './Header.module.css';
 
 const MFSTLogo = () => {
@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = props => {
   };
 
   return (
-    <FluentProvider theme={webDarkTheme} className={clsx(styles.root, props.className)}>
+    <FluentProvider themeClassName={webDarkThemeClassName} className={clsx(styles.root, props.className)}>
       <div className={styles.header}>
         <div className={styles.logo}>
           <MFSTLogo />

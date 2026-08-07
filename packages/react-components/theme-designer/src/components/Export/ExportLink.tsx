@@ -45,7 +45,6 @@ export const ExportLink = (): JSXElement => {
     Dropdown,
     Option
   } from "@fluentui/react-components";
-  import type { Theme } from "@fluentui/react-components";
   import {
     bundleIcon,
     CalendarLtrFilled,
@@ -57,8 +56,8 @@ export const ExportLink = (): JSXElement => {
   } from "@fluentui/react-icons";
 
   export interface ContentProps {
-    lightTheme: Theme;
-    darkTheme: Theme;
+    lightThemeClassName: string;
+    darkThemeClassName: string;
   }
 
   const useStaticStyles = makeStaticStyles({
@@ -256,7 +255,7 @@ export const ExportLink = (): JSXElement => {
     useStaticStyles();
     return (
       <div className={styles.root}>
-        <FluentProvider theme={props.lightTheme}>
+        <FluentProvider themeClassName={props.lightThemeClassName}>
           <Caption1>Light Theme</Caption1>
           <div className={styles.row}>
             <Column1 />
@@ -264,7 +263,7 @@ export const ExportLink = (): JSXElement => {
             <Column3 />
           </div>
         </FluentProvider>
-        <FluentProvider theme={props.darkTheme}>
+        <FluentProvider themeClassName={props.darkThemeClassName}>
           <Caption1>Dark Theme</Caption1>
           <div className={styles.row}>
             <Column1 />
@@ -281,9 +280,10 @@ export const ExportLink = (): JSXElement => {
 
   const createIndexContent = dedent`
   import * as ReactDOMClient from 'react-dom/client';
-  import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
-
-  import type { BrandVariants, Theme } from '@fluentui/react-components';
+  import '@fluentui/react-tailwind-theme/styles.css';
+  import { tokens } from '@fluentui/react-components';
+  import { createDarkTheme, createLightTheme } from '@fluentui/tokens';
+  import type { BrandVariants, Theme } from '@fluentui/tokens';
   import { Example } from './example';
 
   const ${themeName}: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
@@ -297,13 +297,35 @@ export const ExportLink = (): JSXElement => {
   darkTheme.colorBrandForeground1 = ${themeName}[110]; // use brand[110] instead of brand[100]
   darkTheme.colorBrandForeground2 = ${themeName}[120]; // use brand[120] instead of brand[110]
 
+  // Themes apply as CSS classes containing only custom-property declarations. Each theme key
+  // maps to its canonical CSS variable, derived from the corresponding tokens var-string.
+  const createThemeClassRule = (className: string, theme: Theme): string => {
+    const themeRecord = theme as unknown as Record<string, string | number>;
+    const tokenVars = tokens as unknown as Record<string, string>;
+    const declarations = Object.keys(themeRecord)
+      .map((key) => {
+        const match = /^var\\((--[^,)]+)/.exec(tokenVars[key] || '');
+        return match ? match[1] + ': ' + themeRecord[key] + ';' : '';
+      })
+      .filter(Boolean)
+      .join(' ');
+    return '.' + className + ' { ' + declarations + ' }';
+  };
+
+  const themeStyles = document.createElement('style');
+  themeStyles.textContent = [
+    createThemeClassRule('${themeName}-light', lightTheme),
+    createThemeClassRule('${themeName}-dark', darkTheme),
+  ].join('\\n');
+  document.head.appendChild(themeStyles);
+
   ReactDOMClient.createRoot(document.getElementById('root')).render(
-    <Example lightTheme={lightTheme} darkTheme={darkTheme} />,
+    <Example lightThemeClassName="${themeName}-light" darkThemeClassName="${themeName}-dark" />,
   );
   `;
 
   const packageContent = dedent`
-  {"dependencies":{"@fluentui/react-components":"^9","react":"^18","react-dom":"^18","react-scripts":"latest"}}
+  {"dependencies":{"@fluentui/react-components":"^9","@fluentui/react-tailwind-theme":"*","@fluentui/tokens":"*","react":"^18","react-dom":"^18","react-scripts":"latest"}}
   `;
 
   const link = React.useMemo(() => {

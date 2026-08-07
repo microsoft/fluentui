@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { Button } from '@fluentui/react-components';
-import type { Brands } from '@fluentui/react-theme';
+import type { Brands } from '@fluentui/tokens';
 import { AccessibilityList } from './AccessibilityList';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 

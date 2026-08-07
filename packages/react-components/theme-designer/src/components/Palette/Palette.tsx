@@ -2,7 +2,7 @@ import * as React from 'react';
 import { clsx } from 'clsx';
 import { Button, Caption1, Text } from '@fluentui/react-components';
 import styles from './Palette.module.css';
-import type { Brands, BrandVariants } from '@fluentui/react-theme';
+import type { Brands, BrandVariants } from '@fluentui/tokens';
 import { contrast, hex_to_sRGB } from '../../colors';
 import { bundleIcon, CopyFilled, CopyRegular } from '@fluentui/react-icons';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';

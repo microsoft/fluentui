@@ -1,5 +1,6 @@
 import * as React from 'react';
-import type { TableColumnDefinition, TableColumnSizingOptions, Theme } from '@fluentui/react-components';
+import type { TableColumnDefinition, TableColumnSizingOptions } from '@fluentui/react-components';
+import type { Theme } from '@fluentui/tokens';
 import {
   Badge,
   createTableColumn,
@@ -20,7 +21,7 @@ import {
   useTableFeatures,
 } from '@fluentui/react-components';
 import { brandRamp } from '../../utils/getOverridableTokenBrandColors';
-import type { Brands, BrandVariants } from '@fluentui/react-theme';
+import type { Brands, BrandVariants } from '@fluentui/tokens';
 import { CircleFilled } from '@fluentui/react-icons';
 import type { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';

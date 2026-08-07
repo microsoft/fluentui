@@ -4,16 +4,15 @@ import type { SelectTabData, SelectTabEvent, TabValue } from '@fluentui/react-co
 import {
   Body1,
   Button,
-  createLightTheme,
-  createDarkTheme,
   FluentProvider,
   Tab,
   TabList,
   Text,
   Textarea,
   tokens,
-  webLightTheme,
+  webLightThemeClassName,
 } from '@fluentui/react-components';
+import { createDarkTheme, createLightTheme } from '@fluentui/tokens';
 import { DismissSquare24Regular } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
@@ -39,6 +38,12 @@ export const ExportPanel = (): JSXElement => {
   };
 
   const codeValue = dedent`
+  // Theme objects are build-time input: create them with @fluentui/tokens, then ship the
+  // result as a CSS class containing only custom-property declarations.
+  import { createDarkTheme, createLightTheme } from '@fluentui/tokens';
+  import type { BrandVariants, Theme } from '@fluentui/tokens';
+  import { tokens } from '@fluentui/react-components';
+
   const ${themeName}: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
 
   const lightTheme: Theme = {
@@ -50,6 +55,31 @@ export const ExportPanel = (): JSXElement => {
 
   darkTheme.colorBrandForeground1 = ${themeName}[110];
   darkTheme.colorBrandForeground2 = ${themeName}[120];
+
+  // Convert a theme object into a CSS class of custom-property declarations. Each theme key
+  // maps to its canonical CSS variable, derived from the corresponding tokens var-string.
+  const createThemeClassRule = (className: string, theme: Theme): string => {
+    const themeRecord = theme as unknown as Record<string, string | number>;
+    const tokenVars = tokens as unknown as Record<string, string>;
+    const declarations = Object.keys(themeRecord)
+      .map((key) => {
+        const match = /^var\\((--[^,)]+)/.exec(tokenVars[key] || '');
+        return match ? match[1] + ': ' + themeRecord[key] + ';' : '';
+      })
+      .filter(Boolean)
+      .join(' ');
+    return '.' + className + ' { ' + declarations + ' }';
+  };
+
+  // Inject the classes once per document (or paste the generated CSS into a stylesheet),
+  // then apply them via <FluentProvider themeClassName="${themeName}-light"> or by
+  // setting the class on any DOM node to theme that subtree.
+  const style = document.createElement('style');
+  style.textContent = [
+    createThemeClassRule('${themeName}-light', lightTheme),
+    createThemeClassRule('${themeName}-dark', darkTheme),
+  ].join('\\n');
+  document.head.appendChild(style);
   `;
 
   const jsonLightValue = dedent`
@@ -87,7 +117,7 @@ export const ExportPanel = (): JSXElement => {
   return (
     <>
       {showExportPanel && (
-        <FluentProvider theme={webLightTheme}>
+        <FluentProvider themeClassName={webLightThemeClassName}>
           <div
             style={{
               zIndex: 100,
@@ -117,8 +147,10 @@ export const ExportPanel = (): JSXElement => {
 
               <br />
               <Body1>
-                Passing this theme to a FluentProvider will automatically apply it to any Fluent components below it.
-                You can also export this to CodeSandbox with a few component examples below.
+                This code builds your theme with @fluentui/tokens and converts it into a CSS class of custom-property
+                declarations. Passing that class to a FluentProvider via themeClassName (or setting it on any DOM node)
+                applies the theme to every Fluent component in that subtree. You can also export this to CodeSandbox
+                with a few component examples below.
               </Body1>
               <br />
               <TabList

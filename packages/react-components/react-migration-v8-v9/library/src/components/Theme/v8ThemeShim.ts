@@ -2,7 +2,7 @@ import type { IPalette, ISemanticColors, IFontStyles, IFontWeight, IEffects, The
 import { createTheme, DefaultPalette } from '@fluentui/react';
 import { fluent2ComponentStyles } from '@fluentui/fluent2-theme';
 
-import type { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
+import type { BrandVariants, Theme as ThemeV9 } from '@fluentui/tokens';
 
 import { black, blackAlpha, grey, sharedColors, white, whiteAlpha } from './themeDuplicates';
 
@@ -313,12 +313,16 @@ const mapEffects = (baseEffects: IEffects, theme: ThemeV9): IEffects => {
 };
 
 /**
- * Creates a v8 theme from v9 brand colors and theme.
+ * Creates a v8 theme from v9 brand colors and a v9 theme object.
  * You can optionally pass a v8 base theme.
  * Otherwise the default v8 theme is used.
  *
  * The v9 colors, fonts, and effects are applied on top of the v8 theme
  * to allow v8 components to look as much like v9 components as possible.
+ *
+ * The v9 theme object input comes from @fluentui/tokens (e.g. webLightTheme or a
+ * createLightTheme/createDarkTheme result) — v9 itself consumes themes as static CSS
+ * classes at runtime, so theme objects are build-time/tooling data.
  */
 export const createV8Theme = (
   brandColors: BrandVariants,

@@ -4,7 +4,7 @@ import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 
 import { PrimaryButton } from '@fluentui/react';
-import { FluentProvider, Button, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, Button, webLightThemeClassName } from '@fluentui/react-components';
 import { PrimaryButtonShim } from '@fluentui/react-migration-v8-v9';
 
 import styles from './index.module.css';
@@ -16,10 +16,10 @@ export const Default = (): JSXElement => {
       <h3>shim</h3>
       <h3>v9</h3>
       <PrimaryButton>Primary</PrimaryButton>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <PrimaryButtonShim>Primary</PrimaryButtonShim>
       </FluentProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <Button appearance="primary">Primary</Button>
       </FluentProvider>
     </div>

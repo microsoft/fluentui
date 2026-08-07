@@ -20,6 +20,7 @@
     "@fluentui/react-components": "^9.74.4",
     "@fluentui/react-hooks": "^8.10.2",
     "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/tokens": "1.0.0-alpha.23",
     "@swc/helpers": "^0.5.1",
     "clsx": "^2.1.1"
   },

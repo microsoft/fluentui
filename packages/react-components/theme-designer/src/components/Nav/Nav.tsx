@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { clsx } from 'clsx';
-import { webDarkTheme, FluentProvider, Text, Input, useId } from '@fluentui/react-components';
+import { webDarkThemeClassName, FluentProvider, Text, Input, useId } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular, EditRegular } from '@fluentui/react-icons';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import styles from './Nav.module.css';
@@ -17,7 +17,7 @@ export const Nav: React.FC<NavProps> = props => {
   } = useThemeDesigner();
 
   return (
-    <FluentProvider theme={webDarkTheme} className={clsx(styles.root, props.className)}>
+    <FluentProvider themeClassName={webDarkThemeClassName} className={clsx(styles.root, props.className)}>
       <div className={styles.logo}>
         <CircleRegular />
         <Text>Color Tool</Text>
