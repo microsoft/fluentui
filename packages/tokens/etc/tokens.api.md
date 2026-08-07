@@ -466,19 +466,48 @@ export type StrokeWidthTokens = {
 export const teamsDarkTheme: Theme;
 
 // @public (undocumented)
+export const teamsDarkThemeClassName = "fui-theme-teams-dark";
+
+// @public (undocumented)
 export const teamsDarkV21Theme: Theme;
+
+// @public (undocumented)
+export const teamsDarkV21ThemeClassName = "fui-theme-teams-dark-v21";
 
 // @public (undocumented)
 export const teamsHighContrastTheme: Theme;
 
 // @public (undocumented)
+export const teamsHighContrastThemeClassName = "fui-theme-teams-high-contrast";
+
+// @public (undocumented)
 export const teamsLightTheme: Theme;
+
+// @public (undocumented)
+export const teamsLightThemeClassName = "fui-theme-teams-light";
 
 // @public (undocumented)
 export const teamsLightV21Theme: Theme;
 
 // @public (undocumented)
+export const teamsLightV21ThemeClassName = "fui-theme-teams-light-v21";
+
+// @public (undocumented)
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens & ZIndexTokens;
+
+// @public
+export type ThemeClassName = typeof webLightThemeClassName | typeof webDarkThemeClassName | typeof teamsLightThemeClassName | typeof teamsDarkThemeClassName | typeof teamsHighContrastThemeClassName | typeof teamsLightV21ThemeClassName | typeof teamsDarkV21ThemeClassName;
+
+// @public
+export const themeClassNames: {
+    readonly webLightTheme: "fui-theme-web-light";
+    readonly webDarkTheme: "fui-theme-web-dark";
+    readonly teamsLightTheme: "fui-theme-teams-light";
+    readonly teamsDarkTheme: "fui-theme-teams-dark";
+    readonly teamsHighContrastTheme: "fui-theme-teams-high-contrast";
+    readonly teamsLightV21Theme: "fui-theme-teams-light-v21";
+    readonly teamsDarkV21Theme: "fui-theme-teams-dark-v21";
+};
 
 // @public
 export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
@@ -537,7 +566,13 @@ export type VerticalSpacingTokens = {
 export const webDarkTheme: Theme;
 
 // @public (undocumented)
+export const webDarkThemeClassName = "fui-theme-web-dark";
+
+// @public (undocumented)
 export const webLightTheme: Theme;
+
+// @public
+export const webLightThemeClassName = "fui-theme-web-light";
 
 // @public
 export type ZIndexTokens = {

@@ -44,15 +44,18 @@ steps:
       DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
   # `verify-tokens-css` exists on exactly one project (@fluentui/react-tailwind-theme). It asserts
-  # the checked-in css/tokens.css still matches what the generator produces from @fluentui/tokens,
-  # so a token added or renamed upstream cannot silently leave the Tailwind theme layer stale.
+  # the checked-in css/tokens.css AND css/themes.css still match what the generator produces from
+  # @fluentui/tokens (tokens.ts + theme-values.json), so a token added or renamed upstream — or a
+  # theme value changed without regenerating — cannot silently leave the Tailwind theme layer stale.
+  # `verify-theme-values` (@fluentui/tokens) asserts the committed theme-values.json snapshot matches
+  # the built theme objects, closing the loop from the values side (theming Phase 2b).
   - script: |
-      yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging verify-tokens-css --nxBail $(sinceArg)
+      yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging verify-tokens-css verify-theme-values --nxBail $(sinceArg)
     displayName: build, test, lint, test-ssr (affected)
     condition: eq(variables.isPR, true)
 
   - script: |
-      yarn nx run-many -t build test lint type-check test-ssr test-integration verify-packaging verify-tokens-css --nxBail
+      yarn nx run-many -t build test lint type-check test-ssr test-integration verify-packaging verify-tokens-css verify-theme-values --nxBail
     displayName: build, test, lint, test-ssr (all)
     condition: eq(variables.isPR, false)
 

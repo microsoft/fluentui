@@ -7,6 +7,17 @@ export {
   webDarkTheme,
   webLightTheme,
 } from './themes';
+export {
+  teamsDarkThemeClassName,
+  teamsDarkV21ThemeClassName,
+  teamsHighContrastThemeClassName,
+  teamsLightThemeClassName,
+  teamsLightV21ThemeClassName,
+  themeClassNames,
+  webDarkThemeClassName,
+  webLightThemeClassName,
+} from './themes';
+export type { ThemeClassName } from './themes';
 export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils';
 
 export { themeToTokensObject } from './themeToTokensObject';

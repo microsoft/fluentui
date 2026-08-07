@@ -11,6 +11,10 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "scripts": {
+    "generate-theme-values": "node scripts/generate-theme-values.js",
+    "verify-theme-values": "node scripts/generate-theme-values.js --check"
+  },
   "dependencies": {
     "@swc/helpers": "^0.5.1"
   },
