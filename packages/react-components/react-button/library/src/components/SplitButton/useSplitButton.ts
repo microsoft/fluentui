@@ -23,6 +23,7 @@ export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<
   const menuButtonShorthand = slot.optional(props.menuButton, {
     defaultProps: {
       ...baseState.menuButton,
+      children: undefined,
       appearance,
       shape,
       size,

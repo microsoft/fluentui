@@ -9,6 +9,7 @@ import { SplitButton } from './SplitButton';
 import { Button } from '../Button/Button';
 import type { ButtonProps } from '../Button/Button.types';
 import { MenuButton } from '../MenuButton/MenuButton';
+import type { MenuButtonProps } from '../MenuButton/MenuButton.types';
 import { useSplitButtonBase_unstable, useSplitButton_unstable } from './useSplitButton';
 import type { SplitButtonProps } from './SplitButton.types';
 
@@ -43,6 +44,18 @@ describe('SplitButton', () => {
     );
 
     expect(getByText('This is a button')).toBeTruthy();
+  });
+
+  it('preserves undefined children for a menu button render function', () => {
+    const renderMenuButton: SlotRenderFunction<MenuButtonProps> = (_Component, slotProps) => {
+      expect(slotProps.children).toBeUndefined();
+      return <button type="button" />;
+    };
+    const { getAllByRole } = render(
+      <SplitButton menuButton={{ children: renderMenuButton }}>This is a button</SplitButton>,
+    );
+
+    expect(getAllByRole('button')).toHaveLength(2);
   });
 
   it('primary action button and menu button can both be focused', () => {
