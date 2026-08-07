@@ -27,7 +27,7 @@ npm install @fluentui/react-components
 1. Create or modify a `_app.tsx` file under your `pages` folder with the following content:
 
 ```tsx
-import { FluentProvider, SSRProvider, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, SSRProvider, webLightThemeClassName } from '@fluentui/react-components';
 import type { AppProps } from 'next/app';
 
 // 👇 the theme's custom properties — without this stylesheet spacing collapses
@@ -36,7 +36,7 @@ import '@fluentui/react-tailwind-theme/styles.css';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SSRProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <Component {...pageProps} />
       </FluentProvider>
     </SSRProvider>

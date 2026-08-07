@@ -12,7 +12,7 @@ If you are considering migrating to Fluent UI React version 9 then we would firs
 
 In previous versions, styles were created and applied at runtime. Components used a theme object on React.Context to create styles.
 
-In v9, styles are created at build time to define class names. Components apply these class names at runtime based on state. A theme object is used to set CSS variables in the DOM which component styles reference.
+In v9, styles are created at build time to define class names. Components apply these class names at runtime based on state. The CSS variables those styles reference are declared by a static stylesheet: `@fluentui/react-tailwind-theme/styles.css` sets the defaults at the document root and ships one class per theme, so switching theme means applying a different class — no theme object is built or read at runtime.
 
 Component styles are authored as Tailwind-flavored CSS Modules and compiled into a plain stylesheet
 shipped with each package. There is no runtime style engine, so nothing has to be generated,
@@ -144,7 +144,7 @@ We'll use `Button` as an example.
 
    For example, `<PrimaryButton>` would be replaced with `<Button appearance="primary"/>`.
 
-5. Wherever you are using `ThemeProvider`, add `FluentProvider` and set the `theme` (e.g. webLightTheme).
+5. Import `@fluentui/react-tailwind-theme/styles.css` once per document. Wherever you are using `ThemeProvider`, add `FluentProvider` and set the `themeClassName` (e.g. `webLightThemeClassName`).
 6. Build and test
 
 You can reference each component's migration documentation to determine which props are carried forward, were changed, or were deprecated/removed.

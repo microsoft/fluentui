@@ -1,0 +1,31 @@
+/* Story styles for ThemeClassesCustom.
+ *
+ * `customTheme` is an authored custom theme class: it contains ONLY custom-property
+ * declarations using the canonical kebab-case token names. Tokens that are not declared
+ * fall through to the surrounding theme (or the `:root` Web Light defaults). */
+
+.customTheme {
+  --color-brand-background: #6b2fbf;
+  --color-brand-background-2: #ede4fa;
+  --color-neutral-foreground-on-brand: #ffffff;
+  --color-neutral-foreground-2: #38215c;
+}
+
+.colorBrandBackground {
+  background-color: var(--color-brand-background);
+  color: var(--color-neutral-foreground-on-brand);
+}
+
+.colorBrandBackground2 {
+  background-color: var(--color-brand-background-2);
+  color: var(--color-neutral-foreground-2);
+}
+
+.box {
+  padding: var(--spacing-horizontal-m);
+}
+
+.layout {
+  display: flex;
+  gap: var(--spacing-horizontal-m) var(--spacing-vertical-m);
+}

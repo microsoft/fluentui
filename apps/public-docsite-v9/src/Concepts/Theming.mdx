@@ -4,14 +4,13 @@ import { Meta, Source } from '@storybook/addon-docs/blocks';
 
 # Theming
 
-The Fluent UI Theme is represented by a set of tokens. Each token resolves to a single value which can be assigned to a CSS property.
+The Fluent UI theme is represented by a set of tokens. Each token is a CSS custom property which
+resolves to a single value that can be assigned to a CSS property:
 
-```tsx
-const exampleTheme = {
-  borderRadiusSmall: '2px',
-  //...
-  colorNeutralForeground2: '#424242',
-};
+```css
+--border-radius-small: 2px;
+/* ... */
+--color-neutral-foreground-2: #424242;
 ```
 
 You can browse all the available tokens in **[Theme](/docs/theme-colors--docs)** section of the docs.
@@ -20,18 +19,89 @@ You can browse all the available tokens in **[Theme](/docs/theme-colors--docs)**
 
 No matter what theme is used, the component styles are always the same. The only way to change the component styling is through theme tokens which can be used in style values.
 
-Those tokens are resolved to CSS variables. The `FluentProvider` component is responsible for setting the values of the CSS variables in DOM and changing them when the theme changes. When the theme is switched, only the variables are changed, all styles remain the same.
+Themes ship as **static CSS classes** in `@fluentui/react-tailwind-theme`. Each theme class contains
+only custom-property declarations — when the class is applied to a DOM node, the custom properties
+cascade and theme that entire subtree. Switching themes swaps a class name; no styles are recomputed
+and no JavaScript runs.
 
-Place a `<FluentProvider />` at the root of your app and pass a theme to the `theme` prop. The provider will render a `div` and set all tokens as CSS variables on that element. The provider also propagates CSS variables to React portals created with [Portal component](/docs/components-portal-portal--docs).
+Import the stylesheet once per document:
+
+```tsx
+import '@fluentui/react-tailwind-theme/styles.css';
+```
+
+The stylesheet emits the Web Light theme values at `:root, :host` as defaults, so components are
+themed even without any provider or theme class. All theme classes live in the `@layer fui.theme`
+cascade layer, so they predictably override the `:root` defaults without specificity games.
+
+To pick a different theme, place a `<FluentProvider />` at the root of your app and pass a theme
+class to the `themeClassName` prop. The provider renders a `div` with that class and also propagates
+it to React portals created with [Portal component](/docs/components-portal-portal--docs), so
+popups, menus and dialogs stay themed. Typed constants for the shipped theme classes are exported
+from `@fluentui/react-components`:
 
 ```jsx
-import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
+import '@fluentui/react-tailwind-theme/styles.css';
+import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-components';
 
-export const AppRoot = ({children}) => (
-  <FluentProvider theme={teamsLightTheme}>
-    {children}
-  </FluentProvider>,
+export const AppRoot = ({ children }) => (
+  <FluentProvider themeClassName={webDarkThemeClassName}>{children}</FluentProvider>
 );
+```
+
+### Migrating from the `theme` prop
+
+`FluentProvider`'s `theme` prop has been **removed**, along with the JS theme objects that fed it.
+Pass the matching class-name constant to `themeClassName` instead:
+
+```diff
+- import { FluentProvider, webDarkTheme } from '@fluentui/react-components';
++ import '@fluentui/react-tailwind-theme/styles.css';
++ import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-components';
+
+- <FluentProvider theme={webDarkTheme}>
++ <FluentProvider themeClassName={webDarkThemeClassName}>
+    <App />
+  </FluentProvider>
+```
+
+Every shipped theme has a `<name>ThemeClassName` counterpart — `webLightTheme` →
+`webLightThemeClassName`, `teamsDarkTheme` → `teamsDarkThemeClassName`, and so on (see
+[Available themes](#available-themes)).
+
+Removed alongside the prop, with no runtime replacement: `nonce` (the provider no longer creates a
+style element — see
+[Advanced Configuration](?path=/docs/concepts-developer-advanced-configuration--docs)),
+`createCSSRuleFromTheme`, and `ThemeContext_unstable`. The theme objects and factories
+(`webLightTheme`, `createLightTheme`, `themeToTokensObject`, and the `Theme` / `PartialTheme` /
+`BrandVariants` types) moved to `@fluentui/tokens`, where they are **build-time/tooling input** for
+generating theme CSS — see [Customizing the theme](#customizing-the-theme).
+
+### Scoped theming
+
+Because a theme class is just custom-property declarations, putting it on **any** DOM node themes
+that subtree — a provider is not required:
+
+```jsx
+import { webDarkThemeClassName } from '@fluentui/react-components';
+
+export const DarkSidebar = ({ children }) => <aside className={webDarkThemeClassName}>{children}</aside>;
+```
+
+Nested `<FluentProvider />`s inherit the parent provider's theme class when the `themeClassName`
+prop is omitted; pass a different class to re-theme just that part of the tree (portals opened from
+inside it follow along):
+
+```jsx
+import { FluentProvider, webDarkThemeClassName, webLightThemeClassName } from '@fluentui/react-components';
+
+<FluentProvider themeClassName={webLightThemeClassName}>
+  <App>
+    <FluentProvider themeClassName={webDarkThemeClassName}>
+      <DarkSection />
+    </FluentProvider>
+  </App>
+</FluentProvider>;
 ```
 
 A theme is delivered as CSS custom properties, so a stylesheet references them directly:
@@ -79,13 +149,18 @@ utilities named after them are available if your app uses Tailwind.
 
 ## Available themes
 
-Fluent UI currently exports following themes:
+Fluent UI currently ships the following theme classes (constants exported from
+`@fluentui/react-components` and `@fluentui/react-theme`):
 
-- Web Light (`webLightTheme`)
-- Web Dark (`webDarkTheme`)
-- Teams Light (`teamsLightTheme`)
-- Teams Dark (`teamsDarkTheme`)
-- Teams High Contrast (`teamsHighContrastTheme`)
+- Web Light (`webLightThemeClassName`) — also the `:root, :host` default
+- Web Dark (`webDarkThemeClassName`)
+- Teams Light (`teamsLightThemeClassName`)
+- Teams Dark (`teamsDarkThemeClassName`)
+- Teams High Contrast (`teamsHighContrastThemeClassName`)
+- Teams Light V21 (`teamsLightV21ThemeClassName`)
+- Teams Dark V21 (`teamsDarkV21ThemeClassName`)
+
+A `themeClassNames` map and a `ThemeClassName` type are exported alongside the constants.
 
 ### High contrast themes
 
@@ -96,7 +171,33 @@ Hardcoded High Contrast themes are considered legacy, to be used only in applica
 
 ## Customizing the theme
 
-Applications can customize a theme in multiple ways.
+A custom theme is a CSS class you author yourself. The contract is simple:
+
+- the class contains **only custom-property declarations**;
+- the property names are the **canonical kebab-case token names** (`--color-brand-background`,
+  `--color-neutral-foreground-1`, …) — the same names the shipped theme classes declare.
+
+Apply the class exactly like a shipped one — via `themeClassName` on a provider, or directly on any
+DOM node. You usually only need to declare the tokens you want to change; every token you do not
+declare falls through to the surrounding theme (or the `:root` Web Light defaults):
+
+```css
+/* my-theme.css */
+.my-custom-theme {
+  --color-brand-background: #0f6cbd;
+  --color-brand-background-hover: #115ea3;
+  --color-neutral-foreground-1: #555;
+}
+```
+
+```jsx
+import './my-theme.css';
+import { FluentProvider } from '@fluentui/react-components';
+
+function App() {
+  return <FluentProvider themeClassName="my-custom-theme">{/* ... */}</FluentProvider>;
+}
+```
 
 ### Custom Brand ramp
 
@@ -104,17 +205,16 @@ The brand ramp is a color ramp going from dark to light colors:
 
 <img className="sbdocs-img" src={require('../../public/brand-ramp-example.png')} alt="Example of a brand ramp" />
 
-A theme is derived from a brand ramp. To use a theme with a custom brand ramp, instead of importing a predefined theme, you can use theme factory functions.
-
-The following factory functions are available:
-
-- `createLightTheme()`
-- `createDarkTheme()`
-- `createTeamsDarkTheme()`
-- `createHighContrastTheme()`
+A full theme can be derived from a brand ramp at build time. The theme **objects**
+(`webLightTheme`, …) and factory functions (`createLightTheme()`, `createDarkTheme()`,
+`createTeamsDarkTheme()`, `createHighContrastTheme()`) remain available from `@fluentui/tokens` as
+build-time/tooling input — use them to generate the values for your custom theme class, then ship
+the class as static CSS. The [Theme Designer](https://aka.ms/themedesigner-v9) does exactly this and
+exports ready-made CSS for your brand.
 
 ```tsx
-import { BrandVariants, createLightTheme, createDarkTheme } from '@fluentui/react-components';
+// build-time tooling — not part of the runtime API
+import { BrandVariants, createLightTheme, createDarkTheme } from '@fluentui/tokens';
 
 const customBrandRamp: BrandVariants = {
   10: '#008',
@@ -124,61 +224,26 @@ const customBrandRamp: BrandVariants = {
 
 export const customLightTheme = createLightTheme(customBrandRamp);
 export const customDarkTheme = createDarkTheme(customBrandRamp);
-```
-
-### Overriding existing tokens
-
-⚠️ If the existing tokens do not fulfill your needs, you should talk to your designer instead of overriding tokens.
-
-A theme is a flat object containing `{ [token name]: CSS value }` pairs. You can copy the object and overwrite any tokens you wish.
-
-```tsx
-import { webLightTheme, Theme } from '@fluentui/react-components';
-
-export const customLightTheme: Theme = {
-  ...webLightTheme,
-  colorNeutralForeground1: '#555', // overriden token
-};
+// emit each object as a CSS class of custom-property declarations
 ```
 
 ### Extending theme with new tokens
 
 It's often useful for an app to extend the base set of tokens from Fluent UI. This process will help consuming teams or libraries add more tokens, but sharing them is outside the scope of this doc.
 
-⚠ Warning that adding more tokens adds more CSS variables which can effect run time performance as each DOM Node carries all the tokens.
+Custom tokens are just additional custom properties declared in your own CSS (in your theme class,
+or anywhere else in the cascade):
 
-```tsx
-import { themeToTokensObject, webLightTheme, FluentProvider, Theme } from '@fluentui/react-components';
-
-// You can pass your own custom tokens to a theme and pass that to the provider.
-type CustomTheme = Theme & {
-  tokenA: string;
-  tokenB: string;
-  tokenC: string;
-};
-const customTheme: CustomTheme = { ...webLightTheme, tokenA: 'red', tokenB: 'blue', tokenC: 'green' };
-function App() {
-  return <FluentProvider theme={customTheme}>{/* ... */}</FluentProvider>;
+```css
+.my-custom-theme {
+  --tokenA: red;
+  --tokenB: blue;
+  --tokenC: green;
 }
-
-// ...
-
-// You can construct a custom tokens object by yourself.
-const customTokens: Record<keyof CustomTheme, string> = {
-  ...tokens,
-  tokenA: `var(--tokenA)`,
-  tokenB: `var(--tokenB)`,
-  tokenC: `var(--tokenC)`,
-};
-
-// You can alternatively use the themeToTokensObject function to construct the custom tokens object.
-// Note: If you do it via the themeToTokensObject you might see a negative effect on tree-shaking since bundles won't know the shape of the output.
-const alternativeCustomTokens = themeToTokensObject(customTheme);
 ```
 
-Custom tokens land on the DOM as custom properties like any other, so your stylesheet references
-them the same way. They are not registered with Tailwind's `@theme`, so there is no generated
-utility for them:
+Your stylesheet references them the same way as built-in tokens. They are not registered with
+Tailwind's `@theme`, so there is no generated utility for them:
 
 ```css
 .base {

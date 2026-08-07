@@ -14,9 +14,10 @@ In these cases, the target element is hosted in a different context, and thus ha
 
 Component CSS is a static stylesheet, so it does not travel with the React tree — load it (and
 `@fluentui/react-tailwind-theme/styles.css`) into the child document the same way you load it into
-the main one. What still needs configuring is the `targetDocument`, so components resolve the right
-`window`/`document` and `FluentProvider` writes its theme custom properties into the child
-document:
+the main one. That stylesheet is also what carries the theme values, so once it is loaded the theme
+class on the provider's root resolves in the child document exactly as it does in the main one.
+What still needs configuring is the `targetDocument`, so components resolve the right
+`window`/`document` when they measure elements or attach listeners:
 
 ```jsx
 import { FluentProvider } from '@fluentui/react-components';
@@ -33,31 +34,25 @@ You can check complete example at [CodeSandbox](https://codesandbox.io/s/fluentu
 
 ### Content Security Policies (CSP)
 
-`FluentProvider` renders the theme's custom properties through a `<style>` tag it creates at
-runtime. To add the `nonce` attribute needed for
-[Content Security Policies](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to that tag,
-pass the `nonce` prop:
+Fluent UI needs no CSP configuration. Both component CSS and theme CSS are static stylesheets
+shipped as `.css` assets, so a
+[Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) covers them
+through its `style-src` source list — the same way it covers any other stylesheet your app loads:
 
-```jsx
-import { FluentProvider } from '@fluentui/react-components';
-import * as React from 'react';
-
-function MyComponent(props) {
-  const { children } = props;
-
-  return <FluentProvider nonce="random">{children}</FluentProvider>;
-}
+```
+style-src 'self';
 ```
 
-Set it once on the app-root provider — nested `FluentProvider`s inherit the nonce for their own
-theme style tags (and any of them can override it with its own `nonce` prop). The nonce is also
-applied to the style element emitted during SSR. Component CSS is a static stylesheet
-(`.css` assets), which a CSP covers via `style-src` source lists rather than nonces.
+`FluentProvider` creates no `<style>` element, at runtime or during SSR. A theme is a static CSS
+class (`webDarkThemeClassName` → `.fui-theme-web-dark`) declared in
+`@fluentui/react-tailwind-theme/styles.css`; the provider only applies that class name to its root
+element. Nothing is generated in the browser, so there is no inline style to whitelist and no
+nonce to thread through — `style-src 'unsafe-inline'` is not required.
 
-> **Migrating from an older setup?** The Griffel-era
-> `RendererProvider` + `createDOMRenderer(document, { styleElementAttributes: { nonce } })`
-> wrapper is no longer how the nonce reaches the theme style tag — replace it with the `nonce`
-> prop above.
+> **Migrating from an older setup?** Two mechanisms are gone. The Griffel-era
+> `RendererProvider` + `createDOMRenderer(document, { styleElementAttributes: { nonce } })` wrapper
+> and the `nonce` prop that briefly replaced it were both there to sign a style element that no
+> longer exists. Delete them and make sure `style-src` allows the origin serving your CSS bundle.
 
 ### IdPrefixProvider
 

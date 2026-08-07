@@ -31,12 +31,12 @@ npm install @fluentui/react-components fluentui-next-appdir-directive
 'use client';
 
 import * as React from 'react';
-import { FluentProvider, teamsDarkTheme, SSRProvider } from '@fluentui/react-components';
+import { FluentProvider, teamsDarkThemeClassName, SSRProvider } from '@fluentui/react-components';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SSRProvider>
-      <FluentProvider theme={teamsDarkTheme}>{children}</FluentProvider>
+      <FluentProvider themeClassName={teamsDarkThemeClassName}>{children}</FluentProvider>
     </SSRProvider>
   );
 }

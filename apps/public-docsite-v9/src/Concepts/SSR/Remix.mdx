@@ -59,7 +59,7 @@ export default defineConfig(() => ({
 
 ```tsx
 // 1. Import Fluent UI dependencies
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
 
 // 2. Import the theme's custom properties — without this stylesheet spacing collapses
 import '@fluentui/react-tailwind-theme/styles.css';
@@ -75,7 +75,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {/* 3. Wrap app content with FluentProvider */}
-        <FluentProvider theme={webLightTheme}>{children}</FluentProvider>
+        <FluentProvider themeClassName={webLightThemeClassName}>{children}</FluentProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -143,8 +143,8 @@ export default function handleRequest(
 ```
 
 No transform stream, insertion-point `<meta>` tag, or style injection is needed — the stylesheets
-arrive through `<Links />` / the Vite bundle, and `FluentProvider` renders its own theme custom
-properties in the markup.
+arrive through `<Links />` / the Vite bundle, and `FluentProvider` only stamps its static theme
+class into the markup; the theme's custom properties come from the stylesheet.
 
 ## Usage Example
 

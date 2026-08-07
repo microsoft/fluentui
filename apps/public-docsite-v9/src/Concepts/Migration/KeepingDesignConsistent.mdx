@@ -37,22 +37,22 @@ In v0/v8, you pass the `ThemeProvider` component a theme.
 This puts the theme object on React's context.
 Component style methods then reference the theme properties when building styles.
 
-In v9, you pass the `FluentProvider` component a theme.
-This defines a CSS variable for each design token.
+In v9, you pass the `FluentProvider` component a theme class name (`themeClassName`).
+Themes ship as static CSS classes that define a CSS variable for each design token.
 Component CSS styles then reference the CSS variables.
 
 When migrating to v9, you will have v0/v8 and v9 components side-by-side.
 You can wrap both `ThemeProvider` and `FluentProvider` around components.
-Both `ThemeProvider` and `FluentProvider` support nesting to define a theme or partial theme at different scopes.
+Both `ThemeProvider` and `FluentProvider` support nesting to define a theme at different scopes — a nested `FluentProvider` inherits the parent's theme class when `themeClassName` is omitted.
 
 ```tsx
 import { ThemeProvider, Button as ButtonV8 } from '@fluentui/react';
-import { FluentProvider, Button as ButtonV9, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, Button as ButtonV9, webLightThemeClassName } from '@fluentui/react-components';
 
 function App() {
   return (
     <ThemeProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <ButtonV8>Hello migration</ButtonV8>
         <ButtonV9>Hello migration</ButtonV9>
       </FluentProvider>
@@ -67,13 +67,13 @@ Fluent UI React v9 ships plain, precompiled CSS, so styling it needs nothing bey
 application already uses — a stylesheet, CSS Modules, Tailwind.
 Read [Styling Components](/docs/concepts-developer-styling-components--docs) for details.
 
-Because `FluentProvider` defines design token values as CSS variables, you can reference them your own component styles.
+Because v9 theme classes define design token values as CSS variables, you can reference them in your own component styles.
 Read [Theming](/docs/concepts-developer-theming--docs) to see examples.
 
 ## You can extend the theme with new design tokens
 
-The v9 `FluentProvider` defines CSS variables consumed by components.
-You can extend the `Theme` type with your own design tokens, set values when creating an instance of your theme, and then consume them in your own components.
+v9 theme classes define CSS variables consumed by components.
+You can declare additional custom properties in your own CSS (for example in a custom theme class) and consume them in your own components.
 
 See _Extending themes with new tokens_ section in [Theming](/docs/concepts-developer-theming--docs).
 
@@ -94,11 +94,11 @@ In the v8 documentation for each component, you can select the Fluent 2 theme to
 ### You can create custom themes
 
 By passing a v8 theme to `ThemeProvider` that uses v9 colors, v8 will look more like v9.
-Conversely, passing a v9 theme to `FluentProvider` that uses v8 colors will make v9 look more like v8.
+Conversely, authoring a custom v9 theme class that uses v8 colors (a CSS class of custom-property declarations passed to `FluentProvider`'s `themeClassName`) will make v9 look more like v8.
 
 ### You can use theme shims
 
-We have developed some shims (code that helps with migration) that let you create a v9 theme from the default v8 theme, create a v8 theme from the `webLightTheme` or `webDarkTheme` v9 themes.
+We have developed some shims (code that helps with migration) that let you create a v9 theme object from the default v8 theme, or create a v8 theme from the `webLightTheme` or `webDarkTheme` v9 theme objects (available from `@fluentui/tokens`). The resulting v9 theme object is build-time input — convert it to a custom CSS theme class to apply it.
 
 One of our key partner teams has developed a Fluent 2 theme for v8 that includes custom component styles to exactly match the Fluent 2 theme of v9.
 

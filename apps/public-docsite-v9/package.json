@@ -38,6 +38,7 @@
     "@fluentui/react-timepicker-compat": "*",
     "@fluentui/recipes": "*",
     "@fluentui/theme-designer": "*",
+    "@fluentui/tokens": "*",
     "@microsoft/applicationinsights-web": "^3.4.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",

@@ -14,7 +14,8 @@ You may decide you want components to all look like v8, all look like v9, or be 
 ### ThemeProvider -> FluentProvider
 
 ThemeProvider sets theme values on the React context for use in CSS-in-JS.
-FluentProvider applies theme values as CSS variables.
+FluentProvider applies a theme class (`themeClassName`) — a static CSS class shipped by
+`@fluentui/react-tailwind-theme` that defines every theme value as a CSS variable.
 
 This change from CSS-in-JS themes to CSS variable themes is the biggest difference between v8 and v9 themes and styles.
 Beyond consistency with the latest Fluent Design system, this change provides significant performance improvements and reduction of bundle sizes.
@@ -82,11 +83,11 @@ slots, each of which takes its own `className`.
 
 When you have v8 and v9 components running side-by-side, you will need to apply both a v8 theme and a v9 theme.
 Add a v9 `FluentProvider` each place you have a v8 `ThemeProvider`.
-Pass each their respective theme instances.
+Pass the `ThemeProvider` its v8 theme instance and the `FluentProvider` a v9 theme class via `themeClassName`.
 
 ### Default themes
 
-If you are using the default light or dark theme from v8, you can use the v9 `webLightTheme` or `webDarkTheme`.
+If you are using the default light or dark theme from v8, you can use the v9 `webLightThemeClassName` or `webDarkThemeClassName`.
 This will give you pretty close consistency especially if you have moved to v9 for all of one component type.
 
 For example, if all your buttons are v9 buttons then users likely won't notice small color differences between button and input components.
@@ -94,13 +95,17 @@ If you have a mixture of v8 and v9 buttons then the differences are more noticea
 
 ### Custom themes
 
-Both v8 and v9 have helper methods for creating custom themes.
+Both v8 and v9 have helper methods for creating custom theme objects (in v9 they live in `@fluentui/tokens` and are build-time/tooling input).
 If you have custom v8 themes, you can define v9 themes with similar color sets.
 
 You can do this by mapping the theme colors from the `IPalette` to the `BrandVariants`.
 There are 7 more values in the `BrandVariants`, so you will need to expand the color set.
 
 If this is too tedious a process, you can use shim methods to more easily create compatible themes.
+
+In v9 the resulting theme object is applied by converting it into a custom CSS theme class — a class
+containing only custom-property declarations with the canonical kebab-case token names — and passing
+that class to `FluentProvider`'s `themeClassName`. See [Theming](/docs/concepts-developer-theming--docs).
 
 ### Compatible themes
 

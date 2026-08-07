@@ -32,17 +32,20 @@ import '@fluentui/react-tailwind-theme/styles.css';
 
 ### 2. Add a provider
 
-`FluentProvider` owns every design-token **value**: it writes them as CSS custom properties scoped to its own
-element, which is what makes per-provider and nested-provider theming work.
+The stylesheet you just imported already applies the **web light** theme at the document root, so components
+are themed before you add anything. A `FluentProvider` is what lets you pick a _different_ theme, and what
+carries that choice into portals (popups, menus, dialogs) that render outside its DOM subtree.
 
-Place a `<FluentProvider />` at the root of your app and pass theme as a prop.
+Every theme ships as a static CSS class — `webDarkThemeClassName` is `.fui-theme-web-dark`, a block of custom
+property declarations. Place a `<FluentProvider />` at the root of your app and pass the class name you want
+through the `themeClassName` prop.
 
 #### React 18
 
 ```jsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
 
 import '@fluentui/react-tailwind-theme/styles.css';
 
@@ -51,7 +54,7 @@ import App from './App';
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-  <FluentProvider theme={webLightTheme}>
+  <FluentProvider themeClassName={webLightThemeClassName}>
     <App />
   </FluentProvider>,
 );
@@ -62,14 +65,14 @@ root.render(
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
 
 import '@fluentui/react-tailwind-theme/styles.css';
 
 import App from './App';
 
 ReactDOM.render(
-  <FluentProvider theme={webLightTheme}>
+  <FluentProvider themeClassName={webLightThemeClassName}>
     <App />
   </FluentProvider>,
   document.getElementById('root'),

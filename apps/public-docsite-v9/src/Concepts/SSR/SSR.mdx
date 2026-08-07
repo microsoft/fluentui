@@ -15,8 +15,9 @@ the server's only job is rendering markup.
 What SSR setup still consists of:
 
 - **`SSRProvider`** — makes generated ids stable between server and client so hydration matches.
-- **`FluentProvider`** — provides the theme. It renders its theme custom properties itself, on the
-  server and the client alike, so it needs no special wiring.
+- **`FluentProvider`** — provides the theme by applying a static theme class (`themeClassName`) to
+  its root and propagating it to portals. The class is plain markup, identical on the server and the
+  client, so it needs no special wiring; the theme's values come from the stylesheet.
 - **Your stylesheets** — make sure the component CSS and `@fluentui/react-tailwind-theme/styles.css`
   end up in the served page (a plain `import` at the app root is enough for every mainstream
   bundler). Without the theme stylesheet the custom properties are missing and spacing collapses.
@@ -39,14 +40,14 @@ Wrap your app in `SSRProvider` and `FluentProvider` — identically on the serve
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Button, FluentProvider, webLightTheme, SSRProvider } from '@fluentui/react-components';
+import { Button, FluentProvider, webLightThemeClassName, SSRProvider } from '@fluentui/react-components';
 
 const server = express();
 
 server.get('/', (req, res) => {
   const html = ReactDOMServer.renderToString(
     <SSRProvider>
-      <FluentProvider theme={webLightTheme}>
+      <FluentProvider themeClassName={webLightThemeClassName}>
         <Button appearance="primary">Hello world</Button>
       </FluentProvider>
     </SSRProvider>,

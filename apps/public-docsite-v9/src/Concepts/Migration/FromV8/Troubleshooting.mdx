@@ -5,20 +5,21 @@ import { Meta } from '@storybook/addon-docs/blocks';
 ## "I tried using the new components but there does not seem to be any styling applied to them. Am I doing something wrong?"
 
 Components in version 8 could be used in isolation and still retain their default styling.
-For components to be styled in version 9, they must be wrapped with `FluentProvider` with a theme passed to it.
+In version 9, styling comes from CSS: import `@fluentui/react-tailwind-theme/styles.css` once per document. The stylesheet applies the Web Light theme by default; to use another theme, wrap your app with `FluentProvider` and pass a theme class to `themeClassName`.
 
-We recommend placing the `FluentProvider` at the root of your app so that everything gets styled appropriately. The theme to use if you are coming from version 8 is `webLightTheme`.
+We recommend placing the `FluentProvider` at the root of your app so that everything gets styled appropriately (including portals). The theme class to use if you are coming from version 8 is `webLightThemeClassName`.
 
 ```jsx
 import React from 'react';
 import ReactDOMClient from 'react-dom/client';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import '@fluentui/react-tailwind-theme/styles.css';
+import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
 
 import App from './App';
 
 const root = ReactDOMClient.createRoot(document.getElementById('root'));
 root.render(
-  <FluentProvider theme={webLightTheme}>
+  <FluentProvider themeClassName={webLightThemeClassName}>
     <App />
   </FluentProvider>,
 );

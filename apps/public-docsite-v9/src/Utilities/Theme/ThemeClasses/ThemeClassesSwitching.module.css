@@ -1,0 +1,27 @@
+/* Story styles for ThemeClassesSwitching.
+ * Token references are the Fluent theme's CSS variables. */
+
+.colorBrandBackground {
+  background-color: var(--color-brand-background);
+  color: var(--color-neutral-foreground-on-brand);
+}
+
+.colorBrandBackground2 {
+  background-color: var(--color-brand-background-2);
+  color: var(--color-neutral-foreground-2);
+}
+
+.box {
+  padding: var(--spacing-horizontal-m);
+}
+
+.horizontalLayout {
+  display: flex;
+  gap: var(--spacing-horizontal-m) var(--spacing-vertical-m);
+}
+
+.verticalLayout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-horizontal-m) var(--spacing-vertical-m);
+}

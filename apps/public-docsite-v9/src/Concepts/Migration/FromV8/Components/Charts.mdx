@@ -27,9 +27,9 @@ You can reach out to the charting team by tagging `@microsoft/charting-team` in 
 ```tsx
 import { createV8Theme } from '@fluentui/react-migration-v8-v9';
 import { ThemeProvider } from '@fluentui/react';
-import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import React from 'react';
-import { Theme, BrandVariants, webLightTheme } from '@fluentui/react-components';
+import { webDarkTheme, webLightTheme } from '@fluentui/tokens';
+import type { Theme, BrandVariants } from '@fluentui/tokens';
 import { DonutChart, IChartProps } from '@fluentui/react-charting';
 import * as d3Color from 'd3-color';
 
@@ -62,9 +62,11 @@ const data: IChartProps = {
   ],
 };
 
-export function ChartWrapperDocsite() {
-  let parentV9Theme = React.useContext(V9ThemeContext) as Theme;
-  let v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
+export function ChartWrapperDocsite(props: { isDark?: boolean }) {
+  // v9 themes are applied as CSS classes at runtime; the theme *objects* remain available
+  // from @fluentui/tokens as build-time/tooling input. Pick the object that matches the
+  // theme class your app applies (webLightTheme for webLightThemeClassName, etc.).
+  let v9Theme: Theme = props.isDark ? webDarkTheme : webLightTheme;
   let backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
   let foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
   const myV8Theme = createV8Theme(brandInvariant, v9Theme, backgroundColor.l < foregroundColor.l); // For dark theme background color is darker than foreground color
@@ -119,7 +121,7 @@ Wrap any custom jsx element like `HoverCard`, or `Callout` in an explicit `Fluen
 import { useBarChartHoverCardClasses } from './BarChartHoverCard.styles';
 import { BarChartHoverCardProps } from './BarChartHoverCard.types';
 import { getDayName, getHourlyTimeframe } from './BarChartHoverCard.utils';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightThemeClassName } from '@fluentui/react-components';
 
 export default function BarChartHoverCard(props: BarChartHoverCardProps) {
   const classes = useBarChartHoverCardClasses();
@@ -128,7 +130,7 @@ export default function BarChartHoverCard(props: BarChartHoverCardProps) {
   const usageStatus = calloutData.xAxisCalloutData;
 
   return (
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider themeClassName={webLightThemeClassName}>
       <div className={classes.root}>
         <div className={classes.datetime}>
           <div>{getDayName(calloutData.xAxisPoint)}</div>

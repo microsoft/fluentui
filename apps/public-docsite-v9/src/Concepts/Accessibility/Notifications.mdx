@@ -46,7 +46,7 @@ There are a couple cases where one might add an additional nested `AriaLiveAnnou
 It would usually look something like this, in the same place other top-level providers are defined:
 
 ```tsx
-<FluentProvider theme={webLightTheme}>
+<FluentProvider themeClassName={webLightThemeClassName}>
   <AriaLiveAnnouncer>{...children}</AriaLiveAnnouncer>
 </FluentProvider>
 ```

@@ -9,7 +9,7 @@ import {
   IEffects,
 } from '@fluentui/react';
 
-import { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
+import { BrandVariants, Theme as ThemeV9 } from '@fluentui/tokens';
 
 import { black, blackAlpha, grey, sharedColors, white, whiteAlpha } from './themeDuplicates';
 

@@ -35,13 +35,18 @@ The default styles are defined by `useButtonStyles_unstable` and are packaged wi
 For example, an `App.tsx` might look like:
 
 ```tsx
-import { Button, FluentProvider, webLightTheme, CustomStyleHooksProvider_unstable } from '@fluentui/react-components';
+import {
+  Button,
+  FluentProvider,
+  webLightThemeClassName,
+  CustomStyleHooksProvider_unstable,
+} from '@fluentui/react-components';
 import { AlertRegular } from '@fluentui/react-icons';
 import { FANCY_CUSTOM_STYLE_HOOKS } from './FancyAppCustomStyleHooksValue.ts';
 
 export function App() {
   return (
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider themeClassName={webLightThemeClassName}>
       <Button>I am a Vanilla Fluent Button</Button>
       <CustomStyleHooksProvider_unstable value={FANCY_CUSTOM_STYLE_HOOKS}>
         <Button icon={<AlertRegular />}>I am a *Fancy* Button</Button>
@@ -126,7 +131,7 @@ Finally use the `CustomStyleHooksProvider_unstable` in your app:
 // App.tsx
 + import { FANCY_CUSTOM_STYLE_HOOKS } from './FancyAppCustomStyleHooksValue';
 
-<FluentProvider theme={webLightTheme}>
+<FluentProvider themeClassName={webLightThemeClassName}>
 + <CustomStyleHooksProvider_unstable value={FANCY_CUSTOM_STYLE_HOOKS}>
    {/* application code ... */}
 + </CustomStyleHooksProvider_unstable>
@@ -140,7 +145,7 @@ One caveat is that `CustomStyleHooksProvider` does not automatically merge conte
 ```tsx
 export function App() {
   return (
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider themeClassName={webLightThemeClassName}>
       <CustomStyleHooksProvider_unstable
         // Ideally these are abstracted to another file object,
         // But are consolidated for demonstration brevity.
@@ -189,7 +194,7 @@ And finally the App code can be simplified:
 ```tsx
 export function App() {
   return (
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider themeClassName={webLightThemeClassName}>
       <CustomStyleHooksProvider_unstable
         value={SMANCY_CUSTOM_STYLE_HOOKS}
       >
