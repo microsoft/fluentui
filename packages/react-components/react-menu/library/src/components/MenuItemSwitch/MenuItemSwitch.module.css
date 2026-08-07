@@ -80,14 +80,14 @@
   .switch-indicator {
     @apply me-horizontal-xs box-border h-20 w-40 shrink-0;
 
-    border-radius: var(--borderRadiusCircular);
-    border: var(--spacing-thin) solid var(--colorNeutralStrokeAccessible);
+    border-radius: var(--radius-circular);
+    border: var(--spacing-thin) solid var(--color-neutral-stroke-accessible);
     line-height: 0;
     fill: currentColor;
     font-size: calc(18px * var(--base-scale));
 
-    transition-duration: var(--durationNormal);
-    transition-timing-function: var(--curveEasyEase);
+    transition-duration: var(--duration-normal);
+    transition-timing-function: var(--ease-easy-ease);
     /*
      * Longhands only. `background, border, color` is not 3 properties: per CSS Transitions
      * L1 a shorthand in `transition-property` expands to every longhand it covers, so that
@@ -107,11 +107,11 @@
       transition-duration: 0.01ms;
     }
 
-    color: var(--colorNeutralStrokeAccessible);
+    color: var(--color-neutral-stroke-accessible);
 
     @variant hover {
-      color: var(--colorNeutralStrokeAccessibleHover);
-      border-color: var(--colorNeutralStrokeAccessibleHover);
+      color: var(--color-neutral-stroke-accessible-hover);
+      border-color: var(--color-neutral-stroke-accessible-hover);
     }
 
     /*
@@ -122,15 +122,15 @@
      */
     @variant hover {
       @variant active {
-        color: var(--colorNeutralStrokeAccessiblePressed);
-        border-color: var(--colorNeutralStrokeAccessiblePressed);
+        color: var(--color-neutral-stroke-accessible-pressed);
+        border-color: var(--color-neutral-stroke-accessible-pressed);
       }
     }
 
     /* the thumb — `<CircleFilled />` by default, see "Reaching the thumb" in the header */
     & .circle-filled {
-      transition-duration: var(--durationNormal);
-      transition-timing-function: var(--curveEasyEase);
+      transition-duration: var(--duration-normal);
+      transition-timing-function: var(--ease-easy-ease);
       transition-property: transform;
 
       @media screen and (prefers-reduced-motion: reduce) {
@@ -171,32 +171,32 @@
       }
     }
 
-    background-color: var(--colorCompoundBrandBackground);
-    color: var(--colorNeutralForegroundInverted);
+    background-color: var(--color-compound-brand-background);
+    color: var(--color-neutral-foreground-inverted);
 
     /* `shorthands.borderColor(...)` expanded to the four longhands it compiled to */
-    border-top-color: var(--colorTransparentStroke);
-    border-right-color: var(--colorTransparentStroke);
-    border-bottom-color: var(--colorTransparentStroke);
-    border-left-color: var(--colorTransparentStroke);
+    border-top-color: var(--color-transparent-stroke);
+    border-right-color: var(--color-transparent-stroke);
+    border-bottom-color: var(--color-transparent-stroke);
+    border-left-color: var(--color-transparent-stroke);
 
     @variant hover {
-      color: var(--colorNeutralForegroundInverted);
-      background-color: var(--colorCompoundBrandBackgroundHover);
-      border-top-color: var(--colorTransparentStrokeInteractive);
-      border-right-color: var(--colorTransparentStrokeInteractive);
-      border-bottom-color: var(--colorTransparentStrokeInteractive);
-      border-left-color: var(--colorTransparentStrokeInteractive);
+      color: var(--color-neutral-foreground-inverted);
+      background-color: var(--color-compound-brand-background-hover);
+      border-top-color: var(--color-transparent-stroke-interactive);
+      border-right-color: var(--color-transparent-stroke-interactive);
+      border-bottom-color: var(--color-transparent-stroke-interactive);
+      border-left-color: var(--color-transparent-stroke-interactive);
     }
 
     @variant hover {
       @variant active {
-        color: var(--colorNeutralForegroundInverted);
-        background-color: var(--colorCompoundBrandBackgroundPressed);
-        border-top-color: var(--colorTransparentStrokeInteractive);
-        border-right-color: var(--colorTransparentStrokeInteractive);
-        border-bottom-color: var(--colorTransparentStrokeInteractive);
-        border-left-color: var(--colorTransparentStrokeInteractive);
+        color: var(--color-neutral-foreground-inverted);
+        background-color: var(--color-compound-brand-background-pressed);
+        border-top-color: var(--color-transparent-stroke-interactive);
+        border-right-color: var(--color-transparent-stroke-interactive);
+        border-bottom-color: var(--color-transparent-stroke-interactive);
+        border-left-color: var(--color-transparent-stroke-interactive);
       }
     }
   }

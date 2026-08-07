@@ -57,8 +57,8 @@
   .root {
     @apply flex h-32 items-center px-horizontal-s;
 
-    font-size: var(--fontSizeBase200);
-    color: var(--colorNeutralForeground3);
-    font-weight: var(--fontWeightSemibold);
+    font-size: var(--text-base-200);
+    color: var(--color-neutral-foreground-3);
+    font-weight: var(--font-weight-semibold);
   }
 }

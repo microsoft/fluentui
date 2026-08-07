@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   height: 480px;
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
 }
 
 .drawer {
@@ -29,6 +29,6 @@
   box-sizing: border-box;
   position: absolute;
   inset: 0;
-  background-color: var(--colorNeutralBackground1);
-  border: 1px solid var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
+  border: 1px solid var(--color-neutral-background-1);
 }

@@ -49,7 +49,7 @@
  * `useDrawerResetStyles` spreads `createFocusOutlineStyle()`, whose focus-visible half
  * compiles to `.r7dfyj8[data-fui-focus-visible]{border-*-color:transparent}` — 0-2-0. It
  * beat arg #2a's `.f1xteiwb{border-right:var(--stroke-width-thin) solid
- * var(--colorTransparentStroke)}` (0-1-0) on SPECIFICITY even though the reset bucket sorts
+ * var(--color-transparent-stroke)}` (0-1-0) on SPECIFICITY even though the reset bucket sorts
  * first. `:where()`-flat selectors erase that, so leaving the focus block in `fui.base`
  * would let the position border colour survive a focus ring. That is observable: in the
  * high-contrast theme `colorTransparentStroke` is `CanvasText`, not `transparent`
@@ -120,8 +120,8 @@
     max-width: 100vw;
     height: auto;
     max-height: 100vh;
-    background-color: var(--colorNeutralBackground1);
-    color: var(--colorNeutralForeground1);
+    background-color: var(--color-neutral-background-1);
+    color: var(--color-neutral-foreground-1);
     top: 0;
     bottom: 0;
 
@@ -141,7 +141,7 @@
     @variant position-start {
       border-inline-end-width: var(--spacing-thin);
       border-inline-end-style: solid;
-      border-inline-end-color: var(--colorTransparentStroke);
+      border-inline-end-color: var(--color-transparent-stroke);
 
       inset-inline-start: 0;
       inset-inline-end: auto;
@@ -150,7 +150,7 @@
     @variant position-end {
       border-inline-start-width: var(--spacing-thin);
       border-inline-start-style: solid;
-      border-inline-start-color: var(--colorTransparentStroke);
+      border-inline-start-color: var(--color-transparent-stroke);
 
       inset-inline-end: 0;
       inset-inline-start: auto;
@@ -232,8 +232,8 @@
    *
    *   .r7dfyj8[data-fui-focus-visible]{border-{top,right,bottom,left}-color:transparent}
    *   .r7dfyj8[data-fui-focus-visible]::after{content:"";position:absolute;
-   *     pointer-events:none;z-index:1;border:2px solid var(--colorStrokeFocus2);
-   *     border-radius:var(--borderRadiusMedium);
+   *     pointer-events:none;z-index:1;border:2px solid var(--color-stroke-focus-2);
+   *     border-radius:var(--radius-medium);
    *     top|right|bottom|left:calc(2px * -1)}
    *   @media (forced-colors: active){…::after{border-*-color:Highlight}}
    *

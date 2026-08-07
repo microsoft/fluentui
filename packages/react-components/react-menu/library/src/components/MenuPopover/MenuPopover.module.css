@@ -52,18 +52,18 @@
     @apply box-border w-max max-w-300 min-w-138 overflow-x-hidden;
     @apply px-horizontal-xs py-vertical-xs;
 
-    border-radius: var(--borderRadiusMedium);
-    background-color: var(--colorNeutralBackground1);
-    color: var(--colorNeutralForeground1);
-    box-shadow: var(--shadow16);
+    border-radius: var(--radius-medium);
+    background-color: var(--color-neutral-background-1);
+    color: var(--color-neutral-foreground-1);
+    box-shadow: var(--shadow-16);
 
-    /* kept as the compiled shorthand (`border:1px solid var(--colorTransparentStroke)`) —
+    /* kept as the compiled shorthand (`border:1px solid var(--color-transparent-stroke)`) —
        nothing in this package re-declares any border longhand on this element. */
-    border: 1px solid var(--colorTransparentStroke);
+    border: 1px solid var(--color-transparent-stroke);
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 }

@@ -92,14 +92,14 @@
     display: inline;
 
     background-color: transparent;
-    color: var(--colorBrandForegroundLink);
+    color: var(--color-brand-foreground-link);
     cursor: pointer;
     overflow: inherit;
     text-overflow: inherit;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
 
     text-decoration-line: none;
     text-decoration-thickness: var(--spacing-thin);
@@ -112,12 +112,12 @@
 
     @variant hover {
       text-decoration-line: underline;
-      color: var(--colorBrandForegroundLinkHover);
+      color: var(--color-brand-foreground-link-hover);
     }
 
     @variant active {
       text-decoration-line: underline;
-      color: var(--colorBrandForegroundLinkPressed);
+      color: var(--color-brand-foreground-link-pressed);
     }
   }
 }
@@ -138,16 +138,16 @@
 
   /* from useStyles.subtle — arg #6 */
   .subtle {
-    color: var(--colorNeutralForeground2Link);
+    color: var(--color-neutral-foreground-2-link);
 
     @variant hover {
       text-decoration-line: underline;
-      color: var(--colorNeutralForeground2LinkHover);
+      color: var(--color-neutral-foreground-2-link-hover);
     }
 
     @variant active {
       text-decoration-line: underline;
-      color: var(--colorNeutralForeground2LinkPressed);
+      color: var(--color-neutral-foreground-2-link-pressed);
     }
   }
 
@@ -156,27 +156,27 @@
    * this slice and `.brand` below; that is the Griffel source verbatim, not a typo.
    */
   .inverted {
-    color: var(--colorBrandForegroundInverted);
+    color: var(--color-brand-foreground-inverted);
 
     @variant hover {
-      color: var(--colorBrandForegroundInverted);
+      color: var(--color-brand-foreground-inverted);
     }
 
     @variant active {
-      color: var(--colorBrandForegroundInverted);
+      color: var(--color-brand-foreground-inverted);
     }
   }
 
   /* from useStyles.brand — arg #8 */
   .brand {
-    color: var(--colorNeutralForegroundInvertedLink);
+    color: var(--color-neutral-foreground-inverted-link);
 
     @variant hover {
-      color: var(--colorNeutralForegroundInvertedLinkHover);
+      color: var(--color-neutral-foreground-inverted-link-hover);
     }
 
     @variant active {
-      color: var(--colorNeutralForegroundInvertedLinkPressed);
+      color: var(--color-neutral-foreground-inverted-link-pressed);
     }
   }
 }
@@ -196,7 +196,7 @@
      */
     @variant disabled {
       text-decoration-line: none;
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
       cursor: not-allowed;
     }
   }
@@ -213,7 +213,7 @@
    */
   .root {
     @variant focus-visible-fui {
-      text-decoration-color: var(--colorStrokeFocus2);
+      text-decoration-color: var(--color-stroke-focus-2);
       text-decoration-line: underline;
       text-decoration-style: double;
       outline-style: none;
@@ -234,12 +234,12 @@
     @variant disabled {
       @variant hover {
         text-decoration-line: none;
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
 
       @variant active {
         text-decoration-line: none;
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
 
       @variant forced-colors {

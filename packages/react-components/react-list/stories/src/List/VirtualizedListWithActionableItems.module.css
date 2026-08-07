@@ -2,5 +2,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .text {
-  color: var(--colorNeutralForeground1);
+  color: var(--color-neutral-foreground-1);
 }

@@ -51,6 +51,6 @@
     /* `border-bottom: <strokeWidthThin> solid <colorNeutralStroke2>` expanded to longhands */
     border-block-end-width: var(--spacing-thin);
     border-block-end-style: solid;
-    border-block-end-color: var(--colorNeutralStroke2);
+    border-block-end-color: var(--color-neutral-stroke-2);
   }
 }

@@ -66,7 +66,7 @@
  * (lib-commonjs/components/ListItem/useListItemStyles.styles.js:25-65):
  *   .rikgcmv{padding:0;margin:0;text-indent:0;list-style-type:none;}
  *   .rikgcmv[data-fui-focus-visible]{outline:var(--stroke-width-thick) solid
- *     var(--colorStrokeFocus2);border-radius:var(--borderRadiusMedium);}
+ *     var(--color-stroke-focus-2);border-radius:var(--radius-medium);}
  *   .f7nlbp4{align-self:center;}
  *   .f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}
  *   .f22iagw{display:flex;}
@@ -102,8 +102,8 @@
     list-style-type: none;
 
     @variant focus-visible-fui {
-      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
     }
   }
 }

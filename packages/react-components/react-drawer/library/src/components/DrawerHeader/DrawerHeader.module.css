@@ -86,10 +86,10 @@
         inset-inline-end: 0;
         bottom: 0;
         opacity: 0;
-        background-color: var(--colorNeutralStroke1);
-        transition-duration: var(--durationNormal);
+        background-color: var(--color-neutral-stroke-1);
+        transition-duration: var(--duration-normal);
         transition-property: opacity;
-        transition-timing-function: var(--curveEasyEase);
+        transition-timing-function: var(--ease-easy-ease);
       }
     }
   }

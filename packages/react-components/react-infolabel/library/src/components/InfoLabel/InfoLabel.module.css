@@ -44,7 +44,7 @@
  *
  * This is load-bearing in both directions, not bookkeeping:
  *   - `.label { color: inherit }` must beat Label's own
- *     `.root { color: var(--colorNeutralForeground1) }`;
+ *     `.root { color: var(--color-neutral-foreground-1) }`;
  *   - `.info-button { vertical-align: top }` must beat InfoButton's
  *     `vertical-align: middle`, and the negative margins must beat its `margin: 0`
  *     (expanded to four longhands there).

@@ -26,7 +26,7 @@
 }
 
 .caption {
-  color: var(--colorNeutralForeground3);
+  color: var(--color-neutral-foreground-3);
 }
 
 .image {
@@ -36,7 +36,7 @@
 }
 
 .title {
-  color: var(--colorNeutralForeground1);
+  color: var(--color-neutral-foreground-1);
   font-weight: 600;
   display: block;
 }

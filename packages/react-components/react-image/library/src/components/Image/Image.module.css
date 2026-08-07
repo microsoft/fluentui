@@ -43,7 +43,7 @@
  * them, which is exactly what Griffel's empty slices did.
  *
  * ── Ordering that IS load-bearing ──────────────────────────────────────────────────
- * #8 shape's `border-radius` must beat #2 base's `border-radius:var(--borderRadiusNone)`.
+ * #8 shape's `border-radius` must beat #2 base's `border-radius:var(--radius-none)`.
  * Declaration order in the Griffel source agrees with argument order here (base L14
  * before circular L29 / rounded L30), so this is not an inversion — but the winner is
  * now encoded purely in file position, so `.circular` / `.rounded` must stay LAST.
@@ -67,7 +67,7 @@
  * `borderWidth` expand to four longhands whose right/left members are swapped but
  * identical in value), so the physical longhands below render byte-identical in both
  * directions — the same treatment the react-divider pilot gave `shorthands.borderColor`.
- * `box-shadow: var(--shadow4)` is likewise unflipped by Griffel (single atomic): the
+ * `box-shadow: var(--shadow-4)` is likewise unflipped by Griffel (single atomic): the
  * token value is opaque to rtl-css-js.
  */
 
@@ -77,19 +77,19 @@
     @apply box-border inline-block;
 
     /* shorthands.borderColor() — expanded to the four longhands Griffel compiled */
-    border-top-color: var(--colorNeutralStroke1);
-    border-right-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStroke1);
-    border-left-color: var(--colorNeutralStroke1);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-right-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-1);
+    border-left-color: var(--color-neutral-stroke-1);
 
     /*
      * Kept as the `border-radius` shorthand because that is what Griffel compiled
-     * (`.f1fabniw{border-radius:var(--borderRadiusNone);}`) and because no rule anywhere
+     * (`.f1fabniw{border-radius:var(--radius-none);}`) and because no rule anywhere
      * in this component sets a corner longhand — so there is no shorthand-vs-longhand
      * priority for the cascade to get wrong. `.circular` / `.rounded` below override it
      * by file position.
      */
-    border-radius: var(--borderRadiusNone);
+    border-radius: var(--radius-none);
   }
 
   /* from useStyles.block */
@@ -112,7 +112,7 @@
 
   /* from useStyles.shadow */
   .shadow {
-    box-shadow: var(--shadow4);
+    box-shadow: var(--shadow-4);
   }
 
   /*
@@ -157,10 +157,10 @@
    * Griffel slice and is intentionally absent (see header).
    */
   .circular {
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
   }
 
   .rounded {
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
   }
 }

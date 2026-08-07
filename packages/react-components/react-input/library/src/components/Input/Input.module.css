@@ -101,15 +101,15 @@
     @apply gap-horizontal-xxs;
 
     /* used for all but the underline appearance */
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
 
     /* appearance: outline (default) */
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     border-top-width: 1px;
     border-right-width: 1px;
@@ -119,10 +119,10 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--colorNeutralStroke1);
-    border-right-color: var(--colorNeutralStroke1);
-    border-left-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-right-color: var(--color-neutral-stroke-1);
+    border-left-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
 
     /*
      * The bottom focus underline. Flat 2px all the way across, matching the radius of
@@ -130,10 +130,10 @@
      *
      * The three `2px` literals below are ONE measurement expressed three ways and must
      * stay in lockstep: the `max()` floor keeps the underline visible even if a theme
-     * sets `--borderRadiusMedium` to 0; `border-bottom-width` draws it; `clip-path`
+     * sets `--radius-medium` to 0; `border-bottom-width` draws it; `clip-path`
      * trims the "horns" `border-bottom` would otherwise leave on the ends. They stay
      * unscaled literals (no `--base-scale`) precisely because they must agree with each
-     * other and with `--borderRadiusMedium`, which is an unscaled token.
+     * other and with `--radius-medium`, which is an unscaled token.
      */
     &::after {
       @apply absolute box-border;
@@ -146,24 +146,24 @@
 
       /* Use the whole border-radius as the height and only put radii on the bottom
          corners, otherwise the radius is auto-reduced to fit the available space. */
-      height: max(2px, var(--borderRadiusMedium));
-      border-end-start-radius: var(--borderRadiusMedium);
-      border-end-end-radius: var(--borderRadiusMedium);
+      height: max(2px, var(--radius-medium));
+      border-end-start-radius: var(--radius-medium);
+      border-end-end-radius: var(--radius-medium);
 
       /* longhands: `:focus-within:active` below overrides the color alone */
       border-bottom-width: 2px;
       border-bottom-style: solid;
-      border-bottom-color: var(--colorCompoundBrandStroke);
+      border-bottom-color: var(--color-compound-brand-stroke);
 
       clip-path: inset(calc(100% - 2px) 0 0 0);
 
       /* Animation for focus OUT */
       transform: scaleX(0);
       transition-property: transform;
-      transition-duration: var(--durationUltraFast);
+      transition-duration: var(--duration-ultra-fast);
 
       /* Curve token used as a delay — reproduced from the compiled output verbatim. */
-      transition-delay: var(--curveAccelerateMid);
+      transition-delay: var(--ease-accelerate-mid);
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
@@ -176,8 +176,8 @@
       &::after {
         transform: scaleX(1);
         transition-property: transform;
-        transition-duration: var(--durationNormal);
-        transition-delay: var(--curveDecelerateMid);
+        transition-duration: var(--duration-normal);
+        transition-delay: var(--ease-decelerate-mid);
 
         @media screen and (prefers-reduced-motion: reduce) {
           transition-duration: 0.01ms;
@@ -188,7 +188,7 @@
       /* clicking the field again while it is already focused */
       @variant active {
         &::after {
-          border-bottom-color: var(--colorCompoundBrandStrokePressed);
+          border-bottom-color: var(--color-compound-brand-stroke-pressed);
         }
       }
 
@@ -210,7 +210,7 @@
        MNudge + XXS = 12px, i.e. exactly M). */
     @apply px-horizontal-m py-vertical-none;
 
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
 
     /* literal `transparent` (not a theme token) so the root's color always shows through */
     background-color: transparent;
@@ -231,7 +231,7 @@
      * invalidate the whole rule if they were merged into one selector list.
      */
     &::placeholder {
-      color: var(--colorNeutralForeground4);
+      color: var(--color-neutral-foreground-4);
       opacity: 1; /* browser style override */
     }
   }
@@ -240,7 +240,7 @@
   .content {
     @apply box-border flex;
 
-    color: var(--colorNeutralForeground3); /* "icon color" in the design spec */
+    color: var(--color-neutral-foreground-3); /* "icon color" in the design spec */
 
     /*
      * Special case for icons (the common case) so they centre vertically. size: medium.
@@ -260,20 +260,20 @@
     @variant size-small {
       @apply min-h-24;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-family: var(--font-base);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
     }
 
     /* from useRootStyles.large — arg #3 */
     @variant size-large {
       @apply min-h-40;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase400);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase400);
+      font-family: var(--font-base);
+      font-size: var(--text-base-400);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-400);
 
       /* `gap: tokens.spacingHorizontalSNudge` */
       @apply gap-horizontal-s-nudge;
@@ -331,7 +331,7 @@
 
   /* from useRootStyles.underline */
   .underline {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* corners look strange if rounded */
     border-radius: 0;
@@ -351,24 +351,24 @@
 
   /* from useRootStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--colorNeutralBackground3);
+    background-color: var(--color-neutral-background-3);
   }
 
   /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
   }
 
   /* from useRootStyles['filled-darker-shadow'] — deprecated appearance */
   .filled-darker-shadow {
-    background-color: var(--colorNeutralBackground3);
-    box-shadow: var(--shadow2);
+    background-color: var(--color-neutral-background-3);
+    box-shadow: var(--shadow-2);
   }
 
   /* from useRootStyles['filled-lighter-shadow'] — deprecated appearance */
   .filled-lighter-shadow {
-    background-color: var(--colorNeutralBackground1);
-    box-shadow: var(--shadow2);
+    background-color: var(--color-neutral-background-1);
+    box-shadow: var(--shadow-2);
   }
 
   /*
@@ -376,10 +376,10 @@
    * `shorthands.borderColor()` expanded to the four longhands the compiler emits.
    */
   .filled {
-    border-top-color: var(--colorTransparentStroke);
-    border-right-color: var(--colorTransparentStroke);
-    border-bottom-color: var(--colorTransparentStroke);
-    border-left-color: var(--colorTransparentStroke);
+    border-top-color: var(--color-transparent-stroke);
+    border-right-color: var(--color-transparent-stroke);
+    border-bottom-color: var(--color-transparent-stroke);
+    border-left-color: var(--color-transparent-stroke);
   }
 
   .root {
@@ -395,10 +395,10 @@
     @variant enabled {
       @variant invalid {
         @variant not-focus-within {
-          border-top-color: var(--colorPaletteRedBorder2);
-          border-right-color: var(--colorPaletteRedBorder2);
-          border-bottom-color: var(--colorPaletteRedBorder2);
-          border-left-color: var(--colorPaletteRedBorder2);
+          border-top-color: var(--color-palette-red-border-2);
+          border-right-color: var(--color-palette-red-border-2);
+          border-bottom-color: var(--color-palette-red-border-2);
+          border-left-color: var(--color-palette-red-border-2);
         }
       }
     }
@@ -406,12 +406,12 @@
     /* from useRootStyles.disabled — arg #12, the last style argument. */
     @variant disabled {
       cursor: not-allowed;
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
 
-      border-top-color: var(--colorNeutralStrokeDisabled);
-      border-right-color: var(--colorNeutralStrokeDisabled);
-      border-bottom-color: var(--colorNeutralStrokeDisabled);
-      border-left-color: var(--colorNeutralStrokeDisabled);
+      border-top-color: var(--color-neutral-stroke-disabled);
+      border-right-color: var(--color-neutral-stroke-disabled);
+      border-bottom-color: var(--color-neutral-stroke-disabled);
+      border-left-color: var(--color-neutral-stroke-disabled);
 
       /* remove the focus underline */
       &::after {
@@ -450,17 +450,17 @@
   .outline {
     @variant enabled {
       @variant hover {
-        border-top-color: var(--colorNeutralStroke1Hover);
-        border-right-color: var(--colorNeutralStroke1Hover);
-        border-left-color: var(--colorNeutralStroke1Hover);
-        border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+        border-top-color: var(--color-neutral-stroke-1-hover);
+        border-right-color: var(--color-neutral-stroke-1-hover);
+        border-left-color: var(--color-neutral-stroke-1-hover);
+        border-bottom-color: var(--color-neutral-stroke-accessible-hover);
       }
 
       @variant active-or-focus-within {
-        border-top-color: var(--colorNeutralStroke1Pressed);
-        border-right-color: var(--colorNeutralStroke1Pressed);
-        border-left-color: var(--colorNeutralStroke1Pressed);
-        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+        border-top-color: var(--color-neutral-stroke-1-pressed);
+        border-right-color: var(--color-neutral-stroke-1-pressed);
+        border-left-color: var(--color-neutral-stroke-1-pressed);
+        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
       }
     }
   }
@@ -469,11 +469,11 @@
   .underline {
     @variant enabled {
       @variant hover {
-        border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+        border-bottom-color: var(--color-neutral-stroke-accessible-hover);
       }
 
       @variant active-or-focus-within {
-        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
       }
 
       /* remove the rounded corners from the focus underline. This one declaration is
@@ -491,10 +491,10 @@
       /* also handles the pressed border color (`:active` is a subset of `:focus-within`
          here, since the field always contains a focusable input) */
       @variant hover-or-focus-within {
-        border-top-color: var(--colorTransparentStrokeInteractive);
-        border-right-color: var(--colorTransparentStrokeInteractive);
-        border-bottom-color: var(--colorTransparentStrokeInteractive);
-        border-left-color: var(--colorTransparentStrokeInteractive);
+        border-top-color: var(--color-transparent-stroke-interactive);
+        border-right-color: var(--color-transparent-stroke-interactive);
+        border-bottom-color: var(--color-transparent-stroke-interactive);
+        border-left-color: var(--color-transparent-stroke-interactive);
       }
     }
   }
@@ -525,10 +525,10 @@
       @variant invalid {
         @variant hover {
           @variant not-focus-within {
-            border-top-color: var(--colorPaletteRedBorder2);
-            border-right-color: var(--colorPaletteRedBorder2);
-            border-bottom-color: var(--colorPaletteRedBorder2);
-            border-left-color: var(--colorPaletteRedBorder2);
+            border-top-color: var(--color-palette-red-border-2);
+            border-right-color: var(--color-palette-red-border-2);
+            border-bottom-color: var(--color-palette-red-border-2);
+            border-left-color: var(--color-palette-red-border-2);
           }
         }
       }
@@ -628,12 +628,12 @@
   .root {
     @variant disabled {
       & .input {
-        color: var(--colorNeutralForegroundDisabled);
-        background-color: var(--colorTransparentBackground);
+        color: var(--color-neutral-foreground-disabled);
+        background-color: var(--color-transparent-background);
         cursor: not-allowed;
 
         &::placeholder {
-          color: var(--colorNeutralForegroundDisabled);
+          color: var(--color-neutral-foreground-disabled);
         }
       }
     }
@@ -650,7 +650,7 @@
     /* from useContentStyles.disabled */
     @variant disabled {
       & .content {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
 

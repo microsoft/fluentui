@@ -50,8 +50,8 @@
  * — which is exactly where mergeClasses used to give them the win. `fui.components.l2` makes
  * that win guaranteed rather than argument-order-dependent (D2 amendment 2). The collision that
  * matters is typography: PopoverSurface's own `root` slice applies `typographyStyles.body1`
- * (`--fontSizeBase300` / `--lineHeightBase300`) at l1, while this component's `smallMedium`
- * slice applies `caption1` (`--fontSizeBase200` / `--lineHeightBase200`).
+ * (`--text-base-300` / `--leading-base-300`) at l1, while this component's `smallMedium`
+ * slice applies `caption1` (`--text-base-200` / `--leading-base-200`).
  *
  * It stays LAYERED because `@fluentui/react-popover` is now CONVERTED (ledger: validated,
  * batch 4) — every rule in `PopoverSurface.module.css` sits in `fui.components.l1`, so l2
@@ -108,15 +108,15 @@
   .root {
     @apply relative box-border inline-flex items-center justify-center align-middle no-underline;
 
-    background-color: var(--colorTransparentBackground);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-transparent-background);
+    color: var(--color-neutral-foreground-2);
 
     /* shorthands.borderStyle('none') → the four physical longhands the compiler emits */
     border-top-style: none;
     border-right-style: none;
     border-bottom-style: none;
     border-left-style: none;
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     /* `margin: '0'` expanded to longhands (cookbook §2 — no shorthand priority in CSS).
        Left as literal `0`, NOT `mt-vertical-none` etc.: zero has nothing for `--base-scale`
@@ -153,8 +153,8 @@
    *   .f15bsgw9[data-fui-focus-visible]::after{content:""}
    *   .f14e48fq …::after{position:absolute}   .f18yb2kv …::after{pointer-events:none}
    *   .fd6o370  …::after{z-index:1}
-   *   .ffwy5si  …::after{border:2px solid var(--colorStrokeFocus2)}
-   *   .f3znvyf  …::after{border-radius:var(--borderRadiusMedium)}
+   *   .ffwy5si  …::after{border:2px solid var(--color-stroke-focus-2)}
+   *   .f3znvyf  …::after{border-radius:var(--radius-medium)}
    *   .f57olzd/.f4stah7/.fs1por5/.f480a47 …::after{top|right|left|bottom:calc(2px * -1)}
    *   @media (forced-colors: active){…::after{border-*-color:Highlight}}
    *
@@ -191,8 +191,8 @@
    */
   .root {
     @variant open {
-      background-color: var(--colorTransparentBackgroundSelected);
-      color: var(--colorNeutralForeground2BrandSelected);
+      background-color: var(--color-transparent-background-selected);
+      color: var(--color-neutral-foreground-2-brand-selected);
     }
   }
 }
@@ -227,13 +227,13 @@
    */
   .root {
     @variant hover {
-      background-color: var(--colorTransparentBackgroundHover);
-      color: var(--colorNeutralForeground2BrandHover);
+      background-color: var(--color-transparent-background-hover);
+      color: var(--color-neutral-foreground-2-brand-hover);
       cursor: pointer;
 
       @variant active {
-        background-color: var(--colorTransparentBackgroundPressed);
-        color: var(--colorNeutralForeground2BrandPressed);
+        background-color: var(--color-transparent-background-pressed);
+        color: var(--color-neutral-foreground-2-brand-pressed);
       }
     }
   }
@@ -306,17 +306,17 @@
   }
 
   .info-small-medium {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
   }
 
   .info-large {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 }
 

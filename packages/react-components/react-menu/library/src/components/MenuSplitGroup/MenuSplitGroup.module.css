@@ -117,7 +117,7 @@
         @apply h-20 w-thin;
 
         content: '';
-        background-color: var(--colorNeutralStroke1);
+        background-color: var(--color-neutral-stroke-1);
       }
     }
   }

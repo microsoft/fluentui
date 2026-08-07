@@ -33,5 +33,5 @@
   align-items: flex-start;
   column-gap: var(--spacing-horizontal-xs);
   background-color: #fff;
-  transition-duration: var(--durationFast);
+  transition-duration: var(--duration-fast);
 }

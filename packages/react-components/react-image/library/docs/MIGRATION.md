@@ -9,7 +9,7 @@ This guide is a reference for upgrading the `Image` component from v8 or v0 to v
 > `@fluentui/react-components` (add `@griffel/react` as a dependency to run them verbatim), and v9
 > no longer authors its own styles that way. The shipped
 > equivalent is ordinary CSS (a stylesheet, a CSS Module, Tailwind) passed through `className`, with
-> theme values referenced as custom properties such as `var(--colorNeutralForeground2)`. See
+> theme values referenced as custom properties such as `var(--color-neutral-foreground-2)`. See
 > [Styling components](https://react.fluentui.dev/?path=/docs/concepts-developer-styling-components--docs).
 
 ## Migration from v8
@@ -140,7 +140,7 @@ For v9, you should do style customizations with your own CSS through the `classN
 
 ### theme
 
-For v9, you should reference the theme's CSS variables (e.g. `var(--colorNeutralForeground1)`) in your CSS, with `FluentProvider` supplying the token values.
+For v9, you should reference the theme's CSS variables (e.g. `var(--color-neutral-foreground-1)`) in your CSS, with `FluentProvider` supplying the token values.
 
 ## Migration from v0
 

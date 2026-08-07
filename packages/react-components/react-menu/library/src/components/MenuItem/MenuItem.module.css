@@ -131,24 +131,24 @@
        byte comparison against the compiled output stays exact. */
     align-items: start;
 
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground2);
-    background-color: var(--colorNeutralBackground1);
-    font-size: var(--fontSizeBase300);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-2);
+    background-color: var(--color-neutral-background-1);
+    font-size: var(--text-base-300);
 
     @variant hover {
-      background-color: var(--colorNeutralBackground1Hover);
-      color: var(--colorNeutralForeground2Hover);
+      background-color: var(--color-neutral-background-1-hover);
+      color: var(--color-neutral-foreground-2-hover);
 
       /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
          block — see the S-J/D27 l1 section at the bottom of this file. */
 
       & .icon {
-        color: var(--colorNeutralForeground2BrandSelected);
+        color: var(--color-neutral-foreground-2-brand-selected);
       }
 
       & .sub-text {
-        color: var(--colorNeutralForeground3Hover);
+        color: var(--color-neutral-foreground-3-hover);
       }
     }
 
@@ -163,11 +163,11 @@
      */
     @variant hover {
       @variant active {
-        background-color: var(--colorNeutralBackground1Pressed);
-        color: var(--colorNeutralForeground2Pressed);
+        background-color: var(--color-neutral-background-1-pressed);
+        color: var(--color-neutral-foreground-2-pressed);
 
         & .sub-text {
-          color: var(--colorNeutralForeground3Pressed);
+          color: var(--color-neutral-foreground-3-pressed);
         }
       }
     }
@@ -230,18 +230,18 @@
   .secondary-content {
     @apply px-horizontal-xxs;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-    color: var(--colorNeutralForeground3);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
+    color: var(--color-neutral-foreground-3);
 
     @variant hover {
-      color: var(--colorNeutralForeground3Hover);
+      color: var(--color-neutral-foreground-3-hover);
     }
 
     @variant focus {
-      color: var(--colorNeutralForeground3Hover);
+      color: var(--color-neutral-foreground-3-hover);
     }
   }
 
@@ -266,11 +266,11 @@
 
   /* from useSubtextBaseStyles (makeResetStyles) — typographyStyles.caption2 */
   .sub-text {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase100);
-    color: var(--colorNeutralForeground3);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-100);
+    color: var(--color-neutral-foreground-3);
   }
 }
 
@@ -282,18 +282,18 @@
 
   /* from useStyles.submenuOpen — root arg #3 */
   .submenu-open {
-    background-color: var(--colorNeutralBackground1Hover);
-    color: var(--colorNeutralForeground2Hover);
+    background-color: var(--color-neutral-background-1-hover);
+    color: var(--color-neutral-foreground-2-hover);
 
     /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
        block — see the S-J/D27 l1 section at the bottom of this file. */
 
     & .icon {
-      color: var(--colorNeutralForeground2BrandSelected);
+      color: var(--color-neutral-foreground-2-brand-selected);
     }
 
     & .sub-text {
-      color: var(--colorNeutralForeground3Hover);
+      color: var(--color-neutral-foreground-3-hover);
     }
 
     @variant forced-colors {
@@ -307,38 +307,38 @@
    * both elements, see the header).
    */
   .disabled {
-    color: var(--colorNeutralForegroundDisabled);
+    color: var(--color-neutral-foreground-disabled);
 
     @variant hover {
-      color: var(--colorNeutralForegroundDisabled);
-      background-color: var(--colorNeutralBackground1);
+      color: var(--color-neutral-foreground-disabled);
+      background-color: var(--color-neutral-background-1);
       cursor: not-allowed;
 
       /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap-BACK that belongs here is NOT in
          this block — see the S-J/D27 l1 section at the bottom of this file. */
 
       & .icon {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
 
       & .sub-text {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
 
     @variant hover {
       @variant active {
-        color: var(--colorNeutralForegroundDisabled);
-        background-color: var(--colorNeutralBackground1);
+        color: var(--color-neutral-foreground-disabled);
+        background-color: var(--color-neutral-background-1);
 
         & .sub-text {
-          color: var(--colorNeutralForegroundDisabled);
+          color: var(--color-neutral-foreground-disabled);
         }
       }
     }
 
     @variant focus {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
     }
 
     /* compiled `m`-bucket order: bare, then :hover (+ its two descendants), then
@@ -380,7 +380,7 @@
 
   /* from useSubTextStyles.disabled — `subText` arg #2 */
   .sub-text-disabled {
-    color: var(--colorNeutralForegroundDisabled);
+    color: var(--color-neutral-foreground-disabled);
 
     @variant forced-colors {
       color: GrayText;

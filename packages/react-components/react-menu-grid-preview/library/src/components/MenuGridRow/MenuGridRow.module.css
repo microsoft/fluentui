@@ -80,10 +80,10 @@
        byte comparison against the compiled output stays exact. */
     align-items: start;
 
-    border-radius: var(--borderRadiusMedium);
-    color: var(--colorNeutralForeground2);
-    background-color: var(--colorNeutralBackground1);
-    font-size: var(--fontSizeBase300);
+    border-radius: var(--radius-medium);
+    color: var(--color-neutral-foreground-2);
+    background-color: var(--color-neutral-background-1);
+    font-size: var(--text-base-300);
 
     /* from createFocusOutlineStyle() — the default ring. `fui-focus-outline` carries the
        compiled declarations; the selector stays here (D6, including its hardcoded 2px). */
@@ -100,8 +100,8 @@
     }
 
     @variant hover {
-      background-color: var(--colorNeutralBackground1Hover);
-      color: var(--colorNeutralForeground2Hover);
+      background-color: var(--color-neutral-background-1-hover);
+      color: var(--color-neutral-foreground-2-hover);
 
       /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
          block — see the S-J/D27 l1 section at the bottom of this file. */
@@ -118,8 +118,8 @@
      */
     @variant hover {
       @variant active {
-        background-color: var(--colorNeutralBackground1Pressed);
-        color: var(--colorNeutralForeground2Pressed);
+        background-color: var(--color-neutral-background-1-pressed);
+        color: var(--color-neutral-foreground-2-pressed);
       }
     }
 

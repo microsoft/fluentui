@@ -125,11 +125,11 @@
     /* tokens.spacingVerticalXXS → named spacing utility (D4 amendment) */
     @apply mt-vertical-xxs;
 
-    color: var(--colorNeutralForeground3);
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    color: var(--color-neutral-foreground-3);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
   }
 
   /* from useValidationMessageIconBaseClassName (makeResetStyles) */
@@ -202,22 +202,22 @@
    * `color` prop, so it rides module classes rather than a data-attribute (D3).
    */
   .validation-message-icon-error {
-    color: var(--colorPaletteRedForeground1);
+    color: var(--color-palette-red-foreground-1);
   }
 
   .validation-message-icon-warning {
-    color: var(--colorPaletteDarkOrangeForeground1);
+    color: var(--color-palette-dark-orange-foreground-1);
   }
 
   .validation-message-icon-success {
-    color: var(--colorPaletteGreenForeground1);
+    color: var(--color-palette-green-foreground-1);
   }
 }
 
 @layer fui.components.l1 {
   /* from useSecondaryTextStyles.error — validationMessage arg #3 */
   .secondary-text-error {
-    color: var(--colorPaletteRedForeground1);
+    color: var(--color-palette-red-foreground-1);
   }
 
   /*

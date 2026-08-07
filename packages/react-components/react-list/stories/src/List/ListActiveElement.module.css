@@ -16,7 +16,7 @@
 }
 
 .itemSelected {
-  background-color: var(--colorSubtleBackgroundSelected);
+  background-color: var(--color-subtle-background-selected);
 }
 
 @media (forced-colors: active) {

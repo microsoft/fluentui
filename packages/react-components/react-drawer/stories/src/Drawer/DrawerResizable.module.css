@@ -34,13 +34,13 @@
   cursor: col-resize;
   border: none;
   min-width: unset;
-  border-radius: var(--borderRadiusNone);
+  border-radius: var(--radius-none);
 }
 
 .resizer:before {
   content: '';
   position: absolute;
-  border-right: 1px solid var(--colorNeutralBackground5);
+  border-right: 1px solid var(--color-neutral-background-5);
   width: 1px;
   height: 100%;
   transform: translateX(-50%);
@@ -60,7 +60,7 @@
 
 .resizerActive {
   border-right-width: 4px;
-  border-right-color: var(--colorNeutralBackground5Pressed);
+  border-right-color: var(--color-neutral-background-5-pressed);
 }
 
 .content {
@@ -74,9 +74,9 @@
 }
 
 .errorMessage {
-  color: var(--colorPaletteRedForeground1);
+  color: var(--color-palette-red-foreground-1);
 }
 
 .invalidInput {
-  border-color: var(--colorPaletteRedBorder2);
+  border-color: var(--color-palette-red-border-2);
 }

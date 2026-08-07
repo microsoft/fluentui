@@ -62,14 +62,14 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: var(--colorBackgroundOverlay);
+    background-color: var(--color-background-overlay);
   }
 }
 
 @layer fui.components.l1 {
   /* arg #2 — from useBackdropStyles.nested */
   .nested {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
   }
 
   /* arg #3 — from useBackdropStyles.drawerHidden */

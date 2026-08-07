@@ -13,6 +13,6 @@
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-l);
   position: relative;
   overflow: hidden;
-  border: var(--stroke-width-thicker) solid var(--colorNeutralStroke1);
-  background-color: var(--colorBrandBackground2);
+  border: var(--stroke-width-thicker) solid var(--color-neutral-stroke-1);
+  background-color: var(--color-brand-background-2);
 }

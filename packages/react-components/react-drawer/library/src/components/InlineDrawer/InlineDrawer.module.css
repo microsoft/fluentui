@@ -96,8 +96,8 @@
     max-width: 100vw;
     height: auto;
     max-height: 100vh;
-    background-color: var(--colorNeutralBackground1);
-    color: var(--colorNeutralForeground1);
+    background-color: var(--color-neutral-background-1);
+    color: var(--color-neutral-foreground-1);
   }
 }
 
@@ -107,7 +107,7 @@
     @variant position-start {
       border-inline-end-width: var(--spacing-thin);
       border-inline-end-style: solid;
-      border-inline-end-color: var(--colorTransparentStroke);
+      border-inline-end-color: var(--color-transparent-stroke);
 
       inset-inline-start: 0;
       inset-inline-end: auto;
@@ -116,7 +116,7 @@
     @variant position-end {
       border-inline-start-width: var(--spacing-thin);
       border-inline-start-style: solid;
-      border-inline-start-color: var(--colorTransparentStroke);
+      border-inline-start-color: var(--color-transparent-stroke);
 
       inset-inline-end: 0;
       inset-inline-start: auto;
@@ -174,19 +174,19 @@
     @variant position-start {
       border-inline-end-width: calc(1px * var(--base-scale));
       border-inline-end-style: solid;
-      border-inline-end-color: var(--colorNeutralBackground3);
+      border-inline-end-color: var(--color-neutral-background-3);
     }
 
     @variant position-end {
       border-inline-start-width: calc(1px * var(--base-scale));
       border-inline-start-style: solid;
-      border-inline-start-color: var(--colorNeutralBackground3);
+      border-inline-start-color: var(--color-neutral-background-3);
     }
 
     @variant position-bottom {
       border-block-start-width: calc(1px * var(--base-scale));
       border-block-start-style: solid;
-      border-block-start-color: var(--colorNeutralBackground3);
+      border-block-start-color: var(--color-neutral-background-3);
     }
   }
 }
