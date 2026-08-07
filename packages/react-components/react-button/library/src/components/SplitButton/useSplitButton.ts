@@ -33,6 +33,7 @@ export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<
   const primaryActionButtonShorthand = slot.optional(props.primaryActionButton, {
     defaultProps: {
       ...baseState.primaryActionButton,
+      children: props.children,
       appearance,
       shape,
       size,
@@ -45,9 +46,6 @@ export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<
     ...baseState,
     // Props passed at the top-level
     appearance,
-    disabled: props.disabled ?? false,
-    disabledFocusable: props.disabledFocusable ?? false,
-    iconPosition: props.iconPosition ?? 'before',
     shape,
     size,
     // Slots definition
@@ -112,6 +110,9 @@ export const useSplitButtonBase_unstable = (
   }
 
   return {
+    disabled,
+    disabledFocusable,
+    iconPosition,
     // Slots definition
     components: { root: 'div' },
     root: slot.always({ ref, ...rest }, { elementType: 'div' }),

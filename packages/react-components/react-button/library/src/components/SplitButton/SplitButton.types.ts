@@ -57,10 +57,11 @@ export type SplitButtonBaseProps = ComponentProps<SplitButtonBaseSlots> &
 export type SplitButtonBaseState = Omit<
   ComponentState<SplitButtonBaseSlots>,
   'components' | 'menuButton' | 'primaryActionButton'
-> & {
-  components: {
-    root: 'div';
+> &
+  Required<Pick<SplitButtonBaseProps, 'disabled' | 'disabledFocusable' | 'iconPosition'>> & {
+    components: {
+      root: 'div';
+    };
+    menuButton: MenuButtonBaseProps;
+    primaryActionButton: ButtonBaseProps;
   };
-  menuButton: MenuButtonBaseProps;
-  primaryActionButton: ButtonBaseProps;
-};

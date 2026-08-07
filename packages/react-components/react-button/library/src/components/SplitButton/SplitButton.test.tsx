@@ -3,9 +3,11 @@ import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 import { isSlot, SLOT_ELEMENT_TYPE_SYMBOL } from '@fluentui/react-utilities';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { SplitButton } from './SplitButton';
 import { Button } from '../Button/Button';
+import type { ButtonProps } from '../Button/Button.types';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { useSplitButtonBase_unstable, useSplitButton_unstable } from './useSplitButton';
 import type { SplitButtonProps } from './SplitButton.types';
@@ -32,6 +34,15 @@ describe('SplitButton', () => {
 
     expect(primaryActionButton).toBeTruthy();
     expect(menuButton).toBeTruthy();
+  });
+
+  it('preserves default children for a primary action button render function', () => {
+    const renderPrimaryActionButton: SlotRenderFunction<ButtonProps> = (_Component, slotProps) => slotProps.children;
+    const { getByText } = render(
+      <SplitButton primaryActionButton={{ children: renderPrimaryActionButton }}>This is a button</SplitButton>,
+    );
+
+    expect(getByText('This is a button')).toBeTruthy();
   });
 
   it('primary action button and menu button can both be focused', () => {
@@ -230,6 +241,11 @@ describe('SplitButton', () => {
     );
 
     expect(result.current.components).toEqual({ root: 'div' });
+    expect(result.current).toMatchObject({
+      disabled: true,
+      disabledFocusable: true,
+      iconPosition: 'after',
+    });
     expect(isSlot(result.current.menuButton)).toBe(false);
     expect(isSlot(result.current.primaryActionButton)).toBe(false);
     expect(result.current.menuButton).toMatchObject({

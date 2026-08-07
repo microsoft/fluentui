@@ -131,7 +131,7 @@ export type SplitButtonBaseSlots = {
 };
 
 // @public
-export type SplitButtonBaseState = Omit<ComponentState<SplitButtonBaseSlots>, 'components' | 'menuButton' | 'primaryActionButton'> & {
+export type SplitButtonBaseState = Omit<ComponentState<SplitButtonBaseSlots>, 'components' | 'menuButton' | 'primaryActionButton'> & Required<Pick<SplitButtonBaseProps, 'disabled' | 'disabledFocusable' | 'iconPosition'>> & {
     components: {
         root: 'div';
     };
