@@ -10,6 +10,9 @@ import './tokens.css';
 import './headless-docs-page.css';
 import { HeadlessDocsPage } from './HeadlessDocsPage';
 
+// Browser-safe helper — import by direct subpath, not the package root
+import { createStateDataAttributesArgTypesEnhancer } from '@fluentui/scripts-storybook/src/stateDataAttributesArgTypes';
+
 polyfillBodyAndObserve();
 
 /** @type {typeof rootPreview.decorators} */
@@ -25,3 +28,5 @@ export const parameters = {
 };
 
 export const tags = ['autodocs'];
+
+export const argTypesEnhancers = [createStateDataAttributesArgTypesEnhancer(HEADLESS_STATE_DATA_ATTRIBUTES)];
