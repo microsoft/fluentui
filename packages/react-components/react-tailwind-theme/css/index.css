@@ -135,3 +135,13 @@
  * utilities silently stop compiling — probe-verified, not theoretical.
  */
 @import './tokens.css';
+
+/*
+ * SHIPPED THEME CLASSES (generated — theming Phase 2b). One class per shipped theme
+ * (.fui-theme-web-dark, …), each carrying ONLY the theme-variant canonical custom
+ * properties inside `@layer fui.theme`. A theme class on any DOM node themes that
+ * subtree; the `:root, :host` defaults above stay web light. `@reference` drops these
+ * rules from component modules (plain style rules emit nothing under reference), so the
+ * classes ship once per document via ./emit.css / dist/styles.css.
+ */
+@import './themes.css';

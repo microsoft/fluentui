@@ -91,7 +91,13 @@ const TOKENS_PACKAGE = path.join(REPO_ROOT, 'packages', 'tokens');
 const TOKENS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'tokens.ts');
 const SPACINGS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'global', 'spacings.ts');
 const STROKE_WIDTHS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'global', 'strokeWidths.ts');
+const THEME_VALUES_SOURCE = path.join(TOKENS_PACKAGE, 'theme-values.json');
+const THEME_CLASSNAMES_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'themes', 'themeClassNames.ts');
 const DEFAULT_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'tokens.css');
+const THEMES_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'themes.css');
+
+/** The theme whose values are emitted as the `:root, :host` defaults (theming Phase 2b). */
+const DEFAULT_THEME = 'webLightTheme';
 
 const GENERATOR_ID = 'packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js';
 
@@ -388,6 +394,164 @@ function readStrokeWidthScale() {
 }
 
 /**
+ * Reads `packages/tokens/src/themes/themeClassNames.ts` as text and extracts the shipped
+ * theme → class-name constants, asserting each class name equals its derivation from the
+ * theme export name (`fui-theme-` + kebab of the name minus `Theme`; digits attach to the
+ * preceding segment, so `teamsDarkV21Theme` → `fui-theme-teams-dark-v21` — deliberately
+ * NOT this file's `kebabCase`, whose letter→digit rule would produce `v-21`).
+ *
+ * Text extraction for the same reason as `readTokens`: no build step, no dependency edge
+ * on @fluentui/tokens. `themeClassNames.test.ts` in packages/tokens asserts the same
+ * derivation from the jest side.
+ *
+ * @returns {Record<string, string>} theme export name → class name
+ */
+function readThemeClassNames() {
+  const text = fs.readFileSync(THEME_CLASSNAMES_SOURCE, 'utf8');
+
+  /** @type {Record<string, string>} */
+  const classNames = {};
+  const entry = /^export const ([A-Za-z][A-Za-z0-9]*Theme)ClassName = '([^']+)';$/gm;
+  let match;
+  while ((match = entry.exec(text)) !== null) {
+    classNames[match[1]] = match[2];
+  }
+
+  if (Object.keys(classNames).length === 0) {
+    throw new Error(`${THEME_CLASSNAMES_SOURCE}: parsed zero theme class-name constants — the file shape changed.`);
+  }
+
+  for (const [themeName, className] of Object.entries(classNames)) {
+    const base = themeName.replace(/Theme$/, '');
+    const derived = `fui-theme-${base.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()}`;
+    if (className !== derived) {
+      throw new Error(
+        `${THEME_CLASSNAMES_SOURCE}: \`${themeName}ClassName\` is \`${className}\` but the derivation from the ` +
+          `export name is \`${derived}\`. The class names are derived, not free-form — fix one side.`,
+      );
+    }
+  }
+
+  return classNames;
+}
+
+/**
+ * Reads the committed `packages/tokens/theme-values.json` snapshot — the VALUE source for
+ * the theme emission (theming Phase 2b). The snapshot exists because theme values are
+ * computed (`createLightTheme(brandWeb)`, …) and so cannot be text-scraped the way
+ * `tokens.ts` is; `packages/tokens/src/themes/themeValues.test.ts` asserts on every jest
+ * run that it deep-equals the computed themes.
+ *
+ * @returns {Record<string, Record<string, string>>} theme export name → (token → value)
+ */
+function readThemeValues() {
+  if (!fs.existsSync(THEME_VALUES_SOURCE)) {
+    throw new Error(
+      `${THEME_VALUES_SOURCE} is missing. Run \`yarn workspace @fluentui/tokens generate-theme-values\` ` +
+        '(after building packages/tokens) and commit the result.',
+    );
+  }
+
+  const document = JSON.parse(fs.readFileSync(THEME_VALUES_SOURCE, 'utf8'));
+
+  if (!document.themes || typeof document.themes !== 'object') {
+    throw new Error(`${THEME_VALUES_SOURCE}: expected a top-level \`themes\` object.`);
+  }
+
+  return document.themes;
+}
+
+/**
+ * Cross-asserts the three inputs of the theme emission and splits the token set:
+ *
+ * - the snapshot's theme set must equal the class-name constants' theme set;
+ * - every theme must carry exactly the same keys: every non-zIndex token, no extras
+ *   (zIndex tokens are theme-absent by design — their defaults ride the `tokens.*`
+ *   var() fallback);
+ * - every theme's spacing/stroke values must equal the pinned scales — those 26 tokens
+ *   are THEME-INVARIANT and already emitted at `:root, :host` in their density-knob
+ *   calc form, which a literal per-theme re-emission would silently break, so they are
+ *   asserted identical and EXCLUDED from the per-theme classes.
+ *
+ * @param {{ name: string, value: string }[]} tokens parsed tokens.ts entries
+ * @returns {{
+ *   variantTokens: { name: string, canonical: string }[],
+ *   themes: Record<string, Record<string, string>>,
+ *   classNames: Record<string, string>,
+ * }}
+ */
+function analyzeThemeEmission(tokens) {
+  const classNames = readThemeClassNames();
+  const themes = readThemeValues();
+
+  const snapshotThemes = Object.keys(themes).sort();
+  const constantThemes = Object.keys(classNames).sort();
+  if (JSON.stringify(snapshotThemes) !== JSON.stringify(constantThemes)) {
+    throw new Error(
+      `Shipped-theme sets disagree: theme-values.json has [${snapshotThemes}] but themeClassNames.ts has ` +
+        `[${constantThemes}]. Regenerate the snapshot and/or update the constants.`,
+    );
+  }
+  if (!themes[DEFAULT_THEME]) {
+    throw new Error(`theme-values.json is missing the default theme \`${DEFAULT_THEME}\`.`);
+  }
+
+  /** @type {{ name: string, canonical: string }[]} */
+  const variantTokens = [];
+  /** @type {{ name: string, expected: string }[]} */
+  const invariantTokens = [];
+  /** @type {string[]} */
+  const themeAbsentTokens = [];
+
+  for (const { name } of tokens) {
+    const classification = classify(name);
+    if (classification.kind !== 'register') {
+      continue;
+    }
+    if (classification.group.scale) {
+      const px = classification.step.px;
+      invariantTokens.push({ name, expected: px === 0 ? '0' : `${px}px` });
+    } else if (classification.group.prefix === 'zIndex') {
+      themeAbsentTokens.push(name);
+    } else {
+      variantTokens.push({ name, canonical: /** @type {string} */ (classification.canonical) });
+    }
+  }
+
+  const expectedKeys = [...variantTokens.map(token => token.name), ...invariantTokens.map(token => token.name)].sort();
+
+  for (const [themeName, theme] of Object.entries(themes)) {
+    const themeKeys = Object.keys(theme).sort();
+    if (JSON.stringify(themeKeys) !== JSON.stringify(expectedKeys)) {
+      const missing = expectedKeys.filter(key => !(key in theme));
+      const extra = themeKeys.filter(key => !expectedKeys.includes(key));
+      throw new Error(
+        `Theme \`${themeName}\` keys drifted from tokens.ts (zIndex excluded): ` +
+          `missing [${missing}], extra [${extra}]. Regenerate theme-values.json.`,
+      );
+    }
+
+    for (const { name, expected } of invariantTokens) {
+      if (theme[name] !== expected) {
+        throw new Error(
+          `Theme \`${themeName}\` has \`${name}: ${theme[name]}\` but spacing/stroke tokens are theme-invariant ` +
+            `(pinned ${expected}). The density-knob emission at :root depends on this — a genuinely divergent ` +
+            'theme needs a design decision, not a silent literal emission.',
+        );
+      }
+    }
+
+    for (const name of themeAbsentTokens) {
+      if (name in theme) {
+        throw new Error(`Theme \`${themeName}\` unexpectedly carries the theme-absent token \`${name}\`.`);
+      }
+    }
+  }
+
+  return { variantTokens, themes, classNames };
+}
+
+/**
  * Token-name prefix → Tailwind theme namespace. Order matters: the FIRST matching entry
  * wins, so longer prefixes that share a stem (fontFamily/fontSize/fontWeight) come first.
  *
@@ -650,6 +814,11 @@ function render(options = {}) {
   // upstream scale change throws here instead of silently shipping a stale hardcoded value.
   readSpacingScale();
   readStrokeWidthScale();
+  // Theming Phase 2b: the default (web light) theme values are emitted at `:root, :host`
+  // right below the spacing/stroke block — this artifact is now the SOLE value source for
+  // the canonical token variables (FluentProvider's runtime theme style tag is gone).
+  const { variantTokens, themes } = analyzeThemeEmission(tokens);
+  const defaultTheme = themes[DEFAULT_THEME];
 
   /** @type {Map<string, { group: typeof NAMESPACES[number], lines: string[] }>} */
   const sections = new Map();
@@ -742,11 +911,12 @@ function render(options = {}) {
   out.push(` * ${tokens.length} Fluent tokens: ${registered} registered, ${excludedNote}.`);
   out.push(' *');
   out.push(' * `inline` is MANDATORY: it substitutes the canonical var(--token-name) into each');
-  out.push(' * utility, so values resolve per-element against the nearest FluentProvider. A');
-  out.push(' * plain `@theme` alias would freeze resolution at `:root`, where token values do');
-  out.push(' * not exist. `reference` suppresses the self-referential aliases that plain');
+  out.push(' * utility, so values resolve per-element — the `:root, :host` defaults below,');
+  out.push(' * overridden per subtree by the theme classes (css/themes.css, theming Phase 2b).');
+  out.push(' * A plain `@theme` alias would freeze resolution at `:root`, breaking scoped');
+  out.push(' * theming. `reference` suppresses the self-referential aliases that plain');
   out.push(' * `inline` would emit now that each runtime variable IS its theme key (theming');
-  out.push(' * Phase 2a) — the runtime values come from FluentProvider, not this file.');
+  out.push(' * Phase 2a) — the values are emitted in the fui.theme block below, not by JS.');
   out.push(' *');
   out.push(' * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* are');
   out.push(' * ALIASES OF THE NUMERIC AXIS — calc(var(--spacing) * N), the same shape p-12');
@@ -794,10 +964,9 @@ function render(options = {}) {
     out.push(' *');
     out.push(' * THE OLD camelCase NAMES (--colorNeutralBackground1, --spacingHorizontalM, …)');
     out.push(' * ARE GONE for the ENTIRE token set (option B, theming Phase 2a): single');
-    out.push(' * vocabulary, documented major break for hand-written consumer CSS.');
-    out.push(" * FluentProvider's runtime theme tag writes values under BOTH vocabularies on");
-    out.push(' * provider elements until theming Phase 2b removes it — the camelCase half feeds');
-    out.push(' * no shipped CSS or tokens.* string anymore.');
+    out.push(' * vocabulary, documented major break for hand-written consumer CSS. Theming');
+    out.push(" * Phase 2b removed FluentProvider's runtime theme style tag, so this block (plus");
+    out.push(' * the theme classes in css/themes.css) is the ONLY writer of token values.');
     out.push(' *');
     out.push(' * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component');
     out.push(' * `*.module.css` output stays free of theme declarations; css/emit.css compiles it');
@@ -830,6 +999,83 @@ function render(options = {}) {
     out.push('');
     out.push('    /* Spacing — numeric-axis aliases; --spacing (see css/index.css) is the density knob. */');
     out.push(...emittedVariables);
+    out.push('');
+    out.push('    /*');
+    out.push('     * DEFAULT THEME VALUES (web light) — theming Phase 2b. Since the removal of');
+    out.push("     * FluentProvider's runtime theme style tag, these declarations are the sole");
+    out.push('     * default value source for the theme-variant canonical variables. Non-default');
+    out.push('     * themes are shipped as classes in css/themes.css (same layer); a theme class');
+    out.push('     * on any DOM node overrides these for that subtree.');
+    out.push('     */');
+    for (const { name, canonical } of variantTokens) {
+      out.push(`    ${canonical}: ${defaultTheme[name]};`);
+    }
+    out.push('  }');
+    out.push('}');
+  }
+
+  out.push('');
+
+  const contents = out.join('\n');
+  assertCommentsAreWellFormed(contents);
+  return contents;
+}
+
+/**
+ * Renders `css/themes.css` — one CSS class per shipped theme (theming Phase 2b).
+ *
+ * THE THEMING CONTRACT: a theme class on ANY DOM node themes that node's subtree (custom
+ * properties cascade); FluentProvider's `themeClassName` prop applies one to its root and
+ * propagates it to portals. Theme classes contain ONLY custom-property declarations —
+ * never styling rules — and live in `@layer fui.theme`, same as the `:root, :host`
+ * default emission they override.
+ *
+ * Each class carries the theme's 433 THEME-VARIANT canonical variables. The 26
+ * spacing/stroke tokens are EXCLUDED on purpose: they are theme-invariant (asserted in
+ * `analyzeThemeEmission`) and already emitted at `:root, :host` in their density-knob
+ * calc form — a literal per-theme re-emission would freeze `--spacing` overrides inside
+ * themed subtrees. zIndex tokens are theme-absent; their defaults ride the `tokens.*`
+ * var() fallback.
+ *
+ * @returns {string}
+ */
+function renderThemes() {
+  const tokensPackage = JSON.parse(fs.readFileSync(path.join(TOKENS_PACKAGE, 'package.json'), 'utf8'));
+  const tokens = readTokens();
+  readSpacingScale();
+  readStrokeWidthScale();
+  const { variantTokens, themes, classNames } = analyzeThemeEmission(tokens);
+
+  const out = [];
+  out.push('/*');
+  out.push(' * DO NOT EDIT — generated file.');
+  out.push(' *');
+  out.push(` * Generator:  ${GENERATOR_ID}`);
+  out.push(` * Source:     ${tokensPackage.name}@${tokensPackage.version} (packages/tokens/theme-values.json)`);
+  out.push(` * Regenerate: node ${GENERATOR_ID}`);
+  out.push(` * Verify:     node ${GENERATOR_ID} --check`);
+  out.push(' *');
+  out.push(' * SHIPPED THEME CLASSES (theming Phase 2b). Applying one of these classes to any');
+  out.push(' * DOM node themes that subtree — custom properties cascade. They contain ONLY');
+  out.push(' * custom-property declarations, in the same fui.theme layer as the web-light');
+  out.push(' * defaults at :root/:host (css/tokens.css), which they override element-locally.');
+  out.push(' * The JS constants for these class names ship from @fluentui/tokens /');
+  out.push(' * @fluentui/react-theme (webLightThemeClassName, …) — the generator asserts the');
+  out.push(' * lockstep on every run.');
+  out.push(' *');
+  out.push(' * The 26 spacing/strokeWidth tokens are deliberately absent: theme-invariant,');
+  out.push(' * emitted once at :root/:host in density-knob form (see css/tokens.css).');
+  out.push(' */');
+
+  for (const [themeName, className] of Object.entries(classNames)) {
+    const theme = themes[themeName];
+    out.push('');
+    out.push(`/* ${themeName} — ${variantTokens.length} tokens */`);
+    out.push('@layer fui.theme {');
+    out.push(`  .${className} {`);
+    for (const { name, canonical } of variantTokens) {
+      out.push(`    ${canonical}: ${theme[name]};`);
+    }
     out.push('  }');
     out.push('}');
   }
@@ -879,31 +1125,38 @@ function main() {
   const modifiersIndex = argv.indexOf('--modifiers');
   const modifiers = modifiersIndex >= 0 ? argv[modifiersIndex + 1] : undefined;
 
-  const contents = render({ modifiers });
+  const files = [
+    { path: outPath, contents: render({ modifiers }) },
+    // themes.css is only written/checked alongside the canonical tokens.css — `--out`
+    // runs are probe runs of the registration block.
+    ...(outIndex >= 0 ? [] : [{ path: THEMES_OUTPUT, contents: renderThemes() }]),
+  ];
 
-  if (check) {
-    const existing = fs.existsSync(outPath) ? fs.readFileSync(outPath, 'utf8') : null;
-    if (existing === null) {
-      console.error(`[generate-tokens-css] MISSING: ${path.relative(REPO_ROOT, outPath)}`);
-      console.error(`[generate-tokens-css] Run: node ${GENERATOR_ID}`);
-      process.exitCode = 1;
-      return;
+  for (const file of files) {
+    const relative = path.relative(REPO_ROOT, file.path);
+
+    if (check) {
+      const existing = fs.existsSync(file.path) ? fs.readFileSync(file.path, 'utf8') : null;
+      if (existing === null) {
+        console.error(`[generate-tokens-css] MISSING: ${relative}`);
+        console.error(`[generate-tokens-css] Run: node ${GENERATOR_ID}`);
+        process.exitCode = 1;
+        continue;
+      }
+      if (existing.replace(/\r\n/g, '\n') !== file.contents) {
+        console.error(`[generate-tokens-css] STALE: ${relative} differs from generator output.`);
+        console.error(`[generate-tokens-css] Run: node ${GENERATOR_ID}`);
+        process.exitCode = 1;
+        continue;
+      }
+      console.log(`[generate-tokens-css] OK: ${relative} is up to date.`);
+      continue;
     }
-    if (existing.replace(/\r\n/g, '\n') !== contents) {
-      console.error(`[generate-tokens-css] STALE: ${path.relative(REPO_ROOT, outPath)} differs from generator output.`);
-      console.error(`[generate-tokens-css] Run: node ${GENERATOR_ID}`);
-      process.exitCode = 1;
-      return;
-    }
-    console.log(`[generate-tokens-css] OK: ${path.relative(REPO_ROOT, outPath)} is up to date.`);
-    return;
+
+    fs.mkdirSync(path.dirname(file.path), { recursive: true });
+    fs.writeFileSync(file.path, file.contents);
+    console.log(`[generate-tokens-css] wrote ${relative} (${Buffer.byteLength(file.contents)} bytes)`);
   }
-
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, contents);
-  console.log(
-    `[generate-tokens-css] wrote ${path.relative(REPO_ROOT, outPath)} (${Buffer.byteLength(contents)} bytes)`,
-  );
 }
 
 if (require.main === module) {
@@ -916,7 +1169,11 @@ module.exports = {
   readTokens,
   readSpacingScale,
   readStrokeWidthScale,
+  readThemeClassNames,
+  readThemeValues,
+  analyzeThemeEmission,
   render,
+  renderThemes,
   spacingTokenValue,
   strokeWidthValue,
   strokeWidthCanonicalName,

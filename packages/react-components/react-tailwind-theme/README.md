@@ -3,10 +3,12 @@
 **Shared Tailwind theme layer for [Fluent UI React](https://react.fluentui.dev)**
 
 Fluent UI React v9 component packages ship plain, precompiled CSS (`<package>/dist/styles.css`,
-reached automatically through each package's generated class map). That compiled CSS references a
-small set of theme-level custom properties — the cascade `@layer` order, `--base-scale`,
+reached automatically through each package's generated class map). That compiled CSS references
+theme-level custom properties — the design tokens, the cascade `@layer` order, `--base-scale`,
 `--spacing` and the four stroke widths. Something has to emit those **once per document**. That is
-this package. (It deliberately registers **no** `@property` rules: a non-empty custom-property
+this package: it ships the theme classes (`.fui-theme-web-light`, `.fui-theme-web-dark`,
+`.fui-theme-teams-light`, …, each containing only custom-property declarations) plus the web-light
+values as `:root, :host` defaults. (It deliberately registers **no** `@property` rules: a non-empty custom-property
 registry puts Blink's transition-start path on a page-global slow branch — see
 `migration/griffel-to-tailwind/reports/perf-property-remedy.md`.)
 
@@ -30,26 +32,27 @@ import '@fluentui/react-tailwind-theme/styles.css';
 Then use components normally — you never import a component stylesheet yourself:
 
 ```jsx
-import { FluentProvider, webLightTheme, Button } from '@fluentui/react-components';
+import { FluentProvider, webLightThemeClassName, Button } from '@fluentui/react-components';
 
 export default function App() {
   return (
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider themeClassName={webLightThemeClassName}>
       <Button appearance="primary">Hi</Button>
     </FluentProvider>
   );
 }
 ```
 
-`FluentProvider` still owns every design-token **value** (they remain runtime CSS custom properties
-scoped to the provider element), so per-provider and nested-provider theming are unchanged. This
-package only registers the theme-level plumbing that component CSS compiles against.
+`FluentProvider` applies the theme class you pass via `themeClassName` to its root (and propagates
+it to portals); the token **values** come from this package's static CSS. Because a theme class is
+just custom-property declarations, putting it on any DOM node themes that subtree, and nested
+providers inherit the parent's class when the prop is omitted.
 
 ### If you skip the import
 
-Numeric spacing utilities in the component CSS resolve against a missing `--base-scale` and compute
-to `0px` — components render with the right colors and the wrong metrics. If padding and gaps look
-collapsed, this import is missing.
+The theme's custom properties are missing entirely: color tokens resolve to nothing and numeric
+spacing utilities compute to `0px` — components render unthemed with collapsed metrics. If
+components look unstyled or padding and gaps look collapsed, this import is missing.
 
 ## Layering
 
