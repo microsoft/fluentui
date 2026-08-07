@@ -13,6 +13,10 @@ const INVALID_TSCONFIG_OPTIONS_FIXTURE = path.join(
 const SEMANTIC_ERROR_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/semantic-error');
 const SYNTAX_ERROR_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/syntax-error');
 const ALIASED_STATE_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/aliased-state');
+const TSCONFIG_BASE_STYLE_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/tsconfig-base-style');
+const TSX_EXCLUDED_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/tsx-excluded');
+const TRANSITIVE_TSX_ERRORS_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/transitive-tsx-errors');
+const TEST_FILE_EXCLUSION_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/test-file-exclusion');
 
 describe('getStateDataAttributes', () => {
   // ─── happy path ───────────────────────────────────────────────────────────────
@@ -292,6 +296,128 @@ describe('getStateDataAttributes', () => {
     it('data-pressed is rendered as "boolean"', () => {
       const attr = result.ToggleButton.find(a => a.name === 'data-pressed');
       expect(attr?.type).toBe('boolean');
+    });
+  });
+  // ─── Task 5: tsconfig.base-style (no jsx option) ─────────────────────────────
+
+  describe('tsconfig.base-style (no jsx compiler option)', () => {
+    it('succeeds when the tsconfig omits the jsx option (extractor supplies jsx internally)', () => {
+      expect(() =>
+        getStateDataAttributes({
+          tsconfigPath: path.join(TSCONFIG_BASE_STYLE_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(TSCONFIG_BASE_STYLE_FIXTURE, 'src'),
+        }),
+      ).not.toThrow();
+    });
+
+    it('extracts data-* attributes from a tsconfig.base-style project', () => {
+      const result = getStateDataAttributes({
+        tsconfigPath: path.join(TSCONFIG_BASE_STYLE_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(TSCONFIG_BASE_STYLE_FIXTURE, 'src'),
+      });
+      expect(result.Button).toEqual(expect.arrayContaining([expect.objectContaining({ name: 'data-disabled' })]));
+    });
+  });
+
+  // ─── Task 5: .tsx files excluded from inspection set ─────────────────────────
+
+  describe('.tsx implementation files excluded from inspection set', () => {
+    it('succeeds even when .tsx files coexist in the same sourceRoot', () => {
+      // Button.tsx exports a duplicate ButtonState — if included it would trigger
+      // a duplicate-key error; exclusion keeps extraction clean.
+      expect(() =>
+        getStateDataAttributes({
+          tsconfigPath: path.join(TSX_EXCLUDED_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(TSX_EXCLUDED_FIXTURE, 'src'),
+        }),
+      ).not.toThrow();
+    });
+
+    it('returns only one key (Button) — the .tsx duplicate does not create a second entry', () => {
+      const result = getStateDataAttributes({
+        tsconfigPath: path.join(TSX_EXCLUDED_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(TSX_EXCLUDED_FIXTURE, 'src'),
+      });
+      expect(Object.keys(result)).toEqual(['Button']);
+    });
+
+    it('still extracts data-disabled from ButtonState.ts', () => {
+      const result = getStateDataAttributes({
+        tsconfigPath: path.join(TSX_EXCLUDED_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(TSX_EXCLUDED_FIXTURE, 'src'),
+      });
+      expect(result.Button).toEqual(expect.arrayContaining([expect.objectContaining({ name: 'data-disabled' })]));
+    });
+  });
+
+  // ─── Task 5: transitive .tsx errors do not block extraction ──────────────────
+
+  describe('transitive .tsx errors in implementation files do not block extraction', () => {
+    it('succeeds when a .tsx file in sourceRoot has type errors (renderButton.tsx)', () => {
+      // renderButton.tsx has a deliberate TS2322 type error and JSX that would
+      // fail if that file were checked.  Because only .ts files are inspected,
+      // extraction must succeed.
+      expect(() =>
+        getStateDataAttributes({
+          tsconfigPath: path.join(TRANSITIVE_TSX_ERRORS_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(TRANSITIVE_TSX_ERRORS_FIXTURE, 'src'),
+        }),
+      ).not.toThrow();
+    });
+
+    it('extracts data-* attributes from the .types.ts file beside the broken .tsx', () => {
+      const result = getStateDataAttributes({
+        tsconfigPath: path.join(TRANSITIVE_TSX_ERRORS_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(TRANSITIVE_TSX_ERRORS_FIXTURE, 'src'),
+      });
+      expect(result.Button).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ name: 'data-disabled' }),
+          expect.objectContaining({ name: 'data-appearance' }),
+        ]),
+      );
+    });
+  });
+
+  // ─── Task 5: .spec.tsx / .test.tsx / .cy.tsx exclusion ───────────────────────
+
+  describe('.spec.tsx, .test.tsx, and .cy.tsx test files are excluded', () => {
+    it('succeeds when .spec.tsx, .test.tsx, and .cy.tsx files coexist in sourceRoot', () => {
+      // Each test file exports a duplicate ButtonState; if any were included the
+      // extractor would throw a duplicate-key error.
+      expect(() =>
+        getStateDataAttributes({
+          tsconfigPath: path.join(TEST_FILE_EXCLUSION_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(TEST_FILE_EXCLUSION_FIXTURE, 'src'),
+        }),
+      ).not.toThrow();
+    });
+
+    it('returns only one key (Button) — none of the test-file duplicates are emitted', () => {
+      const result = getStateDataAttributes({
+        tsconfigPath: path.join(TEST_FILE_EXCLUSION_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(TEST_FILE_EXCLUSION_FIXTURE, 'src'),
+      });
+      expect(Object.keys(result)).toEqual(['Button']);
+    });
+
+    it('the extracted Button entry does not contain data-spec, data-test, or data-cy attrs', () => {
+      const result = getStateDataAttributes({
+        tsconfigPath: path.join(TEST_FILE_EXCLUSION_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(TEST_FILE_EXCLUSION_FIXTURE, 'src'),
+      });
+      const names = result.Button.map(a => a.name);
+      expect(names).not.toContain('data-spec');
+      expect(names).not.toContain('data-test');
+      expect(names).not.toContain('data-cy');
+    });
+
+    it('still extracts data-disabled from the genuine ButtonState.ts', () => {
+      const result = getStateDataAttributes({
+        tsconfigPath: path.join(TEST_FILE_EXCLUSION_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(TEST_FILE_EXCLUSION_FIXTURE, 'src'),
+      });
+      expect(result.Button).toEqual(expect.arrayContaining([expect.objectContaining({ name: 'data-disabled' })]));
     });
   });
 });
