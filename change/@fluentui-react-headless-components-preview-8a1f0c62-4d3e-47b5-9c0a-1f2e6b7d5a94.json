@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: verify headless entry points do not bundle tabster, Griffel or react-icons",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

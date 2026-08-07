@@ -33,6 +33,12 @@ const config = {
       'react-dom': 'ReactDOM',
       'react/compiler-runtime': 'ReactCompilerRuntime',
     };
+    // ESM-first packages emit bare subpath imports (e.g. `use-sync-external-store/shim`) that lack
+    // a file extension. Once measured packages are `type: module`, webpack treats their `lib/` as
+    // ESM and enforces fully-specified imports; disable that so legacy CJS deps still resolve.
+    config.module = config.module ?? {};
+    config.module.rules = config.module.rules ?? [];
+    config.module.rules.push({ test: /\.[cm]?js$/, resolve: { fullySpecified: false } });
     return config;
   }),
   reportResolvers: {

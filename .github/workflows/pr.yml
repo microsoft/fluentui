@@ -74,7 +74,7 @@ jobs:
 
       - name: build, test, lint, test-ssr (affected)
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging verify-bundle-isolation --nxBail
 
       - name: 'Check for unstaged changes'
         run: |
