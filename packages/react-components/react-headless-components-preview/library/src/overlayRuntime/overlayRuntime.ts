@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 import type { OverlayFallbackRuntime } from './fallbackRuntime';
-import { supportsNativeOverlayRuntime } from './nativeCapabilities';
+import { getOverlayRuntimeOverride, supportsNativeOverlayRuntime } from './nativeCapabilities';
 
 export type OverlayRuntimeSnapshot =
   | { mode: 'ssr' }
@@ -81,12 +81,13 @@ export function getOverlayRuntimeSnapshot(targetDocument: Document | undefined):
 export function useOverlayRuntime(targetDocument: Document | undefined): OverlayRuntimeSnapshot {
   const [currentRecord, setCurrentRecord] = React.useState<
     { targetDocument: Document; record: OverlayRuntimeRecord } | undefined
-  >();
+  >(() =>
+    targetDocument && getOverlayRuntimeOverride(targetDocument) === 'native'
+      ? { targetDocument, record: getOrCreateRecord(targetDocument) }
+      : undefined,
+  );
   const [, forceUpdate] = React.useReducer(value => value + 1, 0);
-  const record =
-    currentRecord && currentRecord.targetDocument === targetDocument
-      ? currentRecord.record
-      : undefined;
+  const record = currentRecord && currentRecord.targetDocument === targetDocument ? currentRecord.record : undefined;
 
   useIsomorphicLayoutEffect(() => {
     if (!targetDocument) {

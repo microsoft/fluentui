@@ -84,14 +84,7 @@ const useAutoOverlayStack = (
 };
 
 const useDismissBehavior = (props: DismissBehaviorProps): void => {
-  const {
-    closeOnScroll = false,
-    contentRef,
-    onDismiss,
-    open,
-    targetDocument,
-    triggerRef,
-  } = props;
+  const { closeOnScroll = false, contentRef, onDismiss, open, targetDocument, triggerRef } = props;
 
   useOnClickOutside({
     contains: elementContains,
@@ -115,7 +108,7 @@ const useDismissBehavior = (props: DismissBehaviorProps): void => {
     }
 
     const stack = getAutoOverlayStack(targetDocument);
-    if (stack.at(-1)?.content !== contentRef.current) {
+    if (stack[stack.length - 1]?.content !== contentRef.current) {
       return;
     }
 
@@ -133,10 +126,7 @@ const useDismissBehavior = (props: DismissBehaviorProps): void => {
   }, [onKeyDown, open, targetDocument]);
 };
 
-const setAttributes = (
-  element: HTMLElement,
-  attributes: Record<string, unknown>,
-): (() => void) => {
+const setAttributes = (element: HTMLElement, attributes: Record<string, unknown>): (() => void) => {
   const previousValues = new Map<string, string | null>();
 
   for (const [name, value] of Object.entries(attributes)) {
@@ -186,15 +176,9 @@ const useFocusBehavior = (props: FocusBehaviorProps): void => {
     }
 
     previouslyFocusedRef.current = targetDocument?.activeElement as HTMLElement | null;
-    const restoreContentAttributes = setAttributes(
-      content,
-      modalAttributes as unknown as Record<string, unknown>,
-    );
+    const restoreContentAttributes = setAttributes(content, modalAttributes as unknown as Record<string, unknown>);
     const restoreTriggerAttributes = triggerRef?.current
-      ? setAttributes(
-          triggerRef.current,
-          triggerAttributes as unknown as Record<string, unknown>,
-        )
+      ? setAttributes(triggerRef.current, triggerAttributes as unknown as Record<string, unknown>)
       : undefined;
 
     const autofocusTarget = content.querySelector<HTMLElement>('[autofocus]');
@@ -387,12 +371,9 @@ export const FallbackDialogBehavior = (props: FallbackDialogBehaviorProps): null
   }, [props.contentRef, props.open, props.targetDocument]);
 
   const onKeyDown = useEventCallback((event: KeyboardEvent) => {
-    if (
-      event.key === Escape &&
-      !event.defaultPrevented &&
-      props.targetDocument &&
-      dialogStacks.get(props.targetDocument)?.at(-1) === props.contentRef.current
-    ) {
+    const stack = props.targetDocument ? dialogStacks.get(props.targetDocument) : undefined;
+
+    if (event.key === Escape && !event.defaultPrevented && stack?.[stack.length - 1] === props.contentRef.current) {
       event.preventDefault();
       props.onDismiss(event);
     }

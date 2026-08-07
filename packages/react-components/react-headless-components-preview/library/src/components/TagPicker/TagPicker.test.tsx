@@ -121,7 +121,7 @@ describe('TagPicker', () => {
     expect(listbox).toHaveAttribute('data-placement', 'above-end');
     expect(listbox).toHaveStyle({ positionArea: 'block-start span-inline-start' });
     expect(listbox).toHaveStyle({ positionTryFallbacks: 'block-end' });
-    expect(listbox).not.toHaveStyle({ width: 'anchor-size(width)' });
+    expect(listbox.style.getPropertyValue('width')).toBe('');
   });
 
   it('does not apply a TagPicker-specific offset when positioning is omitted', () => {

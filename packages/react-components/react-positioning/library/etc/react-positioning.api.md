@@ -32,25 +32,25 @@ export type CreateArrowStylesOptions = {
     borderColor?: GriffelStyle['borderBottomColor'];
 };
 
-// @public @deprecated
-export function createSlideStyles(mainAxis: number): GriffelStyle;
-
 // @public (undocumented)
 export function createPositioningManager_unstable(options: CreatePositioningManagerOptions_unstable): PositioningManager_unstable;
 
-// @public
-export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
-
 // @public (undocumented)
 export interface CreatePositioningManagerOptions_unstable extends Omit<PositioningProps, 'positioningRef' | 'target'>, Pick<PositioningOptions, 'enabled' | 'positionFixed' | 'unstable_disableTether'> {
-    container: HTMLElement;
-    target: TargetElement;
     arrow?: HTMLElement | null;
+    container: HTMLElement;
     dir?: 'ltr' | 'rtl';
+    target: TargetElement;
     targetDocument?: Document;
     unstable_disableShift?: boolean;
     unstable_flipFallbackStrategy?: PositioningFlipFallbackStrategy_unstable;
 }
+
+// @public @deprecated
+export function createSlideStyles(mainAxis: number): GriffelStyle;
+
+// @public
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
 // @internal
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
@@ -103,7 +103,7 @@ export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enable
 // @public
 export const PositioningConfigurationProvider: React_2.Provider<PositioningConfigurationFn | undefined>;
 
-// @public (undocumented)
+// @public
 export type PositioningFlipFallbackStrategy_unstable = 'bestFit' | 'initialPlacement';
 
 // @public (undocumented)
@@ -112,10 +112,12 @@ export type PositioningImperativeRef = {
     setTarget: (target: TargetElement | null) => void;
 };
 
-// @public (undocumented)
+// @public
 export interface PositioningManager_unstable {
-    updatePosition: () => void;
+    // (undocumented)
     dispose: () => void;
+    // (undocumented)
+    updatePosition: () => void;
 }
 
 // @public
