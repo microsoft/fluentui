@@ -54,9 +54,28 @@ const bundleMtime = fs
   .filter(f => f.endsWith('.js'))
   .reduce((max, f) => Math.max(max, fs.statSync(path.join(url, f)).mtimeMs), 0);
 
-const componentsRoot = path.join('packages', 'react-components');
+/**
+ * Every tree whose sources end up in `dist/storybook`. This list is the guard's whole
+ * reach — a tree missing from it can go stale silently, which is exactly the hole this
+ * guard exists to close, so add to it rather than assume `packages/react-components` is
+ * enough:
+ *
+ * - `packages/react-components` — the components under test.
+ * - `packages/charts` — @fluentui/react-charts is imported by 19 `stories/Charts/*` files.
+ * - `apps/vr-tests-react-components/src` — the stories themselves AND `src/utilities/`
+ *   (`getStoryVariant` decides the DARK_MODE / HIGH_CONTRAST / RTL theming of every
+ *   variant story, so a stale copy silently re-themes a large share of the sets).
+ * - `tools/visual-regression-utilities/src` — the published mirror of `getStoryVariant`.
+ */
+const bundleSourceRoots = [
+  path.join('packages', 'react-components'),
+  path.join('packages', 'charts'),
+  path.join('apps', 'vr-tests-react-components', 'src'),
+  path.join('tools', 'visual-regression-utilities', 'src'),
+];
+
 const newerSources = [];
-if (bundleMtime && fs.existsSync(componentsRoot)) {
+if (bundleMtime) {
   const walk = dir => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, entry.name);
@@ -68,6 +87,7 @@ if (bundleMtime && fs.existsSync(componentsRoot)) {
       } else if (
         /\.(module\.css|tsx?)$/.test(entry.name) &&
         // Test files never enter the storybook bundle — editing one must not block capture.
+        // NOTE: `*.stories.tsx` DO enter it, so they are deliberately not excluded here.
         !/\.(test|spec|cy)\.tsx?$/.test(entry.name) &&
         fs.statSync(full).mtimeMs > bundleMtime
       ) {
@@ -75,7 +95,10 @@ if (bundleMtime && fs.existsSync(componentsRoot)) {
       }
     }
   };
-  walk(componentsRoot);
+
+  for (const root of bundleSourceRoots) {
+    if (fs.existsSync(root)) walk(root);
+  }
 }
 if (newerSources.length > 0 && !args['baseline-from-current-bundle']) {
   console.error(`[capture] FAIL: ${newerSources.length} component source(s) are newer than ${url}.`);

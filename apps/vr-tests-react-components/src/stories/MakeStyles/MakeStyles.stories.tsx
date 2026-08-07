@@ -1,6 +1,6 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { tokens, webLightTheme } from '@fluentui/react-theme';
+import { tokens, webLightThemeClassName } from '@fluentui/react-theme';
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
@@ -67,7 +67,7 @@ export default {
 } satisfies Meta<'div'>;
 
 export const RtlTwoComponentsInASingleProvider = () => (
-  <FluentProvider dir="rtl" theme={webLightTheme}>
+  <FluentProvider dir="rtl" themeClassName={webLightThemeClassName}>
     <Box>مرحبا بالعالم!</Box>
     <Container>مرحبا بالعالم!</Container>
   </FluentProvider>
@@ -76,12 +76,12 @@ RtlTwoComponentsInASingleProvider.storyName = 'RTL: two components in a single P
 
 export const RtlTwoProvidersWithDifferentDirectionsAsSiblings = () => (
   <>
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider themeClassName={webLightThemeClassName}>
       <Box>Hello world!</Box>
       <Container primary>Hello world!</Container>
     </FluentProvider>
 
-    <FluentProvider dir="rtl" theme={webLightTheme}>
+    <FluentProvider dir="rtl" themeClassName={webLightThemeClassName}>
       <Box>مرحبا بالعالم!</Box>
       <Container primary>مرحبا بالعالم!</Container>
     </FluentProvider>
@@ -90,7 +90,7 @@ export const RtlTwoProvidersWithDifferentDirectionsAsSiblings = () => (
 RtlTwoProvidersWithDifferentDirectionsAsSiblings.storyName = 'RTL: two providers with different directions as siblings';
 
 export const RtlTwoProvidersWithDifferentDirectionsAsChildren = () => (
-  <FluentProvider dir="rtl" theme={webLightTheme}>
+  <FluentProvider dir="rtl" themeClassName={webLightThemeClassName}>
     <Container primary>مرحبا بالعالم!</Container>
 
     <FluentProvider dir="ltr">

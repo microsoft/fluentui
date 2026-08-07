@@ -7,7 +7,7 @@ import {
   MenuList,
   MenuTrigger,
   MenuPopover,
-  webLightTheme,
+  webLightThemeClassName,
   Tooltip,
   FluentProvider,
   tooltipClassNames,
@@ -16,7 +16,7 @@ import {
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mountBase(<FluentProvider themeClassName={webLightThemeClassName}>{element}</FluentProvider>);
 };
 
 // https://github.com/microsoft/fluentui/issues/34296

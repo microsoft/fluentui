@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import type { StoryFn } from '@storybook/react-webpack5';
 import { Button } from '@fluentui/react-button';
-import { webDarkTheme, teamsHighContrastTheme } from '@fluentui/react-theme';
+import { webDarkThemeClassName, teamsHighContrastThemeClassName } from '@fluentui/react-theme';
 
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from './getStoryVariant';
 
@@ -18,12 +18,12 @@ describe('utility functions', () => {
       expect(rtlStory.parameters.dir).toBe('rtl');
     });
 
-    it('should set the correct theme for story', () => {
+    it('should set the correct theme class name for story', () => {
       const darkModeStory = getStoryVariant(DefaultStory, DARK_MODE);
       const highContrastStory = getStoryVariant(DefaultStory, HIGH_CONTRAST);
 
-      expect(darkModeStory.parameters.theme).toEqual(webDarkTheme);
-      expect(highContrastStory.parameters.theme).toEqual(teamsHighContrastTheme);
+      expect(darkModeStory.parameters.themeClassName).toBe(webDarkThemeClassName);
+      expect(highContrastStory.parameters.themeClassName).toBe(teamsHighContrastThemeClassName);
     });
 
     it('should set the correct name for story', () => {

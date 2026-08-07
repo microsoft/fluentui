@@ -115,7 +115,7 @@ const styledAnnotations: ChartAnnotationLayerProps['annotations'] = [
     id: 'styled-typography',
     text: 'Big text',
     coordinates: { type: 'relative', x: 0.45, y: 0.75 },
-    style: { fontSize: 18, fontWeight: 700, opacity: 0.5, backgroundColor: '#e1dfdd' },
+    style: { fontSize: '18px', fontWeight: 700, opacity: 0.5, backgroundColor: '#e1dfdd' },
   },
 ];
 
