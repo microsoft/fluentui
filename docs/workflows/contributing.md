@@ -9,7 +9,7 @@ yarn clean                                # Clean build artifacts
 
 # Development
 yarn start                                # Interactive project selector
-yarn nx run <project>:build               # Build specific project
+yarn nx run <project>:build                # Build specific project
 yarn nx run <project>:start               # Start Storybook for component
 yarn nx run <project>:test                # Run unit tests
 yarn nx run <project>:test -u             # Update snapshots
@@ -27,9 +27,13 @@ yarn create-component                     # Interactive generator
 
 ## PR Checklist
 
-1. **Change file** — Run `yarn change` to interactively generate change files for any published package changes. (AI agents should use the `/beachball-change-file` skill instead.)
+1. **Change file** — Required for any published package change:
 
-   Use `patch` for fixes, `minor` for features (or see [more info about choosing a change type](https://microsoft.github.io/beachball/concepts/change-types.html)). Never use `major` without approval.
+   ```bash
+   yarn beachball change --type patch --message "fix(react-button): description"
+   ```
+
+   Use `patch` for fixes, `minor` for features. Never `major` without approval.
 
 2. **Tests pass** — `yarn nx run <project>:test`
 

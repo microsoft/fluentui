@@ -3,7 +3,7 @@ import { execSync } from 'child_process';
 import type { BeachballConfig } from 'beachball';
 
 import { renderEntry, renderHeader } from './customRenderers';
-import baseConfig from './base.config';
+import baseConfig from '../base.config';
 
 /**
  * Shared Beachball release config.

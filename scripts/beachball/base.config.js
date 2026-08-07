@@ -1,6 +1,9 @@
 /** @satisfies {import('beachball').BeachballConfig} */
 const config = {
   access: 'public',
+  // Target branch WITHOUT remote, since people may have multiple remotes and choose different naming schemes.
+  // Specifying this helps beachball more quickly determine the target branch + remote at runtime.
+  branch: 'master',
   commit: false,
   disallowedChangeTypes: ['major'],
   tag: 'latest',
