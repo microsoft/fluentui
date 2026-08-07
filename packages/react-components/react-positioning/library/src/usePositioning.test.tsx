@@ -1,15 +1,16 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
+import { createPositionManager } from './createPositionManager';
 import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
-import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
+import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningImperativeRef, PositioningProps } from './types';
 
 // Mock createPositionManager to avoid @floating-ui/dom dependency in this test.
 // The mock dispatches the positioning end event asynchronously (via microtask),
 // matching the real implementation's debounce + computePosition promise chain.
 jest.mock('./createPositionManager', () => ({
-  createPositionManager: jest.fn(({ container }: { container: HTMLElement }) => {
-    const dispatchEnd = () => {
+  createPositionManager: jest.fn(({ container }) => {
+    const dispatchEnd = jest.fn(() => {
       Promise.resolve().then(() => {
         container.dispatchEvent(
           new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
@@ -21,7 +22,7 @@ jest.mock('./createPositionManager', () => ({
           }),
         );
       });
-    };
+    });
 
     dispatchEnd();
 
@@ -32,8 +33,20 @@ jest.mock('./createPositionManager', () => ({
   }),
 }));
 
-const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioningEnd'] }> = ({ onPositioningEnd }) => {
-  const { targetRef, containerRef } = usePositioning({ onPositioningEnd });
+const createPositionManagerMock = createPositionManager as jest.MockedFunction<typeof createPositionManager>;
+const getLastCreatedManager = () => {
+  const { results } = createPositionManagerMock.mock;
+  return results[results.length - 1]?.value;
+};
+
+function TestComponent({
+  onPositioningEnd,
+  positioningRef,
+}: {
+  onPositioningEnd?: PositioningProps['onPositioningEnd'];
+  positioningRef?: PositioningProps['positioningRef'];
+}) {
+  const { targetRef, containerRef } = usePositioning({ onPositioningEnd, positioningRef });
 
   return (
     <>
@@ -45,9 +58,13 @@ const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioni
       </div>
     </>
   );
-};
+}
 
 describe('usePositioning', () => {
+  beforeEach(() => {
+    createPositionManagerMock.mockClear();
+  });
+
   describe('onPositioningEnd', () => {
     it('calls onPositioningEnd with the positioning event', async () => {
       const onPositioningEnd = jest.fn();
@@ -78,5 +95,36 @@ describe('usePositioning', () => {
         await new Promise(process.nextTick);
       });
     });
+  });
+
+  it('still exposes updatePosition through positioningRef', async () => {
+    const positioningRef = React.createRef<PositioningImperativeRef>();
+    render(<TestComponent positioningRef={positioningRef} />);
+
+    await act(async () => {
+      await new Promise(process.nextTick);
+    });
+
+    const manager = getLastCreatedManager();
+
+    act(() => {
+      positioningRef.current?.updatePosition();
+    });
+
+    expect(manager?.updatePosition).toHaveBeenCalledTimes(2);
+  });
+
+  it('disposes the current manager on unmount', async () => {
+    const { unmount } = render(<TestComponent />);
+
+    await act(async () => {
+      await new Promise(process.nextTick);
+    });
+
+    const manager = getLastCreatedManager();
+
+    unmount();
+
+    expect(manager?.dispose).toHaveBeenCalledTimes(1);
   });
 });

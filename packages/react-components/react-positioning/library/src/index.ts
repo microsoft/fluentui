@@ -1,4 +1,5 @@
 export { createVirtualElementFromClick } from './createVirtualElementFromClick';
+export { createPositioningManager_unstable } from './createPositioningManager';
 export { usePositioningSlideDirection } from './usePositioningSlideDirection';
 export { POSITIONING_SLIDE_DIRECTION_VAR_X, POSITIONING_SLIDE_DIRECTION_VAR_Y } from './constants';
 export { createArrowHeightStyles, createArrowStyles } from './createArrowStyles';
@@ -19,6 +20,7 @@ export type {
   AutoSize,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   Boundary,
+  CreatePositioningManagerOptions_unstable,
   Offset,
   OffsetFunction,
   OffsetFunctionParam,
@@ -35,4 +37,6 @@ export type {
   SetVirtualMouseTarget,
   PositioningConfigurationFn,
   PositioningConfigurationFnOptions,
+  PositioningFlipFallbackStrategy_unstable,
+  PositioningManager_unstable,
 } from './types';

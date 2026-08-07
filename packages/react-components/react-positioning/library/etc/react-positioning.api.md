@@ -35,8 +35,22 @@ export type CreateArrowStylesOptions = {
 // @public @deprecated
 export function createSlideStyles(mainAxis: number): GriffelStyle;
 
+// @public (undocumented)
+export function createPositioningManager_unstable(options: CreatePositioningManagerOptions_unstable): PositioningManager_unstable;
+
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
+
+// @public (undocumented)
+export interface CreatePositioningManagerOptions_unstable extends Omit<PositioningProps, 'positioningRef' | 'target'>, Pick<PositioningOptions, 'enabled' | 'positionFixed' | 'unstable_disableTether'> {
+    container: HTMLElement;
+    target: TargetElement;
+    arrow?: HTMLElement | null;
+    dir?: 'ltr' | 'rtl';
+    targetDocument?: Document;
+    unstable_disableShift?: boolean;
+    unstable_flipFallbackStrategy?: PositioningFlipFallbackStrategy_unstable;
+}
 
 // @internal
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
@@ -90,10 +104,19 @@ export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enable
 export const PositioningConfigurationProvider: React_2.Provider<PositioningConfigurationFn | undefined>;
 
 // @public (undocumented)
+export type PositioningFlipFallbackStrategy_unstable = 'bestFit' | 'initialPlacement';
+
+// @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
     setTarget: (target: TargetElement | null) => void;
 };
+
+// @public (undocumented)
+export interface PositioningManager_unstable {
+    updatePosition: () => void;
+    dispose: () => void;
+}
 
 // @public
 export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'shiftToCoverTarget'> {
