@@ -2,64 +2,100 @@ import type { Theme } from './types';
 import { tokens } from './tokens';
 
 /**
- * Theming Phase 1 (option B, settled 2026-07-29): the 22 spacing tokens and the 4
- * strokeWidth tokens are the READ path for the CANONICAL kebab-case variables emitted by
- * @fluentui/react-tailwind-theme (`--spacing-horizontal-m`, `--stroke-width-thin`, …).
- * The old camelCase CSS variables no longer exist in emitted CSS, so these 26 entries
- * deliberately do NOT follow the `var(--<tokenName>)` convention the rest of the token
- * set uses. This map IS the contract — a change here must be coordinated with
+ * Theming Phase 2a (option B, extends the Phase-1 contract of 2026-07-29 to the FULL token
+ * set): every `tokens.*` constant is the READ path for a CANONICAL kebab-case CSS variable
+ * aligned with the Tailwind v4 theme namespaces registered by the react-tailwind-theme
+ * package (`--color-neutral-background-1`, `--text-base-300`,
+ * `--font-weight-semibold`, `--radius-medium`, `--ease-easy-ease`, `--duration-fast`, …).
+ * The old camelCase CSS variables (`--colorNeutralBackground1`, …) no longer exist in
+ * emitted CSS. This derivation IS the contract — a change here must be coordinated with
  * packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js, which
- * asserts the same lockstep from the other side.
+ * asserts the same lockstep from the CSS side on every run, and with
+ * migration/griffel-to-tailwind/reports/token-rename-map.json (the committed mapping).
+ *
+ * The derivation below is deliberately an INDEPENDENT re-implementation of the generator's
+ * naming rules (same algorithm, separately written), so drift in either side fails a gate.
  */
-const canonicalVariableTokens: Partial<Record<keyof Theme, string>> = {
-  strokeWidthThin: 'var(--stroke-width-thin)',
-  strokeWidthThick: 'var(--stroke-width-thick)',
-  strokeWidthThicker: 'var(--stroke-width-thicker)',
-  strokeWidthThickest: 'var(--stroke-width-thickest)',
-  spacingHorizontalNone: 'var(--spacing-horizontal-none)',
-  spacingHorizontalXXS: 'var(--spacing-horizontal-xxs)',
-  spacingHorizontalXS: 'var(--spacing-horizontal-xs)',
-  spacingHorizontalSNudge: 'var(--spacing-horizontal-s-nudge)',
-  spacingHorizontalS: 'var(--spacing-horizontal-s)',
-  spacingHorizontalMNudge: 'var(--spacing-horizontal-m-nudge)',
-  spacingHorizontalM: 'var(--spacing-horizontal-m)',
-  spacingHorizontalL: 'var(--spacing-horizontal-l)',
-  spacingHorizontalXL: 'var(--spacing-horizontal-xl)',
-  spacingHorizontalXXL: 'var(--spacing-horizontal-xxl)',
-  spacingHorizontalXXXL: 'var(--spacing-horizontal-xxxl)',
-  spacingVerticalNone: 'var(--spacing-vertical-none)',
-  spacingVerticalXXS: 'var(--spacing-vertical-xxs)',
-  spacingVerticalXS: 'var(--spacing-vertical-xs)',
-  spacingVerticalSNudge: 'var(--spacing-vertical-s-nudge)',
-  spacingVerticalS: 'var(--spacing-vertical-s)',
-  spacingVerticalMNudge: 'var(--spacing-vertical-m-nudge)',
-  spacingVerticalM: 'var(--spacing-vertical-m)',
-  spacingVerticalL: 'var(--spacing-vertical-l)',
-  spacingVerticalXL: 'var(--spacing-vertical-xl)',
-  spacingVerticalXXL: 'var(--spacing-vertical-xxl)',
-  spacingVerticalXXXL: 'var(--spacing-vertical-xxxl)',
+
+/** camelCase → kebab-case with digit runs and acronym runs as their own segments. */
+const kebabCase = (name: string): string =>
+  name
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
+    .replace(/([A-Za-z])([0-9])/g, '$1-$2')
+    .replace(/([0-9])([A-Za-z])/g, '$1-$2')
+    .toLowerCase();
+
+/**
+ * Token-name prefix → canonical CSS variable namespace. First match wins, so longer
+ * prefixes sharing a stem come first. `duration` is the one family whose canonical
+ * RUNTIME name (`--duration-*`) differs from its Tailwind theme key
+ * (`--transition-duration-*`) — durations have no first-class variable namespace worth
+ * occupying, so they keep the family-consistent custom namespace (user decision, Phase 2a).
+ */
+const NAMESPACES: [prefix: string, namespace: string][] = [
+  ['colorPalette', 'color-palette'],
+  ['color', 'color'],
+  ['fontFamily', 'font'],
+  ['fontSize', 'text'],
+  ['fontWeight', 'font-weight'],
+  ['lineHeight', 'leading'],
+  ['spacingHorizontal', 'spacing-horizontal'],
+  ['spacingVertical', 'spacing-vertical'],
+  ['strokeWidth', 'stroke-width'],
+  ['borderRadius', 'radius'],
+  ['shadow', 'shadow'],
+  ['curve', 'ease'],
+  ['duration', 'duration'],
+  ['zIndex', 'z-index'],
+];
+
+/** zIndex tokens carry their default as a var() fallback — pinned literal contract. */
+const Z_INDEX_FALLBACKS: Partial<Record<keyof Theme, string>> = {
+  zIndexBackground: '0',
+  zIndexContent: '1',
+  zIndexOverlay: '1000',
+  zIndexPopup: '2000',
+  zIndexMessages: '3000',
+  zIndexFloating: '4000',
+  zIndexPriority: '5000',
+  zIndexDebug: '6000',
+};
+
+const canonicalVariable = (token: keyof Theme): string => {
+  const entry = NAMESPACES.find(([prefix]) => token.startsWith(prefix));
+  if (!entry) {
+    throw new Error(`Token \`${token}\` matches no canonical namespace.`);
+  }
+  const [prefix, namespace] = entry;
+  return `--${namespace}-${kebabCase(token.slice(prefix.length))}`;
 };
 
 describe('tokens', () => {
-  it('CSS variables match expected format', () => {
+  it('every token references its canonical kebab-case CSS variable (exact string)', () => {
     (Object.keys(tokens) as (keyof Theme)[]).forEach(token => {
-      if (token in canonicalVariableTokens) {
-        return; // covered by the exact-string test below
-      }
-      const tokenValue = tokens[token];
-      const tokenRegex = new RegExp(`var\\(--${token}(, .+)?\\)`);
+      const fallback = Z_INDEX_FALLBACKS[token];
+      const expected =
+        fallback === undefined ? `var(${canonicalVariable(token)})` : `var(${canonicalVariable(token)}, ${fallback})`;
 
-      expect(tokenValue).toMatch(tokenRegex);
+      expect(tokens[token]).toBe(expected);
     });
   });
 
-  it('spacing and strokeWidth tokens reference the canonical kebab-case variables (theming Phase 1)', () => {
-    (Object.keys(canonicalVariableTokens) as (keyof Theme)[]).forEach(token => {
-      expect(tokens[token]).toBe(canonicalVariableTokens[token]);
-    });
-    // No entry may reference an old camelCase spacing/stroke variable.
+  it('no token references an old camelCase CSS variable (option B: single vocabulary)', () => {
     (Object.keys(tokens) as (keyof Theme)[]).forEach(token => {
-      expect(tokens[token]).not.toMatch(/var\(--(spacingHorizontal|spacingVertical|strokeWidth)[A-Z]/);
+      // Canonical names are all-lowercase; any uppercase letter inside a var() name is a
+      // leftover camelCase reference.
+      expect(tokens[token]).not.toMatch(/var\(--[^,)]*[A-Z]/);
+    });
+  });
+
+  it('canonical variable names are unique across the token set', () => {
+    const seen = new Map<string, string>();
+    (Object.keys(tokens) as (keyof Theme)[]).forEach(token => {
+      const name = canonicalVariable(token);
+      expect(seen.has(name) ? `${name} from ${seen.get(name)} and ${token}` : undefined).toBeUndefined();
+      seen.set(name, token);
     });
   });
 });
