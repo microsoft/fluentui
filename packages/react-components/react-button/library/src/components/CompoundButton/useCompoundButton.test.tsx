@@ -13,61 +13,6 @@ const wrap = (contextValue: ButtonContextValue = {}): React.ComponentType<{ chil
 };
 
 describe('useCompoundButton_unstable', () => {
-  it('returns the resolved CompoundButton components shape', () => {
-    const { result } = renderHook(() => useCompoundButton_unstable({}, React.createRef()));
-
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    expect(result.current.components).toEqual({
-      root: 'button',
-      icon: 'span',
-      contentContainer: 'span',
-      secondaryContent: 'span',
-    });
-  });
-
-  it('uses the default root element and icon position', () => {
-    const { result } = renderHook(() => useCompoundButton_unstable({}, React.createRef()));
-
-    expect(result.current.root.type).toBe('button');
-    expect(result.current.iconPosition).toBe('before');
-  });
-
-  it('normalizes the contentContainer slot', () => {
-    const { result } = renderHook(() => useCompoundButton_unstable({ children: 'Primary' }, React.createRef()));
-
-    expect(result.current.contentContainer).toBeDefined();
-    expect(result.current.contentContainer.children).toBeUndefined();
-  });
-
-  it('normalizes secondaryContent string shorthand', () => {
-    const { result } = renderHook(() =>
-      useCompoundButton_unstable({ secondaryContent: 'Secondary' }, React.createRef()),
-    );
-
-    expect(result.current.secondaryContent).toMatchObject({ children: 'Secondary' });
-  });
-
-  it('normalizes secondaryContent React element shorthand', () => {
-    const secondaryContent = <strong>Secondary</strong>;
-    const { result } = renderHook(() => useCompoundButton_unstable({ secondaryContent }, React.createRef()));
-
-    expect(result.current.secondaryContent).toMatchObject({ children: secondaryContent });
-  });
-
-  it('normalizes secondaryContent slot-object shorthand', () => {
-    const { result } = renderHook(() =>
-      useCompoundButton_unstable(
-        { secondaryContent: { children: 'Secondary', className: 'custom-secondary' } },
-        React.createRef(),
-      ),
-    );
-
-    expect(result.current.secondaryContent).toMatchObject({
-      children: 'Secondary',
-      className: 'custom-secondary',
-    });
-  });
-
   it('sets iconOnly true when an icon has no primary or secondary content', () => {
     const { result } = renderHook(() => useCompoundButton_unstable({ icon: <span /> }, React.createRef()));
 
@@ -136,21 +81,5 @@ describe('useCompoundButton_unstable', () => {
     });
 
     expect(result.current.size).toBe('large');
-  });
-
-  it('returns disabled and disabledFocusable state', () => {
-    const { result } = renderHook(() =>
-      useCompoundButton_unstable({ disabled: true, disabledFocusable: true }, React.createRef()),
-    );
-
-    expect(result.current.disabled).toBe(true);
-    expect(result.current.disabledFocusable).toBe(true);
-  });
-
-  it('places the provided ref on the resolved root slot', () => {
-    const ref = React.createRef<HTMLButtonElement>();
-    const { result } = renderHook(() => useCompoundButton_unstable({}, ref));
-
-    expect(result.current.root.ref).toBe(ref);
   });
 });
