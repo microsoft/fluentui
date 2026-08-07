@@ -6204,6 +6204,7 @@ __metadata:
   resolution: "@fluentui/scripts-storybook@workspace:scripts/storybook"
   dependencies:
     "@fluentui/scripts-monorepo": "npm:*"
+    typescript: "npm:5.7.3"
   languageName: unknown
   linkType: soft
 

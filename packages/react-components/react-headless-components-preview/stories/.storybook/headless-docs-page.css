@@ -46,3 +46,30 @@
   box-shadow: #9b1f5a 0 -3px 0 0 inset !important;
   color: #9b1f5a !important;
 }
+
+#storybook-docs .headless-docs-page .docblock-argstable tr[title^='Hide Data attributes item'] > td > button + span,
+#storybook-docs .headless-docs-page .docblock-argstable tr[title^='Show Data attributes item'] > td > button + span {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#storybook-docs
+  .headless-docs-page
+  .docblock-argstable
+  tr[title^='Hide Data attributes item']
+  > td
+  > button
+  + span
+  > svg,
+#storybook-docs
+  .headless-docs-page
+  .docblock-argstable
+  tr[title^='Show Data attributes item']
+  > td
+  > button
+  + span
+  > svg {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
+}

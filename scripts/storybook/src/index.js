@@ -1,3 +1,4 @@
+const { getStateDataAttributes } = require('./getStateDataAttributes');
 const rules = require('./rules');
 const {
   getPackageStoriesGlob,
@@ -16,4 +17,5 @@ module.exports = {
   rules,
   getImportMappingsForExportToSandboxAddon,
   processBabelLoaderOptions,
+  getStateDataAttributes,
 };
