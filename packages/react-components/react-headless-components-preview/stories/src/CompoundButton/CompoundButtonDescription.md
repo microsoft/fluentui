@@ -8,9 +8,9 @@ The `contentContainer` slot groups the primary and secondary text, while `second
 
 State attributes are applied to the root, omitted when false, and form the supported CSS targeting contract.
 
-| Attribute                    | Meaning                                                                      | Value when present |
-| ---------------------------- | ---------------------------------------------------------------------------- | ------------------ |
-| `data-disabled`              | Disabled prop/state is active                                                | `""`               |
-| `data-disabled-focusable`    | Disabled-focusable state active                                              | `""`               |
-| `data-icon-only`             | Only icon content rendered                                                   | `""`               |
-| `data-has-secondary-content` | Normalized secondary-content slot is present and the button is not icon-only | `""`               |
+| Attribute                    | Meaning                                                                      |
+| ---------------------------- | ---------------------------------------------------------------------------- |
+| `data-disabled`              | Disabled prop/state is active                                                |
+| `data-disabled-focusable`    | Disabled-focusable state active                                              |
+| `data-icon-only`             | Only icon content rendered                                                   |
+| `data-has-secondary-content` | Normalized secondary-content slot is present and the button is not icon-only |
