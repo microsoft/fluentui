@@ -1,0 +1,259 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/Upgrading from v9" />
+
+# Upgrading from v9
+
+This page is for teams **already using Fluent UI v9** who are moving to the major release that
+replaces the runtime CSS-in-JS styling system (Griffel) with build-time CSS Modules + Tailwind v4.
+
+If you are coming from v8 or v0, start at
+[Migration / Getting started](?path=/docs/concepts-migration-getting-started--docs) instead — those
+guides cover a different jump.
+
+## What breaks, at a glance
+
+| #                                              | What changed                                                                  | Fails how?                                              |
+| ---------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [1](#1-install-and-import-the-theme-package)   | A theme stylesheet must be installed and imported                             | **Silently** — wrong metrics, unthemed values           |
+| [2](#2-token-css-variables-were-renamed)       | All 467 token CSS custom properties renamed to kebab-case                     | **Silently** — CSS custom properties fail without error |
+| [3](#3-theming-is-css-native-now)              | `FluentProvider`'s `theme` prop and the JS theming path are removed           | Compile error                                           |
+| [4](#4-class-name-targeting-of-internals)      | BEM statics removed; `*ClassNames` narrowed to `{ root }`                     | Compile error, **or silently** for global CSS           |
+| [5](#5-griffel-apis-are-no-longer-re-exported) | `makeStyles` / `mergeClasses` / `shorthands` no longer come from the umbrella | Compile error                                           |
+| [6](#6-fluentuireact-icons)                    | Icons moved to a headless build with its own stylesheet                       | Missing icon styling                                    |
+| [7](#7-commonjs-and-ssr-stylesheet-loading)    | CommonJS output does not `require` component CSS                              | **Silently** — unstyled components                      |
+
+Two of these fail **silently**, which is why they are first. CSS custom properties and missing
+stylesheets produce no error, no warning and no console message — the declaration is simply dropped
+and the browser renders something plausible-looking and wrong.
+
+---
+
+## 1. Install and import the theme package
+
+`@fluentui/react-components` no longer carries a styling runtime that emits document-level values at
+mount. Those values now live in a stylesheet you install and import once.
+
+```sh
+yarn add @fluentui/react-components @fluentui/react-tailwind-theme
+```
+
+```js
+// src/main.jsx — before your own styles
+import '@fluentui/react-tailwind-theme/styles.css';
+```
+
+That stylesheet carries the cascade `@layer` order, the token values (Web Light at `:root, :host`),
+the spacing/stroke scales and the shipped theme classes.
+
+**Symptom if you skip it:** components render, but with collapsed padding and gaps, no radii and no
+shadows — every `var(--…)` reference resolves to nothing. It does not throw.
+
+See [Quick start](?path=/docs/concepts-developer-quick-start--docs) for the full setup.
+
+## 2. Token CSS variables were renamed
+
+Every one of the 467 design-token custom properties was renamed from camelCase to kebab-case, and
+grouped under Tailwind v4 namespaces:
+
+```diff
+- color: var(--colorNeutralForeground1);
++ color: var(--color-neutral-foreground-1);
+
+- padding: var(--spacingHorizontalM);
++ padding: var(--spacing-horizontal-m);
+
+- border-width: var(--strokeWidthThin);
++ border-width: var(--stroke-width-thin);
+```
+
+**The old names no longer exist in any shipped CSS.** Nothing warns you: a `var()` referencing an
+undefined custom property makes the whole declaration invalid at computed-value time, and the
+element quietly falls back.
+
+The `tokens` object is unaffected — the JS names did not change, and each one now resolves to the
+new variable:
+
+```js
+import { tokens } from '@fluentui/react-components';
+
+tokens.colorNeutralForeground1; // 'var(--color-neutral-foreground-1)'  ← name unchanged, value updated
+```
+
+So the fix is confined to hand-written CSS/SCSS and to any place you interpolated a variable name as
+a string. The complete 467-row map, plus a find/replace script, is on the
+[Token rename](?path=/docs/concepts-migration-upgrading-from-v9-token-rename--docs) page.
+
+## 3. Theming is CSS-native now
+
+A theme is no longer a JavaScript object handed to a provider that builds and injects a rule at
+runtime. It is a **CSS class containing only custom-property declarations**.
+
+```diff
+- import { FluentProvider, webDarkTheme } from '@fluentui/react-components';
++ import '@fluentui/react-tailwind-theme/styles.css';
++ import { FluentProvider, webDarkThemeClassName } from '@fluentui/react-components';
+
+- <FluentProvider theme={webDarkTheme}>
++ <FluentProvider themeClassName={webDarkThemeClassName}>
+    <App />
+  </FluentProvider>
+```
+
+Every shipped theme has a `<name>ThemeClassName` counterpart, and Web Light is the `:root` default,
+so an app that used `webLightTheme` can drop the prop entirely.
+
+**Removed with no runtime replacement**, all of which are compile errors and therefore safe:
+
+| Removed                                                                                                                                                       | Replacement                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `FluentProvider`'s `theme` prop                                                                                                                               | `themeClassName`                                                                         |
+| `FluentProvider`'s `nonce` prop                                                                                                                               | Nothing to sign — no style element is created. Use CSP `style-src` for the `.css` assets |
+| `createCSSRuleFromTheme`, `useFluentProviderThemeStyleTag`                                                                                                    | Author a CSS class (see below)                                                           |
+| `ThemeContext_unstable`                                                                                                                                       | `useCssVarValue` from `@fluentui/react-utilities`                                        |
+| `webLightTheme` & co., `create*Theme`, `themeToTokensObject`, `Theme` / `PartialTheme` / `BrandVariants` types, from the umbrella and `@fluentui/react-theme` | Still exported by `@fluentui/tokens` as **build-time tooling input**                     |
+
+Full recipes — scoped theming, nested providers, portals, runtime dark-mode switching and a complete
+custom-brand-ramp walkthrough — are on the
+[Theming](?path=/docs/concepts-developer-theming--docs) page. Read the custom-theme section before
+you port a `createDarkTheme()` call; there is a fall-through rule that differs between light-derived
+and dark-derived themes.
+
+## 4. Class-name targeting of internals
+
+Components no longer render BEM static classes (`fui-Button`, `fui-Button__icon`). Each component
+stamps a single public identity marker on its outermost slot — `group/fui-<component>` — and the
+`*ClassNames` constants are narrowed to `{ root: string }` with `root` pointing at that marker.
+
+This is a **type change, not a deprecation**: on `master` there are 215 `*ClassNames` constants typed
+`SlotClassNames<…Slots>`; today there are 193 typed `{ root: string }`. Any reference to a non-root
+slot key is a TypeScript error on the exact line that would otherwise have gone silently dead.
+
+```diff
+- <div className={buttonClassNames.icon} />   // ❌ TS error: no such property
+```
+
+To style a slot, pass a `className` to the slot:
+
+```jsx
+<Button icon={{ className: styles.icon }} />
+```
+
+The marker contains a `/`, so it is **not** a valid CSS selector on its own. Use `fuiSelector()`:
+
+```diff
+- const selector = `.${buttonClassNames.root}`;   // invalid selector — throws or silently matches nothing
++ import { fuiSelector } from '@fluentui/react-components';
++ const selector = fuiSelector(buttonClassNames.root);
+```
+
+**This is the one step the type system cannot force**, because template-literal string building
+type-checks fine. Grep your codebase for `` `.${ `` before you start.
+
+Global stylesheets that targeted internals (`.fui-Button__icon { … }`) fail silently — the selector
+simply stops matching. Move those rules to slot `className` props, or target the marker plus the
+component's `data-*` state attributes. See
+[Styling components](?path=/docs/concepts-developer-styling-components--docs).
+
+## 5. Griffel APIs are no longer re-exported
+
+`makeStyles`, `makeResetStyles`, `makeStaticStyles`, `mergeClasses`, `shorthands`,
+`createDOMRenderer`, `RendererProvider`, `renderToStyleElements` and the `GriffelStyle` /
+`GriffelRenderer` / `GriffelResetStyle` types are **removed** from `@fluentui/react-components`,
+along with its `@griffel/react` dependency. The library no longer authors styles with Griffel.
+
+Two paths, both supported:
+
+**(a) Keep Griffel.** Add it as a direct dependency and change the import specifier — nothing else:
+
+```diff
+- import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components';
++ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+```
+
+```sh
+yarn add @griffel/react
+```
+
+Griffel injects its rules **unlayered**, and unlayered CSS beats every `fui.*` cascade layer, so your
+existing overrides keep winning exactly as before.
+
+**(b) Port to CSS Modules.** Same result, no runtime, no build transform:
+
+```diff
+- const useStyles = makeStyles({
+-   root: {
+-     display: 'flex',
+-     ...shorthands.borderRadius(tokens.borderRadiusMedium),
+-     color: tokens.colorNeutralForeground1,
+-     ':hover': { color: tokens.colorNeutralForeground1Hover },
+-   },
+- });
+-
+- const Component = () => {
+-   const styles = useStyles();
+-   return <div className={styles.root} />;
+- };
+```
+
+```css
+/* Component.module.css */
+.root {
+  display: flex;
+  border-radius: var(--radius-medium);
+  color: var(--color-neutral-foreground-1);
+}
+.root:hover {
+  color: var(--color-neutral-foreground-1-hover);
+}
+```
+
+```jsx
+import styles from './Component.module.css';
+
+const Component = () => <div className={styles.root} />;
+```
+
+## 6. `@fluentui/react-icons`
+
+Icons moved to a headless build: the package no longer styles itself with Griffel, and its rules
+ship as a stylesheet that `@fluentui/react-tailwind-theme` imports at `@layer fui.components.l1`.
+
+If you already did step 1, **there is nothing extra to import** — the icon CSS arrives through
+`@fluentui/react-tailwind-theme/styles.css`. What you do need is a matching icons version; see the
+release notes for the exact range.
+
+## 7. CommonJS and SSR stylesheet loading
+
+In the ESM output, importing a component brings its CSS with it — each package's `lib/**` modules
+side-effect-import their own `dist/styles.css`, and every component package sets
+`"sideEffects": ["**/*.css"]` so bundlers keep it.
+
+**The CommonJS output deliberately does not `require` any stylesheet.** If you consume
+`lib-commonjs` — most SSR setups, jest, some Node bundling paths — you must load each package's
+stylesheet yourself through its `./styles.css` export subpath. 61 packages declare one:
+
+```js
+// a <link>, or your bundler's client entry
+import '@fluentui/react-button/styles.css';
+import '@fluentui/react-menu/styles.css';
+```
+
+> **Known gap.** `@fluentui/react-components` itself exposes **no** `./styles.css` subpath — its
+> `exports` map is `{ ".", "./package.json", "./unstable" }` — so an umbrella-only CommonJS consumer
+> has no single stylesheet import today. Import the per-package subpaths for the components you use,
+> or consume the ESM build. This is tracked as an open item on the PR.
+
+---
+
+## Related pages
+
+- [Token rename](?path=/docs/concepts-migration-upgrading-from-v9-token-rename--docs) — the full
+  467-row map and a find/replace script
+- [Theming](?path=/docs/concepts-developer-theming--docs) — custom themes, scoped themes, runtime
+  theme switching
+- [Styling components](?path=/docs/concepts-developer-styling-components--docs) — the styling
+  contract, cascade layers, `data-*` state attributes
+- [Quick start](?path=/docs/concepts-developer-quick-start--docs) — install and setup
+- [Advanced styling techniques](?path=/docs/concepts-developer-advanced-styling-techniques--docs) —
+  layer ordering for Tailwind-using apps

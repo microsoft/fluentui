@@ -51,3 +51,39 @@ const DefaultOpenMenu = () => {
   );
 };
 ```
+
+## Theming portals
+
+Portal content is rendered outside your React tree's DOM position, so it does not inherit anything
+from the ancestors it appears under in JSX. Theming still works, because `FluentProvider` propagates
+its resolved theme class onto the portal mount node.
+
+What that means in practice:
+
+- **A `<FluentProvider themeClassName={…}>` themes the popovers, menus, dialogs and tooltips opened
+  from inside it.** The mount node carries the provider's class, so the custom properties cascade
+  into the portal exactly as they do into the inline subtree.
+- **Nested providers inherit.** A `<FluentProvider />` with no `themeClassName` resolves to its
+  closest ancestor provider's class, and portals opened from within it follow that. Pass a different
+  class to re-theme just that part of the tree, portals included.
+- **A custom theme class propagates identically** — nothing about the mechanism is specific to the
+  shipped themes. It is a class name being copied onto the mount node.
+- **Outside any provider**, there is no class to copy, and the portal resolves the `:root` Web Light
+  defaults from `@fluentui/react-tailwind-theme/styles.css`. That is a valid, themed result — not an
+  unstyled one.
+
+The case that needs care is a portal target **you** create and mount outside every `FluentProvider`
+— a container appended to `document.body` by non-Fluent code, for example. Nothing copies a class
+onto it, so it gets the `:root` defaults regardless of what theme the rest of your app is showing.
+Put the theme class on the container yourself:
+
+```jsx
+import { webDarkThemeClassName } from '@fluentui/react-components';
+
+const container = document.createElement('div');
+container.classList.add(webDarkThemeClassName);
+document.body.appendChild(container);
+```
+
+Or, more simply, apply your app's theme class to `<html>` so there is no un-themed region of the
+document at all. See [Theming](?path=/docs/concepts-developer-theming--docs).

@@ -166,9 +166,12 @@ styling globally is through theme tokens, which are CSS custom properties. Refer
 }
 ```
 
-`FluentProvider` sets those custom properties on its own element and updates them when the theme changes, so
-only the variables change — the rules never do. That is also why per-provider and nested-provider theming work
-unchanged.
+Those custom properties come from `@fluentui/react-tailwind-theme`'s stylesheet: Web Light values at
+`:root, :host`, and one CSS class per shipped theme. `FluentProvider` applies a **class** — it does
+not write any values itself — so changing theme swaps a class name and only the variables change;
+the rules never do. That is also why per-provider, nested-provider and portal theming work by
+inheritance: a custom property set on an ancestor cascades. See
+[Theming](?path=/docs/concepts-developer-theming--docs).
 
 If you are generating styles from JavaScript and need the token _names_, the `tokens` object still exports
 them:
@@ -239,13 +242,72 @@ struck-through declarations show you exactly which layer won.
 If a rule you wrote is losing, check the layer label first — a rule inside `fui.components.l1` losing to one in
 `fui.components.l4` is working as designed.
 
-### Still using `makeStyles`?
+### Migrating off `makeStyles`
 
-`makeStyles`, `makeResetStyles`, `mergeClasses` and `shorthands` are still exported from
-`@fluentui/react-components`, so existing app code keeps working. They come from
-[Griffel](https://griffel.js.org), which the library used to author its own styles with and no longer does.
+`makeStyles`, `makeResetStyles`, `makeStaticStyles`, `mergeClasses`, `shorthands`,
+`createDOMRenderer`, `RendererProvider`, `renderToStyleElements`, `__css`, `__resetCSS`,
+`__resetStyles`, `__styles` and the `GriffelStyle` / `GriffelRenderer` / `GriffelResetStyle` types
+are **removed** from `@fluentui/react-components`, together with its `@griffel/react` dependency.
+They came from [Griffel](https://griffel.js.org), which the library used to author its own styles
+with and no longer does. Removing the re-export is part of the same major-version break.
 
-They remain a supported escape hatch, with one thing worth knowing: Griffel injects its rules **unlayered**, so
-a class from `makeStyles` beats every Fluent layer — your existing overrides still win. For new code, prefer
-plain CSS or CSS Modules; you get the same result with no runtime, no build transform, and DevTools that can
-explain the outcome.
+There are two supported paths, and you can mix them per file.
+
+**Keep Griffel.** Add it as a direct dependency and change the import specifier — nothing else about
+your styles changes:
+
+```sh
+yarn add @griffel/react
+```
+
+```diff
+- import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components';
++ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+```
+
+Griffel injects its rules **unlayered**, and unlayered CSS beats every `fui.*` layer, so overrides
+you already wrote keep winning exactly as they did.
+
+**Port to CSS Modules.** The same result with no runtime, no build transform, and DevTools that can
+explain the outcome:
+
+```diff
+- const useStyles = makeStyles({
+-   root: {
+-     display: 'flex',
+-     ...shorthands.borderRadius(tokens.borderRadiusMedium),
+-     ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
+-     color: tokens.colorNeutralForeground1,
+-     ':hover': { color: tokens.colorNeutralForeground1Hover },
+-   },
+- });
+-
+- const Card = () => {
+-   const styles = useStyles();
+-   return <div className={styles.root} />;
+- };
+```
+
+```css
+/* Card.module.css */
+.root {
+  display: flex;
+  border-radius: var(--radius-medium);
+  padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
+  color: var(--color-neutral-foreground-1);
+}
+
+.root:hover {
+  color: var(--color-neutral-foreground-1-hover);
+}
+```
+
+```jsx
+import styles from './Card.module.css';
+
+const Card = () => <div className={styles.root} />;
+```
+
+Note the token names: the CSS custom properties are kebab-case, while the `tokens` **object** keys
+are unchanged. See
+[Upgrading from v9](?path=/docs/concepts-migration-upgrading-from-v9--docs) for the full map.

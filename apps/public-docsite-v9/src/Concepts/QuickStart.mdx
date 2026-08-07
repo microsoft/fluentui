@@ -81,8 +81,9 @@ ReactDOM.render(
 
 ## Usage
 
-That's it. You can now use Fluent UI components in your app. You never import a component stylesheet
-yourself — importing the component brings its CSS with it.
+That's it. You can now use Fluent UI components in your app. With a bundler consuming the ESM build —
+Vite, webpack, Next.js, Remix, Parcel, esbuild — you never import a component stylesheet yourself:
+importing the component brings its CSS with it.
 
 ```jsx
 import React from 'react';
@@ -93,6 +94,38 @@ export default () => <Button appearance="primary">Get started</Button>;
 
 To restyle a component, pass a class name to it or to one of its slots — your own CSS wins over Fluent's by
 default. See [Styling components](?path=/docs/concepts-developer-styling-components--docs).
+
+### Loading stylesheets
+
+There are three delivery paths, and only the first is automatic.
+
+**1. The theme stylesheet — always, in every setup.** `@fluentui/react-tailwind-theme/styles.css`,
+imported once per document (step 1 above). Nothing imports it for you.
+
+**2. Component CSS via a bundler (ESM).** Each package's `lib/**` modules side-effect-import their own
+`dist/styles.css`, and every component package declares `"sideEffects": ["**/*.css"]` so bundlers
+keep those imports through tree-shaking. Import the component, get the CSS. No action needed.
+
+**3. Component CSS in CommonJS / SSR — you must load it yourself.** The `lib-commonjs` output
+deliberately contains **no** stylesheet `require`, because a Node `require()` of a `.css` file is not
+meaningful. If your runtime resolves Fluent through `require` — most SSR setups, jest, some Node
+bundling paths — load each package's stylesheet through its `./styles.css` export subpath:
+
+```js
+// a <link> in your document shell, or your bundler's client entry
+import '@fluentui/react-button/styles.css';
+import '@fluentui/react-menu/styles.css';
+```
+
+61 packages declare that subpath; import the ones you actually use.
+
+> **Known gap:** `@fluentui/react-components` itself does **not** expose a `./styles.css` subpath, so
+> there is no single umbrella stylesheet import for a CommonJS consumer today. Use the per-package
+> subpaths, or consume the ESM build.
+
+**Symptoms.** Missing theme stylesheet (path 1) &rarr; components keep their colors but lose spacing,
+radii and shadows. Missing component CSS (path 3) &rarr; components render as unstyled markup. Neither
+throws.
 
 ### Strict mode
 

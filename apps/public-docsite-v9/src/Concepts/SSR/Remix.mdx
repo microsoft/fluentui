@@ -213,6 +213,7 @@ This warning occurs in development due to [React's StrictMode double rendering](
 > `fluentui-insertion-point` meta tag, the style-injecting transform stream in `entry.server.tsx`,
 > and `@griffel/vite-plugin` all existed to extract Griffel CSS-in-JS rules. Fluent's components no
 > longer produce any, so all of it can simply be deleted. If your own application still authors
-> styles with the deprecated `makeStyles` re-export, Griffel's
+> Griffel styles — which now requires a direct `@griffel/react` dependency, since
+> `@fluentui/react-components` no longer re-exports any Griffel API — Griffel's
 > [SSR guide](https://griffel.js.org/react/guides/ssr-usage) covers those rules until you migrate
 > them to CSS.

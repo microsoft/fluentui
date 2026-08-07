@@ -175,16 +175,19 @@ Applications should make the best decisions for their styles, determining when a
 
 ```tsx
 export const useSmancyCustomButtonStyles = (state: unknown) => {
-  const buttonState = state as ButtonState;
+  let buttonState = state as ButtonState;
 
   // "Fancy" comes first
-  useFancyButtonStyles(buttonState);
+  buttonState = useFancyButtonStyles(buttonState);
   // "Smart" comes second, so it will win where there are conflicts
-  useSmartButtonStyles(buttonState);
+  buttonState = useSmartButtonStyles(buttonState);
+
+  // A custom style hook returns the state it wants rendered — see the note above.
+  return buttonState;
 };
 
 export const SMANCY_CUSTOM_STYLE_HOOKS: CustomStyleHooksContextValue = {
-  useButtonStyles_unstable: useAppCustomButtonStyles,
+  useButtonStyles_unstable: useSmancyCustomButtonStyles,
   // ... more component style overrides
 };
 ```
@@ -195,11 +198,8 @@ And finally the App code can be simplified:
 export function App() {
   return (
     <FluentProvider themeClassName={webLightThemeClassName}>
-      <CustomStyleHooksProvider_unstable
-        value={SMANCY_CUSTOM_STYLE_HOOKS}
-      >
-          {/* application code ... */}
-        </CustomStyleHooksProvider_unstable>
+      <CustomStyleHooksProvider_unstable value={SMANCY_CUSTOM_STYLE_HOOKS}>
+        {/* application code ... */}
       </CustomStyleHooksProvider_unstable>
     </FluentProvider>
   );

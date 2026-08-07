@@ -74,6 +74,7 @@ server.listen(3000, 'localhost');
 > **Migrating from an older setup?** `RendererProvider`, `createDOMRenderer` and
 > `renderToStyleElements` existed to extract [Griffel](https://griffel.js.org) CSS-in-JS rules
 > during SSR. Fluent's components no longer produce any, so that plumbing can simply be deleted. If
-> your own application still authors styles with the deprecated `makeStyles` re-export, Griffel's
-> own [SSR guide](https://griffel.js.org/react/guides/ssr-usage) covers extracting those rules until
-> you migrate them to CSS.
+> your own application still authors Griffel styles — which now requires a direct
+> `@griffel/react` dependency, since `@fluentui/react-components` no longer re-exports any Griffel
+> API — Griffel's own [SSR guide](https://griffel.js.org/react/guides/ssr-usage) covers extracting
+> those rules until you migrate them to CSS.

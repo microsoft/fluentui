@@ -1,0 +1,591 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/Upgrading from v9/Token rename" />
+
+# Token rename: camelCase &rarr; kebab-case
+
+All **467** Fluent design tokens changed their **CSS custom property** name in this
+major release. The JavaScript `tokens` object is unaffected — same key names, updated values.
+
+## Read this first: it fails silently
+
+A `var()` that references an undefined custom property does not throw, does not warn, and does not
+log. The declaration becomes invalid at computed-value time and the property falls back to its
+inherited or initial value. Your app keeps running and renders something plausible.
+
+```css
+/* Your stylesheet, unchanged. No error anywhere. */
+.my-card {
+  color: var(--colorNeutralForeground1); /* ← undefined now: this line does nothing */
+  padding: var(--spacingHorizontalM); /* ← undefined now: padding collapses to 0 */
+}
+```
+
+That is why this page exists as a mechanical find/replace rather than a "look out for" note. Run the
+script below over your sources; do not rely on visual review.
+
+## What did not change
+
+```js
+import { tokens } from '@fluentui/react-components';
+
+tokens.colorNeutralForeground1; // key unchanged; now returns 'var(--color-neutral-foreground-1)'
+```
+
+Anything reading tokens through the `tokens` object — inline `style` props, canvas fills,
+third-party colour APIs — needs **no change at all**. Only literal `--name` text needs rewriting:
+hand-written `.css` / `.scss`, `styled`/template-literal CSS, and anywhere you built a variable
+name as a string.
+
+## The naming rule
+
+Names were aligned to Tailwind v4's theme namespaces, which is why some families also changed prefix
+(`--borderRadius*` &rarr; `--radius-*`, `--fontSize*` &rarr; `--text-*`,
+`--lineHeight*` &rarr; `--leading-*`, `--curve*` &rarr; `--ease-*`).
+
+| Tailwind namespace | Tokens | Example                                                           |
+| ------------------ | -----: | ----------------------------------------------------------------- |
+| `--color-*`        |    366 | `--colorNeutralForeground1` &rarr; `--color-neutral-foreground-1` |
+| `--spacing-*`      |     22 | `--spacingHorizontalNone` &rarr; `--spacing-horizontal-none`      |
+| `--shadow-*`       |     12 | `--shadow2` &rarr; `--shadow-2`                                   |
+| `--radius-*`       |     11 | `--borderRadiusNone` &rarr; `--radius-none`                       |
+| `--text-*`         |     10 | `--fontSizeBase100` &rarr; `--text-base-100`                      |
+| `--leading-*`      |     10 | `--lineHeightBase100` &rarr; `--leading-base-100`                 |
+| `--ease-*`         |      9 | `--curveAccelerateMax` &rarr; `--ease-accelerate-max`             |
+| `--duration-*`     |      8 | `--durationUltraFast` &rarr; `--duration-ultra-fast`              |
+| `--z-*`            |      8 | `--zIndexBackground` &rarr; `--z-index-background`                |
+| `--font-*`         |      7 | `--fontFamilyBase` &rarr; `--font-base`                           |
+| `--stroke-*`       |      4 | `--strokeWidthThin` &rarr; `--stroke-width-thin`                  |
+
+## Find and replace
+
+The complete map ships in this repository as machine-readable JSON at
+`migration/griffel-to-tailwind/reports/token-rename-map.json`. This script applies it to a source
+tree. Two details matter and both are in the map's own description: a `(?![A-Za-z0-9-])` boundary,
+so `--colorNeutralForeground1` never rewrites the prefix of `--colorNeutralForeground1Hover`; and
+longest-name-first ordering as a second guard on the same hazard.
+
+```js
+// rename-fluent-tokens.mjs — node rename-fluent-tokens.mjs ./src
+import fs from 'node:fs';
+import path from 'node:path';
+
+const map = JSON.parse(fs.readFileSync('./token-rename-map.json', 'utf8'));
+const pairs = map.tokens.map(t => [t.oldVar, t.newVar]).sort((a, b) => b[0].length - a[0].length); // longest first
+
+const EXTS = new Set(['.css', '.scss', '.sass', '.less', '.ts', '.tsx', '.js', '.jsx', '.mdx', '.html']);
+
+let changedFiles = 0;
+let changedRefs = 0;
+
+const walk = dir => {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name === 'node_modules' || entry.name.startsWith('.')) continue;
+    const p = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      walk(p);
+      continue;
+    }
+    if (!EXTS.has(path.extname(entry.name))) continue;
+
+    const before = fs.readFileSync(p, 'utf8');
+    let after = before;
+    for (const [oldVar, newVar] of pairs) {
+      const re = new RegExp(oldVar + '(?![A-Za-z0-9-])', 'g');
+      after = after.replace(re, m => (changedRefs++, newVar));
+    }
+    if (after !== before) {
+      fs.writeFileSync(p, after);
+      changedFiles++;
+    }
+  }
+};
+
+walk(process.argv[2] ?? './src');
+console.log(`rewrote ${changedRefs} references across ${changedFiles} files`);
+```
+
+**Check for leftovers afterwards.** Any surviving `--` name in camelCase is either a Fluent token the
+script missed or one of your own:
+
+```sh
+grep -rnE -- '--[a-z]+[A-Z]' src/
+```
+
+> **One exception you may hit:** `@fluentui/web-components` and `@fluentui/chart-web-components`
+> are a separate system that defines its **own** camelCase variables. Those are not Fluent React
+> tokens and must be left alone — exclude those paths if your app uses both.
+
+## The complete map
+
+467 tokens, alphabetical by JS name.
+
+| Token (JS name)                              | Old CSS variable                               | New CSS variable                                    |
+| -------------------------------------------- | ---------------------------------------------- | --------------------------------------------------- |
+| `borderRadius2XLarge`                        | `--borderRadius2XLarge`                        | `--radius-2-x-large`                                |
+| `borderRadius3XLarge`                        | `--borderRadius3XLarge`                        | `--radius-3-x-large`                                |
+| `borderRadius4XLarge`                        | `--borderRadius4XLarge`                        | `--radius-4-x-large`                                |
+| `borderRadius5XLarge`                        | `--borderRadius5XLarge`                        | `--radius-5-x-large`                                |
+| `borderRadius6XLarge`                        | `--borderRadius6XLarge`                        | `--radius-6-x-large`                                |
+| `borderRadiusCircular`                       | `--borderRadiusCircular`                       | `--radius-circular`                                 |
+| `borderRadiusLarge`                          | `--borderRadiusLarge`                          | `--radius-large`                                    |
+| `borderRadiusMedium`                         | `--borderRadiusMedium`                         | `--radius-medium`                                   |
+| `borderRadiusNone`                           | `--borderRadiusNone`                           | `--radius-none`                                     |
+| `borderRadiusSmall`                          | `--borderRadiusSmall`                          | `--radius-small`                                    |
+| `borderRadiusXLarge`                         | `--borderRadiusXLarge`                         | `--radius-x-large`                                  |
+| `colorBackgroundOverlay`                     | `--colorBackgroundOverlay`                     | `--color-background-overlay`                        |
+| `colorBrandBackground`                       | `--colorBrandBackground`                       | `--color-brand-background`                          |
+| `colorBrandBackground2`                      | `--colorBrandBackground2`                      | `--color-brand-background-2`                        |
+| `colorBrandBackground2Hover`                 | `--colorBrandBackground2Hover`                 | `--color-brand-background-2-hover`                  |
+| `colorBrandBackground2Pressed`               | `--colorBrandBackground2Pressed`               | `--color-brand-background-2-pressed`                |
+| `colorBrandBackground3Static`                | `--colorBrandBackground3Static`                | `--color-brand-background-3-static`                 |
+| `colorBrandBackground4Static`                | `--colorBrandBackground4Static`                | `--color-brand-background-4-static`                 |
+| `colorBrandBackgroundHover`                  | `--colorBrandBackgroundHover`                  | `--color-brand-background-hover`                    |
+| `colorBrandBackgroundInverted`               | `--colorBrandBackgroundInverted`               | `--color-brand-background-inverted`                 |
+| `colorBrandBackgroundInvertedHover`          | `--colorBrandBackgroundInvertedHover`          | `--color-brand-background-inverted-hover`           |
+| `colorBrandBackgroundInvertedPressed`        | `--colorBrandBackgroundInvertedPressed`        | `--color-brand-background-inverted-pressed`         |
+| `colorBrandBackgroundInvertedSelected`       | `--colorBrandBackgroundInvertedSelected`       | `--color-brand-background-inverted-selected`        |
+| `colorBrandBackgroundPressed`                | `--colorBrandBackgroundPressed`                | `--color-brand-background-pressed`                  |
+| `colorBrandBackgroundSelected`               | `--colorBrandBackgroundSelected`               | `--color-brand-background-selected`                 |
+| `colorBrandBackgroundStatic`                 | `--colorBrandBackgroundStatic`                 | `--color-brand-background-static`                   |
+| `colorBrandForeground1`                      | `--colorBrandForeground1`                      | `--color-brand-foreground-1`                        |
+| `colorBrandForeground2`                      | `--colorBrandForeground2`                      | `--color-brand-foreground-2`                        |
+| `colorBrandForeground2Hover`                 | `--colorBrandForeground2Hover`                 | `--color-brand-foreground-2-hover`                  |
+| `colorBrandForeground2Pressed`               | `--colorBrandForeground2Pressed`               | `--color-brand-foreground-2-pressed`                |
+| `colorBrandForegroundInverted`               | `--colorBrandForegroundInverted`               | `--color-brand-foreground-inverted`                 |
+| `colorBrandForegroundInvertedHover`          | `--colorBrandForegroundInvertedHover`          | `--color-brand-foreground-inverted-hover`           |
+| `colorBrandForegroundInvertedPressed`        | `--colorBrandForegroundInvertedPressed`        | `--color-brand-foreground-inverted-pressed`         |
+| `colorBrandForegroundLink`                   | `--colorBrandForegroundLink`                   | `--color-brand-foreground-link`                     |
+| `colorBrandForegroundLinkHover`              | `--colorBrandForegroundLinkHover`              | `--color-brand-foreground-link-hover`               |
+| `colorBrandForegroundLinkPressed`            | `--colorBrandForegroundLinkPressed`            | `--color-brand-foreground-link-pressed`             |
+| `colorBrandForegroundLinkSelected`           | `--colorBrandForegroundLinkSelected`           | `--color-brand-foreground-link-selected`            |
+| `colorBrandForegroundOnLight`                | `--colorBrandForegroundOnLight`                | `--color-brand-foreground-on-light`                 |
+| `colorBrandForegroundOnLightHover`           | `--colorBrandForegroundOnLightHover`           | `--color-brand-foreground-on-light-hover`           |
+| `colorBrandForegroundOnLightPressed`         | `--colorBrandForegroundOnLightPressed`         | `--color-brand-foreground-on-light-pressed`         |
+| `colorBrandForegroundOnLightSelected`        | `--colorBrandForegroundOnLightSelected`        | `--color-brand-foreground-on-light-selected`        |
+| `colorBrandShadowAmbient`                    | `--colorBrandShadowAmbient`                    | `--color-brand-shadow-ambient`                      |
+| `colorBrandShadowKey`                        | `--colorBrandShadowKey`                        | `--color-brand-shadow-key`                          |
+| `colorBrandStroke1`                          | `--colorBrandStroke1`                          | `--color-brand-stroke-1`                            |
+| `colorBrandStroke2`                          | `--colorBrandStroke2`                          | `--color-brand-stroke-2`                            |
+| `colorBrandStroke2Contrast`                  | `--colorBrandStroke2Contrast`                  | `--color-brand-stroke-2-contrast`                   |
+| `colorBrandStroke2Hover`                     | `--colorBrandStroke2Hover`                     | `--color-brand-stroke-2-hover`                      |
+| `colorBrandStroke2Pressed`                   | `--colorBrandStroke2Pressed`                   | `--color-brand-stroke-2-pressed`                    |
+| `colorCompoundBrandBackground`               | `--colorCompoundBrandBackground`               | `--color-compound-brand-background`                 |
+| `colorCompoundBrandBackgroundHover`          | `--colorCompoundBrandBackgroundHover`          | `--color-compound-brand-background-hover`           |
+| `colorCompoundBrandBackgroundPressed`        | `--colorCompoundBrandBackgroundPressed`        | `--color-compound-brand-background-pressed`         |
+| `colorCompoundBrandForeground1`              | `--colorCompoundBrandForeground1`              | `--color-compound-brand-foreground-1`               |
+| `colorCompoundBrandForeground1Hover`         | `--colorCompoundBrandForeground1Hover`         | `--color-compound-brand-foreground-1-hover`         |
+| `colorCompoundBrandForeground1Pressed`       | `--colorCompoundBrandForeground1Pressed`       | `--color-compound-brand-foreground-1-pressed`       |
+| `colorCompoundBrandStroke`                   | `--colorCompoundBrandStroke`                   | `--color-compound-brand-stroke`                     |
+| `colorCompoundBrandStrokeHover`              | `--colorCompoundBrandStrokeHover`              | `--color-compound-brand-stroke-hover`               |
+| `colorCompoundBrandStrokePressed`            | `--colorCompoundBrandStrokePressed`            | `--color-compound-brand-stroke-pressed`             |
+| `colorNeutralBackground1`                    | `--colorNeutralBackground1`                    | `--color-neutral-background-1`                      |
+| `colorNeutralBackground1Hover`               | `--colorNeutralBackground1Hover`               | `--color-neutral-background-1-hover`                |
+| `colorNeutralBackground1Pressed`             | `--colorNeutralBackground1Pressed`             | `--color-neutral-background-1-pressed`              |
+| `colorNeutralBackground1Selected`            | `--colorNeutralBackground1Selected`            | `--color-neutral-background-1-selected`             |
+| `colorNeutralBackground2`                    | `--colorNeutralBackground2`                    | `--color-neutral-background-2`                      |
+| `colorNeutralBackground2Hover`               | `--colorNeutralBackground2Hover`               | `--color-neutral-background-2-hover`                |
+| `colorNeutralBackground2Pressed`             | `--colorNeutralBackground2Pressed`             | `--color-neutral-background-2-pressed`              |
+| `colorNeutralBackground2Selected`            | `--colorNeutralBackground2Selected`            | `--color-neutral-background-2-selected`             |
+| `colorNeutralBackground3`                    | `--colorNeutralBackground3`                    | `--color-neutral-background-3`                      |
+| `colorNeutralBackground3Hover`               | `--colorNeutralBackground3Hover`               | `--color-neutral-background-3-hover`                |
+| `colorNeutralBackground3Pressed`             | `--colorNeutralBackground3Pressed`             | `--color-neutral-background-3-pressed`              |
+| `colorNeutralBackground3Selected`            | `--colorNeutralBackground3Selected`            | `--color-neutral-background-3-selected`             |
+| `colorNeutralBackground4`                    | `--colorNeutralBackground4`                    | `--color-neutral-background-4`                      |
+| `colorNeutralBackground4Hover`               | `--colorNeutralBackground4Hover`               | `--color-neutral-background-4-hover`                |
+| `colorNeutralBackground4Pressed`             | `--colorNeutralBackground4Pressed`             | `--color-neutral-background-4-pressed`              |
+| `colorNeutralBackground4Selected`            | `--colorNeutralBackground4Selected`            | `--color-neutral-background-4-selected`             |
+| `colorNeutralBackground5`                    | `--colorNeutralBackground5`                    | `--color-neutral-background-5`                      |
+| `colorNeutralBackground5Hover`               | `--colorNeutralBackground5Hover`               | `--color-neutral-background-5-hover`                |
+| `colorNeutralBackground5Pressed`             | `--colorNeutralBackground5Pressed`             | `--color-neutral-background-5-pressed`              |
+| `colorNeutralBackground5Selected`            | `--colorNeutralBackground5Selected`            | `--color-neutral-background-5-selected`             |
+| `colorNeutralBackground6`                    | `--colorNeutralBackground6`                    | `--color-neutral-background-6`                      |
+| `colorNeutralBackground7`                    | `--colorNeutralBackground7`                    | `--color-neutral-background-7`                      |
+| `colorNeutralBackground7Hover`               | `--colorNeutralBackground7Hover`               | `--color-neutral-background-7-hover`                |
+| `colorNeutralBackground7Pressed`             | `--colorNeutralBackground7Pressed`             | `--color-neutral-background-7-pressed`              |
+| `colorNeutralBackground7Selected`            | `--colorNeutralBackground7Selected`            | `--color-neutral-background-7-selected`             |
+| `colorNeutralBackground8`                    | `--colorNeutralBackground8`                    | `--color-neutral-background-8`                      |
+| `colorNeutralBackgroundAlpha`                | `--colorNeutralBackgroundAlpha`                | `--color-neutral-background-alpha`                  |
+| `colorNeutralBackgroundAlpha2`               | `--colorNeutralBackgroundAlpha2`               | `--color-neutral-background-alpha-2`                |
+| `colorNeutralBackgroundDisabled`             | `--colorNeutralBackgroundDisabled`             | `--color-neutral-background-disabled`               |
+| `colorNeutralBackgroundDisabled2`            | `--colorNeutralBackgroundDisabled2`            | `--color-neutral-background-disabled-2`             |
+| `colorNeutralBackgroundInverted`             | `--colorNeutralBackgroundInverted`             | `--color-neutral-background-inverted`               |
+| `colorNeutralBackgroundInvertedDisabled`     | `--colorNeutralBackgroundInvertedDisabled`     | `--color-neutral-background-inverted-disabled`      |
+| `colorNeutralBackgroundInvertedHover`        | `--colorNeutralBackgroundInvertedHover`        | `--color-neutral-background-inverted-hover`         |
+| `colorNeutralBackgroundInvertedPressed`      | `--colorNeutralBackgroundInvertedPressed`      | `--color-neutral-background-inverted-pressed`       |
+| `colorNeutralBackgroundInvertedSelected`     | `--colorNeutralBackgroundInvertedSelected`     | `--color-neutral-background-inverted-selected`      |
+| `colorNeutralBackgroundStatic`               | `--colorNeutralBackgroundStatic`               | `--color-neutral-background-static`                 |
+| `colorNeutralCardBackground`                 | `--colorNeutralCardBackground`                 | `--color-neutral-card-background`                   |
+| `colorNeutralCardBackgroundDisabled`         | `--colorNeutralCardBackgroundDisabled`         | `--color-neutral-card-background-disabled`          |
+| `colorNeutralCardBackgroundHover`            | `--colorNeutralCardBackgroundHover`            | `--color-neutral-card-background-hover`             |
+| `colorNeutralCardBackgroundPressed`          | `--colorNeutralCardBackgroundPressed`          | `--color-neutral-card-background-pressed`           |
+| `colorNeutralCardBackgroundSelected`         | `--colorNeutralCardBackgroundSelected`         | `--color-neutral-card-background-selected`          |
+| `colorNeutralForeground1`                    | `--colorNeutralForeground1`                    | `--color-neutral-foreground-1`                      |
+| `colorNeutralForeground1Hover`               | `--colorNeutralForeground1Hover`               | `--color-neutral-foreground-1-hover`                |
+| `colorNeutralForeground1Pressed`             | `--colorNeutralForeground1Pressed`             | `--color-neutral-foreground-1-pressed`              |
+| `colorNeutralForeground1Selected`            | `--colorNeutralForeground1Selected`            | `--color-neutral-foreground-1-selected`             |
+| `colorNeutralForeground1Static`              | `--colorNeutralForeground1Static`              | `--color-neutral-foreground-1-static`               |
+| `colorNeutralForeground2`                    | `--colorNeutralForeground2`                    | `--color-neutral-foreground-2`                      |
+| `colorNeutralForeground2BrandHover`          | `--colorNeutralForeground2BrandHover`          | `--color-neutral-foreground-2-brand-hover`          |
+| `colorNeutralForeground2BrandPressed`        | `--colorNeutralForeground2BrandPressed`        | `--color-neutral-foreground-2-brand-pressed`        |
+| `colorNeutralForeground2BrandSelected`       | `--colorNeutralForeground2BrandSelected`       | `--color-neutral-foreground-2-brand-selected`       |
+| `colorNeutralForeground2Hover`               | `--colorNeutralForeground2Hover`               | `--color-neutral-foreground-2-hover`                |
+| `colorNeutralForeground2Link`                | `--colorNeutralForeground2Link`                | `--color-neutral-foreground-2-link`                 |
+| `colorNeutralForeground2LinkHover`           | `--colorNeutralForeground2LinkHover`           | `--color-neutral-foreground-2-link-hover`           |
+| `colorNeutralForeground2LinkPressed`         | `--colorNeutralForeground2LinkPressed`         | `--color-neutral-foreground-2-link-pressed`         |
+| `colorNeutralForeground2LinkSelected`        | `--colorNeutralForeground2LinkSelected`        | `--color-neutral-foreground-2-link-selected`        |
+| `colorNeutralForeground2Pressed`             | `--colorNeutralForeground2Pressed`             | `--color-neutral-foreground-2-pressed`              |
+| `colorNeutralForeground2Selected`            | `--colorNeutralForeground2Selected`            | `--color-neutral-foreground-2-selected`             |
+| `colorNeutralForeground3`                    | `--colorNeutralForeground3`                    | `--color-neutral-foreground-3`                      |
+| `colorNeutralForeground3BrandHover`          | `--colorNeutralForeground3BrandHover`          | `--color-neutral-foreground-3-brand-hover`          |
+| `colorNeutralForeground3BrandPressed`        | `--colorNeutralForeground3BrandPressed`        | `--color-neutral-foreground-3-brand-pressed`        |
+| `colorNeutralForeground3BrandSelected`       | `--colorNeutralForeground3BrandSelected`       | `--color-neutral-foreground-3-brand-selected`       |
+| `colorNeutralForeground3Hover`               | `--colorNeutralForeground3Hover`               | `--color-neutral-foreground-3-hover`                |
+| `colorNeutralForeground3Pressed`             | `--colorNeutralForeground3Pressed`             | `--color-neutral-foreground-3-pressed`              |
+| `colorNeutralForeground3Selected`            | `--colorNeutralForeground3Selected`            | `--color-neutral-foreground-3-selected`             |
+| `colorNeutralForeground4`                    | `--colorNeutralForeground4`                    | `--color-neutral-foreground-4`                      |
+| `colorNeutralForeground5`                    | `--colorNeutralForeground5`                    | `--color-neutral-foreground-5`                      |
+| `colorNeutralForeground5Hover`               | `--colorNeutralForeground5Hover`               | `--color-neutral-foreground-5-hover`                |
+| `colorNeutralForeground5Pressed`             | `--colorNeutralForeground5Pressed`             | `--color-neutral-foreground-5-pressed`              |
+| `colorNeutralForeground5Selected`            | `--colorNeutralForeground5Selected`            | `--color-neutral-foreground-5-selected`             |
+| `colorNeutralForegroundDisabled`             | `--colorNeutralForegroundDisabled`             | `--color-neutral-foreground-disabled`               |
+| `colorNeutralForegroundInverted`             | `--colorNeutralForegroundInverted`             | `--color-neutral-foreground-inverted`               |
+| `colorNeutralForegroundInverted2`            | `--colorNeutralForegroundInverted2`            | `--color-neutral-foreground-inverted-2`             |
+| `colorNeutralForegroundInvertedDisabled`     | `--colorNeutralForegroundInvertedDisabled`     | `--color-neutral-foreground-inverted-disabled`      |
+| `colorNeutralForegroundInvertedHover`        | `--colorNeutralForegroundInvertedHover`        | `--color-neutral-foreground-inverted-hover`         |
+| `colorNeutralForegroundInvertedLink`         | `--colorNeutralForegroundInvertedLink`         | `--color-neutral-foreground-inverted-link`          |
+| `colorNeutralForegroundInvertedLinkHover`    | `--colorNeutralForegroundInvertedLinkHover`    | `--color-neutral-foreground-inverted-link-hover`    |
+| `colorNeutralForegroundInvertedLinkPressed`  | `--colorNeutralForegroundInvertedLinkPressed`  | `--color-neutral-foreground-inverted-link-pressed`  |
+| `colorNeutralForegroundInvertedLinkSelected` | `--colorNeutralForegroundInvertedLinkSelected` | `--color-neutral-foreground-inverted-link-selected` |
+| `colorNeutralForegroundInvertedPressed`      | `--colorNeutralForegroundInvertedPressed`      | `--color-neutral-foreground-inverted-pressed`       |
+| `colorNeutralForegroundInvertedSelected`     | `--colorNeutralForegroundInvertedSelected`     | `--color-neutral-foreground-inverted-selected`      |
+| `colorNeutralForegroundOnBrand`              | `--colorNeutralForegroundOnBrand`              | `--color-neutral-foreground-on-brand`               |
+| `colorNeutralForegroundStaticInverted`       | `--colorNeutralForegroundStaticInverted`       | `--color-neutral-foreground-static-inverted`        |
+| `colorNeutralShadowAmbient`                  | `--colorNeutralShadowAmbient`                  | `--color-neutral-shadow-ambient`                    |
+| `colorNeutralShadowAmbientDarker`            | `--colorNeutralShadowAmbientDarker`            | `--color-neutral-shadow-ambient-darker`             |
+| `colorNeutralShadowAmbientLighter`           | `--colorNeutralShadowAmbientLighter`           | `--color-neutral-shadow-ambient-lighter`            |
+| `colorNeutralShadowKey`                      | `--colorNeutralShadowKey`                      | `--color-neutral-shadow-key`                        |
+| `colorNeutralShadowKeyDarker`                | `--colorNeutralShadowKeyDarker`                | `--color-neutral-shadow-key-darker`                 |
+| `colorNeutralShadowKeyLighter`               | `--colorNeutralShadowKeyLighter`               | `--color-neutral-shadow-key-lighter`                |
+| `colorNeutralStencil1`                       | `--colorNeutralStencil1`                       | `--color-neutral-stencil-1`                         |
+| `colorNeutralStencil1Alpha`                  | `--colorNeutralStencil1Alpha`                  | `--color-neutral-stencil-1-alpha`                   |
+| `colorNeutralStencil2`                       | `--colorNeutralStencil2`                       | `--color-neutral-stencil-2`                         |
+| `colorNeutralStencil2Alpha`                  | `--colorNeutralStencil2Alpha`                  | `--color-neutral-stencil-2-alpha`                   |
+| `colorNeutralStroke1`                        | `--colorNeutralStroke1`                        | `--color-neutral-stroke-1`                          |
+| `colorNeutralStroke1Hover`                   | `--colorNeutralStroke1Hover`                   | `--color-neutral-stroke-1-hover`                    |
+| `colorNeutralStroke1Pressed`                 | `--colorNeutralStroke1Pressed`                 | `--color-neutral-stroke-1-pressed`                  |
+| `colorNeutralStroke1Selected`                | `--colorNeutralStroke1Selected`                | `--color-neutral-stroke-1-selected`                 |
+| `colorNeutralStroke2`                        | `--colorNeutralStroke2`                        | `--color-neutral-stroke-2`                          |
+| `colorNeutralStroke3`                        | `--colorNeutralStroke3`                        | `--color-neutral-stroke-3`                          |
+| `colorNeutralStroke4`                        | `--colorNeutralStroke4`                        | `--color-neutral-stroke-4`                          |
+| `colorNeutralStroke4Hover`                   | `--colorNeutralStroke4Hover`                   | `--color-neutral-stroke-4-hover`                    |
+| `colorNeutralStroke4Pressed`                 | `--colorNeutralStroke4Pressed`                 | `--color-neutral-stroke-4-pressed`                  |
+| `colorNeutralStroke4Selected`                | `--colorNeutralStroke4Selected`                | `--color-neutral-stroke-4-selected`                 |
+| `colorNeutralStrokeAccessible`               | `--colorNeutralStrokeAccessible`               | `--color-neutral-stroke-accessible`                 |
+| `colorNeutralStrokeAccessibleHover`          | `--colorNeutralStrokeAccessibleHover`          | `--color-neutral-stroke-accessible-hover`           |
+| `colorNeutralStrokeAccessiblePressed`        | `--colorNeutralStrokeAccessiblePressed`        | `--color-neutral-stroke-accessible-pressed`         |
+| `colorNeutralStrokeAccessibleSelected`       | `--colorNeutralStrokeAccessibleSelected`       | `--color-neutral-stroke-accessible-selected`        |
+| `colorNeutralStrokeAlpha`                    | `--colorNeutralStrokeAlpha`                    | `--color-neutral-stroke-alpha`                      |
+| `colorNeutralStrokeAlpha2`                   | `--colorNeutralStrokeAlpha2`                   | `--color-neutral-stroke-alpha-2`                    |
+| `colorNeutralStrokeDisabled`                 | `--colorNeutralStrokeDisabled`                 | `--color-neutral-stroke-disabled`                   |
+| `colorNeutralStrokeDisabled2`                | `--colorNeutralStrokeDisabled2`                | `--color-neutral-stroke-disabled-2`                 |
+| `colorNeutralStrokeInvertedDisabled`         | `--colorNeutralStrokeInvertedDisabled`         | `--color-neutral-stroke-inverted-disabled`          |
+| `colorNeutralStrokeOnBrand`                  | `--colorNeutralStrokeOnBrand`                  | `--color-neutral-stroke-on-brand`                   |
+| `colorNeutralStrokeOnBrand2`                 | `--colorNeutralStrokeOnBrand2`                 | `--color-neutral-stroke-on-brand-2`                 |
+| `colorNeutralStrokeOnBrand2Hover`            | `--colorNeutralStrokeOnBrand2Hover`            | `--color-neutral-stroke-on-brand-2-hover`           |
+| `colorNeutralStrokeOnBrand2Pressed`          | `--colorNeutralStrokeOnBrand2Pressed`          | `--color-neutral-stroke-on-brand-2-pressed`         |
+| `colorNeutralStrokeOnBrand2Selected`         | `--colorNeutralStrokeOnBrand2Selected`         | `--color-neutral-stroke-on-brand-2-selected`        |
+| `colorNeutralStrokeSubtle`                   | `--colorNeutralStrokeSubtle`                   | `--color-neutral-stroke-subtle`                     |
+| `colorPaletteAnchorBackground2`              | `--colorPaletteAnchorBackground2`              | `--color-palette-anchor-background-2`               |
+| `colorPaletteAnchorBorderActive`             | `--colorPaletteAnchorBorderActive`             | `--color-palette-anchor-border-active`              |
+| `colorPaletteAnchorForeground2`              | `--colorPaletteAnchorForeground2`              | `--color-palette-anchor-foreground-2`               |
+| `colorPaletteBeigeBackground2`               | `--colorPaletteBeigeBackground2`               | `--color-palette-beige-background-2`                |
+| `colorPaletteBeigeBorderActive`              | `--colorPaletteBeigeBorderActive`              | `--color-palette-beige-border-active`               |
+| `colorPaletteBeigeForeground2`               | `--colorPaletteBeigeForeground2`               | `--color-palette-beige-foreground-2`                |
+| `colorPaletteBerryBackground1`               | `--colorPaletteBerryBackground1`               | `--color-palette-berry-background-1`                |
+| `colorPaletteBerryBackground2`               | `--colorPaletteBerryBackground2`               | `--color-palette-berry-background-2`                |
+| `colorPaletteBerryBackground3`               | `--colorPaletteBerryBackground3`               | `--color-palette-berry-background-3`                |
+| `colorPaletteBerryBorder1`                   | `--colorPaletteBerryBorder1`                   | `--color-palette-berry-border-1`                    |
+| `colorPaletteBerryBorder2`                   | `--colorPaletteBerryBorder2`                   | `--color-palette-berry-border-2`                    |
+| `colorPaletteBerryBorderActive`              | `--colorPaletteBerryBorderActive`              | `--color-palette-berry-border-active`               |
+| `colorPaletteBerryForeground1`               | `--colorPaletteBerryForeground1`               | `--color-palette-berry-foreground-1`                |
+| `colorPaletteBerryForeground2`               | `--colorPaletteBerryForeground2`               | `--color-palette-berry-foreground-2`                |
+| `colorPaletteBerryForeground3`               | `--colorPaletteBerryForeground3`               | `--color-palette-berry-foreground-3`                |
+| `colorPaletteBlueBackground2`                | `--colorPaletteBlueBackground2`                | `--color-palette-blue-background-2`                 |
+| `colorPaletteBlueBorderActive`               | `--colorPaletteBlueBorderActive`               | `--color-palette-blue-border-active`                |
+| `colorPaletteBlueForeground2`                | `--colorPaletteBlueForeground2`                | `--color-palette-blue-foreground-2`                 |
+| `colorPaletteBrassBackground2`               | `--colorPaletteBrassBackground2`               | `--color-palette-brass-background-2`                |
+| `colorPaletteBrassBorderActive`              | `--colorPaletteBrassBorderActive`              | `--color-palette-brass-border-active`               |
+| `colorPaletteBrassForeground2`               | `--colorPaletteBrassForeground2`               | `--color-palette-brass-foreground-2`                |
+| `colorPaletteBrownBackground2`               | `--colorPaletteBrownBackground2`               | `--color-palette-brown-background-2`                |
+| `colorPaletteBrownBorderActive`              | `--colorPaletteBrownBorderActive`              | `--color-palette-brown-border-active`               |
+| `colorPaletteBrownForeground2`               | `--colorPaletteBrownForeground2`               | `--color-palette-brown-foreground-2`                |
+| `colorPaletteCornflowerBackground2`          | `--colorPaletteCornflowerBackground2`          | `--color-palette-cornflower-background-2`           |
+| `colorPaletteCornflowerBorderActive`         | `--colorPaletteCornflowerBorderActive`         | `--color-palette-cornflower-border-active`          |
+| `colorPaletteCornflowerForeground2`          | `--colorPaletteCornflowerForeground2`          | `--color-palette-cornflower-foreground-2`           |
+| `colorPaletteCranberryBackground2`           | `--colorPaletteCranberryBackground2`           | `--color-palette-cranberry-background-2`            |
+| `colorPaletteCranberryBorderActive`          | `--colorPaletteCranberryBorderActive`          | `--color-palette-cranberry-border-active`           |
+| `colorPaletteCranberryForeground2`           | `--colorPaletteCranberryForeground2`           | `--color-palette-cranberry-foreground-2`            |
+| `colorPaletteDarkGreenBackground2`           | `--colorPaletteDarkGreenBackground2`           | `--color-palette-dark-green-background-2`           |
+| `colorPaletteDarkGreenBorderActive`          | `--colorPaletteDarkGreenBorderActive`          | `--color-palette-dark-green-border-active`          |
+| `colorPaletteDarkGreenForeground2`           | `--colorPaletteDarkGreenForeground2`           | `--color-palette-dark-green-foreground-2`           |
+| `colorPaletteDarkOrangeBackground1`          | `--colorPaletteDarkOrangeBackground1`          | `--color-palette-dark-orange-background-1`          |
+| `colorPaletteDarkOrangeBackground2`          | `--colorPaletteDarkOrangeBackground2`          | `--color-palette-dark-orange-background-2`          |
+| `colorPaletteDarkOrangeBackground3`          | `--colorPaletteDarkOrangeBackground3`          | `--color-palette-dark-orange-background-3`          |
+| `colorPaletteDarkOrangeBorder1`              | `--colorPaletteDarkOrangeBorder1`              | `--color-palette-dark-orange-border-1`              |
+| `colorPaletteDarkOrangeBorder2`              | `--colorPaletteDarkOrangeBorder2`              | `--color-palette-dark-orange-border-2`              |
+| `colorPaletteDarkOrangeBorderActive`         | `--colorPaletteDarkOrangeBorderActive`         | `--color-palette-dark-orange-border-active`         |
+| `colorPaletteDarkOrangeForeground1`          | `--colorPaletteDarkOrangeForeground1`          | `--color-palette-dark-orange-foreground-1`          |
+| `colorPaletteDarkOrangeForeground2`          | `--colorPaletteDarkOrangeForeground2`          | `--color-palette-dark-orange-foreground-2`          |
+| `colorPaletteDarkOrangeForeground3`          | `--colorPaletteDarkOrangeForeground3`          | `--color-palette-dark-orange-foreground-3`          |
+| `colorPaletteDarkRedBackground2`             | `--colorPaletteDarkRedBackground2`             | `--color-palette-dark-red-background-2`             |
+| `colorPaletteDarkRedBorderActive`            | `--colorPaletteDarkRedBorderActive`            | `--color-palette-dark-red-border-active`            |
+| `colorPaletteDarkRedForeground2`             | `--colorPaletteDarkRedForeground2`             | `--color-palette-dark-red-foreground-2`             |
+| `colorPaletteForestBackground2`              | `--colorPaletteForestBackground2`              | `--color-palette-forest-background-2`               |
+| `colorPaletteForestBorderActive`             | `--colorPaletteForestBorderActive`             | `--color-palette-forest-border-active`              |
+| `colorPaletteForestForeground2`              | `--colorPaletteForestForeground2`              | `--color-palette-forest-foreground-2`               |
+| `colorPaletteGoldBackground2`                | `--colorPaletteGoldBackground2`                | `--color-palette-gold-background-2`                 |
+| `colorPaletteGoldBorderActive`               | `--colorPaletteGoldBorderActive`               | `--color-palette-gold-border-active`                |
+| `colorPaletteGoldForeground2`                | `--colorPaletteGoldForeground2`                | `--color-palette-gold-foreground-2`                 |
+| `colorPaletteGrapeBackground2`               | `--colorPaletteGrapeBackground2`               | `--color-palette-grape-background-2`                |
+| `colorPaletteGrapeBorderActive`              | `--colorPaletteGrapeBorderActive`              | `--color-palette-grape-border-active`               |
+| `colorPaletteGrapeForeground2`               | `--colorPaletteGrapeForeground2`               | `--color-palette-grape-foreground-2`                |
+| `colorPaletteGreenBackground1`               | `--colorPaletteGreenBackground1`               | `--color-palette-green-background-1`                |
+| `colorPaletteGreenBackground2`               | `--colorPaletteGreenBackground2`               | `--color-palette-green-background-2`                |
+| `colorPaletteGreenBackground3`               | `--colorPaletteGreenBackground3`               | `--color-palette-green-background-3`                |
+| `colorPaletteGreenBorder1`                   | `--colorPaletteGreenBorder1`                   | `--color-palette-green-border-1`                    |
+| `colorPaletteGreenBorder2`                   | `--colorPaletteGreenBorder2`                   | `--color-palette-green-border-2`                    |
+| `colorPaletteGreenBorderActive`              | `--colorPaletteGreenBorderActive`              | `--color-palette-green-border-active`               |
+| `colorPaletteGreenForeground1`               | `--colorPaletteGreenForeground1`               | `--color-palette-green-foreground-1`                |
+| `colorPaletteGreenForeground2`               | `--colorPaletteGreenForeground2`               | `--color-palette-green-foreground-2`                |
+| `colorPaletteGreenForeground3`               | `--colorPaletteGreenForeground3`               | `--color-palette-green-foreground-3`                |
+| `colorPaletteGreenForegroundInverted`        | `--colorPaletteGreenForegroundInverted`        | `--color-palette-green-foreground-inverted`         |
+| `colorPaletteLavenderBackground2`            | `--colorPaletteLavenderBackground2`            | `--color-palette-lavender-background-2`             |
+| `colorPaletteLavenderBorderActive`           | `--colorPaletteLavenderBorderActive`           | `--color-palette-lavender-border-active`            |
+| `colorPaletteLavenderForeground2`            | `--colorPaletteLavenderForeground2`            | `--color-palette-lavender-foreground-2`             |
+| `colorPaletteLightGreenBackground1`          | `--colorPaletteLightGreenBackground1`          | `--color-palette-light-green-background-1`          |
+| `colorPaletteLightGreenBackground2`          | `--colorPaletteLightGreenBackground2`          | `--color-palette-light-green-background-2`          |
+| `colorPaletteLightGreenBackground3`          | `--colorPaletteLightGreenBackground3`          | `--color-palette-light-green-background-3`          |
+| `colorPaletteLightGreenBorder1`              | `--colorPaletteLightGreenBorder1`              | `--color-palette-light-green-border-1`              |
+| `colorPaletteLightGreenBorder2`              | `--colorPaletteLightGreenBorder2`              | `--color-palette-light-green-border-2`              |
+| `colorPaletteLightGreenBorderActive`         | `--colorPaletteLightGreenBorderActive`         | `--color-palette-light-green-border-active`         |
+| `colorPaletteLightGreenForeground1`          | `--colorPaletteLightGreenForeground1`          | `--color-palette-light-green-foreground-1`          |
+| `colorPaletteLightGreenForeground2`          | `--colorPaletteLightGreenForeground2`          | `--color-palette-light-green-foreground-2`          |
+| `colorPaletteLightGreenForeground3`          | `--colorPaletteLightGreenForeground3`          | `--color-palette-light-green-foreground-3`          |
+| `colorPaletteLightTealBackground2`           | `--colorPaletteLightTealBackground2`           | `--color-palette-light-teal-background-2`           |
+| `colorPaletteLightTealBorderActive`          | `--colorPaletteLightTealBorderActive`          | `--color-palette-light-teal-border-active`          |
+| `colorPaletteLightTealForeground2`           | `--colorPaletteLightTealForeground2`           | `--color-palette-light-teal-foreground-2`           |
+| `colorPaletteLilacBackground2`               | `--colorPaletteLilacBackground2`               | `--color-palette-lilac-background-2`                |
+| `colorPaletteLilacBorderActive`              | `--colorPaletteLilacBorderActive`              | `--color-palette-lilac-border-active`               |
+| `colorPaletteLilacForeground2`               | `--colorPaletteLilacForeground2`               | `--color-palette-lilac-foreground-2`                |
+| `colorPaletteMagentaBackground2`             | `--colorPaletteMagentaBackground2`             | `--color-palette-magenta-background-2`              |
+| `colorPaletteMagentaBorderActive`            | `--colorPaletteMagentaBorderActive`            | `--color-palette-magenta-border-active`             |
+| `colorPaletteMagentaForeground2`             | `--colorPaletteMagentaForeground2`             | `--color-palette-magenta-foreground-2`              |
+| `colorPaletteMarigoldBackground1`            | `--colorPaletteMarigoldBackground1`            | `--color-palette-marigold-background-1`             |
+| `colorPaletteMarigoldBackground2`            | `--colorPaletteMarigoldBackground2`            | `--color-palette-marigold-background-2`             |
+| `colorPaletteMarigoldBackground3`            | `--colorPaletteMarigoldBackground3`            | `--color-palette-marigold-background-3`             |
+| `colorPaletteMarigoldBorder1`                | `--colorPaletteMarigoldBorder1`                | `--color-palette-marigold-border-1`                 |
+| `colorPaletteMarigoldBorder2`                | `--colorPaletteMarigoldBorder2`                | `--color-palette-marigold-border-2`                 |
+| `colorPaletteMarigoldBorderActive`           | `--colorPaletteMarigoldBorderActive`           | `--color-palette-marigold-border-active`            |
+| `colorPaletteMarigoldForeground1`            | `--colorPaletteMarigoldForeground1`            | `--color-palette-marigold-foreground-1`             |
+| `colorPaletteMarigoldForeground2`            | `--colorPaletteMarigoldForeground2`            | `--color-palette-marigold-foreground-2`             |
+| `colorPaletteMarigoldForeground3`            | `--colorPaletteMarigoldForeground3`            | `--color-palette-marigold-foreground-3`             |
+| `colorPaletteMinkBackground2`                | `--colorPaletteMinkBackground2`                | `--color-palette-mink-background-2`                 |
+| `colorPaletteMinkBorderActive`               | `--colorPaletteMinkBorderActive`               | `--color-palette-mink-border-active`                |
+| `colorPaletteMinkForeground2`                | `--colorPaletteMinkForeground2`                | `--color-palette-mink-foreground-2`                 |
+| `colorPaletteNavyBackground2`                | `--colorPaletteNavyBackground2`                | `--color-palette-navy-background-2`                 |
+| `colorPaletteNavyBorderActive`               | `--colorPaletteNavyBorderActive`               | `--color-palette-navy-border-active`                |
+| `colorPaletteNavyForeground2`                | `--colorPaletteNavyForeground2`                | `--color-palette-navy-foreground-2`                 |
+| `colorPalettePeachBackground2`               | `--colorPalettePeachBackground2`               | `--color-palette-peach-background-2`                |
+| `colorPalettePeachBorderActive`              | `--colorPalettePeachBorderActive`              | `--color-palette-peach-border-active`               |
+| `colorPalettePeachForeground2`               | `--colorPalettePeachForeground2`               | `--color-palette-peach-foreground-2`                |
+| `colorPalettePinkBackground2`                | `--colorPalettePinkBackground2`                | `--color-palette-pink-background-2`                 |
+| `colorPalettePinkBorderActive`               | `--colorPalettePinkBorderActive`               | `--color-palette-pink-border-active`                |
+| `colorPalettePinkForeground2`                | `--colorPalettePinkForeground2`                | `--color-palette-pink-foreground-2`                 |
+| `colorPalettePlatinumBackground2`            | `--colorPalettePlatinumBackground2`            | `--color-palette-platinum-background-2`             |
+| `colorPalettePlatinumBorderActive`           | `--colorPalettePlatinumBorderActive`           | `--color-palette-platinum-border-active`            |
+| `colorPalettePlatinumForeground2`            | `--colorPalettePlatinumForeground2`            | `--color-palette-platinum-foreground-2`             |
+| `colorPalettePlumBackground2`                | `--colorPalettePlumBackground2`                | `--color-palette-plum-background-2`                 |
+| `colorPalettePlumBorderActive`               | `--colorPalettePlumBorderActive`               | `--color-palette-plum-border-active`                |
+| `colorPalettePlumForeground2`                | `--colorPalettePlumForeground2`                | `--color-palette-plum-foreground-2`                 |
+| `colorPalettePumpkinBackground2`             | `--colorPalettePumpkinBackground2`             | `--color-palette-pumpkin-background-2`              |
+| `colorPalettePumpkinBorderActive`            | `--colorPalettePumpkinBorderActive`            | `--color-palette-pumpkin-border-active`             |
+| `colorPalettePumpkinForeground2`             | `--colorPalettePumpkinForeground2`             | `--color-palette-pumpkin-foreground-2`              |
+| `colorPalettePurpleBackground2`              | `--colorPalettePurpleBackground2`              | `--color-palette-purple-background-2`               |
+| `colorPalettePurpleBorderActive`             | `--colorPalettePurpleBorderActive`             | `--color-palette-purple-border-active`              |
+| `colorPalettePurpleForeground2`              | `--colorPalettePurpleForeground2`              | `--color-palette-purple-foreground-2`               |
+| `colorPaletteRedBackground1`                 | `--colorPaletteRedBackground1`                 | `--color-palette-red-background-1`                  |
+| `colorPaletteRedBackground2`                 | `--colorPaletteRedBackground2`                 | `--color-palette-red-background-2`                  |
+| `colorPaletteRedBackground3`                 | `--colorPaletteRedBackground3`                 | `--color-palette-red-background-3`                  |
+| `colorPaletteRedBorder1`                     | `--colorPaletteRedBorder1`                     | `--color-palette-red-border-1`                      |
+| `colorPaletteRedBorder2`                     | `--colorPaletteRedBorder2`                     | `--color-palette-red-border-2`                      |
+| `colorPaletteRedBorderActive`                | `--colorPaletteRedBorderActive`                | `--color-palette-red-border-active`                 |
+| `colorPaletteRedForeground1`                 | `--colorPaletteRedForeground1`                 | `--color-palette-red-foreground-1`                  |
+| `colorPaletteRedForeground2`                 | `--colorPaletteRedForeground2`                 | `--color-palette-red-foreground-2`                  |
+| `colorPaletteRedForeground3`                 | `--colorPaletteRedForeground3`                 | `--color-palette-red-foreground-3`                  |
+| `colorPaletteRedForegroundInverted`          | `--colorPaletteRedForegroundInverted`          | `--color-palette-red-foreground-inverted`           |
+| `colorPaletteRoyalBlueBackground2`           | `--colorPaletteRoyalBlueBackground2`           | `--color-palette-royal-blue-background-2`           |
+| `colorPaletteRoyalBlueBorderActive`          | `--colorPaletteRoyalBlueBorderActive`          | `--color-palette-royal-blue-border-active`          |
+| `colorPaletteRoyalBlueForeground2`           | `--colorPaletteRoyalBlueForeground2`           | `--color-palette-royal-blue-foreground-2`           |
+| `colorPaletteSeafoamBackground2`             | `--colorPaletteSeafoamBackground2`             | `--color-palette-seafoam-background-2`              |
+| `colorPaletteSeafoamBorderActive`            | `--colorPaletteSeafoamBorderActive`            | `--color-palette-seafoam-border-active`             |
+| `colorPaletteSeafoamForeground2`             | `--colorPaletteSeafoamForeground2`             | `--color-palette-seafoam-foreground-2`              |
+| `colorPaletteSteelBackground2`               | `--colorPaletteSteelBackground2`               | `--color-palette-steel-background-2`                |
+| `colorPaletteSteelBorderActive`              | `--colorPaletteSteelBorderActive`              | `--color-palette-steel-border-active`               |
+| `colorPaletteSteelForeground2`               | `--colorPaletteSteelForeground2`               | `--color-palette-steel-foreground-2`                |
+| `colorPaletteTealBackground2`                | `--colorPaletteTealBackground2`                | `--color-palette-teal-background-2`                 |
+| `colorPaletteTealBorderActive`               | `--colorPaletteTealBorderActive`               | `--color-palette-teal-border-active`                |
+| `colorPaletteTealForeground2`                | `--colorPaletteTealForeground2`                | `--color-palette-teal-foreground-2`                 |
+| `colorPaletteYellowBackground1`              | `--colorPaletteYellowBackground1`              | `--color-palette-yellow-background-1`               |
+| `colorPaletteYellowBackground2`              | `--colorPaletteYellowBackground2`              | `--color-palette-yellow-background-2`               |
+| `colorPaletteYellowBackground3`              | `--colorPaletteYellowBackground3`              | `--color-palette-yellow-background-3`               |
+| `colorPaletteYellowBorder1`                  | `--colorPaletteYellowBorder1`                  | `--color-palette-yellow-border-1`                   |
+| `colorPaletteYellowBorder2`                  | `--colorPaletteYellowBorder2`                  | `--color-palette-yellow-border-2`                   |
+| `colorPaletteYellowBorderActive`             | `--colorPaletteYellowBorderActive`             | `--color-palette-yellow-border-active`              |
+| `colorPaletteYellowForeground1`              | `--colorPaletteYellowForeground1`              | `--color-palette-yellow-foreground-1`               |
+| `colorPaletteYellowForeground2`              | `--colorPaletteYellowForeground2`              | `--color-palette-yellow-foreground-2`               |
+| `colorPaletteYellowForeground3`              | `--colorPaletteYellowForeground3`              | `--color-palette-yellow-foreground-3`               |
+| `colorPaletteYellowForegroundInverted`       | `--colorPaletteYellowForegroundInverted`       | `--color-palette-yellow-foreground-inverted`        |
+| `colorScrollbarOverlay`                      | `--colorScrollbarOverlay`                      | `--color-scrollbar-overlay`                         |
+| `colorStatusDangerBackground1`               | `--colorStatusDangerBackground1`               | `--color-status-danger-background-1`                |
+| `colorStatusDangerBackground2`               | `--colorStatusDangerBackground2`               | `--color-status-danger-background-2`                |
+| `colorStatusDangerBackground3`               | `--colorStatusDangerBackground3`               | `--color-status-danger-background-3`                |
+| `colorStatusDangerBackground3Hover`          | `--colorStatusDangerBackground3Hover`          | `--color-status-danger-background-3-hover`          |
+| `colorStatusDangerBackground3Pressed`        | `--colorStatusDangerBackground3Pressed`        | `--color-status-danger-background-3-pressed`        |
+| `colorStatusDangerBorder1`                   | `--colorStatusDangerBorder1`                   | `--color-status-danger-border-1`                    |
+| `colorStatusDangerBorder2`                   | `--colorStatusDangerBorder2`                   | `--color-status-danger-border-2`                    |
+| `colorStatusDangerBorderActive`              | `--colorStatusDangerBorderActive`              | `--color-status-danger-border-active`               |
+| `colorStatusDangerForeground1`               | `--colorStatusDangerForeground1`               | `--color-status-danger-foreground-1`                |
+| `colorStatusDangerForeground2`               | `--colorStatusDangerForeground2`               | `--color-status-danger-foreground-2`                |
+| `colorStatusDangerForeground3`               | `--colorStatusDangerForeground3`               | `--color-status-danger-foreground-3`                |
+| `colorStatusDangerForegroundInverted`        | `--colorStatusDangerForegroundInverted`        | `--color-status-danger-foreground-inverted`         |
+| `colorStatusSuccessBackground1`              | `--colorStatusSuccessBackground1`              | `--color-status-success-background-1`               |
+| `colorStatusSuccessBackground2`              | `--colorStatusSuccessBackground2`              | `--color-status-success-background-2`               |
+| `colorStatusSuccessBackground3`              | `--colorStatusSuccessBackground3`              | `--color-status-success-background-3`               |
+| `colorStatusSuccessBorder1`                  | `--colorStatusSuccessBorder1`                  | `--color-status-success-border-1`                   |
+| `colorStatusSuccessBorder2`                  | `--colorStatusSuccessBorder2`                  | `--color-status-success-border-2`                   |
+| `colorStatusSuccessBorderActive`             | `--colorStatusSuccessBorderActive`             | `--color-status-success-border-active`              |
+| `colorStatusSuccessForeground1`              | `--colorStatusSuccessForeground1`              | `--color-status-success-foreground-1`               |
+| `colorStatusSuccessForeground2`              | `--colorStatusSuccessForeground2`              | `--color-status-success-foreground-2`               |
+| `colorStatusSuccessForeground3`              | `--colorStatusSuccessForeground3`              | `--color-status-success-foreground-3`               |
+| `colorStatusSuccessForegroundInverted`       | `--colorStatusSuccessForegroundInverted`       | `--color-status-success-foreground-inverted`        |
+| `colorStatusWarningBackground1`              | `--colorStatusWarningBackground1`              | `--color-status-warning-background-1`               |
+| `colorStatusWarningBackground2`              | `--colorStatusWarningBackground2`              | `--color-status-warning-background-2`               |
+| `colorStatusWarningBackground3`              | `--colorStatusWarningBackground3`              | `--color-status-warning-background-3`               |
+| `colorStatusWarningBorder1`                  | `--colorStatusWarningBorder1`                  | `--color-status-warning-border-1`                   |
+| `colorStatusWarningBorder2`                  | `--colorStatusWarningBorder2`                  | `--color-status-warning-border-2`                   |
+| `colorStatusWarningBorderActive`             | `--colorStatusWarningBorderActive`             | `--color-status-warning-border-active`              |
+| `colorStatusWarningForeground1`              | `--colorStatusWarningForeground1`              | `--color-status-warning-foreground-1`               |
+| `colorStatusWarningForeground2`              | `--colorStatusWarningForeground2`              | `--color-status-warning-foreground-2`               |
+| `colorStatusWarningForeground3`              | `--colorStatusWarningForeground3`              | `--color-status-warning-foreground-3`               |
+| `colorStatusWarningForegroundInverted`       | `--colorStatusWarningForegroundInverted`       | `--color-status-warning-foreground-inverted`        |
+| `colorStrokeFocus1`                          | `--colorStrokeFocus1`                          | `--color-stroke-focus-1`                            |
+| `colorStrokeFocus2`                          | `--colorStrokeFocus2`                          | `--color-stroke-focus-2`                            |
+| `colorSubtleBackground`                      | `--colorSubtleBackground`                      | `--color-subtle-background`                         |
+| `colorSubtleBackgroundHover`                 | `--colorSubtleBackgroundHover`                 | `--color-subtle-background-hover`                   |
+| `colorSubtleBackgroundInverted`              | `--colorSubtleBackgroundInverted`              | `--color-subtle-background-inverted`                |
+| `colorSubtleBackgroundInvertedHover`         | `--colorSubtleBackgroundInvertedHover`         | `--color-subtle-background-inverted-hover`          |
+| `colorSubtleBackgroundInvertedPressed`       | `--colorSubtleBackgroundInvertedPressed`       | `--color-subtle-background-inverted-pressed`        |
+| `colorSubtleBackgroundInvertedSelected`      | `--colorSubtleBackgroundInvertedSelected`      | `--color-subtle-background-inverted-selected`       |
+| `colorSubtleBackgroundLightAlphaHover`       | `--colorSubtleBackgroundLightAlphaHover`       | `--color-subtle-background-light-alpha-hover`       |
+| `colorSubtleBackgroundLightAlphaPressed`     | `--colorSubtleBackgroundLightAlphaPressed`     | `--color-subtle-background-light-alpha-pressed`     |
+| `colorSubtleBackgroundLightAlphaSelected`    | `--colorSubtleBackgroundLightAlphaSelected`    | `--color-subtle-background-light-alpha-selected`    |
+| `colorSubtleBackgroundPressed`               | `--colorSubtleBackgroundPressed`               | `--color-subtle-background-pressed`                 |
+| `colorSubtleBackgroundSelected`              | `--colorSubtleBackgroundSelected`              | `--color-subtle-background-selected`                |
+| `colorTransparentBackground`                 | `--colorTransparentBackground`                 | `--color-transparent-background`                    |
+| `colorTransparentBackgroundHover`            | `--colorTransparentBackgroundHover`            | `--color-transparent-background-hover`              |
+| `colorTransparentBackgroundPressed`          | `--colorTransparentBackgroundPressed`          | `--color-transparent-background-pressed`            |
+| `colorTransparentBackgroundSelected`         | `--colorTransparentBackgroundSelected`         | `--color-transparent-background-selected`           |
+| `colorTransparentStroke`                     | `--colorTransparentStroke`                     | `--color-transparent-stroke`                        |
+| `colorTransparentStrokeDisabled`             | `--colorTransparentStrokeDisabled`             | `--color-transparent-stroke-disabled`               |
+| `colorTransparentStrokeInteractive`          | `--colorTransparentStrokeInteractive`          | `--color-transparent-stroke-interactive`            |
+| `curveAccelerateMax`                         | `--curveAccelerateMax`                         | `--ease-accelerate-max`                             |
+| `curveAccelerateMid`                         | `--curveAccelerateMid`                         | `--ease-accelerate-mid`                             |
+| `curveAccelerateMin`                         | `--curveAccelerateMin`                         | `--ease-accelerate-min`                             |
+| `curveDecelerateMax`                         | `--curveDecelerateMax`                         | `--ease-decelerate-max`                             |
+| `curveDecelerateMid`                         | `--curveDecelerateMid`                         | `--ease-decelerate-mid`                             |
+| `curveDecelerateMin`                         | `--curveDecelerateMin`                         | `--ease-decelerate-min`                             |
+| `curveEasyEase`                              | `--curveEasyEase`                              | `--ease-easy-ease`                                  |
+| `curveEasyEaseMax`                           | `--curveEasyEaseMax`                           | `--ease-easy-ease-max`                              |
+| `curveLinear`                                | `--curveLinear`                                | `--ease-linear`                                     |
+| `durationFast`                               | `--durationFast`                               | `--duration-fast`                                   |
+| `durationFaster`                             | `--durationFaster`                             | `--duration-faster`                                 |
+| `durationGentle`                             | `--durationGentle`                             | `--duration-gentle`                                 |
+| `durationNormal`                             | `--durationNormal`                             | `--duration-normal`                                 |
+| `durationSlow`                               | `--durationSlow`                               | `--duration-slow`                                   |
+| `durationSlower`                             | `--durationSlower`                             | `--duration-slower`                                 |
+| `durationUltraFast`                          | `--durationUltraFast`                          | `--duration-ultra-fast`                             |
+| `durationUltraSlow`                          | `--durationUltraSlow`                          | `--duration-ultra-slow`                             |
+| `fontFamilyBase`                             | `--fontFamilyBase`                             | `--font-base`                                       |
+| `fontFamilyMonospace`                        | `--fontFamilyMonospace`                        | `--font-monospace`                                  |
+| `fontFamilyNumeric`                          | `--fontFamilyNumeric`                          | `--font-numeric`                                    |
+| `fontSizeBase100`                            | `--fontSizeBase100`                            | `--text-base-100`                                   |
+| `fontSizeBase200`                            | `--fontSizeBase200`                            | `--text-base-200`                                   |
+| `fontSizeBase300`                            | `--fontSizeBase300`                            | `--text-base-300`                                   |
+| `fontSizeBase400`                            | `--fontSizeBase400`                            | `--text-base-400`                                   |
+| `fontSizeBase500`                            | `--fontSizeBase500`                            | `--text-base-500`                                   |
+| `fontSizeBase600`                            | `--fontSizeBase600`                            | `--text-base-600`                                   |
+| `fontSizeHero1000`                           | `--fontSizeHero1000`                           | `--text-hero-1000`                                  |
+| `fontSizeHero700`                            | `--fontSizeHero700`                            | `--text-hero-700`                                   |
+| `fontSizeHero800`                            | `--fontSizeHero800`                            | `--text-hero-800`                                   |
+| `fontSizeHero900`                            | `--fontSizeHero900`                            | `--text-hero-900`                                   |
+| `fontWeightBold`                             | `--fontWeightBold`                             | `--font-weight-bold`                                |
+| `fontWeightMedium`                           | `--fontWeightMedium`                           | `--font-weight-medium`                              |
+| `fontWeightRegular`                          | `--fontWeightRegular`                          | `--font-weight-regular`                             |
+| `fontWeightSemibold`                         | `--fontWeightSemibold`                         | `--font-weight-semibold`                            |
+| `lineHeightBase100`                          | `--lineHeightBase100`                          | `--leading-base-100`                                |
+| `lineHeightBase200`                          | `--lineHeightBase200`                          | `--leading-base-200`                                |
+| `lineHeightBase300`                          | `--lineHeightBase300`                          | `--leading-base-300`                                |
+| `lineHeightBase400`                          | `--lineHeightBase400`                          | `--leading-base-400`                                |
+| `lineHeightBase500`                          | `--lineHeightBase500`                          | `--leading-base-500`                                |
+| `lineHeightBase600`                          | `--lineHeightBase600`                          | `--leading-base-600`                                |
+| `lineHeightHero1000`                         | `--lineHeightHero1000`                         | `--leading-hero-1000`                               |
+| `lineHeightHero700`                          | `--lineHeightHero700`                          | `--leading-hero-700`                                |
+| `lineHeightHero800`                          | `--lineHeightHero800`                          | `--leading-hero-800`                                |
+| `lineHeightHero900`                          | `--lineHeightHero900`                          | `--leading-hero-900`                                |
+| `shadow16`                                   | `--shadow16`                                   | `--shadow-16`                                       |
+| `shadow16Brand`                              | `--shadow16Brand`                              | `--shadow-16-brand`                                 |
+| `shadow2`                                    | `--shadow2`                                    | `--shadow-2`                                        |
+| `shadow28`                                   | `--shadow28`                                   | `--shadow-28`                                       |
+| `shadow28Brand`                              | `--shadow28Brand`                              | `--shadow-28-brand`                                 |
+| `shadow2Brand`                               | `--shadow2Brand`                               | `--shadow-2-brand`                                  |
+| `shadow4`                                    | `--shadow4`                                    | `--shadow-4`                                        |
+| `shadow4Brand`                               | `--shadow4Brand`                               | `--shadow-4-brand`                                  |
+| `shadow64`                                   | `--shadow64`                                   | `--shadow-64`                                       |
+| `shadow64Brand`                              | `--shadow64Brand`                              | `--shadow-64-brand`                                 |
+| `shadow8`                                    | `--shadow8`                                    | `--shadow-8`                                        |
+| `shadow8Brand`                               | `--shadow8Brand`                               | `--shadow-8-brand`                                  |
+| `spacingHorizontalL`                         | `--spacingHorizontalL`                         | `--spacing-horizontal-l`                            |
+| `spacingHorizontalM`                         | `--spacingHorizontalM`                         | `--spacing-horizontal-m`                            |
+| `spacingHorizontalMNudge`                    | `--spacingHorizontalMNudge`                    | `--spacing-horizontal-m-nudge`                      |
+| `spacingHorizontalNone`                      | `--spacingHorizontalNone`                      | `--spacing-horizontal-none`                         |
+| `spacingHorizontalS`                         | `--spacingHorizontalS`                         | `--spacing-horizontal-s`                            |
+| `spacingHorizontalSNudge`                    | `--spacingHorizontalSNudge`                    | `--spacing-horizontal-s-nudge`                      |
+| `spacingHorizontalXL`                        | `--spacingHorizontalXL`                        | `--spacing-horizontal-xl`                           |
+| `spacingHorizontalXS`                        | `--spacingHorizontalXS`                        | `--spacing-horizontal-xs`                           |
+| `spacingHorizontalXXL`                       | `--spacingHorizontalXXL`                       | `--spacing-horizontal-xxl`                          |
+| `spacingHorizontalXXS`                       | `--spacingHorizontalXXS`                       | `--spacing-horizontal-xxs`                          |
+| `spacingHorizontalXXXL`                      | `--spacingHorizontalXXXL`                      | `--spacing-horizontal-xxxl`                         |
+| `spacingVerticalL`                           | `--spacingVerticalL`                           | `--spacing-vertical-l`                              |
+| `spacingVerticalM`                           | `--spacingVerticalM`                           | `--spacing-vertical-m`                              |
+| `spacingVerticalMNudge`                      | `--spacingVerticalMNudge`                      | `--spacing-vertical-m-nudge`                        |
+| `spacingVerticalNone`                        | `--spacingVerticalNone`                        | `--spacing-vertical-none`                           |
+| `spacingVerticalS`                           | `--spacingVerticalS`                           | `--spacing-vertical-s`                              |
+| `spacingVerticalSNudge`                      | `--spacingVerticalSNudge`                      | `--spacing-vertical-s-nudge`                        |
+| `spacingVerticalXL`                          | `--spacingVerticalXL`                          | `--spacing-vertical-xl`                             |
+| `spacingVerticalXS`                          | `--spacingVerticalXS`                          | `--spacing-vertical-xs`                             |
+| `spacingVerticalXXL`                         | `--spacingVerticalXXL`                         | `--spacing-vertical-xxl`                            |
+| `spacingVerticalXXS`                         | `--spacingVerticalXXS`                         | `--spacing-vertical-xxs`                            |
+| `spacingVerticalXXXL`                        | `--spacingVerticalXXXL`                        | `--spacing-vertical-xxxl`                           |
+| `strokeWidthThick`                           | `--strokeWidthThick`                           | `--stroke-width-thick`                              |
+| `strokeWidthThicker`                         | `--strokeWidthThicker`                         | `--stroke-width-thicker`                            |
+| `strokeWidthThickest`                        | `--strokeWidthThickest`                        | `--stroke-width-thickest`                           |
+| `strokeWidthThin`                            | `--strokeWidthThin`                            | `--stroke-width-thin`                               |
+| `zIndexBackground`                           | `--zIndexBackground`                           | `--z-index-background`                              |
+| `zIndexContent`                              | `--zIndexContent`                              | `--z-index-content`                                 |
+| `zIndexDebug`                                | `--zIndexDebug`                                | `--z-index-debug`                                   |
+| `zIndexFloating`                             | `--zIndexFloating`                             | `--z-index-floating`                                |
+| `zIndexMessages`                             | `--zIndexMessages`                             | `--z-index-messages`                                |
+| `zIndexOverlay`                              | `--zIndexOverlay`                              | `--z-index-overlay`                                 |
+| `zIndexPopup`                                | `--zIndexPopup`                                | `--z-index-popup`                                   |
+| `zIndexPriority`                             | `--zIndexPriority`                             | `--z-index-priority`                                |

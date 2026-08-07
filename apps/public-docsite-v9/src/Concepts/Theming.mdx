@@ -4,6 +4,10 @@ import { Meta, Source } from '@storybook/addon-docs/blocks';
 
 # Theming
 
+> **Coming from an earlier v9?** Theming changed shape in this major release: `FluentProvider`'s
+> `theme` prop is gone, themes are static CSS classes, and every token CSS variable was renamed.
+> Start at [Upgrading from v9](?path=/docs/concepts-migration-upgrading-from-v9--docs).
+
 The Fluent UI theme is represented by a set of tokens. Each token is a CSS custom property which
 resolves to a single value that can be assigned to a CSS property:
 
@@ -135,6 +139,38 @@ import { tokens } from '@fluentui/react-components';
 tokens.colorNeutralForeground3; // === 'var(--color-neutral-foreground-3)'
 ```
 
+### Reading a resolved token _value_ at runtime
+
+`tokens.x` gives you the `var()` **reference**, which is what you want almost everywhere — hand it to
+a `style` prop or a stylesheet and the browser resolves it in place, per theme, for free.
+
+Sometimes you need the resolved string instead: a `<canvas>` fill, a charting library, a
+`<meta name="theme-color">`. `ThemeContext_unstable` used to serve that and is **removed** — there is
+no theme object at runtime to read from. The replacement reads the value off the DOM, which is where
+it now lives:
+
+```jsx
+import * as React from 'react';
+import { useCssVarValue } from '@fluentui/react-utilities';
+
+const Chart = ({ themeClassName }) => {
+  const ref = React.useRef(null);
+  const strokeColor = useCssVarValue('--color-brand-stroke-1', ref, {
+    fallback: '#0f6cbd',
+    deps: [themeClassName], // re-read when the active theme class changes
+  });
+
+  return <canvas ref={ref} data-stroke={strokeColor} />;
+};
+```
+
+Two things to get right: the ref must point at an element **inside** the themed subtree (custom
+properties are inherited, so an element outside it resolves the wrong value or none), and `deps`
+must carry whatever identifies the active theme, or the value will not re-read on a theme switch.
+
+> `useCssVarValue` ships from `@fluentui/react-utilities`, which the umbrella does **not** re-export.
+> Add it as a direct dependency if you need this hook.
+
 For more details, see [Styling components](?path=/docs/concepts-developer-styling-components--docs).
 
 ### Token names are the public contract
@@ -144,8 +180,8 @@ public surface: Fluent's own component CSS references them, and so should yours.
 public is anything below that — the hashed class names on component internals, and the exact rules
 inside a component's stylesheet.
 
-`@fluentui/react-tailwind-theme` also registers the tokens with Tailwind via `@theme inline`, so
-utilities named after them are available if your app uses Tailwind.
+`@fluentui/react-tailwind-theme` also registers the tokens with Tailwind via
+`@theme inline reference`, so utilities named after them are available if your app uses Tailwind.
 
 ## Available themes
 
@@ -178,12 +214,20 @@ A custom theme is a CSS class you author yourself. The contract is simple:
   `--color-neutral-foreground-1`, …) — the same names the shipped theme classes declare.
 
 Apply the class exactly like a shipped one — via `themeClassName` on a provider, or directly on any
-DOM node. You usually only need to declare the tokens you want to change; every token you do not
-declare falls through to the surrounding theme (or the `:root` Web Light defaults):
+DOM node.
+
+### How much do you have to declare?
+
+Every token you do **not** declare falls through to the surrounding theme, and outside any theme
+class that means the `:root` Web Light defaults. Whether that is what you want depends entirely on
+what your theme is derived from, and getting it wrong is a common and confusing failure.
+
+**A light-derived theme may declare only what it changes.** The fall-through lands on Web Light,
+which is the right neighbour:
 
 ```css
-/* my-theme.css */
-.my-custom-theme {
+/* my-theme.css — light-derived: partial override is fine */
+.my-custom-theme-light {
   --color-brand-background: #0f6cbd;
   --color-brand-background-hover: #115ea3;
   --color-neutral-foreground-1: #555;
@@ -195,37 +239,182 @@ import './my-theme.css';
 import { FluentProvider } from '@fluentui/react-components';
 
 function App() {
-  return <FluentProvider themeClassName="my-custom-theme">{/* ... */}</FluentProvider>;
+  return <FluentProvider themeClassName="my-custom-theme-light">{/* ... */}</FluentProvider>;
 }
 ```
 
-### Custom Brand ramp
+**A dark-derived theme must declare the full set.** If you declare only your brand tokens, every
+token you omitted still resolves to its Web Light value, and you get a light UI wearing dark-brand
+accents. Each shipped theme class declares **433** custom properties for exactly this reason —
+generate the whole class rather than hand-writing a subset. The next section shows how.
+
+The same applies to any theme whose neighbour is not Web Light: high contrast, a Teams variant, or a
+light theme you have restyled far enough that the defaults no longer make sense underneath it. When
+in doubt, emit the full set — it is generated, not typed by hand, and it costs one class in a
+stylesheet.
+
+There is one nesting escape hatch: a partial class **inside** another theme class falls through to
+_that_ theme, not to `:root`. So a small brand override nested inside `webDarkThemeClassName`
+behaves as you would expect.
+
+```jsx
+<FluentProvider themeClassName={webDarkThemeClassName}>
+  <div className="my-brand-overrides">{/* dark base + your brand tokens */}</div>
+</FluentProvider>
+```
+
+### Custom brand ramp, end to end
 
 The brand ramp is a color ramp going from dark to light colors:
 
 <img className="sbdocs-img" src={require('../../public/brand-ramp-example.png')} alt="Example of a brand ramp" />
 
-A full theme can be derived from a brand ramp at build time. The theme **objects**
-(`webLightTheme`, …) and factory functions (`createLightTheme()`, `createDarkTheme()`,
-`createTeamsDarkTheme()`, `createHighContrastTheme()`) remain available from `@fluentui/tokens` as
-build-time/tooling input — use them to generate the values for your custom theme class, then ship
-the class as static CSS. The [Theme Designer](https://aka.ms/themedesigner-v9) does exactly this and
-exports ready-made CSS for your brand.
+A full theme is derived from a brand ramp **at build time** and shipped as static CSS. The theme
+**objects** (`webLightTheme`, …) and factory functions (`createLightTheme()`, `createDarkTheme()`,
+`createTeamsDarkTheme()`, `createHighContrastTheme()`) remain available from `@fluentui/tokens`
+precisely for this — they are tooling input, not a runtime API. The
+[Theme Designer](https://aka.ms/themedesigner-v9) does the same thing and hands you the CSS.
 
-```tsx
-// build-time tooling — not part of the runtime API
-import { BrandVariants, createLightTheme, createDarkTheme } from '@fluentui/tokens';
+Here is the whole path, from a ramp to a themed subtree.
 
-const customBrandRamp: BrandVariants = {
-  10: '#008',
-  //...
-  160: '#88F',
+**1. Define the ramp.**
+
+```ts
+// theme/brand.ts
+import type { BrandVariants } from '@fluentui/tokens';
+
+export const myBrand: BrandVariants = {
+  10: '#020305',
+  20: '#111723',
+  // … all 16 shades …
+  160: '#D6D8EF',
+};
+```
+
+**2. Generate the CSS classes with a build script.** Each theme key maps to its canonical CSS
+variable, which you read straight off the `tokens` object — that is what keeps the generated names
+correct without a hand-maintained list.
+
+```js
+// scripts/build-theme.mjs — run at build time, writes a .css file
+import fs from 'node:fs';
+import { createLightTheme, createDarkTheme, tokens } from '@fluentui/tokens';
+import { myBrand } from '../theme/brand.ts';
+
+// Theme-invariant tokens: skip them. See the note below — this is not optional.
+const THEME_INVARIANT = /^(spacingHorizontal|spacingVertical|strokeWidth)/;
+
+const toClassRule = (className, theme) => {
+  const declarations = Object.keys(theme)
+    .filter(key => !THEME_INVARIANT.test(key))
+    .map(key => {
+      const match = /^var\((--[^,)]+)/.exec(tokens[key] ?? '');
+      return match ? `  ${match[1]}: ${theme[key]};` : null;
+    })
+    .filter(Boolean);
+
+  return `.${className} {\n${declarations.join('\n')}\n}`;
 };
 
-export const customLightTheme = createLightTheme(customBrandRamp);
-export const customDarkTheme = createDarkTheme(customBrandRamp);
-// emit each object as a CSS class of custom-property declarations
+fs.writeFileSync(
+  './src/my-theme.css',
+  [
+    toClassRule('my-theme-light', createLightTheme(myBrand)),
+    toClassRule('my-theme-dark', createDarkTheme(myBrand)),
+  ].join('\n\n'),
+);
 ```
+
+Each class comes out with **433 declarations** — the same count as every shipped `.fui-theme-*`
+class, which is the check that your generator is doing the right thing.
+
+**3. Import the generated CSS and apply the class.**
+
+```jsx
+import '@fluentui/react-tailwind-theme/styles.css';
+import './my-theme.css';
+import { FluentProvider } from '@fluentui/react-components';
+
+export const App = () => <FluentProvider themeClassName="my-theme-light">{/* … */}</FluentProvider>;
+```
+
+From here everything behaves like a shipped theme: scoped theming by putting the class on any node,
+nested providers, portal inheritance, and runtime switching (below).
+
+#### Why the spacing and stroke tokens are skipped
+
+`createLightTheme()` returns **459** keys. 22 of them are `spacingHorizontal*` / `spacingVertical*`
+and 4 are `strokeWidth*`, and in the theme object those carry **literal** values —
+`spacingHorizontalM` is `'12px'`, `strokeWidthThin` is `'1px'`.
+
+The shipped stylesheet does not define them that way. It defines them relative to two knobs:
+
+```css
+--spacing-horizontal-m: calc(var(--spacing) * 12);
+--stroke-width-thin: calc(1px * var(--base-scale));
+```
+
+If your theme class re-declares them as literals, it **overrides those expressions for the whole
+subtree** — the density knob (`--spacing`) and the base-scale multiplier stop reaching anything
+inside your theme. The values look identical until someone changes density or root font size, and
+then only your themed subtree fails to respond.
+
+These 26 tokens are identical across all seven shipped themes, so there is nothing to theme about
+them: 467 total tokens &minus; 26 theme-invariant &minus; 8 `zIndex*` (which the theme objects do not
+carry at all) = the 433 declarations each theme class ships. Skip them.
+
+> If you are using the [Theme Designer](https://aka.ms/themedesigner-v9)'s exported snippet, apply
+> the same `THEME_INVARIANT` filter to it — the current export walks every key.
+
+### Switching themes at runtime
+
+Because a theme is a class, switching is a `className` swap: no rules are rebuilt, nothing is
+injected, and the browser recomputes only the custom properties that actually differ.
+
+```jsx
+import * as React from 'react';
+import { FluentProvider, webLightThemeClassName, webDarkThemeClassName } from '@fluentui/react-components';
+
+const query = '(prefers-color-scheme: dark)';
+
+export const ThemedApp = ({ children }) => {
+  const [themeClassName, setThemeClassName] = React.useState(webLightThemeClassName);
+
+  React.useEffect(() => {
+    const mql = window.matchMedia(query);
+    const sync = e => setThemeClassName(e.matches ? webDarkThemeClassName : webLightThemeClassName);
+
+    sync(mql);
+    mql.addEventListener('change', sync);
+    return () => mql.removeEventListener('change', sync);
+  }, []);
+
+  return <FluentProvider themeClassName={themeClassName}>{children}</FluentProvider>;
+};
+```
+
+Add your own state (a toggle, a stored preference) wherever you would normally — `themeClassName` is
+just a string.
+
+If your app has **no** toggle UI and only needs to follow the OS, you do not need React state — or a
+provider — at all. Because a theme class is just a class, put it on `<html>` before first paint,
+which also avoids a flash of the wrong theme:
+
+```html
+<script>
+  document.documentElement.classList.add(
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'fui-theme-web-dark' : 'fui-theme-web-light',
+  );
+</script>
+```
+
+(Web Light is already the `:root` default, so the light branch is optional.) The exported constants
+`webDarkThemeClassName` / `webLightThemeClassName` hold exactly these strings — prefer them in
+JavaScript you bundle; the literals above are for an inline `<script>` in your HTML shell, which
+cannot import.
+
+Use the React form when both modes must be reachable independently of the OS setting — a toggle, a
+stored preference, or a preview pane that is always dark.
 
 ### Extending theme with new tokens
 

@@ -6,10 +6,10 @@ This is a suite package for converged components and related utilities. It is a 
 
 ### Usage
 
-Add @fluentui/react-components to a project:
+Add @fluentui/react-components to a project, together with the shared theme layer its CSS compiles against:
 
 ```sh
-yarn add @fluentui/react-components
+yarn add @fluentui/react-components @fluentui/react-tailwind-theme
 ```
 
 To use a component, import the theme stylesheet once per document, add a `FluentProvider` with a theme class close to the root of your application and then instantiate components inside the provider's subtree:
