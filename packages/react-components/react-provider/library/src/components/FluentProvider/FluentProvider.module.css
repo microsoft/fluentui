@@ -13,15 +13,19 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useFluentProviderStyles_unstable, not source declaration order:
+ * Layer assignment mirrors the clsx ARGUMENT order of useFluentProviderStyles_unstable,
+ * not source declaration order:
  *
- *   1 fluentProviderClassNames.root → static class (JS)
- *   2 state.themeClassName          → runtime `fui-FluentProvider<useId>` class; carries
- *                                     ONLY `--token: value` declarations, written into a
- *                                     <style> tag by useFluentProviderThemeStyleTag.
- *                                     Never authored in CSS — the name is dynamic.
- *   3 useStyles.root                → fui.components.l1  (the only makeStyles slice)
+ *   1 useStyles.root                → fui.components.l1  (the only makeStyles slice)
+ *   2 group/fui-fluent-provider    → identity marker, inert (D15/D16)
+ *   3 state.themeClassName          → the STATIC theme class (fui-theme-web-dark, …, or a
+ *                                     consumer-authored class) resolved from the
+ *                                     `themeClassName` prop / provider inheritance
+ *                                     (theming Phase 2b). Carries ONLY `--token: value`
+ *                                     declarations, shipped in @fluentui/react-tailwind-
+ *                                     theme's `@layer fui.theme` (css/themes.css). May be
+ *                                     absent — then the `:root, :host` web-light defaults
+ *                                     apply.
  *   4 consumer className            → unlayered (always wins)
  *
  * Only one makeStyles slice exists, so there are no intra-component inversions to

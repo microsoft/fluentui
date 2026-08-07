@@ -1,7 +1,6 @@
-import { ThemeClassNameProvider_unstable as ThemeClassNameProvider } from '@fluentui/react-shared-contexts';
 import { usePortalCompat } from '@fluentui/react-portal-compat-context';
-import { FluentProvider, useFluentProviderThemeStyleTag } from '@fluentui/react-provider';
-import { IdPrefixProvider, resetIdsForTests } from '@fluentui/react-utilities';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
@@ -10,94 +9,53 @@ import { PortalCompatProvider, useProviderThemeClasses } from './PortalCompatPro
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
-const TestWrapperWithMultipleClasses: React.FC<{ children?: React.ReactNode }> = props => {
-  // Creates a second className with CSS variables
-  const { styleTagId } = useFluentProviderThemeStyleTag({
-    theme: { borderRadiusCircular: '50px' },
-    targetDocument: document,
-  });
-
-  return (
-    <FluentProvider className={styleTagId} theme={{ colorNeutralBackground1: '#ccc' }}>
-      <PortalCompatProvider>{props.children}</PortalCompatProvider>
-    </FluentProvider>
-  );
-};
-
 describe('useProviderThemeClasses', () => {
-  afterEach(() => {
-    resetIdsForTests();
-  });
-
-  it('handles classes from FluentProvider', () => {
+  it('returns the resolved theme class of the closest FluentProvider', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
       wrapper: (props: { children?: React.ReactNode }) => (
-        <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+        <FluentProvider themeClassName={webDarkThemeClassName}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>
       ),
     });
 
-    expect(result.current).toMatchInlineSnapshot(`
-      Array [
-        "fui-FluentProvider_r_0_",
-      ]
-    `);
+    expect(result.current).toEqual([webDarkThemeClassName]);
   });
 
-  it('handles multiple classes from FluentProvider', () => {
-    const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: TestWrapperWithMultipleClasses,
-    });
-
-    expect(result.current).toMatchInlineSnapshot(`
-      Array [
-        "fui-FluentProvider_r_2_",
-        "fui-FluentProvider_r_1_",
-      ]
-    `);
-  });
-
-  it('handles classes with custom ID prefix', () => {
+  it('supports consumer-authored multi-class themeClassName values', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
       wrapper: (props: { children?: React.ReactNode }) => (
-        <IdPrefixProvider value="custom1-">
-          <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+        <FluentProvider themeClassName="my-theme my-theme-overrides">
+          <PortalCompatProvider>{props.children}</PortalCompatProvider>
+        </FluentProvider>
+      ),
+    });
+
+    expect(result.current).toEqual(['my-theme', 'my-theme-overrides']);
+  });
+
+  it('returns the inherited class under a nested provider without a themeClassName', () => {
+    const { result } = renderHook(() => useProviderThemeClasses(), {
+      wrapper: (props: { children?: React.ReactNode }) => (
+        <FluentProvider themeClassName={webDarkThemeClassName}>
+          <FluentProvider dir="rtl">
             <PortalCompatProvider>{props.children}</PortalCompatProvider>
           </FluentProvider>
-        </IdPrefixProvider>
+        </FluentProvider>
       ),
     });
 
-    expect(result.current).toMatchInlineSnapshot(`
-      Array [
-        "custom1-fui-FluentProvider_r_3_",
-      ]
-    `);
+    expect(result.current).toEqual([webDarkThemeClassName]);
   });
 
-  it('handles classes with a React 18 compatible ID', () => {
+  it('returns no classes when the provider has no theme class (web-light :root defaults)', () => {
+    jest.spyOn(console, 'warn').mockImplementation(noop);
+
     const { result } = renderHook(() => useProviderThemeClasses(), {
       wrapper: (props: { children?: React.ReactNode }) => (
-        <ThemeClassNameProvider value="fui-FluentProviderR1a">
+        <FluentProvider>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
-        </ThemeClassNameProvider>
-      ),
-    });
-
-    expect(result.current).toMatchInlineSnapshot(`
-      Array [
-        "fui-FluentProviderR1a",
-      ]
-    `);
-  });
-
-  it('returns only proper classes', () => {
-    const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: (props: { children?: React.ReactNode }) => (
-        <ThemeClassNameProvider value="foo bar baz">
-          <PortalCompatProvider>{props.children}</PortalCompatProvider>
-        </ThemeClassNameProvider>
+        </FluentProvider>
       ),
     });
 
@@ -111,16 +69,12 @@ describe('useProviderThemeClasses', () => {
     renderHook(() => useProviderThemeClasses(), { wrapper: PortalCompatProvider });
 
     expect(warn).toHaveBeenCalledWith(
-      expect.stringContaining('PortalCompatProvider: "useThemeClassName()" hook returned an empty string'),
+      expect.stringContaining('PortalCompatProvider: no FluentProvider was found above in the React tree'),
     );
   });
 });
 
 describe('PortalCompatProvider', () => {
-  afterEach(() => {
-    resetIdsForTests();
-  });
-
   it('registers a function in a context', () => {
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
@@ -129,56 +83,33 @@ describe('PortalCompatProvider', () => {
     expect(result.current).toBeInstanceOf(Function);
   });
 
-  it('during register adds a className from "ThemeClassNameContext" context', () => {
+  it('during register adds the theme class to the element', () => {
     const element = document.createElement('div');
     const { result } = renderHook(() => usePortalCompat(), {
       wrapper: (props: { children?: React.ReactNode }) => (
-        <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+        <FluentProvider themeClassName={webDarkThemeClassName}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>
       ),
     });
 
     expect(result.current(element)).toBeInstanceOf(Function);
-    expect(element.classList).toMatchInlineSnapshot(`
-      DOMTokenList {
-        "0": "fui-FluentProvider_r_4_",
-      }
-    `);
+    expect(Array.from(element.classList)).toEqual([webDarkThemeClassName]);
   });
 
-  it('during register adds multiple classes from "ThemeClassNameContext" context if they exist', () => {
-    const element = document.createElement('div');
-    const { result } = renderHook(() => usePortalCompat(), {
-      wrapper: TestWrapperWithMultipleClasses,
-    });
-
-    expect(result.current(element)).toBeInstanceOf(Function);
-    expect(element.classList).toMatchInlineSnapshot(`
-      DOMTokenList {
-        "0": "fui-FluentProvider_r_6_",
-        "1": "fui-FluentProvider_r_5_",
-      }
-    `);
-  });
-
-  it('during unregister remove a className from "ThemeClassNameContext" context', () => {
+  it('during unregister removes the theme class from the element', () => {
     const element = document.createElement('div');
 
     const { result } = renderHook(() => usePortalCompat(), {
       wrapper: (props: { children?: React.ReactNode }) => (
-        <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+        <FluentProvider themeClassName={webDarkThemeClassName}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>
       ),
     });
     const unregister = result.current(element);
 
-    expect(element.classList).toMatchInlineSnapshot(`
-      DOMTokenList {
-        "0": "fui-FluentProvider_r_7_",
-      }
-    `);
+    expect(Array.from(element.classList)).toEqual([webDarkThemeClassName]);
     expect(unregister).toBeInstanceOf(Function);
 
     expect(unregister()).toBeUndefined();

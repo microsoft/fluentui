@@ -1,5 +1,5 @@
-import type { PartialTheme } from '@fluentui/react-theme';
 import type { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
+import { webDarkThemeClassName } from '@fluentui/react-theme';
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
@@ -8,56 +8,45 @@ import { useFluentProvider_unstable } from './useFluentProvider';
 import type { FluentProviderCustomStyleHooks } from './FluentProvider.types';
 
 describe('useFluentProvider_unstable', () => {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const noop = () => {};
-  let logWarnSpy: jest.Spied<typeof console.warn>;
+  describe('themeClassName (theming Phase 2b)', () => {
+    it('resolves to an empty string with no prop and no parent provider', () => {
+      const { result } = renderHook(() => useFluentProvider_unstable({}, React.createRef()));
 
-  beforeEach(() => {
-    logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(noop);
-  });
-
-  it(`should warn user if no theme was set in parent or child`, () => {
-    const Wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
-      <FluentProvider>{children}</FluentProvider>
-    );
-
-    const { result } = renderHook(() => useFluentProvider_unstable({}, React.createRef()), {
-      wrapper: Wrapper,
+      expect(result.current.themeClassName).toBe('');
     });
 
-    expect(result.current.theme).toBe(undefined);
+    it('uses the themeClassName prop', () => {
+      const { result } = renderHook(() =>
+        useFluentProvider_unstable({ themeClassName: webDarkThemeClassName }, React.createRef()),
+      );
 
-    expect(logWarnSpy).toHaveBeenCalledTimes(2);
-    expect(logWarnSpy).toHaveBeenCalledWith(
-      expect.stringContaining('@fluentui/react-provider: FluentProvider does not have your "theme" defined.'),
-    );
-  });
-
-  it('should merge themes', () => {
-    const themeA: PartialTheme = {
-      strokeWidthThick: '10px',
-      strokeWidthThickest: '30px',
-    };
-    const themeB: PartialTheme = {
-      strokeWidthThick: '20px',
-      strokeWidthThin: '20px',
-    };
-
-    const Wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
-      <FluentProvider theme={themeA}>{children}</FluentProvider>
-    );
-
-    const { result } = renderHook(() => useFluentProvider_unstable({ theme: themeB }, React.createRef()), {
-      wrapper: Wrapper,
+      expect(result.current.themeClassName).toBe(webDarkThemeClassName);
     });
 
-    expect(result.current.theme).toMatchInlineSnapshot(`
-      Object {
-        "strokeWidthThick": "20px",
-        "strokeWidthThickest": "30px",
-        "strokeWidthThin": "20px",
-      }
-    `);
+    it('inherits the parent provider theme class when the prop is omitted', () => {
+      const Wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
+        <FluentProvider themeClassName={webDarkThemeClassName}>{children}</FluentProvider>
+      );
+
+      const { result } = renderHook(() => useFluentProvider_unstable({}, React.createRef()), {
+        wrapper: Wrapper,
+      });
+
+      expect(result.current.themeClassName).toBe(webDarkThemeClassName);
+    });
+
+    it('a nested provider prop overrides the inherited theme class', () => {
+      const Wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
+        <FluentProvider themeClassName={webDarkThemeClassName}>{children}</FluentProvider>
+      );
+
+      const { result } = renderHook(
+        () => useFluentProvider_unstable({ themeClassName: 'my-custom-theme' }, React.createRef()),
+        { wrapper: Wrapper },
+      );
+
+      expect(result.current.themeClassName).toBe('my-custom-theme');
+    });
   });
 
   it('should merge overrides', () => {

@@ -9,10 +9,8 @@ import type {
   ProviderContextValue_unstable as ProviderContextValue,
   TooltipVisibilityContextValue_unstable as TooltipVisibilityContextValue,
   ThemeClassNameContextValue_unstable as ThemeClassNameContextValue,
-  ThemeContextValue_unstable as ThemeContextValue,
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
 } from '@fluentui/react-shared-contexts';
-import type { PartialTheme } from '@fluentui/react-theme';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type FluentProviderSlots = {
@@ -37,60 +35,55 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
   /** Sets the direction of text & generated styles. */
   dir?: 'ltr' | 'rtl';
 
-  /**
-   * CSP nonce applied to the theme-variables `<style>` element FluentProvider creates
-   * (both the client-side tag and the SSR-rendered element). Nested FluentProviders
-   * inherit the nonce from their closest ancestor, so it only needs to be set on the
-   * app-root provider.
-   *
-   * Replaces the Griffel renderer's `styleElementAttributes` nonce path
-   * (`RendererProvider` + `createDOMRenderer(document, { styleElementAttributes: { nonce } })`).
-   */
-  nonce?: string;
-
   /** Provides the document, can be undefined during SSR render. */
   targetDocument?: Document;
 
-  /** Sets the theme used in a scope. */
-  theme?: PartialTheme;
+  /**
+   * CSS class carrying the theme's custom-property declarations for this scope (theming
+   * Phase 2b — replaces the removed `theme` prop, which took a JS theme object).
+   *
+   * Pass one of the shipped theme class constants (`webLightThemeClassName`,
+   * `webDarkThemeClassName`, `teamsHighContrastThemeClassName`, …) — the classes ship in
+   * `@fluentui/react-tailwind-theme`'s CSS artifact — or your own class. A theme class
+   * must contain ONLY custom-property declarations (the canonical `--color-*`/`--font-*`/…
+   * token variables); the provider applies it to its root (the variables cascade to the
+   * subtree) and propagates it to portals.
+   *
+   * When omitted, the closest ancestor FluentProvider's theme class is inherited; without
+   * any, the static web-light defaults emitted at `:root` apply.
+   */
+  themeClassName?: string;
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   overrides_unstable?: OverridesContextValue;
 };
 
 export type FluentProviderState = ComponentState<FluentProviderSlots> &
-  Pick<FluentProviderProps, 'nonce' | 'targetDocument'> &
+  Pick<FluentProviderProps, 'targetDocument'> &
   Required<
     Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>
   > & {
-    theme: ThemeContextValue;
-    themeClassName: string;
     /**
-     * Props used to render SSR theme variables style element
+     * The RESOLVED theme class name: the `themeClassName` prop if set, otherwise the
+     * value inherited from the parent provider, otherwise `''` (web-light `:root`
+     * defaults apply). Applied to the root slot and propagated to portals.
      */
-    serverStyleProps: {
-      /**
-       * CSS rule containing CSS variables
-       */
-      cssRule: string;
-      /**
-       * Additional attributes applied to the style element
-       */
-      attributes: Record<string, string>;
-    };
+    themeClassName: string;
   };
 
 export type FluentProviderContextValues = Pick<
   FluentProviderState,
-  'customStyleHooks_unstable' | 'theme' | 'overrides_unstable'
+  'customStyleHooks_unstable' | 'overrides_unstable'
 > & {
   provider: ProviderContextValue;
   themeClassName: ThemeClassNameContextValue;
   iconDirection: IconDirectionContextValue;
   tooltip: TooltipVisibilityContextValue;
   /**
-   * CSP nonce provided to descendants (including nested FluentProviders) for
-   * Fluent-created style elements. See {@link FluentProviderProps.nonce}.
+   * The resolved theme class (state.themeClassName), published on
+   * `FluentProviderThemeClassNameContext` so nested providers inherit it and
+   * react-portal-compat can apply it to v8 portals. Distinct from `themeClassName` above,
+   * which (by default) is the FULL root class string used to style v9 portals.
    */
-  styleTagNonce: string | undefined;
+  themeClass: string;
 };

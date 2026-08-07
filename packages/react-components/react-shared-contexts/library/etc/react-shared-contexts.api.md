@@ -5,7 +5,6 @@
 ```ts
 
 import * as React_2 from 'react';
-import type { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
 type AnnounceContextValue = {
@@ -649,15 +648,6 @@ export type ThemeClassNameContextValue_unstable = string;
 
 // @public (undocumented)
 export const ThemeClassNameProvider_unstable: React_2.Provider<string>;
-
-// @internal (undocumented)
-export const ThemeContext_unstable: React_2.Context<ThemeContextValue_unstable>;
-
-// @public (undocumented)
-export type ThemeContextValue_unstable = Theme | Partial<Theme> | undefined;
-
-// @internal (undocumented)
-export const ThemeProvider_unstable: React_2.Provider<ThemeContextValue_unstable>;
 
 // @public
 export type TooltipVisibilityContextValue_unstable = {

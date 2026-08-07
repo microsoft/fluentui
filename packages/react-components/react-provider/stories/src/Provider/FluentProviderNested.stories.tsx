@@ -1,24 +1,18 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { webLightTheme, FluentProvider } from '@fluentui/react-components';
+import { webLightThemeClassName, FluentProvider } from '@fluentui/react-components';
 
 import styles from './FluentProviderNested.module.css';
 
 export const Nested = (): JSXElement => {
   return (
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider themeClassName={webLightThemeClassName}>
       <div className={styles.example}>
         <div className={styles.text}>Web Light Theme using brand tokens</div>
 
-        <FluentProvider
-          theme={{
-            colorBrandStroke1: '#780510',
-            colorBrandBackground2: '#fa8072',
-            colorBrandForeground2: '#780510',
-          }}
-        >
+        <FluentProvider themeClassName={styles.nestedBrandTheme}>
           <div className={styles.example}>
-            <div className={styles.text}>Nested FluentProvider with partial theme</div>
+            <div className={styles.text}>Nested FluentProvider with a scoped custom theme class</div>
           </div>
         </FluentProvider>
       </div>
@@ -29,7 +23,9 @@ export const Nested = (): JSXElement => {
 Nested.parameters = {
   docs: {
     description: {
-      story: 'A Fluent provider can be nested to override some or all of a tokens.',
+      story:
+        'A Fluent provider can be nested to override some or all of the tokens. ' +
+        'Pass a CSS class containing only custom-property declarations (a scoped custom theme) as `themeClassName`.',
     },
   },
 };

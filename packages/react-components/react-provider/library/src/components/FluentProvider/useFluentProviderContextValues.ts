@@ -9,10 +9,8 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
     // eslint-disable-next-line @typescript-eslint/naming-convention
     customStyleHooks_unstable,
     dir,
-    nonce,
     root,
     targetDocument,
-    theme,
     themeClassName,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     overrides_unstable,
@@ -31,8 +29,9 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
     provider,
     iconDirection,
     tooltip,
-    styleTagNonce: nonce,
-    theme,
+    // The resolved theme class, inherited by nested providers and applied to v8 portals
+    // by react-portal-compat (see FluentProviderThemeClassName.ts).
+    themeClass: themeClassName,
     themeClassName: applyStylesToPortals ? root.className! : themeClassName,
   };
 }

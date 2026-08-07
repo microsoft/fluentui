@@ -5,13 +5,6 @@ import { useFluentProvider_unstable } from './useFluentProvider';
 import { useFluentProviderContextValues_unstable } from './useFluentProviderContextValues';
 
 describe('useFluentProviderContextValues_unstable', () => {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const noop = () => {};
-
-  beforeEach(() => {
-    jest.spyOn(console, 'warn').mockImplementation(noop);
-  });
-
   it('should return a value for "provider"', () => {
     const { result } = renderHook(() => {
       const state = useFluentProvider_unstable({}, React.createRef());
@@ -32,26 +25,6 @@ describe('useFluentProviderContextValues_unstable', () => {
     });
 
     expect(result.current.tooltip).toEqual({});
-  });
-
-  it('should return undefined if "theme" is not set', () => {
-    const { result } = renderHook(() => {
-      const state = useFluentProvider_unstable({}, React.createRef());
-
-      return useFluentProviderContextValues_unstable(state);
-    });
-
-    expect(result.current.theme).toBe(undefined);
-  });
-
-  it('should return a value for "theme"', () => {
-    const { result } = renderHook(() => {
-      const state = useFluentProvider_unstable({ theme: { colorBrandBackground: '#fff' } }, React.createRef());
-
-      return useFluentProviderContextValues_unstable(state);
-    });
-
-    expect(result.current.theme).toEqual({ colorBrandBackground: '#fff' });
   });
 
   describe('themeClassname', () => {
@@ -82,6 +55,23 @@ describe('useFluentProviderContextValues_unstable', () => {
       });
 
       expect(result.current.themeClassName).toBe('bar');
+    });
+  });
+
+  describe('themeClass (theming Phase 2b)', () => {
+    it('always passes the RESOLVED theme class, independent of applyStylesToPortals', () => {
+      const { result } = renderHook(() => {
+        const state = {
+          ...useFluentProvider_unstable({}, React.createRef()),
+          root: { className: 'foo' },
+          themeClassName: 'fui-theme-web-dark',
+        };
+
+        return useFluentProviderContextValues_unstable(state);
+      });
+
+      // v8 portal-compat consumes exactly this — never the full root class string.
+      expect(result.current.themeClass).toBe('fui-theme-web-dark');
     });
   });
 });

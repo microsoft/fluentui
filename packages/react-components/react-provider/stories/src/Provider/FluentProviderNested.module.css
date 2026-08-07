@@ -1,6 +1,14 @@
 /* Story styles for FluentProviderNested.
  * Token references are the Fluent theme's CSS variables. */
 
+/* A scoped custom theme: contains only custom-property declarations that
+ * override brand tokens for the nested FluentProvider. */
+.nestedBrandTheme {
+  --color-brand-stroke-1: #780510;
+  --color-brand-background-2: #fa8072;
+  --color-brand-foreground-2: #780510;
+}
+
 .example {
   background-color: var(--color-brand-background-2);
   color: var(--color-brand-foreground-2);

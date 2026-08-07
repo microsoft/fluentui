@@ -11,16 +11,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IconDirectionContextValue } from '@fluentui/react-icons/lib/providers';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
-import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
-import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
-
-// @public
-export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string;
 
 // @public (undocumented)
 export const FluentProvider: ForwardRefComponent<FluentProviderProps>;
@@ -31,12 +26,12 @@ export const fluentProviderClassNames: {
 };
 
 // @public (undocumented)
-export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyleHooks_unstable' | 'theme' | 'overrides_unstable'> & {
+export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyleHooks_unstable' | 'overrides_unstable'> & {
     provider: ProviderContextValue_unstable;
     themeClassName: ThemeClassNameContextValue_unstable;
     iconDirection: IconDirectionContextValue;
     tooltip: TooltipVisibilityContextValue_unstable;
-    styleTagNonce: string | undefined;
+    themeClass: string;
 };
 
 // @public (undocumented)
@@ -47,9 +42,8 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
     applyStylesToPortals?: boolean;
     customStyleHooks_unstable?: FluentProviderCustomStyleHooks;
     dir?: 'ltr' | 'rtl';
-    nonce?: string;
     targetDocument?: Document;
-    theme?: PartialTheme;
+    themeClassName?: string;
     overrides_unstable?: OverridesContextValue_unstable;
 };
 
@@ -59,13 +53,8 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'nonce' | 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
-    theme: ThemeContextValue_unstable;
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
     themeClassName: string;
-    serverStyleProps: {
-        cssRule: string;
-        attributes: Record<string, string>;
-    };
 };
 
 // @public
@@ -81,10 +70,7 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
 export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
 // @internal
-export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, "theme" | "targetDocument" | "nonce">) => {
-    styleTagId: string;
-    rule: string;
-};
+export function useFluentProviderThemeClassName_unstable(): string | undefined;
 
 // (No @packageDocumentation comment for this package)
 
