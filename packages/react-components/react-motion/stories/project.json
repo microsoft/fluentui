@@ -4,5 +4,14 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-motion/stories/src",
   "tags": ["vNext", "platform:web", "type:stories"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/react-components/react-motion/stories/jest.config.js"
+      }
+    }
+  }
 }

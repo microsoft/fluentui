@@ -40,6 +40,121 @@ describe('useAnimateAtoms', () => {
     expect(result.current).toBeInstanceOf(Function);
   });
 
+  it('finishes immediately when callbacks are armed after the animation finished', () => {
+    jest.useFakeTimers();
+    const animation = {
+      persist: jest.fn(),
+      playState: 'finished',
+    } as unknown as Animation;
+    const element = { animate: jest.fn().mockReturnValue(animation) } as unknown as HTMLElement;
+    const onfinish = jest.fn();
+    const { result } = renderHook(() => useAnimateAtoms());
+    const handle = result.current(element, { keyframes: DEFAULT_KEYFRAMES }, { isReducedMotion: false });
+
+    handle.setMotionEndCallbacks(onfinish, jest.fn());
+
+    expect(onfinish).toHaveBeenCalledTimes(1);
+    expect(jest.getTimerCount()).toBe(0);
+    jest.useRealTimers();
+  });
+
+  it('counts animations that finished before callbacks were armed', () => {
+    const animations = [
+      { persist: jest.fn(), playState: 'finished' },
+      { persist: jest.fn(), playState: 'running' },
+    ] as unknown as Animation[];
+    const element = {
+      animate: jest.fn().mockReturnValueOnce(animations[0]).mockReturnValueOnce(animations[1]),
+    } as unknown as HTMLElement;
+    const onfinish = jest.fn();
+    const { result } = renderHook(() => useAnimateAtoms());
+    const handle = result.current(element, [{ keyframes: DEFAULT_KEYFRAMES }, { keyframes: DEFAULT_KEYFRAMES }], {
+      isReducedMotion: false,
+    });
+
+    handle.setMotionEndCallbacks(onfinish, jest.fn());
+    animations[1].onfinish?.(null as unknown as AnimationPlaybackEvent);
+
+    expect(onfinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('invalidates callbacks from a previous playback cycle when re-armed', () => {
+    const animation = {
+      persist: jest.fn(),
+      playState: 'running',
+    } as unknown as Animation;
+    const element = { animate: jest.fn().mockReturnValue(animation) } as unknown as HTMLElement;
+    const firstOnfinish = jest.fn();
+    const secondOnfinish = jest.fn();
+    const { result } = renderHook(() => useAnimateAtoms());
+    const handle = result.current(element, { keyframes: DEFAULT_KEYFRAMES }, { isReducedMotion: false });
+
+    handle.setMotionEndCallbacks(firstOnfinish, jest.fn());
+    const staleOnfinish = animation.onfinish;
+    handle.setMotionEndCallbacks(secondOnfinish, jest.fn());
+    staleOnfinish?.(null as unknown as AnimationPlaybackEvent);
+    animation.onfinish?.(null as unknown as AnimationPlaybackEvent);
+
+    expect(firstOnfinish).not.toHaveBeenCalled();
+    expect(secondOnfinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('invalidates callbacks when disposed', () => {
+    jest.useFakeTimers();
+    const animation = {
+      persist: jest.fn(),
+      playState: 'running',
+    } as unknown as Animation;
+    const element = { animate: jest.fn().mockReturnValue(animation) } as unknown as HTMLElement;
+    const onfinish = jest.fn();
+    const oncancel = jest.fn();
+    const { result } = renderHook(() => useAnimateAtoms());
+    const handle = result.current(element, { keyframes: DEFAULT_KEYFRAMES }, { isReducedMotion: false });
+
+    handle.setMotionEndCallbacks(onfinish, oncancel);
+    const staleOnfinish = animation.onfinish;
+    handle.dispose();
+    staleOnfinish?.(null as unknown as AnimationPlaybackEvent);
+    jest.runOnlyPendingTimers();
+
+    expect(onfinish).not.toHaveBeenCalled();
+    expect(oncancel).not.toHaveBeenCalled();
+    expect(jest.getTimerCount()).toBe(0);
+    jest.useRealTimers();
+  });
+
+  it('does not schedule recurring checks for paused animations', () => {
+    jest.useFakeTimers();
+    const animation = {
+      persist: jest.fn(),
+      playState: 'paused',
+    } as unknown as Animation;
+    const element = { animate: jest.fn().mockReturnValue(animation) } as unknown as HTMLElement;
+    const { result } = renderHook(() => useAnimateAtoms());
+    const handle = result.current(element, { keyframes: DEFAULT_KEYFRAMES }, { isReducedMotion: false });
+
+    handle.setMotionEndCallbacks(jest.fn(), jest.fn());
+
+    expect(jest.getTimerCount()).toBe(0);
+    jest.useRealTimers();
+  });
+
+  it('finishes an empty animation handle on the next microtask', async () => {
+    jest.useFakeTimers();
+    const [element] = createErrorElementMock();
+    const onfinish = jest.fn();
+    const { result } = renderHook(() => useAnimateAtoms());
+    const handle = result.current(element, { keyframes: DEFAULT_KEYFRAMES }, { isReducedMotion: false });
+
+    handle.setMotionEndCallbacks(onfinish, jest.fn());
+    expect(onfinish).not.toHaveBeenCalled();
+    await Promise.resolve();
+
+    expect(onfinish).toHaveBeenCalledTimes(1);
+    expect(jest.getTimerCount()).toBe(0);
+    jest.useRealTimers();
+  });
+
   describe('reduce motion', () => {
     it('calls ".animate()" with regular motion', () => {
       const { result } = renderHook(() => useAnimateAtoms());
