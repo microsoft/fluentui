@@ -61,8 +61,8 @@
  *   [data-fui-focus-visible]::after{position:absolute}
  *   [data-fui-focus-visible]::after{pointer-events:none}
  *   [data-fui-focus-visible]::after{z-index:1}
- *   [data-fui-focus-visible]::after{border:2px solid var(--colorStrokeFocus2)}
- *   [data-fui-focus-visible]::after{border-radius:var(--borderRadiusMedium)}
+ *   [data-fui-focus-visible]::after{border:2px solid var(--color-stroke-focus-2)}
+ *   [data-fui-focus-visible]::after{border-radius:var(--radius-medium)}
  *   [data-fui-focus-visible]::after{top:calc(2px * -1)}      (right/left/bottom idem)
  *   @media (forced-colors: active){…::after{border-{top,left,right,bottom}-color:Highlight}}
  *
@@ -98,8 +98,8 @@
     pointer-events: none;
     z-index: 1;
 
-    border: var(--fui-focus-outline-width, 2px) solid var(--fui-focus-outline-color, var(--colorStrokeFocus2));
-    border-radius: var(--fui-focus-outline-radius, var(--borderRadiusMedium));
+    border: var(--fui-focus-outline-width, 2px) solid var(--fui-focus-outline-color, var(--color-stroke-focus-2));
+    border-radius: var(--fui-focus-outline-radius, var(--radius-medium));
 
     /* `getOutlinePosition()`: `calc(<width> * -1)` with no offset, else
        `calc(0px - <width> - <offset>)`. Both branches collapse into one expression
@@ -129,11 +129,11 @@
  * (react-button/library/lib-commonjs/components/Button/useButtonStyles.styles.js:41):
  *
  *   .r1f29ykk[data-fui-focus-visible]{
- *     border-color:var(--colorStrokeFocus2);
- *     border-radius:var(--borderRadiusMedium);
+ *     border-color:var(--color-stroke-focus-2);
+ *     border-radius:var(--radius-medium);
  *     border-width:1px;
- *     outline:<strokeWidthThick> solid var(--colorTransparentStroke);
- *     box-shadow:0 0 0 <strokeWidthThin> var(--colorStrokeFocus2) inset;
+ *     outline:<strokeWidthThick> solid var(--color-transparent-stroke);
+ *     box-shadow:0 0 0 <strokeWidthThin> var(--color-stroke-focus-2) inset;
  *     z-index:1;
  *   }
  *
@@ -155,11 +155,11 @@
   --fui-focus-ring-width: initial;
   --fui-focus-ring-inset-width: initial;
 
-  border-color: var(--fui-focus-ring-color, var(--colorStrokeFocus2));
-  border-radius: var(--fui-focus-ring-radius, var(--borderRadiusMedium));
+  border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+  border-radius: var(--fui-focus-ring-radius, var(--radius-medium));
   border-width: var(--fui-focus-ring-width, 1px);
-  outline: var(--spacing-thick) solid var(--colorTransparentStroke);
+  outline: var(--spacing-thick) solid var(--color-transparent-stroke);
   box-shadow: 0 0 0 var(--fui-focus-ring-inset-width, var(--spacing-thin))
-    var(--fui-focus-ring-color, var(--colorStrokeFocus2)) inset;
+    var(--fui-focus-ring-color, var(--color-stroke-focus-2)) inset;
   z-index: 1;
 }

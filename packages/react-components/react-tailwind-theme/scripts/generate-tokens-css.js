@@ -6,28 +6,36 @@
  *
  * WHY `inline` IS MANDATORY
  * -------------------------
- * A naive `@theme { --color-x: var(--colorX) }` emits `--color-x: var(--colorX)` into
- * `:root` and compiles `bg-x` to `background-color: var(--color-x)`. The `var(--colorX)`
- * lookup then resolves ONCE, at `:root`, where Fluent tokens do not exist — FluentProvider
- * writes them on `.fui-FluentProviderN` elements. Every provider (and every nested
- * provider) would render the same frozen value. FORBIDDEN.
+ * A naive `@theme { --color-x: <value> }` emits the value into `:root` and compiles
+ * `bg-x` to `background-color: var(--color-x)` resolved ONCE, at `:root`, where Fluent
+ * token VALUES do not exist — FluentProvider writes them on `.fui-FluentProviderN`
+ * elements. Every provider (and every nested provider) would render the same frozen
+ * value. FORBIDDEN.
  *
  * `inline` substitutes the theme value into the utility itself, so `bg-x` compiles to
- * `background-color: var(--colorX)` and resolves per-element against the nearest
- * FluentProvider — nested themes keep working (DECISIONS.md D4's theming guarantee is
- * preserved; only the authoring surface changes).
+ * `background-color: var(--color-neutral-background-1)` and resolves per-element against
+ * the nearest FluentProvider — nested themes keep working (DECISIONS.md D4's theming
+ * guarantee is preserved; only the authoring surface changes).
  *
- * WHY NOT `@theme inline reference` (dead-alias suppression — measured, then rejected)
+ * THEMING PHASE 2a — canonical kebab names; `reference` ADOPTED (supersedes the earlier
+ * rejection)
  * -----------------------------------------------------------------------------------
- * `inline` emits an alias custom property ONLY when some utility references it BY NAME
- * (`bg-(--color-neutral-background-1)`); a plain `bg-neutral-background-1` inlines the
- * value and needs no variable. Under the `source(none)` form the theme package mandates,
- * no COLOR/FONT/etc. registration is ever referenced by name, so zero of those reach the
- * output.
+ * Since theming Phase 2a the runtime CSS variable of every token IS its Tailwind theme
+ * key (`--color-neutral-background-1`, `--text-base-300`, `--shadow-2`, …; durations are
+ * the one exception, see NAMESPACES). Each registration is therefore a SELF-NAMED
+ * reference (`--color-x: var(--color-x)`), which plain `inline` treats as a by-name use
+ * and answers by emitting a self-referential alias at `:root, :host` — 400+ cyclic
+ * (guaranteed-invalid at `:root`) declarations that define nothing and cost ~19KB
+ * (probe: .scratch/phase2a-theming/probe/). `reference` suppresses exactly that
+ * emission and nothing else — probed byte-identical utility output.
  *
- * `reference` was tried and rejected: it suppresses the alias even when a by-name
- * reference DOES exist, emitting `background-color: var(--color-neutral-background-1)`
- * against a variable nothing defines — silently broken CSS. `inline` self-heals instead.
+ * `reference` was REJECTED pre-Phase-2a ("suppresses the alias even when a by-name
+ * reference exists, emitting CSS against a variable nothing defines"). That reason is
+ * retired: FluentProvider's runtime theme tag now writes the canonical kebab names on
+ * every provider element (alongside the legacy camelCase names, until Phase 2b removes
+ * the tag), so `var(--color-neutral-background-1)` IS defined wherever tokens were ever
+ * defined. Resolution semantics are unchanged from the camelCase era: per-element,
+ * against the nearest provider; undefined outside any provider.
  *
  * SPACING IS DIFFERENT — see SPACING_SCALE / STROKE_WIDTH_SCALE below. The 22
  * spacingHorizontal / spacingVertical tokens register under `--spacing-*` as ALIASES OF
@@ -54,13 +62,16 @@
  * `.scratch/layer-probe/check-stroke-namespace.mjs`), so those properties must be authored
  * as a direct `var(--spacing-thin)` reference, which needs a real variable.
  *
- * THE OLD camelCase NAMES (`--spacingHorizontalM`, `--strokeWidthThin`, …) NO LONGER EXIST
- * in emitted CSS (option B, settled with user: single vocabulary; a documented major break
- * for hand-written consumer CSS against the old names). The `tokens.*` JS constants in
- * @fluentui/tokens are repointed to the canonical kebab names instead — this generator
- * ASSERTS that lockstep on every run. (FluentProvider's runtime theme tag still writes the
- * old camelCase names on provider elements until theming Phase 2 removes it — with no CSS
- * reader left, those declarations are harmless orphans.)
+ * THE OLD camelCase NAMES (`--colorNeutralBackground1`, `--fontSizeBase300`,
+ * `--spacingHorizontalM`, `--strokeWidthThin`, …) NO LONGER EXIST in emitted CSS or in
+ * any shipped read path (theming Phase 2a extends Phase 1's option B to the FULL token
+ * set: single vocabulary; a documented major break for hand-written consumer CSS against
+ * the old names). The `tokens.*` JS constants in @fluentui/tokens are repointed to the
+ * canonical kebab names — this generator ASSERTS that lockstep for EVERY token on every
+ * run. (FluentProvider's runtime theme tag writes token values under BOTH vocabularies
+ * on provider elements until theming Phase 2b removes it — the camelCase half feeds
+ * nothing shipped and exists only as unbroken-interim insurance for hand-written
+ * consumer reads.)
  *
  * The emission rides the once-per-document artifact (css/emit.css -> dist/styles.css)
  * and is suppressed in component modules by `@reference`, exactly like `--base-scale`.
@@ -85,7 +96,7 @@ const DEFAULT_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'tokens.css');
 const GENERATOR_ID = 'packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js';
 
 /** The `@theme` modifiers the emitted block carries. See the module header for why. */
-const THEME_MODIFIERS = 'inline';
+const THEME_MODIFIERS = 'inline reference';
 
 /**
  * camelCase → kebab-case, with digit runs and acronym runs as their own segments.
@@ -470,6 +481,14 @@ const NAMESPACES = [
   {
     prefix: 'duration',
     namespace: 'transition-duration',
+    // Durations are the ONE Phase-2a family whose canonical RUNTIME variable
+    // (`--duration-fast`) differs from its Tailwind theme key
+    // (`--transition-duration-fast`): the family keeps the shorter custom namespace
+    // (user decision — consistent with the token vocabulary, no first-class variable
+    // namespace worth occupying), while the theme key must be what the installed
+    // utility registry reads. The registered value `var(--duration-fast)` carries the
+    // canonical reference into `duration-*` utilities verbatim.
+    canonicalNamespace: 'duration',
     utility: 'duration-*',
     heading: 'Transition durations',
   },
@@ -597,7 +616,15 @@ function classify(name) {
       };
     }
 
-    return { kind: 'register', group, themeKey: `--${group.namespace}-${kebabCase(remainder)}` };
+    const kebab = kebabCase(remainder);
+    return {
+      kind: 'register',
+      group,
+      themeKey: `--${group.namespace}-${kebab}`,
+      // The canonical RUNTIME variable name (theming Phase 2a): identical to the theme
+      // key for every namespace except duration (see NAMESPACES).
+      canonical: `--${group.canonicalNamespace || group.namespace}-${kebab}`,
+    };
   }
 
   for (const exclusion of EXCLUSIONS) {
@@ -659,17 +686,24 @@ function render(options = {}) {
     section.lines.push(`  ${themeKey}: ${resolved};`);
     sections.set(group.prefix, section);
 
-    if (group.scale) {
-      // tokens.ts lockstep (option B): the JS `tokens.*` constants are the READ path and
-      // must reference the canonical variable this generator emits — assert, never drift.
-      const canonical = group.prefix === 'strokeWidth' ? strokeWidthCanonicalName(classification.step) : themeKey;
-      const expectedTokenValue = `var(${canonical})`;
-      if (value !== expectedTokenValue) {
-        throw new Error(
-          `Token \`${name}\` is \`${value}\` in packages/tokens/src/tokens.ts but the canonical ` +
-            `variable is \`${expectedTokenValue}\`. Repoint tokens.ts (theming Phase 1 option B).`,
-        );
-      }
+    // tokens.ts lockstep (option B, full set since theming Phase 2a): the JS `tokens.*`
+    // constants are the READ path and must reference the canonical variable of EVERY
+    // token — assert, never drift. zIndex tokens may carry their default as a var()
+    // fallback; nothing else may.
+    const canonical = group.scale
+      ? group.prefix === 'strokeWidth'
+        ? strokeWidthCanonicalName(classification.step)
+        : themeKey
+      : classification.canonical;
+    const lockstep = new RegExp(`^var\\(${canonical.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:, [^)]+)?\\)$`);
+    if (!lockstep.test(value)) {
+      throw new Error(
+        `Token \`${name}\` is \`${value}\` in packages/tokens/src/tokens.ts but the canonical ` +
+          `variable is \`${canonical}\`. Repoint tokens.ts (theming Phase 2a, option B).`,
+      );
+    }
+    if (group.prefix !== 'zIndex' && value !== `var(${canonical})`) {
+      throw new Error(`Token \`${name}\` must be exactly \`var(${canonical})\` (no fallback) — got \`${value}\`.`);
     }
 
     if (group.emit) {
@@ -707,9 +741,12 @@ function render(options = {}) {
   out.push(' *');
   out.push(` * ${tokens.length} Fluent tokens: ${registered} registered, ${excludedNote}.`);
   out.push(' *');
-  out.push(' * `inline` is MANDATORY: it substitutes var(--fluentToken) into each utility, so');
-  out.push(' * values resolve per-element against the nearest FluentProvider. A plain `@theme`');
-  out.push(' * alias would freeze resolution at `:root`, where Fluent tokens do not exist.');
+  out.push(' * `inline` is MANDATORY: it substitutes the canonical var(--token-name) into each');
+  out.push(' * utility, so values resolve per-element against the nearest FluentProvider. A');
+  out.push(' * plain `@theme` alias would freeze resolution at `:root`, where token values do');
+  out.push(' * not exist. `reference` suppresses the self-referential aliases that plain');
+  out.push(' * `inline` would emit now that each runtime variable IS its theme key (theming');
+  out.push(' * Phase 2a) — the runtime values come from FluentProvider, not this file.');
   out.push(' *');
   out.push(' * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* are');
   out.push(' * ALIASES OF THE NUMERIC AXIS — calc(var(--spacing) * N), the same shape p-12');
@@ -755,11 +792,12 @@ function render(options = {}) {
     out.push(' * are var() reference strings against the canonical names emitted here (charts');
     out.push(' * inline styles etc.).');
     out.push(' *');
-    out.push(' * THE OLD camelCase NAMES (--spacingHorizontalM, --strokeWidthThin, …) ARE GONE');
-    out.push(' * (option B, settled with user): single vocabulary, documented major break for');
-    out.push(" * hand-written consumer CSS. FluentProvider's runtime theme tag still writes them");
-    out.push(' * on provider elements until theming Phase 2 removes it — harmless orphans, since');
-    out.push(' * no shipped CSS or tokens.* string reads them anymore.');
+    out.push(' * THE OLD camelCase NAMES (--colorNeutralBackground1, --spacingHorizontalM, …)');
+    out.push(' * ARE GONE for the ENTIRE token set (option B, theming Phase 2a): single');
+    out.push(' * vocabulary, documented major break for hand-written consumer CSS.');
+    out.push(" * FluentProvider's runtime theme tag writes values under BOTH vocabularies on");
+    out.push(' * provider elements until theming Phase 2b removes it — the camelCase half feeds');
+    out.push(' * no shipped CSS or tokens.* string anymore.');
     out.push(' *');
     out.push(' * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component');
     out.push(' * `*.module.css` output stays free of theme declarations; css/emit.css compiles it');
