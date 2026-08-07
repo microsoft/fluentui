@@ -130,6 +130,12 @@
       "import": "./lib/combobox.js",
       "require": "./lib-commonjs/combobox.js"
     },
+    "./compound-button": {
+      "types": "./dist/compound-button.d.ts",
+      "node": "./lib-commonjs/compound-button.js",
+      "import": "./lib/compound-button.js",
+      "require": "./lib-commonjs/compound-button.js"
+    },
     "./dialog": {
       "types": "./dist/dialog.d.ts",
       "node": "./lib-commonjs/dialog.js",
