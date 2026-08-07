@@ -17,19 +17,19 @@
 }
 
 .logLabel {
-  color: var(--colorNeutralForegroundOnBrand);
-  background-color: var(--colorBrandBackground);
+  color: var(--color-neutral-foreground-on-brand);
+  background-color: var(--color-brand-background);
   width: fit-content;
-  font-weight: var(--fontWeightBold);
+  font-weight: var(--font-weight-bold);
   padding: 2px 12px;
 }
 
 .log {
   overflow-y: auto;
-  box-shadow: var(--shadow16);
+  box-shadow: var(--shadow-16);
   position: relative;
   min-width: 200px;
   height: 200px;
-  border: 2px solid var(--colorBrandBackground);
+  border: 2px solid var(--color-brand-background);
   padding: 12px;
 }

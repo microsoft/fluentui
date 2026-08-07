@@ -28,7 +28,7 @@ to the component:
 ```css
 /* MyForm.module.css */
 .submit {
-  background-color: var(--colorBrandBackground);
+  background-color: var(--color-brand-background);
   border-radius: 9999px;
 }
 ```
@@ -162,7 +162,7 @@ styling globally is through theme tokens, which are CSS custom properties. Refer
 ```css
 .root {
   display: flex;
-  color: var(--colorNeutralForeground3);
+  color: var(--color-neutral-foreground-3);
 }
 ```
 
@@ -176,7 +176,7 @@ them:
 ```js
 import { tokens } from '@fluentui/react-components';
 
-const style = { color: tokens.colorNeutralForeground3 }; // → 'var(--colorNeutralForeground3)'
+const style = { color: tokens.colorNeutralForeground3 }; // → 'var(--color-neutral-foreground-3)'
 ```
 
 For more details, see [Theming](?path=/docs/concepts-developer-theming--docs).
@@ -210,7 +210,7 @@ Token-taking APIs (`classList.contains`, `getElementsByClassName`) need no escap
 
 /* ✅ */
 .root {
-  color: var(--colorPaletteRedForeground1);
+  color: var(--color-palette-red-foreground-1);
 }
 ```
 

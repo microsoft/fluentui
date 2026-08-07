@@ -3,13 +3,13 @@
 
 .dialog {
   position: fixed;
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
   inset: 0;
   padding: 10px;
   margin: auto;
   border: none;
   overflow: unset;
-  box-shadow: var(--shadow16);
+  box-shadow: var(--shadow-16);
   width: 450px;
   height: 200px;
   display: flex;

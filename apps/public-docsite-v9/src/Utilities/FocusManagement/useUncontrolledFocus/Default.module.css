@@ -14,7 +14,7 @@
   padding: 20px 10px 10px 10px;
   position: relative;
   width: 400px;
-  border: 2px solid var(--colorBrandBackground);
+  border: 2px solid var(--color-brand-background);
 }
 
 .focusTrapZone::after {
@@ -28,8 +28,8 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: 1px;
-  color: var(--colorNeutralForegroundOnBrand);
-  background-color: var(--colorBrandBackground);
+  color: var(--color-neutral-foreground-on-brand);
+  background-color: var(--color-brand-background);
 }
 
 .controls {

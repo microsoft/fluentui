@@ -2,7 +2,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .area {
-  border: 2px solid var(--colorStatusDangerBackground3);
+  border: 2px solid var(--color-status-danger-background-3);
   padding: 60px 20px 20px 20px;
   width: 300px;
   height: 300px;
@@ -19,14 +19,14 @@
   padding: var(--spacing-horizontal-m-nudge) var(--spacing-horizontal-s);
   top: 0;
   left: 0;
-  color: var(--colorStatusDangerBackground1);
-  background-color: var(--colorStatusDangerBackground3);
+  color: var(--color-status-danger-background-1);
+  background-color: var(--color-status-danger-background-3);
 }
 
 .boundary {
   width: 320px;
   height: 320px;
-  outline: 2px solid var(--colorBrandBackground);
+  outline: 2px solid var(--color-brand-background);
   position: absolute;
   top: 50px;
   left: 10px;
@@ -39,6 +39,6 @@
   padding: var(--spacing-horizontal-m-nudge) var(--spacing-horizontal-s);
   top: 0;
   left: 0;
-  color: var(--colorNeutralForegroundOnBrand);
-  background-color: var(--colorBrandBackground);
+  color: var(--color-neutral-foreground-on-brand);
+  background-color: var(--color-brand-background);
 }

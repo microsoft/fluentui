@@ -30,8 +30,8 @@
   .container {
     @apply relative flex gap-5 p-10;
 
-    background-color: var(--colorBrandBackground2);
-    border-radius: var(--borderRadiusMedium);
+    background-color: var(--color-brand-background-2);
+    border-radius: var(--radius-medium);
 
     /*
      * from `...createFocusOutlineStyle()`.

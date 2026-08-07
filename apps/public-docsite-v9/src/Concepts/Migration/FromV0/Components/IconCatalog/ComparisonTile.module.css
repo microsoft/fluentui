@@ -9,13 +9,13 @@
   max-height: 105px;
   padding: 5px 0px;
   gap: 10px;
-  border-color: var(--colorNeutralStroke1);
+  border-color: var(--color-neutral-stroke-1);
   border-style: solid;
   border-width: var(--stroke-width-thin);
 }
 
 .root:hover {
-  background-color: var(--colorNeutralBackground2Hover);
+  background-color: var(--color-neutral-background-2-hover);
 }
 
 .badge {
@@ -25,11 +25,11 @@
 }
 
 .warning {
-  color: var(--colorPaletteDarkOrangeBackground3);
+  color: var(--color-palette-dark-orange-background-3);
 }
 
 .success {
-  color: var(--colorPaletteGreenBackground3);
+  color: var(--color-palette-green-background-3);
 }
 
 .v0 {

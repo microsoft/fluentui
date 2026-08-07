@@ -43,7 +43,7 @@ A theme is delivered as CSS custom properties, so a stylesheet references them d
 }
 
 .root-primary {
-  color: var(--colorNeutralForeground3);
+  color: var(--color-neutral-foreground-3);
 }
 ```
 
@@ -62,14 +62,14 @@ reference:
 ```jsx
 import { tokens } from '@fluentui/react-components';
 
-tokens.colorNeutralForeground3; // === 'var(--colorNeutralForeground3)'
+tokens.colorNeutralForeground3; // === 'var(--color-neutral-foreground-3)'
 ```
 
 For more details, see [Styling components](?path=/docs/concepts-developer-styling-components--docs).
 
 ### Token names are the public contract
 
-Token custom-property names (`--colorNeutralForeground3`, `--spacing-horizontal-m`, …) are a supported
+Token custom-property names (`--color-neutral-foreground-3`, `--spacing-horizontal-m`, …) are a supported
 public surface: Fluent's own component CSS references them, and so should yours. What is _not_
 public is anything below that — the hashed class names on component internals, and the exact rules
 inside a component's stylesheet.

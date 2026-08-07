@@ -2,7 +2,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .settings {
-  background-color: var(--colorNeutralBackground2);
+  background-color: var(--color-neutral-background-2);
   overflow: hidden;
   padding: 5px;
   z-index: 0;

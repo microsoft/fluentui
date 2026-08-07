@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-items: space-between;
-  background-color: var(--colorNeutralBackground3);
+  background-color: var(--color-neutral-background-3);
   padding: 5px 20px;
 }
 
@@ -30,7 +30,7 @@
   justify-content: center;
   justify-items: center;
   margin: 5px;
-  border-color: var(--colorNeutralStroke2);
+  border-color: var(--color-neutral-stroke-2);
   border-style: dotted;
   border-width: 3px;
 }
@@ -46,10 +46,10 @@
 }
 
 .title {
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase400);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightBase400);
+  font-family: var(--font-base);
+  font-size: var(--text-base-400);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-base-400);
 }
 
 .content {
@@ -57,10 +57,10 @@
   align-items: center;
   justify-items: space-between;
   flex-grow: 1;
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase200);
-  font-weight: var(--fontWeightRegular);
-  line-height: var(--lineHeightBase300);
+  font-family: var(--font-base);
+  font-size: var(--text-base-200);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-base-300);
   padding: 20px;
 }
 
@@ -68,8 +68,8 @@
   display: flex;
   align-items: center;
   justify-items: center;
-  border-radius: var(--borderRadiusMedium);
-  border-color: var(--colorNeutralStroke2);
+  border-radius: var(--radius-medium);
+  border-color: var(--color-neutral-stroke-2);
   border-style: solid;
   border-width: 1px;
 }
@@ -80,7 +80,7 @@
 
 .contentSlot {
   display: block;
-  border-color: var(--colorNeutralStroke2);
+  border-color: var(--color-neutral-stroke-2);
   border-style: dotted;
   border-width: 3px;
 }
@@ -92,19 +92,19 @@
 }
 
 .urlBefore {
-  background-color: var(--colorNeutralBackground3);
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase200);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightBase200);
+  background-color: var(--color-neutral-background-3);
+  font-family: var(--font-base);
+  font-size: var(--text-base-200);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-base-200);
   padding: 10px 5px;
 }
 
 .urlAfter {
-  background-color: var(--colorNeutralBackground3);
-  font-family: var(--fontFamilyBase);
-  font-size: var(--fontSizeBase200);
-  font-weight: var(--fontWeightSemibold);
-  line-height: var(--lineHeightBase200);
+  background-color: var(--color-neutral-background-3);
+  font-family: var(--font-base);
+  font-size: var(--text-base-200);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-base-200);
   padding: 10px 5px;
 }

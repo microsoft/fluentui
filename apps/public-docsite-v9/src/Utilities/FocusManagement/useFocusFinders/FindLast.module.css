@@ -6,6 +6,6 @@
   display: flex;
   gap: 5px;
   padding: 10px;
-  border: 2px solid var(--colorBrandStroke1);
-  border-radius: var(--borderRadiusMedium);
+  border: 2px solid var(--color-brand-stroke-1);
+  border-radius: var(--radius-medium);
 }

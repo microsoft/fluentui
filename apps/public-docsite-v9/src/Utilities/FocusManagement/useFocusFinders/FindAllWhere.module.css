@@ -5,16 +5,16 @@
   display: flex;
   gap: 5px;
   padding: 10px;
-  border: 2px solid var(--colorBrandStroke1);
-  border-bottom-left-radius: var(--borderRadiusMedium);
-  border-bottom-right-radius: var(--borderRadiusMedium);
+  border: 2px solid var(--color-brand-stroke-1);
+  border-bottom-left-radius: var(--radius-medium);
+  border-bottom-right-radius: var(--radius-medium);
 }
 
 .note {
   display: block;
-  background-color: var(--colorBrandStroke1);
-  color: var(--colorNeutralForegroundOnBrand);
+  background-color: var(--color-brand-stroke-1);
+  color: var(--color-neutral-foreground-on-brand);
   padding: 4px;
-  border-top-left-radius: var(--borderRadiusMedium);
-  border-top-right-radius: var(--borderRadiusMedium);
+  border-top-left-radius: var(--radius-medium);
+  border-top-right-radius: var(--radius-medium);
 }

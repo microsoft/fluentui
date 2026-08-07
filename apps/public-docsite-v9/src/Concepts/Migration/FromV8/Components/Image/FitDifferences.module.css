@@ -40,7 +40,7 @@
 .imageV8 {
   display: block;
   position: absolute;
-  border-radius: var(--borderRadiusCircular);
+  border-radius: var(--radius-circular);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -59,7 +59,7 @@
 
 .caption {
   font-size: 12px !important;
-  line-height: var(--lineHeightBase200);
+  line-height: var(--leading-base-200);
   margin-top: 8px !important;
   text-align: center;
 }
