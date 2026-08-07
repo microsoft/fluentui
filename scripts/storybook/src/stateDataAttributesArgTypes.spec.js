@@ -225,6 +225,19 @@ describe('createStateDataAttributesArgTypesEnhancer', () => {
     const result = enhancer(ctx);
     // primary uses displayName 'ByDisplay'
     expect(result['data-disabled']).toBeDefined();
+
+    // Invoke the wrapped extractor with the reference-matched component (registered as 'ByRef').
+    // The authoritative subcomponent key 'ByRef' wins over displayName/function-name metadata,
+    // so the wrapper must inject 'data-ref-attr' (from ByRef metadata), not 'data-disabled'.
+    const wrapper = /** @type {import('./stateDataAttributesArgTypes').ExtractArgTypes} */ (
+      ctx.parameters.docs.extractArgTypes
+    );
+    const subResult = wrapper(MyComponent);
+    expect(subResult['data-ref-attr']).toBeDefined();
+    const refRow = /** @type {import('./stateDataAttributesArgTypes').ArgTypeRow} */ (subResult['data-ref-attr']);
+    expect(refRow.description).toBe('Ref.');
+    // The displayName-matched key must NOT bleed into the subcomponent extraction
+    expect(subResult['data-disabled']).toBeUndefined();
   });
 
   // Test 9: existing subcomponent ArgTypes win on generated collision
@@ -247,6 +260,17 @@ describe('createStateDataAttributesArgTypesEnhancer', () => {
 
     const result = enhancer(ctx);
     expect(result['data-disabled']).toBeUndefined();
+
+    // Invoke the wrapped extractor with the subcomponent and assert the existing row wins.
+    const wrapper = /** @type {import('./stateDataAttributesArgTypes').ExtractArgTypes} */ (
+      ctx.parameters.docs.extractArgTypes
+    );
+    const subResult = wrapper(Sub);
+    expect(subResult['data-disabled']).toBeDefined();
+    const row = /** @type {import('./stateDataAttributesArgTypes').ArgTypeRow} */ (subResult['data-disabled']);
+    // The pre-existing 'existing sub' description wins over the generated row
+    expect(row.description).toBe('existing sub');
+    expect(row.control).toBe('text');
   });
 
   // Test 10: parameters.docs is cloned; original object remains unchanged; existing docs.argTypes.include/exclude preserved
