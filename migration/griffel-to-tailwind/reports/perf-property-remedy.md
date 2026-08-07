@@ -95,6 +95,22 @@ in every consumer (e.g. react-button: 4 ring resets inside the
 Tailwind's `@layer properties` `@supports` fallback block (inert in Chromium — probe-
 verified by the diagnostic) is no longer emitted either.
 
+> **Re-verified 2026-08-07 at `7cc30e35fb`, with one caveat the original sweep did not
+> surface.** A walk of every `dist/styles.css` under `packages/` finds **63 stylesheets and
+> 2 `@property` rules in total** — both Tailwind-internal (`--tw-font-weight`,
+> `--tw-leading`, `syntax:"*"; inherits:false`), and both in **one dev-only package**,
+> `@fluentui/react-storybook-addon`. The consumer-facing claim is unaffected:
+> `react-tailwind-theme/dist/styles.css` has 0, every component package has 0, and the
+> addon is a `devDependency` of exactly one package and a runtime `dependencies` entry of
+> none — so nothing a consumer installs registers a custom property.
+>
+> It does matter for **measurement**, because the mechanism this report identifies is
+> document-wide: any `@property` rule anywhere on the page arms the per-transition cost,
+> related or not. A Storybook page that loads the addon's stylesheet therefore has a
+> non-empty custom-property registry. Any perf measurement taken **inside Storybook** must
+> account for that; the harness in `metrics/perf-eval/` does not load the addon, so the
+> figures in this report are not affected.
+
 ## Gate 2 — Focus/nesting equivalence (CDP computed styles)
 
 `.scratch/perf-eval/equiv-probe/` (page) + `.scratch/perf-eval/mechanism/probe-equiv.mjs`

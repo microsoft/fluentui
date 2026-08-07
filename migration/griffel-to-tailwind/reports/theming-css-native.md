@@ -177,8 +177,12 @@ per-token old/new strings in the gate output, `.scratch/phase1-theming/arith-ide
 utility — `.p-horizontal-m { padding: calc(var(--spacing) * 12) }` (byte-identical in
 shape to `.p-12`) and `.w-thin { width: var(--stroke-width-thin) }`. That is the property
 the restructure buys: one density knob rescales both spacing vocabularies, while stroke
-widths resolve through their density-decoupled canonical. dist/styles.css: 1,410 → 2,810
-bytes (30 emitted declarations).
+widths resolve through their density-decoupled canonical. The generator emits 30
+declarations in the `@layer fui.theme { :root, :host }` block. (The compiled
+`dist/styles.css` byte pair originally quoted here — "1,410 → 2,810" — is removed:
+`dist/` is gitignored (`.gitignore:64:dist`), so neither side is reproducible from git at
+any ref and neither could be re-derived. See _Measurement conventions_ at the end of this
+report.)
 
 ### Interim-state semantics (honest statement, until Phase 2)
 
@@ -272,8 +276,10 @@ With runtime names equal to theme keys, every registration is self-named
 `:root, :host` (cycle-invalid at `:root`, ~19KB — probe `.scratch/phase2a-theming/probe/`).
 `reference` suppresses exactly that emission (probed byte-identical utility output); its
 pre-2a rejection reason — "emits CSS against a variable nothing defines" — is retired
-because the tag now defines the canonical names. `dist/styles.css` byte-stable: 2,810
-bytes, Phase-1 emission block unchanged, zero old names.
+because the tag now defines the canonical names. `dist/styles.css` byte-stable across the
+change (verified locally at build time; the artifact is gitignored, so the byte count is
+not reproducible from git and is omitted), Phase-1 emission block unchanged, zero old
+names.
 
 ### Sweep counts
 
@@ -310,8 +316,9 @@ bytes, Phase-1 emission block unchanged, zero old names.
      preserved). Plus 26 Phase-1 root-resolution checks and 6 end-to-end utility spot
      checks (bg/shadow/duration/text/radius/ease computed == theme-literal reference
      elements).
-2. **Emitted-CSS verification — zero old names**: dist/styles.css (2,810 bytes,
-   byte-stable emission shape); fresh `--skip-nx-cache` VR storybook bundle — 247
+2. **Emitted-CSS verification — zero old names**: dist/styles.css (byte-stable emission
+   shape; artifact gitignored, byte count not reproducible from git); fresh
+   `--skip-nx-cache` VR storybook bundle — 247
    css/js files, 0 old-name occurrences, canonical forms present (172
    `var(--color-neutral-background-1)` refs); public-docsite-v9 storybook build green —
    354 files, 0 real old-token refs, 266 canonical refs.
@@ -383,14 +390,19 @@ only writer of token values.
 ### The shipped artifact
 
 - `css/tokens.css`: the `@layer fui.theme { :root, :host }` block now carries the 433
-  theme-variant web-light values below the Phase-1 spacing/stroke emission (20,842 →
-  63,560 bytes). Default = web light, no provider or class needed.
+  theme-variant web-light values below the Phase-1 spacing/stroke emission (41,511 →
+  63,560 bytes, measured `git show 4e90ba2a89:…/css/tokens.css | wc -c` and `wc -c` on the
+  working tree). Default = web light, no provider or class needed.
 - **NEW generated `css/themes.css`** (152,729 bytes): one class per shipped theme —
   `.fui-theme-web-light`, `.fui-theme-web-dark`, `.fui-theme-teams-light`,
   `.fui-theme-teams-dark`, `.fui-theme-teams-high-contrast`,
   `.fui-theme-teams-light-v21`, `.fui-theme-teams-dark-v21` — 433 custom-property
   declarations each, `@layer fui.theme`, imported by `css/index.css`.
-  `dist/styles.css`: 2,810 → 175,638 bytes raw / 14,603 bytes gzip.
+  `dist/styles.css`: 175,638 bytes raw / 14,603 bytes gzip
+  (`zlib.gzipSync(buf, { level: 9 })`; the same file is 15,530 B at zlib level 6, which is
+  the level monosize uses — always state the level). `dist/` is gitignored, so this is a
+  build-tree measurement: rebuild `react-tailwind-theme` to reproduce it. The pre-2b
+  baseline is omitted for the same reason — it is not reproducible from git at any ref.
 - Per-class exclusions, generator-asserted: the 26 spacing/stroke tokens are
   theme-invariant (all 7 themes checked against the pinned scales) and stay
   `:root`-only in density-knob form; the 8 zIndex tokens are theme-absent
@@ -625,15 +637,48 @@ The sweep was NOT re-run (see below), so this records its exact reach:
 - The `react-theme` delta vs the captured tree is exactly one deleted line —
   `"major",` in `beachball.disallowedChangeTypes`. Release metadata; never bundled.
 
-### Correction to the artifact byte figures above
+### Measurement conventions (corrections applied 2026-08-07)
 
-The `css/tokens.css` "20,842 → 63,560 bytes" line is wrong on the BEFORE side. Measured:
-`git show 4e90ba2a89:…/css/tokens.css | wc -c` = **41,511**; the current file is 63,560.
-`css/themes.css` (152,729) and `dist/styles.css` (175,638) are confirmed, but
-`dist/styles.css` is a build artifact and is not committed at `4e90ba2a89` (0 bytes there),
-so its "2,810 →" baseline is not reproducible from git. Local gzip of the current
-`dist/styles.css` measures 15,714 bytes, not 14,603 — treat the gzip figure as
-compressor-dependent. Byte figures were omitted from the changelog entry for this reason.
+Three defects were found in the byte figures this report originally quoted. All are now
+fixed **in place** above; this section records what was wrong and the rules adopted so it
+does not recur.
+
+1. **`css/tokens.css` "20,842 →" was unsourceable and has been replaced with 41,511.**
+   20,842 matches no committed revision of the file. Every revision was measured
+   (`for c in $(git log --format=%H -- …/css/tokens.css); do git show $c:… | wc -c; done`):
+   63,560 / 41,511 / 39,796 / 37,153 / 35,327 / 33,489. Splitting the `4e90ba2a89` blob at
+   `@layer fui.theme` gives 39,281 before / 2,230 after — neither is 20,842 either. The
+   value at the cited ref is **41,511** (`git show 4e90ba2a89:…/css/tokens.css | wc -c`);
+   the AFTER side, 63,560, was always correct (`wc -c` on the working tree).
+2. **The `dist/styles.css` baselines "1,410 →" and "2,810 →" are removed, not corrected.**
+   `dist` is gitignored repo-wide (`git check-ignore -v …/dist/styles.css` →
+   `.gitignore:64:dist`), and `git ls-tree 4e90ba2a89 …/dist/` and
+   `git ls-tree HEAD …/dist/` are both empty. No reviewer can reproduce either figure at
+   any ref, and no correct replacement exists to substitute — so the pairs are gone and
+   the load-bearing claim (byte-stable emission shape) is stated on its own. The nearest
+   committed proxy is the emission block in the source `tokens.css` at that ref
+   (2,230 bytes), which is a different quantity and is labelled as such.
+3. **The gzip figure 14,603 is CORRECT and its earlier retraction was wrong.** A prior
+   gate agent reported "measures 15,714, treat as compressor-dependent" and that
+   disclaimer has been deleted. Measured on the same file, 175,638 B raw:
+   `zlib.gzipSync(buf,{level:9})` = **14,603** (exact match); `{level:6}` and zlib default
+   = 15,530; the `gzip` CLI at its default level = 15,714. The figure needed a method
+   annotation, not a retraction, and now carries one inline.
+
+**Rules for every byte figure in this and future migration reports:**
+
+- Name the ref a figure was measured at, and prefer a git-reachable path so
+  `git show <ref>:<path> | wc -c` reproduces it.
+- Any figure for a gitignored artifact (`dist/**`) is labelled _build-tree measurement,
+  not reproducible from git_ and names the build that produced it — or is omitted.
+- Every compressed size states the compressor and the level. `zlib` level 6 (the default,
+  and monosize's setting) and level 9 differ by roughly a kilobyte on this artifact; a
+  bare "gzip" number is not reproducible by anyone.
+
+Two reports in this directory already comply and were verified to reproduce exactly:
+`prettier3-tailwind-sort.md` (837 tracked `*.module.css` / 1,771 stories at
+`a6868ec088`) and `post-campaign-audit-fluentui.md` (837 / 238 at `62402f4375`). Use them
+as the template. Byte figures were omitted from the changelog entry for these reasons.
 
 ### Re-gate after the closeout fixes (2026-08-07)
 

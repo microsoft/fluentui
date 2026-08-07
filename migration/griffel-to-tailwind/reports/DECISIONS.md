@@ -215,7 +215,9 @@ Baseline captured on this machine before any component change; identical command
 - **Storybook client bundle**: `vr-tests-react-components` static build size (35 MB
   baseline; docsite unbuildable on Windows).
 - Griffel-AOT elimination tracked via `grep 'Processing griffel AOT' build.log`
-  (62 packages / 277 files at baseline → 0).
+  (62 packages / 277 files at baseline → 3 packages / 6 files, all under
+  `packages/react-components/deprecated/`, measured at `7cc30e35fb`; the original "→ 0"
+  target was never reachable because `deprecated/` is out of scope by D11).
 
 ## D11 — Out-of-scope / accepted losses (state in PR)
 
@@ -226,7 +228,18 @@ Baseline captured on this machine before any component change; identical command
 - **CSP nonce for component styles**: static CSS needs no nonce (improvement); the
   theme `<style>` tag keeps its existing nonce path via the retained renderer context
   until Phase 3 decides its replacement.
+  > RETIRED by D28 (theming 2b): the runtime theme `<style>` tag, the `nonce` prop and
+  > `StyleNonceContext` are removed — there is no style element left to sign. Verified at
+  > `7cc30e35fb`: `grep -n nonce …/FluentProvider.types.ts` and
+  > `grep -n nonce …/react-provider/library/etc/*.md` both return no match, and
+  > `find … -name 'useFluentProviderThemeStyleTag*'` /
+  > `find packages -name 'createCSSRuleFromTheme*'` are both empty. Consumers cover the
+  > static `.css` assets with a CSP `style-src` source list instead.
 - `@fluentui/react-icons` is an external package using Griffel internally — out of scope.
+  > RETIRED by D27 + the icons 3.0 fork adoption: icons is headless and its rules are
+  > imported at `@layer fui.components.l1`. See `icons-integration-1.md` and
+  > `GRIFFEL_ZERO_CLOSURE.md` §2. NOTE: the version contract does not close on this
+  > branch — see the blocker recorded in `FINAL_REPORT.md` §2.0.
 - Griffel-specific VR stories (`MakeStyles*`, `CustomStyleHooks` — 11 stories) are
   retired with their baselines; listed explicitly in the PR.
 - `react-migration-v8-v9` and compat packages convert last (`special`), given v8 interop.
@@ -808,7 +821,10 @@ UNCHANGED (arithmetic identity gated, below); what changes is the structure:
    design-tokens.ts defines the camelCase variables it reads).
 4. All spacing-namespace names plus the 4 `--stroke-width-*` canonicals are emitted as
    real custom properties in the generated `@layer fui.theme { :root, :host }` block
-   (dist/styles.css 1,410 → 2,810 bytes).
+   (30 emitted declarations; the emission block in the source `css/tokens.css` at
+   `4e90ba2a89` measures 2,230 bytes. The compiled `dist/styles.css` byte pair originally
+   quoted here is removed — `dist` is gitignored at `.gitignore:64`, so neither side is
+   reproducible from git; see `theming-css-native.md` → _Measurement conventions_).
 
 **Interim-state semantics (until theming Phase 2 removes the JS theming path):**
 FluentProvider's runtime theme tag (`createCSSRuleFromTheme`) still writes ALL old
@@ -890,7 +906,7 @@ names cease to exist in every shipped read path; `tokens.*` JS constants repoint
    (cycle-invalid, ~19KB dead weight — probe `.scratch/phase2a-theming/probe/`).
    `reference` suppresses exactly that emission, probed byte-identical utility output;
    its old rejection reason (variables nothing defines) is retired because the tag now
-   defines the canonical names. `dist/styles.css` is byte-stable (2,810 bytes, zero old
+   defines the canonical names. `dist/styles.css` is byte-stable (zero old
    names, Phase-1 emission block unchanged).
 5. **Sweep:** tokens.ts 441 values (scripted; unit test rewritten as an independent
    canonical-derivation exact-string test over all 467 + no-camelCase regex + uniqueness;

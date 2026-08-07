@@ -73,7 +73,16 @@ loosely pending the S-J VR gates.
 
 Build-time assertions (the plan §2.1 "explicit assertion, not VR alone"):
 
-- `dist/styles.css` (2,559 B) contains the full `@layer fui.components.l1 { … }` block: base
+> **Provenance caveat (added 2026-08-07).** The `@fluentui/react-icons` `dist/styles.css`
+> referenced below is produced by the icons fork and reaches this workspace only through
+> the LOCAL-ONLY packed-tarball override in the root `package.json` `resolutions`
+> (`git revert b0248a57f1 90d1096404` removes it — `GRIFFEL_ZERO_CLOSURE.md` §3). It is
+> therefore doubly unverifiable in a reviewed tree: `dist` is gitignored
+> (`.gitignore:64`), and the producing dependency is not in the tree a maintainer clones.
+> A byte figure quoted here previously has been removed for that reason; the structural
+> assertion (which block the file contains) is what is being claimed.
+
+- `dist/styles.css` contains the full `@layer fui.components.l1 { … }` block: base
   `:where([data-fui-icon])`, forced-colors, font `display`/family variants, RTL flip,
   bundled-pair hide.
 - The fresh VR storybook bundle contains the same layered block
