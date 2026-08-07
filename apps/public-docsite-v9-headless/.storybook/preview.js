@@ -33,3 +33,6 @@ export const parameters = {
 };
 
 export const tags = ['autodocs'];
+
+/** @type {typeof headlessPreview.argTypesEnhancers} */
+export const argTypesEnhancers = [...headlessPreview.argTypesEnhancers];
