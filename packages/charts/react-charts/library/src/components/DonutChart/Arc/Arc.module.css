@@ -48,7 +48,7 @@
     outline-color: transparent;
     outline-style: none;
     outline-width: medium;
-    stroke: var(--colorNeutralBackground1);
+    stroke: var(--color-neutral-background-1);
   }
 
   /*
@@ -63,17 +63,17 @@
    */
   .focus-ring {
     fill: transparent;
-    stroke: var(--colorStrokeFocus2);
+    stroke: var(--color-stroke-focus-2);
     stroke-width: var(--spacing-thickest);
   }
 
   /* from useStyles.arcLabel — typographyStyles.caption1Strong + fill */
   .arc-label {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase200);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-200);
+    fill: var(--color-neutral-foreground-1);
 
     @variant forced-colors {
       stroke: CanvasText;

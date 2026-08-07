@@ -461,7 +461,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               </div>
               <div
                 class=""
-                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
+                style="color: rgb(16, 124, 16); font-size: var(--text-hero-700);"
               >
                 01/01/2017 - 02/02/2017
               </div>
@@ -4819,7 +4819,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               </div>
               <div
                 class=""
-                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
+                style="color: rgb(16, 124, 16); font-size: var(--text-hero-700);"
               >
                 01/01/2017 - 02/02/2017
               </div>

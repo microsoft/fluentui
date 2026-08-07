@@ -223,7 +223,7 @@ describe('ScatterChart- Subcomponent Legends', () => {
       await new Promise(resolve => setTimeout(resolve));
       // Assert
       expect(circles).toHaveLength(10);
-      expect(circles[0]).toHaveAttribute('fill', 'var(--colorNeutralBackground1)');
+      expect(circles[0]).toHaveAttribute('fill', 'var(--color-neutral-background-1)');
       expect(circles[1]).toHaveAttribute('fill', '#00bcf2');
       expect(circles[2]).toHaveAttribute('fill', '#00bcf2');
       expect(circles[3]).toHaveAttribute('fill', '#00bcf2');

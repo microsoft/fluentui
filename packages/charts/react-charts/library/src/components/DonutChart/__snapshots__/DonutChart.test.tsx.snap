@@ -457,7 +457,7 @@ Object {
                   </div>
                   <div
                     class=""
-                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                    style="color: rgb(229, 229, 229); font-size: var(--text-hero-700);"
                   >
                     20,000
                   </div>
@@ -682,7 +682,7 @@ Object {
                 </div>
                 <div
                   class=""
-                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                  style="color: rgb(229, 229, 229); font-size: var(--text-hero-700);"
                 >
                   20,000
                 </div>
@@ -947,7 +947,7 @@ Object {
                   </div>
                   <div
                     class=""
-                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                    style="color: rgb(229, 229, 229); font-size: var(--text-hero-700);"
                   >
                     20,000
                   </div>
@@ -1172,7 +1172,7 @@ Object {
                 </div>
                 <div
                   class=""
-                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                  style="color: rgb(229, 229, 229); font-size: var(--text-hero-700);"
                 >
                   20,000
                 </div>
@@ -2131,12 +2131,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           data-overflow-item=""
           data-size="small"
           role="option"
-          style="--rect-height: 12px; --rect-borderColor: var(--colorNeutralStroke1);"
+          style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
           type="button"
         >
           <div
             class=""
-            style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+            style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
           />
           <div
             class=""
@@ -2151,12 +2151,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           data-overflow-item=""
           data-size="small"
           role="option"
-          style="--rect-height: 12px; --rect-borderColor: var(--colorNeutralStroke1);"
+          style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
           type="button"
         >
           <div
             class=""
-            style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+            style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
           />
           <div
             class=""
@@ -2171,12 +2171,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           data-overflow-item=""
           data-size="small"
           role="option"
-          style="--rect-height: 12px; --rect-borderColor: var(--colorNeutralStroke1);"
+          style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
           type="button"
         >
           <div
             class=""
-            style="height: 12px; border-color: var(--colorNeutralStroke1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+            style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
           />
           <div
             class=""

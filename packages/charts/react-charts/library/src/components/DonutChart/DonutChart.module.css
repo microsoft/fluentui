@@ -61,10 +61,10 @@
   .root {
     @apply flex h-full w-full flex-col text-start;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /* from useStyles.chart */
@@ -97,12 +97,12 @@
   .axis-annotation {
     @apply text-center not-italic;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
-    color: var(--colorNeutralForeground2);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
+    color: var(--color-neutral-foreground-2);
+    fill: var(--color-neutral-foreground-1);
 
     @variant forced-colors {
       fill: CanvasText;
@@ -118,17 +118,17 @@
   .chart-title {
     @apply mb-vertical-s text-center;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
+    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
   .svg-tooltip {
-    fill: var(--colorNeutralBackground1);
+    fill: var(--color-neutral-background-1);
 
     @variant forced-colors {
       fill: Canvas;

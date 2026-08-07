@@ -54,9 +54,9 @@
   .root {
     @apply relative flex flex-col gap-y-vertical-s;
 
-    background-color: var(--colorNeutralBackground1);
-    color: var(--colorNeutralForeground1);
-    font-family: var(--fontFamilyBase);
+    background-color: var(--color-neutral-background-1);
+    color: var(--color-neutral-foreground-1);
+    font-family: var(--font-base);
   }
 
   /* from useStyles.content */
@@ -64,7 +64,7 @@
     @apply relative box-border grow;
 
     background-color: transparent;
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
   }
 
   /* from useStyles.title */

@@ -165,11 +165,11 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
       // Assert
       const bars = getByClass(container, /bar-wrapper/);
       expect(bars[0].getAttribute('fill')).toEqual('#004b50');
-      expect(bars[1].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
+      expect(bars[1].getAttribute('fill')).toEqual('var(--color-background-overlay)');
       expect(bars[2].getAttribute('fill')).toEqual('#5c2d91');
-      expect(bars[3].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
+      expect(bars[3].getAttribute('fill')).toEqual('var(--color-background-overlay)');
       expect(bars[4].getAttribute('fill')).toEqual('#a4262c');
-      expect(bars[5].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
+      expect(bars[5].getAttribute('fill')).toEqual('var(--color-background-overlay)');
     },
   );
 

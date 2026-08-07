@@ -61,9 +61,9 @@
   .root {
     @apply relative h-full w-full items-center text-start;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
   }
 
   /* from useStyles.chart */
@@ -75,10 +75,10 @@
   .text {
     @apply pointer-events-none;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
+    fill: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.calloutContentRoot — 238px matches no spacing step, carried as the
@@ -96,17 +96,17 @@
   .chart-title {
     @apply mb-vertical-s text-center;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
+    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
   .svg-tooltip {
-    fill: var(--colorNeutralBackground1);
+    fill: var(--color-neutral-background-1);
 
     @variant forced-colors {
       fill: Canvas;

@@ -5031,7 +5031,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               </div>
               <div
                 class=""
-                style="color: blue; font-size: var(--fontSizeHero700);"
+                style="color: blue; font-size: var(--text-hero-700);"
               >
                 50,000
               </div>

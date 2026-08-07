@@ -1344,7 +1344,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               </div>
               <div
                 class=""
-                style="color: rgb(0, 188, 242); font-size: var(--fontSizeHero700);"
+                style="color: rgb(0, 188, 242); font-size: var(--text-hero-700);"
               >
                 33%
               </div>

@@ -79,15 +79,15 @@
   .root {
     @apply flex h-full w-full flex-col overflow-hidden text-start;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /* from useStyles.links — the link `<g>`s; stroke-width 3px is a frozen literal */
   .links {
-    fill: var(--colorNeutralBackground1);
+    fill: var(--color-neutral-background-1);
     stroke-width: 3px;
 
     @variant forced-colors {
@@ -113,13 +113,13 @@
   .tool-tip {
     @apply pointer-events-none absolute flex flex-col p-horizontal-s text-center;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-    background-color: var(--colorNeutralBackground1);
-    border-radius: var(--borderRadiusSmall);
-    color: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
+    background-color: var(--color-neutral-background-1);
+    border-radius: var(--radius-small);
+    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.nodeTextContainer — margins on the text `<g>`; the HC slice is a
@@ -153,17 +153,17 @@
   .chart-title {
     @apply mb-vertical-s text-center;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
+    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
   .svg-tooltip {
-    fill: var(--colorNeutralBackground1);
+    fill: var(--color-neutral-background-1);
 
     @variant forced-colors {
       fill: Canvas;

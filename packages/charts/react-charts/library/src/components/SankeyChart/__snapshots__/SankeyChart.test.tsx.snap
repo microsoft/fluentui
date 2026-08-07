@@ -101,7 +101,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -138,7 +138,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -175,7 +175,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -212,7 +212,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -363,7 +363,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -400,7 +400,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -437,7 +437,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -474,7 +474,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -791,7 +791,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -828,7 +828,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -865,7 +865,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -902,7 +902,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -1053,7 +1053,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -1090,7 +1090,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -1127,7 +1127,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -1164,7 +1164,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -1521,7 +1521,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -1558,7 +1558,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -1709,7 +1709,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -1746,7 +1746,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -1783,7 +1783,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -1820,7 +1820,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -2093,7 +2093,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -2130,7 +2130,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -2281,7 +2281,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -2318,7 +2318,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -2355,7 +2355,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -2392,7 +2392,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -2885,7 +2885,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -2922,7 +2922,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -2959,7 +2959,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -2996,7 +2996,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3033,7 +3033,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3070,7 +3070,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3107,7 +3107,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3144,7 +3144,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3352,7 +3352,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3389,7 +3389,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3426,7 +3426,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3463,7 +3463,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -3973,7 +3973,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4010,7 +4010,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4047,7 +4047,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4084,7 +4084,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4121,7 +4121,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4158,7 +4158,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4195,7 +4195,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4232,7 +4232,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4440,7 +4440,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4477,7 +4477,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4514,7 +4514,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -4551,7 +4551,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -5100,7 +5100,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5137,7 +5137,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5174,7 +5174,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5211,7 +5211,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5248,7 +5248,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5285,7 +5285,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5322,7 +5322,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5359,7 +5359,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5566,7 +5566,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5603,7 +5603,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5640,7 +5640,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -5677,7 +5677,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -6185,7 +6185,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6222,7 +6222,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6259,7 +6259,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6296,7 +6296,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6333,7 +6333,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6370,7 +6370,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6407,7 +6407,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6444,7 +6444,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6651,7 +6651,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6688,7 +6688,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6725,7 +6725,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -6762,7 +6762,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -7131,7 +7131,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -7347,7 +7347,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -7655,7 +7655,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -7692,7 +7692,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -8009,7 +8009,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -8046,7 +8046,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -8372,7 +8372,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -8409,7 +8409,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -8815,7 +8815,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -8852,7 +8852,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -8889,7 +8889,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -8926,7 +8926,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -8963,7 +8963,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -9000,7 +9000,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -9383,7 +9383,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -9420,7 +9420,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -9457,7 +9457,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -9494,7 +9494,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -9531,7 +9531,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -9568,7 +9568,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -9868,7 +9868,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -9905,7 +9905,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -9942,7 +9942,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -9979,7 +9979,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -10239,7 +10239,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -10276,7 +10276,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -10313,7 +10313,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -10350,7 +10350,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -10803,7 +10803,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -10840,7 +10840,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -10877,7 +10877,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -10914,7 +10914,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -10951,7 +10951,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -10988,7 +10988,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -11025,7 +11025,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -11062,7 +11062,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -11270,7 +11270,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -11307,7 +11307,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -11344,7 +11344,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -11381,7 +11381,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -11626,7 +11626,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               />
               <div
                 class=""
-                style="color: rgb(135, 100, 184); font-size: var(--fontSizeHero700);"
+                style="color: rgb(135, 100, 184); font-size: var(--text-hero-700);"
               >
                 14
               </div>
@@ -11925,7 +11925,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -11962,7 +11962,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -11999,7 +11999,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12036,7 +12036,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12073,7 +12073,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12110,7 +12110,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12147,7 +12147,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12184,7 +12184,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12392,7 +12392,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12429,7 +12429,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12466,7 +12466,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -12503,7 +12503,7 @@ Object {
             </g>
             <g
               class=""
-              stroke="var(--colorStrokeFocus2)"
+              stroke="var(--color-stroke-focus-2)"
               stroke-opacity="1"
             >
               <g>
@@ -13013,7 +13013,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13050,7 +13050,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13087,7 +13087,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13124,7 +13124,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13161,7 +13161,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13198,7 +13198,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13235,7 +13235,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13272,7 +13272,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13480,7 +13480,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13517,7 +13517,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13554,7 +13554,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -13591,7 +13591,7 @@ Object {
           </g>
           <g
             class=""
-            stroke="var(--colorStrokeFocus2)"
+            stroke="var(--color-stroke-focus-2)"
             stroke-opacity="1"
           >
             <g>
@@ -14136,7 +14136,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14173,7 +14173,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14210,7 +14210,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14247,7 +14247,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14284,7 +14284,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14321,7 +14321,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14358,7 +14358,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14395,7 +14395,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14603,7 +14603,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14640,7 +14640,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14677,7 +14677,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>
@@ -14714,7 +14714,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class=""
-          stroke="var(--colorStrokeFocus2)"
+          stroke="var(--color-stroke-focus-2)"
           stroke-opacity="1"
         >
           <g>

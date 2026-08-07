@@ -143,7 +143,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -166,7 +166,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -188,7 +188,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -211,7 +211,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -418,7 +418,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -441,7 +441,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -463,7 +463,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -486,7 +486,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -752,7 +752,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -774,7 +774,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -796,7 +796,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -818,7 +818,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -1025,7 +1025,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -1047,7 +1047,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -1069,7 +1069,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -1091,7 +1091,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -1357,7 +1357,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 1.2128712871287128)"
                 >
@@ -1380,7 +1380,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 1.2128712871287128)"
                 >
@@ -1402,7 +1402,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 1.2128712871287128)"
                 >
@@ -1425,7 +1425,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 1.2128712871287128)"
                 >
@@ -1575,7 +1575,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 1.2128712871287128)"
               >
@@ -1598,7 +1598,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 1.2128712871287128)"
               >
@@ -1620,7 +1620,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 1.2128712871287128)"
               >
@@ -1643,7 +1643,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 1.2128712871287128)"
               >
@@ -1852,7 +1852,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -1875,7 +1875,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -1897,7 +1897,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -1920,7 +1920,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -2127,7 +2127,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -2150,7 +2150,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -2172,7 +2172,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -2195,7 +2195,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -2461,7 +2461,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -2484,7 +2484,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -2506,7 +2506,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -2529,7 +2529,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -2736,7 +2736,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -2759,7 +2759,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -2781,7 +2781,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -2804,7 +2804,7 @@ Object {
               <text
                 class=""
                 dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
+                fill="var(--color-neutral-foreground-1)"
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
@@ -3074,7 +3074,7 @@ Object {
                   <text
                     class=""
                     dominant-baseline="middle"
-                    fill="var(--colorNeutralForeground1)"
+                    fill="var(--color-neutral-foreground-1)"
                     text-anchor="middle"
                     transform="translate(143.11881188118812, 59.430693069306926)"
                   >
@@ -3097,7 +3097,7 @@ Object {
                   <text
                     class=""
                     dominant-baseline="middle"
-                    fill="var(--colorNeutralForeground1)"
+                    fill="var(--color-neutral-foreground-1)"
                     text-anchor="middle"
                     transform="translate(143.11881188118812, 59.430693069306926)"
                   >
@@ -3119,7 +3119,7 @@ Object {
                   <text
                     class=""
                     dominant-baseline="middle"
-                    fill="var(--colorNeutralForeground1)"
+                    fill="var(--color-neutral-foreground-1)"
                     text-anchor="middle"
                     transform="translate(143.11881188118812, 59.430693069306926)"
                   >
@@ -3142,7 +3142,7 @@ Object {
                   <text
                     class=""
                     dominant-baseline="middle"
-                    fill="var(--colorNeutralForeground1)"
+                    fill="var(--color-neutral-foreground-1)"
                     text-anchor="middle"
                     transform="translate(143.11881188118812, 59.430693069306926)"
                   >
@@ -3354,7 +3354,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -3377,7 +3377,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -3399,7 +3399,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -3422,7 +3422,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -3692,7 +3692,7 @@ Object {
                   <text
                     class=""
                     dominant-baseline="middle"
-                    fill="var(--colorNeutralForeground1)"
+                    fill="var(--color-neutral-foreground-1)"
                     text-anchor="middle"
                     transform="translate(143.11881188118812, 59.430693069306926)"
                   >
@@ -3715,7 +3715,7 @@ Object {
                   <text
                     class=""
                     dominant-baseline="middle"
-                    fill="var(--colorNeutralForeground1)"
+                    fill="var(--color-neutral-foreground-1)"
                     text-anchor="middle"
                     transform="translate(143.11881188118812, 59.430693069306926)"
                   >
@@ -3737,7 +3737,7 @@ Object {
                   <text
                     class=""
                     dominant-baseline="middle"
-                    fill="var(--colorNeutralForeground1)"
+                    fill="var(--color-neutral-foreground-1)"
                     text-anchor="middle"
                     transform="translate(143.11881188118812, 59.430693069306926)"
                   >
@@ -3760,7 +3760,7 @@ Object {
                   <text
                     class=""
                     dominant-baseline="middle"
-                    fill="var(--colorNeutralForeground1)"
+                    fill="var(--color-neutral-foreground-1)"
                     text-anchor="middle"
                     transform="translate(143.11881188118812, 59.430693069306926)"
                   >
@@ -3971,7 +3971,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -3994,7 +3994,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -4016,7 +4016,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -4039,7 +4039,7 @@ Object {
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(143.11881188118812, 59.430693069306926)"
                 >
@@ -4301,7 +4301,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               class=""
               dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
+              fill="var(--color-neutral-foreground-1)"
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             />
@@ -4321,7 +4321,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               class=""
               dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
+              fill="var(--color-neutral-foreground-1)"
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             />
@@ -4341,7 +4341,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               class=""
               dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
+              fill="var(--color-neutral-foreground-1)"
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             />
@@ -4361,7 +4361,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               class=""
               dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
+              fill="var(--color-neutral-foreground-1)"
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             />
@@ -4568,7 +4568,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               class=""
               dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
+              fill="var(--color-neutral-foreground-1)"
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             >
@@ -4590,7 +4590,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               class=""
               dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
+              fill="var(--color-neutral-foreground-1)"
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             >
@@ -4612,7 +4612,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               class=""
               dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
+              fill="var(--color-neutral-foreground-1)"
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             >
@@ -4634,7 +4634,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               class=""
               dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
+              fill="var(--color-neutral-foreground-1)"
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             >

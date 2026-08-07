@@ -79,7 +79,7 @@
   .callout-content-root {
     @apply grid overflow-hidden;
 
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
     background-blend-mode: normal, luminosity;
   }
 
@@ -90,19 +90,19 @@
 
   /* from useStyles.calloutContentX — typographyStyles.caption1 + opacity/color */
   .callout-content-x {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
     opacity: 0.8;
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
   }
 
   /* from useStyles.calloutBlockContainer — textAlign 'left' → logical `start` */
   .callout-block-container {
     @apply text-start;
 
-    color: var(--colorNeutralForeground2);
+    color: var(--color-neutral-foreground-2);
   }
 
   /*
@@ -112,15 +112,15 @@
    * token), carried verbatim.
    */
   .callout-block-container-cartesian {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
     forced-color-adjust: none;
   }
 
   .callout-block-container-non-cartesian {
-    font-size: var(--fontSizeHero700);
+    font-size: var(--text-hero-700);
     line-height: 22px;
     forced-color-adjust: none;
   }
@@ -146,11 +146,11 @@
   .callout-legend-text {
     @apply mb-vertical-xs;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
-    color: var(--colorNeutralForeground2);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
+    color: var(--color-neutral-foreground-2);
     forced-color-adjust: auto;
   }
 
@@ -164,17 +164,17 @@
    * title2 respectively; authored AFTER the base because they are the later argument.
    */
   .callout-content-y-cartesian {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightBold);
-    line-height: var(--lineHeightBase400);
+    font-family: var(--font-base);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-base-400);
   }
 
   .callout-content-y-non-cartesian {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeHero700);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightHero700);
+    font-family: var(--font-base);
+    font-size: var(--text-hero-700);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-hero-700);
   }
 
   /*
@@ -185,33 +185,33 @@
   .description-message {
     @apply mt-vertical-m-nudge pt-vertical-m-nudge;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
-    color: var(--colorNeutralForeground2);
-    border-top: 1px solid var(--colorNeutralStroke2);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
+    color: var(--color-neutral-foreground-2);
+    border-top: 1px solid var(--color-neutral-stroke-2);
   }
 
   /* from useStyles.ratio — typographyStyles.caption2 + marginLeft → logical start */
   .ratio {
     @apply ms-horizontal-s-nudge;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase100);
-    color: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-100);
+    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.numerator and useStyles.denominator — both typographyStyles.caption2Strong,
    * identical atomic sets, so one rule emits both locals. */
   .numerator,
   .denominator {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
   }
 
   /* from useStyles.calloutInfoContainer — paddingLeft → logical start */

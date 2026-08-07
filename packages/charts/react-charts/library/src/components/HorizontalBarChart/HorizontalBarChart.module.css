@@ -97,17 +97,17 @@
   .chart-title {
     @apply flex justify-between;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
   }
 
   /* from useStyles.chartTitleLeft */
   .chart-title-left {
     @apply block overflow-hidden text-ellipsis whitespace-nowrap;
 
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.chartTitleLeft4pMargin — 4px is the vertical XS step */
@@ -122,20 +122,20 @@
 
   /* from useStyles.chartTitleRight — typographyStyles.body1Strong expanded */
   .chart-title-right {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase300);
-    color: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-300);
+    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.chartDataTextDenominator — typographyStyles.body1 expanded */
   .chart-data-text-denominator {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-    color: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
+    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.benchmarkContainer — 7px/3px/1px match no spacing step */
@@ -161,7 +161,7 @@
      */
     border-top-width: 7px;
     border-top-style: solid;
-    border-top-color: var(--colorPaletteBlueBorderActive);
+    border-top-color: var(--color-palette-blue-border-active);
   }
 
   /*
@@ -169,11 +169,11 @@
    * expanded, plus the SVG presentation properties as ordinary CSS.
    */
   .bar-label {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase200);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-200);
+    fill: var(--color-neutral-foreground-1);
 
     /* from useStyles.barLabel[HighContrastSelector] — `-ms-high-contrast` is dropped, the
        shared `forced-colors` variant is `@media (forced-colors: active)` only */

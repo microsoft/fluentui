@@ -72,13 +72,13 @@
   .tooltip {
     @apply pointer-events-none absolute flex flex-col p-horizontal-s text-center;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-    background-color: var(--colorNeutralBackground1);
-    border-radius: var(--borderRadiusSmall);
-    color: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
+    background-color: var(--color-neutral-background-1);
+    border-radius: var(--radius-small);
+    color: var(--color-neutral-foreground-1);
   }
 
   /*
@@ -88,11 +88,11 @@
    * the correct form for a token value.
    */
   .marker-label {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
+    fill: var(--color-neutral-foreground-1);
     text-anchor: middle;
 
     /* Griffel `m` bucket — emitted after the flat bucket; nesting reproduces that order. */
@@ -103,7 +103,7 @@
 
   /* from useStyles.lineBorder */
   .line-border {
-    stroke: var(--colorNeutralBackground1);
+    stroke: var(--color-neutral-background-1);
 
     @variant forced-colors {
       stroke: Canvas;

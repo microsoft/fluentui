@@ -79,8 +79,8 @@
  * 4px → vertical-XS step, 8px → horizontal-S step.
  *
  * ── Shorthands ──────────────────────────────────────────────────────────────────────────
- * `border-radius: var(--borderRadiusMedium)` and `border: 1px solid
- * var(--colorNeutralStroke1)` kept as compiled shorthands (react-tooltip/PopoverSurface
+ * `border-radius: var(--radius-medium)` and `border: 1px solid
+ * var(--color-neutral-stroke-1)` kept as compiled shorthands (react-tooltip/PopoverSurface
  * precedent) — no rule in this module sets any of their longhands, so no Griffel priority
  * machinery survives to get wrong. The border `1px` is a frozen literal (not a
  * strokeWidth token in the source), so the D4-addendum `var(--spacing-*)` mapping does
@@ -101,19 +101,19 @@
   .annotation-no-defaults {
     @apply pointer-events-none absolute flex items-center justify-center px-horizontal-s py-vertical-xs text-center whitespace-pre-wrap;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
-    color: var(--colorNeutralForeground1);
-    border-radius: var(--borderRadiusMedium);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
+    color: var(--color-neutral-foreground-1);
+    border-radius: var(--radius-medium);
     z-index: 2;
   }
 
   /* from useStyles.annotation — the default chrome `hideDefaultStyles` removes */
   .annotation {
-    box-shadow: var(--shadow16);
-    border: 1px solid var(--colorNeutralStroke1);
+    box-shadow: var(--shadow-16);
+    border: 1px solid var(--color-neutral-stroke-1);
   }
 
   /* from useStyles.connectorLayer */

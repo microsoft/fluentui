@@ -2,5 +2,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .svgTooltip {
-  fill: var(--colorNeutralBackground2);
+  fill: var(--color-neutral-background-2);
 }

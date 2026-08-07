@@ -519,9 +519,9 @@ describe('Vertical bar chart - Subcomponent bar', () => {
     container => {
       // Assert
       const bars = getById(container, /_VBC_bar/i);
-      expect(bars[0].getAttribute('fill')).toEqual('var(--colorPaletteBlueBackground2)');
-      expect(bars[1].getAttribute('fill')).toEqual('var(--colorPaletteBlueBackground2)');
-      expect(bars[2].getAttribute('fill')).toEqual('var(--colorPaletteBlueBackground2)');
+      expect(bars[0].getAttribute('fill')).toEqual('var(--color-palette-blue-background-2)');
+      expect(bars[1].getAttribute('fill')).toEqual('var(--color-palette-blue-background-2)');
+      expect(bars[2].getAttribute('fill')).toEqual('var(--color-palette-blue-background-2)');
     },
   );
 

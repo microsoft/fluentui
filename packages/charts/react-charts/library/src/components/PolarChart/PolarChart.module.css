@@ -59,10 +59,10 @@
   .root {
     @apply flex h-full w-full flex-col items-center text-start;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /* from useStyles.chart */
@@ -74,7 +74,7 @@
   .grid-line-inner,
   .grid-line-outer {
     fill: none;
-    stroke: var(--colorNeutralForeground1);
+    stroke: var(--color-neutral-foreground-1);
     stroke-width: 1px;
   }
 
@@ -90,11 +90,11 @@
 
   /* from useStyles.tickLabel — typographyStyles.caption2Strong + fill */
   .tick-label {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
+    fill: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.legendContainer */

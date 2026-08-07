@@ -1650,7 +1650,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      M624.5 185.1086956521739
      A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
-                fill="var(--colorNeutralBackground1)"
+                fill="var(--color-neutral-background-1)"
                 id="circle_r_b9__2_1"
                 opacity="1"
                 role="img"
@@ -2329,7 +2329,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      M624.5 185.1086956521739
      A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
-                fill="var(--colorNeutralBackground1)"
+                fill="var(--color-neutral-background-1)"
                 id="circle_r_cg__2_1"
                 opacity="1"
                 role="img"

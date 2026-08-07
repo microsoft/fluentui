@@ -73,13 +73,13 @@
   .header-cell {
     @apply p-horizontal-s text-start;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase200);
-    background-color: var(--colorNeutralBackground3);
-    color: var(--colorNeutralForeground1);
-    border: var(--spacing-thick) solid var(--colorNeutralStroke2);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-200);
+    background-color: var(--color-neutral-background-3);
+    color: var(--color-neutral-foreground-1);
+    border: var(--spacing-thick) solid var(--color-neutral-stroke-2);
 
     @variant forced-colors {
       background-color: Window;
@@ -91,12 +91,12 @@
   .body-cell {
     @apply p-horizontal-s text-start;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
-    color: var(--colorNeutralForeground1);
-    border: var(--spacing-thick) solid var(--colorNeutralStroke2);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
+    color: var(--color-neutral-foreground-1);
+    border: var(--spacing-thick) solid var(--color-neutral-stroke-2);
 
     @variant forced-colors {
       color: WindowText;
@@ -112,17 +112,17 @@
   .chart-title {
     @apply mb-vertical-s text-center;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
+    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
   .svg-tooltip {
-    fill: var(--colorNeutralBackground1);
+    fill: var(--color-neutral-background-1);
 
     @variant forced-colors {
       fill: Canvas;

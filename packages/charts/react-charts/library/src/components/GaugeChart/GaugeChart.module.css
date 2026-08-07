@@ -85,10 +85,10 @@
   .root {
     @apply flex h-full w-full flex-col items-center text-start;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /* from useStyles.chart */
@@ -103,31 +103,31 @@
    */
   .limits,
   .sublabel {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase200);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-200);
+    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.chartValue — fontWeight only; the size comes from a `fontSize` ATTRIBUTE
    * the component computes per breakpoint (BREAKPOINTS), not from CSS */
   .chart-value {
-    font-weight: var(--fontWeightSemibold);
-    fill: var(--colorNeutralForeground1);
+    font-weight: var(--font-weight-semibold);
+    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.needle */
   .needle {
-    fill: var(--colorNeutralForeground1);
-    stroke: var(--colorNeutralBackground1);
+    fill: var(--color-neutral-foreground-1);
+    stroke: var(--color-neutral-background-1);
   }
 
   /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
   .svg-tooltip {
-    fill: var(--colorNeutralBackground1);
+    fill: var(--color-neutral-background-1);
 
     @variant forced-colors {
       fill: Canvas;
@@ -144,11 +144,11 @@
   .chart-title {
     @apply mb-vertical-s text-center;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase100);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase100);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-100);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-100);
+    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
@@ -156,7 +156,7 @@
    * indicator (strokeWidth flips 0 → ARC_PADDING on focus, in JS) */
   .segment {
     outline: none;
-    stroke: var(--colorStrokeFocus2);
+    stroke: var(--color-stroke-focus-2);
   }
 
   /* from useStyles.gradientSegment */
@@ -168,7 +168,7 @@
   .callout-content-root {
     @apply grid overflow-hidden;
 
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
     background-blend-mode: normal, luminosity;
   }
 
@@ -180,9 +180,9 @@
   /* from useStyles.calloutContentX — typographyStyles.caption1 with its lineHeight
    * overridden by a frozen 16px literal, + opacity */
   .callout-content-x {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
     line-height: 16px;
     opacity: 0.85;
   }
@@ -193,11 +193,11 @@
   .callout-block-container {
     @apply mt-13 block ps-horizontal-s;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase300);
-    color: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-300);
+    color: var(--color-neutral-foreground-1);
     forced-color-adjust: none;
   }
 
@@ -208,20 +208,20 @@
 
   /* from useStyles.calloutlegendText — typographyStyles.caption1 + color */
   .callout-legend-text {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
-    color: var(--colorNeutralForeground2);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
+    color: var(--color-neutral-foreground-2);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.calloutContentY — typographyStyles.body1Strong with its lineHeight
    * overridden by a frozen 22px literal */
   .callout-content-y {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
     line-height: 22px;
     forced-color-adjust: auto;
   }
@@ -231,12 +231,12 @@
   .description-message {
     @apply mt-vertical-m-nudge pt-vertical-m-nudge;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
-    color: var(--colorNeutralForeground1);
-    border-top: 1px solid var(--colorNeutralStroke1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
+    color: var(--color-neutral-foreground-1);
+    border-top: 1px solid var(--color-neutral-stroke-1);
   }
 
   /* from useStyles.legendsContainer */

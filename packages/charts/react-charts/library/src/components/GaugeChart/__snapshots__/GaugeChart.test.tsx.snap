@@ -451,12 +451,12 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             data-overflow-item=""
             data-size="small"
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #f7630c;"
+            style="--rect-height: 12px; --rect-backgroundColor: var(--color-neutral-background-1); --rect-borderColor: #f7630c;"
             type="button"
           >
             <div
               class=""
-              style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
+              style="height: 12px; background-color: var(--color-neutral-background-1); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, var(--color-neutral-background-1), var(--color-neutral-background-1)); --rect-opacity-high-contrast: 0.6;"
             />
             <div
               class=""
@@ -472,12 +472,12 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             data-overflow-item=""
             data-size="small"
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #c50f1f;"
+            style="--rect-height: 12px; --rect-backgroundColor: var(--color-neutral-background-1); --rect-borderColor: #c50f1f;"
             type="button"
           >
             <div
               class=""
-              style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
+              style="height: 12px; background-color: var(--color-neutral-background-1); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, var(--color-neutral-background-1), var(--color-neutral-background-1)); --rect-opacity-high-contrast: 0.6;"
             />
             <div
               class=""
@@ -646,12 +646,12 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             data-overflow-item=""
             data-size="small"
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #f7630c;"
+            style="--rect-height: 12px; --rect-backgroundColor: var(--color-neutral-background-1); --rect-borderColor: #f7630c;"
             type="button"
           >
             <div
               class=""
-              style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
+              style="height: 12px; background-color: var(--color-neutral-background-1); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, var(--color-neutral-background-1), var(--color-neutral-background-1)); --rect-opacity-high-contrast: 0.6;"
             />
             <div
               class=""
@@ -667,12 +667,12 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             data-overflow-item=""
             data-size="small"
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #c50f1f;"
+            style="--rect-height: 12px; --rect-backgroundColor: var(--color-neutral-background-1); --rect-borderColor: #c50f1f;"
             type="button"
           >
             <div
               class=""
-              style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
+              style="height: 12px; background-color: var(--color-neutral-background-1); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, var(--color-neutral-background-1), var(--color-neutral-background-1)); --rect-opacity-high-contrast: 0.6;"
             />
             <div
               class=""

@@ -57,7 +57,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -121,7 +121,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -185,7 +185,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -262,7 +262,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -326,7 +326,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -390,7 +390,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -471,7 +471,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
               <rect
                 class=""
-                fill="var(--colorBackgroundOverlay)"
+                fill="var(--color-background-overlay)"
                 height="12"
                 opacity="1"
                 role=""
@@ -535,7 +535,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
               <rect
                 class=""
-                fill="var(--colorBackgroundOverlay)"
+                fill="var(--color-background-overlay)"
                 height="12"
                 opacity="1"
                 role=""
@@ -599,7 +599,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
               <rect
                 class=""
-                fill="var(--colorBackgroundOverlay)"
+                fill="var(--color-background-overlay)"
                 height="12"
                 opacity="1"
                 role=""
@@ -689,7 +689,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -753,7 +753,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -817,7 +817,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -1194,7 +1194,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -1258,7 +1258,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""
@@ -1322,7 +1322,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
             <rect
               class=""
-              fill="var(--colorBackgroundOverlay)"
+              fill="var(--color-background-overlay)"
               height="12"
               opacity="1"
               role=""

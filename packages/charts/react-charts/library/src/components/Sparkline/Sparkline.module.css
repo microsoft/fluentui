@@ -44,11 +44,11 @@
 
   /* from useStyles.valueText — typographyStyles.caption1 + fill/forced-color-adjust */
   .value-text {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
-    fill: var(--colorNeutralForeground1);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
+    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 }

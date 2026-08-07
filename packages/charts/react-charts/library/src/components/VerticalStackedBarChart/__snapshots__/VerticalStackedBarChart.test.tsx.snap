@@ -415,7 +415,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-label="January. Supported Builds, 42."
               cx="279"
               cy="141.8"
-              fill="var(--colorNeutralBackground1)"
+              fill="var(--color-neutral-background-1)"
               opacity="0"
               r="8"
               role="option"
@@ -428,7 +428,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-label="February. Supported Builds, 41."
               cx="327"
               cy="143.9"
-              fill="var(--colorNeutralBackground1)"
+              fill="var(--color-neutral-background-1)"
               opacity="0"
               r="8"
               role="option"
@@ -441,7 +441,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-label="March. Supported Builds, 100."
               cx="375"
               cy="20"
-              fill="var(--colorNeutralBackground1)"
+              fill="var(--color-neutral-background-1)"
               opacity="0"
               r="8"
               role="option"
@@ -970,7 +970,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-label="January. Supported Builds, 42."
               cx="279"
               cy="141.8"
-              fill="var(--colorNeutralBackground1)"
+              fill="var(--color-neutral-background-1)"
               opacity="0"
               r="8"
               role="option"
@@ -983,7 +983,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-label="February. Supported Builds, 41."
               cx="327"
               cy="143.9"
-              fill="var(--colorNeutralBackground1)"
+              fill="var(--color-neutral-background-1)"
               opacity="0"
               r="8"
               role="option"
@@ -996,7 +996,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-label="March. Supported Builds, 100."
               cx="375"
               cy="20"
-              fill="var(--colorNeutralBackground1)"
+              fill="var(--color-neutral-background-1)"
               opacity="0"
               r="8"
               role="option"
@@ -2192,7 +2192,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               </div>
               <div
                 class=""
-                style="color: aqua; font-size: var(--fontSizeHero700);"
+                style="color: aqua; font-size: var(--text-hero-700);"
               >
                 40%
               </div>
@@ -3233,7 +3233,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-label="0. Line1, 15."
               cx="56"
               cy="194.3269230769231"
-              fill="var(--colorNeutralBackground1)"
+              fill="var(--color-neutral-background-1)"
               opacity="0"
               r="8"
               role="option"
@@ -3246,7 +3246,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-label="20. Line1, 30."
               cx="614"
               cy="123.65384615384616"
-              fill="var(--colorNeutralBackground1)"
+              fill="var(--color-neutral-background-1)"
               opacity="0"
               r="8"
               role="option"
@@ -3385,7 +3385,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               </div>
               <div
                 class=""
-                style="color: aqua; font-size: var(--fontSizeHero700);"
+                style="color: aqua; font-size: var(--text-hero-700);"
               >
                 40%
               </div>

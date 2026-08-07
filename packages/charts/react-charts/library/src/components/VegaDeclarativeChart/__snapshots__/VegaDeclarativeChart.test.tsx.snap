@@ -417,7 +417,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="Jan. Line 1, 120."
                   cx="37.14285714285714"
                   cy="130.66037735849056"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -430,7 +430,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="Jan. Line 1, 120."
                   cx="37.14285714285714"
                   cy="130.66037735849056"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -443,7 +443,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="Feb. Line 1, 130."
                   cx="4.571428571428569"
                   cy="118.63207547169813"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -456,7 +456,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="Feb. Line 1, 130."
                   cx="4.571428571428569"
                   cy="118.63207547169813"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -469,7 +469,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="Mar. Line 1, 125."
                   cx="-28"
                   cy="124.64622641509433"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -482,7 +482,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="Mar. Line 1, 125."
                   cx="-28"
                   cy="124.64622641509433"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -927,7 +927,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-01-01. Line 1, 30."
                   cx="37.14285714285714"
                   cy="211.25"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -940,7 +940,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-01-02. Line 1, 35."
                   cx="4.571428571428569"
                   cy="200.625"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -953,7 +953,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-01-03. Line 1, 32."
                   cx="-28"
                   cy="207.00000000000003"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -1378,7 +1378,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="A. Line 1, 15."
                   cx="37.14285714285714"
                   cy="83.75"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -1391,7 +1391,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="B. Line 1, 18."
                   cx="4.571428571428569"
                   cy="45.49999999999999"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -1404,7 +1404,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="C. Line 1, 22."
                   cx="-28"
                   cy="-5.500000000000025"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -2008,7 +2008,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-01. Line 1, 12000."
                   cx="65.75"
                   cy="212.91044776119404"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -2021,7 +2021,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-02. Line 1, 15000."
                   cx="47"
                   cy="202.38805970149255"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -2034,7 +2034,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-03. Line 1, 13500."
                   cx="28.25"
                   cy="207.6492537313433"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -2047,7 +2047,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-04. Line 1, 18000."
                   cx="9.5"
                   cy="191.86567164179107"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -2060,7 +2060,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-05. Line 1, 16500."
                   cx="-9.25"
                   cy="197.1268656716418"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -2073,7 +2073,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                   aria-label="2024-06. Line 1, 20000."
                   cx="-28"
                   cy="184.8507462686567"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -2664,7 +2664,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(14.554455445544555, 141.71568627450978)"
                 >
@@ -2686,7 +2686,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(14.554455445544555, 141.71568627450978)"
                 >
@@ -2890,7 +2890,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -2912,7 +2912,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -2934,7 +2934,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -2956,7 +2956,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -2978,7 +2978,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3000,7 +3000,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3022,7 +3022,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3044,7 +3044,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3066,7 +3066,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3088,7 +3088,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3110,7 +3110,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3132,7 +3132,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3269,7 +3269,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(14.554455445544555, 141.71568627450978)"
                 >
@@ -3291,7 +3291,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(14.554455445544555, 141.71568627450978)"
                 >
@@ -3622,7 +3622,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                   aria-label="A. Line 1, 20."
                   cx="28.999999999999993"
                   cy="-43.75"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -3635,7 +3635,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                   aria-label="B. Line 1, 25."
                   cx="-28"
                   cy="-123.4375"
-                  fill="var(--colorNeutralBackground1)"
+                  fill="var(--color-neutral-background-1)"
                   opacity="0"
                   r="8"
                   role="option"
@@ -3904,7 +3904,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3926,7 +3926,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3948,7 +3948,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3970,7 +3970,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -3992,7 +3992,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4014,7 +4014,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4036,7 +4036,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4058,7 +4058,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4080,7 +4080,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4102,7 +4102,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4124,7 +4124,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4146,7 +4146,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4372,7 +4372,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4394,7 +4394,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4416,7 +4416,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4438,7 +4438,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4460,7 +4460,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4482,7 +4482,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4504,7 +4504,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4526,7 +4526,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4548,7 +4548,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4570,7 +4570,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4592,7 +4592,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4614,7 +4614,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(13.62913907284768, 33.519900497512445)"
                 >
@@ -4774,7 +4774,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(14.554455445544555, 71.55940594059406)"
                 >
@@ -4796,7 +4796,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(14.554455445544555, 71.55940594059406)"
                 >
@@ -4818,7 +4818,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(14.554455445544555, 71.55940594059406)"
                 >
@@ -4840,7 +4840,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                 <text
                   class=""
                   dominant-baseline="middle"
-                  fill="var(--colorNeutralForeground1)"
+                  fill="var(--color-neutral-foreground-1)"
                   text-anchor="middle"
                   transform="translate(14.554455445544555, 71.55940594059406)"
                 >
