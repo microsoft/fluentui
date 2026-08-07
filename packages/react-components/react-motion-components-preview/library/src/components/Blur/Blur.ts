@@ -13,8 +13,9 @@ import type { BlurParams } from './blur-types';
  * @param exitDuration - Time (ms) for the exit transition (blur-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (blur-out). Defaults to the `curveAccelerateMin` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outRadius - Blur radius for the out state (exited). Defaults to `'10px'`.
- * @param inRadius - Blur radius for the in state (entered). Defaults to `'0px'`.
+ * @param fromRadius - Blur radius before entry. Defaults to `'10px'`.
+ * @param restRadius - Blur radius while visible. Defaults to `'0px'`.
+ * @param toRadius - Blur radius after exit. Defaults to `fromRadius`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const blurPresenceFn: PresenceMotionFn<BlurParams> = ({
@@ -24,19 +25,19 @@ const blurPresenceFn: PresenceMotionFn<BlurParams> = ({
   exitDuration = duration,
   exitEasing = motionTokens.curveAccelerateMin,
   exitDelay = delay,
-  outRadius = '10px',
-  inRadius = '0px',
+  fromRadius = '10px',
+  restRadius = '0px',
+  toRadius = fromRadius,
   animateOpacity = true,
 }) => {
-  const enterAtoms = [blurAtom({ direction: 'enter', duration, easing, delay, outRadius, inRadius })];
+  const enterAtoms = [blurAtom({ duration, easing, delay, fromRadius, toRadius: restRadius })];
   const exitAtoms = [
     blurAtom({
-      direction: 'exit',
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outRadius,
-      inRadius,
+      fromRadius: restRadius,
+      toRadius,
     }),
   ];
 
