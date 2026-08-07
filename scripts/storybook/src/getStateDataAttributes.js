@@ -79,14 +79,22 @@ function getStateDataAttributes(options) {
   // ── restrict source files to sourceRoot, excluding .d.ts and test files ───────
 
   const normalizedSourceRoot = path.resolve(sourceRoot);
-  const sourceRootPrefix = normalizedSourceRoot + path.sep;
 
   /**
+   * Returns true when `filePath` is inside (or equal to) `normalizedSourceRoot`.
+   * Uses `path.relative` so the check is robust across case-insensitive file
+   * systems and avoids false positives from path-prefix string matching.
+   *
    * @param {string} filePath
    */
   function isInSourceRoot(filePath) {
     const resolved = path.resolve(filePath);
-    return resolved.startsWith(sourceRootPrefix) || resolved === normalizedSourceRoot;
+    if (resolved === normalizedSourceRoot) {
+      return true;
+    }
+    const rel = path.relative(normalizedSourceRoot, resolved);
+    // path.relative returns a path starting with '..' when resolved is outside root
+    return rel !== '' && !rel.startsWith('..') && !path.isAbsolute(rel);
   }
 
   /**
@@ -102,11 +110,11 @@ function getStateDataAttributes(options) {
 
   const program = ts.createProgram(filteredSourceFiles, parsedCommandLine.options);
 
-  // only check diagnostics on our source files, not library declarations
+  // check syntactic and semantic diagnostics on our source files, not library declarations
   const programDiagnostics = program
     .getSourceFiles()
     .filter(sf => isInSourceRoot(sf.fileName) && !sf.isDeclarationFile && !isTestOrDeclarationFile(sf.fileName))
-    .flatMap(sf => [...program.getSemanticDiagnostics(sf)])
+    .flatMap(sf => [...program.getSyntacticDiagnostics(sf), ...program.getSemanticDiagnostics(sf)])
     .filter(d => d.category === ts.DiagnosticCategory.Error);
 
   if (programDiagnostics.length > 0) {
@@ -149,12 +157,6 @@ function getStateDataAttributes(options) {
         ? checker.getAliasedSymbol(exportSymbol)
         : exportSymbol;
 
-      // skip if we already processed this underlying symbol (de-dup re-exports)
-      if (seenSymbols.has(resolvedSymbol)) {
-        continue;
-      }
-      seenSymbols.add(resolvedSymbol);
-
       // get the declared type and look for a 'root' property
       const type = checker.getDeclaredTypeOfSymbol(resolvedSymbol);
       const rootProp = type.getProperty('root');
@@ -168,6 +170,16 @@ function getStateDataAttributes(options) {
       if (dataAttrs.length === 0) {
         continue;
       }
+
+      // De-dup: if the same underlying symbol was already processed under a
+      // *different* public *State alias, we still want to emit it under this
+      // componentKey too (both are legitimate public API names).  Only skip
+      // entirely when this exact componentKey has already been registered.
+      if (seenSymbols.has(resolvedSymbol) && resultMap.has(componentKey)) {
+        // Exact same key from the exact same underlying type — skip duplicate.
+        continue;
+      }
+      seenSymbols.add(resolvedSymbol);
 
       // check for duplicate component keys
       if (resultMap.has(componentKey)) {
@@ -223,10 +235,12 @@ function collectDataAttributes(type, checker, location) {
       ? propType.types.filter(t => !hasTypeFlag(t, ts.TypeFlags.Undefined))
       : null;
 
-    const typeString =
-      nonUndefinedTypes && nonUndefinedTypes.length > 0
-        ? nonUndefinedTypes.map(t => checker.typeToString(t)).join(' | ')
-        : checker.typeToString(propType);
+    let typeString;
+    if (nonUndefinedTypes && nonUndefinedTypes.length > 0) {
+      typeString = formatTypeList(nonUndefinedTypes, checker);
+    } else {
+      typeString = checker.typeToString(propType);
+    }
 
     const description = ts.displayPartsToString(prop.getDocumentationComment(checker)).trim();
 
@@ -234,6 +248,36 @@ function collectDataAttributes(type, checker, location) {
   }
 
   return attrs;
+}
+
+/**
+ * Formats a list of TypeScript types as a `|`-joined string, collapsing
+ * paired `false`/`true` BooleanLiteral members to the canonical `boolean`
+ * keyword so that `false | true` renders as `boolean` and
+ * `false | true | "mixed"` renders as `boolean | "mixed"`.
+ *
+ * @param {import('typescript').Type[]} types
+ * @param {import('typescript').TypeChecker} checker
+ * @returns {string}
+ */
+function formatTypeList(types, checker) {
+  /** @type {string[]} */
+  const parts = [];
+  let booleanEmitted = false;
+
+  for (const t of types) {
+    if (hasTypeFlag(t, ts.TypeFlags.BooleanLiteral)) {
+      if (!booleanEmitted) {
+        parts.push('boolean');
+        booleanEmitted = true;
+      }
+      // skip the individual false/true — already covered by 'boolean'
+    } else {
+      parts.push(checker.typeToString(t));
+    }
+  }
+
+  return parts.join(' | ');
 }
 
 module.exports = { getStateDataAttributes };

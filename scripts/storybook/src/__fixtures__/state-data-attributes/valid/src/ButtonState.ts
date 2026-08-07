@@ -17,6 +17,16 @@ export type ButtonState = {
     'data-appearance': 'primary' | 'secondary' | 'outline';
 
     /**
+     * Whether the button is focused.
+     */
+    'data-focused'?: boolean;
+
+    /**
+     * Checked state — supports indeterminate via "mixed".
+     */
+    'data-checked'?: boolean | 'mixed';
+
+    /**
      * Not a data attribute — should be excluded.
      */
     className?: string;

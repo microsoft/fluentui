@@ -42,3 +42,6 @@ CODEOWNERS
 
 /.nx/cache
 /.nx/workspace-data
+
+# syntax-error test fixture — intentionally unparseable TypeScript
+scripts/storybook/src/__fixtures__/state-data-attributes/syntax-error/

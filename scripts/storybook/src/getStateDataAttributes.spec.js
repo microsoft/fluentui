@@ -11,6 +11,8 @@ const INVALID_TSCONFIG_OPTIONS_FIXTURE = path.join(
   '__fixtures__/state-data-attributes/invalid-tsconfig-options',
 );
 const SEMANTIC_ERROR_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/semantic-error');
+const SYNTAX_ERROR_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/syntax-error');
+const ALIASED_STATE_FIXTURE = path.join(__dirname, '__fixtures__/state-data-attributes/aliased-state');
 
 describe('getStateDataAttributes', () => {
   // ─── happy path ───────────────────────────────────────────────────────────────
@@ -220,6 +222,76 @@ describe('getStateDataAttributes', () => {
       }
       // TS2322: "Type 'number' is not assignable to type 'string'."
       expect(message).toMatch(/not assignable/i);
+    });
+  });
+  // ─── boolean type display ──────────────────────────────────────────────────────
+
+  describe('boolean type display', () => {
+    /** @type {ReturnType<typeof getStateDataAttributes>} */
+    let result;
+
+    beforeAll(() => {
+      result = getStateDataAttributes({
+        tsconfigPath: path.join(VALID_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(VALID_FIXTURE, 'src'),
+      });
+    });
+
+    it('renders a plain boolean attribute as "boolean" (not "false | true")', () => {
+      const attr = result.Button.find(a => a.name === 'data-focused');
+      expect(attr).toBeDefined();
+      expect(attr?.type).toBe('boolean');
+    });
+
+    it('renders a boolean | string literal attribute as "boolean | \\"mixed\\""', () => {
+      const attr = result.Button.find(a => a.name === 'data-checked');
+      expect(attr).toBeDefined();
+      // Stable ordering: boolean-literal members collapse to 'boolean' first
+      expect(attr?.type).toBe('boolean | "mixed"');
+    });
+  });
+
+  // ─── syntax diagnostics ───────────────────────────────────────────────────────
+
+  describe('syntax diagnostics', () => {
+    it('throws when a source file under sourceRoot has a syntax error', () => {
+      expect(() =>
+        getStateDataAttributes({
+          tsconfigPath: path.join(SYNTAX_ERROR_FIXTURE, 'tsconfig.json'),
+          sourceRoot: path.join(SYNTAX_ERROR_FIXTURE, 'src'),
+        }),
+      ).toThrow(/TypeScript program errors/i);
+    });
+  });
+
+  // ─── aliased *State exports ────────────────────────────────────────────────────
+
+  describe('aliased *State exports', () => {
+    /** @type {ReturnType<typeof getStateDataAttributes>} */
+    let result;
+
+    beforeAll(() => {
+      result = getStateDataAttributes({
+        tsconfigPath: path.join(ALIASED_STATE_FIXTURE, 'tsconfig.json'),
+        sourceRoot: path.join(ALIASED_STATE_FIXTURE, 'src'),
+      });
+    });
+
+    it('emits a key for the original *State export', () => {
+      expect(Object.keys(result)).toContain('ToggleButton');
+    });
+
+    it('emits a key for the aliased *State export (does not drop the second name)', () => {
+      expect(Object.keys(result)).toContain('PrimaryToggleButton');
+    });
+
+    it('both keys carry the same data attributes', () => {
+      expect(result.ToggleButton).toEqual(result.PrimaryToggleButton);
+    });
+
+    it('data-pressed is rendered as "boolean"', () => {
+      const attr = result.ToggleButton.find(a => a.name === 'data-pressed');
+      expect(attr?.type).toBe('boolean');
     });
   });
 });

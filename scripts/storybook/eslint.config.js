@@ -6,6 +6,10 @@ module.exports = [
   ...fluentPlugin.configs['flat/node'],
   ...fluentPlugin.configs['flat/imports'],
   {
+    // Intentionally-broken fixtures used only by tests — skip linting.
+    ignores: ['src/__fixtures__/state-data-attributes/syntax-error/**'],
+  },
+  {
     rules: {
       '@fluentui/max-len': 'off',
       'import/no-extraneous-dependencies': [
