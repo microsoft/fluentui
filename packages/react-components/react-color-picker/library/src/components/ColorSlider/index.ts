@@ -1,7 +1,15 @@
 export { ColorSlider } from './ColorSlider';
-export type { ColorSliderProps, ColorSliderSlots, ColorSliderState, SliderOnChangeData } from './ColorSlider.types';
+export type {
+  ColorChannel,
+  ColorSliderBaseProps,
+  ColorSliderBaseState,
+  ColorSliderProps,
+  ColorSliderSlots,
+  ColorSliderState,
+  SliderOnChangeData,
+} from './ColorSlider.types';
 export { renderColorSlider_unstable } from './renderColorSlider';
-export { useColorSlider_unstable } from './useColorSlider';
+export { useColorSliderBase_unstable, useColorSlider_unstable } from './useColorSlider';
 export {
   colorSliderCSSVars,
   colorSliderClassNames,
