@@ -13,7 +13,7 @@ describe('createCSSRuleFromTheme', () => {
     };
 
     expect(createCSSRuleFromTheme('.selector', theme)).toMatchInlineSnapshot(
-      `".selector { --borderRadiusLarge: 10px; --colorBackgroundOverlay: rgba(0, 0, 0, 0.4);  }"`,
+      `".selector { --borderRadiusLarge: 10px; --radius-large: 10px; --colorBackgroundOverlay: rgba(0, 0, 0, 0.4); --color-background-overlay: rgba(0, 0, 0, 0.4);  }"`,
     );
   });
 
@@ -26,7 +26,7 @@ describe('createCSSRuleFromTheme', () => {
     expect(result).not.toContain('<');
     expect(result).not.toContain('>');
     expect(result).toMatchInlineSnapshot(
-      `".selector { --colorBrandBackground: \\\\3C /style\\\\3E \\\\3C script\\\\3E alert(\\"xss\\")\\\\3C /script\\\\3E ;  }"`,
+      `".selector { --colorBrandBackground: \\\\3C /style\\\\3E \\\\3C script\\\\3E alert(\\"xss\\")\\\\3C /script\\\\3E ; --color-brand-background: \\\\3C /style\\\\3E \\\\3C script\\\\3E alert(\\"xss\\")\\\\3C /script\\\\3E ;  }"`,
     );
   });
 });

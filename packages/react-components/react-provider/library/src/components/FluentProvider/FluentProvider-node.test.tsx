@@ -62,7 +62,9 @@ describe('FluentProvider (node)', () => {
         <style id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
+            --color-neutral-foreground-1: black;
             --colorNeutralBackground1: white;
+            --color-neutral-background-1: white;
           }
         </style>
       </div>"
@@ -84,7 +86,9 @@ describe('FluentProvider (node)', () => {
         <style nonce="random" id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
+            --color-neutral-foreground-1: black;
             --colorNeutralBackground1: white;
+            --color-neutral-background-1: white;
           }
         </style>
       </div>"

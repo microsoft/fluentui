@@ -6,8 +6,8 @@
 }
 
 .text {
-  background-color: var(--colorBrandBackground2);
-  color: var(--colorBrandForeground2);
+  background-color: var(--color-brand-background-2);
+  color: var(--color-brand-foreground-2);
   font-size: 20px;
   border: 1px;
   border-radius: 5px;

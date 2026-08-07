@@ -46,13 +46,13 @@
      */
     @apply text-start;
 
-    color: var(--colorNeutralForeground1);
-    background-color: var(--colorNeutralBackground1);
+    color: var(--color-neutral-foreground-1);
+    background-color: var(--color-neutral-background-1);
 
     /* from `...typographyStyles.body1` (@fluentui/react-theme) */
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 }
