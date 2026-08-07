@@ -35,6 +35,7 @@ export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<
   const primaryActionButtonShorthand = slot.optional(props.primaryActionButton, {
     defaultProps: {
       ...baseState.primaryActionButton,
+      children: props.children,
       appearance,
       disabledFocusable: baseState.disabledFocusable,
       icon,
