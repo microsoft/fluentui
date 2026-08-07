@@ -4,4 +4,4 @@ export { themes } from './theme';
 export { DIR_ID, THEME_ID, THEMES } from './constants';
 export { parameters } from './hooks';
 export { FluentCanvas, FluentDocsPage, FluentStory } from './docs';
-export type { FluentDocsPageProps, FluentDocsPageStory } from './docs';
+export type { FluentDocsPageProps } from './docs';

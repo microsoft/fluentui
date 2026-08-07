@@ -30,12 +30,6 @@ import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
-/**
- * The prepared story type used by {@link FluentDocsPage}.
- * Can be used to type callbacks that receive the primary story.
- */
-export type FluentDocsPageStory = PreparedStory<Renderer>;
-
 const useStyles = makeStyles({
   divider: {
     height: '1px',
@@ -357,22 +351,12 @@ export type FluentDocsPageProps = {
    * panel). The default ignores `stories` and lets `<Stories />` self-iterate.
    */
   renderStories?: typeof RenderStories;
-  /**
-   * Render additional content immediately after the Args table and before the
-   * secondary stories. Receives the primary prepared story. Defaults to `null`.
-   *
-   * Use this to inject headless-only docs content (e.g. usage notes, property
-   * tables generated from data attributes) without altering the rest of the
-   * docs page layout.
-   */
-  renderAfterArgsTable?: (props: { story: FluentDocsPageStory }) => React.ReactNode;
 };
 
 export const FluentDocsPage = ({
   renderPrimaryStory = RenderPrimaryStory,
   renderArgsTable = RenderArgsTable,
   renderStories = RenderStories,
-  renderAfterArgsTable = () => null,
 }: FluentDocsPageProps = {}): JSXElement => {
   const context = React.useContext(DocsContext);
 
@@ -404,9 +388,8 @@ export const FluentDocsPage = ({
         <Title />
         <Subtitle />
         <Description />
-        {renderPrimaryStory({ primaryStory, skipPrimaryStory })}
+        {renderPrimaryStory({ primaryStory: primaryStory, skipPrimaryStory })}
         {renderArgsTable({ story: primaryStory, hideArgsTable })}
-        {renderAfterArgsTable({ story: primaryStory })}
         {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
       </div>
     );
@@ -457,7 +440,6 @@ export const FluentDocsPage = ({
             showSlotsApi: argTable.slotsApi,
             showNativePropsApi: argTable.nativePropsApi,
           })}
-          {renderAfterArgsTable({ story: primaryStory })}
           {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
         </div>
         {showTableOfContents && (
