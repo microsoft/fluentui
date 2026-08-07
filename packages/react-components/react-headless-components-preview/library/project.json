@@ -6,6 +6,11 @@
   "tags": ["vNext", "platform:web", "react-headless"],
   "implicitDependencies": [],
   "targets": {
+    "build": {
+      "options": {
+        "preserveDynamicImport": true
+      }
+    },
     "generate-api": {
       "options": {
         "exportSubpaths": true
@@ -23,6 +28,20 @@
       "metadata": {
         "technologies": ["webpack"],
         "description": "Assert entry points do not bundle tabster, Griffel or react-icons"
+      }
+    },
+    "verify-overlay-runtime-bundle": {
+      "cache": true,
+      "dependsOn": ["build", "^build"],
+      "command": "node scripts/verify-overlay-runtime-bundle.cjs OverlayRuntime.fixture.js && node scripts/verify-overlay-runtime-bundle.cjs OverlayRuntimeCommonJS.fixture.cjs",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "inputs": ["default", "^default", { "externalDependencies": ["webpack"] }],
+      "outputs": ["{projectRoot}/dist/overlay-runtime-bundle"],
+      "metadata": {
+        "technologies": ["webpack"],
+        "description": "Assert the overlay fallback remains outside initial bundles"
       }
     }
   }

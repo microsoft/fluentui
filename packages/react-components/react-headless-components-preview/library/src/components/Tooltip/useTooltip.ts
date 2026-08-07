@@ -21,6 +21,8 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
+import { useOverlayRuntime } from '../../overlayRuntime';
+import type { WithFallbackBehavior } from '../../overlayRuntime/types';
 
 /**
  * Create the state required to render Tooltip.
@@ -30,6 +32,8 @@ import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 export const useTooltip = (props: TooltipProps): TooltipState => {
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
+  const useNativeRuntime = overlayRuntime.mode === 'ssr' || overlayRuntime.mode === 'native';
 
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
 
@@ -59,18 +63,33 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     content: slot.always(content, {
       defaultProps: {
         role: 'tooltip',
-        popover: 'hint',
+        hidden: useNativeRuntime || visible ? undefined : true,
+        popover: useNativeRuntime ? 'hint' : undefined,
       },
       elementType: 'div',
     }),
   };
+  state.content.popover = useNativeRuntime ? 'hint' : undefined;
+  state.content.hidden = useNativeRuntime || visible ? undefined : true;
+  (
+    state.content as TooltipState['content'] & {
+      'data-overlay-runtime'?: 'native' | 'fallback';
+    }
+  )['data-overlay-runtime'] = useNativeRuntime ? 'native' : 'fallback';
 
   const positioningOptions = resolvePositioningShorthand(positioning);
-  const { targetRef, containerRef } = usePositioning(positioningOptions);
+  const { targetRef, containerRef, arrowRef } = usePositioning(
+    positioningOptions,
+  ) as ReturnType<typeof usePositioning> & {
+    arrowRef: React.RefCallback<HTMLElement>;
+  };
+  state.arrowRef = arrowRef as React.Ref<HTMLDivElement>;
 
   state.content.id = useId('tooltip-', state.content.id);
 
-  const contentRef = useMergedRefs(state.content.ref, containerRef);
+  const contentElementRef = React.useRef<HTMLDivElement>(null);
+  const triggerElementRef = React.useRef<HTMLElement>(null);
+  const contentRef = useMergedRefs(state.content.ref, containerRef, contentElementRef);
   state.content.ref = contentRef;
 
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
@@ -97,6 +116,10 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   // Keep the tooltip in sync with the state when it is changed programmatically.
   // Also sync React state when the browser auto-dismisses the hint popover (click outside, Escape).
   useIsomorphicLayoutEffect(() => {
+    if (overlayRuntime.mode !== 'native') {
+      return;
+    }
+
     const el = contentRef.current;
     if (!el) {
       return;
@@ -115,8 +138,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         // eslint-disable-next-line no-console
         console.warn(
           [
-            'Popover API is not supported in this browser, and the tooltip will not work correctly.',
-            'Please include a popover polyfill for better browser support.',
+            'The native Popover API failed after overlay capability detection.',
+            'The tooltip could not synchronize its native open state.',
           ].join(' '),
           { error },
         );
@@ -126,7 +149,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     return () => {
       el.removeEventListener('toggle', onToggle);
     };
-  }, [contentRef, visible, setVisible, onToggle]);
+  }, [contentRef, onToggle, overlayRuntime.mode, setVisible, visible]);
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
@@ -252,6 +275,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     ref: useMergedRefs(
       getReactElementRef<HTMLButtonElement>(child),
       keyborgListenerCallbackRef,
+      triggerElementRef,
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,
     ),
@@ -264,6 +288,17 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     // eslint-disable-next-line react-hooks/refs
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
   });
+
+  (state as WithFallbackBehavior<TooltipState>).fallbackBehavior =
+    overlayRuntime.mode === 'fallback-ready'
+      ? React.createElement(overlayRuntime.runtime.FallbackTooltipBehavior, {
+          contentRef: contentElementRef,
+          onDismiss: () => setVisible(undefined, { visible: false }),
+          targetDocument,
+          triggerRef: triggerElementRef,
+          visible,
+        })
+      : undefined;
 
   return state;
 };

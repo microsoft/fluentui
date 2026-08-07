@@ -1,7 +1,41 @@
 /** Jest test setup file. */
 
 require('@testing-library/jest-dom');
-require('@oddbird/popover-polyfill');
+
+// Unit tests exercise native behavior by default. Focused fallback tests override
+// this value before their first overlay runtime lookup.
+window.__FUI_HEADLESS_OVERLAY_RUNTIME_MODE__ = 'native';
+
+const openPopovers = new WeakSet();
+const dispatchToggle = (element, newState) => {
+  const event = new Event('toggle');
+  Object.defineProperty(event, 'newState', { value: newState });
+  element.dispatchEvent(event);
+};
+
+if (!HTMLElement.prototype.showPopover) {
+  HTMLElement.prototype.showPopover = function showPopover() {
+    openPopovers.add(this);
+    dispatchToggle(this, 'open');
+  };
+}
+
+if (!HTMLElement.prototype.hidePopover) {
+  HTMLElement.prototype.hidePopover = function hidePopover() {
+    if (openPopovers.delete(this)) {
+      dispatchToggle(this, 'closed');
+    }
+  };
+}
+
+const nativeMatches = Element.prototype.matches;
+Element.prototype.matches = function matches(selector) {
+  if (selector === ':popover-open') {
+    return openPopovers.has(this);
+  }
+
+  return nativeMatches.call(this, selector);
+};
 
 global.ResizeObserver = class ResizeObserver {
   observe() {

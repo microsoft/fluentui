@@ -4347,6 +4347,7 @@ __metadata:
     "@fluentui/react-overflow": "npm:^9.9.1"
     "@fluentui/react-persona": "npm:^9.7.6"
     "@fluentui/react-popover": "npm:^9.14.5"
+    "@fluentui/react-portal": "npm:^9.8.14"
     "@fluentui/react-positioning": "npm:^9.23.0"
     "@fluentui/react-progress": "npm:^9.5.3"
     "@fluentui/react-provider": "npm:^9.22.19"
@@ -4372,8 +4373,8 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.26.5"
     "@fluentui/scripts-cypress": "npm:*"
     "@fluentui/verify-bundle-isolation": "npm:*"
-    "@oddbird/popover-polyfill": "npm:^0.6.1"
     "@swc/helpers": "npm:^0.5.1"
+    webpack: "npm:5.108.4"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     "@types/react-dom": ">=16.9.0 <20.0.0"
@@ -8574,13 +8575,6 @@ __metadata:
     css-tree: "npm:^3.0.0"
     nanoid: "npm:^5.0.8"
   checksum: 10c0/7bc3e7309a69657badb34d0eb8b5c48da93e341edab2f400cba17b13b185952dfa9ea6e0a778fca838bee41ba0ebffcf95dad1ed2074ef26e279015e261958ed
-  languageName: node
-  linkType: hard
-
-"@oddbird/popover-polyfill@npm:^0.6.1":
-  version: 0.6.1
-  resolution: "@oddbird/popover-polyfill@npm:0.6.1"
-  checksum: 10c0/2dca016336769f6429cc0b33f59589a94febccc92c893eaa95f07cf7bd8a6751f35511fb6768d81d1ab5a10ac35d6d2b2e8f6d43c35a75bf7f4734f259233a55
   languageName: node
   linkType: hard
 

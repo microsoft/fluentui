@@ -2,9 +2,9 @@
 
 ## Overview
 
-Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. The surface elevates into the browser's **top layer** via the native HTML Popover API. Placement is computed via the native **CSS Anchor Positioning API** — no JS layout loop.
+Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. Browsers with the complete overlay feature set use the HTML Popover API and CSS Anchor Positioning. Other browsers load a shared Portal and Fluent positioning fallback when the first overlay mounts.
 
-Popover lets the browser manage dismissal: the surface is rendered with `popover="auto"`, so Escape, click-outside, and popover-stack peer-dismissal happen at HTML Popover spec timing and are mirrored back into React via the surface's `toggle` event. Open paths (click, hover, context-menu, controlled `open`) flow through React; close paths defer to the browser. Focus trapping is deferred to a later iteration — the surface is currently a non-modal `role="group"`.
+Open paths (click, hover, context-menu, controlled `open`) always flow through React. In native mode, `popover="auto"` owns Escape, click-outside, and peer dismissal and the `toggle` event mirrors those decisions back into state. Fallback mode supplies the equivalent Portal, dismissal-stack, and focus behavior. `trapFocus` selects modal dialog semantics in either runtime.
 
 ## Composition
 
@@ -59,7 +59,7 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 | **Hover-held**     | `openOnHover` and pointer inside trigger or surface                                                                                        | Popover stays open while pointer is inside either element; closes `mouseLeaveDelay` ms after it leaves both.                                                                                                                                                                                                                                                                           | Same as Open.                                                                                                                                                         |
 | **Context-pinned** | `openOnContext` + right-click                                                                                                              | `onOpenChange(e, { type: 'contextmenu', open: true })` with the mouse event; `contextTarget` state stores `{ x, y }`. Click and keyboard activation on the trigger do nothing.                                                                                                                                                                                                         | Same as Open.                                                                                                                                                         |
 | **Dismissing**     | Browser-driven: Escape, click-outside, popover-stack peer dismissal. Plus React-driven hover-leave (`openOnHover`) and programmatic close. | `toggle` event on the surface mirrors the browser's decision into React; `onOpenChange(e, { open: false, type })` fires with the originating event.                                                                                                                                                                                                                                    | `aria-expanded` returns to `"false"` on trigger.                                                                                                                      |
-| **Nested**         | Popover rendered inside another Popover's surface                                                                                          | Nested popovers participate in the browser-managed `popover="auto"` stack. Escape, click-outside, and peer-dismissal use native HTML Popover semantics, and each surface mirrors its own `toggle` event back into React — no React-side Escape filtering. A nested `trapFocus` popover stacks via `showModal()` and suspends the outer trap until it closes (browser top-layer rules). | Each surface keeps its own role per its `trapFocus` setting.                                                                                                          |
+| **Nested**         | Popover rendered inside another Popover's surface                                                                                          | Nested popovers participate in one implementation-neutral stack. Native mode uses the browser popover/dialog stack; fallback mode mirrors the same Escape, click-outside, peer-dismissal, and modal-suspension behavior. | Each surface keeps its own role per its `trapFocus` setting.                                                                                                          |
 
 ## Keyboard Navigation
 
@@ -132,7 +132,7 @@ This matches the behavioural guarantees consumers would get from `popovertarget`
 
 ### Surface element
 
-`PopoverSurface` always renders as a native **`<dialog popover="auto">`**. A single element supports both show modes the component switches between at open time:
+`PopoverSurface` always renders a **`<dialog>`**. In native mode it receives `popover="auto"` for the non-modal path. In fallback mode it receives `open` and is rendered through a Fluent Portal:
 
 - `surface.showPopover()` — non-modal popover (default, `trapFocus={false}`).
 - `surface.showModal()` — modal dialog (`trapFocus={true}`).
@@ -174,7 +174,7 @@ The headless Popover does **not** add `aria-live` to the surface. Consumers rend
 
 ## Positioning
 
-Placement is handled entirely by the `usePositioning` hook, which writes native CSS anchor-positioning properties onto the surface element. No JS layout loop.
+Placement is handled entirely by the `usePositioning` hook. Native mode writes CSS anchor-positioning properties. Fallback mode creates the equivalent `@fluentui/react-positioning` manager after the shared fallback chunk loads.
 
 ### Options (all optional)
 
@@ -189,7 +189,7 @@ Placement is handled entirely by the `usePositioning` hook, which writes native 
 | `matchTargetSize`   | `'width'`                                             | —            | Sets the surface's `width` to `anchor-size(width)`.                                                                                                                                  |
 | `strategy`          | `'fixed' \| 'absolute'`                               | `'absolute'` | CSS `position` property value on the surface. Matches v9's default. Use `'fixed'` when the surface needs to escape transformed / `contain: layout` ancestors for anchoring purposes. |
 | `target`            | `HTMLElement \| RefObject`                            | —            | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger.                                                                                    |
-| `positioningRef`    | `Ref<PositioningImperativeRef>`                       | —            | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` is a no-op — native positioning self-updates.                                                                    |
+| `positioningRef`    | `Ref<PositioningImperativeRef>`                       | —            | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` refreshes resolved placement in the active backend.                                                               |
 
 ### Rendering
 
@@ -310,15 +310,16 @@ Positioning uses CSS _logical_ properties throughout (`block-start`, `block-end`
 - `align: 'start'` anchors at the writing-mode start — top in horizontal-tb, left in vertical-rl.
 - Physical v9 aliases (`top` / `bottom` / `left` / `right`) are normalized at the shorthand boundary and become logical internally.
 
-## Native API surface
+## Overlay runtime selection
 
-The package relies on three native browser APIs:
+Native mode requires the complete set used by Headless:
 
-- **CSS Anchor Positioning** (Chromium 125+) — `anchor-name`, `position-anchor`, `position-area`, `anchor-size()`, `position-try-fallbacks`.
-- **HTML Popover API** (Chromium 114+) — `popover="auto"` + `showPopover()` + the `toggle` event for top-layer elevation, light dismiss, and state mirroring. Feature-detected (`typeof el.showPopover === 'function'`); SSR-safe.
+- **CSS Anchor Positioning** — `anchor-name`, `position-anchor`, `position-area`, `anchor-size()`, and `position-try-fallbacks`.
+- **HTML Popover API** — `popover="auto"` / `popover="hint"`, `showPopover()`, `hidePopover()`, `:popover-open`, and `toggle`.
+- **HTML Dialog API** — `showModal()`.
 - **ResizeObserver** — used sparingly by `usePlacementObserver` (for live `data-placement`)
 
-Firefox and Safari are implementing CSS Anchor Positioning; most features work but flip behaviour is still WIP.
+Missing any required Popover or anchor-positioning capability selects fallback mode for every overlay in that document. The fallback chunk is shared by Popover, Menu, Tooltip, selection popups, Dialog/Drawer, and Toaster. See [Overlay runtime fallback contract](./overlay-runtime-fallback.md).
 
 ## Notes
 
@@ -326,4 +327,4 @@ Firefox and Safari are implementing CSS Anchor Positioning; most features work b
 - **Nested popovers**: nesting is JSX-nesting. The browser's popover-stack treats the inner trigger's DOM descendancy of the outer surface as the ancestor signal — Escape closes only the topmost popover, click-outside dismisses the chain.
 - **Hover-to-open**: `openOnHover` opens on `mouseenter` of the trigger and _stays_ open while the pointer is over the surface. Closing waits `mouseLeaveDelay` ms; this is the one close path that is React-driven (it unmounts the surface, which implicitly closes the native popover).
 - **Context popovers**: when `openOnContext={true}`, the mouse event's `clientX` / `clientY` are stored as `contextTarget` state — available to consumers via the popover context if they want to anchor the surface at the cursor position instead of on the trigger.
-- **Positioning is CSS, not JS**: because placement computation is pushed to the browser, there's no JS layout loop and `positioning.updatePosition()` is a no-op. Consumers that need imperative retargeting use `positioning.setTarget(el)`.
+- **Positioning backend is private**: native mode uses CSS with no JS layout loop. Fallback mode uses Fluent positioning, normalized to the native placement, offset, fallback-order, and `data-placement` contract.

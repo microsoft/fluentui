@@ -10,9 +10,15 @@ import type {
 } from '@fluentui/react-positioning';
 import type { PositioningProps, PositioningReturn } from './types';
 import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
-import { getPlacementString, normalizeAlign } from './utils/placement';
+import {
+  getDefaultFallbackPositions,
+  getLogicalPlacement,
+  getPlacementString,
+  normalizeAlign,
+} from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
 import { usePlacementObserver } from './usePlacementObserver';
+import { useOverlayRuntime } from '../../overlayRuntime';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
@@ -56,18 +62,33 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
   const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
+  const [arrowEl, setArrowEl] = React.useState<HTMLElement | null>(null);
   const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
   const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
+  const fallbackManagerRef = React.useRef<{ updatePosition: () => void; dispose: () => void } | null>(null);
 
   const anchorName = `--${useId('popover-anchor-')}`;
   const positionArea = POSITION_AREA_MAP[position][align];
   const placement = getPlacementString(position, align);
 
-  const { targetDocument } = useFluent();
+  const { dir, targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
+  const fallbackPlacements = React.useMemo(
+    () =>
+      fallbackPositions.length > 0
+        ? fallbackPositions
+        : getDefaultFallbackPositions(position, align),
+    [align, fallbackPositions, position],
+  );
 
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+  const requestPlacementUpdate = usePlacementObserver(
+    containerEl,
+    effectiveTarget,
+    targetDocument,
+    coverTarget || overlayRuntime.mode !== 'native',
+  );
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
@@ -75,13 +96,19 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       setTarget: (el: TargetElement | null) => {
         setImperativeTarget(resolveElementRef(el));
       },
-      updatePosition: requestPlacementUpdate,
+      updatePosition: () => {
+        if (overlayRuntime.mode === 'fallback-ready') {
+          fallbackManagerRef.current?.updatePosition();
+        } else {
+          requestPlacementUpdate();
+        }
+      },
     }),
-    [requestPlacementUpdate],
+    [overlayRuntime.mode, requestPlacementUpdate],
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
+    if (overlayRuntime.mode !== 'native' || !effectiveTarget) {
       return;
     }
 
@@ -107,17 +134,93 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
         }
       }
     };
-  }, [effectiveTarget, anchorName]);
+  }, [anchorName, effectiveTarget, overlayRuntime.mode]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (
+      overlayRuntime.mode !== 'fallback-ready' ||
+      !effectiveTarget ||
+      !containerEl
+    ) {
+      return;
+    }
+
+    containerEl.setAttribute('data-placement', placement);
+    const previousZIndex = containerEl.style.zIndex;
+    const previousVisibility = containerEl.style.visibility;
+    if (!previousZIndex) {
+      containerEl.style.zIndex = '1000000';
+    }
+    containerEl.style.visibility = 'hidden';
+
+    const manager = overlayRuntime.runtime.positioning.createPositioningManager_unstable({
+      target: effectiveTarget,
+      container: containerEl,
+      arrow: arrowEl,
+      dir,
+      targetDocument,
+      align: alignInput,
+      position,
+      fallbackPositions: fallbackPlacements,
+      offset: { mainAxis, crossAxis },
+      coverTarget,
+      strategy,
+      matchTargetSize,
+      pinned: pinned || coverTarget,
+      useTransform: false,
+      unstable_disableShift: true,
+      unstable_flipFallbackStrategy: 'initialPlacement',
+      onPositioningEnd: event => {
+        const resolvedPlacement = getLogicalPlacement(event.detail.placement, dir);
+        if (resolvedPlacement) {
+          containerEl.setAttribute('data-placement', resolvedPlacement);
+        }
+        containerEl.style.visibility = previousVisibility;
+      },
+    });
+
+    fallbackManagerRef.current = manager;
+
+    return () => {
+      manager.dispose();
+      containerEl.style.zIndex = previousZIndex;
+      containerEl.style.visibility = previousVisibility;
+      if (fallbackManagerRef.current === manager) {
+        fallbackManagerRef.current = null;
+      }
+    };
+  }, [
+    alignInput,
+    arrowEl,
+    containerEl,
+    coverTarget,
+    crossAxis,
+    dir,
+    effectiveTarget,
+    fallbackPlacements,
+    mainAxis,
+    matchTargetSize,
+    overlayRuntime,
+    pinned,
+    placement,
+    position,
+    strategy,
+    targetDocument,
+  ]);
 
   const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
     setTriggerEl(node);
+  }, []);
+
+  const arrowRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
+    setArrowEl(node);
   }, []);
 
   const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
     node => {
       setContainerEl(node);
 
-      if (!node) {
+      if (!node || overlayRuntime.mode !== 'native') {
         return;
       }
 
@@ -184,8 +287,11 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       coverAlignment,
       strategy,
       matchTargetSize,
+      overlayRuntime.mode,
     ],
   );
 
-  return { targetRef, containerRef };
+  return { targetRef, containerRef, arrowRef } as PositioningReturn & {
+    arrowRef: React.RefCallback<HTMLElement>;
+  };
 }

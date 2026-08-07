@@ -11,8 +11,14 @@ import {
 } from '@fluentui/react-utilities';
 import { useDialogContext } from '../dialogContext';
 import { stringifyDataAttribute } from '../../../utils';
+import { useOverlayRuntime } from '../../../overlayRuntime';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
+
+type DialogSurfaceStateInternal = DialogSurfaceState & {
+  fallbackBehavior?: React.ReactElement;
+  onFallbackBackdropClick: React.MouseEventHandler<HTMLDivElement>;
+};
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
@@ -32,6 +38,8 @@ type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLDialogElement>): DialogSurfaceState => {
   const { open, modalType, unmountOnClose, requestOpenChange, dialogTitleId } = useDialogContext();
   const { targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
+  const useNativeRuntime = overlayRuntime.mode === 'ssr' || overlayRuntime.mode === 'native';
 
   const dialogRef = React.useRef<HTMLDialogElement>(null);
   const previouslyFocusedElement = React.useRef<HTMLElement | null>(null);
@@ -58,6 +66,13 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
   useIsomorphicLayoutEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) {
+      return;
+    }
+
+    if (overlayRuntime.mode !== 'native') {
+      if (!open && unmountOnClose) {
+        setShouldRender(false);
+      }
       return;
     }
 
@@ -126,7 +141,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         unlockDocumentScroll(targetDocument);
       }
     };
-  }, [open, modalType, targetDocument, unmountOnClose, handleToggle]);
+  }, [open, modalType, targetDocument, unmountOnClose, handleToggle, overlayRuntime.mode]);
 
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDialogElement>) => {
     props.onKeyDown?.(event);
@@ -178,13 +193,46 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
       requestOpenChange({ type: 'backdropClick', open: false, event });
     }
   });
+  const handleFallbackBackdropClick = useEventCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      if (
+        modalType === 'modal' &&
+        event.target === event.currentTarget &&
+        !event.isDefaultPrevented()
+      ) {
+        requestOpenChange({
+          type: 'backdropClick',
+          open: false,
+          event: event as unknown as React.MouseEvent<HTMLDialogElement>,
+        });
+      }
+    },
+  );
+  const fallbackBehavior =
+    overlayRuntime.mode === 'fallback-ready'
+      ? React.createElement(overlayRuntime.runtime.FallbackDialogBehavior, {
+          contentRef: dialogRef as React.RefObject<HTMLElement | null>,
+          lockScroll: modalType !== 'non-modal',
+          modal: modalType !== 'non-modal',
+          onDismiss: event =>
+            requestOpenChange({
+              type: 'escapeKeyDown',
+              open: false,
+              event: event as unknown as React.KeyboardEvent<HTMLDialogElement>,
+            }),
+          open,
+          targetDocument,
+        })
+      : undefined;
 
-  const state: DialogSurfaceState = {
+  const state: DialogSurfaceStateInternal = {
     components: { root: 'dialog' },
     open,
     unmountOnClose,
     modalType,
     shouldRender,
+    fallbackBehavior,
+    onFallbackBackdropClick: handleFallbackBackdropClick,
     root: slot.always(
       getIntrinsicElementProps('dialog', {
         role: modalType === 'alert' ? 'alertdialog' : undefined,
@@ -193,9 +241,11 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         ...props,
         tabIndex: -1,
         ref: mergedRef,
+        open: useNativeRuntime ? undefined : open,
         onKeyDown: handleKeyDown,
         onClick: handleClick,
-        popover: modalType === 'non-modal' ? ('manual' as const) : undefined,
+        popover: useNativeRuntime && modalType === 'non-modal' ? ('manual' as const) : undefined,
+        'data-overlay-runtime': useNativeRuntime ? 'native' : 'fallback',
         'data-open': stringifyDataAttribute(open),
         'data-modal-type': modalType,
       }),

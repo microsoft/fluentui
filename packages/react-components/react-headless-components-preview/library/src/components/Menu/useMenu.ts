@@ -20,9 +20,13 @@ import type {
 import { useMenuContext } from './menuContext';
 import { useHasParentMenuList } from './menuListPresenceContext';
 import { usePositioning, resolvePositioningShorthand } from '../../positioning';
+import { useOverlayRuntime } from '../../overlayRuntime';
+import type { WithFallbackBehavior } from '../../overlayRuntime/types';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
 
 export const useMenu = (props: MenuProps): MenuState => {
+  const { targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
   const isSubmenu = useIsSubmenu();
   const {
     hoverDelay = 500,
@@ -101,6 +105,39 @@ export const useMenu = (props: MenuProps): MenuState => {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const mergedMenuPopoverRef = useMergedRefs(menuPopoverRef, containerRef) as React.MutableRefObject<HTMLElement | null>;
 
+  const fallbackBehavior =
+    overlayRuntime.mode === 'fallback-ready'
+      ? React.createElement(overlayRuntime.runtime.FallbackMenuBehavior, {
+          closeOnScroll,
+          contentRef: menuPopoverRef as React.RefObject<HTMLElement | null>,
+          onDismiss: event => {
+            if (event.type === 'keydown') {
+              setOpen(event as MenuOpenEvent, {
+                event: event as unknown as React.KeyboardEvent<HTMLElement>,
+                keyboard: true,
+                open: false,
+                type: 'menuPopoverKeyDown',
+              });
+            } else if (event.type === 'scroll') {
+              setOpen(event as MenuOpenEvent, {
+                event: event as unknown as MouseEvent,
+                open: false,
+                type: 'scrollOutside',
+              });
+            } else {
+              setOpen(event as MenuOpenEvent, {
+                event: event as MouseEvent | TouchEvent,
+                open: false,
+                type: 'clickOutside',
+              });
+            }
+          },
+          open,
+          targetDocument,
+          triggerRef: triggerRef as React.RefObject<HTMLElement | null>,
+        })
+      : undefined;
+
   return {
     inline,
     hoverDelay,
@@ -123,7 +160,8 @@ export const useMenu = (props: MenuProps): MenuState => {
     checkedValues,
     onCheckedValueChange,
     persistOnItemClick,
-  } as MenuState;
+    fallbackBehavior,
+  } as WithFallbackBehavior<MenuState>;
 };
 
 const SUBMENU_FALLBACK_POSITIONS: PositioningShorthandValue[] = [

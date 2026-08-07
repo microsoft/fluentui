@@ -1,8 +1,22 @@
 import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import { usePositioning } from './usePositioning';
-import { getPlacementString } from './utils/placement';
+import {
+  getDefaultFallbackPositions,
+  getLogicalPlacement,
+  getPlacementString,
+} from './utils/placement';
 import type { PositioningProps, PositioningReturn } from './types';
+import {
+  resetOverlayRuntimeForTests,
+  setOverlayFallbackLoaderForTests,
+} from '../../overlayRuntime';
+import { setOverlayRuntimeOverrideForTests } from '../../overlayRuntime/nativeCapabilities';
+import type { OverlayFallbackRuntime } from '../../overlayRuntime/fallbackRuntime';
+
+type PositioningReturnInternal = PositioningReturn & {
+  arrowRef: React.RefCallback<HTMLElement>;
+};
 
 function mountHook(options: PositioningProps = {}) {
   const resultRef = React.createRef<{ current: PositioningReturn }>();
@@ -16,11 +30,12 @@ function mountHook(options: PositioningProps = {}) {
 }
 
 describe('usePositioning', () => {
-  it('returns targetRef and containerRef callbacks', () => {
-    const result = mountHook();
+  it('returns targetRef and containerRef callbacks with an internal arrow ref', () => {
+    const result = mountHook() as { current: PositioningReturnInternal };
 
     expect(typeof result.current.targetRef).toBe('function');
     expect(typeof result.current.containerRef).toBe('function');
+    expect(typeof result.current.arrowRef).toBe('function');
   });
 
   it('targetRef writes anchor-name onto the trigger element', () => {
@@ -243,5 +258,128 @@ describe('getPlacementString', () => {
     expect(getPlacementString('below', 'end')).toBe('below-end');
     expect(getPlacementString('before', 'start')).toBe('before-top');
     expect(getPlacementString('after', 'end')).toBe('after-bottom');
+  });
+});
+
+describe('native fallback placement mapping', () => {
+  it('maps the default block and inline flip tactics in order', () => {
+    expect(getDefaultFallbackPositions('above', 'start')).toEqual([
+      'below-start',
+      'above-end',
+      'below-end',
+    ]);
+    expect(getDefaultFallbackPositions('before', 'start')).toEqual([
+      'before-bottom',
+      'after-top',
+      'after-bottom',
+    ]);
+  });
+
+  it('omits duplicate no-op flips for centered placements', () => {
+    expect(getDefaultFallbackPositions('above', 'center')).toEqual(['below']);
+    expect(getDefaultFallbackPositions('before', 'center')).toEqual(['after']);
+  });
+
+  it('maps Floating UI physical placement back to logical Headless placement', () => {
+    expect(getLogicalPlacement('top-start', 'ltr')).toBe('above-start');
+    expect(getLogicalPlacement('right-end', 'ltr')).toBe('after-bottom');
+    expect(getLogicalPlacement('right-end', 'rtl')).toBe('before-bottom');
+    expect(getLogicalPlacement('left-start', 'rtl')).toBe('after-top');
+  });
+});
+
+describe('fallback positioning backend', () => {
+  afterEach(() => {
+    resetOverlayRuntimeForTests();
+    setOverlayRuntimeOverrideForTests(document, 'native');
+  });
+
+  it('loads the imperative manager with native-normalized behavior', async () => {
+    resetOverlayRuntimeForTests();
+    setOverlayRuntimeOverrideForTests(document, 'fallback');
+
+    const manager = {
+      dispose: jest.fn(),
+      updatePosition: jest.fn(),
+    };
+    type ManagerOptions = Parameters<
+      OverlayFallbackRuntime['positioning']['createPositioningManager_unstable']
+    >[0];
+    const createPositioningManager = jest.fn((_options: ManagerOptions) => manager);
+    const fallbackRuntime = {
+      positioning: {
+        createPositioningManager_unstable: createPositioningManager,
+      },
+    } as unknown as OverlayFallbackRuntime;
+
+    setOverlayFallbackLoaderForTests(() =>
+      Promise.resolve({
+        fallbackRuntime,
+      } as typeof import('../../overlayRuntime/fallbackRuntime')),
+    );
+
+    const positioningRef = React.createRef<{
+      updatePosition: () => void;
+      setTarget: (el: HTMLElement | null) => void;
+    }>();
+    let positioningResult: PositioningReturnInternal | undefined;
+    const Capture = () => {
+      positioningResult = usePositioning({
+        align: 'start',
+        position: 'above',
+        positioningRef: positioningRef as PositioningProps['positioningRef'],
+      }) as PositioningReturnInternal;
+      return null;
+    };
+
+    const { unmount } = render(<Capture />);
+    const target = document.createElement('button');
+    const container = document.createElement('div');
+    const arrow = document.createElement('div');
+
+    act(() => {
+      positioningResult?.targetRef(target);
+      positioningResult?.containerRef(container);
+      positioningResult?.arrowRef(arrow);
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    expect(createPositioningManager).toHaveBeenCalledTimes(1);
+    expect(createPositioningManager).toHaveBeenCalledWith(
+      expect.objectContaining({
+        align: 'start',
+        arrow,
+        container,
+        fallbackPositions: ['below-start', 'above-end', 'below-end'],
+        position: 'above',
+        strategy: 'fixed',
+        target,
+        unstable_disableShift: true,
+        unstable_flipFallbackStrategy: 'initialPlacement',
+        useTransform: false,
+      }),
+    );
+
+    const managerOptions = createPositioningManager.mock.calls[0][0];
+    managerOptions.onPositioningEnd?.(
+      new CustomEvent('fui-positioningend', {
+        detail: {
+          escaped: false,
+          placement: 'right-end',
+          referenceHidden: false,
+        },
+      }),
+    );
+    expect(container).toHaveAttribute('data-placement', 'after-bottom');
+
+    positioningRef.current?.updatePosition();
+    expect(manager.updatePosition).toHaveBeenCalledTimes(1);
+
+    unmount();
+    expect(manager.dispose).toHaveBeenCalledTimes(1);
   });
 });

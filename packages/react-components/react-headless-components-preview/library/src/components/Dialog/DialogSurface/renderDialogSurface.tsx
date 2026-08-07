@@ -1,10 +1,17 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+import type * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { DialogSurfaceContext } from '../dialogContext';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
+import { OverlaySurfaceHost } from '../../../overlayRuntime';
+
+type DialogSurfaceStateInternal = DialogSurfaceState & {
+  fallbackBehavior?: React.ReactElement;
+  onFallbackBackdropClick: React.MouseEventHandler<HTMLDivElement>;
+};
 
 /**
  * Render the final JSX of DialogSurface.
@@ -22,12 +29,39 @@ export const renderDialogSurface = (state: DialogSurfaceState): JSXElement | nul
   }
 
   assertSlots<DialogSurfaceSlots>(state);
+  const { fallbackBehavior, onFallbackBackdropClick } =
+    state as unknown as DialogSurfaceStateInternal;
 
   const content = (
     <DialogSurfaceContext.Provider value={true}>
       <state.root />
     </DialogSurfaceContext.Provider>
   );
+  const fallbackContent =
+    state.modalType === 'non-modal' ? (
+      content
+    ) : (
+      <div
+        data-overlay-fallback-backdrop=""
+        data-open={state.open ? '' : undefined}
+        hidden={!state.open}
+        onClick={onFallbackBackdropClick}
+        style={{ position: 'fixed', zIndex: 1000000, inset: 0 }}
+      >
+        {content}
+      </div>
+    );
 
-  return content;
+  return (
+    <>
+      <OverlaySurfaceHost
+        active={state.open}
+        fallbackChildren={fallbackContent}
+        keepMountedWhenInactive={!state.unmountOnClose}
+      >
+        {content}
+      </OverlaySurfaceHost>
+      {fallbackBehavior}
+    </>
+  );
 };

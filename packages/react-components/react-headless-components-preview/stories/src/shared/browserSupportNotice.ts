@@ -45,6 +45,13 @@ export function getBrowserSupportNotice(component: string): string {
   }
 
   const featureList = keys.map(key => `<strong>${escapeHtml(FEATURE_LABELS[key])}</strong>`).join(', ');
+  const hasOverlayRuntime = keys.some(key => key === 'popover' || key === 'dialog' || key === 'anchor-positioning');
+  const runtimeMessage = hasOverlayRuntime
+    ? ' Headless uses the native APIs when the complete feature set is available and otherwise loads a shared Fluent fallback automatically.'
+    : '';
+  const focusGroupMessage = keys.includes('focusgroup')
+    ? ' Focus group still requires the documented consumer polyfill.'
+    : '';
 
   return (
     '<aside role="note" style="position:relative;margin:32px 0 0;padding:18px 48px 18px 22px;line-height:1.55;' +
@@ -52,7 +59,7 @@ export function getBrowserSupportNotice(component: string): string {
     'background:var(--info-soft);color:var(--text);font-size:15px;">' +
     LIGHTBULB_ICON +
     '<strong style="display:block;color:var(--info);font-size:16px;">Browser support</strong>' +
-    `<div style="margin-top:6px;">This component relies on modern web-platform features: ${featureList}.</div>` +
+    `<div style="margin-top:6px;">This component uses modern web-platform features: ${featureList}.${runtimeMessage}${focusGroupMessage}</div>` +
     '<div style="margin-top:14px;padding-top:14px;border-top:1px dashed var(--border);font-size:14px;">' +
     `<a href="${BROWSER_SUPPORT_DOCS_PATH}">Browser support overview →</a></div>` +
     '</aside>'

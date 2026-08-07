@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add a lazy Fluent positioning fallback for unsupported overlay browsers",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
