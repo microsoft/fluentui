@@ -48,6 +48,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   const {
     children,
     content,
+    secondaryContent,
     withArrow = false,
     positioning = 'above',
     onVisibleChange,
@@ -57,19 +58,26 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     mountNode,
   } = props;
 
+  const child = getTriggerChild(children);
+  const isPopupExpanded =
+    child?.props?.['aria-haspopup'] &&
+    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
+  const renderedVisible = visible && !isPopupExpanded;
+
   const state: TooltipBaseState = {
     withArrow,
     positioning,
     showDelay,
     hideDelay,
     relationship,
-    visible,
+    visible: renderedVisible,
     hidden,
-    shouldRenderTooltip: visible,
+    shouldRenderTooltip: renderedVisible,
     mountNode,
     // Slots
     components: {
       content: 'div',
+      secondaryContent: 'span',
     },
     content: slot.always(content, {
       defaultProps: {
@@ -77,8 +85,10 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
       },
       elementType: 'div',
     }),
+    secondaryContent: slot.optional(secondaryContent, {
+      elementType: 'span',
+    }),
   };
-
   state.content.id = useId('tooltip-', state.content.id);
 
   const resolvedPositioning = resolvePositioningShorthand(state.positioning);
@@ -272,16 +282,18 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
-  const child = getTriggerChild(children);
-
   const triggerAriaProps: Pick<TooltipChildProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
-  const isPopupExpanded =
-    child?.props?.['aria-haspopup'] &&
-    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
-    if (typeof state.content.children === 'string') {
+    if (
+      typeof state.content.children === 'string' &&
+      (!state.secondaryContent || typeof state.secondaryContent.children === 'string')
+    ) {
+      triggerAriaProps['aria-label'] = state.secondaryContent
+        ? `${state.content.children} ${state.secondaryContent.children}`
+        : state.content.children;
+    } else if (isServerSideRender && typeof state.content.children === 'string') {
       triggerAriaProps['aria-label'] = state.content.children;
     } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
@@ -296,9 +308,8 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     state.shouldRenderTooltip = true;
   }
 
-  // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
-  // Case 2: Don't render the Tooltip, if it triggers Menu or another popup and it's already opened
-  if (isServerSideRender || isPopupExpanded) {
+  // Don't render the Tooltip in SSR to avoid hydration errors.
+  if (isServerSideRender) {
     // eslint-disable-next-line react-hooks/immutability
     state.shouldRenderTooltip = false;
   }

@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { render, screen } from '@testing-library/react';
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resetIdsForTests, SSRProvider } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import { Tooltip } from './Tooltip';
@@ -98,6 +99,80 @@ describe('Tooltip', () => {
     const tooltip = screen.getByRole('tooltip');
     const target = screen.getByRole('button');
     expect(target).toHaveAttribute('aria-describedby', tooltip.id);
+  });
+
+  it('renders secondary content', () => {
+    render(
+      <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label" visible>
+        <button>Trigger</button>
+      </Tooltip>,
+    );
+
+    const tooltip = screen.getByRole('tooltip');
+    const target = screen.getByRole('button');
+    expect(tooltip).toHaveTextContent('BoldCtrl+B');
+    expect(tooltip.querySelector('span')).toHaveTextContent('Ctrl+B');
+    expect(target).toHaveAttribute('aria-label', 'Bold Ctrl+B');
+    expect(target).not.toHaveAttribute('aria-labelledby');
+  });
+
+  it('includes secondary content in a rich accessible label', () => {
+    render(
+      <Tooltip content={<span>Bold</span>} secondaryContent="Ctrl+B" relationship="label">
+        <button>Trigger</button>
+      </Tooltip>,
+    );
+
+    const tooltip = screen.getByRole('tooltip');
+    const target = screen.getByRole('button');
+    const secondaryContent = tooltip.querySelector(':scope > span');
+
+    expect(target).toHaveAttribute('aria-labelledby', tooltip.id);
+    expect(secondaryContent).not.toHaveAttribute('aria-hidden');
+  });
+
+  it('keeps a string label with secondary content when the trigger popup is expanded', () => {
+    render(
+      <Tooltip content="Bold" secondaryContent="Ctrl+B" relationship="label" visible>
+        <button aria-haspopup="menu" aria-expanded="true">
+          Trigger
+        </button>
+      </Tooltip>,
+    );
+
+    expect(screen.queryByRole('tooltip')).toBeNull();
+    expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Bold Ctrl+B');
+  });
+
+  it('keeps a generic secondary content label when the trigger popup is expanded', () => {
+    render(
+      <Tooltip content="Bold" secondaryContent={<span>Ctrl+B</span>} relationship="label" visible>
+        <button aria-haspopup="menu" aria-expanded="true">
+          Trigger
+        </button>
+      </Tooltip>,
+    );
+
+    const tooltip = document.querySelector('[role="tooltip"]');
+    const target = screen.getByRole('button');
+
+    expect(tooltip).not.toBeNull();
+    expect(target).not.toHaveAttribute('aria-label');
+    expect(target).toHaveAttribute('aria-labelledby', tooltip?.id);
+    expect(tooltip).toHaveTextContent('BoldCtrl+B');
+  });
+
+  it('keeps the primary string label during SSR with generic secondary content', () => {
+    const html = renderToStaticMarkup(
+      <SSRProvider>
+        <Tooltip content="Bold" secondaryContent={<span>Ctrl+B</span>} relationship="label">
+          <button />
+        </Tooltip>
+      </SSRProvider>,
+    );
+
+    expect(html).toContain('aria-label="Bold"');
+    expect(html).not.toContain('aria-labelledby');
   });
 
   it('renders arrow element when withArrow is true', () => {
