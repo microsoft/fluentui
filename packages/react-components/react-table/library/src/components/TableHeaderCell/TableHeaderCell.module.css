@@ -90,7 +90,7 @@
   .root {
     @apply relative ps-horizontal-s pe-horizontal-s pt-0 pb-0;
 
-    font-weight: var(--fontWeightRegular);
+    font-weight: var(--font-weight-regular);
   }
 
   /* from useTableLayoutStyles.root — arg #4, native-table branch */
@@ -115,8 +115,8 @@
   /* from useStyles.root — arg #2, focus half */
   .root {
     @variant focus-within-fui {
-      outline: 2px solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: 2px solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
     }
   }
 }
@@ -128,8 +128,8 @@
   /* from useStyles.rootInteractive[':hover'] — arg #3 */
   .root-interactive {
     @variant hover {
-      color: var(--colorNeutralForeground1Hover);
-      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--color-neutral-foreground-1-hover);
+      background-color: var(--color-subtle-background-hover);
     }
   }
 }
@@ -141,8 +141,8 @@
   /* from useStyles.rootInteractive[':active'] — arg #3 */
   .root-interactive {
     @variant active {
-      color: var(--colorNeutralForeground1Pressed);
-      background-color: var(--colorSubtleBackgroundPressed);
+      color: var(--color-neutral-foreground-1-pressed);
+      background-color: var(--color-subtle-background-pressed);
     }
   }
 }

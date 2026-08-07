@@ -150,15 +150,15 @@
    * on-screen rather than off it if only the keyframes were flipped.
    */
   .wave {
-    background-color: var(--colorNeutralStencil1);
+    background-color: var(--color-neutral-stencil-1);
 
     &::after {
       animation-name: skeleton-wave;
       background-image: linear-gradient(
         to right,
-        var(--colorNeutralStencil1) 0%,
-        var(--colorNeutralStencil2) 50%,
-        var(--colorNeutralStencil1) 100%
+        var(--color-neutral-stencil-1) 0%,
+        var(--color-neutral-stencil-2) 50%,
+        var(--color-neutral-stencil-1) 100%
       );
       transform: translate(-100%);
     }
@@ -170,9 +170,9 @@
         animation-name: skeleton-wave-rtl;
         background-image: linear-gradient(
           to left,
-          var(--colorNeutralStencil1) 0%,
-          var(--colorNeutralStencil2) 50%,
-          var(--colorNeutralStencil1) 100%
+          var(--color-neutral-stencil-1) 0%,
+          var(--color-neutral-stencil-2) 50%,
+          var(--color-neutral-stencil-1) 100%
         );
         transform: translate(100%);
       }
@@ -188,7 +188,7 @@
     &::after {
       animation-name: skeleton-pulse;
       animation-duration: 1s;
-      background-color: var(--colorNeutralStencil1);
+      background-color: var(--color-neutral-stencil-1);
     }
   }
 
@@ -198,13 +198,13 @@
    * class for that property and the later block here reproduces the same winner.
    */
   .translucent {
-    background-color: var(--colorNeutralStencil1Alpha);
+    background-color: var(--color-neutral-stencil-1-alpha);
 
     &::after {
       background-image: linear-gradient(
         to right,
         transparent 0%,
-        var(--colorNeutralStencil1Alpha) 50%,
+        var(--color-neutral-stencil-1-alpha) 50%,
         transparent 100%
       );
     }
@@ -214,7 +214,7 @@
         background-image: linear-gradient(
           to left,
           transparent 0%,
-          var(--colorNeutralStencil1Alpha) 50%,
+          var(--color-neutral-stencil-1-alpha) 50%,
           transparent 100%
         );
       }
@@ -241,7 +241,7 @@
     background-color: transparent;
 
     &::after {
-      background-color: var(--colorNeutralStencil1Alpha);
+      background-color: var(--color-neutral-stencil-1-alpha);
     }
   }
 }

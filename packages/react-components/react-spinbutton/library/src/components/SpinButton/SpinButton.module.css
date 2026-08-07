@@ -149,13 +149,13 @@
        horizontal axis for the column gap, so the utility does too. */
     @apply gap-x-horizontal-xs gap-y-vertical-none;
 
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     /* `padding: 0 0 0 tokens.spacingHorizontalMNudge` expanded to longhands. The compiled
        pair is `padding-left` (ltr) / `padding-right` (rtl) — a pure property flip. */
     @apply py-vertical-none ps-horizontal-m-nudge pe-horizontal-none;
 
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     /*
      * Border styles live on the ::before pseudo-element rather than the root.
@@ -180,12 +180,12 @@
       border-right-style: solid;
       border-bottom-style: solid;
       border-left-style: solid;
-      border-top-color: var(--colorNeutralStroke1);
-      border-right-color: var(--colorNeutralStroke1);
-      border-left-color: var(--colorNeutralStroke1);
-      border-bottom-color: var(--colorNeutralStrokeAccessible);
+      border-top-color: var(--color-neutral-stroke-1);
+      border-right-color: var(--color-neutral-stroke-1);
+      border-left-color: var(--color-neutral-stroke-1);
+      border-bottom-color: var(--color-neutral-stroke-accessible);
 
-      border-radius: var(--borderRadiusMedium);
+      border-radius: var(--radius-medium);
     }
 
     /*
@@ -194,10 +194,10 @@
      *
      * The three `2px` literals below are ONE measurement expressed three ways and must
      * stay in lockstep: the `max()` floor keeps the underline visible even if a theme sets
-     * `--borderRadiusMedium` to 0; `border-bottom-width` draws it; `clip-path` trims the
+     * `--radius-medium` to 0; `border-bottom-width` draws it; `clip-path` trims the
      * "horns" `border-bottom` would otherwise leave on the ends. They stay unscaled
      * literals (no `--base-scale`) precisely because they must agree with each other and
-     * with `--borderRadiusMedium`, which is an unscaled token.
+     * with `--radius-medium`, which is an unscaled token.
      */
     &::after {
       @apply absolute box-border;
@@ -212,24 +212,24 @@
 
       /* Use the whole border-radius as the height and only put radii on the bottom
          corners, otherwise the radius is auto-reduced to fit the available space. */
-      height: max(2px, var(--borderRadiusMedium));
-      border-end-start-radius: var(--borderRadiusMedium);
-      border-end-end-radius: var(--borderRadiusMedium);
+      height: max(2px, var(--radius-medium));
+      border-end-start-radius: var(--radius-medium);
+      border-end-end-radius: var(--radius-medium);
 
       /* longhands: `:focus-within:active` below overrides the colour alone */
       border-bottom-width: 2px;
       border-bottom-style: solid;
-      border-bottom-color: var(--colorCompoundBrandStroke);
+      border-bottom-color: var(--color-compound-brand-stroke);
 
       clip-path: inset(calc(100% - 2px) 0 0 0);
 
       /* Animation for focus OUT */
       transform: scaleX(0);
       transition-property: transform;
-      transition-duration: var(--durationUltraFast);
+      transition-duration: var(--duration-ultra-fast);
 
       /* Curve token used as a delay — reproduced from the compiled output verbatim. */
-      transition-delay: var(--curveAccelerateMid);
+      transition-delay: var(--ease-accelerate-mid);
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
@@ -242,8 +242,8 @@
       &::after {
         transform: scaleX(1);
         transition-property: transform;
-        transition-duration: var(--durationNormal);
-        transition-delay: var(--curveDecelerateMid);
+        transition-duration: var(--duration-normal);
+        transition-delay: var(--ease-decelerate-mid);
 
         @media screen and (prefers-reduced-motion: reduce) {
           transition-duration: 0.01ms;
@@ -254,7 +254,7 @@
       /* clicking the field again while it is already focused */
       @variant active {
         &::after {
-          border-bottom-color: var(--colorCompoundBrandStrokePressed);
+          border-bottom-color: var(--color-compound-brand-stroke-pressed);
         }
       }
 
@@ -284,7 +284,7 @@
 
     @apply px-horizontal-none py-vertical-none;
 
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
 
     /* literal `transparent` (not a theme token) so the colour from the root always shows
        through */
@@ -303,7 +303,7 @@
      * invalidate the whole rule if they were merged into one selector list.
      */
     &::placeholder {
-      color: var(--colorNeutralForeground4);
+      color: var(--color-neutral-foreground-4);
       opacity: 1; /* browser style override */
     }
   }
@@ -328,7 +328,7 @@
 
     /* literal `transparent` (not a theme token) so the colour from the root shows through */
     background-color: transparent;
-    color: var(--colorNeutralForeground3);
+    color: var(--color-neutral-foreground-3);
 
     /* common button layout */
     grid-column-start: 2;
@@ -346,13 +346,13 @@
       @variant hover {
         @apply cursor-pointer;
 
-        color: var(--colorNeutralForeground3Hover);
-        background-color: var(--colorSubtleBackgroundHover);
+        color: var(--color-neutral-foreground-3-hover);
+        background-color: var(--color-subtle-background-hover);
       }
 
       @variant active {
-        color: var(--colorNeutralForeground3Pressed);
-        background-color: var(--colorSubtleBackgroundPressed);
+        color: var(--color-neutral-foreground-3-pressed);
+        background-color: var(--color-subtle-background-pressed);
       }
 
       /*
@@ -371,14 +371,14 @@
        * `@variant enabled`.
        */
       @variant spin-active {
-        color: var(--colorNeutralForeground3Pressed);
-        background-color: var(--colorSubtleBackgroundPressed);
+        color: var(--color-neutral-foreground-3-pressed);
+        background-color: var(--color-subtle-background-pressed);
       }
     }
 
     @variant disabled {
       cursor: not-allowed;
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
     }
   }
 }
@@ -393,10 +393,10 @@
     @variant size-small {
       @apply min-h-24;
 
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase200);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase200);
+      font-family: var(--font-base);
+      font-size: var(--text-base-200);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--leading-base-200);
 
       /* `paddingLeft: tokens.spacingHorizontalS` — an [ltr, rtl] property flip */
       @apply ps-horizontal-s;
@@ -422,24 +422,24 @@
       border-left-width: 0;
 
       /* corners look strange if rounded */
-      border-radius: var(--borderRadiusNone);
+      border-radius: var(--radius-none);
     }
   }
 
   /* from useRootStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--colorNeutralBackground3);
+    background-color: var(--color-neutral-background-3);
   }
 
   /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
   }
 
   /*
    * from useRootStyles.filled — root arg #5, applied for every `filled-*` appearance.
    * The compiled atomic is the `border` SHORTHAND (`.f1kc0wz4::before{border:1px solid
-   * var(--colorTransparentStroke)}`, priority `p: -2`), i.e. first inside bucket `d`.
+   * var(--color-transparent-stroke)}`, priority `p: -2`), i.e. first inside bucket `d`.
    * Only the four colours are reproduced: the width/style half of the shorthand restates
    * what the reset already sets, and `filled` never co-occurs with `underline` (the one
    * slice that changes those widths). Its block sits BEFORE `invalid`/`disabled` so those
@@ -447,10 +447,10 @@
    */
   .filled {
     &::before {
-      border-top-color: var(--colorTransparentStroke);
-      border-right-color: var(--colorTransparentStroke);
-      border-bottom-color: var(--colorTransparentStroke);
-      border-left-color: var(--colorTransparentStroke);
+      border-top-color: var(--color-transparent-stroke);
+      border-right-color: var(--color-transparent-stroke);
+      border-bottom-color: var(--color-transparent-stroke);
+      border-left-color: var(--color-transparent-stroke);
     }
   }
 
@@ -468,10 +468,10 @@
       @variant invalid {
         @variant not-focus-within {
           &::before {
-            border-top-color: var(--colorPaletteRedBorder2);
-            border-right-color: var(--colorPaletteRedBorder2);
-            border-bottom-color: var(--colorPaletteRedBorder2);
-            border-left-color: var(--colorPaletteRedBorder2);
+            border-top-color: var(--color-palette-red-border-2);
+            border-right-color: var(--color-palette-red-border-2);
+            border-bottom-color: var(--color-palette-red-border-2);
+            border-left-color: var(--color-palette-red-border-2);
           }
         }
       }
@@ -480,13 +480,13 @@
     /* from useRootStyles.disabled — root arg #10, the last style argument. */
     @variant disabled {
       cursor: not-allowed;
-      background-color: var(--colorTransparentBackground);
+      background-color: var(--color-transparent-background);
 
       &::before {
-        border-top-color: var(--colorNeutralStrokeDisabled);
-        border-right-color: var(--colorNeutralStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorNeutralStrokeDisabled);
+        border-top-color: var(--color-neutral-stroke-disabled);
+        border-right-color: var(--color-neutral-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-neutral-stroke-disabled);
       }
 
       @variant forced-colors {
@@ -519,19 +519,19 @@
     @variant enabled {
       @variant hover {
         &::before {
-          border-top-color: var(--colorNeutralStroke1Hover);
-          border-right-color: var(--colorNeutralStroke1Hover);
-          border-left-color: var(--colorNeutralStroke1Hover);
-          border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+          border-top-color: var(--color-neutral-stroke-1-hover);
+          border-right-color: var(--color-neutral-stroke-1-hover);
+          border-left-color: var(--color-neutral-stroke-1-hover);
+          border-bottom-color: var(--color-neutral-stroke-accessible-hover);
         }
       }
 
       @variant active-or-focus-within {
         &::before {
-          border-top-color: var(--colorNeutralStroke1Pressed);
-          border-right-color: var(--colorNeutralStroke1Pressed);
-          border-left-color: var(--colorNeutralStroke1Pressed);
-          border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+          border-top-color: var(--color-neutral-stroke-1-pressed);
+          border-right-color: var(--color-neutral-stroke-1-pressed);
+          border-left-color: var(--color-neutral-stroke-1-pressed);
+          border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
         }
       }
     }
@@ -542,13 +542,13 @@
     @variant enabled {
       @variant hover {
         &::before {
-          border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+          border-bottom-color: var(--color-neutral-stroke-accessible-hover);
         }
       }
 
       @variant active-or-focus-within {
         &::before {
-          border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+          border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
         }
       }
 
@@ -556,7 +556,7 @@
          bucket `d`, but only the reset (fui.base) sets those corners, so its position
          among the interactive rules is inert. */
       &::after {
-        border-radius: var(--borderRadiusNone);
+        border-radius: var(--radius-none);
       }
     }
   }
@@ -568,10 +568,10 @@
          here, since the field always contains a focusable input) */
       @variant hover-or-focus-within {
         &::before {
-          border-top-color: var(--colorTransparentStrokeInteractive);
-          border-right-color: var(--colorTransparentStrokeInteractive);
-          border-bottom-color: var(--colorTransparentStrokeInteractive);
-          border-left-color: var(--colorTransparentStrokeInteractive);
+          border-top-color: var(--color-transparent-stroke-interactive);
+          border-right-color: var(--color-transparent-stroke-interactive);
+          border-bottom-color: var(--color-transparent-stroke-interactive);
+          border-left-color: var(--color-transparent-stroke-interactive);
         }
       }
     }
@@ -592,10 +592,10 @@
         @variant hover {
           @variant not-focus-within {
             &::before {
-              border-top-color: var(--colorPaletteRedBorder2);
-              border-right-color: var(--colorPaletteRedBorder2);
-              border-bottom-color: var(--colorPaletteRedBorder2);
-              border-left-color: var(--colorPaletteRedBorder2);
+              border-top-color: var(--color-palette-red-border-2);
+              border-right-color: var(--color-palette-red-border-2);
+              border-bottom-color: var(--color-palette-red-border-2);
+              border-left-color: var(--color-palette-red-border-2);
             }
           }
         }
@@ -618,12 +618,12 @@
   .root {
     @variant disabled {
       & .input {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
         cursor: not-allowed;
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
 
         &::placeholder {
-          color: var(--colorNeutralForegroundDisabled);
+          color: var(--color-neutral-foreground-disabled);
         }
       }
     }
@@ -646,7 +646,7 @@
     grid-row-start: 1;
 
     /* compiled pair: `border-top-right-radius` (ltr) / `border-top-left-radius` (rtl) */
-    border-start-end-radius: var(--borderRadiusMedium);
+    border-start-end-radius: var(--radius-medium);
 
     /* 4px = the XS step; 1px matches no step, so the numeric fallback */
     @apply pt-vertical-xs pb-1;
@@ -657,7 +657,7 @@
     grid-row-start: 2;
 
     /* compiled pair: `border-bottom-right-radius` (ltr) / `border-bottom-left-radius` (rtl) */
-    border-end-end-radius: var(--borderRadiusMedium);
+    border-end-end-radius: var(--radius-medium);
 
     @apply pt-1 pb-vertical-xs;
   }
@@ -671,27 +671,27 @@
   .underline {
     & .button {
       background-color: transparent;
-      color: var(--colorNeutralForeground3);
+      color: var(--color-neutral-foreground-3);
 
       @variant enabled {
         @variant hover {
-          color: var(--colorNeutralForeground3Hover);
-          background-color: var(--colorSubtleBackgroundHover);
+          color: var(--color-neutral-foreground-3-hover);
+          background-color: var(--color-subtle-background-hover);
         }
 
         @variant active {
-          color: var(--colorNeutralForeground3Pressed);
-          background-color: var(--colorSubtleBackgroundPressed);
+          color: var(--color-neutral-foreground-3-pressed);
+          background-color: var(--color-subtle-background-pressed);
         }
 
         @variant spin-active {
-          color: var(--colorNeutralForeground3Pressed);
-          background-color: var(--colorSubtleBackgroundPressed);
+          color: var(--color-neutral-foreground-3-pressed);
+          background-color: var(--color-subtle-background-pressed);
         }
       }
 
       @variant disabled {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
   }
@@ -700,27 +700,27 @@
   .filled-darker {
     & .button {
       background-color: transparent;
-      color: var(--colorNeutralForeground3);
+      color: var(--color-neutral-foreground-3);
 
       @variant enabled {
         @variant hover {
-          color: var(--colorNeutralForeground3Hover);
-          background-color: var(--colorNeutralBackground3Hover);
+          color: var(--color-neutral-foreground-3-hover);
+          background-color: var(--color-neutral-background-3-hover);
         }
 
         @variant active {
-          color: var(--colorNeutralForeground3Pressed);
-          background-color: var(--colorNeutralBackground3Pressed);
+          color: var(--color-neutral-foreground-3-pressed);
+          background-color: var(--color-neutral-background-3-pressed);
         }
 
         @variant spin-active {
-          color: var(--colorNeutralForeground3Pressed);
-          background-color: var(--colorNeutralBackground3Pressed);
+          color: var(--color-neutral-foreground-3-pressed);
+          background-color: var(--color-neutral-background-3-pressed);
         }
       }
 
       @variant disabled {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
   }
@@ -736,27 +736,27 @@
   .filled-lighter {
     & .button {
       background-color: transparent;
-      color: var(--colorNeutralForeground3);
+      color: var(--color-neutral-foreground-3);
 
       @variant enabled {
         @variant hover {
-          color: var(--colorNeutralForeground3Hover);
-          background-color: var(--colorNeutralBackground1Hover);
+          color: var(--color-neutral-foreground-3-hover);
+          background-color: var(--color-neutral-background-1-hover);
         }
 
         @variant active {
-          color: var(--colorNeutralForeground3Pressed);
-          background-color: var(--colorNeutralBackground1Pressed);
+          color: var(--color-neutral-foreground-3-pressed);
+          background-color: var(--color-neutral-background-1-pressed);
         }
 
         @variant spin-active {
-          color: var(--colorNeutralForeground3Pressed);
-          background-color: var(--colorNeutralBackground1Pressed);
+          color: var(--color-neutral-foreground-3-pressed);
+          background-color: var(--color-neutral-background-1-pressed);
         }
       }
 
       @variant disabled {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
   }

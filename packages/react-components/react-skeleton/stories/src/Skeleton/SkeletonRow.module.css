@@ -2,7 +2,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .invertedWrapper {
-  background-color: var(--colorNeutralBackground1);
+  background-color: var(--color-neutral-background-1);
 }
 
 .firstRow {

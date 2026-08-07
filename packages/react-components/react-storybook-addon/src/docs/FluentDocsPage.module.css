@@ -35,11 +35,11 @@
   .video-preview {
     @apply flex flex-col gap-horizontal-m px-horizontal-m py-vertical-m;
 
-    border-radius: var(--borderRadiusSmall);
-    background-color: var(--colorNeutralBackground2);
+    border-radius: var(--radius-small);
+    background-color: var(--color-neutral-background-2);
 
     &:hover {
-      background-color: var(--colorNeutralBackground2Hover);
+      background-color: var(--color-neutral-background-2-hover);
     }
   }
 }
@@ -104,8 +104,8 @@
 
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--colorNeutralStroke1);
-    border-radius: var(--borderRadiusMedium);
+    border-color: var(--color-neutral-stroke-1);
+    border-radius: var(--radius-medium);
   }
 
   /* from useStyles.additionalInfoMessage */
@@ -136,6 +136,6 @@
 .additional-info-icon {
   @apply me-horizontal-m self-center;
 
-  color: var(--colorBrandForeground1);
+  color: var(--color-brand-foreground-1);
   font-size: 24px;
 }

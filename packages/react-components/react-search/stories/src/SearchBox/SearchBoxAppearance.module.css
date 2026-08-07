@@ -7,19 +7,19 @@
 }
 
 .filledLighter {
-  background-color: var(--colorNeutralBackgroundInverted);
+  background-color: var(--color-neutral-background-inverted);
 }
 
 .filledLighterLabel {
-  color: var(--colorNeutralForegroundInverted2);
+  color: var(--color-neutral-foreground-inverted-2);
 }
 
 .filledDarker {
-  background-color: var(--colorNeutralBackgroundInverted);
+  background-color: var(--color-neutral-background-inverted);
 }
 
 .filledDarkerLabel {
-  color: var(--colorNeutralForegroundInverted2);
+  color: var(--color-neutral-foreground-inverted-2);
 }
 
 .fieldWrapper {

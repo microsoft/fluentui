@@ -178,11 +178,11 @@
 
 #storybook-docs .sbdocs-preview {
   border-radius: 16px;
-  background: var(--colorBrandBackgroundInverted, #fff);
+  background: var(--color-brand-background-inverted, #fff);
   /* This makes Canvas Toolbar un-usable, we are already forcing padding via '#storybook-docs .innerZoomElementWrapper' */
   /* padding: 0; */
   box-shadow: none;
-  border: 1px solid var(--colorNeutralStroke1, #e1dfdd);
+  border: 1px solid var(--color-neutral-stroke-1, #e1dfdd);
 }
 
 #storybook-docs .sbdocs .docs-story div[scale] {

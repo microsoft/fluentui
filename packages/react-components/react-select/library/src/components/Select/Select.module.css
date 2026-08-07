@@ -120,7 +120,7 @@
   .root {
     @apply relative box-border flex flex-nowrap items-center;
 
-    font-family: var(--fontFamilyBase);
+    font-family: var(--font-base);
 
     &::after {
       @apply absolute box-border;
@@ -129,8 +129,8 @@
 
       background-image: linear-gradient(
         0deg,
-        var(--colorCompoundBrandStroke) 0%,
-        var(--colorCompoundBrandStroke) 50%,
+        var(--color-compound-brand-stroke) 0%,
+        var(--color-compound-brand-stroke) 50%,
         transparent 50%,
         transparent 100%
       );
@@ -140,23 +140,23 @@
          already symmetric), so the logical corners are exact. */
       border-start-start-radius: 0;
       border-start-end-radius: 0;
-      border-end-end-radius: var(--borderRadiusMedium);
-      border-end-start-radius: var(--borderRadiusMedium);
+      border-end-end-radius: var(--radius-medium);
+      border-end-start-radius: var(--radius-medium);
 
       /* the corner radius doubles as the bar height */
-      height: var(--borderRadiusMedium);
+      height: var(--radius-medium);
 
       bottom: 0;
 
       /* compiled: ltr `left:0`, rtl `right:0` — equal values, so `inset-inline` is exact */
       inset-inline: 0;
 
-      /* Animation for focus OUT. `transition-delay: var(--curveAccelerateMid)` is a curve
+      /* Animation for focus OUT. `transition-delay: var(--ease-accelerate-mid)` is a curve
          token used as a delay — reproduced from the compiled output verbatim. */
       transform: scaleX(0);
       transition-property: transform;
-      transition-duration: var(--durationUltraFast);
-      transition-delay: var(--curveAccelerateMid);
+      transition-duration: var(--duration-ultra-fast);
+      transition-delay: var(--ease-accelerate-mid);
 
       @media screen and (prefers-reduced-motion: reduce) {
         transition-duration: 0.01ms;
@@ -169,8 +169,8 @@
       &::after {
         transform: scaleX(1);
         transition-property: transform;
-        transition-duration: var(--durationNormal);
-        transition-delay: var(--curveDecelerateMid);
+        transition-duration: var(--duration-normal);
+        transition-delay: var(--ease-decelerate-mid);
 
         /* Repeated rather than inherited from the block above: Griffel's `m` bucket sorts
            last, so BOTH reduced-motion atomics outrank the focus-in durations. In file
@@ -215,9 +215,9 @@
     border-bottom-color: transparent;
     border-left-color: transparent;
 
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
     box-shadow: none;
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
 
     /* `padding-bottom: 0` + `padding-top: 0`; the size slices own the inline axis */
     padding-block: 0;
@@ -263,10 +263,10 @@
         /* spacingHorizontalSNudge (6px) + icon width (16px) + spacingHorizontalXXS (2px) ×2 */
         padding-inline-end: calc((6px + 16px + 2px + 2px) * var(--base-scale));
 
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase200);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase200);
+        font-family: var(--font-base);
+        font-size: var(--text-base-200);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-200);
       }
     }
 
@@ -280,10 +280,10 @@
         /* spacingHorizontalMNudge (10px) + icon width (20px) + spacingHorizontalXXS (2px) ×2 */
         padding-inline-end: calc((10px + 20px + 2px + 2px) * var(--base-scale));
 
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase300);
+        font-family: var(--font-base);
+        font-size: var(--text-base-300);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-300);
       }
     }
 
@@ -297,10 +297,10 @@
         /* spacingHorizontalM (12px) + icon width (24px) + spacingHorizontalSNudge (6px) ×2 */
         padding-inline-end: calc((12px + 24px + 6px + 6px) * var(--base-scale));
 
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase400);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase400);
+        font-family: var(--font-base);
+        font-size: var(--text-base-400);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-400);
       }
     }
   }
@@ -314,7 +314,7 @@
    * here (same property key), so all twelve longhands are restated.
    */
   .outline {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
 
     border-top-width: 1px;
     border-right-width: 1px;
@@ -324,10 +324,10 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--colorNeutralStroke1);
-    border-right-color: var(--colorNeutralStroke1);
-    border-left-color: var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-top-color: var(--color-neutral-stroke-1);
+    border-right-color: var(--color-neutral-stroke-1);
+    border-left-color: var(--color-neutral-stroke-1);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
   }
 
   /*
@@ -335,11 +335,11 @@
    * the bottom edge is redrawn — so the top/inline edges stay `1px solid transparent`.
    */
   .underline {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-bottom-color: var(--color-neutral-stroke-accessible);
 
     /* corners look strange if rounded */
     border-radius: 0;
@@ -347,18 +347,18 @@
     /* The transparent select background means the option background must be set so the
        text stays visible in dark themes. */
     & option {
-      background-color: var(--colorNeutralBackground1);
+      background-color: var(--color-neutral-background-1);
     }
   }
 
   /* from useSelectStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--color-neutral-background-1);
   }
 
   /* from useSelectStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--colorNeutralBackground3);
+    background-color: var(--color-neutral-background-3);
   }
 }
 
@@ -382,10 +382,10 @@
       @variant invalid {
         & .select:where(:not(.underline)) {
           @variant not-focus-within {
-            border-top-color: var(--colorPaletteRedBorder2);
-            border-right-color: var(--colorPaletteRedBorder2);
-            border-bottom-color: var(--colorPaletteRedBorder2);
-            border-left-color: var(--colorPaletteRedBorder2);
+            border-top-color: var(--color-palette-red-border-2);
+            border-right-color: var(--color-palette-red-border-2);
+            border-bottom-color: var(--color-palette-red-border-2);
+            border-left-color: var(--color-palette-red-border-2);
           }
         }
 
@@ -396,7 +396,7 @@
          */
         & .underline {
           @variant not-focus-within {
-            border-bottom-color: var(--colorPaletteRedBorder2);
+            border-bottom-color: var(--color-palette-red-border-2);
           }
         }
       }
@@ -419,26 +419,26 @@
   .root {
     @variant disabled {
       & .select {
-        background-color: var(--colorTransparentBackground);
+        background-color: var(--color-transparent-background);
 
         /* shorthands.borderColor(x) expanded to the four longhands the compiler emits;
            the `[ltr, rtl]` pair only swaps left↔right and carries the same value. */
-        border-top-color: var(--colorNeutralStrokeDisabled);
-        border-right-color: var(--colorNeutralStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorNeutralStrokeDisabled);
+        border-top-color: var(--color-neutral-stroke-disabled);
+        border-right-color: var(--color-neutral-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-neutral-stroke-disabled);
 
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
         cursor: not-allowed;
       }
 
       /* from useSelectStyles.disabledUnderline — the 3-argument
          shorthands.borderColor(top, inline, bottom) form. */
       & .underline {
-        border-top-color: var(--colorTransparentStrokeDisabled);
-        border-right-color: var(--colorTransparentStrokeDisabled);
-        border-bottom-color: var(--colorNeutralStrokeDisabled);
-        border-left-color: var(--colorTransparentStrokeDisabled);
+        border-top-color: var(--color-transparent-stroke-disabled);
+        border-right-color: var(--color-transparent-stroke-disabled);
+        border-bottom-color: var(--color-neutral-stroke-disabled);
+        border-left-color: var(--color-transparent-stroke-disabled);
       }
     }
   }
@@ -454,17 +454,17 @@
     @variant enabled {
       & .outline {
         @variant hover {
-          border-top-color: var(--colorNeutralStroke1Hover);
-          border-right-color: var(--colorNeutralStroke1Hover);
-          border-left-color: var(--colorNeutralStroke1Hover);
-          border-bottom-color: var(--colorNeutralStrokeAccessible);
+          border-top-color: var(--color-neutral-stroke-1-hover);
+          border-right-color: var(--color-neutral-stroke-1-hover);
+          border-left-color: var(--color-neutral-stroke-1-hover);
+          border-bottom-color: var(--color-neutral-stroke-accessible);
         }
 
         @variant active {
-          border-top-color: var(--colorNeutralStroke1Pressed);
-          border-right-color: var(--colorNeutralStroke1Pressed);
-          border-left-color: var(--colorNeutralStroke1Pressed);
-          border-bottom-color: var(--colorNeutralStrokeAccessible);
+          border-top-color: var(--color-neutral-stroke-1-pressed);
+          border-right-color: var(--color-neutral-stroke-1-pressed);
+          border-left-color: var(--color-neutral-stroke-1-pressed);
+          border-bottom-color: var(--color-neutral-stroke-accessible);
         }
       }
     }
@@ -487,10 +487,10 @@
         & .select:where(:not(.underline)) {
           @variant hover {
             @variant not-focus-within {
-              border-top-color: var(--colorPaletteRedBorder2);
-              border-right-color: var(--colorPaletteRedBorder2);
-              border-bottom-color: var(--colorPaletteRedBorder2);
-              border-left-color: var(--colorPaletteRedBorder2);
+              border-top-color: var(--color-palette-red-border-2);
+              border-right-color: var(--color-palette-red-border-2);
+              border-bottom-color: var(--color-palette-red-border-2);
+              border-left-color: var(--color-palette-red-border-2);
             }
           }
         }
@@ -525,7 +525,7 @@
   .icon {
     @apply pointer-events-none absolute box-border block;
 
-    color: var(--colorNeutralStrokeAccessible);
+    color: var(--color-neutral-stroke-accessible);
 
     /* the SVG must have display: block for accurate positioning, otherwise an extra
        inline space is inserted after the svg element */
@@ -538,7 +538,7 @@
     /* from useIconStyles.disabled — arg #3 */
     @variant disabled {
       & .icon {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
 
         @variant forced-colors {
           color: GrayText;

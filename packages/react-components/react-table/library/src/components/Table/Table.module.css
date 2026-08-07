@@ -43,7 +43,7 @@
   .root {
     @apply border-collapse;
 
-    background-color: var(--colorSubtleBackground);
+    background-color: var(--color-subtle-background);
   }
 }
 

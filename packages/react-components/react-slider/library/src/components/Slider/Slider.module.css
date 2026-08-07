@@ -98,8 +98,8 @@
  *   wins and a vertical Slider is 120px tall. Both compile to `.root:where([data-…])`,
  *   i.e. equal specificity, so the winner is now file position: the orientation block is
  *   written AFTER the size block and must stay there.
- * • `.thumb`'s `::before` border colour: base (arg #2) → `--colorNeutralStroke1`,
- *   disabled (arg #4) → `--colorNeutralForegroundDisabled`. The disabled rule is reached
+ * • `.thumb`'s `::before` border colour: base (arg #2) → `--color-neutral-stroke-1`,
+ *   disabled (arg #4) → `--color-neutral-foreground-disabled`. The disabled rule is reached
  *   through the root (`.root:where([data-disabled]) .thumb::before`, 0-2-0) so it beats
  *   the 0-1-0 base rule on specificity, not only on order.
  * • Inside the root's `enabled` block the order is base vars → `:hover` → `:active`.
@@ -259,25 +259,25 @@
      * declared on the root so ordinary custom-property inheritance carries them down.
      */
     @variant enabled {
-      --fui-Slider__rail--color: var(--colorNeutralStrokeAccessible);
-      --fui-Slider__progress--color: var(--colorCompoundBrandBackground);
-      --fui-Slider__thumb--color: var(--colorCompoundBrandBackground);
+      --fui-Slider__rail--color: var(--color-neutral-stroke-accessible);
+      --fui-Slider__progress--color: var(--color-compound-brand-background);
+      --fui-Slider__thumb--color: var(--color-compound-brand-background);
 
       @variant hover {
-        --fui-Slider__thumb--color: var(--colorCompoundBrandBackgroundHover);
-        --fui-Slider__progress--color: var(--colorCompoundBrandBackgroundHover);
+        --fui-Slider__thumb--color: var(--color-compound-brand-background-hover);
+        --fui-Slider__progress--color: var(--color-compound-brand-background-hover);
       }
 
       @variant active {
-        --fui-Slider__thumb--color: var(--colorCompoundBrandBackgroundPressed);
-        --fui-Slider__progress--color: var(--colorCompoundBrandBackgroundPressed);
+        --fui-Slider__thumb--color: var(--color-compound-brand-background-pressed);
+        --fui-Slider__progress--color: var(--color-compound-brand-background-pressed);
       }
     }
 
     @variant disabled {
-      --fui-Slider__thumb--color: var(--colorNeutralForegroundDisabled);
-      --fui-Slider__rail--color: var(--colorNeutralBackgroundDisabled);
-      --fui-Slider__progress--color: var(--colorNeutralForegroundDisabled);
+      --fui-Slider__thumb--color: var(--color-neutral-foreground-disabled);
+      --fui-Slider__rail--color: var(--color-neutral-background-disabled);
+      --fui-Slider__progress--color: var(--color-neutral-foreground-disabled);
     }
 
     /*
@@ -312,7 +312,7 @@
   .rail {
     @apply pointer-events-none relative;
 
-    border-radius: var(--borderRadiusXLarge);
+    border-radius: var(--radius-x-large);
 
     /* grid line NUMBERS, not design values — written literally, as in every other
        converted module (react-card, react-dialog). */
@@ -335,7 +335,7 @@
 
     outline-width: calc(1px * var(--base-scale));
     outline-style: solid;
-    outline-color: var(--colorTransparentStroke);
+    outline-color: var(--color-transparent-stroke);
 
     &::before {
       @apply absolute;
@@ -349,8 +349,8 @@
         var(--fui-Slider--direction),
         #0000 0%,
         #0000 calc(var(--fui-Slider--steps-percent) - 1px * var(--base-scale)),
-        var(--colorNeutralBackground1) calc(var(--fui-Slider--steps-percent) - 1px * var(--base-scale)),
-        var(--colorNeutralBackground1) var(--fui-Slider--steps-percent)
+        var(--color-neutral-background-1) calc(var(--fui-Slider--steps-percent) - 1px * var(--base-scale)),
+        var(--color-neutral-background-1) var(--fui-Slider--steps-percent)
       );
 
       /* force steps to use HighlightText for high contrast mode */
@@ -431,8 +431,8 @@
 
     outline-style: none;
     forced-color-adjust: none;
-    border-radius: var(--borderRadiusCircular);
-    box-shadow: 0 0 0 calc(var(--fui-Slider__thumb--size) * 0.2) var(--colorNeutralBackground1) inset;
+    border-radius: var(--radius-circular);
+    box-shadow: 0 0 0 calc(var(--fui-Slider__thumb--size) * 0.2) var(--color-neutral-background-1) inset;
     background-color: var(--fui-Slider__thumb--color);
 
     &::before {
@@ -446,13 +446,13 @@
       inset-inline-start: 0px;
       inset-inline-end: 0px;
 
-      border-radius: var(--borderRadiusCircular);
+      border-radius: var(--radius-circular);
 
       /* Kept as the `border` shorthand because that is what Griffel compiled
-         (`.f1fsco4d::before{border:calc(…) solid var(--colorNeutralStroke1)}`) and because
+         (`.f1fsco4d::before{border:calc(…) solid var(--color-neutral-stroke-1)}`) and because
          the only other rule that touches this pseudo-element's border — the disabled one
          below — is the same shorthand, so no shorthand/longhand priority can go wrong. */
-      border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--colorNeutralStroke1);
+      border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--color-neutral-stroke-1);
     }
   }
 
@@ -488,7 +488,7 @@
     /* from useThumbStyles.disabled — thumb arg #4 */
     @variant disabled {
       & .thumb::before {
-        border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--colorNeutralForegroundDisabled);
+        border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--color-neutral-foreground-disabled);
       }
     }
   }

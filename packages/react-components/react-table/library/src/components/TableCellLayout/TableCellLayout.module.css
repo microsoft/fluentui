@@ -121,7 +121,7 @@
 
   /* from useStyles.mainPrimary — `main` arg #3 */
   .main-primary {
-    font-weight: var(--fontWeightSemibold);
+    font-weight: var(--font-weight-semibold);
   }
 }
 
@@ -129,11 +129,11 @@
   /* from useStyles.description — `description` arg #2. `...typographyStyles.caption1`
      expanded exactly as the compiler emitted it. */
   .description {
-    color: var(--colorNeutralForeground2);
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase200);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase200);
+    color: var(--color-neutral-foreground-2);
+    font-family: var(--font-base);
+    font-size: var(--text-base-200);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-200);
   }
 }
 

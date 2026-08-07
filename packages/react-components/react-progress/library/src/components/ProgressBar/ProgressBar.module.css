@@ -74,7 +74,7 @@
   .root {
     @apply block w-full overflow-hidden;
 
-    background-color: var(--colorNeutralBackground6);
+    background-color: var(--color-neutral-background-6);
 
     /* Griffel bucket `m` wins over `d` — beats the background-color above. */
     @variant forced-colors {
@@ -84,11 +84,11 @@
 
   /* from useRootStyles.rounded / .square — `shape` is a look prop → module class (D3) */
   .rounded {
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
   }
 
   .square {
-    border-radius: var(--borderRadiusNone);
+    border-radius: var(--radius-none);
   }
 
   /* from useRootStyles.medium / .large — `thickness` is a scale prop → data-attribute (D3) */
@@ -118,9 +118,9 @@
 
       background-image: linear-gradient(
         to right,
-        var(--colorNeutralBackground6) 0%,
-        var(--colorTransparentBackground) 50%,
-        var(--colorNeutralBackground6) 100%
+        var(--color-neutral-background-6) 0%,
+        var(--color-transparent-background) 50%,
+        var(--color-neutral-background-6) 100%
       );
 
       /* Value-level RTL flip (D5): a gradient direction cannot be expressed logically.
@@ -128,9 +128,9 @@
       @variant rtl {
         background-image: linear-gradient(
           to left,
-          var(--colorNeutralBackground6) 0%,
-          var(--colorTransparentBackground) 50%,
-          var(--colorNeutralBackground6) 100%
+          var(--color-neutral-background-6) 0%,
+          var(--color-transparent-background) 50%,
+          var(--color-neutral-background-6) 100%
         );
       }
 
@@ -153,19 +153,19 @@
 @layer fui.components.l1 {
   /* from useBarStyles.brand / .error / .warning / .success — `color` is a look prop (D3) */
   .brand {
-    background-color: var(--colorCompoundBrandBackground);
+    background-color: var(--color-compound-brand-background);
   }
 
   .error {
-    background-color: var(--colorPaletteRedBackground3);
+    background-color: var(--color-palette-red-background-3);
   }
 
   .warning {
-    background-color: var(--colorPaletteDarkOrangeBackground3);
+    background-color: var(--color-palette-dark-orange-background-3);
   }
 
   .success {
-    background-color: var(--colorPaletteGreenBackground3);
+    background-color: var(--color-palette-green-background-3);
   }
 }
 

@@ -191,11 +191,11 @@
        are other full shorthands (`.circular*`) plus the focus indicator's four
        `border-*-color` longhands, which are written after them. */
     border: none;
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     cursor: pointer;
-    font-family: var(--fontFamilyBase);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    line-height: var(--leading-base-300);
     outline-style: none;
 
     /* from useRootStyles.horizontal / .vertical — arg b2 */
@@ -250,8 +250,8 @@
 
   /* from useCircularAppearanceStyles.base — arg b4 */
   .circular {
-    border-radius: var(--borderRadiusCircular);
-    border: solid var(--spacing-thin) var(--colorTransparentStroke);
+    border-radius: var(--radius-circular);
+    border: solid var(--spacing-thin) var(--color-transparent-stroke);
 
     & .icon {
       color: inherit;
@@ -281,20 +281,20 @@
 
   /* from useCircularAppearanceStyles.subtle — arg b7 */
   .circular-subtle {
-    background-color: var(--colorSubtleBackground);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-subtle-background);
+    color: var(--color-neutral-foreground-2);
 
     @variant enabled {
       @variant hover {
-        background-color: var(--colorSubtleBackgroundHover);
-        border: solid var(--spacing-thin) var(--colorNeutralStroke1Hover);
-        color: var(--colorNeutralForeground2Hover);
+        background-color: var(--color-subtle-background-hover);
+        border: solid var(--spacing-thin) var(--color-neutral-stroke-1-hover);
+        color: var(--color-neutral-foreground-2-hover);
       }
 
       @variant active {
-        background-color: var(--colorSubtleBackgroundPressed);
-        border: solid var(--spacing-thin) var(--colorNeutralStroke1Pressed);
-        color: var(--colorNeutralForeground2Pressed);
+        background-color: var(--color-subtle-background-pressed);
+        border: solid var(--spacing-thin) var(--color-neutral-stroke-1-pressed);
+        color: var(--color-neutral-foreground-2-pressed);
       }
     }
 
@@ -305,21 +305,21 @@
 
   /* from useCircularAppearanceStyles.subtleSelected — arg b7 */
   .circular-subtle-selected {
-    background-color: var(--colorBrandBackground2);
-    border: solid var(--spacing-thin) var(--colorCompoundBrandStroke);
-    color: var(--colorBrandForeground2);
+    background-color: var(--color-brand-background-2);
+    border: solid var(--spacing-thin) var(--color-compound-brand-stroke);
+    color: var(--color-brand-foreground-2);
 
     @variant enabled {
       @variant hover {
-        background-color: var(--colorBrandBackground2Hover);
-        border: solid var(--spacing-thin) var(--colorCompoundBrandStrokeHover);
-        color: var(--colorBrandForeground2Hover);
+        background-color: var(--color-brand-background-2-hover);
+        border: solid var(--spacing-thin) var(--color-compound-brand-stroke-hover);
+        color: var(--color-brand-foreground-2-hover);
       }
 
       @variant active {
-        background-color: var(--colorBrandBackground2Pressed);
-        border: solid var(--spacing-thin) var(--colorCompoundBrandStrokePressed);
-        color: var(--colorBrandForeground2Pressed);
+        background-color: var(--color-brand-background-2-pressed);
+        border: solid var(--spacing-thin) var(--color-compound-brand-stroke-pressed);
+        color: var(--color-brand-foreground-2-pressed);
       }
     }
 
@@ -330,31 +330,31 @@
 
   /* from useCircularAppearanceStyles.subtleDisabled — arg b7 */
   .circular-subtle-disabled {
-    background-color: var(--colorSubtleBackground);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-subtle-background);
+    color: var(--color-neutral-foreground-disabled);
   }
 
   /* from useCircularAppearanceStyles.subtleDisabledSelected — arg b7 */
   .circular-subtle-disabled-selected {
-    background-color: var(--colorNeutralBackgroundDisabled);
-    border: solid var(--spacing-thin) var(--colorNeutralStrokeDisabled);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-neutral-background-disabled);
+    border: solid var(--spacing-thin) var(--color-neutral-stroke-disabled);
+    color: var(--color-neutral-foreground-disabled);
   }
 
   /* from useCircularAppearanceStyles.filled — arg b8 */
   .circular-filled {
-    background-color: var(--colorNeutralBackground3);
-    color: var(--colorNeutralForeground2);
+    background-color: var(--color-neutral-background-3);
+    color: var(--color-neutral-foreground-2);
 
     @variant enabled {
       @variant hover {
-        background-color: var(--colorNeutralBackground3Hover);
-        color: var(--colorNeutralForeground2Hover);
+        background-color: var(--color-neutral-background-3-hover);
+        color: var(--color-neutral-foreground-2-hover);
       }
 
       @variant active {
-        background-color: var(--colorNeutralBackground3Pressed);
-        color: var(--colorNeutralForeground2Pressed);
+        background-color: var(--color-neutral-background-3-pressed);
+        color: var(--color-neutral-foreground-2-pressed);
       }
     }
 
@@ -380,18 +380,18 @@
 
   /* from useCircularAppearanceStyles.filledSelected — arg b8 */
   .circular-filled-selected {
-    background-color: var(--colorBrandBackground);
-    color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--color-brand-background);
+    color: var(--color-neutral-foreground-on-brand);
 
     @variant enabled {
       @variant hover {
-        background-color: var(--colorBrandBackgroundHover);
-        color: var(--colorNeutralForegroundOnBrand);
+        background-color: var(--color-brand-background-hover);
+        color: var(--color-neutral-foreground-on-brand);
       }
 
       @variant active {
-        background-color: var(--colorBrandBackgroundPressed);
-        color: var(--colorNeutralForegroundOnBrand);
+        background-color: var(--color-brand-background-pressed);
+        color: var(--color-neutral-foreground-on-brand);
       }
     }
 
@@ -413,15 +413,15 @@
 
   /* from useCircularAppearanceStyles.filledDisabled — arg b8 */
   .circular-filled-disabled {
-    background-color: var(--colorNeutralBackgroundDisabled);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-neutral-background-disabled);
+    color: var(--color-neutral-foreground-disabled);
   }
 
   /* from useCircularAppearanceStyles.filledDisabledSelected — arg b8 */
   .circular-filled-disabled-selected {
-    background-color: var(--colorNeutralBackgroundDisabled);
-    border: solid var(--spacing-thin) var(--colorNeutralStrokeDisabled);
-    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--color-neutral-background-disabled);
+    border: solid var(--spacing-thin) var(--color-neutral-stroke-disabled);
+    color: var(--color-neutral-foreground-disabled);
   }
 
   /* ── regular appearances (`transparent`, `subtle`) ───────────────────────────────── */
@@ -434,38 +434,38 @@
    * not, so the narrower condition has to come later in the file.
    */
   .subtle {
-    background-color: var(--colorSubtleBackground);
+    background-color: var(--color-subtle-background);
 
     & .icon {
-      color: var(--colorNeutralForeground2);
+      color: var(--color-neutral-foreground-2);
     }
 
     & .content {
-      color: var(--colorNeutralForeground2);
+      color: var(--color-neutral-foreground-2);
     }
 
     @variant enabled {
       @variant hover {
-        background-color: var(--colorSubtleBackgroundHover);
+        background-color: var(--color-subtle-background-hover);
 
         & .icon {
-          color: var(--colorNeutralForeground2Hover);
+          color: var(--color-neutral-foreground-2-hover);
         }
 
         & .content {
-          color: var(--colorNeutralForeground2Hover);
+          color: var(--color-neutral-foreground-2-hover);
         }
       }
 
       @variant active {
-        background-color: var(--colorSubtleBackgroundPressed);
+        background-color: var(--color-subtle-background-pressed);
 
         & .icon {
-          color: var(--colorNeutralForeground2Pressed);
+          color: var(--color-neutral-foreground-2-pressed);
         }
 
         & .content {
-          color: var(--colorNeutralForeground2Pressed);
+          color: var(--color-neutral-foreground-2-pressed);
         }
       }
     }
@@ -473,38 +473,38 @@
 
   /* from useRootStyles.transparent — arg r7 */
   .transparent {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     & .icon {
-      color: var(--colorNeutralForeground2);
+      color: var(--color-neutral-foreground-2);
     }
 
     & .content {
-      color: var(--colorNeutralForeground2);
+      color: var(--color-neutral-foreground-2);
     }
 
     @variant enabled {
       @variant hover {
-        background-color: var(--colorTransparentBackgroundHover);
+        background-color: var(--color-transparent-background-hover);
 
         & .icon {
-          color: var(--colorNeutralForeground2Hover);
+          color: var(--color-neutral-foreground-2-hover);
         }
 
         & .content {
-          color: var(--colorNeutralForeground2Hover);
+          color: var(--color-neutral-foreground-2-hover);
         }
       }
 
       @variant active {
-        background-color: var(--colorTransparentBackgroundPressed);
+        background-color: var(--color-transparent-background-pressed);
 
         & .icon {
-          color: var(--colorNeutralForeground2Pressed);
+          color: var(--color-neutral-foreground-2-pressed);
         }
 
         & .content {
-          color: var(--colorNeutralForeground2Pressed);
+          color: var(--color-neutral-foreground-2-pressed);
         }
       }
     }
@@ -517,31 +517,31 @@
    */
   .selected {
     & .icon {
-      color: var(--colorCompoundBrandForeground1);
+      color: var(--color-compound-brand-foreground-1);
     }
 
     & .content {
-      color: var(--colorNeutralForeground1);
+      color: var(--color-neutral-foreground-1);
     }
 
     @variant enabled {
       @variant hover {
         & .icon {
-          color: var(--colorCompoundBrandForeground1Hover);
+          color: var(--color-compound-brand-foreground-1-hover);
         }
 
         & .content {
-          color: var(--colorNeutralForeground1Hover);
+          color: var(--color-neutral-foreground-1-hover);
         }
       }
 
       @variant active {
         & .icon {
-          color: var(--colorCompoundBrandForeground1Pressed);
+          color: var(--color-compound-brand-foreground-1-pressed);
         }
 
         & .content {
-          color: var(--colorNeutralForeground1Pressed);
+          color: var(--color-neutral-foreground-1-pressed);
         }
       }
     }
@@ -549,14 +549,14 @@
 
   /* from useRootStyles.disabled — arg r9 (mutually exclusive with `.selected` above) */
   .disabled {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     & .icon {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
     }
 
     & .content {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
     }
   }
 
@@ -598,8 +598,8 @@
         @apply absolute;
 
         content: '';
-        background-color: var(--colorNeutralStroke1Hover);
-        border-radius: var(--borderRadiusCircular);
+        background-color: var(--color-neutral-stroke-1-hover);
+        border-radius: var(--radius-circular);
       }
     }
 
@@ -608,8 +608,8 @@
         @apply absolute;
 
         content: '';
-        background-color: var(--colorNeutralStroke1Pressed);
-        border-radius: var(--borderRadiusCircular);
+        background-color: var(--color-neutral-stroke-1-pressed);
+        border-radius: var(--radius-circular);
       }
     }
 
@@ -674,13 +674,13 @@
     @variant disabled {
       @variant hover {
         &::before {
-          background-color: var(--colorTransparentStroke);
+          background-color: var(--color-transparent-stroke);
         }
       }
 
       @variant active {
         &::before {
-          background-color: var(--colorTransparentStroke);
+          background-color: var(--color-transparent-stroke);
         }
       }
     }
@@ -717,25 +717,25 @@
       @apply absolute;
 
       content: '';
-      background-color: var(--colorTransparentStroke);
-      border-radius: var(--borderRadiusCircular);
+      background-color: var(--color-transparent-stroke);
+      border-radius: var(--radius-circular);
     }
 
     /* from useActiveIndicatorStyles.selected — arg i7 (applied when `selected && !disabled`) */
     @variant enabled {
       &::after {
-        background-color: var(--colorCompoundBrandStroke);
+        background-color: var(--color-compound-brand-stroke);
       }
 
       @variant hover {
         &::after {
-          background-color: var(--colorCompoundBrandStrokeHover);
+          background-color: var(--color-compound-brand-stroke-hover);
         }
       }
 
       @variant active {
         &::after {
-          background-color: var(--colorCompoundBrandStrokePressed);
+          background-color: var(--color-compound-brand-stroke-pressed);
         }
       }
     }
@@ -806,7 +806,7 @@
     /* from useActiveIndicatorStyles.disabled — arg i9 (applied when `selected && disabled`) */
     @variant disabled {
       &::after {
-        background-color: var(--colorNeutralForegroundDisabled);
+        background-color: var(--color-neutral-foreground-disabled);
       }
     }
   }
@@ -860,8 +860,8 @@
   .indicator-animated {
     &::after {
       transition-property: transform;
-      transition-duration: var(--durationSlow);
-      transition-timing-function: var(--curveDecelerateMax);
+      transition-duration: var(--duration-slow);
+      transition-timing-function: var(--ease-decelerate-max);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -901,8 +901,8 @@
       outline-color: transparent;
       outline-style: solid;
       box-shadow:
-        var(--shadow4),
-        0 0 0 var(--spacing-thick) var(--colorStrokeFocus2);
+        var(--shadow-4),
+        0 0 0 var(--spacing-thick) var(--color-stroke-focus-2);
       z-index: 1;
     }
   }
@@ -917,9 +917,9 @@
       outline-color: transparent;
       outline-style: solid;
       box-shadow:
-        var(--shadow4),
-        0 0 0 var(--spacing-thick) var(--colorStrokeFocus2),
-        0 0 0 var(--spacing-thin) var(--colorNeutralStrokeOnBrand) inset;
+        var(--shadow-4),
+        0 0 0 var(--spacing-thick) var(--color-stroke-focus-2),
+        0 0 0 var(--spacing-thin) var(--color-neutral-stroke-on-brand) inset;
       z-index: 1;
     }
   }
@@ -945,11 +945,11 @@
   .circular-subtle {
     @variant enabled {
       @variant hover {
-        border: solid var(--spacing-thin) var(--colorNeutralStroke1Hover);
+        border: solid var(--spacing-thin) var(--color-neutral-stroke-1-hover);
       }
 
       @variant active {
-        border: solid var(--spacing-thin) var(--colorNeutralStroke1Pressed);
+        border: solid var(--spacing-thin) var(--color-neutral-stroke-1-pressed);
       }
     }
   }
@@ -957,11 +957,11 @@
   .circular-subtle-selected {
     @variant enabled {
       @variant hover {
-        border: solid var(--spacing-thin) var(--colorCompoundBrandStrokeHover);
+        border: solid var(--spacing-thin) var(--color-compound-brand-stroke-hover);
       }
 
       @variant active {
-        border: solid var(--spacing-thin) var(--colorCompoundBrandStrokePressed);
+        border: solid var(--spacing-thin) var(--color-compound-brand-stroke-pressed);
       }
     }
   }
@@ -1024,34 +1024,34 @@
   .content {
     @apply overflow-hidden px-horizontal-xxs py-vertical-none;
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-300);
   }
 
   /* from useContentStyles.large — typographyStyles.body2 */
   .content-large {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase400);
+    font-family: var(--font-base);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-base-400);
   }
 
   /* from useContentStyles.selected — typographyStyles.body1Strong */
   .content-selected {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase300);
+    font-family: var(--font-base);
+    font-size: var(--text-base-300);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-300);
   }
 
   /* from useContentStyles.largeSelected — typographyStyles.subtitle2 */
   .content-large-selected {
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase400);
-    font-weight: var(--fontWeightSemibold);
-    line-height: var(--lineHeightBase400);
+    font-family: var(--font-base);
+    font-size: var(--text-base-400);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-base-400);
   }
 
   /* from useContentStyles.noIconBefore / .iconBefore — grid line NUMBERS, written literally */

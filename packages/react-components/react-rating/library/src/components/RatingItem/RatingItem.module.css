@@ -73,7 +73,7 @@
  * react-rating). Same call as react-input's layered `.content > svg { font-size }`.
  *
  * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
- * • `.filled` sets `color: var(--colorNeutralBackground6)` and must LOSE to
+ * • `.filled` sets `color: var(--color-neutral-background-6)` and must LOSE to
  *   `.brand-filled` / `.marigold-filled` (unselectedIcon args #4/#5), so its block is
  *   written first.
  * • …but `.filled`'s forced-colors declarations must WIN over those same two. Griffel
@@ -81,7 +81,7 @@
  *   (@griffel/core/renderer/getStyleSheetForBucket) is
  *   ['r','d','l','v','w','f','i','h','a','s','k','t','m'] — `m` sorts after `d`, so the
  *   compiled sheet emits `@media (forced-colors: active){.f1205bnn{color:Canvas}}` AFTER
- *   `.f1kdv6iu{color:var(--colorBrandBackground2)}` at equal 0-1-0 specificity. CSS gives
+ *   `.f1kdv6iu{color:var(--color-brand-background-2)}` at equal 0-1-0 specificity. CSS gives
  *   a media block no priority of its own, so the ONLY way to reproduce that is file
  *   position: `.filled`'s `@variant forced-colors` block is SPLIT off from its plain
  *   declarations and re-stated after the colour blocks. Collapsing the two halves back
@@ -137,7 +137,7 @@
   .icon {
     @apply pointer-events-none absolute flex overflow-hidden;
 
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
     fill: currentColor;
     inset-inline-start: 0;
     inset-inline-end: 0;
@@ -158,7 +158,7 @@
      * (lib-commonjs/components/RatingItem/useRatingItemStyles.styles.js): the four
      * `[data-fui-focus-within]:focus-within{border-*-color:transparent}` rules, the
      * ::after content/position/pointer-events/z-index, `border:2px solid
-     * var(--colorStrokeFocus2)`, `border-radius:var(--borderRadiusMedium)`, the four
+     * var(--color-stroke-focus-2)`, `border-radius:var(--radius-medium)`, the four
      * `calc(2px * -1)` offsets (the utility's `calc(0px - 2px - 0px)` computes to the
      * same) and the forced-colors `Highlight` border colours all match.
      *
@@ -246,28 +246,28 @@
    * data-attributes (DECISIONS.md D3).
    */
   .filled {
-    color: var(--colorNeutralBackground6);
-    stroke: var(--colorTransparentStroke);
+    color: var(--color-neutral-background-6);
+    stroke: var(--color-transparent-stroke);
   }
 
   /* from useIndicatorStyles.brand — unselectedIcon arg #4 / selectedIcon arg #3 */
   .brand {
-    color: var(--colorBrandForeground1);
+    color: var(--color-brand-foreground-1);
   }
 
   /* from useIndicatorStyles.brandFilled — unselectedIcon arg #4, filled branch */
   .brand-filled {
-    color: var(--colorBrandBackground2);
+    color: var(--color-brand-background-2);
   }
 
   /* from useIndicatorStyles.marigold — unselectedIcon arg #5 / selectedIcon arg #4 */
   .marigold {
-    color: var(--colorPaletteMarigoldBorderActive);
+    color: var(--color-palette-marigold-border-active);
   }
 
   /* from useIndicatorStyles.marigoldFilled — unselectedIcon arg #5, filled branch */
   .marigold-filled {
-    color: var(--colorPaletteMarigoldBackground2);
+    color: var(--color-palette-marigold-background-2);
   }
 
   /*

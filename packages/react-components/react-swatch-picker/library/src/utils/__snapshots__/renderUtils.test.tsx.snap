@@ -18,7 +18,7 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #FF1921; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #FF1921; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -27,7 +27,7 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #FF7A00; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #FF7A00; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -36,7 +36,7 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #90D057; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #90D057; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
     </div>
@@ -50,7 +50,7 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #00B053; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #00B053; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -59,7 +59,7 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #00AFED; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #00AFED; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -68,7 +68,7 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #006EBD; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #006EBD; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
     </div>
@@ -123,7 +123,7 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
         class="group/fui-color-swatch custom-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #FF1921; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #FF1921; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -132,7 +132,7 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
         class="group/fui-color-swatch custom-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #FF7A00; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #FF7A00; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -141,7 +141,7 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
         class="group/fui-color-swatch custom-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #90D057; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #90D057; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
     </div>
@@ -155,7 +155,7 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
         class="group/fui-color-swatch custom-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #00B053; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #00B053; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -164,7 +164,7 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
         class="group/fui-color-swatch custom-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #00AFED; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #00AFED; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -173,7 +173,7 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
         class="group/fui-color-swatch custom-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #006EBD; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #006EBD; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
     </div>
@@ -199,7 +199,7 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #FF1921; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #FF1921; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -208,7 +208,7 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #FF7A00; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #FF7A00; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -217,7 +217,7 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #90D057; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #90D057; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
     </div>
@@ -231,7 +231,7 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #00B053; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #00B053; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -240,7 +240,7 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #00AFED; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #00AFED; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
       <button
@@ -249,7 +249,7 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="group/fui-color-swatch"
         data-size="medium"
         role="gridcell"
-        style="--fui-SwatchPicker--color: #006EBD; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+        style="--fui-SwatchPicker--color: #006EBD; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
         type="button"
       />
     </div>

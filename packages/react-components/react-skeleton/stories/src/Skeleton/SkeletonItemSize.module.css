@@ -3,7 +3,7 @@
 
 .wrapper {
   display: flex;
-  background: var(--colorNeutralBackground1);
+  background: var(--color-neutral-background-1);
   flex-direction: column;
   padding: var(--spacing-horizontal-xl);
   gap: var(--spacing-vertical-l);

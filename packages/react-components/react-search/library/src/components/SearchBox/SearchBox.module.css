@@ -119,13 +119,13 @@
 @layer fui.base {
   /*
    * from useDismissClassName (makeResetStyles) —
-   * `.r1pvzcuu{box-sizing:border-box;color:var(--colorNeutralForeground3);display:flex;
+   * `.r1pvzcuu{box-sizing:border-box;color:var(--color-neutral-foreground-3);display:flex;
    *   cursor:pointer;}` + `.r1pvzcuu>svg{font-size:20px;}`
    */
   .dismiss {
     @apply box-border flex;
 
-    color: var(--colorNeutralForeground3); /* "icon color" in the design spec */
+    color: var(--color-neutral-foreground-3); /* "icon color" in the design spec */
     cursor: pointer;
 
     /*
@@ -160,7 +160,7 @@
    */
   .dismiss {
     @variant disabled {
-      color: var(--colorNeutralForegroundDisabled);
+      color: var(--color-neutral-foreground-disabled);
     }
   }
 

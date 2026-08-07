@@ -52,7 +52,7 @@
  * between Switch and Label would be decided by stylesheet load order.
  *
  * This is load-bearing, not bookkeeping: Label's `size` slot default is `medium`, so its
- * own rules set `font-size: var(--fontSizeBase300)` / `line-height: var(--lineHeightBase300)`,
+ * own rules set `font-size: var(--text-base-300)` / `line-height: var(--leading-base-300)`,
  * while `labelStyles.sizeSmall` must win with the Base200 pair on `<Switch size="small" />`.
  * mergeClasses produced that winner because Switch's classes were its LAST arguments
  * (`useLabelStyles_unstable` merges the incoming className last, i.e. after its own); l2
@@ -142,7 +142,7 @@
   .indicator {
     @apply pointer-events-none box-border h-20 w-40 shrink-0;
 
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
     /* `border: 1px solid` — kept as the compiled shorthand; its implied
        `border-color: currentcolor` is what the `.input ~ .indicator` colour rules below
        replace (they outrank it on specificity inside this same layer). */
@@ -157,8 +157,8 @@
        inline sides stay physical. */
     @apply mt-vertical-s mr-horizontal-s mb-vertical-s ml-horizontal-s;
 
-    transition-duration: var(--durationNormal);
-    transition-timing-function: var(--curveEasyEase);
+    transition-duration: var(--duration-normal);
+    transition-timing-function: var(--ease-easy-ease);
     /*
      * Longhands only. `background, border, color` is not 3 properties: per CSS Transitions
      * L1 a shorthand in `transition-property` expands to every longhand it covers, so that
@@ -190,8 +190,8 @@
 
     /* the thumb — `> *` in the Griffel source, the `<CircleFilled />` in practice */
     & > * {
-      transition-duration: var(--durationNormal);
-      transition-timing-function: var(--curveEasyEase);
+      transition-duration: var(--duration-normal);
+      transition-timing-function: var(--ease-easy-ease);
       transition-property: transform;
 
       @media screen and (prefers-reduced-motion: reduce) {
@@ -241,7 +241,7 @@
       @apply cursor-default;
 
       & ~ .indicator {
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
 
@@ -249,22 +249,22 @@
     @variant enabled-control {
       @variant not-checked {
         & ~ .indicator {
-          color: var(--colorNeutralStrokeAccessible);
-          border-color: var(--colorNeutralStrokeAccessible);
+          color: var(--color-neutral-stroke-accessible);
+          border-color: var(--color-neutral-stroke-accessible);
         }
 
         @variant hover {
           & ~ .indicator {
-            color: var(--colorNeutralStrokeAccessibleHover);
-            border-color: var(--colorNeutralStrokeAccessibleHover);
+            color: var(--color-neutral-stroke-accessible-hover);
+            border-color: var(--color-neutral-stroke-accessible-hover);
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .indicator {
-              color: var(--colorNeutralStrokeAccessiblePressed);
-              border-color: var(--colorNeutralStrokeAccessiblePressed);
+              color: var(--color-neutral-stroke-accessible-pressed);
+              border-color: var(--color-neutral-stroke-accessible-pressed);
             }
           }
         }
@@ -273,23 +273,23 @@
       /* Enabled and checked */
       @variant checked {
         & ~ .indicator {
-          background-color: var(--colorCompoundBrandBackground);
-          color: var(--colorNeutralForegroundInverted);
-          border-color: var(--colorTransparentStroke);
+          background-color: var(--color-compound-brand-background);
+          color: var(--color-neutral-foreground-inverted);
+          border-color: var(--color-transparent-stroke);
         }
 
         @variant hover {
           & ~ .indicator {
-            background-color: var(--colorCompoundBrandBackgroundHover);
-            border-color: var(--colorTransparentStrokeInteractive);
+            background-color: var(--color-compound-brand-background-hover);
+            border-color: var(--color-transparent-stroke-interactive);
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .indicator {
-              background-color: var(--colorCompoundBrandBackgroundPressed);
-              border-color: var(--colorTransparentStrokeInteractive);
+              background-color: var(--color-compound-brand-background-pressed);
+              border-color: var(--color-transparent-stroke-interactive);
             }
           }
         }
@@ -300,7 +300,7 @@
     @variant disabled-control {
       @variant not-checked {
         & ~ .indicator {
-          border-color: var(--colorNeutralStrokeDisabled);
+          border-color: var(--color-neutral-stroke-disabled);
         }
       }
     }
@@ -309,8 +309,8 @@
     @variant disabled-control {
       @variant checked {
         & ~ .indicator {
-          background-color: var(--colorNeutralBackgroundDisabled);
-          border-color: var(--colorTransparentStrokeDisabled);
+          background-color: var(--color-neutral-background-disabled);
+          border-color: var(--color-transparent-stroke-disabled);
         }
       }
     }
@@ -474,8 +474,8 @@
     /* Negative margin absorbs the difference between the track height and the label's
        line height: the label must not grow the switch, but a wrapped label keeps its
        line height. */
-    margin-bottom: calc((20px * var(--base-scale) - var(--lineHeightBase300)) / 2);
-    margin-top: calc((20px * var(--base-scale) - var(--lineHeightBase300)) / 2);
+    margin-bottom: calc((20px * var(--base-scale) - var(--leading-base-300)) / 2);
+    margin-top: calc((20px * var(--base-scale) - var(--leading-base-300)) / 2);
 
     /* `padding: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands
        (CONVERSION_GUIDE §2): the position slices below override single sides inside this
@@ -508,10 +508,10 @@
     /* from useLabelStyles.sizeSmall — label arg #4; re-sets the two margins above */
     @variant size-small {
       & .label {
-        font-size: var(--fontSizeBase200);
-        line-height: var(--lineHeightBase200);
-        margin-bottom: calc((16px * var(--base-scale) - var(--lineHeightBase200)) / 2);
-        margin-top: calc((16px * var(--base-scale) - var(--lineHeightBase200)) / 2);
+        font-size: var(--text-base-200);
+        line-height: var(--leading-base-200);
+        margin-bottom: calc((16px * var(--base-scale) - var(--leading-base-200)) / 2);
+        margin-top: calc((16px * var(--base-scale) - var(--leading-base-200)) / 2);
       }
     }
   }
@@ -527,14 +527,14 @@
       & ~ .label {
         @apply cursor-default;
 
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
 
     @variant enabled-control {
       @variant not-checked {
         & ~ .label {
-          color: var(--colorNeutralForeground1);
+          color: var(--color-neutral-foreground-1);
         }
       }
     }

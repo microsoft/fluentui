@@ -110,19 +110,19 @@
    * arg #2 (g) — from useStyles.triangleDebug. Debug-only affordance.
    * Compiled AOT output:
    *   .f7116n6{cursor:crosshair}
-   *   .f1xab38x{fill:color-mix(in srgb, var(--colorPaletteGreenBackground3) 20%, transparent)}
+   *   .f1xab38x{fill:color-mix(in srgb, var(--color-palette-green-background-3) 20%, transparent)}
    */
   .triangle-debug {
     cursor: crosshair;
-    fill: color-mix(in srgb, var(--colorPaletteGreenBackground3) 20%, transparent);
+    fill: color-mix(in srgb, var(--color-palette-green-background-3) 20%, transparent);
   }
 
   /*
    * arg #1 (path) — from useStyles.rectDebug. Debug-only affordance.
    * Compiled AOT output:
-   *   .fyegryc{fill:color-mix(in srgb, var(--colorPaletteRedBackground3) 20%, transparent)}
+   *   .fyegryc{fill:color-mix(in srgb, var(--color-palette-red-background-3) 20%, transparent)}
    */
   .rect-debug {
-    fill: color-mix(in srgb, var(--colorPaletteRedBackground3) 20%, transparent);
+    fill: color-mix(in srgb, var(--color-palette-red-background-3) 20%, transparent);
   }
 }

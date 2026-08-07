@@ -114,8 +114,8 @@
 
       border: none;
       box-shadow:
-        inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke1),
-        inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+        inset 0 0 0 var(--spacing-thick) var(--color-brand-stroke-1),
+        inset 0 0 0 var(--spacing-thicker) var(--color-stroke-focus-1);
 
       /* `:hover:active` — NOT the shared `hover-active` variant, which is Griffel's
          authored `:hover:active, :active:focus-visible` compound (Button family). This
@@ -124,8 +124,8 @@
       @variant active {
         border: none;
         box-shadow:
-          inset 0 0 0 var(--spacing-thicker) var(--colorCompoundBrandStrokePressed),
-          inset 0 0 0 var(--spacing-thickest) var(--colorStrokeFocus1);
+          inset 0 0 0 var(--spacing-thicker) var(--color-compound-brand-stroke-pressed),
+          inset 0 0 0 var(--spacing-thickest) var(--color-stroke-focus-1);
       }
     }
 
@@ -146,8 +146,8 @@
       border: none;
       outline: none;
       box-shadow:
-        inset 0 0 0 var(--spacing-thick) var(--colorStrokeFocus2),
-        inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+        inset 0 0 0 var(--spacing-thick) var(--color-stroke-focus-2),
+        inset 0 0 0 var(--spacing-thicker) var(--color-stroke-focus-1);
     }
   }
 }
@@ -160,14 +160,14 @@
 
       @variant hover {
         box-shadow:
-          inset 0 0 0 var(--spacing-thin) var(--colorBrandStroke1),
-          inset 0 0 0 var(--spacing-thick) var(--colorStrokeFocus1);
+          inset 0 0 0 var(--spacing-thin) var(--color-brand-stroke-1),
+          inset 0 0 0 var(--spacing-thick) var(--color-stroke-focus-1);
 
         @variant active {
           border: none;
           box-shadow:
-            inset 0 0 0 var(--spacing-thick) var(--colorCompoundBrandStrokePressed),
-            inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+            inset 0 0 0 var(--spacing-thick) var(--color-compound-brand-stroke-pressed),
+            inset 0 0 0 var(--spacing-thicker) var(--color-stroke-focus-1);
         }
       }
     }
@@ -179,8 +179,8 @@
         @variant active {
           border: none;
           box-shadow:
-            inset 0 0 0 var(--spacing-thick) var(--colorCompoundBrandStrokePressed),
-            inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+            inset 0 0 0 var(--spacing-thick) var(--color-compound-brand-stroke-pressed),
+            inset 0 0 0 var(--spacing-thicker) var(--color-stroke-focus-1);
         }
       }
     }
@@ -204,28 +204,28 @@
 
   /* from useShapeStyles.rounded */
   .rounded {
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusMedium);
+      border-radius: var(--radius-medium);
     }
   }
 
   /* from useShapeStyles.circular */
   .circular {
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusCircular);
+      border-radius: var(--radius-circular);
     }
   }
 
   /* from useShapeStyles.square */
   .square {
-    border-radius: var(--borderRadiusNone);
+    border-radius: var(--radius-none);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusNone);
+      border-radius: var(--radius-none);
     }
   }
 }
@@ -241,50 +241,50 @@
   .selected {
     border: none;
     box-shadow:
-      inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke1),
-      inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
+      inset 0 0 0 var(--spacing-thicker) var(--color-brand-stroke-1),
+      inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
 
     /* arg #6 rest — same 0-1-0 as the rule above, later argument, so it wins */
     @variant size-small-or-below {
       box-shadow:
-        inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke1),
-        inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+        inset 0 0 0 var(--spacing-thick) var(--color-brand-stroke-1),
+        inset 0 0 0 var(--spacing-thicker) var(--color-stroke-focus-1);
     }
 
     /* `m` bucket, 0-1-0 — beats both rest rules in forced colors, but still loses to the
        0-2-0 focus/hover rules below, exactly as Griffel had it. */
     @variant forced-colors {
       box-shadow:
-        inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke2Pressed),
-        inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
+        inset 0 0 0 var(--spacing-thicker) var(--color-brand-stroke-2-pressed),
+        inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
     }
 
     @variant focus-visible-fui {
       box-shadow:
-        inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus2),
-        inset 0 0 0 calc(5px * var(--base-scale)) var(--colorStrokeFocus1);
+        inset 0 0 0 var(--spacing-thicker) var(--color-stroke-focus-2),
+        inset 0 0 0 calc(5px * var(--base-scale)) var(--color-stroke-focus-1);
     }
 
     @variant hover {
       box-shadow:
-        inset 0 0 0 var(--spacing-thickest) var(--colorCompoundBrandStrokeHover),
-        inset 0 0 0 calc(6px * var(--base-scale)) var(--colorStrokeFocus1);
+        inset 0 0 0 var(--spacing-thickest) var(--color-compound-brand-stroke-hover),
+        inset 0 0 0 calc(6px * var(--base-scale)) var(--color-stroke-focus-1);
 
       @variant size-small-or-below {
         box-shadow:
-          inset 0 0 0 var(--spacing-thick) var(--colorCompoundBrandStrokeHover),
-          inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+          inset 0 0 0 var(--spacing-thick) var(--color-compound-brand-stroke-hover),
+          inset 0 0 0 var(--spacing-thicker) var(--color-stroke-focus-1);
       }
 
       @variant active {
         box-shadow:
-          inset 0 0 0 var(--spacing-thickest) var(--colorCompoundBrandStrokePressed),
-          inset 0 0 0 calc(7px * var(--base-scale)) var(--colorStrokeFocus1);
+          inset 0 0 0 var(--spacing-thickest) var(--color-compound-brand-stroke-pressed),
+          inset 0 0 0 calc(7px * var(--base-scale)) var(--color-stroke-focus-1);
 
         @variant size-small-or-below {
           box-shadow:
-            inset 0 0 0 var(--spacing-thicker) var(--colorCompoundBrandStrokePressed),
-            inset 0 0 0 var(--spacing-thickest) var(--colorStrokeFocus1);
+            inset 0 0 0 var(--spacing-thicker) var(--color-compound-brand-stroke-pressed),
+            inset 0 0 0 var(--spacing-thickest) var(--color-stroke-focus-1);
         }
       }
     }
@@ -312,13 +312,13 @@
 
       @variant hover {
         box-shadow:
-          inset 0 0 0 var(--spacing-thick) var(--colorBrandStroke2Hover),
-          inset 0 0 0 var(--spacing-thicker) var(--colorStrokeFocus1);
+          inset 0 0 0 var(--spacing-thick) var(--color-brand-stroke-2-hover),
+          inset 0 0 0 var(--spacing-thicker) var(--color-stroke-focus-1);
 
         @variant active {
           box-shadow:
-            inset 0 0 0 var(--spacing-thicker) var(--colorBrandStroke2Pressed),
-            inset 0 0 0 var(--spacing-thickest) var(--colorStrokeFocus1);
+            inset 0 0 0 var(--spacing-thicker) var(--color-brand-stroke-2-pressed),
+            inset 0 0 0 var(--spacing-thickest) var(--color-stroke-focus-1);
         }
       }
     }
@@ -395,7 +395,7 @@
 
   /* from useIconStyles.disabledIcon */
   .disabled-icon {
-    color: var(--colorNeutralForegroundInverted);
+    color: var(--color-neutral-foreground-inverted);
 
     /* Literals kept verbatim: `filter: drop-shadow(...)` has no spacing-powered utility
        and the PopoverSurface / Tooltip conversions keep their drop-shadow px as authored. */

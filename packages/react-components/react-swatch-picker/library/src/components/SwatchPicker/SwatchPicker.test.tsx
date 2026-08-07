@@ -41,7 +41,7 @@ describe('SwatchPicker', () => {
             class="group/fui-color-swatch"
             data-size="medium"
             role="radio"
-            style="--fui-SwatchPicker--color: #f09; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+            style="--fui-SwatchPicker--color: #f09; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
             type="button"
           />
           <button
@@ -50,7 +50,7 @@ describe('SwatchPicker', () => {
             data-size="medium"
             disabled=""
             role="radio"
-            style="--fui-SwatchPicker--color: #0f0; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
+            style="--fui-SwatchPicker--color: #0f0; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
             type="button"
           >
             <span

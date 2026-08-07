@@ -240,8 +240,8 @@
       transparent 100%
     );
 
-    background-color: var(--colorBrandStroke2Contrast);
-    color: var(--colorBrandStroke1);
+    background-color: var(--color-brand-stroke-2-contrast);
+    color: var(--color-brand-stroke-1);
 
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
@@ -285,7 +285,7 @@
 
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
-    animation-timing-function: var(--curveEasyEase);
+    animation-timing-function: var(--ease-easy-ease);
     animation-name: spinner-tail-spin;
 
     &::before,
@@ -437,8 +437,8 @@
    * deliberately no `.spinner-primary` / `.label-primary` rule.
    */
   .spinner-inverted {
-    background-color: var(--colorNeutralStrokeAlpha2);
-    color: var(--colorNeutralStrokeOnBrand2);
+    background-color: var(--color-neutral-stroke-alpha-2);
+    color: var(--color-neutral-stroke-on-brand-2);
   }
 }
 
@@ -478,80 +478,80 @@
     /* from useLabelStyles['extra-tiny'] — typographyStyles.body1 */
     @variant size-extra-tiny {
       & .label {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase300);
+        font-family: var(--font-base);
+        font-size: var(--text-base-300);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-300);
       }
     }
 
     /* from useLabelStyles.tiny — typographyStyles.body1 */
     @variant size-tiny {
       & .label {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase300);
+        font-family: var(--font-base);
+        font-size: var(--text-base-300);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-300);
       }
     }
 
     /* from useLabelStyles['extra-small'] — typographyStyles.body1 */
     @variant size-extra-small {
       & .label {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase300);
+        font-family: var(--font-base);
+        font-size: var(--text-base-300);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-300);
       }
     }
 
     /* from useLabelStyles.small — typographyStyles.body1 */
     @variant size-small {
       & .label {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase300);
+        font-family: var(--font-base);
+        font-size: var(--text-base-300);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--leading-base-300);
       }
     }
 
     /* from useLabelStyles.medium — typographyStyles.subtitle2 */
     @variant size-medium {
       & .label {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase400);
-        font-weight: var(--fontWeightSemibold);
-        line-height: var(--lineHeightBase400);
+        font-family: var(--font-base);
+        font-size: var(--text-base-400);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--leading-base-400);
       }
     }
 
     /* from useLabelStyles.large — typographyStyles.subtitle2 */
     @variant size-large {
       & .label {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase400);
-        font-weight: var(--fontWeightSemibold);
-        line-height: var(--lineHeightBase400);
+        font-family: var(--font-base);
+        font-size: var(--text-base-400);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--leading-base-400);
       }
     }
 
     /* from useLabelStyles['extra-large'] — typographyStyles.subtitle2 */
     @variant size-extra-large {
       & .label {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase400);
-        font-weight: var(--fontWeightSemibold);
-        line-height: var(--lineHeightBase400);
+        font-family: var(--font-base);
+        font-size: var(--text-base-400);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--leading-base-400);
       }
     }
 
     /* from useLabelStyles.huge — typographyStyles.subtitle1 */
     @variant size-huge {
       & .label {
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase500);
-        font-weight: var(--fontWeightSemibold);
-        line-height: var(--lineHeightBase500);
+        font-family: var(--font-base);
+        font-size: var(--text-base-500);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--leading-base-500);
       }
     }
   }
@@ -560,6 +560,6 @@
 @layer fui.components.l2 {
   /* from useLabelStyles.inverted — arg #3 on the label slot */
   .label-inverted {
-    color: var(--colorNeutralForegroundStaticInverted);
+    color: var(--color-neutral-foreground-static-inverted);
   }
 }

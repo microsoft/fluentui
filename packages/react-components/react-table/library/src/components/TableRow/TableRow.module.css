@@ -110,7 +110,7 @@
   .root {
     @apply box-border;
 
-    color: var(--colorNeutralForeground1);
+    color: var(--color-neutral-foreground-1);
   }
 
   /*
@@ -123,12 +123,12 @@
   .small {
     border-bottom-width: var(--spacing-thin);
     border-bottom-style: solid;
-    border-bottom-color: var(--colorNeutralStroke2);
+    border-bottom-color: var(--color-neutral-stroke-2);
   }
 
   /* from useStyles['extra-small'] — arg #4 */
   .extra-small {
-    font-size: var(--fontSizeBase200);
+    font-size: var(--text-base-200);
   }
 
   /* from useTableLayoutStyles.root — arg #5, native-table branch */
@@ -143,25 +143,25 @@
 
   /* from useStyles.brand — arg #6, flat half */
   .brand {
-    background-color: var(--colorBrandBackground2);
+    background-color: var(--color-brand-background-2);
 
     /* `...shorthands.borderColor(tokens.colorTransparentStrokeInteractive)` */
-    border-top-color: var(--colorTransparentStrokeInteractive);
-    border-right-color: var(--colorTransparentStrokeInteractive);
-    border-bottom-color: var(--colorTransparentStrokeInteractive);
-    border-left-color: var(--colorTransparentStrokeInteractive);
+    border-top-color: var(--color-transparent-stroke-interactive);
+    border-right-color: var(--color-transparent-stroke-interactive);
+    border-bottom-color: var(--color-transparent-stroke-interactive);
+    border-left-color: var(--color-transparent-stroke-interactive);
   }
 
   /* from useStyles.neutral — arg #6, flat half */
   .neutral {
-    background-color: var(--colorSubtleBackgroundSelected);
-    color: var(--colorNeutralForeground1Hover);
+    background-color: var(--color-subtle-background-selected);
+    color: var(--color-neutral-foreground-1-hover);
 
     /* `...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand)` */
-    border-top-color: var(--colorNeutralStrokeOnBrand);
-    border-right-color: var(--colorNeutralStrokeOnBrand);
-    border-bottom-color: var(--colorNeutralStrokeOnBrand);
-    border-left-color: var(--colorNeutralStrokeOnBrand);
+    border-top-color: var(--color-neutral-stroke-on-brand);
+    border-right-color: var(--color-neutral-stroke-on-brand);
+    border-bottom-color: var(--color-neutral-stroke-on-brand);
+    border-left-color: var(--color-neutral-stroke-on-brand);
   }
 }
 
@@ -173,8 +173,8 @@
   /* from useStyles.root — arg #2, focus half */
   .root {
     @variant focus-visible-fui {
-      outline: 2px solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: 2px solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
     }
   }
 }
@@ -186,8 +186,8 @@
   /* from useStyles.rootInteractive[':hover'] — arg #3 */
   .root-interactive {
     @variant hover {
-      background-color: var(--colorSubtleBackgroundHover);
-      color: var(--colorNeutralForeground1Hover);
+      background-color: var(--color-subtle-background-hover);
+      color: var(--color-neutral-foreground-1-hover);
     }
   }
 }
@@ -199,23 +199,23 @@
   /* from useStyles.rootInteractive[':active'] — arg #3 */
   .root-interactive {
     @variant active {
-      background-color: var(--colorSubtleBackgroundPressed);
-      color: var(--colorNeutralForeground1Pressed);
+      background-color: var(--color-subtle-background-pressed);
+      color: var(--color-neutral-foreground-1-pressed);
     }
   }
 
   /* from useStyles.brand[':active'] — arg #6 */
   .brand {
     @variant active {
-      background-color: var(--colorBrandBackground2);
-      color: var(--colorNeutralForeground1);
+      background-color: var(--color-brand-background-2);
+      color: var(--color-neutral-foreground-1);
     }
   }
 
   /* from useStyles.neutral[':active'] — arg #6 */
   .neutral {
     @variant active {
-      background-color: var(--colorSubtleBackgroundSelected);
+      background-color: var(--color-subtle-background-selected);
     }
   }
 }
@@ -253,7 +253,7 @@
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      border-radius: var(--borderRadiusMedium);
+      border-radius: var(--radius-medium);
 
       /* NATIVE `:focus-visible` — this is what Griffel emitted (`.f1kvufhq:focus-visible`),
          not keyborg's `[data-fui-focus-visible]`. */

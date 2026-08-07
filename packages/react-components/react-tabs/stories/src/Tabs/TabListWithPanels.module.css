@@ -20,7 +20,7 @@
 }
 
 .propsTable td:first-child {
-  font-weight: var(--fontWeightSemibold);
+  font-weight: var(--font-weight-semibold);
 }
 
 .propsTable td {

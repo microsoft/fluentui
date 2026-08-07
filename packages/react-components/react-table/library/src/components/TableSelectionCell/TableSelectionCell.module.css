@@ -119,8 +119,8 @@
   /* from useStyles.root — arg #2, focus half */
   .root {
     @variant focus-visible-fui {
-      outline: 2px solid var(--colorStrokeFocus2);
-      border-radius: var(--borderRadiusMedium);
+      outline: 2px solid var(--color-stroke-focus-2);
+      border-radius: var(--radius-medium);
     }
   }
 

@@ -49,12 +49,12 @@
 @layer fui.base {
   /* from useStyles (makeResetStyles) */
   .root {
-    background-color: var(--colorTransparentBackground);
+    background-color: var(--color-transparent-background);
 
     /* Kept as the `border` shorthand the source wrote — it is this module's ONLY
        border-width/style declaration and no other slice competes for a border longhand
        (CONVERSION_GUIDE §2 expands shorthands only where a longhand competes). */
-    border: var(--spacing-thin) dashed var(--colorNeutralForeground4);
+    border: var(--spacing-thin) dashed var(--color-neutral-foreground-4);
   }
 }
 
@@ -90,28 +90,28 @@
 
   /* from useShapeStyles.rounded */
   .rounded {
-    border-radius: var(--borderRadiusMedium);
+    border-radius: var(--radius-medium);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusMedium);
+      border-radius: var(--radius-medium);
     }
   }
 
   /* from useShapeStyles.circular */
   .circular {
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusCircular);
+      border-radius: var(--radius-circular);
     }
   }
 
   /* from useShapeStyles.square */
   .square {
-    border-radius: var(--borderRadiusNone);
+    border-radius: var(--radius-none);
 
     @variant focus-visible-fui {
-      border-radius: var(--borderRadiusNone);
+      border-radius: var(--radius-none);
     }
   }
 }

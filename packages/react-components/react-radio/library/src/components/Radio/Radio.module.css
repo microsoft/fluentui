@@ -147,7 +147,7 @@
        `border-color: currentcolor` is what the `.input ~ .indicator` colour rules below
        replace (they outrank it on specificity inside this same layer). */
     border: var(--spacing-thin) solid;
-    border-radius: var(--borderRadiusCircular);
+    border-radius: var(--radius-circular);
 
     /* `margin: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands and
        then to the named spacing utilities (D4 amendment); no rtl class was compiled, so the
@@ -160,7 +160,7 @@
     &::after {
       @apply absolute h-16 w-16;
 
-      border-radius: var(--borderRadiusCircular);
+      border-radius: var(--radius-circular);
 
       /* Use a transform to avoid pixel rounding errors at 125% DPI
          https://github.com/microsoft/fluentui/issues/30025 */
@@ -200,7 +200,7 @@
     @variant enabled {
       @variant not-checked {
         & ~ .indicator {
-          border-color: var(--colorNeutralStrokeAccessible);
+          border-color: var(--color-neutral-stroke-accessible);
         }
       }
     }
@@ -219,14 +219,14 @@
       @variant not-checked {
         @variant hover {
           & ~ .indicator {
-            border-color: var(--colorNeutralStrokeAccessibleHover);
+            border-color: var(--color-neutral-stroke-accessible-hover);
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .indicator {
-              border-color: var(--colorNeutralStrokeAccessiblePressed);
+              border-color: var(--color-neutral-stroke-accessible-pressed);
             }
           }
         }
@@ -237,8 +237,8 @@
     @variant enabled {
       @variant checked {
         & ~ .indicator {
-          border-color: var(--colorCompoundBrandStroke);
-          color: var(--colorCompoundBrandForeground1);
+          border-color: var(--color-compound-brand-stroke);
+          color: var(--color-compound-brand-foreground-1);
         }
       }
     }
@@ -262,16 +262,16 @@
       @variant checked {
         @variant hover {
           & ~ .indicator {
-            border-color: var(--colorCompoundBrandStrokeHover);
-            color: var(--colorCompoundBrandForeground1Hover);
+            border-color: var(--color-compound-brand-stroke-hover);
+            color: var(--color-compound-brand-foreground-1-hover);
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .indicator {
-              border-color: var(--colorCompoundBrandStrokePressed);
-              color: var(--colorCompoundBrandForeground1Pressed);
+              border-color: var(--color-compound-brand-stroke-pressed);
+              color: var(--color-compound-brand-foreground-1-pressed);
             }
           }
         }
@@ -281,8 +281,8 @@
     /* Colors for the disabled state */
     @variant disabled {
       & ~ .indicator {
-        border-color: var(--colorNeutralStrokeDisabled);
-        color: var(--colorNeutralForegroundDisabled);
+        border-color: var(--color-neutral-stroke-disabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
 
@@ -397,8 +397,8 @@
         /* Use a (negative) margin to account for the difference between the indicator's
            height and the label's line height. This prevents the label from expanding the
            height of the Radio, but preserves line height if the label wraps. */
-        margin-top: calc((16px * var(--base-scale) - var(--lineHeightBase300)) / 2);
-        margin-bottom: calc((16px * var(--base-scale) - var(--lineHeightBase300)) / 2);
+        margin-top: calc((16px * var(--base-scale) - var(--leading-base-300)) / 2);
+        margin-bottom: calc((16px * var(--base-scale) - var(--leading-base-300)) / 2);
       }
     }
 
@@ -427,19 +427,19 @@
     @variant enabled {
       @variant not-checked {
         & ~ .label {
-          color: var(--colorNeutralForeground3);
+          color: var(--color-neutral-foreground-3);
         }
 
         @variant hover {
           & ~ .label {
-            color: var(--colorNeutralForeground2);
+            color: var(--color-neutral-foreground-2);
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .label {
-              color: var(--colorNeutralForeground1);
+              color: var(--color-neutral-foreground-1);
             }
           }
         }
@@ -447,7 +447,7 @@
 
       @variant checked {
         & ~ .label {
-          color: var(--colorNeutralForeground1);
+          color: var(--color-neutral-foreground-1);
         }
       }
     }
@@ -456,7 +456,7 @@
       & ~ .label {
         @apply cursor-default;
 
-        color: var(--colorNeutralForegroundDisabled);
+        color: var(--color-neutral-foreground-disabled);
       }
     }
 
