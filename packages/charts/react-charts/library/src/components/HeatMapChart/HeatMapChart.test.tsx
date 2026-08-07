@@ -6,7 +6,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
 import { FluentProvider } from '@fluentui/react-provider';
-const env = require('../../../config/tests');
+const env = require('../../../config/tests.cjs');
 
 expect.extend(toHaveNoViolations);
 
