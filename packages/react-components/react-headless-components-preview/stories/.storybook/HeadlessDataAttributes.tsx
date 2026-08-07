@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { FluentDocsPageStory } from '@fluentui/react-storybook-addon';
 
@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     lineHeight: tokens.lineHeightBase500,
     color: tokens.colorNeutralForeground1,
     marginBottom: tokens.spacingVerticalL,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
     paddingBottom: tokens.spacingVerticalS,
   },
   componentHeading: {
@@ -62,16 +62,15 @@ const useStyles = makeStyles({
   th: {
     textAlign: 'left',
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
-    borderBottom: `2px solid ${tokens.colorNeutralStroke1}`,
+    borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralStroke1}`,
     fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground2,
     fontSize: tokens.fontSizeBase200,
-    letterSpacing: '0.05em',
     textTransform: 'uppercase',
   },
   td: {
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
     verticalAlign: 'top',
   },
   code: {
@@ -79,7 +78,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     backgroundColor: tokens.colorNeutralBackground3,
     borderRadius: tokens.borderRadiusSmall,
-    padding: `1px ${tokens.spacingHorizontalXS}`,
+    padding: `0 ${tokens.spacingHorizontalXS}`,
     color: tokens.colorNeutralForeground1,
   },
 });
@@ -195,7 +194,7 @@ export function HeadlessDataAttributes({ story }: HeadlessDataAttributesProps): 
                     <td className={classes.td}>
                       <code className={classes.code}>{entry.type}</code>
                     </td>
-                    <td className={mergeClasses(classes.td)}>{entry.description || '\u2014'}</td>
+                    <td className={classes.td}>{entry.description || '\u2014'}</td>
                   </tr>
                 ))}
               </tbody>
