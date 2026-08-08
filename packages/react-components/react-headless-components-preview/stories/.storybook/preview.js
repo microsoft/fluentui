@@ -1,4 +1,5 @@
 import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
+import { parameters as reactArgTypesParameters } from '@storybook/react/dist/entry-preview-argtypes.mjs';
 
 import * as rootPreview from '../../../../../.storybook/preview';
 
@@ -10,7 +11,15 @@ import './tokens.css';
 import './headless-docs-page.css';
 import { HeadlessDocsPage } from './HeadlessDocsPage';
 
+// Browser-safe helper — import by direct subpath, not the package root
+import { createStateDataAttributesExtractor } from '@fluentui/scripts-storybook/src/stateDataAttributesArgTypes';
+
 polyfillBodyAndObserve();
+
+const extractArgTypes = createStateDataAttributesExtractor(
+  reactArgTypesParameters.docs.extractArgTypes,
+  HEADLESS_STATE_DATA_ATTRIBUTES,
+);
 
 /** @type {typeof rootPreview.decorators} */
 export const decorators = [...rootPreview.decorators];
@@ -21,6 +30,7 @@ export const parameters = {
   docs: {
     ...rootPreview.parameters.docs,
     page: HeadlessDocsPage,
+    extractArgTypes,
   },
 };
 

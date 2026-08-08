@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "target": "TOTALLY_INVALID_TARGET_VALUE_THAT_DOES_NOT_EXIST"
+  },
+  "include": ["src/**/*.ts"]
+}
