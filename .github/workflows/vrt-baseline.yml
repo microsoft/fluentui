@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           cache: 'yarn'
-          node-version: '22'
+          node-version: '24'
 
       - run: yarn install --immutable
       - run: yarn playwright install --with-deps

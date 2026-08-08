@@ -29,14 +29,14 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - uses: nrwl/nx-set-shas@v4
+    - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5.0.1
       with:
         main-branch-name: 'master'
 
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v6
       with:
         cache: 'yarn'
-        node-version: '20'
+        node-version: '24'
 
     - run: yarn install --immutable
       shell: bash
