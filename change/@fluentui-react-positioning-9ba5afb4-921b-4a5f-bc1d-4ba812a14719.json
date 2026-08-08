@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updates positioned elements while a Fluent ancestor motion is active.",
+  "packageName": "@fluentui/react-positioning",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
