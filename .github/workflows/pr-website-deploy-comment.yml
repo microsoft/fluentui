@@ -11,8 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  DEPLOY_HOST_URL: https://fluentuipr.z22.web.core.windows.net/
-  AZURE_STORAGE: fluentuipr
+  DEPLOY_HOST_URL: https://microsoft.github.io/fluentui/
 
 jobs:
   deploy:
@@ -22,13 +21,10 @@ jobs:
       pr_number: ${{ steps.pr_number.outputs.result }}
       website_url: ${{ steps.website_url.outputs.id }}
     permissions:
-      id-token: write
+      contents: write
 
     steps:
       - uses: actions/checkout@v6
-        with:
-          sparse-checkout: |
-            .github
 
       - uses: actions/download-artifact@v7
         with:
@@ -56,29 +52,27 @@ jobs:
 
       - name: Load WEBSITE URL
         id: website_url
-        run: echo "id=${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.result}}/" >> $GITHUB_OUTPUT
+        run: echo "id=${{env.DEPLOY_HOST_URL}}pr-preview/pr-${{steps.pr_number.outputs.result}}/" >> $GITHUB_OUTPUT
 
-      - name: Login via Azure CLI
-        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Deploy PR preview to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Upload PR WebSite
-        uses: azure/cli@089eac9d8cc39f5d003e94f8b65efc51076c9cbd # v2.1.0
-        env:
-          AZCOPY_AUTO_LOGIN_TYPE: 'AZCLI'
-        with:
-          azcliversion: latest
-          inlineScript: |
-            az storage blob upload-batch \
-              --destination '$web' \
-              --source ./website \
-              --account-name ${{ env.AZURE_STORAGE }} \
-              --destination-path pull/${{steps.pr_number.outputs.result}} \
-              --auth-mode login \
-              --overwrite
+          # Move website files to temp location before switching branches
+          PREVIEW_DIR="pr-preview/pr-${{ steps.pr_number.outputs.result }}"
+          cp -R ./website /tmp/pr-website
+
+          git fetch origin gh-pages:gh-pages
+          git checkout gh-pages
+
+          rm -rf "$PREVIEW_DIR"
+          mkdir -p "$PREVIEW_DIR"
+          cp -R /tmp/pr-website/* "$PREVIEW_DIR/"
+
+          git add -A
+          git diff --staged --quiet || git commit -m "Deploy preview for PR #${{ steps.pr_number.outputs.result }}"
+          git push origin gh-pages
 
   comment:
     runs-on: ubuntu-latest
