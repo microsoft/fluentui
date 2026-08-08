@@ -29,7 +29,7 @@ describe('SwatchPicker', () => {
       </SwatchPicker>,
     );
 
-    cy.get('[role="grid"]').should('have.attr', 'focusgroup', 'grid');
+    cy.get('[role="grid"]').should('have.attr', 'focusgroup', 'grid manual rowflow');
     cy.get('[role="grid"]').should('not.have.attr', 'data-tabster');
     cy.get('[aria-label="Red"]').focus().realPress('ArrowRight');
     cy.get('[aria-label="Yellow"]').should('be.focused').realPress('ArrowDown');

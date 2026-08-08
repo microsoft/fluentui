@@ -28,7 +28,7 @@ describe('SwatchPicker', () => {
 
   it.each([
     ['row', 'radiogroup', 'radiogroup'],
-    ['grid', 'grid', 'grid'],
+    ['grid', 'grid', 'grid manual rowflow'],
   ] as const)('uses focusgroup for arrow navigation in a %s', (layout, role, focusgroup) => {
     const { getByRole } = render(
       <SwatchPicker aria-label="Colors" layout={layout}>

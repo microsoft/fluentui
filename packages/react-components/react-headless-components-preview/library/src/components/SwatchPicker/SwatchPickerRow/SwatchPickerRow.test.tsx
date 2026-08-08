@@ -11,6 +11,9 @@ describe('SwatchPickerRow', () => {
   });
 
   it('renders a row', () => {
-    expect(render(<SwatchPickerRow>Colors</SwatchPickerRow>).getByRole('row')).toHaveTextContent('Colors');
+    const row = render(<SwatchPickerRow>Colors</SwatchPickerRow>).getByRole('row');
+
+    expect(row).toHaveTextContent('Colors');
+    expect(row).toHaveAttribute('focusgrouprow');
   });
 });

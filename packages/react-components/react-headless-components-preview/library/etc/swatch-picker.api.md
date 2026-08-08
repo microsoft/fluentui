@@ -22,13 +22,12 @@ import { renderSwatchPicker_unstable as renderSwatchPicker } from '@fluentui/rea
 import { renderSwatchPickerRow_unstable as renderSwatchPickerRow } from '@fluentui/react-swatch-picker';
 import type { SwatchPickerBaseState } from '@fluentui/react-swatch-picker';
 import { SwatchPickerBaseProps as SwatchPickerProps } from '@fluentui/react-swatch-picker';
+import type { SwatchPickerRowBaseState } from '@fluentui/react-swatch-picker';
 import { SwatchPickerRowBaseProps as SwatchPickerRowProps } from '@fluentui/react-swatch-picker';
 import { SwatchPickerRowSlots } from '@fluentui/react-swatch-picker';
-import { SwatchPickerRowBaseState as SwatchPickerRowState } from '@fluentui/react-swatch-picker';
 import { SwatchPickerSlots } from '@fluentui/react-swatch-picker';
 import { useSwatchPickerContextValue_unstable as useSwatchPickerContextValue } from '@fluentui/react-swatch-picker';
 import { useSwatchPickerContextValues } from '@fluentui/react-swatch-picker';
-import { useSwatchPickerRowBase_unstable as useSwatchPickerRow } from '@fluentui/react-swatch-picker';
 
 // @public (undocumented)
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
@@ -96,7 +95,12 @@ export { SwatchPickerRowProps }
 
 export { SwatchPickerRowSlots }
 
-export { SwatchPickerRowState }
+// @public (undocumented)
+export type SwatchPickerRowState = SwatchPickerRowBaseState & {
+    root: SwatchPickerRowBaseState['root'] & {
+        focusgrouprow?: string;
+    };
+};
 
 export { SwatchPickerSlots }
 
@@ -124,7 +128,8 @@ export { useSwatchPickerContextValue }
 
 export { useSwatchPickerContextValues }
 
-export { useSwatchPickerRow }
+// @public (undocumented)
+export const useSwatchPickerRow: (props: SwatchPickerRowProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerRowState;
 
 // (No @packageDocumentation comment for this package)
 

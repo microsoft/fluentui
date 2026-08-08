@@ -19,7 +19,7 @@ export const useSwatchPicker = (props: SwatchPickerProps, ref: React.Ref<HTMLDiv
 
   if (focusMode === 'arrow') {
     // eslint-disable-next-line react-hooks/immutability
-    baseState.root.focusgroup = baseState.isGrid ? 'grid' : 'radiogroup';
+    baseState.root.focusgroup = baseState.isGrid ? 'grid manual rowflow' : 'radiogroup';
   }
 
   return baseState;
