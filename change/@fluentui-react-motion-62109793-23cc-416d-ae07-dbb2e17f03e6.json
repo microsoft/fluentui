@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add flat event-driven state motion components",
+  "packageName": "@fluentui/react-motion",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
