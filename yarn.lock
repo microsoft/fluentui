@@ -6281,6 +6281,7 @@ __metadata:
   resolution: "@fluentui/ssr-tests-v9@workspace:apps/ssr-tests-v9"
   dependencies:
     "@fluentui/react-components": "npm:*"
+    "@fluentui/react-headless-components-preview": "npm:*"
     "@fluentui/react-utilities": "npm:*"
   languageName: unknown
   linkType: soft

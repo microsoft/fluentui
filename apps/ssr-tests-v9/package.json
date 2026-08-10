@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@fluentui/react-components": "*",
+    "@fluentui/react-headless-components-preview": "*",
     "@fluentui/react-utilities": "*"
   }
 }
