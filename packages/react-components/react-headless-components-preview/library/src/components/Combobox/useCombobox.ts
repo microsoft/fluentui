@@ -7,7 +7,7 @@ import { useInputTriggerSlot } from '@fluentui/react-combobox';
 import { Listbox } from '../Dropdown/Listbox';
 import { stringifyDataAttribute } from '../../utils';
 import { useListboxPopupState } from '../Dropdown/useListboxPopupState';
-import type { WithFallbackBehavior } from '../../overlayRuntime/types';
+import type { ComboboxStateInternal } from './Combobox.internal-types';
 
 export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
   const { freeform } = props;
@@ -47,7 +47,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
 
-  const state: WithFallbackBehavior<ComboboxState> = {
+  const state: ComboboxStateInternal = {
     components: { root: 'div', input: 'input', expandIcon: 'span', clearIcon: 'span', listbox: Listbox },
     root: rootSlot,
     input: {

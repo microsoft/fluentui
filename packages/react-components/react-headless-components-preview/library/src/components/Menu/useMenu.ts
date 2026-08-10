@@ -21,8 +21,8 @@ import { useMenuContext } from './menuContext';
 import { useHasParentMenuList } from './menuListPresenceContext';
 import { usePositioning, resolvePositioningShorthand } from '../../positioning';
 import { useOverlayRuntime } from '../../overlayRuntime';
-import type { WithFallbackBehavior } from '../../overlayRuntime/types';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
+import type { MenuStateInternal } from './Menu.internal-types';
 
 export const useMenu = (props: MenuProps): MenuState => {
   const { targetDocument } = useFluent();
@@ -161,7 +161,7 @@ export const useMenu = (props: MenuProps): MenuState => {
     onCheckedValueChange,
     persistOnItemClick,
     fallbackBehavior,
-  } as WithFallbackBehavior<MenuState>;
+  } as MenuStateInternal;
 };
 
 const SUBMENU_FALLBACK_POSITIONS: PositioningShorthandValue[] = [

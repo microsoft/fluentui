@@ -7,14 +7,14 @@ import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import type { DropdownContextValues, DropdownState, DropdownSlots } from './Dropdown.types';
 import { ListboxProvider } from '@fluentui/react-combobox';
 import { OverlaySurfaceHost } from '../../overlayRuntime';
-import type { WithFallbackBehavior } from '../../overlayRuntime/types';
+import type { DropdownStateInternal } from './Dropdown.internal-types';
 
 /**
  * Render the final JSX of Dropdown
  */
 export const renderDropdown = (state: DropdownState, contextValues: DropdownContextValues): JSXElement => {
   assertSlots<DropdownSlots>(state);
-  const { fallbackBehavior } = state as WithFallbackBehavior<DropdownState>;
+  const { fallbackBehavior } = state as DropdownStateInternal;
 
   return (
     <state.root>

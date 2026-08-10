@@ -5,14 +5,14 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { TooltipState, TooltipSlots } from './Tooltip.types';
 import { OverlaySurfaceHost } from '../../overlayRuntime';
-import type { WithFallbackBehavior } from '../../overlayRuntime/types';
+import type { TooltipStateInternal } from './Tooltip.internal-types';
 
 /**
  * Render the final JSX of Tooltip.
  */
 export const renderTooltip = (state: TooltipState): JSXElement => {
   assertSlots<TooltipSlots>(state);
-  const { fallbackBehavior } = state as WithFallbackBehavior<TooltipState>;
+  const { fallbackBehavior } = state as TooltipStateInternal;
 
   return (
     <>

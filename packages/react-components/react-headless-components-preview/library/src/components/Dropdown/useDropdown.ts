@@ -8,7 +8,7 @@ import { useButtonTriggerSlot } from '@fluentui/react-combobox';
 import { Listbox } from './Listbox';
 import { stringifyDataAttribute } from '../../utils';
 import { useListboxPopupState } from './useListboxPopupState';
-import type { WithFallbackBehavior } from '../../overlayRuntime/types';
+import type { DropdownStateInternal } from './Dropdown.internal-types';
 
 /**
  * Create the state required to render Dropdown.
@@ -54,7 +54,7 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
   });
 
   const showClearButton = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
-  const state: WithFallbackBehavior<DropdownState> = {
+  const state: DropdownStateInternal = {
     components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
     button: {

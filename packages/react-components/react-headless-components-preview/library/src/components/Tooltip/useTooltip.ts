@@ -22,7 +22,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { useOverlayRuntime } from '../../overlayRuntime';
-import type { WithFallbackBehavior } from '../../overlayRuntime/types';
+import type { TooltipStateInternal } from './Tooltip.internal-types';
 
 /**
  * Create the state required to render Tooltip.
@@ -78,9 +78,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   )['data-overlay-runtime'] = useNativeRuntime ? 'native' : 'fallback';
 
   const positioningOptions = resolvePositioningShorthand(positioning);
-  const { targetRef, containerRef, arrowRef } = usePositioning(
-    positioningOptions,
-  ) as ReturnType<typeof usePositioning> & {
+  const { targetRef, containerRef, arrowRef } = usePositioning(positioningOptions) as ReturnType<
+    typeof usePositioning
+  > & {
     arrowRef: React.RefCallback<HTMLElement>;
   };
   state.arrowRef = arrowRef as React.Ref<HTMLDivElement>;
@@ -289,7 +289,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
   });
 
-  (state as WithFallbackBehavior<TooltipState>).fallbackBehavior =
+  (state as TooltipStateInternal).fallbackBehavior =
     overlayRuntime.mode === 'fallback-ready'
       ? React.createElement(overlayRuntime.runtime.FallbackTooltipBehavior, {
           contentRef: contentElementRef,

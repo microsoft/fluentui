@@ -1,10 +1,10 @@
 import type * as React from 'react';
 
-import type { WithFallbackBehavior } from '../../overlayRuntime/types';
 import type { PopoverContextValue, PopoverState } from './Popover.types';
 import type { PopoverSurfaceState } from './PopoverSurface/PopoverSurface.types';
 
-export type PopoverStateInternal = WithFallbackBehavior<PopoverState> & {
+export type PopoverStateInternal = PopoverState & {
+  fallbackBehavior?: React.ReactElement;
   positioningArrowRef: React.RefCallback<HTMLElement>;
 };
 

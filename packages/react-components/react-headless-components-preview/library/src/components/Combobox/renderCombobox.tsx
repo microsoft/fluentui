@@ -7,11 +7,11 @@ import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import { ListboxProvider } from '@fluentui/react-combobox';
 import type { ComboboxContextValues, ComboboxSlots, ComboboxState } from './Combobox.types';
 import { OverlaySurfaceHost } from '../../overlayRuntime';
-import type { WithFallbackBehavior } from '../../overlayRuntime/types';
+import type { ComboboxStateInternal } from './Combobox.internal-types';
 
 export const renderCombobox = (state: ComboboxState, contextValues: ComboboxContextValues): JSXElement => {
   assertSlots<ComboboxSlots>(state);
-  const { fallbackBehavior } = state as WithFallbackBehavior<ComboboxState>;
+  const { fallbackBehavior } = state as ComboboxStateInternal;
 
   return (
     <state.root>

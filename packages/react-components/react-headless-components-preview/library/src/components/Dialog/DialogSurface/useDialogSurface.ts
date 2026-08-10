@@ -14,11 +14,7 @@ import { stringifyDataAttribute } from '../../../utils';
 import { useOverlayRuntime } from '../../../overlayRuntime';
 import { lockDocumentScroll, unlockDocumentScroll } from '../../../utils/documentScrollLock';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
-
-type DialogSurfaceStateInternal = DialogSurfaceState & {
-  fallbackBehavior?: React.ReactElement;
-  onFallbackBackdropClick: React.MouseEventHandler<HTMLDivElement>;
-};
+import type { DialogSurfaceStateInternal } from './DialogSurface.internal-types';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
@@ -193,21 +189,15 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
       requestOpenChange({ type: 'backdropClick', open: false, event });
     }
   });
-  const handleFallbackBackdropClick = useEventCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
-      if (
-        modalType === 'modal' &&
-        event.target === event.currentTarget &&
-        !event.isDefaultPrevented()
-      ) {
-        requestOpenChange({
-          type: 'backdropClick',
-          open: false,
-          event: event as unknown as React.MouseEvent<HTMLDialogElement>,
-        });
-      }
-    },
-  );
+  const handleFallbackBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    if (modalType === 'modal' && event.target === event.currentTarget && !event.isDefaultPrevented()) {
+      requestOpenChange({
+        type: 'backdropClick',
+        open: false,
+        event: event as unknown as React.MouseEvent<HTMLDialogElement>,
+      });
+    }
+  });
   const fallbackBehavior =
     overlayRuntime.mode === 'fallback-ready'
       ? React.createElement(overlayRuntime.runtime.FallbackDialogBehavior, {

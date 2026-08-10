@@ -7,11 +7,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { DialogSurfaceContext } from '../dialogContext';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 import { OverlaySurfaceHost } from '../../../overlayRuntime';
-
-type DialogSurfaceStateInternal = DialogSurfaceState & {
-  fallbackBehavior?: React.ReactElement;
-  onFallbackBackdropClick: React.MouseEventHandler<HTMLDivElement>;
-};
+import type { DialogSurfaceStateInternal } from './DialogSurface.internal-types';
 
 /**
  * Render the final JSX of DialogSurface.
@@ -29,8 +25,7 @@ export const renderDialogSurface = (state: DialogSurfaceState): JSXElement | nul
   }
 
   assertSlots<DialogSurfaceSlots>(state);
-  const { fallbackBehavior, onFallbackBackdropClick } =
-    state as unknown as DialogSurfaceStateInternal;
+  const { fallbackBehavior, onFallbackBackdropClick } = state as unknown as DialogSurfaceStateInternal;
 
   const content = (
     <DialogSurfaceContext.Provider value={true}>
