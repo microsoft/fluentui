@@ -24,10 +24,5 @@ export type LinkState = LinkBaseState & {
      * Data attribute set when the link is disabled but still focusable.
      */
     'data-disabled-focusable'?: string;
-
-    /**
-     * Data attribute set when the link is rendered inline.
-     */
-    'data-inline'?: string;
   };
 };

@@ -25,7 +25,6 @@ export type LinkState = LinkBaseState & {
     root: {
         'data-disabled'?: string;
         'data-disabled-focusable'?: string;
-        'data-inline'?: string;
     };
 };
 

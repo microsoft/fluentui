@@ -14,8 +14,19 @@ describe('InfoButton', () => {
   });
 
   it('exposes open state on the trigger', () => {
-    const { getByRole } = render(<InfoButton info="Information" popover={{ open: true }} />);
+    const { getByRole, rerender } = render(<InfoButton info="Information" popover={{ open: true }} />);
+    const trigger = getByRole('button', { name: 'information' });
 
-    expect(getByRole('button', { name: 'information' })).toHaveAttribute('data-open');
+    expect(trigger).toHaveAttribute('data-open', '');
+
+    rerender(<InfoButton info="Information" popover={{ open: false }} />);
+
+    expect(trigger).not.toHaveAttribute('data-open');
+  });
+
+  it('does not expose open state by default', () => {
+    const { getByRole } = render(<InfoButton info="Information" />);
+
+    expect(getByRole('button', { name: 'information' })).not.toHaveAttribute('data-open');
   });
 });
