@@ -18,20 +18,25 @@ Start the private Storybook from the repository root:
 yarn nx storybook popover-tests-headless
 ```
 
-Open:
+Each control has its own page under **Overlay Runtime / CSR**:
 
-```text
-http://localhost:6006/?path=/story/overlay-runtime--manual-verification
-```
+| Control  | Story URL                                    |
+| -------- | -------------------------------------------- |
+| Popover  | `?path=/story/overlay-runtime-csr--popover`  |
+| Menu     | `?path=/story/overlay-runtime-csr--menu`     |
+| Tooltip  | `?path=/story/overlay-runtime-csr--tooltip`  |
+| Dropdown | `?path=/story/overlay-runtime-csr--dropdown` |
+| Dialog   | `?path=/story/overlay-runtime-csr--dialog`   |
+| Toast    | `?path=/story/overlay-runtime-csr--toast`    |
 
-The story provides reload controls for:
+Every CSR page provides reload controls for:
 
 - auto-detected mode;
 - forced native mode;
 - forced fallback mode.
 
-It covers Popover placement and nesting, Menu, Tooltip, Dropdown, Dialog, and
-Toast. Stable `data-testid` hooks are included for future Playwright tests.
+The Popover page includes basic, nested, and collision-placement scenarios.
+Stable `data-testid` hooks are included for future Playwright tests.
 
 ## SSR verification
 
@@ -41,10 +46,16 @@ Run the SSR harness:
 yarn nx run popover-tests-headless:test-ssr
 ```
 
-The **Overlay Runtime / Server Rendered** story intentionally renders open
-Popover, Menu, Tooltip, Dropdown, and Dialog state on the server. The same story
-can also be opened in Storybook to inspect client hydration:
+Each control also has a separate **Overlay Runtime / SSR** page:
 
-```text
-http://localhost:6006/?path=/story/overlay-runtime--server-rendered
-```
+| Control  | Story URL                                    |
+| -------- | -------------------------------------------- |
+| Popover  | `?path=/story/overlay-runtime-ssr--popover`  |
+| Menu     | `?path=/story/overlay-runtime-ssr--menu`     |
+| Tooltip  | `?path=/story/overlay-runtime-ssr--tooltip`  |
+| Dropdown | `?path=/story/overlay-runtime-ssr--dropdown` |
+| Dialog   | `?path=/story/overlay-runtime-ssr--dialog`   |
+| Toast    | `?path=/story/overlay-runtime-ssr--toast`    |
+
+The SSR harness renders each `*.stories.tsx` export without a browser. The same
+pages can be opened in Storybook to inspect client hydration.

@@ -526,38 +526,47 @@ const NestedPopoverExample = (): React.ReactElement => {
   );
 };
 
-const MenuAndTooltipExample = (): React.ReactElement => {
+const MenuExample = (): React.ReactElement => {
   const styles = useStyles();
 
   return (
     <section className={styles.card}>
-      <h2 className={styles.cardTitle}>Menu and Tooltip</h2>
-      <p className={styles.cardCopy}>Verify menu focus/outside dismissal and tooltip hover, focus, and Escape.</p>
-      <div className={styles.row}>
-        <Menu>
-          <MenuTrigger>
-            <Button data-testid="menu-trigger">Open menu</Button>
-          </MenuTrigger>
-          <MenuPopover className={`${styles.surface} ${styles.menuSurface}`} data-testid="menu-surface">
-            <MenuList className={styles.menuList}>
-              <MenuItem className={styles.menuItem}>New file</MenuItem>
-              <MenuItem className={styles.menuItem}>Open file</MenuItem>
-              <MenuItem className={styles.menuItem}>Save</MenuItem>
-            </MenuList>
-          </MenuPopover>
-        </Menu>
-        <Tooltip
-          content={
-            <div className={styles.tooltip} data-testid="tooltip-surface">
-              Adaptive tooltip
-            </div>
-          }
-          relationship="description"
-          showDelay={0}
-        >
-          <Button data-testid="tooltip-trigger">Hover or focus</Button>
-        </Tooltip>
-      </div>
+      <h2 className={styles.cardTitle}>Menu</h2>
+      <p className={styles.cardCopy}>Verify first-item focus, keyboard navigation, outside dismissal, and Escape.</p>
+      <Menu>
+        <MenuTrigger>
+          <Button data-testid="menu-trigger">Open menu</Button>
+        </MenuTrigger>
+        <MenuPopover className={`${styles.surface} ${styles.menuSurface}`} data-testid="menu-surface">
+          <MenuList className={styles.menuList}>
+            <MenuItem className={styles.menuItem}>New file</MenuItem>
+            <MenuItem className={styles.menuItem}>Open file</MenuItem>
+            <MenuItem className={styles.menuItem}>Save</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </section>
+  );
+};
+
+const TooltipExample = (): React.ReactElement => {
+  const styles = useStyles();
+
+  return (
+    <section className={styles.card}>
+      <h2 className={styles.cardTitle}>Tooltip</h2>
+      <p className={styles.cardCopy}>Verify hover, keyboard focus, outside dismissal, and Escape.</p>
+      <Tooltip
+        content={
+          <div className={styles.tooltip} data-testid="tooltip-surface">
+            Adaptive tooltip
+          </div>
+        }
+        relationship="description"
+        showDelay={0}
+      >
+        <Button data-testid="tooltip-trigger">Hover or focus</Button>
+      </Tooltip>
     </section>
   );
 };
@@ -657,27 +666,13 @@ const ToastExample = (): React.ReactElement => {
   );
 };
 
-const ManualChecklist = (): React.ReactElement => {
-  const styles = useStyles();
-
-  return (
-    <section className={`${styles.card} ${styles.wideCard}`}>
-      <h2 className={styles.cardTitle}>Manual verification checklist</h2>
-      <ol className={styles.checklist}>
-        <li>Run the checklist once in forced native and once in forced fallback.</li>
-        <li>Confirm the resolved runtime matches the requested mode.</li>
-        <li>Confirm outside click and Escape dismiss only the expected overlay.</li>
-        <li>Confirm focus returns to each trigger after dismissal.</li>
-        <li>Confirm the edge popover flips and its placement readout updates.</li>
-        <li>Confirm nested Escape closes the inner popover before the outer.</li>
-        <li>Confirm the modal backdrop, Tab behavior, and toast placement.</li>
-      </ol>
-    </section>
-  );
-};
-
-const OverlayPlayground = (props: { requestedMode: RuntimeMode }): React.ReactElement => {
-  const { requestedMode } = props;
+const RuntimePage = (props: {
+  children: React.ReactNode;
+  description: string;
+  requestedMode: RuntimeMode;
+  title: string;
+}): React.ReactElement => {
+  const { children, description, requestedMode, title } = props;
   const styles = useStyles();
   const [resolvedMode, setResolvedMode] = React.useState('pending');
 
@@ -686,28 +681,17 @@ const OverlayPlayground = (props: { requestedMode: RuntimeMode }): React.ReactEl
       <style>{`[data-overlay-fallback-backdrop] { background: ${tokens.colorBackgroundOverlay}; }`}</style>
       <RuntimeSentinel onRuntimeChange={setResolvedMode} />
       <header className={styles.header}>
-        <h1 className={styles.title}>Headless overlay runtime verification</h1>
-        <p className={styles.subtitle}>
-          This private story exercises the native Popover/Anchor runtime and the lazy Portal/Floating UI fallback
-          through the same component APIs.
-        </p>
+        <h1 className={styles.title}>{title}</h1>
+        <p className={styles.subtitle}>{description}</p>
         <RuntimeControls requestedMode={requestedMode} resolvedMode={resolvedMode} />
       </header>
-      <div className={styles.grid}>
-        <ManualChecklist />
-        <BasicPopoverExample />
-        <NestedPopoverExample />
-        <MenuAndTooltipExample />
-        <DropdownExample />
-        <DialogExample />
-        <ToastExample />
-        <EdgePlacementExample />
-      </div>
+      <div className={styles.grid}>{children}</div>
     </main>
   );
 };
 
-const RuntimeGate = (): React.ReactElement => {
+const RuntimeGate = (props: { children: React.ReactNode; description: string; title: string }): React.ReactElement => {
+  const { children, description, title } = props;
   const [requestedMode, setRequestedMode] = React.useState<RuntimeMode | null>(null);
 
   React.useEffect(() => {
@@ -720,7 +704,65 @@ const RuntimeGate = (): React.ReactElement => {
     return <div data-testid="runtime-initializing">Initializing overlay runtime...</div>;
   }
 
-  return <OverlayPlayground requestedMode={requestedMode} />;
+  return (
+    <RuntimePage description={description} requestedMode={requestedMode} title={title}>
+      {children}
+    </RuntimePage>
+  );
 };
 
-export const ManualVerification = (): React.ReactElement => <RuntimeGate />;
+export const PopoverControl = (): React.ReactElement => (
+  <RuntimeGate
+    description="Verify basic, nested, and collision-aware Popover behavior in native and fallback runtimes."
+    title="CSR Popover verification"
+  >
+    <BasicPopoverExample />
+    <NestedPopoverExample />
+    <EdgePlacementExample />
+  </RuntimeGate>
+);
+
+export const MenuControl = (): React.ReactElement => (
+  <RuntimeGate
+    description="Verify Menu positioning, focus, keyboard navigation, outside click, and Escape."
+    title="CSR Menu verification"
+  >
+    <MenuExample />
+  </RuntimeGate>
+);
+
+export const TooltipControl = (): React.ReactElement => (
+  <RuntimeGate
+    description="Verify Tooltip hover, focus, dismissal, and runtime-specific rendering."
+    title="CSR Tooltip verification"
+  >
+    <TooltipExample />
+  </RuntimeGate>
+);
+
+export const DropdownControl = (): React.ReactElement => (
+  <RuntimeGate
+    description="Verify Dropdown listbox positioning, keyboard selection, and dismissal."
+    title="CSR Dropdown verification"
+  >
+    <DropdownExample />
+  </RuntimeGate>
+);
+
+export const DialogControl = (): React.ReactElement => (
+  <RuntimeGate
+    description="Verify Dialog backdrop, focus trapping, Escape, close action, and focus restoration."
+    title="CSR Dialog verification"
+  >
+    <DialogExample />
+  </RuntimeGate>
+);
+
+export const ToastControl = (): React.ReactElement => (
+  <RuntimeGate
+    description="Verify Toaster position containers in the native top layer and fallback Portal."
+    title="CSR Toast verification"
+  >
+    <ToastExample />
+  </RuntimeGate>
+);
