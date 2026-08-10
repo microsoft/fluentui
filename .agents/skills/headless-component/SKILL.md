@@ -2,6 +2,7 @@
 name: headless-component
 description: Author or extend unstyled Fluent UI v9 primitives in @fluentui/react-headless-components-preview, including stable hooks, render functions, state data attributes, compound context wiring, tests, exports, and CSS Module stories. Use for any change that adds a headless component or component family to the preview library.
 argument-hint: <ComponentName>
+disable-model-invocation: true
 allowed-tools: Bash Read Write Edit Grep Glob
 ---
 
@@ -83,12 +84,22 @@ Before writing code:
      contract, headless tests, stories, public subpath, headless bundle-size
      coverage, API docs, manifest updates, and change file
 
+If extracting a base hook needs a regression test to lock down existing behavior,
+use a three-PR stack instead: a test-only bottom PR, the component-package PR,
+and then the headless PR. Keep the regression test independent so the base API
+change still has a passing test baseline. Use the shorter two-PR stack when no
+new regression layer is needed.
+
 Do not mix component-package and headless-package changes in one PR. The
 headless layer depends on the base APIs introduced or confirmed by the component
 package, so the component-package PR is always below the headless PR.
 
 Do not broaden the component API with styled-only props such as `appearance`,
 `size`, `shape`, or other visual variants.
+
+Use an existing repository generator for the component family when one is
+available. Otherwise, follow the file structure and validation requirements
+below rather than creating a parallel scaffold.
 
 ## Package Contract
 
@@ -175,6 +186,9 @@ Tabster, positioning, portals, native popovers, or nested trigger composition.
 - Keep the component thin: state hook, optional context-values hook, renderer.
 - Set `displayName` on every exported React component.
 - Add concise JSDoc describing purpose and any required accessibility contract.
+- Do not import icons or add default icons in base hooks or headless renderers.
+  If an icon is needed in a styled wrapper or story, import it there and define
+  `bundleIcon` at module scope, never inside a hook or render function.
 
 ```tsx
 'use client';
@@ -217,9 +231,8 @@ renderer.
 
 State attributes are the supported CSS targeting contract.
 
-- Presence state: emit `''` when true and omit when false.
-- Boolean-valued state: emit `'true'` or `'false'` when both values are
-  semantically meaningful.
+- Boolean and presence state: emit `''` when true and omit when false.
+  Reserve explicit string values for enum or tri-state contracts.
 - Enum or tri-state: emit the documented string value.
 - Put attributes on the root slot unless a documented exception makes another
   slot the semantic state owner.
@@ -239,13 +252,6 @@ const state: ComponentNameState = useComponentNameBase_unstable(props, ref);
 state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
 
 return state;
-```
-
-Do not use `stringifyDataAttribute` for an always-emitted boolean-valued
-attribute because it omits `false`. Emit the exact union instead:
-
-```tsx
-state.root['data-open'] = state.open ? 'true' : 'false';
 ```
 
 Good attributes describe behavior: `data-disabled`, `data-open`,
@@ -270,6 +276,16 @@ Do not expose design attributes such as `data-appearance`, `data-size`,
 
 - Re-export or alias the upstream unstable renderer when its slot structure is
   already correct.
+- Prefer a named wrapper export when it improves discoverability or generated
+  documentation:
+
+  ```ts
+  import { renderComponentName_unstable } from '@fluentui/react-component';
+
+  /** Renders a ComponentName component. */
+  export const renderComponentName = renderComponentName_unstable;
+  ```
+
 - Do not add wrappers solely for styling.
 - Compound renderers must provide the same behavior contexts as the styled
   component while omitting style contexts.
@@ -369,18 +385,13 @@ PR that introduces the relevant public API.
 ### Component-Package PR
 
 - Inspect `packages/react-components/react-<name>/library/bundle-size/`.
-- Every new public runtime export must be referenced by a bundle fixture. Named
-  ESM imports are tree-shaken, so an existing fixture that imports only
-  `ComponentName` does **not** measure a newly exported base hook, renderer, or
-  context helper.
-- For a newly public styled component, add a focused
+- Bundle fixtures are component-level. For a newly public styled component, add
+  a focused
   `<ComponentName>.fixture.js` that imports the component from the package root,
   references it (normally with `console.log`), and exports a stable fixture
   name.
-- For newly public base runtime APIs, add a focused fixture such as
-  `useComponentNameBase.fixture.js`. Import the base hook and any renderer or
-  context helpers that form the cohesive headless base surface from the package
-  root, and reference every imported value.
+- Do not create standalone fixtures for base hooks, renderers, context helpers,
+  or type-only exports.
 - For a new public member of an existing family, add a fixture when it can be
   consumed independently or when the existing family fixture does not import
   it. Do not assume a nearby fixture covers a new export.
@@ -429,7 +440,7 @@ Add focused tests beside every public primitive.
 - every stable `data-*` attribute:
   - positive state
   - false/absent state
-  - exact string value for boolean/enum/tri-state attributes
+  - exact string value for enum/tri-state attributes
   - consumer override cannot misrepresent reserved state
 - ARIA role, state, relationships, and accessible name
 - controlled and uncontrolled behavior
@@ -461,10 +472,10 @@ design system. Styling belongs only in the stories package.
 5. Include the component family as `subcomponents` for compound APIs.
 6. Add a default story plus stories for important behavioral states.
 7. Exercise the primary interaction instead of rendering only static variants.
-   Interactive stories should drive the real component behavior and assert the
-   resulting role/ARIA/data state in a `play` function. Cover the inverse action
-   too; if the behavior requires a real browser primitive unavailable to the
-   Storybook test runner, cover it in Cypress and keep the story demonstrable.
+   Keep stories demonstrable and cover the resulting role, ARIA, and data state
+   in unit or Cypress tests. Cover the inverse action too; use Cypress when the
+   behavior requires a real browser primitive unavailable to the unit test
+   environment.
 8. Use CSS Modules only: no Griffel, inline styles, or Tailwind.
 9. Use variables from `stories/.storybook/tokens.css`; do not hardcode colors,
    spacing, sizing, typography, radii, shadows, or motion values.
@@ -567,8 +578,8 @@ yarn beachball change --no-commit --branch master \
 
 # top branch, after editing only the headless library and stories
 yarn beachball change --no-commit --branch master \
-  --package @fluentui/react-headless-components-preview --type minor \
-  --message "feat(react-headless-components-preview): add <ComponentName>"
+  --package @fluentui/react-headless-components-preview --type patch \
+  --message "feat: add <ComponentName>"
 ```
 
 Commit each change file with the files it describes, plus `yarn.lock` only when
@@ -586,9 +597,11 @@ Yarn updated it.
   `yarn beachball change` form; never create or edit them manually.
 - After generation, inspect the new JSON file and verify it contains exactly the
   owning package and no inherited package from another stack layer.
-- New public base exports and new headless primitives are normally `minor`
-  changes. Use `patch` only when correcting an existing contract without adding
-  public API, and never use `major` without explicit approval.
+- New public base exports in stable component packages are normally `minor`
+  changes. The headless preview package follows zero-semver, so additive
+  headless primitives and exports use `patch` until that package is stable.
+  Use `patch` for corrections without new public API as well, and never use
+  `major` without explicit approval.
 
 ## Validation
 
