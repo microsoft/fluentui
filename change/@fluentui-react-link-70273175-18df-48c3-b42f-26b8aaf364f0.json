@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: move inline styling and context resolution out of the base hook",
+  "packageName": "@fluentui/react-link",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
