@@ -13,7 +13,7 @@ polyfillBodyAndObserve();
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
 describe('SwatchPicker', () => {
-  // TODO Enable this test once the focusgroup-polyfill is updated to support the new arrow key navigation behavior
+  // TODO: Enable this test once the focusgroup-polyfill is updated to support the new arrow key navigation behavior
   it.skip('moves focus through a grid with arrow keys and wraps', () => {
     mount(
       <SwatchPicker aria-label="Colors" layout="grid" focusMode="arrow">
