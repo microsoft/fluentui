@@ -84,4 +84,33 @@ describe('DrawerBody', () => {
       // wait for any rAF-based updates and then assert the scrollState
       .then(() => cy.get('#scroll-state').should('have.text', 'bottom'));
   });
+
+  it('treats sub-pixel scroll offsets near the bottom as bottom', () => {
+    const Example = () => {
+      const context = useDrawerContextValue();
+
+      return (
+        <DrawerProvider value={context}>
+          <div id="scroll-state">{context.scrollState}</div>
+          <DrawerBody id="drawer-body" />
+        </DrawerProvider>
+      );
+    };
+
+    mountFluent(<Example />);
+
+    cy.get('#drawer-body').then($body => {
+      const body = $body[0];
+
+      Object.defineProperties(body, {
+        scrollTop: { configurable: true, value: 99.5 },
+        clientHeight: { configurable: true, value: 100 },
+        scrollHeight: { configurable: true, value: 200 },
+      });
+
+      body.dispatchEvent(new Event('scroll'));
+    });
+
+    cy.get('#scroll-state').should('have.text', 'bottom');
+  });
 });

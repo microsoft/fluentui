@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: tolerate sub-pixel rounding when detecting DrawerBody bottom scroll",
+  "packageName": "@fluentui/react-drawer",
+  "email": "mhmdwaelanwr@gmail.com",
+  "dependentChangeType": "patch"
+}
