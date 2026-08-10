@@ -17,6 +17,9 @@ Headless components provide Fluent behavior, accessibility, semantic slots, and
 stable state selectors without Fluent styling. They must remain usable with plain
 CSS, CSS Modules, Tailwind, or another styling system.
 
+If `$ARGUMENTS` is empty or is not a PascalCase component name, ask for a valid
+component name before searching or editing.
+
 ## Source Of Truth And References
 
 This skill is the operational source of truth for authoring a headless
@@ -76,19 +79,15 @@ Before writing code:
 6. Record every inventory row as implemented, intentionally excluded with a
    source-backed reason, or unresolved. Trace implemented rows through:
    `types/exports -> hook/context -> rendered DOM/slots -> test or story`.
-7. Plan the change as two stacked PRs before editing:
-   - **bottom PR — component package:** base hook/types/renderer/context exports
+7. Plan the change as three stacked PRs before editing:
+   - **bottom PR — regression test:** lock down the existing behavior that the
+     base extraction must preserve; do not change production code
+   - **middle PR — component package:** base hook/types/renderer/context exports
      and their package-local tests, API docs, bundle-size coverage, manifest
      updates, and change file
    - **top PR — headless package:** stable headless primitive, `data-*`
      contract, headless tests, stories, public subpath, headless bundle-size
      coverage, API docs, manifest updates, and change file
-
-If extracting a base hook needs a regression test to lock down existing behavior,
-use a three-PR stack instead: a test-only bottom PR, the component-package PR,
-and then the headless PR. Keep the regression test independent so the base API
-change still has a passing test baseline. Use the shorter two-PR stack when no
-new regression layer is needed.
 
 Do not mix component-package and headless-package changes in one PR. The
 headless layer depends on the base APIs introduced or confirmed by the component
@@ -276,17 +275,11 @@ Do not expose design attributes such as `data-appearance`, `data-size`,
 
 - Re-export or alias the upstream unstable renderer when its slot structure is
   already correct.
-- Prefer a named wrapper export when it improves discoverability or generated
-  documentation:
 
   ```ts
-  import { renderComponentName_unstable } from '@fluentui/react-component';
-
-  /** Renders a ComponentName component. */
-  export const renderComponentName = renderComponentName_unstable;
+  export { renderComponentName_unstable as renderComponentName } from '@fluentui/react-component';
   ```
 
-- Do not add wrappers solely for styling.
 - Compound renderers must provide the same behavior contexts as the styled
   component while omitting style contexts.
 - Keep portal and positioning behavior semantic. Inline rendering is allowed
@@ -298,7 +291,7 @@ Do not expose design attributes such as `data-appearance`, `data-size`,
 
 When the headless primitive needs new base APIs from the corresponding
 `@fluentui/react-*` component package, update all applicable surfaces in the
-bottom PR:
+middle PR:
 
 1. Export base types from the component implementation barrel, for example
    `ComponentBaseProps`, `ComponentBaseState`, and the existing slots type.
@@ -521,7 +514,7 @@ If the package-level attribute contract changes, update both:
 Do not edit an accepted RFC merely to document one component that follows the
 existing contract.
 
-## Two-PR Workflow With `gh stack`
+## Three-PR Workflow With `gh stack`
 
 Use `gh stack` so reviewers see package-layer changes separately while the
 headless PR can build against the component base APIs below it.
@@ -530,11 +523,14 @@ headless PR can build against the component base APIs below it.
 
 ```text
 master
- └── <prefix>/<component>-base
-  └── <prefix>/<component>-headless
+ └── <prefix>/<component>-test
+      └── <prefix>/<component>-base
+           └── <prefix>/<component>-headless
 ```
 
-- **`<component>-base` PR (base: `master`)** — only the corresponding
+- **`<component>-test` PR (base: `master`)** — only regression tests that lock
+  down existing behavior; no production code and no Beachball change file.
+- **`<component>-base` PR (base: `<component>-test`)** — only the corresponding
   `@fluentui/react-*` component package, its tests/API/bundle fixture, its
   manifest/lockfile changes, and its Beachball change file.
 - **`<component>-headless` PR (base: `<component>-base`)** — only
@@ -543,9 +539,10 @@ master
   Beachball change file.
 
 If no component-package code change is required because every needed base API
-is already published, do not create an empty bottom PR. Use a one-PR stack for
-the headless change and state in the PR that the upstream export inventory was
-verified.
+is already published, do not create empty test or base PRs. Use one PR for the
+headless change and state that the upstream export inventory was verified. If a
+base extraction does not need new regression coverage, omit only the test PR
+and use a two-PR base/headless stack.
 
 ### Stack Remote
 
@@ -567,11 +564,12 @@ has more than one remote configured.
 
 ### Change Files
 
-Each layer generates its own change file against the trunk with an explicit
-`--package`, so an inherited down-stack change never leaks into the wrong file:
+Each publishable layer generates its own change file against the trunk with an
+explicit `--package`, so an inherited down-stack change never leaks into the
+wrong file:
 
 ```bash
-# bottom branch, after editing only the component package
+# middle branch, after editing only the component package and its tests
 yarn beachball change --no-commit --branch master \
   --package @fluentui/react-<name> --type minor \
   --message "feat(react-<name>): expose headless base APIs"
@@ -585,11 +583,15 @@ yarn beachball change --no-commit --branch master \
 Commit each change file with the files it describes, plus `yarn.lock` only when
 Yarn updated it.
 
+The test-only bottom PR does not receive a Beachball change file because it does
+not alter published output.
+
 ### Change-File Ownership
 
 - Each published package gets its own Beachball change file in the PR that
   changes that package.
-- The bottom PR must not include the headless package change file.
+- The test-only PR must not include a change file.
+- The component-package PR must not include the headless package change file.
 - The top PR must not include the component package change file.
 - Story-only files need no separate change file, but when shipped with a
   headless library addition they stay in the headless PR.
@@ -608,7 +610,10 @@ Yarn updated it.
 Run tasks through Nx and use the narrowest checks that cover the change:
 
 ```bash
-# bottom PR
+# bottom test-only PR
+yarn nx run react-<name>:test
+
+# middle component-package PR
 yarn nx run react-<name>:test
 yarn nx run react-<name>:lint
 yarn nx run react-<name>:type-check
@@ -663,6 +668,6 @@ types, context exports, and `data-*` attributes are present.
   interaction in both directions.
 - Story styling uses CSS Modules and token variables only, includes reduced
   motion/forced-colors handling where applicable, and appears in "Show code".
-- The stack contains separate component-package and headless-package PRs unless
-  the component package required no change.
+- The stack contains separate regression-test, component-package, and headless
+  PRs unless a layer is demonstrably unnecessary.
 - Each published package has a Beachball change file in its owning PR.
