@@ -33,7 +33,7 @@ export type CreateArrowStylesOptions = {
 };
 
 // @public (undocumented)
-export function createPositioningManager_unstable(options: CreatePositioningManagerOptions_unstable): PositioningManager_unstable;
+export function createPositioningManager_unstable(options: CreatePositioningManagerOptions_unstable): PositionManager;
 
 // @public (undocumented)
 export interface CreatePositioningManagerOptions_unstable extends Omit<PositioningProps, 'positioningRef' | 'target'>, Pick<PositioningOptions, 'enabled' | 'positionFixed' | 'unstable_disableTether'> {
@@ -113,14 +113,6 @@ export type PositioningImperativeRef = {
 };
 
 // @public
-export interface PositioningManager_unstable {
-    // (undocumented)
-    dispose: () => void;
-    // (undocumented)
-    updatePosition: () => void;
-}
-
-// @public
 export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'shiftToCoverTarget'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
     target?: TargetElement | null;
@@ -154,6 +146,14 @@ export type PositioningVirtualElement = {
     };
     contextElement?: Element;
 };
+
+// @public
+export interface PositionManager {
+    // (undocumented)
+    dispose: () => void;
+    // (undocumented)
+    updatePosition: () => void;
+}
 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;

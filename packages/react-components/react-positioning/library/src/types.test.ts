@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { OnPositioningEndEvent } from './types';
 import type {
   CreatePositioningManagerOptions_unstable,
-  PositioningManager_unstable,
+  PositionManager,
   PositioningProps,
 } from './types';
 
@@ -71,8 +71,8 @@ describe('PositioningProps', () => {
     expect(options).toBeTruthy;
   });
 
-  it('supports the unstable imperative manager contract', () => {
-    const manager: PositioningManager_unstable = {
+  it('supports the imperative manager contract', () => {
+    const manager: PositionManager = {
       updatePosition: () => undefined,
       dispose: () => undefined,
     };

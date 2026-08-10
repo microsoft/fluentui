@@ -8,17 +8,17 @@ import { resolvePositioningOptions } from './resolvePositioningOptions';
 import type {
   CreatePositioningManagerOptions_unstable,
   OnPositioningEndEvent,
-  PositioningManager_unstable,
+  PositionManager,
 } from './types';
 
-const createNoopPositioningManager = (): PositioningManager_unstable => ({
+const createNoopPositioningManager = (): PositionManager => ({
   updatePosition: () => undefined,
   dispose: () => undefined,
 });
 
 export function createPositioningManager_unstable(
   options: CreatePositioningManagerOptions_unstable,
-): PositioningManager_unstable {
+): PositionManager {
   const {
     container,
     target,

@@ -27,6 +27,7 @@ export type {
   OffsetObject,
   OffsetShorthand,
   Position,
+  PositionManager,
   PositioningBoundary,
   PositioningImperativeRef,
   PositioningProps,
@@ -38,5 +39,4 @@ export type {
   PositioningConfigurationFn,
   PositioningConfigurationFnOptions,
   PositioningFlipFallbackStrategy_unstable,
-  PositioningManager_unstable,
 } from './types';

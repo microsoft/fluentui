@@ -71,17 +71,12 @@ export type TargetElement = HTMLElement | PositioningVirtualElement;
 export type PositioningFlipFallbackStrategy_unstable = 'bestFit' | 'initialPlacement';
 
 /**
- * Public imperative positioning manager contract.
+ * Imperative positioning manager contract.
  */
-export interface PositioningManager_unstable {
+export interface PositionManager {
   updatePosition: () => void;
   dispose: () => void;
 }
-
-/**
- * @internal
- */
-export interface PositionManager extends PositioningManager_unstable {}
 
 export interface UsePositioningReturn {
   // React refs are supposed to be contravariant
