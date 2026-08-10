@@ -20,6 +20,7 @@ import { usePopoverContext_unstable } from '@fluentui/react-popover';
  * @param ref - reference to root HTMLElement of TeachingPopoverFooter
  */
 export const useTeachingPopoverFooterBase_unstable = (
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
   props: TeachingPopoverFooterBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverFooterBaseState => {

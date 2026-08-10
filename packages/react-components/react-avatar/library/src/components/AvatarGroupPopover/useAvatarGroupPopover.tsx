@@ -71,7 +71,11 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
  * @param props - AvatarGroupPopover props
  * @returns AvatarGroupPopover state
  */
-export const useAvatarGroupPopoverBase_unstable = (props: AvatarGroupPopoverBaseProps): AvatarGroupPopoverBaseState => {
+export const useAvatarGroupPopoverBase_unstable = (
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
+  props: AvatarGroupPopoverBaseProps,
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
+): AvatarGroupPopoverBaseState => {
   const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   const { indicator = 'count', count = React.Children.count(props.children), children, ...restOfProps } = props;
 

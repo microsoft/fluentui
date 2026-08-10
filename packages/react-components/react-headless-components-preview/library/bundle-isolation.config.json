@@ -2,6 +2,14 @@
   "$schema": "../../../../tools/verify-bundle-isolation/schema.json",
   "fixturesRoot": "./bundle-size",
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
-  "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],
-  "allowedViolations": {}
+  "forbiddenPackages": [
+    "tabster",
+    "@griffel/*",
+    "@fluentui/react-icons",
+    "@fluentui/react-motion",
+    "@fluentui/react-motion-components-preview"
+  ],
+  "allowedViolations": {
+    "AllComponents.fixture.js": ["@fluentui/react-motion"]
+  }
 }

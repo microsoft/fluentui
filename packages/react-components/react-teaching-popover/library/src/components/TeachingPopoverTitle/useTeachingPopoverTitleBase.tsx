@@ -14,6 +14,7 @@ import type { TeachingPopoverTitleBaseProps, TeachingPopoverTitleBaseState } fro
 export const useTeachingPopoverTitleBase_unstable = (
   props: TeachingPopoverTitleBaseProps,
   ref: React.Ref<HTMLDivElement>,
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): TeachingPopoverTitleBaseState => {
   const { dismissButton } = props;
 

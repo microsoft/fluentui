@@ -18,6 +18,8 @@
       "relay-pkg": ["./stubs/relay-pkg/index.ts"],
       "component-pkg": ["./stubs/component-pkg/index.ts"],
       "typed-dist-pkg": ["./stubs/typed-dist-pkg/index.d.ts"],
+      "workspace-runtime": ["./stubs/workspace-runtime/index.ts"],
+      "workspace-relay-pkg": ["./stubs/workspace-relay-pkg/index.ts"],
       "heavy-runtime": ["./stubs/heavy-runtime/index.ts"],
       "heavy-runtime/*": ["./stubs/heavy-runtime/*"],
       "light-helper": ["./stubs/light-helper/index.ts"],

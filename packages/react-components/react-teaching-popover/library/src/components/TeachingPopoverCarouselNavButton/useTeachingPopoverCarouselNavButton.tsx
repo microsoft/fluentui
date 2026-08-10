@@ -25,6 +25,7 @@ import { useValueIdContext } from '../TeachingPopoverCarouselNav/valueIdContext'
 export const useTeachingPopoverCarouselNavButtonBase_unstable = (
   props: TeachingPopoverCarouselNavButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): TeachingPopoverCarouselNavButtonBaseState => {
   const { onClick, as = 'a' } = props;
 

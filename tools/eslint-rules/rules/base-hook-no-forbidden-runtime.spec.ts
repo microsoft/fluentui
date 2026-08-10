@@ -100,6 +100,15 @@ const transitiveOptionsAllowTypeImports: readonly [{ forbiddenRuntimes: string[]
   },
 ];
 
+// `workspace-runtime` stands in for a forbidden runtime that lives in the repo rather than in
+// `node_modules` (e.g. `@fluentui/react-motion`), which TypeScript resolves through `paths`
+// straight to source.
+const workspaceRuntimeOptions: readonly [{ forbiddenRuntimes: string[] }] = [
+  {
+    forbiddenRuntimes: ['workspace-runtime'],
+  },
+];
+
 typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
   valid: [
     // The defining file of \`useLight\` only reaches \`light-helper\`, not \`heavy-runtime\`.
@@ -536,6 +545,56 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
             package: 'barrel-pkg',
             runtime: 'heavy-runtime',
             viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/barrel-pkg/dirty.ts',
+          },
+        },
+      ],
+    },
+    // A workspace forbidden runtime reached through a pure re-export barrel. The alias collapse
+    // skips the intermediate `workspace-runtime` specifier, and the leaf declaration is
+    // path-mapped to source, so ownership can only be recovered from its package manifest.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: workspaceRuntimeOptions,
+      code: `
+        import { runWorkspaceHeavy } from 'workspace-relay-pkg';
+        export const useThingBase_unstable = (props: { a: number }, ref) => {
+          return { props, ref, x: runWorkspaceHeavy() };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'runWorkspaceHeavy',
+            package: 'workspace-relay-pkg',
+            runtime: 'workspace-runtime',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/workspace-runtime/index.ts',
+          },
+        },
+      ],
+    },
+    // Same for a type re-exported from a workspace forbidden runtime — API coupling, not just runtime.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: workspaceRuntimeOptions,
+      code: `
+        import type { WorkspaceHeavyOptions } from 'workspace-relay-pkg';
+        export const useThingBase_unstable = (props: { a: WorkspaceHeavyOptions }, ref) => {
+          return { props, ref };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'WorkspaceHeavyOptions',
+            package: 'workspace-relay-pkg',
+            runtime: 'workspace-runtime',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/workspace-runtime/index.ts',
           },
         },
       ],

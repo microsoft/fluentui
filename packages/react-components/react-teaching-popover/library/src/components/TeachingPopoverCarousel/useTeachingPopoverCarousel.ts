@@ -20,6 +20,7 @@ import { useCarousel_unstable } from './Carousel/Carousel';
 export const useTeachingPopoverCarouselBase_unstable = (
   props: TeachingPopoverCarouselBaseProps,
   ref: React.Ref<HTMLDivElement>,
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): TeachingPopoverCarouselBaseState => {
   const toggleOpen = usePopoverContext_unstable(c => c.toggleOpen);
   const handleFinish: TeachingPopoverCarouselProps['onFinish'] = useEventCallback((event, data) => {

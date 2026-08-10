@@ -1,5 +1,6 @@
 import type { TSESTree, TSESLint, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
 import { ESLintUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
+import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as ts from 'typescript';
 
@@ -607,7 +608,7 @@ function getAnalysisCache(program: ts.Program): AnalysisCache {
 function owningForbiddenPackage(symbol: ts.Symbol, forbiddenRuntimes: ReadonlySet<string>): Hit | null {
   for (const declaration of symbol.declarations ?? []) {
     const fileName = declaration.getSourceFile().fileName;
-    const owner = packageFromNodeModulesPath(fileName);
+    const owner = packageOf(fileName);
     if (owner !== undefined && forbiddenRuntimes.has(owner)) {
       return { runtime: owner, via: shortenPath(fileName) };
     }
@@ -616,20 +617,58 @@ function owningForbiddenPackage(symbol: ts.Symbol, forbiddenRuntimes: ReadonlySe
 }
 
 /**
- * The npm package a file belongs to, when the file sits under a `node_modules` directory.
+ * Memo of directory → owning package name, so the upward `package.json` walk runs once per
+ * directory instead of once per declaration. Package identity of a directory is stable for the
+ * lifetime of a lint run.
  */
-function packageFromNodeModulesPath(fileName: string): string | undefined {
-  const segments = toPosixPath(fileName).split('/');
-  const index = segments.lastIndexOf('node_modules');
-  if (index === -1) {
+const packageNameByDirectory = new Map<string, string | undefined>();
+
+/**
+ * The package a file belongs to, resolved by walking up to the nearest named `package.json`.
+ *
+ * Deriving the name from a `node_modules` path segment is not enough: workspace packages are
+ * resolved by TypeScript through `paths` mappings (or symlink real paths) straight to their
+ * source, so their file names contain no `node_modules` segment to read a name from. Walking up
+ * to the manifest handles both — and is also more accurate for dependencies whose directory name
+ * differs from their declared name.
+ */
+function packageOf(fileName: string): string | undefined {
+  let dir = path.dirname(path.resolve(fileName));
+  const visited: string[] = [];
+
+  const memoize = (owner: string | undefined) => {
+    visited.forEach(seen => packageNameByDirectory.set(seen, owner));
+    return owner;
+  };
+
+  while (dir !== path.dirname(dir)) {
+    if (packageNameByDirectory.has(dir)) {
+      return memoize(packageNameByDirectory.get(dir));
+    }
+    visited.push(dir);
+
+    const owner = readPackageName(path.join(dir, 'package.json'));
+    if (owner !== undefined) {
+      return memoize(owner);
+    }
+
+    dir = path.dirname(dir);
+  }
+
+  return memoize(undefined);
+}
+
+/**
+ * The `name` of a manifest, or `undefined` when it is absent, unreadable, or nameless — nested
+ * manifests such as `{ "type": "module" }` markers are not package roots, so the walk continues.
+ */
+function readPackageName(manifestPath: string): string | undefined {
+  try {
+    const { name } = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    return typeof name === 'string' && name.length > 0 ? name : undefined;
+  } catch {
     return undefined;
   }
-  const first = segments[index + 1];
-  if (first === undefined) {
-    return undefined;
-  }
-  const second = segments[index + 2];
-  return first.startsWith('@') && second !== undefined ? `${first}/${second}` : first;
 }
 
 interface ModuleEdge {

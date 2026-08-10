@@ -18,8 +18,16 @@ const shouldRegister = shouldRegisterInternal();
  * Configured explicitly instead of relying on the rule default so the boundary enforced at lint
  * time stays in sync with, and visible next to, the `forbiddenPackages` asserted at build time by
  * `bundle-isolation.config.json`.
+ *
+ * Names are matched exactly, so a package and its satellites have to be listed separately —
+ * `@fluentui/react-motion-components-preview` is not covered by `@fluentui/react-motion`.
  */
-const baseHookForbiddenRuntimes = ['tabster', '@fluentui/react-icons'];
+const baseHookForbiddenRuntimes = [
+  'tabster',
+  '@fluentui/react-icons',
+  '@fluentui/react-motion',
+  '@fluentui/react-motion-components-preview',
+];
 
 /**
  *

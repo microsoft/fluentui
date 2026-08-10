@@ -83,7 +83,9 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
  * @param props - props from this instance of Menu
  */
 export const useMenuBase_unstable = (
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
   props: MenuBaseProps & { safeZone?: boolean | { timeout?: number } },
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): MenuBaseState => {
   const isSubmenu = useIsSubmenu();
   const {
