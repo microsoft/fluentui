@@ -10,7 +10,7 @@ import {
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
 import { useActivateModal, useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
-import { lockDocumentScroll, unlockDocumentScroll } from '../components/Dialog/utils/scroll';
+import { lockDocumentScroll, unlockDocumentScroll } from '../utils/documentScrollLock';
 
 type ElementRef = React.RefObject<HTMLElement | null>;
 

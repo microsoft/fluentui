@@ -12,7 +12,7 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { stringifyDataAttribute } from '../../../utils';
 import { useOverlayRuntime } from '../../../overlayRuntime';
-import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
+import { lockDocumentScroll, unlockDocumentScroll } from '../../../utils/documentScrollLock';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 type DialogSurfaceStateInternal = DialogSurfaceState & {
