@@ -59,3 +59,12 @@ Each control also has a separate **Overlay Runtime / SSR** page:
 
 The SSR harness renders each `*.stories.tsx` export without a browser. The same
 pages can be opened in Storybook to inspect client hydration.
+
+Every SSR page reports:
+
+- server render mode: always `ssr`;
+- requested hydration runtime: auto, native, or fallback;
+- runtime resolved by the hydrated client.
+
+The hydration runtime buttons use the same `overlayRuntime` query parameter as
+the CSR pages. They do not change the server render mode.

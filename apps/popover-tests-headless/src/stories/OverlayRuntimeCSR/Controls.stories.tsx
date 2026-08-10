@@ -370,11 +370,11 @@ const RuntimeSentinel = (props: { onRuntimeChange: (runtime: string) => void }):
 
   return (
     <Tooltip
-      content={
-        <div data-testid="runtime-sentinel" ref={setElement}>
-          Runtime probe
-        </div>
-      }
+      content={{
+        children: 'Runtime probe',
+        id: 'runtime-sentinel',
+        ref: setElement,
+      }}
       relationship="description"
     >
       <span aria-hidden="true" className={styles.probeTrigger}>

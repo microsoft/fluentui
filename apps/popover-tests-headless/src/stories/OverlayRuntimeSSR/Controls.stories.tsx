@@ -8,6 +8,13 @@ import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-headles
 import { Toast, Toaster, ToastTitle } from '@fluentui/react-headless-components-preview/toast';
 import { Tooltip } from '@fluentui/react-headless-components-preview/tooltip';
 
+type RuntimeMode = 'auto' | 'native' | 'fallback';
+type RuntimeWindow = Window & {
+  __FUI_HEADLESS_OVERLAY_RUNTIME_MODE__?: RuntimeMode;
+};
+
+const RUNTIME_QUERY_PARAM = 'overlayRuntime';
+
 const useStyles = makeStyles({
   page: {
     display: 'grid',
@@ -84,16 +91,142 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusLarge,
     boxShadow: tokens.shadow16,
   },
+  statusPanel: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: tokens.spacingHorizontalM,
+    padding: tokens.spacingHorizontalM,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusLarge,
+    backgroundColor: tokens.colorNeutralBackground2,
+  },
+  statusLabel: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  modeControls: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: tokens.spacingHorizontalS,
+  },
+  probeTrigger: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    whiteSpace: 'nowrap',
+  },
 });
+
+const getHydrationRuntimeMode = (): RuntimeMode => {
+  if (typeof window === 'undefined') {
+    return 'auto';
+  }
+
+  const requested = new URLSearchParams(window.location.search).get(RUNTIME_QUERY_PARAM);
+  return requested === 'native' || requested === 'fallback' ? requested : 'auto';
+};
+
+const configureHydrationRuntime = (): RuntimeMode => {
+  const mode = getHydrationRuntimeMode();
+  if (typeof window !== 'undefined') {
+    (window as RuntimeWindow).__FUI_HEADLESS_OVERLAY_RUNTIME_MODE__ = mode;
+  }
+  return mode;
+};
+
+const reloadWithRuntime = (mode: RuntimeMode): void => {
+  const url = new URL(window.location.href);
+  if (mode === 'auto') {
+    url.searchParams.delete(RUNTIME_QUERY_PARAM);
+  } else {
+    url.searchParams.set(RUNTIME_QUERY_PARAM, mode);
+  }
+  window.location.assign(url.toString());
+};
+
+const RuntimeSentinel = (props: { onRuntimeChange: (runtime: string) => void }): React.ReactElement => {
+  const { onRuntimeChange } = props;
+  const styles = useStyles();
+  const [element, setElement] = React.useState<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (!element) {
+      return;
+    }
+
+    const update = () => onRuntimeChange(element.getAttribute('data-overlay-runtime') ?? 'pending');
+    update();
+
+    const observer = new MutationObserver(update);
+    observer.observe(element, {
+      attributes: true,
+      attributeFilter: ['data-overlay-runtime'],
+    });
+
+    return () => observer.disconnect();
+  }, [element, onRuntimeChange]);
+
+  return (
+    <Tooltip
+      content={{
+        children: 'Runtime probe',
+        id: 'ssr-runtime-sentinel',
+        ref: setElement,
+      }}
+      relationship="description"
+    >
+      <span aria-hidden="true" className={styles.probeTrigger}>
+        Runtime probe
+      </span>
+    </Tooltip>
+  );
+};
+
+const HydrationRuntimeControls = (props: { requestedMode: RuntimeMode; resolvedMode: string }): React.ReactElement => {
+  const { requestedMode, resolvedMode } = props;
+  const styles = useStyles();
+
+  return (
+    <div className={styles.statusPanel}>
+      <span>
+        <span className={styles.statusLabel}>Server render:</span> <output data-testid="ssr-runtime-mode">ssr</output>
+      </span>
+      <span>
+        <span className={styles.statusLabel}>Hydration requested:</span>{' '}
+        <output data-testid="hydration-runtime-requested" suppressHydrationWarning>
+          {requestedMode}
+        </output>
+      </span>
+      <span>
+        <span className={styles.statusLabel}>Client resolved:</span>{' '}
+        <output data-testid="hydration-runtime-resolved">{resolvedMode}</output>
+      </span>
+      <div className={styles.modeControls}>
+        {(['auto', 'native', 'fallback'] as const).map(mode => (
+          <Button data-testid={`hydration-runtime-${mode}`} key={mode} onClick={() => reloadWithRuntime(mode)}>
+            {mode === 'auto' ? 'Auto detect' : `Force ${mode}`}
+          </Button>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const SsrPage = (props: { children: React.ReactNode; description: string; title: string }): React.ReactElement => {
   const { children, description, title } = props;
   const styles = useStyles();
+  const requestedMode = configureHydrationRuntime();
+  const [resolvedMode, setResolvedMode] = React.useState('pending');
 
   return (
     <main className={styles.page} data-testid="ssr-overlay-story">
+      <RuntimeSentinel onRuntimeChange={setResolvedMode} />
       <h1>{title}</h1>
       <p>{description}</p>
+      <HydrationRuntimeControls requestedMode={requestedMode} resolvedMode={resolvedMode} />
       <div className={styles.row}>{children}</div>
     </main>
   );
