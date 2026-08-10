@@ -13,6 +13,15 @@ function shouldRegisterInternal() {
 const shouldRegister = shouldRegisterInternal();
 
 /**
+ * Runtime packages that must not be reachable from v9 base hooks (`use<Name>Base_unstable`).
+ *
+ * Configured explicitly instead of relying on the rule default so the boundary enforced at lint
+ * time stays in sync with, and visible next to, the `forbiddenPackages` asserted at build time by
+ * `bundle-isolation.config.json`.
+ */
+const baseHookForbiddenRuntimes = ['tabster', '@fluentui/react-icons'];
+
+/**
  *
  * this will be removed after https://github.com/microsoft/fluentui/issues/30332
  *
@@ -36,7 +45,7 @@ const __internal = {
           rules: {
             '@nx/workspace-consistent-callback-type': 'error',
             '@nx/workspace-base-hook-signature': 'error',
-            '@nx/workspace-base-hook-no-forbidden-runtime': 'error',
+            '@nx/workspace-base-hook-no-forbidden-runtime': ['error', { forbiddenRuntimes: baseHookForbiddenRuntimes }],
             '@nx/workspace-no-restricted-globals': restrictedGlobals.react,
             '@nx/workspace-no-missing-jsx-pragma': ['error', { runtime: 'automatic' }],
           },
