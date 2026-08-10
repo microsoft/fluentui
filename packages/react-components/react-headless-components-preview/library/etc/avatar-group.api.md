@@ -4,13 +4,13 @@
 
 ```ts
 
-import type { AvatarGroupBaseProps } from '@fluentui/react-avatar';
 import type { AvatarGroupBaseState } from '@fluentui/react-avatar';
 import { AvatarGroupContextValue } from '@fluentui/react-avatar';
 import { AvatarGroupContextValues } from '@fluentui/react-avatar';
 import type { AvatarGroupItemBaseProps } from '@fluentui/react-avatar';
 import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
 import { AvatarGroupItemBaseState as AvatarGroupItemState } from '@fluentui/react-avatar';
+import { AvatarGroupBaseProps as AvatarGroupProps } from '@fluentui/react-avatar';
 import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-avatar';
 import { AvatarGroupSlots } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
@@ -77,8 +77,7 @@ export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & 
     popover: AvatarGroupPopoverPopoverProps;
 };
 
-// @public (undocumented)
-export type AvatarGroupProps = AvatarGroupBaseProps;
+export { AvatarGroupProps }
 
 export { AvatarGroupSlots }
 
