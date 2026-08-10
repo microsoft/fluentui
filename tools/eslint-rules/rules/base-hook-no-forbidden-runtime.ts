@@ -99,12 +99,12 @@ interface Hit {
 }
 
 /**
- * Per-Program memo of symbol-level results, split by whether type positions were followed.
+ * Per-Program memo of symbol-level results, split by the kind of coupling being asked about.
  * Keyed by `ts.Program` identity so the cache dies with the Program that produced the symbols.
  */
 interface AnalysisCache {
   value: Map<ts.Symbol, Hit | null>;
-  all: Map<ts.Symbol, Hit | null>;
+  type: Map<ts.Symbol, Hit | null>;
 }
 
 const programCache = new WeakMap<ts.Program, AnalysisCache>();
@@ -299,7 +299,9 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         return null;
       }
 
-      return findForbiddenRuntime(services.program, checker, symbol, followTypes, forbiddenRuntimes);
+      return followTypes
+        ? findForbiddenTypeReach(services.program, checker, symbol, forbiddenRuntimes)
+        : findForbiddenRuntime(services.program, checker, symbol, forbiddenRuntimes);
     }
 
     /**
@@ -466,8 +468,8 @@ function isScopeWithinFunction(scope: TSESLint.Scope.Scope, hookFn: BaseHookFunc
 // ---------------------------------------------------------------------------
 
 /**
- * Answers "does `symbol` actually depend on a forbidden runtime?" by walking the symbol's own
- * declaration and only the identifiers that declaration references.
+ * Answers "does `symbol` actually depend on a forbidden runtime at execution time?" by walking the
+ * symbol's own declaration and only the identifiers that declaration references in value position.
  *
  * Granularity is the whole point. Asking the same question at file granularity conflates every
  * export of a module: `useButtonBase_unstable` would inherit the dependencies of the sibling
@@ -476,20 +478,19 @@ function isScopeWithinFunction(scope: TSESLint.Scope.Scope, hookFn: BaseHookFunc
  * *through* — an alias hop resolves to the leaf declaration it points at, never to the union of
  * the barrel's contents.
  *
- * `followTypes` selects the reference kind being validated: value references follow value
- * positions only (runtime coupling), type references follow type positions only (API coupling).
+ * Type positions are deliberately not followed here: they emit no code, and API coupling is a
+ * structural question answered by `findForbiddenTypeReach` instead.
  *
- * Memoized per Program × symbol × mode. Cycle-safe.
+ * Memoized per Program × symbol. Cycle-safe.
  */
 function findForbiddenRuntime(
   program: ts.Program,
   checker: ts.TypeChecker,
   symbol: ts.Symbol,
-  followTypes: boolean,
   forbiddenRuntimes: ReadonlySet<string>,
 ): Hit | null {
-  const caches = getAnalysisCache(program);
-  const cache = followTypes ? caches.all : caches.value;
+  const followTypes = false;
+  const cache = getAnalysisCache(program).value;
   const inProgress = new Set<ts.Symbol>();
 
   function visitSymbol(current: ts.Symbol): Hit | null {
@@ -592,10 +593,186 @@ function findForbiddenRuntime(
   return visitSymbol(symbol);
 }
 
+/**
+ * Answers "does the *resolved* type of `symbol` expose a forbidden runtime in its API surface?"
+ *
+ * Unlike the runtime analysis this cannot work on declaration syntax. A base type is routinely
+ * derived from a styled one by subtracting the motion/focus members —
+ * `Omit<ProgressBarProps, 'indeterminateMotion'>` — and syntactically that declaration still
+ * mentions `ProgressBarProps`, which mentions the forbidden slot type. Following those references
+ * reports coupling the resolved type does not have. Asking the type checker instead makes the
+ * subtraction visible: the erased member is simply not among the type's properties.
+ *
+ * The walk therefore follows what the type actually consists of - its alias/declaration symbols,
+ * type arguments, union and intersection constituents, properties, signatures and index types -
+ * and reports the first constituent declared inside a forbidden package.
+ *
+ * Memoized per Program × symbol. Cycle-safe, and bounded so a pathological type cannot stall lint.
+ */
+function findForbiddenTypeReach(
+  program: ts.Program,
+  checker: ts.TypeChecker,
+  symbol: ts.Symbol,
+  forbiddenRuntimes: ReadonlySet<string>,
+): Hit | null {
+  const cache = getAnalysisCache(program).type;
+  const cached = cache.get(symbol);
+  if (cached !== undefined) {
+    return cached;
+  }
+
+  const target = symbol.flags & ts.SymbolFlags.Alias ? aliasTargetOf(checker, symbol) : symbol;
+  const result = target ? walkType(program, checker, declaredTypeOf(checker, target), forbiddenRuntimes) : null;
+
+  cache.set(symbol, result);
+  return result;
+}
+
+/**
+ * React prop bags reach thousands of distinct types, so the walk is bounded on both axes.
+ * Exhausting either limit degrades to "no hit" rather than to a slow lint run; the direct-import
+ * and runtime checks are unaffected.
+ */
+const TYPE_WALK_BUDGET = 20_000;
+const TYPE_WALK_MAX_DEPTH = 10;
+
+function walkType(
+  program: ts.Program,
+  checker: ts.TypeChecker,
+  root: ts.Type,
+  forbiddenRuntimes: ReadonlySet<string>,
+): Hit | null {
+  const seen = new Set<ts.Type>();
+  let budget = TYPE_WALK_BUDGET;
+
+  function visit(type: ts.Type, depth: number): Hit | null {
+    if (budget-- <= 0 || depth > TYPE_WALK_MAX_DEPTH || seen.has(type)) {
+      return null;
+    }
+    seen.add(type);
+
+    // `aliasSymbol` catches `type X = ...` written in a forbidden package even when the resolved
+    // shape is a plain object literal; `symbol` catches interfaces and classes declared there.
+    for (const owner of [type.aliasSymbol, type.symbol]) {
+      const hit = owner && owningForbiddenPackage(owner, forbiddenRuntimes);
+      if (hit) {
+        return hit;
+      }
+    }
+
+    if (type.isUnionOrIntersection()) {
+      for (const constituent of type.types) {
+        const hit = visit(constituent, depth + 1);
+        if (hit) {
+          return hit;
+        }
+      }
+      return null;
+    }
+
+    // Primitives and literals answer `getPropertiesOfType` with their apparent members from the
+    // standard library (`String`, `Number`, ...). Following those explodes the walk into the whole
+    // lib without ever crossing into first-party code, so stop here.
+    if (!(type.flags & ts.TypeFlags.Object)) {
+      return null;
+    }
+
+    // Deliberately *not* following `aliasTypeArguments`: the erasure this analysis exists to
+    // respect lives exactly there. `Omit<ProgressBarProps, 'indeterminateMotion'>` keeps
+    // `ProgressBarProps` as an alias argument, so following it would resurrect the member the
+    // resolved type no longer has. Instantiated references such as `Array<T>` are still followed.
+    for (const argument of checker.getTypeArguments(type as ts.TypeReference)) {
+      const hit = visit(argument, depth + 1);
+      if (hit) {
+        return hit;
+      }
+    }
+
+    // A DOM prop bag pulls in the whole of `@types/react` and the standard library. Those members
+    // cannot lead back to a first-party runtime, and expanding them exhausts the budget before the
+    // interesting members are reached — which previously hid real coupling. The filter is applied
+    // per property rather than per containing type on purpose: a base type is usually an
+    // `Omit<...>`, whose alias symbol belongs to `lib.es5.d.ts` even though every member of the
+    // resolved shape is first-party.
+    for (const property of checker.getPropertiesOfType(type)) {
+      const declaration = property.valueDeclaration ?? property.declarations?.[0];
+      if (!declaration) {
+        continue;
+      }
+      // A property *declared* in a forbidden package couples the API even when its own type is a
+      // primitive, so check ownership before deciding whether to descend.
+      const owned = owningForbiddenPackage(property, forbiddenRuntimes);
+      if (owned) {
+        return owned;
+      }
+      if (isLibraryFile(program, declaration.getSourceFile())) {
+        continue;
+      }
+      const hit = visit(checker.getTypeOfSymbolAtLocation(property, declaration), depth + 1);
+      if (hit) {
+        return hit;
+      }
+    }
+
+    for (const signature of [...type.getCallSignatures(), ...type.getConstructSignatures()]) {
+      for (const parameter of signature.getParameters()) {
+        const declaration = parameter.valueDeclaration ?? parameter.declarations?.[0];
+        const hit = declaration && visit(checker.getTypeOfSymbolAtLocation(parameter, declaration), depth + 1);
+        if (hit) {
+          return hit;
+        }
+      }
+      const hit = visit(signature.getReturnType(), depth + 1);
+      if (hit) {
+        return hit;
+      }
+    }
+
+    for (const indexInfo of checker.getIndexInfosOfType(type)) {
+      const hit = visit(indexInfo.type, depth + 1);
+      if (hit) {
+        return hit;
+      }
+    }
+
+    return null;
+  }
+
+  return visit(root, 0);
+}
+
+/**
+ * The type a symbol stands for: the declared type for aliases, interfaces and classes, falling
+ * back to the type at the declaration site for everything else.
+ */
+function declaredTypeOf(checker: ts.TypeChecker, symbol: ts.Symbol): ts.Type {
+  const declared = checker.getDeclaredTypeOfSymbol(symbol);
+  if (!(declared.flags & ts.TypeFlags.Any) || !symbol.declarations?.length) {
+    return declared;
+  }
+  return checker.getTypeOfSymbolAtLocation(symbol, symbol.declarations[0]);
+}
+
+function aliasTargetOf(checker: ts.TypeChecker, symbol: ts.Symbol): ts.Symbol | undefined {
+  try {
+    return checker.getAliasedSymbol(symbol);
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * `true` for the TypeScript standard library and ambient `@types` packages — the two sources whose
+ * members are large, generic and incapable of referencing a first-party runtime.
+ */
+function isLibraryFile(program: ts.Program, sourceFile: ts.SourceFile): boolean {
+  return program.isSourceFileDefaultLibrary(sourceFile) || toPosixPath(sourceFile.fileName).includes('/@types/');
+}
+
 function getAnalysisCache(program: ts.Program): AnalysisCache {
   let cache = programCache.get(program);
   if (!cache) {
-    cache = { value: new Map(), all: new Map() };
+    cache = { value: new Map(), type: new Map() };
     programCache.set(program, cache);
   }
   return cache;

@@ -138,6 +138,21 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
         };
       `,
     },
+    // A base props bag derived from a styled one by subtracting the forbidden-runtime member is
+    // clean: `Omit` really removes it, so the resolved type has no coupling left. The declaration
+    // still *mentions* `StyledProps`, which is why this has to be answered structurally rather
+    // than by following declaration syntax.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import type { DerivedBaseProps } from 'watched-pkg';
+        export const useThingBase_unstable = (props: DerivedBaseProps, ref) => {
+          return { props, ref };
+        };
+      `,
+    },
     // Watched-package import exists but only used by a non-base hook in the same file.
     {
       languageOptions: typedLanguageOptions,
@@ -469,7 +484,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
             importedName: 'HeavyType',
             package: 'watched-pkg',
             runtime: 'heavy-runtime',
-            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/watched-pkg/heavy.ts',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/heavy-runtime/index.ts',
           },
         },
       ],
@@ -494,7 +509,32 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
             importedName: 'HeavyType',
             package: 'watched-pkg',
             runtime: 'heavy-runtime',
-            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/watched-pkg/heavy.ts',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/heavy-runtime/index.ts',
+          },
+        },
+      ],
+    },
+    // The counterpart of the `Omit` case: while the member is still present the coupling is real
+    // and must be reported, so the structural check is not simply blind to subtraction.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import type { StyledProps } from 'watched-pkg';
+        export const useThingBase_unstable = (props: StyledProps, ref) => {
+          return { props, ref };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'StyledProps',
+            package: 'watched-pkg',
+            runtime: 'heavy-runtime',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/heavy-runtime/index.ts',
           },
         },
       ],
@@ -519,7 +559,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
             importedName: 'HeavyWrapper',
             package: 'watched-pkg',
             runtime: 'heavy-runtime',
-            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/watched-pkg/heavy.ts',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/heavy-runtime/index.ts',
           },
         },
       ],
@@ -693,7 +733,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
             importedName: 'DistHeavy',
             package: 'typed-dist-pkg',
             runtime: 'heavy-runtime',
-            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/typed-dist-pkg/index.d.ts',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/heavy-runtime/index.ts',
           },
         },
       ],

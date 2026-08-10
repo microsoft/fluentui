@@ -77,10 +77,8 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
 };
 
 export const useInlineDrawerBase_unstable = (
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
   props: InlineDrawerBaseProps,
   ref: React.Ref<HTMLElement>,
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): InlineDrawerBaseState => {
   const { position, open, unmountOnClose } = useDrawerDefaultProps(props);
 
@@ -101,6 +99,5 @@ export const useInlineDrawerBase_unstable = (
     open,
     position,
     unmountOnClose,
-    // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
   } satisfies InlineDrawerBaseState;
 };

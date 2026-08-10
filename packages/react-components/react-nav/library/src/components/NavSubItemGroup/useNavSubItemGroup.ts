@@ -53,10 +53,8 @@ export const useNavSubItemGroup_unstable = (
  * @returns - The base state of NavSubItemGroup
  */
 export const useNavSubItemGroupBase_unstable = (
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
   props: NavSubItemGroupBaseProps,
   ref: React.Ref<HTMLDivElement>,
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): NavSubItemGroupBaseState => {
   const { open } = useNavCategoryContext_unstable();
 

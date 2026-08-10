@@ -10,3 +10,9 @@ export type CleanTag = { tag: 'clean' };
 export function useHeavy(): { tag: 'heavy' } {
   return runHeavy();
 }
+
+// Mirrors the v9 shape: a styled props bag carrying a forbidden-runtime slot, and the base bag
+// derived from it by subtracting exactly that member.
+export type StyledProps = { tag: 'styled'; motion?: HeavyOptions; label: string };
+
+export type DerivedBaseProps = Omit<StyledProps, 'motion'>;

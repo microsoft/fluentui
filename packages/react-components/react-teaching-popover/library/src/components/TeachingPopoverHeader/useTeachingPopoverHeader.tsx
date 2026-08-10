@@ -21,7 +21,6 @@ import { usePopoverContext_unstable } from '@fluentui/react-popover';
 export const useTeachingPopoverHeaderBase_unstable = (
   props: TeachingPopoverHeaderBaseProps,
   ref: React.Ref<HTMLDivElement>,
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): TeachingPopoverHeaderBaseState => {
   const { dismissButton, icon } = props;
 

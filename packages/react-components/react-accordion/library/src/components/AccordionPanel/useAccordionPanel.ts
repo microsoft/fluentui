@@ -56,10 +56,8 @@ export const useAccordionPanel_unstable = (
  * @param ref - reference to root HTMLElement of AccordionPanel
  */
 export const useAccordionPanelBase_unstable = (
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
   props: AccordionPanelBaseProps,
   ref: React.Ref<HTMLElement>,
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): AccordionPanelBaseState => {
   const { open } = useAccordionItemContext_unstable();
 

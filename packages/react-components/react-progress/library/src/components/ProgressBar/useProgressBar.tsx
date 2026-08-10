@@ -65,10 +65,8 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
  * @param ref - reference to root HTMLElement of ProgressBar
  */
 export const useProgressBarBase_unstable = (
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
   props: ProgressBarBaseProps,
   ref: React.Ref<HTMLElement>,
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): ProgressBarBaseState => {
   const field = useFieldContext_unstable();
 

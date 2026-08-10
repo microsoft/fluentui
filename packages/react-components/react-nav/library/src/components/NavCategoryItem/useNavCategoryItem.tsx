@@ -71,10 +71,8 @@ export const useNavCategoryItem_unstable = (
  * @param ref - reference to root HTMLButtonElement of NavCategoryItem
  */
 export const useNavCategoryItemBase_unstable = (
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
   props: NavCategoryItemBaseProps,
   ref: React.Ref<HTMLButtonElement>,
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
 ): NavCategoryItemBaseState => {
   const { onClick, expandIcon, icon } = props;
 

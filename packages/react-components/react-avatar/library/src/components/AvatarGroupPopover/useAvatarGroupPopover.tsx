@@ -72,9 +72,12 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
  * @returns AvatarGroupPopover state
  */
 export const useAvatarGroupPopoverBase_unstable = (
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
+  // Tracked debt: unlike the other base types these subtract only `size`, so the `root` slot keeps
+  // `PopoverProps` — and with it `surfaceMotion` — in the base API surface. Type-only, so nothing
+  // is emitted; clearing it means dropping the motion slot from the base props/state.
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime
   props: AvatarGroupPopoverBaseProps,
-  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: type-only motion coupling
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime
 ): AvatarGroupPopoverBaseState => {
   const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   const { indicator = 'count', count = React.Children.count(props.children), children, ...restOfProps } = props;
