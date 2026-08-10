@@ -20,13 +20,16 @@ const shouldRegister = shouldRegisterInternal();
  * `bundle-isolation.config.json`.
  *
  * Names are matched exactly, so a package and its satellites have to be listed separately —
- * `@fluentui/react-motion-components-preview` is not covered by `@fluentui/react-motion`.
+ * `@fluentui/react-motion-components-preview` is not covered by `@fluentui/react-motion`, and the
+ * `@griffel/*` glob the bundle config uses has to be spelled out here.
  */
 const baseHookForbiddenRuntimes = [
   'tabster',
   '@fluentui/react-icons',
   '@fluentui/react-motion',
   '@fluentui/react-motion-components-preview',
+  '@griffel/react',
+  '@griffel/core',
 ];
 
 /**

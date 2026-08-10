@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: forbid react-icons, react-motion and Griffel in v9 base hooks",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

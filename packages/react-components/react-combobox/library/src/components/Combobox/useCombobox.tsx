@@ -65,6 +65,7 @@ export const useComboboxBase_unstable = (
 
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: styled slot pulls Griffel
   const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
     state: comboboxInternalState,
     triggerRef,
@@ -97,6 +98,7 @@ export const useComboboxBase_unstable = (
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
   const state: BaseComboboxState = {
+    // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: styled slot pulls Griffel
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox, clearIcon: 'span' },
     root: rootSlot,
     input: triggerSlot,
