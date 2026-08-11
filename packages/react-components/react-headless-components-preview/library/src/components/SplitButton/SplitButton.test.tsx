@@ -120,4 +120,48 @@ describe('SplitButton', () => {
 
     expect(root).not.toHaveAttribute('data-disabled');
   });
+
+  it('forwards icon to the primary action button', () => {
+    const { getAllByRole } = render(<SplitButton icon={<span data-testid="icon" />}>This is a button</SplitButton>);
+    const [primaryActionButton] = getAllByRole('button');
+
+    expect(primaryActionButton.querySelector('[data-testid="icon"]')).toBeInTheDocument();
+  });
+
+  it('forwards iconPosition to the primary action button', () => {
+    const { getAllByRole } = render(
+      <SplitButton icon={<span data-testid="icon" />} iconPosition="after">
+        This is a button
+      </SplitButton>,
+    );
+    const [primaryActionButton] = getAllByRole('button');
+    const icon = primaryActionButton.querySelector('[data-testid="icon"]') as HTMLElement;
+
+    expect(icon).toBeInTheDocument();
+    expect(primaryActionButton.lastElementChild).toContainElement(icon);
+  });
+
+  it('allows a per-slot disabledFocusable override to win for primaryActionButton', () => {
+    const { getAllByRole } = render(
+      <SplitButton disabledFocusable primaryActionButton={{ disabledFocusable: false }}>
+        This is a button
+      </SplitButton>,
+    );
+    const [primaryActionButton, menuButton] = getAllByRole('button');
+
+    expect(primaryActionButton).not.toHaveAttribute('data-disabled-focusable');
+    expect(menuButton).toHaveAttribute('data-disabled-focusable');
+  });
+
+  it('allows a per-slot disabledFocusable override to win for menuButton', () => {
+    const { getAllByRole } = render(
+      <SplitButton disabledFocusable menuButton={{ disabledFocusable: false }}>
+        This is a button
+      </SplitButton>,
+    );
+    const [primaryActionButton, menuButton] = getAllByRole('button');
+
+    expect(primaryActionButton).toHaveAttribute('data-disabled-focusable');
+    expect(menuButton).not.toHaveAttribute('data-disabled-focusable');
+  });
 });

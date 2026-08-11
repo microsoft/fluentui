@@ -44,6 +44,8 @@ export const useSplitButton = (props: SplitButtonProps, ref: React.Ref<HTMLDivEl
     defaultProps: {
       ...baseState.menuButton,
       children: undefined,
+      disabledFocusable: baseState.disabledFocusable,
+      menuIcon: props.menuIcon,
     },
     renderByDefault: true,
     elementType: MenuButton,
@@ -52,6 +54,9 @@ export const useSplitButton = (props: SplitButtonProps, ref: React.Ref<HTMLDivEl
     defaultProps: {
       ...baseState.primaryActionButton,
       children: props.children,
+      disabledFocusable: baseState.disabledFocusable,
+      icon: props.icon,
+      iconPosition: baseState.iconPosition,
     },
     renderByDefault: true,
     elementType: Button,
