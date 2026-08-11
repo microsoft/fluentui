@@ -1,8 +1,6 @@
-import type { NavSubItemBaseProps, NavSubItemBaseState } from '@fluentui/react-nav';
+import type { NavSubItemBaseState } from '@fluentui/react-nav';
 
-export type { NavSubItemSlots } from '@fluentui/react-nav';
-
-export type NavSubItemProps = NavSubItemBaseProps;
+export type { NavSubItemSlots, NavSubItemBaseProps as NavSubItemProps } from '@fluentui/react-nav';
 
 export type NavSubItemState = NavSubItemBaseState & {
   root: {

@@ -39,8 +39,8 @@ import { NavItemValue } from '@fluentui/react-nav';
 import { NavBaseProps as NavProps } from '@fluentui/react-nav';
 import { NavProvider } from '@fluentui/react-nav';
 import { NavSlots } from '@fluentui/react-nav';
-import type { NavSubItemBaseProps } from '@fluentui/react-nav';
 import type { NavSubItemBaseState } from '@fluentui/react-nav';
+import { NavSubItemBaseProps as NavSubItemProps } from '@fluentui/react-nav';
 import { NavSubItemSlots } from '@fluentui/react-nav';
 import { OnNavItemSelectData } from '@fluentui/react-nav';
 import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-drawer';
@@ -241,8 +241,7 @@ export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots> & {
     open: boolean;
 };
 
-// @public (undocumented)
-export type NavSubItemProps = NavSubItemBaseProps;
+export { NavSubItemProps }
 
 export { NavSubItemSlots }
 

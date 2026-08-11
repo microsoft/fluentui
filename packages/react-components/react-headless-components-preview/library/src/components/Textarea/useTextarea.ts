@@ -16,9 +16,7 @@ export const useTextarea = (props: TextareaProps, ref: React.Ref<HTMLTextAreaEle
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.textarea.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-invalid'] = stringifyDataAttribute(
-    state.textarea['aria-invalid'] === true || state.textarea['aria-invalid'] === 'true',
-  );
+  state.root['data-invalid'] = stringifyDataAttribute(state.textarea['aria-invalid']);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-resize'] = state.resize;
 
