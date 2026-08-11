@@ -10,3 +10,5 @@ export type { CleanTag } from './heavy';
 export type HeavyWrapper = { tag: 'heavy-wrapper'; inner: HeavyType };
 export type { StyledProps } from './heavy';
 export type { DerivedBaseProps } from './heavy';
+export type { HeavyConstrainedCallback } from './heavy';
+export type { CleanConstrainedCallback } from './heavy';

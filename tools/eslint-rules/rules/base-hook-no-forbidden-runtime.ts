@@ -612,8 +612,8 @@ function findForbiddenRuntime(
  * subtraction visible: the erased member is simply not among the type's properties.
  *
  * The walk therefore follows what the type actually consists of - its alias/declaration symbols,
- * type arguments, union and intersection constituents, properties, signatures and index types -
- * and reports the first constituent declared inside a forbidden package.
+ * type arguments, union and intersection constituents, properties, signatures, constraints and
+ * index types - and reports the first constituent declared inside a forbidden package.
  *
  * Memoized per Program × symbol. Cycle-safe, and bounded so a pathological type cannot stall lint.
  */
@@ -676,6 +676,19 @@ function walkType(
         }
       }
       return null;
+    }
+
+    // Type parameters, indexed accesses and conditionals are `Instantiable`, not `Object`, so the
+    // primitive bail below would discard them along with `string` and `number` — and with them the
+    // constraint, which is part of the public API. `<T extends MotionSlotProps>(value: T) => void`
+    // exposes the forbidden package through its signature even though `T` itself has no members.
+    // Unconstrained parameters answer `undefined` and fall through to the bail unchanged.
+    if (type.flags & ts.TypeFlags.Instantiable) {
+      const constraint = checker.getBaseConstraintOfType(type);
+      const hit = constraint && visit(constraint, depth + 1);
+      if (hit) {
+        return hit;
+      }
     }
 
     // Primitives and literals answer `getPropertiesOfType` with their apparent members from the

@@ -153,6 +153,18 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
         };
       `,
     },
+    // A type parameter whose constraint stays inside the watched package couples nothing.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import type { CleanConstrainedCallback } from 'watched-pkg';
+        export const useThingBase_unstable = (props: { cb: CleanConstrainedCallback }, ref) => {
+          return { props, ref };
+        };
+      `,
+    },
     // Watched-package import exists but only used by a non-base hook in the same file.
     {
       languageOptions: typedLanguageOptions,
@@ -532,6 +544,31 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
           data: {
             hookName: 'useThingBase_unstable',
             importedName: 'StyledProps',
+            package: 'watched-pkg',
+            runtime: 'heavy-runtime',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/heavy-runtime/index.ts',
+          },
+        },
+      ],
+    },
+    // A type parameter is not an object type, so its constraint is only seen if the walk resolves
+    // it explicitly — yet the constraint is part of the signature the base hook exposes.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import type { HeavyConstrainedCallback } from 'watched-pkg';
+        export const useThingBase_unstable = (props: { cb: HeavyConstrainedCallback }, ref) => {
+          return { props, ref };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'HeavyConstrainedCallback',
             package: 'watched-pkg',
             runtime: 'heavy-runtime',
             viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/heavy-runtime/index.ts',

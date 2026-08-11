@@ -16,3 +16,10 @@ export function useHeavy(): { tag: 'heavy' } {
 export type StyledProps = { tag: 'styled'; motion?: HeavyOptions; label: string };
 
 export type DerivedBaseProps = Omit<StyledProps, 'motion'>;
+
+// Only coupling is the constraint of a type parameter — the parameter itself is declared here,
+// not in the forbidden runtime, so the reach is invisible unless constraints are followed.
+export type HeavyConstrainedCallback = <T extends HeavyOptions>(value: T) => void;
+
+// Same shape, but with a constraint that stays inside this package.
+export type CleanConstrainedCallback = <T extends CleanTag>(value: T) => void;
