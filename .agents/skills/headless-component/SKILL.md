@@ -572,7 +572,7 @@ wrong file:
 # middle branch, after editing only the component package and its tests
 yarn beachball change --no-commit --branch master \
   --package @fluentui/react-<name> --type minor \
-  --message "feat(react-<name>): expose headless base APIs"
+  --message "feat: expose headless base APIs"
 
 # top branch, after editing only the headless library and stories
 yarn beachball change --no-commit --branch master \
