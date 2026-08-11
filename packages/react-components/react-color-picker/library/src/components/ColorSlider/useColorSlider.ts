@@ -8,7 +8,7 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { colorSliderCSSVars } from './useColorSliderStyles.styles';
+import { colorSliderCSSVars } from './ColorSlider.constants';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type {
   ColorSliderBaseProps,

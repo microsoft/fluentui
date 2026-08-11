@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { ColorAreaBaseProps, ColorAreaBaseState, ColorAreaProps, ColorAreaState } from './ColorArea.types';
 import type { HsvColor } from '../../types/color';
-import { colorAreaCSSVars } from './useColorAreaStyles.styles';
+import { colorAreaCSSVars } from './ColorArea.constants';
 import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusWithin } from '@fluentui/react-tabster';

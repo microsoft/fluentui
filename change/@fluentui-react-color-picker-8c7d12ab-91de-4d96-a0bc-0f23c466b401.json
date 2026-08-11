@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Move shared color picker CSS variables from style modules to constants files.",
+  "packageName": "@fluentui/react-color-picker",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
