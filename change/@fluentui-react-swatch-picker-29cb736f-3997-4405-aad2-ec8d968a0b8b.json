@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Move ColorSwatch styling out of the headless base hook.",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
