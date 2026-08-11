@@ -67,6 +67,10 @@ const useResetStyles = makeResetStyles({
 });
 
 const useStyles = makeStyles({
+  root: {
+    [swatchCSSVars.color]: color,
+    [swatchCSSVars.borderColor]: borderColor ?? tokens.colorTransparentStroke,
+  },
   disabled: {
     ':hover': {
       cursor: 'not-allowed',
@@ -191,6 +195,7 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
     resetStyles,
+    styles.root,
     sizeStyles[size],
     shapeStyles[shape],
     state.selected && styles.selected,

@@ -9,9 +9,7 @@ import type {
   ColorSwatchState,
 } from './ColorSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
-import { swatchCSSVars } from './useColorSwatchStyles.styles';
 import { ProhibitedFilled } from '@fluentui/react-icons';
-import { tokens } from '@fluentui/react-theme';
 
 /**
  * Create the basee state required to render unstyled ColorSwatch.
@@ -25,7 +23,7 @@ export const useColorSwatchBase_unstable = (
   props: ColorSwatchBaseProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchBaseState => {
-  const { borderColor, color, disabled, disabledIcon, icon, value, onClick, style, ...rest } = props;
+  const { borderColor, color, disabled, disabledIcon, icon, value, onClick, ...rest } = props;
   const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.isGrid);
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
@@ -39,11 +37,6 @@ export const useColorSwatchBase_unstable = (
       }),
     ),
   );
-
-  const rootVariables = {
-    [swatchCSSVars.color]: color,
-    [swatchCSSVars.borderColor]: borderColor ?? tokens.colorTransparentStroke,
-  };
 
   const role = isGrid ? 'gridcell' : 'radio';
   const ariaSelected = isGrid
@@ -72,10 +65,6 @@ export const useColorSwatchBase_unstable = (
         type: 'button',
         disabled,
         ...rest,
-        style: {
-          ...rootVariables,
-          ...style,
-        },
       }),
       { elementType: 'button' },
     ),
