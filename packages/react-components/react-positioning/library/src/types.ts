@@ -66,7 +66,12 @@ export type OffsetFunctionParam = {
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
 /**
- * @internal
+ * Floating UI flip fallback strategies supported by the imperative positioning API.
+ */
+export type PositioningFlipFallbackStrategy_unstable = 'bestFit' | 'initialPlacement';
+
+/**
+ * Imperative positioning manager contract.
  */
 export interface PositionManager {
   updatePosition: () => void;
@@ -296,6 +301,48 @@ export interface PositioningProps
    * Manual override for the target element. Useful for scenarios where a component accepts user prop to override target
    */
   target?: TargetElement | null;
+}
+
+export interface CreatePositioningManagerOptions_unstable
+  extends Omit<PositioningProps, 'positioningRef' | 'target'>,
+    Pick<PositioningOptions, 'enabled' | 'positionFixed' | 'unstable_disableTether'> {
+  /**
+   * The positioned element.
+   */
+  container: HTMLElement;
+
+  /**
+   * Element that the container will be anchored to.
+   */
+  target: TargetElement;
+
+  /**
+   * Arrow that points from the container to the target.
+   */
+  arrow?: HTMLElement | null;
+
+  /**
+   * Logical direction used to resolve `before`/`after` placements.
+   * @default 'ltr'
+   */
+  dir?: 'ltr' | 'rtl';
+
+  /**
+   * Target document used for devtools integration.
+   * @default container.ownerDocument
+   */
+  targetDocument?: Document;
+
+  /**
+   * Internal escape hatch to disable Floating UI shift middleware entirely.
+   */
+  unstable_disableShift?: boolean;
+
+  /**
+   * Internal override for Floating UI flip fallback behavior.
+   * @default 'bestFit'
+   */
+  unstable_flipFallbackStrategy?: PositioningFlipFallbackStrategy_unstable;
 }
 
 export type PositioningShorthandValue =

@@ -67,6 +67,11 @@
       "description": "Enable babel-plugin-react-compiler processing. When enabled, source is processed with React Compiler as a separate Babel pass before Griffel AOT.",
       "default": false
     },
+    "preserveDynamicImport": {
+      "type": "boolean",
+      "description": "Keep dynamic import() expressions in CommonJS output so consuming bundlers can retain asynchronous chunk boundaries.",
+      "default": false
+    },
     "__esmFirst": {
       "type": "boolean",
       "description": "TEMPORARY/INTERNAL: opts this build into ESM-first postprocessing (.cjs extension rewrite + .d.cts types) ahead of the package's own package.json declaring \"type\": \"module\". Exists so the infra can be exercised on a package before it actually flips to ESM. Will be removed once the real migration lands and every opted-in package sets \"type\": \"module\" itself.",

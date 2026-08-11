@@ -45,6 +45,7 @@
     "@fluentui/react-overflow": "^9.9.1",
     "@fluentui/react-persona": "^9.7.6",
     "@fluentui/react-popover": "^9.14.5",
+    "@fluentui/react-portal": "^9.8.14",
     "@fluentui/react-positioning": "^9.23.0",
     "@fluentui/react-progress": "^9.5.3",
     "@fluentui/react-provider": "^9.22.19",
@@ -413,6 +414,6 @@
   "devDependencies": {
     "@fluentui/scripts-cypress": "*",
     "@fluentui/verify-bundle-isolation": "*",
-    "@oddbird/popover-polyfill": "^0.6.1"
+    "webpack": "5.108.4"
   }
 }

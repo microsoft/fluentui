@@ -13,9 +13,11 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { DropdownState } from './Dropdown.types';
 import { Listbox } from './Listbox';
 import type { ListboxProps } from './Listbox';
+import { useOverlayRuntime } from '../../overlayRuntime';
 
 export type UseListboxSlotState = Pick<DropdownState, 'multiselect' | 'open' | 'setOpen'>;
 
@@ -42,6 +44,8 @@ export function useListboxSlot(
     triggerRef,
     defaultProps,
   } = options;
+  const { targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
 
   const listboxId = useId(
     'fluent-listbox',
@@ -110,6 +114,10 @@ export function useListboxSlot(
   });
 
   useIsomorphicLayoutEffect(() => {
+    if (overlayRuntime.mode !== 'native') {
+      return;
+    }
+
     const el = listboxRef.current;
     if (!el) {
       return;
@@ -128,8 +136,8 @@ export function useListboxSlot(
         // eslint-disable-next-line no-console
         console.warn(
           [
-            'Popover API is not supported in this browser, and the listbox will not work correctly.',
-            'Please include a popover polyfill for better browser support.',
+            'The native Popover API failed after overlay capability detection.',
+            'The listbox could not synchronize its native open state.',
           ].join(' '),
           { error },
         );
@@ -139,7 +147,7 @@ export function useListboxSlot(
     return () => {
       el.removeEventListener('toggle', onListboxToggle);
     };
-  }, [listboxRef, open, onListboxToggle]);
+  }, [listboxRef, onListboxToggle, open, overlayRuntime.mode]);
 
   return listboxSlot;
 }

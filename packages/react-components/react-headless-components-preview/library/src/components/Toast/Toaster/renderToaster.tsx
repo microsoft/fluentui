@@ -6,6 +6,7 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { ToasterSlotsInternal, ToasterState } from './Toaster.types';
 import { AriaLive } from '../AriaLive';
+import { OverlaySurfaceHost } from '../../../overlayRuntime';
 
 /**
  * Render the position-based containers for the headless Toaster.
@@ -42,7 +43,9 @@ export const renderToaster = (state: ToasterState): JSXElement => {
   return (
     <>
       {ariaLive}
-      {hasToasts ? positionSlots : null}
+      {hasToasts ? (
+        <OverlaySurfaceHost active>{positionSlots}</OverlaySurfaceHost>
+      ) : null}
     </>
   );
 };

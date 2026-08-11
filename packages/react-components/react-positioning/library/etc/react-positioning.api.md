@@ -32,6 +32,20 @@ export type CreateArrowStylesOptions = {
     borderColor?: GriffelStyle['borderBottomColor'];
 };
 
+// @public (undocumented)
+export function createPositioningManager_unstable(options: CreatePositioningManagerOptions_unstable): PositionManager;
+
+// @public (undocumented)
+export interface CreatePositioningManagerOptions_unstable extends Omit<PositioningProps, 'positioningRef' | 'target'>, Pick<PositioningOptions, 'enabled' | 'positionFixed' | 'unstable_disableTether'> {
+    arrow?: HTMLElement | null;
+    container: HTMLElement;
+    dir?: 'ltr' | 'rtl';
+    target: TargetElement;
+    targetDocument?: Document;
+    unstable_disableShift?: boolean;
+    unstable_flipFallbackStrategy?: PositioningFlipFallbackStrategy_unstable;
+}
+
 // @public @deprecated
 export function createSlideStyles(mainAxis: number): GriffelStyle;
 
@@ -89,6 +103,9 @@ export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enable
 // @public
 export const PositioningConfigurationProvider: React_2.Provider<PositioningConfigurationFn | undefined>;
 
+// @public
+export type PositioningFlipFallbackStrategy_unstable = 'bestFit' | 'initialPlacement';
+
 // @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
@@ -129,6 +146,14 @@ export type PositioningVirtualElement = {
     };
     contextElement?: Element;
 };
+
+// @public
+export interface PositionManager {
+    // (undocumented)
+    dispose: () => void;
+    // (undocumented)
+    updatePosition: () => void;
+}
 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;

@@ -2,8 +2,14 @@
 
 import * as React from 'react';
 import { useControllableState, useEventCallback, useId, useTimeout } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
+import { useOverlayRuntime } from '../../overlayRuntime';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
+import type {
+  PopoverContextValueInternal,
+  PopoverStateInternal,
+} from './Popover.internal-types';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
@@ -17,6 +23,9 @@ const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
  * Returns the state for a Popover component.
  */
 export const usePopover = (props: PopoverProps): PopoverState => {
+  const { targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
+
   const {
     openOnHover = false,
     openOnContext = false,
@@ -77,6 +86,22 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const surfaceId = props.id ?? generatedSurfaceId;
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
+  const positioningArrowRef = (
+    positioning as typeof positioning & {
+      arrowRef: React.RefCallback<HTMLElement>;
+    }
+  ).arrowRef;
+  const fallbackBehavior =
+    overlayRuntime.mode === 'fallback-ready'
+      ? React.createElement(overlayRuntime.runtime.FallbackPopoverBehavior, {
+          contentRef,
+          onDismiss: event => setOpen(event as OpenPopoverEvents, false),
+          open,
+          targetDocument,
+          trapFocus,
+          triggerRef,
+        })
+      : undefined;
 
   const onSurfaceToggle = useEventCallback((event: Event) => {
     const toggle = event as ToggleEvent;
@@ -96,6 +121,10 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   });
 
   React.useEffect(() => {
+    if (overlayRuntime.mode !== 'native') {
+      return;
+    }
+
     const surface = contentRef.current;
 
     if (!surface) {
@@ -132,7 +161,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
     surface.addEventListener('toggle', onSurfaceToggle);
     return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [open, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
+  }, [open, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose, overlayRuntime.mode]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -175,11 +204,14 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     contextTarget,
     setContextTarget,
     positioning,
+    positioningArrowRef,
     surfaceId,
-  };
+    fallbackBehavior,
+  } as PopoverStateInternal;
 };
 
 export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
+  const { positioningArrowRef } = state as PopoverStateInternal;
   const {
     open,
     setOpen,
@@ -210,8 +242,9 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,
+        arrowRef: positioningArrowRef,
       },
       surfaceId,
-    },
+    } as PopoverContextValueInternal,
   };
 };

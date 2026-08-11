@@ -15,6 +15,7 @@ import {
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { ToastContainer } from '../ToastContainer';
+import { useOverlayRuntime } from '../../../overlayRuntime';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
@@ -34,7 +35,9 @@ export const useToaster = (props: ToasterProps): ToasterState => {
 
   const announceRef = React.useRef<ToastAnnounce>(() => null);
   const announce = React.useCallback<ToastAnnounce>((message, options) => announceRef.current(message, options), []);
-  const { dir } = useFluent();
+  const { dir, targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
+  const useNativeRuntime = overlayRuntime.mode === 'ssr' || overlayRuntime.mode === 'native';
 
   const { onKeyDown: onKeyDownProp, ...rootProps } = slot.always(
     getIntrinsicElementProps<ExtractSlotProps<Slot<'div'>>>('div', rest),
@@ -60,7 +63,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     // position has no more toasts, the slot unmounts and the browser removes
     // it from the top layer automatically — no explicit hidePopover needed.
     useIsomorphicLayoutEffect(() => {
-      if (!positionHasToasts) {
+      if (!positionHasToasts || overlayRuntime.mode !== 'native') {
         return;
       }
       const el = popoverRef.current;
@@ -71,7 +74,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
       if (!isOpen) {
         el.showPopover();
       }
-    }, [positionHasToasts]);
+    }, [positionHasToasts, overlayRuntime.mode]);
 
     return slot.optional<ExtractSlotProps<Slot<'div'>>>(positionHasToasts ? {} : null, {
       defaultProps: {
@@ -89,10 +92,14 @@ export const useToaster = (props: ToasterProps): ToasterState => {
           </ToastContainer>
         )),
         onKeyDown,
-        popover: 'manual' as const,
-        'data-toaster-position': toastPosition,
         role: 'list',
         ...rootProps,
+        popover: useNativeRuntime ? ('manual' as const) : undefined,
+        'data-overlay-runtime': useNativeRuntime ? 'native' : 'fallback',
+        'data-toaster-position': toastPosition,
+        style: useNativeRuntime
+          ? rootProps.style
+          : { ...rootProps.style, zIndex: 1000000 },
       } as ExtractSlotProps<Slot<'div'>>,
       elementType: 'div',
     });

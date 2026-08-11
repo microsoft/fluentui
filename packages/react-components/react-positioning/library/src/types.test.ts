@@ -1,6 +1,10 @@
 import * as React from 'react';
 import type { OnPositioningEndEvent } from './types';
-import type { PositioningProps } from './types';
+import type {
+  CreatePositioningManagerOptions_unstable,
+  PositionManager,
+  PositioningProps,
+} from './types';
 
 describe('PositioningProps', () => {
   it('should not break API', () => {
@@ -53,5 +57,26 @@ describe('PositioningProps', () => {
     };
 
     expect(props.onPositioningEnd).toBeDefined();
+  });
+
+  it('supports createPositioningManager_unstable options', () => {
+    const options: CreatePositioningManagerOptions_unstable = {
+      container: document.createElement('div'),
+      target: document.createElement('button'),
+      dir: 'rtl',
+      unstable_disableShift: true,
+      unstable_flipFallbackStrategy: 'initialPlacement',
+    };
+
+    expect(options).toBeTruthy;
+  });
+
+  it('supports the imperative manager contract', () => {
+    const manager: PositionManager = {
+      updatePosition: () => undefined,
+      dispose: () => undefined,
+    };
+
+    expect(manager).toBeTruthy;
   });
 });

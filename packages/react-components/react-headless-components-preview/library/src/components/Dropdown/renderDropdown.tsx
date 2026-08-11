@@ -6,12 +6,15 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import type { DropdownContextValues, DropdownState, DropdownSlots } from './Dropdown.types';
 import { ListboxProvider } from '@fluentui/react-combobox';
+import { OverlaySurfaceHost } from '../../overlayRuntime';
+import type { DropdownStateInternal } from './Dropdown.internal-types';
 
 /**
  * Render the final JSX of Dropdown
  */
 export const renderDropdown = (state: DropdownState, contextValues: DropdownContextValues): JSXElement => {
   assertSlots<DropdownSlots>(state);
+  const { fallbackBehavior } = state as DropdownStateInternal;
 
   return (
     <state.root>
@@ -22,7 +25,12 @@ export const renderDropdown = (state: DropdownState, contextValues: DropdownCont
             {state.expandIcon && <state.expandIcon />}
           </state.button>
           {state.clearButton && <state.clearButton />}
-          {state.open && state.listbox && <state.listbox />}
+          {state.open && state.listbox ? (
+            <OverlaySurfaceHost active>
+              <state.listbox />
+            </OverlaySurfaceHost>
+          ) : null}
+          {fallbackBehavior}
         </ListboxProvider>
       </ActiveDescendantContextProvider>
     </state.root>

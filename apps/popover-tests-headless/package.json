@@ -1,0 +1,24 @@
+{
+  "name": "@fluentui/popover-tests-headless",
+  "version": "0.0.0",
+  "description": "Private SSR and CSR verification app for Headless overlays",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "lint": "yarn run -T just-scripts lint",
+    "storybook": "yarn run -T storybook dev",
+    "test": "yarn run -T jest --passWithNoTests",
+    "type-check": "yarn run -T just-scripts type-check",
+    "test-ssr": "yarn run -T test-ssr \"./src/stories/**/*.stories.tsx\""
+  },
+  "dependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-headless-components-preview": "*"
+  }
+}

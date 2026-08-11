@@ -5,14 +5,15 @@ import { getPartitionedNativeProps, slot, useMergedRefs } from '@fluentui/react-
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { type FieldControlPropsOptions, useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useActiveDescendant, type ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   isComboboxOptionElement,
   useComboboxBaseState,
   type ComboboxBaseProps,
   type ComboboxBaseState,
 } from '@fluentui/react-combobox';
-
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
+import { useOverlayRuntime } from '../../overlayRuntime';
 import type { Listbox } from './Listbox';
 import { useListboxSlot } from './useListboxSlot';
 
@@ -71,6 +72,7 @@ export type UseListboxPopupStateReturn<TProps extends ListboxPopupBaseProps, TTr
   internalState: ComboboxBaseState;
   listbox: ListboxSlot;
   rootSlot: RootSlot;
+  fallbackBehavior?: React.ReactElement;
 };
 
 /**
@@ -86,6 +88,8 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
   initialProps: TProps,
   options: UseListboxPopupStateOptions<TProps>,
 ): UseListboxPopupStateReturn<TProps, TTrigger> {
+  const { targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
   const { primarySlotTagName, fieldControlOptions, baseStateExtras, rootDefaultProps } = options;
 
   const positioningOptions = resolvePositioningShorthand(initialProps.positioning);
@@ -117,14 +121,19 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
   });
 
   const triggerRef = React.useRef<TTrigger>(null);
+  const popupRef = React.useRef<HTMLDivElement>(null);
 
-  const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
-    state: internalState,
-    triggerRef,
-    defaultProps: {
-      children: props.children,
+  const listbox = useListboxSlot(
+    props.listbox,
+    useMergedRefs(comboboxPopupRef, activeDescendantListboxRef, popupRef),
+    {
+      state: internalState,
+      triggerRef,
+      defaultProps: {
+        children: props.children,
+      },
     },
-  });
+  );
 
   const rootSlot = slot.always(props.root ?? undefined, {
     defaultProps: {
@@ -135,6 +144,20 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
     elementType: 'div',
   }) as RootSlot;
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
+  const fallbackBehavior =
+    overlayRuntime.mode === 'fallback-ready'
+      ? React.createElement(overlayRuntime.runtime.FallbackListboxBehavior, {
+          contentRef: popupRef,
+          onDismiss: event =>
+            internalState.setOpen(
+              event as unknown as Parameters<typeof internalState.setOpen>[0],
+              false,
+            ),
+          open,
+          targetDocument,
+          triggerRef: triggerRef as React.RefObject<HTMLElement | null>,
+        })
+      : undefined;
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks -- "process.env" does not change in runtime
@@ -159,5 +182,6 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
     internalState,
     listbox,
     rootSlot,
+    fallbackBehavior,
   };
 }

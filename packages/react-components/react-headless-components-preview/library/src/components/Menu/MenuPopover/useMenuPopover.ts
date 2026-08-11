@@ -2,8 +2,10 @@
 
 import * as React from 'react';
 import { useMenuPopoverBase_unstable } from '@fluentui/react-menu';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useMenuContext } from '../menuContext';
 import type { MenuPopoverProps, MenuPopoverState } from '@fluentui/react-menu';
+import { useOverlayRuntime } from '../../../overlayRuntime';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
@@ -12,17 +14,28 @@ type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 
 export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
   const baseState = useMenuPopoverBase_unstable(props, ref);
-
-  const state: MenuPopoverState = {
-    ...baseState,
-    root: { ...baseState.root, popover: 'auto' } as MenuPopoverState['root'],
-  };
-
   const open = useMenuContext(ctx => ctx.open);
   const setOpen = useMenuContext(ctx => ctx.setOpen);
   const menuPopoverRef = useMenuContext(ctx => ctx.menuPopoverRef);
+  const { targetDocument } = useFluent();
+  const overlayRuntime = useOverlayRuntime(targetDocument);
+  const useNativeRuntime = overlayRuntime.mode === 'ssr' || overlayRuntime.mode === 'native';
+
+  const state: MenuPopoverState = {
+    ...baseState,
+    root: {
+      ...baseState.root,
+      popover: useNativeRuntime ? 'auto' : undefined,
+      'data-overlay-runtime': useNativeRuntime ? 'native' : 'fallback',
+      'data-open': open ? '' : undefined,
+    } as MenuPopoverState['root'],
+  };
 
   React.useEffect(() => {
+    if (overlayRuntime.mode !== 'native') {
+      return;
+    }
+
     const surface = menuPopoverRef.current as HTMLElement | null;
 
     if (!surface) {
@@ -71,7 +84,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
 
     surface.addEventListener('toggle', onSurfaceToggle);
     return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [menuPopoverRef, open, setOpen]);
+  }, [menuPopoverRef, open, overlayRuntime.mode, setOpen]);
 
   return state;
 };

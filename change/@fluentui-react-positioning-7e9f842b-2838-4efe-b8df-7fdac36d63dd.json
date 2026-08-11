@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add an imperative unstable positioning manager factory",
+  "packageName": "@fluentui/react-positioning",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
