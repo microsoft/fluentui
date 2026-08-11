@@ -48,7 +48,11 @@ export async function compileSwc(
     }
 
     const result = await transformFile(srcFilePath, {
-      module: { type: module, resolveFully: Boolean(swcConfig.jsc?.baseUrl) },
+      module: {
+        type: module,
+        resolveFully: Boolean(swcConfig.jsc?.baseUrl),
+        ...(module === 'commonjs' && normalizedOptions.preserveDynamicImport && { ignoreDynamic: true }),
+      },
       // srcFilePath is absolute path so outputPath needs to be as well in order to properly emit relative path within .map (eg: `"sources":["../src/utils/createDarkTheme.ts"]`)
       outputPath: join(normalizedOptions.absoluteProjectRoot, outputPath),
     });

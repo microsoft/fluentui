@@ -11,8 +11,14 @@ export interface FlipMiddlewareOptions extends Pick<PositioningOptions, 'flipBou
 }
 
 export function flip(options: FlipMiddlewareOptions): Middleware {
-  const { hasScrollableElement, flipBoundary, container, fallbackPositions = [], isRtl, fallbackStrategy = 'bestFit' } =
-    options;
+  const {
+    hasScrollableElement,
+    flipBoundary,
+    container,
+    fallbackPositions = [],
+    isRtl,
+    fallbackStrategy = 'bestFit',
+  } = options;
 
   const fallbackPlacements = fallbackPositions.reduce<Placement[]>((acc, shorthand) => {
     const { position, align } = resolvePositioningShorthand(shorthand);

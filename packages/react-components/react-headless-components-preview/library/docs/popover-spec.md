@@ -2,7 +2,7 @@
 
 ## Overview
 
-Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. The surface elevates into the browser's **top layer** via the native HTML Popover API. Placement is computed via the native **CSS Anchor Positioning API** — no JS layout loop.
+Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. The surface elevates into the browser's **top layer** via the native HTML Popover API. Placement uses the native **CSS Anchor Positioning API** when the complete required feature set is available and lazily loads Fluent's `react-positioning` backend otherwise.
 
 Popover lets the browser manage dismissal: the surface is rendered with `popover="auto"`, so Escape, click-outside, and popover-stack peer-dismissal happen at HTML Popover spec timing and are mirrored back into React via the surface's `toggle` event. Open paths (click, hover, context-menu, controlled `open`) flow through React; close paths defer to the browser. Focus trapping is deferred to a later iteration — the surface is currently a non-modal `role="group"`.
 
@@ -174,33 +174,41 @@ The headless Popover does **not** add `aria-live` to the surface. Consumers rend
 
 ## Positioning
 
-Placement is handled entirely by the `usePositioning` hook, which writes native CSS anchor-positioning properties onto the surface element. No JS layout loop.
+Placement is handled entirely by the `usePositioning` hook. Consumers use one API while the hook selects an internal backend per document:
+
+- During SSR and the initial hydration commit, the hook emits the native CSS-anchor contract.
+- Browsers with complete CSS Anchor Positioning support remain on the native backend and do not download `react-positioning`.
+- Other browsers lazily load one shared `react-positioning` chunk. The surface remains the same native Popover element in the browser top layer; only its coordinates are managed by JavaScript.
+
+HTML Popover behavior is never polyfilled by this runtime. Open state, light dismiss, focus behavior, and top-layer rendering remain browser-owned in both positioning modes.
 
 ### Options (all optional)
 
-| Option              | Type                                                  | Default      | Effect                                                                                                                                                                               |
-| ------------------- | ----------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `position`          | `'above' \| 'below' \| 'before' \| 'after'`           | `'above'`    | Which side of the anchor the surface sits on. Physical `top` / `bottom` / `left` / `right` are normalized.                                                                           |
-| `align`             | `'start' \| 'center' \| 'end' \| 'top' \| 'bottom'`   | `'center'`   | Cross-axis alignment. `top` → `start`, `bottom` → `end` (v9 aliases).                                                                                                                |
-| `offset`            | `number \| { mainAxis?: number; crossAxis?: number }` | `0`          | Logical-margin offset from the anchor.                                                                                                                                               |
-| `fallbackPositions` | `PositioningShorthandValue[]`                         | `[]`         | Custom fallback chain. Each entry is converted to a `<position-area>` value inline in `position-try-fallbacks`.                                                                      |
-| `coverTarget`       | `boolean`                                             | `false`      | Overlap the anchor instead of sitting beside it.                                                                                                                                     |
-| `pinned`            | `boolean`                                             | `false`      | Disable fallback flipping; surface stays at the requested placement even if it overflows.                                                                                            |
-| `matchTargetSize`   | `'width'`                                             | —            | Sets the surface's `width` to `anchor-size(width)`.                                                                                                                                  |
-| `strategy`          | `'fixed' \| 'absolute'`                               | `'absolute'` | CSS `position` property value on the surface. Matches v9's default. Use `'fixed'` when the surface needs to escape transformed / `contain: layout` ancestors for anchoring purposes. |
-| `target`            | `HTMLElement \| RefObject`                            | —            | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger.                                                                                    |
-| `positioningRef`    | `Ref<PositioningImperativeRef>`                       | —            | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` is a no-op — native positioning self-updates.                                                                    |
+| Option              | Type                                                  | Default    | Effect                                                                                                                                                 |
+| ------------------- | ----------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `position`          | `'above' \| 'below' \| 'before' \| 'after'`           | `'above'`  | Which side of the anchor the surface sits on. Physical `top` / `bottom` / `left` / `right` are normalized.                                             |
+| `align`             | `'start' \| 'center' \| 'end' \| 'top' \| 'bottom'`   | `'center'` | Cross-axis alignment. `top` → `start`, `bottom` → `end` (v9 aliases).                                                                                  |
+| `offset`            | `number \| { mainAxis?: number; crossAxis?: number }` | `0`        | Logical-margin offset from the anchor.                                                                                                                 |
+| `fallbackPositions` | `PositioningShorthandValue[]`                         | `[]`       | Custom fallback chain. Preserved in order for both native `position-try-fallbacks` and the JavaScript positioning backend.                             |
+| `coverTarget`       | `boolean`                                             | `false`    | Overlap the anchor instead of sitting beside it.                                                                                                       |
+| `pinned`            | `boolean`                                             | `false`    | Disable fallback flipping; surface stays at the requested placement even if it overflows.                                                              |
+| `matchTargetSize`   | `'width'`                                             | —          | Matches the surface width to the target through `anchor-size(width)` or equivalent fallback middleware.                                                |
+| `strategy`          | `'fixed' \| 'absolute'`                               | `'fixed'`  | CSS `position` property value on the surface.                                                                                                          |
+| `target`            | `HTMLElement \| RefObject`                            | —          | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger.                                                      |
+| `positioningRef`    | `Ref<PositioningImperativeRef>`                       | —          | `{ setTarget(el): void; updatePosition(): void }`. Native positioning self-updates; fallback mode delegates updates to the active positioning manager. |
 
 ### Rendering
 
-- The hook writes `anchor-name: --popover-anchor-<id>` on the anchor (trigger or custom target) via `useIsomorphicLayoutEffect`.
-- On the surface it writes `position: absolute` (or `fixed` if `strategy: 'fixed'`); `inset: auto; margin: 0; position-anchor: --popover-anchor-<id>; position-area: <value>; position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline`. The `inset: auto; margin: 0` reset is required because the UA popover stylesheet sets `inset: 0; margin: auto`, which fights `position-area`.
+- Native mode writes `anchor-name: --popover-anchor-<id>` on the anchor (trigger or custom target) via `useIsomorphicLayoutEffect`.
+- On the surface, native mode writes `position: fixed` (or the requested strategy); `inset: auto; margin: 0; position-anchor: --popover-anchor-<id>; position-area: <value>; position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline`. The `inset: auto; margin: 0` reset is required because the UA popover stylesheet sets `inset: 0; margin: auto`, which fights `position-area`.
 - For center alignment, the hook also writes `place-self: anchor-center` as a workaround for https://crbug.com/438334710 (Chromium <=130 doesn't reliably apply the implicit anchor-center self-alignment to single-keyword `position-area` values).
 - `data-placement` is set to the requested placement and then live-updated by `usePlacementObserver` (ResizeObserver + scroll listener) to reflect the browser's post-flip decision.
+- Fallback mode preserves the same surface and `data-placement` contract while `react-positioning` writes fixed coordinates. Shift middleware is disabled and ordered fallback placement uses `initialPlacement` semantics to stay close to native behavior.
+- `data-positioning-runtime` reports `native`, `loading`, or `fallback` for internal diagnostics and compatibility styling.
 
 ### Arrow
 
-Arrow positioning is **consumer-owned CSS** keyed off `[data-placement]`. The hook doesn't manipulate the arrow element. Consumers writing arrow styles typically target `[data-placement^='above']`, `[data-placement^='below']`, etc., and use anchor queries (`@container anchored()`) for flip-aware styling when supported.
+Arrow styling remains keyed off `[data-placement]`. Native mode keeps arrow positioning consumer-owned through CSS anchors. Fallback mode passes the existing arrow element to `react-positioning`, which writes only its `left`/`top` coordinates.
 
 ## Open / dismiss model
 
@@ -312,13 +320,13 @@ Positioning uses CSS _logical_ properties throughout (`block-start`, `block-end`
 
 ## Native API surface
 
-The package relies on three native browser APIs:
+The package relies on the HTML Popover API and conditionally uses CSS Anchor Positioning:
 
-- **CSS Anchor Positioning** (Chromium 125+) — `anchor-name`, `position-anchor`, `position-area`, `anchor-size()`, `position-try-fallbacks`.
-- **HTML Popover API** (Chromium 114+) — `popover="auto"` + `showPopover()` + the `toggle` event for top-layer elevation, light dismiss, and state mirroring. Feature-detected (`typeof el.showPopover === 'function'`); SSR-safe.
-- **ResizeObserver** — used sparingly by `usePlacementObserver` (for live `data-placement`)
+- **HTML Popover API** — required for `popover="auto"`, `showPopover()`, top-layer elevation, light dismiss, and state mirroring. There is no runtime polyfill or Portal fallback.
+- **CSS Anchor Positioning** — selected only when `anchor-name`, `position-anchor`, `position-area`, `position-try-fallbacks`, and `anchor-size()` are all supported.
+- **ResizeObserver** — used by native placement observation and the JavaScript fallback manager.
 
-Firefox and Safari are implementing CSS Anchor Positioning; most features work but flip behaviour is still WIP.
+Documents without the complete CSS Anchor Positioning contract share one lazily imported `react-positioning` runtime. Server rendering never imports that runtime.
 
 ## Notes
 
@@ -326,4 +334,4 @@ Firefox and Safari are implementing CSS Anchor Positioning; most features work b
 - **Nested popovers**: nesting is JSX-nesting. The browser's popover-stack treats the inner trigger's DOM descendancy of the outer surface as the ancestor signal — Escape closes only the topmost popover, click-outside dismisses the chain.
 - **Hover-to-open**: `openOnHover` opens on `mouseenter` of the trigger and _stays_ open while the pointer is over the surface. Closing waits `mouseLeaveDelay` ms; this is the one close path that is React-driven (it unmounts the surface, which implicitly closes the native popover).
 - **Context popovers**: when `openOnContext={true}`, the mouse event's `clientX` / `clientY` are stored as `contextTarget` state — available to consumers via the popover context if they want to anchor the surface at the cursor position instead of on the trigger.
-- **Positioning is CSS, not JS**: because placement computation is pushed to the browser, there's no JS layout loop and `positioning.updatePosition()` is a no-op. Consumers that need imperative retargeting use `positioning.setTarget(el)`.
+- **Positioning is implementation-neutral**: native-capable browsers use CSS only. Other browsers use the lazy JavaScript backend without changing component props, DOM structure, Popover behavior, or top-layer rendering.

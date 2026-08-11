@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { createPositioningManager_unstable } from './createPositioningManager_unstable';
 import type { CreatePositioningManagerOptions, PositionManager } from './types';

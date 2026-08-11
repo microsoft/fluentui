@@ -8,6 +8,7 @@ import { type Transform } from './swc';
 
 // rewrite only RELATIVE specifiers (./ or ../) ending in .js -> .cjs
 const RELATIVE_REQUIRE = /(require\(\s*["'])(\.[^"']+?)\.js(["']\s*\))/g;
+const RELATIVE_DYNAMIC_IMPORT = /(import\(\s*["'])(\.[^"']+?)\.js(["']\s*\))/g;
 
 async function exists(path: string) {
   try {
@@ -35,8 +36,8 @@ async function* walk(dir: string): AsyncGenerator<string> {
  *
  * Wired in as an SWC `Transform` (see `cjsRenameTransforms`) so each `commonjs` file is renamed
  * right after it's written, instead of a separate postprocessing pass over the whole output dir.
- * Renames `*.js` -> `*.cjs` (incl. `*.styles.raw.js`), rewrites relative `require("./x.js")` ->
- * `require("./x.cjs")`, and renames the adjacent `*.js.map` -> `*.cjs.map`.
+ * Renames `*.js` -> `*.cjs` (incl. `*.styles.raw.js`), rewrites relative `require("./x.js")` and
+ * `import("./x.js")` specifiers to `.cjs`, and renames the adjacent `*.js.map` -> `*.cjs.map`.
  */
 export const renameToCjs: Transform = async filePath => {
   if (filePath.endsWith('.js.map')) {
@@ -50,7 +51,9 @@ export const renameToCjs: Transform = async filePath => {
   }
 
   if (filePath.endsWith('.js')) {
-    const code = (await readFile(filePath, 'utf-8')).replace(RELATIVE_REQUIRE, '$1$2.cjs$3');
+    const code = (await readFile(filePath, 'utf-8'))
+      .replace(RELATIVE_REQUIRE, '$1$2.cjs$3')
+      .replace(RELATIVE_DYNAMIC_IMPORT, '$1$2.cjs$3');
     await writeFile(
       filePath.replace(/\.js$/, '.cjs'),
       code.replace(/(\/\/#\s*sourceMappingURL=.*?)\.js\.map$/m, '$1.cjs.map'),

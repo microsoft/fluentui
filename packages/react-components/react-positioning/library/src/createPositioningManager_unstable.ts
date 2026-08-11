@@ -15,13 +15,14 @@ const noopPositionManager: PositionManager = {
 /**
  * @internal
  */
-export function createPositioningManager_unstable(options: CreatePositioningManagerOptions): PositionManager {
+function createPositioningManager(options: CreatePositioningManagerOptions): PositionManager {
   const {
     arrow = null,
     container,
     dir,
     enabled = true,
     onPositioningEnd,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     positionFixed,
     positioningRef: _positioningRef,
     target,
@@ -36,7 +37,7 @@ export function createPositioningManager_unstable(options: CreatePositioningMana
   const resolvedTargetDocument = targetDocument ?? container.ownerDocument;
   const resolvedDir = dir ?? (resolvedTargetDocument?.dir === 'rtl' ? 'rtl' : 'ltr');
   const onPositioningEndListener = onPositioningEnd
-    ? ((event: Event) => onPositioningEnd(event as OnPositioningEndEvent))
+    ? (event: Event) => onPositioningEnd(event as OnPositioningEndEvent)
     : undefined;
 
   if (onPositioningEndListener) {
@@ -68,3 +69,5 @@ export function createPositioningManager_unstable(options: CreatePositioningMana
     },
   };
 }
+
+export { createPositioningManager as createPositioningManager_unstable };

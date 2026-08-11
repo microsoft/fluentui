@@ -3,7 +3,7 @@ type ConceptKey = 'popover' | 'dialog' | 'anchor-positioning' | 'focusgroup';
 const FEATURE_LABELS: Record<ConceptKey, string> = {
   popover: 'Popover API',
   dialog: 'Native <dialog> element',
-  'anchor-positioning': 'CSS anchor positioning',
+  'anchor-positioning': 'CSS anchor positioning (with a lazy JavaScript positioning fallback)',
   focusgroup: 'Focus group',
 };
 

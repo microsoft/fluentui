@@ -1,5 +1,3 @@
-'use client';
-
 import { devtools } from '@floating-ui/devtools';
 import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
@@ -29,9 +27,7 @@ type ResolvePositioningOptionsInput = PositioningConfigurationFnOptions &
 /**
  * @internal
  */
-export function resolvePositioningOptions(
-  options: ResolvePositioningOptionsInput,
-): {
+export function resolvePositioningOptions(options: ResolvePositioningOptionsInput): {
   placement: Placement | undefined;
   middleware: Middleware[];
   strategy: Strategy;
@@ -55,13 +51,14 @@ export function resolvePositioningOptions(
     overflowBoundaryPadding,
     pinned,
     position,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     positionFixed,
     shiftToCoverTarget,
     strategy,
     targetDocument,
-    unstable_disableShift,
-    unstable_disableTether,
-    unstable_flipFallbackStrategy,
+    unstable_disableShift: disableShift,
+    unstable_disableTether: disableTether,
+    unstable_flipFallbackStrategy: flipFallbackStrategy,
     useTransform,
   } = options;
   const hasScrollableElement = hasScrollParent(container);
@@ -80,14 +77,14 @@ export function resolvePositioningOptions(
         hasScrollableElement,
         isRtl,
         fallbackPositions,
-        fallbackStrategy: unstable_flipFallbackStrategy ?? 'bestFit',
+        fallbackStrategy: flipFallbackStrategy ?? 'bestFit',
       }),
-    !unstable_disableShift &&
+    !disableShift &&
       shiftMiddleware({
         container,
         hasScrollableElement,
         overflowBoundary,
-        disableTether: unstable_disableTether,
+        disableTether,
         overflowBoundaryPadding,
         isRtl,
         shiftToCoverTarget,

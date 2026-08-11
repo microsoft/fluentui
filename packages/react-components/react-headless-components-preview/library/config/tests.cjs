@@ -3,6 +3,10 @@
 require('@testing-library/jest-dom');
 require('@oddbird/popover-polyfill');
 
+// Existing component tests exercise the native positioning backend. Focused
+// fallback tests override this value before their first positioning lookup.
+window.__FUI_HEADLESS_POSITIONING_RUNTIME_MODE__ = 'native';
+
 global.ResizeObserver = class ResizeObserver {
   observe() {
     // no-op for jsdom

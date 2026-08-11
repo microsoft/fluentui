@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { devtools } from '@floating-ui/devtools';
 import { arrow as arrowMiddleware, hide as hideMiddleware } from '@floating-ui/dom';
 
@@ -39,7 +40,9 @@ const devtoolsMock = devtools as jest.MockedFunction<typeof devtools>;
 const flipMiddlewareMock = flipMiddleware as jest.MockedFunction<typeof flipMiddleware>;
 const hideMiddlewareMock = hideMiddleware as jest.MockedFunction<typeof hideMiddleware>;
 const intersectingMiddlewareMock = intersectingMiddleware as jest.MockedFunction<typeof intersectingMiddleware>;
-const matchTargetSizeMiddlewareMock = matchTargetSizeMiddleware as jest.MockedFunction<typeof matchTargetSizeMiddleware>;
+const matchTargetSizeMiddlewareMock = matchTargetSizeMiddleware as jest.MockedFunction<
+  typeof matchTargetSizeMiddleware
+>;
 const maxSizeMiddlewareMock = maxSizeMiddleware as jest.MockedFunction<typeof maxSizeMiddleware>;
 const offsetMiddlewareMock = offsetMiddleware as jest.MockedFunction<typeof offsetMiddleware>;
 const resetMaxSizeMiddlewareMock = resetMaxSizeMiddleware as jest.MockedFunction<typeof resetMaxSizeMiddleware>;

@@ -21,6 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
+import type { PositioningReturnInternal } from '../../hooks/usePositioning/internalTypes';
 import { stringifyDataAttribute } from '../../utils';
 
 /**
@@ -67,7 +68,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   };
 
   const positioningOptions = resolvePositioningShorthand(positioning);
-  const { targetRef, containerRef } = usePositioning(positioningOptions);
+  const { targetRef, containerRef, arrowRef } = usePositioning(positioningOptions) as PositioningReturnInternal;
+  state.arrowRef = arrowRef as React.Ref<HTMLDivElement>;
 
   state.content.id = useId('tooltip-', state.content.id);
   state.content['data-open'] = stringifyDataAttribute(state.visible);
@@ -115,13 +117,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
-        console.warn(
-          [
-            'Popover API is not supported in this browser, and the tooltip will not work correctly.',
-            'Please include a popover polyfill for better browser support.',
-          ].join(' '),
-          { error },
-        );
+        console.warn('The HTML Popover API is required by Headless Tooltip and is not supported in this browser.', {
+          error,
+        });
       }
     }
 

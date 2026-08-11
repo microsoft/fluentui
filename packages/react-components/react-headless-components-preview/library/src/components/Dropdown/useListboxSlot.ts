@@ -126,13 +126,9 @@ export function useListboxSlot(
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
-        console.warn(
-          [
-            'Popover API is not supported in this browser, and the listbox will not work correctly.',
-            'Please include a popover polyfill for better browser support.',
-          ].join(' '),
-          { error },
-        );
+        console.warn('The HTML Popover API is required by Headless listboxes and is not supported in this browser.', {
+          error,
+        });
       }
     }
 

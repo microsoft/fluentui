@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { POSITIONING_END_EVENT } from './constants';
 import { createPositionManager } from './createPositionManager';
 import { createPositioningManager_unstable } from './createPositioningManager_unstable';
@@ -13,7 +14,9 @@ jest.mock('./resolvePositioningOptions', () => ({
 }));
 
 const createPositionManagerMock = createPositionManager as jest.MockedFunction<typeof createPositionManager>;
-const resolvePositioningOptionsMock = resolvePositioningOptions as jest.MockedFunction<typeof resolvePositioningOptions>;
+const resolvePositioningOptionsMock = resolvePositioningOptions as jest.MockedFunction<
+  typeof resolvePositioningOptions
+>;
 
 function createResolvedManager(): PositionManager {
   return {
