@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Use a namespace import for the now ESM-only `@fluentui/tokens`",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

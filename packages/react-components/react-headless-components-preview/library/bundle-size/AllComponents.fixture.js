@@ -37,6 +37,7 @@ import * as Skeleton from '@fluentui/react-headless-components-preview/skeleton'
 import * as Slider from '@fluentui/react-headless-components-preview/slider';
 import * as SpinButton from '@fluentui/react-headless-components-preview/spin-button';
 import * as Spinner from '@fluentui/react-headless-components-preview/spinner';
+import * as SplitButton from '@fluentui/react-headless-components-preview/split-button';
 import * as SwatchPicker from '@fluentui/react-headless-components-preview/swatch-picker';
 import * as Switch from '@fluentui/react-headless-components-preview/switch';
 import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
@@ -90,6 +91,7 @@ console.log({
   Slider,
   SpinButton,
   Spinner,
+  SplitButton,
   SwatchPicker,
   Switch,
   TabList,

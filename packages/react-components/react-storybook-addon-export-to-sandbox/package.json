@@ -29,8 +29,11 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "node": {
+        "module": "./lib/index.js",
+        "default": "./lib-commonjs/index.js"
+      },
       "import": "./lib/index.js",
-      "node": "./lib-commonjs/index.js",
       "require": "./lib-commonjs/index.js"
     },
     "./preset": "./preset.js",
