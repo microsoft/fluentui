@@ -1,0 +1,8 @@
+{
+  "name": "popover-tests-headless",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": [],
+  "sourceRoot": "apps/popover-tests-headless/src",
+  "tags": ["vNext", "platform:web"]
+}
