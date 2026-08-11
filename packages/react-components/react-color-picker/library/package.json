@@ -18,7 +18,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@ctrl/tinycolor": "^3.3.4",
     "@fluentui/react-context-selector": "^9.2.18",
     "@fluentui/react-jsx-runtime": "^9.4.4",
     "@fluentui/react-shared-contexts": "^9.26.2",
