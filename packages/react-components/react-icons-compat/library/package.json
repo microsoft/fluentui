@@ -2,13 +2,14 @@
   "name": "@fluentui/react-icons-compat",
   "version": "0.2.21",
   "description": "Package for icon utility methods used by font and svg icons.",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
   ],
@@ -33,10 +34,14 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -45,5 +50,6 @@
       "major",
       "prerelease"
     ]
-  }
+  },
+  "type": "module"
 }

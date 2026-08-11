@@ -2,7 +2,7 @@
   "name": "@fluentui/react-jsx-runtime",
   "version": "9.4.4",
   "description": "Custom JSX runtime for @fluentui/react-components",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -27,31 +27,45 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./jsx-dev-runtime": {
-      "types": "./dist/jsx-dev-runtime.d.ts",
-      "node": "./lib-commonjs/jsx-dev-runtime.js",
-      "import": "./lib/jsx-dev-runtime.js",
-      "require": "./lib-commonjs/jsx-dev-runtime.js"
+      "import": {
+        "types": "./dist/jsx-dev-runtime.d.ts",
+        "default": "./lib/jsx-dev-runtime.js"
+      },
+      "require": {
+        "types": "./dist/jsx-dev-runtime.d.cts",
+        "default": "./lib-commonjs/jsx-dev-runtime.cjs"
+      }
     },
     "./jsx-runtime": {
-      "types": "./dist/jsx-runtime.d.ts",
-      "node": "./lib-commonjs/jsx-runtime.js",
-      "import": "./lib/jsx-runtime.js",
-      "require": "./lib-commonjs/jsx-runtime.js"
+      "import": {
+        "types": "./dist/jsx-runtime.d.ts",
+        "default": "./lib/jsx-runtime.js"
+      },
+      "require": {
+        "types": "./dist/jsx-runtime.d.cts",
+        "default": "./lib-commonjs/jsx-runtime.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "jsx-dev-runtime",
     "jsx-runtime",
     "lib",
     "lib-commonjs"
-  ]
+  ],
+  "type": "module"
 }
