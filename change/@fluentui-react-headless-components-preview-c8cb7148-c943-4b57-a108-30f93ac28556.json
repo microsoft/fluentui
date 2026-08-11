@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use custom renderTagPicker function for TagPicker component to avoid pulling Portal",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
