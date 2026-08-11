@@ -17,13 +17,15 @@ import type {
  * @param ref - User provided ref to be passed to the SplitButton component.
  */
 export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<HTMLDivElement>): SplitButtonState => {
-  const { appearance = 'secondary', shape = 'rounded', size = 'medium', ...rest } = props;
+  const { appearance = 'secondary', icon, menuIcon, shape = 'rounded', size = 'medium', ...rest } = props;
   const baseState = useSplitButtonBase_unstable(rest, ref);
 
   const menuButtonShorthand = slot.optional(props.menuButton, {
     defaultProps: {
       ...baseState.menuButton,
       appearance,
+      disabledFocusable: baseState.disabledFocusable,
+      menuIcon,
       shape,
       size,
     },
@@ -34,6 +36,9 @@ export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<
     defaultProps: {
       ...baseState.primaryActionButton,
       appearance,
+      disabledFocusable: baseState.disabledFocusable,
+      icon,
+      iconPosition: baseState.iconPosition,
       shape,
       size,
     },
@@ -84,19 +89,15 @@ export const useSplitButtonBase_unstable = (
   const menuButtonShorthand = slot.optional(menuButton, {
     defaultProps: {
       disabled,
-      disabledFocusable,
-      menuIcon,
     },
     renderByDefault: true,
     elementType: 'button',
   });
+
   const primaryActionButtonShorthand = slot.optional(primaryActionButton, {
     defaultProps: {
       children,
       disabled,
-      disabledFocusable,
-      icon,
-      iconPosition,
       id: baseId + '__primaryActionButton',
     },
     renderByDefault: true,
@@ -106,8 +107,6 @@ export const useSplitButtonBase_unstable = (
   // Resolve menu button's aria-labelledby to be labelled by the primary action button if no label was provided by the
   // user.
   if (
-    menuButton !== null &&
-    primaryActionButton !== null &&
     menuButtonShorthand &&
     primaryActionButtonShorthand &&
     !menuButtonShorthand['aria-label'] &&

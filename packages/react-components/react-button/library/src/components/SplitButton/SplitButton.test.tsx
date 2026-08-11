@@ -246,6 +246,7 @@ describe('SplitButton', () => {
           disabledFocusable: true,
           icon: 'Test Icon',
           iconPosition: 'after',
+          menuIcon: 'Test MenuIcon',
           menuButton: { disabled: false },
           primaryActionButton: { disabled: false, id: 'custom-primary-action' },
         },
@@ -260,23 +261,67 @@ describe('SplitButton', () => {
       disabledFocusable: true,
       iconPosition: 'after',
     });
+
+    // Base menuButton slot: disabled and ARIA survive; component-only props are NOT injected
     expect(result.current.menuButton).toMatchObject({
       disabled: false,
-      disabledFocusable: true,
       'aria-labelledby': 'custom-primary-action',
     });
+    expect(result.current.menuButton).not.toHaveProperty('disabledFocusable');
+    expect(result.current.menuButton).not.toHaveProperty('menuIcon');
+
+    // Base primaryActionButton slot: children/disabled/id survive; component-only props are NOT injected
     expect(result.current.primaryActionButton).toMatchObject({
       children: 'This is a button',
       disabled: false,
-      disabledFocusable: true,
-      icon: 'Test Icon',
-      iconPosition: 'after',
       id: 'custom-primary-action',
     });
+    expect(result.current.primaryActionButton).not.toHaveProperty('disabledFocusable');
+    expect(result.current.primaryActionButton).not.toHaveProperty('icon');
+    expect(result.current.primaryActionButton).not.toHaveProperty('iconPosition');
+
     expect(result.current.root).not.toHaveProperty('disabled');
     expect(result.current.root).not.toHaveProperty('disabledFocusable');
     expect(result.current.root).not.toHaveProperty('icon');
     expect(result.current.root).not.toHaveProperty('iconPosition');
+  });
+
+  it('styled useSplitButton_unstable adds disabledFocusable and menuIcon to concrete menuButton slot', () => {
+    const { result } = renderHook(() =>
+      useSplitButton_unstable(
+        {
+          children: 'This is a button',
+          disabledFocusable: true,
+          menuIcon: 'Test MenuIcon',
+        },
+        React.createRef<HTMLDivElement>(),
+      ),
+    );
+
+    expect(result.current.menuButton).toMatchObject({
+      disabledFocusable: true,
+      menuIcon: 'Test MenuIcon',
+    });
+  });
+
+  it('styled useSplitButton_unstable adds disabledFocusable, icon, and iconPosition to concrete primaryActionButton slot', () => {
+    const { result } = renderHook(() =>
+      useSplitButton_unstable(
+        {
+          children: 'This is a button',
+          disabledFocusable: true,
+          icon: 'Test Icon',
+          iconPosition: 'after',
+        },
+        React.createRef<HTMLDivElement>(),
+      ),
+    );
+
+    expect(result.current.primaryActionButton).toMatchObject({
+      disabledFocusable: true,
+      icon: 'Test Icon',
+      iconPosition: 'after',
+    });
   });
 
   it('does not label the menu button with a primary action that is not rendered', () => {
