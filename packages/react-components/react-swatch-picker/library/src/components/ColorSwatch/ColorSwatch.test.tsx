@@ -29,7 +29,6 @@ describe('ColorSwatch', () => {
           aria-checked="false"
           class="fui-ColorSwatch"
           role="radio"
-          style="--fui-SwatchPicker--color: #f09; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
           type="button"
         />
       </div>
