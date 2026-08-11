@@ -33,5 +33,10 @@ export type SpinButtonState = SpinButtonBaseState & {
      * Data attribute set when the value is at a range boundary. Value is 'min', 'max', or 'both'.
      */
     'data-at-bound'?: string;
+
+    /**
+     * Data attribute set when the spin button is invalid.
+     */
+    'data-invalid'?: string;
   };
 };

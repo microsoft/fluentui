@@ -14,4 +14,8 @@ export type ProgressBarProps = ProgressBarBaseProps;
 /**
  * State used in rendering ProgressBar
  */
-export type ProgressBarState = ProgressBarBaseState;
+export type ProgressBarState = ProgressBarBaseState & {
+  root: {
+    'data-indeterminate'?: string;
+  };
+};

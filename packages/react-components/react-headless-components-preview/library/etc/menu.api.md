@@ -24,8 +24,8 @@ import { MenuItemLinkProps } from '@fluentui/react-menu';
 import { MenuItemLinkSlots } from '@fluentui/react-menu';
 import { MenuItemLinkState } from '@fluentui/react-menu';
 import type { MenuItemProps as MenuItemProps_2 } from '@fluentui/react-menu';
-import { MenuItemRadioBaseProps as MenuItemRadioProps } from '@fluentui/react-menu';
-import { MenuItemRadioBaseState as MenuItemRadioState } from '@fluentui/react-menu';
+import type { MenuItemRadioBaseProps } from '@fluentui/react-menu';
+import type { MenuItemRadioBaseState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
 import type { MenuItemState as MenuItemState_2 } from '@fluentui/react-menu';
 import { MenuItemSwitchProps } from '@fluentui/react-menu';
@@ -64,10 +64,6 @@ import { useMenuDivider_unstable as useMenuDivider } from '@fluentui/react-menu'
 import { useMenuGroup_unstable as useMenuGroup } from '@fluentui/react-menu';
 import { useMenuGroupContextValues_unstable as useMenuGroupContextValues } from '@fluentui/react-menu';
 import { useMenuGroupHeader_unstable as useMenuGroupHeader } from '@fluentui/react-menu';
-import { useMenuItemCheckboxBase_unstable as useMenuItemCheckbox } from '@fluentui/react-menu';
-import { useMenuItemLinkBase_unstable as useMenuItemLink } from '@fluentui/react-menu';
-import { useMenuItemRadioBase_unstable as useMenuItemRadio } from '@fluentui/react-menu';
-import { useMenuItemSwitchBase_unstable as useMenuItemSwitch } from '@fluentui/react-menu';
 import { useMenuListContextValues_unstable as useMenuListContextValues } from '@fluentui/react-menu';
 
 // @public
@@ -113,14 +109,14 @@ export { MenuGroupState }
 export const MenuItem: ForwardRefComponent<MenuItemProps>;
 
 // @public
-export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
+export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps_2>;
 
 export { MenuItemCheckboxProps }
 
 export { MenuItemCheckboxState }
 
 // @public
-export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps>;
+export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps_2>;
 
 export { MenuItemLinkProps }
 
@@ -134,9 +130,18 @@ export type MenuItemProps = MenuItemProps_2;
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
 
-export { MenuItemRadioProps }
+// @public (undocumented)
+export type MenuItemRadioProps = MenuItemRadioBaseProps;
 
-export { MenuItemRadioState }
+// @public (undocumented)
+export type MenuItemRadioState = MenuItemRadioBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-has-submenu'?: string;
+        'data-submenu-open'?: string;
+        'data-checked'?: string;
+    };
+};
 
 export { MenuItemSlots }
 
@@ -144,11 +149,14 @@ export { MenuItemSlots }
 export type MenuItemState = MenuItemState_2 & {
     root: {
         focusgroupstart?: string;
+        'data-disabled'?: string;
+        'data-has-submenu'?: string;
+        'data-submenu-open'?: string;
     };
 };
 
 // @public
-export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
+export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps_2>;
 
 export { MenuItemSwitchProps }
 
@@ -254,13 +262,17 @@ export { useMenuGroupHeader }
 // @public
 export const useMenuItem: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemState;
 
-export { useMenuItemCheckbox }
+// @public (undocumented)
+export const useMenuItemCheckbox: (props: MenuItemCheckboxProps_2, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemCheckboxState_2;
 
-export { useMenuItemLink }
+// @public (undocumented)
+export const useMenuItemLink: (props: MenuItemLinkProps_2, ref: React_2.Ref<HTMLAnchorElement>) => MenuItemLinkState_2;
 
-export { useMenuItemRadio }
+// @public (undocumented)
+export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioState;
 
-export { useMenuItemSwitch }
+// @public (undocumented)
+export const useMenuItemSwitch: (props: MenuItemSwitchProps_2, ref: React_2.Ref<HTMLDivElement>) => MenuItemSwitchState_2;
 
 // @public
 export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;

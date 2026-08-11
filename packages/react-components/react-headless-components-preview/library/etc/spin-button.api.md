@@ -28,6 +28,7 @@ export type SpinButtonState = SpinButtonBaseState & {
         'data-disabled'?: string;
         'data-spin-state'?: string;
         'data-at-bound'?: string;
+        'data-invalid'?: string;
     };
 };
 

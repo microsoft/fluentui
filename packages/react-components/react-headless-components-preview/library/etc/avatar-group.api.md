@@ -4,6 +4,7 @@
 
 ```ts
 
+import type { AvatarGroupBaseState } from '@fluentui/react-avatar';
 import { AvatarGroupContextValue } from '@fluentui/react-avatar';
 import { AvatarGroupContextValues } from '@fluentui/react-avatar';
 import type { AvatarGroupItemBaseProps } from '@fluentui/react-avatar';
@@ -12,7 +13,6 @@ import { AvatarGroupItemBaseState as AvatarGroupItemState } from '@fluentui/reac
 import { AvatarGroupBaseProps as AvatarGroupProps } from '@fluentui/react-avatar';
 import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-avatar';
 import { AvatarGroupSlots } from '@fluentui/react-avatar';
-import { AvatarGroupBaseState as AvatarGroupState } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
@@ -81,7 +81,12 @@ export { AvatarGroupProps }
 
 export { AvatarGroupSlots }
 
-export { AvatarGroupState }
+// @public (undocumented)
+export type AvatarGroupState = AvatarGroupBaseState & {
+    root: {
+        'data-layout'?: AvatarGroupBaseState['layout'];
+    };
+};
 
 export { PartitionAvatarGroupItems }
 
@@ -97,7 +102,7 @@ export { renderAvatarGroupItem }
 export const renderAvatarGroupPopover: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSXElement;
 
 // @public
-export const useAvatarGroup: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
+export const useAvatarGroup: (props: AvatarGroupProps, ref: React_2.Ref<HTMLDivElement>) => AvatarGroupState;
 
 // @public
 export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGroupContextValues;

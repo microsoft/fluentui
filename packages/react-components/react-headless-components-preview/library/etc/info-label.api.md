@@ -31,7 +31,11 @@ export type InfoButtonSlots = {
 };
 
 // @public
-export type InfoButtonState = ComponentState<InfoButtonSlots>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & {
+    root: {
+        'data-open'?: string;
+    };
+};
 
 // @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
