@@ -8,4 +8,5 @@ export type {
 } from './ColorSwatch.types';
 export { renderColorSwatch_unstable } from './renderColorSwatch';
 export { useColorSwatch_unstable, useColorSwatchBase_unstable } from './useColorSwatch';
-export { colorSwatchClassNames, swatchCSSVars, useColorSwatchStyles_unstable } from './useColorSwatchStyles.styles';
+export { colorSwatchClassNames, useColorSwatchStyles_unstable } from './useColorSwatchStyles.styles';
+export { swatchCSSVars } from './ColorSwatch.constants';

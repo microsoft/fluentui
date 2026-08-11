@@ -9,9 +9,8 @@ import type {
   ColorSwatchState,
 } from './ColorSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
-import { swatchCSSVars } from './useColorSwatchStyles.styles';
 import { ProhibitedFilled } from '@fluentui/react-icons';
-import { tokens } from '@fluentui/react-theme';
+import { swatchCSSVars } from './ColorSwatch.constants';
 
 /**
  * Create the basee state required to render unstyled ColorSwatch.
@@ -42,7 +41,7 @@ export const useColorSwatchBase_unstable = (
 
   const rootVariables = {
     [swatchCSSVars.color]: color,
-    [swatchCSSVars.borderColor]: borderColor ?? tokens.colorTransparentStroke,
+    [swatchCSSVars.borderColor]: borderColor,
   };
 
   const role = isGrid ? 'gridcell' : 'radio';
