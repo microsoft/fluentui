@@ -2,6 +2,77 @@
   "name": "@fluentui/react-color-picker",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2026 17:20:14 GMT",
+      "version": "9.3.0",
+      "tag": "@fluentui/react-color-picker_v9.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "2dd2a9a96210919c35b210a1aa8e873ab67dbada",
+            "comment": "fix: use valid HSL syntax for color slider styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "e91455753fa2d5b5d666e5c02dbda78c12ae1901",
+            "comment": "refactor: Replace the tinycolor dependency with internal utilities."
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "e432c7189757ca18d81f6d1105cba71bb1f8bb38",
+            "comment": "fix: Move shared color picker CSS variables from style modules to constants files."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake."
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "8f1ae4d7b51af9117121c9e1cb5ee8397c36b78e",
+            "comment": "feat(react-color-picker): expose headless base APIs"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.26.17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-theme to v9.2.2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.26.6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Aug 2026 10:12:17 GMT",
       "tag": "@fluentui/react-color-picker_v9.2.19",
       "version": "9.2.19",

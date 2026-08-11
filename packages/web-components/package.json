@@ -111,7 +111,7 @@
     "rollup-plugin-fast-tagged-templates": "^1.0.2"
   },
   "dependencies": {
-    "@fluentui/tokens": "^1.0.0-alpha.23",
+    "@fluentui/tokens": "^1.0.0-alpha.24",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

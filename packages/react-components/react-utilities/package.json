@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-utilities",
-  "version": "9.26.5",
+  "version": "9.26.6",
   "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
@@ -12,8 +12,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.8",
-    "@fluentui/react-shared-contexts": "^9.26.2",
+    "@fluentui/keyboard-keys": "^9.0.9",
+    "@fluentui/react-shared-contexts": "^9.26.3",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

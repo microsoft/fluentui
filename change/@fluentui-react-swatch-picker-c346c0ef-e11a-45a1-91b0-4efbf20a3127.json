@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: expose headless base APIs",
-  "packageName": "@fluentui/react-swatch-picker",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
