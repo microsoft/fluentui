@@ -57,6 +57,7 @@
     "@fluentui/react-slider": "^9.6.4",
     "@fluentui/react-spinbutton": "^9.6.4",
     "@fluentui/react-spinner": "^9.8.4",
+    "@fluentui/react-swatch-picker": "^9.5.4",
     "@fluentui/react-switch": "^9.7.4",
     "@fluentui/react-tabs": "^9.12.3",
     "@fluentui/react-tabster": "^9.26.16",
@@ -322,6 +323,12 @@
       "node": "./lib-commonjs/spinner.js",
       "import": "./lib/spinner.js",
       "require": "./lib-commonjs/spinner.js"
+    },
+    "./swatch-picker": {
+      "types": "./dist/swatch-picker.d.ts",
+      "node": "./lib-commonjs/swatch-picker.js",
+      "import": "./lib/swatch-picker.js",
+      "require": "./lib-commonjs/swatch-picker.js"
     },
     "./switch": {
       "types": "./dist/switch.d.ts",
