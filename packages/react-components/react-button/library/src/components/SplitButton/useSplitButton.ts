@@ -23,7 +23,6 @@ export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<
   const menuButtonShorthand = slot.optional(props.menuButton, {
     defaultProps: {
       ...baseState.menuButton,
-      children: undefined,
       appearance,
       disabledFocusable: baseState.disabledFocusable,
       menuIcon,
@@ -36,7 +35,6 @@ export const useSplitButton_unstable = (props: SplitButtonProps, ref: React.Ref<
   const primaryActionButtonShorthand = slot.optional(props.primaryActionButton, {
     defaultProps: {
       ...baseState.primaryActionButton,
-      children: props.children,
       appearance,
       disabledFocusable: baseState.disabledFocusable,
       icon,

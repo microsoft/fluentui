@@ -8,16 +8,15 @@ import type { ButtonBaseProps } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
 import { MenuButtonBaseProps } from '@fluentui/react-button';
 import type * as React_2 from 'react';
+import { renderSplitButton_unstable as renderSplitButton } from '@fluentui/react-button';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SplitButtonBaseProps } from '@fluentui/react-button';
 import type { SplitButtonBaseSlots } from '@fluentui/react-button';
 import type { SplitButtonBaseState } from '@fluentui/react-button';
 
-// @public
-export const renderSplitButton: (state: SplitButtonState) => JSXElement;
+export { renderSplitButton }
 
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
