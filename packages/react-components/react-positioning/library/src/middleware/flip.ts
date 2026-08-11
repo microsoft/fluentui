@@ -7,10 +7,12 @@ export interface FlipMiddlewareOptions extends Pick<PositioningOptions, 'flipBou
   hasScrollableElement?: boolean;
   container: HTMLElement | null;
   isRtl?: boolean;
+  fallbackStrategy?: 'bestFit' | 'initialPlacement';
 }
 
 export function flip(options: FlipMiddlewareOptions): Middleware {
-  const { hasScrollableElement, flipBoundary, container, fallbackPositions = [], isRtl } = options;
+  const { hasScrollableElement, flipBoundary, container, fallbackPositions = [], isRtl, fallbackStrategy = 'bestFit' } =
+    options;
 
   const fallbackPlacements = fallbackPositions.reduce<Placement[]>((acc, shorthand) => {
     const { position, align } = resolvePositioningShorthand(shorthand);
@@ -24,7 +26,7 @@ export function flip(options: FlipMiddlewareOptions): Middleware {
   return baseFlip({
     ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(flipBoundary && { altBoundary: true, boundary: getBoundary(container, flipBoundary) }),
-    fallbackStrategy: 'bestFit',
+    fallbackStrategy,
     ...(fallbackPlacements.length && { fallbackPlacements }),
   });
 }

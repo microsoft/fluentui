@@ -223,6 +223,22 @@ export interface PositioningOptions {
   unstable_disableTether?: boolean | 'all';
 
   /**
+   * Disables shift middleware.
+   * Useful for matching native CSS anchor positioning behavior.
+   * @default false
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_disableShift?: boolean;
+
+  /**
+   * Controls the flip middleware fallback strategy.
+   * Useful for matching native CSS anchor positioning behavior.
+   * @default 'bestFit'
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_flipFallbackStrategy?: 'bestFit' | 'initialPlacement';
+
+  /**
    * If flip fails to stop the positioned element from overflowing
    * its boundaries, use a specified fallback positions.
    */
@@ -296,6 +312,70 @@ export interface PositioningProps
    * Manual override for the target element. Useful for scenarios where a component accepts user prop to override target
    */
   target?: TargetElement | null;
+}
+
+/**
+ * @internal
+ */
+export interface CreatePositioningManagerOptions extends PositioningProps {
+  /**
+   * The positioned element
+   */
+  container: HTMLElement | null;
+
+  /**
+   * Element that the container will be anchored to
+   */
+  target: TargetElement | null;
+
+  /**
+   * Arrow that points from the container to the target
+   */
+  arrow?: HTMLElement | null;
+
+  /**
+   * Text direction used to resolve logical placements
+   */
+  dir?: 'ltr' | 'rtl';
+
+  /**
+   * Document used for devtools integration
+   */
+  targetDocument?: Document;
+
+  /**
+   * If false, does not position anything
+   */
+  enabled?: boolean;
+
+  /**
+   * Enables the positioned element to use CSS position: fixed
+   * @deprecated use `strategy` instead
+   */
+  positionFixed?: boolean;
+
+  /**
+   * When the reference element or the viewport is outside viewport allows a positioned element to be fully in viewport.
+   * "all" enables this behavior for all axis.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_disableTether?: boolean | 'all';
+
+  /**
+   * Disables shift middleware.
+   * Useful for matching native CSS anchor positioning behavior.
+   * @default false
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_disableShift?: boolean;
+
+  /**
+   * Controls the flip middleware fallback strategy.
+   * Useful for matching native CSS anchor positioning behavior.
+   * @default 'bestFit'
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_flipFallbackStrategy?: 'bestFit' | 'initialPlacement';
 }
 
 export type PositioningShorthandValue =

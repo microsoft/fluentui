@@ -2,6 +2,7 @@ export { createVirtualElementFromClick } from './createVirtualElementFromClick';
 export { usePositioningSlideDirection } from './usePositioningSlideDirection';
 export { POSITIONING_SLIDE_DIRECTION_VAR_X, POSITIONING_SLIDE_DIRECTION_VAR_Y } from './constants';
 export { createArrowHeightStyles, createArrowStyles } from './createArrowStyles';
+export { createPositioningManager_unstable } from './createPositioningManager_unstable';
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export { createSlideStyles } from './createSlideStyles';
 export type { CreateArrowStylesOptions } from './createArrowStyles';
@@ -19,6 +20,7 @@ export type {
   AutoSize,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   Boundary,
+  CreatePositioningManagerOptions,
   Offset,
   OffsetFunction,
   OffsetFunctionParam,
@@ -27,6 +29,7 @@ export type {
   Position,
   PositioningBoundary,
   PositioningImperativeRef,
+  PositionManager,
   PositioningProps,
   PositioningRect,
   PositioningShorthand,

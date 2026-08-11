@@ -32,6 +32,24 @@ export type CreateArrowStylesOptions = {
     borderColor?: GriffelStyle['borderBottomColor'];
 };
 
+// @internal (undocumented)
+export function createPositioningManager_unstable(options: CreatePositioningManagerOptions): PositionManager;
+
+// @internal (undocumented)
+export interface CreatePositioningManagerOptions extends PositioningProps {
+    arrow?: HTMLElement | null;
+    container: HTMLElement | null;
+    dir?: 'ltr' | 'rtl';
+    enabled?: boolean;
+    // @deprecated
+    positionFixed?: boolean;
+    target: TargetElement | null;
+    targetDocument?: Document;
+    unstable_disableShift?: boolean;
+    unstable_disableTether?: boolean | 'all';
+    unstable_flipFallbackStrategy?: 'bestFit' | 'initialPlacement';
+}
+
 // @public @deprecated
 export function createSlideStyles(mainAxis: number): GriffelStyle;
 
@@ -129,6 +147,14 @@ export type PositioningVirtualElement = {
     };
     contextElement?: Element;
 };
+
+// @internal (undocumented)
+export interface PositionManager {
+    // (undocumented)
+    dispose: () => void;
+    // (undocumented)
+    updatePosition: () => void;
+}
 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;

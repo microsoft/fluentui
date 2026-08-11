@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { createPositioningManager_unstable } from './createPositioningManager_unstable';
+import type { CreatePositioningManagerOptions, PositionManager } from './types';
 import type { OnPositioningEndEvent } from './types';
 import type { PositioningProps } from './types';
 
@@ -53,5 +55,26 @@ describe('PositioningProps', () => {
     };
 
     expect(props.onPositioningEnd).toBeDefined();
+  });
+});
+
+describe('createPositioningManager_unstable', () => {
+  it('should not break the factory option and return types', () => {
+    const factory: (options: CreatePositioningManagerOptions) => PositionManager = createPositioningManager_unstable;
+    const options: CreatePositioningManagerOptions = {
+      arrow: null,
+      container: document.createElement('div'),
+      dir: 'rtl',
+      enabled: true,
+      positionFixed: true,
+      target: document.createElement('button'),
+      targetDocument: document,
+      unstable_disableShift: true,
+      unstable_disableTether: 'all',
+      unstable_flipFallbackStrategy: 'initialPlacement',
+    };
+
+    expect(factory).toBeDefined();
+    expect(options).toBeTruthy;
   });
 });
