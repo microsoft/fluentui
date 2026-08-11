@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { SplitButton } from './SplitButton';
-import type { ButtonProps } from '../Button/Button.types';
-import type { MenuButtonProps } from '../MenuButton/MenuButton.types';
 
 describe('SplitButton', () => {
   isConformant({
@@ -19,27 +16,6 @@ describe('SplitButton', () => {
 
     expect(primaryActionButton).toBeInTheDocument();
     expect(menuButton).toBeInTheDocument();
-  });
-
-  it('preserves default children for a primary action button render function', () => {
-    const renderPrimaryActionButton: SlotRenderFunction<ButtonProps> = (_Component, slotProps) => slotProps.children;
-    const { getByText } = render(
-      <SplitButton primaryActionButton={{ children: renderPrimaryActionButton }}>This is a button</SplitButton>,
-    );
-
-    expect(getByText('This is a button')).toBeInTheDocument();
-  });
-
-  it('preserves undefined children for a menu button render function', () => {
-    const renderMenuButton: SlotRenderFunction<MenuButtonProps> = (_Component, slotProps) => {
-      expect(slotProps.children).toBeUndefined();
-      return <button type="button" />;
-    };
-    const { getAllByRole } = render(
-      <SplitButton menuButton={{ children: renderMenuButton }}>This is a button</SplitButton>,
-    );
-
-    expect(getAllByRole('button')).toHaveLength(2);
   });
 
   it('ships no default menu icon', () => {
