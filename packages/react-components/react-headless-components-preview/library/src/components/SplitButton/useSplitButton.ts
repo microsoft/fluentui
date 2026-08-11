@@ -14,36 +14,11 @@ import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
  * SplitButton-level styling or state attributes.
  */
 export const useSplitButton = (props: SplitButtonProps, ref: React.Ref<HTMLDivElement>): SplitButtonState => {
-  const {
-    children,
-    disabled,
-    disabledFocusable,
-    icon,
-    iconPosition,
-    menuButton,
-    menuIcon,
-    primaryActionButton,
-    ...rootProps
-  } = props;
-  const baseState = useSplitButtonBase_unstable(
-    {
-      children,
-      disabled,
-      disabledFocusable,
-      icon,
-      iconPosition,
-      menuButton,
-      menuIcon,
-      primaryActionButton,
-    },
-    ref,
-  );
-  Object.assign(baseState.root, rootProps);
+  const baseState = useSplitButtonBase_unstable(props, ref);
 
   const menuButtonShorthand = slot.optional(props.menuButton, {
     defaultProps: {
       ...baseState.menuButton,
-      children: undefined,
       disabledFocusable: baseState.disabledFocusable,
       menuIcon: props.menuIcon,
     },
@@ -53,7 +28,6 @@ export const useSplitButton = (props: SplitButtonProps, ref: React.Ref<HTMLDivEl
   const primaryActionButtonShorthand = slot.optional(props.primaryActionButton, {
     defaultProps: {
       ...baseState.primaryActionButton,
-      children: props.children,
       disabledFocusable: baseState.disabledFocusable,
       icon: props.icon,
       iconPosition: baseState.iconPosition,
