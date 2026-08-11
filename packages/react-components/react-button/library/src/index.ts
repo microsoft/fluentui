@@ -11,10 +11,17 @@ export {
   CompoundButton,
   compoundButtonClassNames,
   renderCompoundButton_unstable,
+  useCompoundButtonBase_unstable,
   useCompoundButtonStyles_unstable,
   useCompoundButton_unstable,
 } from './CompoundButton';
-export type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } from './CompoundButton';
+export type {
+  CompoundButtonBaseProps,
+  CompoundButtonBaseState,
+  CompoundButtonProps,
+  CompoundButtonSlots,
+  CompoundButtonState,
+} from './CompoundButton';
 export {
   MenuButton,
   menuButtonClassNames,

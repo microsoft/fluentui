@@ -28,6 +28,7 @@
     "@fluentui/react-button": "^9.10.1",
     "@fluentui/react-card": "^9.7.1",
     "@fluentui/react-checkbox": "^9.6.3",
+    "@fluentui/react-color-picker": "^9.2.19",
     "@fluentui/react-combobox": "^9.17.4",
     "@fluentui/react-context-selector": "^9.2.18",
     "@fluentui/react-dialog": "^9.18.2",
@@ -57,6 +58,7 @@
     "@fluentui/react-slider": "^9.6.4",
     "@fluentui/react-spinbutton": "^9.6.4",
     "@fluentui/react-spinner": "^9.8.4",
+    "@fluentui/react-swatch-picker": "^9.5.4",
     "@fluentui/react-switch": "^9.7.4",
     "@fluentui/react-tabs": "^9.12.3",
     "@fluentui/react-tabster": "^9.26.16",
@@ -153,6 +155,12 @@
         "default": "./lib-commonjs/checkbox.cjs"
       }
     },
+    "./color-picker": {
+      "types": "./dist/color-picker.d.ts",
+      "node": "./lib-commonjs/color-picker.js",
+      "import": "./lib/color-picker.js",
+      "require": "./lib-commonjs/color-picker.js"
+    },
     "./combobox": {
       "import": {
         "types": "./dist/combobox.d.ts",
@@ -162,6 +170,12 @@
         "types": "./dist/combobox.d.cts",
         "default": "./lib-commonjs/combobox.cjs"
       }
+    },
+    "./compound-button": {
+      "types": "./dist/compound-button.d.ts",
+      "node": "./lib-commonjs/compound-button.js",
+      "import": "./lib/compound-button.js",
+      "require": "./lib-commonjs/compound-button.js"
     },
     "./dialog": {
       "import": {
@@ -454,6 +468,12 @@
         "types": "./dist/spinner.d.cts",
         "default": "./lib-commonjs/spinner.cjs"
       }
+    },
+    "./swatch-picker": {
+      "types": "./dist/swatch-picker.d.ts",
+      "node": "./lib-commonjs/swatch-picker.js",
+      "import": "./lib/swatch-picker.js",
+      "require": "./lib-commonjs/swatch-picker.js"
     },
     "./switch": {
       "import": {
