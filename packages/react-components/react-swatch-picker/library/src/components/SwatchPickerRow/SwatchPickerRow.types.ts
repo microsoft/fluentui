@@ -10,7 +10,11 @@ export type SwatchPickerRowSlots = {
  */
 export type SwatchPickerRowProps = ComponentProps<SwatchPickerRowSlots>;
 
+export type SwatchPickerRowBaseProps = ComponentProps<SwatchPickerRowSlots>;
+
 /**
  * State used in rendering SwatchPickerRow
  */
 export type SwatchPickerRowState = ComponentState<SwatchPickerRowSlots> & Pick<SwatchPickerProps, 'spacing'>;
+
+export type SwatchPickerRowBaseState = ComponentState<SwatchPickerRowSlots>;

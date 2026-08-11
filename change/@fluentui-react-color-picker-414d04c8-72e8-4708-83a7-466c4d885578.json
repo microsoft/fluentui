@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-color-picker): expose headless base APIs",
+  "packageName": "@fluentui/react-color-picker",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

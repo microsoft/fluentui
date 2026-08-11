@@ -42,6 +42,9 @@ export async function renderEntry(entry: ChangelogEntry): Promise<string> {
 }
 
 async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> {
+  if (!entry.commit || entry.commit === 'not available') {
+    return undefined;
+  }
   // Look for (presumably) the PR number at the end of the first line of the commit
   try {
     // Get the actual commit message which should contain the PR number

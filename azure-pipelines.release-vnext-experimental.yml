@@ -118,10 +118,12 @@ extends:
                 displayName: test
 
               - script: |
-                  yarn beachball publish -b origin/$(validation.branchPath) --access public -y -n $(npmToken) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
+                  yarn beachball publish -b origin/$(validation.branchPath) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
                   git reset --hard origin/$(validation.branchPath)
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
+                env:
+                  NPM_TOKEN: $(npmToken)
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:
