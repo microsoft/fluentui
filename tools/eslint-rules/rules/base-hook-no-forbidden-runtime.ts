@@ -107,7 +107,15 @@ interface AnalysisCache {
   type: Map<ts.Symbol, Hit | null>;
 }
 
-const programCache = new WeakMap<ts.Program, AnalysisCache>();
+/**
+ * Every cached answer is only true *relative to a forbidden-runtime set*, so the memo is
+ * partitioned by that set as well as by Program. Sharing one bucket across configurations lets a
+ * result computed for one ban list be served to another that bans different packages — producing
+ * both spurious diagnostics (a runtime the second config allows) and missed ones (a `null` cached
+ * before the package was banned). Configurations with identical ban lists still share a bucket,
+ * which is where the win of this cache actually comes from.
+ */
+const programCache = new WeakMap<ts.Program, Map<string, AnalysisCache>>();
 
 export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,
@@ -490,7 +498,7 @@ function findForbiddenRuntime(
   forbiddenRuntimes: ReadonlySet<string>,
 ): Hit | null {
   const followTypes = false;
-  const cache = getAnalysisCache(program).value;
+  const cache = getAnalysisCache(program, forbiddenRuntimes).value;
   const inProgress = new Set<ts.Symbol>();
 
   function visitSymbol(current: ts.Symbol): Hit | null {
@@ -615,7 +623,7 @@ function findForbiddenTypeReach(
   symbol: ts.Symbol,
   forbiddenRuntimes: ReadonlySet<string>,
 ): Hit | null {
-  const cache = getAnalysisCache(program).type;
+  const cache = getAnalysisCache(program, forbiddenRuntimes).type;
   const cached = cache.get(symbol);
   if (cached !== undefined) {
     return cached;
@@ -769,13 +777,35 @@ function isLibraryFile(program: ts.Program, sourceFile: ts.SourceFile): boolean 
   return program.isSourceFileDefaultLibrary(sourceFile) || toPosixPath(sourceFile.fileName).includes('/@types/');
 }
 
-function getAnalysisCache(program: ts.Program): AnalysisCache {
-  let cache = programCache.get(program);
+function getAnalysisCache(program: ts.Program, forbiddenRuntimes: ReadonlySet<string>): AnalysisCache {
+  let byRuntimeSet = programCache.get(program);
+  if (!byRuntimeSet) {
+    byRuntimeSet = new Map();
+    programCache.set(program, byRuntimeSet);
+  }
+  const key = cacheKeyOf(forbiddenRuntimes);
+  let cache = byRuntimeSet.get(key);
   if (!cache) {
     cache = { value: new Map(), type: new Map() };
-    programCache.set(program, cache);
+    byRuntimeSet.set(key, cache);
   }
   return cache;
+}
+
+/**
+ * Memo of forbidden-runtime set → its cache key. The set is built once per rule instance, so this
+ * keeps the sort out of the per-symbol path while still letting two instances configured
+ * identically resolve to the same key and therefore share a cache bucket.
+ */
+const cacheKeyBySet = new WeakMap<ReadonlySet<string>, string>();
+
+function cacheKeyOf(forbiddenRuntimes: ReadonlySet<string>): string {
+  let key = cacheKeyBySet.get(forbiddenRuntimes);
+  if (key === undefined) {
+    key = [...forbiddenRuntimes].sort().join('\u0000');
+    cacheKeyBySet.set(forbiddenRuntimes, key);
+  }
+  return key;
 }
 
 /**

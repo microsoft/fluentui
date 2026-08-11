@@ -786,3 +786,73 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
     },
   ],
 });
+
+// ---------------------------------------------------------------------------
+// Cache partitioning by forbidden-runtime set.
+//
+// An answer is only true relative to the set it was computed for, while the Program (and the
+// symbols and types in it) is shared by every configuration pointed at the same tsconfig. These
+// runs are ordered on purpose: each one re-asks about `useHeavy` after a previous run has already
+// cached an answer for it under a *different* set.
+// ---------------------------------------------------------------------------
+const heavyReference = `
+  import { useHeavy } from 'watched-pkg';
+  export const useThingBase_unstable = (props, ref) => {
+    return { props, ref, x: useHeavy() };
+  };
+`;
+
+const heavyReferenceError = [
+  {
+    messageId: 'forbiddenRuntimeReach' as const,
+    data: {
+      hookName: 'useThingBase_unstable',
+      importedName: 'useHeavy',
+      package: 'watched-pkg',
+      runtime: 'heavy-runtime',
+      viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/watched-pkg/heavy.ts',
+    },
+  },
+];
+
+// 1. Seeds the `heavy-runtime` bucket with a hit.
+new RuleTester().run(`${RULE_NAME} (typed, cache seeded for heavy-runtime)`, rule, {
+  valid: [],
+  invalid: [
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: heavyReference,
+      errors: heavyReferenceError,
+    },
+  ],
+});
+
+// 2. A configuration that does not ban `heavy-runtime` must not inherit that hit — otherwise it
+//    is told about a package it explicitly allows.
+new RuleTester().run(`${RULE_NAME} (typed, hit not reused by a set that allows it)`, rule, {
+  valid: [
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: workspaceRuntimeOptions,
+      code: heavyReference,
+    },
+  ],
+  invalid: [],
+});
+
+// 3. ...and the clean answer just cached for that set must not suppress the real one.
+new RuleTester().run(`${RULE_NAME} (typed, clean result not reused by a set that forbids it)`, rule, {
+  valid: [],
+  invalid: [
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: heavyReference,
+      errors: heavyReferenceError,
+    },
+  ],
+});
