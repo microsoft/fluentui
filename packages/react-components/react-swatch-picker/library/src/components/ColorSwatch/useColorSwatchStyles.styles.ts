@@ -5,16 +5,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
 import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { swatchCSSVars } from './ColorSwatch.constants';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
   icon: 'fui-ColorSwatch__icon',
   disabledIcon: 'fui-ColorSwatch__disabledIcon',
-};
-
-export const swatchCSSVars = {
-  color: `--fui-SwatchPicker--color`,
-  borderColor: `--fui-SwatchPicker--borderColor`,
 };
 
 const { color, borderColor } = swatchCSSVars;
@@ -28,7 +24,7 @@ const useResetStyles = makeResetStyles({
   alignItems: 'center',
   justifyContent: 'center',
   boxSizing: 'border-box',
-  border: `1px solid var(${borderColor})`,
+  border: `1px solid var(${borderColor}, ${tokens.colorTransparentStroke})`,
   background: `var(${color})`,
   overflow: 'hidden',
   padding: '0',
@@ -67,10 +63,6 @@ const useResetStyles = makeResetStyles({
 });
 
 const useStyles = makeStyles({
-  root: {
-    [swatchCSSVars.color]: color,
-    [swatchCSSVars.borderColor]: borderColor ?? tokens.colorTransparentStroke,
-  },
   disabled: {
     ':hover': {
       cursor: 'not-allowed',
@@ -195,7 +187,6 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
     resetStyles,
-    styles.root,
     sizeStyles[size],
     shapeStyles[shape],
     state.selected && styles.selected,

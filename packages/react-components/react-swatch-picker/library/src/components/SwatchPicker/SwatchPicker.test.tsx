@@ -32,6 +32,7 @@ describe('SwatchPicker', () => {
             aria-checked="false"
             class="fui-ColorSwatch"
             role="radio"
+            style="--fui-SwatchPicker--color: #f09;"
             type="button"
           />
           <button
@@ -39,6 +40,7 @@ describe('SwatchPicker', () => {
             class="fui-ColorSwatch"
             disabled=""
             role="radio"
+            style="--fui-SwatchPicker--color: #0f0;"
             type="button"
           >
             <span
