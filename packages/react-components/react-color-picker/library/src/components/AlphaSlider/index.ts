@@ -8,8 +8,5 @@ export type {
 } from './AlphaSlider.types';
 export { renderAlphaSlider_unstable } from './renderAlphaSlider';
 export { useAlphaSliderBase_unstable, useAlphaSlider_unstable } from './useAlphaSlider';
-export {
-  alphaSliderCSSVars,
-  alphaSliderClassNames,
-  useAlphaSliderStyles_unstable,
-} from './useAlphaSliderStyles.styles';
+export { alphaSliderClassNames, useAlphaSliderStyles_unstable } from './useAlphaSliderStyles.styles';
+export { alphaSliderCSSVars } from './AlphaSlider.constants';

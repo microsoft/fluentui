@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { alphaSliderCSSVars } from './useAlphaSliderStyles.styles';
+import { alphaSliderCSSVars } from './AlphaSlider.constants';
 import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 import { MIN, MAX } from '../../utils/constants';
