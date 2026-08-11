@@ -30,11 +30,10 @@ jobs:
         run: |
           echo "yarn.lock changed! Verifying package deduplication ..."
 
-          yarn run dedupe --check --json
-
-          if [[ $? -ne 0 ]]; then
-            echo "Your changes introduced package duplication 🚨"
-            echo "Run 'yarn run dedupe' to fix those."
+          if ! yarn run dedupe --check; then
+            echo
+            echo "::error::Your changes introduced package duplication - run 'yarn run dedupe' to fix."
+            exit 1
           else
             echo "No duplicate packages introduced ✅"
           fi

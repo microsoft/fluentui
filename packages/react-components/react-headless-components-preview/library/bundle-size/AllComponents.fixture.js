@@ -6,6 +6,7 @@ import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcr
 import * as Button from '@fluentui/react-headless-components-preview/button';
 import * as Card from '@fluentui/react-headless-components-preview/card';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
+import * as ColorPicker from '@fluentui/react-headless-components-preview/color-picker';
 import * as Combobox from '@fluentui/react-headless-components-preview/combobox';
 import * as CompoundButton from '@fluentui/react-headless-components-preview/compound-button';
 import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
@@ -36,6 +37,7 @@ import * as Skeleton from '@fluentui/react-headless-components-preview/skeleton'
 import * as Slider from '@fluentui/react-headless-components-preview/slider';
 import * as SpinButton from '@fluentui/react-headless-components-preview/spin-button';
 import * as Spinner from '@fluentui/react-headless-components-preview/spinner';
+import * as SwatchPicker from '@fluentui/react-headless-components-preview/swatch-picker';
 import * as Switch from '@fluentui/react-headless-components-preview/switch';
 import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
 import * as Tag from '@fluentui/react-headless-components-preview/tag';
@@ -57,6 +59,7 @@ console.log({
   Button,
   Card,
   Checkbox,
+  ColorPicker,
   Combobox,
   CompoundButton,
   Dialog,
@@ -87,6 +90,7 @@ console.log({
   Slider,
   SpinButton,
   Spinner,
+  SwatchPicker,
   Switch,
   TabList,
   Tag,
