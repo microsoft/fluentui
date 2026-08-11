@@ -108,8 +108,8 @@ export const useColorSliderBase_unstable = (
       channel === 'hue' ? `hsl(${clampedValue}, 100%, 50%)` : createHslColorString(hsvColor),
     [colorSliderCSSVars.railColorVar]:
       channel === 'hue'
-        ? `hsl(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%)`
-        : `hsl(${hslColor.h} 100%, 50%)`,
+        ? `hsl(${hslColor.h}, ${hslColor.s * 100}%, ${hslColor.l * 100}%)`
+        : `hsl(${hslColor.h}, 100%, 50%)`,
   };
 
   const state: ColorSliderBaseState = {
