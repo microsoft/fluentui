@@ -3778,7 +3778,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-color-picker@workspace:packages/react-components/react-color-picker/library"
   dependencies:
-    "@ctrl/tinycolor": "npm:^3.3.4"
     "@fluentui/react-context-selector": "npm:^9.2.18"
     "@fluentui/react-jsx-runtime": "npm:^9.4.4"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
