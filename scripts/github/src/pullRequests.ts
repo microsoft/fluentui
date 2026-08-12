@@ -2,22 +2,56 @@ import type { Octokit, RestEndpointMethodTypes } from '@octokit/rest';
 import type { IPullRequest, IRepoDetails } from './types';
 
 /**
- * Once GitHub rejects our credentials, every subsequent request will be rejected too. Tracking this
- * lets callers short-circuit instead of retrying for every changelog entry.
+ * Why further PR lookups are being skipped, if they are.
+ *
+ * Once GitHub rejects our credentials every subsequent request will be rejected too, and once we
+ * are rate limited the remaining lookups will only make it worse - in both cases the useful move is
+ * to stop asking. The reason is kept because the two need very different advice.
  *
  * Context: during the 2026-06-30 release an expired PAT produced ~180 near-identical 403 stack
  * traces, which buried the single line that actually mattered (the failed git push).
  */
-let authFailureLogged = false;
+let lookupsDisabledReason: 'auth' | 'rate-limit' | undefined;
 
 /** True if a previous GitHub API call failed with an authentication/authorization error. */
 export function hasGitHubAuthFailed(): boolean {
-  return authFailureLogged;
+  return lookupsDisabledReason === 'auth';
 }
 
-/** Reset the cached auth-failure state (intended for tests). */
+/** Reset the cached failure state (intended for tests). */
 export function resetGitHubAuthFailure(): void {
-  authFailureLogged = false;
+  lookupsDisabledReason = undefined;
+}
+
+/**
+ * Separate a genuine credential problem from rate limiting.
+ *
+ * GitHub overloads 403: it means "forbidden" for a bad or policy-blocked token, but also for
+ * primary and secondary rate limits. Telling someone to rotate a perfectly good PAT in the middle
+ * of a release is exactly the kind of misdirection this logging is meant to prevent, so the two are
+ * told apart by the rate-limit headers GitHub sends.
+ */
+function classifyFailure(ex: unknown): 'auth' | 'rate-limit' | undefined {
+  const status = (ex as { status?: number }).status;
+
+  if (status === 429) {
+    return 'rate-limit';
+  }
+
+  if (status !== 401 && status !== 403) {
+    return undefined;
+  }
+
+  const headers = ((ex as { response?: { headers?: Record<string, unknown> } }).response?.headers ?? {}) as Record<
+    string,
+    unknown
+  >;
+
+  if (headers['retry-after'] !== undefined || String(headers['x-ratelimit-remaining']) === '0') {
+    return 'rate-limit';
+  }
+
+  return 'auth';
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -40,9 +74,9 @@ export async function getPullRequestForCommit(
 ): Promise<IPullRequest | undefined> {
   const { github, repoDetails, commit, authorEmail, verbose } = params;
 
-  // Skip the request entirely if we already know the credentials are rejected. Without this, a bad
-  // token causes one failed request (plus a full stack trace) for every single changelog entry.
-  if (authFailureLogged) {
+  // Skip the request entirely if we already know it cannot succeed. Without this, a bad token
+  // causes one failed request (plus a full stack trace) for every single changelog entry.
+  if (lookupsDisabledReason) {
     return;
   }
 
@@ -70,18 +104,29 @@ export async function getPullRequestForCommit(
     }
   } catch (ex) {
     const status = (ex as { status?: number }).status;
+    const reason = classifyFailure(ex);
 
-    // 401/403 means the token is bad, expired, or blocked by policy - retrying for every remaining
-    // commit is pure noise. Log once with the actionable detail, then degrade gracefully: changelog
-    // entries fall back to commit links instead of PR links.
-    if (status === 401 || status === 403) {
-      authFailureLogged = true;
+    // A rejected token or a rate limit means retrying for every remaining commit is pure noise.
+    // Log once with the actionable detail, then degrade gracefully: changelog entries fall back to
+    // commit links instead of PR links.
+    if (reason) {
+      lookupsDisabledReason = reason;
       const message = (ex as { message?: string }).message ?? 'Unknown error';
+      const headline =
+        reason === 'auth'
+          ? `GitHub API authentication failed (HTTP ${status}) while building changelogs.`
+          : `GitHub API rate limit reached (HTTP ${status}) while building changelogs.`;
+      const advice =
+        reason === 'auth'
+          ? '  Check that the pipeline token is valid and has not expired.'
+          : '  This is a rate limit, not a token problem - the token does not need rotating.';
+
       console.warn(
         [
           '',
-          `##vso[task.logissue type=warning]GitHub API authentication failed (HTTP ${status}) while building changelogs.`,
+          `##vso[task.logissue type=warning]${headline}`,
           `  ${message}`,
+          advice,
           '  Changelog entries will link to commits instead of pull requests.',
           '  Further PR lookups are skipped for this run.',
           '',
