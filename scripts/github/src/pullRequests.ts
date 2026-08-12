@@ -1,5 +1,24 @@
 import type { Octokit, RestEndpointMethodTypes } from '@octokit/rest';
-import { IPullRequest, IRepoDetails } from './types';
+import type { IPullRequest, IRepoDetails } from './types';
+
+/**
+ * Once GitHub rejects our credentials, every subsequent request will be rejected too. Tracking this
+ * lets callers short-circuit instead of retrying for every changelog entry.
+ *
+ * Context: during the 2026-06-30 release an expired PAT produced ~180 near-identical 403 stack
+ * traces, which buried the single line that actually mattered (the failed git push).
+ */
+let authFailureLogged = false;
+
+/** True if a previous GitHub API call failed with an authentication/authorization error. */
+export function hasGitHubAuthFailed(): boolean {
+  return authFailureLogged;
+}
+
+/** Reset the cached auth-failure state (intended for tests). */
+export function resetGitHubAuthFailure(): void {
+  authFailureLogged = false;
+}
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IGetPullRequestFromCommitParams {
@@ -20,6 +39,12 @@ export async function getPullRequestForCommit(
   params: IGetPullRequestFromCommitParams,
 ): Promise<IPullRequest | undefined> {
   const { github, repoDetails, commit, authorEmail, verbose } = params;
+
+  // Skip the request entirely if we already know the credentials are rejected. Without this, a bad
+  // token causes one failed request (plus a full stack trace) for every single changelog entry.
+  if (authFailureLogged) {
+    return;
+  }
 
   verbose && console.log(`Looking for the PR containing ${commit}...`);
 
@@ -44,6 +69,27 @@ export async function getPullRequestForCommit(
       return processPullRequestApiResponse(prs[0], authorEmail);
     }
   } catch (ex) {
+    const status = (ex as { status?: number }).status;
+
+    // 401/403 means the token is bad, expired, or blocked by policy - retrying for every remaining
+    // commit is pure noise. Log once with the actionable detail, then degrade gracefully: changelog
+    // entries fall back to commit links instead of PR links.
+    if (status === 401 || status === 403) {
+      authFailureLogged = true;
+      const message = (ex as { message?: string }).message ?? 'Unknown error';
+      console.warn(
+        [
+          '',
+          `##vso[task.logissue type=warning]GitHub API authentication failed (HTTP ${status}) while building changelogs.`,
+          `  ${message}`,
+          '  Changelog entries will link to commits instead of pull requests.',
+          '  Further PR lookups are skipped for this run.',
+          '',
+        ].join('\n'),
+      );
+      return;
+    }
+
     console.warn(`Error finding PR for ${commit}`, ex);
     return;
   }
