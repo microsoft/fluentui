@@ -76,11 +76,12 @@ state.root.className = mergeClasses(
 
 ## Workflows
 
-| Topic                                | Location                                                         |
-| ------------------------------------ | ---------------------------------------------------------------- |
-| PR checklist, change files, commands | [docs/workflows/contributing.md](docs/workflows/contributing.md) |
-| Testing guide (unit, VRT, SSR, E2E)  | [docs/workflows/testing.md](docs/workflows/testing.md)           |
-| Team routing and label taxonomy      | [docs/team-routing.md](docs/team-routing.md)                     |
+| Topic                                                | Location                                                                           |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| PR checklist, change files, commands                 | [docs/workflows/contributing.md](docs/workflows/contributing.md)                   |
+| Testing guide (unit, VRT, SSR, E2E)                  | [docs/workflows/testing.md](docs/workflows/testing.md)                             |
+| Release git push preflight / forced release recovery | [docs/workflows/release-git-preflight.md](docs/workflows/release-git-preflight.md) |
+| Team routing and label taxonomy                      | [docs/team-routing.md](docs/team-routing.md)                                       |
 
 ## Quality Tracking
 

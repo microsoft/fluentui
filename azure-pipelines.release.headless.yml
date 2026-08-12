@@ -11,6 +11,14 @@ parameters:
     type: boolean
     default: false
 
+  # Escape hatch for when the GitHub PAT is broken and a release cannot wait for it to be rotated.
+  # Publishes to npm but skips the git push. The run finishes as partiallySucceeded, and the repo is
+  # resynced afterwards by running the "release-recovery" skill against the run.
+  - name: forceReleaseWithoutGitPush
+    displayName: 'Force release even if git PAT is invalid (npm only, manual repo update required)'
+    type: boolean
+    default: false
+
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
@@ -66,6 +74,27 @@ extends:
                   filePath: yarn-ci.sh
                 displayName: yarn
 
+              # Fail fast: catch a broken GitHub PAT now rather than after a long build/test cycle.
+              # This is purely an optimization - the authoritative check runs again immediately
+              # before publish, so a token that expires mid-build is still caught.
+              - script: |
+                  set -euo pipefail
+
+                  force=$(echo "$FORCE_RELEASE_WITHOUT_GIT_PUSH" | tr '[:upper:]' '[:lower:]')
+
+                  allowFailure=""
+                  if [ "$force" = "true" ]; then
+                    allowFailure="--allow-failure"
+                  fi
+
+                  node -r ./scripts/ts-node/src/register ./scripts/executors/src/check-git-push-access.ts \
+                    --remote origin --branch master $allowFailure
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
+                env:
+                  GITHUB_PAT: $(githubPAT)
+                  FORCE_RELEASE_WITHOUT_GIT_PUSH: ${{ parameters.forceReleaseWithoutGitPush }}
+                displayName: 'Preflight (early): verify git push access'
+
               - script: |
                   echo "Following packages will be published (if they contain changes):"
                   yarn nx show projects -p 'tag:react-headless,!tag:npm:private' --exclude 'apps/**'
@@ -83,13 +112,27 @@ extends:
                   FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p 'tag:react-headless,!tag:npm:private,!tag:type:stories' --exclude 'apps/**' --nxBail
                 displayName: lint
 
+              - template: .devops/templates/release-git-preflight.yml@self
+                parameters:
+                  branch: master
+                  dryRun: ${{ parameters.dryRun }}
+                  forceReleaseWithoutGitPush: ${{ parameters.forceReleaseWithoutGitPush }}
+
               - script: |
-                  yarn beachball publish --config scripts/beachball/src/release-headless.config.js --message 'release: applying package updates - react-headless'
-                  git reset --hard origin/master
+                  yarn beachball publish $(beachballPushArgs) --config scripts/beachball/src/release-headless.config.js --message 'release: applying package updates - react-headless'
                 env:
                   GITHUB_PAT: $(githubPAT)
                   NPM_TOKEN: $(npmToken)
                 displayName: Publish changes and bump versions
+                condition: not(${{ parameters.dryRun }})
+
+              - template: .devops/templates/release-forced-warning.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
+
+              - script: |
+                  git reset --hard origin/master
+                displayName: Reset workspace after publish
                 condition: not(${{ parameters.dryRun }})
 
               - template: .devops/templates/cleanup.yml@self

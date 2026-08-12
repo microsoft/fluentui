@@ -1,0 +1,90 @@
+# Guards a release against publishing to npm with a git token that cannot push.
+#
+# Background: `beachball publish` publishes to npm BEFORE it commits/tags/pushes. npm publishes are
+# irreversible, so an invalid git token leaves npm and the repo permanently out of sync (this
+# happened on 2026-06-30 when an enterprise policy started rejecting classic PATs with a lifetime
+# > 8 days: all 18 v8 packages published, then every push retry failed with 403).
+#
+# Usage: include this template BEFORE the beachball publish step, and add $(beachballPushArgs) to
+# the publish command.
+#
+#   - template: .devops/templates/release-git-preflight.yml@self
+#     parameters:
+#       branch: master
+#       dryRun: ${{ parameters.dryRun }}
+#       forceReleaseWithoutGitPush: ${{ parameters.forceReleaseWithoutGitPush }}
+#
+#   - script: |
+#       yarn beachball publish $(beachballPushArgs) --config ... --message '...'
+#     env:
+#       GITHUB_PAT: $(githubPAT)
+#       NPM_TOKEN: $(npmToken)
+
+parameters:
+  # Branch the release pushes bumps/changelogs/tags to.
+  - name: branch
+    type: string
+    default: master
+
+  # Git remote the release pushes to.
+  - name: remote
+    type: string
+    default: origin
+
+  # Emergency escape hatch. When true, a failed preflight no longer blocks the release: packages are
+  # still published to npm, but with `--no-push`, and a recovery bundle is produced instead.
+  # This is a permission to proceed, NOT a mandate to skip - a healthy token still does a full release.
+  - name: forceReleaseWithoutGitPush
+    type: boolean
+    default: false
+
+  # Dry runs never publish or push, so the preflight is skipped.
+  - name: dryRun
+    type: boolean
+    default: false
+
+steps:
+  # Always define the variable so `$(beachballPushArgs)` is never left as an unexpanded macro,
+  # even on code paths where the preflight itself is skipped.
+  - script: |
+      echo "##vso[task.setvariable variable=beachballPushArgs;]"
+    displayName: 'Preflight: initialize push mode'
+
+  - ${{ if eq(parameters.dryRun, false) }}:
+      - script: |
+          set -euo pipefail
+
+          # ADO renders boolean parameters as "True"/"False"; normalize before comparing.
+          force=$(echo "$FORCE_RELEASE_WITHOUT_GIT_PUSH" | tr '[:upper:]' '[:lower:]')
+
+          allowFailure=""
+          if [ "$force" = "true" ]; then
+            allowFailure="--allow-failure"
+            echo "Force mode enabled: a failed preflight will not block the release."
+          fi
+
+          node -r ./scripts/ts-node/src/register ./scripts/executors/src/check-git-push-access.ts \
+            --remote "${{ parameters.remote }}" \
+            --branch "${{ parameters.branch }}" \
+            $allowFailure
+        env:
+          GITHUB_PAT: $(githubPAT)
+          FORCE_RELEASE_WITHOUT_GIT_PUSH: ${{ parameters.forceReleaseWithoutGitPush }}
+        displayName: 'Preflight: verify git push access'
+
+      # Translate the preflight result into the beachball flags used by the publish step.
+      #
+      # `--no-push` makes beachball publish to npm but skip commit/tag/push. Note it also skips the
+      # `precommit` hook and tagging, which is why force mode reproduces those separately when
+      # building the recovery bundle.
+      - script: |
+          set -euo pipefail
+
+          if [ "$(gitPushAvailable)" = "true" ]; then
+            echo "Git push available - performing a normal release."
+            echo "##vso[task.setvariable variable=beachballPushArgs;]"
+          else
+            echo "Git push NOT available - publishing to npm only (--no-push)."
+            echo "##vso[task.setvariable variable=beachballPushArgs;]--no-push"
+          fi
+        displayName: 'Preflight: select beachball push mode'
