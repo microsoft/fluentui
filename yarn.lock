@@ -6105,6 +6105,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/scripts-executors@workspace:scripts/executors"
   dependencies:
+    "@fluentui/scripts-github": "npm:*"
     "@fluentui/scripts-monorepo": "npm:*"
     "@fluentui/scripts-prettier": "npm:*"
     "@fluentui/scripts-utils": "npm:*"
