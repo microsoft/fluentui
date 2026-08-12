@@ -35,20 +35,34 @@ interface PackageStatus {
   error?: string;
 }
 
-/** Fetch the `latest` dist-tag straight from the registry (much faster than shelling out to npm). */
-function fetchLatestVersion(name: string): Promise<string | undefined> {
+/**
+ * Outcome of a registry lookup. A missing version is only meaningful when the lookup itself
+ * succeeded, so "package is not published" and "we could not reach the registry" have to stay
+ * distinguishable - otherwise a flaky registry silently reports healthy packages as unreleased.
+ */
+type RegistryLookup = { ok: true; version?: string } | { ok: false; reason: string };
+
+/** Statuses worth retrying: rate limiting and transient server-side failures. */
+function isRetriableStatus(status: number | undefined): boolean {
+  return status === 408 || status === 429 || (status !== undefined && status >= 500);
+}
+
+function requestLatestVersion(name: string): Promise<RegistryLookup> {
   return new Promise(resolve => {
     const url = `https://registry.npmjs.org/${name.replace('/', '%2F')}`;
 
     const request = https.get(url, { timeout: 20000 }, response => {
-      if (response.statusCode === 404) {
+      const status = response.statusCode;
+
+      // A 404 is a real answer: the package has never been published.
+      if (status === 404) {
         response.resume();
-        return resolve(undefined);
+        return resolve({ ok: true, version: undefined });
       }
 
-      if (response.statusCode !== 200) {
+      if (status !== 200) {
         response.resume();
-        return resolve(undefined);
+        return resolve({ ok: false, reason: `registry responded HTTP ${status}` });
       }
 
       let body = '';
@@ -56,19 +70,51 @@ function fetchLatestVersion(name: string): Promise<string | undefined> {
       response.on('data', chunk => (body += chunk));
       response.on('end', () => {
         try {
-          resolve(JSON.parse(body)['dist-tags']?.latest);
+          resolve({ ok: true, version: JSON.parse(body)['dist-tags']?.latest });
         } catch {
-          resolve(undefined);
+          resolve({ ok: false, reason: 'registry returned a malformed response' });
         }
       });
     });
 
     request.on('timeout', () => {
       request.destroy();
-      resolve(undefined);
+      resolve({ ok: false, reason: 'registry request timed out' });
     });
-    request.on('error', () => resolve(undefined));
+    request.on('error', error => resolve({ ok: false, reason: `registry request failed: ${error.message}` }));
   });
+}
+
+/**
+ * Fetch the `latest` dist-tag straight from the registry (much faster than shelling out to npm).
+ *
+ * Retries transient failures: this fires one request per public package, so brushing up against
+ * rate limiting is realistic, and a diagnostic that quietly downgrades packages on a 429 is worse
+ * than useless during an incident.
+ */
+async function fetchLatestVersion(name: string, attempts = 3): Promise<RegistryLookup> {
+  let last: RegistryLookup = { ok: false, reason: 'no attempt was made' };
+
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    last = await requestLatestVersion(name);
+
+    if (last.ok) {
+      return last;
+    }
+
+    const status = Number(last.reason.match(/HTTP (\d+)/)?.[1]) || undefined;
+    const retriable = status === undefined || isRetriableStatus(status);
+
+    if (!retriable || attempt === attempts) {
+      return last;
+    }
+
+    await new Promise(resolve => {
+      setTimeout(resolve, 300 * 2 ** (attempt - 1));
+    });
+  }
+
+  return last;
 }
 
 /** Run `fn` over `items` with bounded concurrency so we don't open 250 sockets at once. */
@@ -76,7 +122,11 @@ async function mapWithConcurrency<T, R>(items: T[], limit: number, fn: (item: T)
   const results: R[] = new Array(items.length);
   let next = 0;
 
-  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+  // Never drop below a single worker: a limit of 0 (or a negative one) would spawn no workers at
+  // all and resolve instantly with an array of holes, which looks like a clean run.
+  const workerCount = Math.max(1, Math.min(Math.floor(limit) || 1, items.length));
+
+  const workers = Array.from({ length: workerCount }, async () => {
     while (next < items.length) {
       const index = next++;
       results[index] = await fn(items[index]);
@@ -163,7 +213,8 @@ async function main(options: Options): Promise<void> {
   }
 
   const statuses = await mapWithConcurrency(publicPackages, options.concurrency, async pkg => {
-    const npmVersion = await fetchLatestVersion(pkg.name);
+    const lookup = await fetchLatestVersion(pkg.name);
+    const npmVersion = lookup.ok ? lookup.version : undefined;
 
     const result: PackageStatus = {
       name: pkg.name,
@@ -171,6 +222,15 @@ async function main(options: Options): Promise<void> {
       npmVersion,
       status: 'in-sync',
     };
+
+    // Only trust "no version" when the registry actually answered. A failed lookup must never be
+    // reported as `unpublished`, because unpublished packages are dropped from the recovery set -
+    // a transient 429 would otherwise hide a genuine desync.
+    if (!lookup.ok) {
+      result.status = 'error';
+      result.error = lookup.reason;
+      return result;
+    }
 
     if (!npmVersion) {
       result.status = 'unpublished';
@@ -236,7 +296,7 @@ async function main(options: Options): Promise<void> {
   console.log(`  npm ahead:      ${npmAhead.length}   <- needs recovery`);
   console.log(`  repo ahead:     ${repoAhead.length}   (normal: unreleased work or prerelease dist-tag)`);
   console.log(`  never released: ${statuses.filter(s => s.status === 'unpublished').length}`);
-  console.log(`  uncomparable:   ${errored.length}`);
+  console.log(`  not checked:    ${errored.length}   (registry error or unparseable version)`);
   if (options.checkTags) {
     console.log(`  missing tags:   ${remoteTags ? missingTags.length : 'n/a'}   (informational only)`);
   }
@@ -252,7 +312,7 @@ async function main(options: Options): Promise<void> {
   }
 
   if (errored.length) {
-    console.log('Could not compare (inspect manually):\n');
+    console.log('Could not be checked - re-run before trusting the result above:\n');
     for (const pkg of errored) {
       console.log(`  ${pkg.name}: ${pkg.error}`);
     }
@@ -271,7 +331,14 @@ async function main(options: Options): Promise<void> {
   }
 
   if (!npmAhead.length) {
-    console.log('No version desync detected - the repo and npm are in sync.\n');
+    if (errored.length) {
+      console.log(
+        `No version desync detected in the ${statuses.length - errored.length} package(s) that could be\n` +
+          `checked, but ${errored.length} could not be compared (see above) - this is NOT a clean bill of health.\n`,
+      );
+    } else {
+      console.log('No version desync detected - the repo and npm are in sync.\n');
+    }
   }
 }
 
