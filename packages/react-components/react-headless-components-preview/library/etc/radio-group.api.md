@@ -48,6 +48,7 @@ export type RadioSlots = RadioSlots_2;
 export type RadioState = RadioBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-label-position'?: RadioBaseState['labelPosition'];
     };
 };
 

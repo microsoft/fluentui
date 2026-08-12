@@ -28,7 +28,11 @@ export type TooltipProps = Omit<TooltipBaseProps, 'mountNode'>;
 export { TooltipSlots }
 
 // @public
-export type TooltipState = Omit<TooltipBaseState, 'mountNode' | 'hidden'>;
+export type TooltipState = Omit<TooltipBaseState, 'mountNode' | 'hidden'> & {
+    content: {
+        'data-open'?: string;
+    };
+};
 
 export { TooltipTriggerProps }
 

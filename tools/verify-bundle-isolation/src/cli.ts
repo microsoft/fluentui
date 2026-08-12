@@ -146,6 +146,10 @@ function createWebpackConfig(
     externals: Object.fromEntries(options.config.externals.map(name => [name, name])),
     output: { path: outputPath, filename: 'index.js' },
     performance: { hints: false },
+    // ESM-first (`type: module`) packages emit bare subpath imports (e.g. `use-sync-external-store/shim`)
+    // that lack a file extension; webpack treats their `lib/` as ESM and would enforce fully-specified
+    // imports, so disable that to keep legacy CJS deps resolvable.
+    module: { rules: [{ test: /\.[cm]?js$/, resolve: { fullySpecified: false } }] },
     // Scope hoisting and minification change how code is emitted, not which modules and exports
     // survive tree shaking, so both stay off to keep the module graph 1:1 for attribution.
     optimization: { concatenateModules: false, minimize: false },

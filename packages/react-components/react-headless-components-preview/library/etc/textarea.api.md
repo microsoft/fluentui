@@ -23,7 +23,13 @@ export type TextareaProps = TextareaBaseProps;
 export type TextareaSlots = TextareaSlots_2;
 
 // @public
-export type TextareaState = TextareaBaseState;
+export type TextareaState = TextareaBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-invalid'?: string;
+        'data-resize'?: TextareaBaseState['resize'];
+    };
+};
 
 // @public
 export const useTextarea: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;

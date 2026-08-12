@@ -19,5 +19,10 @@ export type LabelState = LabelBaseState & {
      * Data attribute set when the label is disabled.
      */
     'data-disabled'?: string;
+
+    /**
+     * Data attribute set when the required indicator is rendered.
+     */
+    'data-required'?: string;
   };
 };

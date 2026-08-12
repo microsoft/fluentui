@@ -26,6 +26,7 @@ export type SelectSlots = SelectSlots_2;
 export type SelectState = SelectBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-invalid'?: string;
     };
 };
 

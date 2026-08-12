@@ -1,8 +1,9 @@
 {
   "name": "@fluentui/react-text",
-  "version": "9.6.18",
+  "version": "9.6.19",
   "description": "Text is a typography and styling abstraction component that can be used to ensure the consistency of all text across your application.",
-  "main": "lib-commonjs/index.js",
+  "type": "module",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -12,10 +13,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.4.4",
-    "@fluentui/react-shared-contexts": "^9.26.2",
-    "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-utilities": "^9.26.5",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.26.6",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
@@ -33,16 +34,21 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
   ]

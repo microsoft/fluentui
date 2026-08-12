@@ -27,7 +27,11 @@ export type PersonaSlots = Omit<PersonaSlots_2, 'avatar' | 'presence'> & {
 };
 
 // @public
-export type PersonaState = ComponentState<PersonaSlots> & Pick<PersonaState_2, 'textPosition' | 'numTextLines'>;
+export type PersonaState = ComponentState<PersonaSlots> & Pick<PersonaState_2, 'textPosition' | 'numTextLines'> & {
+    root: {
+        'data-text-position'?: PersonaState_2['textPosition'];
+    };
+};
 
 // @public (undocumented)
 export const renderPersona: (state: PersonaState) => JSXElement;

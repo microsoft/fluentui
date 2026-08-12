@@ -9,4 +9,5 @@ export type {
 } from './ColorArea.types';
 export { renderColorArea_unstable } from './renderColorArea';
 export { useColorAreaBase_unstable, useColorArea_unstable } from './useColorArea';
-export { colorAreaCSSVars, colorAreaClassNames, useColorAreaStyles_unstable } from './useColorAreaStyles.styles';
+export { colorAreaClassNames, useColorAreaStyles_unstable } from './useColorAreaStyles.styles';
+export { colorAreaCSSVars } from './ColorArea.constants';

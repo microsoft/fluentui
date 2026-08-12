@@ -2,6 +2,7 @@ import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useAlphaSlider_unstable } from './useAlphaSlider';
 import { ColorPickerProvider } from '../../contexts/colorPicker';
+import { alphaSliderCSSVars } from './AlphaSlider.constants';
 
 describe('useAlphaSlider', () => {
   it('uses the default shape', () => {
@@ -42,5 +43,15 @@ describe('useAlphaSlider', () => {
     const { result } = renderHook(() => useAlphaSlider_unstable({ shape: 'square' }, ref));
 
     expect(result.current.shape).toBe('square');
+  });
+
+  it('uses valid HSL syntax for slider colors', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { result } = renderHook(() => useAlphaSlider_unstable({ color: { h: 0, s: 1, v: 1, a: 0.5 } }, ref));
+
+    expect(result.current.root.style).toMatchObject({
+      [alphaSliderCSSVars.thumbColorVar]: 'hsla(0, 100%, 50%, 0.5)',
+      [alphaSliderCSSVars.railColorVar]: 'hsl(0, 100%, 50%)',
+    });
   });
 });

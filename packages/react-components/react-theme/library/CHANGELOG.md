@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Thu, 22 Jan 2026 17:06:44 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.2.2)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.2.1..@fluentui/react-theme_v9.2.2)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.24 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.2.1)
 

@@ -1,14 +1,15 @@
 {
   "name": "@fluentui/react-menu-grid-preview",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "New fluentui react package",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
   ],
@@ -18,15 +19,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.8",
+    "@fluentui/keyboard-keys": "^9.0.9",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-jsx-runtime": "^9.4.4",
-    "@fluentui/react-menu": "^9.25.2",
-    "@fluentui/react-shared-contexts": "^9.26.2",
-    "@fluentui/react-table": "^9.19.18",
-    "@fluentui/react-tabster": "^9.26.16",
-    "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-utilities": "^9.26.5",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
+    "@fluentui/react-menu": "^9.25.3",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-table": "^9.19.19",
+    "@fluentui/react-tabster": "^9.26.17",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.26.6",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
@@ -38,10 +39,14 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -50,5 +55,6 @@
       "major",
       "prerelease"
     ]
-  }
+  },
+  "type": "module"
 }

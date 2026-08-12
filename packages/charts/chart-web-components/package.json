@@ -67,7 +67,7 @@
     "chromedriver": "^151.0.0"
   },
   "dependencies": {
-    "@fluentui/tokens": "^1.0.0-alpha.23",
+    "@fluentui/tokens": "^1.0.0-alpha.24",
     "@fluentui/web-components": "^3.0.3",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@types/d3-selection": "^3.0.0",

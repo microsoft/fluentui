@@ -212,4 +212,42 @@ describe('SplitButton', () => {
     expect(primaryActionButton[SLOT_ELEMENT_TYPE_SYMBOL]).toBe(Button);
     expect(menuButton[SLOT_ELEMENT_TYPE_SYMBOL]).toBe(MenuButton);
   });
+
+  it('does not forward disabledFocusable, icon, or iconPosition to native buttons', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+    try {
+      const { getAllByRole, getByTestId, getByText } = render(
+        <SplitButton disabledFocusable icon={<span data-testid="icon" />} iconPosition="after">
+          Primary action
+        </SplitButton>,
+      );
+
+      const [primaryActionButton, menuButton] = getAllByRole('button');
+
+      // Neither native button should receive the non-standard props as DOM attributes
+      expect(primaryActionButton.getAttribute('disabledfocusable')).toBeNull();
+      expect(primaryActionButton.getAttribute('iconposition')).toBeNull();
+      expect(menuButton.getAttribute('disabledfocusable')).toBeNull();
+      expect(menuButton.getAttribute('iconposition')).toBeNull();
+
+      // Both buttons should expose aria-disabled because disabledFocusable is true
+      expect(primaryActionButton.getAttribute('aria-disabled')).toBe('true');
+      expect(menuButton.getAttribute('aria-disabled')).toBe('true');
+
+      // Primary action button should contain the icon and the label text
+      expect(primaryActionButton.contains(getByTestId('icon'))).toBe(true);
+      expect(primaryActionButton.contains(getByText('Primary action'))).toBe(true);
+
+      // No React prop-forwarding warnings should have been emitted
+      const propWarningPattern = /Invalid value for prop|unknown prop|non-boolean attribute/i;
+      consoleErrorSpy.mock.calls.forEach(([message]) => {
+        if (typeof message === 'string') {
+          expect(message).not.toMatch(propWarningPattern);
+        }
+      });
+    } finally {
+      consoleErrorSpy.mockRestore();
+    }
+  });
 });

@@ -17,6 +17,8 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-selected'] = stringifyDataAttribute(state.selected);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-multiselect'] = stringifyDataAttribute(state.multiselect);
 
   return state;
 };

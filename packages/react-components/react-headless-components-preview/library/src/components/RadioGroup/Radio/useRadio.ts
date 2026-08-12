@@ -16,6 +16,8 @@ export const useRadio = (props: RadioProps, ref: React.Ref<HTMLInputElement>): R
   // Set data attribute for disabled state to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.input.disabled);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-label-position'] = state.labelPosition;
 
   return state;
 };
