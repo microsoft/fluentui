@@ -103,6 +103,7 @@ state.root.className = mergeClasses(
 | `review-pr`          | `/review-pr #123`          | Review a PR with confidence scoring and category checks                   |
 | `triage-issues`      | `/triage-issues`           | Walk the Needs-Triage queue and recommend labels/assignee                 |
 | `dependabot-rollup`  | `/dependabot-rollup`       | Dry-run and optionally roll up at most 11 Dependabot patch/minor PRs      |
+| `release-recovery`  | `/release-recovery [pipeline-url]` | Diagnose and repair a release that published to npm but failed to push |
 
 ## Package Layout
 
