@@ -2,6 +2,35 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 13 Aug 2026 04:10:22 GMT",
+      "version": "3.1.0",
+      "tag": "@fluentui/web-components_v3.1.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Use a namespace import for the now ESM-only `@fluentui/tokens`"
+          },
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "32b42a5bf79c1836047dfc7fae07b1320731bce4",
+            "comment": "package bump due to a partial publish"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jolud@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "33e4a021a728e9a7ba2f023e1a500fee549c4be5",
+            "comment": "Remove max-width from MessageBar component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Aug 2026 17:06:42 GMT",
       "tag": "@fluentui/web-components_v3.0.3",
       "version": "3.0.3",
