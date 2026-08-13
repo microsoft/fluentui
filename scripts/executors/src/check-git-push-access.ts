@@ -51,7 +51,7 @@ function redact(text: string, token: string | undefined): string {
  * This is the check that produces a genuinely useful error message: the enterprise policy failure
  * returns a descriptive 403 body, and GitHub also returns the token expiration as a response header.
  */
-async function checkTokenIsUsable(token: string): Promise<PreflightFailure | undefined> {
+export async function checkTokenIsUsable(token: string): Promise<PreflightFailure | undefined> {
   const github = new Octokit({ auth: 'token ' + token });
 
   try {
@@ -65,16 +65,20 @@ async function checkTokenIsUsable(token: string): Promise<PreflightFailure | und
 
     if (expiration) {
       const expiresAt = new Date(String(expiration).replace(' UTC', 'Z').replace(' ', 'T'));
-      const daysLeft = Math.floor((expiresAt.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+      const msLeft = expiresAt.getTime() - Date.now();
+      // Expiry is decided on the raw delta, never on whole days: flooring would round a token with
+      // 23h of life left down to 0 days and fail a release that would have succeeded. The rounded
+      // value is only ever used for humans reading the log.
+      const daysLeft = Math.ceil(msLeft / (1000 * 60 * 60 * 24));
 
       console.log(`  token expires: ${expiration} (~${daysLeft} day(s) from now)`);
 
-      if (daysLeft <= 0) {
+      if (msLeft <= 0) {
         return { summary: `The GitHub token expired on ${expiration}.` };
       }
       // Not a failure on its own - the push check below is authoritative - but worth surfacing early
       // so the token gets rotated before it breaks a release.
-      if (daysLeft <= 3) {
+      if (msLeft <= 3 * 24 * 60 * 60 * 1000) {
         console.warn(
           `  ##vso[task.logissue type=warning]GitHub token expires in ~${daysLeft} day(s) - rotate it soon.`,
         );
@@ -117,7 +121,7 @@ async function checkTokenIsUsable(token: string): Promise<PreflightFailure | und
  * permission on the repo. `--dry-run` performs the full negotiation with the server (including the
  * `git-receive-pack` request that returned 403 in the 2026-06-30 incident) without updating any refs.
  */
-function checkCanPush(options: PreflightOptions, token: string | undefined): PreflightFailure | undefined {
+export function checkCanPush(options: PreflightOptions, token: string | undefined): PreflightFailure | undefined {
   const { remote, branch } = options;
   const args = ['push', '--dry-run', '--no-verify', remote, `HEAD:${branch}`];
 
@@ -238,29 +242,35 @@ async function runPreflight(options: PreflightOptions): Promise<void> {
   process.exit(1);
 }
 
-const argv = yargs
-  .option('branch', {
-    type: 'string',
-    describe: 'Branch the release will push to',
-    default: 'master',
-  })
-  .option('remote', {
-    type: 'string',
-    describe: 'Git remote the release will push to',
-    default: 'origin',
-  })
-  .option('allow-failure', {
-    type: 'boolean',
-    describe: 'Report the result but do not fail the step (used by force mode)',
-    default: false,
-  })
-  .strict().argv;
+export { redact };
 
-runPreflight({
-  branch: argv.branch,
-  remote: argv.remote,
-  allowFailure: argv['allow-failure'],
-}).catch(err => {
-  console.error('Unexpected error during git push preflight:', err);
-  process.exit(1);
-});
+// Only parse argv and run when invoked as a CLI - importing this module (from tests, or to reuse
+// the classification logic) must not execute a preflight or call process.exit.
+if (require.main === module) {
+  const argv = yargs
+    .option('branch', {
+      type: 'string',
+      describe: 'Branch the release will push to',
+      default: 'master',
+    })
+    .option('remote', {
+      type: 'string',
+      describe: 'Git remote the release will push to',
+      default: 'origin',
+    })
+    .option('allow-failure', {
+      type: 'boolean',
+      describe: 'Report the result but do not fail the step (used by force mode)',
+      default: false,
+    })
+    .strict().argv;
+
+  runPreflight({
+    branch: argv.branch,
+    remote: argv.remote,
+    allowFailure: argv['allow-failure'],
+  }).catch(err => {
+    console.error('Unexpected error during git push preflight:', err);
+    process.exit(1);
+  });
+}
