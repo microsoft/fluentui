@@ -5,7 +5,7 @@ import baseConfig from '../../../../monosize.config.mjs';
 /** @type {import('monosize').MonoSizeConfig} */
 const monosizeConfig = {
   ...baseConfig,
-  threshold: '10kB',
+  threshold: '10%',
 };
 
 export default monosizeConfig;

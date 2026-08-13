@@ -368,7 +368,6 @@
     "just-scripts-utils/tar": "^7.5.8",
     "micromatch": "4.0.8",
     "micromatch/braces": "^3.0.3",
-    "monosize-bundler-webpack/webpack": "5.108.4",
     "nx/minimatch": "^9.0.7",
     "playwright": "1.56.1",
     "prettier": "2.8.8",
