@@ -1,6 +1,1 @@
-import { renderDrawerHeader } from '../../Drawer/DrawerHeader';
-
-/**
- * Renders the final JSX of NavDrawerHeader.
- */
-export const renderNavDrawerHeader = renderDrawerHeader;
+export { renderDrawerHeader as renderNavDrawerHeader } from '../../Drawer/DrawerHeader';

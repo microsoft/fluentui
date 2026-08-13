@@ -1,11 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import {
-  useToolbarBase_unstable,
-  useToolbarContext_unstable,
-  useToolbarContextValues_unstable,
-} from '@fluentui/react-toolbar';
+import { useToolbarBase_unstable, useToolbarContextValues_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarProps, ToolbarState, ToolbarContextValues } from './Toolbar.types';
 import { stringifyDataAttribute } from '../../utils';
@@ -28,7 +24,7 @@ export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): To
 /**
  * Returns the context of the toolbar, which is used to pass information about the toolbar to its children.
  */
-export const useToolbarContext = useToolbarContext_unstable;
+export { useToolbarContext_unstable as useToolbarContext } from '@fluentui/react-toolbar';
 
 /**
  * Maps the state of the toolbar to the values that are passed through context to its children.

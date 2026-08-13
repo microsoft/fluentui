@@ -1,11 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import {
-  useAccordionBase_unstable,
-  useAccordionContext_unstable,
-  useAccordionContextValues_unstable,
-} from '@fluentui/react-accordion';
+import { useAccordionBase_unstable, useAccordionContextValues_unstable } from '@fluentui/react-accordion';
 
 import type { AccordionProps, AccordionState, AccordionContextValues } from './Accordion.types';
 import { stringifyDataAttribute } from '../../utils';
@@ -29,7 +25,7 @@ export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>)
 /**
  * Returns the context of the accordion, which is used to pass information about the accordion to its children. This is used when a child component needs to know about the state of the accordion, such as whether it is collapsible or allows multiple items to be expanded.
  */
-export const useAccordionContext = useAccordionContext_unstable;
+export { useAccordionContext_unstable as useAccordionContext } from '@fluentui/react-accordion';
 
 /**
  * Maps the state of the accordion to the values that are passed through context to its children. This is used when a child component needs to know about the state of the accordion, such as whether it is collapsible or allows multiple items to be expanded.

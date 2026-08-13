@@ -1,6 +1,6 @@
-import type { MenuItemRadioBaseProps, MenuItemRadioBaseState } from '@fluentui/react-menu';
+import type { MenuItemRadioBaseState } from '@fluentui/react-menu';
 
-export type MenuItemRadioProps = MenuItemRadioBaseProps;
+export type { MenuItemRadioBaseProps as MenuItemRadioProps } from '@fluentui/react-menu';
 
 export type MenuItemRadioState = MenuItemRadioBaseState & {
   root: {

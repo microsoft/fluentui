@@ -7,20 +7,18 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderTextarea_unstable as renderTextarea } from '@fluentui/react-textarea';
-import type { TextareaBaseProps } from '@fluentui/react-textarea';
 import type { TextareaBaseState } from '@fluentui/react-textarea';
-import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
+import { TextareaBaseProps as TextareaProps } from '@fluentui/react-textarea';
+import { TextareaSlots } from '@fluentui/react-textarea';
 
 export { renderTextarea }
 
 // @public
 export const Textarea: ForwardRefComponent<TextareaProps>;
 
-// @public
-export type TextareaProps = TextareaBaseProps;
+export { TextareaProps }
 
-// @public
-export type TextareaSlots = TextareaSlots_2;
+export { TextareaSlots }
 
 // @public
 export type TextareaState = TextareaBaseState & {

@@ -1,14 +1,10 @@
-import type {
-  MessageBarSlots as MessageBarBaseSlots,
-  MessageBarBaseProps,
-  MessageBarBaseState,
-  MessageBarContextValues as MessageBarBaseContextValues,
-  MessageBarIntent,
+import type { MessageBarBaseState, MessageBarIntent } from '@fluentui/react-message-bar';
+
+export type {
+  MessageBarSlots,
+  MessageBarBaseProps as MessageBarProps,
+  MessageBarContextValues,
 } from '@fluentui/react-message-bar';
-
-export type MessageBarSlots = MessageBarBaseSlots;
-
-export type MessageBarProps = MessageBarBaseProps;
 
 export type MessageBarState = MessageBarBaseState & {
   root: {
@@ -23,7 +19,5 @@ export type MessageBarState = MessageBarBaseState & {
     'data-intent'?: string;
   };
 };
-
-export type MessageBarContextValues = MessageBarBaseContextValues;
 
 export type { MessageBarIntent };

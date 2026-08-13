@@ -5,40 +5,39 @@
 ```ts
 
 import type { AccordionBaseProps } from '@fluentui/react-accordion';
-import { AccordionBaseState } from '@fluentui/react-accordion';
-import { AccordionContextValue } from '@fluentui/react-accordion';
-import { AccordionContextValues as AccordionContextValues_2 } from '@fluentui/react-accordion';
-import type { AccordionHeaderBaseProps } from '@fluentui/react-accordion';
-import { AccordionHeaderBaseState } from '@fluentui/react-accordion';
+import type { AccordionBaseState } from '@fluentui/react-accordion';
+import { AccordionContextValues } from '@fluentui/react-accordion';
+import type { AccordionHeaderBaseState } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValues } from '@fluentui/react-accordion';
-import type { AccordionHeaderSlots as AccordionHeaderSlots_2 } from '@fluentui/react-accordion';
-import { AccordionItemContextValues } from '@fluentui/react-accordion';
-import type { AccordionItemProps as AccordionItemProps_2 } from '@fluentui/react-accordion';
-import type { AccordionItemSlots as AccordionItemSlots_2 } from '@fluentui/react-accordion';
-import { AccordionItemState as AccordionItemState_2 } from '@fluentui/react-accordion';
-import type { AccordionPanelBaseProps } from '@fluentui/react-accordion';
+import { AccordionHeaderBaseProps as AccordionHeaderProps } from '@fluentui/react-accordion';
+import { AccordionHeaderSlots } from '@fluentui/react-accordion';
+import { AccordionItemProps } from '@fluentui/react-accordion';
+import { AccordionItemSlots } from '@fluentui/react-accordion';
+import type { AccordionItemState as AccordionItemState_2 } from '@fluentui/react-accordion';
 import type { AccordionPanelBaseState } from '@fluentui/react-accordion';
-import type { AccordionPanelSlots as AccordionPanelSlots_2 } from '@fluentui/react-accordion';
-import type { AccordionSlots as AccordionSlots_2 } from '@fluentui/react-accordion';
-import { ContextSelector } from '@fluentui/react-context-selector';
+import { AccordionPanelBaseProps as AccordionPanelProps } from '@fluentui/react-accordion';
+import { AccordionPanelSlots } from '@fluentui/react-accordion';
+import { AccordionSlots } from '@fluentui/react-accordion';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderAccordion_unstable as renderAccordion } from '@fluentui/react-accordion';
+import { renderAccordionHeader_unstable as renderAccordionHeader } from '@fluentui/react-accordion';
+import { renderAccordionItem_unstable as renderAccordionItem } from '@fluentui/react-accordion';
+import { useAccordionContext_unstable as useAccordionContext } from '@fluentui/react-accordion';
+import { useAccordionItemContextValues_unstable as useAccordionItemContextValues } from '@fluentui/react-accordion';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
-// @public (undocumented)
-export type AccordionContextValues = AccordionContextValues_2;
+export { AccordionContextValues }
 
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 
-// @public (undocumented)
-export type AccordionHeaderProps = AccordionHeaderBaseProps;
+export { AccordionHeaderProps }
 
-// @public (undocumented)
-export type AccordionHeaderSlots = AccordionHeaderSlots_2;
+export { AccordionHeaderSlots }
 
 // @public (undocumented)
 export type AccordionHeaderState = AccordionHeaderBaseState & {
@@ -52,11 +51,9 @@ export type AccordionHeaderState = AccordionHeaderBaseState & {
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
-// @public (undocumented)
-export type AccordionItemProps = AccordionItemProps_2;
+export { AccordionItemProps }
 
-// @public (undocumented)
-export type AccordionItemSlots = AccordionItemSlots_2;
+export { AccordionItemSlots }
 
 // @public (undocumented)
 export type AccordionItemState = AccordionItemState_2 & {
@@ -69,11 +66,9 @@ export type AccordionItemState = AccordionItemState_2 & {
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
 
-// @public (undocumented)
-export type AccordionPanelProps = AccordionPanelBaseProps;
+export { AccordionPanelProps }
 
-// @public (undocumented)
-export type AccordionPanelSlots = AccordionPanelSlots_2;
+export { AccordionPanelSlots }
 
 // @public (undocumented)
 export type AccordionPanelState = AccordionPanelBaseState & {
@@ -85,8 +80,7 @@ export type AccordionPanelState = AccordionPanelBaseState & {
 // @public (undocumented)
 export type AccordionProps = AccordionBaseProps;
 
-// @public (undocumented)
-export type AccordionSlots = AccordionSlots_2;
+export { AccordionSlots }
 
 // @public (undocumented)
 export type AccordionState = AccordionBaseState & {
@@ -96,14 +90,11 @@ export type AccordionState = AccordionBaseState & {
     };
 };
 
-// @public
-export const renderAccordion: (state: AccordionBaseState, contextValues: AccordionContextValues_2) => JSXElement;
+export { renderAccordion }
 
-// @public
-export const renderAccordionHeader: (state: AccordionHeaderBaseState, contextValues: AccordionHeaderContextValues) => JSXElement;
+export { renderAccordionHeader }
 
-// @public
-export const renderAccordionItem: (state: AccordionItemState_2, contextValues: AccordionItemContextValues) => JSXElement;
+export { renderAccordionItem }
 
 // @public
 export const renderAccordionPanel: (state: AccordionPanelState) => JSXElement;
@@ -111,8 +102,7 @@ export const renderAccordionPanel: (state: AccordionPanelState) => JSXElement;
 // @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
-// @public
-export const useAccordionContext: <T>(selector: ContextSelector<AccordionContextValue, T>) => T;
+export { useAccordionContext }
 
 // @public
 export const useAccordionContextValues: (state: AccordionState) => AccordionContextValues;
@@ -121,13 +111,12 @@ export const useAccordionContextValues: (state: AccordionState) => AccordionCont
 export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
 
 // @public
-export const useAccordionHeaderContextValues: (state: AccordionHeaderState) => AccordionHeaderContextValues_2;
+export const useAccordionHeaderContextValues: (state: AccordionHeaderState) => AccordionHeaderContextValues;
 
 // @public
 export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
 
-// @public
-export const useAccordionItemContextValues: (state: AccordionItemState) => AccordionItemContextValues_2;
+export { useAccordionItemContextValues }
 
 // @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
