@@ -1,15 +1,6 @@
-import type {
-  OptionSlots as OptionBaseSlots,
-  OptionProps as OptionBaseProps,
-  OptionState as OptionBaseState,
-} from '@fluentui/react-combobox';
+import type { OptionState as OptionBaseState } from '@fluentui/react-combobox';
 
-export type OptionSlots = OptionBaseSlots;
-
-/**
- * Option Props
- */
-export type OptionProps = OptionBaseProps;
+export type { OptionSlots, OptionProps } from '@fluentui/react-combobox';
 
 /**
  * State used in rendering Option

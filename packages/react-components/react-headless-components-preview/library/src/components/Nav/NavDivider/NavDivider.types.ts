@@ -1,6 +1,6 @@
-import type { DividerSlots, DividerProps, DividerState } from '../../Divider';
+import type { DividerProps, DividerState } from '../../Divider';
 
-export type NavDividerSlots = DividerSlots;
+export type { DividerSlots as NavDividerSlots } from '../../Divider';
 
 /**
  * NavDivider Props

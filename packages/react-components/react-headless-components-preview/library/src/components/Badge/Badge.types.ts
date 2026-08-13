@@ -1,14 +1,6 @@
-import type { BadgeSlots as BadgeBaseSlots, BadgeBaseProps, BadgeBaseState } from '@fluentui/react-badge';
+import type { BadgeBaseState } from '@fluentui/react-badge';
 
-/**
- * Badge component slots
- */
-export type BadgeSlots = BadgeBaseSlots;
-
-/**
- * Badge component props
- */
-export type BadgeProps = BadgeBaseProps;
+export type { BadgeSlots, BadgeBaseProps as BadgeProps } from '@fluentui/react-badge';
 
 /**
  * Badge component state

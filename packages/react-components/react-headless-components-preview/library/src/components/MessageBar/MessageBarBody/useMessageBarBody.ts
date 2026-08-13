@@ -1,7 +1,7 @@
 'use client';
 
 import type * as ReactTypes from 'react';
-import { useMessageBarBody_unstable, useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
 
 import type { MessageBarBodyProps, MessageBarBodyState } from './MessageBarBody.types';
 
@@ -21,4 +21,4 @@ export const useMessageBarBody = (
 /**
  * Returns the context values provided by MessageBarBody to nested links.
  */
-export const useMessageBarBodyContextValues = useMessageBarBodyContextValues_unstable;
+export { useMessageBarBodyContextValues_unstable as useMessageBarBodyContextValues } from '@fluentui/react-message-bar';

@@ -4,50 +4,42 @@
 
 ```ts
 
-import { ButtonBaseState } from '@fluentui/react-button';
-import { ContextSelector } from '@fluentui/react-context-selector';
-import { DividerBaseState } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
-import type { ToolbarBaseProps } from '@fluentui/react-toolbar';
-import { ToolbarBaseState } from '@fluentui/react-toolbar';
-import type { ToolbarButtonBaseProps } from '@fluentui/react-toolbar';
+import { renderToggleButton_unstable } from '@fluentui/react-button';
+import { renderToolbar_unstable as renderToolbar } from '@fluentui/react-toolbar';
+import { renderButton_unstable as renderToolbarButton } from '@fluentui/react-button';
+import { renderDivider_unstable as renderToolbarDivider } from '@fluentui/react-divider';
+import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import type { ToolbarBaseState } from '@fluentui/react-toolbar';
 import type { ToolbarButtonBaseState } from '@fluentui/react-toolbar';
-import { ToolbarContextValue } from '@fluentui/react-toolbar';
-import { ToolbarContextValues as ToolbarContextValues_2 } from '@fluentui/react-toolbar';
-import type { ToolbarDividerBaseProps } from '@fluentui/react-toolbar';
+import { ToolbarButtonBaseProps as ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarContextValues } from '@fluentui/react-toolbar';
 import type { ToolbarDividerBaseState } from '@fluentui/react-toolbar';
-import type { ToolbarGroupProps as ToolbarGroupProps_2 } from '@fluentui/react-toolbar';
-import { ToolbarGroupState as ToolbarGroupState_2 } from '@fluentui/react-toolbar';
-import type { ToolbarRadioButtonBaseProps } from '@fluentui/react-toolbar';
+import { ToolbarDividerBaseProps as ToolbarDividerProps } from '@fluentui/react-toolbar';
+import { ToolbarGroupProps } from '@fluentui/react-toolbar';
+import type { ToolbarGroupState as ToolbarGroupState_2 } from '@fluentui/react-toolbar';
+import { ToolbarBaseProps as ToolbarProps } from '@fluentui/react-toolbar';
 import type { ToolbarRadioButtonBaseState } from '@fluentui/react-toolbar';
-import type { ToolbarRadioGroupProps as ToolbarRadioGroupProps_2 } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonBaseProps as ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
 import type { ToolbarRadioGroupState as ToolbarRadioGroupState_2 } from '@fluentui/react-toolbar';
-import type { ToolbarSlots as ToolbarSlots_2 } from '@fluentui/react-toolbar';
-import type { ToolbarToggleButtonBaseProps } from '@fluentui/react-toolbar';
+import { ToolbarSlots } from '@fluentui/react-toolbar';
 import type { ToolbarToggleButtonBaseState } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonBaseProps as ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import { useToolbarContext_unstable as useToolbarContext } from '@fluentui/react-toolbar';
 
-// @public
-export const renderToolbar: (state: ToolbarBaseState, contextValues: ToolbarContextValues_2) => JSXElement;
+export { renderToggleButton_unstable as renderToolbarRadioButton }
+export { renderToggleButton_unstable as renderToolbarToggleButton }
 
-// @public
-export const renderToolbarButton: (state: ButtonBaseState) => JSXElement;
+export { renderToolbar }
 
-// @public
-export const renderToolbarDivider: (state: DividerBaseState) => JSXElement;
+export { renderToolbarButton }
 
-// @public
-export const renderToolbarGroup: (state: ToolbarGroupState_2) => JSXElement;
+export { renderToolbarDivider }
 
-// @public
-export const renderToolbarRadioButton: (state: ButtonBaseState) => JSXElement;
-
-// @public
-export const renderToolbarRadioGroup: (state: ToolbarGroupState_2) => JSXElement;
-
-// @public
-export const renderToolbarToggleButton: (state: ButtonBaseState) => JSXElement;
+export { renderToolbarGroup_unstable as renderToolbarGroup }
+export { renderToolbarGroup_unstable as renderToolbarRadioGroup }
 
 // @public
 export const Toolbar: ForwardRefComponent<ToolbarProps>;
@@ -55,8 +47,7 @@ export const Toolbar: ForwardRefComponent<ToolbarProps>;
 // @public
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
-// @public (undocumented)
-export type ToolbarButtonProps = ToolbarButtonBaseProps;
+export { ToolbarButtonProps }
 
 // @public (undocumented)
 export type ToolbarButtonState = ToolbarButtonBaseState & {
@@ -68,14 +59,12 @@ export type ToolbarButtonState = ToolbarButtonBaseState & {
     };
 };
 
-// @public (undocumented)
-export type ToolbarContextValues = ToolbarContextValues_2;
+export { ToolbarContextValues }
 
 // @public
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
-// @public (undocumented)
-export type ToolbarDividerProps = ToolbarDividerBaseProps;
+export { ToolbarDividerProps }
 
 // @public (undocumented)
 export type ToolbarDividerState = ToolbarDividerBaseState & {
@@ -87,8 +76,7 @@ export type ToolbarDividerState = ToolbarDividerBaseState & {
 // @public
 export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
 
-// @public (undocumented)
-export type ToolbarGroupProps = ToolbarGroupProps_2;
+export { ToolbarGroupProps }
 
 // @public (undocumented)
 export type ToolbarGroupState = ToolbarGroupState_2 & {
@@ -97,14 +85,12 @@ export type ToolbarGroupState = ToolbarGroupState_2 & {
     };
 };
 
-// @public (undocumented)
-export type ToolbarProps = ToolbarBaseProps;
+export { ToolbarProps }
 
 // @public
 export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
 
-// @public (undocumented)
-export type ToolbarRadioButtonProps = ToolbarRadioButtonBaseProps;
+export { ToolbarRadioButtonProps }
 
 // @public (undocumented)
 export type ToolbarRadioButtonState = ToolbarRadioButtonBaseState & {
@@ -119,8 +105,7 @@ export type ToolbarRadioButtonState = ToolbarRadioButtonBaseState & {
 // @public
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
 
-// @public (undocumented)
-export type ToolbarRadioGroupProps = ToolbarRadioGroupProps_2;
+export { ToolbarRadioGroupProps }
 
 // @public (undocumented)
 export type ToolbarRadioGroupState = ToolbarRadioGroupState_2 & {
@@ -130,8 +115,7 @@ export type ToolbarRadioGroupState = ToolbarRadioGroupState_2 & {
     };
 };
 
-// @public (undocumented)
-export type ToolbarSlots = ToolbarSlots_2;
+export { ToolbarSlots }
 
 // @public (undocumented)
 export type ToolbarState = ToolbarBaseState & {
@@ -144,8 +128,7 @@ export type ToolbarState = ToolbarBaseState & {
 // @public
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 
-// @public (undocumented)
-export type ToolbarToggleButtonProps = ToolbarToggleButtonBaseProps;
+export { ToolbarToggleButtonProps }
 
 // @public (undocumented)
 export type ToolbarToggleButtonState = ToolbarToggleButtonBaseState & {
@@ -163,8 +146,7 @@ export const useToolbar: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) =>
 // @public
 export const useToolbarButton: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonState;
 
-// @public
-export const useToolbarContext: <T>(selector: ContextSelector<ToolbarContextValue, T>) => T;
+export { useToolbarContext }
 
 // @public
 export const useToolbarContextValues: (state: ToolbarState) => ToolbarContextValues;

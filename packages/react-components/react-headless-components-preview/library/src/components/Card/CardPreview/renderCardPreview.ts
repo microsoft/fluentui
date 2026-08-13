@@ -1,6 +1,1 @@
-import { renderCardPreview_unstable } from '@fluentui/react-card';
-
-/**
- * Renders the final JSX of the CardPreview component, given the state.
- */
-export const renderCardPreview = renderCardPreview_unstable;
+export { renderCardPreview_unstable as renderCardPreview } from '@fluentui/react-card';

@@ -1,11 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import {
-  useAccordionHeaderBase_unstable,
-  useAccordionHeaderContext_unstable,
-  useAccordionHeaderContextValues_unstable,
-} from '@fluentui/react-accordion';
+import { useAccordionHeaderBase_unstable, useAccordionHeaderContextValues_unstable } from '@fluentui/react-accordion';
 
 import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderContextValues } from './AccordionHeader.types';
 import { stringifyDataAttribute } from '../../../utils';
@@ -31,7 +27,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
 /**
  * Returns the context values provided by the nearest AccordionHeader, enabling child components to read header-level state.
  */
-export const useAccordionHeaderContext = useAccordionHeaderContext_unstable;
+export { useAccordionHeaderContext_unstable as useAccordionHeaderContext } from '@fluentui/react-accordion';
 
 /**
  * Maps AccordionHeader state to the context values passed down to child components.

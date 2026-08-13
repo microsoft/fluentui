@@ -9,20 +9,21 @@ import type { DropdownBaseHookState } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { ListboxContextValues as ListboxContextValues_2 } from '@fluentui/react-combobox';
-import type { ListboxProps as ListboxProps_2 } from '@fluentui/react-combobox';
-import type { ListboxSlots as ListboxSlots_2 } from '@fluentui/react-combobox';
-import type { ListboxState as ListboxState_2 } from '@fluentui/react-combobox';
-import type { OptionGroupProps as OptionGroupProps_2 } from '@fluentui/react-combobox';
-import type { OptionGroupSlots as OptionGroupSlots_2 } from '@fluentui/react-combobox';
-import type { OptionGroupState as OptionGroupState_2 } from '@fluentui/react-combobox';
-import type { OptionProps as OptionProps_2 } from '@fluentui/react-combobox';
-import type { OptionSlots as OptionSlots_2 } from '@fluentui/react-combobox';
+import { ListboxContextValues } from '@fluentui/react-combobox';
+import { ListboxProps } from '@fluentui/react-combobox';
+import { ListboxSlots } from '@fluentui/react-combobox';
+import { ListboxState } from '@fluentui/react-combobox';
+import { OptionGroupProps } from '@fluentui/react-combobox';
+import { OptionGroupSlots } from '@fluentui/react-combobox';
+import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionProps } from '@fluentui/react-combobox';
+import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import type * as React_2 from 'react';
 import { renderListbox_unstable as renderListbox } from '@fluentui/react-combobox';
 import { renderOption_unstable as renderOption } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable as renderOptionGroup } from '@fluentui/react-combobox';
+import { useListboxContextValues } from '@fluentui/react-combobox';
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
@@ -42,17 +43,13 @@ export type DropdownState = DropdownBaseHookState & {
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
 
-// @public
-export type ListboxContextValues = ListboxContextValues_2;
+export { ListboxContextValues }
 
-// @public
-export type ListboxProps = ListboxProps_2;
+export { ListboxProps }
 
-// @public (undocumented)
-export type ListboxSlots = ListboxSlots_2;
+export { ListboxSlots }
 
-// @public
-export type ListboxState = ListboxState_2;
+export { ListboxState }
 
 // @public
 const Option_2: ForwardRefComponent<OptionProps>;
@@ -61,20 +58,15 @@ export { Option_2 as Option }
 // @public
 export const OptionGroup: ForwardRefComponent<OptionGroupProps>;
 
-// @public
-export type OptionGroupProps = OptionGroupProps_2;
+export { OptionGroupProps }
 
-// @public (undocumented)
-export type OptionGroupSlots = OptionGroupSlots_2;
+export { OptionGroupSlots }
 
-// @public
-export type OptionGroupState = OptionGroupState_2;
+export { OptionGroupState }
 
-// @public
-export type OptionProps = OptionProps_2;
+export { OptionProps }
 
-// @public (undocumented)
-export type OptionSlots = OptionSlots_2;
+export { OptionSlots }
 
 // @public
 export type OptionState = OptionState_2 & {
@@ -103,8 +95,7 @@ export const useDropdownContextValues: (state: DropdownState) => DropdownContext
 // @public
 export const useListbox: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
 
-// @public (undocumented)
-export const useListboxContextValues: (state: ListboxState) => ListboxContextValues;
+export { useListboxContextValues }
 
 // @public
 export const useOption: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;

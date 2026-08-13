@@ -1,13 +1,9 @@
 'use client';
 
 import type * as React from 'react';
-import {
-  useAccordionItem_unstable,
-  useAccordionItemContext_unstable,
-  useAccordionItemContextValues_unstable,
-} from '@fluentui/react-accordion';
+import { useAccordionItem_unstable } from '@fluentui/react-accordion';
 
-import type { AccordionItemProps, AccordionItemState, AccordionItemContextValues } from './AccordionItem.types';
+import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
 import { stringifyDataAttribute } from '../../../utils';
 
 /**
@@ -29,11 +25,7 @@ export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLE
 /**
  * Returns the context values provided by the nearest AccordionItem, enabling child components to read item-level state such as whether the item is open or disabled.
  */
-export const useAccordionItemContext = useAccordionItemContext_unstable;
-
-/**
- * Maps AccordionItem state to the context values passed down to child components.
- */
-export const useAccordionItemContextValues = useAccordionItemContextValues_unstable as (
-  state: AccordionItemState,
-) => AccordionItemContextValues;
+export {
+  useAccordionItemContext_unstable as useAccordionItemContext,
+  useAccordionItemContextValues_unstable as useAccordionItemContextValues,
+} from '@fluentui/react-accordion';
