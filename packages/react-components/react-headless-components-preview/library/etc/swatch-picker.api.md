@@ -108,7 +108,6 @@ export { SwatchPickerSlots }
 export type SwatchPickerState = SwatchPickerBaseState & {
     root: {
         'data-layout'?: SwatchPickerBaseState['layout'];
-        focusgroup?: string;
     };
 };
 

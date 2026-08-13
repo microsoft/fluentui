@@ -36,7 +36,6 @@ export type TabListSlots = TabListSlots_2;
 // @public
 export type TabListState = TabListBaseState & {
     root: {
-        focusgroup?: string;
         'data-orientation'?: 'vertical' | 'horizontal';
     };
 };
@@ -49,7 +48,6 @@ export { TabSlots }
 // @public (undocumented)
 export type TabState = TabBaseState & {
     root: {
-        focusgroupstart?: string;
         'data-icon-only'?: string;
         'data-selected'?: string;
         'data-disabled'?: string;
