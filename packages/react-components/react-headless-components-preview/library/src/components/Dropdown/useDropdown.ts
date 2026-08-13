@@ -60,6 +60,7 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
       'data-state': open ? 'open' : 'closed',
       'data-disabled': stringifyDataAttribute(trigger.disabled),
       'data-placeholder': stringifyDataAttribute(!baseState.value),
+      'data-invalid': stringifyDataAttribute(trigger['aria-invalid']),
     },
     listbox: open || hasFocus ? listbox : undefined,
     clearButton: slot.optional(mergedProps.clearButton, {
@@ -93,6 +94,7 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
 
   if (state.clearButton) {
     state.clearButton.onClick = onClearButtonClick;
+    state.clearButton['data-visible'] = stringifyDataAttribute(showClearButton);
   }
 
   // Heads up! We don't support "clearable" in multiselect mode, so we should never display a slot
