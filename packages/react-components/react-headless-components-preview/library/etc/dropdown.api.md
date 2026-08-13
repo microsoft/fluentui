@@ -32,10 +32,14 @@ export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNo
 
 // @public (undocumented)
 export type DropdownState = DropdownBaseHookState & {
-    button: {
+    button: DropdownBaseHookState['button'] & {
         'data-state'?: 'open' | 'closed';
         'data-disabled'?: string;
         'data-placeholder'?: string;
+        'data-invalid'?: string;
+    };
+    clearButton?: DropdownBaseHookState['clearButton'] & {
+        'data-visible'?: string;
     };
 };
 
