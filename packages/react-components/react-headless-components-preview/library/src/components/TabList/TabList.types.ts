@@ -20,7 +20,6 @@ export type TabListProps = TabListBaseProps;
  */
 export type TabListState = TabListBaseState & {
   root: {
-    focusgroup?: string;
     /**
      * Data attribute set to reflect the orientation of the tab list. Value is 'vertical' or 'horizontal'.
      */

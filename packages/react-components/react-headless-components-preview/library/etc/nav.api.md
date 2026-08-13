@@ -9,7 +9,6 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
 import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
-import { DrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooterState } from '@fluentui/react-drawer';
 import { DrawerHeaderState } from '@fluentui/react-drawer';
 import type { EventHandler } from '@fluentui/react-utilities';
@@ -17,7 +16,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { InlineDrawerBaseProps } from '@fluentui/react-drawer';
 import { InlineDrawerSlots } from '@fluentui/react-drawer';
 import { JSXElement } from '@fluentui/react-utilities';
-import type { NavBaseState } from '@fluentui/react-nav';
 import { NavCategoryContextValues } from '@fluentui/react-nav';
 import { NavCategoryItemProvider } from '@fluentui/react-nav';
 import { NavCategoryProps } from '@fluentui/react-nav';
@@ -27,6 +25,7 @@ import { NavContextValue } from '@fluentui/react-nav';
 import { NavContextValues } from '@fluentui/react-nav';
 import { DrawerBodyProps as NavDrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots as NavDrawerBodySlots } from '@fluentui/react-drawer';
+import { DrawerBodyState as NavDrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooterProps as NavDrawerFooterProps } from '@fluentui/react-drawer';
 import { DrawerFooterSlots as NavDrawerFooterSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderProps as NavDrawerHeaderProps } from '@fluentui/react-drawer';
@@ -39,6 +38,7 @@ import { NavItemValue } from '@fluentui/react-nav';
 import { NavBaseProps as NavProps } from '@fluentui/react-nav';
 import { NavProvider } from '@fluentui/react-nav';
 import { NavSlots } from '@fluentui/react-nav';
+import { NavBaseState as NavState } from '@fluentui/react-nav';
 import type { NavSubItemBaseState } from '@fluentui/react-nav';
 import { NavSubItemBaseProps as NavSubItemProps } from '@fluentui/react-nav';
 import { NavSubItemSlots } from '@fluentui/react-nav';
@@ -135,12 +135,7 @@ export { NavDrawerBodyProps }
 
 export { NavDrawerBodySlots }
 
-// @public (undocumented)
-export type NavDrawerBodyState = DrawerBodyState & {
-    root: DrawerBodyState['root'] & {
-        focusgroup?: string;
-    };
-};
+export { NavDrawerBodyState }
 
 // @public
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
@@ -215,12 +210,7 @@ export type NavSectionHeaderState = ComponentState<NavSectionHeaderSlots>;
 
 export { NavSlots }
 
-// @public (undocumented)
-export type NavState = NavBaseState & {
-    root: NavBaseState['root'] & {
-        focusgroup?: string;
-    };
-};
+export { NavState }
 
 // @public
 export const NavSubItem: ForwardRefComponent<NavSubItemProps>;
@@ -271,7 +261,7 @@ export const renderNavDivider: (state: DividerBaseState) => JSXElement;
 export const renderNavDrawer: (state: NavDrawerState, contextValues: NavContextValues) => JSXElement;
 
 // @public
-export const renderNavDrawerBody: (state: DrawerBodyState) => JSXElement;
+export const renderNavDrawerBody: (state: NavDrawerBodyState) => JSXElement;
 
 // @public
 export const renderNavDrawerFooter: (state: DrawerFooterState) => JSXElement;

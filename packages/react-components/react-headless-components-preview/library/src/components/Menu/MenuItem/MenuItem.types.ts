@@ -6,7 +6,6 @@ export type MenuItemProps = MenuItemBaseProps;
 
 export type MenuItemState = MenuItemBaseState & {
   root: {
-    focusgroupstart?: string;
     'data-disabled'?: string;
     'data-has-submenu'?: string;
     'data-submenu-open'?: string;

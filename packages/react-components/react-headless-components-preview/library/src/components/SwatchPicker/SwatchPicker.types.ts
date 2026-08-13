@@ -8,9 +8,5 @@ export type SwatchPickerState = SwatchPickerBaseState & {
      * Whether SwatchPicker is row or grid
      */
     'data-layout'?: SwatchPickerBaseState['layout'];
-    /**
-     * Arrow navigation mode for SwatchPicker
-     */
-    focusgroup?: string;
   };
 };
