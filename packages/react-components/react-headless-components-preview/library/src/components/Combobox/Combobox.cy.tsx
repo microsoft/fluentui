@@ -8,6 +8,7 @@ import type { ComboboxProps } from '.';
 // The Combobox `id` prop maps to the trigger <input> element.
 const trigger = '#combobox';
 const listbox = '[role="listbox"]';
+const expandIcon = '[data-testid="expand-icon"]';
 const option = '[role="option"]';
 const multiselectPopup = '[role="menu"]';
 const multiselectOption = '[role="menuitemcheckbox"]';
@@ -60,6 +61,19 @@ describe('Combobox', () => {
       cy.get(trigger).realClick();
       cy.get(listbox).should('exist');
       cy.get('body').realClick({ position: 'bottomRight' });
+      cy.get(listbox).should('not.exist');
+    });
+
+    it('toggles on expand icon click', () => {
+      mount(
+        <BasicCombobox
+          expandIcon={{ 'data-testid': 'expand-icon', children: 'v' } as React.HTMLAttributes<HTMLSpanElement>}
+        />,
+      );
+      cy.get(expandIcon).realClick();
+      cy.get(listbox).should('exist');
+      cy.get(trigger).should('be.focused');
+      cy.get(expandIcon).realClick();
       cy.get(listbox).should('not.exist');
     });
   });
