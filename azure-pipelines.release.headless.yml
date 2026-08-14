@@ -89,7 +89,3 @@ extends:
                   NPM_TOKEN: $(npmToken)
                 displayName: Publish changes and bump versions
                 condition: not(${{ parameters.dryRun }})
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false

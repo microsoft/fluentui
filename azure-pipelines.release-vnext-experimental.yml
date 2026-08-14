@@ -122,7 +122,3 @@ extends:
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
                   NPM_TOKEN: $(npmToken)
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false

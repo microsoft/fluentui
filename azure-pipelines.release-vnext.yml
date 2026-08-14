@@ -100,15 +100,3 @@ extends:
               - script: |
                   yarn syncpack list-mismatches
                 displayName: Check for dependency mismatches
-
-              # TODO update release notes script for v9
-              # - script: |
-              #     node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
-              #   displayName: 'Update github release notes'
-
-              # This would usually be run automatically (via a pipeline decorator from an extension), but the
-              # thorough cleanup step prevents it from working. So run it manually here.
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false

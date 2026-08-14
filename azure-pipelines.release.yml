@@ -159,7 +159,3 @@ extends:
                   node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
                 condition: not(${{ parameters.dryRun }})
                 displayName: 'Update github release notes'
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false

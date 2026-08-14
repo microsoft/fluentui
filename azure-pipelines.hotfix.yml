@@ -87,7 +87,3 @@ extends:
                   npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
                 displayName: Publish new version
                 condition: not(${{ parameters.dryRun }})
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false
