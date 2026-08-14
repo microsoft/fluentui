@@ -58,7 +58,10 @@ Supported statuses are:
 - `no direct counterpart`;
 - `out of scope`.
 
-Inventory entries use one row per v8 public component or component family. Variants are grouped only when they share the same v9 destination and migration model, such as the v8 button variants that converge on the v9 button family.
+The inventory population starts from the v8 controls registered in
+`apps/public-docsite-resources/src/AppDefinition.tsx`, reconciled with the existing rows in `ComponentMapping.mdx`. Every public v8 docsite control receives a row. Duplicate mapping rows are removed, and any control present in only one source is investigated and retained with the appropriate status.
+
+Inventory entries use one row per v8 public component or component family. Variants are grouped only when they share the same v9 destination and migration model, such as the v8 button variants that converge on the v9 button family. A stable v9 component with no v8 source does not receive a migration row; it remains covered by the existing "New Components in v9" section.
 
 Eligibility is determined as follows:
 
@@ -66,12 +69,13 @@ Eligibility is determined as follows:
 - **Clear counterpart:** the existing component mapping identifies a stable v9 replacement and repository source or specifications show that it serves the same primary user task.
 - **Conditional counterpart:** more than one stable v9 component can replace the v8 component depending on the usage scenario. These entries remain eligible and must document the decision criteria.
 - **No direct counterpart:** no stable v9 component serves the same primary user task. The inventory records this status, but no guide is required.
+- **Out of scope:** the only available destination is preview, compatibility, utility, deprecated, or third-party functionality. The row remains in the inventory and explains the exclusion.
 
 Complexity values are:
 
-- `low`: the component purpose and composition remain substantially the same, with mostly prop renames or native-prop replacements;
-- `medium`: migration requires meaningful prop, event, styling, or child-rendering changes but has one primary destination;
-- `high`: migration requires a component split, compound-component rewrite, conditional destination, or significant behavior/feature trade-offs.
+- `high`: any of these apply: multiple destination components require a scenario decision; one v8 component becomes three or more required v9 compound components; or a supported core v8 scenario requires custom implementation because v9 has no equivalent;
+- `medium`: no `high` rule applies, but migration changes controlled-state ownership, event data shape, accessible labeling, focus/keyboard behavior, or replaces render callbacks with slots or child composition;
+- `low`: neither `high` nor `medium` applies, and migration is limited to component/prop renames, string-enum changes, or native HTML/ARIA prop replacements.
 
 Priority values are:
 
@@ -80,26 +84,28 @@ Priority values are:
 - `P2`: a missing guide with `low` complexity;
 - `N/A`: complete, out-of-scope, or no-direct-counterpart entries.
 
-A guide is `complete` only when its MDX page exists, has the required `<Meta>` title, is linked from `ComponentMapping.mdx`, contains every required section or an explicit `Not applicable` statement, includes the required examples, and passes the validation defined below.
+Changing a guide from `missing` to `in progress` does not change its priority. A guide changes to `N/A` priority only when it becomes `complete` or is classified as out of scope or no direct counterpart.
+
+A guide is `complete` only when its MDX page exists, has the required `<Meta>` title, is linked from `ComponentMapping.mdx`, contains every required section or an explicit `Not applicable` statement, includes the required examples, has no unresolved documentation gap affecting destination choice, public API mapping, behavior, or example correctness, and passes the validation defined below.
 
 ## Pilot Components
 
 The first batch contains ten components selected for common v8 usage and substantial API, composition, or behavior differences:
 
-| v8 component     | v9 component                        | Primary migration concern                                            |
-| ---------------- | ----------------------------------- | -------------------------------------------------------------------- |
-| `Dialog`         | `Dialog`                            | Compound-component structure and open-state handling                 |
-| `Panel`          | `Drawer`                            | Component rename and inline/overlay composition                      |
-| `TextField`      | `Input`                             | Label/validation composition and public API changes                  |
-| `ContextualMenu` | `Menu`                              | Declarative child composition and item variants                      |
-| `MessageBar`     | `MessageBar`                        | Compound structure, intent, actions, and dismissal                   |
-| `Callout`        | `Popover`                           | Trigger ownership, open state, focus, and positioning                |
-| `ChoiceGroup`    | `RadioGroup` and `Radio`            | Component rename, option composition, and events                     |
-| `Dropdown`       | `Dropdown`, `Select`, or `Combobox` | Scenario-based replacement, multiselect, and native select semantics |
-| `SpinButton`     | `SpinButton`                        | Numeric value model, events, and formatting                          |
-| `DetailsList`    | `Table` and `DataGrid`              | Feature decomposition, selection, sorting, and virtualization gaps   |
+| v8 component     | v9 component             | Primary migration concern                                            |
+| ---------------- | ------------------------ | -------------------------------------------------------------------- |
+| `Dialog`         | `Dialog`                 | Compound-component structure and open-state handling                 |
+| `Panel`          | `Drawer`                 | Component rename and inline/overlay composition                      |
+| `TextField`      | `Input`                  | Label/validation composition and public API changes                  |
+| `ContextualMenu` | `Menu`                   | Declarative child composition and item variants                      |
+| `MessageBar`     | `MessageBar`             | Compound structure, intent, actions, and dismissal                   |
+| `Callout`        | `Popover`                | Trigger ownership, open state, focus, and positioning                |
+| `ChoiceGroup`    | `RadioGroup` and `Radio` | Component rename, option composition, and events                     |
+| `Dropdown`       | `Dropdown` or `Select`   | Scenario-based replacement, multiselect, and native select semantics |
+| `SpinButton`     | `SpinButton`             | Numeric value model, events, and formatting                          |
+| `DetailsList`    | `Table` and `DataGrid`   | Feature decomposition, selection, sorting, and virtualization gaps   |
 
-Some v8 components map to more than one v9 option. The guide must explain the decision criteria instead of presenting a false one-to-one replacement. For v8 `Dropdown`, v9 `Dropdown` is the general custom-rendered replacement and supports multiselect, v9 `Select` is appropriate when native `<select>` semantics and a simpler API are desired, and v9 `Combobox` is appropriate when users need freeform input or filtering/search behavior.
+Some v8 components map to more than one v9 option. The guide must explain the decision criteria instead of presenting a false one-to-one replacement. For v8 `Dropdown`, v9 `Dropdown` is the primary replacement and supports single-select and multiselect scenarios. V9 `Select` is an alternative only when native `<select>` semantics, native option rendering, and single selection satisfy the product requirements. Editable, freeform, or built-in filtering scenarios belong to the separate v8 `ComboBox` to v9 `Combobox` mapping and are cross-linked rather than presented as ordinary `Dropdown` migration.
 
 Four pilot pages already exist in the central docsite:
 
@@ -147,6 +153,8 @@ Every component guide follows the same top-level structure. If a section is not 
    - Required custom composition.
    - Links to alternate components where appropriate.
 
+A **major change** is any item classified as a conditional mapping, composition replacement, separate-component replacement, behavioral change, or unsupported core scenario. Each major change requires a focused example. If an unsupported scenario cannot have a runnable v9 example, it requires a minimal v8 example plus a concrete composition sketch or explicit statement that no supported replacement exists.
+
 ## Research and Evidence
 
 Migration claims must be based on current repository sources:
@@ -166,12 +174,14 @@ When evidence is incomplete or contradictory, the guide must not guess. The auth
 - describe the limitation conservatively;
 - mark the item as a documentation gap requiring component-owner input.
 
+A documentation gap that affects destination choice, public prop/event mapping, behavior, accessibility guidance, or example correctness blocks `complete` status until repository evidence or component-owner confirmation resolves it. Minor historical context gaps may remain in the known-gaps section when they do not affect migration instructions.
+
 ## Authoring Workflow
 
 The workflow is inventory-first:
 
-1. Enumerate eligible stable v9 components.
-2. Map each v9 component to its v8 source component or components.
+1. Enumerate public v8 controls from `AppDefinition.tsx` and reconcile them with `ComponentMapping.mdx`.
+2. Map each v8 control to a stable, conditional, unavailable, or out-of-scope v9 destination.
 3. Detect existing standalone and embedded migration material.
 4. Assign status, migration complexity, and priority.
 5. Expand `ComponentMapping.mdx` into the landing inventory and establish the component-page template.
@@ -186,12 +196,13 @@ The ten pages should be authored in small reviewable groups. Each page remains i
 
 The inventory connects component coverage to guide publication:
 
-1. Repository package and API data identifies an eligible v8-to-v9 mapping.
-2. The inventory records the mapping, priority, and current status.
-3. Research produces a structured list of component, prop, behavior, and example differences.
-4. The structured findings become a component migration page.
-5. The completed page is linked from the inventory and docsite navigation.
-6. Future API or guide changes update both the component page and inventory status where necessary.
+1. The public v8 control list establishes the inventory row set.
+2. Repository package and API data classifies each v8-to-v9 mapping.
+3. The inventory records the mapping, priority, and current status.
+4. Research produces a structured list of component, prop, behavior, and example differences.
+5. The structured findings become a component migration page.
+6. The completed page is linked from the inventory and docsite navigation.
+7. Future API or guide changes update both the component page and inventory status where necessary.
 
 This coupling prevents migration coverage from drifting silently.
 
@@ -230,9 +241,24 @@ The implementation plan must use the existing Nx targets:
 
 - `yarn nx run public-docsite-v9:type-check` for docsite TypeScript and imported MDX dependencies;
 - `yarn nx run public-docsite-v9:lint` for repository documentation and source conventions;
+- `yarn nx run public-docsite-v9:test` for migration navigation and route-link validation;
 - `yarn nx run public-docsite-v9:build-storybook:docsite` to prove that MDX pages, `<Meta>` declarations, navigation, and links can be built by the docsite.
 
-Fenced code examples are not compiled by Storybook. Therefore, each guide's v9 examples must also exist as typed example fixtures or stories imported by the MDX page, or be covered by an adjacent compile-only `.stories.tsx`/test fixture. The visible code fence and typed source must share the same implementation to prevent drift. V8 examples are checked against the current v8 public types and existing examples; where the docsite build cannot compile both dependency surfaces together, reviewers must verify imports and props directly from exported v8 declarations.
+Examples use adjacent CSF story files, with separate exported stories for the v8 and v9 forms. The MDX page imports those stories and uses Storybook's `<Canvas of={...}>` and `<Source of={...}>` blocks, so the rendered example and visible source come from the same typed implementation. The public docsite already depends on both `@fluentui/react` and `@fluentui/react-components`; therefore, `public-docsite-v9:type-check` reproducibly validates imports and props for both versions.
+
+Every guide uses this exact title prefix:
+
+```tsx
+<Meta title="Concepts/Migration/from v8/Components/<Migration name>" />
+```
+
+Internal guide links use Storybook doc routes in the existing form:
+
+```text
+/docs/concepts-migration-from-v8-components-<storybook-slug>--docs
+```
+
+An adjacent Jest navigation test under `FromV8/` scans `ComponentMapping.mdx` and pilot MDX files, extracts `<Meta title>` values and internal `/docs/` links, derives Storybook IDs with Storybook's existing CSF ID utility, and fails when a linked guide has no matching MDX title. `yarn nx run public-docsite-v9:test` runs this check. This source-level test complements the Storybook build, which validates MDX compilation but does not itself prove that links resolve.
 
 ## Delivery Phases
 
