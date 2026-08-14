@@ -10,7 +10,11 @@ export type EmptySwatchSlots = {
  */
 export type EmptySwatchProps = ComponentProps<EmptySwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'>;
 
+export type EmptySwatchBaseProps = ComponentProps<EmptySwatchSlots>;
+
 /**
  * State used in rendering EmptySwatch
  */
 export type EmptySwatchState = ComponentState<EmptySwatchSlots> & Pick<EmptySwatchProps, 'size' | 'shape'>;
+
+export type EmptySwatchBaseState = ComponentState<EmptySwatchSlots>;

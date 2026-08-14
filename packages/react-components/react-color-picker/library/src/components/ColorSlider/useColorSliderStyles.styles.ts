@@ -4,21 +4,13 @@ import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import type { ColorSliderSlots, ColorSliderState } from './ColorSlider.types';
+import { colorSliderCSSVars } from './ColorSlider.constants';
 
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots> = {
   root: 'fui-ColorSlider',
   rail: 'fui-ColorSlider__rail',
   thumb: 'fui-ColorSlider__thumb',
   input: 'fui-ColorSlider__input',
-};
-
-export const colorSliderCSSVars = {
-  sliderDirectionVar: `--fui-Slider--direction`,
-  sliderProgressVar: `--fui-Slider--progress`,
-  thumbColorVar: `--fui-Slider__thumb--color`,
-  railColorVar: `--fui-Slider__rail--color`,
-  thumbSizeVar: `--fui-Slider__thumb--size`,
-  railSizeVar: `--fui-Slider__rail--size`,
 };
 
 const hueBackground = `linear-gradient(${[

@@ -50,7 +50,9 @@ describe('Nav', () => {
     );
 
     expect(result.getByText('Item 1')).toHaveAttribute('aria-current', 'page');
+    expect(result.getByText('Item 1')).toHaveAttribute('data-selected');
     expect(result.getByText('Item 2')).not.toHaveAttribute('aria-current', 'page');
+    expect(result.getByText('Item 2')).not.toHaveAttribute('data-selected');
   });
 
   it('supports controlled selectedValue', () => {
@@ -87,6 +89,7 @@ describe('Nav', () => {
     );
 
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
   });
 
@@ -109,6 +112,7 @@ describe('Nav', () => {
     // Click to open
     fireEvent.click(result.getByText('Category 1'));
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
 
     // Click to close

@@ -1,17 +1,17 @@
 'use client';
 
 import * as React from 'react';
-import { tinycolor } from '@ctrl/tinycolor';
 import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { ColorAreaBaseProps, ColorAreaBaseState, ColorAreaProps, ColorAreaState } from './ColorArea.types';
 import type { HsvColor } from '../../types/color';
-import { colorAreaCSSVars } from './useColorAreaStyles.styles';
+import { colorAreaCSSVars } from './ColorArea.constants';
 import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 import { getCoordinates } from '../../utils/getCoordinates';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
+import { createHslColorString } from '../../utils/createHslColor';
 
 /**
  * Create the state required to render unstyled ColorArea.
@@ -161,7 +161,7 @@ export const useColorAreaBase_unstable = (
   const rootVariables = {
     [colorAreaCSSVars.areaXProgressVar]: `${saturation}%`,
     [colorAreaCSSVars.areaYProgressVar]: `${value}%`,
-    [colorAreaCSSVars.thumbColorVar]: tinycolor(hsvColor).toRgbString(),
+    [colorAreaCSSVars.thumbColorVar]: createHslColorString(hsvColor),
     [colorAreaCSSVars.mainColorVar]: `hsl(${hsvColor.h}, 100%, 50%)`,
   };
   const state: ColorAreaBaseState = {

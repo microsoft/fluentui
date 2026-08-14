@@ -29,5 +29,10 @@ export type SwitchState = SwitchBaseState & {
      * Data attribute set when the switch is checked (controlled mode only).
      */
     'data-checked'?: string;
+
+    /**
+     * Data attribute reflecting the label position.
+     */
+    'data-label-position'?: SwitchBaseState['labelPosition'];
   };
 };

@@ -16,7 +16,6 @@ import type { OptionSlots as OptionSlots_2 } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
-import { renderTagPicker_unstable as renderTagPicker } from '@fluentui/react-tag-picker';
 import { renderTagPickerButton_unstable as renderTagPickerButton } from '@fluentui/react-tag-picker';
 import { renderTagPickerControl_unstable as renderTagPickerControl } from '@fluentui/react-tag-picker';
 import { renderTagPickerGroup_unstable as renderTagPickerGroup } from '@fluentui/react-tag-picker';
@@ -38,7 +37,7 @@ import { TagPickerControlInternalSlots } from '@fluentui/react-tag-picker';
 import { TagPickerControlProps } from '@fluentui/react-tag-picker';
 import { TagPickerControlSlots } from '@fluentui/react-tag-picker';
 import type { TagPickerGroupBaseState } from '@fluentui/react-tag-picker';
-import type { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
+import type { TagPickerGroupSlots as TagPickerGroupSlots_2 } from '@fluentui/react-tag-picker';
 import type { TagPickerInputBaseState } from '@fluentui/react-tag-picker';
 import { TagPickerInputBaseProps as TagPickerInputProps } from '@fluentui/react-tag-picker';
 import { TagPickerInputSlots } from '@fluentui/react-tag-picker';
@@ -50,7 +49,8 @@ import { TagPickerState } from '@fluentui/react-tag-picker';
 import { useTagPickerContext_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerContextValues } from '@fluentui/react-tag-picker';
 
-export { renderTagPicker }
+// @public
+export const renderTagPicker: (state: TagPickerState, contexts: TagPickerContextValues) => JSXElement;
 
 export { renderTagPickerButton }
 
@@ -113,12 +113,12 @@ export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
 // @public
 export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots> & Pick<TagGroupBaseProps, 'dismissible' | 'onDismiss'>;
 
-export { TagPickerGroupSlots }
+// @public (undocumented)
+export type TagPickerGroupSlots = TagPickerGroupSlots_2;
 
 // @public
 export type TagPickerGroupState = TagPickerGroupBaseState & {
     root: {
-        focusgroup?: string;
         'data-disabled'?: string;
     };
 };

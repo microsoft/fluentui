@@ -5,7 +5,7 @@
     "moduleResolution": "bundler",
     "outDir": "../../../../dist/out-tsc",
     "inlineSources": true,
-    "types": ["static-assets", "environment"]
+    "types": ["static-assets", "environment", "focusgroup"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

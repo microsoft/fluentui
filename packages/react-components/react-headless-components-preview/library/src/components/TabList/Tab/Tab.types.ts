@@ -6,8 +6,8 @@ export type TabProps = TabBaseProps;
 
 export type TabState = TabBaseState & {
   root: {
-    focusgroupstart?: string;
     'data-icon-only'?: string;
     'data-selected'?: string;
+    'data-disabled'?: string;
   };
 };

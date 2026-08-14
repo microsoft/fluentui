@@ -31,6 +31,7 @@ export type ToggleButtonState = ToggleButtonBaseState & {
         'data-disabled-focusable'?: string;
         'data-icon-only'?: string;
         'data-checked'?: string;
+        'data-icon-position'?: ToggleButtonBaseState['iconPosition'];
     };
 };
 

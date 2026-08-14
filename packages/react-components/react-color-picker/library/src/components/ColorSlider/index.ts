@@ -10,8 +10,5 @@ export type {
 } from './ColorSlider.types';
 export { renderColorSlider_unstable } from './renderColorSlider';
 export { useColorSliderBase_unstable, useColorSlider_unstable } from './useColorSlider';
-export {
-  colorSliderCSSVars,
-  colorSliderClassNames,
-  useColorSliderStyles_unstable,
-} from './useColorSliderStyles.styles';
+export { colorSliderClassNames, useColorSliderStyles_unstable } from './useColorSliderStyles.styles';
+export { colorSliderCSSVars } from './ColorSlider.constants';

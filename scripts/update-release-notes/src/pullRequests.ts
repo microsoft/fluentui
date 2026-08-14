@@ -9,7 +9,9 @@ import { IExtendedPullRequest } from './types';
  */
 export async function getPullRequest(entry: ChangelogEntry): Promise<IPullRequest | undefined> {
   const { commit, author: authorEmail } = entry;
-
+  if (!commit || commit === 'not available') {
+    return undefined;
+  }
   const pr = await getPullRequestForCommit({
     commit,
     github,

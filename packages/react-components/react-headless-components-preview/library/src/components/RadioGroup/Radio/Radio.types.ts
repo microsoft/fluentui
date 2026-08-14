@@ -19,5 +19,10 @@ export type RadioState = RadioBaseState & {
      * Data attribute set when the radio is disabled.
      */
     'data-disabled'?: string;
+
+    /**
+     * Data attribute reflecting the label position.
+     */
+    'data-label-position'?: RadioBaseState['labelPosition'];
   };
 };

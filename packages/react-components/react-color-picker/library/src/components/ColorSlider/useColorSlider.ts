@@ -1,7 +1,6 @@
 'use client';
 
 import type * as React from 'react';
-import { tinycolor } from '@ctrl/tinycolor';
 import {
   getPartitionedNativeProps,
   useId,
@@ -9,7 +8,7 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { colorSliderCSSVars } from './useColorSliderStyles.styles';
+import { colorSliderCSSVars } from './ColorSlider.constants';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type {
   ColorSliderBaseProps,
@@ -24,6 +23,7 @@ import { createHsvColor } from '../../utils/createHsvColor';
 import { clampValue, type ChannelActions, adjustChannel } from '../../utils/adjustChannel';
 import type { HsvColor } from '../../types/color';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
+import { createHslColor, createHslColorString } from '../../utils/createHslColor';
 
 /**
  * Create the base state required to render unstyled ColorSlider.
@@ -61,7 +61,7 @@ export const useColorSliderBase_unstable = (
   } = props;
 
   const hsvColor = color || colorFromContext;
-  const hslColor = tinycolor(hsvColor).toHsl();
+  const hslColor = createHslColor(hsvColor);
 
   const [currentColor, setCurrentColor] = useControllableState<HsvColor>({
     defaultState: props.defaultColor,
@@ -105,11 +105,11 @@ export const useColorSliderBase_unstable = (
     [colorSliderCSSVars.sliderDirectionVar]: vertical ? '180deg' : dir === 'ltr' ? '-90deg' : '90deg',
     [colorSliderCSSVars.sliderProgressVar]: `${valuePercent}%`,
     [colorSliderCSSVars.thumbColorVar]:
-      channel === 'hue' ? `hsl(${clampedValue}, 100%, 50%)` : tinycolor(hsvColor).toRgbString(),
+      channel === 'hue' ? `hsl(${clampedValue}, 100%, 50%)` : createHslColorString(hsvColor),
     [colorSliderCSSVars.railColorVar]:
       channel === 'hue'
-        ? `hsl(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%)`
-        : `hsl(${hslColor.h} 100%, 50%)`,
+        ? `hsl(${hslColor.h}, ${hslColor.s * 100}%, ${hslColor.l * 100}%)`
+        : `hsl(${hslColor.h}, 100%, 50%)`,
   };
 
   const state: ColorSliderBaseState = {
