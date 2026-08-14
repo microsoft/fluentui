@@ -18,13 +18,6 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
  */
 export class Checkbox extends BaseCheckbox {
   /**
-   * Indicates that the indeterminate state has been changed by the user.
-   *
-   * @internal
-   */
-  private dirtyIndeterminate: boolean = false;
-
-  /**
    * The initial indeterminate state of the element.
    *
    * @public
@@ -43,7 +36,7 @@ export class Checkbox extends BaseCheckbox {
    * @internal
    */
   protected defaultIndeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    if (!this.dirtyIndeterminate) {
+    if (!this.dirtyChecked) {
       this.indeterminate = !!next;
     }
   }
@@ -104,7 +97,6 @@ export class Checkbox extends BaseCheckbox {
       return;
     }
 
-    this.dirtyIndeterminate = true;
     toggleState(this.elementInternals, 'dirty-indeterminate', true);
     return super.clickHandler(e);
   }
@@ -123,7 +115,6 @@ export class Checkbox extends BaseCheckbox {
       this.indeterminate = !!this.defaultIndeterminate;
     }
 
-    this.dirtyIndeterminate = false;
     toggleState(this.elementInternals, 'dirty-indeterminate', false);
   }
 
