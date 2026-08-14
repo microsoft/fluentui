@@ -14,8 +14,6 @@ parameters:
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: tags
     value: production,externalfacing
 

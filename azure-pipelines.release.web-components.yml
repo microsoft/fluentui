@@ -14,8 +14,6 @@ parameters:
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: release.web_components # Used to scope beachball to release only vnext packages
     value: true
   - name: tags

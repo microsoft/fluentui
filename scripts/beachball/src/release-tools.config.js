@@ -6,7 +6,7 @@ const { getConfig } = require('./utils');
 const { scope } = getConfig({ version: 'tools' });
 
 /**
- * @type {typeof sharedConfig}
+ * @type {typeof sharedConfig & { scope: string[] }}
  */
 const config = {
   ...sharedConfig,

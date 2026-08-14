@@ -12,6 +12,8 @@ parameters:
 
 variables:
   - template: .devops/templates/variables.yml
+  - name: skipComponentGovernanceDetection
+    value: true
   - name: tags
     value: production,externalfacing
 

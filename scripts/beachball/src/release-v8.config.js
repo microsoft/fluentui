@@ -6,11 +6,11 @@ const { getConfig } = require('./utils');
 const { scope } = getConfig({ version: 'v8' });
 
 /**
- * @type {typeof sharedConfig}
+ * @type {typeof sharedConfig & { scope: string[] }}
  */
 const config = {
   ...sharedConfig,
-  scope: [...sharedConfig.scope, ...scope],
+  scope,
 };
 
 module.exports = config;

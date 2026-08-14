@@ -14,23 +14,10 @@ parameters:
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
   - name: tags
     value: production,externalfacing
-
-# TODO set schedule once the pipeline is validated after a few manual releases
-# schedules:
-#   # minute 0, hour 7 in UTC (11pm in UTC-8), Every monday
-#   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-#   - cron: '0 7 * * 1'
-#     # will be 12am during daylight savings time unless trigger is updated
-#     displayName: 'Scheduled release (Every monday)'
-#     branches:
-#       include:
-#         - master
 
 resources:
   repositories:
