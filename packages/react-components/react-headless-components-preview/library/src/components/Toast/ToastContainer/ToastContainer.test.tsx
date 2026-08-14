@@ -38,10 +38,10 @@ describe('ToastContainer', () => {
     Component: ToastContainer,
     displayName: 'ToastContainer',
     requiredProps: defaultToastContainerProps,
-    renderOptions: {
+    axeRenderOptions: {
+      // ToastContainer is a list of toasts, so we need to wrap it in a list for accessibility.
       wrapper: ({ children }) => <div role="list">{children}</div>,
     },
-    getTargetElement: result => result.getByRole('listitem'),
     disabledTests: [
       // Callback argument signature includes toast metadata from ToastData.
       'consistent-callback-args',
