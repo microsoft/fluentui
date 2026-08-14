@@ -4370,6 +4370,8 @@ __metadata:
     "@fluentui/verify-bundle-isolation": "npm:*"
     "@oddbird/popover-polyfill": "npm:^0.6.1"
     "@swc/helpers": "npm:^0.5.1"
+    "@types/jest-axe": "npm:^3.5.9"
+    jest-axe: "npm:^10.0.0"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     "@types/react-dom": ">=16.9.0 <20.0.0"
@@ -10513,7 +10515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest-axe@npm:3.5.9":
+"@types/jest-axe@npm:3.5.9, @types/jest-axe@npm:^3.5.9":
   version: 3.5.9
   resolution: "@types/jest-axe@npm:3.5.9"
   dependencies:
@@ -21575,7 +21577,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-axe@npm:10.0.0":
+"jest-axe@npm:10.0.0, jest-axe@npm:^10.0.0":
   version: 10.0.0
   resolution: "jest-axe@npm:10.0.0"
   dependencies:

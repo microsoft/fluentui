@@ -7,6 +7,11 @@ describe('SwatchPickerRow', () => {
   isConformant({
     Component: SwatchPickerRow,
     displayName: 'SwatchPickerRow',
+    requiredProps: { children: <div role="gridcell">Color</div> },
+    renderOptions: {
+      wrapper: ({ children }) => <div role="grid">{children}</div>,
+    },
+    getTargetElement: result => result.getByRole('row'),
     disabledTests: ['has-top-level-file-extra'],
   });
 

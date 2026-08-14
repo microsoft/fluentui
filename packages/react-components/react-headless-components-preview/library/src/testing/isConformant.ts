@@ -1,5 +1,10 @@
+import * as React from 'react';
+import { render } from '@testing-library/react';
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 function kebabCase(str: string): string {
   return str
@@ -26,6 +31,16 @@ export function isConformant<TProps = {}>(
     ],
     disableTypeTests: true,
     extraTests: {
+      'component-has-no-axe-violations': ({ Component, requiredProps, renderOptions }: IsConformantOptions<TProps>) => {
+        it('has no axe violations (component-has-no-axe-violations)', async () => {
+          const { container } = render(
+            React.createElement(Component as React.ComponentType<Partial<TProps>>, requiredProps),
+            renderOptions,
+          );
+
+          expect(await axe(container)).toHaveNoViolations();
+        });
+      },
       'has-top-level-file-extra': ({ displayName, Component }: IsConformantOptions<TProps>) => {
         it(`has corresponding top-level file 'src/${name}.ts' (has-top-level-file)`, () => {
           const topLevelFile = require(`../${name}.ts`);
