@@ -5,7 +5,10 @@ import { fadeAtom, blurAtom } from '@fluentui/react-motion-components-preview';
 
 const FadeInBlurOut = createPresenceComponent({
   enter: fadeAtom({ duration: 500, direction: 'enter' }),
-  exit: [fadeAtom({ duration: 500, direction: 'exit' }), blurAtom({ duration: 500, direction: 'exit' })],
+  exit: [
+    fadeAtom({ duration: 500, direction: 'exit' }),
+    blurAtom({ duration: 500, fromRadius: '0px', toRadius: '10px' }),
+  ],
 });
 
 export const MotionCustom = (): JSXElement => (
