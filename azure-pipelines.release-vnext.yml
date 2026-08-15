@@ -52,17 +52,7 @@ extends:
               - template: .devops/templates/tools.yml@self
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
-
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                  git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-                displayName: Authenticate git for pushes
-
-              - task: Bash@3
-                inputs:
-                  filePath: yarn-ci.sh
-                displayName: yarn
+                  githubPAT: $(githubPAT)
 
               - script: |
                   FLUENT_PROD_BUILD=true yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,tag:type:stories,apps/**' --nxBail

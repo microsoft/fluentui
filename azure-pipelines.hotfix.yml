@@ -42,29 +42,24 @@ extends:
               os: linux
             workspace:
               clean: all
-            templateContext:
-              outputs:
-                - output: pipelineArtifact
-                  targetPath: $(System.DefaultWorkingDirectory)
-                  artifactName: output
             steps:
+              - script: |
+                  if [[ -z "$(targetNpmVersion)" ]]; then
+                    echo "##vso[task.logissue type=error]targetNpmVersion is not specified"
+                    exit 1
+                  fi
+                displayName: 'Checking for targetNpmVersion variable'
+
               - template: .devops/templates/tools.yml@self
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
 
               - script: |
-                  node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
-                displayName: 'Checking for targetNpmVersion variable'
-
-              - script: |
-                  npm install semver
-                  node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
+                  if ! yarn semver '$(targetNpmVersion)' >/dev/null; then
+                    echo "##vso[task.logissue type=error]Invalid version specified: $(targetNpmVersion)"
+                    exit 1
+                  fi
                 displayName: 'Check targetNpmVersion is valid semver'
-
-              - task: Bash@3
-                inputs:
-                  filePath: yarn-ci.sh
-                displayName: yarn
 
               - script: |
                   npm version $(targetNpmVersion)

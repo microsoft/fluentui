@@ -52,11 +52,7 @@ extends:
               - template: .devops/templates/tools.yml@self
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
-
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                displayName: Configure git user (used by beachball)
+                  githubPAT: $(githubPAT)
 
               - task: Bash@3
                 name: validation
@@ -75,11 +71,6 @@ extends:
                     echo "Branch path: $BRANCH_PATH"
                     echo "Feature name: $FEATURE_NAME"
                 displayName: Validate branch and extract feature name
-
-              - script: |
-                  corepack enable
-                  yarn install --immutable
-                displayName: Install dependencies
 
                 # Deletes all existing changefiles so that only bump that happens is for experimental
               - script: |
