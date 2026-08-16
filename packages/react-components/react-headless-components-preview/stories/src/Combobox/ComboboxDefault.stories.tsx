@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Combobox, Option } from '@fluentui/react-headless-components-preview/combobox';
-import { CheckmarkRegular, ChevronDownRegular, DismissRegular } from '@fluentui/react-icons';
+import { CheckmarkRegular, ChevronDownRegular, DismissRegular, ImageRegular } from '@fluentui/react-icons';
 import styles from './combobox.module.css';
 
 export const Default = (): React.ReactNode => {
@@ -14,6 +14,7 @@ export const Default = (): React.ReactNode => {
       <Combobox
         root={{ className: styles.root }}
         input={{ className: styles.input }}
+        icon={{ className: styles.icon, children: <ImageRegular /> }}
         listbox={{ className: styles.listbox }}
         id="combobox-default"
         placeholder="Select an animal"
@@ -25,6 +26,7 @@ export const Default = (): React.ReactNode => {
           <Option
             className={styles.option}
             key={option}
+            icon={{ className: styles.icon, children: <ImageRegular /> }}
             checkIcon={{ className: styles.checkIcon, children: <CheckmarkRegular /> }}
             disabled={option === 'Ferret'}
           >

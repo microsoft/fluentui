@@ -18,6 +18,7 @@ export const renderDropdown = (state: DropdownState, contextValues: DropdownCont
       <ActiveDescendantContextProvider value={contextValues.activeDescendant}>
         <ListboxProvider value={contextValues.listbox}>
           <state.button>
+            {state.icon && <state.icon />}
             {state.button.children}
             {state.expandIcon && <state.expandIcon />}
           </state.button>

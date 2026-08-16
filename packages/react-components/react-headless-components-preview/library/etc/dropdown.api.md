@@ -4,9 +4,12 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { DropdownBaseHookProps } from '@fluentui/react-combobox';
 import type { DropdownBaseHookState } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
+import type { DropdownSlots as DropdownSlots_2 } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { ListboxContextValues } from '@fluentui/react-combobox';
@@ -21,26 +24,27 @@ import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import type * as React_2 from 'react';
 import { renderListbox_unstable as renderListbox } from '@fluentui/react-combobox';
-import { renderOption_unstable as renderOption } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable as renderOptionGroup } from '@fluentui/react-combobox';
+<<<<<<< HEAD
 import { useListboxContextValues } from '@fluentui/react-combobox';
+=======
+import type { Slot } from '@fluentui/react-utilities';
+>>>>>>> e619178813 (feat(headless-components-preview): add combobox filtering)
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
 
 // @public (undocumented)
-export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode'>;
+export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode'> & ComponentProps<Pick<DropdownSlots, 'icon'>>;
 
 // @public (undocumented)
-export type DropdownState = DropdownBaseHookState & {
-    button: DropdownBaseHookState['button'] & {
-        'data-state'?: 'open' | 'closed';
+export type DropdownState = DropdownBaseHookState & ComponentState<Pick<DropdownSlots, 'icon'>> & {
+    root: DropdownBaseHookState['root'] & {
+        'data-open'?: string;
         'data-disabled'?: string;
         'data-placeholder'?: string;
         'data-invalid'?: string;
-    };
-    clearButton?: DropdownBaseHookState['clearButton'] & {
-        'data-visible'?: string;
+        'data-clearable'?: string;
     };
 };
 
@@ -68,12 +72,22 @@ export { OptionGroupSlots }
 
 export { OptionGroupState }
 
+<<<<<<< HEAD
 export { OptionProps }
 
 export { OptionSlots }
+=======
+// @public
+export type OptionProps = ComponentProps<Partial<OptionSlots>> & OptionProps_2;
+
+// @public (undocumented)
+export type OptionSlots = OptionSlots_2 & {
+    icon?: Slot<'span'>;
+};
+>>>>>>> e619178813 (feat(headless-components-preview): add combobox filtering)
 
 // @public
-export type OptionState = OptionState_2 & {
+export type OptionState = ComponentState<OptionSlots> & OptionState_2 & {
     root: {
         'data-disabled'?: string;
         'data-selected'?: string;
@@ -86,7 +100,8 @@ export const renderDropdown: (state: DropdownState, contextValues: DropdownConte
 
 export { renderListbox }
 
-export { renderOption }
+// @public
+export const renderOption: (state: OptionState) => JSXElement;
 
 export { renderOptionGroup }
 

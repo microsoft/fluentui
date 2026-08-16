@@ -46,14 +46,17 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
 
   const state: ComboboxState = {
-    components: { root: 'div', input: 'input', expandIcon: 'span', clearIcon: 'span', listbox: Listbox },
-    root: rootSlot,
-    input: {
-      ...triggerSlot,
-      'data-state': open ? 'open' : 'closed',
+    ...baseState,
+    components: { root: 'div', input: 'input', expandIcon: 'span', clearIcon: 'span', listbox: Listbox, icon: 'span' },
+    root: {
+      ...rootSlot,
+      'data-open': stringifyDataAttribute(open),
       'data-disabled': stringifyDataAttribute(triggerSlot.disabled),
-      'data-placeholder': stringifyDataAttribute(!baseState.value),
+      'data-placeholder': stringifyDataAttribute(!baseState.value && !!mergedProps.placeholder),
+      'data-invalid': stringifyDataAttribute(triggerSlot['aria-invalid']),
+      'data-clearable': stringifyDataAttribute(showClearIcon),
     },
+    input: triggerSlot,
     listbox: open || hasFocus ? listbox : undefined,
     clearIcon: slot.optional(mergedProps.clearIcon, {
       defaultProps: { 'aria-hidden': 'true' },
@@ -64,9 +67,12 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
       renderByDefault: true,
       elementType: 'span',
     }),
+    icon: slot.optional(mergedProps.icon, {
+      defaultProps: { 'aria-hidden': 'true' },
+      elementType: 'span',
+    }),
     showClearIcon,
     activeDescendantController,
-    ...baseState,
   };
 
   const onClearIconMouseDown = useEventCallback(

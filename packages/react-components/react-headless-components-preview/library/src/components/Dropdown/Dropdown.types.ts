@@ -1,40 +1,44 @@
-import type { DropdownBaseHookState, DropdownBaseHookProps } from '@fluentui/react-combobox';
-
-export type {
-  DropdownSlots,
-  DropdownContextValues,
-  DropdownOpenChangeData,
-  DropdownOpenEvents,
+import type {
+  DropdownSlots as DropdownBaseSlots,
+  DropdownBaseHookState,
+  DropdownBaseHookProps,
 } from '@fluentui/react-combobox';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode'>;
+export type { DropdownContextValues, DropdownOpenChangeData, DropdownOpenEvents } from '@fluentui/react-combobox';
 
-export type DropdownState = DropdownBaseHookState & {
-  button: DropdownBaseHookState['button'] & {
-    /**
-     * Whether the dropdown is currently open.
-     */
-    'data-state'?: 'open' | 'closed';
-    /**
-     * Whether the trigger element is currently disabled.
-     */
-    'data-disabled'?: string;
-    /**
-     * Whether the trigger element is currently displaying a placeholder.
-     */
-    'data-placeholder'?: string;
-    /**
-     * Whether the trigger element is currently invalid.
-     */
-    'data-invalid'?: string;
-  };
+export type DropdownSlots = DropdownBaseSlots & {
   /**
-   * The resolved clear button slot state.
+   * Optional icon slot rendered before the trigger element.
    */
-  clearButton?: DropdownBaseHookState['clearButton'] & {
-    /**
-     * Whether the clear button is currently visible.
-     */
-    'data-visible'?: string;
-  };
+  icon?: Slot<'span'>;
 };
+
+export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode'> &
+  ComponentProps<Pick<DropdownSlots, 'icon'>>;
+
+export type DropdownState = DropdownBaseHookState &
+  ComponentState<Pick<DropdownSlots, 'icon'>> & {
+    root: DropdownBaseHookState['root'] & {
+      /**
+       * Whether the dropdown is currently open.
+       */
+      'data-open'?: string;
+      /**
+       * Whether the trigger element is currently disabled.
+       */
+      'data-disabled'?: string;
+      /**
+       * Whether the trigger element is currently displaying a placeholder.
+       */
+      'data-placeholder'?: string;
+      /**
+       * Whether the trigger element is currently invalid.
+       */
+      'data-invalid'?: string;
+      /**
+       * Wether the clear icon is visible.
+       */
+      'data-clearable'?: string;
+    };
+  };
