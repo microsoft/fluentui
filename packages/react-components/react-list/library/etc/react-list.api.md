@@ -7,6 +7,7 @@
 import type { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -24,17 +25,45 @@ export const List: ForwardRefComponent<ListProps>;
 export const listClassNames: SlotClassNames<ListSlots>;
 
 // @public (undocumented)
+export const ListContextProvider: React_2.Provider<ListContextValue | undefined> & React_2.FC<React_2.ProviderProps<ListContextValue | undefined>>;
+
+// @public (undocumented)
+export type ListContextValue = {
+    selection?: ListSelectionState;
+    validateListItem: (listItemElement: HTMLElement) => void;
+};
+
+// @public (undocumented)
+export type ListContextValues = {
+    listContext: ListContextValue;
+    synchronousContext: ListSynchronousContextValue;
+};
+
+// @public (undocumented)
 export const ListItem: ForwardRefComponent<ListItemProps>;
+
+// @public (undocumented)
+export type ListItemActionEventData = EventData<typeof ListItemActionEventName, ListItemActionEvent> & {
+    value: ListItemValue;
+};
+
+// @public
+export type ListItemBaseProps = ComponentProps<ListItemBaseSlots> & ListItemOwnProps;
+
+// @public
+export type ListItemBaseSlots = {
+    root: NonNullable<Slot<'li', 'div'>>;
+    checkmark?: Slot<'input'>;
+};
+
+// @public
+export type ListItemBaseState = ComponentState<ListItemBaseSlots> & ListItemOwnState;
 
 // @public (undocumented)
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
 
 // @public
-export type ListItemProps = ComponentProps<ListItemSlots> & {
-    value?: ListItemValue;
-    onAction?: EventHandler<ListItemActionEventData>;
-    disabledSelection?: boolean;
-};
+export type ListItemProps = ComponentProps<ListItemSlots> & ListItemOwnProps;
 
 // @public (undocumented)
 export type ListItemSlots = {
@@ -43,11 +72,13 @@ export type ListItemSlots = {
 };
 
 // @public
-export type ListItemState = ComponentState<ListItemSlots> & {
-    selectable: boolean;
-    navigable: boolean;
-    disabled?: boolean;
-};
+export type ListItemState = ComponentState<ListItemSlots> & ListItemOwnState;
+
+// @public (undocumented)
+export type ListItemValue = string | number;
+
+// @public (undocumented)
+export type ListNavigationMode = 'items' | 'composite';
 
 // @public
 export type ListProps = ComponentProps<ListSlots> & {
@@ -66,6 +97,17 @@ export type ListSlots = {
 // @public
 export type ListState = ComponentState<ListSlots> & ListContextValue & ListSynchronousContextValue;
 
+// @public (undocumented)
+export type ListSynchronousContextValue = {
+    navigationMode: ListNavigationMode | undefined;
+    listItemRole: string;
+};
+
+// @public (undocumented)
+export type OnListSelectionChangeData = EventData<'change', React_2.SyntheticEvent> & {
+    selectedItems: SelectionItemId[];
+};
+
 // @public
 export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSXElement;
 
@@ -76,7 +118,19 @@ export const renderListItem_unstable: (state: ListItemState) => JSXElement;
 export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;
 
 // @public
+export const useListBase_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;
+
+// @public (undocumented)
+export const useListContext_unstable: <T>(selector: ContextSelector<ListContextValue, T>) => T;
+
+// @public (undocumented)
+export function useListContextValues_unstable(state: ListState): ListContextValues;
+
+// @public
 export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemState;
+
+// @public
+export const useListItemBase_unstable: (props: ListItemBaseProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemBaseState;
 
 // @public
 export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;
