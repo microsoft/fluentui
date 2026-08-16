@@ -20,7 +20,7 @@ import {
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { ListItemProps, ListItemState } from './ListItem.types';
+import type { ListItemBaseProps, ListItemBaseState, ListItemProps, ListItemState } from './ListItem.types';
 import { useListSynchronousContext, useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import type { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -43,6 +43,116 @@ export const useListItem_unstable = (
   props: ListItemProps,
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemState => {
+  const { checkmark: checkmarkProp, ...baseProps } = props;
+  const state = useListItemBase_unstable(baseProps, ref);
+
+  const { navigationMode } = useListSynchronousContext();
+
+  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+
+  const focusableGroupAttrs = useFocusableGroup({
+    ignoreDefaultKeydown: { Enter: true },
+    tabBehavior: 'limited-trap-focus',
+  });
+
+  const arrowNavigationAttributes = useArrowNavigationGroup({
+    axis: 'horizontal',
+  });
+
+  const tabsterAttributes = useMergedTabsterAttributes_unstable(
+    state.navigable ? arrowNavigationAttributes : {},
+    focusableGroupAttrs,
+    props as Partial<TabsterDOMAttribute>,
+  );
+
+  const baseKeyDown = state.root.onKeyDown;
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
+    // Invokes the consumer handler and the base Space/Enter behavior before the Tabster additions.
+    baseKeyDown?.(e);
+
+    // If the event is fired from an element inside the list item
+    if (e.target !== e.currentTarget) {
+      if (e.defaultPrevented || !state.navigable) {
+        return;
+      }
+
+      // If the items are focusable, we need to handle the arrow keys to move focus to them
+      switch (e.key) {
+        // If it's one of the Arrows defined, jump out of the list item to focus on the ListItem itself
+        // The ArrowLeft will only trigger if the target element is the leftmost, otherwise the
+        // arrowNavigationAttributes handles it and prevents it from bubbling here.
+        case ArrowLeft:
+          e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
+          break;
+
+        case ArrowDown:
+        case ArrowUp:
+          e.preventDefault();
+          // Press ESC on the original target to get focus to the parent group (List)
+          e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
+          // Now dispatch the original key to move up or down in the list
+          e.currentTarget.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys[e.key] }));
+      }
+      return;
+    }
+
+    if (e.defaultPrevented) {
+      return;
+    }
+
+    if (e.key === ArrowRight && navigationMode === 'composite') {
+      e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Enter }));
+    }
+  });
+
+  const checkmark = slot.optional(checkmarkProp, {
+    defaultProps: {
+      checked: state.checkmark?.checked,
+      tabIndex: -1,
+      disabled: props.disabledSelection,
+    },
+    renderByDefault: state.selectable,
+    elementType: Checkbox,
+  });
+
+  const mergedCheckmarkRef = useMergedRefs(checkmark?.ref, state.checkmark?.ref);
+  if (checkmark) {
+    checkmark.onChange = mergeCallbacks(
+      checkmark.onChange,
+      state.checkmark?.onChange as unknown as (
+        e: React.ChangeEvent<HTMLInputElement>,
+        data: CheckboxOnChangeData,
+      ) => void,
+    );
+    checkmark.ref = mergedCheckmarkRef;
+  }
+
+  return {
+    ...state,
+    components: {
+      root: as,
+      checkmark: Checkbox,
+    },
+    root: { ...state.root, ...tabsterAttributes, onKeyDown: handleKeyDown },
+    checkmark,
+  };
+};
+
+/**
+ * Base state hook for ListItem, free of any focus or keyboard navigation runtime and of the
+ * Fluent `Checkbox` used for the selection indicator.
+ *
+ * The checkmark slot is rendered as a native `input[type="checkbox"]`, and the Tabster driven
+ * arrow key handling is layered on by the wrapping `useListItem_unstable` hook.
+ *
+ * @param props - props from this instance of ListItem
+ * @param ref - reference to root HTMLLIElement | HTMLDivElementof ListItem
+ */
+export const useListItemBase_unstable = (
+  props: ListItemBaseProps,
+  ref: React.Ref<HTMLLIElement | HTMLDivElement>,
+): ListItemBaseState => {
   const id = useId('listItem');
   const { value = id, onKeyDown, onClick, tabIndex, role, onAction, disabledSelection } = props;
 
@@ -87,11 +197,6 @@ export const useListItem_unstable = (
     e.target.dispatchEvent(actionEvent);
   };
 
-  const focusableGroupAttrs = useFocusableGroup({
-    ignoreDefaultKeydown: { Enter: true },
-    tabBehavior: 'limited-trap-focus',
-  });
-
   const handleClick: React.MouseEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onClick?.(e);
 
@@ -114,28 +219,8 @@ export const useListItem_unstable = (
       return;
     }
 
-    // If the event is fired from an element inside the list item
+    // Events fired from an element inside the list item are left to the caller's focus management.
     if (e.target !== e.currentTarget) {
-      if (focusableItems) {
-        // If the items are focusable, we need to handle the arrow keys to move focus to them
-        switch (e.key) {
-          // If it's one of the Arrows defined, jump out of the list item to focus on the ListItem itself
-          // The ArrowLeft will only trigger if the target element is the leftmost, otherwise the
-          // arrowNavigationAttributes handles it and prevents it from bubbling here.
-          case ArrowLeft:
-            e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
-            break;
-
-          case ArrowDown:
-          case ArrowUp:
-            e.preventDefault();
-            // Press ESC on the original target to get focus to the parent group (List)
-            e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
-            // Now dispatch the original key to move up or down in the list
-            e.currentTarget.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys[e.key] }));
-        }
-        return;
-      }
       return;
     }
 
@@ -158,33 +243,16 @@ export const useListItem_unstable = (
       case Enter:
         triggerAction(e);
         break;
-
-      case ArrowRight:
-        if (navigationMode === 'composite') {
-          e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Enter }));
-        }
-
-        break;
     }
   });
 
-  const onCheckboxChange = useEventCallback((e: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => {
+  const onCheckboxChange = useEventCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (!isSelectionModeEnabled || e.defaultPrevented) {
       return;
     }
 
     toggleItem?.(e, value);
   });
-
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'horizontal',
-  });
-
-  const tabsterAttributes = useMergedTabsterAttributes_unstable(
-    focusableItems ? arrowNavigationAttributes : {},
-    focusableGroupAttrs,
-    props as Partial<TabsterDOMAttribute>,
-  );
 
   const root = slot.always(
     getIntrinsicElementProps(as, {
@@ -197,7 +265,6 @@ export const useListItem_unstable = (
         'aria-disabled': (disabledSelection && !onAction) || undefined,
       }),
       ...props,
-      ...tabsterAttributes,
       onKeyDown: handleKeyDown,
       onClick: isSelectionModeEnabled || onClick || onAction ? handleClick : undefined,
     }),
@@ -206,12 +273,13 @@ export const useListItem_unstable = (
 
   const checkmark = slot.optional(props.checkmark, {
     defaultProps: {
+      type: 'checkbox',
       checked: isSelected,
       tabIndex: -1,
       disabled: disabledSelection,
     },
     renderByDefault: isSelectionModeEnabled,
-    elementType: Checkbox,
+    elementType: 'input',
   });
 
   const mergedCheckmarkRef = useMergedRefs(checkmark?.ref, checkmarkRef);
@@ -220,10 +288,10 @@ export const useListItem_unstable = (
     checkmark.ref = mergedCheckmarkRef;
   }
 
-  const state: ListItemState = {
+  const state: ListItemBaseState = {
     components: {
       root: as,
-      checkmark: Checkbox,
+      checkmark: 'input',
     },
     root,
     checkmark,
