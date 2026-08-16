@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: extract shared useComboboxExpandIconSlot hook for the Combobox expand icon slot",
+  "packageName": "@fluentui/react-combobox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -64,7 +64,7 @@ exports[`Combobox renders an open listbox 1`] = `
   >
     <input
       aria-activedescendant="fluent-option_r_k_"
-      aria-controls="fluent-listbox_r_j_"
+      aria-controls="fluent-listbox_r_i_"
       aria-expanded="true"
       class="fui-Combobox__input"
       data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"Escape\\":true}}}"
@@ -114,7 +114,7 @@ exports[`Combobox renders an open listbox 1`] = `
     </span>
     <div
       class="fui-Listbox fui-Combobox__listbox"
-      id="fluent-listbox_r_j_"
+      id="fluent-listbox_r_i_"
       role="listbox"
       style="position: fixed; left: 0px; top: 0px; margin: 0px;"
     >
