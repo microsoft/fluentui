@@ -6108,7 +6108,6 @@ __metadata:
   resolution: "@fluentui/scripts-executors@workspace:scripts/executors"
   dependencies:
     "@fluentui/scripts-monorepo": "npm:*"
-    "@fluentui/scripts-prettier": "npm:*"
     "@fluentui/scripts-utils": "npm:*"
   languageName: unknown
   linkType: soft

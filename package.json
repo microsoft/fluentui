@@ -19,7 +19,7 @@
     "check:installed-dependencies-versions": "satisfied --no-peers --skip-invalid",
     "create-component": "nx g @fluentui/workspace-plugin:react-component",
     "create-package": "nx g @fluentui/workspace-plugin:react-library",
-    "format": "node scripts/executors/src/format.js",
+    "format": "nx format",
     "generate-version-files": "node -r ./scripts/ts-node/src/register ./scripts/generators/src/generate-version-files",
     "postinstall": "husky && node ./scripts/package-manager/src/postinstall.js",
     "preinstall": "node ./scripts/package-manager/src/preinstall.js",
