@@ -1,0 +1,70 @@
+{
+  "name": "public-docsite-v9-new",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/public-docsite-v9-new/app",
+  "tags": ["platform:web", "vNext"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "build"
+      },
+      "outputs": ["{projectRoot}/dist"],
+      "inputs": [
+        "default",
+        "{projectRoot}/content/**",
+        "{projectRoot}/vite.config.ts",
+        "{projectRoot}/react-router.config.ts",
+        "{projectRoot}/source.config.ts"
+      ],
+      "dependsOn": ["docgen"]
+    },
+    "dev": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "dev"
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "type-check"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "lint"
+      }
+    },
+    "test": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "test"
+      }
+    },
+    "docgen": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "docgen"
+      },
+      "outputs": ["{projectRoot}/app/generated"],
+      "inputs": [
+        "{projectRoot}/scripts/**",
+        "{workspaceRoot}/tsconfig.base.all.json",
+        {
+          "dependentTasksOutputFiles": "**/*.d.ts"
+        }
+      ]
+    },
+    "test-a11y": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "test:a11y"
+      },
+      "dependsOn": ["build"]
+    }
+  },
+  "implicitDependencies": ["tag:type:stories"]
+}

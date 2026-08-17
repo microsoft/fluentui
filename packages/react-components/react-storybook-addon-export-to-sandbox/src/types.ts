@@ -1,14 +1,9 @@
 import type { StoryContext as StoryContextOrigin, Parameters } from '@storybook/react-webpack5';
-import type { ParametersExtension, PresetConfig } from './public-types';
-
-export interface CssModuleEntry {
-  name: string;
-  source: string;
-}
+import type { CssModuleSources, ParametersExtension, PresetConfig } from './public-types';
 
 /** Parameters injected per-story at build time by the babel plugin. Not user-configurable. */
 interface InjectedParameters {
-  cssModuleSources?: { cssModules?: CssModuleEntry[]; tokensSource?: string };
+  cssModuleSources?: CssModuleSources;
 }
 
 export interface StoryContext extends StoryContextOrigin {
@@ -16,3 +11,4 @@ export interface StoryContext extends StoryContextOrigin {
 }
 
 export type { ParametersExtension, PresetConfig };
+export type { CssModuleEntry, CssModuleSources } from './public-types';

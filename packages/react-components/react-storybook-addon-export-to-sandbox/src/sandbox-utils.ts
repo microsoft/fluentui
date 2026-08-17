@@ -1,12 +1,19 @@
 import dedent from 'dedent';
 
 import { getDependencies } from './getDependencies';
+import type { Data } from './public-types';
 import type { StoryContext, ParametersExtension } from './types';
 
 type ParametersConfig = NonNullable<ParametersExtension['exportToSandbox']>;
 
+export type { Data };
+
+/**
+ * Uses the form's own document rather than an ambient global, so this works in any
+ * host document (iframe, popup, test harness) — see repo rule #3.
+ */
 export function addHiddenInput(form: HTMLFormElement, name: string, value: string) {
-  const input = document.createElement('input');
+  const input = form.ownerDocument.createElement('input');
   input.type = 'hidden';
   input.name = name;
   input.value = value;
@@ -49,25 +56,6 @@ export function prepareSandboxContainers(context: StoryContext) {
 }
 
 const addonConfigDefaults = { requiredDependencies: {}, optionalDependencies: {}, devDependencies: {} };
-export type Data = Pick<Required<ParametersConfig>, 'provider' | 'bundler'> & {
-  storyFile: string;
-  // use originalStoryFn because users can override the `storyName` property.
-  // We need the name of the exported function, not the actual story
-  // https://github.com/microsoft/fluentui-storybook-addons/issues/12
-  // originalStoryFn.name someties looks like this: ProgressBarDefault_stories_Default
-  // just get the "Default"
-  // @TODO - im not sure this is still needed, wasn't able to repro. Can we remove it ?
-  storyExportToken: string;
-  dependencies: Record<string, string>;
-  title: string;
-  description: string;
-  requiredDependencies: Record<string, string>;
-  optionalDependencies: Record<string, string>;
-  devDependencies: Record<string, string>;
-  transformFiles?: NonNullable<ParametersConfig['transformFiles']>;
-  /** CSS module sources injected by the babel plugin (modules + tokens). */
-  cssModuleSources?: StoryContext['parameters']['cssModuleSources'];
-};
 
 export function prepareData(context: StoryContext): Data | null {
   if (!context.parameters.exportToSandbox) {

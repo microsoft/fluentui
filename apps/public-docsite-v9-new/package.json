@@ -1,0 +1,45 @@
+{
+  "name": "@fluentui/public-docsite-v9-new",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fluent UI React v9 documentation site (next generation)",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "dev": "react-router dev",
+    "build": "react-router build",
+    "preview": "vite preview",
+    "type-check": "react-router typegen && tsc --noEmit",
+    "lint": "yarn run -T eslint .",
+    "test": "node --test scripts/docgen-transforms.test.mjs scripts/story-order-core.test.mjs",
+    "docgen": "node scripts/generate-docgen.mjs",
+    "test:a11y": "node --test scripts/accessibility.test.mjs"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@griffel/react": "^1.5.32",
+    "@react-router/node": "7.18.2",
+    "fumadocs-core": "16.14.4",
+    "fumadocs-mdx": "15.2.3",
+    "fumadocs-ui": "16.14.4",
+    "isbot": "^5",
+    "lucide-react": "^0.548.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-router": "7.18.2",
+    "shiki": "4.4.3"
+  },
+  "devDependencies": {
+    "@react-router/dev": "7.18.2",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "axe-core": "4.10.2",
+    "playwright": "*",
+    "react-docgen-typescript": "2.2.2",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.7.3",
+    "vite": "7.3.6"
+  }
+}

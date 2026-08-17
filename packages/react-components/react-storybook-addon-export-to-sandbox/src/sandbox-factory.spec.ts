@@ -1,5 +1,7 @@
 import { ParametersExtension, StoryContext } from './types';
-import { addDemoActionButtons } from './sandbox-factory';
+import { addDemoActionButtons, openCodeSandbox, openStackblitz } from './sandbox-factory';
+import { scaffold } from './sandbox-scaffold';
+import type { Data } from './public-types';
 describe(`sandbox-factory`, () => {
   describe(`#addDemoActionButtons`, () => {
     let submitSpy: ReturnType<typeof jest.fn>;
@@ -220,5 +222,63 @@ describe(`sandbox-factory`, () => {
         canvas.cleanup();
       });
     });
+  });
+});
+
+describe(`sandbox-factory host-agnostic API`, () => {
+  let submitSpy: ReturnType<typeof jest.fn>;
+
+  beforeEach(() => {
+    // https://github.com/jsdom/jsdom/issues/1937
+    submitSpy = window.HTMLFormElement.prototype.submit = jest.fn();
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  function createData(provider: Data['provider']): Data {
+    return {
+      provider,
+      bundler: 'vite',
+      storyFile: `import * as React from 'react';\nexport const Default = () => <div />;\n`,
+      storyExportToken: 'Default',
+      dependencies: { react: '19.2.0' },
+      title: 'FluentUI React v9',
+      description: 'Story demo: Components/Button - Default',
+      requiredDependencies: {},
+      optionalDependencies: {},
+      devDependencies: {},
+    };
+  }
+
+  it.each([
+    ['codesandbox-cloud' as const, openCodeSandbox],
+    ['stackblitz-cloud' as const, openStackblitz],
+  ])(`should export via %s using a host-supplied document`, (provider, open) => {
+    // A document that is NOT the ambient one, proving no global is reached for.
+    const hostDocument = document.implementation.createHTMLDocument('host');
+    const data = createData(provider);
+    const files = scaffold[data.bundler](data);
+
+    open({ ...data, files, targetDocument: hostDocument });
+
+    expect(submitSpy).toHaveBeenCalledTimes(1);
+    // form is appended and removed from the supplied document, leaving it clean
+    expect(hostDocument.body.querySelector('form')).toBeNull();
+    expect(document.body.querySelector('form')).toBeNull();
+  });
+
+  it(`should not require any Storybook markup to be present`, () => {
+    const hostDocument = document.implementation.createHTMLDocument('host');
+    const data = createData('codesandbox-cloud');
+    const files = scaffold[data.bundler](data);
+
+    expect(hostDocument.querySelector('.docs-story')).toBeNull();
+    expect(() => open({ ...data, files, targetDocument: hostDocument })).not.toThrow();
+
+    function open(options: Parameters<typeof openCodeSandbox>[0]) {
+      return openCodeSandbox(options);
+    }
   });
 });

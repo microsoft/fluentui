@@ -1,0 +1,45 @@
+/*
+ * Layer order matters (design D11).
+ *
+ * Tailwind's preflight resets bare element selectors (margin/padding/border/box-sizing,
+ * `button { background: transparent }`, `ol,ul { list-style: none }`, …). Those resets must
+ * not reach example previews, or a component would render differently here than it does in
+ * Storybook or in a consumer app — silently falsifying the documentation.
+ *
+ * `preview-reset` is declared after `base`, so it beats preflight. It is still a *layer*,
+ * and Griffel injects UNLAYERED rules, which outrank every layer — so component styles
+ * continue to apply normally inside previews.
+ */
+@layer theme, base, preview-reset, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+@layer preview-reset {
+  /*
+   * `revert` rolls each property back to the user-agent value, discarding author styles
+   * from earlier layers (i.e. preflight) while leaving unlayered Griffel styles intact.
+   * Scoped to the preview subtree only.
+   */
+  [data-fluent-preview] * {
+    all: revert;
+  }
+}
+
+/*
+ * Fumadocs' default `muted-foreground` fails WCAG AA contrast against the page background
+ * (flagged by the accessibility gate on the search trigger, page descriptions and card
+ * subtitles). Documentation must meet the bar it documents, so the token is darkened here
+ * rather than the violations being exempted.
+ */
+:root {
+  --color-fd-muted-foreground: oklch(43% 0.02 264);
+}
+
+.dark {
+  --color-fd-muted-foreground: oklch(78% 0.02 264);
+}

@@ -42,6 +42,7 @@
       "@fluentui/react-breadcrumb-stories": ["packages/react-components/react-breadcrumb/stories/src/index.ts"],
       "@fluentui/react-button": ["packages/react-components/react-button/library/src/index.ts"],
       "@fluentui/react-button-stories": ["packages/react-components/react-button/stories/src/index.ts"],
+      "@fluentui/react-button-stories/*": ["packages/react-components/react-button/stories/*"],
       "@fluentui/react-calendar-compat": ["packages/react-components/react-calendar-compat/library/src/index.ts"],
       "@fluentui/react-calendar-compat-stories": [
         "packages/react-components/react-calendar-compat/stories/src/index.ts"
@@ -79,6 +80,9 @@
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-headless-components-preview-stories": [
         "packages/react-components/react-headless-components-preview/stories/src/index.ts"
+      ],
+      "@fluentui/react-headless-components-preview-stories/*": [
+        "packages/react-components/react-headless-components-preview/stories/*"
       ],
       "@fluentui/react-headless-components-preview/*": [
         "packages/react-components/react-headless-components-preview/library/src/*.ts"

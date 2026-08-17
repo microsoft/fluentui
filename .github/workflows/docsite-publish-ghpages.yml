@@ -40,24 +40,50 @@ jobs:
           affected_count=$(yarn nx show projects -t build-storybook:docsite --affected --verbose false | wc -l | tr -d ' ')
           echo "value=$affected_count" >> $GITHUB_OUTPUT
 
-      - name: Build affected storybooks
-        if: steps.affected_storybooks_count.outputs.value > 0
+      - name: Affected Fumadocs docsite
+        id: affected_docsite
+        run: |
+          affected_count=$(yarn nx show projects -p public-docsite-v9-new -t build --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
+      - name: Should deploy
+        id: should_deploy
+        run: |
+          if [ "${{ steps.affected_storybooks_count.outputs.value }}" -gt 0 ] || [ "${{ steps.affected_docsite.outputs.value }}" -gt 0 ]; then
+            echo "value=true" >> $GITHUB_OUTPUT
+          else
+            echo "value=false" >> $GITHUB_OUTPUT
+          fi
+
+      # The Pages artifact replaces the whole site, so every tree must be present in it.
+      # Build the Storybooks whenever we deploy, not only when they are the affected ones.
+      - name: Build storybooks
+        if: steps.should_deploy.outputs.value == 'true'
         run: |
           yarn nx run-many -t build-storybook:docsite --nxBail
 
+      - name: Build Fumadocs docsite
+        if: steps.should_deploy.outputs.value == 'true'
+        run: |
+          yarn nx run public-docsite-v9-new:build
+
       - name: Prepare Artifact
-        if: steps.affected_storybooks_count.outputs.value > 0
+        if: steps.should_deploy.outputs.value == 'true'
         run: |
           rm -rf _pages
-          mkdir -p _pages/react _pages/charts _pages/web-components _pages/headless
+          mkdir -p _pages/react _pages/charts _pages/web-components _pages/headless _pages/docs
 
           cp -R apps/public-docsite-v9/dist/react/* _pages/react/
           cp -R apps/chart-docsite/dist/storybook/* _pages/charts/
           cp -R packages/web-components/dist/storybook/* _pages/web-components
           cp -R apps/public-docsite-v9-headless/dist/storybook/* _pages/headless/
 
+          # Fumadocs site (design D9). Published at /docs/*; does not touch the Storybook
+          # trees above. Pages and assets are both emitted under dist/client/docs.
+          cp -R apps/public-docsite-v9-new/dist/client/docs/. _pages/docs/
+
       - name: Upload Pages Artifact
-        if: steps.affected_storybooks_count.outputs.value > 0
+        if: steps.should_deploy.outputs.value == 'true'
         id: artifact_upload
         uses: actions/upload-pages-artifact@v4
         with:

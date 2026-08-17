@@ -16,6 +16,45 @@ export interface SandboxContext {
   devDependencies: Record<string, string>;
 }
 
+export interface CssModuleEntry {
+  name: string;
+  source: string;
+}
+
+/** CSS module sources injected per-story at build time by the babel plugin. */
+export interface CssModuleSources {
+  cssModules?: CssModuleEntry[];
+  tokensSource?: string;
+}
+
+/**
+ * Everything needed to scaffold and open a sandbox for one example.
+ *
+ * This type is intentionally free of Storybook: any host that can supply an example's
+ * source and configuration can drive the export.
+ */
+export interface Data {
+  provider: 'codesandbox-cloud' | 'codesandbox-browser' | 'stackblitz-cloud';
+  bundler: 'vite' | 'cra';
+  /** Standalone, import-rewritten source for the example. */
+  storyFile: string;
+  /**
+   * Name of the story's exported binding, used to re-export it as the sandbox entry.
+   *
+   * Inside Storybook this is recovered from `originalStoryFn.name` because users can
+   * override `storyName`. Other hosts know the export name statically and pass it directly.
+   */
+  storyExportToken: string;
+  dependencies: Record<string, string>;
+  title: string;
+  description: string;
+  requiredDependencies: Record<string, string>;
+  optionalDependencies: Record<string, string>;
+  devDependencies: Record<string, string>;
+  transformFiles?: (files: Record<string, string>, ctx: SandboxContext) => Record<string, string>;
+  cssModuleSources?: CssModuleSources;
+}
+
 interface ParametersConfig {
   optionalDependencies?: Record<string, string>;
   requiredDependencies?: Record<string, string>;

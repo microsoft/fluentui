@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose host-agnostic sandbox export API (scaffold, openCodeSandbox, openStackblitz, getDependencies) and accept an injected targetDocument",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -12,6 +12,65 @@ import type { StoryContext as StoryContext_2 } from '@storybook/react-webpack5';
 import { TransformOptions } from '@babel/core';
 
 // @public (undocumented)
+export interface CssModuleEntry {
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    source: string;
+}
+
+// @public
+export interface CssModuleSources {
+    // (undocumented)
+    cssModules?: CssModuleEntry[];
+    // (undocumented)
+    tokensSource?: string;
+}
+
+// @public
+export interface Data {
+    // (undocumented)
+    bundler: 'vite' | 'cra';
+    // (undocumented)
+    cssModuleSources?: CssModuleSources;
+    // (undocumented)
+    dependencies: Record<string, string>;
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    devDependencies: Record<string, string>;
+    // (undocumented)
+    optionalDependencies: Record<string, string>;
+    // (undocumented)
+    provider: 'codesandbox-cloud' | 'codesandbox-browser' | 'stackblitz-cloud';
+    // (undocumented)
+    requiredDependencies: Record<string, string>;
+    storyExportToken: string;
+    storyFile: string;
+    // (undocumented)
+    title: string;
+    // (undocumented)
+    transformFiles?: (files: Record<string, string>, ctx: SandboxContext) => Record<string, string>;
+}
+
+// @public (undocumented)
+export const getDependencies: (fileContent: string, requiredDependencies: PackageDependencies, optionalDependencies: PackageDependencies) => {
+    [x: string]: string;
+};
+
+// @public
+export function openCodeSandbox({ files, provider, targetDocument }: OpenSandboxOptions): void;
+
+// @public
+export type OpenSandboxOptions = Data & {
+    files: Record<string, string>;
+    targetDocument: Document;
+};
+
+// @public
+export function openStackblitz(data: OpenSandboxOptions): void;
+
+// @public (undocumented)
 interface Parameters_2 {
     // (undocumented)
     exportToSandbox?: ParametersConfig;
@@ -29,6 +88,32 @@ export interface PresetConfig {
     // (undocumented)
     webpackRule?: RuleSetRule;
 }
+
+// @public
+export interface SandboxContext {
+    // (undocumented)
+    bundler: 'vite' | 'cra';
+    // (undocumented)
+    dependencies: Record<string, string>;
+    // (undocumented)
+    devDependencies: Record<string, string>;
+    // (undocumented)
+    optionalDependencies: Record<string, string>;
+    // (undocumented)
+    provider: 'codesandbox-cloud' | 'codesandbox-browser' | 'stackblitz-cloud';
+    // (undocumented)
+    requiredDependencies: Record<string, string>;
+    // (undocumented)
+    storyExportToken: string;
+    // (undocumented)
+    storyFile: string;
+}
+
+// @public (undocumented)
+export const scaffold: {
+    vite: (data: Data) => Record<string, string>;
+    cra: (data: Data) => Record<string, string>;
+};
 
 // @public
 export const withExportToSandboxButton: (storyFn: (context: StoryContext) => JSXElement, context: StoryContext) => JSXElement;
