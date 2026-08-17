@@ -1,4 +1,10 @@
-export type { ColorSwatchProps, ColorSwatchSlots, ColorSwatchState } from './components/ColorSwatch/index';
+export type {
+  ColorSwatchBaseProps,
+  ColorSwatchBaseState,
+  ColorSwatchProps,
+  ColorSwatchSlots,
+  ColorSwatchState,
+} from './components/ColorSwatch/index';
 export {
   ColorSwatch,
   colorSwatchClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
@@ -6,4 +12,5 @@ export {
   swatchCSSVars,
   useColorSwatchStyles_unstable,
   useColorSwatch_unstable,
+  useColorSwatchBase_unstable,
 } from './components/ColorSwatch/index';

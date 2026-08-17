@@ -21,6 +21,9 @@
     },
     {
       "path": "./find-free-port/tsconfig.json"
+    },
+    {
+      "path": "./focusgroup/tsconfig.json"
     }
   ]
 }

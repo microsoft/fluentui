@@ -34,6 +34,13 @@ const config = {
       'react/compiler-runtime': 'ReactCompilerRuntime',
     };
 
+    // ESM-first packages emit bare subpath imports (e.g. `use-sync-external-store/shim`) that lack
+    // a file extension. Once measured packages are `type: module`, webpack treats their `lib/` as
+    // ESM and enforces fully-specified imports; disable that so legacy CJS deps still resolve.
+    config.module = config.module ?? {};
+    config.module.rules = config.module.rules ?? [];
+    config.module.rules.push({ test: /\.[cm]?js$/, resolve: { fullySpecified: false } });
+
     // Converted packages' generated ESM class-map modules (e.g.
     // `lib/components/X/X.module.css.js`) import the package's compiled
     // `dist/styles.css` as a side effect. Webpack has no loader for `.css` by

@@ -114,7 +114,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const cornerRadius = props.roundCorners ? 3 : 0;
     const targetElement = document.getElementById(id);
     return (
-      <g ref={currentRef}>
+      <g ref={currentRef} role="presentation">
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
           <path
@@ -146,7 +146,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           opacity={opacity}
           onClick={props.data?.data.onClick}
           aria-label={_getAriaLabel()}
-          role="img"
+          role="option"
         />
         {_renderArcLabel(classes.arcLabel)}
       </g>

@@ -1,28 +1,30 @@
 'use client';
 
 import * as React from 'react';
-import { tinycolor } from '@ctrl/tinycolor';
 import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
-import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import type { ColorAreaBaseProps, ColorAreaBaseState, ColorAreaProps, ColorAreaState } from './ColorArea.types';
 import type { HsvColor } from '../../types/color';
-import { colorAreaCSSVars } from './useColorAreaStyles.styles';
+import { colorAreaCSSVars } from './ColorArea.constants';
 import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 import { getCoordinates } from '../../utils/getCoordinates';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
+import { createHslColorString } from '../../utils/createHslColor';
 
 /**
- * Create the state required to render ColorArea.
+ * Create the state required to render unstyled ColorArea.
  *
- * The returned state can be modified with hooks such as useColorAreaStyles_unstable,
- * before being passed to renderColorArea_unstable.
+ * The returned state can be modified with hooks before being passed to renderColorArea_unstable.
  *
  * @param props - props from this instance of ColorArea
  * @param ref - reference to root HTMLDivElement of ColorArea
  */
-export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
+export const useColorAreaBase_unstable = (
+  props: ColorAreaBaseProps,
+  ref: React.Ref<HTMLDivElement>,
+): ColorAreaBaseState => {
   const { targetDocument } = useFluent();
   const rootRef = React.useRef<HTMLDivElement>(null);
   const xRef = React.useRef<HTMLInputElement>(null);
@@ -30,11 +32,9 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const focusWithinRef = useFocusWithin();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
-  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
 
   const {
     onChange = onChangeFromContext as unknown as ColorAreaProps['onChange'],
-    shape = shapeFromContext,
     // Slots
     inputX,
     inputY,
@@ -161,11 +161,10 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const rootVariables = {
     [colorAreaCSSVars.areaXProgressVar]: `${saturation}%`,
     [colorAreaCSSVars.areaYProgressVar]: `${value}%`,
-    [colorAreaCSSVars.thumbColorVar]: tinycolor(hsvColor).toRgbString(),
+    [colorAreaCSSVars.thumbColorVar]: createHslColorString(hsvColor),
     [colorAreaCSSVars.mainColorVar]: `hsl(${hsvColor.h}, 100%, 50%)`,
   };
-  const state: ColorAreaState = {
-    shape,
+  const state: ColorAreaBaseState = {
     components: {
       inputX: 'input',
       inputY: 'input',
@@ -215,6 +214,28 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   state.inputX.value = saturation;
   state.inputY.value = value;
+
+  return state;
+};
+
+/**
+ * Create the state required to render ColorArea.
+ *
+ * The returned state can be modified with hooks such as useColorAreaStyles_unstable,
+ * before being passed to renderColorArea_unstable.
+ *
+ * @param props - props from this instance of ColorArea
+ * @param ref - reference to root HTMLDivElement of ColorArea
+ */
+export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
+  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
+
+  const { shape = shapeFromContext, ...rest } = props;
+
+  const state: ColorAreaState = {
+    ...useColorAreaBase_unstable(rest, ref),
+    shape,
+  };
 
   return state;
 };

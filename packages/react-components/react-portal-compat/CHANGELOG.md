@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Wed, 15 Jul 2026 14:10:41 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.2.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.2.45)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.2.44..@fluentui/react-portal-compat_v9.2.45)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-portal-compat-context to v9.0.16 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-components to v9.74.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.2.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.2.44)
+
+Tue, 04 Aug 2026 10:12:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.2.43..@fluentui/react-portal-compat_v9.2.44)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.74.5 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.2.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.2.43)
 

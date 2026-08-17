@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-toast",
-  "version": "9.8.1",
+  "version": "9.8.2",
   "description": "Toast component for Fluent UI",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": [
@@ -14,17 +14,17 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.8",
-    "@fluentui/react-aria": "^9.17.13",
+    "@fluentui/keyboard-keys": "^9.0.9",
+    "@fluentui/react-aria": "^9.17.14",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-jsx-runtime": "^9.4.4",
-    "@fluentui/react-motion": "^9.16.1",
-    "@fluentui/react-motion-components-preview": "^0.15.6",
-    "@fluentui/react-portal": "^9.8.14",
-    "@fluentui/react-shared-contexts": "^9.26.2",
-    "@fluentui/react-tabster": "^9.26.16",
-    "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-utilities": "^9.26.5",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
+    "@fluentui/react-motion": "^9.16.2",
+    "@fluentui/react-motion-components-preview": "^0.15.7",
+    "@fluentui/react-portal": "^9.8.15",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-tabster": "^9.26.17",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.26.6",
     "@swc/helpers": "^0.5.1",
     "clsx": "^2.1.1"
   },
@@ -41,10 +41,14 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
@@ -52,14 +56,16 @@
   "files": [
     "*.md",
     "dist/*.d.ts",
-    "dist/styles.css",
+    "dist/*.d.cts",
     "lib",
-    "lib-commonjs"
+    "lib-commonjs",
+    "dist/styles.css"
   ],
   "devDependencies": {
     "@fluentui/react-tailwind-theme": "workspace:*"
   },
   "imports": {
     "#theme": "@fluentui/react-tailwind-theme/css/index.css"
-  }
+  },
+  "type": "module"
 }

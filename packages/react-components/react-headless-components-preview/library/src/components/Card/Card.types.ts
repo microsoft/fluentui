@@ -28,6 +28,7 @@ export type CardProps = Omit<CardBaseProps, 'focusMode'>;
 export type CardState = CardBaseState & {
   root: {
     'data-selected'?: string;
+    'data-disabled'?: string;
   };
 };
 

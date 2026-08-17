@@ -28,6 +28,8 @@ import type { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState } from '@fluentui/react-combobox';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TagGroupBaseState } from '@fluentui/react-tags';
 import { TagGroupContextValues } from '@fluentui/react-tags';
 import type { TagGroupSlots } from '@fluentui/react-tags';
 import type { TagGroupState } from '@fluentui/react-tags';
@@ -36,16 +38,16 @@ import type { TagGroupState } from '@fluentui/react-tags';
 export const renderTagPicker_unstable: (state: TagPickerState, contexts: TagPickerContextValues) => JSXElement;
 
 // @public
-export const renderTagPickerButton_unstable: (state: TagPickerButtonState) => JSXElement;
+export const renderTagPickerButton_unstable: (state: TagPickerButtonBaseState) => JSXElement;
 
 // @public
-export const renderTagPickerControl_unstable: (state: TagPickerControlState) => JSXElement;
+export const renderTagPickerControl_unstable: (state: TagPickerControlBaseState) => JSXElement;
 
 // @public (undocumented)
-export function renderTagPickerGroup_unstable(state: TagPickerGroupState, contexts: TagGroupContextValues): JSXElement | null;
+export function renderTagPickerGroup_unstable(state: TagPickerGroupBaseState, contexts: TagGroupContextValues): JSXElement | null;
 
 // @public
-export const renderTagPickerInput_unstable: (state: TagPickerInputState) => JSXElement;
+export const renderTagPickerInput_unstable: (state: TagPickerInputBaseState) => JSXElement;
 
 // @public
 export const renderTagPickerList_unstable: (state: TagPickerListState) => JSXElement;
@@ -74,10 +76,8 @@ export type TagPickerButtonBaseProps = DistributiveOmit<TagPickerButtonProps, 's
 // @public
 export type TagPickerButtonBaseState = DistributiveOmit<TagPickerButtonState, 'size'>;
 
-// @public @deprecated
-export const tagPickerButtonClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export const tagPickerButtonClassNames: SlotClassNames<TagPickerButtonSlots>;
 
 // @public
 export type TagPickerButtonProps = ComponentProps<TagPickerButtonSlots> & Pick<DropdownProps, 'size' | 'appearance'> & {
@@ -130,10 +130,8 @@ export const TagPickerControl: ForwardRefComponent<TagPickerControlProps>;
 // @public
 export type TagPickerControlBaseState = DistributiveOmit<TagPickerControlState, 'size' | 'appearance'>;
 
-// @public @deprecated
-export const tagPickerControlClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots & TagPickerControlInternalSlots>;
 
 // @public (undocumented)
 export type TagPickerControlInternalSlots = {
@@ -159,10 +157,13 @@ export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPi
 // @public
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
 
-// @public @deprecated
-export const tagPickerGroupClassNames: {
-    root: string;
+// @public
+export type TagPickerGroupBaseState = TagGroupBaseState & {
+    hasSelectedOptions: boolean;
 };
+
+// @public (undocumented)
+export const tagPickerGroupClassNames: SlotClassNames<TagPickerGroupSlots>;
 
 // @public
 export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots>;
@@ -184,10 +185,8 @@ export type TagPickerInputBaseProps = DistributiveOmit<TagPickerInputProps, 'app
 // @public
 export type TagPickerInputBaseState = DistributiveOmit<TagPickerInputState, 'size'>;
 
-// @public @deprecated
-export const tagPickerInputClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export const tagPickerInputClassNames: SlotClassNames<TagPickerInputSlots>;
 
 // @public
 export type TagPickerInputProps = Omit<ComponentProps<Partial<TagPickerInputSlots>>, 'children' | 'size' | 'defaultValue'> & Pick<ComboboxProps, 'clearable' | 'appearance'> & {
@@ -206,10 +205,8 @@ export type TagPickerInputState = ComponentState<TagPickerInputSlots> & Pick<Tag
 // @public
 export const TagPickerList: ForwardRefComponent<TagPickerListProps>;
 
-// @public @deprecated
-export const tagPickerListClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export const tagPickerListClassNames: SlotClassNames<TagPickerListSlots>;
 
 // @public
 export type TagPickerListProps = ComponentProps<TagPickerListSlots> & {
@@ -238,18 +235,14 @@ export type TagPickerOnOptionSelectData = {
 // @public
 export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps>;
 
-// @public @deprecated
-export const tagPickerOptionClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export const tagPickerOptionClassNames: SlotClassNames<TagPickerOptionSlots>;
 
 // @public
 export const TagPickerOptionGroup: ForwardRefComponent<TagPickerOptionGroupProps>;
 
-// @public @deprecated
-export const tagPickerOptionGroupClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export const tagPickerOptionGroupClassNames: SlotClassNames<TagPickerOptionGroupSlots>;
 
 // @public
 export type TagPickerOptionGroupProps = OptionGroupProps;

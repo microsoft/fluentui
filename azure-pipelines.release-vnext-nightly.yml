@@ -103,10 +103,12 @@ extends:
                 displayName: test
 
               - script: |
-                  yarn publish:beachball -b origin/$(Build.SourceBranchName) -n $(npmToken) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
+                  yarn beachball publish -b origin/$(Build.SourceBranchName) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
                   git reset --hard origin/$(Build.SourceBranchName)
                 displayName: Publish changes and bump versions
                 condition: not(${{ parameters.dryRun }})
+                env:
+                  NPM_TOKEN: $(npmToken)
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

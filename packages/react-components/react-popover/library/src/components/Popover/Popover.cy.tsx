@@ -537,6 +537,78 @@ describe('Popover', () => {
         cy.get(popoverInteractiveContentSelector).should('be.visible');
       });
 
+      it('should not close when focus moves outside but was never inside the popover', () => {
+        const ControlledPopover = () => {
+          const [open, setOpen] = React.useState(false);
+
+          return (
+            <>
+              <input id="outside" aria-label="external input" />
+              <button id="open-programmatically" onClick={() => setOpen(true)}>
+                Open programmatically
+              </button>
+              <Popover
+                open={open}
+                onOpenChange={(_event, data) => setOpen(data.open)}
+                trapFocus
+                unstable_disableAutoFocus
+              >
+                <PopoverTrigger disableButtonEnhancement>
+                  <button>Popover anchor</button>
+                </PopoverTrigger>
+                <PopoverSurface>
+                  <button>Inside</button>
+                </PopoverSurface>
+              </Popover>
+            </>
+          );
+        };
+
+        mount(<ControlledPopover />);
+
+        cy.get('#outside').focus();
+        cy.get('#open-programmatically').click();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+        cy.get('#outside').focus();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+      });
+
+      it('should close when autofocus is disabled but focus moves from inside to outside', () => {
+        const ControlledPopover = () => {
+          const [open, setOpen] = React.useState(false);
+
+          return (
+            <>
+              <button id="outside">Outside</button>
+              <button id="open-programmatically" onClick={() => setOpen(true)}>
+                Open programmatically
+              </button>
+              <Popover
+                open={open}
+                onOpenChange={(_event, data) => setOpen(data.open)}
+                trapFocus
+                unstable_disableAutoFocus
+              >
+                <PopoverTrigger disableButtonEnhancement>
+                  <button>Popover anchor</button>
+                </PopoverTrigger>
+                <PopoverSurface>
+                  <button>Inside</button>
+                </PopoverSurface>
+              </Popover>
+            </>
+          );
+        };
+
+        mount(<ControlledPopover />);
+
+        cy.get('#open-programmatically').click();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+        cy.contains('Inside').focus();
+        cy.get('#outside').focus();
+        cy.get(popoverInteractiveContentSelector).should('not.exist');
+      });
+
       it('should not close when focus moves to the trigger', () => {
         mount(
           <Popover trapFocus>

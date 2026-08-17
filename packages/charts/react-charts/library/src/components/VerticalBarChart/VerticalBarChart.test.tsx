@@ -19,7 +19,7 @@ import type { VerticalBarChartDataPoint } from '../../index';
 import { allNegativeChartPointsVBC, chartPointsVBC, negativeChartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
-const env = require('../../../config/tests');
+const env = require('../../../config/tests.cjs');
 
 expect.extend(toHaveNoViolations);
 

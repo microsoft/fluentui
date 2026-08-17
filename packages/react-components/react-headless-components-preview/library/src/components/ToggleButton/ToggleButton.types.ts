@@ -35,5 +35,10 @@ export type ToggleButtonState = ToggleButtonBaseState & {
      * Data attribute set when the button is in a checked (pressed) state.
      */
     'data-checked'?: string;
+
+    /**
+     * Data attribute reflecting the icon position when an icon slot is present.
+     */
+    'data-icon-position'?: ToggleButtonBaseState['iconPosition'];
   };
 };

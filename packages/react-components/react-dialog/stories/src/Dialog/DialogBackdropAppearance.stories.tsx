@@ -32,9 +32,11 @@ export const BackdropAppearance = (): JSXElement => {
   const [backdropAppearance, setBackdropAppearance] = React.useState<BackdropAppearanceOption>();
   const backdropProp = backdropAppearance ? { appearance: backdropAppearance } : undefined;
 
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
   return (
     <>
-      <Button appearance="primary" onClick={() => setDrawerOpen(true)}>
+      <Button appearance="primary" onClick={() => setDrawerOpen(true)} {...restoreFocusTargetAttribute}>
         Open Drawer
       </Button>
 

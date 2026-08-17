@@ -24,18 +24,6 @@ export const colorAreaClassNames: { root: string } = {
 };
 
 /**
- * CSS custom properties the ColorArea position and colour ride on. Set as inline styles by
- * `useColorArea_unstable`; the runtime-value mechanism ports unchanged from Griffel
- * (CONVERSION_GUIDE "Known special cases"), so these names are still public API.
- */
-export const colorAreaCSSVars = {
-  areaXProgressVar: `--fui-AreaX--progress`,
-  areaYProgressVar: `--fui-AreaY--progress`,
-  thumbColorVar: `--fui-Area__thumb--color`,
-  mainColorVar: `--fui-Area--main-color`,
-};
-
-/**
  * Apply styling to the ColorArea slots based on the state
  */
 export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaState => {

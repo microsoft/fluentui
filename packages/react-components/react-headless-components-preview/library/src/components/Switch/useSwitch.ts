@@ -20,6 +20,8 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLInputElement>):
   state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-checked'] = stringifyDataAttribute(state.input.checked);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-label-position'] = state.labelPosition;
 
   return state;
 };

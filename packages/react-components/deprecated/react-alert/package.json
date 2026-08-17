@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-alert",
-  "version": "9.0.0-beta.142",
+  "version": "9.0.1-0",
   "description": "An alert component to display brief messages",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -12,13 +12,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-avatar": "^9.11.3",
-    "@fluentui/react-button": "^9.10.1",
+    "@fluentui/react-avatar": "^9.11.5",
+    "@fluentui/react-button": "^9.11.0",
     "@fluentui/react-icons": "^2.0.239",
-    "@fluentui/react-jsx-runtime": "^9.4.4",
-    "@fluentui/react-tabster": "^9.26.16",
-    "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-utilities": "^9.26.5",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
+    "@fluentui/react-tabster": "^9.26.17",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.26.6",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
@@ -40,17 +40,23 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
-  ]
+  ],
+  "type": "module"
 }

@@ -16,6 +16,10 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLInputElement>): I
   // Set data attribute for disabled state to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.input.disabled);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-invalid'] = stringifyDataAttribute(
+    state.input['aria-invalid'] === true || state.input['aria-invalid'] === 'true',
+  );
 
   return state;
 };

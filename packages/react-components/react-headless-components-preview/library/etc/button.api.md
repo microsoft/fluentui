@@ -26,6 +26,7 @@ export type ButtonState = ButtonBaseState & {
         'data-disabled'?: string;
         'data-disabled-focusable'?: string;
         'data-icon-only'?: string;
+        'data-icon-position'?: ButtonBaseState['iconPosition'];
     };
 };
 

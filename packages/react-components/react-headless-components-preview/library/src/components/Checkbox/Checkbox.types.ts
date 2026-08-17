@@ -25,5 +25,10 @@ export type CheckboxState = CheckboxBaseState & {
      * Data attribute set when the checkbox is checked. Value is 'mixed' when in the indeterminate state.
      */
     'data-checked'?: string;
+
+    /**
+     * Data attribute reflecting the label position.
+     */
+    'data-label-position'?: CheckboxBaseState['labelPosition'];
   };
 };

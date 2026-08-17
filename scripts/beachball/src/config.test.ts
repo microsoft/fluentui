@@ -1,3 +1,5 @@
+import { execSync } from 'child_process';
+
 import headlessConfig from './release-headless.config';
 import toolsConfig from './release-tools.config';
 import v8Config from './release-v8.config';
@@ -5,12 +7,31 @@ import vNextConfig from './release-vNext.config';
 import webComponentsConfig from './release-web-components.config';
 import { config as sharedConfig } from './shared.config';
 
+jest.mock('child_process', () => ({
+  ...jest.requireActual<typeof import('child_process')>('child_process'),
+  execSync: jest.fn(),
+}));
+
 describe(`beachball configs`, () => {
   const excludedPackagesFromReleaseProcess = ['!packages/fluentui/*'];
+  const execSyncMock = jest.mocked(execSync);
+  const precommit = sharedConfig.hooks.precommit;
+
+  if (!precommit) {
+    throw new Error('Expected the shared Beachball config to define a precommit hook');
+  }
+
+  beforeEach(() => {
+    execSyncMock.mockReset();
+    execSyncMock.mockReturnValue(Buffer.from(''));
+  });
 
   it(`should generate shared config`, () => {
     expect(sharedConfig).toEqual({
+      access: 'public',
+      branch: 'origin/master',
       changehint: "Run 'yarn change' to generate a change file",
+      commit: false,
       disallowedChangeTypes: ['major'],
       generateChangelog: true,
       hooks: {
@@ -29,6 +50,7 @@ describe(`beachball configs`, () => {
         '**/stories/**',
         '**/.storybook/**',
         '**/bundle-size/**',
+        '**/monosize.config.mjs',
         '**/common/isConformant.ts',
         '**/src/testing/**',
         '**/src/e2e/**',
@@ -37,6 +59,7 @@ describe(`beachball configs`, () => {
         '**/SPEC*.md',
         '**/tests/**',
       ],
+      registry: 'https://registry.npmjs.org',
       scope: ['!packages/fluentui/*'],
       tag: 'latest',
       changelog: {
@@ -46,6 +69,30 @@ describe(`beachball configs`, () => {
         },
       },
     });
+  });
+
+  it(`should normalize package dependencies and update the lockfile before committing`, () => {
+    precommit(process.cwd());
+
+    expect(execSyncMock.mock.calls).toEqual([
+      ['yarn nx g @fluentui/workspace-plugin:dependency-mismatch'],
+      ['yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies'],
+      ['yarn install --mode=update-lockfile'],
+    ]);
+  });
+
+  it(`should log precommit finalization failures`, () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+    const error = new Error('dependency normalization failed');
+    execSyncMock.mockImplementationOnce(() => {
+      throw error;
+    });
+
+    expect(() => precommit(process.cwd())).not.toThrow();
+    expect(consoleErrorSpy).toHaveBeenCalledWith(error);
+    expect(execSyncMock).toHaveBeenCalledTimes(1);
+
+    consoleErrorSpy.mockRestore();
   });
 
   it(`should generate v8 release config`, () => {
@@ -93,7 +140,7 @@ describe(`beachball configs`, () => {
     expect(vNextConfig.changelog.groups).toEqual([
       {
         changelogPath: 'packages/react-components/react-components',
-        masterPackageName: '@fluentui/react-components',
+        mainPackageName: '@fluentui/react-components',
         include: includeScopes,
       },
     ]);

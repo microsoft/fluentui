@@ -7,8 +7,7 @@
     "#theme": "@fluentui/react-tailwind-theme/css/index.css"
   },
   "scripts": {
-    "build-storybook": "yarn run -T cross-env NODE_OPTIONS=--max_old_space_size=3072 DEPLOY_PATH=/react/ storybook build -o ./dist/react --docs",
-    "postbuild-storybook": "yarn rewrite-title && yarn generate-llms-docs",
+    "build-storybook": "yarn run -T cross-env NODE_OPTIONS=--max_old_space_size=3072 DEPLOY_PATH=/react/ storybook build -o ./dist/react --docs && yarn rewrite-title && yarn generate-llms-docs",
     "rewrite-title": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/react",
     "generate-llms-docs": "yarn run -T storybook-llms-extractor --config storybook-llms.config.js",
     "clean": "yarn run -T just-scripts clean",
@@ -38,7 +37,7 @@
     "@fluentui/react-timepicker-compat": "*",
     "@fluentui/recipes": "*",
     "@fluentui/theme-designer": "*",
-    "@fluentui/tokens": "*",
+    "@fluentui/tokens": ">=1.0.0-alpha",
     "@microsoft/applicationinsights-web": "^3.4.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",

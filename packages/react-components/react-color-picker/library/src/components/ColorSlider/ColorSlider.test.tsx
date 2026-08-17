@@ -18,7 +18,7 @@ describe('ColorSlider', () => {
           class="group/fui-color-slider"
           data-orientation="horizontal"
           role="group"
-          style="--fui-Slider--direction: -90deg; --fui-Slider--progress: 0%; --fui-Slider__thumb--color: hsl(0, 100%, 50%); --fui-Slider__rail--color: hsl(0 0%, 0%);"
+          style="--fui-Slider--direction: -90deg; --fui-Slider--progress: 0%; --fui-Slider__thumb--color: hsl(0, 100%, 50%); --fui-Slider__rail--color: hsl(0, 0%, 0%);"
         >
           <input
             aria-orientation="horizontal"

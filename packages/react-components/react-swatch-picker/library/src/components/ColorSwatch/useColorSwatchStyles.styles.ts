@@ -24,16 +24,6 @@ export const colorSwatchClassNames: { root: string } = {
 };
 
 /**
- * CSS custom properties the swatch colour rides on. Set as inline styles by
- * `useColorSwatch_unstable`; the runtime-value mechanism ports unchanged from Griffel
- * (CONVERSION_GUIDE "Known special cases"), so these names are still public API.
- */
-export const swatchCSSVars = {
-  color: `--fui-SwatchPicker--color`,
-  borderColor: `--fui-SwatchPicker--borderColor`,
-};
-
-/**
  * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
  * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
  *

@@ -1,8 +1,235 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 15 Jul 2026 14:10:40 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.74.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.6)
+
+Tue, 11 Aug 2026 17:20:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.5..@fluentui/react-components_v9.74.6)
+
+### Minor changes
+
+- `@fluentui/react-swatch-picker`
+  - feat: expose headless base APIs ([PR #36534](https://github.com/microsoft/fluentui/pull/36534) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - feat: expose useSplitButtonBase_unstable hook ([PR #36524](https://github.com/microsoft/fluentui/pull/36524) by vgenaev@gmail.com)
+  - feat: expose CompoundButton base hook ([PR #36530](https://github.com/microsoft/fluentui/pull/36530) by vgenaev@gmail.com)
+- `@fluentui/react-color-picker`
+  - feat(react-color-picker): expose headless base APIs ([PR #36517](https://github.com/microsoft/fluentui/pull/36517) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-icons-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+  - fix: move inline styling and context resolution out of the base hook ([PR #36542](https://github.com/microsoft/fluentui/pull/36542) by vgenaev@gmail.com)
+- `@fluentui/react-list`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-rating`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: Move ColorSwatch styling out of the headless base hook. ([PR #36550](https://github.com/microsoft/fluentui/pull/36550) by dmytrokirpa@microsoft.com)
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: avoid headless bundle size regression from #36275 ([PR #36497](https://github.com/microsoft/fluentui/pull/36497) by dmytrokirpa@microsoft.com)
+  - fix: omit the default TagPicker expand icon from headless state ([PR #36503](https://github.com/microsoft/fluentui/pull/36503) by vgenaev@gmail.com)
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+  - fix: separate headless teaching popover title state from bundled icon defaults ([PR #36504](https://github.com/microsoft/fluentui/pull/36504) by vgenaev@gmail.com)
+- `@fluentui/react-text`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-theme`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-accordion`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-carousel`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-charts`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: use valid HSL syntax for color slider styles ([PR #36555](https://github.com/microsoft/fluentui/pull/36555) by dmytrokirpa@microsoft.com)
+  - refactor: Replace the tinycolor dependency with internal utilities. ([PR #36548](https://github.com/microsoft/fluentui/pull/36548) by dmytrokirpa@microsoft.com)
+  - fix: Move shared color picker CSS variables from style modules to constants files. ([PR #36552](https://github.com/microsoft/fluentui/pull/36552) by dmytrokirpa@microsoft.com)
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+  - fix: avoid headless bundle size regression from #36275 ([PR #36497](https://github.com/microsoft/fluentui/pull/36497) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-context-selector`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-theme-sass`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/tokens`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/global-context`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- `@fluentui/react-alert`
+  - Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+
+## [9.74.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.5)
+
+Tue, 04 Aug 2026 10:12:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.4..@fluentui/react-components_v9.74.5)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail ([PR #36432](https://github.com/microsoft/fluentui/pull/36432) by paulmardling@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - fix: escape SSR theme style selectors ([PR #36464](https://github.com/microsoft/fluentui/pull/36464) by paulmardling@microsoft.com)
+- `@fluentui/react-select`
+  - fix: fix Field control size handling for Select ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: allow base states in TagPicker render functions ([PR #36443](https://github.com/microsoft/fluentui/pull/36443) by vgenaev@gmail.com)
+- `@fluentui/react-textarea`
+  - fix: fix Field control size handling ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: hide Tooltip when its trigger scrolls outside an overflow container ([PR #36386](https://github.com/microsoft/fluentui/pull/36386) by paulmardling@microsoft.com)
+- `@fluentui/react-tree`
+  - fix: add accessible names to Tree selection controls ([PR #36384](https://github.com/microsoft/fluentui/pull/36384) by paulmardling@microsoft.com)
+- `@fluentui/react-charts`
+  - voice control accessibility bug fix ([PR #36396](https://github.com/microsoft/fluentui/pull/36396) by 132879294+v-baambati@users.noreply.github.com)
+  - Accessibility bug fixe ([PR #36426](https://github.com/microsoft/fluentui/pull/36426) by 132879294+v-baambati@users.noreply.github.com)
+  - HorizontalBarChart bug fixes ([PR #36494](https://github.com/microsoft/fluentui/pull/36494) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-color-picker`
+  - Pin @ctrl/tinycolor version to prevent yarn modern duplication ([PR #35747](https://github.com/microsoft/fluentui/pull/35747) by vgenaev@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: fix Field control size handling Combobox and Dropdown ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-input`
+  - fix: fix Field control size handling ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix(MessageBar): v9 MessageBar Resize Flicker Fix ([PR #36405](https://github.com/microsoft/fluentui/pull/36405) by jiangemma@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: close Popover on focus escape only when focus was inside the surface, so a popover whose focus never entered (e.g. an external input stays focused) is not dismissed when focus moves programmatically ([PR #36440](https://github.com/microsoft/fluentui/pull/36440) by petrduda@microsoft.com)
 
 ## [9.74.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.4)
 

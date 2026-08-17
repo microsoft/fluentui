@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-spinner",
-  "version": "9.8.4",
+  "version": "9.8.5",
   "description": "Spinner component for Fluent UI React",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": [
@@ -14,11 +14,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.4.4",
-    "@fluentui/react-label": "^9.4.3",
-    "@fluentui/react-shared-contexts": "^9.26.2",
-    "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-utilities": "^9.26.5",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
+    "@fluentui/react-label": "^9.4.4",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-utilities": "^9.26.6",
     "@swc/helpers": "^0.5.1",
     "clsx": "^2.1.1"
   },
@@ -35,10 +35,14 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
@@ -46,14 +50,16 @@
   "files": [
     "*.md",
     "dist/*.d.ts",
-    "dist/styles.css",
+    "dist/*.d.cts",
     "lib",
-    "lib-commonjs"
+    "lib-commonjs",
+    "dist/styles.css"
   ],
   "devDependencies": {
     "@fluentui/react-tailwind-theme": "workspace:*"
   },
   "imports": {
     "#theme": "@fluentui/react-tailwind-theme/css/index.css"
-  }
+  },
+  "type": "module"
 }

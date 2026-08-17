@@ -2,6 +2,82 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2026 17:20:14 GMT",
+      "version": "9.10.5",
+      "tag": "@fluentui/react-tooltip_v9.10.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.8.15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.23.1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-tabster to v9.26.17"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-theme to v9.2.2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-utilities to v9.26.6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2026 10:12:12 GMT",
+      "tag": "@fluentui/react-tooltip_v9.10.4",
+      "version": "9.10.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "5726a85e58837117b2bb82441a4624bccf119dd7",
+            "comment": "fix: hide Tooltip when its trigger scrolls outside an overflow container"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.23.0",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:03 GMT",
       "tag": "@fluentui/react-tooltip_v9.10.3",
       "version": "9.10.3",

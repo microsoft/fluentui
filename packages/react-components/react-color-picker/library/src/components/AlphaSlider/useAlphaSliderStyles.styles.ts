@@ -41,21 +41,6 @@ export const alphaSliderClassNames: { root: string } = {
 };
 
 /**
- * CSS custom properties the alpha slider position and colours ride on. Set as inline styles
- * by `useAlphaSliderState_unstable`; the runtime-value mechanism ports unchanged from Griffel
- * (CONVERSION_GUIDE "Known special cases"), so these names are still public API.
- *
- * Note these are AlphaSlider's OWN namespace — unlike ColorSlider, which shares the
- * `--fui-Slider*` names with react-slider.
- */
-export const alphaSliderCSSVars = {
-  sliderDirectionVar: `--fui-AlphaSlider--direction`,
-  sliderProgressVar: `--fui-AlphaSlider--progress`,
-  thumbColorVar: `--fui-AlphaSlider__thumb--color`,
-  railColorVar: `--fui-AlphaSlider__rail--color`,
-};
-
-/**
  * Apply styling to the AlphaSlider slots based on the state
  */
 export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSliderState => {

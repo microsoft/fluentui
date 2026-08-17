@@ -1,9 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 
 import { TagPickerContextProvider } from '../../contexts/TagPickerContext';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
-import { useTagPickerControl_unstable } from './useTagPickerControl';
+import { useTagPickerControlBase_unstable, useTagPickerControl_unstable } from './useTagPickerControl';
 
 const makeContext = (overrides: Partial<TagPickerContextValue> = {}): TagPickerContextValue => ({
   triggerRef: React.createRef<HTMLInputElement>(),
@@ -35,23 +36,57 @@ const wrap = (overrides: Partial<TagPickerContextValue> = {}): React.FC<{ childr
   return Wrapper;
 };
 
+describe('useTagPickerControlBase_unstable', () => {
+  it('does not create an expandIcon or aside by default', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { result } = renderHook(() => useTagPickerControlBase_unstable({}, ref), { wrapper: wrap() });
+
+    expect(result.current.expandIcon).toBeUndefined();
+    expect(result.current.aside).toBeUndefined();
+  });
+
+  it('creates an expandIcon and aside when explicitly provided', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { result } = renderHook(() => useTagPickerControlBase_unstable({ expandIcon: {} }, ref), {
+      wrapper: wrap({ open: true }),
+    });
+
+    expect(result.current.expandIcon).toBeDefined();
+    expect(result.current.expandIcon?.children).toBeUndefined();
+    expect(result.current.expandIcon?.['aria-expanded']).toBe(true);
+    expect(result.current.expandIcon?.role).toBe('button');
+    expect(result.current.aside).toBeDefined();
+  });
+});
+
 describe('useTagPickerControl_unstable', () => {
-  it('always renders the internal aside slot', () => {
+  it('renders the default expandIcon and aside when a popover exists', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagPickerControl_unstable({}, ref), { wrapper: wrap() });
+    const defaultIcon = result.current.expandIcon?.children;
 
+    expect(React.isValidElement(defaultIcon) && defaultIcon.type).toBe(ChevronDownRegular);
     expect(result.current.aside).toBeDefined();
   });
 
-  it('renders an expandIcon by default and hides it when noPopover is set', () => {
+  it('does not render a default expandIcon or aside when noPopover is set', () => {
     const ref = React.createRef<HTMLDivElement>();
-    const withPopover = renderHook(() => useTagPickerControl_unstable({}, ref), { wrapper: wrap() });
     const noPopover = renderHook(() => useTagPickerControl_unstable({}, ref), {
       wrapper: wrap({ noPopover: true }),
     });
 
-    expect(withPopover.result.current.expandIcon).toBeDefined();
     expect(noPopover.result.current.expandIcon).toBeUndefined();
+    expect(noPopover.result.current.aside).toBeUndefined();
+  });
+
+  it('preserves a consumer-provided expandIcon', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const customIcon = <span data-testid="custom-icon" />;
+    const { result } = renderHook(() => useTagPickerControl_unstable({ expandIcon: customIcon }, ref), {
+      wrapper: wrap(),
+    });
+
+    expect(result.current.expandIcon?.children).toBe(customIcon);
   });
 
   it('binds aria-expanded on expandIcon to picker open state', () => {

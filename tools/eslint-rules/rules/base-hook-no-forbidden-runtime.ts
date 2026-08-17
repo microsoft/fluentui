@@ -19,29 +19,22 @@ const BASE_HOOK_NAME_PATTERN = /^use[A-Z]\w*Base_unstable$/;
  */
 type BaseHookFunction = TSESTree.FunctionDeclaration | TSESTree.FunctionExpression | TSESTree.ArrowFunctionExpression;
 
-const DEFAULT_WATCHED_PACKAGES: ReadonlyArray<string> = ['@fluentui/react-tabster'];
+// Only the runtime itself is listed. Wrapper packages such as `@fluentui/react-tabster` are
+// deliberately absent: the analysis is symbol-level, so a wrapper export that bottoms out in
+// `keyborg` or plain DOM is legitimately allowed, while one that reaches `tabster` is not.
 const DEFAULT_FORBIDDEN_RUNTIMES: ReadonlyArray<string> = ['tabster'];
 
 type Options = [
   {
     /**
-     * Packages whose imported symbols must be analyzed transitively.
-     * A symbol imported from one of these packages is allowed inside a base
-     * hook only if its defining source file does not reach any
-     * `forbiddenRuntimes` package via value imports.
-     */
-    watchedPackages?: string[];
-    /**
-     * Runtime packages whose presence in the transitive value-import graph of
-     * a referenced symbol is forbidden inside base hooks. Direct imports from
-     * these packages are also forbidden.
+     * Runtime packages whose presence in the transitive import graph of a referenced symbol is
+     * forbidden inside base hooks. Direct imports from these packages are also forbidden.
      */
     forbiddenRuntimes?: string[];
     /**
-     * When `true`, type-only imports (both from `forbiddenRuntimes` packages directly and
-     * from `watchedPackages` whose defining module reaches a forbidden runtime) are permitted
-     * inside base hooks. Type-only imports emit no runtime code, so this option trades API
-     * decoupling for ergonomics.
+     * When `true`, type-only imports (both from `forbiddenRuntimes` packages directly and from
+     * modules whose import graph reaches a forbidden runtime) are permitted inside base hooks.
+     * Type-only imports emit no runtime code, so this option trades API decoupling for ergonomics.
      *
      * Defaults to `false` — type-only imports are checked the same way as value imports, to
      * keep the base hook's public API fully decoupled from forbidden runtimes.
@@ -53,8 +46,7 @@ type Options = [
 type MessageIds = 'forbiddenRuntimeDirect' | 'forbiddenRuntimeReach' | 'typedServicesUnavailable';
 
 /**
- * The original (imported) name of an import specifier, used for diagnostics and for matching
- * against a forbidden/watched package's exports.
+ * The original (imported) name of an import specifier, used for diagnostics.
  *
  *  - named import         (`import { Foo }`)        → `'Foo'`
  *  - aliased named import (`import { Foo as Bar }`) → `'Foo'` (the original, not the alias)
@@ -65,17 +57,20 @@ type ImportSpecifierNode =
   TSESTree.ImportSpecifier | TSESTree.ImportDefaultSpecifier | TSESTree.ImportNamespaceSpecifier;
 
 /**
- * A locally-declared binding originating from a tracked import (a watched or forbidden-runtime
- * package). Built when walking `ImportDeclaration` nodes so body references can be matched in
- * O(1) via a `Map<Variable, TrackedImport>`.
+ * A locally-declared binding originating from any import declaration. Built when walking
+ * `ImportDeclaration` nodes so body references can be matched in O(1) via a
+ * `Map<Variable, TrackedImport>`.
  */
 interface TrackedImport {
-  /** The package the binding came from (a watched OR forbidden-runtime package). */
+  /** Package name for bare specifiers, or the specifier as written for relative imports. */
   package: string;
   /** Original imported name (not the local alias). `default` or `*` for default / namespace. */
   importedName: string;
-  /** Kind of package — controls how the reference is checked. */
-  kind: 'watched' | 'forbidden';
+  /**
+   * `forbidden` when the import comes straight from a forbidden-runtime package, `transitive`
+   * for everything else — which is then resolved through the module graph on demand.
+   */
+  kind: 'forbidden' | 'transitive';
   /**
    * `true` when the binding is type-only (either the declaration is `import type ...`
    * or the specifier is `import { type Foo }`). Used to gate whether direct usage in a
@@ -84,31 +79,32 @@ interface TrackedImport {
   isTypeOnly: boolean;
   /** The specifier node (used for symbol lookup via ParserServices). */
   specifier: ImportSpecifierNode;
+  /** Memoized analysis result for value references — `undefined` until first resolved. */
+  valueHit?: Hit | null;
+  /** Memoized analysis result for type references — `undefined` until first resolved. */
+  typeHit?: Hit | null;
 }
 
 /**
- * Result of a single transitive-reach DFS over a source file's import graph.
- *  - `value` — packages reachable via value (non type-only) imports only. Used to decide
- *    whether a runtime reference can pull a forbidden runtime at execution time.
- *  - `all`   — packages reachable via value OR type imports. Used to decide whether a
- *    type reference can leak a forbidden runtime through the public API surface.
- * `value` is always a subset of `all`.
+ * A forbidden runtime found while walking what a symbol actually depends on.
  */
-interface Reach {
-  value: ReadonlySet<string>;
-  all: ReadonlySet<string>;
+interface Hit {
+  /** The forbidden runtime package that was reached. */
+  runtime: string;
+  /** Shortened path of the file where the forbidden dependency enters the graph. */
+  via: string;
 }
 
-type SymbolReach = Reach & { viaFile: string };
-
 /**
- * Per-Program cache: source file path → reach sets transitively computed from that file.
- * Both `value` and `all` sets are filled in a single DFS pass to share resolution work.
- *
- * Keyed by `ts.Program` identity so the cache is invalidated whenever
- * typescript-eslint rebuilds the Program.
+ * Per-Program memo of symbol-level results, split by whether type positions were followed.
+ * Keyed by `ts.Program` identity so the cache dies with the Program that produced the symbols.
  */
-const programCache = new WeakMap<ts.Program, Map<string, Reach>>();
+interface AnalysisCache {
+  value: Map<ts.Symbol, Hit | null>;
+  all: Map<ts.Symbol, Hit | null>;
+}
+
+const programCache = new WeakMap<ts.Program, AnalysisCache>();
 
 export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,
@@ -122,11 +118,6 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       {
         type: 'object',
         properties: {
-          watchedPackages: {
-            type: 'array',
-            items: { type: 'string' },
-            uniqueItems: true,
-          },
           forbiddenRuntimes: {
             type: 'array',
             items: { type: 'string' },
@@ -143,20 +134,17 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       forbiddenRuntimeDirect:
         'Base hook `{{hookName}}` cannot reference `{{importedName}}` from forbidden runtime package `{{package}}`. Move logic that depends on `{{package}}` to the wrapping `*_unstable` hook instead.',
       forbiddenRuntimeReach:
-        'Base hook `{{hookName}}` cannot reference `{{importedName}}` from `{{package}}` because its defining module transitively imports forbidden runtime `{{runtime}}` (via `{{viaFile}}`). Move logic that depends on `{{runtime}}` to the wrapping `*_unstable` hook instead.',
+        'Base hook `{{hookName}}` cannot reference `{{importedName}}` from `{{package}}` because `{{importedName}}` depends on forbidden runtime `{{runtime}}` (entering at `{{viaFile}}`). Move logic that depends on `{{runtime}}` to the wrapping `*_unstable` hook instead.',
       typedServicesUnavailable:
-        'base-hook-no-forbidden-runtime: transitive runtime analysis was skipped because TypeScript type information is unavailable. Enable typescript-eslint type-aware linting (set `parserOptions.projectService: true` or `parserOptions.project`) so references through watched packages (e.g. `{{watchedPackages}}`) can be verified against forbidden runtimes (e.g. `{{forbiddenRuntimes}}`).',
+        'base-hook-no-forbidden-runtime: transitive runtime analysis was skipped because TypeScript type information is unavailable. Enable typescript-eslint type-aware linting (set `parserOptions.projectService: true` or `parserOptions.project`) so imported bindings can be verified against forbidden runtimes (e.g. `{{forbiddenRuntimes}}`).',
     },
   },
   defaultOptions: [{}],
   create(context) {
     const sourceCode = context.sourceCode;
     const options = context.options[0] ?? {};
-    const watchedPackages = new Set(options.watchedPackages ?? DEFAULT_WATCHED_PACKAGES);
     const forbiddenRuntimes = new Set(options.forbiddenRuntimes ?? DEFAULT_FORBIDDEN_RUNTIMES);
     const allowTypeImports = options.allowTypeImports ?? false;
-    // `forbidden` takes precedence: if the same name appears in both lists, treat the binding as forbidden.
-    const trackedPackages = new Set<string>([...watchedPackages, ...forbiddenRuntimes]);
 
     // Map of locally-declared variable identity → original import origin metadata. Keyed by Variable
     // identity (not name) so re-declarations / shadowing inside the base hook resolve correctly.
@@ -187,9 +175,8 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     }
 
     /**
-     * Walks the base hook's scope graph looking for references to any tracked import. Bails out
-     * early if nothing is tracked, so the typical case (no watched/forbidden imports in the file)
-     * stays free.
+     * Walks the base hook's scope graph looking for references to any imported binding. Bails out
+     * early if the file has no imports at all.
      */
     function checkBodyReferences(hookName: string, hookFn: BaseHookFunction): void {
       if (trackedImports.size === 0) {
@@ -201,8 +188,8 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
 
     /**
      * Recursively visits `scope` and all its descendants that are still inside the base hook body.
-     * For every resolved reference whose declaration is a tracked import, either flag the direct
-     * usage or delegate to `computeSymbolReach` for the transitive check.
+     * For every resolved reference whose declaration is an import, either flag the direct usage of
+     * a forbidden runtime or delegate to `computeSymbolReach` for the transitive check.
      *
      * The chosen reach set depends on the reference position:
      *  - value reference → `value` reach (runtime coupling)
@@ -244,41 +231,50 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
           return;
         }
 
-        // Watched package: only flag if the defining module transitively reaches a forbidden runtime.
-        const reach = computeSymbolReach(origin);
-        if (!reach) {
+        // Everything else: only flag if what the symbol actually depends on reaches a forbidden runtime.
+        const hit = analyzeOrigin(origin, isTypeRef);
+        if (!hit) {
           return; // untyped lint or unresolvable — silently skip
         }
-        const reached = isTypeRef ? reach.all : reach.value;
 
-        for (const runtime of forbiddenRuntimes) {
-          if (reached.has(runtime)) {
-            context.report({
-              node: reference.identifier,
-              messageId: 'forbiddenRuntimeReach',
-              data: {
-                hookName,
-                importedName: origin.importedName,
-                package: origin.package,
-                runtime,
-                viaFile: reach.viaFile,
-              },
-            });
-            return;
-          }
-        }
+        context.report({
+          node: reference.identifier,
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName,
+            importedName: origin.importedName,
+            package: origin.package,
+            runtime: hit.runtime,
+            viaFile: hit.via,
+          },
+        });
       });
 
       scope.childScopes.forEach(child => visitScope(child, hookFn, hookName));
     }
 
     /**
-     * Resolves the watched-package import to its defining module via TS `Program`, then queries the
-     * transitive import graph for forbidden runtimes (both value-only and value+type sets).
+     * Resolves the import binding to its symbol and asks the symbol-level analysis whether what
+     * that symbol actually depends on reaches a forbidden runtime.
      * Returns `null` (and flips the `typedServicesNeededButMissing` flag) when typed services
      * aren't available, so the caller can silently skip and we can warn once on `Program:exit`.
+     * Memoized per binding × reference kind, since a binding is usually referenced many times.
      */
-    function computeSymbolReach(origin: TrackedImport): SymbolReach | null {
+    function analyzeOrigin(origin: TrackedImport, followTypes: boolean): Hit | null {
+      const cached = followTypes ? origin.typeHit : origin.valueHit;
+      if (cached !== undefined) {
+        return cached;
+      }
+      const result = resolveOriginHit(origin, followTypes);
+      if (followTypes) {
+        origin.typeHit = result;
+      } else {
+        origin.valueHit = result;
+      }
+      return result;
+    }
+
+    function resolveOriginHit(origin: TrackedImport, followTypes: boolean): Hit | null {
       const services = getTypedServices();
       if (!services) {
         typedServicesNeededButMissing = true;
@@ -295,49 +291,39 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         return null;
       }
 
-      let symbol = checker.getSymbolAtLocation(nameNode);
+      const symbol = checker.getSymbolAtLocation(nameNode);
       if (!symbol) {
         return null;
       }
-      // eslint-disable-next-line no-bitwise -- ts.SymbolFlags is a bitfield enum
-      if ((symbol.flags & ts.SymbolFlags.Alias) !== 0) {
-        try {
-          symbol = checker.getAliasedSymbol(symbol);
-        } catch {
-          return null;
-        }
-      }
-      const declaration = symbol.declarations?.[0];
-      const definingFile = declaration?.getSourceFile();
-      if (!definingFile) {
-        return null;
-      }
 
-      const reach = transitiveReach(services.program, definingFile);
-      return { value: reach.value, all: reach.all, viaFile: shortenPath(definingFile.fileName) };
+      return findForbiddenRuntime(services.program, checker, symbol, followTypes, forbiddenRuntimes);
     }
 
     /**
-     * `ImportDeclaration` visitor: records every named/default/namespace specifier coming from a
-     * watched or forbidden-runtime package so body references can later be resolved via
-     * `sourceCode.getDeclaredVariables`. Tracks both value AND type-only specifiers — type refs
-     * are still inspected at the hook signature because a type from a watched package can
-     * transitively expose a forbidden runtime through its defining module.
+     * `ImportDeclaration` visitor: records every named/default/namespace specifier of every import
+     * — bare package specifiers *and* relative ones — so body references can later be resolved via
+     * `sourceCode.getDeclaredVariables`. Whether a binding is actually a problem is decided lazily
+     * by the transitive reach analysis, because forbidden runtimes are most often reached through
+     * an innocuous-looking local module or sibling package rather than a direct import.
+     *
+     * Type-only specifiers are tracked as well (unless `allowTypeImports`), because a type can
+     * still expose a forbidden runtime through the base hook's public API.
      */
     function trackImportDeclaration(node: TSESTree.ImportDeclaration): void {
       const source = node.source.value;
-      if (typeof source !== 'string' || !trackedPackages.has(source)) {
+      if (typeof source !== 'string') {
         return;
       }
-      const isForbiddenPkg = forbiddenRuntimes.has(source);
+      const bare = isBareSpecifier(source);
+      const packageName = bare ? packageNameOf(source) : source;
       const stmtTypeOnly = node.importKind === 'type';
       // Symmetric semantics: when `allowTypeImports` is true, type-only imports are exempt from
-      // both direct forbidden-runtime checks AND transitive watched-package reach checks (a type
-      // can never pull runtime code at execution time).
+      // both direct forbidden-runtime checks AND transitive reach checks (a type can never pull
+      // runtime code at execution time).
       if (stmtTypeOnly && allowTypeImports) {
         return;
       }
-      const kind: TrackedImport['kind'] = isForbiddenPkg ? 'forbidden' : 'watched';
+      const kind: TrackedImport['kind'] = bare && forbiddenRuntimes.has(packageName) ? 'forbidden' : 'transitive';
 
       node.specifiers.forEach(specifier => {
         const specTypeOnly =
@@ -351,7 +337,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         }
         for (const variable of sourceCode.getDeclaredVariables(specifier)) {
           trackedImports.set(variable, {
-            package: source,
+            package: packageName,
             importedName,
             kind,
             isTypeOnly: specTypeOnly,
@@ -393,7 +379,6 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
           node: programNode,
           messageId: 'typedServicesUnavailable',
           data: {
-            watchedPackages: [...watchedPackages].join(', '),
             forbiddenRuntimes: [...forbiddenRuntimes].join(', '),
           },
         });
@@ -474,181 +459,296 @@ function isScopeWithinFunction(scope: TSESLint.Scope.Scope, hookFn: BaseHookFunc
 }
 
 // ---------------------------------------------------------------------------
-// Transitive value/type reach analysis
+// Symbol-level forbidden-runtime analysis
 // ---------------------------------------------------------------------------
 
 /**
- * Returns the bare package specifiers transitively reachable from `sourceFile`, computed in two
- * granularities in a single DFS pass:
- *   - `value` — only value (non type-only) imports are followed. Used to decide whether a runtime
- *     reference can pull a forbidden runtime at execution time.
- *   - `all`   — both value and type imports are followed. Used to decide whether a type reference
- *     can leak a forbidden runtime through the public API surface of a base hook.
+ * Answers "does `symbol` actually depend on a forbidden runtime?" by walking the symbol's own
+ * declaration and only the identifiers that declaration references.
  *
- * Memoized per Program × file. Cycle-safe.
+ * Granularity is the whole point. Asking the same question at file granularity conflates every
+ * export of a module: `useButtonBase_unstable` would inherit the dependencies of the sibling
+ * exports in its `index.ts`, and importing one clean binding from a package barrel would inherit
+ * the dependencies of everything else that barrel re-exports. Barrels are therefore walked
+ * *through* — an alias hop resolves to the leaf declaration it points at, never to the union of
+ * the barrel's contents.
+ *
+ * `followTypes` selects the reference kind being validated: value references follow value
+ * positions only (runtime coupling), type references follow type positions only (API coupling).
+ *
+ * Memoized per Program × symbol × mode. Cycle-safe.
  */
-function transitiveReach(program: ts.Program, sourceFile: ts.SourceFile): Reach {
-  let cache = programCache.get(program);
-  if (!cache) {
-    cache = new Map();
-    programCache.set(program, cache);
-  }
-  return computeReach(program, sourceFile, cache, new Set());
-}
-
-/**
- * Recursive worker for `transitiveReach`. Walks the import graph DFS, recording every bare
- * specifier encountered (separately for value-only vs value+type follow modes) and recursing into
- * each resolved source file. Uses `inProgress` to break cycles by returning the already-cached,
- * in-progress reach object for the cycle participant.
- */
-function computeReach(
+function findForbiddenRuntime(
   program: ts.Program,
-  sourceFile: ts.SourceFile,
-  cache: Map<string, Reach>,
-  inProgress: Set<string>,
-): Reach {
-  const fileName = sourceFile.fileName;
-  const cached = cache.get(fileName);
-  if (cached) {
-    return cached;
-  }
-  const value = new Set<string>();
-  const all = new Set<string>();
-  const result: Reach = { value, all };
-  cache.set(fileName, result);
-  if (inProgress.has(fileName)) {
+  checker: ts.TypeChecker,
+  symbol: ts.Symbol,
+  followTypes: boolean,
+  forbiddenRuntimes: ReadonlySet<string>,
+): Hit | null {
+  const caches = getAnalysisCache(program);
+  const cache = followTypes ? caches.all : caches.value;
+  const inProgress = new Set<ts.Symbol>();
+
+  function visitSymbol(current: ts.Symbol): Hit | null {
+    const cached = cache.get(current);
+    if (cached !== undefined) {
+      return cached;
+    }
+    if (inProgress.has(current)) {
+      return null;
+    }
+    inProgress.add(current);
+
+    let result: Hit | null = null;
+    try {
+      for (const declaration of current.declarations ?? []) {
+        result = visitDeclaration(current, declaration);
+        if (result) {
+          break;
+        }
+      }
+    } finally {
+      inProgress.delete(current);
+    }
+
+    cache.set(current, result);
     return result;
   }
-  inProgress.add(fileName);
 
-  try {
-    for (const imp of collectImports(sourceFile)) {
-      if (isBareSpecifier(imp.specifier)) {
-        const pkg = packageNameOf(imp.specifier);
-        all.add(pkg);
-        if (!imp.typeOnly) {
-          value.add(pkg);
-        }
+  function visitDeclaration(owner: ts.Symbol, declaration: ts.Declaration): Hit | null {
+    const edge = getModuleEdge(declaration);
+    if (edge) {
+      if (edge.typeOnly && !followTypes) {
+        return null;
       }
-      const resolved = resolveModule(program, sourceFile, imp.specifier, imp.literal);
-      if (!resolved) {
-        continue;
+      if (edge.packageName !== undefined && forbiddenRuntimes.has(edge.packageName)) {
+        return { runtime: edge.packageName, via: shortenPath(declaration.getSourceFile().fileName) };
       }
-      const childSourceFile = program.getSourceFile(resolved);
-      if (!childSourceFile) {
-        continue;
-      }
-      const childReach = computeReach(program, childSourceFile, cache, inProgress);
-      for (const pkg of childReach.all) {
-        all.add(pkg);
-      }
-      if (!imp.typeOnly) {
-        // A type-only edge does not propagate runtime reach: it can only widen the `all` set.
-        for (const pkg of childReach.value) {
-          value.add(pkg);
-        }
-      }
+      // A namespace binding stands for the entire module; there is no single symbol to follow,
+      // so the specifier check above is as far as the analysis goes.
+      return edge.isNamespace ? null : visitAliasTarget(owner);
     }
-  } finally {
-    inProgress.delete(fileName);
+    // Whole-module symbols (`export = React`, ambient namespaces) bind everything a module
+    // exports and have no single declaration to follow.
+    if (ts.isSourceFile(declaration) || ts.isModuleDeclaration(declaration)) {
+      return null;
+    }
+    return walkReferences(declaration);
   }
-  return result;
+
+  /**
+   * Follows an alias to the leaf symbol it ultimately resolves to. This is what makes re-export
+   * barrels transparent. Because the hop skips intermediate specifiers, the leaf's own source
+   * file is also checked against the forbidden list to catch `export { x } from 'tabster'` chains.
+   */
+  function visitAliasTarget(alias: ts.Symbol): Hit | null {
+    let target: ts.Symbol;
+    try {
+      target = checker.getAliasedSymbol(alias);
+    } catch {
+      return null;
+    }
+    if (target === alias) {
+      return null;
+    }
+    return owningForbiddenPackage(target, forbiddenRuntimes) ?? visitSymbol(target);
+  }
+
+  /**
+   * Walks the identifiers `declaration` references, recursing into each referenced symbol.
+   * Identifiers that are not references (property names, declaration names, import specifier
+   * names) are skipped.
+   *
+   * The two modes never mix. A runtime query follows only value positions; a type query follows
+   * only type positions. Crossing between them would make `typeof SomeComponent` in a props type
+   * drag in that component's whole implementation, which is API coupling that does not exist.
+   */
+  function walkReferences(declaration: ts.Node): Hit | null {
+    let hit: Hit | null = null;
+
+    const visit = (node: ts.Node): void => {
+      if (hit) {
+        return;
+      }
+      if (ts.isIdentifier(node) && isReferencePosition(node) && isInTypePosition(node) === followTypes) {
+        const referenced = checker.getSymbolAtLocation(node);
+        if (referenced) {
+          hit = visitSymbol(referenced);
+          if (hit) {
+            return;
+          }
+        }
+      }
+      ts.forEachChild(node, visit);
+    };
+
+    ts.forEachChild(declaration, visit);
+    return hit;
+  }
+
+  return visitSymbol(symbol);
 }
 
-interface ImportEdge {
-  specifier: string;
-  literal: ts.StringLiteralLike;
-  /** `true` when this edge only carries type information (no runtime side-effect). */
-  typeOnly: boolean;
+function getAnalysisCache(program: ts.Program): AnalysisCache {
+  let cache = programCache.get(program);
+  if (!cache) {
+    cache = { value: new Map(), all: new Map() };
+    programCache.set(program, cache);
+  }
+  return cache;
 }
 
 /**
- * Enumerates every module specifier in `sourceFile`, tagging each edge as value (`typeOnly: false`)
- * or type-only (`typeOnly: true`). `import type` / `export type`, fully type-only named import or
- * export clauses, and `import type =` are emitted with `typeOnly: true`. Side-effect imports
- * (no clause) are emitted as value edges.
+ * `true` when the leaf declaration of `symbol` lives inside one of the forbidden packages, which
+ * covers re-export chains that `getAliasedSymbol` collapses in a single hop.
  */
-function collectImports(sourceFile: ts.SourceFile): ImportEdge[] {
-  const result: ImportEdge[] = [];
-  for (const stmt of sourceFile.statements) {
-    if (ts.isImportDeclaration(stmt)) {
-      let typeOnly = false;
-      if (stmt.importClause?.isTypeOnly) {
-        typeOnly = true;
-      } else if (
-        stmt.importClause &&
-        stmt.importClause.namedBindings &&
-        ts.isNamedImports(stmt.importClause.namedBindings)
-      ) {
-        const named = stmt.importClause.namedBindings;
-        const hasValue = !!stmt.importClause.name || named.elements.some(element => !element.isTypeOnly);
-        typeOnly = !hasValue;
-      }
-      if (ts.isStringLiteralLike(stmt.moduleSpecifier)) {
-        result.push({ specifier: stmt.moduleSpecifier.text, literal: stmt.moduleSpecifier, typeOnly });
-      }
-      continue;
-    }
-    if (ts.isExportDeclaration(stmt) && stmt.moduleSpecifier && ts.isStringLiteralLike(stmt.moduleSpecifier)) {
-      let typeOnly = stmt.isTypeOnly;
-      if (!typeOnly && stmt.exportClause && ts.isNamedExports(stmt.exportClause)) {
-        typeOnly = stmt.exportClause.elements.every(element => element.isTypeOnly);
-      }
-      result.push({ specifier: stmt.moduleSpecifier.text, literal: stmt.moduleSpecifier, typeOnly });
-      continue;
-    }
-    if (
-      ts.isImportEqualsDeclaration(stmt) &&
-      ts.isExternalModuleReference(stmt.moduleReference) &&
-      ts.isStringLiteralLike(stmt.moduleReference.expression)
-    ) {
-      result.push({
-        specifier: stmt.moduleReference.expression.text,
-        literal: stmt.moduleReference.expression,
-        typeOnly: stmt.isTypeOnly,
-      });
+function owningForbiddenPackage(symbol: ts.Symbol, forbiddenRuntimes: ReadonlySet<string>): Hit | null {
+  for (const declaration of symbol.declarations ?? []) {
+    const fileName = declaration.getSourceFile().fileName;
+    const owner = packageFromNodeModulesPath(fileName);
+    if (owner !== undefined && forbiddenRuntimes.has(owner)) {
+      return { runtime: owner, via: shortenPath(fileName) };
     }
   }
-  return result;
+  return null;
 }
 
-// ---------------------------------------------------------------------------
-// Module resolution helpers
-// ---------------------------------------------------------------------------
-
 /**
- * Resolves `specifier` (as used in `sourceFile`) to an absolute file path using TS Program module
- * resolution APIs available in TypeScript >= 5.3. Returns `undefined` if the module cannot be
- * resolved (e.g. ambient declarations, broken paths).
+ * The npm package a file belongs to, when the file sits under a `node_modules` directory.
  */
-function resolveModule(
-  program: ts.Program,
-  sourceFile: ts.SourceFile,
-  specifier: string,
-  literal: ts.StringLiteralLike,
-): string | undefined {
-  const getResolvedModule = (
-    program as unknown as {
-      getResolvedModule?: (
-        file: ts.SourceFile,
-        moduleName: string,
-        mode?: ts.ResolutionMode,
-      ) => { resolvedModule?: ts.ResolvedModuleFull } | undefined;
-    }
-  ).getResolvedModule;
-  if (typeof getResolvedModule !== 'function') {
+function packageFromNodeModulesPath(fileName: string): string | undefined {
+  const segments = toPosixPath(fileName).split('/');
+  const index = segments.lastIndexOf('node_modules');
+  if (index === -1) {
     return undefined;
   }
+  const first = segments[index + 1];
+  if (first === undefined) {
+    return undefined;
+  }
+  const second = segments[index + 2];
+  return first.startsWith('@') && second !== undefined ? `${first}/${second}` : first;
+}
 
-  const mode = (
-    ts as unknown as {
-      getModeForUsageLocation?: (file: ts.SourceFile, usage: ts.StringLiteralLike) => ts.ResolutionMode;
+interface ModuleEdge {
+  /** Bare package the binding comes from, or `undefined` for relative and local re-exports. */
+  packageName: string | undefined;
+  /** `true` when the edge only carries type information (no runtime side-effect). */
+  typeOnly: boolean;
+  /** `true` for `import * as ns` / `export * as ns`, which bind a whole module rather than a symbol. */
+  isNamespace: boolean;
+}
+
+/**
+ * Describes the cross-module edge a declaration represents, or `null` when the declaration is not
+ * an import/export binding.
+ */
+function getModuleEdge(declaration: ts.Declaration): ModuleEdge | null {
+  if (ts.isImportSpecifier(declaration)) {
+    const importClause = declaration.parent.parent;
+    return {
+      packageName: barePackageOf(importClause.parent.moduleSpecifier),
+      typeOnly: declaration.isTypeOnly || importClause.isTypeOnly,
+      isNamespace: false,
+    };
+  }
+  if (ts.isImportClause(declaration)) {
+    return {
+      packageName: barePackageOf(declaration.parent.moduleSpecifier),
+      typeOnly: declaration.isTypeOnly,
+      isNamespace: false,
+    };
+  }
+  if (ts.isNamespaceImport(declaration)) {
+    const importClause = declaration.parent;
+    return {
+      packageName: barePackageOf(importClause.parent.moduleSpecifier),
+      typeOnly: importClause.isTypeOnly,
+      isNamespace: true,
+    };
+  }
+  if (ts.isExportSpecifier(declaration)) {
+    const exportDeclaration = declaration.parent.parent;
+    return {
+      packageName: exportDeclaration.moduleSpecifier
+        ? barePackageOf(exportDeclaration.moduleSpecifier)
+        : /* local re-export */ undefined,
+      typeOnly: declaration.isTypeOnly || exportDeclaration.isTypeOnly,
+      isNamespace: false,
+    };
+  }
+  if (ts.isNamespaceExport(declaration)) {
+    const exportDeclaration = declaration.parent;
+    return {
+      packageName: exportDeclaration.moduleSpecifier ? barePackageOf(exportDeclaration.moduleSpecifier) : undefined,
+      typeOnly: exportDeclaration.isTypeOnly,
+      isNamespace: true,
+    };
+  }
+  if (ts.isImportEqualsDeclaration(declaration)) {
+    const reference = declaration.moduleReference;
+    return {
+      packageName: ts.isExternalModuleReference(reference) ? barePackageOf(reference.expression) : undefined,
+      typeOnly: declaration.isTypeOnly,
+      isNamespace: true,
+    };
+  }
+  return null;
+}
+
+function barePackageOf(moduleSpecifier: ts.Expression): string | undefined {
+  if (!ts.isStringLiteralLike(moduleSpecifier) || !isBareSpecifier(moduleSpecifier.text)) {
+    return undefined;
+  }
+  return packageNameOf(moduleSpecifier.text);
+}
+
+/**
+ * `false` for identifiers that merely name something (property names, declaration names, import
+ * and export specifier names) rather than referring to a binding worth following.
+ */
+function isReferencePosition(node: ts.Identifier): boolean {
+  const parent = node.parent;
+  if (!parent) {
+    return false;
+  }
+  if (ts.isPropertyAccessExpression(parent) && parent.name === node) {
+    return false;
+  }
+  if (ts.isQualifiedName(parent) && parent.right === node) {
+    return false;
+  }
+  if (ts.isPropertyAssignment(parent) && parent.name === node) {
+    return false;
+  }
+  if (ts.isBindingElement(parent) && parent.propertyName === node) {
+    return false;
+  }
+  if (ts.isImportSpecifier(parent) || ts.isExportSpecifier(parent)) {
+    return false;
+  }
+  if (ts.isImportClause(parent) || ts.isNamespaceImport(parent) || ts.isNamespaceExport(parent)) {
+    return false;
+  }
+  // `{ foo }` binds and references `foo` at once, so it is a reference despite being a `name`.
+  if (ts.isShorthandPropertyAssignment(parent)) {
+    return true;
+  }
+  return (parent as ts.Node & { name?: ts.Node }).name !== node;
+}
+
+/**
+ * `true` when the identifier sits inside a type annotation, type alias body or `typeof` query.
+ */
+function isInTypePosition(node: ts.Node): boolean {
+  let current: ts.Node | undefined = node.parent;
+  while (current) {
+    if (ts.isTypeNode(current)) {
+      return true;
     }
-  ).getModeForUsageLocation?.(sourceFile, literal);
-
-  const resolutionResult = getResolvedModule.call(program, sourceFile, specifier, mode);
-  return resolutionResult?.resolvedModule?.resolvedFileName;
+    current = current.parent;
+  }
+  return false;
 }
 
 /**

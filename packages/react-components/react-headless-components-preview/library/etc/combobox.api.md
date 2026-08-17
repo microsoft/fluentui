@@ -84,6 +84,7 @@ export type OptionState = OptionState_2 & {
     root: {
         'data-disabled'?: string;
         'data-selected'?: string;
+        'data-multiselect'?: string;
     };
 };
 

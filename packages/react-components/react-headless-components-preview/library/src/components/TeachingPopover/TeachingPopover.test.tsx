@@ -3,8 +3,10 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopover } from './TeachingPopover';
+import { TeachingPopoverHeader } from './TeachingPopoverHeader';
 import { TeachingPopoverTrigger } from './TeachingPopoverTrigger';
 import { TeachingPopoverSurface } from './TeachingPopoverSurface';
+import { TeachingPopoverTitle } from './TeachingPopoverTitle';
 
 describe('TeachingPopover', () => {
   isConformant({
@@ -40,6 +42,52 @@ describe('TeachingPopover', () => {
 
     expect(getByText('Trigger')).toBeInTheDocument();
     expect(getByText('Surface content')).toBeInTheDocument();
+  });
+
+  it('does not render default header or title icons', () => {
+    const { container, getByTestId } = render(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface>
+          <TeachingPopoverHeader data-testid="header">Tips</TeachingPopoverHeader>
+          <TeachingPopoverTitle data-testid="title">Title</TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+    const header = getByTestId('header');
+    const title = getByTestId('title');
+
+    expect(container.querySelector('svg')).toBeNull();
+    expect(header.querySelector('[aria-hidden="true"]')).toBeEmptyDOMElement();
+    expect(header.querySelector('button[aria-label="dismiss"]')).toBeEmptyDOMElement();
+    expect(title.querySelector('button')).toBeNull();
+  });
+
+  it('renders explicitly provided header and title slots', () => {
+    const { getByTestId } = render(
+      <TeachingPopover defaultOpen>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface>
+          <TeachingPopoverHeader
+            icon={{ children: <span data-testid="header-icon">Tip</span> }}
+            dismissButton={{ children: <span data-testid="header-dismiss">Close header</span> }}
+          >
+            Tips
+          </TeachingPopoverHeader>
+          <TeachingPopoverTitle dismissButton={{ children: <span data-testid="title-dismiss">Close title</span> }}>
+            Title
+          </TeachingPopoverTitle>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+
+    expect(getByTestId('header-icon')).toHaveTextContent('Tip');
+    expect(getByTestId('header-dismiss')).toHaveTextContent('Close header');
+    expect(getByTestId('title-dismiss')).toHaveTextContent('Close title');
   });
 
   it('renders an arrow by default (withArrow=true)', () => {

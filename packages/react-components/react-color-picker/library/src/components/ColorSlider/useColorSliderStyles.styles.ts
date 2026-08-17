@@ -28,24 +28,6 @@ export const colorSliderClassNames: { root: string } = {
 };
 
 /**
- * CSS custom properties the slider position and colours ride on. Set as inline styles by
- * `useColorSlider_unstable`; the runtime-value mechanism ports unchanged from Griffel
- * (CONVERSION_GUIDE "Known special cases"), so these names are still public API.
- *
- * The four `--fui-Slider*` names are SHARED with `@fluentui/react-slider` and (for
- * `thumbSizeVar`) with ColorArea. They are deliberately not renamed: the namespace is a
- * cross-package contract and, being public API, is not the conversion's to change.
- */
-export const colorSliderCSSVars = {
-  sliderDirectionVar: `--fui-Slider--direction`,
-  sliderProgressVar: `--fui-Slider--progress`,
-  thumbColorVar: `--fui-Slider__thumb--color`,
-  railColorVar: `--fui-Slider__rail--color`,
-  thumbSizeVar: `--fui-Slider__thumb--size`,
-  railSizeVar: `--fui-Slider__rail--size`,
-};
-
-/**
  * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
  * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
  *

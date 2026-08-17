@@ -13,14 +13,19 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
 
-// @public @deprecated
-export const colorSwatchClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export type ColorSwatchBaseProps = Omit<ColorSwatchProps, 'size' | 'shape'>;
+
+// @public (undocumented)
+export type ColorSwatchBaseState = Omit<ColorSwatchState, 'size' | 'shape'>;
+
+// @public (undocumented)
+export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
@@ -45,10 +50,14 @@ export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwat
 // @public
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
 
-// @public @deprecated
-export const emptySwatchClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export type EmptySwatchBaseProps = ComponentProps<EmptySwatchSlots>;
+
+// @public (undocumented)
+export type EmptySwatchBaseState = ComponentState<EmptySwatchSlots>;
+
+// @public (undocumented)
+export const emptySwatchClassNames: SlotClassNames<EmptySwatchSlots>;
 
 // @public
 export type EmptySwatchProps = ComponentProps<EmptySwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'>;
@@ -64,10 +73,14 @@ export type EmptySwatchState = ComponentState<EmptySwatchSlots> & Pick<EmptySwat
 // @public
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
 
-// @public @deprecated
-export const imageSwatchClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export type ImageSwatchBaseProps = Omit<ImageSwatchProps, 'size' | 'shape'>;
+
+// @public (undocumented)
+export type ImageSwatchBaseState = Omit<ImageSwatchState, 'size' | 'shape'>;
+
+// @public (undocumented)
+export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots>;
 
 // @public
 export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
@@ -86,24 +99,24 @@ export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwat
 };
 
 // @public
-export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSXElement;
+export const renderColorSwatch_unstable: (state: ColorSwatchBaseState) => JSXElement;
 
 // @public
-export const renderEmptySwatch_unstable: (state: EmptySwatchState) => JSXElement;
+export const renderEmptySwatch_unstable: (state: EmptySwatchBaseState) => JSXElement;
 
 // @public
-export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSXElement;
+export const renderImageSwatch_unstable: (state: ImageSwatchBaseState) => JSXElement;
 
 // @public
-export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValues) => JSXElement;
+export const renderSwatchPicker_unstable: (state: SwatchPickerBaseState, contextValues: SwatchPickerContextValues) => JSXElement;
 
 // @public (undocumented)
 export const renderSwatchPickerGrid: (props: SwatchPickerGridProps) => JSXElement[];
 
 // @public
-export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JSXElement;
+export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowBaseState) => JSXElement;
 
-// @public
+// @public (undocumented)
 export const swatchCSSVars: {
     color: string;
     borderColor: string;
@@ -112,10 +125,14 @@ export const swatchCSSVars: {
 // @public
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
 
-// @public @deprecated
-export const swatchPickerClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export type SwatchPickerBaseProps = Omit<SwatchPickerProps, 'size' | 'shape' | 'spacing'>;
+
+// @public (undocumented)
+export type SwatchPickerBaseState = Omit<SwatchPickerState, 'size' | 'shape' | 'spacing'>;
+
+// @public (undocumented)
+export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
 
 // @public (undocumented)
 export const swatchPickerContextDefaultValue: SwatchPickerContextValue;
@@ -172,10 +189,14 @@ export const SwatchPickerProvider: React_2.Provider<SwatchPickerContextValue> & 
 // @public
 export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps>;
 
-// @public @deprecated
-export const swatchPickerRowClassNames: {
-    root: string;
-};
+// @public (undocumented)
+export type SwatchPickerRowBaseProps = ComponentProps<SwatchPickerRowSlots>;
+
+// @public (undocumented)
+export type SwatchPickerRowBaseState = ComponentState<SwatchPickerRowSlots>;
+
+// @public (undocumented)
+export const swatchPickerRowClassNames: SlotClassNames<SwatchPickerRowSlots>;
 
 // @public
 export type SwatchPickerRowProps = ComponentProps<SwatchPickerRowSlots>;
@@ -205,10 +226,16 @@ export type SwatchProps = ImageSwatchProps | ColorSwatchProps;
 export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;
 
 // @public
+export const useColorSwatchBase_unstable: (props: ColorSwatchBaseProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchBaseState;
+
+// @public
 export const useColorSwatchStyles_unstable: (state: ColorSwatchState) => ColorSwatchState;
 
 // @public
 export const useEmptySwatch_unstable: (props: EmptySwatchProps, ref: React_2.Ref<HTMLButtonElement>) => EmptySwatchState;
+
+// @public
+export const useEmptySwatchBase_unstable: (props: EmptySwatchBaseProps, ref: React_2.Ref<HTMLButtonElement>) => EmptySwatchBaseState;
 
 // @public
 export const useEmptySwatchStyles_unstable: (state: EmptySwatchState) => EmptySwatchState;
@@ -217,10 +244,16 @@ export const useEmptySwatchStyles_unstable: (state: EmptySwatchState) => EmptySw
 export const useImageSwatch_unstable: (props: ImageSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ImageSwatchState;
 
 // @public
+export const useImageSwatchBase_unstable: (props: ImageSwatchBaseProps, ref: React_2.Ref<HTMLButtonElement>) => ImageSwatchBaseState;
+
+// @public
 export const useImageSwatchStyles_unstable: (state: ImageSwatchState) => ImageSwatchState;
 
 // @public
 export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
+
+// @public
+export const useSwatchPickerBase_unstable: (props: SwatchPickerBaseProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerBaseState;
 
 // @public (undocumented)
 export const useSwatchPickerContextValue_unstable: <T>(selector: ContextSelector<SwatchPickerContextValue, T>) => T;
@@ -230,6 +263,9 @@ export const useSwatchPickerContextValues: (state: SwatchPickerState) => SwatchP
 
 // @public
 export const useSwatchPickerRow_unstable: (props: SwatchPickerRowProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerRowState;
+
+// @public
+export const useSwatchPickerRowBase_unstable: (props: SwatchPickerRowBaseProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerRowBaseState;
 
 // @public
 export const useSwatchPickerRowStyles_unstable: (state: SwatchPickerRowState) => SwatchPickerRowState;

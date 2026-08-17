@@ -2,8 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "isolatedModules": false,
-    "types": ["node", "cypress", "cypress-real-events"],
-    "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"],
+    "types": ["node", "cypress", "cypress-real-events", "focusgroup"],
+    "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types", "../../../../typings"],
     "lib": ["ES2019", "dom"]
   },
   "include": ["**/*.cy.ts", "**/*.cy.tsx"]

@@ -466,7 +466,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       return (
-        <React.Fragment key={`${index}_${point.x}`}>
+        <React.Fragment key={`${index}_${point.x}_${point.y}`}>
           <rect
             key={point.y}
             x={xStart}
@@ -644,7 +644,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       return (
-        <React.Fragment key={`${index}_${point.x}`}>
+        <React.Fragment key={`${index}_${point.x}_${point.y}`}>
           <rect
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - _barHeight)})`}
             key={point.x}
