@@ -41,7 +41,7 @@ describe('SwatchPicker', () => {
             class="group/fui-color-swatch"
             data-size="medium"
             role="radio"
-            style="--fui-SwatchPicker--color: #f09; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
+            style="--fui-SwatchPicker--color: #f09;"
             type="button"
           />
           <button
@@ -50,7 +50,7 @@ describe('SwatchPicker', () => {
             data-size="medium"
             disabled=""
             role="radio"
-            style="--fui-SwatchPicker--color: #0f0; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
+            style="--fui-SwatchPicker--color: #0f0;"
             type="button"
           >
             <span
@@ -58,7 +58,8 @@ describe('SwatchPicker', () => {
             >
               <svg
                 aria-hidden="true"
-                class=""
+                class="fui-Icon"
+                data-fui-icon=""
                 fill="currentColor"
                 height="1em"
                 viewBox="0 0 20 20"
@@ -66,7 +67,7 @@ describe('SwatchPicker', () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-1.5 0c0-1.52-.53-2.93-1.4-4.04L5.96 15.1A6.5 6.5 0 0 0 16.5 10ZM4.9 14.04l9.14-9.14a6.5 6.5 0 0 0-9.13 9.13Z"
+                  d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0m-1.5 0c0-1.52-.53-2.93-1.4-4.04L5.96 15.1A6.5 6.5 0 0 0 16.5 10M4.9 14.04l9.14-9.14a6.5 6.5 0 0 0-9.13 9.13"
                   fill="currentColor"
                 />
               </svg>

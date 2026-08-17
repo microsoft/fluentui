@@ -13,7 +13,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
@@ -24,8 +23,10 @@ export type ColorSwatchBaseProps = Omit<ColorSwatchProps, 'size' | 'shape'>;
 // @public (undocumented)
 export type ColorSwatchBaseState = Omit<ColorSwatchState, 'size' | 'shape'>;
 
-// @public (undocumented)
-export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
+// @public @deprecated
+export const colorSwatchClassNames: {
+    root: string;
+};
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
@@ -56,8 +57,10 @@ export type EmptySwatchBaseProps = ComponentProps<EmptySwatchSlots>;
 // @public (undocumented)
 export type EmptySwatchBaseState = ComponentState<EmptySwatchSlots>;
 
-// @public (undocumented)
-export const emptySwatchClassNames: SlotClassNames<EmptySwatchSlots>;
+// @public @deprecated
+export const emptySwatchClassNames: {
+    root: string;
+};
 
 // @public
 export type EmptySwatchProps = ComponentProps<EmptySwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'>;
@@ -79,8 +82,10 @@ export type ImageSwatchBaseProps = Omit<ImageSwatchProps, 'size' | 'shape'>;
 // @public (undocumented)
 export type ImageSwatchBaseState = Omit<ImageSwatchState, 'size' | 'shape'>;
 
-// @public (undocumented)
-export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots>;
+// @public @deprecated
+export const imageSwatchClassNames: {
+    root: string;
+};
 
 // @public
 export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
@@ -131,8 +136,10 @@ export type SwatchPickerBaseProps = Omit<SwatchPickerProps, 'size' | 'shape' | '
 // @public (undocumented)
 export type SwatchPickerBaseState = Omit<SwatchPickerState, 'size' | 'shape' | 'spacing'>;
 
-// @public (undocumented)
-export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
+// @public @deprecated
+export const swatchPickerClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const swatchPickerContextDefaultValue: SwatchPickerContextValue;
@@ -195,8 +202,10 @@ export type SwatchPickerRowBaseProps = ComponentProps<SwatchPickerRowSlots>;
 // @public (undocumented)
 export type SwatchPickerRowBaseState = ComponentState<SwatchPickerRowSlots>;
 
-// @public (undocumented)
-export const swatchPickerRowClassNames: SlotClassNames<SwatchPickerRowSlots>;
+// @public @deprecated
+export const swatchPickerRowClassNames: {
+    root: string;
+};
 
 // @public
 export type SwatchPickerRowProps = ComponentProps<SwatchPickerRowSlots>;

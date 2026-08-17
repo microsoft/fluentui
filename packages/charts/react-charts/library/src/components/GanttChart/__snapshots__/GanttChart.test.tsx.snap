@@ -183,6 +183,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -200,6 +201,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -217,6 +219,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -234,6 +237,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -242,13 +246,16 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
@@ -260,7 +267,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
@@ -272,7 +279,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -284,7 +291,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -296,7 +303,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
@@ -308,7 +315,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
@@ -320,7 +327,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
@@ -332,7 +339,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
@@ -346,76 +353,86 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Complete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="Complete"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Complete
-            </div>
-          </button>
-          <button
-            aria-label="Incomplete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class=""
+              >
+                Complete
+              </div>
+            </button>
+            <button
+              aria-label="Incomplete"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Incomplete
-            </div>
-          </button>
-          <button
-            aria-label="Not Started"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class=""
+              >
+                Incomplete
+              </div>
+            </button>
+            <button
+              aria-label="Not Started"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              Not Started
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class=""
+              >
+                Not Started
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -783,6 +800,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -800,6 +818,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -817,6 +836,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -834,6 +854,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -851,6 +872,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -868,6 +890,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -885,6 +908,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -902,6 +926,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -910,13 +935,16 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Site Preparation. No, May 01 - May 07."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.604395604395606"
@@ -928,7 +956,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285715"
@@ -940,7 +968,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="65.27472527472528"
@@ -952,7 +980,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.60439560439562"
@@ -964,7 +992,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
@@ -976,7 +1004,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="53.4065934065934"
@@ -988,7 +1016,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#f7630cff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
@@ -1000,7 +1028,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             fill="#57811bff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.60439560439568"
@@ -1014,76 +1042,86 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="No"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #637cefff; --rect-borderColor: #637cefff;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="No"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #637cefff; --rect-borderColor: #637cefff;"
+              type="button"
             >
-              No
-            </div>
-          </button>
-          <button
-            aria-label="Yes (Phase 1)"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630cff; --rect-borderColor: #f7630cff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              />
+              <div
+                class=""
+              >
+                No
+              </div>
+            </button>
+            <button
+              aria-label="Yes (Phase 1)"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630cff; --rect-borderColor: #f7630cff;"
+              type="button"
             >
-              Yes (Phase 1)
-            </div>
-          </button>
-          <button
-            aria-label="Yes (Phase 2)"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #57811bff; --rect-borderColor: #57811bff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              />
+              <div
+                class=""
+              >
+                Yes (Phase 1)
+              </div>
+            </button>
+            <button
+              aria-label="Yes (Phase 2)"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #57811bff; --rect-borderColor: #57811bff;"
+              type="button"
             >
-              Yes (Phase 2)
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              />
+              <div
+                class=""
+              >
+                Yes (Phase 2)
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1274,6 +1312,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1291,6 +1330,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1308,6 +1348,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1325,6 +1366,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1333,13 +1375,16 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
@@ -1351,7 +1396,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
@@ -1363,7 +1408,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -1375,7 +1420,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -1387,7 +1432,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
@@ -1399,7 +1444,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
@@ -1411,7 +1456,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
@@ -1423,7 +1468,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
@@ -1437,76 +1482,86 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Complete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="Complete"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Complete
-            </div>
-          </button>
-          <button
-            aria-label="Incomplete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class=""
+              >
+                Complete
+              </div>
+            </button>
+            <button
+              aria-label="Incomplete"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Incomplete
-            </div>
-          </button>
-          <button
-            aria-label="Not Started"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class=""
+              >
+                Incomplete
+              </div>
+            </button>
+            <button
+              aria-label="Not Started"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              Not Started
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class=""
+              >
+                Not Started
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1701,6 +1756,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1718,6 +1774,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1735,6 +1792,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1752,6 +1810,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1760,13 +1819,16 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="8 bars"
+            role="listbox"
+          >
             <rect
               aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
               fill="#107c10"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="95.4696132596685"
@@ -1778,7 +1840,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#f7630c"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="83.53591160220995"
@@ -1790,7 +1852,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#107c10"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="92.48618784530387"
@@ -1802,7 +1864,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="92.48618784530387"
@@ -1814,7 +1876,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#107c10"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="176.0220994475138"
@@ -1826,7 +1888,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="29.834254143646376"
@@ -1838,7 +1900,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="56.685082872928206"
@@ -1850,7 +1912,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="#c50f1f"
               height="7.888888888888889"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="92.48618784530385"
@@ -1864,76 +1926,86 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         class=""
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="group/fui-overflow"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Complete"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class=""
+              <button
+                aria-label="Complete"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
               >
-                Complete
-              </div>
-            </button>
-            <button
-              aria-label="Incomplete"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class=""
+                >
+                  Complete
+                </div>
+              </button>
+              <button
+                aria-label="Incomplete"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                type="button"
               >
-                Incomplete
-              </div>
-            </button>
-            <button
-              aria-label="Not Started"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                />
+                <div
+                  class=""
+                >
+                  Incomplete
+                </div>
+              </button>
+              <button
+                aria-label="Not Started"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                type="button"
               >
-                Not Started
-              </div>
-            </button>
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                />
+                <div
+                  class=""
+                >
+                  Not Started
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -2131,6 +2203,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2148,6 +2221,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2165,6 +2239,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2182,6 +2257,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2190,13 +2266,16 @@ Object {
                   </text>
                 </g>
               </g>
-              <g>
+              <g
+                aria-label="8 bars"
+                role="listbox"
+              >
                 <rect
                   aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
                   fill="#107c10"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="95.4696132596685"
@@ -2208,7 +2287,7 @@ Object {
                   fill="#f7630c"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="83.53591160220995"
@@ -2220,7 +2299,7 @@ Object {
                   fill="#107c10"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530387"
@@ -2232,7 +2311,7 @@ Object {
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530387"
@@ -2244,7 +2323,7 @@ Object {
                   fill="#107c10"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="176.0220994475138"
@@ -2256,7 +2335,7 @@ Object {
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="29.834254143646376"
@@ -2268,7 +2347,7 @@ Object {
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="56.685082872928206"
@@ -2280,7 +2359,7 @@ Object {
                   fill="#c50f1f"
                   height="7.888888888888889"
                   opacity="1"
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530385"
@@ -2294,76 +2373,86 @@ Object {
             class=""
           >
             <div
-              aria-label="Legends"
-              aria-multiselectable="false"
               class="group/fui-legends"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-              role="listbox"
             >
               <div
                 class="group/fui-overflow"
                 style="text-align: unset;"
               >
-                <button
-                  aria-label="Complete"
-                  aria-selected="false"
-                  class="group/fui-button"
-                  data-overflow-item=""
-                  data-size="small"
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                  type="button"
+                <div
+                  aria-label="Legends"
+                  aria-multiselectable="false"
+                  role="listbox"
+                  style="display: contents;"
                 >
-                  <div
-                    class=""
-                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                  />
-                  <div
-                    class=""
+                  <button
+                    aria-label="Complete"
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class="group/fui-button"
+                    data-overflow-item=""
+                    data-size="small"
+                    role="option"
+                    style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                    type="button"
                   >
-                    Complete
-                  </div>
-                </button>
-                <button
-                  aria-label="Incomplete"
-                  aria-selected="false"
-                  class="group/fui-button"
-                  data-overflow-item=""
-                  data-size="small"
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-                  type="button"
-                >
-                  <div
-                    class=""
-                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-                  />
-                  <div
-                    class=""
+                    <div
+                      class=""
+                      style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                    />
+                    <div
+                      class=""
+                    >
+                      Complete
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Incomplete"
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class="group/fui-button"
+                    data-overflow-item=""
+                    data-size="small"
+                    role="option"
+                    style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                    type="button"
                   >
-                    Incomplete
-                  </div>
-                </button>
-                <button
-                  aria-label="Not Started"
-                  aria-selected="false"
-                  class="group/fui-button"
-                  data-overflow-item=""
-                  data-size="small"
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-                  type="button"
-                >
-                  <div
-                    class=""
-                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-                  />
-                  <div
-                    class=""
+                    <div
+                      class=""
+                      style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                    />
+                    <div
+                      class=""
+                    >
+                      Incomplete
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Not Started"
+                    aria-posinset="3"
+                    aria-selected="false"
+                    aria-setsize="3"
+                    class="group/fui-button"
+                    data-overflow-item=""
+                    data-size="small"
+                    role="option"
+                    style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                    type="button"
                   >
-                    Not Started
-                  </div>
-                </button>
+                    <div
+                      class=""
+                      style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                    />
+                    <div
+                      class=""
+                    >
+                      Not Started
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -2556,6 +2645,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2573,6 +2663,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2590,6 +2681,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2607,6 +2699,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2615,13 +2708,16 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="8 bars"
+              role="listbox"
+            >
               <rect
                 aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
                 fill="#107c10"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="95.4696132596685"
@@ -2633,7 +2729,7 @@ Object {
                 fill="#f7630c"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="83.53591160220995"
@@ -2645,7 +2741,7 @@ Object {
                 fill="#107c10"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530387"
@@ -2657,7 +2753,7 @@ Object {
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530387"
@@ -2669,7 +2765,7 @@ Object {
                 fill="#107c10"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="176.0220994475138"
@@ -2681,7 +2777,7 @@ Object {
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="29.834254143646376"
@@ -2693,7 +2789,7 @@ Object {
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="56.685082872928206"
@@ -2705,7 +2801,7 @@ Object {
                 fill="#c50f1f"
                 height="7.888888888888889"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530385"
@@ -2719,76 +2815,86 @@ Object {
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Complete"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="Complete"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                  type="button"
                 >
-                  Complete
-                </div>
-              </button>
-              <button
-                aria-label="Incomplete"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Complete
+                  </div>
+                </button>
+                <button
+                  aria-label="Incomplete"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                  type="button"
                 >
-                  Incomplete
-                </div>
-              </button>
-              <button
-                aria-label="Not Started"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Incomplete
+                  </div>
+                </button>
+                <button
+                  aria-label="Not Started"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                  type="button"
                 >
-                  Not Started
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Not Started
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -3257,13 +3363,16 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="6 bars"
+          role="listbox"
+        >
           <rect
             aria-label="6. Legal, 03/05/2022 - 03/15/2022."
             fill="#3a96ddff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="11.868131868131854"
@@ -3275,7 +3384,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#ca5010ff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="10.681318681318658"
@@ -3287,7 +3396,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#9373c0ff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="11.868131868131854"
@@ -3299,7 +3408,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#57811bff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="8.307692307692207"
@@ -3311,7 +3420,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#f7630cff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="5.934065934065984"
@@ -3323,7 +3432,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="#637cefff"
             height="1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="443.86813186813185"
@@ -3337,136 +3446,152 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="HR"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #637cefff; --rect-borderColor: #637cefff;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="HR"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="6"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #637cefff; --rect-borderColor: #637cefff;"
+              type="button"
             >
-              HR
-            </div>
-          </button>
-          <button
-            aria-label="Finance"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630cff; --rect-borderColor: #f7630cff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              />
+              <div
+                class=""
+              >
+                HR
+              </div>
+            </button>
+            <button
+              aria-label="Finance"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="6"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630cff; --rect-borderColor: #f7630cff;"
+              type="button"
             >
-              Finance
-            </div>
-          </button>
-          <button
-            aria-label="IT"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #57811bff; --rect-borderColor: #57811bff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              />
+              <div
+                class=""
+              >
+                Finance
+              </div>
+            </button>
+            <button
+              aria-label="IT"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="6"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #57811bff; --rect-borderColor: #57811bff;"
+              type="button"
             >
-              IT
-            </div>
-          </button>
-          <button
-            aria-label="Operations"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #9373c0ff; --rect-borderColor: #9373c0ff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(147, 115, 192); border-color: rgb(147, 115, 192); --rect-content-high-contrast: linear-gradient(to right, #9373c0ff, #9373c0ff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              />
+              <div
+                class=""
+              >
+                IT
+              </div>
+            </button>
+            <button
+              aria-label="Operations"
+              aria-posinset="4"
+              aria-selected="false"
+              aria-setsize="6"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #9373c0ff; --rect-borderColor: #9373c0ff;"
+              type="button"
             >
-              Operations
-            </div>
-          </button>
-          <button
-            aria-label="Customer Support"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #ca5010ff; --rect-borderColor: #ca5010ff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(202, 80, 16); border-color: rgb(202, 80, 16); --rect-content-high-contrast: linear-gradient(to right, #ca5010ff, #ca5010ff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(147, 115, 192); border-color: rgb(147, 115, 192); --rect-content-high-contrast: linear-gradient(to right, #9373c0ff, #9373c0ff);"
+              />
+              <div
+                class=""
+              >
+                Operations
+              </div>
+            </button>
+            <button
+              aria-label="Customer Support"
+              aria-posinset="5"
+              aria-selected="false"
+              aria-setsize="6"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #ca5010ff; --rect-borderColor: #ca5010ff;"
+              type="button"
             >
-              Customer Support
-            </div>
-          </button>
-          <button
-            aria-label="Legal"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #3a96ddff; --rect-borderColor: #3a96ddff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(58, 150, 221); border-color: rgb(58, 150, 221); --rect-content-high-contrast: linear-gradient(to right, #3a96ddff, #3a96ddff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(202, 80, 16); border-color: rgb(202, 80, 16); --rect-content-high-contrast: linear-gradient(to right, #ca5010ff, #ca5010ff);"
+              />
+              <div
+                class=""
+              >
+                Customer Support
+              </div>
+            </button>
+            <button
+              aria-label="Legal"
+              aria-posinset="6"
+              aria-selected="false"
+              aria-setsize="6"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #3a96ddff; --rect-borderColor: #3a96ddff;"
+              type="button"
             >
-              Legal
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(58, 150, 221); border-color: rgb(58, 150, 221); --rect-content-high-contrast: linear-gradient(to right, #3a96ddff, #3a96ddff);"
+              />
+              <div
+                class=""
+              >
+                Legal
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -3657,6 +3782,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3674,6 +3800,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3691,6 +3818,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3708,6 +3836,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3716,7 +3845,10 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <defs>
             <lineargradient
               id="gantt_legend_r_l__0_gradient"
@@ -3760,7 +3892,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_l__0_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
@@ -3772,7 +3904,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_l__1_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
@@ -3784,7 +3916,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_l__0_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -3796,7 +3928,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_l__2_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -3808,7 +3940,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_l__0_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
@@ -3820,7 +3952,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_l__2_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
@@ -3832,7 +3964,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_l__2_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
@@ -3844,7 +3976,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             fill="url(#gantt_legend_r_l__2_gradient)"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
@@ -3858,76 +3990,86 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Complete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0C5E0C; --rect-borderColor: #0C5E0C;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(12, 94, 12); border-color: rgb(12, 94, 12); --rect-content-high-contrast: linear-gradient(to right, #0C5E0C, #0C5E0C);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="Complete"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0C5E0C; --rect-borderColor: #0C5E0C;"
+              type="button"
             >
-              Complete
-            </div>
-          </button>
-          <button
-            aria-label="Incomplete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #DE590B; --rect-borderColor: #DE590B;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(222, 89, 11); border-color: rgb(222, 89, 11); --rect-content-high-contrast: linear-gradient(to right, #DE590B, #DE590B);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(12, 94, 12); border-color: rgb(12, 94, 12); --rect-content-high-contrast: linear-gradient(to right, #0C5E0C, #0C5E0C);"
+              />
+              <div
+                class=""
+              >
+                Complete
+              </div>
+            </button>
+            <button
+              aria-label="Incomplete"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #DE590B; --rect-borderColor: #DE590B;"
+              type="button"
             >
-              Incomplete
-            </div>
-          </button>
-          <button
-            aria-label="Not Started"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #B10E1C; --rect-borderColor: #B10E1C;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(177, 14, 28); border-color: rgb(177, 14, 28); --rect-content-high-contrast: linear-gradient(to right, #B10E1C, #B10E1C);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(222, 89, 11); border-color: rgb(222, 89, 11); --rect-content-high-contrast: linear-gradient(to right, #DE590B, #DE590B);"
+              />
+              <div
+                class=""
+              >
+                Incomplete
+              </div>
+            </button>
+            <button
+              aria-label="Not Started"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #B10E1C; --rect-borderColor: #B10E1C;"
+              type="button"
             >
-              Not Started
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(177, 14, 28); border-color: rgb(177, 14, 28); --rect-content-high-contrast: linear-gradient(to right, #B10E1C, #B10E1C);"
+              />
+              <div
+                class=""
+              >
+                Not Started
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -4118,6 +4260,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4135,6 +4278,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4152,6 +4296,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4169,6 +4314,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4177,13 +4323,16 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="95.4696132596685"
@@ -4195,7 +4344,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="83.53591160220995"
@@ -4207,7 +4356,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="92.48618784530387"
@@ -4219,7 +4368,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="92.48618784530387"
@@ -4231,7 +4380,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="176.0220994475138"
@@ -4243,7 +4392,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="29.834254143646376"
@@ -4255,7 +4404,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="56.685082872928206"
@@ -4267,7 +4416,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="92.48618784530385"
@@ -4281,76 +4430,86 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Complete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="Complete"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Complete
-            </div>
-          </button>
-          <button
-            aria-label="Incomplete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class=""
+              >
+                Complete
+              </div>
+            </button>
+            <button
+              aria-label="Incomplete"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Incomplete
-            </div>
-          </button>
-          <button
-            aria-label="Not Started"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class=""
+              >
+                Incomplete
+              </div>
+            </button>
+            <button
+              aria-label="Not Started"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              Not Started
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class=""
+              >
+                Not Started
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -4541,6 +4700,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4558,6 +4718,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4575,6 +4736,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4592,6 +4754,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4600,13 +4763,16 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
@@ -4618,7 +4784,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#f7630c"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
@@ -4630,7 +4796,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -4642,7 +4808,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
@@ -4654,7 +4820,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#107c10"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
@@ -4666,7 +4832,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
@@ -4678,7 +4844,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
@@ -4690,7 +4856,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             fill="#c50f1f"
             height="7.888888888888889"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
@@ -4704,76 +4870,86 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Complete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="Complete"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Complete
-            </div>
-          </button>
-          <button
-            aria-label="Incomplete"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class=""
+              >
+                Complete
+              </div>
+            </button>
+            <button
+              aria-label="Incomplete"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Incomplete
-            </div>
-          </button>
-          <button
-            aria-label="Not Started"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class=""
+              >
+                Incomplete
+              </div>
+            </button>
+            <button
+              aria-label="Not Started"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              Not Started
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class=""
+              >
+                Not Started
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -5141,6 +5317,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Final Inspections"
               dy="0.32em"
               fill="currentColor"
@@ -5164,6 +5341,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Interior Finishing"
               dy="0.32em"
               fill="currentColor"
@@ -5187,6 +5365,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Exterior Finishing"
               dy="0.32em"
               fill="currentColor"
@@ -5210,6 +5389,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Plumbing/Electrical"
               dy="0.32em"
               fill="currentColor"
@@ -5233,6 +5413,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Roof Installation"
               dy="0.32em"
               fill="currentColor"
@@ -5256,6 +5437,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Framing"
               dy="0.32em"
               fill="currentColor"
@@ -5279,6 +5461,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Foundation Work"
               dy="0.32em"
               fill="currentColor"
@@ -5302,6 +5485,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Site Preparation"
               dy="0.32em"
               fill="currentColor"
@@ -5316,13 +5500,16 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="8 bars"
+          role="listbox"
+        >
           <rect
             aria-label="Site Preparation. No, May 01 - May 07."
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.604395604395606"
@@ -5334,7 +5521,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285715"
@@ -5346,7 +5533,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="65.27472527472528"
@@ -5358,7 +5545,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.60439560439562"
@@ -5370,7 +5557,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
@@ -5382,7 +5569,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#637cefff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="53.4065934065934"
@@ -5394,7 +5581,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#f7630cff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
@@ -5406,7 +5593,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             fill="#57811bff"
             height="4.176470588235294"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="35.60439560439568"
@@ -5420,76 +5607,86 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="No"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #637cefff; --rect-borderColor: #637cefff;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="No"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #637cefff; --rect-borderColor: #637cefff;"
+              type="button"
             >
-              No
-            </div>
-          </button>
-          <button
-            aria-label="Yes (Phase 1)"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630cff; --rect-borderColor: #f7630cff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              />
+              <div
+                class=""
+              >
+                No
+              </div>
+            </button>
+            <button
+              aria-label="Yes (Phase 1)"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630cff; --rect-borderColor: #f7630cff;"
+              type="button"
             >
-              Yes (Phase 1)
-            </div>
-          </button>
-          <button
-            aria-label="Yes (Phase 2)"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #57811bff; --rect-borderColor: #57811bff;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              />
+              <div
+                class=""
+              >
+                Yes (Phase 1)
+              </div>
+            </button>
+            <button
+              aria-label="Yes (Phase 2)"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #57811bff; --rect-borderColor: #57811bff;"
+              type="button"
             >
-              Yes (Phase 2)
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              />
+              <div
+                class=""
+              >
+                Yes (Phase 2)
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>

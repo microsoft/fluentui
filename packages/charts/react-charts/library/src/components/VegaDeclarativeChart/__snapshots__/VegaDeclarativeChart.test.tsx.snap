@@ -499,76 +499,86 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="North"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="North"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  North
-                </div>
-              </button>
-              <button
-                aria-label="South"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class=""
+                  >
+                    North
+                  </div>
+                </button>
+                <button
+                  aria-label="South"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  South
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 4px; background-color: rgb(42, 160, 164); border-color: rgb(42, 160, 164); --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class=""
+                  >
+                    South
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 4px; background-color: rgb(42, 160, 164); border-color: rgb(42, 160, 164); --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -970,56 +980,64 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="A"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="A"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  A
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class=""
+                  >
+                    A
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1421,56 +1439,64 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Bar"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="Bar"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  Bar
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Bar
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2112,56 +2138,64 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Bar"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: lightblue; --rect-borderColor: lightblue;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: lightblue; border-color: lightblue; --rect-content-high-contrast: linear-gradient(to right, lightblue, lightblue);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="Bar"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: lightblue; --rect-borderColor: lightblue;"
+                  type="button"
                 >
-                  Bar
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: red; --rect-borderColor: red;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 4px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: lightblue; border-color: lightblue; --rect-content-high-contrast: linear-gradient(to right, lightblue, lightblue);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Bar
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: red; --rect-borderColor: red;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 4px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2200,29 +2234,35 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             width="0"
           >
             <g
+              aria-label="Donut chart with 2 slices"
               class="group/fui-donut-pie"
+              role="listbox"
               transform="translate(0, 80)"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="A, 28."
                   class="group/fui-donut-arc"
                   d="M0.5,-49.998A50,50,0,0,1,42.748,25.935L0,0Z"
                   id="_Pie__r_2s_A28"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #637cef; cursor: default;"
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="B, 55."
                   class="group/fui-donut-arc"
                   d="M42.22,26.785A50,50,0,1,1,-0.5,-49.998L0,0Z"
                   id="_Pie__r_2s_B55"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #e3008c; cursor: default;"
                   tabindex="0"
                 />
@@ -2238,56 +2278,64 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: center;"
             >
-              <button
-                aria-label="A"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="A"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  A
-                </div>
-              </button>
-              <button
-                aria-label="B"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class=""
+                  >
+                    A
+                  </div>
+                </button>
+                <button
+                  aria-label="B"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  B
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class=""
+                  >
+                    B
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2511,56 +2559,64 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="North"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="North"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  North
-                </div>
-              </button>
-              <button
-                aria-label="South"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class=""
+                  >
+                    North
+                  </div>
+                </button>
+                <button
+                  aria-label="South"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  South
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class=""
+                  >
+                    South
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2632,6 +2688,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Monday"
                   dy="0.32em"
                   fill="currentColor"
@@ -2647,12 +2704,14 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               </g>
             </g>
             <g
+              aria-label="2 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="A, Monday. , 10."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(10.297029702970299, 25.78431372549022)"
               >
@@ -2662,6 +2721,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -2674,7 +2734,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <g
                 aria-label="B, Monday. , 20."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.405940594059405, 25.78431372549022)"
               >
@@ -2684,6 +2744,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -2789,6 +2850,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Current Ratio"
                   dy="0.32em"
                   fill="currentColor"
@@ -2812,6 +2874,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Quick Ratio"
                   dy="0.32em"
                   fill="currentColor"
@@ -2835,6 +2898,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Debt-to-Equity"
                   dy="0.32em"
                   fill="currentColor"
@@ -2858,6 +2922,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="ROE"
                   dy="0.32em"
                   fill="currentColor"
@@ -2873,12 +2938,14 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               </g>
             </g>
             <g
+              aria-label="12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Company A, ROE. , 15.2."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
@@ -2888,6 +2955,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -2900,7 +2968,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company B, ROE. , 12.7."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
@@ -2910,6 +2978,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -2922,7 +2991,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company C, ROE. , 18.5."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
@@ -2932,6 +3001,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -2944,7 +3014,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company A, Debt-to-Equity. , 0.8."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
@@ -2954,6 +3024,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -2966,7 +3037,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company B, Debt-to-Equity. , 1.3."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
@@ -2976,6 +3047,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -2988,7 +3060,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company C, Debt-to-Equity. , 0.5."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
@@ -2998,6 +3070,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3010,7 +3083,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company A, Quick Ratio. , 1.5."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
@@ -3020,6 +3093,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3032,7 +3106,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company B, Quick Ratio. , 1.2."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
@@ -3042,6 +3116,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3054,7 +3129,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company C, Quick Ratio. , 1.9."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
@@ -3064,6 +3139,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3076,7 +3152,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company A, Current Ratio. , 2.1."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
@@ -3086,6 +3162,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3098,7 +3175,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company B, Current Ratio. , 1.8."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
@@ -3108,6 +3185,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3120,7 +3198,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company C, Current Ratio. , 2.5."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
@@ -3130,6 +3208,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3237,6 +3316,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Mon"
                   dy="0.32em"
                   fill="currentColor"
@@ -3252,12 +3332,14 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
               </g>
             </g>
             <g
+              aria-label="2 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="A, Mon. , 10."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(10.297029702970299, 25.78431372549022)"
               >
@@ -3267,6 +3349,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3279,7 +3362,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
               <g
                 aria-label="B, Mon. , 20."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.405940594059405, 25.78431372549022)"
               >
@@ -3289,6 +3372,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3652,56 +3736,64 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Bar"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="Bar"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  Bar
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Bar
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class=""
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -3803,6 +3895,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="New York"
                   dy="0.32em"
                   fill="currentColor"
@@ -3826,6 +3919,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Los Angeles"
                   dy="0.32em"
                   fill="currentColor"
@@ -3849,6 +3943,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Chicago"
                   dy="0.32em"
                   fill="currentColor"
@@ -3872,6 +3967,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Houston"
                   dy="0.32em"
                   fill="currentColor"
@@ -3887,12 +3983,14 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <g
+              aria-label="12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Morning, Houston. , 72."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
@@ -3902,6 +4000,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3914,7 +4013,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Afternoon, Houston. , 88."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
@@ -3924,6 +4023,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3936,7 +4036,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Evening, Houston. , 75."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
@@ -3946,6 +4046,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3958,7 +4059,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Morning, Chicago. , 52."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
@@ -3968,6 +4069,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -3980,7 +4082,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Afternoon, Chicago. , 68."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
@@ -3990,6 +4092,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4002,7 +4105,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Evening, Chicago. , 61."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
@@ -4012,6 +4115,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4024,7 +4128,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Morning, Los Angeles. , 85."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
@@ -4034,6 +4138,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4046,7 +4151,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Afternoon, Los Angeles. , 95."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
@@ -4056,6 +4161,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4068,7 +4174,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Evening, Los Angeles. , 78."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
@@ -4078,6 +4184,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4090,7 +4197,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Morning, New York. , 45."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
@@ -4100,6 +4207,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4112,7 +4220,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Afternoon, New York. , 62."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
@@ -4122,6 +4230,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4134,7 +4243,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Evening, New York. , 58."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
@@ -4144,6 +4253,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4271,6 +4381,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Period 1"
                   dy="0.32em"
                   fill="currentColor"
@@ -4294,6 +4405,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Period 2"
                   dy="0.32em"
                   fill="currentColor"
@@ -4317,6 +4429,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Period 3"
                   dy="0.32em"
                   fill="currentColor"
@@ -4340,6 +4453,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Period 4"
                   dy="0.32em"
                   fill="currentColor"
@@ -4355,12 +4469,14 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <g
+              aria-label="12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Monday, Period 4. , 85."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
@@ -4370,6 +4486,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4382,7 +4499,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Tuesday, Period 4. , 86."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
@@ -4392,6 +4509,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4404,7 +4522,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Wednesday, Period 4. , 88."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
@@ -4414,6 +4532,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4426,7 +4545,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Monday, Period 3. , 87."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
@@ -4436,6 +4555,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4448,7 +4568,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Tuesday, Period 3. , 91."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
@@ -4458,6 +4578,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4470,7 +4591,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Wednesday, Period 3. , 90."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
@@ -4480,6 +4601,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4492,7 +4614,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Monday, Period 2. , 89."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
@@ -4502,6 +4624,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4514,7 +4637,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Tuesday, Period 2. , 88."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
@@ -4524,6 +4647,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4536,7 +4660,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Wednesday, Period 2. , 92."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
@@ -4546,6 +4670,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4558,7 +4683,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Monday, Period 1. , 92."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
@@ -4568,6 +4693,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4580,7 +4706,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Tuesday, Period 1. , 90."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
@@ -4590,6 +4716,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4602,7 +4729,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Wednesday, Period 1. , 94."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
@@ -4612,6 +4739,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4719,6 +4847,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Mon"
                   dy="0.32em"
                   fill="currentColor"
@@ -4742,6 +4871,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Tue"
                   dy="0.32em"
                   fill="currentColor"
@@ -4757,12 +4887,14 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               </g>
             </g>
             <g
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="A, Tue. , 30."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(10.297029702970299, 22.9207920792079)"
               >
@@ -4772,6 +4904,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4784,7 +4917,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               <g
                 aria-label="B, Tue. , 40."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.405940594059405, 22.9207920792079)"
               >
@@ -4794,6 +4927,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4806,7 +4940,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               <g
                 aria-label="A, Mon. , 10."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(10.297029702970299, 168.96039603960395)"
               >
@@ -4816,6 +4950,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -4828,7 +4963,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               <g
                 aria-label="B, Mon. , 20."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.405940594059405, 168.96039603960395)"
               >
@@ -4838,6 +4973,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class=""
                   dominant-baseline="middle"
                   fill="var(--color-neutral-foreground-1)"
@@ -5100,7 +5236,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               <g>
                 <g
                   aria-label="Underweight, series 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <circle
                     aria-label="158. Underweight, 45."
@@ -5111,11 +5247,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__2_0"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#d62728"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="162. Underweight, 48."
                     cx="41.6"
@@ -5125,15 +5260,14 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__2_1"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#d62728"
                     tabindex="0"
                   />
-                  ,
                 </g>
                 <g
                   aria-label="Overweight, series 2 of 3 with 5 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <circle
                     aria-label="165. Overweight, 68."
@@ -5144,11 +5278,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__1_0"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#2ca02c"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="170. Overweight, 75."
                     cx="19.200000000000003"
@@ -5158,11 +5291,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__1_1"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#2ca02c"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="180. Overweight, 95."
                     cx="-8.800000000000004"
@@ -5172,11 +5304,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__1_2"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#2ca02c"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="172. Overweight, 82."
                     cx="13.600000000000001"
@@ -5186,11 +5317,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__1_3"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#2ca02c"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="177. Overweight, 88."
                     cx="-0.4000000000000039"
@@ -5200,15 +5330,14 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__1_4"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#2ca02c"
                     tabindex="0"
                   />
-                  ,
                 </g>
                 <g
                   aria-label="Normal, series 1 of 3 with 3 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <circle
                     aria-label="160. Normal, 52."
@@ -5219,11 +5348,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__0_0"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#ff7f0e"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="175. Normal, 70."
                     cx="5.200000000000003"
@@ -5233,11 +5361,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__0_1"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#ff7f0e"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="168. Normal, 58."
                     cx="24.799999999999997"
@@ -5247,11 +5374,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                     id="circle_r_47__0_2"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#ff7f0e"
                     tabindex="0"
                   />
-                  ,
                 </g>
               </g>
             </g>
@@ -5283,109 +5409,119 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Normal"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #ff7f0e; --rect-borderColor: #ff7f0e;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <svg
-                  class=""
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                <button
+                  aria-label="Normal"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #ff7f0e; --rect-borderColor: #ff7f0e;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#ff7f0e"
-                    stroke="#ff7f0e"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class=""
+                  <svg
+                    class=""
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#ff7f0e"
+                      stroke="#ff7f0e"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class=""
+                  >
+                    Normal
+                  </div>
+                </button>
+                <button
+                  aria-label="Overweight"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #2ca02c; --rect-borderColor: #2ca02c;"
+                  type="button"
                 >
-                  Normal
-                </div>
-              </button>
-              <button
-                aria-label="Overweight"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #2ca02c; --rect-borderColor: #2ca02c;"
-                type="button"
-              >
-                <svg
-                  class=""
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                  <svg
+                    class=""
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#2ca02c"
+                      stroke="#2ca02c"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class=""
+                  >
+                    Overweight
+                  </div>
+                </button>
+                <button
+                  aria-label="Underweight"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #d62728; --rect-borderColor: #d62728;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#2ca02c"
-                    stroke="#2ca02c"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class=""
-                >
-                  Overweight
-                </div>
-              </button>
-              <button
-                aria-label="Underweight"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #d62728; --rect-borderColor: #d62728;"
-                type="button"
-              >
-                <svg
-                  class=""
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
-                >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#d62728"
-                    stroke="#d62728"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class=""
-                >
-                  Underweight
-                </div>
-              </button>
+                  <svg
+                    class=""
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#d62728"
+                      stroke="#d62728"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class=""
+                  >
+                    Underweight
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -5595,7 +5731,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g>
                 <g
                   aria-label="C, series 3 of 3 with 1 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <circle
                     aria-label="50. C, 40."
@@ -5606,15 +5742,14 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_3r__2_0"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#2aa0a4"
                     tabindex="0"
                   />
-                  ,
                 </g>
                 <g
                   aria-label="B, series 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <circle
                     aria-label="20. B, 30."
@@ -5625,11 +5760,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_3r__1_0"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#e3008c"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="40. B, 35."
                     cx="-1.9999999999999982"
@@ -5639,15 +5773,14 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_3r__1_1"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#e3008c"
                     tabindex="0"
                   />
-                  ,
                 </g>
                 <g
                   aria-label="A, series 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <circle
                     aria-label="10. A, 20."
@@ -5658,11 +5791,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_3r__0_0"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#637cef"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="30. A, 25."
                     cx="10"
@@ -5672,11 +5804,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_3r__0_1"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#637cef"
                     tabindex="0"
                   />
-                  ,
                 </g>
               </g>
             </g>
@@ -5686,109 +5817,119 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="A"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <svg
-                  class=""
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                <button
+                  aria-label="A"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#637cef"
-                    stroke="#637cef"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class=""
+                  <svg
+                    class=""
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#637cef"
+                      stroke="#637cef"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class=""
+                  >
+                    A
+                  </div>
+                </button>
+                <button
+                  aria-label="B"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  A
-                </div>
-              </button>
-              <button
-                aria-label="B"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <svg
-                  class=""
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                  <svg
+                    class=""
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#e3008c"
+                      stroke="#e3008c"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class=""
+                  >
+                    B
+                  </div>
+                </button>
+                <button
+                  aria-label="C"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#e3008c"
-                    stroke="#e3008c"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class=""
-                >
-                  B
-                </div>
-              </button>
-              <button
-                aria-label="C"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
-                type="button"
-              >
-                <svg
-                  class=""
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
-                >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#2aa0a4"
-                    stroke="#2aa0a4"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class=""
-                >
-                  C
-                </div>
-              </button>
+                  <svg
+                    class=""
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#2aa0a4"
+                      stroke="#2aa0a4"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class=""
+                  >
+                    C
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -6017,7 +6158,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               <g>
                 <g
                   aria-label="Overweight, series 2 of 2 with 3 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <circle
                     aria-label="165. Overweight, 68."
@@ -6028,11 +6169,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_41__1_0"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#e3008c"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="170. Overweight, 75."
                     cx="10"
@@ -6042,11 +6182,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_41__1_1"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#e3008c"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="180. Overweight, 95."
                     cx="-14.999999999999996"
@@ -6056,15 +6195,14 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_41__1_2"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#e3008c"
                     tabindex="0"
                   />
-                  ,
                 </g>
                 <g
                   aria-label="Normal, series 1 of 2 with 2 data points."
-                  role="region"
+                  role="listbox"
                 >
                   <circle
                     aria-label="160. Normal, 52."
@@ -6075,11 +6213,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_41__0_0"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#637cef"
                     tabindex="0"
                   />
-                  ,
                   <circle
                     aria-label="175. Normal, 70."
                     cx="-2.5000000000000036"
@@ -6089,11 +6226,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                     id="circle_r_41__0_1"
                     opacity="1"
                     r="4"
-                    role="img"
+                    role="option"
                     stroke="#637cef"
                     tabindex="0"
                   />
-                  ,
                 </g>
               </g>
             </g>
@@ -6103,78 +6239,86 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
           class=""
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Normal"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <svg
-                  class=""
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                <button
+                  aria-label="Normal"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#637cef"
-                    stroke="#637cef"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class=""
+                  <svg
+                    class=""
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#637cef"
+                      stroke="#637cef"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class=""
+                  >
+                    Normal
+                  </div>
+                </button>
+                <button
+                  aria-label="Overweight"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  Normal
-                </div>
-              </button>
-              <button
-                aria-label="Overweight"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <svg
-                  class=""
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
-                >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#e3008c"
-                    stroke="#e3008c"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class=""
-                >
-                  Overweight
-                </div>
-              </button>
+                  <svg
+                    class=""
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#e3008c"
+                      stroke="#e3008c"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class=""
+                  >
+                    Overweight
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>

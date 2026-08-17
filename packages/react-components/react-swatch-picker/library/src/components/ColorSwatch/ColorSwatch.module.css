@@ -105,8 +105,13 @@
     @apply box-border inline-flex shrink-0 items-center justify-center overflow-hidden p-0;
 
     /* Kept as the `border` shorthand the source wrote; every other border declaration in
-       this component is also a shorthand (`border: none`), so no longhand competes. */
-    border: var(--spacing-thin) solid var(--fui-SwatchPicker--borderColor);
+       this component is also a shorthand (`border: none`), so no longhand competes.
+
+       The fallback matters: `borderColor` is an optional prop, so when it is omitted the
+       inline custom property is absent and an unguarded `var()` resolves to the initial
+       `currentColor` — a visible border in the swatch's own colour. Upstream added the
+       same fallback rather than relying on an inline default. */
+    border: var(--spacing-thin) solid var(--fui-SwatchPicker--borderColor, var(--color-transparent-stroke));
     background: var(--fui-SwatchPicker--color);
 
     @variant hover {

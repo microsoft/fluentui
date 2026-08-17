@@ -183,18 +183,13 @@
   }
 
   /*
-   * from useStyles.chartWrapper40ppadding. The Griffel source is `paddingRight: '40p'` —
-   * `40p` is not a valid CSS length, so the compiled atomics (`.f1emi2st` /`.f53ee3v`)
-   * are dropped at parse time by every engine and this slice has never rendered anything.
-   * Kept as an identity-only local so the AbsoluteScale-with-labels branch of the hook still
-   * resolves to a class; reproducing the invalid declaration would only risk the CSS
-   * pipeline. Fixing it to `40px` would change rendered pixels and is out of scope here.
-   *
-   * The `--fui-…-identity: initial` body is what keeps a declaration-less rule alive through
-   * Tailwind v4's pruning pass — see `.bar-wrapper` above for the full explanation.
+   * from useStyles.chartWrapper40ppadding. The Griffel source read `paddingRight: '40p'`,
+   * an invalid length every engine dropped at parse time, so the slice rendered nothing and
+   * the conversion reproduced that as an identity-only local. Upstream has since fixed the
+   * typo to `40px`, so the padding is real now and this rule applies it.
    */
   .chart-wrapper-40p-padding {
-    --fui-horizontal-bar-chart-chart-wrapper-40p-padding-identity: initial;
+    @apply pe-40;
   }
 
   /* from useStyles.chartWrapper0ppadding — tokens.spacingHorizontalNone (0) */

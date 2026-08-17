@@ -413,7 +413,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           aria-label="3 series and 3 bars"
           role="listbox"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -438,7 +440,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -463,7 +467,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -495,76 +501,86 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class=""
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+              />
+              <div
+                class=""
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class=""
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -985,7 +1001,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           aria-label="3 series and 3 bars"
           role="listbox"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -1010,7 +1028,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -1035,7 +1055,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -1067,76 +1089,86 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class=""
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+              />
+              <div
+                class=""
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class=""
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1561,7 +1593,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
             aria-label="3 series and 3 bars"
             role="listbox"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <rect
                 aria-label="2020/04/30. First, 10%."
                 fill="aqua"
@@ -1586,7 +1620,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 10k
               </text>
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <rect
                 aria-label="2020/04/30. Second, 20%."
                 fill="blue"
@@ -1611,7 +1647,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 50k
               </text>
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <rect
                 aria-label="2020/04/30. Third, 37%."
                 fill="navy"
@@ -1643,76 +1681,86 @@ exports[`Theme Change Should reflect theme change 1`] = `
         class=""
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="group/fui-overflow"
             style="text-align: unset;"
           >
-            <button
-              aria-label="First"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class=""
-                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-              />
-              <div
-                class=""
+              <button
+                aria-label="First"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+                type="button"
               >
-                First
-              </div>
-            </button>
-            <button
-              aria-label="Second"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+                />
+                <div
+                  class=""
+                >
+                  First
+                </div>
+              </button>
+              <button
+                aria-label="Second"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+                type="button"
               >
-                Second
-              </div>
-            </button>
-            <button
-              aria-label="Third"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+                />
+                <div
+                  class=""
+                >
+                  Second
+                </div>
+              </button>
+              <button
+                aria-label="Third"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+                type="button"
               >
-                Third
-              </div>
-            </button>
+                <div
+                  class=""
+                  style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+                />
+                <div
+                  class=""
+                >
+                  Third
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -2145,7 +2193,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           aria-label="3 series and 3 bars"
           role="listbox"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -2170,7 +2220,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -2195,7 +2247,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -2227,76 +2281,86 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class=""
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+              />
+              <div
+                class=""
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class=""
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2717,7 +2781,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           aria-label="3 series and 3 bars"
           role="listbox"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="qualitative.1"
@@ -2742,7 +2808,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               −10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="qualitative.2"
@@ -2767,7 +2835,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               −50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="qualitative.3"
@@ -2799,76 +2869,86 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
+              />
+              <div
+                class=""
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
+              />
+              <div
+                class=""
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
+              />
+              <div
+                class=""
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -3289,7 +3369,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           aria-label="3 series and 3 bars"
           role="listbox"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -3314,7 +3396,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -3339,7 +3423,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -3371,76 +3457,86 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class=""
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+              />
+              <div
+                class=""
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class=""
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -3672,6 +3768,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           role="listbox"
         >
           <g
+            role="presentation"
             transform="translate(0, 0)"
           >
             <rect
@@ -3699,6 +3796,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            role="presentation"
             transform="translate(0, 0)"
           >
             <rect
@@ -3726,6 +3824,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            role="presentation"
             transform="translate(0, 0)"
           >
             <rect
@@ -3753,6 +3852,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            role="presentation"
             transform="translate(0, 0)"
           >
             <rect
@@ -3786,36 +3886,42 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0E7878; --rect-borderColor: #0E7878;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(14, 120, 120); border-color: rgb(14, 120, 120); --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="undefined"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="1"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0E7878; --rect-borderColor: #0E7878;"
+              type="button"
             >
-              undefined
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(14, 120, 120); border-color: rgb(14, 120, 120); --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
+              />
+              <div
+                class=""
+              >
+                undefined
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -4255,7 +4361,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           aria-label="3 series and 3 bars"
           role="listbox"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="qualitative.1"
@@ -4280,7 +4388,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="qualitative.2"
@@ -4305,7 +4415,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               −50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="qualitative.3"
@@ -4337,76 +4449,86 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="First"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
+              />
+              <div
+                class=""
+              >
+                First
+              </div>
+            </button>
+            <button
+              aria-label="Second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
+              />
+              <div
+                class=""
+              >
+                Second
+              </div>
+            </button>
+            <button
+              aria-label="Third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
+              />
+              <div
+                class=""
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -4827,7 +4949,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           aria-label="3 series and 3 bars"
           role="listbox"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -4852,7 +4976,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -4877,7 +5003,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -4925,7 +5053,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <button
               aria-label="First"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -4948,7 +5078,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <button
               aria-label="Second"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -4971,7 +5103,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <button
               aria-label="Third"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -5457,7 +5591,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           aria-label="3 series and 3 bars"
           role="listbox"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -5482,7 +5618,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               10k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -5507,7 +5645,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               50k
             </text>
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -5555,7 +5695,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <button
               aria-label="First"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -5578,7 +5720,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <button
               aria-label="Second"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -5601,7 +5745,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <button
               aria-label="Third"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -6064,7 +6210,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -6079,7 +6227,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             y="216"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -6094,7 +6244,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             y="20"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -6116,76 +6268,86 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class=""
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -6604,7 +6766,9 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -6629,7 +6793,9 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -6654,7 +6820,9 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -6686,76 +6854,86 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class=""
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -7174,7 +7352,9 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -7199,7 +7379,9 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -7224,7 +7406,9 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -7256,76 +7440,86 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class=""
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -7744,7 +7938,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -7769,7 +7965,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -7794,7 +7992,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -7826,76 +8026,86 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class=""
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -8314,7 +8524,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -8339,7 +8551,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -8364,7 +8578,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -8412,7 +8628,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         >
           <button
             aria-label="First"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="3"
             class="group/fui-button"
             data-size="small"
             role="option"
@@ -8435,7 +8653,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         >
           <button
             aria-label="Second"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="3"
             class="group/fui-button"
             data-size="small"
             role="option"
@@ -8458,7 +8678,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         >
           <button
             aria-label="Third"
+            aria-posinset="3"
             aria-selected="false"
+            aria-setsize="3"
             class="group/fui-button"
             data-size="small"
             role="option"
@@ -8894,7 +9116,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -8919,7 +9143,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -8944,7 +9170,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -9387,7 +9615,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -9411,7 +9641,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -9435,7 +9667,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -9466,76 +9700,86 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class=""
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -10052,7 +10296,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -10077,7 +10323,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -10102,7 +10350,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -10134,76 +10384,86 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class=""
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -10725,7 +10985,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -10750,7 +11012,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -10775,7 +11039,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -10807,76 +11073,86 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class=""
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -11302,7 +11578,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         aria-label="3 series and 3 bars"
         role="listbox"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -11327,7 +11605,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             10k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -11352,7 +11632,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             50k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -11384,76 +11666,86 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="First"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            First
-          </div>
-        </button>
-        <button
-          aria-label="Second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
           >
-            Second
-          </div>
-        </button>
-        <button
-          aria-label="Third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class=""
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>

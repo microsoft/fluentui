@@ -32,7 +32,7 @@ describe('ColorSwatch', () => {
           class="group/fui-color-swatch"
           data-size="medium"
           role="radio"
-          style="--fui-SwatchPicker--color: #f09; --fui-SwatchPicker--borderColor: var(--color-transparent-stroke);"
+          style="--fui-SwatchPicker--color: #f09;"
           type="button"
         />
       </div>

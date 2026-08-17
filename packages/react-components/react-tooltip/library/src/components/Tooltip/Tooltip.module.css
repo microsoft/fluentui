@@ -102,6 +102,20 @@
     @variant open {
       @apply block;
     }
+
+    /*
+     * from useStyles.hidden — upstream's fix for a tooltip whose trigger scrolls out of an
+     * overflow container (microsoft/fluentui#36386). `hidden` is STATE, so it rides a data
+     * attribute (D3); no catalog variant is added because this is the only consumer and
+     * `hidden` would collide with Tailwind's own `hidden` utility name.
+     *
+     * Deliberately NOT `display: none`: the tooltip keeps its box so positioning stays
+     * measurable, and is hidden visually and removed from hit-testing instead. Disjoint
+     * from the `open` rule's `display`, so their relative order is free.
+     */
+    &:where([data-hidden]) {
+      @apply pointer-events-none invisible;
+    }
   }
 }
 

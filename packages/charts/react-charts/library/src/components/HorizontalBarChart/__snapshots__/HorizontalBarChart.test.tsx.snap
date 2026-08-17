@@ -925,7 +925,9 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           >
             <button
               aria-label="Legend 1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -955,7 +957,9 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           >
             <button
               aria-label="Legend 2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -1075,7 +1079,9 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           >
             <button
               aria-label="Legend 1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -1105,7 +1111,9 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           >
             <button
               aria-label="Legend 2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="group/fui-button"
               data-size="small"
               role="option"

@@ -48,6 +48,7 @@ export const tooltipClassNames: { root: string } = {
  */
 type TooltipContentDataAttributes = {
   'data-open'?: true;
+  'data-hidden'?: true;
 };
 
 /**
@@ -57,6 +58,10 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
   const content = state.content as TooltipState['content'] & TooltipContentDataAttributes;
 
   content['data-open'] = state.visible || undefined;
+
+  // Presence selector like `data-open`: `|| undefined` so React omits the attribute rather
+  // than rendering `data-hidden="false"`, which `[data-hidden]` would still match.
+  content['data-hidden'] = state.hidden || undefined;
 
   // Module class FIRST, named group marker second, consumer className last (DECISIONS.md
   // D16.2). `styles.content` is unconditional, so index 0 is always the hashed,

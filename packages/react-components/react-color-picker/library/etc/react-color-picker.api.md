@@ -13,7 +13,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
@@ -24,8 +23,10 @@ export type AlphaSliderBaseProps = Omit<AlphaSliderProps, 'shape'>;
 // @public
 export type AlphaSliderBaseState = Omit<AlphaSliderState, 'shape'>;
 
-// @public (undocumented)
-export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
+// @public @deprecated
+export const alphaSliderClassNames: {
+    root: string;
+};
 
 // @public
 export type AlphaSliderProps = Omit<ColorSliderProps, 'channel'> & {
@@ -47,8 +48,10 @@ export type ColorAreaBaseProps = Omit<ColorAreaProps, 'shape'>;
 // @public
 export type ColorAreaBaseState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color'>;
 
-// @public (undocumented)
-export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
+// @public @deprecated
+export const colorAreaClassNames: {
+    root: string;
+};
 
 // @public
 export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'color' | 'onChange'> & Pick<ColorPickerProps, 'shape'> & {
@@ -80,8 +83,10 @@ export type ColorPickerBaseProps = Omit<ColorPickerProps, 'shape'>;
 // @public
 export type ColorPickerBaseState = Omit<ColorPickerState, 'shape'>;
 
-// @public (undocumented)
-export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
+// @public @deprecated
+export const colorPickerClassNames: {
+    root: string;
+};
 
 // @public
 export type ColorPickerContextValue = Pick<ColorPickerProps, 'shape' | 'color'> & {
@@ -119,8 +124,10 @@ export type ColorSliderBaseProps = Omit<ColorSliderProps, 'shape'>;
 // @public (undocumented)
 export type ColorSliderBaseState = Omit<ColorSliderState, 'shape'>;
 
-// @public (undocumented)
-export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
+// @public @deprecated
+export const colorSliderClassNames: {
+    root: string;
+};
 
 // @public
 export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value' | 'color'> & Pick<ColorPickerProps, 'shape'> & {

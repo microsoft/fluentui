@@ -205,8 +205,13 @@ describe('Tooltip', () => {
     act(() => tooltip.dispatchEvent(hiddenEvent));
 
     expect(getByRoleTooltip(result)).toBe(tooltip);
-    expect(getComputedStyle(tooltip).visibility).toBe('hidden');
-    expect(getComputedStyle(tooltip).pointerEvents).toBe('none');
+    // Hidden-ness is asserted through `data-hidden` rather than `getComputedStyle`. Griffel
+    // injected its rules into the document at runtime, so jsdom could resolve them; with CSS
+    // Modules the class is a build-time token that jest maps to a proxy, so no stylesheet is
+    // ever applied and computed style cannot observe it. `data-hidden` is the selector the
+    // shipped rule keys off (`visibility: hidden; pointer-events: none`), so it is the
+    // equivalent contract here — the pixels themselves are covered by VR.
+    expect(tooltip.hasAttribute('data-hidden')).toBe(true);
     expect(onPositioningEnd).toHaveBeenCalledWith(hiddenEvent);
 
     const visibleEvent = new CustomEvent('fui-positioningend', {
@@ -215,7 +220,7 @@ describe('Tooltip', () => {
     act(() => tooltip.dispatchEvent(visibleEvent));
 
     expect(getByRoleTooltip(result)).toBe(tooltip);
-    expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
+    expect(tooltip.hasAttribute('data-hidden')).toBe(false);
     expect(onPositioningEnd).toHaveBeenCalledWith(visibleEvent);
   });
 });

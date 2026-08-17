@@ -37,41 +37,49 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           hidden=""
         />
         <g
+          aria-label="Donut chart with 3 slices"
           class="group/fui-donut-pie"
+          role="listbox"
           transform="translate(0, 89)"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <path
               aria-label="2020/04/30, 20000."
               class="group/fui-donut-arc"
               d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
               id="_Pie__r_0_first20000"
               opacity="1"
-              role="img"
+              role="option"
               style="fill: #E5E5E5; cursor: default;"
               tabindex="0"
             />
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <path
               aria-label="2020/04/20, 39000."
               class="group/fui-donut-arc"
               d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
               id="_Pie__r_0_second39000"
               opacity="1"
-              role="img"
+              role="option"
               style="fill: #0078D4; cursor: default;"
               tabindex="0"
             />
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <path
               aria-label="2020/04/25, 45000."
               class="group/fui-donut-arc"
               d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
               id="_Pie__r_0_third45000"
               opacity="1"
-              role="img"
+              role="option"
               style="fill: #DADADA; cursor: default;"
               tabindex="0"
             />
@@ -88,76 +96,86 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       style="margin-top: -36px;"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: center;"
         >
-          <button
-            aria-label="first"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="first"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+              type="button"
             >
-              first
-            </div>
-          </button>
-          <button
-            aria-label="second"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+              />
+              <div
+                class=""
+              >
+                first
+              </div>
+            </button>
+            <button
+              aria-label="second"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+              type="button"
             >
-              second
-            </div>
-          </button>
-          <button
-            aria-label="third"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+              />
+              <div
+                class=""
+              >
+                second
+              </div>
+            </button>
+            <button
+              aria-label="third"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+              type="button"
             >
-              third
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+              />
+              <div
+                class=""
+              >
+                third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -206,41 +224,49 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             hidden=""
           />
           <g
+            aria-label="Donut chart with 3 slices"
             class="group/fui-donut-pie"
+            role="listbox"
             transform="translate(0, 89)"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/30, 20000."
                 class="group/fui-donut-arc"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_1h_first20000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #E5E5E5; cursor: default;"
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/20, 39000."
                 class="group/fui-donut-arc"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_1h_second39000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #0078D4; cursor: default;"
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/25, 45000."
                 class="group/fui-donut-arc"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_1h_third45000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #DADADA; cursor: default;"
                 tabindex="0"
               />
@@ -257,76 +283,86 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         style="margin-top: -36px;"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="group/fui-overflow"
             style="text-align: center;"
           >
-            <button
-              aria-label="first"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-              />
-              <div
-                class=""
+              <button
+                aria-label="first"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+                type="button"
               >
-                first
-              </div>
-            </button>
-            <button
-              aria-label="second"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                />
+                <div
+                  class=""
+                >
+                  first
+                </div>
+              </button>
+              <button
+                aria-label="second"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+                type="button"
               >
-                second
-              </div>
-            </button>
-            <button
-              aria-label="third"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                />
+                <div
+                  class=""
+                >
+                  second
+                </div>
+              </button>
+              <button
+                aria-label="third"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+                type="button"
               >
-                third
-              </div>
-            </button>
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                />
+                <div
+                  class=""
+                >
+                  third
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -377,41 +413,49 @@ Object {
               hidden=""
             />
             <g
+              aria-label="Donut chart with 3 slices"
               class="group/fui-donut-pie"
+              role="listbox"
               transform="translate(0, 89)"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/30, 20000."
                   class="group/fui-donut-arc"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   id="_Pie__r_3t_first20000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #E5E5E5; cursor: default;"
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/20, 39000."
                   class="group/fui-donut-arc"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   id="_Pie__r_3t_second39000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #0078D4; cursor: default;"
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/25, 45000."
                   class="group/fui-donut-arc"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   id="_Pie__r_3t_third45000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #DADADA; cursor: default;"
                   tabindex="0"
                 />
@@ -471,76 +515,86 @@ Object {
           style="margin-top: -36px;"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: center;"
             >
-              <button
-                aria-label="first"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="first"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+                  type="button"
                 >
-                  first
-                </div>
-              </button>
-              <button
-                aria-label="second"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                  />
+                  <div
+                    class=""
+                  >
+                    first
+                  </div>
+                </button>
+                <button
+                  aria-label="second"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+                  type="button"
                 >
-                  second
-                </div>
-              </button>
-              <button
-                aria-label="third"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                  />
+                  <div
+                    class=""
+                  >
+                    second
+                  </div>
+                </button>
+                <button
+                  aria-label="third"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+                  type="button"
                 >
-                  third
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                  />
+                  <div
+                    class=""
+                  >
+                    third
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -602,41 +656,49 @@ Object {
             hidden=""
           />
           <g
+            aria-label="Donut chart with 3 slices"
             class="group/fui-donut-pie"
+            role="listbox"
             transform="translate(0, 89)"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/30, 20000."
                 class="group/fui-donut-arc"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_3t_first20000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #E5E5E5; cursor: default;"
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/20, 39000."
                 class="group/fui-donut-arc"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_3t_second39000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #0078D4; cursor: default;"
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/25, 45000."
                 class="group/fui-donut-arc"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_3t_third45000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #DADADA; cursor: default;"
                 tabindex="0"
               />
@@ -696,76 +758,86 @@ Object {
         style="margin-top: -36px;"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="group/fui-overflow"
             style="text-align: center;"
           >
-            <button
-              aria-label="first"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-              />
-              <div
-                class=""
+              <button
+                aria-label="first"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+                type="button"
               >
-                first
-              </div>
-            </button>
-            <button
-              aria-label="second"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                />
+                <div
+                  class=""
+                >
+                  first
+                </div>
+              </button>
+              <button
+                aria-label="second"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+                type="button"
               >
-                second
-              </div>
-            </button>
-            <button
-              aria-label="third"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                />
+                <div
+                  class=""
+                >
+                  second
+                </div>
+              </button>
+              <button
+                aria-label="third"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+                type="button"
               >
-                third
-              </div>
-            </button>
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                />
+                <div
+                  class=""
+                >
+                  third
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -867,41 +939,49 @@ Object {
               hidden=""
             />
             <g
+              aria-label="Donut chart with 3 slices"
               class="group/fui-donut-pie"
+              role="listbox"
               transform="translate(0, 89)"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/30, 20000."
                   class="group/fui-donut-arc"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   id="_Pie__r_4a_first20000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #E5E5E5; cursor: default;"
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/20, 39000."
                   class="group/fui-donut-arc"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   id="_Pie__r_4a_second39000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #0078D4; cursor: default;"
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/25, 45000."
                   class="group/fui-donut-arc"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   id="_Pie__r_4a_third45000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #DADADA; cursor: default;"
                   tabindex="0"
                 />
@@ -961,76 +1041,86 @@ Object {
           style="margin-top: -36px;"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="group/fui-legends"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="group/fui-overflow"
               style="text-align: center;"
             >
-              <button
-                aria-label="first"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-                />
-                <div
-                  class=""
+                <button
+                  aria-label="first"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+                  type="button"
                 >
-                  first
-                </div>
-              </button>
-              <button
-                aria-label="second"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                  />
+                  <div
+                    class=""
+                  >
+                    first
+                  </div>
+                </button>
+                <button
+                  aria-label="second"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+                  type="button"
                 >
-                  second
-                </div>
-              </button>
-              <button
-                aria-label="third"
-                aria-selected="false"
-                class="group/fui-button"
-                data-overflow-item=""
-                data-size="small"
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-                type="button"
-              >
-                <div
-                  class=""
-                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-                />
-                <div
-                  class=""
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                  />
+                  <div
+                    class=""
+                  >
+                    second
+                  </div>
+                </button>
+                <button
+                  aria-label="third"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="group/fui-button"
+                  data-overflow-item=""
+                  data-size="small"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+                  type="button"
                 >
-                  third
-                </div>
-              </button>
+                  <div
+                    class=""
+                    style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                  />
+                  <div
+                    class=""
+                  >
+                    third
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1092,41 +1182,49 @@ Object {
             hidden=""
           />
           <g
+            aria-label="Donut chart with 3 slices"
             class="group/fui-donut-pie"
+            role="listbox"
             transform="translate(0, 89)"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/30, 20000."
                 class="group/fui-donut-arc"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_4a_first20000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #E5E5E5; cursor: default;"
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/20, 39000."
                 class="group/fui-donut-arc"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_4a_second39000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #0078D4; cursor: default;"
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/25, 45000."
                 class="group/fui-donut-arc"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_4a_third45000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #DADADA; cursor: default;"
                 tabindex="0"
               />
@@ -1186,76 +1284,86 @@ Object {
         style="margin-top: -36px;"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="group/fui-legends"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="group/fui-overflow"
             style="text-align: center;"
           >
-            <button
-              aria-label="first"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-              />
-              <div
-                class=""
+              <button
+                aria-label="first"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+                type="button"
               >
-                first
-              </div>
-            </button>
-            <button
-              aria-label="second"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+                />
+                <div
+                  class=""
+                >
+                  first
+                </div>
+              </button>
+              <button
+                aria-label="second"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+                type="button"
               >
-                second
-              </div>
-            </button>
-            <button
-              aria-label="third"
-              aria-selected="false"
-              class="group/fui-button"
-              data-overflow-item=""
-              data-size="small"
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-              type="button"
-            >
-              <div
-                class=""
-                style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-              />
-              <div
-                class=""
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+                />
+                <div
+                  class=""
+                >
+                  second
+                </div>
+              </button>
+              <button
+                aria-label="third"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="group/fui-button"
+                data-overflow-item=""
+                data-size="small"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+                type="button"
               >
-                third
-              </div>
-            </button>
+                <div
+                  class=""
+                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+                />
+                <div
+                  class=""
+                >
+                  third
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1351,41 +1459,49 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2v_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2v_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2v_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -1402,76 +1518,86 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
     style="margin-top: -36px;"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: center;"
       >
-        <button
-          aria-label="first"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="first"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
           >
-            first
-          </div>
-        </button>
-        <button
-          aria-label="second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            />
+            <div
+              class=""
+            >
+              first
+            </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
           >
-            second
-          </div>
-        </button>
-        <button
-          aria-label="third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            />
+            <div
+              class=""
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
           >
-            third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            />
+            <div
+              class=""
+            >
+              third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1514,17 +1640,21 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2l_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -1539,14 +1669,16 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             20k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2l_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -1561,14 +1693,16 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             39k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2l_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -1595,76 +1729,86 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
     style="margin-top: -36px;"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: center;"
       >
-        <button
-          aria-label="first"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="first"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
           >
-            first
-          </div>
-        </button>
-        <button
-          aria-label="second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            />
+            <div
+              class=""
+            >
+              first
+            </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
           >
-            second
-          </div>
-        </button>
-        <button
-          aria-label="third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            />
+            <div
+              class=""
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
           >
-            third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            />
+            <div
+              class=""
+            >
+              third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1707,17 +1851,21 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2q_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -1732,14 +1880,16 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             19%
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2q_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -1754,14 +1904,16 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             38%
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2q_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -1788,76 +1940,86 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
     style="margin-top: -36px;"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: center;"
       >
-        <button
-          aria-label="first"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="first"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
           >
-            first
-          </div>
-        </button>
-        <button
-          aria-label="second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            />
+            <div
+              class=""
+            >
+              first
+            </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
           >
-            second
-          </div>
-        </button>
-        <button
-          aria-label="third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            />
+            <div
+              class=""
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
           >
-            third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            />
+            <div
+              class=""
+            >
+              third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1900,41 +2062,49 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
             id="_Pie__r_1r_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
             id="_Pie__r_1r_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
             id="_Pie__r_1r_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -1951,76 +2121,86 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
     style="margin-top: -36px;"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: center;"
       >
-        <button
-          aria-label="first"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="first"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
           >
-            first
-          </div>
-        </button>
-        <button
-          aria-label="second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            />
+            <div
+              class=""
+            >
+              first
+            </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
           >
-            second
-          </div>
-        </button>
-        <button
-          aria-label="third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            />
+            <div
+              class=""
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
           >
-            third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            />
+            <div
+              class=""
+            >
+              third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -2063,41 +2243,49 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_20_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_20_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_20_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="cursor: default;"
             tabindex="0"
           />
@@ -2114,76 +2302,86 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
     style="margin-top: -36px;"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: center;"
       >
-        <button
-          aria-label="first"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="first"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
+            type="button"
           >
-            first
-          </div>
-        </button>
-        <button
-          aria-label="second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+            />
+            <div
+              class=""
+            >
+              first
+            </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
+            type="button"
           >
-            second
-          </div>
-        </button>
-        <button
-          aria-label="third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+            />
+            <div
+              class=""
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-borderColor: var(--color-neutral-stroke-1);"
+            type="button"
           >
-            third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; border-color: var(--color-neutral-stroke-1); --rect-content-high-contrast: linear-gradient(to right, undefined, undefined);"
+            />
+            <div
+              class=""
+            >
+              third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -2226,41 +2424,49 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2c_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2c_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2c_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -2293,7 +2499,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         >
           <button
             aria-label="first"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="3"
             class="group/fui-button"
             data-size="small"
             role="option"
@@ -2316,7 +2524,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         >
           <button
             aria-label="second"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="3"
             class="group/fui-button"
             data-size="small"
             role="option"
@@ -2339,7 +2549,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         >
           <button
             aria-label="third"
+            aria-posinset="3"
             aria-selected="false"
+            aria-setsize="3"
             class="group/fui-button"
             data-size="small"
             role="option"
@@ -2377,41 +2589,49 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
       width="0"
     >
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 91)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_25_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_25_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_25_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -2462,41 +2682,49 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_27_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_27_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_27_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -2513,76 +2741,86 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
     style="margin-top: -36px;"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: center;"
       >
-        <button
-          aria-label="first"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="first"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
           >
-            first
-          </div>
-        </button>
-        <button
-          aria-label="second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            />
+            <div
+              class=""
+            >
+              first
+            </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
           >
-            second
-          </div>
-        </button>
-        <button
-          aria-label="third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            />
+            <div
+              class=""
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
           >
-            third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            />
+            <div
+              class=""
+            >
+              third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -2625,41 +2863,49 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
         class="group/fui-donut-pie"
+        role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2g_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2g_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="group/fui-donut-arc"
             d="M0,0Z"
             id="_Pie__r_2g_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -2676,76 +2922,86 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
     style="margin-top: -36px;"
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: center;"
       >
-        <button
-          aria-label="first"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="first"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
           >
-            first
-          </div>
-        </button>
-        <button
-          aria-label="second"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(229, 229, 229); border-color: rgb(229, 229, 229); --rect-content-high-contrast: linear-gradient(to right, #E5E5E5, #E5E5E5);"
+            />
+            <div
+              class=""
+            >
+              first
+            </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
           >
-            second
-          </div>
-        </button>
-        <button
-          aria-label="third"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078D4, #0078D4);"
+            />
+            <div
+              class=""
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
           >
-            third
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: rgb(218, 218, 218); border-color: rgb(218, 218, 218); --rect-content-high-contrast: linear-gradient(to right, #DADADA, #DADADA);"
+            />
+            <div
+              class=""
+            >
+              third
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>

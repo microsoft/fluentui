@@ -458,96 +458,108 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Metadata1"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="Metadata1"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="4"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Metadata1
-            </div>
-          </button>
-          <button
-            aria-label="Metadata2"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class=""
+              >
+                Metadata1
+              </div>
+            </button>
+            <button
+              aria-label="Metadata2"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="4"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+              type="button"
             >
-              Metadata2
-            </div>
-          </button>
-          <button
-            aria-label="Metadata3"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              />
+              <div
+                class=""
+              >
+                Metadata2
+              </div>
+            </button>
+            <button
+              aria-label="Metadata3"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="4"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+              type="button"
             >
-              Metadata3
-            </div>
-          </button>
-          <button
-            aria-label="Supported Builds"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              />
+              <div
+                class=""
+              >
+                Metadata3
+              </div>
+            </button>
+            <button
+              aria-label="Supported Builds"
+              aria-posinset="4"
+              aria-selected="false"
+              aria-setsize="4"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Supported Builds
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class=""
+              >
+                Supported Builds
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1013,96 +1025,108 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Metadata1"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="Metadata1"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="4"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Metadata1
-            </div>
-          </button>
-          <button
-            aria-label="Metadata2"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class=""
+              >
+                Metadata1
+              </div>
+            </button>
+            <button
+              aria-label="Metadata2"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="4"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+              type="button"
             >
-              Metadata2
-            </div>
-          </button>
-          <button
-            aria-label="Metadata3"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              />
+              <div
+                class=""
+              >
+                Metadata2
+              </div>
+            </button>
+            <button
+              aria-label="Metadata3"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="4"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+              type="button"
             >
-              Metadata3
-            </div>
-          </button>
-          <button
-            aria-label="Supported Builds"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              />
+              <div
+                class=""
+              >
+                Metadata3
+              </div>
+            </button>
+            <button
+              aria-label="Supported Builds"
+              aria-posinset="4"
+              aria-selected="false"
+              aria-setsize="4"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Supported Builds
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 4px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class=""
+              >
+                Supported Builds
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1573,56 +1597,64 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       class=""
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="group/fui-legends"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="group/fui-overflow"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Metadata1"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class=""
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class=""
+            <button
+              aria-label="Metadata1"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="2"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
             >
-              Metadata1
-            </div>
-          </button>
-          <button
-            aria-label="Metadata2"
-            aria-selected="false"
-            class="group/fui-button"
-            data-overflow-item=""
-            data-size="small"
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class=""
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class=""
+              <div
+                class=""
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class=""
+              >
+                Metadata1
+              </div>
+            </button>
+            <button
+              aria-label="Metadata2"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="2"
+              class="group/fui-button"
+              data-overflow-item=""
+              data-size="small"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
             >
-              Metadata2
-            </div>
-          </button>
+              <div
+                class=""
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class=""
+              >
+                Metadata2
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2109,7 +2141,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -2132,7 +2166,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -2684,7 +2720,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -2707,7 +2745,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -3279,7 +3319,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -3302,7 +3344,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -3325,7 +3369,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Line1"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="3"
               class="group/fui-button"
               data-size="small"
               role="option"
@@ -3836,56 +3882,64 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -4354,56 +4408,64 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -4872,56 +4934,64 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -5390,56 +5460,64 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -5924,7 +6002,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="group/fui-button"
             data-size="small"
             role="option"
@@ -5947,7 +6027,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         >
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="group/fui-button"
             data-size="small"
             role="option"
@@ -6890,56 +6972,64 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -7398,56 +7488,64 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -7993,56 +8091,64 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -8593,56 +8699,64 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -9118,56 +9232,64 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
     class=""
   >
     <div
-      aria-label="Legends"
-      aria-multiselectable="false"
       class="group/fui-legends"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      role="listbox"
     >
       <div
         class="group/fui-overflow"
         style="text-align: unset;"
       >
-        <button
-          aria-label="Metadata1"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-          type="button"
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          role="listbox"
+          style="display: contents;"
         >
-          <div
-            class=""
-            style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-          />
-          <div
-            class=""
+          <button
+            aria-label="Metadata1"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
           >
-            Metadata1
-          </div>
-        </button>
-        <button
-          aria-label="Metadata2"
-          aria-selected="false"
-          class="group/fui-button"
-          data-overflow-item=""
-          data-size="small"
-          role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-          type="button"
-        >
-          <div
-            class=""
-            style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-          />
-          <div
-            class=""
+            <div
+              class=""
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class=""
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="2"
+            class="group/fui-button"
+            data-overflow-item=""
+            data-size="small"
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
           >
-            Metadata2
-          </div>
-        </button>
+            <div
+              class=""
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class=""
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
