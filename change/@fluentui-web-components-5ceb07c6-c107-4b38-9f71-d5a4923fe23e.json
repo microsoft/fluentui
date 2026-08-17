@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove padding-block-start in multiline dismiss slot to fix alignment",
+  "packageName": "@fluentui/web-components",
+  "email": "jibinjose884@gmail.com",
+  "dependentChangeType": "patch"
+}

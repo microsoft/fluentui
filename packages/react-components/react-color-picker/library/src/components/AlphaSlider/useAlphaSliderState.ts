@@ -1,16 +1,16 @@
 'use client';
 
 import type * as React from 'react';
-import { tinycolor } from '@ctrl/tinycolor';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { alphaSliderCSSVars } from './useAlphaSliderStyles.styles';
+import { alphaSliderCSSVars } from './AlphaSlider.constants';
 import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 import { MIN, MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
 import { adjustToTransparency, calculateTransparencyValue, getSliderDirection } from './alphaSliderUtils';
 import { createHsvColor } from '../../utils/createHsvColor';
+import { createHslColor } from '../../utils/createHslColor';
 
 export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps): AlphaSliderState => {
   const { dir } = useFluent();
@@ -18,7 +18,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
   const { color, onChange = onChangeFromContext, transparency = false, vertical = false } = props;
   const hsvColor = color || colorFromContext;
-  const hslColor = tinycolor(hsvColor).toHsl();
+  const hslColor = createHslColor(hsvColor);
 
   const [currentValue, setCurrentValue] = useControllableState({
     defaultState: calculateTransparencyValue(transparency, props.defaultColor?.a),
@@ -44,8 +44,10 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const rootVariables = {
     [alphaSliderCSSVars.sliderDirectionVar]: sliderDirection,
     [alphaSliderCSSVars.sliderProgressVar]: `${valuePercent}%`,
-    [alphaSliderCSSVars.thumbColorVar]: `hsla(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%, ${hslColor.a})`,
-    [alphaSliderCSSVars.railColorVar]: `hsl(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%)`,
+    [alphaSliderCSSVars.thumbColorVar]: `hsla(${hslColor.h}, ${hslColor.s * 100}%, ${hslColor.l * 100}%, ${
+      hslColor.a
+    })`,
+    [alphaSliderCSSVars.railColorVar]: `hsl(${hslColor.h}, ${hslColor.s * 100}%, ${hslColor.l * 100}%)`,
   };
 
   // Root props

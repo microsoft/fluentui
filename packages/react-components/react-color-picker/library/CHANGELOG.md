@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-color-picker
 
-This log was last generated on Wed, 24 Jun 2026 11:09:41 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.3.0)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.2.19..@fluentui/react-color-picker_v9.3.0)
+
+### Minor changes
+
+- feat(react-color-picker): expose headless base APIs ([PR #36517](https://github.com/microsoft/fluentui/pull/36517) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+### Patches
+
+- fix: use valid HSL syntax for color slider styles ([PR #36555](https://github.com/microsoft/fluentui/pull/36555) by dmytrokirpa@microsoft.com)
+- refactor: Replace the tinycolor dependency with internal utilities. ([PR #36548](https://github.com/microsoft/fluentui/pull/36548) by dmytrokirpa@microsoft.com)
+- fix: Move shared color picker CSS variables from style modules to constants files. ([PR #36552](https://github.com/microsoft/fluentui/pull/36552) by dmytrokirpa@microsoft.com)
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+
+## [9.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.2.19)
+
+Tue, 04 Aug 2026 10:12:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.2.18..@fluentui/react-color-picker_v9.2.19)
+
+### Patches
+
+- Pin @ctrl/tinycolor version to prevent yarn modern duplication ([PR #35747](https://github.com/microsoft/fluentui/pull/35747) by vgenaev@gmail.com)
 
 ## [9.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.2.18)
 

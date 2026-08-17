@@ -51,6 +51,7 @@ describe('Tooltip', () => {
 
     expect(screen.getByLabelText('Default Tooltip')).toBeInTheDocument();
     expect(screen.getByRole('tooltip')).toHaveAttribute('popover', 'hint');
+    expect(screen.getByRole('tooltip')).toHaveAttribute('data-open');
   });
 
   it('renders only aria-label for a simple label tooltip', () => {

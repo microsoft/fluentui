@@ -22,6 +22,8 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-checked'] = stringifyDataAttribute(state.checked);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-label-position'] = state.labelPosition;
 
   return state;
 };

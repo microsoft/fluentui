@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Wed, 24 Jun 2026 11:09:41 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.17.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.5)
+
+Tue, 11 Aug 2026 17:20:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.17.4..@fluentui/react-combobox_v9.17.5)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- fix: avoid headless bundle size regression from #36275 ([PR #36497](https://github.com/microsoft/fluentui/pull/36497) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-aria to v9.17.14 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-field to v9.5.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-portal to v9.8.15 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-positioning to v9.23.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.17.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.4)
+
+Tue, 04 Aug 2026 10:12:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.17.3..@fluentui/react-combobox_v9.17.4)
+
+### Patches
+
+- fix: fix Field control size handling Combobox and Dropdown ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-positioning to v9.23.0 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.17.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.3)
 

@@ -6,7 +6,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
 import { FluentProvider } from '@fluentui/react-provider';
-const env = require('../../../config/tests');
+const env = require('../../../config/tests.cjs');
 
 expect.extend(toHaveNoViolations);
 
@@ -269,12 +269,12 @@ describe('HeatMapChart interaction and accessibility tests', () => {
     const legend = screen.getByText(HeatMapStringData[0].legend);
 
     fireEvent.mouseOver(legend);
-    expect(container.querySelectorAll('g[role="img"][fill-opacity="1"]')).toHaveLength(2);
-    expect(container.querySelectorAll('g[role="img"][fill-opacity="0.1"]')).toHaveLength(2);
+    expect(container.querySelectorAll('g[role="option"][fill-opacity="1"]')).toHaveLength(2);
+    expect(container.querySelectorAll('g[role="option"][fill-opacity="0.1"]')).toHaveLength(2);
 
     fireEvent.mouseOut(legend);
-    expect(container.querySelectorAll('g[role="img"][fill-opacity="1"]')).toHaveLength(4);
-    expect(container.querySelectorAll('g[role="img"][fill-opacity="0.1"]')).toHaveLength(0);
+    expect(container.querySelectorAll('g[role="option"][fill-opacity="1"]')).toHaveLength(4);
+    expect(container.querySelectorAll('g[role="option"][fill-opacity="0.1"]')).toHaveLength(0);
   });
 
   it(`should highlight the corresponding rectangle(s) when a legend is clicked and
@@ -290,12 +290,12 @@ describe('HeatMapChart interaction and accessibility tests', () => {
     const legend = screen.getByText(HeatMapStringData[1].legend);
 
     fireEvent.click(legend);
-    expect(container.querySelectorAll('g[role="img"][fill-opacity="1"]')).toHaveLength(2);
-    expect(container.querySelectorAll('g[role="img"][fill-opacity="0.1"]')).toHaveLength(2);
+    expect(container.querySelectorAll('g[role="option"][fill-opacity="1"]')).toHaveLength(2);
+    expect(container.querySelectorAll('g[role="option"][fill-opacity="0.1"]')).toHaveLength(2);
 
     fireEvent.click(legend);
-    expect(container.querySelectorAll('g[role="img"][fill-opacity="1"]')).toHaveLength(4);
-    expect(container.querySelectorAll('g[role="img"][fill-opacity="0.1"]')).toHaveLength(0);
+    expect(container.querySelectorAll('g[role="option"][fill-opacity="1"]')).toHaveLength(4);
+    expect(container.querySelectorAll('g[role="option"][fill-opacity="0.1"]')).toHaveLength(0);
   });
 
   it(`should show a callout when a highlighted rectangle is hovered/focused and

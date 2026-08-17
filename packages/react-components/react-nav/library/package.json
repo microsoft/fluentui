@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-nav",
-  "version": "9.4.2",
+  "version": "9.4.4",
   "description": "New fluentui react package",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -12,20 +12,20 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-aria": "^9.17.13",
-    "@fluentui/react-button": "^9.10.1",
-    "@fluentui/react-context-selector": "^9.2.18",
-    "@fluentui/react-divider": "^9.7.3",
-    "@fluentui/react-drawer": "^9.13.1",
+    "@fluentui/react-aria": "^9.17.14",
+    "@fluentui/react-button": "^9.11.0",
+    "@fluentui/react-context-selector": "^9.2.19",
+    "@fluentui/react-divider": "^9.7.4",
+    "@fluentui/react-drawer": "^9.13.2",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-jsx-runtime": "^9.4.4",
-    "@fluentui/react-motion": "^9.16.1",
-    "@fluentui/react-motion-components-preview": "^0.15.6",
-    "@fluentui/react-shared-contexts": "^9.26.2",
-    "@fluentui/react-tabster": "^9.26.16",
-    "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-tooltip": "^9.10.3",
-    "@fluentui/react-utilities": "^9.26.5",
+    "@fluentui/react-jsx-runtime": "^9.4.5",
+    "@fluentui/react-motion": "^9.16.2",
+    "@fluentui/react-motion-components-preview": "^0.15.7",
+    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-tabster": "^9.26.17",
+    "@fluentui/react-theme": "^9.2.2",
+    "@fluentui/react-tooltip": "^9.10.5",
+    "@fluentui/react-utilities": "^9.26.6",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
@@ -37,10 +37,14 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -53,7 +57,9 @@
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
-  ]
+  ],
+  "type": "module"
 }

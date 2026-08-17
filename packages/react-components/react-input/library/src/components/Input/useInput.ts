@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldControlProps_unstable, useFieldContext_unstable } from '@fluentui/react-field';
 import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { InputBaseProps, InputBaseState, InputProps, InputState } from './Input.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
@@ -17,8 +17,13 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
   const overrides = useOverrides();
+  const fieldContext = useFieldContext_unstable();
 
-  const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', ...baseProps } = props;
+  const {
+    size = fieldContext?.size ?? 'medium',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
+    ...baseProps
+  } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -51,7 +56,6 @@ export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTML
   const fieldControlProps = useFieldControlProps_unstable(props, {
     supportsLabelFor: true,
     supportsRequired: true,
-    supportsSize: true,
   });
 
   const [value, setValue] = useControllableState({

@@ -21,7 +21,11 @@ export type ProgressBarProps = ProgressBarBaseProps;
 export type ProgressBarSlots = ProgressBarSlots_2;
 
 // @public
-export type ProgressBarState = ProgressBarBaseState;
+export type ProgressBarState = ProgressBarBaseState & {
+    root: {
+        'data-indeterminate'?: string;
+    };
+};
 
 // @public
 export const renderProgressBar: (state: ProgressBarState) => JSXElement;

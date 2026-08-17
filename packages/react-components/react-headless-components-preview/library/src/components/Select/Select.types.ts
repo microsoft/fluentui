@@ -16,5 +16,10 @@ export type SelectState = SelectBaseState & {
      * Data attribute set when the select is disabled.
      */
     'data-disabled'?: string;
+
+    /**
+     * Data attribute set when the select is invalid.
+     */
+    'data-invalid'?: string;
   };
 };

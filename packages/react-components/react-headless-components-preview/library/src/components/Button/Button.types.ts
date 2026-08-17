@@ -29,5 +29,10 @@ export type ButtonState = ButtonBaseState & {
      * Data attribute set when the button renders only an icon.
      */
     'data-icon-only'?: string;
+
+    /**
+     * Data attribute reflecting the icon position when an icon slot is present.
+     */
+    'data-icon-position'?: ButtonBaseState['iconPosition'];
   };
 };

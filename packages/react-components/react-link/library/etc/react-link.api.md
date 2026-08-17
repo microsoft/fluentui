@@ -18,10 +18,10 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Link: ForwardRefComponent<LinkProps>;
 
 // @public
-export type LinkBaseProps = DistributiveOmit<LinkProps, 'appearance'>;
+export type LinkBaseProps = DistributiveOmit<LinkProps, 'appearance' | 'inline'>;
 
 // @public
-export type LinkBaseState = DistributiveOmit<LinkState, 'appearance' | 'backgroundAppearance'>;
+export type LinkBaseState = DistributiveOmit<LinkState, 'appearance' | 'backgroundAppearance' | 'inline'>;
 
 // @public (undocumented)
 export const linkClassNames: SlotClassNames<LinkSlots>;

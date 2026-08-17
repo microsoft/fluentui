@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-migration-v8-v9",
-  "version": "9.10.15",
+  "version": "9.10.17",
   "description": "Migration shim components and methods for hybrid v8/v9 applications building on Fluent UI React.",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -15,7 +15,7 @@
     "@ctrl/tinycolor": "^3.3.4",
     "@fluentui/fluent2-theme": "^8.107.154",
     "@fluentui/react": "^8.125.7",
-    "@fluentui/react-components": "^9.74.4",
+    "@fluentui/react-components": "^9.74.6",
     "@fluentui/react-hooks": "^8.10.2",
     "@fluentui/react-icons": "^2.0.245",
     "@griffel/react": "^1.5.32",
@@ -34,17 +34,23 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
-  ]
+  ],
+  "type": "module"
 }

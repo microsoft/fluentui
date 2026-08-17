@@ -2,6 +2,69 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Tue, 11 Aug 2026 17:20:14 GMT",
+      "version": "9.7.6",
+      "tag": "@fluentui/react-textarea_v9.7.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-field to v9.5.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-theme to v9.2.2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-utilities to v9.26.6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Aug 2026 10:12:11 GMT",
+      "tag": "@fluentui/react-textarea_v9.7.5",
+      "version": "9.7.5",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "7df10d78056da0c18d3549047ae04ef67fbf54c1",
+            "comment": "fix: fix Field control size handling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:02 GMT",
       "tag": "@fluentui/react-textarea_v9.7.4",
       "version": "9.7.4",

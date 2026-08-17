@@ -10,28 +10,28 @@ This instruction guide explains how Dependabot automation works for security fix
 
 Dependabot is configured to automatically create pull requests for:
 
-1. **Security updates** - Advisory-driven npm pull requests created independently for each update
-2. **npm dependencies** - Weekly minor and patch version updates created as individual pull requests
-3. **GitHub Actions** - Weekly updates for workflow dependencies
+1. **Security updates** - Advisory-driven minor and patch updates grouped by ecosystem
+2. **npm dependencies** - Weekly minor and patch updates grouped for development dependencies; routine production version updates are disabled
+3. **GitHub Actions** - Weekly minor and patch version and security update groups
 
 ## Configuration
 
 The Dependabot configuration is defined in `.github/dependabot.yml`:
 
-- **npm dependencies**: Weekly minor and patch version updates as individual pull requests
-- **GitHub Actions**: Weekly updates
-- **Security updates**: Individual pull requests not limited by the version update schedule
-- **Rollups**: Maintainers can use `/dependabot-rollup` to combine at most 11 eligible non-major updates
+- **npm dependencies**: Weekly minor and patch version updates grouped for development dependencies; production dependencies are updated only for security advisories
+- **GitHub Actions**: Weekly minor and patch version updates grouped separately from security updates
+- **Security updates**: Minor and patch updates are grouped; major remediations are excluded from groups for isolated review
+- **Manual rollups**: Maintainers can use `/dependabot-rollup` as a fallback to combine at most 11 eligible non-major updates
 
-The repository's Advanced Security **Grouped security updates** setting must remain disabled. Dependabot does not support a maximum dependency count for automatic groups, so enabling that setting would bypass the 11-update rollup limit.
+The repository's Advanced Security **Grouped security updates** setting must remain disabled. The explicit groups in `.github/dependabot.yml` provide narrower control over update types, while the repository setting would group as many available security updates as possible.
 
-The npm `open-pull-requests-limit` controls the number of scheduled version-update pull requests. It does not limit the number of dependencies in a pull request or change Dependabot's separate security-update pull request limit.
+The npm `open-pull-requests-limit` controls the number of scheduled version-update pull requests. It does not limit the number of dependencies in a grouped pull request or change Dependabot's separate security-update pull request limit. Native groups have no dependency-count ceiling; the 11-update ceiling applies only to `/dependabot-rollup`.
 
 ## Security Vulnerability Resolution
 
 ### Automatic Security Updates
 
-GitHub triggers automatic security updates independently of the configured version update schedule. Each npm security update remains a separate pull request. Major security remediations are never included in `/dependabot-rollup`, so compatibility work stays isolated for focused review.
+GitHub triggers automatic security updates independently of the configured version update schedule. Dependabot groups only minor and patch security updates under the explicit YAML rules. Major security remediations do not match those groups and are never included in `/dependabot-rollup`, so compatibility work stays isolated for focused review.
 
 ### Manual Resolution via Yarn Resolutions
 

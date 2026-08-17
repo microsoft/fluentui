@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Keep motion ref handling out of the headless MessageBar base hook.",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

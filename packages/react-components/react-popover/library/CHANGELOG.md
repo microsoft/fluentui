@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 24 Jun 2026 11:09:52 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.14.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.14.6)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.14.5..@fluentui/react-popover_v9.14.6)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-aria to v9.17.14 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion to v9.16.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-portal to v9.8.15 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-positioning to v9.23.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.14.5)
+
+Tue, 04 Aug 2026 10:12:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.14.4..@fluentui/react-popover_v9.14.5)
+
+### Patches
+
+- fix: close Popover on focus escape only when focus was inside the surface, so a popover whose focus never entered (e.g. an external input stays focused) is not dismissed when focus moves programmatically ([PR #36440](https://github.com/microsoft/fluentui/pull/36440) by petrduda@microsoft.com)
+- Bump @fluentui/react-positioning to v9.23.0 ([PR #36453](https://github.com/microsoft/fluentui/pull/36453) by beachball)
 
 ## [9.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.14.4)
 

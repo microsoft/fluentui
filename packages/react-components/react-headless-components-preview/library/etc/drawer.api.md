@@ -9,7 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
-import type { DrawerContextValue } from '@fluentui/react-drawer';
+import { DrawerContextValue } from '@fluentui/react-drawer';
 import { DrawerFooterProps } from '@fluentui/react-drawer';
 import { DrawerFooterSlots } from '@fluentui/react-drawer';
 import { DrawerFooterState as DrawerFooterState_2 } from '@fluentui/react-drawer';
@@ -22,6 +22,7 @@ import { DrawerHeaderState as DrawerHeaderState_2 } from '@fluentui/react-drawer
 import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
+import { DrawerProvider } from '@fluentui/react-drawer';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerBaseState } from '@fluentui/react-drawer';
@@ -32,6 +33,8 @@ import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react
 import * as React_2 from 'react';
 import { Ref } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import { useDrawerContext_unstable as useDrawerContext } from '@fluentui/react-drawer';
+import { useDrawerContextValue } from '@fluentui/react-drawer';
 
 // @public
 export const Drawer: ForwardRefComponent<DrawerProps>;
@@ -44,6 +47,8 @@ export { DrawerBodyProps }
 export { DrawerBodySlots }
 
 export { DrawerBodyState }
+
+export { DrawerContextValue }
 
 // @public
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
@@ -97,6 +102,8 @@ export type DrawerProps = (ComponentProps<DrawerSlots> & {
 } & OverlayDrawerProps) | (ComponentProps<DrawerSlots> & {
     type: 'inline';
 } & InlineDrawerProps);
+
+export { DrawerProvider }
 
 // @public (undocumented)
 export type DrawerSlots = Pick<OverlayDrawerSlots, 'root'> | Pick<InlineDrawerSlots, 'root'>;
@@ -167,6 +174,10 @@ export const useDrawer: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => D
 
 // @public
 export const useDrawerBody: (props: DrawerBodyProps, ref: Ref<HTMLElement>) => DrawerBodyState;
+
+export { useDrawerContext }
+
+export { useDrawerContextValue }
 
 // @public
 export const useDrawerFooter: (props: DrawerFooterProps, ref: React_2.Ref<HTMLElement>) => DrawerFooterState;
