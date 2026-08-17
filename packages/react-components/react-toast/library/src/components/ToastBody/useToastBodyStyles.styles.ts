@@ -49,7 +49,7 @@ export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodySta
   // pure-builder rewrite to a single Phase 3 sweep.
   state.root.className = clsx(
     styles.root,
-    'group/fui-toast-body',
+    toastBodyClassNames.root,
     inverted && styles['root-inverted'],
     state.root.className,
   );

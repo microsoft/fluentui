@@ -110,13 +110,12 @@
    * from the compiled atomics — byte-identical to DonutChart.module.css's `.chart-title`.
    */
   .chart-title {
-    @apply mb-vertical-s text-center;
+    @apply mb-vertical-s fill-neutral-foreground-1 text-center;
 
     font-family: var(--font-base);
     font-size: var(--text-base-100);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-100);
-    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 

@@ -98,7 +98,7 @@ export const useCarouselAutoplayButtonStyles_unstable = (
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-carousel-autoplay-button',
+        carouselAutoplayButtonClassNames.root,
         !backgroundOverridden && styles['rest-background'],
         !strokeAndForegroundOverridden && styles['rest-stroke-foreground'],
         state.root.className,

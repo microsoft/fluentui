@@ -45,7 +45,7 @@ export const useHorizontalBarChartStyles = (props: HorizontalBarChartProps): Hor
   // (DECISIONS.md D15.6). Cascade priority is decided by the `@layer fui.*` order in
   // HorizontalBarChart.module.css, not by the order of these arguments.
   return {
-    root: clsx(styles.root, 'group/fui-horizontal-bar-chart', className, props.styles?.root),
+    root: clsx(styles.root, hbcClassNames.root, className, props.styles?.root),
     items: clsx(
       showTriangle || isAbsoluteScale ? styles['items-16p-margin'] : styles['items-10p-margin'],
       props.styles?.items,

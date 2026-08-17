@@ -63,8 +63,9 @@
     /* from createCustomFocusIndicatorStyle(…, { selector: 'focus' }) — the keyborg
        attribute pair, never the native :focus-visible (CONVERSION_GUIDE §2 pseudo-states). */
     @variant focus-visible-fui {
+      @apply rounded-medium;
+
       outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
-      border-radius: var(--radius-medium);
     }
   }
 }
@@ -75,7 +76,7 @@
     @apply cursor-pointer;
 
     @variant hover {
-      background-color: var(--color-neutral-background-4-hover);
+      @apply bg-neutral-background-4-hover;
     }
   }
 
@@ -91,9 +92,7 @@
 
   /* from useAttachmentStyles.progressBar */
   .progress-bar {
-    @apply h-full max-w-full;
-
-    background-color: var(--color-palette-light-green-background-3);
+    @apply h-full max-w-full bg-palette-light-green-background-3;
 
     /* `transition: 'width 0.2s'` expanded to longhands. `width` is already a longhand
        property name, so the transition set is exactly one property (transition-audit.md). */

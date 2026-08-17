@@ -48,7 +48,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   // not by the order of these arguments.
   state.root.className = clsx(
     styles.root,
-    'group/fui-nav-category-item',
+    navCategoryItemClassNames.root,
     density === 'small' && styles.small,
     showIndicator && styles.indicator,
     showIndicator && styles.selected,

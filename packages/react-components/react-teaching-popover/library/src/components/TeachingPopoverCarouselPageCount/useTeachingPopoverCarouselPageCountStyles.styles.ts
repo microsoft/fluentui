@@ -32,7 +32,7 @@ export const useTeachingPopoverCarouselPageCountStyles_unstable = (
   // D16.2). `styles.root` is unconditional, so index 0 is always the hashed, selector-safe
   // `fuicm-*` token — which is what keeps the marker off `classList[0]`, where nwsapi's
   // `:scope` polyfill would throw on its `/` under jsdom (D15.1).
-  state.root.className = clsx(styles.root, 'group/fui-teaching-popover-carousel-page-count', state.root.className);
+  state.root.className = clsx(styles.root, teachingPopoverCarouselPageCountClassNames.root, state.root.className);
 
   return state;
 };

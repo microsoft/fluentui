@@ -70,10 +70,9 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply flex items-center;
+    @apply flex items-center ps-horizontal-s pe-horizontal-s pt-vertical-xs pb-vertical-xs;
 
     /* `padding: '4px 8px'` → four longhands; 4px = spacingVerticalXS, 8px = spacingHorizontalS */
-    @apply ps-horizontal-s pe-horizontal-s pt-vertical-xs pb-vertical-xs;
   }
 }
 
@@ -94,21 +93,23 @@
   .root {
     @variant horizontal {
       @variant size-small {
+        @apply ps-horizontal-xs pe-horizontal-xs;
+
         /* `padding: '0px 4px'` — 4px = spacingHorizontalXS */
         padding-top: 0;
         padding-bottom: 0;
-
-        @apply ps-horizontal-xs pe-horizontal-xs;
       }
 
       @variant size-medium {
-        /* `padding: '4px 8px'` — identical to the base slice, as in the source */
         @apply ps-horizontal-s pe-horizontal-s pt-vertical-xs pb-vertical-xs;
+
+        /* `padding: '4px 8px'` — identical to the base slice, as in the source */
       }
 
       @variant size-large {
-        /* `padding: '4px 20px'` — 20px = spacingHorizontalXL */
         @apply ps-horizontal-xl pe-horizontal-xl pt-vertical-xs pb-vertical-xs;
+
+        /* `padding: '4px 20px'` — 20px = spacingHorizontalXL */
       }
     }
   }

@@ -51,7 +51,7 @@ export const useDataGridStyles_unstable = (state: DataGridState): DataGridState 
   // and argument order carries no cascade meaning in this system — the `@layer fui.*` order
   // decides every tie (DECISIONS.md D2). Same shape as react-button's ToggleButton and
   // react-toolbar's ToolbarButton, which have always called the wrapped hook last.
-  state = { ...state, root: { ...state.root, className: clsx('group/fui-data-grid', state.root.className) } };
+  state = { ...state, root: { ...state.root, className: clsx(dataGridClassNames.root, state.root.className) } };
 
   // DataGridState widens TableState, so the delegate's narrower return is re-merged onto this
   // component's own shape (F1 of the D14 mutation removal — thread the

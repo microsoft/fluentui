@@ -46,7 +46,7 @@ export const useSwatchPickerRowStyles_unstable = (state: SwatchPickerRowState): 
   // the mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-swatch-picker-row',
+    swatchPickerRowClassNames.root,
     state.spacing === 'small' ? styles['spacing-small'] : styles['spacing-medium'],
     state.root.className,
   );

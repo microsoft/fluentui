@@ -104,7 +104,7 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
   // `invalid && appearance !== 'underline'` is `@variant invalid` on the three non-underline
   // appearance classes. `styles[size]` is the root's `data-size`.
 
-  state.root.className = clsx(styles.root, 'group/fui-tag-picker-control', styles[appearance], state.root.className);
+  state.root.className = clsx(styles.root, tagPickerControlClassNames.root, styles[appearance], state.root.className);
 
   if (state.aside) {
     state.aside.className = clsx(styles.aside, state.aside.className);

@@ -84,7 +84,9 @@
 
     /*
      * Kept as the `border-radius` shorthand because that is what Griffel compiled
-     * (`.f1fabniw{border-radius:var(--radius-none);}`) and because no rule anywhere
+     * (`.f1fabniw{
+    @apply rounded-none;
+  }`) and because no rule anywhere
      * in this component sets a corner longhand — so there is no shorthand-vs-longhand
      * priority for the cascade to get wrong. `.circular` / `.rounded` below override it
      * by file position.
@@ -157,10 +159,10 @@
    * Griffel slice and is intentionally absent (see header).
    */
   .circular {
-    border-radius: var(--radius-circular);
+    @apply rounded-circular;
   }
 
   .rounded {
-    border-radius: var(--radius-medium);
+    @apply rounded-medium;
   }
 }

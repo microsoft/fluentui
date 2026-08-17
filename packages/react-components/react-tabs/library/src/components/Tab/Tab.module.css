@@ -254,11 +254,11 @@
     border: solid var(--spacing-thin) var(--color-transparent-stroke);
 
     & .icon {
-      color: inherit;
+      @apply text-inherit;
     }
 
     & .content {
-      color: inherit;
+      @apply text-inherit;
     }
   }
 
@@ -286,15 +286,15 @@
 
     @variant enabled {
       @variant hover {
-        background-color: var(--color-subtle-background-hover);
+        @apply bg-subtle-background-hover text-neutral-foreground-2-hover;
+
         border: solid var(--spacing-thin) var(--color-neutral-stroke-1-hover);
-        color: var(--color-neutral-foreground-2-hover);
       }
 
       @variant active {
-        background-color: var(--color-subtle-background-pressed);
+        @apply bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+
         border: solid var(--spacing-thin) var(--color-neutral-stroke-1-pressed);
-        color: var(--color-neutral-foreground-2-pressed);
       }
     }
 
@@ -311,15 +311,15 @@
 
     @variant enabled {
       @variant hover {
-        background-color: var(--color-brand-background-2-hover);
+        @apply bg-brand-background-2-hover text-brand-foreground-2-hover;
+
         border: solid var(--spacing-thin) var(--color-compound-brand-stroke-hover);
-        color: var(--color-brand-foreground-2-hover);
       }
 
       @variant active {
-        background-color: var(--color-brand-background-2-pressed);
+        @apply bg-brand-background-2-pressed text-brand-foreground-2-pressed;
+
         border: solid var(--spacing-thin) var(--color-compound-brand-stroke-pressed);
-        color: var(--color-brand-foreground-2-pressed);
       }
     }
 
@@ -330,15 +330,14 @@
 
   /* from useCircularAppearanceStyles.subtleDisabled — arg b7 */
   .circular-subtle-disabled {
-    background-color: var(--color-subtle-background);
-    color: var(--color-neutral-foreground-disabled);
+    @apply bg-subtle-background text-neutral-foreground-disabled;
   }
 
   /* from useCircularAppearanceStyles.subtleDisabledSelected — arg b7 */
   .circular-subtle-disabled-selected {
-    background-color: var(--color-neutral-background-disabled);
+    @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
+
     border: solid var(--spacing-thin) var(--color-neutral-stroke-disabled);
-    color: var(--color-neutral-foreground-disabled);
   }
 
   /* from useCircularAppearanceStyles.filled — arg b8 */
@@ -348,13 +347,11 @@
 
     @variant enabled {
       @variant hover {
-        background-color: var(--color-neutral-background-3-hover);
-        color: var(--color-neutral-foreground-2-hover);
+        @apply bg-neutral-background-3-hover text-neutral-foreground-2-hover;
       }
 
       @variant active {
-        background-color: var(--color-neutral-background-3-pressed);
-        color: var(--color-neutral-foreground-2-pressed);
+        @apply bg-neutral-background-3-pressed text-neutral-foreground-2-pressed;
       }
     }
 
@@ -385,13 +382,11 @@
 
     @variant enabled {
       @variant hover {
-        background-color: var(--color-brand-background-hover);
-        color: var(--color-neutral-foreground-on-brand);
+        @apply bg-brand-background-hover text-neutral-foreground-on-brand;
       }
 
       @variant active {
-        background-color: var(--color-brand-background-pressed);
-        color: var(--color-neutral-foreground-on-brand);
+        @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
       }
     }
 
@@ -413,15 +408,14 @@
 
   /* from useCircularAppearanceStyles.filledDisabled — arg b8 */
   .circular-filled-disabled {
-    background-color: var(--color-neutral-background-disabled);
-    color: var(--color-neutral-foreground-disabled);
+    @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
   }
 
   /* from useCircularAppearanceStyles.filledDisabledSelected — arg b8 */
   .circular-filled-disabled-selected {
-    background-color: var(--color-neutral-background-disabled);
+    @apply bg-neutral-background-disabled text-neutral-foreground-disabled;
+
     border: solid var(--spacing-thin) var(--color-neutral-stroke-disabled);
-    color: var(--color-neutral-foreground-disabled);
   }
 
   /* ── regular appearances (`transparent`, `subtle`) ───────────────────────────────── */
@@ -437,11 +431,11 @@
     background-color: var(--color-subtle-background);
 
     & .icon {
-      color: var(--color-neutral-foreground-2);
+      @apply text-neutral-foreground-2;
     }
 
     & .content {
-      color: var(--color-neutral-foreground-2);
+      @apply text-neutral-foreground-2;
     }
 
     @variant enabled {
@@ -449,11 +443,11 @@
         background-color: var(--color-subtle-background-hover);
 
         & .icon {
-          color: var(--color-neutral-foreground-2-hover);
+          @apply text-neutral-foreground-2-hover;
         }
 
         & .content {
-          color: var(--color-neutral-foreground-2-hover);
+          @apply text-neutral-foreground-2-hover;
         }
       }
 
@@ -461,11 +455,11 @@
         background-color: var(--color-subtle-background-pressed);
 
         & .icon {
-          color: var(--color-neutral-foreground-2-pressed);
+          @apply text-neutral-foreground-2-pressed;
         }
 
         & .content {
-          color: var(--color-neutral-foreground-2-pressed);
+          @apply text-neutral-foreground-2-pressed;
         }
       }
     }
@@ -476,11 +470,11 @@
     background-color: var(--color-transparent-background);
 
     & .icon {
-      color: var(--color-neutral-foreground-2);
+      @apply text-neutral-foreground-2;
     }
 
     & .content {
-      color: var(--color-neutral-foreground-2);
+      @apply text-neutral-foreground-2;
     }
 
     @variant enabled {
@@ -488,11 +482,11 @@
         background-color: var(--color-transparent-background-hover);
 
         & .icon {
-          color: var(--color-neutral-foreground-2-hover);
+          @apply text-neutral-foreground-2-hover;
         }
 
         & .content {
-          color: var(--color-neutral-foreground-2-hover);
+          @apply text-neutral-foreground-2-hover;
         }
       }
 
@@ -500,11 +494,11 @@
         background-color: var(--color-transparent-background-pressed);
 
         & .icon {
-          color: var(--color-neutral-foreground-2-pressed);
+          @apply text-neutral-foreground-2-pressed;
         }
 
         & .content {
-          color: var(--color-neutral-foreground-2-pressed);
+          @apply text-neutral-foreground-2-pressed;
         }
       }
     }
@@ -517,31 +511,31 @@
    */
   .selected {
     & .icon {
-      color: var(--color-compound-brand-foreground-1);
+      @apply text-compound-brand-foreground-1;
     }
 
     & .content {
-      color: var(--color-neutral-foreground-1);
+      @apply text-neutral-foreground-1;
     }
 
     @variant enabled {
       @variant hover {
         & .icon {
-          color: var(--color-compound-brand-foreground-1-hover);
+          @apply text-compound-brand-foreground-1-hover;
         }
 
         & .content {
-          color: var(--color-neutral-foreground-1-hover);
+          @apply text-neutral-foreground-1-hover;
         }
       }
 
       @variant active {
         & .icon {
-          color: var(--color-compound-brand-foreground-1-pressed);
+          @apply text-compound-brand-foreground-1-pressed;
         }
 
         & .content {
-          color: var(--color-neutral-foreground-1-pressed);
+          @apply text-neutral-foreground-1-pressed;
         }
       }
     }
@@ -552,11 +546,11 @@
     background-color: var(--color-transparent-background);
 
     & .icon {
-      color: var(--color-neutral-foreground-disabled);
+      @apply text-neutral-foreground-disabled;
     }
 
     & .content {
-      color: var(--color-neutral-foreground-disabled);
+      @apply text-neutral-foreground-disabled;
     }
   }
 
@@ -595,21 +589,17 @@
   .pending-indicator {
     @variant hover {
       &::before {
-        @apply absolute;
+        @apply absolute rounded-circular bg-neutral-stroke-1-hover;
 
         content: '';
-        background-color: var(--color-neutral-stroke-1-hover);
-        border-radius: var(--radius-circular);
       }
     }
 
     @variant active {
       &::before {
-        @apply absolute;
+        @apply absolute rounded-circular bg-neutral-stroke-1-pressed;
 
         content: '';
-        background-color: var(--color-neutral-stroke-1-pressed);
-        border-radius: var(--radius-circular);
       }
     }
 
@@ -674,13 +664,13 @@
     @variant disabled {
       @variant hover {
         &::before {
-          background-color: var(--color-transparent-stroke);
+          @apply bg-transparent-stroke;
         }
       }
 
       @variant active {
         &::before {
-          background-color: var(--color-transparent-stroke);
+          @apply bg-transparent-stroke;
         }
       }
     }
@@ -689,13 +679,13 @@
       @variant disabled {
         @variant hover {
           &::before {
-            background-color: transparent;
+            @apply bg-transparent;
           }
         }
 
         @variant active {
           &::before {
-            background-color: transparent;
+            @apply bg-transparent;
           }
         }
       }
@@ -714,28 +704,26 @@
    */
   .active-indicator {
     &::after {
-      @apply absolute;
+      @apply absolute rounded-circular bg-transparent-stroke;
 
       content: '';
-      background-color: var(--color-transparent-stroke);
-      border-radius: var(--radius-circular);
     }
 
     /* from useActiveIndicatorStyles.selected — arg i7 (applied when `selected && !disabled`) */
     @variant enabled {
       &::after {
-        background-color: var(--color-compound-brand-stroke);
+        @apply bg-compound-brand-stroke;
       }
 
       @variant hover {
         &::after {
-          background-color: var(--color-compound-brand-stroke-hover);
+          @apply bg-compound-brand-stroke-hover;
         }
       }
 
       @variant active {
         &::after {
-          background-color: var(--color-compound-brand-stroke-pressed);
+          @apply bg-compound-brand-stroke-pressed;
         }
       }
     }
@@ -806,7 +794,7 @@
     /* from useActiveIndicatorStyles.disabled — arg i9 (applied when `selected && disabled`) */
     @variant disabled {
       &::after {
-        background-color: var(--color-neutral-foreground-disabled);
+        @apply bg-neutral-foreground-disabled;
       }
     }
   }
@@ -989,21 +977,21 @@
   /* per design, the small and medium font sizes are the same — the size prop only affects
      spacing. Reproduced as two locals so the mapping back to the source stays 1:1. */
   .icon-small {
-    font-size: calc(20px * var(--base-scale));
-
     @apply h-20 w-20;
+
+    font-size: calc(20px * var(--base-scale));
   }
 
   .icon-medium {
-    font-size: calc(20px * var(--base-scale));
-
     @apply h-20 w-20;
+
+    font-size: calc(20px * var(--base-scale));
   }
 
   .icon-large {
-    font-size: calc(24px * var(--base-scale));
-
     @apply h-24 w-24;
+
+    font-size: calc(24px * var(--base-scale));
   }
 
   /* ═══ content slot — useTabContentStyles_unstable ════════════════════════════════ */

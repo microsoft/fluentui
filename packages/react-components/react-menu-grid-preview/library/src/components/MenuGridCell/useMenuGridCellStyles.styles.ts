@@ -33,7 +33,7 @@ export const useMenuGridCellStyles_unstable = (state: MenuGridCellState): MenuGr
   // exactly the order the Griffel version produced.
   state.root.className = clsx(
     styles.root,
-    'group/fui-menu-grid-cell',
+    menuGridCellClassNames.root,
     state.visuallyHidden && styles['visually-hidden'],
     state.root.className,
   );

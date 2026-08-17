@@ -78,7 +78,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   // `.outline`; `appearance === 'outline' | 'underline'` is the appearance class itself; and
   // `invalid && appearance !== 'underline'` is `@variant invalid` on the three non-underline
   // appearance classes.
-  state.root.className = clsx(styles.root, 'group/fui-combobox', styles[appearance], state.root.className);
+  state.root.className = clsx(styles.root, comboboxClassNames.root, styles[appearance], state.root.className);
 
   state.input.className = clsx(styles.input, state.input.className);
 

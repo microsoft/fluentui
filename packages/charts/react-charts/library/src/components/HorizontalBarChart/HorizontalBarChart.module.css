@@ -105,9 +105,7 @@
 
   /* from useStyles.chartTitleLeft */
   .chart-title-left {
-    @apply block overflow-hidden text-ellipsis whitespace-nowrap;
-
-    color: var(--color-neutral-foreground-1);
+    @apply block overflow-hidden text-ellipsis whitespace-nowrap text-neutral-foreground-1;
   }
 
   /* from useStyles.chartTitleLeft4pMargin — 4px is the vertical XS step */
@@ -122,20 +120,22 @@
 
   /* from useStyles.chartTitleRight — typographyStyles.body1Strong expanded */
   .chart-title-right {
+    @apply text-neutral-foreground-1;
+
     font-family: var(--font-base);
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-300);
-    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.chartDataTextDenominator — typographyStyles.body1 expanded */
   .chart-data-text-denominator {
+    @apply text-neutral-foreground-1;
+
     font-family: var(--font-base);
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-300);
-    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.benchmarkContainer — 7px/3px/1px match no spacing step */
@@ -145,7 +145,7 @@
 
   /* from useStyles.triangle — the benchmark marker */
   .triangle {
-    @apply absolute mb-vertical-xs h-0 w-0;
+    @apply absolute mb-vertical-xs h-0 w-0 border-t-palette-blue-border-active;
 
     /* borderLeft/borderRight → logical, so the RTL flip Griffel did by hand is free */
     border-inline-start-width: 4px;
@@ -161,7 +161,6 @@
      */
     border-top-width: 7px;
     border-top-style: solid;
-    border-top-color: var(--color-palette-blue-border-active);
   }
 
   /*

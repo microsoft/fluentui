@@ -330,19 +330,19 @@
    */
   .square {
     &:where([data-size='16'], [data-size='20'], [data-size='24']) {
-      border-radius: var(--radius-small);
+      @apply rounded-small;
     }
 
     &:where([data-size='28'], [data-size='32'], [data-size='36'], [data-size='40'], [data-size='48']) {
-      border-radius: var(--radius-medium);
+      @apply rounded-medium;
     }
 
     &:where([data-size='56'], [data-size='64'], [data-size='72']) {
-      border-radius: var(--radius-large);
+      @apply rounded-large;
     }
 
     &:where([data-size='96'], [data-size='120'], [data-size='128']) {
-      border-radius: var(--radius-x-large);
+      @apply rounded-x-large;
     }
   }
 }
@@ -432,127 +432,127 @@
    */
   .ring-neutral::before,
   .ring-brand::before {
-    color: var(--color-brand-stroke-1);
+    @apply text-brand-stroke-1;
   }
 
   .ring-dark-red::before {
-    color: var(--color-palette-dark-red-border-active);
+    @apply text-palette-dark-red-border-active;
   }
 
   .ring-cranberry::before {
-    color: var(--color-palette-cranberry-border-active);
+    @apply text-palette-cranberry-border-active;
   }
 
   .ring-red::before {
-    color: var(--color-palette-red-border-active);
+    @apply text-palette-red-border-active;
   }
 
   .ring-pumpkin::before {
-    color: var(--color-palette-pumpkin-border-active);
+    @apply text-palette-pumpkin-border-active;
   }
 
   .ring-peach::before {
-    color: var(--color-palette-peach-border-active);
+    @apply text-palette-peach-border-active;
   }
 
   .ring-marigold::before {
-    color: var(--color-palette-marigold-border-active);
+    @apply text-palette-marigold-border-active;
   }
 
   .ring-gold::before {
-    color: var(--color-palette-gold-border-active);
+    @apply text-palette-gold-border-active;
   }
 
   .ring-brass::before {
-    color: var(--color-palette-brass-border-active);
+    @apply text-palette-brass-border-active;
   }
 
   .ring-brown::before {
-    color: var(--color-palette-brown-border-active);
+    @apply text-palette-brown-border-active;
   }
 
   .ring-forest::before {
-    color: var(--color-palette-forest-border-active);
+    @apply text-palette-forest-border-active;
   }
 
   .ring-seafoam::before {
-    color: var(--color-palette-seafoam-border-active);
+    @apply text-palette-seafoam-border-active;
   }
 
   .ring-dark-green::before {
-    color: var(--color-palette-dark-green-border-active);
+    @apply text-palette-dark-green-border-active;
   }
 
   .ring-light-teal::before {
-    color: var(--color-palette-light-teal-border-active);
+    @apply text-palette-light-teal-border-active;
   }
 
   .ring-teal::before {
-    color: var(--color-palette-teal-border-active);
+    @apply text-palette-teal-border-active;
   }
 
   .ring-steel::before {
-    color: var(--color-palette-steel-border-active);
+    @apply text-palette-steel-border-active;
   }
 
   .ring-blue::before {
-    color: var(--color-palette-blue-border-active);
+    @apply text-palette-blue-border-active;
   }
 
   .ring-royal-blue::before {
-    color: var(--color-palette-royal-blue-border-active);
+    @apply text-palette-royal-blue-border-active;
   }
 
   .ring-cornflower::before {
-    color: var(--color-palette-cornflower-border-active);
+    @apply text-palette-cornflower-border-active;
   }
 
   .ring-navy::before {
-    color: var(--color-palette-navy-border-active);
+    @apply text-palette-navy-border-active;
   }
 
   .ring-lavender::before {
-    color: var(--color-palette-lavender-border-active);
+    @apply text-palette-lavender-border-active;
   }
 
   .ring-purple::before {
-    color: var(--color-palette-purple-border-active);
+    @apply text-palette-purple-border-active;
   }
 
   .ring-grape::before {
-    color: var(--color-palette-grape-border-active);
+    @apply text-palette-grape-border-active;
   }
 
   .ring-lilac::before {
-    color: var(--color-palette-lilac-border-active);
+    @apply text-palette-lilac-border-active;
   }
 
   .ring-pink::before {
-    color: var(--color-palette-pink-border-active);
+    @apply text-palette-pink-border-active;
   }
 
   .ring-magenta::before {
-    color: var(--color-palette-magenta-border-active);
+    @apply text-palette-magenta-border-active;
   }
 
   .ring-plum::before {
-    color: var(--color-palette-plum-border-active);
+    @apply text-palette-plum-border-active;
   }
 
   .ring-beige::before {
-    color: var(--color-palette-beige-border-active);
+    @apply text-palette-beige-border-active;
   }
 
   .ring-mink::before {
-    color: var(--color-palette-mink-border-active);
+    @apply text-palette-mink-border-active;
   }
 
   .ring-platinum::before {
-    color: var(--color-palette-platinum-border-active);
+    @apply text-palette-platinum-border-active;
   }
 
   .ring-anchor::before {
-    color: var(--color-palette-anchor-border-active);
+    @apply text-palette-anchor-border-active;
   }
 
   /*
@@ -605,163 +605,131 @@
    * the argument order on all three slots.
    */
   .neutral {
-    color: var(--color-neutral-foreground-3);
-    background-color: var(--color-neutral-background-6);
+    @apply bg-neutral-background-6 text-neutral-foreground-3;
   }
 
   .brand {
-    color: var(--color-neutral-foreground-static-inverted);
-    background-color: var(--color-brand-background-static);
+    @apply bg-brand-background-static text-neutral-foreground-static-inverted;
   }
 
   .dark-red {
-    color: var(--color-palette-dark-red-foreground-2);
-    background-color: var(--color-palette-dark-red-background-2);
+    @apply bg-palette-dark-red-background-2 text-palette-dark-red-foreground-2;
   }
 
   .cranberry {
-    color: var(--color-palette-cranberry-foreground-2);
-    background-color: var(--color-palette-cranberry-background-2);
+    @apply bg-palette-cranberry-background-2 text-palette-cranberry-foreground-2;
   }
 
   .red {
-    color: var(--color-palette-red-foreground-2);
-    background-color: var(--color-palette-red-background-2);
+    @apply bg-palette-red-background-2 text-palette-red-foreground-2;
   }
 
   .pumpkin {
-    color: var(--color-palette-pumpkin-foreground-2);
-    background-color: var(--color-palette-pumpkin-background-2);
+    @apply bg-palette-pumpkin-background-2 text-palette-pumpkin-foreground-2;
   }
 
   .peach {
-    color: var(--color-palette-peach-foreground-2);
-    background-color: var(--color-palette-peach-background-2);
+    @apply bg-palette-peach-background-2 text-palette-peach-foreground-2;
   }
 
   .marigold {
-    color: var(--color-palette-marigold-foreground-2);
-    background-color: var(--color-palette-marigold-background-2);
+    @apply bg-palette-marigold-background-2 text-palette-marigold-foreground-2;
   }
 
   .gold {
-    color: var(--color-palette-gold-foreground-2);
-    background-color: var(--color-palette-gold-background-2);
+    @apply bg-palette-gold-background-2 text-palette-gold-foreground-2;
   }
 
   .brass {
-    color: var(--color-palette-brass-foreground-2);
-    background-color: var(--color-palette-brass-background-2);
+    @apply bg-palette-brass-background-2 text-palette-brass-foreground-2;
   }
 
   .brown {
-    color: var(--color-palette-brown-foreground-2);
-    background-color: var(--color-palette-brown-background-2);
+    @apply bg-palette-brown-background-2 text-palette-brown-foreground-2;
   }
 
   .forest {
-    color: var(--color-palette-forest-foreground-2);
-    background-color: var(--color-palette-forest-background-2);
+    @apply bg-palette-forest-background-2 text-palette-forest-foreground-2;
   }
 
   .seafoam {
-    color: var(--color-palette-seafoam-foreground-2);
-    background-color: var(--color-palette-seafoam-background-2);
+    @apply bg-palette-seafoam-background-2 text-palette-seafoam-foreground-2;
   }
 
   .dark-green {
-    color: var(--color-palette-dark-green-foreground-2);
-    background-color: var(--color-palette-dark-green-background-2);
+    @apply bg-palette-dark-green-background-2 text-palette-dark-green-foreground-2;
   }
 
   .light-teal {
-    color: var(--color-palette-light-teal-foreground-2);
-    background-color: var(--color-palette-light-teal-background-2);
+    @apply bg-palette-light-teal-background-2 text-palette-light-teal-foreground-2;
   }
 
   .teal {
-    color: var(--color-palette-teal-foreground-2);
-    background-color: var(--color-palette-teal-background-2);
+    @apply bg-palette-teal-background-2 text-palette-teal-foreground-2;
   }
 
   .steel {
-    color: var(--color-palette-steel-foreground-2);
-    background-color: var(--color-palette-steel-background-2);
+    @apply bg-palette-steel-background-2 text-palette-steel-foreground-2;
   }
 
   .blue {
-    color: var(--color-palette-blue-foreground-2);
-    background-color: var(--color-palette-blue-background-2);
+    @apply bg-palette-blue-background-2 text-palette-blue-foreground-2;
   }
 
   .royal-blue {
-    color: var(--color-palette-royal-blue-foreground-2);
-    background-color: var(--color-palette-royal-blue-background-2);
+    @apply bg-palette-royal-blue-background-2 text-palette-royal-blue-foreground-2;
   }
 
   .cornflower {
-    color: var(--color-palette-cornflower-foreground-2);
-    background-color: var(--color-palette-cornflower-background-2);
+    @apply bg-palette-cornflower-background-2 text-palette-cornflower-foreground-2;
   }
 
   .navy {
-    color: var(--color-palette-navy-foreground-2);
-    background-color: var(--color-palette-navy-background-2);
+    @apply bg-palette-navy-background-2 text-palette-navy-foreground-2;
   }
 
   .lavender {
-    color: var(--color-palette-lavender-foreground-2);
-    background-color: var(--color-palette-lavender-background-2);
+    @apply bg-palette-lavender-background-2 text-palette-lavender-foreground-2;
   }
 
   .purple {
-    color: var(--color-palette-purple-foreground-2);
-    background-color: var(--color-palette-purple-background-2);
+    @apply bg-palette-purple-background-2 text-palette-purple-foreground-2;
   }
 
   .grape {
-    color: var(--color-palette-grape-foreground-2);
-    background-color: var(--color-palette-grape-background-2);
+    @apply bg-palette-grape-background-2 text-palette-grape-foreground-2;
   }
 
   .lilac {
-    color: var(--color-palette-lilac-foreground-2);
-    background-color: var(--color-palette-lilac-background-2);
+    @apply bg-palette-lilac-background-2 text-palette-lilac-foreground-2;
   }
 
   .pink {
-    color: var(--color-palette-pink-foreground-2);
-    background-color: var(--color-palette-pink-background-2);
+    @apply bg-palette-pink-background-2 text-palette-pink-foreground-2;
   }
 
   .magenta {
-    color: var(--color-palette-magenta-foreground-2);
-    background-color: var(--color-palette-magenta-background-2);
+    @apply bg-palette-magenta-background-2 text-palette-magenta-foreground-2;
   }
 
   .plum {
-    color: var(--color-palette-plum-foreground-2);
-    background-color: var(--color-palette-plum-background-2);
+    @apply bg-palette-plum-background-2 text-palette-plum-foreground-2;
   }
 
   .beige {
-    color: var(--color-palette-beige-foreground-2);
-    background-color: var(--color-palette-beige-background-2);
+    @apply bg-palette-beige-background-2 text-palette-beige-foreground-2;
   }
 
   .mink {
-    color: var(--color-palette-mink-foreground-2);
-    background-color: var(--color-palette-mink-background-2);
+    @apply bg-palette-mink-background-2 text-palette-mink-foreground-2;
   }
 
   .platinum {
-    color: var(--color-palette-platinum-foreground-2);
-    background-color: var(--color-palette-platinum-background-2);
+    @apply bg-palette-platinum-background-2 text-palette-platinum-foreground-2;
   }
 
   .anchor {
-    color: var(--color-palette-anchor-foreground-2);
-    background-color: var(--color-palette-anchor-background-2);
+    @apply bg-palette-anchor-background-2 text-palette-anchor-foreground-2;
   }
 
   /*

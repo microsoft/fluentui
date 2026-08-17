@@ -39,7 +39,7 @@
     background-color: var(--color-neutral-background-2);
 
     &:hover {
-      background-color: var(--color-neutral-background-2-hover);
+      @apply bg-neutral-background-2-hover;
     }
   }
 }
@@ -100,12 +100,10 @@
    * §2 rule 2). `padding`/`margin` shorthands expand to their logical pairs.
    */
   .additional-info {
-    @apply mx-horizontal-m my-0 flex flex-col gap-vertical-m px-horizontal-m py-vertical-m;
+    @apply mx-horizontal-m my-0 flex flex-col gap-vertical-m rounded-medium border-neutral-stroke-1 px-horizontal-m py-vertical-m;
 
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--color-neutral-stroke-1);
-    border-radius: var(--radius-medium);
   }
 
   /* from useStyles.additionalInfoMessage */
@@ -134,8 +132,7 @@
  * RTL-flipped by Griffel and therefore becomes the logical `margin-inline-end`.
  */
 .additional-info-icon {
-  @apply me-horizontal-m self-center;
+  @apply me-horizontal-m self-center text-brand-foreground-1;
 
-  color: var(--color-brand-foreground-1);
   font-size: 24px;
 }

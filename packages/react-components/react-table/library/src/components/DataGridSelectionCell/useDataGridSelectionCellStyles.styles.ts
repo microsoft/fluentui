@@ -53,7 +53,7 @@ export const useDataGridSelectionCellStyles_unstable = (
   // and `@layer fui.*` decides every tie (D2).
   state = {
     ...state,
-    root: { ...state.root, className: clsx('group/fui-data-grid-selection-cell', state.root.className) },
+    root: { ...state.root, className: clsx(dataGridSelectionCellClassNames.root, state.root.className) },
   };
 
   // NOTE: the `checkboxIndicator` and `radioIndicator` assignments are gone. Each one's ONLY

@@ -241,7 +241,7 @@
       @apply cursor-default;
 
       & ~ .indicator {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
 
@@ -249,22 +249,19 @@
     @variant enabled-control {
       @variant not-checked {
         & ~ .indicator {
-          color: var(--color-neutral-stroke-accessible);
-          border-color: var(--color-neutral-stroke-accessible);
+          @apply border-neutral-stroke-accessible text-neutral-stroke-accessible;
         }
 
         @variant hover {
           & ~ .indicator {
-            color: var(--color-neutral-stroke-accessible-hover);
-            border-color: var(--color-neutral-stroke-accessible-hover);
+            @apply border-neutral-stroke-accessible-hover text-neutral-stroke-accessible-hover;
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .indicator {
-              color: var(--color-neutral-stroke-accessible-pressed);
-              border-color: var(--color-neutral-stroke-accessible-pressed);
+              @apply border-neutral-stroke-accessible-pressed text-neutral-stroke-accessible-pressed;
             }
           }
         }
@@ -273,23 +270,19 @@
       /* Enabled and checked */
       @variant checked {
         & ~ .indicator {
-          background-color: var(--color-compound-brand-background);
-          color: var(--color-neutral-foreground-inverted);
-          border-color: var(--color-transparent-stroke);
+          @apply border-transparent-stroke bg-compound-brand-background text-neutral-foreground-inverted;
         }
 
         @variant hover {
           & ~ .indicator {
-            background-color: var(--color-compound-brand-background-hover);
-            border-color: var(--color-transparent-stroke-interactive);
+            @apply border-transparent-stroke-interactive bg-compound-brand-background-hover;
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .indicator {
-              background-color: var(--color-compound-brand-background-pressed);
-              border-color: var(--color-transparent-stroke-interactive);
+              @apply border-transparent-stroke-interactive bg-compound-brand-background-pressed;
             }
           }
         }
@@ -300,7 +293,7 @@
     @variant disabled-control {
       @variant not-checked {
         & ~ .indicator {
-          border-color: var(--color-neutral-stroke-disabled);
+          @apply border-neutral-stroke-disabled;
         }
       }
     }
@@ -309,8 +302,7 @@
     @variant disabled-control {
       @variant checked {
         & ~ .indicator {
-          background-color: var(--color-neutral-background-disabled);
-          border-color: var(--color-transparent-stroke-disabled);
+          @apply border-transparent-stroke-disabled bg-neutral-background-disabled;
         }
       }
     }
@@ -469,7 +461,7 @@
 
   /* from useLabelStyles.base — label arg #2 */
   .label {
-    @apply cursor-pointer;
+    @apply cursor-pointer ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
 
     /* Negative margin absorbs the difference between the track height and the label's
        line height: the label must not grow the switch, but a wrapped label keeps its
@@ -482,7 +474,6 @@
        same layer, and Griffel's shorthand-loses-to-longhand priority has no CSS
        equivalent. Inline sides are logical because `after`/`before` compile to an
        [ltr, rtl] padding pair. Longhands carry the named spacing utilities (D4 amendment). */
-    @apply ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
   }
 
   .root {
@@ -525,16 +516,14 @@
   .input {
     @variant disabled-control {
       & ~ .label {
-        @apply cursor-default;
-
-        color: var(--color-neutral-foreground-disabled);
+        @apply cursor-default text-neutral-foreground-disabled;
       }
     }
 
     @variant enabled-control {
       @variant not-checked {
         & ~ .label {
-          color: var(--color-neutral-foreground-1);
+          @apply text-neutral-foreground-1;
         }
       }
     }

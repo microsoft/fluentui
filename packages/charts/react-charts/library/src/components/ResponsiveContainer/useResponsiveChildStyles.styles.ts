@@ -53,7 +53,7 @@ export const useResponsiveChildStyles = (): ResponsiveChildStyles => {
     // The marker is written as a LITERAL, not `responsiveChildClassNames.root`: greppable,
     // and it keeps the `@deprecated` constant from being self-referenced (which the
     // `deprecation` lint rule reports as an error).
-    root: clsx(styles.root, 'group/fui-responsive-child'),
+    root: clsx(styles.root, responsiveChildClassNames.root),
     chartWrapper: clsx(styles['chart-wrapper']),
     chart: clsx(styles.chart),
   };

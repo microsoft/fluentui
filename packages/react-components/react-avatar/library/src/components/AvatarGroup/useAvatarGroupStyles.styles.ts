@@ -70,7 +70,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-avatar-group',
+        avatarGroupClassNames.root,
         layout === 'pie' && sizeStyles[size],
         layout === 'pie' && styles.pie,
         state.root.className,

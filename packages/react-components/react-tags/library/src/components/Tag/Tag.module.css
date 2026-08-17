@@ -122,6 +122,8 @@
    * in the forced-colors `::before`; those halves are `.rounded` / `.circular` below.
    */
   .root {
+    @apply box-border inline-grid w-fit items-center;
+
     /* reset default button style — the root is a <button> when `dismissible` */
     font-family: inherit;
     padding: 0;
@@ -131,8 +133,6 @@
     -webkit-appearance: button;
     appearance: button;
     text-align: unset;
-
-    @apply box-border inline-grid w-fit items-center;
 
     grid-template-areas:
       'media primary   dismissIcon'
@@ -146,7 +146,8 @@
     border-radius: var(--radius-medium);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-medium);
+      @apply rounded-medium;
+
       outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
     }
 
@@ -174,7 +175,8 @@
     border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-circular);
+      @apply rounded-circular;
+
       outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
     }
 
@@ -182,22 +184,23 @@
       position: relative;
 
       &::before {
+        @apply rounded-circular;
+
         content: '';
         border-top: var(--spacing-thin) solid;
         border-inline-start: var(--spacing-thin) solid;
         border-inline-end: var(--spacing-thin) solid;
         position: absolute;
         inset: calc(-1px * var(--base-scale));
-        border-radius: var(--radius-circular);
       }
     }
   }
 
   /* from useSecondaryTextBaseClassName (makeResetStyles) — secondaryText arg #2 */
   .secondary-text {
-    grid-area: secondary;
-
     @apply px-horizontal-xxs whitespace-nowrap;
+
+    grid-area: secondary;
 
     /* typographyStyles.caption2 */
     font-family: var(--font-base);
@@ -210,24 +213,17 @@
 @layer fui.components.l1 {
   /* from useRootStyles[appearance] — root arg #3, the ENABLED branch */
   .filled {
-    background-color: var(--color-neutral-background-3);
-    color: var(--color-neutral-foreground-2);
+    @apply bg-neutral-background-3 text-neutral-foreground-2;
   }
 
   .outline {
-    background-color: var(--color-subtle-background);
-    color: var(--color-neutral-foreground-2);
+    @apply border-s-neutral-stroke-1 border-e-neutral-stroke-1 border-t-neutral-stroke-1 border-b-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
 
     /* shorthands.borderColor(...) → the four longhands the compiler emits, in its order */
-    border-top-color: var(--color-neutral-stroke-1);
-    border-inline-end-color: var(--color-neutral-stroke-1);
-    border-bottom-color: var(--color-neutral-stroke-1);
-    border-inline-start-color: var(--color-neutral-stroke-1);
   }
 
   .brand {
-    background-color: var(--color-brand-background-2);
-    color: var(--color-brand-foreground-2);
+    @apply bg-brand-background-2 text-brand-foreground-2;
   }
 
   /*
@@ -237,25 +233,15 @@
    */
   .filled-disabled,
   .brand-disabled {
-    cursor: not-allowed;
-    background-color: var(--color-neutral-background-disabled);
-    color: var(--color-neutral-foreground-disabled);
+    @apply border-s-transparent-stroke-disabled border-e-transparent-stroke-disabled border-t-transparent-stroke-disabled border-b-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
 
-    border-top-color: var(--color-transparent-stroke-disabled);
-    border-inline-end-color: var(--color-transparent-stroke-disabled);
-    border-bottom-color: var(--color-transparent-stroke-disabled);
-    border-inline-start-color: var(--color-transparent-stroke-disabled);
+    cursor: not-allowed;
   }
 
   .outline-disabled {
-    cursor: not-allowed;
-    background-color: var(--color-subtle-background);
-    color: var(--color-neutral-foreground-disabled);
+    @apply border-s-neutral-stroke-disabled border-e-neutral-stroke-disabled border-t-neutral-stroke-disabled border-b-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
 
-    border-top-color: var(--color-neutral-stroke-disabled);
-    border-inline-end-color: var(--color-neutral-stroke-disabled);
-    border-bottom-color: var(--color-neutral-stroke-disabled);
-    border-inline-start-color: var(--color-neutral-stroke-disabled);
+    cursor: not-allowed;
   }
 }
 
@@ -301,11 +287,12 @@
       @media (forced-colors: none) {
         &::before,
         &::after {
+          @apply h-vertical-xxs w-full;
+
           content: '';
           position: absolute;
 
           /* 2px = the XXS step; block-axis size → the vertical token's utility */
-          @apply h-vertical-xxs w-full;
 
           inset-inline-start: 0;
         }
@@ -442,6 +429,8 @@
    * caption1 over `size-medium`'s body1.
    */
   .primary-text-without-secondary-text {
+    @apply pb-horizontal-xxs;
+
     grid-column-start: primary;
     grid-row-start: primary;
     grid-row-end: secondary;
@@ -449,10 +438,11 @@
     /* compiled `padding-bottom: var(--spacing-horizontal-xxs)` — the HORIZONTAL token on a
        block-axis property. Reproduced verbatim rather than "fixed" to the vertical token;
        both steps are 2px, so this is a naming faithfulness point, not a value difference. */
-    @apply pb-horizontal-xxs;
   }
 
   .primary-text-with-secondary-text {
+    @apply -mt-vertical-xxs;
+
     grid-area: primary;
 
     /* typographyStyles.caption1 */
@@ -463,7 +453,6 @@
 
     /* compiled `margin-top:-2px`; the literal matches the XXS step, and the block axis
        takes the vertical token (react-persona precedent) */
-    @apply -mt-vertical-xxs;
   }
 }
 
@@ -503,23 +492,24 @@
    */
   .dismiss-icon-interactive {
     @variant hover {
+      @apply text-compound-brand-foreground-1-hover;
+
       cursor: pointer;
-      color: var(--color-compound-brand-foreground-1-hover);
     }
 
     @variant active {
-      color: var(--color-compound-brand-foreground-1-pressed);
+      @apply text-compound-brand-foreground-1-pressed;
     }
   }
 
   /* from useDismissIconStyles.selected — dismissIcon arg #5; beats the block above */
   .dismiss-icon-selected {
     @variant hover {
-      color: var(--color-neutral-foreground-on-brand);
+      @apply text-neutral-foreground-on-brand;
     }
 
     @variant active {
-      color: var(--color-neutral-foreground-on-brand);
+      @apply text-neutral-foreground-on-brand;
     }
   }
 

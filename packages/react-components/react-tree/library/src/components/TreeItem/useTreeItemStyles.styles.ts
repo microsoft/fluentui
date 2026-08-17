@@ -67,7 +67,7 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   // (DECISIONS.md D14).
   state.root.className = clsx(
     styles.root,
-    'group/fui-tree-item',
+    treeItemClassNames.root,
     isStaticallyDefinedLevel(level) && styles[`level${level}` as StaticLevelProperty],
     state.root.className,
   );

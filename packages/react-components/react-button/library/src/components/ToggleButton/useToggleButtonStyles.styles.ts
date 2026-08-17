@@ -64,7 +64,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
     root: {
       ...state.root,
       className: clsx(
-        'group/fui-toggle-button',
+        toggleButtonClassNames.root,
 
         // Primary high contrast styles
         appearance === 'primary' && styles['primary-high-contrast'],

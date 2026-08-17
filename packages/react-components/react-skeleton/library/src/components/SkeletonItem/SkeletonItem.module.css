@@ -186,9 +186,10 @@
    */
   .pulse {
     &::after {
+      @apply bg-neutral-stencil-1;
+
       animation-name: skeleton-pulse;
       animation-duration: 1s;
-      background-color: var(--color-neutral-stencil-1);
     }
   }
 
@@ -241,7 +242,7 @@
     background-color: transparent;
 
     &::after {
-      background-color: var(--color-neutral-stencil-1-alpha);
+      @apply bg-neutral-stencil-1-alpha;
     }
   }
 }

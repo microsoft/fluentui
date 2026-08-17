@@ -55,7 +55,7 @@ export const accordionClassNames: { root: string } = {
  * `@variant group-…/fui-accordion { … }`. It is inert until some module references it.
  */
 export const useAccordionStyles_unstable = (state: AccordionState): AccordionState => {
-  state.root.className = clsx(styles.root, 'group/fui-accordion', state.root.className);
+  state.root.className = clsx(styles.root, accordionClassNames.root, state.root.className);
 
   return state;
 };

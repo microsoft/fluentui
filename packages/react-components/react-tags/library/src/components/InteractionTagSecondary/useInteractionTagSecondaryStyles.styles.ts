@@ -59,7 +59,7 @@ export const useInteractionTagSecondaryStyles_unstable = (
   // file's header for the mapping back to the mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-interaction-tag-secondary',
+    interactionTagSecondaryClassNames.root,
     // `appearance` is one lowercase word (`filled` | `outline` | `brand`), so the module's
     // lowercase-kebab locals are still reachable by interpolation: `filled-disabled` etc.
     disabled ? styles[`${appearance}-disabled`] : styles[appearance],

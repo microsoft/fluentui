@@ -34,7 +34,7 @@ export const useDialogBodyStyles_unstable = (state: DialogBodyState): DialogBody
   // out of `dialogBodyClassNames` — and is the only handle by which another module can style
   // an element from this body's state, because `styles.root` is hashed and unaddressable from
   // outside this file (DECISIONS.md D15).
-  state.root.className = clsx(styles.root, 'group/fui-dialog-body', state.root.className);
+  state.root.className = clsx(styles.root, dialogBodyClassNames.root, state.root.className);
 
   return state;
 };

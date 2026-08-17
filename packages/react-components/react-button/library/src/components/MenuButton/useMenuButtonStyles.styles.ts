@@ -57,7 +57,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
     root: {
       ...state.root,
       className: clsx(
-        'group/fui-menu-button',
+        menuButtonClassNames.root,
         expanded && styles.expanded,
         expanded && styles[`expanded-${state.appearance}`],
         state.root.className,

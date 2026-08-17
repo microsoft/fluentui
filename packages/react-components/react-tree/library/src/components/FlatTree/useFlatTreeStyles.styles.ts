@@ -45,6 +45,6 @@ export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState 
   // and there are none left here. The state-mutation pattern itself is deliberately kept —
   // the mixed-mode sibling seam and the customStyleHooks contract depend on the shared
   // object, and its removal is a single Phase 3 sweep (DECISIONS.md D14).
-  state.root.className = clsx(styles.root, 'group/fui-flat-tree', state.root.className);
+  state.root.className = clsx(styles.root, flatTreeClassNames.root, state.root.className);
   return state;
 };

@@ -36,7 +36,7 @@ export const useNavStyles_unstable = (state: NavState): NavState => {
   // jsdom `:scope` polyfill builds its anchor from `escape(element.classList[0])` and the
   // `/` survives that escaping into an invalid selector, throwing a render-time
   // `AggregateError` (D15.1). Before D16 the `fui-Nav` static held that position.
-  state.root.className = clsx(styles.root, 'group/fui-nav', state.root.className);
+  state.root.className = clsx(styles.root, navClassNames.root, state.root.className);
 
   return state;
 };

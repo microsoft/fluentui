@@ -49,7 +49,7 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   // at `fui.components.l2` (they are react-button roots) while this root is l1.
   state.root.className = clsx(
     styles.root,
-    'group/fui-carousel-nav-container',
+    carouselNavContainerClassNames.root,
     isOverlay ? styles.overlay : styles.inline,
     isOverlay && isWide && styles['overlay-wide'],
     isExpanded && styles.expanded,

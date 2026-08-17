@@ -83,12 +83,10 @@
 
   /* from useTableStyles.base — table arg #2 */
   .table {
-    @apply relative w-196 table-fixed border-collapse text-center;
+    @apply relative mt-vertical-xs w-196 table-fixed border-collapse pb-vertical-m-nudge text-center;
 
     border-spacing: 0;
     font-size: inherit;
-
-    @apply mt-vertical-xs pb-vertical-m-nudge;
   }
 
   /* from useTableStyles.showWeekNumbers — table arg #3 (showWeekNumbers) */
@@ -272,7 +270,7 @@
        * this component's competitors are plain `:hover` and plain `:active`.
        */
       &:where(:not(:hover, :active)) {
-        background-color: var(--color-brand-background-inverted-selected);
+        @apply bg-brand-background-inverted-selected;
       }
 
       /* forced-colors is Griffel bucket `m`, which is inserted after `h`/`a`, so this half
@@ -308,17 +306,13 @@
 
   /* from useWeekNumberCellStyles.base */
   .week-number-cell {
-    background-color: var(--color-transparent-background);
+    @apply m-0 box-border h-28 w-28 border-e-neutral-stroke-2 bg-transparent-background p-0 text-neutral-foreground-4;
 
     /* `borderRight: '1px solid <token>'` — rtl-css-js swaps borderRight↔borderLeft, a pure
        PROPERTY flip, so it becomes the `border-inline-end-*` longhands */
     border-inline-end-width: calc(1px * var(--base-scale));
     border-inline-end-style: solid;
-    border-inline-end-color: var(--color-neutral-stroke-2);
 
-    @apply m-0 box-border h-28 w-28 p-0;
-
-    color: var(--color-neutral-foreground-4);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
   }
@@ -338,10 +332,7 @@
     & button,
     &.hover-style,
     &.pressed-style {
-      background-color: var(--color-transparent-background);
-      color: var(--color-neutral-foreground-disabled);
-
-      @apply pointer-events-none;
+      @apply pointer-events-none bg-transparent-background text-neutral-foreground-disabled;
     }
 
     @variant forced-colors {
@@ -389,12 +380,11 @@
     line-height: calc(24px * var(--base-scale));
 
     @variant hover {
-      background-color: var(--color-brand-background-inverted-hover);
-      border-radius: var(--radius-medium);
+      @apply rounded-medium bg-brand-background-inverted-hover;
     }
 
     @variant active {
-      background-color: var(--color-brand-background-inverted-pressed);
+      @apply bg-brand-background-inverted-pressed;
     }
   }
 

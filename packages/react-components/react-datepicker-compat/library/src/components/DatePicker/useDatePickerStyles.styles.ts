@@ -62,7 +62,12 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
   // itself a lint warning. The state-MUTATION pattern stays exactly as it was — the mixed-mode
   // sibling seam and the customStyleHooks contract depend on the shared object, and its removal
   // is a single committed Phase 3 sweep (DECISIONS.md D14), not a per-conversion change.
-  state.root.className = clsx(styles.root, 'group/fui-date-picker', disabled && styles.disabled, state.root.className);
+  state.root.className = clsx(
+    styles.root,
+    datePickerClassNames.root,
+    disabled && styles.disabled,
+    state.root.className,
+  );
 
   if (state.popupSurface) {
     // `state.popupSurface.className` moves to LAST. Griffel put `inlinePopup && styles.inline`

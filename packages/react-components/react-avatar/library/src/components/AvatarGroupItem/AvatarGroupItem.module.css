@@ -78,7 +78,7 @@
 
   /* arg 3a — from useRootStyles.nonOverflowItem */
   .non-overflow-item {
-    border-radius: var(--radius-circular);
+    @apply rounded-circular;
   }
 
   /*
@@ -268,9 +268,8 @@
    * `margin-left` was an [ltr, rtl] pair → logical property.
    */
   .overflow-label {
-    @apply ms-horizontal-s;
+    @apply ms-horizontal-s text-neutral-foreground-1;
 
-    color: var(--color-neutral-foreground-1);
     font-family: var(--font-base);
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-regular);

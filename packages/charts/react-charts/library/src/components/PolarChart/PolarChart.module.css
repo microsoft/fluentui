@@ -73,8 +73,9 @@
   /* from useStyles.gridLine — the SHARED slice both grid-line slots compose first */
   .grid-line-inner,
   .grid-line-outer {
+    @apply stroke-neutral-foreground-1;
+
     fill: none;
-    stroke: var(--color-neutral-foreground-1);
     stroke-width: 1px;
   }
 
@@ -90,11 +91,12 @@
 
   /* from useStyles.tickLabel — typographyStyles.caption2Strong + fill */
   .tick-label {
+    @apply fill-neutral-foreground-1;
+
     font-family: var(--font-base);
     font-size: var(--text-base-100);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-100);
-    fill: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.legendContainer */

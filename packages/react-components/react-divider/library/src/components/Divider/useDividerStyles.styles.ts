@@ -64,7 +64,12 @@ export const useDividerStyles_unstable = (state: DividerState): DividerState => 
   // Cascade priority is decided by the `@layer fui.*` order in Divider.module.css,
   // not by the order of these arguments — see that file's header for the mapping back
   // to the mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-divider', appearance && styles[appearance], state.root.className);
+  state.root.className = clsx(
+    styles.root,
+    dividerClassNames.root,
+    appearance && styles[appearance],
+    state.root.className,
+  );
 
   // The `wrapper` slot carries NO class of its own. Its only library token was the
   // `fui-Divider__wrapper` static, and Divider.module.css declares no `.wrapper` local —

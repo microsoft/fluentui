@@ -48,7 +48,7 @@ export const polarChartClassNames: { root: string } = {
  */
 export const usePolarChartStyles = (props: PolarChartProps): PolarChartStyles => {
   return {
-    root: clsx(styles.root, 'group/fui-polar-chart', props.styles?.root),
+    root: clsx(styles.root, polarChartClassNames.root, props.styles?.root),
     // `chartWrapper` carries NO class of its own: its only library token was the
     // `fui-polar__chartWrapper` static and the module declares no `.chart-wrapper` local —
     // the wrapper is a bare positioning div. With the static removed the assignment would

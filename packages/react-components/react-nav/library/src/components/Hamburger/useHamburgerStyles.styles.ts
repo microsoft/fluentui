@@ -59,7 +59,7 @@ export const useHamburgerStyles_unstable = (state: HamburgerState): HamburgerSta
   // position.
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-hamburger', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, hamburgerClassNames.root, state.root.className) },
   };
 
   // The `icon` slot's assignment is gone: its only library token was the

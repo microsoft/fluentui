@@ -98,7 +98,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's own
   // hook output).
-  state.root.className = clsx(styles.root, 'group/fui-checkbox', state.root.className);
+  state.root.className = clsx(styles.root, checkboxClassNames.root, state.root.className);
 
   state.input.className = clsx(styles.input, state.input.className);
 

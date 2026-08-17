@@ -109,7 +109,7 @@ export const useRadioStyles_unstable = (state: RadioState): RadioState => {
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
   // own hook output).
-  state.root.className = clsx(styles.root, 'group/fui-radio', state.root.className);
+  state.root.className = clsx(styles.root, radioClassNames.root, state.root.className);
 
   state.input.className = clsx(styles.input, state.input.className);
 

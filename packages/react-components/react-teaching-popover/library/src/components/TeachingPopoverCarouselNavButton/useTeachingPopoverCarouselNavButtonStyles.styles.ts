@@ -48,7 +48,7 @@ export const useTeachingPopoverCarouselNavButtonStyles_unstable = (
   // Griffel's `@supports` / `@media` bucket ordering.
   state.root.className = clsx(
     styles.root,
-    'group/fui-teaching-popover-carousel-nav-button',
+    teachingPopoverCarouselNavButtonClassNames.root,
     appearance === 'brand' && styles.brand,
     state.root.className,
   );

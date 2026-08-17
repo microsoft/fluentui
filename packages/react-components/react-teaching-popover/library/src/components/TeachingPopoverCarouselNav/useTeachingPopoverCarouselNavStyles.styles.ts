@@ -33,7 +33,7 @@ export const useTeachingPopoverCarouselNavStyles_unstable = (
   //
   // Cascade priority is decided by the `@layer fui.*` order in
   // TeachingPopoverCarouselNav.module.css, not by the order of these arguments.
-  state.root.className = clsx(styles.root, 'group/fui-teaching-popover-carousel-nav', state.root.className);
+  state.root.className = clsx(styles.root, teachingPopoverCarouselNavClassNames.root, state.root.className);
 
   return state;
 };

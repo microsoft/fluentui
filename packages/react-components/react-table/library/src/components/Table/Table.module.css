@@ -41,9 +41,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply border-collapse;
-
-    background-color: var(--color-subtle-background);
+    @apply border-collapse bg-subtle-background;
   }
 }
 

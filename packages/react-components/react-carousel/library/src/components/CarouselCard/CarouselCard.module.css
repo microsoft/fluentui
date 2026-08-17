@@ -64,9 +64,8 @@
 @layer fui.components.l1 {
   /* from useStyles.elevated — arg #3 */
   .elevated {
-    @apply overflow-hidden;
+    @apply overflow-hidden rounded-x-large;
 
-    border-radius: var(--radius-x-large);
     box-shadow: var(--shadow-16);
   }
 }

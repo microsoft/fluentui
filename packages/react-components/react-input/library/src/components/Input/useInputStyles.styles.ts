@@ -91,7 +91,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   // apply, exactly as before.
   state.root.className = clsx(
     styles.root,
-    'group/fui-input',
+    inputClassNames.root,
     styles[appearance],
     filled && styles.filled,
     state.root.className,

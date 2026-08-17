@@ -75,7 +75,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   // `.outline`; `appearance === 'outline' | 'underline'` is the appearance class itself; and
   // `invalid && appearance !== 'underline'` is `@variant invalid` on the three non-underline
   // appearance classes.
-  state.root.className = clsx(styles.root, 'group/fui-dropdown', styles[appearance], state.root.className);
+  state.root.className = clsx(styles.root, dropdownClassNames.root, styles[appearance], state.root.className);
 
   state.button.className = clsx(styles.button, placeholderVisible && styles.placeholder, state.button.className);
 

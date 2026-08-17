@@ -124,14 +124,15 @@
     line-height: var(--leading-base-300);
 
     @variant hover {
-      background-color: var(--color-neutral-background-4-hover);
+      @apply bg-neutral-background-4-hover;
     }
 
     /* the component's own insert focus indicator — not the shared focus-ring utility */
     @variant focus-visible {
+      @apply outline-stroke-focus-2;
+
       outline-width: var(--spacing-thick);
       outline-style: solid;
-      outline-color: var(--color-stroke-focus-2);
       outline-offset: calc(var(--spacing-thick) * -1);
     }
   }
@@ -163,11 +164,11 @@
     transition-property: background-color;
 
     @variant hover {
-      background-color: var(--color-neutral-background-4-hover);
+      @apply bg-neutral-background-4-hover;
     }
 
     @variant active {
-      background-color: var(--color-neutral-background-4-pressed);
+      @apply bg-neutral-background-4-pressed;
     }
   }
 }
@@ -175,12 +176,10 @@
 @layer fui.components.l2 {
   /* navItem arg #2 — from useSplitNaveItemStyles.baseNavItem */
   .nav-item {
-    @apply relative flex gap-vertical-l self-stretch text-start normal-case;
+    @apply relative flex gap-vertical-l self-stretch bg-transparent text-start normal-case;
 
     /* `start`, not `flex-start`: `justify-start` would emit the other keyword */
     justify-content: start;
-
-    background-color: transparent;
   }
 }
 

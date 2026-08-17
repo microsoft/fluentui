@@ -77,9 +77,8 @@
 @layer fui.components.l1 {
   /* from useStyles.calloutContentRoot */
   .callout-content-root {
-    @apply grid overflow-hidden;
+    @apply grid overflow-hidden bg-neutral-background-1;
 
-    background-color: var(--color-neutral-background-1);
     background-blend-mode: normal, luminosity;
   }
 
@@ -90,19 +89,18 @@
 
   /* from useStyles.calloutContentX — typographyStyles.caption1 + opacity/color */
   .callout-content-x {
+    @apply text-neutral-foreground-2;
+
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-200);
     opacity: 0.8;
-    color: var(--color-neutral-foreground-2);
   }
 
   /* from useStyles.calloutBlockContainer — textAlign 'left' → logical `start` */
   .callout-block-container {
-    @apply text-start;
-
-    color: var(--color-neutral-foreground-2);
+    @apply text-start text-neutral-foreground-2;
   }
 
   /*
@@ -144,13 +142,12 @@
 
   /* from useStyles.calloutLegendText — typographyStyles.caption1 + color/margin */
   .callout-legend-text {
-    @apply mb-vertical-xs;
+    @apply mb-vertical-xs text-neutral-foreground-2;
 
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-200);
-    color: var(--color-neutral-foreground-2);
     forced-color-adjust: auto;
   }
 
@@ -183,25 +180,23 @@
    * carried verbatim.
    */
   .description-message {
-    @apply mt-vertical-m-nudge pt-vertical-m-nudge;
+    @apply mt-vertical-m-nudge pt-vertical-m-nudge text-neutral-foreground-2;
 
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-200);
-    color: var(--color-neutral-foreground-2);
     border-top: 1px solid var(--color-neutral-stroke-2);
   }
 
   /* from useStyles.ratio — typographyStyles.caption2 + marginLeft → logical start */
   .ratio {
-    @apply ms-horizontal-s-nudge;
+    @apply ms-horizontal-s-nudge text-neutral-foreground-1;
 
     font-family: var(--font-base);
     font-size: var(--text-base-100);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-100);
-    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.numerator and useStyles.denominator — both typographyStyles.caption2Strong,

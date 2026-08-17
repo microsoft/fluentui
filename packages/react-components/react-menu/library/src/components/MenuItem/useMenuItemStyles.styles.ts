@@ -59,7 +59,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-menu-item',
+        menuItemClassNames.root,
         state.submenuOpen && styles['submenu-open'],
         state.disabled && styles.disabled,
         state.root.className,

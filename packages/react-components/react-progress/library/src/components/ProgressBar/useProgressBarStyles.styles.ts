@@ -79,7 +79,7 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces, including the forced-colors
   // inversion on the bar.
-  state.root.className = clsx(styles.root, 'group/fui-progress-bar', styles[shape], state.root.className);
+  state.root.className = clsx(styles.root, progressBarClassNames.root, styles[shape], state.root.className);
 
   if (state.bar) {
     const bar = state.bar as NonNullable<ProgressBarState['bar']> & ProgressBarBarDataAttributes;

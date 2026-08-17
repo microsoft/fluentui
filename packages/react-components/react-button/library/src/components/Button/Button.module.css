@@ -134,17 +134,13 @@
     transition-timing-function: var(--ease-easy-ease);
 
     @variant hover {
-      background-color: var(--color-neutral-background-1-hover);
-      border-color: var(--color-neutral-stroke-1-hover);
-      color: var(--color-neutral-foreground-1-hover);
+      @apply border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
 
       cursor: pointer;
     }
 
     @variant hover-active {
-      background-color: var(--color-neutral-background-1-pressed);
-      border-color: var(--color-neutral-stroke-1-pressed);
-      color: var(--color-neutral-foreground-1-pressed);
+      @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
 
       outline-style: none;
     }
@@ -251,11 +247,11 @@
     background-color: var(--color-transparent-background);
 
     @variant hover {
-      background-color: var(--color-transparent-background-hover);
+      @apply bg-transparent-background-hover;
     }
 
     @variant hover-active {
-      background-color: var(--color-transparent-background-pressed);
+      @apply bg-transparent-background-pressed;
     }
   }
 
@@ -269,21 +265,21 @@
     color: var(--color-neutral-foreground-on-brand);
 
     @variant hover {
-      background-color: var(--color-brand-background-hover);
+      @apply bg-brand-background-hover text-neutral-foreground-on-brand;
+
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--color-neutral-foreground-on-brand);
     }
 
     @variant hover-active {
-      background-color: var(--color-brand-background-pressed);
+      @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
+
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--color-neutral-foreground-on-brand);
     }
 
     @variant forced-colors {
@@ -337,7 +333,7 @@
          this module's own local on react-button's icon slot, so its colour rule stays here. */
 
       & .icon {
-        color: var(--color-neutral-foreground-2-brand-hover);
+        @apply text-neutral-foreground-2-brand-hover;
       }
     }
 
@@ -353,7 +349,7 @@
          is this module's own local and its colour rule stays here. */
 
       & .icon {
-        color: var(--color-neutral-foreground-2-brand-pressed);
+        @apply text-neutral-foreground-2-brand-pressed;
       }
     }
 
@@ -386,35 +382,37 @@
     color: var(--color-neutral-foreground-2);
 
     @variant hover {
-      background-color: var(--color-transparent-background-hover);
+      @apply bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--color-neutral-foreground-2-brand-hover);
 
       /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). */
     }
 
     @variant hover-active {
-      background-color: var(--color-transparent-background-pressed);
+      @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      color: var(--color-neutral-foreground-2-brand-pressed);
 
       /* Icon swap in the l1 block at the bottom of this file (D27 / S-J batch 1). */
     }
 
     @variant forced-colors {
       @variant hover {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
+
         color: Highlight;
       }
 
       @variant hover-active {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
+
         color: Highlight;
       }
     }
@@ -432,10 +430,9 @@
 
     /* from useRootStyles.small */
     @variant size-small {
-      /* `padding: buttonSpacingSmall(3px) tokens.spacingHorizontalS`; 3px and 64px match no step */
-      @apply min-w-64 px-horizontal-s py-3;
+      @apply min-w-64 rounded-medium px-horizontal-s py-3;
 
-      border-radius: var(--radius-medium);
+      /* `padding: buttonSpacingSmall(3px) tokens.spacingHorizontalS`; 3px and 64px match no step */
 
       font-size: var(--text-base-200);
       font-weight: var(--font-weight-regular);
@@ -444,14 +441,13 @@
 
     /* from useRootStyles.large */
     @variant size-large {
+      @apply min-w-96 rounded-medium px-horizontal-l py-vertical-s;
+
       /*
        * `padding: buttonSpacingLarge(8px) tokens.spacingHorizontalL` — the 8px block half is
        * a px literal that DOES match the S step, so it takes the vertical named utility.
        * `min-width: 96px` matches no step.
        */
-      @apply min-w-96 px-horizontal-l py-vertical-s;
-
-      border-radius: var(--radius-medium);
 
       font-size: var(--text-base-400);
       font-weight: var(--font-weight-semibold);
@@ -498,7 +494,7 @@
       cursor: not-allowed;
 
       & .icon {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
 
       @variant hover {
@@ -516,7 +512,7 @@
            batch 1). */
 
         & .icon {
-          color: var(--color-neutral-foreground-disabled);
+          @apply text-neutral-foreground-disabled;
         }
       }
 
@@ -535,7 +531,7 @@
            batch 1). */
 
         & .icon {
-          color: var(--color-neutral-foreground-disabled);
+          @apply text-neutral-foreground-disabled;
         }
       }
 
@@ -590,11 +586,11 @@
     /* from useRootFocusStyles.small / .large — arg #12 */
     @variant focus-visible-fui {
       @variant size-small {
-        border-radius: var(--radius-small);
+        @apply rounded-small;
       }
 
       @variant size-large {
-        border-radius: var(--radius-large);
+        @apply rounded-large;
       }
     }
   }
@@ -611,11 +607,11 @@
       background-color: var(--color-transparent-background);
 
       @variant hover {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
       }
 
       @variant hover-active {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
       }
     }
   }
@@ -658,10 +654,8 @@
         0 0 0 var(--spacing-thick) var(--color-neutral-foreground-on-brand) inset;
 
       @variant hover {
-        border-top-color: var(--color-stroke-focus-2);
-        border-right-color: var(--color-stroke-focus-2);
-        border-bottom-color: var(--color-stroke-focus-2);
-        border-left-color: var(--color-stroke-focus-2);
+        @apply border-t-stroke-focus-2 border-r-stroke-focus-2 border-b-stroke-focus-2 border-l-stroke-focus-2;
+
         box-shadow:
           var(--shadow-2),
           0 0 0 var(--spacing-thin) var(--color-stroke-focus-2) inset;
@@ -695,7 +689,8 @@
       border-left-color: transparent;
 
       @variant hover {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
+
         border-top-color: transparent;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -703,7 +698,8 @@
       }
 
       @variant hover-active {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
+
         border-top-color: transparent;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -722,7 +718,8 @@
       border-left-color: transparent;
 
       @variant hover {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
+
         border-top-color: transparent;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -730,7 +727,8 @@
       }
 
       @variant hover-active {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
+
         border-top-color: transparent;
         border-right-color: transparent;
         border-bottom-color: transparent;
@@ -771,7 +769,7 @@
     border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-circular);
+      @apply rounded-circular;
     }
   }
 
@@ -780,7 +778,7 @@
     border-radius: var(--radius-none);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-none);
+      @apply rounded-none;
     }
   }
 

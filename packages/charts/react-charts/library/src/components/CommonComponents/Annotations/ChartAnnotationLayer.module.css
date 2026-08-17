@@ -99,14 +99,12 @@
    * shared verbatim by useStyles.annotation and useStyles.annotationNoDefaults */
   .annotation,
   .annotation-no-defaults {
-    @apply pointer-events-none absolute flex items-center justify-center px-horizontal-s py-vertical-xs text-center whitespace-pre-wrap;
+    @apply pointer-events-none absolute flex items-center justify-center rounded-medium px-horizontal-s py-vertical-xs text-center whitespace-pre-wrap text-neutral-foreground-1;
 
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-200);
-    color: var(--color-neutral-foreground-1);
-    border-radius: var(--radius-medium);
     z-index: 2;
   }
 

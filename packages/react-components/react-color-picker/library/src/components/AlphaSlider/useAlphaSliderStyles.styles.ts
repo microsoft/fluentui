@@ -56,7 +56,7 @@ export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSli
   // AlphaSlider.module.css for why composition over ColorSlider's output cannot sit in l1.
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-alpha-slider', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, alphaSliderClassNames.root, state.root.className) },
   };
 
   state = { ...state, rail: { ...state.rail, className: clsx(styles.rail, state.rail.className) } };

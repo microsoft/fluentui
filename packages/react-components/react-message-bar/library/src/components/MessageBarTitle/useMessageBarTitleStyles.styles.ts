@@ -36,7 +36,7 @@ export const useMessageBarTitleStyles_unstable = (state: MessageBarTitleState): 
   //
   // The component has a single unconditional slice, so it needs no data-attributes — see
   // MessageBarTitle.module.css for the mapping back to the mergeClasses() argument order.
-  state.root.className = clsx(styles.root, 'group/fui-message-bar-title', state.root.className);
+  state.root.className = clsx(styles.root, messageBarTitleClassNames.root, state.root.className);
 
   return state;
 };

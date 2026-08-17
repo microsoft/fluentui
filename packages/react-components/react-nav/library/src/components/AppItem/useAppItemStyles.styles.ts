@@ -48,7 +48,7 @@ export const useAppItemStyles_unstable = (state: AppItemState): AppItemState => 
   // order of these arguments.
   state.root.className = clsx(
     styles.root,
-    'group/fui-app-item',
+    appItemClassNames.root,
     density === 'small' && styles.small,
     !icon && styles['absent-icon'],
     state.root.className,

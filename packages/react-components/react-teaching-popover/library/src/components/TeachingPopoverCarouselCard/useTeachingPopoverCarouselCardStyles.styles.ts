@@ -32,7 +32,7 @@ export const useTeachingPopoverCarouselCardStyles_unstable = (
   // `fuicm-*` token, keeping the marker off `classList[0]` where nwsapi's `:scope` polyfill
   // would throw on its `/` under jsdom (D15.1). See TeachingPopoverCarouselCard.module.css
   // before deleting it.
-  state.root.className = clsx(styles.root, 'group/fui-teaching-popover-carousel-card', state.root.className);
+  state.root.className = clsx(styles.root, teachingPopoverCarouselCardClassNames.root, state.root.className);
 
   return state;
 };

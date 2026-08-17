@@ -39,7 +39,7 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
   // two child buttons is `fui.components.l2`. See that file's header.
   state.root.className = clsx(
     styles.root,
-    'group/fui-split-button',
+    splitButtonClassNames.root,
     appearance && styles[appearance],
     disabledAny && styles.disabled,
     disabledAny && styles['disabled-high-contrast'],

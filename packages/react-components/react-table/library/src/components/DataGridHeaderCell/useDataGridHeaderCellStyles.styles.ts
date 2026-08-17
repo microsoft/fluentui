@@ -46,7 +46,7 @@ export const useDataGridHeaderCellStyles_unstable = (state: DataGridHeaderCellSt
   // this component contributes no declarations, and `@layer fui.*` decides every tie (D2).
   state = {
     ...state,
-    root: { ...state.root, className: clsx('group/fui-data-grid-header-cell', state.root.className) },
+    root: { ...state.root, className: clsx(dataGridHeaderCellClassNames.root, state.root.className) },
   };
 
   // NOTE: the `button`, `sortIcon` and `aside` assignments are gone. Each one's ONLY

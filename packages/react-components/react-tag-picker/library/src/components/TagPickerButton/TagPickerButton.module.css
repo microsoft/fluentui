@@ -91,28 +91,31 @@
    */
   .root {
     @variant size-medium {
+      @apply py-3 ps-horizontal-s pe-horizontal-s-nudge;
+
       /* typographyStyles.caption1 */
       font-size: var(--text-base-200);
       font-weight: var(--font-weight-regular);
       line-height: var(--leading-base-200);
 
       /* SNudge (6) + XXS (2) = 8px, exactly the S step */
-      @apply py-3 ps-horizontal-s pe-horizontal-s-nudge;
     }
 
     @variant size-large {
+      @apply py-5 ps-horizontal-m pe-horizontal-m-nudge;
+
       /* typographyStyles.body1 */
       font-size: var(--text-base-300);
       font-weight: var(--font-weight-regular);
       line-height: var(--leading-base-300);
 
       /* MNudge (10) + XXS (2) = 12px, exactly the M step */
-      @apply py-5 ps-horizontal-m pe-horizontal-m-nudge;
     }
 
     @variant size-extra-large {
+      @apply gap-x-horizontal-s-nudge py-7 ps-18 pe-horizontal-m;
+
       /* `columnGap: tokens.spacingHorizontalSNudge` overrides the root's XXS */
-      @apply gap-x-horizontal-s-nudge;
 
       /* typographyStyles.body2 */
       font-size: var(--text-base-400);
@@ -121,7 +124,6 @@
 
       /* M (12) + SNudge (6) = 18px, which matches NO spacing step, so the numeric utility is
          the sanctioned fallback (D4 amendment) — same scale, `ps-18` === `calc(18px * var(--base-scale))`. */
-      @apply py-7 ps-18 pe-horizontal-m;
     }
   }
 }

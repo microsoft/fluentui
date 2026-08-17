@@ -67,7 +67,7 @@ export const useImageSwatchStyles_unstable = (state: ImageSwatchState): ImageSwa
   // deliberately hoisted out of `fui.base`.
   state.root.className = clsx(
     styles.root,
-    'group/fui-image-swatch',
+    imageSwatchClassNames.root,
     styles[shape],
     state.selected && styles.selected,
     state.root.className,

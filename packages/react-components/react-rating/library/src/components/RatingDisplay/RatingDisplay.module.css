@@ -90,9 +90,7 @@
    * and becomes logical.
    */
   .label {
-    color: var(--color-neutral-foreground-1);
-
-    @apply ms-horizontal-xs;
+    @apply ms-horizontal-xs text-neutral-foreground-1;
 
     font-family: var(--font-base);
     font-size: var(--text-base-200);
@@ -113,20 +111,20 @@
     /* from useLabelStyles.large — valueText arg #4 / countText arg #3 */
     @variant size-large {
       & .label {
+        @apply ms-horizontal-s-nudge;
+
         font-size: var(--text-base-300);
         line-height: var(--leading-base-300);
-
-        @apply ms-horizontal-s-nudge;
       }
     }
 
     /* from useLabelStyles.extraLarge — valueText arg #5 / countText arg #4 */
     @variant size-extra-large {
       & .label {
+        @apply ms-horizontal-s;
+
         font-size: var(--text-base-400);
         line-height: var(--leading-base-400);
-
-        @apply ms-horizontal-s;
       }
     }
   }

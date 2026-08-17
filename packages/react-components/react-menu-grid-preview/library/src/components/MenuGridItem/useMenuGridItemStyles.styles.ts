@@ -38,7 +38,7 @@ export const useMenuGridItemStyles_unstable = (state: MenuGridItemState): MenuGr
   // PREPENDS its own module class + `group/fui-menu-grid-row` to this string, so the element
   // legitimately carries TWO markers. Both are declared to react-conformance through
   // `testOptions['has-group-marker'].markers` in MenuGridItem.test.tsx (D16.3).
-  state.root.className = clsx(styles.root, 'group/fui-menu-grid-item', state.root.className);
+  state.root.className = clsx(styles.root, menuGridItemClassNames.root, state.root.className);
 
   // The `subText` assignment that used to sit alongside these is GONE, together with its
   // `if (state.subText)` guard: that slot's only library token was the BEM static, so after

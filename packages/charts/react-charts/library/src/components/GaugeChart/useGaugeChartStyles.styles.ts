@@ -46,7 +46,7 @@ export const gaugeChartClassNames: { root: string } = {
  */
 export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles => {
   return {
-    root: clsx(styles.root, 'group/fui-gauge-chart', props.styles?.root),
+    root: clsx(styles.root, gaugeChartClassNames.root, props.styles?.root),
     chart: clsx(styles.chart, props.styles?.chart),
     limits: clsx(styles.limits, props.styles?.limits),
     chartValue: clsx(styles['chart-value'], props.styles?.chartValue),

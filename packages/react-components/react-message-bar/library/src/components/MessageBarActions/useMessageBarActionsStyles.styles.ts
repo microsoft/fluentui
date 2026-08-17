@@ -65,7 +65,7 @@ export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsStat
   // Cascade priority is decided by the `@layer fui.*` order in MessageBarActions.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-message-bar-actions', state.root.className);
+  state.root.className = clsx(styles.root, messageBarActionsClassNames.root, state.root.className);
 
   // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
   // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle

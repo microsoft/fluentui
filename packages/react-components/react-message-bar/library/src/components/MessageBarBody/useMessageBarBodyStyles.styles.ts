@@ -36,7 +36,7 @@ export const useMessageBarBodyStyles_unstable = (state: MessageBarBodyState): Me
   //
   // The component has a single unconditional slice, so it needs no data-attributes — see
   // MessageBarBody.module.css for the mapping back to the mergeClasses() argument order.
-  state.root.className = clsx(styles.root, 'group/fui-message-bar-body', state.root.className);
+  state.root.className = clsx(styles.root, messageBarBodyClassNames.root, state.root.className);
 
   return state;
 };

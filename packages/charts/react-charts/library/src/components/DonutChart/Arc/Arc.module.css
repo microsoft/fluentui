@@ -43,12 +43,11 @@
 @layer fui.components.l1 {
   /* from useStyles.root — `outline: transparent` expanded to longhands (CONVERSION_GUIDE §2) */
   .root {
-    @apply cursor-default;
+    @apply cursor-default stroke-neutral-background-1;
 
     outline-color: transparent;
     outline-style: none;
     outline-width: medium;
-    stroke: var(--color-neutral-background-1);
   }
 
   /*
@@ -62,8 +61,9 @@
    * a raw `var(--stroke-width-thickest)` would not.
    */
   .focus-ring {
+    @apply stroke-stroke-focus-2;
+
     fill: transparent;
-    stroke: var(--color-stroke-focus-2);
     stroke-width: var(--spacing-thickest);
   }
 

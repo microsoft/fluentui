@@ -83,7 +83,7 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
   // mergeClasses() argument order this replaces.
   state.content.className = clsx(
     styles.content,
-    'group/fui-tooltip',
+    tooltipClassNames.root,
     state.appearance === 'inverted' && styles.inverted,
     state.content.className,
   );

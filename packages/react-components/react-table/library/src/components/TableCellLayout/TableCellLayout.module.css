@@ -129,7 +129,8 @@
   /* from useStyles.description — `description` arg #2. `...typographyStyles.caption1`
      expanded exactly as the compiler emitted it. */
   .description {
-    color: var(--color-neutral-foreground-2);
+    @apply text-neutral-foreground-2;
+
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);

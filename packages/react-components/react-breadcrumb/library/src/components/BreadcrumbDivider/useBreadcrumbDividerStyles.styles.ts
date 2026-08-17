@@ -61,7 +61,7 @@ export const useBreadcrumbDividerStyles_unstable = (state: BreadcrumbDividerStat
   // Cascade priority is decided by the `@layer fui.*` order in BreadcrumbDivider.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-breadcrumb-divider', state.root.className);
+  state.root.className = clsx(styles.root, breadcrumbDividerClassNames.root, state.root.className);
 
   return state;
 };

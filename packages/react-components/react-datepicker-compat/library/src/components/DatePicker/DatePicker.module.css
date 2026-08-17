@@ -131,15 +131,11 @@
    * The last four declarations are `...typographyStyles.body1` spread into the reset.
    */
   .popup-surface {
-    @apply inline-flex;
+    @apply inline-flex rounded-medium border-transparent-stroke bg-neutral-background-1 text-neutral-foreground-1;
 
-    background-color: var(--color-neutral-background-1);
     box-shadow: var(--shadow-16);
-    border-radius: var(--radius-medium);
     border-width: 1px;
     border-style: solid;
-    border-color: var(--color-transparent-stroke);
-    color: var(--color-neutral-foreground-1);
 
     /* typographyStyles.body1 */
     font-family: var(--font-base);

@@ -36,7 +36,7 @@ export const useRatingStyles_unstable = (state: RatingState): RatingState => {
   // Cascade priority is decided by the `@layer fui.*` order in Rating.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-rating', state.root.className);
+  state.root.className = clsx(styles.root, ratingClassNames.root, state.root.className);
 
   return state;
 };

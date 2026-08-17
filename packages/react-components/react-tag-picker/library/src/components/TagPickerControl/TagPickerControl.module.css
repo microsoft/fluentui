@@ -191,7 +191,7 @@
       /* clicking the field again while it is already focused */
       @variant active {
         &::after {
-          border-bottom-color: var(--color-compound-brand-stroke-pressed);
+          @apply border-b-compound-brand-stroke-pressed;
         }
       }
     }
@@ -232,7 +232,7 @@
 
   /* from useStyles.outline (the default appearance) */
   .outline {
-    background-color: var(--color-neutral-background-1);
+    @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-accessible border-l-neutral-stroke-1 bg-neutral-background-1;
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -242,21 +242,16 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--color-neutral-stroke-1);
-    border-right-color: var(--color-neutral-stroke-1);
-    border-left-color: var(--color-neutral-stroke-1);
-    border-bottom-color: var(--color-neutral-stroke-accessible);
   }
 
   /* from useStyles.underline — only the bottom border is drawn; the other three sides keep the
      initial `border-style: none`, so they render nothing. `border-radius: 0` overrides the
      root's `--radius-medium` by file position, the way the later `d` atomic did. */
   .underline {
-    background-color: var(--color-transparent-background);
+    @apply border-b-neutral-stroke-accessible bg-transparent-background;
 
     border-bottom-width: var(--spacing-thin);
     border-bottom-style: solid;
-    border-bottom-color: var(--color-neutral-stroke-accessible);
 
     /* corners look strange if rounded */
     border-radius: 0;
@@ -264,7 +259,7 @@
 
   /* from useStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--color-neutral-background-1);
+    @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke bg-neutral-background-1;
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -274,15 +269,11 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--color-transparent-stroke);
-    border-right-color: var(--color-transparent-stroke);
-    border-bottom-color: var(--color-transparent-stroke);
-    border-left-color: var(--color-transparent-stroke);
   }
 
   /* from useStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--color-neutral-background-3);
+    @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke bg-neutral-background-3;
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -292,10 +283,6 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--color-transparent-stroke);
-    border-right-color: var(--color-transparent-stroke);
-    border-bottom-color: var(--color-transparent-stroke);
-    border-left-color: var(--color-transparent-stroke);
   }
 }
 
@@ -345,10 +332,7 @@
   .filled-darker {
     @variant invalid {
       @variant not-focus-within {
-        border-top-color: var(--color-palette-red-border-2);
-        border-right-color: var(--color-palette-red-border-2);
-        border-bottom-color: var(--color-palette-red-border-2);
-        border-left-color: var(--color-palette-red-border-2);
+        @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
       }
     }
   }
@@ -356,7 +340,7 @@
   .underline {
     @variant invalid {
       @variant not-focus-within {
-        border-bottom-color: var(--color-palette-red-border-2);
+        @apply border-b-palette-red-border-2;
       }
     }
   }
@@ -379,24 +363,15 @@
   .outline {
     @variant enabled {
       @variant focus-within {
-        border-top-color: var(--color-neutral-stroke-1-pressed);
-        border-right-color: var(--color-neutral-stroke-1-pressed);
-        border-left-color: var(--color-neutral-stroke-1-pressed);
-        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
+        @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed border-l-neutral-stroke-1-pressed;
       }
 
       @variant hover {
-        border-top-color: var(--color-neutral-stroke-1-hover);
-        border-right-color: var(--color-neutral-stroke-1-hover);
-        border-left-color: var(--color-neutral-stroke-1-hover);
-        border-bottom-color: var(--color-neutral-stroke-accessible-hover);
+        @apply border-t-neutral-stroke-1-hover border-r-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover border-l-neutral-stroke-1-hover;
       }
 
       @variant active {
-        border-top-color: var(--color-neutral-stroke-1-pressed);
-        border-right-color: var(--color-neutral-stroke-1-pressed);
-        border-left-color: var(--color-neutral-stroke-1-pressed);
-        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
+        @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed border-l-neutral-stroke-1-pressed;
       }
     }
   }
@@ -424,10 +399,7 @@
     @variant invalid {
       @variant hover {
         @variant not-focus-within {
-          border-top-color: var(--color-palette-red-border-2);
-          border-right-color: var(--color-palette-red-border-2);
-          border-bottom-color: var(--color-palette-red-border-2);
-          border-left-color: var(--color-palette-red-border-2);
+          @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
         }
       }
     }
@@ -437,7 +409,7 @@
     @variant invalid {
       @variant hover {
         @variant not-focus-within {
-          border-bottom-color: var(--color-palette-red-border-2);
+          @apply border-b-palette-red-border-2;
         }
       }
     }
@@ -457,12 +429,11 @@
   .root {
     /* from useAsideStyles.root — arg #2 */
     & .aside {
-      @apply absolute flex h-full;
+      @apply absolute end-horizontal-m flex h-full;
 
       top: 0;
 
       /* compiled `[ltr, rtl]` property flip (`j35jbq: ["f8b87gs","fedtrts"]`) → logical */
-      @apply end-horizontal-m;
 
       cursor: text;
     }
@@ -497,9 +468,8 @@
   .root {
     /* from useIconStyles.icon — arg #2 */
     & .icon {
-      @apply box-border flex items-center justify-center self-start;
+      @apply box-border flex items-center justify-center self-start text-neutral-stroke-accessible;
 
-      color: var(--color-neutral-stroke-accessible);
       cursor: pointer;
       font-size: var(--text-base-500);
     }
@@ -512,32 +482,33 @@
      */
     @variant size-medium {
       & .icon {
-        font-size: calc(16px * var(--base-scale));
-
         @apply ms-horizontal-xxs min-h-32;
+
+        font-size: calc(16px * var(--base-scale));
       }
     }
 
     @variant size-large {
       & .icon {
-        font-size: calc(20px * var(--base-scale));
-
         @apply ms-horizontal-xxs min-h-40;
+
+        font-size: calc(20px * var(--base-scale));
       }
     }
 
     @variant size-extra-large {
       & .icon {
-        font-size: calc(24px * var(--base-scale));
-
         @apply ms-horizontal-s-nudge min-h-44;
+
+        font-size: calc(24px * var(--base-scale));
       }
     }
 
     /* from useIconStyles.disabled — arg #4 */
     @variant disabled {
       & .icon {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
+
         cursor: not-allowed;
       }
     }

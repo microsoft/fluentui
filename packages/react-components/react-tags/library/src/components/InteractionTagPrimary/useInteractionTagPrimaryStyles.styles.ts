@@ -68,7 +68,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
   // owned by `@fluentui/react-icons`, not by a converted package, so D16.1 leaves them.
   state.root.className = clsx(
     styles.root,
-    'group/fui-interaction-tag-primary',
+    interactionTagPrimaryClassNames.root,
 
     styles[shape],
 

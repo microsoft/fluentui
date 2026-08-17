@@ -33,7 +33,7 @@ export const useListboxStyles_unstable = (state: ListboxState): ListboxState => 
   //
   // Listbox stamps no `data-*` mirror: it holds no state a descendant could read that a
   // native selector does not already express (DECISIONS.md D15.6).
-  state.root.className = clsx(styles.root, 'group/fui-listbox', state.root.className);
+  state.root.className = clsx(styles.root, listboxClassNames.root, state.root.className);
 
   return state;
 };

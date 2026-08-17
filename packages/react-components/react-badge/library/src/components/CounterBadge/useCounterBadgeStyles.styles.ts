@@ -80,7 +80,7 @@ export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): Counte
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-counter-badge',
+        counterBadgeClassNames.root,
         state.dot && styles.dot,
         !state.root.children && !state.dot && styles.hide,
         state.root.className,

@@ -54,7 +54,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
       className: clsx(
         // Root styles
         styles.root,
-        'group/fui-compound-button',
+        compoundButtonClassNames.root,
         styles['high-contrast'],
         appearance && styles[appearance],
         styles[size],

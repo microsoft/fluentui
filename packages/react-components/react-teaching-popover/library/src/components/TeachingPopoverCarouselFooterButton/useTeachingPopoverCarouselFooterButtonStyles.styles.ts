@@ -69,7 +69,7 @@ export const useTeachingPopoverCarouselFooterButtonStyles_unstable = (
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-teaching-popover-carousel-footer-button',
+        teachingPopoverCarouselFooterButtonClassNames.root,
         navType === 'prev' && popoverAppearance === 'brand' && styles['brand-previous'],
         navType === 'next' && popoverAppearance === 'brand' && styles['brand-next'],
         state.root.className,

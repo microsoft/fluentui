@@ -34,8 +34,9 @@
     @apply relative ms-0 mt-0 list-none ps-horizontal-xl;
 
     & li {
-      /* 15px matches no spacing step -> numeric fallback; line-height reads the spacing scale */
       @apply mb-15 leading-16;
+
+      /* 15px matches no spacing step -> numeric fallback; line-height reads the spacing scale */
     }
 
     & a {

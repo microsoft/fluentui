@@ -54,8 +54,8 @@ export const useAriaLiveStyles_unstable = (state: AriaLiveState): AriaLiveState 
   //
   // The state mutations below are preserved deliberately: DECISIONS.md D14 defers the
   // pure-builder rewrite to a single Phase 3 sweep.
-  state.assertive.className = clsx(styles['live-region'], 'group/fui-aria-live', state.assertive.className);
-  state.polite.className = clsx(styles['live-region'], 'group/fui-aria-live', state.polite.className);
+  state.assertive.className = clsx(styles['live-region'], ariaLiveClassNames.root, state.assertive.className);
+  state.polite.className = clsx(styles['live-region'], ariaLiveClassNames.root, state.polite.className);
 
   return state;
 };

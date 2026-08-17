@@ -171,19 +171,17 @@
 
   /* from useIndicatorBaseClassName (makeResetStyles) */
   .indicator {
-    @apply pointer-events-none box-border flex h-16 w-16 shrink-0 items-center justify-center self-start overflow-hidden;
+    @apply pointer-events-none mt-vertical-s mr-horizontal-s mb-vertical-s ml-horizontal-s box-border flex h-16 w-16 shrink-0 items-center justify-center self-start overflow-hidden rounded-small;
 
     color: var(--fui-Checkbox__indicator--color);
     background-color: var(--fui-Checkbox__indicator--backgroundColor);
     border-color: var(--fui-Checkbox__indicator--borderColor, var(--color-neutral-stroke-accessible));
     border-style: solid;
     border-width: var(--spacing-thin);
-    border-radius: var(--radius-small);
 
     /* `margin: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands and
        then to the named spacing utilities (D4 amendment); no rtl class was compiled, so the
        inline sides stay physical. */
-    @apply mt-vertical-s mr-horizontal-s mb-vertical-s ml-horizontal-s;
 
     fill: currentColor;
     font-size: calc(12px * var(--base-scale));
@@ -202,13 +200,13 @@
       @variant not-checked {
         @variant not-indeterminate {
           @variant hover {
-            color: var(--color-neutral-foreground-2);
+            @apply text-neutral-foreground-2;
 
             --fui-Checkbox__indicator--borderColor: var(--color-neutral-stroke-accessible-hover);
           }
 
           @variant active {
-            color: var(--color-neutral-foreground-1);
+            @apply text-neutral-foreground-1;
 
             --fui-Checkbox__indicator--borderColor: var(--color-neutral-stroke-accessible-pressed);
           }
@@ -325,7 +323,7 @@
    * slice (the square radius comes from the base reset).
    */
   .circular {
-    border-radius: var(--radius-circular);
+    @apply rounded-circular;
   }
 }
 
@@ -337,9 +335,8 @@
 
   /* from useLabelStyles.base — label arg #2 */
   .label {
-    @apply self-center;
+    @apply self-center ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s text-inherit;
 
-    color: inherit;
     cursor: inherit;
 
     /* `padding: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands
@@ -347,7 +344,6 @@
        this same layer, and Griffel's shorthand-loses-to-longhand priority (`p: -1`) has no
        CSS equivalent. Inline sides are logical because `before`/`after` compile to an
        [ltr, rtl] padding pair. Longhands carry the named spacing utilities (D4 amendment). */
-    @apply ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
   }
 
   .root {

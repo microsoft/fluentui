@@ -90,7 +90,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
   // bucket-order inversion.
   state.root.className = clsx(
     styles.root,
-    'group/fui-textarea',
+    textareaClassNames.root,
     !disabled && filled && styles.filled,
     !disabled && styles[appearance],
     state.root.className,

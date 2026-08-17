@@ -16,12 +16,9 @@
    *     column gap second.
    */
   .root {
-    @apply flex flex-col items-center justify-start;
-    @apply gap-x-horizontal-xxl gap-y-vertical-xxl;
+    @apply flex flex-col items-center justify-start gap-x-horizontal-xxl gap-y-vertical-xxl border-e-neutral-stroke-1 bg-neutral-background-3;
 
     border-inline-end-width: 1px;
     border-inline-end-style: solid;
-    border-inline-end-color: var(--color-neutral-stroke-1);
-    background-color: var(--color-neutral-background-3);
   }
 }

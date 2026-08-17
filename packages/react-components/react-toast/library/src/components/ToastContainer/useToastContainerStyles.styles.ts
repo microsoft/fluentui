@@ -48,7 +48,7 @@ export const useToastContainerStyles_unstable = (state: ToastContainerState): To
   //
   // The state mutation below is preserved deliberately: DECISIONS.md D14 defers the
   // pure-builder rewrite to a single Phase 3 sweep.
-  state.root.className = clsx(styles.root, 'group/fui-toast-container', state.root.className);
+  state.root.className = clsx(styles.root, toastContainerClassNames.root, state.root.className);
 
   return state;
 };

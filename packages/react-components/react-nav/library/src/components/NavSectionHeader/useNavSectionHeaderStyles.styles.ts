@@ -38,7 +38,7 @@ export const useNavSectionHeaderStyles_unstable = (state: NavSectionHeaderState)
   // `/` survives that escaping into an invalid selector, throwing a render-time
   // `AggregateError` (D15.1). Before D16 the `fui-NavSectionHeader` static held that
   // position.
-  state.root.className = clsx(styles.root, 'group/fui-nav-section-header', state.root.className);
+  state.root.className = clsx(styles.root, navSectionHeaderClassNames.root, state.root.className);
 
   return state;
 };

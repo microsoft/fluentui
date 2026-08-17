@@ -65,7 +65,7 @@ export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelSta
   // Cascade priority is decided by the `@layer fui.*` order in InfoLabel.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, and for why every rule is `fui.components.l2`.
-  state.root.className = clsx(styles.root, 'group/fui-info-label', state.root.className);
+  state.root.className = clsx(styles.root, infoLabelClassNames.root, state.root.className);
 
   state.label.className = clsx(styles.label, state.label.className);
 

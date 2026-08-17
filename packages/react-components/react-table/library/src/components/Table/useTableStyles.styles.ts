@@ -66,7 +66,7 @@ export const useTableStyles_unstable = (state: TableState): TableState => {
   // depend on the shared object. Its removal is a single Phase 3 sweep.
   state.root.className = clsx(
     styles.root,
-    'group/fui-table',
+    tableClassNames.root,
     state.noNativeElements ? styles['flex-root'] : styles['table-root'],
     state.root.className,
   );

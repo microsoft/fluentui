@@ -91,7 +91,7 @@ export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeader
   // unhashed, GLOBAL token — the only handle by which another module can style an element
   // from this header's state, since `styles.*` is hashed and unaddressable from outside
   // this file (DECISIONS.md D15).
-  state.root.className = getSlotStyles('root', 'group/fui-card-header');
+  state.root.className = getSlotStyles('root', cardHeaderClassNames.root);
 
   if (state.image) {
     state.image.className = getSlotStyles('image');

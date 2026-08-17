@@ -47,7 +47,7 @@ export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppI
   // Modules exports one name per local and the module's block order keeps them ordered.
   state.root.className = clsx(
     styles.root,
-    'group/fui-app-item-static',
+    appItemStaticClassNames.root,
     density === 'small' && styles.small,
     !icon && styles['absent-icon'],
     state.root.className,

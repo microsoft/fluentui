@@ -47,7 +47,7 @@ export const useBreadcrumbStyles_unstable = (state: BreadcrumbState): Breadcrumb
   // behind is gone (D16.2 — this is one of the six Class B roots). No data attribute is
   // stamped here: `size` lives on BreadcrumbContext and is read by the child components' own
   // styles hooks.
-  state.root.className = clsx(styles.root, 'group/fui-breadcrumb', state.root.className);
+  state.root.className = clsx(styles.root, breadcrumbClassNames.root, state.root.className);
 
   if (state.list) {
     // `list` carries no marker and no static any more — just its own hashed module class,

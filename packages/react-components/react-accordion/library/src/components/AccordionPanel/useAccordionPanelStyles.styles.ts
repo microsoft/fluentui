@@ -37,7 +37,7 @@ export const useAccordionPanelStyles_unstable = (state: AccordionPanelState): Ac
   // Cascade priority is decided by the `@layer fui.*` order in AccordionPanel.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-accordion-panel', state.root.className);
+  state.root.className = clsx(styles.root, accordionPanelClassNames.root, state.root.className);
 
   return state;
 };

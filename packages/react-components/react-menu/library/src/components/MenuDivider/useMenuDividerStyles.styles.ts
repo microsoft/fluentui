@@ -23,7 +23,7 @@ export const useMenuDividerStyles_unstable = (state: MenuDividerState): MenuDivi
   // (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's `:scope`
   // polyfill throws on it under jsdom (DECISIONS.md D15.1). The BEM static that used to hold
   // that position is gone (DECISIONS.md D16.1).
-  state.root.className = clsx(styles.root, 'group/fui-menu-divider', state.root.className);
+  state.root.className = clsx(styles.root, menuDividerClassNames.root, state.root.className);
 
   return state;
 };

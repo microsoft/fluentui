@@ -160,7 +160,7 @@
    */
   .dismiss {
     @variant disabled {
-      color: var(--color-neutral-foreground-disabled);
+      @apply text-neutral-foreground-disabled;
     }
   }
 

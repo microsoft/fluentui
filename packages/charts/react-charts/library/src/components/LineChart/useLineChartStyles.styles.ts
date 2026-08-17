@@ -62,7 +62,7 @@ export const useLineChartStyles = (props: LineChartProps): LineChartStyles => {
     // sortable by prettier-plugin-tailwindcss, and it keeps the `@deprecated` constant from
     // being self-referenced (which the `deprecation` lint rule reports as an error). Same
     // form as react-divider and react-button's ToggleButton.
-    root: clsx(styles.root, 'group/fui-line-chart', props.styles?.root),
+    root: clsx(styles.root, linechartClassNames.root, props.styles?.root),
     tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
     lineBorder: clsx(styles['line-border'] /*props.styles?.lineBorder*/),
     markerLabel: clsx(styles['marker-label'] /*props.styles?.markerLabel*/),

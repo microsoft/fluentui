@@ -55,7 +55,7 @@ export const sankeyChartClassNames: { root: string } = {
  */
 export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles => {
   return {
-    root: clsx(styles.root, 'group/fui-sankey-chart', props.styles?.root),
+    root: clsx(styles.root, sankeyChartClassNames.root, props.styles?.root),
     nodes: clsx(styles.nodes /*, props.styles?.nodes*/),
     links: clsx(styles.links /*, props.styles?.links*/),
     nodeTextContainer: clsx(styles['node-text-container'] /*, props.styles?.nodeTextContainer*/),

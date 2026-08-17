@@ -51,8 +51,9 @@
     /* from createCustomFocusIndicatorStyle(…, { selector: 'focus' }) — the keyborg
        attribute, never the native :focus-visible (CONVERSION_GUIDE §2 pseudo-states). */
     @variant focus-visible-fui {
+      @apply rounded-medium;
+
       outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
-      border-radius: var(--radius-medium);
     }
   }
 }
@@ -63,13 +64,13 @@
     @apply cursor-pointer;
 
     @variant hover {
-      background-color: var(--color-neutral-background-1-hover);
+      @apply bg-neutral-background-1-hover;
     }
   }
 
   /* from useStyles.rootSelected */
   .root-selected {
-    background-color: var(--color-neutral-background-1-selected);
+    @apply bg-neutral-background-1-selected;
   }
 }
 

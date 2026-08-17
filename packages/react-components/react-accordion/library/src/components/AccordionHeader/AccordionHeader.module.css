@@ -127,8 +127,9 @@
 
     /* from useStyles.rootDisabled — root arg #4; re-sets `color` from arg #2 above */
     @variant disabled {
+      @apply text-neutral-foreground-disabled;
+
       background-image: none;
-      color: var(--color-neutral-foreground-disabled);
     }
   }
 }
@@ -250,8 +251,9 @@
     /* from useStyles.buttonSmall — button arg #8 */
     @variant size-small {
       & .button {
-        /* 32px matches no spacing step → numeric utility (D4) */
         @apply min-h-32;
+
+        /* 32px matches no spacing step → numeric utility (D4) */
 
         font-size: var(--text-base-200);
       }
@@ -302,11 +304,11 @@
     /* from useStyles.expandIconEnd — expandIcon arg #4 */
     @variant expand-icon-position-end {
       & .expand-icon {
+        @apply flex justify-end ps-horizontal-s;
+
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: 0%;
-
-        @apply flex justify-end ps-horizontal-s;
       }
     }
   }

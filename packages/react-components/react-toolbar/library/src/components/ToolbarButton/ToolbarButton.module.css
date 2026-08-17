@@ -100,8 +100,9 @@
 @layer fui.components.l2 {
   .root {
     @variant vertical {
-      /* from useBaseStyles.vertical — root arg #1 */
       @apply flex-col;
+
+      /* from useBaseStyles.vertical — root arg #1 */
     }
   }
 

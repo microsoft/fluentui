@@ -26,7 +26,7 @@ export const useCarouselViewportStyles_unstable = (state: CarouselViewportState)
   // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
   // the consumer className last. `styles.root` is unconditional, so it is always the
   // selector-safe token at index 0 that the invariant requires.
-  state.root.className = clsx(styles.root, 'group/fui-carousel-viewport', state.root.className);
+  state.root.className = clsx(styles.root, carouselViewportClassNames.root, state.root.className);
 
   return state;
 };

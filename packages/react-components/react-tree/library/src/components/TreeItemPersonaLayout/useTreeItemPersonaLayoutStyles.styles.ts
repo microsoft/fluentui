@@ -95,7 +95,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
       ...rootDataAttributes,
       className: clsx(
         styles.root,
-        'group/fui-tree-item-persona-layout',
+        treeItemPersonaLayoutClassNames.root,
         styles[itemType],
         styles[appearance],
         state.root.className,

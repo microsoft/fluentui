@@ -58,7 +58,7 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
   state.root.className = clsx(
     styles.root,
-    'group/fui-table-selection-cell',
+    tableSelectionCellClassNames.root,
     styles[`${layout}-root`],
     state.subtle && state.checked === false && styles.subtle,
     state.hidden && styles.hidden,

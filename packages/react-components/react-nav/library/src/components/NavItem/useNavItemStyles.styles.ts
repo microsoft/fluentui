@@ -45,7 +45,7 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-nav-item',
+    navItemClassNames.root,
     density === 'small' && styles.small,
     selected && styles.indicator,
     selected && styles.selected,

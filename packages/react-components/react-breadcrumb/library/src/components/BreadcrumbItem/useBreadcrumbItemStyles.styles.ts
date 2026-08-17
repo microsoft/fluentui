@@ -40,7 +40,7 @@ export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): Br
   // Cascade priority is decided by the `@layer fui.*` order in BreadcrumbItem.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-breadcrumb-item', state.root.className);
+  state.root.className = clsx(styles.root, breadcrumbItemClassNames.root, state.root.className);
 
   return state;
 };

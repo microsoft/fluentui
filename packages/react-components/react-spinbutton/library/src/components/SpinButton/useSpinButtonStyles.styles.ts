@@ -105,7 +105,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   // compiled `{}` slices — nothing to apply, exactly as before.
   state.root.className = clsx(
     styles.root,
-    'group/fui-spin-button',
+    spinButtonClassNames.root,
     styles[appearance],
     filled && styles.filled,
     state.root.className,

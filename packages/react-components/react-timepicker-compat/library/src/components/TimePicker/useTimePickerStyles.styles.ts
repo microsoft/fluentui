@@ -64,7 +64,7 @@ export const useTimePickerStyles_unstable = (state: TimePickerState): TimePicker
   //
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-time-picker', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, timePickerClassNames.root, state.root.className) },
   };
 
   // The `input`, `expandIcon` and `clearIcon` slots deliberately get NO assignment. Their only

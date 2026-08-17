@@ -66,11 +66,11 @@
     border-inline-end-style: none;
 
     @variant hover {
-      background-color: var(--color-neutral-background-4-hover);
+      @apply bg-neutral-background-4-hover;
     }
 
     @variant active {
-      background-color: var(--color-neutral-background-4-pressed);
+      @apply bg-neutral-background-4-pressed;
     }
   }
 }

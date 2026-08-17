@@ -70,7 +70,7 @@ export const useMenuItemLinkStyles_unstable = (state: MenuItemLinkState): MenuIt
     ...state,
     root: {
       ...state.root,
-      className: clsx(styles['reset-link'], 'group/fui-menu-item-link', state.root.className),
+      className: clsx(styles['reset-link'], menuItemLinkClassNames.root, state.root.className),
     },
   };
 

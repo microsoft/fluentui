@@ -57,7 +57,7 @@ export const usePieStyles = (props: PieProps): PieStyles => {
     // declarations and exists solely so this slot emits a selector-safe leading token ahead
     // of the group marker — the marker must never be `classList[0]` (DECISIONS.md D15.1 /
     // D16.2, nwsapi `:scope` polyfill under jsdom).
-    root: clsx(styles.root, 'group/fui-donut-pie', className, props.styles?.root),
+    root: clsx(styles.root, donutPieClassNames.root, className, props.styles?.root),
     // `className` is applied to BOTH slots, as it was before the conversion. Preserved
     // deliberately: DonutChart renders <Pie> without a className, so no call site observes
     // it, and changing it would be a behaviour change unrelated to the styling migration.

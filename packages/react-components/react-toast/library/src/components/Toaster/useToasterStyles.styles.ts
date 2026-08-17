@@ -52,7 +52,7 @@ export const useToasterStyles_unstable = (state: ToasterState): ToasterState => 
   // Cascade priority is decided by the `@layer fui.*` order in Toaster.module.css — in
   // particular `.inline`'s `position: absolute` (l1) over the reset's `fixed` (base) — not by
   // the order of these arguments.
-  const className = clsx(styles.root, 'group/fui-toaster', state.inline && styles.inline, state.root.className);
+  const className = clsx(styles.root, toasterClassNames.root, state.inline && styles.inline, state.root.className);
 
   // Per-position placement stays INLINE STYLE: `getPositionStyles` computes `top`/`bottom` and
   // a direction-aware `left`/`right` from the runtime `dir` and `offset` props, which no

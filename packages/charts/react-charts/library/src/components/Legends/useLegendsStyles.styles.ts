@@ -54,7 +54,7 @@ export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
   // mergeClasses() argument order this replaces, and for why `.legend` / `.resizable-area`
   // sit at `fui.components.l2` rather than `.l1`.
   return {
-    root: clsx(styles.root, 'group/fui-legends', className, props.styles?.root),
+    root: clsx(styles.root, legendClassNames.root, className, props.styles?.root),
     legend: clsx(styles.legend, props.styles?.legend),
     rect: clsx(styles.rect, props.styles?.rect),
     shape: clsx(styles.shape, props.styles?.shape),

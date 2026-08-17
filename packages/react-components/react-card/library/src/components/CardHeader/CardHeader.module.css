@@ -182,11 +182,12 @@
     @variant forced-colors {
       & :global(.group\/fui-button),
       & :global(.group\/fui-link) {
+        @apply text-current;
+
         border-top-color: currentColor;
         border-right-color: currentColor;
         border-bottom-color: currentColor;
         border-left-color: currentColor;
-        color: currentColor;
         outline-color: currentColor;
       }
     }

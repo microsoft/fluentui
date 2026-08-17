@@ -117,7 +117,7 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
       ...triggerButtonDataAttributes,
       className: clsx(
         styles['trigger-button'],
-        'group/fui-avatar-group-popover',
+        avatarGroupPopoverClassNames.root,
         groupChildClassName,
         sizeStyles[size],
         layout === 'pie' && styles['trigger-button-pie'],

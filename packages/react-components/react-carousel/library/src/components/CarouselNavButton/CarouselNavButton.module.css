@@ -144,14 +144,11 @@
     border-block-end-width: 0;
 
     &::after {
-      @apply box-border block;
-      @apply h-vertical-s w-horizontal-s;
+      @apply box-border block h-vertical-s w-horizontal-s bg-neutral-foreground-1 text-neutral-foreground-1;
 
       content: '';
       border: none;
       border-radius: 50%;
-      background-color: var(--color-neutral-foreground-1);
-      color: var(--color-neutral-foreground-1);
     }
   }
 }
@@ -192,10 +189,9 @@
       }
 
       @variant focus-visible-fui {
-        @apply -m-thick;
+        @apply -m-thick rounded-medium;
 
         border: var(--spacing-thick) solid var(--color-stroke-focus-2);
-        border-radius: var(--radius-medium);
       }
     }
 
@@ -224,10 +220,9 @@
       }
 
       @variant focus-visible-fui {
-        @apply -m-thick;
+        @apply -m-thick rounded-medium;
 
         border: var(--spacing-thick) solid var(--color-stroke-focus-2);
-        border-radius: var(--radius-medium);
       }
     }
   }
@@ -237,7 +232,8 @@
   /* from useStyles.brand — arg #4, REST half (see reason (c) in the header). */
   .brand {
     &::after {
-      background-color: var(--color-compound-brand-background);
+      @apply bg-compound-brand-background;
+
       opacity: 1;
     }
   }
@@ -252,8 +248,9 @@
   .brand {
     @variant not-selected {
       &::after {
+        @apply bg-neutral-foreground-1;
+
         opacity: 0.6;
-        background-color: var(--color-neutral-foreground-1);
       }
     }
   }
@@ -288,14 +285,16 @@
   .brand {
     @variant hover {
       &::after {
-        background-color: var(--color-compound-brand-background-hover);
+        @apply bg-compound-brand-background-hover;
+
         opacity: 1;
       }
     }
 
     @variant active {
       &::after {
-        background-color: var(--color-compound-brand-background-pressed);
+        @apply bg-compound-brand-background-pressed;
+
         opacity: 1;
       }
     }

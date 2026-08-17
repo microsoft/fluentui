@@ -80,7 +80,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
   // Cascade priority is decided by the `@layer fui.*` order in AccordionHeader.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-accordion-header', state.root.className);
+  state.root.className = clsx(styles.root, accordionHeaderClassNames.root, state.root.className);
 
   // Sub-slots carry no marker, so D15.1 is not in play: the hashed module class simply leads
   // and the consumer className stays last (DECISIONS.md D16.1 — no public class-name handle

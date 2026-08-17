@@ -48,16 +48,16 @@
 @layer fui.components.l1 {
   /* from useStyles.root */
   .root {
+    @apply text-neutral-foreground-1;
+
     font-family: var(--font-base);
-    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.required — paddingLeft → padding-inline-start (the file's only RTL flip) */
   .required {
-    /* tokens.spacingHorizontalXS → named spacing utility (D4 amendment) */
-    @apply ps-horizontal-xs;
+    @apply ps-horizontal-xs text-palette-red-foreground-3;
 
-    color: var(--color-palette-red-foreground-3);
+    /* tokens.spacingHorizontalXS → named spacing utility (D4 amendment) */
   }
 }
 

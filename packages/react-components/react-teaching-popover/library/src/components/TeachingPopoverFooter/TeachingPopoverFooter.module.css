@@ -96,9 +96,7 @@
    * all-sides padding.
    */
   .root {
-    @apply flex;
-    @apply gap-horizontal-s;
-    @apply pt-vertical-m;
+    @apply flex gap-horizontal-s pt-vertical-m;
   }
 }
 
@@ -139,10 +137,10 @@
    * (cookbook), with the right/left pair written logically because Griffel flipped it in RTL.
    */
   .brand-secondary {
+    @apply border-s-neutral-foreground-on-brand border-e-neutral-foreground-on-brand;
+
     border-block-start-color: var(--color-neutral-foreground-on-brand);
-    border-inline-end-color: var(--color-neutral-foreground-on-brand);
     border-block-end-color: var(--color-neutral-foreground-on-brand);
-    border-inline-start-color: var(--color-neutral-foreground-on-brand);
   }
 }
 
@@ -165,8 +163,7 @@
       background-color: var(--color-neutral-foreground-on-brand);
 
       @variant active {
-        color: var(--color-compound-brand-foreground-1-pressed);
-        background-color: var(--color-neutral-foreground-on-brand);
+        @apply bg-neutral-foreground-on-brand text-compound-brand-foreground-1-pressed;
       }
     }
   }

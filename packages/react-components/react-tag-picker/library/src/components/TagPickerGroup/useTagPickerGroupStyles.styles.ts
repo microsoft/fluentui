@@ -78,7 +78,7 @@ export const useTagPickerGroupStyles_unstable = (state: TagPickerGroupState): Ta
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-tag-picker-group',
+        tagPickerGroupClassNames.root,
         styles[tagSizeToTagPickerSize(state.size)],
         state.root.className,
       ),

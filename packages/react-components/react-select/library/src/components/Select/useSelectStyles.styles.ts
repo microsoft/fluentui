@@ -85,7 +85,7 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   // `invalidUnderline` are now `@variant enabled` blocks on the root, `disabled` /
   // `disabledUnderline` are `@variant disabled` blocks, and
   // `appearance === 'outline' | 'underline'` is the appearance class itself.
-  state.root.className = clsx(styles.root, 'group/fui-select', state.root.className);
+  state.root.className = clsx(styles.root, selectClassNames.root, state.root.className);
 
   state.select.className = clsx(styles.select, styles[appearance], state.select.className);
 

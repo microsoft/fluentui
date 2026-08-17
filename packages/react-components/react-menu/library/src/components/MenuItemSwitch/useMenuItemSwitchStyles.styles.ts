@@ -61,7 +61,7 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
   // MenuItem's `group/fui-menu-item` — because it genuinely is both. Both are declared to
   // react-conformance's `component-has-group-marker` through
   // `testOptions['has-group-marker'].markers` in MenuItemSwitch.test.tsx (D16.3).
-  state = { ...state, root: { ...state.root, className: clsx('group/fui-menu-item-switch', state.root.className) } };
+  state = { ...state, root: { ...state.root, className: clsx(menuItemSwitchClassNames.root, state.root.className) } };
 
   // The Griffel source put `multiline && multilineStyles.switch` AFTER the consumer
   // className; class-attribute position carries no cascade meaning, so the conditional

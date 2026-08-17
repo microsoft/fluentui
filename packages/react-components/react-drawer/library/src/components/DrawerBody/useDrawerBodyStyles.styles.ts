@@ -36,7 +36,7 @@ export const useDrawerBodyStyles_unstable = (state: DrawerBodyState): DrawerBody
   // jsdom `:scope` polyfill builds its anchor from `escape(element.classList[0])` and the
   // `/` survives that escaping into an invalid selector (D15.1). Before D16 the
   // `fui-DrawerBody` static held that position.
-  state.root.className = clsx(styles.root, 'group/fui-drawer-body', state.root.className);
+  state.root.className = clsx(styles.root, drawerBodyClassNames.root, state.root.className);
 
   return state;
 };

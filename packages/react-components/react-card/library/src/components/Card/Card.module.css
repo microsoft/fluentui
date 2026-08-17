@@ -238,10 +238,7 @@
     box-shadow: var(--shadow-4);
 
     &::after {
-      border-top-color: var(--color-transparent-stroke);
-      border-right-color: var(--color-transparent-stroke);
-      border-bottom-color: var(--color-transparent-stroke);
-      border-left-color: var(--color-transparent-stroke);
+      @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke;
     }
   }
 
@@ -250,10 +247,7 @@
     box-shadow: var(--shadow-4);
 
     &::after {
-      border-top-color: var(--color-transparent-stroke);
-      border-right-color: var(--color-transparent-stroke);
-      border-bottom-color: var(--color-transparent-stroke);
-      border-left-color: var(--color-transparent-stroke);
+      @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke;
     }
   }
 
@@ -262,10 +256,7 @@
     box-shadow: none;
 
     &::after {
-      border-top-color: var(--color-neutral-stroke-1);
-      border-right-color: var(--color-neutral-stroke-1);
-      border-bottom-color: var(--color-neutral-stroke-1);
-      border-left-color: var(--color-neutral-stroke-1);
+      @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-1 border-l-neutral-stroke-1;
     }
   }
 
@@ -274,10 +265,7 @@
     box-shadow: none;
 
     &::after {
-      border-top-color: var(--color-transparent-stroke);
-      border-right-color: var(--color-transparent-stroke);
-      border-bottom-color: var(--color-transparent-stroke);
-      border-left-color: var(--color-transparent-stroke);
+      @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke;
     }
   }
 }
@@ -301,20 +289,17 @@
       box-shadow: var(--shadow-4);
 
       &::after {
-        border-top-color: var(--color-transparent-stroke);
-        border-right-color: var(--color-transparent-stroke);
-        border-bottom-color: var(--color-transparent-stroke);
-        border-left-color: var(--color-transparent-stroke);
+        @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke;
       }
 
       @variant hover {
-        color: var(--color-neutral-foreground-1-hover);
-        background-color: var(--color-neutral-background-1-hover);
+        @apply bg-neutral-background-1-hover text-neutral-foreground-1-hover;
+
         box-shadow: var(--shadow-8);
       }
 
       @variant active {
-        background-color: var(--color-neutral-background-1-pressed);
+        @apply bg-neutral-background-1-pressed;
       }
     }
   }
@@ -327,20 +312,17 @@
       box-shadow: var(--shadow-4);
 
       &::after {
-        border-top-color: var(--color-transparent-stroke);
-        border-right-color: var(--color-transparent-stroke);
-        border-bottom-color: var(--color-transparent-stroke);
-        border-left-color: var(--color-transparent-stroke);
+        @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke;
       }
 
       @variant hover {
-        color: var(--color-neutral-foreground-2-hover);
-        background-color: var(--color-neutral-background-2-hover);
+        @apply bg-neutral-background-2-hover text-neutral-foreground-2-hover;
+
         box-shadow: var(--shadow-8);
       }
 
       @variant active {
-        background-color: var(--color-neutral-background-2-pressed);
+        @apply bg-neutral-background-2-pressed;
       }
     }
   }
@@ -353,10 +335,7 @@
       box-shadow: none;
 
       &::after {
-        border-top-color: var(--color-neutral-stroke-1);
-        border-right-color: var(--color-neutral-stroke-1);
-        border-bottom-color: var(--color-neutral-stroke-1);
-        border-left-color: var(--color-neutral-stroke-1);
+        @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-1 border-l-neutral-stroke-1;
       }
 
       @variant hover {
@@ -364,10 +343,7 @@
         background-color: var(--color-transparent-background-hover);
 
         &::after {
-          border-top-color: var(--color-neutral-stroke-1-hover);
-          border-right-color: var(--color-neutral-stroke-1-hover);
-          border-bottom-color: var(--color-neutral-stroke-1-hover);
-          border-left-color: var(--color-neutral-stroke-1-hover);
+          @apply border-t-neutral-stroke-1-hover border-r-neutral-stroke-1-hover border-b-neutral-stroke-1-hover border-l-neutral-stroke-1-hover;
         }
       }
 
@@ -375,10 +351,7 @@
         background-color: var(--color-transparent-background-pressed);
 
         &::after {
-          border-top-color: var(--color-neutral-stroke-1-pressed);
-          border-right-color: var(--color-neutral-stroke-1-pressed);
-          border-bottom-color: var(--color-neutral-stroke-1-pressed);
-          border-left-color: var(--color-neutral-stroke-1-pressed);
+          @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-1-pressed border-l-neutral-stroke-1-pressed;
         }
       }
     }
@@ -392,19 +365,15 @@
       box-shadow: none;
 
       &::after {
-        border-top-color: var(--color-transparent-stroke);
-        border-right-color: var(--color-transparent-stroke);
-        border-bottom-color: var(--color-transparent-stroke);
-        border-left-color: var(--color-transparent-stroke);
+        @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke;
       }
 
       @variant hover {
-        color: var(--color-neutral-foreground-1-hover);
-        background-color: var(--color-subtle-background-hover);
+        @apply bg-subtle-background-hover text-neutral-foreground-1-hover;
       }
 
       @variant active {
-        background-color: var(--color-subtle-background-pressed);
+        @apply bg-subtle-background-pressed;
       }
     }
   }
@@ -422,15 +391,11 @@
       background-color: var(--color-neutral-background-1-selected);
 
       &::after {
-        border-top-color: var(--color-neutral-stroke-1-selected);
-        border-right-color: var(--color-neutral-stroke-1-selected);
-        border-bottom-color: var(--color-neutral-stroke-1-selected);
-        border-left-color: var(--color-neutral-stroke-1-selected);
+        @apply border-t-neutral-stroke-1-selected border-r-neutral-stroke-1-selected border-b-neutral-stroke-1-selected border-l-neutral-stroke-1-selected;
       }
 
       @variant hover {
-        color: var(--color-neutral-foreground-1-selected);
-        background-color: var(--color-neutral-background-1-selected);
+        @apply bg-neutral-background-1-selected text-neutral-foreground-1-selected;
       }
     }
   }
@@ -440,15 +405,11 @@
       background-color: var(--color-neutral-background-2-selected);
 
       &::after {
-        border-top-color: var(--color-neutral-stroke-1-selected);
-        border-right-color: var(--color-neutral-stroke-1-selected);
-        border-bottom-color: var(--color-neutral-stroke-1-selected);
-        border-left-color: var(--color-neutral-stroke-1-selected);
+        @apply border-t-neutral-stroke-1-selected border-r-neutral-stroke-1-selected border-b-neutral-stroke-1-selected border-l-neutral-stroke-1-selected;
       }
 
       @variant hover {
-        color: var(--color-neutral-foreground-2-selected);
-        background-color: var(--color-neutral-background-2-selected);
+        @apply bg-neutral-background-2-selected text-neutral-foreground-2-selected;
       }
     }
   }
@@ -458,15 +419,11 @@
       background-color: var(--color-transparent-background-selected);
 
       &::after {
-        border-top-color: var(--color-neutral-stroke-1-selected);
-        border-right-color: var(--color-neutral-stroke-1-selected);
-        border-bottom-color: var(--color-neutral-stroke-1-selected);
-        border-left-color: var(--color-neutral-stroke-1-selected);
+        @apply border-t-neutral-stroke-1-selected border-r-neutral-stroke-1-selected border-b-neutral-stroke-1-selected border-l-neutral-stroke-1-selected;
       }
 
       @variant hover {
-        color: var(--color-neutral-foreground-1-selected);
-        background-color: var(--color-transparent-background-selected);
+        @apply bg-transparent-background-selected text-neutral-foreground-1-selected;
       }
     }
   }
@@ -476,15 +433,11 @@
       background-color: var(--color-subtle-background-selected);
 
       &::after {
-        border-top-color: var(--color-neutral-stroke-1-selected);
-        border-right-color: var(--color-neutral-stroke-1-selected);
-        border-bottom-color: var(--color-neutral-stroke-1-selected);
-        border-left-color: var(--color-neutral-stroke-1-selected);
+        @apply border-t-neutral-stroke-1-selected border-r-neutral-stroke-1-selected border-b-neutral-stroke-1-selected border-l-neutral-stroke-1-selected;
       }
 
       @variant hover {
-        color: var(--color-neutral-foreground-1-selected);
-        background-color: var(--color-subtle-background-selected);
+        @apply bg-subtle-background-selected text-neutral-foreground-1-selected;
       }
     }
   }
@@ -666,10 +619,7 @@
       }
 
       &::after {
-        border-top-color: var(--color-neutral-stroke-disabled);
-        border-right-color: var(--color-neutral-stroke-disabled);
-        border-bottom-color: var(--color-neutral-stroke-disabled);
-        border-left-color: var(--color-neutral-stroke-disabled);
+        @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled;
       }
 
       /* the `'&:hover, &:active': disabledStyles` restatement */
@@ -694,10 +644,7 @@
         }
 
         &::after {
-          border-top-color: var(--color-neutral-stroke-disabled);
-          border-right-color: var(--color-neutral-stroke-disabled);
-          border-bottom-color: var(--color-neutral-stroke-disabled);
-          border-left-color: var(--color-neutral-stroke-disabled);
+          @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled;
         }
       }
 
@@ -722,10 +669,7 @@
         }
 
         &::after {
-          border-top-color: var(--color-neutral-stroke-disabled);
-          border-right-color: var(--color-neutral-stroke-disabled);
-          border-bottom-color: var(--color-neutral-stroke-disabled);
-          border-left-color: var(--color-neutral-stroke-disabled);
+          @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled;
         }
       }
     }
@@ -750,20 +694,19 @@
       border-left-color: var(--color-neutral-stroke-disabled);
 
       @variant hover {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
+
         box-shadow: none;
       }
 
       @variant active {
-        background-color: var(--color-transparent-background);
+        @apply bg-transparent-background;
+
         box-shadow: none;
       }
 
       &::after {
-        border-top-color: var(--color-neutral-stroke-disabled);
-        border-right-color: var(--color-neutral-stroke-disabled);
-        border-bottom-color: var(--color-neutral-stroke-disabled);
-        border-left-color: var(--color-neutral-stroke-disabled);
+        @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled;
       }
     }
   }
@@ -886,7 +829,7 @@
   .root {
     @variant interactive {
       & :global(.group\/fui-text) {
-        color: currentColor;
+        @apply text-current;
       }
     }
   }

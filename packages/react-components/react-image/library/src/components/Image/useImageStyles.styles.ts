@@ -58,7 +58,7 @@ export const useImageStyles_unstable = (state: ImageState): ImageState => {
   // longer reports here — same as the react-divider and react-button conversions.
   state.root.className = clsx(
     styles.root,
-    'group/fui-image',
+    imageClassNames.root,
     block && styles.block,
     bordered && styles.bordered,
     shadow && styles.shadow,

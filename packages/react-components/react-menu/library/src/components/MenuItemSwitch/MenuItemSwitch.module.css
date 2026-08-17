@@ -110,8 +110,7 @@
     color: var(--color-neutral-stroke-accessible);
 
     @variant hover {
-      color: var(--color-neutral-stroke-accessible-hover);
-      border-color: var(--color-neutral-stroke-accessible-hover);
+      @apply border-neutral-stroke-accessible-hover text-neutral-stroke-accessible-hover;
     }
 
     /*
@@ -122,8 +121,7 @@
      */
     @variant hover {
       @variant active {
-        color: var(--color-neutral-stroke-accessible-pressed);
-        border-color: var(--color-neutral-stroke-accessible-pressed);
+        @apply border-neutral-stroke-accessible-pressed text-neutral-stroke-accessible-pressed;
       }
     }
 
@@ -181,22 +179,12 @@
     border-left-color: var(--color-transparent-stroke);
 
     @variant hover {
-      color: var(--color-neutral-foreground-inverted);
-      background-color: var(--color-compound-brand-background-hover);
-      border-top-color: var(--color-transparent-stroke-interactive);
-      border-right-color: var(--color-transparent-stroke-interactive);
-      border-bottom-color: var(--color-transparent-stroke-interactive);
-      border-left-color: var(--color-transparent-stroke-interactive);
+      @apply border-t-transparent-stroke-interactive border-r-transparent-stroke-interactive border-b-transparent-stroke-interactive border-l-transparent-stroke-interactive bg-compound-brand-background-hover text-neutral-foreground-inverted;
     }
 
     @variant hover {
       @variant active {
-        color: var(--color-neutral-foreground-inverted);
-        background-color: var(--color-compound-brand-background-pressed);
-        border-top-color: var(--color-transparent-stroke-interactive);
-        border-right-color: var(--color-transparent-stroke-interactive);
-        border-bottom-color: var(--color-transparent-stroke-interactive);
-        border-left-color: var(--color-transparent-stroke-interactive);
+        @apply border-t-transparent-stroke-interactive border-r-transparent-stroke-interactive border-b-transparent-stroke-interactive border-l-transparent-stroke-interactive bg-compound-brand-background-pressed text-neutral-foreground-inverted;
       }
     }
   }

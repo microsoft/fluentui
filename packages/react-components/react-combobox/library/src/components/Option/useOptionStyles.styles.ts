@@ -50,7 +50,7 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
   // `enabled-control` / `disabled-control` variants on `.root`; `selected && styles.selected`
   // is deleted outright because the compiled `selected` slice is `{}` — it applied nothing
   // before and applies nothing now.
-  state.root.className = clsx(styles.root, 'group/fui-option', state.root.className);
+  state.root.className = clsx(styles.root, optionClassNames.root, state.root.className);
 
   if (state.checkIcon) {
     state.checkIcon.className = clsx(

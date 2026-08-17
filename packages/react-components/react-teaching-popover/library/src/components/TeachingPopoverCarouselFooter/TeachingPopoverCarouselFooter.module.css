@@ -91,8 +91,7 @@
    * way.
    */
   .centered {
-    @apply justify-between;
-    @apply gap-horizontal-s;
+    @apply justify-between gap-horizontal-s;
   }
 
   .right-aligned {

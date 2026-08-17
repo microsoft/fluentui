@@ -101,15 +101,13 @@
      * no `@variant rtl` twin is required.
      */
     &:where([data-activedescendant-focusvisible])::after {
-      @apply pointer-events-none absolute;
+      @apply pointer-events-none absolute rounded-medium border-stroke-focus-2;
 
       content: '';
       z-index: 1;
 
       border-width: 2px;
       border-style: solid;
-      border-color: var(--color-stroke-focus-2);
-      border-radius: var(--radius-medium);
 
       top: -2px;
       bottom: -2px;
@@ -143,7 +141,7 @@
 
   /* from useStyles.checkIcon — arg #2 */
   .check-icon {
-    @apply shrink-0;
+    @apply -ms-horizontal-xxs me-horizontal-xxs shrink-0;
 
     font-size: var(--text-base-400);
 
@@ -156,14 +154,13 @@
      * (`Frg6f3: ["f18b9hdq","fn6qj8t"]`, `t21cq0: ["f1xk557c","f1h9en5y"]`) → logical
      * inline properties, negated named utility for the pull-left.
      */
-    @apply -ms-horizontal-xxs me-horizontal-xxs;
 
     visibility: hidden;
   }
 
   /* from useStyles.multiselectCheck — arg #3 */
   .multiselect-check {
-    @apply box-border flex h-16 w-16 items-center justify-center;
+    @apply box-border flex h-16 w-16 items-center justify-center rounded-small border-t-neutral-stroke-accessible border-r-neutral-stroke-accessible border-b-neutral-stroke-accessible border-l-neutral-stroke-accessible;
 
     /* `border: strokeWidthThin solid colorNeutralStrokeAccessible` expanded to longhands —
        args #5/#7 each override the four colors alone. `border-*-width` is not a
@@ -177,12 +174,6 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--color-neutral-stroke-accessible);
-    border-right-color: var(--color-neutral-stroke-accessible);
-    border-bottom-color: var(--color-neutral-stroke-accessible);
-    border-left-color: var(--color-neutral-stroke-accessible);
-
-    border-radius: var(--radius-small);
 
     fill: currentColor;
     font-size: calc(12px * var(--base-scale));
@@ -197,13 +188,7 @@
 
   /* from useStyles.selectedMultiselectCheck — arg #5 */
   .selected-multiselect-check {
-    background-color: var(--color-compound-brand-background);
-    color: var(--color-neutral-foreground-inverted);
-
-    border-top-color: var(--color-compound-brand-background);
-    border-right-color: var(--color-compound-brand-background);
-    border-bottom-color: var(--color-compound-brand-background);
-    border-left-color: var(--color-compound-brand-background);
+    @apply border-t-compound-brand-background border-r-compound-brand-background border-b-compound-brand-background border-l-compound-brand-background bg-compound-brand-background text-neutral-foreground-inverted;
   }
 
   /* from useStyles.checkDisabled — arg #6 */
@@ -217,10 +202,7 @@
 
   /* from useStyles.multiselectCheckDisabled — arg #7, the last style argument */
   .multiselect-check-disabled {
-    border-top-color: var(--color-neutral-foreground-disabled);
-    border-right-color: var(--color-neutral-foreground-disabled);
-    border-bottom-color: var(--color-neutral-foreground-disabled);
-    border-left-color: var(--color-neutral-foreground-disabled);
+    @apply border-t-neutral-foreground-disabled border-r-neutral-foreground-disabled border-b-neutral-foreground-disabled border-l-neutral-foreground-disabled;
   }
 }
 
@@ -246,10 +228,7 @@
         color: var(--color-neutral-foreground-1-hover);
 
         & .check-icon {
-          border-top-color: var(--color-neutral-foreground-1-hover);
-          border-right-color: var(--color-neutral-foreground-1-hover);
-          border-bottom-color: var(--color-neutral-foreground-1-hover);
-          border-left-color: var(--color-neutral-foreground-1-hover);
+          @apply border-t-neutral-foreground-1-hover border-r-neutral-foreground-1-hover border-b-neutral-foreground-1-hover border-l-neutral-foreground-1-hover;
         }
       }
 
@@ -258,10 +237,7 @@
         color: var(--color-neutral-foreground-1-pressed);
 
         & .check-icon {
-          border-top-color: var(--color-neutral-foreground-1-hover);
-          border-right-color: var(--color-neutral-foreground-1-hover);
-          border-bottom-color: var(--color-neutral-foreground-1-hover);
-          border-left-color: var(--color-neutral-foreground-1-hover);
+          @apply border-t-neutral-foreground-1-hover border-r-neutral-foreground-1-hover border-b-neutral-foreground-1-hover border-l-neutral-foreground-1-hover;
         }
       }
     }

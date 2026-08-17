@@ -110,12 +110,11 @@
    * the inline pair is symmetric, so it is written logical.
    */
   .icon {
-    @apply flex;
+    @apply -ms-horizontal-xxs -me-horizontal-xxs mt-vertical-none mb-vertical-none flex;
 
     line-height: 1;
 
     /* `margin: 0 calc(-1 * textPadding)` — textPadding = tokens.spacingHorizontalXXS */
-    @apply -ms-horizontal-xxs -me-horizontal-xxs mt-vertical-none mb-vertical-none;
 
     /* px literal → `--base-scale` (D4); exactly 12px at the default 16px root. */
     font-size: calc(12px * var(--base-scale));
@@ -164,24 +163,21 @@
     }
 
     @variant size-small {
-      @apply h-16 min-w-16;
+      @apply h-16 min-w-16 ps-horizontal-xs pe-horizontal-xs pt-vertical-none pb-vertical-none;
 
       /* `0 calc(spacingHorizontalXXS + textPadding)` = 2px + 2px = 4px = the XS step */
-      @apply ps-horizontal-xs pe-horizontal-xs pt-vertical-none pb-vertical-none;
     }
 
     @variant size-large {
-      @apply h-24 min-w-24;
+      @apply h-24 min-w-24 ps-horizontal-s-nudge pe-horizontal-s-nudge pt-vertical-none pb-vertical-none;
 
       /* `0 calc(spacingHorizontalXS + textPadding)` = 4px + 2px = 6px = the SNudge step */
-      @apply ps-horizontal-s-nudge pe-horizontal-s-nudge pt-vertical-none pb-vertical-none;
     }
 
     @variant size-extra-large {
-      @apply h-32 min-w-32;
+      @apply h-32 min-w-32 ps-horizontal-s pe-horizontal-s pt-vertical-none pb-vertical-none;
 
       /* `0 calc(spacingHorizontalSNudge + textPadding)` = 6px + 2px = 8px = the S step */
-      @apply ps-horizontal-s pe-horizontal-s pt-vertical-none pb-vertical-none;
     }
   }
 }
@@ -190,7 +186,7 @@
   /* arg #5 — from useRootStyles[shape]. `circular` is `{}` (set by the reset). */
 
   .square {
-    border-radius: var(--radius-none);
+    @apply rounded-none;
   }
 
   .rounded {
@@ -203,7 +199,7 @@
      * produced.
      */
     @variant size-small-or-below {
-      border-radius: var(--radius-small);
+      @apply rounded-small;
     }
   }
 }
@@ -242,195 +238,131 @@
   /* arg #9 — from useRootStyles[`${appearance}-${color}`]; beats arg #8's border colors. */
 
   .filled-brand {
-    background-color: var(--color-brand-background);
-    color: var(--color-neutral-foreground-on-brand);
+    @apply bg-brand-background text-neutral-foreground-on-brand;
   }
 
   .filled-danger {
-    background-color: var(--color-palette-red-background-3);
-    color: var(--color-neutral-foreground-on-brand);
+    @apply bg-palette-red-background-3 text-neutral-foreground-on-brand;
   }
 
   .filled-important {
-    background-color: var(--color-neutral-foreground-1);
-    color: var(--color-neutral-background-1);
+    @apply bg-neutral-foreground-1 text-neutral-background-1;
   }
 
   .filled-informative {
-    background-color: var(--color-neutral-background-5);
-    color: var(--color-neutral-foreground-3);
+    @apply bg-neutral-background-5 text-neutral-foreground-3;
   }
 
   .filled-severe {
-    background-color: var(--color-palette-dark-orange-background-3);
-    color: var(--color-neutral-foreground-on-brand);
+    @apply bg-palette-dark-orange-background-3 text-neutral-foreground-on-brand;
   }
 
   .filled-subtle {
-    background-color: var(--color-neutral-background-1);
-    color: var(--color-neutral-foreground-1);
+    @apply bg-neutral-background-1 text-neutral-foreground-1;
   }
 
   .filled-success {
-    background-color: var(--color-palette-green-background-3);
-    color: var(--color-neutral-foreground-on-brand);
+    @apply bg-palette-green-background-3 text-neutral-foreground-on-brand;
   }
 
   .filled-warning {
-    background-color: var(--color-palette-yellow-background-3);
-    color: var(--color-neutral-foreground-1-static);
+    @apply bg-palette-yellow-background-3 text-neutral-foreground-1-static;
   }
 
   .ghost-brand {
-    color: var(--color-brand-foreground-1);
+    @apply text-brand-foreground-1;
   }
 
   .ghost-danger {
-    color: var(--color-palette-red-foreground-3);
+    @apply text-palette-red-foreground-3;
   }
 
   .ghost-important {
-    color: var(--color-neutral-foreground-1);
+    @apply text-neutral-foreground-1;
   }
 
   .ghost-informative {
-    color: var(--color-neutral-foreground-3);
+    @apply text-neutral-foreground-3;
   }
 
   .ghost-severe {
-    color: var(--color-palette-dark-orange-foreground-3);
+    @apply text-palette-dark-orange-foreground-3;
   }
 
   .ghost-subtle {
-    color: var(--color-neutral-foreground-static-inverted);
+    @apply text-neutral-foreground-static-inverted;
   }
 
   .ghost-success {
-    color: var(--color-palette-green-foreground-3);
+    @apply text-palette-green-foreground-3;
   }
 
   .ghost-warning {
-    color: var(--color-palette-yellow-foreground-2);
+    @apply text-palette-yellow-foreground-2;
   }
 
   .outline-brand {
-    color: var(--color-brand-foreground-1);
+    @apply text-brand-foreground-1;
   }
 
   .outline-danger {
-    color: var(--color-palette-red-foreground-3);
-    border-top-color: var(--color-palette-red-border-2);
-    border-right-color: var(--color-palette-red-border-2);
-    border-bottom-color: var(--color-palette-red-border-2);
-    border-left-color: var(--color-palette-red-border-2);
+    @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2 text-palette-red-foreground-3;
   }
 
   .outline-important {
-    color: var(--color-neutral-foreground-3);
-    border-top-color: var(--color-neutral-stroke-accessible);
-    border-right-color: var(--color-neutral-stroke-accessible);
-    border-bottom-color: var(--color-neutral-stroke-accessible);
-    border-left-color: var(--color-neutral-stroke-accessible);
+    @apply border-t-neutral-stroke-accessible border-r-neutral-stroke-accessible border-b-neutral-stroke-accessible border-l-neutral-stroke-accessible text-neutral-foreground-3;
   }
 
   .outline-informative {
-    color: var(--color-neutral-foreground-3);
-    border-top-color: var(--color-neutral-stroke-2);
-    border-right-color: var(--color-neutral-stroke-2);
-    border-bottom-color: var(--color-neutral-stroke-2);
-    border-left-color: var(--color-neutral-stroke-2);
+    @apply border-t-neutral-stroke-2 border-r-neutral-stroke-2 border-b-neutral-stroke-2 border-l-neutral-stroke-2 text-neutral-foreground-3;
   }
 
   .outline-severe {
-    color: var(--color-palette-dark-orange-foreground-3);
+    @apply text-palette-dark-orange-foreground-3;
   }
 
   .outline-subtle {
-    color: var(--color-neutral-foreground-static-inverted);
+    @apply text-neutral-foreground-static-inverted;
   }
 
   .outline-success {
-    color: var(--color-palette-green-foreground-3);
-    border-top-color: var(--color-palette-green-border-2);
-    border-right-color: var(--color-palette-green-border-2);
-    border-bottom-color: var(--color-palette-green-border-2);
-    border-left-color: var(--color-palette-green-border-2);
+    @apply border-t-palette-green-border-2 border-r-palette-green-border-2 border-b-palette-green-border-2 border-l-palette-green-border-2 text-palette-green-foreground-3;
   }
 
   .outline-warning {
-    color: var(--color-palette-yellow-foreground-2);
+    @apply text-palette-yellow-foreground-2;
   }
 
   .tint-brand {
-    background-color: var(--color-brand-background-2);
-    color: var(--color-brand-foreground-2);
-    border-top-color: var(--color-brand-stroke-2);
-    border-right-color: var(--color-brand-stroke-2);
-    border-bottom-color: var(--color-brand-stroke-2);
-    border-left-color: var(--color-brand-stroke-2);
+    @apply border-t-brand-stroke-2 border-r-brand-stroke-2 border-b-brand-stroke-2 border-l-brand-stroke-2 bg-brand-background-2 text-brand-foreground-2;
   }
 
   .tint-danger {
-    background-color: var(--color-palette-red-background-1);
-    color: var(--color-palette-red-foreground-1);
-    border-top-color: var(--color-palette-red-border-1);
-    border-right-color: var(--color-palette-red-border-1);
-    border-bottom-color: var(--color-palette-red-border-1);
-    border-left-color: var(--color-palette-red-border-1);
+    @apply border-t-palette-red-border-1 border-r-palette-red-border-1 border-b-palette-red-border-1 border-l-palette-red-border-1 bg-palette-red-background-1 text-palette-red-foreground-1;
   }
 
   .tint-important {
-    background-color: var(--color-neutral-foreground-3);
-    color: var(--color-neutral-background-1);
-    border-top-color: var(--color-transparent-stroke);
-    border-right-color: var(--color-transparent-stroke);
-    border-bottom-color: var(--color-transparent-stroke);
-    border-left-color: var(--color-transparent-stroke);
+    @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke bg-neutral-foreground-3 text-neutral-background-1;
   }
 
   .tint-informative {
-    background-color: var(--color-neutral-background-4);
-    color: var(--color-neutral-foreground-3);
-    border-top-color: var(--color-neutral-stroke-2);
-    border-right-color: var(--color-neutral-stroke-2);
-    border-bottom-color: var(--color-neutral-stroke-2);
-    border-left-color: var(--color-neutral-stroke-2);
+    @apply border-t-neutral-stroke-2 border-r-neutral-stroke-2 border-b-neutral-stroke-2 border-l-neutral-stroke-2 bg-neutral-background-4 text-neutral-foreground-3;
   }
 
   .tint-severe {
-    background-color: var(--color-palette-dark-orange-background-1);
-    color: var(--color-palette-dark-orange-foreground-1);
-    border-top-color: var(--color-palette-dark-orange-border-1);
-    border-right-color: var(--color-palette-dark-orange-border-1);
-    border-bottom-color: var(--color-palette-dark-orange-border-1);
-    border-left-color: var(--color-palette-dark-orange-border-1);
+    @apply border-t-palette-dark-orange-border-1 border-r-palette-dark-orange-border-1 border-b-palette-dark-orange-border-1 border-l-palette-dark-orange-border-1 bg-palette-dark-orange-background-1 text-palette-dark-orange-foreground-1;
   }
 
   .tint-subtle {
-    background-color: var(--color-neutral-background-1);
-    color: var(--color-neutral-foreground-3);
-    border-top-color: var(--color-neutral-stroke-2);
-    border-right-color: var(--color-neutral-stroke-2);
-    border-bottom-color: var(--color-neutral-stroke-2);
-    border-left-color: var(--color-neutral-stroke-2);
+    @apply border-t-neutral-stroke-2 border-r-neutral-stroke-2 border-b-neutral-stroke-2 border-l-neutral-stroke-2 bg-neutral-background-1 text-neutral-foreground-3;
   }
 
   .tint-success {
-    background-color: var(--color-palette-green-background-1);
-    color: var(--color-palette-green-foreground-1);
-    border-top-color: var(--color-palette-green-border-1);
-    border-right-color: var(--color-palette-green-border-1);
-    border-bottom-color: var(--color-palette-green-border-1);
-    border-left-color: var(--color-palette-green-border-1);
+    @apply border-t-palette-green-border-1 border-r-palette-green-border-1 border-b-palette-green-border-1 border-l-palette-green-border-1 bg-palette-green-background-1 text-palette-green-foreground-1;
   }
 
   .tint-warning {
-    background-color: var(--color-palette-yellow-background-1);
-    color: var(--color-palette-yellow-foreground-1);
-    border-top-color: var(--color-palette-yellow-border-1);
-    border-right-color: var(--color-palette-yellow-border-1);
-    border-bottom-color: var(--color-palette-yellow-border-1);
-    border-left-color: var(--color-palette-yellow-border-1);
+    @apply border-t-palette-yellow-border-1 border-r-palette-yellow-border-1 border-b-palette-yellow-border-1 border-l-palette-yellow-border-1 bg-palette-yellow-background-1 text-palette-yellow-foreground-1;
   }
 }
 

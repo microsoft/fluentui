@@ -47,6 +47,6 @@ export const useTreeStyles_unstable = (state: TreeState): TreeState => {
   // and there are none left here. The state-mutation pattern itself is deliberately kept —
   // the mixed-mode sibling seam and the customStyleHooks contract depend on the shared
   // object, and its removal is a single Phase 3 sweep (DECISIONS.md D14).
-  state.root.className = clsx(styles.root, 'group/fui-tree', isSubTree && styles.subtree, state.root.className);
+  state.root.className = clsx(styles.root, treeClassNames.root, isSubTree && styles.subtree, state.root.className);
   return state;
 };

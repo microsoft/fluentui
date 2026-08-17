@@ -24,7 +24,7 @@ export const useMenuGridGroupHeaderStyles_unstable = (state: MenuGridGroupHeader
   // `:scope` polyfill throws on it under jsdom (DECISIONS.md D15.1) — and `styles.root` is
   // the token that guarantees it. The BEM static that used to hold that position is gone
   // (DECISIONS.md D16.1).
-  state.root.className = clsx(styles.root, 'group/fui-menu-grid-group-header', state.root.className);
+  state.root.className = clsx(styles.root, menuGridGroupHeaderClassNames.root, state.root.className);
 
   return state;
 };

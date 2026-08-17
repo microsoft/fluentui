@@ -81,41 +81,42 @@
     }
 
     & .menu-button {
+      @apply min-w-24;
+
       border-inline-start-width: 0;
       border-start-start-radius: 0;
       border-end-start-radius: 0;
 
       /* WCAG minimum target size for pointer targets that are immediately adjacent to
          other targets: https://w3c.github.io/wcag/guidelines/22/#target-size-minimum */
-      @apply min-w-24;
     }
   }
 
   /* from useRootStyles.primary — arg #3 */
   .primary {
     & .primary-action-button {
-      border-inline-end-color: var(--color-neutral-stroke-on-brand);
+      @apply border-e-neutral-stroke-on-brand;
     }
   }
 
   /* from useRootStyles.subtle — arg #3 */
   .subtle {
     & .primary-action-button {
-      border-inline-end-color: var(--color-transparent-background);
+      @apply border-e-transparent-background;
     }
   }
 
   /* from useRootStyles.transparent — arg #3 */
   .transparent {
     & .primary-action-button {
-      border-inline-end-color: var(--color-transparent-background);
+      @apply border-e-transparent-background;
     }
   }
 
   /* from useRootStyles.disabled — arg #4 */
   .disabled {
     & .primary-action-button {
-      border-inline-end-color: var(--color-neutral-stroke-disabled);
+      @apply border-e-neutral-stroke-disabled;
     }
   }
 }
@@ -128,7 +129,7 @@
   .primary {
     @variant hover {
       & .primary-action-button {
-        border-inline-end-color: var(--color-neutral-stroke-on-brand);
+        @apply border-e-neutral-stroke-on-brand;
       }
     }
   }
@@ -137,7 +138,7 @@
   .subtle {
     @variant hover {
       & .primary-action-button {
-        border-inline-end-color: var(--color-transparent-background-hover);
+        @apply border-e-transparent-background-hover;
       }
     }
   }
@@ -146,7 +147,7 @@
   .transparent {
     @variant hover {
       & .primary-action-button {
-        border-inline-end-color: var(--color-transparent-background-hover);
+        @apply border-e-transparent-background-hover;
       }
     }
   }
@@ -155,7 +156,7 @@
   .disabled {
     @variant hover {
       & .primary-action-button {
-        border-inline-end-color: var(--color-neutral-stroke-disabled);
+        @apply border-e-neutral-stroke-disabled;
       }
     }
   }
@@ -169,7 +170,7 @@
   .primary {
     @variant hover-active {
       & .primary-action-button {
-        border-inline-end-color: var(--color-neutral-stroke-on-brand);
+        @apply border-e-neutral-stroke-on-brand;
       }
     }
   }
@@ -178,7 +179,7 @@
   .subtle {
     @variant hover-active {
       & .primary-action-button {
-        border-inline-end-color: var(--color-transparent-background-pressed);
+        @apply border-e-transparent-background-pressed;
       }
     }
   }
@@ -187,7 +188,7 @@
   .transparent {
     @variant hover-active {
       & .primary-action-button {
-        border-inline-end-color: var(--color-transparent-background-pressed);
+        @apply border-e-transparent-background-pressed;
       }
     }
   }
@@ -196,7 +197,7 @@
   .disabled {
     @variant hover-active {
       & .primary-action-button {
-        border-inline-end-color: var(--color-neutral-stroke-disabled);
+        @apply border-e-neutral-stroke-disabled;
       }
     }
   }

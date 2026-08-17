@@ -61,7 +61,7 @@ export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): Over
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-overlay-drawer',
+    overlayDrawerClassNames.root,
     state.hasMountNodeElement && styles.absolute,
     state.root.className,
   );

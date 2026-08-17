@@ -46,7 +46,7 @@ export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): Swatch
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-swatch-picker',
+    swatchPickerClassNames.root,
     state.isGrid ? styles.grid : styles.row,
     state.spacing === 'small' ? styles['spacing-small'] : styles['spacing-medium'],
     state.root.className,

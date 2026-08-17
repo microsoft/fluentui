@@ -67,7 +67,7 @@
 @layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
   .root {
-    @apply pt-vertical-s-nudge;
+    @apply pt-vertical-s-nudge text-neutral-foreground-1;
 
     grid-column-start: 2;
     grid-column-end: 3;
@@ -75,7 +75,6 @@
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-300);
-    color: var(--color-neutral-foreground-1);
 
     /* Tailwind's `break-words` is `overflow-wrap: break-word`, a DIFFERENT property —
        the compiled atomic sets `word-break`, so this stays a literal declaration. */
@@ -84,7 +83,7 @@
 
   /* from useSubtitleBaseClassName (makeResetStyles) — subtitle arg #2 */
   .subtitle {
-    @apply pt-vertical-xs;
+    @apply pt-vertical-xs text-neutral-foreground-2;
 
     grid-column-start: 2;
     grid-column-end: 3;
@@ -93,7 +92,6 @@
     font-weight: var(--font-weight-regular);
     /* see the header note — the source really does use the FONT SIZE token here */
     line-height: var(--text-base-200);
-    color: var(--color-neutral-foreground-2);
   }
 }
 
@@ -107,10 +105,10 @@
    * separate Griffel slices (which happen to carry the same colour).
    */
   .root-inverted {
-    color: var(--color-neutral-foreground-inverted-2);
+    @apply text-neutral-foreground-inverted-2;
   }
 
   .subtitle-inverted {
-    color: var(--color-neutral-foreground-inverted-2);
+    @apply text-neutral-foreground-inverted-2;
   }
 }

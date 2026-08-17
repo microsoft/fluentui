@@ -67,7 +67,7 @@ export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): 
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-tag-picker-option',
+        tagPickerOptionClassNames.root,
         state.secondaryContent && styles['with-secondary-content'],
         state.root.className,
       ),

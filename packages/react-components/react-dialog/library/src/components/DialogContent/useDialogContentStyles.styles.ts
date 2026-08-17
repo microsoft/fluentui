@@ -29,7 +29,7 @@ export const useDialogContentStyles_unstable = (state: DialogContentState): Dial
   // `group/fui-dialog-content` survives that escaping into an invalid selector, throwing a
   // render-time `AggregateError` under jsdom (DECISIONS.md D15.1). Before D16 the
   // `fui-DialogContent` static held that position; `styles.root` holds it now.
-  state.root.className = clsx(styles.root, 'group/fui-dialog-content', state.root.className);
+  state.root.className = clsx(styles.root, dialogContentClassNames.root, state.root.className);
 
   return state;
 };

@@ -70,8 +70,7 @@
 @layer fui.base {
   /* arg #2 — from useStyles (makeResetStyles) */
   .root {
-    @apply relative box-border flex w-full max-w-full items-center justify-start;
-    @apply gap-x-horizontal-s px-horizontal-xxl pt-vertical-l pb-vertical-xxl;
+    @apply relative box-border flex w-full max-w-full items-center justify-start gap-x-horizontal-s px-horizontal-xxl pt-vertical-l pb-vertical-xxl;
 
     z-index: 2;
   }
@@ -83,14 +82,13 @@
   .root {
     @variant not-scroll-state-none {
       &::before {
-        @apply absolute h-thin;
+        @apply absolute h-thin bg-neutral-stroke-1;
 
         content: '';
         inset-inline-start: 0;
         inset-inline-end: 0;
         top: 0;
         opacity: 0;
-        background-color: var(--color-neutral-stroke-1);
         transition-duration: var(--duration-normal);
         transition-property: opacity;
         transition-timing-function: var(--ease-easy-ease);

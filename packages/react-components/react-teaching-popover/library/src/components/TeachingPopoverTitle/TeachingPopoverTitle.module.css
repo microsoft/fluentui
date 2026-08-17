@@ -69,22 +69,18 @@
 @layer fui.components.l1 {
   /* from useStyles.root — root arg #2 */
   .root {
-    @apply flex flex-row justify-between;
+    @apply mt-horizontal-none mb-horizontal-none flex flex-row justify-between pb-vertical-s text-neutral-foreground-1;
 
     font-size: var(--text-base-400);
     font-weight: var(--font-weight-semibold);
-    color: var(--color-neutral-foreground-1);
     line-height: var(--leading-base-400);
-
-    @apply pb-vertical-s;
-    @apply mt-horizontal-none mb-horizontal-none;
   }
 }
 
 @layer fui.components.l1 {
   /* from useStyles.rootBrand — root arg #3 */
   .brand {
-    color: var(--color-neutral-foreground-on-brand);
+    @apply text-neutral-foreground-on-brand;
   }
 }
 
@@ -113,8 +109,9 @@
 
     /* from createCustomFocusIndicatorStyle({ outline, borderRadius, borderColor('transparent') }) */
     @variant focus-visible-fui {
+      @apply rounded-medium;
+
       outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
-      border-radius: var(--radius-medium);
 
       border-block-start-color: transparent;
       border-inline-end-color: transparent;
@@ -127,6 +124,6 @@
 @layer fui.components.l1 {
   /* from useStyles.dismissBrand — dismissButton arg #3 */
   .dismiss-brand {
-    color: var(--color-neutral-foreground-on-brand);
+    @apply text-neutral-foreground-on-brand;
   }
 }

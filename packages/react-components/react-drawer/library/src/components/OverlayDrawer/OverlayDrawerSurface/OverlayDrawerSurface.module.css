@@ -56,20 +56,19 @@
    * an inset, so the expansion is inert beyond making the emitted CSS longhand-only.
    */
   .backdrop {
-    @apply fixed;
+    @apply fixed bg-background-overlay;
 
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: var(--color-background-overlay);
   }
 }
 
 @layer fui.components.l1 {
   /* arg #2 — from useBackdropStyles.nested */
   .nested {
-    background-color: var(--color-transparent-background);
+    @apply bg-transparent-background;
   }
 
   /* arg #3 — from useBackdropStyles.drawerHidden */

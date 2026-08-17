@@ -61,7 +61,7 @@ export const useNavDrawerBodyStyles_unstable = (state: NavDrawerBodyState): NavD
   // string position.
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-nav-drawer-body', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, navDrawerBodyClassNames.root, state.root.className) },
   };
 
   return state;

@@ -56,7 +56,7 @@ export const useTableCellStyles_unstable = (state: TableCellState): TableCellSta
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
   state.root.className = clsx(
     styles.root,
-    'group/fui-table-cell',
+    tableCellClassNames.root,
     styles[`${layout}-root`],
     styles[`${layout}-${state.size}`],
     state.root.className,

@@ -101,11 +101,11 @@
 @layer fui.components.l1 {
   /* arg #3 — from useShapeStyles, applied to the root */
   .rounded {
-    border-radius: var(--radius-medium);
+    @apply rounded-medium;
   }
 
   .square {
-    border-radius: var(--radius-none);
+    @apply rounded-none;
   }
 }
 
@@ -138,9 +138,10 @@
     }
 
     &::before {
+      @apply rounded-circular;
+
       position: absolute;
       inset: 0px;
-      border-radius: var(--radius-circular);
       box-sizing: border-box;
       content: '';
       border: var(--spacing-thick) solid var(--color-neutral-background-1);

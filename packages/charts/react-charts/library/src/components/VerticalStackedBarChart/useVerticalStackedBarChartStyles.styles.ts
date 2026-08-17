@@ -64,7 +64,7 @@ export const useVerticalStackedBarChartStyles = (
     // greppable, sortable by prettier-plugin-tailwindcss, and it keeps the `@deprecated`
     // constant from being self-referenced (which the `deprecation` lint rule reports as an
     // error). Same form as react-divider and this package's VerticalBarChart.
-    root: clsx(styles.root, 'group/fui-vertical-stacked-bar-chart', props.styles?.root),
+    root: clsx(styles.root, verticalstackedbarchartClassNames.root, props.styles?.root),
     // `props.href ? 'pointer' : 'default'` is PRESERVED VERBATIM from the mergeClasses
     // call it replaces. The two tokens are class NAMES no stylesheet defines (almost
     // certainly an upstream bug — the author meant cursor values, and the `<rect>`s set

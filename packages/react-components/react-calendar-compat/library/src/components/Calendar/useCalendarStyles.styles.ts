@@ -51,7 +51,7 @@ export const useCalendarStyles_unstable = (props: CalendarStyleProps): CalendarS
     // mergeClasses() argument order this replaces.
     root: clsx(
       styles.root,
-      'group/fui-calendar',
+      calendarClassNames.root,
       styles.normalize,
       !isMonthPickerVisible && styles['month-picker-not-visible'],
       isDayPickerVisible && isMonthPickerVisible && !showWeekNumbers && styles['day-and-month-pickers-visible'],

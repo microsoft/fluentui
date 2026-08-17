@@ -45,8 +45,9 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    /* `margin: 4px -5px 4px -5px` expanded to the two logical axes */
     @apply -mx-5 my-vertical-xs w-auto;
+
+    /* `margin: 4px -5px 4px -5px` expanded to the two logical axes */
 
     /* `border-bottom: <strokeWidthThin> solid <colorNeutralStroke2>` expanded to longhands */
     border-block-end-width: var(--spacing-thin);

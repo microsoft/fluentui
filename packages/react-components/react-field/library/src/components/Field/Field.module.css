@@ -122,10 +122,10 @@
    * `...typographyStyles.caption1` is expanded to the four longhands it compiles to.
    */
   .secondary-text {
-    /* tokens.spacingVerticalXXS → named spacing utility (D4 amendment) */
-    @apply mt-vertical-xxs;
+    @apply mt-vertical-xxs text-neutral-foreground-3;
 
-    color: var(--color-neutral-foreground-3);
+    /* tokens.spacingVerticalXXS → named spacing utility (D4 amendment) */
+
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
@@ -134,7 +134,7 @@
 
   /* from useValidationMessageIconBaseClassName (makeResetStyles) */
   .validation-message-icon {
-    @apply inline-block;
+    @apply me-horizontal-xs inline-block;
 
     /* `iconSize` = 12px; font-size is not spacing-powered, so it is a base-scale literal */
     font-size: calc(12px * var(--base-scale));
@@ -148,7 +148,6 @@
     margin-inline-start: calc(-12px * var(--base-scale) - 4px * var(--base-scale));
 
     /* tokens.spacingHorizontalXS → named spacing utility */
-    @apply me-horizontal-xs;
 
     /* Line height of 0 prevents the vertical-align from affecting the text's line height. */
     line-height: 0;
@@ -202,22 +201,22 @@
    * `color` prop, so it rides module classes rather than a data-attribute (D3).
    */
   .validation-message-icon-error {
-    color: var(--color-palette-red-foreground-1);
+    @apply text-palette-red-foreground-1;
   }
 
   .validation-message-icon-warning {
-    color: var(--color-palette-dark-orange-foreground-1);
+    @apply text-palette-dark-orange-foreground-1;
   }
 
   .validation-message-icon-success {
-    color: var(--color-palette-green-foreground-1);
+    @apply text-palette-green-foreground-1;
   }
 }
 
 @layer fui.components.l1 {
   /* from useSecondaryTextStyles.error — validationMessage arg #3 */
   .secondary-text-error {
-    color: var(--color-palette-red-foreground-1);
+    @apply text-palette-red-foreground-1;
   }
 
   /*
@@ -247,8 +246,9 @@
     /* from useLabelStyles.horizontal — label arg #3 */
     @variant horizontal {
       & .label {
-        /* tokens.spacingVerticalSNudge / spacingHorizontalM → named spacing utilities */
         @apply me-horizontal-m pt-vertical-s-nudge pb-vertical-s-nudge;
+
+        /* tokens.spacingVerticalSNudge / spacingHorizontalM → named spacing utilities */
 
         grid-row-start: 1;
         grid-row-end: -1;
@@ -259,8 +259,9 @@
     @variant horizontal {
       @variant size-small {
         & .label {
-          /* tokens.spacingVerticalXS → named spacing utility */
           @apply pt-vertical-xs pb-vertical-xs;
+
+          /* tokens.spacingVerticalXS → named spacing utility */
         }
       }
     }
@@ -283,8 +284,9 @@
     /* from useLabelStyles.vertical — label arg #6 */
     @variant vertical {
       & .label {
-        /* tokens.spacingVerticalXXS → named spacing utility */
         @apply mb-vertical-xxs pt-vertical-xxs pb-vertical-xxs;
+
+        /* tokens.spacingVerticalXXS → named spacing utility */
       }
     }
 
@@ -292,8 +294,9 @@
     @variant vertical {
       @variant size-large {
         & .label {
-          /* 1px has no spacing step → numeric fallback; mb reads spacingVerticalXS */
           @apply mb-vertical-xs pt-1 pb-1;
+
+          /* 1px has no spacing step → numeric fallback; mb reads spacingVerticalXS */
         }
       }
     }

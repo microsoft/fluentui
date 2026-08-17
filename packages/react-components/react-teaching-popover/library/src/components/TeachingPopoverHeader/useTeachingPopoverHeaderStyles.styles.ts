@@ -43,7 +43,7 @@ export const useTeachingPopoverHeaderStyles_unstable = (
   // TeachingPopoverHeader.module.css, not by the order of these arguments.
   state.root.className = clsx(
     styles.root,
-    'group/fui-teaching-popover-header',
+    teachingPopoverHeaderClassNames.root,
     isBrand && styles.brand,
     state.root.className,
   );

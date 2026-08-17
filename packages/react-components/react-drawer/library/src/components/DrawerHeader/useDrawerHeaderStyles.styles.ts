@@ -64,7 +64,7 @@ export const useDrawerHeaderStyles_unstable = (state: DrawerHeaderState): Drawer
   //
   // The two separator slices carry no class of their own any more — they are
   // `data-scroll-state` selectors inside `.root` — so this call has no conditional argument.
-  state.root.className = clsx(styles.root, 'group/fui-drawer-header', state.root.className);
+  state.root.className = clsx(styles.root, drawerHeaderClassNames.root, state.root.className);
 
   return state;
 };

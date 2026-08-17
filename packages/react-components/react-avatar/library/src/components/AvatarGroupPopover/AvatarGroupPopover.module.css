@@ -149,24 +149,20 @@
    * below (`layout === 'pie'` vs `layout !== 'pie'`), so their relative order is inert.
    */
   .trigger-button-pie {
+    @apply border-s-transparent-stroke border-e-transparent-stroke bg-transparent-background;
+
     color: transparent;
-    background-color: var(--color-transparent-background);
 
     border-block-start-color: var(--color-transparent-stroke);
-    border-inline-end-color: var(--color-transparent-stroke);
     border-block-end-color: var(--color-transparent-stroke);
-    border-inline-start-color: var(--color-transparent-stroke);
   }
 
   /* arg 7 — from useTriggerButtonStyles.selected */
   .trigger-button-selected {
-    color: var(--color-neutral-foreground-1-selected);
-    background-color: var(--color-neutral-background-1-selected);
+    @apply border-s-neutral-stroke-1-selected border-e-neutral-stroke-1-selected bg-neutral-background-1-selected text-neutral-foreground-1-selected;
 
     border-block-start-color: var(--color-neutral-stroke-1-selected);
-    border-inline-end-color: var(--color-neutral-stroke-1-selected);
     border-block-end-color: var(--color-neutral-stroke-1-selected);
-    border-inline-start-color: var(--color-neutral-stroke-1-selected);
   }
 }
 
@@ -227,23 +223,17 @@
    */
   .trigger-button-interactive {
     @variant hover {
-      color: var(--color-neutral-foreground-1-hover);
-      background-color: var(--color-neutral-background-1-hover);
+      @apply border-s-neutral-stroke-1-hover border-e-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
 
       border-block-start-color: var(--color-neutral-stroke-1-hover);
-      border-inline-end-color: var(--color-neutral-stroke-1-hover);
       border-block-end-color: var(--color-neutral-stroke-1-hover);
-      border-inline-start-color: var(--color-neutral-stroke-1-hover);
     }
 
     @variant active {
-      color: var(--color-neutral-foreground-1-pressed);
-      background-color: var(--color-neutral-background-1-pressed);
+      @apply border-s-neutral-stroke-1-pressed border-e-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
 
       border-block-start-color: var(--color-neutral-stroke-1-pressed);
-      border-inline-end-color: var(--color-neutral-stroke-1-pressed);
       border-block-end-color: var(--color-neutral-stroke-1-pressed);
-      border-inline-start-color: var(--color-neutral-stroke-1-pressed);
     }
   }
 }

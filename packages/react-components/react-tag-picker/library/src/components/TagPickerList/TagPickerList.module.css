@@ -28,7 +28,9 @@
  *
  * i.e. these two slices are applied OVER another component's hook output, so they belong to
  * the composition altitude. This is load-bearing, not bookkeeping: `useListboxStyles_unstable`
- * sets `display: flex` on this same element (`.root { @apply … flex flex-col … }` in
+ * sets `display: flex` on this same element (`.root {
+    @apply … flex flex-col …;
+  }` in
  * Listbox.module.css, compiled `.f22iagw`), and `collapsed`'s `display: none` HAS to beat it or
  * a closed TagPickerList stays visible. In l1 the winner would depend on which module's rules
  * happen to be emitted first; in l2 it is guaranteed, because a cascade-layer comparison
@@ -47,10 +49,9 @@
 @layer fui.components.l2 {
   /* from useStyles.root */
   .root {
-    @apply box-border;
+    @apply box-border rounded-medium;
 
     box-shadow: var(--shadow-16);
-    border-radius: var(--radius-medium);
     max-height: 80vh;
   }
 

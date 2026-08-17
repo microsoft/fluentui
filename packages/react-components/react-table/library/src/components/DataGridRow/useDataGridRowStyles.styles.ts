@@ -62,7 +62,7 @@ export const useDataGridRowStyles_unstable = (state: DataGridRowState): DataGrid
     ...state,
     root: {
       ...state.root,
-      className: clsx('group/fui-data-grid-row', isSubtle && styles['subtle-selection'], state.root.className),
+      className: clsx(dataGridRowClassNames.root, isSubtle && styles['subtle-selection'], state.root.className),
     },
   };
 

@@ -43,7 +43,7 @@ export const useDataGridHeaderStyles_unstable = (state: DataGridHeaderState): Da
   // `classList[0]`, where nwsapi's jsdom `:scope` polyfill throws on the `/` (D15.1 /
   // D16.2). It also keeps the consumer className last. The swap is cascade-inert: this
   // component contributes no declarations, and `@layer fui.*` decides every tie (D2).
-  state = { ...state, root: { ...state.root, className: clsx('group/fui-data-grid-header', state.root.className) } };
+  state = { ...state, root: { ...state.root, className: clsx(dataGridHeaderClassNames.root, state.root.className) } };
 
   state = useTableHeaderStyles_unstable(state);
 

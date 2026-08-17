@@ -105,9 +105,8 @@
   /* from usePrimaryTextBaseClassName (makeResetStyles) — compiled `.rvj41k9`,
      `...typographyStyles.body1` expanded to the four longhands it compiles to */
   .primary-text-base {
-    @apply block;
+    @apply block text-neutral-foreground-1;
 
-    color: var(--color-neutral-foreground-1);
     font-family: var(--font-base);
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-regular);
@@ -117,9 +116,8 @@
   /* from useOptionalTextBaseClassName (makeResetStyles) — compiled `.rp1pf9e`,
      `...typographyStyles.caption1` expanded */
   .optional-text-base {
-    @apply block;
+    @apply block text-neutral-foreground-2;
 
-    color: var(--color-neutral-foreground-2);
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);

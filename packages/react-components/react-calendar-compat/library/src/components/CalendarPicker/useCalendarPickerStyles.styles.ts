@@ -53,7 +53,7 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
     // carries no cascade meaning — the `@layer fui.*` order in CalendarPicker.module.css
     // decides every tie, and that file reproduces this same order, INCLUDING the documented
     // `normalize`-before-`base` inversion.
-    root: clsx(styles.normalize, 'group/fui-calendar-picker', styles.root, className),
+    root: clsx(styles.normalize, calendarPickerClassNames.root, styles.root, className),
     headerContainer: styles['header-container'],
     currentItemButton: clsx(
       styles['current-item-button'],

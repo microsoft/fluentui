@@ -88,7 +88,7 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   // ("already in base reset styles"); the module emits no rule for it.
   state.root.className = clsx(
     styles.root,
-    'group/fui-message-bar',
+    messageBarClassNames.root,
     shape === 'square' && styles.square,
     state.root.className,
   );

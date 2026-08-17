@@ -60,7 +60,7 @@ export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBody
   // Cascade priority is decided by the `@layer fui.*` order in TeachingPopoverBody.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-teaching-popover-body', state.root.className);
+  state.root.className = clsx(styles.root, teachingPopoverBodyClassNames.root, state.root.className);
 
   if (state.media) {
     // No marker here: D15.1 puts exactly one marker on the component's OUTERMOST slot.

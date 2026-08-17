@@ -78,7 +78,7 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   // deliberately hoisted out of `fui.base`.
   state.root.className = clsx(
     styles.root,
-    'group/fui-color-swatch',
+    colorSwatchClassNames.root,
     styles[shape],
     state.selected && styles.selected,
     state.root.className,

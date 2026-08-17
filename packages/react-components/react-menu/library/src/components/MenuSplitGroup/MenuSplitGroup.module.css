@@ -112,12 +112,12 @@
       border-end-start-radius: 0;
 
       &::before {
+        @apply h-20 w-thin bg-neutral-stroke-1;
+
         /* `strokeWidthThin` on a `width`: that IS a spacing-powered Tailwind family, so it
            takes the utility rather than a `var(--spacing-thin)` reference (D4 addendum). */
-        @apply h-20 w-thin;
 
         content: '';
-        background-color: var(--color-neutral-stroke-1);
       }
     }
   }

@@ -78,7 +78,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the label slot's rules
   // live in `fui.components.l2`.
-  state.root.className = clsx(styles.root, 'group/fui-spinner', state.root.className);
+  state.root.className = clsx(styles.root, spinnerClassNames.root, state.root.className);
 
   // Sub-slots: the statics are gone and the hashed module class leads each one. No marker
   // rides a sub-slot, so D15.1 is not in play here (statics-removal design §4c).

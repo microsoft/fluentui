@@ -44,7 +44,7 @@ export const useTeachingPopoverFooterStyles_unstable = (
   // the order of these arguments.
   state.root.className = clsx(
     styles.root,
-    'group/fui-teaching-popover-footer',
+    teachingPopoverFooterClassNames.root,
     isHorizontal ? styles.horizontal : styles.vertical,
     state.root.className,
   );

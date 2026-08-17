@@ -46,7 +46,8 @@
 @layer fui.base {
   /* from useBaseStyles (makeResetStyles) — root arg #2 */
   .root {
-    /* `row-gap` is the block axis → the vertical spacing token's `gap-y-*` utility */
     @apply flex flex-col gap-y-vertical-xxs;
+
+    /* `row-gap` is the block axis → the vertical spacing token's `gap-y-*` utility */
   }
 }

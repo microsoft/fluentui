@@ -69,13 +69,13 @@
 @layer fui.base {
   /* from useRootResetStyles (makeResetStyles) — root arg #2 */
   .root {
+    @apply m-0;
+
     /* from typographyStyles.subtitle1 */
     font-family: var(--font-base);
     font-size: var(--text-base-500);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-500);
-
-    @apply m-0;
 
     grid-row-start: 1;
     grid-row-end: 1;

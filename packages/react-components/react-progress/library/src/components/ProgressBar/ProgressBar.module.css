@@ -84,11 +84,11 @@
 
   /* from useRootStyles.rounded / .square — `shape` is a look prop → module class (D3) */
   .rounded {
-    border-radius: var(--radius-medium);
+    @apply rounded-medium;
   }
 
   .square {
-    border-radius: var(--radius-none);
+    @apply rounded-none;
   }
 
   /* from useRootStyles.medium / .large — `thickness` is a scale prop → data-attribute (D3) */
@@ -153,19 +153,19 @@
 @layer fui.components.l1 {
   /* from useBarStyles.brand / .error / .warning / .success — `color` is a look prop (D3) */
   .brand {
-    background-color: var(--color-compound-brand-background);
+    @apply bg-compound-brand-background;
   }
 
   .error {
-    background-color: var(--color-palette-red-background-3);
+    @apply bg-palette-red-background-3;
   }
 
   .warning {
-    background-color: var(--color-palette-dark-orange-background-3);
+    @apply bg-palette-dark-orange-background-3;
   }
 
   .success {
-    background-color: var(--color-palette-green-background-3);
+    @apply bg-palette-green-background-3;
   }
 }
 

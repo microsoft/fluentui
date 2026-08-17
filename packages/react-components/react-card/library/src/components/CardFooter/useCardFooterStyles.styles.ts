@@ -49,7 +49,7 @@ export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooter
   //
   // The state mutation below is preserved deliberately: DECISIONS.md D14 defers the
   // pure-builder rewrite to a single Phase 3 sweep.
-  state.root.className = clsx(styles.root, 'group/fui-card-footer', state.root.className);
+  state.root.className = clsx(styles.root, cardFooterClassNames.root, state.root.className);
 
   if (state.action) {
     state.action.className = clsx(styles.action, state.action.className);

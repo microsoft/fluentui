@@ -55,13 +55,14 @@
 @layer fui.components.l1 {
   /* from useStyles.root */
   .root {
+    @apply w-full items-center whitespace-nowrap;
+
     /*
      * FIXME (upstream, carried over verbatim): removing `white-space: nowrap` allows the
      * legend container in a responsive donut chart to resize properly (horizontally)
      * within a flexbox or grid layout, but it causes vertical resizing issues in
      * responsive charts whose legends span multiple words.
      */
-    @apply w-full items-center whitespace-nowrap;
   }
 
   /* from useStyles.rect */
@@ -119,11 +120,12 @@
 
   /* from useStyles.text — typographyStyles.caption1 expanded */
   .text {
+    @apply text-neutral-foreground-1;
+
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-200);
-    color: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
@@ -147,12 +149,12 @@
 
   /* from useStyles.legendContainer */
   .legend-container {
+    @apply mx-horizontal-xs my-vertical-xs;
+
     /* `flex: 0 1 auto` and `margin: 4px` expanded to longhands */
     flex-grow: 0;
     flex-shrink: 1;
     flex-basis: auto;
-
-    @apply mx-horizontal-xs my-vertical-xs;
   }
 
   /* from useStyles.annotation */
@@ -231,8 +233,9 @@
     }
 
     &::after {
-      /* `padding: 1px 4px 1px` expanded; 4px is the XS spacing step, 1px matches no step */
       @apply ps-horizontal-xs pe-horizontal-xs pt-1 pb-1;
+
+      /* `padding: 1px 4px 1px` expanded; 4px is the XS spacing step, 1px matches no step */
 
       /*
        * The Griffel source also sets `borderTop: '-2px'` and `borderLeft: '-2px'` here.

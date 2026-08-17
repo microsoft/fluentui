@@ -45,7 +45,7 @@ export const useTabListStyles_unstable = (state: TabListState): TabListState => 
   // no longer reports here — same as the react-slider and react-divider conversions.
   state.root.className = clsx(
     styles.root,
-    'group/fui-tab-list',
+    tabListClassNames.root,
     vertical ? styles.vertical : styles.horizontal,
     isRounded && (size === 'small' ? styles['rounded-small'] : styles.rounded),
     state.root.className,

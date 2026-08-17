@@ -53,7 +53,7 @@ export const chartTableClassNames: { root: string } = {
  */
 export const useChartTableStyles = (props: ChartTableProps): ChartTableStyles => {
   return {
-    root: clsx(styles.root, 'group/fui-chart-table' /*props.styles?.root*/),
+    root: clsx(styles.root, chartTableClassNames.root /*props.styles?.root*/),
     table: clsx(styles.table /*props.styles?.table*/),
     headerCell: clsx(styles['header-cell'] /*props.styles?.headerCell*/),
     bodyCell: clsx(styles['body-cell'] /*props.styles?.bodyCell*/),

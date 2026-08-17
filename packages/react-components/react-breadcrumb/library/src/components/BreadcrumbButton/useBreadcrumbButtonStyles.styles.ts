@@ -116,7 +116,7 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
     root: {
       ...state.root,
       ...rootDataAttributes,
-      className: clsx(styles.root, 'group/fui-breadcrumb-button', state.root.className),
+      className: clsx(styles.root, breadcrumbButtonClassNames.root, state.root.className),
     },
   };
 

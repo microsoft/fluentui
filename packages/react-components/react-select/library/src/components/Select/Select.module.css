@@ -314,7 +314,7 @@
    * here (same property key), so all twelve longhands are restated.
    */
   .outline {
-    background-color: var(--color-neutral-background-1);
+    @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-accessible border-l-neutral-stroke-1 bg-neutral-background-1;
 
     border-top-width: 1px;
     border-right-width: 1px;
@@ -324,10 +324,6 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--color-neutral-stroke-1);
-    border-right-color: var(--color-neutral-stroke-1);
-    border-left-color: var(--color-neutral-stroke-1);
-    border-bottom-color: var(--color-neutral-stroke-accessible);
   }
 
   /*
@@ -347,18 +343,18 @@
     /* The transparent select background means the option background must be set so the
        text stays visible in dark themes. */
     & option {
-      background-color: var(--color-neutral-background-1);
+      @apply bg-neutral-background-1;
     }
   }
 
   /* from useSelectStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--color-neutral-background-1);
+    @apply bg-neutral-background-1;
   }
 
   /* from useSelectStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--color-neutral-background-3);
+    @apply bg-neutral-background-3;
   }
 }
 
@@ -382,10 +378,7 @@
       @variant invalid {
         & .select:where(:not(.underline)) {
           @variant not-focus-within {
-            border-top-color: var(--color-palette-red-border-2);
-            border-right-color: var(--color-palette-red-border-2);
-            border-bottom-color: var(--color-palette-red-border-2);
-            border-left-color: var(--color-palette-red-border-2);
+            @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
           }
         }
 
@@ -396,7 +389,7 @@
          */
         & .underline {
           @variant not-focus-within {
-            border-bottom-color: var(--color-palette-red-border-2);
+            @apply border-b-palette-red-border-2;
           }
         }
       }
@@ -419,26 +412,18 @@
   .root {
     @variant disabled {
       & .select {
-        background-color: var(--color-transparent-background);
+        @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-transparent-background text-neutral-foreground-disabled;
 
         /* shorthands.borderColor(x) expanded to the four longhands the compiler emits;
            the `[ltr, rtl]` pair only swaps left↔right and carries the same value. */
-        border-top-color: var(--color-neutral-stroke-disabled);
-        border-right-color: var(--color-neutral-stroke-disabled);
-        border-bottom-color: var(--color-neutral-stroke-disabled);
-        border-left-color: var(--color-neutral-stroke-disabled);
 
-        color: var(--color-neutral-foreground-disabled);
         cursor: not-allowed;
       }
 
       /* from useSelectStyles.disabledUnderline — the 3-argument
          shorthands.borderColor(top, inline, bottom) form. */
       & .underline {
-        border-top-color: var(--color-transparent-stroke-disabled);
-        border-right-color: var(--color-transparent-stroke-disabled);
-        border-bottom-color: var(--color-neutral-stroke-disabled);
-        border-left-color: var(--color-transparent-stroke-disabled);
+        @apply border-t-transparent-stroke-disabled border-r-transparent-stroke-disabled border-b-neutral-stroke-disabled border-l-transparent-stroke-disabled;
       }
     }
   }
@@ -454,17 +439,11 @@
     @variant enabled {
       & .outline {
         @variant hover {
-          border-top-color: var(--color-neutral-stroke-1-hover);
-          border-right-color: var(--color-neutral-stroke-1-hover);
-          border-left-color: var(--color-neutral-stroke-1-hover);
-          border-bottom-color: var(--color-neutral-stroke-accessible);
+          @apply border-t-neutral-stroke-1-hover border-r-neutral-stroke-1-hover border-b-neutral-stroke-accessible border-l-neutral-stroke-1-hover;
         }
 
         @variant active {
-          border-top-color: var(--color-neutral-stroke-1-pressed);
-          border-right-color: var(--color-neutral-stroke-1-pressed);
-          border-left-color: var(--color-neutral-stroke-1-pressed);
-          border-bottom-color: var(--color-neutral-stroke-accessible);
+          @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-accessible border-l-neutral-stroke-1-pressed;
         }
       }
     }
@@ -487,10 +466,7 @@
         & .select:where(:not(.underline)) {
           @variant hover {
             @variant not-focus-within {
-              border-top-color: var(--color-palette-red-border-2);
-              border-right-color: var(--color-palette-red-border-2);
-              border-bottom-color: var(--color-palette-red-border-2);
-              border-left-color: var(--color-palette-red-border-2);
+              @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
             }
           }
         }

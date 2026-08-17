@@ -20,6 +20,8 @@
 @layer fui.components.l1 {
   /* from useSegmentStyles.segment */
   .segment {
+    @apply bg-neutral-background-1;
+
     /* `padding: '1em'` — a font-relative length, not a spacing step; stays literal and
        deliberately does NOT take the base-scale product (it already scales with type). */
     padding: 1em;
@@ -39,7 +41,6 @@
     border-block-end-style: solid;
     border-inline-start-style: solid;
 
-    background-color: var(--color-neutral-background-1);
     box-shadow: 0 1px 1px 1px var(--color-neutral-shadow-key);
   }
 }

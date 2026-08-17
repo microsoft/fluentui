@@ -53,7 +53,7 @@ export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): Cal
     // `normalize`-before-`base` inversion.
     root: clsx(
       styles.normalize,
-      'group/fui-calendar-day',
+      calendarDayClassNames.root,
       styles.root,
       showWeekNumbers && styles['show-week-numbers'],
       className,

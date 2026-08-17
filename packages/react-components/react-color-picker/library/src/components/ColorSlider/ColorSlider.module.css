@@ -176,11 +176,11 @@
 @layer fui.components.l1 {
   /* rail arg #4 — from useShapeStyles, applied to the rail */
   .rounded {
-    border-radius: var(--radius-medium);
+    @apply rounded-medium;
   }
 
   .square {
-    border-radius: var(--radius-none);
+    @apply rounded-none;
   }
 }
 
@@ -244,9 +244,10 @@
     background-color: var(--fui-Slider__thumb--color);
 
     &::before {
+      @apply rounded-circular;
+
       position: absolute;
       inset: 0px;
-      border-radius: var(--radius-circular);
       box-sizing: border-box;
       content: '';
       border: var(--spacing-thick) solid var(--color-neutral-background-1);
@@ -311,9 +312,10 @@
 
     @variant focus-visible {
       & ~ .thumb {
+        @apply rounded-circular;
+
         border: 2px solid var(--color-stroke-focus-2);
         outline: var(--spacing-thick) solid var(--color-transparent-stroke);
-        border-radius: var(--radius-circular);
       }
     }
   }

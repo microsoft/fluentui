@@ -44,7 +44,7 @@ export const useCarouselNavImageButtonStyles_unstable = (
   // marker exists for (DECISIONS.md D15.1). No `data-selected` mirror is stamped:
   // DECISIONS.md D15.6 (resolved) makes data attributes a FALLBACK for state a selector
   // cannot otherwise reach.
-  state.root.className = clsx(styles.root, 'group/fui-carousel-nav-image-button', state.root.className);
+  state.root.className = clsx(styles.root, carouselNavImageButtonClassNames.root, state.root.className);
 
   if (state.image) {
     // The image slot carries no marker, so D15.1 does not apply to it; `styles.image` is

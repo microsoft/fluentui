@@ -154,7 +154,7 @@
     border-radius: var(--radius-medium);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-medium);
+      @apply rounded-medium;
     }
   }
 
@@ -163,7 +163,7 @@
     border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-circular);
+      @apply rounded-circular;
     }
   }
 
@@ -172,7 +172,7 @@
     border-radius: var(--radius-none);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-none);
+      @apply rounded-none;
     }
   }
 }

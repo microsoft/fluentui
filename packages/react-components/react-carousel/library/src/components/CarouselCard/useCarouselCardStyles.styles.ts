@@ -60,7 +60,7 @@ export const useCarouselCardStyles_unstable = (state: CarouselCardState): Carous
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-carousel-card',
+        carouselCardClassNames.root,
         appearance === 'elevated' && styles.elevated,
         autoSize && styles['auto-size'],
         state.root.className,

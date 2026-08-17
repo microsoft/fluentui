@@ -49,7 +49,7 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
   // the order of these arguments — including the two inversions its header documents.
   state.root.className = clsx(
     styles.root,
-    'group/fui-nav-sub-item',
+    navSubItemClassNames.root,
     isSmallDensity && styles.small,
     isSmallDensity && styles['small-base'],
     styles.base,

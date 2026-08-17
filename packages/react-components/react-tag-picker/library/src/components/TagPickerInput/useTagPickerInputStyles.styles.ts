@@ -51,7 +51,7 @@ export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): Ta
   // TagPickerInput.module.css for the mapping back to the mergeClasses() argument order this
   // replaces.
 
-  state.root.className = clsx(styles.root, 'group/fui-tag-picker-input', state.root.className);
+  state.root.className = clsx(styles.root, tagPickerInputClassNames.root, state.root.className);
 
   return state;
 };

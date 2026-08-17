@@ -135,9 +135,8 @@
    * stack and `overflow: hidden` can clip one of them to half width.
    */
   .icon {
-    @apply pointer-events-none absolute flex overflow-hidden;
+    @apply pointer-events-none absolute flex overflow-hidden text-neutral-foreground-1;
 
-    color: var(--color-neutral-foreground-1);
     fill: currentColor;
     inset-inline-start: 0;
     inset-inline-end: 0;
@@ -246,28 +245,27 @@
    * data-attributes (DECISIONS.md D3).
    */
   .filled {
-    color: var(--color-neutral-background-6);
-    stroke: var(--color-transparent-stroke);
+    @apply stroke-transparent-stroke text-neutral-background-6;
   }
 
   /* from useIndicatorStyles.brand — unselectedIcon arg #4 / selectedIcon arg #3 */
   .brand {
-    color: var(--color-brand-foreground-1);
+    @apply text-brand-foreground-1;
   }
 
   /* from useIndicatorStyles.brandFilled — unselectedIcon arg #4, filled branch */
   .brand-filled {
-    color: var(--color-brand-background-2);
+    @apply text-brand-background-2;
   }
 
   /* from useIndicatorStyles.marigold — unselectedIcon arg #5 / selectedIcon arg #4 */
   .marigold {
-    color: var(--color-palette-marigold-border-active);
+    @apply text-palette-marigold-border-active;
   }
 
   /* from useIndicatorStyles.marigoldFilled — unselectedIcon arg #5, filled branch */
   .marigold-filled {
-    color: var(--color-palette-marigold-background-2);
+    @apply text-palette-marigold-background-2;
   }
 
   /*

@@ -111,10 +111,7 @@
   /* from useStyles.root — arg #2, FLAT half. The `@supports` / `@media` halves of the
      selected/unselected slices are the split blocks at the bottom; see reason (b). */
   .root {
-    @apply box-border flex cursor-pointer;
-    @apply h-vertical-s w-horizontal-s;
-
-    background-color: var(--color-brand-background);
+    @apply box-border flex h-vertical-s w-horizontal-s cursor-pointer bg-brand-background;
   }
 }
 
@@ -145,8 +142,9 @@
       background-color: color-mix(in srgb, var(--color-brand-background) 30%, transparent);
 
       @variant focus-visible-fui {
+        @apply rounded-medium;
+
         outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
-        border-radius: var(--radius-medium);
 
         border-block-start-color: transparent;
         border-inline-end-color: transparent;
@@ -165,8 +163,9 @@
       padding: 0;
 
       @variant focus-visible-fui {
+        @apply rounded-medium;
+
         outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
-        border-radius: var(--radius-medium);
 
         border-block-start-color: transparent;
         border-inline-end-color: transparent;
@@ -186,7 +185,7 @@
    */
   .brand {
     @variant selected {
-      background-color: var(--color-neutral-foreground-on-brand);
+      @apply bg-neutral-foreground-on-brand;
     }
 
     @variant not-selected {
@@ -213,8 +212,9 @@
   .root {
     @variant not-selected {
       @supports not (color: color-mix(in lch, white, black)) {
+        @apply bg-brand-background;
+
         opacity: 0.3;
-        background-color: var(--color-brand-background);
       }
     }
   }

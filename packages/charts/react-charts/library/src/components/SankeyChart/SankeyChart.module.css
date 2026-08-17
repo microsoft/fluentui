@@ -111,15 +111,12 @@
    * below; byte-identical to VerticalBarChart/VerticalStackedBarChart `.tooltip`.
    */
   .tool-tip {
-    @apply pointer-events-none absolute flex flex-col p-horizontal-s text-center;
+    @apply pointer-events-none absolute flex flex-col rounded-small bg-neutral-background-1 p-horizontal-s text-center text-neutral-foreground-1;
 
     font-family: var(--font-base);
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-300);
-    background-color: var(--color-neutral-background-1);
-    border-radius: var(--radius-small);
-    color: var(--color-neutral-foreground-1);
   }
 
   /* from useStyles.nodeTextContainer — margins on the text `<g>`; the HC slice is a
@@ -151,13 +148,12 @@
    * atomics — byte-identical to DonutChart/GaugeChart/FunnelChart `.chart-title`.
    */
   .chart-title {
-    @apply mb-vertical-s text-center;
+    @apply mb-vertical-s fill-neutral-foreground-1 text-center;
 
     font-family: var(--font-base);
     font-size: var(--text-base-100);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-100);
-    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 

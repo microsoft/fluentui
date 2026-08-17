@@ -188,6 +188,8 @@
 
     /* DIALOG_MEDIA_QUERY_SHORT_SCREEN */
     @media screen and (max-height: 359px) {
+      @apply pe-horizontal-xl;
+
       overflow-y: auto;
 
       /*
@@ -196,7 +198,6 @@
        * padding gives up exactly what the inline-end border takes:
        * `calc(24px - 4px)` = 20px = the XL spacing step.
        */
-      @apply pe-horizontal-xl;
 
       border-inline-end-width: calc(4px * var(--base-scale));
       border-top-width: calc(4px * var(--base-scale));
@@ -206,9 +207,7 @@
 
   /* from useBackdropBaseStyle (makeResetStyles) — backdrop arg #2 */
   .backdrop {
-    @apply fixed inset-0;
-
-    background-color: var(--color-background-overlay);
+    @apply fixed inset-0 bg-background-overlay;
   }
 }
 
@@ -223,6 +222,6 @@
 
   /* from useStyles.nestedDialogBackdrop — backdrop arg #4 */
   .nested-dialog-backdrop {
-    background-color: var(--color-transparent-background);
+    @apply bg-transparent-background;
   }
 }

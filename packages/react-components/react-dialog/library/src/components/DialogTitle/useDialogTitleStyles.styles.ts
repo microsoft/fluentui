@@ -50,7 +50,7 @@ export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTi
   // — see the mapping table in DialogTitle.module.css.
   state.root.className = clsx(
     styles.root,
-    'group/fui-dialog-title',
+    dialogTitleClassNames.root,
     !state.action && styles['root-without-action'],
     state.root.className,
   );

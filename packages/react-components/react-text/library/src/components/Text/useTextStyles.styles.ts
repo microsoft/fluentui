@@ -91,7 +91,7 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
   // react-button / react-image conversions.
   state.root.className = clsx(
     styles.root,
-    'group/fui-text',
+    textClassNames.root,
     wrap === false && styles.nowrap,
     truncate && styles.truncate,
     block && styles.block,

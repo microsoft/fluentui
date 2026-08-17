@@ -109,14 +109,15 @@
     line-height: var(--leading-base-300);
 
     @variant hover {
-      background-color: var(--color-neutral-background-4-hover);
+      @apply bg-neutral-background-4-hover;
     }
 
     /* the component's own insert focus indicator — not the shared focus-ring utility */
     @variant focus-visible {
+      @apply outline-stroke-focus-2;
+
       outline-width: var(--spacing-thick);
       outline-style: solid;
-      outline-color: var(--color-stroke-focus-2);
       outline-offset: calc(var(--spacing-thick) * -1);
     }
   }
@@ -147,11 +148,9 @@
   /* arg #6 — from the shared useIndicatorStyles.base (the "french fry") */
   .indicator {
     &::after {
-      @apply absolute -ms-horizontal-l h-vertical-xl w-horizontal-xs;
+      @apply absolute -ms-horizontal-l h-vertical-xl w-horizontal-xs rounded-circular bg-compound-brand-foreground-1;
 
       content: '';
-      background-color: var(--color-compound-brand-foreground-1);
-      border-radius: var(--radius-circular);
 
       animation-name: nav-sub-item-indicator-enter;
       animation-duration: var(--duration-faster);
@@ -161,10 +160,11 @@
 
     @variant forced-colors {
       &::after {
+        @apply outline-transparent-stroke;
+
         /* D6: the hardcoded 2px is upstream's, not a stroke-width token */
         outline-width: 2px;
         outline-style: solid;
-        outline-color: var(--color-transparent-stroke);
         outline-offset: -2px;
       }
     }

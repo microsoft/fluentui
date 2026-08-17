@@ -103,26 +103,27 @@
    */
   .limits,
   .sublabel {
+    @apply fill-neutral-foreground-1;
+
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-200);
-    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.chartValue — fontWeight only; the size comes from a `fontSize` ATTRIBUTE
    * the component computes per breakpoint (BREAKPOINTS), not from CSS */
   .chart-value {
+    @apply fill-neutral-foreground-1;
+
     font-weight: var(--font-weight-semibold);
-    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.needle */
   .needle {
-    fill: var(--color-neutral-foreground-1);
-    stroke: var(--color-neutral-background-1);
+    @apply fill-neutral-foreground-1 stroke-neutral-background-1;
   }
 
   /* from useStyles.svgTooltip — the background <rect> SVGTooltipText draws behind the title */
@@ -142,21 +143,21 @@
    * byte-identical to DonutChart.module.css's `.chart-title`.
    */
   .chart-title {
-    @apply mb-vertical-s text-center;
+    @apply mb-vertical-s fill-neutral-foreground-1 text-center;
 
     font-family: var(--font-base);
     font-size: var(--text-base-100);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-100);
-    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 
   /* from useStyles.segment — the focus outline is suppressed; the stroke IS the focus
    * indicator (strokeWidth flips 0 → ARC_PADDING on focus, in JS) */
   .segment {
+    @apply stroke-stroke-focus-2;
+
     outline: none;
-    stroke: var(--color-stroke-focus-2);
   }
 
   /* from useStyles.gradientSegment */
@@ -166,9 +167,8 @@
 
   /* from useStyles.calloutContentRoot */
   .callout-content-root {
-    @apply grid overflow-hidden;
+    @apply grid overflow-hidden bg-neutral-background-1;
 
-    background-color: var(--color-neutral-background-1);
     background-blend-mode: normal, luminosity;
   }
 
@@ -191,13 +191,12 @@
    * paddingLeft 8px → logical start. The coloured left border is an inline style the
    * component writes per data point (`borderInlineStart: 4px solid <color>`). */
   .callout-block-container {
-    @apply mt-13 block ps-horizontal-s;
+    @apply mt-13 block ps-horizontal-s text-neutral-foreground-1;
 
     font-family: var(--font-base);
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-300);
-    color: var(--color-neutral-foreground-1);
     forced-color-adjust: none;
   }
 
@@ -208,11 +207,12 @@
 
   /* from useStyles.calloutlegendText — typographyStyles.caption1 + color */
   .callout-legend-text {
+    @apply text-neutral-foreground-2;
+
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-200);
-    color: var(--color-neutral-foreground-2);
     forced-color-adjust: auto;
   }
 
@@ -229,13 +229,12 @@
   /* from useStyles.descriptionMessage — typographyStyles.caption1 + color/margins/border.
    * 10px sits on the MNudge spacing step; `border-top`'s `1px` is a frozen literal. */
   .description-message {
-    @apply mt-vertical-m-nudge pt-vertical-m-nudge;
+    @apply mt-vertical-m-nudge pt-vertical-m-nudge text-neutral-foreground-1;
 
     font-family: var(--font-base);
     font-size: var(--text-base-200);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-200);
-    color: var(--color-neutral-foreground-1);
     border-top: 1px solid var(--color-neutral-stroke-1);
   }
 

@@ -50,11 +50,12 @@
 
   /* from useStyles.insideDonutString — typographyStyles.title2 + fill/forced-color-adjust */
   .inside-donut-string {
+    @apply fill-neutral-foreground-1;
+
     font-family: var(--font-base);
     font-size: var(--text-hero-700);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-hero-700);
-    fill: var(--color-neutral-foreground-1);
     forced-color-adjust: auto;
   }
 }

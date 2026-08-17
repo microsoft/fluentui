@@ -139,18 +139,20 @@
   /* arg #2a — from the shared useDrawerStyles.start / .end / .bottom */
   .root {
     @variant position-start {
+      @apply border-e-transparent-stroke;
+
       border-inline-end-width: var(--spacing-thin);
       border-inline-end-style: solid;
-      border-inline-end-color: var(--color-transparent-stroke);
 
       inset-inline-start: 0;
       inset-inline-end: auto;
     }
 
     @variant position-end {
+      @apply border-s-transparent-stroke;
+
       border-inline-start-width: var(--spacing-thin);
       border-inline-start-style: solid;
-      border-inline-start-color: var(--color-transparent-stroke);
 
       inset-inline-end: 0;
       inset-inline-start: auto;

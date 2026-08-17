@@ -98,7 +98,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
       ...rootDataAttributes,
       className: clsx(
         styles.root,
-        'group/fui-avatar-group-item',
+        avatarGroupItemClassNames.root,
         !isOverflowItem && styles['non-overflow-item'],
         !isOverflowItem && groupChildClassName,
         !isOverflowItem && sizeStyles[size],

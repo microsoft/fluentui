@@ -93,9 +93,10 @@
   /* root arg #3 — from useMultilineStyles.root, gated on `layout === 'multiline'` */
   .root {
     @variant layout-multiline {
+      @apply mt-vertical-m-nudge mb-vertical-s pe-vertical-m;
+
       /* `pe-vertical-m` reproduces the source's `spacingVerticalM` on a horizontal
          property — see the spacing note in the file header. */
-      @apply mt-vertical-m-nudge mb-vertical-s pe-vertical-m;
 
       /* literal `end`, NOT `@apply justify-end`: that utility emits
          `justify-content: flex-end`, while the compiled Griffel atomic is

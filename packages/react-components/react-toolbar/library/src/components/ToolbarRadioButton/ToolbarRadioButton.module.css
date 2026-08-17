@@ -34,13 +34,12 @@
      Radio selected state" */
   .selected:global(.group\/fui-toggle-button) {
     @variant at-rest {
-      background-color: var(--color-subtle-background-selected);
-      color: var(--color-neutral-foreground-2-selected);
+      @apply bg-subtle-background-selected text-neutral-foreground-2-selected;
     }
   }
 
   /* from useBaseStyles.iconSelected */
   .icon-selected {
-    color: var(--color-neutral-foreground-2-brand-selected);
+    @apply text-neutral-foreground-2-brand-selected;
   }
 }

@@ -78,28 +78,28 @@
     height: auto;
 
     & .secondary-content {
-      color: var(--color-neutral-foreground-2);
+      @apply text-neutral-foreground-2;
     }
   }
 
   /* from useRootStyles.primary — arg #4 */
   .primary {
     & .secondary-content {
-      color: var(--color-neutral-foreground-on-brand);
+      @apply text-neutral-foreground-on-brand;
     }
   }
 
   /* from useRootStyles.subtle — arg #4 */
   .subtle {
     & .secondary-content {
-      color: var(--color-neutral-foreground-2);
+      @apply text-neutral-foreground-2;
     }
   }
 
   /* from useRootStyles.transparent — arg #4 */
   .transparent {
     & .secondary-content {
-      color: var(--color-neutral-foreground-2);
+      @apply text-neutral-foreground-2;
     }
   }
 
@@ -139,7 +139,7 @@
   /* from useRootStyles.disabled — arg #6 */
   .disabled {
     & .secondary-content {
-      color: var(--color-neutral-foreground-disabled);
+      @apply text-neutral-foreground-disabled;
     }
   }
 
@@ -173,7 +173,7 @@
   .root {
     @variant hover {
       & .secondary-content {
-        color: var(--color-neutral-foreground-2-hover);
+        @apply text-neutral-foreground-2-hover;
       }
     }
   }
@@ -182,7 +182,7 @@
   .primary {
     @variant hover {
       & .secondary-content {
-        color: var(--color-neutral-foreground-on-brand);
+        @apply text-neutral-foreground-on-brand;
       }
     }
   }
@@ -191,7 +191,7 @@
   .subtle {
     @variant hover {
       & .secondary-content {
-        color: var(--color-neutral-foreground-2-hover);
+        @apply text-neutral-foreground-2-hover;
       }
     }
   }
@@ -200,7 +200,7 @@
   .transparent {
     @variant hover {
       & .secondary-content {
-        color: var(--color-neutral-foreground-2-brand-hover);
+        @apply text-neutral-foreground-2-brand-hover;
       }
     }
   }
@@ -209,7 +209,7 @@
   .disabled {
     @variant hover {
       & .secondary-content {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
   }
@@ -223,7 +223,7 @@
   .root {
     @variant hover-active {
       & .secondary-content {
-        color: var(--color-neutral-foreground-2-pressed);
+        @apply text-neutral-foreground-2-pressed;
       }
     }
   }
@@ -232,7 +232,7 @@
   .primary {
     @variant hover-active {
       & .secondary-content {
-        color: var(--color-neutral-foreground-on-brand);
+        @apply text-neutral-foreground-on-brand;
       }
     }
   }
@@ -241,7 +241,7 @@
   .subtle {
     @variant hover-active {
       & .secondary-content {
-        color: var(--color-neutral-foreground-2-pressed);
+        @apply text-neutral-foreground-2-pressed;
       }
     }
   }
@@ -250,7 +250,7 @@
   .transparent {
     @variant hover-active {
       & .secondary-content {
-        color: var(--color-neutral-foreground-2-brand-pressed);
+        @apply text-neutral-foreground-2-brand-pressed;
       }
     }
   }
@@ -259,7 +259,7 @@
   .disabled {
     @variant hover-active {
       & .secondary-content {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
   }

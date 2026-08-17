@@ -38,7 +38,7 @@ export const useDialogActionsStyles_unstable = (state: DialogActionsState): Dial
   // table can be read against this file line for line.
   state.root.className = clsx(
     styles.root,
-    'group/fui-dialog-actions',
+    dialogActionsClassNames.root,
     state.position === 'start' && styles['grid-position-start'],
     state.position === 'end' && styles['grid-position-end'],
     state.fluid && state.position === 'start' && styles['fluid-start'],

@@ -38,7 +38,7 @@ export const useSparklineStyles = (props: SparklineProps): SparklineStyles => {
     //
     // Cascade priority is decided by the `@layer fui.*` order in Sparkline.module.css, not by
     // the order of these arguments.
-    inlineBlock: clsx(styles['inline-block'], 'group/fui-sparkline', props.styles?.inlineBlock),
+    inlineBlock: clsx(styles['inline-block'], sparklineClassNames.root, props.styles?.inlineBlock),
     valueText: clsx(styles['value-text'], props.styles?.valueText),
   };
 };

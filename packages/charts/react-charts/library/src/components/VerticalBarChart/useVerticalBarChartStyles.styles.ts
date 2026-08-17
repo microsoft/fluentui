@@ -66,7 +66,7 @@ export const useVerticalBarChartStyles = (props: VerticalBarChartProps): Vertica
     // sortable by prettier-plugin-tailwindcss, and it keeps the `@deprecated` constant from
     // being self-referenced (which the `deprecation` lint rule reports as an error). Same
     // form as react-divider and react-button's ToggleButton.
-    root: clsx(styles.root, 'group/fui-vertical-bar-chart', props.styles?.root),
+    root: clsx(styles.root, verticalbarchartClassNames.root, props.styles?.root),
     tooltip: clsx(styles.tooltip /*props.styles?.tooltip*/),
     barLabel: clsx(styles['bar-label'] /*props.styles?.barLabel*/),
     lineBorder: clsx(styles['line-border'] /*props.styles?.lineBorder*/),

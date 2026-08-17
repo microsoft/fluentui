@@ -79,7 +79,7 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-label',
+    labelClassNames.root,
     weight === 'semibold' && styles.semibold,
     state.root.className,
   );

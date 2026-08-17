@@ -49,12 +49,12 @@
 @layer fui.components.l2 {
   /* arg #2 — from useStyles.root */
   .root {
+    @apply py-5 ps-14;
+
     /* from `margin: 'unset'` — see the header */
     margin-block-start: unset;
     margin-block-end: unset;
     margin-inline-start: unset;
     margin-inline-end: unset;
-
-    @apply py-5 ps-14;
   }
 }

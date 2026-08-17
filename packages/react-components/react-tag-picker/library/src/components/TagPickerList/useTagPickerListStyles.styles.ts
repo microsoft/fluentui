@@ -44,7 +44,7 @@ export const useTagPickerListStyles_unstable = (state: TagPickerListState): TagP
 
   state.root.className = clsx(
     styles.root,
-    'group/fui-tag-picker-list',
+    tagPickerListClassNames.root,
     !state.open && styles.collapsed,
     state.root.className,
   );

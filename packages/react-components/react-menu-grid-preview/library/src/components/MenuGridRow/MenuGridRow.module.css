@@ -100,8 +100,7 @@
     }
 
     @variant hover {
-      background-color: var(--color-neutral-background-1-hover);
-      color: var(--color-neutral-foreground-2-hover);
+      @apply bg-neutral-background-1-hover text-neutral-foreground-2-hover;
 
       /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
          block — see the S-J/D27 l1 section at the bottom of this file. */
@@ -118,8 +117,7 @@
      */
     @variant hover {
       @variant active {
-        background-color: var(--color-neutral-background-1-pressed);
-        color: var(--color-neutral-foreground-2-pressed);
+        @apply bg-neutral-background-1-pressed text-neutral-foreground-2-pressed;
       }
     }
 

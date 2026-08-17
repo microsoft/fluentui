@@ -68,7 +68,7 @@ export const useHorizontalBarChartWithAxisStyles = (
   props: HorizontalBarChartWithAxisProps,
 ): HorizontalBarChartWithAxisStyles => {
   return {
-    root: clsx(styles.root, 'group/fui-horizontal-bar-chart-with-axis', props.styles?.root),
+    root: clsx(styles.root, hbcWithAxisClassNames.root, props.styles?.root),
     opacityChangeOnHover: clsx(styles['opacity-change-on-hover']),
     xAxisTicks: '',
     barLabel: clsx(styles['bar-label']),

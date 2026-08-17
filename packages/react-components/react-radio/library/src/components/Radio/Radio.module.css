@@ -158,9 +158,7 @@
     pointer-events: none;
 
     &::after {
-      @apply absolute h-16 w-16;
-
-      border-radius: var(--radius-circular);
+      @apply absolute h-16 w-16 rounded-circular;
 
       /* Use a transform to avoid pixel rounding errors at 125% DPI
          https://github.com/microsoft/fluentui/issues/30025 */
@@ -200,7 +198,7 @@
     @variant enabled {
       @variant not-checked {
         & ~ .indicator {
-          border-color: var(--color-neutral-stroke-accessible);
+          @apply border-neutral-stroke-accessible;
         }
       }
     }
@@ -219,14 +217,14 @@
       @variant not-checked {
         @variant hover {
           & ~ .indicator {
-            border-color: var(--color-neutral-stroke-accessible-hover);
+            @apply border-neutral-stroke-accessible-hover;
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .indicator {
-              border-color: var(--color-neutral-stroke-accessible-pressed);
+              @apply border-neutral-stroke-accessible-pressed;
             }
           }
         }
@@ -237,8 +235,7 @@
     @variant enabled {
       @variant checked {
         & ~ .indicator {
-          border-color: var(--color-compound-brand-stroke);
-          color: var(--color-compound-brand-foreground-1);
+          @apply border-compound-brand-stroke text-compound-brand-foreground-1;
         }
       }
     }
@@ -262,16 +259,14 @@
       @variant checked {
         @variant hover {
           & ~ .indicator {
-            border-color: var(--color-compound-brand-stroke-hover);
-            color: var(--color-compound-brand-foreground-1-hover);
+            @apply border-compound-brand-stroke-hover text-compound-brand-foreground-1-hover;
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .indicator {
-              border-color: var(--color-compound-brand-stroke-pressed);
-              color: var(--color-compound-brand-foreground-1-pressed);
+              @apply border-compound-brand-stroke-pressed text-compound-brand-foreground-1-pressed;
             }
           }
         }
@@ -281,8 +276,7 @@
     /* Colors for the disabled state */
     @variant disabled {
       & ~ .indicator {
-        border-color: var(--color-neutral-stroke-disabled);
-        color: var(--color-neutral-foreground-disabled);
+        @apply border-neutral-stroke-disabled text-neutral-foreground-disabled;
       }
     }
 
@@ -378,14 +372,13 @@
 
   /* from useLabelStyles.base — label arg #2 */
   .label {
-    @apply self-center;
+    @apply self-center ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
 
     /* `padding: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands
        (CONVERSION_GUIDE §2): the position slices below override single sides inside this
        same layer, and Griffel's shorthand-loses-to-longhand priority has no CSS
        equivalent. Inline sides are logical because `after` compiles to an [ltr, rtl]
        padding pair. Longhands carry the named spacing utilities (D4 amendment). */
-    @apply ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s;
   }
 
   .root {
@@ -427,19 +420,19 @@
     @variant enabled {
       @variant not-checked {
         & ~ .label {
-          color: var(--color-neutral-foreground-3);
+          @apply text-neutral-foreground-3;
         }
 
         @variant hover {
           & ~ .label {
-            color: var(--color-neutral-foreground-2);
+            @apply text-neutral-foreground-2;
           }
         }
 
         @variant hover {
           @variant active {
             & ~ .label {
-              color: var(--color-neutral-foreground-1);
+              @apply text-neutral-foreground-1;
             }
           }
         }
@@ -447,16 +440,14 @@
 
       @variant checked {
         & ~ .label {
-          color: var(--color-neutral-foreground-1);
+          @apply text-neutral-foreground-1;
         }
       }
     }
 
     @variant disabled {
       & ~ .label {
-        @apply cursor-default;
-
-        color: var(--color-neutral-foreground-disabled);
+        @apply cursor-default text-neutral-foreground-disabled;
       }
     }
 

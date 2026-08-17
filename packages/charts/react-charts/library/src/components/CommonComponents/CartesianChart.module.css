@@ -153,7 +153,8 @@
    */
   .x-axis {
     & text {
-      fill: var(--color-neutral-foreground-1);
+      @apply fill-neutral-foreground-1;
+
       font-family: var(--font-base);
       font-size: var(--text-base-100);
       font-weight: var(--font-weight-semibold);
@@ -185,17 +186,19 @@
   /* from useStyles.yAxis + useStyles.rtl (the `_useRtl ? rtl : ltr` branch) */
   .y-axis {
     & text {
+      @apply fill-neutral-foreground-1;
+
       font-family: var(--font-base);
       font-size: var(--text-base-100);
       font-weight: var(--font-weight-semibold);
       line-height: var(--leading-base-100);
-      fill: var(--color-neutral-foreground-1);
       forced-color-adjust: auto;
     }
 
     & line {
+      @apply stroke-neutral-foreground-1;
+
       opacity: 0.2;
-      stroke: var(--color-neutral-foreground-1);
       forced-color-adjust: auto;
     }
 
@@ -245,15 +248,12 @@
    * there (unlike the SELECTOR sites; see the hook).
    */
   .tooltip {
-    @apply pointer-events-none absolute flex flex-col p-horizontal-s text-center;
+    @apply pointer-events-none absolute flex flex-col rounded-small bg-neutral-background-1 p-horizontal-s text-center text-neutral-foreground-1;
 
     font-family: var(--font-base);
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-300);
-    background-color: var(--color-neutral-background-1);
-    border-radius: var(--radius-small);
-    color: var(--color-neutral-foreground-1);
   }
 }
 

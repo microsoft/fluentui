@@ -114,14 +114,13 @@
     border-bottom-width: 0;
 
     @variant hover {
+      @apply bg-neutral-background-3-hover text-neutral-foreground-2-brand-hover;
+
       cursor: pointer;
-      background-color: var(--color-neutral-background-3-hover);
-      color: var(--color-neutral-foreground-2-brand-hover);
     }
 
     @variant active {
-      background-color: var(--color-neutral-background-3-pressed);
-      color: var(--color-neutral-foreground-2-brand-pressed);
+      @apply bg-neutral-background-3-pressed text-neutral-foreground-2-brand-pressed;
     }
 
     @variant forced-colors {
@@ -149,14 +148,13 @@
     border-inline-start-color: var(--color-neutral-stroke-1);
 
     @variant hover {
+      @apply bg-subtle-background-hover text-neutral-foreground-2-brand-hover;
+
       cursor: pointer;
-      background-color: var(--color-subtle-background-hover);
-      color: var(--color-neutral-foreground-2-brand-hover);
     }
 
     @variant active {
-      background-color: var(--color-subtle-background-pressed);
-      color: var(--color-neutral-foreground-2-brand-pressed);
+      @apply bg-subtle-background-pressed text-neutral-foreground-2-brand-pressed;
     }
 
     @variant forced-colors {
@@ -179,14 +177,13 @@
     border-bottom-width: 0;
 
     @variant hover {
+      @apply bg-brand-background-2-hover text-compound-brand-foreground-1-hover;
+
       cursor: pointer;
-      background-color: var(--color-brand-background-2-hover);
-      color: var(--color-compound-brand-foreground-1-hover);
     }
 
     @variant active {
-      background-color: var(--color-brand-background-2-pressed);
-      color: var(--color-compound-brand-foreground-1-pressed);
+      @apply bg-brand-background-2-pressed text-compound-brand-foreground-1-pressed;
     }
 
     @variant forced-colors {
@@ -209,26 +206,17 @@
    */
   .filled-disabled,
   .brand-disabled {
-    cursor: not-allowed;
-    background-color: var(--color-neutral-background-disabled);
-    color: var(--color-neutral-foreground-disabled);
+    @apply border-s-neutral-stroke-disabled border-e-transparent-stroke-disabled border-t-transparent-stroke-disabled border-b-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
 
-    border-top-color: var(--color-transparent-stroke-disabled);
-    border-inline-end-color: var(--color-transparent-stroke-disabled);
-    border-bottom-color: var(--color-transparent-stroke-disabled);
+    cursor: not-allowed;
+
     /* divider — declared after the shorthand expansion in the Griffel source */
-    border-inline-start-color: var(--color-neutral-stroke-disabled);
   }
 
   .outline-disabled {
-    cursor: not-allowed;
-    background-color: var(--color-subtle-background);
-    color: var(--color-neutral-foreground-disabled);
+    @apply border-s-neutral-stroke-disabled border-e-neutral-stroke-disabled border-t-neutral-stroke-disabled border-b-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
 
-    border-top-color: var(--color-neutral-stroke-disabled);
-    border-inline-end-color: var(--color-neutral-stroke-disabled);
-    border-bottom-color: var(--color-neutral-stroke-disabled);
-    border-inline-start-color: var(--color-neutral-stroke-disabled);
+    cursor: not-allowed;
   }
 }
 
@@ -250,15 +238,15 @@
   /* from useRootStyles[size] — arg #5 */
   .root {
     @variant size-medium {
-      font-size: calc(20px * var(--base-scale));
-
       @apply ps-5 pe-5;
+
+      font-size: calc(20px * var(--base-scale));
     }
 
     @variant size-small {
-      font-size: calc(16px * var(--base-scale));
-
       @apply ps-3 pe-3;
+
+      font-size: calc(16px * var(--base-scale));
     }
 
     @variant size-extra-small {
@@ -275,11 +263,12 @@
       @media (forced-colors: none) {
         &::before,
         &::after {
+          @apply h-vertical-xxs w-full;
+
           content: '';
           position: absolute;
 
           /* 2px = the XXS step; block-axis size → the vertical token's utility */
-          @apply h-vertical-xxs w-full;
 
           inset-inline-start: 0;
         }
@@ -311,13 +300,11 @@
     border-inline-start-color: var(--color-neutral-stroke-on-brand-2);
 
     @variant hover {
-      background-color: var(--color-brand-background-hover);
-      color: var(--color-neutral-foreground-on-brand);
+      @apply bg-brand-background-hover text-neutral-foreground-on-brand;
     }
 
     @variant active {
-      background-color: var(--color-brand-background-pressed);
-      color: var(--color-neutral-foreground-on-brand);
+      @apply bg-brand-background-pressed text-neutral-foreground-on-brand;
     }
 
     @variant forced-colors {

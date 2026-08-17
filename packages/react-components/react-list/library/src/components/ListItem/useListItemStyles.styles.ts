@@ -82,7 +82,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the checkmark slot's rules
   // live in `fui.components.l2` rather than l1.
-  state.root.className = clsx(styles.root, 'group/fui-list-item', state.root.className);
+  state.root.className = clsx(styles.root, listItemClassNames.root, state.root.className);
 
   if (state.checkmark) {
     state.checkmark.className = clsx(styles.checkmark, state.checkmark.className);

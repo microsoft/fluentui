@@ -166,7 +166,7 @@
      * `outline` appearance, which is why the extra ceremony is worth it.
      */
     &::before {
-      @apply pointer-events-none absolute box-border;
+      @apply pointer-events-none absolute box-border rounded-medium border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-accessible border-l-neutral-stroke-1;
 
       content: '';
       inset: 0;
@@ -180,12 +180,6 @@
       border-right-style: solid;
       border-bottom-style: solid;
       border-left-style: solid;
-      border-top-color: var(--color-neutral-stroke-1);
-      border-right-color: var(--color-neutral-stroke-1);
-      border-left-color: var(--color-neutral-stroke-1);
-      border-bottom-color: var(--color-neutral-stroke-accessible);
-
-      border-radius: var(--radius-medium);
     }
 
     /*
@@ -254,7 +248,7 @@
       /* clicking the field again while it is already focused */
       @variant active {
         &::after {
-          border-bottom-color: var(--color-compound-brand-stroke-pressed);
+          @apply border-b-compound-brand-stroke-pressed;
         }
       }
 
@@ -303,7 +297,8 @@
      * invalidate the whole rule if they were merged into one selector list.
      */
     &::placeholder {
-      color: var(--color-neutral-foreground-4);
+      @apply text-neutral-foreground-4;
+
       opacity: 1; /* browser style override */
     }
   }
@@ -344,15 +339,11 @@
 
     @variant enabled {
       @variant hover {
-        @apply cursor-pointer;
-
-        color: var(--color-neutral-foreground-3-hover);
-        background-color: var(--color-subtle-background-hover);
+        @apply cursor-pointer bg-subtle-background-hover text-neutral-foreground-3-hover;
       }
 
       @variant active {
-        color: var(--color-neutral-foreground-3-pressed);
-        background-color: var(--color-subtle-background-pressed);
+        @apply bg-subtle-background-pressed text-neutral-foreground-3-pressed;
       }
 
       /*
@@ -371,14 +362,14 @@
        * `@variant enabled`.
        */
       @variant spin-active {
-        color: var(--color-neutral-foreground-3-pressed);
-        background-color: var(--color-subtle-background-pressed);
+        @apply bg-subtle-background-pressed text-neutral-foreground-3-pressed;
       }
     }
 
     @variant disabled {
+      @apply text-neutral-foreground-disabled;
+
       cursor: not-allowed;
-      color: var(--color-neutral-foreground-disabled);
     }
   }
 }
@@ -391,7 +382,7 @@
    */
   .root {
     @variant size-small {
-      @apply min-h-24;
+      @apply min-h-24 ps-horizontal-s;
 
       font-family: var(--font-base);
       font-size: var(--text-base-200);
@@ -399,7 +390,6 @@
       line-height: var(--leading-base-200);
 
       /* `paddingLeft: tokens.spacingHorizontalS` — an [ltr, rtl] property flip */
-      @apply ps-horizontal-s;
     }
   }
 }
@@ -414,6 +404,8 @@
   /* from useRootStyles.underline */
   .underline {
     &::before {
+      @apply rounded-none;
+
       /* `shorthands.borderWidth(0, 0, '1px', 0)` — the right/left pair carries the same
          value, so the flip is a no-op and the physical longhands are exact. */
       border-top-width: 0;
@@ -422,18 +414,17 @@
       border-left-width: 0;
 
       /* corners look strange if rounded */
-      border-radius: var(--radius-none);
     }
   }
 
   /* from useRootStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--color-neutral-background-3);
+    @apply bg-neutral-background-3;
   }
 
   /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--color-neutral-background-1);
+    @apply bg-neutral-background-1;
   }
 
   /*
@@ -447,10 +438,7 @@
    */
   .filled {
     &::before {
-      border-top-color: var(--color-transparent-stroke);
-      border-right-color: var(--color-transparent-stroke);
-      border-bottom-color: var(--color-transparent-stroke);
-      border-left-color: var(--color-transparent-stroke);
+      @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke;
     }
   }
 
@@ -468,10 +456,7 @@
       @variant invalid {
         @variant not-focus-within {
           &::before {
-            border-top-color: var(--color-palette-red-border-2);
-            border-right-color: var(--color-palette-red-border-2);
-            border-bottom-color: var(--color-palette-red-border-2);
-            border-left-color: var(--color-palette-red-border-2);
+            @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
           }
         }
       }
@@ -483,10 +468,7 @@
       background-color: var(--color-transparent-background);
 
       &::before {
-        border-top-color: var(--color-neutral-stroke-disabled);
-        border-right-color: var(--color-neutral-stroke-disabled);
-        border-bottom-color: var(--color-neutral-stroke-disabled);
-        border-left-color: var(--color-neutral-stroke-disabled);
+        @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled;
       }
 
       @variant forced-colors {
@@ -519,19 +501,13 @@
     @variant enabled {
       @variant hover {
         &::before {
-          border-top-color: var(--color-neutral-stroke-1-hover);
-          border-right-color: var(--color-neutral-stroke-1-hover);
-          border-left-color: var(--color-neutral-stroke-1-hover);
-          border-bottom-color: var(--color-neutral-stroke-accessible-hover);
+          @apply border-t-neutral-stroke-1-hover border-r-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover border-l-neutral-stroke-1-hover;
         }
       }
 
       @variant active-or-focus-within {
         &::before {
-          border-top-color: var(--color-neutral-stroke-1-pressed);
-          border-right-color: var(--color-neutral-stroke-1-pressed);
-          border-left-color: var(--color-neutral-stroke-1-pressed);
-          border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
+          @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed border-l-neutral-stroke-1-pressed;
         }
       }
     }
@@ -542,13 +518,13 @@
     @variant enabled {
       @variant hover {
         &::before {
-          border-bottom-color: var(--color-neutral-stroke-accessible-hover);
+          @apply border-b-neutral-stroke-accessible-hover;
         }
       }
 
       @variant active-or-focus-within {
         &::before {
-          border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
+          @apply border-b-neutral-stroke-accessible-pressed;
         }
       }
 
@@ -556,7 +532,7 @@
          bucket `d`, but only the reset (fui.base) sets those corners, so its position
          among the interactive rules is inert. */
       &::after {
-        border-radius: var(--radius-none);
+        @apply rounded-none;
       }
     }
   }
@@ -568,10 +544,7 @@
          here, since the field always contains a focusable input) */
       @variant hover-or-focus-within {
         &::before {
-          border-top-color: var(--color-transparent-stroke-interactive);
-          border-right-color: var(--color-transparent-stroke-interactive);
-          border-bottom-color: var(--color-transparent-stroke-interactive);
-          border-left-color: var(--color-transparent-stroke-interactive);
+          @apply border-t-transparent-stroke-interactive border-r-transparent-stroke-interactive border-b-transparent-stroke-interactive border-l-transparent-stroke-interactive;
         }
       }
     }
@@ -592,10 +565,7 @@
         @variant hover {
           @variant not-focus-within {
             &::before {
-              border-top-color: var(--color-palette-red-border-2);
-              border-right-color: var(--color-palette-red-border-2);
-              border-bottom-color: var(--color-palette-red-border-2);
-              border-left-color: var(--color-palette-red-border-2);
+              @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
             }
           }
         }
@@ -623,7 +593,7 @@
         background-color: var(--color-transparent-background);
 
         &::placeholder {
-          color: var(--color-neutral-foreground-disabled);
+          @apply text-neutral-foreground-disabled;
         }
       }
     }
@@ -643,23 +613,24 @@
 
   /* from useButtonStyles.increment — button arg #4 */
   .increment {
+    @apply pt-vertical-xs pb-1;
+
     grid-row-start: 1;
 
     /* compiled pair: `border-top-right-radius` (ltr) / `border-top-left-radius` (rtl) */
     border-start-end-radius: var(--radius-medium);
 
     /* 4px = the XS step; 1px matches no step, so the numeric fallback */
-    @apply pt-vertical-xs pb-1;
   }
 
   /* from useButtonStyles.decrement — button arg #4 */
   .decrement {
+    @apply pt-1 pb-vertical-xs;
+
     grid-row-start: 2;
 
     /* compiled pair: `border-bottom-right-radius` (ltr) / `border-bottom-left-radius` (rtl) */
     border-end-end-radius: var(--radius-medium);
-
-    @apply pt-1 pb-vertical-xs;
   }
 
   /*
@@ -675,23 +646,20 @@
 
       @variant enabled {
         @variant hover {
-          color: var(--color-neutral-foreground-3-hover);
-          background-color: var(--color-subtle-background-hover);
+          @apply bg-subtle-background-hover text-neutral-foreground-3-hover;
         }
 
         @variant active {
-          color: var(--color-neutral-foreground-3-pressed);
-          background-color: var(--color-subtle-background-pressed);
+          @apply bg-subtle-background-pressed text-neutral-foreground-3-pressed;
         }
 
         @variant spin-active {
-          color: var(--color-neutral-foreground-3-pressed);
-          background-color: var(--color-subtle-background-pressed);
+          @apply bg-subtle-background-pressed text-neutral-foreground-3-pressed;
         }
       }
 
       @variant disabled {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
   }
@@ -704,23 +672,20 @@
 
       @variant enabled {
         @variant hover {
-          color: var(--color-neutral-foreground-3-hover);
-          background-color: var(--color-neutral-background-3-hover);
+          @apply bg-neutral-background-3-hover text-neutral-foreground-3-hover;
         }
 
         @variant active {
-          color: var(--color-neutral-foreground-3-pressed);
-          background-color: var(--color-neutral-background-3-pressed);
+          @apply bg-neutral-background-3-pressed text-neutral-foreground-3-pressed;
         }
 
         @variant spin-active {
-          color: var(--color-neutral-foreground-3-pressed);
-          background-color: var(--color-neutral-background-3-pressed);
+          @apply bg-neutral-background-3-pressed text-neutral-foreground-3-pressed;
         }
       }
 
       @variant disabled {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
   }
@@ -740,23 +705,20 @@
 
       @variant enabled {
         @variant hover {
-          color: var(--color-neutral-foreground-3-hover);
-          background-color: var(--color-neutral-background-1-hover);
+          @apply bg-neutral-background-1-hover text-neutral-foreground-3-hover;
         }
 
         @variant active {
-          color: var(--color-neutral-foreground-3-pressed);
-          background-color: var(--color-neutral-background-1-pressed);
+          @apply bg-neutral-background-1-pressed text-neutral-foreground-3-pressed;
         }
 
         @variant spin-active {
-          color: var(--color-neutral-foreground-3-pressed);
-          background-color: var(--color-neutral-background-1-pressed);
+          @apply bg-neutral-background-1-pressed text-neutral-foreground-3-pressed;
         }
       }
 
       @variant disabled {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
   }
@@ -777,13 +739,15 @@
   .root {
     @variant size-small {
       & .increment {
-        /* `padding: '3px 6px 0px 4px'` (ltr) / `'3px 4px 0px 6px'` (rtl) */
         @apply h-12 ps-horizontal-xs pe-horizontal-s-nudge pt-3 pb-vertical-none;
+
+        /* `padding: '3px 6px 0px 4px'` (ltr) / `'3px 4px 0px 6px'` (rtl) */
       }
 
       & .decrement {
-        /* `padding: '0px 6px 3px 4px'` (ltr) / `'0px 4px 3px 6px'` (rtl) */
         @apply h-12 ps-horizontal-xs pe-horizontal-s-nudge pt-vertical-none pb-3;
+
+        /* `padding: '0px 6px 3px 4px'` (ltr) / `'0px 4px 3px 6px'` (rtl) */
       }
     }
   }

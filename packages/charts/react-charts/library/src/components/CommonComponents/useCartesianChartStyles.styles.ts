@@ -97,7 +97,7 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
     // guarantees it, since clsx never drops an unconditional argument. Written as a LITERAL
     // rather than `cartesianchartClassNames.root`: greppable and sortable by
     // prettier-plugin-tailwindcss.
-    root: clsx(styles.root, 'group/fui-cartesian-chart', props.styles?.root),
+    root: clsx(styles.root, cartesianchartClassNames.root, props.styles?.root),
     chartWrapper: clsx(
       styles['chart-wrapper'],
       props.reflowProps?.mode === 'min-width' && styles['chart-wrapper-min-width'],

@@ -74,7 +74,7 @@ export const useCarouselButtonStyles_unstable = (state: CarouselButtonState): Ca
   // Griffel this hook's classes were Button's EARLIER mergeClasses argument, so Button won
   // every property collision, and two of the four Griffel declarations were provably deleted
   // from the DOM and are deliberately not reproduced.
-  state.root.className = clsx(styles.root, 'group/fui-carousel-button', state.root.className);
+  state.root.className = clsx(styles.root, carouselButtonClassNames.root, state.root.className);
 
   return state;
 };

@@ -61,7 +61,7 @@ export const useNavDrawerHeaderStyles_unstable = (state: NavDrawerHeaderState): 
   // string position.
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-nav-drawer-header', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, navDrawerHeaderClassNames.root, state.root.className) },
   };
 
   return state;

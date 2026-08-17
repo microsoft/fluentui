@@ -52,7 +52,7 @@ export const useTagPickerButtonStyles_unstable = (state: TagPickerButtonState): 
 
   state.root.className = clsx(
     styles.root,
-    'group/fui-tag-picker-button',
+    tagPickerButtonClassNames.root,
     state.hasSelectedOption && styles['visually-hidden'],
     state.root.className,
   );

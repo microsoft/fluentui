@@ -47,7 +47,7 @@ export const accordionItemClassNames: { root: string } = {
  * rollout and widens invalidation, so it is added only when a child genuinely needs it.
  */
 export const useAccordionItemStyles_unstable = (state: AccordionItemState): AccordionItemState => {
-  state.root.className = clsx(styles.root, 'group/fui-accordion-item', state.root.className);
+  state.root.className = clsx(styles.root, accordionItemClassNames.root, state.root.className);
 
   return state;
 };

@@ -188,7 +188,7 @@
       /* clicking the field again while it is already focused */
       @variant active {
         &::after {
-          border-bottom-color: var(--color-compound-brand-stroke-pressed);
+          @apply border-b-compound-brand-stroke-pressed;
         }
       }
 
@@ -231,7 +231,8 @@
      * invalidate the whole rule if they were merged into one selector list.
      */
     &::placeholder {
-      color: var(--color-neutral-foreground-4);
+      @apply text-neutral-foreground-4;
+
       opacity: 1; /* browser style override */
     }
   }
@@ -268,7 +269,7 @@
 
     /* from useRootStyles.large — arg #3 */
     @variant size-large {
-      @apply min-h-40;
+      @apply min-h-40 gap-horizontal-s-nudge;
 
       font-family: var(--font-base);
       font-size: var(--text-base-400);
@@ -276,7 +277,6 @@
       line-height: var(--leading-base-400);
 
       /* `gap: tokens.spacingHorizontalSNudge` */
-      @apply gap-horizontal-s-nudge;
     }
 
     /*
@@ -351,23 +351,25 @@
 
   /* from useRootStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--color-neutral-background-3);
+    @apply bg-neutral-background-3;
   }
 
   /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--color-neutral-background-1);
+    @apply bg-neutral-background-1;
   }
 
   /* from useRootStyles['filled-darker-shadow'] — deprecated appearance */
   .filled-darker-shadow {
-    background-color: var(--color-neutral-background-3);
+    @apply bg-neutral-background-3;
+
     box-shadow: var(--shadow-2);
   }
 
   /* from useRootStyles['filled-lighter-shadow'] — deprecated appearance */
   .filled-lighter-shadow {
-    background-color: var(--color-neutral-background-1);
+    @apply bg-neutral-background-1;
+
     box-shadow: var(--shadow-2);
   }
 
@@ -376,10 +378,7 @@
    * `shorthands.borderColor()` expanded to the four longhands the compiler emits.
    */
   .filled {
-    border-top-color: var(--color-transparent-stroke);
-    border-right-color: var(--color-transparent-stroke);
-    border-bottom-color: var(--color-transparent-stroke);
-    border-left-color: var(--color-transparent-stroke);
+    @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke;
   }
 
   .root {
@@ -395,10 +394,7 @@
     @variant enabled {
       @variant invalid {
         @variant not-focus-within {
-          border-top-color: var(--color-palette-red-border-2);
-          border-right-color: var(--color-palette-red-border-2);
-          border-bottom-color: var(--color-palette-red-border-2);
-          border-left-color: var(--color-palette-red-border-2);
+          @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
         }
       }
     }
@@ -450,17 +446,11 @@
   .outline {
     @variant enabled {
       @variant hover {
-        border-top-color: var(--color-neutral-stroke-1-hover);
-        border-right-color: var(--color-neutral-stroke-1-hover);
-        border-left-color: var(--color-neutral-stroke-1-hover);
-        border-bottom-color: var(--color-neutral-stroke-accessible-hover);
+        @apply border-t-neutral-stroke-1-hover border-r-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover border-l-neutral-stroke-1-hover;
       }
 
       @variant active-or-focus-within {
-        border-top-color: var(--color-neutral-stroke-1-pressed);
-        border-right-color: var(--color-neutral-stroke-1-pressed);
-        border-left-color: var(--color-neutral-stroke-1-pressed);
-        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
+        @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed border-l-neutral-stroke-1-pressed;
       }
     }
   }
@@ -469,11 +459,11 @@
   .underline {
     @variant enabled {
       @variant hover {
-        border-bottom-color: var(--color-neutral-stroke-accessible-hover);
+        @apply border-b-neutral-stroke-accessible-hover;
       }
 
       @variant active-or-focus-within {
-        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
+        @apply border-b-neutral-stroke-accessible-pressed;
       }
 
       /* remove the rounded corners from the focus underline. This one declaration is
@@ -491,10 +481,7 @@
       /* also handles the pressed border color (`:active` is a subset of `:focus-within`
          here, since the field always contains a focusable input) */
       @variant hover-or-focus-within {
-        border-top-color: var(--color-transparent-stroke-interactive);
-        border-right-color: var(--color-transparent-stroke-interactive);
-        border-bottom-color: var(--color-transparent-stroke-interactive);
-        border-left-color: var(--color-transparent-stroke-interactive);
+        @apply border-t-transparent-stroke-interactive border-r-transparent-stroke-interactive border-b-transparent-stroke-interactive border-l-transparent-stroke-interactive;
       }
     }
   }
@@ -525,10 +512,7 @@
       @variant invalid {
         @variant hover {
           @variant not-focus-within {
-            border-top-color: var(--color-palette-red-border-2);
-            border-right-color: var(--color-palette-red-border-2);
-            border-bottom-color: var(--color-palette-red-border-2);
-            border-left-color: var(--color-palette-red-border-2);
+            @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
           }
         }
       }
@@ -549,18 +533,20 @@
        slice; the combined medium padding is in the reset. */
     @variant size-small {
       & .input {
-        /* horizontalPadding.combined.small — spacingHorizontalS (SNudge + XXS = 8px) */
         @apply px-horizontal-s;
+
+        /* horizontalPadding.combined.small — spacingHorizontalS (SNudge + XXS = 8px) */
       }
     }
 
     @variant size-large {
       & .input {
+        @apply px-18;
+
         /* horizontalPadding.combined.large — spacingHorizontalM (12) +
            spacingHorizontalSNudge (6) = 18px, which matches NO spacing step, so the
            numeric utility is the sanctioned fallback. Same scale: `--spacing` is
            `calc(1px * var(--base-scale))`, so px-18 === calc(18px * var(--base-scale)). */
-        @apply px-18;
       }
     }
 
@@ -633,7 +619,7 @@
         cursor: not-allowed;
 
         &::placeholder {
-          color: var(--color-neutral-foreground-disabled);
+          @apply text-neutral-foreground-disabled;
         }
       }
     }
@@ -650,7 +636,7 @@
     /* from useContentStyles.disabled */
     @variant disabled {
       & .content {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
 

@@ -93,11 +93,9 @@
 @layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) — root arg #2 */
   .root {
-    @apply flex;
+    @apply flex text-neutral-foreground-1;
 
     grid-column-end: 3;
-
-    color: var(--color-neutral-foreground-1);
 
     /* Tailwind's `break-words` is `overflow-wrap: break-word`, a DIFFERENT property —
        the compiled atomic sets `word-break`, so this stays a literal declaration. */
@@ -106,17 +104,16 @@
 
   /* from useMediaBaseClassName (makeResetStyles) — media arg #2 */
   .media {
-    @apply flex pe-horizontal-s pt-vertical-xxs;
+    @apply flex pe-horizontal-s pt-vertical-xxs text-neutral-foreground-1;
 
     grid-column-end: 2;
 
     font-size: calc(16px * var(--base-scale));
-    color: var(--color-neutral-foreground-1);
   }
 
   /* from useActionBaseClassName (makeResetStyles) — action arg #2 */
   .action {
-    @apply flex ps-horizontal-m;
+    @apply flex ps-horizontal-m text-brand-foreground-1;
 
     /* `alignItems: 'start'` compiled to the Box-Alignment keyword `start`, NOT `flex-start` —
        Tailwind's `items-start` emits the latter. Identical here (a default-direction flex row
@@ -125,37 +122,35 @@
     align-items: start;
 
     grid-column-end: -1;
-
-    color: var(--color-brand-foreground-1);
   }
 }
 
 @layer fui.components.l1 {
   /* from useInvertedStyles.root — root arg #3 */
   .root-inverted {
-    color: var(--color-neutral-foreground-inverted-2);
+    @apply text-neutral-foreground-inverted-2;
   }
 
   /* from useInvertedStyles.media — media arg #3 */
   .media-inverted {
-    color: var(--color-neutral-foreground-inverted);
+    @apply text-neutral-foreground-inverted;
   }
 
   /* from useIntentIconStyles[intent] — media arg #4. MUST stay after `.media-inverted`. */
   .media-success {
-    color: var(--color-status-success-foreground-1);
+    @apply text-status-success-foreground-1;
   }
 
   .media-error {
-    color: var(--color-status-danger-foreground-1);
+    @apply text-status-danger-foreground-1;
   }
 
   .media-warning {
-    color: var(--color-status-warning-foreground-1);
+    @apply text-status-warning-foreground-1;
   }
 
   .media-info {
-    color: var(--color-neutral-foreground-2);
+    @apply text-neutral-foreground-2;
   }
 
   /*
@@ -164,23 +159,23 @@
    * both classes are present whenever a toast is inverted AND carries an intent.
    */
   .media-inverted-success {
-    color: var(--color-status-success-foreground-inverted);
+    @apply text-status-success-foreground-inverted;
   }
 
   .media-inverted-error {
-    color: var(--color-status-danger-foreground-inverted);
+    @apply text-status-danger-foreground-inverted;
   }
 
   .media-inverted-warning {
-    color: var(--color-status-warning-foreground-inverted);
+    @apply text-status-warning-foreground-inverted;
   }
 
   .media-inverted-info {
-    color: var(--color-neutral-foreground-inverted-2);
+    @apply text-neutral-foreground-inverted-2;
   }
 
   /* from useInvertedStyles.action — action arg #3 */
   .action-inverted {
-    color: var(--color-brand-foreground-inverted);
+    @apply text-brand-foreground-inverted;
   }
 }

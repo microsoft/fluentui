@@ -23,7 +23,7 @@ export const useMenuGridGroupStyles_unstable = (state: MenuGridGroupState): Menu
   // component has no styles of its own and nothing else prepends a class here, so without it
   // the marker would be `classList[0]` and nwsapi's jsdom `:scope` polyfill would throw
   // (DECISIONS.md D15.1 / D16.2). Consumer className stays last.
-  state.root.className = clsx(styles.root, 'group/fui-menu-grid-group', state.root.className);
+  state.root.className = clsx(styles.root, menuGridGroupClassNames.root, state.root.className);
 
   return state;
 };

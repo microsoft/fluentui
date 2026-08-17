@@ -43,7 +43,7 @@ export const useTeachingPopoverCarouselFooterStyles_unstable = (
   // which reaches into a react-button root — not by the order of these arguments.
   state.root.className = clsx(
     styles.root,
-    'group/fui-teaching-popover-carousel-footer',
+    teachingPopoverCarouselFooterClassNames.root,
     layout === 'centered' ? styles.centered : styles['right-aligned'],
     state.root.className,
   );

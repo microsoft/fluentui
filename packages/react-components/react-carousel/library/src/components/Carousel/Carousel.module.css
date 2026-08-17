@@ -84,7 +84,6 @@
    * shadow has room to render without being clipped by surrounding layout or overflow.
    */
   .elevated {
-    @apply ms-vertical-l me-vertical-l mt-vertical-l mb-vertical-l;
-    @apply ps-vertical-l pe-vertical-l pt-vertical-l pb-vertical-l;
+    @apply ms-vertical-l me-vertical-l mt-vertical-l mb-vertical-l ps-vertical-l pe-vertical-l pt-vertical-l pb-vertical-l;
   }
 }

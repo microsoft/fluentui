@@ -42,7 +42,7 @@ export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState)
   // MenuSplitGroup's child selectors) can address whichever identity it means. Both are
   // declared to react-conformance's `component-has-group-marker` through
   // `testOptions['has-group-marker'].markers` in MenuItemCheckbox.test.tsx (D16.3).
-  state = { ...state, root: { ...state.root, className: clsx('group/fui-menu-item-checkbox', state.root.className) } };
+  state = { ...state, root: { ...state.root, className: clsx(menuItemCheckboxClassNames.root, state.root.className) } };
 
   // Called LAST, exactly as before: it composes its own classes ahead of the incoming
   // className, which keeps the consumer's string last in the rendered class attribute.

@@ -90,14 +90,12 @@
 @layer fui.base {
   /* from useDrawerResetStyles (makeResetStyles) = { ...drawerDefaultStyles, position: 'relative' } */
   .root {
-    @apply relative box-border flex flex-col items-start justify-start overflow-hidden;
+    @apply relative box-border flex flex-col items-start justify-start overflow-hidden bg-neutral-background-1 text-neutral-foreground-1;
 
     width: var(--fui-Drawer--size);
     max-width: 100vw;
     height: auto;
     max-height: 100vh;
-    background-color: var(--color-neutral-background-1);
-    color: var(--color-neutral-foreground-1);
   }
 }
 
@@ -105,18 +103,20 @@
   /* arg #3a — from the shared useDrawerStyles.start / .end / .bottom */
   .root {
     @variant position-start {
+      @apply border-e-transparent-stroke;
+
       border-inline-end-width: var(--spacing-thin);
       border-inline-end-style: solid;
-      border-inline-end-color: var(--color-transparent-stroke);
 
       inset-inline-start: 0;
       inset-inline-end: auto;
     }
 
     @variant position-end {
+      @apply border-s-transparent-stroke;
+
       border-inline-start-width: var(--spacing-thin);
       border-inline-start-style: solid;
-      border-inline-start-color: var(--color-transparent-stroke);
 
       inset-inline-end: 0;
       inset-inline-start: auto;
@@ -172,15 +172,17 @@
    */
   .separator {
     @variant position-start {
+      @apply border-e-neutral-background-3;
+
       border-inline-end-width: calc(1px * var(--base-scale));
       border-inline-end-style: solid;
-      border-inline-end-color: var(--color-neutral-background-3);
     }
 
     @variant position-end {
+      @apply border-s-neutral-background-3;
+
       border-inline-start-width: calc(1px * var(--base-scale));
       border-inline-start-style: solid;
-      border-inline-start-color: var(--color-neutral-background-3);
     }
 
     @variant position-bottom {

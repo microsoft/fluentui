@@ -45,7 +45,7 @@ export const useListStyles_unstable = (state: ListState): ListState => {
   // List.module.css, not by the order of these arguments.
   //
   // The state-mutation pattern is kept deliberately during conversion (DECISIONS.md D14).
-  state.root.className = clsx(styles.root, 'group/fui-list', layoutToStyles[state.layout], state.root.className);
+  state.root.className = clsx(styles.root, listClassNames.root, layoutToStyles[state.layout], state.root.className);
 
   return state;
 };

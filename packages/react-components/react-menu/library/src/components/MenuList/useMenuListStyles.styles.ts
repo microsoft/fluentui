@@ -31,7 +31,7 @@ export const useMenuListStyles_unstable = (state: MenuListState): MenuListState 
   // that used to hold that position is gone (DECISIONS.md D16.1).
   state.root.className = clsx(
     styles.root,
-    'group/fui-menu-list',
+    menuListClassNames.root,
     state.hasMenuContext && styles['has-menu-context'],
     state.root.className,
   );

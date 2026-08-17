@@ -199,6 +199,8 @@
 @layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) */
   .root {
+    @apply flex items-center justify-center gap-horizontal-s overflow-hidden;
+
     /*
      * `gap: '8px'` in the Griffel reset — a raw px literal that lands exactly on the S
      * spacing step, so the named utility replaces `gap-8` (D4 amendment: Fluent spacing
@@ -209,10 +211,8 @@
      * the `vertical` variant below, so the inline-axis token is the matching one. Every
      * step carries the same value on both axes, so the choice is naming, not pixels.
      */
-    @apply flex items-center justify-center gap-horizontal-s;
 
     /* prevents height changes from rotating children */
-    @apply overflow-hidden;
 
     line-height: 0;
     min-width: min-content;
@@ -437,8 +437,7 @@
    * deliberately no `.spinner-primary` / `.label-primary` rule.
    */
   .spinner-inverted {
-    background-color: var(--color-neutral-stroke-alpha-2);
-    color: var(--color-neutral-stroke-on-brand-2);
+    @apply bg-neutral-stroke-alpha-2 text-neutral-stroke-on-brand-2;
   }
 }
 
@@ -560,6 +559,6 @@
 @layer fui.components.l2 {
   /* from useLabelStyles.inverted — arg #3 on the label slot */
   .label-inverted {
-    color: var(--color-neutral-foreground-static-inverted);
+    @apply text-neutral-foreground-static-inverted;
   }
 }

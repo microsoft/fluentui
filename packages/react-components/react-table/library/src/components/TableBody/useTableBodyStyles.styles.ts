@@ -53,7 +53,7 @@ export const useTableBodyStyles_unstable = (state: TableBodyState): TableBodySta
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
   state.root.className = clsx(
     state.noNativeElements ? styles['flex-root'] : styles['table-root'],
-    'group/fui-table-body',
+    tableBodyClassNames.root,
     state.root.className,
   );
 

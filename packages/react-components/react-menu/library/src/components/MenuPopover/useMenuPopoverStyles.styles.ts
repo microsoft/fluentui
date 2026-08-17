@@ -30,6 +30,6 @@ export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopo
   // This slot is PORTALLED and positioned by @fluentui/react-positioning; its classes still
   // arrive through this hook exactly like any other slot, and the package's compiled
   // `dist/styles.css` is document-level so it reaches the portal wherever it mounts.
-  state.root.className = clsx(styles.root, 'group/fui-menu-popover', state.root.className);
+  state.root.className = clsx(styles.root, menuPopoverClassNames.root, state.root.className);
   return state;
 };

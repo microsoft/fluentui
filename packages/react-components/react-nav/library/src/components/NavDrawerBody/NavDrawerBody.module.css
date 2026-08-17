@@ -55,8 +55,7 @@
 @layer fui.components.l2 {
   /* arg #2 — from useStyles.root */
   .root {
-    @apply flex flex-col;
-    @apply gap-y-vertical-xxs py-0 ps-horizontal-m-nudge pe-horizontal-xs;
+    @apply flex flex-col gap-y-vertical-xxs py-0 ps-horizontal-m-nudge pe-horizontal-xs;
 
     align-items: unset;
   }

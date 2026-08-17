@@ -179,8 +179,7 @@
     @variant focus-visible-fui {
       & > :global(.group\/fui-tree-item-layout),
       & > :global(.group\/fui-tree-item-persona-layout) {
-        border-radius: var(--radius-medium);
-        outline-color: var(--color-stroke-focus-2);
+        @apply rounded-medium outline-stroke-focus-2;
 
         /* `outline-radius` is not a real CSS property — react-tabster passes its
            `outlineRadius` option straight through and Griffel compiles it verbatim

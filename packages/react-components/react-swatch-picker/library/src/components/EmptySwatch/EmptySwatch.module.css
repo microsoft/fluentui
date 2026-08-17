@@ -49,7 +49,7 @@
 @layer fui.base {
   /* from useStyles (makeResetStyles) */
   .root {
-    background-color: var(--color-transparent-background);
+    @apply bg-transparent-background;
 
     /* Kept as the `border` shorthand the source wrote — it is this module's ONLY
        border-width/style declaration and no other slice competes for a border longhand
@@ -93,7 +93,7 @@
     border-radius: var(--radius-medium);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-medium);
+      @apply rounded-medium;
     }
   }
 
@@ -102,7 +102,7 @@
     border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-circular);
+      @apply rounded-circular;
     }
   }
 
@@ -111,7 +111,7 @@
     border-radius: var(--radius-none);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-none);
+      @apply rounded-none;
     }
   }
 }

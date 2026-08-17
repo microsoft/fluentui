@@ -59,7 +59,7 @@ export const heatmapChartClassNames: { root: string } = {
  */
 export const useHeatMapChartStyles = (props: HeatMapChartProps): HeatMapChartStyles => {
   return {
-    root: clsx(styles.root, 'group/fui-heat-map-chart', props.styles?.root),
+    root: clsx(styles.root, heatmapChartClassNames.root, props.styles?.root),
     text: clsx(styles.text /*, props.styles?.text*/),
     calloutContentRoot: clsx(styles['callout-content-root'] /*, props.styles?.calloutContentRoot*/),
   };

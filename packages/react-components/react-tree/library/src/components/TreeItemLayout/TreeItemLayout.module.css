@@ -113,7 +113,7 @@
       background-color: var(--color-subtle-background-hover);
 
       & .expand-icon {
-        color: var(--color-neutral-foreground-3-hover);
+        @apply text-neutral-foreground-3-hover;
       }
     }
 
@@ -122,32 +122,29 @@
       background-color: var(--color-subtle-background-pressed);
 
       & .expand-icon {
-        color: var(--color-neutral-foreground-3-pressed);
+        @apply text-neutral-foreground-3-pressed;
       }
     }
   }
 
   /* from useMainBaseStyles (makeResetStyles) — main arg #2 */
   .main {
+    @apply ps-horizontal-xxs pe-horizontal-xxs;
+
     /* `padding: 0 var(--spacing-horizontal-xxs)` expanded to longhands (cookbook §2) */
     padding-top: 0;
     padding-bottom: 0;
-
-    @apply ps-horizontal-xxs pe-horizontal-xxs;
   }
 
   /* from useExpandIconBaseStyles (makeResetStyles) — expandIcon arg #2 */
   .expand-icon {
-    @apply box-border flex min-w-24 items-center justify-center;
-
-    color: var(--color-neutral-foreground-3);
+    @apply box-border flex min-w-24 items-center justify-center pt-vertical-xs pb-vertical-xs text-neutral-foreground-3;
 
     /* literal, not `flex-none`: that utility compiles to `flex: none`, the compiled
        Griffel reset is `flex: 0 0 auto`. Same computed value, fewer questions. */
     flex: 0 0 auto;
 
     /* `padding: var(--spacing-vertical-xs) 0` expanded to longhands (cookbook §2) */
-    @apply pt-vertical-xs pb-vertical-xs;
 
     padding-left: 0;
     padding-right: 0;
@@ -156,16 +153,15 @@
   /* from useIconBaseStyles (makeResetStyles) — shared by iconBefore arg #2 and
      iconAfter arg #2 (one Griffel reset class, one module class) */
   .icon {
-    @apply flex items-center;
+    @apply flex items-center text-neutral-foreground-2;
 
-    color: var(--color-neutral-foreground-2);
     line-height: var(--leading-base-500);
     font-size: var(--text-base-500);
   }
 
   /* from useActionsBaseStyles (makeResetStyles) — actions arg #2 */
   .actions {
-    @apply relative ms-auto flex;
+    @apply relative ms-auto flex ps-horizontal-s pe-horizontal-s;
 
     z-index: 1;
     grid-area: aside;
@@ -173,13 +169,11 @@
     /* `padding: 0 var(--spacing-horizontal-s)` expanded to longhands (cookbook §2) */
     padding-top: 0;
     padding-bottom: 0;
-
-    @apply ps-horizontal-s pe-horizontal-s;
   }
 
   /* from useAsideBaseStyles (makeResetStyles) — aside arg #2 */
   .aside {
-    @apply ms-auto flex items-center gap-horizontal-xs;
+    @apply ms-auto flex items-center gap-horizontal-xs ps-horizontal-m pe-horizontal-m;
 
     z-index: 0;
     grid-area: aside;
@@ -187,8 +181,6 @@
     /* `padding: 0 var(--spacing-horizontal-m)` expanded to longhands (cookbook §2) */
     padding-top: 0;
     padding-bottom: 0;
-
-    @apply ps-horizontal-m pe-horizontal-m;
   }
 }
 
@@ -208,11 +200,11 @@
    */
   .subtle-alpha {
     @variant hover {
-      background-color: var(--color-subtle-background-light-alpha-hover);
+      @apply bg-subtle-background-light-alpha-hover;
     }
 
     @variant active {
-      background-color: var(--color-subtle-background-light-alpha-pressed);
+      @apply bg-subtle-background-light-alpha-pressed;
     }
   }
 
@@ -220,11 +212,11 @@
     background-color: var(--color-transparent-background);
 
     @variant hover {
-      background-color: var(--color-transparent-background-hover);
+      @apply bg-transparent-background-hover;
     }
 
     @variant active {
-      background-color: var(--color-transparent-background-pressed);
+      @apply bg-transparent-background-pressed;
     }
   }
 }

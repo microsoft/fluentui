@@ -120,17 +120,16 @@
    */
   .rest-background {
     @variant at-rest {
-      background-color: var(--color-neutral-background-alpha);
+      @apply bg-neutral-background-alpha;
     }
   }
 
   .rest-stroke-foreground {
     @variant at-rest {
+      @apply border-s-transparent-stroke border-e-transparent-stroke text-neutral-foreground-2;
+
       border-block-start-color: var(--color-transparent-stroke);
-      border-inline-end-color: var(--color-transparent-stroke);
-      border-inline-start-color: var(--color-transparent-stroke);
       border-block-end-color: var(--color-transparent-stroke);
-      color: var(--color-neutral-foreground-2);
     }
   }
 }

@@ -56,8 +56,9 @@
 @layer fui.components.l1 {
   /* from useRootStyles.root — arg #2 */
   .root {
-    /* `min-h-24` ← min-height: 24px, to match small button size */
     @apply box-border flex min-h-24 items-center;
+
+    /* `min-h-24` ← min-height: 24px, to match small button size */
   }
 
   /* from useRootStyles.visuallyHidden — arg #3 */

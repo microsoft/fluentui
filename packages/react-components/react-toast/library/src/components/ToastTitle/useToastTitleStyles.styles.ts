@@ -51,7 +51,7 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
   // pure-builder rewrite to a single Phase 3 sweep.
   state.root.className = clsx(
     styles.root,
-    'group/fui-toast-title',
+    toastTitleClassNames.root,
     inverted && styles['root-inverted'],
     state.root.className,
   );

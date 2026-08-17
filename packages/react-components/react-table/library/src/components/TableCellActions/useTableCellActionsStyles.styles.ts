@@ -41,7 +41,7 @@ export const useTableCellActionsStyles_unstable = (state: TableCellActionsState)
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
   state.root.className = clsx(
     styles.root,
-    'group/fui-table-cell-actions',
+    tableCellActionsClassNames.root,
     state.visible && styles.visible,
     state.root.className,
   );

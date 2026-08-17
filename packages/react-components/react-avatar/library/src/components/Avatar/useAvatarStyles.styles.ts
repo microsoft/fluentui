@@ -130,7 +130,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       ...rootDataAttributes,
       className: clsx(
         styles.root,
-        'group/fui-avatar',
+        avatarClassNames.root,
         size !== 32 && sizeStyles[size],
         state.badge && styles['badge-align'],
         // `||`, not `??` — byte-for-byte the Griffel condition (`styles[state.badge.size || 'medium']`)

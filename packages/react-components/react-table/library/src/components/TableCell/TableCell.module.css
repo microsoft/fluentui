@@ -125,8 +125,9 @@
      this sits after the layout/size blocks and why the `2px` stays literal. */
   .root {
     @variant focus-visible-fui {
+      @apply rounded-medium;
+
       outline: 2px solid var(--color-stroke-focus-2);
-      border-radius: var(--radius-medium);
     }
   }
 }

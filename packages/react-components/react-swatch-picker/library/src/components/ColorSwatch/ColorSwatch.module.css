@@ -212,7 +212,7 @@
     border-radius: var(--radius-medium);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-medium);
+      @apply rounded-medium;
     }
   }
 
@@ -221,7 +221,7 @@
     border-radius: var(--radius-circular);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-circular);
+      @apply rounded-circular;
     }
   }
 
@@ -230,7 +230,7 @@
     border-radius: var(--radius-none);
 
     @variant focus-visible-fui {
-      border-radius: var(--radius-none);
+      @apply rounded-none;
     }
   }
 }
@@ -400,7 +400,7 @@
 
   /* from useIconStyles.disabledIcon */
   .disabled-icon {
-    color: var(--color-neutral-foreground-inverted);
+    @apply text-neutral-foreground-inverted;
 
     /* Literals kept verbatim: `filter: drop-shadow(...)` has no spacing-powered utility
        and the PopoverSurface / Tooltip conversions keep their drop-shadow px as authored. */

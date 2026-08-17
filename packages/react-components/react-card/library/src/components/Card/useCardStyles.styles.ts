@@ -137,7 +137,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   // sweep.
   state.root.className = clsx(
     styles.root,
-    'group/fui-card',
+    cardClassNames.root,
     appearanceClassNames[state.appearance],
     focusedClassName,
     state.root.className,

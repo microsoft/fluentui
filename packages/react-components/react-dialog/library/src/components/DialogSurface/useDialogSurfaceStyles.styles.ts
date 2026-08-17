@@ -44,7 +44,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   // `component-has-group-marker` conformance test (DECISIONS.md D15.1).
   root.className = clsx(
     styles.root,
-    'group/fui-dialog-surface',
+    dialogSurfaceClassNames.root,
     mountedAndClosed && styles['dialog-hidden'],
     root.className,
   );

@@ -50,7 +50,7 @@ export const useNavDrawerStyles_unstable = (state: NavDrawerState): NavDrawerSta
   // (NavDrawer.module.css authors at `fui.components.l2`), not from string position.
   state.root.className = clsx(
     styles.root,
-    'group/fui-nav-drawer',
+    navDrawerClassNames.root,
     !size && styles['default-width'],
     state.root.className,
   );

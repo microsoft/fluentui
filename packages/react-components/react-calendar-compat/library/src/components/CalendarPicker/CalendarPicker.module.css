@@ -69,9 +69,9 @@
 @layer fui.components.l1 {
   /* from useRootStyles.normalize — root arg #2 (see the INVERSION note above) */
   .normalize {
-    box-shadow: none;
-
     @apply m-0 box-border p-0;
+
+    box-shadow: none;
   }
 
   /* from useRootStyles.base — root arg #3; re-sets `box-sizing` and `padding` from above */
@@ -88,25 +88,18 @@
 
   /* from useCurrentItemButtonStyles.base — currentItemButton arg #2 */
   .current-item-button {
-    background-color: var(--color-transparent-background);
+    @apply grow overflow-visible rounded-medium bg-transparent-background py-0 ps-horizontal-m-nudge pe-horizontal-xs text-start text-inherit;
 
     /* `shorthands.borderStyle('none')` — the four style longhands, i.e. `border-style` */
     border-style: none;
-
-    border-radius: var(--radius-medium);
-    color: inherit;
-
-    @apply grow overflow-visible;
 
     font-family: inherit;
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-semibold);
 
     /* `padding: '0 4px 0 10px'` → block 0, inline-start 10px (MNudge), inline-end 4px (XS) */
-    @apply py-0 ps-horizontal-m-nudge pe-horizontal-xs;
 
     /* `textAlign: 'left'` → logical `start` */
-    @apply text-start;
   }
 
   /*
@@ -117,10 +110,7 @@
    */
   .has-header-click-callback {
     @variant hover {
-      background-color: var(--color-brand-background-inverted-hover);
-      color: var(--color-brand-foreground-on-light-hover);
-
-      @apply cursor-pointer;
+      @apply cursor-pointer bg-brand-background-inverted-hover text-brand-foreground-on-light-hover;
 
       outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
     }
@@ -131,10 +121,7 @@
        component's Griffel source never emitted. */
     @variant hover {
       @variant active {
-        background-color: var(--color-brand-background-inverted-pressed);
-        color: var(--color-brand-foreground-on-light-pressed);
-
-        @apply cursor-pointer;
+        @apply cursor-pointer bg-brand-background-inverted-pressed text-brand-foreground-on-light-pressed;
 
         outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
       }
@@ -164,18 +151,14 @@
     line-height: calc(28px * var(--base-scale));
 
     @variant hover {
-      background-color: var(--color-brand-background-inverted-hover);
-      color: var(--color-brand-foreground-on-light-hover);
-
-      @apply cursor-pointer;
+      @apply cursor-pointer bg-brand-background-inverted-hover text-brand-foreground-on-light-hover;
 
       outline: calc(1px * var(--base-scale)) solid var(--color-transparent-stroke);
     }
 
     @variant hover {
       @variant active {
-        background-color: var(--color-brand-background-inverted-pressed);
-        color: var(--color-brand-foreground-on-light-pressed);
+        @apply bg-brand-background-inverted-pressed text-brand-foreground-on-light-pressed;
       }
     }
   }
@@ -317,7 +300,7 @@
 
     @variant hover {
       @variant active {
-        background-color: var(--color-brand-background-inverted-pressed);
+        @apply bg-brand-background-inverted-pressed;
       }
     }
   }
@@ -336,9 +319,7 @@
     &,
     &:where(:disabled),
     & button {
-      color: var(--color-neutral-foreground-disabled);
-
-      @apply pointer-events-none;
+      @apply pointer-events-none text-neutral-foreground-disabled;
     }
 
     @variant forced-colors {

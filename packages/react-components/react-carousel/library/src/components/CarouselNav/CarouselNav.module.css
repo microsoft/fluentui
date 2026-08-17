@@ -78,8 +78,9 @@
 
     /* MUST stay last — see "ORDERING IS LOAD-BEARING" in the header. */
     @variant focus-visible-fui {
+      @apply rounded-medium;
+
       outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
-      border-radius: var(--radius-medium);
       border-block-start-color: transparent;
       border-inline-end-color: transparent;
       border-inline-start-color: transparent;

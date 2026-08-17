@@ -81,7 +81,7 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   // default appearance), so there is no class to look up for it.
   state.root.className = clsx(
     styles.root,
-    'group/fui-link',
+    linkClassNames.root,
     root.as === 'a' && root.href && styles.href,
     root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,

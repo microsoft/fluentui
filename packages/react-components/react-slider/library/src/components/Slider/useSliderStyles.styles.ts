@@ -90,7 +90,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   // pure-builder rewrite to a single Phase 3 sweep). The Griffel original's
   // `eslint-disable-next-line react-hooks/immutability` comments are dropped because the rule
   // no longer reports here — same as the react-divider and react-switch conversions.
-  state.root.className = clsx(styles.root, 'group/fui-slider', state.root.className);
+  state.root.className = clsx(styles.root, sliderClassNames.root, state.root.className);
 
   state.rail.className = clsx(styles.rail, state.rail.className);
 

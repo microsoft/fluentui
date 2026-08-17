@@ -75,6 +75,6 @@ export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComp
     // D16.2) — the marker must never be `classList[0]`; nwsapi's `:scope` polyfill throws
     // on the `/` under jsdom. Written as a LITERAL, not `popoverClassNames.root`:
     // greppable, and it keeps the `@deprecated` constant from being self-referenced.
-    calloutContainer: clsx(styles['callout-container'], 'group/fui-chart-popover'),
+    calloutContainer: clsx(styles['callout-container'], popoverClassNames.root),
   };
 };

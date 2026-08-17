@@ -216,19 +216,19 @@
 
     /* from useRootStyles.small / .medium — root arg #4 */
     @variant size-small {
+      @apply min-h-24;
+
       --fui-Slider__thumb--size: calc(16px * var(--base-scale));
       --fui-Slider__inner-thumb--radius: calc(5px * var(--base-scale));
       --fui-Slider__rail--size: calc(2px * var(--base-scale));
-
-      @apply min-h-24;
     }
 
     @variant size-medium {
+      @apply min-h-32;
+
       --fui-Slider__thumb--size: calc(20px * var(--base-scale));
       --fui-Slider__inner-thumb--radius: calc(6px * var(--base-scale));
       --fui-Slider__rail--size: calc(4px * var(--base-scale));
-
-      @apply min-h-32;
     }
 
     /*

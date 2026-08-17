@@ -97,7 +97,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   // in `fui.components.l2`.
   state.root.className = clsx(
     styles.root,
-    'group/fui-persona',
+    personaClassNames.root,
     alignBeforeAfterCenter && styles['before-after-center'],
     state.root.className,
   );

@@ -32,7 +32,7 @@ export const useMenuGridRowStyles_unstable = (state: MenuGridRowState): MenuGrid
   // `state.root.className`, so the element carries BOTH markers — the D16.3 shape, declared
   // to react-conformance via `testOptions['has-group-marker'].markers` in
   // MenuGridItem.test.tsx.
-  state.root.className = clsx(styles.root, 'group/fui-menu-grid-row', state.root.className);
+  state.root.className = clsx(styles.root, menuGridRowClassNames.root, state.root.className);
 
   return state;
 };

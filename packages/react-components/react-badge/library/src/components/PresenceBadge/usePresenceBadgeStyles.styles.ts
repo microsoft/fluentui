@@ -81,7 +81,7 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
   // with bracket access rather than dot access.
   state.root.className = clsx(
     styles.root,
-    'group/fui-presence-badge',
+    presenceBadgeClassNames.root,
     isBusy && styles['status-busy'],
     status === 'away' && styles['status-away'],
     status === 'available' && styles['status-available'],

@@ -103,9 +103,7 @@
 @layer fui.components.l1 {
   /* from useStyles.image — image arg #1 */
   .image {
-    @apply h-40 w-40;
-
-    border-radius: var(--radius-small);
+    @apply h-40 w-40 rounded-small;
   }
 }
 

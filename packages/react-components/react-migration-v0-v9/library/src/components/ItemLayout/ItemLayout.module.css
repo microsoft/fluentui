@@ -34,8 +34,9 @@
 
   /* from useItemLayoutStyles.startMedia */
   .start-media {
-    /* `marginRight` is RTL-flippable → logical; 8px is spacing step S on the inline axis */
     @apply me-horizontal-s self-center;
+
+    /* `marginRight` is RTL-flippable → logical; 8px is spacing step S on the inline axis */
 
     grid-column-start: 1;
     grid-column-end: 2;

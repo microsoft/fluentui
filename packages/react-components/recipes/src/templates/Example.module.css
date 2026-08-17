@@ -21,7 +21,7 @@
 @layer fui.components.l4 {
   /* from useExampleStyles.root */
   .root {
-    @apply m-6 rounded-[16px] p-30;
+    @apply m-6 rounded-[16px] border-neutral-stroke-1 p-30;
 
     /*
      * `border` expanded to longhands per the cookbook's shorthand rule. The 1px width is
@@ -32,7 +32,6 @@
      */
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--color-neutral-stroke-1);
   }
 
   /*

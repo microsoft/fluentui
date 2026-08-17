@@ -104,7 +104,7 @@
 @layer fui.base {
   /* from useRootBaseStyles (makeResetStyles) */
   .root {
-    @apply box-border grid min-h-36 items-center ps-horizontal-m whitespace-nowrap;
+    @apply box-border grid min-h-36 items-center rounded-medium bg-neutral-background-3 ps-horizontal-m whitespace-nowrap;
 
     grid-template-columns: auto 1fr auto auto;
     grid-template-rows: 1fr;
@@ -113,17 +113,14 @@
     /* kept as the compiled `border` shorthand (the atomic is one declaration); the
        intent slices below replace only its colour, from a higher layer. */
     border: var(--spacing-thin) solid var(--color-neutral-stroke-1);
-    border-radius: var(--radius-medium);
-    background-color: var(--color-neutral-background-3);
   }
 
   /* from useIconBaseStyles (makeResetStyles) */
   .icon {
-    @apply me-horizontal-s flex items-center;
+    @apply me-horizontal-s flex items-center text-neutral-foreground-3;
 
     grid-area: icon;
     font-size: var(--text-base-500);
-    color: var(--color-neutral-foreground-3);
   }
 
   /* from useReflowSpacerBaseStyles (makeResetStyles) */
@@ -175,27 +172,15 @@
    */
   .root {
     @variant intent-error {
-      background-color: var(--color-status-danger-background-1);
-      border-top-color: var(--color-status-danger-border-1);
-      border-right-color: var(--color-status-danger-border-1);
-      border-bottom-color: var(--color-status-danger-border-1);
-      border-left-color: var(--color-status-danger-border-1);
+      @apply border-t-status-danger-border-1 border-r-status-danger-border-1 border-b-status-danger-border-1 border-l-status-danger-border-1 bg-status-danger-background-1;
     }
 
     @variant intent-warning {
-      background-color: var(--color-status-warning-background-1);
-      border-top-color: var(--color-status-warning-border-1);
-      border-right-color: var(--color-status-warning-border-1);
-      border-bottom-color: var(--color-status-warning-border-1);
-      border-left-color: var(--color-status-warning-border-1);
+      @apply border-t-status-warning-border-1 border-r-status-warning-border-1 border-b-status-warning-border-1 border-l-status-warning-border-1 bg-status-warning-background-1;
     }
 
     @variant intent-success {
-      background-color: var(--color-status-success-background-1);
-      border-top-color: var(--color-status-success-border-1);
-      border-right-color: var(--color-status-success-border-1);
-      border-bottom-color: var(--color-status-success-border-1);
-      border-left-color: var(--color-status-success-border-1);
+      @apply border-t-status-success-border-1 border-r-status-success-border-1 border-b-status-success-border-1 border-l-status-success-border-1 bg-status-success-background-1;
     }
   }
 }
@@ -209,19 +194,19 @@
   .root {
     @variant intent-error {
       & .icon {
-        color: var(--color-status-danger-foreground-1);
+        @apply text-status-danger-foreground-1;
       }
     }
 
     @variant intent-warning {
       & .icon {
-        color: var(--color-status-warning-foreground-3);
+        @apply text-status-warning-foreground-3;
       }
     }
 
     @variant intent-success {
       & .icon {
-        color: var(--color-status-success-foreground-1);
+        @apply text-status-success-foreground-1;
       }
     }
   }

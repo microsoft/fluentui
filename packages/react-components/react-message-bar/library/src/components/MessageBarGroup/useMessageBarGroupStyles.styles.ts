@@ -51,6 +51,6 @@ export const useMessageBarGroupStyles_unstable = (state: MessageBarGroupState): 
   // The marker itself is a literal, unhashed, GLOBAL token, written literally here rather than
   // read back out of `messageBarGroupClassNames` — the handle by which a descendant module can
   // style itself from this group's state (DECISIONS.md D15).
-  state.root.className = clsx(styles.root, 'group/fui-message-bar-group', state.root.className);
+  state.root.className = clsx(styles.root, messageBarGroupClassNames.root, state.root.className);
   return state;
 };

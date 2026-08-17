@@ -38,7 +38,7 @@ export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTit
   // nothing has to read the value from a selector (D15.6, resolved).
   state.root.className = clsx(
     styles.root,
-    'group/fui-teaching-popover-title',
+    teachingPopoverTitleClassNames.root,
     isBrand && styles.brand,
     state.root.className,
   );

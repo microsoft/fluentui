@@ -51,7 +51,7 @@ export const useFunnelChartStyles = (props: FunnelChartProps): FunnelChartStyles
   const { className } = props;
 
   return {
-    root: clsx(styles.root, 'group/fui-funnel-chart', className, props.styles?.root),
+    root: clsx(styles.root, funnelClassNames.root, className, props.styles?.root),
     chart: clsx(styles.chart, props.styles?.chart),
     text: clsx(styles.text, props.styles?.text),
     calloutContentRoot: clsx(styles['callout-content-root'], props.styles?.calloutContentRoot),

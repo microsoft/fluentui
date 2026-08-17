@@ -38,10 +38,9 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply flex h-32 items-center px-horizontal-s;
+    @apply flex h-32 items-center px-horizontal-s text-neutral-foreground-3;
 
     font-size: var(--text-base-200);
-    color: var(--color-neutral-foreground-3);
     font-weight: var(--font-weight-semibold);
   }
 }

@@ -32,7 +32,7 @@ export const useTableResizeHandleStyles_unstable = (state: TableResizeHandleStat
   //
   // Cascade priority is decided by the `@layer fui.*` order in TableResizeHandle.module.css.
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
-  state.root.className = clsx(styles.root, 'group/fui-table-resize-handle', state.root.className);
+  state.root.className = clsx(styles.root, tableResizeHandleClassNames.root, state.root.className);
 
   return state;
 };

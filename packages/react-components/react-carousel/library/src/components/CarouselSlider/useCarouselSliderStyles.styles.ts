@@ -50,7 +50,7 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
       ...state.root,
       className: clsx(
         styles.root,
-        'group/fui-carousel-slider',
+        carouselSliderClassNames.root,
         appearance === 'elevated' && styles.elevated,
         state.root.className,
       ),

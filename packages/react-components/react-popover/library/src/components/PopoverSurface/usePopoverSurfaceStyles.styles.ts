@@ -84,7 +84,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
   // the mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-popover-surface',
+    popoverSurfaceClassNames.root,
     state.appearance === 'inverted' && styles.inverted,
     state.appearance === 'brand' && styles.brand,
     state.root.className,

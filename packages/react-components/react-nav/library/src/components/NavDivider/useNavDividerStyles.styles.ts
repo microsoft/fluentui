@@ -59,7 +59,7 @@ export const useNavDividerStyles_unstable = (state: NavDividerState): NavDivider
   // (NavDivider.module.css authors at `fui.components.l2`), not from string position.
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-nav-divider', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, navDividerClassNames.root, state.root.className) },
   };
 
   // The `wrapper` slot's assignment is gone: its only library token was the

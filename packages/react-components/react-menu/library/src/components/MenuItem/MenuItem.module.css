@@ -144,11 +144,11 @@
          block — see the S-J/D27 l1 section at the bottom of this file. */
 
       & .icon {
-        color: var(--color-neutral-foreground-2-brand-selected);
+        @apply text-neutral-foreground-2-brand-selected;
       }
 
       & .sub-text {
-        color: var(--color-neutral-foreground-3-hover);
+        @apply text-neutral-foreground-3-hover;
       }
     }
 
@@ -167,7 +167,7 @@
         color: var(--color-neutral-foreground-2-pressed);
 
         & .sub-text {
-          color: var(--color-neutral-foreground-3-pressed);
+          @apply text-neutral-foreground-3-pressed;
         }
       }
     }
@@ -237,11 +237,11 @@
     color: var(--color-neutral-foreground-3);
 
     @variant hover {
-      color: var(--color-neutral-foreground-3-hover);
+      @apply text-neutral-foreground-3-hover;
     }
 
     @variant focus {
-      color: var(--color-neutral-foreground-3-hover);
+      @apply text-neutral-foreground-3-hover;
     }
   }
 
@@ -266,11 +266,12 @@
 
   /* from useSubtextBaseStyles (makeResetStyles) — typographyStyles.caption2 */
   .sub-text {
+    @apply text-neutral-foreground-3;
+
     font-family: var(--font-base);
     font-size: var(--text-base-100);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-100);
-    color: var(--color-neutral-foreground-3);
   }
 }
 
@@ -289,11 +290,11 @@
        block — see the S-J/D27 l1 section at the bottom of this file. */
 
     & .icon {
-      color: var(--color-neutral-foreground-2-brand-selected);
+      @apply text-neutral-foreground-2-brand-selected;
     }
 
     & .sub-text {
-      color: var(--color-neutral-foreground-3-hover);
+      @apply text-neutral-foreground-3-hover;
     }
 
     @variant forced-colors {
@@ -318,11 +319,11 @@
          this block — see the S-J/D27 l1 section at the bottom of this file. */
 
       & .icon {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
 
       & .sub-text {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
 
@@ -332,13 +333,13 @@
         background-color: var(--color-neutral-background-1);
 
         & .sub-text {
-          color: var(--color-neutral-foreground-disabled);
+          @apply text-neutral-foreground-disabled;
         }
       }
     }
 
     @variant focus {
-      color: var(--color-neutral-foreground-disabled);
+      @apply text-neutral-foreground-disabled;
     }
 
     /* compiled `m`-bucket order: bare, then :hover (+ its two descendants), then

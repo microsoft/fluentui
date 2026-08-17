@@ -125,7 +125,7 @@
       background-color: var(--color-subtle-background-pressed);
 
       & .expand-icon {
-        color: var(--color-neutral-foreground-3-pressed);
+        @apply text-neutral-foreground-3-pressed;
       }
     }
 
@@ -134,14 +134,14 @@
       background-color: var(--color-subtle-background-hover);
 
       & .expand-icon {
-        color: var(--color-neutral-foreground-3-hover);
+        @apply text-neutral-foreground-3-hover;
       }
     }
   }
 
   /* from useMediaBaseStyles (makeResetStyles) — media arg #2 */
   .media {
-    @apply flex h-32 w-32 items-center;
+    @apply flex h-32 w-32 items-center ps-horizontal-xxs pe-horizontal-xs;
 
     grid-area: media;
 
@@ -150,21 +150,22 @@
        pair (cookbook §2). */
     padding-top: 0;
     padding-bottom: 0;
-
-    @apply ps-horizontal-xxs pe-horizontal-xs;
   }
 
   /* from useMainBaseStyles (makeResetStyles) — main arg #2 */
   .main {
+    @apply ps-horizontal-s pe-horizontal-xs pt-vertical-m-nudge pb-vertical-m-nudge;
+
     grid-area: main;
 
     /* `padding: <spacingVerticalMNudge> <spacingHorizontalXS> <spacingVerticalMNudge>
        <spacingHorizontalS>` expanded to longhands (cookbook §2) */
-    @apply ps-horizontal-s pe-horizontal-xs pt-vertical-m-nudge pb-vertical-m-nudge;
   }
 
   /* from useDescriptionBaseStyles (makeResetStyles) — description arg #2 */
   .description {
+    @apply ps-horizontal-s pe-horizontal-xs pb-vertical-m-nudge;
+
     grid-area: description;
 
     /* `...typographyStyles.caption1` */
@@ -176,13 +177,11 @@
     /* `padding: 0 <spacingHorizontalXS> <spacingVerticalMNudge> <spacingHorizontalS>`
        expanded to longhands (cookbook §2) */
     padding-top: 0;
-
-    @apply ps-horizontal-s pe-horizontal-xs pb-vertical-m-nudge;
   }
 
   /* from useActionsBaseStyles (makeResetStyles) — actions arg #2 */
   .actions {
-    @apply relative ms-auto flex;
+    @apply relative ms-auto flex ps-horizontal-s pe-horizontal-s;
 
     z-index: 1;
     grid-area: aside;
@@ -190,13 +189,11 @@
     /* `padding: 0 var(--spacing-horizontal-s)` expanded to longhands (cookbook §2) */
     padding-top: 0;
     padding-bottom: 0;
-
-    @apply ps-horizontal-s pe-horizontal-s;
   }
 
   /* from useAsideBaseStyles (makeResetStyles) — aside arg #2 */
   .aside {
-    @apply ms-auto flex items-center gap-horizontal-xs;
+    @apply ms-auto flex items-center gap-horizontal-xs ps-horizontal-m pe-horizontal-m;
 
     z-index: 0;
     grid-area: aside;
@@ -204,15 +201,12 @@
     /* `padding: 0 var(--spacing-horizontal-m)` expanded to longhands (cookbook §2) */
     padding-top: 0;
     padding-bottom: 0;
-
-    @apply ps-horizontal-m pe-horizontal-m;
   }
 
   /* from useExpandIconBaseStyles (makeResetStyles) — expandIcon arg #2 */
   .expand-icon {
-    @apply box-border flex min-w-24 items-center justify-center;
+    @apply box-border flex min-w-24 items-center justify-center pt-vertical-xs pb-vertical-xs text-neutral-foreground-3;
 
-    color: var(--color-neutral-foreground-3);
     grid-area: expandIcon;
 
     /* literal, not `flex-none`: that utility compiles to `flex: none`, the compiled
@@ -220,7 +214,6 @@
     flex: 0 0 auto;
 
     /* `padding: var(--spacing-vertical-xs) 0` expanded to longhands (cookbook §2) */
-    @apply pt-vertical-xs pb-vertical-xs;
 
     padding-left: 0;
     padding-right: 0;
@@ -267,11 +260,11 @@
    */
   .subtle-alpha {
     @variant hover {
-      background-color: var(--color-subtle-background-light-alpha-hover);
+      @apply bg-subtle-background-light-alpha-hover;
     }
 
     @variant active {
-      background-color: var(--color-subtle-background-light-alpha-pressed);
+      @apply bg-subtle-background-light-alpha-pressed;
     }
   }
 
@@ -279,11 +272,11 @@
     background-color: var(--color-transparent-background);
 
     @variant hover {
-      background-color: var(--color-transparent-background-hover);
+      @apply bg-transparent-background-hover;
     }
 
     @variant active {
-      background-color: var(--color-transparent-background-pressed);
+      @apply bg-transparent-background-pressed;
     }
   }
 }

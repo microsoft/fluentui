@@ -116,7 +116,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
     root: {
       ...state.root,
       ...rootDataAttributes,
-      className: clsx(styles.root, 'group/fui-search-box', state.root.className),
+      className: clsx(styles.root, searchBoxClassNames.root, state.root.className),
     },
     input: { ...state.input, className: clsx(styles.input, state.input.className) },
   };

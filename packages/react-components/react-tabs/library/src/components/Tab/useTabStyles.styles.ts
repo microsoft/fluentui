@@ -122,7 +122,7 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
       ...rootDataAttributes,
       className: clsx(
         styles.root,
-        'group/fui-tab',
+        tabClassNames.root,
         !isCircular && styles['pending-indicator'],
         !isCircular && selected && styles['active-indicator'],
         state.root.className,

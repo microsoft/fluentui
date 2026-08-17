@@ -115,7 +115,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-tag',
+    tagClassNames.root,
 
     styles[shape],
 

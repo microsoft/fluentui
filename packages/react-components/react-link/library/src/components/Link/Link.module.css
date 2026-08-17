@@ -111,13 +111,15 @@
     }
 
     @variant hover {
+      @apply text-brand-foreground-link-hover;
+
       text-decoration-line: underline;
-      color: var(--color-brand-foreground-link-hover);
     }
 
     @variant active {
+      @apply text-brand-foreground-link-pressed;
+
       text-decoration-line: underline;
-      color: var(--color-brand-foreground-link-pressed);
     }
   }
 }
@@ -141,13 +143,15 @@
     color: var(--color-neutral-foreground-2-link);
 
     @variant hover {
+      @apply text-neutral-foreground-2-link-hover;
+
       text-decoration-line: underline;
-      color: var(--color-neutral-foreground-2-link-hover);
     }
 
     @variant active {
+      @apply text-neutral-foreground-2-link-pressed;
+
       text-decoration-line: underline;
-      color: var(--color-neutral-foreground-2-link-pressed);
     }
   }
 
@@ -159,11 +163,11 @@
     color: var(--color-brand-foreground-inverted);
 
     @variant hover {
-      color: var(--color-brand-foreground-inverted);
+      @apply text-brand-foreground-inverted;
     }
 
     @variant active {
-      color: var(--color-brand-foreground-inverted);
+      @apply text-brand-foreground-inverted;
     }
   }
 
@@ -172,11 +176,11 @@
     color: var(--color-neutral-foreground-inverted-link);
 
     @variant hover {
-      color: var(--color-neutral-foreground-inverted-link-hover);
+      @apply text-neutral-foreground-inverted-link-hover;
     }
 
     @variant active {
-      color: var(--color-neutral-foreground-inverted-link-pressed);
+      @apply text-neutral-foreground-inverted-link-pressed;
     }
   }
 }
@@ -195,8 +199,9 @@
      * Written after `.subtle` / `.inverted` / `.brand` to resolve the documented inversion.
      */
     @variant disabled {
+      @apply text-neutral-foreground-disabled;
+
       text-decoration-line: none;
-      color: var(--color-neutral-foreground-disabled);
       cursor: not-allowed;
     }
   }
@@ -233,13 +238,15 @@
   .root {
     @variant disabled {
       @variant hover {
+        @apply text-neutral-foreground-disabled;
+
         text-decoration-line: none;
-        color: var(--color-neutral-foreground-disabled);
       }
 
       @variant active {
+        @apply text-neutral-foreground-disabled;
+
         text-decoration-line: none;
-        color: var(--color-neutral-foreground-disabled);
       }
 
       @variant forced-colors {

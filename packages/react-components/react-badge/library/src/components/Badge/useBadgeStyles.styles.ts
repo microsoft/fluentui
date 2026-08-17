@@ -87,7 +87,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   // and clsx drops them — matching the empty class string Griffel produces today.
   state.root.className = clsx(
     styles.root,
-    'group/fui-badge',
+    badgeClassNames.root,
     styles[shape],
     appearance === 'ghost' && styles['border-ghost'],
     styles[appearance],

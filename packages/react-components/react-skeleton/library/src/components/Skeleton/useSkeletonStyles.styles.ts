@@ -59,7 +59,7 @@ export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState 
   // sweep (DECISIONS.md D14) — this is only the now-unused directive.
   state.root.className = clsx(
     styles.root,
-    'group/fui-skeleton',
+    skeletonClassNames.root,
     state.root.as === 'span' && styles['block-styling'],
     state.root.className,
   );

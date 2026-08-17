@@ -47,7 +47,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   //
   // Cascade priority is decided by the `@layer fui.*` order in SplitNavItem.module.css, not
   // by the order of these arguments.
-  state.root.className = clsx(styles.root, 'group/fui-split-nav-item', state.root.className);
+  state.root.className = clsx(styles.root, splitNavItemClassNames.root, state.root.className);
 
   if (state.navItem) {
     state.navItem.className = clsx(styles['nav-item'], state.navItem.className);

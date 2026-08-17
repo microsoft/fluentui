@@ -90,7 +90,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   // mergeClasses produced when their string was its last argument.
   state.root.className = clsx(
     styles.root,
-    'group/fui-button',
+    buttonClassNames.root,
     appearance && styles[appearance],
     styles[shape],
     state.root.className,

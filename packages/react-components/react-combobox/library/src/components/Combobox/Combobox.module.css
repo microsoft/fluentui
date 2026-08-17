@@ -173,7 +173,7 @@
       /* clicking the field again while it is already focused */
       @variant active {
         &::after {
-          border-bottom-color: var(--color-compound-brand-stroke-pressed);
+          @apply border-b-compound-brand-stroke-pressed;
         }
       }
     }
@@ -193,7 +193,7 @@
 
   /* from useStyles.outline (the default appearance) */
   .outline {
-    background-color: var(--color-neutral-background-1);
+    @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-accessible border-l-neutral-stroke-1 bg-neutral-background-1;
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -203,20 +203,15 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--color-neutral-stroke-1);
-    border-right-color: var(--color-neutral-stroke-1);
-    border-left-color: var(--color-neutral-stroke-1);
-    border-bottom-color: var(--color-neutral-stroke-accessible);
   }
 
   /* from useStyles.underline — only the bottom border is drawn; the other three sides keep
      the initial `border-style: none`, so they render nothing. */
   .underline {
-    background-color: var(--color-transparent-background);
+    @apply border-b-neutral-stroke-accessible bg-transparent-background;
 
     border-bottom-width: var(--spacing-thin);
     border-bottom-style: solid;
-    border-bottom-color: var(--color-neutral-stroke-accessible);
 
     /* corners look strange if rounded */
     border-radius: 0;
@@ -224,7 +219,7 @@
 
   /* from useStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--color-neutral-background-1);
+    @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke bg-neutral-background-1;
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -234,15 +229,11 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--color-transparent-stroke);
-    border-right-color: var(--color-transparent-stroke);
-    border-bottom-color: var(--color-transparent-stroke);
-    border-left-color: var(--color-transparent-stroke);
   }
 
   /* from useStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--color-neutral-background-3);
+    @apply border-t-transparent-stroke border-r-transparent-stroke border-b-transparent-stroke border-l-transparent-stroke bg-neutral-background-3;
 
     border-top-width: var(--spacing-thin);
     border-right-width: var(--spacing-thin);
@@ -252,10 +243,6 @@
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
-    border-top-color: var(--color-transparent-stroke);
-    border-right-color: var(--color-transparent-stroke);
-    border-bottom-color: var(--color-transparent-stroke);
-    border-left-color: var(--color-transparent-stroke);
   }
 }
 
@@ -277,8 +264,9 @@
     }
 
     @variant size-large {
-      /* `columnGap: spacingHorizontalSNudge` overrides the root's XXS */
       @apply h-40 gap-x-horizontal-s-nudge pe-horizontal-m;
+
+      /* `columnGap: spacingHorizontalSNudge` overrides the root's XXS */
     }
   }
 }
@@ -328,10 +316,7 @@
   .filled-darker {
     @variant invalid {
       @variant not-focus-within {
-        border-top-color: var(--color-palette-red-border-2);
-        border-right-color: var(--color-palette-red-border-2);
-        border-bottom-color: var(--color-palette-red-border-2);
-        border-left-color: var(--color-palette-red-border-2);
+        @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
       }
     }
   }
@@ -339,7 +324,7 @@
   .underline {
     @variant invalid {
       @variant not-focus-within {
-        border-bottom-color: var(--color-palette-red-border-2);
+        @apply border-b-palette-red-border-2;
       }
     }
   }
@@ -362,24 +347,15 @@
   .outline {
     @variant enabled {
       @variant focus-within {
-        border-top-color: var(--color-neutral-stroke-1-pressed);
-        border-right-color: var(--color-neutral-stroke-1-pressed);
-        border-left-color: var(--color-neutral-stroke-1-pressed);
-        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
+        @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed border-l-neutral-stroke-1-pressed;
       }
 
       @variant hover {
-        border-top-color: var(--color-neutral-stroke-1-hover);
-        border-right-color: var(--color-neutral-stroke-1-hover);
-        border-left-color: var(--color-neutral-stroke-1-hover);
-        border-bottom-color: var(--color-neutral-stroke-accessible-hover);
+        @apply border-t-neutral-stroke-1-hover border-r-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover border-l-neutral-stroke-1-hover;
       }
 
       @variant active {
-        border-top-color: var(--color-neutral-stroke-1-pressed);
-        border-right-color: var(--color-neutral-stroke-1-pressed);
-        border-left-color: var(--color-neutral-stroke-1-pressed);
-        border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
+        @apply border-t-neutral-stroke-1-pressed border-r-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed border-l-neutral-stroke-1-pressed;
       }
     }
   }
@@ -407,10 +383,7 @@
     @variant invalid {
       @variant hover {
         @variant not-focus-within {
-          border-top-color: var(--color-palette-red-border-2);
-          border-right-color: var(--color-palette-red-border-2);
-          border-bottom-color: var(--color-palette-red-border-2);
-          border-left-color: var(--color-palette-red-border-2);
+          @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
         }
       }
     }
@@ -420,7 +393,7 @@
     @variant invalid {
       @variant hover {
         @variant not-focus-within {
-          border-bottom-color: var(--color-palette-red-border-2);
+          @apply border-b-palette-red-border-2;
         }
       }
     }
@@ -460,7 +433,8 @@
        * list.
        */
       &::placeholder {
-        color: var(--color-neutral-foreground-4);
+        @apply text-neutral-foreground-4;
+
         opacity: 1; /* browser style override */
       }
     }
@@ -472,30 +446,34 @@
      */
     @variant size-small {
       & .input {
+        @apply py-vertical-none ps-horizontal-s pe-horizontal-none;
+
         font-family: var(--font-base);
         font-size: var(--text-base-200);
         font-weight: var(--font-weight-regular);
         line-height: var(--leading-base-200);
 
         /* SNudge (6) + XXS (2) = 8px, exactly the S step */
-        @apply py-vertical-none ps-horizontal-s pe-horizontal-none;
       }
     }
 
     @variant size-medium {
       & .input {
+        @apply py-vertical-none ps-horizontal-m pe-horizontal-none;
+
         font-family: var(--font-base);
         font-size: var(--text-base-300);
         font-weight: var(--font-weight-regular);
         line-height: var(--leading-base-300);
 
         /* MNudge (10) + XXS (2) = 12px, exactly the M step */
-        @apply py-vertical-none ps-horizontal-m pe-horizontal-none;
       }
     }
 
     @variant size-large {
       & .input {
+        @apply py-vertical-none ps-18 pe-horizontal-none;
+
         font-family: var(--font-base);
         font-size: var(--text-base-400);
         font-weight: var(--font-weight-regular);
@@ -504,7 +482,6 @@
         /* M (12) + SNudge (6) = 18px, which matches NO spacing step, so the numeric utility
            is the sanctioned fallback. Same scale: `--spacing` is `calc(1px * var(--base-scale))`,
            so `ps-18` === `calc(18px * var(--base-scale))`. */
-        @apply py-vertical-none ps-18 pe-horizontal-none;
       }
     }
 
@@ -523,7 +500,7 @@
         cursor: not-allowed;
 
         &::placeholder {
-          color: var(--color-neutral-foreground-disabled);
+          @apply text-neutral-foreground-disabled;
         }
       }
     }
@@ -610,7 +587,8 @@
     /* from useIconStyles.disabled — arg #4 */
     @variant disabled {
       & .icon {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
+
         cursor: not-allowed;
       }
     }
@@ -649,10 +627,9 @@
 
   /* from useStyles.listbox */
   .listbox {
-    @apply box-border;
+    @apply box-border rounded-medium;
 
     box-shadow: var(--shadow-16);
-    border-radius: var(--radius-medium);
     max-height: 80vh;
   }
 

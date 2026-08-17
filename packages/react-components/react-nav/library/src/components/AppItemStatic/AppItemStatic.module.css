@@ -92,14 +92,15 @@
     line-height: var(--leading-base-300);
 
     @variant hover {
-      background-color: var(--color-neutral-background-4-hover);
+      @apply bg-neutral-background-4-hover;
     }
 
     /* the component's own insert focus indicator — not the shared focus-ring utility */
     @variant focus-visible {
+      @apply outline-stroke-focus-2;
+
       outline-width: var(--spacing-thick);
       outline-style: solid;
-      outline-color: var(--color-stroke-focus-2);
       outline-offset: calc(var(--spacing-thick) * -1);
     }
   }
@@ -108,12 +109,9 @@
 @layer fui.components.l1 {
   /* arg #3 — from AppItem's useAppItemStyles.root */
   .root {
-    /* dead in Griffel too — overridden on both inline edges below */
-    @apply mx-horizontal-xs;
+    @apply mx-horizontal-xs -ms-horizontal-s-nudge me-horizontal-none items-center gap-horizontal-m-nudge py-vertical-s ps-horizontal-m-nudge pe-horizontal-s;
 
-    @apply items-center gap-horizontal-m-nudge;
-    @apply -ms-horizontal-s-nudge me-horizontal-none;
-    @apply py-vertical-s ps-horizontal-m-nudge pe-horizontal-s;
+    /* dead in Griffel too — overridden on both inline edges below */
 
     width: revert;
 
@@ -143,8 +141,7 @@
 @layer fui.components.l1 {
   /* arg #5 — from AppItem's useAppItemStyles.small */
   .small {
-    @apply gap-14;
-    @apply py-vertical-s ps-14 pe-horizontal-s;
+    @apply gap-14 py-vertical-s ps-14 pe-horizontal-s;
   }
 }
 

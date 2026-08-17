@@ -105,7 +105,7 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   // own hook output).
   state.root.className = clsx(
     styles.root,
-    'group/fui-field',
+    fieldClassNames.root,
     horizontal && !state.label && styles['horizontal-no-label'],
     state.root.className,
   );

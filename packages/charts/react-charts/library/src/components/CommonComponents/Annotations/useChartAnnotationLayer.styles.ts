@@ -132,7 +132,7 @@ export const chartAnnotationLayerClassNames: { root: string } = {
  */
 export const useChartAnnotationLayerStyles = (props: ChartAnnotationLayerStyleProps): ChartAnnotationLayerStyles => {
   return {
-    root: clsx(styles.root, 'group/fui-chart-annotation-layer', props.className, props.styles?.root),
+    root: clsx(styles.root, chartAnnotationLayerClassNames.root, props.className, props.styles?.root),
     annotation: clsx(styles.annotation, props.styles?.annotation),
     connectorLayer: clsx(styles['connector-layer'], props.styles?.connectorLayer),
     measurement: clsx(styles.measurement, props.styles?.measurement),

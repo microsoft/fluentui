@@ -106,17 +106,13 @@
    * (`:hover` / `:hover:active`) is split out further down; see the header.
    */
   .root {
-    @apply relative box-border inline-flex items-center justify-center align-middle no-underline;
-
-    background-color: var(--color-transparent-background);
-    color: var(--color-neutral-foreground-2);
+    @apply relative box-border inline-flex items-center justify-center rounded-medium bg-transparent-background ps-horizontal-xs pe-horizontal-xs pt-vertical-xs pb-vertical-xs align-middle text-neutral-foreground-2 no-underline;
 
     /* shorthands.borderStyle('none') → the four physical longhands the compiler emits */
     border-top-style: none;
     border-right-style: none;
     border-bottom-style: none;
     border-left-style: none;
-    border-radius: var(--radius-medium);
 
     /* `margin: '0'` expanded to longhands (cookbook §2 — no shorthand priority in CSS).
        Left as literal `0`, NOT `mt-vertical-none` etc.: zero has nothing for `--base-scale`
@@ -134,7 +130,6 @@
        axis → horizontal tokens, matching the Griffel source's own axis choice. Kept as four
        longhand utilities rather than `py-vertical-xs px-horizontal-xs` so the properties
        stay byte-identical to the expanded shorthand the `size-large` block below overrides. */
-    @apply ps-horizontal-xs pe-horizontal-xs pt-vertical-xs pb-vertical-xs;
 
     /* The `.fui-Icon-filled` / `.fui-Icon-regular` display swap is NOT here — it sits in
        its own l1 block at the bottom of this file (S-J/D27). */
@@ -191,8 +186,7 @@
    */
   .root {
     @variant open {
-      background-color: var(--color-transparent-background-selected);
-      color: var(--color-neutral-foreground-2-brand-selected);
+      @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
     }
   }
 }
@@ -232,8 +226,7 @@
       cursor: pointer;
 
       @variant active {
-        background-color: var(--color-transparent-background-pressed);
-        color: var(--color-neutral-foreground-2-brand-pressed);
+        @apply bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
       }
     }
   }

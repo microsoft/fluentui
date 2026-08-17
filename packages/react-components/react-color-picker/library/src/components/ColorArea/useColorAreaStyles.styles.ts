@@ -42,7 +42,7 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
   // Cascade priority is decided by the `@layer fui.*` order in ColorArea.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-color-area', styles[shape], state.root.className);
+  state.root.className = clsx(styles.root, colorAreaClassNames.root, styles[shape], state.root.className);
 
   // `.thumb` carries the focus indicator too: `createFocusOutlineStyle({ selector:
   // 'focus-within' })` is authored directly into the module as the shared

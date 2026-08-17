@@ -38,9 +38,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply box-border flex min-w-160 flex-col overflow-y-auto;
-
-    background-color: var(--color-neutral-background-1);
+    @apply box-border flex min-w-160 flex-col gap-y-horizontal-xxs overflow-y-auto bg-neutral-background-1 p-horizontal-xs outline-transparent-stroke;
 
     /*
      * `outline: 1px solid tokens.colorTransparentStroke` expanded to longhands per
@@ -50,14 +48,11 @@
      */
     outline-width: 1px;
     outline-style: solid;
-    outline-color: var(--color-transparent-stroke);
 
     /* `padding: tokens.spacingHorizontalXS` — one value, both axes. The axis word names
        the TOKEN, not the axis it is applied to (`--spacing-*` is axis-agnostic). */
-    @apply p-horizontal-xs;
 
     /* `rowGap: tokens.spacingHorizontalXXS` — the source named the horizontal token for a
        block-axis property; reproduced verbatim. */
-    @apply gap-y-horizontal-xxs;
   }
 }

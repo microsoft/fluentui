@@ -39,7 +39,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   // The state-mutation pattern is kept deliberately during conversion (DECISIONS.md D14).
   state.root.className = clsx(
     styles.root,
-    'group/fui-list-item',
+    listItemClassNames.root,
     (state.selectable || state.navigable) && styles['root-clickable'],
     state.selected && styles['root-selected'],
     state.root.className,

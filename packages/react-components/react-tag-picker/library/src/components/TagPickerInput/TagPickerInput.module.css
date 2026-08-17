@@ -77,7 +77,8 @@
      * react-combobox's `input` slot.
      */
     &::placeholder {
-      color: var(--color-neutral-foreground-4);
+      @apply text-neutral-foreground-4;
+
       opacity: 1; /* browser style override */
     }
 
@@ -99,30 +100,30 @@
    */
   .root {
     @variant size-medium {
+      @apply px-horizontal-none py-vertical-s-nudge;
+
       font-family: var(--font-base);
       font-size: var(--text-base-300);
       font-weight: var(--font-weight-regular);
       line-height: var(--leading-base-300);
-
-      @apply px-horizontal-none py-vertical-s-nudge;
     }
 
     @variant size-large {
+      @apply px-horizontal-none py-vertical-m-nudge;
+
       font-family: var(--font-base);
       font-size: var(--text-base-300);
       font-weight: var(--font-weight-regular);
       line-height: var(--leading-base-300);
-
-      @apply px-horizontal-none py-vertical-m-nudge;
     }
 
     @variant size-extra-large {
+      @apply px-horizontal-none py-vertical-m;
+
       font-family: var(--font-base);
       font-size: var(--text-base-300);
       font-weight: var(--font-weight-regular);
       line-height: var(--leading-base-300);
-
-      @apply px-horizontal-none py-vertical-m;
     }
   }
 }
@@ -143,7 +144,7 @@
       cursor: not-allowed;
 
       &::placeholder {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
   }

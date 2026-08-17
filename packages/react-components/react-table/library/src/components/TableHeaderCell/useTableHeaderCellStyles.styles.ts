@@ -55,7 +55,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
   state.root.className = clsx(
     styles.root,
-    'group/fui-table-header-cell',
+    tableHeaderCellClassNames.root,
     state.sortable && styles['root-interactive'],
     state.noNativeElements ? styles['flex-root'] : styles['table-root'],
     state.root.className,

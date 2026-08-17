@@ -120,17 +120,11 @@
     border-color: var(--color-transparent-stroke);
 
     @variant hover {
-      border-top-color: var(--color-transparent-stroke-interactive);
-      border-right-color: var(--color-transparent-stroke-interactive);
-      border-bottom-color: var(--color-transparent-stroke-interactive);
-      border-left-color: var(--color-transparent-stroke-interactive);
+      @apply border-t-transparent-stroke-interactive border-r-transparent-stroke-interactive border-b-transparent-stroke-interactive border-l-transparent-stroke-interactive;
     }
 
     @variant focus-within {
-      border-top-color: var(--color-transparent-stroke-interactive);
-      border-right-color: var(--color-transparent-stroke-interactive);
-      border-bottom-color: var(--color-transparent-stroke-interactive);
-      border-left-color: var(--color-transparent-stroke-interactive);
+      @apply border-t-transparent-stroke-interactive border-r-transparent-stroke-interactive border-b-transparent-stroke-interactive border-l-transparent-stroke-interactive;
     }
   }
 }
@@ -140,44 +134,40 @@
 
   /* from useRootStyles['filled-darker'] */
   .filled-darker {
-    background-color: var(--color-neutral-background-3);
+    @apply bg-neutral-background-3;
   }
 
   /* from useRootStyles['filled-lighter'] */
   .filled-lighter {
-    background-color: var(--color-neutral-background-1);
+    @apply bg-neutral-background-1;
   }
 
   /* from useRootStyles['filled-darker-shadow'] (deprecated appearance) */
   .filled-darker-shadow {
-    background-color: var(--color-neutral-background-3);
+    @apply border-transparent-stroke-interactive bg-neutral-background-3;
 
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--color-transparent-stroke-interactive);
 
     box-shadow: var(--shadow-2);
   }
 
   /* from useRootStyles['filled-lighter-shadow'] (deprecated appearance) */
   .filled-lighter-shadow {
-    background-color: var(--color-neutral-background-1);
+    @apply border-transparent-stroke-interactive bg-neutral-background-1;
 
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--color-transparent-stroke-interactive);
 
     box-shadow: var(--shadow-2);
   }
 
   /* from useRootStyles.outline */
   .outline {
-    background-color: var(--color-neutral-background-1);
+    @apply border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
 
     border-width: var(--spacing-thin);
     border-style: solid;
-    border-color: var(--color-neutral-stroke-1);
-    border-bottom-color: var(--color-neutral-stroke-accessible);
   }
 }
 
@@ -253,7 +243,7 @@
         /* The user clicks the field again while it is already focused */
         @variant active {
           &::after {
-            border-bottom-color: var(--color-compound-brand-stroke-pressed);
+            @apply border-b-compound-brand-stroke-pressed;
           }
         }
       }
@@ -273,24 +263,24 @@
    */
   .outline {
     @variant focus-within {
+      @apply border-neutral-stroke-1-pressed border-b-compound-brand-stroke;
+
       border-width: var(--spacing-thin);
       border-style: solid;
-      border-color: var(--color-neutral-stroke-1-pressed);
-      border-bottom-color: var(--color-compound-brand-stroke);
     }
 
     @variant hover {
+      @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
+
       border-width: var(--spacing-thin);
       border-style: solid;
-      border-color: var(--color-neutral-stroke-1-hover);
-      border-bottom-color: var(--color-neutral-stroke-accessible-hover);
     }
 
     @variant active {
+      @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed;
+
       border-width: var(--spacing-thin);
       border-style: solid;
-      border-color: var(--color-neutral-stroke-1-pressed);
-      border-bottom-color: var(--color-neutral-stroke-accessible-pressed);
     }
   }
 }
@@ -304,10 +294,7 @@
      */
     @variant invalid {
       @variant not-focus-within {
-        border-top-color: var(--color-palette-red-border-2);
-        border-right-color: var(--color-palette-red-border-2);
-        border-bottom-color: var(--color-palette-red-border-2);
-        border-left-color: var(--color-palette-red-border-2);
+        @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
       }
     }
   }
@@ -333,7 +320,8 @@
     outline-style: none;
 
     &::placeholder {
-      color: var(--color-neutral-foreground-4);
+      @apply text-neutral-foreground-4;
+
       opacity: 1;
     }
 
@@ -345,13 +333,12 @@
 
     /* from useTextareaStyles.small + typographyStyles.caption1 */
     @variant size-small {
-      @apply max-h-200 min-h-40;
+      @apply max-h-200 min-h-40 px-horizontal-s py-vertical-xs;
 
       /* padding-block: spacingVerticalXS. padding-inline: the Griffel source sums
          spacingHorizontalSNudge (6) + spacingHorizontalXXS (2) = 8px, which IS the S
          step — the same collapse react-input documents on its own
          `horizontalPadding.combined.small`. */
-      @apply px-horizontal-s py-vertical-xs;
 
       font-family: var(--font-base);
       font-size: var(--text-base-200);
@@ -361,12 +348,11 @@
 
     /* from useTextareaStyles.medium + typographyStyles.body1 */
     @variant size-medium {
-      @apply max-h-260 min-h-52;
+      @apply max-h-260 min-h-52 px-horizontal-m py-vertical-s-nudge;
 
       /* padding-block: spacingVerticalSNudge. padding-inline: spacingHorizontalMNudge
          (10) + spacingHorizontalXXS (2) = 12px = the M step (react-input's
          `horizontalPadding.combined.medium` records the same identity). */
-      @apply px-horizontal-m py-vertical-s-nudge;
 
       font-family: var(--font-base);
       font-size: var(--text-base-300);
@@ -376,13 +362,12 @@
 
     /* from useTextareaStyles.large + typographyStyles.body2 */
     @variant size-large {
-      @apply max-h-320 min-h-64;
+      @apply max-h-320 min-h-64 px-14 py-vertical-s;
 
       /* padding-block: spacingVerticalS. padding-inline: spacingHorizontalM (12) +
          spacingHorizontalXXS (2) = 14px, which matches NO spacing step, so the numeric
          utility is the sanctioned fallback — same scale (`--spacing` is
          `calc(1px * var(--base-scale))`, so px-14 === calc(14px * var(--base-scale))). */
-      @apply px-14 py-vertical-s;
 
       font-family: var(--font-base);
       font-size: var(--text-base-400);
@@ -429,7 +414,7 @@
       cursor: not-allowed;
 
       &::placeholder {
-        color: var(--color-neutral-foreground-disabled);
+        @apply text-neutral-foreground-disabled;
       }
     }
   }

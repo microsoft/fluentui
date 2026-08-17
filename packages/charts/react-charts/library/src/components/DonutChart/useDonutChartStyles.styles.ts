@@ -50,7 +50,7 @@ export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles =>
     // mergeClasses() argument order this replaces. `className` before `props.styles?.root`
     // preserves the previous argument order; both are unlayered consumer strings, so the
     // relative order carries no cascade meaning either way.
-    root: clsx(styles.root, 'group/fui-donut-chart', className, props.styles?.root),
+    root: clsx(styles.root, donutClassNames.root, className, props.styles?.root),
     chart: clsx(styles.chart, props.styles?.chart),
     legendContainer: clsx(styles['legend-container'], props.styles?.legendContainer),
     // `chartWrapper` carries NO class of its own. Its only library token was the

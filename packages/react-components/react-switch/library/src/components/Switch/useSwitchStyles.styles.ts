@@ -118,7 +118,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
   // own hook output).
-  state.root.className = clsx(styles.root, 'group/fui-switch', state.root.className);
+  state.root.className = clsx(styles.root, switchClassNames.root, state.root.className);
 
   state.indicator.className = clsx(styles.indicator, state.indicator.className);
 

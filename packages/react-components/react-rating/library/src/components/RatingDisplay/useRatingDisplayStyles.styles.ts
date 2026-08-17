@@ -64,7 +64,7 @@ export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): Rati
   // Cascade priority is decided by the `@layer fui.*` order in RatingDisplay.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(styles.root, 'group/fui-rating-display', state.root.className);
+  state.root.className = clsx(styles.root, ratingDisplayClassNames.root, state.root.className);
 
   if (state.valueText) {
     state.valueText.className = clsx(styles.label, styles.strong, state.valueText.className);

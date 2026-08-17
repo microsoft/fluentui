@@ -44,7 +44,7 @@ export const useCarouselStyles_unstable = (state: CarouselState): CarouselState 
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-carousel',
+    carouselClassNames.root,
     appearance === 'elevated' && styles.elevated,
     state.root.className,
   );

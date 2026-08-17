@@ -54,15 +54,12 @@
    * `typographyStyles.body1` compiled to the four font atomics below.
    */
   .tooltip {
-    @apply pointer-events-none absolute flex flex-col p-horizontal-s text-center;
+    @apply pointer-events-none absolute flex flex-col rounded-small bg-neutral-background-1 p-horizontal-s text-center text-neutral-foreground-1;
 
     font-family: var(--font-base);
     font-size: var(--text-base-300);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-300);
-    background-color: var(--color-neutral-background-1);
-    border-radius: var(--radius-small);
-    color: var(--color-neutral-foreground-1);
   }
 }
 

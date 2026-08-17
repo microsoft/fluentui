@@ -69,10 +69,7 @@
 
   /* from useRootExpandedStyles.outline */
   .expanded-outline {
-    border-top-color: var(--color-neutral-stroke-1-selected);
-    border-right-color: var(--color-neutral-stroke-1-selected);
-    border-bottom-color: var(--color-neutral-stroke-1-selected);
-    border-left-color: var(--color-neutral-stroke-1-selected);
+    @apply border-t-neutral-stroke-1-selected border-r-neutral-stroke-1-selected border-b-neutral-stroke-1-selected border-l-neutral-stroke-1-selected text-neutral-foreground-1-selected;
 
     /* Border widths are not spacing-powered utilities, so the D4 addendum's direct
        `var(--spacing-*)` form (`strokeWidthThicker`). */
@@ -80,35 +77,26 @@
     border-right-width: var(--spacing-thicker);
     border-bottom-width: var(--spacing-thicker);
     border-left-width: var(--spacing-thicker);
-
-    color: var(--color-neutral-foreground-1-selected);
   }
 
   /* from useRootExpandedStyles.primary */
   .expanded-primary {
-    background-color: var(--color-brand-background-selected);
+    @apply bg-brand-background-selected;
   }
 
   /* from useRootExpandedStyles.secondary */
   .expanded-secondary {
-    background-color: var(--color-neutral-background-1-selected);
-    border-top-color: var(--color-neutral-stroke-1-selected);
-    border-right-color: var(--color-neutral-stroke-1-selected);
-    border-bottom-color: var(--color-neutral-stroke-1-selected);
-    border-left-color: var(--color-neutral-stroke-1-selected);
-    color: var(--color-neutral-foreground-1-selected);
+    @apply border-t-neutral-stroke-1-selected border-r-neutral-stroke-1-selected border-b-neutral-stroke-1-selected border-l-neutral-stroke-1-selected bg-neutral-background-1-selected text-neutral-foreground-1-selected;
   }
 
   /* from useRootExpandedStyles.subtle */
   .expanded-subtle {
-    background-color: var(--color-subtle-background-selected);
-    color: var(--color-neutral-foreground-2-selected);
+    @apply bg-subtle-background-selected text-neutral-foreground-2-selected;
   }
 
   /* from useRootExpandedStyles.transparent */
   .expanded-transparent {
-    background-color: var(--color-transparent-background-selected);
-    color: var(--color-neutral-foreground-2-brand-selected);
+    @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
   }
 }
 

@@ -49,12 +49,8 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2, incl. typographyStyles.body1 */
   .root {
-    @apply box-border w-max max-w-300 min-w-138 overflow-x-hidden;
-    @apply px-horizontal-xs py-vertical-xs;
+    @apply box-border w-max max-w-300 min-w-138 overflow-x-hidden rounded-medium bg-neutral-background-1 px-horizontal-xs py-vertical-xs text-neutral-foreground-1;
 
-    border-radius: var(--radius-medium);
-    background-color: var(--color-neutral-background-1);
-    color: var(--color-neutral-foreground-1);
     box-shadow: var(--shadow-16);
 
     /* kept as the compiled shorthand (`border:1px solid var(--color-transparent-stroke)`) —

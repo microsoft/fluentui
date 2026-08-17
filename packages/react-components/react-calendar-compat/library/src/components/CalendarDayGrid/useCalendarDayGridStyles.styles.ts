@@ -73,7 +73,7 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
     // Cascade priority is decided by the `@layer fui.*` order in CalendarDayGrid.module.css,
     // not by the order of these arguments — see that file's header for the mapping back to
     // the mergeClasses() argument order this replaces.
-    table: clsx(styles.table, 'group/fui-calendar-day-grid', showWeekNumbers && styles['table-show-week-numbers']),
+    table: clsx(styles.table, calendarDayGridClassNames.root, showWeekNumbers && styles['table-show-week-numbers']),
     dayCell: clsx(styles['day-cell'], styles['day-cell-focus-indicator'], styles.corners),
     daySelected: styles['day-selected'],
     daySingleSelected: styles['day-single-selected'],

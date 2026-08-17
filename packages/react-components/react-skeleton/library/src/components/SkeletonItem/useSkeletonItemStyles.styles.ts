@@ -78,7 +78,7 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
   // sweep (DECISIONS.md D14) — only the now-unused directives were dropped.
   state.root.className = clsx(
     styles.root,
-    'group/fui-skeleton-item',
+    skeletonItemClassNames.root,
     state.root.as === 'span' && styles['block-styling'],
     styles[animation],
     styles[appearance],

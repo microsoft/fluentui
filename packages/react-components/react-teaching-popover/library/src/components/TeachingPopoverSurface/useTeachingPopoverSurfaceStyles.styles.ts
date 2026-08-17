@@ -56,7 +56,7 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
   //
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-teaching-popover-surface', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, teachingPopoverSurfaceClassNames.root, state.root.className) },
   };
 
   // Called LAST, exactly as before — the Griffel source's comment for this line was "Make sure

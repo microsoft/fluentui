@@ -83,22 +83,18 @@
 @layer fui.components.l1 {
   /* from useStyles.root — root arg #2 */
   .root {
-    @apply flex flex-row items-center;
+    @apply mt-horizontal-none mb-horizontal-none flex flex-row items-center pb-vertical-xs text-neutral-foreground-3;
 
-    color: var(--color-neutral-foreground-3);
     font-weight: var(--font-weight-semibold);
     font-size: var(--text-base-200);
     line-height: var(--leading-base-200);
-
-    @apply pb-vertical-xs;
-    @apply mt-horizontal-none mb-horizontal-none;
   }
 }
 
 @layer fui.components.l1 {
   /* from useStyles.rootBrand — root arg #3 */
   .brand {
-    color: var(--color-neutral-foreground-on-brand);
+    @apply text-neutral-foreground-on-brand;
   }
 }
 
@@ -129,8 +125,9 @@
 
     /* from createCustomFocusIndicatorStyle({ outline, borderRadius, borderColor('transparent') }) */
     @variant focus-visible-fui {
+      @apply rounded-medium;
+
       outline: var(--spacing-thick) solid var(--color-stroke-focus-2);
-      border-radius: var(--radius-medium);
 
       border-block-start-color: transparent;
       border-inline-end-color: transparent;
@@ -143,14 +140,14 @@
 @layer fui.components.l1 {
   /* from useStyles.dismissBrand — dismissButton arg #3 */
   .dismiss-brand {
-    color: var(--color-neutral-foreground-on-brand);
+    @apply text-neutral-foreground-on-brand;
   }
 }
 
 @layer fui.components.l1 {
   /* from useStyles.icon — icon arg #2 */
   .icon {
-    @apply box-content inline-flex items-center justify-center;
+    @apply me-horizontal-xs box-content inline-flex items-center justify-center bg-transparent-background text-neutral-foreground-2;
 
     height: var(--text-base-200);
     width: var(--text-base-200);
@@ -160,17 +157,12 @@
     text-decoration-line: none;
     vertical-align: middle;
     position: relative;
-
-    background-color: var(--color-transparent-background);
-    color: var(--color-neutral-foreground-2);
-
-    @apply me-horizontal-xs;
   }
 }
 
 @layer fui.components.l1 {
   /* from useStyles.iconBrand — icon arg #3 */
   .icon-brand {
-    color: var(--color-neutral-foreground-on-brand);
+    @apply text-neutral-foreground-on-brand;
   }
 }

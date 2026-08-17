@@ -51,7 +51,7 @@ export const useCarouselNavButtonStyles_unstable = (state: CarouselNavButtonStat
   // header before reordering anything there.
   state.root.className = clsx(
     styles.root,
-    'group/fui-carousel-nav-button',
+    carouselNavButtonClassNames.root,
     appearance === 'brand' && styles.brand,
     state.root.className,
   );

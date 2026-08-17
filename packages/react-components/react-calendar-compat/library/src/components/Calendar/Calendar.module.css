@@ -69,9 +69,9 @@
 
   /* from useRootStyles.normalize — root arg #3 */
   .normalize {
-    box-shadow: none;
-
     @apply m-0 box-border p-0;
+
+    box-shadow: none;
   }
 
   /* from useRootStyles.monthPickerNotVisible — root arg #4 (!isMonthPickerVisible) */
@@ -110,9 +110,10 @@
    * `var(--spacing-thin)`.
    */
   .divider {
+    @apply border-e-neutral-stroke-2;
+
     border-inline-end-width: calc(1px * var(--base-scale));
     border-inline-end-style: solid;
-    border-inline-end-color: var(--color-neutral-stroke-2);
 
     /* inert on a statically-positioned element, reproduced from the compiled atomic */
     top: 0;
@@ -162,11 +163,12 @@
       @apply cursor-pointer;
 
       @variant forced-colors {
+        @apply rounded-small;
+
         /* `outline: tokens.strokeWidthThin` — a bare width in the `outline` shorthand,
            reproduced verbatim. `outline-width` is NOT spacing-powered, so the stroke width
            is referenced directly as `var(--spacing-thin)` (D4 addendum, case 2). */
         outline: var(--spacing-thin);
-        border-radius: var(--radius-small);
       }
     }
 
@@ -176,14 +178,12 @@
        component's Griffel source never emitted. */
     @variant hover {
       @variant active {
-        color: var(--color-brand-foreground-2);
+        @apply text-brand-foreground-2;
       }
     }
 
     @variant disabled {
-      color: var(--color-neutral-foreground-disabled);
-
-      @apply pointer-events-none;
+      @apply pointer-events-none text-neutral-foreground-disabled;
     }
   }
 

@@ -91,7 +91,7 @@ export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleStat
   // `fui-DrawerHeaderTitle` static held that position.
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-drawer-header-title', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, drawerHeaderTitleClassNames.root, state.root.className) },
   };
 
   // The `heading` assignment is GONE. Its only library token was the

@@ -31,7 +31,7 @@ export const useColorPickerStyles_unstable = (state: ColorPickerState): ColorPic
   //
   // Cascade priority is decided by the `@layer fui.*` order in ColorPicker.module.css, not
   // by the order of these arguments.
-  state.root.className = clsx(styles.root, 'group/fui-color-picker', state.root.className);
+  state.root.className = clsx(styles.root, colorPickerClassNames.root, state.root.className);
 
   return state;
 };

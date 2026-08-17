@@ -48,7 +48,7 @@ export const useCardPreviewStyles_unstable = (state: CardPreviewState): CardPrev
   //
   // The state mutation below is preserved deliberately: DECISIONS.md D14 defers the
   // pure-builder rewrite to a single Phase 3 sweep.
-  state.root.className = clsx(styles.root, 'group/fui-card-preview', state.root.className);
+  state.root.className = clsx(styles.root, cardPreviewClassNames.root, state.root.className);
 
   if (state.logo) {
     state.logo.className = clsx(styles.logo, state.logo.className);

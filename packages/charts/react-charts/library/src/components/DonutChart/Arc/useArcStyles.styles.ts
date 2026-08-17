@@ -44,7 +44,7 @@ export const useArcStyles = (props: ArcProps): ArcStyles => {
     // Unconditional module class FIRST, then the named group marker, then the consumer's own
     // strings last (DECISIONS.md D16.2). Cascade priority is decided by the `@layer fui.*`
     // order in Arc.module.css, not by the order of these arguments.
-    root: clsx(styles.root, 'group/fui-donut-arc', className, props.styles?.root),
+    root: clsx(styles.root, donutArcClassNames.root, className, props.styles?.root),
     focusRing: clsx(styles['focus-ring'], props.styles?.focusRing),
     arcLabel: clsx(styles['arc-label'], props.styles?.arcLabel),
   };

@@ -71,23 +71,20 @@
 @layer fui.components.l1 {
   /* from useStyles.root — root arg #2 */
   .root {
-    @apply flex flex-col;
+    @apply flex flex-col pb-vertical-m;
 
     /* Griffel source writes the px literal `12px`, which lands exactly on the
        spacingVerticalM step, so it takes the NAMED utility (D4 amendment: named tokens
        FIRST, numeric only as fallback). Block-axis property → `vertical` namespace. */
-    @apply pb-vertical-m;
   }
 }
 
 @layer fui.components.l1 {
   /* from useMediaStyles.base — media arg #2 */
   .media {
-    @apply flex justify-center;
-    @apply w-auto overflow-hidden;
+    @apply mb-vertical-m flex w-auto justify-center overflow-hidden;
 
     /* 12px = spacingVerticalM, block axis — same call as `.root`'s padding above. */
-    @apply mb-vertical-m;
 
     grid-area: media;
     vertical-align: middle;
@@ -130,8 +127,9 @@
     aspect-ratio: 1;
 
     @supports not (aspect-ratio) {
-      /* `popoverBodyDimension` = 288 in the Griffel source. */
       @apply h-288;
+
+      /* `popoverBodyDimension` = 288 in the Griffel source. */
     }
   }
 }

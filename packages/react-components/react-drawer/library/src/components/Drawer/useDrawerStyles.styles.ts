@@ -46,7 +46,7 @@ export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
   // `state.root.className` is passed on to the InlineDrawer / OverlayDrawer that renders it,
   // which prepends its own `styles.root` + marker — so on the DOM element this pair ends up
   // AFTER the concrete drawer's, and `classList[0]` is that component's module class.
-  state.root.className = clsx(styles.root, 'group/fui-drawer', state.root.className);
+  state.root.className = clsx(styles.root, drawerClassNames.root, state.root.className);
 
   return state;
 };

@@ -63,7 +63,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   // by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why `useIndicatorStyles.filled`
   // is split across two blocks there.
-  state.root.className = clsx(styles.root, 'group/fui-rating-item', state.root.className);
+  state.root.className = clsx(styles.root, ratingItemClassNames.root, state.root.className);
 
   if (state.halfValueInput) {
     state.halfValueInput.className = clsx(styles.input, styles['input-lower-half'], state.halfValueInput.className);

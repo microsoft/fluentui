@@ -54,7 +54,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
   state.root.className = clsx(
     styles.root,
-    'group/fui-table-cell-layout',
+    tableCellLayoutClassNames.root,
     truncate && styles['root-truncate'],
     state.root.className,
   );

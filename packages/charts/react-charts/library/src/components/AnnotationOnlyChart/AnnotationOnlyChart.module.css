@@ -52,19 +52,14 @@
   /* from useStyles.root — only body1's fontFamily was spread in the source
    * (`typographyStyles.body1.fontFamily`), not the full preset */
   .root {
-    @apply relative flex flex-col gap-y-vertical-s;
+    @apply relative flex flex-col gap-y-vertical-s bg-neutral-background-1 text-neutral-foreground-1;
 
-    background-color: var(--color-neutral-background-1);
-    color: var(--color-neutral-foreground-1);
     font-family: var(--font-base);
   }
 
   /* from useStyles.content */
   .content {
-    @apply relative box-border grow;
-
-    background-color: transparent;
-    border-radius: var(--radius-medium);
+    @apply relative box-border grow rounded-medium bg-transparent;
   }
 
   /* from useStyles.title */

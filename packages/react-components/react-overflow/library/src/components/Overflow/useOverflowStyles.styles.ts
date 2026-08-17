@@ -51,7 +51,7 @@ export const useOverflowStyles_unstable = (state: OverflowComponentState): Overf
   // removal is a committed single Phase 3 sweep (DECISIONS.md D14 / CONVERSION_GUIDE §3).
   // The `react-hooks/immutability` disable the Griffel version carried is gone because the
   // rule no longer reports here — do not re-add it, the linter flags it as unused.
-  state.className = clsx(styles.root, 'group/fui-overflow', child?.props.className);
+  state.className = clsx(styles.root, overflowClassNames.root, child?.props.className);
 
   return state;
 };

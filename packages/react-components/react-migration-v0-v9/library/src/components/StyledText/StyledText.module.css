@@ -152,34 +152,36 @@
 
   /* from useStyles.mention */
   .mention {
-    color: var(--color-brand-foreground-link);
+    @apply text-brand-foreground-link;
   }
 
   /* from useStyles.mentionMe */
   .mention-me {
-    color: var(--color-palette-pumpkin-border-active);
+    @apply text-palette-pumpkin-border-active;
+
     font-weight: 700;
   }
 
   /* from useStyles.disabled */
   .disabled {
-    color: var(--color-neutral-foreground-disabled);
+    @apply text-neutral-foreground-disabled;
   }
 
   /* from useStyles.error */
   .error {
-    color: var(--color-palette-red-foreground-3);
+    @apply text-palette-red-foreground-3;
   }
 
   /* from useStyles.important */
   .important {
-    color: var(--color-palette-dark-orange-foreground-3);
+    @apply text-palette-dark-orange-foreground-3;
+
     font-weight: 700;
   }
 
   /* from useStyles.success */
   .success {
-    color: var(--color-palette-green-foreground-3);
+    @apply text-palette-green-foreground-3;
   }
 
   /* from useStyles.temporary */
@@ -189,6 +191,6 @@
 
   /* from useStyles.timestamp */
   .timestamp {
-    color: var(--color-neutral-foreground-3);
+    @apply text-neutral-foreground-3;
   }
 }

@@ -100,7 +100,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     root: {
       ...root,
       ...rootDataAttributes,
-      className: clsx(styles.root, 'group/fui-tree-item-layout', styles[appearance], styles[itemType], root.className),
+      className: clsx(styles.root, treeItemLayoutClassNames.root, styles[appearance], styles[itemType], root.className),
     },
     main: { ...main, className: clsx(styles.main, main.className) },
   };

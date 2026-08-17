@@ -7,7 +7,7 @@
 @layer fui.components.l4 {
   /* from useStyles.root */
   .root {
-    background-color: var(--color-neutral-background-3);
+    @apply bg-neutral-background-3;
   }
 
   /* from useStyles.inputs */
@@ -36,11 +36,10 @@
 
   /* from useStyles.colorPicker — `border` shorthand expanded to longhands */
   .color-picker {
-    @apply overflow-hidden;
+    @apply overflow-hidden border-neutral-stroke-1;
 
     border-width: 1px;
     border-style: solid;
-    border-color: var(--color-neutral-stroke-1);
     border-radius: 25px;
     height: 30px;
     width: 30px;
@@ -69,8 +68,9 @@
 
   /* from useStyles.labelName — 2px gap matches the XXS spacing step */
   .label-name {
-    /* Stack the label above the field */
     @apply flex flex-col gap-vertical-xxs;
+
+    /* Stack the label above the field */
 
     /* Prevent the example from taking the full width of the page (optional) */
     max-width: 400px;

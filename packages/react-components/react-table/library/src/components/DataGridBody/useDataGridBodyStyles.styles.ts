@@ -40,7 +40,7 @@ export const useDataGridBodyStyles_unstable = (state: DataGridBodyState): DataGr
   // `classList[0]`, where nwsapi's jsdom `:scope` polyfill throws on the `/` (D15.1 /
   // D16.2). It also keeps the consumer className last. The swap is cascade-inert: this
   // component contributes no declarations, and `@layer fui.*` decides every tie (D2).
-  state = { ...state, root: { ...state.root, className: clsx('group/fui-data-grid-body', state.root.className) } };
+  state = { ...state, root: { ...state.root, className: clsx(dataGridBodyClassNames.root, state.root.className) } };
 
   // DataGridBodyState widens TableBodyState, so the delegate's narrower return is re-merged onto
   // this component's own shape (F1 of the D14 mutation removal — thread the

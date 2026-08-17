@@ -57,7 +57,7 @@ export const useTagPickerOptionGroupStyles = (state: TagPickerOptionGroupState):
   // hook. Consumer className stays last.
   state = {
     ...state,
-    root: { ...state.root, className: clsx(styles.root, 'group/fui-tag-picker-option-group', state.root.className) },
+    root: { ...state.root, className: clsx(styles.root, tagPickerOptionGroupClassNames.root, state.root.className) },
   };
 
   // The `label` slot deliberately gets NO assignment here. Its only library token was the

@@ -108,9 +108,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2, flat half */
   .root {
-    @apply box-border;
-
-    color: var(--color-neutral-foreground-1);
+    @apply box-border text-neutral-foreground-1;
   }
 
   /*
@@ -121,9 +119,10 @@
    */
   .medium,
   .small {
+    @apply border-b-neutral-stroke-2;
+
     border-bottom-width: var(--spacing-thin);
     border-bottom-style: solid;
-    border-bottom-color: var(--color-neutral-stroke-2);
   }
 
   /* from useStyles['extra-small'] — arg #4 */
@@ -143,25 +142,16 @@
 
   /* from useStyles.brand — arg #6, flat half */
   .brand {
-    background-color: var(--color-brand-background-2);
+    @apply border-t-transparent-stroke-interactive border-r-transparent-stroke-interactive border-b-transparent-stroke-interactive border-l-transparent-stroke-interactive bg-brand-background-2;
 
     /* `...shorthands.borderColor(tokens.colorTransparentStrokeInteractive)` */
-    border-top-color: var(--color-transparent-stroke-interactive);
-    border-right-color: var(--color-transparent-stroke-interactive);
-    border-bottom-color: var(--color-transparent-stroke-interactive);
-    border-left-color: var(--color-transparent-stroke-interactive);
   }
 
   /* from useStyles.neutral — arg #6, flat half */
   .neutral {
-    background-color: var(--color-subtle-background-selected);
-    color: var(--color-neutral-foreground-1-hover);
+    @apply border-t-neutral-stroke-on-brand border-r-neutral-stroke-on-brand border-b-neutral-stroke-on-brand border-l-neutral-stroke-on-brand bg-subtle-background-selected text-neutral-foreground-1-hover;
 
     /* `...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand)` */
-    border-top-color: var(--color-neutral-stroke-on-brand);
-    border-right-color: var(--color-neutral-stroke-on-brand);
-    border-bottom-color: var(--color-neutral-stroke-on-brand);
-    border-left-color: var(--color-neutral-stroke-on-brand);
   }
 }
 
@@ -173,8 +163,9 @@
   /* from useStyles.root — arg #2, focus half */
   .root {
     @variant focus-visible-fui {
+      @apply rounded-medium;
+
       outline: 2px solid var(--color-stroke-focus-2);
-      border-radius: var(--radius-medium);
     }
   }
 }
@@ -186,8 +177,7 @@
   /* from useStyles.rootInteractive[':hover'] — arg #3 */
   .root-interactive {
     @variant hover {
-      background-color: var(--color-subtle-background-hover);
-      color: var(--color-neutral-foreground-1-hover);
+      @apply bg-subtle-background-hover text-neutral-foreground-1-hover;
     }
   }
 }
@@ -199,23 +189,21 @@
   /* from useStyles.rootInteractive[':active'] — arg #3 */
   .root-interactive {
     @variant active {
-      background-color: var(--color-subtle-background-pressed);
-      color: var(--color-neutral-foreground-1-pressed);
+      @apply bg-subtle-background-pressed text-neutral-foreground-1-pressed;
     }
   }
 
   /* from useStyles.brand[':active'] — arg #6 */
   .brand {
     @variant active {
-      background-color: var(--color-brand-background-2);
-      color: var(--color-neutral-foreground-1);
+      @apply bg-brand-background-2 text-neutral-foreground-1;
     }
   }
 
   /* from useStyles.neutral[':active'] — arg #6 */
   .neutral {
     @variant active {
-      background-color: var(--color-subtle-background-selected);
+      @apply bg-subtle-background-selected;
     }
   }
 }

@@ -76,13 +76,12 @@
 
     /* from useStyles.root['::after'] — the 1px rule drawn down the middle of the handle */
     &::after {
-      @apply absolute block w-1;
+      @apply absolute block w-1 bg-neutral-stroke-1;
 
       content: ' ';
       inset-inline-start: 50%;
       top: 0;
       bottom: 0;
-      background-color: var(--color-neutral-stroke-1);
     }
 
     /*

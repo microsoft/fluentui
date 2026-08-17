@@ -86,8 +86,7 @@
 @layer fui.components.l1 {
   /* from useStyles.inverted — `appearance` is a LOOK prop, so it rides a module class (D3) */
   .inverted {
-    background-color: var(--color-neutral-background-static);
-    color: var(--color-neutral-foreground-static-inverted);
+    @apply bg-neutral-background-static text-neutral-foreground-static-inverted;
   }
 }
 

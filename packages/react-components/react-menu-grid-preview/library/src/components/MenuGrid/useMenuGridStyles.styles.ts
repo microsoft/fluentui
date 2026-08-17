@@ -29,6 +29,6 @@ export const useMenuGridStyles_unstable = (state: MenuGridState): MenuGridState 
   // `:scope` polyfill throws on it under jsdom (DECISIONS.md D15.1) — and `styles.root` is
   // the token that guarantees it. The BEM static that used to hold that position is gone
   // (DECISIONS.md D16.1).
-  state.root.className = clsx(styles.root, 'group/fui-menu-grid', state.root.className);
+  state.root.className = clsx(styles.root, menuGridClassNames.root, state.root.className);
   return state;
 };

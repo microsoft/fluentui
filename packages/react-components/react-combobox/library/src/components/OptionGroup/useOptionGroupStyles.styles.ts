@@ -32,7 +32,7 @@ export const useOptionGroupStyles_unstable = (state: OptionGroupState): OptionGr
   //
   // OptionGroup stamps no `data-*` mirror: the label needs nothing from the root that a
   // native selector cannot already express (DECISIONS.md D15.6).
-  state.root.className = clsx(styles.root, 'group/fui-option-group', state.root.className);
+  state.root.className = clsx(styles.root, optionGroupClassNames.root, state.root.className);
 
   if (state.label) {
     state.label.className = clsx(styles.label, state.label.className);

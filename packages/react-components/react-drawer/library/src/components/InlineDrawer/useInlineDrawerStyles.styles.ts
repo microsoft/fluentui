@@ -53,7 +53,7 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
     styles.root,
-    'group/fui-inline-drawer',
+    inlineDrawerClassNames.root,
     state.separator && styles.separator,
     state.animationDirection === 'exit' && styles['animation-exit'],
     state.root.className,

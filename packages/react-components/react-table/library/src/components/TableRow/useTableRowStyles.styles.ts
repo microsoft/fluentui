@@ -63,7 +63,7 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
   // The state-mutation pattern is PRESERVED during conversion (DECISIONS.md D14).
   state.root.className = clsx(
     styles.root,
-    'group/fui-table-row',
+    tableRowClassNames.root,
     !state.isHeaderRow && styles['root-interactive'],
     styles[state.size],
     state.noNativeElements ? styles['flex-root'] : styles['table-root'],
