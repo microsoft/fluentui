@@ -124,6 +124,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       const [child, childRef] = useChildElement(children, mounted);
       const ancestorMotionState = useAncestorMotionState_unstable();
       const motionController = React.useRef(createAncestorMotionController_unstable()).current;
+
+      // Heads up!
+      // Link this presence motion to the nearest ancestor so nested motions participate in the same
+      // active-state tree and remain coordinated while enter/exit transitions overlap.
       motionController.parent = ancestorMotionState;
 
       const handleRef = useMotionImperativeRef(imperativeRef);
