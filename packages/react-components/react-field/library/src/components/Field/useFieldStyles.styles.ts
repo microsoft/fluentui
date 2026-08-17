@@ -7,11 +7,8 @@ import styles from './Field.module.css';
  * Field's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target — the
- * one Field cares most about, since it wraps an arbitrary control whose own module reads
- * Field's `data-orientation` / `data-size` through `@variant group-size-small/fui-field`.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The `label` / `validationMessage` / `validationMessageIcon` / `hint` keys are gone along
  * with the `fui-Field*` BEM statics (D16.1), and the type has narrowed from
@@ -22,14 +19,11 @@ import styles from './Field.module.css';
  * literals rather than single-quoted strings, so a scan keyed on a single quote followed by
  * fui- reported this file as having no statics at all. Match all three quote characters.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + fieldClassNames.root` is invalid CSS. Use
- * `fuiSelector(fieldClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
+ * `@fluentui/react-utilities` (D16.5).
  *
- * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
- * this symbol — this package's, plus the `@fluentui/react-components` umbrella — and
- * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
- * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
+ * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
  */
 export const fieldClassNames: { root: string } = {
   root: 'group/fui-field',

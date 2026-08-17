@@ -7,12 +7,8 @@ import styles from './MessageBarActions.module.css';
  * MessageBarActions' public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. See `messageBarClassNames` in
- * `../MessageBar/useMessageBarStyles.styles.ts` for the full rationale, including why this is
- * not tagged `@deprecated`. The `containerAction` key is gone along with the
- * `fui-MessageBarActions*` BEM statics (D16.1): style that slot through its `className` prop.
- * The value is a class TOKEN — use `fuiSelector(messageBarActionsClassNames.root)` from
- * `@fluentui/react-utilities` to build a selector from it.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  */
 export const messageBarActionsClassNames: { root: string } = {
   root: 'group/fui-message-bar-actions',

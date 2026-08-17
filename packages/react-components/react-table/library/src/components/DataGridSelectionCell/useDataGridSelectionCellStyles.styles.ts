@@ -16,13 +16,8 @@ import { useTableSelectionCellStyles_unstable } from '../TableSelectionCell/useT
  * DataGridSelectionCell's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity. The `fui-DataGridSelectionCell` /
- * `fui-DataGridSelectionCell__<slot>` BEM statics are gone (D16.1) and the type has narrowed
- * from `SlotClassNames<DataGridSelectionCellSlots>` to `{ root: string }`, so a read of
- * `checkboxIndicator` or `radioIndicator` is a compile error on the exact line that would
- * otherwise have silently stopped matching.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * A DataGridSelectionCell IS a TableSelectionCell, so this element ALSO carries
  * `group/fui-table-selection-cell` from `useTableSelectionCellStyles_unstable` — two markers
@@ -31,9 +26,8 @@ import { useTableSelectionCellStyles_unstable } from '../TableSelectionCell/useT
  * decorative here: it is what TableRow / DataGridRow select to reveal a subtle selection
  * cell on row interaction.
  *
- * The value is a class TOKEN, not a selector: use
- * `fuiSelector(dataGridSelectionCellClassNames.root)` from `@fluentui/react-utilities`
- * (D16.5).
+ * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
+ * `@fluentui/react-utilities` (D16.5).
  */
 export const dataGridSelectionCellClassNames: { root: string } = {
   root: 'group/fui-data-grid-selection-cell',

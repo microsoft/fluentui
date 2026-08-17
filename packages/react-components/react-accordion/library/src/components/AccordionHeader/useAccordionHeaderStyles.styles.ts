@@ -7,12 +7,8 @@ import styles from './AccordionHeader.module.css';
  * AccordionHeader's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. See `accordionClassNames` in
- * `../Accordion/useAccordionStyles.styles.ts` for the full rationale, including why this is
- * not tagged `@deprecated`. The `button` / `expandIcon` / `icon` keys are gone along with the
- * `fui-AccordionHeader*` BEM statics (D16.1): style those slots through their `className`
- * props. The value is a class TOKEN — use `fuiSelector(accordionHeaderClassNames.root)` from
- * `@fluentui/react-utilities` to build a selector from it.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  */
 export const accordionHeaderClassNames: { root: string } = {
   root: 'group/fui-accordion-header',

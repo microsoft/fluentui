@@ -7,13 +7,8 @@ import styles from './TableCellLayout.module.css';
  * TableCellLayout's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * `fui-TableCellLayout` / `fui-TableCellLayout__<slot>` BEM statics are gone (D16.1) and the
- * type has narrowed from `SlotClassNames<TableCellLayoutSlots>` to `{ root: string }`, so a
- * read of `media`, `main`, `description` or `content` is a compile error on the exact line
- * that would otherwise have silently stopped matching.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The value is a class TOKEN, not a selector: use
  * `fuiSelector(tableCellLayoutClassNames.root)` from `@fluentui/react-utilities` (D16.5).

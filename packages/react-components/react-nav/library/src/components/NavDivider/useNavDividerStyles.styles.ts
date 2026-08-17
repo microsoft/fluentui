@@ -19,25 +19,18 @@ import styles from './NavDivider.module.css';
  * NavDivider's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * type has narrowed from `SlotClassNames<DividerSlots>` to `{ root: string }` — the
- * `wrapper` key is gone (D16.5) — and the value is no longer the `fui-NavDivider` BEM static
- * (D16.1).
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The rendered element carries TWO markers, this one and react-divider's
  * `group/fui-divider`: a NavDivider IS a Divider (D16.3), and a descendant can address
  * whichever identity it means.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but
- * terminates it in selector position, so `'.' + navDividerClassNames.root` is invalid CSS.
- * Use `fuiSelector(navDividerClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
+ * `@fluentui/react-utilities` (D16.5).
  *
- * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
- * this symbol — this package's, plus the `@fluentui/react-components` umbrella — and
- * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
- * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
+ * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
  */
 export const navDividerClassNames: { root: string } = {
   root: 'group/fui-nav-divider',

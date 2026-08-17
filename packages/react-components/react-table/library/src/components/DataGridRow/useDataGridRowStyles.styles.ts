@@ -19,12 +19,8 @@ import styles from './DataGridRow.module.css';
  * DataGridRow's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity. The `fui-DataGridRow` / `fui-DataGridRow__selectionCell` BEM
- * statics are gone (D16.1) and the type has narrowed from `SlotClassNames<DataGridRowSlots>`
- * to `{ root: string }`, so a read of `selectionCell` is a compile error on the exact line
- * that would otherwise have silently stopped matching.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * A DataGridRow IS a TableRow, so this element ALSO carries `group/fui-table-row` from
  * `useTableRowStyles_unstable` — two markers by design (D16.3), declared to

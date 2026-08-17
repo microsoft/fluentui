@@ -15,13 +15,8 @@ import { useTableHeaderCellStyles_unstable } from '../TableHeaderCell/useTableHe
  * DataGridHeaderCell's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity. The `fui-DataGridHeaderCell` /
- * `fui-DataGridHeaderCell__<slot>` BEM statics are gone (D16.1) and the type has narrowed
- * from `SlotClassNames<DataGridHeaderCellSlots>` to `{ root: string }`, so a read of
- * `button`, `sortIcon` or `aside` is a compile error on the exact line that would otherwise
- * have silently stopped matching.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * A DataGridHeaderCell IS a TableHeaderCell, so this element ALSO carries
  * `group/fui-table-header-cell` from `useTableHeaderCellStyles_unstable` — two markers by

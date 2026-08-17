@@ -7,12 +7,8 @@ import styles from './TeachingPopoverHeader.module.css';
  * TeachingPopoverHeader's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * `fui-TeachingPopoverHeader` root static and the `__dismissButton` / `__icon` slot statics are
- * gone (D16.1), and the type has narrowed from `SlotClassNames<TeachingPopoverHeaderSlots>` to
- * `{ root: string }`.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
  * it in selector position, so `'.' + teachingPopoverHeaderClassNames.root` is invalid CSS. Use

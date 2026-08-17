@@ -19,7 +19,8 @@ exports[`Dropdown renders a default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="fui-Icon"
+          data-fui-icon=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -27,7 +28,7 @@ exports[`Dropdown renders a default state 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+            d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0"
             fill="currentColor"
           />
         </svg>
@@ -40,7 +41,8 @@ exports[`Dropdown renders a default state 1`] = `
     >
       <svg
         aria-hidden="true"
-        class=""
+        class="fui-Icon"
+        data-fui-icon=""
         fill="currentColor"
         height="1em"
         viewBox="0 0 20 20"
@@ -48,7 +50,7 @@ exports[`Dropdown renders a default state 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
+          d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07z"
           fill="currentColor"
         />
       </svg>
@@ -78,7 +80,8 @@ exports[`Dropdown renders an open listbox 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="fui-Icon"
+          data-fui-icon=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -86,7 +89,7 @@ exports[`Dropdown renders an open listbox 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+            d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0"
             fill="currentColor"
           />
         </svg>
@@ -99,7 +102,8 @@ exports[`Dropdown renders an open listbox 1`] = `
     >
       <svg
         aria-hidden="true"
-        class=""
+        class="fui-Icon"
+        data-fui-icon=""
         fill="currentColor"
         height="1em"
         viewBox="0 0 20 20"
@@ -107,7 +111,7 @@ exports[`Dropdown renders an open listbox 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
+          d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07z"
           fill="currentColor"
         />
       </svg>
@@ -131,7 +135,8 @@ exports[`Dropdown renders an open listbox 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
+            class="fui-Icon"
+            data-fui-icon=""
             fill="currentColor"
             height="1em"
             viewBox="0 0 20 20"
@@ -139,7 +144,7 @@ exports[`Dropdown renders an open listbox 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
               fill="currentColor"
             />
           </svg>
@@ -158,7 +163,8 @@ exports[`Dropdown renders an open listbox 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
+            class="fui-Icon"
+            data-fui-icon=""
             fill="currentColor"
             height="1em"
             viewBox="0 0 20 20"
@@ -166,7 +172,7 @@ exports[`Dropdown renders an open listbox 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
               fill="currentColor"
             />
           </svg>
@@ -185,7 +191,8 @@ exports[`Dropdown renders an open listbox 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
+            class="fui-Icon"
+            data-fui-icon=""
             fill="currentColor"
             height="1em"
             viewBox="0 0 20 20"
@@ -193,7 +200,7 @@ exports[`Dropdown renders an open listbox 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
               fill="currentColor"
             />
           </svg>

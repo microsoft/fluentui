@@ -11,20 +11,14 @@ import styles from './CalendarDayGrid.module.css';
  * the marker is stamped there, exactly where the `fui-CalendarDayGrid__table` static used to
  * sit. (Same shape as react-tooltip, whose outermost node is its `content` element.)
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * type has narrowed from `SlotClassNames<CalendarDayGridStyles>` to `{ root: string }` — the
- * fifteen sub-slot keys went with the BEM statics (D16.1).
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but
- * terminates it in selector position, so `'.' + calendarDayGridClassNames.root` is invalid
- * CSS. Use `fuiSelector(calendarDayGridClassNames.root)` from `@fluentui/react-utilities`
- * (D16.5).
+ * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
+ * `@fluentui/react-utilities` (D16.5).
  *
- * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
- * this symbol, and `@typescript-eslint/no-deprecated` then errors on each of those re-export
- * specifiers. The narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
+ * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
  *
  * @internal
  */

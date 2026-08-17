@@ -7,11 +7,8 @@ import styles from './TeachingPopoverCarousel.module.css';
  * TeachingPopoverCarousel's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * `fui-TeachingPopoverCarousel` BEM static is gone (D16.1), and the type has narrowed from
- * `SlotClassNames<TeachingPopoverCarouselSlots>` to `{ root: string }`.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
  * it in selector position, so `'.' + teachingPopoverCarouselClassNames.root` is invalid CSS.

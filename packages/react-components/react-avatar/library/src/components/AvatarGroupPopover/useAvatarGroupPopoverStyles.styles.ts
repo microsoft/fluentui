@@ -21,12 +21,8 @@ import styles from './AvatarGroupPopover.module.css';
  * AvatarGroupPopover's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. The `fui-AvatarGroupPopover__<slot>` BEM
- * statics are gone (D16.1), and the type has narrowed from
- * `SlotClassNames<AvatarGroupPopoverSlots>` to `{ root: string }` so that a read of
- * `content`, `popoverSurface`, `tooltip` or `triggerButton` is a compile error on the exact
- * line that would otherwise have silently stopped matching.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * CAVEAT — `root` names the marker, but the marker is NOT on the `root` slot, because that
  * slot renders no DOM. This component's `root` is a `<Popover>`, which emits no element of
@@ -38,14 +34,11 @@ import styles from './AvatarGroupPopover.module.css';
  * `root` at all) and `react-popover` (marker on `PopoverSurface`) reached. Unlike before the
  * conversion, `root` now selects a real element.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + avatarGroupPopoverClassNames.root` is invalid CSS. Use
- * `fuiSelector(avatarGroupPopoverClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
+ * `@fluentui/react-utilities` (D16.5).
  *
- * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
- * this symbol — this package's three, plus the `@fluentui/react-components` umbrella — and
- * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
- * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
+ * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
  */
 export const avatarGroupPopoverClassNames: { root: string } = {
   root: 'group/fui-avatar-group-popover',

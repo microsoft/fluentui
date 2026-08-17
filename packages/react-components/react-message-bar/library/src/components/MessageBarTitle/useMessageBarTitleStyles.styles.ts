@@ -7,12 +7,8 @@ import styles from './MessageBarTitle.module.css';
  * MessageBarTitle's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. See `messageBarClassNames` in
- * `../MessageBar/useMessageBarStyles.styles.ts` for the full rationale, including why this is
- * not tagged `@deprecated`. In short: the `fui-MessageBarTitle` BEM static is gone (D16.1),
- * the type narrowed to `{ root: string }` so per-slot reads are compile errors, and the value
- * is a class TOKEN — use `fuiSelector(messageBarTitleClassNames.root)` from
- * `@fluentui/react-utilities` to build a selector from it.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  */
 export const messageBarTitleClassNames: { root: string } = {
   root: 'group/fui-message-bar-title',

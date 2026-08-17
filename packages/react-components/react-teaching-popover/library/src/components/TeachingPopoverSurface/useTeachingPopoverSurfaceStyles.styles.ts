@@ -18,11 +18,8 @@ import styles from './TeachingPopoverSurface.module.css';
  * TeachingPopoverSurface's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * `fui-TeachingPopoverSurface` BEM static is gone (D16.1), and the type has narrowed from
- * `SlotClassNames<TeachingPopoverSurfaceSlots>` to `{ root: string }`.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * This root IS react-popover's `PopoverSurface` root, so it carries TWO markers by design —
  * this one and `group/fui-popover-surface`, stamped by `usePopoverSurfaceStyles_unstable` on

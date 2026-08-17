@@ -7,13 +7,8 @@ import styles from './TableResizeHandle.module.css';
  * TableResizeHandle's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * `fui-TableResizeHandle` BEM static is gone (D16.1) and the type has narrowed from
- * `SlotClassNames<TableResizeHandleSlots>` to `{ root: string }`. The pre-existing TODO
- * about adding `fui-TableResizeHandle__<slotName>` keys is resolved by D16.1 deleting the
- * format entirely, and has been removed rather than left pointing at a retired convention.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The value is a class TOKEN, not a selector: use
  * `fuiSelector(tableResizeHandleClassNames.root)` from `@fluentui/react-utilities` (D16.5).

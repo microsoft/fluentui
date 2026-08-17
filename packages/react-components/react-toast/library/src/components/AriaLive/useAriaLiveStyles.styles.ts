@@ -7,10 +7,8 @@ import styles from './AriaLive.module.css';
  * AriaLive's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The `fui-AriaLive__assertive` / `fui-AriaLive__polite`
- * BEM statics are gone (D16.1) and the type has narrowed from `SlotClassNames<AriaLiveSlots>`
- * to `{ root: string }`, so a read of either slot key is a compile error on the exact line
- * that would otherwise have silently stopped matching.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The key is `root` even though `AriaLiveSlots` declares no `root` slot — the same shape
  * `react-tooltip` uses. `renderAriaLive` returns a FRAGMENT of two co-equal live regions, so
@@ -20,13 +18,11 @@ import styles from './AriaLive.module.css';
  * is what this package's own tests select on — DECISIONS.md D15.6 keeps class/attribute
  * mirrors out where a native selector already expresses the state.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + ariaLiveClassNames.root` is invalid CSS. Use
- * `fuiSelector(ariaLiveClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
+ * `@fluentui/react-utilities` (D16.5).
  *
- * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
- * this symbol and `@typescript-eslint/no-deprecated` then errors on each of those re-export
- * specifiers. The narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
+ * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
  */
 export const ariaLiveClassNames: { root: string } = {
   root: 'group/fui-aria-live',

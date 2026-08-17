@@ -7,21 +7,16 @@ import styles from './Toast.module.css';
  * Toast's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * `fui-Toast` BEM static is gone (D16.1), and the type has narrowed from
- * `SlotClassNames<ToastSlots>` to `{ root: string }`.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
  * it in selector position, so `'.' + toastClassNames.root` is invalid CSS. Use
  * `fuiSelector(toastClassNames.root)` from `@fluentui/react-utilities` (D16.5) — this
  * package's own cypress spec does exactly that.
  *
- * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
- * this symbol — this package's two, plus the `@fluentui/react-components` umbrella — and
- * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
- * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
+ * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
  */
 export const toastClassNames: { root: string } = {
   root: 'group/fui-toast',

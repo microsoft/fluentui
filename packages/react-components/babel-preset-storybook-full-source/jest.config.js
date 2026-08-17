@@ -27,7 +27,14 @@ module.exports = {
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
+    // `.mjs` too — see transformIgnorePatterns below.
+    '^.+\\.mjs$': ['@swc/jest', swcJestConfig],
   },
+  // This preset formats its output with prettier, and the repo prettier config declares
+  // `prettier-plugin-tailwindcss`, which ships ESM only. Jest does not transform
+  // node_modules by default, so loading it fails with "Cannot use import statement outside
+  // a module". Opt just that one package in.
+  transformIgnorePatterns: ['/node_modules/(?!prettier-plugin-tailwindcss/)'],
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
 };

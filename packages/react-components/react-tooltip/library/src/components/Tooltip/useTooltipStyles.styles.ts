@@ -7,11 +7,8 @@ import styles from './Tooltip.module.css';
  * Tooltip's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * `fui-Tooltip__content` BEM static is gone (D16.1), and the type has narrowed from
- * `SlotClassNames<TooltipSlots>` to `{ root: string }`.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * The key is `root` even though `TooltipSlots` declares no `root` slot. Tooltip renders into
  * a portal and its `content` element is its outermost node, so that is where the marker rides
@@ -19,14 +16,11 @@ import styles from './Tooltip.module.css';
  * rename plus an escape: a template selector built from `tooltipClassNames.content` becomes
  * `fuiSelector(tooltipClassNames.root)`, resolving to the same element.
  *
- * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
- * it in selector position, so `'.' + tooltipClassNames.root` is invalid CSS. Use
- * `fuiSelector(tooltipClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ * The value is a class TOKEN, not a selector — build one with `fuiSelector()` from
+ * `@fluentui/react-utilities` (D16.5).
  *
- * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
- * this symbol — this package's three, plus the `@fluentui/react-components` umbrella — and
- * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
- * narrowed type is what enforces D16.5; the tag would only buy lint noise.
+ * Deliberately untagged: `@deprecated` would propagate to every re-exporting barrel and
+ * trip `@typescript-eslint/no-deprecated` at each one. The narrowed type is the contract.
  */
 export const tooltipClassNames: { root: string } = {
   root: 'group/fui-tooltip',

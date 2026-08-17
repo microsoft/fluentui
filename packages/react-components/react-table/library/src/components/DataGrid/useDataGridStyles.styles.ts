@@ -16,11 +16,8 @@ import { useTableStyles_unstable } from '../Table/useTableStyles.styles';
  * DataGrid's public identity class — the Tailwind named-group marker
  * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
  *
- * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
- * internals is the per-slot `className` props. `root` is retained because it is still the
- * component's public identity: it is a usable selector and a `group-*` variant target. The
- * `fui-DataGrid` BEM static is gone (D16.1) and the type has narrowed from
- * `SlotClassNames<DataGridSlots>` to `{ root: string }`.
+ * Deprecated for styling internals: the supported way to style a Fluent component is the
+ * per-slot `className` props. `root` is retained as the public identity handle.
  *
  * A DataGrid IS a Table, so this same element ALSO carries `group/fui-table` from
  * `useTableStyles_unstable` — two markers by design, exactly as ToggleButton's root carries
