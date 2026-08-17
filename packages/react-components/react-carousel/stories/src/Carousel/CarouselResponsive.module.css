@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for CarouselResponsive.
  * Token references are the Fluent theme's CSS variables. */
 
@@ -6,27 +8,26 @@
 }
 
 .wireframe {
-  background-color: var(--color-neutral-background-3);
+  @apply relative flex flex-col bg-neutral-background-3;
+
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  display: flex;
-  flex-direction: column;
   gap: 12px;
   place-content: center;
   padding: 40px;
   height: 200px;
-  position: relative;
 }
 
 .wireframeEven {
-  background-color: var(--color-brand-background-2);
+  @apply bg-brand-background-2;
+
   border: var(--stroke-width-thin) solid var(--color-brand-stroke-1);
 }
 
 .wireframeInfo {
-  position: absolute;
+  @apply absolute bg-palette-red-background-2;
+
   right: 12px;
   top: 12px;
-  background-color: var(--color-palette-red-background-2);
   border: var(--stroke-width-thin) dotted var(--color-palette-red-border-2);
   font-size: var(--text-base-200);
   padding: 4px 8px;

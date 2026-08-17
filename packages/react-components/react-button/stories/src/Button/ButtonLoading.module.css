@@ -1,19 +1,20 @@
+@reference '#theme';
+
 /* Story styles for ButtonLoading.
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
+  @apply flex;
+
   column-gap: 15px;
-  display: flex;
 }
 
 .buttonNonInteractive {
-  background-color: var(--color-neutral-background-1);
+  @apply pointer-events-none cursor-default bg-neutral-background-1 text-neutral-foreground-1;
+
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  color: var(--color-neutral-foreground-1);
-  cursor: default;
-  pointer-events: none;
 }
 
 .icon {
-  color: var(--color-status-success-foreground-1);
+  @apply text-status-success-foreground-1;
 }

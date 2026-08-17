@@ -1,5 +1,8 @@
+@reference '#theme';
+
 .persona {
-  display: inline-grid;
+  @apply inline-grid;
+
   grid-auto-rows: max-content;
   grid-auto-flow: column;
   justify-items: start;
@@ -9,46 +12,41 @@
 
 /* Avatar - grid column spanning and positioning */
 .avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply relative inline-flex items-center justify-center overflow-hidden select-none;
+
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
   font-weight: 600;
-  position: relative;
-  overflow: hidden;
   flex-shrink: 0;
-  user-select: none;
   grid-row: span 2;
   align-self: center;
 }
 
 /* Avatar initials */
 .avatarInitials {
-  position: absolute;
+  @apply absolute flex items-center justify-center;
+
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 12px;
   font-weight: 600;
 }
 
 /* Avatar image */
 .avatarImage {
-  position: absolute;
+  @apply absolute object-cover;
+
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 /* Primary text - body1 typography */
 .primaryText {
-  display: block;
+  @apply block;
+
   font-size: 14px;
   line-height: 20px;
   color: var(--text);
@@ -57,7 +55,8 @@
 
 /* Secondary text - caption1 typography */
 .secondaryText {
-  display: block;
+  @apply block;
+
   font-size: 12px;
   line-height: 16px;
   color: var(--text-muted);

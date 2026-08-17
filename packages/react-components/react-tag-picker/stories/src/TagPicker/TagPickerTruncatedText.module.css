@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for TagPickerTruncatedText.
  * Token references are the Fluent theme's CSS variables. */
 
 .tagTruncatedPrimaryText {
-  white-space: nowrap;
-  overflow-x: hidden;
+  @apply overflow-x-hidden whitespace-nowrap;
+
   text-overflow: ellipsis;
 }
 
@@ -12,11 +14,11 @@
 }
 
 .optionContent {
-  white-space: nowrap;
-  overflow-x: hidden;
+  @apply overflow-x-hidden whitespace-nowrap;
+
   text-overflow: ellipsis;
 }
 
 .optionSecondaryContent {
-  white-space: nowrap;
+  @apply whitespace-nowrap;
 }

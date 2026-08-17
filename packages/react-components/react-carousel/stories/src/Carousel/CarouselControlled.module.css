@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for CarouselControlled.
  * Token references are the Fluent theme's CSS variables. */
 
 .carousel {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: 1fr auto 1fr;
   grid-template-rows: 1fr auto;
   gap: 10px;
@@ -10,23 +13,23 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 20px;
 }
 
 .viewport {
-  overflow: hidden;
+  @apply overflow-hidden;
 }
 
 .footer {
-  display: flex;
+  @apply flex rounded-medium;
+
   gap: 10px;
   align-self: center;
   justify-self: center;
   width: max-content;
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
@@ -40,37 +43,35 @@
 }
 
 .code {
-  display: flex;
+  @apply flex rounded-medium bg-neutral-background-4;
+
   place-items: center;
   padding: 4px 8px;
   font-size: var(--text-base-200);
   line-height: var(--leading-base-200);
-  background-color: var(--color-neutral-background-4);
-  border-radius: var(--radius-medium);
 }
 
 .wireframe {
-  background-color: var(--color-neutral-background-3);
+  @apply relative flex flex-col bg-neutral-background-3;
+
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  display: flex;
-  flex-direction: column;
   gap: 12px;
   place-content: center;
   padding: 40px;
   height: 200px;
-  position: relative;
 }
 
 .wireframeEven {
-  background-color: var(--color-brand-background-2);
+  @apply bg-brand-background-2;
+
   border: var(--stroke-width-thin) solid var(--color-brand-stroke-1);
 }
 
 .wireframeInfo {
-  position: absolute;
+  @apply absolute bg-palette-red-background-2;
+
   right: 12px;
   top: 12px;
-  background-color: var(--color-palette-red-background-2);
   border: var(--stroke-width-thin) dotted var(--color-palette-red-border-2);
   font-size: var(--text-base-200);
   padding: 4px 8px;

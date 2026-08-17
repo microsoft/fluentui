@@ -1,17 +1,19 @@
+@reference '#theme';
+
 /* Story styles for CardSelectableIndicator.
  * Token references are the Fluent theme's CSS variables.
  * The original spread a shared `flex` object into main/row (hand-converted). */
 
 .main {
+  @apply flex flex-col;
+
   gap: 16px;
-  display: flex;
-  flex-direction: column;
 }
 
 .row {
+  @apply flex flex-wrap;
+
   gap: 16px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .card {
@@ -21,20 +23,21 @@
 }
 
 .caption {
-  color: var(--color-neutral-foreground-3);
+  @apply text-neutral-foreground-3;
 }
 
 .smallRadius {
-  border-radius: var(--radius-small);
+  @apply rounded-small;
 }
 
 .grayBackground {
-  background-color: var(--color-neutral-background-3);
+  @apply bg-neutral-background-3;
 }
 
 .logoBadge {
+  @apply rounded-small;
+
   padding: 5px;
-  border-radius: var(--radius-small);
   background-color: #fff;
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.14),
@@ -42,5 +45,5 @@
 }
 
 .actions {
-  display: flex;
+  @apply flex;
 }

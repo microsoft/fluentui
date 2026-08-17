@@ -1,11 +1,14 @@
+@reference '#theme';
+
 .link {
+  @apply cursor-pointer;
+
   color: var(--text);
   text-decoration: underline;
   text-decoration-color: var(--border-strong);
   text-underline-offset: 3px;
   font-weight: 500;
   border-radius: var(--radius-xs);
-  cursor: pointer;
   transition:
     color var(--duration-fast) var(--ease-standard),
     text-decoration-color var(--duration-fast) var(--ease-standard);
@@ -24,8 +27,9 @@
 }
 
 .link[data-disabled] {
+  @apply cursor-not-allowed;
+
   color: var(--text-faint);
-  cursor: not-allowed;
   text-decoration-color: var(--text-faint);
 }
 
@@ -45,9 +49,7 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  display: flex;
-
-  flex-direction: column;
+  @apply flex flex-col;
 
   gap: 16px;
 }

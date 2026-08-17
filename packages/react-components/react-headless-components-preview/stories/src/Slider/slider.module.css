@@ -1,39 +1,41 @@
+@reference '#theme';
+
 .slider {
-  position: relative;
+  @apply relative flex items-center;
+
   width: 100%;
   max-width: 320px;
   height: 28px;
-  display: flex;
-  align-items: center;
 }
 
 .input {
-  position: absolute;
+  @apply absolute cursor-pointer;
+
   inset: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
-  cursor: pointer;
   z-index: 2;
   margin: 0;
 }
 
 .input:disabled {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
 }
 
 .rail {
-  position: relative;
+  @apply relative overflow-hidden;
+
   width: 100%;
   height: 4px;
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
-  overflow: hidden;
 }
 
 .rail::after {
+  @apply absolute;
+
   content: '';
-  position: absolute;
   inset: 0;
   width: var(--fui-Slider--progress, 0%);
   background: var(--accent);
@@ -42,7 +44,8 @@
 }
 
 .thumb {
-  position: absolute;
+  @apply absolute;
+
   top: 50%;
   left: var(--fui-Slider--progress, 0%);
   transform: translate(-50%, -50%);
@@ -69,18 +72,19 @@
 }
 
 .row {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: 16px;
   width: 100%;
 }
 
 .value {
+  @apply text-right;
+
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   color: var(--text);
   min-width: 38px;
-  text-align: right;
   font-size: 13px;
 }
 

@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for MotionVsPresenceDemo.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-horizontal-xxl);
   margin-top: var(--spacing-vertical-xxl);
@@ -16,20 +19,16 @@
 }
 
 .panel {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col overflow-hidden rounded-medium;
+
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
-  overflow: hidden;
 }
 
 .panelHeader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-col items-center bg-neutral-background-2;
+
   gap: var(--spacing-vertical-xs);
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl) var(--spacing-vertical-m);
-  background-color: var(--color-neutral-background-2);
 }
 
 .title {
@@ -39,19 +38,18 @@
 }
 
 .subtitle {
+  @apply text-center text-neutral-foreground-3;
+
   margin: 0;
   font-size: var(--text-base-200);
-  color: var(--color-neutral-foreground-3);
-  text-align: center;
 }
 
 .demoArea {
-  display: grid;
-  align-items: center;
+  @apply grid items-center bg-neutral-background-1;
+
   justify-items: center;
   height: 80px;
   padding: var(--spacing-vertical-l);
-  background-color: var(--color-neutral-background-1);
 }
 
 .motionWrapper {
@@ -59,28 +57,26 @@
 }
 
 .card {
-  align-items: center;
-  justify-content: center;
+  @apply items-center justify-center;
+
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-base-300);
 }
 
 .codeArea {
+  @apply overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
+
   margin: 0;
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-l);
-  background-color: var(--color-neutral-background-3);
   border-top: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  overflow: auto;
   font-family: var(--font-monospace);
   font-size: var(--text-base-100);
   line-height: var(--leading-base-200);
-  color: var(--color-neutral-foreground-1);
 }
 
 .buttonRow {
-  display: flex;
-  justify-content: center;
+  @apply flex justify-center bg-neutral-background-2;
+
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl) var(--spacing-vertical-l);
-  background-color: var(--color-neutral-background-2);
 }

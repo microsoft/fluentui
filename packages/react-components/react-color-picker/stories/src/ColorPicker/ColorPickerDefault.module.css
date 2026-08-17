@@ -1,10 +1,12 @@
+@reference '#theme';
+
 /* Story styles for ColorPickerDefault.
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
+  @apply flex flex-col;
+
   width: 300px;
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 
@@ -22,15 +24,14 @@
 }
 
 .inputFields {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: row;
+  @apply flex flex-row items-end;
+
   gap: 10px;
 }
 
 .colorFieldWrapper {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 6px;
 }
 

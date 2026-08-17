@@ -1,36 +1,35 @@
+@reference '#theme';
+
 /* Story styles for BlurDuration.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
 .example {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-col items-center;
+
   gap: 10px;
 }
 
 .card {
+  @apply flex items-center justify-center rounded-medium bg-neutral-background-1 text-center;
+
   width: 200px;
   height: 120px;
   padding: 20px;
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
-  background-color: var(--color-neutral-background-1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: var(--text-base-300);
-  text-align: center;
 }
 
 .controls {
-  display: flex;
+  @apply flex;
+
   gap: 10px;
   margin-bottom: 20px;
 }

@@ -1,10 +1,12 @@
+@reference '#theme';
+
 /* Story styles for UseTypingAnnounceFiltering.
  * Token references are the Fluent theme's CSS variables. */
 
 .results {
-  background-color: var(--color-neutral-background-1);
+  @apply list-none bg-neutral-background-1;
+
   border: 1px solid var(--color-neutral-stroke-1);
-  list-style-type: none;
   padding: 0;
   margin: 0;
   margin-top: var(--spacing-vertical-m);

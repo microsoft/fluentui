@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*",
     "d3-format": "^3.0.0",
     "d3-time-format": "^3.0.0"
+  },
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
   }
 }

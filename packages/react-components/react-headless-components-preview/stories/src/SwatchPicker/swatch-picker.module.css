@@ -1,44 +1,53 @@
+@reference '#theme';
+
 .story {
-  display: block;
+  @apply block;
+
   padding: var(--space-6);
   color: var(--text);
   background: var(--bg);
 }
 
 .demo {
-  display: grid;
+  @apply grid;
+
   gap: var(--space-4);
 }
 
 .picker {
-  display: grid;
+  @apply grid;
+
   gap: var(--space-2);
   grid-template-columns: repeat(6, var(--space-8));
 }
 
 .grid {
-  display: grid;
+  @apply grid;
+
   gap: var(--space-2);
 }
 
 .gridRow {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: repeat(3, var(--space-8));
   gap: var(--space-2);
 }
 
 .emptyPicker {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: repeat(8, var(--space-8));
   gap: var(--space-2);
 }
 
 .swatch {
+  @apply cursor-pointer;
+
   width: var(--space-8);
   height: var(--space-8);
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-sm);
-  cursor: pointer;
   background: var(--fui-SwatchPicker--color);
 }
 
@@ -52,16 +61,20 @@
 }
 
 .imageDemo {
-  display: grid;
+  @apply grid;
+
   gap: var(--space-5);
 }
 
 .imagePicker {
-  display: flex;
+  @apply flex;
+
   gap: var(--space-3);
 }
 
 .imageSwatch {
+  @apply cursor-pointer;
+
   width: calc(var(--space-16) + var(--space-10) - var(--space-1));
   height: calc(var(--space-16) + var(--space-10) - var(--space-1));
   padding: 0;
@@ -69,22 +82,20 @@
   border-radius: var(--radius-sm);
   background-position: center;
   background-size: cover;
-  cursor: pointer;
 }
 
 .imagePreview {
-  display: block;
+  @apply block object-cover;
+
   width: 100%;
   max-width: calc(var(--space-16) * 10);
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-sm);
-  object-fit: cover;
 }
 
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  @apply flex flex-wrap items-center;
+
   gap: var(--space-2);
 }
 
@@ -111,8 +122,9 @@
 }
 
 .button:disabled {
+  @apply cursor-not-allowed;
+
   color: var(--text-faint);
-  cursor: not-allowed;
 }
 
 .swatch[aria-checked='true'],

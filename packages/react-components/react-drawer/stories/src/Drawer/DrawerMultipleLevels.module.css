@@ -1,19 +1,23 @@
+@reference '#theme';
+
 /* Story styles for DrawerMultipleLevels.
  * Token references are the Fluent theme's CSS variables. */
 
 .toolbar {
-  justify-content: space-between;
+  @apply justify-between;
 }
 
 .body {
+  @apply relative;
+
   flex: 1;
   width: 100%;
   max-width: 100%;
-  position: relative;
 }
 
 .level {
-  position: absolute;
+  @apply absolute;
+
   top: 0;
   left: 0;
   right: 0;
@@ -29,5 +33,5 @@
 }
 
 .footer {
-  justify-content: space-between;
+  @apply justify-between;
 }

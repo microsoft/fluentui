@@ -1,22 +1,22 @@
+@reference '#theme';
+
 /* Story styles for StaggerStaggerIn.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 20px;
   padding: 20px;
   max-width: 600px;
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium bg-neutral-background-1;
+
   gap: 12px;
   padding: 16px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
-  background-color: var(--color-neutral-background-1);
   box-shadow: var(--shadow-8);
 }
 

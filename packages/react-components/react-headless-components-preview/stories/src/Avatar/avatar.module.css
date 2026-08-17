@@ -1,15 +1,13 @@
+@reference '#theme';
+
 .avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply relative inline-flex items-center justify-center overflow-hidden select-none;
+
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
   font-weight: 600;
-  position: relative;
-  overflow: hidden;
   flex-shrink: 0;
-  user-select: none;
   letter-spacing: 0;
 }
 
@@ -38,19 +36,17 @@
 }
 
 .image {
-  position: absolute;
+  @apply absolute object-cover;
+
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .initials {
-  position: absolute;
+  @apply absolute flex items-center justify-center;
+
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* Tones — neutral grays + a single brand-pink accent so the group isn't monotonous */
@@ -71,7 +67,7 @@
 }
 
 .stack {
-  display: inline-flex;
+  @apply inline-flex;
 }
 
 .stack > * {
@@ -84,14 +80,13 @@
 }
 
 .row {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: 12px;
 }
 
 .meta {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
 }
 
 .metaName {
@@ -108,19 +103,13 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  display: flex;
-
-  flex-direction: column;
+  @apply flex flex-col;
 
   gap: 24px;
 }
 
 .demoRow {
-  display: flex;
-
-  align-items: center;
+  @apply flex flex-wrap items-center;
 
   gap: 12px;
-
-  flex-wrap: wrap;
 }

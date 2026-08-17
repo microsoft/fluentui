@@ -1,6 +1,8 @@
+@reference '#theme';
+
 .infoLabel {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: var(--space-1);
   color: var(--text);
   font-size: 13px;
@@ -12,15 +14,13 @@
 }
 
 .infoButton {
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   all: unset;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   border-radius: var(--radius-sm);
   width: 16px;
   height: 16px;
   color: var(--text-muted);
-  cursor: pointer;
   line-height: 1;
 }
 
@@ -36,14 +36,14 @@
 .infoButton[disabled],
 .infoButton[data-disabled],
 .infoButton[aria-disabled='true'] {
+  @apply cursor-not-allowed;
+
   color: var(--text-faint);
-  cursor: not-allowed;
 }
 
 .popover {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start;
+
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);

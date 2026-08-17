@@ -1,7 +1,10 @@
+@reference '#theme';
+
 /* Story styles for TagSelected.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
+  @apply flex;
+
   column-gap: 10px;
-  display: flex;
 }

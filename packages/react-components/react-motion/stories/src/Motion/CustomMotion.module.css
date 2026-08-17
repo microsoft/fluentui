@@ -1,15 +1,17 @@
+@reference '#theme';
+
 /* Story styles for CustomMotion.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 40px;
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 12px;
 }
 
@@ -20,30 +22,29 @@
 }
 
 .sectionDescription {
+  @apply text-neutral-foreground-3;
+
   font-size: var(--text-base-300);
-  color: var(--color-neutral-foreground-3);
   margin: 0;
 }
 
 .buttons {
-  display: flex;
+  @apply flex;
+
   gap: 12px;
 }
 
 .drawerContainer {
+  @apply flex flex-col-reverse overflow-hidden rounded-medium bg-neutral-background-1;
+
   border: 2px solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column-reverse;
   height: 300px;
-  background-color: var(--color-neutral-background-1);
 }
 
 .drawerContent {
+  @apply flex items-start;
+
   flex: 1;
   padding: 16px;
-  display: flex;
-  align-items: flex-start;
   gap: 12px;
 }

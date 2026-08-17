@@ -1,24 +1,24 @@
+@reference '#theme';
+
 /* Story styles for GanttChartGrouped.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
+  @apply flex flex-col;
+
   padding: 16px;
-  display: flex;
-  flex-direction: column;
   gap: 16px;
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
+  @apply flex flex-row flex-wrap items-center;
+
   gap: 20px;
-  flex-wrap: wrap;
-  align-items: center;
 }
 
 .sliderGroup {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 4px;
   min-width: 180px;
 }

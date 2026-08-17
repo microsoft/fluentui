@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for MixedStyles.
  * Token references are the Fluent theme's CSS variables. */
 
@@ -9,10 +11,11 @@
 }
 
 .paragraph {
+  @apply italic;
+
   font-family: var(--font-base);
   font-size: var(--text-base-300);
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-base-300);
   letter-spacing: 0.0675em;
-  font-style: italic;
 }

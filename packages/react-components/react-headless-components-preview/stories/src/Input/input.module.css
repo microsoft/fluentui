@@ -1,7 +1,9 @@
+@reference '#theme';
+
 /* input wrapper — clean rounded, light border */
 .wrap {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   width: 100%;
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -24,8 +26,9 @@
 
 .wrap[data-disabled],
 .wrapDisabled {
+  @apply cursor-not-allowed;
+
   background: var(--surface-muted);
-  cursor: not-allowed;
   opacity: 0.7;
 }
 
@@ -53,13 +56,12 @@
 }
 
 .input:disabled {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
 }
 
 .affix {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex items-center justify-center;
+
   padding: 0 10px;
   color: var(--text-soft);
   flex-shrink: 0;
@@ -72,8 +74,8 @@
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 10px;
   width: 100%;
 }

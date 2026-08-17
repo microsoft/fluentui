@@ -1,10 +1,13 @@
+@reference '#theme';
+
 /*
   Overlay variant: position fixed to the right edge, slides in via translateX
   on the [open] attribute. Uses a `::backdrop` (per the native `<dialog>`
   Drawer renders into) for the dim layer.
 */
 .drawerOverlay {
-  position: fixed;
+  @apply fixed hidden flex-col;
+
   top: 0;
   right: 0;
   bottom: 0;
@@ -12,11 +15,9 @@
      `<dialog>` so the drawer pins to the right edge instead of centering. */
   left: auto;
   margin: 0;
-  display: none;
   min-height: 100vh;
   width: 320px;
   max-width: calc(100vw - 32px);
-  flex-direction: column;
   border: 0;
   border-left: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
@@ -27,7 +28,8 @@
 }
 
 .drawerOverlay[open] {
-  display: flex;
+  @apply flex;
+
   transform: translateX(0);
 }
 
@@ -46,8 +48,9 @@
   opacity on the [data-open] attribute.
 */
 .drawerInline {
+  @apply overflow-hidden;
+
   flex-shrink: 0;
-  overflow: hidden;
   background: var(--bg-soft);
   border-right: var(--stroke-thin) solid transparent;
   width: 0;
@@ -70,14 +73,13 @@
 }
 
 .drawerHeaderTitle {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  @apply flex items-start justify-between;
+
   gap: var(--space-3);
 }
 
 .drawerHeaderTitleInline {
-  align-items: center;
+  @apply items-center;
 }
 
 .drawerHeading {
@@ -94,32 +96,31 @@
 }
 
 .drawerBody {
+  @apply overflow-auto;
+
   flex-grow: 1;
-  overflow: auto;
   padding: var(--space-3);
   font-size: 13.5px;
   color: var(--text-muted);
 }
 
 .drawerFooter {
-  display: flex;
-  justify-content: flex-end;
+  @apply flex justify-end;
+
   gap: var(--space-2);
   border-top: var(--stroke-thin) solid var(--border);
   padding: var(--space-3) var(--space-4);
 }
 
 .closeButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   height: 32px;
   width: 32px;
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
   color: var(--text-muted);
-  cursor: pointer;
 }
 
 .closeButton:hover {
@@ -133,8 +134,8 @@
 }
 
 .primaryButton {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex cursor-pointer items-center;
+
   height: 32px;
   padding: 0 var(--space-3);
   border: 0;
@@ -143,7 +144,6 @@
   color: var(--accent-contrast);
   font-size: 13.5px;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .primaryButton:hover {
@@ -156,8 +156,8 @@
 }
 
 .secondaryButton {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex cursor-pointer items-center;
+
   height: 32px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -165,7 +165,6 @@
   background: var(--bg-elev);
   color: var(--text);
   font-size: 13.5px;
-  cursor: pointer;
 }
 
 .secondaryButton:hover {
@@ -182,9 +181,9 @@
 }
 
 .inlineFrame {
-  display: flex;
+  @apply flex overflow-hidden;
+
   height: 420px;
-  overflow: hidden;
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-md);
   background: var(--bg-elev);
@@ -192,17 +191,16 @@
 }
 
 .inlineMain {
-  display: flex;
+  @apply flex flex-col items-start;
+
   flex: 1;
-  align-items: flex-start;
-  flex-direction: column;
   gap: var(--space-3);
   padding: var(--space-4);
 }
 
 .nav {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-1);
 }
 

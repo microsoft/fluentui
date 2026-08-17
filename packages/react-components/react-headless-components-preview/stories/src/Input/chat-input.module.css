@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* chat-input — borderless field on a soft surface,
    with a hairline bottom rule and inline icon buttons.
 
@@ -5,8 +7,8 @@
 */
 
 .chat {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: 4px;
   width: 100%;
   padding: 8px 8px;
@@ -25,8 +27,8 @@
 
 .chatLeading,
 .chatTrailing {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: 2px;
   flex-shrink: 0;
 }
@@ -47,16 +49,14 @@
 }
 
 .iconBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   width: 32px;
   height: 32px;
   border-radius: 50%;
   border: none;
   background: transparent;
   color: var(--text-muted);
-  cursor: pointer;
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard);
@@ -80,8 +80,9 @@
 }
 
 .iconBtn[disabled] {
+  @apply cursor-not-allowed;
+
   opacity: 0.35;
-  cursor: not-allowed;
 }
 
 .send {

@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for ColorSwatchVariants.
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  display: flex;
+  @apply flex;
+
   gap: 8px;
 }
 

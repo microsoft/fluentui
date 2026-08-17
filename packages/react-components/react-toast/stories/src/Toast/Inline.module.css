@@ -1,13 +1,13 @@
+@reference '#theme';
+
 /* Story styles for Inline.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
+  @apply relative flex items-center justify-center;
+
   border: 2px dashed green;
   height: 500px;
   width: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
   margin-top: 20px;
 }

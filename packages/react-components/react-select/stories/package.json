@@ -1,5 +1,11 @@
 {
   "name": "@fluentui/react-select-stories",
   "version": "0.0.0",
-  "private": true
+  "private": true,
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
+  },
+  "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*"
+  }
 }

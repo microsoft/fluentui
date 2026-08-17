@@ -1,10 +1,12 @@
+@reference '#theme';
+
 /* Story styles for ColorPickerShape.
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
+  @apply flex flex-col;
+
   width: 300px;
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 

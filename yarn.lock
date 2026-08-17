@@ -3361,6 +3361,8 @@ __metadata:
 "@fluentui/react-accordion-stories@workspace:packages/react-components/react-accordion/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-accordion-stories@workspace:packages/react-components/react-accordion/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3414,6 +3416,8 @@ __metadata:
 "@fluentui/react-aria-stories@workspace:packages/react-components/react-aria/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-aria-stories@workspace:packages/react-components/react-aria/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3438,6 +3442,8 @@ __metadata:
 "@fluentui/react-avatar-stories@workspace:packages/react-components/react-avatar/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-avatar-stories@workspace:packages/react-components/react-avatar/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3469,6 +3475,8 @@ __metadata:
 "@fluentui/react-badge-stories@workspace:packages/react-components/react-badge/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-badge-stories@workspace:packages/react-components/react-badge/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3520,6 +3528,8 @@ __metadata:
 "@fluentui/react-breadcrumb-stories@workspace:packages/react-components/react-breadcrumb/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-breadcrumb-stories@workspace:packages/react-components/react-breadcrumb/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3550,6 +3560,8 @@ __metadata:
 "@fluentui/react-button-stories@workspace:packages/react-components/react-button/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-button-stories@workspace:packages/react-components/react-button/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3579,6 +3591,8 @@ __metadata:
 "@fluentui/react-calendar-compat-stories@workspace:packages/react-components/react-calendar-compat/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-calendar-compat-stories@workspace:packages/react-components/react-calendar-compat/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3609,6 +3623,8 @@ __metadata:
 "@fluentui/react-card-stories@workspace:packages/react-components/react-card/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-card-stories@workspace:packages/react-components/react-card/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3654,6 +3670,8 @@ __metadata:
 "@fluentui/react-carousel-stories@workspace:packages/react-components/react-carousel/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-carousel-stories@workspace:packages/react-components/react-carousel/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3731,6 +3749,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-charts-stories@workspace:packages/charts/react-charts/stories"
   dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
     d3-format: "npm:^3.0.0"
     d3-time-format: "npm:^3.0.0"
   languageName: unknown
@@ -3815,6 +3834,8 @@ __metadata:
 "@fluentui/react-color-picker-stories@workspace:packages/react-components/react-color-picker/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-color-picker-stories@workspace:packages/react-components/react-color-picker/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3858,6 +3879,8 @@ __metadata:
 "@fluentui/react-combobox-stories@workspace:packages/react-components/react-combobox/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-combobox-stories@workspace:packages/react-components/react-combobox/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4082,6 +4105,8 @@ __metadata:
 "@fluentui/react-datepicker-compat-stories@workspace:packages/react-components/react-datepicker-compat/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-datepicker-compat-stories@workspace:packages/react-components/react-datepicker-compat/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4116,6 +4141,8 @@ __metadata:
 "@fluentui/react-dialog-stories@workspace:packages/react-components/react-dialog/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-dialog-stories@workspace:packages/react-components/react-dialog/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4149,6 +4176,8 @@ __metadata:
 "@fluentui/react-divider-stories@workspace:packages/react-components/react-divider/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-divider-stories@workspace:packages/react-components/react-divider/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4202,6 +4231,8 @@ __metadata:
 "@fluentui/react-drawer-stories@workspace:packages/react-components/react-drawer/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-drawer-stories@workspace:packages/react-components/react-drawer/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4300,6 +4331,8 @@ __metadata:
 "@fluentui/react-field-stories@workspace:packages/react-components/react-field/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-field-stories@workspace:packages/react-components/react-field/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4357,6 +4390,8 @@ __metadata:
 "@fluentui/react-headless-components-preview-stories@workspace:packages/react-components/react-headless-components-preview/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-headless-components-preview-stories@workspace:packages/react-components/react-headless-components-preview/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4585,6 +4620,8 @@ __metadata:
 "@fluentui/react-infolabel-stories@workspace:packages/react-components/react-infolabel/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-infolabel-stories@workspace:packages/react-components/react-infolabel/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4614,6 +4651,8 @@ __metadata:
 "@fluentui/react-input-stories@workspace:packages/react-components/react-input/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-input-stories@workspace:packages/react-components/react-input/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4689,6 +4728,8 @@ __metadata:
 "@fluentui/react-link-stories@workspace:packages/react-components/react-link/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-link-stories@workspace:packages/react-components/react-link/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4716,6 +4757,8 @@ __metadata:
 "@fluentui/react-list-stories@workspace:packages/react-components/react-list/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-list-stories@workspace:packages/react-components/react-list/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4775,6 +4818,8 @@ __metadata:
 "@fluentui/react-menu-stories@workspace:packages/react-components/react-menu/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-menu-stories@workspace:packages/react-components/react-menu/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4809,6 +4854,8 @@ __metadata:
 "@fluentui/react-message-bar-stories@workspace:packages/react-components/react-message-bar/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-message-bar-stories@workspace:packages/react-components/react-message-bar/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4839,6 +4886,8 @@ __metadata:
 "@fluentui/react-migration-v0-v9-stories@workspace:packages/react-components/react-migration-v0-v9/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-migration-v0-v9-stories@workspace:packages/react-components/react-migration-v0-v9/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4870,6 +4919,8 @@ __metadata:
 "@fluentui/react-migration-v8-v9-stories@workspace:packages/react-components/react-migration-v8-v9/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-migration-v8-v9-stories@workspace:packages/react-components/react-migration-v8-v9/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4926,6 +4977,7 @@ __metadata:
     "@fluentui/react-motion": "npm:*"
     "@fluentui/react-motion-components-preview": "npm:*"
     "@fluentui/react-shared-contexts": "npm:*"
+    "@fluentui/react-tailwind-theme": "workspace:*"
     react: "npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   languageName: unknown
   linkType: soft
@@ -4948,6 +5000,8 @@ __metadata:
 "@fluentui/react-motion-stories@workspace:packages/react-components/react-motion/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-motion-stories@workspace:packages/react-components/react-motion/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -4969,6 +5023,8 @@ __metadata:
 "@fluentui/react-nav-stories@workspace:packages/react-components/react-nav/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-nav-stories@workspace:packages/react-components/react-nav/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5075,6 +5131,8 @@ __metadata:
 "@fluentui/react-overflow-stories@workspace:packages/react-components/react-overflow/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-overflow-stories@workspace:packages/react-components/react-overflow/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5100,6 +5158,8 @@ __metadata:
 "@fluentui/react-persona-stories@workspace:packages/react-components/react-persona/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-persona-stories@workspace:packages/react-components/react-persona/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5127,6 +5187,8 @@ __metadata:
 "@fluentui/react-popover-stories@workspace:packages/react-components/react-popover/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-popover-stories@workspace:packages/react-components/react-popover/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5185,6 +5247,8 @@ __metadata:
 "@fluentui/react-portal-stories@workspace:packages/react-components/react-portal/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-portal-stories@workspace:packages/react-components/react-portal/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5209,6 +5273,8 @@ __metadata:
 "@fluentui/react-positioning-stories@workspace:packages/react-components/react-positioning/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-positioning-stories@workspace:packages/react-components/react-positioning/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5236,6 +5302,8 @@ __metadata:
 "@fluentui/react-progress-stories@workspace:packages/react-components/react-progress/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-progress-stories@workspace:packages/react-components/react-progress/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5274,6 +5342,8 @@ __metadata:
 "@fluentui/react-provider-stories@workspace:packages/react-components/react-provider/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-provider-stories@workspace:packages/react-components/react-provider/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5329,6 +5399,8 @@ __metadata:
 "@fluentui/react-rating-stories@workspace:packages/react-components/react-rating/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-rating-stories@workspace:packages/react-components/react-rating/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5356,6 +5428,8 @@ __metadata:
 "@fluentui/react-search-stories@workspace:packages/react-components/react-search/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-search-stories@workspace:packages/react-components/react-search/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5383,6 +5457,8 @@ __metadata:
 "@fluentui/react-select-stories@workspace:packages/react-components/react-select/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-select-stories@workspace:packages/react-components/react-select/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5427,6 +5503,8 @@ __metadata:
 "@fluentui/react-skeleton-stories@workspace:packages/react-components/react-skeleton/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-skeleton-stories@workspace:packages/react-components/react-skeleton/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5453,6 +5531,8 @@ __metadata:
 "@fluentui/react-slider-stories@workspace:packages/react-components/react-slider/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-slider-stories@workspace:packages/react-components/react-slider/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5480,6 +5560,8 @@ __metadata:
 "@fluentui/react-spinbutton-stories@workspace:packages/react-components/react-spinbutton/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-spinbutton-stories@workspace:packages/react-components/react-spinbutton/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5508,6 +5590,8 @@ __metadata:
 "@fluentui/react-spinner-stories@workspace:packages/react-components/react-spinner/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-spinner-stories@workspace:packages/react-components/react-spinner/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5580,6 +5664,8 @@ __metadata:
 "@fluentui/react-swatch-picker-stories@workspace:packages/react-components/react-swatch-picker/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-swatch-picker-stories@workspace:packages/react-components/react-swatch-picker/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5671,6 +5757,8 @@ __metadata:
 "@fluentui/react-tabs-stories@workspace:packages/react-components/react-tabs/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tabs-stories@workspace:packages/react-components/react-tabs/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5716,6 +5804,8 @@ __metadata:
 "@fluentui/react-tag-picker-stories@workspace:packages/react-components/react-tag-picker/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tag-picker-stories@workspace:packages/react-components/react-tag-picker/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5751,6 +5841,8 @@ __metadata:
 "@fluentui/react-tags-stories@workspace:packages/react-components/react-tags/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tags-stories@workspace:packages/react-components/react-tags/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5820,6 +5912,8 @@ __metadata:
 "@fluentui/react-text-stories@workspace:packages/react-components/react-text/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-text-stories@workspace:packages/react-components/react-text/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5845,6 +5939,8 @@ __metadata:
 "@fluentui/react-textarea-stories@workspace:packages/react-components/react-textarea/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-textarea-stories@workspace:packages/react-components/react-textarea/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5880,6 +5976,8 @@ __metadata:
 "@fluentui/react-theme-stories@workspace:packages/react-components/react-theme/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-theme-stories@workspace:packages/react-components/react-theme/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5895,6 +5993,8 @@ __metadata:
 "@fluentui/react-timepicker-compat-stories@workspace:packages/react-components/react-timepicker-compat/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-timepicker-compat-stories@workspace:packages/react-components/react-timepicker-compat/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5923,6 +6023,8 @@ __metadata:
 "@fluentui/react-toast-stories@workspace:packages/react-components/react-toast/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-toast-stories@workspace:packages/react-components/react-toast/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5955,6 +6057,8 @@ __metadata:
 "@fluentui/react-toolbar-stories@workspace:packages/react-components/react-toolbar/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-toolbar-stories@workspace:packages/react-components/react-toolbar/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -5985,6 +6089,8 @@ __metadata:
 "@fluentui/react-tooltip-stories@workspace:packages/react-components/react-tooltip/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tooltip-stories@workspace:packages/react-components/react-tooltip/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -6014,6 +6120,8 @@ __metadata:
 "@fluentui/react-tree-stories@workspace:packages/react-components/react-tree/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tree-stories@workspace:packages/react-components/react-tree/stories"
+  dependencies:
+    "@fluentui/react-tailwind-theme": "workspace:*"
   languageName: unknown
   linkType: soft
 

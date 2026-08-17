@@ -1,7 +1,9 @@
+@reference '#theme';
+
 .bar {
-  display: grid;
+  @apply grid items-center;
+
   grid-template-columns: auto 1fr auto;
-  align-items: center;
   gap: 12px;
   width: 100%;
   padding: 8px 12px;
@@ -24,11 +26,10 @@
 }
 
 .icon {
+  @apply inline-flex items-center justify-center;
+
   width: 20px;
   height: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   color: var(--text-muted);
   flex-shrink: 0;
 }
@@ -49,12 +50,14 @@
 }
 
 .actions {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: 4px;
 }
 
 .actionBtn {
+  @apply cursor-pointer;
+
   height: 24px;
   padding: 0 10px;
   border-radius: var(--radius-pill);
@@ -63,7 +66,6 @@
   background: transparent;
   color: var(--text);
   border: none;
-  cursor: pointer;
   transition: background var(--duration-fast) var(--ease-standard);
 }
 
@@ -72,11 +74,10 @@
 }
 
 .iconBtn {
+  @apply inline-flex items-center justify-center;
+
   width: 24px;
   padding: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .iconBtn svg {
@@ -118,8 +119,8 @@
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 10px;
   width: 100%;
 }

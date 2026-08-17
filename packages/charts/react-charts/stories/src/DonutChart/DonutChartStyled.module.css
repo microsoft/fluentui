@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for DonutChartStyled.
  * The original called getColorFromToken(DataVizPalette.color11 / .disabled) at module scope
  * with the default isDarkTheme=false, which always resolves to the light-theme table values

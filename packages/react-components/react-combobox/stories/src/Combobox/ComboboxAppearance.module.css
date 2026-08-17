@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for ComboboxAppearance.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-template-rows: repeat(1fr);
   justify-items: start;
   gap: 20px;
@@ -10,7 +13,8 @@
 }
 
 .root > div {
-  display: grid;
+  @apply grid;
+
   grid-template-rows: repeat(1fr);
   justify-items: start;
   gap: 2px;
@@ -18,17 +22,17 @@
 }
 
 .filledLighter {
-  background-color: var(--color-neutral-background-inverted);
+  @apply bg-neutral-background-inverted;
 }
 
 .filledLighter > label {
-  color: var(--color-neutral-foreground-inverted-2);
+  @apply text-neutral-foreground-inverted-2;
 }
 
 .filledDarker {
-  background-color: var(--color-neutral-background-inverted);
+  @apply bg-neutral-background-inverted;
 }
 
 .filledDarker > label {
-  color: var(--color-neutral-foreground-inverted-2);
+  @apply text-neutral-foreground-inverted-2;
 }

@@ -1,8 +1,10 @@
+@reference '#theme';
+
 /* Story styles for SwatchPickerShape.
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 10px;
 }

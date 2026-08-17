@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for DialogBackdropAppearance.
  * Token references are the Fluent theme's CSS variables. */
 
 .field {
-  display: grid;
+  @apply grid;
+
   grid-row-gap: var(--spacing-vertical-s);
   margin-bottom: var(--spacing-vertical-l);
 }

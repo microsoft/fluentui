@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for ComboboxActiveOptionChange.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-template-rows: repeat(1fr);
   justify-items: start;
   gap: 2px;

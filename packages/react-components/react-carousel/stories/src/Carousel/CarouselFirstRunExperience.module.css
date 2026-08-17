@@ -1,10 +1,13 @@
+@reference '#theme';
+
 /* Story styles for CarouselFirstRunExperience.
  * Token references are the Fluent theme's CSS variables. */
 
 .surface {
+  @apply overflow-hidden;
+
   padding: 0;
   border: none;
-  overflow: hidden;
 }
 
 .carousel {
@@ -15,15 +18,15 @@
 }
 
 .footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @apply flex flex-row justify-between;
+
   width: auto;
   padding: var(--spacing-vertical-s) var(--spacing-vertical-xxl) var(--spacing-vertical-xxl) var(--spacing-vertical-xxl);
 }
 
 .header {
-  display: block;
+  @apply block;
+
   margin: var(--spacing-vertical-xxl) var(--spacing-vertical-xxl) var(--spacing-vertical-s) var(--spacing-vertical-xxl);
   font-family: var(--font-base);
   font-size: var(--text-base-500);
@@ -32,7 +35,8 @@
 }
 
 .text {
-  display: block;
+  @apply block;
+
   padding: var(--spacing-vertical-s) var(--spacing-vertical-xxl);
   font-family: var(--font-base);
   font-size: var(--text-base-300);

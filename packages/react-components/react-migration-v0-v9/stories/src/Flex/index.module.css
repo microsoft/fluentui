@@ -1,15 +1,17 @@
+@reference '#theme';
+
 /* Story styles for FlexShim.
  * Token references are the Fluent theme's CSS variables.
  * The `.v0Align` / `.v0Push` snapshot classes were removed with the `flexItem` mixin and
  * its demo stories (S-H, DECISIONS.md D19). */
 
 .root {
+  @apply grid items-center;
+
   width: 100%;
-  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   align-content: center;
-  align-items: center;
   justify-items: center;
   column-gap: 10px;
   row-gap: 10px;

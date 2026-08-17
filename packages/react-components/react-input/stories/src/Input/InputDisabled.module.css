@@ -1,33 +1,36 @@
+@reference '#theme';
+
 /* Story styles for InputDisabled.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   max-width: 400px;
 }
 
 .field {
-  display: grid;
+  @apply grid;
+
   grid-row-gap: var(--spacing-vertical-xxs);
   margin-top: var(--spacing-vertical-m-nudge);
   padding: var(--spacing-horizontal-m-nudge);
 }
 
 .filledLighter {
-  background-color: var(--color-neutral-background-inverted);
+  @apply bg-neutral-background-inverted;
 }
 
 .filledLighter > label {
-  color: var(--color-neutral-foreground-inverted-2);
+  @apply text-neutral-foreground-inverted-2;
 }
 
 .filledDarker {
-  background-color: var(--color-neutral-background-inverted);
+  @apply bg-neutral-background-inverted;
 }
 
 .filledDarker > label {
-  color: var(--color-neutral-foreground-inverted-2);
+  @apply text-neutral-foreground-inverted-2;
 }
 
 .toggle {

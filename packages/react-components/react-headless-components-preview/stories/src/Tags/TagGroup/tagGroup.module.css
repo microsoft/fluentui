@@ -1,6 +1,8 @@
+@reference '#theme';
+
 .group {
-  display: inline-flex;
-  flex-wrap: wrap;
+  @apply inline-flex flex-wrap;
+
   gap: 6px;
 }
 
@@ -9,11 +11,11 @@
 }
 
 .tag {
-  display: inline-grid;
+  @apply inline-grid cursor-default items-center select-none;
+
   grid-template-areas:
     'media primary dismiss'
     'media secondary dismiss';
-  align-items: center;
   align-content: center;
   justify-items: start;
   min-height: 28px;
@@ -27,8 +29,6 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0;
-  cursor: default;
-  user-select: none;
   transition:
     background-color var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard),
@@ -36,7 +36,8 @@
 }
 
 .tag[data-dismissible] {
-  cursor: pointer;
+  @apply cursor-pointer;
+
   border: none;
   padding: 0 0 0 10px;
   background: var(--surface-muted);
@@ -70,8 +71,9 @@
 }
 
 .tag[data-disabled] {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .tag[data-disabled][data-dismissible]:hover {
@@ -79,10 +81,9 @@
 }
 
 .interactionTag {
-  display: inline-flex;
-  align-items: stretch;
+  @apply inline-flex items-stretch overflow-hidden;
+
   border-radius: var(--radius-md);
-  overflow: hidden;
   border: 1px solid var(--border-strong);
   background: var(--surface);
   font-size: 12px;
@@ -102,18 +103,15 @@
 }
 
 .primary {
-  appearance: none;
+  @apply inline-grid cursor-pointer appearance-none items-center text-inherit;
+
   border: none;
   background: transparent;
-  color: inherit;
   font: inherit;
   padding: 4px 12px;
-  cursor: pointer;
-  display: inline-grid;
   grid-template-areas:
     'media primary'
     'media secondary';
-  align-items: center;
   align-content: center;
   justify-items: start;
   border-radius: calc(var(--radius-md) - 1px) 0 0 calc(var(--radius-md) - 1px);
@@ -128,20 +126,17 @@
 }
 
 .primary[data-disabled] {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
 }
 
 .secondary {
-  appearance: none;
+  @apply inline-flex cursor-pointer appearance-none items-center justify-center text-inherit;
+
   border: none;
   background: transparent;
-  color: inherit;
   padding: 0 10px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   border-left: 1px solid var(--border);
   border-radius: 0 calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0;
 }
@@ -174,11 +169,10 @@
 }
 
 .dismissIcon {
+  @apply inline-flex items-center justify-center;
+
   grid-area: dismiss;
   align-self: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 22px;
   height: 22px;
   margin-left: 6px;
@@ -191,10 +185,9 @@
 }
 
 .demo {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col items-start;
+
   gap: 16px;
-  align-items: flex-start;
 }
 
 .label {
@@ -203,20 +196,21 @@
 }
 
 .resetButton {
-  appearance: none;
+  @apply cursor-pointer appearance-none;
+
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
   padding: 4px 10px;
   border-radius: var(--radius-md);
   font-size: 12px;
-  cursor: pointer;
   width: fit-content;
 }
 
 .resetButton:disabled {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .selectedReadout {

@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for DrawerMotionCustom.
  * Token references are the Fluent theme's CSS variables.
  * Hand-converted (codemod bail): the makeStyles arg referenced module-scope consts
@@ -5,12 +7,10 @@
  * inline here. The consts remain in the story for the motion keyframes. */
 
 .root {
+  @apply relative flex overflow-hidden bg-neutral-background-1;
+
   border: 2px solid #ccc;
-  overflow: hidden;
-  position: relative;
-  display: flex;
   height: 480px;
-  background-color: var(--color-neutral-background-1);
 }
 
 .drawer {
@@ -19,16 +19,12 @@
 }
 
 .content {
+  @apply absolute box-border grid items-start justify-start bg-neutral-background-1;
+
   flex: 1;
   padding: 16px;
-  display: grid;
-  justify-content: flex-start;
-  align-items: flex-start;
   gap: var(--spacing-vertical-m);
   grid-auto-rows: max-content;
-  box-sizing: border-box;
-  position: absolute;
   inset: 0;
-  background-color: var(--color-neutral-background-1);
   border: 1px solid var(--color-neutral-background-1);
 }

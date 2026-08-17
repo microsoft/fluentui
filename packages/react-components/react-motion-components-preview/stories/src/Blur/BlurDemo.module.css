@@ -1,66 +1,62 @@
+@reference '#theme';
+
 /* Story styles for BlurDemo.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 40px;
   padding: 20px;
 }
 
 .demoSection {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 15px;
 }
 
 .imageGallery {
-  display: grid;
+  @apply grid rounded-medium bg-neutral-background-2;
+
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
-  background-color: var(--color-neutral-background-2);
-  border-radius: var(--radius-medium);
 }
 
 .imageCard {
-  position: relative;
+  @apply relative cursor-pointer overflow-hidden rounded-medium;
+
   aspect-ratio: 4/3;
-  border-radius: var(--radius-medium);
-  overflow: hidden;
-  cursor: pointer;
 }
 
 .imageBackground {
+  @apply relative;
+
   width: 100%;
   height: 100%;
-  position: relative;
 }
 
 .controls {
-  display: flex;
+  @apply flex flex-wrap;
+
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .overlay {
-  position: absolute;
+  @apply absolute flex items-center justify-center bg-background-overlay text-neutral-foreground-inverted;
+
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--color-background-overlay);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-neutral-foreground-inverted);
   font-size: var(--text-base-300);
   font-weight: var(--font-weight-semibold);
 }
 
 .overlayButton {
-  background-color: var(--color-subtle-background-inverted);
+  @apply rounded-medium bg-subtle-background-inverted;
+
   padding: 8px 16px;
-  border-radius: var(--radius-medium);
   border: 1px solid var(--color-neutral-stroke-alpha-2);
 }

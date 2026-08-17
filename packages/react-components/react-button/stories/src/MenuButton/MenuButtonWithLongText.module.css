@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for MenuButtonWithLongText.
  * Token references are the Fluent theme's CSS variables. */
 
@@ -6,8 +8,8 @@
 }
 
 .wrapper {
-  align-items: center;
+  @apply flex items-center;
+
   column-gap: 15px;
-  display: flex;
   min-width: min-content;
 }

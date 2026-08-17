@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for SkeletonAnimation.
  * Token references are the Fluent theme's CSS variables. */
 
 .invertedWrapper {
-  background-color: var(--color-neutral-background-1);
+  @apply bg-neutral-background-1;
+
   padding-top: 50px;
   padding-bottom: 50px;
 }

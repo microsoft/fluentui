@@ -1,8 +1,10 @@
+@reference '#theme';
+
 /* Story styles for AvatarGroupLayout.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
-  flex-direction: column;
+  @apply grid flex-col;
+
   row-gap: 10px;
 }

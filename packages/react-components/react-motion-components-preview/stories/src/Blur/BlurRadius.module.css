@@ -1,18 +1,19 @@
+@reference '#theme';
+
 /* Story styles for BlurRadius.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-vertical-xxxl);
   padding: var(--spacing-vertical-m-nudge);
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @apply flex flex-col items-center justify-center;
+
   padding: var(--spacing-vertical-xl);
   gap: var(--spacing-vertical-m);
 }
@@ -26,7 +27,7 @@
 }
 
 .controls {
-  display: flex;
-  justify-content: center;
+  @apply flex justify-center;
+
   margin-top: var(--spacing-vertical-xl);
 }

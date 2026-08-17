@@ -1,11 +1,11 @@
+@reference '#theme';
+
 /* Story styles for TabListSizeSmall.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  @apply flex flex-col items-start justify-start;
+
   padding: 50px 20px;
   row-gap: 20px;
 }

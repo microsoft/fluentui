@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for SingleActionSelectionControlled.
  * Token references are the Fluent theme's CSS variables. */
 
 .buttonControls {
-  display: flex;
+  @apply flex;
+
   column-gap: 8px;
   margin-bottom: 16px;
 }

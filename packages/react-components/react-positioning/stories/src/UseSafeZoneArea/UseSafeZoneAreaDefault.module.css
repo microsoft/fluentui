@@ -1,29 +1,27 @@
+@reference '#theme';
+
 /* Story styles for UseSafeZoneAreaDefault.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 10px;
 }
 
 .controls {
-  display: grid;
+  @apply grid items-center rounded-medium;
+
   grid-template-columns: 1fr auto;
-  align-items: center;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @apply flex flex-col items-center justify-center rounded-medium;
+
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
   min-height: 400px;
@@ -38,27 +36,21 @@
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center bg-palette-berry-background-2 text-palette-berry-foreground-2;
+
   font-size: var(--text-base-400);
   width: 300px;
   height: 300px;
-  color: var(--color-palette-berry-foreground-2);
   border: var(--stroke-width-thicker) solid var(--color-palette-berry-border-active);
-  background-color: var(--color-palette-berry-background-2);
 }
 
 .target {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center bg-palette-blue-background-2 text-palette-blue-foreground-2;
+
   font-size: var(--text-base-400);
   width: 300px;
   height: 50px;
-  color: var(--color-palette-blue-foreground-2);
   border: var(--stroke-width-thicker) solid var(--color-palette-blue-border-active);
-  background-color: var(--color-palette-blue-background-2);
 }
 
 .targetSmall {

@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for SplitButtonDisabled.
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
+  @apply flex;
+
   column-gap: 15px;
-  display: flex;
   min-width: min-content;
 }

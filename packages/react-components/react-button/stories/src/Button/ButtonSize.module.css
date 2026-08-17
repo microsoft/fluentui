@@ -1,15 +1,18 @@
+@reference '#theme';
+
 /* Story styles for ButtonSize.
  * Token references are the Fluent theme's CSS variables. */
 
 .innerWrapper {
+  @apply flex;
+
   align-items: start;
   column-gap: 15px;
-  display: flex;
 }
 
 .outerWrapper {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: 15px;
   min-width: min-content;
 }

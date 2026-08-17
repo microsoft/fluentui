@@ -9,5 +9,11 @@
     "@fluentui/react-motion-components-preview": "*",
     "@fluentui/react-shared-contexts": "*",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
+  },
+  "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*"
   }
 }

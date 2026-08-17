@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Headless Divider renders <root><wrapper>{children}</wrapper></root>.
    The line itself comes from ::before / ::after on the root. */
 
 .divider {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: 12px;
   width: 100%;
   color: var(--text-faint);
@@ -28,15 +30,14 @@
 }
 
 .label {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center whitespace-nowrap;
+
   gap: 6px;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-faint);
-  white-space: nowrap;
 }
 
 .label::before {
@@ -49,12 +50,11 @@
 
 /* Sentence-case content (icon + text) used inside dividers. */
 .content {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center whitespace-nowrap;
+
   gap: 6px;
   font-size: 12px;
   color: var(--text-muted);
-  white-space: nowrap;
 }
 
 .content svg {
@@ -64,9 +64,8 @@
 
 /* Vertical: stack lines top/bottom of label, swap orientation. */
 .dividerVertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-col items-center;
+
   gap: 12px;
   height: 100%;
   width: auto;
@@ -106,8 +105,8 @@
 }
 
 .row {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: 16px;
   height: 24px;
   font-size: 13px;
@@ -115,8 +114,8 @@
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 14px;
   width: 100%;
 }
@@ -127,7 +126,8 @@
 }
 
 .verticalGroup {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   height: 180px;
@@ -135,9 +135,8 @@
 }
 
 .verticalCol {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-col items-center;
+
   height: 100%;
   gap: 6px;
 }
@@ -151,19 +150,17 @@
 }
 
 .verticalLineWrap {
+  @apply flex items-center justify-center;
+
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
 }
 
 .labelled {
-  display: flex;
-  align-items: center;
+  @apply flex items-center text-center;
+
   gap: 12px;
   width: 100%;
-  text-align: center;
 }
 
 .labelledLine {

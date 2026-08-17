@@ -1,24 +1,25 @@
+@reference '#theme';
+
 /* Story styles for PresenceGroupDefault.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   gap: 10px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   border-top-right-radius: 0;
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
 .controls {
-  display: flex;
+  @apply flex;
+
   gap: 10px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-bottom: none;

@@ -1,13 +1,15 @@
+@reference '#theme';
+
 /* Story styles for index.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid items-center;
+
   grid-template-columns: auto auto auto;
   grid-template-rows: 1fr;
   width: fit-content;
   align-content: center;
-  align-items: center;
   justify-items: center;
   gap: 10px;
 }

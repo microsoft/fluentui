@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for MenuListControlledRadioItems.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  background-color: var(--color-neutral-background-1);
+  @apply bg-neutral-background-1;
+
   min-width: 128px;
   min-height: 48px;
   max-width: 300px;

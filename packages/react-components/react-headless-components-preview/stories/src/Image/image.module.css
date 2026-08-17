@@ -1,19 +1,20 @@
+@reference '#theme';
+
 .grid {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 24px;
 }
 
 .image {
-  box-sizing: border-box;
-  display: inline-block;
+  @apply box-border inline-block;
 }
 
 .fitContainer {
-  display: inline-block;
+  @apply inline-block overflow-hidden;
+
   width: 300px;
   height: 200px;
-  overflow: hidden;
 }
 
 .fitFill {
@@ -22,21 +23,25 @@
 }
 
 .fitCenter {
-  object-fit: none;
+  @apply object-none;
+
   object-position: center;
 }
 
 .fitContain {
-  object-fit: contain;
+  @apply object-contain;
+
   object-position: center;
 }
 
 .fitCover {
-  object-fit: cover;
+  @apply object-cover;
+
   object-position: center;
 }
 
 .fitNone {
-  object-fit: none;
+  @apply object-none;
+
   object-position: left top;
 }

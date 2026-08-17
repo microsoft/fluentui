@@ -1,32 +1,34 @@
+@reference '#theme';
+
 /* Story styles for ToastLifecycle.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
+  @apply flex;
+
   gap: 20px;
 }
 
 .button {
-  display: block;
+  @apply block;
 }
 
 .logContainer {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
 }
 
 .logLabel {
-  color: var(--color-neutral-foreground-on-brand);
-  background-color: var(--color-brand-background);
+  @apply bg-brand-background text-neutral-foreground-on-brand;
+
   width: fit-content;
   font-weight: var(--font-weight-bold);
   padding: 2px 12px;
 }
 
 .log {
-  overflow-y: auto;
+  @apply relative overflow-y-auto;
+
   box-shadow: var(--shadow-16);
-  position: relative;
   min-width: 200px;
   height: 200px;
   border: 2px solid var(--color-brand-background);

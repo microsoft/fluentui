@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for DatePickerControlled.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: 15px;
 }
 

@@ -1,5 +1,8 @@
+@reference '#theme';
+
 .card {
-  display: grid;
+  @apply grid;
+
   gap: var(--space-4);
   inline-size: fit-content;
   max-inline-size: 100%;
@@ -14,14 +17,13 @@
 /* ColorArea */
 
 .area {
-  position: relative;
-  display: grid;
+  @apply relative grid overflow-hidden;
+
   align-items: start;
   justify-items: start;
   aspect-ratio: 1;
   inline-size: 100%;
   margin-block-end: var(--space-1);
-  overflow: hidden;
   touch-action: none;
   background:
     linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent),
@@ -31,7 +33,8 @@
 }
 
 .areaThumb {
-  position: absolute;
+  @apply pointer-events-none absolute;
+
   inset-inline-start: var(--fui-AreaX--progress);
   inset-block-end: var(--fui-AreaY--progress);
   inline-size: var(--space-5);
@@ -41,11 +44,11 @@
   border-radius: var(--radius-pill);
   box-shadow: var(--shadow-2);
   transform: translate(-50%, 50%);
-  pointer-events: none;
 }
 
 .areaThumb::before {
-  position: absolute;
+  @apply absolute;
+
   inset: 0;
   content: '';
   border: var(--stroke-thick) solid var(--bg-elev);
@@ -53,15 +56,14 @@
 }
 
 .areaInput {
-  position: absolute;
+  @apply pointer-events-none absolute overflow-hidden;
+
   inset: 0;
   inline-size: 100%;
   block-size: 100%;
   padding: 0;
   margin: 0;
-  overflow: hidden;
   opacity: 0;
-  pointer-events: none;
 }
 
 .area:has(.areaInput:focus-visible),
@@ -78,13 +80,12 @@
 /* ColorSlider and AlphaSlider */
 
 .slider {
+  @apply relative grid items-center;
+
   --slider-thumb-size: var(--space-5);
   --slider-progress: var(--fui-Slider--progress);
   --slider-direction: to right;
 
-  position: relative;
-  display: grid;
-  align-items: center;
   justify-items: center;
   touch-action: none;
 }
@@ -111,6 +112,8 @@
 }
 
 .sliderInput {
+  @apply cursor-pointer;
+
   z-index: 1;
   grid-row: 1 / -1;
   grid-column: 1 / -1;
@@ -119,7 +122,6 @@
   padding: 0;
   margin: 0;
   opacity: 0;
-  cursor: pointer;
 }
 
 .slider[data-orientation='vertical'] .sliderInput {
@@ -128,23 +130,23 @@
 }
 
 .rail {
-  position: relative;
+  @apply pointer-events-none relative;
+
   grid-row: 2;
   grid-column: 2;
   inline-size: 100%;
   block-size: 100%;
-  pointer-events: none;
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-md);
 }
 
 .thumb {
-  position: absolute;
+  @apply pointer-events-none absolute;
+
   grid-row: 2;
   grid-column: 2;
   inline-size: var(--slider-thumb-size);
   block-size: var(--slider-thumb-size);
-  pointer-events: none;
   background: var(--fui-Slider__thumb--color);
   border: var(--stroke-thin) solid var(--text-faint);
   border-radius: var(--radius-pill);
@@ -152,7 +154,8 @@
 }
 
 .thumb::before {
-  position: absolute;
+  @apply absolute;
+
   inset: 0;
   content: '';
   border: var(--stroke-thick) solid var(--bg-elev);
@@ -209,7 +212,8 @@
 /* Color Preview */
 
 .colorPreview {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--space-2);
   align-items: end;
@@ -219,8 +223,8 @@
 }
 
 .output {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   height: 100%;
   padding: var(--space-2) var(--space-3);
   color: var(--text);

@@ -1,6 +1,8 @@
+@reference '#theme';
+
 .toolbar {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: 2px;
   padding: 4px;
   border-radius: var(--radius-pill);
@@ -10,21 +12,20 @@
 }
 
 .toolbar[data-vertical] {
-  flex-direction: column;
+  @apply flex-col;
+
   border-radius: var(--radius-lg);
 }
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   width: 32px;
   height: 32px;
   border-radius: var(--radius-pill);
   background: transparent;
   color: var(--text-muted);
   border: none;
-  cursor: pointer;
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard);
@@ -51,8 +52,9 @@
 }
 
 .btn[data-disabled] {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .btnActive {
@@ -74,13 +76,13 @@
 }
 
 .group {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: 2px;
 }
 
 .toolbar[data-vertical] .group {
-  flex-direction: column;
+  @apply flex-col;
 }
 
 .icon {

@@ -1,19 +1,19 @@
+@reference '#theme';
+
 /* Story styles for CarouselAutoplay.
  * Token references are the Fluent theme's CSS variables. */
 
 .bannerCard {
+  @apply relative rounded-large text-left;
+
   align-content: center;
-  border-radius: var(--radius-large);
   height: 450px;
-  text-align: left;
-  position: relative;
 }
 
 .cardContainer {
-  display: flex;
-  flex-direction: column;
+  @apply absolute flex flex-col;
+
   gap: 8px;
-  position: absolute;
   left: 10%;
   top: 25%;
   background: var(--color-neutral-background-1);
@@ -37,17 +37,17 @@
 }
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   box-shadow: var(--shadow-16);
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 10px;
@@ -60,12 +60,11 @@
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   gap: 6px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-bottom: none;
-  border-radius: var(--radius-medium);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   padding: 10px;

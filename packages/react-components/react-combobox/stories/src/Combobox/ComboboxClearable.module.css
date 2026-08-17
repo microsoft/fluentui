@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for ComboboxClearable.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-template-rows: auto auto;
   justify-items: start;
   gap: 2px;

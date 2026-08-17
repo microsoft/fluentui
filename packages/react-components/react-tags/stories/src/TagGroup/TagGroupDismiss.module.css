@@ -1,14 +1,16 @@
+@reference '#theme';
+
 /* Story styles for TagGroupDismiss.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: 10px;
 }
 
 .tagGroup {
-  flex-wrap: wrap;
+  @apply flex-wrap;
 }
 
 .resetButton {

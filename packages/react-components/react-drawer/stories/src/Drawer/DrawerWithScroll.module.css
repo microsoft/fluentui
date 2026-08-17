@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for DrawerWithScroll.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-wrap: wrap;
+  @apply flex flex-wrap;
+
   gap: var(--spacing-horizontal-xxl);
 }
 

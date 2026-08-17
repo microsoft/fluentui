@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for CarouselImageBox.
  * Token references are the Fluent theme's CSS variables. */
 
@@ -6,9 +8,9 @@
 }
 
 .card {
-  box-sizing: border-box;
+  @apply box-border overflow-hidden;
+
   width: 100%;
-  overflow: hidden;
   padding-inline-end: 52px;
   padding-inline-start: 52px;
 }

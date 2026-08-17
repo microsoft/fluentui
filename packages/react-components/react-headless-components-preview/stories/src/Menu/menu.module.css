@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /*
  * Story-level styles for the headless Menu. Headless components do not ship
  * their own CSS; consumers compose visuals using design tokens. The classes
@@ -6,8 +8,8 @@
  */
 
 .trigger {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex cursor-pointer items-center;
+
   height: 36px;
   padding: 0 var(--space-4);
   border: 0;
@@ -16,7 +18,6 @@
   color: var(--accent-contrast);
   font-size: 13.5px;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .trigger:hover,
@@ -32,6 +33,8 @@
 }
 
 .triggerSecondary {
+  @apply cursor-pointer;
+
   height: 28px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -40,7 +43,6 @@
   color: var(--text);
   font-size: 12.5px;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .triggerSecondary:hover {
@@ -72,16 +74,16 @@
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   outline: none;
 }
 
 /* Base item — sized to match the styled Menu's item height (~32px) so the headless
    demo reads as the same affordance, while still using headless tokens. */
 .item {
-  display: flex;
-  align-items: center;
+  @apply flex cursor-pointer items-center text-left;
+
   gap: var(--space-2);
   width: 100%;
   padding: 6px var(--space-3);
@@ -90,8 +92,6 @@
   color: var(--text);
   font-size: 13.5px;
   line-height: 1.4;
-  text-align: left;
-  cursor: pointer;
   outline: none;
 }
 
@@ -106,8 +106,9 @@
 }
 
 .item[aria-disabled='true'] {
+  @apply cursor-default;
+
   color: var(--text-faint);
-  cursor: default;
 }
 
 .item[aria-disabled='true']:hover {
@@ -116,20 +117,21 @@
 
 /* Item layouts */
 .itemSpread {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @apply flex items-center justify-between;
+
   gap: var(--space-4);
 }
 
 .itemLink {
-  display: block;
+  @apply block;
+
   text-decoration: none;
 }
 
 /* Decoration slots */
 .icon {
-  display: inline-grid;
+  @apply inline-grid;
+
   place-items: center;
   width: 16px;
   height: 16px;
@@ -144,7 +146,8 @@
 }
 
 .subText {
-  display: block;
+  @apply block;
+
   font-size: 11.5px;
   color: var(--text-faint);
   margin-top: 2px;
@@ -164,8 +167,8 @@
 
 /* Group + header */
 .group {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 2px;
 }
 
@@ -180,7 +183,8 @@
 
 /* Selectable indicators (checkmark / radio dot) */
 .checkmark {
-  display: inline-grid;
+  @apply inline-grid;
+
   place-items: center;
   width: 16px;
   height: 16px;
@@ -214,7 +218,8 @@
 
 /* Switch indicator — slider track + knob */
 .switchTrack {
-  position: relative;
+  @apply relative;
+
   flex-shrink: 0;
   width: 28px;
   height: 16px;
@@ -227,8 +232,9 @@
 }
 
 .switchTrack::after {
+  @apply absolute;
+
   content: '';
-  position: absolute;
   top: 1px;
   left: 1px;
   width: 12px;
@@ -252,23 +258,21 @@
 
 /* Composite layouts */
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  @apply flex flex-wrap items-center;
+
   gap: var(--space-2);
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start;
+
   gap: var(--space-3);
 }
 
 /* SplitGroup layout — two items side by side that share a row */
 .splitGroup {
-  display: flex;
-  align-items: stretch;
+  @apply flex items-stretch;
+
   gap: var(--stroke-thin);
 }
 
@@ -279,9 +283,10 @@
 }
 
 .splitSecondary {
+  @apply justify-center;
+
   flex: 0 0 auto;
   max-width: 50px;
-  justify-content: center;
   padding-inline: var(--space-2);
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

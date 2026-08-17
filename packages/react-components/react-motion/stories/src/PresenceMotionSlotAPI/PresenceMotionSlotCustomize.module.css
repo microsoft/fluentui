@@ -1,46 +1,43 @@
+@reference '#theme';
+
 /* Story styles for PresenceMotionSlotCustomize.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template: 'card card card' 'controls controls controls' / 1fr 1fr 1fr;
   gap: 20px 10px;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @apply flex flex-col items-center justify-center rounded-medium;
+
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
   min-height: 140px;
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
 .panel {
-  background-color: var(--color-brand-background);
-  color: var(--color-neutral-foreground-on-brand);
-  border-radius: var(--radius-medium);
+  @apply rounded-medium bg-brand-background text-center text-neutral-foreground-on-brand;
+
   padding: 16px;
   font-size: var(--text-base-200);
-  text-align: center;
 }
 
 .label {
-  color: var(--color-neutral-foreground-3);
+  @apply text-center text-neutral-foreground-3;
+
   font-size: var(--text-base-200);
-  text-align: center;
   margin-top: 8px;
 }

@@ -1,17 +1,20 @@
+@reference '#theme';
+
 /* Story styles for ColorAndSwatchPicker.
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
+  @apply flex flex-col;
+
   width: 300px;
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 
 .previewColor {
+  @apply rounded-medium;
+
   width: 50px;
   height: 50px;
-  border-radius: var(--radius-medium);
   border: 1px solid var(--color-neutral-stroke-1);
   margin: var(--spacing-vertical-m-nudge) 0;
 }
@@ -27,18 +30,19 @@
 }
 
 .input {
-  display: block;
+  @apply block;
+
   margin: var(--spacing-vertical-s-nudge) 0;
 }
 
 .row {
-  display: flex;
+  @apply flex justify-between;
+
   gap: 10px;
-  justify-content: space-between;
 }
 
 .sliders {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   width: 80%;
 }

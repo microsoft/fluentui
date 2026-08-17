@@ -1,20 +1,23 @@
+@reference '#theme';
+
 .display {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: 6px;
   color: var(--text);
   font-size: 13.5px;
 }
 
 .display [data-appearance] {
+  @apply relative inline-flex;
+
   width: 18px;
   height: 18px;
-  position: relative;
-  display: inline-flex;
 }
 
 .display [data-appearance] svg {
-  position: absolute;
+  @apply absolute;
+
   inset: 0;
   width: 100%;
   height: 100%;
@@ -27,17 +30,17 @@
 
 .display [data-appearance='filled'] .iconHalf,
 .display [data-appearance='filled'] .iconOutline {
-  visibility: hidden;
+  @apply invisible;
 }
 
 .display [data-appearance='filled-half'] .iconFilled,
 .display [data-appearance='filled-half'] .iconOutline {
-  visibility: hidden;
+  @apply invisible;
 }
 
 .display [data-appearance='outline'] .iconFilled,
 .display [data-appearance='outline'] .iconHalf {
-  visibility: hidden;
+  @apply invisible;
 }
 
 .display [data-appearance='outline'] .iconOutline {

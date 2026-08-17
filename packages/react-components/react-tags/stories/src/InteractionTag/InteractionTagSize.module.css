@@ -1,15 +1,17 @@
+@reference '#theme';
+
 /* Story styles for InteractionTagSize.
  * Token references are the Fluent theme's CSS variables. */
 
 .innerWrapper {
+  @apply flex flex-wrap;
+
   align-items: start;
   column-gap: 10px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .outerWrapper {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: 10px;
 }

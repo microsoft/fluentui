@@ -1,14 +1,18 @@
+@reference '#theme';
+
 /* Story styles for SkeletonItemShape.
  * Token references are the Fluent theme's CSS variables. */
 
 .invertedWrapper {
+  @apply flex;
+
   background: var(--color-neutral-background-1);
-  display: flex;
   padding: var(--spacing-horizontal-xl);
 }
 
 .row {
-  display: grid;
+  @apply grid;
+
   gap: var(--spacing-horizontal-l);
   grid-template-columns: 1fr 150px 1fr;
 }

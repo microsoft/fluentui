@@ -1,7 +1,8 @@
+@reference '#theme';
+
 /* Story styles for DrawerWithNavigation.
  * Token references are the Fluent theme's CSS variables. */
 
 .header {
-  display: flex;
-  justify-content: space-between;
+  @apply flex justify-between;
 }

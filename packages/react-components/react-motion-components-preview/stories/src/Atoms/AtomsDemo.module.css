@@ -1,71 +1,62 @@
+@reference '#theme';
+
 /* Story styles for AtomsDemo.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col overflow-hidden rounded-medium;
+
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
   margin-top: var(--spacing-vertical-xxl);
   margin-bottom: var(--spacing-vertical-xxl);
-  overflow: hidden;
 }
 
 .controls {
-  display: flex;
-  align-items: center;
+  @apply flex flex-wrap items-center bg-neutral-background-2;
+
   gap: var(--spacing-horizontal-l);
-  flex-wrap: wrap;
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
-  background-color: var(--color-neutral-background-2);
   border-bottom: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
 .body {
-  display: flex;
+  @apply flex;
 }
 
 @media (max-width: 600px) {
   .body {
-    flex-direction: column;
+    @apply flex-col;
   }
 }
 
 .demoArea {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center bg-neutral-background-1;
+
   min-height: 120px;
   flex: 0 0 200px;
-  background-color: var(--color-neutral-background-1);
   padding: var(--spacing-vertical-xl);
 }
 
 .demoBox {
+  @apply flex items-center justify-center rounded-medium bg-neutral-background-3 text-neutral-foreground-1;
+
   width: 100px;
   height: 80px;
-  background-color: var(--color-neutral-background-3);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-neutral-foreground-1);
   font-weight: var(--font-weight-semibold);
 }
 
 .codeArea {
+  @apply overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
+
   flex: 1 1 auto;
   min-width: 0;
   margin: 0;
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
-  background-color: var(--color-neutral-background-3);
   border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  overflow: auto;
   font-family: var(--font-monospace);
   font-size: var(--text-base-100);
   line-height: var(--leading-base-200);
-  color: var(--color-neutral-foreground-1);
 }
 
 @media (max-width: 600px) {

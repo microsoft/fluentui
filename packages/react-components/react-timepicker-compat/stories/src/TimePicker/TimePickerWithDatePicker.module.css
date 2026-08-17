@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for TimePickerWithDatePicker.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid;
+
   column-gap: 20px;
   grid-template-columns: repeat(2, 1fr);
   max-width: 600px;

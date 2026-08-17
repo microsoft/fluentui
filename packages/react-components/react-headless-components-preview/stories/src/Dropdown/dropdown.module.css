@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* label above the dropdown */
 .label {
   font-size: 13px;
@@ -8,11 +10,10 @@
 
 /* trigger button */
 .button {
+  @apply flex cursor-pointer items-center justify-between;
+
   min-width: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
@@ -20,7 +21,6 @@
   font-size: 13px;
   color: var(--text);
   box-shadow: var(--shadow-1);
-  cursor: pointer;
   transition:
     border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
@@ -48,8 +48,9 @@
 }
 
 .button[data-disabled] {
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .button[data-disabled]:hover {
@@ -59,13 +60,12 @@
 
 /* popup listbox */
 .listbox {
+  @apply flex flex-col overflow-auto;
+
   max-height: 256px;
   width: 100%;
   max-width: 320px;
-  overflow: auto;
   border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
   gap: var(--space-1);
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
@@ -77,14 +77,13 @@
 
 /* individual option row */
 .option {
-  display: flex;
-  align-items: center;
+  @apply flex cursor-default items-center;
+
   gap: var(--space-2);
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-3);
   scroll-margin-block: var(--space-1);
   color: var(--text);
-  cursor: default;
   transition: background var(--duration-fast) var(--ease-standard);
 }
 
@@ -98,10 +97,7 @@
 }
 
 .checkIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  visibility: hidden;
+  @apply invisible inline-flex items-center justify-center;
 }
 
 .option[data-selected] {
@@ -111,11 +107,12 @@
 }
 
 .option[data-selected] .checkIcon {
-  visibility: visible;
+  @apply visible;
 }
 
 .option[data-disabled] {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
 }
 
@@ -125,9 +122,8 @@
 
 /* expand chevron — sized to match clear button */
 .expandIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex items-center justify-center;
+
   width: 16px;
   height: 16px;
   flex-shrink: 0;
@@ -136,19 +132,16 @@
 
 /* inline clear / reset button */
 .clearButton {
-  position: absolute;
+  @apply absolute inline-flex cursor-pointer items-center justify-center;
+
   right: var(--space-2);
   top: 50%;
   transform: translateY(-50%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   border-radius: var(--radius-pill);
   padding: var(--space-1);
   border: none;
   background: transparent;
   color: var(--text-soft);
-  cursor: pointer;
   line-height: 1;
   transition:
     background var(--duration-fast) var(--ease-standard),
@@ -169,26 +162,28 @@
 
 .button[data-placeholder] + .clearButton,
 .button:not([data-placeholder]) .expandIcon {
-  display: none;
+  @apply hidden;
 }
 
 /* option group container */
 .optionGroup {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 1px;
 }
 
 .optionGroup:not(:last-child)::after {
+  @apply block;
+
   content: '';
-  display: block;
   border-bottom: var(--stroke-thin) solid var(--border);
   margin: var(--space-1) 0;
 }
 
 /* group header label */
 .groupLabel {
-  display: block;
+  @apply block;
+
   padding: var(--space-1) var(--space-3);
   font-size: 11px;
   font-weight: 600;
@@ -200,27 +195,25 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   width: 100%;
   max-width: 320px;
   gap: var(--space-2);
 }
 
 .demoWrapper {
-  display: flex;
-  position: relative;
+  @apply relative flex;
+
   max-width: 320px;
 }
 
 /* checkbox + label row used in ControllingOpenAndClose story */
 .checkboxLabel {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex cursor-pointer items-center select-none;
+
   gap: var(--space-2);
   font-size: 13px;
   color: var(--text-muted);
-  cursor: pointer;
   -webkit-user-select: none;
-  user-select: none;
 }

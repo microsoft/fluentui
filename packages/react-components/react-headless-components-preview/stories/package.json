@@ -4,5 +4,11 @@
   "private": true,
   "scripts": {
     "build-storybook": "yarn run -T storybook build -o ./dist/storybook"
+  },
+  "imports": {
+    "#theme": "@fluentui/react-tailwind-theme/css/index.css"
+  },
+  "devDependencies": {
+    "@fluentui/react-tailwind-theme": "workspace:*"
   }
 }

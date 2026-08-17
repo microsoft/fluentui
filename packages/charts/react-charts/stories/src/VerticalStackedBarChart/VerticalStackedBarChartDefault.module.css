@@ -1,6 +1,8 @@
+@reference '#theme';
+
 /* Story styles for VerticalStackedBarChartDefault.
  * Token references are the Fluent theme's CSS variables. */
 
 .svgTooltip {
-  fill: var(--color-neutral-background-2);
+  @apply fill-neutral-background-2;
 }

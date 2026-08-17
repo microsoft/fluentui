@@ -1,34 +1,32 @@
+@reference '#theme';
+
 .row {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+  @apply relative inline-flex cursor-pointer items-center select-none;
+
   gap: 10px;
-  cursor: pointer;
-  user-select: none;
   font-size: 13.5px;
   color: var(--text);
   padding: 4px 0;
 }
 
 .input {
-  position: absolute;
+  @apply absolute cursor-pointer;
+
   inset: 0;
   width: 18px;
   height: 18px;
   opacity: 0;
-  cursor: pointer;
   z-index: 1;
 }
 
 .indicator {
+  @apply inline-flex items-center justify-center;
+
   width: 18px;
   height: 18px;
   border-radius: var(--radius-xs);
   border: 1.5px solid var(--border-stronger);
   background: var(--bg-elev);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   color: transparent;
   flex-shrink: 0;
   transition:
@@ -64,8 +62,9 @@
 }
 
 .row[data-disabled] {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .iconCheck {
@@ -75,7 +74,7 @@
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 6px;
 }

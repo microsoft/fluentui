@@ -1,12 +1,14 @@
+@reference '#theme';
+
 /* Story styles for MultipleActionsSelection.
  * Token references are the Fluent theme's CSS variables. */
 
 .listItemRoot {
-  position: relative;
+  @apply relative items-center;
+
   flex-grow: 1;
   gap: 8px;
   border: 1px solid grey;
-  align-items: center;
   border-radius: 8px;
   grid-template:
     'preview preview preview' auto
@@ -14,19 +16,20 @@
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 16px;
   max-width: 300px;
 }
 
 .listItem {
-  display: grid;
+  @apply grid;
+
   padding: 8px;
 }
 
 .caption {
-  color: var(--color-neutral-foreground-3);
+  @apply text-neutral-foreground-3;
 }
 
 .image {
@@ -36,21 +39,23 @@
 }
 
 .title {
-  color: var(--color-neutral-foreground-1);
+  @apply block text-neutral-foreground-1;
+
   font-weight: 600;
-  display: block;
 }
 
 .checkmark {
-  position: absolute;
+  @apply absolute;
+
   left: 10px;
   top: 10px;
   z-index: 1;
 }
 
 .preview {
+  @apply overflow-hidden;
+
   grid-area: preview;
-  overflow: hidden;
 }
 
 .header {

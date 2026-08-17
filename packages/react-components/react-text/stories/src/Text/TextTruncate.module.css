@@ -1,8 +1,10 @@
+@reference '#theme';
+
 /* Story styles for TextTruncate.
  * Token references are the Fluent theme's CSS variables. */
 
 .text {
-  overflow: hidden;
+  @apply block overflow-hidden;
+
   width: 240px;
-  display: block;
 }

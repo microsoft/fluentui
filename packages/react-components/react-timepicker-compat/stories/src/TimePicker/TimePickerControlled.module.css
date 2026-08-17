@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for TimePickerControlled.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: 20px;
   max-width: 300px;
 }

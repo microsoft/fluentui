@@ -1,12 +1,15 @@
+@reference '#theme';
+
 .wrap {
-  position: relative;
-  display: inline-block;
+  @apply relative inline-block;
+
   width: 100%;
 }
 
 .select {
+  @apply cursor-pointer appearance-none;
+
   width: 100%;
-  appearance: none;
   -webkit-appearance: none;
   border: 1px solid var(--border);
   background: var(--bg-elev);
@@ -14,7 +17,6 @@
   border-radius: var(--radius-md);
   padding: 8px 36px 8px 12px;
   font-size: 13.5px;
-  cursor: pointer;
   transition:
     border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
@@ -32,19 +34,20 @@
 }
 
 .select:disabled {
+  @apply cursor-not-allowed;
+
   background: var(--surface-muted);
-  cursor: not-allowed;
   opacity: 0.6;
 }
 
 .icon {
-  position: absolute;
+  @apply pointer-events-none absolute;
+
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
   width: 14px;
   height: 14px;
-  pointer-events: none;
   color: var(--text-soft);
 }
 

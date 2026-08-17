@@ -1,6 +1,8 @@
+@reference '#theme';
+
 .card {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 12px;
   width: 100%;
   padding: 16px;
@@ -10,15 +12,15 @@
 }
 
 .row {
-  display: flex;
+  @apply flex items-center;
+
   gap: 12px;
-  align-items: center;
 }
 
 .demoFlex {
-  display: flex;
+  @apply flex flex-col;
+
   flex: 1;
-  flex-direction: column;
   gap: 8px;
 }
 

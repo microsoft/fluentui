@@ -1,19 +1,21 @@
+@reference '#theme';
+
 /* Story styles for Dismiss.
  * Token references are the Fluent theme's CSS variables. */
 
 .messageBarGroup {
+  @apply flex flex-col overflow-auto;
+
   padding: var(--spacing-horizontal-m-nudge);
-  display: flex;
-  flex-direction: column;
   margin-top: 10px;
   gap: 10px;
   height: 300px;
-  overflow: auto;
   border: 2px solid var(--color-brand-foreground-1);
 }
 
 .buttonGroup {
-  display: flex;
+  @apply flex;
+
   justify-content: end;
   gap: 5px;
 }

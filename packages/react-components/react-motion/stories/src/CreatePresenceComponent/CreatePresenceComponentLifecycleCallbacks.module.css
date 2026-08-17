@@ -1,30 +1,30 @@
+@reference '#theme';
+
 /* Story styles for CreatePresenceComponentLifecycleCallbacks.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template: 'card logs' 'controls .' / 1fr 1fr;
   gap: 20px 10px;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-col items-center rounded-medium;
+
   justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
@@ -42,7 +42,8 @@
 }
 
 .item {
-  background-color: var(--color-brand-background);
+  @apply bg-brand-background;
+
   border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
   width: 100px;
@@ -50,14 +51,14 @@
 }
 
 .logContainer {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   grid-area: logs;
 }
 
 .logLabel {
-  color: var(--color-neutral-foreground-on-brand);
-  background-color: var(--color-neutral-foreground-3);
+  @apply bg-neutral-foreground-3 text-neutral-foreground-on-brand;
+
   width: fit-content;
   align-self: end;
   font-weight: var(--font-weight-bold);
@@ -66,11 +67,10 @@
 }
 
 .log {
-  overflow-y: auto;
-  position: relative;
+  @apply relative overflow-y-auto rounded-medium;
+
   height: 200px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   border-top-right-radius: 0;
   padding: 10px;
 }

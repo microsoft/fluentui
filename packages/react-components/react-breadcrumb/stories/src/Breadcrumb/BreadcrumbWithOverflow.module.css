@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for BreadcrumbWithOverflow.
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  background-color: var(--color-neutral-background-2);
-  overflow: hidden;
+  @apply overflow-hidden bg-neutral-background-2;
+
   padding: 5px;
   z-index: 0;
   height: fit-content;
@@ -13,7 +15,7 @@
 }
 
 .tooltip {
-  white-space: nowrap;
-  overflow: hidden;
+  @apply overflow-hidden whitespace-nowrap;
+
   text-overflow: ellipsis;
 }

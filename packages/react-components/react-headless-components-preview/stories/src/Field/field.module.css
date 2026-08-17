@@ -1,6 +1,8 @@
+@reference '#theme';
+
 .field {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 6px;
   width: 100%;
 }
@@ -17,9 +19,9 @@
 }
 
 .message {
+  @apply inline-flex items-center;
+
   font-size: 12px;
-  display: inline-flex;
-  align-items: center;
   gap: 4px;
 }
 
@@ -42,9 +44,7 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  display: flex;
-
-  flex-direction: column;
+  @apply flex flex-col;
 
   gap: 20px;
 

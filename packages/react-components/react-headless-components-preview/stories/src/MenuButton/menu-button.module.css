@@ -1,7 +1,8 @@
+@reference '#theme';
+
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center select-none;
+
   gap: 6px;
   height: 32px;
   padding: 0 12px;
@@ -11,8 +12,6 @@
   color: var(--accent-contrast);
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
-  user-select: none;
   transition:
     background-color var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard),
@@ -20,7 +19,7 @@
 }
 
 .button span {
-  display: inline-flex;
+  @apply inline-flex;
 }
 
 .button:hover,
@@ -38,8 +37,9 @@
 
 .button[data-disabled],
 .button[data-disabled-focusable] {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .button[data-disabled]:hover,
@@ -63,14 +63,14 @@
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   outline: none;
 }
 
 .item {
-  display: flex;
-  align-items: center;
+  @apply flex cursor-pointer items-center text-left;
+
   gap: var(--space-2);
   width: 100%;
   padding: 6px var(--space-3);
@@ -79,8 +79,6 @@
   color: var(--text);
   font-size: 13.5px;
   line-height: 1.4;
-  text-align: left;
-  cursor: pointer;
   outline: none;
 }
 

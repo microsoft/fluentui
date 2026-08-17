@@ -1,11 +1,12 @@
+@reference '#theme';
+
 .crumb {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
 }
 
 .list {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: 2px;
   list-style: none;
   margin: 0;
@@ -14,11 +15,12 @@
 }
 
 .item {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
 }
 
 .btn {
+  @apply cursor-pointer;
+
   background: none;
   border: none;
   padding: 4px 8px;
@@ -26,7 +28,6 @@
   color: var(--text-muted);
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard);
@@ -45,9 +46,10 @@
 }
 
 .btn[data-current] {
+  @apply cursor-default;
+
   color: var(--text);
   font-weight: 600;
-  cursor: default;
 }
 
 .btn[data-current]:hover {
@@ -55,8 +57,8 @@
 }
 
 .divider {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   color: var(--text-faint);
   list-style: none;
 }

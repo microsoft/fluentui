@@ -1,29 +1,31 @@
+@reference '#theme';
+
 /* Story styles for Animation.
  * Token references are the Fluent theme's CSS variables. */
 
 .controlsContainer {
-  display: flex;
-  flex-direction: row;
+  @apply flex flex-row;
 }
 
 .messageBarGroup {
+  @apply flex flex-col overflow-auto;
+
   padding: var(--spacing-horizontal-m-nudge);
-  display: flex;
-  flex-direction: column;
   margin-top: 10px;
   gap: 10px;
   height: 300px;
-  overflow: auto;
   border: 2px solid var(--color-brand-foreground-1);
 }
 
 .field {
+  @apply items-center;
+
   flex-grow: 1;
-  align-items: center;
   grid-template-columns: max-content auto;
 }
 
 .buttonGroup {
-  display: flex;
+  @apply flex;
+
   gap: 5px;
 }

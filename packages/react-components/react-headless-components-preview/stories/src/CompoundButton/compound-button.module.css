@@ -1,5 +1,8 @@
+@reference '#theme';
+
 .demo {
-  display: grid;
+  @apply grid;
+
   gap: var(--space-6);
   padding: var(--space-6);
   border: var(--stroke-thin) solid var(--border);
@@ -10,7 +13,8 @@
 }
 
 .introduction {
-  display: grid;
+  @apply grid;
+
   gap: var(--space-2);
 }
 
@@ -48,16 +52,15 @@
 }
 
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
+  @apply flex flex-wrap items-stretch;
+
   gap: var(--space-3);
 }
 
 .action {
-  display: inline-grid;
+  @apply inline-grid cursor-pointer items-center text-start;
+
   grid-template-columns: auto 1fr;
-  align-items: center;
   gap: var(--space-3);
   min-block-size: var(--space-16);
   min-inline-size: calc(var(--space-16) + var(--space-16) + var(--space-16));
@@ -68,8 +71,6 @@
   background: var(--bg-elev);
   color: var(--text);
   box-shadow: var(--shadow-1);
-  cursor: pointer;
-  text-align: start;
   text-decoration: none;
 }
 
@@ -92,11 +93,12 @@
 .action[data-disabled],
 .action[data-disabled-focusable],
 .action[aria-disabled='true'] {
+  @apply cursor-not-allowed;
+
   border-color: var(--border);
   background: var(--surface-muted);
   color: var(--text-faint);
   box-shadow: none;
-  cursor: not-allowed;
 }
 
 .action[data-disabled-focusable]:focus-visible,
@@ -105,9 +107,8 @@
 }
 
 .actionIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex items-center justify-center;
+
   inline-size: var(--space-6);
   block-size: var(--space-6);
   color: var(--accent);
@@ -119,10 +120,10 @@
 }
 
 .actionContent {
-  display: grid;
+  @apply grid text-inherit;
+
   gap: var(--space-1);
   min-inline-size: 0;
-  color: inherit;
 }
 
 .actionSecondary {
@@ -137,7 +138,7 @@
 .action[data-disabled] .actionSecondary,
 .action[data-disabled-focusable] .actionSecondary,
 .action[aria-disabled='true'] .actionSecondary {
-  color: inherit;
+  @apply text-inherit;
 }
 
 .anchorAction {
@@ -145,9 +146,9 @@
 }
 
 .iconAction[data-icon-only] {
-  display: inline-flex;
+  @apply inline-flex justify-center;
+
   min-inline-size: var(--space-16);
   inline-size: var(--space-16);
   padding: 0;
-  justify-content: center;
 }

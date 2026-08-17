@@ -1,20 +1,20 @@
+@reference '#theme';
+
 .group {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 8px;
   width: 100%;
 }
 
 .row {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  @apply relative flex cursor-pointer items-start;
+
   gap: 12px;
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
-  cursor: pointer;
   transition:
     border-color var(--duration-fast) var(--ease-standard),
     background var(--duration-fast) var(--ease-standard);
@@ -25,25 +25,27 @@
 }
 
 .row[data-disabled] {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
 }
 
 .input {
-  position: absolute;
+  @apply absolute cursor-pointer;
+
   inset: 0;
   opacity: 0;
-  cursor: pointer;
   margin: 0;
 }
 
 .indicator {
+  @apply relative;
+
   width: 18px;
   height: 18px;
   border-radius: 50%;
   border: 1.5px solid var(--border-stronger);
   background: var(--bg-elev);
-  position: relative;
   flex-shrink: 0;
   margin-top: 1px;
   transition: border-color var(--duration-fast) var(--ease-standard);
@@ -67,8 +69,8 @@
 }
 
 .text {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 2px;
   flex: 1;
 }

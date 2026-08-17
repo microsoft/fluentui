@@ -1,15 +1,17 @@
+@reference '#theme';
+
 /* Story styles for InputContentBeforeAfter.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 20px;
   max-width: 400px;
 }
 
 .root > div {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 2px;
 }

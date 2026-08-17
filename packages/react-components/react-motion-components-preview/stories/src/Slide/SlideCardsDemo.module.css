@@ -1,22 +1,26 @@
+@reference '#theme';
+
 /* Story styles for SlideCardsDemo.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 20px;
   padding: 20px;
   max-width: 800px;
 }
 
 .controls {
-  display: flex;
+  @apply flex;
+
   gap: 10px;
   margin-bottom: 20px;
 }
 
 .cardGrid {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   align-items: start;
@@ -27,9 +31,8 @@
 }
 
 .cardPreview {
+  @apply flex items-center justify-center;
+
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: var(--text-base-600);
 }

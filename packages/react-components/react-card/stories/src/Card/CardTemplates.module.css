@@ -1,10 +1,12 @@
+@reference '#theme';
+
 /* Story styles for CardTemplates.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
+  @apply flex flex-wrap;
+
   gap: 16px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .card {
@@ -14,10 +16,9 @@
 }
 
 .flex {
+  @apply flex flex-row items-center;
+
   gap: 4px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 .labels {
@@ -29,17 +30,16 @@
 }
 
 .caption {
-  color: var(--color-neutral-foreground-3);
+  @apply text-neutral-foreground-3;
 }
 
 .taskCheckbox {
-  display: flex;
-  align-items: flex-start;
+  @apply flex items-start;
 }
 
 .grid {
+  @apply flex flex-col;
+
   gap: 16px;
-  display: flex;
-  flex-direction: column;
   width: 100%;
 }

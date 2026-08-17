@@ -1,21 +1,23 @@
+@reference '#theme';
+
 /* Story styles for DrawerResizable.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
+  @apply flex overflow-hidden;
+
   border: 2px solid #ccc;
-  overflow: hidden;
-  display: flex;
   height: 480px;
   background-color: #fff;
   user-select: auto;
 }
 
 .rootResizerActive {
-  user-select: none;
+  @apply select-none;
 }
 
 .container {
-  position: relative;
+  @apply relative;
 }
 
 .drawer {
@@ -25,21 +27,22 @@
 }
 
 .resizer {
+  @apply absolute rounded-none;
+
   width: 24px;
   height: 100%;
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   cursor: col-resize;
   border: none;
   min-width: unset;
-  border-radius: var(--radius-none);
 }
 
 .resizer:before {
+  @apply absolute;
+
   content: '';
-  position: absolute;
   border-right: 1px solid var(--color-neutral-background-5);
   width: 1px;
   height: 100%;
@@ -48,19 +51,22 @@
 }
 
 .resizer:hover {
+  @apply bg-transparent;
+
   border-right-width: 4px;
   cursor: col-resize;
-  background-color: transparent;
 }
 
 .resizer:hover:active {
-  background-color: transparent;
+  @apply bg-transparent;
+
   cursor: col-resize;
 }
 
 .resizerActive {
+  @apply border-r-neutral-background-5-pressed;
+
   border-right-width: 4px;
-  border-right-color: var(--color-neutral-background-5-pressed);
 }
 
 .content {
@@ -69,14 +75,13 @@
 }
 
 .dialogContent {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
 }
 
 .errorMessage {
-  color: var(--color-palette-red-foreground-1);
+  @apply text-palette-red-foreground-1;
 }
 
 .invalidInput {
-  border-color: var(--color-palette-red-border-2);
+  @apply border-palette-red-border-2;
 }

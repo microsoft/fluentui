@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for PersonaPresenceSize.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: repeat(2, max-content);
   gap: 10px;
 }

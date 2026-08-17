@@ -1,14 +1,14 @@
+@reference '#theme';
+
 /* Story styles for CustomMotion.
  * Token references are the Fluent theme's CSS variables.
  * The .nav width 260px was the module-scope const drawerWidth, resolved inline
  * (the const remains in the story for the custom DrawerMotion/ContentMotion keyframes). */
 
 .root {
-  overflow: hidden;
+  @apply relative flex overflow-hidden bg-neutral-background-1;
+
   height: 600px;
-  position: relative;
-  display: flex;
-  background-color: var(--color-neutral-background-1);
 }
 
 .nav {
@@ -17,23 +17,20 @@
 }
 
 .content {
+  @apply absolute box-border grid items-start justify-start;
+
   flex: 1;
   padding: 16px;
-  display: grid;
-  justify-content: flex-start;
-  align-items: flex-start;
   margin: 0;
   gap: var(--spacing-vertical-m);
   grid-auto-rows: max-content;
-  box-sizing: border-box;
-  position: absolute;
   inset: 0;
 }
 
 .field {
-  display: flex;
+  @apply flex flex-col;
+
   margin-top: 4px;
   margin-left: 8px;
-  flex-direction: column;
   grid-row-gap: var(--spacing-vertical-s);
 }

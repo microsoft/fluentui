@@ -1,5 +1,8 @@
+@reference '#theme';
+
 .label {
-  display: inline-flex;
+  @apply inline-flex;
+
   gap: var(--space-1);
   font-size: 13px;
   font-weight: 500;
@@ -7,8 +10,9 @@
 }
 
 .label[data-disabled] {
+  @apply cursor-not-allowed;
+
   color: var(--text-faint);
-  cursor: not-allowed;
   text-decoration-color: var(--text-faint);
 }
 
@@ -18,7 +22,7 @@
 
 /* Demo helpers (used by Storybook examples) */
 .demo {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 16px;
 }

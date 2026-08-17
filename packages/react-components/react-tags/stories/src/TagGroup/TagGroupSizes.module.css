@@ -1,12 +1,14 @@
+@reference '#theme';
+
 /* Story styles for TagGroupSizes.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: 10px;
 }
 
 .tagGroup {
-  flex-wrap: wrap;
+  @apply flex-wrap;
 }

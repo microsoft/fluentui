@@ -1,12 +1,12 @@
+@reference '#theme';
+
 .wrap {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+  @apply relative inline-flex items-center overflow-hidden;
+
   width: 160px;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  overflow: hidden;
   transition:
     border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
@@ -23,6 +23,8 @@
 }
 
 .input {
+  @apply text-center;
+
   flex: 1;
   border: none;
   outline: none;
@@ -30,25 +32,21 @@
   font-size: 13.5px;
   font-variant-numeric: tabular-nums;
   font-weight: 500;
-  text-align: center;
   padding: 8px 36px 8px 12px;
   min-width: 0;
   color: var(--text);
 }
 
 .btn {
-  position: absolute;
+  @apply absolute inline-flex cursor-pointer items-center justify-center;
+
   right: 0;
   width: 28px;
   height: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   border: none;
   border-left: 1px solid var(--border);
   background: var(--bg-elev);
   color: var(--text-muted);
-  cursor: pointer;
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard);

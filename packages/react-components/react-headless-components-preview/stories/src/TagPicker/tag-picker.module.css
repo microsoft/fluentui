@@ -1,11 +1,12 @@
+@reference '#theme';
+
 /* column wrapper for the whole example; positioning context for the popup */
 .demo {
-  display: flex;
-  flex-direction: column;
+  @apply relative flex flex-col;
+
   width: 100%;
   max-width: 400px;
   gap: var(--space-2);
-  position: relative;
 }
 
 .label {
@@ -17,9 +18,8 @@
 
 /* the interactive control: holds the selected tags and the input */
 .control {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  @apply flex cursor-text flex-wrap items-center;
+
   gap: var(--space-2);
   min-width: 0;
   min-height: 36px;
@@ -28,7 +28,6 @@
   background: var(--bg-elev);
   padding: var(--space-2) var(--space-3);
   box-shadow: var(--shadow-1);
-  cursor: text;
   transition:
     border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
@@ -40,23 +39,23 @@
 }
 
 .control[data-disabled] {
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
-  cursor: not-allowed;
 }
 
 /* group of selected tags — a focusgroup row */
 .group {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  @apply flex flex-wrap items-center;
+
   gap: var(--space-1);
   min-width: 0;
   max-width: 100%;
 }
 
 .tag {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: var(--space-1);
   min-width: 0;
   max-width: 100%;
@@ -75,13 +74,11 @@
 }
 
 .dismissIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   border: none;
   background: transparent;
   color: var(--text-soft);
-  cursor: pointer;
   padding: 0;
   line-height: 1;
 }
@@ -115,15 +112,13 @@
 /* popup listbox — rendered in the top layer via the native `popover` attribute and anchored to the
    control by `usePositioning`, so placement (position/inset) is owned by those, not this rule. */
 .listbox {
+  @apply box-border flex flex-col overflow-auto;
+
   /* reset the user-agent [popover] centering so usePositioning's anchor-positioned offsets take effect */
   margin: 0;
   max-height: 256px;
   width: max-content;
-  box-sizing: border-box;
-  overflow: auto;
   border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
   gap: var(--space-1);
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
@@ -135,19 +130,18 @@
 
 /* the native popover is shown/hidden by the Popover API; ensure the closed state is hidden */
 .listbox:not(:popover-open) {
-  display: none;
+  @apply hidden;
 }
 
 /* individual option row */
 .option {
-  display: flex;
-  align-items: center;
+  @apply flex cursor-default items-center;
+
   gap: var(--space-2);
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-3);
   scroll-margin-block: var(--space-1);
   color: var(--text);
-  cursor: default;
   transition: background var(--duration-fast) var(--ease-standard);
 }
 
@@ -167,7 +161,8 @@
 }
 
 .option[data-disabled] {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
 }
 
@@ -177,9 +172,8 @@
 
 /* circular "avatar" media used in tags and options */
 .media {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex items-center justify-center;
+
   flex-shrink: 0;
   width: 20px;
   height: 20px;
@@ -201,18 +195,18 @@
 
 /* option secondary text, pushed to the trailing edge */
 .secondaryContent {
+  @apply whitespace-nowrap;
+
   margin-left: auto;
   padding-left: var(--space-3);
   color: var(--text-faint);
   font-size: 11px;
-  white-space: nowrap;
 }
 
 /* default trigger chevron */
 .expandIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex items-center justify-center;
+
   width: 16px;
   height: 16px;
   flex-shrink: 0;
@@ -221,12 +215,13 @@
 
 /* secondary action button in the control aside */
 .secondaryAction {
+  @apply cursor-pointer;
+
   border: none;
   background: transparent;
   color: var(--accent);
   font-size: 12px;
   font-weight: 600;
-  cursor: pointer;
   border-radius: var(--radius-sm);
   padding: var(--space-1) var(--space-2);
 }
@@ -237,13 +232,14 @@
 
 /* option group label + container */
 .optionGroup {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 1px;
 }
 
 .optionGroupLabel {
-  display: block;
+  @apply block;
+
   padding: var(--space-1) var(--space-3);
   font-size: 11px;
   font-weight: 600;
@@ -254,10 +250,9 @@
 
 /* text truncation helpers (TruncatedText story) */
 .truncate {
-  display: block;
+  @apply block overflow-hidden whitespace-nowrap;
+
   min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 

@@ -1,8 +1,10 @@
+@reference '#theme';
+
 /* Story styles for FieldComponentExamples.
  * Token references are the Fluent theme's CSS variables. */
 
 .stack {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: var(--spacing-vertical-l);
 }

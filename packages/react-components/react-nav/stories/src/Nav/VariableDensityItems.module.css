@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for VariableDensityItems.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  overflow: hidden;
-  display: flex;
+  @apply flex overflow-hidden;
+
   height: 600px;
 }
 
@@ -12,17 +14,16 @@
 }
 
 .content {
+  @apply grid items-start justify-start;
+
   flex: 1;
   padding: 16px;
-  display: grid;
-  justify-content: flex-start;
-  align-items: flex-start;
 }
 
 .field {
-  display: flex;
+  @apply flex flex-col;
+
   margin-top: 4px;
-  flex-direction: column;
   grid-row-gap: var(--spacing-vertical-s);
   margin-inline-start: 8px;
 }

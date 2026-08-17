@@ -1,6 +1,8 @@
+@reference '#theme';
+
 /* Story styles for ListDefault.
  * Token references are the Fluent theme's CSS variables. */
 
 .text {
-  color: var(--color-neutral-foreground-1);
+  @apply text-neutral-foreground-1;
 }

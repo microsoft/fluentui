@@ -1,15 +1,16 @@
+@reference '#theme';
+
 /* Story styles for Cards.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
 }
 
 .controls {
+  @apply rounded-medium bg-neutral-background-1;
+
   align-self: end;
-  background-color: var(--color-neutral-background-1);
-  border-radius: var(--radius-medium);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   padding: 6px 10px;
@@ -19,11 +20,10 @@
 }
 
 .card {
-  background-color: var(--color-neutral-background-1);
-  border-radius: var(--radius-medium);
+  @apply grid rounded-medium bg-neutral-background-1;
+
   border-top-right-radius: 0;
   padding: 30px;
-  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 30px 50px;
   place-items: center;
@@ -31,7 +31,8 @@
 }
 
 .cardClassesContainer {
-  display: grid;
+  @apply grid;
+
   grid-template:
     'view point'
     'title .' auto / min-content var(--point-size);
@@ -41,10 +42,11 @@
 }
 
 .point {
+  @apply bg-brand-background;
+
   grid-area: point;
   width: var(--point-size);
   height: var(--point-size);
-  background-color: var(--color-brand-background);
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
   animation-name: point-kf;
   animation-duration: 2s;
@@ -59,8 +61,9 @@
 }
 
 .graph {
+  @apply grid;
+
   grid-area: view;
-  display: grid;
   grid-template:
     'graphP svg'
     '.      graphT' / min-content 1fr;
@@ -74,30 +77,34 @@
 }
 
 .graphP {
+  @apply text-neutral-stroke-1;
+
   grid-area: graphP;
-  color: var(--color-neutral-stroke-1);
   font-family: var(--font-monospace);
 }
 
 .graphT {
+  @apply text-neutral-stroke-1;
+
   grid-area: graphT;
   justify-self: end;
-  color: var(--color-neutral-stroke-1);
   font-family: var(--font-monospace);
 }
 
 .svg {
+  @apply overflow-visible;
+
   grid-area: svg;
   border-left: 1px solid var(--color-neutral-stroke-1);
   border-bottom: 1px solid var(--color-neutral-stroke-1);
-  overflow: visible;
   height: var(--container-size);
   width: var(--container-size);
 }
 
 .path {
+  @apply stroke-neutral-stroke-accessible;
+
   fill: none;
-  stroke: var(--color-neutral-stroke-accessible);
   stroke-width: 2;
 }
 
@@ -108,11 +115,12 @@
 }
 
 .duration {
+  @apply bg-neutral-foreground-3;
+
   place-self: center;
   width: 128px;
   height: 4px;
   margin: 64px auto;
-  background-color: var(--color-neutral-foreground-3);
   animation-name: duration-kf;
   animation-iteration-count: infinite;
 }
@@ -128,28 +136,25 @@
 }
 
 .title {
+  @apply flex flex-col rounded-medium bg-neutral-background-3;
+
   grid-area: title;
   justify-self: center;
   margin: 0 20px;
-  display: flex;
-  flex-direction: column;
   gap: 5px;
   font-family: var(--font-monospace);
   font-size: var(--text-base-400);
   padding: 5px 10px;
-  background-color: var(--color-neutral-background-3);
-  border-radius: var(--radius-medium);
 }
 
 .name {
-  text-align: center;
+  @apply text-center;
 }
 
 .value {
+  @apply text-center whitespace-nowrap italic;
+
   font-size: var(--text-base-200);
-  font-style: italic;
-  white-space: nowrap;
-  text-align: center;
 }
 
 @keyframes point-kf {

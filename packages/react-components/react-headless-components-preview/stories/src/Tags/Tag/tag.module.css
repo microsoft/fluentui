@@ -1,9 +1,11 @@
+@reference '#theme';
+
 .tag {
-  display: inline-grid;
+  @apply inline-grid cursor-default items-center select-none;
+
   grid-template-areas:
     'media primary dismiss'
     'media secondary dismiss';
-  align-items: center;
   align-content: center;
   justify-items: start;
   min-height: 28px;
@@ -17,8 +19,6 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0;
-  cursor: default;
-  user-select: none;
   transition:
     background-color var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard),
@@ -26,7 +26,8 @@
 }
 
 .tag[data-dismissible] {
-  cursor: pointer;
+  @apply cursor-pointer;
+
   border: none;
   padding: 0 0 0 10px;
   background: var(--surface-muted);
@@ -60,8 +61,9 @@
 }
 
 .tag[data-disabled] {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .tag[data-disabled][data-dismissible]:hover {
@@ -70,11 +72,10 @@
 
 .icon,
 .media {
+  @apply inline-flex items-center justify-center;
+
   grid-area: media;
   align-self: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
 }
 
@@ -113,11 +114,10 @@
 }
 
 .dismissIcon {
+  @apply inline-flex items-center justify-center;
+
   grid-area: dismiss;
   align-self: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 22px;
   height: 22px;
   margin-left: 6px;
@@ -134,32 +134,31 @@
 }
 
 .demo {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col items-start;
+
   gap: 16px;
-  align-items: flex-start;
 }
 
 .demoRow {
-  display: flex;
+  @apply flex flex-wrap items-center;
+
   gap: 8px;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 .resetButton {
-  appearance: none;
+  @apply cursor-pointer appearance-none;
+
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
   padding: 4px 10px;
   border-radius: var(--radius-md);
   font-size: 12px;
-  cursor: pointer;
   width: fit-content;
 }
 
 .resetButton:disabled {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }

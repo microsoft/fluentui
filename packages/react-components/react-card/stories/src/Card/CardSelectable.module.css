@@ -1,10 +1,12 @@
+@reference '#theme';
+
 /* Story styles for CardSelectable.
  * Token references are the Fluent theme's CSS variables. */
 
 .main {
+  @apply flex flex-wrap;
+
   gap: 16px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .card {
@@ -14,20 +16,21 @@
 }
 
 .caption {
-  color: var(--color-neutral-foreground-3);
+  @apply text-neutral-foreground-3;
 }
 
 .smallRadius {
-  border-radius: var(--radius-small);
+  @apply rounded-small;
 }
 
 .grayBackground {
-  background-color: var(--color-neutral-background-3);
+  @apply bg-neutral-background-3;
 }
 
 .logoBadge {
+  @apply rounded-small;
+
   padding: 5px;
-  border-radius: var(--radius-small);
   background-color: #fff;
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.14),

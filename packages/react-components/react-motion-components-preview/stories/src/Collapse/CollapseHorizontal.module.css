@@ -1,18 +1,19 @@
+@reference '#theme';
+
 /* Story styles for CollapseHorizontal.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 10px;
 }
 
 .sideContent {
+  @apply flex items-center justify-center;
+
   background: lightgrey;
   padding: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .card {
@@ -22,11 +23,10 @@
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: var(--spacing-vertical-m-nudge);
 }

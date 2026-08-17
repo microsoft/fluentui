@@ -1,18 +1,21 @@
+@reference '#theme';
+
 /* Story styles for ThemeTypography.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
+  @apply grid;
+
   row-gap: 24px;
   column-gap: 48px;
-  display: grid;
   grid-template-columns: auto auto auto 1fr;
   align-items: start;
 }
 
 .value {
-  white-space: nowrap;
+  @apply overflow-x-hidden whitespace-nowrap;
+
   text-overflow: ellipsis;
-  overflow-x: hidden;
   max-width: 10.5em;
 }
 

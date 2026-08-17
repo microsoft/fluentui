@@ -1,6 +1,8 @@
+@reference '#theme';
+
 .card {
-  display: flex;
-  flex-direction: column;
+  @apply relative flex flex-col overflow-hidden;
+
   gap: var(--space-3);
   width: 320px;
   padding: var(--space-3);
@@ -8,14 +10,12 @@
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  position: relative;
   /*
     Clip children to the card's rounded shape — without this, the preview's
     negative margins push its square top corners past the rounded card border
     on selected/disabled variants. Border + box-shadow render outside the
     overflow box and stay intact.
   */
-  overflow: hidden;
 }
 
 .card:focus-visible {
@@ -24,7 +24,8 @@
 }
 
 .cardSelectable {
-  cursor: pointer;
+  @apply cursor-pointer;
+
   transition:
     background-color 120ms ease,
     border-color 120ms ease,
@@ -41,8 +42,9 @@
 }
 
 .cardSelectable[aria-disabled='true'] {
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .cardSelectable[aria-disabled='true']:hover {
@@ -50,25 +52,23 @@
 }
 
 .preview {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center overflow-hidden;
+
   background: var(--surface-muted);
   border-radius: var(--radius-md);
-  overflow: hidden;
   margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) 0;
 }
 
 .previewImage {
-  display: block;
+  @apply block object-cover;
+
   width: 100%;
   height: 160px;
-  object-fit: cover;
 }
 
 .header {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: var(--space-3);
 }
 
@@ -77,19 +77,20 @@
 }
 
 .headerImage {
-  display: flex;
+  @apply flex overflow-hidden;
+
   height: 40px;
   width: 40px;
   border-radius: var(--radius-md);
-  overflow: hidden;
   background: var(--surface-muted);
   flex-shrink: 0;
 }
 
 .headerImg {
+  @apply object-cover;
+
   height: 100%;
   width: 100%;
-  object-fit: cover;
 }
 
 .headerTitle {
@@ -106,22 +107,20 @@
 }
 
 .headerAction {
+  @apply flex items-center;
+
   margin-left: auto;
-  display: flex;
-  align-items: center;
 }
 
 .iconButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   height: 32px;
   width: 32px;
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
   color: var(--text-muted);
-  cursor: pointer;
 }
 
 .iconButton:hover {
@@ -145,15 +144,15 @@
 }
 
 .footer {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: var(--space-2);
   padding-top: var(--space-1);
 }
 
 .footerButton {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex cursor-pointer items-center;
+
   gap: 6px;
   height: 32px;
   padding: 0 var(--space-3);
@@ -162,7 +161,6 @@
   background: var(--bg-elev);
   color: var(--text);
   font-size: 13px;
-  cursor: pointer;
 }
 
 .footerButton:hover {
@@ -179,12 +177,12 @@
 }
 
 .checkbox {
-  position: absolute;
+  @apply absolute cursor-pointer;
+
   top: var(--space-3);
   left: var(--space-3);
   height: 16px;
   width: 16px;
-  cursor: pointer;
   accent-color: var(--accent);
 }
 
@@ -194,12 +192,12 @@
 }
 
 .checkbox:disabled {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-3);
 }
 

@@ -1,18 +1,19 @@
+@reference '#theme';
+
 /* Story styles for CarouselDefault.
  * Token references are the Fluent theme's CSS variables. */
 
 .bannerCard {
+  @apply relative text-left;
+
   align-content: center;
   height: 450px;
-  text-align: left;
-  position: relative;
 }
 
 .cardContainer {
-  display: flex;
-  flex-direction: column;
+  @apply absolute flex flex-col;
+
   gap: 8px;
-  position: absolute;
   left: 10%;
   top: 25%;
   background: var(--color-neutral-background-1);

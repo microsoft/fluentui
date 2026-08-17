@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for ListActiveElement.
  * Token references are the Fluent theme's CSS variables. */
 
@@ -10,13 +12,13 @@
 }
 
 .item {
-  cursor: pointer;
+  @apply cursor-pointer justify-between;
+
   padding: 2px 6px;
-  justify-content: space-between;
 }
 
 .itemSelected {
-  background-color: var(--color-subtle-background-selected);
+  @apply bg-subtle-background-selected;
 }
 
 @media (forced-colors: active) {

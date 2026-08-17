@@ -1,8 +1,9 @@
+@reference '#theme';
+
 .interactionTag {
-  display: inline-flex;
-  align-items: stretch;
+  @apply inline-flex items-stretch overflow-hidden;
+
   border-radius: var(--radius-md);
-  overflow: hidden;
   border: 1px solid var(--border-strong);
   background: var(--surface);
   font-size: 12px;
@@ -22,18 +23,15 @@
 }
 
 .primary {
-  appearance: none;
+  @apply inline-grid cursor-pointer appearance-none items-center text-inherit;
+
   border: none;
   background: transparent;
-  color: inherit;
   font: inherit;
   padding: 4px 12px;
-  cursor: pointer;
-  display: inline-grid;
   grid-template-areas:
     'media primary'
     'media secondary';
-  align-items: center;
   align-content: center;
   justify-items: start;
   border-radius: calc(var(--radius-md) - 1px) 0 0 calc(var(--radius-md) - 1px);
@@ -48,20 +46,17 @@
 }
 
 .primary[data-disabled] {
-  cursor: not-allowed;
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
 }
 
 .secondary {
-  appearance: none;
+  @apply inline-flex cursor-pointer appearance-none items-center justify-center text-inherit;
+
   border: none;
   background: transparent;
-  color: inherit;
   padding: 0 10px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   border-left: 1px solid var(--border);
   border-radius: 0 calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0;
 }
@@ -94,11 +89,10 @@
 }
 
 .icon {
+  @apply inline-flex items-center justify-center;
+
   grid-area: media;
   align-self: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
   width: 14px;
   height: 14px;
@@ -106,11 +100,10 @@
 }
 
 .media {
+  @apply inline-flex items-center justify-center;
+
   grid-area: media;
   align-self: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
   margin-right: 6px;
   width: 24px;
@@ -144,37 +137,38 @@
 }
 
 .demo {
-  display: flex;
+  @apply flex flex-wrap items-center;
+
   gap: 8px;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 .demoCol {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col items-start;
+
   gap: 16px;
-  align-items: flex-start;
 }
 
 .resetButton {
-  appearance: none;
+  @apply cursor-pointer appearance-none;
+
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
   padding: 4px 10px;
   border-radius: var(--radius-md);
   font-size: 12px;
-  cursor: pointer;
   width: fit-content;
 }
 
 .resetButton:disabled {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .popover {
+  @apply box-border;
+
   width: max-content;
   max-width: min(320px, calc(100vw - 32px));
   padding: 12px 14px;
@@ -185,7 +179,6 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
-  box-sizing: border-box;
 }
 
 .popover ul {

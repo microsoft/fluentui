@@ -1,8 +1,10 @@
+@reference '#theme';
+
 /* Story styles for TagAppearance.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
+  @apply flex flex-wrap;
+
   column-gap: 10px;
-  display: flex;
-  flex-wrap: wrap;
 }

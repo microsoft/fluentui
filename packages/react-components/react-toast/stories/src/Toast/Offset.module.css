@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for Offset.
  * Token references are the Fluent theme's CSS variables. */
 
 .playground {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: 25% 75%;
   gap: 20px;
 }

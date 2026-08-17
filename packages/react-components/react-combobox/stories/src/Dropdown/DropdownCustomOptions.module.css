@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for DropdownCustomOptions.
  * Token references are the Fluent theme's CSS variables. */
 
 .option {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: 5px;
 }
 
@@ -16,7 +18,8 @@
 }
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-template-rows: repeat(1fr);
   justify-items: start;
   gap: 2px;

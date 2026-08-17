@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for TagGroupOverflow.
  * Token references are the Fluent theme's CSS variables. */
 
@@ -10,25 +12,26 @@
  * escaped because it is legal in a class TOKEN but terminates the name in selector
  * position. Original source nested this under the menu item's :hover. */
 .menuItem:hover .group\/fui-tag {
-  color: var(--color-neutral-foreground-2-hover);
+  @apply text-neutral-foreground-2-hover;
 }
 
 .tag {
-  background-color: transparent;
+  @apply bg-transparent;
+
   border-color: transparent;
 }
 
 .container {
-  overflow: hidden;
+  @apply box-border overflow-hidden;
+
   padding: 5px;
   z-index: 0;
   height: fit-content;
   min-width: 150px;
   resize: horizontal;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .tagGroup {
-  display: flex;
+  @apply flex;
 }

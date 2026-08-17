@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for PersonaTextAlignment.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
 }

@@ -1,20 +1,20 @@
+@reference '#theme';
+
 /* Story styles for ComposingAtomsDemo.
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
+  @apply overflow-hidden rounded-medium;
+
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
-  overflow: hidden;
   margin-top: var(--spacing-vertical-xxl);
   margin-bottom: var(--spacing-vertical-xxl);
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @apply flex items-center justify-between bg-neutral-background-2;
+
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
-  background-color: var(--color-neutral-background-2);
   border-bottom: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
@@ -25,56 +25,51 @@
 }
 
 .body {
-  display: flex;
+  @apply flex;
 }
 
 @media (max-width: 600px) {
   .body {
-    flex-direction: column;
+    @apply flex-col;
   }
 }
 
 .demoArea {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center bg-neutral-background-1;
+
   flex: 1 1 auto;
   min-height: 120px;
   padding: var(--spacing-vertical-xl);
-  background-color: var(--color-neutral-background-1);
 }
 
 .demoPane {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   flex: 0 0 220px;
 }
 
 .buttonRow {
-  display: flex;
-  justify-content: center;
+  @apply flex justify-center bg-neutral-background-1;
+
   padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl) var(--spacing-vertical-l);
-  background-color: var(--color-neutral-background-1);
 }
 
 .demoBox {
+  @apply rounded-medium bg-neutral-background-3 text-center text-neutral-foreground-1;
+
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xxl);
-  background-color: var(--color-neutral-background-3);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
-  color: var(--color-neutral-foreground-1);
   font-size: var(--text-base-300);
   font-weight: var(--font-weight-semibold);
-  text-align: center;
 }
 
 .codeArea {
+  @apply overflow-auto bg-neutral-background-1;
+
   flex: 1 1 auto;
   min-width: 0;
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
-  background-color: var(--color-neutral-background-1);
   border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  overflow: auto;
 }
 
 @media (max-width: 600px) {
@@ -85,11 +80,10 @@
 }
 
 .code {
+  @apply block whitespace-pre text-neutral-foreground-1;
+
   font-family: var(--font-monospace);
   font-size: var(--text-base-100);
   line-height: var(--leading-base-200);
-  color: var(--color-neutral-foreground-1);
-  white-space: pre;
   margin: 0;
-  display: block;
 }

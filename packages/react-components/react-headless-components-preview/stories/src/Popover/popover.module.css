@@ -1,6 +1,8 @@
+@reference '#theme';
+
 .trigger {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex cursor-pointer items-center;
+
   height: 36px;
   padding: 0 var(--space-4);
   border: 0;
@@ -9,7 +11,6 @@
   color: var(--accent-contrast);
   font-size: 13.5px;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .trigger:hover,
@@ -39,7 +40,8 @@
 }
 
 .contextTrigger {
-  display: inline-block;
+  @apply inline-block select-none;
+
   padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-md);
   background: var(--surface-muted);
@@ -47,7 +49,6 @@
   font-weight: 500;
   border: var(--stroke-thin) dashed var(--border-stronger);
   cursor: context-menu;
-  user-select: none;
 }
 
 .contextTrigger:focus-visible {
@@ -66,14 +67,14 @@
 }
 
 .surfaceColumn {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-2);
 }
 
 .surfaceColumnLg {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-3);
 }
 
@@ -108,8 +109,8 @@
 }
 
 .actionButton {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex cursor-pointer items-center;
+
   height: 28px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -118,7 +119,6 @@
   color: var(--text);
   font-size: 12.5px;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .actionButton:hover {
@@ -131,15 +131,14 @@
 }
 
 .menuItem {
-  display: block;
+  @apply block cursor-pointer text-left;
+
   width: 100%;
   padding: var(--space-1) var(--space-4);
   border: 0;
   background: transparent;
   color: var(--text);
   font-size: 13px;
-  text-align: left;
-  cursor: pointer;
 }
 
 .menuItem:hover {
@@ -156,8 +155,8 @@
 }
 
 .checkbox {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: var(--space-2);
   font-size: 13.5px;
   color: var(--text-muted);
@@ -172,29 +171,26 @@
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start;
+
   gap: var(--space-2);
 }
 
 .columnSpacious {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start;
+
   gap: var(--space-4);
 }
 
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  @apply flex flex-wrap items-center;
+
   gap: var(--space-2);
 }
 
 .cluster {
-  display: flex;
-  align-items: flex-start;
+  @apply flex items-start;
+
   gap: var(--space-10);
 }
 
@@ -213,14 +209,16 @@
   positioning hook.
 */
 .surfaceWithArrow {
-  overflow: visible;
+  @apply overflow-visible;
+
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
   border: 0;
   box-shadow: none;
 }
 
 .surfaceWithArrow [data-arrow] {
-  position: absolute;
+  @apply absolute;
+
   width: 12px;
   height: 12px;
   background: var(--bg-elev);

@@ -1,11 +1,12 @@
+@reference '#theme';
+
 /* Story styles for CardAppearance.
  * Token references are the Fluent theme's CSS variables. */
 
 .main {
+  @apply flex flex-col flex-wrap;
+
   gap: 36px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
 }
 
 .title {
@@ -23,7 +24,7 @@
 }
 
 .caption {
-  color: var(--color-neutral-foreground-3);
+  @apply text-neutral-foreground-3;
 }
 
 .logo {

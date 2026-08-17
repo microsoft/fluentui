@@ -1,13 +1,16 @@
+@reference '#theme';
+
 .spinner {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: 8px;
   font-size: 13px;
   color: var(--text-muted);
 }
 
 .tail {
-  display: inline-flex;
+  @apply inline-flex;
+
   width: 20px;
   height: 20px;
   color: var(--accent);
@@ -29,9 +32,8 @@
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-col items-center;
+
   gap: 8px;
 }
 
@@ -47,17 +49,13 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demoRow {
-  display: flex;
-
-  align-items: center;
+  @apply flex items-center;
 
   gap: 32px;
 }
 
 .demoCol {
-  display: flex;
-
-  flex-direction: column;
+  @apply flex flex-col;
 
   gap: 16px;
 }

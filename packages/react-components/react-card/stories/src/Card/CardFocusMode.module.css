@@ -1,10 +1,11 @@
+@reference '#theme';
+
 /* Story styles for CardFocusMode.
  * Token references are the Fluent theme's CSS variables. */
 
 .main {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  @apply flex flex-col flex-wrap;
+
   column-gap: 16px;
   row-gap: 36px;
 }

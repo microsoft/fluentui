@@ -1,10 +1,11 @@
+@reference '#theme';
+
 /* Story styles for CardAction.
  * Token references are the Fluent theme's CSS variables. */
 
 .main {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  @apply flex flex-col flex-wrap;
+
   column-gap: 16px;
   row-gap: 36px;
 }
@@ -24,11 +25,12 @@
 }
 
 .link {
-  color: var(--color-neutral-foreground-1);
+  @apply text-neutral-foreground-1;
 }
 
 .link:hover {
-  color: var(--color-neutral-foreground-1);
+  @apply text-neutral-foreground-1;
+
   text-decoration: none;
 }
 

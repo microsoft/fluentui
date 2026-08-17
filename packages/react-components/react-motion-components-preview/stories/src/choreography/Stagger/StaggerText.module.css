@@ -1,20 +1,19 @@
+@reference '#theme';
+
 /* Story styles for StaggerText.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start overflow-hidden;
+
   gap: var(--spacing-horizontal-xl);
-  overflow: hidden;
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
@@ -24,17 +23,16 @@
 }
 
 .items {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @apply relative flex items-center justify-center;
+
   width: 100%;
   height: 100%;
   padding: 50px;
 }
 
 .item {
-  position: absolute;
+  @apply absolute;
+
   font-weight: bold;
   font-size: 100px;
   color: transparent;

@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for index.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-row-gap: 10px;
@@ -16,14 +19,16 @@
 }
 
 .actions {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: auto auto;
   grid-column-gap: 10px;
   justify-items: start;
 }
 
 .result {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: auto auto;
   grid-template-rows: auto;
   column-gap: 10px;
@@ -31,7 +36,8 @@
 }
 
 .colorBlock {
-  display: inline-block;
+  @apply inline-block;
+
   width: 10px;
   height: 10px;
   border: 1px solid black;

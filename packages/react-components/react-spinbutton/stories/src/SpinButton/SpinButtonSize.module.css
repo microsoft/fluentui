@@ -1,15 +1,17 @@
+@reference '#theme';
+
 /* Story styles for SpinButtonSize.
  * Token references are the Fluent theme's CSS variables. */
 
 .base {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   max-width: 500px;
 }
 
 .base > div {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   margin-top: var(--spacing-horizontal-m-nudge);
 }
 

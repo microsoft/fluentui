@@ -1,25 +1,28 @@
+@reference '#theme';
+
 /* Story styles for BlurDefault.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template: 'controls .' 'card card' / 1fr 1fr;
   gap: var(--spacing-vertical-xl) var(--spacing-horizontal-m-nudge);
 }
 
 .card {
+  @apply overflow-hidden;
+
   grid-area: card;
   padding: var(--spacing-vertical-xl);
   max-height: 300px;
-  overflow: hidden;
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: var(--spacing-vertical-m-nudge);
 }

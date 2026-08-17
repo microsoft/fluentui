@@ -1,52 +1,60 @@
+@reference '#theme';
+
 .toaster {
+  @apply flex;
+
   border: none;
   background: transparent;
-  display: flex;
   padding: 0;
   gap: var(--space-2);
 }
 
 .toaster[data-toaster-position='top-start'] {
-  flex-direction: column;
+  @apply flex-col;
+
   margin: 16px auto auto 16px;
   --toast-enter-animation: slideInFromLeft;
 }
 
 .toaster[data-toaster-position='top'] {
-  flex-direction: column;
+  @apply flex-col items-center;
+
   margin: 16px auto auto;
-  align-items: center;
   --toast-enter-animation: slideInFromTop;
 }
 
 .toaster[data-toaster-position='top-end'] {
-  flex-direction: column;
+  @apply flex-col;
+
   margin: 16px 16px auto auto;
   --toast-enter-animation: slideInFromRight;
 }
 
 .toaster[data-toaster-position='bottom-start'] {
-  flex-direction: column-reverse;
+  @apply flex-col-reverse;
+
   margin: auto auto 16px 16px;
   --toast-enter-animation: slideInFromLeft;
 }
 
 .toaster[data-toaster-position='bottom'] {
-  flex-direction: column-reverse;
+  @apply flex-col-reverse items-center;
+
   margin: auto auto 16px;
-  align-items: center;
   --toast-enter-animation: slideInFromBottom;
 }
 
 .toaster[data-toaster-position='bottom-end'] {
-  flex-direction: column-reverse;
+  @apply flex-col-reverse;
+
   margin: auto 16px 16px auto;
   --toast-enter-animation: slideInFromRight;
 }
 
 /* Toast card wrapper — white elevated surface with subtle border and shadow */
 .toast {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: auto 1fr auto;
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -87,7 +95,8 @@
 
 /* Toast title — heading with optional action slot */
 .title {
-  display: flex;
+  @apply flex;
+
   grid-column-end: 3;
   font-size: 14px;
   font-weight: 600;
@@ -98,7 +107,8 @@
 
 /* Toast subtitle — smaller, muted text */
 .subtitle {
-  display: block;
+  @apply block;
+
   grid-column-start: 2;
   grid-column-end: 3;
   padding-top: 4px;
@@ -121,8 +131,8 @@
 }
 
 .body {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-2);
 }
 
@@ -133,20 +143,18 @@
 
 /* Toast footer — action button container */
 .footer {
+  @apply flex flex-wrap items-center;
+
   grid-column-start: 2;
   grid-column-end: 3;
-  display: flex;
-  align-items: center;
   gap: var(--space-3);
   padding-top: 16px;
-  flex-wrap: wrap;
 }
 
 /* Icon badge — circular badge for intent icon */
 .iconBadge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center;
+
   grid-column-end: 2;
   margin-inline-end: var(--space-2);
   width: 24px;
@@ -181,10 +189,9 @@
 
 /* Action button — link-style button for toast actions */
 .actionBtn {
-  display: flex;
-  align-items: flex-start;
+  @apply flex cursor-pointer appearance-none items-start;
+
   grid-column-end: -1;
-  appearance: none;
   background: transparent;
   border: 0;
   padding: var(--space-1) var(--space-2);
@@ -192,7 +199,6 @@
   font-size: 12px;
   font-weight: 600;
   color: var(--accent);
-  cursor: pointer;
   text-decoration: none;
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
@@ -216,14 +222,16 @@
 }
 
 .actionBtn:disabled {
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
-  cursor: not-allowed;
   text-decoration: none;
 }
 
 /* Dismiss button — text link for dismissing toasts */
 .dismissBtn {
-  appearance: none;
+  @apply cursor-pointer appearance-none;
+
   background: transparent;
   border: 0;
   padding: var(--space-1) 0;
@@ -231,7 +239,6 @@
   font-size: 12px;
   font-weight: 600;
   color: var(--accent);
-  cursor: pointer;
   text-decoration: none;
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
@@ -251,10 +258,8 @@
 
 /* Primary button — solid color action button */
 .btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  appearance: none;
+  @apply inline-flex cursor-pointer appearance-none items-center justify-center;
+
   background: var(--accent);
   color: var(--accent-contrast);
   border: 1px solid transparent;
@@ -263,7 +268,6 @@
   height: 32px;
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
 }
@@ -285,17 +289,16 @@
 }
 
 .btnPrimary:disabled {
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
-  cursor: not-allowed;
   transform: none;
 }
 
 /* Secondary button — light background */
 .btnSecondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  appearance: none;
+  @apply inline-flex cursor-pointer appearance-none items-center justify-center;
+
   background: var(--surface-muted);
   color: var(--text);
   border: 1px solid var(--border);
@@ -304,7 +307,6 @@
   height: 32px;
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
 }
@@ -327,17 +329,16 @@
 }
 
 .btnSecondary:disabled {
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
-  cursor: not-allowed;
   transform: none;
 }
 
 /* Trigger button — for triggering toasts */
 .triggerBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  appearance: none;
+  @apply inline-flex cursor-pointer appearance-none items-center justify-center;
+
   background: var(--bg-elev);
   color: var(--text);
   border: 1px solid var(--border);
@@ -346,7 +347,6 @@
   height: 32px;
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
 }
@@ -369,16 +369,16 @@
 }
 
 .triggerBtn:disabled {
+  @apply cursor-not-allowed;
+
   opacity: 0.5;
-  cursor: not-allowed;
   transform: none;
 }
 
 /* Controls wrapper — vertical flex for controls in demo */
 .controls {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start;
+
   gap: var(--space-3);
   width: 100%;
 }
@@ -401,23 +401,22 @@
 
 /* Radio/checkbox options container */
 .options {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-1);
 }
 
 /* Option label */
 .optionLabel {
-  display: flex;
-  align-items: center;
+  @apply flex cursor-pointer items-center;
+
   gap: var(--space-2);
-  cursor: pointer;
   font-size: 12px;
   color: var(--text);
 }
 
 .optionLabel input {
-  cursor: pointer;
+  @apply cursor-pointer;
 }
 
 /* Progress bar styling */
@@ -500,8 +499,8 @@
 
 /* Demo container — wrapper for demo content */
 .demo {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-4);
   width: 100%;
   max-width: 100%;
@@ -509,17 +508,15 @@
 
 /* Demo row — horizontal flex for related items */
 .demoRow {
-  display: flex;
-  flex-direction: row;
+  @apply flex flex-row flex-wrap items-center;
+
   gap: var(--space-3);
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 /* Timeout input wrapper — vertical flex for label and input */
 .timeoutInput {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-1);
   font-size: 12px;
   color: var(--text);
@@ -540,19 +537,20 @@
 
 /* Log container — flex wrapper for lifecycle status log */
 .logContainer {
-  display: flex;
+  @apply flex;
+
   gap: var(--space-4);
 }
 
 .logSection {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-2);
 }
 
 .logViewer {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-1);
   min-width: 200px;
 }
@@ -568,7 +566,8 @@
 }
 
 .logContent {
-  overflow-y: auto;
+  @apply overflow-y-auto;
+
   border: 2px solid var(--text);
   padding: var(--space-3);
   height: 200px;

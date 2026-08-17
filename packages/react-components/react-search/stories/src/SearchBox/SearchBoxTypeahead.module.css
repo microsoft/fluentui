@@ -1,55 +1,55 @@
+@reference '#theme';
+
 /* Story styles for SearchBoxTypeahead.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  position: relative;
+  @apply relative;
+
   max-width: 400px;
 }
 
 .listbox {
-  background-color: var(--color-neutral-background-1);
+  @apply absolute box-border list-none rounded-medium bg-neutral-background-1;
+
   border: 1px solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
-  box-sizing: border-box;
-  list-style-type: none;
   margin: 0;
   padding: var(--spacing-vertical-xs) 0;
-  position: absolute;
   width: 100%;
   z-index: 1000;
 }
 
 .listboxHidden {
-  display: none;
+  @apply hidden;
 }
 
 .option {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
+  @apply flex cursor-pointer items-center;
+
   gap: var(--spacing-horizontal-s);
   padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
 }
 
 .option:hover {
-  background-color: var(--color-neutral-background-1-hover);
+  @apply bg-neutral-background-1-hover;
 }
 
 .optionFocused {
-  background-color: var(--color-neutral-background-1-selected);
+  @apply bg-neutral-background-1-selected;
+
   outline: none;
 }
 
 .spinnerWrapper {
-  align-items: center;
-  display: flex;
+  @apply flex items-center text-neutral-foreground-3;
+
   gap: var(--spacing-horizontal-s);
   padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
-  color: var(--color-neutral-foreground-3);
 }
 
 .noResults {
-  color: var(--color-neutral-foreground-3);
+  @apply text-neutral-foreground-3;
+
   padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
 }

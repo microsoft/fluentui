@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Tooltip content bubble — inverse surface (dark on light, light on dark) */
 .content {
   background: var(--bg-elev);
@@ -17,13 +19,15 @@
   the shadow wraps the arrow too.
 */
 .contentWithArrow {
-  overflow: visible;
+  @apply overflow-visible;
+
   box-shadow: none;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.22));
 }
 
 .contentWithArrow [data-arrow] {
-  position: absolute;
+  @apply absolute;
+
   width: 8px;
   height: 8px;
   background: var(--bg-elev);
@@ -71,9 +75,8 @@
 
 /* Trigger button — primary filled style */
 .trigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   height: 32px;
   padding: 0 var(--space-3);
   border: 0;
@@ -82,7 +85,6 @@
   color: var(--accent-contrast);
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .trigger:hover {
@@ -113,8 +115,8 @@
 
 /* Layout helpers */
 .row {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: var(--space-4);
   padding: var(--space-8);
 }
@@ -128,7 +130,7 @@
 }
 
 .italic {
-  font-style: italic;
+  @apply italic;
 }
 
 .underline {

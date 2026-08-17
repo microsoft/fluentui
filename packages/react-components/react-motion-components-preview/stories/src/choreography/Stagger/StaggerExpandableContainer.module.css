@@ -1,25 +1,26 @@
+@reference '#theme';
+
 /* Story styles for StaggerExpandableContainer.
  * Token references are the Fluent theme's CSS variables.
  * The .item min-height 36px was the module-scope const ITEM_HEIGHT, resolved inline
  * (the const was only used by makeStyles and was removed with it). */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--spacing-vertical-l);
   max-width: 300px;
 }
 
 .controls {
-  display: flex;
+  @apply flex items-center;
+
   gap: var(--spacing-horizontal-m);
-  align-items: center;
 }
 
 .sliderContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @apply flex flex-row items-center;
+
   gap: var(--spacing-vertical-s);
 }
 
@@ -35,22 +36,20 @@
 }
 
 .listContainer {
+  @apply rounded-medium bg-neutral-background-1;
+
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
-  border-radius: var(--radius-medium);
-  background-color: var(--color-neutral-background-1);
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   padding: var(--spacing-vertical-l);
   gap: var(--spacing-vertical-l);
 }
 
 .item {
-  display: flex;
-  align-items: center;
-  border-radius: var(--radius-small);
+  @apply flex items-center justify-start rounded-small;
+
   min-height: 36px;
-  justify-content: flex-start;
 }

@@ -1,25 +1,28 @@
+@reference '#theme';
+
 /* Story styles for CustomComponent.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-wrap: nowrap;
+  @apply flex flex-nowrap overflow-hidden;
+
   min-width: 0;
-  overflow: hidden;
 }
 
 .resizableArea {
+  @apply relative;
+
   min-width: 200px;
   max-width: 800px;
   border: 2px solid var(--color-brand-background);
   padding: 20px 10px 10px 10px;
-  position: relative;
   resize: horizontal;
 }
 
 .resizableArea::after {
+  @apply absolute bg-brand-background text-neutral-foreground-on-brand;
+
   content: 'Resizable Area';
-  position: absolute;
   padding: 1px 4px 1px;
   top: -2px;
   left: -2px;
@@ -28,6 +31,4 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: 1px;
-  color: var(--color-neutral-foreground-on-brand);
-  background-color: var(--color-brand-background);
 }

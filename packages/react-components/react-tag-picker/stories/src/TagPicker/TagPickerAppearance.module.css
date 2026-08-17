@@ -1,10 +1,11 @@
+@reference '#theme';
+
 /* Story styles for TagPickerAppearance.
  * Token references are the Fluent theme's CSS variables. */
 
 .darkBG {
-  background-color: var(--color-neutral-background-inverted);
-  color: var(--color-neutral-foreground-inverted-2);
+  @apply rounded-medium bg-neutral-background-inverted text-neutral-foreground-inverted-2;
+
   padding: 20px;
   margin-block: 10px;
-  border-radius: var(--radius-medium);
 }

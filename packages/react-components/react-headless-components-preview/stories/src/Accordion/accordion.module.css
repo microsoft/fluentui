@@ -1,11 +1,12 @@
+@reference '#theme';
+
 .accordion {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col overflow-hidden;
+
   width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
-  overflow: hidden;
 }
 
 .item {
@@ -21,9 +22,9 @@
 }
 
 .headerBtn {
+  @apply flex cursor-pointer items-center text-left;
+
   width: 100%;
-  display: flex;
-  align-items: center;
   gap: 12px;
   padding: 14px 18px;
   background: transparent;
@@ -31,8 +32,6 @@
   font-size: 13.5px;
   font-weight: 500;
   color: var(--text);
-  cursor: pointer;
-  text-align: left;
   transition: background var(--duration-fast) var(--ease-standard);
 }
 
@@ -59,12 +58,13 @@
 }
 
 .panel {
+  @apply overflow-hidden;
+
   padding: 0 18px;
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.65;
   max-height: 0;
-  overflow: hidden;
   transition:
     max-height var(--duration-medium) var(--ease-emphasized),
     padding var(--duration-medium) var(--ease-emphasized);

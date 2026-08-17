@@ -1,10 +1,12 @@
+@reference '#theme';
+
 /* Story styles for PopoverWithArrowAutosize.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  box-sizing: border-box;
+  @apply box-border overflow-y-auto;
+
   padding: 16px;
-  overflow-y: auto;
   height: 100%;
 }
 

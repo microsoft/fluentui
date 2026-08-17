@@ -1,38 +1,35 @@
+@reference '#theme';
+
 /* Story styles for MotionSlotCustomize.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template: 'card card card' / 1fr 1fr 1fr;
   gap: 20px 10px;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @apply flex flex-col items-center justify-center rounded-medium;
+
   gap: 10px;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 20px;
 }
 
 .label {
-  color: var(--color-neutral-foreground-3);
+  @apply text-center text-neutral-foreground-3;
+
   font-size: var(--text-base-200);
-  text-align: center;
 }
 
 .indicator {
-  background-color: var(--color-brand-background);
+  @apply flex items-center justify-center bg-brand-background text-neutral-foreground-on-brand;
+
   border-radius: 50%;
   width: 80px;
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-neutral-foreground-on-brand);
   font-size: 24px;
 }

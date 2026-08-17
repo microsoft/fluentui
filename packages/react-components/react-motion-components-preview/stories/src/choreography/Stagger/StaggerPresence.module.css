@@ -1,19 +1,19 @@
+@reference '#theme';
+
 /* Story styles for StaggerPresence.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start;
+
   gap: var(--spacing-horizontal-xl);
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
@@ -23,17 +23,12 @@
 }
 
 .items {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  @apply flex flex-row flex-wrap;
 }
 
 .item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-neutral-background-static);
-  color: var(--color-neutral-foreground-inverted);
+  @apply flex items-center justify-center bg-neutral-background-static text-neutral-foreground-inverted;
+
   width: 40px;
   height: 100px;
   margin: var(--spacing-horizontal-xxs);

@@ -1,73 +1,70 @@
+@reference '#theme';
+
 /* Story styles for StaggerBouncingDots.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--spacing-vertical-xl);
   padding: var(--spacing-horizontal-l);
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium bg-neutral-background-1;
+
   gap: var(--spacing-vertical-m);
   padding: var(--spacing-horizontal-m);
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
-  background-color: var(--color-neutral-background-1);
   box-shadow: var(--shadow-8);
 }
 
 .controlsRow {
-  display: flex;
+  @apply flex flex-wrap items-center justify-center;
+
   gap: var(--spacing-horizontal-l);
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 .controlGroup {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--spacing-vertical-s);
   min-width: 200px;
 }
 
 .spinnerSection {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium bg-neutral-background-1;
+
   gap: var(--spacing-vertical-m);
   padding: var(--spacing-horizontal-l);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
-  border-radius: var(--radius-medium);
-  background-color: var(--color-neutral-background-1);
 }
 
 .spinnerTitle {
+  @apply text-neutral-foreground-1;
+
   font-size: var(--text-base-300);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-neutral-foreground-1);
   margin: 0;
 }
 
 .spinnerContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @apply flex items-center justify-center;
+
   min-height: 120px;
   padding: var(--spacing-horizontal-l);
 }
 
 .bouncingDotsSpinner {
-  display: flex;
+  @apply flex items-center;
+
   gap: var(--spacing-horizontal-s);
-  align-items: center;
 }
 
 .bouncingDot {
+  @apply bg-brand-background;
+
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: var(--color-brand-background);
 }

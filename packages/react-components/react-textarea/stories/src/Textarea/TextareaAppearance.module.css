@@ -1,18 +1,20 @@
+@reference '#theme';
+
 /* Story styles for TextareaAppearance.
  * Token references are the Fluent theme's CSS variables. */
 
 .base {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: var(--spacing-vertical-m-nudge);
 }
 
 .inverted {
-  background-color: var(--color-neutral-background-inverted);
+  @apply bg-neutral-background-inverted;
 }
 
 .invertedLabel {
-  color: var(--color-neutral-foreground-inverted-2);
+  @apply text-neutral-foreground-inverted-2;
 }
 
 .fieldWrapper {

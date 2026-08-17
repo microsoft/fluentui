@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for InputUncontrolled.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 2px;
   max-width: 400px;
 }

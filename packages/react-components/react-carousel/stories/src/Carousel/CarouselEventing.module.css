@@ -1,14 +1,18 @@
+@reference '#theme';
+
 /* Story styles for CarouselEventing.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
+  @apply flex;
+
   gap: 20px;
 }
 
 .carousel {
+  @apply rounded-medium;
+
   border: 2px solid var(--color-neutral-stroke-1);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 20px 0;
   margin-top: 24px;
@@ -19,9 +23,9 @@
 }
 
 .logLabel {
+  @apply bg-brand-background text-neutral-foreground-on-brand;
+
   align-self: end;
-  color: var(--color-neutral-foreground-on-brand);
-  background-color: var(--color-brand-background);
   width: fit-content;
   font-weight: var(--font-weight-bold);
   padding: 2px 12px;
@@ -29,7 +33,8 @@
 }
 
 .log {
-  overflow-y: auto;
+  @apply overflow-y-auto;
+
   box-shadow: var(--shadow-16);
   min-width: 240px;
   flex: 1;
@@ -40,34 +45,33 @@
 }
 
 .logContainer {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   height: 100%;
   filter: drop-shadow(0 0 4px var(--color-neutral-stroke-1));
 }
 
 .wireframe {
-  background-color: var(--color-neutral-background-3);
+  @apply relative flex flex-col bg-neutral-background-3;
+
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  display: flex;
-  flex-direction: column;
   gap: 12px;
   place-content: center;
   padding: 40px;
   height: 100px;
-  position: relative;
 }
 
 .wireframeEven {
-  background-color: var(--color-brand-background-2);
+  @apply bg-brand-background-2;
+
   border: var(--stroke-width-thin) solid var(--color-brand-stroke-1);
 }
 
 .wireframeInfo {
-  position: absolute;
+  @apply absolute bg-palette-red-background-2;
+
   right: 12px;
   top: 12px;
-  background-color: var(--color-palette-red-background-2);
   border: var(--stroke-width-thin) dotted var(--color-palette-red-border-2);
   font-size: var(--text-base-200);
   padding: 4px 8px;

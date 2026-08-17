@@ -1,6 +1,8 @@
+@reference '#theme';
+
 .badge {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: 4px;
   height: 22px;
   padding: 0 8px;
@@ -50,11 +52,12 @@
 }
 
 .dot {
+  @apply inline-block;
+
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: currentColor;
-  display: inline-block;
 }
 
 .icon {
@@ -76,11 +79,7 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  display: flex;
-
-  align-items: center;
+  @apply flex flex-wrap items-center;
 
   gap: 12px;
-
-  flex-wrap: wrap;
 }

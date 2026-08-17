@@ -1,8 +1,10 @@
+@reference '#theme';
+
 /* Story styles for TextFont.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
+  @apply flex flex-col;
+
   gap: 16px;
-  display: flex;
-  flex-direction: column;
 }

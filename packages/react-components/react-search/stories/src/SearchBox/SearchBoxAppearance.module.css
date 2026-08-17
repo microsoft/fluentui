@@ -1,25 +1,26 @@
+@reference '#theme';
+
 /* Story styles for SearchBoxAppearance.
  * Token references are the Fluent theme's CSS variables. */
 
 .base {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
 }
 
 .filledLighter {
-  background-color: var(--color-neutral-background-inverted);
+  @apply bg-neutral-background-inverted;
 }
 
 .filledLighterLabel {
-  color: var(--color-neutral-foreground-inverted-2);
+  @apply text-neutral-foreground-inverted-2;
 }
 
 .filledDarker {
-  background-color: var(--color-neutral-background-inverted);
+  @apply bg-neutral-background-inverted;
 }
 
 .filledDarkerLabel {
-  color: var(--color-neutral-foreground-inverted-2);
+  @apply text-neutral-foreground-inverted-2;
 }
 
 .fieldWrapper {

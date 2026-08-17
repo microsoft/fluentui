@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for PopoverWithoutTrigger.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: flex;
+  @apply flex;
+
   gap: 10px;
 }
 

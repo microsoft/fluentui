@@ -1,8 +1,10 @@
+@reference '#theme';
+
 /* Story styles for BreadcrumbWithTooltip.
  * Token references are the Fluent theme's CSS variables. */
 
 .tooltip {
-  white-space: nowrap;
-  overflow: hidden;
+  @apply overflow-hidden whitespace-nowrap;
+
   text-overflow: ellipsis;
 }

@@ -1,8 +1,9 @@
+@reference '#theme';
+
 /* button — pill-shaped, monochrome */
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center select-none;
+
   gap: 6px;
   height: 32px;
   padding: 0 14px;
@@ -13,8 +14,6 @@
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0;
-  cursor: pointer;
-  user-select: none;
   text-decoration: none;
   transition:
     background-color var(--duration-fast) var(--ease-standard),
@@ -40,8 +39,9 @@
 
 .button[data-disabled],
 .button[data-disabled-focusable] {
+  @apply cursor-not-allowed;
+
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .button[data-disabled]:hover,
@@ -135,19 +135,13 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  display: flex;
-
-  flex-direction: column;
+  @apply flex flex-col;
 
   gap: 16px;
 }
 
 .demoRow {
-  display: flex;
+  @apply flex flex-wrap items-center;
 
   gap: 12px;
-
-  align-items: center;
-
-  flex-wrap: wrap;
 }

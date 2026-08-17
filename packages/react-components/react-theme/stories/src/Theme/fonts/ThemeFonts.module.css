@@ -1,10 +1,13 @@
+@reference '#theme';
+
 /* Story styles for ThemeFonts.
  * Token references are the Fluent theme's CSS variables.
  * font-family is teamsLightTheme.fontFamilyBase resolved to its literal value — the story
  * deliberately renders a Teams-light-theme snapshot rather than the active theme. */
 
 .propGrid {
-  display: grid;
+  @apply grid items-center;
+
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr;
   row-gap: 10px;
@@ -18,5 +21,4 @@
     'Helvetica Neue',
     sans-serif;
   align-content: center;
-  align-items: center;
 }

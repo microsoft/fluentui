@@ -1,19 +1,21 @@
+@reference '#theme';
+
 /* Story styles for TreeInfiniteScrolling.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
+  @apply overflow-auto;
+
   height: 400px;
   padding-bottom: 10px;
-  overflow: auto;
 }
 
 .screenReadersOnly {
-  position: absolute;
+  @apply absolute overflow-hidden whitespace-nowrap;
+
   width: 1px;
   height: 1px;
   /* '-1' is not a length; browsers drop this declaration — preserved verbatim from the original story */
   margin: -1;
-  overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
 }

@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for SpinButtonUncontrolled.
  * Token references are the Fluent theme's CSS variables. */
 
 .base {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   max-width: 500px;
 }
 

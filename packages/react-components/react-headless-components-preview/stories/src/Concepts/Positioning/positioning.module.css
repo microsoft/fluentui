@@ -1,24 +1,28 @@
+@reference '#theme';
+
 .outer {
+  @apply overflow-auto;
+
   width: 100%;
-  overflow: auto;
 }
 
 .page {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-4);
   padding: var(--space-4);
 }
 
 .pageRoomy {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-6);
   padding: var(--space-4);
 }
 
 .grid {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: 1fr;
   gap: var(--space-4);
 }
@@ -30,25 +34,23 @@
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start;
+
   gap: var(--space-6);
   padding: var(--space-16);
   width: max-content;
 }
 
 .layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-col items-center;
+
   gap: var(--space-6);
   padding: var(--space-6);
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-2);
 }
 
@@ -69,14 +71,16 @@
 
 /* ===== Form controls ===== */
 .controls {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: var(--space-3);
   font-size: 13px;
   color: var(--text);
 }
 
 .select {
+  @apply cursor-pointer;
+
   height: 32px;
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -84,7 +88,6 @@
   background: var(--bg);
   color: var(--text);
   font-size: 13px;
-  cursor: pointer;
 }
 
 .input {
@@ -99,17 +102,16 @@
 }
 
 .row {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: var(--space-3);
   font-size: 13px;
   color: var(--text-muted);
 }
 
 .group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @apply flex flex-col items-start;
+
   gap: var(--space-2);
 }
 
@@ -123,7 +125,8 @@
 
 /* ===== Demo containers ===== */
 .stage {
-  display: grid;
+  @apply grid;
+
   place-items: center;
   min-width: 560px;
   min-height: 320px;
@@ -133,7 +136,8 @@
 }
 
 .demoBox {
-  position: relative;
+  @apply relative;
+
   width: 100%;
   max-width: 36rem;
   min-height: 260px;
@@ -146,9 +150,8 @@
 
 /* ===== Triggers ===== */
 .trigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   height: 36px;
   padding: 0 var(--space-4);
   border: 0;
@@ -157,7 +160,6 @@
   color: var(--accent-contrast);
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .trigger:hover,
@@ -189,52 +191,60 @@
 
 /* Trigger placement modifiers (used inside .demoBox) */
 .pinTopCenter {
-  position: absolute;
+  @apply absolute;
+
   top: 12px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .pinBottomCenter {
-  position: absolute;
+  @apply absolute;
+
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .pinTopLeft {
-  position: absolute;
+  @apply absolute;
+
   top: 12px;
   left: 12px;
 }
 
 .pinTopRight {
-  position: absolute;
+  @apply absolute;
+
   top: 12px;
   right: 12px;
 }
 
 .pinBottomLeft {
-  position: absolute;
+  @apply absolute;
+
   bottom: 12px;
   left: 12px;
 }
 
 .pinBottomRight {
-  position: absolute;
+  @apply absolute;
+
   bottom: 12px;
   right: 12px;
 }
 
 .pinLeftCenter {
-  position: absolute;
+  @apply absolute;
+
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .pinRightCenter {
-  position: absolute;
+  @apply absolute;
+
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
@@ -242,9 +252,8 @@
 
 /* ===== Surfaces ===== */
 .surfaceShorthand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center;
+
   width: 160px;
   height: 80px;
   background: var(--bg-elev);
@@ -256,9 +265,8 @@
 }
 
 .surfaceCover {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center;
+
   width: 224px;
   height: 112px;
   background: var(--bg-elev);
@@ -271,7 +279,8 @@
 }
 
 .surfaceCallout {
-  display: block;
+  @apply block;
+
   min-width: 160px;
   background: var(--bg-elev);
   border-radius: var(--radius-md);
@@ -282,18 +291,19 @@
 }
 
 .surfaceMatch {
-  display: block;
+  @apply box-border block;
+
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   box-shadow: var(--shadow-3);
   padding: var(--space-4);
-  box-sizing: border-box;
   font-size: 13px;
 }
 
 .surfaceFlipNarrow {
-  display: block;
+  @apply block;
+
   width: 160px;
   background: var(--bg-elev);
   border-radius: var(--radius-md);
@@ -304,7 +314,8 @@
 }
 
 .surfaceFlipWide {
-  display: block;
+  @apply block;
+
   width: 320px;
   max-height: 140px;
   background: var(--bg-elev);
@@ -316,7 +327,8 @@
 }
 
 .surfaceFallback {
-  display: block;
+  @apply block;
+
   min-width: 200px;
   max-width: 20rem;
   background: var(--bg-elev);
@@ -329,8 +341,9 @@
 
 /* Adds the "Actual: <data-placement>" readout under any surface */
 .flipReadout::after {
+  @apply block;
+
   content: 'Actual: ' attr(data-placement);
-  display: block;
   margin-top: var(--space-2);
   padding-top: var(--space-2);
   border-top: var(--stroke-thin) dashed var(--border-strong);

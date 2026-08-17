@@ -1,18 +1,19 @@
+@reference '#theme';
+
 /* Story styles for DrawerAlwaysOpen.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
+  @apply flex overflow-hidden;
+
   border: 2px solid #ccc;
-  overflow: hidden;
-  display: flex;
   height: 480px;
   background-color: #fff;
 }
 
 .content {
+  @apply flex items-start justify-center;
+
   flex: 1;
   padding: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }

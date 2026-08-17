@@ -1,3 +1,5 @@
+@reference '#theme';
+
 .surface {
   background: var(--bg-elev);
   border-radius: var(--radius-lg);
@@ -7,8 +9,8 @@
 }
 
 .header {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
+
   gap: var(--space-2);
   font-size: 13px;
   font-weight: 500;
@@ -17,9 +19,8 @@
 }
 
 .headerIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex items-center justify-center;
+
   width: 16px;
   height: 16px;
   font-size: 16px;
@@ -28,9 +29,8 @@
 
 /* Dismiss button — boxed subtle button, mirrors v9 TeachingPopoverHeader__dismissButton. */
 .dismissButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   width: 24px;
   height: 24px;
   padding: 0;
@@ -41,7 +41,6 @@
   color: var(--text-muted);
   font-size: 14px;
   line-height: 1;
-  cursor: pointer;
   transition:
     background-color 80ms ease,
     border-color 80ms ease,
@@ -64,16 +63,15 @@
 }
 
 .body {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   margin: 0 0 var(--space-4);
 }
 
 /* Media placeholder — 288×176 (v9 'medium' aspect ratio) gray box. */
 .media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center;
+
   width: 100%;
   aspect-ratio: 288 / 176;
   background: var(--surface-muted);
@@ -98,8 +96,8 @@
 }
 
 .footer {
-  display: flex;
-  justify-content: flex-end;
+  @apply flex justify-end;
+
   gap: var(--space-2);
   margin-top: 0;
 }
@@ -110,9 +108,8 @@
   TeachingPopoverCarouselFooterButton minimum.
 */
 .actionButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @apply inline-flex cursor-pointer items-center justify-center;
+
   height: 32px;
   min-width: 96px;
   padding: 0 var(--space-3);
@@ -124,7 +121,6 @@
   font-size: 13px;
   font-weight: 600;
   line-height: 1;
-  cursor: pointer;
   transition:
     background-color 80ms ease,
     border-color 80ms ease,
@@ -146,10 +142,11 @@
 }
 
 .actionButton:disabled {
+  @apply cursor-not-allowed;
+
   background: var(--surface-muted);
   border-color: var(--border);
   color: var(--text-faint);
-  cursor: not-allowed;
 }
 
 /* Primary variant — mirrors v9 Button primary appearance. */
@@ -176,26 +173,25 @@
 }
 
 .carousel {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--space-3);
 }
 
 .carouselCard[hidden] {
-  display: none;
+  @apply hidden;
 }
 
 .carouselFooter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @apply flex items-center justify-between;
+
   gap: var(--space-2);
   margin-top: var(--space-3);
 }
 
 .carouselNav {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
   gap: var(--space-2);
 }
 
@@ -205,15 +201,14 @@
   (full accent). Width and border-radius animate so paging feels continuous.
 */
 .carouselNavButton {
-  display: flex;
-  box-sizing: border-box;
+  @apply box-border flex cursor-pointer;
+
   width: 8px;
   height: 8px;
   padding: 0;
   border: 0;
   border-radius: 50%;
   background: color-mix(in srgb, var(--accent) 30%, transparent);
-  cursor: pointer;
   transition:
     width 120ms ease,
     border-radius 120ms ease,

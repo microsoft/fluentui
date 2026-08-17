@@ -1,31 +1,31 @@
+@reference '#theme';
+
 /* Story styles for CreatePresenceComponentFactory.
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template: 'card card' 'controls .' / 1fr 1fr;
   gap: 20px 10px;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-col items-center rounded-medium;
+
   justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
   padding-top: 100px;
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
   box-shadow: var(--shadow-16);
   padding: 10px;
 }
@@ -35,7 +35,8 @@
 }
 
 .item {
-  background-color: var(--color-brand-background);
+  @apply bg-brand-background;
+
   border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
   border-radius: 50%;
   width: 100px;

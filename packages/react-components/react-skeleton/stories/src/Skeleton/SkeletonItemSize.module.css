@@ -1,17 +1,19 @@
+@reference '#theme';
+
 /* Story styles for SkeletonItemSize.
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  display: flex;
+  @apply flex flex-col;
+
   background: var(--color-neutral-background-1);
-  flex-direction: column;
   padding: var(--spacing-horizontal-xl);
   gap: var(--spacing-vertical-l);
 }
 
 .innerWrapper {
-  display: grid;
-  align-items: center;
+  @apply grid items-center;
+
   grid-template-columns: 25px 1fr;
   grid-gap: var(--spacing-horizontal-s);
 }

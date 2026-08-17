@@ -1,8 +1,11 @@
+@reference '#theme';
+
 /* Story styles for DropdownTruncation.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-template-rows: repeat(1fr);
   justify-items: start;
   gap: 2px;
@@ -14,12 +17,13 @@
 }
 
 .truncatedText {
-  overflow-x: hidden;
+  @apply overflow-x-hidden whitespace-nowrap;
+
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .optionText {
-  overflow: hidden;
+  @apply overflow-hidden;
+
   overflow-wrap: break-word;
 }

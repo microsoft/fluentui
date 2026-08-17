@@ -1,36 +1,35 @@
+@reference '#theme';
+
 /* Story styles for InlineDrawer.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
+  @apply flex overflow-hidden;
+
   border: 2px solid #ccc;
-  overflow: hidden;
-  display: flex;
   height: 480px;
   background-color: #fff;
 }
 
 .content {
+  @apply relative overflow-auto;
+
   flex: 1;
   padding: 16px;
-  overflow: auto;
-  position: relative;
 }
 
 .flexColumn {
-  flex-direction: column;
+  @apply flex-col;
 }
 
 .buttons {
+  @apply sticky flex flex-wrap items-start justify-center;
+
   flex: 1;
   padding: 16px;
-  position: sticky;
   top: -16px;
   right: -16px;
   left: -16px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
   column-gap: var(--spacing-horizontal-xs);
   background-color: #fff;
   transition-duration: var(--duration-fast);

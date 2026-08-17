@@ -1,13 +1,16 @@
+@reference '#theme';
+
 /* Story styles for ButtonDisabled.
  * Token references are the Fluent theme's CSS variables. */
 
 .innerWrapper {
+  @apply flex;
+
   column-gap: 15px;
-  display: flex;
 }
 
 .outerWrapper {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: 15px;
 }

@@ -1,5 +1,8 @@
+@reference '#theme';
+
 .tabs {
-  display: flex;
+  @apply flex;
+
   gap: 4px;
   padding: 4px;
   background: var(--surface-muted);
@@ -8,23 +11,23 @@
 }
 
 .tabsVertical {
-  flex-direction: column;
+  @apply flex-col;
+
   border-radius: var(--radius-lg);
   width: 200px;
   align-self: flex-start;
 }
 
 .tab {
-  position: relative;
+  @apply relative cursor-pointer text-left;
+
   padding: 7px 14px;
   background: transparent;
   border: none;
   color: var(--text-muted);
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
   border-radius: var(--radius-pill);
-  text-align: left;
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard);
@@ -52,15 +55,15 @@
 }
 
 .layout {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 16px;
   width: 100%;
 }
 
 .layoutVertical {
-  flex-direction: row;
-  align-items: stretch;
+  @apply flex-row items-stretch;
+
   gap: 24px;
 }
 

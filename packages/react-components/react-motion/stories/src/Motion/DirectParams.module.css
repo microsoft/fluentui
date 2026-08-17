@@ -1,9 +1,11 @@
+@reference '#theme';
+
 /* Story styles for DirectParams.
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--spacing-vertical-l);
   width: 100%;
   max-width: 800px;
@@ -11,62 +13,58 @@
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col rounded-medium;
+
   gap: var(--spacing-vertical-s);
   padding: var(--spacing-vertical-m);
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
 }
 
 .row {
-  display: flex;
+  @apply flex;
+
   gap: var(--spacing-horizontal-l);
   align-items: start;
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--spacing-vertical-s);
   flex: 1;
   min-width: 0;
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
+  @apply box-border flex flex-col overflow-hidden rounded-medium;
+
   gap: var(--spacing-vertical-s);
   padding: var(--spacing-vertical-m);
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  border-radius: var(--radius-medium);
-  overflow: hidden;
   overflow-wrap: break-word;
   word-break: break-word;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .codeBlock {
+  @apply overflow-auto rounded-medium bg-neutral-background-1-pressed whitespace-pre;
+
   font-family: var(--font-monospace);
   font-size: var(--text-base-200);
-  background-color: var(--color-neutral-background-1-pressed);
-  border-radius: var(--radius-medium);
   padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
-  white-space: pre;
-  overflow: auto;
 }
 
 .accordionContainer {
+  @apply overflow-hidden;
+
   min-width: 0;
-  overflow: hidden;
   max-width: 100%;
 }
 
 .constrainedText {
+  @apply block overflow-hidden;
+
   min-width: 0;
-  display: block;
-  overflow: hidden;
   overflow-wrap: break-word;
   word-break: break-word;
 }

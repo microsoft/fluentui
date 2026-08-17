@@ -1,24 +1,24 @@
+@reference '#theme';
+
 /* Story styles for SkeletonRow.
  * Token references are the Fluent theme's CSS variables. */
 
 .invertedWrapper {
-  background-color: var(--color-neutral-background-1);
+  @apply bg-neutral-background-1;
 }
 
 .firstRow {
-  align-items: center;
-  display: grid;
+  @apply relative grid items-center;
+
   padding-bottom: 10px;
-  position: relative;
   gap: 10px;
   grid-template-columns: min-content 80%;
 }
 
 .secondThirdRow {
-  align-items: center;
-  display: grid;
+  @apply relative grid items-center;
+
   padding-bottom: 10px;
-  position: relative;
   gap: 10px;
   grid-template-columns: min-content 20% 20% 15% 15%;
 }

@@ -1,16 +1,19 @@
+@reference '#theme';
+
 /* Story styles for PersonaPresencePreviousBehavior.
  * Token references are the Fluent theme's CSS variables. */
 
 .statusAway {
-  color: var(--color-palette-marigold-background-3);
+  @apply text-palette-marigold-background-3;
 }
 
 .statusOffline {
-  color: var(--color-neutral-foreground-3);
+  @apply text-neutral-foreground-3;
 }
 
 .root {
-  display: grid;
+  @apply grid;
+
   grid-auto-flow: column;
   grid-template-columns: repeat(2, max-content);
   grid-template-rows: repeat(3, auto);

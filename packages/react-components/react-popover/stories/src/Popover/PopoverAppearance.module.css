@@ -1,3 +1,5 @@
+@reference '#theme';
+
 /* Story styles for PopoverAppearance.
  * Token references are the Fluent theme's CSS variables. */
 
@@ -6,7 +8,7 @@
 }
 
 .root {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   row-gap: var(--spacing-vertical-m-nudge);
 }

@@ -1,5 +1,8 @@
+@reference '#theme';
+
 .wrap {
-  display: flex;
+  @apply flex;
+
   width: 100%;
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -38,15 +41,13 @@
 }
 
 .noResize {
-  resize: none;
+  @apply resize-none;
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  display: flex;
-
-  flex-direction: column;
+  @apply flex flex-col;
 
   gap: 16px;
 

@@ -1,14 +1,16 @@
+@reference '#theme';
+
 /* Story styles for DatePickerFirstDayOfTheWeek.
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  display: inline-flex;
-  flex-direction: column;
+  @apply inline-flex flex-col;
+
   row-gap: 15px;
 }
 
 .firstDaySelector {
-  display: inline-flex;
-  flex-direction: column;
+  @apply inline-flex flex-col;
+
   row-gap: 5px;
 }

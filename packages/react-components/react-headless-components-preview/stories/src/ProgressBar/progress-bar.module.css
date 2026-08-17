@@ -1,10 +1,12 @@
+@reference '#theme';
+
 .bar {
-  position: relative;
+  @apply relative overflow-hidden;
+
   width: 100%;
   height: 4px;
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
-  overflow: hidden;
 }
 
 .fill {
@@ -27,27 +29,27 @@
 }
 
 .indeterminate {
-  position: relative;
-  overflow: hidden;
+  @apply relative overflow-hidden;
 }
 
 .indeterminate .fill {
-  position: absolute;
+  @apply absolute;
+
   inset: 0;
   width: 35%;
   animation: slide 1.4s ease-in-out infinite;
 }
 
 .row {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: 8px;
   width: 100%;
 }
 
 .label {
-  display: flex;
-  justify-content: space-between;
+  @apply flex justify-between;
+
   font-size: 12.5px;
   color: var(--text-muted);
 }
@@ -72,9 +74,7 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  display: flex;
-
-  flex-direction: column;
+  @apply flex flex-col;
 
   gap: 24px;
 

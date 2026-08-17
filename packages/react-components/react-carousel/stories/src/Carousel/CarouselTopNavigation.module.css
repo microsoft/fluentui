@@ -1,13 +1,14 @@
+@reference '#theme';
+
 /* Story styles for CarouselTopNavigation.
  * Token references are the Fluent theme's CSS variables. */
 
 .bannerCard {
+  @apply relative rounded-x-large text-left;
+
   align-content: center;
-  border-radius: var(--radius-x-large);
   box-shadow: var(--shadow-16);
   height: 450px;
-  text-align: left;
-  position: relative;
 }
 
 .image {
@@ -15,13 +16,11 @@
 }
 
 .cardContainer {
-  display: flex;
-  flex-direction: column;
+  @apply absolute flex flex-col rounded-large;
+
   gap: var(--spacing-horizontal-s);
-  position: absolute;
   left: 10%;
   top: 25%;
-  border-radius: var(--radius-large);
   box-shadow: var(--shadow-8);
   background: var(--color-neutral-background-1);
   padding: var(--spacing-horizontal-xxl) var(--spacing-vertical-xxxl);
@@ -45,7 +44,8 @@
 }
 
 .container {
-  display: grid;
+  @apply grid;
+
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
 }
@@ -60,8 +60,8 @@
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col;
+
   gap: var(--spacing-vertical-s-nudge);
   padding: var(--spacing-horizontal-m-nudge) var(--spacing-vertical-m-nudge);
 }
@@ -76,9 +76,8 @@
 }
 
 .carouselHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @apply flex items-center justify-between;
+
   gap: var(--spacing-vertical-s-nudge);
   margin-bottom: var(--spacing-horizontal-l);
 }
