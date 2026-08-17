@@ -19,10 +19,8 @@
 }
 
 .content {
-  @apply absolute box-border grid flex-1 items-start justify-start bg-neutral-background-1 p-16;
+  @apply absolute inset-0 box-border grid flex-1 items-start justify-start gap-vertical-m bg-neutral-background-1 p-16;
 
-  gap: var(--spacing-vertical-m);
   grid-auto-rows: max-content;
-  inset: 0;
   border: 1px solid var(--color-neutral-background-1);
 }

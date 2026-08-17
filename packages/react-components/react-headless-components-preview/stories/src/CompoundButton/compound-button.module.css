@@ -1,7 +1,7 @@
 @reference '#theme';
 
 .demo {
-  @apply grid;
+  @apply grid shadow-2;
 
   gap: var(--space-6);
   padding: var(--space-6);
@@ -9,7 +9,6 @@
   border-radius: var(--radius-2xl);
   background: var(--bg-soft);
   color: var(--text);
-  box-shadow: var(--shadow-2);
 }
 
 .introduction {
@@ -41,7 +40,8 @@
 }
 
 .status {
-  justify-self: start;
+  @apply justify-self-start;
+
   padding-block: var(--space-2);
   padding-inline: var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -58,7 +58,7 @@
 }
 
 .action {
-  @apply inline-grid cursor-pointer items-center text-start;
+  @apply inline-grid cursor-pointer items-center text-start no-underline;
 
   grid-template-columns: auto 1fr;
   gap: var(--space-3);
@@ -71,7 +71,6 @@
   background: var(--bg-elev);
   color: var(--text);
   box-shadow: var(--shadow-1);
-  text-decoration: none;
 }
 
 .action:hover:not(:disabled, [data-disabled], [data-disabled-focusable], [aria-disabled='true']) {

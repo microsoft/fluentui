@@ -1,10 +1,9 @@
 @reference '#theme';
 
 .link {
-  @apply cursor-pointer font-medium;
+  @apply cursor-pointer font-medium underline;
 
   color: var(--text);
-  text-decoration: underline;
   text-decoration-color: var(--border-strong);
   text-underline-offset: 3px;
   border-radius: var(--radius-xs);
@@ -33,14 +32,15 @@
 }
 
 .inline {
-  text-decoration: underline;
+  @apply underline;
+
   text-underline-offset: 3px;
 }
 
 .paragraph {
   @apply m-0;
 
-  font-size: 14.5px;
+  font-size: calc(14.5px * var(--base-scale));
   line-height: 1.65;
   color: var(--text-muted);
   max-width: 56ch;

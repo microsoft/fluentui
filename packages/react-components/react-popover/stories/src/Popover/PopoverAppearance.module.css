@@ -8,7 +8,5 @@
 }
 
 .root {
-  @apply flex flex-col;
-
-  row-gap: var(--spacing-vertical-m-nudge);
+  @apply flex flex-col gap-y-vertical-m-nudge;
 }

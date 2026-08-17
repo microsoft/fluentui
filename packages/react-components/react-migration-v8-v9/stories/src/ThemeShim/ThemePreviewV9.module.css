@@ -8,33 +8,25 @@
 }
 
 .threeCol {
-  @apply grid justify-center;
+  @apply grid items-start justify-center gap-x-horizontal-xxxl;
 
-  align-items: start;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
-  grid-column-gap: var(--spacing-horizontal-xxxl);
 }
 
 .col1 {
-  @apply flex flex-col justify-between;
-
-  gap: var(--spacing-vertical-l);
+  @apply flex flex-col justify-between gap-vertical-l;
 }
 
 .col2 {
-  @apply flex flex-col items-center;
-
-  gap: var(--spacing-vertical-l);
+  @apply flex flex-col items-center gap-vertical-l;
 }
 
 .col3 {
-  @apply grid items-center justify-center;
+  @apply grid items-center justify-center gap-x-horizontal-s gap-y-vertical-s;
 
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(4, auto);
-  grid-row-gap: var(--spacing-vertical-s);
-  grid-column-gap: var(--spacing-horizontal-s);
 }
 
 .twoCol {
@@ -47,18 +39,14 @@
 }
 
 .icons {
-  @apply grid justify-center;
+  @apply grid justify-center gap-x-horizontal-s gap-y-vertical-s;
 
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
-  grid-row-gap: var(--spacing-vertical-s);
-  grid-column-gap: var(--spacing-horizontal-s);
 }
 
 .avatar {
-  @apply flex;
-
-  gap: var(--spacing-vertical-l);
+  @apply flex gap-vertical-l;
 }
 
 .avatarText {

@@ -8,16 +8,14 @@
 }
 
 .messageBarGroup {
-  @apply mt-10 flex h-300 flex-col gap-10 overflow-auto;
+  @apply mt-10 flex h-300 flex-col gap-10 overflow-auto p-horizontal-m-nudge;
 
-  padding: var(--spacing-horizontal-m-nudge);
   border: 2px solid var(--color-brand-foreground-1);
 }
 
 .field {
-  @apply items-center;
+  @apply grow items-center;
 
-  flex-grow: 1;
   grid-template-columns: max-content auto;
 }
 

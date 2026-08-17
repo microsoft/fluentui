@@ -4,13 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .main {
-  @apply grid justify-start;
-
-  grid-row-gap: var(--spacing-vertical-xxl);
+  @apply grid justify-start gap-y-vertical-xxl;
 }
 
 .field {
-  @apply grid;
-
-  grid-row-gap: var(--spacing-vertical-s);
+  @apply grid gap-y-vertical-s;
 }

@@ -4,19 +4,13 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-s);
+  @apply flex flex-col gap-vertical-s;
 }
 
 .badge {
-  @apply flex;
-
-  gap: var(--spacing-horizontal-s);
+  @apply flex gap-horizontal-s;
 }
 
 .brand {
-  @apply flex bg-brand-background;
-
-  padding: var(--spacing-horizontal-xxs);
+  @apply flex bg-brand-background p-horizontal-xxs;
 }

@@ -4,7 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .stackWrapper {
-  width: 100%;
+  @apply w-full;
 }
 
 .stack {

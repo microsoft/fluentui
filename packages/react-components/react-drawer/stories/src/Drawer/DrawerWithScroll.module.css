@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex flex-wrap;
-
-  gap: var(--spacing-horizontal-xxl);
+  @apply flex flex-wrap gap-horizontal-xxl;
 }
 
 .drawer {

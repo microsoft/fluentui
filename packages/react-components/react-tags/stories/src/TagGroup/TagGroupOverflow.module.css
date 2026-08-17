@@ -4,7 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .menuItem {
-  padding: var(--spacing-vertical-s-nudge) var(--spacing-horizontal-xs);
+  @apply px-horizontal-xs py-vertical-s-nudge;
 }
 
 /* Tag's public identity class is its Tailwind named-group marker, `group/fui-tag`
@@ -16,18 +16,13 @@
 }
 
 .tag {
-  @apply bg-transparent;
-
-  border-color: transparent;
+  @apply border-transparent bg-transparent;
 }
 
 .container {
-  @apply box-border min-w-150 overflow-hidden p-5;
+  @apply box-border h-fit w-full min-w-150 resize-x overflow-hidden p-5;
 
   z-index: 0;
-  height: fit-content;
-  resize: horizontal;
-  width: 100%;
 }
 
 .tagGroup {

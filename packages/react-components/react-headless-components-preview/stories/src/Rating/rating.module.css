@@ -19,12 +19,7 @@
 }
 
 .input {
-  @apply absolute m-0 cursor-pointer;
-
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
+  @apply absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0;
 }
 
 .input:focus-visible ~ svg {

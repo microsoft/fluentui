@@ -8,18 +8,15 @@
 }
 
 .title {
-  margin: 0 0 12px;
+  @apply mx-0 mt-0 mb-12;
 }
 
 .description {
-  margin: 0 0 12px;
+  @apply mx-0 mt-0 mb-12;
 }
 
 .card {
-  @apply max-w-480;
-
-  width: 100%;
-  height: fit-content;
+  @apply h-fit w-full max-w-480;
 }
 
 .caption {
@@ -27,9 +24,7 @@
 }
 
 .logo {
-  @apply h-48 w-48;
-
-  border-radius: 4px;
+  @apply h-48 w-48 rounded-medium;
 }
 
 .text {

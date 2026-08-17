@@ -14,15 +14,11 @@
 }
 
 .content {
-  @apply absolute m-0 box-border grid flex-1 items-start justify-start p-16;
+  @apply absolute inset-0 m-0 box-border grid flex-1 items-start justify-start gap-vertical-m p-16;
 
-  gap: var(--spacing-vertical-m);
   grid-auto-rows: max-content;
-  inset: 0;
 }
 
 .field {
-  @apply mt-4 ml-8 flex flex-col;
-
-  grid-row-gap: var(--spacing-vertical-s);
+  @apply mt-4 ml-8 flex flex-col gap-y-vertical-s;
 }

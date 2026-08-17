@@ -4,11 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  @apply flex flex-col;
-
-  background: var(--color-neutral-background-1);
-  padding: var(--spacing-horizontal-xl);
-  gap: var(--spacing-vertical-l);
+  @apply flex flex-col gap-vertical-l bg-neutral-background-1 p-horizontal-xl;
 }
 
 .innerWrapper {

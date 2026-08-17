@@ -8,10 +8,8 @@
 }
 
 .previewColor {
-  @apply h-50 w-50;
+  @apply mx-0 my-10 h-50 w-50 rounded-medium;
 
-  margin: 10px 0;
-  border-radius: 4px;
   border: 1px solid #ccc;
 }
 

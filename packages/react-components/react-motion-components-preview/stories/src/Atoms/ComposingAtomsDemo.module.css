@@ -4,25 +4,19 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .wrapper {
-  @apply overflow-hidden rounded-medium;
+  @apply mt-vertical-xxl mb-vertical-xxl overflow-hidden rounded-medium;
 
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  margin-top: var(--spacing-vertical-xxl);
-  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 .header {
-  @apply flex items-center justify-between bg-neutral-background-2;
+  @apply flex items-center justify-between bg-neutral-background-2 px-horizontal-xl py-vertical-m;
 
-  padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
   border-bottom: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
 .title {
-  @apply m-0;
-
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--text-base-300);
+  @apply m-0 text-base-300 font-semibold;
 }
 
 .body {
@@ -36,9 +30,7 @@
 }
 
 .demoArea {
-  @apply flex min-h-120 flex-auto items-center justify-center bg-neutral-background-1;
-
-  padding: var(--spacing-vertical-xl);
+  @apply flex min-h-120 flex-auto items-center justify-center bg-neutral-background-1 p-vertical-xl;
 }
 
 .demoPane {
@@ -48,24 +40,18 @@
 }
 
 .buttonRow {
-  @apply flex justify-center bg-neutral-background-1;
-
-  padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl) var(--spacing-vertical-l);
+  @apply flex justify-center bg-neutral-background-1 px-horizontal-xl pt-vertical-m pb-vertical-l;
 }
 
 .demoBox {
-  @apply rounded-medium bg-neutral-background-3 text-center text-neutral-foreground-1;
+  @apply rounded-medium bg-neutral-background-3 px-horizontal-xxl py-vertical-l text-center text-base-300 font-semibold text-neutral-foreground-1;
 
-  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xxl);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-semibold);
 }
 
 .codeArea {
-  @apply min-w-0 flex-auto overflow-auto bg-neutral-background-1;
+  @apply min-w-0 flex-auto overflow-auto bg-neutral-background-1 px-horizontal-xl py-vertical-l;
 
-  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
   border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
@@ -77,9 +63,7 @@
 }
 
 .code {
-  @apply m-0 block whitespace-pre text-neutral-foreground-1;
+  @apply m-0 block font-monospace text-base-100 whitespace-pre text-neutral-foreground-1;
 
-  font-family: var(--font-monospace);
-  font-size: var(--text-base-100);
   line-height: var(--leading-base-200);
 }

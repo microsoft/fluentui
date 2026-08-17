@@ -1,9 +1,8 @@
 @reference '#theme';
 
 .toggle {
-  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 font-medium;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 px-14 py-0 font-medium;
 
-  padding: 0 14px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--bg-elev);
@@ -39,9 +38,7 @@
 }
 
 .toggle[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .icon {

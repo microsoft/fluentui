@@ -26,22 +26,19 @@
 }
 
 .resizer {
-  @apply absolute top-0 right-0 bottom-0 w-24 rounded-none;
+  @apply absolute top-0 right-0 bottom-0 h-full w-24 rounded-none;
 
-  height: 100%;
   cursor: col-resize;
   border: none;
   min-width: unset;
 }
 
 .resizer:before {
-  @apply absolute w-1;
+  @apply absolute left-1/2 h-full w-1;
 
   content: '';
   border-right: 1px solid var(--color-neutral-background-5);
-  height: 100%;
   transform: translateX(-50%);
-  left: 50%;
 }
 
 .resizer:hover {
@@ -64,9 +61,7 @@
 }
 
 .content {
-  @apply flex-1;
-
-  margin: var(--spacing-vertical-xl) var(--spacing-horizontal-xl);
+  @apply mx-horizontal-xl my-vertical-xl flex-1;
 }
 
 .dialogContent {

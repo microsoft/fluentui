@@ -4,16 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .demo {
-  @apply flex flex-col items-center;
-
-  gap: var(--spacing-vertical-m);
-  padding: var(--spacing-vertical-xl);
+  @apply flex flex-col items-center gap-vertical-m p-vertical-xl;
 }
 
 .card {
-  @apply text-center;
-
-  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xxl);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--text-base-300);
+  @apply px-horizontal-xxl py-vertical-l text-center text-base-300 font-semibold;
 }

@@ -4,5 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  margin: 20px 0px;
+  @apply mx-0 my-20;
 }

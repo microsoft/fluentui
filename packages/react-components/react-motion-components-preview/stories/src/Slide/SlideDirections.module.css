@@ -8,9 +8,7 @@
 }
 
 .controls {
-  @apply flex flex-none flex-col items-center justify-center gap-15 rounded-medium p-20;
-
-  box-shadow: var(--shadow-16);
+  @apply flex flex-none flex-col items-center justify-center gap-15 rounded-medium p-20 shadow-16;
 }
 
 .directionsGrid {
@@ -21,15 +19,11 @@
 }
 
 .directionButton {
-  @apply h-44 min-w-44;
-
-  font-size: var(--text-base-200);
+  @apply h-44 min-w-44 text-base-200;
 }
 
 .centerSpace {
-  @apply flex items-center justify-center text-neutral-foreground-3;
-
-  font-size: var(--text-base-100);
+  @apply flex items-center justify-center text-base-100 text-neutral-foreground-3;
 }
 
 .demo {
@@ -40,7 +34,5 @@
 }
 
 .card {
-  @apply max-w-300 rounded-medium bg-brand-background p-20 text-center text-neutral-foreground-on-brand;
-
-  box-shadow: var(--shadow-8);
+  @apply max-w-300 rounded-medium bg-brand-background p-20 text-center text-neutral-foreground-on-brand shadow-8;
 }

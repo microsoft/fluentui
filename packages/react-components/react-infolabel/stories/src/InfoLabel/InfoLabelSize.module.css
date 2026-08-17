@@ -4,8 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col;
-
-  align-items: start;
-  row-gap: var(--spacing-vertical-l);
+  @apply flex flex-col items-start gap-y-vertical-l;
 }

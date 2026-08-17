@@ -2,9 +2,8 @@
 
 /* column wrapper for the whole example; positioning context for the popup */
 .demo {
-  @apply relative flex max-w-400 flex-col;
+  @apply relative flex w-full max-w-400 flex-col;
 
-  width: 100%;
   gap: var(--space-2);
 }
 
@@ -37,24 +36,20 @@
 }
 
 .control[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 
 /* group of selected tags — a focusgroup row */
 .group {
-  @apply flex min-w-0 flex-wrap items-center;
+  @apply flex max-w-full min-w-0 flex-wrap items-center;
 
   gap: var(--space-1);
-  max-width: 100%;
 }
 
 .tag {
-  @apply inline-flex min-w-0 items-center text-base-200;
+  @apply inline-flex max-w-full min-w-0 items-center text-base-200;
 
   gap: var(--space-1);
-  max-width: 100%;
   border-radius: var(--radius-sm);
   border: var(--stroke-thin) solid var(--border);
   background: var(--surface-muted);
@@ -107,10 +102,9 @@
 /* popup listbox — rendered in the top layer via the native `popover` attribute and anchored to the
    control by `usePositioning`, so placement (position/inset) is owned by those, not this rule. */
 .listbox {
-  @apply m-0 box-border flex max-h-256 flex-col overflow-auto;
+  @apply m-0 box-border flex max-h-256 w-max flex-col overflow-auto shadow-4;
 
   /* reset the user-agent [popover] centering so usePositioning's anchor-positioned offsets take effect */
-  width: max-content;
   border-radius: var(--radius-md);
   gap: var(--space-1);
   border: var(--stroke-thin) solid var(--border);
@@ -118,7 +112,6 @@
   padding: var(--space-1);
   font-size: calc(13px * var(--base-scale));
   color: var(--text);
-  box-shadow: var(--shadow-4);
 }
 
 /* the native popover is shown/hidden by the Popover API; ensure the closed state is hidden */
@@ -155,9 +148,7 @@
 }
 
 .option[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 
 .option[data-disabled]:hover {
@@ -166,9 +157,8 @@
 
 /* circular "avatar" media used in tags and options */
 .media {
-  @apply inline-flex h-20 w-20 items-center justify-center font-semibold;
+  @apply inline-flex h-20 w-20 shrink-0 items-center justify-center font-semibold;
 
-  flex-shrink: 0;
   border-radius: var(--radius-pill);
   background: var(--accent-soft);
   color: var(--accent-strong);
@@ -195,9 +185,8 @@
 
 /* default trigger chevron */
 .expandIcon {
-  @apply inline-flex h-16 w-16 items-center justify-center;
+  @apply inline-flex h-16 w-16 shrink-0 items-center justify-center;
 
-  flex-shrink: 0;
   color: var(--text-soft);
 }
 
@@ -222,20 +211,17 @@
 }
 
 .optionGroupLabel {
-  @apply block font-semibold;
+  @apply block font-semibold uppercase;
 
   padding: var(--space-1) var(--space-3);
   font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* text truncation helpers (TruncatedText story) */
 .truncate {
-  @apply block min-w-0 overflow-hidden whitespace-nowrap;
-
-  text-overflow: ellipsis;
+  @apply block min-w-0 overflow-hidden text-ellipsis whitespace-nowrap;
 }
 
 .truncateFixed {

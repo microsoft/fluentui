@@ -16,13 +16,11 @@
 .navItem,
 .navSubItem,
 .navCategoryItem {
-  @apply flex cursor-pointer items-center text-start;
+  @apply flex w-full cursor-pointer items-center text-start no-underline;
 
   border: 0;
   background: transparent;
-  text-decoration: none;
   color: var(--text-muted);
-  width: 100%;
   border-radius: var(--radius-md);
   transition:
     background var(--duration-fast) var(--ease-standard),
@@ -50,7 +48,7 @@
   @apply font-medium;
 
   padding: var(--space-2) var(--space-3);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .navItem[aria-current='page'] {
@@ -82,7 +80,7 @@
   @apply justify-between font-medium;
 
   padding: var(--space-2) var(--space-3);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .expandIcon {
@@ -107,11 +105,10 @@
  * NavSectionHeader
  * ----------------------------------------------------------------*/
 .sectionHeader {
-  @apply m-0 font-semibold;
+  @apply m-0 font-semibold uppercase;
 
   padding: var(--space-3) var(--space-3) var(--space-1);
   font-size: calc(11px * var(--base-scale));
-  text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-soft);
 }
@@ -121,7 +118,7 @@
  * ----------------------------------------------------------------*/
 .status {
   padding: var(--space-2) var(--space-3);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text-muted);
 }
 
@@ -148,18 +145,15 @@
  * NavDrawer panel (the <nav> rendered by NavDrawer)
  * ----------------------------------------------------------------*/
 .drawerNav {
-  @apply flex w-280 flex-col;
+  @apply flex w-280 shrink-0 flex-col;
 
-  flex-shrink: 0;
   border: none;
   border-right: var(--stroke-thin) solid var(--border);
   background: var(--bg-soft);
 }
 
 dialog.drawerNav {
-  @apply fixed top-0 bottom-0 left-0 m-0;
-
-  max-height: 100%;
+  @apply fixed top-0 bottom-0 left-0 m-0 max-h-full;
 }
 
 .drawerHeader {
@@ -206,7 +200,7 @@ dialog.drawerNav {
   border-radius: var(--radius-md);
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .navigateButton:hover {
@@ -230,6 +224,6 @@ dialog.drawerNav {
 .controlLabel {
   @apply font-semibold;
 
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text);
 }

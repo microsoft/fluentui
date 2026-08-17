@@ -15,7 +15,7 @@
   border-radius: var(--radius-md);
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .trigger:hover,
@@ -38,7 +38,7 @@
   border-radius: var(--radius-md);
   background: var(--bg-elev);
   color: var(--text);
-  font-size: 12.5px;
+  font-size: calc(12.5px * var(--base-scale));
 }
 
 .triggerSecondary:hover {
@@ -79,15 +79,14 @@
 /* Base item — sized to match the styled Menu's item height (~32px) so the headless
    demo reads as the same affordance, while still using headless tokens. */
 .item {
-  @apply flex cursor-pointer items-center text-left;
+  @apply flex w-full cursor-pointer items-center text-left;
 
   gap: var(--space-2);
-  width: 100%;
   padding: 6px var(--space-3);
   border: 0;
   background: transparent;
   color: var(--text);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   line-height: 1.4;
   outline: none;
 }
@@ -120,16 +119,13 @@
 }
 
 .itemLink {
-  @apply block;
-
-  text-decoration: none;
+  @apply block no-underline;
 }
 
 /* Decoration slots */
 .icon {
-  @apply inline-grid h-16 w-16;
+  @apply inline-grid h-16 w-16 place-items-center;
 
-  place-items: center;
   color: var(--text-muted);
 }
 
@@ -143,7 +139,7 @@
 .subText {
   @apply mt-2 block;
 
-  font-size: 11.5px;
+  font-size: calc(11.5px * var(--base-scale));
   color: var(--text-faint);
 }
 
@@ -165,24 +161,21 @@
 }
 
 .groupHeader {
-  @apply font-semibold;
+  @apply font-semibold uppercase;
 
   padding: var(--space-2) var(--space-3) var(--space-1);
   font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 /* Selectable indicators (checkmark / radio dot) */
 .checkmark {
-  @apply inline-grid h-16 w-16 text-base-200 font-bold;
+  @apply inline-grid h-16 w-16 place-items-center text-base-200 font-bold text-transparent;
 
-  place-items: center;
   border-radius: var(--radius-pill);
   border: var(--stroke-thin) solid var(--border-strong);
   background: transparent;
-  color: transparent;
   line-height: 1;
   transition:
     background var(--duration-fast) var(--ease-standard),
@@ -208,9 +201,8 @@
 
 /* Switch indicator — slider track + knob */
 .switchTrack {
-  @apply relative h-16 w-28;
+  @apply relative h-16 w-28 shrink-0;
 
-  flex-shrink: 0;
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
   border: var(--stroke-thin) solid var(--border);

@@ -11,20 +11,17 @@
 }
 
 .card {
-  @apply flex min-h-180 flex-col items-center rounded-medium p-10;
+  @apply flex min-h-180 flex-col items-center justify-end rounded-medium p-10 shadow-16;
 
-  justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .controls {
-  @apply flex flex-col rounded-medium p-10;
+  @apply flex flex-col rounded-medium p-10 shadow-16;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .field {

@@ -4,7 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .tooltip {
-  @apply overflow-hidden whitespace-nowrap;
-
-  text-overflow: ellipsis;
+  @apply overflow-hidden text-ellipsis whitespace-nowrap;
 }

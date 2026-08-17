@@ -1,18 +1,12 @@
 @reference '#theme';
 
 .slider {
-  @apply relative flex h-28 max-w-320 items-center;
-
-  width: 100%;
+  @apply relative flex h-28 w-full max-w-320 items-center;
 }
 
 .input {
-  @apply absolute m-0 cursor-pointer;
+  @apply absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0;
 
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
   z-index: 2;
 }
 
@@ -21,18 +15,16 @@
 }
 
 .rail {
-  @apply relative h-4 overflow-hidden;
+  @apply relative h-4 w-full overflow-hidden;
 
-  width: 100%;
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
 }
 
 .rail::after {
-  @apply absolute;
+  @apply absolute inset-0;
 
   content: '';
-  inset: 0;
   width: var(--fui-Slider--progress, 0%);
   background: var(--accent);
   border-radius: inherit;
@@ -40,15 +32,12 @@
 }
 
 .thumb {
-  @apply absolute h-18 w-18;
+  @apply absolute top-1/2 h-18 w-18 rounded-full shadow-2;
 
-  top: 50%;
   left: var(--fui-Slider--progress, 0%);
   transform: translate(-50%, -50%);
-  border-radius: 50%;
   background: var(--bg-elev);
   border: 2px solid var(--accent);
-  box-shadow: var(--shadow-2);
   transition:
     transform 80ms var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard);
@@ -66,9 +55,7 @@
 }
 
 .row {
-  @apply flex items-center gap-16;
-
-  width: 100%;
+  @apply flex w-full items-center gap-16;
 }
 
 .value {

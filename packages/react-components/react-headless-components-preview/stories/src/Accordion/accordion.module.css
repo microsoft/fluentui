@@ -1,9 +1,8 @@
 @reference '#theme';
 
 .accordion {
-  @apply flex flex-col overflow-hidden;
+  @apply flex w-full flex-col overflow-hidden;
 
-  width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
@@ -22,13 +21,11 @@
 }
 
 .headerBtn {
-  @apply flex cursor-pointer items-center gap-12 text-left font-medium;
+  @apply flex w-full cursor-pointer items-center gap-12 px-18 py-14 text-left font-medium;
 
-  width: 100%;
-  padding: 14px 18px;
   background: transparent;
   border: none;
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text);
   transition: background var(--duration-fast) var(--ease-standard);
 }
@@ -43,11 +40,10 @@
 }
 
 .expandIcon {
-  @apply h-14 w-14;
+  @apply h-14 w-14 shrink-0;
 
   color: var(--text-muted);
   transition: transform var(--duration-medium) var(--ease-emphasized);
-  flex-shrink: 0;
 }
 
 .item[data-open] .expandIcon {
@@ -56,9 +52,8 @@
 }
 
 .panel {
-  @apply max-h-0 overflow-hidden;
+  @apply max-h-0 overflow-hidden px-18 py-0;
 
-  padding: 0 18px;
   font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
   line-height: 1.65;
@@ -68,9 +63,7 @@
 }
 
 .item[data-open] .panel {
-  @apply max-h-320;
-
-  padding: 0 18px 16px;
+  @apply max-h-320 px-18 pt-0 pb-16;
 }
 
 .label {

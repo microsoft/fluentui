@@ -11,8 +11,5 @@
 }
 
 .content {
-  @apply flex-1;
-
-  margin: var(--spacing-vertical-xl) var(--spacing-horizontal-xl);
-  grid-row-gap: var(--spacing-vertical-xxl);
+  @apply mx-horizontal-xl my-vertical-xl flex-1 gap-y-vertical-xxl;
 }

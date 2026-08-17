@@ -1,11 +1,9 @@
 @reference '#theme';
 
 .bar {
-  @apply grid items-center gap-12;
+  @apply grid w-full items-center gap-12 px-12 py-8;
 
   grid-template-columns: auto 1fr auto;
-  width: 100%;
-  padding: 8px 12px;
   border-radius: var(--radius-pill);
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -14,21 +12,22 @@
 }
 
 .bar[data-layout='multiline'] {
+  @apply px-16 py-12;
+
   grid-template-columns: auto 1fr;
   border-radius: var(--radius-lg);
-  padding: 12px 16px;
 }
 
 .bar[data-layout='multiline'] .actions {
+  @apply justify-self-end;
+
   grid-column: 2;
-  justify-self: end;
 }
 
 .icon {
-  @apply inline-flex h-20 w-20 items-center justify-center;
+  @apply inline-flex h-20 w-20 shrink-0 items-center justify-center;
 
   color: var(--text-muted);
-  flex-shrink: 0;
 }
 
 .icon svg {
@@ -50,9 +49,8 @@
 }
 
 .actionBtn {
-  @apply h-24 cursor-pointer text-base-200 font-medium;
+  @apply h-24 cursor-pointer px-10 py-0 text-base-200 font-medium;
 
-  padding: 0 10px;
   border-radius: var(--radius-pill);
   background: transparent;
   color: var(--text);
@@ -74,39 +72,41 @@
 
 /* Intent variants — subtle pastel backgrounds */
 .info {
+  @apply border-transparent;
+
   background: var(--info-soft);
-  border-color: transparent;
 }
 .info .icon {
   color: var(--info);
 }
 
 .success {
+  @apply border-transparent;
+
   background: var(--success-soft);
-  border-color: transparent;
 }
 .success .icon {
   color: var(--success);
 }
 
 .warning {
+  @apply border-transparent;
+
   background: var(--warning-soft);
-  border-color: transparent;
 }
 .warning .icon {
   color: var(--warning);
 }
 
 .danger {
+  @apply border-transparent;
+
   background: var(--brand-soft);
-  border-color: transparent;
 }
 .danger .icon {
   color: var(--brand);
 }
 
 .list {
-  @apply flex flex-col gap-10;
-
-  width: 100%;
+  @apply flex w-full flex-col gap-10;
 }

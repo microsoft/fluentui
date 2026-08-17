@@ -8,7 +8,7 @@
   border-radius: var(--radius-md);
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .trigger:hover,
@@ -35,7 +35,7 @@
   @apply h-28;
 
   padding: 0 var(--space-3);
-  font-size: 12.5px;
+  font-size: calc(12.5px * var(--base-scale));
 }
 
 .contextTrigger {
@@ -89,7 +89,7 @@
 .heading {
   @apply font-semibold;
 
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text);
   margin: 0 0 var(--space-1);
 }
@@ -116,7 +116,7 @@
   border-radius: var(--radius-md);
   background: var(--bg-elev);
   color: var(--text);
-  font-size: 12.5px;
+  font-size: calc(12.5px * var(--base-scale));
 }
 
 .actionButton:hover {
@@ -129,9 +129,8 @@
 }
 
 .menuItem {
-  @apply block cursor-pointer text-left;
+  @apply block w-full cursor-pointer text-left;
 
-  width: 100%;
   padding: var(--space-1) var(--space-4);
   border: 0;
   background: transparent;
@@ -144,8 +143,9 @@
 }
 
 .link {
+  @apply underline;
+
   color: var(--accent);
-  text-decoration: underline;
 }
 
 .link:hover {
@@ -156,16 +156,15 @@
   @apply flex items-center;
 
   gap: var(--space-2);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text-muted);
 }
 
 .fieldLabel {
-  @apply font-semibold;
+  @apply font-semibold uppercase;
 
   font-size: calc(11px * var(--base-scale));
   color: var(--text-soft);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
@@ -224,25 +223,26 @@
 }
 
 .surfaceWithArrow[data-placement^='above'] [data-arrow] {
-  bottom: -6px;
+  @apply -bottom-6;
 }
 
 .surfaceWithArrow[data-placement^='below'] [data-arrow] {
-  top: -6px;
+  @apply -top-6;
 }
 
 .surfaceWithArrow[data-placement^='before'] [data-arrow] {
-  right: -6px;
+  @apply -right-6;
 }
 
 .surfaceWithArrow[data-placement^='after'] [data-arrow] {
-  left: -6px;
+  @apply -left-6;
 }
 
 .surfaceWithArrow[data-placement='above'] [data-arrow],
 .surfaceWithArrow[data-placement='below'] [data-arrow] {
+  @apply mx-auto;
+
   inset-inline: 0;
-  margin-inline: auto;
 }
 
 .surfaceWithArrow[data-placement='before'] [data-arrow],

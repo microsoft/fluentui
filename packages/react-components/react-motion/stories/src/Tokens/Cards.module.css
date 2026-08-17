@@ -8,24 +8,21 @@
 }
 
 .controls {
-  @apply rounded-medium bg-neutral-background-1;
+  @apply w-fit rounded-medium bg-neutral-background-1 px-10 py-6;
 
   align-self: end;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  padding: 6px 10px;
   border: 2px solid var(--color-neutral-stroke-1);
   border-bottom: none;
-  width: fit-content;
 }
 
 .card {
-  @apply grid rounded-medium bg-neutral-background-1 p-30;
+  @apply grid place-items-center rounded-medium bg-neutral-background-1 p-30;
 
   border-top-right-radius: 0;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 30px 50px;
-  place-items: center;
   border: 2px solid var(--color-neutral-stroke-1);
 }
 
@@ -74,18 +71,15 @@
 }
 
 .graphP {
-  @apply text-neutral-stroke-1;
+  @apply font-monospace text-neutral-stroke-1;
 
   grid-area: graphP;
-  font-family: var(--font-monospace);
 }
 
 .graphT {
-  @apply text-neutral-stroke-1;
+  @apply justify-self-end font-monospace text-neutral-stroke-1;
 
   grid-area: graphT;
-  justify-self: end;
-  font-family: var(--font-monospace);
 }
 
 .svg {
@@ -131,14 +125,9 @@
 }
 
 .title {
-  @apply flex flex-col gap-5 rounded-medium bg-neutral-background-3;
+  @apply mx-20 my-0 flex flex-col gap-5 justify-self-center rounded-medium bg-neutral-background-3 px-10 py-5 font-monospace text-base-400;
 
   grid-area: title;
-  justify-self: center;
-  margin: 0 20px;
-  font-family: var(--font-monospace);
-  font-size: var(--text-base-400);
-  padding: 5px 10px;
 }
 
 .name {
@@ -146,9 +135,7 @@
 }
 
 .value {
-  @apply text-center whitespace-nowrap italic;
-
-  font-size: var(--text-base-200);
+  @apply text-center text-base-200 whitespace-nowrap italic;
 }
 
 @keyframes point-kf {

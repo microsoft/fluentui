@@ -12,16 +12,11 @@
 }
 
 .sectionTitle {
-  @apply m-0;
-
-  font-size: var(--text-base-400);
-  font-weight: var(--font-weight-semibold);
+  @apply m-0 text-base-400 font-semibold;
 }
 
 .sectionDescription {
-  @apply m-0 text-neutral-foreground-3;
-
-  font-size: var(--text-base-300);
+  @apply m-0 text-base-300 text-neutral-foreground-3;
 }
 
 .buttons {

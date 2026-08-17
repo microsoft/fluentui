@@ -1,15 +1,15 @@
 @reference '#theme';
 
 .bar {
-  @apply relative h-4 overflow-hidden;
+  @apply relative h-4 w-full overflow-hidden;
 
-  width: 100%;
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
 }
 
 .fill {
-  height: 100%;
+  @apply h-full;
+
   border-radius: inherit;
   background: var(--accent);
   transition: width var(--duration-medium) var(--ease-standard);
@@ -32,23 +32,20 @@
 }
 
 .indeterminate .fill {
-  @apply absolute;
+  @apply absolute inset-0;
 
-  inset: 0;
   width: 35%;
   animation: slide 1.4s ease-in-out infinite;
 }
 
 .row {
-  @apply flex flex-col gap-8;
-
-  width: 100%;
+  @apply flex w-full flex-col gap-8;
 }
 
 .label {
   @apply flex justify-between;
 
-  font-size: 12.5px;
+  font-size: calc(12.5px * var(--base-scale));
   color: var(--text-muted);
 }
 

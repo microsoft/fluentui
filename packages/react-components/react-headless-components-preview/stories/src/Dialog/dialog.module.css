@@ -1,10 +1,8 @@
 @reference '#theme';
 
 .surface {
-  @apply fixed overflow-hidden p-0;
+  @apply fixed inset-0 m-auto overflow-hidden p-0;
 
-  inset: 0;
-  margin: auto;
   width: min(96vw, 480px);
   max-height: 90vh;
   border: 1px solid var(--border);
@@ -20,15 +18,12 @@
 }
 
 .body {
-  @apply overflow-y-auto;
-
-  padding: 24px 24px 8px;
+  @apply overflow-y-auto px-24 pt-24 pb-8;
 }
 
 .title {
-  @apply font-bold;
+  @apply mx-0 mt-0 mb-8 font-bold;
 
-  margin: 0 0 8px;
   font-family: var(--font-display);
   font-size: calc(18px * var(--base-scale));
   letter-spacing: var(--tracking-heading);
@@ -38,14 +33,12 @@
   @apply m-0;
 
   color: var(--text-muted);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   line-height: 1.6;
 }
 
 .actions {
-  @apply flex justify-end gap-8;
-
-  padding: 16px 24px 20px;
+  @apply flex justify-end gap-8 px-24 pt-16 pb-20;
 }
 
 .alertSurface {
@@ -53,9 +46,8 @@
 }
 
 .btn {
-  @apply inline-flex h-32 cursor-pointer items-center justify-center font-medium;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center px-14 py-0 font-medium;
 
-  padding: 0 14px;
   border-radius: var(--radius-pill);
   border: none;
   background: var(--surface-muted);
@@ -115,7 +107,7 @@
 }
 
 .demoNote {
-  align-self: center;
+  @apply self-center;
 
   color: var(--text-muted);
 

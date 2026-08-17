@@ -11,8 +11,9 @@
 }
 
 .card {
+  @apply p-horizontal-m-nudge;
+
   grid-area: card;
-  padding: var(--spacing-horizontal-m-nudge);
 }
 
 .cardHeaderText {
@@ -20,36 +21,26 @@
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col gap-vertical-l rounded-medium p-horizontal-l shadow-16;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
-  padding: var(--spacing-horizontal-l);
-  gap: var(--spacing-vertical-l);
 }
 
 .controlSection {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-m);
+  @apply flex flex-col gap-vertical-m;
 }
 
 .sectionHeader {
-  @apply text-neutral-foreground-2;
+  @apply mb-vertical-xs pb-vertical-xs text-base-200 font-semibold text-neutral-foreground-2;
 
-  font-size: var(--text-base-200);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-vertical-xs);
   border-bottom: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
-  padding-bottom: var(--spacing-vertical-xs);
 }
 
 .toggleGroup {
-  @apply grid;
+  @apply grid gap-horizontal-m;
 
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-horizontal-m);
 }
 
 .ctaButton {
@@ -57,35 +48,23 @@
 }
 
 .field {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-xs);
+  @apply flex flex-col gap-vertical-xs;
 }
 
 .sliderField {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-xs);
+  @apply flex flex-col gap-vertical-xs;
 }
 
 .sliderWrapper {
-  @apply flex items-center;
-
-  gap: var(--spacing-horizontal-s);
+  @apply flex items-center gap-horizontal-s;
 }
 
 .sliderLabel {
-  @apply text-neutral-foreground-1;
-
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-medium);
+  @apply text-base-300 font-medium text-neutral-foreground-1;
 }
 
 .valueDisplay {
-  @apply text-neutral-foreground-2;
-
-  font-size: var(--text-base-200);
-  font-family: var(--font-monospace);
+  @apply font-monospace text-base-200 text-neutral-foreground-2;
 }
 
 .sliderHeader {

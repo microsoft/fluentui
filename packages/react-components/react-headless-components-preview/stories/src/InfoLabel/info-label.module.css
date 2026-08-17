@@ -39,14 +39,13 @@
 }
 
 .popover {
-  @apply flex max-w-320 flex-col items-start;
+  @apply flex max-w-320 min-w-min flex-col items-start;
 
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   box-shadow: var(--shadow-3);
   padding: var(--space-2);
-  min-width: min-content;
 }
 
 .popover:focus-visible {
@@ -55,10 +54,11 @@
 }
 
 .popover a {
+  @apply no-underline;
+
   color: var(--text-link);
-  text-decoration: none;
 }
 
 .popover a:hover {
-  text-decoration: underline;
+  @apply underline;
 }

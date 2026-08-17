@@ -62,9 +62,8 @@
 
 /* Media placeholder — 288×176 (v9 'medium' aspect ratio) gray box. */
 .media {
-  @apply flex items-center justify-center;
+  @apply flex w-full items-center justify-center;
 
-  width: 100%;
   aspect-ratio: 288 / 176;
   background: var(--surface-muted);
   border-radius: var(--radius-sm);
@@ -189,10 +188,9 @@
   (full accent). Width and border-radius animate so paging feels continuous.
 */
 .carouselNavButton {
-  @apply box-border flex h-8 w-8 cursor-pointer p-0;
+  @apply box-border flex h-8 w-8 cursor-pointer rounded-full p-0;
 
   border: 0;
-  border-radius: 50%;
   background: color-mix(in srgb, var(--accent) 30%, transparent);
   transition:
     width 120ms ease,
@@ -202,17 +200,16 @@
 
 @supports not (color: color-mix(in lch, white, black)) {
   .carouselNavButton {
+    @apply opacity-30;
+
     background: var(--accent);
-    opacity: 0.3;
   }
 }
 
 .carouselNavButton[aria-selected='true'] {
-  @apply w-16;
+  @apply w-16 rounded-medium opacity-100;
 
-  border-radius: 4px;
   background: var(--accent);
-  opacity: 1;
 }
 
 .carouselNavButton:focus-visible {

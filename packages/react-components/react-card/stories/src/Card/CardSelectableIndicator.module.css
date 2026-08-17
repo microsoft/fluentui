@@ -13,10 +13,7 @@
 }
 
 .card {
-  @apply max-w-400;
-
-  width: 100%;
-  height: fit-content;
+  @apply h-fit w-full max-w-400;
 }
 
 .caption {

@@ -4,8 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid gap-2;
+  @apply grid justify-items-start gap-2;
 
   grid-template-rows: auto auto;
-  justify-items: start;
 }

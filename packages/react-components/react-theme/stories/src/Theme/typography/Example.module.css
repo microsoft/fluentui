@@ -4,8 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .text {
-  font-family: var(--font-base);
-  font-size: var(--text-hero-700);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-hero-700 font-semibold;
+
   line-height: var(--leading-hero-700);
 }

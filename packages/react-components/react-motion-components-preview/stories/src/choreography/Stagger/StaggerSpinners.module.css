@@ -4,48 +4,33 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-xl);
-  padding: var(--spacing-horizontal-l);
+  @apply flex flex-col gap-vertical-xl p-horizontal-l;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium bg-neutral-background-1;
+  @apply flex flex-col gap-vertical-m rounded-medium bg-neutral-background-1 p-horizontal-m shadow-8;
 
-  gap: var(--spacing-vertical-m);
-  padding: var(--spacing-horizontal-m);
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-8);
 }
 
 .spinnerSection {
-  @apply flex flex-col rounded-medium bg-neutral-background-1;
+  @apply flex flex-col gap-vertical-m rounded-medium bg-neutral-background-1 p-horizontal-l;
 
-  gap: var(--spacing-vertical-m);
-  padding: var(--spacing-horizontal-l);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
 }
 
 .spinnerTitle {
-  @apply m-0 text-neutral-foreground-1;
-
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-semibold);
+  @apply m-0 text-base-300 font-semibold text-neutral-foreground-1;
 }
 
 .spinnerContainer {
-  @apply flex min-h-120 items-center justify-center;
-
-  padding: var(--spacing-horizontal-l);
+  @apply flex min-h-120 items-center justify-center p-horizontal-l;
 }
 
 .spinnerGrid {
-  @apply grid;
+  @apply grid items-start gap-horizontal-l;
 
-  gap: var(--spacing-horizontal-l);
   grid-template-columns: 1fr;
-  align-items: start;
 }
 
 @media (min-width: 640px) {
@@ -59,9 +44,7 @@
 }
 
 .arc {
-  @apply absolute border-t-brand-background border-b-brand-background;
-
-  border-radius: 50%;
+  @apply absolute rounded-full border-t-brand-background border-b-brand-background;
 }
 
 .arc1 {
@@ -87,33 +70,23 @@
 }
 
 .orbitDot {
-  @apply absolute h-12 w-12 bg-brand-background;
+  @apply absolute top-1/2 left-1/2 h-12 w-12 rounded-full bg-brand-background;
 
-  left: 50%;
-  top: 50%;
-  border-radius: 50%;
   transform: translate(-50%, -50%) translateY(-22px);
   transform-origin: center center;
   will-change: transform;
 }
 
 .growingBarsSpinner {
-  @apply flex h-40;
-
-  gap: var(--spacing-horizontal-s);
-  align-items: end;
+  @apply flex h-40 items-end gap-horizontal-s;
 }
 
 .growingBar {
-  @apply w-6 rounded-small bg-brand-background;
-
-  height: 100%;
+  @apply h-full w-6 rounded-small bg-brand-background;
 }
 
 .slidingBlocksSpinner {
-  @apply flex items-center;
-
-  gap: var(--spacing-horizontal-l);
+  @apply flex items-center gap-horizontal-l;
 }
 
 .slidingBlock {

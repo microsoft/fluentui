@@ -4,15 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .invertedWrapper {
-  @apply flex;
-
-  background: var(--color-neutral-background-1);
-  padding: var(--spacing-horizontal-xl);
+  @apply flex bg-neutral-background-1 p-horizontal-xl;
 }
 
 .row {
-  @apply grid;
+  @apply grid gap-horizontal-l;
 
-  gap: var(--spacing-horizontal-l);
   grid-template-columns: 1fr 150px 1fr;
 }

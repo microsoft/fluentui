@@ -3,43 +3,36 @@
 .row {
   @apply relative inline-flex cursor-pointer items-center gap-12 select-none;
 
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text);
 }
 
 .row[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .input {
-  @apply absolute h-22 w-38 cursor-pointer;
+  @apply absolute inset-0 h-22 w-38 cursor-pointer opacity-0;
 
-  inset: 0;
-  opacity: 0;
   z-index: 1;
 }
 
 .indicator {
-  @apply relative h-22 w-38;
+  @apply relative h-22 w-38 shrink-0;
 
   border-radius: var(--radius-pill);
   background: var(--surface-sunken);
   border: 1px solid var(--border);
-  flex-shrink: 0;
   transition:
     background var(--duration-medium) var(--ease-standard),
     border-color var(--duration-medium) var(--ease-standard);
 }
 
 .indicator::after {
-  @apply absolute top-1 left-1 h-18 w-18;
+  @apply absolute top-1 left-1 h-18 w-18 rounded-full shadow-2;
 
   content: '';
-  border-radius: 50%;
   background: var(--bg-elev);
-  box-shadow: var(--shadow-2);
   transition: transform var(--duration-medium) var(--ease-emphasized);
 }
 

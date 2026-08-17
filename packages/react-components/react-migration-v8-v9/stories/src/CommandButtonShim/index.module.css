@@ -4,16 +4,12 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid items-center gap-10;
+  @apply grid w-fit content-center items-center justify-items-center gap-10;
 
   grid-template-columns: auto auto auto;
   grid-template-rows: 1fr;
-  width: fit-content;
-  align-content: center;
-  justify-items: center;
 }
 
 .componentName {
-  justify-self: end;
-  margin: 0 10px 0 0;
+  @apply my-0 mr-10 ml-0 justify-self-end;
 }

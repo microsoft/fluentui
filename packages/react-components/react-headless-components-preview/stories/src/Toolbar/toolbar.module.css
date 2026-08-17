@@ -48,9 +48,7 @@
 }
 
 .btn[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .btnActive {
@@ -59,18 +57,13 @@
 }
 
 .divider {
-  @apply w-1;
+  @apply mx-4 my-4 w-1 self-stretch;
 
-  align-self: stretch;
-  margin: 4px 4px;
   background: var(--border);
 }
 
 .toolbar[data-vertical] .divider {
-  @apply h-1;
-
-  width: auto;
-  margin: 4px 4px;
+  @apply mx-4 my-4 h-1 w-auto;
 }
 
 .group {

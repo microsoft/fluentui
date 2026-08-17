@@ -4,5 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .tableContainer {
-  margin: var(--spacing-vertical-m);
+  @apply m-vertical-m;
 }

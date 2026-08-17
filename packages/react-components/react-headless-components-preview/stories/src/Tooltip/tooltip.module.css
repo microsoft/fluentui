@@ -34,26 +34,27 @@
 
 /* Main-axis placement — push arrow to the outer edge */
 .contentWithArrow[data-placement^='above'] [data-arrow] {
-  bottom: -4px;
+  @apply -bottom-4;
 }
 
 .contentWithArrow[data-placement^='below'] [data-arrow] {
-  top: -4px;
+  @apply -top-4;
 }
 
 .contentWithArrow[data-placement^='before'] [data-arrow] {
-  right: -4px;
+  @apply -right-4;
 }
 
 .contentWithArrow[data-placement^='after'] [data-arrow] {
-  left: -4px;
+  @apply -left-4;
 }
 
 /* Cross-axis centering for cardinal placements */
 .contentWithArrow[data-placement='above'] [data-arrow],
 .contentWithArrow[data-placement='below'] [data-arrow] {
+  @apply mx-auto;
+
   inset-inline: 0;
-  margin-inline: auto;
 }
 
 .contentWithArrow[data-placement='before'] [data-arrow],
@@ -117,7 +118,7 @@
 }
 
 .capitalize {
-  text-transform: capitalize;
+  @apply capitalize;
 }
 
 .bold {
@@ -129,5 +130,5 @@
 }
 
 .underline {
-  text-decoration: underline;
+  @apply underline;
 }

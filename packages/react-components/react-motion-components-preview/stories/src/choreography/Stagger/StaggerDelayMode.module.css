@@ -4,68 +4,43 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-xl);
+  @apply flex flex-col gap-vertical-xl;
 }
 
 .controls {
-  @apply flex items-center rounded-small bg-neutral-background-2;
+  @apply flex items-center gap-horizontal-m rounded-small bg-neutral-background-2 p-vertical-m;
 
-  gap: var(--spacing-horizontal-m);
-  padding: var(--spacing-vertical-m);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
 }
 
 .comparison {
-  @apply grid;
+  @apply grid gap-horizontal-xl;
 
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-horizontal-xl);
 }
 
 .section {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-m);
+  @apply flex flex-col gap-vertical-m;
 }
 
 .sectionTitle {
-  @apply text-neutral-foreground-1;
-
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-vertical-xs);
+  @apply mb-vertical-xs text-base-300 font-semibold text-neutral-foreground-1;
 }
 
 .modeHeader {
-  @apply flex items-center;
-
-  gap: var(--spacing-horizontal-s);
-  margin-bottom: var(--spacing-vertical-s);
+  @apply mb-vertical-s flex items-center gap-horizontal-s;
 }
 
 .items {
-  @apply relative flex min-h-80 flex-wrap items-start rounded-small;
+  @apply relative flex min-h-80 flex-wrap items-start gap-horizontal-s rounded-small p-vertical-m;
 
-  gap: var(--spacing-horizontal-s);
-  padding: var(--spacing-vertical-m);
   border: var(--stroke-width-thin) dashed var(--color-neutral-stroke-2);
 }
 
 .description {
-  @apply text-neutral-foreground-3;
-
-  font-size: var(--text-base-200);
-  margin-top: var(--spacing-vertical-xs);
+  @apply mt-vertical-xs text-base-200 text-neutral-foreground-3;
 }
 
 .badge {
-  @apply absolute rounded-small bg-brand-background-2 text-brand-foreground-1;
-
-  font-size: var(--text-base-100);
-  font-weight: var(--font-weight-medium);
-  padding: var(--spacing-vertical-xxs) var(--spacing-horizontal-xs);
-  top: var(--spacing-vertical-xs);
-  right: var(--spacing-horizontal-xs);
+  @apply absolute top-vertical-xs right-horizontal-xs rounded-small bg-brand-background-2 px-horizontal-xs py-vertical-xxs text-base-100 font-medium text-brand-foreground-1;
 }

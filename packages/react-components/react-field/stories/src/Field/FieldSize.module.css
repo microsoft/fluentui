@@ -4,7 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .stack {
-  @apply flex flex-col;
-
-  row-gap: var(--spacing-vertical-l);
+  @apply flex flex-col gap-y-vertical-l;
 }

@@ -8,16 +8,13 @@
 }
 
 .controls {
-  @apply flex flex-col gap-12 rounded-medium bg-neutral-background-1 p-16;
+  @apply flex flex-col gap-12 rounded-medium bg-neutral-background-1 p-16 shadow-8;
 
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-8);
 }
 
 .userCard {
-  @apply mb-4;
-
-  width: 100%;
+  @apply mb-4 w-full;
 }
 
 .cardHeader {
@@ -25,7 +22,7 @@
 }
 
 .cardContent {
-  padding: 0 16px 16px 16px;
+  @apply px-16 pt-0 pb-16;
 }
 
 .ctaButton {

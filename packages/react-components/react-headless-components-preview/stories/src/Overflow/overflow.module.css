@@ -5,25 +5,20 @@
 }
 
 .container [data-overflow-menu] {
-  flex-shrink: 0;
+  @apply shrink-0;
 }
 
 .resizer {
-  @apply w-360 overflow-hidden p-8;
+  @apply w-360 max-w-full resize-x overflow-hidden p-8;
 
-  resize: horizontal;
-  max-width: 100%;
   border: 1px dashed var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
 }
 
 .resizerVertical {
-  @apply h-220 overflow-hidden p-8;
+  @apply h-220 max-h-full w-max resize-y overflow-hidden p-8;
 
-  resize: vertical;
-  max-height: 100%;
-  width: max-content;
   border: 1px dashed var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
@@ -34,15 +29,12 @@
 }
 
 .vertical {
-  @apply flex-col items-stretch;
-
-  height: 100%;
+  @apply h-full flex-col items-stretch;
 }
 
 .item {
-  @apply flex-none cursor-pointer whitespace-nowrap;
+  @apply flex-none cursor-pointer px-12 py-6 whitespace-nowrap;
 
-  padding: 6px 12px;
   border-radius: var(--radius-pill);
   background: var(--surface-muted);
   color: var(--text);
@@ -60,9 +52,8 @@
 }
 
 .menu {
-  @apply flex-none cursor-pointer;
+  @apply flex-none cursor-pointer px-12 py-6;
 
-  padding: 6px 12px;
   border-radius: var(--radius-pill);
   background: var(--accent);
   color: var(--accent-contrast);
@@ -70,18 +61,13 @@
 }
 
 .divider {
-  @apply w-1 flex-none;
+  @apply mx-4 my-0 w-1 flex-none self-stretch;
 
-  align-self: stretch;
-  margin: 0 4px;
   background: var(--border);
 }
 
 .vertical .divider {
-  @apply h-1;
-
-  width: auto;
-  margin: 4px 0;
+  @apply mx-0 my-4 h-1 w-auto;
 }
 
 .menuPopover {
@@ -100,10 +86,8 @@
 }
 
 .menuItem {
-  @apply flex cursor-pointer items-center text-left whitespace-nowrap;
+  @apply flex w-full cursor-pointer items-center px-10 py-6 text-left whitespace-nowrap;
 
-  width: 100%;
-  padding: 6px 10px;
   border: none;
   background: transparent;
   color: var(--text);
@@ -117,8 +101,7 @@
 }
 
 .menuDivider {
-  @apply h-1;
+  @apply mx-0 my-4 h-1;
 
-  margin: 4px 0;
   background: var(--border);
 }

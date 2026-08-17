@@ -4,14 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .messageBarGroup {
-  @apply mt-10 flex h-300 flex-col gap-10 overflow-auto;
+  @apply mt-10 flex h-300 flex-col gap-10 overflow-auto p-horizontal-m-nudge;
 
-  padding: var(--spacing-horizontal-m-nudge);
   border: 2px solid var(--color-brand-foreground-1);
 }
 
 .buttonGroup {
-  @apply flex gap-5;
-
-  justify-content: end;
+  @apply flex justify-end gap-5;
 }

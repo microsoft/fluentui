@@ -11,15 +11,12 @@
 }
 
 .card {
-  @apply flex flex-col items-center justify-center rounded-medium p-20;
+  @apply flex flex-col items-center justify-center rounded-medium p-20 shadow-16;
 
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .indicator {
-  @apply h-80 w-80 bg-brand-background;
-
-  border-radius: 50%;
+  @apply h-80 w-80 rounded-full bg-brand-background;
 }

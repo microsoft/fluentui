@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .base {
-  @apply flex flex-col;
-
-  row-gap: var(--spacing-vertical-m-nudge);
+  @apply flex flex-col gap-y-vertical-m-nudge;
 }
 
 .inverted {
@@ -18,5 +16,5 @@
 }
 
 .fieldWrapper {
-  padding: var(--spacing-vertical-m-nudge) var(--spacing-horizontal-m-nudge);
+  @apply px-horizontal-m-nudge py-vertical-m-nudge;
 }

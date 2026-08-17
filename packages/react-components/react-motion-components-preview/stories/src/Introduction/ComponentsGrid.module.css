@@ -4,39 +4,27 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .grid {
-  @apply grid;
+  @apply mt-vertical-xxl mb-vertical-xxl grid gap-horizontal-l;
 
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--spacing-horizontal-l);
-  margin-top: var(--spacing-vertical-xxl);
-  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium bg-neutral-background-1;
+  @apply flex flex-col items-center gap-vertical-m rounded-medium bg-neutral-background-1 p-vertical-xl;
 
-  gap: var(--spacing-vertical-m);
-  padding: var(--spacing-vertical-xl);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
 .name {
-  @apply m-0;
-
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--text-base-400);
+  @apply m-0 text-base-400 font-semibold;
 }
 
 .demoArea {
-  @apply flex h-60 items-center justify-center;
-
-  width: 100%;
+  @apply flex h-60 w-full items-center justify-center;
 }
 
 .demoBox {
-  @apply flex h-50 w-50 items-center justify-center rounded-small bg-neutral-background-3 text-neutral-foreground-1;
+  @apply flex h-50 w-50 items-center justify-center rounded-small bg-neutral-background-3 text-base-200 font-semibold text-neutral-foreground-1;
 
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  font-size: var(--text-base-200);
-  font-weight: var(--font-weight-semibold);
 }

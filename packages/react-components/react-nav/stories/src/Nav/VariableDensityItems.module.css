@@ -16,7 +16,5 @@
 }
 
 .field {
-  @apply ms-8 mt-4 flex flex-col;
-
-  grid-row-gap: var(--spacing-vertical-s);
+  @apply ms-8 mt-4 flex flex-col gap-y-vertical-s;
 }

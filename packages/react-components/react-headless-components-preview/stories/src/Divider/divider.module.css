@@ -4,9 +4,8 @@
    The line itself comes from ::before / ::after on the root. */
 
 .divider {
-  @apply flex items-center gap-12;
+  @apply flex w-full items-center gap-12;
 
-  width: 100%;
   color: var(--text-faint);
 }
 
@@ -29,19 +28,17 @@
 }
 
 .label {
-  @apply inline-flex items-center gap-6 font-medium whitespace-nowrap;
+  @apply inline-flex items-center gap-6 font-medium whitespace-nowrap uppercase;
 
   font-size: calc(11px * var(--base-scale));
   letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--text-faint);
 }
 
 .label::before {
-  @apply h-8 w-8;
+  @apply h-8 w-8 rounded-full;
 
   content: '';
-  border-radius: 50%;
   border: 1.5px solid var(--border-stronger);
 }
 
@@ -58,18 +55,14 @@
 
 /* Vertical: stack lines top/bottom of label, swap orientation. */
 .dividerVertical {
-  @apply flex min-w-80 flex-col items-center gap-12;
-
-  height: 100%;
-  width: auto;
+  @apply flex h-full w-auto min-w-80 flex-col items-center gap-12;
 }
 
 .dividerVertical::before,
 .dividerVertical::after {
-  @apply min-h-8 w-1 flex-1;
+  @apply h-auto min-h-8 w-1 flex-1;
 
   content: '';
-  height: auto;
   background: var(--border);
 }
 
@@ -85,9 +78,8 @@
 
 /* Plain hairline (no label) */
 .horizontal {
-  @apply h-1;
+  @apply h-1 w-full;
 
-  width: 100%;
   background: var(--border);
 }
 
@@ -105,9 +97,7 @@
 }
 
 .column {
-  @apply flex flex-col gap-14;
-
-  width: 100%;
+  @apply flex w-full flex-col gap-14;
 }
 
 .section {
@@ -116,37 +106,29 @@
 }
 
 .verticalGroup {
-  @apply grid h-180 gap-24;
+  @apply grid h-180 w-full gap-24;
 
   grid-template-columns: repeat(4, 1fr);
-  width: 100%;
 }
 
 .verticalCol {
-  @apply flex flex-col items-center gap-6;
-
-  height: 100%;
+  @apply flex h-full flex-col items-center gap-6;
 }
 
 .verticalCaption {
-  @apply font-medium;
+  @apply font-medium uppercase;
 
   font-size: calc(11px * var(--base-scale));
-  text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-faint);
 }
 
 .verticalLineWrap {
-  @apply flex flex-1 items-center justify-center;
-
-  width: 100%;
+  @apply flex w-full flex-1 items-center justify-center;
 }
 
 .labelled {
-  @apply flex items-center gap-12 text-center;
-
-  width: 100%;
+  @apply flex w-full items-center gap-12 text-center;
 }
 
 .labelledLine {
@@ -156,10 +138,9 @@
 }
 
 .labelledText {
-  @apply font-semibold;
+  @apply font-semibold uppercase;
 
   font-size: calc(11px * var(--base-scale));
-  text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-faint);
 }

@@ -4,10 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .example {
-  @apply h-100 w-100;
+  @apply mx-0 my-20 h-100 w-100;
 
   border: 1px solid #ccc;
-  margin: 20px 0;
 }
 
 @media (forced-colors: active) {

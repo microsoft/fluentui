@@ -8,10 +8,9 @@
 }
 
 .previewColor {
-  @apply h-50 w-50 rounded-medium;
+  @apply mx-0 my-vertical-m-nudge h-50 w-50 rounded-medium;
 
   border: 1px solid var(--color-neutral-stroke-1);
-  margin: var(--spacing-vertical-m-nudge) 0;
 }
 
 @media (forced-colors: active) {
@@ -21,13 +20,11 @@
 }
 
 .button {
-  margin-inline-end: var(--spacing-horizontal-s);
+  @apply me-horizontal-s;
 }
 
 .input {
-  @apply block;
-
-  margin: var(--spacing-vertical-s-nudge) 0;
+  @apply mx-0 my-vertical-s-nudge block;
 }
 
 .row {
@@ -35,7 +32,5 @@
 }
 
 .sliders {
-  @apply flex flex-col;
-
-  width: 80%;
+  @apply flex w-4/5 flex-col;
 }

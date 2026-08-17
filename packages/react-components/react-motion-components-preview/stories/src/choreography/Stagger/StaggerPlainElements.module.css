@@ -4,17 +4,14 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col items-start;
-
-  gap: var(--spacing-horizontal-xl);
+  @apply flex flex-col items-start gap-horizontal-xl;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium p-10;
+  @apply flex flex-col rounded-medium p-10 shadow-16;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .field {
@@ -26,7 +23,5 @@
 }
 
 .item {
-  @apply flex h-100 w-40 items-center justify-center bg-neutral-background-static text-neutral-foreground-inverted;
-
-  margin: var(--spacing-horizontal-xxs);
+  @apply m-horizontal-xxs flex h-100 w-40 items-center justify-center bg-neutral-background-static text-neutral-foreground-inverted;
 }

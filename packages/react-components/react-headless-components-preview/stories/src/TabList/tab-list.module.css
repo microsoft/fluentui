@@ -1,24 +1,21 @@
 @reference '#theme';
 
 .tabs {
-  @apply flex gap-4 p-4;
+  @apply flex w-max gap-4 p-4;
 
   background: var(--surface-muted);
   border-radius: var(--radius-pill);
-  width: max-content;
 }
 
 .tabsVertical {
-  @apply w-200 flex-col;
+  @apply w-200 flex-col self-start;
 
   border-radius: var(--radius-lg);
-  align-self: flex-start;
 }
 
 .tab {
-  @apply relative cursor-pointer text-left font-medium;
+  @apply relative cursor-pointer px-14 py-7 text-left font-medium;
 
-  padding: 7px 14px;
   background: transparent;
   border: none;
   color: var(--text-muted);
@@ -51,9 +48,7 @@
 }
 
 .layout {
-  @apply flex flex-col gap-16;
-
-  width: 100%;
+  @apply flex w-full flex-col gap-16;
 }
 
 .layoutVertical {
@@ -61,22 +56,20 @@
 }
 
 .panel {
-  @apply flex-1;
+  @apply flex-1 px-4 pt-16 pb-4;
 
-  padding: 16px 4px 4px;
   font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
   line-height: 1.6;
 }
 
 .layoutVertical .panel {
-  padding: 4px 0 0;
+  @apply px-0 pt-4 pb-0;
 }
 
 .panelTitle {
-  @apply text-base-300 font-semibold;
+  @apply mx-0 mt-0 mb-6 text-base-300 font-semibold;
 
-  margin: 0 0 6px;
   color: var(--text);
   letter-spacing: var(--tracking-tight);
 }

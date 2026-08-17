@@ -4,17 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply mb-vertical-l flex flex-col gap-vertical-s rounded-medium p-vertical-m;
 
-  gap: var(--spacing-vertical-s);
-  margin-bottom: var(--spacing-vertical-l);
-  padding: var(--spacing-vertical-m);
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
 }
 
 .list {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-m);
-  padding: var(--spacing-vertical-s) 0;
+  @apply flex flex-col gap-vertical-m px-0 py-vertical-s;
 }

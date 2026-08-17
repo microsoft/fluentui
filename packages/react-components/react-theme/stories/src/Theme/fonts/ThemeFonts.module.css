@@ -6,7 +6,7 @@
  * deliberately renders a Teams-light-theme snapshot rather than the active theme. */
 
 .propGrid {
-  @apply grid items-center gap-x-10 gap-y-10;
+  @apply grid content-center items-center gap-x-10 gap-y-10;
 
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr;
@@ -18,5 +18,4 @@
     Roboto,
     'Helvetica Neue',
     sans-serif;
-  align-content: center;
 }

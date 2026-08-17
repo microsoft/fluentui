@@ -8,11 +8,9 @@
 }
 
 .carousel {
-  @apply mt-24 rounded-medium;
+  @apply mt-24 rounded-medium px-0 py-20 shadow-16;
 
   border: 2px solid var(--color-neutral-stroke-1);
-  box-shadow: var(--shadow-16);
-  padding: 20px 0;
 }
 
 .card {
@@ -20,35 +18,29 @@
 }
 
 .logLabel {
-  @apply bg-brand-background text-neutral-foreground-on-brand;
+  @apply w-fit bg-brand-background px-12 py-2 font-bold text-neutral-foreground-on-brand;
 
   align-self: end;
-  width: fit-content;
-  font-weight: var(--font-weight-bold);
-  padding: 2px 12px;
   border-radius: var(--radius-medium) var(--radius-medium) 0 0;
 }
 
 .log {
-  @apply max-h-250 min-w-240 flex-1 overflow-y-auto p-12;
+  @apply max-h-250 min-w-240 flex-1 overflow-y-auto p-12 shadow-16;
 
-  box-shadow: var(--shadow-16);
   border: 2px solid var(--color-brand-background);
   border-radius: var(--radius-medium) 0 var(--radius-medium) var(--radius-medium);
 }
 
 .logContainer {
-  @apply flex flex-col;
+  @apply flex h-full flex-col;
 
-  height: 100%;
   filter: drop-shadow(0 0 4px var(--color-neutral-stroke-1));
 }
 
 .wireframe {
-  @apply relative flex h-100 flex-col gap-12 bg-neutral-background-3 p-40;
+  @apply relative flex h-100 flex-col place-content-center gap-12 bg-neutral-background-3 p-40;
 
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  place-content: center;
 }
 
 .wireframeEven {
@@ -58,23 +50,17 @@
 }
 
 .wireframeInfo {
-  @apply absolute top-12 right-12 bg-palette-red-background-2;
+  @apply absolute top-12 right-12 bg-palette-red-background-2 px-8 py-4 text-base-200;
 
   border: var(--stroke-width-thin) dotted var(--color-palette-red-border-2);
-  font-size: var(--text-base-200);
-  padding: 4px 8px;
 }
 
 .wireframeSmall {
-  @apply min-w-100;
-
-  padding: 40px 20px;
+  @apply min-w-100 px-20 py-40;
 }
 
 .wireframeMedium {
-  @apply min-w-200;
-
-  padding: 40px 20px;
+  @apply min-w-200 px-20 py-40;
 }
 
 .wireframeLarge {

@@ -7,10 +7,8 @@
 */
 
 .chat {
-  @apply flex items-center gap-4;
+  @apply flex w-full items-center gap-4 px-8 py-8;
 
-  width: 100%;
-  padding: 8px 8px;
   background: var(--bg-soft);
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
@@ -26,18 +24,15 @@
 
 .chatLeading,
 .chatTrailing {
-  @apply inline-flex items-center gap-2;
-
-  flex-shrink: 0;
+  @apply inline-flex shrink-0 items-center gap-2;
 }
 
 .chatField {
-  @apply min-w-0 flex-1 text-base-300;
+  @apply min-w-0 flex-1 px-8 py-8 text-base-300;
 
   border: none;
   outline: none;
   background: transparent;
-  padding: 8px 8px;
   color: var(--text);
 }
 
@@ -46,9 +41,8 @@
 }
 
 .iconBtn {
-  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center rounded-full;
 
-  border-radius: 50%;
   border: none;
   background: transparent;
   color: var(--text-muted);
@@ -74,9 +68,7 @@
 }
 
 .iconBtn[disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.35;
+  @apply cursor-not-allowed opacity-35;
 }
 
 .send {
@@ -104,16 +96,17 @@
    chat input shown in the canvas screenshot). */
 
 .chatUnderline {
+  @apply rounded-none px-4 py-6;
+
   background: transparent;
-  border-radius: 0;
   border-bottom: 1px solid var(--border);
-  padding: 6px 4px;
 }
 
 .chatUnderline:has(:focus-visible) {
+  @apply border-transparent;
+
   background: transparent;
   border-bottom-color: var(--text);
-  border-color: transparent;
   border-bottom: 1px solid var(--text);
 }
 
@@ -124,7 +117,5 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply max-w-560;
-
-  width: 100%;
+  @apply w-full max-w-560;
 }

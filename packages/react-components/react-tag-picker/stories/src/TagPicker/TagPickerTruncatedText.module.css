@@ -4,9 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .tagTruncatedPrimaryText {
-  @apply overflow-x-hidden whitespace-nowrap;
-
-  text-overflow: ellipsis;
+  @apply overflow-x-hidden text-ellipsis whitespace-nowrap;
 }
 
 .tagPrimaryTextFixedWidth {
@@ -14,9 +12,7 @@
 }
 
 .optionContent {
-  @apply overflow-x-hidden whitespace-nowrap;
-
-  text-overflow: ellipsis;
+  @apply overflow-x-hidden text-ellipsis whitespace-nowrap;
 }
 
 .optionSecondaryContent {

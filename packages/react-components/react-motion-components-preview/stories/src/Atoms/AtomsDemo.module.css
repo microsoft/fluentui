@@ -4,18 +4,14 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col overflow-hidden rounded-medium;
+  @apply mt-vertical-xxl mb-vertical-xxl flex flex-col overflow-hidden rounded-medium;
 
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  margin-top: var(--spacing-vertical-xxl);
-  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 .controls {
-  @apply flex flex-wrap items-center bg-neutral-background-2;
+  @apply flex flex-wrap items-center gap-horizontal-l bg-neutral-background-2 px-horizontal-xl py-vertical-l;
 
-  gap: var(--spacing-horizontal-l);
-  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
   border-bottom: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
@@ -30,26 +26,21 @@
 }
 
 .demoArea {
-  @apply flex min-h-120 items-center justify-center bg-neutral-background-1;
+  @apply flex min-h-120 items-center justify-center bg-neutral-background-1 p-vertical-xl;
 
   flex: 0 0 200px;
-  padding: var(--spacing-vertical-xl);
 }
 
 .demoBox {
-  @apply flex h-80 w-100 items-center justify-center rounded-medium bg-neutral-background-3 text-neutral-foreground-1;
+  @apply flex h-80 w-100 items-center justify-center rounded-medium bg-neutral-background-3 font-semibold text-neutral-foreground-1;
 
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  font-weight: var(--font-weight-semibold);
 }
 
 .codeArea {
-  @apply m-0 min-w-0 flex-auto overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
+  @apply m-0 min-w-0 flex-auto overflow-auto bg-neutral-background-3 px-horizontal-xl py-vertical-l font-monospace text-base-100 text-neutral-foreground-1;
 
-  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
   border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  font-family: var(--font-monospace);
-  font-size: var(--text-base-100);
   line-height: var(--leading-base-200);
 }
 

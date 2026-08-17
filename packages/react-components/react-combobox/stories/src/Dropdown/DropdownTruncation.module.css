@@ -4,10 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid max-w-200 gap-2;
+  @apply grid max-w-200 justify-items-start gap-2;
 
   grid-template-rows: repeat(1fr);
-  justify-items: start;
 }
 
 .listbox {
@@ -15,13 +14,9 @@
 }
 
 .truncatedText {
-  @apply overflow-x-hidden whitespace-nowrap;
-
-  text-overflow: ellipsis;
+  @apply overflow-x-hidden text-ellipsis whitespace-nowrap;
 }
 
 .optionText {
-  @apply overflow-hidden;
-
-  overflow-wrap: break-word;
+  @apply overflow-hidden break-words;
 }

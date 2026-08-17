@@ -16,10 +16,9 @@
 }
 
 .root {
-  @apply grid max-w-400 gap-2;
+  @apply grid max-w-400 justify-items-start gap-2;
 
   grid-template-rows: repeat(1fr);
-  justify-items: start;
 }
 
 .listbox {

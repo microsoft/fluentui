@@ -41,9 +41,7 @@
 }
 
 .cardSelectable[aria-disabled='true'] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 
 .cardSelectable[aria-disabled='true']:hover {
@@ -59,9 +57,7 @@
 }
 
 .previewImage {
-  @apply block h-160 object-cover;
-
-  width: 100%;
+  @apply block h-160 w-full object-cover;
 }
 
 .header {
@@ -75,24 +71,20 @@
 }
 
 .headerImage {
-  @apply flex h-40 w-40 overflow-hidden;
+  @apply flex h-40 w-40 shrink-0 overflow-hidden;
 
   border-radius: var(--radius-md);
   background: var(--surface-muted);
-  flex-shrink: 0;
 }
 
 .headerImg {
-  @apply object-cover;
-
-  height: 100%;
-  width: 100%;
+  @apply h-full w-full object-cover;
 }
 
 .headerTitle {
   @apply font-semibold;
 
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text);
   line-height: 1.2;
 }
@@ -134,7 +126,7 @@
 }
 
 .body {
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text-muted);
   line-height: 1.4;
 }

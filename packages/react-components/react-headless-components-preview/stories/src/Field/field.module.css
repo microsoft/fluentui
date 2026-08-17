@@ -1,9 +1,7 @@
 @reference '#theme';
 
 .field {
-  @apply flex flex-col gap-6;
-
-  width: 100%;
+  @apply flex w-full flex-col gap-6;
 }
 
 .label {
@@ -42,7 +40,5 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex max-w-360 flex-col gap-20;
-
-  width: 100%;
+  @apply flex w-full max-w-360 flex-col gap-20;
 }

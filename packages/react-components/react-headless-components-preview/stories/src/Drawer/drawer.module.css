@@ -6,17 +6,14 @@
   Drawer renders into) for the dim layer.
 */
 .drawerOverlay {
-  @apply fixed top-0 right-0 bottom-0 m-0 hidden w-320 flex-col p-0;
+  @apply fixed top-0 right-0 bottom-0 left-auto m-0 hidden min-h-screen w-320 flex-col p-0 shadow-4;
 
   /* `left: auto` overrides the user-agent `inset-inline-start: 0` on
      `<dialog>` so the drawer pins to the right edge instead of centering. */
-  left: auto;
-  min-height: 100vh;
   max-width: calc(100vw - 32px);
   border: 0;
   border-left: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
-  box-shadow: var(--shadow-4);
   transform: translateX(100%);
   transition: transform 200ms ease-in-out;
 }
@@ -42,12 +39,10 @@
   opacity on the [data-open] attribute.
 */
 .drawerInline {
-  @apply w-0 overflow-hidden;
+  @apply w-0 shrink-0 overflow-hidden opacity-0;
 
-  flex-shrink: 0;
   background: var(--bg-soft);
   border-right: var(--stroke-thin) solid transparent;
-  opacity: 0;
   transition:
     width 200ms linear,
     opacity 200ms linear,
@@ -55,9 +50,8 @@
 }
 
 .drawerInline[data-open] {
-  @apply w-288;
+  @apply w-288 opacity-100;
 
-  opacity: 1;
   border-right-color: var(--border);
 }
 
@@ -92,11 +86,10 @@
 }
 
 .drawerBody {
-  @apply overflow-auto;
+  @apply grow overflow-auto;
 
-  flex-grow: 1;
   padding: var(--space-3);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text-muted);
 }
 
@@ -135,7 +128,7 @@
   border-radius: var(--radius-pill);
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .primaryButton:hover {
@@ -155,7 +148,7 @@
   border-radius: var(--radius-md);
   background: var(--bg-elev);
   color: var(--text);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .secondaryButton:hover {
@@ -194,11 +187,10 @@
 }
 
 .navLink {
-  @apply font-medium;
+  @apply font-medium no-underline;
 
   border-radius: var(--radius-md);
   padding: var(--space-2) var(--space-3);
-  text-decoration: none;
   color: var(--text-muted);
 }
 

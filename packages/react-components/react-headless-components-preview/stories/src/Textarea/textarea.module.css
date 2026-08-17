@@ -1,13 +1,11 @@
 @reference '#theme';
 
 .wrap {
-  @apply flex;
+  @apply flex w-full px-12 py-8;
 
-  width: 100%;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 8px 12px;
   transition:
     border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
@@ -24,14 +22,12 @@
 }
 
 .textarea {
-  @apply min-h-96;
+  @apply min-h-96 w-full resize-y;
 
-  width: 100%;
   border: none;
   outline: none;
   background: transparent;
-  resize: vertical;
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   line-height: 1.55;
   color: var(--text);
   font-family: inherit;
@@ -48,7 +44,5 @@
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex max-w-360 flex-col gap-16;
-
-  width: 100%;
+  @apply flex w-full max-w-360 flex-col gap-16;
 }

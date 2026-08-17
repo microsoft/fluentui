@@ -4,8 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid;
+  @apply grid justify-items-center;
 
   grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
 }

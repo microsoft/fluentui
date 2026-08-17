@@ -11,10 +11,9 @@
 }
 
 .card {
-  @apply max-h-300 overflow-hidden;
+  @apply max-h-300 overflow-hidden p-vertical-xl;
 
   grid-area: card;
-  padding: var(--spacing-vertical-xl);
 }
 
 .cardHeaderText {
@@ -22,12 +21,10 @@
 }
 
 .controls {
-  @apply flex flex-col rounded-medium;
+  @apply flex flex-col rounded-medium p-vertical-m-nudge shadow-16;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
-  padding: var(--spacing-vertical-m-nudge);
 }
 
 .field {
@@ -43,8 +40,7 @@
 }
 
 .item {
-  @apply h-100 w-100 bg-brand-background;
+  @apply h-100 w-100 rounded-full bg-brand-background;
 
   border: var(--stroke-width-thicker) solid var(--color-transparent-stroke);
-  border-radius: 50%;
 }

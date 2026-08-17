@@ -4,12 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .results {
-  @apply m-0 list-none bg-neutral-background-1 p-0;
+  @apply m-0 mt-vertical-m list-none bg-neutral-background-1 p-0;
 
   border: 1px solid var(--color-neutral-stroke-1);
-  margin-top: var(--spacing-vertical-m);
 }
 
 .resultItem {
-  padding: var(--spacing-vertical-s) var(--spacing-horizontal-s);
+  @apply px-horizontal-s py-vertical-s;
 }

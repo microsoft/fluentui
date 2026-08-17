@@ -8,7 +8,5 @@
 }
 
 .example {
-  @apply flex min-h-96 flex-col items-center bg-neutral-background-1;
-
-  justify-items: center;
+  @apply flex min-h-96 flex-col items-center justify-items-center bg-neutral-background-1;
 }

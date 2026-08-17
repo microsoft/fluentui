@@ -11,12 +11,10 @@
 }
 
 .card {
-  @apply flex flex-col items-center rounded-medium p-10 pt-120;
+  @apply flex flex-col items-center justify-end rounded-medium p-10 pt-120 shadow-16;
 
-  justify-content: end;
   grid-area: card;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .item {
@@ -26,8 +24,5 @@
 }
 
 .description {
-  @apply mt-10 rounded-medium bg-neutral-background-1-pressed;
-
-  font-family: var(--font-monospace);
-  padding: 5px 10px;
+  @apply mt-10 rounded-medium bg-neutral-background-1-pressed px-10 py-5 font-monospace;
 }

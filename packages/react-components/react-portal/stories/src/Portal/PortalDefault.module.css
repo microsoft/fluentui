@@ -12,30 +12,21 @@
 }
 
 .state {
-  @apply p-4 text-center;
+  @apply p-4 text-center font-monospace;
 
-  font-family: var(--font-monospace);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
 .clippingContainer {
-  @apply overflow-hidden bg-neutral-background-1 text-neutral-foreground-1;
+  @apply overflow-hidden bg-neutral-background-1 px-8 py-24 font-base text-base-400 font-semibold text-neutral-foreground-1;
 
-  font-family: var(--font-base);
-  font-size: var(--text-base-400);
-  font-weight: var(--font-weight-semibold);
   line-height: var(--leading-base-400);
   border: var(--stroke-width-thick) solid var(--color-neutral-stroke-1);
-  padding: 24px 8px;
 }
 
 .portalContent {
-  @apply bg-brand-background-2 text-brand-foreground-2;
+  @apply bg-brand-background-2 px-6 py-12 font-base text-base-500 font-semibold text-brand-foreground-2;
 
-  font-family: var(--font-base);
-  font-size: var(--text-base-500);
-  font-weight: var(--font-weight-semibold);
   line-height: var(--leading-base-500);
   border: var(--stroke-width-thick) dashed var(--color-brand-stroke-2);
-  padding: 12px 6px;
 }

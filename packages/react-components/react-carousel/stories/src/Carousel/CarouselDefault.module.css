@@ -4,30 +4,23 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .bannerCard {
-  @apply relative h-450 text-left;
-
-  align-content: center;
+  @apply relative h-450 content-center text-left;
 }
 
 .cardContainer {
-  @apply absolute flex max-w-270 flex-col gap-8 p-18;
+  @apply absolute top-1/4 flex w-1/2 max-w-270 flex-col gap-8 bg-neutral-background-1 p-18;
 
   left: 10%;
-  top: 25%;
-  background: var(--color-neutral-background-1);
-  width: 50%;
 }
 
 .title {
-  font-family: var(--font-base);
-  font-size: var(--text-hero-800);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-hero-800 font-semibold;
+
   line-height: var(--leading-hero-800);
 }
 
 .subtext {
-  font-family: var(--font-base);
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-regular);
+  @apply font-base text-base-300 font-regular;
+
   line-height: var(--leading-base-300);
 }

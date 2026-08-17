@@ -8,10 +8,7 @@
 }
 
 .body {
-  @apply relative flex-1;
-
-  width: 100%;
-  max-width: 100%;
+  @apply relative w-full max-w-full flex-1;
 }
 
 .level {

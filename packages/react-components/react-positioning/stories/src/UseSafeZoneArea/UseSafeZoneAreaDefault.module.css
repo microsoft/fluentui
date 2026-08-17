@@ -8,46 +8,40 @@
 }
 
 .controls {
-  @apply grid items-center rounded-medium p-10;
+  @apply grid items-center rounded-medium p-10 shadow-16;
 
   grid-template-columns: 1fr auto;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .card {
-  @apply flex min-h-400 flex-col items-center justify-center rounded-medium p-10;
+  @apply flex min-h-400 flex-col items-center justify-center rounded-medium p-10 shadow-16;
 
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .cardAbove {
-  justify-content: end;
+  @apply justify-end;
 }
 
 .cardBelow {
-  justify-content: start;
+  @apply justify-start;
 }
 
 .container {
-  @apply flex h-300 w-300 items-center justify-center bg-palette-berry-background-2 text-palette-berry-foreground-2;
+  @apply flex h-300 w-300 items-center justify-center bg-palette-berry-background-2 text-base-400 text-palette-berry-foreground-2;
 
-  font-size: var(--text-base-400);
   border: var(--stroke-width-thicker) solid var(--color-palette-berry-border-active);
 }
 
 .target {
-  @apply flex h-50 w-300 items-center justify-center bg-palette-blue-background-2 text-palette-blue-foreground-2;
+  @apply flex h-50 w-300 items-center justify-center bg-palette-blue-background-2 text-base-400 text-palette-blue-foreground-2;
 
-  font-size: var(--text-base-400);
   border: var(--stroke-width-thicker) solid var(--color-palette-blue-border-active);
 }
 
 .targetSmall {
-  @apply w-100;
-
-  font-size: var(--text-base-100);
+  @apply w-100 text-base-100;
 }
 
 .targetLarge {

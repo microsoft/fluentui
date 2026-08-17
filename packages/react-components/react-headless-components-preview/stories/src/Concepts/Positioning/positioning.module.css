@@ -1,9 +1,7 @@
 @reference '#theme';
 
 .outer {
-  @apply overflow-auto;
-
-  width: 100%;
+  @apply w-full overflow-auto;
 }
 
 .page {
@@ -34,11 +32,10 @@
 }
 
 .column {
-  @apply flex flex-col items-start;
+  @apply flex w-max flex-col items-start;
 
   gap: var(--space-6);
   padding: var(--space-16);
-  width: max-content;
 }
 
 .layout {
@@ -115,28 +112,25 @@
 }
 
 .fieldLabel {
-  @apply font-semibold;
+  @apply font-semibold uppercase;
 
   font-size: calc(11px * var(--base-scale));
   color: var(--text-soft);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 /* ===== Demo containers ===== */
 .stage {
-  @apply grid min-h-320 min-w-560;
+  @apply grid min-h-320 min-w-560 place-items-center;
 
-  place-items: center;
   border: var(--stroke-thin) dashed var(--border-strong);
   border-radius: var(--radius-md);
   background: var(--bg-soft);
 }
 
 .demoBox {
-  @apply relative min-h-260;
+  @apply relative min-h-260 w-full;
 
-  width: 100%;
   max-width: 36rem;
   border: var(--stroke-thin) dashed var(--border-strong);
   border-radius: var(--radius-md);
@@ -185,16 +179,14 @@
 
 /* Trigger placement modifiers (used inside .demoBox) */
 .pinTopCenter {
-  @apply absolute top-12;
+  @apply absolute top-12 left-1/2;
 
-  left: 50%;
   transform: translateX(-50%);
 }
 
 .pinBottomCenter {
-  @apply absolute bottom-12;
+  @apply absolute bottom-12 left-1/2;
 
-  left: 50%;
   transform: translateX(-50%);
 }
 
@@ -215,16 +207,14 @@
 }
 
 .pinLeftCenter {
-  @apply absolute left-12;
+  @apply absolute top-1/2 left-12;
 
-  top: 50%;
   transform: translateY(-50%);
 }
 
 .pinRightCenter {
-  @apply absolute right-12;
+  @apply absolute top-1/2 right-12;
 
-  top: 50%;
   transform: translateY(-50%);
 }
 
@@ -241,7 +231,7 @@
 }
 
 .surfaceCover {
-  @apply flex h-112 w-224 items-center justify-center;
+  @apply flex h-112 w-224 items-center justify-center opacity-70;
 
   background: var(--bg-elev);
   border-radius: var(--radius-md);
@@ -249,7 +239,6 @@
   box-shadow: var(--shadow-3);
   padding: var(--space-3) var(--space-4);
   font-size: calc(13px * var(--base-scale));
-  opacity: 0.7;
 }
 
 .surfaceCallout {
@@ -275,34 +264,31 @@
 }
 
 .surfaceFlipNarrow {
-  @apply block w-160 text-base-200;
+  @apply block w-160 text-base-200 shadow-2;
 
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
-  box-shadow: var(--shadow-2);
   padding: var(--space-2);
 }
 
 .surfaceFlipWide {
-  @apply block max-h-140 w-320;
+  @apply block max-h-140 w-320 shadow-2;
 
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
-  box-shadow: var(--shadow-2);
   padding: var(--space-3);
   font-size: calc(13px * var(--base-scale));
 }
 
 .surfaceFallback {
-  @apply block min-w-200;
+  @apply block min-w-200 shadow-2;
 
   max-width: 20rem;
   background: var(--bg-elev);
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
-  box-shadow: var(--shadow-2);
   padding: var(--space-3);
   font-size: calc(13px * var(--base-scale));
 }

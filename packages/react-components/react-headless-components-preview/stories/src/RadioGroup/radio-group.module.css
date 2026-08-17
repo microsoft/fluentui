@@ -1,15 +1,12 @@
 @reference '#theme';
 
 .group {
-  @apply flex flex-col gap-8;
-
-  width: 100%;
+  @apply flex w-full flex-col gap-8;
 }
 
 .row {
-  @apply relative flex cursor-pointer items-start gap-12;
+  @apply relative flex cursor-pointer items-start gap-12 px-14 py-12;
 
-  padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
@@ -23,25 +20,18 @@
 }
 
 .row[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .input {
-  @apply absolute m-0 cursor-pointer;
-
-  inset: 0;
-  opacity: 0;
+  @apply absolute inset-0 m-0 cursor-pointer opacity-0;
 }
 
 .indicator {
-  @apply relative mt-1 h-18 w-18;
+  @apply relative mt-1 h-18 w-18 shrink-0 rounded-full;
 
-  border-radius: 50%;
   border: 1.5px solid var(--border-stronger);
   background: var(--bg-elev);
-  flex-shrink: 0;
   transition: border-color var(--duration-fast) var(--ease-standard);
 }
 
@@ -70,7 +60,7 @@
   @apply font-medium;
 
   color: var(--text);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .subtitle {

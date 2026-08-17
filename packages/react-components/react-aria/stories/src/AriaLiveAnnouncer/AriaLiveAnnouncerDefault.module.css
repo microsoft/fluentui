@@ -4,8 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col gap-8 p-8;
+  @apply flex flex-col gap-8 rounded-medium p-8;
 
   border: 1px solid var(--color-neutral-stroke-1);
-  border-radius: 4px;
 }

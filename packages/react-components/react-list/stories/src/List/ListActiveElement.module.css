@@ -8,13 +8,11 @@
 }
 
 .buttonWrapper {
-  align-self: center;
+  @apply self-center;
 }
 
 .item {
-  @apply cursor-pointer justify-between;
-
-  padding: 2px 6px;
+  @apply cursor-pointer justify-between px-6 py-2;
 }
 
 .itemSelected {

@@ -4,12 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply grid;
+  @apply mt-vertical-xxl mb-vertical-xxl grid gap-horizontal-l;
 
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-horizontal-l);
-  margin-top: var(--spacing-vertical-xxl);
-  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 @media (max-width: 600px) {
@@ -19,49 +16,31 @@
 }
 
 .panel {
-  @apply flex flex-col items-center rounded-medium bg-neutral-background-1;
+  @apply flex flex-col items-center gap-vertical-m rounded-medium bg-neutral-background-1 p-vertical-xl;
 
-  gap: var(--spacing-vertical-m);
-  padding: var(--spacing-vertical-xl);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
 }
 
 .title {
-  @apply m-0;
-
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--text-base-300);
+  @apply m-0 text-base-300 font-semibold;
 }
 
 .subtitle {
-  @apply m-0 text-center text-neutral-foreground-3;
-
-  font-size: var(--text-base-200);
+  @apply m-0 text-center text-base-200 text-neutral-foreground-3;
 }
 
 .code {
-  @apply rounded-small bg-neutral-background-4;
-
-  font-family: var(--font-monospace);
-  font-size: var(--text-base-200);
-  padding: var(--spacing-vertical-xxs) var(--spacing-horizontal-s-nudge);
+  @apply rounded-small bg-neutral-background-4 px-horizontal-s-nudge py-vertical-xxs font-monospace text-base-200;
 }
 
 .demoArea {
-  @apply flex h-60 items-center justify-center;
-
-  width: 100%;
+  @apply flex h-60 w-full items-center justify-center;
 }
 
 .demoBox {
-  @apply flex h-50 w-80 items-center justify-center rounded-small bg-brand-background text-neutral-foreground-on-brand;
-
-  font-size: var(--text-base-200);
-  font-weight: var(--font-weight-semibold);
+  @apply flex h-50 w-80 items-center justify-center rounded-small bg-brand-background text-base-200 font-semibold text-neutral-foreground-on-brand;
 }
 
 .button {
-  min-width: auto;
-  padding: var(--spacing-vertical-xs) var(--spacing-horizontal-m);
-  font-size: var(--text-base-200);
+  @apply min-w-auto px-horizontal-m py-vertical-xs text-base-200;
 }

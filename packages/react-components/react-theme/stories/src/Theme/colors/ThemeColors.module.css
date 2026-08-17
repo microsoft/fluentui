@@ -8,5 +8,5 @@
 }
 
 .inputSearch {
-  width: 100%;
+  @apply w-full;
 }

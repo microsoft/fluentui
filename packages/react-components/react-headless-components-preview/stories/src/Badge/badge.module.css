@@ -1,45 +1,49 @@
 @reference '#theme';
 
 .badge {
-  @apply inline-flex h-22 items-center gap-4 font-medium;
+  @apply inline-flex h-22 items-center gap-4 px-8 py-0 font-medium;
 
-  padding: 0 8px;
   border-radius: var(--radius-pill);
   background: var(--surface-muted);
   color: var(--text);
   border: 1px solid var(--border);
-  font-size: 11.5px;
+  font-size: calc(11.5px * var(--base-scale));
   letter-spacing: 0;
 }
 
 .solid {
+  @apply border-transparent;
+
   background: var(--accent);
   color: var(--accent-contrast);
-  border-color: transparent;
 }
 
 .success {
+  @apply border-transparent;
+
   background: var(--success-soft);
   color: var(--success);
-  border-color: transparent;
 }
 
 .warning {
+  @apply border-transparent;
+
   background: var(--warning-soft);
   color: var(--warning);
-  border-color: transparent;
 }
 
 .danger {
+  @apply border-transparent;
+
   background: var(--brand-soft);
   color: var(--brand);
-  border-color: transparent;
 }
 
 .info {
+  @apply border-transparent;
+
   background: var(--info-soft);
   color: var(--info);
-  border-color: transparent;
 }
 
 .accent {
@@ -49,9 +53,8 @@
 }
 
 .dot {
-  @apply inline-block h-6 w-6;
+  @apply inline-block h-6 w-6 rounded-full;
 
-  border-radius: 50%;
   background: currentColor;
 }
 
@@ -60,13 +63,11 @@
 }
 
 .counter {
-  @apply h-18 min-w-18 font-semibold;
+  @apply h-18 min-w-18 border-transparent px-6 py-0 font-semibold;
 
-  padding: 0 6px;
-  font-size: 10.5px;
+  font-size: calc(10.5px * var(--base-scale));
   background: var(--brand);
   color: white;
-  border-color: transparent;
 }
 
 /* Demo helpers (used by Storybook examples) */

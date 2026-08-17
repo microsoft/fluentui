@@ -4,30 +4,23 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply grid;
+  @apply grid gap-vertical-xxxl p-vertical-m-nudge;
 
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-vertical-xxxl);
-  padding: var(--spacing-vertical-m-nudge);
 }
 
 .card {
-  @apply flex flex-col items-center justify-center;
-
-  padding: var(--spacing-vertical-xl);
-  gap: var(--spacing-vertical-m);
+  @apply flex flex-col items-center justify-center gap-vertical-m p-vertical-xl;
 }
 
 .cellNormal {
-  font-weight: var(--font-weight-regular);
+  @apply font-regular;
 }
 
 .cellBold {
-  font-weight: var(--font-weight-bold);
+  @apply font-bold;
 }
 
 .controls {
-  @apply flex justify-center;
-
-  margin-top: var(--spacing-vertical-xl);
+  @apply mt-vertical-xl flex justify-center;
 }

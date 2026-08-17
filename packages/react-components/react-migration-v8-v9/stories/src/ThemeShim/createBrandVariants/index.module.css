@@ -4,12 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid p-5;
+  @apply grid justify-items-start p-5;
 
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-row-gap: 10px;
-  justify-items: start;
 }
 
 .editor {
@@ -17,11 +16,10 @@
 }
 
 .actions {
-  @apply grid;
+  @apply grid justify-items-start;
 
   grid-template-columns: auto auto;
   grid-column-gap: 10px;
-  justify-items: start;
 }
 
 .result {

@@ -11,20 +11,15 @@
 }
 
 .card {
-  @apply flex flex-col items-center justify-center gap-10 rounded-medium p-20;
+  @apply flex flex-col items-center justify-center gap-10 rounded-medium p-20 shadow-16;
 
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .label {
-  @apply text-neutral-foreground-3;
-
-  font-size: var(--text-base-200);
+  @apply text-base-200 text-neutral-foreground-3;
 }
 
 .indicator {
-  @apply h-80 w-80 bg-brand-background;
-
-  border-radius: 50%;
+  @apply h-80 w-80 rounded-full bg-brand-background;
 }

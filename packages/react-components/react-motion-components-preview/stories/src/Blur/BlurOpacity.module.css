@@ -14,10 +14,9 @@
 }
 
 .card {
-  @apply flex h-180 w-250 items-center justify-center rounded-medium bg-neutral-background-1 p-20 text-center;
+  @apply flex h-180 w-250 items-center justify-center rounded-medium bg-neutral-background-1 p-20 text-center text-base-400;
 
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  font-size: var(--text-base-400);
   background-image:
     linear-gradient(
       45deg,

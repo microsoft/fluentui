@@ -8,11 +8,7 @@
 }
 
 .field {
-  @apply grid;
-
-  grid-row-gap: var(--spacing-vertical-xxs);
-  margin-top: var(--spacing-vertical-m-nudge);
-  padding: var(--spacing-vertical-m-nudge) var(--spacing-horizontal-m-nudge);
+  @apply mt-vertical-m-nudge grid gap-y-vertical-xxs px-horizontal-m-nudge py-vertical-m-nudge;
 }
 
 .filledLighter {

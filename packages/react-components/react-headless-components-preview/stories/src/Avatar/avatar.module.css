@@ -1,12 +1,10 @@
 @reference '#theme';
 
 .avatar {
-  @apply relative inline-flex items-center justify-center overflow-hidden font-semibold select-none;
+  @apply relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full font-semibold select-none;
 
-  border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
-  flex-shrink: 0;
   letter-spacing: 0;
 }
 
@@ -29,17 +27,11 @@
 }
 
 .image {
-  @apply absolute object-cover;
-
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  @apply absolute inset-0 h-full w-full object-cover;
 }
 
 .initials {
-  @apply absolute flex items-center justify-center;
-
-  inset: 0;
+  @apply absolute inset-0 flex items-center justify-center;
 }
 
 /* Tones — neutral grays + a single brand-pink accent so the group isn't monotonous */
@@ -84,12 +76,12 @@
   @apply font-semibold;
 
   color: var(--text);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
 }
 
 .metaSub {
   color: var(--text-muted);
-  font-size: 12.5px;
+  font-size: calc(12.5px * var(--base-scale));
 }
 
 /* Demo helpers (used by Storybook examples) */

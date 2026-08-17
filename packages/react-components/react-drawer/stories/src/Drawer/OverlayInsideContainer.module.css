@@ -4,14 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex items-start;
-
-  gap: var(--spacing-horizontal-l);
+  @apply flex items-start gap-horizontal-l;
 }
 
 .container {
-  @apply relative h-300 w-500 overflow-hidden bg-brand-background-2;
+  @apply relative h-300 w-500 overflow-hidden bg-brand-background-2 px-horizontal-l py-vertical-l;
 
-  padding: var(--spacing-vertical-l) var(--spacing-horizontal-l);
   border: var(--stroke-width-thicker) solid var(--color-neutral-stroke-1);
 }

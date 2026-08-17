@@ -13,8 +13,7 @@
 }
 
 .fitFill {
-  height: 100%;
-  width: 100%;
+  @apply h-full w-full;
 }
 
 .fitCenter {

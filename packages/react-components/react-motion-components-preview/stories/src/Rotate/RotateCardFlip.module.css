@@ -39,10 +39,8 @@
 }
 
 .patternCard {
-  @apply bg-neutral-background-1;
+  @apply h-full w-full bg-neutral-background-1;
 
-  height: 100%;
-  width: 100%;
   border: 2px solid var(--color-neutral-stroke-1);
   /* Override transparent background from outline appearance */
 }

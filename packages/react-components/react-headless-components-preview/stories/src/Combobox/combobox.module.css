@@ -11,9 +11,8 @@
 
 /* root container — the visible "input field" */
 .root {
-  @apply flex items-center;
+  @apply flex w-full items-center;
 
-  width: 100%;
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
@@ -36,11 +35,10 @@
 
 /* the actual <input> element */
 .input {
-  @apply min-w-0 flex-1;
+  @apply min-w-0 flex-1 px-0 py-10;
 
   border: none;
   background: transparent;
-  padding: 10px 0;
   font-size: calc(13px * var(--base-scale));
   color: var(--text);
   outline: none;
@@ -55,16 +53,13 @@
 }
 
 .root:has(input:disabled) {
-  @apply pointer-events-none;
-
-  opacity: 0.5;
+  @apply pointer-events-none opacity-50;
 }
 
 /* popup listbox */
 .listbox {
-  @apply flex max-h-256 max-w-320 flex-col overflow-auto;
+  @apply flex max-h-256 w-full max-w-320 flex-col overflow-auto shadow-4;
 
-  width: 100%;
   border-radius: var(--radius-md);
   gap: var(--space-1);
   border: var(--stroke-thin) solid var(--border);
@@ -72,7 +67,6 @@
   padding: var(--space-1);
   font-size: calc(13px * var(--base-scale));
   color: var(--text);
-  box-shadow: var(--shadow-4);
 }
 
 /* individual option row */
@@ -112,9 +106,7 @@
 }
 
 .option[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 
 .option[data-disabled]:hover {
@@ -123,18 +115,16 @@
 
 /* expand chevron */
 .expandIcon {
-  @apply inline-flex h-16 w-16 items-center justify-center;
+  @apply inline-flex h-16 w-16 shrink-0 items-center justify-center;
 
-  flex-shrink: 0;
   color: var(--text-soft);
 }
 
 /* clear icon — inline span acting as a clickable affordance */
 .clearIcon {
-  @apply inline-flex h-20 w-20 cursor-pointer items-center justify-center;
+  @apply inline-flex h-20 w-20 shrink-0 cursor-pointer items-center justify-center;
 
   border-radius: var(--radius-pill);
-  flex-shrink: 0;
   color: var(--text-soft);
   transition:
     background var(--duration-fast) var(--ease-standard),
@@ -166,21 +156,19 @@
 
 /* group header label */
 .groupLabel {
-  @apply block font-semibold;
+  @apply block font-semibold uppercase;
 
   padding: var(--space-1) var(--space-3);
   font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* Demo helpers */
 
 .demo {
-  @apply flex max-w-320 flex-col;
+  @apply flex w-full max-w-320 flex-col;
 
-  width: 100%;
   gap: var(--space-2);
 }
 

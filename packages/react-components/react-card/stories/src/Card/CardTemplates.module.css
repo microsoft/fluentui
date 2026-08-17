@@ -8,10 +8,7 @@
 }
 
 .card {
-  @apply max-w-280;
-
-  width: 100%;
-  height: fit-content;
+  @apply h-fit w-full max-w-280;
 }
 
 .flex {
@@ -35,7 +32,5 @@
 }
 
 .grid {
-  @apply flex flex-col gap-16;
-
-  width: 100%;
+  @apply flex w-full flex-col gap-16;
 }

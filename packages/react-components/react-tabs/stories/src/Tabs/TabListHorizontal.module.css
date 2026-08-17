@@ -4,7 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex flex-col items-start justify-start gap-y-20;
-
-  padding: 50px 20px;
+  @apply flex flex-col items-start justify-start gap-y-20 px-20 py-50;
 }

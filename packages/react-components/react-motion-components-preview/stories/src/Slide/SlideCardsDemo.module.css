@@ -12,10 +12,9 @@
 }
 
 .cardGrid {
-  @apply grid gap-15;
+  @apply grid items-start gap-15;
 
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  align-items: start;
 }
 
 .card {
@@ -23,7 +22,5 @@
 }
 
 .cardPreview {
-  @apply flex h-80 items-center justify-center;
-
-  font-size: var(--text-base-600);
+  @apply flex h-80 items-center justify-center text-base-600;
 }

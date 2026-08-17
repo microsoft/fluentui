@@ -9,16 +9,11 @@
 }
 
 .tag {
-  @apply inline-grid min-h-28 cursor-default items-center text-base-200 font-medium select-none;
+  @apply inline-grid min-h-28 w-max max-w-full cursor-default content-center items-center justify-items-start px-10 py-0 text-base-200 font-medium select-none;
 
   grid-template-areas:
     'media primary dismiss'
     'media secondary dismiss';
-  align-content: center;
-  justify-items: start;
-  width: max-content;
-  max-width: 100%;
-  padding: 0 10px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
@@ -31,10 +26,9 @@
 }
 
 .tag[data-dismissible] {
-  @apply cursor-pointer;
+  @apply cursor-pointer py-0 pr-0 pl-10;
 
   border: none;
-  padding: 0 0 0 10px;
   background: var(--surface-muted);
 }
 
@@ -66,9 +60,7 @@
 }
 
 .tag[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .tag[data-disabled][data-dismissible]:hover {
@@ -76,13 +68,11 @@
 }
 
 .interactionTag {
-  @apply inline-flex min-h-28 items-stretch overflow-hidden text-base-200;
+  @apply inline-flex min-h-28 w-max max-w-full items-stretch overflow-hidden text-base-200;
 
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
-  width: max-content;
-  max-width: 100%;
 }
 
 .interactionTag[data-selected] {
@@ -96,17 +86,14 @@
 }
 
 .primary {
-  @apply inline-grid cursor-pointer appearance-none items-center text-inherit;
+  @apply inline-grid cursor-pointer appearance-none content-center items-center justify-items-start px-12 py-4 text-inherit;
 
   border: none;
   background: transparent;
   font: inherit;
-  padding: 4px 12px;
   grid-template-areas:
     'media primary'
     'media secondary';
-  align-content: center;
-  justify-items: start;
   border-radius: calc(var(--radius-md) - 1px) 0 0 calc(var(--radius-md) - 1px);
 }
 
@@ -119,17 +106,14 @@
 }
 
 .primary[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 
 .secondary {
-  @apply inline-flex cursor-pointer appearance-none items-center justify-center text-inherit;
+  @apply inline-flex cursor-pointer appearance-none items-center justify-center px-10 py-0 text-inherit;
 
   border: none;
   background: transparent;
-  padding: 0 10px;
   border-left: 1px solid var(--border);
   border-radius: 0 calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0;
 }
@@ -162,12 +146,10 @@
 }
 
 .dismissIcon {
-  @apply ml-6 inline-flex h-22 w-22 items-center justify-center;
+  @apply ml-6 inline-flex h-22 w-22 shrink-0 items-center justify-center self-center;
 
   grid-area: dismiss;
-  align-self: center;
   border-radius: var(--radius-sm, 4px);
-  flex-shrink: 0;
 }
 
 .tag[data-dismissible]:hover .dismissIcon {
@@ -185,20 +167,16 @@
 }
 
 .resetButton {
-  @apply cursor-pointer appearance-none text-base-200;
+  @apply w-fit cursor-pointer appearance-none px-10 py-4 text-base-200;
 
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
-  padding: 4px 10px;
   border-radius: var(--radius-md);
-  width: fit-content;
 }
 
 .resetButton:disabled {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .selectedReadout {

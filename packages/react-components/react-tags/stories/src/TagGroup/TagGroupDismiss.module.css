@@ -12,5 +12,5 @@
 }
 
 .resetButton {
-  width: fit-content;
+  @apply w-fit;
 }

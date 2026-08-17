@@ -2,16 +2,14 @@
 
 /* button — pill-shaped, monochrome */
 .button {
-  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 font-medium select-none;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 px-14 py-0 font-medium no-underline select-none;
 
-  padding: 0 14px;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   background: var(--accent);
   color: var(--accent-contrast);
   font-size: calc(13px * var(--base-scale));
   letter-spacing: 0;
-  text-decoration: none;
   transition:
     background-color var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard),
@@ -36,9 +34,7 @@
 
 .button[data-disabled],
 .button[data-disabled-focusable] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .button[data-disabled]:hover,
@@ -90,15 +86,11 @@
 
 /* Sizes */
 .small {
-  @apply h-26 text-base-200;
-
-  padding: 0 10px;
+  @apply h-26 px-10 py-0 text-base-200;
 }
 
 .large {
-  @apply h-40 text-base-300;
-
-  padding: 0 18px;
+  @apply h-40 px-18 py-0 text-base-300;
 }
 
 /* Icon-only — perfectly circular */
@@ -115,9 +107,7 @@
 }
 
 .icon {
-  @apply h-14 w-14;
-
-  flex-shrink: 0;
+  @apply h-14 w-14 shrink-0;
 }
 
 .large .icon,

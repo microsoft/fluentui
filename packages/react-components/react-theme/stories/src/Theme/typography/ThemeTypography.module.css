@@ -4,134 +4,115 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply grid gap-x-48 gap-y-24;
+  @apply grid items-start gap-x-48 gap-y-24;
 
   grid-template-columns: auto auto auto 1fr;
-  align-items: start;
 }
 
 .value {
-  @apply overflow-x-hidden whitespace-nowrap;
+  @apply overflow-x-hidden text-ellipsis whitespace-nowrap;
 
-  text-overflow: ellipsis;
   max-width: 10.5em;
 }
 
 .body1 {
-  font-family: var(--font-base);
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-regular);
+  @apply font-base text-base-300 font-regular;
+
   line-height: var(--leading-base-300);
 }
 
 .body1Strong {
-  font-family: var(--font-base);
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-base-300 font-semibold;
+
   line-height: var(--leading-base-300);
 }
 
 .body1Stronger {
-  font-family: var(--font-base);
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-bold);
+  @apply font-base text-base-300 font-bold;
+
   line-height: var(--leading-base-300);
 }
 
 .body2 {
-  font-family: var(--font-base);
-  font-size: var(--text-base-400);
-  font-weight: var(--font-weight-regular);
+  @apply font-base text-base-400 font-regular;
+
   line-height: var(--leading-base-400);
 }
 
 .caption1 {
-  font-family: var(--font-base);
-  font-size: var(--text-base-200);
-  font-weight: var(--font-weight-regular);
+  @apply font-base text-base-200 font-regular;
+
   line-height: var(--leading-base-200);
 }
 
 .caption1Strong {
-  font-family: var(--font-base);
-  font-size: var(--text-base-200);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-base-200 font-semibold;
+
   line-height: var(--leading-base-200);
 }
 
 .caption1Stronger {
-  font-family: var(--font-base);
-  font-size: var(--text-base-200);
-  font-weight: var(--font-weight-bold);
+  @apply font-base text-base-200 font-bold;
+
   line-height: var(--leading-base-200);
 }
 
 .caption2 {
-  font-family: var(--font-base);
-  font-size: var(--text-base-100);
-  font-weight: var(--font-weight-regular);
+  @apply font-base text-base-100 font-regular;
+
   line-height: var(--leading-base-100);
 }
 
 .caption2Strong {
-  font-family: var(--font-base);
-  font-size: var(--text-base-100);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-base-100 font-semibold;
+
   line-height: var(--leading-base-100);
 }
 
 .subtitle1 {
-  font-family: var(--font-base);
-  font-size: var(--text-base-500);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-base-500 font-semibold;
+
   line-height: var(--leading-base-500);
 }
 
 .subtitle2 {
-  font-family: var(--font-base);
-  font-size: var(--text-base-400);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-base-400 font-semibold;
+
   line-height: var(--leading-base-400);
 }
 
 .subtitle2Stronger {
-  font-family: var(--font-base);
-  font-size: var(--text-base-400);
-  font-weight: var(--font-weight-bold);
+  @apply font-base text-base-400 font-bold;
+
   line-height: var(--leading-base-400);
 }
 
 .title1 {
-  font-family: var(--font-base);
-  font-size: var(--text-hero-800);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-hero-800 font-semibold;
+
   line-height: var(--leading-hero-800);
 }
 
 .title2 {
-  font-family: var(--font-base);
-  font-size: var(--text-hero-700);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-hero-700 font-semibold;
+
   line-height: var(--leading-hero-700);
 }
 
 .title3 {
-  font-family: var(--font-base);
-  font-size: var(--text-base-600);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-base-600 font-semibold;
+
   line-height: var(--leading-base-600);
 }
 
 .largeTitle {
-  font-family: var(--font-base);
-  font-size: var(--text-hero-900);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-hero-900 font-semibold;
+
   line-height: var(--leading-hero-900);
 }
 
 .display {
-  font-family: var(--font-base);
-  font-size: var(--text-hero-1000);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-hero-1000 font-semibold;
+
   line-height: var(--leading-hero-1000);
 }

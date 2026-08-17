@@ -8,7 +8,5 @@
 }
 
 .card {
-  @apply max-w-400 min-w-230;
-
-  width: 100%;
+  @apply w-full max-w-400 min-w-230;
 }

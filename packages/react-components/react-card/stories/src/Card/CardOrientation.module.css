@@ -8,18 +8,15 @@
 }
 
 .card {
-  width: 100%;
-  height: fit-content;
+  @apply h-fit w-full;
 }
 
 .section {
-  @apply max-w-360;
-
-  width: 100%;
+  @apply w-full max-w-360;
 }
 
 .title {
-  margin: 0 0 12px;
+  @apply mx-0 mt-0 mb-12;
 }
 
 .horizontalCardImage {
@@ -27,9 +24,7 @@
 }
 
 .headerImage {
-  @apply max-h-44 max-w-44;
-
-  border-radius: 4px;
+  @apply max-h-44 max-w-44 rounded-medium;
 }
 
 .caption {

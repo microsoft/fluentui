@@ -4,10 +4,7 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .bannerCard {
-  @apply relative h-450 rounded-x-large text-left;
-
-  align-content: center;
-  box-shadow: var(--shadow-16);
+  @apply relative h-450 content-center rounded-x-large text-left shadow-16;
 }
 
 .image {
@@ -15,29 +12,20 @@
 }
 
 .cardContainer {
-  @apply absolute flex max-w-270 flex-col rounded-large;
+  @apply absolute top-1/4 flex w-1/2 max-w-270 flex-col gap-horizontal-s rounded-large bg-neutral-background-1 px-vertical-xxxl py-horizontal-xxl shadow-8;
 
-  gap: var(--spacing-horizontal-s);
   left: 10%;
-  top: 25%;
-  box-shadow: var(--shadow-8);
-  background: var(--color-neutral-background-1);
-  padding: var(--spacing-horizontal-xxl) var(--spacing-vertical-xxxl);
-  width: 50%;
 }
 
 .title {
-  font-family: var(--font-base);
-  font-size: var(--text-base-600);
-  font-weight: var(--font-weight-semibold);
+  @apply font-base text-base-600 font-semibold;
+
   line-height: var(--leading-base-600);
 }
 
 .subtext {
-  margin-bottom: var(--spacing-vertical-m);
-  font-family: var(--font-base);
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-regular);
+  @apply mb-vertical-m font-base text-base-300 font-regular;
+
   line-height: var(--leading-base-300);
 }
 
@@ -53,16 +41,11 @@
 }
 
 .carousel {
-  @apply flex-1;
-
-  padding-bottom: var(--spacing-vertical-xl);
+  @apply flex-1 pb-vertical-xl;
 }
 
 .controls {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-s-nudge);
-  padding: var(--spacing-horizontal-m-nudge) var(--spacing-vertical-m-nudge);
+  @apply flex flex-col gap-vertical-s-nudge px-vertical-m-nudge py-horizontal-m-nudge;
 }
 
 .field {
@@ -72,31 +55,21 @@
 }
 
 .dropdown {
-  max-width: max-content;
+  @apply max-w-max;
 }
 
 .carouselHeader {
-  @apply flex items-center justify-between;
-
-  gap: var(--spacing-vertical-s-nudge);
-  margin-bottom: var(--spacing-horizontal-l);
+  @apply mb-horizontal-l flex items-center justify-between gap-vertical-s-nudge;
 }
 
 .carouselHeaderTitle {
-  @apply m-0 flex-1;
-
-  font-size: var(--text-base-600);
-  font-weight: var(--font-weight-semibold);
+  @apply m-0 flex-1 text-base-600 font-semibold;
 }
 
 .carouselNavigation {
-  @apply m-0;
-
-  width: fit-content;
-  align-self: center;
+  @apply m-0 w-fit self-center;
 }
 
 .slider {
-  gap: var(--spacing-vertical-xxl);
-  padding: 0 var(--spacing-vertical-xxl);
+  @apply gap-vertical-xxl px-vertical-xxl py-0;
 }

@@ -8,7 +8,7 @@
 }
 
 .menuButton {
-  align-self: center;
+  @apply self-center;
 }
 
 .example {
@@ -18,24 +18,13 @@
 }
 
 .horizontal {
-  @apply w-600 min-w-150;
-
-  height: fit-content;
-  resize: horizontal;
+  @apply h-fit w-600 min-w-150 resize-x;
 }
 
 .vertical {
-  @apply flex h-250 min-h-100 items-stretch;
-
-  resize: vertical;
-  width: fit-content;
-  align-content: stretch;
-  justify-content: stretch;
-  justify-items: stretch;
+  @apply flex h-250 min-h-100 w-fit resize-y content-stretch items-stretch justify-stretch justify-items-stretch;
 }
 
 .root {
-  @apply flex min-h-600 flex-col items-start justify-start gap-y-20 overflow-auto;
-
-  padding: 50px 20px;
+  @apply flex min-h-600 flex-col items-start justify-start gap-y-20 overflow-auto px-20 py-50;
 }

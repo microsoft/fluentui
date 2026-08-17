@@ -1,13 +1,11 @@
 @reference '#theme';
 
 .interactionTag {
-  @apply inline-flex min-h-28 items-stretch overflow-hidden text-base-200;
+  @apply inline-flex min-h-28 w-max max-w-full items-stretch overflow-hidden text-base-200;
 
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
-  width: max-content;
-  max-width: 100%;
 }
 
 .interactionTag[data-selected] {
@@ -21,17 +19,14 @@
 }
 
 .primary {
-  @apply inline-grid cursor-pointer appearance-none items-center text-inherit;
+  @apply inline-grid cursor-pointer appearance-none content-center items-center justify-items-start px-12 py-4 text-inherit;
 
   border: none;
   background: transparent;
   font: inherit;
-  padding: 4px 12px;
   grid-template-areas:
     'media primary'
     'media secondary';
-  align-content: center;
-  justify-items: start;
   border-radius: calc(var(--radius-md) - 1px) 0 0 calc(var(--radius-md) - 1px);
 }
 
@@ -44,17 +39,14 @@
 }
 
 .primary[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 
 .secondary {
-  @apply inline-flex cursor-pointer appearance-none items-center justify-center text-inherit;
+  @apply inline-flex cursor-pointer appearance-none items-center justify-center px-10 py-0 text-inherit;
 
   border: none;
   background: transparent;
-  padding: 0 10px;
   border-left: 1px solid var(--border);
   border-radius: 0 calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0;
 }
@@ -87,21 +79,16 @@
 }
 
 .icon {
-  @apply mr-6 inline-flex h-14 w-14 items-center justify-center;
+  @apply mr-6 inline-flex h-14 w-14 shrink-0 items-center justify-center self-center;
 
   grid-area: media;
-  align-self: center;
-  flex-shrink: 0;
 }
 
 .media {
-  @apply mr-6 inline-flex h-24 w-24 items-center justify-center font-semibold;
+  @apply mr-6 inline-flex h-24 w-24 shrink-0 items-center justify-center self-center rounded-full font-semibold;
 
   grid-area: media;
-  align-self: center;
-  flex-shrink: 0;
   margin-left: -6px;
-  border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
   font-size: calc(11px * var(--base-scale));
@@ -136,28 +123,22 @@
 }
 
 .resetButton {
-  @apply cursor-pointer appearance-none text-base-200;
+  @apply w-fit cursor-pointer appearance-none px-10 py-4 text-base-200;
 
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
-  padding: 4px 10px;
   border-radius: var(--radius-md);
-  width: fit-content;
 }
 
 .resetButton:disabled {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .popover {
-  @apply box-border text-base-200;
+  @apply box-border w-max px-14 py-12 text-base-200;
 
-  width: max-content;
   max-width: min(320px, calc(100vw - 32px));
-  padding: 12px 14px;
   background: var(--surface);
   color: var(--text);
   line-height: 1.4;
@@ -167,9 +148,7 @@
 }
 
 .popover ul {
-  @apply pl-18;
-
-  margin: 6px 0 0;
+  @apply mx-0 mt-6 mb-0 pl-18;
 }
 
 .popover li + li {
@@ -177,6 +156,7 @@
 }
 
 .popover a {
+  @apply underline;
+
   color: var(--accent);
-  text-decoration: underline;
 }

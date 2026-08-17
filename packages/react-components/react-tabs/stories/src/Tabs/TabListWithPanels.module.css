@@ -4,25 +4,21 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply flex flex-col items-start justify-start gap-y-20;
-
-  padding: 50px 20px;
+  @apply flex flex-col items-start justify-start gap-y-20 px-20 py-50;
 }
 
 .panels {
-  padding: 0 10px;
+  @apply px-10 py-0;
 }
 
 .panels th {
-  @apply text-left;
-
-  padding: 0 30px 0 0;
+  @apply py-0 pr-30 pl-0 text-left;
 }
 
 .propsTable td:first-child {
-  font-weight: var(--font-weight-semibold);
+  @apply font-semibold;
 }
 
 .propsTable td {
-  padding: 0 30px 0 0;
+  @apply py-0 pr-30 pl-0;
 }

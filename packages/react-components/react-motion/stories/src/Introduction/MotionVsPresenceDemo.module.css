@@ -4,12 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply grid;
+  @apply mt-vertical-xxl mb-vertical-xxl grid gap-horizontal-xxl;
 
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-horizontal-xxl);
-  margin-top: var(--spacing-vertical-xxl);
-  margin-bottom: var(--spacing-vertical-xxl);
 }
 
 @media (max-width: 600px) {
@@ -25,56 +22,36 @@
 }
 
 .panelHeader {
-  @apply flex flex-col items-center bg-neutral-background-2;
-
-  gap: var(--spacing-vertical-xs);
-  padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl) var(--spacing-vertical-m);
+  @apply flex flex-col items-center gap-vertical-xs bg-neutral-background-2 px-horizontal-xl pt-vertical-l pb-vertical-m;
 }
 
 .title {
-  @apply m-0;
-
-  font-size: var(--text-base-400);
-  font-weight: var(--font-weight-semibold);
+  @apply m-0 text-base-400 font-semibold;
 }
 
 .subtitle {
-  @apply m-0 text-center text-neutral-foreground-3;
-
-  font-size: var(--text-base-200);
+  @apply m-0 text-center text-base-200 text-neutral-foreground-3;
 }
 
 .demoArea {
-  @apply grid h-80 items-center bg-neutral-background-1;
-
-  justify-items: center;
-  padding: var(--spacing-vertical-l);
+  @apply grid h-80 items-center justify-items-center bg-neutral-background-1 p-vertical-l;
 }
 
 .motionWrapper {
-  width: fit-content;
+  @apply w-fit;
 }
 
 .card {
-  @apply items-center justify-center;
-
-  padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--text-base-300);
+  @apply items-center justify-center px-horizontal-xl py-vertical-m text-base-300 font-semibold;
 }
 
 .codeArea {
-  @apply m-0 overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
+  @apply m-0 overflow-auto bg-neutral-background-3 px-horizontal-l py-vertical-m font-monospace text-base-100 text-neutral-foreground-1;
 
-  padding: var(--spacing-vertical-m) var(--spacing-horizontal-l);
   border-top: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  font-family: var(--font-monospace);
-  font-size: var(--text-base-100);
   line-height: var(--leading-base-200);
 }
 
 .buttonRow {
-  @apply flex justify-center bg-neutral-background-2;
-
-  padding: var(--spacing-vertical-m) var(--spacing-horizontal-xl) var(--spacing-vertical-l);
+  @apply flex justify-center bg-neutral-background-2 px-horizontal-xl pt-vertical-m pb-vertical-l;
 }

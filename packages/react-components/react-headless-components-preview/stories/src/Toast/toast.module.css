@@ -52,13 +52,12 @@
 
 /* Toast card wrapper — white elevated surface with subtle border and shadow */
 .toast {
-  @apply grid max-w-400 min-w-280 p-12;
+  @apply grid max-w-400 min-w-280 p-12 shadow-4;
 
   grid-template-columns: auto 1fr auto;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-4);
   margin: unset;
   margin-block-start: auto;
   margin-inline-start: auto;
@@ -143,13 +142,12 @@
 
 /* Icon badge — circular badge for intent icon */
 .iconBadge {
-  @apply flex h-24 w-24 items-center justify-center text-base-200 font-bold;
+  @apply flex h-24 w-24 shrink-0 items-center justify-center text-base-200 font-bold;
 
   grid-column-end: 2;
   margin-inline-end: var(--space-2);
   border-radius: var(--radius-pill);
   color: var(--text-on-accent);
-  flex-shrink: 0;
   transition: transform var(--duration-fast) var(--ease-standard);
 }
 
@@ -175,7 +173,7 @@
 
 /* Action button — link-style button for toast actions */
 .actionBtn {
-  @apply flex cursor-pointer appearance-none items-start text-base-200 font-semibold;
+  @apply flex cursor-pointer appearance-none items-start text-base-200 font-semibold no-underline;
 
   grid-column-end: -1;
   background: transparent;
@@ -183,15 +181,15 @@
   padding: var(--space-1) var(--space-2);
   margin: 0 calc(var(--space-1) * -1);
   color: var(--accent);
-  text-decoration: none;
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
   border-radius: var(--radius-xs);
 }
 
 .actionBtn:hover {
+  @apply underline;
+
   color: var(--accent-strong);
-  text-decoration: underline;
   background: var(--accent-soft);
 }
 
@@ -206,30 +204,27 @@
 }
 
 .actionBtn:disabled {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
-  text-decoration: none;
+  @apply cursor-not-allowed no-underline opacity-50;
 }
 
 /* Dismiss button — text link for dismissing toasts */
 .dismissBtn {
-  @apply cursor-pointer appearance-none text-base-200 font-semibold;
+  @apply cursor-pointer appearance-none text-base-200 font-semibold no-underline;
 
   background: transparent;
   border: 0;
   padding: var(--space-1) 0;
   margin: 0 calc(var(--space-1) * -1);
   color: var(--accent);
-  text-decoration: none;
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
   border-radius: var(--radius-xs);
 }
 
 .dismissBtn:hover {
+  @apply underline;
+
   color: var(--accent-strong);
-  text-decoration: underline;
   background: var(--accent-soft);
 }
 
@@ -269,9 +264,8 @@
 }
 
 .btnPrimary:disabled {
-  @apply cursor-not-allowed;
+  @apply cursor-not-allowed opacity-50;
 
-  opacity: 0.5;
   transform: none;
 }
 
@@ -307,9 +301,8 @@
 }
 
 .btnSecondary:disabled {
-  @apply cursor-not-allowed;
+  @apply cursor-not-allowed opacity-50;
 
-  opacity: 0.5;
   transform: none;
 }
 
@@ -345,18 +338,16 @@
 }
 
 .triggerBtn:disabled {
-  @apply cursor-not-allowed;
+  @apply cursor-not-allowed opacity-50;
 
-  opacity: 0.5;
   transform: none;
 }
 
 /* Controls wrapper — vertical flex for controls in demo */
 .controls {
-  @apply flex flex-col items-start;
+  @apply flex w-full flex-col items-start;
 
   gap: var(--space-3);
-  width: 100%;
 }
 
 /* Fieldset — for grouping related controls */
@@ -397,9 +388,8 @@
 
 /* Progress bar styling */
 .progressBar {
-  @apply h-4;
+  @apply h-4 w-full;
 
-  width: 100%;
   margin-top: var(--space-1);
 }
 
@@ -477,11 +467,9 @@
 
 /* Demo container — wrapper for demo content */
 .demo {
-  @apply flex flex-col;
+  @apply flex w-full max-w-full flex-col;
 
   gap: var(--space-4);
-  width: 100%;
-  max-width: 100%;
 }
 
 /* Demo row — horizontal flex for related items */
@@ -532,12 +520,11 @@
 }
 
 .logHeader {
-  @apply text-base-100 font-bold;
+  @apply w-fit text-base-100 font-bold;
 
   background: var(--text);
   color: var(--bg);
   padding: var(--space-2);
-  width: fit-content;
   border-radius: var(--radius-xs);
 }
 

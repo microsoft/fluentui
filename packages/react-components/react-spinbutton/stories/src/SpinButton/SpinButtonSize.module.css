@@ -8,9 +8,7 @@
 }
 
 .base > div {
-  @apply flex flex-col;
-
-  margin-top: var(--spacing-horizontal-m-nudge);
+  @apply mt-horizontal-m-nudge flex flex-col;
 }
 
 .base > div:first-child {
@@ -18,5 +16,5 @@
 }
 
 .base > div label {
-  margin-bottom: var(--spacing-vertical-xxs);
+  @apply mb-vertical-xxs;
 }

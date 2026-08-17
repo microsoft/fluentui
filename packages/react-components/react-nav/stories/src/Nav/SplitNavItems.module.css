@@ -16,12 +16,11 @@
 }
 
 .field {
-  @apply ms-8 mt-4 flex flex-col;
-
-  grid-row-gap: var(--spacing-vertical-s);
+  @apply ms-8 mt-4 flex flex-col gap-y-vertical-s;
 }
 
 .pinned {
-  opacity: 1;
+  @apply opacity-100;
+
   transform: translate3D(0, 0, 0);
 }

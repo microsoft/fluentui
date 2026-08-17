@@ -4,15 +4,13 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .root {
-  @apply grid max-w-400 gap-2;
+  @apply grid max-w-400 justify-items-start gap-2;
 
   grid-template-rows: repeat(1fr);
-  justify-items: start;
 }
 
 .tagsList {
-  @apply mt-0 flex list-none ps-0;
+  @apply mt-0 mb-vertical-xxs flex list-none ps-0;
 
-  margin-bottom: var(--spacing-vertical-xxs);
   grid-gap: var(--spacing-horizontal-xxs);
 }

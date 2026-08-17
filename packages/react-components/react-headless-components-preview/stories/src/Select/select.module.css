@@ -1,22 +1,18 @@
 @reference '#theme';
 
 .wrap {
-  @apply relative inline-block;
-
-  width: 100%;
+  @apply relative inline-block w-full;
 }
 
 .select {
-  @apply cursor-pointer appearance-none;
+  @apply w-full cursor-pointer appearance-none py-8 pr-36 pl-12;
 
-  width: 100%;
   -webkit-appearance: none;
   border: 1px solid var(--border);
   background: var(--bg-elev);
   color: var(--text);
   border-radius: var(--radius-md);
-  padding: 8px 36px 8px 12px;
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   transition:
     border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
@@ -34,16 +30,14 @@
 }
 
 .select:disabled {
-  @apply cursor-not-allowed;
+  @apply cursor-not-allowed opacity-60;
 
   background: var(--surface-muted);
-  opacity: 0.6;
 }
 
 .icon {
-  @apply pointer-events-none absolute right-12 h-14 w-14;
+  @apply pointer-events-none absolute top-1/2 right-12 h-14 w-14;
 
-  top: 50%;
   transform: translateY(-50%);
   color: var(--text-soft);
 }

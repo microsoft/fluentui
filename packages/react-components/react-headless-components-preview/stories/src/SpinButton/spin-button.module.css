@@ -22,21 +22,19 @@
 }
 
 .input {
-  @apply min-w-0 flex-1 text-center font-medium;
+  @apply min-w-0 flex-1 py-8 pr-36 pl-12 text-center font-medium;
 
   border: none;
   outline: none;
   background: transparent;
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   font-variant-numeric: tabular-nums;
-  padding: 8px 36px 8px 12px;
   color: var(--text);
 }
 
 .btn {
-  @apply absolute right-0 inline-flex w-28 cursor-pointer items-center justify-center;
+  @apply absolute right-0 inline-flex h-1/2 w-28 cursor-pointer items-center justify-center;
 
-  height: 50%;
   border: none;
   border-left: 1px solid var(--border);
   background: var(--bg-elev);

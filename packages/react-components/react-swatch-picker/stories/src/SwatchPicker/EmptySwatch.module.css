@@ -8,10 +8,9 @@
 }
 
 .selectedColor {
-  @apply h-100 w-100;
+  @apply mx-0 my-20 h-100 w-100;
 
   border: 1px solid #ccc;
-  margin: 20px 0;
 }
 
 @media (forced-colors: active) {
@@ -25,17 +24,13 @@
 }
 
 .previewColor {
-  @apply h-50 w-50;
+  @apply mx-0 my-10 h-50 w-50 rounded-medium;
 
-  margin: 10px 0;
-  border-radius: 4px;
   border: 1px solid #ccc;
 }
 
 .previewButton {
-  @apply block h-50 min-w-50;
-
-  margin: 10px 0;
+  @apply mx-0 my-10 block h-50 min-w-50;
 }
 
 .rowWrapper {

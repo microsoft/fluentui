@@ -4,7 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .content {
-  @apply flex items-start justify-center;
-
-  column-gap: var(--spacing-horizontal-xs);
+  @apply flex items-start justify-center gap-x-horizontal-xs;
 }

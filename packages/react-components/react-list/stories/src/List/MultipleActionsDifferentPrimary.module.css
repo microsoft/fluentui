@@ -4,11 +4,9 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .listItemRoot {
-  @apply relative items-center gap-8;
+  @apply relative grow items-center gap-8 rounded-x-large;
 
-  flex-grow: 1;
   border: 1px solid grey;
-  border-radius: 8px;
   grid-template:
     'preview preview preview' auto
     'header action secondary_action' auto / 1fr auto auto;
@@ -27,9 +25,8 @@
 }
 
 .image {
-  @apply h-160;
+  @apply h-160 max-w-full;
 
-  max-width: 100%;
   border-radius: 5px;
 }
 

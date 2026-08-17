@@ -1,9 +1,8 @@
 @reference '#theme';
 
 .card {
-  @apply flex flex-col gap-12 p-16;
+  @apply flex w-full flex-col gap-12 p-16;
 
-  width: 100%;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -26,28 +25,26 @@
 }
 
 .circle {
-  @apply h-40 w-40;
+  @apply h-40 w-40 shrink-0 rounded-full;
 
-  border-radius: 50%;
   background: var(--surface-muted);
-  flex-shrink: 0;
   animation: pulse 1.6s ease-in-out infinite;
 }
 
 .line40 {
-  width: 40%;
+  @apply w-2/5;
 }
 
 .line60 {
-  width: 60%;
+  @apply w-3/5;
 }
 
 .line80 {
-  width: 80%;
+  @apply w-4/5;
 }
 
 .line100 {
-  width: 100%;
+  @apply w-full;
 }
 
 @keyframes pulse {

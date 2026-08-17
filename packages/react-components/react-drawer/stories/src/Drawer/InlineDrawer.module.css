@@ -19,12 +19,8 @@
 }
 
 .buttons {
-  @apply sticky flex flex-1 flex-wrap items-start justify-center p-16;
+  @apply sticky -top-16 -right-16 -left-16 flex flex-1 flex-wrap items-start justify-center gap-x-horizontal-xs p-16;
 
-  top: -16px;
-  right: -16px;
-  left: -16px;
-  column-gap: var(--spacing-horizontal-xs);
   background-color: #fff;
   transition-duration: var(--duration-fast);
 }

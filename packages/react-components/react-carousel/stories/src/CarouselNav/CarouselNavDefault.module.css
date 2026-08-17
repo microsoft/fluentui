@@ -4,17 +4,15 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply grid;
+  @apply grid shadow-16;
 
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-  box-shadow: var(--shadow-16);
 }
 
 .card {
-  @apply flex min-h-100 flex-col items-center rounded-medium p-10;
+  @apply flex min-h-100 flex-col items-center justify-end rounded-medium p-10;
 
-  justify-content: end;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   border-top-left-radius: 0;
   border-top-right-radius: 0;

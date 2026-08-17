@@ -8,11 +8,9 @@
 }
 
 .card {
-  @apply box-border overflow-hidden ps-52 pe-52;
-
-  width: 100%;
+  @apply box-border w-full overflow-hidden ps-52 pe-52;
 }
 
 .image {
-  width: 100%;
+  @apply w-full;
 }

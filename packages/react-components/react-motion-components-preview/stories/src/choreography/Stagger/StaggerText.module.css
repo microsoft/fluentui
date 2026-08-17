@@ -4,17 +4,14 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col items-start overflow-hidden;
-
-  gap: var(--spacing-horizontal-xl);
+  @apply flex flex-col items-start gap-horizontal-xl overflow-hidden;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium p-10;
+  @apply flex flex-col rounded-medium p-10 shadow-16;
 
   grid-area: controls;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-16);
 }
 
 .field {
@@ -22,18 +19,13 @@
 }
 
 .items {
-  @apply relative flex items-center justify-center p-50;
-
-  width: 100%;
-  height: 100%;
+  @apply relative flex h-full w-full items-center justify-center p-50;
 }
 
 .item {
-  @apply absolute font-bold;
+  @apply absolute m-horizontal-xxs font-bold text-transparent;
 
   font-size: calc(100px * var(--base-scale));
-  color: transparent;
-  margin: var(--spacing-horizontal-xxs);
   -webkit-text-stroke: 4px var(--tokens-colorBrandStroke2, var(--color-brand-stroke-2));
   -webkit-filter: blur(1.2px);
   filter: blur(1.2px);

@@ -33,9 +33,7 @@
 }
 
 .counter {
-  @apply text-brand-foreground-1;
+  @apply text-hero-900 font-bold text-brand-foreground-1;
 
-  font-size: var(--text-hero-900);
-  font-weight: var(--font-weight-bold);
   line-height: 1;
 }

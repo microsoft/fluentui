@@ -16,16 +16,11 @@
 }
 
 .logLabel {
-  @apply bg-brand-background text-neutral-foreground-on-brand;
-
-  width: fit-content;
-  font-weight: var(--font-weight-bold);
-  padding: 2px 12px;
+  @apply w-fit bg-brand-background px-12 py-2 font-bold text-neutral-foreground-on-brand;
 }
 
 .log {
-  @apply relative h-200 min-w-200 overflow-y-auto p-12;
+  @apply relative h-200 min-w-200 overflow-y-auto p-12 shadow-16;
 
-  box-shadow: var(--shadow-16);
   border: 2px solid var(--color-brand-background);
 }

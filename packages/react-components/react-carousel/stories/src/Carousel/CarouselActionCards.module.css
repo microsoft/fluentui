@@ -4,11 +4,10 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply grid;
+  @apply grid shadow-16;
 
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto 1fr;
-  box-shadow: var(--shadow-16);
 }
 
 .card {
@@ -45,10 +44,7 @@
 }
 
 .actionCard {
-  @apply max-w-350 overflow-hidden rounded-large text-center;
-
-  margin: 0px 6px;
-  box-shadow: var(--shadow-16);
+  @apply mx-6 my-0 max-w-350 overflow-hidden rounded-large text-center shadow-16;
 }
 
 .imageContainer {
@@ -64,8 +60,5 @@
 }
 
 .info {
-  @apply flex flex-row justify-between p-12;
-
-  width: auto;
-  align-content: center;
+  @apply flex w-auto flex-row content-center justify-between p-12;
 }

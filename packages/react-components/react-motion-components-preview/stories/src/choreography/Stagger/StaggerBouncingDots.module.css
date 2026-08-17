@@ -4,62 +4,41 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .container {
-  @apply flex flex-col;
-
-  gap: var(--spacing-vertical-xl);
-  padding: var(--spacing-horizontal-l);
+  @apply flex flex-col gap-vertical-xl p-horizontal-l;
 }
 
 .controls {
-  @apply flex flex-col rounded-medium bg-neutral-background-1;
+  @apply flex flex-col gap-vertical-m rounded-medium bg-neutral-background-1 p-horizontal-m shadow-8;
 
-  gap: var(--spacing-vertical-m);
-  padding: var(--spacing-horizontal-m);
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
-  box-shadow: var(--shadow-8);
 }
 
 .controlsRow {
-  @apply flex flex-wrap items-center justify-center;
-
-  gap: var(--spacing-horizontal-l);
+  @apply flex flex-wrap items-center justify-center gap-horizontal-l;
 }
 
 .controlGroup {
-  @apply flex min-w-200 flex-col;
-
-  gap: var(--spacing-vertical-s);
+  @apply flex min-w-200 flex-col gap-vertical-s;
 }
 
 .spinnerSection {
-  @apply flex flex-col rounded-medium bg-neutral-background-1;
+  @apply flex flex-col gap-vertical-m rounded-medium bg-neutral-background-1 p-horizontal-l;
 
-  gap: var(--spacing-vertical-m);
-  padding: var(--spacing-horizontal-l);
   border: var(--stroke-width-thin) solid var(--color-neutral-stroke-2);
 }
 
 .spinnerTitle {
-  @apply m-0 text-neutral-foreground-1;
-
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-semibold);
+  @apply m-0 text-base-300 font-semibold text-neutral-foreground-1;
 }
 
 .spinnerContainer {
-  @apply flex min-h-120 items-center justify-center;
-
-  padding: var(--spacing-horizontal-l);
+  @apply flex min-h-120 items-center justify-center p-horizontal-l;
 }
 
 .bouncingDotsSpinner {
-  @apply flex items-center;
-
-  gap: var(--spacing-horizontal-s);
+  @apply flex items-center gap-horizontal-s;
 }
 
 .bouncingDot {
-  @apply h-12 w-12 bg-brand-background;
-
-  border-radius: 50%;
+  @apply h-12 w-12 rounded-full bg-brand-background;
 }

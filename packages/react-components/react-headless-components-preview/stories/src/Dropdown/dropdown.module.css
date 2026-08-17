@@ -11,9 +11,8 @@
 
 /* trigger button */
 .button {
-  @apply flex min-w-0 cursor-pointer items-center justify-between;
+  @apply flex w-full min-w-0 cursor-pointer items-center justify-between;
 
-  width: 100%;
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
@@ -48,9 +47,7 @@
 }
 
 .button[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 
 .button[data-disabled]:hover {
@@ -60,9 +57,8 @@
 
 /* popup listbox */
 .listbox {
-  @apply flex max-h-256 max-w-320 flex-col overflow-auto;
+  @apply flex max-h-256 w-full max-w-320 flex-col overflow-auto shadow-4;
 
-  width: 100%;
   border-radius: var(--radius-md);
   gap: var(--space-1);
   border: var(--stroke-thin) solid var(--border);
@@ -70,7 +66,6 @@
   padding: var(--space-1);
   font-size: calc(13px * var(--base-scale));
   color: var(--text);
-  box-shadow: var(--shadow-4);
 }
 
 /* individual option row */
@@ -110,9 +105,7 @@
 }
 
 .option[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.5;
+  @apply cursor-not-allowed opacity-50;
 }
 
 .option[data-disabled]:hover {
@@ -121,18 +114,16 @@
 
 /* expand chevron — sized to match clear button */
 .expandIcon {
-  @apply inline-flex h-16 w-16 items-center justify-center;
+  @apply inline-flex h-16 w-16 shrink-0 items-center justify-center;
 
-  flex-shrink: 0;
   color: var(--text-soft);
 }
 
 /* inline clear / reset button */
 .clearButton {
-  @apply absolute inline-flex cursor-pointer items-center justify-center;
+  @apply absolute top-1/2 inline-flex cursor-pointer items-center justify-center;
 
   right: var(--space-2);
-  top: 50%;
   transform: translateY(-50%);
   border-radius: var(--radius-pill);
   padding: var(--space-1);
@@ -177,21 +168,19 @@
 
 /* group header label */
 .groupLabel {
-  @apply block font-semibold;
+  @apply block font-semibold uppercase;
 
   padding: var(--space-1) var(--space-3);
   font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  @apply flex max-w-320 flex-col;
+  @apply flex w-full max-w-320 flex-col;
 
-  width: 100%;
   gap: var(--space-2);
 }
 

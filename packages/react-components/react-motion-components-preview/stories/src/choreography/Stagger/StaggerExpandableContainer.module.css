@@ -6,33 +6,23 @@
  * (the const was only used by makeStyles and was removed with it). */
 
 .container {
-  @apply flex max-w-300 flex-col;
-
-  gap: var(--spacing-vertical-l);
+  @apply flex max-w-300 flex-col gap-vertical-l;
 }
 
 .controls {
-  @apply flex items-center;
-
-  gap: var(--spacing-horizontal-m);
+  @apply flex items-center gap-horizontal-m;
 }
 
 .sliderContainer {
-  @apply flex flex-row items-center;
-
-  gap: var(--spacing-vertical-s);
+  @apply flex flex-row items-center gap-vertical-s;
 }
 
 .sliderLabel {
-  @apply min-w-90;
-
-  font-size: var(--text-base-200);
-  font-weight: var(--font-weight-semibold);
-  flex-shrink: 0;
+  @apply min-w-90 shrink-0 text-base-200 font-semibold;
 }
 
 .slider {
-  flex-grow: 1;
+  @apply grow;
 }
 
 .listContainer {
@@ -42,10 +32,7 @@
 }
 
 .list {
-  @apply flex flex-col;
-
-  padding: var(--spacing-vertical-l);
-  gap: var(--spacing-vertical-l);
+  @apply flex flex-col gap-vertical-l p-vertical-l;
 }
 
 .item {

@@ -16,11 +16,10 @@
 }
 
 .btn {
-  @apply cursor-pointer font-medium;
+  @apply cursor-pointer px-8 py-4 font-medium;
 
   background: none;
   border: none;
-  padding: 4px 8px;
   border-radius: var(--radius-md);
   color: var(--text-muted);
   font-size: calc(13px * var(--base-scale));

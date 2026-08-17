@@ -17,28 +17,17 @@
 }
 
 .footer {
-  @apply flex flex-row justify-between;
-
-  width: auto;
-  padding: var(--spacing-vertical-s) var(--spacing-vertical-xxl) var(--spacing-vertical-xxl) var(--spacing-vertical-xxl);
+  @apply flex w-auto flex-row justify-between px-vertical-xxl pt-vertical-s pb-vertical-xxl;
 }
 
 .header {
-  @apply block;
+  @apply mx-vertical-xxl mt-vertical-xxl mb-vertical-s block font-base text-base-500 font-semibold;
 
-  margin: var(--spacing-vertical-xxl) var(--spacing-vertical-xxl) var(--spacing-vertical-s) var(--spacing-vertical-xxl);
-  font-family: var(--font-base);
-  font-size: var(--text-base-500);
-  font-weight: var(--font-weight-semibold);
   line-height: var(--leading-base-500);
 }
 
 .text {
-  @apply block;
+  @apply block px-vertical-xxl py-vertical-s font-base text-base-300 font-regular;
 
-  padding: var(--spacing-vertical-s) var(--spacing-vertical-xxl);
-  font-family: var(--font-base);
-  font-size: var(--text-base-300);
-  font-weight: var(--font-weight-regular);
   line-height: var(--leading-base-300);
 }

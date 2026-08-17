@@ -8,12 +8,9 @@
 }
 
 .listbox {
-  @apply absolute m-0 box-border list-none rounded-medium bg-neutral-background-1;
+  @apply absolute m-0 box-border w-full list-none rounded-medium bg-neutral-background-1 px-0 py-vertical-xs shadow-16;
 
   border: 1px solid var(--color-neutral-stroke-1);
-  box-shadow: var(--shadow-16);
-  padding: var(--spacing-vertical-xs) 0;
-  width: 100%;
   z-index: 1000;
 }
 
@@ -22,10 +19,7 @@
 }
 
 .option {
-  @apply flex cursor-pointer items-center;
-
-  gap: var(--spacing-horizontal-s);
-  padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
+  @apply flex cursor-pointer items-center gap-horizontal-s px-horizontal-m py-vertical-s;
 }
 
 .option:hover {
@@ -39,14 +33,9 @@
 }
 
 .spinnerWrapper {
-  @apply flex items-center text-neutral-foreground-3;
-
-  gap: var(--spacing-horizontal-s);
-  padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
+  @apply flex items-center gap-horizontal-s px-horizontal-m py-vertical-s text-neutral-foreground-3;
 }
 
 .noResults {
-  @apply text-neutral-foreground-3;
-
-  padding: var(--spacing-vertical-s) var(--spacing-horizontal-m);
+  @apply px-horizontal-m py-vertical-s text-neutral-foreground-3;
 }

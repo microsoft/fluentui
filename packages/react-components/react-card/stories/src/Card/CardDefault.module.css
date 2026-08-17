@@ -4,8 +4,5 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .card {
-  @apply max-w-720;
-
-  margin: auto;
-  width: 100%;
+  @apply m-auto w-full max-w-720;
 }

@@ -11,14 +11,11 @@
 }
 
 .content {
-  @apply grid flex-1 items-start justify-start p-16;
+  @apply grid flex-1 items-start justify-start gap-y-vertical-xxl p-16;
 
-  grid-row-gap: var(--spacing-vertical-xxl);
   grid-auto-rows: max-content;
 }
 
 .field {
-  @apply grid;
-
-  grid-row-gap: var(--spacing-vertical-s);
+  @apply grid gap-y-vertical-s;
 }

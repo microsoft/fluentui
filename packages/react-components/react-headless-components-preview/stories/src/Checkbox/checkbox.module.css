@@ -1,29 +1,24 @@
 @reference '#theme';
 
 .row {
-  @apply relative inline-flex cursor-pointer items-center gap-10 select-none;
+  @apply relative inline-flex cursor-pointer items-center gap-10 px-0 py-4 select-none;
 
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--base-scale));
   color: var(--text);
-  padding: 4px 0;
 }
 
 .input {
-  @apply absolute h-18 w-18 cursor-pointer;
+  @apply absolute inset-0 h-18 w-18 cursor-pointer opacity-0;
 
-  inset: 0;
-  opacity: 0;
   z-index: 1;
 }
 
 .indicator {
-  @apply inline-flex h-18 w-18 items-center justify-center;
+  @apply inline-flex h-18 w-18 shrink-0 items-center justify-center text-transparent;
 
   border-radius: var(--radius-xs);
   border: 1.5px solid var(--border-stronger);
   background: var(--bg-elev);
-  color: transparent;
-  flex-shrink: 0;
   transition:
     background var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard),
@@ -57,9 +52,7 @@
 }
 
 .row[data-disabled] {
-  @apply cursor-not-allowed;
-
-  opacity: 0.4;
+  @apply cursor-not-allowed opacity-40;
 }
 
 .iconCheck {
