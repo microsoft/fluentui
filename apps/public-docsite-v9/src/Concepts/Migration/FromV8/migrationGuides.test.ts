@@ -162,6 +162,16 @@ describe('FromV8 migration inventory', () => {
     expect(getDuplicateValues(inventoryKeys)).toEqual([]);
     expect(inventoryKeys).toEqual(getCanonicalExampleKeys());
   });
+
+  test('inventory does not contain temporary audit placeholders', () => {
+    const placeholderRows = getInventoryRows().flatMap(row =>
+      row.cells.some(cell => cell.includes('Inventory audit pending'))
+        ? [{ lineNumber: row.lineNumber, raw: row.raw }]
+        : [],
+    );
+
+    expect(placeholderRows).toEqual([]);
+  });
 });
 
 describe('FromV8 migration guide routes', () => {
