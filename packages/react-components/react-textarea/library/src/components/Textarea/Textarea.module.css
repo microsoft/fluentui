@@ -386,7 +386,7 @@
    * module-local, so nothing collides.
    */
   .none {
-    resize: none;
+    @apply resize-none;
   }
 
   .both {

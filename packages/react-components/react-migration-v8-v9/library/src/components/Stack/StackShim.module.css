@@ -156,23 +156,23 @@
  */
 @layer fui.components.l1 {
   .align-items-baseline {
-    align-items: baseline;
+    @apply items-baseline;
   }
 
   .align-items-center {
-    align-items: center;
+    @apply items-center;
   }
 
   .align-items-start {
-    align-items: flex-start;
+    @apply items-start;
   }
 
   .align-items-end {
-    align-items: flex-end;
+    @apply items-end;
   }
 
   .align-items-stretch {
-    align-items: stretch;
+    @apply items-stretch;
   }
 
   .align-items-space-between {
@@ -198,15 +198,15 @@
   }
 
   .justify-content-center {
-    justify-content: center;
+    @apply justify-center;
   }
 
   .justify-content-start {
-    justify-content: flex-start;
+    @apply justify-start;
   }
 
   .justify-content-end {
-    justify-content: flex-end;
+    @apply justify-end;
   }
 
   .justify-content-stretch {
@@ -214,15 +214,15 @@
   }
 
   .justify-content-space-between {
-    justify-content: space-between;
+    @apply justify-between;
   }
 
   .justify-content-space-around {
-    justify-content: space-around;
+    @apply justify-around;
   }
 
   .justify-content-space-evenly {
-    justify-content: space-evenly;
+    @apply justify-evenly;
   }
 }
 

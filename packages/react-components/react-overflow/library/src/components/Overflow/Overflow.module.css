@@ -63,7 +63,9 @@
  *
  *   lib-commonjs/components/Overflow/useOverflowStyles.styles.js
  *     overflowMenu:     Brvla84 → ".fyfkpbf [data-overflow-menu]{flex-shrink:0;}"
- *     overflowingItems: zb22lx  → ".f10570jf [data-overflowing]{display:none;}"
+ *     overflowingItems: zb22lx  → ".f10570jf [data-overflowing]{
+    @apply hidden;
+  }"
  *
  * `.root [attr]` here is 0-2-0 as well, so the specificity is class-for-class identical.
  *

@@ -356,21 +356,21 @@
     @variant current {
       @variant hover {
         & :global(.fui-Icon-filled) {
-          display: none;
+          @apply hidden;
         }
 
         & :global(.fui-Icon-regular) {
-          display: inline;
+          @apply inline;
         }
       }
 
       @variant disabled {
         & :global(.fui-Icon-filled) {
-          display: none;
+          @apply hidden;
         }
 
         & :global(.fui-Icon-regular) {
-          display: inline;
+          @apply inline;
         }
       }
     }

@@ -134,9 +134,7 @@
     transition-timing-function: var(--ease-easy-ease);
 
     @variant hover {
-      @apply border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
-
-      cursor: pointer;
+      @apply cursor-pointer border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
     }
 
     @variant hover-active {
@@ -852,21 +850,21 @@
   .subtle {
     @variant hover {
       & :global(.fui-Icon-filled) {
-        display: inline;
+        @apply inline;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
 
     @variant hover-active {
       & :global(.fui-Icon-filled) {
-        display: inline;
+        @apply inline;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
   }
@@ -875,21 +873,21 @@
   .transparent {
     @variant hover {
       & :global(.fui-Icon-filled) {
-        display: inline;
+        @apply inline;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
 
     @variant hover-active {
       & :global(.fui-Icon-filled) {
-        display: inline;
+        @apply inline;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
   }
@@ -902,21 +900,21 @@
     @variant disabled-any {
       @variant hover {
         & :global(.fui-Icon-filled) {
-          display: none;
+          @apply hidden;
         }
 
         & :global(.fui-Icon-regular) {
-          display: inline;
+          @apply inline;
         }
       }
 
       @variant hover-active {
         & :global(.fui-Icon-filled) {
-          display: none;
+          @apply hidden;
         }
 
         & :global(.fui-Icon-regular) {
-          display: inline;
+          @apply inline;
         }
       }
     }

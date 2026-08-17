@@ -83,8 +83,7 @@
     }
 
     &::after {
-      visibility: hidden;
-      white-space: pre-wrap;
+      @apply invisible whitespace-pre-wrap;
     }
   }
 }

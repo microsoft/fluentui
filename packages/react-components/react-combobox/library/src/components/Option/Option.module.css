@@ -141,7 +141,7 @@
 
   /* from useStyles.checkIcon — arg #2 */
   .check-icon {
-    @apply -ms-horizontal-xxs me-horizontal-xxs shrink-0;
+    @apply invisible -ms-horizontal-xxs me-horizontal-xxs shrink-0;
 
     font-size: var(--text-base-400);
 
@@ -154,13 +154,11 @@
      * (`Frg6f3: ["f18b9hdq","fn6qj8t"]`, `t21cq0: ["f1xk557c","f1h9en5y"]`) → logical
      * inline properties, negated named utility for the pull-left.
      */
-
-    visibility: hidden;
   }
 
   /* from useStyles.multiselectCheck — arg #3 */
   .multiselect-check {
-    @apply box-border flex h-16 w-16 items-center justify-center rounded-small border-t-neutral-stroke-accessible border-r-neutral-stroke-accessible border-b-neutral-stroke-accessible border-l-neutral-stroke-accessible;
+    @apply visible box-border flex h-16 w-16 items-center justify-center rounded-small border-t-neutral-stroke-accessible border-r-neutral-stroke-accessible border-b-neutral-stroke-accessible border-l-neutral-stroke-accessible;
 
     /* `border: strokeWidthThin solid colorNeutralStrokeAccessible` expanded to longhands —
        args #5/#7 each override the four colors alone. `border-*-width` is not a
@@ -177,13 +175,11 @@
 
     fill: currentColor;
     font-size: calc(12px * var(--base-scale));
-
-    visibility: visible;
   }
 
   /* from useStyles.selectedCheck — arg #4 */
   .selected-check {
-    visibility: visible;
+    @apply visible;
   }
 
   /* from useStyles.selectedMultiselectCheck — arg #5 */
@@ -264,5 +260,5 @@
  * icon-swap rule to lift out alongside it.)
  */
 .check-icon svg {
-  display: block;
+  @apply block;
 }

@@ -188,9 +188,7 @@
 
     /* DIALOG_MEDIA_QUERY_SHORT_SCREEN */
     @media screen and (max-height: 359px) {
-      @apply pe-horizontal-xl;
-
-      overflow-y: auto;
+      @apply overflow-y-auto pe-horizontal-xl;
 
       /*
        * Offset the scrollbar with transparent border so it does not collide with the

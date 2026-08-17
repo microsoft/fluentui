@@ -42,9 +42,10 @@
    * byte-for-byte transcription of the compiled reset above.
    */
   .root {
+    @apply list-none;
+
     padding: 0;
     margin: 0;
     text-indent: 0;
-    list-style-type: none;
   }
 }

@@ -69,9 +69,15 @@
  *     var(--color-stroke-focus-2);border-radius:var(--radius-medium);}
  *   .f7nlbp4{align-self:center;}
  *   .f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}
- *   .f22iagw{display:flex;}
- *   .f1k6fduh{cursor:pointer;}
- *   .f158kwzp{cursor:default;}
+ *   .f22iagw{
+    @apply flex;
+  }
+ *   .f1k6fduh{
+    @apply cursor-pointer;
+  }
+ *   .f158kwzp{
+    @apply cursor-default;
+  }
  * Every one of those is a single class, NOT an [ltr, rtl] pair — Griffel found nothing to
  * flip, so this module needs neither logical properties nor an `@variant rtl` twin.
  */
@@ -118,8 +124,7 @@
      * boolean-pair rule.
      */
     @variant interactive {
-      display: flex;
-      cursor: pointer;
+      @apply flex cursor-pointer;
     }
 
     /*
@@ -128,7 +133,7 @@
      * way the later mergeClasses argument did.
      */
     @variant disabled {
-      cursor: default;
+      @apply cursor-default;
     }
   }
 }

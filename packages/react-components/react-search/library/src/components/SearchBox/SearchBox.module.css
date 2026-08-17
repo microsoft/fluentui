@@ -252,11 +252,11 @@
      * would let a browser that does not know one pseudo-element drop the other with it.
      */
     &::-webkit-search-decoration {
-      display: none;
+      @apply hidden;
     }
 
     &::-webkit-search-cancel-button {
-      display: none;
+      @apply hidden;
     }
   }
 
@@ -303,7 +303,9 @@
    * from useContentAfterStyles.rest — arg #7. Collapses the whole contentAfter box (which
    * holds the dismiss button) to nothing while the SearchBox is unfocused.
    *
-   * Griffel compiled `overflow: 'hidden'` as the SHORTHAND rule `.f1a3p1vp{overflow:hidden;}`
+   * Griffel compiled `overflow: 'hidden'` as the SHORTHAND rule `.f1a3p1vp{
+    @apply overflow-hidden;
+  }`
    * carrying `{p: -1}` — the marker that sorts shorthands before longhands within a bucket.
    * It is inert here: no rule in this module, in Input's, or in Input's reset sets
    * `overflow-x`/`overflow-y`, so the shorthand has nothing to lose to and is emitted as-is.

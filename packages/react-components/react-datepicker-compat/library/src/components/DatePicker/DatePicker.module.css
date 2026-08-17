@@ -162,8 +162,14 @@
 @layer fui.components.l2 {
   /*
    * from useStyles.base — the `root` slot's arg #14. Compiled:
-   * `.f10pi13n{position:relative;}` + `.f1k6fduh{cursor:pointer;}` +
-   * `.faxec97 input{cursor:pointer;}`
+   * `.f10pi13n{
+    @apply relative;
+  }` + `.f1k6fduh{
+    @apply cursor-pointer;
+  }` +
+   * `.faxec97 input{
+    @apply cursor-pointer;
+  }`
    *
    * `position: relative` is the anchor react-positioning measures the popup against; the
    * `cursor` pair makes the whole field read as the click target that opens the calendar,
@@ -174,7 +180,7 @@
     cursor: pointer;
 
     & input {
-      cursor: pointer;
+      @apply cursor-pointer;
     }
   }
 }
@@ -182,7 +188,11 @@
 @layer fui.components.l2 {
   /*
    * from useStyles.disabled — the `root` slot's arg #15, applied when `state.disabled`.
-   * Compiled: `.f158kwzp{cursor:default;}` + `.f19qwlmg input{cursor:default;}`
+   * Compiled: `.f158kwzp{
+    @apply cursor-default;
+  }` + `.f19qwlmg input{
+    @apply cursor-default;
+  }`
    *
    * Authored as a conditional module class driven by `state.disabled`, NOT as a
    * `@variant disabled` reading the `data-disabled` that `useInputStyles_unstable` stamps on
@@ -202,7 +212,7 @@
     cursor: default;
 
     & input {
-      cursor: default;
+      @apply cursor-default;
     }
   }
 }

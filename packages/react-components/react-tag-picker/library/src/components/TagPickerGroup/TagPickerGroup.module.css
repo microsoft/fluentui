@@ -65,9 +65,7 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #3 */
   .root {
-    @apply box-border flex-wrap;
-
-    cursor: text;
+    @apply box-border cursor-text flex-wrap;
   }
 }
 

@@ -252,14 +252,16 @@
 @layer fui.components.l1 {
   .icon {
     & :global(.fui-Icon-filled) {
+      @apply hidden;
+
       grid-area: overlay-area;
       color: transparent;
-      display: none;
     }
 
     & :global(.fui-Icon-regular) {
+      @apply inline;
+
       grid-area: overlay-area;
-      display: inline;
     }
   }
 }
@@ -268,7 +270,7 @@
   /* icon arg #3 — from the shared useIconStyles.selected */
   .icon-selected {
     & :global(.fui-Icon-filled) {
-      display: inline;
+      @apply inline;
 
       animation-name: nav-item-icon-filled-enter;
       animation-duration: var(--duration-faster);

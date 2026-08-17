@@ -50,10 +50,9 @@
 @layer fui.components.l1 {
   /* from useStyles.root */
   .root {
-    @apply flex w-full flex-col;
+    @apply flex w-full flex-col text-start;
 
     /* Support custom width: `width: 100%` above; textAlign 'left' → logical `start` */
-    text-align: start;
   }
 
   /* from useStyles.items10pMargin — tokens.spacingVerticalMNudge */
@@ -68,9 +67,7 @@
 
   /* from useStyles.chart — the bar `<svg>`. `height` supports a custom bar height. */
   .chart {
-    @apply block h-vertical-m w-full;
-
-    overflow: visible;
+    @apply block h-vertical-m w-full overflow-visible;
   }
 
   /*

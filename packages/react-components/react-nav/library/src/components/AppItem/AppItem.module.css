@@ -175,14 +175,16 @@
 @layer fui.components.l1 {
   .icon {
     & :global(.fui-Icon-filled) {
+      @apply hidden;
+
       grid-area: overlay-area;
       color: transparent;
-      display: none;
     }
 
     & :global(.fui-Icon-regular) {
+      @apply inline;
+
       grid-area: overlay-area;
-      display: inline;
     }
   }
 }

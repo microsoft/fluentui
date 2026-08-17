@@ -1096,22 +1096,22 @@
   /* from useIconStyles.base */
   .icon {
     & :global(.fui-Icon-filled) {
-      display: none;
+      @apply hidden;
     }
 
     & :global(.fui-Icon-regular) {
-      display: inline;
+      @apply inline;
     }
   }
 
   /* from useIconStyles.selected */
   .icon-selected {
     & :global(.fui-Icon-filled) {
-      display: inline;
+      @apply inline;
     }
 
     & :global(.fui-Icon-regular) {
-      display: none;
+      @apply hidden;
     }
   }
 

@@ -342,9 +342,7 @@
    * shorthands; `m-0` / `p-0` are the numeric utilities for the zero step.
    */
   .content {
-    @apply m-0 flex flex-col p-0;
-
-    list-style-type: none;
+    @apply m-0 flex list-none flex-col p-0;
   }
 }
 

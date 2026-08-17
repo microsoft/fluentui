@@ -126,7 +126,9 @@
 
   /*
    * from useStyles.blockStyling — arg #3. Same slice (and same compiled atomic,
-   * `.ftgm304{display:block;}`) as Skeleton's; the root renders a `span` under
+   * `.ftgm304{
+    @apply block;
+  }`) as Skeleton's; the root renders a `span` under
    * `as="span"` and needs block layout back.
    */
   .block-styling {

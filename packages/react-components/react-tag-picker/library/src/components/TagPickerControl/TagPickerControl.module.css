@@ -429,13 +429,11 @@
   .root {
     /* from useAsideStyles.root — arg #2 */
     & .aside {
-      @apply absolute end-horizontal-m flex h-full;
+      @apply absolute end-horizontal-m flex h-full cursor-text;
 
       top: 0;
 
       /* compiled `[ltr, rtl]` property flip (`j35jbq: ["f8b87gs","fedtrts"]`) → logical */
-
-      cursor: text;
     }
 
     /* from useAsideStyles[size] — arg #3 */
@@ -468,9 +466,8 @@
   .root {
     /* from useIconStyles.icon — arg #2 */
     & .icon {
-      @apply box-border flex items-center justify-center self-start text-neutral-stroke-accessible;
+      @apply box-border flex cursor-pointer items-center justify-center self-start text-neutral-stroke-accessible;
 
-      cursor: pointer;
       font-size: var(--text-base-500);
     }
 
@@ -507,9 +504,7 @@
     /* from useIconStyles.disabled — arg #4 */
     @variant disabled {
       & .icon {
-        @apply text-neutral-foreground-disabled;
-
-        cursor: not-allowed;
+        @apply cursor-not-allowed text-neutral-foreground-disabled;
       }
     }
   }
@@ -548,5 +543,5 @@
  * rule to lift out alongside it.)
  */
 .icon svg {
-  display: block;
+  @apply block;
 }

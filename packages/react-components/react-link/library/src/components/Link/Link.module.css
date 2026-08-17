@@ -199,10 +199,9 @@
      * Written after `.subtle` / `.inverted` / `.brand` to resolve the documented inversion.
      */
     @variant disabled {
-      @apply text-neutral-foreground-disabled;
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
 
       text-decoration-line: none;
-      cursor: not-allowed;
     }
   }
 }

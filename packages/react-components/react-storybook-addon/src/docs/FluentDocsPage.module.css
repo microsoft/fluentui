@@ -68,7 +68,7 @@
     @apply shrink-0 basis-200;
 
     @media screen and (max-width: 1000px) {
-      display: none;
+      @apply hidden;
     }
   }
 

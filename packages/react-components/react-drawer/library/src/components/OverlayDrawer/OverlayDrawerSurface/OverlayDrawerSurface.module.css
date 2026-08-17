@@ -73,6 +73,6 @@
 
   /* arg #3 — from useBackdropStyles.drawerHidden */
   .drawer-hidden {
-    pointer-events: none;
+    @apply pointer-events-none;
   }
 }

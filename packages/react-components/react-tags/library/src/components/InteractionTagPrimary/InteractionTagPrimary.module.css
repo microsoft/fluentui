@@ -150,9 +150,10 @@
       position: relative;
 
       &::before {
+        @apply absolute;
+
         content: '';
         border-top: var(--spacing-thin) solid;
-        position: absolute;
         /* px literal → `--base-scale` (D4); exactly -1px at the default 16px root */
         inset: calc(-1px * var(--base-scale));
         border-start-start-radius: var(--radius-medium);
@@ -169,10 +170,11 @@
       position: relative;
 
       &::before {
+        @apply absolute;
+
         content: '';
         border-top: var(--spacing-thin) solid;
         border-inline-start: var(--spacing-thin) solid;
-        position: absolute;
         inset: calc(-1px * var(--base-scale));
         border-start-start-radius: var(--radius-circular);
         border-end-start-radius: var(--radius-circular);
@@ -208,9 +210,7 @@
     color: var(--color-neutral-foreground-2);
 
     @variant hover {
-      @apply bg-neutral-background-3-hover text-neutral-foreground-2-hover;
-
-      cursor: pointer;
+      @apply cursor-pointer bg-neutral-background-3-hover text-neutral-foreground-2-hover;
     }
 
     @variant active {
@@ -239,9 +239,8 @@
     border-inline-start-color: var(--color-neutral-stroke-1);
 
     @variant hover {
-      @apply bg-subtle-background-hover text-neutral-foreground-2-hover;
+      @apply cursor-pointer bg-subtle-background-hover text-neutral-foreground-2-hover;
 
-      cursor: pointer;
       /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap sits in the S-J/D27 l1 section at the bottom */
     }
 
@@ -267,9 +266,7 @@
     color: var(--color-brand-foreground-2);
 
     @variant hover {
-      @apply bg-brand-background-2-hover text-compound-brand-foreground-1-hover;
-
-      cursor: pointer;
+      @apply cursor-pointer bg-brand-background-2-hover text-compound-brand-foreground-1-hover;
     }
 
     @variant active {
@@ -293,15 +290,11 @@
    */
   .filled-disabled,
   .brand-disabled {
-    @apply border-s-transparent-stroke-disabled border-e-transparent-stroke-disabled border-t-transparent-stroke-disabled border-b-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-
-    cursor: not-allowed;
+    @apply cursor-not-allowed border-s-transparent-stroke-disabled border-e-transparent-stroke-disabled border-t-transparent-stroke-disabled border-b-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
   }
 
   .outline-disabled {
-    @apply border-s-neutral-stroke-disabled border-e-neutral-stroke-disabled border-t-neutral-stroke-disabled border-b-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
-
-    cursor: not-allowed;
+    @apply cursor-not-allowed border-s-neutral-stroke-disabled border-e-neutral-stroke-disabled border-t-neutral-stroke-disabled border-b-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
   }
 }
 
@@ -367,10 +360,9 @@
       @media (forced-colors: none) {
         &::before,
         &::after {
-          @apply h-vertical-xxs w-full;
+          @apply absolute h-vertical-xxs w-full;
 
           content: '';
-          position: absolute;
 
           /* 2px = the XXS step; block-axis size → the vertical token's utility */
 
@@ -482,25 +474,21 @@
   .outline {
     @variant hover {
       & :global(.fui-Icon-filled) {
-        @apply text-neutral-foreground-2-brand-hover;
-
-        display: inline;
+        @apply inline text-neutral-foreground-2-brand-hover;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
 
     @variant active {
       & :global(.fui-Icon-filled) {
-        @apply text-neutral-foreground-2-brand-pressed;
-
-        display: inline;
+        @apply inline text-neutral-foreground-2-brand-pressed;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
   }

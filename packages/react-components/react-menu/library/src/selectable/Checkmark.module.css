@@ -38,15 +38,11 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #1 */
   .root {
-    @apply h-16 w-16 shrink-0;
-
-    visibility: hidden;
+    @apply invisible h-16 w-16 shrink-0;
   }
 
   /* from useStyles.rootChecked — arg #2 */
   .root-checked {
-    @apply shrink-0;
-
-    visibility: visible;
+    @apply visible shrink-0;
   }
 }

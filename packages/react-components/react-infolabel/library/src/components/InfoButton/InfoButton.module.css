@@ -346,30 +346,30 @@
 @layer fui.components.l1 {
   .root {
     & :global(.fui-Icon-filled) {
-      display: none;
+      @apply hidden;
     }
 
     & :global(.fui-Icon-regular) {
-      display: inline-flex;
+      @apply inline-flex;
     }
 
     @variant open {
       & :global(.fui-Icon-filled) {
-        display: inline-flex;
+        @apply inline-flex;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
 
     @variant hover {
       & :global(.fui-Icon-filled) {
-        display: inline-flex;
+        @apply inline-flex;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
   }

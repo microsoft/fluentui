@@ -276,6 +276,6 @@
  */
 @layer fui.components.l2 {
   .annotation-layer {
-    pointer-events: none;
+    @apply pointer-events-none;
   }
 }

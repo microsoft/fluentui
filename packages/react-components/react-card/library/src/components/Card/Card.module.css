@@ -150,10 +150,9 @@
 
     /* Border set on an ::after pseudo-element so CardPreview can render behind it. */
     &::after {
-      @apply absolute;
+      @apply pointer-events-none absolute;
 
       content: '';
-      pointer-events: none;
 
       /* physical, matching the compiled output: the rtl class carries the same values
          in a different declaration order */

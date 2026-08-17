@@ -122,7 +122,7 @@
      * utility, and react-link's module already settled on the longhand for clarity.
      */
     @variant inline {
-      display: inline-block;
+      @apply inline-block;
     }
 
     /* from useStyles.rootDisabled — root arg #4; re-sets `color` from arg #2 above */
@@ -244,7 +244,7 @@
     /* from useStyles.buttonInline — button arg #7 */
     @variant inline {
       & .button {
-        display: inline-flex;
+        @apply inline-flex;
       }
     }
 
@@ -278,7 +278,7 @@
     /* from useStyles.buttonDisabled — button arg #11 */
     @variant disabled {
       & .button {
-        cursor: not-allowed;
+        @apply cursor-not-allowed;
       }
     }
   }

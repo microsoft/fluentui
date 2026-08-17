@@ -412,12 +412,10 @@
   .root {
     @variant disabled {
       & .select {
-        @apply border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-transparent-background text-neutral-foreground-disabled;
+        @apply cursor-not-allowed border-t-neutral-stroke-disabled border-r-neutral-stroke-disabled border-b-neutral-stroke-disabled border-l-neutral-stroke-disabled bg-transparent-background text-neutral-foreground-disabled;
 
         /* shorthands.borderColor(x) expanded to the four longhands the compiler emits;
            the `[ltr, rtl]` pair only swaps left↔right and carries the same value. */
-
-        cursor: not-allowed;
       }
 
       /* from useSelectStyles.disabledUnderline — the 3-argument

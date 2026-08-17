@@ -210,13 +210,15 @@
     transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
 
     @variant group-hover/fui-split-nav-item {
+      @apply pointer-events-auto;
+
       opacity: 1;
-      pointer-events: auto;
     }
 
     @variant group-focus-within/fui-split-nav-item {
+      @apply pointer-events-auto;
+
       opacity: 1;
-      pointer-events: auto;
     }
   }
 }

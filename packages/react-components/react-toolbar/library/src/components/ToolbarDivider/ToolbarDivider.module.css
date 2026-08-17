@@ -98,7 +98,7 @@
    * winner mergeClasses produced. See "The one INVERSION" in the header.
    */
   .root {
-    display: inline-flex;
+    @apply inline-flex;
   }
 }
 

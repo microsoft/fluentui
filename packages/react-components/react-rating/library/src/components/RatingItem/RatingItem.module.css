@@ -65,7 +65,9 @@
  * atomic on the SAME PROPERTY and there is none — react-icons' only svg-root slice is
  *
  *   node_modules/@fluentui/react-icons/lib/utils/useIconStyles.styles.js
- *   .f1w7gpdv{display:inline;}   .fez10in{line-height:0;}
+ *   .f1w7gpdv{
+    @apply inline;
+  }   .fez10in{line-height:0;}
  *
  * i.e. `display` and `line-height`, never `flex`. This package renders no `bundleIcon()`
  * pair, so there is no `fui-Icon-filled` / `fui-Icon-regular` display swap to lift out

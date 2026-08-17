@@ -499,9 +499,7 @@
     /* from useStyles.disabledText — arg #5, the last `button` style argument */
     @variant disabled {
       & .button {
-        @apply text-neutral-foreground-disabled;
-
-        cursor: not-allowed;
+        @apply cursor-not-allowed text-neutral-foreground-disabled;
       }
     }
   }
@@ -571,7 +569,7 @@
      * button is showing, and the clear button while it is not.
      */
     & .hidden {
-      display: none;
+      @apply hidden;
     }
   }
 }
@@ -605,7 +603,7 @@
 
   /* from useStyles.listboxCollapsed — last argument, so it wins the `display` tie */
   .listbox-collapsed {
-    display: none;
+    @apply hidden;
   }
 }
 
@@ -627,5 +625,5 @@
  * renders plain `ChevronDownRegular` / `DismissRegular`, never a `bundleIcon()` pair.)
  */
 .icon svg {
-  display: block;
+  @apply block;
 }

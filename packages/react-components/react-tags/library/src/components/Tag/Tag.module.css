@@ -159,9 +159,10 @@
       position: relative;
 
       &::before {
+        @apply absolute;
+
         content: '';
         border-top: var(--spacing-thin) solid;
-        position: absolute;
         /* px literal → `--base-scale` (D4); exactly -1px at the default 16px root */
         inset: calc(-1px * var(--base-scale));
         border-start-start-radius: var(--radius-medium);
@@ -184,13 +185,12 @@
       position: relative;
 
       &::before {
-        @apply rounded-circular;
+        @apply absolute rounded-circular;
 
         content: '';
         border-top: var(--spacing-thin) solid;
         border-inline-start: var(--spacing-thin) solid;
         border-inline-end: var(--spacing-thin) solid;
-        position: absolute;
         inset: calc(-1px * var(--base-scale));
       }
     }
@@ -233,15 +233,11 @@
    */
   .filled-disabled,
   .brand-disabled {
-    @apply border-s-transparent-stroke-disabled border-e-transparent-stroke-disabled border-t-transparent-stroke-disabled border-b-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
-
-    cursor: not-allowed;
+    @apply cursor-not-allowed border-s-transparent-stroke-disabled border-e-transparent-stroke-disabled border-t-transparent-stroke-disabled border-b-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
   }
 
   .outline-disabled {
-    @apply border-s-neutral-stroke-disabled border-e-neutral-stroke-disabled border-t-neutral-stroke-disabled border-b-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
-
-    cursor: not-allowed;
+    @apply cursor-not-allowed border-s-neutral-stroke-disabled border-e-neutral-stroke-disabled border-t-neutral-stroke-disabled border-b-neutral-stroke-disabled bg-subtle-background text-neutral-foreground-disabled;
   }
 }
 
@@ -287,10 +283,9 @@
       @media (forced-colors: none) {
         &::before,
         &::after {
-          @apply h-vertical-xxs w-full;
+          @apply absolute h-vertical-xxs w-full;
 
           content: '';
-          position: absolute;
 
           /* 2px = the XXS step; block-axis size → the vertical token's utility */
 
@@ -492,9 +487,7 @@
    */
   .dismiss-icon-interactive {
     @variant hover {
-      @apply text-compound-brand-foreground-1-hover;
-
-      cursor: pointer;
+      @apply cursor-pointer text-compound-brand-foreground-1-hover;
     }
 
     @variant active {

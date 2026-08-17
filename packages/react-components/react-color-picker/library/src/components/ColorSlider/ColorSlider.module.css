@@ -141,8 +141,9 @@
     outline-color: var(--color-transparent-stroke);
 
     &::before {
+      @apply absolute;
+
       content: '';
-      position: absolute;
     }
   }
 }
@@ -244,11 +245,9 @@
     background-color: var(--fui-Slider__thumb--color);
 
     &::before {
-      @apply rounded-circular;
+      @apply absolute box-border rounded-circular;
 
-      position: absolute;
       inset: 0px;
-      box-sizing: border-box;
       content: '';
       border: var(--spacing-thick) solid var(--color-neutral-background-1);
     }

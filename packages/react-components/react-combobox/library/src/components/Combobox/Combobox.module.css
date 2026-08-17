@@ -587,9 +587,7 @@
     /* from useIconStyles.disabled — arg #4 */
     @variant disabled {
       & .icon {
-        @apply text-neutral-foreground-disabled;
-
-        cursor: not-allowed;
+        @apply cursor-not-allowed text-neutral-foreground-disabled;
       }
     }
 
@@ -608,7 +606,7 @@
 
     /* from useIconStyles.hidden — arg #5 on `clearIcon`, applied while it is not showing */
     & .hidden {
-      display: none;
+      @apply hidden;
     }
   }
 }
@@ -642,7 +640,7 @@
 
   /* from useStyles.listboxCollapsed — last argument, so it wins the `display` tie */
   .listbox-collapsed {
-    display: none;
+    @apply hidden;
   }
 }
 
@@ -667,5 +665,5 @@
  * is no icon-swap rule to lift out alongside it.)
  */
 .icon svg {
-  display: block;
+  @apply block;
 }

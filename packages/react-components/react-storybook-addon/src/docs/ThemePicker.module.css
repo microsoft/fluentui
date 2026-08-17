@@ -17,9 +17,7 @@
 @layer fui.components.l2 {
   /* from useStyles.menuButton — lands on MenuButton's root */
   .menu-button {
-    @apply min-w-210;
-
-    justify-content: flex-start;
+    @apply min-w-210 justify-start;
   }
 
   /*

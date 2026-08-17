@@ -69,14 +69,13 @@
 @layer fui.components.l1 {
   /* from useStyles.root */
   .root {
-    @apply overflow-visible text-start text-clip whitespace-normal;
+    @apply inline overflow-visible text-start text-clip whitespace-normal;
 
     /*
      * `display: inline` longhand rather than `@apply inline`: `inline` is also the name of
      * a shared custom variant (Link's `data-inline`), and the two registries do not
      * collide but the reader confusion is real — same call react-link made.
      */
-    display: inline;
 
     font-family: var(--font-base);
     font-size: var(--text-base-300);
@@ -86,7 +85,9 @@
 
   /*
    * from useStyles.nowrap — `overflow` stays the SHORTHAND Griffel compiled
-   * (`.f1a3p1vp{overflow:hidden;}`). Nothing in this component sets `overflow-x`/`-y`
+   * (`.f1a3p1vp{
+    @apply overflow-hidden;
+  }`). Nothing in this component sets `overflow-x`/`-y`
    * individually, so there is no Griffel shorthand-vs-longhand priority left to
    * reproduce; expanding would only add bytes (react-image / react-link precedent).
    */

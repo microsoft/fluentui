@@ -367,9 +367,7 @@
     }
 
     @variant disabled {
-      @apply text-neutral-foreground-disabled;
-
-      cursor: not-allowed;
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
     }
   }
 }

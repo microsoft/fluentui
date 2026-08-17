@@ -612,11 +612,11 @@
   /* from useRootCheckedStyles.base — arg #4 */
   .checked {
     & :global(.fui-Icon-filled) {
-      display: inline;
+      @apply inline;
     }
 
     & :global(.fui-Icon-regular) {
-      display: none;
+      @apply hidden;
     }
   }
 }

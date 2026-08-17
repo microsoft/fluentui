@@ -107,9 +107,7 @@
    * with `pointer-events: all`.
    */
   .root {
-    @apply flex w-full flex-row justify-center;
-
-    pointer-events: none;
+    @apply pointer-events-none flex w-full flex-row justify-center;
   }
 }
 

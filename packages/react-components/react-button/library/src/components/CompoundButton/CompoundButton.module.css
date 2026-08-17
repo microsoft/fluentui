@@ -271,11 +271,10 @@
 @layer fui.components.l1 {
   /* from useContentContainerStyles.base */
   .content-container {
-    @apply flex flex-col;
+    @apply flex flex-col text-start;
 
     /* `textAlign: 'left'` compiles to an [ltr, rtl] pair (`.f1o700av` / `.fes3tcz`), i.e.
        the logical keyword. */
-    text-align: start;
   }
 
   /* from useSecondaryContentStyles.base */

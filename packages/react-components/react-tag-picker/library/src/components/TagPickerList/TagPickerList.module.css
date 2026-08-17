@@ -57,6 +57,6 @@
 
   /* from useStyles.collapsed — applied while the picker is closed */
   .collapsed {
-    display: none;
+    @apply hidden;
   }
 }

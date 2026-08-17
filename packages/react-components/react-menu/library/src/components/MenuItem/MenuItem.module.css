@@ -450,11 +450,11 @@
   .root {
     @variant hover {
       & :global(.fui-Icon-filled) {
-        display: inline;
+        @apply inline;
       }
 
       & :global(.fui-Icon-regular) {
-        display: none;
+        @apply hidden;
       }
     }
   }
@@ -462,11 +462,11 @@
   /* from useStyles.submenuOpen — root arg #3 */
   .submenu-open {
     & :global(.fui-Icon-filled) {
-      display: inline;
+      @apply inline;
     }
 
     & :global(.fui-Icon-regular) {
-      display: none;
+      @apply hidden;
     }
   }
 
@@ -475,11 +475,11 @@
   .disabled {
     @variant hover {
       & :global(.fui-Icon-filled) {
-        display: none;
+        @apply hidden;
       }
 
       & :global(.fui-Icon-regular) {
-        display: inline;
+        @apply inline;
       }
     }
   }

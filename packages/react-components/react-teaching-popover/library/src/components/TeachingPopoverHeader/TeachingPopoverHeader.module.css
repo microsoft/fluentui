@@ -147,7 +147,7 @@
 @layer fui.components.l1 {
   /* from useStyles.icon — icon arg #2 */
   .icon {
-    @apply me-horizontal-xs box-content inline-flex items-center justify-center bg-transparent-background text-neutral-foreground-2;
+    @apply relative me-horizontal-xs box-content inline-flex items-center justify-center bg-transparent-background text-neutral-foreground-2;
 
     height: var(--text-base-200);
     width: var(--text-base-200);
@@ -156,7 +156,6 @@
 
     text-decoration-line: none;
     vertical-align: middle;
-    position: relative;
   }
 }
 

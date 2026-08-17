@@ -188,11 +188,11 @@
   /* from useRootExpandedStyles.base — arg #2 */
   .expanded {
     & :global(.fui-Icon-filled) {
-      display: inline;
+      @apply inline;
     }
 
     & :global(.fui-Icon-regular) {
-      display: none;
+      @apply hidden;
     }
   }
 }
