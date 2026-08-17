@@ -1,6 +1,9 @@
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 import * as prettier from 'prettier/standalone';
-import * as prettierPluginHTML from 'prettier/plugins/html.mjs';
+// Extensionless on purpose: prettier's exports map resolves `./plugins/html` to
+// `plugins/html.mjs` at runtime AND to `plugins/html.d.ts` for types. Naming the `.mjs`
+// file directly loads fine but leaves TypeScript with no declarations.
+import * as prettierPluginHTML from 'prettier/plugins/html';
 import webcomponentsTheme from './theme.mjs';
 import { setStorybookHelpersConfig } from './wc-toolkit-helpers.js';
 

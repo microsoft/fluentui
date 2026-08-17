@@ -4,5 +4,14 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/babel-preset-storybook-full-source/src",
-  "tags": ["vNext", "platform:node", "tools"]
+  "tags": ["vNext", "platform:node", "tools"],
+  "targets": {
+    "test": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "passWithNoTests": true,
+        "command": "cross-env NODE_OPTIONS=--experimental-vm-modules yarn run -T jest"
+      }
+    }
+  }
 }
