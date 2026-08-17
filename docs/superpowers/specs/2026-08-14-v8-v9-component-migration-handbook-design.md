@@ -67,7 +67,7 @@ Status assignment is mechanical:
 - `out of scope`: a destination exists only in an excluded package category or outside Fluent UI v9.
 
 The inventory population starts from the v8 controls registered in
-`apps/public-docsite-resources/src/AppDefinition.tsx`, reconciled with the existing rows in `ComponentMapping.mdx`. The exact source set is the direct children of each `AppDefinition.examplePages[*].links` array. Nested `links`, `testPages`, dynamically loaded API references, and non-component category headings are excluded. Every control in this source set receives a row. Duplicate mapping rows are removed, and any control present in only one source is investigated and retained with the appropriate status.
+`apps/public-docsite-resources/src/AppDefinition.tsx`, reconciled with the existing rows in `ComponentMapping.mdx`. The exact source set is a direct child of an `AppDefinition.examplePages[*].links` array that has a `component` property and a `url` matching `^#/examples/[^/]+$`. Nested scenario URLs, nested `links`, `testPages`, dynamically loaded API references, and category headings are excluded. The inventory key is the entry's exact `key` value; duplicate keys are an error. Every key in this source set receives exactly one row. Existing mapping rows whose v8 name is not one of these keys are removed from the migration inventory or moved to the existing "New Components in v9" or additional-resources section as appropriate; they do not expand the canonical row universe.
 
 Inventory entries use one row per v8 public component by default. Components are grouped into one family row only when all of these are true:
 
@@ -135,6 +135,23 @@ Four pilot pages already exist in the central docsite:
 
 These primary pages are audit-and-revise work, not duplicate-page creation. They must be brought up to the new content model, corrected against current stable APIs, and relinked from the expanded inventory. The remaining six pilot guide families require new primary pages. Existing associated pages in a P0 row's `Guide pages` list are also part of that row's completion scope.
 
+The P0 guide-family membership is fixed:
+
+| Inventory key    | Primary guide page           | Associated guide pages                                                 |
+| ---------------- | ---------------------------- | ---------------------------------------------------------------------- |
+| `Dialog`         | `Components/Dialog.mdx`      | None                                                                   |
+| `Panel`          | `Components/Drawer.mdx`      | None                                                                   |
+| `TextField`      | `Components/Input.mdx`       | `Components/Textarea.mdx`                                              |
+| `ContextualMenu` | `Components/Menu.mdx`        | None                                                                   |
+| `MessageBar`     | `Components/MessageBar.mdx`  | None                                                                   |
+| `Callout`        | `Components/Popover.mdx`     | None                                                                   |
+| `ChoiceGroup`    | `Components/RadioGroup.mdx`  | None                                                                   |
+| `Dropdown`       | `Components/Dropdown.mdx`    | None; this page covers the decision between v9 `Dropdown` and `Select` |
+| `SpinButton`     | `Components/SpinButton.mdx`  | None                                                                   |
+| `DetailsList`    | `Components/DetailsList.mdx` | None; this page covers both v9 `Table` and `DataGrid`                  |
+
+Paths are relative to `apps/public-docsite-v9/src/Concepts/Migration/FromV8/`. This table is the authoritative P0 `Guide pages` list.
+
 All other existing pages under `FromV8/Components/` have this explicit disposition:
 
 - retain the page and its current route;
@@ -147,7 +164,7 @@ This rule applies to every existing non-pilot page, including nested component-f
 
 ## Guide Content Model
 
-Every component guide follows the same top-level structure. If a section is not relevant, it contains an explicit `Not applicable` statement rather than being omitted:
+Every primary and associated component guide page independently follows the same top-level structure. Required coverage may not be distributed across pages in a family. If a section is not relevant to that page's destination, it contains an explicit `Not applicable` statement rather than being omitted:
 
 1. **Overview**
    - What the v8 component maps to in v9.
@@ -284,7 +301,8 @@ The implementation plan must use the existing Nx targets:
 - `yarn nx run public-docsite-v9:test` for migration navigation and route-link validation;
 - `yarn nx run public-docsite-v9:build-storybook:docsite` to prove that MDX pages, `<Meta>` declarations, navigation, and links can be built by the docsite.
 
-Examples use adjacent CSF story files, with separate exported stories for the v8 and v9 forms. The MDX page imports those stories and uses Storybook's `<Canvas of={...}>` and `<Source of={...}>` blocks, so the rendered example and visible source come from the same typed implementation. The public docsite already depends on both `@fluentui/react` and `@fluentui/react-components`; therefore, `public-docsite-v9:type-check` reproducibly validates imports and props for both versions.
+Examples use one discovered CSF entry point per guide page at
+`Components/examples/<GuidePageName>/index.stories.tsx`. It exports separate stories for the v8 and v9 forms and any focused major-change examples. The MDX page imports those stories and uses Storybook's `<Canvas of={...}>` and `<Source of={...}>` blocks, so the rendered example and visible source come from the same typed implementation. The exact `index.stories.tsx` name is required because `apps/public-docsite-v9/.storybook/main.js` discovers local stories with `../src/**/index.stories.@(ts|tsx)`. The public docsite already depends on both `@fluentui/react` and `@fluentui/react-components`; therefore, `public-docsite-v9:type-check` reproducibly validates imports and props for both versions.
 
 Every guide uses this exact title prefix:
 
