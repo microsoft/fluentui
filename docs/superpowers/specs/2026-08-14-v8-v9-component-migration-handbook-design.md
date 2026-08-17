@@ -4,7 +4,7 @@
 
 Fluent UI v9 has migration guidance for only a subset of components. Some packages have standalone migration guides, some contain partial migration notes inside internal specifications, and others have no migration guidance.
 
-This project creates a central, docsite-visible v8-to-v9 component migration handbook. It includes a maintained coverage inventory and an initial batch of ten high-impact component guides. Each guide explains component and API changes, provides prop mappings, and includes working v8 and v9 code examples.
+This project creates a central, docsite-visible v8-to-v9 component migration handbook. It includes a maintained coverage inventory and an initial batch of ten high-impact component guide families. Each guide explains component and API changes, provides prop mappings, and includes working v8 and v9 code examples.
 
 ## Goals
 
@@ -47,7 +47,7 @@ The inventory is a committed, maintained document and the source of truth for mi
 - guide status;
 - migration complexity;
 - priority;
-- guide link when complete;
+- required guide page or pages and their links;
 - notes for conditional mappings, unsupported scenarios, or multiple possible replacements.
 
 Supported statuses are:
@@ -60,14 +60,14 @@ Supported statuses are:
 
 Status assignment is mechanical:
 
-- `missing`: no central MDX guide exists for an eligible row;
-- `in progress`: a central MDX guide exists but fails one or more `complete` checks;
-- `complete`: every completion check below passes;
+- `missing`: at least one required central MDX guide page does not exist for an eligible row;
+- `in progress`: every required guide page exists, but at least one fails a `complete` check;
+- `complete`: every required guide page passes every completion check;
 - `no direct counterpart`: no stable v9 destination serves the same primary task;
 - `out of scope`: a destination exists only in an excluded package category or outside Fluent UI v9.
 
 The inventory population starts from the v8 controls registered in
-`apps/public-docsite-resources/src/AppDefinition.tsx`, reconciled with the existing rows in `ComponentMapping.mdx`. Every public v8 docsite control receives a row. Duplicate mapping rows are removed, and any control present in only one source is investigated and retained with the appropriate status.
+`apps/public-docsite-resources/src/AppDefinition.tsx`, reconciled with the existing rows in `ComponentMapping.mdx`. The exact source set is the direct children of each `AppDefinition.examplePages[*].links` array. Nested `links`, `testPages`, dynamically loaded API references, and non-component category headings are excluded. Every control in this source set receives a row. Duplicate mapping rows are removed, and any control present in only one source is investigated and retained with the appropriate status.
 
 Inventory entries use one row per v8 public component by default. Components are grouped into one family row only when all of these are true:
 
@@ -101,7 +101,9 @@ Priority values are:
 
 Changing a guide from `missing` to `in progress` does not change its priority. A guide changes to `N/A` priority only when it becomes `complete` or is classified as out of scope or no direct counterpart.
 
-A guide is `complete` only when its MDX page exists, has the required `<Meta>` title, is linked from `ComponentMapping.mdx`, contains every required section or an explicit `Not applicable` statement, includes the required examples, has no unresolved documentation gap affecting destination choice, public API mapping, behavior, or example correctness, and passes the validation defined below.
+A guide page is `complete` only when its MDX file exists, has the required `<Meta>` title, is linked from `ComponentMapping.mdx`, contains every required section or an explicit `Not applicable` statement, includes the required examples, has no unresolved documentation gap affecting destination choice, public API mapping, behavior, or example correctness, and passes the validation defined below.
+
+Each inventory row declares a `Guide pages` list. A one-to-one migration has one page. A migration that splits by destination or component family lists every required page, such as TextField to Input and Textarea or DocumentCard to Card, CardHeader, CardPreview, and CardFooter. Inventory notes record page-level missing checks when the aggregate row is `missing` or `in progress`. The row becomes `complete` only when every listed page is complete.
 
 A **core v8 scenario** is a scenario demonstrated by a v8 overview/example page or represented by a non-deprecated public prop in the v8 type declarations. Deprecated props and undocumented implementation details do not raise complexity.
 
@@ -131,12 +133,12 @@ Four pilot pages already exist in the central docsite:
 - `RadioGroup.mdx`;
 - `SpinButton.mdx`.
 
-These pages are audit-and-revise work, not duplicate-page creation. They must be brought up to the new content model, corrected against current stable APIs, and relinked from the expanded inventory. The remaining six pilot guides are new pages.
+These primary pages are audit-and-revise work, not duplicate-page creation. They must be brought up to the new content model, corrected against current stable APIs, and relinked from the expanded inventory. The remaining six pilot guide families require new primary pages. Existing associated pages in a P0 row's `Guide pages` list are also part of that row's completion scope.
 
 All other existing pages under `FromV8/Components/` have this explicit disposition:
 
 - retain the page and its current route;
-- classify its inventory row using the mechanical status rules;
+- associate it with the relevant inventory row's `Guide pages` list and classify the aggregate row using the mechanical status rules;
 - if it already passes the new completion checks, mark it `complete`;
 - otherwise mark it `in progress` and record the missing checks in the inventory notes;
 - do not expand or rewrite it during the pilot unless a pilot edit breaks its navigation or reveals migration guidance that is materially incorrect.
@@ -223,12 +225,12 @@ The workflow is inventory-first:
 3. Detect existing standalone and embedded migration material.
 4. Assign status, migration complexity, and priority.
 5. Expand `ComponentMapping.mdx` into the landing inventory and establish the component-page template.
-6. Audit and revise the four existing pilot pages.
-7. Research and author the six new pilot pages from current public APIs.
+6. Audit and revise the four existing primary pilot pages and any associated pages required by their P0 inventory rows.
+7. Research and author the six new primary pilot pages from current public APIs.
 8. Update the inventory in the same change as each completed guide.
 9. Run a final cross-guide consistency and navigation pass.
 
-The ten pages should be authored in small reviewable groups. Each page remains independently reviewable and maintainable even though the pilot is one documentation initiative.
+The ten guide families should be authored in small reviewable groups. Each page remains independently reviewable and maintainable even though the pilot is one documentation initiative.
 
 ## Data Flow
 
@@ -315,8 +317,8 @@ The test derives Storybook IDs with Storybook's existing CSF ID utility and fail
 
 ### Phase 2: Pilot guides
 
-- Audit and revise the four existing pilot pages.
-- Publish the six new pilot component pages in small reviewable groups.
+- Audit and revise the four existing primary pilot pages and required associated pages.
+- Publish the six new primary pilot pages in small reviewable groups.
 - Update inventory status and links with every completed page.
 
 ### Phase 3: Consistency pass
@@ -333,8 +335,8 @@ The pilot is complete when:
 - the existing v9 From-v8 component mapping page serves as the migration landing page;
 - the landing page contains a maintained inventory of all eligible stable v9 components with clear v8 counterparts;
 - the inventory records a defensible status, complexity, and priority for every entry;
-- all ten pilot component pages are published and linked;
-- the four existing pilot pages are revised in place rather than duplicated;
+- all ten P0 guide families have complete, linked `Guide pages` lists;
+- the four existing primary pilot pages are revised in place rather than duplicated;
 - every non-pilot existing central page has a mechanically assigned inventory status and missing-check notes when not complete;
 - every guide covers renamed, removed, replaced, unsupported, and new APIs where applicable;
 - every required section is present or explicitly marked `Not applicable`;
