@@ -8,6 +8,24 @@ This page is the canonical v8-to-v9 migration inventory for the public React v8 
 
 Published handbook pages are linked only from the **Guide pages** column. Planned P0 pages stay plain text until the central MDX guide exists and is ready to publish.
 
+- [Getting Started](#getting-started)
+- [Inventory legend](#inventory-legend)
+- [Component Migration Inventory](#component-migration-inventory)
+- [Out-of-scope categories](#out-of-scope-categories)
+- [New Components in v9](#new-components-in-v9)
+- [Additional Resources](#additional-resources)
+
+## Getting Started
+
+1. Install Fluent UI v9:
+
+   ```bash
+   npm install @fluentui/react-components
+   ```
+
+2. Update imports from `@fluentui/react` to `@fluentui/react-components` as you migrate each scenario.
+3. Refactor APIs with the inventory and linked guides: many v9 destinations use renamed props, compound components, slots, and child composition instead of v8 render callbacks.
+
 ## Inventory legend
 
 - **Status**
@@ -128,15 +146,19 @@ Stable v9-only components stay here instead of receiving migration rows:
 - [**AvatarGroup**](/docs/components-avatargroup--docs): Replaces `Facepile`.
 - [**Badge**](/docs/components-badge-badge--docs): Displays text and/or an icon.
 - [**Carousel**](/docs/components-carousel--docs): Presents paged content with previous, next, and pagination controls.
+- [**CounterBadge**](/docs/components-badge-counter-badge--docs): Displays numeric counts and notification totals in a compact badge.
 - [**Drawer**](/docs/components-drawer--docs): Replaces `Panel` for side-drawer navigation.
+- [**InfoLabel**](/docs/components-infolabel--docs): Adds inline contextual help to labels and form fields.
 - [**Input**](/docs/components-input--docs): Provides the single-line text input destination for `TextField`.
 - [**Popover**](/docs/components-popover--docs): Covers anchored surfaces that previously used `Callout`.
+- [**PresenceBadge**](/docs/components-badge-presencebadge--docs): Shows presence and out-of-office status, often alongside `Avatar`.
 - [**ProgressBar**](/docs/components-progressbar--docs): Replaces `ProgressIndicator`.
 - [**Skeleton**](/docs/components-skeleton--docs): Replaces `Shimmer` loading placeholders.
 - [**SwatchPicker**](/docs/components-swatchpicker--docs): Replaces `SwatchColorPicker`.
 - [**Switch**](/docs/components-switch--docs): Replaces `Toggle`.
 - [**TabList**](/docs/components-tablist--docs): Replaces `Pivot` for tabbed navigation.
 - [**TeachingPopover**](/docs/components-teachingpopover--docs): Replaces `TeachingBubble` and `Coachmark`.
+- [**Toast**](/docs/components-toast--docs): Presents transient app notifications with `Toast` and `Toaster`.
 
 ## Additional Resources
 
