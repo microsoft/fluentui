@@ -25,10 +25,25 @@ interface MissingBacklinkIssue {
   issue?: string;
 }
 
+interface UnresolvedInternalDocsLinkIssue {
+  docsId?: string;
+  filePath: string;
+  issue?: string;
+  sourcePath?: string;
+  url: string;
+}
+
+interface PackageStoryPathInfo {
+  packageDirectory: string;
+  packageName: string;
+  storySlug: string;
+}
+
 interface DiscoveredDocs {
   allDocsIds: Set<string>;
   mdxDocsIds: Set<string>;
   mdxFilesByDocsId: Map<string, string[]>;
+  unresolvedCsfFilesByDocsId: Map<string, string[]>;
 }
 
 const repoRoot = path.resolve(__dirname, '../../../../../..');
@@ -82,6 +97,49 @@ function getPropertyAssignment(
 
 function getStringLiteralValue(expression: ts.Expression): string | undefined {
   return ts.isStringLiteralLike(expression) ? expression.text : undefined;
+}
+
+function getResolvableStringLiteralValue(
+  expression: ts.Expression,
+  variableInitializers: Map<string, ts.Expression>,
+  visitedIdentifiers = new Set<string>(),
+): string | undefined {
+  const unwrappedExpression = unwrapExpression(expression);
+  const literalValue = getStringLiteralValue(unwrappedExpression);
+
+  if (literalValue !== undefined) {
+    return literalValue;
+  }
+
+  if (ts.isIdentifier(unwrappedExpression)) {
+    if (visitedIdentifiers.has(unwrappedExpression.text)) {
+      return undefined;
+    }
+
+    const initializer = variableInitializers.get(unwrappedExpression.text);
+
+    if (!initializer) {
+      return undefined;
+    }
+
+    const nextVisitedIdentifiers = new Set(visitedIdentifiers);
+    nextVisitedIdentifiers.add(unwrappedExpression.text);
+
+    return getResolvableStringLiteralValue(initializer, variableInitializers, nextVisitedIdentifiers);
+  }
+
+  if (ts.isBinaryExpression(unwrappedExpression) && unwrappedExpression.operatorToken.kind === ts.SyntaxKind.PlusToken) {
+    const left = getResolvableStringLiteralValue(unwrappedExpression.left, variableInitializers, visitedIdentifiers);
+    const right = getResolvableStringLiteralValue(unwrappedExpression.right, variableInitializers, visitedIdentifiers);
+
+    return left !== undefined && right !== undefined ? `${left}${right}` : undefined;
+  }
+
+  return undefined;
+}
+
+function getDocsSlug(value: string): string {
+  return toId(value, 'docs').replace(/--docs$/, '');
 }
 
 function getRequiredObjectLiteralProperty(objectLiteral: ts.ObjectLiteralExpression, propertyName: string): ts.Expression {
@@ -318,6 +376,7 @@ function getLiteralCsfTitle(filePath: string, source: string): string | undefine
     filePath.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS,
   );
   const objectLiteralsByIdentifier = new Map<string, ts.ObjectLiteralExpression>();
+  const variableInitializers = new Map<string, ts.Expression>();
 
   for (const statement of sourceFile.statements) {
     if (!ts.isVariableStatement(statement)) {
@@ -330,6 +389,8 @@ function getLiteralCsfTitle(filePath: string, source: string): string | undefine
       }
 
       const initializer = unwrapExpression(declaration.initializer);
+
+      variableInitializers.set(declaration.name.text, initializer);
 
       if (ts.isObjectLiteralExpression(initializer)) {
         objectLiteralsByIdentifier.set(declaration.name.text, initializer);
@@ -367,7 +428,7 @@ function getLiteralCsfTitle(filePath: string, source: string): string | undefine
     return undefined;
   }
 
-  return getStringLiteralValue(unwrapExpression(titleProperty.initializer));
+  return getResolvableStringLiteralValue(titleProperty.initializer, variableInitializers);
 }
 
 function addFileToDocsIdMap(map: Map<string, string[]>, docsId: string, filePath: string): void {
@@ -378,6 +439,70 @@ function addFileToDocsIdMap(map: Map<string, string[]>, docsId: string, filePath
   } else {
     map.set(docsId, [filePath]);
   }
+}
+
+function getPackageStoryPathInfo(filePath: string): PackageStoryPathInfo | undefined {
+  const relativeFilePath = relativeToRepo(filePath).replace(/\\/g, '/');
+  const packageStoriesMatch = relativeFilePath.match(
+    /^packages\/react-components\/([^/]+)\/stories\/src\/(.+)\/index\.stories\.(?:ts|tsx)$/,
+  );
+
+  if (!packageStoriesMatch) {
+    return undefined;
+  }
+
+  const [, packageDirectory, storySubpath] = packageStoriesMatch;
+
+  return {
+    packageDirectory,
+    packageName: packageDirectory.replace(/^react-/, ''),
+    storySlug: getDocsSlug(storySubpath),
+  };
+}
+
+function addValueToSetMap(map: Map<string, Set<string>>, key: string, value: string): void {
+  const existing = map.get(key);
+
+  if (existing) {
+    existing.add(value);
+  } else {
+    map.set(key, new Set([value]));
+  }
+}
+
+function incrementCount(map: Map<string, number>, key: string): void {
+  map.set(key, (map.get(key) ?? 0) + 1);
+}
+
+function getConfiguredCsfDocsIdCandidates(
+  packageStoryPathInfo: PackageStoryPathInfo,
+  packageDocsIdPrefixes: Map<string, Set<string>>,
+  packageStoryFileCounts: Map<string, number>,
+): string[] {
+  const { packageDirectory, packageName, storySlug } = packageStoryPathInfo;
+  const candidates = new Set<string>();
+  const packageDocsIdPrefixesForPackage = packageDocsIdPrefixes.get(packageDirectory);
+
+  for (const docsIdPrefix of packageDocsIdPrefixesForPackage ?? []) {
+    candidates.add(`${docsIdPrefix}${storySlug}--docs`);
+  }
+
+  if (!packageDocsIdPrefixesForPackage?.size && packageStoryFileCounts.get(packageDirectory) === 1) {
+    const packageNameSlug = getDocsSlug(packageName);
+    const fallbackStorySlugs = new Set([storySlug]);
+
+    if (packageNameSlug && packageNameSlug !== storySlug) {
+      fallbackStorySlugs.add(`${packageNameSlug}-${storySlug}`);
+    }
+
+    for (const docsIdPrefix of ['components-', 'compat-components-', 'preview-components-']) {
+      for (const fallbackStorySlug of fallbackStorySlugs) {
+        candidates.add(`${docsIdPrefix}${fallbackStorySlug}--docs`);
+      }
+    }
+  }
+
+  return [...candidates].sort((left, right) => left.localeCompare(right));
 }
 
 function getConfiguredDocs(): DiscoveredDocs {
@@ -417,6 +542,10 @@ function getConfiguredDocs(): DiscoveredDocs {
   const allDocsIds = new Set<string>();
   const mdxDocsIds = new Set<string>();
   const mdxFilesByDocsId = new Map<string, string[]>();
+  const packageDocsIdPrefixes = new Map<string, Set<string>>();
+  const packageStoryFileCounts = new Map<string, number>();
+  const unresolvedCsfFilesByDocsId = new Map<string, string[]>();
+  const unresolvedPackageStoryFiles: Array<{ filePath: string; packageStoryPathInfo: PackageStoryPathInfo }> = [];
 
   for (const filePath of files) {
     const source = readUtf8(filePath);
@@ -432,19 +561,54 @@ function getConfiguredDocs(): DiscoveredDocs {
       continue;
     }
 
+    const packageStoryPathInfo = getPackageStoryPathInfo(filePath);
+
+    if (packageStoryPathInfo) {
+      incrementCount(packageStoryFileCounts, packageStoryPathInfo.packageDirectory);
+    }
+
     const title = getLiteralCsfTitle(filePath, source);
 
     if (!title) {
+      if (packageStoryPathInfo) {
+        unresolvedPackageStoryFiles.push({ filePath, packageStoryPathInfo });
+      }
+
       continue;
     }
 
-    allDocsIds.add(toId(title, 'docs'));
+    const docsId = toId(title, 'docs');
+
+    allDocsIds.add(docsId);
+
+    if (packageStoryPathInfo) {
+      const docsIdSlug = docsId.replace(/--docs$/, '');
+
+      if (docsIdSlug.endsWith(packageStoryPathInfo.storySlug)) {
+        addValueToSetMap(
+          packageDocsIdPrefixes,
+          packageStoryPathInfo.packageDirectory,
+          docsIdSlug.slice(0, docsIdSlug.length - packageStoryPathInfo.storySlug.length),
+        );
+      }
+    }
+  }
+
+  for (const { filePath, packageStoryPathInfo } of unresolvedPackageStoryFiles) {
+    for (const docsIdCandidate of getConfiguredCsfDocsIdCandidates(
+      packageStoryPathInfo,
+      packageDocsIdPrefixes,
+      packageStoryFileCounts,
+    )) {
+      addFileToDocsIdMap(unresolvedCsfFilesByDocsId, docsIdCandidate, filePath);
+    }
   }
 
   configuredDocsCache = {
     allDocsIds,
     mdxDocsIds,
     mdxFilesByDocsId,
+    unresolvedCsfFilesByDocsId,
   };
 
   return configuredDocsCache;
@@ -484,6 +648,58 @@ function getExistingP0GuideDocsIds(): string[] {
   });
 }
 
+function getLinkedMissingP0Rows(
+  rows: InventoryRow[],
+  priorityColumnIndex: number,
+  statusColumnIndex: number,
+): Array<Pick<InventoryRow, 'guideLinks' | 'lineNumber' | 'raw'>> {
+  return rows
+    .filter(
+      row =>
+        normalizeInventoryCell(row.cells[priorityColumnIndex]) === 'p0' &&
+        normalizeInventoryCell(row.cells[statusColumnIndex]) === 'missing' &&
+        row.guideLinks.length > 0,
+    )
+    .map(row => ({
+      guideLinks: row.guideLinks,
+      lineNumber: row.lineNumber,
+      raw: row.raw,
+    }));
+}
+
+function getExistingP0GuideFiles(configuredDocs: DiscoveredDocs): Set<string> {
+  return new Set(
+    getExistingP0GuideDocsIds().flatMap(docsId => configuredDocs.mdxFilesByDocsId.get(docsId) ?? []),
+  );
+}
+
+function getUnresolvedInternalDocsLinkIssues(
+  filePath: string,
+  url: string,
+  configuredDocs: DiscoveredDocs,
+  existingP0GuideFiles: Set<string>,
+): UnresolvedInternalDocsLinkIssue[] {
+  const docsId = getDocsIdFromUrl(url);
+
+  if (docsId && existingP0GuideFiles.has(filePath)) {
+    const unresolvedSourcePaths = (configuredDocs.unresolvedCsfFilesByDocsId.get(docsId) ?? [])
+      .map(sourceFilePath => relativeToRepo(sourceFilePath))
+      .sort((left, right) => left.localeCompare(right));
+
+    if (unresolvedSourcePaths.length > 0) {
+      return unresolvedSourcePaths.map(sourcePath => ({
+        docsId,
+        filePath: relativeToRepo(filePath),
+        issue: 'Configured CSF title could not be resolved as a literal.',
+        sourcePath,
+        url,
+      }));
+    }
+  }
+
+  return [{ docsId, filePath: relativeToRepo(filePath), url }];
+}
+
 function getPrematurelyLinkedMissingP0Rows(): Array<Pick<InventoryRow, 'guideLinks' | 'lineNumber' | 'raw'>> {
   const guidePagesColumnIndex = getInventoryColumnIndex('Guide pages');
   const priorityColumnIndex = getInventoryColumnIndex('Priority');
@@ -493,20 +709,117 @@ function getPrematurelyLinkedMissingP0Rows(): Array<Pick<InventoryRow, 'guideLin
     return [];
   }
 
-  return getInventoryRows()
-    .filter(
-      row =>
-        normalizeInventoryCell(row.cells[priorityColumnIndex]) === 'p0' &&
-        normalizeInventoryCell(row.cells[statusColumnIndex]) === 'missing' &&
-        normalizeInventoryCell(row.cells[guidePagesColumnIndex]).startsWith('planned:') &&
-        row.guideLinks.length > 0,
-    )
-    .map(row => ({
-      guideLinks: row.guideLinks,
-      lineNumber: row.lineNumber,
-      raw: row.raw,
-    }));
+  return getLinkedMissingP0Rows(
+    getInventoryRows(),
+    priorityColumnIndex,
+    statusColumnIndex,
+  );
 }
+
+describe('migration guide route helpers', () => {
+  test('infers unresolved configured CSF docs IDs from resolved siblings before falling back to generic prefixes', () => {
+    expect(
+      getConfiguredCsfDocsIdCandidates(
+        {
+          packageDirectory: 'react-headless-components-preview',
+          packageName: 'headless-components-preview',
+          storySlug: 'button',
+        },
+        new Map([['react-headless-components-preview', new Set(['components-'])]]),
+        new Map([['react-headless-components-preview', 48]]),
+      ),
+    ).toEqual(['components-button--docs']);
+
+    expect(
+      getConfiguredCsfDocsIdCandidates(
+        {
+          packageDirectory: 'react-nav',
+          packageName: 'nav',
+          storySlug: 'nav',
+        },
+        new Map<string, Set<string>>(),
+        new Map([['react-nav', 1]]),
+      ),
+    ).toEqual(['compat-components-nav--docs', 'components-nav--docs', 'preview-components-nav--docs']);
+  });
+
+  test('reports matching unresolved configured CSF title sources for internal docs links from existing P0 guides only', () => {
+    const p0GuideFilePath = path.join(fromV8ComponentsDirectory, 'Input.mdx');
+    const otherGuideFilePath = path.join(fromV8ComponentsDirectory, 'Theme.mdx');
+    const unresolvedStoryPath = path.join(
+      repoRoot,
+      'packages/react-components/react-nav/stories/src/Nav/index.stories.tsx',
+    );
+    const configuredDocs: DiscoveredDocs = {
+      allDocsIds: new Set<string>(),
+      mdxDocsIds: new Set<string>(),
+      mdxFilesByDocsId: new Map<string, string[]>(),
+      unresolvedCsfFilesByDocsId: new Map<string, string[]>([['components-nav--docs', [unresolvedStoryPath]]]),
+    };
+    const existingP0GuideFiles = new Set([p0GuideFilePath]);
+
+    expect(
+      getUnresolvedInternalDocsLinkIssues(
+        p0GuideFilePath,
+        '/docs/components-nav--docs',
+        configuredDocs,
+        existingP0GuideFiles,
+      ),
+    ).toEqual([
+      {
+        docsId: 'components-nav--docs',
+        filePath: 'apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Input.mdx',
+        issue: 'Configured CSF title could not be resolved as a literal.',
+        sourcePath: 'packages/react-components/react-nav/stories/src/Nav/index.stories.tsx',
+        url: '/docs/components-nav--docs',
+      },
+    ]);
+
+    expect(
+      getUnresolvedInternalDocsLinkIssues(
+        otherGuideFilePath,
+        '/docs/components-nav--docs',
+        configuredDocs,
+        existingP0GuideFiles,
+      ),
+    ).toEqual([
+      {
+        docsId: 'components-nav--docs',
+        filePath: 'apps/public-docsite-v9/src/Concepts/Migration/FromV8/Components/Theme.mdx',
+        url: '/docs/components-nav--docs',
+      },
+    ]);
+  });
+
+  test('flags missing P0 inventory rows with markdown guide links regardless of planned text', () => {
+    expect(
+      getLinkedMissingP0Rows(
+        [
+          {
+            cells: ['Button', '[Button migration](/docs/concepts-migration-from-v8-components-button--docs)', 'P0', 'missing'],
+            guideLinks: ['/docs/concepts-migration-from-v8-components-button--docs'],
+            lineNumber: 12,
+            raw: '| Button | [Button migration](/docs/concepts-migration-from-v8-components-button--docs) | P0 | missing |',
+          },
+          {
+            cells: ['Checkbox', 'Planned: checkbox guide', 'P0', 'missing'],
+            guideLinks: [],
+            lineNumber: 13,
+            raw: '| Checkbox | Planned: checkbox guide | P0 | missing |',
+          },
+        ],
+        2,
+        3,
+      ),
+    ).toEqual([
+      {
+        guideLinks: ['/docs/concepts-migration-from-v8-components-button--docs'],
+        lineNumber: 12,
+        raw: '| Button | [Button migration](/docs/concepts-migration-from-v8-components-button--docs) | P0 | missing |',
+      },
+    ]);
+  });
+});
 
 describe('FromV8 migration inventory', () => {
   test('uses canonical v8 example keys from AppDefinition', () => {
@@ -576,7 +889,8 @@ describe('FromV8 migration guide routes', () => {
 
   test('every internal /docs/ link in component guides resolves to a configured docsite docs ID', () => {
     const configuredDocs = getConfiguredDocs();
-    const unresolvedLinks = getComponentGuideFiles().flatMap(filePath =>
+    const existingP0GuideFiles = getExistingP0GuideFiles(configuredDocs);
+    const unresolvedLinks = getComponentGuideFiles().flatMap<UnresolvedInternalDocsLinkIssue>(filePath =>
       extractMarkdownLinks(readUtf8(filePath))
         .filter(url => url.startsWith('/docs/'))
         .flatMap(url => {
@@ -586,7 +900,7 @@ describe('FromV8 migration guide routes', () => {
             return [];
           }
 
-          return [{ docsId, filePath: relativeToRepo(filePath), url }];
+          return getUnresolvedInternalDocsLinkIssues(filePath, url, configuredDocs, existingP0GuideFiles);
         }),
     );
 
