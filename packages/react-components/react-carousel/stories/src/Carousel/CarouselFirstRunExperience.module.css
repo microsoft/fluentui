@@ -21,13 +21,9 @@
 }
 
 .header {
-  @apply mx-vertical-xxl mt-vertical-xxl mb-vertical-s block font-base text-base-500 font-semibold;
-
-  line-height: var(--leading-base-500);
+  @apply mx-vertical-xxl mt-vertical-xxl mb-vertical-s block font-base text-base-500 leading-base-500 font-semibold;
 }
 
 .text {
-  @apply block px-vertical-xxl py-vertical-s font-base text-base-300 font-regular;
-
-  line-height: var(--leading-base-300);
+  @apply block px-vertical-xxl py-vertical-s font-base text-base-300 leading-base-300 font-regular;
 }

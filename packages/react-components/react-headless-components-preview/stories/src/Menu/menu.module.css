@@ -171,12 +171,11 @@
 
 /* Selectable indicators (checkmark / radio dot) */
 .checkmark {
-  @apply inline-grid h-16 w-16 place-items-center text-base-200 font-bold text-transparent;
+  @apply inline-grid h-16 w-16 place-items-center text-base-200 leading-none font-bold text-transparent;
 
   border-radius: var(--radius-pill);
   border: var(--stroke-thin) solid var(--border-strong);
   background: transparent;
-  line-height: 1;
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard),

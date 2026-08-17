@@ -13,12 +13,11 @@
 }
 
 .infoButton {
-  @apply inline-flex h-16 w-16 cursor-pointer items-center justify-center;
+  @apply inline-flex h-16 w-16 cursor-pointer items-center justify-center leading-none;
 
   all: unset;
   border-radius: var(--radius-sm);
   color: var(--text-muted);
-  line-height: 1;
 }
 
 .infoButton:hover {

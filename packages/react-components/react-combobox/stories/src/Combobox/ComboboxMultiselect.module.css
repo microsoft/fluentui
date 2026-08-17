@@ -10,7 +10,5 @@
 }
 
 .description {
-  @apply font-base text-base-200 font-regular;
-
-  line-height: var(--leading-base-200);
+  @apply font-base text-base-200 leading-base-200 font-regular;
 }

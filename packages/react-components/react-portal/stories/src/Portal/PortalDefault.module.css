@@ -18,15 +18,13 @@
 }
 
 .clippingContainer {
-  @apply overflow-hidden bg-neutral-background-1 px-8 py-24 font-base text-base-400 font-semibold text-neutral-foreground-1;
+  @apply overflow-hidden bg-neutral-background-1 px-8 py-24 font-base text-base-400 leading-base-400 font-semibold text-neutral-foreground-1;
 
-  line-height: var(--leading-base-400);
   border: var(--stroke-width-thick) solid var(--color-neutral-stroke-1);
 }
 
 .portalContent {
-  @apply bg-brand-background-2 px-6 py-12 font-base text-base-500 font-semibold text-brand-foreground-2;
+  @apply bg-brand-background-2 px-6 py-12 font-base text-base-500 leading-base-500 font-semibold text-brand-foreground-2;
 
-  line-height: var(--leading-base-500);
   border: var(--stroke-width-thick) dashed var(--color-brand-stroke-2);
 }

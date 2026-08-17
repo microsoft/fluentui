@@ -4,14 +4,11 @@
  * Token references are the Fluent theme's CSS variables. */
 
 .title {
-  @apply font-base text-hero-700 font-semibold;
-
-  line-height: var(--leading-hero-700);
+  @apply font-base text-hero-700 leading-hero-700 font-semibold;
 }
 
 .paragraph {
-  @apply font-base text-base-300 font-regular italic;
+  @apply font-base text-base-300 leading-base-300 font-regular italic;
 
-  line-height: var(--leading-base-300);
   letter-spacing: 0.0675em;
 }

@@ -33,9 +33,7 @@
 }
 
 .code {
-  @apply flex place-items-center rounded-medium bg-neutral-background-4 px-8 py-4 text-base-200;
-
-  line-height: var(--leading-base-200);
+  @apply flex place-items-center rounded-medium bg-neutral-background-4 px-8 py-4 text-base-200 leading-base-200;
 }
 
 .wireframe {

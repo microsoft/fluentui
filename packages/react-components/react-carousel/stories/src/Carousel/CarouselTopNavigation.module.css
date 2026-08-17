@@ -18,15 +18,11 @@
 }
 
 .title {
-  @apply font-base text-base-600 font-semibold;
-
-  line-height: var(--leading-base-600);
+  @apply font-base text-base-600 leading-base-600 font-semibold;
 }
 
 .subtext {
-  @apply mb-vertical-m font-base text-base-300 font-regular;
-
-  line-height: var(--leading-base-300);
+  @apply mb-vertical-m font-base text-base-300 leading-base-300 font-regular;
 }
 
 .container {

@@ -25,14 +25,13 @@
 
 /* Dismiss button — boxed subtle button, mirrors v9 TeachingPopoverHeader__dismissButton. */
 .dismissButton {
-  @apply inline-flex h-24 w-24 cursor-pointer items-center justify-center p-0 text-base-300;
+  @apply inline-flex h-24 w-24 cursor-pointer items-center justify-center p-0 text-base-300 leading-none;
 
   margin-inline-start: auto;
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-muted);
-  line-height: 1;
   transition:
     background-color 80ms ease,
     border-color 80ms ease,
@@ -98,7 +97,7 @@
   TeachingPopoverCarouselFooterButton minimum.
 */
 .actionButton {
-  @apply inline-flex h-32 min-w-96 cursor-pointer items-center justify-center font-semibold;
+  @apply inline-flex h-32 min-w-96 cursor-pointer items-center justify-center leading-none font-semibold;
 
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -107,7 +106,6 @@
   color: var(--text);
   font-family: inherit;
   font-size: calc(13px * var(--base-scale));
-  line-height: 1;
   transition:
     background-color 80ms ease,
     border-color 80ms ease,

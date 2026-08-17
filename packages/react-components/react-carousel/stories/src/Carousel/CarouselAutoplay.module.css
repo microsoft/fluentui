@@ -14,15 +14,11 @@
 }
 
 .title {
-  @apply font-base text-hero-800 font-semibold;
-
-  line-height: var(--leading-hero-800);
+  @apply font-base text-hero-800 leading-hero-800 font-semibold;
 }
 
 .subtext {
-  @apply font-base text-base-300 font-regular;
-
-  line-height: var(--leading-base-300);
+  @apply font-base text-base-300 leading-base-300 font-regular;
 }
 
 .container {

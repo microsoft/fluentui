@@ -38,10 +38,9 @@
 }
 
 .codeArea {
-  @apply m-0 min-w-0 flex-auto overflow-auto bg-neutral-background-3 px-horizontal-xl py-vertical-l font-monospace text-base-100 text-neutral-foreground-1;
+  @apply m-0 min-w-0 flex-auto overflow-auto bg-neutral-background-3 px-horizontal-xl py-vertical-l font-monospace text-base-100 leading-base-200 text-neutral-foreground-1;
 
   border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  line-height: var(--leading-base-200);
 }
 
 @media (max-width: 600px) {

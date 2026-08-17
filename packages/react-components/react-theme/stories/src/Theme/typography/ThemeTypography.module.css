@@ -16,103 +16,69 @@
 }
 
 .body1 {
-  @apply font-base text-base-300 font-regular;
-
-  line-height: var(--leading-base-300);
+  @apply font-base text-base-300 leading-base-300 font-regular;
 }
 
 .body1Strong {
-  @apply font-base text-base-300 font-semibold;
-
-  line-height: var(--leading-base-300);
+  @apply font-base text-base-300 leading-base-300 font-semibold;
 }
 
 .body1Stronger {
-  @apply font-base text-base-300 font-bold;
-
-  line-height: var(--leading-base-300);
+  @apply font-base text-base-300 leading-base-300 font-bold;
 }
 
 .body2 {
-  @apply font-base text-base-400 font-regular;
-
-  line-height: var(--leading-base-400);
+  @apply font-base text-base-400 leading-base-400 font-regular;
 }
 
 .caption1 {
-  @apply font-base text-base-200 font-regular;
-
-  line-height: var(--leading-base-200);
+  @apply font-base text-base-200 leading-base-200 font-regular;
 }
 
 .caption1Strong {
-  @apply font-base text-base-200 font-semibold;
-
-  line-height: var(--leading-base-200);
+  @apply font-base text-base-200 leading-base-200 font-semibold;
 }
 
 .caption1Stronger {
-  @apply font-base text-base-200 font-bold;
-
-  line-height: var(--leading-base-200);
+  @apply font-base text-base-200 leading-base-200 font-bold;
 }
 
 .caption2 {
-  @apply font-base text-base-100 font-regular;
-
-  line-height: var(--leading-base-100);
+  @apply font-base text-base-100 leading-base-100 font-regular;
 }
 
 .caption2Strong {
-  @apply font-base text-base-100 font-semibold;
-
-  line-height: var(--leading-base-100);
+  @apply font-base text-base-100 leading-base-100 font-semibold;
 }
 
 .subtitle1 {
-  @apply font-base text-base-500 font-semibold;
-
-  line-height: var(--leading-base-500);
+  @apply font-base text-base-500 leading-base-500 font-semibold;
 }
 
 .subtitle2 {
-  @apply font-base text-base-400 font-semibold;
-
-  line-height: var(--leading-base-400);
+  @apply font-base text-base-400 leading-base-400 font-semibold;
 }
 
 .subtitle2Stronger {
-  @apply font-base text-base-400 font-bold;
-
-  line-height: var(--leading-base-400);
+  @apply font-base text-base-400 leading-base-400 font-bold;
 }
 
 .title1 {
-  @apply font-base text-hero-800 font-semibold;
-
-  line-height: var(--leading-hero-800);
+  @apply font-base text-hero-800 leading-hero-800 font-semibold;
 }
 
 .title2 {
-  @apply font-base text-hero-700 font-semibold;
-
-  line-height: var(--leading-hero-700);
+  @apply font-base text-hero-700 leading-hero-700 font-semibold;
 }
 
 .title3 {
-  @apply font-base text-base-600 font-semibold;
-
-  line-height: var(--leading-base-600);
+  @apply font-base text-base-600 leading-base-600 font-semibold;
 }
 
 .largeTitle {
-  @apply font-base text-hero-900 font-semibold;
-
-  line-height: var(--leading-hero-900);
+  @apply font-base text-hero-900 leading-hero-900 font-semibold;
 }
 
 .display {
-  @apply font-base text-hero-1000 font-semibold;
-
-  line-height: var(--leading-hero-1000);
+  @apply font-base text-hero-1000 leading-hero-1000 font-semibold;
 }

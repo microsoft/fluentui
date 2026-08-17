@@ -15,12 +15,11 @@
 }
 
 .resizableArea::after {
-  @apply absolute -top-2 -left-2 bg-brand-background px-4 py-1 text-neutral-foreground-on-brand;
+  @apply absolute -top-2 -left-2 bg-brand-background px-4 py-1 leading-none text-neutral-foreground-on-brand;
 
   content: 'Resizable Area';
   font-family: monospace;
   font-size: calc(15px * var(--base-scale));
   font-weight: 900;
-  line-height: 1;
   letter-spacing: 1px;
 }

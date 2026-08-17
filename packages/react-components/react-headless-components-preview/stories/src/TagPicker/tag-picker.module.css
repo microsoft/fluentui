@@ -64,12 +64,11 @@
 }
 
 .dismissIcon {
-  @apply inline-flex cursor-pointer items-center justify-center p-0;
+  @apply inline-flex cursor-pointer items-center justify-center p-0 leading-none;
 
   border: none;
   background: transparent;
   color: var(--text-soft);
-  line-height: 1;
 }
 
 .dismissIcon:hover {

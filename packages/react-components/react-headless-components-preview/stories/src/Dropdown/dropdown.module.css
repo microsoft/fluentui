@@ -121,7 +121,7 @@
 
 /* inline clear / reset button */
 .clearButton {
-  @apply absolute top-1/2 inline-flex cursor-pointer items-center justify-center;
+  @apply absolute top-1/2 inline-flex cursor-pointer items-center justify-center leading-none;
 
   right: var(--space-2);
   transform: translateY(-50%);
@@ -130,7 +130,6 @@
   border: none;
   background: transparent;
   color: var(--text-soft);
-  line-height: 1;
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard);

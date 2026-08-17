@@ -46,10 +46,9 @@
 }
 
 .codeArea {
-  @apply m-0 overflow-auto bg-neutral-background-3 px-horizontal-l py-vertical-m font-monospace text-base-100 text-neutral-foreground-1;
+  @apply m-0 overflow-auto bg-neutral-background-3 px-horizontal-l py-vertical-m font-monospace text-base-100 leading-base-200 text-neutral-foreground-1;
 
   border-top: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
-  line-height: var(--leading-base-200);
 }
 
 .buttonRow {
