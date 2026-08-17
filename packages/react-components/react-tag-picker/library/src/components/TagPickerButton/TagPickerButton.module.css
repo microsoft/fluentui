@@ -16,11 +16,6 @@
     color: var(--color-neutral-foreground-1);
     cursor: pointer;
 
-    /*
-     * `fontFamily: tokens.fontFamilyBase` is declared here AND by every size slice's
-     * `typographyStyles.*` spread; all four are the same token, so Griffel deduplicated them
-     * onto one atomic (`.fk6fouc`). Declared once here for the same reason.
-     */
     font-family: var(--font-base);
 
     /* `columnGap: tokens.spacingHorizontalXXS` — `extra-large` overrides it below */
@@ -37,15 +32,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.medium / .large / .['extra-large'] — arg #3. `size` is a small ENUM scale →
-   * `data-size` (D3).
-   *
-   * Each `padding` is `<block>px <inline-end> <block>px calc(<inline-end> + <nudge>)`, a
-   * `[ltr, rtl]` shorthand flip → block/inline logical set. The block halves are plain px
-   * literals (3/5/7) and take the numeric utilities, which ride `--base-scale` exactly as the
-   * named steps do (`--spacing` is `calc(1px * var(--base-scale))`).
-   */
   .root {
     @variant size-medium {
       @apply py-3 ps-horizontal-s pe-horizontal-s-nudge;
@@ -86,11 +72,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.visuallyHidden — arg #4, applied once an option has been selected (the
-   * TagPickerGroup then renders the selection and this button is taken out of the layout but
-   * left in the accessibility tree).
-   */
   .visually-hidden {
     @apply absolute -m-1 h-1 w-1 overflow-hidden p-0;
 

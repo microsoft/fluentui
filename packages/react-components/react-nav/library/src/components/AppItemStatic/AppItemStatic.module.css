@@ -98,11 +98,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * icon arg #2, the half that styles THIS package's own <span> — from the shared
-   * useIconStyles.base. See NavItem.module.css for the invalid-declaration note; both are
-   * reproduced verbatim from the compiled atomics and render nothing in any browser.
-   */
   .icon {
     @apply grid min-h-vertical-xl min-w-horizontal-xl justify-center overflow-hidden;
 
@@ -111,17 +106,6 @@
   }
 }
 
-/*
- * ── The icon swap, at the module's own altitude (S-J retirement of D2 amendment 5) ────
- *
- * These rules style `@fluentui/react-icons`' two `bundleIcon()` <svg>s. Icons 3.0
- * (headless) styles them via `[data-fui-icon-hidden]` (0-1-0) from a stylesheet this repo
- * imports at `@layer fui.components.l1` (DECISIONS.md D27), so the D2a5 unlayered escape
- * hatch is retired and the block lives at the icon slot's own altitude, l1. The icons
- * sheet is emitted AFTER component modules at that altitude, so these rules win on
- * SPECIFICITY ONLY (0-2-0 over 0-1-0) — see NavItem.module.css's copy of this note and
- * the CDP evidence pointer.
- */
 @layer fui.components.l1 {
   .icon {
     & :global(.fui-Icon-filled) {

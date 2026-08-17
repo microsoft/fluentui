@@ -4,61 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useToolbarStyles_unstable,
- * not source declaration order.
- *
- *   #  mergeClasses argument                              → target
- *   ---------------------------------------------------------------------------------
- *   1  useStyles.root                                     → fui.components.l1
- *   2  vertical && useStyles.vertical                     → fui.components.l1  (data-orientation)
- *   3  size === 'small'  && !vertical && useStyles.small  → fui.components.l1  (data-size + data-orientation)
- *   4  size === 'medium' && !vertical && useStyles.medium → fui.components.l1
- *   5  size === 'large'  && !vertical && useStyles.large  → fui.components.l1
- *   6  consumer className                                 → unlayered (always wins)
- *
- * The `fui-Toolbar` static that used to lead that list was removed with the rest of the BEM
- * statics (DECISIONS.md D16.1); `group/fui-toolbar` is the root's sole public identity class
- * now, and it carries no declarations of its own.
- *
- * Toolbar's root is its OWN element — nothing else writes to it — so every block is l1.
- * There is no makeResetStyles, so `fui.base` is unused, and nothing here styles another
- * component's hook output, so `fui.components.l2` is unused (contrast ToolbarButton and
- * ToolbarDivider, which are l2 for exactly that reason).
- *
- * ── The `!vertical` gate rides `data-orientation`, not the absence of `data-size` ─────
- * Args #4–#6 are gated on BOTH `size` and `!vertical`. `data-size` is stamped
- * unconditionally (Toolbar also feeds `size` to its children through ToolbarContext, so
- * dropping the attribute on a vertical toolbar would make the DOM lie about the state),
- * and the `!vertical` half is expressed by nesting the size variants inside
- * `@variant horizontal` — the complement of the `@variant vertical` block above, driven
- * by the same always-stamped attribute. All variant compounds are `:where()`-flat, so the
- * nesting costs no specificity.
- *
- * ── Ordering that IS load-bearing ────────────────────────────────────────────────────
- * Args #4–#6 re-set the padding that arg #2 establishes (`padding: 4px 8px`); their block
- * is written AFTER `.root`'s so the later mergeClasses argument still wins. `medium`
- * carries the same value as the base — reproduced verbatim rather than pruned, because
- * that redundancy is what the Griffel source emits (atomic `f1yqiaad` on both slices).
- *
- * ── Spacing (DECISIONS.md D4 amendment) ──────────────────────────────────────────────
- * The Griffel source writes px literals, not `tokens.spacing*`, but every non-zero one
- * matches a step, so they take the NAMED utilities: 4px = XS, 8px = S, 20px = XL. The
- * zero halves stay literal `0` — zero has nothing for `--base-scale` to scale, so
- * `pt-vertical-none` would be pure indirection (same call react-infolabel documents).
- * The `padding: '<block> <inline>'` shorthands are expanded to longhands (cookbook §2):
- * CSS has no equivalent of Griffel's shorthand-loses-to-longhand priority.
- *
- * ── RTL ──────────────────────────────────────────────────────────────────────────────
- * The compiled atomics contain NO `[ltr, rtl]` pairs at all — every padding value is
- * symmetric across the inline axis and nothing else is direction-sensitive. The inline
- * longhands are nevertheless authored logically (`ps-`/`pe-`), which is a no-op here and
- * the cookbook's default.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/Toolbar/useToolbarStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply flex items-center ps-horizontal-s pe-horizontal-s pt-vertical-xs pb-vertical-xs;

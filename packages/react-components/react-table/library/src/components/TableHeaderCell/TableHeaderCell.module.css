@@ -155,12 +155,6 @@
   .button {
     @apply relative flex h-full min-h-32 w-full items-center gap-horizontal-xs;
 
-    /*
-     * The Griffel source also sets `flexGrow: 1` here, but the LATER `flex: '1 1 0px'`
-     * shorthand in the same slice shadows it — the compiled atomic map nulls the flex-grow
-     * entry (`Bh6795r: 0`) and emits only `.f1izfyrr{flex:1 1 0px}`. Reproducing the
-     * compiled output, not the source, means NOT writing `flex-grow: 1` here.
-     */
     flex: 1 1 0px;
     outline-style: none;
   }

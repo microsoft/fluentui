@@ -4,50 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * ── Both rules must be UNLAYERED ─────────────────────────────────────────────────────
- *
- * DECISIONS.md D2 amendment 5 / CONVERSION_GUIDE §2: a rule whose SUBJECT element is owned
- * by an external or unconverted Griffel package must be unlayered, because in the CSS
- * cascade an unlayered normal author declaration outranks EVERY `@layer` — that comparison
- * happens BEFORE specificity is consulted.
- *
- * Overflow never owns either subject. It renders no element at all: it clones the single
- * child the consumer gives it (`renderOverflow.tsx` → `applyTriggerPropsToChildren`), and
- * both selectors below reach DESCENDANTS of that child which are, by construction, elements
- * some other component or the consumer rendered. `[data-overflowing]` is stamped on overflow
- * ITEMS by `@fluentui/priority-overflow`'s `overflowManager` and `[data-overflow-menu]` on
- * the menu trigger by `useOverflowMenu` — both are markers on foreign elements, not slots
- * this package styles.
- *
- * The contention is real, not theoretical. `packages/react-components/react-tabs` is still
- * on Griffel and its Tab base slice compiles to an unlayered `display: grid` atomic
- * (`useTabStyles.styles.ts:33`), so a `<Tab>` inside `TabListWithOverflow.stories.tsx`
- * would keep rendering after it overflowed if `display: none` sat in `@layer
- * fui.components.l2`: 0-1-0 unlayered beats 0-2-0 layered. Charts' Legends
- * (`packages/charts/react-charts`, also Griffel) is the same shape.
- *
- * Griffel's own compiled output for this component was unlayered at 0-2-0 and won on
- * specificity — reproducing that requires these rules to be unlayered too:
- *
- *   lib-commonjs/components/Overflow/useOverflowStyles.styles.js
- *     overflowMenu:     Brvla84 → ".fyfkpbf [data-overflow-menu]{flex-shrink:0;}"
- *     overflowingItems: zb22lx  → ".f10570jf [data-overflowing]{
-    @apply hidden;
-  }"
- *
- * `.root [attr]` here is 0-2-0 as well, so the specificity is class-for-class identical.
- *
- * ── Order inside this block reproduces mergeClasses ARGUMENT order ───────────────────
- * Both rules are flat 0-2-0 on the same element, so file position is the only tiebreak;
- * `overflowMenu` (arg #2) is written before `overflowingItems` (arg #3). They set different
- * properties, so nothing actually inverts — the order is kept because the rule is
- * positional and must survive future edits, not because a conflict exists today.
- *
- * The attribute names are the literal values of `DATA_OVERFLOW_MENU` / `DATA_OVERFLOWING`
- * in `src/constants.ts` (public exports). CSS cannot read the constants; keep the two in
- * sync if either is ever renamed.
- */
 .root {
   & [data-overflow-menu] {
     @apply shrink-0;

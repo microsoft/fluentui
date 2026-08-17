@@ -5,14 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.base {
-  /*
-   * from useRootBaseStyles (makeResetStyles).
-   *
-   * Written as literal declarations rather than `@apply p-0 m-0 indent-0 list-none`:
-   * every value is either zero or a keyword, so there is no pixel literal for
-   * `--base-scale` to scale and the utilities would only add indirection. The rule is a
-   * byte-for-byte transcription of the compiled reset above.
-   */
   .root {
     @apply list-none;
 

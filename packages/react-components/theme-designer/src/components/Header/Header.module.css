@@ -2,21 +2,6 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Replaces Header.tsx's inline `makeStyles`.
- *
- * ALTITUDE SPLIT (s5-docs-projects-decision.md §B.4.2 — one of the two l2 exceptions in
- * this package):
- *
- *   .root  -> fui.components.l2  — it is applied to <FluentProvider className={…}>, i.e.
- *                                  it styles ANOTHER converted component's root output.
- *                                  Styling over a component's own hook output is l2 by
- *                                  definition (D2 amendment 2). react-provider is
- *                                  `validated` in the ledger, so this is
- *                                  converted-over-converted and needs no unlayered block.
- *   everything else -> fui.components.l4 — plain app chrome on the app's own elements.
- */
-
 @layer fui.components.l2 {
   .root {
     @apply flex items-center;

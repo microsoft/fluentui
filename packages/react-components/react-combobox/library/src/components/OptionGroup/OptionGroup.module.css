@@ -4,26 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useOptionGroupStyles_unstable.
- *
- * `root` slot:
- *   1  optionGroupClassNames.root   —  → group marker (JS, D16.5)
- *   2  styles.root                  d  → l1
- *   3  consumer className           —  → unlayered
- *
- * `label` slot:
- *   1  optionGroupClassNames.label  —  → removed (D16.1: no public handle on internals)
- *   2  styles.label                 d  → l1
- *   3  consumer className           —  → unlayered
- *
- * One slice per slot, one bucket each, no inversions and nothing order-sensitive.
- * Every element styled here is OptionGroup's own (`<div>` root + `<div>` label built by
- * `useOptionGroup_unstable`), so D2 amendment 2 does not apply and no block belongs in
- * `fui.components.l2`. Grepped for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`:
- * zero hits — D2 amendment 5 does not apply either.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply flex flex-col;
@@ -33,12 +13,6 @@
        axis it is applied to — `--spacing-*` is axis-agnostic). */
     @apply gap-y-horizontal-xxs;
 
-    /*
-     * The group separator. `:not(:last-child)` is element-relative, so it survives the
-     * statics removal unchanged. Compiled atomics carry no `[ltr, rtl]` pair for any of
-     * these declarations (the `margin` shorthand's two inline values are equal), so no
-     * `@variant rtl` twin is required.
-     */
     &:not(:last-child)::after {
       @apply -mx-horizontal-xs mt-vertical-none mb-vertical-xs block border-b-neutral-stroke-2 pb-horizontal-xs;
 

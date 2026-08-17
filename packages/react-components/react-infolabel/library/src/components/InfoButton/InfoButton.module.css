@@ -115,44 +115,12 @@
     margin-bottom: 0;
     margin-left: 0;
 
-    /* `padding: '<spacingVerticalXS> <spacingHorizontalXS>'` — the four longhands the
-       shorthand expands to, each as its named spacing utility (D4 amendment: raw
-       `var(--spacingVertical*)` is forbidden because it alone does not scale with
-       `--base-scale`). `pt`/`pb` are the block axis → vertical tokens, `ps`/`pe` the inline
-       axis → horizontal tokens, matching the Griffel source's own axis choice. Kept as four
-       longhand utilities rather than `py-vertical-xs px-horizontal-xs` so the properties
-       stay byte-identical to the expanded shorthand the `size-large` block below overrides. */
-
     /* The `.fui-Icon-filled` / `.fui-Icon-regular` display swap is NOT here — it sits in
        its own l1 block at the bottom of this file (S-J/D27). */
   }
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useButtonStyles.focusIndicator = createFocusOutlineStyle() — arg #4.
-   *
-   * FIRST consumer of the shared `fui-focus-outline` utility (react-tailwind-theme
-   * css/utilities.css flagged it "NOT exercised by any converted package yet"). Validated
-   * declaration-by-declaration against this component's compiled AOT output:
-   *
-   *   .f8hki3x/.f1d2448m/.ffh67wi/.f1bjia2o[data-fui-focus-visible]{border-*-color:transparent}
-   *   .f15bsgw9[data-fui-focus-visible]::after{content:""}
-   *   .f14e48fq …::after{position:absolute}   .f18yb2kv …::after{pointer-events:none}
-   *   .fd6o370  …::after{z-index:1}
-   *   .ffwy5si  …::after{border:2px solid var(--color-stroke-focus-2)}
-   *   .f3znvyf  …::after{border-radius:var(--radius-medium)}
-   *   .f57olzd/.f4stah7/.fs1por5/.f480a47 …::after{top|right|left|bottom:calc(2px * -1)}
-   *   @media (forced-colors: active){…::after{border-*-color:Highlight}}
-   *
-   * with every knob unset. The utility writes the offsets as
-   * `calc(0px - <width> - <offset>)`, which computes to the same -2px as `calc(2px * -1)`.
-   *
-   * `:focus` / `:focus-visible { outline-style: none }` sit outside the focus-visible
-   * selector, so react-tabster's factory emits them separately (buckets `f` and `i`) and
-   * they stay with the caller. Nothing else in this component sets `outline-style`, so
-   * their position relative to the `d` bucket is inert.
-   */
   .root {
     @variant focus {
       outline-style: none;
@@ -169,13 +137,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useButtonStyles.selected — arg #5, `d` bucket half. Gated on `state.popover.open`,
-   * stamped as the presence attribute `data-open` (catalog `@variant open`) rather than read
-   * off PopoverTrigger's `aria-expanded`: that attribute is documented as consumer
-   * overridable (react-popover PopoverTrigger.test.tsx "should allow user to override
-   * aria-expanded"), while `open` is exactly the boolean the Griffel hook branched on.
-   */
   .root {
     @variant open {
       @apply bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
@@ -184,17 +145,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useButtonStyles.large — arg #6, and the last `d` bucket rule, so it beats the
-   * base padding above. `size` is a scale prop → `data-size` (DECISIONS.md D3).
-   *
-   * NOTE the compiled value is `padding:var(--spacing-vertical-xxs) var(--spacing-vertical-xxs)`
-   * — spacingVERTICALXXS on BOTH axes. That is what the Griffel source says and what the
-   * compiler emitted (atomic `f1kx978o`); reproduced verbatim rather than "fixed" to
-   * spacingHorizontalXXS. The named utilities keep that quirk visible: the inline-axis pair
-   * is `ps-/pe-VERTICAL-xxs`, not the horizontal token the axis rule would otherwise pick.
-   * (Both steps are 2px, so this is a naming faithfulness point, not a value difference.)
-   */
   .root {
     @variant size-large {
       @apply ps-vertical-xxs pe-vertical-xxs pt-vertical-xxs pb-vertical-xxs;
@@ -225,19 +175,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useButtonStyles.highContrast — arg #3, `m` bucket, written after the `h` bucket
-   * block above.
-   *
-   * The Griffel source spells the inner selector `':hover,:hover:active'`. The second term
-   * is a strict subset of the first and both branches carry IDENTICAL declarations, so it
-   * adds nothing to matching — it existed only as a specificity hack (0-3-0 so the media
-   * rule could still beat base's `.fwiml72:hover:active` at 0-3-0 in the earlier `h`
-   * bucket). `:where()` flattens everything to 0-1-0 and file position takes over, so a
-   * single `@variant hover` placed after the base hover block reproduces both branches.
-   * (Compare the `not-focus-within` trap in variants.css, where the two branches carried
-   * DIFFERENT declarations and the slice had to be split.)
-   */
   .root {
     @variant forced-colors {
       color: CanvasText;
@@ -252,11 +189,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useButtonStyles.selected — arg #5, `m` bucket half. Written after highContrast's
-   * forced-colors block: this is inversion #1 from the header (`B7iucu3`, CanvasText vs
-   * Canvas), the one place where declaration order and argument order disagree on a value.
-   */
   .root {
     @variant open {
       @variant forced-colors {
@@ -268,24 +200,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * `info` args #1 and #2 — from usePopoverSurfaceStyles.base / .large / .smallMedium, over
-   * PopoverSurface's own l1 rules (see the ALTITUDE note in the header).
-   *
-   * `max-width: '264px'` is a px LITERAL that matches no spacing step, so it takes the NUMERIC
-   * utility, which computes through `--base-scale` (D4 amendment; the AvatarGroupPopover
-   * `max-h-220` / `w-220` precedent on the very same component's root).
-   *
-   * The two typography slices are `typographyStyles.caption1` and `typographyStyles.body1`
-   * expanded to their four longhands each — the shape every converted module uses for a
-   * typography preset spread (PopoverSurface.module.css does the same for its own `body1`).
-   * They are mutually exclusive in the hook, so their file order carries no cascade meaning;
-   * `smallMedium` is written first to match the ternary.
-   *
-   * `size` is a scale prop and `data-size` IS stamped on this component's root — but not on the
-   * PopoverSurface element, which is portalled out of the button's subtree. So the branch stays
-   * in the hook as a class pick rather than becoming a `@variant size-large` block here.
-   */
   .info {
     @apply max-w-264;
   }
@@ -305,36 +219,6 @@
   }
 }
 
-/*
- * ── The icon swap, BACK at l1 (S-J retirement of D2 amendment 5; D27) ────────────────
- *
- * These six rules style ANOTHER package's elements: the two <svg>s that
- * `@fluentui/react-icons`' `bundleIcon()` renders inside this button. History matters
- * here — this file is where the D2a5 defect was first root-caused (VR fix, 2026-07-28):
- * icons 2.x injected its swap atomics UNLAYERED (`.fjseox`/`.f1w7gpdv`), and an unlayered
- * declaration outranks EVERY `@layer` before specificity is consulted, so these rules
- * inside l1 could never beat `.fjseox` (0-1-0) and the open InfoButton kept the OUTLINE
- * glyph (238 px VR diff, CDP readout preserved in DECISIONS.md D2 amendment 5). That is
- * why the block spent the D2a5 era unlayered.
- *
- * Icons 3.0 (headless) replaced the atomics with `[data-fui-icon-hidden]` (0-1-0) from a
- * static stylesheet this repo imports at `@layer fui.components.l1` (D27) — the hide now
- * sits INSIDE the layer system, so the escape hatch is retired and the block returns to
- * the slice's own altitude, l1. `filled` is undefined here, so at rest the filled svg
- * carries the hidden attribute and the regular svg renders.
- *
- * Cascade note (S-J): the icons sheet is emitted AFTER component modules in document
- * order, so at l1 these rules win on SPECIFICITY ONLY — 0-2-0 beats the hide's 0-1-0; an
- * equal-specificity rule would LOSE the within-layer source-order tiebreak. Verified via
- * CDP matched rules (.scratch/sj23-cdp-post.json).
- *
- * Order matters and is preserved: base (`d`) → open (`d`) → hover (`h`), all three 0-2-0,
- * so within-layer file position decides and hovering an OPEN button still resolves to
- * hover — the same outcome Griffel's `h`-over-`d` bucket order produced.
- *
- * `@variant`, not a hand-written `[data-open]`, so the shared catalog stays the single
- * definition of the selector; `:where()` still flattens it to 0-2-0 total.
- */
 @layer fui.components.l1 {
   .root {
     & :global(.fui-Icon-filled) {

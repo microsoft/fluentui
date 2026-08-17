@@ -48,12 +48,6 @@
     }
   }
 
-  /*
-   * from useStyles.chartTitle = getChartTitleStyles() (utilities/Common.styles.ts).
-   * That factory is SHARED (FunnelChart, GaugeChart, SankeyChart, DonutChart, …), so it is
-   * NOT converted in this batch (CONVERSION_GUIDE "shared utilities"). Declarations inlined
-   * from the compiled atomics — byte-identical to DonutChart.module.css's `.chart-title`.
-   */
   .chart-title {
     @apply mb-vertical-s fill-neutral-foreground-1 text-center;
 

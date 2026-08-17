@@ -4,87 +4,7 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useInputStyles_unstable,
- * not source declaration order. `root` slot:
- *
- *   #  mergeClasses argument                              bucket  → target
- *   ---------------------------------------------------------------------------------
- *   1  inputClassNames.root                               —       → static class (JS)
- *   2  useRootClassName                     (makeReset)   r       → fui.base
- *   3  rootStyles[size]                                   d       → l1  (data-size)
- *   4  rootStyles[`${size}WithContentBefore`]             d       → l1  (data-content-before)
- *   5  rootStyles[`${size}WithContentAfter`]              d       → l1  (data-content-after)
- *   6  rootStyles[appearance]                             d       → l1  (.underline/.filled-…)
- *   7  rootStyles.outlineInteractive     (!disabled)      h + a   → l1  (.outline)
- *   8  rootStyles.underlineInteractive   (!disabled)      d/h/a   → l1  (.underline)
- *   9  rootStyles.filledInteractive      (!disabled)      h       → l1  (.filled)
- *  10  rootStyles.filled                                  d       → l1  (.filled)
- *  11  rootStyles.invalid                (!disabled)      d       → l1  (data-invalid)
- *  12  rootStyles.disabled                                d/w/m   → l1  (data-disabled)
- *  13  consumer className                                 —       → unlayered (always wins)
- *
- * `input` slot:
- *
- *   1  inputClassNames.input                              —       → static class (JS)
- *   2  useInputClassName                    (makeReset)   r       → fui.base
- *   3  inputStyles[size]                                  d       → l1  (data-size)
- *   4  inputStyles[`${size}WithContentBefore`]            d       → l1  (data-content-before)
- *   5  inputStyles[`${size}WithContentAfter`]             d       → l1  (data-content-after)
- *   6  inputStyles.disabled                               d       → l1  (native :disabled)
- *   7  consumer className                                 —       → unlayered
- *
- * `contentBefore` / `contentAfter` slots (identical class list, one `.content` class):
- *
- *   1  inputClassNames.contentBefore|contentAfter         —       → static class (JS)
- *   2  useContentClassName                  (makeReset)   r       → fui.base
- *   3  contentStyles.disabled                             d       → l1
- *   4  contentStyles[size]                                d       → l1
- *   5  consumer className                                 —       → unlayered
- *
- * ── The ORDER RULE for this component is Griffel's BUCKET order, not argument order ──
- * mergeClasses argument order only decides conflicts between atomics that share a
- * property KEY (it deletes the earlier class). Every conflict below is between DIFFERENT
- * keys — the same property reached through different selectors — and Griffel resolves
- * those by STYLE BUCKET (`d` default < `w` focus-within < `h` hover < `a` active < `m`
- * media), which no argument order can express. Verified against the compiled atomics in
- * lib-commonjs/components/Input/useInputStyles.styles.js, whose `d`/`h`/`a`/`m` arrays
- * are the emission order.
- *
- * INVERSION 1 (bucket order): #9 `filledInteractive` (bucket `h`) is an EARLIER
- * mergeClasses argument than #10 `filled` (bucket `d`) and #11 `invalid` (bucket `d`),
- * yet Griffel emits it LAST — a hovered filled Input shows `colorTransparentStrokeInteractive`,
- * not `colorTransparentStroke`. The `h`/`a` rules of args #7/#8/#9 are therefore collected
- * in one trailing "interactive" section below, after #10/#11/#12. Reordering those blocks
- * silently changes which border color wins on hover.
- *
- * INVERSION 2 (specificity): #11 `invalid` is authored with TWO selector branches, and
- * they land on opposite sides of that interactive section — its `:hover:not(:focus-within)`
- * branch carries enough specificity in raw Griffel to outrank the `h` bucket, while its
- * plain `:not(:focus-within)` branch does not and loses to `:active`. `:where()` erases
- * the difference, so the slice is SPLIT into two blocks below. Full reasoning is at the
- * second block; both were confirmed by an A/B computed-style probe against the real
- * Griffel stylesheet (3456 scenarios: size × appearance × disabled × invalid ×
- * contentBefore × contentAfter × interaction state × dir).
- *
- * Non-inverted, verified disjoint against the same compiled output:
- * #6 appearance sets background-color / border-*-STYLE / box-shadow; #10 `filled` sets
- * border-*-COLOR — the two never meet, so `.filled`'s `d` block may sit after them.
- * #12 disabled shares argument order AND declaration order with #10/#11 (and reuses
- * #10's property keys outright: `g2u3we`/`h3c5rm`/`B9xav0g`/`zhjwy3`), so file order
- * reproduces both mechanisms at once.
- */
-
 @layer fui.base {
-  /*
-   * from useRootClassName (makeResetStyles).
-   *
-   * `border: 1px solid …` is expanded to longhands because the very next declaration
-   * overrides one side, and because #10/#11/#12 each override a subset of the colors.
-   * The compiled RTL twin (`.r9sxh5`) only swaps left↔right on declarations whose two
-   * values are equal, so this slot has NO value-level flip — logical properties are
-   * exact.
-   */
   .root {
     @apply relative box-border inline-flex min-h-32 flex-nowrap items-center align-middle;
 
@@ -116,17 +36,6 @@
     border-left-color: var(--color-neutral-stroke-1);
     border-bottom-color: var(--color-neutral-stroke-accessible);
 
-    /*
-     * The bottom focus underline. Flat 2px all the way across, matching the radius of
-     * the field's bottom corners.
-     *
-     * The three `2px` literals below are ONE measurement expressed three ways and must
-     * stay in lockstep: the `max()` floor keeps the underline visible even if a theme
-     * sets `--radius-medium` to 0; `border-bottom-width` draws it; `clip-path`
-     * trims the "horns" `border-bottom` would otherwise leave on the ends. They stay
-     * unscaled literals (no `--base-scale`) precisely because they must agree with each
-     * other and with `--radius-medium`, which is an unscaled token.
-     */
     &::after {
       @apply absolute box-border;
 
@@ -215,12 +124,6 @@
     font-weight: inherit;
     line-height: inherit;
 
-    /*
-     * Griffel autoprefixes to `::-webkit-input-placeholder` / `::-moz-placeholder` /
-     * `::placeholder`. Only the unprefixed form is emitted here — the legacy aliases
-     * predate the repo's baseline browsers, and an unsupported pseudo-element would
-     * invalidate the whole rule if they were merged into one selector list.
-     */
     &::placeholder {
       @apply text-neutral-foreground-4;
 
@@ -233,11 +136,6 @@
 
     color: var(--color-neutral-foreground-3); /* "icon color" in the design spec */
 
-    /*
-     * Special case for icons (the common case) so they centre vertically. size: medium.
-     * `--base-scale` keeps the glyph scaling with the root font size (D4); at the
-     * default 16px root this is exactly `font-size: 20px`, the compiled value.
-     */
     & > svg {
       font-size: calc(20px * var(--base-scale));
     }
@@ -268,13 +166,6 @@
       /* `gap: tokens.spacingHorizontalSNudge` */
     }
 
-    /*
-     * from useRootStyles.{small,medium,large}WithContentBefore / …WithContentAfter —
-     * args #4/#5. With no adornment the INPUT carries the combined padding to widen its
-     * hit target; with one, the root and the input each take their own share.
-     * paddingLeft/Right are a pure `[ltr, rtl]` property flip in the compiled atomics
-     * (`uwmqm3: ["fk8j09s","fdw0yi8"]`) → logical inline properties.
-     */
     @variant content-before {
       /* horizontalPadding.root.small — spacingHorizontalSNudge */
       @variant size-small {
@@ -312,12 +203,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Appearance look classes — arg #6, the `d`-bucket half. `outline` is the compiled `{}`
-   * slice (its values live in the reset), so `.outline` further down carries ONLY arg #7's
-   * interactive rules.
-   */
-
   .underline {
     background-color: var(--color-transparent-background);
 
@@ -366,15 +251,6 @@
   }
 
   .root {
-    /*
-     * from useRootStyles.invalid — arg #11, applied when `!disabled && aria-invalid`,
-     * FIRST of its two selector branches (`:not(:focus-within)`).
-     *
-     * Written AFTER `.filled` so it wins the equal-specificity tie, exactly as
-     * mergeClasses arg #11 beats arg #10 (both bucket `d`, `invalid` declared later),
-     * and BEFORE the interactive section so the `:active` rules still beat it — see the
-     * split-invalid note down there for why this branch must lose to `:active`.
-     */
     @variant enabled {
       @variant invalid {
         @variant not-focus-within {
@@ -413,18 +289,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── Interactive borders — args #7/#8/#9, Griffel buckets `h` and `a` ────────────────
-   * These are EARLIER mergeClasses arguments than #10/#11/#12 above but Griffel emits
-   * them later (bucket order `d` < `h` < `a`), so they are written last inside this
-   * layer. See the inversion note in the header: moving any of these blocks above
-   * `.filled` / `invalid` / `disabled` changes which border color a hovered Input shows.
-   *
-   * The `!disabled &&` half of each guard becomes `@variant enabled` — the root carries
-   * `data-disabled` whenever the inner `<input>` is disabled. The three appearance
-   * classes are mutually exclusive, so no two of these blocks are ever on one element.
-   */
-
   .outline {
     @variant enabled {
       @variant hover {
@@ -501,13 +365,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── `input` slot ───────────────────────────────────────────────────────────────────
-   * `data-size` and the two adornment flags live on the ROOT (the headless preview's
-   * convention — every data attribute on the root slot), so the size- and adornment-
-   * driven padding reaches the input through a descendant selector, the same shape
-   * react-button uses for its icon slot.
-   */
   .root {
     /* from useInputElementStyles.small / .large — arg #3. `medium` is the compiled `{}`
        slice; the combined medium padding is in the reset. */
@@ -580,17 +437,6 @@
     }
   }
 
-  /*
-   * from useInputElementStyles.disabled — arg #6.
-   *
-   * Driven from the ROOT's `data-disabled` rather than the input's own native
-   * `:disabled`, even though this slot IS the `<input>`. The shared `disabled` variant is
-   * a UNION of several disabled signals and grows as packages convert; the root attribute
-   * mirrors `state.input.disabled` exactly, which is the single condition this slice
-   * branched on. Keying off the union would let a signal Griffel ignored (an
-   * `aria-disabled` forwarded to the input, say) grey out the text while leaving the root
-   * border untouched — a half-disabled field Griffel never rendered.
-   */
   .root {
     @variant disabled {
       & .input {
@@ -605,13 +451,6 @@
     }
   }
 
-  /*
-   * ── `contentBefore` / `contentAfter` slots ─────────────────────────────────────────
-   * Both slots receive the identical class list, so one `.content` class covers them —
-   * the same way Griffel handed both the same atomics. Disabled (arg #3) and size
-   * (arg #4) are disjoint (`color` vs the icon's `font-size`), so their relative order
-   * carries no winner.
-   */
   .root {
     @variant disabled {
       & .content {

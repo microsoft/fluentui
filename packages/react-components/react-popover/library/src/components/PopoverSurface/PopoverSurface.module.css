@@ -93,36 +93,13 @@
     font-weight: var(--font-weight-regular);
     line-height: var(--leading-base-300);
 
-    /* TODO carried verbatim from the Griffel source: need versions of
-       tokens.alias.shadow.shadow16 etc. that work with filter.
-       The px lengths stay literal — they are this filter's stand-in for the `--shadow-16`
-       TOKEN, and tokens never ride `--base-scale` (D4), so rescaling them would make the two
-       forms of the same shadow drift apart at a non-default root font size. */
     filter: drop-shadow(0 0 2px var(--color-neutral-shadow-ambient))
       drop-shadow(0 8px 16px var(--color-neutral-shadow-key));
 
-    /*
-     * from useStyles.inline — root arg #3.
-     * `inline` is STATE, so it rides a data-attribute (D3); the `inline` variant already
-     * exists in the shared catalog, so nothing is invented and the catalog does not grow.
-     *
-     * Griffel comment, carried: when rendered inline the surface is NOT portalled, so it
-     * would otherwise paint under relatively positioned siblings such as Input.
-     */
     @variant inline {
       z-index: 1;
     }
 
-    /*
-     * from useStyles.smallPadding / .mediumPadding / .largePadding — root args #4-#6.
-     * `size` is a small ENUM scale, so it rides the catalog's `data-size` variants (cookbook
-     * scale-prop rule). The Griffel source writes px literals rather than token reads, but
-     * all three land exactly on a spacing step — 12/16/20px = spacing{Horizontal,Vertical}
-     * M/L/XL — so they take the named utility (D4 amendment: named tokens FIRST, numeric only
-     * as fallback). `p-*` is all-sides and therefore axis-neutral; the `horizontal` namespace
-     * is the arbitrary-but-consistent pick, matching CompoundButton and Link. Both scales
-     * compute through the same `--base-scale`, so the emitted length is unchanged.
-     */
     @variant size-small {
       @apply p-horizontal-m;
     }
@@ -138,11 +115,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.inverted / .brand — root args #7 / #8.
-   * `appearance` is a LOOK prop, so it rides a module class (D3) — same call react-tooltip
-   * and react-button made for their own `appearance`.
-   */
   .inverted {
     @apply bg-neutral-background-static text-neutral-foreground-static-inverted;
   }
@@ -190,11 +162,6 @@
       content: '';
       background-color: inherit;
 
-      /* The factory writes `margin: -${borderWidth}`, i.e. the margin and the border width
-         are the SAME length by construction (it is what hides the seam between the arrow and
-         the surface's own border). Tailwind's border-width utilities are literal px while its
-         spacing utilities are --base-scale rem, so both are written literally here to keep
-         them from drifting apart at a non-default root font size. */
       margin: -1px;
       border: 1px solid var(--color-transparent-stroke);
 
@@ -202,15 +169,6 @@
       clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
     }
 
-    /*
-     * The positioning layer writes `data-popper-placement` on the POSITIONED container — the
-     * PopoverSurface root, which is `usePositioning`'s `containerRef` — so Griffel compiled
-     * `:global([data-popper-placement^="top"])` to the DESCENDANT selector
-     * `[data-popper-placement^="top"] .arrow`. Reproduced here with the ancestor in `:where()`
-     * so the rule stays specificity-flat like every other converted selector (Griffel's own
-     * was 0-2-0; the four blocks are mutually exclusive and nothing else in the module sets
-     * these properties, so the change is inert).
-     */
     :where(:global([data-popper-placement^='top'])) & {
       bottom: var(--fui-positioning-arrow-offset);
 

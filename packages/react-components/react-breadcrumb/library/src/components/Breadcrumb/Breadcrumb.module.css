@@ -36,14 +36,6 @@
   .list {
     @apply flex list-none items-center;
 
-    /*
-     * `margin: 0` / `padding: 0` are reproduced as the compiled SHORTHANDS, not expanded:
-     * `makeResetStyles` does not atomize, so `.rc5rb6b` really does carry
-     * `margin:0;padding:0` (compare the makeStyles slices elsewhere, where the compiler
-     * emitted longhands and the cookbook's expand rule applies). Left as literal `0` rather
-     * than `m-0`/`p-0`: zero has nothing for `--base-scale` to scale, so the utility would
-     * be pure indirection — the same call react-infolabel's reset documents.
-     */
     margin: 0;
     padding: 0;
   }

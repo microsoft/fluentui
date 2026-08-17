@@ -125,11 +125,6 @@
     grid-template-rows: 1fr [primary] max-content [secondary] max-content [tertiary] max-content [quaternary] max-content 1fr;
   }
 
-  /*
-   * from useStyles[textPosition] (root arg 4). The `after` slice is marked "Intentionally
-   * empty" in the Griffel source and compiles to no atomic at all, so it authors no rule
-   * here — `data-text-position="after"` is still stamped, as a state hook for consumers.
-   */
   .root {
     @variant text-position-before {
       justify-items: end;
@@ -236,11 +231,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /*
-   * from useTextStyles.beforeAlignToPrimary/.afterAlignToPrimary — the text half of the
-   * `alignToPrimary` pair. Prefixed `text` because useStyles carries two same-named slices
-   * for the presence slot with the OPPOSITE grid edge (see `.presence-*-align-to-primary`).
-   */
   .text-before-align-to-primary {
     grid-column-end: middle;
   }
@@ -259,14 +249,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * Everything below is applied to the `avatar` (<Avatar>) or `presence` (<PresenceBadge>)
-   * slot — another component's root — so it belongs to the composition altitude, where it
-   * beats those components' own `fui.components.l1` rules regardless of stylesheet load
-   * order. Persona positions the coin inside its own grid; it never restyles the coin's
-   * internals.
-   */
-
   /* from useStyles.media (arg 2) — the coin spans all four text rows plus one. */
   .media {
     grid-row-start: span 5;
@@ -286,26 +268,10 @@
     align-self: center;
   }
 
-  /*
-   * from usePresenceSpacingStyles.small (presence arg 5) — the ONE size at which a presence
-   * coin spaces differently from an avatar (`spacingHorizontalSNudge` instead of
-   * `spacingHorizontalS`; Griffel compiled it to the same atomic `f1e48tse` as
-   * `extra-small`). It stays on the presence element rather than the root: a declaration on
-   * the element itself wins over the inherited root value, which is exactly what the
-   * `{ ...avatarSpacingStyles, ...usePresenceSpacingStyles() }` spread expressed.
-   *
-   * Literal `calc()` form for the same reason as the size block above — custom properties
-   * have no spacing utility.
-   */
   .presence-spacing-s-nudge {
     --fui-Persona__avatar--spacing: calc(6px * var(--base-scale)); /* spacingHorizontalSNudge */
   }
 
-  /*
-   * from useAvatarSpacingStyles.after/.below/.before (arg 6) — the gap between the coin and
-   * the text, in whichever direction the text sits. `margin-right`/`margin-left` are the
-   * component's only RTL-flipped properties, so they become logical.
-   */
   .spacing-after {
     margin-inline-end: var(--fui-Persona__avatar--spacing);
   }
@@ -318,12 +284,6 @@
     margin-inline-start: var(--fui-Persona__avatar--spacing);
   }
 
-  /*
-   * from useStyles.afterAlignToPrimary/.beforeAlignToPrimary (presence args 7/8) — a small
-   * presence coin aligns to the primary line instead of spanning the whole stack, so it
-   * cancels `.media`'s row span and `.start`'s `align-self`. Written last inside l2 for
-   * exactly that reason.
-   */
   .presence-after-align-to-primary {
     align-self: center;
     grid-row-start: unset;

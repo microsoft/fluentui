@@ -6,107 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * `useTeachingPopoverCarouselNavButtonStyles_unstable`, not source declaration order.
- *
- * `root` slot
- *   #  mergeClasses argument                                → target
- *   ---------------------------------------------------------------------------------------
- *   1  teachingPopoverCarouselNavButtonClassNames.root      → REMOVED (D16.1)
- *   2  useStyles.root                                       → fui.components.l1  .root
- *                                                             (rest half only — see (b))
- *   3  isSelected ? rootSelected : rootUnselected           → fui.components.l1  .root under
- *                                                             `selected` / `not-selected`
- *                                                             (the @supports and forced-colors
- *                                                              halves are split out — (b))
- *   4  appearance === 'brand' &&
- *        (isSelected ? rootBrand : rootBrandUnselected)     → fui.components.l1  .brand under
- *                                                             `selected` / `not-selected`
- *   5  consumer className                                   → unlayered (always wins)
- *
- * ── ALTITUDE: l1 ────────────────────────────────────────────────────────────────────────
- * The root is this component's own `<button>` (`useTeachingPopoverCarouselNavButton.tsx`
- * builds it with `getIntrinsicElementProps(as, useARIAButtonProps(...))`, `elementType:
- * 'button'`), not a react-button. Every block is one component's own cascade → l1
- * (DECISIONS.md D2 amendment 2). No `makeResetStyles` slice → `fui.base` is unused.
- *
- * ── `isSelected` is read NATIVELY; no data attribute is stamped ─────────────────────────
- * `useTeachingPopoverCarouselNavButton.tsx` already renders `aria-selected={`${!!isSelected}`}`
- * on this element (`slot.always` `defaultProps`), and the catalog `selected` variant is
- * `:where([data-selected], [aria-selected='true'])`, so the state is readable exactly where
- * the rules need it. D15.6 (resolved) makes `data-*` a FALLBACK for state a selector cannot
- * otherwise reach, so no mirror is added. `not-selected` is its complement and matches the
- * rendered `aria-selected="false"`. Identical call to react-carousel's CarouselNavButton.
- *
- * ACCEPTED WIDENING, same shape as react-carousel and react-breadcrumb: `aria-selected` is a
- * `defaultProp`, so a consumer who passes `aria-selected` directly now drives the styling
- * where the Griffel hook followed `state.isSelected` alone. Inverting the two on the same
- * element is not a coherent request.
- *
- * ── `appearance` is a LOOK prop (DECISIONS.md D3) ───────────────────────────────────────
- * `PopoverContextValue['appearance']` is `'brand' | 'inverted' | undefined`, read off the
- * popover context; only `'brand'` is styled here. A module class, not an attribute.
- *
- * ═══ FILE ORDER IS LOAD-BEARING — two reasons ═══════════════════════════════════════════
- *
- * (a) ARGUMENT ORDER. Within a level the winner is in-file source order (all selectors are
- *     `:where()`-flat), so the blocks are written in mergeClasses ARGUMENT order. The real
- *     collisions this settles:
- *       • `background-color` — `.root` (#2, colorBrandBackground) vs `not-selected` (#3,
- *         `color-mix(brand 30%)`) vs `.brand` (#4, NeutralForegroundOnBrand /
- *         `color-mix(OnBrand 30%)`). Griffel resolved all of them through key `De3pzq`, last
- *         argument winning; file order reproduces it.
- *       • `width` — `.root` (#2, 8px) vs `selected` (#3, 16px).
- *       • `outline` / `border-radius` — the plain declarations vs the focus indicator's, which
- *         won on SPECIFICITY under Griffel (`[data-fui-focus-visible]`, 0-2-0, vs 0-1-0) and
- *         now wins on file position because `:where()` flattens both to 0-1-0. The focus block
- *         is therefore written LAST inside each branch.
- *
- * (b) GRIFFEL'S BUCKET ORDER, which is why arg #2 and arg #3 are SPLIT. Griffel emits its
- *     buckets in a fixed sequence and `t` (`@supports`) and `m` (`@media`) come after `d`
- *     (default) — so a rule inside `@supports` or `@media` beat every flat rule regardless of
- *     which slice declared it. Two blocks depend on that:
- *
- *       • `rootUnselected`'s `@supports not (color: color-mix(in lch, white, black))`
- *         (`opacity: .3` + `background-color: colorBrandBackground`) had to beat BOTH its own
- *         slice's flat `color-mix` background AND `.brand`'s (#4). Under `:where()` the only
- *         way to keep that is to place the `@supports` block AFTER the `.brand` blocks.
- *         `rootBrandUnselected` declares a byte-identical `@supports` body (Griffel emitted
- *         literally the same two atomics, `.fawpdd5` / `.feyhbel`, in both slices), so ONE
- *         block keyed on `not-selected` covers both arguments.
- *       • `rootSelected`'s `@media (forced-colors: active)` (`background-color: CanvasText`)
- *         is likewise placed after everything flat. It is mutually exclusive with the
- *         `@supports` block above (`selected` vs `not-selected`), so their relative order is
- *         inert; the sequence below just follows Griffel's bucket order.
- *
- *     Collapsing either block back into its branch silently changes the unsupported-color-mix
- *     and high-contrast renderings of a brand dot.
- *
- * ── Stroke widths / lengths (DECISIONS.md D4 + addendum) ────────────────────────────────
- * `outline-width` does NOT read the `--spacing-*` namespace, so `strokeWidthThin` /
- * `strokeWidthThick` take direct `var(--spacing-thin)` / `var(--spacing-thick)` references.
- * `height` / `width` DO, and 8px / 16px land exactly on the S / L steps, so those take named
- * utilities. `border-radius: 50%` is a percentage and stays literal; the selected dot's
- * `border-radius: 4px` is a raw px literal with no matching radius token and is written
- * `calc(4px * var(--base-scale))` — what a numeric utility would emit — so it scales with
- * every other length on the page (the react-carousel call, for the same declaration).
- * `padding: 0px` stays a literal `0`: zero has nothing for `--base-scale` to scale, so a
- * utility would be pure indirection (the react-breadcrumb call).
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * ONE `[ltr, rtl]` pair in the compiled output — the focus indicator's
- * `border-right-color` / `border-left-color` (`Bci5o5g` / `Bdrgwmp`), value `transparent` on
- * both sides, i.e. a pure PROPERTY flip → the logical longhands below, no `@variant rtl` twin.
- *
- * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ────────────────────────────────
- * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
- * This component renders no icons and reaches into no other component's elements.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/TeachingPopoverCarouselNavButton/useTeachingPopoverCarouselNavButtonStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2, FLAT half. The `@supports` / `@media` halves of the
      selected/unselected slices are the split blocks at the bottom; see reason (b). */
@@ -116,22 +15,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.rootUnselected / useStyles.rootSelected — arg #3, applied as
-   * `isSelected ? rootSelected : rootUnselected`. The two branches are mutually exclusive, so
-   * their order relative to each other is inert; both must follow `.root` above.
-   *
-   * `outline: <thin> solid transparent` is the source's high-contrast placeholder (its
-   * comment: "For high contrast") and is byte-identical in both branches.
-   *
-   * The focus indicator is `createCustomFocusIndicatorStyle({ outline, borderRadius,
-   * borderColor('transparent') })` — a component-specific option object, not the
-   * Button-family ring, so there is no shared utility to `@apply`; the catalog
-   * `focus-visible-fui` variant supplies the `[data-fui-focus-visible]` selector and the
-   * declarations are written out. It is duplicated verbatim in both branches because Griffel
-   * emitted it in both slices, and it comes LAST in each because `:where()` erased the
-   * specificity that used to win it — see reason (a).
-   */
   .root {
     @variant not-selected {
       border: none;
@@ -177,12 +60,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.rootBrand / useStyles.rootBrandUnselected — arg #4, applied as
-   * `appearance === 'brand' && (isSelected ? rootBrand : rootBrandUnselected)`. FLAT half; the
-   * `@supports` half of `rootBrandUnselected` is folded into the shared block below (it is
-   * byte-identical to `rootUnselected`'s) — see reason (b).
-   */
   .brand {
     @variant selected {
       @apply bg-neutral-foreground-on-brand;
@@ -195,20 +72,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ★ from useStyles.rootUnselected's and useStyles.rootBrandUnselected's
-   * `@supports not (color: color-mix(in lch, white, black))` — args #3 and #4, `t`-bucket half.
-   *
-   * Older browsers that cannot compute `color-mix()` fall back to a solid brand dot at 30%
-   * opacity. Source comment, carried: this also affects the focus border, but only in those
-   * unsupported browsers.
-   *
-   * ITS POSITION IS THE POINT and is not stylistic: Griffel's `t` bucket is emitted after the
-   * `d` bucket, so this beat the flat `background-color` of `.root`, `not-selected` AND
-   * `.brand` above. `:where()` erases the ordering Griffel got for free, so the block has to
-   * sit after every flat background-colour in the file. Full derivation in the header,
-   * reason (b). Do not fold it back into either branch.
-   */
   .root {
     @variant not-selected {
       @supports not (color: color-mix(in lch, white, black)) {
@@ -221,11 +84,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ★ from useStyles.rootSelected's `@media (forced-colors: active)` — arg #3, `m`-bucket half.
-   * Same reasoning as the block above (Griffel's `m` bucket is emitted last of all), and
-   * mutually exclusive with it, so the two never compete with each other.
-   */
   .root {
     @variant selected {
       @variant forced-colors {

@@ -7,11 +7,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l2 {
-  /*
-   * from useBaseStyles.selected — "use subtle ToggleButton selected styles for Toolbar
-   * Radio selected state". See the header for why this rule is compounded with
-   * ToggleButton's marker AND restricted to the rest state.
-   */
   .selected:global(.group\/fui-toggle-button) {
     @variant at-rest {
       @apply bg-subtle-background-selected text-neutral-foreground-2-selected;

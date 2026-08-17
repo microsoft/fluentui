@@ -4,90 +4,7 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useComboboxStyles_unstable,
- * not source declaration order. Combobox has NO `makeResetStyles`, so every slice lands in
- * `fui.components.l1` — except the `listbox` slot, which decorates a `<Listbox>`, i.e.
- * another component's output (D2 amendment 2) and therefore sits in `fui.components.l2`.
- *
- * `root` slot:
- *
- *   #  mergeClasses argument                            bucket   → target
- *   ---------------------------------------------------------------------------------
- *   1  comboboxClassNames.root                          —        → group marker (JS, D16.5)
- *   2  styles.root                                      d + w + m → l1  (block 1)
- *   3  styles[appearance]                               d        → l1  (block 2)
- *   4  styles[size]                                     d        → l1  (block 3, data-size)
- *   5  styles.outlineInteractive   (!disabled, outline) w + h + a → l1  (block 5)
- *   6  styles.invalid              (invalid, !underline) d       → l1  (blocks 4b + 6)
- *   7  styles.invalidUnderline     (invalid, underline)  d       → l1  (blocks 4b + 6)
- *   8  styles.disabled                                  d + m    → l1  (block 4a)
- *   9  consumer className                               —        → unlayered (always wins)
- *
- * `input` slot:                     `expandIcon` / `clearIcon` slots (identical but for #5):
- *   1  static           → removed    1  static                 → removed
- *   2  inputStyles.input       d     2  iconStyles.icon              d
- *   3  inputStyles[size]       d     3  iconStyles[size]             d
- *   4  inputStyles.disabled    d     4  iconStyles.disabled          d
- *   5  consumer className      —     5  visuallyHidden / hidden      d
- *                                    6  consumer className           —
- *
- * `listbox` slot (→ fui.components.l2):
- *   1  static → removed   2  styles.listbox   3  styles.inlineListbox   4  styles.listboxCollapsed
- *
- * ── The ORDER RULE for the root is Griffel's BUCKET order, not argument order ────────
- * `styleBucketOrdering` (@griffel/core/renderer/getStyleSheetForBucket) is
- * ['r','d','l','v','w','f','i','h','a','s','k','t','m']. Every conflict below is between
- * DIFFERENT property keys — the same property reached through different selectors — which
- * mergeClasses cannot arbitrate, so the compiled stylesheet order decides. All of it was read
- * off lib-commonjs/components/Combobox/useComboboxStyles.styles.js, whose `d`/`w`/`h`/`a`/`m`
- * arrays ARE the emission order.
- *
- * INVERSION 1 (bucket order): #5 `outlineInteractive` is an EARLIER argument than #6/#7/#8,
- * yet its `w`/`h`/`a` rules are emitted after their `d` rules. It is therefore collected into
- * one trailing "interactive" block (block 5), after `disabled` and after `invalid`'s first
- * branch.
- *
- * INVERSION 2 (bucket order, inside #5): the slice authors `:hover`, `:active` and
- * `:focus-within` as THREE separate selectors, so Griffel files them in three buckets that sort
- * `w` < `h` < `a`. The compiled sheet emits focus-within FIRST, hover second, active last —
- * which means a hovered-AND-focused Combobox shows `colorNeutralStroke1Hover`, not the pressed
- * border. The blocks inside block 5 are written in that order for exactly that reason;
- * collapsing hover and focus-within into one `active-or-focus-within` variant (react-input's
- * shape, whose source combines the selectors) would silently flip that case.
- *
- * INVERSION 3 (specificity): #6 `invalid` is authored with TWO selector branches
- * (`':not(:focus-within),:hover:not(:focus-within)'`) and they land on opposite sides of the
- * interactive block. Griffel's atomics are not `:where()`-wrapped, so
- * `.fs4k3qj:hover:not(:focus-within)` scores 0-3-0 and outranks the hover bucket's 0-2-0, while
- * the plain `.fs4k3qj:not(:focus-within)` scores 0-2-0 and ties with `.fvs00aa:active` — a tie
- * the `a` bucket wins. `:where()` erases both differences, so the slice is SPLIT: the plain
- * branch in block 4b (before the interactive block, so `:active` still beats it) and the hover
- * branch in block 6 (after it, so red still beats hover).
- *
- * Note also that #6/#7 carry NO `!disabled` guard, unlike react-input's. Under Griffel the
- * red border therefore wins over `disabled`'s 0-1-0 border colors — including the
- * forced-colors `GrayText` ones, which a media query gives no extra weight. Block 4b is
- * written after block 4a to reproduce that.
- *
- * ── Slot rules and specificity ──────────────────────────────────────────────────────
- * `data-size` and `data-disabled` live on the ROOT (the headless preview's convention —
- * reports/headless-precedent.md), so every rule for the `input` / `expandIcon` / `clearIcon`
- * slots is written as `.root … & .<slot>`. Keeping ALL of them nested — the conditional
- * `.visually-hidden` / `.hidden` classes included — keeps that whole group at a uniform 0-2-0
- * so file order alone decides, exactly as it did between Griffel's atomics. The `listbox` slot
- * is the exception: it is portalled unless `inlinePopup` is set, so it is NOT a descendant of
- * the root and its classes stay flat at 0-1-0 in l2.
- */
-
 @layer fui.components.l1 {
-  /*
-   * from useStyles.root — arg #2.
-   *
-   * The compiled RTL twin swaps only declarations whose two values are equal
-   * (`Eqx8gd`/`B1piin3` are both `-1px`), so this slot has NO value-level flip — logical
-   * properties are exact and no `@variant rtl` twin is required.
-   */
   .root {
     @apply relative box-border inline-grid min-w-250 items-center justify-between align-middle;
 
@@ -97,16 +14,6 @@
     /* `columnGap: tokens.spacingHorizontalXXS` */
     @apply gap-x-horizontal-xxs;
 
-    /*
-     * The bottom focus underline, shared with Input, Select and SpinButton. Flat 2px all
-     * the way across, matching the radius of the field's bottom corners.
-     *
-     * The `max()` floor and the `clip-path` inset are LITERAL `2px` in this component's
-     * source (unlike Dropdown, which reads `strokeWidthThick` for the floor) and are
-     * reproduced literally: they must agree with each other and with
-     * `--radius-medium`, which is an unscaled token. `border-bottom-width` DOES read
-     * `strokeWidthThick`, so it takes the `--spacing-thick` form (D4 addendum).
-     */
     &::after {
       @apply absolute box-border;
 
@@ -173,16 +80,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Appearance look classes — arg #3, the `d`-bucket half. The four are mutually exclusive,
-   * so no two are ever on one element. Every `border` shorthand is expanded to longhands
-   * because args #6/#7/#8 each override a subset of the colors.
-   *
-   * `border-*-width` is not a spacing-powered Tailwind family, so `strokeWidthThin` is
-   * referenced through the emitted `--spacing-thin` custom property (D4 addendum);
-   * `border-thin` does not exist.
-   */
-
   .outline {
     @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-accessible border-l-neutral-stroke-1 bg-neutral-background-1;
 
@@ -236,13 +133,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.small / .medium / .large — arg #4. `fieldHeights` are plain px literals in
-   * the source ("no theme variables for these"); the numeric utilities reproduce them and ride
-   * `--base-scale` like every other length in the system. `paddingRight` is a `[ltr, rtl]`
-   * property flip in the compiled atomics (`z189sj: ["fdw0yi8","fk8j09s"]`) → logical
-   * `padding-inline-end`.
-   */
   .root {
     @variant size-small {
       @apply h-24 pe-horizontal-s-nudge;
@@ -261,12 +151,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Block 4a — from useStyles.disabled, arg #8, the last style argument.
-   *
-   * `data-disabled` mirrors `state.input.disabled`, which the ROOT cannot express natively:
-   * the root is a `<div>` and only the inner `<input>` carries the real `disabled` attribute.
-   */
   .root {
     @variant disabled {
       cursor: not-allowed;
@@ -288,18 +172,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Block 4b — from useStyles.invalid / .invalidUnderline, args #6/#7, FIRST of their two
-   * selector branches (`:not(:focus-within)`).
-   *
-   * Written AFTER `disabled` because Griffel gives the red border 0-2-0 against disabled's
-   * 0-1-0 (there is no `!disabled &&` guard on these arguments), and BEFORE the interactive
-   * block so the `:active` rules still beat it — see INVERSION 3 in the header.
-   *
-   * `appearance !== 'underline'` is expressed as the appearance-class selector list rather
-   * than a separate conditional class, which is what keeps every root rule in this file at a
-   * flat 0-1-0.
-   */
   .outline,
   .filled-lighter,
   .filled-darker {
@@ -320,19 +192,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Block 5 — from useStyles.outlineInteractive, arg #5, Griffel buckets `w`, `h` and `a`.
-   * An EARLIER argument than #6/#7/#8 above, emitted later; see INVERSION 1 and 2.
-   *
-   * The `!disabled &&` half of the guard becomes `@variant enabled` — the root carries
-   * `data-disabled` whenever the inner `<input>` is disabled. `appearance === 'outline'` is
-   * the class itself.
-   *
-   * Order inside is w → h → a, so:
-   *   • focus-within alone            → Pressed
-   *   • focus-within + hover          → Hover      (h sorts after w)
-   *   • any :active                   → Pressed    (a sorts last)
-   */
   .outline {
     @variant enabled {
       @variant focus-within {
@@ -390,11 +249,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── `input` slot ───────────────────────────────────────────────────────────────────
-   * Reached through the root's `data-size` / `data-disabled`, the same shape react-input and
-   * react-select use for their inner slots.
-   */
   .root {
     & .input {
       @apply self-stretch;
@@ -413,13 +267,6 @@
         outline-style: none;
       }
 
-      /*
-       * Griffel autoprefixes to `::-webkit-input-placeholder` / `::-moz-placeholder` and, in
-       * this component, emits ONLY those two. Only the unprefixed form is emitted here — the
-       * legacy aliases predate the repo's baseline browsers, and an unsupported
-       * pseudo-element would invalidate the whole rule if they were merged into one selector
-       * list.
-       */
       &::placeholder {
         @apply text-neutral-foreground-4;
 
@@ -427,11 +274,6 @@
       }
     }
 
-    /*
-     * from useInputStyles.small / .medium / .large — arg #3: `typographyStyles.caption1` /
-     * `.body1` / `.body2` plus `padding: 0 0 0 <combined>`. The padding is a `[ltr, rtl]`
-     * flip of the whole shorthand, so it becomes `padding-block: 0` + a logical inline pair.
-     */
     @variant size-small {
       & .input {
         @apply py-vertical-none ps-horizontal-s pe-horizontal-none;
@@ -473,14 +315,6 @@
       }
     }
 
-    /*
-     * from useInputStyles.disabled — arg #4.
-     *
-     * Driven from the ROOT's `data-disabled` rather than the input's own native `:disabled`,
-     * even though this slot IS the `<input>`. The shared `disabled` variant is a UNION of
-     * several disabled signals and grows as packages convert; the root attribute mirrors
-     * `state.input.disabled` exactly, which is the single condition this slice branched on.
-     */
     @variant disabled {
       & .input {
         color: var(--color-neutral-foreground-disabled);
@@ -496,12 +330,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── `expandIcon` / `clearIcon` slots ───────────────────────────────────────────────
-   * Both take the identical class list except for the last argument, exactly the way
-   * mergeClasses handed them the identical atomics — one `.icon` class covers both, and the
-   * two trailing states get their own classes.
-   */
   .root {
     & .icon {
       @apply relative box-border block;
@@ -510,15 +338,6 @@
       cursor: pointer;
       font-size: var(--text-base-500);
 
-      /*
-       * Extend the clickable area to cover the root's right padding "dead zone". Without
-       * this, clicking between the icon and the right border does not trigger the icon's
-       * handler. The negative inline-end is overridden per size below to match the root's
-       * `padding-inline-end`. `position: relative` above provides the containing block.
-       *
-       * compiled: ltr `left:0;right:0`, rtl mirrored — equal values, so `inset-inline` is
-       * exact.
-       */
       &::after {
         @apply absolute;
 
@@ -529,12 +348,6 @@
       }
     }
 
-    /*
-     * from useIconStyles.small / .medium / .large — arg #3. `iconSizes` are px literals in
-     * `utils/internalTokens.ts`; `--base-scale` keeps the glyph scaling with the root font
-     * size (D4). `marginLeft` and the `::after` offset are both `[ltr, rtl]` property flips
-     * → logical inline properties.
-     */
     @variant size-small {
       & .icon {
         font-size: calc(16px * var(--base-scale));
@@ -577,13 +390,6 @@
       }
     }
 
-    /*
-     * from useIconStyles.visuallyHidden — arg #5 on `expandIcon`, applied while the clear
-     * icon is showing. Written after the size block on purpose: the `margin` and `padding`
-     * SHORTHANDS have to cancel the size block's `margin-inline-start`, which is exactly what
-     * Griffel did by resetting those property keys (`Frg6f3: 0`, `Byoj8tv/uwmqm3/z189sj/z8tnut: 0`).
-     * `position: absolute` likewise overrides the icon's `relative`.
-     */
     & .visually-hidden {
       @apply absolute -m-1 h-1 w-1 overflow-hidden p-0;
 
@@ -598,17 +404,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * ── `listbox` slot — DECISIONS.md D2 amendment 2 ───────────────────────────────────
-   * The slot's elementType is this package's own `<Listbox>`, whose base styles come from
-   * `useListboxStyles_unstable`. Styling another component's output is `fui.components.l2`,
-   * never l1 — that is what reproduces mergeClasses handing Combobox's classes to the Listbox
-   * hook as its LAST argument.
-   *
-   * These classes stay FLAT (0-1-0, no `.root` ancestor): the listbox is rendered through a
-   * `<Portal>` unless `inlinePopup` is set, so it is not reliably a descendant of the root.
-   */
-
   .listbox {
     @apply box-border rounded-medium;
 
@@ -629,26 +424,6 @@
   }
 }
 
-/*
- * ── UNLAYERED: the icon glyphs' <svg> display (D2 amendment) ────────────────────────
- * `@fluentui/react-icons` is and stays a Griffel package (DECISIONS.md D11). Every glyph it
- * renders carries `.f1w7gpdv { display: inline }` from
- * `node_modules/@fluentui/react-icons/lib/utils/useIconStyles.styles.js`, injected with NO
- * `@layer`. In the CSS cascade an unlayered normal author declaration beats EVERY layer, and
- * that comparison happens before specificity is consulted — so this rule would lose from
- * inside `fui.components.l1` no matter how specific it is, and the glyph would keep the inline
- * layout box the Griffel source removed ("the SVG must have display: block for accurate
- * positioning, otherwise an extra inline space is inserted after the svg element").
- *
- * Under Griffel both rules were unlayered and the compiled `.fvc9v3g svg { display: block }`
- * won at 0-1-1 against `.f1w7gpdv`'s 0-1-0. Unlayered here restores exactly that comparison.
- * Nothing else in this file competes for `display` on the glyph, so the block holds one rule
- * and its position is not load-bearing.
- *
- * (Grepped this package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — Combobox
- * renders plain `ChevronDownRegular` / `DismissRegular`, never a `bundleIcon()` pair, so there
- * is no icon-swap rule to lift out alongside it.)
- */
 .icon svg {
   @apply block;
 }

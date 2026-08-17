@@ -9,14 +9,6 @@
     @apply cursor-default;
   }
 
-  /*
-   * from useStyles.tooltip — the shared `getTooltipStyle()` factory
-   * (src/utilities/Common.styles.ts). `typographyStyles.body1` compiled to the four font
-   * atomics below. NOTE: no element in `VerticalStackedBarChart.tsx` consumes
-   * `classes.tooltip` today — the slot is kept because it is part of the public
-   * `VerticalStackedBarChartStyles` contract (same known-dead-slot call as AreaChart's
-   * `tooltip`; retiring it belongs to the Phase 3 sweep).
-   */
   .tooltip {
     @apply pointer-events-none absolute flex flex-col rounded-small bg-neutral-background-1 p-horizontal-s text-center text-neutral-foreground-1;
 
@@ -26,13 +18,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /*
-   * from useStyles.barLabel — the shared `getBarLabelStyle()` factory.
-   * `typographyStyles.caption1Strong` compiled to the four font atomics below.
-   * `fill` is an ordinary CSS property on the `<text>` nodes this component renders;
-   * Tailwind's `fill-*` utilities are colour-scale-bound, so a token value is written as
-   * a plain declaration.
-   */
   .bar-label {
     @apply fill-neutral-foreground-1;
 

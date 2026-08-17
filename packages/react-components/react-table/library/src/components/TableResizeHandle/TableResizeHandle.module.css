@@ -26,12 +26,6 @@
       bottom: 0;
     }
 
-    /*
-     * from useStyles.root[':focus'] — Griffel's `f` bucket. NATIVE `:focus`, not keyborg's
-     * `[data-fui-focus-visible]`: the source comment explains that a mouse user who reaches
-     * the handle through a context menu must still see it, which keyborg's
-     * keyboard-only attribute would not cover.
-     */
     @variant focus {
       opacity: 1;
       outline-style: none;

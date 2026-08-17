@@ -29,12 +29,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.level1 … level10 — root arg #3. Each slice sets nothing but the
-   * indentation custom property that TreeItemLayout / TreeItemPersonaLayout read in their
-   * `leaf` / `branch` padding. Levels > 10 are handled by the hook's inline-style
-   * fallback instead, so no eleventh block exists.
-   */
   .level1 {
     --fluent-TreeItem--level: 1;
   }
@@ -96,11 +90,6 @@
       & > :global(.group\/fui-tree-item-persona-layout) {
         @apply rounded-medium outline-stroke-focus-2;
 
-        /* `outline-radius` is not a real CSS property — react-tabster passes its
-           `outlineRadius` option straight through and Griffel compiles it verbatim
-           (see the compiled atomic). It has never had any effect; it is reproduced
-           rather than silently dropped so this block stays a byte-for-byte mirror of
-           the AOT output, and its removal belongs to the Phase 3 tabster cleanup. */
         outline-radius: var(--radius-medium);
 
         /* react-tabster's own FIXME ("tokens.strokeWidthThick causes some weird bugs") —

@@ -6,29 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Identical situation and identical slices to
- * ToolbarToggleButton/ToolbarToggleButton.module.css — see that file's header for the
- * full analysis. In brief:
- *
- *   `root` slot (= @fluentui/react-button's ToggleButton root)
- *     1  checked && useBaseStyles.selected      → fui.components.l2
- *     2  consumer className                     → unlayered (always wins)
- *
- *   `icon` slot (= react-button's Button icon span)
- *     1  checked && useBaseStyles.iconSelected  → fui.components.l2
- *     2  consumer className                     → unlayered
- *
- * l2 because both slices are applied over another component's hook output (D2 amendment
- * 2); the root rule additionally compounds ToggleButton's `group/fui-toggle-button` marker
- * for a deterministic 0-2-0 against ToggleButton's own same-altitude checked rules, and
- * restricts itself to `@variant at-rest` so ToggleButton's hover/pressed rules keep
- * winning — which is what Griffel's specificity (0-1-0 flat vs 0-2-0 `:hover`) used to do.
- *
- * Held back until react-button's ToggleButton converted (reports/phase2-batch3.md,
- * "Deliberate scope leftovers").
- */
-
 @layer fui.components.l2 {
   /* from useBaseStyles.selected — "use subtle ToggleButton selected styles for Toolbar
      Radio selected state" */

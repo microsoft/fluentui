@@ -11,16 +11,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useTableLayoutStyles.root / useFlexLayoutStyles.root — arg #3.
-   *
-   * The two box models are mutually exclusive and the hook picks between them with a
-   * TERNARY, so one of the pair is ALWAYS emitted. That is what makes `.table-root` /
-   * `.flex-root` a legal leading token ahead of the group marker (D16.2): unlike a
-   * `cond && styles.x` argument there is no render on which clsx drops it. This root
-   * additionally leads with the unconditional `.root` above, so the point is moot here —
-   * it is load-bearing in TableBody / TableHeader, which have no `.root`.
-   */
   .table-root {
     @apply table w-full table-fixed align-middle;
   }

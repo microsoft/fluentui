@@ -5,129 +5,7 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * `useCarouselNavButtonStyles_unstable`.
- *
- * `root` slot
- *
- *   #  mergeClasses argument                                → target
- *   ----------------------------------------------------------------------------------------
- *   1  group/fui-carousel-nav-button                        → identity marker (JS)
- *   2  styles.root                                          → fui.components.l1  .root
- *                                                             (SPLIT: the forced-colors half
- *                                                              is a separate block, below)
- *   3  selected ? rootSelected : rootUnselected             → fui.components.l1  .root under
- *                                                             `selected` / `not-selected`
- *   4  appearance === 'brand' && styles.brand               → fui.components.l1  .brand
- *                                                             (SPLIT: rest vs hover/active)
- *   5  !selected && appearance === 'brand' && …unselectedBrand
- *                                                          → fui.components.l1  .brand under
- *                                                             `not-selected` (SPLIT likewise)
- *   6  state.root.className                                 → unlayered (always wins)
- *
- * ── ALTITUDE: l1 ────────────────────────────────────────────────────────────────────────
- * The root is this component's own `<button>` (`useCarouselNavButton.ts` builds it with
- * `getIntrinsicElementProps(as, useARIAButtonProps(...))`, `elementType: 'button'`), not a
- * react-button. Every block is therefore one component's own cascade — l1
- * (DECISIONS.md D2 amendment 2).
- *
- * ── `selected` is read NATIVELY; no data attribute is stamped ───────────────────────────
- * `useCarouselNavButton.ts` already renders `aria-selected={selected}` on this element
- * (`defaultProps`), and the catalog `selected` variant is
- * `:where([data-selected], [aria-selected='true'])`, so the state is readable exactly where
- * the rules need it. DECISIONS.md D15.6 (resolved) makes `data-*` a FALLBACK for state a
- * selector cannot otherwise reach, so no mirror is added. `not-selected` (added to the
- * catalog by this conversion) is its complement and matches the rendered
- * `aria-selected="false"`.
- *
- * ACCEPTED WIDENING, same shape as react-breadcrumb's `current`: `aria-selected` is a
- * `defaultProp`, so a consumer who passes `aria-selected` directly now drives the styling
- * where the Griffel hook followed `state.selected` alone. Inverting the two on the same
- * element is not a coherent request (the ARIA attribute IS "is this tab selected"), and the
- * alternative — stamping a `data-selected` mirror — would only widen invalidation without
- * closing the aria half of the catalog variant.
- *
- * ── `appearance` is a LOOK prop (DECISIONS.md D3) ───────────────────────────────────────
- * `CarouselNavProps['appearance']` is `'brand' | undefined`, read off `CarouselNavContext`;
- * a module class, not an attribute.
- *
- * ═══ FILE ORDER IS LOAD-BEARING — three separate reasons ════════════════════════════════
- *
- * (a) ARGUMENT ORDER. Within a level the winner is in-file source order (all selectors are
- *     `:where()`-flat), so the blocks are written in mergeClasses ARGUMENT order. Real
- *     collisions this settles:
- *       • `width` / `padding` — `.root` (#2) vs `selected` (#3).
- *       • `::after` `width` / `border-radius` — `.root` (#2) vs `selected` (#3).
- *       • `::after` `background-color` — `.root` (#2, NeutralForeground1) vs `.brand` (#4,
- *         CompoundBrandBackground) vs `.brand`+`not-selected` (#5, back to
- *         NeutralForeground1). Griffel resolved all three through mergeClasses key
- *         `Bjyk6c5`, last argument winning; file order reproduces it.
- *       • `::after` `opacity` at rest / `:hover` / `:active` — #3 vs #4 vs #5, keys
- *         `Bp15pi3` / `Bay5ve9` / `Bni0232`. Net for unselected+brand: 0.6 / 0.75 / 1.
- *
- * (b) SPECIFICITY THAT `:where()` FLATTENS. `.root`'s `border-*-width: 0` (0-1-0) and the
- *     focus indicator's `border:` shorthand under `[data-fui-focus-visible]` (0-2-0) sit in
- *     the SAME Griffel bucket, where the focus rule won on specificity. Flattened, the focus
- *     block has to come later — it does, in arg-#3's block.
- *
- * (c) GRIFFEL'S MEDIA BUCKET, which is why arg #2 is SPLIT. ★ The one genuine inversion in
- *     this file. `useStyles.root`'s `@media (forced-colors: active)` rules compile into
- *     Griffel's `m` bucket, which is emitted LAST of all buckets — after `d`, `h` and `a`.
- *     So `::after { background-color: white }` beat the flat `::after` background-colors of
- *     `root` / `brand` / `unselectedBrand` (all 0-1-0, bucket `d`) …
- *     … but LOST to `.frrwqtn:hover::after` and `.fmmpig5:active::after` (0-2-0, buckets
- *     `h` / `a`), because SPECIFICITY outranks bucket order.
- *
- *     Under `:where()` everything is 0-1-0 and only file position remains, so reproducing
- *     both halves requires the forced-colors block to sit BETWEEN them:
- *
- *         .root (rest)  →  selected/not-selected  →  .brand (rest)  →  .brand not-selected
- *         (rest)  →  ★ forced-colors ★  →  .brand (hover/active)  →  .brand not-selected
- *         (hover/active)
- *
- *     Collapsing the brand blocks back together, or moving forced-colors to the end of the
- *     file, silently changes the high-contrast rendering of a hovered/pressed brand dot.
- *     Nothing else in this module is media-conditional, so this is the only split needed.
- *
- * ── Stroke widths (DECISIONS.md D4 addendum) ────────────────────────────────────────────
- * `outline-width` and `border-*-width` do NOT read the `--spacing-*` namespace, so
- * `strokeWidthThin` / `strokeWidthThick` take direct `var(--spacing-thin)` /
- * `var(--spacing-thick)` references there. `margin` DOES read it, so the focus indicator's
- * `margin: calc(-1 * strokeWidthThick)` takes the negative utility `-m-thick`. Raw
- * `var(--strokeWidth*)` is forbidden in modules.
- *
- * ── Pixel literals ──────────────────────────────────────────────────────────────────────
- * `border-radius: 50%` is a percentage and stays literal. The selected dot's
- * `border-radius: 4px` is a raw px literal with no matching radius token; it is written
- * `calc(4px * var(--base-scale))` — what a numeric utility would emit — so it scales with
- * every other length on the page (same call react-breadcrumb makes for its icon sizes).
- *
- * ── Spacing (DECISIONS.md D4) ───────────────────────────────────────────────────────────
- * Every length here reads a `spacingHorizontal*` / `spacingVertical*` token, so all take
- * NAMED utilities. `padding: <vertical> <horizontal>` (`.f1f5q0n8`, `.fwku66v`, both
- * `p: -1`) is expanded to longhands per the cookbook — the two padding slices genuinely
- * collide (#2 vs #3).
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * ONE `[ltr, rtl]` pair — `.root`'s `border-right-width` / `border-left-width`
- * (`Bekrc4i: ["f1358rze", "f1rvrf73"]` / `ibv6hh: ["f1rvrf73", "f1358rze"]`), value `0` on
- * both sides, i.e. a pure PROPERTY flip → the logical longhands below, no `@variant rtl`
- * twin. Nothing else in this component is direction-sensitive.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/CarouselNavButton/useCarouselNavButtonStyles.styles.js.
- */
-
 @layer fui.components.l1 {
-  /*
-   * from useStyles.root — arg #2, REST half. The forced-colors half of this same slice is
-   * the ★-marked block further down; see reason (c) in the header before moving either.
-   *
-   * `border: none` on `::after` is reproduced as the shorthand Griffel emitted
-   * (`.fnwf5yv`, `p: -2`): nothing else in this module sets a `border-*` longhand on the
-   * pseudo-element, so there is no priority interaction to expand away.
-   */
   .root {
     @apply box-content cursor-pointer;
     @apply h-vertical-s w-horizontal-s;
@@ -154,20 +32,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.rootUnselected / useStyles.rootSelected — arg #3, applied as
-   * `selected ? rootSelected : rootUnselected`. The two branches are mutually exclusive, so
-   * their order relative to each other is inert; both must follow `.root` above.
-   *
-   * `outline: <thin> solid transparent` is the source's high-contrast placeholder (its
-   * comment: "For high contrast") and is byte-identical in both branches.
-   *
-   * The focus indicator is `createCustomFocusIndicatorStyle({ border, margin, borderRadius })`
-   * — a component-specific set of declarations, not the Button-family ring, so there is no
-   * shared utility to `@apply`; the catalog `focus-visible-fui` variant supplies the
-   * `[data-fui-focus-visible]` selector and the declarations are written out. It is
-   * duplicated verbatim in both branches because Griffel emitted it in both slices.
-   */
   .root {
     @variant not-selected {
       outline: var(--spacing-thin) solid transparent;
@@ -240,11 +104,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.unselectedBrand — arg #5, REST half, applied as
-   * `!selected && appearance === 'brand'`. It walks the brand dot's rest colour back to the
-   * neutral one, which is why it must follow `.brand` above.
-   */
   .brand {
     @variant not-selected {
       &::after {
@@ -257,18 +116,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ★ from useStyles.root's `@media (forced-colors: active)` — arg #2, MEDIA half.
-   *
-   * Bypasses OS high contrast with an inverted blend mode (otherwise the dot is invisible).
-   *
-   * ITS POSITION IS THE POINT and is not stylistic: Griffel's `m` bucket is emitted after
-   * every other bucket, so this beat the flat `::after` background-colours above — but it
-   * lost to the 0-2-0 `:hover` / `:active` atomics that follow, because specificity outranks
-   * bucket order. `:where()` erases that specificity, so the only way to keep BOTH winners
-   * is to sit between the rest blocks and the hover/active blocks. Full derivation in the
-   * header, reason (c). Do not move this block, and do not merge the two `.brand` pairs.
-   */
   .root {
     @variant forced-colors {
       &::after {
@@ -302,13 +149,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.unselectedBrand — arg #5, HOVER/ACTIVE half. Only `opacity` here: the
-   * slice never re-states a hover/active BACKGROUND, so an unselected brand dot keeps
-   * arg #4's CompoundBrandBackgroundHover / …Pressed while taking this opacity. That is
-   * exactly what mergeClasses produced (key `Bay5ve9` → 0.75 from #5; key `Glksuk` →
-   * hover background survives from #4 because #5 does not carry it).
-   */
   .brand {
     @variant not-selected {
       @variant hover {

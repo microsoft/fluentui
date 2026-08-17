@@ -198,11 +198,6 @@
       }
     }
 
-    /*
-     * from useBaseStyles.empty — zeroes exactly the four alignment margins above.
-     * Applied LAST in mergeClasses, hence fui.components.l1 (after the fui.components.l1 alignment
-     * blocks) rather than alongside them.
-     */
     @variant empty {
       &::before {
         @apply me-horizontal-none mb-vertical-none;

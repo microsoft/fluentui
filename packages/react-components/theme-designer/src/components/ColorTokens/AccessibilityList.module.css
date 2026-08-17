@@ -5,11 +5,6 @@
 /* Replaces AccessibilityList.tsx's inline `makeStyles`. App altitude: fui.components.l4. */
 
 @layer fui.components.l4 {
-  /*
-   * from useStyles.icon — `marginRight: '0.5em'`. Griffel RTL-flips marginRight, so this
-   * becomes the logical longhand. `0.5em` is font-relative and matches no spacing step,
-   * so it stays a literal value rather than a spacing utility.
-   */
   .icon {
     margin-inline-end: 0.5em;
   }

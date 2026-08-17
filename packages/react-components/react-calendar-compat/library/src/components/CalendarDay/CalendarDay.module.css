@@ -4,53 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useCalendarDayStyles_unstable:
- *
- *   root slot
- *     1 calendarDayClassNames.root      → static class (JS) — REMOVED in the statics sweep
- *                                         (D16.1); the root now leads with `.normalize` and
- *                                         carries `group/fui-calendar-day` second
- *     2 useRootStyles.normalize         → fui.components.l1
- *     3 useRootStyles.base              → fui.components.l1
- *     4 useRootStyles.showWeekNumbers   → fui.components.l1   (showWeekNumbers)
- *     5 consumer className              → unlayered (always wins)
- *
- *   header / monthComponents / headerIconButton / disabledStyle
- *     1 calendarDayClassNames.<slot>    → REMOVED (D16.1); no marker (only the ROOT gets one)
- *     2 use<Slot>Styles.base            → fui.components.l1
- *
- *   monthAndYear
- *     1 calendarDayClassNames.monthAndYear         → REMOVED (D16.1)
- *     2 useMonthAndYearStyles.base                 → fui.components.l1
- *     3 useMonthAndYearStyles.headerIsClickable    → fui.components.l1   (headerIsClickable)
- *
- * ⚠ KNOWN INVERSION (reports/risk-analysis.md, `useRootStyles`): the makeStyles slices are
- * DECLARED `base` then `normalize`, but mergeClasses passes `normalize` FIRST — so `base`
- * wins on the two properties they share, `box-sizing` and `padding`. The rendered root is
- * therefore `box-sizing: content-box` + `padding: 12px`, NOT border-box/0. `.normalize` is
- * written before `.root` below so file order reproduces that; do not reorder these two
- * blocks. (react-calendar-compat's CalendarPicker root carries the identical inversion.)
- *
- * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
- * Every subject is an element CalendarDay renders itself → `fui.components.l1`; nothing
- * qualifies for l2 (D2 amendment 2). No `:global(…)` selector, and the package uses no
- * `bundleIcon()` — grepped for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — so D2
- * amendment 5 (UNLAYERED) does not apply.
- *
- * ── SPACING / SIZING (DECISIONS.md D4 amendment) ────────────────────────────────────
- * Named steps for SPACING properties whose px literal matches a step (`p-horizontal-m` =
- * 12px, `ps-horizontal-m-nudge` = 10px, `pe-horizontal-xs` = 4px); numeric utilities for
- * pure SIZING literals (`w-196`, `h-28`). `line-height` is TYPOGRAPHY, so it takes
- * `calc(<px> * var(--base-scale))` (react-toast precedent), as do the `1px` outline widths,
- * which are literals in the Griffel source rather than `strokeWidthThin`.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * rtl-css-js flips the 2nd/4th values of a `padding` shorthand and `textAlign: left`, so
- * `padding: '0 4px 0 10px'` becomes `py-0 ps-… pe-…` and `text-align: left` becomes
- * `text-align: start`. Nothing else in this module is direction-sensitive.
- */
-
 @layer fui.components.l1 {
   /* from useRootStyles.normalize — root arg #2 (see the INVERSION note above) */
   .normalize {
@@ -93,12 +46,6 @@
     /* `textAlign: 'left'` → logical `start` */
   }
 
-  /*
-   * from useMonthAndYearStyles.headerIsClickable — monthAndYear arg #3.
-   * Kept byte-identical to useCalendarPickerStyles' `hasHeaderClickCallback`, per the
-   * upstream comment on that slice ("If this is updated, make sure to update
-   * headerIsClickable in useCalendarDayStyles as well").
-   */
   .header-is-clickable {
     @variant hover {
       @apply cursor-pointer bg-brand-background-inverted-hover text-brand-foreground-on-light-hover;
@@ -151,18 +98,6 @@
     }
   }
 
-  /*
-   * from useDisabledStyleStyles.base.
-   *
-   * The Griffel key is the selector LIST `'&, &:disabled, & button'`, so the three branches
-   * cannot each take a catalog variant — a variant wraps a whole rule, not one branch of a
-   * list. `:where(:disabled)` reproduces `&:disabled` exactly (and keeps this module's
-   * uniform 0-1-0 specificity) rather than widening to the catalog `disabled` variant's
-   * `[disabled], [data-disabled], :disabled`. In practice only the bare `&` branch ever
-   * matches: CalendarDay's navigation buttons are `aria-disabled`, never `disabled`, and
-   * they contain an icon `<svg>`, never a nested `<button>`. Both extra branches are
-   * reproduced because the compiled atomics contain them.
-   */
   .disabled-style {
     &,
     &:where(:disabled),

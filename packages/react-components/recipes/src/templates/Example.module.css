@@ -1,43 +1,15 @@
 @reference '#theme';
 
-/*
- * Cascade layer order (DECISIONS.md D2 amendments 3/4).
- *
- * Repeated at the top of every module on purpose: `@reference` emits nothing, so without
- * this statement first-appearance order would decide the layer ranking per document.
- * Re-declaring the identical order is a no-op (CSS Cascade 5 never re-orders an existing
- * layer), so the repetition is safe and makes each module self-sufficient.
- */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Replaces Example.styles.ts (deleted).
- *
- * ALTITUDE `fui.components.l4` — D2 amendment 2's "application implementation /
- * page / feature-specific styling" (s5-docs-projects-decision.md §A.5.1). This is docs
- * chrome: it frames each recipe's live example and decorates no Fluent component's hook
- * output, which is what would have made it l2.
- */
 @layer fui.components.l4 {
   .root {
     @apply m-6 rounded-[16px] border-neutral-stroke-1 p-30;
 
-    /*
-     * `border` expanded to longhands per the cookbook's shorthand rule. The 1px width is
-     * the `strokeWidthThin` step, and border widths do NOT consume the `--spacing-*`
-     * utility namespace, so it is authored as a direct `var(--spacing-thin)` — one of the
-     * four stroke widths the theme emits as a real custom property
-     * (CONVERSION_GUIDE.md §2, stroke-width rule 2).
-     */
     border-width: var(--spacing-thin);
     border-style: solid;
   }
 
-  /*
-   * from useExampleStyles.innerContainer — `padding: '48px 24px 48px 24px'` is symmetric
-   * on both axes, so the logical `py-*`/`px-*` pair reproduces it exactly with no RTL
-   * asymmetry to preserve.
-   */
   .inner-container {
     @apply flex px-24 py-48;
 

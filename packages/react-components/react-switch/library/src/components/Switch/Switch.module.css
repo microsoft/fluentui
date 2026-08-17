@@ -4,118 +4,10 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useSwitchStyles_unstable,
- * not source declaration order.
- *
- * `root` slot
- *   1 switchClassNames.root                          → static class (JS)
- *   2 useRootBaseClassName          (makeReset)      → fui.base           .root
- *   3 rootStyles.vertical (labelPosition === 'above')→ fui.components.l1  (data-orientation)
- *   4 consumer className                             → unlayered (always wins)
- *
- * `indicator` slot
- *   1 switchClassNames.indicator                     → static class (JS)
- *   2 useIndicatorBaseClassName     (makeReset)      → fui.base           .indicator
- *   3 indicatorStyles.labelAbove (label && above)    → fui.components.l1  (data-label-position)
- *   4 indicatorStyles.sizeSmall                      → fui.components.l1  (data-size)
- *   5 consumer className                             → unlayered
- *
- * `input` slot
- *   1 switchClassNames.input                         → static class (JS)
- *   2 useInputBaseClassName         (makeReset)      → fui.base  .input  — EXCEPT the
- *                                                      `~ label` rules, which go to
- *                                                      fui.components.l2 (altitude, below)
- *   3 inputStyles[labelPosition] (gated on label)    → fui.components.l1  (data-label-position)
- *   4 inputStyles.sizeSmall                          → fui.components.l1  (data-size)
- *   5 consumer className                             → unlayered
- *
- * `label` slot
- *   1 switchClassNames.label                         → static class (JS)
- *   2 labelStyles.base                               → fui.components.l2  ← altitude, below
- *   3 labelStyles[labelPosition]                     → fui.components.l2
- *   4 labelStyles.sizeSmall                          → fui.components.l2
- *   5 consumer className                             → unlayered
- *
- * ── ALTITUDE: the label slot is l2, not l1 (DECISIONS.md D2 amendment 2) ─────────────
- * Switch's `label` slot renders `@fluentui/react-label`'s `<Label>`, whose OWN styles
- * hook writes the element's base rules. Everything Switch applies on top of another
- * component's hook output belongs in `fui.components.l2`, never l1 — in l1 the winner
- * between Switch and Label would be decided by stylesheet load order.
- *
- * This is load-bearing, not bookkeeping: Label's `size` slot default is `medium`, so its
- * own rules set `font-size: var(--text-base-300)` / `line-height: var(--leading-base-300)`,
- * while `labelStyles.sizeSmall` must win with the Base200 pair on `<Switch size="small" />`.
- * mergeClasses produced that winner because Switch's classes were its LAST arguments
- * (`useLabelStyles_unstable` merges the incoming className last, i.e. after its own); l2
- * over l1 reproduces it deterministically.
- *
- * The same applies to the four `useInputBaseClassName` rules that reach the label through
- * `& ~ .label` (cursor/color, incl. the forced-colors GrayText pair): they are authored
- * in l2 too. In Griffel they beat `labelStyles.base`'s `cursor: pointer` on specificity
- * (`.input:disabled ~ .label` is 3 compound units vs. 1); left in `fui.base` they would
- * lose to the l2 `.label` block instead, and a disabled Switch's label would show
- * `cursor: pointer`.
- *
- * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
- * • input arg #4 `sizeSmall` sets `width: calc(32px …)` and arg #3 `above` sets
- *   `width: 100%` — Griffel deleted the earlier atomic (same key `a9b677`), so #4 wins.
- *   Its block is written AFTER the label-position blocks inside fui.components.l1.
- * • label arg #4 `sizeSmall` re-sets `margin-block-start/end` over arg #2 `base` — its
- *   block is written last inside fui.components.l2.
- * • Inside `.input`, the state rules go base → `:hover` → `:hover:active` in that order.
- *   Griffel resolved these by specificity (`:hover:active` outranks `:hover` outranks the
- *   bare condition); `:where()` flattens all three to `.input ~ .indicator`, so the
- *   narrower condition must come LATER in the file. Source order already does that.
- * • Inside the forced-colors block the compiled order is …:hover, …:hover:active, then
- *   the bare `:enabled:checked` rule — i.e. the WIDEST condition last. Under `:where()`
- *   flattening that inverts Griffel's specificity winner, but all three declare the
- *   identical `background-color: Highlight; color: Canvas`, so the outcome is unchanged.
- *   Source order is preserved verbatim rather than "fixed".
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * The compiled atomics carry exactly two VALUE flips, both the thumb travel:
- *   input reset      `transform: translateX(20px)` / `translateX(-20px)`
- *   inputStyles.sizeSmall `translateX(16px)` / `translateX(-16px)`
- * Both get an explicit `@variant rtl` twin. Every other `[ltr, rtl]` pair is a pure
- * PROPERTY flip and becomes a logical property:
- *   inputStyles.before `right`→`left`            → inset-inline-end
- *   inputStyles.after  `left`→`right`            → inset-inline-start
- *   labelStyles.after  `padding-left`→`-right`   → padding-inline-start
- *   labelStyles.before `padding-right`→`-left`   → padding-inline-end
- * The root reset's ltr/rtl pair differs only in the ORDER of the border-color and
- * top/right/bottom/left longhands — identical values — so it needs no rtl twin.
- * `useIndicatorBaseClassName` compiles with a `null` rtl class: nothing to flip.
- *
- * ── Pixel literals (DECISIONS.md D4) ────────────────────────────────────────────────
- * Track/thumb geometry (40/32/20/18/16/14 px) is a pixel literal, so it rides
- * `--base-scale`: Tailwind numeric utilities (`h-20`, `w-40`, …) where a utility exists,
- * `calc(<n>px * var(--base-scale))` inside calc()/transform() where none does. At the
- * default 16px root every one of these computes to the compiled pixel value.
- *
- * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
- * Every value the Griffel source read from a `tokens.spacing*` is authored as the NAMED
- * spacing utility (`mt-vertical-s`, `ps-horizontal-xs`, …). Raw `var(--spacing-vertical-s)`
- * is forbidden in modules: it is the one authoring form that does not ride `--base-scale`,
- * so it would drift from the geometry above at a non-default root font size. The three
- * spacing terms that sit INSIDE a calc() — where no utility can reach — are written as the
- * token's canonical px times `--base-scale`, with the token named in a comment.
- */
-
 @layer fui.base {
   .root {
     @apply relative box-border inline-flex items-start;
 
-    /*
-     * from createFocusOutlineStyle({ style: {}, selector: 'focus-within' }) — the first
-     * conversion of this factory (Button uses createCustomFocusIndicatorStyle instead).
-     * `fui-focus-outline` carries the compiled declarations; the selector stays here.
-     * Byte-check against `.r2i81i2[data-fui-focus-within]:focus-within::after`:
-     * content/position/pointer-events/z-index/border/border-radius identical, and the
-     * utility's `calc(0px - 2px - 0px)` offsets compute to the compiled `calc(2px * -1)`.
-     * `:focus-visible` is a strict subset of `:focus`, so the second rule is redundant in
-     * the compiled output too — both are reproduced verbatim rather than pruned.
-     */
     @variant focus {
       outline-style: none;
     }
@@ -190,13 +82,6 @@
     }
   }
 
-  /*
-   * from useInputBaseClassName (makeResetStyles) — everything except the `~ .label`
-   * rules, which are authored in fui.components.l2 (see the header).
-   *
-   * Written AFTER `.indicator` so the shared-layer, equal-value ties resolve the way the
-   * compiled sheet resolved them by specificity.
-   */
   .input {
     @apply absolute m-0 box-border h-full cursor-pointer;
 
@@ -344,11 +229,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootStyles.vertical — root arg #3. Applied for `labelPosition === 'above'`
-   * with NO label gate, so it rides `data-orientation` (always stamped) rather than
-   * `data-label-position` (stamped only when the label slot exists).
-   */
   .root {
     @variant vertical {
       @apply flex-col;
@@ -358,11 +238,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * from useIndicatorStyles.labelAbove — indicator arg #3, gated on
-     * `label && labelPosition === 'above'`. `data-label-position` is written only when the
-     * label slot exists, so its VALUE carries both halves of that condition.
-     */
     @variant label-above {
       & .indicator {
         margin-top: 0;
@@ -381,11 +256,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * from useInputStyles[labelPosition] — input arg #3, gated on `label`.
-     * `right`/`left` are an [ltr, rtl] atomic pair (`j35jbq` / `oyh7mz`), i.e. a pure
-     * property flip → `inset-inline-*`. `top`/`bottom` are block-direction: unflipped.
-     */
     @variant label-before {
       & .input {
         inset-inline-end: 0;
@@ -411,11 +281,6 @@
       }
     }
 
-    /*
-     * from useInputStyles.sizeSmall — input arg #4. Its `width` must beat the `w-full`
-     * that `label-above` sets above (Griffel deleted the earlier `a9b677` atomic), which
-     * is why this block is written after the label-position blocks.
-     */
     @variant size-small {
       & .input {
         /* 8px = spacingHorizontalS as a base-scale literal (D4 amendment) */
@@ -456,12 +321,6 @@
        line height. */
     margin-bottom: calc((20px * var(--base-scale) - var(--leading-base-300)) / 2);
     margin-top: calc((20px * var(--base-scale) - var(--leading-base-300)) / 2);
-
-    /* `padding: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands
-       (CONVERSION_GUIDE §2): the position slices below override single sides inside this
-       same layer, and Griffel's shorthand-loses-to-longhand priority has no CSS
-       equivalent. Inline sides are logical because `after`/`before` compile to an
-       [ltr, rtl] padding pair. Longhands carry the named spacing utilities (D4 amendment). */
   }
 
   .root {
@@ -494,12 +353,6 @@
     }
   }
 
-  /*
-   * from useInputBaseClassName — the four rules that reach the label element through
-   * `& ~ .fui-Switch__label`. Hoisted out of fui.base into l2 so they keep beating both
-   * <Label>'s own rules and the `.label` block above (Griffel won those on specificity;
-   * see the ALTITUDE note). Written last, matching the compiled source order.
-   */
   .input {
     @variant disabled-control {
       & ~ .label {

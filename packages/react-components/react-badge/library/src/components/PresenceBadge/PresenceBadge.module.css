@@ -4,96 +4,7 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * usePresenceBadgeStyles_unstable, not source declaration order:
- *
- *   1  presenceBadgeClassNames.root         → static class (JS)
- *   2  useRootClassName (makeResetStyles)   → fui.base
- *   3  useStyles.statusBusy                 → fui.components.l1  (.status-busy)
- *   4  useStyles.statusAway                 → fui.components.l1  (.status-away)
- *   5  useStyles.statusAvailable            → fui.components.l1  (.status-available)
- *   6  useStyles.statusOffline              → fui.components.l1  (.status-offline)
- *   7  useStyles.statusOutOfOffice          → fui.components.l1  (.status-out-of-office)
- *   8  useStyles.statusUnknown              → fui.components.l1  (.status-unknown)
- *   9  useStyles.outOfOffice                → fui.components.l1  (.out-of-office)
- *   10 useStyles.outOfOfficeAvailable       → fui.components.l1  (.out-of-office-available)
- *   11 useStyles.outOfOfficeBusy            → fui.components.l1  (.out-of-office-busy)
- *   12 useStyles.statusOutOfOffice AGAIN    → fui.components.l1 (see INVERSION below)
- *   13 useStyles.outOfOfficeUnknown         → fui.components.l1  (.out-of-office-unknown)
- *
- * The left column names the GRIFFEL slice (camelCase, as the original source spelled it);
- * the parenthesised name is this module's local, which is lowercase-kebab because the
- * generated ident alphabet is all-lowercase (scripts/css-modules/ident.js).
- *   14 useStyles.tiny                       → fui.components.l1 (data-size)
- *   15 useStyles.large                      → fui.components.l1 (data-size)
- *   16 useStyles.extraLarge                 → fui.components.l1 (data-size)
- *   17 consumer className                   → unlayered (always wins)
- *
- * Args 3–13 all set exactly one property (`color`), so the winner is purely the last
- * matching rule in file order — which is why they are written as a flat, strictly
- * argument-ordered run of single-declaration classes rather than compound
- * status/outOfOffice selectors.
- *
- * ── INVERSION (arg 12) ───────────────────────────────────────────────────────────────
- * Griffel applies `styles.statusOutOfOffice` TWICE: once at arg 7 (status is literally
- * 'out-of-office') and again at arg 12 (outOfOffice is set AND status is one of
- * 'out-of-office' | 'away' | 'offline'). mergeClasses re-ranks the atom to the later
- * argument's position, so at arg 12 it beats `outOfOffice` (arg 9). A CSS class can only
- * occupy ONE file position, so the re-application gets its own rule, `.out-of-office-status`,
- * placed at the argument-12 position. Same declaration, different rank — that is the whole
- * reason it exists.
- *
- * ── Colour resolution, verified against all 8 statuses × outOfOffice ─────────────────
- *   outOfOffice = false → the arg 3–8 rule for the status wins (nothing later matches).
- *   outOfOffice = true  → busy/do-not-disturb/blocked → arg 11 (red)
- *                         available                   → arg 10 (light green)
- *                         away/offline/out-of-office  → arg 12 (berry)
- *                         unknown                     → arg 13 (neutral fg 3)
- * `.out-of-office` (arg 9) is consequently overridden in every one of the 16 combinations —
- * it is dead in the Griffel source too. Reproduced verbatim rather than dropped, so the
- * slice mapping stays 1:1 and any future status addition inherits the same fallback.
- *
- * ── `!important` REMOVED (probe-verified) ────────────────────────────────────────────
- * The Griffel source carried 6 `!important` declarations (width + height on each of the
- * three `& svg` size rules) to force the shared presence icons to sizes that do not exist
- * as real icons — see the FIXMEs in presenceIcons.ts. They are dropped here, for two
- * independent reasons, both measured in Chromium rather than assumed:
- *
- *   1. They are unnecessary. What they had to beat is the `width`/`height` PRESENTATION
- *      ATTRIBUTE that `createFluentIcon` puts on the `<svg>` (e.g. `width="10"` for the
- *      10px icon reused at `size="tiny"`). A normal declaration in `@layer
- *      fui.components.l1` already beats a presentation attribute, so the rendered size is
- *      unchanged. (`@fluentui/react-icons` sets no width/height in CSS at all — its two
- *      Griffel classes are `display:inline; line-height:0` and `forced-color-adjust:auto`.)
- *
- *   2. Keeping them would be a regression. `!important` REVERSES layer order: a layered
- *      `!important` beats an UNLAYERED one, so `@layer` would make these declarations
- *      outrank a consumer's own `!important` override — the opposite of the
- *      consumer-overrides-win contract every other converted rule preserves (DECISIONS.md
- *      D2, and the accepted-failure-mode note that named this exact file).
- *
- * Measured in Chromium, three declarations against the same `<svg width="10">`:
- *   layered normal      vs presentation attribute      → 6px   (CSS wins)
- *   layered !important  vs unlayered consumer !important → layered wins  (the regression)
- *   layered normal      vs unlayered consumer normal    → consumer wins (contract intact)
- *
- * This is a BEHAVIOUR CHANGE for consumers and belongs in the PR notes: overriding the
- * presence icon size no longer requires `!important` on the consumer's side. It is the
- * single `!important` site DECISIONS.md D2 called out as an accepted failure mode, and
- * removing it retires that failure mode rather than shipping it.
- */
-
 @layer fui.base {
-  /*
-   * from useRootClassName (makeResetStyles).
-   *
-   * The background colour bleeds around the edge of the icon due to antialiasing on the
-   * svg and the element background. Every presence icon has a border at least 1px wide,
-   * so the background is inset with padding + `background-clip: content-box`; the icon
-   * carries a matching -1px margin. (`size="tiny"` is the exception — its icons have a
-   * sub-1px border — and unsets `background-clip` below.)
-   */
   .root {
     @apply box-border inline-flex items-center justify-center rounded-circular bg-neutral-background-1 ps-1 pe-1 pt-1 pb-1;
 
@@ -168,15 +79,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * args 14–16 — from useStyles.tiny / .large / .extraLarge. `size` is a scale prop, so it
-   * rides `data-size` and the shared variants (DECISIONS.md D3). `medium` and the two
-   * small sizes have no slice: their icons are already the right size.
-   *
-   * `& svg` reproduces the Griffel selector verbatim (compiled: `.fab5kbq svg{…}`) — it
-   * targets the icon glyph from the root, which is why the icon slot needs no attributes.
-   * See the header for why `!important` is gone.
-   */
   .root {
     @variant size-tiny {
       @apply w-6;

@@ -4,64 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useAvatarGroupItemStyles_unstable, not source declaration order.
- *
- * ROOT slot
- *   1  avatarGroupItemClassNames.root                    → static class (JS)
- *   2  useRootStyles.base                                → fui.components.l1  `.root`
- *   3a useRootStyles.nonOverflowItem   (!isOverflowItem) → fui.components.l1  `.non-overflow-item`
- *   3b useGroupChildClassName(layout, size)              → fui.components.l1  `.stack*` / `.spread*`
- *   3c useSizeStyles[size]                               → fui.components.l1  (Avatar.module.css)
- *   3d usePieStyles.base + .thick|thicker|thickest
- *      + .slices (+ .rtlSlices)        (layout === 'pie')→ fui.components.l1  `.pie`
- *   3' useRootStyles.overflowItem      (isOverflowItem)  → fui.components.l1  `.overflow-item`
- *   4  consumer className                                → unlayered (always wins)
- *
- * AVATAR slot
- *   1  avatarGroupItemClassNames.avatar                  → static class (JS)
- *   2  useAvatarStyles.nonOverflowItem                   → fui.components.l2
- *   3  useAvatarStyles.pie                               → fui.components.l2
- *   4  consumer className                                → unlayered
- *
- * OVERFLOWLABEL slot
- *   1  avatarGroupItemClassNames.overflowLabel           → static class (JS)
- *   2  useOverflowLabelStyles.base                       → fui.components.l1
- *   3  consumer className                                → unlayered
- *
- * ── ALTITUDE: why the avatar slot is l2 ───────────────────────────────────────────────
- * The `avatar` slot's elementType is `Avatar`, so its className arrives at Avatar's own
- * hook as the CONSUMER className. Both declarations exist to beat Avatar's own base:
- * `position: absolute` over Avatar's reset `position: relative`, and `border-radius: 0`
- * over Avatar's reset `borderRadiusCircular` (and, for a square avatar, over its l1
- * radius). Under mergeClasses the later argument won by property deletion; the altitude
- * rule (D2 amendment 2) makes `fui.components.l2` the guaranteed winner over everything
- * Avatar writes, independent of stylesheet load order.
- *
- * ── ORDER that is load-bearing ────────────────────────────────────────────────────────
- * `.pie`'s `position: absolute` (arg 3d) must beat `.root`'s `position: relative`
- * (arg 2) — `.pie` is written after `.root`. Inside `.pie`, the `rtl` blocks are written
- * after the LTR ones because `rtlSlices` was a later mergeClasses argument than `slices`.
- * Everything else in this file is disjoint by property.
- *
- * ── RTL ───────────────────────────────────────────────────────────────────────────────
- * Two different kinds of flip, per D5:
- *   • property-level (`margin-left`, `left`) → logical properties. The compiled atomics
- *     carry these as [ltr, rtl] pairs, e.g. `jhia2w: ['f1cjco14','f13dxjc9']`
- *     (margin-left/right) and `Be2twx7: ['f1o4hhgz','fb4gjrz']` (left/right).
- *   • value-level (`clip-path: inset(…)`, whose four values are physical) → the shared
- *     `rtl` variant. The Griffel source could not express this either, which is why it
- *     hand-wrote a `rtlSlices` slice and gated it on `useFluent().dir`. That JS branch is
- *     gone: `:dir(rtl)` resolves the COMPUTED direction, which FluentProvider writes as a
- *     real `dir` attribute, so the CSS now decides. Documented semantics change (D5).
- *   `transform-origin: 0 0` is NOT flipped — the compiled atomics emit a single class for
- *   it (`do7bja: 'fzpvk6c'`), so it stays identical in both directions.
- *
- * Values reproduced from the compiled AOT output in
- * lib-commonjs/components/AvatarGroupItem/useAvatarGroupItemStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   /* arg 2 — from useRootStyles.base */
   .root {
@@ -73,30 +15,12 @@
     @apply rounded-circular;
   }
 
-  /*
-   * arg 3' — from useRootStyles.overflowItem. Compiled as the `padding` shorthand
-   * (`var(--spacing-vertical-xs) var(--spacing-horizontal-xs)`).
-   *
-   * Now the two named axis utilities (D4 amendment — raw `var(--spacing*)` is the one form
-   * that does not scale with `--base-scale`): `py-vertical-xs` → `padding-block`,
-   * `px-horizontal-xs` → `padding-inline`. These are the two-value LOGICAL pairs, so the
-   * horizontal side still cannot drift in RTL, and the axis↔token pairing matches the
-   * Griffel shorthand's own vertical-then-horizontal order. This is the only rule in the
-   * file that sets padding on `.overflow-item`, so collapsing the four longhands into the
-   * two axis pairs cannot change a within-rule winner.
-   */
   .overflow-item {
     @apply px-horizontal-xs py-vertical-xs;
   }
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg 3b — from useStackStyles, applied through the exported `useGroupChildClassName`
-   * helper. That helper is ALSO called by AvatarGroupPopover, which is still a Griffel
-   * file, so these have to stay resolved class names rather than moving onto `data-size`:
-   * the Griffel trigger button stamps no attributes.
-   */
   .stack-thick {
     box-shadow: 0 0 0 var(--spacing-thick) var(--color-neutral-background-2);
   }
@@ -109,12 +33,6 @@
     box-shadow: 0 0 0 var(--spacing-thickest) var(--color-neutral-background-2);
   }
 
-  /*
-   * The four stack offsets are Griffel's `calc(-1 * ${tokens.spacingHorizontal*})`, written
-   * as the NEGATED named utility (D4 amendment). `-ms-*` compiles to
-   * `margin-inline-start: calc(calc(<step>px * var(--base-scale)) * -1)` — the same negative
-   * inline-start offset, now on the one scaling system.
-   */
   .stack-xxs:where(:not(:first-child)) {
     @apply -ms-horizontal-xxs;
   }
@@ -131,12 +49,6 @@
     @apply -ms-horizontal-l;
   }
 
-  /*
-   * arg 3b — from useSpreadStyles. The Griffel source also declares a `m`
-   * (`spacingHorizontalM`) slice, but no branch of `useGroupChildClassName` can ever push
-   * it (`size < 32` takes `mNudge`, everything below 64 takes `l`), so it is dead and is
-   * not reproduced here.
-   */
   .spread-s:where(:not(:first-child)) {
     @apply ms-horizontal-s;
   }
@@ -155,15 +67,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg 3d — usePieStyles.base + .thick|.thicker|.thickest + .slices (+ .rtlSlices),
-   * collapsed into one class: the Griffel branch pushes all of them together and in this
-   * order, so a single rule reproduces the same winners with the same file order.
-   *
-   * The divider width is the only size-derived bucket on this element, so it rides
-   * `data-size` with in-module attribute selectors (cookbook scale-prop rule); nothing is
-   * added to the shared variant catalog.
-   */
   .pie {
     @apply absolute;
 
@@ -219,11 +122,6 @@
       transform-origin: 0 0;
     }
 
-    /*
-     * from usePieStyles.rtlSlices — the value-level mirror of every `inset()` above, plus
-     * the two `left: 0` resets. Written after the blocks it overrides, matching the
-     * mergeClasses argument order it replaces.
-     */
     @variant rtl {
       &:where(:nth-of-type(1):nth-last-of-type(2)) {
         clip-path: inset(0 25% 0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)));
@@ -251,11 +149,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * overflowLabel arg 2 — from useOverflowLabelStyles.base. `typographyStyles.body1`
-   * expands to the four compiled atomics `fk6fouc` / `fkhj508` / `figsok6` / `f1i3iumi`;
-   * `margin-left` was an [ltr, rtl] pair → logical property.
-   */
   .overflow-label {
     @apply ms-horizontal-s text-neutral-foreground-1;
 

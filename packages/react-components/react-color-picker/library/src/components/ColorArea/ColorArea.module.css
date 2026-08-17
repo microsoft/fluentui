@@ -5,13 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.base {
-  /*
-   * from useRootStyles (makeResetStyles).
-   *
-   * The compiled reset has an RTL twin (`.r9og4es`) that differs in exactly one place: the
-   * middle gradient stop flips `to right` → `to left`. Value-level RTL, so it is duplicated
-   * under `@variant rtl` rather than expressed logically.
-   */
   .root {
     @apply relative mb-vertical-s-nudge box-border inline-grid min-h-300 min-w-300 touch-none justify-items-start;
 
@@ -48,14 +41,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * thumb arg #2 — from useThumbStyles.thumb.
-   *
-   * `transform: translate(-50%, 50%)` and `left` are value-level / physical RTL in the
-   * compiled output (`.f11okln6{transform:translate(50%, 50%)}`,
-   * `.fwsk87b{right:var(--fui-AreaX--progress)}`), so the horizontal inset becomes logical
-   * and the transform gets an `@variant rtl` twin. `bottom` has no flip and stays physical.
-   */
   .thumb {
     @apply pointer-events-none absolute;
 
@@ -86,34 +71,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * thumb arg #3 — from useThumbStyles.focusIndicator, i.e.
-   * `createFocusOutlineStyle({ selector: 'focus-within', style: { outlineWidth:
-   * strokeWidthThick, ...shorthands.borderWidth(strokeWidthThick), outlineRadius:
-   * borderRadiusCircular } })`.
-   *
-   * Byte-check against the compiled atomics (…styles.js, `d` + `f` + `i` + `m` buckets):
-   *   .ftqa4ok:focus{outline-style:none}
-   *   .f2hkw1w:focus-visible{outline-style:none}
-   *   .f1b1k54r[data-fui-focus-within]:focus-within{border-top-color:transparent}   (×4 sides)
-   *   .f1i978nd[…]::after{border:var(--stroke-width-thick) solid var(--color-stroke-focus-2)}
-   *   .f16hcqkr[…]::after{border-radius:var(--radius-circular)}
-   *   .f1tye2sp[…]::after{top:calc(var(--stroke-width-thick) * -1)}                   (×4 sides)
-   *   @media (forced-colors: active){…::after{border-top-color:Highlight}}          (×4 sides)
-   * The shared `fui-focus-outline` utility emits exactly this set; its
-   * `calc(0px - var(--fui-focus-outline-width) - var(--fui-focus-outline-offset, 0px))`
-   * substitutes to `calc(0px - 2px - 0px)` — the same computed inset.
-   *
-   * The `...shorthands.borderWidth(strokeWidthThick)` spread in the source produces NOTHING:
-   * `createFocusOutlineStyle` reads only its own option keys, and the compiled output carries
-   * no `border-width` declaration. It is not reproduced.
-   *
-   * `focus-within-fui` is `[data-fui-focus-within]:focus-within` — keyborg's attribute AND
-   * the native pseudo-class, matching the compiled selector exactly. The two
-   * `outline-style: none` rules are emitted OUTSIDE that selector by the factory, so they
-   * stay with the caller; the redundant `:focus-visible` restatement is reproduced rather
-   * than pruned because the compiled output contains it.
-   */
   .thumb {
     @variant focus {
       outline-style: none;
@@ -135,13 +92,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * inputX / inputY arg #2 — from useInputStyles.input, one class shared by both slots
-   * exactly as the Griffel slice was.
-   *
-   * `left: 0` flips to `right: 0` in the compiled RTL output (`.f1e31b4d`), so it becomes
-   * `inset-inline-start`; `top: 0` has no flip and stays physical.
-   */
   .input {
     @apply pointer-events-none absolute m-0 h-full w-full overflow-hidden p-0 opacity-0;
 

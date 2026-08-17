@@ -8,11 +8,6 @@
   .root {
     @apply relative;
 
-    /* Everything the consumer puts in the preview (but not the logo overlay) fills the
-       preview box. The exclusion is CardPreview's OWN `logo` slot, which this module
-       writes itself, so it is addressed as a LOCAL (hashed) class rather than a global
-       static — D16.3: own elements go local, never renamed to another global token.
-       `:not(.class)` scores 0-1-0 either way, so the rule stays 0-2-0. */
     & > :not(.logo) {
       @apply block h-full w-full;
     }

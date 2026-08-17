@@ -4,60 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * CalendarPicker is the shared style hook behind BOTH CalendarMonth and CalendarYear
- * (`useCalendarMonthStyles_unstable` / `useCalendarYearStyles_unstable` delegate to it
- * verbatim), so this one module backs both components and both roots carry the single
- * `group/fui-calendar-picker` marker — exactly what the `fui-CalendarPicker` static did.
- *
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useCalendarPickerStyles_unstable, which for every slot is also the makeStyles hook-CALL
- * order (= Griffel's stylesheet insertion order), so one file order satisfies both:
- *
- *   root slot
- *     1 calendarPickerClassNames.root  → static class (JS) — REMOVED in the statics sweep
- *                                        (D16.1); the root now leads with `.normalize` and
- *                                        carries `group/fui-calendar-picker` second
- *     2 useRootStyles.normalize        → fui.components.l1
- *     3 useRootStyles.base             → fui.components.l1
- *     4 consumer className             → unlayered (always wins)
- *
- *   currentItemButton
- *     2 useCurrentItemButtonStyles.base                   → fui.components.l1
- *     3 useCurrentItemButtonStyles.hasHeaderClickCallback → fui.components.l1
- *
- *   itemButton (composed by CalendarMonth/CalendarYear on ONE <button>)
- *     1 itemButton  → 2 current  → 3 selected  → 4 disabled, all fui.components.l1 and all
- *     written in that order below. CalendarYear composes the same list minus `current`.
- *
- *   every other slot: `.<slot>` alone.
- *
- * ⚠ KNOWN INVERSION (reports/risk-analysis.md, `useRootStyles`): the makeStyles slices are
- * DECLARED `base` then `normalize`, but mergeClasses passes `normalize` FIRST — so `base`
- * wins on the two properties they share, `box-sizing` and `padding`. The rendered root is
- * therefore `box-sizing: content-box` + `padding: 12px`, NOT border-box/0. `.normalize` is
- * written before `.root` below so file order reproduces that; do not reorder these two
- * blocks. (react-calendar-compat's CalendarDay root carries the identical inversion.)
- *
- * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
- * Every subject is an element CalendarMonth/CalendarYear render themselves →
- * `fui.components.l1`; nothing qualifies for l2 (D2 amendment 2). No `:global(…)` selector,
- * and the package uses no `bundleIcon()` — grepped for `fui-Icon-filled` /
- * `fui-Icon-regular`: zero hits — so D2 amendment 5 (UNLAYERED) does not apply.
- *
- * ── SPACING / SIZING (DECISIONS.md D4 amendment) ────────────────────────────────────
- * Named steps for SPACING properties whose px literal matches a step (`p-horizontal-m`,
- * `mt-vertical-xs`, `mb-vertical-l`, `me-horizontal-m`, `ps-horizontal-m-nudge`,
- * `pe-horizontal-xs`); numeric utilities for pure SIZING literals (`w-196`, `h-28`,
- * `min-w-40`). `line-height` is TYPOGRAPHY → `calc(<px> * var(--base-scale))`, as are the
- * `1px` outline widths (literals in the Griffel source, not `strokeWidthThin`).
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * rtl-css-js flips `marginRight`, `textAlign: left`, and the 2nd/4th values of `padding` /
- * `margin` shorthands. All of those are rewritten to logical utilities here, so no
- * `@variant rtl` twin is needed anywhere in this module.
- */
-
 @layer fui.components.l1 {
   /* from useRootStyles.normalize — root arg #2 (see the INVERSION note above) */
   .normalize {
@@ -92,12 +38,6 @@
     /* `textAlign: 'left'` → logical `start` */
   }
 
-  /*
-   * from useCurrentItemButtonStyles.hasHeaderClickCallback — currentItemButton arg #3.
-   * Byte-identical to CalendarDay's `headerIsClickable`, per the upstream comment on this
-   * slice ("If this is updated, make sure to update headerIsClickable in
-   * useCalendarDayStyles as well").
-   */
   .has-header-click-callback {
     @variant hover {
       @apply cursor-pointer bg-brand-background-inverted-hover text-brand-foreground-on-light-hover;
@@ -237,11 +177,6 @@
       forced-color-adjust: none;
     }
 
-    /*
-     * Griffel key `'&:hover, &:hover:active'` — one slice, two branches. Reproduced as a
-     * nested selector list rather than two variant blocks so the single set of declarations
-     * stays a single rule, exactly as compiled.
-     */
     &:where(:hover),
     &:where(:hover):where(:active) {
       background-color: var(--color-brand-background);
@@ -288,16 +223,6 @@
     }
   }
 
-  /*
-   * from useDisabledStyles.base — itemButton arg #5, and also composed onto
-   * `.navigation-button`.
-   *
-   * Two separate Griffel keys, and their scopes differ: the selector LIST carries the
-   * color/pointer-events pair, while the `@media (forced-colors: active)` block sits at the
-   * slice's TOP level and therefore applies to the element only. `:where(:disabled)`
-   * reproduces `&:disabled` exactly inside the list (a variant wraps a whole rule, not one
-   * branch of a list) and keeps the module's uniform 0-1-0 specificity.
-   */
   .disabled {
     &,
     &:where(:disabled),

@@ -4,41 +4,8 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the clsx ARGUMENT order of useFluentProviderStyles_unstable,
- * not source declaration order:
- *
- *   1 useStyles.root                → fui.components.l1  (the only makeStyles slice)
- *   2 group/fui-fluent-provider    → identity marker, inert (D15/D16)
- *   3 state.themeClassName          → the STATIC theme class (fui-theme-web-dark, …, or a
- *                                     consumer-authored class) resolved from the
- *                                     `themeClassName` prop / provider inheritance
- *                                     (theming Phase 2b). Carries ONLY `--token: value`
- *                                     declarations, shipped in @fluentui/react-tailwind-
- *                                     theme's `@layer fui.theme` (css/themes.css). May be
- *                                     absent — then the `:root, :host` web-light defaults
- *                                     apply.
- *   4 consumer className            → unlayered (always wins)
- *
- * Only one makeStyles slice exists, so there are no intra-component inversions to
- * replicate — everything lands in `fui.components.l1`.
- *
- * SCOPE NOTE: this class is applied to the provider root element AND, when
- * `applyStylesToPortals` is true (the default), to every portal mount node —
- * useFluentProviderContextValues.ts publishes `root.className` as `themeClassName`, and
- * react-portal's usePortalMountNode.ts puts that string on the mount node. Portals
- * therefore keep inheriting this base typography/colour exactly as they did with the
- * Griffel atomics, because what is threaded is the className STRING.
- */
-
 @layer fui.components.l1 {
   .root {
-    /*
-     * Griffel compiled `textAlign: 'left'` to an [ltr, rtl] class pair
-     * (`.f1o700av{text-align:left}` / `.fes3tcz{text-align:right}` — see
-     * lib-commonjs/components/FluentProvider/useFluentProviderStyles.styles.js). The
-     * logical value `start` reproduces both sides in one declaration (DECISIONS.md D5).
-     */
     @apply text-start;
 
     color: var(--color-neutral-foreground-1);

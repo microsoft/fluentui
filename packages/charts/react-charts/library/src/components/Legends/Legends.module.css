@@ -7,24 +7,11 @@
 @layer fui.components.l1 {
   .root {
     @apply w-full items-center whitespace-nowrap;
-
-    /*
-     * FIXME (upstream, carried over verbatim): removing `white-space: nowrap` allows the
-     * legend container in a responsive donut chart to resize properly (horizontally)
-     * within a flexbox or grid layout, but it causes vertical resizing issues in
-     * responsive charts whose legends span multiple words.
-     */
   }
 
   .rect {
     @apply me-horizontal-s w-horizontal-m;
 
-    /*
-     * `border: 1px solid` (compiled `.fpyyuzi`) expanded to longhands. The shorthand also
-     * sets `border-color: currentcolor`, which is the CSS initial value, so omitting the
-     * colour longhands is byte-identical in effect — and it leaves the inline
-     * `style={{ borderColor }}` Legends writes per datum untouched either way.
-     */
     border-top-width: 1px;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -34,11 +21,6 @@
     border-bottom-style: solid;
     border-left-style: solid;
 
-    /*
-     * from useStyles.rect[HighContrastSelector]. The two custom properties are set inline
-     * by Legends._getShape(). `-ms-high-contrast` is dropped: the shared `forced-colors`
-     * variant is `@media (forced-colors: active)` only, matching every converted package.
-     */
     @variant forced-colors {
       content: var(--rect-content-high-contrast);
       opacity: var(--rect-opacity-high-contrast);
@@ -112,32 +94,15 @@
 @layer fui.components.l2 {
   /* from useStyles.legend — applied as the `className` of a react-button `<Button>` */
   .legend {
-    /*
-     * The Griffel source notes that `display: flex` "does not work" here and leaves it
-     * commented out; Button's own display wins. Only `align-items` is set.
-     *
-     * `min-width: 0` overrides Button's 64px default so the legend container in responsive
-     * cartesian charts can shrink inside a flex/grid layout.
-     */
     @apply min-w-0 cursor-pointer items-center capitalize;
     @apply px-horizontal-s py-vertical-s;
 
-    /*
-     * `justify-content: left` is a PHYSICAL value that Griffel mirrors to `right` in RTL
-     * (compiled `.fc7pyfw` / `.fgbriwd`), so it needs a value-level RTL twin — there is no
-     * logical keyword that expresses "left" for `justify-content` in a row-reverse-safe way.
-     */
     justify-content: left;
 
     @variant rtl {
       justify-content: right;
     }
 
-    /*
-     * `border: none` expanded. `none` computes the used border width to 0 whatever the
-     * specified width is, so the four style longhands reproduce the shorthand exactly while
-     * leaving Button's own border-color longhands alone (they cannot render).
-     */
     border-top-style: none;
     border-right-style: none;
     border-bottom-style: none;
@@ -180,14 +145,6 @@
       @apply ps-horizontal-xs pe-horizontal-xs pt-1 pb-1;
 
       /* `padding: 1px 4px 1px` expanded; 4px is the XS spacing step, 1px matches no step */
-
-      /*
-       * The Griffel source also sets `borderTop: '-2px'` and `borderLeft: '-2px'` here.
-       * A negative border width is invalid CSS: the compiled atomics (`.f3dcgnf::after`,
-       * `.ft9y50a::after`) are dropped at parse time by every engine, and this pseudo
-       * element has no `content` so it generates no box at all. They are documented rather
-       * than reproduced — emitting invalid declarations would only risk the CSS pipeline.
-       */
     }
   }
 }

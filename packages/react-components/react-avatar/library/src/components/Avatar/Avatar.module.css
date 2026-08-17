@@ -68,11 +68,6 @@
  */
 
 @layer fui.base {
-  /*
-   * from useRootClassName (makeResetStyles).
-   * `::before` is the ring and `::after` is the shadow. Neither is displayed by default —
-   * the ring/shadow rules in l1 set `content: ''` to reveal them.
-   */
   .root {
     @apply relative inline-block size-32 shrink-0 align-middle;
 
@@ -138,12 +133,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useSizeStyles — arg 3 on the Avatar root, and the same slice on AvatarGroup's
-   * root (pie), AvatarGroupItem's root and AvatarGroupPopover's triggerButton. Exported
-   * through `useSizeStyles()`; nothing else in the package sets width/height on those
-   * elements, so the file position of this block is free.
-   */
   .size16 {
     @apply size-16;
   }
@@ -217,12 +206,6 @@
     }
   }
 
-  /*
-   * arg 5 — from useStyles.tiny … ['extra-large'], keyed by the BADGE's size (a
-   * PresenceBadge scale), not the Avatar's. They stay module classes because the Avatar
-   * root's `data-size` already carries the Avatar's own numeric scale; a second
-   * `data-badge-size` attribute would exist for one component only.
-   */
   .badge-tiny {
     --fui-Avatar-badgeRadius: calc(3px * var(--base-scale));
     --fui-Avatar-badgeGap: var(--spacing-thin);
@@ -280,11 +263,6 @@
       font-size: var(--text-base-600);
     }
 
-    /*
-     * arg 3 (icon slot) — from the `iconSizeClass` chain. The bucket is decided by the
-     * AVATAR's size, so it is selected from the root and the icon slot carries no
-     * attributes of its own (react-button / react-badge precedent).
-     */
     &:where([data-size='16']) :where(.icon) {
       font-size: calc(12px * var(--base-scale));
     }
@@ -314,11 +292,6 @@
     }
   }
 
-  /*
-   * arg 7 — from useStyles.squareSmall … .squareXLarge, applied only when
-   * `shape === 'square'`. `shape` is a look prop (D3) so it is a module class; the size
-   * bucket inside it is the scale prop. Beats the reset's `borderRadiusCircular` by layer.
-   */
   .square {
     &:where([data-size='16'], [data-size='20'], [data-size='24']) {
       @apply rounded-small;
@@ -340,11 +313,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * arg 8 — from useStyles.activeOrInactive. `data-active` is stamped only for
-     * `active === 'active' | 'inactive'`, reproducing the JS guard exactly; `unset`
-     * renders no attribute at all.
-     */
     @variant with-active {
       /* work-around for text pixel snapping at the end of the animation */
       transform: perspective(1px);
@@ -415,12 +383,6 @@
     }
   }
 
-  /*
-   * arg 9 — from useRingColorStyles[color]. Applied to the ROOT (it colours the ring
-   * pseudo-element), so it cannot share class names with the colorStyles block below,
-   * which colours the image/initials/icon slots. `neutral` and `brand` both resolve to
-   * `colorBrandStroke1` in the source — reproduced, not deduplicated.
-   */
   .ring-neutral::before,
   .ring-brand::before {
     @apply text-brand-stroke-1;
@@ -546,11 +508,6 @@
     @apply text-palette-anchor-border-active;
   }
 
-  /*
-   * arg 10 — from useStyles.ringBadgeCutout, applied when the ring is shown AND a badge
-   * exists. Same radial cut-out as `.badge-cutout` below, offset by the ring's own
-   * `2 * ringWidth` margin.
-   */
   .ring-badge-cutout::before {
     -webkit-mask-image: radial-gradient(
       circle at bottom calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth))
@@ -568,11 +525,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg 14 — from useStyles.inactive. Written LAST because the Griffel source applies it
-   * after the activeAppearance slices on purpose: it overrides arg 8's `transform` and
-   * `transition-timing-function`, and zeroes the reset's ring/shadow margin.
-   */
   .root {
     @variant active-inactive {
       opacity: 0.8;
@@ -590,11 +542,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useColorStyles[color] — applied to the image, initials and icon slots (never the
-   * root). Written after each slot's reset (fui.base) and before `.badge-cutout`, matching
-   * the argument order on all three slots.
-   */
   .neutral {
     @apply bg-neutral-background-6 text-neutral-foreground-3;
   }
@@ -742,12 +689,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.badge — the ONLY rule Avatar applies to an element owned by another
-   * component's hook (`<PresenceBadge>`), hence `fui.components.l2` (altitude rule, D2
-   * amendment 2). `right: 0` was an [ltr, rtl] pair in the compiled atomics
-   * (`.f1e31b4d{right:0}` / `.f1vgc2s3{left:0}`) → logical property.
-   */
   .badge {
     @apply absolute;
 

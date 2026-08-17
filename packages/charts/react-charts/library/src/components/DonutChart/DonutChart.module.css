@@ -18,12 +18,6 @@
   .chart {
     @apply box-content block overflow-visible;
 
-    /*
-     * `alignment-adjust` is not a property any current engine implements and Tailwind has no
-     * utility for it; Griffel compiled it verbatim (`.fzm18in{alignment-adjust:center;}`), so
-     * it is reproduced verbatim. Inert in every browser — kept only so the conversion is a
-     * pure re-expression of the compiled output.
-     */
     alignment-adjust: center;
   }
 
@@ -31,15 +25,6 @@
     @apply w-full pt-vertical-l;
   }
 
-  /*
-   * from useStyles.axisAnnotation = getAxisTitleStyle() (utilities/Common.styles.ts).
-   *
-   * That factory is SHARED with useCartesianChartStyles (×2), so it is NOT converted in this
-   * batch (CONVERSION_GUIDE "shared utilities": convert only when ALL consumers are in the
-   * batch). Its declarations are inlined here from the compiled atomics; when the factory is
-   * retired in the charts C0/C4 batch this block becomes the reference for the shared local.
-   * typographyStyles.caption2Strong + fontStyle/textAlign/color/fill.
-   */
   .axis-annotation {
     @apply text-center not-italic;
 
@@ -55,12 +40,6 @@
     }
   }
 
-  /*
-   * from useStyles.chartTitle = getChartTitleStyles() (utilities/Common.styles.ts).
-   * Also SHARED — with ChartTable, FunnelChart, GaugeChart and SankeyChart — so likewise
-   * inlined rather than converted. typographyStyles.caption2Strong + fill/forced-color-adjust
-   * /textAlign, marginBottom: spacingVerticalS (8px).
-   */
   .chart-title {
     @apply mb-vertical-s fill-neutral-foreground-1 text-center;
 

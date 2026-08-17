@@ -5,11 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.tooltip — the shared `getTooltipStyle()` factory
-   * (src/utilities/Common.styles.ts), spread through `makeStyles` as a `GriffelStyle`.
-   * `typographyStyles.body1` compiled to the four font atomics below.
-   */
   .tooltip {
     @apply pointer-events-none absolute flex flex-col rounded-small bg-neutral-background-1 p-horizontal-s text-center text-neutral-foreground-1;
 
@@ -19,12 +14,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /*
-   * from useStyles.markerLabel — the shared `getMarkerLabelStyle()` factory.
-   * `fill` / `text-anchor` are ordinary CSS on the `<text>` nodes LineChart renders;
-   * Tailwind's `fill-*` utilities are colour-scale-bound, so the plain declaration is
-   * the correct form for a token value.
-   */
   .marker-label {
     font-family: var(--font-base);
     font-size: var(--text-base-300);

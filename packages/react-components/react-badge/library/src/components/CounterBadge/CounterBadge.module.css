@@ -5,32 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
- * ALTITUDE: fui.components.l2, not l1 (DECISIONS.md D2 amendment 2).
- *
- * `useCounterBadgeStyles_unstable` sets `state.root.className` FIRST and then hands the
- * whole state to `useBadgeStyles_unstable`, which composes its own classes ahead of that
- * accumulated string. The effective mergeClasses argument order is therefore:
- *
- *   1 badgeClassNames.root, Badge reset, Badge size/shape/appearance slices   (Badge hook)
- *   2 useStyles.root (identity-only)                     → fui.components.l1
- *   3 counterBadgeClassNames.root                        → static class (JS)
- *   4 useStyles.dot                                      → fui.components.l2
- *   5 useStyles.hide                                     → fui.components.l2
- *   6 consumer className                                 → unlayered (always wins)
- *
- * i.e. these two slices are applied OVER another component's hook output — the
- * ToggleButton-over-Button case — so they belong to the composition altitude. This is
- * load-bearing, not bookkeeping: `dot` must beat Badge's own `size` slices
- * (`<CounterBadge dot size="large" />` is 6×6, not 24×24) and `hide` must beat the Badge
- * reset's `display: inline-flex`. In l1 the winner would depend on which module's rules
- * happen to be emitted first; in l2 it is guaranteed, because a cascade-layer comparison
- * resolves at the highest differing level.
- *
- * Within l2 the two blocks stay in argument order, though they never collide: `dot` sets
- * sizing/padding and `hide` sets `display`.
- */
-
-/*
  * IDENTITY-ONLY local (DECISIONS.md D15.1; statics-removal design §4b). Both of
  * CounterBadge's own slices below are CONDITIONAL — the default render (`<CounterBadge>`
  * with children, not a dot) emits neither — so without this class the root's own
@@ -64,11 +38,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.dot — collapses the badge to a bare 6px dot. `min-width: auto` undoes
-   * the reset's `min-width: 20px` (and any size slice's), and `padding: '0'` is expanded
-   * to longhands to match how the Badge module writes the padding it overrides.
-   */
   .dot {
     @apply size-6 ps-horizontal-none pe-horizontal-none pt-vertical-none pb-vertical-none;
 

@@ -4,69 +4,9 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTextStyles_unstable.
- * Here argument order and source-declaration order are IDENTICAL (verified against the
- * compiled atomics in lib-commonjs/components/Text/useTextStyles.styles.js), so no
- * inversion had to be resolved — the blocks below are written straight down the list:
- *
- *    1 textClassNames.root                → static class (JS)
- *    2 useStyles.root                     → fui.components.l1   .root
- *    3 wrap === false && nowrap           → fui.components.l1   .nowrap
- *    4 truncate && truncate               → fui.components.l1   .truncate
- *    5 block && block                     → fui.components.l1   .block
- *    6 italic && italic                   → fui.components.l1   .italic
- *    7 underline && underline             → fui.components.l1   .underline
- *    8 strikethrough && strikethrough     → fui.components.l1   .strikethrough
- *    9 underline && strikethrough && …    → fui.components.l1   .strikethrough-underline
- *   10 size === 100  && base100           → fui.components.l1   .root[data-size='100']
- *   11 size === 200  && base200           → fui.components.l1   .root[data-size='200']
- *   12 size === 400  && base400           → fui.components.l1   .root[data-size='400']
- *   13 size === 500  && base500           → fui.components.l1   .root[data-size='500']
- *   14 size === 600  && base600           → fui.components.l1   .root[data-size='600']
- *   15 size === 700  && hero700           → fui.components.l1   .root[data-size='700']
- *   16 size === 800  && hero800           → fui.components.l1   .root[data-size='800']
- *   17 size === 900  && hero900           → fui.components.l1   .root[data-size='900']
- *   18 size === 1000 && hero1000          → fui.components.l1   .root[data-size='1000']
- *   19 font === 'monospace' && monospace  → fui.components.l1   .monospace
- *   20 font === 'numeric'   && numeric    → fui.components.l1   .numeric
- *   21 weight === 'medium'   && …         → fui.components.l1   .medium
- *   22 weight === 'semibold' && …         → fui.components.l1   .semibold
- *   23 weight === 'bold'     && …         → fui.components.l1   .bold
- *   24 align === 'center'  && alignCenter → fui.components.l1   .center
- *   25 align === 'end'     && alignEnd    → fui.components.l1   .end
- *   26 align === 'justify' && alignJustify→ fui.components.l1   .justify
- *   27 consumer className                 → unlayered (always wins)
- *
- * The typography PRESETS (Body1, Caption1, Display, …) live in ../presets/presets.module.css
- * at fui.components.l2: they are applied over the output of THIS component's hook, which is
- * the altitude rule's definition of a library composition (DECISIONS.md D2 amendment 2).
- *
- * `size` is a dense NUMERIC scale (100…1000), so per the cookbook's scale-prop rule it rides
- * `data-size`. The Phase 3 catalog pass promoted this file's raw attribute selectors into the
- * shared catalog's `size-100` … `size-1000` entries (@fluentui/react-tailwind-theme
- * `css/variants.css`) — the typography ramp riding the same attribute as the pixel scale, with
- * no value shared between the two number spaces.
- *
- * `font`, `weight` and `align` are enum "look" values whose default
- * (`base` / `regular` / `start`) carries NO Griffel slice at all, so they stay module class
- * lookups — the same call react-label made for its `weight` prop — and the rule-free
- * default is preserved by simply having no class to look up.
- *
- * RTL: none. Every compiled atomic in this component is a single string, not an
- * [ltr, rtl] pair — `text-align: start` / `end` were already logical in the Griffel
- * source, so there is nothing for `@variant rtl` to mirror.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply inline overflow-visible text-start text-clip whitespace-normal;
-
-    /*
-     * `display: inline` longhand rather than `@apply inline`: `inline` is also the name of
-     * a shared custom variant (Link's `data-inline`), and the two registries do not
-     * collide but the reader confusion is real — same call react-link made.
-     */
 
     font-family: var(--font-base);
     font-size: var(--text-base-300);
@@ -74,14 +14,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /*
-   * from useStyles.nowrap — `overflow` stays the SHORTHAND Griffel compiled
-   * (`.f1a3p1vp{
-    @apply overflow-hidden;
-  }`). Nothing in this component sets `overflow-x`/`-y`
-   * individually, so there is no Griffel shorthand-vs-longhand priority left to
-   * reproduce; expanding would only add bytes (react-image / react-link precedent).
-   */
   .nowrap {
     @apply overflow-hidden whitespace-nowrap;
   }
@@ -106,24 +38,10 @@
     @apply line-through;
   }
 
-  /*
-   * from useStyles.strikethroughUnderline — applied only when BOTH flags are set, and
-   * written after both single-decoration blocks so it wins `text-decoration-line`.
-   * No Tailwind utility expresses the two-value form, so it is transcribed literally.
-   *
-   * The local is lowercase-kebab (`strikethrough-underline`), not the Griffel slice's
-   * camelCase name — the generated ident alphabet is all-lowercase, see
-   * scripts/css-modules/ident.js.
-   */
   .strikethrough-underline {
     text-decoration-line: line-through underline;
   }
 
-  /*
-   * from useStyles.base100 … hero1000 — the numeric `size` scale on `data-size`.
-   * `size === 300` is the default and has no Griffel slice, hence no rule here; the
-   * attribute is still stamped for every value so the DOM carries the state uniformly.
-   */
   .root {
     @variant size-100 {
       font-size: var(--text-base-100);

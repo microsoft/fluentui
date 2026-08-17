@@ -4,42 +4,8 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useSwatchPickerStyles_unstable, not source declaration order:
- *
- *   1 swatchPickerClassNames.root     → static class (JS) — REMOVED in the statics sweep
- *                                       (DECISIONS.md D16.1); the root now leads with
- *                                       `.root` below and carries `group/fui-swatch-picker`
- *                                       second
- *   2 useStyles.root                  → fui.components.l1
- *   3 useStyles.row | useStyles.grid   → fui.components.l1
- *   4 useStyles.spacing{Small,Medium}  → fui.components.l1
- *   5 consumer className              → unlayered (always wins)
- *
- * There is no `makeResetStyles` here, so nothing lands in `fui.base`.
- *
- * No inversions: the three l1 blocks touch disjoint properties (padding+display,
- * flex-direction, gap) and within blocks 3 and 4 the hook picks exactly one class.
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/SwatchPicker/useSwatchPickerStyles.styles.js.
- *
- * D2 amendment 5 does not apply: no `fui-Icon-filled` / `fui-Icon-regular` anywhere in
- * this module, and it contains no `:global()` at all.
- */
-
 @layer fui.components.l1 {
   .root {
-    /*
-     * `padding: ${spacingHorizontalNone} ${spacingVerticalNone}` — compiled verbatim as
-     * `padding:var(--spacing-horizontal-none) var(--spacing-vertical-none)`, i.e. the
-     * HORIZONTAL token on the block axis and the VERTICAL token on the inline axis. The
-     * axes are swapped relative to this guide's axis rule; that is the source's own
-     * oddity and it is inert because both steps are 0. Reproduced as written (D4: raw
-     * `var(--spacingHorizontal*)` is forbidden in modules, so the named utilities carry
-     * the same two tokens) rather than silently "corrected", so the mapping back to the
-     * Griffel slice stays 1:1.
-     */
     @apply flex px-vertical-none py-horizontal-none;
   }
 }
@@ -59,13 +25,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #4 — from useStyles. The compiled declaration is the `gap` shorthand
-   * (`.f1t6b6ee{gap:2px}` / `.f4xv25i{gap:4px}`), which covers both axes; the 2px / 4px
-   * literals match the XXS / XS spacing steps, and a two-axis `gap` takes the HORIZONTAL
-   * family by the same convention Spinner/Card/TreeItemLayout use.
-   */
-
   .spacing-small {
     @apply gap-horizontal-xxs;
   }

@@ -67,13 +67,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useToasterStyles.inline — arg #3, gated on `state.inline`. `inline` is a behaviour
-   * flag consumed only by this element, so it stays a module class rather than a data
-   * attribute (DECISIONS.md D15.6 keeps `data-*` a fallback for state a selector cannot
-   * otherwise reach). The local is named for the Griffel slice; it is hashed, so it does not
-   * collide with Tailwind's `inline` display utility.
-   */
   .inline {
     @apply absolute;
   }

@@ -5,12 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.tooltip — the shared `getTooltipStyle()` factory
-   * (src/utilities/Common.styles.ts). Byte-identical to LineChart's `.tooltip`; the two
-   * stay duplicated on purpose while `Common.styles.ts` is still Griffel-owned.
-   * `typographyStyles.body1` compiled to the four font atomics below.
-   */
   .tooltip {
     @apply pointer-events-none absolute flex flex-col rounded-small bg-neutral-background-1 p-horizontal-s text-center text-neutral-foreground-1;
 
@@ -20,13 +14,6 @@
     line-height: var(--leading-base-300);
   }
 
-  /*
-   * from useStyles.barLabel — the shared `getBarLabelStyle()` factory.
-   * `typographyStyles.caption1Strong` compiled to the four font atomics below.
-   * `fill` is an ordinary CSS property on the `<text>` nodes this component renders;
-   * Tailwind's `fill-*` utilities are colour-scale-bound, so a token value is written as
-   * a plain declaration.
-   */
   .bar-label {
     @apply fill-neutral-foreground-1;
 

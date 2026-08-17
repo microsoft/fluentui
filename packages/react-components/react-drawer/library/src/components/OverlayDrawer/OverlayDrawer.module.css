@@ -158,12 +158,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #2b — from the shared useDrawerStyles[size] (non-bottom) and
-   * useDrawerBottomBaseStyles[size] (bottom). Identical for small / medium / large; only
-   * `full` differs (100vw vs 100%), so the bottom+full pair is one override written AFTER
-   * the plain `full` rule — both flatten to 0-1-0, so file position is the tiebreak.
-   */
   .root {
     @variant size-small {
       --fui-Drawer--size: calc(320px * var(--base-scale));
@@ -243,12 +237,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * backdrop arg #2 — from useDrawerRootStyles.absolute, applied to the BACKDROP element.
-   * l2 because that element's base styles come from useOverlayDrawerSurfaceStyles_unstable
-   * (D2 amendment 2), and because it has to beat that hook's `position: fixed` reset the way
-   * the Griffel class did as the last mergeClasses argument on the element.
-   */
   .backdrop-absolute {
     @apply absolute;
   }

@@ -5,11 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.base {
-  /*
-   * from `baseStyles`, the object BOTH resets spread — useRootRoundedBaseClassName and
-   * useRootCircularBaseClassName (arg #2). The two resets differ only in corner radius and
-   * in the forced-colors `::before`; those halves are `.rounded` / `.circular` below.
-   */
   .root {
     @apply box-border inline-grid w-fit items-center;
 
@@ -111,11 +106,6 @@
     @apply bg-brand-background-2 text-brand-foreground-2;
   }
 
-  /*
-   * from useRootDisabledStyles[appearance] — root arg #3, the DISABLED branch. `filled`
-   * and `brand` compile to the identical atomic set, so they share one rule rather than
-   * being duplicated.
-   */
   .filled-disabled,
   .brand-disabled {
     @apply cursor-not-allowed border-s-transparent-stroke-disabled border-e-transparent-stroke-disabled border-t-transparent-stroke-disabled border-b-transparent-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
@@ -298,11 +288,6 @@
     }
   }
 
-  /*
-   * from usePrimaryTextStyles.withoutSecondaryText / .withSecondaryText — primaryText
-   * arg #4. Written after the `data-size` block above: `withSecondaryText` must re-set
-   * caption1 over `size-medium`'s body1.
-   */
   .primary-text-without-secondary-text {
     @apply pb-horizontal-xxs;
 
@@ -358,12 +343,6 @@
     }
   }
 
-  /*
-   * from useDismissIconStyles[appearance] — dismissIcon arg #4, gated on `!disabled`.
-   * The `filled`, `outline` and `brand` slices compile to the IDENTICAL atomic set
-   * (`f8491dx` / `f3ymbdj` / `fryz5bw`), so they collapse into one class that the hook
-   * applies for any appearance when the Tag is enabled.
-   */
   .dismiss-icon-interactive {
     @variant hover {
       @apply cursor-pointer text-compound-brand-foreground-1-hover;
@@ -385,11 +364,6 @@
     }
   }
 
-  /*
-   * from useDismissIconStyles.base — the `m` bucket half of arg #2, written LAST.
-   * Griffel's `m` bucket outranks its `h`/`a` buckets, so these must beat both blocks
-   * above even though they come from an EARLIER mergeClasses argument.
-   */
   .dismiss-icon {
     @variant forced-colors {
       @variant hover {

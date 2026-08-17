@@ -102,12 +102,6 @@
     @apply box-border text-neutral-foreground-1;
   }
 
-  /*
-   * from useStyles.medium / useStyles.small — arg #4. The two slices are byte-identical in
-   * the Griffel source and compiled to the SAME atomic (`.f1facbz3`), so they share one
-   * rule here; CSS Modules still exports both names.
-   * `borderBottom` is expanded to longhands per the cookbook's shorthand rule.
-   */
   .medium,
   .small {
     @apply border-b-neutral-stroke-2;
@@ -189,22 +183,7 @@
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────────────
- * BLOCK 5 — `m` bucket (forced colors). Inside the media block Griffel inserted the
- * `p: -2` / `p: -1` shorthands (`border`, `border-radius`) ahead of every `p: 0` rule, so
- * `.brand` / `.neutral` lead and `.root-interactive`'s hover `Highlight` colours follow and
- * win — the same outcome its 0-2-0 specificity gave under Griffel.
- * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l1 {
-  /*
-   * from useStyles.brand / useStyles.neutral, '@media(forced-colors: active)' — arg #6.
-   * Byte-identical in both slices (same atomics: `.f1msmgpi` `.fbo0xvd` `.fjuvmhu`
-   * `.f1kvufhq`), so they share one rule.
-   *
-   * `border: '2px solid transparent'` is expanded to longhands because a longhand DOES
-   * compete: `.root-interactive`'s hover rule below sets the four border colours, and both
-   * `.brand` and `.neutral` set them again in BLOCK 1.
-   */
   .brand,
   .neutral {
     @variant forced-colors {
@@ -247,11 +226,6 @@
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────────────
- * BLOCK 6 — COMPOSITION ALTITUDE (fui.components.l2): rules whose SUBJECT is another
- * component's root. See the ALTITUDE note in the header. Every rule here sets the same
- * `opacity: 1`, so their relative order carries no meaning.
- * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
   /* from useStyles.root, createCustomFocusIndicatorStyle(..., 'focus-within') — arg #2.
      Also present verbatim in useStyles.rootInteractive (arg #3) for the cell-actions half;

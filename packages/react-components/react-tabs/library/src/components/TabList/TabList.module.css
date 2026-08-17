@@ -17,11 +17,6 @@
     @apply flex-col items-stretch;
   }
 
-  /*
-   * from useStyles.roundedSmall / .rounded — arg #4. Applied only for the two circular
-   * appearances (`subtle-circular`, `filled-circular`), where the tabs are separate pills and
-   * need real space between them.
-   */
   .rounded-small {
     @apply gap-horizontal-s-nudge;
   }

@@ -2,18 +2,7 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Replaces FluentCanvas.tsx's inline `makeStyles` (phase3-worklist Item 12c).
- *
- * ALTITUDE: fui.components.l4 — docs chrome on the addon's own <div>.
- */
-
 @layer fui.components.l4 {
-  /*
-   * from useStyles.canvas. `padding: '20px'` is a CSS shorthand, so it expands (cookbook
-   * §2) — here to the two logical pairs, both of which land on the 20px spacing step
-   * (spacingHorizontalXL / spacingVerticalXL).
-   */
   .canvas {
     @apply box-border overflow-auto px-horizontal-xl py-vertical-xl;
   }

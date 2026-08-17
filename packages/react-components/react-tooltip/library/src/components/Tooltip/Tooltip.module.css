@@ -44,14 +44,6 @@
   .content {
     @apply box-border hidden max-w-240 cursor-default break-words;
 
-    /* Griffel `padding: '4px 11px 6px 11px'` — a pixel literal, not a token read, but two of
-       the three values land exactly on a spacing step, so they take the named block-axis
-       utility (D4 amendment): 4px = spacingVerticalXS, 6px = spacingVerticalSNudge. 11px
-       matches no step, so it stays the numeric `px-11` — the sanctioned fallback. The inline
-       pair is symmetric (11px both sides, which is why Griffel emitted a single unflipped
-       atomic), so `px-11` (padding-inline) reproduces it exactly in both directions.
-       All four lengths compute identically before and after: the numeric and named scales
-       are one system (`--spacing` is `calc(1px * var(--base-scale))`). */
     @apply px-11 pt-vertical-xs pb-vertical-s-nudge;
 
     font-family: var(--font-base);
@@ -82,12 +74,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.visible — `visible` is STATE, so it rides a data-attribute (D3). The
-   * name is the headless preview's `data-open` (one of its 25, reports/headless-precedent.md)
-   * and the `open` variant already exists in the shared catalog, so nothing is invented and
-   * the catalog does not grow.
-   */
   .content {
     @variant open {
       @apply block;
@@ -151,11 +137,6 @@
       content: '';
       background-color: inherit;
 
-      /* The factory writes `margin: -${borderWidth}`, i.e. the margin and the border width
-         are the SAME length by construction (it is what hides the seam between the arrow
-         and the tooltip's own border). Tailwind's border-width utilities are literal px
-         while its spacing utilities are --base-scale rem, so both are written literally
-         here to keep them from drifting apart at a non-default root font size. */
       margin: -1px;
       border: 1px solid var(--color-transparent-stroke);
 
@@ -163,14 +144,6 @@
       clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
     }
 
-    /*
-     * The positioning layer writes `data-popper-placement` on the POSITIONED container —
-     * the content slot — so Griffel compiled `:global([data-popper-placement^="top"])` to
-     * the DESCENDANT selector `[data-popper-placement^="top"] .arrow`. Reproduced here with
-     * the ancestor in `:where()` so the rule stays specificity-flat like every other
-     * converted selector (Griffel's own was 0-2-0; the four blocks are mutually exclusive
-     * and nothing else in the module sets these properties, so the change is inert).
-     */
     :where(:global([data-popper-placement^='top'])) & {
       bottom: var(--fui-positioning-arrow-offset);
 

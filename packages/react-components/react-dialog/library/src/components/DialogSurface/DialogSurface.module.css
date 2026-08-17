@@ -99,12 +99,6 @@
 
     overflow: unset;
 
-    /*
-     * `border: 1px solid var(--color-transparent-stroke)` expanded to longhands
-     * (CONVERSION_GUIDE §2): the short-screen block below overrides three widths
-     * individually, and the focus-visible ring overrides all four colors, so the
-     * shorthand has competing longhands on two of its three sub-properties.
-     */
     border-top-width: calc(1px * var(--base-scale));
     border-right-width: calc(1px * var(--base-scale));
     border-bottom-width: calc(1px * var(--base-scale));
@@ -148,17 +142,6 @@
        still renders correctly (comment carried over from the Griffel source). */
     box-shadow: var(--shadow-64);
 
-    /*
-     * from `...createFocusOutlineStyle()` spread into the same reset — default options, so
-     * the selector is keyborg's `[data-fui-focus-visible]` and the declarations are the
-     * shared `fui-focus-outline` utility (react-tailwind-theme/css/utilities.css), which was
-     * byte-compared against a `createFocusOutlineStyle()` AOT consumer when it was written.
-     * The compiled atomics for THIS component match it declaration for declaration,
-     * including the `@media (forced-colors: active)` Highlight block the utility carries.
-     *
-     * `createFocusOutlineStyle` also emits the two `outline-style: none` rules, which sit
-     * OUTSIDE the focus-visible selector and therefore stay here with the caller.
-     */
     @variant focus {
       outline-style: none;
     }
@@ -181,13 +164,6 @@
     /* DIALOG_MEDIA_QUERY_SHORT_SCREEN */
     @media screen and (max-height: 359px) {
       @apply overflow-y-auto pe-horizontal-xl;
-
-      /*
-       * Offset the scrollbar with transparent border so it does not collide with the
-       * border radius (comment carried over from the Griffel source). The inline-end
-       * padding gives up exactly what the inline-end border takes:
-       * `calc(24px - 4px)` = 20px = the XL spacing step.
-       */
 
       border-inline-end-width: calc(4px * var(--base-scale));
       border-top-width: calc(4px * var(--base-scale));

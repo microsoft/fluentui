@@ -4,77 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * ── ALTITUDE: everything here is l2, nothing is l1 (DECISIONS.md D2 amendment 2) ──────
- * ToggleButton owns no element of its own. `useToggleButtonStyles_unstable` writes onto
- * `state.root` / `state.icon` and THEN calls `useButtonStyles_unstable`, whose `clsx`
- * puts the incoming className LAST — so before this conversion every one of these slices
- * was an UNLAYERED Griffel atomic sitting over react-button's LAYERED rules, and
- * unlayered beats every `@layer` before specificity is even consulted (D2 amendment 5).
- * `fui.components.l2` over Button's `fui.components.l1` / `fui.base` reproduces that
- * winner exactly and deterministically — l1 would leave it to stylesheet load order.
- *
- * ── ORDERING: bucket-major, mergeClasses-argument-minor ──────────────────────────────
- * Griffel resolved collisions BETWEEN THESE SLICES two ways: by mergeClasses argument
- * order (its per-property atomic deletion) and by its style-BUCKET order, where a `:hover`
- * atomic (`h`) always outranks a flat one (`d`) and a media atomic (`m`) outranks both —
- * independently of argument order, and reinforced by real specificity (`.x:hover` is
- * 0-2-0 against `.x`'s 0-1-0).
- *
- * `@variant hover` compiles to `&:where(:hover)` — 0-1-0, same as the flat rule — so the
- * bucket order has to be re-encoded as FILE ORDER. Hence the five blocks below:
- *
- *   1. `d` bucket — flat declarations, in mergeClasses argument order
- *   2. `[data-fui-focus-visible]` — Griffel's `d` bucket too, but at 0-2-0, so it beat
- *      every flat rule; it is written after block 1 for the same effect
- *   3. `h` bucket — `@variant hover`, in argument order
- *   4. `a` bucket — `@variant hover-active` (Griffel's `:hover:active,:active:focus-visible`)
- *   5. `m` bucket — `@variant forced-colors`, in argument order, LAST
- *
- * Authoring each slice's flat + hover + pressed together instead would let a LATER
- * argument's flat rule beat an EARLIER argument's hover rule — e.g. arg #6
- * `.checked-outline`'s flat `border-color` would win over arg #4 `.checked`'s hover
- * `border-color`, which Griffel never allowed.
- *
- * mergeClasses ARGUMENT order of useToggleButtonStyles_unstable — `root` slot:
- *
- *   #  mergeClasses argument                                    → target
- *   ------------------------------------------------------------------------------------
- *   1  toggleButtonClassNames.root                              → REMOVED (D16.1); the root
- *                                                                  now leads with
- *                                                                  `group/fui-toggle-button`,
- *                                                                  and Button's `.root` is
- *                                                                  prepended ahead of it
- *   2  primaryHighContrastStyles.base        (appearance=primary)   → block 5
- *   3  primaryHighContrastStyles.disabled    (+ disabled-any)       → block 5
- *   4  rootCheckedStyles.base                (checked)              → blocks 1/3/4 + icon swap (l2, bottom)
- *   5  rootCheckedStyles.highContrast        (checked)              → block 5
- *   6  rootCheckedStyles[appearance]         (checked)              → blocks 1/2/3/4
- *   7  accessibleCheckedStyles.base          (isAccessible+checked) → blocks 1/3
- *   8  accessibleCheckedStyles[appearance]   (isAccessible+checked) → blocks 1/2/3
- *   9  rootDisabledStyles.base               (disabled-any)         → blocks 1/3/4
- *  10  rootDisabledStyles[appearance]        (disabled-any)         → blocks 1/3/4
- *  11  consumer className                                       → unlayered (always wins)
- *
- * `icon` slot:
- *
- *   1  toggleButtonClassNames.icon                              → REMOVED (D16.1)
- *   2  iconCheckedStyles.subtleOrTransparent                    → `.checked-icon`
- *   3  iconCheckedStyles.highContrast       (UNCONDITIONAL)     → `.icon`
- *   4  consumer className                                       → unlayered
- *
- * `secondary` (root, arg #6/#8/#10) and `transparent`/`secondary` (arg #8) are `{}` in the
- * Griffel source, so `styles['checked-secondary']` & co. are intentionally undefined and
- * clsx drops them — matching the empty class string Griffel produced.
- *
- * Verified against the compiled Griffel atomics in
- * node_modules/@fluentui/react-button/lib-commonjs/components/ToggleButton/
- * useToggleButtonStyles.styles.js (v9.10.1, the pre-conversion AOT output). Every
- * `...shorthands.borderColor(x)` / `borderWidth(x)` is expanded to the four physical
- * longhands the compiler emits; the `[ltr, rtl]` pairs only swap left↔right and carry the
- * same value, so the flip is a visual no-op and physical longhands are exact.
- */
-
 /* ─────────────────────────────────────────────────────────────────────────────────────
  * BLOCK 1 — `d` bucket: flat declarations, in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
@@ -200,11 +129,6 @@
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────────────
- * BLOCK 2 — `[data-fui-focus-visible]`. Griffel put these in the `d` bucket as well
- * (the selector carries no pseudo-class), but at 0-2-0 they outranked every flat rule
- * above; written after block 1 so they still do.
- * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
   /* from useRootCheckedStyles.outline — arg #6, createCustomFocusIndicatorStyle({ borderColor }) */
   .checked-outline {
@@ -285,13 +209,6 @@
     }
   }
 
-  /*
-   * from useCheckedAccessibleStyles.subtle — arg #8. Overrides the subtle-appearance icon
-   * colour on hover. `.icon` is THIS module's own local on the icon slot (the slot always
-   * carries it, arg #3 of the icon merge), so the coupling stays private — no global
-   * `fui-ToggleButton__icon` handle was needed, which is why D16.1 removing that static
-   * changed nothing here (D15.7 / D16.3).
-   */
   .accessible-checked-subtle {
     @variant hover {
       & .icon {
@@ -437,18 +354,7 @@
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────────────
- * Icon slot. Both slices land on react-button's `icon` slot, so l2 for the same reason
- * the root slices are (they arrived as the trailing className of Button's own icon merge
- * and therefore beat every rule Button writes there, including its 0-2-0 root-anchored
- * `.icon` colour rules).
- * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /*
-   * from useIconCheckedStyles.highContrast — icon arg #3, applied UNCONDITIONALLY, which
-   * is why this local doubles as the icon slot's stable handle for the
-   * `.accessible-checked-subtle` hover rule in block 3.
-   */
   .icon {
     @variant forced-colors {
       forced-color-adjust: auto;
@@ -460,20 +366,7 @@
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────────────
- * BLOCK 5 — `m` bucket (`@media (forced-colors: active)`), in mergeClasses argument
- * order, LAST in the file. Griffel's `m` bucket outranks `d`, `h` and `a` regardless of
- * argument order, so every forced-colors rule has to come after every non-media rule —
- * e.g. arg #5 `.checked-high-contrast`'s `background-color` must beat arg #6
- * `.checked-primary`'s, even though #6 is the later argument.
- * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
-  /*
-   * from usePrimaryHighContrastStyles.base — arg #2.
-   * "Do not use primary variant high contrast styles for toggle buttons, otherwise there
-   * isn't enough difference between on/off states" — i.e. this exists to override
-   * react-button's own `.primary` forced-colors block, which l2 does deterministically.
-   */
   .primary-high-contrast {
     @variant forced-colors {
       background-color: ButtonFace;
@@ -503,11 +396,6 @@
     }
   }
 
-  /*
-   * from useRootCheckedStyles.highContrast — arg #5. Sub-order inside the media block is
-   * the slice's own declaration order (flat, hover, pressed, focus), which is what Griffel
-   * emitted into the `m` bucket; `:focus` last is load-bearing (it beat `:hover` there).
-   */
   .checked-high-contrast {
     @variant forced-colors {
       background-color: Highlight;
@@ -546,27 +434,6 @@
     }
   }
 }
-
-/*
- * ── The icon swap — retired to `fui.components.l2` (S-J batch 1, DECISIONS.md D27) ────
- *
- * These two rules style ANOTHER package's elements: the two <svg>s that
- * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. They were
- * UNLAYERED under D2 amendment 5 while icons 2.x styled those elements with unlayered
- * Griffel atomics; icons 3.0's stylesheet is imported at `layer(fui.components.l1)`
- * (D27), so the swap returns to this module's own altitude — `fui.components.l2`, the
- * layer every other ToggleButton root slice already uses.
- *
- * Cascade math at l2: the icons sheet's bundled-pair hide (`[data-fui-icon-hidden]`,
- * 0-1-0) and base (`:where([data-fui-icon])`, 0-0-0) sit at l1, and Button's own
- * disabled-any hover/pressed swap-BACKS sit at l1 too — l2 beats all of them on layer
- * order, so a checked (even checked+disabled) ToggleButton keeps the FILLED glyph.
- * That reproduces the winner the unlayered blocks decided by file position (this file
- * follows Button's in the aggregated CSS), which itself reproduced the mixed-mode
- * Griffel winner (the runtime <style> appended after the module bundle). Verified
- * per-state in the S-J VR gate ("Checked with icon" / "Checked Disabled with icon") and
- * by CDP computed-style evidence (reports/sj-batch1.md).
- */
 
 @layer fui.components.l2 {
   .checked {

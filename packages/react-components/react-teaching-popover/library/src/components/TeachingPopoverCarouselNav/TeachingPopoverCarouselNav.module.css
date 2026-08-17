@@ -6,58 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * `useTeachingPopoverCarouselNavStyles_unstable`.
- *
- * `root` slot
- *   #  mergeClasses argument                            → target
- *   ---------------------------------------------------------------------------------------
- *   1  teachingPopoverCarouselNavClassNames.root        → REMOVED (D16.1)
- *   2  useStyles.root                                   → fui.components.l1  .root
- *   3  consumer className                               → unlayered (always wins)
- *
- * ── ALTITUDE: l1 ────────────────────────────────────────────────────────────────────────
- * The root is this component's own `div` (`useTeachingPopoverCarouselNav.tsx` builds it with
- * `getIntrinsicElementProps('div', …)` and `role="tablist"`), so nothing sits over another
- * component's hook output and `fui.components.l2` is unused. No `makeResetStyles` slice →
- * `fui.base` is unused too.
- *
- * ── Focus indicator (DECISIONS.md D6) ───────────────────────────────────────────────────
- * The Griffel source spreads `createCustomFocusIndicatorStyle({ outline, borderRadius,
- * ...shorthands.borderColor('transparent') })` — react-tabster's factory with a
- * component-specific option object, NOT the Button-family ring, so there is no shared
- * `fui-focus-*` utility to `@apply`. The catalog's `focus-visible-fui` variant supplies the
- * `[data-fui-focus-visible]` selector (which is exactly what the factory's `createBaseSelector`
- * emitted, confirmed in the compiled output) and the declarations are written out. Same call
- * react-carousel's CarouselNavButton made for the same factory.
- *
- * ── Stroke widths (DECISIONS.md D4 addendum) ────────────────────────────────────────────
- * `outline-width` does NOT read the `--spacing-*` namespace, so `strokeWidthThick` takes a
- * direct `var(--spacing-thick)` reference rather than a utility. Raw `var(--stroke-width-thick)`
- * is forbidden in modules — it is the one form that does not scale with `--base-scale`.
- *
- * ── ORDER ───────────────────────────────────────────────────────────────────────────────
- * The focus block is written after the rest declarations. Under Griffel it won on
- * SPECIFICITY (`.f89hs3r[data-fui-focus-visible]`, 0-2-0, against the flat 0-1-0 atomics);
- * `:where()` flattens both to 0-1-0, so file position is what preserves the winner. There is
- * nothing for it to collide with in this particular file (the base slice declares no
- * `outline`, `border-radius` or `border-*-color`), but the placement is kept for consistency
- * with the sibling modules where it IS load-bearing.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────────
- * ONE `[ltr, rtl]` pair in the compiled output — the focus indicator's
- * `border-right-color` / `border-left-color` (`Bci5o5g` / `Bdrgwmp`), value `transparent` on
- * both sides, i.e. a pure PROPERTY flip → the logical longhands below, no `@variant rtl` twin.
- *
- * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ────────────────────────────────
- * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero hits.
- * This component renders no icons and reaches into no other component's elements.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/TeachingPopoverCarouselNav/useTeachingPopoverCarouselNavStyles.styles.js.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply flex flex-row items-center justify-center;

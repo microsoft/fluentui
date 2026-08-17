@@ -6,13 +6,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.root — arg #2, the declarations with no competitor anywhere in
-   * react-button. `pointer-events: all` re-enables hit-testing inside
-   * CarouselNavContainer's `pointer-events: none` overlay (not Tailwind's
-   * `pointer-events-auto`); `margin-block: auto` centres the button in the flex nav row and
-   * beats react-button's `margin: 0` reset in fui.base.
-   */
   .root {
     @apply mt-auto mb-auto;
 
@@ -21,20 +14,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.root — arg #2, the three colour properties, SPLIT per property winner
-   * (see the PER-PROPERTY SPLIT header note; PR-36513 review item 12). Both locals are
-   * restricted to the rest state so react-button's reset keeps its hover and pressed
-   * feedback, and JS-gated to the configurations in which no later mergeClasses argument
-   * overwrote them. Both restrictions reproduce a Griffel outcome, neither is a design
-   * choice.
-   *
-   * The `:hover { cursor: pointer }` half of the slice is NOT reproduced: react-button's own
-   * reset already sets an identical `cursor: pointer` under `@variant hover`, and its
-   * disabled slice overrides it with `cursor: not-allowed` — which, being a later argument on
-   * the same hover-bucket key, deleted carousel's atomic outright. Dropping it reproduces
-   * both states exactly; keeping it at l2 would show a pointer cursor on a disabled button.
-   */
   .rest-background {
     @variant at-rest {
       @apply bg-neutral-background-alpha;

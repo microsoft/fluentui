@@ -4,72 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useSkeletonItemStyles_unstable, not source declaration order:
- *
- *   #  mergeClasses argument                             → target
- *   ---------------------------------------------------------------------------------
- *   1  skeletonItemClassNames.root                       → static class (JS)
- *   2  useStyles.root                                    → fui.components.l1
- *   3  useStyles.blockStyling        (as === 'span')     → fui.components.l1
- *   4  useStyles.wave                (animation)         → fui.components.l1
- *   5  useStyles.pulse               (animation)         → fui.components.l1
- *   6  useStyles.translucent         (appearance)        → fui.components.l1
- *   7  useStyles.translucentPulse    (pulse + translucent) → fui.components.l1
- *   8  useRectangleStyles.root       (shape)             → fui.components.l1
- *   9  useRectangleStyles[size]      (shape + data-size) → fui.components.l1
- *  10  useSizeStyles[size]           (square + data-size) → fui.components.l1
- *  11  useCircleSizeStyles.root      (circle)            → fui.components.l1
- *  12  useSizeStyles[size]           (circle + data-size) → fui.components.l1
- *  13  consumer className                                → unlayered (always wins)
- *
- * SkeletonItem has no `makeResetStyles`, so nothing lands in `fui.base`.
- *
- * ── Ordering that IS load-bearing ─────────────────────────────────────────────────────
- * #5 `pulse` sets `animation-duration: 1s` over #2 `root`'s `3s`, and #7
- * `translucentPulse` sets the `::after` background-color over #5's — both are handled by
- * writing the later argument's block later in the file.
- *
- * ── Griffel style BUCKETS, not just argument order ────────────────────────────────────
- * mergeClasses only deletes an earlier class when a later one carries the SAME property
- * key. A media-query declaration gets its own key (`Gt9ir8` for the reduced-motion
- * `animation-duration`, distinct from `xr36ep` for the plain one), so both classes
- * survive the merge and the CSS cascade decides — and Griffel inserts its `m` (media)
- * bucket AFTER every default-bucket rule. Concretely: `@media (prefers-reduced-motion)
- * { animation-duration: 0.01ms }` from #2 must still beat `animation-duration: 1s` from
- * #5. Every media-query rule therefore lives in the LAST block of this file, reproducing
- * that bucket order. Do not fold them back into their slices.
- *
- * ── Non-inverted cross-argument moves (verified disjoint against the compiled atomics in
- *    lib-commonjs/components/SkeletonItem/useSkeletonItemStyles.styles.js) ──────────────
- * #11 `.circle` border-radius is written after #12's width/height block; the two touch
- * no common property (`Dimara` vs `a9b677`/`Bqenvij`), so file position cannot invert a
- * winner. #10 and #12 are the SAME Griffel slice (`useSizeStyles[size]`) applied for two
- * mutually exclusive shapes, so they are authored once against both selectors.
- */
-
-/*
- * from the module-level `skeletonWaveAnimation` / `skeletonPulseAnimation` objects.
- *
- * Griffel auto-flips keyframe BODIES for RTL and emits a second `@keyframes` under an
- * RTL-hashed name (`@griffel/core/runtime/resolveResetStyleRules` calls
- * `convert(keyframeObject)`) — the compiled output carries the pair explicitly:
- *
- *   Br128sd: ['f3fo419', 'f6m9r4']
- *   @keyframes f1efwx7q { to { transform: translate(100%);  } }   ← ltr
- *   @keyframes f1kkgpz1 { to { transform: translate(-100%); } }   ← rtl
- *
- * Hand-authored keyframes get scoped by CSS Modules but get NO automatic twin, so the
- * RTL body is written out below and selected by the `rtl` variant on `.wave`
- * (reports/risk-analysis.md §3b: "the Skeleton wave animates the wrong way in RTL if this
- * is not hand-authored"). The pulse keyframes are opacity-only — direction-independent,
- * and Griffel emitted a single name (`Br128sd: 'f171zwvm'`) for them.
- *
- * Names are prefixed `skeleton-` so they cannot collide with the `.wave` / `.pulse` class
- * names in the generated class map (postcss-modules scopes classes and keyframes through
- * the same `generateScopedName`).
- */
 @keyframes skeleton-wave {
   to {
     transform: translate(100%);
@@ -97,11 +31,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.root — arg #2. The animated sheen is a `::after` overlay stretched
-   * over the item; `animation-name` is supplied by the animation slices below, so this
-   * rule is inert until one of them applies.
-   */
   .root {
     @apply relative overflow-hidden;
 
@@ -116,33 +45,12 @@
     }
   }
 
-  /*
-   * from useStyles.blockStyling — arg #3. Same slice (and same compiled atomic,
-   * `.ftgm304{
-    @apply block;
-  }`) as Skeleton's; the root renders a `span` under
-   * `as="span"` and needs block layout back.
-   */
   .block-styling {
     @apply block;
   }
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.wave — arg #4.
-   *
-   * THREE direction-sensitive values, all of which Griffel emitted as an [ltr, rtl] pair
-   * (risk-analysis.md §3b). Logical properties express none of them, so each gets an
-   * explicit `rtl` twin:
-   *
-   *   animation-name    f1efwx7q (to translate(100%))  / f1kkgpz1 (to translate(-100%))
-   *   background-image  linear-gradient(to right, …)   / linear-gradient(to left, …)
-   *   transform         translate(-100%)               / translate(100%)
-   *
-   * Miss any one and the sheen sweeps the wrong way — the sheen would also start
-   * on-screen rather than off it if only the keyframes were flipped.
-   */
   .wave {
     background-color: var(--color-neutral-stencil-1);
 
@@ -187,11 +95,6 @@
     }
   }
 
-  /*
-   * from useStyles.translucent — arg #6. Its gradient replaces the wave gradient
-   * outright: both slices write Griffel's `h62rwi` key, so mergeClasses dropped the wave
-   * class for that property and the later block here reproduces the same winner.
-   */
   .translucent {
     background-color: var(--color-neutral-stencil-1-alpha);
 
@@ -216,22 +119,6 @@
     }
   }
 
-  /*
-   * from useStyles.translucentPulse — arg #7, applied only for
-   * `animation === 'pulse' && appearance === 'translucent'`.
-   *
-   * DELIBERATE VALUE DEVIATION (the only one in this package). The Griffel source writes
-   * `backgroundColor: 'none'` and the compiler emits `.flu3bqm{background-color:none;}` —
-   * `none` is not a color, so browsers discard the declaration at parse time. Under
-   * mergeClasses that still removed the element's background: `translucent` (#6) and
-   * `translucentPulse` (#7) share the `De3pzq` key, so #7 DELETED #6's class and the root
-   * ended up with no valid `background-color` at all, i.e. the initial value.
-   *
-   * The cascade cannot reproduce that with the literal value: an invalid declaration is
-   * dropped and `.translucent`'s valid one would survive and paint the alpha stencil.
-   * `transparent` is the initial value of `background-color`, so it renders exactly what
-   * Griffel rendered while being a declaration the cascade actually applies.
-   */
   .translucent-pulse {
     background-color: transparent;
 
@@ -242,13 +129,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRectangleStyles.root + useRectangleStyles[size] — args #8/#9. A rectangle
-   * fills the inline axis and takes its size on the block axis only. `border-radius: 4px`
-   * is a raw pixel literal with no token behind it and no Tailwind radius utility (the
-   * `--radius-*` namespace holds Fluent tokens only), so it goes through `--base-scale`
-   * the same way Button's icon `font-size` does (D4) — identical pixels at a 16px root.
-   */
   .rectangle {
     @apply w-full;
 
@@ -335,11 +215,6 @@
     }
   }
 
-  /*
-   * from useSizeStyles[size] — args #10 (square) and #12 (circle). One Griffel slice
-   * applied for two mutually exclusive shapes, so it is authored once against both
-   * selectors; both axes carry the size.
-   */
   .square,
   .circle {
     @variant size-8 {
@@ -423,25 +298,12 @@
     }
   }
 
-  /*
-   * from useCircleSizeStyles.root — arg #11. Written after arg #12's block above: the two
-   * are disjoint (`border-radius` vs `width`/`height`), so file position cannot invert a
-   * winner. `50%` is a percentage, not a scalable length — Tailwind's `rounded-full`
-   * (`calc(infinity * 1px)`) is NOT the same value and would clip a non-square item
-   * differently.
-   */
   .circle {
     border-radius: 50%;
   }
 }
 
 @layer fui.components.l1 {
-  /*
-   * Media-query rules — Griffel's `m` style bucket, which is inserted after every
-   * default-bucket rule. Kept last in the layer so they keep winning the ties they won
-   * before; see the bucket note in this file's header.
-   */
-
   /* from useStyles.root — arg #2, `@media screen and (prefers-reduced-motion: reduce)`.
      Must beat `.pulse`'s `animation-duration: 1s` (arg #5). */
   .root {

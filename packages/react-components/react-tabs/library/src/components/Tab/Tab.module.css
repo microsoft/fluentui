@@ -36,12 +36,6 @@
       justify-content: start;
     }
 
-    /*
-     * from useRootStyles.{small,medium,large}{Horizontal,Vertical} — arg b3.
-     * The horizontal column-gap on the VERTICAL variants is deliberate in the source and is
-     * reproduced verbatim: it is the gap between the icon and the content, which sit in one
-     * grid row whichever way the TabList runs.
-     */
     @variant size-small {
       @variant horizontal {
         @apply gap-x-horizontal-xxs px-horizontal-s-nudge py-vertical-s-nudge;
@@ -88,11 +82,6 @@
     }
   }
 
-  /*
-   * from useCircularAppearanceStyles.small / .medium / .large — arg b6.
-   * `calc(<token> - strokeWidthThin)` compensates the 1px border the circular appearances
-   * add, so the outer box keeps the height of the non-circular sizes.
-   */
   .circular-small {
     padding-block: calc(2px * var(--base-scale) - var(--spacing-thin));
   }
@@ -176,12 +165,6 @@
       }
     }
 
-    /*
-     * `@variant forced-colors` is the OUTER wrapper (CONVERSION_GUIDE §3b rule 2 — it is an
-     * at-rule variant). The `.fui-Icon-filled` / `.fui-Icon-regular` halves of this same
-     * slice are NOT here: they style `@fluentui/react-icons` elements and sit in the
-     * S-J/D27 l1 section at the bottom of this file.
-     */
     @variant forced-colors {
       @variant enabled {
         @variant hover {
@@ -238,13 +221,6 @@
 
   /* ── regular appearances (`transparent`, `subtle`) ───────────────────────────────── */
 
-  /*
-   * from useRootStyles.subtle — arg r6.
-   * Within each of the four blocks below the base `& .icon` / `& .content` rules are written
-   * BEFORE their hover/pressed counterparts: Griffel separated them by specificity
-   * (`.x:enabled:hover .fui-Tab__icon` 0-3-0 vs `.x .fui-Tab__icon` 0-2-0), `:where()` does
-   * not, so the narrower condition has to come later in the file.
-   */
   .subtle {
     background-color: var(--color-subtle-background);
 
@@ -321,11 +297,6 @@
     }
   }
 
-  /*
-   * from useRootStyles.selected — arg r8. Applied only when `selected && !disabled`, so it
-   * is written AFTER `.subtle` / `.transparent` and wins the equal-specificity tie for the
-   * icon and content colours, exactly as mergeClasses arg r8 beat args r6/r7.
-   */
   .selected {
     & .icon {
       @apply text-compound-brand-foreground-1;
@@ -378,13 +349,6 @@
 
   /* ═══ root slot — useTabIndicatorStyles_unstable ═════════════════════════════════ */
 
-  /*
-   * from useRootStyles.root — arg i2.
-   * A strict subset of `.button` above, with identical values, so the two never contend on
-   * the default composition where both land on the same element. It is kept as its own local
-   * because `useTabButtonStyles_unstable(state, slot)` is public and a custom Tab may point
-   * `slot` at a different element than `state.root`.
-   */
   .root {
     @apply relative grid shrink-0 items-center;
 
@@ -394,15 +358,6 @@
     outline-style: none;
   }
 
-  /*
-   * from usePendingIndicatorStyles — args i3 / i4 / i5.
-   * The "pending" indicator is the hover/pressed hint on an UNSELECTED tab: a `::before`
-   * that only materialises under `:hover` / `:active` (that is where `content` is set), sized
-   * and positioned unconditionally by the size × orientation block.
-   *
-   * The hook applies this whole family only when the appearance is not circular, matching the
-   * Griffel `if (appearance !== 'subtle-circular' && appearance !== 'filled-circular')` guard.
-   */
   .pending-indicator {
     @variant hover {
       &::before {
@@ -507,16 +462,6 @@
     }
   }
 
-  /*
-   * from useActiveIndicatorStyles — args i6 / i7 / i8 / i9.
-   * The selection indicator on a SELECTED tab: an `::after` that always paints. The hook
-   * applies this family only when `selected` (and, like the pending indicator, only for the
-   * non-circular appearances).
-   *
-   * `selected` is a conditional module class rather than the catalog's `selected` variant on
-   * purpose — see the STATE → DATA ATTRIBUTES note in the header: `aria-selected` is absent
-   * on a DISABLED tab, which is exactly the case arg i9 exists to paint.
-   */
   .active-indicator {
     &::after {
       @apply absolute rounded-circular bg-transparent-stroke;
@@ -615,15 +560,6 @@
 
   /* ═══ animated selection indicator — useTabAnimatedIndicatorStyles_unstable ═══════ */
 
-  /*
-   * from useActiveIndicatorStyles.base + .horizontal / .vertical — args a1 / a3.
-   * Both are gated on exactly the same condition (`selected`) in the source, so they are one
-   * local here. `overflow: visible` lets the indicator animate OUTSIDE the tab's own box; it
-   * has to beat `.button`'s `overflow: hidden`, which is why this block sits after it — and
-   * why this CSS lives in Tab.module.css rather than a second module (see the header).
-   *
-   * The two `var()`s are written by JS as inline styles on this element; CSS only reads them.
-   */
   .indicator-transform {
     @apply overflow-visible;
 
@@ -651,14 +587,6 @@
     }
   }
 
-  /*
-   * from useActiveIndicatorStyles.animated — arg a2. Applied when the indicator is travelling
-   * back to its resting position (`selected && animating`).
-   *
-   * Individual transition longhands, never the `transition` shorthand: the shorthand would
-   * also reset `transition-delay` and `transition-behavior`, and the compiled atomics are
-   * longhands (`.fhwpy7i::after{transition-property:transform}` …).
-   */
   .indicator-animated {
     &::after {
       transition-property: transform;
@@ -676,23 +604,6 @@
 
   /* ═══ focus indicators — useFocusStyles ══════════════════════════════════════════ */
 
-  /*
-   * from useFocusStyles.base / .circular — args r5 / b5, WRITTEN LAST (see move #1 in the
-   * header). Tab mints a CUSTOM focus indicator instead of `@apply fui-focus-outline`
-   * because the shared one paints an `::after` pseudo-element and Tab's selection indicator
-   * already owns `::after` — that conflict is the reason
-   * `createCustomFocusIndicatorStyle(..., { enableOutline: true })` is called here at all,
-   * and the source says so in a comment.
-   *
-   * `@variant focus-visible-fui` is the shared catalog selector for `[data-fui-focus-visible]`,
-   * the attribute `@fluentui/react-tabster` stamps; the raw attribute never appears in a
-   * component module.
-   *
-   * `outline-width` and the `box-shadow` spreads do NOT read the spacing namespace, so they
-   * take `var(--spacing-thick)` / `var(--spacing-thin)` directly (CONVERSION_GUIDE §2, stroke
-   * widths, case 2). The `border-*-color` longhands are physical because the compiled
-   * `[ltr, rtl]` pair carries the identical `transparent` on both sides.
-   */
   .focus-base {
     @variant focus-visible-fui {
       border-top-color: transparent;
@@ -726,24 +637,6 @@
     }
   }
 
-  /*
-   * ── SPECIFICITY RESTORATION (move #2 in the header) ────────────────────────────────
-   * Griffel emitted the circular hover/pressed borders as `.fXXX:enabled:hover{border:…}`
-   * (0-3-0) and the focus indicator's border colours as
-   * `.fYYY[data-fui-focus-visible]{border-right-color:transparent}` (0-2-0), so the hover
-   * border WON over the focus indicator. Every selector in this file is `:where()`-flat at
-   * 0-1-0, so that win can only be expressed as file position — and the focus blocks above
-   * have to come after the appearance blocks for their `outline-style` and at-rest border
-   * colours. These four declarations are therefore re-stated here, after the focus blocks.
-   *
-   * They are byte-identical to the ones inside `.circular-subtle` / `.circular-subtle-selected`
-   * above; re-declaring a rule at equal specificity is a no-op in every state EXCEPT the
-   * focus-visible one this exists for. `.circular-subtle-selected` follows
-   * `.circular-subtle` here for the same reason it does above (arg order).
-   *
-   * Only these two slices set a border on hover/press. `.circular-filled*` sets none, and the
-   * `*-disabled*` slices cannot be reached through `@variant enabled`.
-   */
   .circular-subtle {
     @variant enabled {
       @variant hover {
@@ -770,17 +663,6 @@
 
   /* ═══ icon slot — useTabContentStyles_unstable ═══════════════════════════════════ */
 
-  /*
-   * from useIconStyles.base / .small / .medium / .large / .selected.
-   * These stay DIRECT classes on the icon element rather than moving to
-   * `.root:where([data-size]) & .icon` descendant rules, because
-   * `useTabContentStyles_unstable` is exported and independently callable — a custom Tab may
-   * call it without ever stamping the root's attributes.
-   *
-   * The `.fui-Icon-filled` / `.fui-Icon-regular` halves of `base` and `selected` are NOT here:
-   * they style `@fluentui/react-icons` elements and sit in the S-J/D27 l1 section at the
-   * bottom of this file.
-   */
   .icon {
     @apply inline-flex items-center justify-center overflow-hidden;
 
@@ -810,19 +692,6 @@
 
   /* ═══ content slot — useTabContentStyles_unstable ════════════════════════════════ */
 
-  /*
-   * from useContentStyles.*. `.content` is shared by the `content` slot and by the
-   * `contentReservedSpace` slot (the hidden placeholder that reserves the SELECTED metrics so
-   * the tab does not resize on selection), exactly as `contentStyles.base` was in the source.
-   *
-   * NOTE this widens the appearance blocks' `& .content` colour rules to also match the
-   * reserved-space span, which the `fui-Tab__content` static did not. It cannot render: that
-   * span always carries `.content-placeholder` (`visibility: hidden`).
-   *
-   * The typography presets are expanded to the four longhands Griffel compiled
-   * (`typographyStyles.body1` → family/size/weight/line-height), because a `font` shorthand
-   * has no equivalent priority machinery in plain CSS.
-   */
   .content {
     @apply overflow-hidden px-horizontal-xxs py-vertical-none;
 
@@ -867,39 +736,6 @@
     @apply invisible;
   }
 }
-
-/*
- * ── The icon swap, at l1 (S-J retirement of D2 amendment 5; D27) ─────────────────────
- *
- * Same retirement as react-button's Button.module.css (bottom of that file) and
- * react-infolabel's InfoButton. The rules below style ANOTHER package's elements: the two
- * <svg>s that `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. Under
- * icons 2.x these blocks had to be UNLAYERED (Griffel injected the swap atomics
- * unlayered, and an unlayered declaration beats every `@layer` before specificity is
- * consulted — the old D2a5 rule). Icons 3.0 (headless) replaced the atomics with
- * `[data-fui-icon-hidden] { display: none }` (0-1-0) from a static stylesheet this repo
- * imports at `@layer fui.components.l1` (D27), so the blocks return to the module's own
- * altitude, l1.
- *
- * Cascade note (S-J): the icons sheet is emitted AFTER component modules in document
- * order, so at l1 these rules win on SPECIFICITY ONLY — 0-2-0 beats the hide's 0-1-0; an
- * equal-specificity rule would LOSE the within-layer source-order tiebreak. Verified via
- * CDP matched rules (.scratch/sj23-cdp-post.json).
- *
- * The forced-colors COLOUR rules from `useCircularAppearanceStyles.filled` move with
- * their siblings: the icons sheet declares no `color` on the glyphs, so l1 wins those
- * uncontested; keeping the whole react-icons surface in one place keeps the
- * `fui-Icon-filled` grep landing on a single, self-describing section.
- *
- * ── Order inside this section reproduces mergeClasses ARGUMENT order ─────────────────
- * `.icon` and `.icon-selected` sit on the SAME element and both flatten to 0-2-0, so
- * within-layer file position is the only tiebreak and it has to encode argument order:
- * base first, the selected swap second, so a selected Tab shows the filled glyph.
- * `.circular-filled` is on a different element (the button) and cannot contend with either.
- *
- * Everything that styles Tab's OWN elements — including the `.icon` / `.content` colour
- * rules in the appearance blocks — stays in the layer blocks above.
- */
 
 @layer fui.components.l1 {
   .icon {

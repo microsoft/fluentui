@@ -33,13 +33,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.blockStyling — the root slot renders a `div` by default and a `span`
-   * when `as="span"`; this restores block layout for the inline element. Compiled atomic:
-   * `.ftgm304{
-    @apply block;
-  }` (lib-commonjs/components/Skeleton/useSkeletonStyles.styles.js).
-   */
   .block-styling {
     @apply block;
   }

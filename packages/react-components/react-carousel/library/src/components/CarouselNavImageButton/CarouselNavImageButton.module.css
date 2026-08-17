@@ -40,11 +40,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.selected — image arg #2. Same slice as the root block above; here it is
-   * read off the ANCESTOR's `aria-selected` through the named group, because the image
-   * carries no state of its own.
-   */
   .image {
     @variant group-selected/fui-carousel-nav-image-button {
       @apply h-48 w-48;

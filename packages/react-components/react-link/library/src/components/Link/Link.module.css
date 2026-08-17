@@ -180,12 +180,6 @@
       text-decoration-line: underline;
     }
 
-    /*
-     * from useStyles.disabled — arg #10, DEFAULT-bucket declarations only. `data-disabled`
-     * is stamped from `state.disabled`, which useLinkState has already widened to
-     * `disabled || disabledFocusable` — exactly the condition this argument branches on.
-     * Written after `.subtle` / `.inverted` / `.brand` to resolve the documented inversion.
-     */
     @variant disabled {
       @apply cursor-not-allowed text-neutral-foreground-disabled;
 
@@ -214,14 +208,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.disabled — arg #10 continued: the :hover (`h`), :active (`a`) and
-   * forced-colors (`m`) buckets, all of which Griffel emits AFTER the focus indicator's
-   * default-bucket rules. The forced-colors block comes last for the same reason: `m` is
-   * the final bucket, so its `GrayText` beats the `:hover` / `:active` colours above it.
-   *
-   * Links have no native disabled state, hence the explicit high-contrast handling.
-   */
   .root {
     @variant disabled {
       @variant hover {

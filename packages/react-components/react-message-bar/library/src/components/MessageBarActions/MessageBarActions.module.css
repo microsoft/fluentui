@@ -4,67 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useMessageBarActionsStyles_unstable, not source declaration order.
- *
- * `root` slot
- *   1 messageBarActionsClassNames.root                    → static class (JS)
- *   2 useRootBaseStyles              (makeReset)          → fui.base           .root
- *   3 useMultilineStyles.root        (layout multiline)   → fui.components.l1  (data-layout)
- *   4 useMultilineStyles.noActions   (!hasActions)        → fui.components.l1  (data-has-actions)
- *   5 consumer className                                  → unlayered (always wins)
- *
- * `containerAction` slot
- *   1 messageBarActionsClassNames.containerAction         → static class (JS)
- *   2 useContainerActionBaseStyles   (makeReset)          → fui.base           .container-action
- *   3 consumer className                                  → unlayered
- *
- * ── ALTITUDE: everything here is l1 ─────────────────────────────────────────────────
- * Both slots are MessageBarActions' own `<div>`s. The component's CHILDREN are Buttons
- * (it publishes a `ButtonContextValue` through `useMessageBarActionsContextValues`), but
- * that is a React context prop-flow, not CSS: this module declares no rule whose subject
- * is a Button element, so nothing is applied over another component's hook output and
- * nothing qualifies for `fui.components.l2`. Grepped the package for `fui-Icon-filled` /
- * `fui-Icon-regular` / `:global(`: zero hits, so D2 amendment 5's unlayered block does
- * not apply either.
- *
- * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
- * Args #3 and #4 set disjoint properties (margins/padding/justify-content vs `display`),
- * so neither overrides the other; the blocks are still written in argument order. The
- * cross-layer overrides are `noActions`' `display: none` over the reset's `display: flex`
- * and `multiline`'s `padding-inline-end` over the reset's — both l1-over-base.
- *
- * ── Enum/boolean props → in-module attribute selectors ──────────────────────────────
- * `data-layout` and `data-has-actions` are the names the in-repo headless preview stamps
- * on ITS MessageBarActions root (react-headless-components-preview/…/MessageBarActions/
- * useMessageBarActions.ts), and both are in the 25-name vocabulary
- * (reports/headless-precedent.md). `hasActions` follows the cookbook's boolean-pair rule:
- * ONE presence attribute plus a `:where(:not(…))` complement — the Griffel slice is gated
- * on `!hasActions`, so the complement is the branch that carries the rule.
- * Both are read through the shared `@custom-variant` catalog
- * (@fluentui/react-tailwind-theme `css/variants.css`), whose `layout-multiline` and
- * `has-actions` / `not-has-actions` entries the Phase 3 catalog pass promoted out of this
- * file's original raw attribute selectors. `layout-multiline` is the same entry MessageBar's
- * own module uses — MessageBar's context feeds this component the identical computed value.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * All three [ltr, rtl] pairs in the compiled atomics are pure PROPERTY flips → logical
- * properties, no `@variant rtl` twin needed:
- *   useRootBaseStyles            padding-right → padding-left  → padding-inline-end
- *   useContainerActionBaseStyles padding-right → padding-left  → padding-inline-end
- *   useMultilineStyles.root      margin-right  → margin-left   → margin-inline-end
- *                                padding-right → padding-left  → padding-inline-end
- *
- * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
- * Every token read becomes the NAMED spacing utility. Note `useMultilineStyles.root`
- * reads `tokens.spacingVerticalM` for a HORIZONTAL property (`paddingRight`); the
- * compiled atomic is `padding-right: var(--spacing-vertical-m)`, so it is reproduced as
- * `pe-vertical-m` rather than silently re-axised to `pe-horizontal-m`. Both steps are
- * 12px and both ride `--base-scale`, so the computed length is identical either way —
- * the source token is kept so this stays a pure conversion.
- */
-
 @layer fui.base {
   .root {
     @apply flex gap-x-horizontal-m pe-horizontal-m;
@@ -103,11 +42,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * root arg #4 — from useMultilineStyles.noActions, gated on `!hasActions`.
-   * `data-has-actions` is stamped only when the component HAS action children, so the
-   * rule rides the `:not()` complement.
-   */
   .root {
     @variant not-has-actions {
       @apply hidden;

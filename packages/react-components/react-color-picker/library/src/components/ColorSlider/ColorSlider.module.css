@@ -15,11 +15,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * root arg #3 — from useStyles.horizontal / useStyles.vertical.
-   * 3x3 grid with the rail and thumb in the centre cell [2,2] and the hidden input
-   * stretching across all cells.
-   */
   .root {
     @variant horizontal {
       @apply min-w-200;
@@ -97,15 +92,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * rail arg #5 — from useRailStyles.horizontal / .vertical, selected from the ROOT's
-   * `data-orientation` (see header).
-   *
-   * The horizontal `::before` sets BOTH `left: -1px` and `right: -1px`; Griffel's flip maps
-   * one onto the other, so the emitted pair is identical in both directions and the logical
-   * longhands below reproduce it exactly. The vertical `::before` is asymmetric by design in
-   * the source (`top: -1px`, `bottom: 1px`) and has no flip — it stays physical.
-   */
   .root {
     @variant horizontal {
       & .rail {
@@ -166,14 +152,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * thumb arg #3 — from useThumbStyles.horizontal / .vertical.
-   *
-   * `translateX(-50%)` and `left` are value-level / physical RTL in the compiled output
-   * (`.f1nfknbn{transform:translateX(50%)}`, `.fcf9u6w{right:var(--fui-Slider--progress)}`),
-   * so the inset becomes logical and the transform gets an `@variant rtl` twin. The vertical
-   * pair (`translateY(50%)` + `bottom`) has no flip and stays physical.
-   */
   .root {
     @variant horizontal {
       & .thumb {
@@ -196,22 +174,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * input arg #2 — from useInputStyles.input.
-   *
-   * The sibling focus rule used to reach the thumb through the BEM static
-   * (`` [`:focus-visible ~ .${colorSliderClassNames.thumb}`] ``). Under D16 that static is
-   * gone; both elements are slots of THIS component and both classes are locals of THIS
-   * module, so the selector becomes a plain sibling combinator between two locals — no
-   * `:global()`, no public DOM surface, and the same 0-2-0 shape once `:where()` flattens it
-   * (compiled: `.f1nq8t98:focus-visible~.fui-ColorSlider__thumb`).
-   *
-   * This block is authored AFTER `.thumb` so its `border` beats the thumb's own — which is
-   * how Griffel ranked them too (`i` bucket after `d`).
-   *
-   * `2px` stays a literal: it is a hand-rolled focus ring and D6 keeps react-tabster's
-   * hardcoded focus-ring width verbatim.
-   */
   .input {
     @apply m-0 cursor-pointer p-0 opacity-0;
 
@@ -232,15 +194,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * input arg #3 — from useInputStyles.horizontal / .vertical.
-   *
-   * The vertical slice's `direction: rtl` is what makes a vertical range input run
-   * bottom-to-top; Griffel flips it to `direction: ltr` in an RTL document
-   * (`.f1va4sj6` / `.f1r2v9sp`), so the `@variant rtl` twin is required. `:dir()` reads the
-   * document/`dir`-attribute directionality, never the CSS `direction` property, so the
-   * declaration inside this rule cannot feed back into the selector that gates it.
-   */
   .root {
     @variant horizontal {
       & .input {

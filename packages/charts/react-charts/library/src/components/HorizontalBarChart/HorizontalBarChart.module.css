@@ -24,22 +24,6 @@
     @apply block h-vertical-m w-full overflow-visible;
   }
 
-  /*
-   * from useStyles.barWrapper — the bar `<rect>`. The Griffel slice is `{}` (empty), so the
-   * only token this slot ever carried was the removed BEM static. The class is kept as an
-   * identity-only local rather than dropped, because `HorizontalBarChartStyles.barWrapper`
-   * is a required public field that `HorizontalBarChart.tsx` puts on every bar — this keeps
-   * the slot addressable for the bar-level styling the placeholder was reserved for.
-   * Do not delete because it looks empty (DECISIONS.md D16.2, same shape as an empty root).
-   *
-   * WHY IT IS NOT A LITERALLY EMPTY RULE: `@tailwindcss/postcss` runs BEFORE `postcss-modules`
-   * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
-   * every declaration-less rule, so an empty body would never reach the class map and
-   * `styles['bar-wrapper']` would be `undefined` in the real build while the jest proxy
-   * happily returned a name. `--fui-…-identity: initial` is the minimal surviving body: a
-   * custom property set to `initial` is guaranteed-invalid, so it renders nothing.
-   * Same fix, same measurement (Tailwind v4.3.3) as react-breadcrumb's `.root`.
-   */
   .bar-wrapper {
     --fui-horizontal-bar-chart-bar-wrapper-identity: initial;
   }
@@ -125,12 +109,6 @@
     }
   }
 
-  /*
-   * from useStyles.chartWrapper40ppadding. The Griffel source read `paddingRight: '40p'`,
-   * an invalid length every engine dropped at parse time, so the slice rendered nothing and
-   * the conversion reproduced that as an identity-only local. Upstream has since fixed the
-   * typo to `40px`, so the padding is real now and this rule applies it.
-   */
   .chart-wrapper-40p-padding {
     @apply pe-40;
   }

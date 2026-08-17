@@ -11,12 +11,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootStyles.rounded / .circular — arg #3. The compiled atomics carry Griffel
-   * priority -1 (`p: -1`), the shorthand marker: `border-radius` deletes any earlier
-   * corner longhand. Nothing in this component sets a corner longhand, so the shorthand
-   * is reproduced as-is.
-   */
   .rounded {
     @apply rounded-medium;
   }

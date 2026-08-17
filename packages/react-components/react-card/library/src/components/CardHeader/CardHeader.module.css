@@ -83,11 +83,6 @@
   .root {
     @apply items-center;
 
-    /*
-     * tokens-free px literal on a custom PROPERTY: no utility can set one, so this takes
-     * the D4 literal form. `calc(12px * var(--base-scale))` is byte-identical to what
-     * `gap-horizontal-m` emits, so the gap scales with the rest of the spacing system.
-     */
     --fui-CardHeader--gap: calc(12px * var(--base-scale));
   }
 
@@ -143,11 +138,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStylesFlex — every slot's arg #3 when there is no `description` slot.
-   * `image`, `description` and `action` are empty slices in the Griffel source and are
-   * therefore absent here.
-   */
   .flex-root {
     @apply flex;
   }
@@ -157,12 +147,6 @@
   }
 }
 
-/*
- * ── COMPOSITION ALTITUDE (fui.components.l2) ────────────────────────────────────────
- * When the surrounding Card is selected or hovered it takes custom forced-colors
- * background/foreground, so the action's Button/Link must adopt `currentColor` to stay
- * visible. Subject is another package's element — see the ALTITUDE note in the header.
- */
 @layer fui.components.l2 {
   .action {
     @variant forced-colors {

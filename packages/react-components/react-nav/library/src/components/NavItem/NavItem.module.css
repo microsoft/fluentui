@@ -127,24 +127,9 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * icon arg #2, the half that styles THIS package's own <span> — from the shared
-   * useIconStyles.base. The grid trick stacks the filled and regular glyphs on top of each
-   * other; the two `.fui-Icon-*` descendant halves sit in their own l1 blocks at the
-   * bottom of the file (S-J/D27).
-   */
   .icon {
     @apply grid min-h-vertical-xl min-w-horizontal-xl justify-center overflow-hidden;
 
-    /*
-     * Reproduced verbatim from the compiled atomics `.fngvled{grid-template-areas:overlay-area}`
-     * and `.f1w4ww9t{align-items:top}`. BOTH are invalid CSS — `grid-template-areas` takes
-     * `none | <string>+` and `align-items` has no `top` keyword — so every browser discards
-     * them and they render nothing today. They are kept because a conversion may not change
-     * pixels in either direction, and dropping them would hide an upstream authoring bug that
-     * belongs in a follow-up (the children's `grid-area: overlay-area` IS valid and is what
-     * actually stacks the glyphs, via implicit named lines).
-     */
     grid-template-areas: overlay-area;
     align-items: top;
   }

@@ -111,39 +111,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * ── Self-compounded on purpose — do not "simplify" to a single class ────────────────
-   *
-   * Subject element: the `<Listbox>` react-combobox renders as Combobox's `listbox` slot.
-   * The rule it has to beat is Combobox's own, and that rule is in THIS SAME LAYER:
-   *
-   *   react-combobox  Combobox.module.css, @layer fui.components.l2
-   *                   `.listbox { … max-height: 80vh; }`   → 0-1-0
-   *   this module     `.listbox`                            → 0-1-0
-   *
-   * Same layer, same specificity, two different stylesheets — the winner would be decided by
-   * which `dist/styles.css` a consumer's bundler happens to load last. Griffel's
-   * `mergeClasses` gave TimePicker the win (its class was the later argument, and `max-height`
-   * is a single atomic key so the earlier one was deleted outright), and losing it is visible:
-   * the listbox would cap at `80vh` instead of `416px` — 864px vs 416px in a 1080px-tall
-   * viewport, i.e. roughly double the intended popup.
-   *
-   * Repeating the local raises this rule to 0-2-0 and takes stylesheet order out of the
-   * question entirely. Both occurrences hash to the SAME generated ident, so the compiled
-   * selector is `.fuicm-time-picker-listbox-<hash>.fuicm-time-picker-listbox-<hash>` — one
-   * class listed twice, no second handle invented, nothing new on the public DOM surface.
-   * It is the same move BreadcrumbButton makes (compound to win a contest `@layer` cannot
-   * arbitrate), with the difference that the extra token here is this module's OWN local
-   * rather than a `fui-*` static: D16 leaves no static to compound, and D16.3's flat rule
-   * routes "sub-slot of a component this package renders itself" to M2 (JS slot composition),
-   * which is exactly how `styles.listbox` reaches the element.
-   *
-   * from useStyles.listbox — compiled to `.f1vfnyiv{max-height:min(80vh, 416px);}`
-   * (lib-commonjs/components/TimePicker/useTimePickerStyles.styles.js, the pre-conversion
-   * AOT output). The px literal rides `--base-scale` per D4, like every other raw pixel value
-   * in a converted module; `80vh` is a viewport unit and is left alone. Height for 12 items,
-   * or 80vh, whichever is smaller.
-   */
   .listbox.listbox {
     max-height: min(80vh, calc(416px * var(--base-scale)));
   }

@@ -73,15 +73,6 @@
     border-bottom-color: var(--color-neutral-stroke-1);
     border-left-color: var(--color-neutral-stroke-1);
 
-    /*
-     * Kept as the `border-radius` shorthand because that is what Griffel compiled
-     * (`.f1fabniw{
-    @apply rounded-none;
-  }`) and because no rule anywhere
-     * in this component sets a corner longhand — so there is no shorthand-vs-longhand
-     * priority for the cascade to get wrong. `.circular` / `.rounded` below override it
-     * by file position.
-     */
     border-radius: var(--radius-none);
   }
 
@@ -133,20 +124,10 @@
     }
   }
 
-  /*
-   * from useStyles.fitFill — applied when `fit` is set but no explicit height/width is.
-   * The local is lowercase-kebab (`fit-fill`), not the Griffel slice's camelCase name —
-   * the generated ident alphabet is all-lowercase, see scripts/css-modules/ident.js.
-   */
   .fit-fill {
     @apply h-full w-full;
   }
 
-  /*
-   * from useStyles.circular / .rounded — the `shape` enum, LAST in mergeClasses and so
-   * last in this file: its `border-radius` must beat `.root`'s. `square` is an empty
-   * Griffel slice and is intentionally absent (see header).
-   */
   .circular {
     @apply rounded-circular;
   }

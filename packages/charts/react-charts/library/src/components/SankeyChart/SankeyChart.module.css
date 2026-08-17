@@ -34,12 +34,6 @@
     }
   }
 
-  /*
-   * from useStyles.toolTip — the shared `getTooltipStyle()` factory
-   * (src/utilities/Common.styles.ts, converted out of existence this batch — SankeyChart
-   * was its last consumer). `typographyStyles.body1` compiled to the four font atomics
-   * below; byte-identical to VerticalBarChart/VerticalStackedBarChart `.tooltip`.
-   */
   .tool-tip {
     @apply pointer-events-none absolute flex flex-col rounded-small bg-neutral-background-1 p-horizontal-s text-center text-neutral-foreground-1;
 
@@ -71,11 +65,6 @@
     @apply block;
   }
 
-  /*
-   * from useStyles.chartTitle = getChartTitleStyles() (utilities/Common.styles.ts,
-   * converted out of existence this batch). Declarations inlined from the compiled
-   * atomics — byte-identical to DonutChart/GaugeChart/FunnelChart `.chart-title`.
-   */
   .chart-title {
     @apply mb-vertical-s fill-neutral-foreground-1 text-center;
 

@@ -4,82 +4,11 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useRatingDisplayStyles_unstable,
- * not source declaration order.
- *
- * `root` slot
- *   1 ratingDisplayClassNames.root                     → static class (JS)
- *   2 useRootClassName             (makeReset)         → fui.base           .root
- *   3 consumer className                               → unlayered (always wins)
- *
- * `valueText` slot
- *   1 ratingDisplayClassNames.valueText                → static class (JS)
- *   2 useLabelClassName            (makeReset)         → fui.base           .label
- *   3 labelStyles.strong                               → fui.components.l1  .strong
- *   4 labelStyles.large      (size === 'large')        → fui.components.l1  (data-size)
- *   5 labelStyles.extraLarge (size === 'extra-large')  → fui.components.l1  (data-size)
- *   6 consumer className                               → unlayered
- *
- * `countText` slot
- *   1 ratingDisplayClassNames.countText                → static class (JS)
- *   2 useLabelClassName            (makeReset)         → fui.base           .label
- *   3 labelStyles.large      (size === 'large')        → fui.components.l1  (data-size)
- *   4 labelStyles.extraLarge (size === 'extra-large')  → fui.components.l1  (data-size)
- *   5 labelStyles.divider    (valueText is rendered)   → fui.components.l1  .divider
- *   6 consumer className                               → unlayered
- *
- * ── Altitude: everything is l1 ──────────────────────────────────────────────────────
- * Both text slots are plain `<span>`s RatingDisplay renders itself (renderRatingDisplay
- * puts them directly under `state.root`), so no rule here sits on top of another
- * component's hook output and nothing belongs in l2. The RatingItem children rendered
- * into the same root carry their own module's classes and are styled by
- * RatingItem.module.css alone — this file never reaches into them.
- *
- * ── Ordering ────────────────────────────────────────────────────────────────────────
- * ONE l1 order satisfies both slots: `.strong` (valueText arg #3) → the `data-size`
- * blocks (args #4/#5 and #3/#4) → `.divider` (countText arg #5). There is no property
- * conflict anywhere in that chain — `strong` sets font-weight, the size blocks set
- * font-size / line-height / margin-inline-start, `divider` only adds a ::before — so the
- * order is arg-faithful without being load-bearing. `large` and `extraLarge` are mutually
- * exclusive values of one prop and never co-apply.
- *
- * ── size is a data-attribute, `strong`/`divider` are classes (DECISIONS.md D3) ───────
- * `size` is a scale prop → `data-size` on the ROOT plus the shared catalog's
- * `size-large` / `size-extra-large` variants, with `& .label` reaching the two text
- * slots (same shape as react-switch's root-stamped `data-size` driving its indicator,
- * input and label rules). `size-small` / `size-medium` are absent on purpose: the Griffel
- * source has no slice for them, their values live in the `.label` reset.
- * `labelStyles.strong` and `labelStyles.divider` are not props at all — they are fixed
- * per-slot decisions of the hook — so they stay module classes.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * Every compiled [ltr, rtl] pair in this component is a pure PROPERTY flip
- * (`margin-left` → `margin-right`), so each becomes `margin-inline-start`:
- *   useLabelClassName   rkwnos5 / rwei36a
- *   labelStyles.large   f1t5qyk5 / f1ikr372
- *   labelStyles.extraLarge foyynoy / f1vcna3q
- * No value-level flip exists, so this file has no `@variant rtl` block. The root reset
- * compiles with a `null` rtl class.
- *
- * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
- * All three margins read a `tokens.spacingHorizontal*`, so they are authored as the NAMED
- * spacing utilities (`ms-horizontal-xs` / `-s-nudge` / `-s`). Raw
- * `var(--spacing-horizontal-xs)` is forbidden in modules: it is the one authoring form that
- * does not ride `--base-scale`.
- */
-
 @layer fui.base {
   .root {
     @apply flex flex-wrap items-center;
   }
 
-  /*
-   * from useLabelClassName (makeResetStyles) — shared by the valueText and countText
-   * slots. `...typographyStyles.caption1` is expanded to the four longhands the AOT
-   * output carries (family/size/weight/line-height); `margin-left` is an [ltr, rtl] pair
-   * and becomes logical.
-   */
   .label {
     @apply ms-horizontal-xs text-neutral-foreground-1;
 
@@ -120,11 +49,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useLabelStyles.divider — countText arg #5, applied only when the valueText slot
-   * is also rendered, so the separator never leads the line. The compiled atomic is
-   * `.f169p45e::before{content:"\B7 ";}` — a MIDDLE DOT followed by a space.
-   */
   .divider {
     &::before {
       content: '· ';

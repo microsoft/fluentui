@@ -26,21 +26,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useMediaStyles.short / .medium / .tall — media arg #3.
-   *
-   * The ratios are reproduced as the COMPILED values, not as the source's
-   * `popoverBodyDimension / 117` division: Griffel evaluated the expression at build time
-   * and emitted the resulting double (`.f1taewuw{aspect-ratio:2.4615384615384617}`), so
-   * these are transcriptions, not re-derivations. Source expressions, for the reader:
-   * 288/117, 288/176, and a bare `1`.
-   *
-   * `@supports not (aspect-ratio)` is carried through verbatim from the compiled output
-   * (Griffel's `t` bucket). The fallback heights are raw px with no matching spacing step,
-   * so they take NUMERIC utilities — which compute through `--base-scale` exactly as every
-   * other length on the page does (D4 amendment: `h-117` and a named step emit the same
-   * kind of value).
-   */
   .media-short {
     aspect-ratio: 2.4615384615384617;
 

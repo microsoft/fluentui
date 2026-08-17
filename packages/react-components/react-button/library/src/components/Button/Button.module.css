@@ -4,92 +4,10 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useButtonStyles_unstable,
- * not source declaration order. `root` slot:
- *
- *   #  mergeClasses argument                         → target
- *   ------------------------------------------------------------------------------
- *   1  buttonClassNames.root                         → REMOVED (D16.1); the root's leading
- *                                                      token is now `.root` itself, followed
- *                                                      by the `group/fui-button` marker
- *   2  useRootBaseClassName            (makeReset)   → fui.base
- *   3  rootStyles[appearance]                        → fui.components.l1   (.outline/.primary/…)
- *   4  rootStyles[size]                              → fui.components.l1     (data-size)
- *   5  rootStyles.smallWithIcon                      → fui.components.l1  (data-size + data-icon-position)
- *   6  rootStyles.largeWithIcon                      → fui.components.l1  (idem)
- *   7  rootStyles[shape]                             → fui.components.l1  (.circular/.square)
- *   8  rootDisabledStyles.base                       → fui.components.l1     (disabled-any)
- *   9  rootDisabledStyles.highContrast               → fui.components.l1     (disabled-any + forced-colors)
- *  10  rootDisabledStyles[appearance]                → fui.components.l1     (.appearance + disabled-any)
- *  11  rootFocusStyles.primary                       → fui.components.l1     (.primary + focus-visible-fui)
- *  12  rootFocusStyles[size]                         → fui.components.l1     (data-size + focus-visible-fui)
- *  13  rootFocusStyles[shape]                        → fui.components.l1  (.circular/.square + focus-visible-fui)
- *  14  rootIconOnlyStyles[size]                      → fui.components.l1  (data-icon-only, LAST)
- *  15  consumer className                            → unlayered (always wins)
- *
- * `icon` slot:
- *
- *   1  buttonClassNames.icon                         → REMOVED (D16.1); `.icon` is the only
- *                                                      class this hook writes to the slot
- *   2  useIconBaseClassName            (makeReset)   → fui.base
- *   3  iconStyles[iconPosition], gated on children   → fui.components.l1
- *   4  iconStyles[size]                              → fui.components.l1
- *   5  consumer className                            → unlayered
- *
- * The six `.fui-Icon-filled` / `.fui-Icon-regular` display swaps (from args #3
- * `subtle`/`transparent` and arg #8 `rootDisabledStyles.base`) style `@fluentui/react-icons`'
- * elements and sit in `fui.components.l1` like every other root-slot rule, in one block at
- * the BOTTOM of this file — see "The icon swap" there for the cascade math. They were
- * UNLAYERED under D2 amendment 5 while icons 2.x styled those elements with unlayered
- * Griffel atomics; icons 3.0's stylesheet is imported at `layer(fui.components.l1)`
- * (DECISIONS.md D27), so the swaps retired to their natural altitude (S-J batch 1).
- * The icon COLOUR swaps stay layered too: they select `.icon`, this module's own local on
- * react-button's icon slot, not another package's element.
- *
- * ── D16: the icon slot has no public handle ─────────────────────────────────────────
- * Ten rules below used to select `:global(.fui-Button__icon)`. They select `.icon` instead
- * — the hashed local `useButtonStyles_unstable` writes onto `state.icon` — which is the
- * same element, the same descendant combinator and the same 0-2-0 specificity in the same
- * layer, so the cascade is unchanged (D16.3: a sub-slot the styling package renders itself
- * resolves in-module, never through a global class). The `--fui-Button__icon--spacing`
- * custom property below keeps its name: it is a private custom property, never a class,
- * and is read only inside this file.
- *
- * ── The two KNOWN inversions (risk-analysis.md §1a) ─────────────────────────────────
- * `circular`(L284)/`square`(L288) are DECLARED before `small`(L291)/`large`(L307), but
- * `rootStyles[shape]` is APPLIED after `rootStyles[size]`; all four set `border-radius`.
- * Source-ordered CSS would render a circular small Button with `borderRadiusMedium`.
- * Shape's block is therefore written AFTER size's in the file — arg order wins by source position.
- * The identical inversion repeats in `useRootFocusStyles` (circular/square L466/L470 vs
- * small/large L495/L499, all `border-radius` under `[data-fui-focus-visible]`) and is
- * resolved the same way (#13's block written after #12's).
- *
- * ── Non-inverted cross-layer moves (verified disjoint against the compiled atomics in
- *    lib-commonjs/components/Button/useButtonStyles.styles.js) ────────────────────────
- * #3 appearance is written earlier in the file than #4 size (file order = argument order here) even though it is an earlier
- * argument — appearance only sets background/border-*-color/color, size only sets
- * min-width/padding/border-radius/font-*, so the two sets never meet.
- * #7 shape (fui.components.l1) now outranks #8-#12 (fui.components.l1): shape sets `border-radius`
- * only, those set colors/cursor/box-shadow — also disjoint.
- * #5/#6 withIcon (fui.components.l1) outrank #8-#12 for the same reason (padding only).
- *
- * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
- * #14 icon-only `padding` must beat both #4 size `padding` and #5/#6 withIcon
- * `padding-block`. Griffel achieved this because the later `padding` shorthand carries
- * priority -1 and its sentinel keys DELETE the earlier longhand classes; here it is
- * ordinary cascade — icon-only is written LAST inside fui.components.l1.
- */
-
 @layer fui.base {
   .root {
     @apply m-horizontal-none box-border inline-flex items-center justify-center overflow-hidden align-middle no-underline;
 
-    /*
-     * `padding: buttonSpacingMedium(5px) tokens.spacingHorizontalM` — the inline half is a
-     * spacing token (named utility), the block half is a 5px nudge that matches no step
-     * and stays numeric. `min-width: 96px` likewise matches no step.
-     */
     @apply min-w-96 px-horizontal-m py-5;
 
     background-color: var(--color-neutral-background-1);
@@ -159,11 +77,6 @@
       }
     }
 
-    /*
-     * Focus styles — from createCustomFocusIndicatorStyle({ borderColor, borderRadius,
-     * borderWidth: '1px', outline, boxShadow, zIndex }). The shared `fui-focus-ring`
-     * utility carries those exact declarations; the selector stays here.
-     */
     @variant focus-visible-fui {
       @apply fui-focus-ring;
     }
@@ -183,24 +96,11 @@
        default 16px root this is exactly `font-size: 20px`, the compiled value. */
     font-size: calc(20px * var(--base-scale));
 
-    /*
-     * tokens.spacingHorizontalSNudge. No utility can set a custom property, so the D4
-     * literal form is used — `calc(6px * var(--base-scale))` is exactly what
-     * `*-horizontal-s-nudge` emits, so this scales with the rest of the spacing system.
-     */
     --fui-Button__icon--spacing: calc(6px * var(--base-scale));
   }
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useIconStyles.before / .after — icon slot arg #3, gated on `!!root.children`.
-   * The gate rides the root's `data-empty` (same attribute Divider introduced), and
-   * the placement rides the root's `data-icon-position`, so the icon slot itself needs
-   * no data attributes. marginRight/marginLeft → logical inline properties: the compiled
-   * atomics are an [ltr, rtl] pair (`t21cq0: ["f1nizpg2","f1a695kz"]` →
-   * `margin-right` / `margin-left`), i.e. a pure property flip.
-   */
   .root {
     @variant not-empty {
       @variant icon-before {
@@ -219,17 +119,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Appearance variations — arg #3. `shorthands.borderColor(x)` is expanded to the four
-   * physical longhands the compiler emits (`g2u3we`/`h3c5rm`/`B9xav0g`/`zhjwy3`); the
-   * ltr/rtl pair only swaps left↔right and both carry the same value, so the flip is a
-   * visual no-op and physical longhands are exact.
-   *
-   * `secondary` has no rule: the Griffel slice is `{}` ("exactly the same as the base
-   * styles"), so `styles.secondary` is intentionally undefined and clsx drops it —
-   * matching Griffel's empty class string today.
-   */
-
   .outline {
     background-color: var(--color-transparent-background);
 
@@ -405,13 +294,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * Size variations — arg #4. `medium` is the compiled `{}` slice ("defined in base
-     * styles"), so only small/large have rules. `padding: 3px var(--spacing-horizontal-s)`
-     * is expanded to block/inline longhands so the later `padding-block` overrides in
-     * fui.components.l1 compose predictably.
-     */
-
     @variant size-small {
       @apply min-w-64 rounded-medium px-horizontal-s py-3;
 
@@ -424,12 +306,6 @@
 
     @variant size-large {
       @apply min-w-96 rounded-medium px-horizontal-l py-vertical-s;
-
-      /*
-       * `padding: buttonSpacingLarge(8px) tokens.spacingHorizontalL` — the 8px block half is
-       * a px literal that DOES match the S step, so it takes the vertical named utility.
-       * `min-width: 96px` matches no step.
-       */
 
       font-size: var(--text-base-400);
       font-weight: var(--font-weight-semibold);
@@ -459,11 +335,6 @@
       }
     }
 
-    /*
-     * from useRootDisabledStyles.base — arg #8. Applied for `disabled ||
-     * disabledFocusable`; see the `disabled-any` variant for why native `:disabled`
-     * alone is not enough.
-     */
     @variant disabled-any {
       background-color: var(--color-neutral-background-disabled);
       border-top-color: var(--color-neutral-stroke-disabled);
@@ -573,12 +444,6 @@
       }
     }
   }
-
-  /*
-   * Appearance-specific disabled overrides — arg #10, written AFTER the shared
-   * `.root` disabled block above so they win the equal-specificity tie inside this
-   * layer, exactly as mergeClasses arg #10 beats arg #8.
-   */
 
   .outline {
     @variant disabled-any {
@@ -715,12 +580,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * from useRootStyles.smallWithIcon / .largeWithIcon — args #5/#6. These override the
-     * `padding-block` set by arg #4 above, so they must land in a later layer.
-     * `with-icon` is the presence of `data-icon-position`, which the styles hook only
-     * writes when the icon slot exists — the CSS mirror of the `icon &&` guard.
-     */
     @variant with-icon {
       @variant size-small {
         @apply py-1;
@@ -731,13 +590,6 @@
       }
     }
   }
-
-  /*
-   * Shape variations — arg #7 (and arg #13 for the focus ring). INVERSION: declared
-   * before the sizes in the Griffel source but applied after them, and both set
-   * `border-radius`. `rounded` has no rule (the Griffel slice is `{}`; its radius comes
-   * from the base/size styles), so `styles.rounded` is intentionally undefined.
-   */
 
   .circular {
     border-radius: var(--radius-circular);
@@ -755,12 +607,6 @@
     }
   }
 
-  /*
-   * from useRootIconOnlyStyles — arg #14, the LAST style argument, hence the last rule
-   * in the last layer. `padding: Npx` replaces every side, beating both the size padding
-   * (#4) and the withIcon padding-block (#5/#6); min/max-width beat the size min-width
-   * (#4) and the base 96px (#2).
-   */
   .root {
     @variant icon-only {
       @variant size-small {

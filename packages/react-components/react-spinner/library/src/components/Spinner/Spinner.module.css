@@ -4,82 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useSpinnerStyles_unstable,
- * not source declaration order.
- *
- * `root` slot:
- *   1  spinnerClassNames.root                        → static class (JS)
- *   2  useRootBaseClassName            (makeReset)   → fui.base
- *   3  useRootStyles.vertical                        → fui.components.l1  (data-orientation)
- *   4  consumer className                            → unlayered (always wins)
- *
- * `spinner` slot:
- *   1  spinnerClassNames.spinner                     → static class (JS)
- *   2  useSpinnerBaseClassName         (makeReset)   → fui.base
- *   3  useSpinnerStyles[size]                        → fui.components.l1  (root data-size)
- *   4  useSpinnerStyles.inverted                     → fui.components.l1  (.spinner-inverted)
- *   5  consumer className                            → unlayered
- *
- * `spinnerTail` slot:
- *   1  spinnerClassNames.spinnerTail                 → static class (JS)
- *   2  useSpinnerTailBaseClassName     (makeReset)   → fui.base
- *   3  useSpinnerStyles.rtlTail, gated on dir==='rtl' → fui.components.l1  (@variant rtl)
- *   4  consumer className                            → unlayered
- *
- * `label` slot:
- *   1  spinnerClassNames.label                       → static class (JS)
- *   2  useLabelStyles[size]                          → fui.components.l2  (root data-size)
- *   3  useLabelStyles.inverted                       → fui.components.l2  (.label-inverted)
- *   4  consumer className                            → unlayered
- *
- * ── Why the label slot is l2, not l1 (D2 amendment 2 / cookbook altitude rule) ───────
- * The label slot's elementType is `@fluentui/react-label`'s `Label`, so that element's
- * base styles come from ANOTHER component's hook (`useLabelStyles_unstable`, whose own
- * rules live in `fui.components.l1`). Spinner restyling it is a library COMPOSITION:
- * l2 makes Spinner win regardless of stylesheet load order, reproducing what mergeClasses
- * guaranteed (Spinner's classes arrived as Label's LAST argument, via `className`).
- * Concretely this is load-bearing for every size ≥ medium, where Spinner's subtitle2 /
- * subtitle1 typography has to beat Label's own `data-size` font-size/line-height rules.
- *
- * ── Why data-size lives on the ROOT ─────────────────────────────────────────────────
- * `useLabelStyles_unstable` stamps `root['data-size']` from Label's OWN size prop
- * ('small' | 'medium' | 'large'), which would overwrite anything Spinner wrote onto the
- * label slot. Driving both sized slots from the Spinner root's attribute is therefore the
- * only correct encoding (and matches the react-button precedent for its icon slot). The
- * resulting descendant selectors are 0-2-0 instead of the usual 0-1-0; that is inert here,
- * verified against the compiled atomics: the size slices set only height/width/
- * --fui-Spinner--strokeWidth (spinner) and font-* (label), while the `inverted` slices set
- * only background-color/color — the two sets are disjoint on both slots, so no override
- * can be inverted by the specificity step.
- *
- * ── No inversions ───────────────────────────────────────────────────────────────────
- * Within every slot, file order equals mergeClasses argument order.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/Spinner/useSpinnerStyles.styles.js.
- */
-
-/*
- * ── Keyframes and RTL ───────────────────────────────────────────────────────────────
- * Griffel flips keyframe BODIES for RTL and emits a second, RTL-hashed `@keyframes`
- * block (`resolveResetStyleRules` calls rtl-css-js on the keyframe object), so the
- * compiled reset is an [ltr, rtl] class pair whose only delta is the animation name.
- * CSS Modules scope `@keyframes` names but produce no RTL twin, so both bodies are
- * authored here and `animation-name` is switched under `@variant rtl` (DECISIONS.md D5).
- *
- * These twins ARE load-bearing, despite each keyframe body being a pure rotation:
- * `spinnerTail` is a DOM child of `spinner` (renderSpinner.tsx), so the ring's 360°
- * spin composes onto the tail's arc sweep, and the `rtlTail` slice below mirrors the
- * conic gradients. Mirroring the gradients while keeping the LTR rotations does not
- * produce the mirrored animation — at t=0 the visible arc would sit at 90°–120° instead
- * of 0°–30°. Negating every angle (as Griffel does) is what makes RTL the exact mirror
- * of LTR.
- *
- * Keyframes are intentionally NOT wrapped in a layer: they declare no cascade rules, so
- * a layer would be meaningless, and CSS Modules already makes each name unique.
- */
-
 @keyframes spinner-spin {
   0% {
     transform: rotate(0deg);
@@ -188,28 +112,12 @@
   .root {
     @apply flex items-center justify-center gap-horizontal-s overflow-hidden;
 
-    /*
-     * `gap: '8px'` in the Griffel reset — a raw px literal that lands exactly on the S
-     * spacing step, so the named utility replaces `gap-8` (D4 amendment: Fluent spacing
-     * tokens first, numeric utilities only for values that match no step). Both forms
-     * compute through `--base-scale`, so this is pixel-identical.
-     *
-     * Horizontal axis: the root is a flex ROW by default and only becomes a column under
-     * the `vertical` variant below, so the inline-axis token is the matching one. Every
-     * step carries the same value on both axes, so the choice is naming, not pixels.
-     */
-
     /* prevents height changes from rotating children */
 
     line-height: 0;
     min-width: min-content;
   }
 
-  /*
-   * from useSpinnerBaseClassName (makeResetStyles). The compiled reset emits BOTH the
-   * `-webkit-` and the unprefixed `mask-image`; they are reproduced verbatim rather than
-   * left to the toolchain's autoprefixing, which is browserslist-dependent.
-   */
   .spinner {
     @apply relative shrink-0;
 
@@ -239,12 +147,6 @@
       animation-name: spinner-spin-rtl;
     }
 
-    /*
-     * `@media screen and (forced-colors: active)` is authored literally rather than via the
-     * shared `forced-colors` variant: the Griffel source (and therefore the compiled
-     * output) carries the `screen` media type, which the variant's
-     * `@media (forced-colors: active)` would widen to every media type.
-     */
     @media screen and (forced-colors: active) {
       background-color: HighlightText;
       color: Highlight;
@@ -256,14 +158,6 @@
     }
   }
 
-  /*
-   * from useSpinnerTailBaseClassName (makeResetStyles).
-   *
-   * The spinner tail is rendered using two 135deg arc segments, behind a 105deg arc mask.
-   * The segments are rotated out from behind the mask to expand the visible arc from
-   * 30deg (min) to 255deg (max), and then back behind the mask again to shrink the arc.
-   * The tail and spinner itself also have 360deg rotation animations for the spin.
-   */
   .spinner-tail {
     @apply absolute block size-full;
 
@@ -317,12 +211,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootStyles.vertical — applied for `labelPosition === 'above' || 'below'`.
-   * That condition IS "stack the slots on the block axis", so it rides the catalog's
-   * existing `data-orientation` / `vertical` pair (the same encoding react-divider uses
-   * for its own flex-direction switch) instead of a Spinner-only label-position variant.
-   */
   .root {
     @variant vertical {
       @apply flex-col;
@@ -331,11 +219,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Size variations for the spinner slot — arg #3. `size` is a scale prop, so it rides
-   * `data-size` on the ROOT rather than a module class (DECISIONS.md D3); see the header
-   * for why the root and not the slot itself.
-   */
   .root {
     @variant size-extra-tiny {
       & .spinner {
@@ -421,13 +304,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useSpinnerStyles.rtlTail — arg #3 on the spinnerTail slot, applied by the Griffel
-   * hook as `dir === 'rtl' && spinnerStyles.rtlTail` (a runtime read of `useFluent().dir`).
-   * The conic gradients are value-level RTL flips that rtl-css-js does NOT perform, which
-   * is exactly why the original branched in JS; `:dir(rtl)` replaces that branch and
-   * additionally follows the COMPUTED direction of the DOM (DECISIONS.md D5).
-   */
   .spinner-tail {
     @variant rtl {
       -webkit-mask-image: conic-gradient(white 255deg, transparent 255deg);
@@ -446,12 +322,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * Label typography — arg #2 on the label slot, from `typographyStyles.body1` /
-   * `.subtitle2` / `.subtitle1`, expanded to the four longhands the compiler emits.
-   * l2, not l1: the label element's base styles come from @fluentui/react-label's own
-   * hook (see the header).
-   */
   .root {
     @variant size-extra-tiny {
       & .label {

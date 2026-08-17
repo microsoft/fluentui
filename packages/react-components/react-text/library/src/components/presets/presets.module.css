@@ -6,48 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * The 17 typography presets (Body1, Caption1, Display, …), one class each.
- *
- * ── Why ONE module instead of 17 ────────────────────────────────────────────────────
- * Every preset is the same rule shape — the four `typographyStyles.<name>` declarations
- * (font-family / font-size / font-weight / line-height) and nothing else — at the same
- * altitude, from the same token family. Splitting them would repeat the `@reference` +
- * `@layer` header 17 times for 68 declarations, and the build aggregates every module of
- * a package into ONE `dist/styles.css` regardless (DECISIONS.md D1), so the shipped CSS
- * is byte-for-byte the same either way. Keeping them together also puts the whole
- * "which preset sets what" table in one reviewable place.
- *
- * Intra-layer file order is irrelevant here: an element ever carries exactly one preset
- * class, so no two of these rules can meet on a property.
- *
- * ── Why fui.components.l2 (ALTITUDE RULE, DECISIONS.md D2 amendment 2) ──────────────
- * A preset is not a component with its own slots: `createPreset` runs Text's own
- * `useTextStyles_unstable(state)` first and then adds its class on top —
- *
- *   mergeClasses(<preset static class>, state.root.className, styles.root, props.className)
- *                                       ^^^ Text's hook output   ^^^ this module
- *
- * i.e. exactly the "styles applied over ANOTHER component's hook output" case (the
- * ToggleButton-over-Button shape). That makes it a library COMPOSITION, so it belongs in
- * `fui.components.l2`, which beats all of `fui.components.l1` regardless of stylesheet
- * load order. In `fui.components.l1` the winner between `.root`'s `font-size:
- * var(--text-base-300)` and `.display`'s `var(--text-hero-1000)` would come down to
- * which file the aggregator emitted first — the exact nondeterminism l2 exists to remove.
- *
- * ── Local names ────────────────────────────────────────────────────────────────────
- * The locals are lowercase-kebab (`.body1-strong`, `.large-title`), not the camelCase
- * `typographyStyles` key each one transcribes. The generated ident alphabet is
- * all-lowercase, so a camelCase local would be silently down-cased on its way into the
- * DOM — see scripts/css-modules/ident.js. The comment above each rule still names the
- * Griffel slice it came from, which is what makes the mapping auditable.
- *
- * Values reproduce the COMPILED atomics in
- * lib-commonjs/components/presets/<Preset>/use<Preset>Styles.styles.js — every preset is
- * `fk6fouc` (fontFamilyBase) plus one font-size / font-weight / line-height triple, and
- * none of them emits an [ltr, rtl] pair, so there is no RTL work in this file.
- */
-
 @layer fui.components.l2 {
   /* from useBody1Styles.root — typographyStyles.body1 */
   .body1 {

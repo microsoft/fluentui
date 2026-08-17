@@ -5,11 +5,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.base {
-  /*
-   * arg #1 — from useBackdropResetStyles (makeResetStyles). `inset: 0px` is expanded to its
-   * four longhands per the cookbook's shorthand rule; nothing else in this component sets
-   * an inset, so the expansion is inert beyond making the emitted CSS longhand-only.
-   */
   .backdrop {
     @apply fixed bg-background-overlay;
 

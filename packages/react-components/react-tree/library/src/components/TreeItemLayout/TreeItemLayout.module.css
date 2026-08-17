@@ -172,19 +172,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootStyles[appearance] — root arg #3.
-   *
-   * `subtle` is `{}` in the Griffel source ("no shared colors between appearances"), so
-   * it gets no block: `styles['subtle']` is then `undefined` and clsx drops it, matching
-   * the empty class string Griffel produces today.
-   *
-   * Appearance stays a module CLASS rather than a `data-appearance` attribute: no shared
-   * `@custom-variant` exists for these three values and none may be added from a
-   * component package, which is the same line react-badge and react-button drew
-   * (`styles[appearance]`, `styles[shape]`) while `size` — which DOES have catalog
-   * variants — rides a data attribute below.
-   */
   .subtle-alpha {
     @variant hover {
       @apply bg-subtle-background-light-alpha-hover;
@@ -209,15 +196,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootStyles[size] — root arg #4. `size` comes from TreeContext (default
-   * `medium`), not from a TreeItemLayout prop, and is stamped on the ROOT as `data-size`
-   * so the same attribute also drives the icon slices below (the react-button /
-   * react-switch pattern: one stamp, descendant rules).
-   *
-   * Both branches re-state `font-family` and `font-weight` because both Griffel slices
-   * spread a full `typographyStyles.*` object (body1 / caption1).
-   */
   .root {
     @variant size-medium {
       font-family: var(--font-base);
@@ -238,19 +216,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootStyles[itemType] — root arg #5. `itemType` comes from TreeItemContext
-   * (default `leaf`); like `appearance` it has no catalog variant, so it is a module
-   * class.
-   *
-   * `--fluent-TreeItem--level` is set by TreeItem's own module (`.level1` … `.level10`)
-   * or by its inline-style fallback for levels > 10; the `, 1` fallback here reproduces
-   * the compiled atomic for a layout rendered outside a TreeItem.
-   *
-   * The 24px term is `spacingHorizontalXXL` written as a base-scale literal: no utility
-   * can express a term inside `calc()`, and the raw token `var()` would be the one length
-   * here that does not scale (D4 amendment).
-   */
   .leaf {
     padding-inline-start: calc(var(--fluent-TreeItem--level, 1) * 24px * var(--base-scale));
   }
@@ -261,15 +226,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useIconBeforeStyles[size] (iconBefore arg #3) and useIconAfterStyles[size]
-   * (iconAfter arg #3). Both read the root's `data-size`; neither collides with anything
-   * in the root blocks above, so their position within l1 is free — they are grouped last
-   * to keep the root's three-slice sequence readable.
-   *
-   * The compiled atomics are [ltr, rtl] property flips (`padding-right`/`padding-left`
-   * for iconBefore, the mirror for iconAfter), so both become logical properties.
-   */
   .root {
     @variant size-medium {
       & .icon-before {

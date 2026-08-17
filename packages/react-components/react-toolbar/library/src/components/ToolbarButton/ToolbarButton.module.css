@@ -4,91 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useToolbarButtonStyles_unstable, not source declaration order.
- *
- * `root` slot (= @fluentui/react-button's Button root)
- *   1  vertical && useBaseStyles.vertical      → fui.components.l2  ← altitude, below
- *   2  consumer className                      → unlayered (always wins)
- *
- * `icon` slot (= @fluentui/react-button's icon span)
- *   1  vertical && useBaseStyles.verticalIcon  → fui.components.l2  ← altitude, below
- *   2  consumer className                      → unlayered
- *
- * ── ALTITUDE: everything here is l2, nothing is l1 (DECISIONS.md D2 amendment 2) ──────
- * ToolbarButton owns no element of its own: it renders @fluentui/react-button's <Button>
- * and both slices land on slots whose base rules come from `useButtonStyles_unstable`
- * (converted, `fui.components.l1` + `fui.base`). Everything a component applies over
- * another component's hook output belongs in `fui.components.l2`, never l1 — in l1 the
- * winner would be decided by stylesheet load order between Button.module.css and this
- * file.
- *
- * This is load-bearing, not bookkeeping. `useToolbarButtonStyles_unstable` writes its
- * classes onto `state.root` / `state.icon` and THEN calls `useButtonStyles_unstable`,
- * whose own `clsx(...)` puts the incoming className LAST — so Griffel's mergeClasses
- * resolved every collision in ToolbarButton's favour. Both collisions are real:
- *   • root  `flex-direction: column` over Button's row default (its reset is `inline-flex`).
- *   • icon  `font-size: 24px` over the icon reset's `calc(20px * var(--base-scale))`, and
- *           `margin: 0` over `useIconStyles.before/after`'s `margin-inline-*` gap.
- * l2 over l1/fui.base reproduces both deterministically.
- *
- * ── Reaching the icon slot (DECISIONS.md D16.3 — the M2 reference case) ──────────────
- * The icon rule used to select its owner's static class,
- * `.root[data-orientation='vertical'] :global(.fui-Button__icon)`. D16.1 deletes that
- * class, and D16.3 says a sub-slot of a component we RENDER OURSELVES is reached by JS slot
- * composition rather than by renaming the coupling to a marker:
- * `useToolbarButtonStyles_unstable` writes `.icon` onto `state.icon` before handing the
- * state to `useButtonStyles_unstable`.
- *
- * The rule's SCOPE still comes from the root — `data-orientation` lives there, not on the
- * icon — so `.icon` reads it through `@variant group-vertical/fui-toolbar-button`, which
- * compiles to `.icon:is(:where(.group\/fui-toolbar-button):where([data-orientation='vertical']) *)`.
- * That composition works because `vertical` is authored in the shared catalog as
- * `&:where([data-orientation='vertical'])`, the `&:where(…)` shape D15.5 requires
- * (react-tailwind-theme/css/variants.css:45), and `scripts/css-modules/globalize-group-markers.js`
- * keeps the marker segment out of CSS-Modules hashing.
- *
- * The swap DOES lower specificity, and that is safe for exactly one reason — worth spelling
- * out, because "same specificity" would have been the easier claim to make and it is false.
- * Measured from the emitted `dist/styles.css`:
- *
- *   before  .fuicm-…-root:where([data-orientation='vertical']) .fui-Button__icon   (0,2,0)
- *   after   .fuicm-…-icon:is(:where(.group\/fui-toolbar-button):where([data-…]) *)  (0,1,0)
- *
- * `:is()` takes the specificity of its most specific argument, and every branch of that
- * argument is inside `:where()`, which contributes zero — so the whole `:is(…)` scores
- * nothing and only `.icon` counts.
- *
- * It does not matter because ALTITUDE is unchanged at l2 and the cascade consults layer
- * order BEFORE specificity: every rule this one has to beat — react-button's icon reset
- * (`fui.base`) and its `data-icon-position` / `data-size` icon rules (`fui.components.l1`,
- * themselves (0,2,0)) — sits in a lower layer, so l2 wins them at any specificity. The only
- * other l2 rules on this element belong to ToolbarToggleButton/ToolbarRadioButton, which set
- * `color` alone and never render alongside a ToolbarButton root. Consumer CSS is unlayered
- * and still wins, as always.
- *
- * This is the only structural selector change in react-toolbar's sweep (D16.8 names the
- * react-button equivalent as the one to watch).
- *
- * There is no `fui-Icon-filled` / `fui-Icon-regular` rule anywhere in react-toolbar —
- * grep-verified — so no unlayered block is needed in this package.
- *
- * ── Pixel literal (DECISIONS.md D4) ──────────────────────────────────────────────────
- * `fontSize: '24px'` is a px literal, so it rides `--base-scale` as
- * `calc(24px * var(--base-scale))` — byte-identical in form to the value react-button's
- * own `size-large` icon rule uses, and exactly `24px` at the default 16px root.
- *
- * ── RTL ──────────────────────────────────────────────────────────────────────────────
- * The compiled atomics contain no `[ltr, rtl]` pairs. `margin: 0` compiles to the physical
- * shorthand (`.f1s184ao{margin:0}`) and is reproduced as the four physical longhands: they
- * must beat Button's LOGICAL `margin-inline-start/end`, which they do because logical and
- * physical declarations cascade together and l2 outranks l1.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/ToolbarButton/useToolbarButtonStyles.styles.js.
- */
-
 @layer fui.components.l2 {
   .root {
     @variant vertical {
@@ -96,13 +11,6 @@
     }
   }
 
-  /*
-   * from useBaseStyles.verticalIcon — icon arg #1.
-   *
-   * Applied to Button's `icon` slot from JS (see the styles hook); the vertical gate is read
-   * off THIS component's root marker, because `data-orientation` is stamped there. See
-   * "Reaching the icon slot" in the header.
-   */
   .icon {
     @variant group-vertical/fui-toolbar-button {
       font-size: calc(24px * var(--base-scale));

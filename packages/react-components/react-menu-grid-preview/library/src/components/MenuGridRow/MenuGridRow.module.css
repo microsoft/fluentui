@@ -43,30 +43,12 @@
          block — see the S-J/D27 l1 section at the bottom of this file. */
     }
 
-    /*
-     * `:hover:active` — the selector the Griffel source authored verbatim. NOT the shared
-     * `hover-active` variant, which is Button's `:hover:active, :active:focus-visible`
-     * compound and would newly match a keyboard-activated row.
-     *
-     * Written AFTER the `hover` block above: `:where()` flattens both to the same
-     * specificity, so file position is the only tiebreak and the narrower condition has to
-     * come later (Griffel resolved it by specificity instead).
-     */
     @variant hover {
       @variant active {
         @apply bg-neutral-background-1-pressed text-neutral-foreground-2-pressed;
       }
     }
 
-    /*
-     * High contrast. The compiled `s` bucket holds, in this order: the `:hover` colours,
-     * then `createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } })`'s
-     * `:focus`/`:focus-visible`/`[data-fui-focus-visible]` rules. That second factory call
-     * is REDUNDANT in the compiled sheet — `fui-focus-outline` already re-colours its
-     * `::after` border to `Highlight` inside its own `@media (forced-colors: active)` block
-     * — but it is reproduced rather than pruned, because the compiled output is the
-     * contract. Same shape as react-menu's `MenuItem`.
-     */
     @variant forced-colors {
       @variant hover {
         background-color: Canvas;
@@ -92,29 +74,6 @@
     }
   }
 }
-
-/*
- * ─────────────────────────────────────────────────────────────────────────────────────
- * The icon swap, at l1 (S-J retirement of DECISIONS.md D2 amendment 5; D27).
- *
- * `bundleIcon()` renders both glyphs; icons 3.0 (headless) toggles them with
- * `[data-fui-icon-hidden] { display: none }` (0-1-0) from a static stylesheet this repo
- * imports at `@layer fui.components.l1` (D27). Under icons 2.x this block had to be
- * UNLAYERED (the old D2a5 rule); with the hide now inside l1 the escape hatch is retired.
- *
- * The block is l1, NOT `fui.base` with the rest of its slice: at base altitude it would
- * lose to the icons sheet's l1 hide on LAYER order (layers are compared before
- * specificity). At l1 it wins on SPECIFICITY ONLY — 0-2-0 over the hide's 0-1-0; the
- * icons sheet is emitted AFTER component modules in document order, so an
- * equal-specificity rule would lose the within-layer source-order tiebreak. Verified via
- * CDP matched rules (.scratch/sj23-cdp-post.json).
- *
- * Only ONE block lives here — the single `:hover` swap from `useRootBaseStyles` (arg #2) —
- * so there is no intra-block ordering to preserve. MenuGridRow itself renders no glyph; the
- * rule exists for the `bundleIcon()` icons consumers place inside a row (the package's own
- * stories do exactly that).
- * ─────────────────────────────────────────────────────────────────────────────────────
- */
 
 @layer fui.components.l1 {
   .root {

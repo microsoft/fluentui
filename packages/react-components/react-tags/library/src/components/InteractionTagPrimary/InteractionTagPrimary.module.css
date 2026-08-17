@@ -4,99 +4,7 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useInteractionTagPrimaryStyles_unstable, not source declaration order.
- *
- * `root` slot
- *   #  mergeClasses argument                                  → target
- *   ----------------------------------------------------------------------------------
- *   1  interactionTagPrimaryClassNames.root                   → static class (JS)
- *   2  useRootRounded/CircularBaseClassName   (makeReset)     → fui.base  .root +
- *                                                                        .rounded/.circular
- *   3  shape === 'circular' && !hasSecondaryAction
- *        && useRootCircularContrastStyles.withoutSecondaryAction
- *                                                             → l1 .circular-without-secondary-action
- *   4  disabled ? useRootDisabledAppearances[appearance]
- *                : useRootStyles[appearance]                  → l1 .filled/.outline/.brand
- *                                                                  .filled-disabled/…
- *   5  selected && !disabled && useRootStyles.selected        → l1 .selected
- *   6  useRootStyles[size]                                    → l1 (data-size)
- *   7  !media && !icon && useRootWithoutMediaStyles[size]     → l1 .without-media
- *   8  hasSecondaryAction && useRootWithSecondaryActionStyles.base
- *                                                             → l1 .with-secondary-action
- *   9  hasSecondaryAction && useRootWithSecondaryActionStyles[size]
- *                                                             → l1 .with-secondary-action
- *                                                                  (data-size)
- *  10  consumer className                                     → unlayered (always wins)
- *
- * `media` / `icon` / `primaryText` / `secondaryText` slots reuse Tag's blocks verbatim —
- * the styles hook imports `tagSharedSlotStyles` from ../Tag/useTagStyles.styles, which is
- * where the four Griffel hooks it used to call (`useMediaStyles`, `useIconStyles`,
- * `usePrimaryTextStyles`, `useSecondaryTextBaseClassName`) now read from too. Their rules
- * live in Tag.module.css — one definition, selected through each slot's own `data-size`;
- * nothing about them is re-declared here.
- *
- * The six `.fui-Icon-filled` / `.fui-Icon-regular` rules (from args #4 `outline` and #5
- * `selected`) live in one `fui.components.l1` section at the BOTTOM of this file (S-J
- * retirement of D2 amendment 5, D27) — they style `@fluentui/react-icons`' elements,
- * whose hide rule now also sits at l1; see the note there for the cascade math.
- *
- * ── Which prop becomes what ─────────────────────────────────────────────────────────
- * `size` is a small ENUM scale → the catalog's `data-size` variants (DECISIONS.md D3).
- * Everything else the Griffel hook selected with a CONDITIONAL argument (`appearance`,
- * `shape`, `selected && !disabled`, `!media && !icon`, `hasSecondaryAction`, and the
- * compound `shape === 'circular' && !hasSecondaryAction`) stays a conditional CLASS in the
- * hook — the react-button precedent, and the only faithful way to express gates that read
- * three state fields at once. `disabled` is a BRANCH here, not an additive state, so each
- * appearance has its own disabled class.
- *
- * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
- * Selectors are `:where()`-flat (`@variant` compounds add 0 specificity), so within the
- * layer file position decides.
- * • #9 `.with-secondary-action`'s `padding-inline-end` must beat #6's — its block is written
- *   after the `.root` size block.
- * • #8's `border-{start,end}-end-radius` must beat #2's `border-radius` shorthand (it does,
- *   across layers: l1 over fui.base) and its forced-colors `::before` corner must beat #3's
- *   (both l1 — #8 is written later; the two are mutually exclusive in practice anyway).
- * • #5 `.selected` re-sets #4's background/colour/border colours → written after them.
- * • WITHIN each appearance rule the declarations run `d` → `h` → `a` → `m`, reproducing
- *   Griffel's bucket order (its `m` bucket outranks `h`/`a`, so the forced-colors `:hover`
- *   background must come after the plain `:hover` background).
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * Verified against the compiled `[ltr, rtl]` pairs in
- * lib-commonjs/components/InteractionTagPrimary/useInteractionTagPrimaryStyles.styles.js.
- * Every pair is a pure PROPERTY flip carrying identical values on both sides — there is no
- * value-level flip in this component — so each becomes a logical property:
- *   circular reset `border-left` + top/bottom-left-radius  → border-inline-start,
- *                                                            border-{start,end}-start-radius
- *   circularContrast `border-right` + top/bottom-right-radius
- *                                                          → border-inline-end,
- *                                                            border-{start,end}-end-radius
- *   outline / disabled `shorthands.borderColor` halves      → border-inline-{start,end}-color
- *   [size] `padding-right`, withoutMedia `padding-left`     → padding-inline-{end,start}
- *   withSecondaryAction top/bottom-right-radius + border-right-style
- *                                                          → border-{start,end}-end-radius,
- *                                                            border-inline-end-style
- *   ['extra-small'] `left: 0`                               → inset-inline-start
- *
- * ── Spacing & stroke widths (DECISIONS.md D4 amendment + addendum) ──────────────────
- * Values read from a `tokens.spacing*` take the NAMED utility (`pe-horizontal-s`,
- * `pe-horizontal-s-nudge`); the tag's own 7px/5px inline nudges match no step and take the
- * numeric utilities (`pe-7`, `ps-5`), which ride `--base-scale` all the same. `2px` DOES
- * match the XXS step and takes the named utility. `strokeWidthThin`/`Thick` are authored as
- * `var(--spacing-thin)` / `var(--spacing-thick)` — border-width and outline-width do not
- * consume the spacing namespace, and raw `var(--strokeWidth*)` is the one form that does
- * not scale with `--base-scale`.
- */
-
 @layer fui.base {
-  /*
-   * from `baseStyles`, the object BOTH resets spread — useRootRoundedBaseClassName and
-   * useRootCircularBaseClassName (arg #2). The two differ only in corner radius and in the
-   * forced-colors `::before`; those halves are `.rounded` / `.circular` below.
-   */
   .root {
     /* reset default button style */
     color: inherit;
@@ -174,11 +82,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootCircularContrastStyles.withoutSecondaryAction — arg #3. Closes the
-   * high-contrast `::before` outline on the trailing side when there is no Secondary
-   * button to draw it.
-   */
   .circular-without-secondary-action {
     @media (forced-colors: active) {
       position: relative;
@@ -423,39 +326,6 @@
     }
   }
 }
-
-/*
- * ── The icon swap, at l1 (S-J retirement of DECISIONS.md D2 amendment 5; D27) ────────
- *
- * These six rules style ANOTHER package's elements: the <svg>s that
- * `@fluentui/react-icons`' `bundleIcon()` renders inside this button. Under icons 2.x
- * they had to be UNLAYERED (Griffel injected the swap atomics unlayered, and an unlayered
- * declaration beats every `@layer` before specificity is consulted — the old D2a5 rule).
- * Icons 3.0 (headless) replaced the atomics with `[data-fui-icon-hidden]` (0-1-0) from a
- * static stylesheet this repo imports at `@layer fui.components.l1` (D27), so the rules
- * return to their slices' own altitude, l1 — where `.outline` (arg #4) and `.selected`
- * (arg #5) already live.
- *
- * Cascade note (S-J): the icons sheet is emitted AFTER component modules in document
- * order, so at l1 these rules win on SPECIFICITY ONLY — 0-2-0 beats the hide's 0-1-0; an
- * equal-specificity rule would LOSE the within-layer source-order tiebreak. Verified via
- * CDP matched rules (.scratch/sj23-cdp-post.json).
- *
- * Everything that styles THIS component's own root, and everything on its own slots,
- * stays in the layer blocks above. (The `fui-InteractionTagPrimary__*` BEM statics those
- * slots used to carry were removed by DECISIONS.md D16.1; the slots are now addressed
- * only by their hashed module classes. `fui-Icon-filled` / `fui-Icon-regular` are
- * unaffected — they are icons 3.0's public statics.)
- *
- * Ordering is load-bearing and mirrors mergeClasses ARGUMENT order: `.outline` is arg #4,
- * `.selected` is arg #5, so a hovered SELECTED outline tag resolves the filled glyph's
- * colour to colorNeutralForegroundOnBrand — exactly what mergeClasses produced by keeping
- * the later argument's `I6i3kg` atomic. Both flatten to 0-2-0, so within-layer file
- * position is the only tiebreak, same as the unlayered form.
- *
- * `display: inline` is the compiled value, reproduced verbatim; the <svg>s are grid/flex
- * items, so CSS Display 3 blockifies it — that is expected, not a wrong value.
- */
 
 @layer fui.components.l1 {
   .outline {

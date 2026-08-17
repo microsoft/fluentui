@@ -4,38 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * FULLY LAYERED at `fui.components.l1` — StackItemShim has no v8 runtime at all. Its only
- * `@fluentui/react` import is `import type { IStackItemProps }` (StackItemShim.tsx:5): no
- * `classNamesFunction`, no `mergeStyleSets`, nothing that emits merge-styles CSS. There is
- * therefore nothing unlayered to compete with and every rule here is ordinary cookbook work
- * (s4-v8-layering-decision.md §1.1, §2.2).
- *
- * Layer assignment mirrors the mergeClasses ARGUMENT order of StackItemShim.tsx:28-49, which
- * is NOT the source declaration order — and the difference is load-bearing:
- *
- *    1 stackItemClassNames.root ('ms-StackItem') → static class (JS) — RETAINED, see below
- *    2 'group/fui-stack-item-shim'               → named group marker (JS), never index 0
- *    3 .root                     (:6-9)          → height:auto / width:auto
- *    4 align        → .align-self-<value>  (:18-37)
- *    5 verticalFill → .vertical-fill       (:13-15)   height:100% must beat #3's height:auto
- *    6 order        → .order-<value>       (:87-121)
- *    7 grow         → .grow-<value>        (:39-61)
- *    8 shrink       → .shrink-<value>      (:63-85)
- *    9 disableShrink → .disable-shrink     (:10-12)   flex-shrink:0 must beat #8's shrink-1
- *   10 consumer className                         → unlayered (always wins)
- *
- * Blocks below are written in that order. Within a level the winner between equal-specificity
- * rules is in-file source order, so #5 beating #3 and #9 beating #8 is encoded by position and
- * by nothing else — never reorder these blocks.
- *
- * ── `ms-StackItem` is RETAINED (carry-forward constraint for D16) ─────────────────────────
- * `StackItemShim.tsx:17` renders the literal `'ms-StackItem'`. It is a v8 interop class, not a
- * `fui`-prefixed BEM static, so D16.1's removal sweep does not cover it — but a reader sweeping
- * "legacy static classes" would delete it and silently break the three `:not(:global(.ms-StackItem))`
- * exclusions in StackShim.module.css's unlayered block. Recorded here and in the D16 inventory.
- */
-
 @layer fui.components.l1 {
   .root {
     @apply h-auto w-auto;
@@ -78,13 +46,6 @@
   }
 }
 
-/*
- * from useFlexOrderStyles (:87-121). JS keys stay `inherit`/`initial`/`unset`/`revert`/
- * `-3`…`3` — StackItemShim.tsx:31 indexes this catalog by the raw `order` prop value. The
- * locals are renamed because a CSS class cannot be named `-3` or `1`; StackItemShim.styles.ts
- * maps key → local. Declarations are literal rather than `@apply`: the four CSS-wide keywords
- * have no utility and a split authoring style inside one catalog is how a value drifts.
- */
 @layer fui.components.l1 {
   .order-inherit {
     order: inherit;

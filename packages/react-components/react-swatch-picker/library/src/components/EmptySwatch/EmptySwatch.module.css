@@ -4,40 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of
- * useEmptySwatchStyles_unstable, not source declaration order:
- *
- *   1 emptySwatchClassNames.root → static class (JS) — REMOVED in the statics sweep
- *                                  (DECISIONS.md D16.1); the root now leads with `.root`
- *                                  below and carries `group/fui-empty-swatch` second
- *   2 useStyles (makeResetStyles) → fui.base
- *   3 useSizeStyles[size]         → fui.components.l1   (data-size)
- *   4 useShapeStyles[shape]       → fui.components.l1
- *   5 consumer className          → unlayered (always wins)
- *
- * No inversions: the reset sets background-color + the `border` shorthand, the size slice
- * sets width/height, the shape slice sets border-radius — three disjoint property sets, and
- * the hook applies exactly one class from each of #3 and #4. The reset declares no at-rule,
- * so the Griffel `s` bucket (which sorts AFTER every plain makeStyles bucket) is empty here
- * and `fui.base` is an exact model of it.
- *
- * `size` is a SCALE prop and rides `data-size` + the shared `size-*` catalog variants
- * (DECISIONS.md D3); `shape` is a look prop and rides a module class, matching react-badge.
- *
- * Pixel literals (D4): 20 / 24 / 28 / 32px are literals in the Griffel source, not token
- * reads, so they take the numeric utility `size-N`, which rides `--base-scale`
- * (`--spacing: calc(1px * var(--base-scale))`) and is exactly Npx at the default 16px root.
- * The `1px` border width becomes `var(--spacing-thin)` per the D4 addendum (also 1px at the
- * default root) — the ToggleButton precedent for a literal border width.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/EmptySwatch/useEmptySwatchStyles.styles.js.
- *
- * D2 amendment 5 does not apply: no `fui-Icon-filled` / `fui-Icon-regular` anywhere in
- * this module, and it contains no `:global()` at all.
- */
-
 @layer fui.base {
   .root {
     @apply bg-transparent-background;
@@ -71,14 +37,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #4 — from useShapeStyles. Each slice is `{ borderRadius }` plus a
-   * `createCustomFocusIndicatorStyle({ borderRadius })` restatement, which compiles to the
-   * same value under `[data-fui-focus-visible]`. The restatement is reproduced rather than
-   * folded away so the slice mapping stays 1:1 (same shape as react-button's
-   * `.circular` / `.square`).
-   */
-
   .rounded {
     border-radius: var(--radius-medium);
 

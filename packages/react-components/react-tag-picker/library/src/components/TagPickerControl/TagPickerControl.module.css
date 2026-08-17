@@ -4,97 +4,7 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useTagPickerControlStyles_unstable,
- * not source declaration order. TagPickerControl has NO `makeResetStyles`, and every element it
- * styles is its own (`root`, plus the `aside` / `expandIcon` / `secondaryAction` slots this
- * package builds itself), so every block lands in `fui.components.l1`.
- *
- * `root` slot:
- *
- *   #  mergeClasses argument                             bucket    → target
- *   ---------------------------------------------------------------------------------
- *   1  tagPickerControlClassNames.root                   —         → group marker (JS, D16.5)
- *   2  styles.root                                       d + w + m → l1  (block 1)
- *   3  styles[size]                                      d         → l1  (block 2, data-size)
- *   4  styles[appearance]                                d         → l1  (block 3)
- *   5  styles.outlineInteractive  (!disabled, outline)   w + h + a → l1  (block 5)
- *   6  styles.invalid            (invalid, !underline)   d         → l1  (blocks 4b + 6)
- *   7  styles.invalidUnderline   (invalid, underline)    d         → l1  (blocks 4b + 6)
- *   8  styles.disabled                                   d + m     → l1  (block 4a)
- *   9  consumer className                                —         → unlayered (always wins)
- *
- * `aside` slot:                    `expandIcon` slot:            `secondaryAction` slot:
- *   1 static        → removed        1 static      → removed       1 static  → removed
- *   2 asideStyles.root       d       2 iconStyles.icon      d      2 secondaryActionStyles.root  d
- *   3 asideStyles[size]      d       3 iconStyles[size]     d      3 consumer className
- *   4 consumer className     —       4 iconStyles.disabled  d
- *                                    5 consumer className   —
- *
- * ── The ORDER RULE for the root is Griffel's BUCKET order, not argument order ────────
- * `styleBucketOrdering` (@griffel/core/renderer/getStyleSheetForBucket) is
- * ['r','d','l','v','w','f','i','h','a','s','k','t','m']. Read off
- * lib-commonjs/components/TagPickerControl/useTagPickerControlStyles.styles.js, whose
- * `d`/`w`/`h`/`a`/`m` arrays ARE the emission order. This component is Combobox's field shell
- * duplicated — the source comment "bottom focus border, shared with Input, Select, and
- * SpinButton" says so — and it carries the identical three inversions:
- *
- * INVERSION 1 (bucket order): #5 `outlineInteractive` is an EARLIER argument than #6/#7/#8,
- * yet its `w`/`h`/`a` rules are emitted after their `d` rules. It is therefore collected into
- * one trailing "interactive" block (block 5), after `disabled` and after `invalid`'s first
- * branch.
- *
- * INVERSION 2 (bucket order, inside #5): the slice authors `:hover`, `:active` and
- * `:focus-within` as THREE separate selectors, so Griffel files them in three buckets that sort
- * `w` < `h` < `a`. The compiled sheet emits focus-within FIRST, hover second, active last —
- * a hovered-AND-focused control therefore shows `colorNeutralStroke1Hover`, not the pressed
- * border. The blocks inside block 5 are written in that order for exactly that reason.
- *
- * INVERSION 3 (specificity): #6 `invalid` is authored with TWO selector branches
- * (`':not(:focus-within),:hover:not(:focus-within)'`) and they land on opposite sides of the
- * interactive block. Griffel's atomics are not `:where()`-wrapped, so
- * `.fs4k3qj:hover:not(:focus-within)` scores 0-3-0 and outranks the hover bucket's 0-2-0, while
- * the plain `.fs4k3qj:not(:focus-within)` scores 0-2-0 and ties with `.fvs00aa:active` — a tie
- * the `a` bucket wins. `:where()` erases both differences, so the slice is SPLIT: the plain
- * branch in block 4b (before the interactive block, so `:active` still beats it) and the hover
- * branch in block 6 (after it, so red still beats hover).
- *
- * #6/#7 carry NO `!disabled` guard, so under Griffel the red border wins over `disabled`'s
- * 0-1-0 border colors — including the forced-colors `GrayText` ones, which a media query gives
- * no extra weight. Block 4b is written after block 4a to reproduce that.
- *
- * ── The public CSS variable ─────────────────────────────────────────────────────────
- * `--fui-TagPickerControl-aside-width` is PUBLIC API: it is declared on
- * `TagPickerControlCSSProperties` (TagPickerControl.types.ts:26) and written at runtime by
- * `useTagPickerControl.tsx`'s ResizeObserver via the byte-identical
- * `tagPickerControlAsideWidthToken` const. Both the name and the `, 0px` fallback are
- * reproduced verbatim from the compiled atomic
- * (`.f1d8q41i{padding-right:calc(var(--spacing-horizontal-m) + var(--fui-TagPickerControl-aside-width, 0px));}`).
- * The runtime mechanism is untouched by this conversion.
- *
- * ── Slot rules and specificity ──────────────────────────────────────────────────────
- * `data-size` and `data-disabled` live on the ROOT (the headless preview's convention —
- * reports/headless-precedent.md), so every rule for the `aside` / `expandIcon` /
- * `secondaryAction` slots is written as `.root … & .<slot>`. Keeping ALL of them nested holds
- * that whole group at a uniform 0-2-0 so file order alone decides, exactly as it did between
- * Griffel's flat atomics.
- *
- * ── Slices that are NOT here ────────────────────────────────────────────────────────
- * `useStyles.listbox` and `useStyles.listboxCollapsed` are dead code in the Griffel source:
- * they are declared but never referenced by `useTagPickerControlStyles_unstable`, and they
- * duplicate `useTagPickerListStyles`' `root` / `collapsed` slices verbatim. They are dropped
- * rather than transcribed — a module class nothing composes would be unreachable.
- */
-
 @layer fui.components.l1 {
-  /*
-   * from useStyles.root — arg #2.
-   *
-   * The compiled RTL twins are pure property flips (`z189sj`/`uwmqm3` are the padding pair,
-   * `Eqx8gd`/`B1piin3` are the `::after` `left`/`right` pair and carry EQUAL values), so this
-   * slot has no value-level flip: logical properties are exact and no `@variant rtl` twin is
-   * required.
-   */
   .root {
     @apply relative box-border flex min-w-250 flex-wrap items-center;
 
@@ -106,27 +16,8 @@
     /* `paddingLeft: tokens.spacingHorizontalM` */
     @apply ps-horizontal-m;
 
-    /*
-     * `paddingRight: calc(spacingHorizontalM + var(--fui-TagPickerControl-aside-width, 0px))`.
-     *
-     * A spacing step in ARITHMETIC with a runtime variable: no `pe-*` utility can express it,
-     * and raw `var(--spacing-horizontal-m)` is forbidden because it is the one authoring form
-     * that does not ride `--base-scale` (D4 amendment). The M step is therefore written as its
-     * own `calc(12px * var(--base-scale))`, which is byte-for-byte what `pe-horizontal-m`
-     * compiles to (`--spacing-horizontal-m: calc(12px * var(--base-scale))` in the generated
-     * tokens.css) — the AvatarGroupItem precedent for spacing that has to be reached into.
-     */
     padding-inline-end: calc(calc(12px * var(--base-scale)) + var(--fui-TagPickerControl-aside-width, 0px));
 
-    /*
-     * The bottom focus underline, shared with Input, Select and SpinButton. Flat 2px all the
-     * way across, matching the radius of the field's bottom corners.
-     *
-     * The `max()` floor and the `clip-path` inset are LITERAL `2px` in this component's source
-     * and are reproduced literally: they must agree with each other and with
-     * `--radius-medium`, which is an unscaled token. `border-bottom-width` DOES read
-     * `strokeWidthThick`, so it takes the `--spacing-thick` form (D4 addendum).
-     */
     &::after {
       @apply absolute box-border;
 
@@ -191,11 +82,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Block 2 — from useStyles.medium / .large / .['extra-large'], arg #3. Plain px literals in
-   * the source; the numeric utilities reproduce them and ride `--base-scale` like every other
-   * length in the system. `size` is a small ENUM scale → `data-size` (D3).
-   */
   .root {
     @variant size-medium {
       @apply min-h-32;
@@ -212,16 +98,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Block 3 — appearance look classes, arg #4, the `d`-bucket half. The four are mutually exclusive, so
-   * no two are ever on one element. Every `border` shorthand is expanded to longhands because
-   * args #5/#6/#7/#8 each override a subset of the colors.
-   *
-   * `border-*-width` is not a spacing-powered Tailwind family, so `strokeWidthThin` is
-   * referenced through the emitted `--spacing-thin` custom property (D4 addendum);
-   * `border-thin` does not exist.
-   */
-
   .outline {
     @apply border-t-neutral-stroke-1 border-r-neutral-stroke-1 border-b-neutral-stroke-accessible border-l-neutral-stroke-1 bg-neutral-background-1;
 
@@ -276,13 +152,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Block 4a — from useStyles.disabled, arg #8, the last style argument.
-   *
-   * `data-disabled` mirrors the picker context's `disabled`, which the ROOT cannot express
-   * natively: it is a `<div>` with no `disabled` attribute and no `aria-disabled` (only the
-   * `expandIcon` gets that). Exactly the case D15.6 reserves mirroring for.
-   */
   .root {
     @variant disabled {
       cursor: not-allowed;
@@ -304,18 +173,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Block 4b — from useStyles.invalid / .invalidUnderline, args #6/#7, FIRST of their two
-   * selector branches (`:not(:focus-within)`).
-   *
-   * Written AFTER `disabled` because Griffel gives the red border 0-2-0 against disabled's
-   * 0-1-0 (there is no `!disabled &&` guard on these arguments), and BEFORE the interactive
-   * block so the `:active` rules still beat it — see INVERSION 3 in the header.
-   *
-   * `appearance !== 'underline'` is expressed as the appearance-class selector list rather
-   * than a separate conditional class, which is what keeps every root rule in this file at a
-   * flat 0-1-0.
-   */
   .outline,
   .filled-lighter,
   .filled-darker {
@@ -336,19 +193,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * Block 5 — from useStyles.outlineInteractive, arg #5, Griffel buckets `w`, `h` and `a`.
-   * An EARLIER argument than #6/#7/#8 above, emitted later; see INVERSION 1 and 2.
-   *
-   * The `!disabled &&` half of the guard becomes `@variant enabled` — the root carries
-   * `data-disabled` whenever the picker context is disabled. `appearance === 'outline'` is
-   * the class itself.
-   *
-   * Order inside is w → h → a, so:
-   *   • focus-within alone            → Pressed
-   *   • focus-within + hover          → Hover      (h sorts after w)
-   *   • any :active                   → Pressed    (a sorts last)
-   */
   .outline {
     @variant enabled {
       @variant focus-within {
@@ -406,15 +250,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── `aside` slot ────────────────────────────────────────────────────────────────────
-   * An internal slot this package builds itself (`slot.optional` in useTagPickerControl.tsx),
-   * so it is one of TagPickerControl's OWN elements — module-local class, no `:global`, no
-   * data attribute of its own (D16.3: own sub-slot → JS slot composition).
-   *
-   * This is the element the ResizeObserver measures; its width lands on the root as
-   * `--fui-TagPickerControl-aside-width`, which the root's `padding-inline-end` above reads.
-   */
   .root {
     & .aside {
       @apply absolute end-horizontal-m flex h-full cursor-text;
@@ -445,11 +280,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── `expandIcon` slot ───────────────────────────────────────────────────────────────
-   * Reached through the root's `data-size` / `data-disabled`, the same shape react-combobox,
-   * react-input and react-select use for their inner slots.
-   */
   .root {
     & .icon {
       @apply box-border flex cursor-pointer items-center justify-center self-start text-neutral-stroke-accessible;
@@ -457,12 +287,6 @@
       font-size: var(--text-base-500);
     }
 
-    /*
-     * from useIconStyles[size] — arg #3. The `iconSizes` map is px literals exported from
-     * useTagPickerControlStyles.styles.ts; `--base-scale` keeps the glyph scaling with the
-     * root font size (D4). `marginLeft` is a `[ltr, rtl]` property flip
-     * (`Frg6f3: ["f1h9en5y","f1xk557c"]`) → logical `margin-inline-start`.
-     */
     @variant size-medium {
       & .icon {
         @apply ms-horizontal-xxs min-h-32;
@@ -507,26 +331,6 @@
   }
 }
 
-/*
- * ── UNLAYERED: the expand glyph's <svg> display (D2 amendment) ──────────────────────
- * `@fluentui/react-icons` is and stays a Griffel package (DECISIONS.md D11). Every glyph it
- * renders carries `.f1w7gpdv { display: inline }` from
- * `node_modules/@fluentui/react-icons/lib/utils/useIconStyles.styles.js`, injected with NO
- * `@layer`. In the CSS cascade an unlayered normal author declaration beats EVERY layer, and
- * that comparison happens before specificity is consulted — so this rule would lose from
- * inside `fui.components.l1` no matter how specific it is, and the glyph would keep the inline
- * layout box the Griffel source removed ("the SVG must have display: block for accurate
- * positioning, otherwise an extra inline space is inserted after the svg element").
- *
- * Under Griffel both rules were unlayered and the compiled `.fvc9v3g svg { display: block }`
- * won at 0-1-1 against `.f1w7gpdv`'s 0-1-0. Unlayered here restores exactly that comparison.
- * Nothing else in this file competes for `display` on the glyph, so the block holds one rule
- * and its position is not load-bearing.
- *
- * (Grepped this package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — TagPickerControl
- * renders a plain `ChevronDownRegular`, never a `bundleIcon()` pair, so there is no icon-swap
- * rule to lift out alongside it.)
- */
 .icon svg {
   @apply block;
 }

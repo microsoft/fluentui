@@ -2,45 +2,6 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of StyledText.tsx. Every slice is
- * one level, and the file is authored in that order because three properties are written by
- * more than one slice and the LATER argument must win:
- *
- *    1 styledTextClassName   → BEM static (JS) — REMOVED (DECISIONS.md D16.1)
- *    2 sizeStyles[size]      → .base100 … .hero700     (font-size + line-height)
- *    3 weightStyles[weight]  → .light … .bold          (font-weight)
- *    4 .nowrap               (wrap === false)
- *    5 .truncate             (truncate)
- *    6 .align-center         (align === 'center')
- *    7 .align-end            (align === 'end')
- *    8 .align-justify        (align === 'justify')
- *    9 .mention              (atMention)
- *   10 .mention-me           (atMention === 'me')      → font-weight 700, color
- *   11 .disabled             → color
- *   12 .error                → color
- *   13 .important            → font-weight 700, color
- *   14 .success              → color
- *   15 .temporary            → font-style
- *   16 .timestamp            → color
- *   17 consumer className    → unlayered (always wins)
- *
- * INVERSION (declared, and corrected here). The Griffel `useStyles` block DECLARES mention,
- * mentionMe, disabled, error, important, success, temporary, timestamp BEFORE nowrap,
- * truncate and the three align slices — the reverse of arguments 4–8 vs 9–16. Under Griffel
- * that was invisible (each property lives in its own atomic and argument order decides). In a
- * module, file position is the tiebreak, so the blocks below follow ARGUMENT order. It is
- * behaviour-neutral in this case — {white-space, overflow, text-overflow, text-align} and
- * {color, font-weight, font-style} are disjoint sets — but authoring it the other way would
- * bake in a latent inversion the moment either group grew a shared property.
- *
- * REAL collisions the order does decide:
- *   • font-weight: `.mention-me` (10) and `.important` (13) both set 700 and must beat
- *     `weightStyles[weight]` (3). Both are written after the weight block.
- *   • color: `.mention` (9) < `.mention-me` (10) < `.disabled` (11) < `.error` (12) <
- *     `.important` (13) < `.success` (14) < `.timestamp` (16), reproduced exactly.
- */
-
 @layer fui.components.l1 {
   /*
    * Identity-only local. StyledText's root has no unconditional slice of its own — every

@@ -4,57 +4,10 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of the string that
- * `usePortalMountNode()` puts on the portal MOUNT NODE (usePortalMountNode.ts):
- *
- *   1 themeClassName (useThemeClassName_unstable) → react-provider's OWN root class string,
- *                                                   threaded verbatim onto every portal
- *                                                   mount node by
- *                                                   useFluentProviderContextValues.
- *                                                   Authored in FluentProvider.module.css
- *                                                   (`fui.components.l1`) + the runtime
- *                                                   `fui-FluentProvider<useId>` custom-property
- *                                                   class. NOT authored here.
- *   2 usePortalMountNodeStylesStyles.root         → fui.components.l1 (the only makeStyles slice)
- *   3 options.className (`mountNode={{ className }}`) → unlayered consumer class (always wins)
- *
- * One slice, so there are no intra-component inversions to replicate, and no property this
- * module declares is also declared by FluentProvider's root (colour/typography vs
- * position/inset/z-index), so the two l1 blocks that land on this same element cannot tie.
- *
- * ALTITUDE: `l1`, not `l2`. The mount node is created, classed and removed by
- * `usePortalMountNode()` — it is react-portal's OWN element. FluentProvider's class arrives
- * on it as a passenger (a threaded STRING, not a hook styling react-portal's DOM), so this
- * is not the composition case D2 amendment 2 sends to `l2`.
- *
- * The element this class lands on is NOT the element `renderPortal_unstable` returns — that
- * is the hidden virtual-parent `<span>`, which carries no class. Hence the local is named
- * `.mount-node` rather than `.root`.
- */
-
 @layer fui.components.l1 {
   .mount-node {
-    /*
-     * Creates a new stacking context to prevent z-index issues
-     * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
-     *
-     * Also keeps a portal on top of a page to prevent scrollbars from appearing.
-     */
     @apply absolute;
 
-    /*
-     * Compiled AOT output (lib-commonjs/…/usePortalMountNodeStyles.styles.js):
-     *   .f1euv43f{position:absolute}
-     *   .f15twtuk{top:0}                       ← block axis, no [ltr, rtl] pair
-     *   left:0  → [.f1vgc2s3{left:0},  .f1e31b4d{right:0}]
-     *   right:0 → [.f1e31b4d{right:0}, .f1vgc2s3{left:0}]
-     *   .f494woh{z-index:1000000}
-     *
-     * Both inline sides are declared and both are `0`, so the RTL twin is byte-identical to
-     * the LTR one; the logical longhands reproduce both directions in one declaration
-     * (DECISIONS.md D5). `top` was never flipped, so it stays physical.
-     */
     top: 0;
     inset-inline-start: 0;
     inset-inline-end: 0;

@@ -2,15 +2,6 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Replaces Palette.tsx's inline `makeStyles`. App altitude: fui.components.l4.
- *
- * The Griffel version needed a hand-written GLOBAL marker class (`const hexCopyClassName =
- * 'hexCopy'`) because the atomic class for `.hexCopy` is unknowable from inside another
- * slice's selector. CSS Modules removes that need: `.block:hover .hex-copy` is resolved by
- * the module compiler, so the JSX no longer stamps a second, unhashed class name.
- */
-
 @layer fui.components.l4 {
   .root {
     @apply flex justify-evenly;

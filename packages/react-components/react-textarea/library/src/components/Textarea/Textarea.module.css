@@ -8,14 +8,6 @@
   .root {
     @apply relative m-0 box-border inline-flex align-top;
 
-    /* Padding so the focus indicator does not overlap the resize handle; matches the
-       focus indicator size. `padding: 0 0 <thick> 0` expanded to longhands.
-       The three zeros are the `None` spacing step, so they take named utilities (D4
-       amendment). Only the inline pair has a LOGICAL utility — Tailwind's `pt-*` is the
-       physical `padding-top` — so block-start stays a literal rather than give up the
-       logical property. `padding-block-end` is a stroke width; it lives in the same
-       `--spacing-*` namespace (D4 addendum) but has no LOGICAL utility either, so it also
-       stays a direct var reference. */
     @apply ps-horizontal-none pe-horizontal-none;
 
     padding-block-start: 0; /* spacingVerticalNone */
@@ -43,15 +35,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootStyles.filled — arg #4, applied for every `filled*` appearance. The two
-   * `*-shadow` appearances re-set `border-color` in arg #5 below (to the SAME
-   * `--color-transparent-stroke-interactive` these hover/focus rules use), which is why
-   * Griffel's arg-order override of the `border` shorthand is a visual no-op here.
-   *
-   * Griffel authors one compound rule (`:hover,:focus-within`); two variant blocks with
-   * identical declarations are exactly equivalent and use only catalog variants.
-   */
   .filled {
     border-width: var(--spacing-thin);
     border-style: solid;
@@ -106,16 +89,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * from useRootStyles.interactive — arg #6, gated on `!disabled` (the `enabled`
-     * variant reads the root's `data-disabled` presence attribute).
-     *
-     * The whole focus affordance is this `::after` bar: a flat 2px bottom border that
-     * scales in on focus. It is NOT a react-tabster focus indicator — this package
-     * imports no tabster helper and the compiled atomics contain no
-     * `[data-fui-focus-visible]` selector, so the shared `fui-focus-ring` /
-     * `fui-focus-outline` utilities (D6) do not apply here.
-     */
     @variant enabled {
       &::after {
         @apply absolute box-border;
@@ -185,15 +158,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useRootStyles.outlineInteractive — arg #7. `.outline` is only applied when
-   * `!disabled`, so this block needs no `enabled` gate; it is a second `.outline` block
-   * because arg #6 (interactive, above) sits between it and arg #5.
-   *
-   * Written in Griffel BUCKET order (`w` → `h` → `a`), which INVERTS the source order
-   * (`:hover`, `:active`, `:focus-within`): a hovered-and-focused Textarea shows the
-   * hover border, and pressing it shows the pressed border.
-   */
   .outline {
     @variant focus-within {
       @apply border-neutral-stroke-1-pressed border-b-compound-brand-stroke;
@@ -220,11 +184,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * from useRootStyles.invalid — arg #8, the LAST style argument, hence the last rule
-     * in the layer. shorthands.borderColor() expanded to four longhands (the compiled
-     * [ltr, rtl] pair swaps left↔right with the same value).
-     */
     @variant invalid {
       @variant not-focus-within {
         @apply border-t-palette-red-border-2 border-r-palette-red-border-2 border-b-palette-red-border-2 border-l-palette-red-border-2;
@@ -256,12 +215,6 @@
 
       opacity: 1;
     }
-
-    /*
-     * Size variations — arg #3. The padding adds both content and regular padding (per
-     * design spec) because the resize handle is not affected by the root's padding.
-     * `size` is a scale prop, so it rides `data-size` rather than a class (D3).
-     */
 
     @variant size-small {
       @apply max-h-200 min-h-40 px-horizontal-s py-vertical-xs;
@@ -307,13 +260,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useTextareaResizeStyles — textarea slot arg #4. `resize` is an enum look/
-   * structural prop, so it is a `styles[resize]` class lookup (D3) and the class names
-   * are the prop values. `.horizontal` / `.vertical` here are RESIZE directions and are
-   * unrelated to the shared `horizontal` / `vertical` orientation variants; both are
-   * module-local, so nothing collides.
-   */
   .none {
     @apply resize-none;
   }
@@ -333,11 +279,6 @@
 
 @layer fui.components.l1 {
   .textarea {
-    /*
-     * from useTextareaStyles.disabled — arg #5, written after the base/size blocks so it
-     * wins `color` and the placeholder colour. The `disabled` variant matches the NATIVE
-     * `disabled` attribute the textarea slot already carries.
-     */
     @variant disabled {
       color: var(--color-neutral-foreground-disabled);
       cursor: not-allowed;

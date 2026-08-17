@@ -8,12 +8,6 @@
   .root {
     @apply box-border flex min-w-160 flex-col gap-y-horizontal-xxs overflow-y-auto bg-neutral-background-1 p-horizontal-xs outline-transparent-stroke;
 
-    /*
-     * `outline: 1px solid tokens.colorTransparentStroke` expanded to longhands per
-     * CONVERSION_GUIDE §2. The `1px` is a LITERAL in the Griffel source (not
-     * `strokeWidthThin`), so it is reproduced as a literal — same call as react-input's
-     * `border-*-width: 1px`.
-     */
     outline-width: 1px;
     outline-style: solid;
 

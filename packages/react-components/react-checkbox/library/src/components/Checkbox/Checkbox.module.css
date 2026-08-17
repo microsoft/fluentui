@@ -119,16 +119,6 @@
 
     color: var(--color-neutral-foreground-3);
 
-    /*
-     * from createFocusOutlineStyle({ style: {}, selector: 'focus-within' }) — same factory
-     * and same option object react-switch converted. `fui-focus-outline` carries the
-     * compiled declarations; the selector stays here.
-     * Byte-check against `.r1nzur1d[data-fui-focus-within]:focus-within::after`:
-     * content/position/pointer-events/z-index/border/border-radius identical, and the
-     * utility's `calc(0px - 2px - 0px)` offsets compute to the compiled `calc(2px * -1)`.
-     * `:focus-visible` is a strict subset of `:focus`, so the second rule is redundant in
-     * the compiled output too — both are reproduced verbatim rather than pruned.
-     */
     @variant focus {
       outline-style: none;
     }
@@ -178,11 +168,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * root arg #3 — the ternary chain, written in Griffel source-declaration order. Every
-   * branch is mutually exclusive by construction; see the header for why the `enabled`
-   * gate is required rather than cosmetic.
-   */
   .root {
     @variant enabled {
       @variant not-checked {
@@ -260,12 +245,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * from useInputStyles.large — input arg #3. Selected from the root's `data-size`
-     * rather than a stamp on the input itself: the input is the root's child, so one
-     * attribute drives every descendant rule (same approach as react-button's
-     * `data-size` → `.root … & .icon`).
-     */
     @variant size-large {
       & .input {
         /* 8px = spacingHorizontalS as a base-scale literal (D4 amendment) */
@@ -273,12 +252,6 @@
       }
     }
 
-    /*
-     * from useInputStyles[labelPosition] — input arg #4. Unlike react-switch's equivalent
-     * slice this is NOT gated on the label slot existing, which is why Checkbox stamps
-     * `data-label-position` unconditionally. `right`/`left` are an [ltr, rtl] atomic pair
-     * (`j35jbq` / `oyh7mz`), i.e. a pure property flip → `inset-inline-*`.
-     */
     @variant label-before {
       & .input {
         inset-inline-end: 0;
@@ -300,12 +273,6 @@
     }
   }
 
-  /*
-   * from useIndicatorStyles.circular — indicator arg #4. `shape` is a LOOK prop, so it is
-   * a module class on the indicator slot rather than a data-attribute (DECISIONS.md D3);
-   * `styles.square` is intentionally absent because the Griffel source has no `square`
-   * slice (the square radius comes from the base reset).
-   */
   .circular {
     @apply rounded-circular;
   }
@@ -321,12 +288,6 @@
     @apply self-center ps-horizontal-s pe-horizontal-s pt-vertical-s pb-vertical-s text-inherit;
 
     cursor: inherit;
-
-    /* `padding: var(--spacing-vertical-s) var(--spacing-horizontal-s)` expanded to longhands
-       (CONVERSION_GUIDE §2): the position slices below override single inline sides inside
-       this same layer, and Griffel's shorthand-loses-to-longhand priority (`p: -1`) has no
-       CSS equivalent. Inline sides are logical because `before`/`after` compile to an
-       [ltr, rtl] padding pair. Longhands carry the named spacing utilities (D4 amendment). */
   }
 
   .root {

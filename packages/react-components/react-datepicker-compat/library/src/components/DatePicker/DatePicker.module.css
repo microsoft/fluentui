@@ -107,21 +107,6 @@
  */
 
 @layer fui.base {
-  /*
-   * from usePopupSurfaceClassName (makeResetStyles) — compiled:
-   * `.r1ytv1z8{background-color:var(--color-neutral-background-1);box-shadow:var(--shadow-16);
-   *   border-radius:var(--radius-medium);border-width:1px;border-style:solid;
-   *   border-color:var(--color-transparent-stroke);display:inline-flex;
-   *   color:var(--color-neutral-foreground-1);font-family:var(--font-base);
-   *   font-size:var(--text-base-300);font-weight:var(--font-weight-regular);
-   *   line-height:var(--leading-base-300);}`
-   *
-   * `border-radius` and `border-width` are kept as the compiled shorthands: no rule in this
-   * module sets any of their longhands, so none of Griffel's shorthand/longhand priority
-   * machinery survives to get wrong (react-tooltip / react-popover precedent).
-   *
-   * The last four declarations are `...typographyStyles.body1` spread into the reset.
-   */
   .popup-surface {
     @apply inline-flex rounded-medium border-transparent-stroke bg-neutral-background-1 text-neutral-foreground-1;
 
@@ -138,35 +123,12 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.inline — the `popupSurface` slot's arg #4, applied when `inlinePopup`.
-   *
-   * When rendering inline the popupSurface is NOT portalled, so it sits under relatively
-   * positioned siblings such as the Input it belongs to. The surface is absolutely
-   * positioned by react-positioning, so `z-index: 1` is what keeps it on top. DatePicker's
-   * OWN element, hence `l1` — nothing from another package styles it.
-   */
   .popup-surface-inline {
     z-index: 1;
   }
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.base — the `root` slot's arg #14. Compiled:
-   * `.f10pi13n{
-    @apply relative;
-  }` + `.f1k6fduh{
-    @apply cursor-pointer;
-  }` +
-   * `.faxec97 input{
-    @apply cursor-pointer;
-  }`
-   *
-   * `position: relative` is the anchor react-positioning measures the popup against; the
-   * `cursor` pair makes the whole field read as the click target that opens the calendar,
-   * including the inner `<input>` (which would otherwise show the UA text caret cursor).
-   */
   .root {
     position: relative;
     cursor: pointer;
@@ -178,28 +140,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.disabled — the `root` slot's arg #15, applied when `state.disabled`.
-   * Compiled: `.f158kwzp{
-    @apply cursor-default;
-  }` + `.f19qwlmg input{
-    @apply cursor-default;
-  }`
-   *
-   * Authored as a conditional module class driven by `state.disabled`, NOT as a
-   * `@variant disabled` reading the `data-disabled` that `useInputStyles_unstable` stamps on
-   * this same element. The two agree for every render reachable today (DatePicker's
-   * `disabled` prop is the only source of both), but the shared `disabled` variant is a
-   * UNION — `&:where([disabled], [data-disabled], :disabled)` — that grows as packages
-   * convert, and this slice branched on exactly one boolean. A conditional class is also the
-   * literal translation of `disabled && styles.disabled` in the mergeClasses call, so it
-   * carries no assumption about another package's attribute contract (DECISIONS.md D15.6:
-   * data attributes are a fallback, not a requirement).
-   *
-   * This block MUST stay after `.root` above: both set `cursor` at equal specificity inside
-   * the same layer, so file order is the tiebreak that reproduces mergeClasses arg #15
-   * beating arg #14.
-   */
   .disabled {
     cursor: default;
 

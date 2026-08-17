@@ -35,15 +35,6 @@
       }
     }
 
-    /*
-     * `:hover:active` — the selector the Griffel source authored verbatim. NOT the shared
-     * `hover-active` variant, which is Button's `:hover:active, :active:focus-visible`
-     * compound and would newly match a keyboard-activated item.
-     *
-     * Written AFTER the `hover` block above: `:where()` flattens both to the same
-     * specificity, so file position is the only tiebreak and the narrower condition has
-     * to come later (Griffel resolved it by specificity instead).
-     */
     @variant hover {
       @variant active {
         background-color: var(--color-neutral-background-1-pressed);
@@ -69,15 +60,6 @@
       @apply fui-focus-outline;
     }
 
-    /*
-     * High contrast. The compiled `s` bucket holds, in this order: the `:hover` colours,
-     * then `createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } })`'s
-     * `:focus`/`:focus-visible`/`[data-fui-focus-visible]` rules. That second factory call
-     * is REDUNDANT in the compiled sheet — `fui-focus-outline` already re-colours its
-     * `::after` border to `Highlight` inside its own `@media (forced-colors: active)`
-     * block — but it is reproduced rather than pruned, because the compiled output is the
-     * contract.
-     */
     @variant forced-colors {
       @variant hover {
         background-color: Canvas;
@@ -277,47 +259,6 @@
     @apply self-center;
   }
 }
-
-/*
- * ─────────────────────────────────────────────────────────────────────────────────────
- * The icon swap, at l1 (S-J retirement of DECISIONS.md D2 amendment 5; D27).
- *
- * `bundleIcon()` renders both glyphs; icons 3.0 (headless) toggles them with
- * `[data-fui-icon-hidden] { display: none }` (0-1-0) from a static stylesheet this repo
- * imports at `@layer fui.components.l1` (D27). Under icons 2.x these blocks had to be
- * UNLAYERED (Griffel injected the swap atomics unlayered, and an unlayered declaration
- * beats every `@layer` before specificity is consulted); with the hide now INSIDE l1 the
- * escape hatch is retired and the swap rules contend at the same altitude.
- *
- * Cascade note (S-J): the icons sheet is emitted AFTER component modules in document
- * order, so at l1 these rules win on SPECIFICITY ONLY — 0-2-0 beats the hide's 0-1-0; an
- * equal-specificity rule would LOSE the within-layer source-order tiebreak. Verified via
- * CDP matched rules (.scratch/sj23-cdp-post.json).
- *
- * ── Why ALL THREE blocks are l1, including the base-reset half ──────────────────────
- * The `.root` :hover half comes from `useRootBaseStyles`, whose own slice is `fui.base` —
- * but at base altitude the swap would lose to the icons sheet's l1 hide on LAYER order
- * (layers are compared before specificity), so it rides at l1 with its siblings. The
- * three blocks stay in ONE layer so file position keeps arbitrating their internal order.
- *
- * ── Order inside this section reproduces mergeClasses ARGUMENT order ────────────────
- * Every selector here is `:where()`-flat at 0-2-0 and `.root`, `.submenu-open` and
- * `.disabled` are three CSS-module classes on the SAME element, so within-layer file
- * position is the only tiebreak:
- *
- *   1. `.root` :hover swap                 ← arg #2 (useRootBaseStyles, `r` bucket)
- *   2. `.submenu-open` swap                ← arg #3 (useStyles.submenuOpen, `d` bucket)
- *   3. `.disabled` :hover swap-BACK        ← arg #4 (useStyles.disabled, `h` bucket)
- *
- * which is also the Griffel bucket order (r < d < h), so a hovered *disabled* item keeps
- * the outline glyph — the same winner the compiled sheet produced.
- *
- * Everything that styles MenuItem's OWN elements keeps its slice's own altitude above,
- * including the `.icon` / `.sub-text` colour rules that were lifted out of the same
- * source blocks: those locals sit on this package's slots and nothing competes for them
- * across layers.
- * ─────────────────────────────────────────────────────────────────────────────────────
- */
 
 @layer fui.components.l1 {
   .root {

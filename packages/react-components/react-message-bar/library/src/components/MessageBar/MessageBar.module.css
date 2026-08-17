@@ -4,95 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useMessageBarStyles_unstable,
- * not source declaration order.
- *
- * `root` slot
- *   1 messageBarClassNames.root                      → static class (JS)
- *   2 useRootBaseStyles          (makeReset)         → fui.base           .root
- *   3 useStyles.rootMultiline    (layout multiline)  → fui.components.l1  (data-layout)
- *   4 useStyles.square           (shape === 'square')→ fui.components.l1  `.square`
- *   5 useRootIntentStyles[intent]                    → fui.components.l1  (data-intent)
- *   6 consumer className                             → unlayered (always wins)
- *
- * `icon` slot
- *   1 messageBarClassNames.icon                      → static class (JS)
- *   2 useIconBaseStyles          (makeReset)         → fui.base           .icon
- *   3 useIconIntentStyles[intent]                    → fui.components.l1  (data-intent)
- *   4 consumer className                             → unlayered
- *
- * `bottomReflowSpacer` slot
- *   1 messageBarClassNames.bottomReflowSpacer        → static class (JS)
- *   2 useReflowSpacerBaseStyles  (makeReset)         → fui.base           .bottom-reflow-spacer
- *   (the Griffel hook merges NO consumer className on this slot — reproduced verbatim
- *    in the rewritten hook rather than "fixed")
- *
- * ── ALTITUDE: everything here is l1 ─────────────────────────────────────────────────
- * All three slots are MessageBar's OWN elements — `icon` is a plain `<div>` wrapper the
- * component renders itself, not another component's hook output — so nothing qualifies
- * for `fui.components.l2`. The `<svg>` inside the icon wrapper comes from
- * `@fluentui/react-icons`, but MessageBar styles only the wrapper (`color`/`font-size`,
- * inherited by the glyph); it declares no rule whose SUBJECT is an icons-owned element,
- * so the D2-amendment-5 unlayered rule does not apply. Grepped for `fui-Icon-filled` /
- * `fui-Icon-regular` / `:global(` across the whole package: zero hits, and
- * `getIntentIcon` returns plain `*Filled` icons, never a `bundleIcon()` pair.
- *
- * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
- * Nothing inside fui.components.l1 collides: args #3/#4/#5 on the root set disjoint
- * property sets (grid/whitespace/padding-block-start · border-radius · background +
- * border colors). The blocks are still written in mergeClasses argument order so a later
- * refactor cannot silently invert a winner. Across layers the two real overrides are
- * `rootMultiline`'s grid template + `align-items` over the reset, and `square`'s
- * `border-radius: 0` over the reset's `--radius-medium` — both l1-over-base.
- *
- * ── Enum props → in-module attribute selectors ──────────────────────────────────────
- * `data-layout` and `data-intent` are the names the in-repo headless preview already
- * stamps for THIS component (react-headless-components-preview/…/MessageBar/useMessageBar.ts:
- * `state.root['data-layout'] = state.layout`, `state.root['data-intent'] = …`), and both
- * are in the 25-name vocabulary (reports/headless-precedent.md). Both are read through the
- * shared `@custom-variant` catalog (@fluentui/react-tailwind-theme `css/variants.css`),
- * whose `layout-singleline` / `layout-multiline` / `intent-info|success|warning|error`
- * entries the Phase 3 catalog pass promoted out of this file's original raw attribute
- * selectors. Every catalog entry is `:where()`-wrapped, so specificity stays flat and the
- * cascade is decided by layer + file order alone — the same property the raw selectors had.
- *
- * `data-layout` is SHARED with RadioGroup's `layout` prop, which carries a disjoint value
- * space (`vertical` / `horizontal` / `horizontal-stacked`); see the catalog's note. `intent`
- * had no vocabulary anywhere, so its four names come from the public prop.
- *
- * `shape` stays a MODULE CLASS (`.square`) — D3 keeps look props (`appearance`, `shape`,
- * `color`) on class lookups; the headless preview has no `data-shape`.
- *
- * `data-intent` sits on the ROOT and drives the icon slot through a descendant selector
- * (react-button's `data-size` → `.root … & .icon` precedent): one stamp, and the icon
- * wrapper keeps a bare static class.
- *
- * ── Dead slice ──────────────────────────────────────────────────────────────────────
- * `useStyles.secondaryActionsMultiline` is NOT reproduced: it is declared in the Griffel
- * source but referenced by no mergeClasses call anywhere in the repo (grepped), i.e. it
- * compiles to atomics that are never applied. `useMessageBarActionsStyles.styles.ts`
- * carries the live copy of those declarations (`useMultilineStyles.root`).
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * The compiled atomics carry three [ltr, rtl] pairs, all pure PROPERTY flips → logical
- * properties, no `@variant rtl` twin needed:
- *   useRootBaseStyles   padding-left → padding-right    → padding-inline-start (ps-*)
- *   useIconBaseStyles   margin-right → margin-left      → margin-inline-end    (me-*)
- *   useRootIntentStyles border-right-color ⇄ border-left-color — the two sides carry the
- *                       SAME colour, so the flip is a no-op; the four longhands stay
- *                       physical, matching the react-badge conversion.
- *
- * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
- * Every value the Griffel source read from a `tokens.spacing*` is authored as the NAMED
- * spacing utility (`ps-horizontal-m`, `me-horizontal-s`, `mb-vertical-s`,
- * `pt-vertical-m-nudge`). `min-height: 36px` is a pixel literal with no spacing step, so
- * it takes the numeric utility `min-h-36` (identical scaling system: both ride
- * `--base-scale`). `tokens.strokeWidthThin` becomes `var(--spacing-thin)` — border widths
- * do not consume the `--spacing-*` utility namespace in v4 (D4 addendum), and those four
- * tokens are the only ones also emitted as real custom properties.
- */
-
 @layer fui.base {
   .root {
     @apply box-border grid min-h-36 items-center rounded-medium bg-neutral-background-3 ps-horizontal-m whitespace-nowrap;
@@ -126,11 +37,6 @@
     @variant layout-multiline {
       @apply pt-vertical-m-nudge whitespace-normal;
 
-      /* literal `start`, NOT `@apply items-start`: that utility emits
-         `align-items: flex-start`, while the compiled Griffel atomic is
-         `align-items: start`. On this grid container the two render identically (CSS Box
-         Alignment: `flex-start` behaves as `start` on non-flex items), but the computed
-         value differs — reproduce the compiled one. */
       align-items: start;
 
       grid-template-columns: auto 1fr auto;
@@ -142,23 +48,12 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * root arg #4 — from useStyles.square, gated on `shape === 'square'`.
-   * Literal `0`, not `rounded-none`: the compiled atomic is `border-radius:0`, and zero
-   * has nothing to scale.
-   */
   .square {
     border-radius: 0;
   }
 }
 
 @layer fui.components.l1 {
-  /*
-   * root arg #5 — from useRootIntentStyles[intent]. `info` is intentionally absent: its
-   * Griffel slice is `{}` ("already in base reset styles"), so it emits no rule.
-   * `shorthands.borderColor(x)` expands to the four physical longhands (CONVERSION_GUIDE
-   * §2) — Griffel's shorthand/longhand priority machinery has no CSS equivalent.
-   */
   .root {
     @variant intent-error {
       @apply border-t-status-danger-border-1 border-r-status-danger-border-1 border-b-status-danger-border-1 border-l-status-danger-border-1 bg-status-danger-background-1;
@@ -175,11 +70,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * icon arg #3 — from useIconIntentStyles[intent], selected from the root's
-   * `data-intent` (the icon slot carries no attributes of its own). `info` is `{}` in the
-   * Griffel source and emits no rule here either.
-   */
   .root {
     @variant intent-error {
       & .icon {

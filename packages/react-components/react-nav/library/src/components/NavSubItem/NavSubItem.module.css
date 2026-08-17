@@ -4,62 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useNavSubItemStyles_unstable,
- * NOT source declaration order:
- *
- *   #  mergeClasses argument                       → target
- *   -----------------------------------------------------------------------------------
- *   1  navSubItemClassNames.root                   → REMOVED (D16.1); the root's identity is
- *                                                    now the `group/fui-nav-sub-item`
- *                                                    marker, and `.root` leads the clsx
- *   2  useRootDefaultClassName     (makeReset)     → fui.base          .root
- *   3  isSmallDensity && useSmallStyles            → fui.components.l1 .small
- *   4  isSmallDensity && .smallBase                → fui.components.l1 .small-base
- *   5  .base                                       → fui.components.l1 .base
- *   6  selected && useIndicatorStyles.base         → fui.components.l1 .indicator
- *   7  selected && useContentStyles.selected       → fui.components.l1 .selected
- *   8  selected && .selectedIndicator              → fui.components.l1 .selected-indicator
- *   9  consumer className                          → unlayered (always wins)
- *
- * ── INVERSION #1: `.smallBase` is dead in every density ─────────────────────────────
- * Args #4 and #5 set the SAME property (`padding-inline-start`: 40px vs 46px) on the same
- * element, and #5 is unconditional, so mergeClasses' last-wins rule made `.base`'s 46px the
- * winner even at `density="small"` — `.smallBase`'s 40px never renders. The compiled
- * atomics confirm it: `.f17f9sv1` (40px) and `.fqo71ku` (46px) share Griffel's property key
- * `uwmqm3`, so mergeClasses DELETES the earlier one from the emitted class string.
- *
- * That is reproduced, not corrected: `.small-base` is written BEFORE `.base` so the 46px
- * rule wins the file-position tiebreak (both selectors are 0-1-0 in the same layer). The
- * dead slice is kept rather than deleted so the mapping above stays 1:1 with the hook and so
- * a future fix is a one-line reorder in the hook, not a CSS re-derivation. Flagged in the
- * conversion report.
- *
- * Arg #3's `padding` shorthand also loses its inline-start half to #4/#5 the same way (in
- * Griffel it nulled the four longhand keys and set the shorthand; in CSS the later longhand
- * rules simply come after).
- *
- * ── INVERSION #2: the indicator offset ──────────────────────────────────────────────
- * Arg #8 overrides arg #6's `::after { margin-inline-start }` (-16px → -52px, i.e. the
- * shared `indicatorOffset` plus this component's 36px sub-level indent). Written after #6
- * for the same reason.
- *
- * NavSubItem declares NO icon slot, so this module has no `.fui-Icon-*` rules (the swap
- * blocks in NavItem/NavCategoryItem/AppItem/AppItemStatic sit at l1 per S-J/D27).
- *
- * The shared slices (args #2, #3, #6, #7) are DUPLICATED into this module rather than
- * shared — see NavItem.module.css's header for the full rationale plus the spacing, RTL and
- * shorthand notes that apply identically here.
- *
- * ── Spacing (DECISIONS.md D4) ────────────────────────────────────────────────────────
- * 46px, 40px and -52px match NO spacing step, so they take the numeric fallback
- * (`ps-46` compiles to `calc(46px * var(--base-scale))`).
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/sharedNavStyles.styles.js and
- * lib-commonjs/components/NavSubItem/useNavSubItemStyles.styles.js.
- */
-
 @keyframes nav-sub-item-indicator-enter {
   0% {
     background-color: transparent;

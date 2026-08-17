@@ -5,21 +5,9 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l2 {
-  /*
-   * Identity-only local. AlphaSlider's root has no declarations of its own — its layout comes
-   * entirely from ColorSlider's reset — but this class exists so the root always emits a
-   * selector-safe leading token ahead of `group/fui-alpha-slider` (DECISIONS.md D15.1 /
-   * D16.2), and so the orientation blocks below have a local of THIS module to hang off.
-   * Do not delete because it looks empty.
-   */
   .root {
   }
 
-  /*
-   * from useStyles.rail. Beats ColorSlider's `.hue` background-image because it is `l2`;
-   * `border` has no ColorSlider counterpart on the rail (that slot's only border-ish
-   * declaration is an `outline`), so it merely adds.
-   */
   .rail {
     border: var(--spacing-thin) solid var(--color-neutral-stroke-1);
     background-image:
@@ -39,15 +27,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useThumbStyles.horizontal / .vertical — the same shape as ColorSlider's own thumb
-   * orientation block, but reading AlphaSlider's progress var.
-   *
-   * `translateX(-50%)` and `left` are value-level / physical RTL in the compiled output
-   * (`.f1nfknbn{transform:translateX(50%)}`, `.fh8h8tc{right:var(--fui-AlphaSlider--progress)}`),
-   * so the inset becomes logical and the transform gets an `@variant rtl` twin. The vertical
-   * pair (`translateY(50%)` + `bottom`) has no flip and stays physical.
-   */
   .root {
     @variant horizontal {
       & .thumb {

@@ -82,15 +82,6 @@
     /* `padding: spacingVerticalSNudge spacingHorizontalS` */
     @apply px-horizontal-s py-vertical-s-nudge;
 
-    /*
-     * from useStyles.active — arg #4, applied unconditionally. The focus ring an
-     * activedescendant Option draws for itself; the 2px literals are react-tabster's
-     * documented FIXME value and are reproduced verbatim (DECISIONS.md D6).
-     *
-     * The compiled `left`/`right` pair carries equal values
-     * (`Bmau3bo: ["ftjv2f4","f1flhb1f"]`), so `inset-inline` is an exact translation and
-     * no `@variant rtl` twin is required.
-     */
     &:where([data-activedescendant-focusvisible])::after {
       @apply pointer-events-none absolute rounded-medium border-stroke-focus-2;
 
@@ -105,13 +96,6 @@
       inset-inline: -2px;
     }
 
-    /*
-     * from useStyles.disabled — arg #5. The `disabled &&` guard becomes `disabled-control`,
-     * the variant whose selector list includes `[aria-disabled='true']` — which is exactly
-     * what `useOptionBase_unstable` puts on the root for a disabled Option. No `data-disabled`
-     * mirror is minted: the native/ARIA state already sits on the element that needs it
-     * (DECISIONS.md D15.6).
-     */
     @variant disabled-control {
       color: var(--color-neutral-foreground-disabled);
       cursor: default;
@@ -124,26 +108,10 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── `checkIcon` slot ────────────────────────────────────────────────────────────────
-   * Flat 0-1-0 classes in mergeClasses ARGUMENT order, the same way Griffel handed the
-   * atomics over: within this group file position alone decides every tie.
-   */
-
   .check-icon {
     @apply invisible -ms-horizontal-xxs me-horizontal-xxs shrink-0;
 
     font-size: var(--text-base-400);
-
-    /*
-     * Shift icon(s) to the left to give text content extra spacing without needing an extra
-     * node. This is done instead of gap since the extra space only exists between
-     * icon > content, not icon > icon.
-     *
-     * Both margins are `[ltr, rtl]` property flips in the compiled atomics
-     * (`Frg6f3: ["f18b9hdq","fn6qj8t"]`, `t21cq0: ["f1xk557c","f1h9en5y"]`) → logical
-     * inline properties, negated named utility for the pull-left.
-     */
   }
 
   .multiselect-check {
@@ -188,20 +156,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── from useStyles.interactive — arg #3, Griffel buckets `h` and `a` ─────────────────
-   * An EARLIER mergeClasses argument than #4/#5, but Griffel emits `h`/`a` after `d`
-   * (`styleBucketOrdering` = r,d,l,v,w,f,i,h,a,s,k,t,m), so these are written last.
-   *
-   * The `!disabled &&` guard becomes `enabled-control` — the complement of the
-   * `disabled-control` variant used above, so the two can never both match.
-   *
-   * `:active` is authored AFTER `:hover` because Griffel's `a` bucket follows `h`; a
-   * pressed Option therefore keeps `colorNeutralBackground1Pressed` while it is also
-   * hovered. The check-icon border color is the SAME token in both states
-   * (`colorNeutralForeground1Hover` — the Griffel source says so twice), reproduced
-   * verbatim rather than "fixed" to a Pressed token.
-   */
   .root {
     @variant enabled-control {
       @variant hover {
@@ -225,25 +179,6 @@
   }
 }
 
-/*
- * ── UNLAYERED: the check icon's <svg> display (D2 amendment) ────────────────────────
- * `@fluentui/react-icons` is and stays a Griffel package (DECISIONS.md D11). Every glyph it
- * renders carries `.f1w7gpdv { display: inline }` from
- * `node_modules/@fluentui/react-icons/lib/utils/useIconStyles.styles.js`, injected with NO
- * `@layer`. In the CSS cascade an unlayered normal author declaration beats EVERY layer, and
- * that comparison happens before specificity is consulted — so this rule would lose from
- * inside `fui.components.l1` no matter how specific it is, and the glyph would keep the
- * inline layout box the Griffel source removed.
- *
- * Under Griffel both rules were unlayered and the compiled `.fvc9v3g svg { display: block }`
- * won at 0-1-1 against `.f1w7gpdv`'s 0-1-0. Unlayered here restores exactly that comparison.
- * Nothing else in this file competes for `display` on the glyph, so the block holds one rule
- * and its position is not load-bearing.
- *
- * (Grepped this package for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — Option renders
- * plain `CheckmarkFilled` / `Checkmark12Filled`, never a `bundleIcon()` pair, so there is no
- * icon-swap rule to lift out alongside it.)
- */
 .check-icon svg {
   @apply block;
 }

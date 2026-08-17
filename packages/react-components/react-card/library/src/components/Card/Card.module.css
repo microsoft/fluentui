@@ -174,11 +174,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useCardStyles.orientationHorizontal / .orientationVertical — root arg #3.
-   * Only the declarations whose subject is Card's OWN root are here; the CardPreview /
-   * CardHeader / CardFooter margin and flex-grow rules are in l2 below.
-   */
   .root {
     @variant horizontal {
       @apply flex-row items-center;
@@ -191,13 +186,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useCardStyles.sizeSmall / .sizeMedium / .sizeLarge — root arg #4.
-   * `size` is a small ENUM scale, so it rides the catalog's `data-size` variants
-   * (cookbook scale-prop rule). Both declarations are custom properties, hence the D4
-   * literal `calc(<n>px * var(--base-scale))` form — 8/12/16px are spacingS/M/L, and this
-   * is exactly what `*-horizontal-s` / `-m` / `-l` emit.
-   */
   .root {
     @variant size-small {
       --fui-Card--size: calc(8px * var(--base-scale));
@@ -217,12 +205,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useCardStyles.filled / .filledAlternative / .outline / .subtle — root arg #5.
-   * `appearance` is a "look" enum, so it stays a module class lookup (DECISIONS.md D3,
-   * same call react-button made for its own `appearance`).
-   * `shorthands.borderColor()` expanded to four physical longhands (cookbook §2).
-   */
   .filled {
     background-color: var(--color-neutral-background-1);
     box-shadow: var(--shadow-4);
@@ -261,16 +243,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useCardStyles.filledInteractive / .filledAlternativeInteractive /
-   * .outlineInteractive / .subtleInteractive — root arg #7, gated on
-   * `!disabled && (interactive || selectable)`.
-   *
-   * That union rides ONE presence attribute (`data-interactive`, the catalog's
-   * `interactive` variant introduced by ListItem for the identical
-   * `selectable || navigable` shape) rather than two attributes, per the cookbook's
-   * boolean-pair rule — neither half of the union gates anything on its own here.
-   */
   .filled {
     @variant interactive {
       @apply cursor-pointer;
@@ -370,12 +342,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useCardStyles.*InteractiveSelected — root arg #8. Despite the slice names, the
-   * Griffel gate is `state.selected` ALONE (no interactive half), so these ride
-   * `data-selected` on its own. Written after arg #7 because they re-set the same
-   * `background-color`, `::after` border colours and `:hover` pair.
-   */
   .filled {
     @variant selected {
       background-color: var(--color-neutral-background-1-selected);
@@ -434,43 +400,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useCardStyles.focused / .selectableFocused — root arg #9, the output of
-   * `createFocusOutlineStyle({ style: focusOutlineStyle, selector: 'focus' | 'focus-within' })`.
-   *
-   * The ring itself comes from the shared `fui-focus-outline` utility (cookbook: never
-   * hand-copy the ring CSS); only the three values Card overrides are written here, via
-   * the utility's knobs.
-   *
-   *   outlineWidth : tokens.strokeWidthThick     → var(--spacing-thick)   (D4 addendum)
-   *   outlineRadius: var(--fui-Card--border-radius)
-   *   outlineOffset: -2px  — upstream's own FIXME literal ("tokens.strokeWidthThick
-   *                          causes some weird bugs"), reproduced verbatim, NOT
-   *                          "fixed" to a stroke width (DECISIONS.md D6).
-   *
-   * The knobs are set on `&::after`, not on the element: the `fui-focus-outline` utility
-   * RESETS every outline knob to `initial` on the element it is applied to
-   * (react-tailwind-theme/css/utilities.css — the knobs are unregistered and would
-   * otherwise inherit, so the reset is what keeps a knob on one component from leaking
-   * into a nested one). Declarations on `::after` itself sit past that element-level
-   * reset and always win. Custom properties resolve at computed-value time, so declaring
-   * them in a second `::after` rule works regardless of which rule is written first.
-   *
-   * `--fui-Card--border-radius` itself is an UNregistered custom property, so it inherits
-   * into `::after` normally — the reset above already relies on that.
-   *
-   * Byte-check against the compiled atomics:
-   *   .fpqizxz[…]::after{border:var(--stroke-width-thick) solid var(--color-stroke-focus-2)}
-   *   .fnd8nzh[…]::after{border-radius:var(--fui-Card--border-radius)}
-   *   .f15fr7a0[…]::after{top:calc(0px - var(--stroke-width-thick) - -2px)}   (×4 sides)
-   * The utility's `calc(0px - var(--fui-focus-outline-width, 2px) -
-   * var(--fui-focus-outline-offset, 0px))` substitutes to exactly that.
-   *
-   * The two `outline-style: none` rules are emitted OUTSIDE the focus-visible selector by
-   * `createFocusOutlineStyle`, so they stay with the caller; `:focus-visible` is a strict
-   * subset of `:focus`, and the redundant second rule is reproduced rather than pruned
-   * because the compiled output contains it (`.ftqa4ok:focus` / `.f2hkw1w:focus-visible`).
-   */
   .focused {
     @variant focus {
       outline-style: none;
@@ -513,23 +442,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useCardStyles.highContrastInteractive — root arg #10.
-   *
-   * ⚠ The state selector is `&:hover, & :active` — a DESCENDANT combinator on the second
-   * branch, not `:hover:active` and not `&:active`. The Griffel source writes
-   * `':hover, :active'` WITH a space after the comma, which make-styles turns into a
-   * descendant selector; the compiled atomics prove it:
-   *     .f1quqgnd:hover, .f1quqgnd :active { forced-color-adjust: none }
-   * The cookbook's rule is to reproduce the COMPILED selector, not the authored intent,
-   * so this is written raw rather than via `@variant hover` / `@variant active` (which
-   * would silently narrow the second branch to the element itself). Both branches are
-   * `:where()`-flattened to keep the module's 0-1-0 uniformity.
-   *
-   * The `::after` border colours are NOT under the state selector — in the source they
-   * are a sibling of `':hover, :active'` inside the media query, and the compiled
-   * `.fyj59f4::after` carries no state.
-   */
   .root {
     @variant interactive {
       @variant forced-colors {
@@ -666,12 +578,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useCardStyles.outlineDisabled — root arg #13, gated on
-   * `disabled && appearance === 'outline'`. Written after arg #12 so its transparent
-   * background and `box-shadow: none` (base and `:hover`/`:active`) beat the generic
-   * disabled block's opaque pair.
-   */
   .outline {
     @variant disabled {
       background-color: var(--color-transparent-background);
@@ -716,15 +622,6 @@
   }
 }
 
-/*
- * ── COMPOSITION ALTITUDE (fui.components.l2) ────────────────────────────────────────
- * Everything below has another component's element as its SUBJECT: this package's
- * CardPreview / CardHeader / CardFooter, or @fluentui/react-text's Text. All four are
- * styled by their own hooks in `fui.components.l1`, so Card's rules over them belong one
- * altitude up (D2 amendment 2). Blocks are laid out in mergeClasses ARGUMENT order, same
- * as the l1 section — file position is the only tiebreak inside a layer.
- */
-
 @layer fui.components.l2 {
   .root {
     & > :global(.group\/fui-card-header),
@@ -743,17 +640,6 @@
         margin-bottom: calc(var(--fui-Card--size) * -1);
       }
 
-      /* Tabster's "Groupper" injects hidden elements before and after Card's content, so
-         these two target the CardPreview that is *visually* first / last.
-
-         The marker leads the compound — `.group\/…:not(…)` rather than the `:not(…).group\/…`
-         the static version used — and that ordering is load-bearing, not style. The build's
-         `globalize-group-markers` PostCSS pass wraps any bare `.group\/x` it finds, and
-         skips a marker only when `:global(` sits IMMEDIATELY to its left. A marker parked
-         mid-compound is therefore rewritten to `:global(…:global(.group\/x)…)`, which
-         postcss-modules rejects outright: "A :global is not allowed inside of a :global(...)".
-         Compounds are order-independent (no type selector here), so this is the same
-         0-3-0 selector matching the same elements. */
       & > :global(.group\/fui-card-preview:not([aria-hidden='true']):first-of-type) {
         margin-inline-start: calc(var(--fui-Card--size) * -1);
       }
@@ -781,13 +667,6 @@
         margin-top: calc(var(--fui-Card--size) * -1);
       }
 
-      /* The mixed case (D16.3, statics-removal design §2.1): the left half of the sibling
-         combinator is Card's OWN floatingAction slot, so it goes LOCAL (hashed) rather than
-         being renamed to another global token — the coupling is removed, not relabelled.
-         The right half is CardPreview's ROOT, which Card does not render, so it stays a
-         global and becomes the marker. One local + one global, same 0-3-0 as the
-         `.fui-Card__floatingAction + .fui-CardPreview` compound it replaces. The SUBJECT is
-         still CardPreview, which is why the rule sits at this altitude. */
       & > .floating-action + :global(.group\/fui-card-preview) {
         margin-top: calc(var(--fui-Card--size) * -1);
       }
@@ -820,12 +699,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useCardStyles.highContrastInteractive — root arg #10, the fragment whose subject
-   * is CardPreview / CardFooter. Same `&:hover, & :active` descendant quirk as the l1
-   * half; compiled selector:
-   *   .f3n01jk:hover .fui-CardPreview, .f3n01jk :active .fui-CardPreview, …
-   */
   .root {
     @variant interactive {
       @variant forced-colors {

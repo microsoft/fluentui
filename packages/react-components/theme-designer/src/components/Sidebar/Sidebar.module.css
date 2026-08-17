@@ -8,13 +8,6 @@
  */
 
 @layer fui.components.l4 {
-  /*
-   * from useStyles.root.
-   *   - `borderRight` is RTL-flipped by Griffel, so it becomes `border-inline-end-*`,
-   *     with the `1px solid <color>` shorthand expanded to longhands.
-   *   - `gap: '<vertical> <horizontal>'` is a two-value shorthand: row gap first,
-   *     column gap second.
-   */
   .root {
     @apply flex flex-col items-center justify-start gap-x-horizontal-xxl gap-y-vertical-xxl border-e-neutral-stroke-1 bg-neutral-background-3;
 

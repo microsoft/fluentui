@@ -85,24 +85,9 @@
  */
 
 @layer fui.base {
-  /*
-   * from useResetStyles (makeResetStyles), minus its `@media (forced-colors: active)`
-   * block — that one is the Griffel `s` bucket and lives further down this file.
-   *
-   * `--fui-SwatchPicker--color` / `--fui-SwatchPicker--borderColor` are set as inline
-   * styles by `useColorSwatch_unstable` (`swatchCSSVars`); the runtime-value mechanism
-   * ports unchanged (CONVERSION_GUIDE "Known special cases").
-   */
   .root {
     @apply box-border inline-flex shrink-0 items-center justify-center overflow-hidden p-0;
 
-    /* Kept as the `border` shorthand the source wrote; every other border declaration in
-       this component is also a shorthand (`border: none`), so no longhand competes.
-
-       The fallback matters: `borderColor` is an optional prop, so when it is omitted the
-       inline custom property is absent and an unguarded `var()` resolves to the initial
-       `currentColor` — a visible border in the swatch's own colour. Upstream added the
-       same fallback rather than relying on an inline default. */
     border: var(--spacing-thin) solid var(--fui-SwatchPicker--borderColor, var(--color-transparent-stroke));
     background: var(--fui-SwatchPicker--color);
 
@@ -193,12 +178,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #4 — from useShapeStyles. Each slice is `{ borderRadius }` plus a
-   * `createCustomFocusIndicatorStyle({ borderRadius })` restatement of the same value; the
-   * restatement is reproduced so the slice mapping stays 1:1.
-   */
-
   .rounded {
     border-radius: var(--radius-medium);
 
@@ -225,13 +204,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * args #5 + #6 — from useStyles.selected and useStyles.selectedSmall. The second is
-   * applied only when the first is (`state.selected && smallerSelectedStyles`), so it is
-   * nested here as `size-small-or-below` instead of taking its own class; the catalog
-   * variant's value set (`small`, `extra-small`, `tiny`) covers this component's two
-   * smallest steps exactly. Written in Griffel BUCKET order — see the header.
-   */
   .selected {
     border: none;
     box-shadow:
@@ -286,20 +258,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── HOISTED: the reset's `@media (forced-colors: active)` block ──────────────────────
-   *
-   * These declarations come from `useResetStyles` (makeResetStyles) and would naturally
-   * sit in `fui.base` with the rest of it. They are here instead because Griffel puts
-   * reset at-rules in the `s` bucket, which sorts after every plain makeStyles bucket —
-   * see the header. Placed AFTER the size and selected blocks (args #3/#5/#6, which it
-   * beats in forced colors) and BEFORE the disabled block (arg #7, whose own `m`-bucket
-   * forced-colors rule beats it).
-   *
-   * `forced-color-adjust` rides along rather than staying behind in `fui.base`: nothing
-   * else in the component sets it, so its layer is inert and keeping the reset's HC block
-   * intact keeps the mapping legible.
-   */
   .root {
     @variant forced-colors {
       forced-color-adjust: none;
@@ -347,14 +305,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * `icon` / `disabledIcon` slots. `.icon` is arg #1 of BOTH merges; the per-size
-   * font-size (arg #2) is selected from the ROOT's `data-size` through a descendant
-   * selector between two locals of this same module — the react-badge shape — rather than
-   * a second data attribute on the icon (D15.6). `.disabled-icon` is arg #3 and applies to
-   * the `disabledIcon` slot only.
-   */
-
   .icon {
     @apply absolute flex self-center;
   }

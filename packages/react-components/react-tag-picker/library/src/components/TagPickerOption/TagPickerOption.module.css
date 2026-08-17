@@ -30,11 +30,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useRootStyles.secondaryContent — applied to the ROOT while a `secondaryContent` slot
-   * is present, so the media / label / secondary-content trio can lay out as a two-column,
-   * two-row grid. `display: grid` must beat Option's own `display: flex`; see the header.
-   */
   .with-secondary-content {
     @apply grid;
 

@@ -14,12 +14,6 @@
     margin-inline-start: auto;
     opacity: 0;
 
-    /*
-     * Written longhand rather than with Tailwind's `-translate-y-1/2`: v4's translate
-     * utilities set the `translate` PROPERTY, not `transform`, and Griffel emitted
-     * `transform: translateY(-50%)`. The two compose differently against a consumer
-     * transform, so the literal is the faithful reproduction.
-     */
     transform: translateY(-50%);
   }
 

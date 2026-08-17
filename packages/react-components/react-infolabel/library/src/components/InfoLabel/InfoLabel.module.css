@@ -4,71 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useInfoLabelStyles_unstable,
- * not source declaration order.
- *
- * `root` slot (a plain <span> InfoLabel owns):
- *   1 infoLabelClassNames.root       → static class (JS)
- *   2 consumer className             → unlayered (always wins)
- *   InfoLabel styles NOTHING on its own root — the Griffel hook only applied the static
- *   class. `.root` exists here solely as the selector anchor for the `data-size` rule at
- *   the bottom of this file.
- *
- * `label` slot:
- *   1 infoLabelClassNames.label      → static class (JS)
- *   2 useLabelStyles.base            → fui.components.l2
- *   3 consumer className             → unlayered
- *
- * `infoButton` slot:
- *   1 infoLabelClassNames.infoButton → static class (JS)
- *   2 useInfoButtonStyles.base       → fui.components.l2
- *   3 size === 'large' && .large     → fui.components.l2  (root data-size)
- *   4 consumer className             → unlayered
- *
- * ── Why EVERYTHING here is l2, not l1 (D2 amendment 2 / cookbook altitude rule) ──────
- * InfoLabel owns no styled element of its own. Both styled slots are other components:
- * `label` renders `@fluentui/react-label`'s `Label` and `infoButton` renders this package's
- * `InfoButton`, so both elements' base styles come from ANOTHER hook whose rules live in
- * `fui.components.l1`. InfoLabel restyling them is a library COMPOSITION; l2 makes it win
- * regardless of stylesheet load order, reproducing what mergeClasses guaranteed (InfoLabel's
- * classes arrived as those components' LAST argument, via `className`).
- *
- * This is load-bearing in both directions, not bookkeeping:
- *   - `.label { color: inherit }` must beat Label's own
- *     `.root { color: var(--color-neutral-foreground-1) }`;
- *   - `.info-button { vertical-align: top }` must beat InfoButton's
- *     `vertical-align: middle`, and the negative margins must beat its `margin: 0`
- *     (expanded to four longhands there).
- *
- * ── Why `data-size` lives on the ROOT ───────────────────────────────────────────────
- * `useInfoButtonStyles_unstable` stamps `root['data-size']` from InfoButton's OWN `size`
- * prop, which would overwrite anything InfoLabel wrote onto the infoButton slot. Driving
- * the rule from the InfoLabel root's own attribute is therefore the only encoding that
- * keeps the Griffel gate intact — the Griffel hook branched on `state.size`, InfoLabel's
- * size, which can differ from the rendered InfoButton's when a consumer overrides the slot
- * (`<InfoLabel size="large" infoButton={{ size: 'small' }} />`). Same resolution the
- * react-spinner conversion used for its Label slot.
- *
- * The resulting descendant selector is 0-2-0 rather than the usual 0-1-0; inert here,
- * because it and the `.info-button` block it overrides sit in the same layer with the
- * higher-specificity rule written second — the winner is the same either way.
- *
- * ── One altitude-induced inversion, corrected in place ──────────────────────────────
- * Within every slot, file order equals mergeClasses argument order — there is no
- * argument-vs-declaration inversion in the Griffel source. But moving to l2 introduces one
- * of its own: `color: inherit` on the label now outranks Label's `@media (forced-colors:
- * active) { color: GrayText }`, which Griffel's BUCKET order had winning. The `.label`
- * block below restates that rule to keep the original winner; see its comment.
- *
- * ── No RTL ──────────────────────────────────────────────────────────────────────────
- * The compiled atomics contain no `[ltr, rtl]` pairs at all (block-direction margins and
- * `vertical-align` are direction-agnostic), so no `@variant rtl` block is needed.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/InfoLabel/useInfoLabelStyles.styles.js.
- */
-
 @layer fui.components.l2 {
   /* from useLabelStyles.base — label slot arg #2 (atomics f12kltsn / fpo1scq / f1ym3bx4) */
   .label {
@@ -76,26 +11,6 @@
     cursor: inherit;
     color: inherit;
 
-    /*
-     * BUCKET-ORDER FIDELITY — not a slice of InfoLabel's own, a restatement of Label's.
-     *
-     * @fluentui/react-label's `disabled` slice sets `color` TWICE: plainly, and again under
-     * `@media (forced-colors: active) { color: GrayText }`. Griffel keys a declaration by
-     * its property AND its at-rule context, so those two got DIFFERENT keys — verbatim from
-     * Label's pre-conversion AOT output, `disabled: { sj55zd: "f1s2aq7o", B7iucu3:
-     * "f1cyfu5x" }` with `@media (forced-colors: active){.f1cyfu5x{color:GrayText;}}`.
-     * `color: inherit` above is `sj55zd` (`f1ym3bx4`), so arriving as Label's last
-     * mergeClasses argument it deleted only the plain one; the GrayText class survived and
-     * won by bucket order (`m` after `d`).
-     *
-     * Promoting `color: inherit` to the composition altitude inverts that: a cascade-layer
-     * comparison resolves before any media-query, specificity or source-order step, so l2
-     * would beat Label's l1 GrayText and `<InfoLabel disabled>` would lose its grayed-out
-     * label in high contrast. Restated here so the Griffel winner still wins.
-     * `data-disabled` is stamped on this very element by `useLabelStyles_unstable`, and
-     * `disabled` reaches the label slot through `useInfoLabel_unstable`'s `...labelProps`
-     * (verified in rendered output).
-     */
     @variant disabled {
       @variant forced-colors {
         color: GrayText;
@@ -115,11 +30,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useInfoButtonStyles.large — infoButton slot arg #3 (atomics fkrn0sh / fmxx68s),
-   * keyed off the InfoLabel root's `data-size`; see the header for why it cannot ride the
-   * infoButton slot's own attribute.
-   */
   .root {
     @variant size-large {
       & .info-button {

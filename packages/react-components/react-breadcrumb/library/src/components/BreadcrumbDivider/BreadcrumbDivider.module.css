@@ -11,12 +11,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useIconStyles[size] — arg #3. `size` is a scale prop, so it rides `data-size`
-   * rather than a module class (DECISIONS.md D3). The Griffel hook defaults it in the
-   * destructure (`const { size = 'medium' } = state`); the converted hook stamps the
-   * defaulted value, so `medium` needs a rule here rather than being the implicit fallback.
-   */
   .root {
     @variant size-small {
       font-size: calc(12px * var(--base-scale));

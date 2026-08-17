@@ -2,20 +2,6 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Replaces Toc.tsx's inline `makeStyles` (phase3-worklist Item 12c).
- *
- * ALTITUDE: fui.components.l4 for all of it — every subject is one of the addon's own
- * plain elements (<nav>, <h3>, <ol>, <li>, <a>). No converted component is involved, so
- * there is no l2 exception here.
- *
- * The hex literals and the 11px/14px font sizes are carried over verbatim: the Griffel
- * source hardcoded them rather than reading tokens, and this is Storybook docs chrome
- * whose look is defined against the sibling global sheet (docs-chrome.css), not against
- * the Fluent ramp. `marginLeft`/`left` are RTL-flipped by Griffel and therefore become
- * logical (`ms-*` / `start-*`).
- */
-
 @layer fui.components.l4 {
   .root {
     @apply sticky top-64 ms-40;

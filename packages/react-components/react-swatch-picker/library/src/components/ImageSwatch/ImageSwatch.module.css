@@ -135,12 +135,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #4 — from useShapeStyles. Each slice is `{ borderRadius }` plus a
-   * `createCustomFocusIndicatorStyle({ borderRadius })` restatement of the same value; the
-   * restatement is reproduced so the slice mapping stays 1:1.
-   */
-
   .rounded {
     border-radius: var(--radius-medium);
 
@@ -203,20 +197,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * ── HOISTED: the reset's `@media (forced-colors: active)` block ──────────────────────
-   *
-   * These four declarations come from `useStyles` (makeResetStyles) and would naturally
-   * sit in `fui.base` with the rest of it. They are here instead because Griffel puts
-   * reset at-rules in the `s` bucket, which sorts after every plain makeStyles bucket —
-   * see the header. Written LAST in the file so it beats `.selected`'s `:hover` /
-   * `:hover:active` shadows (args #5) in forced colors, which is the winner Griffel
-   * produced.
-   *
-   * `forced-color-adjust` rides along rather than staying behind in `fui.base`: nothing
-   * else in the component sets it, so its layer is inert and keeping the reset's HC block
-   * intact keeps the mapping legible.
-   */
   .root {
     @variant forced-colors {
       forced-color-adjust: none;

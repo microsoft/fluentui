@@ -19,40 +19,14 @@
     @apply relative;
   }
 
-  /*
-   * from useStyles.chartWrapperMinWidth — applied only when `reflowProps.mode === 'min-width'`.
-   * Authored AFTER `.chart-wrapper` because it is the later mergeClasses argument; it sets a
-   * different property so nothing actually ties today, but file position is where a future tie
-   * would be decided (CONVERSION_GUIDE §1 order rule).
-   */
   .chart-wrapper-min-width {
     @apply overflow-auto;
   }
 
-  /*
-   * from useStyles.plotContainer.
-   *
-   * NOTE: `CartesianChart.tsx` renders no element carrying this class today — the slot is
-   * returned by the hook and reaches consumers only through the public `CartesianChartStyles`
-   * interface. It is kept (rather than dropped as dead) because it is a documented public slot
-   * and removing it would be an API change, not a conversion.
-   */
   .plot-container {
     @apply relative h-full w-full;
   }
 
-  /*
-   * from useStyles.axisTitle AND useStyles.axisAnnotation. Both slices are the SAME expression
-   * — `getAxisTitleStyle() as GriffelStyle` (utilities/Common.styles.ts) — and compile to the
-   * identical atomic set, so one rule emits both locals.
-   *
-   * That factory is SHARED (DonutChart, AnnotationOnlyChart, … still consume it), so it is NOT
-   * converted in this batch: CONVERSION_GUIDE's shared-utilities rule converts a style util
-   * only when ALL of its consumers are converted. Its declarations are inlined here from the
-   * compiled atomics, exactly as DonutChart.module.css `.axis-annotation` already does; when
-   * the factory is finally retired these two blocks are the reference for the shared local.
-   * typographyStyles.caption2Strong + fontStyle/textAlign/color/fill.
-   */
   .axis-title,
   .axis-annotation {
     @apply text-center not-italic;
@@ -69,11 +43,6 @@
     }
   }
 
-  /*
-   * from useStyles.xAxis. The `<g>` this lands on is empty in JSX — d3-axis appends the
-   * `<text>`, `<line>` and `<path>` children into it — so these descendant selectors are
-   * CartesianChart styling its OWN subtree (l1), not another component's.
-   */
   .x-axis {
     & text {
       @apply fill-neutral-foreground-1;
@@ -89,14 +58,6 @@
       opacity: 0.2;
       stroke: var(--color-neutral-foreground-1);
 
-      /*
-       * Reproduced verbatim from `.f1myyn02 line{width:1px;}`. `width` is a geometry property
-       * only on `<rect>`, `<image>`, `<foreignObject>` and friends — never on `<line>` — so
-       * this declaration is inert in every engine. It is kept because the conversion is a pure
-       * re-expression of the compiled output, and written as a bare `1px` rather than a spacing
-       * utility because the source froze a literal: `w-thin` would multiply it by
-       * `--base-scale` and silently introduce a value the Griffel version never had.
-       */
       width: 1px;
       forced-color-adjust: auto;
     }
@@ -143,11 +104,6 @@
     @apply cursor-default opacity-10;
   }
 
-  /*
-   * from useStyles.legendContainer — marginTop: spacingVerticalS (8px),
-   * marginLeft: spacingHorizontalXL (20px), which Griffel emitted as the
-   * `margin-left` / `margin-right` pair and is therefore the logical inline-start margin.
-   */
   .legend-container {
     @apply ms-horizontal-xl mt-vertical-s;
   }
@@ -161,13 +117,6 @@
     }
   }
 
-  /*
-   * from useStyles.tooltip = getTooltipStyle() (utilities/Common.styles.ts) — the same shared
-   * factory LineChart.module.css `.tooltip` inlines, for the same reason (see `.axis-title`).
-   * This class is handed to `tooltipOfAxislabels`, which sets it on a d3-created `<div>` with
-   * `.attr('class', …)` — a class TOKEN assignment, so a multi-token `clsx` string is fine
-   * there (unlike the SELECTOR sites; see the hook).
-   */
   .tooltip {
     @apply pointer-events-none absolute flex flex-col rounded-small bg-neutral-background-1 p-horizontal-s text-center text-neutral-foreground-1;
 
@@ -178,23 +127,6 @@
   }
 }
 
-/*
- * ── annotation-layer: fui.components.l2 (D2a5 transitional phase CLOSED in C7) ───────────
- *
- * `.annotation-layer` is not one of CartesianChart's own elements. It is handed to
- * `<ChartAnnotationLayer className={classes.annotationLayer}>`, whose hook composes it
- * as `clsx(styles.root, marker, props.className, props.styles?.root)` onto its own root
- * `<div>` — l2 is the altitude that mirrors that consumer position (decorating another
- * component's element, after the owner's own l1 `.root`).
- *
- * HISTORY: while ChartAnnotationLayer was still on Griffel (through C5) this rule had to
- * be UNLAYERED — the owner's root `pointerEvents: 'none'` atomic was an unlayered Griffel
- * declaration that beats every `@layer` before specificity is consulted, so a layered
- * copy could never have won the (value-identical) contention. C6 converted the owner
- * (its root rule now sits in `fui.components.l1`), so the C7 plumbing batch moved this
- * block back up into `@layer fui.components.l2` per the D2a5 return rule, under the
- * full-charts VR gate (reports/charts-c6-c7.md).
- */
 @layer fui.components.l2 {
   .annotation-layer {
     @apply pointer-events-none;

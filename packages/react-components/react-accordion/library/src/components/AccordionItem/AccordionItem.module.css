@@ -28,17 +28,6 @@
  */
 
 @layer fui.components.l1 {
-  /*
-   * The declaration below is load-bearing and is NOT a style. A literally empty `.root {}`
-   * DOES NOT SURVIVE this pipeline — `@tailwindcss/postcss` runs before `postcss-modules`
-   * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and drops empty rules,
-   * comments included, so the generated class map comes out `{}` and `styles.root` is
-   * `undefined` at runtime. See the long-form note in
-   * ../Accordion/Accordion.module.css for the measurements and for why jest cannot catch it.
-   *
-   * `initial` changes nothing: a custom property set to `initial` takes the
-   * guaranteed-invalid initial value, exactly equivalent to never having been declared.
-   */
   .root {
     --fui-accordion-item-identity: initial;
   }

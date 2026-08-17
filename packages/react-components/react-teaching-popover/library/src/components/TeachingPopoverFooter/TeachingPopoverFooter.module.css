@@ -7,14 +7,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.root — root arg #2.
-   * The root is `flex` in both layouts, so the axis the `gap` renders on changes with
-   * `footerLayout`; the two spacing scales are one system (both compute through
-   * `--base-scale`), so `gap-horizontal-s` and a vertical step emit the same length. The
-   * `horizontal` namespace is the arbitrary-but-consistent pick, matching PopoverSurface's
-   * all-sides padding.
-   */
   .root {
     @apply flex gap-horizontal-s pt-vertical-m;
   }
@@ -31,11 +23,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.buttonRootHorizontal / .buttonRootVertical — primary/secondary arg #2.
-   * Both slots take the same pair of classes, exactly as the Griffel hook applied the same
-   * pair of slices to both.
-   */
   .button-horizontal {
     @apply min-w-96;
 
@@ -50,11 +37,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.brandSecondary — secondary arg #3 (`appearance === 'brand'`).
-   * `shorthands.borderColor(...)` is expanded to the four longhands the compiler emitted
-   * (cookbook), with the right/left pair written logically because Griffel flipped it in RTL.
-   */
   .brand-secondary {
     @apply border-s-neutral-foreground-on-brand border-e-neutral-foreground-on-brand;
 
@@ -64,15 +46,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.brandPrimary — primary arg #3 (`appearance === 'brand'`).
-   *
-   * The hover / hover+active blocks reproduce the source's `':hover'` and `':hover:active'`
-   * selectors EXACTLY — nested `hover` + `active` catalog variants, not the catalog's
-   * `hover-active` compound. `hover-active` is `:hover:active, :active:focus-visible`, the
-   * shape react-button's own Griffel source authored; this file authored the narrower one,
-   * and widening it would newly paint the pressed look on a keyboard-activated button.
-   */
   .brand-primary {
     color: var(--color-brand-foreground-1);
     background-color: var(--color-neutral-foreground-on-brand);

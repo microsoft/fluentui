@@ -6,12 +6,6 @@
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @layer fui.components.l2 {
-  /*
-   * from useStyles.root — arg #2, the two declarations that actually reached the DOM.
-   * `margin-block: auto` vertically centres the nav button inside the flex nav container;
-   * `pointer-events: all` re-enables hit-testing inside CarouselNavContainer's
-   * `pointer-events: none` overlay (it is not Tailwind's `pointer-events-auto`).
-   */
   .root {
     @apply mt-auto mb-auto;
 

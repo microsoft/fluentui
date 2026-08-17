@@ -4,37 +4,6 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * The two scroll-lock classes `useDisableBodyScroll` toggles on `documentElement` and `body`
- * while a modal DialogSurface is open. Neither is a slot: `useDisableBodyScroll.ts` adds and
- * removes them with `classList.add` / `.remove`, so nothing here goes through `clsx`, no
- * marker applies (a marker is a component's identity, and these elements are the consumer's),
- * and there is no mergeClasses argument order to mirror — each class was a standalone
- * `makeResetStyles`.
- *
- * ── ALTITUDE: UNLAYERED (PR-36513 review item 5; D2 amendment 5 rationale) ──────────────
- * These rules previously sat in `@layer fui.base`, which let ANY unlayered consumer rule on
- * `<html>` / `<body>` — an ordinary page reset like `body { overflow-y: auto }` — outrank the
- * lock regardless of specificity, so the document behind an open modal Dialog could scroll.
- * That is not a styling preference a consumer should win by default; it is the FUNCTIONAL
- * half of modality, and losing it silently is a behavioural regression from Griffel.
- *
- * They are unlayered for the same reason D2 amendment 5 unlayers rules whose subject element
- * is owned by external code: `<html>` and `<body>` are not this component's elements, and a
- * layered rule can never beat the unlayered CSS that typically styles them. Unlayered, the
- * cascade is decided exactly as it was for the Griffel `makeResetStyles` atomics (verified in
- * lib-commonjs/utils/useDisableBodyScroll.styles.js — Griffel injected these UNLAYERED):
- *
- *   • Against a consumer ELEMENT reset (`html` / `body`, 0-0-1) the class wins on
- *     specificity, 0-1-0 — Griffel parity restored. Probed in Dialog.cy.tsx
- *     ("keeps the body scroll locked against an unlayered consumer reset").
- *   • Against an equal-or-higher-specificity unlayered consumer rule the later source order
- *     wins — also unchanged from Griffel, which offered no stronger guarantee.
- *   • A consumer who INTENDS to opt out still can (higher specificity or `!important`),
- *     which keeps the D2 "consumer CSS wins" contract available as a deliberate act rather
- *     than a reset accident.
- */
-
 .html-no-scroll {
   @apply overflow-y-hidden;
 

@@ -10,11 +10,6 @@
     @apply relative inline-flex;
   }
 
-  /*
-   * arg 4 — from useStyles.pie. The forced-colors override comes from the same Griffel
-   * slice and lands in its `m` bucket, which is emitted after the default bucket; nesting
-   * it inside the rule reproduces that order.
-   */
   .pie {
     background-color: var(--color-transparent-stroke);
     clip-path: circle(50%);

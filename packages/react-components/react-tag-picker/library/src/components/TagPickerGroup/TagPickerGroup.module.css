@@ -11,14 +11,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useStyles.medium / .large / .['extra-large'] — arg #2, keyed by the PICKER size.
-   *
-   * `padding: '<vertical> 0 <vertical> 0'` expands to the block/inline logical pair. The
-   * `row-gap` values name HORIZONTAL tokens in the source; reproduced verbatim (the
-   * `--spacing-*` namespace is axis-agnostic, so `gap-y-horizontal-xs` emits the token's
-   * length on the block axis).
-   */
   .medium {
     @apply gap-y-horizontal-xs px-horizontal-none py-vertical-s-nudge;
   }

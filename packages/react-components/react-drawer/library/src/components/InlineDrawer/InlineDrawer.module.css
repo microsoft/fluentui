@@ -46,13 +46,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #3b — from the shared useDrawerStyles[size] (non-bottom) and
-   * useDrawerBottomBaseStyles[size] (bottom). The two tables are identical for small /
-   * medium / large and differ only for `full` (100vw vs 100%), so the bottom+full pair is
-   * expressed as one override written AFTER the plain `full` rule — both selectors flatten
-   * to 0-1-0 under `:where()`, so file position is the tiebreak.
-   */
   .root {
     @variant size-small {
       --fui-Drawer--size: calc(320px * var(--base-scale));
@@ -79,13 +72,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #4 — from useDrawerRootStyles.separatorStart / .separatorEnd / .separatorBottom.
-   * Written after arg #3a because it REPLACES the position border on the same edge: in
-   * Griffel both slices wrote the same atomic property key (`u1mtju` for `borderRight`),
-   * so the later mergeClasses argument won. Under `:where()`-flat selectors the two rules
-   * tie at 0-1-0 and file position is what restores that winner.
-   */
   .separator {
     @variant position-start {
       @apply border-e-neutral-background-3;
@@ -123,18 +109,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #6 — from useDrawerRootStyles.animationExitStart / .animationExitEnd /
-   * .animationExitBottom. Last in the file because it must beat arg #5's `width` / `height`
-   * and both border sources above it (args #3a and #4).
-   *
-   * Griffel compiled the slice's `border: 'none'` to the `border:none` SHORTHAND with the
-   * every-border-longhand reset that Griffel's shorthand machinery implies. The cookbook
-   * requires longhands in emitted CSS, and `border-style: none` is the half that carries the
-   * rendering: a computed `border-*-width` is 0 whenever its style is `none`, so the four
-   * style longhands reproduce `border: none` exactly for layout and paint without
-   * re-declaring widths or colours that can never be seen.
-   */
   .animation-exit {
     border-block-start-style: none;
     border-block-end-style: none;

@@ -19,12 +19,6 @@
   }
 }
 
-/*
- * ── COMPOSITION ALTITUDE (fui.components.l2) ────────────────────────────────────────
- * When the surrounding Card is selected or hovered it takes custom forced-colors
- * background/foreground, so the action's Button/Link must adopt `currentColor` to stay
- * visible. Subject is another package's element — see the ALTITUDE note in the header.
- */
 @layer fui.components.l2 {
   .action {
     @variant forced-colors {

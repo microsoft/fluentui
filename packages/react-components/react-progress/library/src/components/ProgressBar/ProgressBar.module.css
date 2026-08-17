@@ -159,11 +159,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useBarStyles.base (high contrast half) — written LAST on purpose.
-   * See the "one real inversion" note in the header: Griffel's media bucket outranks its
-   * default bucket, so this beats every color class above regardless of argument order.
-   */
   .bar {
     @variant forced-colors {
       background-color: Highlight;

@@ -132,17 +132,6 @@
   .root {
     @apply relative inline-grid touch-none items-center justify-items-center;
 
-    /*
-     * from useRootStyles.focusIndicatorHorizontal / .focusIndicatorVertical — root arg #3,
-     * both `createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: … } })`.
-     * `fui-focus-outline` carries the compiled declarations; the selector stays here
-     * (CONVERSION_GUIDE §2, "Focus rings").
-     *
-     * The two `outline-style: none` rules are emitted OUTSIDE the focus-within selector by
-     * `createFocusOutlineStyle`, so they stay with the caller; `:focus-visible` is a strict
-     * subset of `:focus` and the redundant second rule is reproduced rather than pruned
-     * because the compiled output contains it (`.ftqa4ok:focus` / `.f2hkw1w:focus-visible`).
-     */
     @variant focus {
       outline-style: none;
     }
@@ -155,23 +144,6 @@
       @apply fui-focus-outline;
 
       &::after {
-        /*
-         * The knob is set on `&::after`, not on the element: the `fui-focus-outline`
-         * utility RESETS every outline knob to `initial` on the element it is applied to
-         * (react-tailwind-theme/css/utilities.css — isolation for the unregistered,
-         * otherwise-inheriting knobs), and declarations on `::after` itself sit past that
-         * element-level reset and always win. Custom properties resolve at computed-value
-         * time, so declaring it in a second `::after` rule works regardless of rule order.
-         *
-         * Only the BLOCK axis can ride the knob — `outlineOffset` was passed per side and
-         * the inline sides differ per orientation, so they are written out below. Byte-check
-         * against the compiled atomics:
-         *   .f1pffoy2[…]::after{top:calc(0px - 2px - -2px)}
-         *   .fs6b7xr […]::after{bottom:calc(0px - 2px - -2px)}
-         * which is exactly what the utility's
-         * `calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px))`
-         * substitutes to at `-2px`.
-         */
         --fui-focus-outline-offset: -2px;
       }
     }
@@ -221,14 +193,6 @@
       --fui-Slider__rail--size: calc(4px * var(--base-scale));
     }
 
-    /*
-     * from useRootStyles.horizontal / .vertical — root arg #5.
-     * MUST stay after the size block: `vertical`'s `min-height` overrides the size one
-     * (see "Ordering that IS load-bearing" above).
-     *
-     * 3x3 grid with the rail and thumb in the centre cell [2,2] and the hidden input
-     * stretching across all cells.
-     */
     @variant horizontal {
       @apply min-w-120;
 
@@ -243,11 +207,6 @@
       grid-template-columns: 1fr var(--fui-Slider__thumb--size) 1fr;
     }
 
-    /*
-     * from useRootStyles.enabled / .disabled — root arg #6.
-     * These assign the colour custom properties that `.rail` and `.thumb` read; they are
-     * declared on the root so ordinary custom-property inheritance carries them down.
-     */
     @variant enabled {
       --fui-Slider__rail--color: var(--color-neutral-stroke-accessible);
       --fui-Slider__progress--color: var(--color-compound-brand-background);
@@ -270,12 +229,6 @@
       --fui-Slider__progress--color: var(--color-neutral-foreground-disabled);
     }
 
-    /*
-     * `@variant forced-colors` is the OUTER wrapper (CONVERSION_GUIDE §3b, rule 2 — it is
-     * an at-rule variant), matching the react-switch conversion. The `:hover` pair inside
-     * `enabled` is redundant in the compiled output too (same `Highlight` value as the
-     * unhovered rule) and is reproduced verbatim rather than pruned.
-     */
     @variant forced-colors {
       @variant enabled {
         --fui-Slider__rail--color: CanvasText;
@@ -355,13 +308,6 @@
     }
   }
 
-  /*
-   * from useRailStyles.horizontal / .vertical — rail arg #3.
-   * Reached through the root's `data-orientation` because the rail is the root's child and
-   * carries no state of its own (react-switch's `.root { @variant … { & .indicator } }`
-   * shape). 0-2-0 vs the 0-1-0 base rule above; nothing they both set, so the extra
-   * specificity is inert.
-   */
   .root {
     @variant horizontal {
       & .rail {
@@ -396,11 +342,6 @@
   /* ═══ thumb ══════════════════════════════════════════════════════════════════════ */
 
   .thumb {
-    /*
-     * Internal, thumb-local custom property (was `thumbPositionVar` in the Griffel source).
-     * Ensures the thumb stays within the track boundaries: when the value is at 0% or 100%,
-     * the distance from the track edge to the thumb centre equals the inner thumb radius.
-     */
     --fui-Slider__thumb--position: clamp(
       var(--fui-Slider__inner-thumb--radius),
       var(--fui-Slider--progress),

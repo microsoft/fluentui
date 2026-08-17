@@ -16,16 +16,6 @@
     outline-width: medium;
   }
 
-  /*
-   * from useStyles.focusRing.
-   *
-   * `stroke-width` is NOT one of the spacing-powered Tailwind families (D4 addendum rule 2 —
-   * v4's `stroke-*` numeric utilities are a fixed bare-number progression, and this theme
-   * registers no `--stroke-width-*` namespace), so the stroke width is written as a direct
-   * `var(--spacing-thickest)`. That variable IS emitted (it is one of the four stroke widths
-   * `css/emit.css` ships as real custom properties) and it scales with `--base-scale`, which
-   * a raw `var(--stroke-width-thickest)` would not.
-   */
   .focus-ring {
     @apply stroke-stroke-focus-2;
 

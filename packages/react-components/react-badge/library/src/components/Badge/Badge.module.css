@@ -4,54 +4,7 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useBadgeStyles_unstable,
- * not source declaration order.
- *
- * root slot:
- *   1 badgeClassNames.root                 → static class (JS)
- *   2 useRootClassName (makeResetStyles)   → fui.base
- *   3 useRootStyles.fontSmallToTiny        → fui.components.l1   (size-small-or-below)
- *   4 useRootStyles[size]                  → fui.components.l1   (data-size)
- *   5 useRootStyles[shape]                 → fui.components.l1   (.square / .rounded)
- *   6 useRootStyles.roundedSmallToTiny     → fui.components.l1   (nested in .rounded)
- *   7 useRootStyles.borderGhost            → fui.components.l1   (.border-ghost)
- *   8 useRootStyles[appearance]            → fui.components.l1   (.outline)
- *   9 useRootStyles[`${appearance}-${color}`] → fui.components.l1
- *  10 consumer className                   → unlayered (always wins)
- *
- * icon slot:
- *   1 badgeClassNames.icon                 → static class (JS)
- *   2 useIconRootClassName (makeResetStyles) → fui.base
- *   3 useIconStyles.beforeText/.afterText/.beforeTextXL/.afterTextXL
- *                                          → fui.components.l1   (selected from the ROOT
- *                                            via data-empty + data-icon-position + data-size,
- *                                            so the icon slot carries no data attributes)
- *   4 useIconStyles[size]                  → fui.components.l1   (also root-selected)
- *   5 consumer className                   → unlayered
- *
- * NO inversions: within the root the conflicting properties are
- *   font-size/line-height  (#3 loses to #4 for tiny/extra-small — #4 is written later),
- *   border-radius          (#5 loses to #6 — #6 is nested after #5's declaration), and
- *   border-*-color         (#8 loses to #9 — #9 is a later block).
- * Every one of those winners is the LATER mergeClasses argument, so argument order and
- * file order agree. Verified against the compiled atomics in
- * lib-commonjs/components/Badge/useBadgeStyles.styles.js.
- *
- * Slices whose Griffel body is `{}` (medium, circular, filled, ghost, tint) get NO rule —
- * `styles.medium` etc. stay undefined and clsx drops them, matching the empty class
- * string Griffel produces today.
- */
-
 @layer fui.base {
-  /*
-   * from useRootClassName (makeResetStyles). `...typographyStyles.caption1Strong` is
-   * spelled out as the four declarations the compiler emitted.
-   *
-   * `borderColor` is expanded to the four physical longhands because the appearance
-   * slices below override individual sides; the compiled ltr/rtl atomic pairs only swap
-   * left↔right while carrying the same value, so physical longhands are exact.
-   */
   .root {
     @apply relative box-border inline-flex h-20 min-w-20 items-center justify-center;
 
@@ -60,12 +13,6 @@
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-base-200);
 
-    /*
-     * `padding: 0 calc(tokens.spacingHorizontalXS + textPadding)` where
-     * textPadding = tokens.spacingHorizontalXXS, i.e. 4px + 2px = 6px = the SNudge step.
-     * Written as ps/pe (not px-) so the four longhands the size slices override — and the
-     * `unset`s the tiny/extra-small slices set — keep landing on the same properties.
-     */
     @apply ps-horizontal-s-nudge pe-horizontal-s-nudge pt-vertical-none pb-vertical-none;
 
     border-radius: var(--radius-circular);
@@ -76,11 +23,6 @@
     border-bottom-color: var(--color-transparent-stroke);
     border-left-color: var(--color-transparent-stroke);
 
-    /*
-     * The border lives on ::after so it never affects layout — padding and size stay
-     * identical with or without it. The compiled rtl atomic only swaps `left`/`right`,
-     * both `0`, so the inline sides become logical.
-     */
     &::after {
       @apply absolute;
 
@@ -96,11 +38,6 @@
     }
   }
 
-  /*
-   * from useIconRootClassName (makeResetStyles) — a negative inline margin that cancels
-   * the extra text padding the root adds. `margin: 0 calc(…)` expanded to longhands;
-   * the inline pair is symmetric, so it is written logical.
-   */
   .icon {
     @apply -ms-horizontal-xxs -me-horizontal-xxs mt-vertical-none mb-vertical-none flex;
 
@@ -115,12 +52,6 @@
 
 @layer fui.components.l1 {
   .root {
-    /*
-     * arg #3 — from useRootStyles.fontSmallToTiny (`...typographyStyles.caption2Strong`).
-     * font-family and font-weight repeat the reset's values verbatim; only font-size and
-     * line-height actually step down, and for tiny/extra-small even those are replaced by
-     * arg #4 below.
-     */
     @variant size-small-or-below {
       font-family: var(--font-base);
       font-size: var(--text-base-100);
@@ -184,12 +115,6 @@
   .rounded {
     border-radius: var(--radius-medium);
 
-    /*
-     * arg #6 — from useRootStyles.roundedSmallToTiny (`shape === 'rounded' && smallToTiny`).
-     * Nested here rather than given its own class: a nested rule is emitted after the
-     * parent's own declarations, which is exactly the later-argument win mergeClasses
-     * produced.
-     */
     @variant size-small-or-below {
       @apply rounded-small;
     }
@@ -197,12 +122,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #7 — from useRootStyles.borderGhost (`appearance === 'ghost'`). Kept as its own
-   * class instead of folded into `.ghost` so the empty `ghost` slice stays undefined and
-   * the argument mapping above stays 1:1. The local is lowercase-kebab (`border-ghost`),
-   * not the Griffel slice's camelCase name — see scripts/css-modules/ident.js.
-   */
   .border-ghost {
     &::after {
       @apply hidden;
@@ -211,13 +130,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * arg #8 — from useRootStyles[appearance]. `filled`, `ghost` and `tint` are `{}`
-   * ("no shared colors between … appearances"), so only `outline` has a rule.
-   * `shorthands.borderColor('currentColor')` → the four physical longhands the compiler
-   * emits (`g2u3we`/`h3c5rm`/`B9xav0g`/`zhjwy3`); the ltr/rtl pair only swaps left↔right
-   * with an identical value, so the flip is a visual no-op.
-   */
   .outline {
     border-top-color: currentColor;
     border-right-color: currentColor;

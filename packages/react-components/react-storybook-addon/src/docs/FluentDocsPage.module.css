@@ -2,36 +2,7 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Replaces both `makeStyles` calls in FluentDocsPage.tsx (phase3-worklist Item 12c) —
- * `useStyles` and `useVideoClasses`. They are one module because the build aggregates every
- * module of a package into one `dist/styles.css` anyway (D1); the `video-` prefix keeps the
- * two former hooks' `container` locals from colliding.
- *
- * ALTITUDE SPLIT — three groups, and the third one is the interesting case:
- *
- *   fui.components.l2  .video-preview        applied to `<Link className={…}>` — over
- *                                            react-link's own hook output (D2 amendment 2).
- *                                            react-link is `validated`: converted-over-
- *                                            converted, no unlayered block needed.
- *   fui.components.l4  everything else       docs chrome on the addon's own <div>/<hr>/<img>.
- *   UNLAYERED          .additional-info-icon applied to `<InfoFilled />`, an element owned by
- *                                            `@fluentui/react-icons`, which D11 keeps on
- *                                            Griffel PERMANENTLY. Griffel injects its atomics
- *                                            with no `@layer`, and the cascade compares layer
- *                                            origin BEFORE specificity — so any layered rule
- *                                            here would lose outright. D2 amendment 5 requires
- *                                            the unlayered block, at the bottom of the file.
- *
- * Intra-layer order is irrelevant in the l4 block: no element carries two of these classes.
- */
-
 @layer fui.components.l2 {
-  /*
-   * from useVideoClasses.preview. `padding: spacingHorizontalM` is a shorthand, so it
-   * expands to the two logical pairs (both 12px); `gap` keeps its source token's axis name
-   * — `gap-horizontal-m` and `gap-vertical-m` compile to the identical `gap: 12px`.
-   */
   .video-preview {
     @apply flex flex-col gap-horizontal-m px-horizontal-m py-vertical-m;
 
@@ -45,11 +16,6 @@
 }
 
 @layer fui.components.l4 {
-  /*
-   * from useStyles.divider — lands on <hr>. 1px is the strokeWidthThin step and `height` is
-   * spacing-powered, so `h-thin`. `border: '0px none'` and `margin: '48px 0px'` are
-   * shorthands and expand (cookbook §2); 48px matches no spacing step -> numeric fallback.
-   */
   .divider {
     @apply mx-0 my-48 h-thin;
 
@@ -91,11 +57,6 @@
     @apply flex flex-col gap-vertical-m;
   }
 
-  /*
-   * from useStyles.additionalInfo. `border-*-width` does NOT read the spacing namespace, so
-   * the stroke width goes in as the emitted custom property rather than a utility (cookbook
-   * §2 rule 2). `padding`/`margin` shorthands expand to their logical pairs.
-   */
   .additional-info {
     @apply mx-horizontal-m my-0 flex flex-col gap-vertical-m rounded-medium border-neutral-stroke-1 px-horizontal-m py-vertical-m;
 

@@ -50,16 +50,6 @@
  */
 
 @layer fui.components.l1 {
-  /*
-   * Identity-only locals for the two class names `CalendarGridDayCell` adds and removes
-   * imperatively (`dayRef.classList.add(extraCalendarDayGridClassNames.hoverStyle)` — the
-   * grid highlights arbitrary blobs of days, which no CSS `:hover` can express). They are
-   * declared here so the module always exports them, even though every rule that uses them
-   * is a COMPOUND further down (`&.hover-style`). `useCalendarDayGridStyles.styles.ts`
-   * re-exports them as `extraCalendarDayGridClassNames`, whose shape is unchanged — only
-   * the values moved from `fui-…` statics to hashed module classes (DECISIONS.md D16.1).
-   * Do not delete because they look empty.
-   */
   .hover-style {
   }
 
@@ -131,29 +121,6 @@
     }
   }
 
-  /*
-   * from useDayCellStyles.focusIndicator — dayCell arg #3, the output of
-   * `createFocusOutlineStyle({ style: { outlineWidth: tokens.strokeWidthThick, …borderWidth } })`.
-   *
-   * Only `outlineWidth` reaches the ring: `getFocusOutlineStyles` reads exactly
-   * `outlineRadius` / `outlineColor` / `outlineWidth` from the option object, so the
-   * `shorthands.borderWidth(tokens.strokeWidthThick)` spread in the Griffel source is
-   * inert and is NOT reproduced (react-tabster/src/focus/createFocusOutlineStyle.ts:55-80).
-   * Radius and color therefore stay at the utility's defaults (`--radius-medium`,
-   * `--color-stroke-focus-2`), and with no `outlineOffset` the utility's
-   * `calc(0px - <width> - 0px)` reproduces `calc(<width> * -1)` exactly.
-   *
-   * The knob is set on `&::after`, not on the element: the `fui-focus-outline` utility
-   * RESETS every outline knob to `initial` on the element it is applied to
-   * (react-tailwind-theme/css/utilities.css — isolation for the unregistered,
-   * otherwise-inheriting knobs), and declarations on `::after` itself sit past that
-   * element-level reset and always win (react-card precedent). The ring is positioned
-   * against the `position: relative` that `.day-cell` sets above, as
-   * `createFocusOutlineStyle` requires.
-   *
-   * The two `outline-style: none` rules are emitted OUTSIDE the focus-visible selector by
-   * `createFocusOutlineStyle`, so they stay here with the caller.
-   */
   .day-cell-focus-indicator {
     @variant focus {
       outline-style: none;
@@ -238,24 +205,6 @@
       border-bottom-color: var(--color-brand-stroke-1);
       border-left-color: var(--color-brand-stroke-1);
 
-      /*
-       * ⚠ REST-STATE RESTRICTION — the one place in this package where `:where()`
-       * flattening would invert a winner.
-       *
-       * Griffel resolves this child-combinator atomic (0-2-0, bucket `d`) against
-       * `.dayButton:hover` (0-2-0, bucket `h`) and `.dayButton:active` (bucket `a`) by
-       * INSERTION ORDER: `h` and `a` come after `d`, so hover/active win and the
-       * single-selected day's button turns the hover/pressed colour like every other day.
-       * Here the child rule keeps its natural 0-2-0 while `@variant hover` compiles to a
-       * `:where()`-flat 0-1-0, so the child rule would win in every state and the button
-       * would stay `…InvertedSelected` under the cursor.
-       *
-       * Restricting the declaration to the rest state reproduces the Griffel winner in all
-       * three states without either rule having to know the other's values — the shape the
-       * catalog's `at-rest` variant exists for. `at-rest` itself is NOT used: it negates
-       * `:hover, :active:focus-visible` (Griffel's authored `pressed` compound), whereas
-       * this component's competitors are plain `:hover` and plain `:active`.
-       */
       &:where(:not(:hover, :active)) {
         @apply bg-brand-background-inverted-selected;
       }
@@ -301,15 +250,6 @@
     font-weight: var(--font-weight-regular);
   }
 
-  /*
-   * from useDayOutsideBoundsStyles.base — dayCell arg #7.
-   *
-   * Two separate Griffel keys with different scopes: the selector LIST carries the
-   * background/color/pointer-events triple, while the `@media (forced-colors: active)`
-   * block sits at the slice's TOP level and applies to the element only.
-   * `:where(:disabled)` reproduces `&:disabled` exactly inside the list (a variant wraps a
-   * whole rule, not one branch of a list) and keeps this module's uniform flat specificity.
-   */
   .day-outside-bounds {
     &,
     &:where(:disabled),
@@ -324,12 +264,6 @@
     }
   }
 
-  /*
-   * from useDayOutsideNavigatedMonthStyles.lightenDaysOutsideNavigatedMonth — dayCell arg #8.
-   * The slice is the ONLY thing this slot ever contributed besides its static, so when
-   * `lightenDaysOutsideNavigatedMonth` is false the slot's class string is now empty
-   * (it used to be the bare `fui-CalendarDayGrid__dayOutsideNavigatedMonth` static).
-   */
   .lighten-days-outside-navigated-month {
     color: var(--color-neutral-foreground-4);
     font-weight: var(--font-weight-regular);
@@ -339,15 +273,6 @@
     }
   }
 
-  /*
-   * from useDayButtonStyles.base — dayButton arg #2. MUST stay after `.day-single-selected`
-   * (see the REST-STATE RESTRICTION note there).
-   *
-   * The Griffel source's `'&span'` key is NOT reproduced: `&` is substituted with the
-   * atomic's own class selector, so the compiled selector is `.f1xxxxxxspan` — a single
-   * class token that matches no element. Its two declarations (`height: inherit`,
-   * `line-height: inherit`) never applied to anything.
-   */
   .day-button {
     background-color: var(--color-transparent-background);
 
@@ -387,11 +312,6 @@
     }
   }
 
-  /*
-   * from useFirstTransitionWeekStyles.base.
-   * Overlaid out of flow and transparent at rest; `pointer-events: none` stops the invisible
-   * overlay from intercepting clicks. `TransitionRowSlideOut` fades opacity 1 → 0, ending here.
-   */
   .first-transition-week {
     @apply pointer-events-none absolute overflow-hidden opacity-0;
   }
@@ -415,17 +335,6 @@
     }
   }
 
-  /*
-   * from useCornerBorderAndRadiusStyles.corners — dayCell arg #4, compounded with whichever
-   * corner class `useWeekCornerStyles.calculateRoundedStyles` put on the cell.
-   *
-   * The four corner classes are LOGICAL, not physical, even though their names are physical:
-   * `calculateRoundedStyles` already swaps them by `dir`, and Griffel's RTL twin then swapped
-   * the property (`borderTopLeftRadius` ↔ `borderTopRightRadius`). Reproducing the COMPILED
-   * pair — LTR `border-top-right-radius`, RTL `border-top-left-radius` for
-   * `.top-right-corner-date` — is exactly what the logical `border-start-end-radius` emits,
-   * so the JS half stays untouched and no `@variant rtl` twin is needed.
-   */
   .corners {
     &.top-left-corner-date {
       border-start-start-radius: var(--radius-medium);

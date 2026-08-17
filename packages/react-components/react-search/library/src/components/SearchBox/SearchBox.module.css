@@ -109,23 +109,12 @@
  */
 
 @layer fui.base {
-  /*
-   * from useDismissClassName (makeResetStyles) —
-   * `.r1pvzcuu{box-sizing:border-box;color:var(--color-neutral-foreground-3);display:flex;
-   *   cursor:pointer;}` + `.r1pvzcuu>svg{font-size:20px;}`
-   */
   .dismiss {
     @apply box-border flex;
 
     color: var(--color-neutral-foreground-3); /* "icon color" in the design spec */
     cursor: pointer;
 
-    /*
-     * Special case for icons (the common case) so they centre vertically. size: medium.
-     * `--base-scale` keeps the glyph scaling with the root font size (D4); at the default
-     * 16px root this is exactly `font-size: 20px`, the compiled value. Same treatment as
-     * Input's `.content > svg`.
-     */
     & > svg {
       font-size: calc(20px * var(--base-scale));
     }
@@ -138,34 +127,12 @@
    * Input's hook never touches this element; its only other rules are the reset above.
    */
 
-  /*
-   * from useDismissStyles.disabled — arg #3.
-   *
-   * Keyed off a `data-disabled` stamped on the DISMISS itself rather than the root's.
-   * The root's `data-disabled` is written by Input's hook from `state.input.disabled`,
-   * while this slice branches on SearchBox's `state.disabled`. The two are the same value
-   * for every normal render (`useSearchBoxBase_unstable` passes `disabled` straight into
-   * `useInput_unstable`), but they diverge if a consumer disables the inner control
-   * directly — `<SearchBox input={{ disabled: true }} />` leaves `state.disabled` false, so
-   * Griffel left the dismiss glyph at its rest colour. Reading the root's attribute would
-   * grey it out instead.
-   */
   .dismiss {
     @variant disabled {
       @apply text-neutral-foreground-disabled;
     }
   }
 
-  /*
-   * from useDismissStyles.small / .large — arg #4, keeping resizable icons at the right
-   * size. `medium` is the compiled `{}` slice; its 20px lives in the reset above.
-   *
-   * `data-size` is read from the ROOT (Input's hook stamps it) instead of being duplicated
-   * onto the dismiss: both hooks read the very same `state.size`, so unlike `data-disabled`
-   * there is no value that can diverge. Selector shape matches Input's own `& .content > svg`
-   * rules. Arg #3 (`color`) and arg #4 (`font-size`) are disjoint, so their relative order
-   * carries no winner.
-   */
   .root {
     @variant size-small {
       & .dismiss > svg {
@@ -197,11 +164,6 @@
 
     column-gap: 0;
 
-    /*
-     * Kept as the two inline LONGHANDS rather than one `px-*`: arg #15 below zeroes only
-     * `padding-inline-end`, and the longhand pair keeps that override reading as the
-     * one-property replacement Griffel compiled it to.
-     */
     @variant size-small {
       @apply ps-horizontal-s-nudge pe-horizontal-s-nudge;
     }
@@ -215,12 +177,6 @@
     }
   }
 
-  /*
-   * from useRootStyles.unfocusedNoContentAfter — arg #15. Zeroes the `padding-inline-end`
-   * the size block above just set (Griffel: the same `z189sj` key, deleted from the earlier
-   * argument), so it MUST stay after it. The slice name mentions contentAfter but the hook
-   * gates it on `!focused` alone.
-   */
   .root {
     @variant not-focused {
       padding-inline-end: 0;
@@ -236,12 +192,6 @@
 
     padding-inline-end: 0;
 
-    /*
-     * Removes the WebKit pseudo-element styling. Kept as two separate rules, exactly as
-     * Griffel emitted them (`.f18izjht::-webkit-search-decoration{…}`,
-     * `.fcoa6sg::-webkit-search-cancel-button{…}`): merging them into one selector list
-     * would let a browser that does not know one pseudo-element drop the other with it.
-     */
     &::-webkit-search-decoration {
       @apply hidden;
     }
@@ -289,17 +239,6 @@
     @apply gap-x-horizontal-xs ps-horizontal-m;
   }
 
-  /*
-   * from useContentAfterStyles.rest — arg #7. Collapses the whole contentAfter box (which
-   * holds the dismiss button) to nothing while the SearchBox is unfocused.
-   *
-   * Griffel compiled `overflow: 'hidden'` as the SHORTHAND rule `.f1a3p1vp{
-    @apply overflow-hidden;
-  }`
-   * carrying `{p: -1}` — the marker that sorts shorthands before longhands within a bucket.
-   * It is inert here: no rule in this module, in Input's, or in Input's reset sets
-   * `overflow-x`/`overflow-y`, so the shorthand has nothing to lose to and is emitted as-is.
-   */
   .root {
     @variant not-focused {
       & .content-after {

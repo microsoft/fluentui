@@ -50,20 +50,9 @@
 @layer fui.components.l1 {
   /* arg #1 (wrapper) — from useStyles.wrapper */
   .wrapper {
-    /*
-     * Compiled AOT output:
-     *   .fjseox{display:none}   .fniina8{height:0}
-     *   .f3tsq5r{width:0}       .f1aehjj5{pointer-events:none}
-     * All four unpaired — nothing on this element is RTL-flipped.
-     */
     @apply pointer-events-none hidden h-0 w-0;
   }
 
-  /*
-   * arg #2 (wrapper) — from useStyles.wrapperActive.
-   * MUST stay after `.wrapper`: same element, same property, later mergeClasses argument.
-   * Compiled AOT output: .ftgm304{display:block}
-   */
   .wrapper-active {
     @apply block;
   }
@@ -98,22 +87,11 @@
     @apply pointer-events-auto;
   }
 
-  /*
-   * arg #2 (g) — from useStyles.triangleDebug. Debug-only affordance.
-   * Compiled AOT output:
-   *   .f7116n6{cursor:crosshair}
-   *   .f1xab38x{fill:color-mix(in srgb, var(--color-palette-green-background-3) 20%, transparent)}
-   */
   .triangle-debug {
     cursor: crosshair;
     fill: color-mix(in srgb, var(--color-palette-green-background-3) 20%, transparent);
   }
 
-  /*
-   * arg #1 (path) — from useStyles.rectDebug. Debug-only affordance.
-   * Compiled AOT output:
-   *   .fyegryc{fill:color-mix(in srgb, var(--color-palette-red-background-3) 20%, transparent)}
-   */
   .rect-debug {
     fill: color-mix(in srgb, var(--color-palette-red-background-3) 20%, transparent);
   }

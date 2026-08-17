@@ -6,69 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * ── ALTITUDE ─────────────────────────────────────────────────────────────────────────
- * `root` and `icon` are @fluentui/react-button's slots: `useCompoundButtonStyles_unstable`
- * writes onto them and THEN calls `useButtonStyles_unstable`, whose `clsx` puts the
- * incoming className LAST. Before this conversion those slices were UNLAYERED Griffel
- * atomics over Button's LAYERED rules, and unlayered beats every `@layer` before
- * specificity is consulted (D2 amendment 5). `fui.components.l2` reproduces that winner
- * deterministically (D2 amendment 2).
- *
- * `contentContainer` and `secondaryContent` are CompoundButton's OWN slots — nothing else
- * in the tree styles them — so they are `fui.components.l1`, the base-component altitude.
- * The root's `& .secondary-content` rules stay at l2 with the rest of the root slice,
- * which also preserves the Griffel relationship: those were 0-2-0 root-anchored atomics
- * and beat the secondaryContent slot's own 0-1-0 ones.
- *
- * ── ORDERING: bucket-major, mergeClasses-argument-minor ──────────────────────────────
- * Griffel's style buckets (`d` < `h` < `a` < `m`) outranked mergeClasses argument order,
- * reinforced by real specificity (`.x:hover` is 0-2-0 against `.x`'s 0-1-0).
- * `@variant hover` compiles to `&:where(:hover)` (0-1-0), so bucket order is re-encoded
- * as FILE order below. Authoring slice-major instead would let arg #5's flat `padding`
- * beat arg #2's hover rules, which Griffel never allowed.
- *
- * mergeClasses ARGUMENT order of useCompoundButtonStyles_unstable — `root` slot:
- *
- *   #  mergeClasses argument                → target
- *   ---------------------------------------------------------------------------------
- *   1  compoundButtonClassNames.root        → REMOVED (D16.1); the root now leads with
- *                                            `.root`, then `group/fui-compound-button`
- *   2  rootStyles.base                      → `d` / `h` / `a` blocks
- *   3  rootStyles.highContrast              → `m` block
- *   4  rootStyles[appearance]               → `d` / `h` / `a` / `m` blocks
- *   5  rootStyles[size]                     → `d` block
- *   6  rootStyles.disabled       (disabled-any) → `d` / `h` / `a` blocks
- *   7  rootStyles.disabledHighContrast (idem)   → `m` block
- *   8  rootIconOnlyStyles[size]  (iconOnly) → `d` block, LAST (its `padding` shorthand
- *                                             must beat #5's)
- *   9  consumer className                   → unlayered (always wins)
- *
- * The sub-slot statics are gone too (D16.1); each slot now carries only its locals:
- * `contentContainer`: `contentContainerStyles.base` (l1), consumer className.
- * `icon`:             `iconStyles.base`, `iconStyles[iconPosition]` (gated on
- *                     `root.children != null`), consumer className — all l2.
- * `secondaryContent`: `secondaryContentStyles.base`, `…[size]` (l1), consumer.
- *
- * `outline` and `secondary` are `{}` in the Griffel source, so `styles.outline` /
- * `styles.secondary` are intentionally undefined and clsx drops them.
- *
- * ── Own sub-slot selectors go LOCAL ──────────────────────────────────────────────────
- * The Griffel source selected `& .${compoundButtonClassNames.secondaryContent}` — a
- * public BEM static. Here it is the module-local `.secondary-content` that this hook
- * already writes onto that slot, which keeps the coupling private and survived the
- * statics-removal phase unchanged (statics-removal-design.md §2.1 / D16.3). Same 0-2-0
- * specificity, same winners.
- *
- * ── RTL ──────────────────────────────────────────────────────────────────────────────
- * Two `[ltr, rtl]` pairs in the compiled atomics, both pure property flips:
- *   `.f1o700av{text-align:left}` / `.fes3tcz{text-align:right}` → `text-align: start`
- *   `.fkujibs{margin-right}` / `.f199hnxi{margin-left}`         → logical inline margins
- *
- * Verified against node_modules/@fluentui/react-button/lib-commonjs/components/
- * CompoundButton/useCompoundButtonStyles.styles.js (v9.10.1, pre-conversion AOT output).
- */
-
 /* ─────────────────────────────────────────────────────────────────────────────────────
  * `d` bucket — flat declarations on Button's root, in mergeClasses argument order.
  * ───────────────────────────────────────────────────────────────────────────────────── */
@@ -99,15 +36,6 @@
     }
   }
 
-  /*
-   * Size variations — arg #5. The compiled atomics keep `padding` as a four-value
-   * SHORTHAND; it is expanded here into the block/inline halves so arg #8's single-value
-   * `padding` still overrides all four sides. Every side that reads a spacing token keeps
-   * that token's own axis name (`--spacing-*` is axis-agnostic, CONVERSION_GUIDE §2) —
-   * the Griffel source really does use `spacingHorizontal*` on the block axis. `14px` and
-   * `18px` match no spacing step and stay numeric.
-   */
-
   .small {
     @apply px-horizontal-s pt-horizontal-s pb-horizontal-m-nudge;
 
@@ -134,12 +62,6 @@
       @apply text-neutral-foreground-disabled;
     }
   }
-
-  /*
-   * Icon-only size variations — arg #8, the LAST style argument on the root, hence the
-   * last flat rules in this block: their single-value `padding` must beat arg #5's, and
-   * their min/max-width must beat Button's own size min-width.
-   */
 
   .icon-only-small {
     @apply max-w-48 min-w-48 p-horizontal-xs;
@@ -273,11 +195,6 @@
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────────────
- * Icon slot — react-button's, so l2 (see ALTITUDE above). These beat Button's own
- * `fui.base` icon reset and its 0-2-0 root-anchored `size-*` icon rules, exactly as the
- * unlayered Griffel atomics they replace did.
- * ───────────────────────────────────────────────────────────────────────────────────── */
 @layer fui.components.l2 {
   .icon {
     @apply size-40;
@@ -287,11 +204,6 @@
     font-size: calc(40px * var(--base-scale));
   }
 
-  /*
-   * from useIconStyles.before / .after, gated in JS on `root.children != null` exactly as
-   * the Griffel source was. `marginRight`/`marginLeft` compile to an [ltr, rtl] pair
-   * (`.fkujibs` / `.f199hnxi`) — a pure property flip, so logical inline margins.
-   */
   .icon-before {
     @apply me-horizontal-m;
   }

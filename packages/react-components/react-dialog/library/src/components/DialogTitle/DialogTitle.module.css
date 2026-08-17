@@ -28,13 +28,6 @@
     align-self: start;
   }
 
-  /*
-   * from useDialogTitleInternalStyles (makeResetStyles).
-   *
-   * Not a slot: `useDialogTitle.tsx` builds the default close <button> for a non-modal
-   * Dialog and hands this class straight to its `className`. The export stays a zero-arg
-   * function so that call site is unchanged (see useDialogTitleStyles.styles.ts).
-   */
   .action-button {
     overflow: visible;
 
@@ -64,17 +57,6 @@
 
     text-align: unset;
 
-    /*
-     * from `...createFocusOutlineStyle()` spread into the same reset — default options, so
-     * the selector is keyborg's `[data-fui-focus-visible]` and the declarations are the
-     * shared `fui-focus-outline` utility (react-tailwind-theme/css/utilities.css). The
-     * compiled atomics for this button match it declaration for declaration, including the
-     * `@media (forced-colors: active)` Highlight block the utility carries. The `::after`
-     * ring is positioned against the `position: relative` set above.
-     *
-     * `createFocusOutlineStyle` also emits the two `outline-style: none` rules, which sit
-     * OUTSIDE the focus-visible selector and therefore stay here with the caller.
-     */
     @variant focus {
       outline-style: none;
     }

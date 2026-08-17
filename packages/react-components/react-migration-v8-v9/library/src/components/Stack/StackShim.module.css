@@ -57,15 +57,6 @@
   }
 }
 
-/*
- * from useFlexGrowStyles (:63-85).
- *
- * The JS keys stay `inherit`/`initial`/`revert`/`unset`/`1`/`2`/`3` — StackShim.tsx:124
- * indexes this catalog by the raw `grow` prop value. The locals are prefixed because a CSS
- * class cannot be named `1`; StackShim.styles.ts maps key → local. Declarations are literal
- * rather than `@apply`, because the four CSS-wide keywords have no utility and a split
- * authoring style inside one catalog is exactly how a value drifts.
- */
 @layer fui.components.l1 {
   .grow-inherit {
     flex-grow: inherit;
@@ -96,14 +87,6 @@
   }
 }
 
-/*
- * from useFlexAlignItemsStyles (:87-113).
- *
- * `space-between` / `space-around` / `space-evenly` are NOT valid `align-items` values and
- * every browser drops those three declarations at parse time. They are reproduced verbatim
- * because that is what the Griffel source emits today and this conversion is pixel-inert by
- * contract — do not "fix" them.
- */
 @layer fui.components.l1 {
   .align-items-baseline {
     @apply items-baseline;

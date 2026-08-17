@@ -4,115 +4,7 @@
    decide the ranking; re-declaring an existing layer is a no-op. */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Layer assignment mirrors the mergeClasses ARGUMENT order of useFieldStyles_unstable,
- * not source declaration order.
- *
- * `root` slot — Field's own <div>
- *   1 fieldClassNames.root                             → static class (JS)
- *   2 rootStyles.base                                  → fui.components.l1  .root
- *   3 rootStyles.horizontal      (orientation)         → fui.components.l1  (data-orientation)
- *   4 rootStyles.horizontalNoLabel (horizontal && !label) → fui.components.l1  .horizontal-no-label
- *   5 consumer className                               → unlayered (always wins)
- *
- * `label` slot — @fluentui/react-label's <Label>
- *   1 fieldClassNames.label                            → static class (JS)
- *   2 labelStyles.base                                 → fui.components.l2  ← altitude, below
- *   3 labelStyles.horizontal                           → fui.components.l2  (data-orientation)
- *   4 labelStyles.horizontalSmall                      → fui.components.l2  (+ data-size)
- *   5 labelStyles.horizontalLarge                      → fui.components.l2  (+ data-size)
- *   6 labelStyles.vertical                             → fui.components.l2  (data-orientation)
- *   7 labelStyles.verticalLarge                        → fui.components.l2  (+ data-size)
- *   8 consumer className                               → unlayered
- *
- * `validationMessageIcon` slot — Field's own <span> (it WRAPS the react-icons glyph)
- *   1 fieldClassNames.validationMessageIcon            → static class (JS)
- *   2 useValidationMessageIconBaseClassName (makeReset)→ fui.base           .validation-message-icon
- *   3 validationMessageIconStyles[validationState]     → fui.components.l1  (.validation-message-icon<State>)
- *   4 consumer className                               → unlayered
- *
- * `validationMessage` slot — Field's own <div>
- *   1 fieldClassNames.validationMessage                → static class (JS)
- *   2 useSecondaryTextBaseClassName (makeReset)        → fui.base           .secondary-text
- *   3 secondaryTextStyles.error                        → fui.components.l1  .secondary-text-error
- *   4 secondaryTextStyles.withIcon                     → fui.components.l1  .secondary-text-with-icon
- *   5 consumer className                               → unlayered
- *
- * `hint` slot — Field's own <div>
- *   1 fieldClassNames.hint                             → static class (JS)
- *   2 useSecondaryTextBaseClassName (makeReset)        → fui.base           .secondary-text
- *   3 consumer className                               → unlayered
- *
- * ── ALTITUDE: the label slot is l2, not l1 (DECISIONS.md D2 amendment 2) ─────────────
- * `useField_unstable` sets the label slot's `elementType` to @fluentui/react-label's
- * <Label>, so the element's base rules are written by ANOTHER component's (converted)
- * styles hook. Everything Field applies on top of it belongs in `fui.components.l2`,
- * never l1 — in l1 the winner between Field and Label would be decided by stylesheet
- * load order. mergeClasses produced Field-wins because Field's classes were the LAST
- * arguments (`useLabelStyles_unstable` merges its incoming className after its own);
- * l2 over l1 reproduces that deterministically.
- *
- * react-label IS converted (its rules sit in `fui.components.l1`), so D2 amendment 5 —
- * "rules whose subject element is owned by an EXTERNAL or unconverted Griffel package
- * must be UNLAYERED" — does NOT apply here. It also has no bearing on the
- * `validationMessageIcon` slot: that slot renders Field's own <span>, and the
- * @fluentui/react-icons <svg> inside it is never selected by this module. Grepped:
- * react-field's source contains no `fui-Icon-filled` / `fui-Icon-regular` rule and no
- * `:global()` selector at all, so there is nothing to lift out of a layer.
- *
- * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
- * • root arg #4 `horizontalNoLabel` re-sets `grid-template-columns` over arg #3
- *   `horizontal`. `.horizontal-no-label` and `.root:where([data-orientation='horizontal'])`
- *   both flatten to 0-1-0 on the SAME element, so file position is the only tiebreak —
- *   its block is written last inside its `fui.components.l1` group.
- * • label args #4/#5 re-set `padding-block-start/end` over arg #3, and arg #7 re-sets
- *   them plus `margin-block-end` over arg #6. All of those blocks are
- *   `.root:where(…) .label` at 0-2-0, so again file position decides; they are authored
- *   in argument order.
- * • Griffel's DECLARATION order for useLabelStyles is base, vertical, verticalLarge,
- *   horizontal, horizontalSmall, horizontalLarge — i.e. the vertical* pair comes BEFORE
- *   the horizontal* trio, the reverse of the argument order used here. That is not a
- *   functional inversion: `[data-orientation='horizontal']` and `[data-orientation='vertical']`
- *   are mutually exclusive, so no declaration ever crosses the two groups. Within each
- *   group the relative order is identical in both readings.
- * • `.label` (arg #2) is 0-1-0 and every orientation block is 0-2-0, so the descendant
- *   blocks would win on specificity even if the file order were wrong. It is correct
- *   anyway.
- *
- * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
- * The compiled AOT output carries FOUR `[ltr, rtl]` pairs and every one of them is a pure
- * PROPERTY flip — no value flips — so all four become logical properties and this module
- * needs no `@variant rtl` twin:
- *   rootStyles.horizontalNoLabel   `padding-left: 33%` → `padding-inline-start`
- *   labelStyles.horizontal         `margin-right`      → `margin-inline-end` (me-horizontal-m)
- *   secondaryTextStyles.withIcon   `padding-left`      → `padding-inline-start`
- *   icon reset (ra7h1uk/r1rh6bd7)  `margin-left`/`-right` → `margin-inline-start`/`-end`
- *
- * ── Pixel literals and spacing (DECISIONS.md D4 + amendment) ────────────────────────
- * Every value the Griffel source read from a `tokens.spacing*` is authored as the NAMED
- * spacing utility (`mt-vertical-xxs`, `me-horizontal-m`, `pt-vertical-s-nudge`, …). Raw
- * `var(--spacing-vertical-xxs)` is forbidden in modules: it is the one authoring form that
- * does not ride `--base-scale`. The px literals (1px, 9px, and the 12px `iconSize`) ride
- * `--base-scale` too — via the numeric utilities (`pt-1`, `pt-9`) where one exists, and as
- * `calc(<n>px * var(--base-scale))` inside calc()/font-size/vertical-align where none
- * does. The two spacing terms that sit INSIDE a calc() (both `spacingHorizontalXS`) are
- * written as the token's canonical 4px times `--base-scale`, with the token named in a
- * comment. At the default 16px root every one of these computes to the compiled value.
- *
- * The `33%` grid/padding literals are percentages, not lengths — they do not scale and
- * are carried verbatim.
- *
- * Verified against the compiled Griffel atomics in
- * lib-commonjs/components/Field/useFieldStyles.styles.js.
- */
-
 @layer fui.base {
-  /*
-   * from useSecondaryTextBaseClassName (makeResetStyles) — ONE Griffel reset class that
-   * mergeClasses applies to BOTH the `validationMessage` and the `hint` slot, so it stays
-   * one class here too and the hook puts it on both.
-   * `...typographyStyles.caption1` is expanded to the four longhands it compiles to.
-   */
   .secondary-text {
     @apply mt-vertical-xxs text-neutral-foreground-3;
 
@@ -130,12 +22,6 @@
     /* `iconSize` = 12px; font-size is not spacing-powered, so it is a base-scale literal */
     font-size: calc(12px * var(--base-scale));
 
-    /*
-     * Negative inline-start margin puts the icon in the gutter that
-     * `.secondary-text-with-icon` opens on the validation message. Both terms are base-scale
-     * literals because no utility can express a term inside calc(): 12px is `iconSize`,
-     * 4px is tokens.spacingHorizontalXS (D4 amendment).
-     */
     margin-inline-start: calc(-12px * var(--base-scale) - 4px * var(--base-scale));
 
     /* tokens.spacingHorizontalXS → named spacing utility */
@@ -153,11 +39,6 @@
     @apply grid;
   }
 
-  /*
-   * from useRootStyles.horizontal — root arg #3.
-   * In horizontal layout the field is a grid with the label taking up the entire first
-   * column. The last row is slack space in case the label is taller than the rest.
-   */
   .root {
     @variant horizontal {
       grid-template-columns: 33% 1fr;
@@ -165,19 +46,6 @@
     }
   }
 
-  /*
-   * from useRootStyles.horizontalNoLabel — root arg #4, gated on `horizontal && !label`.
-   * In horizontal layout without a label, the label's column is replaced with padding.
-   * This lets grid auto-flow place the other children, and keeps fields with and without
-   * labels aligned.
-   *
-   * A module class rather than a data-attribute: the condition is a slot-presence
-   * conjunction with no entry in the shared `@custom-variant` catalog, and the catalog is
-   * the one place variants may be DEFINED (CONVERSION_GUIDE §2) — which lives in another
-   * package. Keeping the whole `horizontal && !state.label` gate in the hook reproduces
-   * the Griffel slice 1:1 and adds no vocabulary. Written after the `horizontal` block:
-   * both are 0-1-0 on the same element and this one re-sets `grid-template-columns`.
-   */
   .horizontal-no-label {
     padding-inline-start: 33%;
     grid-template-columns: 1fr;
@@ -185,11 +53,6 @@
 }
 
 @layer fui.components.l1 {
-  /*
-   * from useValidationMessageIconStyles.error / .warning / .success — icon arg #3.
-   * `validationState` selects a colour and nothing else, exactly like ProgressBar's
-   * `color` prop, so it rides module classes rather than a data-attribute (D3).
-   */
   .validation-message-icon-error {
     @apply text-palette-red-foreground-1;
   }
@@ -208,12 +71,6 @@
     @apply text-palette-red-foreground-1;
   }
 
-  /*
-   * from useSecondaryTextStyles.withIcon — validationMessage arg #4.
-   * Adds a gutter for the icon so multiple lines of text line up to its inline-end side.
-   * 12px is `iconSize`, 4px is tokens.spacingHorizontalXS; both are base-scale literals
-   * because the sum sits inside a calc() (D4 amendment).
-   */
   .secondary-text-with-icon {
     padding-inline-start: calc(12px * var(--base-scale) + 4px * var(--base-scale));
   }
@@ -252,13 +109,6 @@
       }
     }
 
-    /*
-     * from useLabelStyles.horizontalLarge — label arg #5.
-     * To align the label text with the Input text it is centred within the 40px height of
-     * the Input: (40px - lineHeightBase400) / 2 = 9px. Hardcoded upstream because there is
-     * no 9px spacing token; `pt-9` / `pb-9` are the numeric fallback (D4 amendment) and
-     * ride `--base-scale` like every other length here.
-     */
     @variant horizontal {
       @variant size-large {
         & .label {

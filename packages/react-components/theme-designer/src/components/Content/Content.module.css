@@ -2,13 +2,6 @@
 
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * Replaces Content.tsx's inline `makeStyles`. App altitude: fui.components.l4.
- *
- * `.root` lands on a plain <div> INSIDE the FluentProvider, not on the provider itself,
- * so it is l4 like the rest — unlike Header/Nav, whose roots are the provider element.
- */
-
 @layer fui.components.l4 {
   .root {
     @apply flex flex-col items-stretch;
@@ -19,13 +12,6 @@
 
     min-width: 750px;
     padding-inline: 10%;
-    /*
-     * `margin: '0 auto'` expanded. Storybook's unlayered docs reset
-     * (`.css-x28zkw :where(div:not(…)) { margin: 0 }`) zeroes these — see the header note in
-     * ColorTokens/TokenList.module.css for the measurements. Harmless here: this element is
-     * a grid item that stretches to fill column 2 and carries `min-width: 750px`, so
-     * `margin-inline: auto` resolves to 0 at every viewport regardless.
-     */
     margin-block: 0;
     margin-inline: auto;
   }

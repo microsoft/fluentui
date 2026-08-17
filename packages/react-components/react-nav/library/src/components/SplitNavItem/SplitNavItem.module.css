@@ -186,11 +186,6 @@
 }
 
 @layer fui.components.l2 {
-  /*
-   * button arg #3 — from useSplitNaveItemStyles.hoverAction, PLUS the two descendant halves
-   * of `.baseRoot` that used to key on the `fui-SplitNavItem__*Button` statics. The variant
-   * blocks MUST stay last in this rule; see "M2" in the header.
-   */
   .hover-action {
     opacity: 0;
     pointer-events: none;

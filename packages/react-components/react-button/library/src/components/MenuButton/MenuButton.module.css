@@ -6,45 +6,6 @@
  */
 @layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
-/*
- * ── ALTITUDE ─────────────────────────────────────────────────────────────────────────
- * `root` and `icon` are @fluentui/react-button's slots: `useMenuButtonStyles_unstable`
- * writes onto them and THEN calls `useButtonStyles_unstable`, whose `clsx` puts the
- * incoming className LAST. Before this conversion those slices were UNLAYERED Griffel
- * atomics over Button's LAYERED rules, and unlayered beats every `@layer` before
- * specificity is consulted (D2 amendment 5). `fui.components.l2` reproduces that winner
- * deterministically (D2 amendment 2).
- *
- * `menuIcon` is MenuButton's OWN slot — Button's hook never sees it and no rule anywhere
- * else targets it — so it is `fui.components.l1`, the base-component altitude.
- *
- * mergeClasses ARGUMENT order of useMenuButtonStyles_unstable — `root` slot:
- *
- *   #  mergeClasses argument                        → target
- *   -------------------------------------------------------------------------------
- *   1  menuButtonClassNames.root                    → REMOVED (D16.1); the root now leads
- *                                                     with `group/fui-menu-button`, and
- *                                                     `useButtonStyles_unstable` prepends
- *                                                     Button's `.root` ahead of it
- *   2  rootExpandedStyles.base        (expanded)    → fui.components.l2 (icon swap, bottom)
- *   3  rootExpandedStyles[appearance] (expanded)    → fui.components.l2
- *   4  consumer className                           → unlayered (always wins)
- *
- * The sub-slot statics are gone too (D16.1):
- * `icon`:     the forced-colors hover colour (see the hook for the guard that Griffel's
- *             `a && b && c` expression actually produces), consumer className.
- * `menuIcon`: `menuIconStyles.base`, `…[size]`, `…notIconOnly` (all l1), consumer.
- *
- * There is no `h` / `a` / `m` bucket ordering problem on the root here: arg #3's slices
- * are mutually exclusive appearances and every one of them is flat (`d` bucket only), so
- * file order carries no cascade meaning between them.
- *
- * Verified against node_modules/@fluentui/react-button/lib-commonjs/components/
- * MenuButton/useMenuButtonStyles.styles.js (v9.10.1, pre-conversion AOT output).
- * `shorthands.borderColor/borderWidth` expand to the four physical longhands the compiler
- * emits; their `[ltr, rtl]` pairs only swap left↔right with the same value.
- */
-
 @layer fui.components.l2 {
   /*
    * NOTE (statics-removal phase, DECISIONS.md D16): every class below is conditional on
@@ -116,12 +77,6 @@
     line-height: 0;
   }
 
-  /*
-   * Size variations. `small` and `medium` are byte-identical in the Griffel source and
-   * are kept as two slices so the 1:1 mapping back to it survives review. The px literals
-   * ride `--base-scale` (D4), matching react-button's own icon sizing form.
-   */
-
   .menu-icon-small {
     @apply size-12;
 
@@ -151,28 +106,6 @@
     @apply ms-horizontal-xs;
   }
 }
-
-/*
- * ── The icon swap — retired to `fui.components.l2` (S-J batch 1, DECISIONS.md D27) ────
- *
- * `useRootExpandedStyles.base` (arg #2) is NOTHING BUT this swap, so the whole slice
- * lives here. The two rules style ANOTHER package's elements — the two <svg>s
- * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. They were
- * UNLAYERED under D2 amendment 5 while icons 2.x styled those elements with unlayered
- * Griffel atomics; icons 3.0's stylesheet is imported at `layer(fui.components.l1)`
- * (D27), so the swap returns to this module's root altitude, `fui.components.l2`.
- *
- * Cascade math at l2: the icons sheet's bundled-pair hide (`[data-fui-icon-hidden]`,
- * 0-1-0) and base (`:where([data-fui-icon])`, 0-0-0) sit at l1, and Button's
- * disabled-any swap-BACKS sit at l1 too — l2 beats all of them on layer order, so an
- * expanded MenuButton shows the FILLED glyph: the same winner file position produced
- * when both blocks were unlayered (this file follows Button's in the aggregated CSS),
- * which itself reproduced the mixed-mode Griffel winner. Arg #2 landing after arg #3's
- * l2 blocks in file order carries no cascade meaning: this slice only sets `display` on
- * the icons' <svg>s, which no other rule in this module touches. Verified per-state in
- * the S-J VR gate ("With icon expanded") and by CDP computed-style evidence
- * (reports/sj-batch1.md).
- */
 
 @layer fui.components.l2 {
   .expanded {

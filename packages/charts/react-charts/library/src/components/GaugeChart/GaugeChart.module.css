@@ -19,11 +19,6 @@
     @apply block;
   }
 
-  /*
-   * from useStyles.limits and useStyles.sublabel — both typographyStyles.caption1Strong +
-   * fill/forced-color-adjust, identical atomic sets, so one rule emits both locals
-   * (ChartPopover numerator/denominator precedent).
-   */
   .limits,
   .sublabel {
     @apply fill-neutral-foreground-1;
@@ -57,13 +52,6 @@
     }
   }
 
-  /*
-   * from useStyles.chartTitle = getChartTitleStyles() (utilities/Common.styles.ts).
-   * That factory is SHARED (ChartTable, FunnelChart, SankeyChart, DonutChart, …), so it is
-   * NOT converted in this batch (CONVERSION_GUIDE "shared utilities": convert only when ALL
-   * consumers are in the batch). Declarations inlined from the compiled atomics —
-   * byte-identical to DonutChart.module.css's `.chart-title`.
-   */
   .chart-title {
     @apply mb-vertical-s fill-neutral-foreground-1 text-center;
 
