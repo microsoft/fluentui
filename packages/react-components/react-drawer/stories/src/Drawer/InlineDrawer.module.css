@@ -11,9 +11,7 @@
 }
 
 .content {
-  @apply relative overflow-auto p-16;
-
-  flex: 1;
+  @apply relative flex-1 overflow-auto p-16;
 }
 
 .flexColumn {
@@ -21,9 +19,8 @@
 }
 
 .buttons {
-  @apply sticky flex flex-wrap items-start justify-center p-16;
+  @apply sticky flex flex-1 flex-wrap items-start justify-center p-16;
 
-  flex: 1;
   top: -16px;
   right: -16px;
   left: -16px;

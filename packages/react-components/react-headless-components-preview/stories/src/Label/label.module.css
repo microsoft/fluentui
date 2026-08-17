@@ -1,11 +1,10 @@
 @reference '#theme';
 
 .label {
-  @apply inline-flex;
+  @apply inline-flex font-medium;
 
   gap: var(--space-1);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text);
 }
 

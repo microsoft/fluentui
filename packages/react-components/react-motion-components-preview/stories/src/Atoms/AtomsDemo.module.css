@@ -44,9 +44,8 @@
 }
 
 .codeArea {
-  @apply m-0 min-w-0 overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
+  @apply m-0 min-w-0 flex-auto overflow-auto bg-neutral-background-3 text-neutral-foreground-1;
 
-  flex: 1 1 auto;
   padding: var(--spacing-vertical-l) var(--spacing-horizontal-xl);
   border-left: var(--stroke-width-thin) solid var(--color-neutral-stroke-1);
   font-family: var(--font-monospace);

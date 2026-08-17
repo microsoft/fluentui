@@ -40,8 +40,9 @@
 }
 
 .value {
-  font-weight: 500;
+  @apply font-medium;
+
   color: var(--text);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   font-variant-numeric: tabular-nums;
 }

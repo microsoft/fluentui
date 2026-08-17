@@ -1,0 +1,7 @@
+@reference '#theme';
+
+/* Story styles for PopoverNonInteractiveContent. */
+
+.contentHeader {
+  @apply mt-0;
+}

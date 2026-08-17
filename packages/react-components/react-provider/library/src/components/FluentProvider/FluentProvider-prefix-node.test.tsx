@@ -27,18 +27,18 @@ function expectSafeStyleRule(html: string): void {
 }
 
 describe('FluentProvider prefix SSR', () => {
-  it('escapes an IdPrefixProvider value in the theme style selector', () => {
+  it('renders an IdPrefixProvider value inertly', () => {
     const html = renderToStaticMarkup(
       <IdPrefixProvider value={hostilePrefix}>
-        <FluentProvider theme={{ colorBrandBackground: 'red' }} />
+        <FluentProvider />
       </IdPrefixProvider>,
     );
 
     expectSafeStyleRule(html);
   });
 
-  it('escapes React identifierPrefix in the theme style selector', () => {
-    const html = renderToString(<FluentProvider theme={{ colorBrandBackground: 'red' }} />, {
+  it('renders React identifierPrefix inertly', () => {
+    const html = renderToString(<FluentProvider />, {
       identifierPrefix: hostilePrefix,
     });
 

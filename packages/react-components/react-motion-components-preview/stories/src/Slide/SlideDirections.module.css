@@ -8,10 +8,9 @@
 }
 
 .controls {
-  @apply flex flex-col items-center justify-center gap-15 rounded-medium p-20;
+  @apply flex flex-none flex-col items-center justify-center gap-15 rounded-medium p-20;
 
   box-shadow: var(--shadow-16);
-  flex: 0 0 auto;
 }
 
 .directionsGrid {

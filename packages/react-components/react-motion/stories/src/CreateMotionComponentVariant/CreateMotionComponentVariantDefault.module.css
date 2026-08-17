@@ -17,9 +17,8 @@
 }
 
 .card {
-  @apply flex min-h-200 flex-col items-center justify-center rounded-medium p-20;
+  @apply flex min-h-200 flex-1 flex-col items-center justify-center rounded-medium p-20;
 
-  flex: 1;
   border: var(--stroke-width-thicker) solid var(--color-neutral-foreground-3);
   box-shadow: var(--shadow-16);
 }
@@ -33,7 +32,7 @@
 }
 
 .field {
-  flex: 1;
+  @apply flex-1;
 }
 
 .sliderField {

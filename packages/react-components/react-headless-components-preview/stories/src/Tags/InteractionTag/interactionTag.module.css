@@ -1,12 +1,11 @@
 @reference '#theme';
 
 .interactionTag {
-  @apply inline-flex min-h-28 items-stretch overflow-hidden;
+  @apply inline-flex min-h-28 items-stretch overflow-hidden text-base-200;
 
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
-  font-size: 12px;
   width: max-content;
   max-width: 100%;
 }
@@ -96,7 +95,7 @@
 }
 
 .media {
-  @apply mr-6 inline-flex h-24 w-24 items-center justify-center;
+  @apply mr-6 inline-flex h-24 w-24 items-center justify-center font-semibold;
 
   grid-area: media;
   align-self: center;
@@ -105,8 +104,7 @@
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: calc(11px * var(--base-scale));
 }
 
 .primaryText {
@@ -120,7 +118,7 @@
 
 .secondaryText {
   grid-area: secondary;
-  font-size: 11px;
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-muted);
   line-height: 1.2;
 }
@@ -138,14 +136,13 @@
 }
 
 .resetButton {
-  @apply cursor-pointer appearance-none;
+  @apply cursor-pointer appearance-none text-base-200;
 
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
   padding: 4px 10px;
   border-radius: var(--radius-md);
-  font-size: 12px;
   width: fit-content;
 }
 
@@ -156,14 +153,13 @@
 }
 
 .popover {
-  @apply box-border;
+  @apply box-border text-base-200;
 
   width: max-content;
   max-width: min(320px, calc(100vw - 32px));
   padding: 12px 14px;
   background: var(--surface);
   color: var(--text);
-  font-size: 12px;
   line-height: 1.4;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);

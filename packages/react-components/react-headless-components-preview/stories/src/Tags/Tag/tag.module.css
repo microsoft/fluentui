@@ -1,7 +1,7 @@
 @reference '#theme';
 
 .tag {
-  @apply inline-grid min-h-28 cursor-default items-center select-none;
+  @apply inline-grid min-h-28 cursor-default items-center text-base-200 font-medium select-none;
 
   grid-template-areas:
     'media primary dismiss'
@@ -15,8 +15,6 @@
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
-  font-size: 12px;
-  font-weight: 500;
   letter-spacing: 0;
   transition:
     background-color var(--duration-fast) var(--ease-standard),
@@ -83,14 +81,13 @@
 }
 
 .media {
-  @apply mr-6 h-22 w-22;
+  @apply mr-6 h-22 w-22 font-semibold;
 
   margin-left: -4px;
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: calc(11px * var(--base-scale));
 }
 
 .primaryText {
@@ -104,7 +101,7 @@
 
 .secondaryText {
   grid-area: secondary;
-  font-size: 11px;
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-muted);
   line-height: 1.2;
 }
@@ -135,14 +132,13 @@
 }
 
 .resetButton {
-  @apply cursor-pointer appearance-none;
+  @apply cursor-pointer appearance-none text-base-200;
 
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
   padding: 4px 10px;
   border-radius: var(--radius-md);
-  font-size: 12px;
   width: fit-content;
 }
 

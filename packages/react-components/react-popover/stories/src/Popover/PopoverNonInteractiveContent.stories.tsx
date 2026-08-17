@@ -1,15 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, makeStyles, Popover, PopoverSurface, PopoverTrigger, useId } from '@fluentui/react-components';
+import { Button, Popover, PopoverSurface, PopoverTrigger, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
-  },
-});
+import styles from './PopoverNonInteractiveContent.module.css';
 
 export const NonInteractiveContent = (): JSXElement => {
-  const styles = useStyles();
   const headingId = useId('popover-heading');
 
   return (

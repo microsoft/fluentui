@@ -16,14 +16,13 @@
 }
 
 .tab {
-  @apply relative cursor-pointer text-left;
+  @apply relative cursor-pointer text-left font-medium;
 
   padding: 7px 14px;
   background: transparent;
   border: none;
   color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
   border-radius: var(--radius-pill);
   transition:
     background var(--duration-fast) var(--ease-standard),
@@ -62,11 +61,12 @@
 }
 
 .panel {
+  @apply flex-1;
+
   padding: 16px 4px 4px;
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
   line-height: 1.6;
-  flex: 1;
 }
 
 .layoutVertical .panel {
@@ -74,10 +74,10 @@
 }
 
 .panelTitle {
+  @apply text-base-300 font-semibold;
+
   margin: 0 0 6px;
   color: var(--text);
-  font-size: 14px;
-  font-weight: 600;
   letter-spacing: var(--tracking-tight);
 }
 

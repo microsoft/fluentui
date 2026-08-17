@@ -53,8 +53,9 @@
 }
 
 .label strong {
+  @apply font-medium;
+
   color: var(--text);
-  font-weight: 500;
 }
 
 @keyframes slide {

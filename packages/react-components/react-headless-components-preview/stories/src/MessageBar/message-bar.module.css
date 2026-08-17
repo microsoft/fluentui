@@ -9,7 +9,7 @@
   border-radius: var(--radius-pill);
   background: var(--bg-elev);
   border: 1px solid var(--border);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   line-height: 1.45;
 }
 
@@ -42,9 +42,7 @@
 }
 
 .title {
-  @apply mr-4;
-
-  font-weight: 600;
+  @apply mr-4 font-semibold;
 }
 
 .actions {
@@ -52,12 +50,10 @@
 }
 
 .actionBtn {
-  @apply h-24 cursor-pointer;
+  @apply h-24 cursor-pointer text-base-200 font-medium;
 
   padding: 0 10px;
   border-radius: var(--radius-pill);
-  font-size: 12px;
-  font-weight: 500;
   background: transparent;
   color: var(--text);
   border: none;

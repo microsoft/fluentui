@@ -34,9 +34,7 @@
 }
 
 .title {
-  @apply block text-neutral-foreground-1;
-
-  font-weight: 600;
+  @apply block font-semibold text-neutral-foreground-1;
 }
 
 .checkmark {

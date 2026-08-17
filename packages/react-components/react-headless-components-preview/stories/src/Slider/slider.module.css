@@ -72,12 +72,11 @@
 }
 
 .value {
-  @apply min-w-38 text-right;
+  @apply min-w-38 text-right font-medium;
 
   font-variant-numeric: tabular-nums;
-  font-weight: 500;
   color: var(--text);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
 }
 
 /* Demo helpers (used by Storybook examples) */

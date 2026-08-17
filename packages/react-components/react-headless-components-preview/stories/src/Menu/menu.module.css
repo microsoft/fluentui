@@ -8,7 +8,7 @@
  */
 
 .trigger {
-  @apply inline-flex h-36 cursor-pointer items-center;
+  @apply inline-flex h-36 cursor-pointer items-center font-medium;
 
   padding: 0 var(--space-4);
   border: 0;
@@ -16,7 +16,6 @@
   background: var(--accent);
   color: var(--accent-contrast);
   font-size: 13.5px;
-  font-weight: 500;
 }
 
 .trigger:hover,
@@ -32,7 +31,7 @@
 }
 
 .triggerSecondary {
-  @apply h-28 cursor-pointer;
+  @apply h-28 cursor-pointer font-medium;
 
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -40,7 +39,6 @@
   background: var(--bg-elev);
   color: var(--text);
   font-size: 12.5px;
-  font-weight: 500;
 }
 
 .triggerSecondary:hover {
@@ -57,7 +55,7 @@
   color: var(--text-muted);
   display: grid;
   place-items: center;
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   cursor: context-menu;
   user-select: none;
 }
@@ -137,7 +135,7 @@
 
 .shortcut {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
   margin-inline-start: var(--space-4);
 }
@@ -167,9 +165,10 @@
 }
 
 .groupHeader {
+  @apply font-semibold;
+
   padding: var(--space-2) var(--space-3) var(--space-1);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -177,15 +176,13 @@
 
 /* Selectable indicators (checkmark / radio dot) */
 .checkmark {
-  @apply inline-grid h-16 w-16;
+  @apply inline-grid h-16 w-16 text-base-200 font-bold;
 
   place-items: center;
   border-radius: var(--radius-pill);
   border: var(--stroke-thin) solid var(--border-strong);
   background: transparent;
   color: transparent;
-  font-size: 12px;
-  font-weight: 700;
   line-height: 1;
   transition:
     background var(--duration-fast) var(--ease-standard),
@@ -203,9 +200,10 @@
    hollow and tint the glyph instead of filling the whole circle. Mirrors the
    thick-border ring style used by the standalone RadioGroup. */
 .item[role='menuitemradio'][aria-checked='true'] .checkmark {
+  @apply text-base-100;
+
   background: var(--bg-elev);
   color: var(--accent);
-  font-size: 10px;
 }
 
 /* Switch indicator — slider track + knob */
@@ -263,15 +261,15 @@
 }
 
 .splitPrimary {
-  flex: 1 1 auto;
+  @apply flex-auto;
+
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 .splitSecondary {
-  @apply max-w-50 justify-center;
+  @apply max-w-50 flex-none justify-center;
 
-  flex: 0 0 auto;
   padding-inline: var(--space-2);
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

@@ -1003,6 +1003,7 @@ async function setupCypress(tree: Tree, options: NormalizedSchema) {
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = options.paths.jestSetupFile;
   const packageType = getPackageType(tree, options);
+  const packageJson: PackageJson = readJson(tree, options.paths.packageJson);
 
   // ESM-first packages opt in via `"type": "module"`, so their CommonJS jest config + setup must use
   // the `.cjs` extension. CommonJS (default) packages keep `.js` unchanged.
@@ -1013,9 +1014,9 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 
   const config = {
     pkgName: options.normalizedPkgName,
-    addSnapshotSerializers:
-      packageType === 'web' &&
-      Object.keys(packageJson.dependencies).some(pkgDepName => packagesThatTriggerAddingSnapshots.includes(pkgDepName)),
+    // No `addSnapshotSerializers`: it existed only to add Griffel's jest serializer for packages
+    // depending on `@griffel/react`, and that serializer is retired — converted packages use the
+    // CSS-Modules serializer, which the jest preset supplies unconditionally.
     testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.${testSetupExtension}`,
     platform: packageType,
     projectConfig: options.projectConfig,

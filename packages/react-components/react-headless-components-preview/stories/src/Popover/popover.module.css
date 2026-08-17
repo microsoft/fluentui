@@ -1,7 +1,7 @@
 @reference '#theme';
 
 .trigger {
-  @apply inline-flex h-36 cursor-pointer items-center;
+  @apply inline-flex h-36 cursor-pointer items-center font-medium;
 
   padding: 0 var(--space-4);
   border: 0;
@@ -9,7 +9,6 @@
   background: var(--accent);
   color: var(--accent-contrast);
   font-size: 13.5px;
-  font-weight: 500;
 }
 
 .trigger:hover,
@@ -40,13 +39,12 @@
 }
 
 .contextTrigger {
-  @apply inline-block select-none;
+  @apply inline-block font-medium select-none;
 
   padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-md);
   background: var(--surface-muted);
   color: var(--text-muted);
-  font-weight: 500;
   border: var(--stroke-thin) dashed var(--border-stronger);
   cursor: context-menu;
 }
@@ -89,8 +87,9 @@
 }
 
 .heading {
+  @apply font-semibold;
+
   font-size: 13.5px;
-  font-weight: 600;
   color: var(--text);
   margin: 0 0 var(--space-1);
 }
@@ -100,7 +99,7 @@
 }
 
 .body {
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
   line-height: 1.45;
 }
@@ -110,7 +109,7 @@
 }
 
 .actionButton {
-  @apply inline-flex h-28 cursor-pointer items-center;
+  @apply inline-flex h-28 cursor-pointer items-center font-medium;
 
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -118,7 +117,6 @@
   background: var(--bg-elev);
   color: var(--text);
   font-size: 12.5px;
-  font-weight: 500;
 }
 
 .actionButton:hover {
@@ -138,7 +136,7 @@
   border: 0;
   background: transparent;
   color: var(--text);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
 }
 
 .menuItem:hover {
@@ -163,8 +161,9 @@
 }
 
 .fieldLabel {
-  font-size: 11px;
-  font-weight: 600;
+  @apply font-semibold;
+
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-soft);
   text-transform: uppercase;
   letter-spacing: 0.05em;

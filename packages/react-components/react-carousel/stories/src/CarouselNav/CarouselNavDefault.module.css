@@ -30,6 +30,7 @@
 }
 
 .sliderField {
-  flex: 1;
+  @apply flex-1;
+
   grid-template-columns: max-content 1fr;
 }

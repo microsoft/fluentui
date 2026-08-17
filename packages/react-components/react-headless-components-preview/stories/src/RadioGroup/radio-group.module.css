@@ -63,19 +63,19 @@
 }
 
 .text {
-  @apply flex flex-col gap-2;
-
-  flex: 1;
+  @apply flex flex-1 flex-col gap-2;
 }
 
 .title {
-  font-weight: 500;
+  @apply font-medium;
+
   color: var(--text);
   font-size: 13.5px;
 }
 
 .subtitle {
-  font-size: 12px;
+  @apply text-base-200;
+
   color: var(--text-muted);
 }
 

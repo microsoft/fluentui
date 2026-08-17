@@ -29,7 +29,7 @@
 }
 
 .field {
-  flex: 1;
+  @apply flex-1;
 }
 
 .cardHeaderText {

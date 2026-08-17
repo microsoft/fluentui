@@ -12,10 +12,9 @@
 
 .divider::before,
 .divider::after {
-  @apply h-1;
+  @apply h-1 flex-1;
 
   content: '';
-  flex: 1;
   background: var(--border);
 }
 
@@ -30,10 +29,9 @@
 }
 
 .label {
-  @apply inline-flex items-center gap-6 whitespace-nowrap;
+  @apply inline-flex items-center gap-6 font-medium whitespace-nowrap;
 
-  font-size: 11px;
-  font-weight: 500;
+  font-size: calc(11px * var(--base-scale));
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -49,9 +47,8 @@
 
 /* Sentence-case content (icon + text) used inside dividers. */
 .content {
-  @apply inline-flex items-center gap-6 whitespace-nowrap;
+  @apply inline-flex items-center gap-6 text-base-200 whitespace-nowrap;
 
-  font-size: 12px;
   color: var(--text-muted);
 }
 
@@ -69,10 +66,9 @@
 
 .dividerVertical::before,
 .dividerVertical::after {
-  @apply min-h-8 w-1;
+  @apply min-h-8 w-1 flex-1;
 
   content: '';
-  flex: 1;
   height: auto;
   background: var(--border);
 }
@@ -104,7 +100,7 @@
 .row {
   @apply flex h-24 items-center gap-16;
 
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
 }
 
@@ -115,7 +111,7 @@
 }
 
 .section {
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text);
 }
 
@@ -133,17 +129,17 @@
 }
 
 .verticalCaption {
-  font-size: 11px;
-  font-weight: 500;
+  @apply font-medium;
+
+  font-size: calc(11px * var(--base-scale));
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-faint);
 }
 
 .verticalLineWrap {
-  @apply flex items-center justify-center;
+  @apply flex flex-1 items-center justify-center;
 
-  flex: 1;
   width: 100%;
 }
 
@@ -154,15 +150,15 @@
 }
 
 .labelledLine {
-  @apply h-1;
+  @apply h-1 flex-1;
 
-  flex: 1;
   background: var(--border);
 }
 
 .labelledText {
-  font-size: 11px;
-  font-weight: 600;
+  @apply font-semibold;
+
+  font-size: calc(11px * var(--base-scale));
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-faint);

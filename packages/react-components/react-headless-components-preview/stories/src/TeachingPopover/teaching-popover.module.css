@@ -9,32 +9,29 @@
 }
 
 .header {
-  @apply flex items-center;
+  @apply flex items-center font-medium;
 
   gap: var(--space-2);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
   margin: 0 0 var(--space-3);
 }
 
 .headerIcon {
-  @apply inline-flex h-16 w-16 items-center justify-center;
+  @apply inline-flex h-16 w-16 items-center justify-center text-base-400;
 
-  font-size: 16px;
   color: var(--text-muted);
 }
 
 /* Dismiss button — boxed subtle button, mirrors v9 TeachingPopoverHeader__dismissButton. */
 .dismissButton {
-  @apply inline-flex h-24 w-24 cursor-pointer items-center justify-center p-0;
+  @apply inline-flex h-24 w-24 cursor-pointer items-center justify-center p-0 text-base-300;
 
   margin-inline-start: auto;
   border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-muted);
-  font-size: 14px;
   line-height: 1;
   transition:
     background-color 80ms ease,
@@ -73,20 +70,19 @@
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-3);
   color: var(--text-faint);
-  font-size: 64px;
+  font-size: calc(64px * var(--base-scale));
 }
 
 .title {
-  font-size: 16px;
-  font-weight: 600;
+  @apply text-base-400 font-semibold;
+
   color: var(--text);
   margin: 0 0 var(--space-1);
 }
 
 .bodyText {
-  @apply m-0;
+  @apply m-0 text-base-300;
 
-  font-size: 14px;
   color: var(--text);
   line-height: 1.45;
 }
@@ -103,7 +99,7 @@
   TeachingPopoverCarouselFooterButton minimum.
 */
 .actionButton {
-  @apply inline-flex h-32 min-w-96 cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 min-w-96 cursor-pointer items-center justify-center font-semibold;
 
   padding: 0 var(--space-3);
   border: var(--stroke-thin) solid var(--border-strong);
@@ -111,8 +107,7 @@
   background: var(--bg-elev);
   color: var(--text);
   font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: calc(13px * var(--base-scale));
   line-height: 1;
   transition:
     background-color 80ms ease,
@@ -226,6 +221,7 @@
 }
 
 .pageCount {
-  font-size: 12px;
+  @apply text-base-200;
+
   color: var(--text-muted);
 }

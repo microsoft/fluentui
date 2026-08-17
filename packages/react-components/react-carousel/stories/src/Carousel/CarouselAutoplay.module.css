@@ -49,9 +49,7 @@
 }
 
 .carousel {
-  @apply p-20;
-
-  flex: 1;
+  @apply flex-1 p-20;
 }
 
 .controls {
@@ -64,7 +62,8 @@
 }
 
 .field {
-  flex: 1;
+  @apply flex-1;
+
   grid-template-columns: minmax(140px, max-content) 1fr;
 }
 

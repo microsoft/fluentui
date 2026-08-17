@@ -1,12 +1,11 @@
 @reference '#theme';
 
 .infoLabel {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center font-medium;
 
   gap: var(--space-1);
   color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
 }
 
 .required {

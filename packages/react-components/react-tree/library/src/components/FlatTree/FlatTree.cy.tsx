@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightThemeClassName } from '@fluentui/react-theme';
-import type { JSXElement } from '@fluentui/react-utilities';
+import { fuiSelector, type JSXElement } from '@fluentui/react-utilities';
 import type { TreeItemValue, FlatTreeProps, HeadlessFlatTreeOptions } from '@fluentui/react-tree';
 import {
   Tree,

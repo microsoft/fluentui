@@ -3,7 +3,7 @@
 .spinner {
   @apply inline-flex items-center gap-8;
 
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
 }
 

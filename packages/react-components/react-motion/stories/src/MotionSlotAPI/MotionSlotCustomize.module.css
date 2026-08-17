@@ -24,8 +24,7 @@
 }
 
 .indicator {
-  @apply flex h-80 w-80 items-center justify-center bg-brand-background text-neutral-foreground-on-brand;
+  @apply flex h-80 w-80 items-center justify-center bg-brand-background text-base-600 text-neutral-foreground-on-brand;
 
   border-radius: 50%;
-  font-size: 24px;
 }

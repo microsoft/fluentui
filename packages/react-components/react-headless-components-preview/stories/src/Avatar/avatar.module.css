@@ -1,38 +1,31 @@
 @reference '#theme';
 
 .avatar {
-  @apply relative inline-flex items-center justify-center overflow-hidden select-none;
+  @apply relative inline-flex items-center justify-center overflow-hidden font-semibold select-none;
 
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
-  font-weight: 600;
   flex-shrink: 0;
   letter-spacing: 0;
 }
 
 .size32 {
-  @apply h-32 w-32;
-
-  font-size: 12px;
+  @apply h-32 w-32 text-base-200;
 }
 
 .size40 {
-  @apply h-40 w-40;
-
-  font-size: 14px;
+  @apply h-40 w-40 text-base-300;
 }
 
 .size56 {
   @apply h-56 w-56;
 
-  font-size: 19px;
+  font-size: calc(19px * var(--base-scale));
 }
 
 .size72 {
-  @apply h-72 w-72;
-
-  font-size: 24px;
+  @apply h-72 w-72 text-base-600;
 }
 
 .image {
@@ -88,7 +81,8 @@
 }
 
 .metaName {
-  font-weight: 600;
+  @apply font-semibold;
+
   color: var(--text);
   font-size: 13.5px;
 }

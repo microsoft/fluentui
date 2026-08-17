@@ -19,9 +19,8 @@
 }
 
 .content {
-  @apply absolute box-border grid items-start justify-start bg-neutral-background-1 p-16;
+  @apply absolute box-border grid flex-1 items-start justify-start bg-neutral-background-1 p-16;
 
-  flex: 1;
   gap: var(--spacing-vertical-m);
   grid-auto-rows: max-content;
   inset: 0;

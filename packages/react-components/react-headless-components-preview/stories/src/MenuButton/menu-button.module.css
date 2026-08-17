@@ -1,15 +1,14 @@
 @reference '#theme';
 
 .button {
-  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 select-none;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 font-medium select-none;
 
   padding: 0 12px;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
   transition:
     background-color var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard),

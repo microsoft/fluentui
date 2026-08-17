@@ -11,9 +11,8 @@
 }
 
 .content {
-  @apply grid items-start justify-start p-16;
+  @apply grid flex-1 items-start justify-start p-16;
 
-  flex: 1;
   grid-row-gap: var(--spacing-vertical-xxl);
   grid-auto-rows: max-content;
 }

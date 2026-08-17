@@ -7,20 +7,20 @@
 }
 
 .label {
-  font-size: 13px;
-  font-weight: 500;
+  @apply font-medium;
+
+  font-size: calc(13px * var(--base-scale));
   color: var(--text);
 }
 
 .hint {
-  font-size: 12px;
+  @apply text-base-200;
+
   color: var(--text-muted);
 }
 
 .message {
-  @apply inline-flex items-center gap-4;
-
-  font-size: 12px;
+  @apply inline-flex items-center gap-4 text-base-200;
 }
 
 .messageError {

@@ -1,7 +1,7 @@
 @reference '#theme';
 
 .badge {
-  @apply inline-flex h-22 items-center gap-4;
+  @apply inline-flex h-22 items-center gap-4 font-medium;
 
   padding: 0 8px;
   border-radius: var(--radius-pill);
@@ -9,7 +9,6 @@
   color: var(--text);
   border: 1px solid var(--border);
   font-size: 11.5px;
-  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -61,11 +60,10 @@
 }
 
 .counter {
-  @apply h-18 min-w-18;
+  @apply h-18 min-w-18 font-semibold;
 
   padding: 0 6px;
   font-size: 10.5px;
-  font-weight: 600;
   background: var(--brand);
   color: white;
   border-color: transparent;

@@ -9,7 +9,7 @@
 }
 
 .tag {
-  @apply inline-grid min-h-28 cursor-default items-center select-none;
+  @apply inline-grid min-h-28 cursor-default items-center text-base-200 font-medium select-none;
 
   grid-template-areas:
     'media primary dismiss'
@@ -23,8 +23,6 @@
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
-  font-size: 12px;
-  font-weight: 500;
   letter-spacing: 0;
   transition:
     background-color var(--duration-fast) var(--ease-standard),
@@ -78,12 +76,11 @@
 }
 
 .interactionTag {
-  @apply inline-flex min-h-28 items-stretch overflow-hidden;
+  @apply inline-flex min-h-28 items-stretch overflow-hidden text-base-200;
 
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
-  font-size: 12px;
   width: max-content;
   max-width: 100%;
 }
@@ -182,19 +179,19 @@
 }
 
 .label {
-  font-size: 12px;
+  @apply text-base-200;
+
   color: var(--text-muted);
 }
 
 .resetButton {
-  @apply cursor-pointer appearance-none;
+  @apply cursor-pointer appearance-none text-base-200;
 
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
   padding: 4px 10px;
   border-radius: var(--radius-md);
-  font-size: 12px;
   width: fit-content;
 }
 
@@ -205,7 +202,8 @@
 }
 
 .selectedReadout {
-  font-size: 12px;
+  @apply text-base-200;
+
   color: var(--text-muted);
   font-family: var(--font-mono, monospace);
 }

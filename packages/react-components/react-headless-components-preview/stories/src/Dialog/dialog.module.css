@@ -26,10 +26,11 @@
 }
 
 .title {
+  @apply font-bold;
+
   margin: 0 0 8px;
   font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: calc(18px * var(--base-scale));
   letter-spacing: var(--tracking-heading);
 }
 
@@ -52,15 +53,14 @@
 }
 
 .btn {
-  @apply inline-flex h-32 cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center font-medium;
 
   padding: 0 14px;
   border-radius: var(--radius-pill);
   border: none;
   background: var(--surface-muted);
   color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
   transition: background var(--duration-fast) var(--ease-standard);
 }
 
@@ -119,5 +119,5 @@
 
   color: var(--text-muted);
 
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
 }

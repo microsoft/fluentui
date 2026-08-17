@@ -27,10 +27,9 @@
 }
 
 .column {
-  @apply flex min-w-0 flex-col;
+  @apply flex min-w-0 flex-1 flex-col;
 
   gap: var(--spacing-vertical-s);
-  flex: 1;
 }
 
 .section {

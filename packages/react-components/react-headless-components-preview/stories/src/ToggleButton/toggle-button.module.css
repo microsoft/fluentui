@@ -1,15 +1,14 @@
 @reference '#theme';
 
 .toggle {
-  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 font-medium;
 
   padding: 0 14px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--bg-elev);
   color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard),

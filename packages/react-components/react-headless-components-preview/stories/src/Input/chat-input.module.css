@@ -32,14 +32,12 @@
 }
 
 .chatField {
-  @apply min-w-0;
+  @apply min-w-0 flex-1 text-base-300;
 
-  flex: 1;
   border: none;
   outline: none;
   background: transparent;
   padding: 8px 8px;
-  font-size: 14px;
   color: var(--text);
 }
 
@@ -120,7 +118,7 @@
 }
 
 .chatUnderline .chatField {
-  font-size: 16px;
+  @apply text-base-400;
 }
 
 /* Demo helpers (used by Storybook examples) */

@@ -17,6 +17,7 @@ import {
   RadioGroup,
   Radio,
   useId,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import story from './DialogBackdropAppearance.md';

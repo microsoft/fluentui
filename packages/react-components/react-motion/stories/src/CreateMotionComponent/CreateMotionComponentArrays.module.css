@@ -28,7 +28,7 @@
 }
 
 .field {
-  flex: 1;
+  @apply flex-1;
 }
 
 .sliderField {
@@ -49,10 +49,9 @@
 }
 
 .balloon::before {
-  @apply absolute block text-center text-compound-brand-background-pressed;
+  @apply absolute block text-center text-base-500 text-compound-brand-background-pressed;
 
   content: '▲';
-  font-size: 20px;
   width: 100%;
   bottom: -12px;
   z-index: -1;

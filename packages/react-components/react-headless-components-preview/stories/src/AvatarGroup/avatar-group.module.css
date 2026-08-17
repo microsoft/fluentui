@@ -15,11 +15,9 @@
 }
 
 .layoutTitle {
-  @apply flex items-center;
+  @apply flex items-center text-base-200 font-bold;
 
   gap: var(--space-2);
-  font-size: 12px;
-  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -37,13 +35,11 @@
 }
 
 .avatar {
-  @apply box-border inline-flex h-32 w-32 items-center justify-center overflow-hidden select-none;
+  @apply box-border inline-flex h-32 w-32 items-center justify-center overflow-hidden text-base-200 font-semibold select-none;
 
   border-radius: 50%;
   background: var(--accent);
   color: var(--text-on-accent);
-  font-size: 12px;
-  font-weight: 600;
   inset: 0;
   flex-shrink: 0;
   border: 1px solid transparent;
@@ -111,13 +107,11 @@
 }
 
 .pieAvatar {
-  @apply absolute inline-flex items-center justify-center;
+  @apply absolute inline-flex items-center justify-center text-base-200 font-semibold;
 
   width: 100%;
   height: 100%;
   border-radius: 0;
-  font-size: 12px;
-  font-weight: 600;
   color: var(--text);
 }
 
@@ -152,14 +146,12 @@
 /* ---- Overflow trigger ("+N") ----------------------------------------- */
 
 .overflowTrigger {
-  @apply relative box-border inline-flex h-32 w-32 cursor-pointer items-center justify-center p-0;
+  @apply relative box-border inline-flex h-32 w-32 cursor-pointer items-center justify-center p-0 text-base-300 font-semibold;
 
   flex-shrink: 0;
   border-radius: 50%;
   background: var(--bg-elev);
   color: var(--text);
-  font-size: 14px;
-  font-weight: 600;
   border: 1px solid var(--border);
   transition:
     background var(--duration-fast) var(--ease-standard),
@@ -167,11 +159,10 @@
 }
 
 .tooltip {
-  @apply max-w-240;
+  @apply max-w-240 text-base-200;
 
   background: var(--bg-elev);
   color: var(--text);
-  font-size: 12px;
   line-height: 1.4;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-md);
@@ -262,18 +253,17 @@
 
   border: 0;
   box-shadow: none;
-  font-size: 11px;
+  font-size: calc(11px * var(--base-scale));
 }
 
 .overflowLabel {
-  @apply whitespace-nowrap;
+  @apply text-base-300 font-medium whitespace-nowrap;
 
-  font-size: 14px;
-  font-weight: 500;
   color: var(--text);
 }
 
 .caption {
-  font-size: 12px;
+  @apply text-base-200;
+
   color: var(--text-muted);
 }

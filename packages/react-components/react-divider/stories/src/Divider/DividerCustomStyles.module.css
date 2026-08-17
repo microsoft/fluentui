@@ -26,8 +26,7 @@
 }
 
 .customFont {
-  font-size: 14px;
-  font-weight: bold;
+  @apply text-base-300 font-bold;
 }
 
 .customLineColor::before {

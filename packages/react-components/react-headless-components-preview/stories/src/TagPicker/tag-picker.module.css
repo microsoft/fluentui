@@ -9,8 +9,9 @@
 }
 
 .label {
-  font-size: 13px;
-  font-weight: 600;
+  @apply font-semibold;
+
+  font-size: calc(13px * var(--base-scale));
   letter-spacing: 0.04em;
   color: var(--text-muted);
 }
@@ -50,7 +51,7 @@
 }
 
 .tag {
-  @apply inline-flex min-w-0 items-center;
+  @apply inline-flex min-w-0 items-center text-base-200;
 
   gap: var(--space-1);
   max-width: 100%;
@@ -58,7 +59,6 @@
   border: var(--stroke-thin) solid var(--border);
   background: var(--surface-muted);
   padding: 2px var(--space-2);
-  font-size: 12px;
   color: var(--text);
 }
 
@@ -95,7 +95,7 @@
   border: none;
   background: transparent;
   outline: none;
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text);
   padding: var(--space-1) 0;
 }
@@ -116,7 +116,7 @@
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
   padding: var(--space-1);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text);
   box-shadow: var(--shadow-4);
 }
@@ -148,9 +148,10 @@
 }
 
 .option[data-selected] {
+  @apply font-medium;
+
   background: var(--accent-soft);
   color: var(--accent-strong);
-  font-weight: 500;
 }
 
 .option[data-disabled] {
@@ -165,23 +166,21 @@
 
 /* circular "avatar" media used in tags and options */
 .media {
-  @apply inline-flex h-20 w-20 items-center justify-center;
+  @apply inline-flex h-20 w-20 items-center justify-center font-semibold;
 
   flex-shrink: 0;
   border-radius: var(--radius-pill);
   background: var(--accent-soft);
   color: var(--accent-strong);
-  font-size: 9px;
-  font-weight: 600;
+  font-size: calc(9px * var(--base-scale));
   letter-spacing: 0.02em;
 }
 
 /* square media variant used inside option rows */
 .mediaSquare {
-  @apply h-24 w-24;
+  @apply h-24 w-24 text-base-100;
 
   border-radius: var(--radius-sm);
-  font-size: 10px;
 }
 
 /* option secondary text, pushed to the trailing edge */
@@ -191,7 +190,7 @@
   margin-left: auto;
   padding-left: var(--space-3);
   color: var(--text-faint);
-  font-size: 11px;
+  font-size: calc(11px * var(--base-scale));
 }
 
 /* default trigger chevron */
@@ -204,13 +203,11 @@
 
 /* secondary action button in the control aside */
 .secondaryAction {
-  @apply cursor-pointer;
+  @apply cursor-pointer text-base-200 font-semibold;
 
   border: none;
   background: transparent;
   color: var(--accent);
-  font-size: 12px;
-  font-weight: 600;
   border-radius: var(--radius-sm);
   padding: var(--space-1) var(--space-2);
 }
@@ -225,11 +222,10 @@
 }
 
 .optionGroupLabel {
-  @apply block;
+  @apply block font-semibold;
 
   padding: var(--space-1) var(--space-3);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -243,7 +239,5 @@
 }
 
 .truncateFixed {
-  @apply w-50;
-
-  flex: 0 0 auto;
+  @apply w-50 flex-none;
 }

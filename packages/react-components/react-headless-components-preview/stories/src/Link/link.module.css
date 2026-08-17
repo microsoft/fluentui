@@ -1,13 +1,12 @@
 @reference '#theme';
 
 .link {
-  @apply cursor-pointer;
+  @apply cursor-pointer font-medium;
 
   color: var(--text);
   text-decoration: underline;
   text-decoration-color: var(--border-strong);
   text-underline-offset: 3px;
-  font-weight: 500;
   border-radius: var(--radius-xs);
   transition:
     color var(--duration-fast) var(--ease-standard),

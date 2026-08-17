@@ -53,7 +53,8 @@
 }
 
 .carousel {
-  flex: 1;
+  @apply flex-1;
+
   padding-bottom: var(--spacing-vertical-xl);
 }
 
@@ -65,7 +66,8 @@
 }
 
 .field {
-  flex: 1;
+  @apply flex-1;
+
   grid-template-columns: minmax(100px, max-content) 1fr;
 }
 
@@ -81,9 +83,8 @@
 }
 
 .carouselHeaderTitle {
-  @apply m-0;
+  @apply m-0 flex-1;
 
-  flex: 1;
   font-size: var(--text-base-600);
   font-weight: var(--font-weight-semibold);
 }

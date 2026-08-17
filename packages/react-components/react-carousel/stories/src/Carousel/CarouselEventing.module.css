@@ -30,10 +30,9 @@
 }
 
 .log {
-  @apply max-h-250 min-w-240 overflow-y-auto p-12;
+  @apply max-h-250 min-w-240 flex-1 overflow-y-auto p-12;
 
   box-shadow: var(--shadow-16);
-  flex: 1;
   border: 2px solid var(--color-brand-background);
   border-radius: var(--radius-medium) 0 var(--radius-medium) var(--radius-medium);
 }

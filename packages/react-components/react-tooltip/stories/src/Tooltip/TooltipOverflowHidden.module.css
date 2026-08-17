@@ -1,0 +1,25 @@
+@reference '#theme';
+
+/* Story styles for TooltipOverflowHidden.
+ * Token references are the Fluent theme's CSS variables. */
+
+.root {
+  @apply flex flex-col items-start gap-vertical-s;
+}
+
+.description {
+  @apply m-0 text-base-300;
+}
+
+.scrollContainer {
+  @apply relative h-120 w-240 overflow-x-hidden overflow-y-scroll rounded-medium;
+
+  /* Shorthand, not `border-thin border-solid border-neutral-stroke-1`: Tailwind's
+     `border-solid` sets `--tw-border-style`, which pulls an `@property` registration into the
+     sheet. The theme deliberately emits none. */
+  border: var(--spacing-thin) solid var(--color-neutral-stroke-1);
+}
+
+.content {
+  @apply h-300 pt-vertical-s pl-horizontal-s;
+}

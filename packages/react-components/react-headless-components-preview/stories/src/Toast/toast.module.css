@@ -91,11 +91,9 @@
 
 /* Toast title — heading with optional action slot */
 .title {
-  @apply flex;
+  @apply flex text-base-300 font-semibold;
 
   grid-column-end: 3;
-  font-size: 14px;
-  font-weight: 600;
   line-height: 20px;
   color: var(--text);
   word-break: break-word;
@@ -103,11 +101,10 @@
 
 /* Toast subtitle — smaller, muted text */
 .subtitle {
-  @apply block pt-4;
+  @apply block pt-4 text-base-200;
 
   grid-column-start: 2;
   grid-column-end: 3;
-  font-size: 12px;
   color: var(--text-soft);
   line-height: 1.5;
 }
@@ -115,13 +112,11 @@
 /* Toast body — main content area */
 .body,
 .bodyText {
-  @apply pt-6;
+  @apply pt-6 text-base-300 font-regular;
 
   grid-column-start: 2;
   grid-column-end: 3;
-  font-size: 14px;
   line-height: 20px;
-  font-weight: 400;
   color: var(--text-muted);
   word-break: break-word;
 }
@@ -148,13 +143,11 @@
 
 /* Icon badge — circular badge for intent icon */
 .iconBadge {
-  @apply flex h-24 w-24 items-center justify-center;
+  @apply flex h-24 w-24 items-center justify-center text-base-200 font-bold;
 
   grid-column-end: 2;
   margin-inline-end: var(--space-2);
   border-radius: var(--radius-pill);
-  font-size: 12px;
-  font-weight: 700;
   color: var(--text-on-accent);
   flex-shrink: 0;
   transition: transform var(--duration-fast) var(--ease-standard);
@@ -182,15 +175,13 @@
 
 /* Action button — link-style button for toast actions */
 .actionBtn {
-  @apply flex cursor-pointer appearance-none items-start;
+  @apply flex cursor-pointer appearance-none items-start text-base-200 font-semibold;
 
   grid-column-end: -1;
   background: transparent;
   border: 0;
   padding: var(--space-1) var(--space-2);
   margin: 0 calc(var(--space-1) * -1);
-  font-size: 12px;
-  font-weight: 600;
   color: var(--accent);
   text-decoration: none;
   transition: all var(--duration-fast) var(--ease-standard);
@@ -223,14 +214,12 @@
 
 /* Dismiss button — text link for dismissing toasts */
 .dismissBtn {
-  @apply cursor-pointer appearance-none;
+  @apply cursor-pointer appearance-none text-base-200 font-semibold;
 
   background: transparent;
   border: 0;
   padding: var(--space-1) 0;
   margin: 0 calc(var(--space-1) * -1);
-  font-size: 12px;
-  font-weight: 600;
   color: var(--accent);
   text-decoration: none;
   transition: all var(--duration-fast) var(--ease-standard);
@@ -251,15 +240,14 @@
 
 /* Primary button — solid color action button */
 .btnPrimary {
-  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center font-semibold;
 
   background: var(--accent);
   color: var(--accent-contrast);
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   padding: 0 var(--space-3);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: calc(13px * var(--base-scale));
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
 }
@@ -289,15 +277,14 @@
 
 /* Secondary button — light background */
 .btnSecondary {
-  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center font-semibold;
 
   background: var(--surface-muted);
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
   padding: 0 var(--space-3);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: calc(13px * var(--base-scale));
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
 }
@@ -328,15 +315,14 @@
 
 /* Trigger button — for triggering toasts */
 .triggerBtn {
-  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer appearance-none items-center justify-center font-semibold;
 
   background: var(--bg-elev);
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 0 var(--space-3);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: calc(13px * var(--base-scale));
   transition: all var(--duration-fast) var(--ease-standard);
   font-family: inherit;
 }
@@ -375,18 +361,19 @@
 
 /* Fieldset — for grouping related controls */
 .fieldset {
+  @apply text-base-200;
+
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-3);
-  font-size: 12px;
 }
 
 /* Legend — label for fieldset */
 .legend {
+  @apply text-base-200 font-medium;
+
   padding-inline: var(--space-2);
   color: var(--text-muted);
-  font-size: 12px;
-  font-weight: 500;
 }
 
 /* Radio/checkbox options container */
@@ -398,10 +385,9 @@
 
 /* Option label */
 .optionLabel {
-  @apply flex cursor-pointer items-center;
+  @apply flex cursor-pointer items-center text-base-200;
 
   gap: var(--space-2);
-  font-size: 12px;
   color: var(--text);
 }
 
@@ -507,24 +493,22 @@
 
 /* Timeout input wrapper — vertical flex for label and input */
 .timeoutInput {
-  @apply flex flex-col;
+  @apply flex flex-col text-base-200;
 
   gap: var(--space-1);
-  font-size: 12px;
   color: var(--text);
 }
 
 .timeoutInput input {
-  @apply w-128;
+  @apply w-128 text-base-200;
 
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   padding: 0 var(--space-2);
-  font-size: 12px;
 }
 
 .timeoutInputHint {
-  font-size: 11px;
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
 }
 
@@ -548,10 +532,10 @@
 }
 
 .logHeader {
+  @apply text-base-100 font-bold;
+
   background: var(--text);
   color: var(--bg);
-  font-size: 10px;
-  font-weight: bold;
   padding: var(--space-2);
   width: fit-content;
   border-radius: var(--radius-xs);
@@ -562,6 +546,6 @@
 
   border: 2px solid var(--text);
   padding: var(--space-3);
-  font-size: 11px;
+  font-size: calc(11px * var(--base-scale));
   font-family: var(--font-mono);
 }

@@ -2,8 +2,9 @@
 
 /* label above the dropdown */
 .label {
-  font-size: 13px;
-  font-weight: 600;
+  @apply font-semibold;
+
+  font-size: calc(13px * var(--base-scale));
   letter-spacing: 0.04em;
   color: var(--text-muted);
 }
@@ -17,7 +18,7 @@
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
   padding: 10px var(--space-4);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text);
   box-shadow: var(--shadow-1);
   transition:
@@ -67,7 +68,7 @@
   border: var(--stroke-thin) solid var(--border);
   background: var(--bg-elev);
   padding: var(--space-1);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text);
   box-shadow: var(--shadow-4);
 }
@@ -98,9 +99,10 @@
 }
 
 .option[data-selected] {
+  @apply font-medium;
+
   background: var(--accent-soft);
   color: var(--accent-strong);
-  font-weight: 500;
 }
 
 .option[data-selected] .checkIcon {
@@ -175,11 +177,10 @@
 
 /* group header label */
 .groupLabel {
-  @apply block;
+  @apply block font-semibold;
 
   padding: var(--space-1) var(--space-3);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-faint);
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -203,7 +204,7 @@
   @apply inline-flex cursor-pointer items-center select-none;
 
   gap: var(--space-2);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
   -webkit-user-select: none;
 }

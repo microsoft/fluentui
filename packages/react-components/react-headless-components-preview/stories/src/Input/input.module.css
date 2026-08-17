@@ -41,9 +41,8 @@
 }
 
 .input {
-  @apply min-w-0;
+  @apply min-w-0 flex-1;
 
-  flex: 1;
   border: none;
   outline: none;
   background: transparent;
@@ -66,7 +65,7 @@
   padding: 0 10px;
   color: var(--text-soft);
   flex-shrink: 0;
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
 }
 
 .affixIcon {

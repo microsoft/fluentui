@@ -54,8 +54,5 @@
 }
 
 .demoIcon {
-  @apply flex h-48 w-48 items-center justify-center rounded-medium text-neutral-foreground-on-brand;
-
-  font-size: 24px;
-  font-weight: bold;
+  @apply flex h-48 w-48 items-center justify-center rounded-medium text-base-600 font-bold text-neutral-foreground-on-brand;
 }

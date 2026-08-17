@@ -12,12 +12,11 @@
 
 /* Avatar - grid column spanning and positioning */
 .avatar {
-  @apply relative inline-flex h-40 w-40 items-center justify-center overflow-hidden select-none;
+  @apply relative inline-flex h-40 w-40 items-center justify-center overflow-hidden font-semibold select-none;
 
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
-  font-weight: 600;
   flex-shrink: 0;
   grid-row: span 2;
   align-self: center;
@@ -25,11 +24,9 @@
 
 /* Avatar initials */
 .avatarInitials {
-  @apply absolute flex items-center justify-center;
+  @apply absolute flex items-center justify-center text-base-200 font-semibold;
 
   inset: 0;
-  font-size: 12px;
-  font-weight: 600;
 }
 
 /* Avatar image */
@@ -43,20 +40,16 @@
 
 /* Primary text - body1 typography */
 .primaryText {
-  @apply block;
+  @apply block text-base-300 font-regular;
 
-  font-size: 14px;
   line-height: 20px;
   color: var(--text);
-  font-weight: 400;
 }
 
 /* Secondary text - caption1 typography */
 .secondaryText {
-  @apply block;
+  @apply block text-base-200 font-regular;
 
-  font-size: 12px;
   line-height: 16px;
   color: var(--text-muted);
-  font-weight: 400;
 }

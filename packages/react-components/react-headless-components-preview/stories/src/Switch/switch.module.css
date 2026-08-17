@@ -64,12 +64,14 @@
 }
 
 .title {
-  font-weight: 500;
+  @apply font-medium;
+
   color: var(--text);
 }
 
 .subtitle {
-  font-size: 12px;
+  @apply text-base-200;
+
   color: var(--text-muted);
 }
 

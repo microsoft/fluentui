@@ -2,15 +2,14 @@
 
 /* button — pill-shaped, monochrome */
 .button {
-  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 select-none;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center gap-6 font-medium select-none;
 
   padding: 0 14px;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
   letter-spacing: 0;
   text-decoration: none;
   transition:
@@ -91,17 +90,15 @@
 
 /* Sizes */
 .small {
-  @apply h-26;
+  @apply h-26 text-base-200;
 
   padding: 0 10px;
-  font-size: 12px;
 }
 
 .large {
-  @apply h-40;
+  @apply h-40 text-base-300;
 
   padding: 0 18px;
-  font-size: 14px;
 }
 
 /* Icon-only — perfectly circular */

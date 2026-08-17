@@ -12,9 +12,7 @@
 }
 
 .content {
-  @apply grid items-start justify-start p-16;
-
-  flex: 1;
+  @apply grid flex-1 items-start justify-start p-16;
 }
 
 .field {

@@ -22,14 +22,13 @@
 }
 
 .headerBtn {
-  @apply flex cursor-pointer items-center gap-12 text-left;
+  @apply flex cursor-pointer items-center gap-12 text-left font-medium;
 
   width: 100%;
   padding: 14px 18px;
   background: transparent;
   border: none;
   font-size: 13.5px;
-  font-weight: 500;
   color: var(--text);
   transition: background var(--duration-fast) var(--ease-standard);
 }
@@ -60,7 +59,7 @@
   @apply max-h-0 overflow-hidden;
 
   padding: 0 18px;
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
   color: var(--text-muted);
   line-height: 1.65;
   transition:
@@ -75,7 +74,7 @@
 }
 
 .label {
-  flex: 1;
+  @apply flex-1;
 }
 
 /* Demo helpers (used by Storybook examples) */

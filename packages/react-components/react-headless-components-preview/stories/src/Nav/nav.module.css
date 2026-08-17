@@ -47,15 +47,17 @@
  * NavItem
  * ----------------------------------------------------------------*/
 .navItem {
+  @apply font-medium;
+
   padding: var(--space-2) var(--space-3);
   font-size: 13.5px;
-  font-weight: 500;
 }
 
 .navItem[aria-current='page'] {
+  @apply font-semibold;
+
   background: var(--surface-sunken);
   color: var(--text);
-  font-weight: 600;
 }
 
 /* ----------------------------------------------------------------
@@ -63,30 +65,30 @@
  * ----------------------------------------------------------------*/
 .navSubItem {
   padding: var(--space-2) var(--space-3) var(--space-2) var(--space-10);
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
 }
 
 .navSubItem[aria-current='page'] {
+  @apply font-semibold;
+
   background: var(--surface-sunken);
   color: var(--text);
-  font-weight: 600;
 }
 
 /* ----------------------------------------------------------------
  * NavCategoryItem
  * ----------------------------------------------------------------*/
 .navCategoryItem {
-  @apply justify-between;
+  @apply justify-between font-medium;
 
   padding: var(--space-2) var(--space-3);
   font-size: 13.5px;
-  font-weight: 500;
 }
 
 .expandIcon {
   @apply inline-flex items-center justify-center;
 
-  font-size: 11px;
+  font-size: calc(11px * var(--base-scale));
   color: var(--text-soft);
   transition: transform var(--duration-fast) var(--ease-standard);
 }
@@ -105,11 +107,10 @@
  * NavSectionHeader
  * ----------------------------------------------------------------*/
 .sectionHeader {
-  @apply m-0;
+  @apply m-0 font-semibold;
 
   padding: var(--space-3) var(--space-3) var(--space-1);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: calc(11px * var(--base-scale));
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-soft);
@@ -137,9 +138,8 @@
 }
 
 .drawerContent {
-  @apply flex flex-col items-start;
+  @apply flex flex-1 flex-col items-start;
 
-  flex: 1;
   padding: var(--space-4);
   gap: var(--space-3);
 }
@@ -170,9 +170,8 @@ dialog.drawerNav {
 }
 
 .drawerBody {
-  @apply flex flex-col overflow-y-auto;
+  @apply flex flex-1 flex-col overflow-y-auto;
 
-  flex: 1;
   padding: var(--space-2) var(--space-2);
   gap: var(--space-1);
 }
@@ -181,13 +180,12 @@ dialog.drawerNav {
  * Buttons
  * ----------------------------------------------------------------*/
 .hamburgerButton {
-  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 w-32 cursor-pointer items-center justify-center text-base-400;
 
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
   color: var(--text-muted);
-  font-size: 16px;
 }
 
 .hamburgerButton:hover {
@@ -201,7 +199,7 @@ dialog.drawerNav {
 }
 
 .navigateButton {
-  @apply inline-flex h-32 cursor-pointer items-center;
+  @apply inline-flex h-32 cursor-pointer items-center font-medium;
 
   padding: 0 var(--space-3);
   border: 0;
@@ -209,7 +207,6 @@ dialog.drawerNav {
   background: var(--accent);
   color: var(--accent-contrast);
   font-size: 13.5px;
-  font-weight: 500;
 }
 
 .navigateButton:hover {
@@ -231,7 +228,8 @@ dialog.drawerNav {
 }
 
 .controlLabel {
+  @apply font-semibold;
+
   font-size: 13.5px;
-  font-weight: 600;
   color: var(--text);
 }

@@ -11,9 +11,8 @@
 }
 
 .content {
-  @apply flex items-start justify-center p-16;
+  @apply flex flex-1 items-start justify-center p-16;
 
-  flex: 1;
   column-gap: var(--spacing-horizontal-xs);
 }
 

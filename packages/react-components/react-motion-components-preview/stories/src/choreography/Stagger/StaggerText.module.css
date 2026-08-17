@@ -18,7 +18,7 @@
 }
 
 .field {
-  flex: 1;
+  @apply flex-1;
 }
 
 .items {
@@ -29,10 +29,9 @@
 }
 
 .item {
-  @apply absolute;
+  @apply absolute font-bold;
 
-  font-weight: bold;
-  font-size: 100px;
+  font-size: calc(100px * var(--base-scale));
   color: transparent;
   margin: var(--spacing-horizontal-xxs);
   -webkit-text-stroke: 4px var(--tokens-colorBrandStroke2, var(--color-brand-stroke-2));

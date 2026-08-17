@@ -8,7 +8,7 @@
   @apply m-0 flex items-center gap-2 p-0;
 
   list-style: none;
-  font-size: 13px;
+  font-size: calc(13px * var(--base-scale));
 }
 
 .item {
@@ -16,15 +16,14 @@
 }
 
 .btn {
-  @apply cursor-pointer;
+  @apply cursor-pointer font-medium;
 
   background: none;
   border: none;
   padding: 4px 8px;
   border-radius: var(--radius-md);
   color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
   transition:
     background var(--duration-fast) var(--ease-standard),
     color var(--duration-fast) var(--ease-standard);
@@ -43,10 +42,9 @@
 }
 
 .btn[data-current] {
-  @apply cursor-default;
+  @apply cursor-default font-semibold;
 
   color: var(--text);
-  font-weight: 600;
 }
 
 .btn[data-current]:hover {

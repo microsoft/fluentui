@@ -40,9 +40,8 @@
 }
 
 .item {
-  @apply cursor-pointer whitespace-nowrap;
+  @apply flex-none cursor-pointer whitespace-nowrap;
 
-  flex: none;
   padding: 6px 12px;
   border-radius: var(--radius-pill);
   background: var(--surface-muted);
@@ -61,9 +60,8 @@
 }
 
 .menu {
-  @apply cursor-pointer;
+  @apply flex-none cursor-pointer;
 
-  flex: none;
   padding: 6px 12px;
   border-radius: var(--radius-pill);
   background: var(--accent);
@@ -72,9 +70,8 @@
 }
 
 .divider {
-  @apply w-1;
+  @apply w-1 flex-none;
 
-  flex: none;
   align-self: stretch;
   margin: 0 4px;
   background: var(--border);

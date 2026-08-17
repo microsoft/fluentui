@@ -1,36 +1,10 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, makeStyles, tokens, Tooltip } from '@fluentui/react-components';
+import { Button, Tooltip } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalS,
-    alignItems: 'flex-start',
-  },
-  description: {
-    margin: 0,
-    fontSize: tokens.fontSizeBase300,
-  },
-  scrollContainer: {
-    height: '120px',
-    width: '240px',
-    overflow: 'hidden scroll',
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    position: 'relative',
-  },
-  content: {
-    height: '300px',
-    paddingTop: tokens.spacingVerticalS,
-    paddingLeft: tokens.spacingHorizontalS,
-  },
-});
+import styles from './TooltipOverflowHidden.module.css';
 
 export const OverflowHidden = (): JSXElement => {
-  const styles = useStyles();
-
   return (
     <div className={styles.root}>
       <p className={styles.description}>

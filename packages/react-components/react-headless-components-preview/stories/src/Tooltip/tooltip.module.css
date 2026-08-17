@@ -2,11 +2,10 @@
 
 /* Tooltip content bubble — inverse surface (dark on light, light on dark) */
 .content {
-  @apply max-w-240;
+  @apply max-w-240 text-base-200;
 
   background: var(--bg-elev);
   color: var(--text);
-  font-size: 12px;
   line-height: 1.4;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-md);
@@ -74,15 +73,14 @@
 
 /* Trigger button — primary filled style */
 .trigger {
-  @apply inline-flex h-32 cursor-pointer items-center justify-center;
+  @apply inline-flex h-32 cursor-pointer items-center justify-center font-medium;
 
   padding: 0 var(--space-3);
   border: 0;
   border-radius: var(--radius-pill);
   background: var(--accent);
   color: var(--accent-contrast);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: calc(13px * var(--base-scale));
 }
 
 .trigger:hover {
@@ -123,7 +121,7 @@
 }
 
 .bold {
-  font-weight: bold;
+  @apply font-bold;
 }
 
 .italic {
